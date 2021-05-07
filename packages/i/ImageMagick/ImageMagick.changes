@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May  6 14:20:12 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.11.11
+  * FL32 no longer returns scambled results (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3614).
+  * Ashlar pseudo-image format no longer crops labels in last row of tiles by
+    default (reference https://github.com/ImageMagick/ImageMagick/issues/3618).
+  * Optimize CompareImageBounds().
+  * Check image is not NULL before dereferencing.
+  * eliminate uninitialized value
+  * Differences in computing linear gray (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3571).
+  * added support for pdf:author, pdf:producer and pdf:title when writing a
+    PDF file.
+
+-------------------------------------------------------------------
+Thu Apr 29 23:29:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- force --with-fftw delegate support. FFTW3 is a BuildRequirement
+  but not detected automatically.
+
+-------------------------------------------------------------------
 Tue Apr 13 11:39:43 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.7

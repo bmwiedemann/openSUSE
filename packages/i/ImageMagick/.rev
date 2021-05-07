@@ -3037,4 +3037,26 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/3520).</comment>
     <requestid>884928</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>7a5c6aabaf4e5816d589c02c2c9e8eb9</srcmd5>
+    <version>7.0.11.11</version>
+    <time>1620398720</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.11.11
+  * FL32 no longer returns scambled results (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3614).
+  * Ashlar pseudo-image format no longer crops labels in last row of tiles by
+    default (reference https://github.com/ImageMagick/ImageMagick/issues/3618).
+  * Optimize CompareImageBounds().
+  * Check image is not NULL before dereferencing.
+  * eliminate uninitialized value
+  * Differences in computing linear gray (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3571).
+  * added support for pdf:author, pdf:producer and pdf:title when writing a
+    PDF file.
+
+- force --with-fftw delegate support. FFTW3 is a BuildRequirement
+  but not detected automatically.</comment>
+    <requestid>891054</requestid>
+  </revision>
 </revisionlist>
