@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  4 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-Guess/Changes
+
+  0.13 2021-05-03T15:37:39Z
+
+      - use --installed option while executing brew --prefix (PR#9 @skaji++)
+
+-------------------------------------------------------------------
 Sat Mar  6 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.12

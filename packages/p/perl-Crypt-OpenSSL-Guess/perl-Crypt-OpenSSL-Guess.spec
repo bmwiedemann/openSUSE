@@ -18,7 +18,7 @@
 
 %define cpan_name Crypt-OpenSSL-Guess
 Name:           perl-Crypt-OpenSSL-Guess
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Guess OpenSSL include path
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,6 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 0.98
 %{perl_requires}
 
