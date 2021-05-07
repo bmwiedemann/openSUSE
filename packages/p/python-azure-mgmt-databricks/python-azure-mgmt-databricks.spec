@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-databricks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-databricks
-Version:        1.0.0b1
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Databricks Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-databricks/azure-mgmt-databricks-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-databricks/azure-mgmt-databricks-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -57,10 +59,10 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-databricks-%{version}
+%setup -q -n azure-mgmt-databricks-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-databricks-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-databricks-%{realversion}
 %python_build
 
 %install
