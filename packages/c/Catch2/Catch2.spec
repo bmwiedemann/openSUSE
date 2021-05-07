@@ -17,7 +17,7 @@
 
 
 Name:           Catch2
-Version:        2.13.5
+Version:        2.13.6
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0
@@ -49,7 +49,7 @@ extensions may require additional headers.
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
        -DPKGCONFIG_INSTALL_DIR=%{_libdir}/pkgconfig
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
