@@ -7,4 +7,17 @@
     <comment>- New Azure SDK package</comment>
     <requestid>861122</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bec6befc313852968aec96116414ec5e</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400523</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1 (forwarded request 890924 from glaubitz)</comment>
+    <requestid>891007</requestid>
+  </revision>
 </revisionlist>
