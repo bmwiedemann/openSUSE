@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-eventhub
-Version:        5.3.1
+Version:        5.4.0
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT
@@ -35,10 +35,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.5.0
+Requires:       python-azure-core >= 1.13.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-uamqp < 2.0
-Requires:       python-uamqp >= 1.2.14
+Requires:       python-uamqp >= 1.3.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
