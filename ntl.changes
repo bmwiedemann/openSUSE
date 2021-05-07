@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 14:31:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.4
+  * Improved Karatsuba code for ZZX and GF2EX (as well as the
+    non-GMP implementation of ZZ).
+
+-------------------------------------------------------------------
 Thu Mar  5 15:59:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.4.3

@@ -222,4 +222,12 @@
     <comment>- Update to release 11.4.3</comment>
     <requestid>781904</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>05ff6c3c80cc5945858d67c96fb048ea</srcmd5>
+    <version>11.4.4</version>
+    <time>1620400536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.4</comment>
+    <requestid>891332</requestid>
+  </revision>
 </revisionlist>
