@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-cdn
-Version:        10.0.0
+Version:        11.0.0
 Release:        0
 Summary:        Microsoft Azure CDN Management Client Library
 License:        MIT
