@@ -226,4 +226,12 @@
     <comment>- Update to release 1.21</comment>
     <requestid>887535</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d03a75b1695ce459f29f00a841122ee1</srcmd5>
+    <version>1.21</version>
+    <time>1620398686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890247</requestid>
+  </revision>
 </revisionlist>

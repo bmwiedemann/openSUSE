@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  3 08:45:43 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- add remove-ftrace-filter.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 10:25:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Codify build requirement on elfutils >= 0.171
