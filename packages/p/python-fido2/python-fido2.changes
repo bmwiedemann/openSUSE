@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  6 14:23:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.1
+  * Add new CTAP error codes and improve handling of unknown codes.
+  * Client: API changes to better support extensions.
+  * Client.make_credential now returns a AuthenticatorAttestationResponse,
+    which holds the AttestationObject and ClientData, as well as any
+    client extension results for the credential.
+  * Client.get_assertion now returns an AssertionSelection object,
+    which is used to select between multiple assertions
+  * Renames: The CTAP1 and CTAP2 classes have been renamed to
+    Ctap1 and Ctap2, respectively.
+  * ClientPin: The ClientPin API has been restructured to support
+    multiple PIN protocols, UV tokens, and token permissions.
+  * CTAP 2.1 PRE: Several new features have been added for CTAP 2.1
+  * HID: The platform specific HID code has been revamped
+- Add 0001-Don-t-use-enum.auto-Python-2.patch from upstream
+- Add 0001-Skip-tests-on-older-Cryptography-versions.patch from
+  upstream
+
+-------------------------------------------------------------------
 Mon Apr 20 12:42:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
