@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-file-datalake
-Version:        12.3.0
+Version:        12.3.1
 Release:        0
 Summary:        Azure DataLake service client library for Python
 License:        MIT
