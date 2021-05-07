@@ -20,4 +20,16 @@
     <comment> (forwarded request 875359 from glaubitz)</comment>
     <requestid>875467</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da16869e01f578c1c2b4c69e36e45be4</srcmd5>
+    <version>1.0.0b9</version>
+    <time>1620400505</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b9
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 890388 from glaubitz)</comment>
+    <requestid>890748</requestid>
+  </revision>
 </revisionlist>

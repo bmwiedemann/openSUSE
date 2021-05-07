@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  4 13:21:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0b9
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Feb 24 14:27:32 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
