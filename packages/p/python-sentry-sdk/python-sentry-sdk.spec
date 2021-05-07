@@ -20,7 +20,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %define skip_python2 1
 Name:           python-sentry-sdk
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -58,12 +58,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 # /SECTION
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
-#BuildRequires:  %%{python_module Django >= 1.8}
-#BuildRequires:  %%{python_module sanic >= 0.8}
-#BuildRequires:  %%{python_module apache-beam >= 2.12}
 #BuildRequires:  %%{python_module pyspark >= 2.4.4}
-#BuildRequires:  %%{python_module pure_eval}
+#BuildRequires:  %%{python_module Django >= 1.8}
+#BuildRequires:  %%{python_module apache-beam >= 2.12}
 #BuildRequires:  %%{python_module chalice >= 1.16.0}
+#BuildRequires:  %%{python_module pure_eval}
+#BuildRequires:  %%{python_module sanic >= 0.8}
 # /SECTION
 Requires:       python-Flask >= 0.11
 Requires:       python-SQLAlchemy >= 1.2

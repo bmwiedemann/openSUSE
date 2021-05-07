@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  6 18:54:28 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.1.0
+  - Fix for AWSLambda integration returns value of original handler
+    #1106
+  - Fix for RQ integration that only captures exception if RQ job
+    has failed and ignore retries #1076
+  - Feature that supports Tracing for the Tornado integration #1060
+  - Feature that supports wild cards in ignore_logger in the
+    Logging Integration #1053
+  - Fix for django that deals with template span description names
+    that are either lists or tuples #1054
+
+-------------------------------------------------------------------
 Wed Mar 10 06:36:59 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.0
