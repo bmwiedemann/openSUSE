@@ -168,4 +168,14 @@
 </comment>
     <requestid>876015</requestid>
   </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>3f8b4b19c99276296d6ea595cc6c431f</srcmd5>
+    <version>0.9.1</version>
+    <time>1620398726</time>
+    <user>dimstar_suse</user>
+    <comment>- redo presage-0.9.1-gcc11.patch (boo#1181881)
+  * use noexcept(false) for &quot;throw PresageException&quot;
+</comment>
+    <requestid>890631</requestid>
+  </revision>
 </revisionlist>

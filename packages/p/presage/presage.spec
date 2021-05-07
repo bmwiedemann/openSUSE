@@ -31,7 +31,7 @@ Summary:        Intelligent predictive text entry platform (tools and demos)
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            http://presage.sourceforge.net
-Source:         http://ncu.dl.sourceforge.net/project/%{sname}/%{sname}/%{version}/%{sname}-%{version}.tar.gz
+Source:         https://pilotfiber.dl.sourceforge.net/project/%{sname}/%{sname}/%{version}/%{sname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM jzheng@suse.com - fix ncurese builds in openSUSE
 Patch0:         presage-0.8.9-ncurses_flag.patch
 # PATCH-FIX-UPSTREAM i@marguerite.su - port to cmuclmtk
@@ -203,6 +203,7 @@ pyprompter is a cross-platform predictive text editor.
 pyprompter displays predictions in a contextual pop-up box as each letter is typed. Predictions can be easily selected and inserted in the document.
 
 %else
+
 %package -n libpresage-doc
 Summary:        Intelligent predictive text entry platform (documentation)
 Group:          Documentation/HTML
@@ -362,7 +363,8 @@ fdupes -n -q -r %{buildroot}
 %{_mandir}/man1/gprompter.1%{ext_man}
 %{_datadir}/pixmaps/gprompter.*
 
-%else 
+%else
+
 %files -n libpresage-doc
 %dir %{_datadir}/presage
 %{_datadir}/presage/html/

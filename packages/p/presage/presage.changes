@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  5 07:01:28 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- redo presage-0.9.1-gcc11.patch (boo#1181881)
+  * use noexcept(false) for "throw PresageException"
+
+-------------------------------------------------------------------
 Mon Mar  1 14:09:26 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - add presage-0.9.1-gcc11.patch (boo#1181881)
