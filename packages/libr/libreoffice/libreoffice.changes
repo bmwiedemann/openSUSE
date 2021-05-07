@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue May  4 11:31:27 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add bsc1184961.patch to fix bsc#1184961 more cleanly
+- Drop 0001-Revert-rhbz-1931423.patch
+
+-------------------------------------------------------------------
+Mon May  3 09:14:37 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.3.2
+  * 7.1.3 final release
+- Drop merged patches:
+  * 0002-fix-the-endif-placement-for-GTK_CHECK_VERSION.patch
+  * bsc1182970.patch
+- Add temporary 0001-Revert-rhbz-1931423.patch (bsc#1184961, bsc#1184527)
+  * libreoffice oomath does not ask to save changes when closing document
+
+-------------------------------------------------------------------
+Tue Apr 20 09:31:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Install qt5 plugin when the desktop environment needs it (boo#1184596)
+
+-------------------------------------------------------------------
+Tue Apr  6 12:48:51 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Adjust the package to work on SLE-12-SP5
+  * bundle boost and icu
+  * add patches 0001-Revert-java-9-changes.patch and
+    0002-fix-the-endif-placement-for-GTK_CHECK_VERSION.patch
+
+-------------------------------------------------------------------
+Thu Apr  1 10:52:06 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1182970 - LO-L3: PPTX: image styles that clip images into curvy shapes missing (and images shown rectangular)
+  * bsc1182970.patch
+
+-------------------------------------------------------------------
+Thu Mar 25 14:25:20 UTC 2021 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Version update to 7.1.2.2:
+  * 7.1.2 final release
+- Drop merged patches:
+  * bsc1174465.diff
+  * bsc1181644.diff
+  * bsc1176547_1.diff
+  * bsc1176547_2.diff
+
+-------------------------------------------------------------------
 Mon Mar  1 11:04:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.1.1.2 (fixes bsc#1182790)

@@ -34,7 +34,6 @@
 %else
 %bcond_with kdeintegration
 %endif
-%bcond_with firebird
 %if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 %bcond_without system_gpgme
 %else
@@ -45,8 +44,9 @@
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %bcond_with system_gpgme
 %endif
+%bcond_with firebird
 Name:           libreoffice
-Version:        7.1.1.2
+Version:        7.1.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,13 +101,10 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/f14b83b38d35a585976ef5d422754d8e0d0266a6 ucp: fix call to getComponentContext
 Patch4:         use-comphelper.patch
-# Bug 1174465 - LO-L3: Impress in TW (7.0.0.0-beta2) messes up bullet points
-Patch11:        bsc1174465.diff
-# Bug 1181644 - LO-L3: Text changes are reproducibly lost (PPTX, SmartArt)
-Patch12:        bsc1181644.diff
-#  Bug 1176547 - Image shown with different aspect ratio (and different clipping), some colored instead of grey, one horizontally mirrored
-Patch13:        bsc1176547_1.diff
-Patch14:        bsc1176547_2.diff
+# PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/9fed7b07af44792012028eb57900640a5ee833cb tdf#141930 document set as unmodified if editengine didn't modify on keyevent
+Patch5:         bsc1184961.patch
+# Build with java 8
+Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -135,12 +132,8 @@ BuildRequires:  google-carlito-fonts
 BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
-# genbrk binary is required
-BuildRequires:  icu
-BuildRequires:  java-devel >= 9.0
 BuildRequires:  junit4
 BuildRequires:  libbase
-BuildRequires:  libbox2d-devel
 BuildRequires:  libcppunit-devel >= 1.14.0
 BuildRequires:  liberation-fonts
 BuildRequires:  libexif
@@ -183,10 +176,10 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.42
 BuildRequires:  pkgconfig(harfbuzz-icu) >= 0.9.42
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libabw-0.1)
@@ -239,6 +232,7 @@ Requires:       libreoffice-l10n-en = %{version}
 Requires:       python3
 Recommends:     dejavu-fonts
 Recommends:     google-carlito-fonts
+Recommends:     (libreoffice-qt5 if lxqt-session)
 Provides:       %{name}-draw-extensions = %{version}
 Obsoletes:      %{name}-draw-extensions < %{version}
 Provides:       %{name}-impress-extensions = %{version}
@@ -258,34 +252,45 @@ Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libmariadb-devel
-%else
-BuildRequires:  libmysqlclient-devel
-%endif
-%if %{?suse_version} >= 1500
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
-%else
+%if 0%{?suse_version} < 1500
+# Too old boost on the system
+Source2020:     %{external_url}/boost_1_71_0.tar.xz
+# Too old icu on the system
+Source2021:     %{external_url}/icu4c-68_1-src.tgz
+Source2022:     %{external_url}/icu4c-68_1-data.zip
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
-%endif
-%if 0%{?suse_version} < 1500
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  libBox2D-devel
+BuildRequires:  libmysqlclient-devel
+BuildConflicts: java < 1.8
+BuildConflicts: java >= 9
+BuildConflicts: java-devel < 1.8
+BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless < 1.8
+BuildConflicts: java-headless >= 9
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-%endif
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
-%if %{with system_gpgme}
-BuildRequires:  libgpgmepp-devel
-%endif
-%if 0%{?suse_version} > 1325
+Requires(postun):update-desktop-files
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
+# genbrk binary is required
+BuildRequires:  icu
+BuildRequires:  java-devel >= 9
+BuildRequires:  libbox2d-devel
+BuildRequires:  libmariadb-devel
+BuildRequires:  pkgconfig(icu-i18n)
+BuildConflicts: java < 9
+BuildConflicts: java-devel < 9
+BuildConflicts: java-headless < 9
+%endif
+%if %{with system_gpgme}
+BuildRequires:  libgpgmepp-devel
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
@@ -356,7 +361,7 @@ This package includes the original branding for the LibreOffice office suite.
 Summary:        LibreOffice Icon Themes
 Group:          Productivity/Office/Suite
 Requires(post): %{name}-share-linker
-Requires(postun): %{name}-share-linker
+Requires(postun):%{name}-share-linker
 Supplements:    libreoffice
 Provides:       %{name}-icon-theme-breeze = %{version}
 Obsoletes:      %{name}-icon-theme-breeze < %{version}
@@ -967,10 +972,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%patch5 -p1
+%if 0%{?suse_version} < 1500
+%patch101 -p1
+%endif
 %patch990 -p1
 %patch991 -p1
 
@@ -996,11 +1001,6 @@ sed -i -e /CppunitTest_sc_array_functions_test/d sc/Module_sc.mk
 sed -i -e /CppunitTest_sc_dataprovider/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127099
 sed -i -e /CppunitTest_sc_financial_functions_test/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127083
 sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
-%endif
-
-%if 0%{?suse_version} < 1500
-# Header-only libboost_system is not available
-find -name \*.mk -exec sed -i s,-DBOOST_ERROR_CODE_HEADER_ONLY,, {} \;
 %endif
 
 # Do not generate doxygen timestamp
@@ -1110,6 +1110,10 @@ export NOCONFIGURE=yes
 %else
         --disable-firebird-sdbc \
 %endif
+%if 0%{?suse_version} < 1500
+        --without-system-boost \
+        --without-system-icu \
+%endif
         --enable-evolution2 \
         --enable-dbus \
         --enable-ext-ct2n \
@@ -1125,7 +1129,7 @@ export NOCONFIGURE=yes
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
-	--enable-skia
+        --enable-skia
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure
@@ -1207,7 +1211,7 @@ for i in %{buildroot}%{_libdir}/%{name}/program/resource/*/*/*.mo \
          %{buildroot}%{_libdir}/%{name}/share/registry/Langpack-*.xcd \
          %{buildroot}%{_libdir}/%{name}/share/config/images*.zip \
          %{buildroot}%{_libdir}/%{name}/share/registry/{cjk,ctl}_*.xcd \
-	 %{buildroot}%{_libdir}/%{name}/share/registry/ctlseqcheck_*.xcd \
+         %{buildroot}%{_libdir}/%{name}/share/registry/ctlseqcheck_*.xcd \
          %{buildroot}%{_libdir}/%{name}/share/wizards/*.properties \
         ; do
     trg="`dirname "$i" | sed 's|%{_libdir}|%{_datadir}|'`"
@@ -1268,7 +1272,7 @@ done
 pushd %{buildroot}%{_libdir}/%{name}/share/autocorr
 files=""
 for file in acor*.dat; do
-	files="$files $file"
+    files="$files $file"
 done
 popd
 for file in $files; do

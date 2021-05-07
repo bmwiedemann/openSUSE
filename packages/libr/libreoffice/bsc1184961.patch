@@ -1,0 +1,42 @@
+From 9fed7b07af44792012028eb57900640a5ee833cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Tue, 4 May 2021 09:15:25 +0100
+Subject: [PATCH] tdf#141930 document set as unmodified if editengine didn't
+ modify on keyevent
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+this appears to have always happened for cursor keys, and since
+
+commit 0154f04e8c64df937b793c73ac58d553637f324f
+Author: Caolán McNamara <caolanm@redhat.com>
+Date:   Wed Feb 24 14:32:21 2021 +0000
+
+    Resolves: rhbz#1931423 start update timer in IM events as well as keyevents
+
+also happens on Input Engine events which don't cause changes
+
+Change-Id: Ic5cdd9ef4f1bed1cc2b2c17fc847f196a9c6e23a
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/115055
+Tested-by: Jenkins
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+---
+ starmath/source/edit.cxx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: libreoffice-7.1.3.2/starmath/source/edit.cxx
+===================================================================
+--- libreoffice-7.1.3.2.orig/starmath/source/edit.cxx
++++ libreoffice-7.1.3.2/starmath/source/edit.cxx
+@@ -513,8 +513,8 @@ void SmEditWindow::UserPossiblyChangedTe
+     // cursor travelling and such things...
+     SmDocShell *pDocShell = GetDoc();
+     EditEngine *pEditEngine = GetEditEngine();
+-    if (pDocShell && pEditEngine)
+-        pDocShell->SetModified(pEditEngine->IsModified());
++    if (pDocShell && pEditEngine && pEditEngine->IsModified())
++        pDocShell->SetModified(true);
+     aModifyIdle.Start();
+ }
+ 
