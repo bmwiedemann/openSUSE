@@ -102,4 +102,14 @@
     <comment></comment>
     <requestid>860247</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2927bf0f7d57d59a018ef1162c3bb74b</srcmd5>
+    <version>1.6.2</version>
+    <time>1620398750</time>
+    <user>dimstar_suse</user>
+    <comment>- Package pre-built earlyoom.1 as pandoc / haskell is not supported
+  on all archs.
+- Drop pandoc BuildRequires. (forwarded request 891234 from dimstar)</comment>
+    <requestid>891240</requestid>
+  </revision>
 </revisionlist>

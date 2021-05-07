@@ -1,7 +1,7 @@
 #
 # spec file for package earlyoom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Group:          System/Daemons
 URL:            https://github.com/rfjakob/%{name}
 Source0:        %{URL}/archive/v%{version}.tar.gz
 Source11:       %{name}.sysconfig
-# pandoc only for `pandoc MANPAGE.md -s -t man > earlyoom.1`
-BuildRequires:  pandoc
+# Inject pre-build earlyoom.1, built on x86_64 machine, as pandoc does not exist on all archs
+Source12:       earlyoom.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Conflicts:      oomd
@@ -45,6 +45,10 @@ below critical level, it will kill the largest process (highest oom_score).
 
 %prep
 %autosetup
+# Test if our pre-build earloom.1 is newer than README.md; if not, fail
+# in case of fail, rebuild the earlyoom.1 out of the build system using
+#     pandoc MANPAGE.md -s -t man > earlyoom.1
+test %{SOURCE12} -nt README.md
 
 # Fix defaults file location
 sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
@@ -71,6 +75,8 @@ LDFLAGS="-lrt ${RPM_LD_FLAGS}"
 %install
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}
 install -D -m644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -d %{buildroot}%{_mandir}/man1/
+install -m644 %{SOURCE12} %{buildroot}%{_mandir}/man1/
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}

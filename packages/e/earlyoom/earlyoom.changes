@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 08:35:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Package pre-built earlyoom.1 as pandoc / haskell is not supported
+  on all archs.
+- Drop pandoc BuildRequires.
+
+-------------------------------------------------------------------
 Thu Dec  3 14:12:54 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.6.2
