@@ -50,4 +50,15 @@
 - Update Requires from setup.py (forwarded request 881858 from glaubitz)</comment>
     <requestid>881922</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ac2a03d5836f4d49e48b7d72cae9eaf</srcmd5>
+    <version>1.1.4</version>
+    <time>1620400499</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890727 from glaubitz)</comment>
+    <requestid>890734</requestid>
+  </revision>
 </revisionlist>
