@@ -1,11 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-gen</param>
-    <param name="revision">runtest-0.5.3</param>
+    <param name="revision">80f748cad171740789ebd4109f360609eab1f5ab</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="url">https://github.com/olafhering/ocaml-gen.git</param>
+    <param name="url">https://github.com/c-cube/gen.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

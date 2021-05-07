@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
+
+- Use upstream repo, current ocaml-rpm-macros and ocaml-gen.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - remove dependency to ounit via _multibuild

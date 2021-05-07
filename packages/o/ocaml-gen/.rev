@@ -55,4 +55,12 @@ update: fixed license ID (used wrong casing)</comment>
     <comment>- remove dependency to ounit via _multibuild</comment>
     <requestid>867934</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>995ca0d8b6e7dfb53547ae9b3b937338</srcmd5>
+    <version>0.5.3</version>
+    <time>1620398747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>891221</requestid>
+  </revision>
 </revisionlist>

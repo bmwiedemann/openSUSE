@@ -33,9 +33,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/gen
 Source0:        %{pkg}-%{version}.tar.xz
+Patch0:         %{pkg}.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210409
 %if 1
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(dune.configurator)

@@ -1,0 +1,43 @@
+From: Olaf Hering <olaf@aepfle.de>
+Subject: extract inline tests manually
+
+https://discuss.ocaml.org/t/requirements-for-dune-inline-tests/4553
+
+Fixes #19
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ dune-project |  2 +-
+ src/dune     | 14 +++++++++++++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/dune-project b/dune-project
+index 7655de0..0636ab6 100644
+--- a/dune-project
++++ b/dune-project
+@@ -1 +1 @@
+-(lang dune 1.1)
++(lang dune 1.11)
+diff --git a/src/dune b/src/dune
+index 1e7b505..8b5096a 100644
+--- a/src/dune
++++ b/src/dune
+@@ -22,5 +22,17 @@
+   (flags :standard -warn-error -a+8 -safe-string -nolabels)
+   (ocamlopt_flags :standard (:include flambda.flags))
+   (libraries bytes)
+-  (inline_tests (backend qtest.lib)))
++  )
+ 
++(test
++ (name inline_test)
++ (modules inline_test)
++ (libraries gen oUnit qcheck))
++
++(rule
++ (target inline_test.ml)
++ (deps gen.ml)
++ (action
++  (with-stdout-to
++   %{target}
++   (run qtest extract %{deps}))))
