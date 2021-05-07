@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/SPIRV-Headers</param>
-		<param name="revision">a3fdfe81465d57efc97cfd28ac6c8190fb31a6c8</param>
+		<param name="revision">dafead1765f6c1a5f9f8a76387dcb2abe4e54acd</param>
 		<param name="parent-tag">1.5.4</param>
 		<param name="versionformat">1.5.4.g@TAG_OFFSET@</param>
 	</service>

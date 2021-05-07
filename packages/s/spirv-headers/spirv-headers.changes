@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  5 09:34:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.5.4.g57 (dafead1765)
+  * Support SPV_KHR_expect_assume, SPV_KHR_linkonce_odr
+  * Add generator ID for MSP shader compiler
+
+-------------------------------------------------------------------
 Mon Mar  1 06:46:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.5.4.g42 (a3fdfe8146)

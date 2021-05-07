@@ -17,7 +17,7 @@
 
 
 Name:           spirv-headers
-Version:        1.5.4.g42
+Version:        1.5.4.g57
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
@@ -40,7 +40,7 @@ registry. This includes:
   set, and for the GLSL.std.450 extended instruction set.
 * The XML registry file.
 
-%prep 
+%prep
 %autosetup -n SPIRV-Headers-%version
 
 %build
