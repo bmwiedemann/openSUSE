@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-vision-face
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cognitiveservices-vision-face
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Face Client Library
 License:        MIT
