@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  5 06:53:20 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Pkg.ProvidePackage() - download the latest package version from
+  the repository, this ensures that the installer is updated with
+  the latest packages from the installer updates repository
+  (bsc#1185240)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
