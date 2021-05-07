@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20210414
+Version:        20210505
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -124,9 +124,21 @@ make %{?_smp_mflags} -C control check
 mkdir -p $RPM_BUILD_ROOT%{?skelcdpath}/CD1
 install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
 
+%define update_repo 0
 %if 0%{?sle_version} <= 150200
-# With Leap 15.3 and later, all supported archs are in the same repo. TW remains separated.
+# With Tumbleweed and Leap 15.2 and before, aarch64 arm ppc ppc64 ppc64le s390x are separated from regular Leap repo.
 %ifarch aarch64 %arm ppc ppc64 ppc64le s390x
+%define update_repo 1
+%endif
+%endif
+%if 0%{?sle_version} >= 150300
+# With Leap 15.3 and later, armv7 is the only archs separated, others (aarch64, etc.) are in the same repo.
+%ifarch %arm
+%define update_repo 1
+%endif
+%endif
+
+%if "%{update_repo}" == "1"
     ports_arch="%{_arch}"
     %ifarch ppc ppc64 ppc64le
         ports_arch="ppc"
@@ -155,7 +167,6 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
     xsltproc -o %{buildroot}%{?skelcdpath}/CD1/control_ports.xml control/nonoss.xsl %{buildroot}%{?skelcdpath}/CD1/control.xml
     mv %{buildroot}%{?skelcdpath}/CD1/control{_ports,}.xml
     xmllint --noout --relaxng %{_datadir}/YaST2/control/control.rng %{buildroot}%{?skelcdpath}/CD1/control.xml
-%endif
 %endif
 
 %files

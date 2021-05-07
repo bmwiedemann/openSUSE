@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  5 13:12:33 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix path of repo for Leap 15.3 armv7 (boo#1183795)
+- 20210505
+
+-------------------------------------------------------------------
 Wed Apr 14 13:53:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add missing arm grub2 efi subvolume (boo#1184788)
