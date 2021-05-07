@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-queue
-Version:        12.1.5
+Version:        12.1.6
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
@@ -42,7 +42,7 @@ Requires:       python-azure-storage-common < 3.0.0
 Requires:       python-azure-storage-common >= 2.1.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
-Requires:       python-msrest >= 0.6.10
+Requires:       python-msrest >= 0.6.18
 Conflicts:      python-azure-sdk <= 2.0.0
 Conflicts:      python-azure-storage <= 0.36.0
 
