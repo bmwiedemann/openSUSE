@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  3 03:53:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Python 3.9 due to incompatibilities fixed in upcoming release
+- Remove executable bit on static assets
+
+-------------------------------------------------------------------
 Mon Aug 31 10:57:01 UTC 2020 - mcalabkova@suse.com
 
 - Update to version 4.1.0:

@@ -17,6 +17,8 @@
 
 
 %define skip_python2 1
+# Python 3.9 is supported by next release
+%define skip_python39 1
 Name:           python-django-silk
 Version:        4.1.0
 Release:        0
@@ -68,6 +70,7 @@ Profiling for the Django Framework.
 
 %prep
 %setup -q -n django-silk-%{version}
+chmod a-x silk/static/silk/lib/*
 
 %build
 %python_build
