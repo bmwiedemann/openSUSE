@@ -17,7 +17,7 @@
 
 
 Name:           sdcc
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Small Device C Compiler
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -27,7 +27,6 @@ Source:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.
 Source1:        %{name}-rpmlintrc
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
-Patch3:         sdcc-fixupInlineLabel.patch
 Patch4:         sdcc-pcode.patch
 BuildRequires:  bison
 %if 0%{?suse_version} >= 1500
@@ -55,6 +54,7 @@ BuildRequires:  texlive-makeindex-bin
 %if 0%{?suse_version} >= 1500
 BuildRequires:  texlive-footnotehyper
 %endif
+BuildRequires:  texlive-geometry
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-ulem
@@ -96,7 +96,7 @@ This package contains sources for the C library and other files for
 development.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 rm support/regression/tests/bug3304184.c
 # remove non-free libraries, see doc/README.txt: Licenses
 find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
@@ -104,7 +104,6 @@ find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
 find -name '*.[ch]' -perm -u=x | xargs chmod a-x
 %patch0 -p1
 %patch2 -p1
-%patch3
 %patch4
 sed -i '1 s@.*@#!/usr/bin/python3@' support/scripts/as2gbmap.py
 

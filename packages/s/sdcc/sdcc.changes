@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  4 21:41:49 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed build for Tumbleweed 
+
+-------------------------------------------------------------------
+Sun Apr  4 22:32:58 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.0
+  * New Feature List:
+    - New z80n port for the Spectrum Next CPU (a Z80 variant).
+    - Much better register allocation in the gbz80 backend.
+    - Workarounds for Rabbit wait state bugs in the r2k backend.
+    - New r2ka port to better support Rabbit 2000A, 2000B, 2000C, 3000.
+    - Default crt0 and --data-loc for Rabbits suitable for typical
+      Rabbit hardware configurations, such as the RCMs.
+    - Many improvements in code generation for z80 and related ports.
+    - Rabbit register definition headers for Rabbit 2000, 2000A,
+      2000B, 2000C, 3000, 3000A.
+    - C23 digit separators.
+  * Numerous other new features and bug fixes are included as well.
+- Patch sdcc-fixupInlineLabel.patch removed (applied upstream)
+
+-------------------------------------------------------------------
 Wed Sep 30 10:28:26 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Update to version 4.0.0

@@ -163,4 +163,27 @@
 - Remove executable bits from source files to make rpmlint happy.</comment>
     <requestid>838796</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>821c938e67881642353989b1162daa12</srcmd5>
+    <version>4.1.0</version>
+    <time>1620398765</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed build for Tumbleweed 
+- Update to version 4.1.0
+  * New Feature List:
+    - New z80n port for the Spectrum Next CPU (a Z80 variant).
+    - Much better register allocation in the gbz80 backend.
+    - Workarounds for Rabbit wait state bugs in the r2k backend.
+    - New r2ka port to better support Rabbit 2000A, 2000B, 2000C, 3000.
+    - Default crt0 and --data-loc for Rabbits suitable for typical
+      Rabbit hardware configurations, such as the RCMs.
+    - Many improvements in code generation for z80 and related ports.
+    - Rabbit register definition headers for Rabbit 2000, 2000A,
+      2000B, 2000C, 3000, 3000A.
+    - C23 digit separators.
+  * Numerous other new features and bug fixes are included as well.
+- Patch sdcc-fixupInlineLabel.patch removed (applied upstream)
+</comment>
+    <requestid>891295</requestid>
+  </revision>
 </revisionlist>
