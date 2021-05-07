@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Fri May  7 13:44:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.1.0
+  + Added
+    - Added py.typed file to every package. This should resolve a bunch of mypy
+      errors for users. (#1720)
+    - Add auto generated trace and resource attributes semantic conventions (#1759)
+    - Added SpanKind to should_sample parameters, suggest using parent span
+      context's tracestate instead of manually passed in tracestate in
+      should_sample (#1764)
+    - Added experimental HTTP back propagators. (#1762)
+    - Adjust B3Format propagator to be spec compliant by not modifying context
+      when propagation headers are not present/invalid/empty (#1728)
+    - Silence unnecessary warning when creating a new Status object without description. (#1721)
+    - Update bootstrap cmd to use exact version when installing instrumentation packages. (#1722)
+    - Fix B3 propagator to never return None. (#1750)
+    - Added ProxyTracerProvider and ProxyTracer implementations to allow fetching provider
+      and tracer instances before a global provider is set up. (#1726)
+    - Added __contains__ to opentelementry.trace.span.TraceState. (#1773)
+      opentelemetry-opentracing-shim Fix an issue in the shim where a Span was being wrapped
+      in a NonRecordingSpan when it wasn't necessary. (#1776)
+    - OTLP Exporter now uses the scheme in the endpoint to determine whether to establish
+      a secure connection or not. (#1771)
+- from version 1.10a0
+  + This release adds the experimental metrics API/SDK and will include the following packages:
+    - opentelemetry-exporter-prometheus
+    - opentelemetry-api
+    - opentelemetry-sdk
+    - opentelemetry-exporter-otlp-proto-grpc
+    - opentelemetry-exporter-otlp
+- from version 1.0.0
+  + NOTE: As part of this release, all old versions have been removed for packages
+    prefixed with opentelemetry-ext-
+  + Added
+    - Document how to work with fork process web server models(Gunicorn, uWSGI etc...)
+      (#1609)
+    - Add max_attr_value_length support to Jaeger exporter (#1633)
+    - Moved use_span from Tracer to opentelemetry.trace.use_span. (#1668)
+    - opentelemetry.trace.use_span() will now overwrite previously set status on span
+      in case an exception is raised inside the context manager and set_status_on_exception
+      is set to True. (#1668)
+    - Add udp_split_oversized_batches support to jaeger exporter (#1500)
+  + Changed
+    - remove service_name from constructor of jaeger and opencensus exporters and
+      use of env variable OTEL_PYTHON_SERVICE_NAME ([#1669])(#1669)
+    - Rename IdsGenerator to IdGenerator (#1651)
+    - Make TracerProvider's resource attribute private (#1652)
+    - Rename Resource's create_empty to get_empty (#1653)
+    - Renamed BatchExportSpanProcessor to BatchSpanProcessor and SimpleExportSpanProcessor
+      to SimpleSpanProcessor (#1656)
+    - Rename DefaultSpan to NonRecordingSpan (#1661)
+    - Fixed distro configuration with OTEL_TRACES_EXPORTER env var set to otlp (#1657)
+    - Moving Getter, Setter and TextMapPropagator out of opentelemetry.trace.propagation
+      and into opentelemetry.propagators (#1662)
+    - Rename BaggagePropagator to W3CBaggagePropagator (#1663)
+    - Rename JaegerSpanExporter to JaegerExporter and rename ZipkinSpanExporter to
+      ZipkinExporter (#1664)
+    - Expose StatusCode from the opentelemetry.trace module (#1681)
+    - Status now only sets description when status_code is set to StatusCode.ERROR (#1673)
+    - Update OTLP exporter to use OTLP proto 0.7.0 (#1674)
+    - Remove time_ns from API and add a warning for older versions of Python (#1602)
+    - Hide implementation classes/variables in api/sdk (#1684)
+    - Cleanup OTLP exporter compression options, add tests (#1671)
+    - Initial documentation for environment variables (#1680)
+    - Change Zipkin exporter to obtain service.name from span (#1696)
+    - Split up opentelemetry-exporter-jaeger package into opentelemetry-exporter-jaeger-proto-grpc
+      and opentelemetry-exporter-jaeger-thrift packages to reduce dependencies for each one. (#1694)
+    - Added opentelemetry-exporter-otlp-proto-grpc and changed opentelemetry-exporter-otlp to
+      install it as a dependency. This will allow for the next package/protocol to also be in
+      its own package. (#1695)
+    - Change Jaeger exporters to obtain service.name from span (#1703)
+    - Fixed an unset OTEL_TRACES_EXPORTER resulting in an error (#1707)
+    - Split Zipkin exporter into opentelemetry-exporter-zipkin-json and opentelemetry-exporter-zipkin-
+      proto-http packages to reduce dependencies. The opentelemetry-exporter-zipkin installs both. (#1699)
+    - Make setters and getters optional (#1690)
+  + Removed
+    - Removed unused get_hexadecimal_trace_id and get_hexadecimal_span_id methods. (#1675)
+    - Remove OTEL_EXPORTER_*_ INSECURE env var (#1682)
+    - Removing support for Python 3.5 (#1706)
+- from version 0.19b0
+  + Changed
+    - remove service_name from constructor of jaeger and opencensus exporters and
+      use of env variable OTEL_PYTHON_SERVICE_NAME ([#1669])(#1669)
+    - Rename IdsGenerator to IdGenerator (#1651)
+  + Removed
+    - Removing support for Python 3.5 (#1706)
+- from version 0.18b0
+  + Release only affects Opentelemetry components listed below:
+    - opentelemetry-distro
+    - opentelemetry-exporter-opencensus
+    - opentelemetry-instrumentation
+    - opentelemetry-opentracing-shim
+  + Added
+    - Add urllib to opentelemetry-bootstrap target list ([#1584])(#1584)
+- from version 1.0.0rc1
+  + Release only affects core Opentelemetry components listed below:
+    - opentelemetry-api
+    - opentelemetry-sdk
+    - opentelemetry-exporter-otlp
+    - opentelemetry-exporter-jaeger
+    - opentelemetry-exporter-zipkin
+    - opentelemetry-proto
+    - opentelemetry-propagator-b3
+    - opentelemetry-propagator-jaeger
+   + Changed
+    - Tracer and Meter provider environment variables are now consistent with the rest (#1571])
+    - Rename TRACE_ to TRACES_ for environment variables (#1595])
+    - Read-only Span attributes have been moved to ReadableSpan class (#1560)
+  + Added
+    - Added end_on_exit argument to start_as_current_span (#1519])
+    - Add Span.set_attributes method to set multiple values with one call (#1520)
+    - Make sure Resources follow semantic conventions (#1480)
+    - Allow missing carrier headers to continue without raising AttributeError (#1545)
+  + Removed
+    - Remove Configuration (#1523)
+    - Remove Metrics as part of stable, marked as experimental (#1568)
+
+-------------------------------------------------------------------
 Fri Jan 22 13:40:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - aiocontextvars is only needed for older Python 3.6. Python 3.7

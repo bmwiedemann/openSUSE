@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-opentelemetry-api
-Version:        0.17b0
+Version:        1.1.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
