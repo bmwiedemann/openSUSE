@@ -1,7 +1,7 @@
 #
 # spec file for package procmail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A program for local e-mail delivery
 License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            http://www.procmail.org/
+URL:            https://www.procmail.org/
 Source0:        ftp://ftp.informatik.rwth-aachen.de/pub/packages/procmail/procmail-%{version}.tar.gz
 Source1:        procmail-%{version}-patches.tar.bz2
 Patch0:         procmail-%{version}-mailstat.patch
@@ -39,8 +39,7 @@ Patch11:        reproducible2.patch
 BuildRequires:  pcre-devel
 BuildRequires:  postfix
 Requires:       /bin/sed
-Recommends:     /usr/bin/mimencode
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     %{_bindir}/mimencode
 
 %description
 Sendmail calls procmail to deliver email into a local folder. Procmail
@@ -53,12 +52,12 @@ for p in ../procmail-%{version}-patches/* ; do
     echo Patch $p
     patch -s -p1 --fuzz=0 < $p
 done
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
-%patch5 -p0
+%patch0
+%patch1
+%patch2
+%patch3
+%patch4
+%patch5
 %patch6 -p1
 %patch8 -p1
 %patch10 -p1
@@ -85,7 +84,7 @@ sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' sr
 	case "$flag" in
 	-Wl,*)
 	    if echo 'int main () { return 0; }' | \
-		${CC:-gcc} $RPM_OPT_FLAGS -Werror $gold $flag -o /dev/null -xc - > /dev/null 2>&1 ; then
+		${CC:-gcc} %{optflags} -Werror $gold $flag -o /dev/null -xc - > /dev/null 2>&1 ; then
 		eval $var=\${$var:+\$$var\ }$flag
 	    fi
 	    rm -f ldtest.c
@@ -113,27 +112,27 @@ sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' sr
     cflags -Wl,--hash-size=8599     LDFLAGS0
     cflags -pie                     LDFLAGS0
     export RPM_OPT_FLAGS XCFLAGS LDFLAGS0
-    make %{?_smp_mflags} XCFLAGS="${XCFLAGS}" MANDIR=%{_mandir} LDFLAGS0="${LDFLAGS0}"
+    %make_build XCFLAGS="${XCFLAGS}" MANDIR=%{_mandir} LDFLAGS0="${LDFLAGS0}"
 
 %install
-    mkdir -p %{buildroot}%{_mandir}/man{1,5} %{buildroot}%{_prefix}/bin
+    mkdir -p %{buildroot}%{_mandir}/man{1,5} %{buildroot}%{_bindir}
     make MANDIR=%{buildroot}%{_mandir} BINDIR=%{buildroot}%{_bindir} install
     install -m 644 man/mailstat.man %{buildroot}%{_mandir}/man1/mailstat.1
 
 %files
-%defattr(-,root,root)
-%doc Artistic COPYING
+%license COPYING
+%doc Artistic
 %doc FAQ FEATURES README examples
 %{_bindir}/formail
 %{_bindir}/lockfile
 %{_bindir}/mailstat
 %{_bindir}/procmail
-%{_mandir}/man1/formail.1.gz
-%{_mandir}/man1/lockfile.1.gz
-%{_mandir}/man1/procmail.1.gz
-%{_mandir}/man1/mailstat.1.gz
-%{_mandir}/man5/procmailex.5.gz
-%{_mandir}/man5/procmailrc.5.gz
-%{_mandir}/man5/procmailsc.5.gz
+%{_mandir}/man1/formail.1%{?ext_man}
+%{_mandir}/man1/lockfile.1%{?ext_man}
+%{_mandir}/man1/procmail.1%{?ext_man}
+%{_mandir}/man1/mailstat.1%{?ext_man}
+%{_mandir}/man5/procmailex.5%{?ext_man}
+%{_mandir}/man5/procmailrc.5%{?ext_man}
+%{_mandir}/man5/procmailsc.5%{?ext_man}
 
 %changelog

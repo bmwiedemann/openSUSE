@@ -260,4 +260,12 @@
     <comment>Add reproducible2.patch to negate influences from preinstallimage to make package build reproducible (forwarded request 850841 from bmwiedemann)</comment>
     <requestid>850903</requestid>
   </revision>
+  <revision rev="35" vrev="277">
+    <srcmd5>585fee3495e542c22ebe69a2d5dc56d7</srcmd5>
+    <version>3.22</version>
+    <time>1620398712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890395</requestid>
+  </revision>
 </revisionlist>

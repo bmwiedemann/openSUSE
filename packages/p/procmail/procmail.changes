@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  2 17:30:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file (move license to licensedir) 
+
+-------------------------------------------------------------------
 Thu Nov 26 03:15:35 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible2.patch to negate influences from preinstallimage
