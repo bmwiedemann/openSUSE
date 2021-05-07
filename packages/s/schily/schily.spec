@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.11.25
+%global box_version	2021.04.21
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
-%global smake_version	1.3
+%global smake_version	1.4
 %global star_version	1.6.1
 %global libfind_version 1.8
 %global ved_version     1.8
-%define rver	2020-11-25
+%define rver	2021-04-21
 
 Name:           schily
 Version:        %box_version
 Release:        0
 Summary:        A collection of command-line utilities maintained by J.Schilling
-License:        CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND HPND AND ISC
+License:        BSD-2-Clause AND CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND HPND AND ISC
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://cdrtools.sourceforge.net/private/cdrecord.html
 #Freshcode-URL:	http://freshcode.club/projects/schily
@@ -102,10 +102,10 @@ write BluRay media on a BluRay recorder.
 
 %package ctags
 Summary:        A program to generate tag files for ex/vi
-License:        CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND HPND AND ISC
+License:        BSD-2-Clause AND CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND HPND AND ISC
 Group:          Development/Tools/Building
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description ctags
 Ctags makes a tags file for ex(1) from the specified C, Pascal,
@@ -335,7 +335,7 @@ Provides:       cdrecord:/usr/bin/readcd
 
 %description -n readcd
 The readcd program can be used to read optical media and write the
-contents, including subchannels and error correction codes, to files. 
+contents, including subchannels and error correction codes, to files.
 It can be used to write to DVD-RAM too, but other media types should
 use cdrecord which supports a lot more media types.
 
@@ -346,7 +346,7 @@ Group:          Productivity/Multimedia/CD/Record
 Provides:       cdrecord:/usr/sbin/rscsi
 
 %description -n rscsi
-The rscsi command is a remote generic SCSI transport server program. 
+The rscsi command is a remote generic SCSI transport server program.
 rscsi is a program that is run locally on the machine with SCSI
 devices, it is used by remote programs like cdrecord(1), cdda2wav(1),
 readcd(1), and sformat(1) that like to access SCSI devices through an
@@ -363,7 +363,7 @@ Provides:       mt
 Obsoletes:      star-rmt
 Provides:       star-rmt:/usr/bin/smt
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description mt
 The mt/smt program sends commands to a local or a remote magnetic
@@ -377,7 +377,7 @@ Provides:       rmt
 Obsoletes:      star-rmt
 Provides:       star-rmt:/usr/bin/srmt
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description rmt
 rmt is a program that can be used by e.g. star and ufsdump
@@ -555,6 +555,7 @@ find "$b"
 rm -Rfv "$b/usr/ccs" "$b/usr/xpg4" "$b/%_bindir/sccs"
 rm -Rfv \
    $b/etc/sformat.dat \
+   $b/usr/etc/termcap \
    $b/usr/bin/Cstyle \
    $b/usr/bin/cal \
    $b/usr/bin/calc \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  4 10:50:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.04.21
+  * Bourne Shell: The new version no longer aborts with an
+    illegal multi byte sequence as "no match". As a result, the
+    "*" now again matches any filename - even if the filename
+    contains an illegal multi-byte sequence.
+  * SunPro Make: The new operators :::= and +:= have been
+    introduced.
+
+-------------------------------------------------------------------
 Thu Nov 26 10:34:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.25
