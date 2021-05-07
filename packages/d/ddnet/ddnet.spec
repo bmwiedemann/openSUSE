@@ -1,7 +1,7 @@
 #
 # spec file for package ddnet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 Name:           ddnet
-Version:        14.5.1
+Version:        15.4
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Zlib AND CC-BY-SA-3.0 AND Apache-2.0 AND MIT AND SUSE-Public-Domain
 URL:            https://ddnet.tw/
 Source:         https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/ddnet/ddnet/pull/2684
-Patch0:         steam-api.patch
 Group:          Amusements/Games/Action/Race
 BuildRequires:  cmake
-BuildRequires:  fdupes
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pnglite-devel
 BuildRequires:  python3
@@ -76,17 +75,13 @@ Standalone server for DDraceNetwork (DDNet).
 %autosetup -p1
 
 %build
-mkdir build && cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-        -DPREFER_BUNDLED_LIBS=OFF \
-        -DAUTOUPDATE=OFF \
-        -DANTIBOT=ON \
-        -DUPNP=ON \
-        -DSTEAM=OFF \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    
-%make_build
+%cmake \
+  -DPREFER_BUNDLED_LIBS=OFF \
+  -DAUTOUPDATE=OFF \
+  -DANTIBOT=ON \
+  -DUPNP=ON \
+  -DSTEAM=OFF
+%cmake_build
 
 %install
 %cmake_install
@@ -103,14 +98,11 @@ install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man6/DDNet-Server.
 %{_bindir}/DDNet
 %{_libdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/metainfo/*.appdata.xml
 
 %files data
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/*/
-%dir %{_datadir}/icons/hicolor/*/apps/
 
 %files server
 %{_mandir}/man6/DDNet-Server.6%{?ext_man}

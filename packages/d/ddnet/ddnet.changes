@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 29 12:49:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 15.4
+  * More colors from components in consoles
+  * Add dummy_reset and remove +resetdummy
+  * Local ranking info viewable ingame (/top5, /rank)
+  * Add swap functionality for teams (/swap)
+  * Add: Menu tabs animations
+  * Add: Color picker in settings
+  * Add: Better sliders and lists
+  * Add: Indicate strength of hook in nameplates
+  * Freeview mouse moves faster when zoomed out
+  * New chat look
+  * Show friends on spectate tab
+  * Warn new players about name with points
+  * Smooth dynamic camera
+  * Optimize UI rendering
+  * Add menu background maps
+  * Add changeable assets in settings
+  * Add new renderer, looks more consistent with ingame
+  * New start menu adapted from Teeworlds 0.7
+  * A lot other changes, see https://ddnet.tw/downloads/
+- Drop upstream merged steam-api.patch
+
+-------------------------------------------------------------------
 Sat Aug 29 13:23:28 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - initial packaging of version 14.5.1
