@@ -132,4 +132,16 @@
     CHANGELOG.md file provided with this package (forwarded request 881871 from glaubitz)</comment>
     <requestid>881948</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>655ecb738c426f830c3948619fb1f18c</srcmd5>
+    <version>6.2.0</version>
+    <time>1620400522</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 890919 from glaubitz)</comment>
+    <requestid>891005</requestid>
+  </revision>
 </revisionlist>

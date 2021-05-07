@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-cosmosdb
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Microsoft Azure Cosmos DB Management Client Library
 License:        MIT
@@ -41,7 +41,7 @@ Requires:       python-azure-mgmt-core < 2.0.0
 Requires:       python-azure-mgmt-core >= 1.2.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
