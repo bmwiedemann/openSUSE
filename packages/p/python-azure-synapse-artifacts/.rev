@@ -38,4 +38,15 @@
     CHANGELOG.md file provided with this package (forwarded request 881903 from glaubitz)</comment>
     <requestid>881982</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9579e7aacf2d7c66783cd430f4d675a</srcmd5>
+    <version>0.6.0</version>
+    <time>1620400530</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 891245 from glaubitz)</comment>
+    <requestid>891260</requestid>
+  </revision>
 </revisionlist>
