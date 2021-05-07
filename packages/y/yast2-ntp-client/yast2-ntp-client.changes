@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 10:22:49 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Adapted proposal client returning the dhcp ntp servers as strings
+- 4.4.1 (bsc#1185545)
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
