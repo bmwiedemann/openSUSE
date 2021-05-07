@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         sover 2
 Name:           libbluray
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
@@ -29,7 +29,6 @@ Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{
 Source99:       baselibs.conf
 Patch0:         libbluray-pkgconfig.patch
 Patch1:         libbluray-java9.patch
-Patch2:         libbluray-jvm_dir.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -95,7 +94,6 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 %patch1 -p1
 %endif
-%patch2
 
 %build
 %configure \
