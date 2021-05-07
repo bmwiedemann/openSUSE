@@ -1,0 +1,137 @@
+From: Thomas Renninger <trenn@suse.com>
+Subject: Use /run instead of /var/run
+References: 1185162
+Patch-Mainline: 
+Git-commit: aa0b3f5d27f63d649aa4f1d540d9b956b1f30283
+Git-repo: git@github.com:watologo1/ipmitool.git.git
+
+In FHS 3.0, /var/run is replaced by /run:
+
+https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s13.html
+
+
+Signed-off-by:  <trenn@suse.com>
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/bmc-snmp-proxy
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/contrib/bmc-snmp-proxy
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/bmc-snmp-proxy
+@@ -31,7 +31,7 @@ TRAPD_BMC_CONF="${SNMPD_BMC_CONF_DIR}/sn
+ TRAPD_CONF="/etc/snmp/snmptrapd.conf"
+ 
+ LOCKFILE="/var/lock/subsys/bmc-snmp-proxy"
+-BMC_INFO="/var/run/bmc-info"
++BMC_INFO="/run/bmc-info"
+ 
+ IPMITOOL=`which ipmitool`
+ 
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/bmc-snmp-proxy.service
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/contrib/bmc-snmp-proxy.service
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/bmc-snmp-proxy.service
+@@ -5,7 +5,7 @@ After=exchange-bmc-os-info.service
+ Requires=exchange-bmc-os-info.service
+ PartOf=exchange-bmc-os-info.service
+ 
+-ConditionPathExists=/var/run/bmc-info
++ConditionPathExists=/run/bmc-info
+ 
+ [Service]
+ Type=oneshot
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/exchange-bmc-os-info.init.redhat
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/contrib/exchange-bmc-os-info.init.redhat
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/exchange-bmc-os-info.init.redhat
+@@ -12,10 +12,10 @@
+ # Description:  Script to set OS information in the BMC; fetch BMC IP/URL
+ #		and set in the OS for use by other scripts/user.
+ #
+-#		BMC IP and URL are made available in /var/run/bmc-info
++#		BMC IP and URL are made available in /run/bmc-info
+ #
+ #		Example to launch BMC web-interface:
+-#		# . /var/run/bmc-info
++#		# . /run/bmc-info
+ #		# xdg-open $BMC_URL
+ #
+ #		See here for details:
+@@ -42,7 +42,7 @@
+ #############################################################################
+ CONFIGFILE=/etc/sysconfig/exchange-bmc-os-info
+ IPMI_TOOL=/usr/bin/ipmitool
+-BMC_INFO=/var/run/bmc-info
++BMC_INFO=/run/bmc-info
+ 
+ # BMC Manufacturer ID used in 'oem_set_os_version' and 'oem_get_bmc_url'
+ DELL="674"
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/ipmievd.init.debian
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/contrib/ipmievd.init.debian
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/contrib/ipmievd.init.debian
+@@ -22,7 +22,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbi
+ DESC="IPMI event daemon"
+ NAME=ipmievd
+ DAEMON=/usr/sbin/$NAME
+-PIDFILE=/var/run/$NAME.pid
++PIDFILE=/run/$NAME.pid
+ SCRIPTNAME=/etc/init.d/$NAME
+ 
+ # Gracefully exit if the package has been removed.
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/doc/ipmievd.8.in
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/doc/ipmievd.8.in
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/doc/ipmievd.8.in
+@@ -174,7 +174,7 @@ Do NOT become a daemon, instead log all
+ .TP
+ \fIpidfile\fP=<\fBfilename\fR>
+ Save process ID to this file when in daemon mode.  Defaults to
+-/var/run/ipmievd.pid.
++/run/ipmievd.pid.
+ .RE
+ 
+ .TP 
+@@ -196,7 +196,7 @@ Do NOT become a daemon, instead log all
+ .TP
+ \fIpidfile\fP=<\fBfilename\fR>
+ Save process ID to this file when in daemon mode.  Defaults to
+-/var/run/ipmievd.pid.
++/run/ipmievd.pid.
+ .TP 
+ \fItimeout\fP=<\fBseconds\fR>
+ Time between checks for SEL polling method.  Default is 10 seconds.
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/lib/helper.c
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/lib/helper.c
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/lib/helper.c
+@@ -54,7 +54,7 @@
+ #ifdef HAVE_PATHS_H
+ # include <paths.h>
+ #else
+-# define _PATH_VARRUN "/var/run/"
++# define _PATH_RUN "/run/"
+ #endif
+ 
+ #include <ipmitool/ipmi.h>
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/src/ipmievd.c
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/src/ipmievd.c
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/src/ipmievd.c
+@@ -54,8 +54,8 @@
+ # include <paths.h>
+ #endif
+ 
+-#ifndef _PATH_VARRUN 
+-# define _PATH_VARRUN "/var/run/"
++#ifndef _PATH_RUN
++# define _PATH_RUN "/run/"
+ #endif
+ 
+ #ifdef IPMI_INTF_OPEN
+@@ -82,7 +82,7 @@
+ #include <ipmitool/ipmi_main.h>
+ 
+ #define WARNING_THRESHOLD	80
+-#define DEFAULT_PIDFILE		_PATH_VARRUN "ipmievd.pid"
++#define DEFAULT_PIDFILE		_PATH_RUN "ipmievd.pid"
+ char pidfile[64];
+ 
+ /* global variables */

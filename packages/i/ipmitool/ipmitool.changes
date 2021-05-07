@@ -1,7 +1,10 @@
 -------------------------------------------------------------------
-Tue Apr 27 14:13:49 UTC 2021 - Thomas Renninger <trenn@suse.de>
+Wed Apr 28 08:19:29 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Use /run instead of /var/run (bsc#1185162)
+A Use-run-instead-of-var-run.patch
+  Be aware that the patch has been submitted mainstream, therefore
+  the git hash tag, but may not have been accepted.
 
 -------------------------------------------------------------------
 Wed Feb  3 11:08:48 UTC 2021 - Thomas Renninger <trenn@suse.de>
