@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-core-tracing-opencensus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core-tracing-opencensus
-Version:        1.0.0b6
+Version:        1.0.0b7
 Release:        0
 Summary:        Azure Core Tracing OpenCensus client library for Python
 License:        MIT
