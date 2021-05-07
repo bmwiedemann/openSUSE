@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  3 03:08:27 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.45    2021-05-02
+
+  - The field names for an exception are now checked to ensure that they are
+    valid Perl identifiers. Implemented by brian d foy. PR #13.
+
+-------------------------------------------------------------------
 Mon Dec 11 06:19:21 UTC 2017 - coolo@suse.com
 
 - updated to 1.44
