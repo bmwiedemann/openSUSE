@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.4.0)
+  * add gtk widgets (check, radio, progress, icon) to gtk treeview
+  * add two GtkVolumeButton widgets
+  * add two GtkLinkButton widgets
+
+-------------------------------------------------------------------
 Thu Apr  8 20:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec cleaning 
