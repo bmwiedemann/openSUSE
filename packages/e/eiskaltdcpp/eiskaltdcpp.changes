@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 07 06:33:56 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to 2.4.2
+  * Added support of build using musl instead of glibc.
+  * Add support of build in Cygwin environment.
+  * Added configuration option LUA_VERSION (unset by default) for choosing
+    specific version of Lua library in the systems if necessary.
+  * Fix search on ADC hubs. (It was accidentally broken in 2.4.1 release.)
+
+-------------------------------------------------------------------
 Mon Feb  1 12:26:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim metadata redundancies from descriptions. Fix grammar issues.

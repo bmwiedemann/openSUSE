@@ -18,7 +18,7 @@
 
 %define sover   2_4
 Name:           eiskaltdcpp
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Program that uses the Direct Connect and ADC protocols
 License:        GPL-3.0-or-later

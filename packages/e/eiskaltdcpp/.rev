@@ -66,4 +66,17 @@
     <comment></comment>
     <requestid>868397</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>648a297bda57d5b6ca51fb5f5abde80b</srcmd5>
+    <version>2.4.2</version>
+    <time>1620398745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2
+  * Added support of build using musl instead of glibc.
+  * Add support of build in Cygwin environment.
+  * Added configuration option LUA_VERSION (unset by default) for choosing
+    specific version of Lua library in the systems if necessary.
+  * Fix search on ADC hubs. (It was accidentally broken in 2.4.1 release.)</comment>
+    <requestid>891199</requestid>
+  </revision>
 </revisionlist>
