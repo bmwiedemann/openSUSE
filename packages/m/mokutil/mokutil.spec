@@ -1,7 +1,7 @@
 #
 # spec file for package mokutil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,20 +37,13 @@ BuildRequires:  automake
 BuildRequires:  efivar-devel >= 0.12
 BuildRequires:  keyutils-devel >= 1.5.0
 BuildRequires:  libopenssl-devel >= 0.9.8
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Requires:       openssl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 aarch64 ppc64le ppc64
 
 %description
 This program provides the means to enroll and erase the machine owner
 keys (MOK) stored in the database of shim.
-
-
-
-Authors:
---------
-    Gary Lin <glin@suse.com>
 
 %prep
 %setup -q
@@ -62,17 +55,13 @@ Authors:
 %build
 ./autogen.sh
 %configure
-make
+%make_build
 
 %install
-%makeinstall
+%make_install
 install -m 755 -D %{SOURCE1} %{buildroot}/%{_bindir}/modhash
 
-%clean
-%{?buildroot:%__rm -rf "%{buildroot}"}
-
 %files
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/mokutil
 %{_bindir}/modhash
