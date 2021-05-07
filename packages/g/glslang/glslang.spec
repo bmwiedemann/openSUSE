@@ -19,7 +19,7 @@
 %define lname libglslang11
 
 Name:           glslang
-Version:        11.2.0
+Version:        11.4.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause

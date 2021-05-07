@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  5 08:30:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.0
+  * Added --depfile and --auto-sampled-textures options
+  * Now supports InterpolateAt-based functions
+  * Supports cross-stage automatic IO mapping
+  * Supports GL_EXT_vulkan_glsl_relaxed (-R option)
+
+-------------------------------------------------------------------
 Mon Mar  1 06:59:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.2.0
