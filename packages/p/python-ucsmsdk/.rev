@@ -46,4 +46,12 @@
   * Adds support for UCSM release 4.1(1a), 4.1(1b), 4.1(1c)</comment>
     <requestid>796780</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ea2920297b9b3226aa98451a1f34a74a</srcmd5>
+    <version>0.9.10</version>
+    <time>1620398752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891239</requestid>
+  </revision>
 </revisionlist>

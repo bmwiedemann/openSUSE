@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# https://github.com/CiscoUcs/ucsmsdk/issues/204
+%define skip_python39 1
 Name:           python-ucsmsdk
 Version:        0.9.10
 Release:        0
