@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 11:12:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- disable SIMD for armv6hl, not available 
+
+-------------------------------------------------------------------
 Mon Apr 26 15:30:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - version update to 2.1.0

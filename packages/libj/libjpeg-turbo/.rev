@@ -898,4 +898,12 @@
   * https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/2.1.0</comment>
     <requestid>888800</requestid>
   </revision>
+  <revision rev="57" vrev="64">
+    <srcmd5>1ec96ab80fbd1aa28339773b227e09c1</srcmd5>
+    <version>unknown</version>
+    <time>1620398693</time>
+    <user>dimstar_suse</user>
+    <comment>- disable SIMD for armv6hl, not available (forwarded request 890322 from dirkmueller)</comment>
+    <requestid>890324</requestid>
+  </revision>
 </revisionlist>
