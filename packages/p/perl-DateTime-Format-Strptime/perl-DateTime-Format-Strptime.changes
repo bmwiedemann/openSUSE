@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  3 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.79
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.79     2021-05-02
+
+  * Fix too-strict type checking for time zones. This module now uses the same
+    check as DateTime itself, which allows for things that don't subclass
+    DateTime::TimeZone as long as they provide the same API. Reported by
+    E. Choroba. GH #30.
+
+-------------------------------------------------------------------
 Wed Dec 16 03:07:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.78
