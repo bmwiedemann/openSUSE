@@ -1,7 +1,7 @@
 #
 # spec file for package ntl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 Name:           ntl
 %define lname	libntl43
-Version:        11.4.3
+Version:        11.4.4
 Release:        0
 Summary:        Library for Number Theory
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://shoup.net/ntl/
 
+#Git-Clone:     https://github.com/libntl/ntl
 Source:         https://shoup.net/ntl/ntl-%version.tar.gz
 Patch1:         no-static.diff
 BuildRequires:  fdupes
