@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Locale
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-Name:           perl-DateTime-Locale
-Version:        1.310000
-Release:        0
-%define cpan_version 1.31
-Provides:       perl(DateTime::Locale) = 1.310000
 %define cpan_name DateTime-Locale
+Name:           perl-DateTime-Locale
+Version:        1.320000
+Release:        0
+%define cpan_version 1.32
+Provides:       perl(DateTime::Locale) = 1.320000
 Summary:        Localization support for DateTime.pm
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
@@ -65,15 +63,15 @@ It also provides some functions for getting information on all the
 available locales.
 
 If you want to know what methods are available for locale objects, then
-please read the 'DateTime::Locale::FromData' documentation.
+please read the DateTime::Locale::FromData documentation.
 
 %prep
-%setup -q -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -84,8 +82,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md precious.toml README.md
 %license LICENSE LICENSE.cldr
 
 %changelog
