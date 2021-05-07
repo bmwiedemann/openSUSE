@@ -32,6 +32,7 @@ License:        BSD-2-Clause
 Group:          System/Boot
 Source:         shim-15.4-lp152.4.8.1.x86_64.rpm
 Source1:        README
+Source2:        shim-install
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -57,6 +58,10 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 cp -a * %{buildroot}
 cp %{S:1} .
 
+# install updated shim-install
+chmod +x %{S:2}
+cp %{S:2} %{buildroot}/%{_sbindir}/shim-install
+
 %post -n shim
 /sbin/update-bootloader --reinit || true
 
@@ -75,7 +80,7 @@ cp %{S:1} .
 /usr/lib64/efi/*.efi
 %endif
 /etc/uefi
-/usr/sbin/shim-install
+%{_sbindir}/shim-install
 /usr/share/doc/packages/shim
 
 %changelog

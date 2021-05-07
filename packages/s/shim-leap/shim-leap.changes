@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 08:54:20 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: always assume "removable" for Azure to avoid the
+  endless reset loop (bsc#1185464)
+
+-------------------------------------------------------------------
 Tue Apr 27 07:45:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to shim to 15.4-lp152.4.8.1 from openSUSE Leap 15.2 for
