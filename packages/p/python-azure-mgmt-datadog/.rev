@@ -18,4 +18,17 @@
     CHANGELOG.md file provided with this package (forwarded request 881873 from glaubitz)</comment>
     <requestid>881952</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1442bbc93c67860dafaed95bfa3869fb</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400516</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b3 (forwarded request 890929 from glaubitz)</comment>
+    <requestid>890976</requestid>
+  </revision>
 </revisionlist>
