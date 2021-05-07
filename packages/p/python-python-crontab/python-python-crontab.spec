@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-python-crontab
 Version:        2.5.1
 Release:        0
@@ -38,11 +39,11 @@ BuildRequires:  %{python_module cron-descriptor}
 BuildRequires:  %{python_module croniter}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module testsuite if %python-base >= 3}
 BuildRequires:  cronie
+%if %{with python2}
 BuildRequires:  python2-devel
-BuildRequires:  python3-testsuite
-BuildRequires:  (python36-testsuite if python36-base)
-BuildRequires:  (python38-testsuite if python38-base)
+%endif
 # /SECTION
 %python_subpackages
 
@@ -61,8 +62,12 @@ accessing the system cron automatically using an API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_07_non_posix_shell - only for Windows
 export LANG=en_US.UTF-8
+%{python_expand mkdir -p build/bin
+ln -s %{_bindir}/$python build/bin/python
+}
+export PATH=$PWD/build/bin:$PATH
+# test_07_non_posix_shell - only for Windows
 %pytest -k "not test_07_non_posix_shell"
 
 %files %{python_files}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  6 14:14:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix testsuite and devel BuildRequirements for different flavors
+
+-------------------------------------------------------------------
 Mon Jan 25 10:29:59 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix Python 3.6 builds
