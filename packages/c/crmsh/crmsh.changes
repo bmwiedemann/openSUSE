@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 07 02:46:22 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210507.bf02d791:
+  * Dev: bootstrap: raise exception and execute status_done on success
+
+-------------------------------------------------------------------
+Fri May 07 02:14:21 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210507.2bbd169d:
+  * Dev: unittest: adjust unittest for previous changes
+  * Dev: behave: add functional test for adding sbd on running cluster
+  * Dev: unittest: adjust unit test for adding sbd on existing cluster
+  * Fix: bootstrap: add sbd via bootstrap stage on an existing cluster (bsc#1181906)
+  * Fix: bootstrap: change StrictHostKeyChecking=no as a constants(bsc#1185437)
+
+-------------------------------------------------------------------
+Thu May 06 02:04:16 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210506.8cee9321:
+  * Dev: unittest: adjust unit test for the change of status_long
+  * Dev: bootstrap: change status_long with contextmanager
+
+-------------------------------------------------------------------
 Fri Apr 16 15:43:11 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210416.49f489c2:
