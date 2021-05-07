@@ -19,7 +19,7 @@ Index: SPIRV-Tools-2020.6/source/CMakeLists.txt
  add_library(${SPIRV_TOOLS}-shared SHARED ${SPIRV_SOURCES})
  spirv_tools_default_target_options(${SPIRV_TOOLS}-shared)
  set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
-+set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES SOVERSION suse20)
++set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES SOVERSION suse21)
  target_compile_definitions(${SPIRV_TOOLS}-shared
    PRIVATE SPIRV_TOOLS_IMPLEMENTATION
    PUBLIC SPIRV_TOOLS_SHAREDLIB
@@ -27,7 +27,7 @@ Index: SPIRV-Tools-2020.6/source/CMakeLists.txt
    spirv_tools_default_target_options(${SPIRV_TOOLS}-static)
    # The static target does not have the '-static' suffix.
    set_target_properties(${SPIRV_TOOLS}-static PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}")
-+  set_target_properties(${SPIRV_TOOLS}-static PROPERTIES SOVERSION suse20)
++  set_target_properties(${SPIRV_TOOLS}-static PROPERTIES SOVERSION suse21)
  
    # Create the "${SPIRV_TOOLS}" target as an alias to either "${SPIRV_TOOLS}-static"
    # or "${SPIRV_TOOLS}-shared" depending on the value of BUILD_SHARED_LIBS.
@@ -35,7 +35,7 @@ Index: SPIRV-Tools-2020.6/source/CMakeLists.txt
    set(SPIRV_TOOLS_TARGETS ${SPIRV_TOOLS}-static ${SPIRV_TOOLS}-shared)
  else()
    add_library(${SPIRV_TOOLS} ${SPIRV_TOOLS_LIBRARY_TYPE} ${SPIRV_SOURCES})
-+  set_target_properties(${SPIRV_TOOLS} PROPERTIES SOVERSION suse20)
++  set_target_properties(${SPIRV_TOOLS} PROPERTIES SOVERSION suse21)
    spirv_tools_default_target_options(${SPIRV_TOOLS})
    set(SPIRV_TOOLS_TARGETS ${SPIRV_TOOLS} ${SPIRV_TOOLS}-shared)
  endif()
@@ -47,7 +47,7 @@ Index: SPIRV-Tools-2020.6/source/fuzz/CMakeLists.txt
    spvtools_pch(SPIRV_TOOLS_FUZZ_SOURCES pch_source_fuzz)
  
    add_library(SPIRV-Tools-fuzz ${SPIRV_TOOLS_FUZZ_SOURCES})
-+  set_target_properties(SPIRV-Tools-fuzz PROPERTIES SOVERSION suse20)
++  set_target_properties(SPIRV-Tools-fuzz PROPERTIES SOVERSION suse21)
  
    spvtools_default_compile_options(SPIRV-Tools-fuzz)
  
@@ -59,7 +59,7 @@ Index: SPIRV-Tools-2020.6/source/link/CMakeLists.txt
  add_library(SPIRV-Tools-link ${SPIRV_TOOLS_LIBRARY_TYPE}
    linker.cpp
  )
-+set_target_properties(SPIRV-Tools-link PROPERTIES SOVERSION suse20)
++set_target_properties(SPIRV-Tools-link PROPERTIES SOVERSION suse21)
  
  spvtools_default_compile_options(SPIRV-Tools-link)
  target_include_directories(SPIRV-Tools-link
@@ -71,7 +71,7 @@ Index: SPIRV-Tools-2020.6/source/opt/CMakeLists.txt
  
  add_library(SPIRV-Tools-opt ${SPIRV_TOOLS_LIBRARY_TYPE} ${SPIRV_TOOLS_OPT_SOURCES})
  
-+set_target_properties(SPIRV-Tools-opt PROPERTIES SOVERSION suse20)
++set_target_properties(SPIRV-Tools-opt PROPERTIES SOVERSION suse21)
  spvtools_default_compile_options(SPIRV-Tools-opt)
  target_include_directories(SPIRV-Tools-opt
    PUBLIC
@@ -83,7 +83,7 @@ Index: SPIRV-Tools-2020.6/source/reduce/CMakeLists.txt
  	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
    PRIVATE ${spirv-tools_BINARY_DIR}
  )
-+set_target_properties(SPIRV-Tools-reduce PROPERTIES SOVERSION suse20)
++set_target_properties(SPIRV-Tools-reduce PROPERTIES SOVERSION suse21)
  # The reducer reuses a lot of functionality from the SPIRV-Tools library.
  target_link_libraries(SPIRV-Tools-reduce
    PUBLIC ${SPIRV_TOOLS_FULL_VISIBILITY}

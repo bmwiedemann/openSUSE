@@ -202,4 +202,12 @@ join Staging:E</comment>
     <comment>- Add -Wno-error [boo#1181882]</comment>
     <requestid>879908</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3c9d6e906140cba6cd6ea8b718ed8f1c</srcmd5>
+    <version>2021.1</version>
+    <time>1620398728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.1</comment>
+    <requestid>890654</requestid>
+  </revision>
 </revisionlist>

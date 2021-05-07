@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  5 09:30:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.1
+  * Support SPV_KHR_linkonce_odr, SPV_KHR_expect_assume
+  * Fixes for the vscode language server extension
+  * Validator:
+  * Add validation for SPV_EXT_shader_atomic_float_min_max
+  * Add Vulkan Execution Scope checks
+  * Vulkan 64-bit OpAtomicStore check
+
+-------------------------------------------------------------------
 Thu Mar 18 14:20:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add -Wno-error

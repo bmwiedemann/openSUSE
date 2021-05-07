@@ -14,17 +14,17 @@ were ignored.
  tools/io.h |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: spirv-tools-2018.4.g0/tools/io.h
+Index: SPIRV-Tools-2021.1/tools/io.h
 ===================================================================
---- spirv-tools-2018.4.g0.orig/tools/io.h
-+++ spirv-tools-2018.4.g0/tools/io.h
-@@ -38,7 +38,8 @@ bool ReadFile(const char* filename, cons
-         return false;
-       }
-     } else {
--      if (sizeof(T) != 1 && (ftell(fp) % sizeof(T))) {
-+      long ftx = ftell(fp);
-+      if (sizeof(T) != 1 && ftx % sizeof(T) != 0) {
-         fprintf(
-             stderr,
-             "error: file size should be a multiple of %zd; file '%s' corrupt\n",
+--- SPIRV-Tools-2021.1.orig/tools/io.h
++++ SPIRV-Tools-2021.1/tools/io.h
+@@ -60,7 +60,8 @@ bool WasFileCorrectlyRead(FILE* file, co
+       return false;
+     }
+   } else {
+-    if (sizeof(T) != 1 && (ftell(file) % sizeof(T))) {
++    long ftx = ftell(file);
++    if (sizeof(T) != 1 && ftx % sizeof(T) != 0) {
+       fprintf(
+           stderr,
+           "error: file size should be a multiple of %zd; file '%s' corrupt\n",
