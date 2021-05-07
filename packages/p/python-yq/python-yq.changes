@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  6 13:08:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.12.0
+  * Add TOML support and the tomlq CLI utility to access it
+  * Drop Python 2.7 support
+  * Parse correctly when empty string is passed as jq_filter
+  * Better handling of jq_filter and files arguments
+- Add skip-broken-test.py
+
+-------------------------------------------------------------------
 Tue Jul 21 10:35:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.10.1
