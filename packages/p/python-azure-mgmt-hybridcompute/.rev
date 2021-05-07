@@ -51,4 +51,18 @@
 - Update Requires from setup.py</comment>
     <requestid>861388</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4950979b7c1d71d8acf870b9f61edc8f</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1620400515</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 7.0.0.0 to ensure
+  proper upgrade from previous version 7.0.0b1
+- Update Requires from setup.py (forwarded request 890960 from glaubitz)</comment>
+    <requestid>890973</requestid>
+  </revision>
 </revisionlist>
