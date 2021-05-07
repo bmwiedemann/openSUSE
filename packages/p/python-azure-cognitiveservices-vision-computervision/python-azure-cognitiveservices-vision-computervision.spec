@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-vision-computervision
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cognitiveservices-vision-computervision
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Computer Vision Client Library
 License:        MIT
