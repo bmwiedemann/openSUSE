@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  4 06:23:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- redis 6.2.3
+  * CVE-2021-29477: Integer overflow in STRALGO LCS command (boo#1185729)
+  * CVE-2021-29478: Integer overflow in COPY command for large intsets (boo#1185730)
+  * Fix memory leak in moduleDefragGlobals
+  * Fix memory leak when doing lazy freeing client tracking table
+  * Block abusive replicas from sending command that could assert and crash redis
+  * Use a monotonic clock to check for Lua script timeout
+  * redis-cli: Do not use unix socket when we got redirected in cluster mode
+  * Fix RM_GetClusterNodeInfo() to correctly populate master id
+
+-------------------------------------------------------------------
 Tue Apr 20 09:08:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Usage of OPENSSL_INIT_ATFORK in tls.c raises the minimum version

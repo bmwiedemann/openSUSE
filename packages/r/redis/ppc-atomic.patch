@@ -1,9 +1,8 @@
-Index: redis-5.0.9/src/Makefile
-===================================================================
---- redis-5.0.9.orig/src/Makefile
-+++ redis-5.0.9/src/Makefile
-@@ -83,6 +83,10 @@ ifneq (,$(filter aarch64 armv,$(uname_M)
- else
+diff -ur redis-6.2.3.orig/src/Makefile redis-6.2.3/src/Makefile
+--- redis-6.2.3.orig/src/Makefile	2021-05-03 21:57:00.000000000 +0200
++++ redis-6.2.3/src/Makefile	2021-05-04 08:48:20.064568420 +0200
+@@ -96,6 +96,10 @@
+ # Linux ARM32 needs -latomic at linking time
  ifneq (,$(findstring armv,$(uname_M)))
          FINAL_LIBS+=-latomic
 +else
@@ -11,5 +10,5 @@ Index: redis-5.0.9/src/Makefile
 +        FINAL_LIBS+=-latomic
 +endif
  endif
- endif
  
+ ifeq ($(uname_S),SunOS)
