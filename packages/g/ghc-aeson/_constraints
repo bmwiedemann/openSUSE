@@ -1,4 +1,9 @@
 <constraints>
+  <hardware>
+    <memory>
+      <size unit="G">5</size>
+    </memory>
+  </hardware>
  <overwrite>
     <conditions>
       <arch>s390x</arch>
