@@ -277,4 +277,12 @@
     <comment>- Update to release SDK-1.2.170.0</comment>
     <requestid>875919</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a5586db8d1a73383e3ba0afff2d6cbf1</srcmd5>
+    <version>1.2.176.0</version>
+    <time>1620398730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.2.176.0</comment>
+    <requestid>890656</requestid>
+  </revision>
 </revisionlist>
