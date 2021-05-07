@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 04 14:35:48 CEST 2021 - ro@suse.de
+
+- update to version 0.3.7
+  * include fingerprint in the gpg keys (still bsc#1184326)
+
+-------------------------------------------------------------------
 Thu Apr 15 16:18:09 CEST 2021 - ro@suse.de
 
 - update to version 0.3.6

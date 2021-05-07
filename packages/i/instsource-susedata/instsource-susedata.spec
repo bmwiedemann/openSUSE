@@ -20,7 +20,7 @@ Name:           instsource-susedata
 Summary:        Utility to add susedata to repomd metadata
 License:        GPL-2.0-only
 Group:          System/Management
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

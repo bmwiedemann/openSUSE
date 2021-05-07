@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/openSUSE/instsource-susedata.git</param>
     <param name="scm">git</param>
-    <param name="version">0.3.6</param>
-    <param name="revision">0.3.6</param>
+    <param name="version">0.3.7</param>
+    <param name="revision">0.3.7</param>
     <param name="extract">instsource-susedata.changes</param>
     <param name="extract">instsource-susedata.spec</param>
   </service>

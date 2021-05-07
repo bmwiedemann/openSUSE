@@ -83,4 +83,13 @@
   * add option to add gpg keys as content tags (bsc#1184326) (forwarded request 885718 from oertel)</comment>
     <requestid>885720</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1bfc10af2ce7926624c8ec363fd3b541</srcmd5>
+    <version>0.3.7</version>
+    <time>1620398693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.7
+  * include fingerprint in the gpg keys (still bsc#1184326)</comment>
+    <requestid>890354</requestid>
+  </revision>
 </revisionlist>
