@@ -413,4 +413,12 @@ I suggest a &quot;osc copypac -r &lt;last revision that builds&gt; multimedia:li
     <comment></comment>
     <requestid>852079</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>06d332fe19067e6ee862d24ad74f4da4</srcmd5>
+    <version>0.15.1</version>
+    <time>1620398719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890462</requestid>
+  </revision>
 </revisionlist>

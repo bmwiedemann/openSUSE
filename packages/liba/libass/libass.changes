@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  3 15:58:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.15.1
+  * Bugfix release, no significant API or ABI changes
+  * Fix crashing on some ASS files with embedded fonts
+  * Fix total font fallback failure with some fonts on Core Text
+  * Fix embedded and memory fonts not actually being used unless
+    ass_set_fonts was called after they have been added
+  * Fix events assuming the largest xbord-value of a preceding event
+    of the same frame during collision handling
+  * Fix shift in vertical positioning of some right-to-left events
+    with \an4-6, \pos, \move or Scroll effects
+  * Fix imprecise output for \be with huge argument
+  * Overhaul x86 assembly for better performance
+  * Reduce temporary allocation in rendering
+  * DirectWrite: request fonts on demand for better performance and
+    improved compatibility with external on-demand font activation
+  * Accept pointers to const as arguments to ass_add_font
+  * Improve VSFilter compatibility:
+    * Disregard zero area events in collision handling
+    * Do not apply \fsp to vector drawings
+    * Fix bug preventing cutting out glyphs from border & shadow
+      with abnormal \fad values
+
+-------------------------------------------------------------------
 Sat Nov 28 15:28:46 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.15.0
