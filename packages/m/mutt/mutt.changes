@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  7 07:09:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.0.7
+  * Update UPDATING file for 2.0.7.
+  * Fix seqset iterator when it ends in a comma (boo#1185705, CVE-2021-32055)
+  * Filter unprintables for 2231 encoded continuations too.
+  * Turn off pylint in gitlab-ci.
+  * Check if mutt_prepare_template() fails for -H command line arg.
+  * Fix resolve_types() newline removal and restoration.
+  * automatic post-release commit for mutt-2.0.6
+- Fix offset of patch mutt-1.5.21-mailcap.diff
+
+-------------------------------------------------------------------
 Thu Mar 18 05:08:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mutt 2.0.6:

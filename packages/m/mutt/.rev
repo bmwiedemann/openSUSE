@@ -1201,4 +1201,20 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>mutt 2.0.6 (forwarded request 879885 from AndreasStieger)</comment>
     <requestid>879929</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>60d0fec8916179b00346d7dfe7cd3729</srcmd5>
+    <version>2.0.7</version>
+    <time>1620398746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 2.0.7
+  * Update UPDATING file for 2.0.7.
+  * Fix seqset iterator when it ends in a comma (boo#1185705, CVE-2021-32055)
+  * Filter unprintables for 2231 encoded continuations too.
+  * Turn off pylint in gitlab-ci.
+  * Check if mutt_prepare_template() fails for -H command line arg.
+  * Fix resolve_types() newline removal and restoration.
+  * automatic post-release commit for mutt-2.0.6
+- Fix offset of patch mutt-1.5.21-mailcap.diff</comment>
+    <requestid>891208</requestid>
+  </revision>
 </revisionlist>
