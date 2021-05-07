@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-automation
-Version:        1.0.0
+Version:        1.1.0b1
 Release:        0
 Summary:        Microsoft Azure Automation Client Library
 License:        MIT
