@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May  4 14:23:09 UTC 2021 - Stefan Knorr <sknorr@suse.com>
+
+- Beta release of the SUSE XSL stylesheets 2.81.0:
+  https://github.com/openSUSE/suse-xsl/releases/tag/2.81.0
+
+- PDF/HTML
+  - Added first version of SUSE 2021 stylesheets
+
+- HTML:
+  - SUSE 2013: Avoid interference between "Copy code" buttons and
+    highlight.js
+
+- PDF:
+  - SUSE 2013: List sect1 within PDF ToCs
+
+- Other:
+  - Cleanup of the tarball, so previous change for Nimbus fonts is
+    now unnecessary
+
+-------------------------------------------------------------------
+
+Tue Jun  9 14:17:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't install Nimbus fonts and require
+  ghostscript-fonts-std-converted which now includes them
+  (boo#1169444)
+
+-------------------------------------------------------------------
 Wed May 20 16:18:06 UTC 2020 - Stefan Knorr <sknorr@suse.com>
 
 - Stable release of the SUSE XSL stylesheets 2.0.17:

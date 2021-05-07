@@ -411,4 +411,14 @@ HTML + PDF:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>809647</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>42d0cf17d09f9662df05fe486a748373</srcmd5>
+    <version>2.81.0</version>
+    <time>1620398715</time>
+    <user>dimstar_suse</user>
+    <comment>SUSE XSL stylesheets 2.81.0 -- These stylesheets contain branding
+updates &amp; we will need them on SLE 15 SP3 for building release notes.
+Replaces sr#890404</comment>
+    <requestid>890444</requestid>
+  </revision>
 </revisionlist>

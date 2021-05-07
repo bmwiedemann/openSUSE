@@ -17,7 +17,7 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.0.17
+Version:        2.81.0
 Release:        0
 
 %define reponame          suse-xsl
@@ -77,7 +77,7 @@ Requires:       un-fonts
 # Chinese:
 Requires:       wqy-microhei-fonts
 
-# FONTS USED IN "suse2013"/"opensuse2013"/"daps2013/"suse2020" STYLESHEETS
+# FONTS USED IN "suse2013"/"opensuse2013"/"daps2013/"suse2021" STYLESHEETS
 # Western fonts:
 Requires:       google-opensans-fonts
 Requires:       sil-charis-fonts
@@ -165,8 +165,7 @@ exit 0
 %dir %{suse_styles_dir}/daps2013-ns
 %dir %{suse_styles_dir}/opensuse2013
 %dir %{suse_styles_dir}/opensuse2013-ns
-#%dir %{suse_styles_dir}/suse2020
-#%dir %{suse_styles_dir}/suse2020-ns
+%dir %{suse_styles_dir}/suse2021-ns
 
 %dir %{_ttfontsdir}
 
@@ -181,8 +180,7 @@ exit 0
 %{suse_styles_dir}/daps2013-ns/*
 %{suse_styles_dir}/opensuse2013/*
 %{suse_styles_dir}/opensuse2013-ns/*
-#%{suse_styles_dir}/suse2020/*
-#%{suse_styles_dir}/suse2020-ns/*
+%{suse_styles_dir}/suse2021-ns/*
 
 # catalogs
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
