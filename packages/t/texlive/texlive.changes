@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  5 06:15:46 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Correct the required versions for the perl modules for biber (boo#1185600) 
+
+-------------------------------------------------------------------
 Mon Apr 26 09:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch source-r58686:r58919.dif

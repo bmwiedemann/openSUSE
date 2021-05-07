@@ -877,4 +877,12 @@
   * source-poppler-use-std_string.patch</comment>
     <requestid>888676</requestid>
   </revision>
+  <revision rev="72" vrev="75">
+    <srcmd5>b5544142387ed1c5f833ee52375f1925</srcmd5>
+    <version>unknown</version>
+    <time>1620398723</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct the required versions for the perl modules for biber (boo#1185600)</comment>
+    <requestid>890611</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   184
+%define texlive_noarch   185
 %define texlive_source   texlive-20210325-source
 
 %define __perl_requires		%{nil}
@@ -168,7 +168,7 @@ BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 %if %{with buildbiber}
-BuildRequires:  perl-base >= 5.26.1
+BuildRequires:  perl-base >= 5.32.0
 BuildRequires:  perl(autovivification)
 #BuildRequires: perl(Business::ISBN)
 BuildRequires:  perl-Business-ISBN >= 3.005
@@ -199,12 +199,12 @@ BuildRequires:  perl(IPC::Run3)
 BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Lingua::Translit)
+BuildRequires:  perl(Lingua::Translit) >= 0.28
 BuildRequires:  perl(List::AllUtils)
 BuildRequires:  perl(List::MoreUtils) >= 0.407
 BuildRequires:  perl(List::MoreUtils::XS)
 BuildRequires:  perl(Log::Log4perl)
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) => 0.38
 BuildRequires:  perl(Package::DeprecationManager)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Parse::RecDescent)
@@ -217,14 +217,15 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::Pod) >= 1.22
 BuildRequires:  perl(Test::Pod::Coverage) >= 1.08
-BuildRequires:  perl(Text::BibTeX) >= 0.85
+BuildRequires:  perl(Text::BibTeX) >= 0.88
 BuildRequires:  perl(Text::CSV)
 BuildRequires:  perl(Text::CSV_XS)
 BuildRequires:  perl(Text::Roman)
 BuildRequires:  perl(Unicode::Collate) >= 1.29
 BuildRequires:  perl(Unicode::GCString)
-BuildRequires:  perl(Unicode::LineBreak)
-BuildRequires:  perl(Unicode::Normalize) >= 1.23
+BuildRequires:  perl(Unicode::LineBreak) >= 2019.001
+BuildRequires:  perl(Unicode::Normalize) >= 1.26
+BuildRequires:  perl(XML::LibXML) >= 1.70
 BuildRequires:  perl(XML::LibXML::Simple)
 BuildRequires:  perl(XML::LibXSLT)
 BuildRequires:  perl(XML::Writer::String)
@@ -3687,12 +3688,13 @@ Requires:       perl(List::MoreUtils)
 Requires:       perl(Log::Log4perl)
 Requires:       perl(Regexp::Common)
 Requires:       perl(Sort::Key)
-Requires:       perl(Text::BibTeX)
+Requires:       perl(Text::BibTeX) >= 0.88
 Requires:       perl(Text::CSV)
 Requires:       perl(Text::Roman)
 Requires:       perl(URI)
-Requires:       perl(Unicode::Collate)
+Requires:       perl(Unicode::Collate) => 1.29
 Requires:       perl(Unicode::GCString)
+Requires:       perl(XML::LibXML) >= 1.70
 Requires:       perl(XML::LibXML::Simple)
 Requires:       perl(XML::LibXSLT)
 Requires:       perl(XML::Writer)
@@ -4101,7 +4103,7 @@ popd
 
     # compile public
     mkdir -p %{libexecdir}/mktex
-    $CC ${RPM_OPT_FLAGS} -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50}
+    $CC ${RPM_OPT_FLAGS} -D_GNU_SOURCE -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50}
 
     # install our own scripts
     mkdir -p ${prefix}/bin
@@ -4414,6 +4416,9 @@ popd
 	case "$mktex" in
 	mktexlsr*)
 	   ln -sf ../../share/texmf/scripts/texlive/${mktex}.pl %{buildroot}%{_libexecdir}/mktex/$mktex
+	   ;;
+	texhash*)
+	   ln -sf ../../share/texmf/scripts/texlive/mktexlsr.pl %{buildroot}%{_libexecdir}/mktex/$mktex
 	   ;;
 	*)
 	   ln -sf ../../share/texmf/scripts/texlive/${mktex}    %{buildroot}%{_libexecdir}/mktex/$mktex
