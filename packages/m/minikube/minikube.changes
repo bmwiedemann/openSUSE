@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  7 11:25:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Add --file flag to 'minikube logs' to automatically put logs into a file. #11240
+  * Batch logs output to speedup minikube logs command #11274
+  * warn about performance for certain versions of kubernetes #11217
+  * Update olm addon to v0.17.0 #10947
+  * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287 
+
+-------------------------------------------------------------------
 Sat Apr 10 18:46:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.0:

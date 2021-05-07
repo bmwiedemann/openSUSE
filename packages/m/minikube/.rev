@@ -319,4 +319,17 @@
   * new command image ls to list images in a cluster #11007</comment>
     <requestid>884329</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d05731fa15f2529fa7862c25d49b06ba</srcmd5>
+    <version>1.20.0</version>
+    <time>1620398759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.0:
+  * Add --file flag to 'minikube logs' to automatically put logs into a file. #11240
+  * Batch logs output to speedup minikube logs command #11274
+  * warn about performance for certain versions of kubernetes #11217
+  * Update olm addon to v0.17.0 #10947
+  * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287</comment>
+    <requestid>891277</requestid>
+  </revision>
 </revisionlist>
