@@ -19,9 +19,9 @@
 # vkinfo reports vulkan-headers's version even if the loader/tools/etc.
 # are at an older version, which in the past confused some users.
 # Consider only updating the sources in lockstep.
-# 
+#
 Name:           vulkan-headers
-Version:        1.2.170.0
+Version:        1.2.176.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -60,6 +60,7 @@ to make use of Vulkan.
 %files
 %license LICENSE.txt
 %_includedir/vulkan/
+%_includedir/vk_video/
 %_datadir/vulkan/
 
 %changelog
