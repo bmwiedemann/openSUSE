@@ -17,6 +17,11 @@
 #
 
 
+%ifarch x86_64 ppc64 s390x aarch64 riscv64
+%global with_pandoc 1
+%endif
+%bcond_with pandoc
+
 %define xpra_ver 4.1.3
 %define html5_ver 4.1.2
 %define uglifyjs_ver 3.13.4
@@ -43,7 +48,9 @@ BuildRequires:  hicolor-icon-theme
 # Needed by uglify-js
 BuildRequires:  nodejs-common
 BuildRequires:  pam-devel
+%if %{with pandoc}
 BuildRequires:  pandoc
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython >= 0.20.0
 BuildRequires:  python3-devel
@@ -161,6 +168,9 @@ python3 setup.py build \
     --with-service \
     --without-cuda_kernels \
     --without-nvenc \
+%if !%{with pandoc}
+    --without-docs \
+%endif
     --without-nvfbc
 
 %install
@@ -171,6 +181,9 @@ python3 setup.py install \
     --with-service \
     --with-Xdummy \
     --with-Xdummy_wrapper \
+%if !%{with pandoc}
+    --without-docs \
+%endif
     --verbose
 
 pushd %{name}-html5-%{html5_ver}
@@ -206,7 +219,9 @@ mkdir -p %{_rundir}/%{name} || exit 1
 
 %files
 %doc docs/README.md docs/CHANGELOG.md
+%if %{with pandoc}
 %doc %{_defaultdocdir}/xpra
+%endif
 %license COPYING
 %dir %{_datadir}/xpra
 %dir %{_prefix}/lib/xpra

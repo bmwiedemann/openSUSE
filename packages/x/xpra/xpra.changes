@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  7 11:23:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix build on architectures without pandoc 
+
+-------------------------------------------------------------------
 Fri Apr 23 09:09:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix build with ffmpeg 4.4 on Leap
