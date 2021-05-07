@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyX
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin-bin
 BuildRequires:  texlive-tex-bin
 BuildRequires:  texlive-texware-bin
-Obsoletes:      python3-pyx < %{version}
-Provides:       python3-pyx = %{version}
+Requires:       texlive-latex-bin-bin
+Requires:       texlive-tex-bin
+Requires:       texlive-texware-bin
+Obsoletes:      python-pyx < %{version}
+Provides:       python-pyx = %{version}
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,6 +51,8 @@ built out of these primitives.
 
 %prep
 %setup -q -n pyx-%{version}
+# ignore unrelated warning "ignoring special 'header=l3backend-dvips.pro'"
+sed -i 's/l.check/l.check_present/' test/unit/test_texmessageparser.py
 
 %build
 %python_build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 12:21:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Ignore unrelated warning during tests introduced by l3backend
+- Specify runtime requirements
+- Fix provides/obsoletes rename for flavors
+
+-------------------------------------------------------------------
 Wed Jul 24 10:07:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.15:
