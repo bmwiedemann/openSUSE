@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  4 20:13:54 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.6.1.
+- Remove patch `julia-fix_doc_build.patch` because it was applied
+  by upstream.
+- Remove some hidden files from the package.
+
+-------------------------------------------------------------------
 Fri Apr  9 02:07:16 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
 
 - Add patch `julia-fix-use_system_csl.patch` so that we can build
@@ -13,6 +21,7 @@ Fri Apr  9 02:07:16 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
 
 -------------------------------------------------------------------
 Wed Apr  7 03:01:30 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+
 - Version bump to 1.6.0.
 - Add julia-rpmlintrc to filter devel-file-in-non-devel-package
   error.

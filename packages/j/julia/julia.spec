@@ -30,9 +30,6 @@
 %global __provides_exclude ^(%{_privatelibs})$
 %global __requires_exclude ^(%{_privatelibs})$
 
-# Temporary workaround to apply Patch1 that must be removed with Julia 1.6.1.
-%global _default_patch_fuzz 2
-
 %define libjulia_sover_major 1
 %define libjulia_sover_minor 6
 %if "@BUILD_FLAVOR@%{nil}" == "compat"
@@ -40,7 +37,7 @@
 %else
 %define compat_mode  0
 %endif
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
@@ -48,10 +45,8 @@ Source1:        julia-rpmlintrc
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch0:         julia-env-script-interpreter.patch
-# PATCH-FIX-UPSTREAM julia-fix-use_system_csl.patch ronisbr@gmail.com -- Fix build process with `USE_SYSTEM_CSL=1`.
-Patch1:         julia-fix-use_system_csl.patch
 # PATCH-FIX-OPENSUSE julia-fix_doc_build.patch ronisbr@gmail.com -- Makefile is building the docs with `USE_SYSTEM_CSL=1` even if they are already available in the tarball.
-Patch2:         julia-fix_doc_build.patch
+Patch1:         julia-fix_doc_build.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -184,7 +179,6 @@ Contains the Julia manual, the reference documentation of the standard library.
 %setup -q -n julia-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;
@@ -278,6 +272,13 @@ rm -r %{buildroot}%{_datadir}/doc/julia
 
 # Remove execution permission on documentation files.
 chmod -x+X -R %{buildroot}%{_docdir}/julia/*
+
+# Remove hidden files from stdlib.
+pushd %{buildroot}%{_datadir}/julia/stdlib/
+find . -name ".codecov.yml" -exec rm -rf {} \;
+find . -name ".gitignore" -exec rm -rf {} \;
+find . -name ".travis.yml" -exec rm -rf {} \;
+popd
 
 %if 0%{?compat_mode}
 rm -rf %{buildroot}%{_docdir}/julia/
