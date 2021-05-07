@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri May  7 05:53:20 UTC 2021 - nick wang <nwang@suse.com>
+
+- Update to 9.0.29 
+ * fix data corruption when DRBD's backing disk is a degraded Linux software
+   raid (MD)
+ * add correct thawing of IO requests after IO was frozen due to loss of quorum
+ * fix timeout detection after idle periods and for configs with ko-count
+   when a disk on an a secondary stops delivering IO-completion events
+ * fixed an issue where UUIDs where not shifted in the history slots; that
+   caused false "unrelated data" events
+ * fix switching resync sources by letting resync requests drain before
+   issuing resync requests to the new source; before the fix, it could happen
+   that the resync does not terminate since a late reply from the previous
+   caused a out-of-sync bit set after the "scan point"
+ * fix a temporal deadlock you could trigger when you exercise promotion races
+   and mix some read-only openers into the test case
+ * fix for bitmap-copy operation in a very specific and unlikely case where
+   two nodes do a bitmap-based resync due to disk-states
+ * fix size negotiation when combining nodes of different CPU architectures
+   that have different page sizes
+ * fix a very rare race where DRBD reported wrong magic in a header
+   packet right after reconnecting
+ * fix a case where DRBD ends up reporting unrelated data; it affected
+   thinly allocated resources with a diskless node in a recreate from day0
+   event
+ * speedup open() of drbd devices if promote has not chance to go through
+ * new option "--reset-bitmap=no" for the invalidate and invalidate-remote
+   commands; this allows to do a resync after online verify found differences
+ * changes to socket buffer sizes get applied to established connections
+   immediately; before it was applied after a re-connect
+ * add exists events for path objects
+ * forbid keyed hash algorithms for online verify, csyms and HMAC base alg
+ * fix a regression introduces with 9.0.25; it failed to determine the
+   right device size and the connection hangs in WFBitmapS/WFBitmapT
+   repl state; to trigger this you need to do a partial resync to a
+   new node with different backing device size
+ * fix an issue with netlink packets processed in parallel on multiple
+   CPUs; the bug caused drbdadm adjust failing in very rare cases
+ * fix a very rare occurrence of a reconciliation resync getting stuck
+ * fix a race condition that causes a detach operation to hang; it
+   is very hard to trigger
+ * fix a kernel OOPS (via a BUG()) upon adding a timer twice under very rare
+   timing
+ * fix a counter imbalance that could lead to assertion messages when a
+   protocol A peer disconnects with a certain timing
+ * fix a rare race with receiving bitmap and a state change while
+   establishing a connection
+ * fix UUID handling to avoid false split-brain detections; this bug got
+   triggered an isolated primary that gets demoted, and temporal network
+   interruptions among the remaining nodes
+ * fix resync decision to obey disk states when the generation UUIDs are
+   equal; the effect of this bug was that you could end up with two Outdated
+   nodes after resync
+ * fix concurrent disk-attach operations
+ * Fix possible kernel warning regarding an inbalance of backing device
+   link/unlink
+ * move some amount of kernel backward compatibility code moved from the old
+   method (drbd_wrappers.h) to new cocci semantic patches
+ * add support renaming resources while its devices might be in use and
+   process IO requests
+ * Allow setting c_max_rate to 0 with the meaning that the resync controller
+   has no upper limit for the resync speed
+ * Fix regression: allow live migration between two diskful peers again
+ * following upstream changes to DRBD up to Linux 5.12 and updated compat
+   rules to support up to Linux 5.12
+- Add patch compat_genl_maxattr_in_ops.patch (48526a0f)
+  Remove patch drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
+  Remove patch compat_remove_include_vermagic.patch
+  Remove patch compat-test-header.patch
+  Remove patch submit-bio-private-date.patch
+  Remove patch compat_remove_kernel_setsockopt.patch
+  Remove patch compat_blk_queue_stack_limits.patch
+  Remove patch remove_bdi_cap_stable_writes.patch
+  Remove patch compat_get_fs.patch
+  Remove patch compat_to_v5_11.patch
+  Modify patch suse-coccinelle.patch
+- cocci apply: linux-5.12.0-2 
+  queue_discard_zeroes_data__no_present  (48920ff2a5a9)
+
+-------------------------------------------------------------------
 Fri Mar 12 07:10:37 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1183429, compat to kernel v5.11

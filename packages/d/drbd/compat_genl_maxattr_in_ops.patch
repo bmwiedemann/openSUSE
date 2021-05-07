@@ -1,0 +1,24 @@
+1. "policy" of "genl_ops" removed in 3b0f31f2b8c9fb348e4530b88f6b64f9621f83d6. Then add back in 48526a0f4ca2b484cab4318dc0b2c2be1d8685b7
+
+diff -Naur drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/gen_patch_names.c drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/gen_patch_names.c
+--- drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/gen_patch_names.c	2021-05-07 13:31:20.629024504 +0800
++++ drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/gen_patch_names.c	2021-05-07 13:33:05.932908956 +0800
+@@ -247,8 +247,10 @@
+ 	patch(1, "bio_free", false, true,
+ 	      COMPAT_HAVE_BIO_FREE, "present");
+ 
++#if !defined(COMPAT_GENL_MAXATTR_IN_OPS)
+ 	patch(1, "genl_policy", false, true,
+ 	      COMPAT_GENL_POLICY_IN_OPS, "in_ops");
++#endif
+ 
+ 	patch(1, "blk_queue_merge_bvec", false, true,
+ 	      COMPAT_HAVE_BLK_QUEUE_MERGE_BVEC, "present");
+diff -Naur drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/tests/genl_maxattr_in_ops.c drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/tests/genl_maxattr_in_ops.c
+--- drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/tests/genl_maxattr_in_ops.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/tests/genl_maxattr_in_ops.c	2021-05-07 13:32:16.452960387 +0800
+@@ -0,0 +1,4 @@
++#include <net/genetlink.h>
++
++struct genl_ops ops = { .maxattr = 1, };
++
