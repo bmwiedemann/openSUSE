@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 05 17:32:19 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1620235932.ef6bfa0d1:
+  * Makefile: set DEVEL_COVER_DB_FORMAT
+  * apparmor: Allow execution of smbd which is required for QEMU_ENABLE_SMBD
+  * Mark t/ui/25-developer_mode.t as unstable due to recent failures
+  * Prevent execution of container test when `TESTS` has been specified
+  * openqa_bootstrap: Fix indentation
+
+-------------------------------------------------------------------
 Sun May 02 03:41:33 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1619779004.cdb202dbd:
