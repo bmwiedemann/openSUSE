@@ -339,10 +339,8 @@ Requires:       ristretto
 Requires:       thunar
 Requires:       thunar-volman
 Requires:       xfce4-appfinder
-Requires:       xfce4-mixer
 Requires:       xfce4-notifyd
 Requires:       xfce4-panel
-Requires:       xfce4-panel-plugin-mixer
 Requires:       xfce4-power-manager
 Requires:       xfce4-session
 Requires:       xfce4-settings
@@ -351,6 +349,7 @@ Requires:       xfdesktop
 Requires:       xfwm4
 Recommends:     NetworkManager
 Recommends:     NetworkManager-applet
+Recommends:     xfce4-pulseaudio-plugin
 #
 # low level functionality
 #

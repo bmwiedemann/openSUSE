@@ -285,4 +285,12 @@
 - Add udftools to the DVD (boo#1185343).</comment>
     <requestid>888991</requestid>
   </revision>
+  <revision rev="35" vrev="35">
+    <srcmd5>8f83e74c235b349f46d8580469854dbf</srcmd5>
+    <version>20170319</version>
+    <time>1620398719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890460</requestid>
+  </revision>
 </revisionlist>
