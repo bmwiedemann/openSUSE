@@ -339,6 +339,7 @@ BuildRequires:  curl
 BuildRequires:  dash
 BuildRequires:  dbus-1-x11
 BuildRequires:  dd_rescue
+BuildRequires:  debuginfod-client
 BuildRequires:  dejavu-fonts
 BuildRequires:  dhcp-server
 BuildRequires:  dmraid
@@ -672,7 +673,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.0
+Version:        17.2
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

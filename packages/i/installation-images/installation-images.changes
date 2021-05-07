@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Tue May 4 14:17:56 UTC 2021 - mvidner@suse.cz
+
+- merge gh#openSUSE/installation-images#506
+- gdb extension: include debuginfod-find (debuginfod-client.rpm)
+  (bsc#1182649)
+- Document API of ResolveDeps and friends
+- Moved resolve_deps_libsolv to its own module
+- Add data files for testing ResolveDepsLibsolv.
+- resolve_deps_libsolv: add basic tests, don't hardcode solv
+  filename
+- BuildRequire debuginfod-client
+- 17.2
+
+--------------------------------------------------------------------
+Tue May 4 12:24:55 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#509
+- trigger automatic nvme discovery in udev start script
+  (bsc#1184908)
+- create NVMe config files before udevd is started (bsc#1184908)
+- 17.1
+
+--------------------------------------------------------------------
 Tue Apr 27 11:02:18 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#498
