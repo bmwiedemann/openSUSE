@@ -18,7 +18,7 @@
 
 Name:           shaderc
 %define lname libshaderc_shared1
-Version:        2020.5
+Version:        2021.0
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0

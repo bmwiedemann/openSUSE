@@ -71,4 +71,12 @@
     <comment>- Update to release 2020.5 (forwarded request 875914 from jengelh)</comment>
     <requestid>877955</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88e865f614085d33b8b23404a83ffc12</srcmd5>
+    <version>2021.0</version>
+    <time>1620398731</time>
+    <user>dimstar_suse</user>
+    <comment>- Upddate to release 2021.0</comment>
+    <requestid>890659</requestid>
+  </revision>
 </revisionlist>
