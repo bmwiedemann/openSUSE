@@ -16,7 +16,7 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 534753ca12542383002cbf5544ac..c1c7448ef304cf8a56ac60ec8639 100644
+index 74e06e7121c56fbf568bc0d48164..709714dad5384d0813083af204c4 100644
 --- a/linux-user/qemu.h
 +++ b/linux-user/qemu.h
 @@ -231,10 +231,10 @@ abi_long memcpy_to_target(abi_ulong dest, const void *src,
@@ -35,10 +35,10 @@ index 534753ca12542383002cbf5544ac..c1c7448ef304cf8a56ac60ec8639 100644
  void cpu_loop(CPUArchState *env);
  const char *target_strerror(int err);
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index e1341c9d391bde792d37443c4b9f..4c178ceab8ac708e4ee4587f6589 100644
+index e5d22c4806cf4f11b43371dc52c2..ee3f66b0118d21748c1ff7475793 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8205,10 +8205,10 @@ static int host_to_target_cpu_mask(const unsigned long *host_mask,
+@@ -8295,10 +8295,10 @@ static int host_to_target_cpu_mask(const unsigned long *host_mask,
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
@@ -53,7 +53,7 @@ index e1341c9d391bde792d37443c4b9f..4c178ceab8ac708e4ee4587f6589 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -10871,7 +10871,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -10966,7 +10966,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
               */
              ret = -TARGET_EINVAL;
              if (cpu_isar_feature(aa64_sve, env_archcpu(cpu_env))
@@ -62,7 +62,7 @@ index e1341c9d391bde792d37443c4b9f..4c178ceab8ac708e4ee4587f6589 100644
                  CPUARMState *env = cpu_env;
                  ARMCPU *cpu = env_archcpu(env);
                  uint32_t vq, old_vq;
-@@ -13120,10 +13120,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -13318,10 +13318,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      return ret;
  }
  

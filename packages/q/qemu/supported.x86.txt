@@ -1,6 +1,7 @@
 [qemu-x86 package document]
 
-SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+====================================================
 
 Overview
 --------
@@ -161,13 +162,14 @@ Noteworthy QEMU/KVM Unsupported Features
 Deprecated, Superseded, Modified and Dropped Features
 -----------------------------------------------------
 
-- http://wiki.qemu-project.org/Features/LegacyRemoval
-  This website tracks feature deprecation and removal at the upstream
+- http://wiki.qemu-project.org/Features/LegacyRemoval and
+  https://qemu-project.gitlab.io/qemu/system/deprecated.html
+  These websites track feature deprecation and removal at the upstream
   development level. Our qemu package inherits this community direction, but be
   aware that we can and will deviate as needed. Those deviations and additional
   information can be found in this section. Feature deprecation as well as
-  removed features are also tracked in the "QEMU System Emulator User's Guide"
-  section of the documentation installed with the qemu package.
+  removed features are also tracked in the "System Emulation" section of the
+  documentation installed with the qemu package.
 
 - When no video adapter is specified, the default used is stdvga. This differs
   from the default of prior releases which was cirrus. The cirrus adapter was
@@ -207,21 +209,22 @@ Deprecated, Superseded, Modified and Dropped Features
   versions.
 
 - These previously supported command line options are now considered deprecated:
-  -device ide-drive (use ide-hd or ide-cd instead)
-  -device scsi-disk (use scsi-hd or scsi-cd instead)
-  -device virtio-blk,scsi= (use virtio-scsi instead)
-  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
-  -realtime mlock= (use -overcommit mem-lock= instead)
-  (the following are early notices of deprecation in a future qemu version)
   -M option kernel-irqchip=off
   -chardev tty (use serial name instead)
   -chardev paraport (use parallel name instead)
+  -device virtio-blk,scsi= (use virtio-scsi instead)
+  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
   -enable-fips (not really helpful - see https://git.qemu.org/?p=qemu.git;a=commit;h=166310299a1e7824bbff17e1f016659d18b4a559 for details)
+  -realtime mlock= (use -overcommit mem-lock= instead)
   -spice password=string (use password-string option instead)
   -writeconfig (no replacement - never really worked right)
+  -share and noshare must be replaced by share=on/share=off
+  -nodelay must be replaced by nodelay=on rather than delay=off
+  -object-add options opened=on and loaded=on (both had no effect)
 
 - These previously supported command line options are no longer supported:
-  <previously mentioned items have been moved to another category>
+  -device ide-drive (use ide-hd or ide-cd instead)
+  -device scsi-disk (use scsi-hd or scsi-cd instead)
 
 - The previously supported machine types pc-0.12, pc-0.14 and pc-0.15 are no
   longer recognized. Switch to a newer machine type.
@@ -235,7 +238,9 @@ Deprecated, Superseded, Modified and Dropped Features
   -display sdl
   -no-frame
   -nodefconfig (use -no-user-config instead)
+  -realtime ...
   -sdl
+  -show-cursor
   -virtioconsole (use -device virtconsole instead)
 
 - Specifying a cpu feature with both "+feature/-feature" and "feature=on/off"
@@ -244,17 +249,16 @@ Deprecated, Superseded, Modified and Dropped Features
   so that "+feature" and "-feature" will be synonyms for "feature=on" and
   "feature=off" respectively.
 
+- The case of specified sockets, cores, and threads not matching the vcpu count
+  is no longer silently ignored. QEMU now requires that the topology match the
+  vcpu count.
+
 - The previously supported blkdev-add QMP command has been flagged as lacking
   and could possibly change syntax in the future.
 
 - These previously unsupported command line options are now deprecated:
   -no-kvm-pit
   -soundhw (use -device ... instead)
-  -tb-size
-
-- The case of specified sockets, cores, and threads not matching the vcpu count
-  is no longer silently ignored. QEMU now requires that the topology match the
-  vcpu count.
 
 - These previously unsupported command line options are no longer recognized:
   -bt
@@ -294,17 +298,20 @@ Deprecated, Superseded, Modified and Dropped Features
   -pcidevice (use -device vfio-pci instead)
   -qtest
   -semihosting
+  -tb-size
   -tdf (note: mistakenly listed previously as supported)
   -xen-create
 
-- The previously unsupported machine types pc-1.0, pc-1.1, pc-1.2 and pc-1.3 are
-  now deprecated.
-
-- The previously unsupported machine types pc-0.10, pc-0.13, pc-0.14 and
-  pc-0.11 are no longer recognized.
+- The previously unsupported machine types pc-0.10, pc-0.11, pc-0.13,
+  pc-1.0, pc-1.1, pc-1.2 and pc-1.3 are are no longer recognized.
 
 - These previously supported QMP commands are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously supported QMP commands are no longer recognized:
+  block_passwd
   change (use blockdev-change-medium or change-vnc-password instead)
+  cpu-add (use device_add instead)
   migrate-set-cache-size (use migrate-set-parameters instead)
   migrate_set_downtime (use migrate-set-parameters instead)
   migrate_set_speed (use migrate-set-parameters instead)
@@ -312,30 +319,30 @@ Deprecated, Superseded, Modified and Dropped Features
   query-events
   query-migrate-cache-size (use query-migrate-parameters instead)
 
-- This previously supported QMP command is no longer recognized:
-  cpu-add (use device_add instead)
-
 - These previously supported monitor commands are now deprecated:
   change
-  migrate_set_downtime
-  migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
-  cpu-add (use device_add instead)
+  block_passwd
+  cpu-add
   cpu_set
+  migrate_set_cache_size
+  migrate_set_downtime
+  migrate_set_speed
   pci_add (use device_add instead)
   pci_del (use device_del instead)
   usb_add (use device_add instead)
   usb_del (use device_del instead)
 
 - These previously unsupported monitor command are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously unsupported monitor commands are no longer recognized:
   acl_add ...
   acl_policy ...
   acl_remove ...
   acl_reset ...
   acl_show ...
-
-- These previously unsupported monitor commands are no longer recognized:
   host_net_add
   host_net_remove
 
@@ -390,6 +397,7 @@ QEMU Command-Line and Monitor Syntax and Support
 
 - The following command line options are supported:
   -accel ...
+  -action ...
   -add-fd ...
   -alt-grab
   -append ...
@@ -399,7 +407,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -blockdev ...
   -boot ...
   -cdrom ...
-  -chardev ..
+  -chardev ...
+  -compat ...
   -cpu ... (all except host)
   -ctrl-grab
   -d ...
@@ -407,19 +416,19 @@ QEMU Command-Line and Monitor Syntax and Support
   -debugcon ...
   -device
 
-         [isa-serial|isa-parallel|isa-fdc|ide-drive|ide-hd|ide-cd|VGA|
-          cirrus-vga|rtl8139|usb-hub|usb-ehci|usb-tablet|usb-storage|usb-mouse|
-          usb-kbd|virtserialport|virtconsole|sga|i82559er|scsi-cd|scsi-hd|
-          scsi-generic|scsi-disk|scsi-block|pci-serial|pci-serial-2x|
-          pci-serial-4x|ich9-ahci|piix3-usb-uhci|usb-host|usb-serial|
-          usb-wacom-tablet|usb-braille|usb-net|pci-ohci|piix4-usb-uhci|i6300esb|
-          ib700|qxl|qxl-vga|pvpanic|vfio-pci|ivshmem-doorbell|ivshmem-plain|
-          pci-bridge|megasas-gen2|pc-dimm|floppy|e1000e|ccid-card-emulated|
-          ccid-card-passthrough|xen-backend|loader|e1000-82540em|vmgenid|
-          vmcoreinfo|pcie-pci-bridge|ich9-usb-ehci1|ich9-usb-ehci2|
-          ich9-usb-uhci1|ich9-usb-uhci2|ich9-usb-uhci3|ich9-usb-uhci4|
-          ich9-usb-uhci5|ich9-usb-uhci6|usb-redir|vhost-scsi|vhost-scsi-pci|
-          vhost-user-blk|vhost-user-blk-pci|vhost-user-blk-pci-non-transitional|
+         [isa-serial|isa-parallel|isa-fdc|ide-hd|ide-cd|VGA|cirrus-vga|rtl8139|
+          usb-hub|usb-ehci|usb-tablet|usb-storage|usb-mouse|usb-kbd|
+          virtserialport|virtconsole|sga|i82559er|scsi-cd|scsi-hd|scsi-generic|
+          scsi-block|pci-serial|pci-serial-2x|pci-serial-4x|ich9-ahci|
+          piix3-usb-uhci|usb-host|usb-serial|usb-wacom-tablet|usb-braille|
+          usb-net|pci-ohci|piix4-usb-uhci|i6300esb|ib700|qxl|qxl-vga|pvpanic|
+          vfio-pci|ivshmem-doorbell|ivshmem-plain|pci-bridge|megasas-gen2|
+          pc-dimm|floppy|e1000e|ccid-card-emulated|ccid-card-passthrough|
+          xen-backend|loader|e1000-82540em|vmgenid|vmcoreinfo|pcie-pci-bridge|
+          ich9-usb-ehci1|ich9-usb-ehci2|ich9-usb-uhci1|ich9-usb-uhci2|
+          ich9-usb-uhci3|ich9-usb-uhci4|ich9-usb-uhci5|ich9-usb-uhci6|
+          usb-redir|vhost-scsi|vhost-scsi-pci|vhost-user-blk|
+          vhost-user-blk-pci|vhost-user-blk-pci-non-transitional|
           vhost-user-blk-pci-transitional|vhost-user-scsi|vhost-user-scsi-pci|
           vhost-user-scsi-pci-non-transitional|vhost-user-pci-transitional|
           vhost-vsock-pci|vhost-vsock-pci-non-transitional|virtio-balloon-pci|
@@ -438,11 +447,11 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-mouse-pci|virtio-tablet-pci|virtio-gpu-pci|virtio-crypto-pci|
           virtio-vga|vhost-user-fs-pci|vhost-user-gpu|vhost-user-pci-pci|
           vhost-user-input|vhost-user-input-pci|vhost-user-vga|virtio-mmio|
-          virtio-pmem|virtio-pmem-pci|mc146818rtc]
+          virtio-pmem|virtio-pmem-pci|mc146818rtci|nvme-subsys|guest-loader|
+          pvpanic-pci]
           (the following are aliases of these supported devices: ahci|
           e1000|virtio-blk|virtio-net|virtio-serial|virtio-balloon|virtio-9p|
-          virtio-scsi|virtio-rng|virtio-input-host|virtio-keyboard|virtio-mouse|
-          virtio-tablet|virtio-gpu)
+          virtio-scsi|virtio-rng|virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|virtio-gpu)
 
   -dfilter range, ...
   -display ...
@@ -472,16 +481,16 @@ QEMU Command-Line and Monitor Syntax and Support
   -m ...
   -M
 
-     [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
+     [help|?|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
      pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|
-     pc-i440fx-5.2|q35|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|
+     pc-i440fx-5.2|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|
      pc-q35-5.2|xenfv|xenfv-4.2]
 
   -machine
 
-           [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
+           [help|?|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
            pc-i440fx-2.3|pc-440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|
-           pc-i440fx-3.1|pc-i440fx-4.2|pc-i440fx-5.2|q35|pc-q35-2.6|pc-q35-2.9|
+           pc-i440fx-3.1|pc-i440fx-4.2|pc-i440fx-5.2|pc-q35-2.6|pc-q35-2.9|
            pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|pc-q35-5.2|xenfv|xenifv-4.2]
 
   -mem-path ...
@@ -516,7 +525,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -qmp ...
   -qmp-pretty ...
   -readconfig ...
-  -realtime ...
   -rtc ...
   -runas ...
   -s
@@ -524,7 +532,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -sandbox ...
   -seed ...
   -serial ...
-  -show-cursor
   -smbios ...
   -smp ...
   -spice
@@ -532,7 +539,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -trace ...
   -usb
   -usbdevice [braile|disk|host|mouse|net|serial|tablet]
-  -uuid ..
+  -uuid ...
   -version
   -vga [cirrus|none|qxl|std|xenfb]
   -virtfs ...
@@ -586,11 +593,8 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate_incoming
   migrate_pause
   migrate_recover ...
-  migrate_set_cache_size ...
   migrate_set_capability ...
-  migrate_set_downtime ...
   migrate_set_parameter ...
-  migrate_set_speed ...
   migrate_start_post_copy
   mouse_button ...
   mouse_move ...
@@ -652,13 +656,11 @@ QEMU Command-Line and Monitor Syntax and Support
   block-export-add
   block-export-del
   block-latency-histogram-set
-  block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
   calc-dirty-rate
-  change
   change-vnc-password
   chardev-add
   chardev-change
@@ -671,6 +673,7 @@ QEMU Command-Line and Monitor Syntax and Support
   device_add
   device_del
   device-list-properties
+  display-reload
   dump-guest-memory
   eject
   expire_password
@@ -691,10 +694,7 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate-incoming
   migrate-pause
   migrate-resume
-  migrate-set-cache-size
   migrate-set-capabilities
-  migrate_set_downtime
-  migrate_set_speed
   migrate-set-parameters
   migrate-start-postcopy
   object-add
@@ -717,14 +717,12 @@ QEMU Command-Line and Monitor Syntax and Support
   query-commands
   query-cpu-definitions
   query-cpu-model-expansion
-  query-cpus
   query-cpus-fast
   query-current-machine
   query-dirty-rate
   query-display-options
   query-dump
   query-dump-guest-memory-capability
-  query-events
   query-fdsets
   query-gic-capabilities
   query-hotpluggable-cpus
@@ -737,7 +735,6 @@ QEMU Command-Line and Monitor Syntax and Support
   query-memory-size-summary
   query-mice
   query-migrate
-  query-migrate-cache-size
   query-migrate-capabilities
   query-migrate-parameters
   query-name
@@ -763,6 +760,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-version
   query-vnc
   query-vnc-servers
+  query-yank
   query-xen-replication-status
   quit
   remove-fd
@@ -770,9 +768,14 @@ QEMU Command-Line and Monitor Syntax and Support
   ringbuf-write
   screendump
   send-key
+  set-action
   set_link
   set_password
   set-numa-node
+  sev-inject-launch-secret
+  snapshot-delete
+  snapshot-load
+  snapshot-save
   stop
   system_powerdown
   system_reset
@@ -784,6 +787,7 @@ QEMU Command-Line and Monitor Syntax and Support
   xen-load-devices-state
   xen-save-devices-state
   xen-set-global-dirty-log
+  yank
 
 -  The following command line options are unsupported:
 
@@ -833,31 +837,30 @@ QEMU Command-Line and Monitor Syntax and Support
          raw]
 
   -dtb file
-  -enable-hax
   -enable-sync-profile
   -g ...
   -icount ...
   -L ...
   -M
 
-     [isapc|microvm|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|pc-i440fx-1.6|
-     pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|pc-i440fx-2.7|
-     pc-i440fx-2.8|pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|
-     pc-i440fx-4.1|pc-i440fx-5.0|pc-i440fx-5.1|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|
-     pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|
-     pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
-     pc-q35-4.0|pc-q35-4.1|pc-q35-5.0|pc-q35-5.1]
+     [pc|isapc|microvm|x-remote|pc-i440fx-1.5|pc-i440fx-1.6|pc-i440fx-2.1|
+     pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|pc-i440fx-2.7|pc-i440fx-2.8|
+     pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|pc-i440fx-4.1|
+     pc-i440fx-5.0|pc-i440fx-5.1|pc-i440fx-6.0|q35|pc-q35-1.4|pc-q35-1.5|
+     pc-q35-1.6|pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|
+     pc-q35-2.4|pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|
+     pc-q35-3.0|pc-q35-4.0|pc-q35-4.1|pc-q35-5.0|pc-q35-5.1|pc-q35-6.0]
 
   -machine
 
-           [isapc|microvm|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|
-           pc-i440fx-1.6|pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|
-           pc-i440fx-2.5|pc-i440fx-2.7|pc-i440fx-2.8|pc-i440fx-2.10|
-           pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|pc-i440fx-4.1|
-           pc-i440fx-5.0|pc-i440fx-5.1|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|
-           pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|
-           pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
-           pc-q35-4.0|pc-q35-4.1|pc-q35-5.0|pc-q35-5.1]
+           [pc|isapc|microvm|x-remote|pc-i440fx-1.5|pc-i440fx-1.6|pc-i440fx-2.1|
+           pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|pc-i440fx-2.7|
+           pc-i440fx-2.8|pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|
+           pc-i440fx-4.0|pc-i440fx-4.1|pc-i440fx-5.0|pc-i440fx-5.1|
+           pc-i440fx-6.0|q35|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
+           pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|
+           pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|pc-q35-4.0|
+           pc-q35-4.1|pc-q35-5.0|pc-q35-5.1|pc-q35-6.0]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -879,23 +882,16 @@ QEMU Command-Line and Monitor Syntax and Support
   -singlestep
   -snapshot
   -soundhw ...
-  -tb-size ...
   -tpmdev emulator ...
   -vga [cg3|tcx|virtio|vmware]
   -win2k-hack
 
 - The following monitor commands are unsupported:
-  acl_add ...
-  acl_policy ...
-  acl_remove ...
-  acl_reset ...
-  acl_show ...
   block_job_cancel ...
   block_job_complete ...
   block_job_pause ...
   block_job_resume ...
   block_job_set_speed ...
-  block_passwd ...
   commit ...
   drive_mirror ...
   exit_preconfig

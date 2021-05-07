@@ -16,29 +16,23 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/softmmu/vl.c b/softmmu/vl.c
-index e6e0ad5a9259038413f855ef6374..eaab7bf13e8c51e93b3d0f348f06 100644
+index aadb52613888ef6ac1fe7ec3a038..07ade8e5ccd2934a69b82bcaabae 100644
 --- a/softmmu/vl.c
 +++ b/softmmu/vl.c
-@@ -34,6 +34,7 @@
- #include "qemu/uuid.h"
+@@ -40,6 +40,7 @@
  #include "sysemu/reset.h"
  #include "sysemu/runstate.h"
+ #include "sysemu/runstate-action.h"
 +#include <sys/resource.h>
  #include "sysemu/seccomp.h"
  #include "sysemu/tcg.h"
  #include "sysemu/xen.h"
-@@ -2899,6 +2900,7 @@ void qemu_init(int argc, char **argv, char **envp)
-     BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
-     QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
-     int mem_prealloc = 0; /* force preallocation of physical target memory */
+@@ -2625,6 +2626,17 @@ void qemu_init(int argc, char **argv, char **envp)
+     MachineClass *machine_class;
+     bool userconfig = true;
+     FILE *vmstate_dump_file = NULL;
 +    struct rlimit rlimit_as;
- 
-     os_set_line_buffering();
- 
-@@ -2910,6 +2912,16 @@ void qemu_init(int argc, char **argv, char **envp)
- 
-     qemu_mutex_lock_iothread();
- 
++
 +    /*
 +     * Try to raise the soft address space limit.
 +     * Default on SLES 11 SP2 is 80% of physical+swap memory.
@@ -48,7 +42,6 @@ index e6e0ad5a9259038413f855ef6374..eaab7bf13e8c51e93b3d0f348f06 100644
 +        rlimit_as.rlim_cur = rlimit_as.rlim_max;
 +        setrlimit(RLIMIT_AS, &rlimit_as);
 +    }
-+
-     atexit(qemu_run_exit_notifiers);
-     qemu_init_exec_dir(argv[0]);
  
+     qemu_add_opts(&qemu_drive_opts);
+     qemu_add_drive_opts(&qemu_legacy_drive_opts);

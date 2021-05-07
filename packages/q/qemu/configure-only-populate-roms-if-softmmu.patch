@@ -12,10 +12,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 7ce723bbe769dac2af8456079e89..a1312935a5683ed740c9b6143c6b 100755
+index 4f374b48890e7f1a868672f2fe49..9de240a6b3e7fb7d72b57353546a 100755
 --- a/configure
 +++ b/configure
-@@ -5858,7 +5858,7 @@ if { test "$cpu" = "i386" || test "$cpu" = "x86_64"; } && \
+@@ -5417,7 +5417,7 @@ if { test "$cpu" = "i386" || test "$cpu" = "x86_64"; } && \
  fi
  
  # Only build s390-ccw bios if we're on s390x and the compiler has -march=z900

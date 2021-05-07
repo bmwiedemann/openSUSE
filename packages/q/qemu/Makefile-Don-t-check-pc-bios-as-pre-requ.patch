@@ -11,10 +11,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 76dbb917f5cd3085ad93cb634c14..2e4808da4de018be61545ec681e3 100644
+index bcbbec71a1cb61342dada30c54d3..884d7b03faeb6d17f677a298ebef 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -105,7 +105,7 @@ x := $(shell rm -rf meson-private meson-info meson-logs)
+@@ -85,7 +85,7 @@ x := $(shell rm -rf meson-private meson-info meson-logs)
  endif
  
  # 1. ensure config-host.mak is up-to-date

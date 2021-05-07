@@ -21,10 +21,10 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 24 insertions(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 2839a2c5e906dde840f040c5f235..e1341c9d391bde792d37443c4b9f 100644
+index 9002e4d6187d4796773cfeb63723..e5d22c4806cf4f11b43371dc52c2 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -7887,6 +7887,27 @@ static int open_self_stat(void *cpu_env, int fd)
+@@ -7977,6 +7977,27 @@ static int open_self_stat(void *cpu_env, int fd)
      return 0;
  }
  
@@ -52,7 +52,7 @@ index 2839a2c5e906dde840f040c5f235..e1341c9d391bde792d37443c4b9f 100644
  static int open_self_auxv(void *cpu_env, int fd)
  {
      CPUState *cpu = env_cpu((CPUArchState *)cpu_env);
-@@ -8041,6 +8062,9 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
+@@ -8131,6 +8152,9 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
  #if defined(TARGET_SPARC) || defined(TARGET_HPPA)
          { "/proc/cpuinfo", open_cpuinfo, is_proc },
  #endif

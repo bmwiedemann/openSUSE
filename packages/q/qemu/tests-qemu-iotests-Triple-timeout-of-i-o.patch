@@ -13,15 +13,15 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
-index ef105dfc393e96c6ef2f34c1466d..3ecff3edfa7569d49ec7d81c2195 100644
+index 0fc52d20d74020a4c4a0d697aaa2..622495201eed12a5fe4734581f84 100644
 --- a/tests/qemu-iotests/common.qemu
 +++ b/tests/qemu-iotests/common.qemu
-@@ -76,7 +76,7 @@ _timed_wait_for()
+@@ -85,7 +85,7 @@ _timed_wait_for()
      timeout=yes
  
      QEMU_STATUS[$h]=0
 -    while IFS= read -t ${QEMU_COMM_TIMEOUT} resp <&${QEMU_OUT[$h]}
 +    while IFS= read -t $((${QEMU_COMM_TIMEOUT}*3)) resp <&${QEMU_OUT[$h]}
      do
-         if [ -z "${silent}" ] && [ -z "${mismatch_only}" ]; then
-             echo "${resp}" | _filter_testdir | _filter_qemu \
+         if [ -n "$capture_events" ]; then
+             capture=0

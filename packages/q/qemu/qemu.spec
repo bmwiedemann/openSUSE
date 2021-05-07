@@ -93,8 +93,8 @@
 
 %bcond_with system_membarrier
 
-%define qemuver 5.2.0
-%define srcver  5.2.0
+%define qemuver 6.0.0
+%define srcver  6.0.0
 %define sbver   1.14.0_0_g155821a
 %define srcname qemu
 Name:           qemu%{name_suffix}
@@ -132,134 +132,51 @@ Source303:      README.PACKAGING
 # This patch queue is auto-generated - see README.PACKAGING for process
 
 # Patches applied in base project:
-Patch00000:     ui-vnc-Add-missing-lock-for-send_color_m.patch
-Patch00001:     block-Simplify-qmp_block_resize-error-pa.patch
-Patch00002:     block-Fix-locking-in-qmp_block_resize.patch
-Patch00003:     block-Fix-deadlock-in-bdrv_co_yield_to_d.patch
-Patch00004:     audio-add-sanity-check.patch
-Patch00005:     memory-clamp-cached-translation-in-case-.patch
-Patch00006:     build-no-pie-is-no-functional-linker-fla.patch
-Patch00007:     block-nfs-fix-int-overflow-in-nfs_client.patch
-Patch00008:     iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
-Patch00009:     tcg-Use-memset-for-large-vector-byte-rep.patch
-Patch00010:     hw-timer-slavio_timer-Allow-64-bit-acces.patch
-Patch00011:     target-arm-Fix-MTE0_ACTIVE.patch
-Patch00012:     target-arm-Don-t-decode-insns-in-the-XSc.patch
-Patch00013:     hw-net-lan9118-Fix-RX-Status-FIFO-PEEK-v.patch
-Patch00014:     9pfs-Fully-restart-unreclaim-loop-CVE-20.patch
-Patch00015:     target-arm-Introduce-PREDDESC-field-defi.patch
-Patch00016:     target-arm-Update-PFIRST-PNEXT-for-pred_.patch
-Patch00017:     target-arm-Update-ZIP-UZP-TRN-for-pred_d.patch
-Patch00018:     target-arm-Update-REV-PUNPK-for-pred_des.patch
-Patch00019:     update-linux-headers-Include-const.h.patch
-Patch00020:     Update-linux-headers-to-5.11-rc2.patch
-Patch00021:     vfio-ccw-Connect-the-device-request-noti.patch
-Patch00022:     net-Fix-handling-of-id-in-netdev_add-and.patch
-Patch00023:     block-Separate-blk_is_writable-and-blk_s.patch
-Patch00024:     hw-intc-arm_gic-Fix-interrupt-ID-in-GICD.patch
-Patch00025:     virtiofsd-extract-lo_do_open-from-lo_ope.patch
-Patch00026:     virtiofsd-optionally-return-inode-pointe.patch
-Patch00027:     virtiofsd-prevent-opening-of-special-fil.patch
-Patch00028:     virtio-move-use-disabled-flag-property-t.patch
-Patch00029:     qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
-Patch00030:     qemu-storage-daemon-Enable-object-add.patch
-Patch00031:     blockjob-Fix-crash-with-IOthread-when-bl.patch
-Patch00032:     monitor-Fix-assertion-failure-on-shutdow.patch
-Patch00033:     tools-virtiofsd-Replace-the-word-whiteli.patch
-Patch00034:     virtiofsd-Save-error-code-early-at-the-f.patch
-Patch00035:     viriofsd-Add-support-for-FUSE_HANDLE_KIL.patch
-Patch00036:     spice-app-avoid-crash-when-core-spice-mo.patch
-Patch00037:     i386-acpi-restore-device-paths-for-pre-5.patch
-Patch00038:     virtiofs-drop-remapped-security.capabili.patch
-Patch00039:     hw-s390x-fix-build-for-virtio-9p-ccw.patch
-Patch00040:     s390x-pci-restore-missing-Query-PCI-Func.patch
-Patch00041:     lsilogic-Use-PCIDevice-exit-instead-of-D.patch
-Patch00042:     vhost-user-blk-fix-blkcfg-num_queues-end.patch
-Patch00043:     e1000-fail-early-for-evil-descriptor.patch
-Patch00044:     net-introduce-qemu_receive_packet.patch
-Patch00045:     e1000-switch-to-use-qemu_receive_packet-.patch
-Patch00046:     dp8393x-switch-to-use-qemu_receive_packe.patch
-Patch00047:     msf2-mac-switch-to-use-qemu_receive_pack.patch
-Patch00048:     sungem-switch-to-use-qemu_receive_packet.patch
-Patch00049:     tx_pkt-switch-to-use-qemu_receive_packet.patch
-Patch00050:     rtl8139-switch-to-use-qemu_receive_packe.patch
-Patch00051:     pcnet-switch-to-use-qemu_receive_packet-.patch
-Patch00052:     cadence_gem-switch-to-use-qemu_receive_p.patch
-Patch00053:     lan9118-switch-to-use-qemu_receive_packe.patch
-Patch00054:     hw-sd-sd-Move-the-sd_block_-read-write-a.patch
-Patch00055:     hw-sd-sd-Skip-write-protect-groups-check.patch
-Patch00056:     hw-sd-sd-Fix-build-error-when-DEBUG_SD-i.patch
-Patch00057:     hw-sd-sd-Actually-perform-the-erase-oper.patch
-Patch00058:     hw-sd-sdhci-Don-t-transfer-any-data-when.patch
-Patch00059:     hw-sd-sdhci-Don-t-write-to-SDHC_SYSAD-re.patch
-Patch00060:     hw-sd-sdhci-Correctly-set-the-controller.patch
-Patch00061:     hw-sd-sdhci-Limit-block-size-only-when-S.patch
-Patch00062:     hw-sd-sdhci-Reset-the-data-pointer-of-s-.patch
-Patch00063:     xen-block-Fix-removal-of-backend-instanc.patch
-Patch00064:     hw-arm-virt-Disable-pl011-clock-migratio.patch
-Patch00065:     s390x-move-S390_ADAPTER_SUPPRESSIBLE.patch
-Patch00066:     s390x-add-have_virtio_ccw.patch
-Patch00067:     s390x-modularize-virtio-gpu-ccw.patch
-Patch00068:     util-fix-use-after-free-in-module_load_o.patch
-Patch00069:     target-xtensa-fix-meson.build-rule-for-x.patch
-Patch00070:     hw-virtio-pci-Added-counter-for-pcie-cap.patch
-Patch00071:     hw-virtio-pci-Added-AER-capability.patch
-Patch00072:     virtio-pci-compat-page-aligned-ATS.patch
-Patch00073:     s390x-css-report-errors-from-ccw_dstream.patch
-Patch00074:     block-rbd-fix-memory-leak-in-qemu_rbd_co.patch
-Patch00075:     block-rbd-Fix-memory-leak-in-qemu_rbd_co.patch
-Patch00076:     hw-block-fdc-Fix-fallback-property-on-sy.patch
-Patch00077:     cpu-core-Fix-help-of-CPU-core-device-typ.patch
-Patch00078:     hw-arm-virt-acpi-build-Fix-GSIV-values-o.patch
-Patch00079:     hw-isa-Kconfig-Add-missing-dependency-VI.patch
-Patch00080:     hw-isa-piix4-Migrate-Reset-Control-Regis.patch
-Patch00081:     mptsas-Remove-unused-MPTSASState-pending.patch
-Patch00082:     net-vmxnet3-validate-configuration-value.patch
-Patch00083:     XXX-dont-dump-core-on-sigabort.patch
-Patch00084:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00085:     qemu-cvs-gettimeofday.patch
-Patch00086:     qemu-cvs-ioctl_debug.patch
-Patch00087:     qemu-cvs-ioctl_nodirection.patch
-Patch00088:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00089:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00090:     linux-user-binfmt-support-host-binaries.patch
-Patch00091:     linux-user-Fake-proc-cpuinfo.patch
-Patch00092:     linux-user-use-target_ulong.patch
-Patch00093:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00094:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00095:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00096:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00097:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00098:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00099:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00100:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00101:     increase-x86_64-physical-bits-to-42.patch
-Patch00102:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00103:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00104:     Make-installed-scripts-explicitly-python.patch
-Patch00105:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00106:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00107:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00108:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00109:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00110:     tests-change-error-message-in-test-162.patch
-Patch00111:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00112:     configure-only-populate-roms-if-softmmu.patch
-Patch00113:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00114:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00115:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00116:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00117:     docs-add-SUSE-support-statements-to-html.patch
-Patch00118:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00119:     Revert-qht-constify-qht_statistics_init.patch
-Patch00120:     qht-Revert-some-constification-in-qht.c.patch
-Patch00121:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00122:     Revert-roms-efirom-tests-uefi-test-tools.patch
-Patch00123:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
-Patch00124:     roms-Makefile-add-cross-file-to-qboot-me.patch
-Patch00125:     usb-Help-compiler-out-to-avoid-a-warning.patch
-Patch00126:     module-for-virtio-gpu-pre-load-module-to.patch
-Patch00127:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00000:     net-vmxnet3-validate-configuration-value.patch
+Patch00001:     XXX-dont-dump-core-on-sigabort.patch
+Patch00002:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00003:     qemu-cvs-gettimeofday.patch
+Patch00004:     qemu-cvs-ioctl_debug.patch
+Patch00005:     qemu-cvs-ioctl_nodirection.patch
+Patch00006:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00007:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00008:     linux-user-binfmt-support-host-binaries.patch
+Patch00009:     linux-user-Fake-proc-cpuinfo.patch
+Patch00010:     linux-user-use-target_ulong.patch
+Patch00011:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00012:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00013:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00014:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00015:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00016:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00017:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00018:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00019:     increase-x86_64-physical-bits-to-42.patch
+Patch00020:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00021:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00022:     Make-installed-scripts-explicitly-python.patch
+Patch00023:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00024:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00025:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00026:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00027:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00028:     tests-change-error-message-in-test-162.patch
+Patch00029:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00030:     configure-only-populate-roms-if-softmmu.patch
+Patch00031:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00032:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00033:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00034:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00035:     Revert-qht-constify-qht_statistics_init.patch
+Patch00036:     qht-Revert-some-constification-in-qht.c.patch
+Patch00037:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00038:     Revert-roms-efirom-tests-uefi-test-tools.patch
+Patch00039:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+Patch00040:     roms-Makefile-add-cross-file-to-qboot-me.patch
+Patch00041:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00042:     module-for-virtio-gpu-pre-load-module-to.patch
+Patch00043:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00044:     doc-add-our-support-doc-to-the-main-proj.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -273,12 +190,8 @@ Patch02003:     help-compiler-out-by-initializing-array.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
-# Patches applied in ui/keycodemapdb/:
-Patch08000:     Make-keycode-gen-output-reproducible-use.patch
 # Patches applied in roms/qboot/:
 Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
-# Patches applied in roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/:
-Patch27000:     brotli-fix-actual-variable-array-paramet.patch
 
 # Please do not add patches manually here.
 
@@ -328,7 +241,7 @@ BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
 %endif
-BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libcurl) >= 7.29
 BuildRequires:  pkgconfig(libsasl2)
 %if %{build_x86_firmware_from_source}
 BuildRequires:  dos2unix
@@ -1128,100 +1041,17 @@ This package records qemu testsuite results and represents successful testing.
 %patch00037 -p1
 %patch00038 -p1
 %patch00039 -p1
-%patch00040 -p1
-%patch00041 -p1
-%patch00042 -p1
-%patch00043 -p1
-%patch00044 -p1
-%patch00045 -p1
-%patch00046 -p1
-%patch00047 -p1
-%patch00048 -p1
-%patch00049 -p1
-%patch00050 -p1
-%patch00051 -p1
-%patch00052 -p1
-%patch00053 -p1
-%patch00054 -p1
-%patch00055 -p1
-%patch00056 -p1
-%patch00057 -p1
-%patch00058 -p1
-%patch00059 -p1
-%patch00060 -p1
-%patch00061 -p1
-%patch00062 -p1
-%patch00063 -p1
-%patch00064 -p1
-%patch00065 -p1
-%patch00066 -p1
-%patch00067 -p1
-%patch00068 -p1
-%patch00069 -p1
-%patch00070 -p1
-%patch00071 -p1
-%patch00072 -p1
-%patch00073 -p1
-%patch00074 -p1
-%patch00075 -p1
-%patch00076 -p1
-%patch00077 -p1
-%patch00078 -p1
-%patch00079 -p1
-%patch00080 -p1
-%patch00081 -p1
-%patch00082 -p1
-%patch00083 -p1
-%patch00084 -p1
-%patch00085 -p1
-%patch00086 -p1
-%patch00087 -p1
-%patch00088 -p1
-%patch00089 -p1
-%patch00090 -p1
-%patch00091 -p1
-%patch00092 -p1
-%patch00093 -p1
-%patch00094 -p1
-%patch00095 -p1
-%patch00096 -p1
-%patch00097 -p1
-%patch00098 -p1
-%patch00099 -p1
-%patch00100 -p1
-%patch00101 -p1
-%patch00102 -p1
-%patch00103 -p1
-%patch00104 -p1
-%patch00105 -p1
-%patch00106 -p1
-%patch00107 -p1
-%patch00108 -p1
-%patch00109 -p1
-%patch00110 -p1
-%patch00111 -p1
-%patch00112 -p1
-%patch00113 -p1
-%patch00114 -p1
-%patch00115 -p1
-%patch00116 -p1
-%if %{legacy_qemu_kvm}
-%patch00117 -p1
-%endif
-%patch00118 -p1
-%patch00119 -p1
-%patch00120 -p1
-%patch00121 -p1
-%patch00122 -p1
-%patch00123 -p1
 %ifarch aarch64
-%patch00124 -p1
+%patch00040 -p1
 %endif
 %ifarch %arm %ix86 ppc
-%patch00125 -p1
+%patch00041 -p1
 %endif
-%patch00126 -p1
-%patch00127 -p1
+%patch00042 -p1
+%patch00043 -p1
+%if %{legacy_qemu_kvm}
+%patch00044 -p1
+%endif
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1234,9 +1064,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch02003 -p1
 %patch03000 -p1
 %patch03001 -p1
-%patch08000 -p1
 %patch11000 -p1
-%patch27000 -p1
 
 %if "%{name}" != "qemu-linux-user"
 # for the record, this set of firmware files is installed, but we don't
@@ -1338,6 +1166,14 @@ efi-vmxnet3.rom}
 %define _lto_cflags %{nil}
 %endif
 
+%if %{legacy_qemu_kvm}
+%ifarch s390x
+cp %{SOURCE13} docs/supported.rst
+%else
+cp %{SOURCE13} docs/supported.rst
+%endif
+%endif
+
 %define srcdir %{_builddir}/%buildsubdir
 %define blddir %srcdir/build
 mkdir -p %blddir
@@ -1353,9 +1189,13 @@ cd %blddir
 	--firmwarepath=%_datadir/%name \
         --python=%_bindir/python3 \
 	--extra-cflags="%{optflags}" \
+	--with-git-submodules=ignore \
 	--disable-fuzzing \
+	--disable-multiprocess \
 	--disable-stack-protector \
 	--disable-strip \
+	--disable-tcg-interpreter \
+	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--with-default-devices \
@@ -1381,6 +1221,7 @@ cd %blddir
 	--enable-curses \
 	--enable-dmg \
 	--enable-fdt \
+	--enable-gio \
 	--enable-gcrypt \
 	--enable-glusterfs \
 	--enable-gnutls \
@@ -1503,6 +1344,7 @@ cd %blddir
 	--enable-coroutine-pool \
 	--disable-dmg \
 	--disable-fdt \
+	--disable-gio \
 	--disable-iconv \
 	--disable-kvm \
 	--disable-libdaxctl \
@@ -1780,6 +1622,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-alpha-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-arm-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-armeb-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-cris-binfmt
+ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hexagon-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hppa-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-i386-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-m68k-binfmt
@@ -2001,52 +1844,91 @@ fi
 %_datadir/%name/trace-events-all
 %dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-virtiofsd.json
+%dir %_docdir/%name/_static
+%dir %_docdir/%name/devel
 %dir %_docdir/%name/interop
-%dir %_docdir/%name/interop/_static
 %dir %_docdir/%name/specs
-%dir %_docdir/%name/specs/_static
 %dir %_docdir/%name/system
-%dir %_docdir/%name/system/_static
 %dir %_docdir/%name/system/arm
 %dir %_docdir/%name/system/i386
+%dir %_docdir/%name/system/ppc
+%dir %_docdir/%name/system/riscv
 %dir %_docdir/%name/system/s390x
 %dir %_docdir/%name/tools
-%dir %_docdir/%name/tools/_static
 %dir %_docdir/%name/user
-%dir %_docdir/%name/user/_static
+%_docdir/%name/.buildinfo
+%_docdir/%name/_static/alabaster.css
+%_docdir/%name/_static/basic.css
+%_docdir/%name/_static/custom.css
+%_docdir/%name/_static/doctools.js
+%_docdir/%name/_static/documentation_options.js
+%_docdir/%name/_static/file.png
+%_docdir/%name/_static/jquery-3.5.1.js
+%_docdir/%name/_static/jquery.js
+%_docdir/%name/_static/language_data.js
+%_docdir/%name/_static/minus.png
+%_docdir/%name/_static/plus.png
+%_docdir/%name/_static/pygments.css
+%_docdir/%name/_static/searchtools.js
+%_docdir/%name/_static/underscore-*
+%_docdir/%name/_static/underscore.js
+%_docdir/%name/devel/atomics.html
+%_docdir/%name/devel/bitops.html
+%_docdir/%name/devel/block-coroutine-wrapper.html
+%_docdir/%name/devel/build-system.html
+%_docdir/%name/devel/clocks.html
+%_docdir/%name/devel/code-of-conduct.html
+%_docdir/%name/devel/conflict-resolution.html
+%_docdir/%name/devel/control-flow-integrity.html
+%_docdir/%name/devel/decodetree.html
+%_docdir/%name/devel/fuzzing.html
+%_docdir/%name/devel/index.html
+%_docdir/%name/devel/kconfig.html
+%_docdir/%name/devel/loads-stores.html
+%_docdir/%name/devel/memory.html
+%_docdir/%name/devel/multi-process.html
+%_docdir/%name/devel/migration.html
+%_docdir/%name/devel/multi-thread-tcg.html
+%_docdir/%name/devel/qom.html
+%_docdir/%name/devel/qgraph.html
+%_docdir/%name/devel/qtest.html
+%_docdir/%name/devel/reset.html
+%_docdir/%name/devel/s390-dasd-ipl.html
+%_docdir/%name/devel/secure-coding-practices.html
+%_docdir/%name/devel/stable-process.html
+%_docdir/%name/devel/style.html
+%_docdir/%name/devel/tcg-icount.html
+%_docdir/%name/devel/tcg-plugins.html
+%_docdir/%name/devel/tcg.html
+%_docdir/%name/devel/testing.html
+%_docdir/%name/devel/tracing.html
+%_docdir/%name/genindex.html
 %_docdir/%name/index.html
-%_docdir/%name/interop/.buildinfo
-%_docdir/%name/interop/_static/*
 %_docdir/%name/interop/bitmaps.html
 %_docdir/%name/interop/dbus.html
 %_docdir/%name/interop/dbus-vmstate.html
-%_docdir/%name/interop/genindex.html
 %_docdir/%name/interop/index.html
 %_docdir/%name/interop/live-block-operations.html
-%_docdir/%name/interop/objects.inv
 %_docdir/%name/interop/pr-helper.html
 %_docdir/%name/interop/qemu-ga-ref.html
 %_docdir/%name/interop/qemu-qmp-ref.html
-%_docdir/%name/interop/search.html
-%_docdir/%name/interop/searchindex.js
+%_docdir/%name/interop/qemu-storage-daemon-qmp-ref.html
 %_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-user-gpu.html
 %_docdir/%name/interop/vhost-vdpa.html
-%_docdir/%name/specs/.buildinfo
-%_docdir/%name/specs/_static/*
+%_docdir/%name/objects.inv
+%_docdir/%name/search.html
+%_docdir/%name/searchindex.js
 %_docdir/%name/specs/acpi_hest_ghes.html
 %_docdir/%name/specs/acpi_hw_reduced_hotplug.html
-%_docdir/%name/specs/genindex.html
 %_docdir/%name/specs/index.html
-%_docdir/%name/specs/objects.inv
 %_docdir/%name/specs/ppc-spapr-numa.html
 %_docdir/%name/specs/ppc-spapr-xive.html
 %_docdir/%name/specs/ppc-xive.html
-%_docdir/%name/specs/search.html
-%_docdir/%name/specs/searchindex.js
 %_docdir/%name/specs/tpm.html
-%_docdir/%name/system/.buildinfo
-%_docdir/%name/system/_static/*
+%if %{legacy_qemu_kvm}
+%_docdir/%name/supported.html
+%endif
 %_docdir/%name/system/arm/aspeed.html
 %_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
@@ -2062,6 +1944,7 @@ fi
 %_docdir/%name/system/arm/palm.html
 %_docdir/%name/system/arm/raspi.html
 %_docdir/%name/system/arm/realview.html
+%_docdir/%name/system/arm/sabrelite.html
 %_docdir/%name/system/arm/sbsa.html
 %_docdir/%name/system/arm/stellaris.html
 %_docdir/%name/system/arm/sx1.html
@@ -2074,7 +1957,8 @@ fi
 %_docdir/%name/system/cpu-hotplug.html
 %_docdir/%name/system/deprecated.html
 %_docdir/%name/system/gdb.html
-%_docdir/%name/system/genindex.html
+%_docdir/%name/system/generic-loader.html
+%_docdir/%name/system/guest-loader.html
 %_docdir/%name/system/i386/microvm.html
 %_docdir/%name/system/i386/pc.html
 %_docdir/%name/system/images.html
@@ -2086,22 +1970,29 @@ fi
 %_docdir/%name/system/linuxboot.html
 %_docdir/%name/system/managed-startup.html
 %_docdir/%name/system/monitor.html
+%_docdir/%name/system/multi-process.html
 %_docdir/%name/system/mux-chardev.html
 %_docdir/%name/system/net.html
-%_docdir/%name/system/objects.inv
+%_docdir/%name/system/nvme.html
+%_docdir/%name/system/ppc/embedded.html
+%_docdir/%name/system/ppc/powermac.html
+%_docdir/%name/system/ppc/powernv.html
+%_docdir/%name/system/ppc/prep.html
+%_docdir/%name/system/ppc/pseries.html
 %_docdir/%name/system/pr-manager.html
 %_docdir/%name/system/qemu-block-drivers.html
 %_docdir/%name/system/qemu-cpu-models.html
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
+%_docdir/%name/system/removed-features.html
+%_docdir/%name/system/riscv/microchip-icicle-kit.html
+%_docdir/%name/system/riscv/sifive_u.html
 %_docdir/%name/system/s390x/3270.html
 %_docdir/%name/system/s390x/bootdevices.html
 %_docdir/%name/system/s390x/css.html
 %_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
 %_docdir/%name/system/s390x/vfio-ccw.html
-%_docdir/%name/system/search.html
-%_docdir/%name/system/searchindex.js
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
 %_docdir/%name/system/target-avr.html
@@ -2109,6 +2000,7 @@ fi
 %_docdir/%name/system/target-m68k.html
 %_docdir/%name/system/target-mips.html
 %_docdir/%name/system/target-ppc.html
+%_docdir/%name/system/target-riscv.html
 %_docdir/%name/system/target-rx.html
 %_docdir/%name/system/target-s390x.html
 %_docdir/%name/system/target-sparc64.html
@@ -2120,36 +2012,27 @@ fi
 %_docdir/%name/system/virtio-net-failover.html
 %_docdir/%name/system/virtio-pmem.html
 %_docdir/%name/system/vnc-security.html
-%_docdir/%name/tools/.buildinfo
-%_docdir/%name/tools/_static/*
-%_docdir/%name/tools/genindex.html
 %_docdir/%name/tools/index.html
-%_docdir/%name/tools/objects.inv
 %_docdir/%name/tools/qemu-img.html
 %_docdir/%name/tools/qemu-nbd.html
 %_docdir/%name/tools/qemu-pr-helper.html
 %_docdir/%name/tools/qemu-trace-stap.html
-%_docdir/%name/tools/search.html
-%_docdir/%name/tools/searchindex.js
+%_docdir/%name/tools/qemu-storage-daemon.html
 %_docdir/%name/tools/virtfs-proxy-helper.html
 %_docdir/%name/tools/virtiofsd.html
-%_docdir/%name/user/.buildinfo
-%_docdir/%name/user/_static/*
-%_docdir/%name/user/genindex.html
 %_docdir/%name/user/index.html
 %_docdir/%name/user/main.html
-%_docdir/%name/user/objects.inv
-%_docdir/%name/user/search.html
-%_docdir/%name/user/searchindex.js
 %dir %_libexecdir/supportconfig
 %dir %_libexecdir/supportconfig/plugins
 %_libexecdir/supportconfig/plugins/%name
 %_mandir/man1/%name.1.gz
+%_mandir/man1/qemu-storage-daemon.1.gz
 %_mandir/man1/virtiofsd.1.gz
 %_mandir/man7/qemu-block-drivers.7.gz
 %_mandir/man7/qemu-cpu-models.7.gz
 %_mandir/man7/qemu-qmp-ref.7.gz
 %_mandir/man7/qemu-ga-ref.7.gz
+%_mandir/man7/qemu-storage-daemon-qmp-ref.7.gz
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
 %if %{kvm_available}
@@ -2531,6 +2414,7 @@ fi
 %_bindir/qemu-arm
 %_bindir/qemu-armeb
 %_bindir/qemu-cris
+%_bindir/qemu-hexagon
 %_bindir/qemu-hppa
 %_bindir/qemu-i386
 %_bindir/qemu-m68k

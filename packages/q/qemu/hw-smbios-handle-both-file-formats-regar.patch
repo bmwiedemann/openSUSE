@@ -16,7 +16,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 39 insertions(+), 4 deletions(-)
 
 diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 6a3d39793bc9dd13f6c6cc8c08e4..e3c9d92c1d60c0f791c5852f88e5 100644
+index f22c4f5b734e89a390cada7ea422..c65f1b9dcfad50ab69ba92881b5f 100644
 --- a/hw/smbios/smbios.c
 +++ b/hw/smbios/smbios.c
 @@ -1040,6 +1040,7 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)

@@ -13,10 +13,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index e0cfb6227803c30755841477b593..1526c70a6ef9899fa160bae96efc 100644
+index 1e7f0206f4e4852c317f8ab0a7b6..dcbd44dbb4202e311c9fe91aa427 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -5728,8 +5728,21 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+@@ -5805,8 +5805,21 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
      ie = ioctl_entries;
      for(;;) {
          if (ie->target_cmd == 0) {

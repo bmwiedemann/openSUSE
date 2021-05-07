@@ -178,7 +178,7 @@ BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
 %endif
-BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libcurl) >= 7.29
 BuildRequires:  pkgconfig(libsasl2)
 %if %{build_x86_firmware_from_source}
 BuildRequires:  dos2unix
@@ -1040,6 +1040,14 @@ efi-vmxnet3.rom}
 %define _lto_cflags %{nil}
 %endif
 
+%if %{legacy_qemu_kvm}
+%ifarch s390x
+cp %{SOURCE13} docs/supported.rst
+%else
+cp %{SOURCE13} docs/supported.rst
+%endif
+%endif
+
 %define srcdir %{_builddir}/%buildsubdir
 %define blddir %srcdir/build
 mkdir -p %blddir
@@ -1055,9 +1063,13 @@ cd %blddir
 	--firmwarepath=%_datadir/%name \
         --python=%_bindir/python3 \
 	--extra-cflags="%{optflags}" \
+	--with-git-submodules=ignore \
 	--disable-fuzzing \
+	--disable-multiprocess \
 	--disable-stack-protector \
 	--disable-strip \
+	--disable-tcg-interpreter \
+	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--with-default-devices \
@@ -1083,6 +1095,7 @@ cd %blddir
 	--enable-curses \
 	--enable-dmg \
 	--enable-fdt \
+	--enable-gio \
 	--enable-gcrypt \
 	--enable-glusterfs \
 	--enable-gnutls \
@@ -1205,6 +1218,7 @@ cd %blddir
 	--enable-coroutine-pool \
 	--disable-dmg \
 	--disable-fdt \
+	--disable-gio \
 	--disable-iconv \
 	--disable-kvm \
 	--disable-libdaxctl \
@@ -1482,6 +1496,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-alpha-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-arm-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-armeb-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-cris-binfmt
+ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hexagon-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hppa-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-i386-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-m68k-binfmt
@@ -1703,52 +1718,91 @@ fi
 %_datadir/%name/trace-events-all
 %dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-virtiofsd.json
+%dir %_docdir/%name/_static
+%dir %_docdir/%name/devel
 %dir %_docdir/%name/interop
-%dir %_docdir/%name/interop/_static
 %dir %_docdir/%name/specs
-%dir %_docdir/%name/specs/_static
 %dir %_docdir/%name/system
-%dir %_docdir/%name/system/_static
 %dir %_docdir/%name/system/arm
 %dir %_docdir/%name/system/i386
+%dir %_docdir/%name/system/ppc
+%dir %_docdir/%name/system/riscv
 %dir %_docdir/%name/system/s390x
 %dir %_docdir/%name/tools
-%dir %_docdir/%name/tools/_static
 %dir %_docdir/%name/user
-%dir %_docdir/%name/user/_static
+%_docdir/%name/.buildinfo
+%_docdir/%name/_static/alabaster.css
+%_docdir/%name/_static/basic.css
+%_docdir/%name/_static/custom.css
+%_docdir/%name/_static/doctools.js
+%_docdir/%name/_static/documentation_options.js
+%_docdir/%name/_static/file.png
+%_docdir/%name/_static/jquery-3.5.1.js
+%_docdir/%name/_static/jquery.js
+%_docdir/%name/_static/language_data.js
+%_docdir/%name/_static/minus.png
+%_docdir/%name/_static/plus.png
+%_docdir/%name/_static/pygments.css
+%_docdir/%name/_static/searchtools.js
+%_docdir/%name/_static/underscore-*
+%_docdir/%name/_static/underscore.js
+%_docdir/%name/devel/atomics.html
+%_docdir/%name/devel/bitops.html
+%_docdir/%name/devel/block-coroutine-wrapper.html
+%_docdir/%name/devel/build-system.html
+%_docdir/%name/devel/clocks.html
+%_docdir/%name/devel/code-of-conduct.html
+%_docdir/%name/devel/conflict-resolution.html
+%_docdir/%name/devel/control-flow-integrity.html
+%_docdir/%name/devel/decodetree.html
+%_docdir/%name/devel/fuzzing.html
+%_docdir/%name/devel/index.html
+%_docdir/%name/devel/kconfig.html
+%_docdir/%name/devel/loads-stores.html
+%_docdir/%name/devel/memory.html
+%_docdir/%name/devel/multi-process.html
+%_docdir/%name/devel/migration.html
+%_docdir/%name/devel/multi-thread-tcg.html
+%_docdir/%name/devel/qom.html
+%_docdir/%name/devel/qgraph.html
+%_docdir/%name/devel/qtest.html
+%_docdir/%name/devel/reset.html
+%_docdir/%name/devel/s390-dasd-ipl.html
+%_docdir/%name/devel/secure-coding-practices.html
+%_docdir/%name/devel/stable-process.html
+%_docdir/%name/devel/style.html
+%_docdir/%name/devel/tcg-icount.html
+%_docdir/%name/devel/tcg-plugins.html
+%_docdir/%name/devel/tcg.html
+%_docdir/%name/devel/testing.html
+%_docdir/%name/devel/tracing.html
+%_docdir/%name/genindex.html
 %_docdir/%name/index.html
-%_docdir/%name/interop/.buildinfo
-%_docdir/%name/interop/_static/*
 %_docdir/%name/interop/bitmaps.html
 %_docdir/%name/interop/dbus.html
 %_docdir/%name/interop/dbus-vmstate.html
-%_docdir/%name/interop/genindex.html
 %_docdir/%name/interop/index.html
 %_docdir/%name/interop/live-block-operations.html
-%_docdir/%name/interop/objects.inv
 %_docdir/%name/interop/pr-helper.html
 %_docdir/%name/interop/qemu-ga-ref.html
 %_docdir/%name/interop/qemu-qmp-ref.html
-%_docdir/%name/interop/search.html
-%_docdir/%name/interop/searchindex.js
+%_docdir/%name/interop/qemu-storage-daemon-qmp-ref.html
 %_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-user-gpu.html
 %_docdir/%name/interop/vhost-vdpa.html
-%_docdir/%name/specs/.buildinfo
-%_docdir/%name/specs/_static/*
+%_docdir/%name/objects.inv
+%_docdir/%name/search.html
+%_docdir/%name/searchindex.js
 %_docdir/%name/specs/acpi_hest_ghes.html
 %_docdir/%name/specs/acpi_hw_reduced_hotplug.html
-%_docdir/%name/specs/genindex.html
 %_docdir/%name/specs/index.html
-%_docdir/%name/specs/objects.inv
 %_docdir/%name/specs/ppc-spapr-numa.html
 %_docdir/%name/specs/ppc-spapr-xive.html
 %_docdir/%name/specs/ppc-xive.html
-%_docdir/%name/specs/search.html
-%_docdir/%name/specs/searchindex.js
 %_docdir/%name/specs/tpm.html
-%_docdir/%name/system/.buildinfo
-%_docdir/%name/system/_static/*
+%if %{legacy_qemu_kvm}
+%_docdir/%name/supported.html
+%endif
 %_docdir/%name/system/arm/aspeed.html
 %_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
@@ -1764,6 +1818,7 @@ fi
 %_docdir/%name/system/arm/palm.html
 %_docdir/%name/system/arm/raspi.html
 %_docdir/%name/system/arm/realview.html
+%_docdir/%name/system/arm/sabrelite.html
 %_docdir/%name/system/arm/sbsa.html
 %_docdir/%name/system/arm/stellaris.html
 %_docdir/%name/system/arm/sx1.html
@@ -1776,7 +1831,8 @@ fi
 %_docdir/%name/system/cpu-hotplug.html
 %_docdir/%name/system/deprecated.html
 %_docdir/%name/system/gdb.html
-%_docdir/%name/system/genindex.html
+%_docdir/%name/system/generic-loader.html
+%_docdir/%name/system/guest-loader.html
 %_docdir/%name/system/i386/microvm.html
 %_docdir/%name/system/i386/pc.html
 %_docdir/%name/system/images.html
@@ -1788,22 +1844,29 @@ fi
 %_docdir/%name/system/linuxboot.html
 %_docdir/%name/system/managed-startup.html
 %_docdir/%name/system/monitor.html
+%_docdir/%name/system/multi-process.html
 %_docdir/%name/system/mux-chardev.html
 %_docdir/%name/system/net.html
-%_docdir/%name/system/objects.inv
+%_docdir/%name/system/nvme.html
+%_docdir/%name/system/ppc/embedded.html
+%_docdir/%name/system/ppc/powermac.html
+%_docdir/%name/system/ppc/powernv.html
+%_docdir/%name/system/ppc/prep.html
+%_docdir/%name/system/ppc/pseries.html
 %_docdir/%name/system/pr-manager.html
 %_docdir/%name/system/qemu-block-drivers.html
 %_docdir/%name/system/qemu-cpu-models.html
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
+%_docdir/%name/system/removed-features.html
+%_docdir/%name/system/riscv/microchip-icicle-kit.html
+%_docdir/%name/system/riscv/sifive_u.html
 %_docdir/%name/system/s390x/3270.html
 %_docdir/%name/system/s390x/bootdevices.html
 %_docdir/%name/system/s390x/css.html
 %_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
 %_docdir/%name/system/s390x/vfio-ccw.html
-%_docdir/%name/system/search.html
-%_docdir/%name/system/searchindex.js
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
 %_docdir/%name/system/target-avr.html
@@ -1811,6 +1874,7 @@ fi
 %_docdir/%name/system/target-m68k.html
 %_docdir/%name/system/target-mips.html
 %_docdir/%name/system/target-ppc.html
+%_docdir/%name/system/target-riscv.html
 %_docdir/%name/system/target-rx.html
 %_docdir/%name/system/target-s390x.html
 %_docdir/%name/system/target-sparc64.html
@@ -1822,36 +1886,27 @@ fi
 %_docdir/%name/system/virtio-net-failover.html
 %_docdir/%name/system/virtio-pmem.html
 %_docdir/%name/system/vnc-security.html
-%_docdir/%name/tools/.buildinfo
-%_docdir/%name/tools/_static/*
-%_docdir/%name/tools/genindex.html
 %_docdir/%name/tools/index.html
-%_docdir/%name/tools/objects.inv
 %_docdir/%name/tools/qemu-img.html
 %_docdir/%name/tools/qemu-nbd.html
 %_docdir/%name/tools/qemu-pr-helper.html
 %_docdir/%name/tools/qemu-trace-stap.html
-%_docdir/%name/tools/search.html
-%_docdir/%name/tools/searchindex.js
+%_docdir/%name/tools/qemu-storage-daemon.html
 %_docdir/%name/tools/virtfs-proxy-helper.html
 %_docdir/%name/tools/virtiofsd.html
-%_docdir/%name/user/.buildinfo
-%_docdir/%name/user/_static/*
-%_docdir/%name/user/genindex.html
 %_docdir/%name/user/index.html
 %_docdir/%name/user/main.html
-%_docdir/%name/user/objects.inv
-%_docdir/%name/user/search.html
-%_docdir/%name/user/searchindex.js
 %dir %_libexecdir/supportconfig
 %dir %_libexecdir/supportconfig/plugins
 %_libexecdir/supportconfig/plugins/%name
 %_mandir/man1/%name.1.gz
+%_mandir/man1/qemu-storage-daemon.1.gz
 %_mandir/man1/virtiofsd.1.gz
 %_mandir/man7/qemu-block-drivers.7.gz
 %_mandir/man7/qemu-cpu-models.7.gz
 %_mandir/man7/qemu-qmp-ref.7.gz
 %_mandir/man7/qemu-ga-ref.7.gz
+%_mandir/man7/qemu-storage-daemon-qmp-ref.7.gz
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
 %if %{kvm_available}
@@ -2233,6 +2288,7 @@ fi
 %_bindir/qemu-arm
 %_bindir/qemu-armeb
 %_bindir/qemu-cris
+%_bindir/qemu-hexagon
 %_bindir/qemu-hppa
 %_bindir/qemu-i386
 %_bindir/qemu-m68k

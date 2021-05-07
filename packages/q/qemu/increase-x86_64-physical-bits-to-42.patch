@@ -14,19 +14,19 @@ memory hole.
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 Signed-off-by: Andreas Färber <afaerber@suse.de>
 ---
- target/i386/cpu.h | 2 +-
+ target/i386/tcg/helper-tcg.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 88e8586f8fb46293810cb34a06a0..a72134a1874f2d7b3ab7c8f4fd59 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1961,7 +1961,7 @@ uint64_t cpu_get_tsc(CPUX86State *env);
- /* XXX: This value should match the one returned by CPUID
-  * and in exec.c */
- # if defined(TARGET_X86_64)
+diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h
+index bcdfca06f699863a6dd2e872231c..ade34e5681775657b0b5220b43d7 100644
+--- a/target/i386/tcg/helper-tcg.h
++++ b/target/i386/tcg/helper-tcg.h
+@@ -26,7 +26,7 @@
+ #define TARGET_MAX_INSN_SIZE 16
+ 
+ #if defined(TARGET_X86_64)
 -# define TCG_PHYS_ADDR_BITS 40
 +# define TCG_PHYS_ADDR_BITS 42
- # else
+ #else
  # define TCG_PHYS_ADDR_BITS 36
- # endif
+ #endif

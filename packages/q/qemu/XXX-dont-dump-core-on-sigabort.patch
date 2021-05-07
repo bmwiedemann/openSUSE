@@ -8,10 +8,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 73de934c65117c5caa0f2dabe8e2..be83f5e4030f2a6e90606f762396 100644
+index 7eecec46c4070c119cfee9be2316..fdd9a86cc1ce0b8238562d1612a3 100644
 --- a/linux-user/signal.c
 +++ b/linux-user/signal.c
-@@ -632,6 +632,10 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
+@@ -631,6 +631,10 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
      trace_user_force_sig(env, target_sig, host_sig);
      gdb_signalled(env, target_sig);
  
@@ -22,7 +22,7 @@ index 73de934c65117c5caa0f2dabe8e2..be83f5e4030f2a6e90606f762396 100644
      /* dump core if supported by target binary format */
      if (core_dump_signal(target_sig) && (ts->bprm->core_dump != NULL)) {
          stop_all_tasks();
-@@ -649,6 +653,8 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
+@@ -648,6 +652,8 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
              target_sig, strsignal(host_sig), "core dumped" );
      }
  

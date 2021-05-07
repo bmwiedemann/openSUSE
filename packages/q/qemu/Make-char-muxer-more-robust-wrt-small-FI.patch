@@ -25,9 +25,8 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  chardev/char-mux.c         | 16 ++++++++++++++++
  chardev/char.c             |  1 +
  chardev/chardev-internal.h |  3 +++
- chardev/chardev-sysemu.c   |  1 +
- tests/test-char.c          |  1 +
- 6 files changed, 23 insertions(+)
+ tests/unit/test-char.c     |  1 +
+ 5 files changed, 22 insertions(+)
 
 diff --git a/chardev/char-fe.c b/chardev/char-fe.c
 index 474715c5a9257ae9e9e286d2e02d..eeb1b3e0b548027e2bcda0c272d5 100644
@@ -42,7 +41,7 @@ index 474715c5a9257ae9e9e286d2e02d..eeb1b3e0b548027e2bcda0c272d5 100644
  #include "qemu/error-report.h"
  #include "qapi/error.h"
 diff --git a/chardev/char-mux.c b/chardev/char-mux.c
-index 6f980bb83647da13c62f514391b3..094bc6703a3febdf5fefb7c0024f 100644
+index 72beef29d21c3bed1ffe6e48c7e7..6e5a3fb272c6b02e900b9775bad6 100644
 --- a/chardev/char-mux.c
 +++ b/chardev/char-mux.c
 @@ -22,6 +22,7 @@
@@ -53,7 +52,7 @@ index 6f980bb83647da13c62f514391b3..094bc6703a3febdf5fefb7c0024f 100644
  #include "qemu/osdep.h"
  #include "qapi/error.h"
  #include "qemu/module.h"
-@@ -191,6 +192,17 @@ static void mux_chr_accept_input(Chardev *chr)
+@@ -198,6 +199,17 @@ static void mux_chr_accept_input(Chardev *chr)
          be->chr_read(be->opaque,
                       &d->buffer[m][d->cons[m]++ & MUX_BUFFER_MASK], 1);
      }
@@ -71,7 +70,7 @@ index 6f980bb83647da13c62f514391b3..094bc6703a3febdf5fefb7c0024f 100644
  }
  
  static int mux_chr_can_read(void *opaque)
-@@ -325,6 +337,10 @@ static void qemu_chr_open_mux(Chardev *chr,
+@@ -332,6 +344,10 @@ static void qemu_chr_open_mux(Chardev *chr,
      }
  
      d->focus = -1;
@@ -83,7 +82,7 @@ index 6f980bb83647da13c62f514391b3..094bc6703a3febdf5fefb7c0024f 100644
       * set of muxes
       */
 diff --git a/chardev/char.c b/chardev/char.c
-index aa4282164acabbba58a6eea76b8c..9add6ca377e402f5ce3215e4934d 100644
+index 398f09df19cd8567fa1ea96ee4d4..5778bd7666f8ff053269bf5b6b81 100644
 --- a/chardev/char.c
 +++ b/chardev/char.c
 @@ -22,6 +22,7 @@
@@ -108,22 +107,10 @@ index aba0240759ebf938cf391d89edb8..fb3957b771f9e24547619fd45669 100644
      int focus;
      int mux_cnt;
      int term_got_escape;
-diff --git a/chardev/chardev-sysemu.c b/chardev/chardev-sysemu.c
-index eecdc615ee1c6c64060452ac837d..c052f101e89c193af1effa9c6fa5 100644
---- a/chardev/chardev-sysemu.c
-+++ b/chardev/chardev-sysemu.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
-  */
- 
-+#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
- #include "qemu/osdep.h"
- #include "sysemu/sysemu.h"
- #include "chardev/char.h"
-diff --git a/tests/test-char.c b/tests/test-char.c
-index 9196e566e9ba671ed268a3178845..5d84a777738abfb28de151930c46 100644
---- a/tests/test-char.c
-+++ b/tests/test-char.c
+diff --git a/tests/unit/test-char.c b/tests/unit/test-char.c
+index 5b3b48ebacd353d4525226e3aaf5..6ce130a663ec372d18f0a674af8e 100644
+--- a/tests/unit/test-char.c
++++ b/tests/unit/test-char.c
 @@ -1,3 +1,4 @@
 +#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
  #include "qemu/osdep.h"

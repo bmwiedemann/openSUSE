@@ -14,10 +14,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-index 2cd1de4a2c46814f10c60fc1b8e5..2b06d754afdea5215fead91d3419 100644
+index 85034d9c11e3f65cce6041ea8acc..98d51d87249ea17ef30b7eaa2157 100644
 --- a/softmmu/physmem.c
 +++ b/softmmu/physmem.c
-@@ -1957,11 +1957,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
+@@ -2029,11 +2029,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
          return NULL;
      }
  
@@ -29,5 +29,5 @@ index 2cd1de4a2c46814f10c60fc1b8e5..2b06d754afdea5215fead91d3419 100644
      }
 +#endif
  
-     if (phys_mem_alloc != qemu_anon_ram_alloc) {
-         /*
+     size = HOST_PAGE_ALIGN(size);
+     file_size = get_file_size(fd);

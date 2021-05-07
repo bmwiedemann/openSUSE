@@ -16,10 +16,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  4 files changed, 14 insertions(+), 4 deletions(-)
 
 diff --git a/tests/qemu-iotests/130 b/tests/qemu-iotests/130
-index a7b365701c490b4b4894eb0c26a8..02cb0f8216a6618b5e0dc526c361 100755
+index 7257f096774f6e9e835479006ba4..bfb7bfda6b4d0925fccc87853cd2 100755
 --- a/tests/qemu-iotests/130
 +++ b/tests/qemu-iotests/130
-@@ -63,7 +63,8 @@ echo
+@@ -64,7 +64,8 @@ echo
  _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base"
  _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
  _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
@@ -29,7 +29,7 @@ index a7b365701c490b4b4894eb0c26a8..02cb0f8216a6618b5e0dc526c361 100755
  _img_info | _filter_img_info
  
  # Make sure that if there was a backing file that was just overridden on the
-@@ -72,7 +73,8 @@ _make_test_img -F raw -b "$TEST_IMG.orig" 64M
+@@ -73,7 +74,8 @@ _make_test_img -F raw -b "$TEST_IMG.orig" 64M
  _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base",backing.driver=$IMGFMT
  _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
  _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
@@ -60,10 +60,10 @@ index e45285ccc311522481ac1b27ba99..7168bdf70c3eb32d4de0d28bb947 100644
  file format: IMGFMT
  virtual size: 64 MiB (67108864 bytes)
 diff --git a/tests/qemu-iotests/153 b/tests/qemu-iotests/153
-index 34045ea3cfeb5e30acac17ae8a10..b5cec71dd9a718055d9264e51946 100755
+index 607af590918aaccd12490493b42a..987158ca49a88cef0815ea86f39e 100755
 --- a/tests/qemu-iotests/153
 +++ b/tests/qemu-iotests/153
-@@ -201,7 +201,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -202,7 +202,8 @@ _send_qemu_cmd $QEMU_HANDLE \
      'return'
  _run_cmd $QEMU_IMG commit -b "${TEST_IMG}.b" "${TEST_IMG}.c"
  
@@ -73,7 +73,7 @@ index 34045ea3cfeb5e30acac17ae8a10..b5cec71dd9a718055d9264e51946 100755
  
  _launch_qemu
  
-@@ -253,7 +254,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -254,7 +255,8 @@ _send_qemu_cmd $QEMU_HANDLE \
  
  _run_cmd $QEMU_IO "${TEST_IMG}" -c 'write 0 512'
  

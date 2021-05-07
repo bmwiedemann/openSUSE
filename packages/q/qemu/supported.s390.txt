@@ -1,6 +1,7 @@
 [qemu-s390 package document]
 
-SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+====================================================
 
 Overview
 --------
@@ -138,13 +139,14 @@ Noteworthy QEMU/KVM Unsupported Features
 Deprecated, Superseded, Modified and Dropped Features
 -----------------------------------------------------
 
-- http://wiki.qemu-project.org/Features/LegacyRemoval
-  This website tracks feature deprecation and removal at the upstream
+- http://wiki.qemu-project.org/Features/LegacyRemoval and
+  https://qemu-project.gitlab.io/qemu/system/deprecated.html
+  These websites track features deprecation and removal at the upstream
   development level. Our qemu package inherits this community direction, but be
   aware that we can and will deviate as needed. Those deviations and additional
   information can be found in this section. Feature deprecation as well as
-  removed features are also tracked in the "QEMU System Emulator User's Guide"
-  section of the documentation installed with the qemu package.
+  removed features are also tracked in the "System Emulation" section of the
+  documentation installed with the qemu package.
 
 - The use of "?" as a parameter to "-cpu", "-soundhw", "-device", "-M",
   "-machine" and "-d" is now considered deprecated. Use "help"
@@ -166,15 +168,17 @@ Deprecated, Superseded, Modified and Dropped Features
   acpitable, boot, and smp respectively.
 
 - These previously supported command line options are now considered deprecated:
-  -device virtio-blk,scsi= (use virtio-scsi instead)
-  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
-  -realtime mlock= (use -overcommit mem-lock= instead)
-  (the following are early notices of deprecation in a future qemu version)
   -chardev tty (use serial name instead)
   -chardev paraport (use parallel name instead)
+  -device virtio-blk,scsi= (use virtio-scsi instead)
+  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
   -enable-fips (not really helpful - see https://git.qemu.org/?p=qemu.git;a=commit;h=166310299a1e7824bbff17e1f016659d18b4a559 for details)
+  -realtime mlock= (use -overcommit mem-lock= instead)
   -spice password=string (use password-string option instead)
   -writeconfig (no replacement - never really worked right)
+  -share and noshare must be replaced by share=on/share=off
+  -nodelay must be replaced by nodelay=on rather than delay=off
+  -object-add options opened=on and loaded=on (both had no effect)
 
 - These previously supported command line options are no longer supported:
   <previously mentioned items have been moved to another category>
@@ -188,7 +192,9 @@ Deprecated, Superseded, Modified and Dropped Features
   -display sdl
   -no-frame
   -nodefconfig (use -no-user-config instead)
+  -realtime ...
   -sdl
+  -show-cursor
   -virtioconsole (use -device virtconsole instead)
 
 - Specifying a cpu feature with both "+feature/-feature" and "feature=on/off"
@@ -202,23 +208,28 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously unsupported command line options are now deprecated:
   -bt
-  -device ide-drive (use ide-hd or ide-cd)
-  -device scsi-disk (use scsi-hd or scsi-cd)
   -soundhw (use -device ... instead)
-  -tb-size
 
 - These previously unsupported command line options are no longer recognized:
+  -device ide-drive (use ide-hd or ide-cd)
   -device mmio_interface
   -device ramfb
+  -device scsi-disk (use scsi-hd or scsi-cd)
   -device vhost-user-vsock-pci-transitional
   -device vhost-vsock-pci-transitional
   -device virtio-iommu-pci-transitional
   -enable-hax
+  -tb-size
   -tdf
   -xen-create
 
 - These previously supported QMP commands are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously supported QMP commands are no longer recognized:
+  block_passwd
   change (use blockdev-change-medium or change-vnc-password instead)
+  cpu-add (use device_add instead)
   migrate-set-cache-size (use migrate-set-parameters instead)
   migrate_set_downtime (use migrate-set-parameters instead)
   migrate_set_speed (use migrate-set-parameters instead)
@@ -226,27 +237,27 @@ Deprecated, Superseded, Modified and Dropped Features
   query-events
   query-migrate-cache-size (use query-migrate-parameters instead)
 
-- This previously supported QMP command is no longer recognized:
-  cpu-add (use device_add instead)
-
 - These previously supported monitor commands are now deprecated:
   change
-  migrate_set_downtime
-  migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
+  block_passwd
   cpu-add (use device_add instead)
+  migrate_set_cache_size
+  migrate_set_downtime
+  migrate_set_speed
   pci_add (use device_add instead)
   pci_del (use device_del instead)
 
 - These previously unsupported monitor command are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously unsupported monitor commands are no longer recognized:
   acl_add ...
   acl_policy ...
   acl_remove ...
   acl_reset ...
   acl_show ...
-
-- These previously unsupported monitor commands are no longer recognized:
   host_net_add
   host_net_remove
   usb_add
@@ -291,6 +302,7 @@ QEMU Command-Line and Monitor Syntax and Support
 
 - The following command line options are supported:
   -accel ...
+  -action ...
   -add-fd ...
   -alt-grab
   -append ...
@@ -300,7 +312,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -blockdev ...
   -boot ...
   -cdrom ...
-  -chardev ..
+  -chardev ...
+  -compat ...
   -cpu host
   -ctrl-grab
   -d ...
@@ -310,13 +323,13 @@ QEMU Command-Line and Monitor Syntax and Support
 
           [virtio-net-pci|virtio-blk-pci|virtio-balloon-pci|virtserialport|
           virtconsole|virtio-serial-pci|virtio-scsi-pci|scsi-cd|scsi-hd|
-          scsi-generic|scsi-disk|scsi-block|virtio-rng-pci|pci-bridge|
-          megasas-gen2|e1000e|e1000|zpci|virtio-gpu-ccw|virtio-keyboard-ccw|
-          vhost-user-blk-pci|vhost-user-scsi|vhost-user-scsi-pci|
-          vhost-vsock-ccw|virtio-balloon-ccw|virtio-blk-ccw|vhost-scsi-ccw|
-          vhost-user-blk|virtio-crypto-ccw|virtio-net-ccw|virtio-rng-ccw|
-          virtio-scsi-ccw|virtio-serial-ccw|virtio-mouse-ccw|virtio-tablet-ccw|
-          vfio-pci|virtio-vga|vhost-scsi-pci-non-transitional|
+          scsi-generic|scsi-block|virtio-rng-pci|pci-bridge|megasas-gen2|e1000e|
+          e1000|zpci|virtio-gpu-ccw|virtio-keyboard-ccw|vhost-user-blk-pci|
+          vhost-user-scsi|vhost-user-scsi-pci|vhost-vsock-ccw|
+          virtio-balloon-ccw|virtio-blk-ccw|vhost-scsi-ccw|vhost-user-blk|
+          virtio-crypto-ccw|virtio-net-ccw|virtio-rng-ccw|virtio-scsi-ccw|
+          virtio-serial-ccw|virtio-mouse-ccw|virtio-tablet-ccw|vfio-pci|
+          virtio-vga|vhost-scsi-pci-non-transitional|
           vhost-scsi-pci-transitional|vhost-user-blk-pci-non-transitional|
           vhost-user-blk-pci-transitional|vhost-user-scsi-pci-non-transitional|
           vhost-user-scsi-pci-transitional|vhost-vsock-pci-non-transitional|
@@ -362,13 +375,12 @@ QEMU Command-Line and Monitor Syntax and Support
   -m ...
   -M
 
-     [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
-     s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2|
-     s390-ccw-virtio-5.2]
+     [help|?|none|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|s390-ccw-virtio-2.11|
+     s390-ccw-virtio-3.1|s390-ccw-virtio-4.2|s390-ccw-virtio-5.2]
 
   -machine
 
-           [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
+           [help|?|none|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
            s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2|
            s390-ccw-virtio-5.2]
 
@@ -399,7 +411,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -qmp ...
   -qmp-pretty ...
   -readconfig ...
-  -realtime ...
   -rtc ...
   -runas ...
   -s
@@ -407,10 +418,9 @@ QEMU Command-Line and Monitor Syntax and Support
   -sandbox ...
   -seed ...
   -serial ...
-  -show-cursor
   -smp ...
   -trace ...
-  -uuid ..
+  -uuid ...
   -version
   -vga [none|qxl|std]
   -virtfs ...
@@ -461,11 +471,8 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate_incoming
   migrate_pause
   migrate_recover ...
-  migrate_set_cache_size ...
   migrate_set_capability ...
-  migrate_set_downtime ...
   migrate_set_parameter ...
-  migrate_set_speed ...
   migrate_start_post_copy
   mouse_button ...
   mouse_move ...
@@ -525,13 +532,11 @@ QEMU Command-Line and Monitor Syntax and Support
   block-export-add
   block-export-del
   block-latency-histogram-set
-  block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
   calc-dirty-rate
-  change
   change-vnc-password
   chardev-add
   chardev-change
@@ -544,6 +549,7 @@ QEMU Command-Line and Monitor Syntax and Support
   device_add
   device_del
   device-list-properties
+  display-reload
   dump-guest-memory
   eject
   expire_password
@@ -564,10 +570,7 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate-incoming
   migrate-pause
   migrate-resume
-  migrate-set-cache-size
   migrate-set-capabilities
-  migrate_set_downtime
-  migrate_set_speed
   migrate-set-parameters
   migrate-start-postcopy
   object-add
@@ -592,14 +595,12 @@ QEMU Command-Line and Monitor Syntax and Support
   query-cpu-model-baseline
   query-cpu-model-comparison
   query-cpu-model-expansion
-  query-cpus
   query-cpus-fast
   query-current-machine
   query-dirty-rate
   query-display-options
   query-dump
   query-dump-guest-memory-capability
-  query-events
   query-fdsets
   query-gic-capabilities
   query-hotpluggable-cpus
@@ -612,7 +613,6 @@ QEMU Command-Line and Monitor Syntax and Support
   query-memory-size-summary
   query-mice
   query-migrate
-  query-migrate-cache-size
   query-migrate-capabilities
   query-migrate-parameters
   query-name
@@ -632,6 +632,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-version
   query-vnc
   query-vnc-servers
+  query-yank
   query-xen-replication-status
   quit
   remove-fd
@@ -639,8 +640,12 @@ QEMU Command-Line and Monitor Syntax and Support
   ringbuf-write
   screendump
   send-key
+  set-action
   set_link
   set_password
+  snapshot-delete
+  snapshot-load
+  snapshot-save
   stop
   system_powerdown
   system_reset
@@ -649,6 +654,7 @@ QEMU Command-Line and Monitor Syntax and Support
   trace-event-set-state
   transaction
   watchdog-set-action
+  yank
 
 -  The following command line options are unsupported:
 
@@ -706,7 +712,7 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-iommu-device|virtio-iommu-pci|
           virtio-iommu-pci-non-transitional|vhost-user-vsock-device|
           vhost-user-vsock-pci|vhost-user-vsock-pci-non-transitional|
-          vhost-user-fs-ccw]
+          vhost-user-fs-ccw|guest-loader]
           (the following are aliases of these unsupported devices: lsi|
           ahci|e1000-82540em|vfio-ccw)
           (note that some of these device names represent supported devices and
@@ -719,7 +725,6 @@ QEMU Command-Line and Monitor Syntax and Support
          raw]
 
   -dtb file
-  -enable-hax
   -enable-sync-profile
   -fda/-fdb ...
   -g ...
@@ -728,17 +733,19 @@ QEMU Command-Line and Monitor Syntax and Support
   -L ...
   -M
 
-     [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
-     s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-     s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
-     s390-ccw-virtio-5.0|s390-ccw-virtio-5.1]
+     [s390-ccw-virtio|s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|
+     s390-ccw-virtio-2.7|s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|
+     s390-ccw-virtio-2.12|s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|
+     s390-ccw-virtio-4.1|s390-ccw-virtio-5.0|s390-ccw-virtio-5.1|
+     s390-ccw-virtio-6.0]
 
   -machine
 
-           [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
-           s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-           s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
-           s390-ccw-virtio-5.0|s390-ccw-virtio-5.1]
+           [s390-ccw-virtio|s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|
+           s390-ccw-virtio-2.7|s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|
+           s390-ccw-virtio-2.12|s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|
+           s390-ccw-virtio-4.1|s390-ccw-virtio-5.0|s390-ccw-virtio-5.1|
+           s390-ccw-virtio-6.0]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -770,7 +777,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -snapshot
   -soundhw ...
   -spice
-  -tb-size ...
   -tdf
   -tpmdev emulator ...
   -tpmdev passthrough ...
@@ -783,17 +789,11 @@ QEMU Command-Line and Monitor Syntax and Support
   -xen-domid-restrict ...
 
 - The following monitor commands are unsupported:
-  acl_add ...
-  acl_policy ...
-  acl_remove ...
-  acl_reset ...
-  acl_show ...
   block_job_cancel ...
   block_job_complete ...
   block_job_pause ...
   block_job_resume ...
   block_job_set_speed ...
-  block_passwd ...
   commit ...
   drive_mirror ...
   exit_preconfig

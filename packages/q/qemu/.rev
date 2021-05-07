@@ -2505,4 +2505,142 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
 </comment>
     <requestid>889331</requestid>
   </revision>
+  <revision rev="203" vrev="23">
+    <srcmd5>1b998ca6512dee49fc368613776c59af</srcmd5>
+    <version>unknown</version>
+    <time>1620398679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v6.0: see https://wiki.qemu.org/ChangeLog/6.0
+  For a full list of formely deprecated features that are removed now,
+  consult: https://qemu-project.gitlab.io/qemu/system/removed-features.html.
+  For a list of new deprecated features, consult:
+  https://qemu-project.gitlab.io/qemu/system/deprecated.html
+  Some noteworthy changes:
+* Removed tileGX CPU (linux-user mode).
+* Removed ide-drive device (use ide-hd or ide-cd instead).
+* Removed scsi-disk device (use scsi-hd or scsi-cd instead).
+* Removed pc-1.0, pc-1.1, pc-1.2, and pc-1.3 machine types.
+* Added emulation of Arm-v8.1M arch and Cortex-M55 CPU.
+* Added boards mps3-an524 (Cortex-M33) and mps3-an547 (Cortex-M55).
+* x86: Support for running SEV-ES encrypted guests; TCG can emulate
+  the PKS feature; WHPX accelerator supports accelerated APIC.
+* ARM: ARMv8.4-TTST, ARMv8.4-SEL2, FEAT_SSBS, and ARMv8.4-DIT emulation
+  are now supported; Added ARMv8.5-MemTag extension is now supported formely
+  linux-user. Additional device emulation support for xlnx-zynqmp, xlnx-versal,
+  sbsa-ref, npcm7xx, and sabrelite board models.
+* PowerPC: powernv now allows external BMC; pseries can send QAPI message
+  if it detects a memory hotplug failure; CPU unplug request can be retried.
+* s390: TCG works with Linux kernels built with clang-11 and clang12.
+* RISC-V: OpenSBI upgraded to v0.9; Support the QMP dump-guest-memory
+  command; Add support for the SiFive SPI controller (sifive_u); Add QSPI
+  NOR flash to Microchip PFSoC.
+* Misc doc improvements.
+* Multiprocess: Add experimental options to support out-of-process device
+  emulation.
+* ACPI: support for assigning NICs to known names in guest OS independently of
+  PCI slot placement.
+* NVMe: new emulation support for v1.4 spec with many new features, experimental
+  support for Zoned Namespaces, multipath I/O, and End-to-End Data Protection.
+* Xen: New guest loader for testing of Xen-like hypervisors booting kernels.
+* virtiofs: misc. security fixes and performance improvements.
+* Tools: FUSE block exports to allow mounting any QEMU block device node
+  as a host file.
+* Migration: query/info-migrate now display the migration blocker status and
+  the reasons for blocking.
+* User-mode: Added support for the Qualcomm Hexagon processor.
+* TCG: Added support for Apple Silicon hosts (macOS).
+* QMP: backup jobs now support multiple asynchronous requests in parallel
+* VNC: virtio-vga support for scaling resolution based on client window size
+* Patches added:
+  doc-add-our-support-doc-to-the-main-proj.patch
+* Patches removed:
+  9pfs-Fully-restart-unreclaim-loop-CVE-20.patch
+  audio-add-sanity-check.patch
+  block-Fix-deadlock-in-bdrv_co_yield_to_d.patch
+  block-Fix-locking-in-qmp_block_resize.patch
+  blockjob-Fix-crash-with-IOthread-when-bl.patch
+  block-nfs-fix-int-overflow-in-nfs_client.patch
+  block-rbd-fix-memory-leak-in-qemu_rbd_co.patch
+  block-rbd-Fix-memory-leak-in-qemu_rbd_co.patch
+  block-Separate-blk_is_writable-and-blk_s.patch
+  block-Simplify-qmp_block_resize-error-pa.patch
+  brotli-fix-actual-variable-array-paramet.patch
+  build-no-pie-is-no-functional-linker-fla.patch
+  cadence_gem-switch-to-use-qemu_receive_p.patch
+  cpu-core-Fix-help-of-CPU-core-device-typ.patch
+  docs-add-SUSE-support-statements-to-html.patch
+  dp8393x-switch-to-use-qemu_receive_packe.patch
+  e1000-fail-early-for-evil-descriptor.patch
+  e1000-switch-to-use-qemu_receive_packet-.patch
+  hw-arm-virt-acpi-build-Fix-GSIV-values-o.patch
+  hw-arm-virt-Disable-pl011-clock-migratio.patch
+  hw-block-fdc-Fix-fallback-property-on-sy.patch
+  hw-intc-arm_gic-Fix-interrupt-ID-in-GICD.patch
+  hw-isa-Kconfig-Add-missing-dependency-VI.patch
+  hw-isa-piix4-Migrate-Reset-Control-Regis.patch
+  hw-net-lan9118-Fix-RX-Status-FIFO-PEEK-v.patch
+  hw-s390x-fix-build-for-virtio-9p-ccw.patch
+  hw-sd-sd-Actually-perform-the-erase-oper.patch
+  hw-sd-sd-Fix-build-error-when-DEBUG_SD-i.patch
+  hw-sd-sdhci-Correctly-set-the-controller.patch
+  hw-sd-sdhci-Don-t-transfer-any-data-when.patch
+  hw-sd-sdhci-Don-t-write-to-SDHC_SYSAD-re.patch
+  hw-sd-sdhci-Limit-block-size-only-when-S.patch
+  hw-sd-sdhci-Reset-the-data-pointer-of-s-.patch
+  hw-sd-sd-Move-the-sd_block_-read-write-a.patch
+  hw-sd-sd-Skip-write-protect-groups-check.patch
+  hw-timer-slavio_timer-Allow-64-bit-acces.patch
+  hw-virtio-pci-Added-AER-capability.patch
+  hw-virtio-pci-Added-counter-for-pcie-cap.patch
+  i386-acpi-restore-device-paths-for-pre-5.patch
+  iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
+  lan9118-switch-to-use-qemu_receive_packe.patch
+  lsilogic-Use-PCIDevice-exit-instead-of-D.patch
+  Make-keycode-gen-output-reproducible-use.patch
+  memory-clamp-cached-translation-in-case-.patch
+  monitor-Fix-assertion-failure-on-shutdow.patch
+  mptsas-Remove-unused-MPTSASState-pending.patch
+  msf2-mac-switch-to-use-qemu_receive_pack.patch
+  net-Fix-handling-of-id-in-netdev_add-and.patch
+  net-introduce-qemu_receive_packet.patch
+  pcnet-switch-to-use-qemu_receive_packet-.patch
+  qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
+  qemu-storage-daemon-Enable-object-add.patch
+  rtl8139-switch-to-use-qemu_receive_packe.patch
+  s390x-add-have_virtio_ccw.patch
+  s390x-css-report-errors-from-ccw_dstream.patch
+  s390x-Fix-stringop-truncation-issue-repo.patch
+  s390x-modularize-virtio-gpu-ccw.patch
+  s390x-move-S390_ADAPTER_SUPPRESSIBLE.patch
+  s390x-pci-restore-missing-Query-PCI-Func.patch
+  spice-app-avoid-crash-when-core-spice-mo.patch
+  sungem-switch-to-use-qemu_receive_packet.patch
+  target-arm-Don-t-decode-insns-in-the-XSc.patch
+  target-arm-Fix-MTE0_ACTIVE.patch
+  target-arm-Introduce-PREDDESC-field-defi.patch
+  target-arm-Update-PFIRST-PNEXT-for-pred_.patch
+  target-arm-Update-REV-PUNPK-for-pred_des.patch
+  target-arm-Update-ZIP-UZP-TRN-for-pred_d.patch
+  target-xtensa-fix-meson.build-rule-for-x.patch
+  tcg-Use-memset-for-large-vector-byte-rep.patch
+  tools-virtiofsd-Replace-the-word-whiteli.patch
+  tx_pkt-switch-to-use-qemu_receive_packet.patch
+  ui-vnc-Add-missing-lock-for-send_color_m.patch
+  update-linux-headers-Include-const.h.patch
+  Update-linux-headers-to-5.11-rc2.patch
+  util-fix-use-after-free-in-module_load_o.patch
+  vfio-ccw-Connect-the-device-request-noti.patch
+  vhost-user-blk-fix-blkcfg-num_queues-end.patch
+  viriofsd-Add-support-for-FUSE_HANDLE_KIL.patch
+  virtiofsd-extract-lo_do_open-from-lo_ope.patch
+  virtiofsd-optionally-return-inode-pointe.patch
+  virtiofsd-prevent-opening-of-special-fil.patch
+  virtiofs-drop-remapped-security.capabili.patch
+  virtiofsd-Save-error-code-early-at-the-f.patch
+  virtio-move-use-disabled-flag-property-t.patch
+  virtio-pci-compat-page-aligned-ATS.patch
+  xen-block-Fix-removal-of-backend-instanc.patch
+</comment>
+    <requestid>890186</requestid>
+  </revision>
 </revisionlist>

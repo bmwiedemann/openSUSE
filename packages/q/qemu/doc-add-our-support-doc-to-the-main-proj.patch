@@ -1,0 +1,23 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 29 Jan 2021 20:06:16 -0700
+Subject: doc: add our support doc to the main project doc for x86 and s390x
+
+Include-If: %if %{legacy_qemu_kvm}
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ docs/index.rst | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/docs/index.rst b/docs/index.rst
+index 763e3d0426e8b15245b6ff0d0611..b659236f162532ea64931ec3e674 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -10,6 +10,7 @@ Welcome to QEMU's documentation!
+    :maxdepth: 2
+    :caption: Contents:
+ 
++   supported.rst
+    system/index
+    user/index
+    tools/index

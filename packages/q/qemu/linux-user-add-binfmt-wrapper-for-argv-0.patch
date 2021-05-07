@@ -82,10 +82,10 @@ index 0000000000000000000000000000000000000000..cd1f513b334f3b263d9e4b5adb1981e3
 +    return execve(new_argv[0], new_argv, envp);
 +}
 diff --git a/meson.build b/meson.build
-index e3386196ba4106a973edb7f9d07c..a4743a83ae82bbe57e8dfeec3da4 100644
+index c6f4b0cf5e8a88e2019fabd13f3a..4dd9c13852c017e89106e6a444ee 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1883,6 +1883,11 @@ endforeach
+@@ -2318,6 +2318,11 @@ endforeach
  
  # Other build targets
  

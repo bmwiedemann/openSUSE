@@ -28,10 +28,10 @@ index 944d403cbd1535cc121af76a94f2..4b42dd285eeac1ba12e5c9e18ac0 100644
  
  #endif
 diff --git a/qom/object.c b/qom/object.c
-index 10653552334549241cd5672d7a02..6f301fec34d103b0b07bc41d107c 100644
+index 6a01d56546968c094ac4831acb2c..1b132653c3fc8d5150723b2d4cf7 100644
 --- a/qom/object.c
 +++ b/qom/object.c
-@@ -516,6 +516,18 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
+@@ -518,6 +518,18 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
      object_post_init_with_type(obj, type);
  }
  
@@ -51,10 +51,10 @@ index 10653552334549241cd5672d7a02..6f301fec34d103b0b07bc41d107c 100644
  {
      TypeImpl *type = type_get_by_name(typename);
 diff --git a/qom/qom-qmp-cmds.c b/qom/qom-qmp-cmds.c
-index 310ab2d0481d1517b0432be23256..cf130dc875bb6a7921fd7fb5af26 100644
+index 2d6f41ecc7ef4f2b82e55e730dc6..5ec565ad8f0f06d68022f3a4d3d5 100644
 --- a/qom/qom-qmp-cmds.c
 +++ b/qom/qom-qmp-cmds.c
-@@ -131,6 +131,23 @@ ObjectPropertyInfoList *qmp_device_list_properties(const char *typename,
+@@ -129,6 +129,23 @@ ObjectPropertyInfoList *qmp_device_list_properties(const char *typename,
      ObjectPropertyIterator iter;
      ObjectPropertyInfoList *prop_list = NULL;
  
@@ -79,10 +79,10 @@ index 310ab2d0481d1517b0432be23256..cf130dc875bb6a7921fd7fb5af26 100644
      if (klass == NULL) {
          error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
 diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index bf79d0bbcd986320eb609f37253e..564dfaeeda9c3ae9dbf1afa97825 100644
+index a9955b97a078ea657546d9e2382f..8b71c08af53010428b0fc209bc5b 100644
 --- a/softmmu/qdev-monitor.c
 +++ b/softmmu/qdev-monitor.c
-@@ -263,6 +263,13 @@ int qdev_device_help(QemuOpts *opts)
+@@ -274,6 +274,13 @@ int qdev_device_help(QemuOpts *opts)
      int i;
  
      driver = qemu_opt_get(opts, "driver");
@@ -96,7 +96,7 @@ index bf79d0bbcd986320eb609f37253e..564dfaeeda9c3ae9dbf1afa97825 100644
      if (driver && is_help_option(driver)) {
          qdev_print_devinfos(false);
          return 1;
-@@ -650,6 +657,14 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
+@@ -646,6 +653,14 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
          return NULL;
      }
  

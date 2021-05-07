@@ -1,6 +1,7 @@
 [qemu-arm package document]
 
-SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
+====================================================
 
 Overview
 --------
@@ -142,13 +143,14 @@ Noteworthy QEMU/KVM Unsupported Features
 Deprecated, Superseded, Modified and Dropped Features
 -----------------------------------------------------
 
-- http://wiki.qemu-project.org/Features/LegacyRemoval
-  This website tracks feature deprecation and removal at the upstream
+- http://wiki.qemu-project.org/Features/LegacyRemoval and
+  https://qemu-project.gitlab.io/qemu/system/deprecated.html
+  These websites track features deprecation and removal at the upstream
   development level. Our qemu package inherits this community direction, but be
   aware that we can and will deviate as needed. Those deviations and additional
   information can be found in this section. Feature deprecation as well as
-  removed features are also tracked in the "QEMU System Emulator User's Guide"
-  section of the documentation installed with the qemu package.
+  removed features are also tracked in the "System Emulation" section of the
+  documentation installed with the qemu package.
 
 - The use of "?" as a parameter to "-cpu", "-soundhw", "-device", "-M",
   "-machine" and "-d" is now considered deprecated. Use "help"
@@ -170,19 +172,21 @@ Deprecated, Superseded, Modified and Dropped Features
   acpitable, boot, and smp respectively.
 
 - These previously supported command line options are now considered deprecated:
-  -device scsi-disk (use scsi-hd or scsi-cd instead)
-  -device virtio-blk,scsi= (use virtio-scsi instead)
-  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
-  -realtime mlock= (use -overcommit mem-lock- instead)
-  (the following are early notices of deprecation in a future qemu version)
   -chardev tty (use serial name instead)
   -chardev paraport (use parallel name instead)
+  -device virtio-blk,scsi= (use virtio-scsi instead)
+  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
   -enable-fips (not really helpful - see https://git.qemu.org/?p=qemu.git;a=commit;h=166310299a1e7824bbff17e1f016659d18b4a559 for details)
+  -realtime mlock= (use -overcommit mem-lock- instead)
   -spice password=string (use password-string option instead)
   -writeconfig (no replacement - never really worked right)
+  -share and noshare must be replaced by share=on/share=off
+  -nodelay must be replaced by nodelay=on rather than delay=off
+  -object-add options opened=on and loaded=on (both had no effect)
 
 - These previously supported command line options are no longer supported:
-  <previously mentioned items have been moved to another category>
+  -device ide-drive (use ide-hd or ide-cd instead)
+  -device scsi-disk (use scsi-hd or scsi-cd instead)
 
 - These previously supported command line options are no longer recognized:
   -balloon (use -device virtio-balloon instead)
@@ -193,7 +197,9 @@ Deprecated, Superseded, Modified and Dropped Features
   -display sdl
   -no-frame
   -nodefconfig (use -no-user-config instead)
+  -realtime ...
   -sdl
+  -show-cursor
   -virtioconsole (use -device virtconsole instead)
 
 - The previously unsupported machine type xlnx-ep108 is no longer recognized
@@ -210,22 +216,29 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - This previously unsupported command line option is now deprecated:
   -soundhw (use -device ... instead)
-  -tb-size
 
 - These previously unsupported command line options are no longer recognized:
   -bt
   -device at24c-eeprom
   -device mmio_interface
   -device ssi-sd
+  -device tpm-tis-device
+  -device u2f-passthru
   -device vhost-user-vsock-pci-transitional
   -device vhost-vsock-pci-transitional
   -device virtio-iommu-pci-transitional
   -enable-hax
+  -tb-size
   -tdf
   -xen-create
 
 - These previously supported QMP commands are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously supported QMP commands are no longer recognized:
+  block_passwd
   change (use blockdev-change-medium or change-vnc-password instead)
+  cpu-add (use device_add instead)
   migrate-set-cache-size (use migrate-set-parameters instead)
   migrate_set_downtime (use migrate-set-parameters instead)
   migrate_set_speed (use migrate-set-parameters instead)
@@ -233,29 +246,29 @@ Deprecated, Superseded, Modified and Dropped Features
   query-events
   query-migrate-cache-size (use query-migrate-parameters instead)
 
-- This previously supported QMP command is no longer recognized:
-  cpu-add (use device_add instead)
-
 - These previously supported monitor commands are now deprecated:
   change
-  migrate_set_downtime
-  migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
+  block_passwd ...
   cpu-add (use device_add instead)
+  migrate_set_cache_size
+  migrate_set_downtime
+  migrate_set_speed
   pci_add (use device_add instead)
   pci_del (use device_del instead)
   usb_add (use device_add instead)
   usb_del (use device_del instead)
 
 - These previously unsupported monitor command are now deprecated:
+  <previously mentioned items have been moved to another category>
+
+- These previously unsupported monitor commands are no longer recognized:
   acl_add ...
   acl_policy ...
   acl_remove ...
   acl_reset ...
   acl_show ...
-
-- These previously unsupported monitor commands are no longer recognized:
   host_net_add
   host_net_remove
 
@@ -298,6 +311,7 @@ QEMU Command-Line and Monitor Syntax and Support
 
 - The following command line options are supported:
   -accel ...
+  -action ...
   -add-fd ...
   -alt-grab
   -append ...
@@ -307,7 +321,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -blockdev ...
   -boot ...
   -cdrom ...
-  -chardev ..
+  -chardev ...
+  -compat ...
   -cpu host
   -ctrl-grab
   -d ...
@@ -338,7 +353,7 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-scsi-pci-transitional|virtio-serial-pci-non-transitional|
           virtio-serial-pci-transitional|vhost-user-fs-pci|vhost-user-gpu|
           vhost-user-pci-pci|vhost-user-input|vhost-user-input-pci|
-          vhost-user-vga|virtio-mmio]
+          vhost-user-vga|virtio-mmio|guest-loader|nvme-subsys|pvpanic-pci]
           (the following are aliases of these supported devices: ahci|
           virtio-blk|virtio-net|virtio-serial|virtio-balloon| virtio-9p|
           virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|
@@ -368,8 +383,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -kernel ...
   -loadvm ...
   -m ...
-  -M [help|?|none|virt|virt-2.6|virt-2.11|virtio-3.1|virt-4.2|virt-5.2]
-  -machine [help|?|none|virt|virt-2.6|virt-2.11|virt-3.1|virt-4.2|virt-5.2]
+  -M [help|?|none|virt-2.6|virt-2.11|virtio-3.1|virt-4.2|virt-5.2]
+  -machine [help|?|none|virt-2.6|virt-2.11|virt-3.1|virt-4.2|virt-5.2]
   -mem-path ...
   -mem-prealloc
   -mon ...
@@ -398,7 +413,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -qmp ...
   -qmp-pretty ...
   -readconfig ...
-  -realtime ...
   -rtc ...
   -runas ...
   -s
@@ -406,7 +420,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -sandbox ...
   -seed ...
   -serial ...
-  -show-cursor
   -smbios ...
   -smp ...
   -spice
@@ -414,7 +427,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -trace ...
   -usb
   -usbdevice [braile|disk|host|mouse|net|serial|tablet]
-  -uuid ..
+  -uuid ...
   -version
   -vga [none|qxl|std|virtio]
   -virtfs ...
@@ -465,11 +478,8 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate_incoming
   migrate_pause
   migrate_recover ...
-  migrate_set_cache_size ...
   migrate_set_capability ...
-  migrate_set_downtime ...
   migrate_set_parameter ...
-  migrate_set_speed ...
   migrate_start_post_copy
   mouse_button ...
   mouse_move ...
@@ -529,13 +539,11 @@ QEMU Command-Line and Monitor Syntax and Support
   block-export-add
   block-export-del
   block-latency-histogram-set
-  block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
   calc-dirty-rate
-  change
   change-vnc-password
   chardev-add
   chardev-change
@@ -548,6 +556,7 @@ QEMU Command-Line and Monitor Syntax and Support
   device_add
   device_del
   device-list-properties
+  display-reload
   dump-guest-memory
   eject
   expire_password
@@ -568,10 +577,7 @@ QEMU Command-Line and Monitor Syntax and Support
   migrate-incoming
   migrate-pause
   migrate-resume
-  migrate-set-cache-size
   migrate-set-capabilities
-  migrate_set_downtime
-  migrate_set_speed
   migrate-set-parameters
   migrate-start-postcopy
   object-add
@@ -594,14 +600,12 @@ QEMU Command-Line and Monitor Syntax and Support
   query-commands
   query-cpu-definitions
   query-cpu-model-expansion
-  query-cpus
   query-cpus-fast
   query-current-machine
   query-display-options
   query-dirty-rate
   query-dump
   query-dump-guest-memory-capability
-  query-events
   query-fdsets
   query-gic-capabilities
   query-hotpluggable-cpus
@@ -614,7 +618,6 @@ QEMU Command-Line and Monitor Syntax and Support
   query-memory-size-summary
   query-mice
   query-migrate
-  query-migrate-cache-size
   query-migrate-capabilities
   query-migrate-parameters
   query-name
@@ -637,6 +640,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-version
   query-vnc
   query-vnc-servers
+  query-yank
   query-xen-replication-status
   quit
   remove-fd
@@ -644,8 +648,12 @@ QEMU Command-Line and Monitor Syntax and Support
   ringbuf-write
   screendump
   send-key
+  set-action
   set_link
   set_password
+  snapshot-delete
+  snapshot-load
+  snapshot-save
   stop
   system_powerdown
   system_reset
@@ -654,6 +662,7 @@ QEMU Command-Line and Monitor Syntax and Support
   trace-event-set-state
   transaction
   watchdog-set-action
+  yank
 
 -  The following command line options are unsupported:
 
@@ -668,7 +677,7 @@ QEMU Command-Line and Monitor Syntax and Support
           allwinner-emac|amd-iommu|AMDVI-PCI|arm1026-arm-cpu|arm1136-arm-cpu|
           arm1136-r2-arm-cpu|arm1176-arm-cpu|arm11mpcore-arm-cpu|
           arm11mpcore_priv|arm11-scu|arm926-arm-cpu|arm946-arm-cpu|
-          ARMbitband-memory|arm.cortex-a9-global-timer|arm_gic|arm-gicv2m|
+          arm.cortex-a9-global-timer|arm_gic|arm-gicv2m|
           arm_mptimer|armv7m_nvic|aspeed.timer|aspeed.vic|ast2400|
           at25128a-nonjedec|at25256a-nonjedec|at25df041a|at25df321a|at25df641|
           at25fs010|at25fs040|at26df081a|at26df161a|at26df321|at26f004|
@@ -684,7 +693,7 @@ QEMU Command-Line and Monitor Syntax and Support
           en25q64|exynos4210.combiner|exynos4210-ehci-usb|exynos4210.fimd|
           exynos4210.gic|exynos4210.i2c|exynos4210.irq_gate|exynos4210.mct|
           exynos4210.pmu|exynos4210.pwm|exynos4210.rtc|exynos4210.uart|floppy|
-          fsl,imx6ul|fslimx25|fslimx31|fusbh200-ehci-usb|fw_cfg|gd25q32|gd25q64|
+          fslimx25|fslimx31|fusbh200-ehci-usb|fw_cfg|gd25q32|gd25q64|
           gpex-pcihost|gpex-root|gpio_i2c|gpio-key|gus|hyperv-testdev|
           highbank-regs|host-arm-cpu|*-i386-cpu|i8042|ib700|icp-ctrl-regs|
           igd-passthrough-isa-bridge|imx25.ccm|imx31.ccm|imx6.ccm|imx.avic|
@@ -743,13 +752,16 @@ QEMU Command-Line and Monitor Syntax and Support
           allwinner-rtc-sun4i|allwinner-rtc-sun6i|allwinner-rtc-sun7i|
           allwinner-sdhost-sun4i|allwinner-sdhost-sun5i|allwinner-sid|
           allwinner-sun8i-emac|imx.rngc|imx.usbphy|serial|serial-io|
-          stm32f405-soc|stm32f4xx-exti|stm32f4xx-syscfg|tpm-tis-device|nvdimm|
+          stm32f405-soc|stm32f4xx-exti|stm32f4xx-syscfg|nvdimm|
           vhost-user-vsock-device|vhost-user-vsock-pci|
           vhost-user-vsock-pci-non-transitional|nvme-ns|ads7846|led|ssd0323|
           vhost-user-vga|ctucan_pci|bcm2835-cprman-clock-mux|
           bcm2835-cprman-cprman-dsi0hsck-mux|bcm2835-cprman-cprman-pll|
           bcm2835-cprman-cprman-pll-channel|mt25ql512ab|mx66l5123f|n25q512ax3|
-          ssd0323|u2f-passthru]
+          ssd0323|at24c-eeprom|emc1413|emc1414|is25lp016d|is25lp032|is25lp064|
+          is25lp080d|is25lp128|is25lp256|is25lq040b|is25wp032|is25wp064|
+          is25wp128|is25wp256|npcm7xx-clock-divider|npcm7xx-clock-pll|
+          npcm7xx-clock-sel]
           (the following are aliases of these unsupported devices: lsi|
           piix3-usb-uhci)
           (note that some of these device names represent supported devices and
@@ -762,7 +774,6 @@ QEMU Command-Line and Monitor Syntax and Support
          raw]
 
   -dtb file
-  -enable-hax
   -enable-sync-profile
   -fda/-fdb ...
   -g ...
@@ -771,34 +782,36 @@ QEMU Command-Line and Monitor Syntax and Support
   -L ...
   -M
 
-     [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|connex|
-     cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|lm3s811evb|
-     mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an386|
-     mps2-an500|mps2-an505|mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|
-     n810|netduino2|netduinoplus2|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|
-     quanta-gsj|raspi0|raspi1ap|raspi2|raspi2b|raspi3|raspi3ap|raspi3b|
-     realview-eb|realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|
-     sabrelite|sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|
-     swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|
-     versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|
-     virt-4.0|virt-4.1|virt-5.0|virt-5.1|witherspoon-bmc|xilinx-zynq-a9|
-     xlnx-versal-virt|xlnx-zcu102|z2]
+     [virt|akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
+     connex|cubieboard|g220a-bmc|highbank|imx25-pdk|integratorcp|kzm|
+     lm3s6965evb|lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|
+     midway|mps2-an385|mps2-an386|mps2-an500|mps2-an505|mps2-an511|mps2-an521|
+     mps3-an524|mps3-an547|musca-a|musca-b1|musicpal|n800|n810|netduino2|
+     netduinoplus2|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|
+     raspi1ap|raspi2|raspi2b|raspi3|raspi3ap|raspi3b|realview-eb|
+     realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|
+     sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|swift-bmc|sx1|
+     sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
+     vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
+     virt-5.0|virt-5.1|virt-6.0|witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|
+     xlnx-zcu102|z2]
 
   -machine
 
-           [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
-           connex|cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|
-           lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|
-           mps2-an385|mps2-an386|mps2-an500|mps2-an521|mps2-an505|mps2-an511|
-           musca-a|musca-b1|musicpal|n800|n810|netduino2|netduinoplus2|
-           npcm750-evb|nuri|orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|raspi1ap|
-           raspi2|raspi2b|raspi3|raspi3ap|raspi3b|realview-eb|
-           realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|
-           sabrelite|sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|
-           swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|
-           versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|virt-2.12|
-           virt-3.0|virt-4.0|virt-4.1|virt-5.0|virt-5.1|witherspoon-bmc|
-           xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+           [virt|akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|
+           collie|connex|cubieboard|g220a-bmc|highbank|imx25-pdk|integratorcp|
+           kzm|lm3s6965evb|lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|
+           microbit|midway|mps2-an385|mps2-an386|mps2-an500|mps2-an521|
+           mps2-an505|mps2-an511|mps3-an524|mps3-an547|musca-a|musca-b1|
+           musicpal|n800|n810|netduino2|netduinoplus2|npcm750-evb|nuri|
+           orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|raspi1ap|raspi2|raspi2b|
+           raspi3|raspi3ap|raspi3b|realview-eb|realview-eb-mpcore|
+           realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|
+           smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|swift-bmc|sx1|sx1-v1|
+           tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
+           vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
+           virt-5.0|virt-5.1|virt-6.0|witherspoon-bmc|xilinx-zynq-a9|
+           xlnx-versal-virt|xlnx-zcu102|z2]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -827,7 +840,6 @@ QEMU Command-Line and Monitor Syntax and Support
   -singlestep
   -snapshot
   -soundhw ...
-  -tb-size ...
   -tpmdev emulator ...
   -vga [cg3|tcx|virtio|cirrus|xenfb]
   -win2k-hack
@@ -836,17 +848,11 @@ QEMU Command-Line and Monitor Syntax and Support
   -xen-domid-restrict ...
 
 - The following monitor commands are unsupported:
-  acl_add ...
-  acl_policy ...
-  acl_remove ...
-  acl_reset ...
-  acl_show ...
   block_job_cancel ...
   block_job_complete ...
   block_job_pause ...
   block_job_resume ...
   block_job_set_speed ...
-  block_passwd ...
   commit ...
   drive_mirror ...
   exit_preconfig
