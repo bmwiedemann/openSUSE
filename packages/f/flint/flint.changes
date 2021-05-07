@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 07 08:41:53 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to release 2.7.1
+  * Fix build bug due to missing test files
+  * Fix bug in multivariate factoring when there are more than six factors
+  * Fix issue when using MPIR 3.0.0 on Win64 with command line build
+  * Fix bug in fmpz_mod_poly_div_series
+  * Fix some broken asserts
+  * Support standard GNU installation directories in CMake build
+  * Fix stack overflow with ICC
+
+-------------------------------------------------------------------
 Thu Dec 24 11:03:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.0
