@@ -27,16 +27,19 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.22.1
+Version:        2.26.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://prometheus.io/
-Source:         prometheus-%{version}.tar.xz
-Source1:        prometheus.service
-Source2:        prometheus.yml
-Source3:        prometheus.sysconfig
+Source:         prometheus-%{version}.tar.gz
+# generated after applying Patch3 and running `go mod vendor`
+# also includes web assets generated with `make assets`
+Source1:        vendor.tar.gz
+Source2:        prometheus.service
+Source3:        prometheus.yml
+Source4:        prometheus.sysconfig
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
@@ -48,7 +51,6 @@ BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  user(prometheus)
@@ -70,7 +72,7 @@ Prometheus's main features are:
  - multiple modes of graphing and dashboarding support
 
 %prep
-%autosetup -p1 -n prometheus-%{version}
+%autosetup -a1 -p1 -n prometheus-%{version}
 
 %build
 %goprep github.com/prometheus/prometheus
@@ -79,9 +81,9 @@ GOPATH=%{_builddir}/go promu build -v
 %install
 install -D -m0755 %{_builddir}/prometheus-%{version}/prometheus %{buildroot}/%{_bindir}/prometheus
 install -D -m0755 %{_builddir}/prometheus-%{version}/promtool %{buildroot}/%{_bindir}/promtool
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus.service
 
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
 
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus
@@ -90,7 +92,7 @@ install -m 0755 -d %{buildroot}%{_datarootdir}/prometheus
 cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
 
 install -m 0755 -d %{buildroot}%{_fillupdir}
-install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.prometheus
+install -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data

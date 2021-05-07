@@ -4,12 +4,12 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.22.1</param>
+    <param name="revision">v2.26.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="recompress" mode="disabled">
-    <param name="file">prometheus-*.tar</param>
-    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">prometheus</param>

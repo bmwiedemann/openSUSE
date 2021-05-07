@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue May  4 14:35:58 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add tarball with vendor modules and web assets
+- Uyuni: Read formula data from exporters map
+- Uyuni: Add support for TLS targets
+  + Changed:
+    * 0003-Add-Uyuni-service-discovery.patch
+    * 0002-Default-settings.patch Changed
+    * 0003-Add-Uyuni-service-discovery.patch
+
+- Upgrade to upstream version 2.26.0
+  + Changes
+    * Alerting: Using Alertmanager v2 API by default. #8626
+    * Prometheus/Promtool: Binaries are now printing help and usage to stdout instead of stderr. #8542
+  + Features
+    * Remote: Add support for AWS SigV4 auth method for remote_write. #8509
+    * PromQL: Allow negative offsets. Behind --enable-feature=promql-negative-offset flag. #8487
+    * UI: Add advanced auto-completion, syntax highlighting and linting to graph page query input. #8634
+  + Enhancements
+    * PromQL: Add last_over_time, sgn, clamp functions. #8457
+    * Scrape: Add support for specifying type of Authorization header credentials with Bearer by default. #8512
+    * Scrape: Add follow_redirects option to scrape configuration. #8546
+    * Remote: Allow retries on HTTP 429 response code for remote_write. #8237 #8477
+    * Remote: Allow configuring custom headers for remote_read. #8516
+    * UI: Hitting Enter now triggers new query. #8581
+    * UI: Better handling of long rule and names on the /rules and /targets pages. #8608 #8609
+    * UI: Add collapse/expand all button on the /targets page. #8486
+
+- Upgrade to upstream version 2.25.0
+  + Features
+    * Include a new `--enable-feature=` flag that enables experimental features.
+  + Enhancements
+    * Add optional name property to testgroup for better test failure output. #8440
+    * Add warnings into React Panel on the Graph page. #8427
+    * TSDB: Increase the number of buckets for the compaction duration metric. #8342
+    * Remote: Allow passing along custom remote_write HTTP headers. #8416
+    * Mixins: Scope grafana configuration. #8332
+    * Kubernetes SD: Add endpoint labels metadata. #8273
+    * UI: Expose total number of label pairs in head in TSDB stats page. #8343
+    * TSDB: Reload blocks every minute, to detect new blocks and enforce retention more often. #8343
+  + Bug fixes
+    * API: Fix global URL when external address has no port. #8359
+    * Deprecate unused flag --alertmanager.timeout. #8407
+
+- Upgrade to upstream version 2.24.1
+  + Enhancements
+    * Cache basic authentication results to significantly improve performance of HTTP endpoints.
+
+- Upgrade to upstream version 2.24.0
+  + Features
+    * Add TLS and basic authentication to HTTP endpoints. #8316
+    * promtool: Add check web-config subcommand to check web config files. #8319
+    * promtool: Add tsdb create-blocks-from openmetrics subcommand to backfill metrics data from an OpenMetrics file. #8084
+  + Enhancements
+    * HTTP API: Fast-fail queries with only empty matchers. #8288
+    * HTTP API: Support matchers for labels API. #8301
+    * promtool: Improve checking of URLs passed on the command line. #7956
+    * SD: Expose IPv6 as a label in EC2 SD. #7086
+    * SD: Reuse EC2 client, reducing frequency of requesting credentials. #8311
+    * TSDB: Add logging when compaction takes more than the block time range. #8151
+    * TSDB: Avoid unnecessary GC runs after compaction. #8276
+
+- Upgrade to upstream version 2.23.0
+  + Changes
+    * UI: Make the React UI default. #8142
+    * Remote write: The following metrics were removed/renamed in remote write. #6815
+      > prometheus_remote_storage_succeeded_samples_total was removed and prometheus_remote_storage_samples_total was introduced for all the samples attempted to send.
+      > prometheus_remote_storage_sent_bytes_total was removed and replaced with prometheus_remote_storage_samples_bytes_total and prometheus_remote_storage_metadata_bytes_total.
+      > prometheus_remote_storage_failed_samples_total -> prometheus_remote_storage_samples_failed_total .
+      > prometheus_remote_storage_retried_samples_total -> prometheus_remote_storage_samples_retried_total.
+      > prometheus_remote_storage_dropped_samples_total -> prometheus_remote_storage_samples_dropped_total.
+      > prometheus_remote_storage_pending_samples -> prometheus_remote_storage_samples_pending.
+    * Remote: Do not collect non-initialized timestamp metrics. #8060
+  + Enhancements
+    * Remote write: Added a metric prometheus_remote_storage_max_samples_per_send for remote write. #8102
+    * TSDB: Make the snapshot directory name always the same length. #8138
+    * TSDB: Create a checkpoint only once at the end of all head compactions. #8067
+    * TSDB: Avoid Series API from hitting the chunks. #8050
+    * TSDB: Cache label name and last value when adding series during compactions making compactions faster. #8192
+    * PromQL: Improved performance of Hash method making queries a bit faster. #8025
+    * promtool: tsdb list now prints block sizes. #7993
+    * promtool: Calculate mint and maxt per test avoiding unnecessary calculations. #8096
+    * SD: Add filtering of services to Docker Swarm SD. #8074
+
+-------------------------------------------------------------------
 Tue Mar  9 13:28:50 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Uyuni: `hostname` label is now set to FQDN instead of IP
