@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May  4 12:00:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.13:
+  + Demux:
+    - Adaptive: fix artefacts in HLS streams with wrong profiles/levels
+    - Fix regression on some MP4 files for the audio track
+    - Fix MPGA and ADTS probing in TS files
+    - Fix Flac inside AVI files
+    - Fix VP9/Webm artefacts when seeking
+  + Codec:
+    - Support SSA text scaling
+    - Fix rotation on Android rotation
+    - Fix WebVTT subtitles that start at 00:00
+  + Access:
+    - Update libnfs to support NFSv4
+    - Improve SMB2 integration
+    - Fix Blu-ray files using Unicode names on Windows
+    - Disable mcast lookups on Android for RTSP playback
+  + Video Output: Rework the D3D11 rendering wait, to fix
+    choppiness on display
+  + Interfaces:
+    - Fix VLC getting stuck on close on X11 (#21875)
+    - Improve RTL on preferences on macOS
+    - Add mousewheel horizontal axis control
+    - Fix crash on exit on macOS
+    - Fix sizing of the fullscreen controls on macOS
+  + Misc:
+    - Improve MIDI fonts search on Linux
+    - Update Soundcloud, Youtube, liveleak
+    - Fix compilation with GCC11
+    - Fix input-slave option for subtitles
+  + Updated translations.
+- Drop vlc-gcc11.patch: fixed upstream.
+- Extend vlc-srto_tsbpddelay.patch: allow srt >= 1.3 for openSUSE.
+
+-------------------------------------------------------------------
 Fri Mar 26 11:08:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Guard post scriptlets to only run %{_libdir}/vlc/vlc-cache-gen if

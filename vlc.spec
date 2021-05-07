@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.12
+Version:        3.0.13
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,8 +51,6 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch3:         fix-build-with-fdk-2.0.patch
-# PATCH-FIX-UPSTREAM vlc-gcc11.patch dimstar@opensuse.org -- Fix build using gcc11
-Patch4:         vlc-gcc11.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -297,9 +295,6 @@ suitable for server installations, for example, to run a streaming server.
 Should you decide to install the GUI modules, %{name}-noX will stay
 installed as a dependency.
 
-
-
-
 # we can't use %%lang_package, as we need a different dependency
 # boo#1012556
 # but the package name has to stay vlc-lang, as otherise the software centers
@@ -406,7 +401,6 @@ OpenCV based video filters and a face detection example.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch4 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
