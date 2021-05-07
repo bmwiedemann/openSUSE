@@ -121,7 +121,6 @@ Patch039:       fix_cron.patch
 Patch040:       fix_usermanage.patch
 Patch041:       fix_smartmon.patch
 Patch042:       fix_geoclue.patch
-#Patch043:       suse_specific.patch
 Patch044:       fix_authlogin.patch
 Patch045:       fix_screen.patch
 Patch046:       fix_unprivuser.patch
@@ -129,6 +128,7 @@ Patch047:       fix_rpm.patch
 Patch048:       fix_apache.patch
 Patch049:       fix_nis.patch
 Patch050:       fix_libraries.patch
+Patch051:       fix_dovecot.patch
 
 Patch100:       sedoctool.patch
 
@@ -435,6 +435,7 @@ exit 0
 %patch048 -p1
 %patch049 -p1
 %patch050 -p1
+%patch051 -p1
 
 %patch100 -p1
 find . -type f -exec sed -i -e "s/distro_suse/distro_redhat/" \{\} \;

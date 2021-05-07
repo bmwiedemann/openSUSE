@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 27 06:30:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_networkmanager.patch to allow NetworkManager to watch
+  its configuration directories
+- Added fix_dovecot.patch to fix dovecot authentication (bsc#1182207)
+
+-------------------------------------------------------------------
 Mon Apr 26 07:16:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added Recommends for selinux-autorelabel (bsc#1181837)
