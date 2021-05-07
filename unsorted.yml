@@ -2982,7 +2982,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -9121,7 +9120,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse20-32bit: [x86_64] 
+  - libSPIRV-Tools-suse21-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -10508,7 +10507,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla12 
+  - libfilezilla13 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -22791,6 +22790,7 @@ unsorted:
   - python36-magicalimport 
   - python36-mailman3-fedmsg-plugin 
   - python36-main-wrapper 
+  - python36-makefun 
   - python36-managesieve 
   - python36-mando 
   - python36-manuel 
@@ -23623,6 +23623,7 @@ unsorted:
   - python36-rpyc 
   - python36-rq 
   - python36-rsa 
+  - python36-rss2email 
   - python36-rst.linker 
   - python36-rstcheck 
   - python36-rt 
@@ -25618,6 +25619,7 @@ unsorted:
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
   - python38-main-wrapper 
+  - python38-makefun 
   - python38-managesieve 
   - python38-mando 
   - python38-manuel 
@@ -26487,6 +26489,7 @@ unsorted:
   - python38-rpyc 
   - python38-rq 
   - python38-rsa 
+  - python38-rss2email 
   - python38-rst.linker 
   - python38-rstcheck 
   - python38-rt 
@@ -28568,6 +28571,7 @@ unsorted:
   - python39-magicalimport 
   - python39-mailman3-fedmsg-plugin 
   - python39-main-wrapper 
+  - python39-makefun 
   - python39-managesieve 
   - python39-mando 
   - python39-manuel 
@@ -29264,6 +29268,7 @@ unsorted:
   - python39-python-consul 
   - python39-python-coveralls 
   - python39-python-crfsuite 
+  - python39-python-crontab 
   - python39-python-daemon 
   - python39-python-datamatrix 
   - python39-python-dateutil 
@@ -29480,6 +29485,7 @@ unsorted:
   - python39-rpyc 
   - python39-rq 
   - python39-rsa 
+  - python39-rss2email 
   - python39-rst.linker 
   - python39-rstcheck 
   - python39-rt 
