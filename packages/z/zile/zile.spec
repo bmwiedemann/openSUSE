@@ -18,7 +18,7 @@
 
 
 Name:           zile
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Lightweight Emacs Clone
 License:        GPL-3.0-only
@@ -26,7 +26,7 @@ Group:          Productivity/Text/Editors
 URL:            https://www.gnu.org/software/zile/
 Source0:        https://ftp.gnu.org/gnu/zile/zile-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/zile/zile-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=20805#/%{name}.keyring
 Source3:        zile.desktop
 Source4:        zile.png
 BuildRequires:  help2man >= 1.29

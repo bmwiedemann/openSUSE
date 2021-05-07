@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  5 11:08:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.6.1:
+  * fix null pointer deeference when visiting a file that contained
+    no line endings
+
+-------------------------------------------------------------------
 Thu Apr  8 07:12:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Small packaging cleanup
