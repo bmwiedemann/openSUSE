@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May  1 09:45:09 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.15:
+  * fix a recursive search crash
+
+-------------------------------------------------------------------
+Wed Apr 28 01:41:49 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- ugrep 3.1.14:
+  * Fix names of the encodings, it's ISO-8859, not ISO-8869
+  * Fixed an issue when placing options --bool, -G, -F, -w, -x
+    at the end of the command line
+  * Add missing header file "limits" in mmap.hpp
+  * Use option `-U` instead of `-C` for `diff`
+  * Minor --bool and --glob improvements; MinGW portability
+  * Update README.md with Alpine Linux
+  * Updated \s pattern matching to exclude newline, compatible with
+    GNU/BSD grep.
+  * Added format field %[NAME]# to output named capturing groups and
+    %[NUM1|NAME1|NUM2|NAME2...]# to output the first capturing group
+    that matched by num or name; option --bool improvements
+  * Fix #125 and fix #122
+
+-------------------------------------------------------------------
 Tue Feb  9 06:47:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.1.7:
