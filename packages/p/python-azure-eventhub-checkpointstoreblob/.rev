@@ -46,4 +46,15 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 881857 from glaubitz)</comment>
     <requestid>881921</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>661b5db517ae08fbafd415f8ea5f07c5</srcmd5>
+    <version>1.1.4</version>
+    <time>1620400498</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890726 from glaubitz)</comment>
+    <requestid>890733</requestid>
+  </revision>
 </revisionlist>
