@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 11:04:43 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.19: This release reverts a bug related to PDO_pgsql
+  that was introduced in PHP 7.4.18.
+
+-------------------------------------------------------------------
 Fri Apr 30 07:46:25 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.18: This is a security bug fix release. See
