@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 12:43:50 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- icu69.patch: fixes build issues with ICU69 (bsc#1185400)
+
+-------------------------------------------------------------------
 Wed Apr  7 12:22:39 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 15.14.0:

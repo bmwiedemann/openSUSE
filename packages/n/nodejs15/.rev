@@ -129,4 +129,12 @@
   npm_search_paths.patch</comment>
     <requestid>883619</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e17ed7dffeaf9c42827ba6dfa02de50f</srcmd5>
+    <version>15.14.0</version>
+    <time>1620504416</time>
+    <user>dimstar_suse</user>
+    <comment>- icu69.patch: fixes build issues with ICU69 (bsc#1185400)</comment>
+    <requestid>890389</requestid>
+  </revision>
 </revisionlist>

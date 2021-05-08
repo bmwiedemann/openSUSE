@@ -136,6 +136,7 @@ Source20:       bash_output_helper.bash
 Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
+Patch9:         icu69.patch
 Patch13:        openssl_binary_detection.patch
 
 ## Patches specific to SUSE and openSUSE
@@ -649,6 +650,7 @@ tar Jxf %{SOURCE11}
 %endif
 %patch5 -p1
 %patch7 -p1
+%patch9 -p1
 %if 0%{with valgrind_tests}
 %endif
 %patch13 -p1
