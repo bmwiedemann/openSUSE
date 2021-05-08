@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.170.0
+Version:        1.2.176.0
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/KhronosGroup/Vulkan-Tools
 Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/sdk-%version.tar.gz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  glslang-devel
+BuildRequires:  glslang-devel >= 8.13.3743
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(vulkan) >= 1.2.162
