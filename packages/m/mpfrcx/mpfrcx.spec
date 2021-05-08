@@ -1,7 +1,7 @@
 #
 # spec file for package mpfrcx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           mpfrcx
 %define lname	libmpfrcx1
-Version:        0.6
+Version:        0.6.1
 Release:        0
 Summary:        Multi-precision floating-point arithmetic of univariate polynomials
 License:        LGPL-3.0-or-later
