@@ -10,10 +10,10 @@ xxhash as well, so that the ABI matches.
  layers/CMakeLists.txt |    6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
-Index: Vulkan-ValidationLayers-1.2.169/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-sdk-1.2.176.0/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-1.2.169.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers-1.2.169/layers/CMakeLists.txt
+--- Vulkan-ValidationLayers-sdk-1.2.176.0.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-sdk-1.2.176.0/layers/CMakeLists.txt
 @@ -61,8 +61,6 @@ if(BUILD_LAYER_SUPPORT_FILES)
          vk_layer_utils.h
          vk_layer_utils.cpp
@@ -23,7 +23,7 @@ Index: Vulkan-ValidationLayers-1.2.169/layers/CMakeLists.txt
          generated/vk_validation_error_messages.h
          generated/vk_layer_dispatch_table.h
          generated/vk_dispatch_table_helper.h
-@@ -203,7 +201,7 @@ set(CORE_VALIDATION_LIBRARY_FILES
+@@ -173,7 +171,7 @@ set(CORE_VALIDATION_LIBRARY_FILES
      generated/synchronization_validation_types.cpp
      gpu_validation.cpp
      generated/corechecks_optick_instrumentation.cpp
@@ -32,9 +32,9 @@ Index: Vulkan-ValidationLayers-1.2.169/layers/CMakeLists.txt
  
  set(OBJECT_LIFETIMES_LIBRARY_FILES
      generated/object_tracker.cpp
-@@ -303,7 +301,7 @@ if(BUILD_LAYERS)
-     if(INSTRUMENT_OPTICK)
-         target_include_directories(VkLayer_khronos_validation PRIVATE ${OPTICK_SOURCE_DIR})
+@@ -280,7 +278,7 @@ if(BUILD_LAYERS)
+     if (USE_ROBIN_HOOD_HASHING)
+         target_include_directories(VkLayer_khronos_validation PRIVATE ${ROBIN_HOOD_HASHING_INCLUDE_DIR})
      endif()
 -    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES})
 +    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES} -lxxhash)

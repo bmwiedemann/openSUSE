@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  5 08:03:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.176.0
+  * layers: Reduce shader validation passes
+  * corechecks: Correct VUID strings for synchronization APIS
+  * layers: Fix binding index bug for dynamic offsets
+  * layers: Add VK_KHR_image_format_list for swapchain
+  * layers: Add VK_KHR_image_format_list
+  * layers: Add validation for VK_EXT_extended_dynamic_state2
+  * layers: Validation for VK_EXT_vertex_input_dynamic_state
+
+-------------------------------------------------------------------
 Sun Feb 28 17:03:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.170.0
