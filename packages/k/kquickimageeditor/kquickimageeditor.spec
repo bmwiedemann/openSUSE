@@ -20,7 +20,7 @@
 %define _tar_path 0.1
 %bcond_without  lang
 Name:           kquickimageeditor
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        A set of QtQuick components for image editing
 License:        LGPL-2.1-or-later
@@ -30,8 +30,8 @@ Source0:        https://download.kde.org/stable/kquickimageeditor/%{_tar_path}/%
 BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
-BuildRequires:  cmake(Qt5Quick) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 %if %{with lang}
 Source1:        https://download.kde.org/stable/kquickimageeditor/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
