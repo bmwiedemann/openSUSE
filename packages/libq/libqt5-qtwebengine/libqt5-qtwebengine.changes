@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 11:45:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with ICU 69:
+  * 0001-Fix-build-with-system-ICU-69.patch
+
+-------------------------------------------------------------------
 Wed Apr 14 18:26:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC 11:

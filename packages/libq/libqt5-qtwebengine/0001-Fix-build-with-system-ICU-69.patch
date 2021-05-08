@@ -1,0 +1,78 @@
+From e67c7b49247c8b9646790c718b85d8ba75b68945 Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Thu, 22 Apr 2021 14:25:17 +0300
+Subject: [PATCH] Fix build with system ICU 69
+
+- https://bugs.gentoo.org/781236
+- https://chromium-review.googlesource.com/c/v8/v8/+/2477751
+
+Change-Id: I8ea93bfe0acb87da9233fced73ff5ae7c5f4cb3e
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ src/3rdparty/chromium/v8/src/objects/js-list-format.cc | 35 ++++++++++++++++++++++-
+ 1 file changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/v8/src/objects/js-list-format.cc b/src/3rdparty/chromium/v8/src/objects/js-list-format.cc
+index b17d38c43ff..7f06114b177 100644
+--- a/src/3rdparty/chromium/v8/src/objects/js-list-format.cc
++++ b/src/3rdparty/chromium/v8/src/objects/js-list-format.cc
+@@ -28,6 +28,35 @@
+ namespace v8 {
+ namespace internal {
+ 
++#if U_ICU_VERSION_MAJOR_NUM >= 67
++namespace {
++
++UListFormatterWidth GetIcuWidth(JSListFormat::Style style) {
++  switch (style) {
++    case JSListFormat::Style::LONG:
++      return ULISTFMT_WIDTH_WIDE;
++    case JSListFormat::Style::SHORT:
++      return ULISTFMT_WIDTH_SHORT;
++    case JSListFormat::Style::NARROW:
++      return ULISTFMT_WIDTH_NARROW;
++  }
++  UNREACHABLE();
++}
++
++UListFormatterType GetIcuType(JSListFormat::Type type) {
++  switch (type) {
++    case JSListFormat::Type::CONJUNCTION:
++      return ULISTFMT_TYPE_AND;
++    case JSListFormat::Type::DISJUNCTION:
++      return ULISTFMT_TYPE_OR;
++    case JSListFormat::Type::UNIT:
++      return ULISTFMT_TYPE_UNITS;
++  }
++  UNREACHABLE();
++}
++
++}  // namespace
++#else
+ namespace {
+ const char* kStandard = "standard";
+ const char* kOr = "or";
+@@ -74,7 +103,7 @@ const char* GetIcuStyleString(JSListFormat::Style style,
+ }
+ 
+ }  // namespace
+-
++#endif
+ MaybeHandle<JSListFormat> JSListFormat::New(Isolate* isolate, Handle<Map> map,
+                                             Handle<Object> locales,
+                                             Handle<Object> input_options) {
+@@ -143,7 +172,11 @@ MaybeHandle<JSListFormat> JSListFormat::New(Isolate* isolate, Handle<Map> map,
+   icu::Locale icu_locale = r.icu_locale;
+   UErrorCode status = U_ZERO_ERROR;
+   icu::ListFormatter* formatter = icu::ListFormatter::createInstance(
++#if U_ICU_VERSION_MAJOR_NUM >= 67
++      icu_locale, GetIcuType(type_enum), GetIcuWidth(style_enum), status);
++#else
+       icu_locale, GetIcuStyleString(style_enum, type_enum), status);
++#endif
+   if (U_FAILURE(status) || formatter == nullptr) {
+     delete formatter;
+     THROW_NEW_ERROR(isolate, NewRangeError(MessageTemplate::kIcuError),
+-- 
+2.20.1
+
