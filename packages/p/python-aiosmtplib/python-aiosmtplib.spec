@@ -26,6 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cole/aiosmtplib
 Source:         https://files.pythonhosted.org/packages/source/a/aiosmtplib/aiosmtplib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM failing_smtpd_tests.patch  gh#cole/aiosmtplib#171 mcepl@suse.com
+# fix tests/smtpd.py
+Patch0:         failing_smtpd_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +45,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 Python asyncio SMTP client.
 
 %prep
-%setup -q -n aiosmtplib-%{version}
+%autosetup -p1 -n aiosmtplib-%{version}
 
 %build
 %python_build
@@ -53,8 +56,7 @@ Python asyncio SMTP client.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#cole/aiosmtplib#171
-%pytest -rs -k 'not (test_qq_login or test_starttls_gmail or test_send_with_login or test_connect_with_login)'
+%pytest -rs -k 'not (test_qq_login or test_starttls_gmail)'
 
 %files %{python_files}
 %doc README.rst docs/*.rst

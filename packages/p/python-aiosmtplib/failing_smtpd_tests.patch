@@ -1,0 +1,15 @@
+---
+ tests/smtpd.py |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/tests/smtpd.py
++++ b/tests/smtpd.py
+@@ -115,6 +115,8 @@ class TestSMTPD(SMTPD):
+ 
+         if arg[:5] == "LOGIN":
+             await self.smtp_AUTH_LOGIN(arg[6:])
++        else:
++            await self.push("525 Unsupported auth method.")
+ 
+     async def smtp_AUTH_LOGIN(self, arg):
+         username = base64.b64decode(arg)

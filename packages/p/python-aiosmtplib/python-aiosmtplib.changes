@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 20:53:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add failing_smtpd_tests.patch to fix failing tests
+  (gh#cole/aiosmtplib#171).
+
+-------------------------------------------------------------------
 Fri Apr 30 10:00:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.1.5:
