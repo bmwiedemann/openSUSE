@@ -1,7 +1,7 @@
 #
 # spec file for package o2scl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}
 Patch0:         o2scl-disable-slow-hdf-test.patch
 # PATCH-FIX-UPSTREAM o2scl-exp-overflow.patch gh#awsteiner/o2scl#16 badshah400@gmail.com -- Fix for overflows from GSL exp.c; patch taken from upstream git commit
 Patch1:         o2scl-exp-overflow.patch
+# PATCH-FIX-UPSTREAM o2scl-boost-math-gamma-header.patch badshah400@gmail.com -- Include boost header required for tgamma function
+Patch2:         o2scl-boost-math-gamma-header.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -91,6 +93,7 @@ This package provides the documentation for %{name}.
 
 %prep
 %autosetup -p1
+sed -Ei "s/\r$//" doc/o2scl/eos/sphinx/build/html/_static/evan.eml
 
 %build
 autoreconf -fvi

@@ -1,0 +1,12 @@
+Index: o2scl-0.925/src/other/polylog.h
+===================================================================
+--- o2scl-0.925.orig/src/other/polylog.h
++++ o2scl-0.925/src/other/polylog.h
+@@ -35,6 +35,7 @@
+ #include <fstream>
+ #include <string>
+ #include <cmath>
++#include <boost/math/special_functions/gamma.hpp>
+ 
+ #include <gsl/gsl_specfunc.h>
+ 
