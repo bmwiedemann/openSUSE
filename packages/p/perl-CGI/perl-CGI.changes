@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  5 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.52
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.52 2021-05-04
+
+      [ FIX ]
+      - sort hash keys for deterministic behaviour (GH #245, GH #246)
+
+-------------------------------------------------------------------
 Tue Oct  6 03:07:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.51
