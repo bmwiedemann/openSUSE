@@ -1,8 +1,8 @@
 #
 # spec file for package hdjmod
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2008-2017 Matthias Bach <marix@marix.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,8 +52,10 @@ Patch10:        hdjmod_fix_buffer_overrun_in_device_name_handling.patch
 Patch11:        hdjmod_kernel_4.14.patch
 # PATCH-FIX-UPSTREAM hdjmod_kernel_4.15.patch marix@marix.org -- Fix build on kernel 4.15 and newer
 Patch12:        hdjmod_kernel_4.15.patch
-# Fix build with kernel 5.0
+# PATCH-FIX-UPSTREAM hdjmod_kernel_5.0.patch msuchanek@suse.com -- Fix build on kernel 5.0 and newer
 Patch13:        hdjmod_kernel_5.0.patch
+# PATCH-FIX-UPSTREAM hdjmod_kernel_5.12.patch marix@marix.org -- Fix build on kernel 5.12 and newer
+Patch14:        hdjmod_kernel_5.12.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  libelf-devel
 %suse_kernel_module_package -p%{_sourcedir}/preamble
@@ -78,6 +80,7 @@ echo %{flavors_to_build}
 %patch11 -p1
 %patch12 -p1
 %patch13 -p2
+%patch14 -p1
 set -- *
 mkdir source
 mv "$@" source/

@@ -169,4 +169,12 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>859585</requestid>
   </revision>
+  <revision rev="22" vrev="27">
+    <srcmd5>dc5fa5a4598d07a897e031b6f17b51b6</srcmd5>
+    <version>1.28</version>
+    <time>1620504472</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hdjmod_kernel_5.12.patch to fix build against Linux 5.12.</comment>
+    <requestid>891573</requestid>
+  </revision>
 </revisionlist>

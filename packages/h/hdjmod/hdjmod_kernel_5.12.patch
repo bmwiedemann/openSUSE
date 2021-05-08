@@ -1,0 +1,12 @@
+The Macro MODULE_SUPPORTED_DEVICE was never implemented and dropped with Linux 5.12
+
+diff --color -Naru hdjmod-1.28o/device.c hdjmod-1.28/device.c
+--- hdjmod-1.28o/device.c	2009-01-27 15:25:50.000000000 +0100
++++ hdjmod-1.28/device.c	2021-05-08 12:06:06.939733004 +0200
+@@ -2796,6 +2796,5 @@
+ module_init(usb_hdj_init);
+ module_exit(usb_hdj_exit);
+ MODULE_DESCRIPTION("DJ Series Kernel Module");
+-MODULE_SUPPORTED_DEVICE("DJ Series Devices");
+ MODULE_AUTHOR("Philip Lukidis <plukidis@guillemot.com>");
+ MODULE_LICENSE("GPL");

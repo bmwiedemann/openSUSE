@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 10:09:32 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Added hdjmod_kernel_5.12.patch to fix build against Linux 5.12.
+
+-------------------------------------------------------------------
 Thu Dec 24 09:59:05 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Make package conform to spec-cleaner
