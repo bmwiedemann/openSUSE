@@ -329,6 +329,7 @@ Requires:       hplip-hpijs
 # Common tools
 Requires:       bash-completion
 Requires:       bluez-firmware
+Requires:       glibc-locale
 Requires:       hicolor-icon-theme-branding-openSUSE
 Requires:       polkit-default-privs
 Requires:       systemd-icon-branding-openSUSE
@@ -526,8 +527,9 @@ Requires:       apparmor-utils
 Requires:       bcache-tools
 Requires:       crda
 Requires:       cryptsetup
-Requires:       glibc-locale
 Requires:       iscsiuio
+#extra items for DVD, not every install
+Requires:       ModemManager
 # Firmware packages with proper "Supplements:" (see bsc#1184767)
 Requires:       kernel-firmware-all
 Requires:       lvm2

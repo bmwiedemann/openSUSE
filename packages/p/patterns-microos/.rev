@@ -312,4 +312,17 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>887983</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>53f3baee2847f3ab315c65f11162eabe</srcmd5>
+    <version>5.0</version>
+    <time>1620504436</time>
+    <user>dimstar_suse</user>
+    <comment>Added the following to the pattern:
+- glibc-locale to the desktop common pattern as it's necessary to
+  choose a different language in Gnome settings
+- ModemManager to the DVD only pattern. So I can choose it in the
+  software section during install. For times there is no WiFi or
+  Ethernet, but a WWAN modem is available to the system.</comment>
+    <requestid>890985</requestid>
+  </revision>
 </revisionlist>

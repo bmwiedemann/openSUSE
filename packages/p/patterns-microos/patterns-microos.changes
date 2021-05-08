@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 06 10:16:16 UTC 2021 - Syds Bearda <opensuse@syds.eu>
+
+Added the following to the pattern:
+- glibc-locale to the desktop common pattern as it's necessary to
+  choose a different language in Gnome settings
+- ModemManager to the DVD only pattern. So I can choose it in the
+  software section during install. For times there is no WiFi or
+  Ethernet, but a WWAN modem is available to the system.
+
+-------------------------------------------------------------------
 Thu Apr 22 07:06:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Suggest libdnf-repo-config-zypp explicitly
