@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  8 11:57:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.22
+  * Migrated to Gtk widget template
+  * IBus 1.4 is no longer supported
+  * Changed title of ibus-setup-kkc, from "Setup" to "Preferences"
+
+-------------------------------------------------------------------
 Sun Sep 14 02:25:23 UTC 2014 - ftake@geeko.jp
 
 - fix the license tag 

@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-kkc
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,18 @@
 
 
 Name:           ibus-kkc
-Version:        1.5.21
+Version:        1.5.22
 Release:        0
 Summary:        Japanese Kana Kanji input engine for IBus
 License:        GPL-2.0+
 Group:          System/I18n/Japanese
-Url:            https://gitorious.org/libkkc/ibus-kkc
-Source:         %{name}-%{version}.tar.gz
-# for autogen.sh
+URL:            https://github.com/ueno/ibus-kkc
+Source:         %{URL}/releases/download/v%{version}/ibus-kkc-%{version}.tar.gz
 BuildRequires:  gnome-common
-BuildRequires:  gtk3-devel
-BuildRequires:  ibus-devel
-BuildRequires:  libkkc-devel >= 0.3.4
 BuildRequires:  vala
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5
+BuildRequires:  pkgconfig(kkc-1.0) >= 0.3.4
 
 %description
 ibus-kkc is a Japanese Kana Kanji input engine for IBus IMF.
@@ -39,19 +37,17 @@ ibus-kkc is a Japanese Kana Kanji input engine for IBus IMF.
 %setup -q
 
 %build
-./autogen.sh
+gnome-autogen.sh
 %configure --libexecdir=%{_libdir}/ibus
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-
 %find_lang %{name}
 
-
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc AUTHORS README COPYING
+%license COPYING
+%doc AUTHORS README
 %{_libdir}/ibus/ibus-engine-kkc
 %{_libdir}/ibus/ibus-setup-kkc
 %{_datadir}/applications/ibus-setup-kkc.desktop
