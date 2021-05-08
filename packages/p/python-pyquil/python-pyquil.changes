@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 18:14:59 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.28.1.
+  * Fix key error for unmeasured memory regions
+  * Remove extraneous debug prints from def_gate_matrix()
+
+-------------------------------------------------------------------
 Fri Apr  9 13:52:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add patch rounding.patch to fix tests on 32-bit
