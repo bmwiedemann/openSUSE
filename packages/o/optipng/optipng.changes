@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 06:16:40 UTC 2021 - pgajdos@suse.com
+
+- install rpm macros in %{_rpmmacrodir} [bsc#1185664]
+- call spec-cleaner
+
+-------------------------------------------------------------------
 Fri Jan 12 07:57:59 UTC 2018 - pgajdos@suse.com
 
 - update to 0.7.7:

@@ -299,4 +299,13 @@
   - optipng-CVE-2017-16938.patch</comment>
     <requestid>563780</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>fe6348f337754995c335ff663fd089d4</srcmd5>
+    <version>0.7.7</version>
+    <time>1620504431</time>
+    <user>dimstar_suse</user>
+    <comment>- install rpm macros in %{_rpmmacrodir} [bsc#1185664]
+- call spec-cleaner</comment>
+    <requestid>890922</requestid>
+  </revision>
 </revisionlist>

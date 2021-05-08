@@ -1,7 +1,7 @@
 #
 # spec file for package optipng
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,11 @@ Release:        0
 Summary:        A PNG File Compressor
 License:        Zlib
 Group:          Productivity/Archiving/Compression
-Url:            http://optipng.sourceforge.net/
+URL:            http://optipng.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-%{version}/optipng-%{version}.tar.gz
 Source1:        macros.optipng
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 OptiPNG is a PNG optimizer that recompresses image files to a smaller
@@ -49,20 +48,19 @@ export CFLAGS="%{optflags}"
 
 #don't strip binaries
 sed -i "s:\(LDFLAGS = \)-s:\1:" src/optipng/Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.optipng
+%make_install
+install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.optipng
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
-%defattr(-,root,root)
 %doc README.txt doc
 %{_bindir}/optipng
-%{_mandir}/man1/optipng.1.gz
-%config %{_sysconfdir}/rpm/macros.optipng
+%{_mandir}/man1/optipng.1%{?ext_man}
+%{_rpmmacrodir}/macros.optipng
 
 %changelog
