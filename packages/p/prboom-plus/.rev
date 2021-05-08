@@ -104,4 +104,12 @@ Can't really provide infinitely many versions!</comment>
     <comment>- Update to release 2.6um and snapshot 2.6um+git69 (07925d634)</comment>
     <requestid>884442</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1154ac44d2f80e68af5416cc159e3ed4</srcmd5>
+    <version>2.6um+g81</version>
+    <time>1620504468</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>891546</requestid>
+  </revision>
 </revisionlist>

@@ -2,9 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/coelckers/prboom-plus</param>
-		<param name="exclude">data/sounds/dsdg*</param>
-		<param name="exclude">data/sprites/dogs*</param>
-		<param name="revision">07925d634cc4d5a8847f76ca4c4f2ce236ba6de8</param>
+		<param name="revision">15431b3a9aac0800c72276aa8dabb13a8f12632e</param>
 		<param name="versionformat">2.6um+g@TAG_OFFSET@</param>
 	</service>
 	<service name="recompress" mode="disabled">

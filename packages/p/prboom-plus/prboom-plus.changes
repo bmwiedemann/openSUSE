@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  1 13:01:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2.6um+git81 (15431b3a9aac)
+  * Fix sky scaling for non-standard sky sizes
+  * Support widescreen assets
+  * Add OpenGL sprite fuzz options
+- Update prboom-hbar-all.diff, prboom-hbar-gradient.diff
+  from project.
+
+-------------------------------------------------------------------
 Fri Apr  9 23:53:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch to Oelcker's prboom-plus-um code base

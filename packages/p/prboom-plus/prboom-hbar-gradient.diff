@@ -1,4 +1,4 @@
-From 6566b0489164957581d091119bdf480d66e9ca20 Mon Sep 17 00:00:00 2001
+From be1128c66a342ca381532ac3c6bcd286d871fdc3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 1 May 2013 09:53:49 +0200
 Subject: [PATCH 2/2] Implement color gradient for health bar
@@ -23,12 +23,14 @@ index b4be8d56..8c44d9a7 100644
    float x1, x2, x3;
    float z1, z2, z3;
 diff --git prboom2/src/gl_main.c prboom2/src/gl_main.c
-index e2402e16..0a257ecf 100644
+index 763bcbae..8dcb03fd 100644
 --- prboom2/src/gl_main.c
 +++ prboom2/src/gl_main.c
-@@ -2334,15 +2334,23 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+@@ -2340,16 +2340,24 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+   {
      GLHealthBar hbar;
      int health_percent = thing->health * 100 / thing->info->spawnhealth;
++    int yr = health_bar_yellow - health_bar_red;
  
 -    hbar.cm = -1;
 -    if (health_percent <= health_bar_red)
@@ -43,10 +45,9 @@ index e2402e16..0a257ecf 100644
 +      hbar.g = 0.0f;
 +    } else if (health_percent <= health_bar_red) {
 +      hbar.r = 1.0f;
-+      hbar.g = (double)health_percent / (health_bar_yellow - health_bar_red);
++      hbar.g = yr == 0 ? 0 : (float)health_percent / yr;
 +    } else if (health_percent <= health_bar_yellow) {
-+      hbar.r = (double)(health_bar_yellow - health_percent) /
-+               (health_bar_yellow - health_bar_red);
++      hbar.r = yr == 0 ? 1 : (float)(health_bar_yellow - health_percent) / yr;
 +      hbar.g = 1.0f;
 +    } else if (health_percent <= health_bar_green) {
 +      hbar.r = 0.0f;
@@ -54,11 +55,11 @@ index e2402e16..0a257ecf 100644
 +    }
  
 -    if (hbar.cm >= 0)
-+    if (hbar.r >= 0)
++    if (hbar.r >= 0 && hbar.g >= 0)
      {
        float sx2 = (float)thing->radius / 2.0f / MAP_SCALE;
        float sx1 = sx2 - (float)health_percent * (float)thing->radius / 100.0f / MAP_SCALE;
-@@ -2366,7 +2374,6 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+@@ -2373,7 +2381,6 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
  static void gld_DrawHealthBars(void)
  {
    int i, count;
@@ -66,7 +67,7 @@ index e2402e16..0a257ecf 100644
  
    count = gld_drawinfo.num_items[GLDIT_HBAR];
    if (count > 0)
-@@ -2377,11 +2384,7 @@ static void gld_DrawHealthBars(void)
+@@ -2384,11 +2391,7 @@ static void gld_DrawHealthBars(void)
      for (i = count - 1; i >= 0; i--)
      {
        GLHealthBar *hbar = gld_drawinfo.items[GLDIT_HBAR][i].item.hbar;

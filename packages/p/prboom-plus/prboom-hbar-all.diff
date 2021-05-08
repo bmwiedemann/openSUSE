@@ -1,29 +1,80 @@
-From a0bae535928cbce4eb9da8dd5d33b473776c9693 Mon Sep 17 00:00:00 2001
+From f8dc397539f27c601aa6f1f3ea0f6c1f177efd97 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 1 May 2013 09:53:49 +0200
-Subject: [PATCH 1/2] Show health bar for all destructible mobjs
+Subject: [PATCH 1/2] Add option to show health bar for all destructible mobjs
 References: https://github.com/coelckers/prboom-plus/pull/274
 
-Show the health bar for all destructible items, especially so
-including barrels and Lost Souls.
+The current health bar fails to show for Lost Souls.
+In addition, showing it for other destructible objects (such as
+barrels - or DEH modifications in that spirit) can be used to gauge
+the objects' remaining life.
 ---
- prboom2/src/gl_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ prboom2/src/gl_main.c  | 10 +++++++++-
+ prboom2/src/m_misc.c   |  2 ++
+ prboom2/src/r_things.c |  1 +
+ prboom2/src/r_things.h |  1 +
+ 4 files changed, 13 insertions(+), 1 deletion(-)
 
 diff --git prboom2/src/gl_main.c prboom2/src/gl_main.c
-index 20712b7e..e2402e16 100644
+index 20712b7e..763bcbae 100644
 --- prboom2/src/gl_main.c
 +++ prboom2/src/gl_main.c
-@@ -2328,7 +2328,8 @@ static void gld_DrawSprite(GLSprite *sprite)
+@@ -2326,9 +2326,17 @@ static void gld_DrawSprite(GLSprite *sprite)
+   }
+ }
  
++static int gld_EvaluateShowBar(mobj_t* thing)
++{
++  if (health_bar_shootables)
++    return thing->flags & MF_SHOOTABLE;
++  return (thing->flags & (MF_COUNTKILL | MF_CORPSE)) == MF_COUNTKILL;
++}
++
  static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
  {
 -  if (((thing->flags & (MF_COUNTKILL | MF_CORPSE)) == MF_COUNTKILL) && (thing->health > 0))
-+  if ((thing->flags & MF_SHOOTABLE) && thing->info->spawnhealth > 0 &&
-+      thing->health > 0)
++  if (thing->info->spawnhealth > 0 && thing->health > 0 &&
++      gld_EvaluateShowBar(thing))
    {
      GLHealthBar hbar;
      int health_percent = thing->health * 100 / thing->info->spawnhealth;
+diff --git prboom2/src/m_misc.c prboom2/src/m_misc.c
+index 0bf3f5b9..e819ad61 100644
+--- prboom2/src/m_misc.c
++++ prboom2/src/m_misc.c
+@@ -1045,6 +1045,8 @@ default_t defaults[] =
+    def_bool,ss_stat},
+   {"health_bar_full_length", {&health_bar_full_length}, {1},0,1,
+    def_bool,ss_stat},
++  {"health_bar_shootables", {&health_bar_shootables}, {0},0,1,
++   def_bool,ss_stat},
+   {"health_bar_red", {&health_bar_red}, {50},0,100,
+    def_int,ss_stat},
+   {"health_bar_yellow", {&health_bar_yellow}, {99},0,100,
+diff --git prboom2/src/r_things.c prboom2/src/r_things.c
+index c537dd5e..fd1215fd 100644
+--- prboom2/src/r_things.c
++++ prboom2/src/r_things.c
+@@ -73,6 +73,7 @@ int sprites_doom_order;
+ 
+ int health_bar;
+ int health_bar_full_length;
++int health_bar_shootables;
+ int health_bar_red;
+ int health_bar_yellow;
+ int health_bar_green;
+diff --git prboom2/src/r_things.h prboom2/src/r_things.h
+index 2267cb83..52e5beea 100644
+--- prboom2/src/r_things.h
++++ prboom2/src/r_things.h
+@@ -75,6 +75,7 @@ extern int sprites_doom_order;
+ 
+ extern int health_bar;
+ extern int health_bar_full_length;
++extern int health_bar_shootables;
+ extern int health_bar_red;
+ extern int health_bar_yellow;
+ extern int health_bar_green;
 -- 
 2.31.1
 

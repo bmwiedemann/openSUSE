@@ -17,7 +17,7 @@
 
 
 Name:           prboom-plus
-Version:        2.6um+g69
+Version:        2.6um+g81
 Release:        0
 Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
