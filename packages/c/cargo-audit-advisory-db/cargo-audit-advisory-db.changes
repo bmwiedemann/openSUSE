@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 07 03:16:33 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210507:
+  * Assigned RUSTSEC-2021-0064 to cpuid-bool (#905)
+  * Add unmaintained crate advisory for `cpuid-bool` (#904)
+  * Assigned RUSTSEC-2021-0063 to comrak (#903)
+  * Add advisory for another comrak XSS (#902)
+  * aes* crates: add crate names to advisory titles (#901)
+  * Assigned RUSTSEC-2021-0062 to miscreant (#900)
+  * Add unmaintained crate advisory for `miscreant` (#899)
+  * Assigned RUSTSEC-2021-0061 to aes-ctr (#898)
+  * Add unmaintained crate advisory for `aes-ctr` (#897)
+  * Assigned RUSTSEC-2021-0060 to aes-soft (#896)
+
+-------------------------------------------------------------------
 Wed Apr 28 00:52:16 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210428:
