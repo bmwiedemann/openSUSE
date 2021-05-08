@@ -1,6 +1,0 @@
-<package name="xfce4-mixer" project="openSUSE:Factory">
-  <title>Volume control application for the Xfce desktop environment</title>
-  <description>xfce4-mixer is a volume control application for the Xfce desktop
-environment.</description>
-  <devel project="X11:xfce" package="xfce4-mixer"/>
-</package>
