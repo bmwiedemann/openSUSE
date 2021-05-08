@@ -407,4 +407,13 @@
   + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
     <requestid>883162</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5bfdf44fef6e9267abc9b94562d9e1df</srcmd5>
+    <version>0.347</version>
+    <time>1620504430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.347 (bsc#1185697):
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>890904</requestid>
+  </revision>
 </revisionlist>
