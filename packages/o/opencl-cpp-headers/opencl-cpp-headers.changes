@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 22:27:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Include the actual headers: cl2.hpp is just importing the new
+  opencl.hpp now.
+
+-------------------------------------------------------------------
 Sat May  1 21:38:20 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.0.14.

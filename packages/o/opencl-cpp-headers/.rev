@@ -39,4 +39,13 @@
   * Synchronize with OpenCL v3.0.7 specification release.</comment>
     <requestid>889767</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7755c2f230fec8bf88ada4d82d226539</srcmd5>
+    <version>2.0.14</version>
+    <time>1620504473</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the actual headers: cl2.hpp is just importing the new
+  opencl.hpp now.</comment>
+    <requestid>891575</requestid>
+  </revision>
 </revisionlist>

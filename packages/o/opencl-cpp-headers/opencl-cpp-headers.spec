@@ -49,9 +49,11 @@ find -type f -exec dos2unix {} \;
 %install
 install -d -m 0755 %{buildroot}%{_includedir}/CL
 install -p -m 0644 include/CL/cl2.hpp %{buildroot}%{_includedir}/CL
+install -p -m 0644 include/CL/opencl.hpp %{buildroot}%{_includedir}/CL
 
 %files
 %dir %{_includedir}/CL
 %{_includedir}/CL/cl2.hpp
+%{_includedir}/CL/opencl.hpp
 
 %changelog
