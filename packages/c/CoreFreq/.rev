@@ -56,4 +56,14 @@
 </comment>
     <requestid>885607</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c1593c0b2557c5cc025ad396ed9a735</srcmd5>
+    <version>1.84.5+git20210508</version>
+    <time>1620504459</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to v1.84.5
+Fixes compilation on kernel 5.12
+</comment>
+    <requestid>891467</requestid>
+  </revision>
 </revisionlist>
