@@ -17,7 +17,7 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Source:         https://github.com/ibus/ibus-m17n/releases/download/%{version}/%
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4
 BuildRequires:  pkgconfig(m17n-shell)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       ibus
 
 %description
@@ -50,14 +49,10 @@ the input table maps from m17n-db.
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc AUTHORS README
 %license COPYING
+%doc AUTHORS README
 %{_datadir}/ibus-*
-%dir %{_libdir}/ibus
 %{_libdir}/ibus/ibus-*
-%dir %{_datadir}/ibus
-%dir %{_datadir}/ibus/component
 %{_datadir}/ibus/component/*
 %{_datadir}/applications/ibus-setup-m17n.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.m17n.gschema.xml

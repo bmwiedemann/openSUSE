@@ -198,4 +198,12 @@
   * Update translations (forwarded request 873125 from hillwood)</comment>
     <requestid>873128</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>606bbe35eb5260cf3180ad0117a8ded0</srcmd5>
+    <version>1.4.5</version>
+    <time>1620504461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891517</requestid>
+  </revision>
 </revisionlist>

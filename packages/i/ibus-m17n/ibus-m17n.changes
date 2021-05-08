@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  8 12:10:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.5
+  * Use ibus_engine_update_preedit_with_mode() always with
+    IBUS_ENGINE_PREEDIT_COMMIT mode
+  * Translation update from Weblate, bn new and 100% complete,
+    pt_BR now 100% complete
+
+-------------------------------------------------------------------
 Wed Feb 17 12:27:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.4.4
