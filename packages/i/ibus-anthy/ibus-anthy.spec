@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
 Requires:       anthy
-Version:        1.5.11
+Version:        1.5.12
 Release:        0
 Summary:        The Anthy engine for IBus input platform
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ The %{name}-devel package includes the header files for the %{name} package.
 make %{?_smp_mflags}
 
 %install
-%makeinstall
+%make_install
 
 find %{buildroot} -name "*.la" -type f -delete -print
 
@@ -71,22 +71,10 @@ find %{buildroot} -name "*.la" -type f -delete -print
 
 %suse_update_desktop_file ibus-setup-anthy System Utility settings
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1330
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1330
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS README
 %license COPYING
 %{_libexecdir}/ibus-*
@@ -101,7 +89,6 @@ find %{buildroot} -name "*.la" -type f -delete -print
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.anthy.gschema.xml
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/ibus-anthy-1.0
 %{_datadir}/gir-1.0
 %{_libdir}/libanthygobject-*.so

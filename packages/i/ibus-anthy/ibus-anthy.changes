@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  8 11:05:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.12
+  * Fix two emoji orders
+  * Fix a regex pattern in engine.py
+  * Keep preedit with reset signal 
+  * Update translations
+- SPEC file: Drop parts related to outdated openSUSE versions
+
+-------------------------------------------------------------------
 Wed Jan 20 07:33:13 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 1.5.11
