@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  5 10:21:50 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix an error importing the configuration when the json does not
+  contain all keys; (bsc#1184630);
+- Fix nss_ldap package unnecessarily installed; (bsc#1185499);
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
