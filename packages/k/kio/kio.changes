@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 20:28:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix thumnail creation in certain conditions (kde#430862):
+  * 0001-PreviewJob-Create-a-larger-SHM-when-necessary.patch
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0

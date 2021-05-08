@@ -1,0 +1,56 @@
+From bc02b2528c97eab0961b3ad608a4914d3ce4b46c Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 4 May 2021 22:22:53 +0200
+Subject: [PATCH] PreviewJob: Create a larger SHM when necessary
+
+It's possible that during the lifetime of a PreviewJob thumbnails with
+different sizes are created. The SHM was created to match the size of the first
+(non-empty) thumbnail, so any larger ones after that would reuse the SHM with
+insufficient size.
+
+BUG: 430862
+---
+ src/widgets/previewjob.cpp | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/src/widgets/previewjob.cpp b/src/widgets/previewjob.cpp
+index d30f71cf..4f71c1c7 100644
+--- a/src/widgets/previewjob.cpp
++++ b/src/widgets/previewjob.cpp
+@@ -136,6 +136,8 @@ public:
+     int shmid;
+     // And the data area
+     uchar *shmaddr;
++    // Size of the shm segment
++    size_t shmsize;
+     // Root of thumbnail cache
+     QString thumbRoot;
+     // List of encrypted mount points for checking if we should save thumbnail
+@@ -733,17 +735,19 @@ void PreviewJobPrivate::createThumbnail(const QString &pixPath)
+     }
+ 
+ #if WITH_SHM
+-    if (shmid == -1) {
++    size_t requiredSize = thumb_width * devicePixelRatio * thumb_height * devicePixelRatio * 4;
++    if (shmid == -1 || shmsize < requiredSize) {
+         if (shmaddr) {
+             // clean previous shared memory segment
+             shmdt((char *)shmaddr);
+-            shmctl(shmid, IPC_RMID, nullptr);
+             shmaddr = nullptr;
++            shmctl(shmid, IPC_RMID, nullptr);
++            shmid = -1;
+         }
+-        auto size = thumb_width * thumb_height;
+-        if (size > 0) {
+-            shmid = shmget(IPC_PRIVATE, size * 4 * devicePixelRatio * devicePixelRatio, IPC_CREAT | 0600);
++        if (requiredSize > 0) {
++            shmid = shmget(IPC_PRIVATE, requiredSize, IPC_CREAT | 0600);
+             if (shmid != -1) {
++                shmsize = requiredSize;
+                 shmaddr = (uchar *)(shmat(shmid, nullptr, SHM_RDONLY));
+                 if (shmaddr == (uchar *)-1) {
+                     shmctl(shmid, IPC_RMID, nullptr);
+-- 
+2.25.1
+
