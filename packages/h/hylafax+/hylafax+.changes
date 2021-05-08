@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 14:17:37 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Fix TW build by pretending tiff 4.4 is as good enough as 4.{0,1}
+
+-------------------------------------------------------------------
 Tue Jan 26 12:07:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix TW build by pretending tiff 4.2 is as good enough as 4.{0,1}

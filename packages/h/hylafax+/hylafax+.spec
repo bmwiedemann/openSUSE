@@ -102,8 +102,8 @@ used to access the server.
 %setup -q -n hylafax-%{version}
 cp %{SOURCE8} .
 cp %{SOURCE9} .
-# pretend, that libtiff 4.2 is similar to 4.{0,1}
-sed -i 's/4.\[01\])/4.[012])/' configure
+# pretend, that libtiff 4.4 is similar to 4.{0,1}
+sed -i 's/4.\[01\])/4.[01234])/' configure
 
 %build
 # - Can't use the configure macro because HylaFAX configure script does
@@ -198,7 +198,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %service_add_post hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
 
 %preun
-%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service 
+%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
 
 %postun
 /sbin/ldconfig
@@ -368,7 +368,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %dir %{faxspool}/config
 %dir %{faxspool}/dev
 %config(noreplace) %{faxspool}%{_sysconfdir}/xferfaxlog
-%defattr(700,uucp,uucp) 
+%defattr(700,uucp,uucp)
 %dir %{faxspool}/docq
 %dir %{faxspool}/doneq
 %dir %{faxspool}/archive
