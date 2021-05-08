@@ -1,7 +1,7 @@
 #
 # spec file for package rehex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rehex
-Version:        0.3.1
+Version:        0.3.91
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(jansson)
+BuildRequires:  (pkgconfig(lua5.3) or pkgconfig(lua))
 
 %description
 A hex heditor with a number of features for analysing and annotating
@@ -45,19 +46,21 @@ Current features include:
 %prep
 %autosetup
 dos2unix README.md
-sed -i 's|/usr/local|%{_prefix}|' Makefile
 
 %build
-%make_build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="$CFLAGS"
+%make_build prefix=%{_prefix} libdir=%{_libdir}
 
 %install
-%make_install
+%make_install prefix=%{_prefix} libdir=%{_libdir}
 %suse_update_desktop_file -r %{name} "Development;Debugger;"
 
 %files
 %license LICENSE.txt
 %doc README.md
 %{_bindir}/%{name}
+%{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 

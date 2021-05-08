@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  7 11:46:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.91
+  * Show disassembly of machine code in the main document view
+  * Add float/double types to "Set data type" menu
+  * Initial support for Lua plugins.
+  * Process sections from PE EXE/DLL headers
+  * Virtual segment mapping and display
+- Use optflags
+
+-------------------------------------------------------------------
 Fri Nov 13 22:41:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.1 (2020-11-13)
