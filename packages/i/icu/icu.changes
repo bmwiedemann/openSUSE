@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 10 22:41:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 69.1
+  * CLDR 39
+  * For Norwegian, "no" is back to being the canonical code, with
+    "nb" treated as equivalent. This aligns handling of Norwegian
+    with other macro language codes.
+  * Binary prefixes in measurement units (KiB, MiB, etc.)
+  * Time zone offsets from local time: New APIs
+    BasicTimeZone::getOffsetFromLocal() (C++) and
+    ucal_getTimeZoneOffsetFromLocal()
+- Drop icu-1618.patch (merged),
+  icu-fix-testTemperature.patch (merged)
+
+-------------------------------------------------------------------
+Sat Apr 10 21:27:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- icu-drop-testTemperature.patch: Remove
+- icu-fix-testTemperature.patch: Backport ICU-21366 (bsc#1182645)
+- Don't disable testsuite under qemu-linux-user
+
+-------------------------------------------------------------------
 Wed Mar 31 16:19:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add icu-drop-testTemperature.patch to fix boo#1182645

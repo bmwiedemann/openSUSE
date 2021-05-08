@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu68
-%define amajor   68
-%define aversion 68
+%define lname	libicu69
+%define amajor   69
+%define aversion 69
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        68.2
+Version:        69.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,25 +34,22 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-docs.zip.asc
 Source99:       icu.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
-Patch9:         icu-1618.patch
-# boo#1182645
-Patch10:        icu-drop-testTemperature.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2020d
+Provides:       bundled(timezone) = 2021a
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -135,9 +132,6 @@ This package contains the HTML documentation.
 
 %prep
 %autosetup -p1 -n icu
-%ifnarch aarch64 ppc64 ppc64le
-%patch -P 10 -R -p1
-%endif
 
 # docs are special
 mkdir html
@@ -219,12 +213,7 @@ rm -Rf "%buildroot/%_datadir/icu/%version/unidata/" \
 %check
 # s390x see: https://ssl.icu-project.org/trac/ticket/13095
 cd source
-%if !0%{?qemu_user_space_build:1}
-# Checks disabled in qemu because of races happening when we emulate
-# multi-threaded programs, and some check tests atomic instructions in
-# multi-threaded icu invocations
 ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=1
-%endif
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
