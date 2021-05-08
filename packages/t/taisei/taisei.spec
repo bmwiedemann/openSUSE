@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %endif
 
 Name:           taisei
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
 Group:          Amusements/Games/Action/Arcade
 URL:            https://taisei-project.org
-Source0:        https://github.com/taisei-project/taisei/releases/download/v1.3.1/taisei-v1.3.1.tar.xz
-Source1:        https://github.com/taisei-project/taisei/releases/download/v1.3.1/taisei-v1.3.1.tar.xz.sig
+Source0:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-v%{version}.tar.xz
+Source1:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-v%{version}.tar.xz.sig
 Source2:        gpg.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -40,7 +40,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(SDL2_mixer) >= 2.0.4
+BuildRequires:  pkgconfig(cglm)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebpdecoder) > 0.4
@@ -53,10 +55,7 @@ BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(spirv-cross-c-shared)
 %endif
 Requires:       %{name}-data
-Requires(post): desktop-file-utils
-Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Suggests:       gamemoded
 
 %description
 Taisei is an open clone of the Touhou Project series. Touhou is a one-man project
