@@ -1,7 +1,7 @@
 #
 # spec file for package libphonenumber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libphonenumber
-Version:        8.12.10
+Version:        8.12.22
 Release:        0
 %define lib_ver 8
 %define lib_ver2 8.12
@@ -73,6 +73,7 @@ that use libphonenumber.
 %build
 cd cpp
 # Enabling the geocoder breaks quite a lot due to broken cmakelists
+# (https://github.com/google/libphonenumber/pull/2556)
 %cmake -DBUILD_STATIC_LIB=OFF -DBUILD_SHARED_LIB=ON -DBUILD_TESTING=ON -DBUILD_GEOCODER=OFF
 %make_jobs
 
