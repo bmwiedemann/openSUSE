@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat May  8 15:49:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.1
+  * When an error occurs in a notification presenter, qutebrowser
+    now shows that error in the statusbar instead of just logging it
+  * New site-specific-quirk for Discord logging users out when using
+    vertical tabs
+  * Certain errors from notification daemons are now displayed
+    as non-fatal errors instead of qutebrowser crashing:
+    * With the legacy GNOME Flashback notification daemon, when
+      more than 20 notifications are currently shown.
+    * With the KDE Plasma notification daemon, when the same
+      notification is shown twice.
+  * Running :spawn -u -o broke in v2.2.0 and now works properly
+    again
+  * Fixes in userscripts:
+    * The qute-bitwarden userscript now still consumes returned
+      data if the Bitwarden CLI showed a warning but exited with
+      a successful exit code.
+    * The qute-pass userscript now doesn't try to match a username
+      with --password-only, and error messages with invalid
+      patterns are improved.
+    * The qute-pass userscript now avoids running pass twice
+      when --otp-only is used.
+- SPEC file: Drop parts related to outdated openSUSE versions
+
+-------------------------------------------------------------------
 Mon Apr 19 22:31:55 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Enable test suite

@@ -1652,4 +1652,12 @@ Added
   * New content.notifications.presenter setting with various new</comment>
     <requestid>886814</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>750ee16e87882015cd7708fedb1eb537</srcmd5>
+    <version>2.2.1</version>
+    <time>1620504470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891564</requestid>
+  </revision>
 </revisionlist>
