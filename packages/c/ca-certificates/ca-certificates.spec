@@ -41,7 +41,6 @@ Requires:       /usr/bin/readlink
 Requires:       findutils
 Requires:       p11-kit
 Requires:       p11-kit-tools >= 0.23.1
-Requires:       openssl(cli)
 # needed for post
 Requires(post): p11-kit-tools findutils /usr/bin/readlink
 Recommends:     ca-certificates-mozilla

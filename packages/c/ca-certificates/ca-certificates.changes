@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 18 17:22:38 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- openssl command line tools are no longer required, p11-kit does
+  the job.
+
+-------------------------------------------------------------------
 Tue Mar 09 10:43:52 UTC 2021 - lnussel@suse.de
 
 - Update to version 2+git20210309.8214505:

@@ -413,4 +413,13 @@
   * Make sure to trigger in transactional mode (boo#1179884)</comment>
     <requestid>877953</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f8049a3f6d55ccd1e3f7a25f26329a7d</srcmd5>
+    <version>2+git20210309.8214505</version>
+    <time>1620504418</time>
+    <user>dimstar_suse</user>
+    <comment>- openssl command line tools are no longer required, p11-kit does
+  the job.</comment>
+    <requestid>879949</requestid>
+  </revision>
 </revisionlist>
