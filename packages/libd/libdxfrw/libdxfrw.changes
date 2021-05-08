@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 04 06:47:19 UTC 2021 - jslaby@suse.cz
+
+- Update to version 1.0.1+git.20200429:
+  * Fix includes install dir
+  * Export target as libdxfrw::libdxfrw to keep consistency with Conan packages
+  * Add archive destination in install
+  * Install DXFRW::dxfrw target
+  * Remove duplicate target properties
+  * Remove version from pkg-config file
+  * Let CMake handle C++11 compiler definition
+  * Change minimal required CMake version to 3.0
+  * cmake: add doc target
+  * README.md: fix typo
+  * cmake: generate and install pkgconfig
+  * cmake: add one for dwg2dxf
+  * cmake: set library VERSIONs
+  * cmake: use GNUInstallDirs
+- add patches (build fixes)
+  * libdxfrw.pc.in-fix-expansion-and-include-path.patch
+  * drw_header-fix-indentation-level.patch
+- remove patches (they got upstreamed)
+  * 0001-cmake-use-GNUInstallDirs.patch
+  * 0002-cmake-set-library-VERSIONs.patch
+  * 0003-cmake-add-one-for-dwg2dxf.patch
+  * 0004-cmake-generate-and-install-pkgconfig.patch
+
+-------------------------------------------------------------------
 Sun May 19 17:50:31 UTC 2019 - jslaby@suse.com
 
 - switch from sourceforge to more up-to-date github repo

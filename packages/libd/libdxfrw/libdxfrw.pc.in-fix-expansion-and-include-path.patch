@@ -1,0 +1,60 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 4 May 2021 11:02:42 +0200
+Subject: libdxfrw.pc.in: fix expansion and include path
+Patch-mainline: Submitted pr#21
+References: pkgconfig fix
+
+The include dirs are processed by cmake's configure_file since commit
+3431cc658681 (Fix building of pkgconfig on Windows). That means every
+dollar referenced variables are expanded. But ${libdir} and
+${includedir} are meant as pkgconfig variables, so should not be
+expanded. Fix this by @ONLY option of configure_file (and change all
+${X} references to @X@).
+
+And since commit 70ff2fe82faf (Install DXFRW::dxfrw target), include
+files have no version number in the path.  They reside in
+/usr/include/libdxfrw/*. Fix this too by removing the version suffix.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ CMakeLists.txt |  2 +-
+ libdxfrw.pc.in | 12 ++++++------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b35cd1a270e9..a57c47139340 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,7 +94,7 @@ add_subdirectory(dwg2dxf)
+ # INSTALLATION
+ set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/libdxfrw)
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libdxfrw.pc.in libdxfrw.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libdxfrw.pc.in libdxfrw.pc @ONLY)
+ 
+ install(TARGETS dxfrw
+ 		EXPORT libdxfrw-targets
+diff --git a/libdxfrw.pc.in b/libdxfrw.pc.in
+index 6ab886d99060..3a8b8a4579e7 100644
+--- a/libdxfrw.pc.in
++++ b/libdxfrw.pc.in
+@@ -1,10 +1,10 @@
+-prefix=${CMAKE_INSTALL_PREFIX}
+-exec_prefix=${CMAKE_INSTALL_PREFIX}
+-libdir=|${CMAKE_INSTALL_FULL_LIBDIR}
+-includedir=${CMAKE_INSTALL_FULL_INCLUDEDIR}
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++libdir=|@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: libdxfrw
+ Description: c++ library to read/write dxf files in binary and ascii form
+-Version: ${PROJECT_VERSION}
++Version: @PROJECT_VERSION@
+ Libs: -L${libdir} -ldxfrw
+-Cflags: -I${includedir}/libdxfrw${PROJECT_VERSION_MAJOR}
++Cflags: -I${includedir}/libdxfrw
+-- 
+2.31.1
+

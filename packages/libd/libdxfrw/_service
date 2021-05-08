@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libdxfrw</param>
-    <param name="versionformat">0.6.3+git.%cd</param>
+    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
