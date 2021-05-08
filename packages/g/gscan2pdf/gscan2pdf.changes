@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 02:08:51 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add dependency for perl module Locale::Language. (bsc#1185787)
+
+-------------------------------------------------------------------
 Mon May  3 13:10:15 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 2.12.1
