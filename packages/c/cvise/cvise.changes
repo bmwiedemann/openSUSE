@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 08 06:33:02 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210419.e9a7b94:
+  * Simplify bool option definition.
+
+-------------------------------------------------------------------
+Sat May  8 06:24:58 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use non-version dependencies to LLVM and clang.
+
+-------------------------------------------------------------------
 Thu Apr 22 12:40:25 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Use LLVM12.

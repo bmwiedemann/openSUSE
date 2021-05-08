@@ -559,4 +559,15 @@
 </comment>
     <requestid>888323</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eab3f0c7aa46f77b014595fa9b77e2f0</srcmd5>
+    <version>2.3.0+git.20210419.e9a7b94</version>
+    <time>1620504455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210419.e9a7b94:
+  * Simplify bool option definition.
+
+- Use non-version dependencies to LLVM and clang.</comment>
+    <requestid>891437</requestid>
+  </revision>
 </revisionlist>
