@@ -1,7 +1,7 @@
 #
 # spec file for package nco
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        4.9.7
-%define  soname 4_9_7
+Version:        4.9.8
+%define  soname 4_9_8
 %define  major  4
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files

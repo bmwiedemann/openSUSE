@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  8 15:15:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.9.8:
+  * Support for unpacking sparse 1D (S1D) data and restart files
+    used for plant functional types and multiple elevation classes
+  * Support for splitting monthly resolution timeseries that do not
+    begin/end in Jan/Dec
+  * Support seamless climos for the E3SM ice-sheet model (MALI)
+  * Bugfixes for inferring grid files and handling sub-gridscale data
+
+-------------------------------------------------------------------
 Thu Dec 31 17:27:00 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 4.9.7:

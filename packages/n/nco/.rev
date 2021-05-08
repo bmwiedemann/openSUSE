@@ -7,4 +7,12 @@
     <comment>nco is popular tool for manipulating netcdf data. It is widely-used in environmental sciences. So it would be great to have it in factory.</comment>
     <requestid>863761</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bc65cf1db5ca54b3e289f1cfadd314c</srcmd5>
+    <version>4.9.8</version>
+    <time>1620504473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891583</requestid>
+  </revision>
 </revisionlist>
