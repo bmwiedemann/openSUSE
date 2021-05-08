@@ -671,4 +671,13 @@
     <comment>Enable SSE optimizations. They are not enabled by default in configure-based builds (see the INSTALL file). (forwarded request 878383 from llunak)</comment>
     <requestid>878473</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>6c43f475d8a3d8d8a041ee8091e33ec3</srcmd5>
+    <version>1.6.37</version>
+    <time>1620504430</time>
+    <user>dimstar_suse</user>
+    <comment>- install rpm macros in %{_rpmmacrodir} [bsc#1185661]
+- call spec-cleaner</comment>
+    <requestid>890905</requestid>
+  </revision>
 </revisionlist>

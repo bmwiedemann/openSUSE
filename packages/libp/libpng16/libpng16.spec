@@ -18,7 +18,6 @@
 
 %define debug_build 0
 %define asan_build  0
-
 %define major   1
 %define minor   6
 %define micro   37
@@ -111,17 +110,16 @@ export CFLAGS="$CFLAGS -Og"
 sed -i -e 's/^\(CFLAGS.*\)$/\1 -fsanitize=address/' \
        -e 's/\(^LIBS =.*\)/\1 -lasan/' Makefile
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %check
-make -j1 check
+%make_build -j1 check
 
 %install
 %make_install
 rm %{buildroot}/%{_libdir}/libpng*.la
 mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp -a %{SOURCE3} \
-      %{buildroot}%{_sysconfdir}/rpm/macros.libpng-tools
+install -D -m644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.libpng-tools
 %if %{debug_build} ||%{asan_build}
 install -m755 .libs/pngcp %{buildroot}/%{_bindir}
 %endif
@@ -137,16 +135,17 @@ install -m755 .libs/pngcp %{buildroot}/%{_bindir}
 %{_includedir}/libpng%{branch}
 %{_libdir}/libpng%{branch}.so
 %{_libdir}/pkgconfig/libpng%{branch}.pc
-%doc CHANGES README TODO ANNOUNCE LICENSE libpng-*.txt
+%license LICENSE
+%doc CHANGES README TODO ANNOUNCE libpng-*.txt
 
 %files compat-devel
 %{_bindir}/libpng-config
 %{_includedir}/*.h
 %{_libdir}/libpng.so
 %{_libdir}/pkgconfig/libpng.pc
-%{_mandir}/man3/libpng.3%{ext_man}
-%{_mandir}/man3/libpngpf.3%{ext_man}
-%{_mandir}/man5/png.5%{ext_man}
+%{_mandir}/man3/libpng.3%{?ext_man}
+%{_mandir}/man3/libpngpf.3%{?ext_man}
+%{_mandir}/man5/png.5%{?ext_man}
 
 %files tools
 %{_bindir}/png-fix-itxt
@@ -154,6 +153,6 @@ install -m755 .libs/pngcp %{buildroot}/%{_bindir}
 %if %{debug_build} || %{asan_build}
 %{_bindir}/pngcp
 %endif
-%{_sysconfdir}/rpm/macros.libpng-tools
+%{_rpmmacrodir}/macros.libpng-tools
 
 %changelog

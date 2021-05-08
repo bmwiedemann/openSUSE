@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 06:43:17 UTC 2021 - pgajdos@suse.com
+
+- install rpm macros in %{_rpmmacrodir} [bsc#1185661]
+- call spec-cleaner
+
+-------------------------------------------------------------------
 Thu Mar 11 13:26:15 UTC 2021 - Lubos Lunak <l.lunak@centrum.cz>
 
 - enable hardware optimizations (such as SSE)
