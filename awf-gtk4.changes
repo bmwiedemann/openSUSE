@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.4.0)
+  * add gtk widgets (check, radio, progress, icon) to gtk treeview
+  * add text, check, radio, action, accelerator for menu items
+  * add two GtkVolumeButton widgets
+  * add two GtkLinkButton widgets
+
+-------------------------------------------------------------------
+Tue Apr  6 14:35:02 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- Initial opensuse package release
