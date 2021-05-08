@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 12:34:48 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add bazel-3.4.1-gcc11.patch to add #include that are no longer
+  pulled implicitely by GCC 11 standard library.  [boo#1181864]
+
+-------------------------------------------------------------------
 Thu Feb 11 14:10:47 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
 
 - Initial release

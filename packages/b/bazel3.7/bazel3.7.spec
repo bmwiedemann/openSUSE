@@ -1,7 +1,7 @@
 #
 # spec file for package bazel3.7
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ URL:            http://bazel.io/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
 Patch0:         0001-python-Always-use-python3.patch
+Patch1:         bazel-3.4.1-gcc11.patch
 BuildRequires:  gcc-c++
 BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  pkgconfig
@@ -63,6 +64,7 @@ as mobile operating systems.
 %prep
 %setup -q -c
 %patch0 -p1
+%patch1
 # Remove executable permissions
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
 # Use Python 3
