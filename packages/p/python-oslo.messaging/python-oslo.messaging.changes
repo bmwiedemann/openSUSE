@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun May  2 17:30:41 UTC 2021 - cloud-devel@suse.de
+
+- update to version 12.7.1
+  - Adding pre-commit
+  - Fix doc title rendering
+  - Dropping lower constraints testing
+  - Remove six
+  - Deprecate the mandatory flag
+  - Run rabbitmq heartbeat in python thread by default
+  - remove unicode from code
+  - Update master for stable/victoria
+  - fix variable name
+  - Move jobs to py38
+  - Correctly handle missing RabbitMQ queues
+  - Python 3.9: isAlive is removed
+  - Add Python3 wallaby unit tests
+  - Use TOX_CONSTRAINTS_FILE
+  - Use py3 as the default runtime for tox
+  - Fix type of direct_mandatory_flag opt
+  - add min of 1 to rpc_conn_pool_size
+
+-------------------------------------------------------------------
+Tue Mar 16 11:16:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- avoid sphinx-build failure on parsing rst files
+
+-------------------------------------------------------------------
+Tue Feb  2 00:39:03 UTC 2021 - cloud-devel@suse.de
+
+- update to version 12.5.1
+  - Update .gitreview for stable/victoria
+  - add min of 1 to rpc_conn_pool_size
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:18 UTC 2020 - cloud-devel@suse.de
 
 - update to version 12.5.0

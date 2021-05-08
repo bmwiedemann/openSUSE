@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.messaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.messaging
-Version:        12.5.0
+Version:        12.7.1
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.5.0.tar.gz
+URL:            https://docs.openstack.org/oslo.messaging
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.7.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -61,7 +61,6 @@ of different messaging transports.
 
 %package -n python3-oslo.messaging
 Summary:        OpenStack oslo.messaging library
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.13
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-amqp >= 2.5.2
@@ -91,7 +90,6 @@ This package contains the Python 3.x module.
 
 %package -n python3-oslo.messaging-doc
 Summary:        Documentation for OpenStack messaging library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -101,7 +99,7 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-12.5.0
+%autosetup -p1 -n oslo.messaging-12.7.1
 %py_req_cleanup
 
 %build
