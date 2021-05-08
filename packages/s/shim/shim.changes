@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  7 08:33:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: always assume "removable" for Azure to avoid the
+  endless reset loop (bsc#1185464)
+
+-------------------------------------------------------------------
+Thu May  6 03:18:32 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1185621-relax-max-var-sz-check.patch to relax the
+  maximum variable size check for u-boot (bsc#1185621)
+
+-------------------------------------------------------------------
+Mon May  3 03:46:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
+  to handle ignore_db and user_insecure_mode correctly
+  (bsc#1185441)
+
+-------------------------------------------------------------------
 Wed Apr 28 09:28:30 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Split the keys in vendor-dbx.bin to vendor-dbx-sles and

@@ -1,0 +1,38 @@
+commit 690ec2419a8c2c4246450e447629adc85f9a6f40
+Author: Gary Lin <glin@suse.com>
+Date:   Wed May 5 11:25:07 2021 +0800
+
+    mok: relax the maximum variable size check
+    
+    Some UEFI environment such as u-boot doesn't implement
+    QueryVariableInfo(), so we couldn't rely on the function to estimate the
+    available space for RT variables. All we can do is to call SetVariable()
+    directly and check the return value of SetVariable().
+    
+    Signed-off-by: Gary Lin <glin@suse.com>
+
+diff --git a/mok.c b/mok.c
+index 5ad9072b..1f9820e7 100644
+--- a/mok.c
++++ b/mok.c
+@@ -351,13 +351,18 @@ mirror_mok_db(CHAR16 *name, CHAR8 *name8, EFI_GUID *guid, UINT32 attrs,
+ 	SIZE_T max_var_sz;
+ 
+ 	efi_status = get_max_var_sz(attrs, &max_var_sz);
+-	if (EFI_ERROR(efi_status)) {
++	if (EFI_ERROR(efi_status) && efi_status != EFI_UNSUPPORTED) {
+ 		LogError(L"Could not get maximum variable size: %r",
+ 			 efi_status);
+ 		return efi_status;
+ 	}
+ 
+-	if (FullDataSize <= max_var_sz) {
++	/* Some UEFI environment such as u-boot doesn't implement
++	 * QueryVariableInfo() and we will only get EFI_UNSUPPORTED when
++	 * querying the available space. In this case, we just mirror
++	 * the variable directly. */
++	if (FullDataSize <= max_var_sz || efi_status == EFI_UNSUPPORTED) {
++		efi_status = EFI_SUCCESS;
+ 		if (only_first)
+ 			efi_status = SetVariable(name, guid, attrs,
+ 						 FullDataSize, FullData);

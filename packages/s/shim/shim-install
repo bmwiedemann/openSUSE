@@ -77,6 +77,42 @@ case "$bootloader_id" in
     *) ca_string="";;
 esac
 
+is_azure () {
+    local bios_vendor;
+    local product_name;
+    local sys_vendor;
+
+    local sysfs_dmi_id="/sys/class/dmi/id"
+
+    if test -e "${sysfs_dmi_id}/bios_vendor"; then
+        bios_vendor=$(cat "${sysfs_dmi_id}/bios_vendor")
+    fi
+    if test -e "${sysfs_dmi_id}/product_name"; then
+        product_name=$(cat "${sysfs_dmi_id}/product_name")
+    fi
+    if test -e "${sysfs_dmi_id}/sys_vendor"; then
+        sys_vendor=$(cat "${sysfs_dmi_id}/sys_vendor")
+    fi
+
+    if test "x${bios_vendor}" != "xMicrosoft Corporation"; then
+	# return false
+        return 1
+    fi
+
+    if test "x${product_name}" != "xVirtual Machine"; then
+	# return false
+        return 1
+    fi
+
+    if test "x${sys_vendor}" != "xMicrosoft Corporation"; then
+	# return false
+        return 1
+    fi
+
+    # return true
+    return 0
+}
+
 usage () {
     echo "Usage: $self [OPTION] [INSTALL_DEVICE]"
     echo
@@ -184,6 +220,15 @@ do
 	install_device="${option}" ;;
     esac
 done
+
+# bsc#1185464
+# The Azure firmware doesn't respect the boot option created by either
+# efibootmgr or fallback.efi so we have to skip the installation of
+# fallback.efi to avoid the endless reset loop.
+if is_azure; then
+    no_nvram=yes
+    removable=yes
+fi
 
 if test -n "$efidir"; then
     efi_fs=`"$grub_probe" --target=fs "${efidir}"`

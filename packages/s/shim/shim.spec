@@ -77,6 +77,10 @@ Patch4:         shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
 Patch5:         remove_build_id.patch
 # PATCH-FIX-UPSTREAM shim-bsc1184454-allocate-mok-config-table-BS.patch bsc#1184454 glin@suse.com -- Allocate MOK config table as BootServicesData to avoid the error message from linux kernel
 Patch6:         shim-bsc1184454-allocate-mok-config-table-BS.patch
+# PATCH-FIX-UPSTREAM shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch bsc#1184454 glin@suse.com -- Handle ignore_db and user_insecure_mode correctly
+Patch7:         shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
+# PATCH-FIX-UPSTREAM shim-bsc1185621-relax-max-var-sz-check.patch bsc#1185621 glin@suse.com -- Relax the maximum variable size check for u-boot
+Patch8:         shim-bsc1185621-relax-max-var-sz-check.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -121,6 +125,8 @@ The source code of UEFI shim loader
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 # generate the vendor SBAT metadata

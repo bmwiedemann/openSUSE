@@ -1251,4 +1251,14 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>888995</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>660226751d19a4b08e7188db33acf9f8</srcmd5>
+    <version>15.4</version>
+    <time>1620504443</time>
+    <user>dimstar_suse</user>
+    <comment>- shim-install: always assume &quot;removable&quot; for Azure to avoid the endless reset loop (bsc#1185464)
+- relax the maximum variable size check for u-boot (bsc#1185621)
+- handle ignore_db and user_insecure_mode correctly (bsc#1185441)</comment>
+    <requestid>891231</requestid>
+  </revision>
 </revisionlist>
