@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  1 11:59:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.2.1:
+  * Include LMMS source files (1up, speed, drowning, gameover)
+  * Player: reduce jump_lock_timer after charging
+  * Small fixes & adjustments
+
+-------------------------------------------------------------------
 Mon Mar 22 08:09:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim metadata and imperatives from description.
