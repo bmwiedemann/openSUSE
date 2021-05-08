@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  8 12:41:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Drop outdated build requirements opencc and libkyotocabinet
+- Fix minimum cmake version
+
+-------------------------------------------------------------------
+Thu Jan 28 15:34:05 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to version 1.5.0
+  * feat(ibus_rime.yaml): install config file for ibus-rime,
+    set default UI style
+  * feat(rime_settings): add config options: style/preedit_style,
+    style/cursor_type
+  * feat(plugins): use librime's internal plugin loader
+  * fix(logging): wrong log file name
+  * fix(rime_engine): ignore keys with super modifier
+  * fix(rime_main): deploy ibus_rime.yaml on maintenance
+  * submodules: migrate to rime/plum
+
+-------------------------------------------------------------------
 Tue Jan 19 23:59:31 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Update to version 1.4.1~git20201204.bfabe67:

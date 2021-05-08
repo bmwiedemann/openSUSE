@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-rime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,19 @@
 
 
 Name:           ibus-rime
-Version:        1.4.1~git20201204.bfabe67
+Version:        1.5.0
 Release:        0
 Summary:        Rime for Linux/IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/ibus-rime
-Source:         %{name}-%{version}.tar.xz
-%if 0%{?suse_version} > 1325
+Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  brise
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  ibus-devel
-BuildRequires:  libkyotocabinet-devel
-BuildRequires:  libnotify-devel
-BuildRequires:  librime-devel >= 1.0
-BuildRequires:  opencc-devel
-Requires:       rime
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(rime)
 
 %description
 Rime Input Method Engine for Linux/IBus
@@ -46,18 +38,21 @@ Rime Input Method Engine for Linux/IBus
 %setup -q
 
 %build
+%cmake \
+  -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+  -DRIME_DATA_DIR=%{_datadir}/rime-data
 %make_build
 
 %install
-%make_install
+%cmake_install
 
 %files
-%defattr(-,root,root)
+%license LICENSE
 %doc README.md
 %dir %{_datadir}/rime-data
 %{_ibus_componentdir}/rime.xml
+%{_libexecdir}/ibus-rime/
 %{_datadir}/ibus-rime/
 %{_datadir}/rime-data/ibus_rime.yaml
-%{_prefix}/lib/ibus-rime/
 
 %changelog
