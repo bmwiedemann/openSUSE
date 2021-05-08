@@ -1,7 +1,7 @@
 #
 # spec file for package libadlmidi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,16 @@
 
 
 %define sover 1
+%define libname libADLMIDI
 Name:           libadlmidi
-Version:        1.5.0
+%define hyphver 1.5.0.1-1
+Version:        1.5.0.1.1
 Release:        0
 Summary:        A software MIDI synthesizer library with OPL3 emulation
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Languages/C and C++
-URL:            https://github.com/Wohlstand/libADLMIDI
-Source:         https://github.com/Wohlstand/libADLMIDI/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/Wohlstand/%{libname}
+Source:         %{URL}/archive/v%{hyphver}.tar.gz#/%{libname}-%{hyphver}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -36,11 +38,11 @@ A software MIDI synthesizer library with OPL3 emulation (FM synthesis).
 The library is based on the ADLMIDI, a multiplatform MIDI player with OPL3 emulation:
 https://bisqwit.iki.fi/source/adlmidi.html
 
-%package -n libADLMIDI%{sover}
+%package -n %{libname}%{sover}
 Summary:        A Software MIDI Synthesizer library with OPL3 (YMF262) emulator
 Group:          System/Libraries
 
-%description -n libADLMIDI%{sover}
+%description -n %{libname}%{sover}
 A software MIDI synthesizer library with OPL3 emulation (FM synthesis).
 The library is based on the ADLMIDI, a multiplatform MIDI player with OPL3 emulation:
 https://bisqwit.iki.fi/source/adlmidi.html
@@ -62,7 +64,7 @@ Requires:       libADLMIDI%{sover} = %{version}
 Development and header files for libADLMIDI.
 
 %prep
-%setup -q -n libADLMIDI-%{version}
+%setup -q -n %{libname}-%{hyphver}
 
 %build
 %cmake \
@@ -72,7 +74,7 @@ Development and header files for libADLMIDI.
   -DWITH_MIDIPLAY=ON \
   -DWITH_CPP_EXTRAS=ON \
   -DWITH_ADLMIDI2=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -81,18 +83,18 @@ rm -r %{buildroot}%{_datadir}/doc/
 %post   -n libADLMIDI%{sover} -p /sbin/ldconfig
 %postun -n libADLMIDI%{sover} -p /sbin/ldconfig
 
-%files -n libADLMIDI%{sover}
+%files -n %{libname}%{sover}
 %license LICENSE LICENSE.GPL-3.txt LICENSE.LGPL-2.1.txt
-%doc AUTHORS README.md
-%{_libdir}/libADLMIDI.so.%{sover}*
+%{_libdir}/%{libname}.so.%{sover}*
 
 %files -n adlmidi-tools
 %{_bindir}/adlmidi2
 %{_bindir}/adlmidiplay
 
 %files devel
+%doc AUTHORS README.md
 %{_includedir}/adlmidi.h
-%{_libdir}/libADLMIDI.so
-%{_libdir}/pkgconfig/libADLMIDI.pc
+%{_libdir}/%{libname}.so
+%{_libdir}/pkgconfig/%{libname}.pc
 
 %changelog
