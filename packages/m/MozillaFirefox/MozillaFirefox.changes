@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  5 15:13:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 88.0.1
+  * Fixed: Resolved an issue caused by a recent Widevine plugin
+    update which prevented some purchased video content from
+    playing correctly (bmo#1705138)
+  * Fixed: Fixed corruption of videos playing on Twitter or
+    WebRTC calls on some Gen6 Intel graphics chipsets
+    (bmo#1708937)
+  * Fixed: Fixed menulists in Preferences being unreadable for
+    users with High Contrast Mode enabled (bmo#1706496)
+  MFSA 2021-20 (bsc#1185633)
+  * CVE-2021-29952 (bmo#1704227)
+    Race condition in Web Render Components
+- devel package: move macros to /usr/lib/rpm/macros.d (boo#1185658)
+
+-------------------------------------------------------------------
 Sun May  2 12:03:26 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - add compatibility for libavcodec58_134

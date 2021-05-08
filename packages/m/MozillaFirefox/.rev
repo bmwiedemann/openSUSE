@@ -4963,4 +4963,12 @@
     <comment>- add compatibility for libavcodec58_134</comment>
     <requestid>889851</requestid>
   </revision>
+  <revision rev="335" vrev="1">
+    <srcmd5>40f7922ca2947ca26a1ec7a47b632fd1</srcmd5>
+    <version>88.0.1</version>
+    <time>1620504419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890833</requestid>
+  </revision>
 </revisionlist>

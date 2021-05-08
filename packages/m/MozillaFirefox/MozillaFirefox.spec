@@ -33,8 +33,8 @@
 # major 69
 # mainver %major.99
 %define major          88
-%define mainver        %major.0
-%define orig_version   88.0
+%define mainver        %major.0.1
+%define orig_version   88.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -687,8 +687,8 @@ rm -f %{buildroot}%{progdir}/update-settings.ini
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 %SOURCE12 %{buildroot}%{_bindir}
 # inspired by mandriva
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<'FIN' >%{buildroot}%{_sysconfdir}/rpm/macros.%{progname}
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat <<'FIN' >%{buildroot}%{_rpmmacrodir}/macros.%{progname}
 # Macros from %{name} package
 %%firefox_major              %{major}
 %%firefox_version            %{version}
@@ -781,7 +781,7 @@ exit 0
 %files devel
 %defattr(-,root,root)
 %{_bindir}/mozilla-get-app-id
-%config %{_sysconfdir}/rpm/macros.%{progname}
+%{_rpmmacrodir}/macros.%{progname}
 %endif
 
 %if %localize
