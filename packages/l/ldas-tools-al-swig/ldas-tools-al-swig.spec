@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-al-swig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define skip_python36 1
+
 Name:           ldas-tools-al-swig
 Version:        2.6.7
 Release:        0
 Summary:        LDAS (LIGO Data Analysis System) tools abstraction toolkit language bindings
 License:        GPL-2.0-or-later
-URL:            https://wiki.ligo.org/Computing/LDASTools 
+URL:            https://wiki.ligo.org/Computing/LDASTools
 Source:         http://software.ligo.org/lscsoft/source/ldas-tools-al-swig-2.6.7.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  cmake
@@ -32,20 +32,32 @@ BuildRequires:  swig
 BuildRequires:  pkgconfig(ldastoolsal)
 BuildRequires:  pkgconfig(ldastoolscmake)
 
+%python_subpackages
+
 %description
 This provides different language bindings for the LDAS tools abstaction library.
-
-%python_subpackages
 
 %prep
 %setup -q
 
 %build
-%cmake
+%{python_expand # Necessary to run cmake with all python flavors
+export PYTHON=$python
+mkdir ../${PYTHON}_build
+cp -pr ./ ../${PYTHON}_build
+pushd ../${PYTHON}_build
+%cmake -DPYTHON3_VERSION=%{$python_version}
 %cmake_build
+popd
+}
 
 %install
+%{python_expand # Necessary to run cmake with all python flavors
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %cmake_install
+popd
+}
 
 %files -n %{name}
 %license COPYING

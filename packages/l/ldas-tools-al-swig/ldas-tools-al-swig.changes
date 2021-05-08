@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 13:01:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt for multi-flavoured python.
+- Re-enable python3.6 builds.
+
+-------------------------------------------------------------------
 Sat Feb 13 02:04:36 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Set skip_python36 to 1 to disable python 3.6 builds.
