@@ -1,7 +1,7 @@
 #
 # spec file for package cegui
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,6 +20,8 @@
 %define soname  -0
 # Boost >= 1.60 is not supported at the moment, see: https://bitbucket.org/cegui/cegui/issues/1114/pycegui-084-fails-to-build-against-boost
 %bcond_with python
+# OGRE > 1.9 is not supported at the moment
+%bcond_with ogre
 Name:           cegui
 Version:        0.8.7
 Release:        0
@@ -35,6 +37,8 @@ Patch0:         cegui-0.8.3-irrlicht.patch
 Patch1:         fix-findluapp.patch
 Patch2:         use-cpp11.patch
 Patch3:         fix-tinyxmlparser-compile.patch
+# PATCH-FIX-UPSTREAM fix-pkgconfig-private-dependency.patch -- Fix missing private dependency on glew of CEGUI-OPENGL renderer
+Patch4:         fix-pkgconfig-private-dependency.patch
 BuildRequires:  Xerces-c-devel
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  doxygen
@@ -50,7 +54,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(IL)
 BuildRequires:  pkgconfig(ILU)
-BuildRequires:  pkgconfig(OGRE)
 BuildRequires:  pkgconfig(OIS)
 BuildRequires:  pkgconfig(SILLY)
 BuildRequires:  pkgconfig(freetype2)
@@ -60,6 +63,9 @@ BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libxml-2.0)
+%if %{with ogre}
+BuildRequires:  pkgconfig(OGRE)
+%endif
 %if %{with python}
 BuildRequires:  python
 BuildRequires:  python-devel
@@ -129,13 +135,8 @@ This package contains the python interface.
 %endif
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%if 0%{?suse_version} > 1500
-%patch2 -p1
-%endif
-%patch3 -p1
+%autosetup -p1
+
 # Fix __DATE__ and __TIME__
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -148,11 +149,14 @@ Thr=$(if [ "$((Mem/500000))" -gt "$(nproc)" ]; then echo "$(nproc)"; else echo "
 
 cp -r samples Samples
 %cmake \
-		-DCEGUI_BUILD_RENDERER_NULL=true \
+  -DCEGUI_BUILD_RENDERER_NULL=true \
 %if %{without python}
-		-DCEGUI_BUILD_PYTHON_MODULES=OFF \
+  -DCEGUI_BUILD_PYTHON_MODULES=OFF \
 %endif
-		-DCEGUI_BUILD_TESTS=true
+%if %{without ogre}
+  -DCEGUI_BUILD_RENDERER_OGRE=OFF \
+%endif
+  -DCEGUI_BUILD_TESTS=true
 
 make -j$Thr VERBOSE=1
 

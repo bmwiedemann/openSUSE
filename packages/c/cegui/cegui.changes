@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  3 09:13:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add fix-pkgconfig-private-dependency.patch for missing glew
+  dependency of OpenGL renderer
+- Disabled OGRE renderer, currently broken for OGRE > 1.9
+
+-------------------------------------------------------------------
 Sun Dec 27 17:58:23 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Use https://en.opensuse.org/SourceUrls
