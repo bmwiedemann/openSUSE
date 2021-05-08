@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May  8 13:22:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.13.0
+  * Make switch to pinyin mode also happen immediately even when
+    the preedit is not empty
+  * Make rolling the mouse wheel in the candidate area of the lookup
+    table work
+  * Commit English input and then switch into direct mode
+  * Apply a couple modes immediately when changed
+  * Show all the tabkeys when using wildcards
+  * In main.py “import factory” only when the --xml option
+    is not used
+  * Make the keybindings treeview sortable by clicking the column
+    headers
+  * Return False in _execute_command_commit_candidate_number(self, number)
+    if number out of range
+  * Add a dark theme option
+  * Remove Python2 compatibility
+  * Update translations, update for:
+    cs, de, es, fa, ja, tr, uk, zh_CN , pt_BR, zh_CN
+    * zh_CN and pt_BR are 100% complete now
+    * Sinhala (si) started
+
+-------------------------------------------------------------------
 Mon Jan 11 14:49:09 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Drop ibus-table_fix_other_tables_compile_error.patch, fixed in the

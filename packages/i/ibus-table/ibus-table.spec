@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table
-Version:        1.12.3
+Version:        1.13.0
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
@@ -60,15 +60,14 @@ NOCONFIGURE=1 ./autogen.sh
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
+%make_install NO_INDEX=true
 
 %find_lang %{name}
-
 %fdupes %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING README NEWS ChangeLog
+%license COPYING
+%doc AUTHORS README NEWS ChangeLog
 %{_bindir}/%{name}-createdb
 %{_ibus_libdir}/ibus-engine-table
 %{_ibus_libdir}/ibus-setup-table
@@ -80,7 +79,6 @@ make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
 %{_datadir}/metainfo/ibus-table.appdata.xml
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
