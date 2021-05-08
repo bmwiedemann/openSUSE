@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  5 18:28:53 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap 15.3 and SLE 15 SP3
+  (define used guile version)
+
+-------------------------------------------------------------------
 Mon Apr 12 13:03:43 UTC 2021 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 4.5

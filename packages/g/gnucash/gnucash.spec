@@ -22,7 +22,7 @@
 %if 0%{?suse_version} > 1500
 %define guile_version 3.0
 %else
-%if 0%{?sle_version} == 150200
+%if 0%{?sle_version} >= 150200
 %define guile_version 2.0
 %endif
 %endif
