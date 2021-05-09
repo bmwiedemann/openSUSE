@@ -322,6 +322,7 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="container-selinux"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -930,6 +931,7 @@
       <repopackage name="gzip"/>
       <repopackage name="hack-fonts"/>
       <repopackage name="haveged"/>
+      <repopackage name="hdjmod-kmp-default" arch="x86_64"/>
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
@@ -1624,7 +1626,6 @@
       <repopackage name="libcrypt1-32bit" arch="x86_64"/>
       <repopackage name="libcryptmount0"/>
       <repopackage name="libcryptmount0-32bit" arch="x86_64"/>
-      <repopackage name="libcrypto46"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptsetup12-32bit" arch="x86_64"/>
       <repopackage name="libcryptsetup12-hmac"/>
@@ -2011,8 +2012,8 @@
       <repopackage name="libICE-devel" arch="x86_64"/>
       <repopackage name="libICE6"/>
       <repopackage name="libICE6-32bit" arch="x86_64"/>
-      <repopackage name="libicu68"/>
-      <repopackage name="libicu68-ledata"/>
+      <repopackage name="libicu69"/>
+      <repopackage name="libicu69-ledata"/>
       <repopackage name="libid3tag0"/>
       <repopackage name="libidn12"/>
       <repopackage name="libidn2-0"/>
@@ -2729,7 +2730,6 @@
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
       <repopackage name="librepository"/>
-      <repopackage name="libressl"/>
       <repopackage name="librest-0_7-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
@@ -2839,7 +2839,6 @@
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1"/>
       <repopackage name="libssh4"/>
-      <repopackage name="libssl48"/>
       <repopackage name="libsss_certmap0"/>
       <repopackage name="libsss_idmap0"/>
       <repopackage name="libsss_nss_idmap0"/>
@@ -2899,7 +2898,6 @@
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
       <repopackage name="libtirpc3-32bit" arch="x86_64"/>
-      <repopackage name="libtls20"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
       <repopackage name="libtool"/>

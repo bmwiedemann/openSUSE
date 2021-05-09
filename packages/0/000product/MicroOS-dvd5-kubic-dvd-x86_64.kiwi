@@ -153,7 +153,6 @@
       <repopackage name="glib-networking" arch="x86_64"/>
       <repopackage name="glib2-tools" arch="x86_64"/>
       <repopackage name="glibc"/>
-      <repopackage name="glibc-locale" arch="x86_64"/>
       <repopackage name="glibc-locale-base" arch="x86_64"/>
       <repopackage name="gpg2" arch="x86_64"/>
       <repopackage name="gptfdisk" arch="x86_64"/>
@@ -287,7 +286,6 @@
       <repopackage name="libcontainers-common" arch="x86_64"/>
       <repopackage name="libcrack2" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
-      <repopackage name="libcrypto46" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcups2" arch="x86_64"/>
       <repopackage name="libcurl4"/>
@@ -341,6 +339,7 @@
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libgraphite2-3" arch="x86_64"/>
       <repopackage name="libgtk-3-0" arch="x86_64"/>
+      <repopackage name="libgudev-1_0-0" arch="x86_64"/>
       <repopackage name="libharfbuzz0" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
       <repopackage name="libhidapi-hidraw0"/>
@@ -348,8 +347,8 @@
       <repopackage name="libhugetlbfs" arch="x86_64"/>
       <repopackage name="libibverbs" arch="x86_64"/>
       <repopackage name="libibverbs1" arch="x86_64"/>
-      <repopackage name="libicu68" arch="x86_64"/>
-      <repopackage name="libicu68-ledata" arch="x86_64"/>
+      <repopackage name="libicu69" arch="x86_64"/>
+      <repopackage name="libicu69-ledata" arch="x86_64"/>
       <repopackage name="libidn2-0"/>
       <repopackage name="libimaevm2" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
@@ -377,9 +376,11 @@
       <repopackage name="liblzma5"/>
       <repopackage name="liblzo2-2"/>
       <repopackage name="libmagic1"/>
+      <repopackage name="libmbim-glib4" arch="x86_64"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmlx4-1" arch="x86_64"/>
       <repopackage name="libmlx5-1" arch="x86_64"/>
+      <repopackage name="libmm-glib0" arch="x86_64"/>
       <repopackage name="libmnl0" arch="x86_64"/>
       <repopackage name="libmodulemd2" arch="x86_64"/>
       <repopackage name="libmount1"/>
@@ -428,6 +429,7 @@
       <repopackage name="libpwquality-tools" arch="x86_64"/>
       <repopackage name="libpwquality1" arch="x86_64"/>
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
+      <repopackage name="libqmi-glib5" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="librados2" arch="x86_64"/>
       <repopackage name="librbd1" arch="x86_64"/>
@@ -436,7 +438,6 @@
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
       <repopackage name="librepo0" arch="x86_64"/>
-      <repopackage name="libressl" arch="x86_64"/>
       <repopackage name="librest-0_7-0" arch="x86_64"/>
       <repopackage name="librgw2" arch="x86_64"/>
       <repopackage name="librpmbuild9" arch="x86_64"/>
@@ -460,7 +461,6 @@
       <repopackage name="libsqlite3-0" arch="x86_64"/>
       <repopackage name="libssh-config"/>
       <repopackage name="libssh4"/>
-      <repopackage name="libssl48" arch="x86_64"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
@@ -477,7 +477,6 @@
       <repopackage name="libtiff5" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig" arch="x86_64"/>
       <repopackage name="libtirpc3" arch="x86_64"/>
-      <repopackage name="libtls20" arch="x86_64"/>
       <repopackage name="libtss2-esys0" arch="x86_64"/>
       <repopackage name="libtss2-mu0" arch="x86_64"/>
       <repopackage name="libtss2-rc0" arch="x86_64"/>
@@ -540,6 +539,7 @@
       <repopackage name="MicroOS-release"/>
       <repopackage name="MicroOS-release-appliance"/>
       <repopackage name="microos-tools" arch="x86_64"/>
+      <repopackage name="ModemManager" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
       <repopackage name="multipath-tools" arch="x86_64"/>
       <repopackage name="ncurses-utils"/>

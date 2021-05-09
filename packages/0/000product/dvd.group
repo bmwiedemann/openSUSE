@@ -321,8 +321,8 @@
     <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cryptsetup-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="csmash" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1802,7 +1802,6 @@
     <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptsetup12-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2133,8 +2132,8 @@
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libicu68" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libicu68-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libicu69" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libicu69-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2581,7 +2580,6 @@
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreofficekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librepository" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libressl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="librest-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2670,7 +2668,6 @@
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libssl48" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2717,7 +2714,6 @@
     <package name="libtiff5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libtls20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libtomcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -3211,7 +3207,7 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5056,6 +5052,7 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5106,6 +5103,7 @@
     <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="guestfs-winsupport" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gvim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="hdjmod-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
