@@ -490,7 +490,6 @@
       <repopackage name="libcrack2" arch="x86_64"/>
       <repopackage name="libcreaterepo_c0" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
-      <repopackage name="libcrypto46" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptui-data" arch="x86_64"/>
       <repopackage name="libcryptui0" arch="x86_64"/>
@@ -675,8 +674,8 @@
       <repopackage name="libical-glib3" arch="x86_64"/>
       <repopackage name="libical3" arch="x86_64"/>
       <repopackage name="libICE6" arch="x86_64"/>
-      <repopackage name="libicu68" arch="x86_64"/>
-      <repopackage name="libicu68-ledata" arch="x86_64"/>
+      <repopackage name="libicu69" arch="x86_64"/>
+      <repopackage name="libicu69-ledata" arch="x86_64"/>
       <repopackage name="libidn2-0"/>
       <repopackage name="libIex-2_5-25" arch="x86_64"/>
       <repopackage name="libIlmImf-2_5-25" arch="x86_64"/>
@@ -801,6 +800,7 @@
       <repopackage name="libmagic1"/>
       <repopackage name="libmalcontent-0-0" arch="x86_64"/>
       <repopackage name="libmanette-0_2-0" arch="x86_64"/>
+      <repopackage name="libmbim-glib4" arch="x86_64"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmfx1" arch="x86_64"/>
       <repopackage name="libminizip1" arch="x86_64"/>
@@ -907,6 +907,7 @@
       <repopackage name="libqaccessibilityclient-qt5-0" arch="x86_64"/>
       <repopackage name="libqalculate21" arch="x86_64"/>
       <repopackage name="libqca-qt5" arch="x86_64"/>
+      <repopackage name="libqmi-glib5" arch="x86_64"/>
       <repopackage name="libqpdf28" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="libqt5-qdbus" arch="x86_64"/>
@@ -954,7 +955,6 @@
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
       <repopackage name="librepo0" arch="x86_64"/>
-      <repopackage name="libressl" arch="x86_64"/>
       <repopackage name="librest-0_7-0" arch="x86_64"/>
       <repopackage name="librsvg-2-2" arch="x86_64"/>
       <repopackage name="libsamba-credentials1" arch="x86_64"/>
@@ -1006,7 +1006,6 @@
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1" arch="x86_64"/>
       <repopackage name="libssh4"/>
-      <repopackage name="libssl48" arch="x86_64"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
@@ -1033,7 +1032,6 @@
       <repopackage name="libtiff5" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig" arch="x86_64"/>
       <repopackage name="libtirpc3" arch="x86_64"/>
-      <repopackage name="libtls20" arch="x86_64"/>
       <repopackage name="libtotem-plparser18" arch="x86_64"/>
       <repopackage name="libtracker-common-2_0" arch="x86_64"/>
       <repopackage name="libtracker-control-2_0-0" arch="x86_64"/>
@@ -1197,6 +1195,7 @@
       <repopackage name="microos-tools" arch="x86_64"/>
       <repopackage name="milou5" arch="x86_64"/>
       <repopackage name="mobile-broadband-provider-info" arch="x86_64"/>
+      <repopackage name="ModemManager" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
       <repopackage name="mozilla-nspr" arch="x86_64"/>
       <repopackage name="mozilla-nss" arch="x86_64"/>

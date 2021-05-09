@@ -1531,7 +1531,6 @@
       <repopackage name="libcroco-0_6-3"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcryptmount0"/>
-      <repopackage name="libcrypto46"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptsetup12-hmac"/>
       <repopackage name="libcryptui-data"/>
@@ -1868,8 +1867,8 @@
       <repopackage name="libical-glib3"/>
       <repopackage name="libical3"/>
       <repopackage name="libICE6"/>
-      <repopackage name="libicu68"/>
-      <repopackage name="libicu68-ledata"/>
+      <repopackage name="libicu69"/>
+      <repopackage name="libicu69-ledata"/>
       <repopackage name="libid3tag0"/>
       <repopackage name="libidn12"/>
       <repopackage name="libidn2-0"/>
@@ -2542,7 +2541,6 @@
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
       <repopackage name="librepository"/>
-      <repopackage name="libressl"/>
       <repopackage name="librest-0_7-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
@@ -2640,7 +2638,6 @@
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1"/>
       <repopackage name="libssh4"/>
-      <repopackage name="libssl48"/>
       <repopackage name="libsss_certmap0"/>
       <repopackage name="libsss_idmap0"/>
       <repopackage name="libsss_nss_idmap0"/>
@@ -2687,7 +2684,6 @@
       <repopackage name="libtiff5"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
-      <repopackage name="libtls20"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
       <repopackage name="libtool"/>

@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -32,7 +32,6 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
-  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -982,6 +981,8 @@ unsorted:
   - awesome-shifty 
   - awesome-vicious 
   - awf-gtk2 
+  - awf-gtk3 
+  - awf-gtk4 
   - awkward-devel 
   - aws-cli 
   - aws-efs-utils 
@@ -1678,6 +1679,7 @@ unsorted:
   - calamares-webview 
   - calc 
   - calc-devel 
+  - calcium-devel 
   - calcurse 
   - calcurse-lang 
   - calendarsupport-devel 
@@ -1792,7 +1794,7 @@ unsorted:
   - cecilia 
   - cedict 
   - cedilla 
-  - cegui-demos-devel: [x86_64] 
+  - cegui-demos-devel 
   - cel-cpp-source 
   - celluloid 
   - celluloid-lang 
@@ -6568,7 +6570,7 @@ unsorted:
   - hdf5_1_10_7-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
-  - hdjmod-kmp-default 
+  - hdjmod-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - hdjmod-kmp-pae: [i586] 
   - hdspconf 
   - hdsploader 
@@ -9142,7 +9144,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
-  - libVkLayer_utils-1_2_170_0 
+  - libVkLayer_utils-1_2_176_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9802,6 +9804,7 @@ unsorted:
   - libcaja-extension1 
   - libcal3d12 
   - libcalc2 
+  - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
   - libcamera-suse4 
@@ -9870,15 +9873,15 @@ unsorted:
   - libcdr-tools 
   - libcec-devel 
   - libcec6 
-  - libcegui-0: [x86_64] 
-  - libcegui-devel: [x86_64] 
+  - libcegui-0 
+  - libcegui-devel 
   - libcelt-devel 
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10061,6 +10064,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
+  - libcrypto46 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_5_0 
@@ -10309,7 +10313,7 @@ unsorted:
   - libdxflib-3_17_0-1 
   - libdxfrw-devel 
   - libdxfrw-tools 
-  - libdxfrw0 
+  - libdxfrw1 
   - libe-book-devel 
   - libe-book-devel-doc 
   - libe-book-tools 
@@ -11287,8 +11291,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit: [x86_64] 
   - libicu-doc 
-  - libicu68-32bit: [x86_64] 
-  - libicu68-bedata 
+  - libicu69-32bit: [x86_64] 
+  - libicu69-bedata 
   - libid3tag-devel 
   - libid3tag0-32bit: [x86_64] 
   - libidl-devel 
@@ -12023,9 +12027,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0 
-  - libnco-4_9_7 
+  - libnco-4_9_8 
   - libnco-devel 
-  - libnco_c++-4_9_7 
+  - libnco_c++-4_9_8 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -13024,8 +13028,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13048,7 +13052,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13220,6 +13224,7 @@ unsorted:
   - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
+  - libressl 
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
@@ -13276,7 +13281,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -13603,6 +13608,7 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
+  - libssl48 
   - libssl48-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
@@ -13856,6 +13862,7 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-8 
   - libtirpc-devel 
+  - libtls20 
   - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
@@ -22736,6 +22743,7 @@ unsorted:
   - python36-ldapdomaindump 
   - python36-ldappool 
   - python36-ldaptor 
+  - python36-ldas-tools-al-swig 
   - python36-leather 
   - python36-lesscpy 
   - python36-leveldb 
@@ -27203,6 +27211,7 @@ unsorted:
   - python39-WSGIProxy2 
   - python39-WSME 
   - python39-WTForms 
+  - python39-Wand 
   - python39-WeasyPrint 
   - python39-WebOb 
   - python39-WebTest 
@@ -28514,6 +28523,7 @@ unsorted:
   - python39-ldapdomaindump 
   - python39-ldappool 
   - python39-ldaptor 
+  - python39-ldas-tools-al-swig 
   - python39-leather 
   - python39-lesscpy 
   - python39-leveldb 
@@ -29606,6 +29616,7 @@ unsorted:
   - python39-socketIO-client-nexus 
   - python39-socketpool 
   - python39-softlayer 
+  - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
   - python39-sortinghat 
@@ -30408,7 +30419,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -41759,9 +41770,6 @@ unsorted:
   - xfce4-genmon-plugin-lang 
   - xfce4-mailwatch-plugin 
   - xfce4-mailwatch-plugin-lang 
-  - xfce4-mixer 
-  - xfce4-mixer-lang 
-  - xfce4-mixer-plugin 
   - xfce4-mount-plugin 
   - xfce4-mount-plugin-lang 
   - xfce4-mpc-plugin 
