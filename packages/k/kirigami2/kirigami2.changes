@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Too many changes since 5.81.0, only listing bugfixes:
+  * Icon: make sure we don't call a nullptr reply (kde#423183)
+  * [OverlaySheet] Fix click to close (kde#435523)
+  * [BasicListItem] Don't unconditionally apply leading and trailing
+    padding (kde#435784)
+  * controls/SizeGroup: shield against nullptr qmlContext (kde#435593)
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
