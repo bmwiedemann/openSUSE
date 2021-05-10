@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 11 22:53:05 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 0.5.3:
+  * Use single quotes around JSON data to reduce need for escaping
+  * Store integer magic in cache file
+  * Added $SDCV_HISTFILE to set history file
+  * return exit code 2 if search term not found
+  * Comply with the XDG Base Directory Specification
+- Update cmake minimum build requirement to 3.5.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Tue Sep  5 13:50:41 UTC 2017 - idonmez@suse.com
 
 - Update to version 0.5.2

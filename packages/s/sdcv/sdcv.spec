@@ -1,7 +1,7 @@
 #
 # spec file for package sdcv
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sdcv
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Console version of the Stardict program
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Office/Dictionary
-Url:            http://dushistov.github.io/sdcv/
-Source:         https://github.com/Dushistov/sdcv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8
+URL:            https://dushistov.github.io/sdcv/
+Source:         https://github.com/Dushistov/sdcv/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Console version of the Stardict program.
@@ -42,21 +41,23 @@ The word sdcv stands for StarDict under Console Version.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 # force recreation of the locale files
-make %{?_smp_mflags} lang
+%make_build lang
 
 %install
 %cmake_install
-%find_lang %{name}
+%find_lang %{name} --with-man
+%if 0%{?suse_version} < 1550
+# Ukrainian translations used to be absent from filesystem package
+echo '%%dir %{_mandir}/uk/' >> %{name}.lang
+echo '%%dir %{_mandir}/uk/man1/' >> %{name}.lang
+%endif
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1.gz
-%dir %{_mandir}/uk/
-%dir %{_mandir}/uk/man1/
-%{_mandir}/uk/man1/%{name}.1.gz
-%doc README.org NEWS LICENSE AUTHORS
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%license LICENSE
+%doc README.org NEWS AUTHORS
 
 %changelog
