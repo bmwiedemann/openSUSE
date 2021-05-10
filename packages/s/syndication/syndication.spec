@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Syndication5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           syndication
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        RSS/Atom parsing library
 License:        LGPL-2.1-or-later
@@ -38,9 +38,9 @@ Source2:        frameworks.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_bugfix_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Xml) >= 5.14.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 
 %description
 KF5Syndication is an RSS/Atom parsing library by KDE, which
@@ -66,14 +66,14 @@ also provides an API to fetch feeds from the network. This
 package contains development headers.
 
 %prep
-%setup -q -n syndication-%{version}
+%autosetup -p1 -n syndication-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
