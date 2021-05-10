@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  7 16:36:50 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Update to 1.81.01
+ * Also read from META.json
+ * Read 'dynamic_config' and 'provides' from META files
+ * Move Intrusive.pm into its own subprocess
+ * Add --debug option
+ * Add statistics output
+ * Add batch processing script for testing changes on a number of packages
+
+-------------------------------------------------------------------
 Fri Nov 27 08:43:40 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Add the important cpanspec.yml file to the package
