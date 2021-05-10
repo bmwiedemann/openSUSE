@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define git_commit 8ed8a9eab3344ac2d25783b7ce2314fbe2043c37
+%define git_commit efa404e2750868e7ecc70641bc22c26113019e94
 Name:           helmfile
-Version:        0.138.7
+Version:        0.139.2
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 Requires:       helm
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.16
 %{go_nostrip}
 %{go_provides}
 

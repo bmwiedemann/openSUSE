@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Sun May  9 08:43:27 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.139.2
+  This release fixes a breaking change introduced in v0.139.0.
+
+  * efa404e (HEAD, tag: v0.139.2, origin/master, origin/HEAD, master)
+    Make --skip-needs=true the default option (#1835)
+
+- v0.139.1
+  This release include the fix for a regression introduced in
+  v0.139.0, and additional fix for kubecontext usage in templates
+  and --output-dir, and also the newer aws-sdk-go for AWS SSO
+  support. You should always use v0.139.1 rather than v0.139.0.
+
+  * 794ab9f (HEAD, tag: v0.139.1, origin/master, origin/HEAD, master)
+    Fix lint and status not to fail with selector and needs (#1834)
+  * 48bd5c0 Update go.sum for successful build
+  * e39a0b3 bump Go to 1.16.3 and cover helm 3.5.4 (#1825)
+  * 5895410 fix kubeContext does not globally defaulting its value
+    (#1829)
+  * cb7fa6b Bump vals to 0.14.0 (#1832)
+  * 44fb68b Use the incubator chart repo instead of chartcenter
+    (#1833)
+
+-------------------------------------------------------------------
+Fri May  7 08:23:11 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.139.0
+  This release includes a lot of bug fixes for forceNamespace,
+  jsonPatches, strategicMergePatches, needs, kustomize integration,
+  chartify, and the use of kubeContext in templates. If you use any
+  of these features, upgrading to 1.139.x is highly recommended.
+
+  This is a minor version bump because we had a bug fix that
+  resulted in breaking some existing behavior. See #1831.
+
+  CAUTION: Your pipeline may start failing due to a fixed bug. See
+  #1831 and add --skip-needs to your helmfile command if you'd like
+  to opt-in to preserve the existing behaviour.
+
+  * ded0f10 (HEAD, tag: v0.139.0, origin/master, origin/HEAD, master)
+    Fix filepath handling on Windows (#1754)
+  * 08db073 Fix broken selector and DAG calculation logic after
+    --{include,skip}-needs addition with correct Release IDs (#1823)
+  * de8644a Fix --selector results to correctly deduplicate releases
+    (#1822)
+  * f28ad5a Fix defaulting and overriding kubeContext (#1814)
+  * 77ee239 Lock helm plugin versions in Dockerfile (#1821)
+  * d9e1575 Add documentation about re-using the environment state
+    from parent in sub-helmfile (#1808)
+  * dabd7ad Fix repo sync to work on repos duplicated between helm
+    v2 and v3 (#1816)
+  * 204f78c Fix --set and --set-file flags are not passed to chartify
+    (#1803)
+  * 59b91a4 Fix adhoc dependencies not working with remote chart
+    (#1802)
+  * 5a3bd7d Fix destory, delete, and test to work with chartify on
+    local chart with dependencies that are not yet downloaded (#1801)
+  * ce6a621 Bump chartify to 0.8.3 to fix it not to break when two
+    or more releases sharing the same chart and the namespace, but
+      kubeContext (#1799)
+  * 20f6c68 Fix code format
+  * 3367822 feat: Move chartify logs to Debug (#1794)
+  * 8702639 fix: spec.KubeContext does not fallback to
+    HelmDefaults.KubeContext (#1789)
+  * 41cbc25 fix: can't evaluate field KubeContext in type
+    state.releaseTemplateDataRelease (#1797)
+  * 83189db Enable helmfile-diff to pass the output format to
+    helm-diff (#1784)
+  * 28ade19 Bump chartify to 0.8.2 (#1793)
+  * 378ae4a Fix typo (#1788)
+  * 30e0356 Bump chartify to 0.8.1 (#1787)
+  * eabda4c Fix delete on release of uninstalling status (#1786)
+  * 5617b59 Add test for helmfile-destroy with selector (#1785)
+  * 5d43b30 Add --{include,skip}-needs to various helmfile commands
+    (#1772)
+  * d6db4b5 Added The Hyve to USERS.md (#1779)
+  * 368dd13 Fix destroy not reversing the order of releases (#1777)
+  * ae942c5 Fix --skip-crds not working with chartify (#1774)
+  * a111e89 Add --skip-crds to helmfile sync and helmfile apply (#1771)
+  * 589b26a Fix some hook log not honoring log level (#1769)
+  * 1d7608f Fix helmfile repos to not fail with forceNamespace
+  * efad266 Add documentation about adhoc chart dependencies
+  * 81b04fc Add support for adhoc dependency to local chart
+  * 74cd2bc Enable helmfile-deps to limit helm-dep-up by selector (#1764)
+  * 2ff06a8 Fix chartify to take --include-crds into account (#1761)
+  * d703e17 Fix chartify not to fail on a chart with dependencies (#1759)
+  * 3bfcc1e Add support for kustomize v4 (#1758)
+  * c65bdff Respect release filter in lint and status (#1672)
+  * f614e8b feat: Helmfile renders *.yaml.gotmpl in a K8s
+    manifests/kustomization directory (#1745)
+  * 85accf7 Add helm-secrets-encrypted values template file (#1701)
+  * a161796 feat: Allow overriding chart via flag (#1751)
+  * 261367e Add kubectl hooks for applying file(s) or kustomize (#1736)
+  * 5cd0afc Add documentation about helmfile-fetch and StateValues
+    alias (#1746)
+  * 1748cbf Add .StateValues as alias of .Values in
+    releaseTemplateDataRelease (#1744)
+  * 200cae2 feat: --show-secrets on diff and apply commands (#1749)
+  * b1b7831 feat: make --kube-context override helmDefaults (#1673)
+  * 53c6d2f Add helmfile-fetch command to downloading and generating
+    charts (#1734)
+  * faa7496 Fix helmfile-template not writing to stdout (#1737)
+  * 28cf300 Add support for kubeContext in environments (#1675)
+  * e9d1c85 feat: change to helmfile template so it respects logging
+    levels (#1691)
+  * aafe74a Fix/secrets ordering (#1726)
+  * db9d31a test: fix DecryptSecret output
+  * 4a9d753 feat: make integration/vagrant
+  * 4efaa65 test: return all tests
+  * 59f4043 fix: fixed secrets decryption failed issue
+  * d04cd1b test: fix "Ensure helmfile fails when no helm-secrets is
+    installed" test
+  * 781c4e9 test: fix "Ensure helmfile fails when no helm-secrets is
+    installed" test
+  * 0c9934c test: ensure bash -eo pipefail (as in circleci)
+  * 2983f5c test: fix vault provisioning code
+  * 7610d8d test: add secrets integration tests
+  * 5cd853b test: add vault and sops for integration secret testing
+  * f1c0787 ci: simplify integration tests ci code for helm2
+  * d1a2435 ci: simplify integration tests ci code
+  * 45b8eb6 test: fix helm2 integration tests
+  * 17a969c ci: verify new integration tests
+  * 4f02196 test: reusable integration test
+  * 85f19b6 fix: gitignore *.lock
+  * 42138d8 test: vagrant for integration tests
+  * 2ef09d4 test: sync HELM_VERSION and KUSTOMIZE_VERSION for tests
+  * 9b2a770 feat(Dockerfile): pin helm-secrets version
+  * 6085730 fix(Makefile): static-linux mod
+  * 94a8658 feat(Dockerfile): bump helm version
+  * 2618cfb Enable --wait-for-jobs flag introduced in helm 3.5 (#1715)
+  * fcf9a72 Improve error message on deps resolution error (#1727)
+  * 5ce755e Add chart & version to list cmd output (#1731)
+  * b7d6639 (fix) remove usage of charts.yaml in error message (#1732)
+  * 9575995 Add William Hill to USERS.md (#1735)
+
+-------------------------------------------------------------------
 Tue Mar  9 16:01:14 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.7
