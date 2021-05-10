@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 19:53:08 UTC 2021 - Kirk Allan <kallan@suse.com>
+
+- Add open-vm-tools-pollGtk.patch: Fixes boo#1185103 GCC 11: open-vm-tools
+  package fails.
+
+-------------------------------------------------------------------
 Fri Mar 26 09:40:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add open-vm-tools-glib-2.67.patch: Fix build with glib 2.67.

@@ -1,0 +1,11 @@
+--- a/lib/pollGtk/pollGtk.c	2020-03-10 16:12:24.000000000 -0700
++++ b/lib/pollGtk/pollGtk.c	2020-03-10 16:12:24.000000000 -0700
+@@ -99,7 +99,7 @@
+ } Poll;
+ 
+ static Poll *pollState;
+-static volatile gsize inited = 0;
++static gsize inited = 0;
+ 
+ static VMwareStatus
+ PollGtkCallback(PollClassSet classSet,   // IN

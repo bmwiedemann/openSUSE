@@ -58,6 +58,7 @@ Source8:        vgauthd.service
 Source9:        vmblock-fuse.service
 # PATCH-FIX-UPSTREAM open-vm-tools-glib-2.67.patch dimstar@opensuse.org -- Fix build with glib 2.67, https://github.com/vmware/open-vm-tools/issues/500
 Patch100:       open-vm-tools-glib-2.67.patch
+Patch101:       open-vm-tools-pollGtk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 # don't use pkgconfig(gtk+-2.0) so we can build on SLE
@@ -222,6 +223,7 @@ sed -i -e "s/\r//" README
 
 # patch not yet coming from upstream, https://github.com/vmware/open-vm-tools/issues/500
 %patch100 -p1
+%patch101 -p1
 
 %build
 %if %{with_X}
