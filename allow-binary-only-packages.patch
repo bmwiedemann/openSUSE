@@ -1,0 +1,13 @@
+Index: go/src/cmd/go/internal/load/pkg.go
+===================================================================
+--- go.orig/src/cmd/go/internal/load/pkg.go
++++ go/src/cmd/go/internal/load/pkg.go
+@@ -414,7 +414,7 @@ func LoadImport(path, srcDir string, par
+ 			// Not vendoring, or we already found the vendored path.
+ 			buildMode |= build.IgnoreVendor
+ 		}
+-		bp, err := cfg.BuildContext.Import(path, srcDir, buildMode)
++		bp, err := cfg.BuildContext.Import(path, srcDir, build.AllowBinary|buildMode)
+ 		bp.ImportPath = importPath
+ 		if cfg.GOBIN != "" {
+ 			bp.BinDir = cfg.GOBIN
