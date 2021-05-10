@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 06 20:15:13 UTC 2021 - jeos-internal@suse.de
+
+- Update to version 1.0.1:
+  * Always show manual SSID option
+  * Call dialog with --backtitle everywhere
+  * Calculate the height of menus dynamically (bsc#1177188)
+  * Create README.md
+
+-------------------------------------------------------------------
 Mon Mar  1 14:56:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fix git url in _service

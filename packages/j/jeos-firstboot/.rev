@@ -402,4 +402,17 @@
   * Major refactoring and final version of jeos-config (bsc#1181957)</comment>
     <requestid>876019</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dc92f05c0884a78012819f229abc7910</srcmd5>
+    <version>1.0.1</version>
+    <time>1620653830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1:
+  * Always show manual SSID option
+  * Call dialog with --backtitle everywhere
+  * Calculate the height of menus dynamically (bsc#1177188)
+  * Create README.md
+</comment>
+    <requestid>891135</requestid>
+  </revision>
 </revisionlist>
