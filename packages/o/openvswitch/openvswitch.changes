@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 10:28:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add openssl(cli) dependency on pki (bsc#1185839) 
+
+-------------------------------------------------------------------
 Thu Apr 29 16:05:49 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Replace deprecated /var/run with /run (bsc#1185176, bsc#1185177).

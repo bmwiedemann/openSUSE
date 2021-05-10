@@ -652,4 +652,12 @@
     <comment></comment>
     <requestid>889415</requestid>
   </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>9b095a9489333ea18022f6b3d642b4fa</srcmd5>
+    <version>unknown</version>
+    <time>1620653960</time>
+    <user>dimstar_suse</user>
+    <comment>- add openssl(cli) dependency on pki (bsc#1185839)</comment>
+    <requestid>892002</requestid>
+  </revision>
 </revisionlist>

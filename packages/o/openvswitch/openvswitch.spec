@@ -114,9 +114,9 @@ BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-sphinx
 BuildRequires:  systemd-units
 Requires(post): systemd-units
-Requires(postun): systemd-units
+Requires(postun):systemd-units
 Requires(pre):  shadow-utils
-Requires(preun): systemd-units
+Requires(preun):systemd-units
 %endif
 # Needed by the testsuite
 %if %{with check}
@@ -190,6 +190,7 @@ Summary:        Open vSwitch public key infrastructure dependency package
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
+Requires:       openssl(cli)
 Provides:       %{name}-dpdk-pki = %{version}
 Obsoletes:      %{name}-dpdk-pki < 2.7.0
 
@@ -259,6 +260,7 @@ This package contains utilities that are useful to diagnose
 performance and connectivity issues in Open vSwitch setup.
 
 # OVN preambles from now on, overwrites Version and URL
+
 %package -n ovn
 Version:        %{ovn_version}
 Release:        0
@@ -636,7 +638,7 @@ cp -a %{buildroot}%{_datadir}/openvswitch/python/ovstest \
 # Build on a temporary directory.
 mkdir python3-ovs && pushd $_
 # Some build files are in sources while others are generated directly on
-# buildroot as part of make_install (dirs.py). Copy them first. 
+# buildroot as part of make_install (dirs.py). Copy them first.
 cp -an ../buildroot/ovs%{_datadir}/openvswitch/python/* $(pwd)/
 cp -an ../%{ovs_dir}/python/* $(pwd)/
 rm -rf %{buildroot}%{_datadir}/openvswitch/python
