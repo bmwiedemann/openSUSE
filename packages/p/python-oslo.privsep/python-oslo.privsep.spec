@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.privsep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.privsep
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.privsep
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.4.0.tar.gz
+URL:            https://docs.openstack.org/oslo.privsep
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cffi >= 1.14.0
 BuildRequires:  python3-eventlet >= 0.21.0
@@ -44,7 +44,6 @@ OpenStack library for privilege separation
 
 %package -n python3-oslo.privsep
 Summary:        OpenStack library for privilege separation
-Group:          Development/Languages/Python
 Requires:       python3-cffi >= 1.14.0
 Requires:       python3-eventlet >= 0.21.0
 Requires:       python3-greenlet >= 0.4.14
@@ -62,7 +61,6 @@ OpenStack library for privilege separation
 
 %package -n python-oslo.privsep-doc
 Summary:        oslo.privsep documentation
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -71,7 +69,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for oslo.privsep
 
 %prep
-%autosetup -p1 -n oslo.privsep-2.4.0
+%autosetup -p1 -n oslo.privsep-2.5.0
 %py_req_cleanup
 
 %build

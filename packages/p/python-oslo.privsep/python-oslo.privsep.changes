@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 17:32:09 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Update master for stable/victoria
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:42 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.4.0
