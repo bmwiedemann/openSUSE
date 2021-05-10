@@ -362,4 +362,12 @@ update to version 1.10.0
     <comment>switch to victoria</comment>
     <requestid>841187</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ff541ed1179dfaa1ebcd1496f9217ec</srcmd5>
+    <version>2.6.0</version>
+    <time>1620653847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889974</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-manilaclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-manilaclient
-Version:        2.3.0
+Version:        2.6.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-2.3.0.tar.gz
+URL:            https://docs.openstack.org/python-manilaclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-2.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
@@ -44,7 +44,6 @@ Share API.
 
 %package -n python3-manilaclient
 Summary:        Client Library for OpenStack Share API
-Group:          Development/Languages/Python
 Requires:       python3-Babel >= 2.3.4
 Requires:       python3-PrettyTable >= 0.7.1
 Requires:       python3-debtcollector >= 1.2.0
@@ -77,13 +76,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-2.3.0
+%autosetup -p1 -n python-manilaclient-2.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.6.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -93,7 +92,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 install -p -D -m 644 tools/manila.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/manila.bash_completion
 
 %check
-# we dont want to depend on Tempest so remove the relevant tests
+# we don't want to depend on Tempest so remove the relevant tests
 rm -f manilaclient/tests/unit/test_shell.py
 rm -f manilaclient/tests/unit/test_functional_utils.py
 rm -rf manilaclient/tests/functional
