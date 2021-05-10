@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qtopcua
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -35,8 +35,7 @@ Summary:        Qt wrapper for existing OPC UA stacks
 License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-or-later)
 URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-openssl_symbols-error.patch
+Source99:       qt6-opcua-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  qt6-core-private-devel
