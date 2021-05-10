@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  8 16:02:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.21
+  * Fixed and improved automation curve recording, whenever playback
+    is rolling
+  * Fixed parsing/loading of large session bundle archive/zip files
+  * Fixed LV2 plug-in UI X11 (native) resize.
+  * Make NSM state file names independent to session display names,
+    keeping backward compatibility for old sessions.
+  * Exiting, quitting or closing the main window while under NSM,
+    now promptly asks whether to save, discard or cancel as usual.
+  * Re-improved Mixer multi-row layout.
+  * Fix incorrect destruction order for VST3 modules.
+  * Ignore snap while ALT key is pressed, on the main track-view and
+    the MIDI clip editors.
+  * Fix IPlugView leaks for VST3 plugins.
+
+-------------------------------------------------------------------
 Wed Jan  6 18:16:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.19:

@@ -17,14 +17,14 @@
 
 
 Name:           qtractor
-Version:        0.9.19
+Version:        0.9.21
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://qtractor.org/
-#https://github.com/rncbc/qtractor/archive/qtractor_0_9_10.zip
-Source0:        https://downloads.sourceforge.net/project/qtractor/qtractor/%{version}/qtractor-%{version}.tar.gz
+#GitClone:      https://github.com/rncbc/qtractor
+Source0:        https://download.sourceforge.net/qtractor/qtractor-%{version}.tar.gz
 # PATCH-{FIX}-{OPENSUSE} qtractor-powerpc.patch dvaleev@suse.com -- Fix build on ppc
 Patch2:         qtractor-powerpc.patch
 BuildRequires:  alsa-devel
