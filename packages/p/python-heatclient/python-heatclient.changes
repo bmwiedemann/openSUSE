@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 17:23:01 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Bump default tox env from py37 to py38
+  - Update master for stable/victoria
+  - Python 3.9: base64.encodestring is removed
+  - Stop to use the __future__ module.
+  - [goal] Migrate testing to ubuntu focal
+  - Add Python3 wallaby unit tests
+
+-------------------------------------------------------------------
 Fri Oct  9 19:13:48 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.1
