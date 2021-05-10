@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  8 14:31:13 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.4.1:
+  * Faster handling of triangular matrices by log_det().
+  * Added log_det_sympd() for log determinant of symmetric
+    positive matrices.
+  * Added ARMA_WARN_LEVEL configuration option, to control the
+    degree of emitted warning messages.
+  * Reduced the default degree of warning messages, so that failed
+    decompositions, failed saving/loading, etc, no longer emit
+    warnings.
+
+-------------------------------------------------------------------
 Sat Mar 13 14:20:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.3.0:
