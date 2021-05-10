@@ -31,6 +31,7 @@
 %define lua_lmod_moduledeps %{_datarootdir}/lmod/moduledeps
 %define lua_path ?.lua;?/?.lua;%{lua_noarchdir}/?.lua;%{lua_noarchdir}/?/init.lua
 %define lua_cpath ?.so;?/?.so;%{lua_archdir}/?.so
+%{!?_rpmmacrodir:%define _rpmmacrodir %_rpmconfigdir/macros.d}
 
 Name:           lua-lmod
 Summary:        Lua-based Environment Modules
@@ -138,8 +139,8 @@ export LUA_CPATH="%{lua_cpath}"
 export LUA_PATH="%{lua_path}"
 %make_install
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<EOF > %{buildroot}%{_sysconfdir}/rpm/macros.lmod
+mkdir -p %{buildroot}%{_rpmmacrodir}/rpm
+cat <<EOF > %{buildroot}%{_rpmmacrodir}/macros.lmod
 %%lua_lmod_modulesdir %{lua_lmod_modulesdir}
 %%lua_lmod_admin_modulesdir %{lua_lmod_admin_modulesdir}
 %%lua_lmod_moduledeps %{lua_lmod_moduledeps}
@@ -159,6 +160,10 @@ ln -s %{_datadir}/lmod/%{version}/init/csh %{buildroot}/%{_datadir}/lmod/%{versi
 rm -f %{buildroot}/%{_datadir}/lmod/%{version}/settarg/Version.lua
 ln -s %{_datadir}/lmod/%{version}/libexec/Version.lua %{buildroot}/%{_datadir}/lmod/%{version}/settarg/Version.lua
 
+for file in $(find %{buildroot}%{_datadir}/lmod/%{version}/init -type f); do
+    sed -i -e "/#!.*/d" $file
+    chmod a-x $file
+done
 for file in $(find %{buildroot}%{_datadir}/lmod); do
     [ -f "$file" ] || continue
     line=$(head -1 $file)
@@ -246,11 +251,11 @@ install -p -m644 docs/build/man/lmod.1 %{buildroot}/%{_mandir}/man1/
 %doc README.*
 %config %{_sysconfdir}/profile.d/lmod.sh
 %config %{_sysconfdir}/profile.d/lmod.csh
-%config %{_sysconfdir}/rpm/macros.lmod
 %dir %{_datadir}/lmod
 %dir %{lua_lmod_modulesdir}
 %dir %{lua_lmod_admin_modulesdir}
 %dir %{lua_lmod_moduledeps}
+%{_rpmmacrodir}/macros.lmod
 %{_datadir}/lmod/*
 %{_mandir}/man1/lmod.1.*
 %endif

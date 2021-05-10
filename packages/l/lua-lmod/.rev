@@ -325,4 +325,14 @@
   * Allow print statement in modulefiles (Issue #507). (forwarded request 880860 from eeich)</comment>
     <requestid>880864</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>aff32bdd2f86371da38f22ec4cac6c2a</srcmd5>
+    <version>8.4.28</version>
+    <time>1620653653</time>
+    <user>dimstar_suse</user>
+    <comment>- Move macros out of /etc to the standard rpm macro directory
+  (bsc#1185660).
+- Remove shebang and execute bit from init scripts.</comment>
+    <requestid>891434</requestid>
+  </revision>
 </revisionlist>

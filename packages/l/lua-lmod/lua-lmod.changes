@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 13:34:06 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Move macros out of /etc to the standard rpm macro directory
+  (bsc#1185660).
+- Remove shebang and execute bit from init scripts.
+
+-------------------------------------------------------------------
 Wed Mar 24 06:05:03 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update to version 8.4.28:
