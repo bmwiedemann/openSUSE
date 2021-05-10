@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kglobalaccel
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
@@ -36,26 +36,25 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Revert-systemd-dbus-activation.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-keysyms)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
 %description
@@ -93,8 +92,8 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       libKF5GlobalAccelPrivate5 = %{version}
-Requires:       cmake(Qt5DBus) >= 5.14.0
-Requires:       cmake(Qt5Widgets) >= 5.14.0
+Requires:       cmake(Qt5DBus) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= 5.15.0
 
 %description devel
 KGlobalAccel allows you to have global accelerators that are independent of
@@ -116,16 +115,25 @@ does not need focus for them to be activated.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
-  %cmake_build
+%cmake_kf5 -d build -- -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %if %{with lang}
 %find_lang %{name}5 --with-qt --without-mo
 %endif
+
+%post -n kglobalaccel5
+%{systemd_user_post plasma-kglobalaccel.service}
+
+%preun -n kglobalaccel5
+%{systemd_user_preun}
+
+%postun -n kglobalaccel5
+%{systemd_user_postun}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -163,5 +171,6 @@ does not need focus for them to be activated.
 %{_kf5_plugindir}/org.kde.kglobalaccel5.platforms/KF5GlobalAccelPrivateXcb.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.kglobalaccel.service
 %{_kf5_servicesdir}/kglobalaccel5.desktop
+%{_userunitdir}/plasma-kglobalaccel.service
 
 %changelog
