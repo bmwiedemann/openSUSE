@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat May  8 08:48:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- refresh tmux-socket-path.patch: 
+  restore ability to overwrite socket path using $TMUX_TMPDIR (bsc#1185572)
+
+-------------------------------------------------------------------
+Sat Apr 17 20:56:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  * status-fg and status-bg are now applied before status-style rather than instead
+    of; this means that if either is set to default the status-style colour will be
+    used. To fix, replace status-bg default with status-style bg=default.
+  * How data is sent to control mode clients has been completely revamped to both
+    be more fair with multiple panes and to prevent huge amounts of data being
+    backed up; this feature is used by default when tmux is attached with the
+    latest iTerm2 nightly builds.
+  * Configuration file parsing has changed slightly: the contents of the new {}
+    syntax introduced in 3.1 must now be valid tmux command syntax; and to allow
+    formats to be annotated, strings given with quotes may now contain newlines
+    (leading spaces and comments are stripped).
+  * A new customize mode available with C-b C (C-b S-c) which allows options and
+    key bindings to be browsed and changed interactively.
+  * Support for extended keys offered by some terminals (xterm, mintty, iTerm2),
+    see https://github.com/tmux/tmux/wiki/Modifier-Keys#extended-keys.
+  * A pane-border-lines option to change the characters used to draw the pane
+    border separators.
+  * How UTF-8 data is stored has been rewritten to reduce memory use for characters
+    in the BMP.
+  * The message log (C-b ~) has been changed to be per server instead of per client
+    and to have some useful content.
+  * Client flags have been extended (refresh-client -F becomes -f and also added
+    for attach-session and new-session), and a read-only flag added (same as -r to
+    attach-session).
+  * A new active-pane client flag that if given allows a client to have its own
+    active pane for each window rather than being tied to the server's active pane.
+  * Improved command-prompt completion including showing a menu of completions.
+  * All style options can now be formats, for example the default
+    pane-active-border-style now changes colour depending on pane_in_mode and
+    synchronize-panes.
+  * Search match count has come back in copy mode, as well as performance
+    improvements and additional styles for marking of search terms.
+  * Try $XDG_CONFIG_HOME/tmux/tmux.conf as well as ~/.config/tmux/tmux.conf.
+  * Window and pane hooks such as window-layout-changed and pane-exited are now
+    window or pane options instead of session options.
+  * copy-pipe and friends can now be given with no arguments in which case they get
+    the command from a new copy-command option. The default copy commands all now
+    use copy-pipe. This makes it much easier to configure copy-pipe for all copy
+    key bindings.
+  * Terminal detection and feature code has been rewritten. tmux now collects sets
+    of related terminfo(5) capabilties together with sensible default values into
+    named "terminal features" which makes them easier to configure via a new
+    terminal-features option or -T flag to tmux itself. tmux can detect and will
+    automatically configure a number of common, modern terminal emulators.
+  * Support for per-client overlay popups with a new display-popup command. A popup
+    is also used for an e key binding in buffer mode to edit a buffer using the
+    editor given in the new editor option (filled in from the EDITOR or VISUAL
+    environment variables by default).
+  * DoubleClick and TripleClick mouse key bindings have changed so that only one is
+    fired. Behaviour similar to the old double-click key binding is now available
+    as SecondClick. There are now default double- and triple-click bindings to copy
+    a word or line, and a default middle-click binding to paste the top buffer.
+  * When a server socket is given with -S, it is now created with umask 177 rather
+    than 117.
+
+-------------------------------------------------------------------
 Mon Nov  9 10:35:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(systemd) BuildRequires: there is no reason to pull

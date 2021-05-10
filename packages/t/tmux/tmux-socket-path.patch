@@ -1,11 +1,38 @@
---- a/tmux.c
-+++ b/tmux.c
-@@ -121,7 +121,7 @@
- 	if ((s = getenv("TMUX_TMPDIR")) != NULL && *s != '\0')
- 		xasprintf(&base, "%s/tmux-%ld", s, (long)uid);
- 	else
--		xasprintf(&base, "%s/tmux-%ld", _PATH_TMP, (long)uid);
+--- tmux-3.2/tmux.c
++++ tmux-3.2/tmux.c
+@@ -198,15 +198,16 @@
+ 
+ 	expand_paths(TMUX_SOCK, &paths, &n, 1);
+ 	if (n == 0) {
+-		xasprintf(cause, "no suitable socket path");
+-		return (NULL);
+-	}
+-	path = paths[0]; /* can only have one socket! */
+-	for (i = 1; i < n; i++)
+-		free(paths[i]);
+-	free(paths);
++		/* SUSE specific hack - remain compatible with previously used socket path */
 +		xasprintf(&base, "/run/tmux/%ld", (long)uid);
- 	if (realpath(base, resolved) == NULL &&
- 	    strlcpy(resolved, base, sizeof resolved) >= sizeof resolved) {
- 		errno = ERANGE;
++	} else {
++		path = paths[0]; /* can only have one socket! */
++		for (i = 1; i < n; i++)
++			free(paths[i]);
++		free(paths);
+ 
+-	xasprintf(&base, "%s/tmux-%ld", path, (long)uid);
++		xasprintf(&base, "%s/tmux-%ld", path, (long)uid);
++	}
+ 	if (mkdir(base, S_IRWXU) != 0 && errno != EEXIST)
+ 		goto fail;
+ 	if (lstat(base, &sb) != 0)
+--- tmux-3.2/tmux.h
++++ tmux-3.2/tmux.h
+@@ -73,7 +73,7 @@
+ #define TMUX_CONF "/etc/tmux.conf:~/.tmux.conf"
+ #endif
+ #ifndef TMUX_SOCK
+-#define TMUX_SOCK "$TMUX_TMPDIR:" _PATH_TMP
++#define TMUX_SOCK "$TMUX_TMPDIR:"
+ #endif
+ 
+ /* Minimum layout cell size, NOT including border lines. */

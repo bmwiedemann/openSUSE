@@ -17,7 +17,7 @@
 
 
 Name:           tmux
-Version:        3.1c
+Version:        3.2
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
