@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Too many changes since 5.81.0, only listing bugfixes:
+  * Allow runners to prevent duplicate results (kde#406292)
+  * runnermanager: Allow loading runners in single runner mode if
+    they are disabled (kde#435050)
+  * dbus runner: Fix interface definition (kde#433549)
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
