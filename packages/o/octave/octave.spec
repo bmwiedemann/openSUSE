@@ -56,7 +56,7 @@ Release:        0
 Summary:        A High Level Programming Language
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://www.octave.org/
+URL:            https://www.octave.org/
 Source:         https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
 Source3:        octave.macros
 # PATCH-FIX-OPENSUSE
@@ -268,7 +268,7 @@ rm -rf %{buildroot}/%{_datadir}/metainfo/
 rm -rf %{buildroot}/%{_datadir}/applications/
 %endif
 # rpm macros
-install -Dm 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm/macros.octave
+install -Dm 644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.octave
 # increase stack size set by the JVM, affects the whole octave process
 echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 
@@ -351,7 +351,7 @@ make check
 %{_libdir}/%{name}/api-%{apiver}
 %{_libdir}/pkgconfig/octave.pc
 %{_libdir}/pkgconfig/octinterp.pc
-%config %{_sysconfdir}/rpm/macros.octave
+%{_rpmmacrodir}/macros.octave
 
 %files doc
 %doc doc/interpreter/octave.pdf

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  6 13:56:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- move rpm macros to /usr/lib/rpm/marcos.d (boo#1185659)
+
+-------------------------------------------------------------------
 Fri Apr  2 17:58:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix incomplete geometry support, use reentrant libqhull_r instead
