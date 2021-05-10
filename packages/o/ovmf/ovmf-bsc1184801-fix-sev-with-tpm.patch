@@ -1,0 +1,657 @@
+From 75d1a7903db171d80f9728b24274852ab613ed2b Mon Sep 17 00:00:00 2001
+From: "Lendacky, Thomas" <thomas.lendacky@amd.com>
+Date: Thu, 29 Apr 2021 12:12:10 -0500
+Subject: [PATCH 1/5] OvfmPkg/VmgExitLib: Properly decode MMIO MOVZX and MOVSX
+ opcodes
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3345
+
+The MOVZX and MOVSX instructions use the ModRM byte in the instruction,
+but the instruction decoding support was not decoding it. This resulted
+in invalid decoding and failing of the MMIO operation. Also, when
+performing the zero-extend or sign-extend operation, the memory operation
+should be using the size, and not the size enumeration value.
+
+Add the ModRM byte decoding for the MOVZX and MOVSX opcodes and use the
+true data size to perform the extend operations. Additionally, add a
+DEBUG statement identifying the MMIO address being flagged as encrypted
+during the MMIO address validation.
+
+Fixes: c45f678a1ea2080344e125dc55b14e4b9f98483d
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: James Bottomley <jejb@linux.ibm.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Min Xu <min.m.xu@intel.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <5949d54cb2c9ab69256f67ed5654b32654c0501c.1619716333.git.thomas.lendacky@amd.com>
+---
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+index 24259060fd65..b716541ad170 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+@@ -643,6 +643,9 @@ ValidateMmioMemory (
+   //
+   // Any state other than unencrypted is an error, issue a #GP.
+   //
++  DEBUG ((DEBUG_ERROR,
++    "MMIO using encrypted memory: %lx\n",
++    (UINT64) MemoryAddress));
+   GpEvent.Uint64 = 0;
+   GpEvent.Elements.Vector = GP_EXCEPTION;
+   GpEvent.Elements.Type   = GHCB_EVENT_INJECTION_TYPE_EXCEPTION;
+@@ -817,6 +820,7 @@ MmioExit (
+     // fall through
+     //
+   case 0xB7:
++    DecodeModRm (Regs, InstructionData);
+     Bytes = (Bytes != 0) ? Bytes : 2;
+ 
+     Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
+@@ -835,7 +839,7 @@ MmioExit (
+     }
+ 
+     Register = GetRegisterPointer (Regs, InstructionData->Ext.ModRm.Reg);
+-    SetMem (Register, InstructionData->DataSize, 0);
++    SetMem (Register, (UINTN) (1 << InstructionData->DataSize), 0);
+     CopyMem (Register, Ghcb->SharedBuffer, Bytes);
+     break;
+ 
+@@ -848,6 +852,7 @@ MmioExit (
+     // fall through
+     //
+   case 0xBF:
++    DecodeModRm (Regs, InstructionData);
+     Bytes = (Bytes != 0) ? Bytes : 2;
+ 
+     Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
+@@ -878,7 +883,7 @@ MmioExit (
+     }
+ 
+     Register = GetRegisterPointer (Regs, InstructionData->Ext.ModRm.Reg);
+-    SetMem (Register, InstructionData->DataSize, SignByte);
++    SetMem (Register, (UINTN) (1 << InstructionData->DataSize), SignByte);
+     CopyMem (Register, Ghcb->SharedBuffer, Bytes);
+     break;
+ 
+-- 
+2.31.1
+
+
+From cc71bd9709b07b6b9a5842c551e80541f0ae2593 Mon Sep 17 00:00:00 2001
+From: "Lendacky, Thomas" <thomas.lendacky@amd.com>
+Date: Thu, 29 Apr 2021 12:12:11 -0500
+Subject: [PATCH 2/5] OvmfPkg/VmgExitLib: Add support for new MMIO MOV opcodes
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3345
+
+Enabling TPM support results in guest termination of an SEV-ES guest
+because it uses MMIO opcodes that are not currently supported.
+
+Add support for the new MMIO opcodes (0xA0 - 0xA3), MOV instructions which
+use a memory offset directly encoded in the instruction. Also, add a DEBUG
+statement to identify an unsupported MMIO opcode being used.
+
+Fixes: c45f678a1ea2080344e125dc55b14e4b9f98483d
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: James Bottomley <jejb@linux.ibm.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Min Xu <min.m.xu@intel.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <2fdde57707b52ae39c49341c9d97053aaff56e4a.1619716333.git.thomas.lendacky@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+---
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c | 111 ++++++++++++++++++
+ 1 file changed, 111 insertions(+)
+
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+index b716541ad170..41b0c8cc5312 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+@@ -680,6 +680,7 @@ MmioExit (
+   UINTN   Bytes;
+   UINT64  *Register;
+   UINT8   OpCode, SignByte;
++  UINTN   Address;
+ 
+   Bytes = 0;
+ 
+@@ -729,6 +730,57 @@ MmioExit (
+     }
+     break;
+ 
++  //
++  // MMIO write (MOV moffsetX, aX)
++  //
++  case 0xA2:
++    Bytes = 1;
++    //
++    // fall through
++    //
++  case 0xA3:
++    Bytes = ((Bytes != 0) ? Bytes :
++             (InstructionData->DataSize == Size16Bits) ? 2 :
++             (InstructionData->DataSize == Size32Bits) ? 4 :
++             (InstructionData->DataSize == Size64Bits) ? 8 :
++             0);
++
++    InstructionData->ImmediateSize = (UINTN) (1 << InstructionData->AddrSize);
++    InstructionData->End += InstructionData->ImmediateSize;
++
++    //
++    // This code is X64 only, so a possible 8-byte copy to a UINTN is ok.
++    // Use a STATIC_ASSERT to be certain the code is being built as X64.
++    //
++    STATIC_ASSERT (
++      sizeof (UINTN) == sizeof (UINT64),
++      "sizeof (UINTN) != sizeof (UINT64), this file must be built as X64"
++      );
++
++    Address = 0;
++    CopyMem (
++      &Address,
++      InstructionData->Immediate,
++      InstructionData->ImmediateSize
++      );
++
++    Status = ValidateMmioMemory (Ghcb, Address, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
++    ExitInfo1 = Address;
++    ExitInfo2 = Bytes;
++    CopyMem (Ghcb->SharedBuffer, &Regs->Rax, Bytes);
++
++    Ghcb->SaveArea.SwScratch = (UINT64) Ghcb->SharedBuffer;
++    VmgSetOffsetValid (Ghcb, GhcbSwScratch);
++    Status = VmgExit (Ghcb, SVM_EXIT_MMIO_WRITE, ExitInfo1, ExitInfo2);
++    if (Status != 0) {
++      return Status;
++    }
++    break;
++
+   //
+   // MMIO write (MOV reg/memX, immX)
+   //
+@@ -811,6 +863,64 @@ MmioExit (
+     CopyMem (Register, Ghcb->SharedBuffer, Bytes);
+     break;
+ 
++  //
++  // MMIO read (MOV aX, moffsetX)
++  //
++  case 0xA0:
++    Bytes = 1;
++    //
++    // fall through
++    //
++  case 0xA1:
++    Bytes = ((Bytes != 0) ? Bytes :
++             (InstructionData->DataSize == Size16Bits) ? 2 :
++             (InstructionData->DataSize == Size32Bits) ? 4 :
++             (InstructionData->DataSize == Size64Bits) ? 8 :
++             0);
++
++    InstructionData->ImmediateSize = (UINTN) (1 << InstructionData->AddrSize);
++    InstructionData->End += InstructionData->ImmediateSize;
++
++    //
++    // This code is X64 only, so a possible 8-byte copy to a UINTN is ok.
++    // Use a STATIC_ASSERT to be certain the code is being built as X64.
++    //
++    STATIC_ASSERT (
++      sizeof (UINTN) == sizeof (UINT64),
++      "sizeof (UINTN) != sizeof (UINT64), this file must be built as X64"
++      );
++
++    Address = 0;
++    CopyMem (
++      &Address,
++      InstructionData->Immediate,
++      InstructionData->ImmediateSize
++      );
++
++    Status = ValidateMmioMemory (Ghcb, Address, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
++    ExitInfo1 = Address;
++    ExitInfo2 = Bytes;
++
++    Ghcb->SaveArea.SwScratch = (UINT64) Ghcb->SharedBuffer;
++    VmgSetOffsetValid (Ghcb, GhcbSwScratch);
++    Status = VmgExit (Ghcb, SVM_EXIT_MMIO_READ, ExitInfo1, ExitInfo2);
++    if (Status != 0) {
++      return Status;
++    }
++
++    if (Bytes == 4) {
++      //
++      // Zero-extend for 32-bit operation
++      //
++      Regs->Rax = 0;
++    }
++    CopyMem (&Regs->Rax, Ghcb->SharedBuffer, Bytes);
++    break;
++
+   //
+   // MMIO read w/ zero-extension ((MOVZX regX, reg/memX)
+   //
+@@ -888,6 +998,7 @@ MmioExit (
+     break;
+ 
+   default:
++    DEBUG ((DEBUG_ERROR, "Invalid MMIO opcode (%x)\n", OpCode));
+     Status = GP_EXCEPTION;
+     ASSERT (FALSE);
+   }
+-- 
+2.31.1
+
+
+From a3f12cd471305f7726b92b1f75a4ce8785d11b86 Mon Sep 17 00:00:00 2001
+From: "Lendacky, Thomas" <thomas.lendacky@amd.com>
+Date: Thu, 29 Apr 2021 12:12:12 -0500
+Subject: [PATCH 3/5] OvmfPkg: Define a new PPI GUID to signal TPM MMIO
+ accessability
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Define a new PPI GUID that is to be used as a signal of when it is safe
+to access the TPM MMIO range. This is needed so that, when SEV is active,
+the MMIO range can be mapped unencrypted before it is accessed.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: James Bottomley <jejb@linux.ibm.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Min Xu <min.m.xu@intel.com>
+Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
+Cc: Stefan Berger <stefanb@linux.ibm.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <03e292339273721724c8b14605cfe9d7bbe45a71.1619716333.git.thomas.lendacky@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+---
+ OvmfPkg/OvmfPkg.dec | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/OvmfPkg/OvmfPkg.dec b/OvmfPkg/OvmfPkg.dec
+index 9629707020ba..6ae733f6e39f 100644
+--- a/OvmfPkg/OvmfPkg.dec
++++ b/OvmfPkg/OvmfPkg.dec
+@@ -128,6 +128,10 @@ [Ppis]
+   # has been discovered and recorded
+   gOvmfTpmDiscoveredPpiGuid             = {0xb9a61ad0, 0x2802, 0x41f3, {0xb5, 0x13, 0x96, 0x51, 0xce, 0x6b, 0xd5, 0x75}}
+ 
++  # This PPI signals that accessing the MMIO range of the TPM is possible in
++  # the PEI phase, regardless of memory encryption
++  gOvmfTpmMmioAccessiblePpiGuid         = {0x35c84ff2, 0x7bfe, 0x453d, {0x84, 0x5f, 0x68, 0x3a, 0x49, 0x2c, 0xf7, 0xb7}}
++
+ [Protocols]
+   gVirtioDeviceProtocolGuid             = {0xfa920010, 0x6785, 0x4941, {0xb6, 0xec, 0x49, 0x8c, 0x57, 0x9f, 0x16, 0x0a}}
+   gXenBusProtocolGuid                   = {0x3d3ca290, 0xb9a5, 0x11e3, {0xb7, 0x5d, 0xb8, 0xac, 0x6f, 0x7d, 0x65, 0xe6}}
+-- 
+2.31.1
+
+
+From 8e7edbbf5d6d169eab0dc57fdeb3cfa835e5641d Mon Sep 17 00:00:00 2001
+From: "Lendacky, Thomas" <thomas.lendacky@amd.com>
+Date: Thu, 29 Apr 2021 12:12:13 -0500
+Subject: [PATCH 4/5] OvmfPkg/TpmMmioSevDecryptPei: Mark TPM MMIO range as
+ unencrypted for SEV-ES
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3345
+
+During PEI, the MMIO range for the TPM is marked as encrypted when running
+as an SEV guest. While this isn't an issue for an SEV guest because of
+the way the nested page fault is handled, it does result in an SEV-ES
+guest terminating because of a mitigation check in the #VC handler to
+prevent MMIO to an encrypted address. For an SEV-ES guest, this range
+must be marked as unencrypted.
+
+Create a new x86 PEIM for TPM support that will map the TPM MMIO range as
+unencrypted when SEV-ES is active. The gOvmfTpmMmioAccessiblePpiGuid PPI
+will be unconditionally installed before exiting. The PEIM will exit with
+the EFI_ABORTED status so that the PEIM does not stay resident. This new
+PEIM will depend on the installation of the permanent PEI RAM, by
+PlatformPei, so that in case page table splitting is required during the
+clearing of the encryption bit, the new page table(s) will be allocated
+from permanent PEI RAM.
+
+Update all OVMF Ia32 and X64 build packages to include this new PEIM.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: James Bottomley <jejb@linux.ibm.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Min Xu <min.m.xu@intel.com>
+Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
+Cc: Stefan Berger <stefanb@linux.ibm.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <42794cec1f9d5bc24cbfb9dcdbe5e281ef259ef5.1619716333.git.thomas.lendacky@amd.com>
+[lersek@redhat.com: refresh subject line]
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+---
+ OvmfPkg/AmdSev/AmdSevX64.dsc                  |  1 +
+ OvmfPkg/AmdSev/AmdSevX64.fdf                  |  1 +
+ OvmfPkg/OvmfPkgIa32.dsc                       |  1 +
+ OvmfPkg/OvmfPkgIa32.fdf                       |  1 +
+ OvmfPkg/OvmfPkgIa32X64.dsc                    |  1 +
+ OvmfPkg/OvmfPkgIa32X64.fdf                    |  1 +
+ OvmfPkg/OvmfPkgX64.dsc                        |  1 +
+ OvmfPkg/OvmfPkgX64.fdf                        |  1 +
+ .../TpmMmioSevDecryptPei.inf                  | 40 +++++++++
+ .../TpmMmioSevDecryptPeim.c                   | 87 +++++++++++++++++++
+ 10 files changed, 135 insertions(+)
+ create mode 100644 OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+ create mode 100644 OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPeim.c
+
+diff --git a/OvmfPkg/AmdSev/AmdSevX64.dsc b/OvmfPkg/AmdSev/AmdSevX64.dsc
+index cdb29d53142d..66bbbc80cd18 100644
+--- a/OvmfPkg/AmdSev/AmdSevX64.dsc
++++ b/OvmfPkg/AmdSev/AmdSevX64.dsc
+@@ -626,6 +626,7 @@ [Components]
+   OvmfPkg/AmdSev/SecretPei/SecretPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+   OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+   SecurityPkg/Tcg/TcgPei/TcgPei.inf
+   SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf {
+diff --git a/OvmfPkg/AmdSev/AmdSevX64.fdf b/OvmfPkg/AmdSev/AmdSevX64.fdf
+index c0098502aa90..dd0030dbf189 100644
+--- a/OvmfPkg/AmdSev/AmdSevX64.fdf
++++ b/OvmfPkg/AmdSev/AmdSevX64.fdf
+@@ -147,6 +147,7 @@ [FV.PEIFV]
+ INF  OvmfPkg/AmdSev/SecretPei/SecretPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++INF  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+ INF  OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+ INF  SecurityPkg/Tcg/TcgPei/TcgPei.inf
+ INF  SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf
+diff --git a/OvmfPkg/OvmfPkgIa32.dsc b/OvmfPkg/OvmfPkgIa32.dsc
+index 1730b6558b5c..33fbd767903e 100644
+--- a/OvmfPkg/OvmfPkgIa32.dsc
++++ b/OvmfPkg/OvmfPkgIa32.dsc
+@@ -706,6 +706,7 @@ [Components]
+   UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+   OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+   SecurityPkg/Tcg/TcgPei/TcgPei.inf
+   SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf {
+diff --git a/OvmfPkg/OvmfPkgIa32.fdf b/OvmfPkg/OvmfPkgIa32.fdf
+index f400c845b9c9..b3c8b56f3b60 100644
+--- a/OvmfPkg/OvmfPkgIa32.fdf
++++ b/OvmfPkg/OvmfPkgIa32.fdf
+@@ -162,6 +162,7 @@ [FV.PEIFV]
+ INF  UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++INF  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+ INF  OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+ INF  SecurityPkg/Tcg/TcgPei/TcgPei.inf
+ INF  SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf
+diff --git a/OvmfPkg/OvmfPkgIa32X64.dsc b/OvmfPkg/OvmfPkgIa32X64.dsc
+index 78a559da0d0b..b13e5cfd9047 100644
+--- a/OvmfPkg/OvmfPkgIa32X64.dsc
++++ b/OvmfPkg/OvmfPkgIa32X64.dsc
+@@ -719,6 +719,7 @@ [Components.IA32]
+   UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+   OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+   SecurityPkg/Tcg/TcgPei/TcgPei.inf
+   SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf {
+diff --git a/OvmfPkg/OvmfPkgIa32X64.fdf b/OvmfPkg/OvmfPkgIa32X64.fdf
+index d055552fd09f..86592c2364a3 100644
+--- a/OvmfPkg/OvmfPkgIa32X64.fdf
++++ b/OvmfPkg/OvmfPkgIa32X64.fdf
+@@ -162,6 +162,7 @@ [FV.PEIFV]
+ INF  UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++INF  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+ INF  OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+ INF  SecurityPkg/Tcg/TcgPei/TcgPei.inf
+ INF  SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf
+diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
+index a7d747f6b4ab..999738dc39cd 100644
+--- a/OvmfPkg/OvmfPkgX64.dsc
++++ b/OvmfPkg/OvmfPkgX64.dsc
+@@ -718,6 +718,7 @@ [Components]
+   UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+   OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+   SecurityPkg/Tcg/TcgPei/TcgPei.inf
+   SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf {
+diff --git a/OvmfPkg/OvmfPkgX64.fdf b/OvmfPkg/OvmfPkgX64.fdf
+index d519f8532822..d6be798fcadd 100644
+--- a/OvmfPkg/OvmfPkgX64.fdf
++++ b/OvmfPkg/OvmfPkgX64.fdf
+@@ -174,6 +174,7 @@ [FV.PEIFV]
+ INF  UefiCpuPkg/CpuMpPei/CpuMpPei.inf
+ 
+ !if $(TPM_ENABLE) == TRUE
++INF  OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+ INF  OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+ INF  SecurityPkg/Tcg/TcgPei/TcgPei.inf
+ INF  SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.inf
+diff --git a/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf b/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+new file mode 100644
+index 000000000000..51ad6d0d055d
+--- /dev/null
++++ b/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPei.inf
+@@ -0,0 +1,40 @@
++## @file
++# Map TPM MMIO range unencrypted when SEV-ES is active.
++# Install gOvmfTpmMmioAccessiblePpiGuid unconditionally.
++#
++# Copyright (C) 2021, Advanced Micro Devices, Inc.
++#
++# SPDX-License-Identifier: BSD-2-Clause-Patent
++##
++
++[Defines]
++  INF_VERSION                    = 1.29
++  BASE_NAME                      = TpmMmioSevDecryptPei
++  FILE_GUID                      = F12F698A-E506-4A1B-B32E-6920E55DA1C4
++  MODULE_TYPE                    = PEIM
++  VERSION_STRING                 = 1.0
++  ENTRY_POINT                    = TpmMmioSevDecryptPeimEntryPoint
++
++[Sources]
++  TpmMmioSevDecryptPeim.c
++
++[Packages]
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++  SecurityPkg/SecurityPkg.dec
++
++[LibraryClasses]
++  DebugLib
++  MemEncryptSevLib
++  PcdLib
++  PeimEntryPoint
++  PeiServicesLib
++
++[Ppis]
++  gOvmfTpmMmioAccessiblePpiGuid                      ## PRODUCES
++
++[FixedPcd]
++  gEfiSecurityPkgTokenSpaceGuid.PcdTpmBaseAddress    ## CONSUMES
++
++[Depex]
++  gEfiPeiMemoryDiscoveredPpiGuid
+diff --git a/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPeim.c b/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPeim.c
+new file mode 100644
+index 000000000000..df2ad623308d
+--- /dev/null
++++ b/OvmfPkg/Tcg/TpmMmioSevDecryptPei/TpmMmioSevDecryptPeim.c
+@@ -0,0 +1,87 @@
++/** @file
++  Map TPM MMIO range unencrypted when SEV-ES is active.
++  Install gOvmfTpmMmioAccessiblePpiGuid unconditionally.
++
++  Copyright (C) 2021, Advanced Micro Devices, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++
++#include <PiPei.h>
++
++#include <Library/DebugLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/PcdLib.h>
++#include <Library/PeiServicesLib.h>
++
++STATIC CONST EFI_PEI_PPI_DESCRIPTOR  mTpmMmioRangeAccessible = {
++  EFI_PEI_PPI_DESCRIPTOR_PPI | EFI_PEI_PPI_DESCRIPTOR_TERMINATE_LIST,
++  &gOvmfTpmMmioAccessiblePpiGuid,
++  NULL
++};
++
++/**
++  The entry point for TPM MMIO range mapping driver.
++
++  @param[in]  FileHandle   Handle of the file being invoked.
++  @param[in]  PeiServices  Describes the list of possible PEI Services.
++
++  @retval  EFI_ABORTED  No need to keep this PEIM resident
++**/
++EFI_STATUS
++EFIAPI
++TpmMmioSevDecryptPeimEntryPoint (
++  IN       EFI_PEI_FILE_HANDLE  FileHandle,
++  IN CONST EFI_PEI_SERVICES     **PeiServices
++  )
++{
++  RETURN_STATUS                   DecryptStatus;
++  EFI_STATUS                      Status;
++
++  DEBUG ((DEBUG_INFO, "%a\n", __FUNCTION__));
++
++  //
++  // If SEV is active, MMIO succeeds against an encrypted physical address
++  // because the nested page fault (NPF) that occurs on access does not
++  // include the encryption bit in the guest physical address provided to the
++  // hypervisor.
++  //
++  // If SEV-ES is active, MMIO would succeed against an encrypted physical
++  // address because the #VC handler uses the virtual address (which is an
++  // identity mapped physical address without the encryption bit) as the guest
++  // physical address of the MMIO target in the VMGEXIT.
++  //
++  // However, if SEV-ES is active, before performing the actual MMIO, an
++  // additional MMIO mitigation check is performed in the #VC handler to ensure
++  // that MMIO is being done to/from an unencrypted address. To prevent guest
++  // termination in this scenario, mark the range unencrypted ahead of access.
++  //
++  if (MemEncryptSevEsIsEnabled ()) {
++    DEBUG ((DEBUG_INFO,
++      "%a: mapping TPM MMIO address range unencrypted\n",
++      __FUNCTION__));
++
++    DecryptStatus = MemEncryptSevClearPageEncMask (
++                      0,
++                      FixedPcdGet64 (PcdTpmBaseAddress),
++                      EFI_SIZE_TO_PAGES ((UINTN) 0x5000),
++                      FALSE
++                      );
++
++    if (RETURN_ERROR (DecryptStatus)) {
++      DEBUG ((DEBUG_ERROR,
++        "%a: failed to map TPM MMIO address range unencrypted\n",
++        __FUNCTION__));
++      ASSERT_RETURN_ERROR (DecryptStatus);
++    }
++  }
++
++  //
++  // MMIO range available
++  //
++  Status = PeiServicesInstallPpi (&mTpmMmioRangeAccessible);
++  ASSERT_EFI_ERROR (Status);
++
++  return EFI_ABORTED;
++}
+-- 
+2.31.1
+
+
+From 1e6b0394d6c001802dc454ecff19076aaa80f51c Mon Sep 17 00:00:00 2001
+From: "Lendacky, Thomas" <thomas.lendacky@amd.com>
+Date: Thu, 29 Apr 2021 12:12:14 -0500
+Subject: [PATCH 5/5] OvmfPkg/Tcg2ConfigPei: Update Depex for IA32 and X64
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3345
+
+The OVMF Tcg2Config PEIM adds the gOvmfTpmMmioAccessiblePpiGuid as a
+Depex for IA32 and X64 builds so that the MMIO range is properly mapped
+as unencrypted for an SEV-ES guest before the Tcg2Config PEIM is loaded.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: James Bottomley <jejb@linux.ibm.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Min Xu <min.m.xu@intel.com>
+Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
+Cc: Stefan Berger <stefanb@linux.ibm.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <d6538e6c557173d260e272a0e5659683175e2e06.1619716333.git.thomas.lendacky@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+---
+ OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf b/OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+index 6776ec931ce0..39d1deeed16b 100644
+--- a/OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
++++ b/OvmfPkg/Tcg/Tcg2Config/Tcg2ConfigPei.inf
+@@ -57,7 +57,7 @@ [Pcd]
+   gEfiSecurityPkgTokenSpaceGuid.PcdTpmInstanceGuid                 ## PRODUCES
+ 
+ [Depex.IA32, Depex.X64]
+-  TRUE
++  gOvmfTpmMmioAccessiblePpiGuid
+ 
+ [Depex.ARM, Depex.AARCH64]
+   gOvmfTpmDiscoveredPpiGuid
+-- 
+2.31.1
+

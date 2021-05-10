@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  4 02:58:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the descriptors to add "acpi-s4" tag to allow libvirt
+  enable hibernation (bsc#1182886#c31)
+
+-------------------------------------------------------------------
+Mon May  3 02:08:51 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1184801-fix-sev-with-tpm.patch to fix SEV-ES guest
+  crash with TPM (bsc#1184801)
+
+-------------------------------------------------------------------
 Mon Apr 19 06:10:39 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Build ovmf-x86_64-smm against Ia32X64 to enable S3 support
