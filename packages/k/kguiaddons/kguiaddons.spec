@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kguiaddons
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -42,11 +42,11 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5WaylandClient) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -69,22 +69,22 @@ Summary:        Utilities for graphical user interfaces: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Gui) >= 5.14.0
+Requires:       cmake(Qt5Gui) >= 5.15.0
 
 %description devel
 The KDE GUI addons provide utilities for graphical user interfaces in the areas
 of colors, fonts, text, images, keyboard input. Development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

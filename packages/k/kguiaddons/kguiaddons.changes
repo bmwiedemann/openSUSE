@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Port from deprecated QFontMetrics::charWidth() to horizontalAdvance()
+  * Add KIconUtils::addOverlays() overload to replace KDE::icon()
+  * keysequencerecordertest: import from project keysequencerecorder.h
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
