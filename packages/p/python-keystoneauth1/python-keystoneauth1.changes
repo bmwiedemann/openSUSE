@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 17:24:33 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.3.1
+  - Provide the default get_auth_ref implementation
+  - Specify manila microversion header
+  - Update master for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:06:32 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.2.1
