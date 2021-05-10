@@ -34,11 +34,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%define skip_python36 1
-%endif
+%{?!python_module:%define python_module() python3-%{**}}
+%define pythons python3
 Name:           python-mailman%{psuffix}
 Version:        3.3.4
 Release:        0
@@ -114,7 +111,6 @@ BuildRequires:  %{python_module importlib_resources >= 1.1.0}
 BuildRequires:  %{python_module lazr.config}
 BuildRequires:  %{python_module mailman >= %{version}}
 BuildRequires:  %{python_module nose2}
-# BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.0}
@@ -123,6 +119,11 @@ BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.configuration}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface >= 5.0}
+%endif
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-mailman = %{version}-%{release}
+Obsoletes:      python38-mailman < %{version}-%{release}
 %endif
 %python_subpackages
 
@@ -154,9 +155,6 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %install
 %if !%{with test}
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/master
-%python_clone -a %{buildroot}%{_bindir}/mailman
-%python_clone -a %{buildroot}%{_bindir}/runner
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 install -d -m 0755 \
@@ -225,9 +223,6 @@ getent passwd %{mailman_user} >/dev/null || \
 %service_add_pre %{mailman_services}
 
 %post
-%python_install_alternative master
-%python_install_alternative mailman
-%python_install_alternative runner
 %tmpfiles_create %{_tmpfilesdir}/%{mailman_name}.conf
 %service_add_post %{mailman_services}
 
@@ -236,18 +231,15 @@ getent passwd %{mailman_user} >/dev/null || \
 
 %postun
 %service_del_postun %{mailman_services}
-%python_uninstall_alternative master
-%python_uninstall_alternative mailman
-%python_uninstall_alternative runner
 
 %files %{python_files}
 %doc README.rst README.SUSE.md
 %license COPYING
 %{_sbindir}/rc%{mailman_name}*
 
-%python_alternative %{_bindir}/runner
-%python_alternative %{_bindir}/mailman
-%python_alternative %{_bindir}/master
+%{_bindir}/runner
+%{_bindir}/mailman
+%{_bindir}/master
 %{python_sitelib}/*
 
 %{_unitdir}/%{mailman_name}.service

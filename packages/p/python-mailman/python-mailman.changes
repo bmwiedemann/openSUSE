@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 09:23:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Restrict build to primary python3 in order to avoid conflicting
+  packages.
+
+-------------------------------------------------------------------
 Mon Mar 22 08:09:48 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - dropped obsolete gl823_exclude_failing_tests.patch

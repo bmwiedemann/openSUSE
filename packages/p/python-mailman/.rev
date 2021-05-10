@@ -124,4 +124,13 @@
     <comment></comment>
     <requestid>880765</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9730f1bb6702b1e9355e4a3ee12b4b90</srcmd5>
+    <version>3.3.4</version>
+    <time>1620653897</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict build to primary python3 in order to avoid conflicting
+  packages. (forwarded request 890325 from bnavigator)</comment>
+    <requestid>890490</requestid>
+  </revision>
 </revisionlist>
