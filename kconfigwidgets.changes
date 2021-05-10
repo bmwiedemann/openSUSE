@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Use new version-controlled enumerator deprecation warning macros
+  * Fix mem leak found by asan
+  * Rename khamburgermenuhelpers.h to khamburgermenuhelpers_p.h
+  * Mark internal classes \internal
+  * Un-overload KConfigDialogManager::settingsChanged() signals
+  * Use QGuiApplication::isRightToLeft() instead of QApplication::isRightToLeft()
+  * Remove unused include
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
