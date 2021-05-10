@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.versionedobjects
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-2.3.0.tar.gz
+URL:            https://docs.openstack.org/oslo.versionedobjects
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-2.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-jsonschema
@@ -34,7 +34,7 @@ BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslo.messaging >= 5.29.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslo.utils >= 3.33.0
+BuildRequires:  python3-oslo.utils >= 4.7.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr
 BuildRequires:  python3-stestr
@@ -50,7 +50,6 @@ code across different services and projects.
 
 %package -n python3-oslo.versionedobjects
 Summary:        Oslo Versioned Objects library
-Group:          Development/Languages/Python
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-netaddr >= 0.7.18
@@ -61,7 +60,7 @@ Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.log >= 3.36.0
 Requires:       python3-oslo.messaging >= 5.29.0
 Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-oslo.utils >= 4.7.0
 Requires:       python3-six
 
 %description -n python3-oslo.versionedobjects
@@ -84,7 +83,7 @@ BuildRequires:  python3-openstackdocstheme
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-2.3.0
+%autosetup -p1 -n oslo.versionedobjects-2.4.0
 %py_req_cleanup
 
 %build

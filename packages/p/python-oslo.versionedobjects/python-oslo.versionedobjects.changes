@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 17:41:31 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Replace md5 with oslo version
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Update master for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:18:20 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.3.0
