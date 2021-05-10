@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5NetworkManagerQt
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -41,9 +41,9 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
 BuildRequires:  pkgconfig(libnm) >= 1.0.0
 
 %description
@@ -56,9 +56,9 @@ settings which are used in DBus communication.
 Summary:        A Qt wrapper for NetworkManager DBus API
 Group:          Development/Libraries/KDE
 Requires:       libKF5NetworkManagerQt%{soversion} = %{version}
-Requires:       cmake(Qt5Core) >= 5.14.0
-Requires:       cmake(Qt5DBus) >= 5.14.0
-Requires:       cmake(Qt5Network) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5DBus) >= 5.15.0
+Requires:       cmake(Qt5Network) >= 5.15.0
 Requires:       pkgconfig(libnm) >= 1.0.0
 
 %description devel
@@ -78,14 +78,14 @@ your network devices and also provides a library for parsing connection
 settings which are used in DBus communication.
 
 %prep
-%setup -q -n networkmanager-qt-%{version}
+%autosetup -p1 -n networkmanager-qt-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
 %post -n libKF5NetworkManagerQt%{soversion} -p /sbin/ldconfig
 %postun -n libKF5NetworkManagerQt%{soversion} -p /sbin/ldconfig
