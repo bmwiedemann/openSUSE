@@ -67,7 +67,7 @@ fi
 # This is dirty. The CN of the AppxManifest needs to match the
 # signing certificate's CN. In OBS the CN is the project name. The
 # project itself may not have a cert so we can't use %_project. So
-# we abuse %vendor which is the project whith the key.
+# we abuse %vendor which is the project with the key.
 #PROJECT="%vendor"
 #PROJECT="${PROJECT##*/}"
 #OBS="%vendor"
@@ -80,7 +80,15 @@ if [ -e "%{_sourcedir}/_projectcert.crt" ]; then
 else
 	PUBLISHER="nobody"
 fi
-. "$os_release_file"
+
+# Evaluate os-release file as bash variable assignments
+source "$os_release_file"
+
+# PRETTY_NAME on SLE frequently has release label in parentheses as suffix.
+# The Microsoft Store rejects this spelling for not matching the display name.
+# Trim PRETTY_NAME from space, open paren to end of string:
+# SUSE Linux Enterprise Server 15 SP3 (Snapshot 16) -> SUSE Linux Enterprise Server 15 SP3
+PRETTY_NAME="${PRETTY_NAME// (*/}"
 APPID="${PRETTY_NAME//[^[:alnum:]]/}"
 IDENTITYAPPID="${PRETTY_NAME//[^[:alnum:]\.]/}"
 LAUNCHERNAME="${PRETTY_NAME//[^[:alnum:].]/-}.exe"
@@ -92,6 +100,7 @@ LAUNCHERNAME="${PRETTY_NAME//[^[:alnum:].]/-}.exe"
 # 'SUSE Linux Enterprise Server 15 SP3 (Snapshot11)' -> 'SUSE Linux Enterprise Server 15 SP3'
 SHORT_NAME="${PRETTY_NAME::35}"
 
+# Use the release number of the image package to set appx version submitted to the MS Store
 RELEASE="`rpm -q --qf '%%{release}' %image_package`"
 ARCH="%_arch"
 case "$ARCH" in
@@ -107,12 +116,17 @@ PUBLISHER_DISPLAY_NAME="SUSE"
 # for actual store submission there are more rules:
 # https://docs.microsoft.com/en-us/windows/uwp/publish/package-version-numbering
 # So we need to mangle the versions in a creative way
+# Summarized, the digits of the four segments are limited to the following ranges:
+# 0-65535, 0-65535, 0-65535, 0
+# Where the fourth segment is reserved for the MS Store use.
 if [ "$ID" = "opensuse-tumbleweed" ]; then
 	VERSION=`printf "%d.%d.%d%02d.0" "${VERSION_ID:2:4}" "${VERSION_ID:6}" "${RELEASE%.*}" "${RELEASE#*.}"`
 	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$VERSION_ID.$RELEASE.appx"
 else
 	RELEASE="${RELEASE/lp???./}"
-	VERSION=`printf "%s.%d%02d.0" "${VERSION_ID}" "${RELEASE%.*}" "${RELEASE#*.}"`
+	# Concatenate digits of VERSION_ID to consume only one segment 0-65535 e.g. 15.3 -> 153
+	# Retain image package version number in the two remaining segments 0-65535.0-65535
+	VERSION=`printf "%d.%d.%d.0" "${VERSION_ID//\./}" "${RELEASE%.*}" "${RELEASE#*.}"`
 	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$RELEASE.appx"
 fi
 

@@ -83,4 +83,26 @@
   * Zero diff between template and kiwi output helps debugging (forwarded request 886831 from jfkw)</comment>
     <requestid>886832</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>0b202a2cf64c77805652559c7b80b4cf</srcmd5>
+    <version>1</version>
+    <time>1620653898</time>
+    <user>dimstar_suse</user>
+    <comment>- Set appx version for Microsoft Store using first segment for OS
+  VERSION_ID, segments two and three for OS image release version.
+  * Applies only to SLE and Leap at this time, no change to Tumbleweed
+  * printf &quot;%d.%d.%d.0&quot; &quot;${VERSION_ID//\./}&quot; &quot;${RELEASE%.*}&quot; &quot;${RELEASE#*.}&quot;
+  * Preserves image build versions, previous concatenation was lossy
+  * Version 153.2.283.0 formerly represented as 15.3.2283.0
+- Trim os-release PRETTY_NAME to exclude snapshot or release label
+  consistent with Microsoft Store registered display name.
+  * PRETTY_NAME on SLE has release label in parentheses
+  * Microsoft Store rejects mismatch with display name
+  * Trim PRETTY_NAME from space, open paren to end of string
+  * SUSE Linux Enterprise Server 15 SP3 (Snapshot 16) becomes
+    SUSE Linux Enterprise Server 15 SP3
+- When reading os-release variables spell out bash builtin source
+  for readability instead of '.' (forwarded request 891335 from jfkw)</comment>
+    <requestid>891336</requestid>
+  </revision>
 </revisionlist>
