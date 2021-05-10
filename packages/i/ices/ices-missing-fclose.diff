@@ -1,10 +1,10 @@
----
- src/playlist_basic.c |    1 +
- 1 file changed, 1 insertion(+)
+This patch was added to version < 2.0.1
+Sent upstream 2021-05-08 to icecast@xiph.org
 
---- a/src/playlist_basic.c
-+++ b/src/playlist_basic.c
-@@ -103,6 +103,7 @@
+diff -Nur ices-2.0.3/src/playlist_basic.c new/src/playlist_basic.c
+--- ices-2.0.3/src/playlist_basic.c	2017-07-10 11:19:15.000000000 +0200
++++ new/src/playlist_basic.c	2021-05-08 15:48:33.217498552 +0200
+@@ -147,6 +147,7 @@
      if(data->random)
          shuffle(data->pl, data->len);
  

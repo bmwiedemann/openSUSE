@@ -1,7 +1,7 @@
 #
 # spec file for package ices
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           ices
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Source Client for icecast Streaming Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://www.icecast.org/
-Source:         http://downloads.us.xiph.org/releases/ices/ices-%{version}.tar.bz2
+URL:            https://www.icecast.org/ices/
+Source:         https://downloads.xiph.org/releases/ices/ices-%{version}.tar.bz2
 Source1:        run_ices
-Patch0:         ices-gcc-warning-fix.diff
-Patch1:         ices-missing-fclose.diff
+Patch0:         ices-missing-fclose.diff
 BuildRequires:  alsa-devel
 BuildRequires:  libshout-devel
 BuildRequires:  libtheora-devel
@@ -44,8 +43,7 @@ source client can be situated remotely from the icecast server.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch0 -p1
 
 %build
 autoreconf --force --install
@@ -59,7 +57,7 @@ rm -rf %{buildroot}%{_datadir}/ices
 
 %files
 %license COPYING
-%doc README AUTHORS TODO
+%doc README.md AUTHORS
 %doc doc/*.html
 %doc doc/*.css
 %doc conf/*.xml
