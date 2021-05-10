@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 10 12:02:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.75
+  * Upgraded default SSH key fingerprint format to OpenSSH-style
+    SHA-256.
+  * Upgraded private key file format to PPK3, with improved
+    passphrase hashing and no use of SHA-1.
+  * Terminal now supports ESC [ 9 m for strikethrough text.
+  * New protocols: bare ssh-connection layer for use over
+    already-secure IPC channels, and SUPDUP for talking to very
+    old systems such as PDP-10s.
+  * PuTTYgen now supports alternative provable-prime generation
+    algorithm for RSA and DSA.
+  * The Unix tools can now connect directly to a Unix-domain
+    socket.
+
+-------------------------------------------------------------------
 Sun Jun 28 11:02:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.74

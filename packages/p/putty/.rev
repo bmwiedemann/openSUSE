@@ -203,4 +203,12 @@
     <comment>- Update to release 0.74</comment>
     <requestid>817510</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e60acebb6c5e58284118240662bcb006</srcmd5>
+    <version>0.75</version>
+    <time>1620653963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.75</comment>
+    <requestid>892037</requestid>
+  </revision>
 </revisionlist>

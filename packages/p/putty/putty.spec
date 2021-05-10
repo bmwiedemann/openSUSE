@@ -1,7 +1,7 @@
 #
 # spec file for package putty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           putty
-Version:        0.74
+Version:        0.75
 Release:        0
 Summary:        SSH client with optional GTK-based terminal emulator frontend
 License:        MIT
