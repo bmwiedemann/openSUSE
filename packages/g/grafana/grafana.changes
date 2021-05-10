@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu May 06 13:32:17 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 7.5.5:
+  * "Release: Updated versions in package to 7.5.5" (#33469)
+  * GraphNG: Fix exemplars window position (#33427) (#33462)
+  * Remove field limitation from slack notification (#33113) (#33455)
+  * Prometheus: Support POST in template variables (#33321) (#33441)
+  * Instrumentation: Add success rate metrics for email notifications (#33359) (#33409)
+  * Use either moment objects (for absolute times in the datepicker) or string (for relative time) (#33315) (#33406)
+  * Docs: Removed type from find annotations example. (#33399) (#33403)
+  * [v7.5.x]: FrontendMetrics: Adds new backend api that frontend can use to push frontend measurements and counters to prometheus (#33255)
+  * Updated label for add panel. (#33285) (#33286)
+  * Bug: Add git to Dockerfile.ubuntu (#33247) (#33248)
+  * Docs: Sync latest master docs with 7.5.x (#33156)
+  * Docs: Update getting-started-influxdb.md (#33234) (#33241)
+  * Doc: Document the X-Grafana-Org-Id HTTP header (#32478) (#33239)
+  * Minor Changes in Auditing.md (#31435) (#33238)
+  * Docs: Add license check endpoint doc (#32987) (#33236)
+  * Postgres: Fix time group macro when TimescaleDB is enabled and interval is less than a second (#33153) (#33219)
+  * Docs: InfluxDB doc improvements (#32815) (#33185)
+  * [v7.5.x] Loki: Pass Skip TLS Verify setting to alert queries (#33031)
+  * update cla (#33181)
+  * Fix inefficient regular expression (#33155) (#33159)
+  * Auth: Don't clear auth token cookie when lookup token fails (#32999) (#33136)
+  * Elasticsearch:  Add documentation for supported Elasticsearch query transformations (#33072) (#33128)
+  * Update team.md (#33060) (#33084)
+  * GE issue 1268 (#33049) (#33081)
+  * Fixed some formatting issues for PRs from yesterday. (#33078) (#33079)
+  * Explore: Load default data source in Explore when the provided source does not exist (#32992) (#33061)
+  * Docs: Replace next with latest in aliases (#33054) (#33059)
+  * Added missing link item. (#33052) (#33055)
+  * Backport 33034 (#33038)
+  * Docs: Backport 32916 to v7.5x  (#33008)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.4 (#32973) (#32998)
+  * Elasticsearch: Force re-rendering of each editor row type change (#32993) (#32996)
+  * Docs: Sync release branch with latest docs (#32986)
+
+-------------------------------------------------------------------
 Thu Apr 15 18:15:54 UTC 2021 - ecsos@opensuse.org
 
 - Update to version 7.5.4:
