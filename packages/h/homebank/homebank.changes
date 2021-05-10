@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May  9 12:03:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.2:
+  * new   : statistics report add result/detail to clipboard/csv
+    file
+  * wish  : #1923368 calendar "Today" button to not auto-close
+    widget
+  * wish  : #1916365 please add Toggle detail function to Time
+    mode on Statistics report 
+  * bugfix: #1925976 statistics "total" percentage breakdown
+    incorrect
+  * bugfix: #1922829 reorder transaction buttons not updated
+    after date change
+  * bugfix: #1921741 top spending chart legend text overlap
+  * bugfix: #1919080 OFX import deduplication unselect valid txn
+  * bugfix: #1918479 choosing to force budget monitoring does
+    not make document dirty
+  * bugfix: #1918334 void transactions from previous periods show
+    up in the current transactions
+
+-------------------------------------------------------------------
 Tue May  4 19:32:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.1:
