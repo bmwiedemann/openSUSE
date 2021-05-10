@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  8 16:38:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.32:
+  * Fix issue with handling of IMS private identity validation.
+  * Fix issue with handling of SIM EF structure bit processing.
+  * Fix issue with handling removal of Huawai modems.
+  * Add support for USSD indication with QMI modems.
+
+-------------------------------------------------------------------
 Wed Aug 19 07:47:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix invalid usage of %{_libexecdir} to reference systemd owned
