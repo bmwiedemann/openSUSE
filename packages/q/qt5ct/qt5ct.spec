@@ -1,7 +1,7 @@
 #
 # spec file for package qt5ct
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qt5ct
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Qt5 Configuration Tool
 License:        BSD-2-Clause
@@ -49,7 +49,7 @@ font, icons, etc.) under DE/WM without Qt integration.
 
 %build
 %qmake5
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %qmake5_install
