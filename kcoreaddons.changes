@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * KPluginMetaData::instanciate to print the error when it fails
+  * Call ecm_install_po_files_as_qm() unconditionally
+  * Add SMB2 and CIFS magic numbers
+  * KFuzzyMatcher update
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
