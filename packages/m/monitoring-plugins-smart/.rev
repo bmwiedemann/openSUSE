@@ -38,4 +38,41 @@
     <comment></comment>
     <requestid>745269</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f0744145a658e6b2aab0e27f34b9f15</srcmd5>
+    <version>6.9.1</version>
+    <time>1620653961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.1:
+  This is a security-release (bsc#1183057)
+  + Fixes the regular expression for pseudo-devices under the /dev/bus/N path.
+  from 6.9.0
+  + Allows using PCI device paths as device name(s) (#64)
+  + Introduce new optional parameter -l/--ssd-lifetime) which additionally 
+    checks SMART attribute &quot;Percent_Lifetime_Remain&quot; 
+    (available on some SSD drives). (#66 #67)
+  from 6.8.0
+  + Allow skip self-assessment check (--skip-self-assessment)
+  + Add Command_Timeout to default raw list
+  from 6.7.1
+  + Bugfix to make --warn work (issue #54)
+  from 6.7.0
+  + Added support for NVMe drives
+  from 6.6.1
+  + Fix 'deprecation warning on regex with curly brackets' (6.6.1)
+  from 6.6.0
+  + The feature was requested in #30 . This PR adds the possibility to
+    use 3ware,N and cciss,N drives in combination with the 
+    global -g parameter.
+  + Furthermore this PR adjusts the output of the plugin when the -g 
+    is used in combination with hardware raid controllers. Instead of
+    showing the logical device name (/dev/sda for example), the plugin
+    will now show the controller with drive number
+  from 6.5.0:
+  + Add Reported_Uncorrect and Reallocated_Event_Count to default raw list.
+  + As of 6.5 the following SMART attributes are by default checked and 
+    may result in alert when threshold (default 0 is reached):
+    'Current_Pending_Sector,Reallocated_Sector_Ct,Program_Fail_Cnt_Total,</comment>
+    <requestid>892023</requestid>
+  </revision>
 </revisionlist>

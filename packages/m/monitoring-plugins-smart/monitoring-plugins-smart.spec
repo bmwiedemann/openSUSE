@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-smart
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.4
+Version:        6.9.1
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        SUSE-Public-Domain
 Group:          System/Monitoring
 URL:            https://www.claudiokuenzler.com/nagios-plugins/check_smart.php
-Source0:        check_smart.pl
+Source0:        check_smart-%{version}.tar.xz
 Source1:        usr.lib.nagios.plugins.check_smart
 Source3:        monitoring-plugins-smart-README.SUSE
 BuildRequires:  nagios-rpm-macros
@@ -54,14 +54,13 @@ Since SLES 12/openSUSE 12.1, there is a file
 which holds the same content and should be used automatically.
 
 %prep
-%setup -q -T -c %{name}
-install -m755 %{SOURCE0} check_smart
+%setup -q -n check_smart-%{version}
 install -m644 %{SOURCE3} README.SUSE
 
 %build
 
 %install
-install -D -m755 check_smart %{buildroot}/%{nagios_plugindir}/check_smart
+install -D -m755 check_smart.pl %{buildroot}/%{nagios_plugindir}/check_smart
 install -D -m644 %{SOURCE1}  %{buildroot}/%{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_smart
 %if 0%{?suse_version} > 1130
 mkdir -p %{buildroot}/%{_sysconfdir}/sudoers.d
@@ -72,7 +71,7 @@ EOF
 %endif
 
 %files
-%doc README.SUSE
+%doc README.SUSE README.md
 %dir %{nagios_libdir}
 %dir %{_sysconfdir}/apparmor.d
 %dir %{nagios_plugindir}
