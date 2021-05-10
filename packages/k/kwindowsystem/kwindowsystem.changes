@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Deprecate present windows and highlight windows apis
+  * Properly guard deprecated code in autotests
+  * Deprecate WId-based effects API
+  * Use new version-controlled enumerator deprecation warning macros
+  * Add clang-format pre-commit hook
+  * Run clang-format
+  * Prevent clang-format uglification
+  * Add trailing comma to enum
+  * Deprecate KWindowEffects::windowSizes
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
