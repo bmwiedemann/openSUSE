@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  1 10:14:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the module name from the docs build targets.
+  The modules now have 'docs' and 'install_docs' build targets.
+
+-------------------------------------------------------------------
 Mon Jan 11 15:06:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add a %pre scriplet for QCH doc packages.

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>869497</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3173fe49e0333755f84b8ddb7eeca03a</srcmd5>
+    <version>20210301</version>
+    <time>1620653919</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the module name from the docs build targets.
+  The modules now have 'docs' and 'install_docs' build targets. (forwarded request 891891 from cgiboudeaux)</comment>
+    <requestid>891892</requestid>
+  </revision>
 </revisionlist>

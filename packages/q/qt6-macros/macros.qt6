@@ -230,7 +230,7 @@
 %qt6_build_docs \
   export QT_QPA_PLUGIN_PATH="%{_qt6_pluginsdir}/platforms" \
   export QT_PLUGIN_PATH="%{_qt6_pluginsdir}" \
-  cmake --build \\%{__qt6_build_options} -t docs_qt%{__qt6_module_name} \
+  cmake --build \\%{__qt6_build_options} -t docs \
 %{nil}
 
 #--------------------------------------------------------------
@@ -251,7 +251,7 @@
 #--------------------------------------------------------------
 
 %qt6_install_docs \
-  DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -t install_docs_qt%{__qt6_module_name} \
+  DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -t install_docs \
   # in Qt 6.0.0, %%{_qt6_docdir}/*.qch are folders which contain \
   # files with the same name. \
   # Starting with 6.0.1, the file is installed in %%{_qt6_docdir} directly. \
