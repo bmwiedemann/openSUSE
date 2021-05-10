@@ -1,7 +1,7 @@
 #
 # spec file for package go1.10
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,7 @@ Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://golang.org
+URL:            http://golang.org
 Source:         http://golang.org/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source4:        README.SUSE
@@ -116,6 +116,7 @@ Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
+Patch10:        gccgo1.16.patch
 # PATCH-FIX-UPSTREAM (compiler-rt): Fix sanitizer build against latest glibc
 Patch100:       fix-sanitizer-build-against-latest-glibc.patch
 Patch101:       gcc9-rsp-clobber.patch
@@ -129,7 +130,12 @@ BuildRequires:  binutils-gold
 # SLE12 or Leap 42.x
 BuildRequires:  gcc6-go
 %else
+%if 0%{?suse_version} == 1500
+# SLE15 or Leap 15.x
 BuildRequires:  gcc7-go
+%else
+BuildRequires:  gcc-go
+%endif
 %endif
 %else
 # no gcc-go
@@ -186,7 +192,7 @@ Go examples and documentation.
 %package race
 Summary:        Go runtime race detector
 Group:          Development/Languages/Other
-Url:            https://compiler-rt.llvm.org/
+URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
 ExclusiveArch:  %{tsan_arch}
@@ -212,7 +218,12 @@ Go runtime race detector libraries. Install this package if you wish to use the
 # SLE12 or Leap 42.x
 %patch8 -p1
 %else
+%if 0%{?suse_version} == 1500
+# SLE15 or Leap 15.x
 %patch9 -p1
+%else
+%patch10 -p1
+%endif
 %endif
 %endif
 cp %{SOURCE4} .

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 06:47:42 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Use gcc-go for Factory
+- Add gccgo1.16.patch to allow bootstrap with gccgo from GCC 11.
+  [boo#1182618]
+
+-------------------------------------------------------------------
 Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Ensure ARM arch is set properly - boo#1169832
