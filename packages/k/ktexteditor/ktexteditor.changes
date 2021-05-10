@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Too many changes since 5.81.0, only listing bugfixes:
+  * Fix dragging when folding stuff is around (kde#435500)
+  * Fix incremental selection-only search (kde#327408)
+  * Attempt fix crash on dragging (kde#435500)
+  * fix memory corruption on 'Close the file, discard..' (kde#433180)
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
