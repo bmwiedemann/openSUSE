@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.81
+%define _tar_path 5.82
 %bcond_without lang
 Name:           solid
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -38,15 +38,15 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Qml) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Xml) >= 5.14.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 BuildRequires:  pkgconfig(libudev)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
 %description
@@ -90,7 +90,7 @@ Summary:        KDE Desktop hardware abstraction: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
 
 %description devel
 Solid is a device integration framework.  It provides a way of querying and
@@ -100,15 +100,15 @@ Development files.
 %lang_package -n %{lname}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DWITH_NEW_SOLID_JOB=ON -DWITH_NEW_POWER_ASYNC_API=ON -DWITH_NEW_POWER_ASYNC_FREEDESKTOP=ON -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
-  %cmake_build
+%cmake_kf5 -d build -- -DWITH_NEW_SOLID_JOB=ON -DWITH_NEW_POWER_ASYNC_API=ON -DWITH_NEW_POWER_ASYNC_FREEDESKTOP=ON -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %if %{with lang}
 %find_lang %{name}5 --with-qt --without-mo
