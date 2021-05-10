@@ -1,0 +1,9 @@
+<package name="qt6-datavis3d" project="openSUSE:Factory">
+  <title>Qt 6 Datavis3d library and plugins</title>
+  <description>Qt Data Visualization module provides multiple graph types to visualize data
+in 3D space both with C++ and Qt Quick 2.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-datavis3d"/>
+  <url>https://www.qt.io</url>
+</package>
