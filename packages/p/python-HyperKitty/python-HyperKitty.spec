@@ -31,11 +31,9 @@
 
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%define skip_python36 1
-%endif
+%{?!python_module:%define python_module() python3-%{**}}
+# mailman is built only for primary python3 flavor
+%define pythons python3
 Name:           python-HyperKitty
 Version:        1.3.4
 Release:        0
@@ -107,6 +105,11 @@ BuildRequires:  %{python_module python-dateutil >= 2.0}
 BuildRequires:  %{python_module pytz >= 2012}
 BuildRequires:  %{python_module robot-detection >= 0.3}
 # /SECTION
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-Hyperkitty = %{version}-%{release}
+Obsoletes:      python38-Hyperkitty < %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
