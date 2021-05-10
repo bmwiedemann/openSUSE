@@ -1,7 +1,7 @@
 #
 # spec file for package python-octaviaclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-octaviaclient
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Octavia Plugin for the OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-octaviaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-2.2.0.tar.gz
+URL:            https://docs.openstack.org/python-octaviaclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-2.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient >= 3.12.0
@@ -39,10 +39,9 @@ the OpenStack Load Balancing service.
 
 %package -n python3-octaviaclient
 Summary:        Octavia Plugin for the OpenStack Command-line Client
-Group:          Development/Languages/Python
 Requires:       python3-Babel
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-keystoneauth1 >= 3.18.0
 Requires:       python3-netifaces
 Requires:       python3-neutronclient >= 6.7.0
 Requires:       python3-openstackclient >= 3.12.0
@@ -72,13 +71,13 @@ the OpenStack Load Balancing service.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-octaviaclient-2.2.0
+%autosetup -p1 -n python-octaviaclient-2.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

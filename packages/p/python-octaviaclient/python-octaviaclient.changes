@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  2 17:25:27 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Remove install unnecessary packages
+  - Add support for PROXYV2 protocol
+  - Improve error messages in list/show calls
+  - Add Python3 wallaby unit tests
+  - Update master for stable/victoria
+  - Add ALPN support for pools
+  - Remove Babel
+  - remove unicode from code
+  - Fix lower-constraints job
+  - Add tag support for Octavia resources
+
+-------------------------------------------------------------------
 Fri Oct  9 19:10:46 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.0
