@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman-web
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+# mailman is built only for primary python3 flavor
+%define pythons python3
 Name:           python-mailman-web
 Version:        0.0.1
 Release:        0
@@ -43,6 +44,11 @@ BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module django-settings-toml >= 0.0.3}
 BuildRequires:  %{python_module postorius}
 # /SECTION
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-mailman-web = %{version}-%{release}
+Obsoletes:      python38-mailman-web < %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
