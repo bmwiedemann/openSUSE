@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -80,11 +80,6 @@ ABI or API guarantees.
 
 %build
 %cmake_qt6
-
-%if %{qt6_docs_flavor}
-# Special case. the documentation macros don't expect 2*'qt'
-%define __qt6_module_name 5compat
-%endif
 
 %{qt6_build}
 
