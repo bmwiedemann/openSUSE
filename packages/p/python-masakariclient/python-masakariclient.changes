@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May  2 17:23:18 UTC 2021 - cloud-devel@suse.de
+
+- update to version 7.0.0
+  - Drop lower-constraints
+  - Add 'is_enabled' attr to segment
+  - Add Python3 wallaby unit tests
+  - [goal] Migrate testing to ubuntu focal
+  - Add py38 package metadata.
+  - [CI] Add periodic jobs
+  - [CI] Add openstackclient-plugin-jobs template
+  - Update master for stable/victoria
+  - remove unicode from code
+  - Revert "remove py37"
+  - Drop the legacy client
+  - Add py38 package metadata
+  - Fix docs reqs for new pip
+  - Fix the plugin after removing the legacy client
+  - Add release notes to readme.rst
+  - Remove usage of six
+  - Use unittest.mock instead of mock in the doc
+  - Fix tox for py38 and lower-contraints
+  - remove py37
+
+-------------------------------------------------------------------
 Fri Oct  9 19:14:52 UTC 2020 - cloud-devel@suse.de
 
 - update to version 6.1.1

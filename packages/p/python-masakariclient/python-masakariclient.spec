@@ -1,7 +1,7 @@
 #
 # spec file for package python-masakariclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %global oldpython python
 Name:           python-masakariclient
-Version:        6.1.1
+Version:        7.0.0
 Release:        0
+Epoch:          0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-6.1.1.tar.gz
+URL:            https://docs.openstack.org/python-masakariclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-7.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
@@ -46,7 +47,6 @@ Client library for Masakari built on the Masakari API. It provides a Python API
 
 %package -n python3-masakariclient
 Summary:        Python API and CLI for OpenStack Masakari
-Group:          Development/Languages/Python
 Requires:       python3-openstacksdk >= 0.13.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
@@ -82,8 +82,8 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=6.1.1 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=6.1.1 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=7.0.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=7.0.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -98,7 +98,6 @@ python3 -m stestr.cli run
 %license LICENSE
 %{python3_sitelib}/masakariclient
 %{python3_sitelib}/*.egg-info
-%{_bindir}/masakari
 
 %files -n python-masakariclient-doc
 %license LICENSE
