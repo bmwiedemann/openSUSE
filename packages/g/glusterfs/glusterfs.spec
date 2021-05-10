@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           glusterfs
-Version:        7.1
+Version:        9.1
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
@@ -26,8 +26,7 @@ URL:            http://www.gluster.org/
 
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/7/7.1/glusterfs-7.1.tar.gz
-Patch1:         nocommon.patch
+Source:         https://download.gluster.org/pub/gluster/glusterfs/9/9.1/glusterfs-9.1.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -45,11 +44,14 @@ BuildRequires:  pkgconfig(fuse) >= 2.6.5
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(liburcu)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(liburing) >= 0.3
+%endif
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 GlusterFS is a clustered file-system capable of scaling to several
@@ -98,6 +100,14 @@ Group:          System/Libraries
 GlusterFS is a clustered file-system capable of scaling to several
 petabytes.
 
+%package -n libglusterd0
+Summary:        GlusterFS core daemon library
+Group:          System/Libraries
+
+%description -n libglusterd0
+GlusterFS is a clustered file-system capable of scaling to several
+petabytes.
+
 %package -n libglusterfs0
 Summary:        GlusterFS's core library
 Group:          System/Libraries
@@ -126,6 +136,7 @@ Requires:       libgfapi0 = %version
 Requires:       libgfchangelog0 = %version
 Requires:       libgfrpc0 = %version
 Requires:       libgfxdr0 = %version
+Requires:       libglusterd0 = %version
 Requires:       libglusterfs0 = %version
 
 %description devel
@@ -137,61 +148,26 @@ links.
 
 %prep
 %autosetup -p1
->contrib/sunrpc/xdr_sizeof.c
 
 %build
 %define _lto_cflags %nil
 ./autogen.sh
-%configure --disable-static
-make %{?_smp_mflags} V=0
-find . -name 'xdr_sizeof*' -type f -exec ls -lgo {} + || :
+%configure \
+%if !(0%{?suse_version} >= 1550)
+	--disable-linux-io_uring \
+%endif
+	--disable-static --with-ipv6-default
+%make_build
 
 %install
 b="%buildroot"
 %make_install docdir="%_docdir/%name"
 find "$b" -type f -name "*.la" -delete -print
-mkdir -p "$b/%_localstatedir/log"/{glusterd,glusterfs,glusterfsd}
+mkdir -pv "$b/%_localstatedir/log"/{glusterd,glusterfs,glusterfsd}
+cp -av ChangeLog NEWS README.md "$b/%_docdir/%name/"
 
-# The things seemingly forgotten by make install.
-# - Manually populate devel dirs
-mkdir -p "$b/%_includedir/%name"
-install -pm0644 libglusterfs/src/*.h "$b/%_includedir/%name/"
-# - hekafs wants this:
-mkdir -p "$b/%_includedir/%name"/{rpc,server}
-install -pm0644 rpc/rpc-lib/src/*.h rpc/xdr/src/*.h \
-	"$b/%_includedir/%name/rpc/"
-install -pm0644 xlators/protocol/server/src/*.h \
-	"$b/%_includedir/%name/server/"
-# - wrapper umount script?
-# - logrotate entry
-mkdir -p "$b/%_localstatedir/log/%name"
-# - vim syntax
-
-# - state
-mkdir -p "$b/%_localstatedir/lib/glusterd"
-perl -i -pe \
-	's{^(\s*option working-directory )\S+}{$1 %_localstatedir/lib/glusterd}g' \
-	"$b/%_sysconfdir/%name/glusterd.vol"
-
-# W: wrong-file-end-of-line-encoding
-perl -i -pe 's{\x0d\x0a}{\x0a}gs' %_docdir/%name/glusterfs-mode.el
-
-# E: env-script-interpreter
-perl -i -pe 's{#!/usr/bin/env python}{#!/usr/bin/python}' \
-	"$b/%_bindir/glusterfind" \
-	"$b/%_sbindirusr/gcron.py" "$b/%_sbindir/snap_scheduler.py" \
-	"$b/%_libexecdir/glusterfs"/*.py "$b/%_libexecdir/glusterfs"/*/*.py \
-	"$b/%_libexecdir/glusterfs/peer_mountbroker" \
-	"$b/%_datadir/glusterfs/scripts"/*.py
-perl -i -pe 's{#!/usr/bin/env bash}{#!/bin/bash}' \
-	"$b/%_datadir/glusterfs/scripts"/*.sh
-
-cp -a COPYING-GPLV2 COPYING-LGPLV3 ChangeLog NEWS README.md "$b/%_docdir/%name/"
-
-mkdir -p "%buildroot/%_unitdir"
-ln -s service "%buildroot/%_sbindir/rcglusterd"
-chmod u-s "%buildroot/%_bindir/fusermount-glusterfs"
-rm -f "%buildroot/%_sbindir/conf.py"
+chmod -v u-s "%buildroot/%_bindir/fusermount-glusterfs"
+rm -fv "%buildroot/%_sbindir/conf.py"
 %fdupes %buildroot/%_prefix
 
 %pre
@@ -214,11 +190,16 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %postun -n libgfrpc0 -p /sbin/ldconfig
 %post   -n libgfxdr0 -p /sbin/ldconfig
 %postun -n libgfxdr0 -p /sbin/ldconfig
+%post   -n libglusterd0 -p /sbin/ldconfig
+%postun -n libglusterd0 -p /sbin/ldconfig
 %post   -n libglusterfs0 -p /sbin/ldconfig
 %postun -n libglusterfs0 -p /sbin/ldconfig
 
 %files
+%license COPYING*
+%dir %_sysconfdir/ganesha
 %dir %_sysconfdir/%name
+%_sysconfdir/ganesha/*.sample
 %config(noreplace) %_sysconfdir/%name/eventsconfig.json
 %config(noreplace) %_sysconfdir/%name/g*lusterd.vol
 %config(noreplace) %_sysconfdir/%name/glusterfs-logrotate
@@ -231,11 +212,10 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %_bindir/fusermount-glusterfs
 %_bindir/glusterfind
 /sbin/mount.%name
+%_libexecdir/ganesha/
 %_libexecdir/%name/
 %_libdir/%name/
 %_sbindir/gluster*
-%_sbindir/glfsheal
-%_sbindir/rcglusterd
 %_sbindir/gcron.py
 %_sbindir/gf_attach
 %_sbindir/gfind_missing_files
@@ -263,6 +243,9 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %files -n libgfxdr0
 %_libdir/libgfxdr.so.0*
 
+%files -n libglusterd0
+%_libdir/libglusterd.so.0*
+
 %files -n libglusterfs0
 %_libdir/libglusterfs.so.0*
 
@@ -270,7 +253,7 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %python3_sitelib/gluster/
 
 %files devel
-%_includedir/%name
+%_includedir/%name/
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 

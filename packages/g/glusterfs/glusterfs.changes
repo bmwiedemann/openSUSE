@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 29 10:29:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.1
+  * Implemented seek file operation for open-behind
+  * Added io_uring support for Gluster
+  * Added Support for 5K volumes
+  * Enabled granular-entry-heal by default
+  * Added support for monitoring the epoll/rpc layer
+  * Improve rebalance of sparse files
+- Drop nocommon.patch (merged)
+
+-------------------------------------------------------------------
 Thu Jun  4 11:44:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
