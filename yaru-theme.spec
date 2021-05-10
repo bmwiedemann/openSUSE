@@ -1,7 +1,7 @@
 #
 # spec file for package yaru-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   yaru
 Name:           yaru-theme
-Version:        20.10.2
+Version:        20.10.6.1
 Release:        0
 Summary:        Yaru theme from the Ubuntu community
 License:        GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND CC-BY-SA-4.0
@@ -26,7 +26,7 @@ URL:            https://community.ubuntu.com/c/desktop/theme-refresh
 Source:         https://github.com/ubuntu/yaru/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
 BuildRequires:  pkgconfig(glib-2.0)
