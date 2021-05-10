@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5XmlGui5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kxmlgui
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -36,6 +36,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE (until fixed properly)
+Patch1:         0001-Revert-Fix-initial-window-size-calculations.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -53,14 +55,14 @@ BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 # Now requires private headers
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5Xml) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -90,9 +92,9 @@ Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5DBus) >= 5.14.0
-Requires:       cmake(Qt5Widgets) >= 5.14.0
-Requires:       cmake(Qt5Xml) >= 5.14.0
+Requires:       cmake(Qt5DBus) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= 5.15.0
+Requires:       cmake(Qt5Xml) >= 5.15.0
 
 %description devel
 libkxmlgui provides a framework for managing menu and toolbar actions in an
@@ -103,17 +105,17 @@ description for example for integrating actions from plugins. Development files.
 %lang_package -n %{lname}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir}
-  %cmake_build
+%cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
-  mkdir -p %{buildroot}%{_kf5_sharedir}/kxmlgui5/
+mkdir -p %{buildroot}%{_kf5_sharedir}/kxmlgui5/
 
 %if %{with lang}
 %find_lang %{name}5

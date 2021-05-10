@@ -1,0 +1,31 @@
+From 47982fe4ea9e54aa70f19520f697f780429d4fa7 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 9 May 2021 13:23:57 +0200
+Subject: [PATCH] Revert "Fix initial window size calculations"
+
+This reverts commit f147fcf22318acf3b953600a028ea026fd7c345b.
+It breaks konsole: https://invent.kde.org/frameworks/kxmlgui/-/merge_requests/53#note_237142
+---
+ src/kmainwindow.cpp | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/kmainwindow.cpp b/src/kmainwindow.cpp
+index 8721de5b..f12141a0 100644
+--- a/src/kmainwindow.cpp
++++ b/src/kmainwindow.cpp
+@@ -696,12 +696,6 @@ void KMainWindow::applyMainWindowSettings(const KConfigGroup &cg)
+ 
+     if (!d->sizeApplied && (!window() || window() == this)) {
+         winId(); // ensure there's a window created
+-        // Set the window's size from the existing widget geometry to respect the
+-        // implicit size when there is no saved geometry in the config file for
+-        // KWindowConfig::restoreWindowSize() to restore
+-        // TODO: remove once QTBUG-40584 is fixed; see below
+-        windowHandle()->setWidth(width());
+-        windowHandle()->setHeight(height());
+         KWindowConfig::restoreWindowSize(windowHandle(), cg);
+         // NOTICE: QWindow::setGeometry() does NOT impact the backing QWidget geometry even if the platform
+         // window was created -> QTBUG-40584. We therefore copy the size here.
+-- 
+2.25.1
+
