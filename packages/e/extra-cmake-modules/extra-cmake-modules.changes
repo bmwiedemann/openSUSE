@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * ECMGenerateExportHeader: add macros for enumerator deprecation warning
+  * clang-format: Add links to clang-format docs and coding style wiki
+  * Add link to clang-format options documentation
+  * clang-format: Disable formatting for JS files
+  * Fix static Windows builds by not setting /NODEFAULTLIB:libcmt /DEFAULTLIB:msvcrt
+  * Fix installation of qm files from po files in the build directory
+  * Document the advanced APK packaging options
+  * Add a way to pass additional arguments to androiddeployqt
+  * Clean ECM's attic
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
