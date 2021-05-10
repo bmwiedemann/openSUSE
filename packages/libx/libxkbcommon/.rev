@@ -285,4 +285,12 @@
     <comment>- Update to release 1.2.1 [boo#1184688]</comment>
     <requestid>885297</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dfb6083880092f4f853cfca9cf2b7d7b</srcmd5>
+    <version>1.3.0</version>
+    <time>1620653768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.0</comment>
+    <requestid>889816</requestid>
+  </revision>
 </revisionlist>

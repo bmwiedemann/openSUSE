@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
