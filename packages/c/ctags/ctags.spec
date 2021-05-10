@@ -1,7 +1,7 @@
 #
 # spec file for package ctags
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           ctags
 Version:        5.8
 Release:        0
 Summary:        A Program to Generate Tag Files for Use with vi and Other Editors
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Navigators
-Url:            http://ctags.sourceforge.net/
+URL:            http://ctags.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 # No resources to make this patch work with ctags-5.8 (applied to ctags-5.7)
 # Anyone is welcome to make it work again.
@@ -51,7 +51,6 @@ Requires(pre):  update-alternatives
 Requires(post): update-alternatives
 Requires(post): coreutils
 Provides:       arduino-ctags
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CTags (from Darren Hiebert) generates tag files from source code in C,
@@ -82,21 +81,23 @@ Emacs, and several other editors.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make \
-  install \
+# Makefile ignores DESTDIR ...
+%make_install \
   prefix=%{buildroot}%{_prefix} \
   bindir=%{buildroot}%{_bindir} \
   mandir=%{buildroot}%{_mandir}
+
 mv %{buildroot}%{_bindir}/ctags{,-exuberant}
 mv %{buildroot}%{_mandir}/man1/ctags{,-exuberant}.1
+
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -s ctags %{buildroot}%{_bindir}/ctags
-ln -s ctags.1%{ext_man} %{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
-ln -s ctags %{buildroot}%{_sysconfdir}/alternatives/ctags
-ln -s ctags.1%{ext_man} %{buildroot}%{_sysconfdir}/alternatives/ctags.1%{ext_man}
+ln -s %{_sysconfdir}/alternatives/ctags              %{buildroot}%{_bindir}/ctags
+ln -s %{_sysconfdir}/alternatives/ctags.1%{ext_man}  %{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
+ln -s %{_bindir}/ctags-exuberant                     %{buildroot}%{_sysconfdir}/alternatives/ctags
+ln -s %{_mandir}/man1/ctags.1%{ext_man}              %{buildroot}%{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
 %post
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
@@ -110,8 +111,8 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%defattr(-,root,root)
-%doc COPYING EXTENDING.html FAQ README
+%doc EXTENDING.html FAQ README
+%license COPYING
 %{_bindir}/ctags-exuberant
 %{_mandir}/man1/ctags-exuberant.1%{ext_man}
 %ghost %{_bindir}/ctags

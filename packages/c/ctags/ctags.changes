@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  4 11:15:01 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert ghosting changes, fix real cause for build failure
+  instead (symlinks pointing to itself).
+- Clean spec file: remove historic cruft, use %license for COPYING,
+  use %make_build/%make_install macros
+
+-------------------------------------------------------------------
+Thu Jan 28 09:54:49 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Ship symlinks that are not to be ghosted in the first place
+
+-------------------------------------------------------------------
+Mon Jan 11 12:09:50 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Tumbleweed - do not ship ghost symlinks.
+
+-------------------------------------------------------------------
 Sun Feb 26 04:37:26 UTC 2017 - msuchanek@suse.com
 
 - merge with arduino-ctags https://github.com/arduino/ctags
