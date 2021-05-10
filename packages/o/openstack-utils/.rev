@@ -184,4 +184,12 @@
   + openstack-db: support trove database setup</comment>
     <requestid>315353</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8f98ca9427214af2a0015dcfc51421b</srcmd5>
+    <version>2017.11+git.1480685772.571a0f8</version>
+    <time>1620653835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889957</requestid>
+  </revision>
 </revisionlist>

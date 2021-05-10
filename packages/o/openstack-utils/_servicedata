@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/redhat-openstack/openstack-utils.git</param>
-    <param name="changesrevision">bd34653b5c</param>
+    <param name="changesrevision">dc38dd697e16681a85c1c322dd154fa65824eb40</param>
   </service>
 </servicedata>
