@@ -1,7 +1,7 @@
 #
 # spec file for package python-murano-pkg-check
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Murano package validator tool
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://docs.openstack.org/developer/murano/
+URL:            https://docs.openstack.org/murano/latest/
 Source0:        https://files.pythonhosted.org/packages/source/m/murano-pkg-check/murano-pkg-check-0.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.10.0
@@ -42,7 +42,6 @@ Murano package validator tool
 
 %package -n python3-murano-pkg-check
 Summary:        Murano package validator tool
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.10.0
 Requires:       python3-oslo.i18n >= 2.1.0
 Requires:       python3-semantic_version

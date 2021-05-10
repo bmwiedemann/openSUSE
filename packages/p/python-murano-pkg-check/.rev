@@ -44,4 +44,12 @@
     <comment>- update to victora template (removes setuptools)</comment>
     <requestid>841625</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bb92cc273d2b356e136195d2dbcb9014</srcmd5>
+    <version>0.3.0</version>
+    <time>1620653850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889978</requestid>
+  </revision>
 </revisionlist>
