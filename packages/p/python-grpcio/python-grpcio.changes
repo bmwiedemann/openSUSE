@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  8 14:08:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.37.1:
+  * No user visible changes.
+- Changes from version 1.37.0:
+  * Clarify Guarantees about grpc.Future Interface
+    (gh#grpc/grpc#25383).
+  * [Aio] Add time_remaining method to ServicerContext
+    (gh#grpc/grpc#25719).
+  * Standardize all environment variable boolean configuration in
+    python's setup.py (gh#grpc/grpc#25444).
+  * Fix Signal Safety Issue (gh#grpc/grpc#25394).
+
+-------------------------------------------------------------------
 Thu Mar  4 22:50:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.36.1:

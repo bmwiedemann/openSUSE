@@ -20,7 +20,7 @@
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
 Name:           python-grpcio
-Version:        1.36.1
+Version:        1.37.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
