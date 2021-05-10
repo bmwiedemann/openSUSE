@@ -83,4 +83,15 @@
     <comment></comment>
     <requestid>882009</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>047d072946826b9b6429f2e186ec94bf</srcmd5>
+    <version>1.2.7</version>
+    <time>1620653962</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.7
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 891991 from glaubitz)</comment>
+    <requestid>892032</requestid>
+  </revision>
 </revisionlist>

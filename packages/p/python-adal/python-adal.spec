@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-adal
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Azure Active Directory library
 License:        MIT
