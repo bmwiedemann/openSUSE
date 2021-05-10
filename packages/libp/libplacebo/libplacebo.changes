@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May  7 09:51:50 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- Update libplacebo to version 3.120.3:
+
+This minor release fixes a number of regressions surrounding memory
+imports and DRM modifiers, specifically aimed at issues that arose with
+mpv's --hwdec=vaapi.
+
+Changes:
+- `pl_fmt.modifiers` now always includes DRM_FORMAT_MOD_INVALID on
+   OpenGL, which instructs the implementation to not specify modifiers
+- passing a DRM modifier not in the list of supported modifiers is now
+  considered a hard error, to rule out non-working hwaccel formats
+
+Fixes:
+- fix a crash when using sampling shaders on textures with unknown formats
+- fix improperly specified SDL header imports in the demos
+- fix an issue where the vulkan texture handle capabilities were testing
+  for presence of the wrong extension
+- fix an issue where non-enabled DRM modifier structs were accidentally
+  linked into the pNext chain, causing issues with some drivers
+
+-------------------------------------------------------------------
 Mon Apr 19 08:27:57 UTC 2021 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 3.120.2:

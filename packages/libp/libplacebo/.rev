@@ -929,4 +929,27 @@ Fixes and performance improvements:
 - improve handling of asynchronous texture uploads in `utils/libav.h`</comment>
     <requestid>886609</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1fb8dc60894b0acab43cdd402840a9bc</srcmd5>
+    <version>3.120.3</version>
+    <time>1620653798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libplacebo to version 3.120.3:
+This minor release fixes a number of regressions surrounding memory
+imports and DRM modifiers, specifically aimed at issues that arose with
+mpv's --hwdec=vaapi.
+Changes:
+- `pl_fmt.modifiers` now always includes DRM_FORMAT_MOD_INVALID on
+   OpenGL, which instructs the implementation to not specify modifiers
+- passing a DRM modifier not in the list of supported modifiers is now
+  considered a hard error, to rule out non-working hwaccel formats
+Fixes:
+- fix a crash when using sampling shaders on textures with unknown formats
+- fix improperly specified SDL header imports in the demos
+- fix an issue where the vulkan texture handle capabilities were testing
+  for presence of the wrong extension
+- fix an issue where non-enabled DRM modifier structs were accidentally
+  linked into the pNext chain, causing issues with some drivers</comment>
+    <requestid>891306</requestid>
+  </revision>
 </revisionlist>
