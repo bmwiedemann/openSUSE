@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refreshed spec-file via spec-cleaner and manual optimisations.
+  * Changed files: pppoe-connect, pppoe-setup, pppoe-status and
+    pppoe-stop (replaced /var/run by /run).
+- Updated to 3.15
+  * Don't ignore SIGTERM and SIGINT.
+    Send PADT and exit if one of those signals is received.
+  * Switch from net-tools to iproute2.
+
+-------------------------------------------------------------------
 Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.

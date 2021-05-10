@@ -1,7 +1,7 @@
 #
 # spec file for package rp-pppoe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name pppoe
 %define _group dialout
 Name:           rp-%{_name}
-Version:        3.14
+Version:        3.15
 Release:        0
 Summary:        A PPP Over Ethernet Redirector for PPPD
 License:        GPL-2.0-or-later
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  ppp
 BuildRequires:  pkgconfig(systemd)
 Requires:       group(%{_group})
-Requires:       net-tools
+Requires:       iproute2
 Requires:       ppp
 Requires(post): permissions
 Requires(pre):  group(%{_group})
@@ -55,8 +55,7 @@ Requires(pre):  group(%{_group})
 many ADSL service providers.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 cd src
@@ -67,30 +66,26 @@ cd ../gui
 
 %install
 %make_install -C src
-mkdir -p %{buildroot}%{_sbindir} %{buildroot}%{_unitdir}
-install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}
-install -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}
-install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}
-install -m 0755 %{SOURCE4} %{buildroot}%{_sbindir}
-install -m 0755 %{SOURCE5} %{buildroot}%{_sbindir}
-install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{_name}.service
-install -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{_name}-server.service
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}-server
-ln -sf %{_name}-stop %{buildroot}%{_sbindir}/adsl-stop
-ln -sf %{_name}-start %{buildroot}%{_sbindir}/adsl-start
-rm -rf %{buildroot}%{_sysconfdir}/ppp/%{_name}.conf \
-       %{buildroot}%{_sysconfdir}/rc.d/init.d/%{_name} \
-       %{buildroot}%{_initddir}
 %make_install -C gui
-install -d  %{buildroot}%{_defaultdocdir}/%{name}
-mv %{buildroot}%{_sysconfdir}/ppp/plugins/README %{buildroot}%{_defaultdocdir}/%{name}/README.plugins
-rm -r %{buildroot}%{_sysconfdir}/ppp/plugins %{buildroot}%{_defaultdocdir}/%{name}/LICENSE
+mkdir -p %{buildroot}%{_sbindir} %{buildroot}%{_unitdir}
+install -p %{SOURCE1} %{buildroot}%{_sbindir}
+install -p %{SOURCE2} %{buildroot}%{_sbindir}
+install -p %{SOURCE3} %{buildroot}%{_sbindir}
+install -p %{SOURCE4} %{buildroot}%{_sbindir}
+install -p %{SOURCE5} %{buildroot}%{_sbindir}
+install -pm0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{_name}.service
+install -pm0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{_name}-server.service
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}-server
+ln -s %{_name}-stop %{buildroot}%{_sbindir}/adsl-stop
+ln -s %{_name}-start %{buildroot}%{_sbindir}/adsl-start
+install -Dpm0644 %{buildroot}%{_sysconfdir}/ppp/plugins/README %{buildroot}%{_defaultdocdir}/%{name}/README.plugins
+rm -r %{buildroot}%{_initddir} \
+      %{buildroot}%{_sysconfdir}/ppp/plugins \
+      %{buildroot}%{_sysconfdir}/ppp/%{_name}.conf \
+      %{buildroot}%{_defaultdocdir}/%{name}/LICENSE
 
 %pre
-%if 0%{?suse_version} < 1330
-getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
-%endif
 %service_add_pre %{_name}.service
 %service_add_pre %{_name}-server.service
 
@@ -111,16 +106,15 @@ getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
 %verify_permissions -e %{_sbindir}/%{_name}-wrapper
 
 %files
-%defattr(0644,root,root,-)
 %license doc/LICENSE
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/*
 %attr(0750,root,root) %config(noreplace) %{_sysconfdir}/ppp/firewall-*
 %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ppp/%{_name}-server-options
-%attr(0755,root,root) %{_bindir}/tkpppoe
-%attr(0755,root,root) %{_sbindir}/%{_name}
-%attr(0755,root,root) %{_sbindir}/%{_name}-{c,r,s}*
-%attr(4750,root,dialout) %{_sbindir}/%{_name}-wrapper
+%{_bindir}/tkpppoe
+%{_sbindir}/%{_name}
+%{_sbindir}/%{_name}-*
+%attr(4750,root,%{_group}) %{_sbindir}/%{_name}-wrapper
 %{_mandir}/man?/*%{?ext_man}
 %{_sbindir}/adsl-st*
 %{_sbindir}/rc%{_name}
@@ -129,7 +123,7 @@ getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
 %{_unitdir}/%{_name}-server.service
 %dir %{_sysconfdir}/ppp/%{name}-gui
 %dir %{_datarootdir}/tk%{_name}
-%{_datarootdir}/tk%{_name}/?*.{html,msg,png}
-%verify(not mode caps) %attr(4750,root,dialout) %{_sbindir}/%{_name}-wrapper
+%{_datarootdir}/tk%{_name}/*
+%verify(not mode caps) %attr(4750,root,%{_group}) %{_sbindir}/%{_name}-wrapper
 
 %changelog

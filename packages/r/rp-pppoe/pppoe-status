@@ -80,10 +80,10 @@ fi
 
 PPPD_PID=`cat "$PPPD_PIDFILE"`
 
-# Sigh.  Some versions of pppd put PID files in /var/run; others put them
+# Sigh.  Some versions of pppd put PID files in /run; others put them
 # in /etc/ppp.  Since it's too messy to figure out what pppd does, we
 # try both locations.
-for i in /etc/ppp/ppp*.pid /var/run/ppp*.pid ; do
+for i in /etc/ppp/ppp*.pid /run/ppp*.pid ; do
     if [ -r $i ] ; then
 	PID=`cat $i`
 	if [ "$PID" = "$PPPD_PID" ] ; then

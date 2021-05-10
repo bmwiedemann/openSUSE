@@ -116,14 +116,14 @@ if [ -r "$PIDFILE" ] ; then
     fi
 
     # Kill br2684ctl if necessary
-    if [ -n "$BR2684DEV" -a -r /var/run/nas$BR2684DEV.pid ]; then
-	PIDS=`cat /var/run/nas$BR2684DEV.pid`
+    if [ -n "$BR2684DEV" -a -r /run/nas$BR2684DEV.pid ]; then
+	PIDS=`cat /run/nas$BR2684DEV.pid`
 	kill -0 $PIDS > /dev/null 2>&1
 	if [ $? = 0 ]; then
 	    $LOGGER -p daemon.notice "Killing br2684ctl for nas$BR2684DEV"
 	    kill $PIDS > /dev/null 2>&1
 	fi
-	rm -f /var/run/nas$BR2684DEV.pid
+	rm -f /run/nas$BR2684DEV.pid
     fi
 
     rm -f "$PIDFILE" "$PPPD_PIDFILE" "$PPPOE_PIDFILE" "$STARTPID"

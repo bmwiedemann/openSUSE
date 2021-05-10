@@ -400,13 +400,6 @@ else
     PEERDNS=no
 fi
 
-# Where is pppd likely to put its pid?
-if [ -d /var/run ] ; then
-    VARRUN=/var/run
-else
-    VARRUN=/etc/ppp
-fi
-
 $ECHO "USERCTL=$USERCTL" >$CONFIG
 $ECHO "BOOTPROTO=dialup" >>$CONFIG
 [ -z "$NAME" ] && NAME="DSL$DEVICE"
@@ -414,7 +407,7 @@ $ECHO "NAME=DSL$DEVICE" >>$CONFIG
 $ECHO "DEVICE=$DEVICE" >>$CONFIG
 $ECHO "TYPE=xDSL" >>$CONFIG
 $ECHO "ONBOOT=$ONBOOT" >>$CONFIG
-$ECHO "PIDFILE=/var/run/pppoe-adsl.pid" >>$CONFIG
+$ECHO "PIDFILE=/run/pppoe-adsl.pid" >>$CONFIG
 $ECHO "FIREWALL=$FIREWALL" >>$CONFIG
 [ -z "$PING" ] && PING="."
 $ECHO "PING=$PING" >>$CONFIG

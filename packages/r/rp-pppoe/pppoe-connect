@@ -379,8 +379,8 @@ while [ true ] ; do
     fi
     wait
     if test "$BR2684DEV" != ""; then
-        kill `cat /var/run/nas$BR2684DEV.pid`
-        rm /var/run/nas$BR2684DEV.pid
+        kill `cat /run/nas$BR2684DEV.pid`
+        rm /run/nas$BR2684DEV.pid
     fi
 
     if test "$RETRY_ON_FAILURE" = "no" ; then
