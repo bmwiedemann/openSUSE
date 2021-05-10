@@ -88,4 +88,12 @@ ocaml 4.03 (fate#320836)</comment>
   add support for returning results in the right order</comment>
     <requestid>888344</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61d7a2e6a0f0cc6234c619cba915c00d</srcmd5>
+    <version>1.2.3</version>
+    <time>1620653952</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>891918</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-parmap</param>
-    <param name="revision">2800b78e9e10ffffafc3cbb0ffaed646ab71cc6a</param>
+    <param name="revision">f140dbc8b05aa3d341c70436a1920a06df9a0ed4</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/rdicosmo/parmap.git</param>
-    <param name="versionformat">%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-parmap
-Version:        20210423.2800b78
+Version:        1.2.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/parmap
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-dune >= 2.7
 BuildRequires:  ocaml-rpm-macros >= 20210409
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
