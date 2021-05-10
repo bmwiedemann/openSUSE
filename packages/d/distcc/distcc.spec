@@ -1,7 +1,7 @@
 #
 # spec file for package distcc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           distcc
-Version:        3.3.3
+Version:        3.3.5
 Release:        0
 Summary:        A distributed C/C++ compiler
 License:        GPL-2.0-or-later
@@ -30,10 +30,7 @@ URL:            https://github.com/distcc/distcc
 Source0:        https://github.com/distcc/distcc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distccd.sysconfig
 Source2:        distccd.service
-Patch1:         distcc-3.2_rc1-freedesktop.patch
-Patch2:         distcc-3.2_rc1-gssapi.patch
 Patch3:         distcc-3.2_rc1-python.patch
-Patch4:         gcc-10-no-common.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -46,6 +43,7 @@ BuildRequires:  python
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libgssglue)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(python3)
@@ -100,11 +98,7 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
     --with-gtk \
     --with-avahi \
     --with-auth
-# For some reason CC is not propagated to makefile and we get empty string
-sed -i \
-    -e 's:CC = :CC = cc:' \
-    Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install docdir=%{_docdir}/%{name}
@@ -184,6 +178,6 @@ rm -rf %{buildroot}%{_docdir}/%{name}/{INSTALL,COPYING}
 %files gui
 %{_bindir}/distccmon-gnome
 %{_datadir}/applications/distccmon-gnome.desktop
-%{_datadir}/pixmaps/distccmon-gnome-icon.png
+%{_datadir}/pixmaps/distccmon-gnome.png
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 28 17:29:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.5:
+  * Fix build on OSX
+  * Fix build when using optional features AND those optional libraries decided
+    to build against libsystemd (not sure which one, but it doesn't matter).
+  * Python 3.8 compatibility issues 
+  * drop distcc-3.2_rc1-freedesktop.patch distcc-3.2_rc1-gssapi.patch: obsolete
+  * drop gcc-10-no-common.patch: upstream
+
+-------------------------------------------------------------------
 Mon Jun  8 11:25:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add gcc-10-no-common.patch: 
