@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  6 21:46:52 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.3-26-g422932e923:
+  + rebased on top of upstream pacific SHA1 381b476cb3900f9a92eb95d03b4850b953cfd79a
+    Pacific v16.2.3 release
+    see https://ceph.io/releases/v16-2-3-pacific-released/
+    * cephadm: normalize image digest in 'ls' output too
+    Pacific v16.2.2 release
+    see https://ceph.io/releases/v16-2-2-pacific-released/
+
+-------------------------------------------------------------------
+Wed May  5 15:32:31 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.1-283-g9f37a4bec4:
+  + rebased on top of upstream pacific SHA1 717ce59b76c659aaef8c5aec1355c0ac5cef7234
+    Pacific v16.2.1 release
+    see https://ceph.io/releases/v16-2-1-pacific-released/
+    * (bsc#1183074) - (CVE-2021-20288) ceph: Unauthorized global_id reuse
+    * (bsc#1184231) cephadm: Allow to use paths in all <_devices> drivegroup sections
+
+-------------------------------------------------------------------
 Tue Apr 13 09:10:55 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - _constraints: raise s390x disk constraint to 42G after seeing a build fail

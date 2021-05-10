@@ -123,7 +123,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.0.91+g24bd0c4acf
+Version:	16.2.3.26+g422932e923
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -139,7 +139,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.0-91-g24bd0c4acf.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.3-26-g422932e923.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -329,6 +329,7 @@ BuildRequires:	lz4-devel >= 1.7
 # distro-conditional make check dependencies
 %if 0%{with make_check}
 %if 0%{?fedora} || 0%{?rhel}
+BuildRequires:	golang-github-prometheus
 BuildRequires:	libtool-ltdl-devel
 BuildRequires:	xmlsec1
 BuildRequires:	xmlsec1-devel
@@ -345,6 +346,7 @@ BuildRequires:	python%{python3_pkgversion}-werkzeug
 BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
 %endif
 %if 0%{?suse_version}
+BuildRequires:	golang-github-prometheus-prometheus
 BuildRequires:	libxmlsec1-1
 BuildRequires:	libxmlsec1-nss1
 BuildRequires:	libxmlsec1-openssl1
@@ -713,6 +715,7 @@ Summary:	Ceph daemon for immutable object cache
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
+Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
 Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
 %description immutable-object-cache
 Daemon for immutable object cache.
@@ -1206,7 +1209,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.0-91-g24bd0c4acf
+%autosetup -p1 -n ceph-16.2.3-26-g422932e923
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:

@@ -533,4 +533,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>886946</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9018dd213da345f19d885fceab5d7f79</srcmd5>
+    <version>16.2.3.26+g422932e923</version>
+    <time>1620653791</time>
+    <user>dimstar_suse</user>
+    <comment>16.2.3 (forwarded request 891241 from smithfarm)</comment>
+    <requestid>891242</requestid>
+  </revision>
 </revisionlist>
