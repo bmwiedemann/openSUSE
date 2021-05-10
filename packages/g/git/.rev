@@ -2309,4 +2309,12 @@ git 2.12.3
     <comment>- Remove deprecated &quot;syslog&quot; option from git-daemon.service (bsc#1185147)</comment>
     <requestid>887962</requestid>
   </revision>
+  <revision rev="264" vrev="5">
+    <srcmd5>25f27026fa80a49b28c31478adaa3e34</srcmd5>
+    <version>2.31.1</version>
+    <time>1620653706</time>
+    <user>dimstar_suse</user>
+    <comment>- add suse-use-builtin-add-interactive.patch (jsc#SLE-17838)</comment>
+    <requestid>892021</requestid>
+  </revision>
 </revisionlist>
