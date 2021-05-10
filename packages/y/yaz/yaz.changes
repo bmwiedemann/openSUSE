@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  6 12:13:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.31.0
+  * Fixed yaz-marcdump: json input and leader at end undefined behavior.
+  * Enable xi:include processing for yaz_xml_include_glob and
+    yaz_xml_include_simple
+
+-------------------------------------------------------------------
 Wed Aug 26 08:21:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.30.3:
