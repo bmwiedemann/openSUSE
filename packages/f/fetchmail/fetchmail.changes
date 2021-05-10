@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  8 19:55:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.19:
+  * fetchmailconf: properly catch and report option parsing errors
+  * LMTP: do not try to validate the last component of a UNIX-domain LMTP socket 
+    as though it were a TCP port.
+
+-------------------------------------------------------------------
 Tue Apr  6 02:13:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.18:
