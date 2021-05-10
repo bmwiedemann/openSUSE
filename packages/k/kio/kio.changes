@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Thu May  6 18:12:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop 0001-PreviewJob-Create-a-larger-SHM-when-necessary.patch.
+  Merged in kio 5.82.
+
+-------------------------------------------------------------------
 Tue May  4 20:28:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix thumnail creation in certain conditions (kde#430862):
   * 0001-PreviewJob-Create-a-larger-SHM-when-necessary.patch
+
+-------------------------------------------------------------------
+Sat May  1 16:40:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Too many changes since 5.81.0, only listing bugfixes:
+  * Make the openOrExecute dialog modal (kde#430396)
+  * KDirOperator: show the progress bar above the horizontal scrollbar
+    (kde#194017)
 
 -------------------------------------------------------------------
 Mon Apr  5 07:12:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
