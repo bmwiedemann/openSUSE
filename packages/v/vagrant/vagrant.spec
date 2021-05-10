@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.15
+Version:        2.2.16
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -59,6 +59,8 @@ Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 # https://github.com/hashicorp/vagrant/pull/12329
 Patch10:        0010-Bump-listen-version-to-3.5.patch
+# https://github.com/hashicorp/vagrant/pull/12339
+Patch11:        0011-Mock-the-PowerShell.executable-method-in-more-tests.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -107,8 +109,8 @@ BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
-#  s.add_dependency "net-ssh", ">= 6.1.0", "< 7"
-BuildRequires:  %{rubygem net-ssh:6 >= 6.1.0 }
+#  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
+BuildRequires:  %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -194,8 +196,8 @@ Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 Requires:       %{rubygem mime-types:3 >= 3.3}
-#  s.add_dependency "net-ssh", ">= 6.1.0", "< 7"
-Requires:       %{rubygem net-ssh:6 >= 6.1.0 }
+#  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
+Requires:       %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"

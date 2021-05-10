@@ -1,7 +1,7 @@
-From 50ea02c2ab56693ed291589a302e85866b33ecde Mon Sep 17 00:00:00 2001
+From 8fb45fd30524c9286a027c44e12351ddaefecade Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 27 Apr 2021 10:27:11 +0200
-Subject: [PATCH 10/10] Bump listen version to ~> 3.5
+Subject: [PATCH 10/11] Bump listen version to ~> 3.5
 
 (cherry picked from commit 016911965d5f995a5d0a168069de7ded7b380ecb)
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 10/10] Bump listen version to ~> 3.5
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index 9d71cdc52..5322d5dd5 100644
+index 4a4a25e6d..8fef4319c 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
 @@ -21,7 +21,7 @@ Gem::Specification.new do |s|
@@ -20,7 +20,7 @@ index 9d71cdc52..5322d5dd5 100644
 +  s.add_dependency "listen", "~> 3.5"
    s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
    s.add_dependency "mime-types", "~> 3.3"
-   s.add_dependency "net-ssh", ">= 6.1.0", "< 7"
+   s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
 -- 
 2.31.1
 

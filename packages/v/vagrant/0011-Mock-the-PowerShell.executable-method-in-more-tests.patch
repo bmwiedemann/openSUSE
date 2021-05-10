@@ -1,0 +1,45 @@
+From 2e76a77511d8c4f4ee1ea8cd2ee8ee5612316a07 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Fri, 30 Apr 2021 09:37:20 +0200
+Subject: [PATCH 11/11] Mock the PowerShell.executable method in more tests
+
+On *nix systems we might not have powershell installed and then finding
+powershell.exe or pwsh.exe fails in some tests. If we instead mock
+self.executable to return "powershell", then the tests pass and don't cause any
+side effects.
+---
+ test/unit/vagrant/util/powershell_test.rb | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/test/unit/vagrant/util/powershell_test.rb b/test/unit/vagrant/util/powershell_test.rb
+index 0b1123c0f..c073d8f26 100644
+--- a/test/unit/vagrant/util/powershell_test.rb
++++ b/test/unit/vagrant/util/powershell_test.rb
+@@ -114,6 +114,8 @@ describe Vagrant::Util::PowerShell do
+   describe ".execute" do
+     before do
+       allow(described_class).to receive(:validate_install!)
++      allow(described_class).to receive(:executable)
++        .and_return("powershell")
+       allow(Vagrant::Util::Subprocess).to receive(:execute)
+     end
+ 
+@@ -159,6 +161,7 @@ describe Vagrant::Util::PowerShell do
+     before do
+       allow(described_class).to receive(:validate_install!)
+       allow(Vagrant::Util::Subprocess).to receive(:execute).and_return(result)
++      allow(described_class).to receive(:executable).and_return("powershell")
+     end
+ 
+     it "should validate installation before use" do
+@@ -223,6 +226,7 @@ describe Vagrant::Util::PowerShell do
+     before do
+       allow(described_class).to receive(:validate_install!)
+       allow(Vagrant::Util::Subprocess).to receive(:execute).and_return(result)
++      allow(described_class).to receive(:executable).and_return("powershell")
+     end
+ 
+     it "should validate installation before use" do
+-- 
+2.31.1
+

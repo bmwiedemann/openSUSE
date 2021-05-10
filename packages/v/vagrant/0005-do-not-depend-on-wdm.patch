@@ -1,7 +1,7 @@
-From 86f1ba8702737f24b357bb7114e8d97e36b86283 Mon Sep 17 00:00:00 2001
+From c596dcd5e7bb3ab6bbdcbc9d21b640d828aa0925 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Mon, 4 Jun 2018 09:18:23 +0200
-Subject: [PATCH 05/10] do not depend on wdm
+Subject: [PATCH 05/11] do not depend on wdm
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 deletion(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index 1643681b4..9d71cdc52 100644
+index 99ed2083c..4a4a25e6d 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
 @@ -30,7 +30,6 @@ Gem::Specification.new do |s|

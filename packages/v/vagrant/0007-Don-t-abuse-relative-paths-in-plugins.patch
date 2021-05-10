@@ -1,7 +1,7 @@
-From 1ffd8eaeeac0148698d857a1d029a04ab37c44ac Mon Sep 17 00:00:00 2001
+From 79214e9936e35d2de125fe8d7c6fbbc424b4c054 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Fri, 11 Jan 2019 12:32:28 +0100
-Subject: [PATCH 07/10] Don't abuse relative paths in plugins
+Subject: [PATCH 07/11] Don't abuse relative paths in plugins
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
