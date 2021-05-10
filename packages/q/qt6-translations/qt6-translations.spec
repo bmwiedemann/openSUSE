@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-translations
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qttranslations-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-translations
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt 6 Translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
