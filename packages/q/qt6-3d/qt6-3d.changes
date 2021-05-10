@@ -1,8 +1,37 @@
 -------------------------------------------------------------------
+Thu May  6 17:10:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0:
+  * https://www.qt.io/blog/qt-6.1-released
+
+-------------------------------------------------------------------
+Fri Apr 23 14:11:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-rc.
+- Remove the _service file. qt6-3d builds successfully with the
+  system assimp dependency.
+
+-------------------------------------------------------------------
+Tue Apr 13 06:32:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta3.
+
+-------------------------------------------------------------------
 Wed Mar 31 15:45:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.0.3
   * https://www.qt.io/blog/qt-6.0.3-released
+
+-------------------------------------------------------------------
+Fri Mar 19 15:56:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta2
+
+-------------------------------------------------------------------
+Fri Mar  5 17:23:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta1
+  https://www.qt.io/blog/qt-6.1-beta-released
 
 -------------------------------------------------------------------
 Fri Mar  5 09:31:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>

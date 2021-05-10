@@ -16,9 +16,9 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
-%define tar_name qt3d
+%define real_version 6.1.0
+%define short_version 6.1
+%define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
@@ -27,12 +27,12 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
-Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-3d-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
@@ -155,6 +155,9 @@ The Qt 6 3DExtras library.
 %package -n qt6-3dextras-devel
 Summary:        Development files for the Qt 6 3DExtras library
 Requires:       libQt63DExtras6 = %{version}
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
+%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-3dextras-devel
 Development files for the Qt 6 3DExtras library.
