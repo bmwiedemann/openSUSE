@@ -1301,4 +1301,12 @@ update to 5.76
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>878094</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>9a7f402fada2419cce9dfb78768f3028</srcmd5>
+    <version>6.54</version>
+    <time>1620653797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891293</requestid>
+  </revision>
 </revisionlist>

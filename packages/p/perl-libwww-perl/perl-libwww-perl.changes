@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  7 03:07:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.54
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.54      2021-05-06 17:53:56Z
+      - Be explicit in the prerequisite of HTTP::Status (GH#378) (Max Maischein)
+      - Remove Authority section from dist.ini (GH#377) (Olaf Alders)
+
+-------------------------------------------------------------------
 Mon Mar  8 03:09:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.53
