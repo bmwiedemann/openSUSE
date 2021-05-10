@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           oxygen5-icon-theme
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
@@ -65,28 +65,29 @@ BuildRequires:  cmake(Qt5Test)
 This package contains the non-scalable icons of the Oxygen icon theme.
 
 %prep
-%setup -q -n oxygen-icons5-%{version}
+%autosetup -p1 -n oxygen-icons5-%{version}
+
 %if %{without autotests}
 sed -i -e's/.*autotests/# \0/' CMakeLists.txt
 %endif
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  cd build
-%make_install
-  install -D -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/icons/oxygen/base/22x22/apps/package-manager-icon.png
-  install -D -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/icons/oxygen/base/32x32/apps/package-manager-icon.png
-  install -D -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/icons/oxygen/base/48x48/apps/package-manager-icon.png
-  install -D -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/icons/oxygen/base/22x22/places/folder-html.png
-  install -D -m 0644 %{SOURCE7} %{buildroot}%{_datadir}/icons/oxygen/base/32x32/places/folder-html.png
-  install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/icons/oxygen/base/48x48/places/folder-html.png
-  install -D -m 0644 %{SOURCE9} %{buildroot}%{_datadir}/icons/oxygen/base/64x64/places/folder-html.png
-  install -D -m 0644 %{SOURCE10} %{buildroot}%{_datadir}/icons/oxygen/base/128x128/places/folder-html.png
-  install -D -m 0644 %{SOURCE11} %{buildroot}%{_datadir}/icons/oxygen/base/256x256/places/folder-html.png
-  install -D -m 0644 %{SOURCE12} %{buildroot}%{_datadir}/icons/oxygen/base/16x16/places/folder-html.png
+%kf5_makeinstall -C build
+
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/icons/oxygen/base/22x22/apps/package-manager-icon.png
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/icons/oxygen/base/32x32/apps/package-manager-icon.png
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/icons/oxygen/base/48x48/apps/package-manager-icon.png
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/icons/oxygen/base/22x22/places/folder-html.png
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_datadir}/icons/oxygen/base/32x32/places/folder-html.png
+install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/icons/oxygen/base/48x48/places/folder-html.png
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_datadir}/icons/oxygen/base/64x64/places/folder-html.png
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_datadir}/icons/oxygen/base/128x128/places/folder-html.png
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_datadir}/icons/oxygen/base/256x256/places/folder-html.png
+install -D -m 0644 %{SOURCE12} %{buildroot}%{_datadir}/icons/oxygen/base/16x16/places/folder-html.png
 
 for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256;
 do
@@ -94,9 +95,11 @@ install -D -m 0644 %{buildroot}%{_datadir}/icons/oxygen/base/${i}/places/folder-
 install -D -m 0644 %{buildroot}%{_datadir}/icons/oxygen/base/${i}/places/folder-documents.png %{buildroot}%{_datadir}/icons/oxygen/base/${i}/apps/document.png;
 done
 
+pushd build
 cp -r ../scalable %{buildroot}%{_datadir}/icons/oxygen/base
+popd
 
-  %fdupes %{buildroot}
+%fdupes %{buildroot}
 
 %package scalable
 Summary:        Oxygen Icon Theme
