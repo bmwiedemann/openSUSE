@@ -182,4 +182,13 @@
     <comment></comment>
     <requestid>545406</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>613ea1bc615c06e98a385d931d320238</srcmd5>
+    <version>1.29</version>
+    <time>1620653809</time>
+    <user>dimstar_suse</user>
+    <comment>- Hardening: link as position independent executable (bsc#1184988).
+  ipvsadm-PIE.patch</comment>
+    <requestid>891079</requestid>
+  </revision>
 </revisionlist>

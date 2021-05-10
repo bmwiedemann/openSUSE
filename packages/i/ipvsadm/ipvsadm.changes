@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 17:28:52 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: link as position independent executable (bsc#1184988).
+  ipvsadm-PIE.patch
+
+-------------------------------------------------------------------
 Thu Nov 23 13:46:06 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

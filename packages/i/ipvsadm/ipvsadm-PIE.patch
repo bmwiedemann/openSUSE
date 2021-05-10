@@ -1,0 +1,13 @@
+Index: ipvsadm-1.29/Makefile
+===================================================================
+--- ipvsadm-1.29.orig/Makefile
++++ ipvsadm-1.29/Makefile
+@@ -87,7 +87,7 @@ libs:
+ 		make -C libipvs
+ 
+ ipvsadm:	$(OBJS) $(STATIC_LIBS)
+-		$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
++		$(CC) $(CFLAGS) -pie -o $@ $^ $(LIBS)
+ 
+ install:        all
+ 		if [ ! -d $(SBIN) ]; then $(MKDIR) -p $(SBIN); fi
