@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define short_name qtimageformats
 %define tar_name qtimageformats-everywhere-src
 %define tar_suffix %{nil}
@@ -28,12 +28,12 @@
 %endif
 #
 Name:           qt6-imageformats%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt 6 ImageFormat Plugins
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/additional_libraries/%{short_version}/%{real_version}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-imageformats-rpmlintrc
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
@@ -81,6 +81,7 @@ Development files for the Qt 6 ImageFormats plugins.
 %{_qt6_pluginsdir}/imageformats/
 
 %files devel
+%{_qt6_cmakedir}/Qt6/FindLibmng.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapJasper.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapWebP.cmake
 %{_qt6_cmakedir}/Qt6Gui/*

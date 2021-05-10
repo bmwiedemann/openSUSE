@@ -23,4 +23,12 @@
     <comment>Forward to devel project (forwarded request 882975 from cgiboudeaux)</comment>
     <requestid>882991</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fbd0af83a36b02342fea35167fbf7e00</srcmd5>
+    <version>6.1.0</version>
+    <time>1620653910</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.1.0 (forwarded request 891685 from cgiboudeaux)</comment>
+    <requestid>891705</requestid>
+  </revision>
 </revisionlist>
