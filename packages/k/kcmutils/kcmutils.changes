@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * [KCModuleProxy] Refactor loadModule() for simplicity
+  * Force autotest as C language
+  * Remove unused file
+  * Port QDBusConnectionInterface::serviceOwnerChanged to QDBusServiceWatcher
+  * Use new connect() signal/slot syntax
+  * Remove ComponentsDialog class, not used anywhere
+  * Don't forward declaration when we already include file
+  * Clean up unused KPackage linking + includes
+  * Deprecate unused KSettingsWidgetAdaptor class
+  * kcmutils_generate_module_data: Fix moc warning in generated files
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
