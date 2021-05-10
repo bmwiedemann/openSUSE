@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 28 08:50:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Delete lastlog to work around missing support for sparse files in
+  go's tar writing code
+
+-------------------------------------------------------------------
+Tue Mar  9 10:00:43 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Force the container's arch in zypp.conf on 32bit x86
+- openSUSE-release-appliance-docker is available meanwhile
+
+-------------------------------------------------------------------
 Fri Oct 23 16:20:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - add systemd flavor that uses networkd and resolved. Useful and quick

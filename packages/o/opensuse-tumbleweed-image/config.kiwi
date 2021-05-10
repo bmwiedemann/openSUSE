@@ -82,7 +82,8 @@
     <!-- Only used in config.sh and then removed again -->
     <package name="live-add-yast-repos"/>
     <package name="openSUSE-build-key"/>
-    <package name="openSUSE-release-ftp"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-appliance-docker"/>
     <package name="netcfg"/>
     <package name="zypper"/>
   </packages>

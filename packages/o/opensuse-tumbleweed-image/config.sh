@@ -36,6 +36,22 @@ rm -f /usr/share/locale/**/*.mo
 # Remove zypp uuid (bsc#1098535)
 rm -f /var/lib/zypp/AnonymousUniqueId
 
+# Assign a fixed architecture in zypp.conf, to use the container's arch even if
+# the host arch differs (e.g. docker with --platform doesn't affect uname)
+arch=$(rpm -q --qf %{arch} glibc)
+if [ "$arch" = "i586" ] || [ "$arch" = "i686" ]; then
+	sed -i "s/^# arch =.*\$/arch = i686/" /etc/zypp/zypp.conf
+	# Verify that it's applied
+	grep -q '^arch =' /etc/zypp/zypp.conf
+fi
+
+if [[ "$kiwi_profiles" == *"docker"* ]]; then
+	# Hack! The go container management tools can't handle sparse files:
+	# https://github.com/golang/go/issues/13548
+	# When lastlog doesn't exist, useradd doesn't attempt to reserve space.
+	rm /var/log/lastlog
+fi
+
 if [[ "$kiwi_profiles" == *"networkd"* ]]; then
 	systemctl enable systemd-networkd
 	systemctl enable systemd-resolved
