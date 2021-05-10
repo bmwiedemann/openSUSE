@@ -1,6 +1,7 @@
 From: Petr Tesarik <ptesarik@suse.com>
 Subject: Remove duplicate definition of ramdisk
-Upstream: not yet, sent on 2021-04-26
+Upstream: merged
+Git-commit: 5e7ce27626a44428c01e0e5ab3fe60ef98ca788c
 
 The ramdisk variable is defined in kexec/arch/ppc/kexec-ppc.c. This
 other definition is not needed and breaks build with -fno-common.

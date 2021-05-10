@@ -17,7 +17,7 @@
 
 
 Name:           kexec-tools
-Version:        2.0.21
+Version:        2.0.22
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
-Patch9:         %{name}-video-capability.patch
 Patch10:        %{name}-SYS_getrandom.patch
 Patch11:        %{name}-remove-duplicate-ramdisk-definition.patch
 BuildRequires:  autoconf

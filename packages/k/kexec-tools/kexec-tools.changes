@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  3 10:57:35 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Bump version to 2.0.21
+- Drop patches from upstream git:
+  * kexec-tools-video-capability.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 09:35:21 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - kexec-tools-remove-duplicate-ramdisk-definition.patch:
