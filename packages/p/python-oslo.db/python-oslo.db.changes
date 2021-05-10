@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 17:13:27 UTC 2021 - cloud-devel@suse.de
+
+- update to version 8.5.0
+  - Deprecate 'oslo_db.sqlalchemy.migration' module
+  - Deprecate the 'oslo_db.sqlalchemy.migration_cli' module
+  - Adding pre-commit
+  - Update master for stable/victoria
+  - Add Python3 wallaby unit tests
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Fri Oct  9 19:03:06 UTC 2020 - cloud-devel@suse.de
 
 - update to version 8.4.0

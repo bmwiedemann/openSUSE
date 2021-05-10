@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.db
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.db
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        OpenStack oslo.db library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.db
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-8.4.0.tar.gz
+URL:            https://docs.openstack.org/oslo.db
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-8.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyMySQL
 BuildRequires:  python3-alembic >= 0.9.6
@@ -51,13 +51,12 @@ BuildArch:      noarch
 %description
 The OpenStack Oslo database handling library. Provides database connectivity
 to the different backends and helper utils.
-* Documentation: https://docs.openstack.org/developer/oslo.db
-* Source: http://git.openstack.org/cgit/openstack/oslo.db
-* Bugs: https://bugs.launchpad.net/oslo
+* Documentation: https://docs.openstack.org/oslo.db/latest/
+* Source: https://opendev.org/openstack/oslo.db/
+* Bugs: https://bugs.launchpad.net/oslo.db
 
 %package -n python3-oslo.db
 Summary:        OpenStack oslo.db library
-Group:          Development/Languages/Python
 Requires:       python3-PyMySQL
 Requires:       python3-SQLAlchemy >= 1.2.0
 Requires:       python3-alembic >= 0.9.6
@@ -76,9 +75,9 @@ Requires:       python3-testscenarios >= 0.4
 %description -n python3-oslo.db
 The OpenStack Oslo database handling library. Provides database connectivity
 to the different backends and helper utils.
-* Documentation: https://docs.openstack.org/developer/oslo.db
-* Source: http://git.openstack.org/cgit/openstack/oslo.db
-* Bugs: https://bugs.launchpad.net/oslo
+* Documentation: https://docs.openstack.org/oslo.db/latest/
+* Source: https://opendev.org/openstack/oslo.db/
+* Bugs: https://bugs.launchpad.net/oslo.db
 
 This package contains the Python 3.x module.
 
@@ -93,7 +92,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo database handling library.
 
 %prep
-%autosetup -p1 -n oslo.db-8.4.0
+%autosetup -p1 -n oslo.db-8.5.0
 %py_req_cleanup
 
 %build
