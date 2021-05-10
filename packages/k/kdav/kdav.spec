@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kdav
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        DAV protocol implementation
 License:        LGPL-2.0-or-later
@@ -68,7 +68,7 @@ This package contains development files needed to use kdav in other applications
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
