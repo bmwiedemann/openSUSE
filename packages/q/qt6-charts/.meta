@@ -1,0 +1,5 @@
+<package name="qt6-charts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt6" package="qt6-charts"/>
+</package>
