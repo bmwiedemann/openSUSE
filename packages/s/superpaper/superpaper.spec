@@ -16,9 +16,6 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           superpaper
 Version:        2.1.0
 Release:        0
@@ -27,26 +24,30 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhannine/superpaper
 Source:         https://github.com/hhannine/superpaper/archive/v%{version}.tar.gz#/superpaper-%{version}.tar.gz
-BuildRequires:  %{python_module Pillow >= 7.0.0}
-BuildRequires:  %{python_module numpy >= 1.18.0}
-BuildRequires:  %{python_module screeninfo >= 0.6.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module system_hotkey >= 1.0.3}
-BuildRequires:  %{python_module wxPython}
-BuildRequires:  %{python_module xcffib >= 0.8.0}
-BuildRequires:  %{python_module xpybutil >= 0.0.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Pillow >= 7.0.0
+BuildRequires:  python3-numpy >= 1.18.0
+BuildRequires:  python3-screeninfo >= 0.6.1
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-system_hotkey >= 1.0.3
+BuildRequires:  python3-wxPython
+BuildRequires:  python3-xcffib >= 0.8.0
+BuildRequires:  python3-xpybutil >= 0.0.5
 BuildRequires:  update-desktop-files
-Requires:       python-Pillow >= 7.0.0
-Requires:       python-numpy >= 1.18.0
-Requires:       python-screeninfo >= 0.6.1
-Requires:       python-system_hotkey >= 1.0.2
-Requires:       python-wxPython
-Requires:       python-xcffib >= 0.8.0
-Requires:       python-xpybutil >= 0.0.5
+Requires:       python3-Pillow >= 7.0.0
+Requires:       python3-numpy >= 1.18.0
+Requires:       python3-screeninfo >= 0.6.1
+Requires:       python3-system_hotkey >= 1.0.2
+Requires:       python3-wxPython
+Requires:       python3-xcffib >= 0.8.0
+Requires:       python3-xpybutil >= 0.0.5
+# this package used the python-rpm-macros singlespec system until May 2021.
+Provides:       python3-superpaper = %{version}-%{release}
+Obsoletes:      python3-superpaper < %{version}-%{release}
+Provides:       python38-superpaper = %{version}-%{release}
+Obsoletes:      python38-superpaper < %{version}-%{release}
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Cross-platform wallpaper manager that focuses on multi-monitor support.
@@ -60,20 +61,20 @@ sed -i '/^#!/d' %{name}/__main__.py
 sed -i 's|share/icons/hicolor/256x256/apps|%{_datadir}/pixmaps|' setup.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
+%python3_install
 %suse_update_desktop_file %{name} DesktopSettings
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{python3_sitelib}
 
-%files %{python_files}
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{python_sitelib}/%{name}
-%{python_sitelib}/*egg-info
+%{python3_sitelib}/%{name}
+%{python3_sitelib}/%{name}-%{version}*-info
 
 %changelog
