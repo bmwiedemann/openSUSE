@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           breeze5-icons
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -41,8 +41,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
 BuildRequires:  python3
 BuildRequires:  python3-lxml
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildArch:      noarch
 
 %description
@@ -60,22 +60,22 @@ This contains the Breeze (non-dark) icons in a QResource file, used by Kexi.
 %autosetup -p1 -n breeze-icons-%{version}
 
 %build
-  # For some reason Kexi only wants to use breeze-icons.rcc and not the icons directory,
-  # so build it just for that.
-  %cmake_kf5 -d build -- -DBINARY_ICONS_RESOURCE=ON
-  %cmake_build
+# For some reason Kexi only wants to use breeze-icons.rcc and not the icons directory,
+# so build it just for that.
+%cmake_kf5 -d build -- -DBINARY_ICONS_RESOURCE=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-  # yast2-theme uses these, but it got renamed in 5.55.0
-  ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze/preferences/32/yast-software.svg
-  ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze-dark/preferences/32/yast-software.svg
+# yast2-theme uses these, but it got renamed in 5.55.0
+ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze/preferences/32/yast-software.svg
+ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze-dark/preferences/32/yast-software.svg
 
-  %fdupes %{buildroot}%{_kf5_iconsdir}
+%fdupes %{buildroot}%{_kf5_iconsdir}
 
-  %icon_theme_cache_create_ghost breeze
-  %icon_theme_cache_create_ghost breeze-dark
+%icon_theme_cache_create_ghost breeze
+%icon_theme_cache_create_ghost breeze-dark
 
 %post
 %icon_theme_cache_post breeze
