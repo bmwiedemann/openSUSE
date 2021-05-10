@@ -59,4 +59,12 @@ Preferably this package should be added to some pattern that pulls it in by defa
     <comment></comment>
     <requestid>809636</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>8e2f6071a39ab4f46b36f3736d1107c0</srcmd5>
+    <version>0</version>
+    <time>1620653807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891053</requestid>
+  </revision>
 </revisionlist>

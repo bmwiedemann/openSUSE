@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  6 14:05:53 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Add ZYPP_LOCK_TIMEOUT=-1 to keep waiting for the lock (boo#1184399).
+
+-------------------------------------------------------------------
 Wed May 27 16:11:09 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Add split provides for upgrade from old dracut (boo#1168727).

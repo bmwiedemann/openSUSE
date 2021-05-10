@@ -8,6 +8,7 @@ ConditionPathIsReadWrite=/
 Type=oneshot
 Nice=19
 IOSchedulingClass=idle
+Environment=ZYPP_LOCK_TIMEOUT=-1
 ExecStart=/usr/bin/zypper -n purge-kernels
 ExecStartPost=/bin/rm -f /boot/do_purge_kernels
 
