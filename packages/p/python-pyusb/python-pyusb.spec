@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyusb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-pyusb
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
 Summary:        USB access on the Python language
 # URL is incorrect on PyPI, gh#pyusb/pyusb#211
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyusb/pyusb
-Source:         https://github.com/pyusb/pyusb/archive/v%{version}.tar.gz#/pyusb-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyusb/pyusb-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes

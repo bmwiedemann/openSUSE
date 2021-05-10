@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 16:47:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * python 3.9 support
+  * bugfixes
+
+-------------------------------------------------------------------
 Wed Apr 17 01:30:00 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate tests using GitHub archive

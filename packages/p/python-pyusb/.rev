@@ -132,4 +132,14 @@
 - Add Requires libusb-1_0-1</comment>
     <requestid>701016</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b685b25289460678ef16fe0ea2a1a95</srcmd5>
+    <version>1.1.1</version>
+    <time>1620653949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * python 3.9 support
+  * bugfixes</comment>
+    <requestid>891893</requestid>
+  </revision>
 </revisionlist>
