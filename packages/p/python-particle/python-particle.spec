@@ -19,7 +19,7 @@
 %global modname particle
 %define skip_python2 1
 Name:           python-particle
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
