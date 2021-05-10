@@ -1,7 +1,7 @@
 #
 # spec file for package freexl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           freexl
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Library to extract valid data from within an Excel
-License:        MPL-1.1 OR GPL-2.0+ OR LGPL-2.1+
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://www.gaia-gis.it/fossil/freexl/index
-Source:         http://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
+URL:            https://www.gaia-gis.it/fossil/freexl/index
+Source:         https://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -59,10 +59,10 @@ compile and develop applications that use libspatialite.
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
@@ -72,11 +72,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n lib%{name}1
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_libdir}/libfreexl.so.%{sover}*
 
 %files devel
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_includedir}/freexl.h
 %{_libdir}/libfreexl.so
 %{_libdir}/pkgconfig/freexl.pc
