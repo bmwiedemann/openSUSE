@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
@@ -39,8 +39,7 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
-Patch100:       fix-fixqt4headers.patch
-Patch101:       0001-Tell-the-truth-about-private-API.patch
+Patch100:       0001-Tell-the-truth-about-private-API.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -346,7 +345,6 @@ Summary:        Development files for the Qt 6 OpenGL library
 Requires:       libQt6OpenGL6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
 %if 0%{?with_gles}
 Requires:       Mesa-libGLESv3-devel
 Requires:       pkgconfig(glesv2)
@@ -382,6 +380,7 @@ Summary:        Development files for the Qt 6 OpenGLWidgets library
 Requires:       libQt6OpenGLWidgets6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 %if 0%{?with_gles}
 Requires:       Mesa-libGLESv3-devel
@@ -603,6 +602,12 @@ any ABI or API guarantees.
 
 ### Plugins ###
 
+%package -n qt6-network-informationbackends
+Summary:        Network backend for QNetworkInformation
+
+%description -n qt6-network-informationbackends
+Plugin used to get network information such as the reachability, media type...
+
 %package -n qt6-platformtheme-gtk3
 Summary:        Qt 6 GTK3 plugin
 Requires:       libQt6Gui6 = %{version}
@@ -711,6 +716,9 @@ mkdir -p %{buildroot}%{_qt6_sysconfdir}
 mkdir -p %{buildroot}%{_qt6_testsdir}
 mkdir -p %{buildroot}%{_qt6_translationsdir}
 
+# 9f444ce53 creates a useless qmake6 hardlink (also see QTBUG-89170)
+rm %{buildroot}%{_qt6_bindir}/qmake6
+
 %{qt6_link_executables}
 
 # This is not an executable, no need to have a symlink
@@ -719,19 +727,6 @@ rm %{buildroot}%{_bindir}/qt-cmake-private-install.cmake6
 # rpmlint
 # E: env-script-interpreter
 sed -i 's#env perl#perl#' %{buildroot}%{_qt6_libexecdir}/syncqt.pl
-
-# syncqt is installed in both %%_qt6_bindir and %%_qt6_libexecdir
-# QtSyncQtHelpers.cmake needs the libexec one...and qmake the other one.
-# Creating a symlink is not necessary
-rm %{buildroot}%{_bindir}/syncqt.pl6
-rm %{buildroot}%{_qt6_bindir}/syncqt.pl
-ln -s %{_qt6_libexecdir}/syncqt.pl %{buildroot}%{_qt6_bindir}/syncqt.pl
-
-# Internal static library. Should not be installed
-rm %{buildroot}%{_qt6_descriptionsdir}/Core_qobject.json
-rm %{buildroot}%{_qt6_libdir}/libQt6Core_qobject.a
-rm %{buildroot}%{_qt6_libdir}/libQt6Core_qobject.prl
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Core_qobject
 
 # Static library created by an example
 rm %{buildroot}%{_prefix}/lib/libpnp_basictools.a
@@ -795,47 +790,38 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %dir %{_qt6_mkspecsdir}/modules
 %{_bindir}/androiddeployqt6
 %{_bindir}/androidtestrunner6
-%{_bindir}/cmake_automoc_parser6
-%{_bindir}/moc6
 %{_bindir}/qdbuscpp2xml6
 %{_bindir}/qdbusxml2cpp6
-%{_bindir}/qlalr6
 %{_bindir}/qmake6
 %{_bindir}/qt-cmake6
 %{_bindir}/qt-cmake-private6
 %{_bindir}/qt-cmake-standalone-test6
 %{_bindir}/qt-configure-module6
-%{_bindir}/qt-internal-configure-tests6
-%{_bindir}/qvkgen6
-%{_bindir}/rcc6
-%{_bindir}/tracegen6
-%{_bindir}/uic6
 %{_qt6_bindir}/androiddeployqt
 %{_qt6_bindir}/androidtestrunner
-%{_qt6_bindir}/cmake_automoc_parser
-%{_qt6_bindir}/moc
 %{_qt6_bindir}/qdbuscpp2xml
 %{_qt6_bindir}/qdbusxml2cpp
-%{_qt6_bindir}/qlalr
 %{_qt6_bindir}/qmake
 %{_qt6_bindir}/qt-cmake
 %{_qt6_bindir}/qt-cmake-private
 %{_qt6_bindir}/qt-cmake-private-install.cmake
 %{_qt6_bindir}/qt-cmake-standalone-test
 %{_qt6_bindir}/qt-configure-module
-%{_qt6_bindir}/qt-internal-configure-tests
-%{_qt6_bindir}/qvkgen
-%{_qt6_bindir}/rcc
-%{_qt6_bindir}/syncqt.pl
-%{_qt6_bindir}/tracegen
-%{_qt6_bindir}/uic
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsExtra.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6HostInfo/
+%{_qt6_libexecdir}/cmake_automoc_parser
+%{_qt6_libexecdir}/moc
+%{_qt6_libexecdir}/qlalr
+%{_qt6_libexecdir}/qt-internal-configure-tests
+%{_qt6_libexecdir}/qvkgen
+%{_qt6_libexecdir}/rcc
 %{_qt6_libexecdir}/syncqt.pl
+%{_qt6_libexecdir}/tracegen
+%{_qt6_libexecdir}/uic
 %{_qt6_mkspecsdir}/*
 %exclude %{_qt6_mkspecsdir}/modules/*.pri
 
@@ -881,7 +867,6 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %dir %{_qt6_includedir}/QtCore/
 %{_qt6_includedir}/QtCore/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
-%{_qt6_mkspecsdir}/modules/qt_lib_core_qobject_private.pri
 
 %files -n libQt6DBus6
 %{_qt6_libdir}/libQt6DBus.so.*
@@ -1147,6 +1132,9 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_mkspecsdir}/modules/qt_lib_input_support_private.pri
 
 ### Plugins ###
+
+%files -n qt6-network-informationbackends
+%{_qt6_pluginsdir}/networkinformationbackends/
 
 %files -n qt6-platformtheme-gtk3
 %{_qt6_pluginsdir}/platformthemes/libqgtk3.so

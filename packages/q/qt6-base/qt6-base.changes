@@ -1,13 +1,41 @@
 -------------------------------------------------------------------
+Thu May  6 17:10:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0:
+  * https://www.qt.io/blog/qt-6.1-released
+
+-------------------------------------------------------------------
+Fri Apr 23 14:11:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-rc.
+
+-------------------------------------------------------------------
 Sat Apr 17 08:04:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Tue Apr 13 06:29:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta3.
 
 -------------------------------------------------------------------
 Wed Mar 31 13:29:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.0.3
   * https://www.qt.io/blog/qt-6.0.3-released
+
+-------------------------------------------------------------------
+Sat Mar 20 17:12:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta2
+- Drop fix-fixqt4headers.patch. No longer needed.
+
+-------------------------------------------------------------------
+Fri Mar  5 17:23:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta1
+  https://www.qt.io/blog/qt-6.1-beta-released
 
 -------------------------------------------------------------------
 Fri Mar  5 09:31:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
