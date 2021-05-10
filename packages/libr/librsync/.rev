@@ -213,4 +213,12 @@
  * Fix compile errors and add .gitignore entries for MSVS 2019. Fixes</comment>
     <requestid>826924</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>75df6c066249c78ed7bb1d9e04c86884</srcmd5>
+    <version>2.3.2</version>
+    <time>1620653940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891869</requestid>
+  </revision>
 </revisionlist>

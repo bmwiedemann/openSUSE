@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  8 18:19:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+ * Fix #214 heap corruption for too small kbloom. This could have crashed
+   delta operations for very small files/signatures.
+ * Fix #207 and add Travis Windows checks and improve compatibility. Turn on
+   `-Wconversion -Wno-sign-conversion` warnings for clang.
+ * Fix a bug so patch will now fail returning RS_CORRUPT on encountering a
+   zero length copy command instead of hanging.
+
+-------------------------------------------------------------------
 Sun Aug 16 01:03:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 2.3.1:
