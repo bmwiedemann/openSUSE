@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  2 17:29:40 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.8.0
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Add PBM WSDL for vSphere 7.0
+  - Update master for stable/victoria
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Fri Oct  9 19:18:28 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.7.0

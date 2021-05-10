@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.vmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.vmware
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.7.0.tar.gz
+URL:            https://docs.openstack.org/oslo.vmware
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -56,7 +56,6 @@ server.
 
 %package -n python3-oslo.vmware
 Summary:        Oslo VMware library for OpenStack projects
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.13
 Requires:       python3-eventlet >= 0.18.2
 Requires:       python3-lxml >= 4.5.0
@@ -83,7 +82,6 @@ This package contains the Python 3.x module.
 
 %package        -n python-oslo.vmware-doc
 Summary:        Documentation for OpenStack common VMware library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -92,7 +90,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-3.7.0
+%autosetup -p1 -n oslo.vmware-3.8.0
 %py_req_cleanup
 
 %build
