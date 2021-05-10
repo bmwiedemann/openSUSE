@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  7 16:28:32 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15.12 (released 2021-05-06) includes a security fix to the
+  net/http package, as well as bug fixes to the runtime and the
+  time package.
+  CVE-2021-31525
+  Refs boo#1175132 go1.15 release tracking
+  * boo#1185790 CVE-2021-31525
+  * go#45711 net/http: ReadRequest can stack overflow
+  * go#45731 time, runtime: scheduled timer may never fire if GOMAXPROCS is reduced
+  * go#45481 runtime: "invalid pc-encoded table" throw caused by bad cgo traceback (expandFinalInlineFrames)
+  * go#45384 time: Europe/Dublin timezone handling broken with embedded timezone database
+
+-------------------------------------------------------------------
 Fri Apr  2 12:26:15 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15.11 (released 2021-04-01) includes fixes to cgo, the

@@ -209,4 +209,21 @@
   * go#42884 database/sql: deadlock on transaction stmt context cancel (forwarded request 882730 from jfkw)</comment>
     <requestid>882732</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a4f0b392935ae3ab8f9585a6179a4866</srcmd5>
+    <version>1.15.12</version>
+    <time>1620653649</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.15.12 (released 2021-05-06) includes a security fix to the
+  net/http package, as well as bug fixes to the runtime and the
+  time package.
+  CVE-2021-31525
+  Refs boo#1175132 go1.15 release tracking
+  * boo#1185790 CVE-2021-31525
+  * go#45711 net/http: ReadRequest can stack overflow
+  * go#45731 time, runtime: scheduled timer may never fire if GOMAXPROCS is reduced
+  * go#45481 runtime: &quot;invalid pc-encoded table&quot; throw caused by bad cgo traceback (expandFinalInlineFrames)
+  * go#45384 time: Europe/Dublin timezone handling broken with embedded timezone database (forwarded request 891371 from jfkw)</comment>
+    <requestid>891379</requestid>
+  </revision>
 </revisionlist>
