@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Gtk3-ImageView
-Version:        6
-Release:        0
 %define cpan_name Gtk3-ImageView
+Name:           perl-Gtk3-ImageView
+Version:        8
+Release:        0
 Summary:        Image viewer widget for Gtk3
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Always)
@@ -35,6 +33,7 @@ BuildRequires:  perl(Glib) >= 1.21
 BuildRequires:  perl(Gtk3)
 BuildRequires:  perl(Image::Magick)
 BuildRequires:  perl(Readonly)
+BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::MockObject)
 BuildRequires:  perl(Try::Tiny)
@@ -57,11 +56,11 @@ To discuss Gtk3::ImageView or gtk3-perl, ask questions and flame/praise the
 authors, join gtk-perl-list@gnome.org at lists.gnome.org.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 # MANUAL no testing (requires Display)
@@ -73,7 +72,6 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc README.md
 
 %changelog
