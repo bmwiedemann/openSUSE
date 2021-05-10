@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  6 11:58:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.5
+  * Compatibility update for yubikey-manager 4.0
+  * Add additional product names.
+
+-------------------------------------------------------------------
 Wed Nov  4 15:44:32 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.de>
 
 - Add missing requires:

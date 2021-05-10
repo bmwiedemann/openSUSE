@@ -1,7 +1,7 @@
 #
 # spec file for package yubioath-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define binname yubioath
 Name:           yubioath-desktop
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
 License:        GPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(python3)
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       pyotherside
-Requires:       yubikey-manager
+Requires:       yubikey-manager >= 4.0.2
 
 %description
 The Yubico Authenticator is a graphical desktop tool for generating
@@ -47,13 +47,14 @@ the shared secrets.
 
 %prep
 %setup -q -n %{name}
+sed -i 's|yubikey-manager==|yubikey-manager>=|' requirements.txt
 
 %build
-qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true";
-make %{?_smp_mflags}
+%qmake5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true";
+%make_build
 
 %install
-make install INSTALL_ROOT="%{buildroot}";
+%make_install INSTALL_ROOT=%{buildroot}
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -p -m 0644 resources/icons/com.yubico.yubioath.svg %{buildroot}%{_datadir}/pixmaps/
 mkdir -p %{buildroot}%{_datadir}/applications
