@@ -42,10 +42,6 @@
 
 %define __lib lib
 
-%if 0%{?rhel}
-%define vdo_on_demand 1
-%endif
-
 %if 0%{?suse_version}
 %define pamdir /%{_lib}/security
 %else
@@ -58,9 +54,9 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        238.1
+Version:        243
 Release:        0
-Source0:        cockpit-%{version}.tar.gz
+Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source99:       README.packaging
@@ -70,7 +66,7 @@ Source97:       node_modules.spec.inc
 Patch0:         cockpit-redhatfont.diff
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
-# and cockpit-appstream (building optional packages like cockpit-{machines,pcp})
+# and cockpit-appstream (building optional packages like cockpit-{pcp})
 # This split does not apply to EPEL/COPR.
 # In Fedora ELN/RHEL 9+ there is just one source package, which ships rpms in both BaseOS and AppStream
 %if 0%{?rhel} == 8 && 0%{?epel} == 0
@@ -86,6 +82,13 @@ Patch0:         cockpit-redhatfont.diff
 %else
 %define build_basic 1
 %define build_optional 1
+%endif
+
+# Ship custom SELinux policy only in Fedora and RHEL-9 onward
+%if 0%{?rhel} >= 9 || 0%{?fedora}
+%define selinuxtype targeted
+%define with_selinux 1
+%define selinux_policy_version %(rpm --quiet -q selinux-policy && rpm -q --queryformat "%{V}" selinux-policy || echo 1)
 %endif
 
 BuildRequires: gcc
@@ -131,6 +134,11 @@ BuildRequires: gdb
 
 # For documentation
 BuildRequires: xmlto
+
+%if 0%{?with_selinux}
+BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-devel
+%endif
 
 # for rebuilding nodejs bits
 BuildRequires: npm
@@ -178,8 +186,6 @@ autoreconf -fvi -I tools
     --with-cockpit-user=cockpit-ws \
     --with-cockpit-ws-instance-user=cockpit-wsinstance \
     --with-selinux-config-type=etc_t \
-    --with-appstream-data-packages='[ "appstream-data" ]' \
-    --with-nfs-client-package='"nfs-utils"' \
 %if 0%{?suse_version}
     --docdir=%_defaultdocdir/%{name} \
 %endif
@@ -187,8 +193,13 @@ autoreconf -fvi -I tools
 %if 0%{?build_basic} == 0
     --disable-ssh \
 %endif
-    %{?vdo_on_demand:--with-vdo-package='"vdo"'}
+
 make -j4 %{?extra_flags} all
+
+%if 0%{?with_selinux}
+    make -f /usr/share/selinux/devel/Makefile cockpit.pp
+    bzip2 -9 cockpit.pp
+%endif
 
 %check
 # HACK: Fedora koji builders are very slow, unreliable, and inaccessible for debugging; https://github.com/cockpit-project/cockpit/issues/13909
@@ -213,6 +224,12 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/pam.d
 install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cockpit
 rm -f %{buildroot}/%{_libdir}/cockpit/*.so
 install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
+
+%if 0%{?with_selinux}
+    install -D -m 644 %{name}.pp.bz2 %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
+    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_session_selinux.8
+    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_ws_selinux.8
+%endif
 
 # only ship deprecated PatternFly API for stable releases
 %if 0%{?fedora} <= 33 || 0%{?rhel} <= 8
@@ -265,9 +282,6 @@ find %{buildroot}%{_datadir}/cockpit/packagekit -type f >> packagekit.list
 echo '%dir %{_datadir}/cockpit/apps' >> packagekit.list
 find %{buildroot}%{_datadir}/cockpit/apps -type f >> packagekit.list
 
-echo '%dir %{_datadir}/cockpit/machines' > machines.list
-find %{buildroot}%{_datadir}/cockpit/machines -type f >> machines.list
-
 echo '%dir %{_datadir}/cockpit/selinux' > selinux.list
 find %{buildroot}%{_datadir}/cockpit/selinux -type f >> selinux.list
 
@@ -275,6 +289,7 @@ echo '%dir %{_datadir}/cockpit/playground' > tests.list
 find %{buildroot}%{_datadir}/cockpit/playground -type f >> tests.list
 
 echo '%dir %{_datadir}/cockpit/static' > static.list
+echo '%dir %{_datadir}/cockpit/static/fonts' >> static.list
 find %{buildroot}%{_datadir}/cockpit/static -type f >> static.list
 
 # when not building basic packages, remove their files
@@ -289,7 +304,7 @@ done
 for lib in systemd tmpfiles.d; do
     rm -r %{buildroot}/%{_prefix}/%{__lib}/$lib
 done
-for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-desktop; do
+for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
     rm %{buildroot}/%{_libexecdir}/$libexec
 done
 rm -r %{buildroot}/%{_libdir}/security %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
@@ -300,15 +315,13 @@ rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
 
 # when not building optional packages, remove their files
 %if 0%{?build_optional} == 0
-for pkg in apps machines packagekit pcp playground storaged; do
+for pkg in apps packagekit pcp playground storaged; do
     rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg
 done
 # files from -tests
 rm -r %{buildroot}/%{_prefix}/%{__lib}/cockpit-test-assets
 # files from -pcp
 rm -r %{buildroot}/%{_libexecdir}/cockpit-pcp %{buildroot}/%{_localstatedir}/lib/pcp/
-# files from -machines
-rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-machines.metainfo.xml
 # files from -storaged
 rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
 %endif
@@ -346,8 +359,8 @@ rm -f %{buildroot}%{_datadir}/metainfo/org.cockpit-project.cockpit-selinux.metai
 rm -f %{buildroot}%{_datadir}/pixmaps/cockpit-sosreport.png
 %endif
 
-mkdir -p %{buildroot}%{_datadir}/cockpit/devel/lib
-cp -a pkg/lib/* %{buildroot}%{_datadir}/cockpit/devel/lib
+mkdir -p %{buildroot}%{_datadir}/cockpit/devel
+cp -a pkg/lib %{buildroot}%{_datadir}/cockpit/devel
 
 %if 0%{?build_basic}
 %find_lang cockpit
@@ -427,10 +440,10 @@ Provides: cockpit-shell = %{version}-%{release}
 Provides: cockpit-systemd = %{version}-%{release}
 Provides: cockpit-tuned = %{version}-%{release}
 Provides: cockpit-users = %{version}-%{release}
-Obsoletes: cockpit-dashboard
+Obsoletes: cockpit-dashboard < %{version}-%{release}
 %if 0%{?rhel}
 Provides: cockpit-networkmanager = %{version}-%{release}
-Obsoletes: cockpit-networkmanager
+Obsoletes: cockpit-networkmanager < %{version}-%{release}
 Requires: NetworkManager >= 1.6
 Provides: cockpit-kdump = %{version}-%{release}
 Requires: kexec-tools
@@ -464,6 +477,10 @@ Summary: Cockpit Web Service
 Requires: glib-networking
 Requires: openssl
 Requires: glib2 >= 2.50.0
+%if 0%{?with_selinux}
+Requires: (selinux-policy >= %{selinux_policy_version} if selinux-policy-%{selinuxtype})
+Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
+%endif
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
@@ -518,9 +535,17 @@ authentication via sssd/FreeIPA.
 %{_libexecdir}/cockpit-wsinstance-factory
 %{_libexecdir}/cockpit-tls
 %{_libexecdir}/cockpit-desktop
+%{_libexecdir}/cockpit-certificate-ensure
+%{_libexecdir}/cockpit-certificate-helper
 %{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance) %{_libexecdir}/cockpit-session
-%{_datadir}/cockpit/static
 %{_datadir}/cockpit/branding
+
+%if 0%{?with_selinux}
+    %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
+    %{_mandir}/man8/%{name}_session_selinux.8.*
+    %{_mandir}/man8/%{name}_ws_selinux.8.*
+    %ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
+%endif
 
 %pre ws
 getent group cockpit-ws >/dev/null || groupadd -r cockpit-ws
@@ -528,21 +553,38 @@ getent passwd cockpit-ws >/dev/null || useradd -r -g cockpit-ws -d /nonexisting 
 getent group cockpit-wsinstance >/dev/null || groupadd -r cockpit-wsinstance
 getent passwd cockpit-wsinstance >/dev/null || useradd -r -g cockpit-wsinstance -d /nonexisting -s /sbin/nologin -c "User for cockpit-ws instances" cockpit-wsinstance
 
+%if 0%{?with_selinux}
+if %{_sbindir}/selinuxenabled 2>/dev/null; then
+    %selinux_relabel_pre -s %{selinuxtype}
+fi
+%endif
+
 %post ws
+%if 0%{?with_selinux}
+if %{_sbindir}/selinuxenabled 2>/dev/null; then
+    %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+%endif
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif
 %tmpfiles_create cockpit-tempfiles.conf
-%systemd_post cockpit.socket
+%systemd_post cockpit.socket cockpit.service
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
 
 %preun ws
-%systemd_preun cockpit.socket
+%systemd_preun cockpit.socket cockpit.service
 
 %postun ws
-%systemd_postun_with_restart cockpit.socket
-%systemd_postun_with_restart cockpit.service
+%if 0%{?with_selinux}
+if %{_sbindir}/selinuxenabled 2>/dev/null; then
+    %selinux_modules_uninstall -s %{selinuxtype} %{name}
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+%endif
+%systemd_postun_with_restart cockpit.socket cockpit.service
 
 %if 0%{?suse_version}
 %verifyscript ws
@@ -679,34 +721,9 @@ This package contains files used to develop cockpit modules
 %files devel
 %{_datadir}/cockpit/devel
 
-%package -n cockpit-machines
-BuildArch: noarch
-Summary: Cockpit user interface for virtual machines
-Requires: cockpit-bridge >= 186
-Requires: cockpit-system >= 186
-%if 0%{?suse_version}
-Requires: libvirt-daemon-qemu
-%else
-Requires: libvirt-daemon-kvm
-%endif
-Requires: libvirt-client
-Requires: libvirt-dbus >= 1.2.0
-# Optional components
-Recommends: virt-install
-Recommends: libosinfo
-Recommends: python3-gobject-base
-
-%description -n cockpit-machines
-The Cockpit components for managing virtual machines.
-
-If "virt-install" is installed, you can also create new virtual machines.
-
-%files -n cockpit-machines -f machines.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-machines.metainfo.xml
-
 %package -n cockpit-pcp
 Summary: Cockpit PCP integration
-Requires: cockpit-bridge >= 134.x
+Requires: cockpit-bridge >= 238.1.1
 Requires(post): pcp
 
 %description -n cockpit-pcp

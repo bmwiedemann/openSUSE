@@ -113,4 +113,12 @@
   https://cockpit-project.org/blog/cockpit-236.html</comment>
     <requestid>875154</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fc88a3d438b43a5a139c452f135a974a</srcmd5>
+    <version>243</version>
+    <time>1620653774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890249</requestid>
+  </revision>
 </revisionlist>

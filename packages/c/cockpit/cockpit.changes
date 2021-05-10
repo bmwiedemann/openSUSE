@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  3 14:11:01 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- install all of pkg/lib in -devel package. Cockpit-machines needs more
+
+-------------------------------------------------------------------
+Fri Apr 30 15:51:43 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 243
+  https://cockpit-project.org/blog/cockpit-243.html
+  https://cockpit-project.org/blog/cockpit-242.html
+  https://cockpit-project.org/blog/cockpit-241.html
+  https://cockpit-project.org/blog/cockpit-240.html
+  https://cockpit-project.org/blog/cockpit-239.html
+
+-------------------------------------------------------------------
 Wed Feb 24 17:03:41 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - new version 238.1

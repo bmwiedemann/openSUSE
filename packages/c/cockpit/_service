@@ -3,7 +3,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">http://github.com/cockpit-project/cockpit.git</param>
     <param name="scm">git</param>
-    <param name="revision">238.1</param>
+    <param name="revision">243</param>
   </service>
   <service name="node_modules" mode="manual">
     <param name="cpio">node_modules.obscpio</param>
@@ -12,10 +12,6 @@
   </service>
   <service mode="buildtime" name="tar">
     <param name="obsinfo">cockpit.obsinfo</param>
-  </service>
-  <service mode="buildtime" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
   </service>
   <service mode="buildtime" name="set_version">
     <param name="basename">cockpit</param>
