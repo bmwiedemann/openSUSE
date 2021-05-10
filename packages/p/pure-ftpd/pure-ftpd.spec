@@ -1,7 +1,7 @@
 #
 # spec file for package pure-ftpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,7 +110,6 @@ CFLAGS="%{optflags} -I%{_includedir}/mysql"
 	--with-virtualchroot \
 	--with-extauth
 %make_build
-#{?_smp_mflags}
 
 %install
 %make_install
@@ -151,7 +150,7 @@ fi
 %license COPYING
 %doc FAQ AUTHORS NEWS THANKS README
 %doc README.Configuration-File HISTORY README.Virtual-Users README.AppArmor
-%doc README.LDAP pureftpd-ldap.conf README.MySQL pureftpd-mysql.conf 
+%doc README.LDAP pureftpd-ldap.conf README.MySQL pureftpd-mysql.conf
 %doc README.PGSQL pureftpd-pgsql.conf README.TLS
 %doc README.Donations README.Authentication-Modules
 %{_mandir}/man8/*
