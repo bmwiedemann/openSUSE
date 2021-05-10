@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.51.0
-%global version_previous 1.50.0
-%global version_bootstrap 1.50.0
+%global version_current 1.52.0
+%global version_previous 1.51.0
+%global version_bootstrap 1.51.0
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.25
@@ -156,9 +156,6 @@ Source209:      %{dl_url}/rust-%{version_bootstrap}-riscv64gc-unknown-linux-gnu.
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
-# PATCH-FIX-UPSTREAM: https://github.com/rust-lang/rust/pull/81451, trivially rebased before
-# https://github.com/rust-lang/rust/pull/82045 and https://github.com/rust-lang/rust/pull/82102.
-Patch1:         support-llvm12.patch
 BuildRequires:  ccache
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -416,7 +413,6 @@ This package includes HTML documentation for Cargo.
 %setup -q -n rustc-%{version}-src
 
 %patch0 -p1
-%patch1 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
