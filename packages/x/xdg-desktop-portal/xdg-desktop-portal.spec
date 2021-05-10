@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
@@ -30,7 +30,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
-BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)

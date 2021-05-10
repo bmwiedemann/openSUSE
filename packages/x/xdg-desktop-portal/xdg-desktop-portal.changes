@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  6 13:47:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8.1:
+  * openuri: Fix an fd leak
+  * filechooser: Fix directory support
+  * documents: Add snap support
+  * wallpaper: Fix a crash
+  * Translation updates
+- Drop unneeded fontconfig BuildRequires
+
+-------------------------------------------------------------------
 Thu Jan 14 10:49:29 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure systemd rpm macros are called at install/uninstall times
