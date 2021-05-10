@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  9 23:52:34 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to v3.2.1 
+  * Fix CVE-2021-30459 by creating signature from all data fields
+
+-------------------------------------------------------------------
 Mon Jan 25 02:40:41 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Added docs/*.rst to docs

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-debug-toolbar
-Version:        3.2
+Version:        3.2.1
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
