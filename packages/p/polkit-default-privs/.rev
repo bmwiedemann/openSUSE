@@ -1790,4 +1790,13 @@ for 12.3</comment>
   * tuned: whitelist incrementally added polkit action (bsc#1185418)</comment>
     <requestid>889562</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>0f86663f11f5c2fda017267548e8eb24</srcmd5>
+    <version>1550+20210503.88baaca</version>
+    <time>1620653771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210503.88baaca:
+  * whitelist deepin-system-monitor pkexec actions (bsc#1181886)</comment>
+    <requestid>890018</requestid>
+  </revision>
 </revisionlist>

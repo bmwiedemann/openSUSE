@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 03 11:16:01 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210503.88baaca:
+  * whitelist deepin-system-monitor pkexec actions (bsc#1181886)
+
+-------------------------------------------------------------------
 Fri Apr 30 13:25:40 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210430.c408cda:
