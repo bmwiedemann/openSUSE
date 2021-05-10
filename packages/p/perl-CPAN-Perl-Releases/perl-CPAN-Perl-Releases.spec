@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20210420
+Version:        5.20210505
 Release:        0
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 License:        Artistic-1.0 OR GPL-1.0-or-later
