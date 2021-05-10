@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  2 17:33:34 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.8.0
+  - Add a ``strict`` flag allowing users to restrict validation of IPv4 format
+  - Use py3 as the default runtime for tox
+  - Update master for stable/victoria
+  - Add function to encapsule md5 for FIPS systems
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 wallaby unit tests
+  - Remove all usage of six library
+  - Dropping lower constraints testing
+  - Adding pre-commit
+  - Add Python3 victoria unit tests
+
+-------------------------------------------------------------------
 Fri Oct  9 19:18:13 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.6.0

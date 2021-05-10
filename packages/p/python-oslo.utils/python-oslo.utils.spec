@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.utils
-Version:        4.6.0
+Version:        4.8.0
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.utils
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-4.6.0.tar.gz
+URL:            https://docs.openstack.org/oslo.utils
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-4.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -50,7 +50,6 @@ such as encoding, exception handling, string manipulation, and time handling.
 
 %package -n python3-oslo.utils
 Summary:        OpenStack Utils Library
-Group:          Development/Languages/Python
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-netaddr >= 0.7.18
@@ -58,7 +57,7 @@ Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-pyparsing >= 2.1.0
 Requires:       python3-pytz >= 2013.6
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 
 %description -n python3-oslo.utils
 The oslo.utils library provides support for common utility type functions,
@@ -68,7 +67,6 @@ This package contains the Python 3.x module.
 
 %package -n python-oslo.utils-doc
 Summary:        Documentation for OpenStack utils library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -76,7 +74,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OpenStack utils library.
 
 %prep
-%autosetup -p1 -n oslo.utils-4.6.0
+%autosetup -p1 -n oslo.utils-4.8.0
 
 %py_req_cleanup
 
@@ -87,7 +85,7 @@ Documentation for OpenStack utils library.
 %py3_install
 
 # generate html docs
-PBR_VERSION=4.6.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.8.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
