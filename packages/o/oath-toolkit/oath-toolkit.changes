@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May  2 14:36:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.7
+  * pam_oath: Support variables in usersfile string parameter.
+    These changes introduce the ${USER} and ${HOME} placeholder
+    values for the usersfile string in the pam_oath configuration
+    file. The placeholder values allow the user credentials file
+    to be stored in a file path that is relative to the user, and
+    mimics similar behavior found in google-authenticator-libpam.
+    The motivation for these changes is to allow for
+    non-privileged processes to use pam_oath (e.g., for 2FA with
+    xscreensaver). Non-privileged and non-suid programs are
+    unable to use pam_oath. These changes are a proposed
+    alternative to a suid helper binary as well.
+  * doc: Fix project URL in man pages.
+  * build: Drop use of libxml's AM_PATH_XML2 in favor of pkg-config.
+  * build: Modernize autotools usage.
+    Most importantly, no longer use -Werror with AM_INIT_AUTOMAKE
+    to make rebuilding from source more safe with future automake
+    versions.
+  * Updated gnulib files.
+
+-------------------------------------------------------------------
 Wed Jan 20 21:40:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.6

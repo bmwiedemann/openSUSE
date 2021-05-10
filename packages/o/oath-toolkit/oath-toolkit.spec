@@ -17,7 +17,7 @@
 
 
 Name:           oath-toolkit
-Version:        2.6.6
+Version:        2.6.7
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
