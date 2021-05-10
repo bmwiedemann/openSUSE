@@ -23,7 +23,7 @@
 
 %define pkg_home %{_localstatedir}/lib/%{name}
 Name:           lighttpd
-Version:        1.4.55
+Version:        1.4.58
 Release:        0
 #
 %define pkg_name %{name}
@@ -362,10 +362,9 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %service_del_postun %{name}.service
 
 %files
-%{_unitdir}/%{name}.service
-%{_sbindir}/rc%{name}
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_sbindir}/*
+%{_unitdir}/%{name}.service
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}/conf.d
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}/vhosts.d
@@ -375,7 +374,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/access_log.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/auth.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/cgi.conf
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/compress.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/debug.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/dirlisting.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/evhost.conf
@@ -391,6 +389,8 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/status.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/userdir.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/vhosts.d/vhosts.template
+%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
+
 # modules
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/mod_access.so
@@ -399,7 +399,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_auth.so
 %{_libdir}/%{name}/mod_authn_file.so
 %{_libdir}/%{name}/mod_cgi.so
-%{_libdir}/%{name}/mod_compress.so
 %{_libdir}/%{name}/mod_deflate.so
 %{_libdir}/%{name}/mod_dirlisting.so
 %{_libdir}/%{name}/mod_evasive.so
@@ -426,6 +425,7 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_usertrack.so
 %{_libdir}/%{name}/mod_vhostdb.so
 %{_libdir}/%{name}/mod_wstunnel.so
+%{_libdir}/%{name}/mod_authn_dbi.so
 %{_mandir}/man8/*.8%{?ext_man}
 %doc AUTHORS NEWS README
 #doc doc/*.dot
@@ -435,7 +435,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %doc doc/outdated/alias.txt
 %doc doc/outdated/authentication.txt
 %doc doc/outdated/cgi.txt
-%doc doc/outdated/compress.txt
 %doc doc/outdated/configuration.txt
 %doc doc/outdated/expire.txt
 %doc doc/outdated/fastcgi-state.txt
