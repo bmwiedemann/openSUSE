@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5JobWidgets5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kjobwidgets
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Widgets for showing progress of asynchronous jobs
 License:        LGPL-2.1-or-later
@@ -42,13 +42,13 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(x11)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
 %description
@@ -68,7 +68,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Widgets) >= 5.14.0
+Requires:       cmake(Qt5Widgets) >= 5.15.0
 
 %description devel
 KJobWIdgets provides widgets for showing progress of asynchronous jobs.
@@ -77,15 +77,15 @@ Development files.
 %lang_package -n %{lname}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %if %{with lang}
 %find_lang %{name}5 --with-qt --without-mo
