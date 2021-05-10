@@ -295,7 +295,6 @@ Patch1512:      gdb-tui-enable-work-around-libncurses-segfault.patch
 Patch1513:      gdb-testsuite-fix-control-flow-in-gdb-reverse-insn-reverse-exp.patch
 Patch1514:      gdb-fix-use-of-invalid-pointer-in-remote-async-inferior-event-handler.patch
 Patch1515:      gdb-try-to-load-libthread_db-only-after-reading-all-shared-libraries-when-attaching.patch
-Patch1516:      gdb-build-workaround-pcre2_posix-linking-problem.patch
 
 # Backports from master
 
@@ -316,6 +315,10 @@ Patch2014:      gdb-testsuite-fix-xfail-handling-in-gdb.threads-gcore-thread.exp
 Patch2015:      gdb-threads-fix-lin_thread_get_thread_signals-for-glibc-2.28.patch
 Patch2016:      gdb-testsuite-ignore-debuginfod_urls.patch
 Patch2017:      gdb-testsuite-fix-unset-of-debuginfod_urls-in-default_gdb_init.patch
+Patch2018:      gdb-tui-fix-len_without_escapes-in-tui-disasm.c.patch
+Patch2019:      gdb-build-hardcode-with-included-regex.patch
+Patch2020:      gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder.patch
+Patch2021:      gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
 
 # Testsuite patches
 
@@ -713,7 +716,6 @@ find -name "*.info*"|xargs rm -f
 %patch1513 -p1
 %patch1514 -p1
 %patch1515 -p1
-%patch1516 -p1
 
 %patch2000 -p1
 %patch2002 -p1
@@ -732,6 +734,10 @@ find -name "*.info*"|xargs rm -f
 %patch2015 -p1
 %patch2016 -p1
 %patch2017 -p1
+%patch2018 -p1
+%patch2019 -p1
+%patch2020 -p1
+%patch2021 -p1
 
 %patch2500 -p1
 %if 0%{?suse_version} > 1500

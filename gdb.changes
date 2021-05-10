@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  7 10:43:38 UTC 2021 - Tom de Vries <tdevries@suse.com>
+- Replace tentative fix with upstreamed fix [swo#27681]:
+  Remove:
+  * gdb-build-workaround-pcre2_posix-linking-problem.patch
+  Add:
+  * gdb-build-hardcode-with-included-regex.patch
+- Backport fix from upstream [bsc#1185638, swo#26327]:
+  * gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder.patch
+- Backport fix from upstream [rh#1931344]:
+  * gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
+
+-------------------------------------------------------------------
+Sun May  2 18:24:36 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Backport fix for tui assert [swo#27680]:
+ * gdb-tui-fix-len_without_escapes-in-tui-disasm.c.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 03:51:41 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Backport fixes that ignore DEBUGINFOD_URLS during testing:

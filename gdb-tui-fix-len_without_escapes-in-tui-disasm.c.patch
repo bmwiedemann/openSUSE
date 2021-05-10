@@ -1,0 +1,71 @@
+[gdb/tui] Fix len_without_escapes in tui-disasm.c
+
+On openSUSE Tumbleweed I run into:
+...
+FAIL: gdb.tui/basic.exp: asm window shows main
+ERROR: invalid command name "_csi_L"
+...
+
+Using a minimal example, we get:
+...
+$ gdb -q outputs/gdb.tui/basic/basic -ex "tui enable" -ex "layout asm"
+<TUI output>
+src/gdb/ui-style.c:243: internal-error: bool \
+  ui_file_style::parse(const char*, size_t*): Assertion `match == 0' failed.
+...
+
+The problem is in len_without_escapes, where we detect the start of an escape
+sequence, but then pass ptr to style.parse while ptr no longer points to the
+escape due to the ptr++ in the while condition:
+...
+  while ((c = *ptr++) != '\0')
+     {
+      if (c == '\033')
+        {
+          ui_file_style style;
+          size_t n_read;
+          if (style.parse (ptr, &n_read))
+...
+
+Fix this by removing the ++ in the while condition, and adding ptr++ in the
+loop body where appropriate.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2021-04-06  Tom de Vries  <tdevries@suse.de>
+
+	PR tui/27680
+	* tui/tui-disasm.c (len_without_escapes): Pass ptr pointing at escape
+	to style.parse.
+
+---
+ gdb/tui/tui-disasm.c | 7 +++++--
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/tui/tui-disasm.c b/gdb/tui/tui-disasm.c
+index 65b300cb008..163552aede4 100644
+--- a/gdb/tui/tui-disasm.c
++++ b/gdb/tui/tui-disasm.c
+@@ -61,7 +61,7 @@ len_without_escapes (const std::string &str)
+   const char *ptr = str.c_str ();
+   char c;
+ 
+-  while ((c = *ptr++) != '\0')
++  while ((c = *ptr) != '\0')
+     {
+       if (c == '\033')
+ 	{
+@@ -77,7 +77,10 @@ len_without_escapes (const std::string &str)
+ 	    }
+ 	}
+       else
+-	++len;
++	{
++	  ++len;
++	  ++ptr;
++	}
+     }
+   return len;
+ }
