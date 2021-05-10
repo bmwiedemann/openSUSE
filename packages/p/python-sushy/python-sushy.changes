@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:40:08 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.6.0
+  - Log only fields set in redfish response, not entire json
+  - Fix retrieving software & firmware inventory
+  - Update lower-constraints.txt
+  - Fix pep8 test
+  - Fix l-c job
+  - Fixes a typo when accessing the connector in CompositionService
+  - Add Python3 wallaby unit tests
+  - Add support to expose oem_vendors from resource links
+  - Avoid running functional jobs for doc changes
+  - Log extended error information in addition to returning it
+  - Add OperationApplyTime support to Volume methods
+  - Fix lower-constraints with the new pip resolver
+  - Allow monitoring progress of a firmware update
+  - Cleanup py27 support
+  - Adds basic support for TaskService to retrieve task information.
+  - Lower log severity for unknown type registries
+  - Stop configuring install_command in tox.
+  - Use unittest.mock instead of third party mock
+  - Switch to the new canonical constraints URL on master
+  - Include extended information in debugging output
+  - Remove python-subunit, testtools and testscenarios
+  - Remove auth token header completely when error occurs
+  - Add a CI job with UEFI+vmedia and clean up the job definitions
+  - Make Actions field in Volume resource optional
+  - Make Volume/VolumeCollection operations blocking
+  - Add import order check
+  - Add RAIDType properties to storage resources
+  - Set min version of tox to 3.2.1
+  - Do not log passwords and auth tokens when using SessionService
+  - Fix #Bios.ResetBios for HTTP 400 Bad request error
+  - Remove lower-constraints job
+  - Add doc/requirements
+  - Secure boot support: enabling/disabling and resetting keys
+  - Update master for stable/victoria
+  - Add py38 package metadata
+  - Set safe version of hacking
+  - Convert sushy tempest to dib
+  - Restore default netboot boot option
+  - Switch to newer openstackdocstheme and reno versions
+  - Revert "Add BIOS update apply time and maintenance window"
+  - Adds sushy library overview
+  - Trivial: add missing __init__.py to sushy/resources/taskservice
+  - Less scary warning when GET /redfish/v1/SessionService fails
+  - Fix OEM extension loading for different servers
+  - drop mock from lower-constraints
+  - [trivial] add reason why we skip W503 in pep8 check
+  - Add Python3 victoria unit tests
+  - Update version of hacking
+  - Use Sessions URL from root service if it's provided
+  - Make message parsing more resilient
+  - Remove translation sections from setup.cfg
+  - Update master for stable/ussuri
+  - Fixes issue of redfish firmware update
+  - Add BIOS update apply time and maintenance window
+  - Raise exception when async operation fails
+  - Update system schema to 1.10
+  - Fix pdf build
+
+-------------------------------------------------------------------
 Tue May 12 12:36:20 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.2.0
