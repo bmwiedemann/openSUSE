@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 07:38:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.14.0:
+ - replace universal_newlines with text if py37+
+ - upgrade subprocess.run(universal_newlines=True) to subprocess.run(text=True) in --py37-plus
+ - reorder_python_imports: v2.4.0 → v2.5.0
+
+-------------------------------------------------------------------
 Sat Apr 24 18:16:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.13.0:
