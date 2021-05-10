@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Holidays5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kholidays
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Holiday calculation library
 License:        LGPL-2.1-or-later
@@ -69,14 +69,14 @@ to develop applications depending on the kholidays library
 %lang_package -n %{lname}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
   %if %{with lang}
     %find_lang %{name} --with-man --all-name --with-qt
   %endif
