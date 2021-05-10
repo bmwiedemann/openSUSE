@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 17:22:44 UTC 2021 - cloud-devel@suse.de
+
+- update to version 5.1.0
+  - [goal] Migrate tox based testing to ubuntu focal
+  - bump py37 to py38 in tox.ini
+  - Add Python3 wallaby unit tests
+
+-------------------------------------------------------------------
 Fri Oct  9 19:12:36 UTC 2020 - cloud-devel@suse.de
 
 - update to version 5.0.1

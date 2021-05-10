@@ -1,7 +1,7 @@
 #
 # spec file for package python-barbicanclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-barbicanclient
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.0.1.tar.gz
+URL:            https://docs.openstack.org/python-barbicanclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -40,11 +40,11 @@ BuildRequires:  python3-testtools
 BuildArch:      noarch
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %else
 # on RDO, update-alternatives is in chkconfig
 Requires(post): chkconfig
-Requires(postun): chkconfig
+Requires(postun):chkconfig
 %endif
 
 %description
@@ -54,7 +54,6 @@ command-line script (barbican).
 
 %package -n python3-barbicanclient
 Summary:        Client for the Barbican Key Management API
-Group:          Development/Languages/Python
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-oslo.i18n >= 3.15.3
@@ -101,7 +100,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+python3 -m stestr.cli run \
+    --black-regex 'barbicanclient.tests.test_barbican.WhenTestingBarbicanCLI.test_should_show_usage_with_help_flag'
 
 %files -n python3-barbicanclient
 %license LICENSE
