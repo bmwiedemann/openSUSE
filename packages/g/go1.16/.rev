@@ -64,4 +64,23 @@
   * go#44640 cmd/link: fail to build when using time/tzdata on ARM (forwarded request 882731 from jfkw)</comment>
     <requestid>882733</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7f137f987f48ef5bbe70dc43fdbee68</srcmd5>
+    <version>1.16.4</version>
+    <time>1620653646</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.4 (released 2021-05-06) includes a security fix to the
+  net/http package, as well as bug fixes to the runtime, the
+  compiler, and the archive/zip, time, and syscall packages.
+  CVE-2021-31525
+  Refs boo#1182345 go1.16 release tracking
+  * boo#1185790 CVE-2021-31525
+  * go#45712 net/http: ReadRequest can stack overflow
+  * go#45636 cmd/compile: internal compiler error: Invalid PPC64 rotate mask
+  * go#45482 runtime: &quot;invalid pc-encoded table&quot; throw caused by bad cgo traceback (expandFinalInlineFrames)
+  * go#45385 time: Europe/Dublin timezone handling broken with embedded timezone database
+  * go#45347 archive/zip: duplicate entries in FS interface
+  * go#45307 os/signal: timeout in TestAllThreadsSyscallSignals (forwarded request 891377 from jfkw)</comment>
+    <requestid>891378</requestid>
+  </revision>
 </revisionlist>
