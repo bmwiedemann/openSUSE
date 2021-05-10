@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
-Fri May 07 09:15:21 UTC 2021 - Bernd Schubert <bschubert@suse.com>
+Fri May  7 09:15:21 UTC 2021 - Bernd Schubert <bschubert@suse.com>
 
 - Changing exporter stickiness to => 0 and adjusting the colocation 
   score from +inf to -inf and changing the colocation from Master to Slave. 
   This change fix the impact of a failed exporter in regards to the HANA DB.
+  
+-------------------------------------------------------------------
+Thu May  6 16:19:45 UTC 2021 - Rubén Torrero Marijnissen <rtorreromarijnissen@suse.com>
+
+- Document extra_parameters in pillar.example (bsc#1185643)
 
 -------------------------------------------------------------------
 Thu May  6 08:49:19 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
