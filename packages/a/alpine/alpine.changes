@@ -29,6 +29,9 @@ Fri Oct  2 20:43:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 Mon Sep  7 13:44:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.23
+  * Fixes bsc#1173281, CVE-2020-14929: Alpine silently proceeds to
+    use an insecure connection after a /tls is sent in certain
+    circumstances.
   * Implementation of XOAUTH2 authentication support for Outlook.
   * Add support for the OAUTHBEARER authentication method in Gmail.
   * Support for the SASL-IR IMAP extension.
