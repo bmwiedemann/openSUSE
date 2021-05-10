@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun May  2 17:23:39 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - remove unicode from code
+  - Remove install unnecessary package
+  - Remove install unnecessary packages
+  - Implement openstack share properties show command
+  - Fix duplicate wait functional test
+  - Change public share tests
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Update master for stable/victoria
+  - [OSC] Implement Share Adopt & Abandon Commands
+  - Tighten asserts in some wait tests
+  - Implements usage of '-c /--column' instead of additional logic.
+  - Add Python3 wallaby unit tests
+  - Fix undesirable raw Python error
+  - Add "--wait" option for force-deleting a share/snapshot/share-instance
+  - Use importlib to take place of imp module
+  - Add profiling support to manilaclient
+  - Remove python2 installation from bindep
+  - Fixes create share from snapshot in OSC
+  - Forbid users to create shares with the name "None"
+  - [OSC] Implement Share Export Location Commands
+  - tox miniversion update to 3.1.1
+  - Correctly pass mTLS certificate/key to HTTPClient
+  - [OSC] Implement user messages commands
+  - [OSC] Add the option to explicitly set share status
+  - Add a waiter to share create/delete
+  - Add security add/update services for in-use share networks
+  - Add a waiter to share extend/shrink
+  - [OSC] Implement Share Revert Command
+  - Add waiters to OSC share create/delete/resize
+  - Remove six.moves.urllib
+  - [OSC] Implement the second part of share snapshots commands
+
+-------------------------------------------------------------------
 Fri Oct  9 19:14:42 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.3.0
