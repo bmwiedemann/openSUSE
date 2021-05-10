@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * debchangelog: add Impish Indri
+  * remove text/plain from Godot
+  * systemd unit: merge some RegExpr rules
+  * systemd unit: increase version number
+  * systemd unit: update to systemd v248
+  * add support for Godot's gd-scripts
+  * Update Readme
+  * Bash/Zsh: (#5) fix SubShell context that starts as an arithmetic
+    evaluation ; add regions for all SubShell
+  * Doxygen: fix Word style when the word is at the end of line
+
+-------------------------------------------------------------------
 Mon Apr  5 07:13:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
