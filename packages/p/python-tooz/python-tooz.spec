@@ -1,7 +1,7 @@
 #
 # spec file for package python-tooz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-tooz
-Version:        2.1.0
+Version:        2.8.0
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://docs.openstack.org/developer/tooz/
-Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-2.1.0.tar.gz
+URL:            https://docs.openstack.org/tooz/latest/
+Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-2.8.0.tar.gz
 BuildRequires:  memcached
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fasteners >= 0.7
@@ -34,7 +34,7 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-futurist >= 1.2.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.serialization >= 1.10.0
-BuildRequires:  python3-oslo.utils >= 3.15.0
+BuildRequires:  python3-oslo.utils >= 4.7.0
 BuildRequires:  python3-pbr >= 1.6
 BuildRequires:  python3-pymemcache
 BuildRequires:  python3-stevedore >= 1.16.0
@@ -53,13 +53,12 @@ a coordination API helping developers to build distributed applications.
 
 %package -n python3-tooz
 Summary:        Coordination library for distributed systems
-Group:          Development/Languages/Python
 Requires:       python3-fasteners >= 0.7
 Requires:       python3-futurist >= 1.2.0
 Requires:       python3-msgpack >= 0.4.0
 Requires:       python3-oslo.serialization >= 1.10.0
-Requires:       python3-oslo.utils >= 3.15.0
-Requires:       python3-six >= 1.9.0
+Requires:       python3-oslo.utils >= 4.7.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.16.0
 Requires:       python3-tenacity >= 3.2.1
 Requires:       python3-voluptuous >= 0.8.9
@@ -85,7 +84,7 @@ a coordination API helping developers to build distributed applications.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n tooz-2.1.0
+%autosetup -p1 -n tooz-2.8.0
 %py_req_cleanup
 
 %build

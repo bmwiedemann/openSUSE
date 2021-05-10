@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun May  2 18:01:37 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.8.0
+  - Update master for stable/victoria
+  - Blacklist etcd3gw 0.2.6
+  - Replace md5 with oslo version
+  - Adding pre-commit
+
+-------------------------------------------------------------------
+Fri Oct  9 19:19:51 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.7.1
+  - Use unittest.mock instead of third party mock
+  - Use safe_decode for decoding in zookeeper driver
+  - Stop to use the __future__ module.
+  - Remove six library
+  - hashring: allow choosing hash function
+  - Add release notes links to doc index
+  - Add support for Consul ACL token parameter.
+  - Add nose as test-requirement
+  - Add python 3.8 to classifiers
+  - Switch to newer openstackdocstheme and reno versions
+  - Implements Group API for the Consul driver
+  - Fix mysql driver comparison operator
+  - ignore reno generated artifacts
+  - Update master for stable/ussuri
+  - Fix breakage with PyMySQL 0.10.0
+  - Switch to Victoria tests
+
+-------------------------------------------------------------------
+Mon Aug 10 10:23:39 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Adds heartbeating to the consul driver.
+  - Add TLS support in etcd3 and etcd3gw drivers
+  - Drop requirements-check job
+
+-------------------------------------------------------------------
 Tue May 12 09:45:44 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.1.0
