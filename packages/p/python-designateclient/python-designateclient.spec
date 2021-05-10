@@ -1,7 +1,7 @@
 #
 # spec file for package python-designateclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-designateclient
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-designateclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-4.1.0.tar.gz
+URL:            https://docs.openstack.org/python-designateclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-4.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-jsonschema >= 2.6.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -40,7 +40,6 @@ OpenStack DNS as a Service - Client
 
 %package -n python3-designateclient
 Summary:        OpenStack DNS as a Service - Client
-Group:          Development/Languages/Python
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-jsonschema >= 2.6.0
@@ -62,19 +61,20 @@ Summary:        Documentation for the OpenStack DNS as a Service - Client
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-designateclient-doc
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
-%autosetup -p1 -n python-designateclient-4.1.0
+%autosetup -p1 -n python-designateclient-4.2.0
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate docs
-PYTHONPATH=. PBR_VERSION=4.1.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=4.2.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
