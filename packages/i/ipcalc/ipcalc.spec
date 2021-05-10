@@ -1,7 +1,7 @@
 #
 # spec file for package ipcalc
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,44 +12,52 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ipcalc
-Version:        0.41
+Version:        1.0.0
 Release:        0
-Summary:        IPv4 Address Calculator
-License:        GPL-2.0+
+Summary:        IPv4/IPv6 tool assisting in network calculations on the command line
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
-Url:            http://jodies.de/ipcalc
-Source0:        http://jodies.de/ipcalc-archive/ipcalc-%{version}.tar.gz
-Patch1:         http://jodies.de/ipcalc-archive/patch-queue
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+URL:            https://gitlab.com/ipcalc/ipcalc
+Source0:        https://gitlab.com/ipcalc/ipcalc/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FEATURE-OPENSUSE ipcalc-disable-network-tests.patch badshah400@gmail.com -- Disable tests requiring network
+Patch0:         ipcalc-disable-network-tests.patch
+BuildRequires:  meson >= 0.49
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  rubygem(ronn)
+Conflicts:      netcalc
 
 %description
-ipcalc takes an IP address and netmask and calculates the resulting
-broadcast, network, Cisco wildcard mask, and host range. By giving a
-second netmask, you can design subnets and supernets. It is also
-presents the subnetting results as easy-to-understand binary values.
-
-Enter your netmask(s) in CIDR notation (/25) or dotted decimals
-(255.255.255.0). Inverse netmasks are recognized. If you omit the
-netmask ipcalc uses the default netmask for the class of your network.
+ipcalc is a modern tool to assist in network address calculations for IPv4 and
+IPv6. It acts both as a tool to output human readable information about a
+network or address, as well as a tool suitable to be used by scripts or other
+programs.  It supports printing a summary about the provided network address,
+multiple command line options per information to be printed, transparent IPv6
+support, and in addition it will use libGeoIP if available to provide
+geographic information.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p1
 
 %build
+%meson
+%meson_build
 
 %install
-install -D -m 0755 ipcalc "%{buildroot}%{_bindir}/ipcalc"
+%meson_install
+
+%check
+%meson_test
 
 %files
-%defattr(-,root,root)
-%doc license changelog contributors
+%doc README.md NEWS
+%license COPYING
 %{_bindir}/ipcalc
+%{_mandir}/man1/ipcalc.1%{?ext_man}
 
 %changelog
