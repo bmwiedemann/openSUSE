@@ -224,4 +224,12 @@ Bugfixes
 - package the license, docs and sample config</comment>
     <requestid>884568</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>33988c69fd6ba05a668f3801845f7fea</srcmd5>
+    <version>2.4.8.1</version>
+    <time>1620653925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891851</requestid>
+  </revision>
 </revisionlist>

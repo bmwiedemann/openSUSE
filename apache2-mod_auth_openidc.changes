@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  7 17:38:51 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.8.1
+  * Bugfixes
+    - fix potential crash when the Content-Type header is not set in POST requests
+    - avoid jwt/proto_state json_object memory leaks on cache failures
+    - when an OAuth 2.0 RS token scope/claim authorization (401 ) error 
+      occurs, add a OIDC_OAUTH_BEARER_SCOPE_ERROR environment variable for 
+      usage with mod_headers, instead of adding a header ourselves; see #572
+  * Features
+    - add options to configure Redis connectivity timeouts with 
+      OIDCRedisCacheConnectTimeout and OIDCRedisCacheTimeout
+    - add OIDCClientTokenEndpointKeyPassword option to set a private key 
+      password for the client's private key to be used against the token 
+      endpoint; see #576
+
+-------------------------------------------------------------------
 Mon Apr 12 07:49:03 UTC 2021 - pgajdos@suse.com
 
 - test package
