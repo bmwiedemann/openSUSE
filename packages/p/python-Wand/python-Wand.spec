@@ -1,7 +1,7 @@
 #
 # spec file for package python-Wand
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,13 @@ BuildRequires:  %{python_module setuptools}
 Requires:       ImageMagick
 BuildRequires:  ImageMagick-devel
 BuildRequires:  fdupes
+BuildRequires:  fftw3-devel
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module psutil >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 2.3.0}
-BuildRequires:  (python3-numpy if python3-base < 3.8)
-BuildRequires:  (python38-numpy if python38-base)
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +53,9 @@ Ctypes-based simple MagickWand API binding for Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Our ImageMagick is build without support of fftw library
+# see identify -version and gh#emcconville/wand#476
+export PYTEST_ADDOPTS="--skip-fft"
 # Three tests failing with
 # wand.exceptions.PolicyError: attempt to perform an operation not allowed by the security policy `PDF'
 # due to https://build.opensuse.org/package/view_file/graphics/ImageMagick/ImageMagick-configuration-SUSE.patch

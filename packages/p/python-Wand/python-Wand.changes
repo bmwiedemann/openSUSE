@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  8 20:30:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip tests using fftw library, we don't have the support built
+  in ImageMagick (see gh#emcconville/wand#476).
+
+-------------------------------------------------------------------
+Fri May  7 23:47:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix numpy test BuildRequires for flavors beyond python38
+
+-------------------------------------------------------------------
 Mon Mar  1 01:50:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.6.6
