@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch5:         pesign-efikeygen-Fix-the-build-with-nss-3.44.patch
 Patch6:         pesign-boo1143063-remove-var-tracking.patch
 # PATCH-FIX-UPSTREAM pesign-boo1158197-fix-pesigncheck-gcc10.patch glin@suse.com -- boo#1158197 Fix the gcc10 errors
 Patch7:         pesign-boo1158197-fix-pesigncheck-gcc10.patch
+# PATCH-FIX-UPSTREAM pesign-boo1185663-set-rpmmacrodir.patch boo#1185663 glin@suse.com -- Set the rpm macro directory at build time
+Patch8:         pesign-boo1185663-set-rpmmacrodir.patch
 BuildRequires:  efivar-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  mozilla-nss-devel
@@ -61,16 +63,19 @@ with the PE and Authenticode specifications.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
 
 %install
-make INSTALLROOT=%{buildroot} libexecdir=%{_libexecdir} install
 mkdir -p %{buildroot}%{_localstatedir}/lib/pesign
-
 mkdir -p %{buildroot}%{_sbindir}
-make INSTALLROOT=%{buildroot} UNITDIR=%{_unitdir} libexecdir=%{_libexecdir} install_systemd
+make INSTALLROOT=%{buildroot} \
+     UNITDIR=%{_unitdir} \
+     libexecdir=%{_libexecdir} \
+     rpmmacrodir=%{_rpmmacrodir} \
+     install_systemd
 
 # create rcsymlink
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -109,7 +114,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %dir %{_sysconfdir}/popt.d
 %config %{_sysconfdir}/popt.d/pesign.popt
 %{_sysconfdir}/pki/
-%config %{_sysconfdir}/rpm/macros.pesign
+%{_rpmmacrodir}/macros.pesign
 %{_mandir}/man?/*
 %{_localstatedir}/lib/pesign
 %{_unitdir}/pesign.service

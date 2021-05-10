@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  7 01:38:34 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Stop marking macros.pesign as %config
+
+-------------------------------------------------------------------
+Thu May  6 09:22:38 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-boo1185663-set-rpmmacrodir.patch to set the rpm macro
+  directory at build time (boo#1185663)
+  + Also set rpmmacrodir when installing files
+- Remove "make install" since "make install_systemd" invokes
+  "make install" automatically
+
+-------------------------------------------------------------------
 Tue May  5 12:42:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_tmpfilesdir instead of %{_libexecdir}/tmpfiles.d.
