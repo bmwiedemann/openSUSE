@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 17:31:11 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - Update master for stable/victoria
+  - Use TOX_CONSTRAINTS_FILE
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:27 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.1.1
