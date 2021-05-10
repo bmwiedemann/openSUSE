@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kwayland
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
@@ -39,13 +39,13 @@ Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.14.0
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.2.1
-BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5WaylandClient) >= 5.14.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -64,20 +64,20 @@ Summary:        KDE Wayland library: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.14.0
+Requires:       cmake(Qt5Gui) >= 5.15.0
 
 %description devel
 KWayland provides a Qt-style Client and Server library wrapper for the Wayland libraries.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
