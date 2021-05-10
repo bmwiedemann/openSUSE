@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May  2 17:22:04 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.11.1
+  - Have `delete --all` imply `--versions` for the CLI
+  - Add cacert test config option
+  - Remove some py38 job cruft
+  - Include transaction ID in ClientException.__str__
+  - Switch to newer openstackdocstheme and reno versions
+  - Add Python3 wallaby unit tests
+  - [goal] Migrate testing to ubuntu focal
+  - tests: Make test_delete_container_versions less flakey
+  - (Mostly) revert "Cleanup session on delete"
+  - Close connections created when calling module-level functions
+  - Make py39 voting
+  - Clean up some requirements
+  - Update master for stable/victoria
+  - remove unicode from code
+  - Drop lower-constraints testing
+
+-------------------------------------------------------------------
 Fri Oct  9 19:19:41 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.10.1

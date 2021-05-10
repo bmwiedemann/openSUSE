@@ -1,7 +1,7 @@
 #
 # spec file for package python-swiftclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-swiftclient
-Version:        3.10.1
+Version:        3.11.1
 Release:        0
 Summary:        OpenStack Object Storage API Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-swiftclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-3.10.1.tar.gz
+URL:            https://docs.openstack.org/python-swiftclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-3.11.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-mock
@@ -38,7 +38,6 @@ swiftclient module), and a command-line script (swift).
 
 %package -n python3-swiftclient
 Summary:        OpenStack Object Storage API Client Library
-Group:          Development/Languages/Python
 Requires:       python3-requests >= 1.1.0
 Requires:       python3-six >= 1.9.0
 %if 0%{?suse_version}
@@ -64,7 +63,7 @@ swiftclient module), and a command-line script (swift).
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n python-swiftclient-3.10.1
+%autosetup -p1 -n python-swiftclient-3.11.1
 %py_req_cleanup
 
 %build

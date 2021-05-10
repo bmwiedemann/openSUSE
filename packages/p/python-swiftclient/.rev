@@ -521,4 +521,12 @@
     <comment>switch to victoria</comment>
     <requestid>841230</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6613f17d0a2753a527592edf64972f8c</srcmd5>
+    <version>3.11.1</version>
+    <time>1620653867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890008</requestid>
+  </revision>
 </revisionlist>
