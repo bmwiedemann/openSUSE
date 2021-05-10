@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun May  2 18:03:16 UTC 2021 - cloud-devel@suse.de
+
+- update to version 1.5.23
+  - Disable retry on cleanup logout
+  - Extend IMM remote media
+  - Fix SMM ffdc behavior
+  - Move inventory to oem to allow override
+  - Support newer SMMv2 API for PSU
+  - Fix SMM account rule retrieval
+  - Fix problem with TSM
+  - Add support for pass complexity and lockout
+  - Add usb alias for floppy and usb for redfish
+  - Fix set_hostname on generic IPMI in Py3
+  - Improve robustness of IPMI config for XMM/XCC
+  - Have tsma support fileobject passing
+  - Support SMMv2 variation
+  - Fix error on long apply phase
+  - Add support for configuring write and read policies when creating a volume.
+  - Fix water cooled get_bmc_configuration
+  - Fix problem with older IBM equipment and python3
+  - Revise strategy for configuration robustness
+  - Support updating from a file-like object
+  - Port fast media list from XCC IPMI plugin
+  - Retry cached data retrieval on 401
+  - Apply license from file-like object
+  - Have TSM use redfish only when needed
+  - Add NTP support to TSMA
+  - Support SMMv2 permission check format
+  - Switch to faster EFI decompressor
+  - Fix redfish system config without dependencies
+  - Add DNS configuration of TSMA
+  - Mitigate possible XML denial of service
+  - Fix XCC use of Redfish in OEM and python3
+  - Add remote presence assertion to bmc config
+  - Fix support for 3DS DIMM capacity
+  - Preserve the entire svcdata filename on autoname
+  - Workaround IMM header problems
+  - Fix py3 bytes mismatch for fromstring
+  - Slow down setting configuration
+  - Reconfigure tox
+  - Improve reliability of Lenovo config handling
+  - Implement 'IPMI' value for smm setting
+
+-------------------------------------------------------------------
 Tue Oct 13 18:57:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.18:

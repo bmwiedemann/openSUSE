@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyghmi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-pyghmi
-Version:        1.5.18
+Version:        1.5.23
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/pyghmi
-Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.18.tar.gz
+URL:            https://docs.openstack.org/pyghmi
+Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.23.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cryptography >= 2.1
 BuildRequires:  python3-devel
@@ -41,7 +41,6 @@ this library into python code
 
 %package -n python3-pyghmi
 Summary:        General Hardware Management Initiative (IPMI and others)
-Group:          Development/Languages/Python
 Requires:       python3-cryptography >= 2.1
 Requires:       python3-python-dateutil >= 2.8.1
 Requires:       python3-six >= 1.10.0
@@ -74,7 +73,7 @@ this library into python code
 
 %build
 %{py3_build}
-PYTHONPATH=. PBR_VERSION=1.5.18 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=1.5.23 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
