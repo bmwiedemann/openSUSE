@@ -575,4 +575,12 @@ update to version 2.3.0
     <comment>switch to victoria</comment>
     <requestid>841179</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1fa93b57cbd87a0e2bc0bd7651f1f286</srcmd5>
+    <version>3.3.0</version>
+    <time>1620653840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889966</requestid>
+  </revision>
 </revisionlist>

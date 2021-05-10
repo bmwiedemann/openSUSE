@@ -1,7 +1,7 @@
 #
 # spec file for package python-glanceclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           python-glanceclient
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
+Epoch:          0
 Summary:        Python API and CLI for OpenStack Glance
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-glanceclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-3.2.2.tar.gz
+URL:            https://docs.openstack.org/python-glanceclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-3.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.1
 BuildRequires:  python3-ddt
@@ -48,7 +49,6 @@ glanceclient module), and a command-line script (glance). Each implements
 
 %package -n python3-glanceclient
 Summary:        Python API and CLI for OpenStack Glance
-Group:          Development/Languages/Python
 Requires:       python3-PrettyTable >= 0.7.1
 Requires:       python3-keystoneauth1 >= 3.6.2
 Requires:       python3-oslo.i18n >= 3.15.3
@@ -83,15 +83,15 @@ glanceclient module), and a command-line script (glance). Each implements
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-glanceclient-3.2.2
+%autosetup -p1 -n python-glanceclient-3.3.0
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate html docs
-PBR_VERSION=3.2.2 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=3.2.2 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=3.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.3.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 rm -rf doc/build/man/.{doctrees,buildinfo}
