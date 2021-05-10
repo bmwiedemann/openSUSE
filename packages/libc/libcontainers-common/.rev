@@ -306,4 +306,12 @@
 - Update image to 5.11.0</comment>
     <requestid>886688</requestid>
   </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>e1b3ad755d4202ec067df54fcd82b650</srcmd5>
+    <version>20210112</version>
+    <time>1620653772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890027</requestid>
+  </revision>
 </revisionlist>
