@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  6 18:32:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.3.2.2
+  * Blacklist storage device "junosprocfs" on JunOS (Juniper)
+    devices PR #278
+  * bugfix in f5 cpu-load, correct negative values
+  * query LM-SENSORS-MIB only if it exists on Linux (it may hang
+    even if not existing)
+  * bugfix in CISCO-ENTITY-SENSOR-MIB. Scale values correctly.
+
+-------------------------------------------------------------------
 Wed Mar  3 07:31:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.3.1.1
