@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  9 04:10:50 UTC 2021 - Andy Alt <andy400-dev@yahoo.com>
+
+- rmw 0.7.09:
+  * bugfix: filenames now display correctly when using '-vvg'
+
+-------------------------------------------------------------------
 Tue May  4 10:30:16 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - rmw 0.7.08, initial package
