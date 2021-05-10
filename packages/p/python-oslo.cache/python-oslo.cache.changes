@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 17:29:53 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.7.0
+  - Add Python3 wallaby unit tests
+  - Do not hardcode flush_on_reconnect, move to oslo.cache config
+  - Update master for stable/victoria
+  - Add dogpile.cache.pymemcache backend
+  - Imported Translations from Zanata
+  - Dropping lower constraints testing
+
+-------------------------------------------------------------------
 Fri Oct  9 19:06:50 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.6.1
