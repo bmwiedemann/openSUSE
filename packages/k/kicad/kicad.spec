@@ -26,10 +26,10 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
-License:        GPL-3.0-or-later AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://kicad-pcb.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{version}/kicad-%{version}.tar.bz2
@@ -75,7 +75,7 @@ BuildRequires:  hicolor-icon-theme
 # Dlopen'ed simulator library
 Requires:       libngspice0
 # The help function gives an error without the doc package
-Requires:       kicad-doc = %{version}
+Recommends:     kicad-doc = %{version}
 # You cannot build a schematic without symbols
 Requires:       kicad-symbols = %{compatversion}
 # You cannot create a pcb layout without footprints
