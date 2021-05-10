@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  7 23:13:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip masquerade tests failung because the newest Pythons don't
+  allow invalid addresses gh#giampaolo/pyftpdlib#550, bpo-43285
+- Remove script interpreter lines for test files and _compyt.py
+  (fix rpmlint warnings)
+
+-------------------------------------------------------------------
 Fri Dec 18 16:29:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add ignore _build directories to pytest args to fix builds for

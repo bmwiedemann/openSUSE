@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyftpdlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-pysendfile
 BuildArch:      noarch
 %if %{with python2}
@@ -54,6 +54,7 @@ write very asynchronous FTP servers with Python.
 
 %prep
 %setup -q -n pyftpdlib-%{version}
+sed -i '1 {/env python/ d}' pyftpdlib/test/*.py pyftpdlib/_compat.py
 
 %build
 %python_build
@@ -71,6 +72,8 @@ write very asynchronous FTP servers with Python.
 # and disable only related tests.
 donttest="(TestFtpStoreDataTLSMixin and test_rest_on_stor)"
 donttest+=" or (TestFtpStoreDataTLSMixin and test_stor_ascii)"
+# https://github.com/giampaolo/pyftpdlib/issues/550
+donttest+=" or test_masquerade_address"
 ignorebuild="--ignore build"
 %{python_expand # expand to python flavor, not to the binary name, then strip the trailing _
 builddir=_build.$python_
@@ -78,8 +81,8 @@ ignorebuild+=" --ignore ${builddir%_}"
 }
 cat > pytest.ini <<EOF
 [pytest]
-addopts = 
-  -rs -v 
+addopts =
+  -rs -v
   -k "not ($donttest)"
   $ignorebuild
 EOF
