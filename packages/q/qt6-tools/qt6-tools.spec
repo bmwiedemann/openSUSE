@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -57,6 +57,7 @@ BuildRequires:  qt6-dbus-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-widgets-private-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
@@ -70,7 +71,6 @@ BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  update-desktop-files
 # These packages are required to generate documentation for the Qt packages
 Requires:       qt6-tools-helpgenerators
 Requires:       qt6-tools-qdoc
@@ -94,8 +94,8 @@ Included are Qt Designer (GUI design), QDbusViewer and more.
 
 %package devel
 Summary:        Qt 6 Tools libraries - Development files
-Requires:       qt6-tools-helpgenerators = %{version}
 Requires:       qt6-tools = %{version}
+Requires:       qt6-tools-helpgenerators = %{version}
 Requires:       qt6-tools-qdoc = %{version}
 
 %description devel
@@ -157,7 +157,6 @@ Development files for the Qt6 Help library.
 
 %package -n qt6-help-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Help library
-
 Requires:       cmake(Qt6Help) = %{real_version}
 %requires_eq    qt6-core-private-devel
 
@@ -174,6 +173,10 @@ This package contains the Qt 6 UiTools library.
 %package -n qt6-uitools-devel
 Summary:        Qt 6 UiTools library - Development files
 Requires:       libQt6UiTools6 = %{version}
+# Qt6UiToolsDependencies.cmake has explicit dependencies on these libraries
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpenGLWidgets)
+Requires:       cmake(Qt6Widgets)
 
 %description -n qt6-uitools-devel
 Development files for the Qt6 UiTools library.
@@ -261,6 +264,9 @@ Command line client to QStandardPaths.
 %{qt6_install}
 
 %if !%{qt6_docs_flavor}
+
+# 475d609 creates a useless qtdiag6 hardlink (also see QTBUG-89170)
+rm %{buildroot}%{_qt6_bindir}/qtdiag6
 
 %{qt6_link_executables}
 
@@ -403,22 +409,19 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %dir %{_qt6_datadir}/phrasebooks
 %{_bindir}/lconvert6
 %{_bindir}/linguist6
-%{_bindir}/lprodump6
-%{_bindir}/lrelease-pro6
 %{_bindir}/lrelease6
-%{_bindir}/lupdate-pro6
 %{_bindir}/lupdate6
 %{_datadir}/applications/org.qt.linguist6.desktop
 %{_datadir}/icons/hicolor/48x48/apps/linguist6.png
 %{_datadir}/icons/hicolor/128x128/apps/linguist6.png
 %{_qt6_bindir}/lconvert
 %{_qt6_bindir}/linguist
-%{_qt6_bindir}/lprodump
 %{_qt6_bindir}/lrelease
-%{_qt6_bindir}/lrelease-pro
 %{_qt6_bindir}/lupdate
-%{_qt6_bindir}/lupdate-pro
 %{_qt6_datadir}/phrasebooks/*.qph
+%{_qt6_libexecdir}/lprodump
+%{_qt6_libexecdir}/lrelease-pro
+%{_qt6_libexecdir}/lupdate-pro
 
 %files -n qt6-linguist-devel
 %{_qt6_descriptionsdir}/Linguist.json
