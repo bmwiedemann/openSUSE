@@ -355,4 +355,12 @@ Fixes build failure seen in openSUSE:Factory:Staging</comment>
 - Small spec file modernisation (forwarded request 865311 from pluskalm)</comment>
     <requestid>865322</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4c5fff31e5f7c0cb4a8206042caf4c31</srcmd5>
+    <version>4.03.02</version>
+    <time>1620653806</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.03.02 (forwarded request 891028 from susnux)</comment>
+    <requestid>891037</requestid>
+  </revision>
 </revisionlist>

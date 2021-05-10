@@ -17,13 +17,13 @@
 
 
 Name:           yodl
-Version:        4.03.00
+Version:        4.03.02
 Release:        0
 Summary:        Yet One-other Document Language
 License:        GPL-3.0-only
 Group:          Development/Tools/Doc Generators
 URL:            https://fbb-git.gitlab.io/yodl/
-Source:         https://gitlab.com/fbb-git/yodl/-/archive/%{version}/yodl-%{version}.tar.gz
+Source:         https://gitlab.com/fbb-git/yodl/-/archive/%{version}/yodl-%{version}.tar.bz2
 Patch0:         %{name}-doc-packages.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
