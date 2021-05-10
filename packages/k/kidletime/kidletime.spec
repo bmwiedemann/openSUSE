@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5IdleTime5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kidletime
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
@@ -41,10 +41,10 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xext)
@@ -72,7 +72,7 @@ Summary:        Build environment for kidletime, an idle time singleton
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
 
 %description devel
 Development files for KIdleTime, which is a singleton reporting
@@ -81,15 +81,15 @@ the current idle time of the PC, but also for getting notified upon
 idle time events, such as custom timeouts, or user activity.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
