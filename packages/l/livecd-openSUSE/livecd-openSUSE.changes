@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 10 07:37:43 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Create /etc/fstab if it doesn't exist (boo#1185815)
+- list-kde: Ignore plasma-nm5-openconnect and plasma-nm5-openvpn
+
+-------------------------------------------------------------------
 Mon Apr 26 11:16:03 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore spax and tigervnc

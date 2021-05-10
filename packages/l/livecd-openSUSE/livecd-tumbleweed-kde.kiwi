@@ -474,14 +474,18 @@
     <ignore name="ispell"/>
     <package name="aaa_base" replaces="patterns-kde-kde_games"/>
     <ignore name="patterns-kde-kde_games"/>
+    <package name="aaa_base" replaces="patterns-kde-kde_pim"/>
+    <ignore name="patterns-kde-kde_pim"/>
     <package name="aaa_base" replaces="patterns-kde-kde_utilities"/>
     <ignore name="patterns-kde-kde_utilities"/>
     <package name="kcharselect"/>
+    <package name="aaa_base" replaces="plasma-nm5-openconnect"/>
+    <ignore name="plasma-nm5-openconnect"/>
+    <package name="aaa_base" replaces="plasma-nm5-openvpn"/>
+    <ignore name="plasma-nm5-openvpn"/>
     <package name="aaa_base" replaces="kdoctools"/>
     <ignore name="kdoctools"/>
     <package name="xf86-video-vmware" arch="i686,x86_64"/>
-    <package name="aaa_base" replaces="patterns-kde-kde_pim"/>
-    <ignore name="patterns-kde-kde_pim"/>
     <package name="aaa_base" replaces="digikam"/>
     <ignore name="digikam"/>
     <package name="aaa_base" replaces="gdb"/>

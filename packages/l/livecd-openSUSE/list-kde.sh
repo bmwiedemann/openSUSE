@@ -36,10 +36,14 @@ buildignore ispell
 
 # No fun allowed
 buildignore patterns-kde-kde_games
-
+# No PIM
+buildignore patterns-kde-kde_pim
 # Not really useful here, except for kcharselect.
 buildignore patterns-kde-kde_utilities
 install kcharselect
+# Ignore
+buildignore plasma-nm5-openconnect
+buildignore plasma-nm5-openvpn 
 
 # Pulls in docbook and friends, ~50MiB.
 # Excludedocs is enabled, so documentation is broken anyway
@@ -47,9 +51,6 @@ buildignore kdoctools
 
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
-
-# No PIM
-buildignore patterns-kde-kde_pim
 
 buildignore digikam
 buildignore gdb

@@ -120,6 +120,9 @@ pam-config -a --nullok
 
 : > /var/log/zypper.log
 
+# Create fstab if it doesn't exist (Work around boo#1185815)
+>>/etc/fstab
+
 # Add Installation and upgrade icons to the desktop
 if [ "$desktop" = "kde" ]; then
     # bug 989897, avoid creating desktop directory on KDE so that the default items are added on first login
