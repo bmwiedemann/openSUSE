@@ -1,7 +1,7 @@
 #
 # spec file for package reco
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           reco
-Version:        2.4.0
+Version:        2.4.5
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/ryonakano/reco
-Source:         https://github.com/ryonakano/reco/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
