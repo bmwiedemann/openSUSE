@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May  6 14:10:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.2
+  * Update device names
+  * Add read_info output to the --diagnose command, and show
+    exception types.
+  * Bugfix: Fix read_info for YubiKey Plus.
+  * Add support for YK5-based FIPS YubiKeys.
+  * Bugfix: Fix OTP device enumeration on Win32.
+  * Drop reliance on libusb and libykpersonalize.
+  * Support the "fido" and "otp" subcommands over NFC
+  * New "ykman --diagnose" command to aid in troubleshooting.
+  * New "ykman apdu" command for sending raw APDUs over the smart
+    card interface.
+  * New "yubikit" package added for custom development and advanced
+    scripting.
+  * OpenPGP: Add support for KDF enabled YubiKeys.
+  * Static password: Add support for FR, IT, UK and BEPO keyboard
+    layouts.
+- Drop now unneeded python3-six, python3-usb and
+  libykpers-1-1 dependencies
+- python3-pyOpenSSL is optional, so move from Requires to Recommends
+
+-------------------------------------------------------------------
 Tue Feb  4 09:58:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.1

@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        3.1.1
+Version:        4.0.2
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
@@ -28,23 +28,24 @@ Source1:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python3-click
-BuildRequires:  python3-cryptography
-BuildRequires:  python3-fido2
+BuildRequires:  python3-cryptography >= 3.0
+BuildRequires:  python3-fido2 >= 0.9
 BuildRequires:  python3-pip
-BuildRequires:  python3-pyOpenSSL
 BuildRequires:  python3-pyscard
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
-BuildRequires:  python3-usb
-BuildRequires:  pkgconfig(ykpers-1)
-Requires:       libykpers-1-1
+# TEST DEPENDENCIES
+BuildRequires:  python3-pyOpenSSL
+BuildRequires:  python3-makefun >= 1.9.5
+BuildRequires:  python3-pytest
+%if 0%{?suse_version} <= 1500
+# dataclasses is required for tests if python < 3.7
+BuildRequires:  python3-dataclasses
+%endif
 Requires:       python3-click
 Requires:       python3-cryptography
 Requires:       python3-fido2
-Requires:       python3-pyOpenSSL
 Requires:       python3-pyscard
-Requires:       python3-six
-Requires:       python3-usb
+Recommends:     python3-pyOpenSSL
 Provides:       python3-yubikey-manager
 BuildArch:      noarch
 
@@ -56,7 +57,7 @@ configuring several aspects of a YubiKey, including enabling or disabling
 connection transports an programming various types of credentials.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %python3_build
@@ -67,7 +68,7 @@ connection transports an programming various types of credentials.
 install -Dpm0644 man/ykman.1 %{buildroot}%{_mandir}/man1/ykman.1
 
 %check
-python3 setup.py test
+python3 -m pytest
 
 %files
 %license COPYING*
