@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Too many changes since 5.81.0, only listing bugfixes:
+  * Do not crash when a dir is move/delete is detected by
+    kinotify (kde#435143)
+  * When adding a folder to configuration, normalize the path
+    semantically (kde#434919)
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0

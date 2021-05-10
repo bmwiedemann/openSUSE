@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -39,6 +39,7 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libattr-devel
 BuildRequires:  lmdb-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
@@ -48,13 +49,13 @@ BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5IdleTime) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Qml) >= 5.14.0
-BuildRequires:  cmake(Qt5Quick) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 
 %description
 Baloo is a framework for searching and managing metadata.
@@ -130,7 +131,7 @@ Requires:       libKF5BalooEngine5 = %{version}
 Requires:       lmdb-devel
 Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5FileMetaData) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Core) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
 # DBus interface file
 Conflicts:      baloo-devel
 
@@ -148,11 +149,11 @@ package contains aditional command line utilities. Development files.
 %autosetup -p1 -n baloo-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 %if %{with lang}
   %{kf5_find_lang}
   # Split manually, kf5_find_lang doesn't support it...
@@ -168,8 +169,11 @@ package contains aditional command line utilities. Development files.
 
 %post -n libKF5Baloo5 -p /sbin/ldconfig
 %postun -n libKF5Baloo5 -p /sbin/ldconfig
-%post file -p /sbin/ldconfig
-%postun file -p /sbin/ldconfig
+
+%post file %{systemd_user_post kde-baloo.service}
+%preun file %{systemd_user_preun kde-baloo.service}
+%postun file %{systemd_user_postun kde-baloo.service}
+
 %post -n libKF5BalooEngine5 -p /sbin/ldconfig
 %postun -n libKF5BalooEngine5 -p /sbin/ldconfig
 
@@ -186,9 +190,12 @@ package contains aditional command line utilities. Development files.
 %{_kf5_bindir}/baloo_file
 %{_kf5_bindir}/baloo_file_extractor
 %{_kf5_bindir}/balooctl
+%{_kf5_libdir}/libexec/baloo_file
+%{_kf5_libdir}/libexec/baloo_file_extractor
 %{_kf5_configdir}/autostart/baloo_file.desktop
 %{_kf5_debugdir}/baloo.categories
 %{_kf5_debugdir}/baloo.renamecategories
+%{_userunitdir}/kde-baloo.service
 
 %files kioslaves
 %license LICENSES/*
