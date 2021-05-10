@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Draw icon in QQStyleItem
+  * [CheckBox] Rewrite to be nearly identical to RadioButton (kde#435934)
+  * [RadioButton] Correct typo
+  * Add failing test case to illustrate Bug 435934
+  * Keep context menu above other popups, use dismiss() (kde#428631)
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
