@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  2 17:20:38 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - Update gate jobs
+  - Restore package metadata
+  - Remove unuseful param 'opts'
+  - update package metadata
+  - Add py38 package metadata.
+  - Remove unsueful 'opts' param
+  - Update package metadata
+  - Update testing to Ubuntu Focal
+  - Add "project_domain_id" param for clinet.Client():
+
+-------------------------------------------------------------------
 Fri Oct  9 19:07:06 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.0

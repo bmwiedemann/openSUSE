@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezerclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-freezerclient
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Freezer
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-freezerclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerclient/python-freezerclient-4.0.0.tar.gz
+URL:            https://docs.openstack.org/python-freezerclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerclient/python-freezerclient-4.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-fixtures
@@ -44,7 +44,6 @@ Client library for Freezer built on the Freezer API. It provides a Python API
 
 %package -n python3-freezerclient
 Summary:        Python API and CLI for OpenStack Freezer
-Group:          Development/Languages/Python
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-oslo.serialization >= 2.25.0
@@ -80,7 +79,7 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=4.0.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.2.0 %sphinx_build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
