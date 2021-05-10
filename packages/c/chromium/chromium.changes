@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  6 15:45:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+  * Patch change *
+- Fix build with GCC 11 again (bsc#1185716)
+- Remove chromium-88-compiler.patch
+- Remove chromium-90-cstdint.patch
+- Remove chromium-90-gslang-linkage-fixup.patch
+- Added  chromium-90-compiler.patch
+- Added  chromium-90-angle-constexpr.patch
+- Added  chromium-90-TokenizedOutput-include.patch
+- Added  chromium-90-ruy-include.patch
+- Added  chromium-90-CrossThreadCopier-qualification.patch
+- Added  chromium-90-quantization_utils-include.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 08:53:55 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Chromium 90.0.4430.93 (boo#1185398):

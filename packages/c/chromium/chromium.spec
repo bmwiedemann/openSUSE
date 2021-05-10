@@ -81,7 +81,7 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-88-compiler.patch
+Patch15:        chromium-90-compiler.patch
 Patch16:        chromium-86-ConsumeDurationNumber-constexpr.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
@@ -90,23 +90,25 @@ Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
 Patch22:        chromium-lp152-missing-includes.patch
 Patch23:        chromium-glibc-2.33.patch
-Patch24:        chromium-90-cstdint.patch
 Patch25:        chromium-90-fseal.patch
-# PATCH-FIX-SUSE: chromium 90. avoid global reference to this array, seems confuse compiler
-Patch28:        chromium-90-gslang-linkage-fixup.patch
 Patch29:        chromium-89-EnumTable-crash.patch
 Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
+Patch34:        chromium-90-angle-constexpr.patch
+Patch35:        chromium-90-TokenizedOutput-include.patch
+Patch36:        chromium-90-ruy-include.patch
+Patch37:        chromium-90-CrossThreadCopier-qualification.patch
+Patch38:        chromium-90-quantization_utils-include.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
 #  Recreated from scratch to be smaller and use system the orginal switches
 #  (default on) compared to the PR
-Patch34:        chromium-vaapi.patch
-Patch35:        chromium-86-fix-vaapi-on-intel.patch
+Patch100:       chromium-vaapi.patch
+Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
-Patch36:        chromium-prop-codecs.patch
+Patch102:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
