@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Make the docs state that KConfig::reparseConfiguration() calls
+    sync() if needed
+  * Use new version-controlled enumerator deprecation warning macros
+  * Deprecate KDesktopFile::readDevice()
+  * Remove stray tick from readme
+  * KConfig: rename kconfigdata.h to kconfigdata_p.h
+  * Relicense to LGPL-2.0-or-later
+  * kconfig_compiler: add override to generated destructors
+  * autotests: look for cmd, not bash, on Windows
+- Rebase kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
