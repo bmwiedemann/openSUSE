@@ -235,4 +235,41 @@
     + Improved keyboard shortcut handling (e.g. Ctrl+Tab and Ctrl+Shift+Tab now also work when the quick search box is focused).</comment>
     <requestid>861997</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c936882e7a404b6b6a1d6dda00adec6a</srcmd5>
+    <version>2.48</version>
+    <time>1620653950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.47
+  * New Features:
+    + New KDBX 4.1 file format, which supports various new features (listed below).
+    + Added support for group tags (KDBX 4.1).
+    + In the entry/group dialogs, there now is a button to show a menu for adding/removing existing tags.
+    + If an entry/group inherits a tag from a parent group, a link is displayed in the entry/group dialog to show the parent groups and their tags.
+    + Added option in the entry dialog for disabling/enabling the password quality estimation for the current entry (KDBX 4.1).
+    + If the password quality estimation is disabled for an entry, the entry is now excluded from password quality reports (menu 'Find' → 'Password Quality').
+    + When moving an entry/group into a different group (e.g. into the recycle bin), the previous parent group is remembered now (KDBX 4.1, not enforcing).
+    + Added command 'Move to Previous Parent Group' (in the 'Rearrange' popup menu; if the command will move all selected entries/groups out of the recycle bin, a '(Restore)' suffix is appended to the command name; if at least one entry/group will be moved into/within the recycle bin, a confirmation dialog is displayed).
+    + Renaming a list view item (if supported, e.g. a file attached to an entry) can now be initiated by pressing the F2 key.
+    + Each custom icon may now have a name, and its last modification time is remembered (KDBX 4.1).
+    + In the icon picker dialog, a custom icon can now be renamed (click on an already selected name or press the F2 key).
+    + In the icon picker dialog, the dimensions and the size of a custom icon are now displayed in a tooltip.
+    + The UUID and the deletion time of a deleted custom icon are remembered now, and this information is used in order to delete the custom icon during a synchronization (if the last modification time is older than the deletion time).
+    + Added built-in URL override for associating the 'ssh' URL scheme with 'SSH.exe' (OpenSSH, included in Windows 10; activatable/deactivatable in 'Tools' → 'Options' → tab 'Integration' → button 'URL Overrides').
+    + Added support for loading images with Exif orientation tags.
+    + Enhanced the LastPass import module to support CSV files created by the latest versions.
+    + Enhanced the nPassword import module to import group tags.
+    + The last modification time of a database-specific custom data item (by a plugin/port) is now saved (KDBX 4.1).
+    + When synchronizing databases, database-specific custom data items (by plugins/ports) are now merged based on their last modification times.
+    + Added support for loading KDBX 4 files created by other applications that do not perform a binary content deduplication.
+    + Added workaround for .NET/Windows TopMost/WS_EX_TOPMOST desynchronization bug.
+  * Improvements:
+    + Various user interface improvements in the group dialog (moved the notes box to the first tab page, moved the auto-type behavior option to the auto-type tab, ...).
+    + Tags are sorted naturally now.
+    + Improved tag handling performance.
+    + Various user interface improvements in the icon picker dialog.
+    + The temporary icon that represents multiple icons (when editing multiple entries at once) is now named '(Multiple values)'.
+    + Improved custom icon handling performance.</comment>
+    <requestid>891910</requestid>
+  </revision>
 </revisionlist>
