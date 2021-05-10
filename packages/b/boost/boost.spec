@@ -242,10 +242,10 @@ Release:        0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
-URL:            http://www.boost.org
+URL:            https://www.boost.org
 Source0:        https://dl.bintray.com/boostorg/release/%{version}/source/boost_%{library_version}.tar.bz2
 Source1:        boost-rpmlintrc
-Source3:        http://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
+Source3:        https://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
 Source10:       exception.objdump
 Source11:       __init__.py
@@ -1819,7 +1819,7 @@ EOF
 %{package_libdir}/libboost_math_c99.so.%{version}
 %{package_libdir}/libboost_math_tr1f.so.%{version}
 %{package_libdir}/libboost_math_tr1.so.%{version}
-%ifnarch ppc64 ppc64le
+%ifnarch ppc ppc64 ppc64le
 %{package_libdir}/libboost_math_c99l.so.%{version}
 %{package_libdir}/libboost_math_tr1l.so.%{version}
 %endif
@@ -1833,7 +1833,7 @@ EOF
 %{package_libdir}/libboost_math_c99.so
 %{package_libdir}/libboost_math_tr1f.so
 %{package_libdir}/libboost_math_tr1.so
-%ifnarch ppc64 ppc64le
+%ifnarch ppc ppc64 ppc64le
 %{package_libdir}/libboost_math_c99l.so
 %{package_libdir}/libboost_math_tr1l.so
 %endif

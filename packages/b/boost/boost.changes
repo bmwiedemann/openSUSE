@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  8 16:29:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use https:// 
+
+-------------------------------------------------------------------
+Wed May  5 18:18:21 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Also exclude libboost_math_c99l and libboost_math_tr1l on ppc
+
+-------------------------------------------------------------------
 Wed Apr 28 09:10:23 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Remove libboost_math_c99l.so* libboost_math_tr1l.so* in spec file
