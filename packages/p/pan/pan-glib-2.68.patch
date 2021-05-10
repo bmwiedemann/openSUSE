@@ -1,0 +1,797 @@
+From 39ba1ad39b6912a342a99e3a949149348a9c4148 Mon Sep 17 00:00:00 2001
+From: Olaf Seibert <rhialto@falu.nl>
+Date: Mon, 5 Apr 2021 16:11:49 +0200
+Subject: [PATCH] Take <glib.h> out of extern "C"
+
+and do the same for other <glib/*.h> files.
+---
+ pan/data-impl/article-filter.cc   | 5 +----
+ pan/data-impl/data-impl.cc        | 2 +-
+ pan/data-impl/data-io.cc          | 4 ++--
+ pan/data-impl/groups.cc           | 2 +-
+ pan/data-impl/headers.cc          | 2 +-
+ pan/data-impl/profiles.cc         | 4 ++--
+ pan/data-impl/server.cc           | 6 ++----
+ pan/data/article-cache.cc         | 4 ++--
+ pan/data/article-cache.h          | 4 +---
+ pan/data/cert-store.cc            | 2 --
+ pan/data/encode-cache.cc          | 4 ++--
+ pan/data/encode-cache.h           | 4 +---
+ pan/general/e-util.cc             | 4 ++--
+ pan/general/file-util.cc          | 4 ++--
+ pan/general/file-util.h           | 4 ++--
+ pan/general/macros.h              | 5 +----
+ pan/general/text-match.cc         | 4 ++--
+ pan/gui/dl-headers-ui.cc          | 4 ++--
+ pan/gui/group-prefs-dialog.cc     | 4 ++--
+ pan/gui/group-prefs.cc            | 2 +-
+ pan/gui/prefs-file.cc             | 2 +-
+ pan/gui/prefs.cc                  | 6 ++----
+ pan/gui/server-ui.cc              | 4 ++--
+ pan/gui/task-pane.cc              | 4 ++--
+ pan/gui/url.cc                    | 6 ++----
+ pan/tasks/nntp.cc                 | 6 ++----
+ pan/tasks/nzb.cc                  | 4 +---
+ pan/tasks/socket-impl-main.cc     | 5 +----
+ pan/tasks/socket-impl-openssl.h   | 5 +----
+ pan/tasks/socket.cc               | 4 +---
+ pan/usenet-utils/filter-info.cc   | 6 ++----
+ pan/usenet-utils/message-check.cc | 2 --
+ pan/usenet-utils/rules-info.cc    | 6 ++----
+ pan/usenet-utils/text-massager.cc | 2 --
+ 34 files changed, 49 insertions(+), 87 deletions(-)
+
+Index: pan-0.146/pan/data-impl/article-filter.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/article-filter.cc
++++ pan-0.146/pan/data-impl/article-filter.cc
+@@ -25,10 +25,7 @@
+ #include <gmime/gmime.h>
+ 
+ //#include <glib/gprintf.h>
+-extern "C"
+-{
+-  #include <glib.h>
+-}
++#include <glib.h>
+ 
+ #include "article-filter.h"
+ 
+Index: pan-0.146/pan/data-impl/data-impl.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/data-impl.cc
++++ pan-0.146/pan/data-impl/data-impl.cc
+@@ -22,10 +22,8 @@
+ **************/
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include <glib.h> // for g_build_filename
+-}
++#include <glib/gi18n.h>
++#include <glib.h> // for g_build_filename
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+ #include <pan/general/log.h>
+Index: pan-0.146/pan/data-impl/data-io.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/data-io.cc
++++ pan-0.146/pan/data-impl/data-io.cc
+@@ -27,9 +27,9 @@ extern "C" {
+   #include <sys/types.h> // for chmod
+   #include <sys/stat.h> // for chmod
+   #include <unistd.h>
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+ #include <pan/general/line-reader.h>
+Index: pan-0.146/pan/data-impl/groups.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/groups.cc
++++ pan-0.146/pan/data-impl/groups.cc
+@@ -29,9 +29,9 @@
+ #include <vector>
+ 
+ #include <glib.h>
++#include <glib/gi18n.h>
+ extern "C" {
+   #include <unistd.h>
+-  #include <glib/gi18n.h>
+ }
+ 
+ #include <pan/general/debug.h>
+Index: pan-0.146/pan/data-impl/headers.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/headers.cc
++++ pan-0.146/pan/data-impl/headers.cc
+@@ -25,10 +25,10 @@
+ #include <string>
+ #include <cmath>
+ #include <glib.h>
++#include <glib/gi18n.h>
+ extern "C" {
+   #include <sys/types.h> // for chmod
+   #include <sys/stat.h> // for chmod
+-  #include <glib/gi18n.h>
+ }
+ #include <pan/general/debug.h>
+ #include <pan/general/log.h>
+Index: pan-0.146/pan/data-impl/profiles.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/profiles.cc
++++ pan-0.146/pan/data-impl/profiles.cc
+@@ -26,9 +26,9 @@
+ extern "C" {
+   #include <sys/types.h> // for chmod
+   #include <sys/stat.h> // for chmod
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/string-view.h>
+ #include <pan/general/file-util.h>
+Index: pan-0.146/pan/data-impl/server.cc
+===================================================================
+--- pan-0.146.orig/pan/data-impl/server.cc
++++ pan-0.146/pan/data-impl/server.cc
+@@ -25,10 +25,8 @@
+ #include <map>
+ #include <set>
+ #include <vector>
+-extern "C" {
+-  #include <glib.h> // for GMarkup
+-  #include <glib/gi18n.h>
+-}
++#include <glib.h> // for GMarkup
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+ #include <pan/general/log.h>
+Index: pan-0.146/pan/data/article-cache.cc
+===================================================================
+--- pan-0.146.orig/pan/data/article-cache.cc
++++ pan-0.146/pan/data/article-cache.cc
+@@ -26,12 +26,10 @@ extern "C"
+   #include <sys/stat.h>
+   #include <unistd.h>
+   #include <dirent.h>
+-
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-  #include <gmime/gmime.h>
+ }
+-
++#include <glib.h>
++#include <glib/gi18n.h>
++#include <gmime/gmime.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+ #include <pan/general/macros.h>
+Index: pan-0.146/pan/data/article-cache.h
+===================================================================
+--- pan-0.146.orig/pan/data/article-cache.h
++++ pan-0.146/pan/data/article-cache.h
+@@ -22,9 +22,7 @@
+ 
+ #include <map>
+ #include <vector>
+-extern "C" {
+-  #include <glib.h> // for guint64
+-}
++#include <glib.h> // for guint64
+ #include <pan/general/string-view.h>
+ #include <pan/general/quark.h>
+ 
+Index: pan-0.146/pan/data/cert-store.cc
+===================================================================
+--- pan-0.146.orig/pan/data/cert-store.cc
++++ pan-0.146/pan/data/cert-store.cc
+@@ -34,10 +34,8 @@
+ #include <iostream>
+ #include <string>
+ 
+-extern "C" {
+ #include <glib/gi18n.h>
+ #include <glib.h>
+-}
+ 
+ #include <pan/general/debug.h>
+ #include <pan/general/e-util.h>
+Index: pan-0.146/pan/data/encode-cache.cc
+===================================================================
+--- pan-0.146.orig/pan/data/encode-cache.cc
++++ pan-0.146/pan/data/encode-cache.cc
+@@ -29,10 +29,10 @@ extern "C"
+   #include <unistd.h>
+   #include <dirent.h>
+ 
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+   #include <gmime/gmime.h>
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+Index: pan-0.146/pan/data/encode-cache.h
+===================================================================
+--- pan-0.146.orig/pan/data/encode-cache.h
++++ pan-0.146/pan/data/encode-cache.h
+@@ -22,9 +22,7 @@
+ 
+ #include <map>
+ #include <vector>
+-extern "C" {
+-  #include <glib.h> // for guint64
+-}
++#include <glib.h> // for guint64
+ #include <pan/general/string-view.h>
+ #include <pan/general/quark.h>
+ 
+Index: pan-0.146/pan/general/e-util.cc
+===================================================================
+--- pan-0.146.orig/pan/general/e-util.cc
++++ pan-0.146/pan/general/e-util.cc
+@@ -26,9 +26,9 @@
+ #include <ctime>
+ extern "C" {
+   #include <ctype.h>
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include "debug.h"
+ #include "e-util.h"
+ 
+Index: pan-0.146/pan/general/file-util.cc
+===================================================================
+--- pan-0.146.orig/pan/general/file-util.cc
++++ pan-0.146/pan/general/file-util.cc
+@@ -27,12 +27,12 @@ extern "C"
+   #include <unistd.h>
+   #include <sys/stat.h>
+   #include <sys/types.h>
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+   #ifndef G_OS_WIN32
+     #include <pwd.h>
+   #endif
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include "debug.h"
+ #include "log.h"
+Index: pan-0.146/pan/general/file-util.h
+===================================================================
+--- pan-0.146.orig/pan/general/file-util.h
++++ pan-0.146/pan/general/file-util.h
+@@ -25,9 +25,9 @@
+ extern "C" {
+   #include <stddef.h>
+   #include <stdio.h>
+-  #include <glib.h>
+-  #include <glib/gstdio.h>
+ }
++#include <glib.h>
++#include <glib/gstdio.h>
+ #include <pan/general/string-view.h>
+ 
+ #define g_freopen freopen
+Index: pan-0.146/pan/general/macros.h
+===================================================================
+--- pan-0.146.orig/pan/general/macros.h
++++ pan-0.146/pan/general/macros.h
+@@ -63,9 +63,6 @@
+ ***  g_assert
+ **/
+ 
+-extern "C"
+-{
+-  #include <glib.h>
+-}
++#include <glib.h>
+ 
+ #endif
+Index: pan-0.146/pan/general/text-match.cc
+===================================================================
+--- pan-0.146.orig/pan/general/text-match.cc
++++ pan-0.146/pan/general/text-match.cc
+@@ -20,9 +20,9 @@
+ #include <config.h>
+ extern "C" {
+   #include <ctype.h>
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+ }
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include "debug.h"
+ #include "log.h"
+ #include "text-match.h"
+Index: pan-0.146/pan/gui/dl-headers-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/dl-headers-ui.cc
++++ pan-0.146/pan/gui/dl-headers-ui.cc
+@@ -18,9 +18,9 @@
+  */
+ 
+ #include <config.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+   #include "gtk-compat.h"
+ }
+ #include <pan/general/macros.h>
+Index: pan-0.146/pan/gui/group-prefs-dialog.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/group-prefs-dialog.cc
++++ pan-0.146/pan/gui/group-prefs-dialog.cc
+@@ -18,9 +18,9 @@
+  */
+ 
+ #include <config.h>
++#include <glib/gi18n.h>
++#include <glib.h>
+ extern "C" {
+-  #include <glib/gi18n.h>
+-  #include <glib.h>
+   #include "gtk-compat.h"
+ #ifdef HAVE_GTKSPELL
+   #include <enchant/enchant.h>
+Index: pan-0.146/pan/gui/group-prefs.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/group-prefs.cc
++++ pan-0.146/pan/gui/group-prefs.cc
+@@ -21,8 +21,8 @@ extern "C" {
+   #include <config.h>
+   #include <sys/types.h> // chmod
+   #include <sys/stat.h> // chmod
+-  #include <glib.h>
+ }
++#include <glib.h>
+ #include <iostream>
+ #include <fstream>
+ #include <pan/general/file-util.h>
+Index: pan-0.146/pan/gui/prefs-file.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/prefs-file.cc
++++ pan-0.146/pan/gui/prefs-file.cc
+@@ -24,8 +24,8 @@
+ extern "C" {
+   #include <sys/types.h> // for chmod
+   #include <sys/stat.h> // for chmod
+-  #include <glib.h>
+ }
++#include <glib.h>
+ #include <pan/general/file-util.h>
+ #include "prefs-file.h"
+ 
+Index: pan-0.146/pan/gui/prefs.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/prefs.cc
++++ pan-0.146/pan/gui/prefs.cc
+@@ -23,10 +23,8 @@
+ #include <iostream>
+ #include <sstream>
+ #include <string>
+-extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-}
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/log.h>
+ #include <pan/general/macros.h>
+Index: pan-0.146/pan/gui/server-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/server-ui.cc
++++ pan-0.146/pan/gui/server-ui.cc
+@@ -21,9 +21,9 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <climits>
++#include <glib.h>
++#include <glib/gi18n.h>
+ extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+   #include "gtk-compat.h"
+ }
+ 
+Index: pan-0.146/pan/gui/task-pane.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/task-pane.cc
++++ pan-0.146/pan/gui/task-pane.cc
+@@ -18,9 +18,9 @@
+  */
+ 
+ #include <config.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+   #include "gtk-compat.h"
+ }
+ #include <pan/general/e-util.h>
+Index: pan-0.146/pan/gui/url.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/url.cc
++++ pan-0.146/pan/gui/url.cc
+@@ -20,10 +20,8 @@
+ #include <config.h>
+ #include <iostream>
+ #include <string>
+-extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-};
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/log.h>
+ #include "url.h"
+ 
+Index: pan-0.146/pan/tasks/nntp.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/nntp.cc
++++ pan-0.146/pan/tasks/nntp.cc
+@@ -22,10 +22,8 @@
+ #include <cstdarg>
+ #include <cstdlib> // abort, atoi, strtoul
+ #include <cstdio> // snprintf
+-extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-}
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/log.h>
+ #include <pan/general/messages.h>
+Index: pan-0.146/pan/tasks/nzb.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/nzb.cc
++++ pan-0.146/pan/tasks/nzb.cc
+@@ -24,9 +24,7 @@
+ #include <sstream>
+ #include <string>
+ #include <map>
+-extern "C" {
+-  #include <glib.h>
+-}
++#include <glib.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/file-util.h>
+ #include <pan/general/log.h>
+Index: pan-0.146/pan/tasks/socket-impl-main.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/socket-impl-main.cc
++++ pan-0.146/pan/tasks/socket-impl-main.cc
+@@ -30,10 +30,7 @@
+ //#include <glib/giochannel.h>
+ //#include <glib/gstring.h>
+ 
+-extern "C"
+-{
+-  #include <glib.h>
+-}
++#include <glib.h>
+ 
+ #include <pan/tasks/socket.h>
+ 
+Index: pan-0.146/pan/tasks/socket-impl-openssl.h
+===================================================================
+--- pan-0.146.orig/pan/tasks/socket-impl-openssl.h
++++ pan-0.146/pan/tasks/socket-impl-openssl.h
+@@ -27,10 +27,7 @@
+ #include <string>
+ //#include <glib/giochannel.h>
+ //#include <glib/gstring.h>
+-extern "C"
+-{
+-  #include <glib.h>
+-}
++#include <glib.h>
+ 
+ #include <pan/general/debug.h>
+ #include <pan/general/quark.h>
+Index: pan-0.146/pan/tasks/socket.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/socket.cc
++++ pan-0.146/pan/tasks/socket.cc
+@@ -21,9 +21,7 @@
+ #include <cstdarg>
+ #include <ctime>
+ #include <cmath>
+-extern "C" {
+-  #include <glib.h>
+-}
++#include <glib.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/string-view.h>
+ #include "socket.h"
+Index: pan-0.146/pan/usenet-utils/filter-info.cc
+===================================================================
+--- pan-0.146.orig/pan/usenet-utils/filter-info.cc
++++ pan-0.146/pan/usenet-utils/filter-info.cc
+@@ -18,10 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-}
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/macros.h>
+ #include "filter-info.h"
+ 
+Index: pan-0.146/pan/usenet-utils/message-check.cc
+===================================================================
+--- pan-0.146.orig/pan/usenet-utils/message-check.cc
++++ pan-0.146/pan/usenet-utils/message-check.cc
+@@ -21,9 +21,7 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <glib.h>
+-extern "C" {
+ #include <glib/gi18n.h>
+-}
+ #include <pan/general/debug.h>
+ #include <pan/general/macros.h>
+ #include <pan/general/string-view.h>
+Index: pan-0.146/pan/usenet-utils/rules-info.cc
+===================================================================
+--- pan-0.146.orig/pan/usenet-utils/rules-info.cc
++++ pan-0.146/pan/usenet-utils/rules-info.cc
+@@ -22,10 +22,8 @@
+ 
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib.h>
+-  #include <glib/gi18n.h>
+-}
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <pan/general/macros.h>
+ #include "rules-info.h"
+ 
+Index: pan-0.146/pan/usenet-utils/text-massager.cc
+===================================================================
+--- pan-0.146.orig/pan/usenet-utils/text-massager.cc
++++ pan-0.146/pan/usenet-utils/text-massager.cc
+@@ -22,9 +22,7 @@
+ #include <map>
+ #include <cstring>
+ #include <glib.h>
+-extern "C" {
+ #include <glib/gi18n.h>
+-}
+ #include "text-massager.h"
+ #include <pan/general/log.h>
+ #include <pan/general/e-util.h>
+Index: pan-0.146/pan/general/line-reader.cc
+===================================================================
+--- pan-0.146.orig/pan/general/line-reader.cc
++++ pan-0.146/pan/general/line-reader.cc
+@@ -1,9 +1,7 @@
+ #include <config.h>
+ #include <cstdio>
+ #include <cstdlib>
+-extern "C"{ 
+-  #include <glib/gi18n.h>
+-}
++#include <glib/gi18n.h>
+ #include <cerrno>
+ #include "file-util.h"
+ #include "line-reader.h"
+Index: pan-0.146/pan/tasks/task-xover.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/task-xover.cc
++++ pan-0.146/pan/tasks/task-xover.cc
+@@ -26,9 +26,9 @@ extern "C"
+ #define PROTOTYPES
+ #include <stdio.h>
+ #include <uulib/uudeview.h>
++}
+ #include <glib/gi18n.h>
+ #include <gmime/gmime-utils.h>
+-}
+ 
+ #include <fstream>
+ #include <iostream>
+Index: pan-0.146/pan/tasks/task-post.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/task-post.cc
++++ pan-0.146/pan/tasks/task-post.cc
+@@ -18,9 +18,7 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-}
++#include <glib/gi18n.h>
+ #include "task-post.h"
+ #include <pan/general/debug.h>
+ #include <pan/general/log.h>
+Index: pan-0.146/pan/tasks/task-groups.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/task-groups.cc
++++ pan-0.146/pan/tasks/task-groups.cc
+@@ -20,9 +20,9 @@
+ #include <config.h>
+ #include <cassert>
+ extern "C" {
+-  #include <glib/gi18n.h>
+   #include <stdlib.h>
+ }
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/macros.h>
+ #include <pan/general/messages.h>
+Index: pan-0.146/pan/tasks/task-xoverinfo.cc
+===================================================================
+--- pan-0.146.orig/pan/tasks/task-xoverinfo.cc
++++ pan-0.146/pan/tasks/task-xoverinfo.cc
+@@ -24,10 +24,10 @@ extern "C" {
+   #define PROTOTYPES
+   #include <stdio.h>
+   #include <uulib/uudeview.h>
+-  #include <glib/gi18n.h>
+-  #include <gmime/gmime-utils.h>
+   #include <zlib.h>
+ }
++#include <glib/gi18n.h>
++#include <gmime/gmime-utils.h>
+ #include <fstream>
+ #include <iostream>
+ #include <pan/general/debug.h>
+Index: pan-0.146/pan/gui/actions.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/actions.cc
++++ pan-0.146/pan/gui/actions.cc
+@@ -18,11 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-}
+-
++#include "gtk-compat.h"
++#include <glib/gi18n.h>
+ #include <pan/general/macros.h>
+ #include <pan/general/debug.h>
+ #include <pan/data-impl/data-impl.h>
+Index: pan-0.146/pan/gui/header-pane.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/header-pane.cc
++++ pan-0.146/pan/gui/header-pane.cc
+@@ -19,10 +19,9 @@
+ 
+ extern "C" {
+   #include <config.h>
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-  #include "gtk-compat.h"
+ }
++#include <glib/gi18n.h>
++#include "gtk-compat.h"
+ #include <cctype>
+ #include <cmath>
+ #include <algorithm>
+Index: pan-0.146/pan/gui/prefs-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/prefs-ui.cc
++++ pan-0.146/pan/gui/prefs-ui.cc
+@@ -18,10 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-}
++#include <glib/gi18n.h>
++#include "gtk-compat.h"
+ #include <pan/general/debug.h>
+ #include <pan/general/macros.h>
+ #include <pan/general/file-util.h>
+Index: pan-0.146/pan/gui/progress-view.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/progress-view.cc
++++ pan-0.146/pan/gui/progress-view.cc
+@@ -18,9 +18,7 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include "gtk-compat.h"
+-}
++#include "gtk-compat.h"
+ #include <pan/general/string-view.h>
+ #include <pan/usenet-utils/mime-utils.h>
+ #include "progress-view.h"
+Index: pan-0.146/pan/gui/score-add-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/score-add-ui.cc
++++ pan-0.146/pan/gui/score-add-ui.cc
+@@ -20,9 +20,7 @@
+ #include <config.h>
+ #include <cassert>
+ #include <climits>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-}
++#include <glib/gi18n.h>
+ #include <pan/general/debug.h>
+ #include <pan/general/text-match.h>
+ #include "hig.h"
+Index: pan-0.146/pan/gui/score-view-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/score-view-ui.cc
++++ pan-0.146/pan/gui/score-view-ui.cc
+@@ -18,10 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-}
++#include <glib/gi18n.h>
++#include "gtk-compat.h"
+ #include <pan/general/debug.h>
+ #include "pad.h"
+ #include "score-add-ui.h"
+Index: pan-0.146/pan/gui/save-attach-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/save-attach-ui.cc
++++ pan-0.146/pan/gui/save-attach-ui.cc
+@@ -18,10 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-}
++#include <glib/gi18n.h>
++#include "gtk-compat.h"
+ #include <pan/general/debug.h>
+ #include <pan/general/macros.h>
+ #include <pan/icons/pan-pixbufs.h>
+Index: pan-0.146/pan/gui/save-ui.cc
+===================================================================
+--- pan-0.146.orig/pan/gui/save-ui.cc
++++ pan-0.146/pan/gui/save-ui.cc
+@@ -18,10 +18,8 @@
+  */
+ 
+ #include <config.h>
+-extern "C" {
+-  #include <glib/gi18n.h>
+-  #include "gtk-compat.h"
+-}
++#include <glib/gi18n.h>
++#include "gtk-compat.h"
+ #include <pan/general/debug.h>
+ #include <pan/general/macros.h>
+ #include <pan/icons/pan-pixbufs.h>

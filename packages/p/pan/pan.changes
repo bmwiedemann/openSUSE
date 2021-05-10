@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  8 13:23:21 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add pan-glib-2.68.patch: Fix compilation with glib 2.68+; patch
+  taken from upstream merge request with additional fixes for
+  current version (glgo#GNOME/pan#128).
+
+-------------------------------------------------------------------
 Sun Jul  5 11:32:35 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add pan-fix-sending-with-gmime30.patch: Fix message sending when
