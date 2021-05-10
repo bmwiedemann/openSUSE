@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
+
+- Update to 4.2.1
+  * Added "classic" abstract classes and functions
+  * Added module-level static declarations
+  * Added rest arguments with `haxe.Rest` type
+  * Added per-thread event loops `sys.thread.Thread.events`
+  * Support method overloading for extern methods
+  * Added `EIs` constructor to `haxe.macro.Expr`
+  * Treat `Any` as `Dynamic` in variance unification
+  * eval : added libuv bindings under `eval.luv` package
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.1/extra/CHANGES.txt
+
+-------------------------------------------------------------------
 Mon Jan 11 10:44:50 UTC 2021 - Andy Li <andy@onthewings.net>
 
 - Update to 4.1.5

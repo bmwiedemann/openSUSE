@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.1.5
+Version:        4.2.1
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -37,14 +37,15 @@ BuildRequires:  help2man
 BuildRequires:  neko-devel >= 2.3.0
 BuildRequires:  neko >= 2.3.0
 BuildRequires:  ocaml >= 4.02.3
-BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-camlp5-devel
-BuildRequires:  ocaml-sedlex-devel >= 2.0
-BuildRequires:  ocaml-xml-light-devel
-BuildRequires:  ocaml-extlib-devel
-BuildRequires:  ocaml-ptmap-devel
-BuildRequires:  ocaml-sha-devel
+BuildRequires:  ocamlfind(camlp5)
+BuildRequires:  ocamlfind(extlib)
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(luv)
+BuildRequires:  ocamlfind(ptmap)
+BuildRequires:  ocamlfind(sedlex)
+BuildRequires:  ocamlfind(sha)
+BuildRequires:  ocamlfind(xml-light)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre-devel-static
 BuildRequires:  mbedtls-devel

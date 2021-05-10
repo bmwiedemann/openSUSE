@@ -252,4 +252,22 @@ We're in the process of easing the installation process across different Linux d
     https://github.com/HaxeFoundation/haxe/blob/4.1.5/extra/CHANGES.txt</comment>
     <requestid>862264</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>80a61b047f618a8aa1902ab5a7fe5c6b</srcmd5>
+    <version>4.2.1</version>
+    <time>1620653958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1
+  * Added &quot;classic&quot; abstract classes and functions
+  * Added module-level static declarations
+  * Added rest arguments with `haxe.Rest` type
+  * Added per-thread event loops `sys.thread.Thread.events`
+  * Support method overloading for extern methods
+  * Added `EIs` constructor to `haxe.macro.Expr`
+  * Treat `Any` as `Dynamic` in variance unification
+  * eval : added libuv bindings under `eval.luv` package
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.1/extra/CHANGES.txt</comment>
+    <requestid>891989</requestid>
+  </revision>
 </revisionlist>
