@@ -19,7 +19,7 @@
 %define sonum   5
 %define rname attica
 %define _libname KF5Attica
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           attica-qt5
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Open Collaboration Service client library
 License:        LGPL-2.1-or-later
@@ -43,9 +43,9 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 
 %description
 Attica is a library to access Open Collaboration Service servers.
@@ -64,9 +64,9 @@ Attica is a library to access Open Collaboration Service servers.
 Summary:        Open Collaboration Service client library - development files
 Group:          Development/Libraries/C and C++
 Requires:       lib%{_libname}%{sonum} = %{version}
-Requires:       cmake(Qt5Core) >= 5.14.0
-Requires:       cmake(Qt5Network) >= 5.14.0
-Requires:       cmake(Qt5Widgets) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Network) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= 5.15.0
 
 %description -n attica-qt5-devel
 Development files for attica, Attica a library to access Open Collaboration Service servers.
@@ -75,12 +75,12 @@ Development files for attica, Attica a library to access Open Collaboration Serv
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %post -n lib%{_libname}%{sonum} -p /sbin/ldconfig
 %postun -n lib%{_libname}%{sonum} -p /sbin/ldconfig
