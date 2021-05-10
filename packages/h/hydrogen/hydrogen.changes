@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 14:07:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * User-selectable translation language
+  * Bug fixes including critical startup bug on macOS Big Sur
+
+-------------------------------------------------------------------
 Sun Nov 15 11:46:57 UTC 2020 - munix9@googlemail.com
 
 - Update to version 1.0.1
