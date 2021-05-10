@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Activities5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kactivities5
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
@@ -45,13 +45,13 @@ BuildRequires:  xz
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Qml) >= 5.14.0
-BuildRequires:  cmake(Qt5Quick) >= 5.14.0
-BuildRequires:  cmake(Qt5Sql) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5Sql) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
 
 %description
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
@@ -84,22 +84,22 @@ Summary:        KDE Plasma Activities support
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules >= 1.7.0
-Requires:       cmake(Qt5Core) >= 5.14.0
+Requires:       cmake(Qt5Core) >= 5.15.0
 
 %description devel
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
 Development files.
 
 %prep
-%setup -q -n kactivities-%{version}
+%autosetup -p1 -n kactivities-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
