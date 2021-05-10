@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  9 19:39:32 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 0.9.5
+  * Fix: Playback speed sometimes was not set correctly when a chapter changed
+  * Fix: Changing the playback position with customized playback speed did jump to a wrong position
+  * Fix: Startup failed if the artwork cache did contain a broken file
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sat Apr 24 11:59:45 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 0.9.4
