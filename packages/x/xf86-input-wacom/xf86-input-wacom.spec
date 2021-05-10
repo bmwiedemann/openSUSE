@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-wacom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-input-wacom
-Version:        0.39.0
+Version:        0.40.0
 Release:        0
 Summary:        Wacom input driver for the Xorg X server
 License:        GPL-2.0-or-later
