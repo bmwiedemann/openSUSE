@@ -20,7 +20,7 @@
 %define compatversion 5.0.0
 
 Name:           kicad-footprints
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
