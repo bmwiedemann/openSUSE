@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quickcontrols2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qtquickcontrols2-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-quickcontrols2%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
-Summary:        Qt6 QuickControls2 Libraries and plugins
+Summary:        Set of controls to build interfaces in Qt Quick
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -57,7 +57,8 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-The Qt6 QuickControls2 Libraries and plugins.
+The Qt 6 QuickControls module provides a set of controls that can be used to
+build complete interfaces in Qt Quick.
 
 %if !%{qt6_docs_flavor}
 
