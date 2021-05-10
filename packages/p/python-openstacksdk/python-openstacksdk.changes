@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sun May  2 17:15:23 UTC 2021 - cloud-devel@suse.de
+
+- update to version 0.55.0
+  - Skip address group functional tests if no extension
+  - Volume Target support for Ironic on OpenStack SDK
+  - Update master for stable/victoria
+  - Follow-up on 751234 and 750072
+  - Switch flavor ops in the cloud layer to proxy
+  - Add ALPN support to load balancer listener
+  - Fix l-c testing for ubuntu focal
+  - Replace assertItemsEqual with assertCountEqual
+  - Fix a trivial error in one of the error messages
+  - Add _max_microversion for aggregates
+  - Add ``device_profile`` attribute to ``port``
+  - Prevent the endless loop in resource listing
+  - Fix invalid assertIsNotNone statement
+  - Update TOX_CONSTRAINTS_FILE
+  - Respect default microversion in the microversion negotiation
+  - Fix the invalid if statement
+  - Add compute microversion 2.70
+  - Add TODO to remove md5 wrapper
+  - Set resource URI properties in listing method
+  - add cluster_id to filter by cluster_id when list actions
+  - Add update_flavor method
+  - Remove duplicate test_zone_create
+  - Add shared file systems support
+  - Drop .json suffix from networking URLs
+  - Move 'collections.Mapping' to 'collections.abc'
+  - Trival change: Correct some errors
+  - New volume availability zone resource, new functional and unit tests
+  - Add tls_enabled param for Octavia Pools
+  - Fix hacking min version to 3.0.1
+  - Support waiting for bare metal power states
+  - Complete compute.service operations
+  - Add "description" to cinder volume types.
+  - Refresh deprecated link
+  - Update Open Telekom Cloud vendor docu
+  - Fix a bogus error in config loader when using several args with dashes
+  - Add func test for compute microversion 2.3
+  - Add additional compute flavor operations
+  - Change nodepool job to build CentOS-8-stream (unblock gate)
+  - Add source_ip_prefix and destination_ip_prefix to metering label rules
+  - Support roles 'name' in list_roles call
+  - [Trival]: Add comments in the cloud/accelerator
+  - Deprecate 'remote_ip_prefix' parameter in metering label rules
+  - Add new Open Telekom Cloud region into the profile
+  - Migrate ironic job to focal
+  - Add support for overriding list base_path in find function
+  - Add some compute console operations
+  - Include "fields" to "Port" query parameters
+  - Add support for updating Block Storage Volume type extra_spec attributes
+  - Modify cloud.get_aggregate to use proxy.find
+  - add masakari enabled to segment
+  - Improve Ironic API on OpenStack SDK
+  - Fix invalid argument formatting in log messages
+  - Complete compute.hypervisor functions
+  - Repair 2 deprecation warnings
+  - Add id query parameter to sg rules
+  - Add ALPN support to load balancer pools
+  - Support SNAP_REAL_HOME when using openstacksdk inside a snap package
+  - Switch cloud.networking.qos* operations to rely on proxy layer
+  - Squeeze SnapshotDetail class into Snapshot
+  - encapsulate md5 calls for fips
+  - Add neutron address group CRUD
+  - Add user_id as optional param to keypair operations
+  - Apply urllib.parse.quote in unittests to get_mock_url
+  - Remove unnecessary string formatting
+  - Don't set list_type to dict for server groups.
+  - Remove install unnecessary packages
+  - Expand user path when loading SSL-related files
+  - Increase IRONIC_VM_SPECS_RAM to avoid KP
+  - Drop swift check for volume backup
+  - Change microseconds to total_seconds()
+  - Add 'project_id' to Snapshot query parameters
+  - Complete compute aggregate functions
+  - Add support for updating cinder (v3) volume types
+  - Add query parameters to listing heat stacks
+  - Support remote address group in SG rules
+  - Support Deploy Templates for Ironic API
+  - Fix exception parsing when using WSME
+  - Add tests for compute microversion 2.2 and 2.10
+  - Disable dstat on ironic job
+  - Switch nodepool test to containers
+  - Add support for Block Storage (v3) VolumeType Encyption resources
+
+-------------------------------------------------------------------
 Fri Oct  9 19:16:18 UTC 2020 - cloud-devel@suse.de
 
 - update to version 0.50.0

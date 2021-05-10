@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstacksdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-# and cause timeouts due to swapping. Disabling for now
 %define with_tests 0
 Name:           python-openstacksdk
-Version:        0.50.0
+Version:        0.55.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.50.0.tar.gz
+URL:            https://docs.openstack.org/openstacksdk
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.55.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs >= 1.3.0
@@ -71,7 +70,6 @@ documentation, examples, and tools.
 
 %package -n python3-openstacksdk
 Summary:        An SDK for building applications to work with OpenStack
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.13
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-cryptography >= 2.7
@@ -126,7 +124,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-0.50.0
+%autosetup -p1 -n openstacksdk-0.55.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -137,7 +135,7 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=0.50.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=0.55.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
