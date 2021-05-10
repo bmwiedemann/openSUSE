@@ -84,9 +84,11 @@ chmod 644 hgweb.cgi
 
 %build
 make %{?_smp_mflags} all PYTHON=python3
+make %{?_smp_mflags} -C contrib/chg all
 
 %install
 make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=python3
+make -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
 
 # Move locales to proper location
 mkdir -p %{buildroot}%{_datadir}/locale
@@ -122,6 +124,7 @@ make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
 %{_datadir}/emacs
 %{_datadir}/xemacs
 %{_mandir}/man1/hg.1%{?ext_man}
+%{_mandir}/man1/chg.1%{?ext_man}
 %{_mandir}/man5/hgignore.5%{?ext_man}
 %{_mandir}/man5/hgrc.5%{?ext_man}
 %{_mandir}/man8/hg-ssh.8%{?ext_man}
