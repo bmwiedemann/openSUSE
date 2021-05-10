@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ki18n
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -43,10 +43,10 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  kf5-filesystem
 BuildRequires:  python3
-BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5Qml) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
 
 %description
 KI18n provides functionality for internationalizing user interface text
@@ -88,16 +88,15 @@ Development files.
 %lang_package -n %{lname}
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %if %{with lang}
 %find_lang %{name}5
