@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstack-doc-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        OpenStack Docs Tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/openstack-doc-tools
+URL:            https://docs.openstack.org/openstack-doc-tools
 Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-3.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
@@ -41,7 +41,6 @@ Tools used by the OpenStack Documentation Project.
 
 %package -n python3-openstack-doc-tools
 Summary:        OpenStack Docs Tools
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.13
 Requires:       python3-Sphinx
 Requires:       python3-iso8601 >= 0.1.11
