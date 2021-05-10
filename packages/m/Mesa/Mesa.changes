@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May  6 19:00:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted filelist to removed vulkan files in Mesa 21.1.0 
+  (packages Mesa-libVulkan-devel, Mesa-vulkan-device-select,
+   Mesa-vulkan-overlay)
+
+-------------------------------------------------------------------
+Thu May  6 14:24:29 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- /usr/include/vulkan/vulkan_intel.h dropped with Mesa 21.1.0, but
+  let's keep the package containing an empty directory
+
+-------------------------------------------------------------------
+Thu May  6 11:45:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.1.0
+  * bunch of work here, lots of zink and softpipe, but bits and
+    pieces of other things: tgsi, freddreno, nir, panfrost, intel, 
+    spirv, core gallium, radv, aco, r600, and core mesa.
+- supersedes patches U_clover-Fix-build-with-llvm-12.patch,
+  U_clover-Add-missing-include-for-llvm-12-build-fix.patch
+
+-------------------------------------------------------------------
+Wed Apr 21 20:54:43 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.0.3
+  * fixes in haiku, core mesa, radeonsi, lavapipe, nir, radv, anv,
+    freedreno and turnip, etniviv, iris, egl, lima, core gallium,
+    spriv, v3d, meson
+
+-------------------------------------------------------------------
 Sat Apr 17 16:41:33 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Move osmesa build back to Mesa, which we can now do after

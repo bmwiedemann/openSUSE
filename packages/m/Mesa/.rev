@@ -4411,4 +4411,29 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>886357</requestid>
   </revision>
+  <revision rev="404" vrev="276">
+    <srcmd5>36f341a574eb8ed024f81c8777584d0c</srcmd5>
+    <version>unknown</version>
+    <time>1620653795</time>
+    <user>dimstar_suse</user>
+    <comment>- adjusted filelist to removed vulkan files in Mesa 21.1.0 
+  (packages Mesa-libVulkan-devel, Mesa-vulkan-device-select,
+   Mesa-vulkan-overlay)
+
+- /usr/include/vulkan/vulkan_intel.h dropped with Mesa 21.1.0, but
+  let's keep the package containing an empty directory
+
+- update to 21.1.0
+  * bunch of work here, lots of zink and softpipe, but bits and
+    pieces of other things: tgsi, freddreno, nir, panfrost, intel, 
+    spirv, core gallium, radv, aco, r600, and core mesa.
+- supersedes patches U_clover-Fix-build-with-llvm-12.patch,
+  U_clover-Add-missing-include-for-llvm-12-build-fix.patch
+
+- update to 21.0.3
+  * fixes in haiku, core mesa, radeonsi, lavapipe, nir, radv, anv,
+    freedreno and turnip, etniviv, iris, egl, lima, core gallium,
+    spriv, v3d, meson</comment>
+    <requestid>891259</requestid>
+  </revision>
 </revisionlist>
