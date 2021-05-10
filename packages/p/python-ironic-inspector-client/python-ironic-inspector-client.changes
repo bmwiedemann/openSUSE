@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:37:17 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - Update .gitreview for stable/victoria
+  - Fix l-c job
+
+-------------------------------------------------------------------
 Fri Oct  9 19:13:57 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.3.0
