@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May  2 17:17:07 UTC 2021 - cloud-devel@suse.de
+
+- update to version 7.4.0
+  - Update master for stable/victoria
+  - Remove install unnecessary packages
+  - Fix undesirable raw Python error
+  - Stop configuring install_command in tox.
+  - Doc: Functional Tests in python-cinderclient
+  - Remove more python2 compat code
+  - Add MV 3.63 to the max supported version
+  - Move cinderclient to new hacking 4.0.0
+  - Support backup-restore to a specific volume type or AZ
+  - Use TOX_CONSTRAINTS_FILE
+  - Uncap PrettyTable
+  - Update requirements for wallaby release
+  - Add note for Wallaby release
+  - Bump API max version to 3.64
+  - Add Python3 wallaby unit tests
+  - Changed minversion in tox to 3.18.0
+  - Bump pylint to 2.6.0
+  - Add flake8-import-order extension
+  - doc: Update Py37 instead of py27
+  - Remove all usage of six library
+  - Update requirements and lower-constraints
+  - Dropping explicit unicode literal
+
+-------------------------------------------------------------------
 Fri Oct  9 19:12:54 UTC 2020 - cloud-devel@suse.de
 
 - update to version 7.2.0
