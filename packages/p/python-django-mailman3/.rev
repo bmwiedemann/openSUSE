@@ -33,4 +33,12 @@
     <comment></comment>
     <requestid>869039</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>227f11d968d8e29edcbe617a42ec745d</srcmd5>
+    <version>1.3.5</version>
+    <time>1620653896</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict to primary python3 flavor due to mailman (forwarded request 890327 from bnavigator)</comment>
+    <requestid>890488</requestid>
+  </revision>
 </revisionlist>

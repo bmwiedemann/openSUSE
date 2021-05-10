@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%define skip_python36 1
-%endif
+%{?!python_module:%define python_module() python3-%{**}}
+# mailman is built only for primary python3 flavor
+%define pythons python3
 Name:           python-django-mailman3
 Version:        1.3.5
 Release:        0
@@ -45,6 +43,11 @@ BuildRequires:  %{python_module mailmanclient}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytz}
 # /SECTION
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-django-mailman3 = %{version}-%{release}
+Obsoletes:      python38-django-mailman3 < %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
