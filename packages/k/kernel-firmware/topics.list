@@ -176,7 +176,7 @@ nfp:		nfp
 wil6210:	atheros
 venus:		media
 imx-sdma:	platform
-adreno:		platform	msm
+adreno:		qcom		msm
 mlxsw_spectrum:	mellanox
 cdns-mhdp:	platform
 fsl-mc:		dpaa2
@@ -185,8 +185,8 @@ meson-vdec:	media
 ice:		network
 ast:		platform
 inside-secure:	platform	crypto_safexcel
-qcom_q6v5_pas:	platform
-qcom_q6v5_mss:	platform
+qcom_q6v5_pas:	qcom
+qcom_q6v5_mss:	qcom
 prestera:	prestera
 lt9611uxc:	platform	lontium-lt9611uxc
 wfx:		platform

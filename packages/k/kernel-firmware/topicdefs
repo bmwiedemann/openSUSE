@@ -21,6 +21,7 @@ nfp		Netronome Flow Processor driver
 nvidia		Nvidia Tegra and graphics drivers
 platform	various platform drivers
 prestera	Marvell Prestera ASIC driver
+qcom		Qualcomm device drivers
 qlogic		QLogic network drivers
 radeon		Radeon graphics driver
 realtek		Realtek wireless drivers

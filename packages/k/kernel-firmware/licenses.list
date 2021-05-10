@@ -60,7 +60,7 @@ myri_sbus:	network
 bnx2x:		bnx2
 bnx2:		bnx2
 netxen_nic:	network		LICENCE.phanfw
-dvb-ttpci:	media
+dvb-ttpci:	media		GPL-2 GPL-3
 snd-wavefront:	sound
 rt61pci:	network		LICENCE.ralink-firmware.txt
 rt73usb:	network		LICENCE.ralink-firmware.txt
@@ -69,11 +69,11 @@ rt2800pci:	realtek		LICENCE.ralink-firmware.txt
 rt2860sta:	realtek		LICENCE.ralink-firmware.txt
 rt2800usb:	realtek		LICENCE.ralink-firmware.txt
 rt2870sta:	realtek		LICENCE.ralink-firmware.txt
-usbdux/usbduxfast/usbduxsigma: platform	
+usbdux/usbduxfast/usbduxsigma: platform	GPL-2
 xc4000:		media		LICENCE.xc4000
 xc5000:		media		LICENCE.xc5000 LICENCE.xc5000c
 dib0700:	media		LICENSE.dib0700
-ath3k:		atheros
+ath3k:		atheros		LICENCE.atheros_firmware
 mga:		platform
 r128:		platform
 radeon:		radeon		LICENSE.radeon
@@ -115,7 +115,8 @@ vt6656:		network		LICENCE.via_vt6656
 DFU:		atheros		LICENCE.atheros_firmware LICENSE.QualcommAtheros_ar3k
 Atheros:	atheros		LICENCE.atheros_firmware
 ath6kl:		atheros		LICENCE.atheros_firmware
-ath10k:		atheros		LICENCE.atheros_firmware LICENSE.QualcommAtheros_ath10k
+ath10k:		ath10k		ath10k/QCA988X/hw2.0/notice_ath10k_firmware-4.txt ath10k/QCA988X/hw2.0/notice_ath10k_firmware-5.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-6.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-sdio-6.txt ath10k/QCA9377/hw1.0/notice_ath10k_firmware-sdio-5.txt LICENSE.QualcommAtheros_ath10k
+ath11k:		ath11k		ath11k/IPQ6018/hw1.0/Notice.txt LICENSE.QualcommAtheros_ath10k
 myri10ge:	network		LICENCE.myri10ge_firmware
 drxk:		media
 ene-ub6250:	platform	LICENCE.ene_firmware
@@ -124,8 +125,8 @@ ar5523:		atheros		LICENCE.atheros_firmware
 s5p-mfc:	media
 carl9170:	atheros		GPL-2
 snd-hda-codec-ca0132: SKIP	LICENCE.ca0132
-btusb:		bluetooth	LICENCE.ibt_firmware
-btmtk_usb:	mediatek	LICENCE.mediatek
+btusb:		bluetooth	LICENCE.ibt_firmware LICENCE.rtlwifi_firmware.txt
+btmtk_usb:	mediatek	LICENCE.ralink_a_mediatek_company_firmware
 rp2:		serial
 go7007:		platform	LICENCE.go7007
 ccp:		platform	LICENSE.amd-sev
@@ -165,12 +166,16 @@ mt7615e:	mediatek	LICENCE.mediatek
 mt7921:		mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
-venus:		media		LICENSE.qcom
+venus:		media		LICENSE.qcom qcom/NOTICE.txt
 imx-sdma:	platform	LICENSE.sdma_firmware
-adreno:		platform	LICENSE.qcom
+adreno:		qcom		LICENSE.qcom qcom/NOTICE.txt
+qcom_q6v5_pas:	qcom		LICENSE.qcom qcom/NOTICE.txt
+qcom_q6v5_mss:	qcom		LICENSE.qcom qcom/NOTICE.txt
 mlxsw_spectrum:	mellanox
 cdns-mhdp:	platform	LICENCE.cadence
 fsl-mc:		dpaa2		LICENSE.nxp_mc_firmware
 mscc-phy:	platform	LICENCE.microchip
 meson-vdec:	media		LICENSE.amlogic_vdec
 prestera:	prestera	LICENCE.Marvell
+lt9611uxc:	platform	LICENSE.Lontium
+wfx:		platform	silabs/LICENCE.wf200

@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210419
+%define version_unconverted 20210503
 
 Name:           kernel-firmware
-Version:        20210419
+Version:        20210503
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -149,6 +149,7 @@ Requires:       %{name}-nfp = %{version}
 Requires:       %{name}-nvidia = %{version}
 Requires:       %{name}-platform = %{version}
 Requires:       %{name}-prestera = %{version}
+Requires:       %{name}-qcom = %{version}
 Requires:       %{name}-qlogic = %{version}
 Requires:       %{name}-radeon = %{version}
 Requires:       %{name}-realtek = %{version}
@@ -3280,80 +3281,6 @@ Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdmaC*)
 Supplements:    modalias(of:N*T*Clontium,lt9611uxc)
 Supplements:    modalias(of:N*T*Clontium,lt9611uxcC*)
-Supplements:    modalias(of:N*T*Cqcom,mdp4)
-Supplements:    modalias(of:N*T*Cqcom,mdp4C*)
-Supplements:    modalias(of:N*T*Cqcom,mdp5)
-Supplements:    modalias(of:N*T*Cqcom,mdp5C*)
-Supplements:    modalias(of:N*T*Cqcom,mdss)
-Supplements:    modalias(of:N*T*Cqcom,mdssC*)
-Supplements:    modalias(of:N*T*Cqcom,mdss_mdp)
-Supplements:    modalias(of:N*T*Cqcom,mdss_mdpC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-slpi-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8996-slpi-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-slpi-pas)
-Supplements:    modalias(of:N*T*Cqcom,msm8998-slpi-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,q6v5-pil)
-Supplements:    modalias(of:N*T*Cqcom,q6v5-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pas)
-Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-dpu)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-dpuC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mdss)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mdssC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pas)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-dpu)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-dpuC*)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-mdss)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-mdssC*)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pas)
-Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pasC*)
 Supplements:    modalias(of:N*T*Csilabs,wf200)
 Supplements:    modalias(of:N*T*Csilabs,wf200C*)
 Supplements:    modalias(of:N*T*Csilabs,wfx-sdio)
@@ -3806,6 +3733,92 @@ Conflicts:      kernel < 5.3
 %description prestera
 This package contains compressed kernel firmware files for
 Marvell Prestera ASIC driver.
+
+%package qcom
+Summary:        Kernel firmware files for Qualcomm device drivers
+Group:          System/Kernel
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+Supplements:    modalias(of:N*T*Cqcom,mdp4)
+Supplements:    modalias(of:N*T*Cqcom,mdp4C*)
+Supplements:    modalias(of:N*T*Cqcom,mdp5)
+Supplements:    modalias(of:N*T*Cqcom,mdp5C*)
+Supplements:    modalias(of:N*T*Cqcom,mdss)
+Supplements:    modalias(of:N*T*Cqcom,mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,mdss_mdp)
+Supplements:    modalias(of:N*T*Cqcom,mdss_mdpC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-slpi-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-slpi-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,msm8998-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,q6v5-pil)
+Supplements:    modalias(of:N*T*Cqcom,q6v5-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pas)
+Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pasC*)
+
+%description qcom
+This package contains compressed kernel firmware files for
+Qualcomm device drivers.
 
 %package qlogic
 Summary:        Kernel firmware files for QLogic network drivers
@@ -5981,6 +5994,12 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %{?regenerate_initrd_post}
 %posttrans prestera
 %{?regenerate_initrd_posttrans}
+%post qcom
+%{?regenerate_initrd_post}
+%postun qcom
+%{?regenerate_initrd_post}
+%posttrans qcom
+%{?regenerate_initrd_posttrans}
 %post qlogic
 %{?regenerate_initrd_post}
 %postun qlogic
@@ -6072,6 +6091,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %files -f files-nvidia nvidia
 %files -f files-platform platform
 %files -f files-prestera prestera
+%files -f files-qcom qcom
 %files -f files-qlogic qlogic
 %files -f files-radeon radeon
 %files -f files-realtek realtek

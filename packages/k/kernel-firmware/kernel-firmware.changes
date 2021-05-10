@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri May 07 16:33:58 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210503 (git commit ecdfcf8e2ca1):
+  * i915: Add ADL-P DMC Support
+  * amdgpu: add new polaris 12 MC firmware
+  * firmware: nvidia: Add VIC firmware for Tegra194
+  * qcom: add gpu firmwares for sc7280
+  * brcm: Add a link to enable khadas VIM2's WiFi
+  * rtw89: 8852a: update fw to v0.13.8.0
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xD9A8_7893
+  * qcom: Add venus firmware files for VPU-2.0
+  * qcom: update venus firmware files for v5.4
+- Move adreno and modem firmware into kernel-firmware-qcom
+  subpackage
+- Update license list and module aliases
+
+-------------------------------------------------------------------
+Thu Apr 29 14:42:55 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210426 (git commit fa0efeff4894):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Intel BT 7265: Fix Security Issues
+  * linux-firmware: Update firmware file for Intel Bluetooth 8265
+  * mrvl: prestera: Add Marvell Prestera Switchdev firmware 3.0 version
+  * rtw88: 8822c: Update normal firmware to v9.9.9
+  * brcm: add missing symlink for Pi Zero W NVRAM file
+  * amdgpu: update arcturus firmware from 21.10
+  * amdgpu: update navy flounder firmware from 21.10
+  * amdgpu: update sienna cichlid firmware from 21.10
+  * amdgpu: update vega20 firmware from 21.10
+  * amdgpu: update picasso firmware from 21.10
+  * amdgpu: update navi14 firmware from 21.10
+  * amdgpu: update green sardine firmware from 21.10
+  * amdgpu: update vega12 firmware from 21.10
+  * amdgpu: update navi12 firmware from 21.10
+  * amdgpu: update vega10 firmware from 21.10
+  * amdgpu: update renoir firmware from 21.10
+  * amdgpu: update navi10 firmware from 21.10
+  * amdgpu: update raven2 firmware from 21.10
+  * amdgpu: update raven firmware from 21.10
+  * rtl_nic: add new firmware for RTL8153 and RTL8156 series
+
+-------------------------------------------------------------------
 Mon Apr 19 15:42:23 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210419 (git commit 940b7f42d45d):
