@@ -1,7 +1,7 @@
 #
 # spec file for package python-neutronclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           python-neutronclient
-Version:        7.2.1
+Version:        7.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-7.2.1.tar.gz
+URL:            https://docs.openstack.org/python-neutronclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-7.3.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-cliff >= 2.8.0
+BuildRequires:  python3-cliff >= 3.4.0
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 3.4.0
+BuildRequires:  python3-keystoneauth1 >= 3.8.0
 BuildRequires:  python3-keystoneclient >= 3.8.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-os-client-config >= 1.28.0
-BuildRequires:  python3-osc-lib >= 1.8.0
+BuildRequires:  python3-osc-lib >= 1.12.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -52,16 +52,15 @@ Neutron's API.
 
 %package -n python3-neutronclient
 Summary:        Python API and CLI for OpenStack Neutron
-Group:          Development/Languages/Python
 Requires:       python3-Babel
-Requires:       python3-cliff >= 2.8.0
+Requires:       python3-cliff >= 3.4.0
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-iso8601 >= 0.1.11
-Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-keystoneauth1 >= 3.8.0
 Requires:       python3-keystoneclient >= 3.8.0
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-os-client-config >= 1.28.0
-Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-osc-lib >= 1.12.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
@@ -98,8 +97,8 @@ Neutron's API.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=7.2.1 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=7.2.1 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=7.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=7.3.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

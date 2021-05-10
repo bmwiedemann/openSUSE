@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 17:16:03 UTC 2021 - cloud-devel@suse.de
+
+- update to version 7.3.0
+  - Add Python3 wallaby unit tests
+  - Dep's should be restricted by tox-constraints
+  - Fix lower-constraints for Focal
+  - Update master for stable/victoria
+  - Update requirements URLs in tox config
+  - remove unicode from code
+
+-------------------------------------------------------------------
 Fri Oct  9 19:15:42 UTC 2020 - cloud-devel@suse.de
 
 - update to version 7.2.1
