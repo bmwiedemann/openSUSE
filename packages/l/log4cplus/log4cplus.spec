@@ -1,7 +1,7 @@
 #
 # spec file for package log4cplus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define soname  1_2-5
 Name:           log4cplus
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        C++ logging library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://log4cplus.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/%{version}/%{name}-%{version}.tar.xz
-Source2:        https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/%{version}/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
