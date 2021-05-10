@@ -1,7 +1,7 @@
 #
 # spec file for package python-automaton
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-automaton
-Version:        2.0.1
+Version:        2.3.0
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/automaton
-Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-2.0.1.tar.gz
+URL:            https://docs.openstack.org/automaton
+Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-2.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-devel
@@ -38,10 +38,9 @@ Friendly state machines for python.
 
 %package -n python3-automaton
 Summary:        Friendly state machines for python
-Group:          Development/Languages/Python
 Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 
 %description -n python3-automaton
 Friendly state machines for python.
@@ -50,7 +49,6 @@ This package contains the Python 3.x module.
 
 %package -n python-automaton-doc
 Summary:        Documentation for the Automaton Library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -58,7 +56,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the Automaton library.
 
 %prep
-%autosetup -p1 -n automaton-2.0.1
+%autosetup -p1 -n automaton-2.3.0
 %py_req_cleanup
 
 %build

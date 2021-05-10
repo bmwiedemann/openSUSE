@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May  2 16:32:19 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Remove six dependency
+  - Dropping lower constraints testing
+  - Uncap PrettyTable
+  - Use TOX_CONSTRAINTS_FILE
+  - Adding pre-commit
+  - Use py3 as the default runtime for tox
+  - Update master for stable/victoria
+  - Add Python3 wallaby unit tests
+
+-------------------------------------------------------------------
+Fri Oct  9 19:12:27 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Small cleanup
+  - Stop to use the __future__ module.
+  - Bump default tox env from py37 to py38
+  - drop mock from lower-constraints
+  - Update lower-constraints list
+  - Update master for stable/ussuri
+  - Add Python3 victoria unit tests
+  - Add py38 package metadata
+  - Switch to newer openstackdocstheme and reno versions
+
+-------------------------------------------------------------------
 Tue May 12 10:01:48 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.0.1

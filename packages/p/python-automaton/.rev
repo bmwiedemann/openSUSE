@@ -199,4 +199,12 @@
     <comment>Ussuri Update</comment>
     <requestid>803551</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4eedc16bc8afbe302ba639f1c723f2c1</srcmd5>
+    <version>2.3.0</version>
+    <time>1620653836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889958</requestid>
+  </revision>
 </revisionlist>
