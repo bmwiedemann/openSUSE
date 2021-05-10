@@ -3622,4 +3622,12 @@ I cannot test locally unfortunately.
 - recommend libotr5</comment>
     <requestid>886906</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>e7181ec2ebe372c1f3775c2d132568ad</srcmd5>
+    <version>78.10.1</version>
+    <time>1620653781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891142</requestid>
+  </revision>
 </revisionlist>

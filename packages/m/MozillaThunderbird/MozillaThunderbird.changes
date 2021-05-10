@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  4 15:39:28 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.10.1
+  * Remove the fix for bmo#1689804 introduced in 78.9.0,
+    restoring the previous behavior
+  * MFSA 2021-19 (bsc#1185633) does not affect this platform
+
+-------------------------------------------------------------------
 Sun Apr 18 07:21:01 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.10.0
