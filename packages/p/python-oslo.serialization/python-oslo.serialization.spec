@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.serialization
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.serialization
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.serialization
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-4.0.1.tar.gz
+URL:            https://docs.openstack.org/oslo.serialization
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-4.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.5.2
@@ -41,7 +41,6 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 
 %package -n python3-oslo.serialization
 Summary:        OpenStack serialization library
-Group:          Development/Languages/Python
 Requires:       python3-msgpack >= 0.5.2
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pytz >= 2013.6
@@ -55,7 +54,6 @@ This package contains the Python 3.x module.
 
 %package -n python-oslo.serialization-doc
 Summary:        Documentation for OpenStack serialization library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -65,7 +63,7 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.serialization-4.0.1
+%autosetup -p1 -n oslo.serialization-4.1.0
 sed -i -e "s,bandit.*,," test-requirements.txt
 %py_req_cleanup
 
