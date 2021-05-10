@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-osc-lib
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.2.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-cliff >= 3.2.0
@@ -50,7 +50,6 @@ is a package of common support modules for writing OSC plugins.
 
 %package -n python3-osc-lib
 Summary:        OpenStackClient Library
-Group:          Development/Languages/Python
 Requires:       python3-Babel
 Requires:       python3-cliff >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.14.0
@@ -70,7 +69,6 @@ This package contains the Python 3.x module.
 
 %package -n python-osc-lib-doc
 Summary:        Documentation for the OpenStack client library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-reno
@@ -80,7 +78,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-2.2.1
+%autosetup -p1 -n osc-lib-2.3.1
 %py_req_cleanup
 
 %build
