@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>606273</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fae2b3d08ae7bba76c0818c543d3b517</srcmd5>
+    <version>2.9.1</version>
+    <time>1620653950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1:
+  - Fix compatibility with python3.6+
+  - Removed support for Python 2
+  - Add a progress parameter for the snap, arr_snap, scan and arr_scan methods.
+  - Catch exceptions returned by self.device.snap
+  - Add __next__ to _SaneIterator for Python 3</comment>
+    <requestid>891897</requestid>
+  </revision>
 </revisionlist>
