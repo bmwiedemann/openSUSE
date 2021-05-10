@@ -1,7 +1,7 @@
 #
 # spec file for package python-novaclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-novaclient
-Version:        17.2.1
+Version:        17.4.0
 Release:        0
+Epoch:          0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.2.1.tar.gz
+URL:            https://docs.openstack.org/python-novaclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.4.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient
@@ -47,7 +49,6 @@ the OpenStack Nova API.
 
 %package -n python3-novaclient
 Summary:        Python API and CLI for OpenStack Nova
-Group:          Development/Languages/Python
 Requires:       openssl
 Requires:       python3-Babel
 Requires:       python3-PrettyTable >= 0.7.2
@@ -57,7 +58,7 @@ Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-simplejson >= 3.5.1
+Requires:       python3-simplejson
 Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-novaclient < 16.0.0
@@ -90,7 +91,7 @@ This package contains auto-generated documentation.
 %build
 %{py3_build}
 
-PBR_VERSION=17.2.1 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PBR_VERSION=17.4.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 

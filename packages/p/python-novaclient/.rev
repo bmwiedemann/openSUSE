@@ -655,4 +655,12 @@ update to version 5.1.0
     <comment>switch to victoria</comment>
     <requestid>841194</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9d9b005fd363ad715fdc8529c646b309</srcmd5>
+    <version>17.4.0</version>
+    <time>1620653852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889980</requestid>
+  </revision>
 </revisionlist>

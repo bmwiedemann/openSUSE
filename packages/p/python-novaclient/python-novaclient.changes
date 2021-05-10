@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May  2 17:17:33 UTC 2021 - cloud-devel@suse.de
+
+- update to version 17.4.0
+  - Cleanup py27 support
+  - Remove the unused coding style modules
+  - Add Python3 wallaby unit tests
+  - Uncap PrettyTable
+  - Fix undesirable raw Python error
+  - Deprecate agent commands and APIs
+  - Update master for stable/victoria
+  - Add support for microversion v2.88
+  - Remove install unnecessary packages
+  - Fix a functional test for 'nova agent-list'
+  - requirements: Remove simplejson
+  - Remove Babel from lower-constraints.txt
+
+-------------------------------------------------------------------
 Fri Oct  9 19:15:51 UTC 2020 - cloud-devel@suse.de
 
 - update to version 17.2.1
