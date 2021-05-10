@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.service
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-oslo.service
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.service
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-2.4.0.tar.gz
+URL:            https://docs.openstack.org/oslo.service
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-2.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  procps
 BuildRequires:  python3-Paste >= 2.0.2
@@ -58,7 +58,6 @@ performing periodic operations, interacting with systemd, etc.
 
 %package -n python3-oslo.service
 Summary:        OpenStack oslo.service library
-Group:          Development/Languages/Python
 Requires:       python3-Paste >= 2.0.2
 Requires:       python3-PasteDeploy >= 1.5.0
 Requires:       python3-Routes >= 2.3.1
@@ -83,7 +82,6 @@ performing periodic operations, interacting with systemd, etc.
 
 %package -n python-oslo.service-doc
 Summary:        Documentation for OpenStack service library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -95,7 +93,7 @@ performing periodic operations, interacting with systemd, etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.service-2.4.0
+%autosetup -p1 -n oslo.service-2.5.0
 %py_req_cleanup
 
 %build

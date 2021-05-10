@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  2 16:35:02 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 wallaby unit tests
+  - Drop custom implementation of EVENTLET_HUB
+  - Adding pre-commit
+  - Update master for stable/victoria
+  - Dropping lower constraints testing
+  - Use py3 as the default runtime for tox
+
+-------------------------------------------------------------------
 Fri Oct  9 19:06:14 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.4.0
