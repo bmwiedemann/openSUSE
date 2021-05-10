@@ -52,7 +52,7 @@ index 5b6023a..cdd80df 100644
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -1623,6 +1627,12 @@
+@@ -1627,6 +1631,12 @@
  			}
  			g.layout_specified = 1;
  			break;

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  6 13:59:15 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Modified s390-tools-sles15-Implement-Y-yast_mode.patch by adding
+  a fflush(stdout) statement so that the dasdfmt command would
+  produce the  correct output for YaST. (bsc#1182816, bsc#1182820)
+- Modified s390-tools-sles15-Implement-f-for-backwards-compability.patch
+  to have the correct offset for hunk #2 to apply without warnings.
+
+-------------------------------------------------------------------
 Wed Apr 14 18:13:27 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp3-dasd-change-DASD-udev-rule-to-set-none-scheduler.patch

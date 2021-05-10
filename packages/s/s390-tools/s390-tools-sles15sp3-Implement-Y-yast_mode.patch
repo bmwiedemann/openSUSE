@@ -104,16 +104,18 @@ index 6dd28fa..5b6023a 100644
  			printf("ok\n");
  		}
  	}
-@@ -1548,6 +1556,8 @@
+@@ -1548,6 +1556,10 @@
  		error("%s", str);
  
  	set_geo(&cylinders, &heads);
-+	if (g.yast_mode)
++	if (g.yast_mode) {
 +		printf("%d\n", cylinders);
++		fflush(stdout);
++	}
  	set_label(&vlabel, &format_params, cylinders);
  
  	if (g.check)
-@@ -1693,6 +1701,10 @@ int main(int argc, char *argv[])
+@@ -1693,6 +1703,10 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
