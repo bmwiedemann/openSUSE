@@ -3972,4 +3972,17 @@
 - removed a886228fbcefe7b8de06d2dd7182272df6cc3c36.patch (upstream)</comment>
     <requestid>888304</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>eca9aebd13e496338a2a6ef30fcfe710</srcmd5>
+    <version>6.8</version>
+    <time>1620653956</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.8 development release
+  - Libraries installed into architecture-specific subdirectories.
+  - Secur32 library converted to PE.
+  - Support for Map object in JavaScript.
+  - Various bug fixes.
+- update staging to 6.8 release</comment>
+    <requestid>891980</requestid>
+  </revision>
 </revisionlist>

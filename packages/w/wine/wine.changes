@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  8 12:56:00 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.8 development release
+  - Libraries installed into architecture-specific subdirectories.
+  - Secur32 library converted to PE.
+  - Support for Map object in JavaScript.
+  - Various bug fixes.
+- update staging to 6.8 release
+
+-------------------------------------------------------------------
 Sat Apr 24 08:16:43 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.7 development release
