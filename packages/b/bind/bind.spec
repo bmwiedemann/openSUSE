@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
 %define with_systemd 1
@@ -44,7 +45,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.12
+Version:        9.16.15
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -144,9 +145,7 @@ BuildArch:      noarch
 This package provides a module which allows commands to be sent to rndc directly from Python programs.
 
 %prep
-%setup -q -a1
-%patch52 -p1
-%patch56 -p1
+%autosetup -p1 -a1
 
 # use the year from source gzip header instead of current one to make reproducible rpms
 year=$(perl -e 'sysread(STDIN, $h, 8); print (1900+(gmtime(unpack("l",substr($h,4))))[5])' < %{SOURCE0})
@@ -204,7 +203,7 @@ sed -i '
   s|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g
   s|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g
 ' libtool
-make %{?_smp_mflags}
+%make_build
 # special make for the Administrators Reference Manual
 for d in arm; do
 	make -C doc/${d} SPHINXBUILD=sphinx-build doc
@@ -246,11 +245,12 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 %if %{with_systemd}
 	for file in named; do
         	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
-                install -m 0755 vendor-files/system/${file}.prep %{buildroot}/%{_libexecdir}/bind/${file}.prep
+		sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" -i %{buildroot}%{_unitdir}/${file}.service
+                install -m 0755 vendor-files/system/${file}.prep %{buildroot}%{_libexecdir}/bind/${file}.prep
 		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
 	done
 	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
-	install -D -m 0644 ${RPM_SOURCE_DIR}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
+	install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
 	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
 	install -m 0644 bind.keys %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/named.root.key
 %else
@@ -259,14 +259,14 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 		ln -sf %{_initddir}/${file} %{buildroot}%{_sbindir}/rc${file}
 	done
 %endif
-install -m 0644 ${RPM_SOURCE_DIR}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
+install -m 0644 %{_sourcedir}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
 mv vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_localstatedir}/lib/named
 install -m 0755 vendor-files/tools/bind.genDDNSkey %{buildroot}/%{_bindir}/genDDNSkey
 cp -a vendor-files/docu/BIND.desktop %{buildroot}/%{_datadir}/susehelp/meta/Administration/System
-cp -p ${RPM_SOURCE_DIR}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/schema/dnszone.schema
+cp -p %{_sourcedir}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/schema/dnszone.schema
 cp -p "%{SOURCE60}" "%{buildroot}/%{_sysconfdir}/openldap/schema/dlz.schema"
 install -m 0754 vendor-files/tools/ldapdump %{buildroot}/%{_datadir}/bind
-find %{buildroot}/%{_libdir} -type f -name '*.so*' -print0 | xargs -0 chmod 0755
+find %{buildroot}/%{_libdir} -type f -name '*.so*' -exec chmod 0755 {} +
 for file in named-named; do
 	install -m 0644 vendor-files/sysconfig/${file} %{buildroot}%{_fillupdir}/sysconfig.${file}
 done
@@ -275,7 +275,7 @@ install -m 644 vendor-files/sysconfig/SuSEFirewall.named %{buildroot}/%{_sysconf
 %endif
 # Cleanup doc
 rm doc/misc/Makefile*
-find doc/arm -type f ! -name '*.html' -print0 | xargs -0 rm -f
+find doc/arm -type f ! -name '*.html' -delete
 # Create doc as we want it in bind and not bind-doc
 for file in vendor-files/docu/README*; do
 	basename=$( basename ${file})
@@ -306,6 +306,7 @@ install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
 %pre -f named.pre
 %service_add_pre named.service
 %else
+
 %pre
 %{GROUPADD_NAMED}
 %{USERADD_NAMED}

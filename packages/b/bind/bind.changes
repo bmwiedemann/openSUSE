@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May  3 12:35:44 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to bind 9.16.15
+  Major changes:
+  * A specially crafted GSS-TSIG query could cause a buffer
+    overflow in the ISC implementation of SPNEGO.
+    (CVE-2021-25216)
+
+  * named crashed when a DNAME record placed in the ANSWER
+    section during DNAME chasing turned out to be the final
+    answer to a client query. (CVE-2021-25215)
+
+  * Insufficient IXFR checks could result in named serving a
+    zone without an SOA record at the apex, leading to a
+    RUNTIME_CHECK assertion failure when the zone was
+    subsequently refreshed. This has been fixed by adding an
+    owner name check for all SOA records which are included
+    in a zone transfer. (CVE-2021-25214)
+  More changes see CHANGES in the source package.
+
+  [bsc#1185345,CVE-2021-25214,CVE-2021-25215,CVE-2021-25216]
+
+-------------------------------------------------------------------
 Thu Apr  8 09:23:22 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Rewrite of named service handling to better cope with systemd
@@ -9,6 +32,12 @@ Thu Apr  8 09:23:22 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
   daemon and library (lwresd and liblwres) have been removed."
   (See CHANGES, item 4707)
   [bind.spec, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Tue Mar 23 12:34:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile, and declare /bin/bash as required buildshell
+  (use of {a,b} style expansion).
 
 -------------------------------------------------------------------
 Fri Mar 12 15:03:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
