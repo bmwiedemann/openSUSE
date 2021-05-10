@@ -1,7 +1,7 @@
 #
 # spec file for package python-ovsdbapp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define with_tests 1
 Name:           python-ovsdbapp
-Version:        1.5.0
+Version:        1.9.0
 Release:        0
 Summary:        A library for creating OVSDB applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/ovsdbapp
-Source0:        https://files.pythonhosted.org/packages/source/o/ovsdbapp/ovsdbapp-1.5.0.tar.gz
+URL:            https://docs.openstack.org/ovsdbapp
+Source0:        https://files.pythonhosted.org/packages/source/o/ovsdbapp/ovsdbapp-1.9.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures >= 3.0.0
 BuildRequires:  python3-netaddr >= 0.7.18
@@ -43,7 +43,6 @@ the Python 'ovs' and adds an event loop and friendly transactions.
 
 %package -n python3-ovsdbapp
 Summary:        A library for creating OVSDB applications
-Group:          Development/Languages/Python
 Requires:       python3-fixtures >= 3.0.0
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-ovs >= 2.10.0
@@ -57,7 +56,6 @@ the Python 'ovs' and adds an event loop and friendly transactions.
 
 %package -n python-ovsdbapp-doc
 Summary:        Documentation for OpenStack log library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -72,7 +70,7 @@ Documentation for the ovsdbap library.
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=1.5.0 PYTHONPATH=. \
+PBR_VERSION=1.9.0 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

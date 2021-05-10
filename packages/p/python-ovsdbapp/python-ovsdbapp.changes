@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May  2 17:15:48 UTC 2021 - cloud-devel@suse.de
+
+- update to version 1.9.0
+  - Switch from unittest2 compat methods to Python 3.x methods
+  - Bump ovs minimum version for support of indexing
+  - Add northbound API support for meters
+  - Fix gate failure
+  - Fix NB API definition "lb_add" method signature
+  - Don't use name mangling when we don't need it
+  - Avoid race condition with RowEvent handling
+  - Don't compile OVS kernel module
+  - Add update_tables method to Idl
+  - requirements: Drop os-testr
+  - Update Python3 wallaby unit tests
+  - Drop py37 and add py38 test
+  - Make it possible to just retrieve schema json
+  - Don't give up when an Exception happens in idl.run
+  - Log the name of the command in execute()
+  - Stop to use the __future__ module.
+  - [ovn nb] Acl add: Avoid setting columns that have no values
+  - Update master for stable/victoria
+  - Ensure lists of Commands can be stringfied
+
+-------------------------------------------------------------------
+Tue Feb  2 00:39:28 UTC 2021 - cloud-devel@suse.de
+
+- update to version 1.6.0
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - Bump ovs minimum version for support of indexing
+  - Avoid race condition with RowEvent handling
+  - Update .gitreview for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:18:44 UTC 2020 - cloud-devel@suse.de
 
 - update to version 1.5.0
