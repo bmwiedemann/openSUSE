@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  9 14:43:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Removed external mock dependency.
+  * Removed dependency on six.
+  * Deprecated the module josepy.magic_typing.
+  * Fix JWS/JWK generation with EC keys when keys or signatures have leading zeros.
+
+-------------------------------------------------------------------
 Mon Mar  8 08:39:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

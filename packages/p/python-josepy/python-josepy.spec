@@ -20,7 +20,7 @@
 %define libname josepy
 %global skip_python2 1
 Name:           python-%{libname}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
@@ -31,16 +31,13 @@ Source2:        %{name}.keyring
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 0.8}
 BuildRequires:  %{python_module devel >= 2.7}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL >= 0.13}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 BuildRequires:  %{python_module setuptools >= 1.0}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 0.8
 Requires:       python-pyOpenSSL >= 0.13
-Requires:       python-six >= 1.9.0
 Conflicts:      python-acme < 0.21.0
 Obsoletes:      python-%{libname}-doc
 BuildArch:      noarch

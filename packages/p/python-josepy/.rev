@@ -83,4 +83,16 @@
   * Added support for EC keys.</comment>
     <requestid>877589</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>80ae2e8d48e12bdb4aea6b2123e53386</srcmd5>
+    <version>1.8.0</version>
+    <time>1620653948</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * Removed external mock dependency.
+  * Removed dependency on six.
+  * Deprecated the module josepy.magic_typing.
+  * Fix JWS/JWK generation with EC keys when keys or signatures have leading zeros.</comment>
+    <requestid>891882</requestid>
+  </revision>
 </revisionlist>
