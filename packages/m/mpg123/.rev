@@ -190,4 +190,59 @@
     <comment></comment>
     <requestid>880598</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>29d07cff307c2af5899f3adb6fb9d6f4</srcmd5>
+    <version>1.27.2</version>
+    <time>1620653804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.2
+  * Ensure debug.h is included last where it matters to avoid
+    conflicts with debug/warning macros in system headers
+  * Fix some debug/printf integer casts for 32 bit platforms.
+- Update to version 1.27.0
+  libmpg123:
+  * Running on precomputed tables now, no need to call
+    mpg123_init() anymore. That and mpg123_exit() are both just
+    empty shells. You can omit them if you do not care about
+    earlier libmpg123. You can check for MPG123_API_VERSION &gt;=
+    46.
+  * Added API that avoids enums, mapped-to by default unless
+    MPG123_ENUM_API is defined.
+  libout123:
+  * Added API that avoids enums, mapped-to by default unless
+    MPG123_ENUM_API is defined.
+  * Added device enumeration for win32, win32_wasapi, alsa,
+    pulse.
+    This increments the output module ABI version to 3.
+  * Changed default output module order to put pulse before alsa
+    since we now ensure that pulse is not inadvertedly started by
+    the autospawn feature. This improves the experience on
+    desktop systems with pulse where the alsa to pulse use
+    causes glitches.
+    Note that on a modern Linux desktop (Ubuntu), you will not
+    escape an instance of pulseaudio being started, with even the
+    enumeration of the ALSA default device summoning the daemon.
+    If you _want_ sound daemon autospawn behaviour on other
+    platforms, you need to trigger it outside of libout123.
+  * examples: Update for dropped mpg123_init(), more sensible
+    copyright notes.
+  out123:
+  * safer limiting of maximum playback rate
+  * Added --list-devices.
+  mpg123:
+  * Fix --continue output to print track_count+1 as continue
+    position after hitting the end of playlist. Makes
+    scripts/conplay go to back to the beginning again (regression
+    in 1.24.0, bug 250).
+  * Remote control API version 9 with @I { .. @I } wrapping of
+    ID3 and playlist display.
+  * Added --list-devices.
+  * Fix terminal control logic to better handle cases where
+    stdin or stderr is not a terminal, also avoid enabling
+    control if you specify stdin as input file.
+  * Updated debugging/warning/error message macros to include
+    the function name.
+</comment>
+    <requestid>891589</requestid>
+  </revision>
 </revisionlist>
