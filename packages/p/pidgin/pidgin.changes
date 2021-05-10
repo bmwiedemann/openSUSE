@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat May  8 19:44:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.4:
+  * Use LT_LIB_M to find the math library.  This should simplify things for
+    various distros including the BSD's. (RR #608) (and, Justin Lechner)
+  libpurple:
+  * Update purple-remote and purple-url-handler to have a Python 3 shebang.
+  Pidgin:
+  * Install our AppData file into the $prefix/share/metainfo.
+  Windows-Specific Changes:
+  * Output pkg-config files so that our Windows builds can be seen by meson.
+    Grim owes a blog post on how this works.
+  * Update the debug symbols download in the installer to the inetc plugin.
+  * Make sure the uninstaller removes all files that we install.
+  libpurple:
+  * Removed the AIM protocol plugin. AIM has been shut down since December
+    15th of 2017. We left it around because of a third party server, but our
+    plugin no longer works with it. (RR #598) (Gary Kramlich)
+  * Standardize on wprintf in pidgin/win32/winpidgin.c
+  * Use the inetc nsis plugin that supports https
+  * If building under msys2 copy libgcc_s_dw2-1.dll and libwinpthread to the
+    install directory. (RR #593) (PIDGIN-17511) (Gary Kramlich)
+  * Fix a build issue when compiling with gstreamer but without voice and
+    video.
+  * Enable cyrus-sasl by default.
+  * Fix an issue with opening link in Firefox.
+  * Fix a regression from 2.14.0 where extra whitespace would be displayed
+    when pasting <p> elements from HTML.
+  * Require Python 3 for generating the D-Bus bindings.
+  * Fix an issue where pasting <hr>'s and other HTML elements would
+    eventually lead to a crash.
+
+-------------------------------------------------------------------
+Fri Apr 16 15:47:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- don't package directories owned by filesystem rpm (bsc#1184786)
+
+-------------------------------------------------------------------
 Fri Feb 12 15:08:12 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add pidgin-always-enable-intltool.patch: always enable intltool.

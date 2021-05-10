@@ -1,15 +1,17 @@
---- a/libpurple/Makefile.am
-+++ b/libpurple/Makefile.am
+Index: pidgin-2.14.4/libpurple/Makefile.am
+===================================================================
+--- pidgin-2.14.4.orig/libpurple/Makefile.am
++++ pidgin-2.14.4/libpurple/Makefile.am
 @@ -47,6 +47,8 @@ purple_coresources = \
  	desktopitem.c \
  	eventloop.c \
  	ft.c \
 +	purple-fifo.c \
 +	purple-io.c \
- 	glibcompat.c \
  	idle.c \
  	imgstore.c \
-@@ -115,6 +117,8 @@ purple_coreheaders = \
+ 	log.c \
+@@ -114,6 +116,8 @@ purple_coreheaders = \
  	desktopitem.h \
  	eventloop.h \
  	ft.h \
@@ -18,8 +20,10 @@
  	gaim-compat.h \
  	glibcompat.h \
  	idle.h \
---- a/libpurple/plugins/ssl/ssl-gnutls.c
-+++ b/libpurple/plugins/ssl/ssl-gnutls.c
+Index: pidgin-2.14.4/libpurple/plugins/ssl/ssl-gnutls.c
+===================================================================
+--- pidgin-2.14.4.orig/libpurple/plugins/ssl/ssl-gnutls.c
++++ pidgin-2.14.4/libpurple/plugins/ssl/ssl-gnutls.c
 @@ -439,8 +439,6 @@ ssl_gnutls_close(PurpleSslConnection *gs
  	if (gnutls_data->handshake_timer)
  		purple_timeout_remove(gnutls_data->handshake_timer);
@@ -86,8 +90,10 @@
  	ssl_gnutls_get_peer_certificates,
  
  	/* padding */
---- a/libpurple/plugins/ssl/ssl-nss.c
-+++ b/libpurple/plugins/ssl/ssl-nss.c
+Index: pidgin-2.14.4/libpurple/plugins/ssl/ssl-nss.c
+===================================================================
+--- pidgin-2.14.4.orig/libpurple/plugins/ssl/ssl-nss.c
++++ pidgin-2.14.4/libpurple/plugins/ssl/ssl-nss.c
 @@ -1174,6 +1174,8 @@ static PurpleSslOps ssl_ops =
  	ssl_nss_connect,
  	ssl_nss_close,
@@ -97,8 +103,10 @@
  	ssl_nss_write,
  	ssl_nss_peer_certs,
  
+Index: pidgin-2.14.4/libpurple/purple-fifo.c
+===================================================================
 --- /dev/null
-+++ b/libpurple/purple-fifo.c
++++ pidgin-2.14.4/libpurple/purple-fifo.c
 @@ -0,0 +1,232 @@
 +/*
 + * @file purple-fifo.c  A FIFO byte queue.
@@ -332,8 +340,10 @@
 +
 +	return TRUE;
 +}
+Index: pidgin-2.14.4/libpurple/purple-fifo.h
+===================================================================
 --- /dev/null
-+++ b/libpurple/purple-fifo.h
++++ pidgin-2.14.4/libpurple/purple-fifo.h
 @@ -0,0 +1,54 @@
 +/**
 + * @file purple-fifo.h  A FIFO byte queue.
@@ -389,8 +399,10 @@
 +G_END_DECLS
 +
 +#endif /* _purple_fifo_H_ */
+Index: pidgin-2.14.4/libpurple/purple-io.c
+===================================================================
 --- /dev/null
-+++ b/libpurple/purple-io.c
++++ pidgin-2.14.4/libpurple/purple-io.c
 @@ -0,0 +1,391 @@
 +/*
 + * @file purple-io.c  Buffering I/O layer.
@@ -783,8 +795,10 @@
 +{
 +	return purple_fifo_get_used (io->write_fifo);
 +}
+Index: pidgin-2.14.4/libpurple/purple-io.h
+===================================================================
 --- /dev/null
-+++ b/libpurple/purple-io.h
++++ pidgin-2.14.4/libpurple/purple-io.h
 @@ -0,0 +1,87 @@
 +/**
 + * @file purple-io.h  Buffering I/O layer.
@@ -873,8 +887,10 @@
 +G_END_DECLS
 +
 +#endif /* _PURPLE_IO_H_ */
---- a/libpurple/sslconn.c
-+++ b/libpurple/sslconn.c
+Index: pidgin-2.14.4/libpurple/sslconn.c
+===================================================================
+--- pidgin-2.14.4.orig/libpurple/sslconn.c
++++ pidgin-2.14.4/libpurple/sslconn.c
 @@ -273,6 +273,27 @@ purple_ssl_read(PurpleSslConnection *gsc
  }
  
@@ -931,8 +947,10 @@
  void
  purple_ssl_set_ops(PurpleSslOps *ops)
  {
---- a/libpurple/sslconn.h
-+++ b/libpurple/sslconn.h
+Index: pidgin-2.14.4/libpurple/sslconn.h
+===================================================================
+--- pidgin-2.14.4.orig/libpurple/sslconn.h
++++ pidgin-2.14.4/libpurple/sslconn.h
 @@ -34,6 +34,12 @@ typedef enum
  	PURPLE_SSL_CERTIFICATE_INVALID = 3
  } PurpleSslErrorType;

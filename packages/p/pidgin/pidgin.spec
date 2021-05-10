@@ -18,7 +18,7 @@
 
 %define _name   Pidgin
 Name:           pidgin
-Version:        2.14.1
+Version:        2.14.4
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
@@ -241,6 +241,7 @@ export PYTHON=python3
 autoreconf -fi
 %configure \
   --disable-static \
+  --disable-gevolution \
   --enable-plugins \
   --enable-cyrus-sasl \
   --enable-dbus \
@@ -287,9 +288,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/pixmaps/%{name}/
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/pidgin.appdata.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/metainfo/pidgin.appdata.xml
 
 %files devel
 %{_includedir}/%{name}/
@@ -307,7 +307,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libpurple-client.so.*
 %{_libdir}/purple-2/
 %exclude %{_libdir}/purple-2/libjabber.so
-%exclude %{_libdir}/purple-2/liboscar.so
 %exclude %{_libdir}/purple-2/libsametime.so
 %exclude %{_libdir}/purple-2/tcl.so
 
@@ -330,7 +329,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libpurple.so
 %{_libdir}/libpurple-client.so
 %{_libdir}/purple-2/libjabber.so
-%{_libdir}/purple-2/liboscar.so
 %{_libdir}/pkgconfig/purple.pc
 %{_mandir}/man3/Purple.3pm%{?ext_man}
 
