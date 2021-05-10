@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May  9 10:28:29 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.14
+* Change SSL default setting to use TLS 1.2 as minimum (set config if you need an earlier version)
+* Add local_uri_raw field (not sanitized URI) to request_info
+* Additional API functions and a callback after closing connections
+* Allow mbedTLS as OpenSSL alternative (basic functionality)
+* Add OpenSSL 3.0 support (OpenSSL 3.0 Alpha 13)
+* Support UNIX/Linux domain sockets
+* Fuzz tests and ossfuzz integration
+* Compression for websockets
+* Restructure some source files
+* Improve documentation
+* Fix HTTP range requests
+* Add some functions for Lua scripts/LSP
+* Build system specific fixes (CMake, MinGW)
+* Update 3rd party components (Lua, lfs, sqlite)
+* Allow Lua background script to use timers, format and filter logs
+* Remove WinCE code
+* Update version number 
+
+-------------------------------------------------------------------
 Wed Nov  4 16:14:10 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.13

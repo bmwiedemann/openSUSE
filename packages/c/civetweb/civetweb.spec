@@ -1,7 +1,7 @@
 #
 # spec file for package civetweb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define         soname  1_13_0
+%define         soname  1_14_0
 %define         _libname libcivetweb
 
 Name:           civetweb
 Summary:        A C/C++ web server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Version:        1.13
+Version:        1.14
 Release:        0
 URL:            https://github.com/civetweb/civetweb
 Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -33,7 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 
 %description
-civetweb is a C/C++ embeddable web server with optional CGI, SSL and Lua support. 
+civetweb is a C/C++ embeddable web server with optional CGI, SSL and Lua support.
 
 %package -n %{_libname}%{soname}
 Summary:        Shared Object for applications that use %{name} embedded
@@ -41,7 +41,7 @@ Group:          Productivity/Networking/Web/Servers
 
 %description -n %{_libname}%{soname}
 This package contains the shared library required by applications that
-are using %{name}'s embeddable API to provide web services. 
+are using %{name}'s embeddable API to provide web services.
 
 %package devel
 Summary:        Header files and development libraries for %{name}
