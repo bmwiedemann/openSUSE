@@ -47,6 +47,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
+# This condition is also below in libdigikamcore
 %ifarch ppc64
 # opencv-devel is currently not available on ppc64, but opencv3-devel is... (and the version is high enough)
 BuildRequires:  opencv3-devel
@@ -161,6 +162,12 @@ Additional program to browse and view photos
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
+%ifarch ppc64
+# DNN ABI is not stable and not using symbol versioning (boo#1185700)
+%requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv3-devel})
+%else
+%requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
+%endif
 Recommends:     %{name}-plugins
 
 %description -n libdigikamcore%{soversion}

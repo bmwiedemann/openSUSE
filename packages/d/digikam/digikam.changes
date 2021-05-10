@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  9 10:55:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require the version of libopencv_dnn it was built against (boo#1185700)
+
+-------------------------------------------------------------------
 Tue Mar 30 10:39:49 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.2.0
