@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Mon May 10 08:46:59 UTC 2021 - cloud-devel@suse.de
+
+- added 0001-Replace-assertItemsEqual-with-assertCountEqual.patch
+
+-------------------------------------------------------------------
+Sun May  2 17:13:45 UTC 2021 - cloud-devel@suse.de
+
+- update to version 5.5.0
+  - Add source_ip_prefix and destination_ip_prefix to metering label rules
+  - compute: Rename 'server migrate (confirm|revert)'
+  - compute: Add missing options for 'keypair list'
+  - Add an error message when server bind floating IP
+  - Remove None valued network quota entries
+  - trivial: Document removal of support for agents
+  - Rename FakeServerMigration to FakeMigration
+  - compute: Add missing 'server create' options
+  - Add 'openstack server evacuate' command
+  - compute: Remove deprecated 'server migrate --live' option
+  - Fix lower-constraints job
+  - compute: Fix 'server * -f yaml' output
+  - compute: Add missing options for 'server set'
+  - compute: Add missing options for 'server event list'
+  - functional: Remove test for 'quota set --force'
+  - Remove references to Python 2.7
+  - compute: Add missing options for 'server image create'
+  - Add 'address_group' type support to rbac commands
+  - compute: Improve 'server create --block-device-mapping' option parsing
+  - compute: Add functional tests for --block-device
+  - Switch console url show operations to SDK
+  - Always display direction for security group rules
+  - Remove retired Karbor support
+  - network: Add missing subnet unset --gateway <subnet-id>
+  - compute: Add 'server show --topology' option
+  - compute: Auto-configure shared/block live migration
+  - Add device profile to ``port``
+  - compute: Add 'server volume list' command
+  - Add support for 'keypairs list --project' parameter
+  - Add a few selectable fields to the "openstack server list" output
+  - compute: Stop silently ignore --(no-)disk-overcommit
+  - compute: Add missing options for 'server group list'
+  - Add 'server unshelve --wait' option
+  - zuul: Stop testing against Tempest
+  - trivial: Rework 'CreateServer' function
+  - trivial: Cleanup docs for 'server rebuild'
+  - Add documentation about login with federation
+  - compute: Fix 'usage * -f yaml' output
+  - Add 'server shelve --offload', 'server shelve --wait' options
+  - Add project field in image list subcommand
+  - tests: Remove unused fake method
+  - compute: Improve 'server migration list' options
+  - Update master for stable/victoria
+  - Validate 'server group create --policy' option
+  - Update lower-constraints
+  - Add reno for change Ic3c555226a220efd9b0f27edffccf6c4c95c2747
+  - Add "fields" parameter to ListPort query
+  - Switch 'openstack keypair' ops to use SDK
+  - Cleanup of 'server migration list' command
+  - compute: Add 'server * --all-projects' option
+  - Add support '--progress' option for 'image create'
+  - trivial: Use plural for appended parameters
+  - Add --name to port list
+  - compute: Add missing options for 'hypervisor list'
+  - Remove usage of six
+  - compute: Add missing options for 'server list'
+  - Switch openstack console log show operation to use OpenStackSDK
+  - compute: Improve 'server create --nic' option parsing
+  - stop image downloads to memory
+  - compute: Shuffle options for 'server create'
+  - update lower-constraints.txt
+  - Remove oslo.utils
+  - compute: Fix 'server group * -f yaml' output
+  - Add server migration list CLI
+  - compute: Deprecate 'server create --file'
+  - Add 'openstack server migration list --type' option
+  - Compute: Add 'keypair create --type' parameter
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - tests: Remove 'agent' functional tests
+  - Add name and enabled param in ListDomain parser
+  - Compute: Add tag support for server add fixed ip
+  - Resolve issues with 'server migration list'
+  - Add Python3 wallaby unit tests
+  - Add 'server migration force complete' command
+  - Compute: Add user id support for keypair
+  - Compute: Add tag support for server add volume
+  - compute: Add --password option for openstack server create
+  - Add support for 'keypairs list --user' parameter
+  - Update the file paths mentioned in README.rst
+  - Compute: Add tag support for server add network
+  - project cleanup
+  - Add option to filter instances by AZ
+  - Switch compute aggregate functions to SDK
+  - Switch compute flavors from novaclient/direct to SDK
+  - compute: Add 'server migration show' command
+  - compute: Add support for 'server boot --nic ...,tag=<tag>'
+  - Restore behavior of image create with same name.
+  - compute: Add 'server volume update' command
+  - Add NODE and HOST parameters in "server create" help text
+  - compute: Add support for loading BDMs from files
+  - Fix formatting of the flavor properties
+  - Make use of comparable 'FormattableColumn' subclasses
+  - Remove references to setuptools
+  - network: Address nits for I3c313fc9329837dde67815901528a34dca98ebcc
+  - Add 'server migration abort' command
+  - Compute: Add tag support for server add port
+  - Change 'Volume' to 'Block Storage'
+  - Compute: Add tags support for server
+  - compute: Add 'server group create --rule' option
+  - compute: Add missing options for 'server rebuild'
+  - compute: Remove references to optional extensions
+  - Remove the unused coding style modules
+  - compute: Add '--force' option to 'server delete'
+  - Fix: port attribute name propagate_uplink_status
+  - Support remote-address-group in SG rules
+  - Add id and enabled param in ListIdentityProvider parser
+  - Support Neutron Address Group CRUD
+  - Add 'openstack server create --use-config-drive'
+  - Remove retired Searchlight support
+  - compute: Fix 'hypervisor show -f yaml' output
+  - Let autoprogram-cliff know who's running
+  - image: Unset properties rather than setting to None
+  - Allow to resize in-use volumes
+  - compute: Remove 'file://' prefix from '--block-device'
+  - trivial: Cleanup docs for 'server list'
+  - compute: Add 'server create --block-device' option
+  - Add 'flavor list --min-disk', '--min-ram' options
+
+-------------------------------------------------------------------
 Fri Oct  9 19:02:36 UTC 2020 - cloud-devel@suse.de
 
 - update to version 5.4.0

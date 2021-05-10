@@ -495,4 +495,41 @@ update to version 3.1.0
     <comment>switch to victoria</comment>
     <requestid>841197</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d5070d88cee1d4034cb07b132cfb3f7d</srcmd5>
+    <version>5.5.0</version>
+    <time>1620653869</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Replace-assertItemsEqual-with-assertCountEqual.patch
+
+- update to version 5.5.0
+  - Add source_ip_prefix and destination_ip_prefix to metering label rules
+  - compute: Rename 'server migrate (confirm|revert)'
+  - compute: Add missing options for 'keypair list'
+  - Add an error message when server bind floating IP
+  - Remove None valued network quota entries
+  - trivial: Document removal of support for agents
+  - Rename FakeServerMigration to FakeMigration
+  - compute: Add missing 'server create' options
+  - Add 'openstack server evacuate' command
+  - compute: Remove deprecated 'server migrate --live' option
+  - Fix lower-constraints job
+  - compute: Fix 'server * -f yaml' output
+  - compute: Add missing options for 'server set'
+  - compute: Add missing options for 'server event list'
+  - functional: Remove test for 'quota set --force'
+  - Remove references to Python 2.7
+  - compute: Add missing options for 'server image create'
+  - Add 'address_group' type support to rbac commands
+  - compute: Improve 'server create --block-device-mapping' option parsing
+  - compute: Add functional tests for --block-device
+  - Switch console url show operations to SDK
+  - Always display direction for security group rules
+  - Remove retired Karbor support
+  - network: Add missing subnet unset --gateway &lt;subnet-id&gt;
+  - compute: Add 'server show --topology' option
+  - compute: Auto-configure shared/block live migration
+  - Add device profile to ``port``</comment>
+    <requestid>891997</requestid>
+  </revision>
 </revisionlist>

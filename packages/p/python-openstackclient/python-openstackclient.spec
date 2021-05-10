@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,26 @@
 
 
 Name:           python-openstackclient
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-openstackclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-5.4.0.tar.gz
+URL:            https://docs.openstack.org/python-openstackclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-5.5.0.tar.gz
+Patch1:         0001-Replace-assertItemsEqual-with-assertCountEqual.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient >= 3.3.0
-BuildRequires:  python3-cliff >= 2.8.0
+BuildRequires:  python3-cliff >= 3.5.0
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-glanceclient
 BuildRequires:  python3-keystoneclient >= 3.22.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-novaclient >= 15.1.0
-BuildRequires:  python3-openstacksdk >= 0.48.0
+BuildRequires:  python3-novaclient >= 17.0.0
+BuildRequires:  python3-openstacksdk >= 0.53.0
 BuildRequires:  python3-os-client-config
-BuildRequires:  python3-osc-lib >= 2.0.0
+BuildRequires:  python3-osc-lib >= 2.3.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-requests
@@ -54,20 +55,19 @@ actual REST API client actions.
 
 %package -n python3-openstackclient
 Summary:        OpenStack Command-line Client
-Group:          Development/Languages/Python
 Requires:       python3-Babel
 Requires:       python3-cinderclient >= 3.3.0
-Requires:       python3-cliff >= 2.8.0
+Requires:       python3-cliff >= 3.5.0
 Requires:       python3-glanceclient
 Requires:       python3-heatclient
 Requires:       python3-keystoneauth1
 Requires:       python3-keystoneclient >= 3.22.0
-Requires:       python3-novaclient >= 15.1.0
-Requires:       python3-openstacksdk >= 0.48.0
-Requires:       python3-osc-lib >= 2.0.0
+Requires:       python3-novaclient >= 17.0.0
+Requires:       python3-openstacksdk >= 0.53.0
+Requires:       python3-osc-lib >= 2.3.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-openstackclient < 4.0.0
 %endif
@@ -81,13 +81,12 @@ This package contains the Python 3.x module.
 
 %package -n python-openstackclient-doc
 Summary:        Documentation for OpenStack Command-line Client
+Group:          Documentation/HTML
 # Some clients are commented out, since they have not been built yet
 # TODO(jpena): uncomment them to enable their sections in the documentation
-Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 #BuildRequires:  python3-aodhclient
 #BuildRequires:  python3-barbicanclient
-#BuildRequires:  python3-congressclient
 #BuildRequires:  python3-designateclient
 #BuildRequires:  python3-heatclient
 #BuildRequires:  python3-ironicclient
@@ -107,14 +106,14 @@ actual REST API client actions.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-openstackclient-5.4.0
+%autosetup -p1 -n python-openstackclient-5.5.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=5.4.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=5.4.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=5.5.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=5.5.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
