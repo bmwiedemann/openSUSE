@@ -21,7 +21,7 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later

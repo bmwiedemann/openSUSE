@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  9 13:09:55 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.6
+  * added application startup optimization
+  * added X11 session checking in the notifier plugin
+  * fixed provider settings parsing in the lyrics plugin
+  * fixed equalizer form in the qsui plugin
+  * fixed build with the latest ffmpeg version
+  * updated Portuguese translation (Sérgio Marques)
+  * updated Italian translation (Luigi Toscano)
+  * updated French translation (Adrien Vigneron)
+
+-------------------------------------------------------------------
 Thu Apr 29 06:48:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.5
