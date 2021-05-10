@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May  2 17:41:14 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Work on copy of registered rule instead of original object
+  - Fix oslopolicy-j2y-convertor tool for RuleDefault
+  - Adding pre-commit
+  - trivial: Tweak docstrings
+  - Add Python3 wallaby unit tests
+  - pre-commit: Resolve dependency conflicts
+  - Handle deprecated rule only once
+  - Remove all usage of six library
+  - Fix hacking min version to 3.0.1
+  - Remove format option examples in policy generator
+  - Switch to collections.abc.MutableMapping
+  - tests: Unset requests-related environment variables
+  - Make 'Rule' attributes read-only
+  - Fix grammar issues
+  - Add policy file selection logic when default changing to yaml
+  - Add documentation parameters for DeprecatedRule
+  - Use TOX_CONSTRAINTS_FILE
+  - remove unicode from code
+  - Don't modify 'Rule.check'
+  - Add nova/neutron project unit/functional tests job in gate
+  - Update master for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:34 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.policy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-oslo.policy
-Version:        3.5.0
+Version:        3.7.0
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.5.0.tar.gz
+URL:            https://docs.openstack.org/oslo.policy
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.7.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
-BuildRequires:  python3-oslo.config >= 5.2.0
+BuildRequires:  python3-oslo.config >= 6.0.0
 BuildRequires:  python3-oslo.context >= 2.22.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -44,15 +44,13 @@ RBAC policy enforcement library for OpenStack.
 
 %package -n python3-oslo.policy
 Summary:        OpenStack Oslo Policy library
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 5.1
-Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.config >= 6.0.0
 Requires:       python3-oslo.context >= 2.22.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.40.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.policy < 2.4.1
@@ -75,7 +73,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-3.5.0
+%autosetup -p1 -n oslo.policy-3.7.0
 %py_req_cleanup
 
 %build
