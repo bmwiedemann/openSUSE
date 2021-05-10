@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May  2 17:21:48 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.6.1
+  - Add 'deploy steps' for  provisioning API
+  - Use TOX_CONSTRAINTS_FILE
+  - Remove lower-constraints job
+  - Add tests for 'baremetal port create' command
+  - Support YAML files wherever JSON files are accepted
+  - Add Python3 wallaby unit tests
+  - remove lower-constraints job tox.ini
+  - Move pep8 dependencies from test-requirements to tox.ini
+  - Set safe version of hacking
+  - Support setting automated_clean to False
+  - Update minversion of tox
+  - Update create node from file example
+  - requirements: Drop os-testr
+  - Add PyPi link to readme.rst
+  - Fix l-c job
+  - Update master for stable/victoria
+  - Remove install unnecessary packages
+  - Clearer error message when unable to parse JSON
+
+-------------------------------------------------------------------
 Tue Feb  2 00:37:40 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.4.0
