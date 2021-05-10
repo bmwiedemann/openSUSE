@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  6 12:50:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Enable 32-bit arches again on latest node for TW
+- Set TW to nodejs16
+- Set nodejs14 for SP3 as default and nodejs16 for SP4
+
+-------------------------------------------------------------------
+Thu Apr 29 09:33:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide nodejs(engine) by nodejs-common: nodejs-packaging happens
+  to read the engines parameter from the json files and it's a
+  nice-to-have if OBS can find out what the default nodejs engine
+  to use.
+
+-------------------------------------------------------------------
 Thu Apr 15 12:35:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use older nodejs (10) for %{arm}

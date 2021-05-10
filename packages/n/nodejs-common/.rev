@@ -95,4 +95,19 @@
     <comment></comment>
     <requestid>886631</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4284e363716d1ac88eedae8fa51e7b69</srcmd5>
+    <version>4.1</version>
+    <time>1620653799</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable 32-bit arches again on latest node for TW
+- Set TW to nodejs16
+- Set nodejs14 for SP3 as default and nodejs16 for SP4
+
+- Provide nodejs(engine) by nodejs-common: nodejs-packaging happens
+  to read the engines parameter from the json files and it's a
+  nice-to-have if OBS can find out what the default nodejs engine
+  to use.</comment>
+    <requestid>891325</requestid>
+  </revision>
 </revisionlist>

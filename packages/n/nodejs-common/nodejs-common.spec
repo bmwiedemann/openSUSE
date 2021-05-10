@@ -25,21 +25,14 @@
 #
 ###########################################################
 
-%define NODEJS_LTS      14
-%define NODEJS_CURRENT  15
-
-# logic for default version
-# OBSOLETE ARCHES
-%ifarch %ix86 %{arm}
-%define default_node_ver 10
-%else
-
-# GENERAL SUPPORT ARCHES
+%define NODEJS_LTS      16
+%define NODEJS_CURRENT  16
 
 # SLE-12 variants
 %if 0%{?suse_version} < 1500
 %define default_node_ver %NODEJS_LTS
-%endif
+
+%else
 
 # TW
 %if 0%{?suse_version} > 1500
@@ -50,19 +43,24 @@
 # SLE-15 variants, variation based on SP
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 150200
 %define default_node_ver 10
-%else
-%if 0%{?sle_version} < 150300
+%endif
+
+%if 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150300
 %define default_node_ver 12
-%else
+%endif
+
+%if 0%{?sle_version} >= 150300 && 0%{?sle_version} < 150400
+%define default_node_ver 14
+%endif
+
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 150500
 %define default_node_ver %NODEJS_LTS
 %endif
+
 # SLE-15 variants
 %endif
 
 # TW
-%endif
-
-# END - GENERAL ARCHES
 %endif
 
 Name:           nodejs-common
@@ -91,6 +89,7 @@ Group:          Development/Languages/NodeJS
 Requires:       nodejs%{default_node_ver}
 Requires:       nodejs-common
 Provides:       nodejs = %default_node_ver
+Provides:       nodejs(engine) = %default_node_ver
 
 %description -n nodejs-default
 Depends on the most current and recommended version of nodejs for
