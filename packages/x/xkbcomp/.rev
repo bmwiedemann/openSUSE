@@ -171,4 +171,12 @@
   * keycodes: compress the high keycode warning</comment>
     <requestid>879661</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b107248d390d6df4b564ce4afd8c3886</srcmd5>
+    <version>1.4.5</version>
+    <time>1620653770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889857</requestid>
+  </revision>
 </revisionlist>
