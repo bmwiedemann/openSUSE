@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 09:39:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches to fix build failures in Tumbleweed:
+  * 0001-Update-Python-scripts-to-Python-3.patch
+  * 0001-Docs-Adjust-attributes-order-to-avoid-bugs-in-breath.patch
+
+-------------------------------------------------------------------
 Sun Oct  4 09:47:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.42.0

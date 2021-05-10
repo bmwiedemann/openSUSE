@@ -1,7 +1,7 @@
 #
 # spec file for package gammu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        https://dl.cihar.com/gammu/releases/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gammu-remove-gplv3-files.patch idoenmez@suse.de -- Remove GPLv3 files bnc#775397
 Patch1:         gammu-remove-gplv3-files.patch
 Patch2:         0001-Enable-fPIE-pie.patch
+Patch3:         0001-Update-Python-scripts-to-Python-3.patch
+Patch4:         0001-Docs-Adjust-attributes-order-to-avoid-bugs-in-breath.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gettext
@@ -185,6 +187,8 @@ This package contains the Gammu SMS daemon shared library.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 # GPL-3.0 licensed files, bnc#775397
 rm -rf contrib/sms-gammu2android
