@@ -18,7 +18,7 @@
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0
@@ -76,10 +76,10 @@ This package contains the development files for %{name}.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -94,6 +94,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}.so.*
 
 %files -n mmdblookup
+%license LICENSE
 %doc doc/mmdblookup.md
 %{_bindir}/mmdblookup
 %{_mandir}/man1/mmdblookup.*
