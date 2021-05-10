@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-svg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.3
-%define short_version 6.0
+%define real_version 6.1.0
+%define short_version 6.1
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
-Summary:        Qt 6 SVG Library
+Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -50,8 +50,8 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-The Qt SVG module provides functionality for displaying SVG images
-as a widget, and to create SVG files using drawing commands.
+The Qt SVG module provides classes for rendering and displaying SVG drawings
+in widgets and on other paint devices.
 
 %if !%{qt6_docs_flavor}
 
@@ -91,6 +91,8 @@ Requires:       cmake(Qt6SvgWidgets) = %{real_version}
 %description private-devel
 This package provides private headers of libQt6Svg that do not have any
 ABI or API guarantees.
+
+%{qt6_examples_package}
 
 %endif
 
