@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Notifications5
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotifications
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        KDE Desktop notifications
 License:        LGPL-2.1-or-later
@@ -43,16 +43,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5TextToSpeech) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5TextToSpeech) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(x11)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
 %description
@@ -75,8 +75,8 @@ Summary:        KDE Desktop notifications: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5DBus) >= 5.14.0
-Requires:       cmake(Qt5Widgets) >= 5.14.0
+Requires:       cmake(Qt5DBus) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= 5.15.0
 
 %description devel
 KNotification is used to notify the user of an event. It covers feedback and
@@ -85,15 +85,15 @@ persistent events. Development files.
 %lang_package -n %{lname}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %if %{with lang}
 %find_lang %{name}5 --with-qt --without-mo

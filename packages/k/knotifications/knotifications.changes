@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  1 16:41:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Silence a couple of clazy warnings about overloaded signals
+  * Relicense some files to LGPL-2.0-or-later
+  * Allow to build KNotifications without QtWidgets on Android
+  * Remove the taskbar and external process backends on Android
+  * Don't install the notification plugin servicetype file on Android
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0
