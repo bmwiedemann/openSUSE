@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  2 17:24:05 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Update doc8 version
+  - Update master for stable/victoria
+  - Remove six
+  - Add doc/requirements
+  - Uncap PrettyTable
+  - Add Python3 wallaby unit tests
+  - Fix zuul publish docker image job
+
+-------------------------------------------------------------------
 Fri Oct  9 19:15:18 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.1
