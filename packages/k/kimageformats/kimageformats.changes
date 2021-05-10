@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  1 16:40:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Support building with OpenEXR 3
+  * test: imageconverter: add a way to list mimes instead of formats
+  * xcf: fix new[]/delete mismatch, as detected by ASAN
+  * ani: convert +1 to -1 so we don't do a potential integer overflow
+  * xcf: Fix Stack-buffer-overflow WRITE on broken files
+
+-------------------------------------------------------------------
 Mon Apr  5 07:12:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.81.0

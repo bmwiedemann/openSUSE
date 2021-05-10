@@ -19,7 +19,7 @@
 %if 0%{?suse_version} > 1500
 %define with_avif 1
 %endif
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -44,9 +44,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  openexr
 BuildRequires:  openexr-devel
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
 %if 0%{?with_avif}
 BuildRequires:  cmake(libavif) >= 0.8.2
 %endif
@@ -73,15 +73,15 @@ it invokes ghostscript for conversion, it should only be used in trusted
 environments.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
 
 %files
 %license LICENSES/*
