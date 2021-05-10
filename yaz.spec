@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.30.3
+Version:        5.31.0
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
@@ -44,9 +44,7 @@ clients and servers are also supported.
 %package doc
 Summary:        Documentation for %{name} (Z39.50 Library)
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1140
 BuildArch:      noarch
-%endif
 
 %description doc
 YAZ is a C library for developing client and server applications
