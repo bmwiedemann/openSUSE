@@ -248,4 +248,12 @@ update to version 4.9.0
     <comment>switch to victoria</comment>
     <requestid>841185</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a36b72a7e28ae4da2f8b6d3112927ce3</srcmd5>
+    <version>9.2.0</version>
+    <time>1620653846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889972</requestid>
+  </revision>
 </revisionlist>

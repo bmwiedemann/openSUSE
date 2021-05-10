@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  2 17:17:54 UTC 2021 - cloud-devel@suse.de
+
+- update to version 9.2.0
+  - Use unittest.mock instead of third party mock
+  - [goal] Migrate testing to ubuntu focal
+
+-------------------------------------------------------------------
 Fri Oct  9 19:14:23 UTC 2020 - cloud-devel@suse.de
 
 - update to version 9.1.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystonemiddleware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/keystonemiddleware
-Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-9.1.0.tar.gz
+URL:            https://docs.openstack.org/keystonemiddleware
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-9.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-WebTest
@@ -59,7 +59,6 @@ does not expose any CLI or Python API features.
 
 %package -n python3-keystonemiddleware
 Summary:        Middleware for OpenStack Identity
-Group:          Development/Languages/Python
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-keystoneauth1 >= 3.12.0
 Requires:       python3-keystoneclient >= 3.20.0
@@ -86,7 +85,6 @@ This package contains the Python 3.x module
 
 %package -n python-keystonemiddleware-doc
 Summary:        Documentation for Middleware for OpenStack Identity
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -96,7 +94,7 @@ BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n keystonemiddleware-9.1.0
+%autosetup -p1 -n keystonemiddleware-9.2.0
 %py_req_cleanup
 
 %build
