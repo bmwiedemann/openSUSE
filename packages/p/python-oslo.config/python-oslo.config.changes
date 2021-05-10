@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May  2 16:34:34 UTC 2021 - cloud-devel@suse.de
+
+- update to version 8.5.0
+  - remove lower-constraints.txt
+  - sphinxext: Add 'merge_domaindata'
+  - Update master for stable/victoria
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Convert rst to plaintext for oslo.config output
+  - Use py3 as the default runtime for tox
+  - inherit from object is not required for py3
+  - Add a new type HostDomain.
+  - Adding --check-defaults to validator
+  - Bump minimum version for PyYAML to 5.1
+  - Remove Babel from lower-constraints.txt
+  - Dropping lower constraints testing
+  - tox: Enable parallel docs builds
+  - Move zuul config file to root folder
+
+-------------------------------------------------------------------
 Tue Feb  2 00:38:32 UTC 2021 - cloud-devel@suse.de
 
 - update to version 8.3.3

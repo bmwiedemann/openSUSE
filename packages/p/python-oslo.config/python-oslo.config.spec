@@ -17,15 +17,16 @@
 
 
 Name:           python-oslo.config
-Version:        8.3.3
+Version:        8.5.0
 Release:        0
+Epoch:          0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.3.3.tar.gz
+URL:            https://docs.openstack.org/oslo.config
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.5.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-importlib-metadata
@@ -55,8 +56,7 @@ parsing library from the Oslo project.
 
 %package -n python3-oslo.config
 Summary:        OpenStack common configuration library
-Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 5.1
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-importlib-metadata
 Requires:       python3-netaddr >= 0.7.18
@@ -82,7 +82,6 @@ This package contains the Python 3.x module.
 
 %package -n python-oslo.config-doc
 Summary:        Documentation for OpenStack common configuration library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -91,13 +90,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-8.3.3
+%autosetup -p1 -n oslo.config-8.5.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=8.3.3 PYTHONPATH=. \
+PBR_VERSION=8.5.0 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}

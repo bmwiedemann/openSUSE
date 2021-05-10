@@ -754,4 +754,12 @@ all changed Requires/Buildrequires seem to be available
   - Add a new type HostDomain.</comment>
     <requestid>868497</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a989f294735d191e3cdfcd6aec50747c</srcmd5>
+    <version>8.5.0</version>
+    <time>1620653856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889990</requestid>
+  </revision>
 </revisionlist>
