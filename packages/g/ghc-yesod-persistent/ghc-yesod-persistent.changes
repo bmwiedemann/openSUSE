@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  7 17:04:24 UTC 2021 - psimons@suse.com
+
+- Update yesod-persistent to version 1.6.0.7.
+  ## 1.6.0.7
+
+  * Add support for persistent 2.13. [#1723](https://github.com/yesodweb/yesod/pull/1723)
+
+-------------------------------------------------------------------
 Wed Mar 31 14:28:43 UTC 2021 - psimons@suse.com
 
 - Update yesod-persistent to version 1.6.0.6.
