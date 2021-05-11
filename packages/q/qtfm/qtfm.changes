@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May  8 16:31:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.2.0:
+  * imagemagick support (improved thumbnail support)
+  * ffmpeg support (get thumbnails from audio/video)
+  * settings: use decimal keys in config
+  * settings: support filter mime types
+  * (u)disks now supports disk labels (with device name as fallback)
+  * bookmarks: added "link" option in file actions
+  * support .config/mimeapps.list
+  * tabbar: hide if only one tab
+  * remove "open file" in context menu if selected item is folder
+  * added "open in new tab" in context menu
+  * fixed run executable on double click
+  * fixed mount/umount issue with optical storage
+  * fixed current drag mode
+  * fix potential crash in close tab
+  * show and run .desktop in file view
+- Added 0001-iconview-Fix-QPainterPath-path-has-incomplete-type.patch
+
+-------------------------------------------------------------------
 Thu Apr 25 19:29:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 6.1.9:

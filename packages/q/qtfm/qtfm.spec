@@ -1,7 +1,7 @@
 #
 # spec file for package qtfm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qtfm
-Version:        6.1.9
+Version:        6.2.0
 Release:        0
 Summary:        Qt File Manager
 License:        GPL-2.0-or-later AND BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://qtfm.eu
 Source0:        https://github.com/rodlie/qtfm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/rodlie/qtfm/pull/174
+Patch0:         0001-iconview-Fix-QPainterPath-path-has-incomplete-type.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
-Requires:       ImageMagick
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
 Recommends:     adwaita-icon-theme
 Recommends:     udisks2
 
@@ -52,37 +59,16 @@ Features:
  * System tray daemon
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix}
-%make_jobs
+%qmake5 PREFIX=%{_prefix} CONFIG+=with_magick CONFIG+=magick7 CONFIG+=with_ffmpeg
+%make_build
 
 %install
 %qmake5_install
 %fdupes %{buildroot}/%{_datadir}
-
-# Installing the app icon to hicolor
-# Fix: directories not owned by a package
-pushd %{buildroot}
-find ./ -type d -d | while read _list; do
-    echo $_list | grep '[0-9]x[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    ls $_path &> /dev/null || rm -rv %{buildroot}$_path
-done
-popd
-
 rm -rv %{buildroot}%{_datadir}/doc
-
-%if 0%{?suse_version} < 1500 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
 
 %files
 %license LICENSE
@@ -90,9 +76,10 @@ rm -rv %{buildroot}%{_datadir}/doc
 %{_bindir}/qtfm
 %{_bindir}/qtfm-tray
 %{_datadir}/applications/qtfm.desktop
+%dir %{_datadir}/icons/hicolor/{20x20,160x160}/{,apps}
 %{_datadir}/icons/hicolor/*/apps/qtfm.??g
 %{_sysconfdir}/xdg/autostart/qtfm-tray.desktop
-%{_mandir}/man?/qtfm-tray.?%{ext_info}
-%{_mandir}/man?/qtfm.?%{ext_info}
+%{_mandir}/man?/qtfm-tray.?%{?ext_man}
+%{_mandir}/man?/qtfm.?%{?ext_man}
 
 %changelog

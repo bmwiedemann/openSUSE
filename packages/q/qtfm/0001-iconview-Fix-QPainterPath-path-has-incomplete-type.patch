@@ -1,0 +1,37 @@
+From ca718c1c5e40f68b65b3d52db2a36e46e8fedbe8 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Sat, 8 May 2021 18:37:16 +0200
+Subject: [PATCH] iconview: Fix QPainterPath path has incomplete type
+
+---
+ libfm/iconlist.h | 1 +
+ libfm/iconview.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/libfm/iconlist.h b/libfm/iconlist.h
+index 6b772b6..2ff7938 100644
+--- a/libfm/iconlist.h
++++ b/libfm/iconlist.h
+@@ -9,6 +9,7 @@
+ #include <QStyledItemDelegate>
+ #include <QModelIndex>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ class IconListDelegate : public QItemDelegate
+ {
+diff --git a/libfm/iconview.h b/libfm/iconview.h
+index 2beaba1..ccd1c99 100644
+--- a/libfm/iconview.h
++++ b/libfm/iconview.h
+@@ -11,6 +11,7 @@
+ #include <QKeyEvent>
+ #include <QModelIndex>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ class IconViewDelegate : public QStyledItemDelegate
+ {
+-- 
+2.26.2
+
