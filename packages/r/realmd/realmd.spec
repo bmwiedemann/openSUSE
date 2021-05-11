@@ -1,7 +1,7 @@
 #
 # spec file for package realmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           realmd
-Version:        0.16.3
+Version:        0.17.0
 Release:        0
 Summary:        AD integration detection
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-URL:            http://www.freedesktop.org/software/realmd
-Source:         http://www.freedesktop.org/software/realmd/releases/%{name}-%{version}.tar.gz
-Patch1:         0001-suse-pam-settings.patch
-
+URL:            https://www.freedesktop.org/software/realmd/
+Source:         https://gitlab.freedesktop.org/realmd/realmd/-/archive/%{version}/realmd-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-tools
@@ -57,13 +55,17 @@ authentication and user account lookups.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
+NOCONFIGURE=1 sh ./autogen.sh
 # krb5-config is hidden
 PATH=$PATH:%{_prefix}/lib/mit/bin
-%configure --with-distro=suse --with-systemd-unit-dir=%{_unitdir} --with-systemd-journal=no
-make %{?_smp_mflags}
+%configure \
+  --with-distro=suse \
+  --with-systemd-journal=no \
+  --with-systemd-unit-dir=%{_unitdir} \
+  --with-private-dir=%{_libdir}/%{name}
+%make_build
 
 %install
 %make_install
@@ -90,7 +92,8 @@ fi
 %{_sbindir}/realm
 %{_sbindir}/rc%{name}
 %{_unitdir}/realmd.service
-%{_prefix}/lib/realmd/
+%{_libexecdir}/%{name}
+%{_libdir}/%{name}/
 %config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.realmd.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.realmd.service
 %{_datadir}/polkit-1/actions/org.freedesktop.realmd.policy
