@@ -1,0 +1,5 @@
+<package name="fwts" project="openSUSE:Factory">
+  <title>Firmware Test Suite</title>
+  <description>The FirmWare Test Suite (fwts) is a tool to do automatic testing of a PC's firmware. There can be a lot of subtle or vexing Linux Kernel/firmware issues caused when firmware is buggy, so it's useful to have a tool that can automatically check for common BIOS and ACPI errors. Where possible the tool will give some form of advice on how to fix issues or workaround firmware issues.</description>
+  <devel project="hardware" package="fwts"/>
+</package>
