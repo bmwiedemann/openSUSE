@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 10 03:08:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012003	2021-05-09
+
+   [ Documentation ]
+   - Fixed typo in Type::Tiny::Enum where the `closest_match` method was
+     documented as being called `closet_match`.
+
+   [ Other ]
+   - Type::Parser now supports negative hexadecimal integers.
+
+-------------------------------------------------------------------
 Mon May  3 03:10:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.012002
