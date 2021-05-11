@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Mar  8 09:40:42 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require building with Go 1.15
+
+-------------------------------------------------------------------
+Wed Jan  1 15:04:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to upstream release 0.7.0
+
+-------------------------------------------------------------------
+Thu Jun  6 09:26:16 UTC 2019 - jmc <jcavalheiro@suse.com>
+
+- Add %license macro for LICENSE file 
+
+-------------------------------------------------------------------
+Thu Apr 18 09:04:18 UTC 2019 - jcavalheiro@suse.com
+
+- Fix license information in spec file (MIT)
+
+-------------------------------------------------------------------
+Wed Apr 17 17:08:16 UTC 2019 - jcavalheiro@suse.com
+
+- Initial commit (v0.5.0)

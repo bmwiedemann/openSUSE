@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus exporter for Apache metrics
+Documentation=https://github.com/lusitaniae/apache_exporter
+
+[Service]
+Restart=always
+User=prometheus
+EnvironmentFile=-/etc/sysconfig/prometheus-apache_exporter
+ExecStart=/usr/bin/prometheus-apache_exporter $ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
