@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-postgresql
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        3.3
+Version:        4.0
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-postgresql/OrthancPostgreSQL-%{version}.tar.gz
@@ -46,7 +46,7 @@ BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  postgresql-devel
 #TW/Leap 15.2
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500 
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  unzip
@@ -85,7 +85,7 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/orthanc
 
 %cmake_install
 
-# architecture dependet files should not be in /usr/share... 
+# architecture dependet files should not be in /usr/share...
 # create a directory
 mkdir -p -m 755 %{buildroot}%{_libdir}/share/orthanc/plugins
 
