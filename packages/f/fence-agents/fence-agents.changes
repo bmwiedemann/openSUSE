@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 10 12:51:57 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.8.0+git.1619794372.c48ba825:
+  * fence_lindypdu: update metadata
+  * fence_lindypdu: new fence agent
+  * fencing: add stonith_status_sleep parameter for sleep between status calls during a STONITH action
+  * fence_openstack: code formatting fixes per: https://github.com/ClusterLabs/fence-agents/pull/397#pullrequestreview-634281798
+  * Proper try-except for connection exception.
+  * Fix CI.
+  * Do not wrap as many values.
+  * Restore port metadata.
+  * Update xml metadata.
+  * Use standard logging.
+  * Revert change to __all__
+  * Major rework of the original agent:
+
+-------------------------------------------------------------------
 Fri Apr 09 08:38:18 UTC 2021 - trenn@suse.de
 
 - Update to version 4.8.0+git.1617895246.97a7479e (shortend):
