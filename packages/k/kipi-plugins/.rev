@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f1e5887cb09a979dcbc1b15f2b4e3ee</srcmd5>
+    <version>5.9.0</version>
+    <time>1551386450</time>
+    <user>coolo</user>
+    <comment>- Initial stand-alone package, based on digikam-5.9.0
+
+kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by other applications (gwenview, spectacle, kphotoalbum), so we need this to avoid feature loss there.</comment>
+    <requestid>676688</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a101271a54b1fabebd3fee5ef6b7030b</srcmd5>
+    <version>5.9.1</version>
+    <time>1555773221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.1
+  * https://jriddell.org/2019/04/19/kipi-plugins-5-9-1-released/
+  * First official stand-alone release outside of digikam
+  * No code changes
+- Drop kipi-plugins-lang.tar.xz, the translations are included in
+  the source tarball
+- Remove ImageMagick, enblend-enfuse and hugin Recommends, nothing
+  in kipi-plugins uses them anymore since a long time
+- Change URL to www.kde.org as it is no longer released by the
+  digikam project
+- Make creation of lang package conditional
+</comment>
+    <requestid>696373</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67efd69054c225e620db5596fce3e6dd</srcmd5>
+    <version>19.08.0</version>
+    <time>1565963154</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723659</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0c3e1755a1ff4fa883a2f97ebd3660a</srcmd5>
+    <version>19.08.1</version>
+    <time>1568190553</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728837</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4cf6a21d55af333edfd4868938f9a5f9</srcmd5>
+    <version>19.08.2</version>
+    <time>1572277824</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.2</comment>
+    <requestid>737763</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c8f0d3f498c46bc36392dc5bd8b73b9f</srcmd5>
+    <version>19.08.3</version>
+    <time>1573647616</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.3</comment>
+    <requestid>746884</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>21cb79ef9d7384df31fa7f8732f29aaa</srcmd5>
+    <version>19.12.0</version>
+    <time>1576321883</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756235</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df173b39b42ff3782eee92cb0bcd268d</srcmd5>
+    <version>19.12.1</version>
+    <time>1578867675</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762365</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>399d579dc7988bb0402fab8f7210d52b</srcmd5>
+    <version>19.12.2</version>
+    <time>1581455966</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771668</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>321ea38c2bfbc94ebda08d45f5166517</srcmd5>
+    <version>19.12.3</version>
+    <time>1584050578</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.3</comment>
+    <requestid>782399</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aab0871c5d97d1979cf1dacfba5d357f</srcmd5>
+    <version>20.04.0</version>
+    <time>1588186138</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.04.0</comment>
+    <requestid>796945</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>63128a2be03d6a0695800ae11a7856e2</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247427</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806493</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6ca18fe37eb69f76c117cee028e385a</srcmd5>
+    <version>20.04.2</version>
+    <time>1592152078</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813665</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f0ab89806abe16c47897e19dfeca7ec8</srcmd5>
+    <version>20.04.3</version>
+    <time>1594806548</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820205</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>78fa9c54787446ab9c154cab978e3fce</srcmd5>
+    <version>20.08.0</version>
+    <time>1597751893</time>
+    <user>dimstar_suse</user>
+    <comment>20.08.0 release</comment>
+    <requestid>826424</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>20041ccaacde891bc616b985ffd83db8</srcmd5>
+    <version>20.08.1</version>
+    <time>1599771091</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release 20.08.1</comment>
+    <requestid>831797</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7e46eba0fe31ae92e654545dfec1e982</srcmd5>
+    <version>20.08.2</version>
+    <time>1602596202</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.08.2</comment>
+    <requestid>840633</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>afb330894c2e1eb60dbb128f9174db8f</srcmd5>
+    <version>20.08.3</version>
+    <time>1605012150</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
+    <requestid>846694</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>662970cf707379ea83c203c56d558eb3</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220876</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855183</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>333d6fd5aa5c55b75159141c127452a3</srcmd5>
+    <version>20.12.1</version>
+    <time>1610304065</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.1</comment>
+    <requestid>861202</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>72f99b4186e99821eaf8973f0683b8bc</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707537</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869336</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3605b7a5e79c13d293a5e51f4e15ff0d</srcmd5>
+    <version>20.12.3</version>
+    <time>1615362751</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877110</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c30eec563b44bd7dd445f16f4c642f4</srcmd5>
+    <version>21.04.0</version>
+    <time>1619378802</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887671</requestid>
+  </revision>
+</revisionlist>
