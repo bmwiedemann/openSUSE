@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  4 14:15:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * [sendfile] Update org.kde.bluedevilsendfile.desktop
+  * [kio] Add trailing slash to device url (kde#409179)
+
+-------------------------------------------------------------------
 Tue Apr  6 14:00:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.4
