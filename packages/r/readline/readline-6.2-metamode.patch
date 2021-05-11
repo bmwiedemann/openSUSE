@@ -4,7 +4,7 @@
 
 --- lib/readline/bind.c
 +++ lib/readline/bind.c	2018-09-20 06:40:06.799183658 +0000
-@@ -1871,6 +1871,7 @@ static const struct {
+@@ -1872,6 +1872,7 @@ static const struct {
  #if defined (VISIBLE_STATS)
    { "visible-stats",		&rl_visible_stats,		0 },
  #endif /* VISIBLE_STATS */

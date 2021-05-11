@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  5 15:02:23 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+ - Add official patch readline81-001 and its signature
+  * The code to check readline versions in an inputrc file had the sense of the
+    comparisons reversed.
+
+-------------------------------------------------------------------
 Mon Jan 11 11:21:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to final readline-8.1

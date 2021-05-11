@@ -80,7 +80,7 @@
  #if defined (__MSDOS__)
    if (_rl_read_init_file (filename, 0) == 0)
      return 0;
-@@ -1725,7 +1752,14 @@ rl_parse_and_bind (char *string)
+@@ -1726,7 +1753,14 @@ rl_parse_and_bind (char *string)
  	  rl_macro_bind (seq, &funname[1], _rl_keymap);
  	}
        else
@@ -96,7 +96,7 @@
  
        xfree (seq);
        return 0;
-@@ -1896,7 +1930,6 @@ typedef int _rl_sv_func_t PARAMS((const
+@@ -1897,7 +1931,6 @@ typedef int _rl_sv_func_t PARAMS((const
  #define V_INT		2
  
  /* Forward declarations */

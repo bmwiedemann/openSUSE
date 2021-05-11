@@ -30,7 +30,9 @@ Source1:        ftp://ftp.gnu.org/gnu/readline/readline-%{version}.tar.gz.sig
 Source2:        baselibs.conf
 Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 # signatures for official patches
+Source100:      readline81-001.sig
 # official patches
+Patch100:       readline81-001
 # local patches
 Patch200:       readline-%{version}.dif
 Patch201:       readline-6.3-input.dif
@@ -101,6 +103,7 @@ as well as programming with the interface of the readline library.
 %prep
 %setup -q
 # official patches
+%patch100 -p0
 # local patches
 %patch201 -p2 -b .zerotty
 %patch202 -p2 -b .conf
@@ -200,7 +203,7 @@ export CC_FOR_BUILD CFLAGS_FOR_BUILD LDFLAGS_FOR_BUILD CFLAGS LDFLAGS CC
 %make_build documentation
 
 %install
-%make_install htmldir=%{_docdir}/%{name} installdir=%{_docdir}/%{name}/examples
+%make_install everything htmldir=%{_docdir}/%{name} installdir=%{_docdir}/%{name}/examples
 
 %post -n libreadline%{rl_major} -p /sbin/ldconfig
 %postun -n libreadline%{rl_major} -p /sbin/ldconfig

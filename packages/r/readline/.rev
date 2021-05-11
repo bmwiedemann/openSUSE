@@ -158,4 +158,14 @@
   * Ensure that disabling bracketed paste turns off highlighting the incremental</comment>
     <requestid>862370</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3bbbb869803004889ae599b48eb4a5d1</srcmd5>
+    <version>8.1</version>
+    <time>1620767005</time>
+    <user>dimstar_suse</user>
+    <comment> - Add official patch readline81-001 and its signature
+  * The code to check readline versions in an inputrc file had the sense of the
+    comparisons reversed.</comment>
+    <requestid>890764</requestid>
+  </revision>
 </revisionlist>
