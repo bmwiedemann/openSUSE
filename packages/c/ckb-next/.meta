@@ -1,0 +1,11 @@
+<package name="ckb-next" project="openSUSE:Factory">
+  <title>RGB Driver for Linux</title>
+  <description>ckb-next is an open-source driver for Corsair keyboards and mice. It aims to bring
+the features of their proprietary CUE software to the Linux operating system.
+This project is currently a work in progress, but it already supports
+much of the same functionality, including full RGB animations.
+
+</description>
+  <devel project="hardware" package="ckb-next"/>
+  <url>https://github.com/ckb-next/ckb-next</url>
+</package>
