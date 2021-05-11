@@ -1,0 +1,109 @@
+# Upstream has fixed share library dependencies, all within the
+# ceph src package. Eliminating them is a long-term effort.
+addFilter("shlib-fixed-dependency")
+
+# ceph-base RPM ships some internal static libraries
+addFilter("ceph-base.*devel-file-in-non-devel-package.*compressor")
+addFilter("ceph-base.*devel-file-in-non-devel-package.*rados-classes")
+addFilter("ceph-base.*devel-file-in-non-devel-package.*libceph_crypto")
+addFilter("ceph-base.*devel-file-in-non-devel-package.*libos_tp")
+addFilter("ceph-base.*devel-file-in-non-devel-package.*libosd_tp")
+
+# env shebang hack is required because the same script has to run in FreeBSD as
+# well as Linux (Fedora, CentOS, SUSE, Debian, Ubuntu, etc.)
+addFilter("ceph-common.*env-script-interpreter.*rbd-replay-many")
+addFilter("ceph-common.*env-script-interpreter.*rbdmap")
+
+# cephadm intentionally ships an empty file (.ssh/authorized_keys)
+# and a hidden directory (/var/lib/cephadm/.ssh)
+addFilter("cephadm.*zero-length")
+addFilter("cephadm.*hidden-file-or-dir")
+
+# ceph-mgr-dashboard ships a bunch of empty files and hidden files: need to audit if they are needed (WIP)
+addFilter("ceph-mgr-dashboard.*zero-length")
+addFilter("ceph-mgr-dashboard.*hidden-file-or-dir")
+
+# ceph-immutable-object-cache has a weird description (WIP)
+addFilter("ceph-immutable-object-cache.*description-shorter-than-summary")
+
+# ceph-osd depends on libstoragemgmt explicitly (WIP)
+addFilter("ceph-osd.*explicit-lib-dependency.*libstoragemgmt")
+
+# we have a problem with RPM names that are too long for Joliet filesystem (WIP)
+addFilter("filename-too-long-for-joliet")
+
+# ceph-base intentionally calls its logrotate file "etc/logrotate.d/ceph"
+addFilter("ceph-base.*incoherent-logrotate-file")
+
+# many ceph executables might not be relinquishing groups (WIP)
+addFilter("missing-call-to-setgroups-before-setuid")
+
+# package summary might intentionally contain the word "Ceph" 
+addFilter("name-repeated-in-summary")
+
+# the ceph RPM should be of the noarch architecture because it contains no binaries (WIP)
+addFilter("ceph.*no-binary")
+
+# cephfs-shell might be missing a Requires (WIP)
+addFilter("cephfs-shell.*no-dependency-on.*python-base")
+
+# ceph-osd ships /etc/sudoers.d/ceph-osd-smartctl without %config (WIP)
+addFilter("ceph-osd.*non-conffile-in-etc.*sudoers")
+
+# cephadm ships /etc/sudoers.d/cephadm without %config (WIP)
+addFilter("cephadm.*non-conffile-in-etc.*sudoers")
+
+# ceph-osd ships /usr/lib/sysctl.d/90-ceph-osd.conf with %config (WIP)
+addFilter("ceph-osd.*non-etc-or-var-file-marked-as-conffile.*sysctl.d")
+
+# ceph-dashboard ships several scripts that don't have executable bit set (WIP)
+addFilter("ceph-mgr-dashboard.*non-executable-script")
+
+# ceph-mgr-rook ships a script that doesn't have executable bit set (WIP)
+addFilter("ceph-mgr-rook.*non-executable-script.*generate_rook_ceph_client.sh")
+
+# some devel packages obsolete the deprecated "ceph-devel" package without providing it (WIP)
+addFilter("obsolete-not-provided.*ceph-devel")
+
+# libcephfs2 obsoletes libcephfs1 without providing it (WIP)
+addFilter("libcephfs2.*obsolete-not-provided.*libcephfs1")
+
+# librgw2 calls exit() or _exit(), probably in a non-fork() context (WIP)
+addFilter("librgw2.*shared-lib-calls-exit")
+
+# ceph-base ships with shared libraries - these are internal and upstream does
+# not want to split them into separate RPMS
+addFilter("ceph-base.*shlib-policy-missing-suffix")
+
+# the ceph RPM is a "meta" RPM without any files. These are discouraged by SUSE,
+# but upstream relies on this construct and we just have to live with it.
+addFilter("ceph\..*suse-filelist-empty")
+
+# ceph-common ships bash-completion files in the wrong directory (WIP)
+addFilter("ceph-common.*suse-filelist-forbidden-bashcomp-userdirs")
+
+# ceph-base ships a logrotate file in /etc/logrotate.d/ceph but does not not
+# package the log directory /var/log/ceph (WIP)
+addFilter("ceph-base.*suse-logrotate-log-dir-not-packaged")
+
+# our packages are missing "rcFOO" symlinks - I doubt if this is worth fixing
+addFilter("suse-missing-rclink")
+
+# %post scriptlets do not call service_add_post (WIP)
+addFilter("systemd-service-without-service_add_post")
+
+# %pre scriptlets do not call service_add_pre (WIP)
+addFilter("systemd-service-without-service_add_pre")
+
+# %postun scriptlets do not call service_del_postun (WIP)
+addFilter("systemd-service-without-service_del_postun")
+
+# %preun scriptlets do not call service_del_preun (WIP)
+addFilter("systemd-service-without-service_del_preun")
+
+# /run/ceph needs to be added to %files section as %ghost (WIP)
+addFilter("ceph-common.*tmpfile-not-in-filelist")
+
+# ceph-radosgw ships a SO that belongs in librgw-devel (WIP)
+addFilter("ceph-radosgw.*devel-file-in-non-devel-package")
+
