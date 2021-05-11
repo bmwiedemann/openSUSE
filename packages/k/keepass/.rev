@@ -272,4 +272,17 @@
     + Improved custom icon handling performance.</comment>
     <requestid>891910</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>69380625717c8227bdb4753a3ad8d119</srcmd5>
+    <version>2.48.1</version>
+    <time>1620767080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.48.1
+  * Improved compatibility with certain plugins/ports.
+  * In the main entry list, new-line characters in text inserted by a placeholder are now filtered.
+  * Minor other improvements.
+
+- Update to 2.48</comment>
+    <requestid>892290</requestid>
+  </revision>
 </revisionlist>

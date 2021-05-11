@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
-Sun May  9 18:40:13 UTC 2021 - Matthias Bach <marix@marix.org> - 2.47
+Tue May 11 19:13:28 UTC 2021 - Matthias Bach <marix@marix.org> - 2.48.1
 
-- Update to 2.47
+- Update to 2.48.1
+  * Improved compatibility with certain plugins/ports.
+  * In the main entry list, new-line characters in text inserted by a placeholder are now filtered.
+  * Minor other improvements.
+
+-------------------------------------------------------------------
+Sun May  9 18:40:13 UTC 2021 - Matthias Bach <marix@marix.org> - 2.48
+
+- Update to 2.48
   * New Features:
     + New KDBX 4.1 file format, which supports various new features (listed below).
     + Added support for group tags (KDBX 4.1).
