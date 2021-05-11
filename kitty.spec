@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -90,6 +90,7 @@ python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/doc/%{name}
+%{_mandir}/man5/kitty.conf.5%{?ext_man}
 %endif
 
 %changelog
