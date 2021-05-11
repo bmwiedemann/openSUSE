@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        5.0.3
+Version:        5.1.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -118,7 +118,7 @@ popd
 export QT_QPA_PLATFORM="offscreen"
 # test skips: https://github.com/jupyter/qtconsole/issues/443
 # now with test_input too. But does not seem to happen on the build server, only locally.
-%pytest -k "not (test_00 and (test_scroll or test_debug or test_input))"
+%pytest -ra -k "not (test_00 and (test_scroll or test_debug or test_input))"
 
 %post
 %python_install_alternative jupyter-qtconsole

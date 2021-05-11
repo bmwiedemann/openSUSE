@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 10 12:31:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.1.0
+  * Two new keyboard shortcuts: Ctrl + Up/Down to go to the
+    beginning/end of the buffer.
+  * Monkeypatch RegexLexer only while in use by qtconsole.
+  * Import Empty from queue module.
+
+-------------------------------------------------------------------
 Fri Mar 19 17:39:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.0.3
