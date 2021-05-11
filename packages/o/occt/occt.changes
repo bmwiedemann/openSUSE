@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 10 12:50:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add disk _constraints (mostly for PPC).
+
+-------------------------------------------------------------------
+Fri Mar  5 14:46:56 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix cmake files, wrong install directory and lib vs lib64.
+
+-------------------------------------------------------------------
 Sat Feb 27 15:35:46 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - enable glTF support, depends on RapidJSON.

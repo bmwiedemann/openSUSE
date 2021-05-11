@@ -112,7 +112,7 @@ This package contains the DRAWEXE executable of OpenCASCADE.
   -DBUILD_RELEASE_DISABLE_EXCEPTIONS:BOOL=false \
   -DUSE_RAPIDJSON:BOOL=true \
   -DINSTALL_DIR_LIB=%{_lib} \
-  -DINSTALL_DIR_CMAKE=%{_lib}/cmake/%{name} \
+  -DINSTALL_DIR_CMAKE=%{_lib}/cmake/opencascade \
   ..
 %cmake_build
 
@@ -127,7 +127,8 @@ cd ..
 chmod 0755 %buildroot/usr/bin/*
 
 # fixing up broken files
-sed -i -e 's,'%{_lib}'\\${OCCT_INSTALL_BIN_LETTER}/,'%{_lib}'/,' %buildroot%{_libdir}/cmake/*/*
+sed -i -e 's,'%{_lib}'\\${OCCT_INSTALL_BIN_LETTER}/,'%{_lib}'/,' %{buildroot}%{_libdir}/cmake/opencascade/*
+sed -i -e 's,/lib\$,/'%{_lib}'\$,' %{buildroot}%{_libdir}/cmake/opencascade/*
 
 rm -rf %buildroot/usr/share/doc
 
@@ -156,7 +157,8 @@ rm -rf %buildroot/usr/share/doc
 %files devel
 %doc README.txt
 %{_includedir}/opencascade
-%{_libdir}/cmake
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/opencascade
 %{_libdir}/lib*.so
 
 %files devel-doc
