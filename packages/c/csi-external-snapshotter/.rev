@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51092986e7672a3c0b2a1e808de03905</srcmd5>
+    <version>2.1.1</version>
+    <time>1600079769</time>
+    <user>dimstar_suse</user>
+    <comment>CSI sidecar package, used when deploying ceph on k8s with rook</comment>
+    <requestid>834257</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dc0fd109a3e6f11e70cb37737d71907</srcmd5>
+    <version>2.1.1</version>
+    <time>1607612182</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854035</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5005bf5dea7939eab97a2fd5c00f7ef</srcmd5>
+    <version>3.0.2</version>
+    <time>1617722930</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882396</requestid>
+  </revision>
+</revisionlist>
