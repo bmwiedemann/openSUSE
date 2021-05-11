@@ -119,6 +119,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver memory '< 0.16' '< 0.17'
 
 %build
 %ghc_lib_build
