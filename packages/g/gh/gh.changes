@@ -1,0 +1,262 @@
+-------------------------------------------------------------------
+Tue Apr 20 23:40:06 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.2:
+  - Actions Fixes
+    * Fix Actions use int64 explicitly in Actions support #3432
+    * Fix requesting REST sub-resources on GHE #3461
+    * Fix run view --log when steps have slashes #3445
+    * Include magic repo resolution magic for gh workflow and gh run #3468
+  - Other Fixes
+    * Fix issue create --web #3472
+    * Fix detecting PR status when passing branch as arg #3351
+    * Bump AlecAivazis/survey to fix bug with unicode input #3439
+  - Development / Docs
+    * Increase linter timeout from 1min to 3min #3462
+    * Remove unused embedded struct #3402
+    * Add note on supported value types in raw-fields #3400
+    * linuxbrew details added in linux installation docs. #3465
+    * Add Funtoo Linux install instructions #3438
+    * Add Debian install variant without add-apt-repository #3419
+
+-------------------------------------------------------------------
+Mon Apr 19 15:19:07 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.1:
+  * Create cache dir
+  * Fix whitespace formatting of `issue/pr view` help text
+  * Disallow unsupported values for `--json` flag
+  * Fix `pr view` tests broken by `createdAt` → `submittedAt` switch
+  * Fix assigning null Exporter
+  * Tests for GraphQL query builder and JSON exporter
+  * Add `gh help formatting` topic & link to it from commands with JSON output
+  * Placeholder consistency
+  * Minor usage improvements
+  * Bump run list limit
+  * Annotation fixes
+  * Unhide actions commands
+  * Incorporate wording feedback
+  * Fix small bug with startup_failure conclusion
+  * Add note about current branch detection
+- Prevent Makefile from overriding variables
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Apr 13 07:50:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Supplement bash-completion instead of bash 
+
+-------------------------------------------------------------------
+Mon Apr 12 08:17:36 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.8.1:
+  * Fix pr status/checks crash with unrecognized statuse from
+    the server(#3336)
+  * Fix repo fork --clone not cloning an existing fork locally
+    when running non-interactively(#3334)
+  * Fix commands not respecting default hostname from GH_HOST(#3347)
+- Create subpackages for completions
+
+-------------------------------------------------------------------
+Sun Mar  7 18:06:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * see https://github.com/cli/cli/releases/tag/v1.7.0
+  * https://github.com/cli/cli/releases/tag/v1.6.0 
+  * https://github.com/cli/cli/releases/tag/v1.5.0
+
+-------------------------------------------------------------------
+Tue Dec 15 19:32:00 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.4.0
+  * Add ability to view issue and pull request comment threads
+  * Add management of GitHub Actions secrets
+  * Set up git credentials when logging in to GitHub CLI
+  * Add make install and make uninstall for POSIX systems when building from source
+  * pr merge: attempt the merge even if mergeability status could not be determined
+  * repo clone: enable cloning repository wikis
+  * Recognize Include directives when parsing ssh config files
+  * Display the new release notice only once per 24 hours
+
+-------------------------------------------------------------------
+Thu Dec 10 09:26:16 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Fix app not showing the correct version
+- Install readme and license files
+
+-------------------------------------------------------------------
+Thu Dec 10 09:19:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build and install manpages as well
+
+-------------------------------------------------------------------
+Wed Dec  9 17:44:56 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Use source specified at Source0 URL
+- Switch from tar_scm to download_files for obtaining source archive
+
+-------------------------------------------------------------------
+Tue Dec  8 22:58:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec  7 05:46:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Revert back to tar_scm service for submission to openSUSE:Factory
+
+-------------------------------------------------------------------
+Mon Dec 07 04:41:09 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 1.3.1:
+  * Allow interactive `pr create` even if we failed to look up commits
+  * AskStubber now throws a more descriptive error when stubs do not match
+  * Make MetadataSurvey testable by accepting an interface
+  * Ensure efficient resolving of `issue/pr create` metadata to GraphQL IDs
+  * don't reset previously added metadata
+  * Prompt: avoid resetting PR/issue metadata if no option is selected
+  * Fix "Continue in browser" for `pr create` coming from forks
+  * Fix browser URL test on Windows
+  * Fix respecting chosen action in interactive `issue create`
+  * Properly check env auth tokens in CheckAuth
+  * Delete an error message that is not useful (and had a typo)
+  * Document that reviewers can be teams (#2465)
+  * Bump AlecAivazis/survey
+  * Sort latest PRs first when looking up PRs for a branch
+
+-------------------------------------------------------------------
+Wed Dec  2 10:53:17 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Reinstated and fixed obs_scm service for source control
+- Fixed build for openSUSE Leap
+
+-------------------------------------------------------------------
+Mon Nov 30 21:34:51 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Return to tar_scm due to breakages with obs_scm service
+
+-------------------------------------------------------------------
+Wed Nov 25 18:53:13 UTC 2020 - nopeinomicon@posteo.net
+
+- Switch from tar_scm to obs_scm service
+- Update to version 1.3.0:
+  * Warn termux users with older Android versions (#2467)
+  * no shorthand for --recover
+  * switch to recover instead of resubmit
+  * linter appeasement
+  * use TempFile though the testing is gross
+  * fix dumb test
+  * preserve and restore issue/pr input on failure
+  * add IOStreams.ReadUserFile
+  * spelling: unmatched
+  * spelling: template
+  * spelling: settings
+  * spelling: response
+  * spelling: nonexistent
+  * spelling: error
+  * spelling: dunno
+  * spelling: dismissed
+  * spelling: deprecated
+  * spelling: chestnuts
+  * spelling: beginning
+  * match parent repo protocol when forking (#2434)
+  * respect GH_HOST when resolving remotes (#2301)
+  * Add "reference" help topic (#2223)
+  * Implement --web for gh pr checks (#2146)
+  * Downgrade survey to v2.1.1
+  * fix missing import
+  * Support for --web when using gist create (#2263)
+  * Add a command to delete a gist (#2265)
+  * fix survey invocation
+  * Fix USAGE help for some commands
+  * add empty line between functions
+  * Generate correct URL when branch option is passed in
+  * add Draft to issue state
+  * use NewIssueState
+  * get everything working
+  * stop using Defaults struct
+  * stop using string pointer
+  * WIP works, probably some title/body input edge cases
+  * use named output param
+  * Fix typos
+  * Empty auth token env variables are equal to being unset
+  * cleanup
+  * Add support for GH_TOKEN and GH_ENTERPRISE_TOKEN
+  * Consistently print commands in DEBUG mode
+
+-------------------------------------------------------------------
+Sun Nov 15 09:26:53 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Clean up .spec file
+
+-------------------------------------------------------------------
+Thu Nov 12 02:59:01 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 1.2.1:
+  * Fix git executable name for Windows in tests
+  * Improve error message when git isn't found
+  * Omit the full path of a command in DEBUG mode
+  * Ensure that only PATH is searched when shelling out to external commands
+  * Bump golang.org/x/text
+  * Bump golang.org/x/crypto
+  * Bump shurcooL/githubv4
+  * Bump muesli/termenv
+  * Bump mattn/go-colorable
+  * Bump AlecAivazis/survey
+  * Fix `truncateLabels` for empty values
+  * Ensure parentheses are preserved after truncating labels in table view
+  * Render links as absolute URLs in `repo view` (#2363)
+  * Add Gentoo instructions to install the package (#2389)
+  * Show MousetrapHelpText when double-clicking gh.exe
+  * Small cleanup
+  * Make markdown:generate annotation a markdown generation override for hidden commands
+  * Generate markdown for help topics
+  * Refactor help topics to include short message
+  * Extract repeated code to util function
+  * improve error message
+  * Refactor regexp writer
+  * Add multiple writes test
+  * Use custom scanLines function for RegexWriter
+  * Fix up regex to escape dot in URL
+  * Address PR comments
+  * Filter out unwanted stderr output during git push commands
+  * new packages for get and set subcommands
+  * Export type ConfigOption and group InvalidValueError code
+  * Refactor config command
+  * Cleanup duplicate config options
+  * move cobra mutation and document it
+  * Update install_linux.md
+  * more iostreams passing
+  * try passing iostreams around instead of writer+colorscheme
+  * use shared color function
+  * favor SuccessIcon
+  * Use slice and make both status lines the size of the terminal width.
+  * Use terminal width for the status line
+  * port entirely to ColorScheme
+  * added extra notes
+  * Better tests for clone argument parsing
+  * added Snap installation docs
+  * Simplify checks test
+  * add message on `pr checks` returns no CI with non-empty PR
+  * Fetch all issue labels
+  * Update triage.md
+  * link to aliases
+  * :nail_care: code style
+  * :nail_care: simplify `sortPullRequestsByState`
+  * PullRequestForBranch: fix outdated error message
+  * Allow PullRequestForBranch to search in closed pull requests
+  * Mention winget as an install option in README (#2272)
+  * Small releasing docs cleanup
+  * Update triage.md
+  * Clean up and refactor unused doc generation code
+  * Remove SEE ALSO from markdown docs generation
+  * Remove Cobra autogenerated string from docs generation
+  * Internalize doc generation from Cobra
+  * Print friendly error when "gh repo clone" is missing required argument
+  * removed runtime compare for windows The MousttrapHelpText will only be validated in cobra when running on windows.
+  * run gh commands from explorer.exe
+
+-------------------------------------------------------------------
+Tue Nov 10 06:19:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package version

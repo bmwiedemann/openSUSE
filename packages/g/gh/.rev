@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fb88940fe23e81f280ff1a498b0701b</srcmd5>
+    <version>1.3.1</version>
+    <time>1607430256</time>
+    <user>dimstar_suse</user>
+    <comment>New package. For further info see intro on mailing list: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/WRLYKOC5KD247LWKNJ7GPPMFPW3HKRYR/
+Switched to tar_scm to pass auto review.</comment>
+    <requestid>853478</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4827a6ab094628a5edf660bd523a31d</srcmd5>
+    <version>1.3.1</version>
+    <time>1607714192</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix app not showing the correct version
+- Install readme and license files
+- Build and install manpages as well
+- Use source specified at Source0 URL
+- Switch from tar_scm to download_files for obtaining source archive
+- Simplify BuildRequires</comment>
+    <requestid>854654</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1035720788dae24450cde0e91416a191</srcmd5>
+    <version>1.4.0</version>
+    <time>1608112885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * Add ability to view issue and pull request comment threads
+  * Add management of GitHub Actions secrets
+  * Set up git credentials when logging in to GitHub CLI
+  * Add make install and make uninstall for POSIX systems when building from source
+  * pr merge: attempt the merge even if mergeability status could not be determined
+  * repo clone: enable cloning repository wikis
+  * Recognize Include directives when parsing ssh config files
+  * Display the new release notice only once per 24 hours</comment>
+    <requestid>856060</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1b7e8fdeec408547b1c7f02d4b37534</srcmd5>
+    <version>1.7.0</version>
+    <time>1615363063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878081</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2ff2ac1f9a0b33193e9d69489fae491</srcmd5>
+    <version>1.8.1</version>
+    <time>1618387838</time>
+    <user>dimstar_suse</user>
+    <comment>- Supplement bash-completion instead of bash 
+
+- Update to version 1.8.1:
+  * Fix pr status/checks crash with unrecognized statuse from
+    the server(#3336)
+  * Fix repo fork --clone not cloning an existing fork locally
+    when running non-interactively(#3334)
+  * Fix commands not respecting default hostname from GH_HOST(#3347)
+- Create subpackages for completions</comment>
+    <requestid>884868</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0e5b59118e497347f0d1ff36e46a0b9</srcmd5>
+    <version>1.9.2</version>
+    <time>1619031628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887294</requestid>
+  </revision>
+</revisionlist>

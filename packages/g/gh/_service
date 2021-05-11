@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<services>
+  <service name="download_files" mode="disabled"/>
+  <service name="format_spec_file" mode="disabled">
+    <param name="specfile">gh.spec</param>
+  </service>
+  <service name="go_modules" mode="disabled"/>
+</services>
