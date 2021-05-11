@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  1 19:02:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop installing COPYING into docdir (already in licensedir) 
+
+-------------------------------------------------------------------
 Mon Feb 15 10:12:39 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update project url

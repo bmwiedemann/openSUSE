@@ -70,13 +70,14 @@ This package contains libraries for using flex.
 %patch0 -p1
 
 %build
+cp -a %{SOURCE2} .
 autoreconf -fi
 %configure \
   --docdir=%{_docdir}/%{name}
 %if 0%{?do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)
-  make CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" check
   %make_build clean
   %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
@@ -90,7 +91,6 @@ autoreconf -fi
 %make_install
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 install -D -p -m 0755 %{SOURCE1}  %{buildroot}/%{_bindir}/lex
-install -D -p -m 0644 %{SOURCE2}  %{buildroot}/%{_docdir}/flex/README.SUSE
 ln -s flex.1%{ext_man} %{buildroot}/%{_mandir}/man1/lex.1%{ext_man}
 
 %find_lang %{name}
@@ -106,14 +106,14 @@ ln -s flex.1%{ext_man} %{buildroot}/%{_mandir}/man1/lex.1%{ext_man}
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
+%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS README.SUSE
+%exclude %_docdir/%{name}/COPYING
 %{_bindir}/flex
 %{_bindir}/flex++
 %{_bindir}/lex
 %{_mandir}/man1/flex.1%{?ext_man}
 %{_mandir}/man1/lex.1%{?ext_man}
 %{_infodir}/flex*
-%{_docdir}/%{name}
 
 %files -n libfl-devel
 %license COPYING
