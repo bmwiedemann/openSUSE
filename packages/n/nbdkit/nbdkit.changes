@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 08 15:25:09 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 1.25.7:
+  * tar: Add comment about why we use LANG=C
+  * python: Split up the large python.c file into smaller
+    compilation units
+  * Some documentation and test fixes
+- Use correct upstream and not github mirror
+
+-------------------------------------------------------------------
 Mon Apr 26 17:50:56 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.25.6:

@@ -27,11 +27,11 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.25.6
+Version:        1.25.7
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
-URL:            https://github.com/libguestfs/nbdkit
+URL:            https://gitlab.com/nbdkit/nbdkit
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  autoconf
