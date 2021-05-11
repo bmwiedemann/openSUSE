@@ -1,0 +1,46 @@
+commit 62998956cb17538f925f76ce6c4193f415f7cc01
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Sun Jun 7 14:56:55 2020 +0200
+
+    ibis drop multiple definition of IbisObj
+    
+    Drop multiple global definition of IbisObj that breaks with GCC10
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git ibis/src/ibis.i ibis/src/ibis.i
+index 28a0912dd848..e66d84e7bb80 100644
+--- ibis/src/ibis.i
++++ ibis/src/ibis.i
+@@ -180,7 +180,6 @@ ibisp_is_debug(void)
+ 
+ %{
+   /* globals */
+-  ibis_t    IbisObj;
+   static ibis_opt_t  *ibis_opt_p;
+   ibis_opt_t IbisOpts;
+ 
+diff --git ibis/src/ibis_wrap.c ibis/src/ibis_wrap.c
+index ee9760127577..7efadea896ab 100644
+--- ibis/src/ibis_wrap.c
++++ ibis/src/ibis_wrap.c
+@@ -3004,7 +3004,6 @@ typedef struct {
+ 
+ 
+   /* globals */
+-  ibis_t    IbisObj;
+   static ibis_opt_t  *ibis_opt_p;
+   ibis_opt_t IbisOpts;
+ 
+diff --git ibis/src/ibissh_wrap.cpp ibis/src/ibissh_wrap.cpp
+index 917904fe382a..2f69c4018e71 100644
+--- ibis/src/ibissh_wrap.cpp
++++ ibis/src/ibissh_wrap.cpp
+@@ -3004,7 +3004,6 @@ typedef struct {
+ 
+ 
+   /* globals */
+-  ibis_t    IbisObj;
+   static ibis_opt_t  *ibis_opt_p;
+   ibis_opt_t IbisOpts;
+ 
