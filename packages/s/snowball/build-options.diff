@@ -1,0 +1,20 @@
+Description: Honor build flags passed as command line arguments
+Author: Stefano Rivera <stefanor@debian.org>
+Forwarded: not-needed
+Last-Update: 2019-10-17
+
+Index: snowball-2.1.0/GNUmakefile
+===================================================================
+--- snowball-2.1.0.orig/GNUmakefile
++++ snowball-2.1.0/GNUmakefile
+@@ -162,8 +162,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.
+ JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
+ JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
+ 
+-CFLAGS=-O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
+-CPPFLAGS=-Iinclude
++override CFLAGS += -W -Wall -Wmissing-prototypes -Wmissing-declarations
++override CPPFLAGS += -Iinclude
+ 
+ all: snowball libstemmer.o stemwords $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
+ 
