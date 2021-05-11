@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed707cd40fd6fd167e731f5b51b703bb</srcmd5>
+    <version>1.20.0</version>
+    <time>1607612235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854268</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a0551c7ebeacbdf2bc20df7ac58c039</srcmd5>
+    <version>1.20.0</version>
+    <time>1608317813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856417</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e031c4bd9d44ff9d3139b336ebe8ec6d</srcmd5>
+    <version>1.20.1</version>
+    <time>1609959365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.1:
+  * Revert &quot;Use host IP instead of localhost for control plane component kubeconfig files.&quot;
+  * etcd version for 1.19 is 3.4.13 for cve fixes
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * vendor: update cAdvisor to v0.38.6
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.0
+  * Revert &quot;iAdd host IP to etcd listen client URLs.&quot;
+  * fix migration logic
+  * Add AcceleratorStats to cri_stats_provider</comment>
+    <requestid>860457</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6bbb4f06cfd426fd91179eb3c423ebd2</srcmd5>
+    <version>1.20.2</version>
+    <time>1611348595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2:
+  * move all variables in sampleAndWaterMarkHistograms::innerSet
+  * use default unkown sock for kubeadm cmd if cri detect is not needed
+  * cherry-pick part of #97451: fix nodeport quota check failure during creating clusterip
+  * Release reserved GCE IP address after ensure completes.
+  * Ensure reproducible builds when build through docker
+  * Fix cadvisor machine metrics
+  * Create OWNERS for most of the API Priority and Fairness impl
+  * fix the deadlock in priority and fairness config controller
+  * Cherry pick 443 and 448 from cloud provider azure
+  * Fix bug in CPUManager with race on map acccess
+  * clean up executing request on panic
+  * fix azure file secret not found issue
+  * fix: azure file latency issue for metadata-heavy workload
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.1
+  * Add more logging for Mount error</comment>
+    <requestid>865038</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40c31b7e7a309f5c17fdd9c93b8b48f8</srcmd5>
+    <version>1.20.6</version>
+    <time>1619447921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.6:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Fix test now that empty struct are tracked in mangaed fields
+  * make generated_files
+  * Update bazel and dependencies.
+  * Update to use cliflag.NamedFlagSets
+  * Address comments.
+  * Update NodeIPAM wrapper
+  * Delete build file based on latest changes.
+  * Update extension mechanism and related sample.
+  * Address review comments
+  * Address review comments
+  * Modify integration test to fill CCM test gap
+  * Update test
+  * Move initialize cloud provider with client builder reference inside controller start func
+  * Separate example func and add README.md
+  * Separate func
+  * Add demonstration of wiring nodeIPAMController config object
+  * Remove cloud provider name as input parameter.
+  * Fix flag passing in CCM.
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Declare TCP default for service port protocol
+  * Add ability to skip OpenAPI handler installation
+  * do not tag user created public IPs
+  * apf: fix test flake
+  * update gogo/protobuf to v1.3.2
+  * Fixed describe ingress causing SEGFAULT
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3</comment>
+    <requestid>885590</requestid>
+  </revision>
+</revisionlist>

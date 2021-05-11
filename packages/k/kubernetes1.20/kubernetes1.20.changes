@@ -1,0 +1,1796 @@
+-------------------------------------------------------------------
+Thu Apr 15 07:59:12 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.6:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Fix test now that empty struct are tracked in mangaed fields
+  * make generated_files
+  * Update bazel and dependencies.
+  * Update to use cliflag.NamedFlagSets
+  * Address comments.
+  * Update NodeIPAM wrapper
+  * Delete build file based on latest changes.
+  * Update extension mechanism and related sample.
+  * Address review comments
+  * Address review comments
+  * Modify integration test to fill CCM test gap
+  * Update test
+  * Move initialize cloud provider with client builder reference inside controller start func
+  * Separate example func and add README.md
+  * Separate func
+  * Add demonstration of wiring nodeIPAMController config object
+  * Remove cloud provider name as input parameter.
+  * Fix flag passing in CCM.
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Declare TCP default for service port protocol
+  * Add ability to skip OpenAPI handler installation
+  * do not tag user created public IPs
+  * apf: fix test flake
+  * update gogo/protobuf to v1.3.2
+  * Fixed describe ingress causing SEGFAULT
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3
+  * Stop probing a pod during graceful shutdown
+  * apf: handle error from PollImmediateUntil
+  * staging/publishing: Set default go version to go1.15.10
+  * webhook config manager: HasSynced returns true when the manager is synced with existing webhookconfig objects at startup
+  * update metadata-concealment to 1.6 for removing legacy checking
+  * slice mirroring controller mirror annotations
+  * additional subnet configuration for AWS ELB
+  * Revert "Automated cherry pick of #97417: fix azure file secret not found issue"
+  * Use the correct volum handle format for GCE regional PD.
+  * Increasing maximum number of ports allowed in EndpointSlice
+  * Support > 5 ports in L4 ILB.
+  * build: Update to k/repo-infra@v0.1.5 (supports go1.15.10)
+  * Use go-runner:v2.3.1-go1.15.10-buster.0 image (built on go1.15.10)
+  * Update to go1.15.10
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.5
+  * fix a bug where only service with less than 100 ports can have GCE load balancer
+  * bazel
+  * deepcopy statefulsets
+  * full deepcopy on munged pod spec
+  * remove pod toleration toleration seconds mutation
+  * add markers for inspected validation mutation hits
+  * move secret mutation from validation to prepareforupdate
+  * remove unnecessary mutations in validation
+  * tweak validation to avoid mutation
+  * For LoadBalancer Service type don't create a HNS policy for empty or invalid external loadbalancer IP
+  * Moving docker options to daemon.json
+  * e2e fix: loosen configmap to 10 in resource quota
+  * api-server add --lease-max-object-count
+  * apiserver add metric etcd_lease_object_counts
+  * apiserver add --lease-reuse-duration-seconds to config lease reuse duration
+  * Bump Cluster Autoscaler to v1.20.0
+
+-------------------------------------------------------------------
+Wed Apr 14 14:54:45 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Rebase opensuse-version-checks.patch 
+
+-------------------------------------------------------------------
+Tue Apr 13 13:44:57 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.5:
+  * Updating EndpointSliceMirroring controller to wait for cache to be updated
+  * Updating EndpointSlice controller to wait for cache to be updated
+  * Add tests for populated volumes
+  * Fix comment on getPodVolumeSubpathListFromDisk
+  * Fix tests to test for new behavior
+  * Add warnings after cleanup back
+  * Automatically remove orphaned pod's dangling volumes
+  * Count pod overhead as an entity's resource usage
+  * Ensure only one LoadBalancer rule is created when HA mode is enabled
+  * Fix issue in checking domain socket for plugin watcher
+  * Use Lstat in plugin watcher to avoid Windows problem
+  * Skip visiting empty secret and configmap names
+  * Number of sockets is assumed to be same as NUMA nodes
+  * disables APF if the aggregated apiserver cannot locate the core kube-apiserver
+  * Fix repeatedly aquire the inhibit lock
+  * Sync node status during kubelet node shutdown
+  * remove executable permission bits
+  * Upgrading vendored dependencies
+  * Upgrading cAdvisor to 0.38.8
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.4
+  * build/OWNERS: Add Dan and Sascha as reviewers
+  * OWNERS(CHANGELOG): Move reviewers/approvers to CHANGELOG/ dir
+  * Bump konnectivity-client to v0.0.15 in release-1.20
+  * Storage e2e: Remove pd csi driver installation in GKE
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.3
+  * kube-cross: update image to use v1.15.8-legacy-1
+  * [go1.15] build: Update to k/repo-infra@v0.1.4 (supports go1.15.8)
+  * Use go-runner:buster-v2.3.1 image (built on go1.15.8)
+  * staging/publishing: Set default go version to go1.15.8
+  * Update to go1.15.8
+  * Fix dbus shutdown events not continuing if they are not valid
+  * Revert "make hostPort match test linuxonly"
+  * Revert "conformance changes"
+  * kube-proxy: clear conntrack entries after rules are in place
+  * Use -LiteralPath instead of -Path
+  * Escape the special character in vsphere windows path
+  * Include unit test
+  * Adjust defer to correctly call
+  * do not remove volume dir when saveVolumeData fails
+  * kubeadm: drop explicit constant override in version test
+  * kubeadm: get k8s CI version markers from k8s infra bucket
+  * dockershim hostport respect IPFamily
+  * dockershim hostport manager use HostIP
+  * Balance nodes in scheduling e2e
+  * e2e: Pod should avoid nodes that have avoidPod annotation: clean remaining pods
+  * Cherry pick of #98254:Fix the kube-scheduler binary's description of the --config parameter is inaccurate
+  * fix kube-scheduler cannot send event because the Note field is too large
+  * Fix nil pointer dereference in disruption controller
+  * Update region_pd e2e test to support PV have GA topology
+  * Recover CSI volumes from dangling attachments
+  * IsVolumeAttachedToNode() renamed to GetAttachState(), and returns 3 states instead of combining "uncertain" and "detached" into "false"
+  * Fixes Attach Detach Controller reconciler race reading ActualStateOfWorld and operation pending states; fixes reconciler_test mock detach to account for multiple attaches on a node
+  * Fix translation of Cinder storage classess to CSI
+  * OWNERS(CHANGELOG): Add release-engineering-reviewers as reviewers
+  * OWNERS(CHANGELOG): Add release-engineering-reviewers as approvers
+  * Resolve IP addresses of host-only in filtered dialer
+  * Deflake ingress updates
+  * make podTopologyHints protected by lock
+  * ignore cgroup driver check in windows node upgrade
+  * OWNERS(sig-release): Add CHANGELOG aliases
+  * OWNERS(build-image): Add Release Managers as reviewers
+  * OWNERS(releng): Sync Release Managers
+  * OWNERS(sig-release): Remove SIG Release approvers alias
+  * aggregate errors when putting vmss
+  * fix azure file migration issue
+  * kubelet: Fix mirrorPodTerminationMap leak
+  * kubelet: Delete static pods gracefully
+  * kubeadm: change the default image repository for CI images from gcr.io/kubernetes-ci-images to gcr.io/k8s-staging-ci-images
+  * kubelet logs print 'kubelet nodes sync' frequently
+  * reduce buckets for etcd_request_duration_seconds
+  * Merge pull request #96876 from howieyuen/no-execute-taint-missing
+  * cleanup subnet in frontend ip configs
+  * conformance changes
+  * make hostPort match test linuxonly
+  * Clean up namespaced children of missing virtual parents with incorrectly cluster-scoped nodes
+  * Add unit test for child scope mismatch with missing parent
+  * vendor: update cAdvisor to v0.38.7
+  * Use volumeHandle as PV name when translating EBS inline volume
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.2
+  * kubectl-convert import known versions
+  * Revert "Merge pull request #92817 from kmala/kubelet"
+  * WIP: node sync at least once
+  * fixes nil panic for nil delegated auth options
+  * Lower the frequency of volume plugin deprecation warning
+  * handle webhook authenticator and authorizer error
+  * fix the panic when kubelet registers if a node object already exists with no Status.Capacity or Status.Allocatable
+  * Avoid checking the entire backend service URL for FR equality.
+  * Use non privileged ports
+
+-------------------------------------------------------------------
+Wed Jan 20 08:13:01 UTC 2021 - dmueller@suse.com
+
+- Update to version 1.20.2:
+  * move all variables in sampleAndWaterMarkHistograms::innerSet
+  * use default unkown sock for kubeadm cmd if cri detect is not needed
+  * cherry-pick part of #97451: fix nodeport quota check failure during creating clusterip
+  * Release reserved GCE IP address after ensure completes.
+  * Ensure reproducible builds when build through docker
+  * Fix cadvisor machine metrics
+  * Create OWNERS for most of the API Priority and Fairness impl
+  * fix the deadlock in priority and fairness config controller
+  * Cherry pick 443 and 448 from cloud provider azure
+  * Fix bug in CPUManager with race on map acccess
+  * clean up executing request on panic
+  * fix azure file secret not found issue
+  * fix: azure file latency issue for metadata-heavy workload
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.1
+  * Add more logging for Mount error
+
+-------------------------------------------------------------------
+Tue Jan 05 12:02:26 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.1:
+  * Revert "Use host IP instead of localhost for control plane component kubeconfig files."
+  * etcd version for 1.19 is 3.4.13 for cve fixes
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * vendor: update cAdvisor to v0.38.6
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.0
+  * Revert "iAdd host IP to etcd listen client URLs."
+  * fix migration logic
+  * Add AcceleratorStats to cri_stats_provider
+
+-------------------------------------------------------------------
+Wed Dec 16 10:20:21 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add obsoletes to -client-common to facilitate smooth upgrades from older versions 
+
+-------------------------------------------------------------------
+Wed Dec 09 11:49:56 UTC 2020 - rbrown@suse.com
+
+- Rebase opensuse-version-checks.patch
+- Update to version 1.20.0:
+  * APF e2e: disable drown-out tests temporarily
+  * coredns dep.Severity is newdefault, not newDefault
+  * addressing review comments and supports parallel run
+  * Update ingress conformance test for finalizers
+  * vendor: update cAdvisor to v0.38.5
+  * fix: change disk client API version for Azure Stack
+  * service.spec.AllocateLoadBalancerNodePorts followup
+  * [go1.15] Use go-runner:buster-v2.2.2 image (built on go1.15.5)
+  * [go1.15] staging/publishing: Set default go version to go1.15.5
+  * [go1.15] Update to go1.15.5
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * [go1.15] build: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * Restore beta os/arch labels on initial node registration
+  * matches specific usernames instead of "*"
+  * range_allocator: Test (lack of) double counting
+  * cidrset: Add test for double counting
+  * Fix double counting of IP addresses
+  * ap&f e2e: eliminates client-side rate-limiting
+  * fix bug: concurrent map writes error
+  * Bump node-problem-detector to v0.8.5
+  * Revert "check volume directories instead of mounts for cleanupOrphanedPodDirs"
+  * Revert "plumb context with request deadline"
+  * Revert "use default value when the specified timeout is 0s"
+  * Revert "add e2e tests for request timeout"
+  * Deflake ThrottledLogger test
+  * fix: resize Azure disk issue when it's in attached state
+  * kube-aggregator: fix apiservice availability gauge
+  * Fix TestStartingResourceVersion flakiness
+  * make sure managedFields are written
+  * generated
+  * unit and integration tests
+  * apiserver dedups owner references and adds warning
+  * Add linuxonly on one multivolume test
+  * gce: move iptables rule to mangle
+  * APF e2e tests: add request drown-out fairness test
+  * add e2e tests for request timeout
+  * use default value when the specified timeout is 0s
+  * CHANGELOG: Update error link in 1.20
+  * CHANGELOG: Update directory for v1.20.0-beta.2 release
+  * APF e2e tests: rename request drown-out priority client names
+  * Mark some storage tests as LinuxOnly
+  * Add GC unit tests
+  * Log cluster-scoped owners referencing namespaced owners, avoid retrying lookups forever
+  * Queue non-matching children for deletion when a virtual node is marked as observed
+  * Handle virtual delete events when children don't agree on owner coordinates
+  * Make node removal conditional in processGraphChanges
+  * Enqueue dependents for deletion when their ownerReference does not match observed parent coordinates
+  * Short-circuit attemptToDelete loop for virtual nodes that are removed or observed
+  * Replace virtual node with observed node if identity differs
+  * Refactor identityFromEvent
+  * Avoid marking virtual nodes as observed when they haven't been
+  * Switch GC absentOwnerCache to full reference
+  * Add GC integration race test
+  * Plumb event recorder to garbage collector controller
+  * e2e SCTP test not depend on kubenet
+  * e2e/node: increase timeouts seconds to 5 for liveness probe restart test
+  * correct e2e test predicates conflict hostport
+  * Add a deprecation note to k/k/cluster/log-dump directory
+  * Update topology tests for windows
+  * kubelet: dockershim should return grpc status with DeadlineExceeded code
+  * e2e dualstack test fixes
+  * convert the runtimeclass API tests to conformance
+  * APF e2e tests: use snake_case label
+  * APF e2e tests: move common code into helper functions
+  * Reduce volume name length for vsphere
+  * CHANGELOG: add a hyperlink to issue 86282
+  * allow configuring ReadIdelTimeout and PingTimeout via env var
+  * Add a unit test testing the HTTP/2 health check help the REST client detects broken TCP connections.
+  * plumb context with request deadline
+  * Fixes fake client test generation
+  * Integrate defaults marker and remove ContainerPort defaulter
+  * Remove StripDefaults from BuildSwagger
+  * Add default for protocol and test that it works
+  * Strip defaults in new places
+  * Re-generate with defaults
+  * Update kube-openapi
+  * flowcontrol bootstrap: give catch-all PL more concurrency share
+  * APF matching: fallback to catch-all if nothing matches
+  * flowcontrol bootstrap: make exempt PL last
+  * APF: graduate API and types to beta
+  * Mixed protocol support for Services with type=LoadBalancer (#94028)
+  * Fix test name in e2e resource metrics api test
+  * Test CRUD operations on RuntimeClasses API
+  * vendor: cadvisor v0.38.4
+  * Relax matching on pod_memory_working_set_bytes metrics
+  * configure the ReadIdleTimeout and PingTimeout of the h2 transport
+  * Match pod resource metrics to pod not container
+  * add more e2e sctp tests
+  * remove wrong test for SCTP connectivity
+  * Update the route table tag in the route reconcile loop
+  * Fixes sigfault in case of empty TopologyInfo
+  * Update generated files
+  * Add service.spec.AllocateLoadBalancerNodePorts
+  * update golang.org/x/net and golang.org/x/sys
+  * Update 1.18 changelog with changes from v1.18.11
+  * fixup! unblock resources that the storage version manager depends on
+  * fixup! add storage version garbage collector
+  * generated
+  * GC integration test
+  * unblock resources that the storage version manager depends on
+  * make storage version manager wait for lease creation
+  * add storage version garbage collector
+  * Fix cacheWatcher leak when time jump to the future and jump back
+  * Correct rebase issues
+  * Implement shutdown manager in kubelet
+  * Add systemd package to interface with dbus
+  * Corrected CSIDriver validation rebase issues
+  * Remove duplicate CSIDriver name validation
+  * Adjust CSIDriver validation to check objectmeta
+  * Enable logging and drop permissive targets for CSI mock driver
+  * Update the mock driver to use 4.0.2
+  * Included e2e test for CSIDriver FSGroupPolicy
+  * Move CSIVolumeFSGroupPolicy to beta
+  * Relax validation for CSIVolumeFSGroupPolicy
+  * Fixed quantization and made monotic time reversal not panic
+  * Log defaulted kube-scheduler component config at startup
+  * Updates related to PR feedback
+  * core/v1: document that topologyKeys requires the ServiceTopology feature gate
+  * Use K8s in the README
+  * stop serving deleted APIs
+  * Increase watch timeout when scaling Deployment Replicas
+  * CHANGELOG: Update directory for v1.18.12 release
+  * scheduler: Implement resource metrics at /metrics/resources
+  * quantity: Allow quantity to be converted to float64
+  * plumb service account token down to csi driver
+  * remove generator from service in kubectl
+  * add myself to sig-network-api-reviewers
+  * Add datapolicy tags to staging/src/k8s.io/client-go/
+  * cleanup: fix log capitalization in scheduler
+  * Add --experimental-logging-sanitization flag to Kubelet
+  * Run ./update-all.sh
+  * Implement e2e tests for pod scope alignment
+  * Add tests for getPodDeviceRequest() for devicemanager
+  * Add tests for GetPodTopologyHints() for devicemanager
+  * Update topology hints tests to use pod object for devicemanager
+  * Add tests for GetPodTopologyHints() for cpumanager
+  * Refactor topology hints tests for cpumanager
+  * Move scope specific tests from topologymanager under particular scopes
+  * Move common tests from topologymanager under scope
+  * Update topologymanager tests after adding scopes
+  * Implement devicemanager.GetPodLevelTopologyHints() function
+  * Implement the cpumanager.GetPodTopologyHints() function
+  * Update logging to use a format util
+  * Implement topology manager scopes
+  * Add GetPodTopologyHints() interface to Topology/CPU/Device Manager
+  * Add flag value validation of TopologyManagerPolicy
+  * Add flag value validation of TopologyManagerScope
+  * Add kubelet configuration flag 'topology-manager-scope'
+  * Support custom tags for cloud provider managed resources
+  * use uncommon ports for e2e network test
+  * fix pull image error from multiple ACRs using azure managed identity
+  * add e2e test for dual-stack secondary service IPs
+  * Verify iptable rules are applied for tcp, udp and icmp
+  * Choosing the right source VIP for local endpoints
+  * Configure StackdriverLogging Windows service to restart on failure.
+  * Adding sample files to demonstrate how cloud provider leverage CCM.
+  * Updating EndpointSlice strategy to cover alpha NodeName field
+  * Support high availability ports
+  * Allow debugging kubelet image pull times
+  * Separate in-tree gcepd driver for windows
+  * Cleaning up EndpointSlice update validation tests
+  * Removing "IP" from supported EndpointSlice address types in kube-proxy
+  * Updating ControlPlane to support NodeName field
+  * Updating EndpointSlice controllers to support NodeName field
+  * Adding EndpointSliceNodeName feature gate
+  * Adding NodeName to EndpointSlice API, deprecation updates
+  * update bazel
+  * Promote Deployment lifecycle e2e test to Conformance
+  * CHANGELOG: Update directory for v1.19.4 release
+  * handle the case for slow cronjob lister, add unit tests
+  * convert to stardard lister, use []*batchv1.Job instead of []batchv1.Job
+  * actually retry if we failed to reconcile some objects
+  * Update storage test suits for Windows
+  * Promote Pod/PodStatus lifecycle e2e test to Conformance
+  * Fix failures in TestBindPlugin and TestPreemptWithPermitPlugin
+  * Set 0 sync period in scheduler integration test
+  * CHANGELOG: Update directory for v1.17.14 release
+  * GA of RuntimeClass feature gate and API
+  * put a message, not a stack, in the log on a timeout
+  * Update snapshot CRDs
+  * Set priority of Event v1 higher than v1beta1
+  * Implement TopologyInfo and cpu_ids in podresources
+  * Convert podDevices to struct
+  * Generate podresources API for TopologyInfo and cpu_ids
+  * Add TopologyInfo and cpu_ids into podresources
+  * Change GetDevices interface
+  * Revert "Merge pull request #92312 from Sh4d1/kep_1860"
+  * fix all Sting method not check nil in "k8s.io/apimachinery"
+  * fix the validation logic for Job/CronJob RestartPolicy field
+  * fix note delete to update according to code
+  * Fix a bug that DefaultPreemption plugin is disabled when using scheduler policy
+  * fix(test::npd): provide NPD with proper kubeconfig
+  * Bump kas to v0.0.14
+  * Capture defaulted plugin configs from framework
+  * move lease controller to k8s.io/component-helpers/apimachinery
+  * Bug Fix for process_start_time_metric initialization
+  * add V(4) log when apiserver lease was deleted before this controller reacts
+  * generated
+  * integration test
+  * add apiserver lease garbage collector
+  * update violation_exceptions.list and make generated
+  * add cronjob_controllerv2.go
+  * Add CRI v1 proto
+  * dualstack: Use Agnhost in place of BusyBox
+  * Downward API hugepages
+  * added new runtimeclass test and changed Disruptive to Serial
+  * kubeadm: mark the "master" label/taint as deprecated
+  * dualstack: use correct IPFamily list for conntrack checks in e2e
+  * move service controller config to k8s.io/cloud-provider/controllers/service/config
+  * Use FilteredDialContext with quobyte API
+  * Update quobyte client API to v0.1.8
+  * import restrictions: allow k8s.io/kubelet to import credentialprovider apis
+  * hack/.golint: ignore golint for new kubelet and credentialprovider APIs package
+  * pkg/credentialprovider: export URL parsing and matching helper functions
+  * pkg/credentialprovider: add initial exec-based credential provider plugin
+  * kubelet: add initial credentialprovider v1alpha1 APIs
+  * feature gates: add KubeletCredentialProviders feature gate
+  * kubelet: support alpha credential provider exec plugins
+  * kubelet: update pkg/kubelet/apis/config/OWNERS to include api approvers and reviewers
+  * kubelet: add CredentialProviderConfig API
+  * Change at which level klog.Fatal is invoked
+  * Forbid creating clusters with more than 100 nodes without vpc-native
+  * Change the logic of pod volumes existence check during kubelet cleanupOrphanedPodDirs, cleanupOrphanedPodCgroups and PodResourcesAreReclaimed
+  * remove label dependency on k8s api in Azure
+  * Remove duplicate import
+  * Add --experimental-logging-sanitization flag to control plane components
+  * FsgroupChange policy  test suite
+  * Improve observability of node authorizer: * Adding some metrics to the graph * Adding log message when node authorizer has synced
+  * Remove ready directory which created in empty volumeMounter setUp func
+  * cloud-provider: update docs and guidance for InstanceV2 and Zones
+  * fixing issue where SMB share paths cannot resolve with CRI-containerD on Windows
+  * Ignore specific Pod update events in scheduler
+  * Support customize load balancer health probe protocol
+  * Move fsGroupChangePolicy feature to beta
+  * Add WindowsContainerResources to UpdateContainerResourcesRequest
+  * Change snapshot test to use v1 apis
+  * Modify storage snapshottable and disruptive test for Windows
+  * fix: change storage account client API version for Azure Stack
+  * Fixed failure: ProvisioningFailed: Failed to provision volume with StorageClass "standard": invalid AccessModes [ReadWriteOnce ReadOnlyMany ReadWriteMany]: only AccessModes [ReadWriteOnce ReadOnlyMany] are supported
+  * Set enable konnectivity service to true by default
+  * fixup! apiserver correctly validates encoding/decodable versions
+  * HTTP Prove: Removes Accept-Encoding header from http probe
+  * Update snapshot CRDs to v1
+  * Enable ConfigurableFSGroupPolicy feature gate
+  * Add dangling volume check for vsphere
+  * update e2e kubectl test
+  * prune type in preserve-unknown-fields objects
+  * Add AddedAffinity to the NodeAffinityArgs
+  * Remove --redirect-container-streaming functionality (#95935)
+  * Fix go lint on folder apimachinery/pkg/runtime/serializer/protobuf
+  * Graduating AppProtocol to GA
+  * Fix command and arg in NPD e2e
+  * Call MountDevice only once
+  * Mark MountDevice as uncertain after failed resize
+  * Restore staging path creation
+  * Add unit test for staging path creation
+  * kubelet: move pkg/kubelet/cri/.import-restrictions to pkg/kubelet/cri/streaming
+  * kubelet: add feature gate check for exec probe timeouts
+  * features: add ExecProbeTimeout feature gate
+  * kubelet: allow dockershim exec timeouts to be longer than 10s
+  * kubelet: add e2e test for exec readiness probe timeout
+  * kubelet: stop skipping docker exec livenessprobe timeout test
+  * kubelet: respect probe exec timeout from CRI by returning utilexec.CodeExitError
+  * kubelet: respect dockershim exec timeout
+  * Implement log sanitization
+  * Update bazel
+  * apiextensions: adapt error tests to fixed validation messages
+  * apiextensions: switch validation to kube-openapi
+  * bump(k8s.io/kube-openapi)
+  * stops puting a stacktrace of aborted requests in the logs
+  * require APIServerIdentity to be enabled to run StorageVersionAPI
+  * apiserver correctly validates encoding/decodable versions
+  * updater correctly updates storageversion status
+  * return a Status formatted JSON response
+  * generated
+  * Add an integration test.
+  * make some rbac and scheduling post start hooks tolerate the apiserver bootstrap delay caused by installing storage versions.
+  * Add a generic filter that blocks certain write requests before StorageVersions are updated during apiserver bootstrap.
+  * Collect storage versions as ResourceInfo when installing API endpoints.
+  * Add a feature gate
+  * add andyzhangx as reviewer
+  * Add nodeSelector for konnectivity daemonSet
+  * fix ingress comparaison
+  * fix defaulting
+  * add nil case in proxy
+  * fix build
+  * fix nit in validation
+  * fix tests
+  * Update generated
+  * fix reviews
+  * Update generated
+  * fix review
+  * fix typo
+  * add owner for feature gate
+  * fix rebase
+  * fix review
+  * Add tests
+  * Add route type field to loadbalancer status ingress
+  * Update docs and fix redundant logic of scheduler perf
+  * remove kube-proxy/config/v1alpha1 from .golint_failures
+  * Fix go lint on folder apimachinery/pkg/runtime/serializer/json
+  * Change the features removal note
+  * Promote TokenRequest e2e test to Conformance
+  * cleanup dated wording "NominatedNodeName annotation"
+  * fix formatting
+  * generated
+  * add kube-apiserver-lease-controller poststart hook
+  * Add constant PodReadyTimeout to e2e test
+  * Adjusted timings and management of pods in e2e test
+  * Create Pod+PodStatus resource lifecycle test
+  * Update UTs
+  * Fixing expected pod subdomain to match framework.TestContext.ClusterDNSDomain
+  * e2e: add APF flowcontrol request drown-out test
+  * Less restrictions for AWS NLB health check config
+  * scheduler: remove FrameworkFactory.
+  * PV e2e: fix race in NFS recycling test
+  * Add support to size memory backed volumes
+  * update max azure data disk count map
+  * kubeadm: fix the lint failure where return value is not checked
+  * Generated changes
+  * Move the remaining kubectl bits to k8s.io/kubectl
+  * Introduce kubectl-convert plugin
+  * Adding config extension to CCM.
+  * remove annotation cache sync because of code removed
+  * Increase the timeout to allow summary test pod to start
+  * removes filter metrics test retries
+  * Use topology labels instead of old beta names (#96033)
+  * CRs: Default non-nullable nulls
+  * Move kubectl get-context validate logic to Validate function
+  * endpointslice API: rename 'accepting' condition to 'serving' condition
+  * endpointslice controller: add test cases to TestSyncServiceFull for terminating endpoints
+  * endpointslice controller: refactor TestSyncServiceFull to use test tables
+  * endpointslice API strategy: drop disabled fields 'accepting' and 'terminating'
+  * endpointslice controller: set new conditions 'accepting' and 'terminating'
+  * feature gate: add gate EndpointSliceTerminatingCondition
+  * endpointslice API: add accepting and terminating conditions
+  * kubelet: Use CRI SecurityProfile for Seccomp
+  * Switch GCP list calls to paginated calls.
+  * dualstack: cleanup IsIPv4 duplicates in favor of utils
+  * dualstack: incorporate IsIPv4 updates from utils repo
+  * abort if namespace doesn't exist or terminating
+  * proxy: validate each CIDR config seperately and check for errors
+  * minor changes in adding tests for checking metrics labels
+  * make flags of TokenRequest required
+  * default `service-account-extend-token-expiration` to true
+  * E2E stress test suite for VolumeSnapshots
+  * Update Microsoft/go-winio to released version
+  * APF metrics: set StabilityLevel to ALPHA
+  * kubectl debug: allow set-image-only invocation
+  * Introduce a simple datapolicy library
+  * Remove the dependency between create priorityclass command and generators
+  * Deflake existing configmap count
+  * update features to indicate beta in comment
+  * cleanup: use i18n.T on all command descriptions
+  * Revert "add e2e test for Service ExternalIPs"
+  * CHANGELOG:Fix kubelet flag enable-cadvisor-json-endpoints
+  * client-go/rest: fix finalURLTemplate for url base == "/"
+  * Correctly fix clearing conntrack entry on endpoint changes (nodeport)
+  * Remove Const IPVSProxyMode
+  * update changelog-1.20
+  * test images: Authenticate in order to push images
+  * Support multiple standard load balancers in one cluster
+  * Use user facing field names in validation message
+  * report UnschedulableAndUnresolvable status instead of an error when PVCs can't find bound persistent volumes
+  * separate RootCAConfigMap from BoundServiceAccountTokenVolume
+  * Add mrunalp as node approver
+  * test images: Removes -p yes flag from qemu-user-static script call
+  * optimise defaultpreemption: enumerate fewer candidates
+  * apiserver/filters test: fix data race and do not leak goroutines
+  * APF: use snake_case in metric labels
+  * Volume snapshot e2e test to validate VolumeSnapshotContent and PVC finalizer
+  * minor changes to tests for checking metrics labels based on review comments
+  * check if kubectl version required values are empty
+  * Exclude KEP-1933 from verify-all.sh until after alpha status.
+  * add GVK to fake dynamic client to match actual behavior
+  * demonstrate existing generated client and fake client behavior is consistent
+  * remove dead apiserver field
+  * Adding an owner for addon/dns folder
+  * fix: pass bearer token to curl using -H instead of --oauth2-bearer
+  * Remove alpha from kubectl debug
+  * do not allow inflight watermark histograms to fall too far behind
+  * test images: set DOCKER_CLI_EXPERIMENTAL=enabled
+  * Remove maximum volume limit comment which is easily outdated.
+  * DelegatingAuthenticationOptions: allows for setting a timeout for the TokenReview client that is used by for the webhook authenticator
+  * Update staging/src/k8s.io/kubectl/pkg/cmd/create/create_rolebinding_test.go
+  * pause image: Disable DiagTrack service on Windows image
+  * replace string casting with fmt.sprintf in test
+  * Fix paging issues when Azure API returns empty values with non-empty nextLink
+  * change plugin name in fsgroupapplymetrics of csi and flexvolume to distinguish different driver
+  * test images: sets HOME=/root in cloudbuild.yaml
+  * Update CHANGELOG link of older releases
+  * Remove TaintBasedEvictions Feature Gate
+  * Replace calls to cs.CoreV1().Nodes().Create() with createNode()
+  * Add a function to ensure created nodes are present in scheduler cache
+  * local-up-cluster.sh: Use config file instead of flags for kubelet
+  * Add a verbosity option to exec
+  * KEP-1933: add static analysis target to hack/
+  * kubectl debug: Allow mutating image names
+  * Increasing withTimeout for ReplicationController Lifecycle test steps
+  * Propose seccomp/apparmor protobuf type definitions for CRI graduation
+  * Update Klog dependency
+  * Remove service load balancer feature gate
+  * resource-metrics: add pod metrics e2e test
+  * reenable e2e_node services & debugging improvements
+  * resource-metrics: add pod/sandbox metrics to endpoint
+  * Removing Alpha annotation as the feature is graduating to Beta in v1.20
+  * Add runtime representation of []v1.PreferredSchedulingTerm
+  * Move pkg/kubectl/cmd/auth under staging/src/k8s.io/kubectl/pkg/cmd/auth
+  * use patch instead of replace to test the dry-run option
+  * CHANGELOG: Update directory for v1.20.0-beta.1 release
+  * fix CPU time of pod stats with cs.CPU.Time
+  * Skip the sig-storage e2e test as early as possible
+  * Remove useless variable and if
+  * kubectl debug: add tests for Complete,Validate
+  * Move Snapshot to GA
+  * register controllermanager.config.k8s.io group.
+  * fix(test::npd): fix node problem detector test
+  * fix n to nodeInfo easy to understand
+  * Update cobra dependency to v1.1.1
+  * Adjusted e2e test watch timeouts, logging and pod management
+  * Update usage information for --http-override
+  * Bump agnhost version
+  * Add override option to netexec
+  * Add a redirect handler to netexec
+  * Add optional code to netexec echo endpoint
+  * Honor disabled LocalStorageCapacityIsolation in scheduling
+  * Build files
+  * [kubelet] Allow priority to be set for kubelet process on Windows
+  * add e2e test for Service ExternalIPs
+  * e2e cases for apf
+  * Move helpers from pkg/registry/rbac/reconciliation and pkg/registry/rbac/validation under k8s.io/component-helpers
+  * Add runtime representation of v1.NodeSelector
+  * Remove variadic argument from storage interface
+  * Revert "Updated golang/x/net. Also updated golang.org/x/sys"
+  * Add multi request test
+  * Fix issue in missing metrics of terminated requests
+  * Fix bug in JSON path parser where an error occurs when a range is empty
+  * set webhook retry backoff parameters for kubelet
+  * thorw error if webhook retry backoof is not specified
+  * make backoff parameters configurable for webhook
+  * fix vendor/k8s.io/apimachinery/pkg/api/meta staticcheck
+  * Updated golang/x/net. Also updated golang.org/x/sys, as required by hack/lint-dependencies.sh.
+  * Disable watchcache for events
+  * local-up-cluster.sh: Remove ineffective parameters
+  * Pass all packages to conversion-gen
+  * refactor: migrate health checks of control-plane off insecure port in tests
+  * Implementing ExternalTrafficPolicy: local in winkernel kube-proxy via DSR
+  * add a jitter to bound token renewal
+  * Add datapolicy tags to cmd/kubeadm directory
+  * devicemanager: fix race in stub
+  * Add datapolicy tags to pkg/volume/
+  * change bucket from 0.0s to 0.0001s
+  * refector service some e2e cases to make it runing in multi providers
+  * Added tests to check metrics labels
+  * Move CCM to staging k8s.io/cloud-provider
+  * mv TokenRequest and TokenRequestProjection to GA
+  * Populate ClusterIPs on read
+  * test: remove flacky ut
+  * Add json-response flag to porter
+  * local-up-cluster.sh: Pass CLUSTER_CIDR to kube-proxy
+  * HTTP Probe: Add 'Accept' header by default
+  * Add keep_time_key setting to fluentd configuration
+  * Enable filter latency tracking for request filters
+  * Measure how much time a request spends in server filter(s):
+  * hack/local-up-cluster.sh: fix API_PORT
+  * exec credential provider: exec -> client.authentication.k8s.io/exec
+  * kubectl flush profiling when get a sigterm
+  * Cleanup non-namespaced objects in e2e test during interrupts
+  * remove dead negotiation methods
+  * fake dynamic client: support *List kinds
+  * Move informer_factory to staging
+  * Remove behaviors
+  * add tests that update services while gate is off
+  * Add datapolicy tags to staging/src/k8s.io/kubectl
+  * Add datapolicy tags to  staging/src/k8s.io/legacy-cloud-providers
+  * Mark SecondaryRangeName as deprecated.
+  * Move MatchNodeSelectorTerms to k8s.io/component-helpers
+  * exec credential provider: k8s.io/client-go/tools/auth/exec helper
+  * exec credential provider: ProvideClusterInfo and kubeconfig shadow
+  * Remove FieldMatchingFlags
+  * Adjust conversion generator to new converter changes
+  * Add datapolicy tags to pkg/scheduler/
+  * Add datapolicy tags to staging/src/k8s.io/kube-aggregator/
+  * Add datapolicy tags to test/e2e/framework
+  * Add datapolicy tags to pkg/apis
+  * kubeconfig: add explicit path, if specified to loading precedence
+  * Introduce api-extensions category in k8s apiserver
+  * refactor(apiserver): ignore the insecure flags
+  * Allow for configuring etcd progress notify interval on GCE
+  * Fix seccomp PSP docker/default annotation handling
+  * fixes max-min fairness
+  * local-up-cluster.sh: Pass SERVICE_CLUSTER_IP_RANGE to controller manager
+  * fix kubectl debug link error
+  * Added config parameter for CPU threads
+  * Updating EndpointSliceMirroring e2e test to accept multiple slices
+  * pin to latest k8s version
+  * more versions
+  * rev versions
+  * use current method signatures
+  * Update csi-proxy version
+  * add audit-log-compress to apiserver
+  * Update PriorityClass conformance test to cover DeleteCollection
+  * SetCondtion updates generation
+  * Update testing-manifests/storage-csi owners file
+  * CHANGELOG: Update directory for v1.20.0-beta.0 release
+  * Re-add the event recorder in the release test
+  * Don't clear the cached resourcelock when errors occurs on updates
+  * Add failing test showing release is not working properly
+  * Wipe some fields on service "type" updates
+  * Make some methods into non-methods
+  * If image has stackdriver agent installed, use it.
+  * remove the deprecated client that we stopped generating
+  * generated
+  * Update function setting master node size for GCE
+  * dualstack endpoints integration tests
+  * fix case when HC timeout is 0
+  * pv controller test: more test cases
+  * pv controller test: use sub tests
+  * pv controller test: enable klog output
+  * cleanup: fix some error log capitalization
+  * fix unbound variable on upgrade
+  * add godoc for events to events.k8s.io
+  * Event: Document TTL and best-effort-ness
+  * Add the pod_resources_endpoint_requests_total metric
+  * Update podresources api e2e_node tests
+  * tombstone-ing IPFamily field(15)
+  * fake dynamic client: document that List does not preserve TypeMeta in UnstructuredList
+  * Change function signature for MatchNodeSelectorTerms
+  * Use host IP instead of 127.0.0.1 for kube-apiserver healthcheck.
+  * Webhook: handle error when calling wait.ExponentialBackoff
+  * Fix cacher test after bumping fakeBudget timeout to 2 seconds
+  * Move pkg/apis/core/v1.IsScalarResourceName under pkg/scheduler/util
+  * fixed addons fluentd-elasticsearch statefulset format error
+  * PV controller: don't delete PVs when PVC is not known yet
+  * follow up for #94109
+  * Enable Volume Expansion tests for Windows
+  * scheduler: make Profile an interface.
+  * Promote verify PriorityClass endpoints e2e test to Conformance
+  * add e2e test for services with hostNetwork endpoints
+  *  e2e use functional options to configure NetworkingTest
+  * fix e2e service test container listening port
+  * dual stack services (#91824)
+  * Kubelet now implements the V1 podresources API
+  * Update generated files
+  * Add podresources v1 API
+  * Fix cacher test flakiness
+  * Make versionconverter functions private
+  * Reuse SSA type converter for resources in the same API Group
+  * Change pvc describe test
+  * add an APIServerIdentity feature gate
+  * DelegatingAuthorizationOptions: exposes and sets a default timeout for SubjectAccessReview client
+  * Fix the kube-proxy comment so that the document can be generated correctly
+  * Fix a lot of typos in Azure codes
+  * pause image: Stricter registry prefix regex
+  * apiserver: use canonical egress selection names in EgressSelectorConfiguration API docs
+  * apiserver: update TestReadEgressSelectorConfiguration to use 'controlplane' egress selector name
+  * apiserver: add validation for EgressSelection names in EgressSelectorConfiguration API
+  * apiserver: support egress selection name 'controlplane' and deprecate 'master'
+  * Update test/e2e/storage owners file
+  * Report a metric for time taken to perform recursive permission change
+  * Log PodExec stdout + stderr
+  * Add e2e test for the newPV Controller metric
+  * removed whitspace
+  * added xpack gem to enable ilm support in fluentd-es-image
+  * Add yaml util to unmarshal numbers into int/float
+  * Update the frontend IP config when the service's `pipName` annotation is changed
+  * fix typo in e2e test
+  * Add MrHohn as an owner of ip-masq-agent addon
+  * Bump ip-masq-agent version to pick up CVE fixes
+  * ipvs: check for existence of scheduler module and fail if not found
+  * fix: do not hardcode nginx image URL in rc e2e test case
+  * Grant group KUBE_POD_LOG_READERS_GROUP access to read pod logs on gke control-plane.
+  * Add configuration options to specify --detect-local-mode on kube-proxy.
+  * Fix static checks for pkg/controller/podautoscaler
+  * proxy: label kube_proxy test with more unique label
+  * Optimize NormalizeScore for PodTopologySpread
+  * Add 5k nodes benchmark for pod topology spreading
+  * PV Controller: PV plugin and mode metrics
+  * style: update comments in topology manager
+  * Optimize string building for NamespacedName
+  * Clean code: optimize some logs of mount
+  * extend request interval to make session affinity cases stable
+  * Add jingxu97 to volume/util owners
+  * Delete framework/v1alpha1 folder and change remaining import paths
+  * Fix a bug that Pods with topologySpreadConstraints get scheduled to nodes without required labels
+  * Fix staticcheck failures on apiserver/plugin/pkg/{authenticator, authorizer}
+  * Alter wording to describe pods using a pvc
+  * Deflake PostFilter integration test
+  * allow component-helpers to import util and klog
+  * generated
+  * generalize lease controller
+  * move node lease controller to component-helpers
+  * Add integration test for Default PodTopologySpread
+  * bump qemu version
+  * Rename flags
+  * Replacing factory tests with scheduler.New and options
+  * Add SETUP_KONNECTIVITY_SERVICE flag
+  * Separate network proxy flag for apiserver egress and starting pods
+  * kubeadm: validate node-cidr-mask are correct
+  * kubeadm validate maximum service subnet size
+  * write checkpoint only when allocated devices updated.
+  * kubeadm: validate podSubnet against node-cidr-mask
+  * Properly quote flags passed to Cluster Autoscaler
+  * Update nodelocaldns yaml to use 1.15.16 image
+  * remove unused const failedExpiration
+  * If we set SelectPolicy MinPolicySelect on scaleUp behavior or scaleDown behavior,Horizontal Pod Autoscaler doesn`t automatically scale the number of pods correctly
+  * format incorrectAddresses in klog
+  * fix: add missing patch flag for kubeadm init phase control-plane
+  * fix loop bug for verify attached volume
+  * test: Add service cluster IP range unit test
+  * prepare node performance tests to move to separate job
+  * ipset: Address a TODO, add test for TestEntry() with IPv6 address
+  * Fix labels for spreading benchmark
+  * Added functionality and API for pod autoscaling based on container resources
+  * Add more Pods and relax skew in E2E spread test
+  * Adjust the acceptable value of UsageNanoCores
+  * Return non-zero code on logexporter failures
+  * Fix default values for logrotate in /var/log/
+  * Add integration test for kubectl debug
+  * Fix golint failures in client-go/transport
+  * Update the PIP when it is not in the Succeeded provisioning state during the LB update.
+  * Support cross compilation only on amd64.
+  * Always set relevant variables for cross compiling
+  * Use host IP instead of localhost for control plane component kubeconfig files. This is a part of work to allow control plane components to be moved off hostNetwork.
+  * Allow deletion of unhealthy pods if enough healthy
+  * iAdd host IP to etcd listen client URLs. Allow kube-apiserver to use host IP to connect to etcd. Update etcd/migrate to allow additional client listening URLs.
+  * Add error detail in log
+  * CHANGELOG: Update directory for v1.20.0-alpha.3 release
+  * fix the fake cloud provider
+  * Warn that hyper-v featuregate will be deprecated in 1.20 and will be removed in 1.21
+  * Do not skip externalLB update if some nodes are not found.
+  * Promote Replication Controller lifecycle e2e test to Conformance
+  * Promote Replication Controller Lifecycle
+  * Move client_builder to k8s.io/controller-manager
+  * Graduate DefaultPodTopologySpread to beta
+  * e2e: topomgr: fix ginkgo log
+  * netpol: Add CRUD tests for NetworkPolicy API
+  * test images: Adds Windows support (part 2)
+  * refactor: migrate node e2e tests off insecure port
+  * Generated bazel
+  * Generated conversions
+  * exec credential provider: wire in cluster info
+  * Fix dependency linting
+  * Kube-proxy: Perf-fix: Shrink INPUT chain
+  * Fix flaky unit test Test_Run_Positive_VolumeMountControllerAttachEnabledRace data race
+  * conntrack log delete operations
+  * Bump github.com/Azure/go-autorest/autorest/adal to 0.9.5
+  * kube-proxy: log stale services operations
+  * staging/publishing: cleanup import restrictions for csi-translation-lib
+  * tests: Refactor agnhost image pod usage - common (part 2)
+  * test, e2e: Remove duplication when using PodClient.CreateSync
+  * fix test flakes
+  * kubectl: allow users to use args with KUBECTL_EXTERNAL_DIFF
+  * e2e don't use hardcoded name for containers name
+  * avoid apiserver/cloud-provider/controller-manager deps from  k8s.io/csi-translation-lib
+  * Add client listening URLs flag to etcd migrate.
+  * test: Fix using deprecated default cluster IPs
+  * Disable test for large clusters
+  * The function shouldRecordEvent will panic when the value of input object is nil
+  * Fix catch all regex and missing DryRun Options
+  * fix unbound variable issue in verify.sh
+  * support multiple bind records (fie nodelocaldns  test regression), by first replacing PILLAR_ and then replacing other vars.
+  * Add back openapi gen for generic types and clean up doc.go
+  * fix a nil pointer ref in slice allocation
+  * warn user about resource being deleted
+  * Use gsutil to download kube binaries and release
+  * staging/publishing: remove release-1.16 rules
+  * test images: Switches to buildx
+  * Add new way to generate leader election lock
+  * fix staticcheck vendor/k8s.io/metrics/pkg/client/custom_metrics/multi_client.go:49:4: ineffective break statement. Did you mean to break out of the outer loop? (SA4011) vendor/k8s.io/metrics/pkg/client/custom_metrics/versioned_client.go:38:2: var codecs is unused (U1000)
+  * kube-proxy ensure KUBE-MARK-DROP exist but not modify their rules
+  * Remove redundant variable
+  * Switch events conformance metadata from v1.19 to v1.20
+  * Fix windows node startup failures.
+  * CHANGELOG: Update directory for v1.18.10 release
+  * CHANGELOG: Update directory for v1.17.13 release
+  * kubelet container status calculation doesn't handle suddenly missing data properly
+  * enable benchmark by matching test config
+  * remove debug print from create quota
+  * Move SCTP to GA
+  * remove secondary client retries in e2e tests
+  * Add support for create ingress in kubectl
+  * Fix metrics reporting in kube-apiserver
+  * Fix --dry-run invocation in kubectl e2e
+  * fix: smb valid path error
+  * Fix staticchecks in vendor/k8s.io/client-go
+  * Replace non-ascii string under test/
+  * add methods to deallocate and starts vms in a scale set
+  * Removing flaky tag from test
+  * Use fluentbit as logging agent. Replace stackdriver
+  * e2e: node: topomgr: avoid plugin leak on test fail
+  * add a local tlsTransportCache to available_controller
+  * Move dirExists() to kubelet_test
+  * Map SelectorSpreadPriority to PodTopologySpread plugin
+  * CHANGELOG: Update directory for v1.19.3 release
+  * Fix fcpath
+  * Ignore deleted pods.
+  * Make copied `localtime` file write-able
+  * Reorder default Filter plugins to have UnschedulableAndUnresolvable first
+  * Add unit tests for dockershim/exec.go
+  * test: Fix deprecated --dry-run parameter
+  * Enable XFS tests for recent GKE COS versions
+  * CHANGELOG: Update directory for v1.20.0-alpha.2 release
+  * PriorityClass lifecycle tests
+  * Fix log dumping for GKE
+  * Add `create ingress` command to `cmd/kubectl`
+  * Support the node label `node.kubernetes.io/exclude-from-external-load-balancers`
+  * Remove dependency between create rolebinding
+  * kube-eviction: Fix SI of process quantity
+  * add systemd mount options interface to support the no-systemd mount
+  * Move scheduler interface to pkg/scheduler/framework
+  * Fix vsphere disk detach failing
+  * - fix golint errors by adding defition comments - remove /pkg/apiserverinternal from .golint_failures
+  * [auth]Check verbs for nonresourceurls and resources
+  * add a OWNERS file under storageversion
+  * generated
+  * add the storageversion.Manager interface
+  * kubeadm: add some output to the generate-csr command
+  * Fix the busybox image tag in kubemark hollow nodes
+  * fix azure disk attach failure for disk size bigger than 4TB
+  * Add PULL_REQUEST_TEMPLATE.md and state the repo does not accept any direct changes
+  * Run hack/update-vendor.sh
+  * Add rule for component-helpers into staging/publishing/rules.yaml
+  * Removing GetPodPriority from pkg/api and importing PodPriority from k8s.io/component-helpers
+  * Duplicate a single helper from pkg/apis
+  * simpler addition of nodeport basic validation
+  * Replace Branch Manager/Patch Release Team with Release Manager
+  * OWNERS_ALIASES: Add xmudrii to release-engineering-reviewers
+  * make new command functions to keep private when they are not required to be public
+  * wrap errors from NodeLabel, NodePorts, NodePreferAvoidPods and NodeResourcesBalancedAllocation plugins
+  * fix azure disk data loss issue on Windows
+  * fix upgrade test
+  * Add defaultingType to PodTopologySpreadArgs
+  * Don't depend on DNS in NetworkPolicy tests
+  * kubelet: fix iptables setup under dual-stack
+  * Improve logging of iptables canary test
+  * Update addons volumesnapshots owners file
+  * Clarify that we don't audit events due to performance impact
+  * don't cache transports for incomparable configs
+  * Update write-pki-data to give read permissions to KUBE_PKI_READERS_GROUP, for components running as non-root to be able to read the credentials.
+  * Update to Calico v3.16.2
+  * Update Windows Pause version to 1.4.0
+  * Move cmd/controller-manager to k8s.io/controller-manager and cloud specific configs to k8s.io/cloud-provider.
+  * API server: fix default_konnectivity_socket_path typo.
+  * cleanup: fix golint errors in /pkg/kubelet/stats
+  * cloud node controller: handle empty providerID from getProviderID
+  * always collect containerd logs
+  * Upgrade snapshot controller to 3.0.0
+  * log-dump.sh: Fix shellcheck issues
+  * test-integration: Fix using deprecated default cluster IPs
+  * Initialize k8s.io/kubernetes/staging/src/k8s.io/component-helpers
+  * Update the example for kubectl port-forward
+  * Upgraded aws-sdk-go to v1.35.5 to include more regions, i.e. Millan
+  * kubelet: Set dual-stack hostNetwork pod IPs on dual-stack nodes
+  * utilnode: fix incorrect documentation about node name vs hostname
+  * kubelet: allow specifying dual-stack node IPs on bare metal
+  * kubelet: Remove unnecessary sorting in NodeAddress tests
+  * allocate service-account flowschema to global-default
+  * Fix reporting network_programming_latency metrics in kube-proxy
+  * Allow configuration of etcd healthcheck timeout
+  * add ipv6 support to the image issue-74839
+  * set lastterminationstate for container status even when CRI fails to return termination (or any) data
+  * Remove the dependency between create quota command and generators
+  * make download-or-bust compatible with both sha512/sha1
+  * Fix documentation on EndpointSliceCache map
+  * Adding marosset to test/e2e/windows/OWNERS approver
+  * Add SELinux labels for kubelet on Fedora CoreOS
+  * add CAP_NET_RAW capability to CRI stats summery test
+  * e2e hostexec commands does not need sudo
+  * Update after code review
+  * Update cluster/gce/util.sh
+  * Fix some shellcheck warnings/errors in cluster/gce/util.sh
+  * Mask bearer token in logs when logLevel >= 9
+  * Update test/e2e/framework/network/utils.go add logging about min/max interval Co-authored-by: Antonio Ojea <antonio.ojea.garcia@gmail.com>
+  * scheduler framework: document how to make plugins configurable
+  * Send node startup scripts to console and journal
+  * Disable the Accelerator metrics by default
+  * Adding Bazel dependencies
+  * Adding failure scenario for long FQDN and setHostnameAsFQDN feature
+  * add unit tests for network plugin manager metrics
+  * clarify help for --api-version: note it's API group/version
+  * include APIVersion in output of 'kubectl api-resources'
+  * Move cloud related feature gates to controller-manager
+  * Replace AreLabelsInWhiteList with isSubset
+  * mark node-problem-detector as serial
+  * Cleaned up and fixed: the potentially misleading comments around Event struct
+  * Update DialFromNode to return values as is done w/ other tests.  Update comments to clarify missing probability check function (since they need to be updated anyways b/c of the return value introduced)
+  * Azure: fix node removal race condition on VMSS deletion
+  * removed links to soon deprecated helm stable repo & added artifact hub link
+  * get kibana up to speed with es
+  * rev version of stateful set
+  * v1.18 support changes
+  * kubectl: Update triage/support label references to kind/support
+  * Fix golint failures in pkg/registry/core/replicationcontroller
+  * kubelet: do dual-stack iptables rules
+  * use new fluentd image in daemonset
+  * updated fluentd and all plugins
+  * fix staticcheck for kubectl pkg files
+  * Add gate to install CSI proxy
+  * SetHostnameAsFQDN will be beta in v1.20, enable feature gate by default.
+  * test: e2e: fix race in pods test
+  * Fixes high CPU usage in kubectl drain
+  * proxy: Add tests for kube-proxy config defaulting
+  * test/e2e/framework/:use the term 'Control Plane' in comment
+  * Do not update managedFields timestamp when they don't change
+  * reconcile NLB attributes on service creation
+  * fix detach azure disk issue when vm not exist
+  * Mask Ceph RBD adminSecrets in logs when logLevel >= 4
+  * Update triage/support label references to kind/support
+  * Update addon-manager makefile to use the new staging repo - for real
+  * Remove unused FailfWithOffset()
+  * Verify pod termination with E2E PreStop hook
+  * Move predicates and priorities configuration creation to Policy mapping
+  * Make the creation of namespace using POST and PATCH consistent
+  * vsphere: improve logging message on node cache refresh event
+  * Tag LabelSelector with +structType=atomic
+  * Bump to latest kube-openapi and SMD to pick up structType=atomic support
+  * just log essential pod info
+  * Add error text to kube-system wait error
+  * Change kubectl clusterinfo to non offensive words
+  * e2e can't use both pod.Name and pod.GenerateName
+  * Fix test "[sig-windows] DNS should support configurable pod DNS servers"
+  * Fix lint errors in pkg/contoller/endpoint
+  * Update Makefile to point to the new addon manager gcr repo
+  * Fixed percentage behavior in instr
+  * remove dns_common.go delete configmap stuff
+  * kubelet: remove some redundant iptables option checking
+  * Remove federation tests entirely because they break clusters and aren't relevant anymore
+  * Don't add empty AZ labels to OpenStack volumes
+  * resolve PR comment ( add nil check )
+  * fixes test/integration/ttlcontroller staticcheck
+  * Add CSI proxy log to fluentd
+  * Update Windows image patch version
+  * Updated symbol 'framework.GetAllMasterAddresses' to not use word 'master'
+  * Updated symbol 'framework.GetMasterHost' to not use word 'master'
+  * fix: use ">" instead of ">=" in resource allocation
+  * add configuration for controller migration.
+  * Watch bookmarks may contain version of objects of other types
+  * Support sharing one IP address for multiple services
+  * Add unit tests for feature "Support sharing one IP address for multiple services"
+  * Graduate SelectorIndex to GA
+  * correct 'information' spelling errors
+  * correct 'admission' spelling errors
+  * add note for kubeadm cert renew
+  * Fix UpdateSnapshot when Node is partially removed
+  * Add LookForStringInPodExecToContainer that takes container name parameter, modify LookForStringInPodExec to call the new function.
+  * Fix test name TestDump
+  * kubeadm: deprecate self-hosting support
+  * make update
+  * fix integration tests
+  * fix error message
+  * fix goroutine that lives too long
+  * wrap errors in selectorspread and podtoplogyspread plugin
+  * add unit tests for getStorageAccounts in azure_storageaccount.go
+  * Lint ttl_controller
+  * Fix staticcheck failure for vendor/k8s.io/client-go/discovery/cached/memory
+  * kubectl: deprecate --delete-local-data
+  * wrap errors in service affinity  plugin
+  * [pkg/watch/json]: remove dead code
+  * wrap errors in taint-toleration plugin
+  * pause image: moves wincat binary location
+  * Adds support for building Windows pause image
+  * tests: Refactors agnhost image pod usage - network
+  * tests: Refactor agnhost image pod usage - common (part 1)
+  * gce: redirect handshake server requests to metadata-concealment too
+  * Disable one subpath test for windows
+  * Add csiproxy log
+  * Collect debugs before framework.Failf
+  * Enable per-zone logexporter pods creation
+  * e2e/storage: disable caching when writing/reading to block PVCs
+  * e2e: add option to create pods with different image in pod.Config
+  * Clean up nits in delete cascade
+  * wrap errors from DefaultPreemption, ImageLocality and  NodeAffinity plugins
+  * Fix LookForStringInPodExec(...) to take container name as argument, and refactor function usage Ref: PR 92127 review discussion https://github.com/kubernetes/kubernetes/pull/92127/files#r447853904
+  * switching to stable version
+  * Fix kube-addon-manager overwriting resources with EnsureExists
+  * apiserver self request metric
+  * address instance_test nits
+  * It's an 'Instance' of apiserver
+  * upgrade test for BoundServiceAccountTokenVolume
+  * kubeadm: make the CP join handling of kubeconfig similar to "init"
+  * kubeadm: warn but do not error out on missing CA keys on CP join
+  * using structured logging in scheduler framework runtime
+  * agnhost image: use actual DNS domain instead of hardcoded cluster.local
+  * add aojea to test reviewers
+  * Use the exported struct member directly
+  * fix: correct glbc ClusterRole
+  * Updated vendor by `hack/update-vendor.sh`
+  * Update bazel
+  * Update dependencies
+  * Remove kubeconform
+  * Remove dependency on behaviors for conformance generation
+  * Fix typo & documentation on kustomize.md
+  * Remove unmaintained stackdriver logging e2e test
+  * replace sha1 with sha512
+  * Use pager's context instead of TODO
+  * kubelet: add unit tests for imagePullSecrets keyring
+  * Keep the imagePullPolicy of kubectl alpha debug consistent with the  default
+  * Remove ext2 + ext3 tests
+  * Add failure logic to tests that rely on side-effect-free dial functions.
+  * Adding back in the breadth-first-polling logic. "Revert "Merge pull request #93837 from jayunit100/DialFromContainerB""
+  * Update the use message for kubectl debug
+  * Graduate kubeadm alpha certs command
+  * Fail test when Cinder volume deletion fails
+  * Add extra log when Cinder volume deletion fails
+  * Delete pre-provisioned Cinder volume by ID
+  * deprecate scheduler metrics BindingLatency and SchedulingAlgorithmPreemptionEvaluationDuration
+  * modify static check
+  * Replace e2essh on e2e service tests
+  * using kubectl apply to create metric adapter
+  * Allow the lifecycle of kube-proxy to be managed independently of the startup scripts for GCE
+  * Fix `kubectl describe ingress` format
+  * check readyz before adding endpoint for kube-apiserver
+  * Bump network proxy images to v0.0.12
+  * Bump konnectivity-client to v0.0.12
+  * tests: Refactors agnhost image pod usage in tests
+  * Revert "Merge pull request #93837 from jayunit100/DialFromContainerB"
+  * CHANGELOG: Update directory for v1.20.0-alpha.1 release
+  * Move Kubelet Summary API to staging repo
+  * removing deprecated scheduler metrics
+  * refactor(kubeadm): make `alpha kubeconfig user` command accpet --config
+  * wait until the iptables rules are programmed
+  * Add test for listing Leases from all namespace
+  * use GetInstanceProviderID to get instance provider ID
+  * Remove mattjmcnaughton as a sig-node reviewer
+  * Enhance the prompt information of verifyRunAsNonRoot, add pod, container information
+  * Update nodelocaldns yaml to use 1.15.14 image
+  * handle longer vendor paths without go files
+  * Show error in status if preserve unknown fields is true for nonstructural schemas
+  * `find . -type f \( -name "*.go" -or -name "*.md" \) -print0 | xargs -0 gsed -i 's/the the /the /g'`
+  * endpoinslices must mirror services labels
+  * kubectl: add a space between effect and operator when printing tolerations
+  * Return the Kubernetes version which stopped serving deprecated APIs by default
+  * log-dump.sh: Do not modify logexporter-daemonset.yaml in-place.
+  * Take into account latency incurred in server filters
+  * test images: uses nanoserver
+  * Remove kubeadm audit package
+  * Do not assume storageclass is still in-tree after csi migration
+  * fix kube-proxy cleanup
+  * scheduler_perf: use time.Ticker in throughput measurement
+  * Remove testcluster check for csi proxy
+  * Add cheftako to KCM owners.
+  * Add an unit test for requests including value after token
+  * Limit the max number of splitting
+  * fix: detach azure disk broken on Azure Stack
+  * [pkg/api/podsecuritypolicy]: fixup typo
+  * Add a check for crio service before starting node e2e tests
+  * apiextensions: prune array type without items in published OpenAPI
+  * test: add unit-test for TranslateCSIPVToInTree.
+  * apiserver: fix healthz vs. livez vs. readyz log output
+  * test(kubelet): deflake TestRotateShutsDownConnections
+  * kubeadm: update vendor to exclude kustomize import
+  * kubeadm: remove the --experimental-kustomize feature
+  * update-bazel
+  * use more granular buckets for azure api calls
+  * fix duplicate testcase names
+  * Adds filtering of hosts to DialContexts.
+  * update storageos vendor for FilteredDial change
+  * kubeadm: remove the --kubelet-version flag for "upgrade node"
+  * Adding cheftako to CCM owners.
+  * scheduler_perf: refactor to allow arbitrary workloads
+  * Tests for empty constraints array when DefaultPodTopologySpread is enabled
+  * cluster/images/etcd: Build etcd:3.4.13-1 image
+  * build: Update to debian-base:buster-v1.2.0
+  * build: Update to debian-iptables:buster-v1.3.0
+  * test(apply): deflake run_kubectl_apply_tests
+  * fix azure file migration panic
+  * Add support for s390x
+  * test images: Fixes echoserver s390x image
+  * Change code to use  staging/k8s.io/mount-utils
+  * enable gce InstancesV2
+  * implement gce InstancesV2 interface
+  * Update csi proxy to v0.2.1
+  * cloud node controller: implement with workqueues and node lister
+  * CHANGELOG: Update directory for v1.19.2 release
+  * CHANGELOG: Update directory for v1.18.9 release
+  * CHANGELOG: Update directory for v1.17.12 release
+  * test/e2e: Busybox image is not being templatized
+  * move dashpole to emeritus in kubelet
+  * LockToDefault the ExternalPolicyForExternalIP feature gate
+  * Fix resource location for ipv6 pods
+  * Refactor kubectl without stdin test
+  * e2e sctp support for ipv6
+  * Fix e2e autoscaling namespace error
+  * reduce cloud api calls in cloud-node-controller by passing instanceMetadata to updateNodeAddress
+  * Ensuring EndpointSlices are recreated after Service recreation
+  * Increasing acceptable timeout for EndpointSlice garbage collection
+  * Delete namespace parameter in create adapter
+  * verify-generated-swagger-docs: remove unnecessary build
+  * kubeadm: relax the validation of kubeconfig server URLs
+  * Graduate WinOverlay to Beta
+  * count of etcd object should be limited to the specified resource
+  * Run gofmt
+  * run hack/update-vendor.sh
+  * Move podresources api to k8s.io/kubelet/pkg/apis
+  * optimize the use of informer for scheduler
+  * Revert "conntrack e2e test debug connections"
+  * ingore apparmor on non Linux operating systems.
+  * test: ensure WaitForCacheSync is called after starting sharedInformerFacotry
+  * Move the RuntimeClass tests out of node-kubelet-orphans
+  * Test watchcache being updated in multietcd setup
+  * Enable progress notify events in watchcache
+  * Allow tracking resource version for reflector store
+  * Implement etcd3 progress-notify feature in etcd3 layer
+  * Pipe newFunc to etcd3 storage layer
+  * Update kubeconfig command-line help message for kube-proxy
+  * Clean up remaining ns flag
+  * Revert "Revert "Switch cos version to M85""
+  * ubernetes_lite.go: remove image argument from SpreadServiceOrFail
+  * Don't attempt to detach an FC device if we don't know its name
+  * follow up cleanup after SupportPodPidLimits GA
+  * Mount kubelet and container runtime rootdir on LSSD
+  * avoid potential secret leaking while reading .dockercfg
+  * clean up podpreset deprecated client
+  * generated
+  * remove generated podpreset
+  * remove pod presets
+  * test/{images,utils/image}: Add justaugustus as reviewer
+  * cluster/images: Add justaugustus as reviewer
+  * hack: Add justaugustus as reviewer
+  * .github: Add justaugustus as reviewer
+  * kubeadm init phase upload-certs: add flag --kubeconfig
+  * portforward: Fix UDP-only ports calculation
+  * chore: add network rule support in Azure account creation
+  * Fix misusage of RLock in timeCache lru.Cache.Get()
+  * e2e test support microk8s
+  * test(iptables): deflake TestRestoreAllWaitOldIptablesRestore
+  * feat(iptables): be able to override iptables-1.4-compatible lock path
+  * test flake: fix data race in csi_test.go
+  * Move podPassesBasicChecks() to VolumeBinding plugin
+  * Remove pvcLister from genericScheduler
+  * add retry for creating metrics grabber to fix test flakes
+  * Remove tests related to HTTPS support for ingress-gce
+  * make kube::util::find-binary not dependent on bazel-out/ structure
+  * output go_binary rule directly from go_binary_conditional_pure
+  * hack/lib/util.sh: some bash cleanups
+  * bazel: Replace --features with Starlark build settings flag
+  * [go1.15] staging/publishing: Set default go version to go1.15.2
+  * [go1.15] build: Use go-runner:buster-v2.0.1 (built using go1.15.1)
+  * [go1.15] Update to go1.15.2
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.1.1 (supports go1.15.2)
+  * [go1.15] build: Update to k/repo-infra@v0.1.1 (supports go1.15.2)
+  * Graduate ServiceAccountIssuerDiscovery to beta
+  * avoid logging token in RunDeleteTokens
+  * gpu device plugin uses EnsureExists addon mode
+  * Non-zero cfs quota period duration requires feature flag
+  * Use namespace flag passed to RunKubectl* methods
+  * Update etcd to dd1b699fc489
+  * Fix some shellcheck warnings/errors in cluster/gce/util.sh
+  * kubeadm: remove stray "alpha phase" command
+  * kubeadm: remove the "alpha kubelet config enable-dynamic" command
+  * Fix index out of range panic for kubectl alpha debug
+  * rename some files
+  * Fix minor comment in a script
+  * Wrap errors on VolumeBinding plugin
+  * Wrap errors on DefaultBinder plugin
+  * Wrap errors when running Bind plugins
+  * Wrap errors when running PreBind plugins
+  * Remove field disablePreemption from internal scheduler codebase
+  * Run unit tests 2 instead of 3 times via bazel
+  * Add the storageversion.Manager interface
+  * pillar_dns_server remove change so as not to break tooling in the near term in the kubernetes/dns repo
+  * Fix staging/src/k8s.io/apimachinery/pkg/labels golint findings
+  * Use EphemeralContainers for storage validation
+  * Hold error in framework's Status
+  * Increase time it takes for second pod to startup for offline resizing
+  * Read PV object from apiserver to prevent flake
+  * Migrate scheduler, controller-manager and cloud-controller-manager to lease lock.
+  * fix the bug that kubeadm tries to call 'docker info' even if the CRI socket was for another CR
+  * Update csi-proxy to use beta version
+  * remove feature gate SupportIPVSProxyMode.
+  * Revert "Switch cos version to M85"
+  * bump the version of k8s.io/system-validators to 1.2
+  * kubeadm: Update versions for 1.20
+  * Handle nil elements when sorting, instead of panicking
+  * kubeadm: print warnings on invalid cert period instead of erroring out
+  * CHANGELOG: Update directory for v1.19.1 release
+  * Prevent deletion  of namespace again
+  * Deprecate Dockershim
+  * Tolerate NotFound errors when deleting snapshots
+  * storage E2E: explicitly wait for PV deletion after ephemeral test
+  * Add vCenter info metric
+  * Avoid unnecessary calls if other error occurred
+  * test(portforward): deflake TestGetListener
+  * Add roundtrip tests for metrics repo
+  * generated
+  * Let kube-apiserver host the storage version API
+  * fixup: add podLister as a member field of DefaultPreemption
+  * Preemption plugin to fetch pod from informer cache
+  * Switch cos version to M85
+  * generated
+  * fix import paths
+  * add internal.apiserver.k8s.io/v1alpha1 to known gvs
+  * update doc.go and register.go
+  * move apiserverinternal types to kube-apiserver
+  * Initialize scheduler's podInformer in sharedInformerFactory
+  * Sort list of formats for --logging-format description to make it deterministic
+  * skip TestClientReceivedGOAWAY
+  * Count storage requests as whole byte values in quota
+  * Add Stephen Augustus as Reviewer for staging/publishing
+  * e2e: fix deployment non-unique env vars to avoid SSA error
+  * Remove pkg/api/endpoints
+  * Stop container before remove for Docker
+  * fix golint failures for staging/src/k8s.io/client-go/examples/workqueue
+  * Revert "fix cluster/log-dump/log-dump.sh shellcheck failures"
+  * deferredResponseWriter returns after calling the Close() method
+  * test(tools::events): deflake TestEventSeriesf
+  * Fix typo in comment of hack/verify-shellcheck.sh
+  * Fix staticchecks ST1005,S1002,S1008,S1039 in pkg/kubelet
+  * Remove unnecessary double-pointer
+  * Add metrics for azure service operations (route and loadbalancer).
+  * Add tests for daemonset view history
+  * Add commend for printHistory function
+  * test(watch-tool): deflake TestRetryWatcherToFinishWithUnreadEvents
+  * dedup the printHistory logic in DaemonSetHistoryViewer,StatefulSetHistoryViewer
+  * Describe sts on rollout history if the revision
+  * kubectl: Use Fprintf
+  * fix golint for pkg/volume/azure_dd
+  * test(workqueue): deflake TestMetrics
+  * build/lib/release: Explicitly use '--platform' in building server images
+  * build/common.sh: Remove extraneous reference to debian-base image
+  * test(kuberuntime): deflake TestRecordOperation
+  * prefer NoError/Error over Nil/NotNil
+  * Deflake serving options, avoid hard-coding ports
+  * Deflake port forward tests to avoid hard-coded local ports
+  * Deflake cpumanager checkpoint unit tests
+  * Use unique socket name per cm test
+  * fix(azure::cache): TimedCache.Getter should be called once on the same key
+  * test(azure::cache): deflake TestCacheNoConcurrentGet
+  * Run slow kubeadm upgrade tests in parallel
+  * Ensure kubeadm tests have unique names
+  * Avoid mutating global variables in kubeadm certs phases
+  * test(iptables): deflake TestRestoreAllGrabOldLock
+  * Skip TestGOAWAYConcurrency
+  * test(apiserver): deflake TestClientReceivedGOAWAY
+  * Deflake TestSetup
+  * Deflake TestHTTPProbeProxy
+  * kubelet: remove alpha warnings for CNI flags
+  * Add more tests for LRU cache lookup
+  * Move ResourceQuota admission to k8s.io/apiserver
+  * do not mutate endpoints in the apiserver
+  * remove DefaultIngressClass feature gate for 1.20
+  * Cleanup custom metrics conversion functions
+  * feat(kubeadm): specify resource requests in etcd pod spec
+  * Stop ignoring unit test flakes, require multiple successful passes
+  * kubeadm: remove the CoreDNS check for supported image digests
+  * Use ExpectNoError(err)
+  * allow to map the same container port to different host ports
+  * Updating winkernel kube-proxy OWNERS file
+  * consistently use double quotes in proto files
+  * Deflake TestServiceRegistryExternalTrafficHealthCheckNodePortUserAllocation
+  * add more testcases for GOAWAY filter
+  * prefer double quotes and consistent usage in .proto files.
+  * Improve ability to debug Events e2e failure
+  * Added support for register-with-taints setting #93608
+  * AWS NLB/ELB health check config based on service annotations
+  * kubeadm: adjust the logic around etcd data directory creation
+  * fix vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning staticcheck
+  * test(csi): deflake TestAttacherWithCSIDriver
+  * Remove HeadlessService label in endpoints controller before comparing
+  * Remove default conversions
+  * Update security contacts for sig-cli
+  * Allow to disable logrotation of kubernetes and pod logs
+  * Fix some shellcheck warnings/errors in cluster/gce/util.sh
+  * Fix some shellcheck warnings/errors in cluster/gce/util.sh
+  * Fix some shellcheck warnings/errors in cluster/gce/util.sh
+  * Enhancement on the testcase to cover more possibilities
+  * fix kubeadm update coredns with skip pending pod
+  * address review comments
+  * Update kubectl to use new vendored github.com/fvbommel/sortorder dependency
+  * Fix broken dependency vbom.ml/util
+  * Add exp backoff for connection refused errors
+  * proxy/userspace: clean up and consolidate testcase setup
+  * proxy/userspace: use waitgroups instead of sketchy atomic ops in testcases
+  * Start CSI proxy as service
+  * remove --verbose_failures from .bazelrc
+  * fix a few missed references
+  * CHANGELOG: Update directory for v1.16.15 release
+  * update scripts
+  * fix doc file
+  * rename
+  * partial
+  * move port definitions to a common location
+  * remove iperf e2e test ip family tags
+  * modify DNS-1123 error messages to indicate that RFC 1123 is not followed exactly
+  * kubeadm: Fix `upgrade plan` for air-gapped setups
+  * Avoid the API call to update pod if nothing is changed
+  * moving files from k8s.io/util/mount into staging/src/k8s.io/mount-utils
+  * fix: return error with fewer mount options on Windows
+  * fix: smb remount issue
+  * Remove driver letter assignment during volume format
+  * Revert "Merge pull request #166 from jingxu97/May/drivename"
+  * chore: add more logging for mklink on Windows
+  * fix: remove unnecessary readlink check in IsLikelyNotMountPoint on Windows
+  * Remove driver letter assignment during volume format
+  * Switch to klog v2
+  * ignore golint for some stutter that we want to keep as-is
+  * fix bad spelling
+  * Revert xfs_repair fix
+  * Fix windows MountSensitive error
+  * Fix subPath mountpint check
+  * Fix mount_windows build error
+  * Introduce paramater for sensitive mount options.
+  * FormatAndMount unit test only checks for MountErrorValue now and closed gaps for some error values
+  * Add more detailed error output when disk formatting fails
+  * Split MajorMinor into two fields
+  * update after review
+  * use xfs_repair to check and repair xfs filesystem
+  * Return typed error when Mount Fails
+  * Validate the existence of filesystem before attempting to mount it (linux)
+  * feature: implement Output method for FakeCmd
+  * Fix golint errors
+  * Update doc.go to show k8s.io/utils
+  * Extract pkg/util/mount and drop BUILD
+  * bind metadata proxy to 0.0.0.0
+  * Add e2e multiple endpoint services test
+  * spdy: add optional periodic Pings on the connection
+  * fix vendor/k8s.io/apimachinery/pkg/conversion staticcheck
+  * Handle eviction of pods in deleted namespace
+  * drain: eviction creates in a deleting namespace will throw a forbidden error
+  * Fixed reflector not recovering from "Too large resource version" errors with API servers 1.17.0-1.18.5
+  * Stop setting SelfLink in kube-apiserver.
+  * Fix FakeClock::Reset to always succeed
+  * add myself to sig-node-reviewers
+  * kubeadm: make the scheduler and KCM connect to local endpoint
+  * kubeadm: Ensure etcd manifests are regenerated upon upgrade
+  * Add WatchListPageSize to cache.Config
+  * Allow 404 error on lb deletion in azure
+  * add lock for csi node update
+  * fix typos in cmd/kubeadm
+  * clean up testutil/metrics content
+  * Update comments in pkg/scheduler/framework/v1alpha1/interface.go
+  * Update `kubectl diff --server-side` test.
+  * Skip TestLoopbackHostPortIPv6 run on non-IPv6 env
+  * relax matcher for ResourceMetricsAPI test
+  * fix staticcheck errors in resourcequota
+  * update test to match validation filter of pods
+  * Omit optional field when empty
+  * Update CNI plugins to v0.8.7
+  * fix golint failures
+  * Mark SCTPConnectivity tests as disruptive.
+  * Add tests for SCTP network policies.
+  * Ensure getPrimaryInterfaceID not panic when network interfaces for Azure VMSS are null
+  * Improve the prompt message when kubeadm init is successful
+  * fixed golint error in pkg/apis/admissionregistration
+  * Add 1.19.0 API testdata
+  * Remove 1.17.0 API testdata
+  * chore: 📦  update generated files
+  * Update max data disk count with new instance types
+  * Getting rid of the Salt DNS replacements, addded / back.
+  * tests: Refactor agnhost image pod usage
+  * Improve docs for client-go warning handlers
+  * Override hostname with instance name
+  * Fix testpattern check
+  * chore(openapi-spec): 📦  regenerate
+  * Moving e2e tests to e2e_node directory
+  * Combine switch case into one case
+  * Ran hack/update-bazel.sh but discarded changes to root build file
+  * Move common portion of dynamic snapshot out of switch statement
+  * Remove custom hash function, generate a random UUID for snapshot and snapcontent name instead
+  * Stack snapshot tests into one to reuse snapshot resource and reduce time taken on prow.
+  * Quick commit
+  * Remove snapshot class from prepv test because it is not needed.
+  * Combine two tests with overlap to reduce overall snapshot test suite time
+  * Add pre provisioned snapshot tests
+  * start kube-apiserver and webhook server only once to shorten the webhook audit test time
+  * Minor cleanup in snapshot test suite.
+  * Add a link to liggitt's deflake docs in Flake template (#94243)
+  * Deprioritize extensions/v1beta1 in discovery
+  * Update cri-tools to v1.19.0
+  * Update default etcd server to 3.4.13
+  * fix(azure): check error returned by scaleSet.getVMSS
+  * fix cluster/log-dump/log-dump.sh shellcheck failures
+  * Remove azure-load-balancer-disable-tcp-reset annotation
+  * Remove duplicate nodeSelector
+  * fix linter issues for pkg/kubelet/cri/remote and staging/src/k8s.io/cri-api/pkg/apis/testing
+  * Fail early on stress test and improve logging
+  * kubectl wait add ignore not found flag
+  * Support kubectl delete foreground
+  * remove deprecated kubelet endpoint /metrics/resource/v1alpha1
+  * Update options.go
+  * Initialize candidate directly instead of iterating the array of candidates
+  * Move brendandburns to to emeritus status.
+  * fix vendor/k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/unstructuredscheme staticcheck
+  * only update Azure data disks when attach/detach
+  * Enable IP Tags on Azure LoadBalancer public ips
+  * Add PR #89069 Action Required
+  * Update etcd makefile to build 3.4.13 image
+  * Update etcd client to v3.4.13
+  * update drain message to include namespace for pod in kubectl get compatible format
+  * CHANGELOG: Update directory for v1.19.0 release
+  * Fix issue on skipTest in storage suits
+  * Remove file_mode args for Windows test
+  * Update Calico to v3.15.2
+  * Set snapshotType for tests with NTFS.
+  * Update CHANGELOG-1.18.md
+  * Add logging if container or pod fails to be killed
+  * Adding label NodeAlphaFeature to include tests in Node Testgrid
+  * Add impersonated user to system:authenticated group
+  * Verify running mirror pod has running containers
+  * Only process all nodes when incoming pod has no preferred affinity
+  * test(endpointslice): deflake TestSyncEndpoints
+  * Remove unnecessary conversion
+  * Detect change of volume attachability in the middle of attaching
+  * Promote PidLimits to GA
+  * Ensure backoff step is set to 1 for Azure armclient
+  * [pkg/registry/admissionregistration]: fixup wrong copy&paste godoc
+  * Remove StartupProbe featuregate and related logic
+  * Make ProjectedVolumeSource optional
+  * Track pods with required anti-affinity
+  * Updating kube-proxy to trim space from loadBalancerSourceRanges
+  * let panics propagate up when processLoop panic
+  * Allow to configure clustername in creation of kubeconfig using kubeadm command
+  * Make similar buckets for api and etcd request duration histogram
+  * .github: remove stackoverflow from support issue template
+  * Refactored pkg/controllers/resourcequota
+  * fix: use sensitiveOptions on Windows mount
+  * Cleanup kubelet TODOs that are no longer pertinent.
+  * kubelet, cgroupv2: do not create /sys/fs/cgroup/sys with cgroupfs
+  * Update wait function w/ descriptions of global node states, TODO for kubelet API.
+  * ARM client: survive empty response and error
+  * delete tests which use container manager stub
+  * tests: Use Windows absolute path on Windows pods
+  * Only lock statuses map when status isn't successful
+  * Do not allow manual changes to manageFields via subresources
+  * Change nodeInfolist building logic in scheduler
+  * do not create StatefulSet pods when PVC is being deleted
+  * fix misleading comment in expand_volume.go
+  * Simplify and de-lint GCE Windows kube-up docs.
+  * Add context to x509 verify failures
+  * Read ssh username from env variable
+  * Fix the logging message
+  * Use /usr/bin/env bash in Makefiles and scripts
+  * Scheduler auth stop using legacy scheme
+  * allow adding annotations to pod when using kubectl run and add tests
+  * kubeadm: Separate argument key/value in log msg
+  * update ResourceMetricsAPI node-e2e test
+  * docs(api): 📝  Fix HPA docs with addition of "External" type
+  * fix vendor/k8s.io/apimachinery/pkg/util/framer staticcheck
+  * Removed broken link to Analytics
+  * Make CSI mock driver log parse more flexible
+  * Verify that an ingress with empty TLS is valid
+  * Update client-go out of cluster example
+  * Update yaml files to use seccomp GA syntax
+  * go fmt fix
+  * remove some notes about scheduler/algorithm
+  * get: -o yaml, json set ServerPrint false
+  * Add test for `pkg/kubelet/util/util_windows_test.go#GetAddressAndDialer`
+  * back out conversion of DialFromNode->DialFromTestContainer
+  * kubelet: assume that swap is disabled when /proc/swaps does not exist
+  * e2e storage: skip multi-volume generic ephemeral volume test
+  * Reduce test volume sizes
+  * support ipv6 in e2e policy tests
+  * modify the warning log format from %d to %v
+  * Update snapshot controller to use k8s.gcr.io
+  * Seperate registry and feature gates
+  * names unnamed testcases, adds name to t.Errorf msg
+  * Improve running time of TestSchedulerWithVolumeBinding
+  * Add maxTries logging statement, otherwise the numbers are really hard to interpret
+  * implement breadth first try
+  * fix test/e2e_node staticcheck
+  * Fix error messages
+  * Fix Poll variable name
+  * Fix waiting for PVCs to get Bound
+  * Number of failed jobs should exceed the backoff limit and not big equal. Remove patch in e2e test of backoff limit due to usage of NumRequeues
+  * fix vendor/k8s.io/apimachinery/pkg/apis/meta/v1/unstructured staticcheck
+  * Fix some typo
+  * golint
+  * fix vendor/k8s.io/apimachinery/pkg/labels staticcheck
+  * Enable completion for `kubectl config delete-context`
+  * vsphere: remove inactive members from OWNERS
+  * sig-network: remove inactive members from OWNERS_ALIASES
+  * cluster/addons/dashboard: remove inactive members from OWNERS
+  * apiserver: remove inactive members from OWNERS
+  * Fast return when no any matched anti-affinity terms
+  * Update seccomp e2e test for GA
+  * Fix an error in NodeUnschedulable plugin comment
+  * Format Codes
+  * minor logic fix
+  * e2e test intra-pod breadth first logging and summary
+  * fix incorrect comment in runtime ObjectKind interface
+  * Fix job's backoff limit for restart policy Never, rely on number of failures instead of number of NumRequeues
+  * test(kubelet): add a regression test to verify kubelet would not panic
+  * fix(kubelet): protect `containerCleanupInfos` from concurrent map writes
+  * refactor(*): update pvc quota name typo in comment
+  * fix: azure disk resize error if source does not exist
+  * chore: add diskclient.Update interface
+  * chore: add diskclient.ListByResourceGroup interface
+  * Remove false positive warning in kubeadm cmd
+  * cloud provider: add zone/region to InstanceMetadata
+  * Sort kubectl top output when --sort-by and --containers are used together
+  * add testcases for kubelet getters
+  * fix a typo in the comment
+  * Use v1helper.GetPersistentVolumeClass for compatibility
+  * Add tests for managed fields tracking.
+  * leaderelection: Remove doubled space in "attempting to acquire leader lease" log
+  * benchmark-dockerized.sh: set KUBE_ROOT
+  * kubeadm: reset don't unmount /var/lib/kubelet if it is mounted
+  * PodReasonUnschedulable is not a pod condition type
+  * Fix kubelet log message when starting a container
+  * kubectl describe pod: use ReportingController as an event source
+  * Fix TestScorePlugin: numScore should be accessed with atomic.LoadInt32
+  * expose Run[Pre]ScorePlugins functions in PluginRunner interface
+  * Cleanup wait forever loops in pv_controller_test.go
+  * Strip unnecessary security contexts on Windows
+  * Updating the Reviewers / Approvers for WinKernel Proxier
+  * fix the remote endpoint cleanup logic
+  * Add chendave to sig-scheduling REVIEWERS
+  * Adjust default replica count to 2 replicas
+  * Run make verify with python3 to fix publishing bot issue
+  * Document blocking behaviour of RunOrDie and Run
+  * removed k8s-master label
+  * Add example of using resource builder to load a manifest file
+  * tests: Fixes variable expansion false positive test
+  * revert auto-completed package names
+  * remove legacy leftovers of portmapping functionality that was moved to CNI
+  * mark this test serial due to race conditions
+  * Clean up daemonset test names
+  * Remove phantoms from dump_requests output
+  * deps: opencontainers/go-digest -> v1.0.0
+  * Update k8s.io/utils dependency and use ebtables from there
+  * kubectl: Allow --patch-file to be passed to `kubectl patch`
+  * reduce type conversion and correct variable name
+  * Fix verbs reporting in kube-apiserver metrics
+  * kubectl: improve the warning message when doing kubectl apply to the resource without expected annotation
+  * Fix label reference in deployment checks
+  * Use NLB Subnet CIDRs instead of VPC CIDRs in updateInstanceSecurityGroupsForNLB
+  * Update readiness checks
+  * Update ready condition
+  * chore: upgrade Azure/go-autorest to v14.2.0 use autorest v0.11.1
+  * extend ShouldCallHook benchmark to verify performance imporvement
+  * [kubectl] Fail when local source file doesn't exist
+  * nodelocaldns.yaml: remove force_tcp option which used for external dns query
+  * Create Deployment resource lifecycle test
+  * apf integration test: ensure no rejection
+  * skip mismatched webhookAccessor and object
+  * return err directly when nodename is not consistent in cert
+  * add bootstrap policy for monitoring roles
+  * unit test
+  * move to cadvisor.MachineInfo
+  * Delete ILB FR in case of changes to port/proto.
+  * fix windows container root validate
+  * hack: ensure go version is not specified for master in publishing rules
+  * publishing: remove go 1.13.9 for master branch for controller-manager
+  * add test case for kubeadm memory check
+  * add more testing cases
+  * Shorten watch restart test, run in parallel
+  * ipvs: log error if scheduler does not exist and fallback to rr
+  * fix golint failures in pkg/kubeapiserver/options, fix some incorrect replace of receiver name
+  * fix golint failures in pkg/kubeapiserver/options, rename receiver name of BuiltInAuthorizationOptions to o
+  * fix golint failures in pkg/kubeapiserver/options, use API Server in commemts instead of APIServer
+  * e2e node: fix kubelet service restart failure
+  * Mention background deletion in kubectl delete cascade help
+  * fix bazel build file
+  * correct the sandboxId attribute in unit tests
+  * address review comments
+  * add sandbox deletor to delete sandboxes on pod delete event
+  * Check for sandboxes before deleting the pod from apiserver
+  * fix(kubectl): warn users that flags cannot be placed before plugin
+  * Avoid using socket for hints
+  * regen
+  * update build
+  * remove serializers from codec factory
+  * update
+  * clean up unused var containerCache
+  * cleanup: print warning message after timeout
+  * Revert "cleanup: decrease log level from warn to v3"
+  * cleanup: decrease log level from warn to v3
+  * AWS: increase io1 volume IOPs limit
+  * Add a preflight check that the control-plane node has at least 2GB RAM
+  * Handle int -> float conversion in FromUnstructured
+  * Fixed potential nil dereference in hostpath unit test
+  * Fixed error string should not be capitalized
+  * add GetAddressAndDialer unit test
+  * [k8s.io/apiserver/pkg/server/filters]: fixup go vet warning
+  * [kubelet/dockershim] : Use local copy for range iterator
+  * fix(staticcheck): fix static error of package `/pkg/volume/gcepd`
+  * Filters on kubemark nodegroups when selecting node template to enable hollow node clusters that contain real nodes.
+  * Move MasterUpgrade() out from e2e framework
+  * Use temporary directory when creating temporary file in tests
+  * generated
+  * add vendorless to client-gen
+  * use canonical import path in client-gen so that package comments are
+  * ipvs: ensure selected scheduler kernel modules are loaded
+  * Fix NetworkPolicy describe for egress-all policies
+  * Export WaitForCSIDriverRegistrationOnAllNodes to be used by external csi driver repos
+  * [e2e/storage] fix range issue in getCSINodeLimits
+  * kubelet: add operations count and error count metrics to network plugin manager
+  * fix HandleCrash() order
+  * fix golint failures in pkg/kubeapiserver/options
+  * remove duplicate path import
+  * AWS cloudprovider allow nlb-ip and external type lbs to be managed externally
+  * Move WatchUntilWithoutRetry() from e2e framework
+  * Add metav1.SetMetaDataLabel func
+  * Remove resize map code
+  * lock-free broadcaster, use chan to ensure thread safety
+  * [test/kubelet]: Fix deadlock in watch manager test
+  * kubectl: remove the dependency between autoscale command and generators
+  * cluster/addons/metadata-proxy: cleanup inactive members from OWNERS
+  * test/images/pets: remove OWNERS to cleanup inactive members
+  * apimachinery: remove inactive members from OWNERS
+  * [pkg/controller/certificates]: remove staled func comments
+  * Remove DeprecatedMightBeMasterNode()
+  * TestCreateInvokeAdmissionControl: remove unnecessary goroutine in sequential processing
+  * Add unittest coverage for boottime_util_linux.go
+  * dual-stack: make nodeipam compatible with existing single-stack clusters when dual-stack feature gate become enabled by default
+  * Adds additional documentation for job status
+  * Set the oom_score_adj of guaranteed pod to -997
+  * Resolves staticcheck failures for component-base/metrics
+  * Change the node name from "machine" to "node"
+  * Fix a typo in PreBindPlugin comment
+  * Replaced repair with returning error, in delta_fifo.go
+  * Fix description of conversion generator
+  * Don't create a new sandbox for pod with RestartPolicyOnFailure if all containers succeeded
+  * add defer
+  * SIG node owner files clean up
+  * Refactoring: Reduce unnecessary lines
+  * Fix a typo in comment
+  * code clean for podgc
+  * fixed e2e vsphere statefulsets test
+  * Repair instead of panic when data corruption detected in DeltaFIFO
+  * conntrack e2e test debug connections
+  * disable goffuzz in binaries
+  * Add get-users and delete-user to kubectl config
+  * fix typo in runtime/interfaces.go
+  * Return nil as error when instance is not found so that node_controller could delete the node
+  * Cherry pick the fix https://github.com/kubernetes/kubernetes/pull/70291
+  * Find what fails pull-kubernetes-e2e-gce-ubuntu-containerd
+  * Review update
+  * Sync with master
+  * Remove previously added '' no longer needed
+  * No quotes needed/wanted for CURL_RETRY_CONNREFUSED
+  * Add fix for run-kube-controller-manager-as-non-root
+  * Updates after review
+  * Update cluster/gce/gci/configure-helper.sh
+  * Update cluster/gce/gci/configure-helper.sh
+  * Update cluster/gce/gci/configure-helper.sh
+  * Update cluster/gce/gci/configure-helper.sh
+  * Mitigate newly added shellcheck issues
+  * Updates after code review
+  * Update after code review
+  * Code review update
+  * Fix shellcheck w/e in cluster/gce/gci/configure-helper.sh
+  * changes in imports was unintentional
+  * fix S1000 simplify ch switch cases
+  * fix S1000 simplify ch switch cases
+  * fix S1008 simplify bool returns
+  * fix S1002 omit comp to bool
+  * Warn when creating roles with custom verbs kubectl
+  * Fix static check failures for staging/src/k8s.io/apiserver/pkg/server/healthz/healthz_test.go
+  * cleanup tempfiles in unit test
+  * Enhance apiextensions-apiserver in standalone mode
+  * fix CHANGELOG typo
+  * Mirror pod without OwnerReference should not be created
+  * Add unit test to kubectl/cmd/run
+  * remove stale TODO after this PR: #92204
+  * add line break when describe hpa
+  * basic regression test of runDockershim
+  * fix func name NewCreateCreateDeploymentOptions
+  * Fix error check logic
+  * Fix broken format in CHANGELOG-1.18
+  * Remove contemplation of invariant violations from delta_fifo.go
+  * fix expanding rbd volumes without ceph.conf
+  * Adding tests for Kubelet pod update functions
+  * Update Calico cpva to v0.8.3
+  * cleanup: remove useless methods
+  * Modify the kubelet document
+  * fix golint errors for pkg/kubelet/dockershim
+  * cleanup: no need nil check before range
+  * Add lease release tests in leader election
+  * Generate complete leader election record to resolve leader election issues with LeaseLocks
+  * fix: comments(only create parent dir)
+  * make kubectl/kubeadm completion script support busybox
+  * Add node-local-dns headless service
+  * Made containerd-namespace flag can be used when kubelet config start cmd
+  * fix comments
+  * fix: ignore dir check in csi node stage/publish
+  * Link to krew's new project site
+  * Remove --include-uninitialized flag documentation
+  * Use canonical URL for the krew project
+  * return success if cordon node by replace
+  * kubectl/drain add support for custom pod filters
+  * do not wait for node ready when starting kube-proxy in 'nokubelet' mode
+  * validate KubeletCgroups and KubeReservedCgroup
+
+-------------------------------------------------------------------
+Wed Dec  9 11:47:05 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 
