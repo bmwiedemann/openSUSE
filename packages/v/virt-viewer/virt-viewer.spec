@@ -25,6 +25,10 @@ Release:        0
 URL:            http://www.virt-manager.org
 Source:         https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz
 Source1:        https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz.asc
+Patch1:         0001-src-initialize-keymaps-variable.patch
+Patch2:         0002-rpm-explicitly-tell-meson-to-disable-spice-ovirt.patch
+Patch3:         0003-config.h-avoid-extra-hyphen-in-build-ID-value.patch
+Patch4:         0004-config.h-conditionally-define-REMOTE_VIEWER_OS_ID.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
@@ -54,10 +58,7 @@ connecting to virtual machines. It uses the GTK-VNC widget to provide
 the display, and libvirt for looking up VNC server details.
 
 %prep
-%setup -q
-%patch50 -p1
-%patch51 -p1
-%patch52 -p1
+%autosetup -p1
 
 %build
 %meson \

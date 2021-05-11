@@ -1,0 +1,32 @@
+Subject: rpm: explicitly tell meson to disable spice/ovirt
+From: Daniel P. Berrangé berrange@redhat.com Mon Apr 26 10:13:32 2021 +0100
+Date: Mon Apr 26 10:24:23 2021 +0100:
+Git: 7dc64fef6b006a81dc0d7645bbcea6a2252c4f45
+
+%meson will force enable all features, so simply omitting the
+BuildRequires is not sufficient to disable spice/ovirt. Meson
+must be explicitly told to do so.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+diff --git a/virt-viewer.spec.in b/virt-viewer.spec.in
+index 95a133d..91b62b9 100644
+--- a/virt-viewer.spec.in
++++ b/virt-viewer.spec.in
+@@ -50,7 +50,15 @@ the display, and libvirt for looking up VNC/SPICE server details.
+ %setup -q
+ 
+ %build
+-%meson -Dbuild-id=%{release}
++%if !%{with_govirt}
++%define ovirt_opt -Dovirt=disabled
++%endif
++
++%if !%{with_spice}
++%define spice_opt -Dspice=disabled
++%endif
++
++%meson -Dbuild-id=%{release} %{?ovirt_opt} %{?spice_opt}
+ %meson_build
+ 
+ %install

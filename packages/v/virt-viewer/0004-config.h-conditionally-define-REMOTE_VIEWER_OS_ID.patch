@@ -1,0 +1,38 @@
+Subject: config.h: conditionally define REMOTE_VIEWER_OS_ID
+From: Daniel P. Berrangé berrange@redhat.com Mon Apr 26 11:01:31 2021 +0100
+Date: Mon Apr 26 15:01:50 2021 +0100:
+Git: 65fe7379f85924b5bc3770fa9be5b08ba9a8704f
+
+It should only be set in config.h if it is not the empty string
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+diff --git a/config.h.in b/config.h.in
+index eb4f03b..0af0fa4 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -25,7 +25,7 @@
+ #define PACKAGE_VERSION "@VERSION@"
+ 
+ /* OS ID for this build */
+-#define REMOTE_VIEWER_OS_ID "@OS_ID@"
++#mesondefine REMOTE_VIEWER_OS_ID
+ 
+ /* Version number of package */
+ #define VERSION "@VERSION@"
+diff --git a/meson.build b/meson.build
+index e5ed47b..2c92d75 100644
+--- a/meson.build
++++ b/meson.build
+@@ -478,7 +478,10 @@ if id != ''
+ else
+   conf_data.set('BUILDID', '')
+ endif
+-conf_data.set('OS_ID', get_option('os-id'))
++osid = get_option('os-id')
++if osid != ''
++  conf_data.set('REMOTE_VIEWER_OS_ID', '"' + osid + '"')
++endif
+ 
+ arr_version = meson.project_version().split('.')
+ 

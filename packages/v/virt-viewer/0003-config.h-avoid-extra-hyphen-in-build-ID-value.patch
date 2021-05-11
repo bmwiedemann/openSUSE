@@ -1,0 +1,22 @@
+Subject: config.h: avoid extra hyphen in build ID value
+From: Daniel P. Berrangé berrange@redhat.com Mon Apr 26 11:00:15 2021 +0100
+Date: Mon Apr 26 14:57:22 2021 +0100:
+Git: d07b1e5badb7624298d4bcfdcb6764b2a5d8a9de
+
+The meson.build file already adds a hyphen.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+diff --git a/config.h.in b/config.h.in
+index 1d72f7e..eb4f03b 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -16,7 +16,7 @@
+ #define _GNU_SOURCE
+ 
+ /* Build version details */
+-#define BUILDID "-@BUILDID@"
++#define BUILDID "@BUILDID@"
+ 
+ /* Define to the full name and version of this package. */
+ #define PACKAGE_STRING "virt-viewer @VERSION@"

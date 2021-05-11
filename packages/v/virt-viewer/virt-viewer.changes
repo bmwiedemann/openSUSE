@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  4 11:44:45 MDT 2021 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1166289)
+  0001-src-initialize-keymaps-variable.patch
+  0002-rpm-explicitly-tell-meson-to-disable-spice-ovirt.patch
+  0003-config.h-avoid-extra-hyphen-in-build-ID-value.patch
+  0004-config.h-conditionally-define-REMOTE_VIEWER_OS_ID.patch
+
+-------------------------------------------------------------------
 Wed Apr 21 13:16:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 10.0: 

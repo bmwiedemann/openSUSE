@@ -1,0 +1,38 @@
+Subject: src: initialize keymaps variable
+From: Ján Tomko jtomko@redhat.com Fri Apr 23 15:58:56 2021 +0200
+Date: Fri Apr 23 15:59:49 2021 +0200:
+Git: 9e36a59c806de3de77c046df0b8c80bd9a0f4863
+
+My clang version 11.0.0 (Fedora 11.0.0-2.fc33) complains:
+../src/virt-viewer-app.c:610:9: error: variable 'keymaps' is used uninitialized whenever 'if' condition is false [-Werror,-Wsometimes-uninitialized]
+    if (keymap_string) {
+        ^~~~~~~~~~~~~
+../src/virt-viewer-app.c:614:10: note: uninitialized use occurs here
+    if (!keymaps || g_strv_length(keymaps) == 0) {
+         ^~~~~~~
+../src/virt-viewer-app.c:610:5: note: remove the 'if' if its condition is always true
+    if (keymap_string) {
+    ^~~~~~~~~~~~~~~~~~~
+../src/virt-viewer-app.c:595:27: note: initialize the variable 'keymaps' to silence this warning
+    gchar **key, **keymaps, **valkey, **valuekeys = NULL;
+                          ^
+                           = NULL
+1 error generated.
+
+Initialize the variable to fix the uninitialized use.
+
+Signed-off-by: Ján Tomko <jtomko@redhat.com>
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 0095398..de2677c 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -592,7 +592,7 @@ static
+ void virt_viewer_app_set_keymap(VirtViewerApp *self, const gchar *keymap_string)
+ {
+     VirtViewerAppPrivate *priv = virt_viewer_app_get_instance_private(self);
+-    gchar **key, **keymaps, **valkey, **valuekeys = NULL;
++    gchar **key, **keymaps = NULL, **valkey, **valuekeys = NULL;
+     VirtViewerKeyMapping *keyMappingArray, *keyMappingPtr;
+     guint *mappedArray, *ptrMove;
+ 
