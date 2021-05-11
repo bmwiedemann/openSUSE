@@ -1,7 +1,7 @@
 #
 # spec file for package kmix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kmix
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Sound Mixer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Mixers
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kmix
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
@@ -56,10 +60,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -68,7 +68,7 @@ KMix is a fully featured audio mixer by KDE.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -88,20 +88,21 @@ KMix is a fully featured audio mixer by KDE.
 %files
 %license COPYING*
 %config %{_kf5_configdir}/autostart/*kmix*.desktop
-%{_datadir}/plasma/services/
+%dir %{_kf5_htmldir}/en/kmix/
 %{_kf5_applicationsdir}/*kmix*.desktop
+%{_kf5_appstreamdir}/org.kde.kmix.appdata.xml
 %{_kf5_bindir}/kmix*
+%{_kf5_configkcfgdir}/kmixsettings.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.kmix.*
+%{_kf5_debugdir}/kmix.categories
+%{_kf5_htmldir}/en/kmix/*
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/kmix/
+%{_kf5_notifydir}/kmix.notifyrc
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kmix/
-%dir %{_kf5_htmldir}/en/kmix/
-%{_kf5_htmldir}/en/kmix/*
-%{_kf5_appstreamdir}/org.kde.kmix.appdata.xml
 %{_libdir}/libkmixcore.so.*
-%{_kf5_notifydir}/kmix.notifyrc
 
 %if %{with lang}
 %files lang -f %{name}.lang
