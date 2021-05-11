@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9616ac0f40c2d053bff6455f369b56e9</srcmd5>
+    <version>0.6.2.607cd0d</version>
+    <time>1351013717</time>
+    <user>coolo</user>
+    <comment>New package archivemount with the tool with same name to do
+things like &quot;archivemount -r /boot/initrd /mnt&quot;</comment>
+    <requestid>138985</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9616ac0f40c2d053bff6455f369b56e9</srcmd5>
+    <version>0.6.2.607cd0d</version>
+    <time>1359108662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9616ac0f40c2d053bff6455f369b56e9</srcmd5>
+    <version>0.6.2.607cd0d</version>
+    <time>1379661983</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>9616ac0f40c2d053bff6455f369b56e9</srcmd5>
+    <version>0.6.2.607cd0d</version>
+    <time>1409300508</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a6a825baf7346b5ea9a3a7f90bc3b69</srcmd5>
+    <version>0.8.3</version>
+    <time>1419159882</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265786</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54a6f9b70bdd5a9474a3bb2c626ed641</srcmd5>
+    <version>0.8.4</version>
+    <time>1427274027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292344</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>122f862d26f76015010bd4ec8dd16376</srcmd5>
+    <version>0.8.5</version>
+    <time>1447353688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343917</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7ad959af2d61f0ecceedeb5126452dc1</srcmd5>
+    <version>0.8.7</version>
+    <time>1517932068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572524</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1b19c2ef36c4f749c17803dea7fb331c</srcmd5>
+    <version>0.8.7</version>
+    <time>1573164949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739617</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>301b61755cf2e7b023200c4114c37f5f</srcmd5>
+    <version>0.9.1</version>
+    <time>1600079364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834093</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3b3e122c08d807ab7f8641f95e63ac7f</srcmd5>
+    <version>0.9.1</version>
+    <time>1619107477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887555</requestid>
+  </revision>
+</revisionlist>
