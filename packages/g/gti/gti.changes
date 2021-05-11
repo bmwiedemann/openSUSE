@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Feb 22 23:04:55 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to 1.7.0:
+  * Add animation for tag command.
+- Don't strip binary so that debuginfo and debugsource can be
+  packaged.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Mon Jun 19 08:31:43 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 1.6.1
+  - see git log for full changelog
+
+-------------------------------------------------------------------
+Tue Sep 11 17:02:49 UTC 2012 - sleep_walker@suse.cz
+
+- add optflags as CFLAGS for compilation
+- rename tarball
+
+-------------------------------------------------------------------
+Tue Sep 11 16:37:18 UTC 2012 - sleep_walker@suse.cz
+
+- update to babe68b
+
+-------------------------------------------------------------------
+Thu Aug 30 20:15:33 UTC 2012 - sleep_walker@suse.cz
+
+- spec file fixes
+
+-------------------------------------------------------------------
+Thu Aug 30 20:11:51 UTC 2012 - sleep_walker@suse.cz
+
+- let there be gti
+
