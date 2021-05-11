@@ -1,0 +1,10 @@
+<package name="hostapd" project="openSUSE:Factory">
+  <title>Turns Your WLAN Card into a WPA capable Access Point</title>
+  <description>hostapd is a user space daemon for access point and authentication
+servers. It implements IEEE 802.11 access point management, IEEE
+802.1X/WPA/WPA2/EAP Authenticators, RADIUS client, EAP server, and
+RADIUS authentication server. Currently, hostapd supports HostAP,
+madwifi, and prism54 drivers. It also supports wired IEEE 802.1X
+authentication via any ethernet driver.</description>
+  <devel project="Base:System" package="hostapd"/>
+</package>
