@@ -827,4 +827,36 @@ numbers for further reference.
     <comment></comment>
     <requestid>864185</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>82bd06bcf57989807cba31855de84392</srcmd5>
+    <version>2.9.18</version>
+    <time>1613774735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873717</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e1a3a3ed0b2455337ac50d9140453c26</srcmd5>
+    <version>2.9.19</version>
+    <time>1615905993</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879379</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>1135e0f73d54ca062bfff726afc9d3e0</srcmd5>
+    <version>2.9.20</version>
+    <time>1618387859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884877</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>3b3597f4db5727ec5b11f12d6601bcb8</srcmd5>
+    <version>2.9.20</version>
+    <time>1618610529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886002</requestid>
+  </revision>
 </revisionlist>

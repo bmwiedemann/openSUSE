@@ -195,17 +195,16 @@ BuildRequires:  %{python}-coverage
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-jmespath
 BuildRequires:  %{python}-paramiko
-BuildRequires:  %{python}-pycrypto >= 2.6
+BuildRequires:  %{python}-cryptography
 BuildRequires:  %{python}-setuptools > 0.6
 BuildRequires:  %{python}-straight-plugin
 BuildRequires:  fdupes
 Requires:       %{python}-Jinja2
 Requires:       %{python}-PyYAML
-Requires:       %{python}-coverage
 Requires:       %{python}-jmespath
 Requires:       %{python}-paramiko
 Requires:       %{python}-passlib
-Requires:       %{python}-pycrypto >= 2.6
+Requires:       %{python}-cryptography
 Requires:       %{python}-setuptools > 0.6
 Recommends:     %{python}-boto3
 Recommends:     %{python}-botocore
@@ -222,7 +221,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.17
+Version:        2.9.20
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
