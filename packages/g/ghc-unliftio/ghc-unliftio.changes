@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 10 07:58:33 UTC 2021 - psimons@suse.com
+
+- Update unliftio to version 0.2.16.
+  ## 0.2.16
+
+  * Add `createFileLink`
+
+-------------------------------------------------------------------
+Fri May  7 09:36:45 UTC 2021 - psimons@suse.com
+
+- Update unliftio to version 0.2.15.
+  ## 0.2.15
+
+  * Updated documentation mentioning that `MonadUnliftIO` may be derived using
+    the `newtype` strategy [#72](https://github.com/fpco/unliftio/pull/72)
+  * Add `mapExceptionM` [#75](https://github.com/fpco/unliftio/pull/75)
+
+-------------------------------------------------------------------
 Sun Jan 24 16:09:36 UTC 2021 - psimons@suse.com
 
 - Update unliftio to version 0.2.14.
