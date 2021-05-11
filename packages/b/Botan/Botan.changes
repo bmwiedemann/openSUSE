@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 10 11:05:35 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Botan 2.18.1:
+  * Fix a build regression in 2.18.0 which caused linker flags
+    which contain -l within them (such as -fuse-linker-plugin)
+    to be misinterpreted
+  * Fix a bug which caused decoding a certificate which contained
+    more than one name in a single RDN
+  * Fix a bug which caused OID lookup failures when run in a locale
+    which uses thousands separators (pt_BR was reported as having
+    this issue)
+  * DNS names in name constraints were compared with case
+    sensitivity, which could cause valid certificates to be
+    rejected
+  * X.509 name constraint extensions were rejected if non-critical.
+    RFC 5280 requires conforming CAs issue such extensions as
+    critical, but not all certificates are compliant, and all other
+    known implementations do not require this
+  * X.509 name constraints were incorrectly applied to the
+    certificate which included the constraint
+- build with lzma compression support
+- build with SQLite support
+- build with TPM support
+- fix SLE 12 build
+
+-------------------------------------------------------------------
 Fri Apr 16 16:56:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Botan 2.18.0

@@ -16,10 +16,11 @@
 #
 
 
+%{!?make_build: %define make_build make %{?_smp_mflags}}
 %define version_suffix 2-18
 %define short_version 2
 Name:           Botan
-Version:        2.18.0
+Version:        2.18.1
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
@@ -35,7 +36,10 @@ BuildRequires:  libbz2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  trousers-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
 Botan is a C++ library that provides support for many common
@@ -58,6 +62,9 @@ Summary:        Development files for Botan
 Group:          Development/Libraries/C and C++
 Requires:       libbotan-%{version_suffix} = %{version}
 Requires:       libbz2-devel
+Requires:       trousers-devel
+Requires:       pkgconfig(liblzma)
+Requires:       pkgconfig(sqlite3)
 Provides:       Botan-devel = %{version}
 Obsoletes:      Botan-devel < %{version}
 
@@ -96,8 +103,11 @@ python3 ./configure.py \
   --includedir=%{_includedir} \
   --with-bzip2 \
   --with-zlib \
+  --with-lzma \
   --with-openssl \
   --with-openmp \
+  --with-sqlite \
+  --with-tpm \
 %ifarch %{ix86}
   --cpu=x86_32
 %else
@@ -118,7 +128,7 @@ chmod +x %{buildroot}%{python3_sitearch}/botan2.py
 sed -i '1s@^#!/.*@#!%{_bindir}/python3@' %{buildroot}%{python3_sitearch}/botan2.py
 
 %check
-make check
+%make_build check
 
 %post -n libbotan-%{version_suffix} -p /sbin/ldconfig
 %postun -n libbotan-%{version_suffix} -p /sbin/ldconfig
