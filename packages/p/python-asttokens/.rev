@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b537c0374b241b2a2d829790fa3ec022</srcmd5>
+    <version>2.0.4</version>
+    <time>1607197053</time>
+    <user>dimstar_suse</user>
+    <comment>New submission, dependency for thonny to move into Factory.</comment>
+    <requestid>853279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2443bd91e502313e349b6fdfc2f7c544</srcmd5>
+    <version>2.0.4</version>
+    <time>1618610528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885983</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Apr 16 12:42:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add patch py39.patch to fix build with Python 3.9
+
+-------------------------------------------------------------------
+Thu Nov 12 14:38:22 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 2.0.4:
+  * Fix for Python 3.9 keyword arguments.
+  * Don't verify slice nodes.
+  * Test 3.9 in tox and travis.
+- Changes from version 2.0.3:
+  * Bump patch version.
+
+-------------------------------------------------------------------
+Wed Jan  8 15:00:01 UTC 2020 - malcolmlewis@opensuse.org
+
+- Disable python2 build.
+
+-------------------------------------------------------------------
+Tue Nov 19 17:45:21 UTC 2019 - malcolmlewis@opensuse.org
+
+- Initial build at version 2.0.2.
