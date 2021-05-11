@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Larger minimum window width for desktop mode (kde#435446)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * still return a valid track even when no extractors support it (kde#433892)
+  * Increase base height of configuration dialog (kde#431639)
+  * ensure the configuration dialog is not dirty when just open (kde#430743)
+  * Fix serialisation of playlist (kde#430444)
+  * Redo configuration window (kde#425140)
+  * Move remaining track indicator to playlist footer (kde#429464)
+  * Replace homemade ScrollHelper with standard ScrollViews to hold view items (kde#417859)
+
+-------------------------------------------------------------------
 Thu Mar  4 06:09:33 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3

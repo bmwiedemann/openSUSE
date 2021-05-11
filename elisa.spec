@@ -16,18 +16,21 @@
 #
 
 
-%define qt5_version 5.11.0
+%define qt5_version 5.15.0
 %define kf5_version 5.64.0
 %bcond_without lang
 Name:           elisa
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://community.kde.org/Elisa
+URL:            https://apps.kde.org/elisa
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  cmake
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -38,6 +41,7 @@ BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
@@ -60,10 +64,6 @@ Requires:       kdeclarative-components >= %{kf5_version}
 Requires:       kirigami2 >= %{kf5_version}
 Requires:       libqt5-qtquickcontrols >= %{qt5_version}
 Requires:       libqt5-qtquickcontrols2 >= %{qt5_version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -77,7 +77,7 @@ built and played.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
