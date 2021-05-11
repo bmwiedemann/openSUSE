@@ -19,12 +19,13 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.12.1.1
+Version:        2.13.0.0
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-attoparsec-devel
@@ -35,6 +36,7 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-http-api-data-devel
+BuildRequires:  ghc-lift-type-devel
 BuildRequires:  ghc-monad-logger-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-path-pieces-devel
@@ -56,6 +58,7 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-shakespeare-devel
 %endif
 
@@ -75,6 +78,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
