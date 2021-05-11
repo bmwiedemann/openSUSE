@@ -1,0 +1,9 @@
+<package name="latex2html" project="openSUSE:Factory">
+  <title>LaTeX2HTML Converter</title>
+  <description>LaTeX2HTML lets you easily convert basic LaTeX documents into the HTML
+format. This allows both a written and online version even of older
+LaTeX texts.
+
+Find documentation in /usr/share/doc/packages/latex2html.</description>
+  <devel project="Publishing" package="latex2html"/>
+</package>
