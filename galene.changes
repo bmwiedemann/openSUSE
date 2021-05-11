@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 27 17:22:43 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.3.4:
+  * Fixed a bug in the loss estimator.  We will now reduce the rate more
+    aggressively when there is loss in the client->serer direction.
+  * Fixed display of the chat on some devices.
+  * Exported the group.Description data structure for the sake of external
+    configuration tools.
+
+-------------------------------------------------------------------
 Fri Apr 16 20:42:16 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.3.3:
