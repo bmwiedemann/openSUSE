@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.09
+Version:        6.10
 Release:        0
 Summary:        Powerful fast feature-rich Perl source code profiler
 License:        Artistic-1.0 OR GPL-1.0-or-later
