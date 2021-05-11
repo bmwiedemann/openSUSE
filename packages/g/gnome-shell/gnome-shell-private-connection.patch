@@ -1,0 +1,125 @@
+From 342795440012a216d4abb9cfb04d2c3bd0fe8f4d Mon Sep 17 00:00:00 2001
+From: Giovanni Campagna <gcampagna@src.gnome.org>
+Date: Thu, 31 Mar 2011 15:56:13 +0200
+Subject: [PATCH] NetworkMenu: create private connections if the user is not authorized
+
+Check polkit setting at startup and add, if needed, the "permissions"
+setting to the connections we create, so that polkit authentication is
+never needed. The connection is thus only available to other users
+if the system administrator decides so.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=646187
+---
+diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/js/ui/status/network.js
+--- gnome-shell-3.37.91.orig/js/ui/status/network.js	2020-08-24 10:54:20.009785700 -0500
++++ gnome-shell-3.37.91/js/ui/status/network.js	2020-09-05 15:44:29.877496217 -0500
+@@ -1,6 +1,6 @@
+ // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
+ /* exported NMApplet */
+-const { Clutter, Gio, GLib, GObject, NM, St } = imports.gi;
++const { Clutter, Gio, GLib, GObject, NM, St, Polkit } = imports.gi;
+ const Signals = imports.signals;
+ 
+ const Animation = imports.ui.animation;
+@@ -356,6 +356,11 @@ var NMConnectionDevice = class NMConnect
+ 
+     _autoConnect() {
+         let connection = new NM.SimpleConnection();
++        if (this._privateConnections) {
++            let connectionSetting = new NM.SettingConnection();
++            connectionSetting.add_permission('user', GLib.get_user_name(), null);
++            connection.add_setting(connectionSetting);
++        }   
+         this._client.add_and_activate_connection_async(connection, this._device, null, null, null);
+     }
+ 
+@@ -491,10 +496,11 @@ var NMConnectionDevice = class NMConnect
+ };
+ 
+ var NMDeviceWired = class extends NMConnectionDevice {
+-    constructor(client, device) {
++    constructor(client, device, privateConnections) {
+         super(client, device);
+ 
+         this.item.menu.addSettingsAction(_("Wired Settings"), 'gnome-network-panel.desktop');
++        this._privateConnections = privateConnections;
+     }
+ 
+     get category() {
+@@ -722,11 +728,12 @@ var NMWirelessDialogItem = GObject.regis
+ 
+ var NMWirelessDialog = GObject.registerClass(
+ class NMWirelessDialog extends ModalDialog.ModalDialog {
+-    _init(client, device) {
++    _init(client, device, privateConnections) {
+         super._init({ styleClass: 'nm-dialog' });
+ 
+         this._client = client;
+         this._device = device;
++        this._privateConnections = privateConnections;
+ 
+         this._wirelessEnabledChangedId = this._client.connect('notify::wireless-enabled',
+                                                               this._syncView.bind(this));
+@@ -959,6 +966,11 @@ class NMWirelessDialog extends ModalDial
+                     this._device.get_path(), accessPoints[0].get_path());
+             } else {
+                 let connection = new NM.SimpleConnection();
++                if (this._privateConnections) {
++                    let connectionSetting = new NM.SettingConnection();
++                    connectionSetting.add_permission('user', GLib.get_user_name(), null);
++                    connection.add_setting(connectionSetting);
++                }
+                 this._client.add_and_activate_connection_async(connection, this._device, accessPoints[0].get_path(), null, null);
+             }
+         }
+@@ -1195,9 +1207,10 @@ class NMWirelessDialog extends ModalDial
+ });
+ 
+ var NMDeviceWireless = class {
+-    constructor(client, device) {
++    constructor(client, device, privateConnections) {
+         this._client = client;
+         this._device = device;
++        this._privateConnections = privateConnections;
+ 
+         this._description = '';
+ 
+@@ -1282,7 +1295,7 @@ var NMDeviceWireless = class {
+     }
+ 
+     _showDialog() {
+-        this._dialog = new NMWirelessDialog(this._client, this._device);
++        this._dialog = new NMWirelessDialog(this._client, this._device, this._privateConnections);
+         this._dialog.connect('closed', this._dialogClosed.bind(this));
+         this._dialog.open();
+     }
+@@ -1660,6 +1673,20 @@ class Indicator extends PanelMenu.System
+     async _getClient() {
+         this._client = await NM.Client.new_async(null);
+ 
++        
++        // Check if newly created connections should be private or not
++        this._privateConnections = true;
++        let authority = Polkit.Authority.get_sync(null);
++        let credential = new Gio.Credentials();
++        let subject = new Polkit.UnixProcess({ pid: credential.get_unix_pid(), uid: credential.get_unix_user() });
++        let authResult = authority.check_authorization_sync(subject,
++                                                            'org.freedesktop.NetworkManager.settings.modify.system',
++                                                            null /* details */,
++                                                            Polkit.CheckAuthorizationFlags.NONE,
++                                                            null /* cancellable */);
++        if (authResult)
++            this._privateConnections = !authResult.get_is_authorized();
++ 
+         this._activeConnections = [];
+         this._connections = [];
+         this._connectivityQueue = [];
+@@ -1779,7 +1806,7 @@ class Indicator extends PanelMenu.System
+ 
+         let wrapperClass = this._dtypes[device.get_device_type()];
+         if (wrapperClass) {
+-            let wrapper = new wrapperClass(this._client, device);
++            let wrapper = new wrapperClass(this._client, device, this._privateConnections);
+             device._delegate = wrapper;
+             this._addDeviceWrapper(wrapper);
+ 

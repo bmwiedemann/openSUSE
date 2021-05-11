@@ -1,0 +1,85 @@
+diff --git a/js/gdm/authPrompt.js b/js/gdm/authPrompt.js
+index 7a4a0d3..e5749d6 100644
+--- a/js/gdm/authPrompt.js
++++ b/js/gdm/authPrompt.js
+@@ -31,6 +31,8 @@ var AuthPromptStatus = {
+     VERIFICATION_SUCCEEDED: 3,
+     VERIFICATION_CANCELLED: 4,
+     VERIFICATION_IN_PROGRESS: 5,
++    // NOTE fate#318433 extra state to track multi-login situation
++    VERIFIED_BUT_FORBIDDEN: 6,
+ };
+ 
+ var BeginRequestType = {
+@@ -292,7 +294,12 @@ var AuthPrompt = GObject.registerClass({
+     }
+ 
+     _onVerificationComplete() {
++        // NOTE update the spinning icon
+         this.setActorInDefaultButtonWell(null);
++
++        if (this.verificationStatus === AuthPromptStatus.VERIFIED_BUT_FORBIDDEN) {
++            return;
++        }
+         this.verificationStatus = AuthPromptStatus.VERIFICATION_SUCCEEDED;
+         this.cancelButton.reactive = false;
+         this.cancelButton.can_focus = false;
+diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
+index 3f01ca0..0f5e64c 100644
+--- a/js/gdm/loginDialog.js
++++ b/js/gdm/loginDialog.js
+@@ -949,6 +949,8 @@ var LoginDialog = GObject.registerClass({
+                 this._authPrompt.updateSensitivity(false);
+                 let answer = this._authPrompt.getAnswer();
+                 this._user = this._userManager.get_user(answer);
++                this._userLoginForbidden =
++                    this._user.is_x_logged_in_remotely();
+                 this._authPrompt.clear();
+                 this._authPrompt.begin({ userName: answer });
+                 this._updateCancelButton();
+@@ -1014,6 +1016,8 @@ var LoginDialog = GObject.registerClass({
+                                                         let answer = this._authPrompt.getAnswer();
+                             let domain_answer = this._domainMenuButton.getDomainUser(answer);
+                                                         this._user = this._userManager.get_user(domain_answer);
++                                                        this._userLoginForbidden =
++                                                            this._user.is_x_logged_in_remotely();
+                                                         this._authPrompt.clear();
+                                                         this._authPrompt.startSpinning();
+                                                         this._authPrompt.begin({ userName: domain_answer});
+@@ -1040,6 +1044,28 @@ var LoginDialog = GObject.registerClass({
+     }
+ 
+     _onSessionOpened(client, serviceName) {
++        if ( this._userLoginForbidden ) {
++            this._authPrompt.setMessage(
++                _('Sorry, you have to log out a previous session first. Multiple logins are not supported.'),
++                GdmUtil.MessageType.ERROR);
++            // TODO: The following logic relies on the unverified fact that
++            // `AuthPrompt::_onVerificationComplete` seems to always run after
++            // current handler. This might root from the interaction between
++            // greeter and verifier, both are external programs.
++            this._authPrompt.verificationStatus = AuthPrompt.AuthPromptStatus.VERIFIED_BUT_FORBIDDEN;
++
++            // NOTE: Failed Attempts as references
++            //
++            // NOTE: reset is too heavy, it skips the error prompt all together
++            // this._authPrompt.reset();
++            //
++            // NOTE: Diconnect at this stage is not working
++            //
++            // this._authPrompt._userVerifier.disconnect(this._authPrompt._userVerifierCompleteId);
++
++            return;
++        }
++
+         this._authPrompt.finish(() => this._startSession(serviceName));
+     }
+ 
+@@ -1217,6 +1243,7 @@ var LoginDialog = GObject.registerClass({
+ 
+     _onUserListActivated(activatedItem) {
+         this._user = activatedItem.user;
++        this._userLoginForbidden = this._user.is_x_logged_in_remotely();
+ 
+         this._updateCancelButton();
+ 

@@ -1,0 +1,43 @@
+diff -Nura gnome-shell-40.0/js/ui/status/keyboard.js gnome-shell-40.0_new/js/ui/status/keyboard.js
+--- gnome-shell-40.0/js/ui/status/keyboard.js	2021-03-20 20:17:01.436522500 +0800
++++ gnome-shell-40.0_new/js/ui/status/keyboard.js	2021-03-30 20:02:18.835931202 +0800
+@@ -264,6 +264,39 @@
+         this._settings.connect('changed::%s'.format(this._KEY_INPUT_SOURCES), this._emitInputSourcesChanged.bind(this));
+         this._settings.connect('changed::%s'.format(this._KEY_KEYBOARD_OPTIONS), this._emitKeyboardOptionsChanged.bind(this));
+         this._settings.connect('changed::%s'.format(this._KEY_PER_WINDOW), this._emitPerWindowChanged.bind(this));
++
++        let sources = this._settings.get_value(this._KEY_INPUT_SOURCES);
++        let nSources = sources.n_children();
++        let sourcesList = [];
++
++        if (nSources <= 1) {
++            if (GLib.getenv('LANG') == 'zh_CN.UTF-8') {
++                log('Set default input method in Chinese language env.');
++                sourcesList.push(['xkb', 'cn']);
++                sourcesList.push([ "ibus", "libpinyin" ]);
++
++                let params = GLib.Variant.new('a(ss)', sourcesList);
++                this._settings.set_value(this._KEY_INPUT_SOURCES, params);
++            }
++
++            else if (GLib.getenv('LANG') == 'ja_JP.UTF-8') {
++                log('Set default input method in Japanese language env.');
++                sourcesList.push([ "ibus", "mozc-jp" ]);
++                sourcesList.push(['xkb', 'jp']);
++
++                let params = GLib.Variant.new('a(ss)', sourcesList);
++                this._settings.set_value(this._KEY_INPUT_SOURCES, params);
++            }
++
++            else if (GLib.getenv('LANG') == 'ko_KR.UTF-8') {
++                log('Set default input method in Korean language env.');
++                sourcesList.push(['xkb', 'kr']);
++                sourcesList.push([ "ibus", "hangul" ]);
++
++                let params = GLib.Variant.new('a(ss)', sourcesList);
++                this._settings.set_value(this._KEY_INPUT_SOURCES, params);
++            }
++        }
+     }
+ 
+     _getSourcesList(key) {

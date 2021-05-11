@@ -1,0 +1,146 @@
+Index: gnome-shell-40.rc/data/gnome-shell-theme.gresource.xml
+===================================================================
+--- gnome-shell-40.rc.orig/data/gnome-shell-theme.gresource.xml
++++ gnome-shell-40.rc/data/gnome-shell-theme.gresource.xml
+@@ -16,6 +16,7 @@
+     <file alias="icons/scalable/status/message-indicator-symbolic.svg">message-indicator-symbolic.svg</file>
+     <file>no-events.svg</file>
+     <file>no-notifications.svg</file>
++    <file>noise-texture.png</file>
+     <file>pad-osd.css</file>
+     <file alias="icons/scalable/status/eye-open-negative-filled-symbolic.svg">eye-open-negative-filled-symbolic.svg</file>
+     <file alias="icons/scalable/status/eye-not-looking-symbolic.svg">eye-not-looking-symbolic.svg</file>
+Index: gnome-shell-40.rc/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
+===================================================================
+--- gnome-shell-40.rc.orig/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
++++ gnome-shell-40.rc/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
+@@ -65,6 +65,11 @@
+   box-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+ }
+ 
++.bgLockDialogGroup-background {
++  border: none;
++  background-color: transparent;
++}
++
+ #lockDialogGroup {
+   background-color: $system_bg_color;
+ }
+Index: gnome-shell-40.rc/js/ui/screenShield.js
+===================================================================
+--- gnome-shell-40.rc.orig/js/ui/screenShield.js
++++ gnome-shell-40.rc/js/ui/screenShield.js
+@@ -4,6 +4,7 @@ const { AccountsService, Clutter, Gio,
+         GLib, Graphene, Meta, Shell, St } = imports.gi;
+ const Signals = imports.signals;
+ 
++const Background = imports.ui.background;
+ const GnomeSession = imports.misc.gnomeSession;
+ const OVirt = imports.gdm.oVirt;
+ const LoginManager = imports.misc.loginManager;
+@@ -16,6 +17,8 @@ const SmartcardManager = imports.misc.sm
+ 
+ const { adjustAnimationTime } = imports.ui.environment;
+ 
++const LOCKDIALOG_BACKGROUND_SCHEMA = 'org.gnome.desktop.background.lockdialog';
++
+ const SCREENSAVER_SCHEMA = 'org.gnome.desktop.screensaver';
+ const LOCK_ENABLED_KEY = 'lock-enabled';
+ const LOCK_DELAY_KEY = 'lock-delay';
+@@ -25,6 +28,9 @@ const DISABLE_LOCK_KEY = 'disable-lock-s
+ 
+ const LOCKED_STATE_STR = 'screenShield.locked';
+ 
++const BLUR_BRIGHTNESS = 0.55;
++const BLUR_SIGMA = 60;
++
+ // ScreenShield animation time
+ // - STANDARD_FADE_TIME is used when the session goes idle
+ // - MANUAL_FADE_TIME is used for lowering the shield when asked by the user,
+@@ -65,6 +71,16 @@ var ScreenShield = class {
+             name: 'lockDialogGroup',
+         });
+ 
++        // Add background for this._lockDialogGroup
++        this._bgLockDialogGroup = new Clutter.Actor();
++        this._lockDialogGroup.add_actor(this._bgLockDialogGroup);
++        this._lockDialogGroup.set_child_below_sibling(this._bgLockDialogGroup, null);
++        this._bgManagersLockDialogGroup = [];
++
++        this._updateBgLockDialogGroup();
++        this._monitorsChangedId =
++            Main.layoutManager.connect('monitors-changed', this._updateBgLockDialogGroup.bind(this));
++
+         this.actor.add_actor(this._lockScreenGroup);
+         this.actor.add_actor(this._lockDialogGroup);
+ 
+@@ -142,6 +158,15 @@ var ScreenShield = class {
+         this._cursorTracker = Meta.CursorTracker.get_for_display(global.display);
+ 
+         this._syncInhibitor();
++
++        this.connect('destroy', this._onDestroy.bind(this));
++    }
++
++    _onDestroy() {
++        if (this._monitorsChangedId) {
++            Main.layoutManager.disconnect(this._monitorsChangedId);
++            delete this._monitorsChangedId;
++        }
+     }
+ 
+     _setActive(active) {
+@@ -492,6 +517,53 @@ var ScreenShield = class {
+         this.emit('wake-up-screen');
+     }
+ 
++    _createBgLockDialogGroup(monitorIndex) {
++        let monitor = Main.layoutManager.monitors[monitorIndex];
++        let widget = new St.Widget({
++            style_class: 'bgLockDialogGroup-background',
++            x: monitor.x,
++            y: monitor.y,
++            width: monitor.width,
++            height: monitor.height,
++        });
++
++        let bgManager = new Background.BackgroundManager({
++            container: widget,
++            monitorIndex,
++            controlPosition: false,
++            settingsSchema: LOCKDIALOG_BACKGROUND_SCHEMA
++        });
++
++        this._bgManagersLockDialogGroup.push(bgManager);
++
++        this._bgLockDialogGroup.add_child(widget);
++
++        const themeContext = St.ThemeContext.get_for_stage(global.stage);
++
++        let effect = new Shell.BlurEffect({
++            brightness: BLUR_BRIGHTNESS,
++            sigma: BLUR_SIGMA * themeContext.scale_factor,
++        });
++
++        this._scaleChangedId = themeContext.connect('notify::scale-factor', () => {
++            effect.sigma = BLUR_SIGMA * themeContext.scale_factor;
++        });
++
++        widget.add_effect(effect);
++    }
++
++    _updateBgLockDialogGroup() {
++        for (let i = 0; i < this._bgManagersLockDialogGroup.length; i++)
++            this._bgManagersLockDialogGroup[i].destroy();
++
++        this._bgManagersLockDialogGroup = [];
++        this._bgLockDialogGroup.destroy_all_children();
++
++        for (let i = 0; i < Main.layoutManager.monitors.length; i++)
++            this._createBgLockDialogGroup(i);
++    }
++
++
+     get locked() {
+         return this._isLocked;
+     }

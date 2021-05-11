@@ -1,0 +1,24 @@
+diff --git a/js/ui/endSessionDialog.js b/js/ui/endSessionDialog.js
+index 1fdbd11..276d98d 100644
+--- a/js/ui/endSessionDialog.js
++++ b/js/ui/endSessionDialog.js
+@@ -295,7 +295,7 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+         this.contentLayout.add_child(this._applicationSection);
+ 
+         this._sessionSection = new Dialog.ListSection({
+-            title: _('Other users are logged in'),
++            title: _('Other users are logged in. You can list these users with the "who" command.'),
+         });
+         this.contentLayout.add_child(this._sessionSection);
+ 
+@@ -771,8 +771,8 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+             this._applications.push(inhibitor);
+         }
+ 
+-        if (dialogContent.showOtherSessions)
+-            this._loadSessions();
++        // if (dialogContent.showOtherSessions) // Hide _sessionList for jsc#SLE-9267
++        //    this._loadSessions();
+ 
+         let updatesAllowed = this._updatesPermission && this._updatesPermission.allowed;
+ 

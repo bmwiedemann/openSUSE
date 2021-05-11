@@ -1,0 +1,41 @@
+diff --git a/js/ui/screenShield.js b/js/ui/screenShield.js
+index 104ff28..72959b3 100644
+--- a/js/ui/screenShield.js
++++ b/js/ui/screenShield.js
+@@ -68,7 +68,7 @@ var ScreenShield = class {
+             reactive: true,
+             can_focus: true,
+             pivot_point: new Graphene.Point({ x: 0.5, y: 0.5 }),
+-            name: 'lockDialogGroup',
++            name: 'lockDialogGroupReal'
+         });
+ 
+         // Add background for this._lockDialogGroup
+@@ -84,6 +84,27 @@ var ScreenShield = class {
+         this.actor.add_actor(this._lockScreenGroup);
+         this.actor.add_actor(this._lockDialogGroup);
+ 
++        let primaryBackground = new St.Widget({ x_expand: true,
++                                                y_expand: true,
++                                                reactive: true,
++                                                pivot_point: new Clutter.Point({ x: 0.5, y: 0.5 }),
++                                                name: 'lockDialogGroup' });
++        primaryBackground.add_constraint(new Layout.MonitorConstraint({ primary: true }));
++        this.actor.insert_child_below(primaryBackground, null);
++
++        for (let i = 0; i < Main.layoutManager.monitors.length; i++) {
++            if (Main.layoutManager.monitors [i].index == Main.layoutManager.primaryMonitor.index)
++                continue;
++
++            let group = new St.Widget({ x_expand: true,
++                                        y_expand: true,
++                                        reactive: true,
++                                        pivot_point: new Clutter.Point({ x: 0.5, y: 0.5 }),
++                                        name: 'lockDialogGroup' });
++            group.add_constraint(new Layout.MonitorConstraint({ index: i }));
++            this.actor.insert_child_below(group, null);
++        }
++
+         this._presence = new GnomeSession.Presence((proxy, error) => {
+             if (error) {
+                 logError(error, 'Error while reading gnome-session presence');
