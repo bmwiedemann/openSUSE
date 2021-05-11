@@ -1,7 +1,7 @@
 #
 # spec file for package ksystemlog
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksystemlog
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ksystemlog
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  oxygen5-icon-theme-large
 BuildRequires:  pkgconfig
@@ -41,10 +45,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(libsystemd)
 Obsoletes:      ksystemlog5 < %{version}
 Provides:       ksystemlog5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -56,7 +56,7 @@ want to quickly see problems occurring on their server.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -76,14 +76,13 @@ want to quickly see problems occurring on their server.
 
 %files
 %license COPYING*
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/*.desktop
+%{_kf5_appstreamdir}/org.kde.ksystemlog.appdata.xml
 %{_kf5_bindir}/ksystemlog
+%{_kf5_debugdir}/ksystemlog.categories
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_sharedir}/kxmlgui5/
-%{_kf5_appstreamdir}/org.kde.ksystemlog.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
