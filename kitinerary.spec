@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -81,7 +81,7 @@ to build programs that use the kitinerary library.
 %lang_package -n libKPimItinerary5
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
@@ -102,8 +102,6 @@ to build programs that use the kitinerary library.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_sharedir}/mime
-%dir %{_kf5_sharedir}/mime/packages
 %{_kf5_libexecdir}/kitinerary-extractor
 %{_kf5_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
 
