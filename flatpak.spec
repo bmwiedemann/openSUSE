@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.10.2
+Version:        1.11.1
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -181,6 +181,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 %pre -n system-user-flatpak -f system-user-flatpak.pre
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
 %pre
 %service_add_pre flatpak-system-helper.service
 
