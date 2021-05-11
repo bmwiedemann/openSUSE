@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.9.1
+Version:        1.9.3
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ Source7:        orthanc-rpmlintrc
 Source8:        Configuration.json
 # Sources for plugin - need a defined version, so taking them from orthanc-server
 Source10:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap-4.3.1.zip
-Source11:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz 
+Source11:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
 Source12:       http://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
 Source13:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
 
@@ -75,43 +75,43 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua5.1)
 
 Requires:       dcmtk
-Requires(pre): 	/usr/sbin/groupadd
-Requires(pre): 	/usr/sbin/useradd
+Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  /usr/sbin/useradd
 
 %{?systemd_ordering}
 
 %description
-Orthanc aims at providing a simple, yet powerful standalone DICOM server. 
-Orthanc can turn any computer running Windows or Linux into a DICOM store 
-(in other words, a mini-PACS system). Its architecture is lightweight, 
-meaning that no complex database administration is required, nor the 
-installation of third-party dependencies. What makes Orthanc unique 
-is the fact that it provides a RESTful API. Thanks to this major 
-feature, it is possible to drive Orthanc from any computer language. 
+Orthanc aims at providing a simple, yet powerful standalone DICOM server.
+Orthanc can turn any computer running Windows or Linux into a DICOM store
+(in other words, a mini-PACS system). Its architecture is lightweight,
+meaning that no complex database administration is required, nor the
+installation of third-party dependencies. What makes Orthanc unique
+is the fact that it provides a RESTful API. Thanks to this major
+feature, it is possible to drive Orthanc from any computer language.
 
-The DICOM tags of the stored medical images can be downloaded in the 
-JSON file format. Furthermore, standard PNG images can be generated 
-on-the-fly from the DICOM instances by Orthanc. Orthanc lets its 
-users focus on the content of the DICOM files, hiding the complexity 
-of the DICOM format and of the DICOM protocol. 	
+The DICOM tags of the stored medical images can be downloaded in the
+JSON file format. Furthermore, standard PNG images can be generated
+on-the-fly from the DICOM instances by Orthanc. Orthanc lets its
+users focus on the content of the DICOM files, hiding the complexity
+of the DICOM format and of the DICOM protocol.
 
 %package -n %{name}-devel
 Summary:        Header and source files for creating Orthanc plugins
 Group:          Development/Libraries/C and C++
-Provides:       orthanc-static = %{version}-%{release} 
+Provides:       orthanc-static = %{version}-%{release}
 
 %description -n %{name}-devel
 This package includes the header files to develop C/C++ plugins for Orthanc.
-  
+
 %package -n %{name}-doc
 Summary:        Documentation files for Orthanc
 Group:          Productivity/Graphics/Visualization/Other
 BuildArch:      noarch
 
 %description -n %{name}-doc
-This package includes the documentation and the sample codes available 
-for Orthanc. 
-It also includes the Python and LUA Scripts, and the documentation to develop 
+This package includes the documentation and the sample codes available
+for Orthanc.
+It also includes the Python and LUA Scripts, and the documentation to develop
 C/C++ plugins for Orthanc.
 
 %package    source
@@ -124,7 +124,7 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 %prep
 %setup -q -n Orthanc-%{version}
 
-cp %{S:1} %{S:2} .	
+cp %{S:1} %{S:2} .
 
 #slight change in standard configuration for OrthancStorage
 cp %{S:8} OrthancServer/Resources/.
@@ -153,7 +153,7 @@ help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and m
 %check
 # we disable one test for i586
 %ifarch != ix86
-build/UnitTests 
+build/UnitTests
 %else
 build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression
 %endif
@@ -180,7 +180,7 @@ rm %{buildroot}/usr/src/%{name}/.travis*
 
 %cmake_install
 
-##move the doc into 
+##move the doc into
 cp -r %{buildroot}/usr/share/doc/%{name}/* %{buildroot}%{_docdir}/%{name}/.
 rm -rf %{buildroot}/usr/share/doc/%{name}
 
@@ -203,7 +203,7 @@ mkdir -p %{buildroot}%{_libdir}/%{name}
 mv build/*.so.%{version} %{buildroot}%{_libdir}/%{name}
 rm build/*.so
 
-# move the executables to stay consistent 
+# move the executables to stay consistent
 mv %{buildroot}%{_bindir}/OrthancRecoverCompressedFile %{buildroot}%{_bindir}/orthancRecoverCompressedFile
 mv %{buildroot}%{_sbindir}/Orthanc %{buildroot}%{_sbindir}/orthanc
 
@@ -224,7 +224,7 @@ cp -r %{S:5} %{buildroot}%{_docdir}/%{name}/
 cp -r OrthancServer/Resources/Samples/ %{buildroot}%{_docdir}/%{name}/Samples
 cp -r OrthancServer/Plugins/Samples/ %{buildroot}%{_docdir}/%{name}/OrthancPluginSamples
 
-%pre 
+%pre
 getent group orthanc >/dev/null || groupadd -r orthanc
 getent passwd orthanc >/dev/null || \
     useradd -r -g orthanc -G orthanc -d %{_sharedstatedir}/orthanc -s /sbin/nologin \
@@ -232,14 +232,14 @@ getent passwd orthanc >/dev/null || \
 
 %service_add_pre orthanc.service
 
-%preun 
+%preun
 %service_del_preun orthanc.service
 
-%post 
+%post
 /sbin/ldconfig
 %service_add_post orthanc.service
 
-%postun 
+%postun
 /sbin/ldconfig
 %service_del_postun orthanc.service
 

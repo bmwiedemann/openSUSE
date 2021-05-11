@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun May  9 09:54:25 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.9.3
+* New configuration option: "DicomTlsRemoteCertificateRequired" to allow secure DICOM TLS
+  connections without certificate
+* "ETag" headers for metadata and attachments now allow strong comparison (MD5 is included)
+* New CMake option: "ORTHANC_LUA_VERSION" to use a specific version of system-wide Lua
+* Fix the lifetime of temporary files associated with jobs that create ZIP archive/media:
+  - In synchronous mode, their number could grow up to "JobsHistorySize" in Orthanc <= 1.9.2
+  - In asynchronous mode, the temporary files are removed as soon as their job gets canceled
+* Fix regression in the handling of "DicomCheckModalityHost" configuration option
+  introduced by changeset 4182 in Orthanc 1.7.4
+* Reduced memory consumption of "OrthancPluginHttpClient()", "OrthancPluginHttpClient2()" and
+  "OrthancPluginCallPeerApi()" on POST/PUT if chunked transfer is disabled
+* Fix issue #195 (No need for BulkDataURI when Data Element is empty)
+
+- from version 1.9.2:
+* New configuration options related to multiple readers/writers:
+  - "DatabaseServerIdentifier" identifies the server in the DB among a pool of Orthanc servers
+  - "CheckRevisions" to protect against concurrent modifications of metadata and attachments
+* API version upgraded to 12
+* "/system" reports the value of the "CheckRevisions" global option
+* "/.../{id}/metadata/{name}" and "/.../{id}/attachments/{name}/..." URIs handle the
+  HTTP headers "If-Match", "If-None-Match" and "ETag" to cope with revisions
+* New function in the SDK: OrthancPluginCallRestApi()
+* Full refactoring of the database plugin SDK to handle multiple readers/writers,
+  which notably implies the handling of retries in the case of collisions
+* Use the local timezone for query/retrieve in the Orthanc Explorer interface (was UTC before)
+* Fix "OrthancServer/Resources/Samples/Python/Replicate.py" for Python 3.x
+* Fix issue #83 (ServerIndex shall implement retries for DB temporary errors)
+* Upgraded dependencies for static builds (notably on Windows and LSB):
+  - civetweb 1.14
+  - openssl 1.1.1k
+
+-------------------------------------------------------------------
 Thu Feb 25 20:31:58 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.1
