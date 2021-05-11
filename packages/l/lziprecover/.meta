@@ -1,0 +1,22 @@
+<package name="lziprecover" project="openSUSE:Factory">
+  <title>Fix Broken lzip Files</title>
+  <description>Lziprecover is a data recovery tool and decompressor for files in the lzip
+compressed data format (.lz) able to repair slightly damaged files, recover
+badly damaged files from two or more copies, extract undamaged members from
+multi-member files, decompress files and test integrity of files.
+
+Lziprecover is able to recover or decompress files produced by any of the
+compressors in the lzip family; lzip, plzip, minilzip/lzlib, clzip and pdlzip.
+This recovery capability contributes to make the lzip format one of the best
+options for long-term data archiving.
+
+Lziprecover is able to efficiently extract a range of bytes from a multi-member
+file, because it only decompresses the members containing the desired data.
+
+Lziprecover can print correct total file sizes and ratios even for multi-member
+files.
+
+</description>
+  <devel project="Archiving" package="lziprecover"/>
+  <url>http://www.nongnu.org/lzip/lunzip.html</url>
+</package>
