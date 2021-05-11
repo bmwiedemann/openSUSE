@@ -541,4 +541,12 @@
     <comment>- Update to release 20210322</comment>
     <requestid>880758</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7165c0e29d5ed8d2c0c017ef138702f2</srcmd5>
+    <version>20210422</version>
+    <time>1620767077</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>892254</requestid>
+  </revision>
 </revisionlist>
