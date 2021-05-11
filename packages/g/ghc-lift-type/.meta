@@ -1,0 +1,5 @@
+<package name="ghc-lift-type" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-lift-type"/>
+</package>
