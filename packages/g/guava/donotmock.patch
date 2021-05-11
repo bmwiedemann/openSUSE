@@ -1,0 +1,46 @@
+--- guava-30.1/guava/src/com/google/common/graph/Traverser.java	2021-05-10 16:45:16.248098756 +0200
++++ guava-30.1/guava/src/com/google/common/graph/Traverser.java	2021-05-10 16:53:38.627252038 +0200
+@@ -60,9 +60,7 @@
+  * @since 23.1
+  */
+ @Beta
+-@DoNotMock(
+-    "Call forGraph or forTree, passing a lambda or a Graph with the desired edges (built with"
+-        + " GraphBuilder)")
++@DoNotMock("Call forGraph or forTree, passing a lambda or a Graph with the desired edges (built with GraphBuilder)")
+ public abstract class Traverser<N> {
+   private final SuccessorsFunction<N> successorFunction;
+ 
+--- guava-30.1/guava/src/com/google/common/util/concurrent/ClosingFuture.java	2021-05-10 16:45:16.256098806 +0200
++++ guava-30.1/guava/src/com/google/common/util/concurrent/ClosingFuture.java	2021-05-10 16:55:44.184040192 +0200
+@@ -32,6 +32,7 @@
+ import static com.google.common.util.concurrent.Futures.immediateFuture;
+ import static com.google.common.util.concurrent.Futures.nonCancellationPropagating;
+ import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
++import com.google.errorprone.annotations.DoNotMock;
+ import static java.util.logging.Level.FINER;
+ import static java.util.logging.Level.SEVERE;
+ import static java.util.logging.Level.WARNING;
+@@ -1202,8 +1203,7 @@
+    * }</pre>
+    */
+   // TODO(cpovirk): Use simple name instead of fully qualified after we stop building with JDK 8.
+-  @com.google.errorprone.annotations.DoNotMock(
+-      "Use ClosingFuture.whenAllSucceed() or .whenAllComplete() instead.")
++  @DoNotMock("Use ClosingFuture.whenAllSucceed() or .whenAllComplete() instead.")
+   public static class Combiner {
+ 
+     private final CloseableList closeables = new CloseableList();
+--- guava-30.1/guava/src/com/google/common/util/concurrent/ListeningExecutorService.java	2021-05-10 16:45:16.256098806 +0200
++++ guava-30.1/guava/src/com/google/common/util/concurrent/ListeningExecutorService.java	2021-05-10 16:53:54.207349829 +0200
+@@ -32,9 +32,7 @@
+  * @author Chris Povirk
+  * @since 10.0
+  */
+-@DoNotMock(
+-    "Use TestingExecutors.sameThreadScheduledExecutor, or wrap a real Executor from "
+-        + "java.util.concurrent.Executors with MoreExecutors.listeningDecorator")
++@DoNotMock("Use TestingExecutors.sameThreadScheduledExecutor, or wrap a real Executor from java.util.concurrent.Executors with MoreExecutors.listeningDecorator")
+ @GwtIncompatible
+ public interface ListeningExecutorService extends ExecutorService {
+   /**

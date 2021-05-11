@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        25.0
+Version:        30.1.1
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0
@@ -25,7 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
-Patch0:         %{name}-%{version}-java8compat.patch
+Patch0:         donotmock.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -74,10 +74,12 @@ find . -name '*.jar' -delete
 
 %pom_xpath_inject /pom:project/pom:build/pom:plugins/pom:plugin/pom:configuration/pom:instructions "<_nouses>true</_nouses>" guava/pom.xml
 
-%pom_remove_dep -r :animal-sniffer-annotations
 %pom_remove_dep -r :error_prone_annotations
 %pom_remove_dep -r :j2objc-annotations
 %pom_remove_dep -r org.checkerframework:
+
+%pom_remove_dep -r :listenablefuture
+%pom_remove_dep -r :failureaccess
 
 annotations=$(
     find -name '*.java' \
@@ -107,7 +109,7 @@ done
 %build
 mkdir -p lib
 build-jar-repository -s lib junit jsr-305
-%ant -Dtest.skip=true package javadoc
+%{ant} -Dtest.skip=true package javadoc
 
 %install
 # jars
@@ -118,7 +120,10 @@ install -pm 0644 %{name}-testlib/target/%{name}-testlib-%{version}*.jar %{buildr
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 0644 %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -f %{name}
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# We integrated this artifact in our main package
+install -pm 0644 futures/failureaccess/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/failureaccess.pom
+%add_maven_depmap %{name}/failureaccess.pom %{name}/%{name}.jar
 install -pm 0644 %{name}-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-testlib.pom
 %add_maven_depmap %{name}/%{name}-testlib.pom %{name}/%{name}-testlib.jar -f %{name}-testlib
 
@@ -128,7 +133,7 @@ cp -r %{name}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}
 cp -r %{name}-testlib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-testlib
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles-guava
+%files -f .mfiles
 %doc CONTRIBUTORS README*
 %license COPYING
 
