@@ -1,7 +1,7 @@
 #
 # spec file for package python-sge-pygame
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-sge-pygame
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        A 2-D game engine for Python
 License:        LGPL-3.0-or-later

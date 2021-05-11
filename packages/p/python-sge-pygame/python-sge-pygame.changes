@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 11 12:24:03 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Skip python36 because pygame skipped it
+
+-------------------------------------------------------------------
+Mon May  3 23:18:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.7.1
+  * Fix incompatibility with Pygame 2
+
+-------------------------------------------------------------------
 Sun Sep 13 14:00:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7
