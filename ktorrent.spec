@@ -20,12 +20,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktorrent
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-URL:            https://kde.org/applications/internet/org.kde.ktorrent/
+URL:            https://apps.kde.org/ktorrent
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
@@ -137,7 +137,7 @@ find %{buildroot}%{_kf5_sharedir}/ktorrent/scripts -name "*.py" -exec sed -i 's#
 %{_kf5_mandir}/man1/ktorrent.1%{?ext_man}
 %{_kf5_mandir}/man1/ktupnptest.1%{?ext_man}
 %{_kf5_notifydir}/ktorrent.notifyrc
-%{_kf5_plugindir}/
+%{_kf5_plugindir}/ktorrent/
 %{_kf5_sharedir}/ktorrent/
 
 %if %{with lang}
