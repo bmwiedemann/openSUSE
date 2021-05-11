@@ -1,0 +1,27 @@
+From 986a1bd3d2eebd41a2925969826fca870b2cd330 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 23 Oct 2020 12:05:56 +0200
+Subject: [PATCH 06/25] aplay: cosmetic code fix in xrun()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ aplay/aplay.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index a27220d8fd03..ae609880bfd7 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -1676,7 +1676,8 @@ static void xrun(void)
+ 			prg_exit(EXIT_FAILURE);
+ 		}
+ 		return;		/* ok, data should be accepted again */
+-	} if (snd_pcm_status_get_state(status) == SND_PCM_STATE_DRAINING) {
++	}
++	if (snd_pcm_status_get_state(status) == SND_PCM_STATE_DRAINING) {
+ 		if (verbose) {
+ 			fprintf(stderr, _("Status(DRAINING):\n"));
+ 			snd_pcm_status_dump(status, log);
+-- 
+2.26.2
+

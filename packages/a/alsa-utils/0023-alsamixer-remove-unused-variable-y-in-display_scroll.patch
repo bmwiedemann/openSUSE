@@ -1,0 +1,27 @@
+From e165d3413e911b32441a0311d0ec0f280748e22b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 11 Jan 2021 10:41:32 +0100
+Subject: [PATCH 23/25] alsamixer: remove unused variable y in
+ display_scroll_indicators()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsamixer/mixer_display.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alsamixer/mixer_display.c b/alsamixer/mixer_display.c
+index 882781de5f49..330fdd5378e8 100644
+--- a/alsamixer/mixer_display.c
++++ b/alsamixer/mixer_display.c
+@@ -634,7 +634,7 @@ static void display_control(unsigned int control_index)
+ 
+ static void display_scroll_indicators(void)
+ {
+-	int y0, y1, y;
++	int y0, y1;
+ 	chtype left, right;
+ 
+ 	if (screen_too_small)
+-- 
+2.26.2
+

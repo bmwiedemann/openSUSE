@@ -1,0 +1,35 @@
+From 19cc5daef42c84bdadbaa25d1c4e1da33eeae3cc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 11 Jan 2021 10:44:38 +0100
+Subject: [PATCH 24/25] alsamixer: fix shift in parse_words()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsamixer/configparser.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/alsamixer/configparser.c b/alsamixer/configparser.c
+index 93aa72afd04d..7647987f84d6 100644
+--- a/alsamixer/configparser.c
++++ b/alsamixer/configparser.c
+@@ -155,7 +155,7 @@ const char *mixer_words =
+ static unsigned int parse_words(const char *name, const char* wordlist, unsigned int itemlen, unsigned int *number) {
+ 	unsigned int words = 0;
+ 	unsigned int word;
+-	unsigned int i;
++	int i;
+ 	char buf[16];
+ 	char *endptr;
+ 
+@@ -181,7 +181,7 @@ static unsigned int parse_words(const char *name, const char* wordlist, unsigned
+ 			word = W_NUMBER;
+ 		}
+ 		else if ((i = strlist_index(wordlist, itemlen, buf)) >= 0)
+-			word = 2U << i;
++			word = i <= 30 ? (2U << i) : 0;
+ 		else
+ 			return 0;
+ 
+-- 
+2.26.2
+

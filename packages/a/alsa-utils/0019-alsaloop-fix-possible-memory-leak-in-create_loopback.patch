@@ -1,0 +1,38 @@
+From 90bbeb1d3ee892be97560c069b22ecab4bb2bf6a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 8 Jan 2021 18:21:39 +0100
+Subject: [PATCH 19/25] alsaloop: fix possible memory leak in
+ create_loopback_handle()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsaloop/alsaloop.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/alsaloop/alsaloop.c b/alsaloop/alsaloop.c
+index 6a9ce58813ce..06ffadfb1911 100644
+--- a/alsaloop/alsaloop.c
++++ b/alsaloop/alsaloop.c
+@@ -85,12 +85,17 @@ static int create_loopback_handle(struct loopback_handle **_handle,
+ 	if (device == NULL)
+ 		device = "hw:0,0";
+ 	handle->device = strdup(device);
+-	if (handle->device == NULL)
++	if (handle->device == NULL) {
++		free(handle);
+ 		return -ENOMEM;
++	}
+ 	if (ctldev) {
+ 		handle->ctldev = strdup(ctldev);
+-		if (handle->ctldev == NULL)
++		if (handle->ctldev == NULL) {
++			free(handle->device);
++			free(handle);
+ 			return -ENOMEM;
++		}
+ 	} else {
+ 		handle->ctldev = NULL;
+ 	}
+-- 
+2.26.2
+

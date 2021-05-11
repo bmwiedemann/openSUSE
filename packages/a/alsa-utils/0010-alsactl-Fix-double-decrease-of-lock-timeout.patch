@@ -1,0 +1,29 @@
+From 878e1a7c0f03233530e7675ae015aced069c971d Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 11 Dec 2020 23:41:59 +0100
+Subject: [PATCH] alsactl: Fix double decrease of lock timeout
+
+The state_lock() has a loop to wait for the lock file creation, and
+the timeout value gets decremented twice mistakenly, which leads to a
+half timeout (5 seconds) than expected 10 seconds.  Fix it.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsactl/lock.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/alsactl/lock.c b/alsactl/lock.c
+index 4a485392b3bd..05f6e4d2a102 100644
+--- a/alsactl/lock.c
++++ b/alsactl/lock.c
+@@ -63,7 +63,6 @@ static int state_lock_(const char *file, int lock, int timeout, int _fd)
+ 			if (fd < 0) {
+ 				if (errno == EBUSY || errno == EAGAIN) {
+ 					sleep(1);
+-					timeout--;
+ 				} else {
+ 					err = -errno;
+ 					goto out;
+-- 
+2.26.2
+

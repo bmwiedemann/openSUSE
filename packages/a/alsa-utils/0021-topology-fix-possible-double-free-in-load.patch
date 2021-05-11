@@ -1,0 +1,29 @@
+From 88513212c564fb8cbcbbb43f433d73cb4db786e5 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 8 Jan 2021 18:33:28 +0100
+Subject: [PATCH 21/25] topology: fix possible double free in load()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/topology.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/topology/topology.c b/topology/topology.c
+index d52b1452fdc2..c2f094324266 100644
+--- a/topology/topology.c
++++ b/topology/topology.c
+@@ -100,10 +100,8 @@ static int load(const char *source_file, void **dst, size_t *dst_size)
+ 		pos += r;
+ 		size += 8*1024;
+ 		buf2 = realloc(buf, size);
+-		if (buf2 == NULL) {
+-			free(buf);
++		if (buf2 == NULL)
+ 			goto _nomem;
+-		}
+ 		buf = buf2;
+ 	}
+ 	if (r < 0) {
+-- 
+2.26.2
+

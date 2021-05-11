@@ -1,0 +1,6 @@
+<package name="alsa-utils" project="openSUSE:Factory">
+  <title>Advanced Linux Sound Architecture Utilities</title>
+  <description>This package contains utility programs supporting ALSA, Advanced Linux
+Sound Architecture.</description>
+  <devel project="multimedia:libs" package="alsa-utils"/>
+</package>
