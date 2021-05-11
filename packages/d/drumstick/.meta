@@ -1,0 +1,5 @@
+<package name="drumstick" project="openSUSE:Factory">
+  <title>MIDI Sequencer C++ Library Bindings for Qt5 and ALSA</title>
+  <description>This package includes test and example programs for drumstick libraries.</description>
+  <devel project="KDE:Extra" package="drumstick"/>
+</package>
