@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-gdrive
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
@@ -34,21 +34,19 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  intltool
-BuildRequires:  cmake(KAccounts) >= 20.03.80
-BuildRequires:  cmake(KF5DocTools) >= 5.48.0
-BuildRequires:  cmake(KF5I18n) >= 5.48.0
-BuildRequires:  cmake(KF5KIO) >= 5.48.0
-BuildRequires:  cmake(KF5Notifications) >= 5.48.0
-BuildRequires:  cmake(KPimGAPI) >= 5.11.41
-BuildRequires:  cmake(Qt5Gui) >= 5.2.0
-BuildRequires:  cmake(Qt5Network) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(KAccounts)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KPimGAPI)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
 # Used by the .desktop file
 Recommends:     dolphin
 # libkgapi has no ABI stability
 %requires_eq    libKPimGAPICore5
-
-%lang_package
 
 %description
 Google Drive KIO slave for KDE applications.
@@ -56,8 +54,10 @@ KIO GDrive requires a KIO-enabled file manager at runtime,
 otherwise there is no way to setup a Google Drive account.
 This can be Dolphin or Gwenview or Konqueror.
 
+%lang_package
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
