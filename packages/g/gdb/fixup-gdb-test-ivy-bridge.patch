@@ -1,0 +1,19 @@
+Fix gdb-test-ivy-bridge.patch
+
+---
+ gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp b/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp
+index d1b1f27db4..ee4b8d4162 100644
+--- a/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp
++++ b/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp
+@@ -20,7 +20,7 @@ if {![istarget "x86_64-*-*"]} then {
+ set testfile amd64-ivy-bridge
+ set test compilation
+ if [prepare_for_testing ${testfile}.exp ${testfile}.x ${testfile}.S [list debug "additional_flags=-m64 -nostdlib"]] {
+-    fail $test
++    unsupported $test
+     return -1
+ }
+ pass $test

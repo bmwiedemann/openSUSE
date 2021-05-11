@@ -1,0 +1,11 @@
+--- processor-trace-1.5/libipt/src/posix/init.c-orig	2016-04-07 08:52:14.000000000 +0200
++++ processor-trace-1.5/libipt/src/posix/init.c	2016-08-23 09:04:11.540176668 +0200
+@@ -29,7 +29,7 @@
+ #include "pt_ild.h"
+ 
+ 
+-static void __attribute__((constructor)) init(void)
++void __libipt_init(void)
+ {
+ 	/* Initialize the Intel(R) Processor Trace instruction decoder. */
+ 	pt_ild_init();

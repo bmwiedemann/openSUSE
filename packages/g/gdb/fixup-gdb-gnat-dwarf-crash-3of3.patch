@@ -1,0 +1,51 @@
+Fixup gdb-gnat-dwarf-crash-3of3.patch
+
+---
+ gdb/testsuite/gdb.threads/attach-stopped.exp | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/attach-stopped.exp b/gdb/testsuite/gdb.threads/attach-stopped.exp
+index 7c06d849b14..097e8b2a683 100644
+--- a/gdb/testsuite/gdb.threads/attach-stopped.exp
++++ b/gdb/testsuite/gdb.threads/attach-stopped.exp
+@@ -63,10 +63,10 @@ proc corefunc { threadtype } {
+     set test "$threadtype: set file, before attach1 to stopped process"
+     gdb_test_multiple "file $binfile" "$test" {
+        -re "Load new symbol table from.*y or n. $" {
+-	    gdb_test "y" "Reading symbols from $escapedbinfile\.\.\.*done." \
++	    gdb_test "y" "Reading symbols from $escapedbinfile\.\.\.*" \
+ 		    "$test (re-read)"
+ 	}
+-	-re "Reading symbols from $escapedbinfile\.\.\.*done.*$gdb_prompt $" {
++	-re "Reading symbols from $escapedbinfile\.\.\.*$gdb_prompt $" {
+ 	    pass "$test"
+ 	}
+     }
+@@ -93,15 +93,23 @@ proc corefunc { threadtype } {
+     sleep 2
+ 
+     if [catch {open /proc/${testpid}/status r} fileid] {
+-	set line2 "NOTFOUND"
++	set line "NOTFOUND"
+     } else {
+-	gets $fileid line1;
+-	gets $fileid line2;
++	while { 1 } {
++	    if { [gets $fileid line] < 0 } {
++		set line "EOF"
++		break
++	    }
++	    if {[string match "State:*" $line]} {
++		break
++	    }
++	}
+ 	close $fileid;
+     }
+ 
+     set test "$threadtype: attach1, exit leaves process stopped"
+-    if {[string match "*(stopped)*" $line2]} {
++    verbose -log "line: $line"
++    if {[string match "*(stopped)*" $line]} {
+       pass $test
+     } else {
+       fail $test

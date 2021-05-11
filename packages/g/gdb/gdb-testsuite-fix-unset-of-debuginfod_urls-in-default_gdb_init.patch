@@ -1,0 +1,33 @@
+[gdb/testsuite] Fix unset of DEBUGINFOD_URLS in default_gdb_init
+
+In commit cfcbd506fb0 "[gdb/testsuite] Ignore DEBUGINFOD_URLS" I added
+unsetting of env(DEBUGINFOD_URLS), but it doesn't work because I forgot to
+add :: in front.
+
+Fix this, and rewrite using "unset -nocomplain" instead of unsetenv, which
+allows us to drop the "info exists" test.
+
+2021-04-01  Tom de Vries  <tdevries@suse.de>
+
+	* lib/gdb.exp (default_gdb_init): Use ::env.  Use unset
+	-nocomplain ::env(V) instead of unsetenv V.
+
+---
+ gdb/testsuite/lib/gdb.exp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 6b0bc8c0af5..ee7358e7673 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -5082,9 +5082,7 @@ proc default_gdb_init { test_file_name } {
+ 
+     # If DEBUGINFOD_URLS is set, gdb will try to download sources and
+     # debug info for f.i. system libraries.  Prevent this.
+-    if { [info exists env(DEBUGINFOD_URLS)] } {
+-	unsetenv DEBUGINFOD_URLS
+-    }
++    unset -nocomplain ::env(DEBUGINFOD_URLS)
+ 
+     # Ensure that GDBHISTFILE and GDBHISTSIZE are removed from the
+     # environment, we don't want these modifications to the history

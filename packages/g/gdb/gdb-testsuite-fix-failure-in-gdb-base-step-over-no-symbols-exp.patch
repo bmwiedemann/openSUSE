@@ -1,0 +1,52 @@
+gdb/testsuite: fix failure in gdb.base/step-over-no-symbols.exp
+
+This test fails on my machine:
+
+    p /x $pc^M
+    $2 = 0x55555555514e^M
+    (gdb) PASS: gdb.base/step-over-no-symbols.exp: displaced=off: get after PC
+    FAIL: gdb.base/step-over-no-symbols.exp: displaced=off: advanced
+
+This is due to the check added in 5f0e2eb79e6b ("GDB/testsuite: Fix a
+catastrophic step-over-no-symbols.exp failure"), that makes sure the PC
+values are integer.  As documented in the TCL doc [1], "string is
+integer" returns 1 if the string is a valid 32-bit integer format.  The
+PC values are greater than 32 bits, so are not recognized as integers by
+that test.
+
+    % string is integer -strict 0x55555555
+    1
+    % string is integer -strict 0x555555555
+    0
+
+Replace the "string is integer" test with a regexp one, that verifies
+the PC is a hex value.
+
+[1] https://www.tcl.tk/man/tcl/TclCmd/string.htm#M21
+
+gdb/testsuite/ChangeLog:
+
+	* gdb.base/step-over-no-symbols.exp (test_step_over): Replace
+	integer format test with regexp.
+
+Change-Id: I71f8197e7b52e97b4901980544a8d1072aabd362
+
+---
+ gdb/testsuite/gdb.base/step-over-no-symbols.exp | 4 ++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/step-over-no-symbols.exp b/gdb/testsuite/gdb.base/step-over-no-symbols.exp
+index bc715d7afed..a2201dcaebe 100644
+--- a/gdb/testsuite/gdb.base/step-over-no-symbols.exp
++++ b/gdb/testsuite/gdb.base/step-over-no-symbols.exp
+@@ -78,8 +78,8 @@ proc test_step_over { displaced } {
+ 
+     set after_addr [get_pc "get after PC"]
+ 
+-    gdb_assert {{[string is integer -strict $before_addr] \
+-		 && [string is integer -strict $after_addr] \
++    gdb_assert {{[regexp "^${hex}$" $before_addr] \
++		 && [regexp "^${hex}$" $after_addr] \
+ 		 && $before_addr != $after_addr}} "advanced"
+ }
+ 

@@ -1,0 +1,20 @@
+[gdb/testsuite] Fixup buildid-locate
+
+---
+ gdb/testsuite/gdb.base/gdbinit-history.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/gdbinit-history.exp b/gdb/testsuite/gdb.base/gdbinit-history.exp
+index baa1b49153..1e9eabbb73 100644
+--- a/gdb/testsuite/gdb.base/gdbinit-history.exp
++++ b/gdb/testsuite/gdb.base/gdbinit-history.exp
+@@ -181,7 +181,8 @@ proc test_empty_history_filename { } {
+     global env
+     global gdb_prompt
+ 
+-    set common_history [list "set height 0" "set width 0"]
++    set common_history [list "set height 0" "set width 0" \
++			    "set build-id-verbose 0"]
+ 
+     set test_dir [standard_output_file history_test]
+     remote_exec host "mkdir -p $test_dir"

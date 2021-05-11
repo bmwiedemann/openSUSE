@@ -1,0 +1,5 @@
+# System-wide GDB initialization file.
+
+# FIXME: Source /etc/gdbinit.d/*.gdb
+# Without python support, there's currently no way to do this.  See also
+# swo#13578 - "source command file globbing".

@@ -1,0 +1,167 @@
+[gdb/threads] Fix lin_thread_get_thread_signals for glibc 2.28
+
+When running test-case gdb.threads/create-fail.exp on openSUSE Factory
+(with glibc version 2.32) I run into:
+...
+(gdb) continue
+Continuing.
+[New Thread 0x7ffff7c83700 (LWP 626354)]
+[New Thread 0x7ffff7482700 (LWP 626355)]
+[Thread 0x7ffff7c83700 (LWP 626354) exited]
+[New Thread 0x7ffff6c81700 (LWP 626356)]
+[Thread 0x7ffff7482700 (LWP 626355) exited]
+[New Thread 0x7ffff6480700 (LWP 626357)]
+[Thread 0x7ffff6c81700 (LWP 626356) exited]
+[New Thread 0x7ffff5c7f700 (LWP 626358)]
+[Thread 0x7ffff6480700 (LWP 626357) exited]
+pthread_create: 22: Invalid argument
+
+Thread 6 "create-fail" received signal SIG32, Real-time event 32.
+[Switching to Thread 0x7ffff5c7f700 (LWP 626358)]
+0x00007ffff7d87695 in clone () from /lib64/libc.so.6
+(gdb) FAIL: gdb.threads/create-fail.exp: iteration 1: run till end
+...
+The problem is that glibc-internal signal SIGCANCEL is not recognized by gdb.
+
+There's code in check_thread_signals that is supposed to take care of that,
+but it's not working because this code in lin_thread_get_thread_signals has
+stopped working:
+...
+  /* NPTL reserves the first two RT signals, but does not provide any
+     way for the debugger to query the signal numbers - fortunately
+     they don't change.  */
+  sigaddset (set, __SIGRTMIN);
+  sigaddset (set, __SIGRTMIN + 1);
+...
+
+Since glibc commit d2dc5467c6 "Filter out NPTL internal signals (BZ #22391)"
+(first released as part of glibc 2.28), a sigaddset with a glibc-internal
+signal has no other effect than setting errno to EINVALID.
+
+Fix this by eliminating the usage of sigset_t in check_thread_signals and
+lin_thread_get_thread_signals.
+
+The same problem was observed on Ubuntu 20.04.
+
+Tested on x86_64-linux, openSUSE Factory.
+Tested on aarch64-linux, Ubuntu 20.04 and Ubuntu 18.04.
+
+gdb/ChangeLog:
+
+2021-02-12  Tom de Vries  <tdevries@suse.de>
+
+	PR threads/26228
+	* linux-nat.c (lin_thread_get_thread_signals): Remove.
+	(lin_thread_signals): New static var.
+	(lin_thread_get_thread_signal_num, lin_thread_get_thread_signal):
+	New function.
+	* linux-nat.h (lin_thread_get_thread_signals): Remove.
+	(lin_thread_get_thread_signal_num, lin_thread_get_thread_signal):
+	Declare.
+	* linux-thread-db.c (check_thread_signals): Use
+	lin_thread_get_thread_signal_num and lin_thread_get_thread_signal.
+
+---
+ gdb/linux-nat.c       | 26 +++++++++++++++++---------
+ gdb/linux-nat.h       |  7 +++++--
+ gdb/linux-thread-db.c | 21 +++++----------------
+ 3 files changed, 27 insertions(+), 27 deletions(-)
+
+diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
+index b81014024c7..36f769c285a 100644
+--- a/gdb/linux-nat.c
++++ b/gdb/linux-nat.c
+@@ -4418,16 +4418,24 @@ Enables printf debugging output."),
+    the GNU/Linux Threads library and therefore doesn't really belong
+    here.  */
+ 
+-/* Return the set of signals used by the threads library in *SET.  */
++/* NPTL reserves the first two RT signals, but does not provide any
++   way for the debugger to query the signal numbers - fortunately
++   they don't change.  */
++static int lin_thread_signals[] = { __SIGRTMIN, __SIGRTMIN + 1 };
+ 
+-void
+-lin_thread_get_thread_signals (sigset_t *set)
++/* See linux-nat.h.  */
++
++unsigned int
++lin_thread_get_thread_signal_num (void)
+ {
+-  sigemptyset (set);
++  return sizeof (lin_thread_signals) / sizeof (lin_thread_signals[0]);
++}
+ 
+-  /* NPTL reserves the first two RT signals, but does not provide any
+-     way for the debugger to query the signal numbers - fortunately
+-     they don't change.  */
+-  sigaddset (set, __SIGRTMIN);
+-  sigaddset (set, __SIGRTMIN + 1);
++/* See linux-nat.h.  */
++
++int
++lin_thread_get_thread_signal (unsigned int i)
++{
++  gdb_assert (i < lin_thread_get_thread_signal_num ());
++  return lin_thread_signals[i];
+ }
+diff --git a/gdb/linux-nat.h b/gdb/linux-nat.h
+index 1af9e830c83..6efc28f41ae 100644
+--- a/gdb/linux-nat.h
++++ b/gdb/linux-nat.h
+@@ -304,8 +304,11 @@ void check_for_thread_db (void);
+    true on success, false if the process isn't using libpthread.  */
+ extern int thread_db_notice_clone (ptid_t parent, ptid_t child);
+ 
+-/* Return the set of signals used by the threads library.  */
+-extern void lin_thread_get_thread_signals (sigset_t *mask);
++/* Return the number of signals used by the threads library.  */
++extern unsigned int lin_thread_get_thread_signal_num (void);
++
++/* Return the i-th signal used by the threads library.  */
++extern int lin_thread_get_thread_signal (unsigned int i);
+ 
+ /* Find process PID's pending signal set from /proc/pid/status.  */
+ void linux_proc_pending_signals (int pid, sigset_t *pending,
+diff --git a/gdb/linux-thread-db.c b/gdb/linux-thread-db.c
+index b3cda05cd6e..5498308cf37 100644
+--- a/gdb/linux-thread-db.c
++++ b/gdb/linux-thread-db.c
+@@ -161,8 +161,6 @@ static thread_db_target the_thread_db_target;
+ /* Non-zero if we have determined the signals used by the threads
+    library.  */
+ static int thread_signals;
+-static sigset_t thread_stop_set;
+-static sigset_t thread_print_set;
+ 
+ struct thread_db_info
+ {
+@@ -1224,23 +1222,14 @@ check_thread_signals (void)
+ {
+   if (!thread_signals)
+     {
+-      sigset_t mask;
+       int i;
+ 
+-      lin_thread_get_thread_signals (&mask);
+-      sigemptyset (&thread_stop_set);
+-      sigemptyset (&thread_print_set);
+-
+-      for (i = 1; i < NSIG; i++)
++      for (i = 0; i < lin_thread_get_thread_signal_num (); i++)
+ 	{
+-	  if (sigismember (&mask, i))
+-	    {
+-	      if (signal_stop_update (gdb_signal_from_host (i), 0))
+-		sigaddset (&thread_stop_set, i);
+-	      if (signal_print_update (gdb_signal_from_host (i), 0))
+-		sigaddset (&thread_print_set, i);
+-	      thread_signals = 1;
+-	    }
++	  int sig = lin_thread_get_thread_signal (i);
++	  signal_stop_update (gdb_signal_from_host (sig), 0);
++	  signal_print_update (gdb_signal_from_host (sig), 0);
++	  thread_signals = 1;
+ 	}
+     }
+ }

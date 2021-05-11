@@ -1,0 +1,65 @@
+[gdb/testsuite] Disable selftests for factory
+
+---
+ gdb/testsuite/gdb.gdb/complaints.exp        | 3 +++
+ gdb/testsuite/gdb.gdb/python-interrupts.exp | 3 +++
+ gdb/testsuite/gdb.gdb/python-selftest.exp   | 3 +++
+ gdb/testsuite/gdb.gdb/selftest.exp          | 3 +++
+ 4 files changed, 12 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.gdb/complaints.exp b/gdb/testsuite/gdb.gdb/complaints.exp
+index 922530caa50..f3cb8fc902c 100644
+--- a/gdb/testsuite/gdb.gdb/complaints.exp
++++ b/gdb/testsuite/gdb.gdb/complaints.exp
+@@ -17,6 +17,9 @@
+ # derived from xfullpath.exp (written by Joel Brobecker), derived from
+ # selftest.exp (written by Rob Savoye).
+ 
++verbose "Skipping selftests for gdb build with -flto."
++return -1
++
+ load_lib selftest-support.exp
+ 
+ if [target_info exists gdb,noinferiorio] {
+diff --git a/gdb/testsuite/gdb.gdb/python-interrupts.exp b/gdb/testsuite/gdb.gdb/python-interrupts.exp
+index 6e5ce6ee48d..3087a48eeac 100644
+--- a/gdb/testsuite/gdb.gdb/python-interrupts.exp
++++ b/gdb/testsuite/gdb.gdb/python-interrupts.exp
+@@ -16,6 +16,9 @@
+ # Test Python SIGINT handling.
+ # This is easiest if we can send SIGINT when gdb is at particular points.
+ 
++verbose "Skipping selftests for gdb build with -flto."
++return -1
++
+ load_lib selftest-support.exp
+ load_lib gdb-python.exp
+ 
+diff --git a/gdb/testsuite/gdb.gdb/python-selftest.exp b/gdb/testsuite/gdb.gdb/python-selftest.exp
+index ee40245bc53..0396ad2405a 100644
+--- a/gdb/testsuite/gdb.gdb/python-selftest.exp
++++ b/gdb/testsuite/gdb.gdb/python-selftest.exp
+@@ -13,6 +13,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++verbose "Skipping selftests for gdb build with -flto."
++return -1
++
+ load_lib selftest-support.exp
+ load_lib gdb-python.exp
+ 
+diff --git a/gdb/testsuite/gdb.gdb/selftest.exp b/gdb/testsuite/gdb.gdb/selftest.exp
+index 43043e58ead..a84efa2bbb6 100644
+--- a/gdb/testsuite/gdb.gdb/selftest.exp
++++ b/gdb/testsuite/gdb.gdb/selftest.exp
+@@ -15,6 +15,9 @@
+ 
+ # This file was written by Rob Savoye. (rob@cygnus.com)
+ 
++verbose "Skipping selftests for gdb build with -flto."
++return -1
++
+ load_lib selftest-support.exp
+ 
+ proc test_with_self { } {

@@ -1,0 +1,39 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-archer-pie-addons.patch
+
+;;=push+jan: May get obsoleted by Tom's unrelocated objfiles patch.
+
+diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
+--- a/gdb/gdbtypes.h
++++ b/gdb/gdbtypes.h
+@@ -649,6 +649,7 @@ enum field_loc_kind
+   {
+     FIELD_LOC_KIND_BITPOS,	/**< bitpos */
+     FIELD_LOC_KIND_ENUMVAL,	/**< enumval */
++    /* This address is unrelocated by the objfile's ANOFFSET.  */
+     FIELD_LOC_KIND_PHYSADDR,	/**< physaddr */
+     FIELD_LOC_KIND_PHYSNAME,	/**< physname */
+     FIELD_LOC_KIND_DWARF_BLOCK	/**< dwarf_block */
+@@ -699,6 +700,7 @@ union field_location
+      field.  Otherwise, physname is the mangled label of the
+      static field.  */
+ 
++  /* This address is unrelocated by the objfile's ANOFFSET.  */
+   CORE_ADDR physaddr;
+   const char *physname;
+ 
+diff --git a/gdb/value.c b/gdb/value.c
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -2850,7 +2850,8 @@ value_static_field (struct type *type, int fieldno)
+     {
+     case FIELD_LOC_KIND_PHYSADDR:
+       retval = value_at_lazy (type->field (fieldno).type (),
+-			      TYPE_FIELD_STATIC_PHYSADDR (type, fieldno));
++			      TYPE_FIELD_STATIC_PHYSADDR (type, fieldno)
++			      + (TYPE_OBJFILE (type) == NULL ? 0 : TYPE_OBJFILE (type)->section_offsets[SECT_OFF_TEXT (TYPE_OBJFILE (type))]));
+       break;
+     case FIELD_LOC_KIND_PHYSNAME:
+     {

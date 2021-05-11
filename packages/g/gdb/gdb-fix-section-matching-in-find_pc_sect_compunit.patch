@@ -1,0 +1,105 @@
+[gdb/testsuite] Fix section matching in find_pc_sect_compunit_symtab
+
+When running test-case gdb.base/list-ambiguous.exp with target board readnow,
+we run into:
+...
+FAIL: gdb.base/list-ambiguous.exp: list ambiguous_fun
+...
+
+The test-case contains two static functions ambiguous_fun, one in
+list-ambiguous0.c and one in list-ambiguous1.c.
+
+The list command is supposed to show both, but only the one from
+list-ambiguous0.c is shown.
+
+This is due to the section check in find_pc_sect_compunit_symtab.  It checks
+whether the candidate compunit_symtab contains a symbol that has the required
+section.  This check is only done for GLOBAL_BLOCK symbols.
+
+The check succeeds for the compunit_symtab for list-ambiguous0.c, because it
+contains main, but it fails for list-ambiguous0.c because it has no global
+symbols.
+
+Fix this by extending the section check to STATIC_BLOCK symbols.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2020-10-27  Tom de Vries  <tdevries@suse.de>
+
+	* symtab.c (find_pc_sect_compunit_symtab): Include STATIC_BLOCK
+	symbols in section check.
+
+gdb/testsuite/ChangeLog:
+
+2020-10-27  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.base/list-ambiguous-readnow.exp: New file.
+---
+ gdb/symtab.c                                  | 18 ++++++++++-----
+ .../gdb.base/list-ambiguous-readnow.exp       | 22 +++++++++++++++++++
+ 4 files changed, 43 insertions(+), 6 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.base/list-ambiguous-readnow.exp
+
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index eda33a7eb4f..f6e24758009 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -2954,13 +2954,19 @@ find_pc_sect_compunit_symtab (CORE_ADDR pc, struct obj_section *section)
+ 	      struct symbol *sym = NULL;
+ 	      struct block_iterator iter;
+ 
+-	      ALL_BLOCK_SYMBOLS (global_block, iter, sym)
++	      for (int b_index = GLOBAL_BLOCK;
++		   b_index <= STATIC_BLOCK && sym == NULL;
++		   ++b_index)
+ 		{
+-		  fixup_symbol_section (sym, obj_file);
+-		  if (matching_obj_sections (SYMBOL_OBJ_SECTION (obj_file,
+-								 sym),
+-					     section))
+-		    break;
++		  const struct block *b = BLOCKVECTOR_BLOCK (bv, b_index);
++		  ALL_BLOCK_SYMBOLS (b, iter, sym)
++		    {
++		      fixup_symbol_section (sym, obj_file);
++		      if (matching_obj_sections (SYMBOL_OBJ_SECTION (obj_file,
++								     sym),
++						 section))
++			break;
++		    }
+ 		}
+ 	      if (sym == NULL)
+ 		continue;		/* No symbol in this symtab matches
+diff --git a/gdb/testsuite/gdb.base/list-ambiguous-readnow.exp b/gdb/testsuite/gdb.base/list-ambiguous-readnow.exp
+new file mode 100644
+index 00000000000..347a71ba52a
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/list-ambiguous-readnow.exp
+@@ -0,0 +1,22 @@
++# Copyright 2020 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Run list-ambiguous.exp with -readnow.
++
++save_vars { GDBFLAGS } {
++    append GDBFLAGS " -readnow"
++
++    source $srcdir/$subdir/list-ambiguous.exp
++}
+-- 
+2.26.2
+

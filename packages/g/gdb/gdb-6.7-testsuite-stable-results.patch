@@ -1,0 +1,104 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Jan Kratochvil <jan.kratochvil@redhat.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.7-testsuite-stable-results.patch
+
+;; Testsuite fixes for more stable/comparable results.
+;;=fedoratest
+
+gdb/testsuite/gdb.base/fileio.c:
+gdb/testsuite/gdb.base/fileio.exp:
+2007-12-08  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* gdb.base/fileio.c (ROOTSUBDIR): New macro.
+	(main): CHDIR into ROOTSUBDIR.  CHOWN ROOTSUBDIR and CHDIR into
+	ROOTSUBDIR if we are being run as root.
+	* gdb.base/fileio.exp: Change the startup and finish cleanup.
+	Change the test file reference to be into the `fileio.dir' directory.
+
+sources/gdb/testsuite/gdb.base/dump.exp:
+Found on RHEL-5.s390x.
+
+gdb-6.8.50.20090209/gdb/testsuite/gdb.base/auxv.exp:
+random FAIL: gdb.base/auxv.exp: matching auxv data from live and gcore
+
+gdb-6.8.50.20090209/gdb/testsuite/gdb.base/annota1.exp:
+frames-invalid can happen asynchronously.
+
+diff --git a/gdb/testsuite/gdb.base/fileio.c b/gdb/testsuite/gdb.base/fileio.c
+--- a/gdb/testsuite/gdb.base/fileio.c
++++ b/gdb/testsuite/gdb.base/fileio.c
+@@ -559,6 +559,28 @@ strerrno (int err)
+ int
+ main ()
+ {
++  /* These tests
++       Open for write but no write permission returns EACCES
++       Unlinking a file in a directory w/o write access returns EACCES
++     fail if we are being run as root - drop the privileges here.  */
++
++  if (geteuid () == 0)
++    {
++      uid_t uid = 99;
++
++      if (chown (OUTDIR, uid, uid) != 0)
++	{
++	  printf ("chown %d.%d %s: %s\n", (int) uid, (int) uid,
++		  OUTDIR, strerror (errno));
++	  exit (1);
++	}
++      if (setuid (uid) || geteuid () == 0)
++	{
++	  printf ("setuid %d: %s\n", (int) uid, strerror (errno));
++	  exit (1);
++	}
++    }
++
+   /* Don't change the order of the calls.  They partly depend on each other */
+   test_open ();
+   test_write ();
+diff --git a/gdb/testsuite/gdb.base/fileio.exp b/gdb/testsuite/gdb.base/fileio.exp
+--- a/gdb/testsuite/gdb.base/fileio.exp
++++ b/gdb/testsuite/gdb.base/fileio.exp
+@@ -24,9 +24,9 @@ if [target_info exists gdb,nofileio] {
+ standard_testfile
+ 
+ if {[is_remote host]} {
+-    set outdir .
++    set outdir "fileio.dir"
+ } else {
+-    set outdir [standard_output_file {}]
++    set outdir [standard_output_file "fileio.dir"]
+ }
+ 
+ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" \
+@@ -47,7 +47,8 @@ set dir2 [standard_output_file dir2.fileio.test]
+ if {[file exists $dir2] && ![file writable $dir2]} {
+     system "chmod +w $dir2"
+ }
+-system "rm -rf [standard_output_file *.fileio.test]"
++system "rm -rf [standard_output_file fileio.dir]"
++system "mkdir -m777 [standard_output_file fileio.dir]"
+ 
+ set oldtimeout $timeout
+ set timeout [expr "$timeout + 60"]
+@@ -89,7 +90,7 @@ gdb_test continue \
+ 
+ gdb_test "continue" ".*" ""
+ 
+-catch "system \"chmod -f -w [standard_output_file nowrt.fileio.test]\""
++catch "system \"chmod -f -w [standard_output_file fileio.dir/nowrt.fileio.test]\""
+ 
+ gdb_test continue \
+ "Continuing\\..*open 5:.*EACCES$stop_msg" \
+@@ -276,9 +277,7 @@ gdb_test continue \
+ gdb_exit
+ 
+ # Make dir2 writable again so rm -rf of a build tree Just Works.
+-if {[file exists $dir2] && ![file writable $dir2]} {
+-    system "chmod +w $dir2"
+-}
++system "chmod -R +w $outdir"
+ 
+ set timeout $oldtimeout
+ return 0

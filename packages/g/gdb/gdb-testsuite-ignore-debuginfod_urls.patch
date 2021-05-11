@@ -1,0 +1,49 @@
+[gdb/testsuite] Ignore DEBUGINFOD_URLS
+
+On openSUSE Tumbleweed, DEBUGINFOD_URLS is now defined by default:
+...
+$ echo $DEBUGINFOD_URLS
+https://debuginfod.opensuse.org/
+...
+
+With DEBUGINFOD_URLS defined we run into:
+...
+FAIL: gdb.mi/mi-sym-info.exp: List all functions from debug information only \
+  (timeout)
+...
+as reported in PR27667.
+
+There's a latency of ~0.5s per request, which is ok-ish for interactive usage.
+But the symbol-info-functions command ends up issuing 21 source requests,
+which means we easily run into the 10s timeout.
+
+Fix this by unsetting DEBUGINFOD_URLS in default_gdb_init.
+
+gdb/testsuite/ChangeLog:
+
+2021-03-31  Tom de Vries  <tdevries@suse.de>
+
+	PR testsuite/27667
+	* lib/gdb.exp (default_gdb_init): Unset DEBUGINFOD_URLS.
+
+---
+ gdb/testsuite/lib/gdb.exp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 653f145c1ce..6b0bc8c0af5 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -5080,6 +5080,12 @@ proc default_gdb_init { test_file_name } {
+     # tests.
+     setenv TERM "dumb"
+ 
++    # If DEBUGINFOD_URLS is set, gdb will try to download sources and
++    # debug info for f.i. system libraries.  Prevent this.
++    if { [info exists env(DEBUGINFOD_URLS)] } {
++	unsetenv DEBUGINFOD_URLS
++    }
++
+     # Ensure that GDBHISTFILE and GDBHISTSIZE are removed from the
+     # environment, we don't want these modifications to the history
+     # settings.

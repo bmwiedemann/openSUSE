@@ -1,0 +1,19 @@
+Fixup gdb-6.8-bz442765-threaded-exec-test.patch
+
+---
+ gdb/testsuite/gdb.threads/threaded-exec.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/threaded-exec.exp b/gdb/testsuite/gdb.threads/threaded-exec.exp
+index 8c43162b36e..23f6339d8ff 100644
+--- a/gdb/testsuite/gdb.threads/threaded-exec.exp
++++ b/gdb/testsuite/gdb.threads/threaded-exec.exp
+@@ -37,7 +37,7 @@ gdb_reinitialize_dir $srcdir/$subdir
+ 
+ gdb_load ${binfile_nothreads}
+ 
+-gdb_run_cmd ${binfile_nothreads} ${binfile_threads} 0
++gdb_run_cmd [list ${binfile_nothreads} ${binfile_threads} 0]
+ 
+ gdb_test_multiple {} "Program exited" {
+    -re "\r\n\\\[Inferior .* exited normally\\\]\r\n$gdb_prompt $" {

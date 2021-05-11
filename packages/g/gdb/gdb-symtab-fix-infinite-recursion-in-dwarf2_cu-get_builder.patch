@@ -1,0 +1,165 @@
+[gdb/symtab] Fix infinite recursion in dwarf2_cu::get_builder()
+
+With the test-case attached in PR26327, gdb aborts:
+...
+$ gdb -q -batch 447.dealII -ex "b main"
+Aborted (core dumped)
+...
+when running out of stack due to infinite recursion:
+...
+ #8  0x00000000006aaba6 in dwarf2_cu::get_builder (this=0x35e4b40)
+     at src/gdb/dwarf2/read.c:700
+ #9  0x00000000006aaba6 in dwarf2_cu::get_builder (this=0x22ee2c0)
+     at src/gdb/dwarf2/read.c:700
+ #10 0x00000000006aaba6 in dwarf2_cu::get_builder (this=0x35e4b40)
+     at src/gdb/dwarf2/read.c:700
+ #11 0x00000000006aaba6 in dwarf2_cu::get_builder (this=0x22ee2c0)
+     at src/gdb/dwarf2/read.c:700
+...
+
+We're recursing in this code in dwarf2_cu::get_builder():
+...
+     /* Otherwise, search ancestors for a valid builder.  */
+     if (ancestor != nullptr)
+       return ancestor->get_builder ();
+...
+due to the fact that the ancestor chain is a cycle.
+
+Higher up in the call stack, we find some code that is responsible for
+triggering this, in new_symbol:
+...
+       case DW_TAG_formal_parameter:
+         {
+           /* If we are inside a function, mark this as an argument.  If
+              not, we might be looking at an argument to an inlined function
+              when we do not have enough information to show inlined frames;
+              pretend it's a local variable in that case so that the user can
+              still see it.  */
+           struct context_stack *curr
+             = cu->get_builder ()->get_current_context_stack ();
+           if (curr != nullptr && curr->name != nullptr)
+             SYMBOL_IS_ARGUMENT (sym) = 1;
+...
+
+This is code that was added to support pre-4.1 gcc, to be able to show
+arguments of inlined functions as locals, in the absense of sufficiently
+correct debug information.
+
+Removing this code (that is, doing SYMBOL_IS_ARGUMENT (sym) = 1
+unconditially), fixes the crash.  The ancestor variable also seems to have
+been added specifically to deal with fallout from this code, so remove that as
+well.
+
+Tested on x86_64-linux:
+- openSUSE Leap 15.2 with gcc 7.5.0, and
+- openSUSE Tumbleweed with gcc 10.3.0.
+
+gdb/ChangeLog:
+
+2021-05-07  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/26327
+	* dwarf2/read.c (struct dwarf2_cu): Remove ancestor.
+	(dwarf2_cu::get_builder): Remove ancestor-related code.
+	(new_symbol): Remove code supporting pre-4.1 gcc that show arguments
+	of inlined functions as locals.
+	(follow_die_offset, follow_die_sig_1): Remove setting of ancestor.
+
+gdb/doc/ChangeLog:
+
+2021-05-07  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/26327
+	* gdb.texinfo (Inline Functions): Update.
+
+---
+ gdb/doc/gdb.texinfo |  4 ++--
+ gdb/dwarf2/read.c   | 25 ++-----------------------
+ 4 files changed, 18 insertions(+), 25 deletions(-)
+
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+index 56f37eb2288..f4d7085da58 100644
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -13842,8 +13842,8 @@ when using @sc{dwarf 2}.  Versions of @value{NGCC} before 4.1
+ do not emit two required attributes (@samp{DW_AT_call_file} and
+ @samp{DW_AT_call_line}); @value{GDBN} does not display inlined
+ function calls with earlier versions of @value{NGCC}.  It instead
+-displays the arguments and local variables of inlined functions as
+-local variables in the caller.
++displays local variables of inlined functions as local variables in
++the caller.
+ 
+ The body of an inlined function is directly included at its call site;
+ unlike a non-inlined function, there are no instructions devoted to
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 5796cf1730b..b2f48f1f395 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -684,10 +684,6 @@ struct dwarf2_cu
+ 
+   struct partial_die_info *find_partial_die (sect_offset sect_off);
+ 
+-  /* If this CU was inherited by another CU (via specification,
+-     abstract_origin, etc), this is the ancestor CU.  */
+-  dwarf2_cu *ancestor;
+-
+   /* Get the buildsym_compunit for this CU.  */
+   buildsym_compunit *get_builder ()
+   {
+@@ -695,10 +691,6 @@ struct dwarf2_cu
+     if (m_builder != nullptr)
+       return m_builder.get ();
+ 
+-    /* Otherwise, search ancestors for a valid builder.  */
+-    if (ancestor != nullptr)
+-      return ancestor->get_builder ();
+-
+     return nullptr;
+   }
+ };
+@@ -22045,15 +22037,7 @@ new_symbol (struct die_info *die, struct type *type, struct dwarf2_cu *cu,
+ 	  break;
+ 	case DW_TAG_formal_parameter:
+ 	  {
+-	    /* If we are inside a function, mark this as an argument.  If
+-	       not, we might be looking at an argument to an inlined function
+-	       when we do not have enough information to show inlined frames;
+-	       pretend it's a local variable in that case so that the user can
+-	       still see it.  */
+-	    struct context_stack *curr
+-	      = cu->get_builder ()->get_current_context_stack ();
+-	    if (curr != nullptr && curr->name != nullptr)
+-	      SYMBOL_IS_ARGUMENT (sym) = 1;
++	    SYMBOL_IS_ARGUMENT (sym) = 1;
+ 	    attr = dwarf2_attr (die, DW_AT_location, cu);
+ 	    if (attr != nullptr)
+ 	      {
+@@ -23389,9 +23373,6 @@ follow_die_offset (sect_offset sect_off, int offset_in_dwz,
+   *ref_cu = target_cu;
+   temp_die.sect_off = sect_off;
+ 
+-  if (target_cu != cu)
+-    target_cu->ancestor = cu;
+-
+   return (struct die_info *) htab_find_with_hash (target_cu->die_hash,
+ 						  &temp_die,
+ 						  to_underlying (sect_off));
+@@ -23741,7 +23722,7 @@ follow_die_sig_1 (struct die_info *src_die, struct signatured_type *sig_type,
+ 		  struct dwarf2_cu **ref_cu)
+ {
+   struct die_info temp_die;
+-  struct dwarf2_cu *sig_cu, *cu = *ref_cu;
++  struct dwarf2_cu *sig_cu;
+   struct die_info *die;
+   dwarf2_per_objfile *per_objfile = (*ref_cu)->per_objfile;
+ 
+@@ -23777,8 +23758,6 @@ follow_die_sig_1 (struct die_info *src_die, struct signatured_type *sig_type,
+ 	}
+ 
+       *ref_cu = sig_cu;
+-      if (sig_cu != cu)
+-	sig_cu->ancestor = cu;
+ 
+       return die;
+     }

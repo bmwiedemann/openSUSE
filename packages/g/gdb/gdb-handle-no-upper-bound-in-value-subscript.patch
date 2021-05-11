@@ -1,0 +1,43 @@
+Handle no upper bound in value_subscript
+
+Fixes PR26875 - "Incorrect value printed for address of first element of
+zero-length array".
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=26875
+
+---
+ gdb/valarith.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/valarith.c b/gdb/valarith.c
+index 0221bc6e939..32b908d6e5b 100644
+--- a/gdb/valarith.c
++++ b/gdb/valarith.c
+@@ -151,18 +151,24 @@ value_subscript (struct value *array, LONGEST index)
+     {
+       struct type *range_type = tarray->index_type ();
+       LONGEST lowerbound, upperbound;
++      bool upperbound_p = true;
++
++      if (get_discrete_bounds (range_type, &lowerbound, &upperbound) < 0)
++	{
++	  lowerbound = range_type->bounds ()->low.const_val ();
++	  upperbound_p = false;
++	}
+ 
+-      get_discrete_bounds (range_type, &lowerbound, &upperbound);
+       if (VALUE_LVAL (array) != lval_memory)
+ 	return value_subscripted_rvalue (array, index, lowerbound);
+ 
+       if (c_style == 0)
+ 	{
+-	  if (index >= lowerbound && index <= upperbound)
++	  if (index >= lowerbound && upperbound_p && index <= upperbound)
+ 	    return value_subscripted_rvalue (array, index, lowerbound);
+ 	  /* Emit warning unless we have an array of unknown size.
+ 	     An array of unknown size has lowerbound 0 and upperbound -1.  */
+-	  if (upperbound > -1)
++	  if (upperbound_p && upperbound > -1)
+ 	    warning (_("array or string index out of range"));
+ 	  /* fall doing C stuff */
+ 	  c_style = 1;

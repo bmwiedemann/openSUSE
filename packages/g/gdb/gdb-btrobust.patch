@@ -1,0 +1,45 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-btrobust.patch
+
+;; Continue backtrace even if a frame filter throws an exception (Phil Muldoon).
+;;=push
+
+This should fix the error  with glib.  An error message will still be
+printed, but a default backtrace will occur in this case.
+
+--
+
+diff --git a/gdb/python/py-framefilter.c b/gdb/python/py-framefilter.c
+--- a/gdb/python/py-framefilter.c
++++ b/gdb/python/py-framefilter.c
+@@ -1204,6 +1204,7 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+ 				       htab_eq_pointer,
+ 				       NULL));
+ 
++  int count_printed = 0;
+   while (true)
+     {
+       gdbpy_ref<> item (PyIter_Next (iterable.get ()));
+@@ -1212,8 +1213,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+ 	{
+ 	  if (PyErr_Occurred ())
+ 	    {
+-	      gdbpy_print_stack_or_quit ();
+-	      return EXT_LANG_BT_ERROR;
++	      gdbpy_print_stack ();
++	      return count_printed > 0 ? EXT_LANG_BT_ERROR : EXT_LANG_BT_NO_FILTERS;
+ 	    }
+ 	  break;
+ 	}
+@@ -1245,7 +1246,8 @@ gdbpy_apply_frame_filter (const struct extension_language_defn *extlang,
+       /* Do not exit on error printing a single frame.  Print the
+ 	 error and continue with other frames.  */
+       if (success == EXT_LANG_BT_ERROR)
+-	gdbpy_print_stack_or_quit ();
++	gdbpy_print_stack ();
++      count_printed++;
+     }
+ 
+   return success;

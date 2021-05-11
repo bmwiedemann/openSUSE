@@ -1,0 +1,187 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-archer.patch
+
+;; Python patches of: http://sourceware.org/gdb/wiki/ProjectArcher
+;;=push
+
+http://sourceware.org/gdb/wiki/ProjectArcher
+http://sourceware.org/gdb/wiki/ArcherBranchManagement
+
+GIT snapshot:
+commit 718a1618b2f691a7f407213bb50f100ac59f91c3
+
+tromey/python
+
+diff --git a/gdb/data-directory/Makefile.in b/gdb/data-directory/Makefile.in
+--- a/gdb/data-directory/Makefile.in
++++ b/gdb/data-directory/Makefile.in
+@@ -80,6 +80,7 @@ PYTHON_FILE_LIST = \
+ 	gdb/unwinder.py \
+ 	gdb/xmethod.py \
+ 	gdb/command/__init__.py \
++	gdb/command/ignore_errors.py \
+ 	gdb/command/explore.py \
+ 	gdb/command/backtrace.py \
+ 	gdb/command/frame_filters.py \
+@@ -92,6 +93,7 @@ PYTHON_FILE_LIST = \
+ 	gdb/function/as_string.py \
+ 	gdb/function/caller_is.py \
+ 	gdb/function/strfns.py \
++	gdb/function/in_scope.py \
+ 	gdb/printer/__init__.py \
+ 	gdb/printer/bound_registers.py
+ 
+diff --git a/gdb/gdb-gdb.gdb.in b/gdb/gdb-gdb.gdb.in
+--- a/gdb/gdb-gdb.gdb.in
++++ b/gdb/gdb-gdb.gdb.in
+@@ -1,5 +1,15 @@
+ echo Setting up the environment for debugging gdb.\n
+ 
++# Set up the Python library and "require" command.
++python
++from os.path import abspath
++gdb.datadir = abspath ('@srcdir@/python/lib')
++gdb.pythonlibdir = gdb.datadir
++gdb.__path__ = [gdb.datadir + '/gdb']
++sys.path.insert(0, gdb.datadir)
++end
++source @srcdir@/python/lib/gdb/__init__.py
++
+ if !$gdb_init_done
+   set variable $gdb_init_done = 1
+ 
+diff --git a/gdb/python/lib/gdb/command/ignore_errors.py b/gdb/python/lib/gdb/command/ignore_errors.py
+new file mode 100644
+--- /dev/null
++++ b/gdb/python/lib/gdb/command/ignore_errors.py
+@@ -0,0 +1,37 @@
++# Ignore errors in user commands.
++
++# Copyright (C) 2008 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++import gdb
++
++class IgnoreErrorsCommand (gdb.Command):
++    """Execute a single command, ignoring all errors.
++Only one-line commands are supported.
++This is primarily useful in scripts."""
++
++    def __init__ (self):
++        super (IgnoreErrorsCommand, self).__init__ ("ignore-errors",
++                                                    gdb.COMMAND_OBSCURE,
++                                                    # FIXME...
++                                                    gdb.COMPLETE_COMMAND)
++
++    def invoke (self, arg, from_tty):
++        try:
++            gdb.execute (arg, from_tty)
++        except:
++            pass
++
++IgnoreErrorsCommand ()
+diff --git a/gdb/python/lib/gdb/function/in_scope.py b/gdb/python/lib/gdb/function/in_scope.py
+new file mode 100644
+--- /dev/null
++++ b/gdb/python/lib/gdb/function/in_scope.py
+@@ -0,0 +1,47 @@
++# In-scope function.
++
++# Copyright (C) 2008 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++import gdb
++
++class InScope (gdb.Function):
++    """Return True if all the given variables or macros are in scope.
++Takes one argument for each variable name to be checked."""
++
++    def __init__ (self):
++        super (InScope, self).__init__ ("in_scope")
++
++    def invoke (self, *vars):
++        if len (vars) == 0:
++            raise (TypeError, "in_scope takes at least one argument")
++
++        # gdb.Value isn't hashable so it can't be put in a map.
++        # Convert to string first.
++        wanted = set (map (lambda x: x.string (), vars))
++        found = set ()
++        block = gdb.selected_frame ().block ()
++        while block:
++            for sym in block:
++                if (sym.is_argument or sym.is_constant
++                      or sym.is_function or sym.is_variable):
++                    if sym.name in wanted:
++                        found.add (sym.name)
++
++            block = block.superblock
++
++        return wanted == found
++
++InScope ()
+diff --git a/gdb/testsuite/gdb.python/py-frame.exp b/gdb/testsuite/gdb.python/py-frame.exp
+--- a/gdb/testsuite/gdb.python/py-frame.exp
++++ b/gdb/testsuite/gdb.python/py-frame.exp
+@@ -95,6 +95,8 @@ gdb_test "python print ('result = %s' % f0.read_var ('a'))" " = 1" "test Frame.r
+ 
+ gdb_test "python print ('result = %s' % (gdb.selected_frame () == f1))" " = True" "test gdb.selected_frame"
+ 
++gdb_test "python print ('result = %s' % (f0.block ()))" "<gdb.Block object at 0x\[\[:xdigit:\]\]+>" "test Frame.block"
++
+ # Can read SP register.
+ gdb_test "python print ('result = %s' % (gdb.selected_frame ().read_register ('sp') == gdb.parse_and_eval ('\$sp')))" \
+   " = True" \
+diff --git a/gdb/testsuite/gdb.python/py-value.exp b/gdb/testsuite/gdb.python/py-value.exp
+--- a/gdb/testsuite/gdb.python/py-value.exp
++++ b/gdb/testsuite/gdb.python/py-value.exp
+@@ -419,6 +419,15 @@ proc test_value_after_death {} {
+     "print value's type"
+ }
+ 
++# Regression test for a cast failure.  The bug was that if we cast a
++# value to its own type, gdb could crash.  This happened because we
++# could end up double-freeing a struct value.
++proc test_cast_regression {} {
++  gdb_test "python v = gdb.Value(5)" "" "create value for cast test"
++  gdb_test "python v = v.cast(v.type)" "" "cast value for cast test"
++  gdb_test "python print(v)" "5" "print value for cast test"
++}
++
+ # Regression test for invalid subscript operations.  The bug was that
+ # the type of the value was not being checked before allowing a
+ # subscript operation to proceed.
+@@ -606,6 +615,7 @@ test_value_in_inferior
+ test_value_from_buffer
+ test_inferior_function_call
+ test_value_after_death
++test_cast_regression
+ 
+ # Test either C or C++ values. 
+ 

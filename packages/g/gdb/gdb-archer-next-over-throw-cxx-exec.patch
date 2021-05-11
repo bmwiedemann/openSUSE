@@ -1,0 +1,88 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-archer-next-over-throw-cxx-exec.patch
+
+;; Fix follow-exec for C++ programs (bugreported by Martin Stransky).
+;;=fedoratest
+
+Archer-upstreamed:
+http://sourceware.org/ml/archer/2010-q2/msg00031.html
+
+diff --git a/gdb/testsuite/gdb.cp/cxxexec.cc b/gdb/testsuite/gdb.cp/cxxexec.cc
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.cp/cxxexec.cc
+@@ -0,0 +1,25 @@
++/* This test script is part of GDB, the GNU debugger.
++
++   Copyright 2010 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++
++int
++main()
++{
++  execlp ("true", "true", NULL);
++  return 1;
++}
+diff --git a/gdb/testsuite/gdb.cp/cxxexec.exp b/gdb/testsuite/gdb.cp/cxxexec.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.cp/cxxexec.exp
+@@ -0,0 +1,42 @@
++# Copyright 2010 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++if { [skip_cplus_tests] } { continue }
++
++set testfile cxxexec
++if { [prepare_for_testing ${testfile}.exp ${testfile} ${testfile}.cc {c++ debug}] } {
++    return -1
++}
++
++runto_main
++
++# We could stop after `continue' again at `main'.
++delete_breakpoints
++
++set test "p _Unwind_DebugHook"
++gdb_test_multiple $test $test {
++    -re " = .* 0x\[0-9a-f\].*\r\n$gdb_prompt $" {
++	pass $test
++    }
++    -re "\r\nNo symbol .*\r\n$gdb_prompt $" {
++	xfail $test
++	untested ${testfile}.exp
++	return -1
++    }
++}
++
++# Run to end.  The buggy GDB failed instead with:
++#  Cannot access memory at address ADDR.
++gdb_continue_to_end "" "continue" 1

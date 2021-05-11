@@ -1,0 +1,68 @@
+[gdb/testsuite] Catch condition evaluation errors in gdb_assert
+
+When running test-case gdb.base/watchpoint-stops-at-right-insn.exp, we may run
+into a tcl error, which can be reproduced reliably using this trigger patch:
+...
++       set hw_watch_pc ""
+        gdb_assert {$sw_watch_pc == $hw_watch_pc} \
+	  "hw watchpoint stops at right instruction"
+...
+such that we have:
+...
+ERROR: tcl error sourcing watchpoint-stops-at-right-insn.exp.
+ERROR: missing operand at _@_
+in expression "0x4004b7 == _@_"
+    (parsing expression "0x4004b7 == ")
+    invoked from within
+"expr $sw_watch_pc == $hw_watch_pc"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 expr $condition"
+    (procedure "gdb_assert" line 6)
+    invoked from within
+"gdb_assert {$sw_watch_pc == $hw_watch_pc} \
+  "hw watchpoint stops at right instruction""
+...
+
+A similar problem was fixed in commit 5f0e2eb79e "GDB/testsuite: Fix a
+catastrophic step-over-no-symbols.exp failure", by making the assert condition
+more robust:
+...
+-    gdb_assert {$before_addr != $after_addr} "advanced"
++    gdb_assert {{[string is integer -strict $before_addr] \
++                && [string is integer -strict $after_addr] \
++                && $before_addr != $after_addr}} "advanced"
+...
+
+Fix this instead in gdb_assert, by catching errors while evaluating the assert
+condition.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2020-09-16  Tom de Vries  <tdevries@suse.de>
+
+	PR testsuite/26624
+	* lib/gdb.exp (gdb_assert): Catch errors in condition evaluation.
+
+---
+ gdb/testsuite/ChangeLog   | 5 +++++
+ gdb/testsuite/lib/gdb.exp | 4 ++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 653f145c1ce..59439f8e379 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -1689,8 +1689,8 @@ proc gdb_assert { condition {message ""} } {
+ 	set message $condition
+     }
+ 
+-    set res [uplevel 1 expr $condition]
+-    if {!$res} {
++    set code [catch {uplevel 1 expr $condition} res]
++    if {$code != 0 || !$res} {
+ 	fail $message
+     } else {
+ 	pass $message

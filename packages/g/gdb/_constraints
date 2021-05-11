@@ -1,0 +1,24 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">4</size>
+      </disk>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">8</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>
+

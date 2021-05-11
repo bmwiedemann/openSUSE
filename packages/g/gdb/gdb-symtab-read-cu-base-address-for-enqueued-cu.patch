@@ -1,0 +1,178 @@
+[gdb/symtab] Read CU base address for enqueued CU
+
+Consider the test-case contained in this patch.  It consists of
+two CUs:
+- cu1, containing a DW_TAG_variable DIE foo
+- cu2, containing a DW_TAG_base_type DIE int
+where the variable foo has type int, in other words, there's an inter-CU
+reference.
+
+When expanding the symtab for cu1, expansion of the symtab for cu2 is
+enqueued, and later processed by process_full_comp_unit.  However, processing
+of .debug_ranges fails because the range is specified relative to a base
+address which is considered not to be present because
+!cu->base_address.has_value (), and we run into this case in
+dwarf2_ranges_process:
+...
+      if (!base.has_value ())
+        {
+          /* We have no valid base address for the ranges
+             data.  */
+          complaint (_("Invalid .debug_ranges data (no base address)"));
+          return 0;
+        }
+...
+
+Fix this in process_full_comp_unit by setting cu->base_address.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2020-10-26  Tom de Vries  <tdevries@suse.de>
+
+	* dwarf2/read.c (process_full_comp_unit): Call
+	dwarf2_find_base_address.
+
+gdb/testsuite/ChangeLog:
+
+2020-10-26  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.dwarf2/enqueued-cu-base-addr.exp: New file.
+---
+ gdb/dwarf2/read.c                             |   2 +
+ .../gdb.dwarf2/enqueued-cu-base-addr.exp      | 112 ++++++++++++++++++
+ 4 files changed, 123 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.dwarf2/enqueued-cu-base-addr.exp
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 436a116dc80..e1c528f44d2 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -9929,6 +9929,8 @@ process_full_comp_unit (dwarf2_cu *cu, enum language pretend_language)
+   cu->language = pretend_language;
+   cu->language_defn = language_def (cu->language);
+ 
++  dwarf2_find_base_address (cu->dies, cu);
++
+   /* Do line number decoding in read_file_scope () */
+   process_die (cu->dies, cu);
+ 
+diff --git a/gdb/testsuite/gdb.dwarf2/enqueued-cu-base-addr.exp b/gdb/testsuite/gdb.dwarf2/enqueued-cu-base-addr.exp
+new file mode 100644
+index 00000000000..77fe6ff5e94
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/enqueued-cu-base-addr.exp
+@@ -0,0 +1,112 @@
++# Copyright 2020 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check whether .debug_ranges is correctly read in during symtab expansion.
++
++load_lib dwarf.exp
++
++# This test can only be run on targets which support DWARF-2 and use gas.
++if {![dwarf2_support]} {
++    return 0
++};
++
++standard_testfile main.c .S
++
++set executable ${testfile}
++set asm_file [standard_output_file ${srcfile2}]
++
++# We need to know the size of integer types in order to write some of the
++# debugging info we'd like to generate.
++if [prepare_for_testing "failed to prepare" ${testfile} ${srcfile}] {
++    return -1
++}
++
++# Create the DWARF.
++Dwarf::assemble $asm_file {
++    global srcdir subdir srcfile
++
++    declare_labels int_label
++    declare_labels ranges_label
++
++    set main_func \
++	[function_range main [list ${srcdir}/${subdir}/$srcfile]]
++
++    cu {} {
++	compile_unit {
++	    {language @DW_LANG_C_plus_plus}
++	    {name "cu1"}
++	} {
++	    DW_TAG_variable {
++		{name foo}
++		{type :$int_label}
++		{const_value 1 DW_FORM_sdata}
++	    }
++	}
++    }
++
++    cu {} {
++	compile_unit {
++	    {language @DW_LANG_C_plus_plus}
++	    {name "cu2"}
++	    {ranges ${ranges_label} sec_offset}
++	    {low_pc {[lindex $main_func 0]} DW_FORM_addr}
++	} {
++	    int_label: base_type {
++		{byte_size 4 udata}
++		{encoding @DW_ATE_signed}
++		{name int}
++	    }
++	}
++    }
++
++    ranges {is_64 [is_64_target]} {
++	ranges_label: sequence {
++	    {range 0 [lindex $main_func 1]}
++	}
++    }
++}
++
++if { [prepare_for_testing "failed to prepare" ${testfile} \
++	  [list $srcfile $asm_file] {nodebug}] } {
++    return -1
++}
++
++clean_restart ${binfile}
++
++# Expand cu1.  This will enqueue cu2.
++gdb_test "ptype foo" "type = int"
++
++# Now check that cu2 has an address range starting at main.
++set cu2_blockvector_re \
++    [multi_line \
++	 "Symtab for file cu2 at $hex" \
++	 "Read from object file \[^\r\n\]*" \
++	 "Language: c\\+\\+" \
++	 "" \
++	 "Blockvector:" \
++	 "" \
++	 "block #000, \[^\r\n\]* in ($hex)..$hex" \
++	 ".*"]
++gdb_test_multiple "maint print symbols -objfile $binfile" "CU addr found" {
++    -re -wrap $cu2_blockvector_re {
++	set addr $expect_out(1,string)
++	if { $addr eq "0x0" } {
++	    fail "$gdb_test_name (Found 0x0)"
++	} else {
++	    gdb_test "info symbol $addr" "main in section .*" \
++		$gdb_test_name
++	}
++    }
++}

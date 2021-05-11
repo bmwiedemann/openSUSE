@@ -1,0 +1,80 @@
+[gdb/testsuite] Fix xfail handling in gdb.threads/gcore-thread.exp
+
+When running test-case gdb.threads/gcore-thread.exp on openSUSE Tumbleweed,
+I run into these XFAILs:
+...
+XFAIL: gdb.threads/gcore-thread.exp: clear __stack_user.next
+XFAIL: gdb.threads/gcore-thread.exp: clear stack_used.next
+...
+
+Apart from the xfail, the test-case also sets core0file to "":
+...
+        -re "No symbol \"${symbol}\" in current context\\.\r\n$gdb_prompt $" {
+            xfail $test
+            # Do not do the verification.
+            set core0file ""
+        }
+...
+
+After which we run into this FAIL, because gdb_core_cmd fails to load a
+core file called "":
+...
+(gdb) core ^M
+No core file now.^M
+(gdb) FAIL: gdb.threads/gcore-thread.exp: core0file: \
+  re-load generated corefile
+...
+
+Fix this FAIL by skipping gdb_core_cmd if the core file is "".
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2021-04-06  Tom de Vries  <tdevries@suse.de>
+
+	PR testsuite/27691
+	* gdb.threads/gcore-thread.exp: Don't call gdb_core_cmd with core
+	file "".
+
+---
+ gdb/testsuite/gdb.threads/gcore-thread.exp | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/gcore-thread.exp b/gdb/testsuite/gdb.threads/gcore-thread.exp
+index 942bfb127b8..1bdeff1d460 100644
+--- a/gdb/testsuite/gdb.threads/gcore-thread.exp
++++ b/gdb/testsuite/gdb.threads/gcore-thread.exp
+@@ -114,11 +114,13 @@ if {"$core0file" != ""} {
+ # Now restart gdb and load the corefile.
+ clean_restart ${testfile}
+ 
+-foreach name { corefile core0file } { with_test_prefix $name {
+-    set core_loaded [gdb_core_cmd [subst $$name] "re-load generated corefile"]
++proc load_core { filename } {
++    global horiz nl
++
++    set core_loaded [gdb_core_cmd $filename "re-load generated corefile"]
+     if { $core_loaded == -1 } {
+ 	# No use proceeding from here.
+-	continue
++	return
+     }
+ 
+     # FIXME: now what can we test about the thread state?
+@@ -139,4 +141,14 @@ foreach name { corefile core0file } { with_test_prefix $name {
+ 
+     gdb_test "info threads" "\\* ${horiz} thread2 .*${nl}" \
+ 	    "thread2 is current thread in corefile"
+-}}
++}
++
++foreach name { corefile core0file } {
++    set filename [subst $$name]
++    if { $filename == "" } {
++	continue
++    }
++    with_test_prefix $name {
++	load_core $filename
++    }
++}

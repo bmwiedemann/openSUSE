@@ -1,0 +1,77 @@
+gdb: try to load libthread_db only after reading all shared libraries when attaching
+
+https://sourceware.org/pipermail/gdb-patches/2021-March/177369.html
+
+---
+ gdb/infcmd.c          |  7 ++-----
+ gdb/linux-thread-db.c | 24 +++++++++++++++++++-----
+ 2 files changed, 21 insertions(+), 10 deletions(-)
+
+diff --git a/gdb/infcmd.c b/gdb/infcmd.c
+index cfc31699925..345cdc23b0d 100644
+--- a/gdb/infcmd.c
++++ b/gdb/infcmd.c
+@@ -347,6 +347,8 @@ post_create_inferior (struct target_ops *target, int from_tty)
+      if the now pushed target supports hardware watchpoints.  */
+   breakpoint_re_set ();
+ 
++  current_inferior ()->needs_setup = 0;
++
+   gdb::observers::inferior_created.notify (target, from_tty);
+ }
+ 
+@@ -2414,11 +2416,6 @@ proceed_after_attach (inferior *inf)
+ void
+ setup_inferior (int from_tty)
+ {
+-  struct inferior *inferior;
+-
+-  inferior = current_inferior ();
+-  inferior->needs_setup = 0;
+-
+   /* If no exec file is yet known, try to determine it from the
+      process itself.  */
+   if (get_exec_file (0) == NULL)
+diff --git a/gdb/linux-thread-db.c b/gdb/linux-thread-db.c
+index 5498308cf37..61c0237b0e3 100644
+--- a/gdb/linux-thread-db.c
++++ b/gdb/linux-thread-db.c
+@@ -1010,8 +1010,19 @@ try_thread_db_load (const char *library, bool check_auto_load_safe)
+   if (strchr (library, '/') != NULL)
+     info->filename = gdb_realpath (library).release ();
+ 
+-  if (try_thread_db_load_1 (info))
+-    return true;
++  try
++    {
++      if (try_thread_db_load_1 (info))
++	return true;
++    }
++  catch (const gdb_exception &except)
++    {
++      if (libthread_db_debug)
++	{
++	  exception_fprintf (gdb_stdlog, except,
++			     "Warning: try_thread_db_load: ");
++	}
++    }
+ 
+   /* This library "refused" to work on current inferior.  */
+   delete_thread_db_info (current_inferior ()->process_target (),
+@@ -1182,10 +1193,13 @@ has_libpthread (void)
+ static bool
+ thread_db_load (void)
+ {
+-  struct thread_db_info *info;
++  inferior *inf = current_inferior ();
+ 
+-  info = get_thread_db_info (current_inferior ()->process_target (),
+-			     inferior_ptid.pid ());
++  if (inf->needs_setup)
++    return false;
++
++  thread_db_info *info = get_thread_db_info (inf->process_target (),
++					     inferior_ptid.pid ());
+ 
+   if (info != NULL)
+     return true;

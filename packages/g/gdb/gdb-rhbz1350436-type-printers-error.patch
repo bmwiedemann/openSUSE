@@ -1,0 +1,81 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-rhbz1350436-type-printers-error.patch
+
+;; Test 'info type-printers' Python error (RH BZ 1350436).
+;;=fedoratest
+
+Typo in Python support breaks info type-printers command
+https://bugzilla.redhat.com/show_bug.cgi?id=1350436
+
+[testsuite patch] PR python/17136: 'info type-printers' causes an exception when there are per-objfile printers
+https://sourceware.org/ml/gdb-patches/2016-06/msg00455.html
+
+diff --git a/gdb/testsuite/gdb.python/py-typeprint.cc b/gdb/testsuite/gdb.python/py-typeprint.cc
+--- a/gdb/testsuite/gdb.python/py-typeprint.cc
++++ b/gdb/testsuite/gdb.python/py-typeprint.cc
+@@ -31,6 +31,12 @@ templ<basic_string> s;
+ 
+ basic_string bs;
+ 
++class Other
++{
++};
++
++Other ovar;
++
+ int main()
+ {
+   return 0;
+diff --git a/gdb/testsuite/gdb.python/py-typeprint.exp b/gdb/testsuite/gdb.python/py-typeprint.exp
+--- a/gdb/testsuite/gdb.python/py-typeprint.exp
++++ b/gdb/testsuite/gdb.python/py-typeprint.exp
+@@ -50,3 +50,7 @@ gdb_test_no_output "enable type-printer string"
+ gdb_test "whatis bs" "string" "whatis with enabled printer"
+ 
+ gdb_test "whatis s" "templ<string>"
++
++gdb_test "info type-printers" "Type printers for \[^\r\n\]*/py-typeprint:\r\n *other\r\n.*" \
++	 "info type-printers for other"
++gdb_test "whatis ovar" "type = Another"
+diff --git a/gdb/testsuite/gdb.python/py-typeprint.py b/gdb/testsuite/gdb.python/py-typeprint.py
+--- a/gdb/testsuite/gdb.python/py-typeprint.py
++++ b/gdb/testsuite/gdb.python/py-typeprint.py
+@@ -15,7 +15,7 @@
+ 
+ import gdb
+ 
+-class Recognizer(object):
++class StringRecognizer(object):
+     def __init__(self):
+         self.enabled = True
+ 
+@@ -30,6 +30,26 @@ class StringTypePrinter(object):
+         self.enabled = True
+ 
+     def instantiate(self):
+-        return Recognizer()
++        return StringRecognizer()
+ 
+ gdb.type_printers.append(StringTypePrinter())
++
++class OtherRecognizer(object):
++    def __init__(self):
++        self.enabled = True
++
++    def recognize(self, type_obj):
++        if type_obj.tag == 'Other':
++            return 'Another'
++        return None
++
++class OtherTypePrinter(object):
++    def __init__(self):
++        self.name = 'other'
++        self.enabled = True
++
++    def instantiate(self):
++        return OtherRecognizer()
++
++import gdb.types
++gdb.types.register_type_printer(gdb.objfiles()[0], OtherTypePrinter())

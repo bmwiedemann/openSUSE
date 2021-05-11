@@ -1,0 +1,248 @@
+[gdb/symtab] Fix language of frame without debug info
+
+On openSUSE Leap 15.2, I run into this FAIL with target board readnow and
+test-case gdb.dwarf2/dw2-align.exp:
+...
+(gdb) set lang c++^M
+Warning: the current language does not match this frame.^M
+(gdb) FAIL: gdb.dwarf2/dw2-align.exp: set lang c++
+...
+
+Adding some extra debugging shows that the current language differs without
+and with readnow:
+...
+ Breakpoint 1, 0x00000000004004ab in main ()^M
+ (gdb) show lang^M
+-The current source language is "auto; currently c".^M
++The current source language is "auto; currently asm".^M
+...
+
+This is explained by find_pc_compunit_symtab (0x4004ab) called from
+select_frame, which:
+- without readnow: returns NULL, and
+- with readnow: returns the symtab for the CU crtn.S, wich has language
+  "MIPS assembler".
+
+In the former case, the symtab for crtn.S is not expanded, and
+find_pc_compunit_symtab hits the default NULL return.  In the latter case, the
+symtab for crtn.S is expanded, and the "best match" loop in
+find_pc_compunit_symtab returns that symtab as its best match.
+
+The GLOBAL_BLOCK for crtn.S has these outer limits of the address range:
+...
+(gdb) p /x b.startaddr
+$6 = 0x4003c2
+(gdb) p /x b.endaddr
+$7 = 0x40053d
+...
+and 0x4004ab indeed fits in that range, which explains why the CU is
+considered a match.
+
+However, the actual address ranges for the CU are:
+...
+    00000040 ffffffffffffffff 0000000000000000 (base address)
+    00000040 00000000004003c2 00000000004003c7
+    00000040 0000000000400538 000000000040053d
+    00000040 <End of list>
+...
+which confirms that the CU should not be considered a match.
+
+The problem is that the "best match" loop is based on the assumption that a
+symtab with a better match will be found, but in this case we don't find a
+better match because there's no debug info describing main.
+
+Fix this by preferring to use the addres map in the "best match" loop, which
+will accurately tell us that addrmap_find (bv.map, 0x4004ab) == NULL.
+
+Tested on x86_64-linux (that is, openSUSE Leap 15.2), with and without
+readnow.  In the case of a readnow run, brings down the number of unexpected
+failures from 66 to 38.
+
+The FAIL does not reproduce on f.i. Ubuntu 18.04.5, because there the exec
+does not contain debug info for crtn.S.  The dwarf assembly test-case mimics
+the scenario described above, and reproduces the FAIL with and without
+-readnow, for both mentioned OS configurations.
+
+Also fixes PR25980 - "Overlapping Dwarf Compile Units with non-overlapping
+subranges gives incorrect line information".
+
+gdb/ChangeLog:
+
+2020-10-28  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/26772
+	* symtab.c (find_pc_sect_compunit_symtab): In case there's an address
+	map, check it in the "best match" loop.
+
+gdb/testsuite/ChangeLog:
+
+2020-10-28  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/26772
+	* gdb.dwarf2/dw2-ranges-overlap.c: New test.
+	* gdb.dwarf2/dw2-ranges-overlap.exp: New file.
+---
+ gdb/symtab.c                                  |  8 ++
+ gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.c | 36 ++++++++
+ .../gdb.dwarf2/dw2-ranges-overlap.exp         | 87 +++++++++++++++++++
+ 5 files changed, 143 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.c
+ create mode 100644 gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.exp
+
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index f6e24758009..b7aae1bed14 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -2923,6 +2923,14 @@ find_pc_sect_compunit_symtab (CORE_ADDR pc, struct obj_section *section)
+ 	  if (!in_range_p)
+ 	    continue;
+ 
++	  if (BLOCKVECTOR_MAP (bv))
++	    {
++	      if (addrmap_find (BLOCKVECTOR_MAP (bv), pc) == nullptr)
++		continue;
++
++	      return cust;
++	    }
++
+ 	  CORE_ADDR range = end - start;
+ 	  if (best_cust != nullptr
+ 	      && range >= best_cust_range)
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.c b/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.c
+new file mode 100644
+index 00000000000..cbc4551e437
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.c
+@@ -0,0 +1,36 @@
++/*
++   Copyright 2020 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++int
++bar (int a)
++{
++  asm ("bar_label: .globl bar_label");
++  return a + 1;
++}
++
++int
++foo (int a)
++{
++  asm ("foo_label: .globl foo_label");
++  return bar (a * 2) + 3;
++}
++
++int
++main (void)
++{
++  asm ("main_label: .globl main_label");
++  return foo (5) + 1;
++}
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.exp b/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.exp
+new file mode 100644
+index 00000000000..59c10c8ae24
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ranges-overlap.exp
+@@ -0,0 +1,87 @@
++# Copyright 2020 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++load_lib dwarf.exp
++
++# The function foo is encapsulated by two functions from CU
++# $srcfile (main and bar), but the debug info does not describe foo, so
++# foo should not be seen as part of CU $srcfile.
++# Run to foo, and check that the current language is the default auto/C.
++# If foo is considered part of CU $srcfile, the language will be auto/C++
++# instead.
++
++# This test can only be run on targets which support DWARF-2 and use gas.
++if {![dwarf2_support]} {
++    verbose "Skipping $gdb_test_file_name."
++    return 0
++}
++
++# The .c files use __attribute__.
++if [get_compiler_info] {
++    return -1
++}
++if !$gcc_compiled {
++    verbose "Skipping $gdb_test_file_name."
++    return 0
++}
++
++standard_testfile .c -dw.S
++
++set asm_file [standard_output_file $srcfile2]
++Dwarf::assemble $asm_file {
++    global srcdir subdir srcfile srcfile2
++    declare_labels ranges_label
++
++    # Find start address and length for our functions.
++    set main_func \
++	[function_range main [list ${srcdir}/${subdir}/$srcfile]]
++    set foo_func \
++	[function_range foo [list ${srcdir}/${subdir}/$srcfile]]
++    set bar_func \
++	[function_range bar [list ${srcdir}/${subdir}/$srcfile]]
++
++    cu {} {
++	compile_unit {
++	    {language @DW_LANG_C_plus_plus}
++	    {name $srcfile}
++	    {ranges ${ranges_label} DW_FORM_sec_offset}
++	} {
++	    subprogram {
++		{external 1 flag}
++		{name main}
++	    }
++	}
++    }
++
++    ranges {is_64 [is_64_target]} {
++	ranges_label: sequence {
++	    {base [lindex $main_func 0]}
++	    {range 0 [lindex $main_func 1]}
++	    {base [lindex $bar_func 0]}
++	    {range 0 [lindex $bar_func 1]}
++	}
++    }
++}
++
++if { [prepare_for_testing "failed to prepare" ${testfile} \
++	  [list $srcfile $asm_file] {nodebug}] } {
++    return -1
++}
++
++if ![runto foo] {
++    return -1
++}
++
++gdb_test "show language" \
++    "The current source language is \"auto; currently c\"\."
+-- 
+2.26.2
+

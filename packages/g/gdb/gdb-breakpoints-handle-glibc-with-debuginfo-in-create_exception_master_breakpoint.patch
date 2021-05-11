@@ -1,0 +1,53 @@
+[gdb/breakpoints] Handle glibc with debuginfo in create_exception_master_breakpoint
+
+The test-case nextoverthrow.exp is failing on targets with unstripped libc.
+
+This is a regression since commit 1940319c0ef "[gdb] Fix internal-error in
+process_event_stop_test".
+
+The problem is that this code in create_exception_master_breakpoint:
+...
+      for (objfile *sepdebug = obj->separate_debug_objfile;
+      	   sepdebug != nullptr; sepdebug = sepdebug->separate_debug_objfile)
+        if (create_exception_master_breakpoint_hook (sepdebug))
+...
+iterates over all the separate debug object files, but fails to handle the
+case that obj itself has the debug info we're looking for.
+
+Fix this by using the separate_debug_objfiles () range instead, which does
+iterate both over obj and the obj->separate_debug_objfile chain.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2021-02-05  Tom de Vries  <tdevries@suse.de>
+
+	PR breakpoints/27330
+	* breakpoint.c (create_exception_master_breakpoint): Handle case that
+	glibc object file has debug info.
+
+---
+ gdb/breakpoint.c | 9 ++++-----
+ 2 files changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+index 7ead1529ad1..a94bb2e3540 100644
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -3474,11 +3474,10 @@ create_exception_master_breakpoint (void)
+       if (create_exception_master_breakpoint_probe (obj))
+ 	continue;
+ 
+-      /* Iterate over separate debug objects and try an _Unwind_DebugHook
+-	 kind breakpoint.  */
+-      for (objfile *sepdebug = obj->separate_debug_objfile;
+-	   sepdebug != nullptr; sepdebug = sepdebug->separate_debug_objfile)
+-	if (create_exception_master_breakpoint_hook (sepdebug))
++      /* Iterate over main and separate debug objects and try an
++	 _Unwind_DebugHook kind breakpoint.  */
++      for (objfile *debug_objfile : obj->separate_debug_objfiles ())
++	if (create_exception_master_breakpoint_hook (debug_objfile))
+ 	  break;
+     }
+ }

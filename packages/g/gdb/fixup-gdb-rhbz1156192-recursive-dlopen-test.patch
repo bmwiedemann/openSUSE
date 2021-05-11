@@ -1,0 +1,18 @@
+Fixup gdb-rhbz1156192-recursive-dlopen-test.patch
+
+---
+ gdb/testsuite/gdb.base/gdb-rhbz1156192-recursive-dlopen.exp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/testsuite/gdb.base/gdb-rhbz1156192-recursive-dlopen.exp b/gdb/testsuite/gdb.base/gdb-rhbz1156192-recursive-dlopen.exp
+index 2c32676e504..6e4d3621a3e 100644
+--- a/gdb/testsuite/gdb.base/gdb-rhbz1156192-recursive-dlopen.exp
++++ b/gdb/testsuite/gdb.base/gdb-rhbz1156192-recursive-dlopen.exp
+@@ -101,6 +101,7 @@ proc test_stop_on_solib_events { } {
+     gdb_test_no_output "set stop-on-solib-events 1" "setting stop-on-solib-events"
+ 
+     gdb_run_cmd
++    gdb_test "" "Wait for first prompt"
+     foreach l $solib_event_order {
+       incr pass
+       with_test_prefix "pass #$pass" {

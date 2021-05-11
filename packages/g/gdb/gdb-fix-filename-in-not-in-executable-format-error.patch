@@ -1,0 +1,27 @@
+diff --git a/gdb/exec.c b/gdb/exec.c
+index 676f3dc3f7d..7693236019b 100644
+--- a/gdb/exec.c
++++ b/gdb/exec.c
+@@ -482,9 +482,8 @@ exec_file_attach (const char *filename, int from_tty)
+ 
+       if (!exec_bfd)
+ 	{
+-	  error (_("\"%ps\": could not open as an executable file: %s."),
+-		 styled_string (file_name_style.style (), scratch_pathname),
+-		 bfd_errmsg (bfd_get_error ()));
++	  error (_("\"%s\": could not open as an executable file: %s."),
++		 scratch_pathname, bfd_errmsg (bfd_get_error ()));
+ 	}
+ 
+       /* gdb_realpath_keepfile resolves symlinks on the local
+@@ -515,8 +514,8 @@ exec_file_attach (const char *filename, int from_tty)
+ 			   "Please specify an executable to debug."),
+ 			 scratch_pathname);
+ 	  else
+-	    error (_("\"%ps\": not in executable format: %s"),
+-		   styled_string (file_name_style.style (), scratch_pathname),
++	    error (_("\"%s\": not in executable format: %s"),
++		   scratch_pathname,
+ 		   gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
+ 	}
+ 
