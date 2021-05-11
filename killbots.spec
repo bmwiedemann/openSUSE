@@ -1,7 +1,7 @@
 #
 # spec file for package killbots
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           killbots
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Robots-like game by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/killbots
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -49,10 +53,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -64,7 +64,7 @@ and can optionally use teleportation to a random location.
 %lang_package
 
 %prep
-%setup -q -n killbots-%{version}
+%autosetup -p1 -n killbots-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -78,20 +78,19 @@ and can optionally use teleportation to a random location.
   %endif
 
 %files
-%license COPYING*
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/killbots/
 %{_kf5_applicationsdir}/org.kde.killbots.desktop
+%{_kf5_appstreamdir}/org.kde.killbots.appdata.xml
 %{_kf5_bindir}/killbots
 %{_kf5_configkcfgdir}/killbots.kcfg
 %{_kf5_debugdir}/killbots.categories
 %{_kf5_iconsdir}/hicolor/*/apps/killbots.*
 %{_kf5_sharedir}/killbots/
-%{_kf5_appstreamdir}/org.kde.killbots.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
