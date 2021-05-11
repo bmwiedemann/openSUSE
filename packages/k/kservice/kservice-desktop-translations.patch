@@ -1,0 +1,17 @@
+diff --git a/src/services/kservicegroup.cpp b/src/services/kservicegroup.cpp
+index b182b5a..16c2846 100644
+--- a/src/services/kservicegroup.cpp
++++ b/src/services/kservicegroup.cpp
+@@ -52,9 +52,9 @@ void KServiceGroupPrivate::load(const QString &cfg)
+ 
+     const KConfigGroup config = desktopFile.desktopGroup();
+ 
+-    m_strCaption = config.readEntry("Name");
+-    m_strIcon = config.readEntry("Icon");
+-    m_strComment = config.readEntry("Comment");
++    m_strCaption = desktopFile.readName();
++    m_strIcon = desktopFile.readIcon();
++    m_strComment = desktopFile.readComment();
+     deleted = config.readEntry("Hidden", false);
+     m_bNoDisplay = desktopFile.noDisplay();
+     m_strBaseGroupName = config.readEntry("X-KDE-BaseGroup");

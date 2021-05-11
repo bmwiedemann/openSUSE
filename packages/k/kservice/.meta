@@ -1,0 +1,5 @@
+<package name="kservice" project="openSUSE:Factory">
+  <title>kservice</title>
+  <description>KService</description>
+  <devel project="KDE:Frameworks5" package="kservice"/>
+</package>
