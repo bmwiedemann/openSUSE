@@ -19,7 +19,7 @@
 %global pkg_name pipes
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.3.15
+Version:        4.3.16
 Release:        0
 Summary:        Compositional pipelines
 License:        BSD-3-Clause

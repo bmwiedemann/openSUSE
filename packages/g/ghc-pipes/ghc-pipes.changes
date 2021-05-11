@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  7 09:28:58 UTC 2021 - psimons@suse.com
+
+- Update pipes to version 4.3.16.
+  4.3.16
+
+  * Fix example code for `every`
+  * Improved documentation for `ListT`
+
+-------------------------------------------------------------------
 Wed Feb 10 13:06:01 UTC 2021 - psimons@suse.com
 
 - Update pipes to version 4.3.15.
