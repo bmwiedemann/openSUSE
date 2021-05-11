@@ -126,7 +126,6 @@ done
 
 %files
 %{_bindir}/%{name}-*
-%dir %{_datadir}/applications
 %dir %{_datadir}/desktop-directories
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/menus

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 13:49:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem (bsc#1184786)
+
+-------------------------------------------------------------------
 Thu Apr  1 11:38:55 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - upstream update in source release
