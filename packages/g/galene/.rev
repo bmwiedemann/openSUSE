@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbdd4e77c46e8dda1560547568eee7f1</srcmd5>
+    <version>0.2</version>
+    <time>1611068589</time>
+    <user>dimstar_suse</user>
+    <comment>Please add this to Factory. It's a WebRTC server for giving lectures, IMO useful as light-weight alternative to Jitsi and BBB.</comment>
+    <requestid>864241</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0a7a604e4974fb4ff527190f5d678a6</srcmd5>
+    <version>0.3</version>
+    <time>1613774642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873575</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>44ba4c21e3b1e0fd7cf26f95eadc3117</srcmd5>
+    <version>0.3</version>
+    <time>1614274037</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874701</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df71aaa31f900c52c11cfcf42f3175dc</srcmd5>
+    <version>0.3.1</version>
+    <time>1614684725</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875522</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d3b68d3f11918324ae1857eebe63737</srcmd5>
+    <version>0.3.2</version>
+    <time>1614792877</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876313</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e866a070a8fb1802b2981f1889c3aecc</srcmd5>
+    <version>0.3.2</version>
+    <time>1614948423</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876594</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59c87601b85ada5e34bead2b13e11022</srcmd5>
+    <version>0.3.3</version>
+    <time>1618694688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886128</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93bd6eaaf3ce909e411cd5a6ae09ee19</srcmd5>
+    <version>0.3.4</version>
+    <time>1619552129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888869</requestid>
+  </revision>
+</revisionlist>
