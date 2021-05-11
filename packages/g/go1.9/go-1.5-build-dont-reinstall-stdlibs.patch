@@ -1,0 +1,37 @@
+Index: go/src/cmd/go/internal/work/build.go
+===================================================================
+--- go.orig/src/cmd/go/internal/work/build.go
++++ go/src/cmd/go/internal/work/build.go
+@@ -203,6 +203,8 @@ func init() {
+ // addBuildFlags adds the flags common to the build, clean, get,
+ // install, list, run, and test commands.
+ func AddBuildFlags(cmd *base.Command) {
++	// OPENSUSE                                        
++	cmd.Flag.BoolVar(&cfg.BuildS, "s", false, "")
+ 	cmd.Flag.BoolVar(&cfg.BuildA, "a", false, "")
+ 	cmd.Flag.BoolVar(&cfg.BuildN, "n", false, "")
+ 	cmd.Flag.IntVar(&cfg.BuildP, "p", cfg.BuildP, "")
+@@ -1571,6 +1573,11 @@ func (b *Builder) linkShared(a *Action)
+ 
+ // BuildInstallFunc is the action for installing a single package or executable.
+ func BuildInstallFunc(b *Builder, a *Action) (err error) {
++	// OPENSUSE                                        
++	if cfg.BuildS && (a.Package.Standard || a.Package.ImportPath == "cmd/cgo") {
++		return nil
++	}
++
+ 	defer func() {
+ 		if err != nil && err != errPrintedOutput {
+ 			err = fmt.Errorf("go install %s: %v", a.Package.ImportPath, err)
+Index: go/src/cmd/go/internal/cfg/cfg.go
+===================================================================
+--- go.orig/src/cmd/go/internal/cfg/cfg.go
++++ go/src/cmd/go/internal/cfg/cfg.go
+@@ -18,6 +18,7 @@ import (
+ 
+ // These are general "build flags" used by build and other commands.
+ var (
++	BuildS                 bool               // OPENSUSE -s (for packaging only)
+ 	BuildA                 bool   // -a flag
+ 	BuildBuildmode         string // -buildmode flag
+ 	BuildContext           = build.Default
