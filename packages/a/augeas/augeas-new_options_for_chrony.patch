@@ -1,0 +1,238 @@
+diff --git a/lenses/chrony.aug b/lenses/chrony.aug
+index 9ce177b..91c8ed5 100644
+--- a/lenses/chrony.aug
++++ b/lenses/chrony.aug
+@@ -79,6 +79,7 @@ module Chrony =
+          Server/Peer/Pool options with values
+     *)
+     let cmd_options = "asymmetry"
++                    | "filter"
+                     | "key"
+                     | /maxdelay((dev)?ratio)?/
+                     | /(min|max)poll/
+@@ -95,7 +96,7 @@ module Chrony =
+          Server/Peer/Pool options without values
+     *)
+     let cmd_flags = "auto_offline"|"iburst"|"noselect"|"offline"|"prefer"
+-                  |"require"|"trust"|"xleave"|"burst"
++                  |"require"|"trust"|"xleave"|"burst"|"nts"
+ 
+     (* Variable: ntp_source
+          Server/Peer/Pool key names
+@@ -111,7 +112,7 @@ module Chrony =
+          HW timestamping options with values
+     *)
+     let hwtimestamp_options = "minpoll"|"precision"|"rxcomp"|"txcomp"
+-                            |"rxfilter"
++                            |"minsamples"|"maxsamples"|"rxfilter"
+ 
+     (* Variable: hwtimestamp_flags
+          HW timestamping options without values
+@@ -153,6 +154,7 @@ module Chrony =
+               | "lock_all"
+               | "manual"
+               | "noclientlog"
++              | "nosystemcert"
+               | "rtconutc"
+               | "rtcsync"
+ 
+@@ -165,16 +167,22 @@ module Chrony =
+     (* Variable: simple_keys
+          Options with single values
+     *)
+-    let simple_keys = "acquisitionport" | "bindacqaddress"
+-                    | "bindaddress" | "bindcmdaddress" | "clientloglimit"
+-                    | "combinelimit" | "commandkey"
++    let simple_keys = "acquisitionport" | "authselectmode" | "bindacqaddress"
++                    | "bindaddress" | "bindcmdaddress" | "bindacqdevice"
++                    | "bindcmddevice" | "binddevice" | "clientloglimit"
++                    | "clockprecision" | "combinelimit" | "commandkey"
+                     | "cmdport" | "corrtimeratio" | "driftfile"
++                    | "dscp"
+                     | "dumpdir" | "hwclockfile" | "include" | "keyfile"
+                     | "leapsecmode" | "leapsectz" | "linux_freq_scale"
+                     | "linux_hz" | "logbanner" | "logchange" | "logdir"
+                     | "maxclockerror" | "maxdistance" | "maxdrift"
+                     | "maxjitter" | "maxsamples" | "maxslewrate"
++                    | "maxntsconnections"
+                     | "maxupdateskew" | "minsamples" | "minsources"
++                    | "nocerttimecheck" | "ntsdumpdir" | "ntsntpserver"
++                    | "ntsport" | "ntsprocesses" | "ntsrefresh" | "ntsrotate"
++                    | "ntsservercert" | "ntsserverkey" | "ntstrustedcerts"
+                     | "ntpsigndsocket" | "pidfile"
+                     | "port" | "reselectdist" | "rtcautotrim" | "rtcdevice"
+                     | "rtcfile" | "sched_priority" | "stratumweight" | "user"
+@@ -218,10 +226,11 @@ module Chrony =
+       - mailonchange <emailaddress> <threshold>
+       - makestep <threshold> <limit>
+       - maxchange <threshold> <delay> <limit>
+-      - ratelimit|cmdratelimit <options>
++      - ratelimit|cmdratelimit|ntsratelimit <options>
+       - refclock <driver> <parameter> <options>
+       - smoothtime <maxfreq> <maxwander> <options>
+       - tempcomp <sensorfile> <interval> (<t0> <k0> <k1> <k2> | <pointfile> )
++      - confdir|sourcedir <directories>
+     *)
+ 
+     (* View: host_list
+@@ -254,6 +263,13 @@ module Chrony =
+                       . ( space . [ label "port" . store integer ] )?
+                       . eol ]
+ 
++    (* View: bcast
++         confdir and sourcedir have specific syntax
++    *)
++    let dir_list = [ Util.indent . key /(conf|source)dir/
++                      . [ label "directory" . space . store no_space ]+
++                      . eol ]
++
+     (* View: fdrift
+          fallbackdrift has specific syntax
+     *)
+@@ -323,7 +339,7 @@ module Chrony =
+     (* View: ratelimit
+          ratelimit/cmdratelimit has specific syntax
+     *)
+-    let ratelimit = [ Util.indent . key /(cmd)?ratelimit/
++    let ratelimit = [ Util.indent . key /(cmd|nts)?ratelimit/
+                       . [ space . key ratelimit_options
+                               . space . store no_space ]*
+                       . eol ]
+@@ -375,7 +391,7 @@ module Chrony =
+  *)
+ let settings = host_list | allowdeny | log_list | bcast | fdrift | istepslew
+              | local | email | makestep | maxchange | refclock | smoothtime
+-             | hwtimestamp | ratelimit | tempcomp | kv | all_flags
++             | dir_list | hwtimestamp | ratelimit | tempcomp | kv | all_flags
+ 
+ (*
+  * View: lns
+diff --git a/lenses/tests/test_chrony.aug b/lenses/tests/test_chrony.aug
+index 9011caf..0c86cde 100644
+--- a/lenses/tests/test_chrony.aug
++++ b/lenses/tests/test_chrony.aug
+@@ -22,7 +22,7 @@ server ntp5.example.com maxdelay 2 offline
+ server ntp6.example.com maxdelay 2 iburst presend 2 xleave offset 1e-4
+ server ntp7.example.com iburst presend 2 offline prefer trust require
+ server ntp8.example.com minsamples 8 maxsamples 16 version 3
+-server ntp9.example.com burst mindelay 0.1 asymmetry 0.5
++server ntp9.example.com burst mindelay 0.1 asymmetry 0.5 nts filter 3
+ peer ntpc1.example.com
+ pool pool1.example.com iburst maxsources 3
+ allow
+@@ -35,6 +35,10 @@ stratumweight 0
+ makestep 10 -1
+ bindcmdaddress 127.0.0.1
+ bindcmdaddress ::1
++bindacqdevice eth0
++bindcmddevice eth0
++binddevice eth0
++clockprecision 10e-9
+ local
+ local stratum 10
+ local distance 1.0 orphan
+@@ -55,10 +59,12 @@ maxchange 1000 1 2
+ maxdistance 1.0
+ maxdrift 100
+ hwtimestamp eth0 minpoll -2 txcomp 300e-9 rxcomp 645e-9 nocrossts rxfilter all
++hwtimestamp eth1 minsamples 10 maxsamples 20
+ initstepslew 30 foo.bar.com
+ initstepslew 30 foo.bar.com baz.quz.com
+ ratelimit interval 4 burst 16 leak 2
+ cmdratelimit
++ntsratelimit
+ refclock SHM 0 refid SHM0 delay 0.1 offset 0.2 noselect tai stratum 3
+ refclock SOCK /var/run/chrony-GPS.sock pps width 0.1
+ refclock PPS /dev/pps0 dpoll 2 poll 3 lock SHM0 rate 5 minsamples 8
+@@ -66,6 +72,22 @@ smoothtime 400 0.001 leaponly
+ tempcomp /sys/class/hwmon/hwmon0/temp2_input 30 26000 0.0 0.000183 0.0
+ tempcomp /sys/class/hwmon/hwmon0/temp2_input 30 /etc/chrony.tempcomp
+ ntpsigndsocket /var/lib/samba/ntp_signd
++confdir /etc/chrony.d /usr/lib/chrony.d
++sourcedir /etc/chrony.d /var/run/chrony.d
++authselectmode require
++dscp 46
++maxntsconnections 10
++nocerttimecheck 1
++nosystemcert
++ntsservercert /etc/chrony/server.crt
++ntsserverkey /etc/chrony/server.key
++ntstrustedcerts /etc/chrony/trusted.crt
++ntsdumpdir /var/lib/chrony
++ntsntpserver foo.example.com
++ntsport 123
++ntsprocesses 2
++ntsrefresh 86400
++ntsrotate 86400
+ "
+ 
+   test Chrony.lns get exampleconf =
+@@ -117,6 +139,8 @@ ntpsigndsocket /var/lib/samba/ntp_signd
+     { "burst" }
+     { "mindelay" = "0.1" }
+     { "asymmetry" = "0.5" }
++    { "nts" }
++    { "filter" = "3" }
+   }
+   { "peer" = "ntpc1.example.com" }
+   { "pool" = "pool1.example.com"
+@@ -140,6 +164,10 @@ ntpsigndsocket /var/lib/samba/ntp_signd
+   }
+   { "bindcmdaddress" = "127.0.0.1" }
+   { "bindcmdaddress" = "::1" }
++  { "bindacqdevice" = "eth0" }
++  { "bindcmddevice" = "eth0" }
++  { "binddevice" = "eth0" }
++  { "clockprecision" = "10e-9" }
+   { "local" }
+   { "local"
+     { "stratum" = "10" }
+@@ -197,6 +225,11 @@ ntpsigndsocket /var/lib/samba/ntp_signd
+     { "nocrossts" }
+     { "rxfilter" = "all" }
+   }
++  { "hwtimestamp"
++    { "interface" = "eth1" }
++    { "minsamples" = "10" }
++    { "maxsamples" = "20" }
++  }
+   { "initstepslew"
+     { "threshold" = "30" }
+     { "address" = "foo.bar.com" }
+@@ -212,6 +245,7 @@ ntpsigndsocket /var/lib/samba/ntp_signd
+     { "leak" = "2" }
+   }
+   { "cmdratelimit" }
++  { "ntsratelimit" }
+   { "refclock"
+     { "driver" = "SHM" }
+     { "parameter" = "0" }
+@@ -256,6 +290,28 @@ ntpsigndsocket /var/lib/samba/ntp_signd
+     { "pointfile" = "/etc/chrony.tempcomp" }
+   }
+   { "ntpsigndsocket" = "/var/lib/samba/ntp_signd" }
++  { "confdir"
++    { "directory" = "/etc/chrony.d" }
++    { "directory" = "/usr/lib/chrony.d" }
++  }
++  { "sourcedir"
++    { "directory" = "/etc/chrony.d" }
++    { "directory" = "/var/run/chrony.d" }
++  }
++  { "authselectmode" = "require" }
++  { "dscp" = "46" }
++  { "maxntsconnections" = "10" }
++  { "nocerttimecheck" = "1" }
++  { "nosystemcert" }
++  { "ntsservercert" = "/etc/chrony/server.crt" }
++  { "ntsserverkey" = "/etc/chrony/server.key" }
++  { "ntstrustedcerts" = "/etc/chrony/trusted.crt" }
++  { "ntsdumpdir" = "/var/lib/chrony" }
++  { "ntsntpserver" = "foo.example.com" }
++  { "ntsport" = "123" }
++  { "ntsprocesses" = "2" }
++  { "ntsrefresh" = "86400" }
++  { "ntsrotate" = "86400" }
+ 
+ 
+ (* Local Variables: *)
