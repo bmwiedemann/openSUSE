@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 11 10:43:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.3
+  * New Setup/Audio/WASAPI Exclusive Mode option added.
+  * New Setup/MIDI/Auto Connect MIDI inputs option added.
+  * Fix deprecated Reverb/Chorus API (FluidSynth >= 2.2.0).
+  * All packaging builds switching to CMake.
+
+-------------------------------------------------------------------
 Mon Mar 15 11:18:07 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.2
