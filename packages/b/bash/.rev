@@ -1638,4 +1638,22 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     when temporarily running $PROMPT_COMMAND non-interactively.</comment>
     <requestid>862386</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>1eb378248da889833283886897e5f473</srcmd5>
+    <version>5.1.4</version>
+    <time>1620767006</time>
+    <user>dimstar_suse</user>
+    <comment>- Add official patch bash51-005
+  * Fix two memory leaks when assigning arrays using compound assignment syntax.
+- Add official patch bash51-006
+  * Make sure child processes forked to run command substitutions are in the
+    proper process group.
+- Add official patch bash51-007
+  * The code to check readline versions in an inputrc file had the sense of the
+    comparisons reversed. 
+- Add official patch bash51-008
+  * Process substitution FIFOs opened by child processes as targets of redirections
+    were not removed appropriately, leaving remnants in the file system.</comment>
+    <requestid>890765</requestid>
+  </revision>
 </revisionlist>

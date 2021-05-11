@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  5 14:59:54 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch bash51-005
+  * Fix two memory leaks when assigning arrays using compound assignment syntax.
+- Add official patch bash51-006
+  * Make sure child processes forked to run command substitutions are in the
+    proper process group.
+- Add official patch bash51-007
+  * The code to check readline versions in an inputrc file had the sense of the
+    comparisons reversed. 
+- Add official patch bash51-008
+  * Process substitution FIFOs opened by child processes as targets of redirections
+    were not removed appropriately, leaving remnants in the file system.
+-------------------------------------------------------------------
 Mon Jan 11 12:00:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to final bash 5.1

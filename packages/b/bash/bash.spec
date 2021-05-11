@@ -86,7 +86,7 @@ BuildRequires:  screen
 BuildRequires:  sed
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       /bin/bash
 Provides:       /bin/sh
 %global         _sysconfdir /etc
