@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Sun Apr 11 02:22:45 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.1
+  * Add Turkish translations
+  * Fix: Spelling Mistake in Track Editor
+  * Drop the configure wrapper script
+
+-------------------------------------------------------------------
+Fri Jan  1 01:22:15 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 2.1.0
+- Drop 0001-Include-stdexcept-for-std-runtime_error.patch
+
+-------------------------------------------------------------------
+Thu Jun  4 17:28:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Include-stdexcept-for-std-runtime_error.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 14:31:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.5. Check the CHANGELOG file for the complete list
+  of changes. Changes since 2.0.4:
+  * Improve off-track detection accuracy on curves
+  * Car dots in minimap are too small on very large tracks
+  * Add processing instructions to all existing tracks
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Apr 29 17:05:16 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.0.1:
+  * Editor: use qSetGlobalQHashSeed with Qt 5.6+.
+- Use %cmake and %cmake_install macros.
+- Don't call obsolete macros on Tumbleweed and Leap 15.
+
+-------------------------------------------------------------------
+Mon Dec 25 09:42:11 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 2.0.0
+  - New features:
+    * Animated game menus
+    * Always select difficulty and lap count after selecting "Play"
+    * "Cool down" laps for AI to prevent the destruction derby
+    * Bridge object as a mesh
+    * Font changed to DejaVu
+    * FPS setting menu
+    * Fully destructible tracks to make races more unpredictable
+    * New intro image
+    * New particle effects
+    * New randomized tree objects
+    * Editor: Add CLI option to force language
+    * Editor: Add option to force object stationary
+    * Editor: Lock qhash random seed so that XML output is not randomized
+  - Improvements:
+    * Improved driving dynamics. It's now possible to do burnouts
+    * Improved graphics and lighting
+    * Improvements and additions to many tracks
+    * Sound levels tuned
+  - Bug fixes:
+    * Fix GitHub issue #26: Undo resets tile rotations
+    * Fix GitHub issue #24: Change the game font to DejaVu
+    * Fix qmake build
+    * Fix some particle life times
+    * Fix some compiler warnings
+    * Fix shader deletion issues reported by Valgrind
+    * Fix clang build which attributes wrongly std=c++11 into C compiler flags
+    * Fix build with GLEW and QOpenGLFunctions=OFF
+    * Fix CMake dev build
+    * Editor: Fix object add on target nodes and other objects
+    * Editor: Fix the behavior of right-click
+    * Editor: Fix undo erasing computer hints
+    * Editor: Fix undo on target node resize and object rotation
+
+-------------------------------------------------------------------
+Mon Sep 11 18:19:07 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.13.0
+  - New features:
+    * Implement a minimap
+    * Editor: Implement universal undo stack
+    * Editor: Add option to insert row/col before or after
+  - Bug fixes:
+    * Fix GitHub issue #9: Editor segfaults when undoing a change on the last row/column which got deleted before
+    * Fix GitHub issue #19: Crash on exit on FreeBSD
+    * Fix a potential crash on settings loading
+
+-------------------------------------------------------------------
+Sat Dec 24 15:54:01 UTC 2016 - mailaender@opensuse.org
+
+- Drop appdata.patch (included upstream)
+- Update to version 1.12.0
+  * 7 new tracks by Wuzzy
+  * Add German translation
+  * Make the steering more stable
+  * Redo startlight graphics in SVG
+  * Improve log messages about translations.
+  * Editor: Improve override cursor logic.
+  * Editor: Remove dead code.
+  * Update Czech translations.
+  * Fix GitHub issue #7: Bad track preview images.
+  * Fix GitHub issue #6: Assertion failure when empty route cleared.
+  * Remove lower bridge rails for now.
+  * CMake: Switch to the recommended way to link Qt5
+
+-------------------------------------------------------------------
+Mon Aug 22 05:40:35 UTC 2016 - mailaender@opensuse.org
+
+- Add an appdata.xml file.
+
+-------------------------------------------------------------------
+Sat Jul 30 12:56:29 UTC 2016 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Sat Jul 30 09:52:29 UTC 2016 - mailaender@opensuse.org
+
+- fix license
+- use system fonts
+
+-------------------------------------------------------------------
+Fri May  1 13:02:54 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.11.0
+
+-------------------------------------------------------------------
+Sat Apr 11 06:20:19 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.10.0
+
+-------------------------------------------------------------------
+Sat Jan 24 12:30:41 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.9.2
+
+-------------------------------------------------------------------
+Thu Jan  1 19:12:18 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.9.1
+
+-------------------------------------------------------------------
+Tue Dec 30 20:02:10 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.8.3
+
+-------------------------------------------------------------------
+Thu Nov  6 15:35:05 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.8.0
+
+-------------------------------------------------------------------
+Sat Oct  4 16:26:56 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.7.3
+- build with Qt5 where available
+
+-------------------------------------------------------------------
+Wed Apr 16 08:46:32 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.7.2
+- added %post macros for .desktop file and icons
+
+-------------------------------------------------------------------
+Sun Mar  9 13:37:14 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.7.1
+
+-------------------------------------------------------------------
+Sun Feb 16 12:57:45 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.6.3
+
+-------------------------------------------------------------------
+Thu Dec 26 08:43:19 UTC 2013 - mailaender@opensuse.org
+
+- update to 1.6.2
+
+-------------------------------------------------------------------
+Sun Dec  1 12:38:15 UTC 2013 - mailaender@opensuse.org
+
+- Adjusted build dependencies of vorbisfile and glu to match better.
+
+-------------------------------------------------------------------
+Sun Dec  1 11:35:49 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 1.5.2
+
+-------------------------------------------------------------------
+Thu Oct  3 13:09:18 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 1.4.6
+
+-------------------------------------------------------------------
+Sat Sep 14 07:43:01 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 1.4.5
+- Adhere to https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Dec 19 19:14:45 UTC 2012 - joop.boonen@opensuse.org
+
+- Added BuildRequires: glu-devel as it's not a BuildRequirement
+  for Mesa-devel anymore for openSUSE > 12.2
+
+-------------------------------------------------------------------
+Tue Sep  4 15:17:48 UTC 2012 - mailaender@opensuse.org
+
+- Update to version 0.7.3
+  - FHS compatible installation patch is now in upstream
+
+-------------------------------------------------------------------
+Thu Aug 30 13:43:42 CEST 2012 - pth@suse.de
+
+- Replace the use of suse_update_desktop_file by calling
+  desktop-edit-file.
+
+-------------------------------------------------------------------
+Wed Aug 29 17:33:31 CEST 2012 - pth@suse.de
+
+- ADD RPM_OPT_FLAGS to options passed to compiler.
+- Modify the exec entry in the .desktop files.
+
+-------------------------------------------------------------------
+Wed Aug 29 17:21:27 CEST 2012 - pth@suse.de
+
+- Initial package for openSUSE
+- Install binaries in /usr/bin and data in /usr/share/games/DustRacing
