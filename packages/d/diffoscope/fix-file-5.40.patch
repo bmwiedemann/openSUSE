@@ -1,0 +1,117 @@
+From 7bf04a62623d234a870fd62b0ee745c9b940f5d7 Mon Sep 17 00:00:00 2001
+From: Mattia Rizzolo <mattia@debian.org>
+Date: Fri, 30 Apr 2021 16:37:21 +0200
+Subject: [PATCH] Make the testsuite pass with file v5.40
+
+Closes: reproducible-builds/diffoscope#250
+Signed-off-by: Mattia Rizzolo <mattia@debian.org>
+---
+ tests/comparators/test_binary.py | 11 +++++++++--
+ tests/data/archive12.diff.txt    |  4 ++--
+ tests/test_presenters.py         |  2 +-
+ tests/test_quines.py             |  8 +++++++-
+ tests/utils/tools.py             |  8 ++++++++
+ 5 files changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/tests/comparators/test_binary.py b/tests/comparators/test_binary.py
+index f5abc23d..77ccfe10 100644
+--- a/tests/comparators/test_binary.py
++++ b/tests/comparators/test_binary.py
+@@ -33,7 +33,11 @@ from diffoscope.comparators.missing_file import MissingFile
+ from diffoscope.comparators.utils.compare import Xxd
+ 
+ from ..utils.data import data, init_fixture, get_data, normalize_zeros
+-from ..utils.tools import skip_unless_tools_exist, skip_unless_module_exists
++from ..utils.tools import (
++    skip_unless_tools_exist,
++    skip_unless_module_exists,
++    file_version_is_lt,
++)
+ 
+ 
+ TEST_FILE1_PATH = data("binary1")
+@@ -56,7 +60,10 @@ def test_not_same_content(binary1, binary2):
+ 
+ 
+ def test_guess_file_type():
+-    assert File.guess_file_type(TEST_FILE1_PATH) == "data"
++    if file_version_is_lt("5.40"):
++        assert File.guess_file_type(TEST_FILE1_PATH) == "data"
++    else:
++        assert File.guess_file_type(TEST_FILE1_PATH) == "OpenPGP Public Key"
+ 
+ 
+ def test_guess_encoding_binary():
+diff --git a/tests/data/archive12.diff.txt b/tests/data/archive12.diff.txt
+index 27fd20ae..6276b2fb 100644
+--- a/tests/data/archive12.diff.txt
++++ b/tests/data/archive12.diff.txt
+@@ -11,5 +11,5 @@
+ │ │ +gzip compressed data, was "compressed", last modified: Sun Mar 19 22:27:42 2017, max compression, from Unix, truncated
+ │ ├── compressed
+ │ │ @@ -1 +1 @@
+-│ │ -a
+-│ │ +b
++│ │ -00000000: 610a                                     a.
++│ │ +00000000: 620a                                     b.
+diff --git a/tests/test_presenters.py b/tests/test_presenters.py
+index 98a01a8d..f785e156 100644
+--- a/tests/test_presenters.py
++++ b/tests/test_presenters.py
+@@ -85,7 +85,7 @@ def test_text_option_is_default(capsys):
+     assert out == get_data("output.txt")
+ 
+ 
+-@skip_unless_file_version_is_at_least("5.39")
++@skip_unless_file_version_is_at_least("5.40")
+ def test_text_proper_indentation(capsys):
+     out = run(capsys, pair=("archive1.tar", "archive2.tar"))
+ 
+diff --git a/tests/test_quines.py b/tests/test_quines.py
+index 784bd4c2..0769b1d4 100644
+--- a/tests/test_quines.py
++++ b/tests/test_quines.py
+@@ -23,7 +23,10 @@ from diffoscope.comparators.zip import ZipFile
+ from diffoscope.comparators.gzip import GzipFile
+ 
+ from .utils.data import load_fixture, get_data
+-from .utils.tools import skip_unless_file_version_is_at_least
++from .utils.tools import (
++    skip_unless_file_version_is_at_least,
++    file_version_is_ge,
++)
+ 
+ quine1 = load_fixture("quine.gz")
+ quine2 = load_fixture("quine.zip")
+@@ -54,6 +57,9 @@ def differences(quine1, quine2):
+ @skip_unless_file_version_is_at_least("5.37")
+ def test_difference(differences):
+     expected_diff = get_data("quine_expected_diff")
++    if file_version_is_ge("5.40"):
++        expected_diff = expected_diff[:-1]
++        expected_diff += ", compression method=deflate\n"
+     assert differences[0].unified_diff == expected_diff
+ 
+ 
+diff --git a/tests/utils/tools.py b/tests/utils/tools.py
+index 3311ab5b..2f67405c 100644
+--- a/tests/utils/tools.py
++++ b/tests/utils/tools.py
+@@ -39,6 +39,14 @@ def file_version():
+     )
+ 
+ 
++def file_version_is_lt(version):
++    return file_version() < version
++
++
++def file_version_is_ge(version):
++    return file_version() >= version
++
++
+ def tools_missing(*required):
+     return not required or any(find_executable(x) is None for x in required)
+ 
+-- 
+GitLab
+

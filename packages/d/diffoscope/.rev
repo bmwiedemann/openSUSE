@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d2d3a4b0e9d8655c21ebb8fc0398259</srcmd5>
+    <version>54</version>
+    <time>1485382662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>433083</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e1b54194dc593b57381da54abb2f40a</srcmd5>
+    <version>78</version>
+    <time>1489536421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479263</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7f9ea536d8163ecfefdfe2b54463e7b</srcmd5>
+    <version>85</version>
+    <time>1502012049</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514078</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e8deb6f54031faf5a47070c53342e66</srcmd5>
+    <version>105</version>
+    <time>1543224122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649348</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8aae2f339165b0280bdc1d59d4bd60f</srcmd5>
+    <version>113</version>
+    <time>1554749572</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring to the spec file
+- Use python macros
+- Run fdupes
+- Execute tests, but always make them pass 7 currently fail
+
+- update to version 113
+  * better handle missing helpers at runtime
+  * improved handling of zip, elf, pdf, wasm(WebAssembly) formats
+  * improved output readability</comment>
+    <requestid>691774</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac5d1fa939b14c8436f9b282847ebfc3</srcmd5>
+    <version>168</version>
+    <time>1615213145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877586</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3f01b8be7af9831985c944a0a327e198</srcmd5>
+    <version>168</version>
+    <time>1616598915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880707</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>088ab7e674968a5fbaeb78958201b4a9</srcmd5>
+    <version>173</version>
+    <time>1619973373</time>
+    <user>dimstar_suse</user>
+    <comment>- remove fix-tests-libmix_differences-2.patch, merged upstream
+- remove fix-tests-libmix_differences.patch, merged upstream
+- added fix-file-5.40.patch
+- update to version 173
+  * Add support for showing annotations in PDF files.
+    (Closes: reproducible-builds/diffoscope#249)
+  * Move to assert_diff in test_pdf.py.
+  * Difference.__init__: Demote unified_diff argument to a Python &quot;kwarg&quot;.
+- update to version 172
+  * If zipinfo(1) shows a difference but we cannot uncover a difference within
+    the underlying .zip or .apk file, add a comment and show the binary
+    comparison. (Closes: reproducible-builds/diffoscope#246)
+  * Make &quot;error extracting X, falling back to binary comparison E&quot; error
+    message nicer.
+- update to version 171
+  * Do not list as a &quot;skipping reason&quot; tools that do exist.
+  * Drop the &quot;compose&quot; tool from the list of required tools for these tests,
+    since it doesn't seem to be required.
+- update to version 170
+  * Avoid frequent long lines in RPM header outputs that cause very very slow
+    HTML outputs. (Closes: reproducible-builds/diffoscope#245)
+  * Fix test_libmix_differences on openSUSE Tumbleweed.
+    (Closes: reproducible-builds/diffoscope#244)
+  * Move test_rpm to use the assert_diff utility helper.
+  * Add a diffoscope.tools.get_tools() method to support programmatically
+    fetching Diffoscope's config.
+  * Become tolerant of malformed Debian .changes files.
+- update to version 169
+  * Optimisations:
+    - Use larger buffer/block sizes when extracting files from libarchive-
+      based archives.
+    - Use a much-shorter CSS class (instead of &quot;diffponct&quot;) to dramatically
+      reduce uncompressed HTML output.
+  * Logging improvements:
+    - Don't emit &quot;Unable to stat file&quot; warning/debug messages; we have
+      entirely-artificial directory entries such as ELF sections which, of
+      course, never exist as filesystem files.
+    - Don't emit a &quot;Returning a FooContainer&quot; logging message - we already emit
+      &quot;Instantiating a FooContainer&quot; one and are unlikely to fail in the
+      middle.
+    - Format the report size logging messages when generating HTML reports.
+    - Add the target directory when logging which directory we are extracting
+      containers to.
+  * Miscellaneous:
+    - Ignore &quot;--debug&quot; and similar arguments when creating a (hopefully useful)
+      temporary directory.
+    - Ensure all internal temporary directories have useful names.
+    - Clarify a comment regarding diffoscope not extracting excluded files.
+  * Skip a DEX-related test if the &quot;procyon&quot; tool is unavailable.
+</comment>
+    <requestid>889808</requestid>
+  </revision>
+</revisionlist>
