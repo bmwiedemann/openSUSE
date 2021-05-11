@@ -257,6 +257,8 @@ Patch1003:      nscd-netgroupcache.patch
 Patch1004:      nss-database-lookup.patch
 # PATCH-FIX-UPSTREAM linux: always update select timeout (BZ #27706)
 Patch1005:      select-modify-timeout.patch
+# PATCH-FIX-UPSTREAM: nptl_db: Support different libpthread/ld.so load orders (BZ #27744)
+Patch1006:      nptl-db-libpthread-load-order.patch
 
 ###
 # Patches awaiting upstream approval
@@ -480,6 +482,7 @@ Internal usrmerge bootstrap helper
 %patch1003 -p1
 %patch1004 -p1
 %patch1005 -p1
+%patch1006 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -490,9 +493,6 @@ Internal usrmerge bootstrap helper
 # Disable LTO due to a usage of top-level assembler that
 #  causes LTO issues (boo#1138807).
 %define _lto_cflags %{nil}
-%if "%flavor" == "i686"
-%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic
-%endif
 if [ -x /bin/uname.bin ]; then
 	/bin/uname.bin -a
 else
@@ -527,9 +527,15 @@ for opt in $tmp; do
     -fstack-protector-*) enable_stack_protector=${opt#-fstack-protector-} ;;
     -fstack-protector) enable_stack_protector=yes ;;
     -ffortify=* | *_FORTIFY_SOURCE*) ;;
+%if "%flavor" == "i686"
+    *i586*) BuildFlags+=" ${opt/i586/i686}" ;;
+%endif
     *) BuildFlags+=" $opt" ;;
   esac
 done
+%if "%flavor" == "i686"
+BuildFlags+=" -march=i686 -mtune=generic"
+%endif
 BuildCC="%__cc"
 BuildCCplus="%__cxx"
 #

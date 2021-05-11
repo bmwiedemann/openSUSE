@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 12:19:24 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- nptl-db-libpthread-load-order.patch: nptl_db: Support different
+  libpthread/ld.so load orders (bsc#1184214, BZ #27744)
+
+-------------------------------------------------------------------
 Tue Apr 13 11:44:37 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Enable support for static PIE (bsc#1184646)
