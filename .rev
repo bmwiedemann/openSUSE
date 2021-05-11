@@ -1317,4 +1317,12 @@ Also wanted for 13.1</comment>
   + Use meson summary function instead of custom output(boo#1184104). (forwarded request 885822 from qkzhu)</comment>
     <requestid>886222</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>6c52d9a7b598e08291d6c98aa004df62</srcmd5>
+    <version>1.48.1</version>
+    <time>1620334306</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890076 from dimstar)</comment>
+    <requestid>890137</requestid>
+  </revision>
 </revisionlist>
