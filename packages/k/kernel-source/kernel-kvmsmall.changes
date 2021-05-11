@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri May  7 20:04:24 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.12.2 (bsc#1012628).
+- perf/core: Fix unconditional security_locked_down() call
+  (bsc#1012628).
+- platform/x86: thinkpad_acpi: Correct thermal sensor allocation
+  (bsc#1012628).
+- USB: Add reset-resume quirk for WD19's Realtek Hub
+  (bsc#1012628).
+- USB: Add LPM quirk for Lenovo ThinkPad USB-C Dock Gen2 Ethernet
+  (bsc#1012628).
+- ALSA: usb-audio: Fix implicit sync clearance at stopping stream
+  (bsc#1012628).
+- ALSA: usb-audio: Add MIDI quirk for Vox ToneLab EX
+  (bsc#1012628).
+- ovl: allow upperdir inside lowerdir (bsc#1012628).
+- ovl: fix leaked dentry (bsc#1012628).
+- net: qrtr: Avoid potential use after free in MHI send
+  (bsc#1012628).
+- bpf: Fix leakage of uninitialized bpf stack under speculation
+  (bsc#1012628).
+- bpf: Fix masking negation logic upon negative dst register
+  (bsc#1012628).
+- drm/i915: Disable runtime power management during shutdown
+  (bsc#1012628).
+- net: usb: ax88179_178a: initialize local variables before use
+  (bsc#1012628).
+- netfilter: conntrack: Make global sysctls readonly in non-init
+  netns (bsc#1012628).
+- mips: Do not include hi and lo in clobber list for R6
+  (bsc#1012628).
+- commit 85a2a31
+
+-------------------------------------------------------------------
+Thu May  6 08:10:21 CEST 2021 - mkubecek@suse.cz
+
+- config: disable kfence by default (bsc#1185565)
+  Apperently the overhead of kfence is not as negligible as the help text
+  seemed to promise so that it seems more appropriate to disable kfence by
+  default by setting CONFIG_KFENCE_SAMPLE_INTERVAL to 0. Anyone who wants to
+  enable it can still do so using the kfence.sample_interval command line
+  parameter.
+- commit 5d73dc7
+
+-------------------------------------------------------------------
+Wed May  5 13:37:57 CEST 2021 - msuchanek@suse.de
+
+- Fix vanilla ppc64 build.
+- commit f1085cb
+
+-------------------------------------------------------------------
+Wed May  5 09:45:14 CEST 2021 - mkubecek@suse.cz
+
+- rpm: drop /usr/bin/env in interpreter specification
+  OBS checks don't like /usr/bin/env in script interpreter lines but upstream
+  developers tend to use it. A proper solution would be fixing the depedency
+  extraction and drop the OBS check error but that's unlikely to happen so
+  that we have to work around the problem on our side and rewrite the
+  interpreter lines in scripts before collecting files for packages instead.
+- commit 45c5c1a
+
+-------------------------------------------------------------------
+Tue May  4 10:05:31 CEST 2021 - dwagner@suse.de
+
+- scripts/git_sort/git_sort.py: Update nvme repositories
+- commit e849c44
+
+-------------------------------------------------------------------
+Sun May  2 13:46:37 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.12.1 (bsc#1012628).
+- mei: me: add Alder Lake P device id (bsc#1012628).
+- cfg80211: fix locking in netlink owner interface destruction
+  (bsc#1012628).
+- iwlwifi: Fix softirq/hardirq disabling in
+  iwl_pcie_gen2_enqueue_hcmd() (bsc#1012628).
+- USB: CDC-ACM: fix poison/unpoison imbalance (bsc#1012628).
+- net: hso: fix NULL-deref on disconnect regression (bsc#1012628).
+- commit 9f237a4
+
+-------------------------------------------------------------------
+Sat May  1 09:50:18 CEST 2021 - msuchanek@suse.de
+
+- powerpc/64: BE option to use ELFv2 ABI for big endian kernels
+  (BTFIDS vmlinux FAILED unresolved symbol vfs_truncate).
+  Update config files.
+- commit 17ebdf1
+
+-------------------------------------------------------------------
+Fri Apr 30 11:36:22 CEST 2021 - schwab@suse.de
+
+- rpm/constraints.in: bump disk space to 45GB on riscv64
+- commit f8b883f
+
+-------------------------------------------------------------------
+Thu Apr 29 14:54:16 CEST 2021 - tiwai@suse.de
+
+- Update config files: fix armv7hl/lpae config (bsc#1152773)
+  CONFIG_OABI_COMPAT was left enabled mistakenly on lpae flavor, which
+  resulted in the disablement of CONFIG_SECCOMP_FILTER.  Fix those.
+  CONFIG_OABI_COMPAT -> disabled
+  CONFIG_SECCOMP_FILTER=y
+  CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
+  Also corrected the following with the update:
+  CONFIG_HAVE_ARCH_AUDITSYSCALL=y
+  CONFIG_AUDITSYSCALL=y
+  CONFIG_FPE_NWFPE -> removed
+  CONFIG_FPE_NWFPE_XP -> removed
+  CONFIG_FPE_FASTFPE -> removed
+- commit 644711e
+
+-------------------------------------------------------------------
 Wed Apr 28 06:31:30 CEST 2021 - jslaby@suse.cz
 
 - rpm/constraints.in: remove aarch64 disk size exception

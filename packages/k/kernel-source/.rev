@@ -5447,4 +5447,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>unbreak ARMs &amp; crypto fix</comment>
     <requestid>889303</requestid>
   </revision>
+  <revision rev="586" vrev="1">
+    <srcmd5>fa70fb4b45c97d0b5fad9dc3f0ea279d</srcmd5>
+    <version>5.12.2</version>
+    <time>1620767011</time>
+    <user>dimstar_suse</user>
+    <comment>5.12.2 &amp; 5.12.1 &amp; kasan fix &amp; other fixes</comment>
+    <requestid>891383</requestid>
+  </revision>
 </revisionlist>

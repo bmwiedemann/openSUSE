@@ -166,6 +166,26 @@
     </hardware>
   </overwrite>
 
+  <!-- 45GB for binary packages on riscv64 -->
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+<package>kernel-64kb</package>
+<package>kernel-debug</package>
+<package>kernel-default</package>
+<package>kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-pae</package>
+<package>kernel-vanilla</package>
+<package>kernel-zfcpdump</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">45</size>
+      </disk>
+    </hardware>
+  </overwrite>
+
   <overwrite>
     <conditions>
       <arch>i586</arch>
