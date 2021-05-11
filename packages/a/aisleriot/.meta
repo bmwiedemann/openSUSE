@@ -1,0 +1,5 @@
+<package name="aisleriot" project="openSUSE:Factory">
+  <title>Solitaire Card Games for GNOME</title>
+  <description>Aisleriot is a compilation of 80 different solitaire card games.</description>
+  <devel project="GNOME:Factory" package="aisleriot"/>
+</package>
