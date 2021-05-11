@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sun Mar 21 16:31:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + rdp: Add support for FreeRDP 2.3, support 2.3, requires at
+    least 2.2.
+  + Manu bugfixes.
+- Add pkgconfig(freerdp-client2), pkgconfig(freerdp-server2),
+  pkgconfig(fuse3), pkgconfig(libvncclient),
+  pkgconfig(libvncserver), and pkgconfig(xkbcommon) BuildRequires:
+  better align with what meson looks for.
+- Change _service file to point to the proper upstream git repo
+  (gitlab.gnome.org/GNOME/gnome-remote-desktop).
+- Drop gnutls-anontls.patch,
+  0001-vnc-Copy-pixels-using-the-right-destination-stride.patch
+  0001-vnc-Drop-frames-if-client-is-gone.patch: fixed upstream:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jan  8 15:37:47 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 0.1.9:
+  + add support for RDP (requires freerdp2)
+  + many bugfixes
+- Add pkgconfig(freerdp2), pkgconfig(winpr2), pkgconfig(cairo) as
+  BuildRequires.
+- Bump pipewire minimum version to 0.3.0.
+- Update url to GNOME main project.
+- Add0001-vnc-Drop-frames-if-client-is-gone.patch
+  Avoid race condition on disconnect (glgo#GNOME/gnome-remote-desktop#43)
+- Add gnutls-anontls.patch (Fedora), requires patched libVNCServer.
+- Add 0001-vnc-Copy-pixels-using-the-right-destination-stride.patch:
+  Copy using the right destination stride (glgo#GNOME/gnome-remote-desktop!21)
+
+-------------------------------------------------------------------
+Sun Mar 22 14:01:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.8:
+  + Port to pipewire-0.3.
+- Replace pkgconfig(libpipewire-0.2) with
+  pkgconfig(libpipewire-0.3) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Oct 18 19:47:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.7:
+  + vnc-pipewire-stream:
+    - Assume no bitmap offset means no bitmap change.
+    - Close session when disconnected.
+  + vnc:
+    - Request cursor sprite as PipeWire metadata.
+    - Detach source when client is gone.
+  + session/vnc:
+    - Set rfbScreenPtr pointer earlier.
+    - Update server format earlier too.
+    - Always set pixel format translate functions.
+    - Don't requeue close session idle.
+  + Use type safety feature of glib 2.58.
+  + meson.build: Use default C standard.
+  + Remove autogen.sh and Makefile.
+  + meson.build: Bump pipewire requirement to 0.2.2.
+- Drop pipewire-bump.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 26 21:18:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.6:
+  + Please see https://gitlab.gnome.org/jadahl/gnome-remote-desktop
+- Add pkgconfig(libnotify), pkgconfig(libpipewire-0.2) and
+  pkgconfig(libsecret-1) BuildRequires: New dependencies.
+- Drop gnome-remote-desktop-bad-meson-option.patch: Fixed upstream.
+- Add pipewire-bump.patch: Fix build with new pipewire.
+
+-------------------------------------------------------------------
+Thu May 17 01:03:37 UTC 2018 - hpj@suse.com
+
+- Initial package.
