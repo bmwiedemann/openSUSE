@@ -582,4 +582,12 @@ a newer version not fitting</comment>
     <comment>GNOME 40 - here we come (forwarded request 880935 from dimstar)</comment>
     <requestid>881108</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b40a13c83ddc68b1546579509bed70bc</srcmd5>
+    <version>2.68.1</version>
+    <time>1620334302</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890067 from dimstar)</comment>
+    <requestid>890129</requestid>
+  </revision>
 </revisionlist>

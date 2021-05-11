@@ -18,7 +18,7 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.68.0
+Version:        2.68.1
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
