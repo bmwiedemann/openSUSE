@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat May  8 10:46:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.37.0
+  * Address registration line for reg.i2p and stats.i2p through the
+    web console
+  * "4" and "6" caps for addresses without published IP address
+  * Fixed incoming SSU session termination after 5 seconds
+  * Floodfills with "U" cap are not ignored anymore
+  * Show actual IP addresses for proxy connections
+  * address4 and address6 parameters to bind outgoing connections
+    to lookuplocal BOB extended command
+  * Mesh and Proxy network statuses
+  * Symmetric NAT network status error
+  * NTCP2 and reseed HTTP proxy support authorization now
+  * Fixed race condition between tunnel build and floodfill
+    requests decryption for ECIES routers
+  * Correct handling of numeric bandwidth limitation
+  * Rekey of low-bandwidth routers to ECIES
+  * Bind server tunnel connection to specified address
+  * Outbound tunnel endpoint must be ipv4 compatible
+  * Allow incoming Yggdrasil connection if NTCP2 is connected
+    through a proxy
+- Update to version 2.36.0
+  * ECIES-x25519 (crypto type 4) for new routers
+  * reg.i2p for default addressbook instead inr.i2p
+  * Yggdrasil transports and reseeds
+  * Encrypted lookup and publications to ECIES-x25519 floodfiils
+  * Dump addressbook in hosts.txt format
+  * Try to connect to all compatible addresses from peer's
+    RouterInfo
+  * ECIES-X25519-AEAD-Ratchet for shared local destination
+  * Fixed handling chunked HTTP response in addressbook
+  * Calculate missing ECIES-X25519-AEAD-Ratchet tags for multiple
+    streams with the same destination
+  * Request RouterInfo through exploratory tunnels if direct
+    connection to fllodfill is not possible
+  * Select reachable router of inbound tunnel gateway
+  * Reseed if no compatible routers in netdb
+  * Check if public x25519 key is valid
+  * Replace LeaseSet completely if store type changes
+  * Limit tunnel length to 8 hops and quantity to 16
+  * Decrypt follow-on ECIES-X25519-AEAD-Ratchet NSR messages
+  * Fixed SSU crash on termination
+  * Correct NAME for NAMING REPLY in SAM
+  * Viewport and styles on error in HTTP proxy
+  * Cumulative SSU ACK bitfields
+
+-------------------------------------------------------------------
 Wed Jan 20 03:44:43 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 2.35.0
