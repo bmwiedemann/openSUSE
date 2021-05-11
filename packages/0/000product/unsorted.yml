@@ -105,9 +105,7 @@ unsorted:
   - Mesa-libglapi-devel-32bit: [x86_64] 
   - Mesa-libglapi0-32bit: [x86_64] 
   - Mesa-vulkan-device-select 
-  - Mesa-vulkan-device-select-32bit: [x86_64] 
   - Mesa-vulkan-overlay 
-  - Mesa-vulkan-overlay-32bit: [x86_64] 
   - MicroOS-release-appliance-kubic 
   - MicroOS-release-dvd 
   - MicroOS-release-kubic-dvd 
@@ -2067,7 +2065,6 @@ unsorted:
   - cockpit-devel 
   - cockpit-doc 
   - cockpit-kdump 
-  - cockpit-machines 
   - cockpit-networkmanager 
   - cockpit-packagekit 
   - cockpit-pcp 
@@ -2522,6 +2519,7 @@ unsorted:
   - csvprintf 
   - csync 
   - csync2 
+  - ctags 
   - ctdb 
   - ctdb-pcp-pmda 
   - ctris 
@@ -9008,15 +9006,25 @@ unsorted:
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DRender6 
+  - libQt6Bodymovin6 
+  - libQt6Charts6 
   - libQt6Coap6 
   - libQt6Concurrent6 
   - libQt6Core5Compat6 
   - libQt6Core6 
   - libQt6DBus6 
+  - libQt6DataVisualization6 
   - libQt6Designer6 
   - libQt6DesignerComponents6 
   - libQt6Gui6 
   - libQt6Help6 
+  - libQt6HunspellInputMethod6 
+  - libQt6LabsAnimation6 
+  - libQt6LabsFolderListModel6 
+  - libQt6LabsQmlModels6 
+  - libQt6LabsSettings6 
+  - libQt6LabsSharedImage6 
+  - libQt6LabsWavefrontMesh6 
   - libQt6Mqtt6 
   - libQt6Network6 
   - libQt6NetworkAuth6 
@@ -9025,6 +9033,7 @@ unsorted:
   - libQt6OpenGLWidgets6 
   - libQt6PrintSupport6 
   - libQt6Qml6 
+  - libQt6QmlLocalStorage6 
   - libQt6QmlModels6 
   - libQt6QmlWorkerScript6 
   - libQt6Quick3D6 
@@ -9034,6 +9043,7 @@ unsorted:
   - libQt6Quick6 
   - libQt6QuickControls2-6 
   - libQt6QuickControls2Impl6 
+  - libQt6QuickLayouts6 
   - libQt6QuickParticles6 
   - libQt6QuickShapes6 
   - libQt6QuickTemplates2-6 
@@ -9045,6 +9055,7 @@ unsorted:
   - libQt6SvgWidgets6 
   - libQt6Test6 
   - libQt6UiTools6 
+  - libQt6VirtualKeyboard6 
   - libQt6WaylandClient6 
   - libQt6WaylandCompositor6 
   - libQt6Widgets6 
@@ -9879,9 +9890,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -9932,7 +9943,7 @@ unsorted:
   - libcircle2 
   - libcircllhist-devel 
   - libcircllhist0_0_1 
-  - libcivetweb1_13_0 
+  - libcivetweb1_14_0 
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
@@ -10802,6 +10813,7 @@ unsorted:
   - libglue-devel-32bit: [x86_64] 
   - libglue2 
   - libglue2-32bit: [x86_64] 
+  - libglusterd0 
   - libglut3 
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
@@ -13028,8 +13040,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13052,7 +13064,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13281,7 +13293,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -14958,9 +14970,6 @@ unsorted:
   - lsyncd 
   - ltrace 
   - ltrace-32bit: [x86_64] 
-  - lttng-modules 
-  - lttng-modules-kmp-default 
-  - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
   - lttng-ust-devel 
@@ -20994,6 +21003,7 @@ unsorted:
   - python3-GitgExt 
   - python3-Hamlib 
   - python3-HepMC 
+  - python3-HyperKitty 
   - python3-Keras-Preprocessing: [x86_64] 
   - python3-MapProxy 
   - python3-OpenImageIO 
@@ -21051,6 +21061,7 @@ unsorted:
   - python3-deltarpm 
   - python3-designateclient 
   - python3-dfVFS 
+  - python3-django-mailman3 
   - python3-django-storages 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
@@ -24178,7 +24189,6 @@ unsorted:
   - python38-GridDataFormats 
   - python38-HTTPolice 
   - python38-HeapDict 
-  - python38-HyperKitty 
   - python38-IMAPClient 
   - python38-IMDbPY 
   - python38-JPype1 
@@ -26689,7 +26699,6 @@ unsorted:
   - python38-suds-jurko 
   - python38-sunpy 
   - python38-suntime 
-  - python38-superpaper 
   - python38-sure 
   - python38-svgpathtools: [x86_64] 
   - python38-svgwrite 
@@ -30184,6 +30193,14 @@ unsorted:
   - qt6-base-docs-qch 
   - qt6-base-examples 
   - qt6-base-private-devel 
+  - qt6-bodymovin-devel 
+  - qt6-bodymovin-private-devel 
+  - qt6-charts-devel 
+  - qt6-charts-docs-html 
+  - qt6-charts-docs-qch 
+  - qt6-charts-examples 
+  - qt6-charts-imports 
+  - qt6-charts-private-devel 
   - qt6-coap-devel 
   - qt6-coap-docs-html 
   - qt6-coap-docs-qch 
@@ -30192,6 +30209,12 @@ unsorted:
   - qt6-concurrent-devel 
   - qt6-core-devel 
   - qt6-core-private-devel 
+  - qt6-datavis3d-docs-html 
+  - qt6-datavis3d-docs-qch 
+  - qt6-datavis3d-examples 
+  - qt6-datavisualization-devel 
+  - qt6-datavisualization-imports 
+  - qt6-datavisualization-private-devel 
   - qt6-dbus-devel 
   - qt6-dbus-private-devel 
   - qt6-declarative-devel 
@@ -30208,13 +30231,30 @@ unsorted:
   - qt6-gui-private-devel 
   - qt6-help-devel 
   - qt6-help-private-devel 
+  - qt6-hunspellinputmethod-devel 
+  - qt6-hunspellinputmethod-private-devel 
   - qt6-imageformats 
   - qt6-imageformats-devel 
   - qt6-imageformats-docs-html 
   - qt6-imageformats-docs-qch 
   - qt6-kmssupport-devel-static 
   - qt6-kmssupport-private-devel 
+  - qt6-labsanimation-devel 
+  - qt6-labsanimation-private-devel 
+  - qt6-labsfolderlistmodel-devel 
+  - qt6-labsfolderlistmodel-private-devel 
+  - qt6-labsqmlmodels-devel 
+  - qt6-labsqmlmodels-private-devel 
+  - qt6-labssettings-devel 
+  - qt6-labssettings-private-devel 
+  - qt6-labssharedimage-devel 
+  - qt6-labssharedimage-private-devel 
+  - qt6-labswavefrontmesh-devel 
+  - qt6-labswavefrontmesh-private-devel 
   - qt6-linguist-devel 
+  - qt6-lottie-docs-html 
+  - qt6-lottie-docs-qch 
+  - qt6-lottie-imports 
   - qt6-macros 
   - qt6-mqtt-devel 
   - qt6-mqtt-docs-html 
@@ -30222,6 +30262,7 @@ unsorted:
   - qt6-mqtt-examples 
   - qt6-mqtt-private-devel 
   - qt6-network-devel 
+  - qt6-network-informationbackends 
   - qt6-network-private-devel 
   - qt6-networkauth-devel 
   - qt6-networkauth-docs-html 
@@ -30254,6 +30295,10 @@ unsorted:
   - qt6-qmldebug-devel-static 
   - qt6-qmldebug-private-devel 
   - qt6-qmldevtools-devel-static 
+  - qt6-qmldom-devel-static 
+  - qt6-qmldom-private-devel 
+  - qt6-qmllocalstorage-devel 
+  - qt6-qmllocalstorage-private-devel 
   - qt6-qmlmodels-devel 
   - qt6-qmlmodels-private-devel 
   - qt6-qmlworkerscript-devel 
@@ -30285,6 +30330,8 @@ unsorted:
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
   - qt6-quickcontrols2impl-private-devel 
+  - qt6-quicklayouts-devel 
+  - qt6-quicklayouts-private-devel 
   - qt6-quickparticles-devel 
   - qt6-quickparticles-private-devel 
   - qt6-quickshapes-devel 
@@ -30312,6 +30359,7 @@ unsorted:
   - qt6-svg-devel 
   - qt6-svg-docs-html 
   - qt6-svg-docs-qch 
+  - qt6-svg-examples 
   - qt6-svg-private-devel 
   - qt6-test-devel 
   - qt6-test-private-devel 
@@ -30331,6 +30379,13 @@ unsorted:
   - qt6-translations 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
+  - qt6-virtualkeyboard 
+  - qt6-virtualkeyboard-devel 
+  - qt6-virtualkeyboard-docs-html 
+  - qt6-virtualkeyboard-docs-qch 
+  - qt6-virtualkeyboard-examples 
+  - qt6-virtualkeyboard-imports 
+  - qt6-virtualkeyboard-private-devel 
   - qt6-wayland 
   - qt6-wayland-devel 
   - qt6-wayland-docs-html 
@@ -30418,7 +30473,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -32001,6 +32056,7 @@ unsorted:
   - superlu_5_2_2-gnu-hpc-devel 
   - superlu_5_2_2-gnu-hpc-doc 
   - superlu_5_2_2-gnu-hpc-examples 
+  - superpaper 
   - supertux2 
   - supertuxkart 
   - supertuxkart-data 

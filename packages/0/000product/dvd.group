@@ -1135,6 +1135,7 @@
     <package name="kernel-firmware-nvidia" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-platform" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-prestera" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-qcom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-qlogic" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-radeon" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-realtek" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3136,8 +3137,8 @@
     <package name="nemiver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nemiver-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="net-snmp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="netcat-openbsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="netpbm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3622,6 +3623,7 @@
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python3-mailman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3723,7 +3725,6 @@
     <package name="python38-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="python38-mailman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-matplotlib-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-matplotlib-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4525,7 +4526,7 @@
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-pl-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="tracker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tracker-data-files" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tracker-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
