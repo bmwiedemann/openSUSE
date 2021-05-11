@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40d1afff90e42797a3051354be52785d</srcmd5>
+    <version>1.0.0</version>
+    <time>1607612346</time>
+    <user>dimstar_suse</user>
+    <comment>New container image acting as DLNA server</comment>
+    <requestid>854528</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1e435d0ecb6bd5366d2240a82d6679c</srcmd5>
+    <version>1.0.0</version>
+    <time>1608031885</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix parsing of environment variables (whitespaces in values) (forwarded request 855916 from kukuk)</comment>
+    <requestid>855932</requestid>
+  </revision>
+</revisionlist>
