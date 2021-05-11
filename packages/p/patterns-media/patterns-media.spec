@@ -491,9 +491,7 @@ Obsoletes:      patterns-openSUSE-rest_dvd < %{version}
 %ifnarch s390x
 Requires:       pattern() = gnome
 Requires:       pattern() = gnome_basis
-Requires:       pattern() = gnome_basis_opt
 Requires:       pattern() = gnome_games
-Requires:       pattern() = gnome_ide
 Requires:       pattern() = gnome_imaging
 Requires:       pattern() = gnome_internet
 Requires:       pattern() = gnome_multimedia

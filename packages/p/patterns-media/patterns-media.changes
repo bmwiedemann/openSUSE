@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 11 07:37:37 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop (almost empty) gnome_basis_opt pattern from the DVD (no relevance).
+- Drop gnome_ide pattern from DVD (mainly gnome-builder, users of
+  it will want many more devel packages, so they use the FTP
+  tree anyway).
+
+-------------------------------------------------------------------
 Tue May  4 15:14:56 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Use xfce4-pulseaudio-plugin instead of obsolete xfce4-mixer.

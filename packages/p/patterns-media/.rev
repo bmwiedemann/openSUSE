@@ -293,4 +293,14 @@
     <comment></comment>
     <requestid>890460</requestid>
   </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>a360d75265904b7081a805780349dc6a</srcmd5>
+    <version>20170319</version>
+    <time>1620718761</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop (almost empty) gnome_basis_opt pattern from the DVD (no relevance).
+- Drop gnome_ide pattern from DVD (mainly gnome-builder, users of
+  it will want many more devel packages, so they use the FTP
+  tree anyway).</comment>
+  </revision>
 </revisionlist>
