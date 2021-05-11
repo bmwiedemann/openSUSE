@@ -1,0 +1,22 @@
+Index: cppcheck-2.4.1/test/testexprengine.cpp
+===================================================================
+--- cppcheck-2.4.1.orig/test/testexprengine.cpp
++++ cppcheck-2.4.1/test/testexprengine.cpp
+@@ -811,12 +811,17 @@ private:
+                             "  *x = 2;\n"
+                             "  *x = 1;\n"
+                             "}";
++#if INTPTR_MAX == INT64_MAX
++        // for 32bit the situation is more complex, armv7l has ffffffff,
++        // i586 has hfffffffflffffffff - so better not test this in those
++        // situations
+         ASSERT_EQUALS("1:28: $2=ArrayValue([$1],[:]=?,null)\n"
+                       "1:28: $1=IntRange(1:ffffffffffffffff)\n"
+                       "1:28: 0:memory:{x=($2,[$1],[:]=?)}\n"
+                       "2:9: 0:memory:{x=($2,[$1],[:]=?,[0]=2)}\n"
+                       "3:9: 0:memory:{x=($2,[$1],[:]=?,[0]=1)}\n",
+                       trackExecution(code));
++#endif
+     }
+ 
+     void arrayInit1() {
