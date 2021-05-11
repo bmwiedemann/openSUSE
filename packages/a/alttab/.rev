@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5617c1dd8fd975ff61b89815f05c9c6</srcmd5>
+    <version>1.4.0</version>
+    <time>1560862755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710498</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3e3b49cfeaad72bc3152adc28d308f6</srcmd5>
+    <version>1.4.0</version>
+    <time>1573044750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739577</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3afc1b7733adb522ab54a7bdc8f7f829</srcmd5>
+    <version>1.4.0</version>
+    <time>1591879987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813440</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>917186fa40545af38462760f167271e9</srcmd5>
+    <version>1.5.0</version>
+    <time>1595585459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * Use xpm icons and pixmap directories.
+  * Use XDG_DATA_DIRS.
+  * Add extra keys: next/prev, cancel.
+  * Optimize main event loop.
+  * Fix numerous memleaks and overflows.
+  * Satisfy gcc 10 requirements.</comment>
+    <requestid>822568</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec28ec60c27cfb105fe33b167ac557a4</srcmd5>
+    <version>1.6.0</version>
+    <time>1615802193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Fix major memory leak when huge icons are not used.
+  * Debug by SIGUSR1.
+  * Add test suite: running in headless X server.
+  * Add github CI pipeline.
+  * Bspwm documentation.
+  * Fix possible strncpy overflows.</comment>
+    <requestid>879121</requestid>
+  </revision>
+</revisionlist>

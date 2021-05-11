@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Mar 15 09:27:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * Fix major memory leak when huge icons are not used.
+  * Debug by SIGUSR1.
+  * Add test suite: running in headless X server.
+  * Add github CI pipeline.
+  * Bspwm documentation.
+  * Fix possible strncpy overflows.
+
+-------------------------------------------------------------------
+Fri Jul 24 07:51:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.0:
+  * Use xpm icons and pixmap directories.
+  * Use XDG_DATA_DIRS.
+  * Add extra keys: next/prev, cancel.
+  * Optimize main event loop.
+  * Fix numerous memleaks and overflows.
+  * Satisfy gcc 10 requirements.
+
+-------------------------------------------------------------------
+Thu Jun 11 09:39:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow the package to build with GCC10 
+
+-------------------------------------------------------------------
+Thu Oct 17 13:05:12 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Tue Jun 18 07:35:47 UTC 2019 - mvetter@suse.com
+
+- Use rubygem(ronn) instead of hardcoded ruby version
+
+-------------------------------------------------------------------
+Thu May 23 05:31:46 UTC 2019 - mvetter@suse.com
+
+- Initial package in version 1.4.0 for openSUSE
