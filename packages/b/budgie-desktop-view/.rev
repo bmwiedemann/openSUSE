@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2af1968f11fad6de81a709db4bbed59f</srcmd5>
+    <version>1.0.2</version>
+    <time>1607548956</time>
+    <user>dimstar_suse</user>
+    <comment>Initial</comment>
+    <requestid>854332</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a732a09e048c0f5caf2078b29df693c0</srcmd5>
+    <version>1.1</version>
+    <time>1608835137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1:
+  * Drag and Drop support
+  * Keyboard-assisted navigation
+  * Add Move to Trash button
+  * Changed max thumbnail size from 1MB to 10MB
+</comment>
+    <requestid>858383</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b75492a926f12076c3e5fcb713f4b792</srcmd5>
+    <version>1.1.1</version>
+    <time>1608918666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858622</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Dec 25 08:29:58 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.1.1:
+  * Check if it is a special item before deleting
+
+-------------------------------------------------------------------
+Wed Dec 23 19:02:00 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.1:
+  * Drag and Drop support
+  * Keyboard-assisted navigation
+  * Add Move to Trash button
+  * Changed max thumbnail size from 1MB to 10MB
+
+-------------------------------------------------------------------
+Sat Nov 28 10:12:56 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 1.0.2
+
