@@ -1,0 +1,5 @@
+<package name="k9s" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="k9s"/>
+</package>

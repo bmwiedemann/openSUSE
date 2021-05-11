@@ -1,0 +1,27 @@
+From f650fccf2bd366c4e401fd97bac8bfeb228568b5 Mon Sep 17 00:00:00 2001
+From: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Date: Mon, 29 Mar 2021 17:09:47 +0200
+Subject: [PATCH] Update makefile
+
+
+Index: k9s-0.24.7/Makefile
+===================================================================
+--- k9s-0.24.7.orig/Makefile
++++ k9s-0.24.7/Makefile
+@@ -1,6 +1,6 @@
+ NAME    := k9s
+ PACKAGE := github.com/derailed/$(NAME)
+-GIT     := $(shell git rev-parse --short HEAD)
++# GIT     := $(shell git rev-parse --short HEAD)
+ DATE     := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
+ VERSION  ?= v0.24.7
+ IMG_NAME := derailed/k9s
+@@ -16,7 +16,7 @@ cover:  ## Run test coverage suite
+ 	@go tool cover --html=cov.out
+ 
+ build:  ## Builds the CLI
+-	@go build \
++	@go build -mod=vendor -buildmode=pie \
+ 	-ldflags "-w -s -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
+ 	-a -tags netgo -o execs/${NAME} main.go
+ 

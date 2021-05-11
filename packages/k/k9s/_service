@@ -1,0 +1,19 @@
+<services>
+ <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/derailed/k9s.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.24.7</param>
+    <param name="revision">82b1c8a6</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="disabled" name="set_version">
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+  </service>
+</services>

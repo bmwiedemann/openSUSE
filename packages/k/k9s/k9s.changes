@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Sat Apr 10 19:23:41 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.24.7:
+  * cleaning up
+  * bump rev
+  * maintenance #1067 #1061 #1060
+  * rev up
+  * merge prs + dep updates
+  * ISSUE-957 - Add a simple pause button to stop auto-refresh on ConfigMap and Secrets (#1062)
+  * bugs #1063 #1061 #1059 #177
+  * Add release tag (#1058)
+  * fix #1056 #1024
+  * fix po feature col + lockouts?
+
+-------------------------------------------------------------------
+Mon Mar 29 14:54:52 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.24.6:
+  * rev up
+  * merge prs + dep updates
+  * ISSUE-957 - Add a simple pause button to stop auto-refresh on ConfigMap and Secrets (#1062)
+  * bugs #1063 #1061 #1059 #177
+  * Add release tag (#1058)
+  * fix #1056 #1024
+  * fix po feature col + lockouts?
+  * fix #1024
+  * update deps and image
+- Rename Makefile.diff to Makefile.patch
+
+-------------------------------------------------------------------
+Fri Jan 08 12:43:21 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.24.2:
+  * add rel notes
+  * cleanup + rel notes
+  * fix typo and clean up prs
+  * Add OneDark color theme.
+  * handling non json lines as raw with red color
+  * Disable filtering on the Help screen
+  * Handle Empty Port List in PortForward View
+
+-------------------------------------------------------------------
+Sat Dec  5 19:47:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.24.1 (bsc#1179668):
+  * Add Monokai skin
+  * Print resources in pod view 
+  * Slow down reconnection rate on auth failures
+  * Logs page for any pod/container shows Waiting for logs...
+  * Support sort by pending status
+  * Wrong highlight position when filtering logs
+  * Disable read only config via command line flag
+  * Ability to call out a separate program to parse/filter logs
+  * Full screen mode or remove borders in YAML view for easy copy/paste
+  * Refresh for describe & yaml view
+  * View logs quickly scrolls through entire logs when initially loading
+  * Support an inverse operator on filtered search
+  * Log file spammed despite K9s not running
+  * Events view
+  * Dozens of bug fixes
+- Makefile.diff: refresh
+
+-------------------------------------------------------------------
+Mon Aug 17 21:09:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.21.7:
+  - see https://github.com/derailed/k9s/releases
+
+-------------------------------------------------------------------
+Mon Mar 30 17:39:03 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to version 0.18.1
+  - Many bug fixes
+  - Many new features (auto suggestions, revisited logs, k9 plugins)
+  - see https://github.com/derailed/k9s/releases/
+
+-------------------------------------------------------------------
+Tue Feb 18 10:53:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.15.2
+  - Many bug fixes
+  - Many new features
+
+-------------------------------------------------------------------
+Mon Jan 20 09:17:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.13.0
+  - Add Dracula Skin
+  - Add XRay Vision
+  - Bug fixes
+- Update vendor.tar.gz
+
+-------------------------------------------------------------------
+Mon Jan 13 11:59:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.12.0
+  - Performance fixes
+  - Searchable Logs
+  - APIServer Dud
+  - FullScreen Logs
+
+-------------------------------------------------------------------
+Tue Jan  7 14:39:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.11.2
+  - Many bug fixes
+  - Prelimary support for Helm 3 charts
+  - Major rework of the core
+  - Custom skins per cluster
+
+-------------------------------------------------------------------
+Thu Nov  7 13:33:43 UTC 2019 - kukuk@suse.de
+
+- Initial version

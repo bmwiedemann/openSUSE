@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/derailed/k9s.git</param>
+              <param name="changesrevision">303de07663dcb20899852a98d3ebf6ce2f1c7922</param></service><service name="tar_scm">
+                <param name="url">https://github.com/derailed/k9s.git</param>
+              <param name="changesrevision">82b1c8a6113210e713a72dcaf0cc9bba912a9c95</param></service></servicedata>
