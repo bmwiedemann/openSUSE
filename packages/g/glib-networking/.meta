@@ -1,0 +1,7 @@
+<package name="glib-networking" project="openSUSE:Factory">
+  <title>Network-related GIO modules for glib</title>
+  <description>This package contains network-related GIO modules for glib.
+
+Currently, there is only a proxy module based on libproxy.</description>
+  <devel project="GNOME:Factory" package="glib-networking"/>
+</package>
