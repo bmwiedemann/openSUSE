@@ -1,0 +1,32 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: mkfs: allow site to override defaults
+Patch-mainline: Never, a real solution with a config file is required
+References: FATE#320615
+
+This is a simple method to allow us to set site defaults for mkfs by
+adding -include <includefile> to cflags.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ utils.h |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: btrfs-progs-v4.10.2/fsfeatures.h
+===================================================================
+--- btrfs-progs-v4.10.2.orig/common/fsfeatures.h
++++ btrfs-progs-v4.10.2/common/fsfeatures.h
+@@ -19,10 +19,14 @@
+ 
+ #include "kerncompat.h"
+ 
++#ifndef BTRFS_MKFS_DEFAULT_NODE_SIZE
+ #define BTRFS_MKFS_DEFAULT_NODE_SIZE SZ_16K
++#endif
++#ifndef BTRFS_MKFS_DEFAULT_FEATURES
+ #define BTRFS_MKFS_DEFAULT_FEATURES 				\
+ 		(BTRFS_FEATURE_INCOMPAT_EXTENDED_IREF		\
+ 		| BTRFS_FEATURE_INCOMPAT_SKINNY_METADATA)
++#endif
+ 
+ /*
+  * Avoid multi-device features (RAID56) and mixed block groups

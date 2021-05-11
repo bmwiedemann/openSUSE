@@ -1,0 +1,5 @@
+<package name="btrfsprogs" project="openSUSE:Factory">
+  <title>Utilities for the Second Btr File System</title>
+  <description>Utilities needed to create and maintain btrfs file systems under Linux.</description>
+  <devel project="filesystems" package="btrfsprogs"/>
+</package>
