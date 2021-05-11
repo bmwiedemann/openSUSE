@@ -43,10 +43,19 @@ Group:          Productivity/Networking/Web/Servers
 This package contains the shared library required by applications that
 are using %{name}'s embeddable API to provide web services.
 
+%package -n %{_libname}-cpp%{soname}
+Summary:        Shared Object for applications that use %{name} embedded
+Group:          Productivity/Networking/Web/Servers
+
+%description -n %{_libname}-cpp%{soname}
+This package contains the shared library required by applications that
+are using %{name}'s embeddable API to provide web services. 
+
 %package devel
 Summary:        Header files and development libraries for %{name}
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{_libname}%{soname} = %{version}-%{release}
+Requires:       %{_libname}-cpp%{soname} = %{version}-%{release}
 
 %description devel
 This package contains the header files and development libraries
@@ -66,18 +75,19 @@ rm .git* .clan*
 %build
 rm -rf build
 %cmake -DWITH_ALL=1 \
-       -DCIVETWEB_BUILD_TESTING=OFF
+       -DCIVETWEB_BUILD_TESTING=OFF \
+       -DCIVETWEB_ENABLE_CXX=ON
 
 %cmake_build %{?_smp_mflags}
 
 %install
 %cmake_install
 
-#remove cmake files
-rm %{buildroot}%{_libdir}/cmake/%{name}/*cmake
-
 %post -n %{_libname}%{soname} -p /sbin/ldconfig
 %postun -n %{_libname}%{soname} -p /sbin/ldconfig
+
+%post -n %{_libname}-cpp%{soname} -p /sbin/ldconfig
+%postun -n %{_libname}-cpp%{soname} -p /sbin/ldconfig
 
 %files
 %doc %{name}.conf
@@ -87,8 +97,16 @@ rm %{buildroot}%{_libdir}/cmake/%{name}/*cmake
 %files -n %{_libname}%{soname}
 %{_libdir}/lib%{name}.so.*
 
+%files -n %{_libname}-cpp%{soname}
+%{_libdir}/lib%{name}-cpp.so.*
+
 %files devel
 %{_includedir}/%{name}.h
+%{_includedir}/CivetServer.h
 %{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}-cpp.so
+
+%dir %{_libdir}/cmake/%{name}
+%{_libdir}/cmake/%{name}/*cmake
 
 %changelog
