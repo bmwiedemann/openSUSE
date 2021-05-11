@@ -18,13 +18,13 @@
 
 # Only needed for the package signature condition
 %bcond_without lang
-%define _tar_path 5.81
+%define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 Name:           kapidox
-Version:        5.81.0
+Version:        5.82.0
 Release:        0
 Summary:        Scripts and data for building API documentation
 License:        BSD-2-Clause
@@ -53,14 +53,14 @@ The kapidox framework enables the generation of API documentation from
 Doxygen-formatted codde comments in a standard format and style.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  python3 setup.py build
+python3 setup.py build
 
 %install
-  python3 setup.py install --prefix=%{_kf5_prefix} --root=%{buildroot}
-  %fdupes %{buildroot}
+python3 setup.py install --prefix=%{_kf5_prefix} --root=%{buildroot}
+%fdupes %{buildroot}
 
 %files
 %license LICENSES/*
