@@ -9,7 +9,7 @@ Index: gnome-software-40.rc/lib/meson.build
 -libgnomesoftware = library(
 -  'gnomesoftware',
 +libgnomesoftware = library(
-+  'gnomesoftware-'+meson.project_version(),
++  'gnomesoftware-'+gs_plugin_api_version,
    sources : [
      'gs-app.c',
      'gs-app-list.c',

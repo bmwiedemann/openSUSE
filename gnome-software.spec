@@ -19,7 +19,7 @@
 %define gs_plugin_api 16
 %define _version 40_0
 Name:           gnome-software
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -75,20 +75,10 @@ Recommends:     gnome-packagekit
 %description
 AppStore like management of Applications for your GNOME Desktop.
 
-%package -n libgnomesoftware-%{_version}
-Summary:        Library to access GNOME Software catalog
-Group:          System/GUI/GNOME
-
-%description -n libgnomesoftware-%{_version}
-AppStore like management of Applications for your GNOME Desktop.
-
-This library is not considered ABI/API stable
-
 %package devel
 Summary:        Development files for the GNOME software store
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Requires:       libgnomesoftware-%{_version} = %{version}
 
 %description devel
 This subpackage contains the header files for developing
@@ -114,9 +104,6 @@ GNOME software store plugins.
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 
-%post   -n libgnomesoftware-%{_version} -p /sbin/ldconfig
-%postun -n libgnomesoftware-%{_version} -p /sbin/ldconfig
-
 %files
 %license COPYING
 %doc NEWS README.md
@@ -141,15 +128,13 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_datadir}/icons/hicolor/*/*/*.svg
 %dir %{_libdir}/gnome-software
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}
+%{_libdir}/gnome-software/libgnomesoftware-%{gs_plugin_api}.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
 #{_libexecdir}/gnome-software-service
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
-
-%files -n libgnomesoftware-%{_version}
-%{_libdir}/gnome-software/libgnomesoftware-%{version}.so
 
 %files devel
 %doc AUTHORS

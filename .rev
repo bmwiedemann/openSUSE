@@ -724,4 +724,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880969 from dimstar)</comment>
     <requestid>881140</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9a93bd38fa1c91762449966d30d9e1be</srcmd5>
+    <version>40.1</version>
+    <time>1620334294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.1 (forwarded request 889877 from mgorse)</comment>
+    <requestid>890094</requestid>
+  </revision>
 </revisionlist>
