@@ -3131,4 +3131,12 @@ will self heal once rpmlint-mini is rebuild
     <comment>- whitelist D-Bus Service org.kde.filesharing.samba.service (bsc#1175633) (forwarded request 882335 from wfrisch)</comment>
     <requestid>882506</requestid>
   </revision>
+  <revision rev="352" vrev="41">
+    <srcmd5>129fa068f3b0e225a11a60ce51d0d4c1</srcmd5>
+    <version>1.11</version>
+    <time>1620767010</time>
+    <user>dimstar_suse</user>
+    <comment>- fix whitelisting for kdiskmark service (bsc#1182521)</comment>
+    <requestid>891225</requestid>
+  </revision>
 </revisionlist>

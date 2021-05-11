@@ -804,7 +804,8 @@ setOption("DBUSServices.WhiteList", (
     "org.kde.filesharing.samba.service",
     "org.kde.filesharing.samba.conf",
     # KDiskMark, HDD/SSD benchmark GUI (bsc#1182521)
-    "org.jonmagon.kdiskmark.service"
+    "org.jonmagon.kdiskmark.service",
+    "org.jonmagon.kdiskmark.conf"
 ))
 
 setOption("PAMModules.WhiteList", (

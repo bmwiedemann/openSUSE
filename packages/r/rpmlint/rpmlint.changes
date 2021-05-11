@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  7 08:07:14 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix whitelisting for kdiskmark service (bsc#1182521)
+
+-------------------------------------------------------------------
 Wed Mar 31 11:37:22 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - whitelist D-Bus Service org.kde.filesharing.samba.service (bsc#1175633)
