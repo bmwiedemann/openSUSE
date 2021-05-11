@@ -1,7 +1,7 @@
 #
 # spec file for package nilfs-utils
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,16 @@
 %define libcleaner  libnilfscleaner0
 %define libgc       libnilfsgc0
 Name:           nilfs-utils
-Version:        2.2.3
+Version:        2.2.8
 Release:        0
 Summary:        Utilities for NILFS
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            http://www.nilfs.org
-Source:         http://nilfs.sourceforge.net/download/%{name}-%{version}.tar.bz2
+URL:            https://nilfs.sourceforge.io/en/
+Source:         https://nilfs.sourceforge.io/download/%{name}-%{version}.tar.bz2
 BuildRequires:  chrpath
 BuildRequires:  libmount-devel
 BuildRequires:  libuuid-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains utility programs for NILFS v2.
@@ -74,7 +73,7 @@ This package contains the development files for NILFS v2.
 %configure \
   --disable-static \
   --enable-libmount
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} root_sbindir=/sbin root_libdir=/%{_lib}
@@ -85,13 +84,11 @@ chrpath -d %{buildroot}/sbin/*
 %post -n %{libnilfs}      -p /sbin/ldconfig
 %post -n %{libcleaner}    -p /sbin/ldconfig
 %post -n %{libgc}         -p /sbin/ldconfig
-
 %postun -n %{libnilfs}    -p /sbin/ldconfig
 %postun -n %{libcleaner}  -p /sbin/ldconfig
 %postun -n %{libgc}       -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/nilfs_cleanerd.conf
 /sbin/*
 %{_sbindir}/*
@@ -99,19 +96,15 @@ chrpath -d %{buildroot}/sbin/*
 %{_mandir}/man?/*
 
 %files -n %{libnilfs}
-%defattr(-,root,root)
 %{_libdir}/libnilfs.so.*
 
 %files -n %{libcleaner}
-%defattr(-,root,root)
 %{_libdir}/libnilfscleaner.so.*
 
 %files -n %{libgc}
-%defattr(-,root,root)
 %{_libdir}/libnilfsgc.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/nilfs.h
 %{_includedir}/nilfs2_fs.h
 %{_includedir}/nilfs_cleaner.h

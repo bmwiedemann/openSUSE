@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat May  8 19:00:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.8:
+  * fix some build issues
+  * fix bugs:
+  - mkfs.nilfs2: fix underflow in calculation of minimum number of
+    segments
+  - mkfs.nilfs2: fix wrong suggestion of minimum device size
+  * update maintainer's email address
+  * Fix conflicting data buffer error; this fixes a cleanerd crash
+    issue in some high loads that leads the file system to a disk
+    full.
+  * dumpseg: fix misuse of endian conversion macro for ss_nblocks
+  * libnilfs: fix potential memory access overrun at
+  * nilfs_psegment_is_valid()
+  * libnilfs: fix potential underflow at nilfs_psegment_is_end()
+  * libnilfs: fix potential underflow of p_maxblocks at
+    nilfs_psegment_init()
+  * libnilfs: add missing errno setting at nilfs_sb_write()
+  * libnilfs: add sanity check on segment summary header size
+  * libnilfs: check range of finfo and binfos before reading them
+  * libnilfs: add sanity check for block counts in finfo
+  * libnilfs: get rid of HAVE_MUNMAP
+  * fix the problem that checkpoints and blocks with a future timestamp
+  * fix the problem that cleanerd timeout can be too long when the
+    system time is changed to earlier time:
+  * fix other problems that can happen when the system time is changed
+    to earlier time
+  * fix bugs
+  * improve checkpatch script:
+  * fix coding style issues:
+  * minor-amendments:
+  * cleanups:
+  * lib/nilfs.c: add missing initialization of nilfs->n_opts
+  * lib/cleaner_exec.c: use _exit() to safely terminate child processes
+  * update checkpatch.pl and misspelled words dictionary (spelling.txt)
+  * lib/Makefile.am: do not set -fPIC and -static manually
+  * lib/Makefile.am: use AM_CFLAGS and AM_CPPFLAGS for simplicity
+  * lib/crc32.c: make crc32tab array static const
+  * remove obsolete email addresses
+  * AUTHORS: update header line of author list 
+
+-------------------------------------------------------------------
 Sat Jul 25 12:04:17 UTC 2015 - mpluskal@suse.com
 
 - Update to 2.2.3
