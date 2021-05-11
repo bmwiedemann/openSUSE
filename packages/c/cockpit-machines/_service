@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">http://github.com/cockpit-project/cockpit-machines.git</param>
+    <param name="scm">git</param>
+    <param name="revision">243.1</param>
+  </service>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">cockpit-machines.obsinfo</param>
+  </service>
+  <service mode="buildtime" name="set_version">
+    <param name="basename">cockpit-machines</param>
+  </service>
+</services>
