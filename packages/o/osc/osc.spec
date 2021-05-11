@@ -30,6 +30,9 @@
 %define version_unconverted 0.172.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
+%if ! %{defined _rpmmacrodir}
+ %define _rpmmacrodir %{_sysconfdir}/rpm
+%endif
 
 Name:           osc
 Version:        0.172.0
@@ -39,7 +42,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/osc
 Source:         %{name}-%{version}.tar.gz
-Source1:        debian.dirs 
+Source1:        debian.dirs
 Source2:        debian.docs
 Source3:        debian.osc.links
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,22 +74,22 @@ BuildRequires:  python-elementtree
 Requires:       python-elementtree
 %endif
 %if 0%{?suse_version} > 1000
-Recommends:     diffstat
 Recommends:     build
-Recommends:     sudo
+Recommends:     ca-certificates
+Recommends:     diffstat
 Recommends:     powerpc32
-Recommends:     ca-certificates 
+Recommends:     sudo
 # These packages are needed for "osc add $URL"
 Recommends:     obs-service-recompress
-Recommends:     obs-service-set_version
-Recommends:     obs-service-tar_scm
-Recommends:     obs-service-obs_scm
-Recommends:     obs-service-verify_file
 Recommends:     obs-service-download_files
 Recommends:     obs-service-format_spec_file
+Recommends:     obs-service-obs_scm
+Recommends:     obs-service-set_version
 Recommends:     obs-service-source_validator
+Recommends:     obs-service-tar_scm
+Recommends:     obs-service-verify_file
 Recommends:     xdg-utils
-# for osc >= 0.167.0 the newest build version is needed. 
+# for osc >= 0.167.0 the newest build version is needed.
 # Otherwise osc chroot might not work correctly.
 Conflicts:      build < 20200106
 %endif
@@ -134,6 +137,7 @@ Provides:       %{use_python}-osc
 %else
 %{!?python_sitelib: %define python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
+
 %description
 Commandline client for the Open Build Service.
 
@@ -176,13 +180,13 @@ install -Dm0755 dist/osc.complete %{buildroot}%{_libdir}/osc/complete
 
 install -Dm644 osc.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/osc.fish
 
-install -m644 %{macros_file} -D %{buildroot}%{_sysconfdir}/rpm/%{macros_file}
+install -m644 %{macros_file} -D %{buildroot}%{_rpmmacrodir}/%{macros_file}
 
 %if 0%{?suse_version} >= 1500
 %check
 cd tests
 %{use_python} suite.py
-%endif 
+%endif
 
 %clean
 rm -rf %{buildroot}
@@ -203,7 +207,7 @@ rm -rf %{buildroot}
 %else
 %config %{_sysconfdir}/profile.d/osc.sh
 %endif
-%config %{_sysconfdir}/rpm/%{macros_file}
+%{_rpmmacrodir}/%{macros_file}
 %dir %{_localstatedir}/lib/osc-plugins
 %{_mandir}/man1/osc.*
 %if 0%{?suse_version} > 1110

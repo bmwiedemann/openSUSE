@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  5 13:55:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install macros.osc to %{_rpmmacrodir}, not to /etc/rpm.
+
+-------------------------------------------------------------------
 Wed Jan 27 16:40:47 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
 
 - reformat spec with a recent version of the obs-service-format_spec_file

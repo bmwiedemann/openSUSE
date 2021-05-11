@@ -1451,4 +1451,14 @@ sr#761596 needed for this.</comment>
     to the results of a previous service run</comment>
     <requestid>867257</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>0bc4601c9ee45ac5939dc963217a2bdb</srcmd5>
+    <version>0.172.0</version>
+    <time>1620767056</time>
+    <user>dimstar_suse</user>
+    <comment>- Install macros.osc to %{_rpmmacrodir}, not to /etc/rpm.
+
+Now with compat code so it does not break on SLE12 (forwarded request 892030 from dimstar)</comment>
+    <requestid>892208</requestid>
+  </revision>
 </revisionlist>
