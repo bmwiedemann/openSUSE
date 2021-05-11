@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  9 11:09:57 UTC 2021 - psimons@suse.com
+
+- Update cborg-json to version 0.2.2.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
