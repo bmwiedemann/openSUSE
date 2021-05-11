@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1cc1f6d28dbe76474a2704d6639ffbb1</srcmd5>
+    <version>0.9.43</version>
+    <time>1490786694</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>460696</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd2f14523417a66944a6be208e179b9e</srcmd5>
+    <version>0.9.44.1</version>
+    <time>1493020237</time>
+    <user>dimstar_suse</user>
+    <comment>0.9.44.1
+Fix build on i586.</comment>
+    <requestid>489967</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>448dcabb37c7e731367bde336db87027</srcmd5>
+    <version>0.9.45</version>
+    <time>1496534457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3046ff0eec8b9e717f17357419ce4d2f</srcmd5>
+    <version>0.9.45.1</version>
+    <time>1497274454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502794</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>eb5175205c9882f344c38689eaf8250b</srcmd5>
+    <version>0.9.45.1</version>
+    <time>1500275577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510522</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eda6efbcd4a276900e987bd70a1e8204</srcmd5>
+    <version>0.9.46</version>
+    <time>1502562446</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516037</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eca74fbf20ece9bc5a908e9785233159</srcmd5>
+    <version>0.9.47</version>
+    <time>1503999981</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519185</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>62f217faafcf7a7597c55baa4c77c2b5</srcmd5>
+    <version>0.9.47</version>
+    <time>1504103043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519544</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>807b6ddf8d20ba86e77dca59c667376f</srcmd5>
+    <version>0.9.47</version>
+    <time>1504521448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520460</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f519ecb7ebd2e905d655731c19fabf5</srcmd5>
+    <version>0.9.48</version>
+    <time>1505920199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527153</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cf80787f3ad3716f10eefdd5ea4e74ff</srcmd5>
+    <version>0.9.48</version>
+    <time>1520778345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585171</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7f621b2a7ba711d3ff818ca73516abda</srcmd5>
+    <version>0.9.48</version>
+    <time>1520933086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586045</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9308e6f10efdfccc805231ef6c2874f4</srcmd5>
+    <version>1.21.2</version>
+    <time>1524238097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mednafen 1.21.2
+  * https://mednafen.github.io/documentation/ChangeLog.txt
+  * migrate to SDL2.
+- Specified correct license.
+- Remove CFLAGS and CXXFLAGS modifications.
+</comment>
+    <requestid>597182</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31388c257b8d87be8386c1b483b7687b</srcmd5>
+    <version>1.21.3</version>
+    <time>1525426283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603823</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>561837ac5720fe45fad03824ab650abd</srcmd5>
+    <version>1.22.1</version>
+    <time>1551024610</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669494</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ece0eb51200fb2290ceeae04dc94b3f6</srcmd5>
+    <version>1.22.2</version>
+    <time>1556622218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697738</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>51fa0953083822e7c5bb332534d75c57</srcmd5>
+    <version>1.24.0</version>
+    <time>1577630994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759830</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b74133b45684efbbd15d25af87c812b7</srcmd5>
+    <version>1.24.1</version>
+    <time>1584744984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786758</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f1bf71241fdaa6990fdd6c292640107a</srcmd5>
+    <version>1.24.2</version>
+    <time>1588450594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799363</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>02f5f9e591069ca308d0c8c6d1473f08</srcmd5>
+    <version>1.24.3</version>
+    <time>1588856136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800844</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>98d0bfb877536d9e58e798b155de85d3</srcmd5>
+    <version>1.26.1</version>
+    <time>1605124072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847743</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>83429c01496918fd0cecdbb23764c8ba</srcmd5>
+    <version>1.27.0</version>
+    <time>1617723005</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882709</requestid>
+  </revision>
+</revisionlist>
