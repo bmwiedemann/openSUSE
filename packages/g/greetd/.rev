@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21a15cbc4826ca1ed32b562d90b41687</srcmd5>
+    <version>0.6.1</version>
+    <time>1600180001</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial v0.6.1 greetd package
+* includes greetd service
+* includes agreety text-based greeter </comment>
+    <requestid>834573</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>23022e1ce139350498f981c50d0fd415</srcmd5>
+    <version>0.6.1</version>
+    <time>1604609756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846308</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dc787b2c56e1830d81bc50fc1194bf6</srcmd5>
+    <version>0.7.0</version>
+    <time>1612182561</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+</comment>
+    <requestid>868338</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c82ba399c3c172abce03d5f9afa1c819</srcmd5>
+    <version>0.7.0</version>
+    <time>1619031592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886916</requestid>
+  </revision>
+</revisionlist>

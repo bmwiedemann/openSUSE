@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Mar 23 23:28:41 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- avoid restarts on update by using %service_del_postun_without_restart 
+
+-------------------------------------------------------------------
+Sat Jan 30 18:46:49 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+
+-------------------------------------------------------------------
+Thu Nov  5 16:47:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- add missed group requirement (issue could be seen during installation)
+- correct home directory for the greeter user
+
+-------------------------------------------------------------------
+Tue Sep 15 10:03:45 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- fix /etc/greetd dir permissions
+- relocate pam file to /usr/etc
+
+-------------------------------------------------------------------
+Wed Sep  9 14:39:12 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- add missing state and run dirs
+
+-------------------------------------------------------------------
+Wed Sep  9 14:17:50 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- fix file permissions to correct greeter user
+
+-------------------------------------------------------------------
+Tue Sep  8 13:00:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add greetd.pam file and fixed directory permission in etc
+
+-------------------------------------------------------------------
+Mon Sep  7 15:35:35 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Initial v0.6.1 greetd package
+  * includes greetd service
+  * includes agreety text-based greeter 
