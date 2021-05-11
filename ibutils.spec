@@ -48,7 +48,6 @@ Patch7:         ibutils-fix-build-dependency.patch
 Patch8:         ibis-drop-multiple-definition-of-IbisObj.patch
 Patch9:         ibutils-ibis-PIE.patch
 URL:            http://www.openfabrics.org
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  chrpath
@@ -68,8 +67,8 @@ Requires:       ibutils = %version
 BuildRequires:  tcl-devel
 %endif
 
-%if "%flavor" == ""
 %description
+%if "%flavor" == ""
 The ibutils package provides a set of diagnostic tools that check the health
 of an InfiniBand fabric.
 
@@ -89,8 +88,6 @@ ibdiag:   This package provides two tools which provide the user interface
             - ibdiagpath: Performs various fabric quality and health checks on
                           the given links and nodes in a specific path.
 %else
-
-%description
 The ibutils-ui package provides a set of graphical UI tools that check the health
 of an InfiniBand fabric.
 
@@ -110,7 +107,7 @@ Requires:       libibdm%ibdm_major = %version
 ibutils provides IB network and path diagnostics.
 
 %package     -n libibdm%ibdm_major
-Summary:        Shared libraries for ibutils
+Summary:        Infiniband Data Model library
 Group:          System/Libraries
 
 %description -n libibdm%ibdm_major
@@ -132,18 +129,18 @@ autoreconf -fi
 ./autogen.sh
 %if "%flavor" == ""
 %configure --with-graphviz-lib=%_libdir --disable-static --disable-ibdiagui
-make %{?_smp_mflags}
+%make_build
 %else
 %configure --with-graphviz-lib=%_libdir --disable-static
-make %{?_smp_mflags} -Cibdiag
+%make_build -Cibdiag
 %endif
 
 %install
 export NO_BRP_TCL_INDEX_CHECK=true
 %if "%flavor" == ""
-%makeinstall
+%make_install
 %else
-%makeinstall -Cibdiag/
+%make_install -Cibdiag/
 rm -f %buildroot%_bindir/git_version.tcl %buildroot%_bindir/ibdiagnet %buildroot%_bindir/ibdiagpath
 rm -Rf %buildroot%_libdir/ibdiagnet*  %buildroot%_libdir/ibdiagpath*
 rm -f %buildroot%_mandir/man1/ibdiagnet.1* %buildroot%_mandir/man1/ibdiagpath.1*
@@ -157,14 +154,12 @@ rm -f %buildroot%_libdir/*.la %buildroot%_libdir/*.a
 %if "%flavor" == ""
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %_bindir/*
 %_libdir/ibdiagnet%upstream_ver
 %_libdir/ibdiagpath%upstream_ver
 
 %files -n libibdm%ibdm_major
-%defattr(-, root, root)
 %_libdir/libibdm.so.*
 %_libdir/libibdmcom.so.*
 %_libdir/libibsysapi.so.*
@@ -172,7 +167,6 @@ rm -f %buildroot%_libdir/*.la %buildroot%_libdir/*.a
 %_libdir/ibis%upstream_ver
 
 %files devel
-%defattr(-, root, root)
 %_includedir/ibdm
 %_libdir/libibdm.so
 %_libdir/libibdmcom.so
@@ -182,7 +176,6 @@ rm -f %buildroot%_libdir/*.la %buildroot%_libdir/*.a
 %else
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %_bindir/ibdiagui
 %_libdir/ibdiagui%upstream_ver

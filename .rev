@@ -100,4 +100,12 @@
   - Added ibutils-ibis-PIE.patch</comment>
     <requestid>887510</requestid>
   </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>94b18c89fe922a098ffaa8e8f21fa9f4</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1619552111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888691</requestid>
+  </revision>
 </revisionlist>

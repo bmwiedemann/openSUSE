@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 09:58:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old rpm constructs.
+- Update descriptions.
+
+-------------------------------------------------------------------
 Thu Apr 15 15:38:24 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: Link ibis executable with -pie.
