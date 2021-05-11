@@ -1,7 +1,7 @@
 #
 # spec file for package kipi-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,17 @@
 
 %bcond_without lang
 Name:           kipi-plugins
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libmediawiki-devel
@@ -51,10 +55,6 @@ Obsoletes:      kipi-plugins5 < %{version}
 Provides:       kipi-plugins5 = %{version}
 Obsoletes:      kipi-plugin-icons < %{version}
 Provides:       kipi-plugin-icons = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 A set of plug-ins for the KDE KIPI interface, used by some KDE imaging
@@ -63,7 +63,7 @@ applications.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -105,8 +105,8 @@ done
 %{_kf5_kxmlguidir}/kipi/
 %{_kf5_libdir}/libKF5kipiplugins.so*
 %{_kf5_plugindir}/kipiplugin_*.so
-%{_kf5_sharedir}/kipiplugin_*/
 %{_kf5_servicesdir}/kipiplugin_*.desktop
+%{_kf5_sharedir}/kipiplugin_*/
 
 %if %{with lang}
 %files lang -f %{name}.lang
