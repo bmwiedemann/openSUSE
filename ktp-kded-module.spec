@@ -21,13 +21,17 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-kded-module
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDED module that manages the telepathy interactions with the KDE Desktop
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -46,18 +50,14 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KTp)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.2.0
-BuildRequires:  cmake(Qt5Network) >= 5.2.0
-BuildRequires:  cmake(Qt5Sql) >= 5.2.0
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This module sits in KDED and takes care of various bits of system integration
@@ -66,7 +66,7 @@ like setting user to auto-away or handling connection errors.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
