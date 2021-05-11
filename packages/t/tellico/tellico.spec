@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.4
+Version:        3.4.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -26,18 +26,11 @@ URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  libcdio-devel
 BuildRequires:  libcsv-devel
-BuildRequires:  libexempi-devel
-BuildRequires:  libkcddb-devel
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libv4l-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  libyaz-devel
 BuildRequires:  pkgconfig
-BuildRequires:  taglib-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Cddb)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -68,7 +61,14 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(exempi-2.0)
+BuildRequires:  pkgconfig(libcdio)
+BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(yaz)
 Recommends:     %{name}-lang = %{version}
 # QWebEngine is not available on ppc
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -85,7 +85,7 @@ stamps, trading cards, comic books, and wines.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build
@@ -106,22 +106,20 @@ stamps, trading cards, comic books, and wines.
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md
-%{_kf5_applicationsdir}/org.kde.tellico.desktop
+%config %{_kf5_configdir}/tellicorc
 %dir %{_kf5_appsdir}/kconf_update
+%doc %lang(en) %{_kf5_htmldir}/en/tellico/
+%{_datadir}/mime/packages/tellico.xml
+%{_kf5_applicationsdir}/org.kde.tellico.desktop
 %{_kf5_appsdir}/kconf_update/tellico*
 %{_kf5_appsdir}/tellico/
-%dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.tellico.appdata.xml
 %{_kf5_bindir}/tellico
-%config %{_kf5_configdir}/tellico*
-%dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/tellico_config.kcfg
-%doc %{_kf5_htmldir}/en/tellico/
 %{_kf5_iconsdir}/hicolor/*/apps/tellico.png
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-tellico.png
 %{_kf5_knsrcfilesdir}/tellico*
 %{_kf5_kxmlguidir}/tellico/
-%{_datadir}/mime/packages/tellico.xml
 
 %files lang -f %{name}.lang
 

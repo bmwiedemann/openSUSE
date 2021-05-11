@@ -688,4 +688,12 @@
   * The entry and report templates were improved for mobile</comment>
     <requestid>880673</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>6f4838ec9eac07e9939c3e5ef7123f9d</srcmd5>
+    <version>3.4.1</version>
+    <time>1620767079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892287</requestid>
+  </revision>
 </revisionlist>
