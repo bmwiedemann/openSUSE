@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>670347fc6ef4f47fedb2169a9442a800</srcmd5>
+    <version>51</version>
+    <time>1600879219</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2020-09/msg00136.html
+
+This request addresses the issue of improper library file and package naming that
+war rightfully raised in my previous one.</comment>
+    <requestid>835612</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3cb55f689e51263e387133e4a233b41</srcmd5>
+    <version>52</version>
+    <time>1602857732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 52
+  * Add INI_CUSTOM_ALLOCATOR to allow using a custom memory
+    allocator.
+- Drop workaround for library name not matching its soname as this
+  was fixed upstream.</comment>
+    <requestid>841999</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3281f1e12a806d3b961f326ac19dcf3d</srcmd5>
+    <version>52</version>
+    <time>1609532022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859584</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad9571d970427b1a13de183c280f41ed</srcmd5>
+    <version>53</version>
+    <time>1616104450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878653</requestid>
+  </revision>
+</revisionlist>
