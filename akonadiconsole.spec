@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadiconsole
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  libxapian-devel
 BuildRequires:  update-desktop-files
@@ -53,18 +57,13 @@ BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.12.0
-BuildRequires:  cmake(Qt5Sql) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.14.0
+BuildRequires:  cmake(Qt5Sql) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 Obsoletes:      akonadi_resources < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-Recommends:     %{name}-lang
 
 %description
 Akonadi Console is a utility that can be used to explore or manage
@@ -72,7 +71,7 @@ Akonadi. This utility exposes Akonadi internals, and can be useful
 for debugging.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
@@ -87,12 +86,12 @@ for debugging.
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/akonadiconsole.categories
-%{_kf5_debugdir}/akonadiconsole.renamecategories
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %{_kf5_applicationsdir}/org.kde.akonadiconsole.desktop
 %{_kf5_bindir}/akonadiconsole
+%{_kf5_debugdir}/akonadiconsole.categories
+%{_kf5_debugdir}/akonadiconsole.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/akonadiconsole.png
 %{_kf5_libdir}/libakonadiconsole.so.*
 %{_kf5_sharedir}/kconf_update/
