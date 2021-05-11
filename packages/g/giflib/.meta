@@ -1,0 +1,6 @@
+<package name="giflib" project="openSUSE:Factory">
+  <title>A Library for Working with GIF Images</title>
+  <description>This Library allows manipulating GIF Image files. Since the LZW patents
+have expired, giflib can be used instead of libungif again.</description>
+  <devel project="devel:libraries:c_c++" package="giflib"/>
+</package>
