@@ -1,0 +1,18 @@
+Index: gnome-control-center-40.0/panels/power/cc-power-panel.c
+===================================================================
+--- gnome-control-center-40.0.orig/panels/power/cc-power-panel.c
++++ gnome-control-center-40.0/panels/power/cc-power-panel.c
+@@ -1078,10 +1078,11 @@ populate_power_button_model (GtkTreeMode
+     char *name;
+     GsdPowerButtonActionType value;
+   } actions[] = {
++    { N_("Nothing"), GSD_POWER_BUTTON_ACTION_NOTHING },
+     { N_("Suspend"), GSD_POWER_BUTTON_ACTION_SUSPEND },
+-    { N_("Power Off"), GSD_POWER_BUTTON_ACTION_INTERACTIVE },
+     { N_("Hibernate"), GSD_POWER_BUTTON_ACTION_HIBERNATE },
+-    { N_("Nothing"), GSD_POWER_BUTTON_ACTION_NOTHING }
++    { N_("Power Off"), GSD_POWER_BUTTON_ACTION_INTERACTIVE },
++    { N_("Force Off"), GSD_POWER_BUTTON_ACTION_SHUTDOWN }
+   };
+   guint i;
+ 
