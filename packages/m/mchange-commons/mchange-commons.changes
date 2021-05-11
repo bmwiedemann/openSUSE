@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Apr 16 20:28:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.20
+  * Add method to force use of FallbackMLog
+  * Update VersionUtils to correctly parse versions from newer JVMs
+  * Enhancements to FallbackMLog
+  * Implement RedirectableMLogger and stitch it into MLog as a
+    configurable option
+  * Add a perfunctory paradox-based docsite and updateSite task.
+  * In BoundedExecutorService acquire permits within task thread
+    rather than upon task preparation.
+- Update to 2.15
+  * Added CsvBufferedReader
+  * Fix extraction of quoted multiline CSV entries to preserve
+    original line break
+  * Implement BoundedExecutorService
+  * Add a utility for replacing parts of strings with sysprops
+    and/or environment variables.
+  * Support Log4J2
+  * Modify IndentedWriter to allow customized indentSpacing String
+
+-------------------------------------------------------------------
+Tue Oct  1 12:25:52 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against compatibility package log4j12
+
+-------------------------------------------------------------------
+Fri Dec 21 09:02:25 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package
