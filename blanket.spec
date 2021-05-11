@@ -17,7 +17,7 @@
 
 
 Name:           blanket
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Listen to different sounds
 License:        GPL-3.0-or-later
