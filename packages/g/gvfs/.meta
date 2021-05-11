@@ -1,0 +1,5 @@
+<package name="gvfs" project="openSUSE:Factory">
+  <title>VFS functionality for GLib</title>
+  <description>VFS functionality for GLib.</description>
+  <devel project="GNOME:Factory" package="gvfs"/>
+</package>
