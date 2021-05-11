@@ -5,7 +5,8 @@
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/camlp5/camlp5.git</param>
-    <param name="versionformat">8.00</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">rel(.*)</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
