@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  7 14:41:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.4.0
+  * Respect TMPDIR if set instead of always using /tmp
+  * Fix crash when XFixesGetCursorImage() returns NULL
+  * Fix video encoding with newer versions of libtheora by defaulting
+    v_bitrate to 0
+  * Change default ALSA device to "default"
+  * Make --rescue work again
+  * Completely reformat man page
+  * Use libpopt for option parsing
+- Drop upstream fixed patches
+  * recordmydesktop-x11-includes.patch
+  * recordmydesktop-gcc-includes.patch
+  * recordmydesktop-sane-theora-defaults.patch
+
+-------------------------------------------------------------------
 Sat Oct  4 22:05:35 UTC 2014 - dimstar@opensuse.org
 
 - Add recordmydesktop-sane-theora-defaults.patch: use some saner

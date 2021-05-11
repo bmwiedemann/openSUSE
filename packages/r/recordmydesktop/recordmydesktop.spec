@@ -1,7 +1,7 @@
 #
 # spec file for package recordmydesktop
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,13 @@
 
 
 Name:           recordmydesktop
-Version:        0.3.8.1
+Version:        0.4.0
 Release:        0
 Summary:        Desktop Recorder
 License:        GPL-2.0
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://recordmydesktop.sourceforge.net
-Source:         %{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE add x11 includes (>= 11.3 only)
-Patch0:         recordmydesktop-x11-includes.patch
-# PATCH-FIX-OPENSUSE add gcc includes
-Patch1:         recordmydesktop-gcc-includes.patch
-# PATCH-FIX-UPSTREAM recordmydesktop-sane-theora-defaults.patch rh#525155 dimstar@opensuse.org -- Use sane default values for Theora encoder
-Patch2:         recordmydesktop-sane-theora-defaults.patch
+URL:            https://enselic.github.io/recordmydesktop/
+Source:         https://github.com/Enselic/recordmydesktop/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  alsa-devel
 BuildRequires:  jack-devel
 BuildRequires:  libogg-devel
@@ -37,6 +31,7 @@ BuildRequires:  libtheora-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
@@ -52,26 +47,18 @@ screen that have changed.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 1130
-%patch0 -p1
-%endif
-%patch1 -p1
-%patch2 -p1
 
 %build
 %configure --enable-jack=yes
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
-
-%clean
-rm -rf %{buildroot}
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/recordmydesktop
-%doc %{_mandir}/man1/recordmydesktop.1*
+%{_mandir}/man1/recordmydesktop.1%{?ext_man}
 
 %changelog
