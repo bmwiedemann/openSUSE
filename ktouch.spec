@@ -1,7 +1,7 @@
 #
 # spec file for package ktouch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktouch
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Touch Typing Tutor
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Other
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/ktouch
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -64,10 +68,6 @@ Requires:       kqtquickcharts
 Requires:       libqt5-qtquickcontrols2
 Provides:       kde4-ktouch = 4.3.0
 Obsoletes:      kde4-ktouch < 4.3.0
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -76,7 +76,7 @@ A KDE program that helps you to learn and practice touch typing.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -96,8 +96,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license COPYING*
 %doc AUTHORS README.md
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/ktouch/
 %{_kf5_applicationsdir}/org.kde.ktouch.desktop
 %{_kf5_appsdir}/ktouch/
