@@ -1,0 +1,5 @@
+<package name="elisa" project="openSUSE:Factory">
+  <title>elisa</title>
+  <description>Music player developed by the KDE community that strives to be simple and nice to use</description>
+  <devel project="KDE:Applications" package="elisa"/>
+</package>
