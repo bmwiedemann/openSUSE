@@ -1,0 +1,11 @@
+--- extractpdfmark-1.1.0/src/poppler-core/destname.cc.orig	2019-02-11 12:54:32.000000000 +0100
++++ extractpdfmark-1.1.0/src/poppler-core/destname.cc	2020-01-03 18:17:10.395802012 +0100
+@@ -82,7 +82,7 @@ std::string poppler_core::build_destname
+       if (link_dest->isPageRef ())
+         {
+           Ref page_ref = link_dest->getPageRef ();
+-          pagenum = doc->findPage (page_ref.num, page_ref.gen);
++          pagenum = doc->findPage (page_ref);
+         }
+       else
+         {

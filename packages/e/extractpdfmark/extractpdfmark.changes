@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar  1 20:18:27 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Build against the poppler-cpp interface.
+- Sort file list.
+
+-------------------------------------------------------------------
+Wed May  6 12:13:16 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Created package from fedora source rpm for lilyponds
+  documentation build
