@@ -1,7 +1,7 @@
 #
 # spec file for package goatattack
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           goatattack
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Fast-paced multiplayer pixel art shooter game
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Shoot
-Url:            http://www.goatattack.net
-Source:         https://github.com/goatattack/goatattack/archive/%{version}.tar.gz
+URL:            http://www.goatattack.net
+Source:         https://github.com/goatattack/goatattack/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE find-freetype.patch -- Use pkgconfig to find freetype
+Patch0:         find-freetype.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
@@ -32,6 +34,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
@@ -58,45 +61,33 @@ levels) for the multiplayer game Goat Attack.
 
 %prep
 %setup -q
-
+%patch0 -p1
 rm -rf src/shared/zlib
 
 %build
 autoreconf -vfi
-
 # TODO build the dedicated server as well
 %configure \
   --bindir=%{_bindir} \
   --datadir=%{_datadir} \
   --enable-map-editor
-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README.md COPYING
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-mapeditor
-%{_mandir}/man6/%{name}.6*
-%{_mandir}/man6/%{name}-mapeditor.6*
+%{_mandir}/man6/%{name}.6%{?ext_man}
+%{_mandir}/man6/%{name}-mapeditor.6%{?ext_man}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}*.svg
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}*.appdata.xml
 %{_datadir}/applications/%{name}*.desktop
 
 %files data
-%defattr(-,root,root)
 %{_datadir}/%{name}/
 
 %changelog

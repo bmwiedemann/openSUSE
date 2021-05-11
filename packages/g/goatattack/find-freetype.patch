@@ -1,0 +1,62 @@
+diff -Nur goatattack-0.4.5/configure.ac new/configure.ac
+--- goatattack-0.4.5/configure.ac	2017-09-14 19:58:38.000000000 +0200
++++ new/configure.ac	2021-05-04 22:15:46.711648530 +0200
+@@ -14,14 +14,13 @@
+ AC_HEADER_STDC
+ AM_SILENT_RULES([yes])
+ 
+-# --- check headers ---
+-AC_CHECK_HEADERS([ft2build.h], [], [missing_headers="$missing_headers ft2build.h"])
+-
+ # --- check libraries ---
+ AC_CHECK_LIB([pthread], [pthread_create], [], [missing_libraries="$missing_libraries libpthread"])
+ AC_CHECK_LIB([rt], [clock_gettime], [], [missing_libraries="$missing_libraries librt"])
+ AC_CHECK_LIB([png], [png_init_io], [], [missing_libraries="$missing_libraries libpng"])
+-AC_CHECK_LIB(freetype, FT_Init_FreeType, [], [missing_libraries="$missing_libraries libfreetype"])
++PKG_CHECK_MODULES([FREETYPE], [freetype2], [], [
++  AC_CHECK_LIB(freetype, FT_Init_FreeType, [], [missing_libraries="$missing_libraries libfreetype"])
++])
+ 
+ # --- compile args ---
+ AC_ARG_ENABLE([build-pak],        [  --disable-build-pak     Disable building base.pak [[default=no]]], [], [BUILD_PAK="yes"])
+diff -Nur goatattack-0.4.5/src/Game/Makefile.am new/src/Game/Makefile.am
+--- goatattack-0.4.5/src/Game/Makefile.am	2017-09-14 19:58:38.000000000 +0200
++++ new/src/Game/Makefile.am	2021-05-04 23:26:26.003224112 +0200
+@@ -3,8 +3,8 @@
+ 
+ bin_PROGRAMS = goatattack
+ goatattack_SOURCES = $(sources)
+-goatattack_CXXFLAGS = $(cxxflags) -DPNG_SKIP_SETJMP_CHECK -pedantic -Wextra -Wno-unused-parameter -Wno-unused-result
+-goatattack_LDADD = $(ldadd) -lGL -lSDL2 -lSDL2_mixer -lfreetype
++goatattack_CXXFLAGS = $(cxxflags) -DPNG_SKIP_SETJMP_CHECK -pedantic -Wextra -Wno-unused-parameter -Wno-unused-result $(FREETYPE_CFLAGS)
++goatattack_LDADD = $(ldadd) -lGL -lSDL2 -lSDL2_mixer $(FREETYPE_LIBS)
+ iconsdir = $(datarootdir)/icons/hicolor/scalable/apps
+ dist_icons_DATA = ../../packages/linux/goatattack.svg
+ desktopdir = $(datarootdir)/applications
+diff -Nur goatattack-0.4.5/src/MapEditor/Makefile.am new/src/MapEditor/Makefile.am
+--- goatattack-0.4.5/src/MapEditor/Makefile.am	2017-09-14 19:58:38.000000000 +0200
++++ new/src/MapEditor/Makefile.am	2021-05-06 13:34:35.740819020 +0200
+@@ -4,8 +4,8 @@
+ goatattack_mapeditor_SOURCES += src/CompileThreadBlock.cpp src/CompileThread.cpp src/CompileThreadPixel.cpp src/EditableLight.cpp src/EditableMap.cpp src/EditableObject.cpp src/MapEditor.cpp src/MapEditorLightmap.cpp
+ 
+ goatattack_mapeditor_CXXFLAGS = -I./include -I../shared/include -pedantic -Wextra -Wno-unused-parameter -Wno-unused-result
+-goatattack_mapeditor_CXXFLAGS += -DDATA_DIRECTORY=$(targetdatadir) -DPNG_SKIP_SETJMP_CHECK
+-goatattack_mapeditor_LDADD = -L../shared -lshared -lpng -lGL -lSDL2 -lSDL2_mixer -lfreetype
++goatattack_mapeditor_CXXFLAGS += -DDATA_DIRECTORY=$(targetdatadir) -DPNG_SKIP_SETJMP_CHECK $(FREETYPE_CFLAGS)
++goatattack_mapeditor_LDADD = -L../shared -lshared -lpng -lGL -lSDL2 -lSDL2_mixer $(FREETYPE_LIBS)
+ 
+ if INTERNAL_ZLIB
+ goatattack_mapeditor_SOURCES += ../shared/zlib/adler32.c ../shared/zlib/crc32.c ../shared/zlib/inffast.c ../shared/zlib/inflate.c ../shared/zlib/inftrees.c ../shared/zlib/zutil.c
+diff -Nur goatattack-0.4.5/src/shared/Makefile.am new/src/shared/Makefile.am
+--- goatattack-0.4.5/src/shared/Makefile.am	2017-09-14 19:58:38.000000000 +0200
++++ new/src/shared/Makefile.am	2021-05-06 13:34:04.676589212 +0200
+@@ -3,7 +3,8 @@
+ 
+ libshared_a_SOURCES += ../shared/i18n/I18NEnglish.cpp ../shared/i18n/I18NGerman.cpp ../shared/i18n/I18NFrench.cpp ../shared/i18n/I18NPortuguese.cpp ../shared/i18n/I18NSpanish.cpp
+ 
+-libshared_a_CXXFLAGS = -I./include -I../shared/include -pedantic -Wextra -Wno-unused-parameter -Wno-unused-result -DPNG_SKIP_SETJMP_CHECK
++libshared_a_CXXFLAGS = $(FREETYPE_CFLAGS) -I./include -I../shared/include -pedantic -Wextra -Wno-unused-parameter -Wno-unused-result -DPNG_SKIP_SETJMP_CHECK
++libshared_a_LIBS = $(FREETYPE_LIBS)
+ 
+ if DEDICATED_SERVER
+ libshared_a_CXXFLAGS += -DDEDICATED_SERVER
