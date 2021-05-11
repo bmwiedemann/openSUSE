@@ -1,0 +1,5 @@
+<package name="kitemmodels" project="openSUSE:Factory">
+  <title>kitemmodels</title>
+  <description>KItemModels</description>
+  <devel project="KDE:Frameworks5" package="kitemmodels"/>
+</package>
