@@ -1,7 +1,7 @@
 #
 # spec file for package python3-espressomd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 # Build with OpenMPI
 %if 0%{?sle_version} == 0
-%define mpiver  openmpi2
+%define mpiver  openmpi4
 %else
 %if 0%{?sle_version} <= 120300
 %define mpiver  openmpi
@@ -55,19 +55,19 @@ BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 %if 0%{?suse_version} > 1325
+BuildRequires:  hdf5-%{mpiver}-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_mpi-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  hdf5-%{mpiver}-devel
-BuildRequires:  zlib-devel
 BuildRequires:  python3-h5py
+BuildRequires:  zlib-devel
 %else
 BuildRequires:  boost-devel
 %endif
 Obsoletes:      libEspresso4 < 4.1
-Requires:       python3-numpy
 Requires:       python3-h5py
+Requires:       python3-numpy
 # make sure rpm pulls in the right dependency
 Requires:       libhdf5-%{mpiver}
 

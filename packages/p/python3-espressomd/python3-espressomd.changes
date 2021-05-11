@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 09:29:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use openmpi4 on 'non-sle based systems' (aka Tumbleweed) (can't
+  use unversioned openmpi, as hdf5-openmpi-devel would not exist).
+
+-------------------------------------------------------------------
 Thu Oct 29 15:42:42 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - added boost-1.74.patch to fix build with boost-1.74
