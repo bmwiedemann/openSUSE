@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May  5 05:38:32 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+New upstream release 1.3.6
+
+Thanks to the following contributors for patches during this release:
+
+Dominique Leuenberger <dimstar@opensuse.org> (1):
+      cc2757e synced_folder: Add directory for SUSE/openSUSE to find sftp-server
+
+Dusty Mabe <dusty@dustymabe.com> (5):
+      b5652a5 guest: centos: use lowercase for powertools repo
+      c50fb6e More places where we can not pass file descriptors.
+      4bef1db tests: update to use Fedora 34 vagrant box
+      dd02818 Gemfile: bump to latest versions of vagrant and vagrant-libvirt
+      0f5c864 version: bump to 1.3.6
+
+Ian2020 <Ian2020@users.noreply.github.com> (1):
+      2615783 Fix #120: do not pass our file descriptors to spawned children
+
+Dropped patches:
+- vagrant-sshfs-libexecdir.patch
+
+Rebased patches:
+- 0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 07:21:13 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Switch back to the default Ruby for Tumbleweed

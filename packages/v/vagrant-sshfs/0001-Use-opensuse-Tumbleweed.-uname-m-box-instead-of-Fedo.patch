@@ -1,7 +1,7 @@
 From ce3bfd63c220437d4921eac3660e57de22698493 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 1 Apr 2020 22:34:10 +0200
-Subject: [PATCH] Use opensuse/Tumbleweed.$(uname -m) box instead of Fedora/32
+Subject: [PATCH] Use opensuse/Tumbleweed.$(uname -m) box instead of Fedora/34
 
 ---
  test/misc/Vagrantfile | 2 +-
@@ -15,7 +15,7 @@ index ce390ea..9874f79 100644
      config.vm.synced_folder "/tmp/reverse_mount_etc/", "/etc", type: "sshfs", reverse: true
  
      host = 'sshfs-tests'
--    box  = 'fedora/32-cloud-base'
+-    box  = 'fedora/34-cloud-base'
 +    box  = "opensuse/Tumbleweed.#{(RUBY_PLATFORM.split '-')[0]}"
  
      config.vm.define host do | tmp |

@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant-sshfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
 Name:           %{vagrant_plugin_name}
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        SSHFS synced folder implementation for Vagrant
 License:        GPL-2.0-only
-Group:          Development/Languages/Ruby
 URL:            https://github.com/dustymabe/%{name}
 Source0:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz
 Source1:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz.asc
@@ -38,8 +37,6 @@ Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 Source3:        testsuite.sh
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
 Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
-# PATCH-FIX-OPENSUSE vagrant-sshfs-libexecdir.patch -- Use /usr/libexecdir/ssh to find sftp-server
-Patch1:         vagrant-sshfs-libexecdir.patch
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
