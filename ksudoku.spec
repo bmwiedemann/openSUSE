@@ -1,7 +1,7 @@
 #
 # spec file for package ksudoku
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksudoku
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ksudoku
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -56,10 +60,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(glu)
 Obsoletes:      ksudoku5 < %{version}
 Provides:       ksudoku5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -72,7 +72,7 @@ number twice on each column, row, or subsquare.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -89,7 +89,6 @@ number twice on each column, row, or subsquare.
 %files
 %license COPYING*
 %config %{_kf5_configdir}/ksudokurc
-%dir %{_kf5_appstreamdir}
 %doc %lang(en) %{_kf5_htmldir}/en/ksudoku/
 %{_kf5_applicationsdir}/org.kde.ksudoku.desktop
 %{_kf5_appstreamdir}/org.kde.ksudoku.appdata.xml
