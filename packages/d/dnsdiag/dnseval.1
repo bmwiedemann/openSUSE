@@ -1,0 +1,41 @@
+.\" (C) Copyright 2016 Ana Custura <ana@netstat.org.uk>
+.TH DNSEVAL "1" "December 3 2016" "User Commands"
+.SH NAME
+dnseval: \-  bulk ping utility that sends an arbitrary DNS query to a list of DNS servers
+.SH DESCRIPTION
+dnseval is a bulk ping utility that sends an arbitrary DNS query to a given list of DNS servers. This script is meant for comparing response time of multiple DNS servers at once
+.SH USAGE
+usage: dnseval [\-h] [\-f server\-list] [\-c count] [\-t type] [\-w wait] hostname
+.SH OPTIONS
+.TP
+\fB\-h\fR  \fB\-\-help\fR
+show this help
+.TP
+\fB\-f\fR  \fB\-\-file\fR
+dns server list to use (default: system resolvers)
+.TP
+\fB\-c\fR  \fB\-\-count\fR
+number of requests to send (default: 10)
+.TP
+\fB\-w\fR  \fB\-\-wait\fR
+maximum wait time for a reply (default: 5)
+.TP
+\fB\-t\fR  \fB\-\-type\fR
+DNS request record type (default: A)
+.TP
+\fB\-h\fR  \fB\-\-help\fR
+show this help
+.TP
+\fB\-f\fR  \fB\-\-file\fR
+dns server list to use (default: system resolvers)
+.TP
+\fB\-c\fR  \fB\-\-count\fR
+number of requests to send (default: 10)
+.TP
+\fB\-w\fR  \fB\-\-wait\fR
+maximum wait time for a reply (default: 5)
+.TP
+\fB\-t\fR  \fB\-\-type\fR
+DNS request record type (default: A)
+.SH "SEE ALSO"
+The full documentation for dnseval can be found at https://dnsdiag.org/
