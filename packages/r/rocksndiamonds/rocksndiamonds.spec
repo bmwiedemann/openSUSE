@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.2.2.1
+Version:        4.2.3.1
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later

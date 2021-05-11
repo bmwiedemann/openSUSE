@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May  4 21:36:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.2.3.1
+  * added “last played level sets” sub-menu to level set selection
+    screen
+  * added step delay option to custom element movement configuration
+  * added support for left, middle or right mouse button for
+    CE change events
+  * added setup option to disable counting score after the game
+  * added setup options to disable asking on quit game and on
+    quit program
+  * added graphics config option to support elements on non-black
+    background; this feature can be activated by using
+    “game.use_masked_elements: true” in the custom graphics
+    configuration file
+  * changed custom artwork list to tree structure similar to level
+    sets, which is separated into three sub-trees for standalone
+    artwork
+  * changed sorting and coloring in level sets menu and custom
+    artwork menu
+  * changed saving back artwork info cache only if it has changed
+  * fixed two nasty bugs that could have crashed the game
+
+-------------------------------------------------------------------
 Sat Jan 23 01:27:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - don't recreate games user - managed by systemd-users-game
