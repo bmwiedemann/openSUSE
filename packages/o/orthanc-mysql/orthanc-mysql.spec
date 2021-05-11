@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-mysql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        3.0
+Version:        4.0
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
@@ -76,7 +76,7 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/orthanc
 
 %cmake_install
 
-# architecture dependet files should not be in /usr/share... 
+# architecture dependet files should not be in /usr/share...
 # create a directory
 mkdir -p -m 755 %{buildroot}%{_libdir}/share/orthanc/plugins
 
