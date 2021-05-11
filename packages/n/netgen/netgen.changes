@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 10 15:03:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Exclude all 32bit archs, no longer supported upstream (fails to
+  build).
+
+-------------------------------------------------------------------
 Mon Mar  1 21:49:34 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 6.2.2101

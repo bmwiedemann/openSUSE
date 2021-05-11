@@ -82,6 +82,8 @@ BuildRequires:  llvm-clang
 BuildRequires:  gcc-c++ >= 7
 %endif
 BuildRequires:  xz
+# x86 (32bit) is no longer supported upstream. Also exclude other 32 bit archs
+ExcludeArch:    %{ix86} %{arm} ppc
 Recommends:     %{name}-examples
 
 %description
