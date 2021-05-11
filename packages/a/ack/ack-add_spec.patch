@@ -1,0 +1,22 @@
+From: Andreas Stieger <andreas.stieger@gmx.de>
+Date: Thu, 04 Sep 2014 23:09:09 +0100
+Subject: Add RPM/.spec type
+Upstream: Submitted
+References: https://github.com/petdance/ack2/pull/490
+
+Add rpm/.spec to known file types
+
+---
+diff -Pdru ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm ack-v3.3.1/lib/App/Ack/ConfigDefault.pm
+--- ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm	2020-01-22 14:49:59.116748125 +0100
++++ ack-v3.3.1/lib/App/Ack/ConfigDefault.pm	2020-01-22 14:51:46.072490906 +0100
+@@ -392,6 +392,9 @@
+ # https://docutils.sourceforge.io/rst.html
+ --type-add=rst:ext:rst
+ 
++# RPM
++--type-add=rpm:ext:spec
++
+ # Ruby
+ # https://www.ruby-lang.org/
+ --type-add=ruby:ext:rb,rhtml,rjs,rxml,erb,rake,spec
