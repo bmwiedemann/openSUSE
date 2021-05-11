@@ -16,7 +16,6 @@
 #
 
 
-%global macros_dir %{_sysconfdir}/rpm
 %global without_hscolour 1
 Name:           ghc-rpm-macros
 Version:        1.9.95
@@ -63,9 +62,9 @@ Macros used when generating source Haskell rpm packages.
 echo no build stage needed
 
 %install
-install -p -D -m 0644 macros.ghc %{buildroot}%{macros_dir}/macros.ghc
-install -p -D -m 0644 macros.ghc-extra %{buildroot}/%{macros_dir}/macros.ghc-extra
-install -p -D -m 0644 macros.ghc-suse %{buildroot}/%{macros_dir}/macros.ghc-suse
+install -p -D -m 0644 macros.ghc %{buildroot}%{_rpmmacrodir}/macros.ghc
+install -p -D -m 0644 macros.ghc-extra %{buildroot}/%{_rpmmacrodir}/macros.ghc-extra
+install -p -D -m 0644 macros.ghc-suse %{buildroot}/%{_rpmmacrodir}/macros.ghc-suse
 install -p -D -m 0755 ghc-deps.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-deps.sh
 install -p -D -m 0755 cabal-tweak-dep-ver %{buildroot}/%{_bindir}/cabal-tweak-dep-ver
 install -p -D -m 0755 cabal-tweak-drop-dep %{buildroot}/%{_bindir}/cabal-tweak-drop-dep
@@ -78,8 +77,8 @@ install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
 %files
 %doc AUTHORS
 %license COPYING
-%config %{macros_dir}/macros.ghc
-%config %{macros_dir}/macros.ghc-suse
+%{_rpmmacrodir}/macros.ghc
+%{_rpmmacrodir}/macros.ghc-suse
 %{_prefix}/lib/rpm/ghc-deps.sh
 %{_bindir}/cabal-tweak-dep-ver
 %{_bindir}/cabal-tweak-flag
@@ -91,6 +90,6 @@ install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
 %{_datadir}/%{name}/Setup.hs
 
 %files extra
-%config %{macros_dir}/macros.ghc-extra
+%{_rpmmacrodir}/macros.ghc-extra
 
 %changelog
