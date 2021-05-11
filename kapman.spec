@@ -1,7 +1,7 @@
 #
 # spec file for package kapman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapman
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Pac-Man-like game for KDE
+Summary:        Pac-Man-like game by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kapman
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -51,19 +55,21 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Kapman is a clone of the well known game Pac-Man. You must go through the levels escaping ghosts in a maze. You lose a life when a ghost eats you, but you can eat the ghosts for a few seconds when eating an energizer. You win points when eating pills, energizers, and bonus, and you win one life for each 10,000 points. When you have eaten all the pills and energizers of a level, you go to the next level, and the player and ghost speeds increase. The game ends when you have lost all your lives.
+Kapman is a clone of the well known game Pac-Man. You must go through the levels
+escaping ghosts in a maze. You lose a life when a ghost eats you, but you can
+eat the ghosts for a few seconds when eating an energizer. You win points when
+eating pills, energizers, and bonus, and you win one life for each 10,000
+points. When you have eaten all the pills and energizers of a level, you go to
+the next level, and the player and ghost speeds increase. The game ends when you
+have lost all your lives.
 
 %lang_package
 
 %prep
-%setup -q -n kapman-%{version}
+%autosetup -p1 -n kapman-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -78,19 +84,18 @@ Kapman is a clone of the well known game Pac-Man. You must go through the levels
   %suse_update_desktop_file -r org.kde.kapman          Game ArcadeGame
 
 %files
-%license COPYING COPYING.DOC
-%{_kf5_sharedir}/sounds/kapman/
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/kapman/
 %{_kf5_applicationsdir}/org.kde.kapman.desktop
 %{_kf5_appsdir}/kapman/
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kapman.appdata.xml
 %{_kf5_bindir}/kapman
-%doc %lang(en) %{_kf5_htmldir}/en/kapman/
 %{_kf5_iconsdir}/hicolor/*/apps/kapman.*
-%{_kf5_kxmlguidir}/kapman/
+%{_kf5_sharedir}/sounds/kapman/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
