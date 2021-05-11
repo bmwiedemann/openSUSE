@@ -1,0 +1,19 @@
+<package name="gnustep-base" project="openSUSE:Factory">
+  <title>GNUstep Base library package</title>
+  <description>The GNUstep Base Library is a powerful fast library of general-
+purpose, non-graphical Objective C classes, inspired by the superb
+OpenStep API but implementing Apple and GNU additions to the API
+as well.  It includes, for example, classes for unicode strings,
+arrays, dictionaries, sets, byte streams, typed coders, invocations,
+notifications, notification dispatchers, scanners, tasks, files,
+networking, threading, remote object messaging support (distributed
+objects), event loops, loadable bundles, attributed unicode strings,
+xml, mime, user defaults. This package includes development headers
+too. It was configured for the FHS file system layout, customised
+for SUSE.
+
+
+</description>
+  <devel project="X11:GNUstep" package="gnustep-base"/>
+  <url>http://www.gnustep.org/</url>
+</package>
