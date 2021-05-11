@@ -1,0 +1,368 @@
+-------------------------------------------------------------------
+Mon Apr 26 08:02:48 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.1:
+  * v6.12.1
+  * Update CHANGELOG.md
+  * v6.12.1-dev
+  * Fixed Zen3 asm for cn/upx2
+
+-------------------------------------------------------------------
+Thu Apr 22 05:56:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.0:
+  * v6.12.0
+  * Update CHANGELOG.md
+  * RandomX: optimized IMUL_RCP instruction
+  * Update CHANGELOG.md
+  * Optimized cn/upx for Zen3
+  * Fix dvision by zero check in percent()
+  * Fixed rounding mode after running cn/upx
+  * v6.12.0-dev
+  * Optimized cn/upx2 for Ryzen CPUs
+  * Update CnHash.cpp
+  * Added support for Uplexa (cn/upx2 algorithm)
+  * Added support for --user command line option for the benchmark.
+  * Show total hashrate if compiled without OpenCL
+  * v6.11.3-dev
+
+-------------------------------------------------------------------
+Tue Apr 13 08:53:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.11.2:
+  * v6.11.2
+  * Update CHANGELOG.md
+  * Update llhttp to v5.1.0
+  * #2207 Fixed regression in HTTP parser.
+  * v6.11.2-dev
+  * v6.11.1
+  * Update CHANGELOG.md
+  * Fixed broken "coin" setting functionality
+  * v6.11.0
+  * Update CHANGELOG.md
+  * #2234 Use const_cast.
+  * Fixed cn-heavy for GCC-8
+  * fix build error on gcc 9.3.0
+  * Update randomx.cmake
+  * Fixed compilation for ARM
+  * Don't use RandomX JIT if WITH_ASM=OFF
+  * remove useless v4_random_math_init if algo is not cn/r
+  * Add missing include
+  * setBlob should run after setAlgorithm
+  * Optimize cn-heavy in GCC builds
+  * Optimized cn-heavy
+  * Fixed use-after-free bug when exiting
+  * v6.11.0-dev
+  * Added command line options --dns-ipv6 and --dns-ttl.
+  * Added DNS config.
+  * New DNS implementation.
+  * Added DnsRecords class.
+  * Improved DnsRecord class.
+  * Fix `vld1q_u8_x4` compilation error with GCC 10.2
+  * Added reference to limits.h in AdlLib_linux.cpp
+  * Fix wrong type in Handle::deleteLater()
+  * v6.10.1-dev
+
+-------------------------------------------------------------------
+Mon Mar  8 08:57:37 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.10.0:
+  * v6.10.0
+  * 6.10.0-dev
+  * Update CPU.md
+  * Sync with the proxy.
+  * Fixed build without TLS support.
+  * http-parser replaced to llhttp.
+  * Fix GCC compilation
+  * Add note about CPU affinity.
+  * Fix crash in cn-heavy on Zen3 with manual thread count
+  * Update hwloc for MSVC.
+  * Update build scripts.
+  * Update sse2neon.h to the latest master. Fixes build on armv7.
+  * Fixed many "new job" messages when solo mining
+  * Code cleanup.
+  * Fixed possible out of order write to log file.
+  * #2123 Ignore regex exception.
+  * Correct a typo in doc/CPU.md
+  * Minor verbiage tweak
+  * Fixed pause logic when both pause on battery and user activity are enabled
+  * v6.9.1-dev
+
+-------------------------------------------------------------------
+Mon Feb 22 07:34:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.9.0:
+  * v6.9.0
+  * Update CPU.md
+  * v6.9.0-dev
+  * Added idle time detection for macOS.
+  * #2104 Added user configurable idle time.
+  * Simplified code, fixed broken pause.
+  * Fixed crash when GPU mining cn-heavy on Zen3 system
+  * Fixed macOS build.
+  * Code and copyright cleanup.
+  * Allow result submission to origin daemon with self-select
+  * Added `pause-on-active` option
+  * v6.8.3
+
+-------------------------------------------------------------------
+Tue Feb 16 09:46:33 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.2:
+  * v6.8.2
+  * Update CHANGELOG.md
+  * Cryptonight: add prefetching to interleaved mode
+  * Optimized cn-heavy for Zen3
+  * Always disable kawpow for CPU backend.
+  * Add missing option to config example.
+  * Fix compile error in Termux
+  * v6.8.2-dev
+
+-------------------------------------------------------------------
+Thu Feb  4 07:40:02 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.1:
+  * v6.8.1
+  * Update CHANGELOG.md
+  * Fixed macOS build and compile warning.
+  * Update jit_compiler_a64.cpp
+  * ARM JIT: added missing cache flush
+  * Fixed code allocation for ARM
+  * Fixed crashes on ARM
+  * Added "--hugepage-size" command line option.
+  * Added support for flexible huge page sizes on Linux.
+  * Detect Apple M1 on Linux.
+  * Update ARM CPUs names.
+  * #2066 Fixed AMD GPUs health data readings.
+  * Extend normalization rules.
+  * Normalize DMI memory slot name.
+  * #2066 Quick fix for AMD GPUs health data.
+  * Fix compilation error when RandomX and Argon2 are disabled
+  * Added documentation for config.json CPU options
+  * Don't print empty memory slots if the total count above 8.
+  * v6.8.1-dev
+
+-------------------------------------------------------------------
+Thu Jan 28 08:37:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.0:
+  * v6.8.0
+  * Update default config example.
+  * Update CHANGELOG.md
+  * Code cleanup
+  * Fixed DMI memory speed.
+  * Code cleanup.
+  * RandomX JIT x86: remove unnecessary instructions
+  * Fixed Cache QoS restore on exit where it not supported.
+  * Added RxMsr class.
+  * Move Ryzen related fixes to RxFix class.
+  * Added new class Msr.
+  * Add missing "cstdio" library
+  * v6.8.0-dev
+  * Enable DMI reader by default.
+  * Added DMI data to online benchmark.
+  * Added "GET /2/dmi" API endpoint.
+  * Spelling Check
+  * Added config option "dmi" and command line option "--no-dmi".
+  * Fix summary.
+  * Added basic system reader.
+  * Added DMI reader for macOS.
+  * Enable FreeBSD support.
+  * Added legacy DMI readers for Linux.
+  * Add support for older DMI formats on Linux.
+  * Added basic Linux support.
+  * Added DMI reader (Windows only).
+  * #2043 Fix compile warning.
+  * fixed grammar in a couple of awkward error messages
+  * v6.7.3-dev
+
+-------------------------------------------------------------------
+Mon Jan 18 12:02:03 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.2:
+  * v6.7.2
+  * Update CHANGELOG.md
+  * Sync changes.
+  * Always use cvt_bin2hex
+  * Fixed solo mining
+  * v6.7.2-dev
+
+-------------------------------------------------------------------
+Mon Jan 11 14:44:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.1:
+  * v6.7.1
+  * Fixed HOSTNAME environment variable.
+  * Update CHANGELOG.md
+  * RandomX x86 JIT: remove redundant CFROUND
+  * AstroBWT OpenCL fixes
+  * Added scripts/{build, deps} into .gitignore
+  * Show hashrate in the benchmark finished message
+  * #1995 Fixed log initialization.
+  * v6.7.1-dev
+
+-------------------------------------------------------------------
+Tue Dec 22 10:32:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.0:
+  * v6.7.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Fixed broken Dero solo mining
+  * Fix GCC warning
+  * Another dataset AVX2 init speedup (+3.8% faster on Zen3)
+  * Added config option for AVX2 dataset init
+  * Auto-detect the fastest code for dataset init
+  * Fixed Windows scripts
+  * Dataset initialization with AVX2 (WIP)
+  * Huge pages not supported by macOS ARM.
+  * Fixed Xcode generator.
+  * Fix build on GCC 11
+  * Don't use team 'x64' for '64-bit'
+  * Reduce JIT memory for ARM.
+  * Fix alignment for Linux
+  * Fix: secure JIT and huge pages are incompatible on Windows
+  * Update hwloc for MSVC to 2.4.0.
+  * Update build scripts.
+  * Hardcode L2 cache size for Apple M1.
+  * Update user agent for macOS and fix compile warnings
+  * More correct CPU affinity support for macOS.
+  * Fixed JIT on macOS.
+  * Fixed macOS build.
+  * Alternative secure JIT for macOS.
+  * Fixed secure JIT on Linux and code cleanup.
+  * Remove duplicated code.
+  * Added generic secure JIT support for RandomX.
+  * More static analysis fixes
+  * Fixed errors found by static analysis
+  * Added virtual machine detection
+  * Removed libcpuid support.
+  * v6.7.0-dev
+  * Restore Hashrate class interface.
+  * Added GpuWorker class.
+  * Cleanup
+  * Move Profiler and more cleanup.
+  * Fixed Linux build.
+  * Cleanup
+  * Update Json.
+  * Update Signals and Console.
+  * Update HTTP
+  * Added Cvt class.
+  * Update net
+  * Update log.
+  * v6.6.3-dev
+- Drop xmrig user and switch service to run as root - its needed for
+  optimal performance anyways
+
+-------------------------------------------------------------------
+Mon Dec 14 08:56:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build only on supported architectures
+- Install example scripts as doc
+- Supress some warning
+- Install config and systemd service from arch linux
+- Switch to systemwide config json
+
+-------------------------------------------------------------------
+Sat Dec 12 08:55:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Correct filename in OpenCL library loader with patch correct-opencl-file.patch
+- Add recommended package libOpenCL1 for OpenCL support
+
+-------------------------------------------------------------------
+Thu Dec 10 10:51:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Install license and some documentation
+
+-------------------------------------------------------------------
+Wed Dec 02 06:12:55 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 6.6.2:
+  * v6.6.2
+  * Update CHANGELOG.md
+  * Fix RandomX init when switching to other algo and back
+  * Optimized JIT compiler
+  * Update base
+  * Example mining scripts to help new miners
+  * v6.6.2-dev
+
+-------------------------------------------------------------------
+Wed Nov 25 18:46:11 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.6.1:
+  * Fixed, benchmark validation on NUMA hardware produced incorrect results in some conditions.
+
+-------------------------------------------------------------------
+Wed Nov 25 10:05:17 UTC 2020 - 
+
+- Transition from tar_scm service to obs_scm service
+- Update to version 6.6.0:
+    * Online benchmark protocol upgraded to v2, validation not compatible with previous versions.
+        + Single thread benchmark now is cheat-resistant, not possible speedup it with multiple threads.
+        + RandomX dataset is now always initialized with static seed, to prevent time cheat by report slow dataset initialization.
+        + Zero delay online submission, to make time validation much more precise and strict.
+        + DNS cache for online benchmark to prevent unexpected delays.
+
+
+-------------------------------------------------------------------
+Sun Nov 15 09:08:51 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Removed unnecessary "mkdir" function from .spec file
+- Update to version 6.5.3:
+  * v6.5.3
+  * Update CHANGELOG.md
+  * Added warning about libcpuid deprecation.
+  * Add static_assert
+  * Fixed MSR mod names in JSON API
+  * v6.5.3-dev
+
+-------------------------------------------------------------------
+Sat Nov 14 06:49:10 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.5.2:
+  * v6.5.2
+  * Fixed build without benchmark.
+  * Update CHANGELOG.md
+  * Add support for benchmark in generated config.
+  * #1937 Print path to existing WinRing0 service without verbose option.
+  * Update randomx_boost.sh
+  * Added 250K and 500K offline benchmarks.
+  * MemoryPool: fix alignment modification
+  * Added --token command line option.
+  * Added CPUID info to JSON report
+  * CompiledVm: define default constructor
+  * Separate MSR mod for Zen/Zen2 and Zen3
+  * v6.5.2-dev
+
+-------------------------------------------------------------------
+Tue Nov 10 06:47:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added _service file for version updates
+- Ensure proper installation of executable
+- Update to version 6.5.1:
+  * v6.5.1
+  * Update CHANGELOG.md
+  * Update README.md
+  * Update RxConfig.cpp
+  * New MSR mod for Ryzen
+  * Fixed build without HTTP.
+  * #1918 Fixed check for 1GB huge pages on ARM Linux.
+  * Fix compilation on ARMv8 with GCC 9.3.0
+
+-------------------------------------------------------------------
+Tue Nov  3 07:47:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Cleaned up .spec file
+- Removed home-folder-config.patch as this patch was implemented upstream
+- Updated to version 6.5.0
+    * Added a new online benchmark mode to share results
+    * Fixed MSR Kernel module warning with new Linux kernels
+    * Added checking for config files in user home directory
+    * Added vendor to ARM CPUs name and added "arch" field to API
+    * Removed legacy CUDA plugin API
+
+-------------------------------------------------------------------
+Mon Nov  2 00:02:59 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added patch disable-forced-donation.patch to remove forced donation feature
+- Added patch home-folder-config.patch to scan for configuration files at ~/.xmrig.json and ~/.config/xmrig.json for better ease of use. 

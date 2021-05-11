@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/cli/cli</param>
+              <param name="changesrevision">86906c67692df805016e58874970ec03893d774b</param></service><service name="tar_scm">
+                <param name="url">https://github.com/xmrig/xmrig</param>
+              <param name="changesrevision">d82e100e303f6e860506132d009de5d4328c420a</param></service></servicedata>

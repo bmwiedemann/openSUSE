@@ -1,0 +1,8 @@
+<package name="xmrig" project="openSUSE:Factory">
+  <title>XMR mining application</title>
+  <description>Open source CPU/GPU XMR cryptocurrency miner.
+
+</description>
+  <devel project="network:cryptocurrencies" package="xmrig"/>
+  <url>https://xmrig.com/</url>
+</package>

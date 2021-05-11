@@ -1,0 +1,12 @@
+diff -rub xmrig/src/backend/opencl/wrappers/OclLib.cpp xmrig-patched/src/backend/opencl/wrappers/OclLib.cpp
+--- xmrig/src/backend/opencl/wrappers/OclLib.cpp	2020-11-13 23:49:10.076418374 -0700
++++ xmrig-patched/src/backend/opencl/wrappers/OclLib.cpp	2020-12-12 01:19:37.878238031 -0700
+@@ -266,7 +266,7 @@
+ #   elif defined(_WIN32)
+     return "OpenCL.dll";
+ #   else
+-    return "libOpenCL.so";
++    return "libOpenCL.so.1";
+ #   endif
+ }
+ 
