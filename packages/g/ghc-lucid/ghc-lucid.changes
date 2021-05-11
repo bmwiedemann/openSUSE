@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Mar  2 09:33:12 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.9.12.1.
+  ## 2.9.12.1
+
+  * Allow different orderings of attributes in test-suite
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update lucid to version 2.9.12 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:21 UTC 2020 - psimons@suse.com
+
+- Add lucid at version 2.9.12.
+
