@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0e6fb43496fb34445d2cdedb7829569</srcmd5>
+    <version>0.3.1</version>
+    <time>1604510802</time>
+    <user>dimstar_suse</user>
+    <comment>blanket</comment>
+    <requestid>845771</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b6026ecd87e83cde88d7ef0442ade0d</srcmd5>
+    <version>0.4.0</version>
+    <time>1618859186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Added autostart on background feature
+  * Added six new sounds
+  * New sounds icons, thanks to Jakub Steiner
+  * Sounds improvements
+  * Added French translation
+  * Added Ukrainian translation
+  * Added Slovak translation
+  * Added Nepali translation
+  * Added German translation
+  * Added Croatian translation
+  * Performance improvements
+  * UI improvements
+  * Bug fixes</comment>
+    <requestid>886677</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b72571ff43eb1294b1b1b8e12cfec210</srcmd5>
+    <version>0.4.1</version>
+    <time>1619653114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Added Turkish translation
+  * Added Occitan translation
+  * Fix German and Slovak translations</comment>
+    <requestid>889042</requestid>
+  </revision>
+</revisionlist>
