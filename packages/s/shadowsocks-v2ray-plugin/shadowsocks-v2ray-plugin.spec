@@ -16,6 +16,8 @@
 #
 
 
+%define   commit          ddd7ab46b4aeee0ca8b272efed9d7da3e3a6e52c
+%define   shortcommit     ddd7ab4
 %define   provider        github
 %define   provider_tld    com
 %define   project         shadowsocks
@@ -25,20 +27,18 @@
 %define   import_path     %{provider_prefix}
 
 Name:           shadowsocks-%{repo}
-Version:        1.3.1
+Version:        1.3.1+git20210506.%{shortcommit}
 Release:        0
 Summary:        SIP003 plugin for shadowsocks
 License:        MIT
 Group:          Productivity/Networking/Security
 URL:            https://github.com/shadowsocks/v2ray-plugin
-Source0:        https://github.com/shadowsocks/v2ray-plugin/archive/v%{version}/%{repo}-%{version}.tar.gz
+Source0:        https://github.com/shadowsocks/v2ray-plugin/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTEAM switch-to-v2fly.patch hillwood@opensuse.org - Switch to v2fly
-Patch0:         switch-to-v2fly.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-v2fly-v2ray-core
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) = 1.16
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
@@ -49,7 +49,7 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Additional mobile libraries
 Group:          Development/Languages/Golang
-BuildRequires:  golang-github-v2fly-v2ray-core
+Requires:       golang-github-v2fly-v2ray-core
 BuildArch:      noarch
 
 %description -n golang-%{provider}-%{project}-%{repo}
@@ -58,18 +58,20 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 This package provide source code for shadowsocks-%{repo}
 
 %prep
-%autosetup -p1 -a1 -n %{repo}-%{version}
-rm go.sum go.mod
+%autosetup -p1 -a1 -n %{repo}-%{commit}
+# Use v2ray-core in system default
+sed -i 's|github.com/golang/protobuf v1.5.2||g; s|github.com/v2fly/v2ray-core/v4 v4.38.3||g' go.mod
+rm go.sum vendor/modules.txt
+rm -rf vender/github.com/v2fly
 
 %build
 %goprep %{import_path}
-%gobuild ...
+%gobuild
 
 %install
 %goinstall
 %gosrc
 %gofilelist
-
 %fdupes %{buildroot}
 
 %files
