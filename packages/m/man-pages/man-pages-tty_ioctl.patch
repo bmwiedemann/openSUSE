@@ -1,0 +1,13 @@
+Index: man-pages-5.11/man2/ioctl_tty.2
+===================================================================
+--- man-pages-5.11.orig/man2/ioctl_tty.2	2021-03-22 07:38:11.000000000 +0100
++++ man-pages-5.11/man2/ioctl_tty.2	2021-03-22 11:53:26.583978103 +0100
+@@ -11,6 +11,8 @@ ioctl_tty \- ioctls for terminals and se
+ .SH SYNOPSIS
+ .nf
+ .B "#include <termios.h>"
++.br
++.B "#include <sys/ioctl.h>"
+ .PP
+ .BI "int ioctl(int " fd ", int " cmd ", ...);"
+ .fi
