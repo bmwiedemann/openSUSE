@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 13:59:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem rpm (bsc#1184786)
+
+-------------------------------------------------------------------
 Thu Apr  1 09:01:27 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2.6.3:

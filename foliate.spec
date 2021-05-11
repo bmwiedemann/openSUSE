@@ -30,6 +30,7 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0)
@@ -71,11 +72,11 @@ ln -sr %{buildroot}/%{_bindir}/%{oname} %{buildroot}/%{_bindir}/%{name}
 %doc README.md
 %{_bindir}/%{oname}
 %{_bindir}/%{name}
-%{_datadir}/applications/
+%{_datadir}/applications/com.github.johnfactotum.Foliate.desktop
 %{_datadir}/com.github.johnfactotum.Foliate
 %{_datadir}/glib-2.0/schemas/
-%{_datadir}/metainfo/
-%{_datadir}/icons/hicolor/
+%{_datadir}/metainfo/com.github.johnfactotum.Foliate.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/*
 
 %files lang -f %{oname}.lang
 

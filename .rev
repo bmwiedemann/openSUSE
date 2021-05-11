@@ -249,4 +249,12 @@
   * Fixed a performance issue with zipped files (including EPUB files) (forwarded request 882526 from Dead_Mozay)</comment>
     <requestid>884642</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e97e10f1f1c2e5fecaceb89ba8b39d03</srcmd5>
+    <version>2.6.3</version>
+    <time>1620767028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892059</requestid>
+  </revision>
 </revisionlist>
