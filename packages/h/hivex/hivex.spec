@@ -21,7 +21,7 @@
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
 Name:           hivex
-Version:        1.3.19
+Version:        1.3.20
 Release:        0
 Summary:        Windows "Registry Hive" extraction library
 License:        LGPL-2.1-only AND GPL-2.0-only

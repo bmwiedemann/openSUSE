@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  4 13:09:42 MDT 2021 - carnold@suse.com
+
+- Update to version 1.3.20
+  * Fixes bsc#1185013 - VUL-0: CVE-2021-3504: hivex: missing bounds
+    check within hivex_open()
+  * Increase HIVEX_MAX_VALUES
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Apr 21 12:34:56 UTC 2021 - ohering@suse.de
 
 - Remove ocaml_native_compiler conditional
