@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 24 21:42:51 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Package amavisd-milter in a separate package
+- Add perl(Convert::BinHex) to required packages
+- Disable BerkeleyDB in configuration
+  + amavisd-new-no-berkeleydb.patch
+
+-------------------------------------------------------------------
 Wed Dec 30 14:16:06 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to version 2.12.1

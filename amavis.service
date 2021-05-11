@@ -35,11 +35,9 @@ ProtectHome=yes
 NoNewPrivileges=yes
 ExecStartPre=-/bin/echo 'Starting virus-scanner (amavisd-new):'
 EnvironmentFile=-/etc/sysconfig/amavis
-ExecStartPre=/usr/sbin/amavisd-milter.sh start
 ExecStart=/usr/sbin/amavisd -P '' foreground
 ExecReload=/usr/sbin/amavisd -P '' reload
 ExecStop=/usr/sbin/amavisd -P '' stop
-ExecStopPost=/usr/sbin/amavisd-milter.sh stop
 
 [Install]
 WantedBy=multi-user.target

@@ -31,17 +31,15 @@ URL:            https://gitlab.com/amavis/amavis/
 Source0:        https://gitlab.com/amavis/amavis/-/archive/v%{version}/amavis-v%{version}.tar.bz2
 Source1:        sysconfig.amavis
 Source3:        amavisd-new-rpmlintrc
-Source4:        amavisd-milter-1.6.1.tar.gz
 Source5:        amavis.service
-Source6:        amavisd-milter.sh
 %if 0%{?suse_version} <= 1500
 Source10:       system-user-vscan.conf
 %endif
 Patch1:         activate_virus_scanner.diff
 # PATCH-FIX-UPSTREAM -- detect myhostname via Net::Domain::hostfqdn()
 Patch2:         amavisd-new-2.10.1-myhostname.patch
-BuildRequires:  sendmail
-BuildRequires:  sendmail-devel
+# PATCH-FIX-OPENSUSE -- amavisd-new-no-berkeleydb.patch
+Patch3:         amavisd-new-no-berkeleydb.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  group(vscan)
 BuildRequires:  user(vscan)
@@ -53,6 +51,7 @@ Requires:       smtp_daemon
 Requires:       perl(Archive::Zip) >= 1.14
 Requires:       perl(Compress::Raw::Zlib) >= 2.017
 Requires:       perl(Compress::Zlib) >= 1.35
+Requires:       perl(Convert::BinHex)
 Requires:       perl(Digest::MD5) >= 2.22
 Requires:       perl(MIME::Base64)
 Requires:       perl(MIME::Parser)
@@ -90,8 +89,7 @@ Recommends:     perl(Mail::SpamAssassin)
 Recommends:     perl(Net::LDAP)
 Suggests:       perl(DBD::mysql)
 Suggests:       perl(DBI)
-Provides:       amavisd-milter = 1.6.1
-Obsoletes:      amavisd-milter < 1.6.1
+BuildArch:      noarch
 %{?systemd_ordering}
 
 %description
@@ -127,14 +125,11 @@ This package provides the system user 'vscan'.
 %endif
 
 %prep
-%setup -q -n amavis-v%{version} -a 4
-%patch1 -p1
-%patch2 -p1
+%autosetup -n amavis-v%{version} -p1
 for i in $(find -maxdepth 1 -name "amavisd*" | sed s#./##); do
     if [[ $i == *patch ]] ; then continue; fi
     if [[ $i == *patch ]] ; then continue; fi
     if [[ $i == *spec ]] ; then continue; fi
-    if [[ $i == amavisd-milter* ]] ; then continue; fi
     echo "patching file $i"
     sed -i "s|^# \$MYHOME =.*|\$MYHOME = '%{avspool}';|g; \
             s|/var/amavis/db|%{avdb}|g; \
@@ -149,9 +144,6 @@ done
 # Create vscan user
 %sysusers_generate_pre %{SOURCE10} vscan
 %endif
-cd amavisd-milter*
-%configure --localstatedir="%{avspool}"
-%make_build
 
 # ---------------------------------------------------------------------------
 
@@ -180,9 +172,6 @@ install -m 644 JpegTester.pm %{buildroot}/%{perl_vendorlib}/JpegTester.pm
 mkdir -p %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_unitdir}
 ln -s service %{buildroot}/%{_sbindir}/rcamavis
-install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/
-cd amavisd-milter*
-%make_install
 
 %if 0%{?suse_version} <= 1500
 %pre -n system-user-vscan -f vscan.pre
@@ -223,7 +212,6 @@ fi
 %{_sbindir}/*
 %{perl_vendorlib}/JpegTester.pm
 %{_unitdir}/amavis.service
-%{_sbindir}/amavisd-milter.sh
 %defattr(0750,vscan,vscan,0750)
 %dir %{avspool}/tmp
 %dir %{avspool}/db
@@ -238,7 +226,6 @@ fi
 %doc amavisd.conf-*
 %doc MANIFEST TODO
 %doc test-messages
-%{_mandir}/man8/amavisd-milter*
 
 %if 0%{?suse_version} <= 1500
 %files -n system-user-vscan
