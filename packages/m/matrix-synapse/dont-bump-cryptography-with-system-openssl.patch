@@ -1,13 +1,14 @@
-diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 14ddaed02..eb2137c93 100644
---- a/synapse/python_dependencies.py
-+++ b/synapse/python_dependencies.py
-@@ -84,7 +84,7 @@ REQUIREMENTS = [
+Index: synapse/synapse/python_dependencies.py
+===================================================================
+--- synapse.orig/synapse/python_dependencies.py
++++ synapse/synapse/python_dependencies.py
+@@ -85,7 +85,8 @@ REQUIREMENTS = [
      "typing-extensions>=3.7.4",
      # We enforce that we have a `cryptography` version that bundles an `openssl`
      # with the latest security patches.
--    "cryptography>=3.4.7;python_version>='3.6'",
-+    # "cryptography>=3.4.7;python_version>='3.6'",
+-    "cryptography>=3.4.7",
++    # opensuse we do not bump here as we do not use the intree copy
++    "cryptography",
  ]
  
  CONDITIONAL_REQUIREMENTS = {

@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Tue May 11 13:46:25 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.33.2
+  Due to the security issue highlighted below, server
+  administrators are encouraged to update Synapse. We are not aware
+  of these vulnerabilities being exploited in the wild.
+
+  Security advisory
+  This release fixes a denial of service attack (CVE-2021-29471)
+  against Synapse's push rules implementation. Server admins are
+  encouraged to upgrade.
+
+  - Internal Changes
+    - Unpin attrs dependency. (#9946)
+
+-------------------------------------------------------------------
+Thu May  6 14:44:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.33.1
+  - Bugfixes
+    - Fix bug where /sync would break if using the latest version
+      of attrs dependency, by pinning to a previous version.
+      (#9937)
+- sync BuildRequires with synapse/python_dependencies.py
+  - Jinja2 dep is now always required
+
+-------------------------------------------------------------------
+Wed May  5 18:45:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.33.0
+  - Features
+    - Update experimental support for MSC3083: restricting room
+      access via group membership. (#9800, #9814)
+    - Add experimental support for handling presence on a worker.
+      (#9819, #9820, #9828, #9850)
+    - Return a new template when an user attempts to renew their
+      account multiple times with the same token, stating that
+      their account is set to expire. This replaces the invalid
+      token template that would previously be shown in this case.
+      This change concerns the optional account validity feature.
+      (#9832)
+  - Bugfixes
+    - Fix tight loop when handling presence replication when using
+      workers. Introduced in v1.33.0rc1. (#9900)
+    - Fixes the OIDC SSO flow when using a public_baseurl value
+      including a non-root URL path. (#9726)
+    - Fix thumbnail generation for some sites with non-standard
+      content types. Contributed by @rkfg. (#9788)
+    - Add some sanity checks to identity server passed to 3PID
+      bind/unbind endpoints. (#9802)
+    - Limit the size of HTTP responses read over federation.
+      (#9833)
+    - Fix a bug which could cause Synapse to get stuck in a loop of
+      resyncing device lists. (#9867)
+    - Fix a long-standing bug where errors from federation did not
+      propagate to the client. (#9868)
+  - Improved Documentation
+    - Add a note to the docker docs mentioning that we mirror
+      upstream's supported Docker platforms. (#9801)
+  - Internal Changes
+    - Add a dockerfile for running Synapse in worker-mode under
+      Complement. (#9162)
+    - Apply pyupgrade across the codebase. (#9786)
+    - Move some replication processing out of generic_worker.
+      (#9796)
+    - Replace HomeServer.get_config() with inline references.
+      (#9815)
+    - Rename some handlers and config modules to not duplicate the
+      top-level module. (#9816)
+    - Fix a long-standing bug which caused max_upload_size to not
+      be correctly enforced. (#9817)
+    - Reduce CPU usage of the user directory by reusing existing
+      calculated room membership. (#9821)
+    - Small speed up for joining large remote rooms. (#9825)
+    - Introduce flake8-bugbear to the test suite and fix some of
+      its lint violations. (#9838)
+    - Only store the raw data in the in-memory caches, rather than
+      objects that include references to e.g. the data stores.
+      (#9845)
+    - Limit length of accepted email addresses. (#9855)
+    - Remove redundant synapse.types.Collection type definition.
+      (#9856)
+    - Handle recently added rate limits correctly when using
+      --no-rate-limit with the demo scripts. (#9858)
+    - Disable invite rate-limiting by default when running the unit
+      tests. (#9871)
+    - Pass a reactor into SynapseSite to make testing easier.
+      (#9874)
+    - Make DomainSpecificString an attrs class. (#9875)
+    - Add type hints to synapse.api.auth and
+      synapse.api.auth_blocking modules. (#9876)
+    - Remove redundant _PushHTTPChannel test class. (#9878)
+    - Remove backwards-compatibility code for Python versions <
+      3.6. (#9879)
+    - Small performance improvement around handling new local
+      presence updates. (#9887)
+- refreshed patches:
+  dont-bump-cryptography-with-system-openssl.patch
+  matrix-synapse-1.4.1-paths.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 11:12:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to v1.32.2

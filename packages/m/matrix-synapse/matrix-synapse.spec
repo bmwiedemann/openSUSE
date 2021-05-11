@@ -45,7 +45,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.32.2
+Version:        1.33.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -74,6 +74,8 @@ BuildRequires:  unzip
 Requires(pre):  shadow
 Requires:       python3-base >= 3.5
 # NOTE: Keep this is in the same order as synapse/python_dependencie.py.
+BuildRequires:  python3-Jinja2 >= 2.9
+%requires_eq    python3-Jinja2
 BuildRequires:  python3-Pillow >= 4.3.0
 %requires_eq    python3-Pillow
 BuildRequires:  python3-PyNaCl >= 1.2.1
@@ -82,14 +84,16 @@ BuildRequires:  python3-PyYAML >= 3.11
 %requires_eq    python3-PyYAML
 BuildRequires:  python3-Twisted >= 20.3.0
 %requires_eq    python3-Twisted
-BuildRequires:  python3-attrs >= 17.4.0
+BuildRequires:  ((python3-attrs >= 19.1.0 with python3-attrs < 21.1.0) or python3-attrs > 21.1.0)
 %requires_eq    python3-attrs
 BuildRequires:  python3-bcrypt >= 3.2.0
 %requires_eq    python3-bcrypt
 BuildRequires:  python3-bleach >= 1.4.3
 %requires_eq    python3-bleach
-BuildRequires:  python3-canonicaljson >= 1.3.0
+BuildRequires:  python3-canonicaljson >= 1.4.0
 %requires_eq    python3-canonicaljson
+BuildRequires:  python3-cryptography
+%requires_eq    python3-cryptography
 BuildRequires:  python3-frozendict >= 1
 %requires_eq    python3-frozendict
 BuildRequires:  python3-idna >= 2.5
@@ -132,10 +136,6 @@ BuildRequires:  python3-unpaddedbase64 >= 1.1.0
 %requires_eq    python3-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
-%if %{with email_notifs}
-BuildRequires:  python3-Jinja2 >= 2.9
-%requires_eq    python3-Jinja2
-%endif
 %if %{with ldap}
 BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
 %requires_eq    python3-matrix-synapse-ldap3

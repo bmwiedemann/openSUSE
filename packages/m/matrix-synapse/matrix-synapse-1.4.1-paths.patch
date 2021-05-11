@@ -1,7 +1,7 @@
-Index: matrix-synapse-1.4.1/contrib/example_log_config.yaml
+Index: synapse/contrib/example_log_config.yaml
 ===================================================================
---- matrix-synapse-1.4.1.orig/contrib/example_log_config.yaml
-+++ matrix-synapse-1.4.1/contrib/example_log_config.yaml
+--- synapse.orig/contrib/example_log_config.yaml
++++ synapse/contrib/example_log_config.yaml
 @@ -26,7 +26,7 @@ handlers:
    file:
      class: logging.handlers.RotatingFileHandler
@@ -11,11 +11,11 @@ Index: matrix-synapse-1.4.1/contrib/example_log_config.yaml
      maxBytes: 100000000
      backupCount: 3
      filters: [context]
-Index: matrix-synapse-1.4.1/synapse/config/key.py
+Index: synapse/synapse/config/key.py
 ===================================================================
---- matrix-synapse-1.4.1.orig/synapse/config/key.py
-+++ matrix-synapse-1.4.1/synapse/config/key.py
-@@ -100,7 +100,7 @@ class KeyConfig(Config):
+--- synapse.orig/synapse/config/key.py
++++ synapse/synapse/config/key.py
+@@ -101,7 +101,7 @@ class KeyConfig(Config):
              signing_key_path = config.get("signing_key_path")
              if signing_key_path is None:
                  signing_key_path = os.path.join(
@@ -24,7 +24,7 @@ Index: matrix-synapse-1.4.1/synapse/config/key.py
                  )
  
              self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
-@@ -165,7 +165,7 @@ class KeyConfig(Config):
+@@ -166,7 +166,7 @@ class KeyConfig(Config):
      def generate_config_section(
          self, config_dir_path, server_name, generate_secrets=False, **kwargs
      ):
@@ -33,11 +33,11 @@ Index: matrix-synapse-1.4.1/synapse/config/key.py
  
          if generate_secrets:
              macaroon_secret_key = 'macaroon_secret_key: "%s"' % (
-Index: matrix-synapse-1.4.1/synapse/config/logger.py
+Index: synapse/synapse/config/logger.py
 ===================================================================
---- matrix-synapse-1.4.1.orig/synapse/config/logger.py
-+++ matrix-synapse-1.4.1/synapse/config/logger.py
-@@ -89,7 +89,7 @@ class LoggingConfig(Config):
+--- synapse.orig/synapse/config/logger.py
++++ synapse/synapse/config/logger.py
+@@ -131,7 +131,7 @@ class LoggingConfig(Config):
          self.no_redirect_stdio = config.get("no_redirect_stdio", False)
  
      def generate_config_section(self, config_dir_path, server_name, **kwargs):
@@ -46,11 +46,11 @@ Index: matrix-synapse-1.4.1/synapse/config/logger.py
          return (
              """\
          ## Logging ##
-Index: matrix-synapse-1.4.1/synapse/config/server.py
+Index: synapse/synapse/config/server.py
 ===================================================================
---- matrix-synapse-1.4.1.orig/synapse/config/server.py
-+++ matrix-synapse-1.4.1/synapse/config/server.py
-@@ -379,7 +379,7 @@ class ServerConfig(Config):
+--- synapse.orig/synapse/config/server.py
++++ synapse/synapse/config/server.py
+@@ -725,7 +725,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  
@@ -59,11 +59,11 @@ Index: matrix-synapse-1.4.1/synapse/config/server.py
  
          # Bring DEFAULT_ROOM_VERSION into the local-scope for use in the
          # default config string
-Index: matrix-synapse-1.4.1/synapse/config/tls.py
+Index: synapse/synapse/config/tls.py
 ===================================================================
---- matrix-synapse-1.4.1.orig/synapse/config/tls.py
-+++ matrix-synapse-1.4.1/synapse/config/tls.py
-@@ -259,7 +259,7 @@ class TlsConfig(Config):
+--- synapse.orig/synapse/config/tls.py
++++ synapse/synapse/config/tls.py
+@@ -275,7 +275,7 @@ class TlsConfig(Config):
          If the TLS paths are not specified the default will be certs in the
          config directory"""
  
@@ -72,7 +72,7 @@ Index: matrix-synapse-1.4.1/synapse/config/tls.py
  
          if bool(tls_certificate_path) != bool(tls_private_key_path):
              raise ConfigError(
-@@ -278,7 +278,7 @@ class TlsConfig(Config):
+@@ -294,7 +294,7 @@ class TlsConfig(Config):
          acme_enabled = bool(acme_domain)
          acme_domain = "matrix.example.com"
  
