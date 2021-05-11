@@ -1,0 +1,15 @@
+Index: gnome-software-40.rc/lib/meson.build
+===================================================================
+--- gnome-software-40.rc.orig/lib/meson.build
++++ gnome-software-40.rc/lib/meson.build
+@@ -68,8 +68,8 @@ libgnomesoftware_include_directories = [
+   include_directories('..'),
+ ]
+ 
+-libgnomesoftware = library(
+-  'gnomesoftware',
++libgnomesoftware = library(
++  'gnomesoftware-'+gs_plugin_api_version,
+   sources : [
+     'gs-app.c',
+     'gs-app-list.c',
