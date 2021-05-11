@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Dec 28 09:52:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set proper library path via LD_LIBRARY_PATH for ctest
+
+-------------------------------------------------------------------
+Sat Dec  5 12:44:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.7.14
+- Add patch:
+  * cJSON-fix-cmake-include-path.patch
+    Align CMake include path with the one provided by pkg-config
