@@ -1,0 +1,53 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Subject: xfrm: support displaying transformations used for Mobile IPv6
+Patch-mainline: No
+
+Patch taken from mip6d-ng c397c3b4a16bb2e31a86f6c5e344a1278d1577c5
+and included in openSUSE so as to facilitate mip6d-ng.
+---
+ ip/ipxfrm.c      | 2 +-
+ ip/xfrm_policy.c | 3 ++-
+ ip/xfrm_state.c  | 3 ++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+--- a/ip/ipxfrm.c
++++ b/ip/ipxfrm.c
+@@ -103,7 +103,7 @@ struct typeent {
+ static const struct typeent xfrmproto_types[] = {
+ 	{ "esp", IPPROTO_ESP }, { "ah", IPPROTO_AH }, { "comp", IPPROTO_COMP },
+ 	{ "route2", IPPROTO_ROUTING }, { "hao", IPPROTO_DSTOPTS },
+-	{ "ipsec-any", IPSEC_PROTO_ANY },
++	{ "ipsec-any", IPSEC_PROTO_ANY }, { "ipv6", IPPROTO_IPV6 },
+ 	{ NULL, -1 }
+ };
+ 
+--- a/ip/xfrm_policy.c
++++ b/ip/xfrm_policy.c
+@@ -97,10 +97,11 @@ static void usage(void)
+ 		"ID := [ src ADDR ] [ dst ADDR ] [ proto XFRM-PROTO ] [ spi SPI ]\n"
+ 		"XFRM-PROTO := ");
+ 	fprintf(stderr,
+-		"%s | %s | %s | %s | %s\n",
++		"%s | %s | %s | %s | %s | %s\n",
+ 		strxf_xfrmproto(IPPROTO_ESP),
+ 		strxf_xfrmproto(IPPROTO_AH),
+ 		strxf_xfrmproto(IPPROTO_COMP),
++		strxf_xfrmproto(IPPROTO_IPV6),
+ 		strxf_xfrmproto(IPPROTO_ROUTING),
+ 		strxf_xfrmproto(IPPROTO_DSTOPTS));
+ 	fprintf(stderr,
+--- a/ip/xfrm_state.c
++++ b/ip/xfrm_state.c
+@@ -76,10 +76,11 @@ static void usage(void)
+ 		"ID := [ src ADDR ] [ dst ADDR ] [ proto XFRM-PROTO ] [ spi SPI ]\n"
+ 		"XFRM-PROTO := ");
+ 	fprintf(stderr,
+-		"%s | %s | %s | %s | %s\n",
++		"%s | %s | %s | %s | %s | %s\n",
+ 		strxf_xfrmproto(IPPROTO_ESP),
+ 		strxf_xfrmproto(IPPROTO_AH),
+ 		strxf_xfrmproto(IPPROTO_COMP),
++		strxf_xfrmproto(IPPROTO_IPV6),
+ 		strxf_xfrmproto(IPPROTO_ROUTING),
+ 		strxf_xfrmproto(IPPROTO_DSTOPTS));
+ 	fprintf(stderr,

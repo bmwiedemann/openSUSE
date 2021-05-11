@@ -1,0 +1,65 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 15 Jan 2016 07:29:44 +0100
+Subject: adjust installation directories for openSUSE/SLE
+Patch-mainline: Never, SUSE specific
+
+Match the directory layout of openSUSE and SLE.
+---
+ Makefile       | 4 ++--
+ netem/Makefile | 5 +++--
+ tc/q_netem.c   | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ endif
+ 
+ PREFIX?=/usr
+ LIBDIR?=$(PREFIX)/lib
+-SBINDIR?=/sbin
++SBINDIR?=/usr/sbin
+ CONFDIR?=/etc/iproute2
+ NETNS_RUN_DIR?=/var/run/netns
+ NETNS_ETC_DIR?=/etc/netns
+@@ -31,7 +31,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
+ 
+ SHARED_LIBS = y
+ 
+-DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\"
++DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\" -DPKGDATADIR=\"$(DATADIR)/tc\"
+ ifneq ($(SHARED_LIBS),y)
+ DEFINES+= -DNO_SHARED_LIBS
+ endif
+--- a/netem/Makefile
++++ b/netem/Makefile
+@@ -7,6 +7,7 @@ DISTDATA = normal.dist pareto.dist paretonormal.dist experimental.dist
+ HOSTCC ?= $(CC)
+ CCOPTS  = $(CBUILD_CFLAGS)
+ LDLIBS += -lm
++LIBDIR = /usr/lib
+ 
+ all: $(DISTGEN) $(DISTDATA)
+ 
+@@ -23,9 +24,9 @@ stats: stats.c
+ 	$(HOSTCC) $(CCOPTS) -I../include -o $@ $@.c -lm
+ 
+ install: all
+-	mkdir -p $(DESTDIR)$(LIBDIR)/tc
++	mkdir -p $(DESTDIR)/usr/share/tc
+ 	for i in $(DISTDATA); \
+-	do install -m 644 $$i $(DESTDIR)$(LIBDIR)/tc; \
++	do install -m 644 $$i $(DESTDIR)/usr/share/tc; \
+ 	done
+ 
+ clean:
+--- a/tc/q_netem.c
++++ b/tc/q_netem.c
+@@ -96,7 +96,7 @@ static int get_distribution(const char *type, __s16 *data, int maxdata)
+ 	char *line = NULL;
+ 	char name[128];
+ 
+-	snprintf(name, sizeof(name), "%s/%s.dist", get_tc_lib(), type);
++	snprintf(name, sizeof(name), "%s/%s.dist", PKGDATADIR, type);
+ 	if ((f = fopen(name, "r")) == NULL) {
+ 		fprintf(stderr, "No distribution data for %s (%s: %s)\n",
+ 			type, name, strerror(errno));

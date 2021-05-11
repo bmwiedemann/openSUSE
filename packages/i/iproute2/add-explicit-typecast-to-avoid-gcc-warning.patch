@@ -1,0 +1,27 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 15 Jan 2016 07:31:30 +0100
+Subject: add explicit typecast to avoid gcc warning
+Patch-mainline: No
+
+---
+ lib/utils.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/utils.c b/lib/utils.c
+index 0919bb201229..8709e82de5bc 100644
+--- a/lib/utils.c
++++ b/lib/utils.c
+@@ -707,8 +707,8 @@ int matches(const char *cmd, const char *pattern)
+ 
+ int inet_addr_match(const inet_prefix *a, const inet_prefix *b, int bits)
+ {
+-	const __u32 *a1 = a->data;
+-	const __u32 *a2 = b->data;
++	const __u32 *a1 = (__u32*)a->data;
++	const __u32 *a2 = (__u32*)b->data;
+ 	int words = bits >> 0x05;
+ 
+ 	bits &= 0x1f;
+-- 
+2.14.1
+
