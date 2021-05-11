@@ -1,0 +1,8 @@
+<package name="kissfft" project="openSUSE:Factory">
+  <title>kissfft</title>
+  <description>A Fast Fourier Transform based up on the principle, &quot;Keep It Simple, Stupid&quot;.
+Kiss FFT is a very small, reasonably efficient, mixed radix FFT library that
+can use either fixed or floating point data types.
+</description>
+  <devel project="devel:libraries:c_c++" package="kissfft"/>
+</package>
