@@ -1,0 +1,8 @@
+<package name="python-hug" project="openSUSE:Factory">
+  <title>A Python framework for developing APIs</title>
+  <description>The hug library helps to create Python APIs for multiple interfaces.
+
+</description>
+  <devel project="devel:languages:python" package="python-hug"/>
+  <url>https://www.hug.rest</url>
+</package>
