@@ -1,0 +1,12 @@
+<package name="autoyast2" project="openSUSE:Factory">
+  <title>YaST2 - Automated Installation</title>
+  <description>This package is intended for management of the control files and the
+AutoYaST2 configurations. This system should only be used by
+experienced system administrators. Warning: AutoYaST2 performs the
+installation without any user intervention, warnings, or confirmations
+(unless specified otherwise in the control file).
+
+This file contains YaST2-independent files needed to create
+installation sources.</description>
+  <devel project="YaST:Head" package="autoyast2"/>
+</package>
