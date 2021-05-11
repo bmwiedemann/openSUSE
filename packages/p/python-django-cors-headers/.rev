@@ -72,4 +72,23 @@
     <comment></comment>
     <requestid>818313</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b21c6007a9497199e9bd76aec707fd18</srcmd5>
+    <version>3.7.0</version>
+    <time>1620767072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.0
+  * Support Django 3.2.
+  * Drop Python 3.5 support.
+  * Support Python 3.9.
+  * Following Django’s example in Ticket #31670 for replacing the
+    term “whitelist”, plus an aim to make the setting names more
+    comprehensible, the following settings have been renamed:
+    * CORS_ORIGIN_WHITELIST -&gt; CORS_ALLOWED_ORIGINS
+    * CORS_ORIGIN_REGEX_WHITELIST -&gt; CORS_ALLOWED_ORIGIN_REGEXES
+    * CORS_ORIGIN_ALLOW_ALL -&gt; CORS_ALLOW_ALL_ORIGINS
+    The old names will continue to work as aliases, with the new
+    ones taking precedence.</comment>
+    <requestid>892241</requestid>
+  </revision>
 </revisionlist>

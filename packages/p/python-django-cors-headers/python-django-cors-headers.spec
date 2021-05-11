@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cors-headers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-cors-headers
-Version:        3.4.0
+Version:        3.7.0
 Release:        0
 Summary:        A Django App that adds CORS headers to responses
 License:        MIT
@@ -50,7 +50,7 @@ responses.
 
 %check
 export PYTHONPATH=$PWD
-export DJANGO_SETTINGS_MODULE=tests.settings 
+export DJANGO_SETTINGS_MODULE=tests.settings
 %pytest
 
 %files %{python_files}
