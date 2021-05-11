@@ -1,0 +1,5 @@
+<package name="gnome-documents" project="openSUSE:Factory">
+  <title>Document Manager for GNOME</title>
+  <description>Documents is a document manager application for GNOME.</description>
+  <devel project="GNOME:Factory" package="gnome-documents"/>
+</package>
