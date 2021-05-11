@@ -16811,8 +16811,8 @@ unsorted:
   - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
-  - netgen 
-  - netgen-devel 
+  - netgen: [x86_64] 
+  - netgen-devel: [x86_64] 
   - netgen-examples: [x86_64] 
   - netgen-libs: [x86_64] 
   - nethogs 
