@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 11 18:32:19 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.9.0:
+  * support Plasma 5.18 and 5.21
+  * support aurorae monochrome icons with Latte auto-color functionality
+  * support aurorae restore button
+  * fix, do not hide buttons for AlwaysVisible
+  * fix, do not hide button in Latte edit mode
+  * fix, improve default based on Plasma values
+  * fix, preserve empty space for hidden states when needed
+  * remove no needed workarounds
+_ Remove fix-build-plasma-5.21.patch (part of release now)
+
+-------------------------------------------------------------------
 Wed Feb 24 09:12:45 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Add fix-build-plasma-5.21.patch to fix compilation with Plasma

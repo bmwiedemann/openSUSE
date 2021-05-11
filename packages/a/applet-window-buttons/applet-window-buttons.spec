@@ -20,15 +20,13 @@
 %define qt5_version 5.9
 
 Name:           applet-window-buttons
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Plasma 5 applet to show window buttons in panels
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/psifidotos/applet-window-buttons
 Source:         https://github.com/psifidotos/applet-window-buttons/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix compilation with Plasma 5.21
-Patch0:         fix-build-plasma-5.21.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kconfig-devel >= %{kf5_version}
@@ -56,7 +54,7 @@ one's panels. This plasmoid is coming from Latte land, but it can also
 support Plasma panels.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake_kf5 -d build
