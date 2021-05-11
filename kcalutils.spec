@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalutils
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
@@ -38,10 +42,8 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Test)
 %if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
 # Only with stable builds
 %requires_eq    grantlee5
 Recommends:     %{name}-lang
@@ -79,7 +81,7 @@ to develop applications wanting to use kcalutils.
 %endif
 
 %prep
-%setup -q -n kcalutils-%{version}
+%autosetup -p1 -n kcalutils-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -96,9 +98,9 @@ to develop applications wanting to use kcalutils.
 
 %files -n libKF5CalendarUtils5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5CalendarUtils.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
+%{_kf5_libdir}/libKF5CalendarUtils.so.*
 
 %files devel
 %license LICENSES/*
