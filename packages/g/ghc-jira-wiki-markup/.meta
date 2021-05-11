@@ -1,0 +1,5 @@
+<package name="ghc-jira-wiki-markup" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-jira-wiki-markup"/>
+</package>

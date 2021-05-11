@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sun Mar 14 22:19:01 UTC 2021 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.3.4.
+  1.3.4
+  -----
+
+  Released 2021-03-13.
+
+  * Fixed parsing of autolinks (i.e., of bare URLs in the text).
+    Previously an autolink would take up the rest of a line, as
+    spaces were allowed characters in these items.
+
+  * Emoji character sequences no longer cause parsing failures. This
+    was due to missing backtracking when emoji parsing fails.
+
+  * Block quotes are only rendered as `bq.` if they do not contain a
+    linebreak.
+
+-------------------------------------------------------------------
+Sat Feb 13 11:43:27 UTC 2021 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.3.3.
+  1.3.3
+  -----
+
+  Released 2021-02-12.
+
+  * Modified the Doc parser to skip leading blank lines. This fixes
+    parsing of documents which start with multiple blank lines.
+
+  * Prevent URLs within link aliases to be treated as autolinks.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:45:15 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Wed Jul  8 14:05:19 UTC 2020 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.3.2.
+
+  * Braces are now always escaped when printing; Jira treats braces
+    specially, regardless of context.
+
+  * Added support for links to anchors.
+
+  * Styled text may not wrap across multiple lines; linebreaks in
+    marked-up text are now forbidden.
+
+  * Module Text.Jira.Parser.Core: new function `many1Till` which
+    behaves like `manyTill`, but requires at least on element to be
+    parsed.
+
+  * Ensured the package works with GHC 8.10.
+
+  * Support was added for additional syntax constructs:
+
+      - citation markup (`??citation??`),
+      - links to attachments (`[title^attachment.ext]`), and
+      - user links (`[~username]`).
+
+  * Changes to module `Text.Jira.Markup`:
+
+      * A new data type `LinkType` is exported from the module.
+
+      * Changes to type `Inline`:
+
+	  - a new constructor `Citation` has been added;
+	  - the `Link` constructor now takes an additional
+	    parameter of type `LinkType`.
+
+  * Fixed rendering of image attributes: image attributes are
+    separated by commas instead of pipes; the latter are used in
+    block parameters.
+
+  * Fixed parsing of blockquotes which are not preceeded by blank
+    lines.
+
+  * Ensure parsing of single-line blockquotes is possible even if
+    there is no space between `bq.` marker and contents.
+
+  * Fixed parsing of colors: parsing no longer fails for hexcolors
+    which contain non-decimal digits.
+
+  * Changes to module `Text.Jira.Parser.Shared`:
+
+      - New parsing function `colorName` which parses a color
+	descriptor, i.e. either a name or a hexcolor.
+
+  * Added check that a closing markup char is not preceeded by a
+    whitespace character. Previously, plain text was still
+    incorrectly treated as markup. E.g., the dashes in `-> step ->`
+    used to be interpreted as delimiters marking deleted text.
+
+  * Allows empty table cells; table parsing failed if one of the
+    cells did not contain any content.
+
+  * Changes to module `Text.Jira.Parser.Core`:
+
+      - A field `stateLastSpcPos` was added to data type
+	`ParserState` to keep track of spaces.
+      - Function `updateLastSpcPos` was added to update the
+	aforementioned field.
+      - Function `afterSpace` was added to test the field.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:18 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May  6 06:54:10 UTC 2020 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.1.4.
+
+  * Fixed parsing of image parameters. Thumbnails and images with
+    parameters were previously not recognized as images.
+
+  * Fixed table detection in endOfParagraph parser: Tables were
+    expected to have a space between the leading pipe(s) and the
+    cell content. Lines like `||Name|` were erroneously not
+    recognized as the beginning of a new block.
+
+  * Don't escape colon/semicolon unless necessary: it is necessary
+    to escape colons or semicolons only if they could otherwise
+    become part of a smiley.
+
+  * Colon `:` and semicolon `;` are now parsed as special
+    characters, since they can be the first characters of an emoji.
+
+  * Fixed parsing of words which contain non-special symbol
+    characters: word boundaries were not set correctly if a word
+    contained a dot `.` or similar chars.
+
+  * Fixed incorrect emphasis parsing: digits were erroneously allows
+    as the first characters after closing emphasis characters.
+
+  * Lists are now allowed to be indented; i.e., lists are still
+    recognized if list markers are preceded by spaces.
+
+  * Support for colored inlines has been added.
+
+  * New constructor `ColorInline` for type `Inline` (API change).
+
+-------------------------------------------------------------------
+Thu Dec 26 11:43:38 UTC 2019 - psimons@suse.com
+
+- Add jira-wiki-markup at version 1.0.0.

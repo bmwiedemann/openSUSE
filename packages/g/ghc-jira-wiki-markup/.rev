@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>948ba12f982b50e3d31507082b629f7b</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069282</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency after ghc-8.8.1</comment>
+    <requestid>760272</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>667a98cc094fc8aaab97eb89e6645bf1</srcmd5>
+    <version>1.1.4</version>
+    <time>1589196922</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801030</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c9d03a939f7ca23ac584c519862855f7</srcmd5>
+    <version>1.1.4</version>
+    <time>1592579652</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815120</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c56c0031e96d65c6e055cde5e35d9813</srcmd5>
+    <version>1.3.2</version>
+    <time>1594293563</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819580</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3169a3cfd35f065b893f5cbd9817a2ff</srcmd5>
+    <version>1.3.2</version>
+    <time>1598643249</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829325</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e1a9bacb5e1fe4c7378802bd41cd3fa1</srcmd5>
+    <version>1.3.2</version>
+    <time>1608633705</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857427</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a928fa98661619199f0c84b04bcf9995</srcmd5>
+    <version>1.3.3</version>
+    <time>1615362902</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877638</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6f1a7e240a85da11257e349e93b34d1a</srcmd5>
+    <version>1.3.4</version>
+    <time>1616598718</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880426</requestid>
+  </revision>
+</revisionlist>
