@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-crochet
-Version:        1.12.0
+Version:        2.0.0
 Release:        0
 Summary:        Use Twisted from any applications
 License:        MIT
@@ -44,9 +45,6 @@ framework.
 
 %prep
 %setup -q -n crochet-%{version}
-# Two tests fail on i586 only https://github.com/itamarst/crochet/issues/125
-# Disable only these two globally
-sed -Ei 's/(test_control_c_is_possible|test_reactor_stop_unblocks)/_\1/' crochet/tests/test_api.py
 
 %build
 %python_build
@@ -59,7 +57,7 @@ sed -Ei 's/(test_control_c_is_possible|test_reactor_stop_unblocks)/_\1/' crochet
 %pyunittest
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst docs/*.rst
 %license LICENSE
 %{python_sitelib}/*
 

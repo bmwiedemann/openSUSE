@@ -7,4 +7,12 @@
     <comment>dep of fedora-messaging</comment>
     <requestid>851833</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>391f0011414ad5e111142dfce1bf8399</srcmd5>
+    <version>2.0.0</version>
+    <time>1620767058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892214</requestid>
+  </revision>
 </revisionlist>

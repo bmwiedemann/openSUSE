@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 10 22:30:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*.rst to %doc
+- Update to v2.0.0
+  * It's possible to decorate async/await Twisted functions with
+    @wait_for and @run_in_reactor
+  * Added type hints
+  * Added formal support for Python 3.9
+  * Dropped the deprecated APIs @wait_for_reactor, @in_reactor,
+    DeferredResult, the wrapped_function attribute, and
+    unlimited timeouts on EventualResult.wait()
+  * Dropped support for Python 2.7 and 3.5
+
+-------------------------------------------------------------------
 Thu Nov 26 00:54:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove no longer necessary bcond_with test
