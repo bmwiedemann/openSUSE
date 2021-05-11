@@ -18,7 +18,7 @@
 
 %define cpan_name Term-ReadLine-Gnu
 Name:           perl-Term-ReadLine-Gnu
-Version:        1.41
+Version:        1.42
 Release:        0
 Summary:        Perl extension for the GNU Readline/History Library
 License:        Artistic-1.0 OR GPL-1.0-or-later
