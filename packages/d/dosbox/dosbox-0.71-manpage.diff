@@ -1,0 +1,13 @@
+Index: dosbox-0.71/docs/dosbox.1
+===================================================================
+--- dosbox-0.71.orig/docs/dosbox.1
++++ dosbox-0.71/docs/dosbox.1
+@@ -313,7 +313,7 @@ games (or earlier). Also note that "prot
+ Not all DOS programs work properly.
+ .BR dosbox " will exit without warning if an error occurred."
+ .SH "SEE ALSO"
+-The README in /usr/share/doc/dosbox
++The README in /usr/share/doc/packages/dosbox
+ .SH AUTHOR
+ This manual page was written by Peter Veenstra <H.P.Veenstra@student.rug.nl> and James Oakley <jfunk@funktronics.ca>,
+ for the Debian system (but may be used by others).
