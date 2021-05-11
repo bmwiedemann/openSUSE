@@ -1,0 +1,19 @@
+Fri Jun 26 23:10:44 CEST 2020 - Philipp Seiler <p.seiler@linuxmail.org>
+
+remade patch to work for version 0.18.0
+it just removes the parts in the install script which install
+the documentation. But there is no python-sphinx >= 1.7 for Leap 15.0.
+diff -dupr kitty-0.18.1.bak/setup.py kitty-0.18.1/setup.py
+--- kitty-0.18.1.bak/setup.py	2020-06-26 23:07:11.579036916 +0200
++++ kitty-0.18.1/setup.py	2020-06-26 23:10:16.868682608 +0200
+@@ -819,10 +819,6 @@ def compile_python(base_path: str) -> No
+ 
+ 
+ def create_linux_bundle_gunk(ddir: str, libdir_name: str) -> None:
+-    if not os.path.exists('docs/_build/html'):
+-        run_tool(['make', 'docs'])
+-    copy_man_pages(ddir)
+-    copy_html_docs(ddir)
+     icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', '256x256', 'apps')
+     safe_makedirs(icdir)
+     shutil.copy2('logo/kitty.png', icdir)
