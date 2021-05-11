@@ -1,0 +1,22 @@
+diff -Ppru amavisd-new-2.10.1.orig/amavisd amavisd-new-2.10.1/amavisd
+--- amavisd-new-2.10.1.orig/amavisd	2014-10-26 01:06:00.000000000 +0200
++++ amavisd-new-2.10.1/amavisd	2016-01-10 20:29:35.271354344 +0100
+@@ -235,7 +235,7 @@ BEGIN {
+     MIME::Head MIME::Body MIME::Entity MIME::Parser MIME::Decoder
+     MIME::Decoder::Base64 MIME::Decoder::Binary MIME::Decoder::QuotedPrint
+     MIME::Decoder::NBit MIME::Decoder::UU MIME::Decoder::Gzip64
+-    Net::LibIDN Net::Server Net::Server::PreFork
++    Net::Domain Net::LibIDN Net::Server Net::Server::PreFork
+   ));
+   # with earlier versions of Perl one may need to add additional modules
+   # to the list, such as: auto::POSIX::setgid auto::POSIX::setuid ...
+@@ -981,7 +981,8 @@ BEGIN {
+ 
+   # $myhostname is used by SMTP server module in the initial SMTP welcome line,
+   # in inserted Received: lines, Message-ID in notifications, log entries, ...
+-  $myhostname = (POSIX::uname)[1];  # should be a FQDN !
++  $ENV{'PATH'} = "";
++  $myhostname = Net::Domain::hostfqdn();  # should be a FQDN !
+ 
+   $snmp_contact  = '';  # a value of sysContact OID
+   $snmp_location = '';  # a value of sysLocation OID
