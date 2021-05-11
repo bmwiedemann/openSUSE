@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 09:57:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the compatibility version guava20 any more,
+  but use the default guava package
+
+-------------------------------------------------------------------
 Tue Apr 27 07:25:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.8.1

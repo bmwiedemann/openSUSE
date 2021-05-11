@@ -50,7 +50,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  geronimo-annotation-1_0-api
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  hawtjni-runtime
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -127,7 +127,7 @@ Requires:       cdi-api
 Requires:       cglib
 Requires:       geronimo-annotation-1_0-api
 Requires:       google-guice
-Requires:       guava20
+Requires:       guava
 Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
@@ -233,7 +233,7 @@ build-jar-repository -s lib \
     atinject \
     commons-cli \
     commons-io \
-    guava20/guava-10.0 \
+    guava/guava \
     guice/google-guice-no_aop \
     jdom2/jdom2 \
     maven-resolver/maven-resolver-api \
@@ -307,7 +307,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     commons-io \
     apache-commons-lang3 \
     commons-logging \
-    guava20/guava-10.0 \
+    guava/guava \
     guice/google-guice-no_aop \
     hamcrest/core \
     hawtjni/hawtjni-runtime \
