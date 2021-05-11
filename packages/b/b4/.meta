@@ -1,0 +1,5 @@
+<package name="b4" project="openSUSE:Factory">
+  <title>b4</title>
+  <description>b4 downloads patches from kernel.org.</description>
+  <devel project="devel:tools" package="b4"/>
+</package>
