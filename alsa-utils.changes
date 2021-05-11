@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:34:15 CEST 2021 - tiwai@suse.de
+
+- Suppress automatic update of alsa-info.sh (bsc#1185280):
+  alsa-info-no-update-for-distro-script.patch
+
+-------------------------------------------------------------------
+Thu Mar 18 08:40:22 CET 2021 - tiwai@suse.de
+
+- Fix superfluous asound.state migration (bsc#1183672)
+
+-------------------------------------------------------------------
+Thu Jan 21 10:21:14 CET 2021 - tiwai@suse.de
+
+- Backport upstream fixes:
+  various fixes in aplay, alsamixer, alsactl and alsaloop, updated
+  translations, etc:
+  0001-aplay-try-to-use-16-bit-format-to-increase-capture-q.patch
+  0002-alsamixer-Fix-the-mixer-views-description-in-man-pag.patch
+  0003-Add-Slovak-translation.patch
+  0004-Add-Basque-translation.patch
+  0006-aplay-cosmetic-code-fix-in-xrun.patch
+  0007-aplay-fix-the-CPU-busy-loop-in-the-pause-handler.patch
+  0008-alsa-info-Add-lsusb-and-stream-outputs.patch
+  0013-aplay-add-test-code-for-snd_pcm_status-to-test-posit.patch
+  0014-ucm-fix-typo-in-docs.patch
+  0015-aplay-add-avail-delay-checks-to-test-position.patch
+  0016-alsactl-daemon-read_pid_file-fix-the-returned-code-o.patch
+  0017-alsactl-init-set_ctl_value-fix-bytes-parsing.patch
+  0018-alsactl-init-parse-fix-possible-double-free.patch
+  0019-alsaloop-fix-possible-memory-leak-in-create_loopback.patch
+  0020-alsaloop-get_queued_playback_samples-simplify-code.patch
+  0021-topology-fix-possible-double-free-in-load.patch
+  0022-alsamixer-remove-dead-fcn-widget_handle_key-in-widge.patch
+  0023-alsamixer-remove-unused-variable-y-in-display_scroll.patch
+  0024-alsamixer-fix-shift-in-parse_words.patch
+  0025-aplay-fix-the-test-position-test-for-playback-avail-.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 23:52:24 CET 2020 - tiwai@suse.de
 
 - Fix alsactl restore behavior during locking (boo#1179904):

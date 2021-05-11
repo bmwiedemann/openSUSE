@@ -1,0 +1,28 @@
+From c9b4293212a4b67a5cf3c27a65ecbe466f773e61 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 8 Jan 2021 18:29:56 +0100
+Subject: [PATCH 20/25] alsaloop: get_queued_playback_samples() - simplify code
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsaloop/pcmjob.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/alsaloop/pcmjob.c b/alsaloop/pcmjob.c
+index 6a9aff4dd49a..01e01994c00d 100644
+--- a/alsaloop/pcmjob.c
++++ b/alsaloop/pcmjob.c
+@@ -1698,9 +1698,8 @@ int pcmjob_pollfds_init(struct loopback *loop, struct pollfd *fds)
+ static snd_pcm_sframes_t get_queued_playback_samples(struct loopback *loop)
+ {
+ 	snd_pcm_sframes_t delay;
+-	int err;
+ 
+-	if ((err = snd_pcm_delay(loop->play->handle, &delay)) < 0)
++	if (snd_pcm_delay(loop->play->handle, &delay) < 0)
+ 		return 0;
+ 	loop->play->last_delay = delay;
+ 	delay += loop->play->buf_count;
+-- 
+2.26.2
+

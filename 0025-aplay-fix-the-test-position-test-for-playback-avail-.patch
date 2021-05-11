@@ -1,0 +1,34 @@
+From b8a1e95773227e2b4942d2f67cc10f7d133d75ad Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 19 Jan 2021 12:36:28 +0100
+Subject: [PATCH 25/25] aplay: fix the test position test for playback (avail >
+ delay)
+
+The avail > delay condition is invalid only for capture, of course.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ aplay/aplay.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index b75be6c55794..9c827f468d5a 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -1985,11 +1985,11 @@ static void do_test_position(void)
+ 		fprintf(stderr, _("Suspicious status buffer position (%li total): "
+ 			"avail = %li, delay = %li, buffer = %li\n"),
+ 			++counter, (long)savail, (long)sdelay, (long)buffer_frames);
+-	} else if (avail > delay) {
++	} else if (stream == SND_PCM_STREAM_CAPTURE && avail > delay) {
+ 		fprintf(stderr, _("Suspicious buffer position avail > delay (%li total): "
+ 			"avail = %li, delay = %li\n"),
+ 			++counter, (long)avail, (long)delay);
+-	} else if (savail > sdelay) {
++	} else if (stream == SND_PCM_STREAM_CAPTURE && savail > sdelay) {
+ 		fprintf(stderr, _("Suspicious status buffer position avail > delay (%li total): "
+ 			"avail = %li, delay = %li\n"),
+ 			++counter, (long)savail, (long)sdelay);
+-- 
+2.26.2
+

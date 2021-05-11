@@ -1059,4 +1059,28 @@
     <comment></comment>
     <requestid>855588</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>3e8573d95d0b01a120ca213efbbbe93b</srcmd5>
+    <version>1.2.4</version>
+    <time>1611595373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865339</requestid>
+  </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>da6738537e5d34cf1c14c916b902f82f</srcmd5>
+    <version>1.2.4</version>
+    <time>1616365150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879828</requestid>
+  </revision>
+  <revision rev="131" vrev="5">
+    <srcmd5>80bf7a13517b63055fa14e8583cdf97a</srcmd5>
+    <version>1.2.4</version>
+    <time>1619552051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888399</requestid>
+  </revision>
 </revisionlist>

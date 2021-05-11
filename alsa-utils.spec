@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define do_autoreconf 0
+%define do_autoreconf 1
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
 Version:        1.2.4
@@ -29,9 +29,30 @@ Source:         ftp://ftp.alsa-project.org/pub/utils/alsa-utils-%{version}.tar.b
 Source1:        01beep.conf
 Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
+Patch1:         0001-aplay-try-to-use-16-bit-format-to-increase-capture-q.patch
+Patch2:         0002-alsamixer-Fix-the-mixer-views-description-in-man-pag.patch
+Patch3:         0003-Add-Slovak-translation.patch
+Patch4:         0004-Add-Basque-translation.patch
+Patch6:         0006-aplay-cosmetic-code-fix-in-xrun.patch
+Patch7:         0007-aplay-fix-the-CPU-busy-loop-in-the-pause-handler.patch
+Patch8:         0008-alsa-info-Add-lsusb-and-stream-outputs.patch
 Patch10:        0010-alsactl-Fix-double-decrease-of-lock-timeout.patch
 Patch11:        0011-alsactl-Fix-race-at-creating-a-lock-file.patch
 Patch12:        0012-alsactl-Remove-asound.state-file-check-from-alsa-res.patch
+Patch13:        0013-aplay-add-test-code-for-snd_pcm_status-to-test-posit.patch
+Patch14:        0014-ucm-fix-typo-in-docs.patch
+Patch15:        0015-aplay-add-avail-delay-checks-to-test-position.patch
+Patch16:        0016-alsactl-daemon-read_pid_file-fix-the-returned-code-o.patch
+Patch17:        0017-alsactl-init-set_ctl_value-fix-bytes-parsing.patch
+Patch18:        0018-alsactl-init-parse-fix-possible-double-free.patch
+Patch19:        0019-alsaloop-fix-possible-memory-leak-in-create_loopback.patch
+Patch20:        0020-alsaloop-get_queued_playback_samples-simplify-code.patch
+Patch21:        0021-topology-fix-possible-double-free-in-load.patch
+Patch22:        0022-alsamixer-remove-dead-fcn-widget_handle_key-in-widge.patch
+Patch23:        0023-alsamixer-remove-unused-variable-y-in-display_scroll.patch
+Patch24:        0024-alsamixer-fix-shift-in-parse_words.patch
+Patch25:        0025-aplay-fix-the-test-position-test-for-playback-avail-.patch
+Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 %ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
@@ -74,9 +95,30 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action
@@ -123,9 +165,10 @@ install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
 %post
 %service_add_post sound-extra.service
 # migrate the old asound.state
-test -f %{_localstatedir}/lib/alsa/asound.state || \
+if [ ! -f %{_localstatedir}/lib/alsa/asound.state ]; then
   test -f /etc/asound.state && \
     cp -a /etc/asound.state %{_localstatedir}/lib/alsa/asound.state
+fi
 exit 0
 
 %preun

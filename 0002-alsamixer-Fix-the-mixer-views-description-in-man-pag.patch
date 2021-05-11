@@ -1,0 +1,30 @@
+From 737b64e1940b29c575be3942cd9f87aa390d93b2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E7=A9=8D=E4=B8=B9=E5=B0=BC=20Dan=20Jacobson?=
+ <jidanni@jidanni.org>
+Date: Sun, 18 Oct 2020 18:33:54 +0800
+Subject: [PATCH 02/25] alsamixer: Fix the mixer views description in man page
+
+Fix grammar mess.
+
+From: Dan Jacobson <jidanni@jidanni.org>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsamixer/alsamixer.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alsamixer/alsamixer.1 b/alsamixer/alsamixer.1
+index 8d34680a585e..2d711cf15264 100644
+--- a/alsamixer/alsamixer.1
++++ b/alsamixer/alsamixer.1
+@@ -34,7 +34,7 @@ Toggle the using of colors.
+ 
+ .SH MIXER VIEWS
+ 
+-The top-left corner of \fBalsamixer\fP is the are to show some basic
++The top-left corner of \fBalsamixer\fP shows some basic
+ information: the card name, the mixer chip name, the current view
+ mode and the currently selected mixer item.
+ When the mixer item is switched off, \fI[Off]\fP is displayed in its
+-- 
+2.26.2
+

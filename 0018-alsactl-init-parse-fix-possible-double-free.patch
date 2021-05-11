@@ -1,0 +1,25 @@
+From c5ecfd97894b429712d334eb91fa46e687b5ed0f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 8 Jan 2021 18:18:53 +0100
+Subject: [PATCH 18/25] alsactl: init - parse() - fix possible double free
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/init_parse.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/alsactl/init_parse.c b/alsactl/init_parse.c
+index 58b46f42de4b..71348da3729c 100644
+--- a/alsactl/init_parse.c
++++ b/alsactl/init_parse.c
+@@ -1701,6 +1701,7 @@ static int parse(struct space *space, const char *filename)
+ 		
+ 		if (count > linesize - 1) {
+ 			free(line);
++			line = NULL;
+ 			linesize = (count + 127 + 1) & ~127;
+ 			if (linesize > 2048) {
+ 				error("file %s, line %i too long", filename, linenum);
+-- 
+2.26.2
+
