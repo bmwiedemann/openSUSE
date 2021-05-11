@@ -1,0 +1,37 @@
+# /usr/lib/calamares/libcalamares.so is just symlink, without it Calamares does not work. 
+addFilter("calamares.*devel-file-in-non-devel-package.*/usr/lib.*/calamares/libcalamares.so.*")
+
+# warnings ignored intentionally by Calamares developers, see https://github.com/calamares/calamares/issues/729
+# calamares-libs3.i586: W: shared-lib-calls-exit /usr/lib/libcalamaresui.so.3.1.1 exit@GLIBC_2.0
+# calamares-libs3.i586: W: shared-lib-calls-exit /usr/lib/libcalamares.so.3.1.1 exit@GLIBC_2.0
+addFilter("calamares.*shared-lib-calls-exit /usr/lib.*/libcalamares.*exit@GLIBC.*")
+
+# Polkit pkexec is among requirements of Calamares for openSUSE Tumbleweed.
+addFilter("calamares.*desktopfile-without-binary.*calamares.desktop pkexec")
+
+# xdg-utils is among requirements of Calamares.
+addFilter("calamares.*desktopfile-without-binary.*calamares.desktop xdg-su")
+
+# /usr/bin/kdesu provided by kde-cli-tools5, kde-cli-tools5 is among requirements of Calamares.
+addFilter("calamares.*desktopfile-without-binary.*calamares.desktop kdesu")
+
+# despide of warning, `desktop-file-validate calamares.desktop` shows no errors
+addFilter("calamares.*: W: invalid-desktopfile /usr/share/applications/calamares.desktop")
+
+# man page for calamares_crash_reporter does not exist in upstream yet
+addFilter("calamares.*no-manual-page-for-binary calamares_crash_reporter.*")
+
+# We use: %post libs%{_sover} -p /sbin/ldconfig
+addFilter("calamares.*empty.*post")
+
+# Version here is not so important, because older branding should work with newer versions
+addFilter("calamares.*suse-branding-unversioned-requires calamares-branding")
+
+# Ignore duplicates of translation files
+addFilter("calamares.*: W: files-duplicate /usr/share/locale/.*/LC_MESSAGES/calamares-.*.mo /usr/share/locale/.*/LC_MESSAGES/calamares-.*.mo")
+
+# Calamares developers intentionally use unversioned libs, 
+# they also don't guarantee stable API or ABI for libraries,
+# and libraries are not intented to be used by other programs
+# see https://github.com/calamares/calamares/issues/729#issuecomment-323846031
+addFilter("calamares.*: W: shlib-policy-missing-suffix")

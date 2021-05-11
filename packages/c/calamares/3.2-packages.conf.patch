@@ -1,0 +1,41 @@
+Adjust some default settings (default shipped .conf files) for openSUSE and openSUSE based appliances.
+Updating databases during installation may cause problems, thus allow to install system as is.
+Calamares packages is no longer needed after installation.
+
+diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.conf
+--- a/src/modules/packages/packages.conf
++++ b/src/modules/packages/packages.conf
+@@ -13,7 +13,7 @@
+ # Not actually a package manager, but suitable for testing:
+ #  - dummy       - Dummy manager, only logs
+ #
+-backend: dummy
++backend: zypp
+ 
+ #
+ # Often package installation needs an internet connection.
+@@ -37,7 +37,7 @@
+ # Therefore set also "update_system" to 'true'.
+ #
+ skip_if_no_internet: false
+-update_db: true
++update_db: false
+ update_system: false
+ 
+ #
+@@ -163,12 +163,6 @@
+ # of packages, this can lead to a considerable time savings.
+ #
+ operations:
+-  - install:
+-    - vi
+-    - vi-${LOCALE}
+-    - wget
+-    - binutils
+-  - remove:
+-    - vi
+-    - wget
+-    - binutils
++  - try_remove:
++    - calamares
++    - dracut-kiwi-live
