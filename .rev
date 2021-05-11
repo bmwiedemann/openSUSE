@@ -55,4 +55,41 @@
   * Add more logging for Mount error</comment>
     <requestid>865038</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40c31b7e7a309f5c17fdd9c93b8b48f8</srcmd5>
+    <version>1.20.6</version>
+    <time>1619447921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.6:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Fix test now that empty struct are tracked in mangaed fields
+  * make generated_files
+  * Update bazel and dependencies.
+  * Update to use cliflag.NamedFlagSets
+  * Address comments.
+  * Update NodeIPAM wrapper
+  * Delete build file based on latest changes.
+  * Update extension mechanism and related sample.
+  * Address review comments
+  * Address review comments
+  * Modify integration test to fill CCM test gap
+  * Update test
+  * Move initialize cloud provider with client builder reference inside controller start func
+  * Separate example func and add README.md
+  * Separate func
+  * Add demonstration of wiring nodeIPAMController config object
+  * Remove cloud provider name as input parameter.
+  * Fix flag passing in CCM.
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Declare TCP default for service port protocol
+  * Add ability to skip OpenAPI handler installation
+  * do not tag user created public IPs
+  * apf: fix test flake
+  * update gogo/protobuf to v1.3.2
+  * Fixed describe ingress causing SEGFAULT
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3</comment>
+    <requestid>885590</requestid>
+  </revision>
 </revisionlist>

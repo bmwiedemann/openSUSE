@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Thu Apr 15 07:59:12 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.6:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Fix test now that empty struct are tracked in mangaed fields
+  * make generated_files
+  * Update bazel and dependencies.
+  * Update to use cliflag.NamedFlagSets
+  * Address comments.
+  * Update NodeIPAM wrapper
+  * Delete build file based on latest changes.
+  * Update extension mechanism and related sample.
+  * Address review comments
+  * Address review comments
+  * Modify integration test to fill CCM test gap
+  * Update test
+  * Move initialize cloud provider with client builder reference inside controller start func
+  * Separate example func and add README.md
+  * Separate func
+  * Add demonstration of wiring nodeIPAMController config object
+  * Remove cloud provider name as input parameter.
+  * Fix flag passing in CCM.
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Declare TCP default for service port protocol
+  * Add ability to skip OpenAPI handler installation
+  * do not tag user created public IPs
+  * apf: fix test flake
+  * update gogo/protobuf to v1.3.2
+  * Fixed describe ingress causing SEGFAULT
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3
+  * Stop probing a pod during graceful shutdown
+  * apf: handle error from PollImmediateUntil
+  * staging/publishing: Set default go version to go1.15.10
+  * webhook config manager: HasSynced returns true when the manager is synced with existing webhookconfig objects at startup
+  * update metadata-concealment to 1.6 for removing legacy checking
+  * slice mirroring controller mirror annotations
+  * additional subnet configuration for AWS ELB
+  * Revert "Automated cherry pick of #97417: fix azure file secret not found issue"
+  * Use the correct volum handle format for GCE regional PD.
+  * Increasing maximum number of ports allowed in EndpointSlice
+  * Support > 5 ports in L4 ILB.
+  * build: Update to k/repo-infra@v0.1.5 (supports go1.15.10)
+  * Use go-runner:v2.3.1-go1.15.10-buster.0 image (built on go1.15.10)
+  * Update to go1.15.10
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.5
+  * fix a bug where only service with less than 100 ports can have GCE load balancer
+  * bazel
+  * deepcopy statefulsets
+  * full deepcopy on munged pod spec
+  * remove pod toleration toleration seconds mutation
+  * add markers for inspected validation mutation hits
+  * move secret mutation from validation to prepareforupdate
+  * remove unnecessary mutations in validation
+  * tweak validation to avoid mutation
+  * For LoadBalancer Service type don't create a HNS policy for empty or invalid external loadbalancer IP
+  * Moving docker options to daemon.json
+  * e2e fix: loosen configmap to 10 in resource quota
+  * api-server add --lease-max-object-count
+  * apiserver add metric etcd_lease_object_counts
+  * apiserver add --lease-reuse-duration-seconds to config lease reuse duration
+  * Bump Cluster Autoscaler to v1.20.0
+
+-------------------------------------------------------------------
+Wed Apr 14 14:54:45 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Rebase opensuse-version-checks.patch 
+
+-------------------------------------------------------------------
+Tue Apr 13 13:44:57 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.5:
+  * Updating EndpointSliceMirroring controller to wait for cache to be updated
+  * Updating EndpointSlice controller to wait for cache to be updated
+  * Add tests for populated volumes
+  * Fix comment on getPodVolumeSubpathListFromDisk
+  * Fix tests to test for new behavior
+  * Add warnings after cleanup back
+  * Automatically remove orphaned pod's dangling volumes
+  * Count pod overhead as an entity's resource usage
+  * Ensure only one LoadBalancer rule is created when HA mode is enabled
+  * Fix issue in checking domain socket for plugin watcher
+  * Use Lstat in plugin watcher to avoid Windows problem
+  * Skip visiting empty secret and configmap names
+  * Number of sockets is assumed to be same as NUMA nodes
+  * disables APF if the aggregated apiserver cannot locate the core kube-apiserver
+  * Fix repeatedly aquire the inhibit lock
+  * Sync node status during kubelet node shutdown
+  * remove executable permission bits
+  * Upgrading vendored dependencies
+  * Upgrading cAdvisor to 0.38.8
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.4
+  * build/OWNERS: Add Dan and Sascha as reviewers
+  * OWNERS(CHANGELOG): Move reviewers/approvers to CHANGELOG/ dir
+  * Bump konnectivity-client to v0.0.15 in release-1.20
+  * Storage e2e: Remove pd csi driver installation in GKE
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.3
+  * kube-cross: update image to use v1.15.8-legacy-1
+  * [go1.15] build: Update to k/repo-infra@v0.1.4 (supports go1.15.8)
+  * Use go-runner:buster-v2.3.1 image (built on go1.15.8)
+  * staging/publishing: Set default go version to go1.15.8
+  * Update to go1.15.8
+  * Fix dbus shutdown events not continuing if they are not valid
+  * Revert "make hostPort match test linuxonly"
+  * Revert "conformance changes"
+  * kube-proxy: clear conntrack entries after rules are in place
+  * Use -LiteralPath instead of -Path
+  * Escape the special character in vsphere windows path
+  * Include unit test
+  * Adjust defer to correctly call
+  * do not remove volume dir when saveVolumeData fails
+  * kubeadm: drop explicit constant override in version test
+  * kubeadm: get k8s CI version markers from k8s infra bucket
+  * dockershim hostport respect IPFamily
+  * dockershim hostport manager use HostIP
+  * Balance nodes in scheduling e2e
+  * e2e: Pod should avoid nodes that have avoidPod annotation: clean remaining pods
+  * Cherry pick of #98254:Fix the kube-scheduler binary's description of the --config parameter is inaccurate
+  * fix kube-scheduler cannot send event because the Note field is too large
+  * Fix nil pointer dereference in disruption controller
+  * Update region_pd e2e test to support PV have GA topology
+  * Recover CSI volumes from dangling attachments
+  * IsVolumeAttachedToNode() renamed to GetAttachState(), and returns 3 states instead of combining "uncertain" and "detached" into "false"
+  * Fixes Attach Detach Controller reconciler race reading ActualStateOfWorld and operation pending states; fixes reconciler_test mock detach to account for multiple attaches on a node
+  * Fix translation of Cinder storage classess to CSI
+  * OWNERS(CHANGELOG): Add release-engineering-reviewers as reviewers
+  * OWNERS(CHANGELOG): Add release-engineering-reviewers as approvers
+  * Resolve IP addresses of host-only in filtered dialer
+  * Deflake ingress updates
+  * make podTopologyHints protected by lock
+  * ignore cgroup driver check in windows node upgrade
+  * OWNERS(sig-release): Add CHANGELOG aliases
+  * OWNERS(build-image): Add Release Managers as reviewers
+  * OWNERS(releng): Sync Release Managers
+  * OWNERS(sig-release): Remove SIG Release approvers alias
+  * aggregate errors when putting vmss
+  * fix azure file migration issue
+  * kubelet: Fix mirrorPodTerminationMap leak
+  * kubelet: Delete static pods gracefully
+  * kubeadm: change the default image repository for CI images from gcr.io/kubernetes-ci-images to gcr.io/k8s-staging-ci-images
+  * kubelet logs print 'kubelet nodes sync' frequently
+  * reduce buckets for etcd_request_duration_seconds
+  * Merge pull request #96876 from howieyuen/no-execute-taint-missing
+  * cleanup subnet in frontend ip configs
+  * conformance changes
+  * make hostPort match test linuxonly
+  * Clean up namespaced children of missing virtual parents with incorrectly cluster-scoped nodes
+  * Add unit test for child scope mismatch with missing parent
+  * vendor: update cAdvisor to v0.38.7
+  * Use volumeHandle as PV name when translating EBS inline volume
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.2
+  * kubectl-convert import known versions
+  * Revert "Merge pull request #92817 from kmala/kubelet"
+  * WIP: node sync at least once
+  * fixes nil panic for nil delegated auth options
+  * Lower the frequency of volume plugin deprecation warning
+  * handle webhook authenticator and authorizer error
+  * fix the panic when kubelet registers if a node object already exists with no Status.Capacity or Status.Allocatable
+  * Avoid checking the entire backend service URL for FR equality.
+  * Use non privileged ports
+
+-------------------------------------------------------------------
 Wed Jan 20 08:13:01 UTC 2021 - dmueller@suse.com
 
 - Update to version 1.20.2:
