@@ -17,11 +17,7 @@
 
 
 Name:           diffoscope
-<<<<<<< Updated upstream
-Version:        168
-=======
 Version:        173
->>>>>>> Stashed changes
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -30,14 +26,7 @@ URL:            https://diffoscope.org/
 Source0:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2
 Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
 Source2:        diffoscope.keyring
-<<<<<<< Updated upstream
-# PATCH-FIX-UPSTREAM fix-tests-libmix_differences.patch -- fixes test_libmix_differences https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/244
-Patch0:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/fda75c731cd20383b15bcfc3326100b5ecd0787f.diff#/fix-tests-libmix_differences.patch
-# PATCH-FIX-UPSTREAM fix-tests-libmix_differences-2.patch -- fixes test_libmix_differences https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/244
-Patch1:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/27e27436ffad4ef35c2bde751001bef647c12caf.diff#/fix-tests-libmix_differences-2.patch
-=======
 Patch0:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/7bf04a62623d234a870fd62b0ee745c9b940f5d7.patch#/fix-file-5.40.patch
->>>>>>> Stashed changes
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -56,15 +45,9 @@ Requires(postun):update-alternatives
 # in extras_require
 Recommends:     python3-distro
 Recommends:     python3-argcomplete
-<<<<<<< Updated upstream
-Recommends:     python3-progressbar
-Recommends:     python3-defusedxml
-Recommends:     python3-jsondiff
-=======
 Recommends:     python3-defusedxml
 Recommends:     python3-jsondiff
 Recommends:     python3-progressbar
->>>>>>> Stashed changes
 # for getfacl
 Suggests:       acl
 # for ar, readelf, objcopy and objdump
@@ -131,10 +114,6 @@ debbindiff.
 %setup -q
 sed -i '0,/#!\/usr\/bin\/env/ d' diffoscope/main.py
 %patch0 -p1
-<<<<<<< Updated upstream
-%patch1 -p1
-=======
->>>>>>> Stashed changes
 
 %build
 %python3_build
@@ -158,13 +137,9 @@ fi
 
 %check
 # test_identification https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/98
-<<<<<<< Updated upstream
-py.test-%{python3_bin_suffix} -k 'not test_identification'
-=======
 # test_content_source_without_extension temporarily disabled to get build working
 # test_text_proper_indentation test_equal, test_different temporarily for: https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/251
 py.test-%{python3_bin_suffix} -k 'not test_identification and not test_content_source_without_extension and not test_text_proper_indentation and not test_equal and not test_different'
->>>>>>> Stashed changes
 
 %files
 %doc README.rst

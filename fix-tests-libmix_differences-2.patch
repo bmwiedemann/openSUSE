@@ -1,9 +1,0 @@
-diff --git a/tests/data/elfmix_x_obj_objdump_expected_diff b/tests/data/elfmix_x_obj_objdump_expected_diff
-index 1c0aace4c3be236262808f8d87336fcb68c3ec3e..e36b59703d1231667e6609a2f5e4b9264adc09be 100644
---- a/tests/data/elfmix_x_obj_objdump_expected_diff
-+++ b/tests/data/elfmix_x_obj_objdump_expected_diff
-@@ -9,4 +9,3 @@
- -	movi.n	a2, 42
- +	movi.n	a2, 43
-  	retw.n
--
