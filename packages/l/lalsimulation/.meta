@@ -1,0 +1,8 @@
+<package name="lalsimulation" project="openSUSE:Factory">
+  <title>LSC Algorithm Simulation Library</title>
+  <description>The LSC Algorithm Simulation Library for gravitational wave data analysis.
+
+</description>
+  <devel project="science" package="lalsimulation"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>
