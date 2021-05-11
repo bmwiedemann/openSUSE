@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 30 13:35:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.1:
+  + Project template improvements.
+  + Theme fixes for non-standard themes.
+  + Improvements to Podman/Toolbox integration.
+  + Sysprof integration fixes.
+  + Improve resolution of SDK Extensions from Flatpak manifests.
+  + Fix delivering flatpak builds via deviced to remove device.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 20 09:32:03 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.40.0:
