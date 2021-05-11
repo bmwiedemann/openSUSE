@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  8 10:03:32 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri May  7 09:29:33 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.0.
+  ## 2.13.0.0
+
+  * [#1225](https://github.com/yesodweb/persistent/pull/1225)
+      * Support `persistent-2.13` changes for SqlBackend being made internal.
+
+-------------------------------------------------------------------
 Wed Mar 31 14:28:25 UTC 2021 - psimons@suse.com
 
 - Update persistent-sqlite to version 2.12.0.0.
