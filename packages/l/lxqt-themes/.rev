@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c3732a87347955658b993cf6fc11646</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>535998</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f8527895390e6dca034ae9ca168daad</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Set informa version to 0.13.0
+  * CMake: Prevent in-source builds
+  * fixed authors and bump the year (#8)
+  * fixed lxde mention (#7)
+</comment>
+    <requestid>618038</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72fdc511e8d6cb86aafdd48cb4bd39dd</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113383</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Set cmake_minimum_required to 3.1.0
+  * Set informal version to 0.14.0
+</comment>
+    <requestid>670397</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fefcbc80fcc99d64cbd359a1f8ea8070</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798538</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>681187696c8ff87a4ab706054c3202ec</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Added the themes Clearlooks, Leech and Kvantum.</comment>
+    <requestid>846011</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9fc071f922124d531e8c2fb2714c4b5</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Added alternate background color to the calendar widget in some themes.</comment>
+    <requestid>885949</requestid>
+  </revision>
+</revisionlist>
