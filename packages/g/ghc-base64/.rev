@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85496f2a23d2e905d2ed72624032fec5</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1605217168</time>
+    <user>dimstar_suse</user>
+    <comment>new package for cardano support</comment>
+    <requestid>847833</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b14cd19fbd8795e0b9b0c6a54a7e7a55</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1608633329</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857246</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b4a870593259ff9e791b35899974a0a</srcmd5>
+    <version>0.4.2.3</version>
+    <time>1613511420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870445</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d3d169ae8069c70c61f92dd61cf8ede</srcmd5>
+    <version>0.4.2.3</version>
+    <time>1615362872</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877616</requestid>
+  </revision>
+</revisionlist>

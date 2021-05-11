@@ -1,0 +1,5 @@
+<package name="ghc-base64" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-base64"/>
+</package>

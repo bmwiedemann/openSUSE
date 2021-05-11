@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Feb 27 13:14:25 UTC 2021 - psimons@suse.com
+
+- Update base64 to version 0.4.2.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Jan 27 19:35:33 UTC 2021 - psimons@suse.com
+
+- Update base64 to version 0.4.2.3.
+  ## 0.4.2.3
+
+  * Minor release for stackage, limiting memory usage in test suites.
+  * Transition to Github Actions CI
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov  8 12:52:45 UTC 2020 - psimons@suse.com
+
+- Add base64 at version 0.4.2.2 revision 1.
+
