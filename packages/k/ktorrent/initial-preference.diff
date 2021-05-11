@@ -1,0 +1,10 @@
+--- a/ktorrent/org.kde.ktorrent.desktop	2011-03-14 19:48:22.000000000 +0200
++++ b/ktorrent/org.kde.ktorrent.desktop	2011-03-16 00:26:00.162000025 +0200
+@@ -120,6 +120,7 @@
+ Type=Application
+ X-DocPath=ktorrent/index.html
+ MimeType=application/x-bittorrent;application/x-torrent;x-scheme-handler/magnet;
++InitialPreference=5
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=org.kde.ktorrent
+ Comment=A BitTorrent program by KDE
