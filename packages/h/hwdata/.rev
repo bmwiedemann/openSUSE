@@ -1,0 +1,419 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>853b0a0da3662326a673fa27a76e2d4a</srcmd5>
+    <version>0.300</version>
+    <time>1494442425</time>
+    <user>dimstar_suse</user>
+    <comment>package is already in SLE and Leap</comment>
+    <requestid>494190</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66d26f2eaaee63091c268e0ea5f29afc</srcmd5>
+    <version>0.300</version>
+    <time>1495883741</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>496539</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3828184342ef4d3a172e278f1bafd0fc</srcmd5>
+    <version>0.301</version>
+    <time>1497362935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.301</comment>
+    <requestid>503082</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>624f9c5ee6d587688cef34478e22f540</srcmd5>
+    <version>0.302</version>
+    <time>1499880942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.302</comment>
+    <requestid>509452</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e77213f3b7ce92b6dcae63e9b023066f</srcmd5>
+    <version>0.303</version>
+    <time>1501840799</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.303</comment>
+    <requestid>513807</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9cce4465ad17a8e63f7dfa36eda10c05</srcmd5>
+    <version>0.304</version>
+    <time>1505238835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.304</comment>
+    <requestid>522307</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4925d55571007548024730e20acb23ef</srcmd5>
+    <version>0.305</version>
+    <time>1506956100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.305</comment>
+    <requestid>530389</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3397fe96a3990e15ee0b0d1dea5c2441</srcmd5>
+    <version>0.306</version>
+    <time>1510506172</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540608</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0cbf20d88c5ecb290c8fc62ae15e7a7d</srcmd5>
+    <version>0.307</version>
+    <time>1512734384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.307:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>554871</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9de84ce06bc3bc11bf640cd971edb2a6</srcmd5>
+    <version>0.308</version>
+    <time>1515261078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.308:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>561875</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04d2c5cef12330b509d09dfee5e0ef05</srcmd5>
+    <version>0.310</version>
+    <time>1520778221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.310:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>584219</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d16cf510952957ff7353c8e17d992d98</srcmd5>
+    <version>0.311</version>
+    <time>1523029332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.311:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>593228</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>50988bb5270b15b564e70897f8555cc2</srcmd5>
+    <version>0.312</version>
+    <time>1526219618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.312:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>605716</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1d6fc1f8c82bac54cbefaa0e28d7da29</srcmd5>
+    <version>0.313</version>
+    <time>1531592087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.313:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>621711</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7059bae6f5791c74716704d608f6c415</srcmd5>
+    <version>0.314</version>
+    <time>1536094046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.314:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>632249</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ad85e8fd5cac721cc1b6b8a692bb49af</srcmd5>
+    <version>0.318</version>
+    <time>1545866673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.318:
+  * Updated pci, usb and vendor ids.
+
+- Update to version 0.315:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>658067</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>212ee69991099d74c43370660f4ea059</srcmd5>
+    <version>0.319</version>
+    <time>1547539962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.319:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>664305</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>acee12ef18ffd08dcddca94978e1e810</srcmd5>
+    <version>0.320</version>
+    <time>1550149974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.320 (bsc#1121410):
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>673598</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>d0633ffb3c8916abc145dd373fabccde</srcmd5>
+    <version>0.320</version>
+    <time>1550402314</time>
+    <user>coolo</user>
+    <comment>- Replace pciutils-ids package
+  * Provide compat symlink</comment>
+    <requestid>676182</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>df46f992a9cda426cf6c8b2744fbc6dd</srcmd5>
+    <version>0.321</version>
+    <time>1554189468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.321:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>689749</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f7bd186cdcae080270d547de967c42d1</srcmd5>
+    <version>0.322</version>
+    <time>1555574148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.322:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>694841</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>15598145545f60404e4b4a38a80be34b</srcmd5>
+    <version>0.323</version>
+    <time>1557388917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.323:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>700368</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>52ccfde5b9693c99e5cc2da6310a5f48</srcmd5>
+    <version>0.324</version>
+    <time>1561557623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.324:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>709341</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>efb0ff251ec4fb5aad295b8833aa3802</srcmd5>
+    <version>0.325</version>
+    <time>1563223362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.325:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>714383</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4e4866a369aecc0511634aaa4d376ef7</srcmd5>
+    <version>0.326</version>
+    <time>1565962104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.326:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>723006</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8c0395fc1f1a8799303484a97cff96a1</srcmd5>
+    <version>0.328</version>
+    <time>1572883263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.328:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>742830</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7c3a2b8bf26a6f507d543e22cef63f4a</srcmd5>
+    <version>0.329</version>
+    <time>1573164841</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.329:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>745345</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>47b2e191ef52a2dbee85d91cc78dcd39</srcmd5>
+    <version>0.330</version>
+    <time>1575727923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.330:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>752921</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bcf75768e43c345d0b6247482dafcf0b</srcmd5>
+    <version>0.331</version>
+    <time>1578677984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.331:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>761483</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>acdbba2d8500ea53fa047709a0c99082</srcmd5>
+    <version>0.332</version>
+    <time>1580991501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.322:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>769537</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a55a0bc86715173a45b16fd002fc8fd2</srcmd5>
+    <version>0.333</version>
+    <time>1583526230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.323:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>781182</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa2f96af11b680b2eeafec0c42e04b3c</srcmd5>
+    <version>0.334</version>
+    <time>1586555545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.324 (bsc#1168806):
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>791879</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>daa9e31517911b1c3f77c465021dcd6d</srcmd5>
+    <version>0.334</version>
+    <time>1587838539</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix previous changelog entries
+
+- Update to version 0.334 (bsc#1168806):
+- Update to version 0.333:
+- Update to version 0.332:</comment>
+    <requestid>796289</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0c7653cbe2b6b0c7deb501360cabbc1c</srcmd5>
+    <version>0.335</version>
+    <time>1588971792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.335:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>800672</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8c909427645c7d780b401cfb3d903b23</srcmd5>
+    <version>0.336</version>
+    <time>1591879233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810750</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>804b4fcf50f3946edd25157a11f88e87</srcmd5>
+    <version>0.337</version>
+    <time>1595576885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.337:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>821258</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>eb92768717202e9873f8ed4105c0b43e</srcmd5>
+    <version>0.338</version>
+    <time>1597403256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.338:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>825787</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>58d412b28dafa166f9b63ef0d832c52d</srcmd5>
+    <version>0.339</version>
+    <time>1600879049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.339:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>834294</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b5a26c4d4a1a87d8a1814d43c0d29432</srcmd5>
+    <version>0.340</version>
+    <time>1602349379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840271</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ad09b0f557ae0e650a84aa8cd28c9b44</srcmd5>
+    <version>0.341</version>
+    <time>1605011911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.340:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>846144</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ec3524b74b4c9ef7a693cf8bea2f7c27</srcmd5>
+    <version>0.342</version>
+    <time>1607548270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.342:
+  + Updated pci, usb and vendor ids.
+
+- Update to version 0.341:</comment>
+    <requestid>853523</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8247113598386b567fdc5ba79f09d8da</srcmd5>
+    <version>0.343</version>
+    <time>1610303946</time>
+    <user>dimstar_suse</user>
+    <comment>- Add merge-pciids.pl to fully duplicate behavior of pciutils-ids
+  * Resolves SLE issue bsc#1180422 bsc#1180482
+
+- Update to version 0.343:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>861531</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3741742854476b92150dadb719285632</srcmd5>
+    <version>0.344</version>
+    <time>1612707250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.344:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>868574</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9638187d622efc8fa30819a4cbd20a3b</srcmd5>
+    <version>0.345</version>
+    <time>1615362543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.345:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
+    <requestid>876694</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e9b3b4392e69dd6631030c467675a20b</srcmd5>
+    <version>0.346</version>
+    <time>1617908572</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.346:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
+    <requestid>883162</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5bfdf44fef6e9267abc9b94562d9e1df</srcmd5>
+    <version>0.347</version>
+    <time>1620504430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.347 (bsc#1185697):
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>890904</requestid>
+  </revision>
+</revisionlist>

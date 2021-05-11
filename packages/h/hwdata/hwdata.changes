@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Thu May  6 07:23:04 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.347 (bsc#1185697):
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Apr  6 06:08:13 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.346:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160
+
+-------------------------------------------------------------------
+Mon Mar  1 11:03:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.345:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160
+
+-------------------------------------------------------------------
+Tue Feb  2 09:46:14 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.344:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Jan  7 14:28:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Add merge-pciids.pl to fully duplicate behavior of pciutils-ids
+  * Resolves SLE issue bsc#1180422 bsc#1180482
+
+-------------------------------------------------------------------
+Wed Jan  6 08:13:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.343:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Dec  7 08:49:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.342:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Nov  5 08:13:13 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.341:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Oct  8 12:36:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.340:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Sep 14 11:30:55 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.339:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Aug 11 13:05:07 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.338:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Jul 16 09:16:26 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.337:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Jun  2 07:50:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.336:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed May  6 10:47:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.335:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Apr 22 13:31:12 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix previous changelog entries
+
+-------------------------------------------------------------------
+Tue Apr  7 05:25:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.334 (bsc#1168806):
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Mar  3 11:33:42 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.333:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Feb  3 11:42:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.332:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Jan  7 09:16:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.331:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Dec  2 12:07:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.330:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Nov  5 08:19:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.329:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Oct 16 15:58:15 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.328:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Aug 13 08:00:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.326:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Jul 10 07:16:32 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.325:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Jun 12 07:30:16 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.324:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Fri May  3 11:54:18 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.323:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Apr 16 16:25:35 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.322:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:51:05 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.321:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Feb 14 16:07:45 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Replace pciutils-ids package
+  * Provide compat symlink
+
+-------------------------------------------------------------------
+Tue Feb 12 09:48:42 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.320 (bsc#1121410):
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Jan 10 09:19:53 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.319:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Fri Dec 14 14:47:45 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.318:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Sep 26 14:03:20 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.315:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Aug 30 06:42:36 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.314:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Jul  9 12:47:10 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.313:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed May  9 11:01:29 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.312:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Tue Apr  3 13:20:01 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.311:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Thu Mar  8 09:04:52 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.310:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Fri Jan  5 12:51:07 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.308:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Wed Dec  6 16:24:25 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.307:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Fri Nov  3 15:29:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.306:
+  * Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
+Mon Oct  2 10:39:25 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.305
+
+-------------------------------------------------------------------
+Fri Sep  8 12:58:20 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.304
+
+-------------------------------------------------------------------
+Wed Aug  2 08:26:35 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.303
+
+-------------------------------------------------------------------
+Tue Jul 11 13:07:28 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.302
+
+-------------------------------------------------------------------
+Mon Jun 12 12:48:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.301
+
+-------------------------------------------------------------------
+Wed May 10 11:52:25 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.300 (boo#1038809)
+
+-------------------------------------------------------------------
+Sat Apr 15 18:32:08 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.299
+- Update project and download urls
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 28 12:26:29 CEST 2015 - mc@suse.de
+
+- version 0.282
+- updated pci, usb and vendor ids
+
+-------------------------------------------------------------------
+Sat Sep 13 15:26:28 CEST 2014 - mc@suse.de
+
+- version 0.269
+- updated pci, usb and vendor ids
+
+-------------------------------------------------------------------
+Sat Jul 12 09:51:18 UTC 2014 - mc@suse.com
+
+- update to version 0.267
+- updated pci, usb and vendor ids
+
+-------------------------------------------------------------------
+Sat Jan 18 17:33:07 UTC 2014 - mc@suse.com
+
+- update to version 0.258
+- updated pci and oui ids
+- remove blacklist.conf
+
+-------------------------------------------------------------------
+Sat Jan 18 11:47:47 CET 2014 - mc@suse.de
+
+- initial release
+
