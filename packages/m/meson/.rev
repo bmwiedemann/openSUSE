@@ -582,4 +582,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871224</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>feecdca2da6edf6bd9df53cb9327e0f6</srcmd5>
+    <version>0.56.2</version>
+    <time>1620767009</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to Factory version 0.56.2 - together with patch to address GCC11 / GNOME build issues (0.57.2 is stored in a branch of mine) (forwarded request 891206 from dimstar)</comment>
+    <requestid>891207</requestid>
+  </revision>
 </revisionlist>

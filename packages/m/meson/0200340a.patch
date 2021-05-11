@@ -1,0 +1,159 @@
+From 0200340a497fb911c13ce3147b4223e4b5e290e7 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Mon, 16 Nov 2020 18:38:39 +0000
+Subject: [PATCH] gnome: Drop use of volatile in GLib type functions
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+See https://gitlab.gnome.org/GNOME/glib/-/issues/600
+
+`volatile` was previously mistakenly used in GLib to indicate that a
+variable was accessed atomically or otherwise multi-threaded. It’s not
+meant for that, and up to date compilers (like gcc-11) will rightly warn
+about it.
+
+Drop the `volatile` qualifiers.
+
+Based on a patch by Jeff Law.
+
+See also http://isvolatileusefulwiththreads.in/c/.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ mesonbuild/modules/gnome.py                               | 2 +-
+ test cases/frameworks/7 gnome/mkenums/enums.c.in          | 8 ++++----
+ test cases/frameworks/7 gnome/mkenums/enums2.c.in         | 8 ++++----
+ test cases/frameworks/7 gnome/mkenums/meson.build         | 8 ++++----
+ .../dependency-generated/enum-types.c.template            | 8 ++++----
+ 5 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/mesonbuild/modules/gnome.py b/mesonbuild/modules/gnome.py
+index 9fd31c73885..547aff17cd4 100644
+--- a/mesonbuild/modules/gnome.py
++++ b/mesonbuild/modules/gnome.py
+@@ -1430,7 +1430,7 @@ def mkenums_simple(self, state, args, kwargs):
+ GType
+ %s@enum_name@_get_type (void)
+ {
+-  static volatile gsize gtype_id = 0;
++  static gsize gtype_id = 0;
+   static const G@Type@Value values[] = {''' % func_prefix
+ 
+         c_file_kwargs['vprod'] = '    { C_@TYPE@(@VALUENAME@), "@VALUENAME@", "@valuenick@" },'
+diff --git a/test cases/frameworks/7 gnome/mkenums/enums.c.in b/test cases/frameworks/7 gnome/mkenums/enums.c.in
+index 62e1adcb462..1c19d8ffaa8 100644
+--- a/test cases/frameworks/7 gnome/mkenums/enums.c.in	
++++ b/test cases/frameworks/7 gnome/mkenums/enums.c.in	
+@@ -13,9 +13,9 @@
+ /*** BEGIN value-header ***/
+ GType
+ @enum_name@_get_type(void) {
+-    static volatile gsize g_define_type_id__volatile = 0;
++    static gsize static_g_define_type_id = 0;
+ 
+-    if(g_once_init_enter(&g_define_type_id__volatile)) {
++    if(g_once_init_enter(&static_g_define_type_id)) {
+         static const G@Type@Value values [] = {
+ /*** END value-header ***/
+ 
+@@ -29,10 +29,10 @@ GType
+ 
+         GType g_define_type_id =
+             g_@type@_register_static(g_intern_static_string("@EnumName@"), values);
+-        g_once_init_leave(&g_define_type_id__volatile, g_define_type_id);
++        g_once_init_leave(&static_g_define_type_id, g_define_type_id);
+     }
+ 
+-    return g_define_type_id__volatile;
++    return static_g_define_type_id;
+ }
+ 
+ /*** END value-tail ***/
+diff --git a/test cases/frameworks/7 gnome/mkenums/enums2.c.in b/test cases/frameworks/7 gnome/mkenums/enums2.c.in
+index 62e1adcb462..1c19d8ffaa8 100644
+--- a/test cases/frameworks/7 gnome/mkenums/enums2.c.in	
++++ b/test cases/frameworks/7 gnome/mkenums/enums2.c.in	
+@@ -13,9 +13,9 @@
+ /*** BEGIN value-header ***/
+ GType
+ @enum_name@_get_type(void) {
+-    static volatile gsize g_define_type_id__volatile = 0;
++    static gsize static_g_define_type_id = 0;
+ 
+-    if(g_once_init_enter(&g_define_type_id__volatile)) {
++    if(g_once_init_enter(&static_g_define_type_id)) {
+         static const G@Type@Value values [] = {
+ /*** END value-header ***/
+ 
+@@ -29,10 +29,10 @@ GType
+ 
+         GType g_define_type_id =
+             g_@type@_register_static(g_intern_static_string("@EnumName@"), values);
+-        g_once_init_leave(&g_define_type_id__volatile, g_define_type_id);
++        g_once_init_leave(&static_g_define_type_id, g_define_type_id);
+     }
+ 
+-    return g_define_type_id__volatile;
++    return static_g_define_type_id;
+ }
+ 
+ /*** END value-tail ***/
+diff --git a/test cases/frameworks/7 gnome/mkenums/meson.build b/test cases/frameworks/7 gnome/mkenums/meson.build
+index 3d7adf052aa..8ff05ba5ea2 100644
+--- a/test cases/frameworks/7 gnome/mkenums/meson.build	
++++ b/test cases/frameworks/7 gnome/mkenums/meson.build	
+@@ -89,9 +89,9 @@ enums_c3 = gnome.mkenums('enums3.c',
+   vhead : '''
+ GType
+ @enum_name@_get_type(void) {
+-    static volatile gsize g_define_type_id__volatile = 0;
++    static gsize static_g_define_type_id = 0;
+ 
+-    if(g_once_init_enter(&g_define_type_id__volatile)) {
++    if(g_once_init_enter(&static_g_define_type_id)) {
+         static const G@Type@Value values [] = {
+ ''',
+   vprod : '''            { @VALUENAME@, "@VALUENAME@", "@valuenick@" },''',
+@@ -100,10 +100,10 @@ GType
+ 
+         GType g_define_type_id =
+             g_@type@_register_static(g_intern_static_string("@EnumName@"), values);
+-        g_once_init_leave(&g_define_type_id__volatile, g_define_type_id);
++        g_once_init_leave(&static_g_define_type_id, g_define_type_id);
+     }
+ 
+-    return g_define_type_id__volatile;
++    return static_g_define_type_id;
+ }
+ ''')
+ 
+diff --git a/test cases/vala/8 generated sources/dependency-generated/enum-types.c.template b/test cases/vala/8 generated sources/dependency-generated/enum-types.c.template
+index 5ecdd2df234..85d74d11c5c 100644
+--- a/test cases/vala/8 generated sources/dependency-generated/enum-types.c.template	
++++ b/test cases/vala/8 generated sources/dependency-generated/enum-types.c.template	
+@@ -14,9 +14,9 @@
+ GType
+ @enum_name@_get_type (void)
+ {
+-  static volatile gsize g_define_type_id__volatile = 0;
++  static gsize static_g_define_type_id = 0;
+  
+-  if (g_once_init_enter (&g_define_type_id__volatile)) {
++  if (g_once_init_enter (&static_g_define_type_id)) {
+     static const G@Type@Value values[] = {
+ /*** END value-header ***/
+ 
+@@ -30,10 +30,10 @@ GType
+     GType g_define_type_id = 
+        g_@type@_register_static (g_intern_static_string ("@EnumName@"), values);
+       
+-    g_once_init_leave (&g_define_type_id__volatile, g_define_type_id);
++    g_once_init_leave (&static_g_define_type_id, g_define_type_id);
+   }
+     
+-  return g_define_type_id__volatile;
++  return static_g_define_type_id;
+ }
+ 
+ /*** END value-tail ***/

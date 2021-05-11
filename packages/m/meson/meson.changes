@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 07:18:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0200340a.patch: gnome: Drop use of volatile in GLib type
+  functions (boo#1185720).
+
+-------------------------------------------------------------------
 Thu Feb  4 13:35:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Conflict with rpm-build < 4.15: meson uses internal macros

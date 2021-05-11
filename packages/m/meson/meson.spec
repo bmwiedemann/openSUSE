@@ -1,5 +1,5 @@
 #
-# spec file for package meson
+# spec file for package meson-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -37,6 +37,8 @@ URL:            http://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
 Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
+# PATCH-FIX-UPSTREAM 0200340a.patch boo#1185720 dimstar@opensuse.org -- gnome: Drop use of volatile in GLib type functions
+Patch0:         https://github.com/mesonbuild/meson/commit/0200340a.patch
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
@@ -157,6 +159,7 @@ This package provides support for meson.build files in Vim.
 
 %prep
 %setup -q -n meson-%{version}
+%patch0 -p1
 %patch1 -p1
 %if !%{with setuptools}
 %patch2 -p1
