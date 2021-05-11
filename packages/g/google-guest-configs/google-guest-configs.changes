@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Mar 31 12:55:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210317.00 (bsc#1183414, bsc#1183415)
+  * dracut.conf wants spaces around values (#19)
+  * make the same change for debian (#18)
+  * change path back for google_nvme_id (#17)
+  * move google_nvme_id to /usr/bin (#16)
+  * correct udev rule syntax (#15)
+  * prune el6 spec (#13)
+  * Updated udev rules (#11)
+- Remove empty %{_sbindir} from %install and %files section
+
+-------------------------------------------------------------------
+Tue Jan  5 20:26:01 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Remove service files (bsc#1180304)
+  + google-optimize-local-ssd.service, google-set-multiqueue.service
+    scripts are called from within the guest agent
+
+-------------------------------------------------------------------
+Tue Aug 25 15:27:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200626.00 (bsc#1175740, bsc#1175741)
+  * Updates the udev rules for local SSD disks. (#9)
+  * Fix tx affinity logic when number of CPUs is above 32 (#6)
+
+-------------------------------------------------------------------
+Fri Jul 24 13:07:43 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch udev requires to pkgconfig to allow the build service to use
+  the -mini package for build optimization
+
+-------------------------------------------------------------------
+Wed Jul 22 10:53:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1174304, bsc#1174306, jsc#ECO-2099, jsc#PM-1945)
+  + Version 20200626.00
+  + Replaces configuration from google-compute-engine-{init,oslogin} package
