@@ -1,0 +1,1053 @@
+-------------------------------------------------------------------
+Sat Mar 27 12:05:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions, remove unsubstantiated claims.
+
+-------------------------------------------------------------------
+Thu Mar 25 12:56:29 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.0.5, see:
+  https://www.knot-dns.cz/2021-03-25-version-305.html
+- Update description based on homepage
+
+-------------------------------------------------------------------
+Mon Feb  1 13:19:02 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording from description.
+- Drop old rpm constructs.
+
+-------------------------------------------------------------------
+Mon Jan 25 22:30:39 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- version update to 3.0.4, see:
+  https://www.knot-dns.cz/2021-01-20-version-304.html
+
+-------------------------------------------------------------------
+Mon Jan  4 16:48:21 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- add incompatibility warning about 1.6.X version when updateing
+- rename back to knot
+
+-------------------------------------------------------------------
+Mon Dec 28 16:24:32 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.3
+
+-------------------------------------------------------------------
+Mon Nov 30 21:41:09 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- version update to 2.9.7, see:
+  https://www.knot-dns.cz/2020-08-31-version-296.html
+  https://www.knot-dns.cz/2020-10-09-version-297.html
+- obsolete only pre-2.0 version
+
+-------------------------------------------------------------------
+Tue Jul 21 10:52:20 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove rosedb conditional as lmdb is required in general now 
+
+-------------------------------------------------------------------
+Tue Jul 21 10:35:13 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace conflicts with Provides/Obsoletes 
+
+-------------------------------------------------------------------
+Wed Jun 24 15:12:35 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- fix dependency: python-Sphinx -> python3-Sphinx
+
+-------------------------------------------------------------------
+Wed Jun 24 15:04:01 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- use upstream example config file with correct syntax
+
+-------------------------------------------------------------------
+Wed Jun 24 08:55:33 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- version update to 2.9.5
+  - Bugfixes
+    - Old ZSK can be withdrawn too early during a ZSK rollover if maximum zone
+      TTL is computed automatically
+    - Server responds SERVFAIL to ANY queries on empty non-terminal nodes
+  - Improvements
+    - Also module onlinesign returns minimized responses to ANY queries
+    - Linking against libcap-ng can be disabled via a configure option
+
+-------------------------------------------------------------------
+Tue May 19 20:30:10 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- version update to 2.9.4
+  see NEWS
+
+-------------------------------------------------------------------
+Fri Dec 20 10:07:59 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.9.2
+  see NEWS
+
+-------------------------------------------------------------------
+Wed Jan 23 13:26:51 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.6
+  - Improvements
+    - Zone status also shows when the zone load is scheduled
+    - Server workers status also shows background workers
+      utilization
+    - Default control timeout for knotc was increased to 10 seconds
+    - Pkg-config files contain auxiliary variable with library
+      filename
+  - Bugfixes
+    - Configuration commit or server reload can drop some pending
+      zone events
+    - Nonempty zone journal is created even though it's disabled
+      #635
+    - Zone is completely re-signed during empty dynamic update
+      processing
+    - Server can crash when storing a big zone difference to the
+      journal
+    - Failed to link on FreeBSD 12 with Clang
+
+-------------------------------------------------------------------
+Mon Jan  7 13:46:56 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.5
+  - Features:
+    - Keymgr supports NSEC3 salt handling
+  - Improvements:
+    - Zone history in journal is dropped apon AXFR-like zone update
+    - Libdnssec is no longer linked against libm #628
+    - Libdnssec is explicitly linked against libpthread if PKCS #11
+      enabled #629
+    - Better support for libknot packaging in Python
+    - Manually generated KSK is 'ready' by default
+    - Kdig supports '+timeout' as an alias for '+time'
+    - Kdig supports '+nocomments' option
+    - Kdig no longer prints empty lines between retries
+    - Kdig returns failure if operations not successfully resolved
+      #632
+    - Fixed repeating of the 'KSK submission, waiting for
+      confirmation' log
+    - Various improvements in documentation, Dockerfile, and tests
+  - Bugfixes:
+    - Knotc fails to unset huge configuration section
+    - Kjournalprint sometimes fails to display zone journal content
+    - Improper timing of ZSK removal during ZSK rollover
+    - Missing UTC time zone indication in the 'iso' keymgr list
+      output
+    - A race condition in the online signing module
+
+-------------------------------------------------------------------
+Mon Dec 31 16:07:03 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.7.4
+  Features:
+  ---------
+   - Added SNI configuration for TLS in kdig (Thanks to Alexander Schultz)
+  Improvements:
+  -------------
+   - Added warning log when DNSSEC events not successfully scheduled
+   - New semantic check on timer values in keymgr
+   - DS query no longer asks other addresses if got a negative answer
+   - Reintroduced 'rollover' configuration option for CDS/CDNSKEY publication
+   - Extended logging for zone loading
+   - Various documentation improvements
+  Bugfixes:
+  ---------
+   - Failed to import module configuration #613
+   - Improper Cflags value in libknot.pc if built with embedded LMDB #615
+   - IXFR doesn't fall back to AXFR if malformed reply
+   - DNSSEC events not correctly scheduled for empty zone updates
+   - During algorithm rollover old keys get removed before DS TTL expires #617
+   - Maximum zone's RRSIG TTL not considered during algorithm rollover #620
+
+-------------------------------------------------------------------
+Sun Nov  4 02:14:26 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- seems we no longer need jansson
+
+-------------------------------------------------------------------
+Sun Nov  4 02:10:14 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit geoip support to opensuse
+
+-------------------------------------------------------------------
+Sat Nov  3 22:23:36 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.3
+  - Features:
+    - New queryacl module for query access control
+    - Configurable answer rrset rotation #612
+    - Configurable NSEC bitmap in online signing
+  - Improvements:
+    - Better error logging for KASP DB operations #601
+    - Some documentation improvements
+  - Bugfixes:
+    - Keymgr "list" output doesn't show key size for ECDSA algorithms #602
+    - Failed to link statically with embedded LMDB
+    - Configuration commit causes zone reload for all zones
+    - The statistics module overlooks TSIG record in a request
+    - Improper processing of an AXFR-style-IXFR response consisting of one-record messages
+    - Race condition in online signing during key rollover #600
+    - Server can crash if geoip module is enabled in the geo mode
+- changes from 2.7.2
+  - Improvements:
+    - Keymgr list command displays also key size
+    - Kjournalprint displays total occupied size in the debug mode
+    - Server doesn't stop if failed to load a shared module from the module directory
+    - Libraries libcap-ng, pthread, and dl are linked selectively if needed
+  - Bugfixes:
+    - Sometimes incorrect result from dnssec_nsec_bitmap_contains (libdnssec)
+    - Server can crash when loading zone file difference and zone-in-journal is set
+    - Incorrect treatment of specific queries in the module RRL
+    - Failed to link module Cookies as a shared library
+- changes from 2.7.1
+  - Improvements:
+    - Added zone wire size information to zone loading log message
+    - Added debug log message for each unsuccessful remote address operation
+    - Various improvements for packaging
+  - Bugfixes:
+    - Incompatible handling of RRSIG TTL value when creating a DNS message
+    - Incorrect RRSIG TTL value in zone differences and knotc zone operation outputs
+    - Default configure prefix is ignored
+- changes from 2.7.0
+  - Features:
+    - New DNS Cookies module and related '+cookie' kdig option
+    - New module for response tailoring according to client's subnet or geographic location
+    - General EDNS Client Subnet support in the server
+    - OSS-Fuzz integration (Thanks to Jonathan Foote)
+    - New '+ednsopt' kdig option (Thanks to Jan Včelák)
+    - Online Signing support for automatic key rollover
+    - Non-normal file (e.g. pipe) loading support in zscanner #542
+    - Automatic SOA serial incrementation if non-empty zone difference
+    - New zone file load option for ignoring zone file's SOA serial
+    - New build-time option for alternative malloc specification
+    - Structured logging for DNSSEC key submission event
+    - Empty QNAME support in kdig
+  - Improvements:
+    - Various library and server optimizations
+    - Reduced memory consumption of outgoing IXFR processing
+    - Linux capabilities use overhaul #546 (Thanks to Robert Edmonds)
+    - Online Signing properly signs delegations and CNAME records
+    - CDS/CDNSKEY rrset is signed with KSK instead of ZSK
+    - DNSSEC-related records are ignored when loading zone difference with signing enabled
+    - Minimum allowed RSA key length was increased to 1024
+  - Bugfixes:
+    - Possible uninitialized address buffer use in zscanner
+    - Possible index overflow during multiline record parsing in zscanner
+    - kdig +tls sometimes consumes 100 % CPU #561
+    - Single-Type Signing doesn't work with single ZSK key #566
+    - Zone not flushed after re-signing during zone load #594
+    - Server crashes when committing empty zone transaction
+    - Incoming IXFR with on-slave signing sometimes leads to memory corruption #595
+  - Compatibility:
+    - Removed obsolete RRL configuration
+    - Removed obsolete module names 'mod-online-sign' and 'mod-synth-record'
+    - Removed obsolete 'ixfr-from-differences' configuration option
+    - Removed old journal migration
+    - Removed module rosedb
+- changes from 2.6.9
+  - Improvements:
+    - Added zone wire size to zone loading log message
+    - Added debug log message for each unsuccessful remote address operation
+  - Bugfixes:
+    - Zone not flushed after re-signing during zone load #594
+    - Server crashes when committing empty zone transaction
+    - Incoming IXFR with on-slave signing sometimes leads to memory corruption #595
+- packaging changes:
+  - enabled geoip module: new BR: pkgconfig(libmaxminddb)
+  - enabled cookies module
+  - enabled queryacl module
+
+-------------------------------------------------------------------
+Sat Jul 14 03:07:45 UTC 2018 - mrueckert@suse.de
+
+- update to 2.6.8
+  - Features:
+    - New 'import-pkcs11' command in keymgr
+  - Improvements:
+    - Unixtime serial policy mimics Bind – increment if lower #593
+  - Bugfixes:
+    - Creeping memory consuption upon server reload #584
+    - Kdig incorrectly detects QNAME if 'notify' is a prefix
+    - Server crashes when zone sign fails #587
+    - CSK->KZSK rollover retires CSK early #588
+    - Server crashes when zone expires during outgoing
+      multi-message transfer
+    - Kjournalprint doesn't convert zone name argument to
+      lower-case
+    - Cannot switch to a previously used ksk-shared dnssec policy
+      #589
+- update to 2.6.7
+  - Features:
+    - Added 'dateserial' (YYYYMMDDnn) serial policy configuration
+      (Thanks to Wolfgang Jung)
+  - Improvements:
+    - Trailing data indication from the packet parser (libknot)
+    - Better configuration check for a problematical option
+      combination
+  - Bugfixes:
+    - Incomplete configuration option item name check
+    - Possible buffer overflow in 'knot_dname_to_str' (libknot)
+    - Module dnsproxy doesn't preserve letter case of QNAME
+    - Module dnsproxy duplicates OPT and TSIG in the non-fallback
+      mode
+
+-------------------------------------------------------------------
+Wed May  2 08:29:51 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.6.6 
+  - Features:
+  -  New EDNS option counters in the statistics module
+  -  New '+orphan' filter for the 'zone-purge' operation
+  - Improvements:
+  -  Reduced memory consuption of disabled statistics metrics
+  -  Some spelling fixes (Thanks to Daniel Kahn Gillmor)
+  -  Server no longer fails to start if MODULE_DIR doesn't exist
+  -  Configuration include doesn't fail if empty wildcard match
+  -  Added a configuration check for a problematical option combination
+  - Bugfixes:
+  -  NSEC3 chain not re-created when SOA minimum TTL changed
+  -  Failed to start server if no template is configured
+  -  Possibly incorrect SOA serial upon changed zone reload with DNSSEC signing
+  -  Inaccurate outgoing zone transfer size in the log message
+  -  Invalid dname compression if empty question section
+  -  Missing EDNS in EMALF responses
+
+
+-------------------------------------------------------------------
+Mon Apr  2 00:04:43 UTC 2018 - mrueckert@suse.de
+
+- update to 2.6.5
+  - Features:
+    - New 'zone-notify' command in knotc
+    - Kdig uses '@server' as a hostname for TLS authenticaion if
+      '+tls-ca' is set
+  - Improvements:
+    - Better heap memory trimming for zone operations
+    - Added proper polling for TLS operations in kdig
+    - Configuration export uses stdout as a default output
+    - Simplified detection of atomic operations
+    - Added '--disable-modules' configure option
+    - Small documentation updates
+  - Bugfixes:
+    - Zone retransfer doesn't work well if more masters configured
+    - Kdig can leak or double free memory in corner cases
+    - Inconsistent error outputs from dynamic configuration
+      operations
+
+-------------------------------------------------------------------
+Thu Jan 11 09:24:15 UTC 2018 - i@marguerite.su
+
+- update to 2.6.4
+  see /usr/share/doc/packages/knot2/NEWS
+
+-------------------------------------------------------------------
+Sun Aug  6 23:01:55 UTC 2017 - mrueckert@suse.de
+
+- fix tmpfiles scriptlet
+
+-------------------------------------------------------------------
+Sun Aug  6 22:40:26 UTC 2017 - mrueckert@suse.de
+
+- package /var/lib/knot
+- run tmpfiles scriptlet during install
+
+-------------------------------------------------------------------
+Sun Aug  6 21:45:44 UTC 2017 - mrueckert@suse.de
+
+- update to 2.5.3
+  see /usr/share/doc/packages/knot2/NEWS
+- use libidn2 on TW and 42.3
+- following modules stay static:
+  - dnsproxy
+  - onlinesign
+- moved modules to shared building:
+  - dnstap
+  - noudp
+  - rosedb
+  - rrl
+  - stats
+  - synthrecord
+  - whoami
+
+-------------------------------------------------------------------
+Mon Feb 13 11:57:09 UTC 2017 - mrueckert@suse.de
+
+- update to 2.4.1
+  see /usr/share/doc/packages/knot2/NEWS
+
+-------------------------------------------------------------------
+Tue May 24 15:46:58 UTC 2016 - mrueckert@suse.de
+
+- update to 2.2.1
+  - Bugfixes:
+    - Fix separate logging of server and zone events
+    - Fix concurrent zone file flushing with many zones
+    - Fix possible server crash with empty hostname on OpenWRT
+    - Fix control timeout parsing in knotc
+    - Fix "Environment maxreaders limit reached" error in knotc
+    - Don't apply journal changes on modified zone file
+    - Remove broken LTO option from configure script
+    - Enable multiple zone names completion in interactive knotc
+    - Set the TC flag in a response if a glue doesn't fit the
+      response
+    - Disallow server reload when there is an active configuration
+      transaction
+  - Improvements:
+    - Distinguish unavailable zones from zones with zero serial in
+      log messages
+    - Log warning and error messages to standard error output in
+      all utilities
+    - Document tested PKCS #11 devices
+    - Extended Python configuration interface
+
+-------------------------------------------------------------------
+Tue May 10 22:14:14 UTC 2016 - mrueckert@suse.de
+
+- update to 2.2.0
+  - Bugfixes:
+    - Fix build dependencies on FreeBSD
+    - Fix query/response message type setting in dnstap module
+    - Fix remote address retrieval from dnstap capture in kdig
+    - Fix global modules execution for queries hitting existing
+      zones
+    - Fix execution of semantic checks after an IXFR transfer
+    - Fix PKCS#11 support detection at build time
+    - Fix kdig failure when the first AXFR message contains just
+      the SOA record
+    - Exclude non-authoritative types from NSEC/NSEC3 bitmap at a
+      delegation
+    - Mark PKCS#11 generated keys as sensitive (required by Luna
+      SA)
+    - Fix error when removing the only zone from the server
+    - Don't abort knotc transaction when some check fails
+  - Features:
+    - URI and CAA resource record types support
+    - RRL client address based white list
+    - knotc interactive mode
+  - Improvements:
+    - Consistent IXFR error messages
+    - Various fixes for better compatibility with PKCS#11 devices
+    - Various keymgr user interface improvements
+    - Better zone event scheduler performance with many zones
+    - New server control interface
+    - kdig uses local resolver if resolv.conf is empty
+- new BR libedit-devel for the interactive mode
+
+-------------------------------------------------------------------
+Thu Feb 11 00:08:40 UTC 2016 - mrueckert@suse.de
+
+- update to 2.1.1
+  - Bugfixes:
+    - DNSSEC: Allow import of duplicate private key into the KASP
+    - DNSSEC: Avoid duplicate NSEC for Wildcard No Data answer
+    - Fix server crash when an incomming transfer is in progress
+      and reload is issued
+    - Fix socket polling when configured with many interfaces and
+      threads
+    - Fix compilation against Nettle 3.2
+  - Improvements:
+    - Select correct source address for UDP messages recieved on
+      ANY address
+    - Extend documentation of knotc commands
+- drop knot-2.1.0_pkcs11_check.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 13:06:58 UTC 2016 - mrueckert@suse.de
+
+- enable libcap-ng
+
+-------------------------------------------------------------------
+Wed Jan 27 13:02:40 UTC 2016 - mrueckert@suse.de
+
+- fix configure check for pkcs11 support:
+  adds knot-2.1.0_pkcs11_check.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 11:22:25 UTC 2016 - mrueckert@suse.de
+
+- fix soversions
+
+-------------------------------------------------------------------
+Wed Jan 27 11:02:57 UTC 2016 - mrueckert@suse.de
+
+- update to 2.1.0
+  - Features:
+    - Per-thread UDP socket binding using SO_REUSEPORT on Linux
+    - Support for dynamic configuration database
+    - DNSSEC: Support for cryptographic tokens via PKCS #11
+      interface
+    - DNSSEC: Experimental support for online signing
+  - Improvements:
+    - Support for zone file name patterns
+    - Configurable location of zone timer database
+    - Non-blocking network operations and better timeout handling
+    - Caching of Critical configuration values for better
+      performance
+    - Logging of ACL failures
+    - RRL: Add rate-limit-slip zero support to drop all responses
+    - RRL: Document behavior for different rate-limit-slip options
+    - kdig: Warning instead of error on TSIG validation failure
+    - Cleanup of support libraries interfaces (libknot,
+      libzscanner, libdnssec)
+    - Remove possibly insecure server control over a network socket
+    - Remove implementation limit for the number of network
+      interfaces
+  - Bugfixes:
+    - synth-record module: Fix application of default configuration
+      options
+    - TSIG: Allow compressed TSIG name when forwarding DDNS updates
+    - Schedule zone bootstrap after slave zone fails to load from
+      disk
+- avoid activating the intree copy of lmdb
+
+-------------------------------------------------------------------
+Tue Nov 24 22:37:13 UTC 2015 - mrueckert@suse.de
+
+- update to 2.0.2
+  - Out-of-bound read in packet parser for malformed NAPTR records
+    (LibFuzzer)
+
+-------------------------------------------------------------------
+Wed Oct 14 18:20:11 UTC 2015 - mrueckert@suse.de
+
+- split out shared libraries, knot-resolver uses some of them and
+  atm we are forced to install the whole knot2 package.
+
+-------------------------------------------------------------------
+Thu Sep  3 20:21:48 UTC 2015 - mrueckert@suse.de
+
+- lmdb seems no longer optional
+
+-------------------------------------------------------------------
+Thu Sep  3 14:41:02 UTC 2015 - mrueckert@suse.de
+
+- create a new branch for knot 2.x starting with 2.0.1
+  - Bugfixes:
+     - Do not reload expired zones on 'knotc reload' and server
+       startup
+     - Fix rare race-condition in event scheduling causing delayed
+       event execution
+     - Fix skipping of non-authoritative nodes in NSEC proofs
+     - Fix TC flag setting in RRL slipped answers
+     - Disable domain name compression for root label
+     - Log via journald only when running under systemd
+     - Fix CNAME following when quering for NSEC RR type
+     - Fix refreshing of DNSSEC signatures for zone keys
+     - Fix binding an unavailable IPv6 address on Linux
+       (IP_FREEBIND)
+     - Fix infinite loop in knotc zonestatus and memstats
+     - Fix memory leak in configuration on server shutdown
+     - Fix broken dnsproxy module
+     - Fix DNSSEC KASP timestamps parsing in strict POSIX
+       environment
+     - fix multi value parsing on big-endian
+     - Adapt to Nettle 3 API break causing base64 decoding failures
+       on big-endian
+  - Features:
+     - Add 'keymgr zone key ds' to show key's DS record
+     - Add 'keymgr tsig generate' to generate TSIG keys
+     - Add query module scoping to process either all queries or
+       zone queries only
+     - Add support for file name globbing in config file includes
+     - Add 'request-edns-option' config option to add custom EDNS0
+       option into server initiated queries
+  - Improvements:
+     - Send minimal responses (remove NS from Authority section for
+       NOERROR)
+     - Update persistent timers only on shutdown for better
+       performance
+     - Allow change of RR TTL over DDNS
+     - Documentation fixes, updates, and improvements in formatting
+     - Install yparser and zscanner header files
+     - Improve lookup of libsystemd build dependencies
+     - Fix compilation warnings in endian conversion functions on
+       OpenBSD
+- changes in knot 2.0.0
+  - Bugfixes:
+     - Fix lost NOTIFY message if received during zone transfer
+     - Disable fast zone parser when compiled in Clang (workaround
+       for Clang bug)
+     - kdig: Record correct dnstap SocketProtocol when retrying
+       over TCP
+     - kdig: Hide TSIG section with +noall
+     - Do not set AA flag for AXFR/IXFR queries
+  - Features:
+     - DNSSEC: separate library, switch to GnuTLS, new utilities
+     - DNSSEC: basic KASP support (generate initial keys, ZSK
+       rollover)
+     - Configuration: New text format in YAML, binary store in LMDB
+     - Zone parser: Split long TXT/SPF strings into multiple
+       strings
+     - kdig: Add generic dump style option (+generic)
+     - Try all master servers in multi-master environment
+     - Improved remotes and ACLs (multiple addresses, multiple
+       keys)
+     - Basic support for zone file patterns (%s to substitute zone
+       name)
+     - Disable zone file synchronization by setting 'zonefile_sync'
+       to '-1'
+     - knsupdate: Add input prompt in interactive mode and 'quit'
+       command
+     - knsupdate: Allow TSIG algorithm specification in interactive
+       prompt
+  - Improvements:
+     - Zone dump: Do not write class for SOA record (unified with
+       other RR types)
+     - Zone dump: Do not write master server address into the zone
+       file
+     - Documentation: Manual pages are included in HTML and PDF
+- drop patches which are included upstream:
+  0001-loosen-openssl-dependency.patch
+  0002-make-configure.ac-compatible-with-old-tools.patch
+  - also drop all buildrequires just needed for autoreconf
+- new buildrequires:
+   pkgconfig(gnutls) >= 3
+   pkgconfig(nettle)
+   pkgconfig(jansson)
+- create devel subpackage
+- enable rosedb and bash completion
+
+-------------------------------------------------------------------
+Wed Apr 29 07:03:38 UTC 2015 - mrueckert@suse.de
+
+- local state dir should be just /var
+
+-------------------------------------------------------------------
+Thu Apr  9 02:51:53 UTC 2015 - mrueckert@suse.de
+
+- enable dnstap support for factory and newer:
+  - new BR: protobuf-c and libfstrm-devel
+- prepared lto support but not enabled yet, still need to find out
+  which distros support it
+
+-------------------------------------------------------------------
+Thu Apr  9 02:17:01 UTC 2015 - mrueckert@suse.de
+
+- update to 1.6.3
+  - Performance drop for NSEC-signed zones
+  - Proper handling of TCP short-writes
+  - Out-of-bound read in zone parser for long domain names in
+    origin (AFL fuzzer)
+  - Out-of-bound read in packet parser for TSIG RR without RDATA
+    (AFL fuzzer)
+  - Out-of-bound read in packet parser for malformed NAPTR RR (AFL
+    fuzzer)
+  - CDS and CDNSKEY support in zone parser
+  - Add defaults for TCP config options into documentation
+  - Detailed error message if zone reload fails
+- refreshed patches to apply cleanly again:
+  0002-make-configure.ac-compatible-with-old-tools.patch
+
+-------------------------------------------------------------------
+Tue Mar 10 17:20:55 UTC 2015 - mrueckert@suse.de
+
+- update to 1.6.2
+  - Limiting number of parallel TCP clients (max-tcp-clients config
+    option)
+  - Ignore refresh and transfer events on non-slave zones
+  - Compilation with Dnstap support on FreeBSD
+  - Possible file descriptor leak when terminating inactive TCP
+    clients
+- refreshed patches to apply cleanly again:
+  0002-make-configure.ac-compatible-with-old-tools.patch
+- moved autoreconf -fi to %build so it wont be tried in quilt setup
+  or similar tools
+- move up the %if case for systemd in for the preun scriptlet to
+  avoid warning about empty scripts on non systemd distributions.
+- used xz tarball: new buildrequires xz
+
+-------------------------------------------------------------------
+Thu Jan  8 10:07:50 UTC 2015 - tchvatal@suse.com
+
+- Add deps on the docu packages to regen documentation
+- Enable systemd integration fully
+- Add dep on libidn
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec 31 10:49:27 UTC 2014 - ondrej@sury.org
+
+- Only require lmdb-devel on (Open)SUSE 13.2 and higher
+
+-------------------------------------------------------------------
+Wed Dec 31 10:29:48 UTC 2014 - ondrej@sury.org
+
+- Updated to 1.6.1
+  Bugfixes:
+   - Journal file would sometimes outgrow its set limit
+   - Fixed incompatibility with OpenSSL 0.9.8
+   - Proper handling when machine hostname cannot be retreived
+
+  Features:
+   - Support for DNSSEC Single Type Signing Scheme
+
+- Compile with lmdb-devel to add support for persistent timers
+
+-------------------------------------------------------------------
+Tue Nov 18 15:49:27 UTC 2014 - pgajdos@suse.com
+
+- Updated to 1.6.0
+  Bugfixes:
+   - Fix zone expiration when AXFR/IXFR is being refused by master
+   - Fix forced zone refresh on slave (knotc refresh -f)
+   - Persistent timers database opening after privileges has been dropped
+   - DNSSEC: RFC compliant processing of letter case in RDATA domain names
+   - EDNS: Return minimal error response for queries with unsupported version
+   - EDNS: Fix interpretation of Extended RCODE
+
+  Improvements:
+   - Maximal size of persistent timers database increased from 10 MB to 100 MB
+   - Added logging of persistent timers database errors
+
+  Features:
+   - Persistent timers for slave zones (expire, refresh, and flush)
+
+-------------------------------------------------------------------
+Mon Sep 15 19:44:38 UTC 2014 - ondrej@sury.org
+
+- Updated to 1.5.3
+  Bugfixes:
+   - Some specific incoming IXFRs were causing server to crash
+   - Rare sychronization error during reload caused read-after-free
+   - Response synthetization module did not work properly with DNSSEC-enabled zones
+   - When Knot sent AXFR when IXFR was requested, message ID and opcode were wrong
+   - Knot failed to send large messages to remote control (present since 1.5.1)
+   - Some RR parsing corner cases were not handled properly
+   - AXFR-style IXFR was refused and had to be retransfered
+   - Hash character (#) was not properly escaped when storing text zone file
+   - DNSSEC: DNAMEs in RDATA were not lowercased before signing
+   - EDNS: OPT RR were not put into responsing for some errors
+   - TSIG: DDNS responses were not signed with TSIG
+   - DDNS: Prerequisite checks failed for some inputs
+   - knsupdate: Zone origin was not used for deletions
+
+  Features:
+   - Basic support for logging using systemd journal
+   - DDNS: Ability to process updates in bulk
+
+  Improvements:
+   - Unified logging messages structure
+   - DNSSEC: More strict controls for signing keys
+
+- Refreshed patches on top of 1.5.3 release:
+  * 0001-loosen-openssl-dependency.patch
+  * 0002-make-configure.ac-compatible-with-old-tools.patch
+
+-------------------------------------------------------------------
+Fri Jul 11 09:06:45 UTC 2014 - ondrej@sury.org
+
+- Squash 0002-remove-AM_SILENT_RULES.patch and 0003-no-dist-xz.patch
+  into 0002-make-configure.ac-compatible-with-old-tools.patch that
+  removes configure.ac options incompatible with SLES_11_SP[23].
+
+- added patches:
+  * 0002-make-configure.ac-compatible-with-old-tools.patch
+
+- removed patches:
+  * 0002-remove-AM_SILENT_RULES.patch
+  * 0003-no-dist-xz.patch
+
+-------------------------------------------------------------------
+Thu Jul 10 08:18:29 UTC 2014 - ondrej@sury.org
+
+- Updated to 1.5.0
+  Features:
+	* DDNS forwarding reimplemented
+	* edns-client-subnet support in kdig
+	* Optional asynchronous startup (config "asynchronous-start")
+	* Pluggable query processing modules
+	* Synthetic IPv4/IPv6 reverse/forward records (optional module)
+	* dnstap support in both utilities & server (optional module)
+	* NOTIFY message support and new TSIG section in kdig
+	* Multi-master support
+  Improvements:
+	* Transfer sizes logged in bytes if needed
+	* Logging outgoing NOTIFY messages
+	* Logging unauthorized incoming NOTIFYs
+	* Preempt task queue for faster reload
+	* Lazy zone file write after zone transfer (governed by "zonefile-sync")
+	* Query processing and core functionality overhaul 
+	* Performance and reduced memory footprint
+	* Faster zone events scheduling
+	* RFC compliant queries/responses in some corner cases
+	* Log messages
+	* New documentation (Sphinx)
+  Bugfixes:
+	* Zone flush planning after bootstrap
+	* Incorrect incoming AXFR message sizes
+	* DDNS signing changes were freed too soon, posibility of stale data
+	* knotc remote control key handling
+	* Close zone transfer after SERVFAIL response
+	* Incremental to full zone transfer fallback, wrong log message
+	* Zone events corner cases, reload replanning
+
+-------------------------------------------------------------------
+Tue Jun 24 12:56:27 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.4.7:
+   * Fixed DDNS corner cases
+   * Fixed zone EXPIRE timer
+   * Fixed semantic checks false positives
+   * Fixed sending malformed IXFR with automatic DNSSEC
+   * Fixed NAPTR record serialization
+
+-------------------------------------------------------------------
+Mon May 12 12:38:02 UTC 2014 - ondrej@sury.org
+
+- Fixed the missing 1.4.5 tarball
+
+-------------------------------------------------------------------
+Tue Apr 15 07:08:27 UTC 2014 - ondrej@sury.org
+
+- updated to 1.4.5
+  Bugfixes:
+	* Fix possible weakness in TSIG signature checking
+
+-------------------------------------------------------------------
+Fri Mar 28 10:56:24 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.4.4
+  Features:
+        * Server is logging remote control commands
+        * 'knotc reload' doesn't refresh unchanged zones
+        * 'knotc -f refresh' forces zone retransfer
+  Bugfixes:
+        * Missing notifications after DDNS/automatic resign
+        * Zone is rebootstrapped if the zone file is unreadable
+        * Progressive bootstrap retry backoff 
+        * Zone file parser allows asterisk as part of the label
+        * Journal maximum entry size fixes
+        * Sign DNSKEYs in non-apex nodes as regular RR sets
+
+-------------------------------------------------------------------
+Tue Feb 18 14:56:36 UTC 2014 - ondrej@sury.org
+
+- Enable recvmmsg support in the build to increase performance
+- Update upstream config directory to /etc/knot (instead of /etc/knot/knot)
+- Replace tar.xz with tar.gz to allow backporting to older releases
+- Disable silent rules to have more verbose builds
+- Add support to compile with OpenSSL << 1.0.0
+
+- added patches:
+  * 0001-loosen-openssl-dependency.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 12:07:36 UTC 2014 - ondrej@sury.org
+
+- update to 1.4.3:
+  * Failure when expanding wildcard leading to apex and having DNSKEY records
+  * Failure for query to wildcard without wildcard expansion
+  * Bad cleanup when loading a faulty entry from a journal 
+  * Zone file $ORIGIN and configuration comparison is case-insensitive
+  * Config "include" statement supports directory and includes all files within
+
+-------------------------------------------------------------------
+Mon Jan 27 15:17:49 UTC 2014 - ondrej@sury.org
+
+- update to 1.4.2:
+  * AXFR/IXFR compatibility issues with tinydns/axfrdns
+  * Journal file is created only when needed
+  * Zone-related log messages are logged into correct category 
+  * DNSSEC: Refresh signatures earlier (3 days before their expiration
+    with the default signature lifetime)
+  * Fixed RCU synchronization causing deadlock on 'knotc signzone'
+  * RRSIG not fitting in the additional records doesn't cause truncation
+
+-------------------------------------------------------------------
+Tue Jan 14 15:14:06 UTC 2014 - ondrej@sury.org
+
+- update to 1.4.1:
+  * Empty APL record support
+  * 'zonestatus' when using immediate zone syncing
+  * Immediate zone syncing after reload
+  * Race condition writing time values to zone file
+  * Hard require OpenSSL >= 1.0.0
+
+- removed patches:
+  * 0001-Add-support-for-OpenSSL-threads-in-OpenSSL-1.0.0.patch
+  * 0001-Check-the-OpenSSL-version-when-checking-for-GOST-alg.patch
+-------------------------------------------------------------------
+Wed Jan  8 08:58:19 UTC 2014 - ondrej@sury.org
+
+- Add support to compile with OpenSSL << 1.0.0
+
+- added patches:
+  * 0001-Add-support-for-OpenSSL-threads-in-OpenSSL-1.0.0.patch
+  * 0001-Check-the-OpenSSL-version-when-checking-for-GOST-alg.patch
+-------------------------------------------------------------------
+Wed Jan  8 08:40:45 UTC 2014 - ondrej@sury.org
+
+- update to 1.4.0:
+  * Experimental automatic DNSSEC signing
+  * Fastest ragel parser enabled by default
+  * Reduced memory usage 
+  * Zone SOA SERIAL policies (INCREMENT, UNIXTIME) for DDNS and
+    automatic DNSSEC signing
+  * IDN support in Knot utilities (kdig, knsupdate, ...)
+  * DNSSEC: support for GOST algorithm  
+  * Support for DNSSEC key pre-publication
+
+-------------------------------------------------------------------
+Mon Dec 16 09:46:03 UTC 2013 - ondrej@sury.org
+
+- update to 1.3.4:
+  * Bugfixes:
+    Crash in particular additionals processing
+    Race condition in event cancelation
+    Journal corruption after failed transactions
+
+-------------------------------------------------------------------
+Tue Nov 26 13:36:54 UTC 2013 - pgajdos@suse.com
+
+- update to 1.3.3:
+  * New features:
+    Reduced memory usage
+    Improved performance
+    Experimental automatic DNSSEC signing
+    Refactored zone loading
+    Improved journal locking
+  * Bugfixes:
+    Fixed some race conditions
+    Various fixes in client utilities
+
+-------------------------------------------------------------------
+Mon Sep  9 15:16:04 UTC 2013 - pgajdos@suse.com
+
+- update to 1.3.1
+  * Faster zone parser
+  * Full support for EUI and ILNP resource records
+  * Lower memory footprint for large zones
+  * No compilation of zones
+  * Improved scheduling of zone transfers
+  * Logging of serials and timing information for zone transfers
+  * see NEWS or https://www.knot-dns.cz/ for details
+
+-------------------------------------------------------------------
+Wed Apr  3 15:37:52 UTC 2013 - ondrej@sury.org
+
+- Update to 1.2.0 final
+    Bugfixes:
+	* Memory leaks
+
+-------------------------------------------------------------------
+Fri Mar 22 15:32:38 UTC 2013 - ondrej@sury.org
+
+- Update to 1.2.0-rc4
+    New features:
+	* knotc 'zonestatus' command
+
+    Bugfixes:
+	* Changing logfile ownership before dropping privileges
+	* knotc respects 'control' section from configuration
+	* RRL: resolved bucket collisions
+	* RRL: updated bucket mapping to conform RRL technical memo
+
+-------------------------------------------------------------------
+Tue Mar 12 08:37:55 UTC 2013 - ondrej@sury.org
+
+- Update to 1.2.0-rc3
+    New features:
+        * Dynamic updates, including forwarding (limited on signed zones)
+        * Updated remote control utility
+        * Configurable TCP timeouts
+        * LOC RR support
+	* Response rate limiting (see documentation)
+
+    Bugfixes:
+	* Fixed processing of some non-standard dnames.
+	* Correct checking of label length bounds in some cases. 
+	* More compliant rcodes in case of DDNS/TSIG failures.
+	* Correct processing of malformed DDNS prereq section.
+	* Fixed OpenBSD build
+	* Responses to ANY should contain RRSIGs
+
+-------------------------------------------------------------------
+Sat Nov 24 09:12:42 UTC 2012 - aj@suse.de
+
+- Documentation only needs makeinfo, thus require it instead of texinfo
+  where it's available as separate package.
+
+-------------------------------------------------------------------
+Thu Nov 22 17:22:37 UTC 2012 - ondrej@sury.org
+
+- update to 1.1.2:
+    Bugfixes:
+	* Fixed crash on reload when config contained duplicate zones.
+	* Fixed scheduling of transfers.
+	* Fixed debug message.
+
+- merge some changes from fedora spec file
+- remove unittest files, they don't belong in binary packages
+- depend on texinfo package to build the documentation
+
+-------------------------------------------------------------------
+Tue Nov 20 12:37:14 UTC 2012 - pgajdos@suse.com
+
+- update to 1.1.1:
+    New features:
+        * Optionally disable ANY queries for authoritative answers.
+        * Dropping identical records in zone and incoming transfers.
+        * Support for '/' in zone names.
+        * Generating journal from reloaded zone (EXPERIMENTAL).
+        * Outgoing-only interfaces in configuration file.
+        * Following DNAME if the synthetized name is in the same zone.
+        * Signing SOA with TSIG queries when checking zone version with master.
+        * Improved compression of packets. Out-of-zone dnames present in RDATA
+          were not compressed.
+        * Slave zones are now automatically refreshed after startup.
+        * Proper response to IXFR/UDP query (returns SOA in Authority section).
+
+    Bugfixes:
+        * Crash when zone contained RRSIG signing a CNAME, but did not
+          contain the CNAME.
+        * Malformed packets parsing.
+        * Failed IXFR caused memory leaks.
+        * Failed IXFR might have resulted in inconsistent zone structures.
+        * Fixed answering to +dnssec queries when NSEC3 chain is corrupted.
+        * Fixed answering when transitioning from NSEC3 to NSEC.
+        * Fixed answering when zone contains multiple NSEC3 chains.
+        * Handling RRSets with different TTLs - TTL from the first RR is used.
+        * Synchronization of zone reload and zone transfers.
+        * Fixed build on NetBSD 5 and FreeBSD.
+        * Fixed binding to both IPv4 and IPv6 at the same time on special
+          interfaces.
+        * Fixed access rights of created files.
+        * Semantic checks corrupted RDATA domain names which are covered by
+          wildcard in the same zone.
+        * Fixed ixfr-from-differences journal generation in case of IPSECKEY
+          and APL records.
+        * Fixed possible leak on server shutdown with a pending transfer.
+        * Syncing journal to zone was not updating the compiled zone database.
+        * Crash after IXFR in certain cases when adding RRSIG in an IXFR.
+        * Fixed behaviour when incoming IXFR removes a zone cut. Previously
+          occluded names now become properly visible. Previously lead to a
+          crash when the server was asked for the previously occluded name.
+        * Fixed handling of zero-length strings in text zone dump. Caused the
+          compilation to fail.
+        * Fixed TSIG algorithm name comparison - the names should be in
+          canonical form.
+        * Fixed handling unknown RR types with type less than 251.
+
+    Other improvements:
+        * IXFR-in optimized.
+        * Many zones loading optimized.
+        * More detailed log messages (mostly transfer-related).
+        * Copying Question section to error responses.
+        * Using zone name from config file as default origin in zone file.
+        * Additional records are now added to response also from
+          wildcard-covered names.
+        * Improved user manual.
+        * Better checks of corrupted zone database.
+
+-------------------------------------------------------------------
+Tue Aug 28 10:02:40 UTC 2012 - pgajdos@suse.com
+
+- fix build for older distributions (dont user %{make_install} 
+  macro)
+
+-------------------------------------------------------------------
+Mon Jul  2 08:58:06 UTC 2012 - pgajdos@suse.com
+
+- initial version 1.0.6
+

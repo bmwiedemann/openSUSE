@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>884836b1a4afb40fb5c10fb259e90026</srcmd5>
+    <version>3.0.4</version>
+    <time>1613427248</time>
+    <user>dimstar_suse</user>
+    <comment>New package - high-performance authoritative DNS server
+https://www.knot-dns.cz/</comment>
+    <requestid>867968</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d8f9cf8898bba670463b467f15d34d4d</srcmd5>
+    <version>3.0.4</version>
+    <time>1613463568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>872671</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7454c4965a1c35f710db6af3b41b9aa9</srcmd5>
+    <version>3.0.5</version>
+    <time>1616925312</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to version 3.0.5, see:
+  https://www.knot-dns.cz/2021-03-25-version-305.html
+- Update description based on homepage</comment>
+    <requestid>881417</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e71763e38ca1a8c8e7bd969f25157e9f</srcmd5>
+    <version>3.0.5</version>
+    <time>1619031594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886919</requestid>
+  </revision>
+</revisionlist>
