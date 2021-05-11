@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Installation
+GenericName=Installation
+Comment=Install the system from online repositories
+Icon=yast-installation
+Categories=System;X-SuSE-YaST;
+Exec=xdg-su -c "/usr/sbin/start-install.sh"
+StartupNotify=true

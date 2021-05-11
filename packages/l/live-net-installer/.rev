@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff4a1827521869204b03963936f67474</srcmd5>
+    <version>1.0</version>
+    <time>1506679026</time>
+    <user>dimstar_suse</user>
+    <comment>First submission to factory, see live-langset-data.</comment>
+    <requestid>529113</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>107886d782ff6d75ff3cb809e8e2f900</srcmd5>
+    <version>1.0</version>
+    <time>1516092199</time>
+    <user>dimstar_suse</user>
+    <comment>- Support Leap 15.0 by detecting the OS and setting the RepoUrl
+  appropriately (forwarded request 563703 from favogt)</comment>
+    <requestid>565808</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6bd17175f3cfcaeeb32d58e18642d193</srcmd5>
+    <version>1.0</version>
+    <time>1525697643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605060</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>25e134f110cf8e649d8f4eabfa66581c</srcmd5>
+    <version>1.0</version>
+    <time>1527583760</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /sbin:/usr/sbin to $PATH to workaround boo#1094842 (forwarded request 612633 from favogt)</comment>
+    <requestid>612638</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>41333512a031e7167f069cd68eac3f24</srcmd5>
+    <version>1.0</version>
+    <time>1529501736</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617947</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>955aca6d5a79fb85d99b469f4bbb5b0d</srcmd5>
+    <version>1.0</version>
+    <time>1546245938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661767</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>949d83d2b69c2598cdabfa4706432749</srcmd5>
+    <version>1.0</version>
+    <time>1548064670</time>
+    <user>dimstar_suse</user>
+    <comment>- Move extend to /bin/extend (boo#1122181)</comment>
+    <requestid>666472</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3bd5a78d660385fea1e4b06700b72972</srcmd5>
+    <version>1.0</version>
+    <time>1564414338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719593</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b77e6927a8852dc23875e155fa45c87b</srcmd5>
+    <version>1.0</version>
+    <time>1575630638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754515</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>703952efc2f18672cbf62e286f5e9358</srcmd5>
+    <version>1.0</version>
+    <time>1583526520</time>
+    <user>dimstar_suse</user>
+    <comment>- Add some more Requires for the installation (boo#1138045)</comment>
+    <requestid>782073</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>be3a0140c323bac1aaa586ede856ab48</srcmd5>
+    <version>1.0</version>
+    <time>1607714229</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove special handling for AArch64 on Leap &gt; 15.2</comment>
+    <requestid>854896</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>d459516d610bbe9959d0b8eaabc7b08e</srcmd5>
+    <version>1.0</version>
+    <time>1610051092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860991</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>9692a1f7d647fd8e97d1fc1d7692a436</srcmd5>
+    <version>1.0</version>
+    <time>1612182558</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo breaking the URL on Leap 15.3 on aarch64</comment>
+    <requestid>868312</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>b4fca80c10bb895136bbf601f502881b</srcmd5>
+    <version>1.0</version>
+    <time>1612378575</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop packagekitd before starting the installation (boo#1181606)</comment>
+    <requestid>868884</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>ff0703d451f414b0273b5860d9733229</srcmd5>
+    <version>1.0</version>
+    <time>1615213199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add some more runtime dependencies which yast2-storage is missing</comment>
+    <requestid>877649</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>4539d57f973e526ef75eee272acc2421</srcmd5>
+    <version>1.0</version>
+    <time>1617279467</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fixup /var/cache/zypp after the installation
+- Comments aren't allowed in install.inf, move it outside
+- Run YaST in a mount namespace</comment>
+    <requestid>882331</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>8912cca2829c051e3bf955aefb73fd20</srcmd5>
+    <version>1.0</version>
+    <time>1617723083</time>
+    <user>RBrownSUSE</user>
+    <comment>- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214</comment>
+    <requestid>883327</requestid>
+  </revision>
+</revisionlist>
