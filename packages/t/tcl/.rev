@@ -639,4 +639,15 @@ sqlite3 patch I will submit in a moment.</comment>
   * (new) revised case of module names</comment>
     <requestid>863091</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>7eb30270894e2bb332f513b6a397377f</srcmd5>
+    <version>8.6.11</version>
+    <time>1620767007</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185662: Move tcl.macros /usr/lib/rpm/macros.d .
+- https://core.tcl-lang.org/thread/tktview?name=98ae20f0f5:
+  Add tcl-aa4a13c15516da45.patch to disable lto for the stubs
+  libraries.</comment>
+    <requestid>890815</requestid>
+  </revision>
 </revisionlist>

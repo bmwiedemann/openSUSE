@@ -41,6 +41,7 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-s
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
+Patch0:         tcl-aa4a13c15516da45.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -80,6 +81,7 @@ the Tcl language itself.
 
 %prep
 %setup -q -n %name%version
+%patch0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -151,7 +153,7 @@ rm -f %buildroot%scriptdir/tcl%TCL_MINOR/ldAix
 ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz
 mkdir -p %buildroot%_datadir/tcl
-install -D %{S:3} -m 644 %buildroot/etc/rpm/macros.tcl
+install -D %{S:3} -m 644 %buildroot%_rpmmacrodir/macros.tcl
 
 %if "%_lib" == "lib64"
 %post
@@ -172,7 +174,7 @@ exit 0
 %exclude %scriptdir/*/*.a
 %exclude %scriptdir/*/*Config.sh
 %exclude %scriptdir/*/tclAppInit.c
-%config /etc/rpm/macros.tcl
+%_rpmmacrodir/macros.tcl
 
 %files devel
 %defattr(-,root,root)

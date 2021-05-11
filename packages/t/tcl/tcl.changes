@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  5 18:32:38 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1185662: Move tcl.macros /usr/lib/rpm/macros.d .
+- https://core.tcl-lang.org/thread/tktview?name=98ae20f0f5:
+  Add tcl-aa4a13c15516da45.patch to disable lto for the stubs
+  libraries.
+
+-------------------------------------------------------------------
 Thu Jan 14 10:21:47 UTC 2021 - Reinhard Max <max@suse.com>
 
 - tclConfig.sh: Fix path names and avoid braces in TCL_PACKAGE_PATH
