@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Mon Apr 26 08:02:48 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.1:
+  * v6.12.1
+  * Update CHANGELOG.md
+  * v6.12.1-dev
+  * Fixed Zen3 asm for cn/upx2
+
+-------------------------------------------------------------------
+Thu Apr 22 05:56:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.0:
+  * v6.12.0
+  * Update CHANGELOG.md
+  * RandomX: optimized IMUL_RCP instruction
+  * Update CHANGELOG.md
+  * Optimized cn/upx for Zen3
+  * Fix dvision by zero check in percent()
+  * Fixed rounding mode after running cn/upx
+  * v6.12.0-dev
+  * Optimized cn/upx2 for Ryzen CPUs
+  * Update CnHash.cpp
+  * Added support for Uplexa (cn/upx2 algorithm)
+  * Added support for --user command line option for the benchmark.
+  * Show total hashrate if compiled without OpenCL
+  * v6.11.3-dev
+
+-------------------------------------------------------------------
+Tue Apr 13 08:53:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.11.2:
+  * v6.11.2
+  * Update CHANGELOG.md
+  * Update llhttp to v5.1.0
+  * #2207 Fixed regression in HTTP parser.
+  * v6.11.2-dev
+  * v6.11.1
+  * Update CHANGELOG.md
+  * Fixed broken "coin" setting functionality
+  * v6.11.0
+  * Update CHANGELOG.md
+  * #2234 Use const_cast.
+  * Fixed cn-heavy for GCC-8
+  * fix build error on gcc 9.3.0
+  * Update randomx.cmake
+  * Fixed compilation for ARM
+  * Don't use RandomX JIT if WITH_ASM=OFF
+  * remove useless v4_random_math_init if algo is not cn/r
+  * Add missing include
+  * setBlob should run after setAlgorithm
+  * Optimize cn-heavy in GCC builds
+  * Optimized cn-heavy
+  * Fixed use-after-free bug when exiting
+  * v6.11.0-dev
+  * Added command line options --dns-ipv6 and --dns-ttl.
+  * Added DNS config.
+  * New DNS implementation.
+  * Added DnsRecords class.
+  * Improved DnsRecord class.
+  * Fix `vld1q_u8_x4` compilation error with GCC 10.2
+  * Added reference to limits.h in AdlLib_linux.cpp
+  * Fix wrong type in Handle::deleteLater()
+  * v6.10.1-dev
+
+-------------------------------------------------------------------
+Mon Mar  8 08:57:37 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.10.0:
+  * v6.10.0
+  * 6.10.0-dev
+  * Update CPU.md
+  * Sync with the proxy.
+  * Fixed build without TLS support.
+  * http-parser replaced to llhttp.
+  * Fix GCC compilation
+  * Add note about CPU affinity.
+  * Fix crash in cn-heavy on Zen3 with manual thread count
+  * Update hwloc for MSVC.
+  * Update build scripts.
+  * Update sse2neon.h to the latest master. Fixes build on armv7.
+  * Fixed many "new job" messages when solo mining
+  * Code cleanup.
+  * Fixed possible out of order write to log file.
+  * #2123 Ignore regex exception.
+  * Correct a typo in doc/CPU.md
+  * Minor verbiage tweak
+  * Fixed pause logic when both pause on battery and user activity are enabled
+  * v6.9.1-dev
+
+-------------------------------------------------------------------
+Mon Feb 22 07:34:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.9.0:
+  * v6.9.0
+  * Update CPU.md
+  * v6.9.0-dev
+  * Added idle time detection for macOS.
+  * #2104 Added user configurable idle time.
+  * Simplified code, fixed broken pause.
+  * Fixed crash when GPU mining cn-heavy on Zen3 system
+  * Fixed macOS build.
+  * Code and copyright cleanup.
+  * Allow result submission to origin daemon with self-select
+  * Added `pause-on-active` option
+  * v6.8.3
+
+-------------------------------------------------------------------
+Tue Feb 16 09:46:33 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.2:
+  * v6.8.2
+  * Update CHANGELOG.md
+  * Cryptonight: add prefetching to interleaved mode
+  * Optimized cn-heavy for Zen3
+  * Always disable kawpow for CPU backend.
+  * Add missing option to config example.
+  * Fix compile error in Termux
+  * v6.8.2-dev
+
+-------------------------------------------------------------------
+Thu Feb  4 07:40:02 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.1:
+  * v6.8.1
+  * Update CHANGELOG.md
+  * Fixed macOS build and compile warning.
+  * Update jit_compiler_a64.cpp
+  * ARM JIT: added missing cache flush
+  * Fixed code allocation for ARM
+  * Fixed crashes on ARM
+  * Added "--hugepage-size" command line option.
+  * Added support for flexible huge page sizes on Linux.
+  * Detect Apple M1 on Linux.
+  * Update ARM CPUs names.
+  * #2066 Fixed AMD GPUs health data readings.
+  * Extend normalization rules.
+  * Normalize DMI memory slot name.
+  * #2066 Quick fix for AMD GPUs health data.
+  * Fix compilation error when RandomX and Argon2 are disabled
+  * Added documentation for config.json CPU options
+  * Don't print empty memory slots if the total count above 8.
+  * v6.8.1-dev
+
+-------------------------------------------------------------------
+Thu Jan 28 08:37:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.0:
+  * v6.8.0
+  * Update default config example.
+  * Update CHANGELOG.md
+  * Code cleanup
+  * Fixed DMI memory speed.
+  * Code cleanup.
+  * RandomX JIT x86: remove unnecessary instructions
+  * Fixed Cache QoS restore on exit where it not supported.
+  * Added RxMsr class.
+  * Move Ryzen related fixes to RxFix class.
+  * Added new class Msr.
+  * Add missing "cstdio" library
+  * v6.8.0-dev
+  * Enable DMI reader by default.
+  * Added DMI data to online benchmark.
+  * Added "GET /2/dmi" API endpoint.
+  * Spelling Check
+  * Added config option "dmi" and command line option "--no-dmi".
+  * Fix summary.
+  * Added basic system reader.
+  * Added DMI reader for macOS.
+  * Enable FreeBSD support.
+  * Added legacy DMI readers for Linux.
+  * Add support for older DMI formats on Linux.
+  * Added basic Linux support.
+  * Added DMI reader (Windows only).
+  * #2043 Fix compile warning.
+  * fixed grammar in a couple of awkward error messages
+  * v6.7.3-dev
+
+-------------------------------------------------------------------
+Mon Jan 18 12:02:03 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.2:
+  * v6.7.2
+  * Update CHANGELOG.md
+  * Sync changes.
+  * Always use cvt_bin2hex
+  * Fixed solo mining
+  * v6.7.2-dev
+
+-------------------------------------------------------------------
 Mon Jan 11 14:44:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.7.1:

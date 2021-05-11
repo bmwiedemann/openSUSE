@@ -1,11 +1,11 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="versionformat">6.7.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://github.com/xmrig/xmrig</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>
-    <param name="revision">refs/tags/v6.7.1</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

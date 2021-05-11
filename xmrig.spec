@@ -17,7 +17,7 @@
 
 
 Name:           xmrig
-Version:        6.7.1
+Version:        6.12.1
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ BuildRequires:  hwloc-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libuv-devel
 BuildRequires:  make
+BuildRequires:  ninja
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Recommends:     libOpenCL1
@@ -48,6 +49,7 @@ Open source CPU/GPU XMR cryptocurrency miner.
 %autosetup -p1
 
 %build
+%define __builder ninja
 %cmake -Wno-dev
 %cmake_build
 
