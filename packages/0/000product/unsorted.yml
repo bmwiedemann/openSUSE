@@ -487,11 +487,11 @@ unsorted:
   - analitza-devel 
   - android-udev-rules 
   - angelscript-devel 
-  - anjuta: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - anjuta 
   - anjuta-devel 
-  - anjuta-extras: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - anjuta-extras-lang: [i586] 
-  - anjuta-lang: [i586] 
+  - anjuta-extras 
+  - anjuta-extras-lang 
+  - anjuta-lang 
   - anki 
   - ansible 
   - ansible-cmdb 
@@ -942,7 +942,7 @@ unsorted:
   - autoconf213 
   - autocutsel 
   - autofdo 
-  - autogen: [i586] 
+  - autogen 
   - autojump 
   - autonym-fonts 
   - autoopts 
@@ -3172,7 +3172,7 @@ unsorted:
   - emacs-el 
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
-  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - emacs-plugin-devhelp 
   - emacs-scheme48 
   - emacs-semi 
   - embree-devel-static: [x86_64] 
@@ -3640,7 +3640,7 @@ unsorted:
   - flawfinder 
   - fldigi 
   - fldigi-lang 
-  - flex: [i586] 
+  - flex 
   - flexdock 
   - flickcurl 
   - flickcurl-doc 
@@ -7415,8 +7415,8 @@ unsorted:
   - jgroups-javadoc 
   - jgroups-manual 
   - jgroups-repolib 
-  - jhbuild: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - jhbuild-lang: [i586] 
+  - jhbuild 
+  - jhbuild-lang 
   - jhbuild-recommended-deps 
   - jhighlight 
   - jhighlight-javadoc 
@@ -9377,7 +9377,7 @@ unsorted:
   - libaml0 
   - libangelscript2_35_0 
   - libangelscript_addons2_35_0 
-  - libanjuta-3-0: [i586] 
+  - libanjuta-3-0 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -10537,7 +10537,7 @@ unsorted:
   - libfixbuf9 
   - libfko-devel 
   - libfko3 
-  - libfl-devel: [i586] 
+  - libfl-devel 
   - libfl-devel-32bit: [x86_64] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
@@ -10697,9 +10697,9 @@ unsorted:
   - libgcrypt-devel-32bit: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
   - libgd3-32bit: [x86_64] 
-  - libgda-5_0-4: [i586] 
-  - libgda-5_0-4-lang: [i586] 
-  - libgda-5_0-bdb: [i586] 
+  - libgda-5_0-4 
+  - libgda-5_0-4-lang 
+  - libgda-5_0-bdb 
   - libgda-5_0-devel 
   - libgda-5_0-doc 
   - libgda-5_0-jdbc 
@@ -10708,13 +10708,13 @@ unsorted:
   - libgda-5_0-mysql 
   - libgda-5_0-postgres 
   - libgda-5_0-sqlcipher 
-  - libgda-5_0-sqlite: [i586] 
+  - libgda-5_0-sqlite 
   - libgda-5_0-tools 
   - libgda-5_0-web 
   - libgda-report-5_0-4 
   - libgda-tools 
-  - libgda-ui-5_0-4: [i586] 
-  - libgda-ui-5_0-plugins: [i586] 
+  - libgda-ui-5_0-4 
+  - libgda-ui-5_0-plugins 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
   - libgdal28 
@@ -18286,7 +18286,7 @@ unsorted:
   - password-store 
   - password-store-dmenu 
   - pasystray 
-  - patch: [i586] 
+  - patch 
   - patch2mail 
   - patchelf 
   - patchutils 

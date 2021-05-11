@@ -116,10 +116,6 @@
       <repopackage name="amtk-5-lang"/>
       <repopackage name="analitza"/>
       <repopackage name="analitza-lang"/>
-      <repopackage name="anjuta" arch="x86_64"/>
-      <repopackage name="anjuta-extras" arch="x86_64"/>
-      <repopackage name="anjuta-extras-lang" arch="x86_64"/>
-      <repopackage name="anjuta-lang" arch="x86_64"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apache2"/>
       <repopackage name="apache2-manual"/>
@@ -178,7 +174,6 @@
       <repopackage name="autoconf"/>
       <repopackage name="autoconf-el"/>
       <repopackage name="autofs"/>
-      <repopackage name="autogen" arch="x86_64"/>
       <repopackage name="automake"/>
       <repopackage name="autotrace"/>
       <repopackage name="autoyast2"/>
@@ -452,7 +447,6 @@
       <repopackage name="emacs-flim"/>
       <repopackage name="emacs-info"/>
       <repopackage name="emacs-nox"/>
-      <repopackage name="emacs-plugin-devhelp" arch="x86_64"/>
       <repopackage name="emacs-w3m"/>
       <repopackage name="emacs-x11"/>
       <repopackage name="enchant-1-backends"/>
@@ -546,7 +540,6 @@
       <repopackage name="flac"/>
       <repopackage name="flatpak"/>
       <repopackage name="flatpak-builder"/>
-      <repopackage name="flex" arch="x86_64"/>
       <repopackage name="flute"/>
       <repopackage name="folks-data"/>
       <repopackage name="folks-lang"/>
@@ -1059,8 +1052,6 @@
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
-      <repopackage name="jhbuild" arch="x86_64"/>
-      <repopackage name="jhbuild-lang" arch="x86_64"/>
       <repopackage name="jhead"/>
       <repopackage name="jmdict"/>
       <repopackage name="joe"/>
@@ -1439,7 +1430,6 @@
       <repopackage name="libamd2"/>
       <repopackage name="libamtk-5-0"/>
       <repopackage name="libAnalitza5"/>
-      <repopackage name="libanjuta-3-0" arch="x86_64"/>
       <repopackage name="libao-plugins4"/>
       <repopackage name="libao4"/>
       <repopackage name="libaom2"/>
@@ -1755,7 +1745,6 @@
       <repopackage name="libfido2-udev"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
-      <repopackage name="libfl-devel" arch="x86_64"/>
       <repopackage name="libfl2"/>
       <repopackage name="libFLAC++6"/>
       <repopackage name="libFLAC8"/>
@@ -1806,12 +1795,6 @@
       <repopackage name="libgcrypt20-32bit" arch="x86_64"/>
       <repopackage name="libgcrypt20-hmac"/>
       <repopackage name="libgd3"/>
-      <repopackage name="libgda-5_0-4" arch="x86_64"/>
-      <repopackage name="libgda-5_0-4-lang" arch="x86_64"/>
-      <repopackage name="libgda-5_0-bdb" arch="x86_64"/>
-      <repopackage name="libgda-5_0-sqlite" arch="x86_64"/>
-      <repopackage name="libgda-ui-5_0-4" arch="x86_64"/>
-      <repopackage name="libgda-ui-5_0-plugins" arch="x86_64"/>
       <repopackage name="libgdata-lang"/>
       <repopackage name="libgdata22"/>
       <repopackage name="libgdbm6"/>
@@ -3599,7 +3582,6 @@
       <repopackage name="parole-lang"/>
       <repopackage name="parted"/>
       <repopackage name="parted-lang"/>
-      <repopackage name="patch" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor"/>
       <repopackage name="patterns-base-base"/>
       <repopackage name="patterns-base-basesystem"/>

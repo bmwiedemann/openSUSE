@@ -5057,15 +5057,10 @@
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="anjuta" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-extras" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-extras-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="audacity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="autogen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5076,9 +5071,7 @@
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
-    <package name="emacs-plugin-devhelp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ffmpeg-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="flex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fontconfig-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="freetype2-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5108,8 +5101,6 @@
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="jhbuild" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="jhbuild-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5151,7 +5142,6 @@
     <package name="libXv-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libXv1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libacl1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libanjuta-3-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libapparmor1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libargon2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libasan6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5196,7 +5186,6 @@
     <package name="libexpat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfam0-gamin-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libffi8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libfl-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libfmt7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libfontconfig1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfontenc-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5205,12 +5194,6 @@
     <package name="libftgl2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgcc_s1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgcrypt20-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libgda-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-4-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-bdb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-ui-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-ui-5_0-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgdk_pixbuf-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgio-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libglib-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5356,7 +5339,6 @@
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="patch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-Class-Inspector" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
