@@ -1,7 +1,7 @@
 #
 # spec file for package kpat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Card
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kpat
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
 %if 0%{?suse_version} > 1500
@@ -62,10 +66,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdegames-carddecks-default
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -76,7 +76,7 @@ more. The game has nice graphics and many different carddecks.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} > 1500
@@ -96,27 +96,25 @@ more. The game has nice graphics and many different carddecks.
 
 %files
 %license COPYING COPYING.DOC
-%{_kf5_knsrcfilesdir}/kcardtheme.knsrc
-%{_kf5_knsrcfilesdir}/kpat.knsrc
-%dir %{_kf5_configkcfgdir}
+%doc %lang(en) %{_kf5_htmldir}/en/kpat/
+%{_kf5_applicationsdir}/org.kde.kpat.desktop
+%{_kf5_appsdir}/kpat/
+%{_kf5_appstreamdir}/org.kde.kpat.appdata.xml
+%{_kf5_bindir}/kpat
+%{_kf5_configkcfgdir}/kpat.kcfg
+%{_kf5_debugdir}/kpat.categories
 %dir %{_kf5_iconsdir}/hicolor/24x24
 %dir %{_kf5_iconsdir}/hicolor/24x24/apps
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_iconsdir}/hicolor/64x64
 %dir %{_kf5_iconsdir}/hicolor/64x64/apps
-%doc %lang(en) %{_kf5_htmldir}/en/kpat/
-%{_kf5_applicationsdir}/org.kde.kpat.desktop
-%{_kf5_appstreamdir}/org.kde.kpat.appdata.xml
-%{_kf5_appsdir}/kpat/
-%{_kf5_bindir}/kpat
-%{_kf5_configkcfgdir}/kpat.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/kpat.*
-%{_kf5_kxmlguidir}/kpat/
+%{_kf5_knsrcfilesdir}/kcardtheme.knsrc
+%{_kf5_knsrcfilesdir}/kpat.knsrc
 %{_kf5_libdir}/libkcardgame.so
 %{_kf5_mandir}/man6/kpat.6.gz
 %{_kf5_sharedir}/mime/packages/kpatience.xml
-%{_kf5_debugdir}/kpat.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
