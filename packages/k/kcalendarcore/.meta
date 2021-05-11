@@ -1,0 +1,5 @@
+<package name="kcalendarcore" project="openSUSE:Factory">
+  <title>KCalendarCore</title>
+  <description>This library provides access to and handling of calendar data. It supports the standard formats iCalendar and vCalendar and the group scheduling standard iTIP.</description>
+  <devel project="KDE:Frameworks5" package="kcalendarcore"/>
+</package>
