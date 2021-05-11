@@ -454,7 +454,7 @@ Prefer: syslogd
 Prefer: notification-daemon
 
 # We have multiple nodejs versions in the repo - prefer version -default (from meta package)
-Prefer: nodejs-default nodejs-devel-default npm-default
+Prefer: nodejs-default nodejs-devel-default npm-default -nodejs10
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
