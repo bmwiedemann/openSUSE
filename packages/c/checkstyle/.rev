@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>782221</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c5b32e1965a959554a36e16850e5528</srcmd5>
+    <version>8.0</version>
+    <time>1620767046</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch to build without deprecated constants</comment>
+    <requestid>892283</requestid>
+  </revision>
 </revisionlist>

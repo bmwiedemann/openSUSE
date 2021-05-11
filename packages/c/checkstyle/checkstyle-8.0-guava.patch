@@ -1,0 +1,11 @@
+--- checkstyle-8.0/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/SummaryJavadocCheck.java	2021-05-11 07:12:44.130695340 +0200
++++ checkstyle-8.0/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/SummaryJavadocCheck.java	2021-05-11 07:12:56.534766508 +0200
+@@ -216,7 +216,7 @@
+     private boolean containsForbiddenFragment(String firstSentence) {
+         String javadocText = JAVADOC_MULTILINE_TO_SINGLELINE_PATTERN
+                 .matcher(firstSentence).replaceAll(" ");
+-        javadocText = CharMatcher.WHITESPACE.trimAndCollapseFrom(javadocText, ' ');
++        javadocText = CharMatcher.whitespace().trimAndCollapseFrom(javadocText, ' ');
+         return forbiddenSummaryFragments.matcher(javadocText).find();
+     }
+ }

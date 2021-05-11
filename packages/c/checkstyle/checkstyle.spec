@@ -1,7 +1,7 @@
 #
 # spec file for package checkstyle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            http://checkstyle.sourceforge.net/
 Source0:        http://download.sf.net/checkstyle/checkstyle-%{version}-src.tar.gz
 Source2:        %{name}.catalog
+Patch0:         checkstyle-8.0-guava.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -60,6 +61,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %pom_remove_parent
 

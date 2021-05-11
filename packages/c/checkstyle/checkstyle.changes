@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 11 05:17:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * checkstyle-8.0-guava.patch
+    + fix build against newer guava that does not have the
+      deprecated CharMatcher constants
+
+-------------------------------------------------------------------
 Fri Mar  6 10:57:32 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of checkstyle 8.0
