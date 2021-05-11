@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.1.5
+Version:        1.2.2
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -39,13 +39,14 @@ Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
 Requires:       python3-pyotherside
-Requires:       python3-yubikey-manager >= 1.0.1
+Requires:       python3-yubikey-manager >= 4.0.2
 
 %description
 A graphical application for configuring a YubiKey over all transport modes..
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n %{name}
+sed -i 's|yubikey-manager==|yubikey-manager>=|' requirements.txt
 # Fix build for Leap 15 and SLE 15
 sed -i 's|python |python3 |g' ykman-cli/ykman-cli.pro
 sed -i 's|python |python3 |g' ykman-gui/ykman-gui.pro
