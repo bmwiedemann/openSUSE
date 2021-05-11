@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Tue Apr  6 09:36:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.39:
+  * Add support for serialized test execution framework 
+
+-------------------------------------------------------------------
+Thu Feb 18 13:36:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 0.38 :
+  * Fix issue with DHCP v6 Rapid Commit option check.
+  * Fix issue with handling RFC8018/RFC1423 padding.
+  * Fix issue with D-Bus filter messages with no interfaces set.
+  * Add support for PKCS#12 certification loading.
+
+-------------------------------------------------------------------
+Sun Jan 10 13:48:39 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Update to release 0.36
+  * Fix issue with strict netlink attribute validation.
+  * Fix issue with DUID generation for DHCPv6.
+  * Add support for Address Conflict Detection.
+  * Add support for PKCS#12 algorithms handling.
+  * Add support for PKCS#12 key derivation algorithm.
+  * Add support for RC2 and ARC4 cipher suites.
+
+-------------------------------------------------------------------
+Wed Dec 23 18:35:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.35
+  * Add support for DHCP v6 Rapid Commit.
+  * Add support for ICMP v6 implementation.
+  * Add support for PKCS#1 formatted private keys.
+
+-------------------------------------------------------------------
+Sat Sep  5 22:05:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.33
+  * Fixed an issue with overflow in DHCP lease T2 computation.
+  * Added support for DHCPv6 client implementation.
+  * Removed support for ARC4 and RC4 cipher suites.
+
+-------------------------------------------------------------------
+Mon Jun 15 16:14:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.32
+  * dbus: call destroy function in l_dbus_remove_watch
+
+-------------------------------------------------------------------
+Wed Apr 15 08:40:36 CEST 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.31:
+  * Fix issue with verification of the second certificate in chain.
+  * Fix issue with handling trusted CA matching in verification.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:57:12 CET 2020 - Harry ten Berge <htenberge@gmail.com> 
+
+- ver 0.30:
+  * Fix issue with missing export of RTNL helper functions.
+
+- ver 0.29:
+  * Fix issue with time overflow on 32-bit systems.
+  * Add support for RTNL helper functionality.
+
+-------------------------------------------------------------------
+Mon Feb 10 09:57:36 CET 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.28:
+  * Fix issue with NULL check of D-Bus proxy for method calls.
+  * Add support for emitting D-Bus property changes on demand.
+  * Add support for reporting file attribute changes.
+
+-------------------------------------------------------------------
+Thu Jan  2 11:25:54 UTC 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.27:
+  * Fix issue with data overflow and multiple PEMs.
+  * Fix issue with handling DHCP lease expiration.
+
+-------------------------------------------------------------------
+Wed Oct 30 16:26:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.26:
+  * Fix issue with memory leak and TLS certificates.
+  * Fix issue with buffer size and TLS PRF handling.
+  * Add support for D-Bus non-root ObjectManager.
+- Changes from version 0.25:
+  * Fix issue with stopping DHCP client and owner notification.
+  * Fix issue with time calculation overflow and DHCP.
+- Changes from version 0.24:
+  * Add support for extended groups in settings files.
+
+-------------------------------------------------------------------
+Fri Sep 20 11:50:31 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.23:
+  * Add support for checking if uintset is empty.
+
+- ver 0.22:
+  * Fix issue with DHCP and T1 timeout handling.
+  * Fix issue with escape characters in peer identity string.
+  * Add support for setting peer certificate's subject CN mask.
+
+
+-------------------------------------------------------------------
+Sun Aug 11 12:49:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.21
+  * Fix issue with resetting DHCP lease on client stop.
+  * Add support for GPIO helper functionality.
+
+-------------------------------------------------------------------
+Mon May 27 11:27:00 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.20:
+  * Fix issue with DHCP client and handling renewing state.
+  * Fix issue with DHCP client and handling rebinding state.
+  * Fix issue with DHCP client and recommended retry timeouts.
+  * Fix issue with Generic Netlink and family discovery.
+
+- ver 0.19:
+  * Fix issue with termination of Generic Netlink names.
+  * Fix issue with handling ECC scalar initialization.
+
+
+-------------------------------------------------------------------
+Thu Apr  4 17:17:50 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.18:
+  * Fix an issue with handling revocation of keys.
+  * Add support for the TLS Signature Algorithms extension.
+  * Add support for the TLS version range configuration.
+  * Add support for time utility functions.
+- Remove unsigned-char.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 15 09:29:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.17
+  * Added support for TLS Supported Groups extension, TLS Hello
+    extension feature, and for ECC and ECDH functionality.
+
+-------------------------------------------------------------------
+Thu Jan 31 11:45:09 UTC 2019 - schwab@suse.de
+
+- unsigned-char.patch: don't depend on signedness of char
+
+-------------------------------------------------------------------
+Thu Dec 13 20:25:38 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.16
+  * Add support for watchdog notification handling from systemd.
+  * Add support for generic X.509 certificate utilities.
+  * Add support for using AEAD ciphers for TLS.
+
+-------------------------------------------------------------------
+Sun Nov 18 08:28:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.15
+  * Fix an issue with signals not being registered properly.
+
+-------------------------------------------------------------------
+Tue Nov 13 13:00:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.14
+  * Fix issue with TLS failure handling.
+  * Fix issue with loading empty settings file.
+  * Fix issue with generic netlink message sizes.
+  * Add support for filesystem watch functionality.
+  * Fix issue with missing filesystem watch notifications.
+  * Fix issue with buffer overrun and PBKDF2 support.
+  * Add support for string argument parsing.
+  * Fix issue with D-Bus subpath comparisons in object tree walk.
+  * Fix issue with D-Bus InterfacesAdded on new ObjectManager
+    addition.
+  * Fix issue with verifying total length of certificates.
+  * Fix issue with loading v2 and v3 formatted hwdb.bin files.
+  * Fix issue with handling EPOLLHUP and EPOLLERR in IO watch.
+  * Fix issue with closing of the fd inside IO watch handlers.
+  * Fix issue with initialization of struct keyctl_dh_params.
+  * Fix issue with unexported public API symbols.
+  * Fix issue with handling netlink error return values.
+  * Fix issue with handling hashmap removing of last entry.
+  * Fix issue with handling zero-length secret for PRF.
+  * Add support for directory watch interface.
+  * Fix issue with return value of l_getrandom_is_supported.
+  * Fix issue with supporting l_genl_family_set_unicast_handler.
+  * Fix issue with utilizing single shared signalfd file descriptor.
+
+-------------------------------------------------------------------
+Tue Jun  5 08:44:36 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.5 (released 2018-05-05)
+- ell >= 0.3 is required for new bluez versions
+- ver 0.5:
+  - Fix issue with missing exported debug symbols.
+  - Add support for DHCP client library.
+- ver 0.4:
+  - Fix issue with propagate AEAD cipher failures.
+  - Fix issue with AAD length and AEAD result reads.
+- ver 0.3:
+  - Fix issue with IO handling and re-entrancy.
+  - Add support for D-Bus client proxy interface.
+- ver 0.2:
+  - Add support for mainloop integration functions.
+  - Add support for PKCS#5 key derivation functions.
+  - Add support for additional checksum and cipher types.
+- ver 0.1:
+  - Initial public release.
+
+-------------------------------------------------------------------
+Fri Nov 11 19:27:38 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 0~1304) for build.opensuse.org
