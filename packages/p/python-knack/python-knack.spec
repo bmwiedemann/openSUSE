@@ -16,18 +16,16 @@
 #
 
 
-%define realversion 0.8.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-knack
-Version:        0.8.0.0
+Version:        0.8.2
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/microsoft/knack
-Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module colorama}
@@ -53,7 +51,7 @@ BuildArch:      noarch
 A Command-Line Interface framework
 
 %prep
-%setup -q -n knack-%{realversion}
+%setup -q -n knack-%{version}
 
 %build
 %python_build

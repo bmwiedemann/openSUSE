@@ -1,10 +1,22 @@
 -------------------------------------------------------------------
+Mon May 10 08:39:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.2
+  * Always use UTF-8 for log file encoding (#247)
+- from version 0.8.1
+  * Add error message for invalid argument value (#244)
+- Remove temporary version override
+
+-------------------------------------------------------------------
 Mon Mar 29 11:18:30 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- New upstream release
-  + Version 0.8.0
-  + For detailed information about changes see the
-    CHANGELOG.md file provided with this package
+- Update to version 0.8.0
+  * Make colors customizable (#242)
+  * Init colorama only in Windows legacy terminal (#238)
+  * Add `raw_result` to `CommandResultItem` (#235)
+  * Refine code style to comply with Python 3 (#232, #233)
+  * CI: Support Python 3.9 (#229)
+  * Logging: `CLILogging.configure` returns as early as possible (#228)
 - Override upstream version with 0.8.0.0 to ensure
   proper upgrade from previous version 0.8.0rc2
 - Update BuildRequires and Requires from setup.py
