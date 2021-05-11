@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 11 08:50:47 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 7 - 2021-05-10
+
+- MINOR FIX: Refuse to run "make test" as root --- it would fail
+  anyway with an obscure message.
+
+- BUG FIX: Remind would sometimes compute incorrect trigger date for:
+  REM Tue 29 Feb MSG ...
+
+- BUG FIX: Remind would sometimes compute incorrect trigger date for
+  a date spec like: Tue 31 2021 MSG ... 
+
+-------------------------------------------------------------------
 Tue Mar 30 21:48:24 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES TO REMIND

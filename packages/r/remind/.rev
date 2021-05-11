@@ -203,4 +203,19 @@
   8.5 or newer.</comment>
     <requestid>882232</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5b6b04e98d3f0967ec2a1b851651f246</srcmd5>
+    <version>3.3.7</version>
+    <time>1620767066</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES TO REMIND
+* VERSION 3.3 Patch 7 - 2021-05-10
+- MINOR FIX: Refuse to run &quot;make test&quot; as root --- it would fail
+  anyway with an obscure message.
+- BUG FIX: Remind would sometimes compute incorrect trigger date for:
+  REM Tue 29 Feb MSG ...
+- BUG FIX: Remind would sometimes compute incorrect trigger date for
+  a date spec like: Tue 31 2021 MSG ...</comment>
+    <requestid>892223</requestid>
+  </revision>
 </revisionlist>
