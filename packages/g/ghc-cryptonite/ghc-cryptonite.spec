@@ -19,7 +19,7 @@
 %global pkg_name cryptonite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        Cryptography Primitives sink
 License:        BSD-3-Clause

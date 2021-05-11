@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  8 17:16:38 UTC 2021 - psimons@suse.com
+
+- Update cryptonite to version 0.29.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Wed Jan 27 19:35:26 UTC 2021 - psimons@suse.com
 
 - Update cryptonite to version 0.28.
