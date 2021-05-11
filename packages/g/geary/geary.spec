@@ -17,18 +17,19 @@
 
 
 Name:           geary
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        An email reader for the GNOME desktop
-License:        LGPL-2.1-or-later AND CC-BY-3.0 AND BSD-2-Clause
+License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
-Source0:        https://download.gnome.org/sources/geary/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/geary/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  snowball-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xml2po
 BuildRequires:  pkgconfig(appstream-glib)
@@ -46,10 +47,11 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
+BuildRequires:  pkgconfig(icu-uc) >= 60
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0) >= 2.10.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90
+BuildRequires:  pkgconfig(libhandy-1) >= 1.2.1
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11
@@ -74,7 +76,9 @@ may be read without having to navigate between messages.
 
 %build
 %meson \
-	-Dtnef-support=false \
+	-Dprofile=release \
+	-Dvaladoc=disabled \
+	-Dtnef=disabled \
 	%{nil}
 %meson_build
 
@@ -85,7 +89,7 @@ may be read without having to navigate between messages.
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%license COPYING COPYING.icons COPYING.snowball
+%license COPYING COPYING.icons
 %doc NEWS THANKS AUTHORS
 %{_datadir}/help/C/%{name}
 %{_bindir}/%{name}
