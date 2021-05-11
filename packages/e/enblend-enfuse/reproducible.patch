@@ -1,0 +1,27 @@
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date: 2019-09-17
+
+Index: enblend-enfuse-4.2/src/DefaultSig.pm
+===================================================================
+--- enblend-enfuse-4.2.orig/src/DefaultSig.pm
++++ enblend-enfuse-4.2/src/DefaultSig.pm
+@@ -143,6 +144,9 @@ sub _login_name {
+ sub _real_user_name {
+     my $self = shift;
+ 
++    if ($ENV{SOURCE_DATE_EPOCH}) {
++        return "reproducible";
++    }
+     if ($OSNAME eq 'MSWin32') {
+         return $self->_login_name();
+     } else {
+@@ -169,6 +173,9 @@ sub _clean_hostname {
+     if ($OSNAME =~ m/MacOS/) {
+         $hostname =~ s/^(.*?)[-.].*$/$1/;
+     }
++    if ($ENV{SOURCE_DATE_EPOCH}) {
++        $hostname = "reproducible";
++    }
+ 
+     return $hostname;
+ }
