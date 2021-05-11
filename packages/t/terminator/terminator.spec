@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
@@ -43,7 +43,7 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires(post): hicolor-icon-theme
-Requires(postun): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
 Recommends:     %{name}-lang
 BuildArch:      noarch
 

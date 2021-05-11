@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 17:28:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  - add "switch profile" command to remotinator
+  - Terminal text isn't shown on lost focus of multiple tabs and hidden scroll bar 
+
+-------------------------------------------------------------------
 Tue Jan 12 02:16:00 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2.1.0:
