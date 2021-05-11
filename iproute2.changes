@@ -1,6 +1,4 @@
 -------------------------------------------------------------------
-<<<<<<< Updated upstream
-=======
 Wed Apr 28 13:44:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 5.12 
@@ -17,7 +15,6 @@ Wed Apr 28 13:44:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   * bridge: vlan: dump port only if there are any vlans
 
 -------------------------------------------------------------------
->>>>>>> Stashed changes
 Sat Mar  6 08:31:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.11

@@ -953,8 +953,6 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 5.11</comment>
     <requestid>877362</requestid>
   </revision>
-<<<<<<< Updated upstream
-=======
   <revision rev="119" vrev="1">
     <srcmd5>94c7fb5d6dbac885cd15f2c144d16c39</srcmd5>
     <version>5.12</version>
@@ -963,5 +961,4 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>889100</requestid>
   </revision>
->>>>>>> Stashed changes
 </revisionlist>

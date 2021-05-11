@@ -18,11 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-<<<<<<< Updated upstream
-Version:        5.11
-=======
 Version:        5.12
->>>>>>> Stashed changes
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
