@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a788415ad9af8659962b55b37d31a3b</srcmd5>
+    <version>0.3</version>
+    <time>1559837961</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed for podman.</comment>
+    <requestid>708124</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>484276c9397ab8e5e932074805691f12</srcmd5>
+    <version>0.4.1</version>
+    <time>1562590953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b48a85521630350289ac97ee5eff21d0</srcmd5>
+    <version>0.5.1</version>
+    <time>1566664821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724813</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24dd6cf0483921abf771d81bc4909f8d</srcmd5>
+    <version>0.7.2</version>
+    <time>1577886977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758130</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>adf4e334847d1a599ff072b981d337f5</srcmd5>
+    <version>0.7.3</version>
+    <time>1578867422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762137</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82ff13880f900b3a36ab351c36d26317</srcmd5>
+    <version>0.7.5</version>
+    <time>1579792128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765715</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e56442aa672dfeae130bfad307a7133f</srcmd5>
+    <version>0.7.6</version>
+    <time>1580991554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769897</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8dc111ca74c5febd6194841316770a77</srcmd5>
+    <version>0.7.6</version>
+    <time>1582299595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777929</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f43d1fc440fdd5513ab50bed982a0e62</srcmd5>
+    <version>0.7.7</version>
+    <time>1583526353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781457</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11a6bd41162a235cc3b7d3c9a8c3eec8</srcmd5>
+    <version>0.7.8</version>
+    <time>1584643545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785987</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e7e477438dda980f186c1a25c9247100</srcmd5>
+    <version>1.0.0</version>
+    <time>1587838122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795664</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5e9819c7a3ddefc95e4f945db1d39247</srcmd5>
+    <version>1.1.0</version>
+    <time>1594805401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819290</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c5e1322a7d48a0f223df3b4165bc686c</srcmd5>
+    <version>1.1.2</version>
+    <time>1597855617</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 1.1.2
+  - fix build issues with libmusl.
+  - fix memory leak when creating whiteout files.
+  - fix lookup for overflow uid when it is different than the overflow gid.</comment>
+    <requestid>827054</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7d62d86beaafc1c88bca9c973c2147e5</srcmd5>
+    <version>1.1.2</version>
+    <time>1598651089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830234</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f8a73f22e056f75adf3f9798ef0d1c0</srcmd5>
+    <version>1.4.0</version>
+    <time>1614692544</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874540</requestid>
+  </revision>
+</revisionlist>

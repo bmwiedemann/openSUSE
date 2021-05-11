@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Mon Feb 22 09:02:36 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.4.0
+  * add squash_to_uid and squash_to_gid
+  * add squash_to_root mount option.
+  * honor option "volatile".
+  * when writing mode to xattr, create files with mode 0755.
+  * support ID mapping when using xattr permissions.
+  * allow opening not accessible but still referenced files.
+  * invalidate directory cache on create/rename.
+  * fix segfault if no mountpoint specified
+  * fix file_exists_at musl compatibility
+  * introduce extended attribute to override gid/uid/mode.
+  * support writing uid/gid/mode to an extended attribute.
+  * fix a memory leak, where inodes are maintained in memory
+    even if not needed.
+
+-------------------------------------------------------------------
+Sun Aug 16 15:05:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 1.1.2 (bsc#1175821)
+  - fix build issues with libmusl.
+  - fix memory leak when creating whiteout files.
+  - fix lookup for overflow uid when it is different than the overflow gid.
+
+-------------------------------------------------------------------
+Wed Jun 24 13:10:52 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to v1.1.0
+  - use openat2(2) when available.
+  - accept "ro" as mount option.
+  - fix set mtime for a symlink.
+  - fix some issues reported by static analysis.
+  - fix potential infinite loop on a short read.
+  - fix creating a directory if the destination already exists
+    in the upper layer.
+
+-------------------------------------------------------------------
+Mon Apr 20 06:43:34 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.0.0
+  - Fix portability issue to 32 bits architectures
+
+-------------------------------------------------------------------
+Tue Mar 17 16:04:37 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.8
+  - report correctly the number of links for a directory also for
+    subsequent stat calls
+  - stop looking up the ino in the lower layers if the file could
+    not be opened
+
+-------------------------------------------------------------------
+Wed Mar  4 10:58:45 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.7
+  - make sure the destination is deleted before doing a rename(2).
+    It prevents a left over directory to cause delete to fail with
+    EEXIST.
+  - honor --debug.
+
+-------------------------------------------------------------------
+Tue Feb  4 08:12:04 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.6 (bsc#1160460)
+  - do not look in lower layers for the ino if there is no origin
+    xattr set
+  - attempt to use the file path if the operation on the fd fails
+    with ENXIO
+
+-------------------------------------------------------------------
+Mon Jan 20 08:46:43 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.5
+  - do not expose internal xattrs through listxattr and getxattr
+
+-------------------------------------------------------------------
+Fri Jan 17 10:38:18 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.4
+  - fix fallocate for deleted files.
+  - ignore O_DIRECT.  It causes issues with libfuse not using an
+    aligned buffer, causing write(2) to fail with EINVAL.
+  - on copyup, do not copy the opaque xattr.
+  - fix a wrong lookup for whiteout files, that could happen on a
+    double unlink.
+
+-------------------------------------------------------------------
+Thu Jan  9 11:18:57 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.3
+  - fix build with -fno-common
+  - fix possible segmentation fault in direct_fsync()
+  - use the data store to create missing whiteouts
+  - after a rename, force a directory reload
+
+-------------------------------------------------------------------
+Tue Dec 17 14:06:08 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.2
+  - introduce inodes cache
+  - correctly read inode for unix sockets
+  - avoid hash map lookup when possible
+  - use st_dev for the ino key
+  - check whether writeback is supported
+  - set_attrs: don't require write to S_IFREG
+  - ioctl: do not reuse fi->fh for directories
+  - fix skip whiteout deletion optimization
+  - store the new mode after chmod
+
+-------------------------------------------------------------------
+Mon Aug 19 08:04:35 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.5.1
+  - support fuse writeback cache and enable it by default
+  - update to latest gnulib
+  - add option to disable fsync
+  - add option to disable xattrs
+  - add option to skip ino number check in lower layers
+  - fix fd validity check
+  - fix memory leak
+  - fix read after free
+  - fix type for flistxattr return
+  - fix warnings reported by lgtm.com
+  - enable parallel dirops
+
+-------------------------------------------------------------------
+Mon Jun 17 06:43:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.4.1 (bsc#1137860):
+  - create_directory: do not redeclare variable buf
+  - fuse-overlayfs: accept option "dev"
+  - fuse-overlayfs: add check to readdir for the node parent
+  - fuse-overlayfs: add cleanup for layers
+  - fuse-overlayfs: drop usage of static arrays for paths
+  - fuse-overlayfs: refactor some xattrs common code
+  - fuse-overlayfs: start using GCC autocleanup
+  - fuse-overlayfs: use cleanup function for initializing node
+  - fuse-overlays: fix interaction of unlink(2) with readdir(2)
+  - main: add missing debug messages
+  - main: do the unlink only after we created the temporary file
+  - main: fix a fd leak
+  - main: ignore EINVAL when copying xattrs
+  - setattr: use fd from fi->fh for ftruncate() whenever possible
+
+-------------------------------------------------------------------
+Thu Mar 28 20:38:29 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Create initial package for version 0.3
