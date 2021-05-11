@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-thumbnailers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdesdk-thumbnailers
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Translation file thumbnail generators
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-tools
 BuildRequires:  kf5-filesystem
@@ -35,10 +39,6 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -48,7 +48,7 @@ and previews of po files.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -65,7 +65,6 @@ and previews of po files.
 
 %files
 %license COPYING*
-%dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/pocreatorsettings.kcfg
 %{_kf5_plugindir}/pothumbnail.so
 %{_kf5_servicesdir}/pothumbnail.desktop
