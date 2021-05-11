@@ -1,8 +1,8 @@
-diff --git a/panels/power/cc-power-panel.c b/panels/power/cc-power-panel.c
-index c31249c..5718c98 100644
---- a/panels/power/cc-power-panel.c
-+++ b/panels/power/cc-power-panel.c
-@@ -2169,10 +2169,11 @@ populate_power_button_model (GtkTreeModel *model,
+Index: gnome-control-center-40.0/panels/power/cc-power-panel.c
+===================================================================
+--- gnome-control-center-40.0.orig/panels/power/cc-power-panel.c
++++ gnome-control-center-40.0/panels/power/cc-power-panel.c
+@@ -1078,10 +1078,11 @@ populate_power_button_model (GtkTreeMode
      char *name;
      GsdPowerButtonActionType value;
    } actions[] = {

@@ -1676,4 +1676,14 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>GNOME 40 - here we come (forwarded request 881017 from dimstar)</comment>
     <requestid>881178</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>c4bc3005ff89e7d56fe4f9c42af944e2</srcmd5>
+    <version>40.0</version>
+    <time>1619729073</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebased gnome-control-center-info-never-use-gnome-software.patch,
+  gnome-control-center-more-power-button-actions.patch and
+  gnome-control-center-bring-back-firewall-zone.patch(bsc#1184098). (forwarded request 888378 from JonathanKang)</comment>
+    <requestid>888742</requestid>
+  </revision>
 </revisionlist>

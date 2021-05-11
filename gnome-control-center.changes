@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 01:54:13 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Rebased gnome-control-center-info-never-use-gnome-software.patch,
+  gnome-control-center-more-power-button-actions.patch and
+  gnome-control-center-bring-back-firewall-zone.patch(bsc#1184098).
+
+-------------------------------------------------------------------
 Sun Mar 21 08:05:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
