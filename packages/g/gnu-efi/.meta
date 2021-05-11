@@ -1,0 +1,5 @@
+<package name="gnu-efi" project="openSUSE:Factory">
+  <title>Library for EFI Applications</title>
+  <description>Library for EFI applications.</description>
+  <devel project="Base:System" package="gnu-efi"/>
+</package>
