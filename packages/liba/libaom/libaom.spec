@@ -16,11 +16,11 @@
 #
 
 
-%define sover 2
+%define sover 3
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        2.0.2
+Version:        3.1.0
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
