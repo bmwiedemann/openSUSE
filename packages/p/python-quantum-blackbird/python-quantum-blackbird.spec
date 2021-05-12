@@ -27,6 +27,9 @@ Summary:        Quantum assembly language for continuous-variable quantum comput
 License:        Apache-2.0
 URL:            https://github.com/XanaduAI/blackbird
 Source:         https://github.com/XanaduAI/blackbird/archive/v%{version}.tar.gz#/blackbird-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip_32bit_divide_scalar_array_test.patch gh#XanaduAI/blackbird#42 mcepl@suse.com
+# Skip tests failing on 32bit
+Patch0:         skip_32bit_divide_scalar_array_test.patch
 BuildRequires:  %{python_module antlr4-python3-runtime >= 4.8}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.16}
@@ -49,7 +52,7 @@ computation, that can be used to program Xanadu's quantum photonics
 hardware and Strawberry Fields simulator.
 
 %prep
-%setup -q -n blackbird-%{version}
+%autosetup -p1 -n blackbird-%{version}
 
 %build
 %python_build

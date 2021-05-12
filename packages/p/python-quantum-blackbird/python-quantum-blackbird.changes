@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 13:52:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_32bit_divide_scalar_array_test.patch to skip the
+  failing test on 32bit arch (gh#XanaduAI/blackbird#42).
+
+-------------------------------------------------------------------
 Mon Apr 26 05:52:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

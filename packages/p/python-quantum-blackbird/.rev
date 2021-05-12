@@ -31,4 +31,14 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>888350</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>983a24505eed6ce41bf83743b2660207</srcmd5>
+    <version>0.3.0</version>
+    <time>1620840765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_32bit_divide_scalar_array_test.patch to skip the
+  failing test on 32bit arch (gh#XanaduAI/blackbird#42).
+</comment>
+    <requestid>892515</requestid>
+  </revision>
 </revisionlist>
