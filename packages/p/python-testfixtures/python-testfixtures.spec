@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-testfixtures
-Version:        6.17.0
+Version:        6.17.1
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT

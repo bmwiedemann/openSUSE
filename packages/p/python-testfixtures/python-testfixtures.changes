@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 17:11:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.17.1
+  - Fix bug where bug where duplicated entries in an ordered but partial
+    :class:`SequenceComparison` could result in a failed match.
+ 
+-------------------------------------------------------------------
 Wed Apr 28 07:49:55 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add appease-django-320.patch:
