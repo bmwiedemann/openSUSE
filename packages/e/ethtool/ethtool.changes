@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 21:58:47 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.12
+  * Feature: support lanes count (no option and -s)
+  * Fix: fix help message for master-slave parameter (-s)
+  * Fix: better error message for master-slave in ioctl code path
+  * Fix: get rid of compiler warnings in "make check"
+
+-------------------------------------------------------------------
 Wed Dec 16 16:44:23 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to new upstream release 5.10
