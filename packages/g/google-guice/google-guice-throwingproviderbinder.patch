@@ -1,0 +1,11 @@
+--- google-guice-4.1/extensions/throwingproviders/src/com/google/inject/throwingproviders/ThrowingProviderBinder.java	2019-04-03 09:27:26.000000000 +0200
++++ google-guice-4.1/extensions/throwingproviders/src/com/google/inject/throwingproviders/ThrowingProviderBinder.java	2021-05-11 14:44:01.099881499 +0200
+@@ -565,5 +565,8 @@
+     @Override public boolean apply(Method input) {
+       return !input.isBridge() && !input.isSynthetic();
+     }
++    @Override public boolean test(Method input) {
++      return apply(input);
++    }
+   }
+ }

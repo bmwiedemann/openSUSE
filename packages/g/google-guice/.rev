@@ -7,4 +7,16 @@
     <comment>new package</comment>
     <requestid>690876</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09109ceddbf8981fcdc977c7de2dee64</srcmd5>
+    <version>4.1</version>
+    <time>1620840727</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the compatibility guava20
+- Added patch:
+  * google-guice-throwingproviderbinder.patch
+    + fix a little glitch with default generic function in guava
+</comment>
+    <requestid>892403</requestid>
+  </revision>
 </revisionlist>

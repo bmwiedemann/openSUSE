@@ -1,7 +1,7 @@
 #
-# spec file for package google
+# spec file for package google-guice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source1:        create-tarball.sh
 Patch0:         guice-4.1-fixup-ant.patch
 Patch1:         guice-4.1-disabledextensions.patch
 Patch2:         guice-4.1-javadoc.patch
+Patch3:         google-guice-throwingproviderbinder.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  aqute-bnd
@@ -37,7 +38,7 @@ BuildRequires:  atinject
 BuildRequires:  cglib
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  jarjar
 BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
@@ -156,6 +157,7 @@ This package provides %{summary}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 find . -name "*.jar" -and ! -name "munge.jar" -delete
 find . -name "*.class" -delete
 
@@ -217,7 +219,7 @@ find . -name "*.class" -delete
 mkdir -p lib/build
 mkdir -p extensions/servlet/lib/build
 build-jar-repository -s -p lib/build \
-  guava20 javax.inject glassfish-servlet-api aopalliance cglib objectweb-asm aqute-bnd jarjar
+  guava javax.inject glassfish-servlet-api aopalliance cglib objectweb-asm aqute-bnd jarjar
 %{ant} clean.all no_aop
 pushd build/no_aop
 %pom_xpath_inject "pom:project" "<classifier>no_aop</classifier>" core
