@@ -1,7 +1,7 @@
 #
 # spec file for package spread-sheet-widget
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017,2020 <opensuse.lietuviu.kalba@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         libname libspread-sheet-widget0
 Name:           spread-sheet-widget
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        GNU Spread Sheet Widget library for Gtk+
 License:        GPL-3.0-or-later
