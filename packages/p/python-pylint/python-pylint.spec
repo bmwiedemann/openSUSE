@@ -20,22 +20,25 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.7.2
+Version:        2.8.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pylint-pr4450-import-init.patch -- gh#PyCQA/pylint#4450 fix broken tests
+Patch1:         https://github.com/PyCQA/pylint/pull/4450.patch#/pylint-pr4450-import-init.patch
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.5.1
+Requires:       python-astroid >= 2.5.6
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
 Requires:       python-toml >= 0.7.1
 %if %{with tests}
-BuildRequires:  %{python_module astroid >= 2.5.1}
+BuildRequires:  %{python_module astroid >= 2.5.6}
 BuildRequires:  %{python_module isort >= 4.2.5}
 BuildRequires:  %{python_module mccabe >= 0.6}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -66,7 +69,7 @@ customizable, and you can easily write a small plugin to add a personal
 feature.
 
 %prep
-%setup -q -n pylint-%{version}
+%autosetup -p1 -n pylint-%{version}
 sed -i '1{/^#!/ d}' pylint/__main__.py
 
 %build
@@ -84,11 +87,14 @@ done
 %if %{with tests}
 %check
 export LC_ALL="en_US.UTF-8"
-# need the local dir for imports from tests ...
-export PYTHONPATH=$(pwd)
-# ... but make sure that we import from installed package
+# The test suite tampers with the PYTHONPATH, e.g. upstreams fix for
+# https://github.com/PyCQA/pylint/issues/3636
+# so make sure that the macro set PYTHONPATH does not result in conflicting imports
 mv pylint pylint.tmp
-%pytest --benchmark-disable
+%pytest --benchmark-disable --ignore tests/test_epylint.py
+# result of the mentioned tampering: other tests must not have pwd in PYTHONPATH, but test_epylint needs it
+export PYTHONPATH=$PWD
+%pytest --benchmark-disable tests/test_epylint.py
 mv pylint.tmp pylint
 %endif
 
@@ -99,7 +105,7 @@ mv pylint.tmp pylint
 %python_uninstall_alternative pylint
 
 %files %{python_files}
-%license COPYING
+%license LICENSE
 %doc ChangeLog README.rst
 %doc examples/
 %python_alternative %{_bindir}/pylint
