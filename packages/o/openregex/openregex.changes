@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 11 17:52:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy version of guava any more
+- Build with Java 8 as baseline, in order to be able to use
+  guava 30.1.1
+
+-------------------------------------------------------------------
 Fri Feb 28 06:40:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of openregex 1.1.1
