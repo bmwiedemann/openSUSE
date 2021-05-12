@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdnav
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sover   4
 Name:           libdvdnav
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        DVD Navigation Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
-Source0:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source0:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source1000:     baselibs.conf
 BuildRequires:  libtool
