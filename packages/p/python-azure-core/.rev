@@ -104,4 +104,12 @@
   upgrades from the previous 1.13.0b1 version (forwarded request 890385 from glaubitz)</comment>
     <requestid>890743</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e11ef2b419f798a0cbef87a3454f74d5</srcmd5>
+    <version>1.14.0b1</version>
+    <time>1620840723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892379</requestid>
+  </revision>
 </revisionlist>
