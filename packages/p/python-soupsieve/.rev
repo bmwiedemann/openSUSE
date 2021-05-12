@@ -135,4 +135,13 @@
     manner by normalizing them before compare. (#212)</comment>
     <requestid>877642</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8de8c75e2c927dfec13e8862081e1e60</srcmd5>
+    <version>2.2.1</version>
+    <time>1620840680</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 2.2.1:
+  - **FIX**: Fix an issue with namespaces when one of the keys is `self`.</comment>
+    <requestid>891894</requestid>
+  </revision>
 </revisionlist>

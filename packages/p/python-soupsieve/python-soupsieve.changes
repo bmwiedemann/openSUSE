@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  9 17:07:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 2.2.1:
+  - **FIX**: Fix an issue with namespaces when one of the keys is `self`.
+
+-------------------------------------------------------------------
 Tue Mar  2 00:26:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
