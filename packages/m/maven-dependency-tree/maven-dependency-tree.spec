@@ -30,7 +30,7 @@ BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-lib
@@ -77,7 +77,7 @@ build-jar-repository -s lib \
   atinject \
   commons-cli \
   guice/google-guice-no_aop \
-  guava20/guava-10.0 \
+  guava/guava \
   jdom2/jdom2 \
   maven/maven-artifact \
   maven/maven-core \

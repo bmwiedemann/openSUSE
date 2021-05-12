@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 13:03:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 any more
+
+-------------------------------------------------------------------
 Mon Jan 04 01:26:29 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 3.0.1
