@@ -18,12 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coverage
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM traced_file_absolute.patch gh#nedbat/coveragepy#1161 mcepl@suse.com
+# traced file names seem to be absolute now?
+Patch0:         traced_file_absolute.patch
+# PATCH-FIX-UPSTREAM 0001-make-data-collection-operations-thread-safe.patch gh#nedbat/coveragepy#commit-e36b42e2db46 alarrosa@suse.com
+# Make data collection operations thread safe
+Patch1:         0001-make-data-collection-operations-thread-safe.patch
+# PATCH-FIX-UPSTREAM change__file__report-dir.patch gh#nedbat/coveragepy#1161 mcepl@suse.com
+# Fix yet another regression in Python 3.8.10, this time about __file__ value for directories.
+Patch2:         change__file__report-dir.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= 4.57}
@@ -41,7 +50,7 @@ Requires:       python
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -50,7 +59,8 @@ the code analysis tools and tracing hooks provided in the Python standard
 library to determine which lines are executable, and which have been executed.
 
 %prep
-%setup -q -n coverage-%{version}
+%autosetup -p1 -n coverage-%{version}
+
 # do not require xdist
 sed -i -e '/addopts/d' setup.cfg
 # writes in /usr/
@@ -92,6 +102,7 @@ for filepath in %{buildroot}%{_bindir}/coverage*-%{$python_bin_suffix}; do
 done
 }
 export PATH="$(pwd)/build/bin:$PATH"
+%python_exec -mcoverage debug sys
 # the tests need the empty leading part for importing local test projects, the x is a dummy"
 export PYTHONPATH=":x"
 %pytest_arch -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'

@@ -1,0 +1,36 @@
+From 01cbb8751f98e5a7de79699444cbc03647691616 Mon Sep 17 00:00:00 2001
+From: Ned Batchelder <ned@nedbatchelder.com>
+Date: Tue, 11 May 2021 19:32:32 -0400
+Subject: [PATCH] fix: Python 3.8.10 changed how __file__ is reported when
+ running directories
+
+---
+ coverage/execfile.py  |    5 +++++
+ tests/test_process.py |    2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+--- a/coverage/execfile.py
++++ b/coverage/execfile.py
+@@ -176,6 +176,11 @@ class PyRunner(object):
+             # directory.
+             for ext in [".py", ".pyc", ".pyo"]:
+                 try_filename = os.path.join(self.arg0, "__main__" + ext)
++                # 3.8.10 changed how files are reported when running a
++                # directory.  But I'm not sure how far this change is going to
++                # spread, so I'll just hard-code it here for now.
++                if env.PYVERSION >= (3, 8, 10):
++                    try_filename = os.path.abspath(try_filename)
+                 if os.path.exists(try_filename):
+                     self.arg0 = try_filename
+                     break
+--- a/tests/test_process.py
++++ b/tests/test_process.py
+@@ -852,7 +852,7 @@ class EnvironmentTest(CoverageTest):
+             expected = re_lines(expected, r'\s+"argv0":', match=False)
+             actual = re_lines(actual, r'\s+"argv0":', match=False)
+ 
+-        assert expected == actual
++        assert actual == expected
+ 
+     def test_coverage_run_is_like_python(self):
+         with open(TRY_EXECFILE) as f:

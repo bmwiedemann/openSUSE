@@ -1,0 +1,140 @@
+From e36b42e2db46e892d9347ba0408c99b187ba8cb8 Mon Sep 17 00:00:00 2001
+From: Ned Batchelder <ned@nedbatchelder.com>
+Date: Mon, 3 May 2021 07:56:05 -0400
+Subject: [PATCH] fix: make data collection operations thread-safe
+
+---
+ CHANGES.rst         |  3 +++
+ coverage/sqldata.py | 20 ++++++++++++++++++++
+ tests/test_data.py  |  7 ++++++-
+ 3 files changed, 29 insertions(+), 1 deletion(-)
+
+#diff --git a/CHANGES.rst b/CHANGES.rst
+#index 29af7340..3c65e5d8 100644
+#--- a/CHANGES.rst
+#+++ b/CHANGES.rst
+#@@ -26,6 +26,9 @@ Unreleased
+# 
+# - Dropped support for Python 2.7, PyPy 2, and Python 3.5.
+# 
+#+- Data collection is now thread-safe.  There may have been rare instances of
+#+  exceptions raised in multi-threaded programs.
+#+
+# - Plugins (like the `Django coverage plugin`_) were generating "Already
+#   imported a file that will be measured" warnings about Django itself.  These
+#   have been fixed, closing `issue 1150`_.
+Index: coverage-5.5/coverage/sqldata.py
+===================================================================
+--- coverage-5.5.orig/coverage/sqldata.py
++++ coverage-5.5/coverage/sqldata.py
+@@ -8,12 +8,14 @@
+ 
+ import collections
+ import datetime
++import functools
+ import glob
+ import itertools
+ import os
+ import re
+ import sqlite3
+ import sys
++import threading
+ import zlib
+ 
+ from coverage import env
+@@ -179,6 +181,10 @@ class CoverageData(SimpleReprMixin):
+     Data in a :class:`CoverageData` can be serialized and deserialized with
+     :meth:`dumps` and :meth:`loads`.
+ 
++    The methods used during the coverage.py collection phase
++    (:meth:`add_lines`, :meth:`add_arcs`, :meth:`set_context`, and
++    :meth:`add_file_tracers`) are thread-safe.  Other methods may not be.
++
+     """
+ 
+     def __init__(self, basename=None, suffix=None, no_disk=False, warn=None, debug=None):
+@@ -207,6 +213,8 @@ class CoverageData(SimpleReprMixin):
+         # Maps thread ids to SqliteDb objects.
+         self._dbs = {}
+         self._pid = os.getpid()
++        # Synchronize the operations used during collection.
++        self._lock = threading.Lock()
+ 
+         # Are we in sync with the data file?
+         self._have_used = False
+@@ -218,6 +226,15 @@ class CoverageData(SimpleReprMixin):
+         self._current_context_id = None
+         self._query_context_ids = None
+ 
++    def _locked(method):            # pylint: disable=no-self-argument
++        """A decorator for methods that should hold self._lock."""
++        @functools.wraps(method)
++        def _wrapped(self, *args, **kwargs):
++            with self._lock:
++                # pylint: disable=not-callable
++                return method(self, *args, **kwargs)
++        return _wrapped
++
+     def _choose_filename(self):
+         """Set self._filename based on inited attributes."""
+         if self._no_disk:
+@@ -381,6 +398,7 @@ class CoverageData(SimpleReprMixin):
+             else:
+                 return None
+ 
++    @_locked
+     def set_context(self, context):
+         """Set the current context for future :meth:`add_lines` etc.
+ 
+@@ -422,6 +440,7 @@ class CoverageData(SimpleReprMixin):
+         """
+         return self._filename
+ 
++    @_locked
+     def add_lines(self, line_data):
+         """Add measured line data.
+ 
+@@ -454,6 +473,7 @@ class CoverageData(SimpleReprMixin):
+                     (file_id, self._current_context_id, linemap),
+                 )
+ 
++    @_locked
+     def add_arcs(self, arc_data):
+         """Add measured arc data.
+ 
+@@ -498,6 +518,7 @@ class CoverageData(SimpleReprMixin):
+                     ('has_arcs', str(int(arcs)))
+                 )
+ 
++    @_locked
+     def add_file_tracers(self, file_tracers):
+         """Add per-file plugin information.
+ 
+Index: coverage-5.5/tests/test_data.py
+===================================================================
+--- coverage-5.5.orig/tests/test_data.py
++++ coverage-5.5/tests/test_data.py
+@@ -488,10 +488,14 @@ class CoverageDataTest(DataTestHelpers,
+ 
+     def test_thread_stress(self):
+         covdata = CoverageData()
++        exceptions = []
+ 
+         def thread_main():
+             """Every thread will try to add the same data."""
+-            covdata.add_lines(LINES_1)
++            try:
++                covdata.add_lines(LINES_1)
++            except Exception as ex:
++                exceptions.append(ex)
+ 
+         threads = [threading.Thread(target=thread_main) for _ in range(10)]
+         for t in threads:
+@@ -500,6 +504,7 @@ class CoverageDataTest(DataTestHelpers,
+             t.join()
+ 
+         self.assert_lines1_data(covdata)
++        assert exceptions == []
+ 
+ 
+ class CoverageDataTestInTempDir(DataTestHelpers, CoverageTest):
