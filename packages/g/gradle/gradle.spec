@@ -1,7 +1,7 @@
 #
 # spec file for package gradle
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ Patch300:       java11-compatibility.patch
 Patch301:       java8-compatibility.patch
 Patch302:       remove-timestamps.patch
 Patch303:       cast-estimated-runtime-to-long.patch
+Patch304:       port-to-guava-30.patch
 
 BuildRequires:  gradle-local
 BuildRequires:  xmvn-subst
@@ -97,8 +98,7 @@ BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.google.code.findbugs:findbugs)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.code.gson:gson)
-BuildRequires:  mvn(com.google.guava:guava-jdk5:20.0)
-BuildRequires:  mvn(com.google.guava:guava:20.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.google.http-client:google-http-client)
 BuildRequires:  mvn(com.google.oauth-client:google-oauth-client)
 BuildRequires:  mvn(com.googlecode.jarjar:jarjar)
@@ -131,6 +131,7 @@ BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.geronimo.specs:geronimo-annotation_1.0_spec)
+BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.httpcomponents:httpcore)
 BuildRequires:  mvn(org.apache.ivy:ivy)
@@ -201,7 +202,7 @@ BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
 BuildRequires:  mvn(org.sonatype.pmaven:pmaven-common)
 BuildRequires:  mvn(org.sonatype.pmaven:pmaven-groovy)
 BuildRequires:  mvn(org.testng:testng)
-BuildRequires:  mvn(xerces:xercesImpl) mvn(org.apache.httpcomponents:httpclient)
+BuildRequires:  mvn(xerces:xercesImpl)
 BuildRequires:  mvn(xml-apis:xml-apis)
 # Avoid building with bootstrap versions of those
 #!BuildRequires: groovy-lib sbt gpars
@@ -250,7 +251,7 @@ Requires:       glassfish-servlet-api
 Requires:       google-gson
 Requires:       google-guice
 Requires:       groovy-lib
-Requires:       guava20
+Requires:       guava
 Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core

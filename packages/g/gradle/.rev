@@ -94,4 +94,18 @@
     <comment>Avoid sources that change every week</comment>
     <requestid>757516</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>cf62b5cd37679ee6baeeb9572679580f</srcmd5>
+    <version>4.4.1</version>
+    <time>1620840727</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy guava20 package any more
+- Added patch:
+  * port-to-guava-30.patch
+    + Port gradle 4.4.1 to guava 30.1.1
+    + Set source level to 1.8, since guava 30 uses default
+      functions in interfaces, which is Java 8+ feature
+</comment>
+    <requestid>892404</requestid>
+  </revision>
 </revisionlist>

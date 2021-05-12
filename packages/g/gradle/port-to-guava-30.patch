@@ -1,0 +1,380 @@
+--- gradle-4.4.1/buildSrc/build.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/buildSrc/build.gradle	2021-05-12 08:48:18.379697302 +0200
+@@ -18,8 +18,8 @@
+ apply plugin: 'idea'
+ apply plugin: 'eclipse'
+ 
+-sourceCompatibility = '1.7'
+-targetCompatibility = '1.7'
++sourceCompatibility = '1.8'
++targetCompatibility = '1.8'
+ 
+ // 1.5.3 has a classloader leak (https://github.com/asciidoctor/asciidoctor-gradle-plugin/pull/215)
+ // 1.5.6 requires Java 8+ (https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/218)
+@@ -34,7 +34,7 @@
+ dependencies {
+     compile 'org.ow2.asm:asm-all:5.0.3'
+     compile gradleApi()
+-    compile 'com.google.guava:guava-jdk5:14.0.1@jar'
++    compile 'com.google.guava:guava:14.0.1@jar'
+     compile 'commons-lang:commons-lang:2.6@jar'
+     compile localGroovy()
+     compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2') {
+--- gradle-4.4.1/subprojects/base-services-groovy/base-services-groovy.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/base-services-groovy/base-services-groovy.gradle	2021-05-12 08:13:30.490814859 +0200
+@@ -15,7 +15,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api libraries.groovy
+--- gradle-4.4.1/subprojects/base-services-groovy/src/main/java/org/gradle/api/specs/Specs.java	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/base-services-groovy/src/main/java/org/gradle/api/specs/Specs.java	2021-05-12 08:18:50.180858876 +0200
+@@ -63,7 +63,7 @@
+         if (specs.length == 1) {
+             return Cast.uncheckedCast(specs[0]);
+         }
+-        return doIntersect(Arrays.asList(specs));
++        return doIntersect(Arrays.<Spec<? super T>>asList(specs));
+     }
+ 
+     /**
+@@ -105,7 +105,7 @@
+         if (specs.length == 1) {
+             return Cast.uncheckedCast(specs[0]);
+         }
+-        return doUnion(Arrays.asList(specs));
++        return doUnion(Arrays.<Spec<? super T>>asList(specs));
+     }
+ 
+     /**
+--- gradle-4.4.1/subprojects/code-quality/src/main/groovy/org/gradle/api/plugins/quality/internal/findbugs/FindBugsSpec.java	2017-12-20 09:05:14.000000000 +0100
++++ gradle-4.4.1/subprojects/code-quality/src/main/groovy/org/gradle/api/plugins/quality/internal/findbugs/FindBugsSpec.java	2021-05-12 08:58:45.091667769 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.gradle.api.plugins.quality.internal.findbugs;
+ 
+-import com.google.common.base.Objects;
++import com.google.common.base.MoreObjects;
+ 
+ import java.io.Serializable;
+ import java.util.Collection;
+@@ -52,6 +52,6 @@
+     }
+ 
+     public String toString() {
+-        return Objects.toStringHelper(this).add("arguments", arguments).add("debugEnabled", debugEnabled).add("jvmArgs", jvmArgs).toString();
++        return MoreObjects.toStringHelper(this).add("arguments", arguments).add("debugEnabled", debugEnabled).add("jvmArgs", jvmArgs).toString();
+     }
+ }
+--- gradle-4.4.1/subprojects/core/src/main/java/org/gradle/api/internal/tasks/userinput/DefaultUserInputHandler.java	2017-12-20 09:05:14.000000000 +0100
++++ gradle-4.4.1/subprojects/core/src/main/java/org/gradle/api/internal/tasks/userinput/DefaultUserInputHandler.java	2021-05-12 08:27:54.600238500 +0200
+@@ -72,6 +72,6 @@
+     }
+ 
+     private String sanitizeInput(String input) {
+-        return CharMatcher.JAVA_ISO_CONTROL.removeFrom(StringUtils.trim(input));
++        return CharMatcher.javaIsoControl().removeFrom(StringUtils.trim(input));
+     }
+ }
+--- gradle-4.4.1/subprojects/core/src/main/java/org/gradle/internal/filewatch/jdk7/WatchServiceFileWatcherBacking.java	2017-12-20 09:05:14.000000000 +0100
++++ gradle-4.4.1/subprojects/core/src/main/java/org/gradle/internal/filewatch/jdk7/WatchServiceFileWatcherBacking.java	2021-05-12 08:30:30.665207275 +0200
+@@ -21,6 +21,7 @@
+ import com.google.common.util.concurrent.Futures;
+ import com.google.common.util.concurrent.ListenableFuture;
+ import com.google.common.util.concurrent.ListeningExecutorService;
++import com.google.common.util.concurrent.MoreExecutors;
+ import org.gradle.api.Action;
+ import org.gradle.api.internal.file.FileSystemSubset;
+ import org.gradle.internal.filewatch.FileWatcher;
+@@ -92,7 +93,7 @@
+                             try {
+                                 pumpEvents();
+                             } catch (InterruptedException e) {
+-                                // just stop
++                                Thread.currentThread().interrupt();
+                             } catch (Throwable t) {
+                                 if (!(Throwables.getRootCause(t) instanceof InterruptedException)) {
+                                     stop();
+@@ -117,7 +118,7 @@
+                 public void onFailure(Throwable t) {
+                     running.set(false);
+                 }
+-            });
++            }, MoreExecutors.directExecutor());
+             return fileWatcher;
+         } else {
+             throw new IllegalStateException("file watcher is started");
+--- gradle-4.4.1/subprojects/core-api/src/main/java/org/gradle/api/tasks/util/internal/CachingPatternSpecFactory.java	2017-12-20 09:05:14.000000000 +0100
++++ gradle-4.4.1/subprojects/core-api/src/main/java/org/gradle/api/tasks/util/internal/CachingPatternSpecFactory.java	2021-05-12 08:25:33.495362564 +0200
+@@ -16,6 +16,7 @@
+ 
+ package org.gradle.api.tasks.util.internal;
+ 
++import com.google.common.base.MoreObjects;
+ import com.google.common.base.Objects;
+ import com.google.common.cache.Cache;
+ import com.google.common.cache.CacheBuilder;
+@@ -85,7 +86,7 @@
+ 
+         @Override
+         public String toString() {
+-            return Objects.toStringHelper(this)
++            return MoreObjects.toStringHelper(this)
+                 .add("key", key)
+                 .add("spec", spec)
+                 .toString();
+@@ -127,7 +128,7 @@
+ 
+         @Override
+         public String toString() {
+-            return Objects.toStringHelper(this)
++            return MoreObjects.toStringHelper(this)
+                 .add("relativePath", relativePath)
+                 .add("specKey", specKey)
+                 .toString();
+@@ -170,7 +171,7 @@
+ 
+         @Override
+         public String toString() {
+-            return Objects.toStringHelper(this)
++            return MoreObjects.toStringHelper(this)
+                 .add("patterns", patterns)
+                 .add("include", include)
+                 .add("caseSensitive", caseSensitive)
+--- gradle-4.4.1/subprojects/dependency-management/dependency-management.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/dependency-management/dependency-management.gradle	2021-05-12 08:32:11.329832188 +0200
+@@ -1,6 +1,6 @@
+ apply plugin: "groovy"
+ 
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ configurations {
+     mvn3Input
+--- gradle-4.4.1/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/DefaultGlobalDependencyResolutionRules.java	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/DefaultGlobalDependencyResolutionRules.java	2021-05-12 08:36:18.011357590 +0200
+@@ -60,12 +60,7 @@
+ 
+         @Override
+         public Action<DependencySubstitution> getRuleAction() {
+-            return Actions.composite(CollectionUtils.collect(ruleProviders, new Transformer<Action<? super DependencySubstitution>, DependencySubstitutionRules>() {
+-                @Override
+-                public Action<? super DependencySubstitution> transform(DependencySubstitutionRules rule) {
+-                    return rule.getRuleAction();
+-                }
+-            }));
++            return Actions.composite(CollectionUtils.collect(ruleProviders, DependencySubstitutionRules::getRuleAction));
+         }
+ 
+         @Override
+--- gradle-4.4.1/subprojects/diagnostics/diagnostics.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/diagnostics/diagnostics.gradle	2021-05-12 08:46:29.259007213 +0200
+@@ -15,7 +15,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api libraries.groovy
+--- gradle-4.4.1/subprojects/ide/ide.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/ide/ide.gradle	2021-05-12 09:03:40.673543191 +0200
+@@ -14,6 +14,9 @@
+  * limitations under the License.
+  */
+ 
++// Compiler daemon
++sourceCompatibility = 1.8
++
+ sourceSets.main.java.srcDirs = []
+ sourceSets.main.groovy.srcDirs = ['src/main/java', 'src/main/groovy']
+ 
+--- gradle-4.4.1/subprojects/jacoco/jacoco.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/jacoco/jacoco.gradle	2021-05-12 09:08:27.859365905 +0200
+@@ -14,7 +14,8 @@
+  * limitations under the License.
+  */
+ 
+-
++// Compiler daemon
++sourceCompatibility = 1.8
+ 
+ dependencies {
+ 	compile libraries.groovy
+--- gradle-4.4.1/subprojects/language-java/language-java.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/language-java/language-java.gradle	2021-05-12 08:54:42.406128764 +0200
+@@ -1,5 +1,5 @@
+ // Compiler daemon
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile libraries.groovy
+--- gradle-4.4.1/subprojects/language-scala/language-scala.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/language-scala/language-scala.gradle	2021-05-12 09:01:13.456608855 +0200
+@@ -1,6 +1,6 @@
+ 
+ // Compiler daemon
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":core")
+--- gradle-4.4.1/subprojects/logging/src/main/java/org/gradle/internal/logging/console/Cursor.java	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/logging/src/main/java/org/gradle/internal/logging/console/Cursor.java	2021-05-12 08:20:53.245622827 +0200
+@@ -17,6 +17,7 @@
+ package org.gradle.internal.logging.console;
+ 
+ import com.google.common.base.Objects;
++import com.google.common.base.MoreObjects;
+ 
+ /**
+  * A virtual console screen cursor. This class avoid complex screen position management.
+@@ -61,7 +62,7 @@
+ 
+     @Override
+     public String toString() {
+-        return Objects.toStringHelper(this.getClass())
++        return MoreObjects.toStringHelper(this.getClass())
+             .add("row", row)
+             .add("col", col)
+             .toString();
+--- gradle-4.4.1/subprojects/maven/maven.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/maven/maven.gradle	2021-05-12 09:10:56.844315121 +0200
+@@ -14,6 +14,9 @@
+  * limitations under the License.
+  */
+ 
++// Compiler daemon
++sourceCompatibility = 1.8
++
+ dependencies {
+     compile libraries.groovy
+ 
+--- gradle-4.4.1/subprojects/model-core/model-core.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/model-core/model-core.gradle	2021-05-12 08:22:17.318144742 +0200
+@@ -19,7 +19,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/platform-base/platform-base.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/platform-base/platform-base.gradle	2021-05-12 08:42:33.581542761 +0200
+@@ -1,4 +1,4 @@
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile libraries.groovy
+--- gradle-4.4.1/subprojects/platform-jvm/platform-jvm.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/platform-jvm/platform-jvm.gradle	2021-05-12 08:52:41.965364992 +0200
+@@ -1,4 +1,4 @@
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":platformBase")
+--- gradle-4.4.1/subprojects/plugin-use/plugin-use.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/plugin-use/plugin-use.gradle	2021-05-12 09:06:09.082485116 +0200
+@@ -14,6 +14,9 @@
+  * limitations under the License.
+  */
+ 
++// Compiler daemon
++sourceCompatibility = 1.8
++
+ dependencies {
+     compile project(":core")
+     compile project(":dependencyManagement")
+--- gradle-4.4.1/subprojects/reporting/reporting.gradle	2017-12-20 15:45:26.000000000 +0100
++++ gradle-4.4.1/subprojects/reporting/reporting.gradle	2021-05-12 08:44:28.618244273 +0200
+@@ -1,6 +1,6 @@
+ apply plugin: 'javascript-base'
+ 
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ configurations {
+     reports
+--- gradle-4.4.1/subprojects/signing/signing.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/signing/signing.gradle	2021-05-12 09:13:18.845221157 +0200
+@@ -14,6 +14,9 @@
+  * limitations under the License.
+  */
+ 
++// Compiler daemon
++sourceCompatibility = 1.8
++
+ dependencies {
+     compile libraries.groovy
+ 
+--- gradle-4.4.1/subprojects/testing-base/testing-base.gradle	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/testing-base/testing-base.gradle	2021-05-12 08:56:27.894797728 +0200
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ // Test execution
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(':core')
+--- gradle-4.4.1/subprojects/test-kit/src/integTest/groovy/org/gradle/testkit/TestKitDependencyClassVisibilityIntegrationTest.groovy	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/test-kit/src/integTest/groovy/org/gradle/testkit/TestKitDependencyClassVisibilityIntegrationTest.groovy	2021-05-12 07:07:40.784721520 +0200
+@@ -62,7 +62,7 @@
+             ${jcenterRepository()}
+             dependencies {
+                 testCompile gradleTestKit()
+-                testCompile 'com.google.guava:guava-jdk5:13.0'
++                testCompile 'com.google.guava:guava:13.0'
+             }
+         """
+ 
+--- gradle-4.4.1/subprojects/tooling-api/src/main/java/org/gradle/tooling/internal/gradle/DefaultGradlePublication.java	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/tooling-api/src/main/java/org/gradle/tooling/internal/gradle/DefaultGradlePublication.java	2021-05-12 08:38:24.060090977 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.gradle.tooling.internal.gradle;
+ 
+-import com.google.common.base.Objects;
++import com.google.common.base.MoreObjects;
+ import org.gradle.tooling.model.GradleModuleVersion;
+ 
+ import java.io.File;
+@@ -55,7 +55,7 @@
+     }
+ 
+     public String toString() {
+-        return Objects.toStringHelper(this)
++        return MoreObjects.toStringHelper(this)
+                 .add("id", id)
+                 .toString();
+     }
+--- gradle-4.4.1/subprojects/workers/src/main/java/org/gradle/workers/internal/DaemonForkOptions.java	2017-12-20 09:05:16.000000000 +0100
++++ gradle-4.4.1/subprojects/workers/src/main/java/org/gradle/workers/internal/DaemonForkOptions.java	2021-05-12 08:40:40.148882779 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.gradle.workers.internal;
+ 
+-import com.google.common.base.Objects;
++import com.google.common.base.MoreObjects;
+ import com.google.common.collect.Sets;
+ import org.gradle.process.JavaForkOptions;
+ import org.gradle.process.internal.JavaForkOptionsInternal;
+@@ -90,6 +90,6 @@
+     }
+ 
+     public String toString() {
+-        return Objects.toStringHelper(this).add("executable", forkOptions.getExecutable()).add("minHeapSize", forkOptions.getMinHeapSize()).add("maxHeapSize", forkOptions.getMaxHeapSize()).add("jvmArgs", forkOptions.getJvmArgs()).add("classpath", classpath).add("keepAliveMode", keepAliveMode).toString();
++        return MoreObjects.toStringHelper(this).add("executable", forkOptions.getExecutable()).add("minHeapSize", forkOptions.getMinHeapSize()).add("maxHeapSize", forkOptions.getMaxHeapSize()).add("jvmArgs", forkOptions.getJvmArgs()).add("classpath", classpath).add("keepAliveMode", keepAliveMode).toString();
+     }
+ }
