@@ -1110,7 +1110,6 @@
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
