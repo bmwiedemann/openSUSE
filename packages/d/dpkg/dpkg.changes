@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:07:05 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add use-clamp-from-C-STD-library.patch in order to fix
+  clamp clash (boo#1181867).
+
+-------------------------------------------------------------------
 Tue Aug 25 13:39:24 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add ncurses-fix.patch in order to fix ncurses issue.

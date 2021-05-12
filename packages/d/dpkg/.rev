@@ -355,4 +355,12 @@ The link of update-alternatives should also be changed from deb to dpkg.</commen
     <comment></comment>
     <requestid>868974</requestid>
   </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>df29c5db7d377fa786ff7878ea8a7bb9</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1620840685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891979</requestid>
+  </revision>
 </revisionlist>

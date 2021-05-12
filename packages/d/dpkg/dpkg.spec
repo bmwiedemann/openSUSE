@@ -30,6 +30,8 @@ Patch1:         update-alternatives-suse.patch
 # PATCH-FIX-SUSE: tar of Leap 42.{2,3} does not recognize --sort=name, --clamp-mtime options
 Patch2:         drop-tar-option.patch
 Patch3:         ncurses-fix.patch
+# PATCH-FIX-OPENSUSE: Use clamp from C++ STD library.
+Patch4:         use-clamp-from-C-STD-library.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -89,6 +91,7 @@ Libraries and header files for dpkg.
 %patch2 -p1
 %endif
 %patch3 -p1
+%patch4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

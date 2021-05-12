@@ -1,0 +1,33 @@
+From 43bf69b419bcfc0c601015d753b921b6849bae06 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Fri, 23 Apr 2021 11:03:59 +0200
+Subject: [PATCH] Use clamp from C++ STD library.
+
+---
+ lib/dpkg/macros.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/dpkg/macros.h b/lib/dpkg/macros.h
+index 0c1937a..34387d9 100644
+--- a/lib/dpkg/macros.h
++++ b/lib/dpkg/macros.h
+@@ -112,7 +112,6 @@
+ #ifndef max
+ #define max(a, b) ((a) > (b) ? (a) : (b))
+ #endif
+-#endif
+ 
+ /**
+  * @def clamp
+@@ -127,6 +126,8 @@
+ #define clamp(v, l, h) ((v) > (h) ? (h) : ((v) < (l) ? (l) : (v)))
+ #endif
+ 
++#endif
++
+ /** @} */
+ 
+ #endif /* LIBDPKG_MACROS_H */
+-- 
+2.31.1
+
