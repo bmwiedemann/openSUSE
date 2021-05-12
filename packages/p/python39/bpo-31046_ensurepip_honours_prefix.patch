@@ -5,11 +5,11 @@ Subject: [PATCH] bpo-31046: ensurepip does not honour the value of $(prefix)
 
 Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 ---
- Doc/library/ensurepip.rst                      |  9 +++++++--
- Lib/ensurepip/__init__.py                      | 18 +++++++++++++-----
- Lib/test/test_ensurepip.py                     | 11 +++++++++++
- Makefile.pre.in                                |  4 ++--
- .../2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst   |  1 +
+ Doc/library/ensurepip.rst                                       |    9 +++--
+ Lib/ensurepip/__init__.py                                       |   18 +++++++---
+ Lib/test/test_ensurepip.py                                      |   11 ++++++
+ Makefile.pre.in                                                 |    4 +-
+ Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst |    1 
  5 files changed, 34 insertions(+), 9 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 
@@ -139,7 +139,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1253,7 +1253,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+@@ -1263,7 +1263,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +148,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  altinstall: commoninstall
-@@ -1263,7 +1263,7 @@ altinstall: commoninstall
+@@ -1273,7 +1273,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \

@@ -239,4 +239,12 @@
   - bpo#43517: Fix misdetection of circular imports when using</comment>
     <requestid>889130</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>653e4dfab3aec5c1f0f50f2a5eb8b822</srcmd5>
+    <version>3.9.5</version>
+    <time>1620840666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890781</requestid>
+  </revision>
 </revisionlist>

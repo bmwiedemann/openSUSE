@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Wed May  5 15:16:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.5:
+  * Security
+    - bpo-43434: Creating a sqlite3.Connection object now also
+      produces a sqlite3.connect auditing event. Previously this
+      event was only produced by sqlite3.connect() calls. Patch
+      by Erlend E. Aasland.
+    - bpo-43882: The presence of newline or tab characters in
+      parts of a URL could allow some forms of attacks.
+    - Following the controlling specification for URLs defined by
+      WHATWG urllib.parse() now removes ASCII newlines and tabs
+      from URLs, preventing such attacks.
+    - bpo-43472: Ensures interpreter-level audit hooks receive
+      the cpython.PyInterpreterState_New event when called
+      through the _xxsubinterpreters module.
+    - bpo-36384: ipaddress module no longer accepts any leading
+      zeros in IPv4 address strings. Leading zeros are ambiguous
+      and interpreted as octal notation by some libraries. For
+      example the legacy function socket.inet_aton() treats
+      leading zeros as octal notatation. glibc implementation of
+      modern inet_pton() does not accept any leading zeros. For
+      a while the ipaddress module used to accept ambiguous
+      leading zeros.
+    - bpo-43075: Fix Regular Expression Denial of Service (ReDoS)
+      vulnerability in urllib.request.AbstractBasicAuthHandler.
+      The ReDoS-vulnerable regex has quadratic worst-case
+      complexity and it allows cause a denial of service when
+      identifying crafted invalid RFCs. This ReDoS issue is on
+      the client side and needs remote attackers to control the
+      HTTP server.
+    - bpo-42800: Audit hooks are now fired for frame.f_code,
+      traceback.tb_frame, and generator code/frame attribute
+      access.
+  * Core and Builtins
+    - bpo-43105: Importlib now resolves relative paths when
+      creating module spec objects from file locations.
+    - bpo-42924: Fix bytearray repetition incorrectly copying
+      data from the start of the buffer, even if the data is
+      offset within the buffer (e.g. after reassigning a slice at
+      the start of the bytearray to a shorter byte string).
+  * Library
+    - bpo-43993: Update bundled pip to 21.1.1.
+    - bpo-43937: Fixed the turtle module working with non-default
+      root window.
+    - bpo-43930: Update bundled pip to 21.1 and setuptools to
+      56.0.0
+    - bpo-43920: OpenSSL 3.0.0: load_verify_locations() now
+      returns a consistent error message when cadata contains no
+      valid certificate.
+    - bpo-43607: urllib can now convert Windows paths with \\?\
+      prefixes into URL paths.
+    - bpo-43284: platform.win32_ver derives the windows version
+      from sys.getwindowsversion().platform_version which in turn
+      derives the version from kernel32.dll (which can be of
+      a different version than Windows itself). Therefore change
+      the platform.win32_ver to determine the version using the
+      platform module’s _syscmd_ver private function to return an
+      accurate version.
+    - bpo-42248: [Enum] ensure exceptions raised in _missing__
+      are released
+    - bpo-43799: OpenSSL 3.0.0: define OPENSSL_API_COMPAT 1.1.1
+      to suppress deprecation warnings. Python requires OpenSSL
+      1.1.1 APIs.
+    - bpo-43794: Add ssl.OP_IGNORE_UNEXPECTED_EOF constants
+      (OpenSSL 3.0.0)
+    - bpo-43789: OpenSSL 3.0.0: Don’t call the password callback
+      function a second time when first call has signaled an
+      error condition.
+    - bpo-43788: The header files for ssl error codes are now
+      OpenSSL version-specific. Exceptions will now show correct
+      reason and library codes. The make_ssl_data.py script has
+      been rewritten to use OpenSSL’s text file with error codes.
+    - bpo-43655: tkinter dialog windows are now recognized as
+      dialogs by window managers on macOS and X Window.
+    - bpo-43534: turtle.textinput() and turtle.numinput() create
+      now a transient window working on behalf of the canvas
+      window.
+    - bpo-43522: Fix problem with hostname_checks_common_name.
+      OpenSSL does not copy hostflags from struct SSL_CTX to
+      struct SSL.
+    - bpo-42967: Allow bytes separator argument in
+      urllib.parse.parse_qs and urllib.parse.parse_qsl when
+      parsing str query strings. Previously, this raised
+      a TypeError.
+    - bpo-43176: Fixed processing of a dataclass that inherits
+      from a frozen dataclass with no fields. It is now correctly
+      detected as an error.
+    - bpo-41735: Fix thread locks in zlib module may go wrong in
+      rare case. Patch by Ma Lin.
+    - bpo-36470: Fix dataclasses with InitVars and replace().
+      Patch by Claudiu Popa.
+    - bpo-32745: Fix a regression in the handling of ctypes’
+      ctypes.c_wchar_p type: embedded null characters would cause
+      a ValueError to be raised. Patch by Zackery Spytz.
+  * Documentation
+    - bpo-43959: The documentation on the PyContextVar C-API was
+      clarified.
+    - bpo-43938: Update dataclasses documentation to express that
+      FrozenInstanceError is derived from AttributeError.
+    - bpo-43755: Update documentation to reflect that
+      unparenthesized lambda expressions can no longer be the
+      expression part in an if clause in comprehensions and
+      generator expressions since Python 3.9.
+    - bpo-43739: Fixing the example code in
+      Doc/extending/extending.rst to declare and initialize the
+      pmodule variable to be of the right type.
+  * Tests
+    - bpo-43961: Fix
+      test_logging.test_namer_rotator_inheritance() on Windows:
+      use os.replace() rather than os.rename(). Patch by Victor
+      Stinner.
+    - bpo-43842: Fix a race condition in the SMTP test of
+      test_logging. Don’t close a file descriptor (socket) from
+      a different thread while asyncore.loop() is polling the
+      file descriptor. Patch by Victor Stinner.
+    - bpo-43811: Tests multiple OpenSSL versions on GitHub
+      Actions. Use ccache to speed up testing.
+    - bpo-43791: OpenSSL 3.0.0: Disable testing of legacy
+      protocols TLS 1.0 and 1.1. Tests are failing with
+      TLSV1_ALERT_INTERNAL_ERROR.
+- Refreshed patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+- Add vendorized files from bluez-devel to enable building support for
+  Bluetooth.
+
+-------------------------------------------------------------------
+Sun May  2 09:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make sure to close the import_failed.map file after the exception
+  has been raised in order to avoid ResourceWarnings when the
+  failing import is part of a try...except block.
+
+-------------------------------------------------------------------
 Wed Apr 28 16:39:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.4:

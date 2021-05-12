@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.4
+%define         folderversion 3.9.5
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -88,7 +88,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.4
+Version:        3.9.5
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -104,6 +104,12 @@ Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
 Source19:       idle3.desktop
 Source20:       idle3.appdata.xml
+# content of bluez-devel:
+# 1. sudo zypper --pkg-cache-dir /tmp install -f -d --no-recommends bluez-devel
+# 2. rpm2cpio /tmp/*/*/bluez-devel-*.rpm|cpio -idu
+# 3. mkdir Vendor && mv usr/include/* Vendor/
+# 4. tar cJf bluez-devel-vendor.tar.xz Vendor/
+Source21:       bluez-devel-vendor.tar.xz
 Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
@@ -402,6 +408,9 @@ rm -r Modules/expat
 # drop duplicate README from site-packages
 rm Lib/site-packages/README.txt
 
+# Add vendored bluez-devel files
+tar xvf %{SOURCE21}
+
 %build
 %if %{with doc}
 TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
@@ -426,6 +435,8 @@ autoreconf -fvi
 %if 0%{?sles_version}
 sed -e 's/-fprofile-correction//' -i Makefile.pre.in
 %endif
+
+export CFLAGS="%{optflags} -IVendor/"
 
 %configure \
     --with-platlibdir=%{_lib} \
@@ -487,9 +498,6 @@ EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn tes
 # so that ifconfig output has "HWaddr <something>".  Some kvm instances
 # done have any such interface breaking the uuid module.
 EXCLUDE="$EXCLUDE test_uuid"
-
-# TEMPORARILY EXCLUDE test_capi bpo#37169
-EXCLUDE="$EXCLUDE test_capi"
 
 # Limit virtual memory to avoid spurious failures
 if test $(ulimit -v) = unlimited || test $(ulimit -v) -gt 10000000; then

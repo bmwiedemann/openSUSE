@@ -1,6 +1,10 @@
+---
+ Makefile.pre.in |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -772,11 +772,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+@@ -782,11 +782,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
  		$(DTRACE_OBJS) \
  		$(srcdir)/Modules/getbuildinfo.c
  	$(CC) -c $(PY_CORE_CFLAGS) \
