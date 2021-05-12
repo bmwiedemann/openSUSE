@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 15:01:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not compile/run tests against the legacy guava20 package
+
+-------------------------------------------------------------------
 Sun Mar  3 18:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Describe package, not project.

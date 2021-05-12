@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
-BuildRequires:  guava20
+BuildRequires:  guava
 %endif
 
 %description
@@ -65,12 +65,12 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} .
 cp -p %{SOURCE100} build.xml
 
-%{pom_remove_parent}
+%pom_remove_parent
 
 mkdir -p lib
 build-jar-repository -s lib commons-cli plexus/utils plexus/classworlds plexus-containers/plexus-container-default
 %if %{with tests}
-build-jar-repository -s lib guava20/guava-20.0
+build-jar-repository -s lib guava/guava
 %endif
 
 %build
