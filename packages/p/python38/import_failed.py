@@ -8,11 +8,12 @@ if __spec__:
 else:
     failed_name = __name__
 
-for line in open(failed_map_path):
-    package = line.split(':')[0]
-    imports = line.split(':')[1]
-    if failed_name in imports:
-        raise ImportError(f"""Module '{failed_name}' is not installed.
+with open(failed_map_path) as fd:
+    for line in fd:
+        package = line.split(':')[0]
+        imports = line.split(':')[1]
+        if failed_name in imports:
+            raise ImportError(f"""Module '{failed_name}' is not installed.
 Use:
   sudo zypper install {package}
 to install it.""")

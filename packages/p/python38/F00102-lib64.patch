@@ -100,7 +100,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/Lib/sysconfig.py
 +++ b/Lib/sysconfig.py
-@@ -20,10 +20,10 @@ __all__ = [
+@@ -25,10 +25,10 @@ _ALWAYS_STR = {
  
  _INSTALL_SCHEMES = {
      'posix_prefix': {
@@ -114,7 +114,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
          'include':
              '{installed_base}/include/python{py_version_short}{abiflags}',
          'platinclude':
-@@ -62,10 +62,10 @@ _INSTALL_SCHEMES = {
+@@ -67,10 +67,10 @@ _INSTALL_SCHEMES = {
          'data': '{userbase}',
          },
      'posix_user': {
@@ -130,7 +130,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
          'data': '{userbase}',
 --- a/Lib/test/test_site.py
 +++ b/Lib/test/test_site.py
-@@ -267,8 +267,8 @@ class HelperFunctionsTests(unittest.Test
+@@ -268,8 +268,8 @@ class HelperFunctionsTests(unittest.Test
          dirs = site.getsitepackages()
          if os.sep == '/':
              # OS X, Linux, FreeBSD, etc
@@ -163,7 +163,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
          if (_PyStatus_EXCEPTION(status)) {
              return status;
          }
-@@ -1067,7 +1067,7 @@ calculate_zip_path(PyCalculatePath *calc
+@@ -1063,7 +1063,7 @@ calculate_zip_path(PyCalculatePath *calc
              return PATHLEN_ERR();
          }
      }
@@ -172,7 +172,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      if (_PyStatus_EXCEPTION(status)) {
          return status;
      }
-@@ -1197,7 +1197,7 @@ calculate_init(PyCalculatePath *calculat
+@@ -1193,7 +1193,7 @@ calculate_init(PyCalculatePath *calculat
      if (!calculate->exec_prefix) {
          return DECODE_LOCALE_ERR("EXEC_PREFIX define", len);
      }
@@ -183,7 +183,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      }
 --- a/configure
 +++ b/configure
-@@ -15222,9 +15222,9 @@ fi
+@@ -15262,9 +15262,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -197,7 +197,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4698,9 +4698,9 @@ fi
+@@ -4720,9 +4720,9 @@ fi
  dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
  AC_SUBST(PY_ENABLE_SHARED)
  if test x$PLATFORM_TRIPLET = x; then
@@ -211,7 +211,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/setup.py
 +++ b/setup.py
-@@ -649,7 +649,7 @@ class PyBuildExt(build_ext):
+@@ -634,7 +634,7 @@ class PyBuildExt(build_ext):
          # directories (i.e. '.' and 'Include') must be first.  See issue
          # 10520.
          if not CROSS_COMPILING:
@@ -220,7 +220,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
              add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
          # only change this for cross builds for 3.3, issues on Mageia
          if CROSS_COMPILING:
-@@ -953,11 +953,11 @@ class PyBuildExt(build_ext):
+@@ -938,11 +938,11 @@ class PyBuildExt(build_ext):
              elif curses_library:
                  readline_libs.append(curses_library)
              elif self.compiler.find_library_file(self.lib_dirs +
