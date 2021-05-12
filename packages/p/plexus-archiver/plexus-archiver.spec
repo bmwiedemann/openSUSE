@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ BuildRequires:  mvn(org.iq80.snappy:snappy)
 %endif
 %if %{with tests}
 BuildRequires:  ant-junit
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  plexus-classworlds
 BuildRequires:  xbean
 BuildRequires:  xz-java
@@ -93,7 +93,7 @@ rm -r src/test/java/org/codehaus/plexus/archiver/tar/TarSnappyUnArchiverTest.jav
 mkdir -p lib
 build-jar-repository -s lib plexus-containers/plexus-container-default jsr-305 commons-compress commons-io plexus/utils plexus/io
 %if %{with tests}
-build-jar-repository -s lib plexus/classworlds guava20/guava-20.0 xbean/xbean-reflect xz-java
+build-jar-repository -s lib plexus/classworlds guava/guava xbean/xbean-reflect xz-java
 %endif
 %{ant} \
 %if %{without tests}
