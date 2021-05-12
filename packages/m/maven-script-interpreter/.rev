@@ -7,4 +7,13 @@
     <comment>new package</comment>
     <requestid>690926</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f29136d67e9b71efe481a6eba2896f39</srcmd5>
+    <version>1.2</version>
+    <time>1620840736</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy guava20 package
+</comment>
+    <requestid>892420</requestid>
+  </revision>
 </revisionlist>

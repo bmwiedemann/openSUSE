@@ -1,7 +1,7 @@
 #
 # spec file for package maven-script-interpreter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %bcond_with tests
 Name:           maven-script-interpreter
@@ -31,7 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-lib
@@ -84,7 +85,7 @@ build-jar-repository -s lib \
 	atinject \
 	bsh2/bsh \
 	commons-cli \
-	guava20/guava-10.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
 	maven/maven-plugin-api \
