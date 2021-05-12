@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -56,7 +56,7 @@ Requires:       python-setuptools
 Requires:       python-zope.component
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
 BuildArch:      noarch
