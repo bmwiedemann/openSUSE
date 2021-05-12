@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 18:02:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- don't own appdata dir - is provided by filesystem 
+
+-------------------------------------------------------------------
 Thu Apr 15 07:36:06 UTC 2021 - pgajdos@suse.com
 
 - added patches

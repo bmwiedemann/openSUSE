@@ -17,16 +17,13 @@
 
 
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
-
 # Use rpmbuild -D 'BUILD_ORIG 1' to build original code.
 # Use rpmbuild -D 'BUILD_ORIG 1' -D 'BUILD_ORIG_ADDON 1' to build patched build plus original as addon.
-
 %define _name gst-plugins-bad
 %define gst_branch 1.0
 %bcond_with fdk_aac
 %bcond_with faac
 %bcond_with faad
-
 Name:           gstreamer-plugins-bad
 Version:        1.18.4
 Release:        0
@@ -41,7 +38,6 @@ Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 # https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1574
 Patch0:         gstreamer-plugins-bad-openexr3.patch
-
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -128,6 +124,7 @@ Requires(postun):glib2-tools
 Enhances:       gstreamer
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-bad = %{version}
+Obsoletes:      libgstvdpau >= %{version}
 # Disabled - checking for opencv2/bgsegm.hpp... no
 #BuildRequires:  pkgconfig(opencv)
 %if 0%{?suse_version} >= 1500
@@ -176,7 +173,6 @@ BuildRequires:  libfaad-devel
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %endif
 %endif
-Obsoletes:      libgstvdpau >= %{version}
 %if 0%{?BUILD_ORIG}
 %if 0%{?BUILD_ORIG_ADDON}
 Provides:       patched_subset
@@ -648,7 +644,7 @@ if [ -f %{buildroot}%{_datadir}/appdata/gstreamer-plugins-bad.appdata.xml ]; the
   false
 else
   mkdir -p %{buildroot}%{_datadir}/appdata
-  cp %{SOURCE2} %{buildroot}%{_datadir}/appdata/
+  install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/$(basename %{SOURCE2})
 fi
 # end appdata fail test
 
@@ -697,7 +693,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %dir %{_datadir}/gstreamer-%{gst_branch}/presets/
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstFreeverb.prs
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/gstreamer-plugins-bad.appdata.xml
 %{_libdir}/gstreamer-%{gst_branch}/libgstaccurip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmdec.so
@@ -938,12 +933,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoaacenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
+
 %if %{with faac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaac.so
 %endif
+
 %if %{with faad}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %endif
+
 %if %{with fdk_aac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
 %endif
