@@ -50,4 +50,12 @@
   * call correct function in pwenthelper (#53) (forwarded request 882389 from glaubitz)</comment>
     <requestid>882394</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09dc6e06746b8b22011c5327e6453aa9</srcmd5>
+    <version>20210429.00</version>
+    <time>1620840773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892550</requestid>
+  </revision>
 </revisionlist>

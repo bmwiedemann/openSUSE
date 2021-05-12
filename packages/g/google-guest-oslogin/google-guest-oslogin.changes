@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 11 08:22:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210429.00 (bsc#1185848, bsc#1185849)
+  * correct pagetoken in groupsforuser (#59)
+  * resolve self groups last (#58)
+  * support empty groups (#57)
+  * no paginating to find groups (#56)
+  * clear users vector (#55)
+  * correct usage of pagetoken (#54)
+
+-------------------------------------------------------------------
 Wed Mar 31 12:57:04 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210316.00 (bsc#1183414, bsc#1183415)
