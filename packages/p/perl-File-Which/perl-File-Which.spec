@@ -18,7 +18,7 @@
 
 %define cpan_name File-Which
 Name:           perl-File-Which
-Version:        1.24
+Version:        1.27
 Release:        0
 Summary:        Perl implementation of the which utility as an API
 License:        Artistic-1.0 OR GPL-1.0-or-later

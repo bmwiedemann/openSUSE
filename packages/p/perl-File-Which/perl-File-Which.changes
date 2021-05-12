@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May  9 03:06:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.27      2021-05-07 04:54:31 -0600
+    - Production release identical to 1.26_01
+
+  1.26_01   2021-04-27 05:15:20 -0600
+    - Fix bug in test where test files sometimes didn't have
+      execute permissions (gh#31)
+    - Add Env as an explicit test prereq (gh#13, gh#32)
+
+  1.25_01   2021-04-25 07:35:41 -0600
+    - Tests should now work when Perl isn't in the PATH (gh#29, gh#30)
+
+-------------------------------------------------------------------
 Sat Mar 20 03:07:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.24
