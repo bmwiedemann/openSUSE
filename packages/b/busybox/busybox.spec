@@ -17,21 +17,21 @@
 
 
 Name:           busybox
-Version:        1.33.0
+Version:        1.33.1
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
 Group:          System/Base
-URL:            http://www.busybox.net/
-Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
+URL:            https://www.busybox.net/
+Source:         https://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        man.conf
+Source5:        https://busybox.net/downloads/%{name}-%{version}.tar.bz2.sig
+Source6:        https://busybox.net/~vda/vda_pubkey.gpg#/%{name}.keyring
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
-# Compile fix from upstream
-Patch10:        update_passwd_selinux_fix.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -76,7 +76,6 @@ PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch10 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \

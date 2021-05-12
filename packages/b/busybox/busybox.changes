@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  7 19:04:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.33.1:
+  * httpd: fix sendfile
+  * ash: fix HISTFILE corruptio
+  * ash: fix unset variable pattern expansion
+  * traceroute: fix option parsing
+  * gunzip: fix for archive corruption
+- drop update_passwd_selinux_fix.patch, included upstream
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Thu Jan 28 15:22:02 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.33.0

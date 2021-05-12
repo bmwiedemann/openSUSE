@@ -691,4 +691,12 @@
 - update_passwd_selinux_fix.patch upstream compile fix for SELinux (forwarded request 868684 from kukuk)</comment>
     <requestid>868685</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fc65099dff9383083572390dc605a302</srcmd5>
+    <version>1.33.1</version>
+    <time>1620840702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892050</requestid>
+  </revision>
 </revisionlist>
