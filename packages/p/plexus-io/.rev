@@ -15,4 +15,13 @@
     <comment>3.2.0</comment>
     <requestid>750522</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cc8ed3d57b8b6ef1d771fb3ebe88497e</srcmd5>
+    <version>3.2.0</version>
+    <time>1620840740</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build/run tests against the legacy guava20 package
+</comment>
+    <requestid>892422</requestid>
+  </revision>
 </revisionlist>

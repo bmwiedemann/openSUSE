@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 20:09:08 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build/run tests against the legacy guava20 package
+
+-------------------------------------------------------------------
 Sun Nov 24 12:01:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0

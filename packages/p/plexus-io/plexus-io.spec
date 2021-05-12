@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-io
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  xbean
@@ -72,7 +72,7 @@ mkdir -p lib
 build-jar-repository -s lib plexus/utils commons-io jsr-305
 %if %{with tests}
 build-jar-repository -s lib plexus-containers/plexus-container-default plexus/classworlds
-build-jar-repository -s lib guava20/guava-20.0 xbean/xbean-reflect
+build-jar-repository -s lib guava/guava xbean/xbean-reflect
 %endif
 
 %{ant} \
