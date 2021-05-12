@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  atinject
 BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
@@ -118,6 +118,7 @@ Group:          Development/Libraries/Java
 
 %description java
 Descriptor extractor for plugins written in Java.
+
 %package model
 Summary:        Maven Plugin Metadata Model
 Group:          Development/Libraries/Java
@@ -180,7 +181,7 @@ build-jar-repository -s lib \
 	atinject \
 	bsh2/bsh \
 	commons-cli \
-	guava20/guava-10.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
 	jtidy \

@@ -23,4 +23,13 @@
     <comment>Update to 3.6.0</comment>
     <requestid>751524</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1a7c7084ea31717718d02d908318d64d</srcmd5>
+    <version>3.6.0</version>
+    <time>1620840744</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy guava20 package any more
+</comment>
+    <requestid>892418</requestid>
+  </revision>
 </revisionlist>
