@@ -15,4 +15,12 @@
     <comment>Build on architectures that have eclipse only</comment>
     <requestid>818518</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b423fc9e7eee7159ec665abcca14fea9</srcmd5>
+    <version>1.1.5</version>
+    <time>1620840737</time>
+    <user>dimstar_suse</user>
+    <comment>Do not build against guava20</comment>
+    <requestid>892447</requestid>
+  </revision>
 </revisionlist>

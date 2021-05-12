@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 17:44:05 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy version of guava any more
+
+-------------------------------------------------------------------
 Fri Jul  3 09:38:07 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build only on architectures where eclipse is supported
