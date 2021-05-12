@@ -170,4 +170,12 @@ so there is no usability hurdle for existing mutt users.
     <comment></comment>
     <requestid>881320</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>43032d4e196bbbbf6b99d1d03dcee082</srcmd5>
+    <version>20210205</version>
+    <time>1620840766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892512</requestid>
+  </revision>
 </revisionlist>

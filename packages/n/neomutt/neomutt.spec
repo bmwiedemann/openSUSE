@@ -104,7 +104,6 @@ make %{?_smp_mflags}
 %{_bindir}/neomutt
 %{_mandir}/man1/neomutt.1%{?ext_man}
 %{_mandir}/man5/neomuttrc.5%{?ext_man}
-%dir %{_prefix}/libexec
 %dir %{_prefix}/libexec/neomutt
 %{_prefix}/libexec/neomutt/pgpewrap
 %{_prefix}/libexec/neomutt/smime_keys
@@ -117,7 +116,6 @@ make %{?_smp_mflags}
 %doc %{_docdir}/%{name}/manual.txt
 
 %files doc
-%dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README*
 %doc %{_docdir}/%{name}/AUTHORS.md
 %doc %{_docdir}/%{name}/ChangeLog.md
