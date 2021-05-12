@@ -32,6 +32,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
+ExcludeArch:    %{ix86}
 
 %description
 cglm is a C99-compatible version of the previous OpenGL Mathematics

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 22:49:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Exclude ix86, as it will fail
+
+-------------------------------------------------------------------
 Tue May  4 05:47:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim boasting from description.

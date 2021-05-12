@@ -7,4 +7,12 @@
     <comment>I would like to maintain cglm in factory.</comment>
     <requestid>890368</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dad8e48ae1605c59d16dfee1f031788</srcmd5>
+    <version>0.8.2</version>
+    <time>1620840711</time>
+    <user>dimstar_suse</user>
+    <comment>Exclude ix86, as it will fail (optimized for SSE, not available on ix86)</comment>
+    <requestid>892310</requestid>
+  </revision>
 </revisionlist>
