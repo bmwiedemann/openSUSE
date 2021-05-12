@@ -20,7 +20,7 @@
 
 Name:           picotool
 URL:            https://github.com/raspberrypi/picotool
-Version:        0.0~git20210305.21d5eb9
+Version:        0.0~git20210424.a49dc0b
 Release:        0
 Summary:        Tool to inspect RP2040 binaries
 License:        BSD-3-Clause

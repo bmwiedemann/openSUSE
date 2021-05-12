@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  1 08:43:19 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 0.0~git20210424.a49dc0b:
+  * Fix detection of unknown flash-size when saving
+  * Add boot2 to build information
+  * Various typos fixed
+
+-------------------------------------------------------------------
 Thu Apr  8 15:28:26 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update SDK version to 1.1.2
