@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 17:56:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- don't own appdata dir - comes from filesystem rpm 
+
+-------------------------------------------------------------------
 Tue Mar 30 08:59:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.18.4:

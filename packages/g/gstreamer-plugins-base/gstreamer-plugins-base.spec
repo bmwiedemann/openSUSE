@@ -57,9 +57,6 @@ BuildRequires:  python3-xml
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 0.9.1
-%if 0%{?suse_version} < 1550
-BuildRequires:  pkgconfig(cairo)
-%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2) >= 2.0.9
 BuildRequires:  pkgconfig(gbm)
@@ -92,9 +89,6 @@ BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(graphene-1.0)
-%endif
 Requires:       gstreamer >= %{gstreamer_req_version}
 Supplements:    gstreamer
 Conflicts:      gstreamer-plugins-bad < 1.18.1
@@ -102,6 +96,12 @@ Conflicts:      gstreamer-plugins-bad < 1.18.1
 Provides:       gst-plugins-base = %{version}
 Obsoletes:      libgstbadvideo-1_0-0
 Obsoletes:      typelib-1_0-GstFft-1_0 < 1.14.0
+%if 0%{?suse_version} < 1550
+BuildRequires:  pkgconfig(cairo)
+%endif
+%if 0%{?suse_version} >= 1500
+BuildRequires:  pkgconfig(graphene-1.0)
+%endif
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -571,7 +571,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/gst-device-monitor-%{gst_branch}
 %{_bindir}/gst-discoverer-%{gst_branch}
 %{_bindir}/gst-play-%{gst_branch}
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/gstreamer-plugins-base.appdata.xml
 %{_libdir}/gstreamer-%{gst_branch}/libgstadder.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstalsa.so
