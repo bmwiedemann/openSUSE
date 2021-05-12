@@ -562,4 +562,13 @@
     a future release. Please use the built-in module typing instead.</comment>
     <requestid>885405</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>468b56c329d7d38e5a4fc9cc485acf9d</srcmd5>
+    <version>1.15.0</version>
+    <time>1620840751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.15.0
+  * sync with main certbot package</comment>
+    <requestid>892476</requestid>
+  </revision>
 </revisionlist>
