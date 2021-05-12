@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 11:35:32 2021 UTC - shap-staff@suse.de
+
+- Release 1.2.2
+
+  ## Added
+  - Add parsing of the `crm_config` node in the CIB parser. (#190)
+
+  ## Changed
+  - Update the minimum required Go version to 1.14. (#192)
+
+  ## Fixed
+  - Avoid duplicate metric recording errors for non-running OCFS resources. (#191)
+
+-------------------------------------------------------------------
 Wed Dec  2 17:29:46 2020 UTC - shap-staff@suse.de
 
 - Release 1.2.1

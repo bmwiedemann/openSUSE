@@ -2,12 +2,12 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/ClusterLabs/ha_cluster_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">1.2.1</param>
+        <param name="revision">1.2.2</param>
         <param name="exclude">.git</param>
         <param name="exclude">.github</param>
         <param name="exclude">dashboards</param>
         <param name="exclude">packaging/obs/grafana-ha-cluster-dashboards</param>
-        <param name="version">1.2.1+git.1606912430.4fceb77</param>
+        <param name="version">1.2.2+git.1620117406.cf586eb</param>
         <param name="filename">prometheus-ha_cluster_exporter</param>
     </service>
     <service name="set_version" mode="disabled">
