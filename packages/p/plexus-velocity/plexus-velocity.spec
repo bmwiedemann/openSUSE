@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-velocity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
 BuildRequires:  apache-commons-lang
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-utils
 BuildRequires:  xbean
@@ -72,7 +72,7 @@ cp -p %{SOURCE2} LICENSE
 mkdir -p lib
 build-jar-repository -s lib commons-collections plexus-containers/plexus-container-default velocity
 %if %{with tests}
-build-jar-repository -s lib commons-lang guava20/guava-20.0 plexus/classworlds plexus/utils xbean/xbean-reflect
+build-jar-repository -s lib commons-lang guava/guava plexus/classworlds plexus/utils xbean/xbean-reflect
 %endif
 
 %build
