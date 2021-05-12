@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-# tests fail on python2 on Leap 15.3
+%if 0%{?sle_version} == 150300
+# tests fail on python2 on Leap 15.3 and SLE 15 SP3
 %define skip_python2 1
 %endif
 Name:           python-click-plugins
@@ -50,7 +50,6 @@ in a special sub-group, across multiple sub-groups, or some combination.
 %setup -q -n click-plugins-%{version}
 
 %build
-
 %python_build
 
 %install
