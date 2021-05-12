@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 00:10:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- New upstream URL
+- Update to version 0.8.4
+  * Fixed several bugs and compiler warnings
+  * Added support for storing stalonetray config under $XDG_CONFIG_HOME
+- Drop outdated stalonetray-fix-compile-error.diff
+- Add fix-docbook-root.patch
+
+-------------------------------------------------------------------
 Mon Feb 19 19:52:29 UTC 2018 - crrodriguez@opensuse.org
 
 - remove xorg-x11-devel buildrequires 

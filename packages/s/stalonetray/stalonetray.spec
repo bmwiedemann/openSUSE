@@ -1,7 +1,7 @@
 #
 # spec file for package stalonetray
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           stalonetray
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Stand-alone freedesktop.org system tray
-#
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-#
-Url:            http://stalonetray.sourceforge.net/
-Source:         http://downloads.sourceforge.net/stalonetray/stalonetray-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM stalonetray-fix-compile-error.diff bernhard@bwalle.de
-Patch0:         stalonetray-fix-compile-error.diff
+URL:            https://kolbusa.github.io/stalonetray/
+Source:         https://github.com/kolbusa/stalonetray/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-docbook-root.patch -- Fix docbook stylesheet root
+Patch0:         fix-docbook-root.patch
+BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xpm)
-#
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Stalonetray is a stand-alone freedesktop.org and KDE system tray (notification
@@ -42,19 +41,20 @@ support and minimal dependencies: an X11 lib only. Stalonetray works with
 virtually any EWMH-compliant window manager.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build stalonetrayrc.sample
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc README COPYING AUTHORS stalonetrayrc.sample
+%license COPYING
+%doc AUTHORS BUGS stalonetrayrc.sample
 %{_bindir}/stalonetray
-%{_mandir}/man1/stalonetray.1%{ext_man}
+%{_mandir}/man1/stalonetray.1%{?ext_man}
 
+%changelog

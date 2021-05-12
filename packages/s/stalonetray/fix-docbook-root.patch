@@ -1,0 +1,12 @@
+diff -Nur stalonetray-0.8.4/configure.ac new/configure.ac
+--- stalonetray-0.8.4/configure.ac	2021-02-07 16:41:52.000000000 +0100
++++ new/configure.ac	2021-05-12 03:10:06.359178117 +0200
+@@ -177,7 +177,7 @@
+ AC_DEFUN([AX_CHECK_DOCBOOK], [
+     XSLTPROC_FLAGS=--nonet
+     DOCBOOK_ROOT=
+-    for i in /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/xml/docbook/stylesheet/docbook-xs /usr/share/sgml/docbook/xsl-stylesheets/ /usr/local/share/xsl/docbook;
++    for i in /usr/share/xml/docbook/stylesheet/nwalsh/current /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/xml/docbook/stylesheet/docbook-xs /usr/share/sgml/docbook/xsl-stylesheets/ /usr/local/share/xsl/docbook;
+     do
+         if test -d "$i"; then
+             DOCBOOK_ROOT=$i
