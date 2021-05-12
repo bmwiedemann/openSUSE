@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Can't assume non-existence of python38 macros in Leap.
+  gh#openSUSE/python-rpm-macros#107
+  Test for suse_version instead. Only Tumbleweed has and needs the
+  python_subpackage_only support.
+
+-------------------------------------------------------------------
 Mon Jan 18 21:31:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9:
