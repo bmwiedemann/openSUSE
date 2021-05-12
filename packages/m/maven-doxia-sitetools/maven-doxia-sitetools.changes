@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 13:08:02 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 any more
+
+-------------------------------------------------------------------
 Wed Mar 11 11:41:31 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.2

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia-sitetools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-artifact
@@ -124,7 +124,7 @@ build-jar-repository -s lib \
 	apache-commons-lang3 \
 	commons-cli \
 	commons-io \
-	guava20/guava-20.0 \
+	guava/guava \
 	jdom2/jdom2 \
 	maven-doxia/doxia-core \
 	maven-doxia/doxia-logging-api \
