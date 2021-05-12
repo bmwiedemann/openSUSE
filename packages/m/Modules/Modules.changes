@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu May  6 15:40:13 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
+
+- Update to upstream version 4.7.1
+  * Doc: clarify the license terms used by the project. (fix issue #389) 
+  * Align all files from the Modules project under the GPLv2+ license. 
+    Scripts and libraries that were previously licensed with GPLv3+ have 
+    been moved to GPLv2+ with the consent of their respective copyright 
+    holders. (fix issue #389) 
+  * Revert "Install: have configure script assume the . dot directory 
+    when invoked without the prepended ./" as consent was not obtained 
+    from author to relicense the contribution to GPLv2+. 
+  * Doc: fixes few typos in module(1) and modulefile(4). 
+  * Update the sh-to-mod mechanism to support version 3.2 of the fish 
+    shell. Fish 3.2 introduces the . builtin command that should be 
+    regexp-escaped when determining the shell functions or aliases 
+    defined by the script analyzed by sh-to-mod. 
+  * Vim: update addon files to highlight modulefile variables ModuleTool, 
+    ModuleToolVersion and ModulesCurrentModulefile. 
+  * Doc: update the description and default value of the 
+    --with-dark-background-colors and --with-light-background-colors 
+    installation options. 
+  * Doc: add description of changes that occurred on versions 4.6 and 4.7 
+    for the --with-dark-background-colors and --with-light-background-colors 
+    installation options and for the MODULES_COLORS environment variable. 
+  * Doc: correct the default value of the --with-tag-abbrev installation 
+    option. 
+  * Doc: add Sticky modules cookbook recipe. 
+- Correct package license to GPLv2+, matching upstream.
+
+-------------------------------------------------------------------
 Mon Mar 22 18:48:48 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
 
 - Mark the download service as disabled to meet factory submission

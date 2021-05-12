@@ -23,10 +23,10 @@ BuildRequires:  less
 BuildRequires:  procps
 BuildRequires:  tcl-devel
 URL:            http://modules.sourceforge.net/
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Change environment at runtime
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        GPL-2.0-or-later
 Group:          System/Management
 Requires:       python3
 Requires:       tcl
