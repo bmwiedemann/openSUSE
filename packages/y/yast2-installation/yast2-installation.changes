@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 29 15:59:52 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+- Allow memory profiling of the main installer process, via
+  boot parameters: (bsc#1182649)
+  - MASSIF=1 enables Valgrind/Massif (C/C++ level)
+  - MEMORY_PROFILER=1 enables Ruby level
+- 4.4.6
+
+-------------------------------------------------------------------
 Tue Apr 27 09:23:17 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Remove Yast::LanItems dependency (bsc#1185338)
