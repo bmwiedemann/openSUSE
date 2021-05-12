@@ -1,7 +1,7 @@
 #
 # spec file for package gradle-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ BuildRequires:  ecj
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-gson
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  hawtjni-runtime
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -152,7 +152,7 @@ Requires:       ecj
 Requires:       glassfish-servlet-api
 Requires:       google-gson
 Requires:       google-guice
-Requires:       guava20
+Requires:       guava
 Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
@@ -242,7 +242,6 @@ Bootstrap version of the groovy-all.jar needed by xmvn-connector-gradle
 
 This package is useful only for bootstrapping a repository that does
 not have yet gradle, groovy and gpars built.
-
 
 %package -n gpars-bootstrap
 Version:        %{gpars_version}

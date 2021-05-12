@@ -39,4 +39,13 @@
     <comment>Regenerate with a new groovy version</comment>
     <requestid>853704</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>124b21480aebbb4393dba79962e0b655</srcmd5>
+    <version>unknown</version>
+    <time>1620840729</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate to account for guava upgrade to 30.1.1
+</comment>
+    <requestid>892405</requestid>
+  </revision>
 </revisionlist>
