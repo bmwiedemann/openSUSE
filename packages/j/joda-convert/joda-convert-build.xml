@@ -30,14 +30,14 @@
   <property name="compiler.source" value="1.6"/>
   <property name="compiler.target" value="${compiler.source}"/>
   
-  <property name="guava20.jar" value="lib/guava20.jar"/>
+  <property name="guava.jar" value="lib/guava.jar"/>
 
   <!-- ====================================================================== -->
   <!-- Defining classpaths                                                    -->
   <!-- ====================================================================== -->
 
   <path id="build.classpath">
-    <pathelement location="${guava20.jar}"/>
+    <pathelement location="${guava.jar}"/>
   </path>
 
   <!-- ====================================================================== -->

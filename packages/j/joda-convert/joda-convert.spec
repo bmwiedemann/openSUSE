@@ -1,7 +1,7 @@
 #
 # spec file for package joda-convert
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -53,7 +53,7 @@ dos2unix *.txt
 
 %build
 %{ant} \
-  -Dguava20.jar=%{_javadir}/guava20/guava-20.0.jar \
+  -Dguava.jar=%{_javadir}/guava/guava.jar \
   clean jar javadoc
 
 %install
