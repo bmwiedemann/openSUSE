@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  9 03:10:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.83 Sat 08 May 2021 11:51:32 PM CEST
+   - Recognize tied variables (PR#101 tinita)
+   - Add license file from included libyaml code (PR#102 tinita)
+
+-------------------------------------------------------------------
 Sun May  3 03:14:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.82
