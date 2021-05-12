@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 15:22:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 package any more
+
+-------------------------------------------------------------------
 Mon Apr 26 14:55:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -35,7 +35,7 @@ BuildRequires:  atinject
 BuildRequires:  easymock
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  junit
@@ -118,7 +118,7 @@ build-jar-repository -s lib \
 	commons-cli \
 	commons-io \
 	easymock \
-	guava20/guava-10.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
 	junit \
