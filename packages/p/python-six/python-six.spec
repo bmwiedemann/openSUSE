@@ -1,7 +1,7 @@
 #
-# spec file for package python-six
+# spec file for package python-six-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define psuffix %{nil}
 %endif
 Name:           python-six%{psuffix}
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
 License:        MIT
@@ -106,6 +106,7 @@ fi
 %pycache_only %{python_sitelib}/__pycache__/*
 %{python_sitelib}/six-%{version}-py*.egg-info
 %else
+
 %files -n python-six-doc
 %license LICENSE
 %doc documentation/_build/html
