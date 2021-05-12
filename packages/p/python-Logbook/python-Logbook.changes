@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 18:20:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add logbook-pr316-sqlalchemy-count.patch for compatibility with
+  SQLAlchemy 1.4 -- gh#getlogbook/logbook#316
+
+-------------------------------------------------------------------
 Sat Mar 14 08:12:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

@@ -1,0 +1,25 @@
+From d7ab99aaf12169dfa8092502a155273cfe483738 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 7 May 2021 20:16:45 +0200
+Subject: [PATCH] replace removed SQLAlchemy Table.count() method
+
+---
+ logbook/ticketing.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/logbook/ticketing.py b/logbook/ticketing.py
+index 7321fa3..4f94ab8 100644
+--- a/logbook/ticketing.py
++++ b/logbook/ticketing.py
+@@ -243,7 +243,10 @@ def record_ticket(self, record, data, hash, app_id):
+ 
+     def count_tickets(self):
+         """Returns the number of tickets."""
+-        return self.engine.execute(self.tickets.count()).fetchone()[0]
++        from sqlalchemy import select, func
++
++        count_stmt = select([func.count()]).select_from(self.tickets)
++        return self.engine.execute(count_stmt).fetchone()[0]
+ 
+     def get_tickets(self, order_by='-last_occurrence_time', limit=50,
+                     offset=0):
