@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-i18n
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  xbean
 BuildConflicts: java-devel >= 9
 %endif
@@ -78,7 +78,7 @@ cp %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib plexus/utils plexus-containers/plexus-container-default
 %if %{with tests}
-build-jar-repository -s lib guava20/guava-20.0 xbean/xbean-reflect plexus/classworlds
+build-jar-repository -s lib guava/guava xbean/xbean-reflect plexus/classworlds
 %endif
 %{ant} \
 %if %{without tests}
