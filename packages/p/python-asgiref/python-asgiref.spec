@@ -19,19 +19,22 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asgiref
-Version:        3.3.1
+Version:        3.3.4
 Release:        0
 Summary:        ASGI specs, helper code, and adapters
 License:        BSD-3-Clause
 URL:            https://github.com/django/asgiref/
 Source:         https://files.pythonhosted.org/packages/source/a/asgiref/asgiref-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module pytest >= 4.3.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.10.0}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python
+%if 0%{python_version_nodots} < 38
+Requires:       python-typing_extensions
+%endif
 BuildArch:      noarch
 %python_subpackages
 

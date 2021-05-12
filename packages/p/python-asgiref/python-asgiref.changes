@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  5 17:30:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.3.4
+  * The async_to_sync type error is now a warning due the
+    high false negative rate when trying to detect
+    coroutine-returning callables in Python.
+- Release to 3.3.3
+  * The sync conversion functions now correctly detect
+    functools.partial and other wrappers around async
+    functions on earlier Python releases.
+- Release to 3.3.2
+  * SyncToAsync now takes an optional "executor" argument if
+    you want to supply your own executor rather than using
+    the built-in one.
+  * async_to_sync and sync_to_async now check their
+    arguments are functions of the correct type.
+  * Raising CancelledError inside a SyncToAsync function no
+    longer stops a future call from functioning.
+  * ThreadSensitive now provides context hooks/override
+    options so it can be made to be sensitive in a unit
+    smaller than threads (e.g. per request)
+
+-------------------------------------------------------------------
 Thu Jan 14 04:31:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.3.1
