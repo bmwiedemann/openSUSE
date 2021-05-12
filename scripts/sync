@@ -16,7 +16,7 @@ test -e ${p}_meta || osc co -M "$p" -o ${p}_meta
 osc up "${p}_meta"
 rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
-lockfile -l 600 .pkglock
+lockfile -l 3600 .pkglock
 tmpgit=.sync-tmp-git
 mkdir -p $tmpgit
 find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -al --parent ARGS $tmpgit

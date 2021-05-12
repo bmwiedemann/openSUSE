@@ -87,7 +87,7 @@ for line in watchtail(sys.stdin):
     except:
         pass
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
-    subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
+    subprocess.call(["lockfile", "-l", "3600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
     mappedpkg = pkgmap(package)
     subprocess.call(["git", "add", mappedpkg], shell=False)
