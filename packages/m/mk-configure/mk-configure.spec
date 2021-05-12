@@ -1,7 +1,7 @@
 #
 # spec file for package mk-configure
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,10 @@ Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
 Group:          Development/Tools/Building
-Url:            https://github.com/cheusov/mk-configure/
+URL:            https://github.com/cheusov/mk-configure/
 Source:         https://sourceforge.net/projects/mk-configure/files/mk-configure/mk-configure-%{version}/%{name}-%{version}.tar.gz
 Source1:        mkcmake.macros
 Source9:        mk-configure-rpmlintrc
-
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -39,8 +38,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  info
-BuildRequires:  lua-devel
 BuildRequires:  libbsd-devel
+BuildRequires:  lua-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -68,10 +67,10 @@ Mk-configure package: examples and presentation.
 
 %define env \
         unset MAKEFLAGS \
-        export USE_NM=/usr/bin/nm \
-        export USE_INSTALL=/usr/bin/install \
-        export USE_AWK=/usr/bin/awk \
-        export USE_ID=/usr/bin/id \
+        export USE_NM=%{_bindir}/nm \
+        export USE_INSTALL=%{_bindir}/install \
+        export USE_AWK=%{_bindir}/awk \
+        export USE_ID=%{_bindir}/id \
         export USE_CC_COMPILERS='gcc clang' \
         export USE_CXX_COMPILERS='g++ clang++' \
         export PREFIX=%{_prefix} \
@@ -107,7 +106,6 @@ bmake -k cleandir-examples
 bmake -k cleandir-tests
 
 %files
-%defattr(-,root,root)
 %doc README.md doc/FAQ doc/NEWS doc/TODO
 %license doc/LICENSE
 %{_bindir}/mkc*
@@ -115,11 +113,9 @@ bmake -k cleandir-tests
 %{_mandir}/man1/*
 %{_mandir}/man7/*
 %config %{_sysconfdir}/rpm/macros.mkcmake
-%dir %{_prefix}/libexec
-%{_prefix}/libexec/mk-configure
+%{_libexecdir}/mk-configure
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}-doc/examples
 %doc presentation/presentation.pdf
 

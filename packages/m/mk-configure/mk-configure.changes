@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 07:48:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file stop owning libexecdir (provided by filesystem rpm (bsc#1184786) 
+
+-------------------------------------------------------------------
 Thu Apr 8 19:15:11 UTC 2021 - vle@gmx.net
 
 - Update to mk-configure-0.37.0
