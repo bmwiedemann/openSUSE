@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 12 02:26:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.0:
+  * Use compact representation instead of key-value pairs for common
+    EXIF data
+  * Add --window-id <windowid> option (draw to an existing window)
+  * Add --zoom-step <percent> option (specify zoom step size)
+  * Pass gopher:// and gophers:// URLs to libcurl
+  * Fix --reload / --auto-reload reloading the wrong directory when
+    using --start-at and no file arguments or filelists have been
+    specified
+  * Fix Ctrl+key causing unintended behaviour when controlling feh
+    via stdin
+  * Fix high CPU usage when closing stdin after starting feh from
+    a terminal
+
+-------------------------------------------------------------------
 Tue Jan 26 07:14:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.3:
