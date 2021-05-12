@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  6 15:27:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.2.0.
+- Removed upstreamed patches:
+  - 0001-Fix-tests-with-newer-dulwich.patch
+  - 0002-Fix-more-tests.patch
+  - 7531_7530.diff
+  - 7551_7550.diff
+- Skip failing tests mentioned in lp#1927523.
+
+-------------------------------------------------------------------
 Sun Dec  6 21:26:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require the full python3 stdlib for sqlite3 import

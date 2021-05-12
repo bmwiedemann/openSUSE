@@ -1,7 +1,7 @@
 #
 # spec file for package breezy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,12 @@
 
 
 Name:           breezy
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Friendly distributed version control system
 License:        GPL-2.0-or-later
 URL:            https://www.breezy-vcs.org/
 Source:         https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 7531_7530.diff lp#1882589 mcepl@suse.com
-# Fix handling of a particular kind of broken committer id
-Patch1:         7531_7530.diff
-# PATCH-FIX-UPSTREAM 7551_7550.diff lp#1890354 alarrosa@suse.com
-# Add support for new push interface in Dulwich >= 0.20.4
-Patch2:         7551_7550.diff
-# PATCH-FIX-UPSTREAM 0001-Fix-tests-with-newer-dulwich.patch lp#1890354 alarrosa@suse.com
-Patch3:         0001-Fix-tests-with-newer-dulwich.patch
-# PATCH-FIX-UPSTREAM 0002-Fix-more-tests.patch lp#1890354 alarrosa@suse.com
-Patch4:         0002-Fix-more-tests.patch
 # PATCH-FIX-OPENSUSE skip_resource.setrlimit.patch lp#1883125 mcepl@suse.com
 # Don't run resource.setrlimit, which is not allowed in OBS
 Patch0:         skip_resource.setrlimit.patch
@@ -88,6 +78,7 @@ export LANG=en_US.UTF8
 # test_pack_revision - endswith first arg must be bytes or a tuple of bytes, not str
 # test_ancient_{ctime,mtime} - broken on aarch64 %%arm ppc ppc64le
 # test_distant_{ctime,mtime} - broken on %%arm
+# test_plugins lp#1927523
 %{buildroot}%{_bindir}/bzr selftest -v --parallel=fork \
   -Oselftest.timeout=6000 -x bash_completion \
   -x breezy.tests.test_transport.TestSSHConnections.test_bzr_connect_to_bzr_ssh -x test_export_pot \
@@ -103,7 +94,9 @@ export LANG=en_US.UTF8
   -x breezy.tests.test_xml.TestSerializer.test_pack_revision_5 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v8 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v7 \
-  -x breezy.tests.test_xml.TestSerializer.test_revision_text_v6
+  -x breezy.tests.test_xml.TestSerializer.test_revision_text_v6 \
+  -x breezy.tests.test_plugins.TestPlugins \
+  -x breezy.tests.test_plugins.TestLoadingPlugins.test_plugin_with_error
 
 %files
 %doc NEWS README.rst README_BDIST_RPM
