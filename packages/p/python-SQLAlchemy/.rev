@@ -772,4 +772,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>874679</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>f170133e30fca6cd6bbf338f2b5c6f90</srcmd5>
+    <version>1.4.13</version>
+    <time>1620840670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891235</requestid>
+  </revision>
 </revisionlist>

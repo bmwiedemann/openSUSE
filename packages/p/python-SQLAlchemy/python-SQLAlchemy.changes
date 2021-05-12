@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Thu May  6 08:22:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove %ifpython2 (python2 flavor is disabled).
+- Do not use %if %{python_version_nodots} for BuildRequires.
+
+-------------------------------------------------------------------
+Wed May  5 16:56:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove broken %ifpython3 since the python2 flavor is disabled
+  anyway.
+
+-------------------------------------------------------------------
+Tue May  4 08:30:21 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 1.4.13:
+  orm
+  * Fixed regression in selectinload loader strategy that would
+    cause it to cache its internal state incorrectly when handling
+    relationships that join across more than one column, such as
+    when using a composite foreign key. The invalid caching would
+    then cause other unrelated loader operations to fail.
+    References: #6410
+  * Fixed regression where Query.filter_by() would not work if the
+    lead entity were a SQL function or other expression derived
+    from the primary entity in question, rather than a simple
+    entity or column of that entity. Additionally, improved the
+    behavior of Select.filter_by() overall to work with column
+    expressions even in a non-ORM context. References: #6414
+  * Fixed regression where using selectinload() and subqueryload()
+    to load a two-level-deep path would lead to an attribute error.
+    References: #6419
+  * Fixed regression where using the noload() loader strategy in
+    conjunction with a “dynamic” relationship would lead to an
+    attribute error as the noload strategy would attempt to apply
+    itself to the dynamic loader. References: #6420
+  engine
+  * Restored a legacy transactional behavior that was inadvertently
+    removed from the Connection as it was never tested as a known
+    use case in previous versions, where calling upon the
+    Connection.begin_nested() method, when no transaction is
+    present, does not create a SAVEPOINT at all and instead starts
+    an outer transaction, returning a RootTransaction object
+    instead of a NestedTransaction object. This RootTransaction
+    then will emit a real COMMIT on the database connection when
+    committed. Previously, the 2.0 style behavior was present in
+    all cases that would autobegin a transaction but not commit
+    it, which is a behavioral change. When using a 2.0 style
+    connection object, the behavior is unchanged from previous
+    1.4 versions; calling Connection.begin_nested() will
+    “autobegin” the outer transaction if not already present,
+    and then as instructed emit a SAVEPOINT, returning the
+    NestedTransaction object. The outer transaction is committed
+    by calling upon Connection.commit(), as is “commit-as-you-go”
+    style usage.
+    In non-“future” mode, while the old behavior is restored,
+    it also emits a 2.0 deprecation warning as this is a legacy
+    behavior. References: #6408
+  asyncio
+  * Fixed a regression introduced by #6337 that would create an
+    asyncio.Lock which could be attached to the wrong loop when
+    instantiating the async engine before any asyncio loop was
+    started, leading to an asyncio error message when attempting
+    to use the engine under certain circumstances.
+    References: #6409
+  postgresql
+  * Add support for server side cursors in the pg8000 dialect
+    for PostgreSQL. This allows use of the
+    Connection.execution_options.stream_results option.
+    References: #6198
+
+-------------------------------------------------------------------
+Tue May  4 07:40:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Removed use of pytest-xdist which is giving intermitent
+  failed builds with internal errors like:
+  INTERNALERROR> E             RuntimeError: There is no current
+  event loop in thread 'Dummy-1'.
+  [...]
+  INTERNALERROR> /usr/lib/python3.9/site-packages/xdist/
+  dsession.py:190: AssertionError
+  [gw6] node down: Not properly terminated
+
+-------------------------------------------------------------------
+Fri Apr 30 09:06:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.4.12:
+  * There are many changes between the 1.4 and 1.3 branch so please
+    check the full list at:
+    https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html
+
+- Update to the 1.4 branch:
+  Version 1.4 is taking on a different focus than other SQLAlchemy
+  releases in that it is in many ways attempting to serve as a
+  potential migration point for a more dramatic series of API
+  changes currently planned for release 2.0 of SQLAlchemy.
+  * Python 3.6 is the minimum Python 3 version; Python 2.7 still
+    supported
+  * ORM Query is internally unified with select, update, delete;
+    2.0 style execution available.
+  * Transparent SQL Compilation Caching added to All DQL,
+    DML Statements in Core, ORM.
+  * Declarative is now integrated into the ORM with new features
+  * Python Dataclasses, attrs Supported w/ Declarative,
+    Imperative Mappings.
+  * Asynchronous IO Support for Core and ORM
+  * Many Core and ORM statement objects now perform much of their
+    construction and validation in the compile phase
+  * Repaired internal importing conventions such that code linters
+    may work correctly
+  * Support for SQL Regular Expression operators
+  * SQLAlchemy 2.0 Deprecations Mode
+  * API and Behavioral Changes - Core
+    - A SELECT statement is no longer implicitly considered to be
+      a FROM clause
+    - select().join() and outerjoin() add JOIN criteria to the
+      current query, rather than creating a subquery
+    - The URL object is now immutable
+    - Changes to CreateEnginePlugin
+    - select(), case() now accept positional expressions
+    - All IN expressions render parameters for each value in the
+      list on the fly (e.g. expanding parameters)
+    - Built-in FROM linting will warn for any potential cartesian
+      products in a SELECT statement
+    - New Result object
+    - RowProxy is no longer a “proxy”; is now called Row and
+      behaves like an enhanced named tuple
+    - Rationale: To behave more like a named tuple rather than
+      a mapping
+    - Proxying behavior goes away, was also unnecessary in
+      modern usage
+    - SELECT objects and derived FROM clauses allow for duplicate
+      columns and column labels
+    - Improved column labeling for simple column expressions using
+      CAST or similar
+    - New "post compile" bound parameters used for LIMIT/OFFSET
+      in Oracle, SQL Server
+    - Connection-level transactions can now be inactive based on
+      subtransaction
+    - Enum and Boolean datatypes no longer default to "create
+      constraint"
+  * New Features - ORM
+    - Raiseload for Columns
+    - ORM Batch inserts with psycopg2 now batch statements with
+      RETURNING in most cases
+    - ORM Bulk Update and Delete use RETURNING for "fetch"
+      strategy when available
+  * Behavioral Changes - ORM
+    - The "KeyedTuple" object returned by Query is replaced by Row
+    - Session features new “autobegin” behavior
+    - Viewonly relationships don’t synchronize backrefs
+    - cascade_backrefs behavior deprecated for removal in 2.0
+    - Eager loaders emit during unexpire operations
+    - Accessing an uninitialized collection attribute on a
+      transient object no longer mutates __dict__
+    - The "New instance conflicts with existing identity" error
+      is now a warning
+    - Persistence-related cascade operations disallowed with
+      viewonly=True
+    - Stricter behavior when querying inheritance mappings using
+      custom queries
+  * Dialect Changes
+    - psycopg2 version 2.7 or higher is required for the
+      PostgreSQL psycopg2 dialect
+    - psycopg2 dialect no longer has limitations regarding bound
+      parameter names
+    - psycopg2 dialect features "execute_values" with RETURNING
+      for INSERT statements by default
+    - Removed “join rewriting” logic from SQLite dialect;
+      updated imports
+    - Added Sequence support for MariaDB 10.3
+    - Added Sequence support distinct from IDENTITY to SQL Server
+  * For an explanation of each of those changes, check
+    - https://docs.sqlalchemy.org/en/14/changelog/migration_14.html
+
+- For the full list of changes in each revision in the 1.4 branch
+  please read:
+  * https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html
+
+- Do not build the python2 flavor. Python 2.7 is supposed to be
+  supported but currently fails to build.
+
+- Rebase patch:
+  * tests_overcome_bpo42967.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 17:27:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add tests_overcome_bpo42967.patch to over effects of bpo#42967,

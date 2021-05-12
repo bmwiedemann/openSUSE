@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.3.23
+Version:        1.4.13
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -37,17 +38,18 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
+%if %{python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
+Requires:       python-greenlet
 Provides:       python-sqlalchemy = %{version}
 Obsoletes:      python-sqlalchemy < %{version}
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pytest >= 4.4.0}
-BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
-%ifpython2
-Obsoletes:      %{oldpython}-sqlalchemy < %{version}
-Provides:       %{oldpython}-sqlalchemy = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -85,7 +87,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %check
 # One test fails on Python 3.6
 # packaging.version.InvalidVersion: Invalid version: 'SQLAlchemy'
-%pytest_arch -n auto -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
+%pytest_arch -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
 
 %files %{python_files}
 %license LICENSE

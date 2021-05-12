@@ -56,10 +56,10 @@
 @@ -164,7 +164,8 @@ class ParseConnectTest(fixtures.TestBase
          u = url.make_url(
              "mssql+pyodbc://@server_name/db_name?"
-             "driver=ODBC+Driver+17+for+SQL+Server;"
+             "driver=ODBC+Driver+17+for+SQL+Server&"
 -            "authentication=ActiveDirectoryIntegrated"
 +            "authentication=ActiveDirectoryIntegrated",
-+            separator=';'
++            separator='&'
          )
          connection = dialect.create_connect_args(u)
          eq_(connection[1], {})
