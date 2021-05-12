@@ -17,15 +17,14 @@
 
 
 Name:           firetools
-Version:        0.9.62
+Version:        0.9.64
 Release:        0
 Summary:        GUI for Firajail security sandbox
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            https://firejail.wordpress.com/
+URL:            https://firejailtools.wordpress.com
 Source0:        https://downloads.sourceforge.net/project/firejail/firetools/firetools-%{version}.tar.xz
 Source1:        https://downloads.sourceforge.net/project/firejail/firetools/firetools-%{version}.tar.xz.asc
-Patch:          firetools-0.9.62-fail_linking.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

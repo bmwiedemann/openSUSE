@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 12 02:41:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.64
+  * more fdns support
+  * support for firejail version 0.9.64
+  * bugfixes
+- Drop fixed firetools-0.9.62-fail_linking.patch
+
+-------------------------------------------------------------------
 Wed Feb 10 23:00:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Use a few more contemporary macros.
