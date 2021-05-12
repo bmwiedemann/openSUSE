@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 10 21:11:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.21
+  * Fix issue with empty project variable name. Fixes #3162
+
+-------------------------------------------------------------------
 Fri Apr  9 09:30:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.20
