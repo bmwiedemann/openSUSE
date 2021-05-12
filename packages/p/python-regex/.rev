@@ -94,4 +94,15 @@
   * licensing change to Apache-2.0</comment>
     <requestid>878762</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60ee9588743afdca56b8f5603aeb2b78</srcmd5>
+    <version>2021.4.4</version>
+    <time>1620840678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.4.4:
+  * Wheels for arm64 mac os
+  * Fix fuzzy matching with wrong distance
+  * Fix regex fails with a quantified backreference</comment>
+    <requestid>891881</requestid>
+  </revision>
 </revisionlist>

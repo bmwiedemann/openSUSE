@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  9 14:40:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.4.4:
+  * Wheels for arm64 mac os
+  * Fix fuzzy matching with wrong distance
+  * Fix regex fails with a quantified backreference
+
+-------------------------------------------------------------------
 Sat Mar 13 14:14:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2020.11.13:
