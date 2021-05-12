@@ -1,7 +1,7 @@
 #
 # spec file for package libbytesize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define somajor 1
 %define libname %{name}%{somajor}
 Name:           libbytesize
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only

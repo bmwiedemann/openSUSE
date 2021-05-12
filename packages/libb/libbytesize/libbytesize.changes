@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 30 00:02:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * translation updates
+  * tools: Read input from stdin when not running in a tty
+  * Add support to ppc64le for debian build
+  * testsuite fixes
+
+-------------------------------------------------------------------
 Sun Aug 16 18:51:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.4:

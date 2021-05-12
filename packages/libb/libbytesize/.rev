@@ -60,4 +60,12 @@
   * Only support modulo between two Size instances</comment>
     <requestid>827096</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b2057fc7774dcdf65f348ebba5d60e4</srcmd5>
+    <version>2.5</version>
+    <time>1620840690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891865</requestid>
+  </revision>
 </revisionlist>
