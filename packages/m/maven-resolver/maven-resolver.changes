@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 15:11:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build/run the tests against the legacy guava20 package
+
+-------------------------------------------------------------------
 Mon Apr 26 14:48:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.2

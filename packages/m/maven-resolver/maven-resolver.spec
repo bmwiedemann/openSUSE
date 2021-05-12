@@ -50,7 +50,7 @@ BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
 BuildRequires:  cglib
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  mockito
 BuildRequires:  objectweb-asm
 BuildRequires:  objenesis
@@ -205,7 +205,7 @@ build-jar-repository -s lib \
 %if %{with tests}
 build-jar-repository -s lib \
   cglib/cglib \
-  guava20/guava-20.0 \
+  guava/guava \
   mockito/mockito-core \
   objectweb-asm/asm \
   objenesis/objenesis \
