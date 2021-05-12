@@ -2956,4 +2956,15 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>889097</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a1759b33c1b29365c9cce330e5c1f838</srcmd5>
+    <version>3.6.13</version>
+    <time>1620840664</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to close the import_failed.map file after the exception
+  has been raised in order to avoid ResourceWarnings when the
+  failing import is part of a try...except block.
+</comment>
+    <requestid>889849</requestid>
+  </revision>
 </revisionlist>

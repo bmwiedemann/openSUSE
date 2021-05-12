@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  2 09:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make sure to close the import_failed.map file after the exception
+  has been raised in order to avoid ResourceWarnings when the
+  failing import is part of a try...except block.
+
+-------------------------------------------------------------------
 Tue Apr 27 16:56:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2021-3426-inf-disclosure-pydoc-getfile.patch to remove
