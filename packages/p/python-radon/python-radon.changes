@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  7 10:50:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.5.0
+  * Add `--md` option to `cc` command to export results as Markdown
+  * Add async function support to Halstead visitor
+  * Use utf-8 as the default encoding on Python 3.0+
+  * Allow custom config file path through the RADONCFG env var
+  * Move `Flake8Checker` to separate, isolated module
+  * Separate `flake8-polyfill` to extra requirements
+  * Fix for Python 2.7
+
+-------------------------------------------------------------------
 Tue Jan 28 15:05:19 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.1.0: Support Python 3.8
