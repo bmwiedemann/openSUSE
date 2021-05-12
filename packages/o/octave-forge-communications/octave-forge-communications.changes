@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  8 15:02:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.3:
+  * The following functions are new: berconfint, bin2gray,
+    finddelay, rcosfir.
+  * The function `poly2trellis' now supports feedback connections.
+  * Fixed a bug in 'de2bi' that gave an error when only specifying
+    input decimal and MSB direction, and also improved Matlab
+    compatibility of input option handling.
+
+-------------------------------------------------------------------
 Sun Feb  9 07:15:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.2.2
