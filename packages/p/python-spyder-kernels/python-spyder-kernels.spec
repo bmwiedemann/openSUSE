@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-spyder-kernels
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT

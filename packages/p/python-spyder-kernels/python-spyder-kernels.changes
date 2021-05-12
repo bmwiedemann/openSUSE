@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 21:22:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.2
+  * PR 289 - PR: Fix setting tight layout in inline figures
+  * PR 287 - PR: Close comm on shutdown
+  * PR 282 - PR: Fix numpy.complex deprecation warning in tests
+
+-------------------------------------------------------------------
 Thu Apr  8 19:27:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.0.1
