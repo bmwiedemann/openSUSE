@@ -18,15 +18,13 @@
 
 %define         squidlibexecdir %{_libexecdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
-
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %define         squidhelperdir %{squidlibexecdir}
 %else
 %define         squidhelperdir %{_sbindir}
 %endif
-
 Name:           squid
-Version:        4.14
+Version:        4.15
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -63,13 +61,6 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  samba-winbind
 BuildRequires:  sharutils
-%if 0%{?suse_version} >= 1500
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
-%sysusers_requires
-%else
-Requires(pre):  shadow
-%endif
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(kdb)
@@ -85,6 +76,13 @@ Provides:       http_proxy
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
 %{?systemd_ordering}
+%if 0%{?suse_version} >= 1500
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%sysusers_requires
+%else
+Requires(pre):  shadow
+%endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libnsl-devel
 %endif
@@ -155,7 +153,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--disable-arch-native \
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
-make %{?_smp_mflags} -O SAMBAPREFIX=%{_prefix}
+%make_build -O SAMBAPREFIX=%{_prefix}
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
 %endif
@@ -227,11 +225,12 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %check
 # Fails in chroot environment
-make check
+%make_build check
 
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
+
 %pre
 # we need this group for /usr/sbin/pinger
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}

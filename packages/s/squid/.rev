@@ -924,4 +924,12 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>870771</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>9c68185a02b217aacc0cd329e9c45b17</srcmd5>
+    <version>4.15</version>
+    <time>1620840762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892494</requestid>
+  </revision>
 </revisionlist>
