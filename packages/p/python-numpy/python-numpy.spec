@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.20.1
-%define _ver 1_20_1
+%define ver 1.20.2
+%define _ver 1_20_2
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -116,7 +116,7 @@ BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 %python_subpackages
 
@@ -263,7 +263,7 @@ test_failok+=" or TestF90ReturnCharacter"
 %endif
 %ifarch %ix86
 # (arm 32-bit seems okay here)
-# gh#numpy/numpy#18387 
+# gh#numpy/numpy#18387
 test_failok+=" or test_pareto"
 # gh#numpy/numpy#18388
 test_failok+=" or test_float_remainder_overflow"

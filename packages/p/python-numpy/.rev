@@ -879,4 +879,30 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>870996</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e75ebfda0ca5d523400e4a877dc99b71</srcmd5>
+    <version>1.20.2</version>
+    <time>1620840677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.2:
+  * MAINT: Update f2py from master.
+  * BUG: diagflat could overflow on windows or 32-bit platforms
+  * BUG: Fix refcount leak in f2py complex_double_from_pyobj.
+  * BUG: Fix tiny memory leaks when like= overrides are used
+  * BUG: Remove temporary change of descr/flags in VOID functions
+  * BUG: Segfault in nditer buffer dealloc for Object arrays
+  * BUG: Remove suspicious type casting
+  * BUG: remove nonsensical comparison of pointer &lt; 0
+  * BUG: verify pointer against NULL before using it
+  * BUG: check if PyArray_malloc succeeded
+  * BUG: incorrect error fallthrough in nditer
+  * MAINT: Add annotations for dtype.__getitem__, __mul__ and…
+  * BUG: NameError in numpy.distutils.fcompiler.compaq
+  * BUG: Fixed where keyword for np.mean &amp; np.var methods
+  * MAINT: Ensure that re-exported sub-modules are properly annotated
+  * BUG: Fix ma coercion list-of-ma-arrays if they do not cast to…
+  * BUG: Fix small valgrind-found issues
+  * BUG: Fix small issues found with pytest-leaks</comment>
+    <requestid>891397</requestid>
+  </revision>
 </revisionlist>
