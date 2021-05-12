@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  8 18:31:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  - New API to explicitly deinitialize an EGL renderer target, which allows
+    implementors of the wpe_renderer_backend_egl_target_interface 
+  - build system improvements
+
+-------------------------------------------------------------------
 Thu Sep 17 22:55:56 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.8.0:

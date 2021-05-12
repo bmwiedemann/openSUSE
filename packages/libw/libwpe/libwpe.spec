@@ -1,7 +1,7 @@
 #
 # spec file for package libwpe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover 1_0-1
 
 Name:           libwpe
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        General-purpose library for the WPE-flavored port of WebKit
 License:        BSD-2-Clause
