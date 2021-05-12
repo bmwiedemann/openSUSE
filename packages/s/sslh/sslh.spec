@@ -1,7 +1,7 @@
 #
 # spec file for package sslh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,12 +30,11 @@ Source2:        %{name}.sysconfig
 Source3:        %{name}.conf.d
 BuildRequires:  libcap-devel
 BuildRequires:  libconfig-devel
-BuildRequires:  pcre-devel
-BuildRequires:  tcpd-devel
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       openssh
 Requires:       openssl
 Requires(pre):  group(nobody)
+Patch0:         sslh-nopcreposix.patch
 %{systemd_requires}
 
 %description
@@ -44,13 +43,14 @@ it possible to connect to an SSH server on port 443 (e.g. from inside a
 corporate firewall) while still serving HTTPS on that port.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version} -p1
 
 %build
-#
+export CFLAGS="%optflags"
+make PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 %install
-make USELIBCAP=1 PREFIX=%{_prefix} DESTDIR=%{buildroot} install
+make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
 
 install -Dm644 scripts/systemd.%{name}.service %{buildroot}%{_unitdir}/%{name}.service
 install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/conf.d/%{name}
