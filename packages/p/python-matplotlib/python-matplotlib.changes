@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  7 11:10:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update build and runtime TeX requirements for -latex subpackage.
+
+-------------------------------------------------------------------
 Thu Apr 29 08:28:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add a required BuildRequires on tex(geometry.sty).

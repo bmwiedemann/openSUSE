@@ -100,17 +100,30 @@ BuildRequires:  %{python_module wxPython >= 4}
 BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  poppler-tools
+# https://github.com/search?q=usepackage+repo%3Amatplotlib%2Fmatplotlib+path%3Alib&type=Code
 BuildRequires:  texlive-dvipng
+BuildRequires:  texlive-dvips
+BuildRequires:  texlive-geometry
+BuildRequires:  texlive-graphics
+BuildRequires:  texlive-helvetic
 BuildRequires:  texlive-latex
+BuildRequires:  texlive-pgf
 BuildRequires:  texlive-sfmath
 BuildRequires:  texlive-tex
-BuildRequires:  tex(8a.enc)
+BuildRequires:  texlive-txfonts
+BuildRequires:  texlive-xcolor
+BuildRequires:  tex(avant.sty)
+BuildRequires:  tex(chancery.sty)
+BuildRequires:  tex(charter.sty)
+BuildRequires:  tex(courier.sty)
 BuildRequires:  tex(geometry.sty)
 BuildRequires:  tex(helvet.sty)
-BuildRequires:  tex(phvr7t.tfm)
-BuildRequires:  tex(pncr7t.tfm)
+BuildRequires:  tex(mathpazo.sty)
+BuildRequires:  tex(mathptmx.sty)
+BuildRequires:  tex(pncr.tfm)
 BuildRequires:  tex(psfrag.sty)
 BuildRequires:  tex(type1cm.sty)
+BuildRequires:  tex(type1ec.sty)
 BuildRequires:  tex(ucs.sty)
 # /SECTION
 %endif
@@ -148,10 +161,31 @@ gtk3cairo backends for the %{name} plotting package
 Summary:        Allow rendering latex in %{name}
 License:        BSD-2-Clause
 Requires:       %{name} = %{version}
+# grep usepackage lib/matplotlib/texmanager.py lib/matplotlib/backends/backend_pgf.py
 Requires:       texlive-dvipng
+Requires:       texlive-dvips
+Requires:       texlive-geometry
+Requires:       texlive-graphics
+Requires:       texlive-helvetic
 Requires:       texlive-latex
+Requires:       texlive-pgf
 Requires:       texlive-sfmath
 Requires:       texlive-tex
+Requires:       texlive-txfonts
+Requires:       texlive-xcolor
+Requires:       tex(avant.sty)
+Requires:       tex(chancery.sty)
+Requires:       tex(charter.sty)
+Requires:       tex(courier.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(mathpazo.sty)
+Requires:       tex(mathptmx.sty)
+Requires:       tex(pncr.tfm)
+Requires:       tex(psfrag.sty)
+Requires:       tex(type1cm.sty)
+Requires:       tex(type1ec.sty)
+Requires:       tex(ucs.sty)
 
 %description    latex
 This package allows %{name} to display latex in plots
