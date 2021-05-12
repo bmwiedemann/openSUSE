@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-configuration
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
@@ -213,7 +213,7 @@ build-jar-repository -s lib \
 	apache-commons-lang \
 	commons-cli \
 	commons-configuration \
-	guava20/guava-10.0 \
+	guava/guava \
 	httpcomponents/httpclient \
 	httpcomponents/httpcore \
 	jdom2/jdom2 \

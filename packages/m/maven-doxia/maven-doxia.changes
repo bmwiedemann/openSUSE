@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 13:06:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 any more
+
+-------------------------------------------------------------------
 Sat Mar 14 08:07:06 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Set obsoletes to make upgrades easier
