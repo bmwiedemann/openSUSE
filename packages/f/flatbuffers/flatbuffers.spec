@@ -18,21 +18,18 @@
 
 %define _lto_cflags %{nil}
 
-%define   sonum 1
+%define   sonum 2
 Name:           flatbuffers
-Version:        1.12.0
+Version:        2.0.0
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://google.github.io/flatbuffers/
-Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/google/flatbuffers/pull/5938 but dropped src/idl_gen_cpp.cpp parts
-Patch1:         5938.patch
-# PATCH-FIX-UPSTREAM - https://github.com/google/flatbuffers/pull/6020
-Patch2:         6020.patch
-BuildRequires:  cmake >= 2.8.11.2
+Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 FlatBuffers is a serialization library for games and other memory constrained programs.
@@ -102,6 +99,7 @@ install -Dm0644 CMake/*FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 %{_bindir}/flatc
 %{_libdir}/libflatbuffers.so
 %{_includedir}/flatbuffers/
+%{_libdir}/pkgconfig/flatbuffers.pc
 %{_libdir}/cmake/flatbuffers/
 %{_datadir}/cmake/Modules/*FlatBuffers.cmake
 

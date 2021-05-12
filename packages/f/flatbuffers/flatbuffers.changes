@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 12 03:08:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.0
+  * Support for optional scalars in most languages.
+  * Rust Verifier, Object API and FlexBuffers support,
+    and many API improvements.
+  * Overhaul of TypeScript support.
+  * gRPC for many languages brought up to date.
+  * C++ compile time field reflection.
+  * JS FlexBuffers support.
+  * Kotlin FlexBuffers and platform support.
+  * Swift Object API and many Swift performance improvements.
+  * Lua supports LuaJIT and many more fixes.
+  * Many other fixes and smaller improvements
+- Drop upstream fixed 5938.patch and 6020.patch
+
+-------------------------------------------------------------------
 Thu Feb  4 10:38:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on Tumbleweed:
