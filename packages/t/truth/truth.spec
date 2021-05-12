@@ -1,7 +1,7 @@
 #
 # spec file for package truth
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/truth
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.auto.value:auto-value)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
@@ -60,7 +61,7 @@ This package contains the API documentation for %{name}.
 %build
 %{mvn_build} -f \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-- -Dmaven.compiler.release=8
 %endif
 
 %install
