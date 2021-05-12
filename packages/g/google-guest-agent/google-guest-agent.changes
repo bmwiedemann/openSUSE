@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 11 08:08:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210414.00 (bsc#1185848, bsc#1185849)
+  * start sshd (#106)
+  * Add systemd-networkd.service restart dependency. (#104)
+  * Update error message for handleHealthCheckRequest. (#105)
+
+-------------------------------------------------------------------
 Wed Mar 31 12:53:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210223.01 (bsc#1183414, bsc#1183415)
