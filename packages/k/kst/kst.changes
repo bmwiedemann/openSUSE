@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 05:29:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with CMake 3.20:
+  * 0001-Fix-build-with-CMake-3.20.patch
+
+-------------------------------------------------------------------
 Tue Jul 21 07:34:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints min disk space for PowerPC to avoid build error

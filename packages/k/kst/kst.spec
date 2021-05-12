@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Source:         Kst-%{version}.tar.gz
 Patch0:         gsl2-support.patch
 # PATCH-FIX-UPSTREAM -- Fix-build-with-Qt-511.patch -- Fixes build with Qt 5.11
 Patch1:         Fix-build-with-Qt-511.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-CMake-3.20.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -93,7 +95,7 @@ EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
              -Dkst_qt5=1"
 
 %cmake $EXTRA_FLAGS
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
