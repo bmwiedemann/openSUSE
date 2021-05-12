@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autopep8
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT

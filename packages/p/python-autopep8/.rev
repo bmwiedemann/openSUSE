@@ -201,4 +201,16 @@
     <comment></comment>
     <requestid>883214</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>978b978c19c61101b7a26cb979beb736</srcmd5>
+    <version>1.5.7</version>
+    <time>1620840710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.7:
+  * python 3.9
+  * disallow 0 for indent-size option 
+  * exit code is 99 when error occured cli option parsing
+  * exit code correctly on permission denied failure</comment>
+    <requestid>892298</requestid>
+  </revision>
 </revisionlist>

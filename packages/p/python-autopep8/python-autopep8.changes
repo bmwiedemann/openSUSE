@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 11 21:16:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.7:
+  * python 3.9
+  * disallow 0 for indent-size option 
+  * exit code is 99 when error occured cli option parsing
+  * exit code correctly on permission denied failure
+
+-------------------------------------------------------------------
 Mon Apr  5 00:52:52 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
