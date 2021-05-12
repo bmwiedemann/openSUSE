@@ -153,4 +153,14 @@
   - Use content of .autorelabel only if it exists</comment>
     <requestid>847432</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33a0d9a38101c5546e56e1f7ab3271ed</srcmd5>
+    <version>2.10</version>
+    <time>1620840701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10
+  - Fixes and improvements for SELinux support
+  - Add devel tools</comment>
+    <requestid>892029</requestid>
+  </revision>
 </revisionlist>

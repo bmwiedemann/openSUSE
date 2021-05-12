@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -30,12 +30,19 @@ Source99:       microos-tools-rpmlintrc
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dracut)
+BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
 Conflicts:      systemd-coredump
 
 %description
 Files, scripts and directories for openSUSE MicroOS.
+
+%package -n microos-devel-tools
+Summary:        Tools to develop MicroOS
+
+%description -n microos-devel-tools
+This package contains tools to make developing of MicroOS easier.
 
 %prep
 %setup -q
@@ -55,18 +62,18 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %service_add_pre setup-systemd-proxy-env.service printenv.service
 
 %post
-%regenerate_initrd_post
+%{regenerate_initrd_post}
 %service_add_post setup-systemd-proxy-env.service printenv.service
 
 %preun
 %service_del_preun setup-systemd-proxy-env.service printenv.service
 
 %postun
-%regenerate_initrd_post
+%{regenerate_initrd_post}
 %service_del_postun setup-systemd-proxy-env.service printenv.service
 
 %posttrans
-%regenerate_initrd_posttrans
+%{regenerate_initrd_posttrans}
 
 %files
 %license COPYING
@@ -97,5 +104,12 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %{_unitdir}/tmp.mount
 %{_tmpfilesdir}/microos-tmp.conf
 %endif
+
+%files -n microos-devel-tools
+%{_unitdir}/microos-ro.service
+%{_sbindir}/microos-ro
+%{_sbindir}/microos-rw
+%{_sbindir}/rpm-sortbysize
+%{_sbindir}/rpmorphan
 
 %changelog

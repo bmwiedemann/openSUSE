@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 10 11:22:03 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.10
+  - Fixes and improvements for SELinux support
+  - Add devel tools
+
+-------------------------------------------------------------------
 Tue Nov 10 09:00:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.9
