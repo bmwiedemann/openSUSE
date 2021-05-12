@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  jsr-305
@@ -75,7 +75,7 @@ mkdir -p lib
 build-jar-repository -s lib \
     atinject \
     commons-cli \
-    guava20/guava-10.0 \
+    guava/guava \
     guice/google-guice-no_aop \
     jdom2/jdom2 \
     jsr-305 \
