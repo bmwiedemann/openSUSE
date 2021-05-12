@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  8 12:08:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.15.5:
+  * Fix build with vala 0.52.
+  * Fix build on 32 bit Alpine.
+
+-------------------------------------------------------------------
 Tue Jan  5 14:42:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
