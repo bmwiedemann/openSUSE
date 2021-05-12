@@ -42,6 +42,7 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
+Patch1:         0001-Replace-all-var-run-with-run.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel

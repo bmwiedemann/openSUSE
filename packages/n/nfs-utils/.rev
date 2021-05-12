@@ -1518,4 +1518,14 @@
     <comment>- Include nfsd kernel module Requires (bsc#1089118) (forwarded request 878304 from gmoro)</comment>
     <requestid>878422</requestid>
   </revision>
+  <revision rev="162" vrev="23">
+    <srcmd5>dded2eaa0930d53e5d1774b9443497f4</srcmd5>
+    <version>unknown</version>
+    <time>1620840692</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Replace-all-var-run-with-run.patch
+  Use /run instead of /var/run
+  (bsc#1185170)</comment>
+    <requestid>891928</requestid>
+  </revision>
 </revisionlist>

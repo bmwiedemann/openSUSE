@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 01:09:57 UTC 2021 - Neil Brown <nfbrown@suse.com>
+
+- Add 0001-Replace-all-var-run-with-run.patch
+  Use /run instead of /var/run
+  (bsc#1185170)
+
+-------------------------------------------------------------------
 Thu Mar 11 09:45:07 UTC 2021 - Guilherme Moro <gmoro@suse.com>
 
 - Include nfsd kernel module Requires (bsc#1089118)
