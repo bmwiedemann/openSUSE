@@ -1,7 +1,7 @@
 #
 # spec file for package docker-client-java
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,16 @@ License:        Apache-2.0
 URL:            https://github.com/spotify/docker-client
 Source0:        https://github.com/spotify/docker-client/archive/v%{version}.tar.gz
 Patch0:         0001-Port-to-latest-version-of-Google-AutoValue.patch
-BuildRequires:  maven-local fdupes
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.datatype:jackson-datatype-guava)
 BuildRequires:  mvn(com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider)
 BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
 BuildRequires:  mvn(com.google.auto.value:auto-value) >= 1.4.1
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(com.google.guava:guava:20.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(commons-lang:commons-lang)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
@@ -106,9 +108,9 @@ rm -rf src/{main,test}/java/com/spotify/docker/client/auth/gcr
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dsource=7
+	-Dsource=8
 
 %install
 %mvn_install
