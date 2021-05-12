@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -77,14 +77,14 @@ This package contains the shared library for Fluidsynth.
 %cmake \
     -DFLUID_DAEMON_ENV_FILE=%{_fillupdir}/sysconfig.%{name} \
     -Denable-lash=0
-%make_jobs
+%cmake_build
 
 %check
 # depending on the distribution being built for, cmake
 # may or may not create a 'build' subdirectory
 %cmake
 # cannot call ctest as the unit tests need to be compiled yet
-%make_build check
+%cmake_build check
 
 %install
 %cmake_install

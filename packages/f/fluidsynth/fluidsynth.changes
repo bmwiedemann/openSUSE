@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May  8 19:58:48 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.1
+  * Make ALSA the default driver on Linux
+  * Coreaudio driver failed to initialize on MacOS 11
+  * WaveOut driver failed to initialize
+  * COM initialization in WASAPI driver is no longer performed in the
+    caller's context
+  * WASPI driver now supports reverb and chorus
+  * Handle SysEx GM/GM2 mode on, GS reset, and XG reset
+  * Old behaviour of `fluid_player_join` has been restored to prevent
+    infinite loop in client code
+  * The Soundfont loader code has been refactored, illegal generators
+    will now be skipped more consequently
+- Replace deprecated %make_jobs macro with %cmake_build
+
+-------------------------------------------------------------------
 Wed Apr  7 15:03:44 CEST 2021 - tiwai@suse.de
 
 - Update baselibs.conf for the soversion 3

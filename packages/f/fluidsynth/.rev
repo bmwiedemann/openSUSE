@@ -466,4 +466,12 @@
   to install this package, even if he used a custom soundfont in the .conf file)</comment>
     <requestid>883612</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5f9707d171de910f72ab245401d16a6d</srcmd5>
+    <version>2.2.1</version>
+    <time>1620840704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892085</requestid>
+  </revision>
 </revisionlist>
