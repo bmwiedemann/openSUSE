@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 10 06:24:27 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.11.12
+  * The HEIC depth image will now only be read when the define heic:depth-image
+    is true.
+  * -layers optimize no longer produces broken output (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3520).
+
+-------------------------------------------------------------------
 Thu May  6 14:20:12 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.11

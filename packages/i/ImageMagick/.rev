@@ -3059,4 +3059,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   but not detected automatically.</comment>
     <requestid>891054</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>7fa2f712eb6a0bacdde36a20625b3ab4</srcmd5>
+    <version>7.0.11.12</version>
+    <time>1620840695</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.11.12
+  * The HEIC depth image will now only be read when the define heic:depth-image
+    is true.
+  * -layers optimize no longer produces broken output (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3520).</comment>
+    <requestid>891975</requestid>
+  </revision>
 </revisionlist>
