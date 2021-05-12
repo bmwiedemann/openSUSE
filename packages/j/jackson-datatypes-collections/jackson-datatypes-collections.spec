@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-datatypes-collections
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@ License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-datatypes-collections
 Source0:        https://github.com/FasterXML/jackson-datatypes-collections/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
 BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(com.google.guava:guava:20.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 %if %{without jp_minimal}
@@ -90,9 +91,9 @@ cp -p hppc/src/main/resources/META-INF/LICENSE .
 %build
 %{mvn_build} -f -s -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dsource=7
+	-Dsource=8
 
 %install
 %mvn_install
