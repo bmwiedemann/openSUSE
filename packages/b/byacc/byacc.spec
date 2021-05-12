@@ -1,7 +1,7 @@
 #
 # spec file for package byacc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           byacc
-Version:        20200910
+Version:        20210328
 Release:        0
 Summary:        LALR(1) parser generator
 License:        SUSE-Public-Domain

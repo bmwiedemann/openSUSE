@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  8 20:19:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210328:
+  * reader.c: ignore bison's "%empty" extension
+  * reader.c, defs.h:
+    %debug was a trivial bison "extension", mark it as such
+  * yacc.1: use italics in a few places where bold was inappropriate
+  * reader.c:
+    add union tag to YYSTYPE structure for compatibility with a feature which
+    bison copied from Solaris yacc (request by Ella Stanforth)
+  * closure.c, warshall.c:
+    fix undefined-behavior diagnosed with gcc -fsanitize=undefined (report by
+    Alexander Richardson)
+
+-------------------------------------------------------------------
 Sun Sep 20 16:34:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20200910:
