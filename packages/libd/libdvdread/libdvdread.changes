@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 14:37:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.2:
+ * Fix Win32 Unicode paths opening
+ * Fix warnings and build improvements
+
+-------------------------------------------------------------------
 Mon Apr 27 18:25:12 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.1
