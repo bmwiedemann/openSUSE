@@ -1,0 +1,114 @@
+From a89d425c183ea6fa3d1ad86c2f7bc8b0acf63323 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Wed, 5 May 2021 13:45:02 +0200
+Subject: [PATCH 1/2] Support SQLAlchemy 1.4.x
+
+SQLAlchemy 1.4 is returning new types, LegacyCursorResult and LegacyRow,
+which are not JSON serializable and this makes tests fail with:
+
+```
+======================================================================
+ERROR: test_result_proxy (pecan.tests.test_jsonify.TestJsonifySQLAlchemyGenericEncoder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/tests/test_jsonify.py", line 220, in test_result_proxy
+    result = encode(self.result_proxy)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 133, in encode
+    return _instance.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 127, in default
+    return jsonify(obj)
+  File "/usr/lib64/python3.6/functools.py", line 807, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 122, in jsonify
+    return _default.default(obj)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 108, in default
+    return JSONEncoder.default(self, obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'LegacyCursorResult' is not JSON serializable
+
+======================================================================
+ERROR: test_row_proxy (pecan.tests.test_jsonify.TestJsonifySQLAlchemyGenericEncoder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/tests/test_jsonify.py", line 227, in test_row_proxy
+    result = encode(self.row_proxy)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 133, in encode
+    return _instance.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 127, in default
+    return jsonify(obj)
+  File "/usr/lib64/python3.6/functools.py", line 807, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 122, in jsonify
+    return _default.default(obj)
+  File "/home/abuild/rpmbuild/BUILD/pecan-1.3.3/pecan/jsonify.py", line 108, in default
+    return JSONEncoder.default(self, obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'LegacyRow' is not JSON serializable
+```
+
+The SQLALchemy migration guide at [1] says:
+```
+For mapping-like behaviors from a Row object, including support for
+these methods as well as a key-oriented __contains__ operator, the API
+going forward will be to first access a special attribute Row._mapping,
+which will then provide a complete mapping interface to the row, rather
+than a tuple interface.
+```
+
+This commit fixes this by handling these new returned classes as a
+special case and using _mapping to convert them to dicts.
+
+[1] https://docs.sqlalchemy.org/en/14/changelog/migration_14.html#rowproxy-is-no-longer-a-proxy-is-now-called-row-and-behaves-like-an-enhanced-named-tuple
+---
+ pecan/jsonify.py | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/pecan/jsonify.py b/pecan/jsonify.py
+index 5b74877..5da9638 100644
+--- a/pecan/jsonify.py
++++ b/pecan/jsonify.py
+@@ -33,6 +33,19 @@ except ImportError:  # pragma no cover
+             pass
+ 
+ 
++try:
++    from sqlalchemy.engine.cursor import LegacyCursorResult, LegacyRow
++except ImportError:  # pragma no cover
++    # dummy classes since we don't have SQLAlchemy installed
++    # or we're using SQLAlchemy < 1.4
++
++    class ResultProxy(object):  # noqa
++        pass
++
++    class RowProxy(object):  # noqa
++        pass
++
++
+ #
+ # encoders
+ #
+@@ -100,6 +113,11 @@ class GenericJSON(JSONEncoder):
+             if props['count'] < 0:
+                 props['count'] = len(props['rows'])
+             return props
++        elif isinstance(obj, LegacyCursorResult):
++            rows = [dict(row._mapping) for row in obj.fetchall()]
++            return {'count': len(rows), 'rows': rows}
++        elif isinstance(obj, LegacyRow):
++            return dict(obj._mapping)
+         elif isinstance(obj, RowProxy):
+             return dict(obj)
+         elif isinstance(obj, webob_dicts):
+-- 
+2.31.1
+

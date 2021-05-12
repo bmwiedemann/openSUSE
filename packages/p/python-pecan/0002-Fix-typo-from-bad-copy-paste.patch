@@ -1,0 +1,31 @@
+From 942d92e7eb83e2eccb5d172b226b8e5fdc2d0368 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Wed, 5 May 2021 13:57:57 +0200
+Subject: [PATCH 2/2] Fix typo from bad copy&paste
+
+I copied the structure of the code from a few lines above and forgot
+to change the name of the classes
+---
+ pecan/jsonify.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pecan/jsonify.py b/pecan/jsonify.py
+index 5da9638..c5cbc15 100644
+--- a/pecan/jsonify.py
++++ b/pecan/jsonify.py
+@@ -39,10 +39,10 @@ except ImportError:  # pragma no cover
+     # dummy classes since we don't have SQLAlchemy installed
+     # or we're using SQLAlchemy < 1.4
+ 
+-    class ResultProxy(object):  # noqa
++    class LegacyCursorResult(object):  # noqa
+         pass
+ 
+-    class RowProxy(object):  # noqa
++    class LegacyRow(object):  # noqa
+         pass
+ 
+ 
+-- 
+2.31.1
+

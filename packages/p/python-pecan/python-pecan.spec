@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-pecan
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
 Patch0:         pecan-no-kajiki.patch
+Patch1:         0001-Support-SQLAlchemy-1.4.x.patch
+Patch2:         0002-Fix-typo-from-bad-copy-paste.patch
 BuildRequires:  %{python_module Genshi >= 0.7}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Mako >= 0.4.0}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module WebOb >= 1.2}
+BuildRequires:  %{python_module WebOb >= 1.8}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module logutils}
@@ -38,25 +40,20 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
+BuildRequires:  uwsgi
 # we need sqlite module
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako >= 0.4.0
-Requires:       python-WebOb >= 1.2
+Requires:       python-WebOb >= 1.8
 Requires:       python-WebTest >= 1.3.1
 Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-singledispatch
-%endif
-%ifpython2
-Requires:       python-singledispatch
-%endif
 %if 0%{?suse_version}
 Suggests:       python-Genshi
 Suggests:       python-Jinja2
@@ -70,6 +67,10 @@ A WSGI object-dispatching web framework.
 %prep
 %setup -q -n pecan-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+sed -ie "/^uwsgi$/d" test-requirements.txt
+sed -ie "/^pep8$/d" test-requirements.txt
 
 %build
 %python_build

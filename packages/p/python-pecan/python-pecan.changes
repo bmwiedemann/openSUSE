@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  5 08:23:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- version update to 1.4.0
+  * pecan now requires webob >= 1.8
+  * fixed a bug when parsing certain Accept headers
+    (https://github.com/Pylons/webob/issues/403)
+  * removed official support for Python 3.5
+- Rebase patch:
+  * pecan-no-kajiki.patch
+- Add patches to support SQLAlchemy 1.4.x (gh#pecan/pecan#125)
+  * 0001-Support-SQLAlchemy-1.4.x.patch
+  * 0002-Fix-typo-from-bad-copy-paste.patch
+
+-------------------------------------------------------------------
 Sat Mar 14 08:01:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
