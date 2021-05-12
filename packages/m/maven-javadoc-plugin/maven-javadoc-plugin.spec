@@ -1,7 +1,7 @@
 #
-# spec file for package maven-javadoc-plugin
+# spec file for package maven-javadoc-plugin-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
@@ -137,7 +137,7 @@ build-jar-repository -s lib \
 	atinject \
 	commons-cli \
 	commons-io \
-	guava20/guava-10.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	httpcomponents/httpclient \
 	httpcomponents/httpcore \

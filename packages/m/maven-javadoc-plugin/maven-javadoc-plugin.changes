@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 15:25:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 package any more
+
+-------------------------------------------------------------------
 Wed Mar 11 11:44:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with doxia 1.9.x

@@ -39,4 +39,13 @@
     <comment>upgrade doxia/doxia-sitetools</comment>
     <requestid>783796</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ed5a5ea2a65f949d1e7a8b1a6d8b8f33</srcmd5>
+    <version>3.1.1</version>
+    <time>1620840744</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy guava20 package any more
+</comment>
+    <requestid>892416</requestid>
+  </revision>
 </revisionlist>
