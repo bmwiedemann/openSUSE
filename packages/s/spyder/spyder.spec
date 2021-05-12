@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -66,11 +66,11 @@ Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
 Requires:       python3-qt5 >= 5.5
-Requires:       python3-qtconsole >= 5.0.3
+Requires:       python3-qtconsole >= 5.1.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.0.1
+Requires:       python3-spyder-kernels >= 2.0.2
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -95,6 +95,7 @@ Provides:       spyder3 = %{version}
 Provides:       spyder3-breakpoints = %{version}
 Provides:       spyder3-profiler = %{version}
 Provides:       spyder3-pylint = %{version}
+Obsoletes:      python3-spyder < %{version}
 Obsoletes:      python3-spyderlib < %{version}
 Obsoletes:      spyder3 < %{version}
 Obsoletes:      spyder3-breakpoints < %{version}
@@ -153,11 +154,11 @@ BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10
 BuildRequires:  python3-qt5 >= 5.5
-BuildRequires:  python3-qtconsole >= 5.0.3
+BuildRequires:  python3-qtconsole >= 5.1.0
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 2.0.1
+BuildRequires:  python3-spyder-kernels >= 2.0.2
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
@@ -267,14 +268,6 @@ sed -e 's/jedi==/jedi>=/' \
     -e 's/pyqt5<5.13/pyqt5/' \
     -e 's/pyqtwebengine<5.13/pyqtwebengine/' \
     -i setup.py
-
-# replace pytest-ordering with pytest-order
-# gh#spyder-ide/spyder#14935
-find spyder -name 'test*.py' -print0 | xargs -0 sed -i \
-   -e 's/pytest.mark.first/pytest.mark.order(1)/' \
-   -e 's/pytest.mark.second/pytest.mark.order(2)/' \
-   -e 's/pytest.mark.third/pytest.mark.order(3)/'
-sed -i -e '/first/d' -e '/second/d' -e '/third/d' pytest.ini
 
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.

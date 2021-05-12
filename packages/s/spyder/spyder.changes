@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 10 12:22:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.2
+  * Fix error when restarting kernels.
+  * Fix outline, folding and go-to-defintion when Kite is
+    installed.
+  * Make Plots pane show again separate plots generated in
+    different consoles.
+  * Fix preferences error when following Kite's tutorial.
+
+-------------------------------------------------------------------
 Mon Apr 19 16:15:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add python-language-server[all] requirements and unpin packages
