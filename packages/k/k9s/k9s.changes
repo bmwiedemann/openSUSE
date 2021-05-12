@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 07 22:06:46 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.24.9:
+  * fix shell issue + bugz
+  * Dynamically load style for help from skin (#1113)
+  * Solarized light skin (#1114)
+  * Update docs
+  * add rel notes
+  * when k9s --insecure-skip-tls-verify is set, kubectl would set the same (#1101)
+  * Add Nord skin (#1103)
+  * wins palette
+  * Spelling (#1089)
+  * Allow to override build date with SOURCE_DATE_EPOCH (#1099)
+  * Create axual.yml (#934)
+  * Add gruvbox skins (#1088)
+
+-------------------------------------------------------------------
 Sat Apr 10 19:23:41 UTC 2021 - dmueller@suse.com
 
 - Update to version 0.24.7:

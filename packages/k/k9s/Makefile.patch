@@ -4,19 +4,19 @@ Date: Mon, 29 Mar 2021 17:09:47 +0200
 Subject: [PATCH] Update makefile
 
 
-Index: k9s-0.24.7/Makefile
+Index: k9s-0.24.9/Makefile
 ===================================================================
---- k9s-0.24.7.orig/Makefile
-+++ k9s-0.24.7/Makefile
+--- k9s-0.24.9.orig/Makefile
++++ k9s-0.24.9/Makefile
 @@ -1,6 +1,6 @@
  NAME    := k9s
  PACKAGE := github.com/derailed/$(NAME)
 -GIT     := $(shell git rev-parse --short HEAD)
 +# GIT     := $(shell git rev-parse --short HEAD)
- DATE     := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
- VERSION  ?= v0.24.7
- IMG_NAME := derailed/k9s
-@@ -16,7 +16,7 @@ cover:  ## Run test coverage suite
+ SOURCE_DATE_EPOCH ?= $(shell date +%s)
+ DATE    := $(shell date -u -d @${SOURCE_DATE_EPOCH} +"%Y-%m-%dT%H:%M:%SZ")
+ VERSION  ?= v0.24.9
+@@ -17,7 +17,7 @@ cover:  ## Run test coverage suite
  	@go tool cover --html=cov.out
  
  build:  ## Builds the CLI
