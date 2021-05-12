@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-crispy-forms
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.9.2
+Version:        1.11.2
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT

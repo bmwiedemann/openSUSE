@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 12:42:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.11.2
+  * Fixed test causing SystemCheckError in some cases.
+  * Radio and Checkbox now respect the field's disabled attribute when using the 
+    Bootstrap4 template pack.
+  * Implemeneted custom-select for Select widgets in the Bootstrap4 Template Pack
+  * Added custom-select for select widgets within prepended and appended fields
+
+-------------------------------------------------------------------
 Sat Sep  5 10:43:56 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 1.9.2
