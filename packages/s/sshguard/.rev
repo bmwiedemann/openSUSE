@@ -95,4 +95,12 @@ The whitelist now initially resides in files /etc/sshguard/whitelist (forwarded 
     <comment>Build version 2.4.1 (forwarded request 829816 from worldcitizen)</comment>
     <requestid>829818</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ac8c31fbc2e85110490c6c6dfbf2052</srcmd5>
+    <version>2.4.2</version>
+    <time>1620840770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892528</requestid>
+  </revision>
 </revisionlist>

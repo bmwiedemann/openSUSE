@@ -1,7 +1,7 @@
 #
 # spec file for package sshguard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,13 @@ BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %fillup_prereq
 %endif
 Name:           sshguard
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        SSH brute force attack protector
 License:        ISC
 Group:          Productivity/Networking/Security
-URL:            http://www.sshguard.net
-Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
+URL:            https://www.sshguard.net/
+Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        sshguard.conf
 Source2:        sshguard.service
 Source3:        sshguard.init

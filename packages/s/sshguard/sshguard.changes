@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 00:04:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.2
+  * Recognize rejections from Postfix's postscreen daemon
+  * The parser can now be changed using the 'PARSER' and
+    'POST_PARSER' options
+  * Remove some false positive attack signatures for SSH and Cyrus
+  * Adjust log verbosity of some log messages
+  * The *firewalld* backend now uses *firewall-cmd* instead of
+    'iptables' to flush block lists
+
+-------------------------------------------------------------------
 Wed Aug 26 18:03:00 UTC 2020 - Joop Boonen <joop.boonen@opensuse.org>
 
 - Build version 2.4.1
