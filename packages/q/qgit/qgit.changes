@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 13:53:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem (bsc#1184786)
+
+-------------------------------------------------------------------
 Thu Feb  6 11:04:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.9 (boo#1162940):

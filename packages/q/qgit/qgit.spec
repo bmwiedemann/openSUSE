@@ -1,7 +1,7 @@
 #
 # spec file for package qgit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,6 @@ picking single modified files.
 %{_bindir}/qgit
 %{_datadir}/applications/qgit.desktop
 %{_datadir}/icons/hicolor/48x48/apps/qgit.png
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/qgit.appdata.xml
 
 %changelog
