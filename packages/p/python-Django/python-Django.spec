@@ -23,7 +23,7 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        3.2
+Version:        3.2.2
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argon2-cffi >= 16.1.0}
-BuildRequires:  %{python_module asgiref >= 3.2.10}
+BuildRequires:  %{python_module asgiref >= 3.3.2}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       python
 Requires:       python-Pillow
 Requires:       python-argon2-cffi >= 16.1.0
-Requires:       python-asgiref >= 3.2.10
+Requires:       python-asgiref >= 3.3.2
 Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-sqlparse >= 0.2.2

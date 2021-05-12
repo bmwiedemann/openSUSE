@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu May  6 08:54:41 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.2 (CVE-2021-32052)
+  + CVE-2021-32052: Header injection possibility since URLValidator
+    accepted newlines in input on Python 3.9.5+
+  + Prevented, following a regression in Django 3.2.1, makemigrations
+    from generating infinite migrations for a model with Meta.ordering
+    contained OrderBy expressions
+
+-------------------------------------------------------------------
+Wed May  5 17:25:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Keep rpm runtime requirements in sync. Downstream packages often
+  read the egg-info and fail if they are not fulfilled. 
+
+-------------------------------------------------------------------
+Wed May  5 08:44:30 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.1 (CVE-2021-31542)
+  + CVE-2021-31542: Potential directory-traversal via uploaded files
+  + Corrected detection of GDAL 3.2 on Windows
+  + Fixed a bug in Django 3.2 where subclasses of BigAutoField and
+    SmallAutoField were not allowed for the DEFAULT_AUTO_FIELD setting
+  + Fixed a regression in Django 3.2 that caused a crash of
+    QuerySet.values()/values_list() after QuerySet.union(),
+    intersection(), and difference() when it was ordered by an
+    unannotated field
+  + Restored, following a regression in Django 3.2, displaying an
+    exception message on the technical 404 debug page
+  + Fixed a bug in Django 3.2 where a system check would crash on a
+    reverse one-to-one relationships in CheckConstraint.check or
+    UniqueConstraint.condition
+  + Fixed a regression in Django 3.2 that caused a crash of
+    ModelAdmin.search_fields when searching against phrases with
+    unbalanced quotes
+  + Fixed a bug in Django 3.2 where variable lookup errors were logged
+    rendering the sitemap template if alternates were not defined
+  + Fixed a regression in Django 3.2 that caused a crash when
+    combining Q() objects which contains boolean expressions
+  + Fixed a regression in Django 3.2 that caused a crash of
+    QuerySet.update() on a queryset ordered by inherited or joined
+    fields on MySQL and MariaDB
+  + Fixed a regression in Django 3.2 that caused a crash when decoding
+    a cookie value, used by
+    django.contrib.messages.storage.cookie.CookieStorage, in the
+    pre-Django 3.2 format
+  + Fixed a regression in Django 3.2 that stopped the shift-key
+    modifier selecting multiple rows in the admin changelist
+  + Fixed a bug in Django 3.2 where a system check would crash on the
+    STATICFILES_DIRS setting with a list of 2-tuples of (prefix, path)
+  + Fixed a long standing bug involving queryset bitwise combination
+    when used with subqueries that began manifesting in Django 3.2,
+    due to a separate fix using Exists to exclude() multi-valued
+    relationships
+  + Fixed a bug in Django 3.2 where variable lookup errors were logged
+    when rendering some admin templates
+  + Fixed a bug in Django 3.2 where an admin changelist would crash
+    when deleting objects filtered against multi-valued relationships
+  + Fixed a regression in Django 3.2 where the calling process
+    environment would not be passed to the dbshell command on PostgreSQL
+  + Fixed a performance regression in Django 3.2 when building complex
+    filters with subqueries
+
+-------------------------------------------------------------------
 Tue Apr  6 09:27:50 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.0
