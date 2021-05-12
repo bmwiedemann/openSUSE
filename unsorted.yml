@@ -2065,6 +2065,7 @@ unsorted:
   - cockpit-devel 
   - cockpit-doc 
   - cockpit-kdump 
+  - cockpit-machines 
   - cockpit-networkmanager 
   - cockpit-packagekit 
   - cockpit-pcp 
@@ -4821,6 +4822,8 @@ unsorted:
   - ghc-libxml-sax-devel: [x86_64] 
   - ghc-libyaml: [x86_64] 
   - ghc-libyaml-devel: [x86_64] 
+  - ghc-lift-type: [x86_64] 
+  - ghc-lift-type-devel: [x86_64] 
   - ghc-lifted-async: [x86_64] 
   - ghc-lifted-async-devel: [x86_64] 
   - ghc-lifted-base: [x86_64] 
@@ -7800,7 +7803,6 @@ unsorted:
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -9943,6 +9945,7 @@ unsorted:
   - libcircle2 
   - libcircllhist-devel 
   - libcircllhist0_0_1 
+  - libcivetweb-cpp1_14_0 
   - libcivetweb1_14_0 
   - libcjose-devel 
   - libcjose0 
@@ -13659,6 +13662,7 @@ unsorted:
   - libstdc++6-pp-gcc9 
   - libstdc++6-pp-gcc9-32bit: [x86_64] 
   - libstellarsolver1 
+  - libstemmer0d 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -23702,7 +23706,6 @@ unsorted:
   - python36-setuptools-wheel 
   - python36-setuptools_scm 
   - python36-setuptools_scm_git_archive 
-  - python36-sge-pygame 
   - python36-sgmllib3k 
   - python36-sh 
   - python36-shaptools 
@@ -31753,6 +31756,8 @@ unsorted:
   - snmpsim 
   - snorenotify-qt5 
   - snorenotify-qt5-devel 
+  - snowball 
+  - snowball-devel 
   - soapy-osmo-devel 
   - soapy-sdr 
   - soapy-sdr-devel 
