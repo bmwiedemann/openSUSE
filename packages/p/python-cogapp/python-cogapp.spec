@@ -1,7 +1,7 @@
 #
 # spec file for package python-cogapp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,6 +41,9 @@ need.
 
 %prep
 %setup -q -n cogapp-%{version}
+# The fix for bpo-43105 broke cogapp's way to import relative paths
+# https://github.com/nedbat/cog/issues/16
+sed -i 's/self.addToIncludePath(a)/self.addToIncludePath(os.path.abspath(a))/' cogapp/cogapp.py
 
 %build
 %python_build
@@ -52,7 +55,8 @@ mv %{buildroot}%{_bindir}/cog.py %{buildroot}%{_bindir}/cog
 %python_clone -a %{buildroot}%{_bindir}/cog
 
 %check
-%pytest
+# reverse -q from addopts in setup.cfg
+%pytest -v
 
 %post
 %python_install_alternative cog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 20:31:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- always use absoulte import paths for -I parameter: mitigate
+  failure due to bpo-43105 fix.
+
+-------------------------------------------------------------------
 Fri Apr  5 11:14:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.0:
