@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 12 06:21:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build with Leap 15.3's kernel which includes
+  backported patches to support update_mgmt_frame_registrations
+  instead of mgmt_frame_register which would be expected
+  according to the kernel version:
+  * fix-backported-update_mgmt_frame_registrations.patch
+
+-------------------------------------------------------------------
+Tue May 11 21:50:35 UTC 2021 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update to 5.9.3.2+git20210427.6ef5d8f
+  * Works with kernel 5.12.
+
+-------------------------------------------------------------------
 Thu Mar 11 14:02:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 5.9.3.2+git20210302.d1bf6df

@@ -1,0 +1,31 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix build with SLE 15-SP3 / Leap 15.3
+
+The SLE 15 SP3/Leap 15.3's kernel includes
+backported patches to support update_mgmt_frame_registrations
+instead of mgmt_frame_register which would be expected
+according to the kernel version, so we force to use the
+more modern interface.
+
+Index: rtl8812au-5.9.3.2+git20210427.6ef5d8f/os_dep/linux/ioctl_cfg80211.c
+===================================================================
+--- rtl8812au-5.9.3.2+git20210427.6ef5d8f.orig/os_dep/linux/ioctl_cfg80211.c
++++ rtl8812au-5.9.3.2+git20210427.6ef5d8f/os_dep/linux/ioctl_cfg80211.c
+@@ -7902,7 +7902,7 @@ exit:
+ 	return ret;
+ }
+ 
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+ 	struct wireless_dev *wdev,
+@@ -10394,7 +10394,7 @@ static struct cfg80211_ops rtw_cfg80211_
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ 	.mgmt_frame_register = cfg80211_rtw_mgmt_frame_register,
+ #else
+ 	.update_mgmt_frame_registrations = cfg80211_rtw_update_mgmt_frame_register,

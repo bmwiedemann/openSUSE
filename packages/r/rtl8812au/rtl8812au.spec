@@ -17,7 +17,7 @@
 
 
 Name:           rtl8812au
-Version:        5.9.3.2+git20210302.d1bf6df
+Version:        5.9.3.2+git20210427.6ef5d8f
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
@@ -28,6 +28,8 @@ Source1:        %{name}-preamble
 Source2:        LICENSE
 # PATCH-FIX-OPENSUSE fix-backported-ndo_select_queue.patch
 Patch0:         fix-backported-ndo_select_queue.patch
+# PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
+Patch1:         fix-backported-update_mgmt_frame_registrations.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -43,7 +45,7 @@ Kernel driver for Realtek 802.11ac 8812au wifi cards
 The sources were obtained from https://github.com/gordboy/rtl8812au, which adaptes the official driver
 released by Realtek to build on recent kernels.
 
-The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and 
+The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and
 https://github.com/maurossi/rtl8812au/ .
 
 %package KMP
@@ -56,13 +58,17 @@ Kernel driver for Realtek 802.11ac 8812au wifi cards
 The sources were obtained from https://github.com/gordboy/rtl8812au, which adaptes the official driver
 released by Realtek to build on recent kernels.
 
-The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and 
+The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and
 https://github.com/maurossi/rtl8812au/ .
 
 %prep
 %setup -q
 %if 0%{?sle_version} == 150100
 %patch0 -p1
+%endif
+
+%if 0%{?sle_version} == 150300
+%patch1 -p1
 %endif
 
 set -- *
