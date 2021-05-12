@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-countries
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-countries
-Version:        6.1.2
+Version:        7.2.1
 Release:        0
 Summary:        Provides a country field for Django models
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/SmileyChris/django-countries/
 Source:         https://files.pythonhosted.org/packages/source/d/django-countries/django-countries-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module graphene-django}
-BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Recommends:     python-djangorestframework
 Recommends:     python-graphene-django
+Recommends:     python-pyuca
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module graphene-django}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyuca}
+# /SECTION
 %python_subpackages
 
 %description

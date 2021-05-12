@@ -10,4 +10,12 @@ Also throwing in a small template filter for getting country flags by
 ISO 3166-1 alpha-2 country code.</comment>
     <requestid>814133</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53d8af424ac94986830c00cdd890af34</srcmd5>
+    <version>7.2.1</version>
+    <time>1620840713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892317</requestid>
+  </revision>
 </revisionlist>

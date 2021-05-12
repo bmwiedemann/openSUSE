@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 11 23:20:32 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add optional dependency pyuca
+- Update to v7.2.1
+  * Fix Latin translations.
+- from v7.2
+  * Allow the character field to work with custom country codes that
+    are not 2 characters (such as "GB-WLS").
+  * Fix compatibility with django-migrations-ignore-attrs library.
+- from v7.1
+  * Allow customising the str_attr of Country objects returned from
+    a CountryField via a new countries_str_attr keyword argument
+  * Add pyuca as an extra dependency, so that it can be installed
+    like pip install django-countries[pyuca].
+  * Add Django 3.2 support.
+- from v7.0
+  * Add name_only as option to the DRF serializer field
+  * Add in Python typing.
+  * Add Python 3.9, Django 3.1, and Django Rest Framework 3.12 support
+  * Drop Python 3.5 support.
+  * Improve IOC code functionality, allowing them to be overridden in
+    COUNTRIES_OVERRIDE using the complex dictionary format.
+- from v6.1.3
+  * Update flag of Mauritania.
+  * Add flag for Kosovo (under its temporary code of XK)
+
+-------------------------------------------------------------------
 Sat Jun  6 06:50:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v6.1.2
