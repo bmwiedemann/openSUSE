@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:47:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.04.12
+  * Rename clock_tick_rate to g_clock_tick_rate
+  * Make get_events_buf local
+- Update to version 0.04.11
+  * handle case where comm field contains ) and spaces
+
+-------------------------------------------------------------------
 Sat Nov  7 18:21:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.04.10
