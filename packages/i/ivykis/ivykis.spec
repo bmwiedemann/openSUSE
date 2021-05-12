@@ -1,7 +1,7 @@
 #
 # spec file for package ivykis
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           ivykis
 %define lname   libivykis0
-Version:        0.42.1
+Name:           ivykis
+Version:        0.42.4
 Release:        0
 Summary:        An event dispatching library
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://sf.net/projects/libivykis/
-
-#Freshcode-URL:	http://freshcode.club/projects/ivykis
-#Git-Clone:	git://github.com/buytenh/ivykis
-Source:         http://downloads.sf.net/libivykis/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://sourceforge.net/projects/libivykis/
+Source:         https://downloads.sf.net/libivykis/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} || 0%{?sles_version}
-BuildRequires:  fdupes
-%endif
 
 %description
 libivykis is a thin wrapper over various OS'es implementation of I/O
@@ -40,11 +33,11 @@ readiness notification facilities (such as poll(2), kqueue(2)) and is
 mainly intended for writing portable high-performance network
 servers.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        An event dispatching library
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 libivykis is a thin wrapper over various OS'es implementation of I/O
 readiness notification facilities (such as poll(2), kqueue(2)) and is
 mainly intended for writing portable high-performance network
@@ -53,7 +46,7 @@ servers.
 %package devel
 Summary:        Development files for libivykis, an event dispatching library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 libivykis is a thin wrapper over various OS'es implementation of I/O
@@ -64,42 +57,30 @@ servers.
 This package contains the header files and development symlinks.
 
 %prep
-%if 0%{?__xz:1}
 %setup -q
-%else
-tar -xf "%{S:0}" --use=xz;
-%setup -DTq
-%endif
 
 %build
-%configure --disable-static --includedir=%_includedir/%name-%version
-make %{?_smp_mflags}
+%configure --disable-static --includedir=%{_includedir}/%{name}-%{version}
+%make_build
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
-rm -f "$b/%_libdir"/*.la;
-%if 0%{?fdupes:1}
-%fdupes %buildroot/%_prefix
-%endif
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check;
+%make_build check
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libivykis.so.0*
+%files -n %{lname}
+%{_libdir}/libivykis.so.0*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/%name-%version
-%_libdir/libivykis.so
-%_libdir/pkgconfig/ivykis.pc
-%_mandir/man3/iv*.3*
-%_mandir/man3/IV*.3*
+%{_includedir}/%{name}-%{version}
+%{_libdir}/libivykis.so
+%{_libdir}/pkgconfig/ivykis.pc
+%{_mandir}/man3/iv*.3%{?ext_man}
+%{_mandir}/man3/IV*.3%{?ext_man}
 
 %changelog

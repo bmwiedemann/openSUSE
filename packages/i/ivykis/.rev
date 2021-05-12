@@ -105,4 +105,16 @@
     <comment>- Update to new upstream release 0.42.1</comment>
     <requestid>523300</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14cecb059327c2e6d5dfe465b902a39b</srcmd5>
+    <version>0.42.4</version>
+    <time>1620840711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.42.4:
+  * iv_event: Fix crash in __iv_event_run_pending_events().  
+  * Don't install IV_FD_PUMP_INIT.3 when on a case sensitive filesystem. 
+  * iv_timer: Protect against some cases of timer memory corruption.
+  * Avoid marking pthread_atfork() as weak if provided by libc_nonshared.a.</comment>
+    <requestid>892299</requestid>
+  </revision>
 </revisionlist>
