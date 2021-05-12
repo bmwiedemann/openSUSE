@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 10:30:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- ensure rebuild to be always newer than the perl-core provided
+  version (see bsc#1185600) 
+
+-------------------------------------------------------------------
 Sun Sep 27 03:19:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.29

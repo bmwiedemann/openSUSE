@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Unicode-Collate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,22 @@
 #
 
 
+%define cpan_name Unicode-Collate
 Name:           perl-Unicode-Collate
 Version:        1.29
 Release:        0
-%define cpan_name Unicode-Collate
 Summary:        Unicode Collation Algorithm
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SA/SADAHIRO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+# special case as perl itself provides Unicode-Collate as well, however
+# in an older version. we need to rebuild on version updates
+# to ensure we are always newer than the perl-core provided version (bsc#1185600)
+%requires_eq    perl
 %{perl_requires}
 
 %description
@@ -40,10 +43,10 @@ UTS #10) - Unicode Collation Algorithm (a.k.a. UCA).
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
-make test
+%make_build test
 
 %install
 %perl_make_install
