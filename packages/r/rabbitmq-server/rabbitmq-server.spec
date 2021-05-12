@@ -33,7 +33,7 @@
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
 Name:           rabbitmq-server
-Version:        3.8.15
+Version:        3.8.16
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -55,7 +55,7 @@ Source10:       advanced.config.example
 Source11:       rabbitmq.config.example
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
-BuildRequires:  erlang >= 22.3
+BuildRequires:  erlang >= 23.2
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  libxslt
@@ -65,7 +65,7 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
-Requires:       erlang >= 22.3
+Requires:       erlang >= 23.2
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server

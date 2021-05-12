@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 11 23:02:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to RabbitMQ 3.8.16
+ * This is the first release to drop support for Erlang 22.3 and
+   introduce support for the upcoming Erlang 24 release
+ * AWS Peer Discovery Plugin was unintentionally excluded from the
+   distribution in 3.8.15 and has now been added back.
+ * Management Plugin: Messaging polling HTTP API endpoint leaked
+   temporary connections it used in case of a polling timeout.
+
+-------------------------------------------------------------------
 Fri May  7 10:29:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to RabbitMQ 3.8.15
