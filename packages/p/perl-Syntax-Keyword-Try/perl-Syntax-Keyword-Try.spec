@@ -18,7 +18,7 @@
 
 %define cpan_name Syntax-Keyword-Try
 Name:           perl-Syntax-Keyword-Try
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        C<try/catch/finally> syntax for perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -42,6 +42,13 @@ As well as providing a handy syntax for this useful behaviour, this module
 also serves to contain a number of code examples for how to implement
 parser plugins and manipulate optrees to provide new syntax and behaviours
 for perl code.
+
+Syntax similar to this module has now been added to core perl, starting at
+development version 5.33.7, and is expected to become generally available
+when perl 5.34 is released. If you are writing new code, it is suggested
+that you instead use the Feature::Compat::Try module instead, as that will
+enable the core feature on those supported perl versions, falling back to
+'Syntax::Keyword::Try' on older perls.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

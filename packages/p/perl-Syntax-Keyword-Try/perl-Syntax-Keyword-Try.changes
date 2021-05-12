@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 11 03:07:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.24    2021-05-10
+          [CHANGES]
+           * Deprecate the `try do { ... }` (experimental) syntax now that
+             try-in-do works reliably. It will be removed soon because it gets
+             in the way of converting the parser logic to XS::Parse::Keyword
+           * Add documentation about the core `use feature 'try'` and
+             Feature::Compat::Try module
+           * Added an initial attempt at B::Deparse logic
+
+-------------------------------------------------------------------
 Sun Mar 28 03:07:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.23
