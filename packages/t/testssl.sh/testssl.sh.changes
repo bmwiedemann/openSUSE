@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 10 20:33:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.5
+  * Fix off by one error in HSTS (now: 180 instead of 179 days)
+  * Fix minor output inconsistency in JSON output (Chad)
+  * Improve compatibility for OpenSSL 3.0 (David Cooper)
+  * Fix localization issue for ciphers where e.g. in Swedish W is
+    being treated as a variant of V so that the W in
+    TLS_ECDHE_RSA_WITH* didn't match the bash pattern
+  * Fixes in file openssl-iana.mapping.html (Elfranne)
+  * Fix quoting for CVE+JSON output in run_heartbleed()
+  * Fix trailing dot issue in hostnames
+  * Fix improper proper halving of the dates for Let's Encrypt
+    certificates
+
+-------------------------------------------------------------------
 Thu Nov 26 14:45:01 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 3.0.4
