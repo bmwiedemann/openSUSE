@@ -308,4 +308,39 @@
   * Extend installation attributes (61808da1)</comment>
     <requestid>827522</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a38437abf916ca0514113c0bc16b1a4c</srcmd5>
+    <version>1.55</version>
+    <time>1620840718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.55:
+  * Remove client_id/client_secret authentication (#1888) (901af8c8)
+  * Adjust to Github API changes regarding emails (#1890) (2c77cfad)
+    + This impacts what AuthenticatedUser.get_emails() returns
+  * Export headers in GithubException (#1887) (ddd437a7)
+  * Do not import from unpackaged paths in typing (#1926) (27ba7838)
+  * Implement hash for CompletableGithubObject (#1922) (4faff23c)
+  * Use right variable in both get_check_runs() (#1889) (3003e065)
+  * fix bad assertions in github.Project.edit (#1817) (6bae9e5c)
+  * Add support for deleting repository secrets (#1868) (696793de)
+  * Adding github actions secrets (#1681) (c90c050e)
+  * Drop support for Python 3.5 (#1770) (63e4fae9)
+  * Fix stubs file for Repository (fab682a5)
+  * The Github.get_installation(integer) method has been removed.
+  * Repository.create_deployment()'s payload parameter is now a dictionary.
+  * Add support for Check Suites (#1764) (6d501b28)
+  * Add missing preview features of Deployment and Deployment Statuses API
+  * Add Support for Check Runs (#1727) (c77c0676)
+  * Add WorkflowRun.workflow_id (#1737) (78a29a7c)
+  * Added support for the Self-Hosted actions runners API (#1684) (24251f4b)
+  * Fix Branch protection status in the examples (#1729) (88800844)
+  * Filter the DeprecationWarning in Team tests (#1728) (23f47539)
+  * Added get_installations() to Organizations (#1695) (b42fb244)
+  * Fix #1507: Add new Teams: Add or update team repository endpoint
+  * Added support for `Repository.get_workflow_runs` parameters
+  * feat(pullrequest): add the rebaseable attribute (#1690) (ee4c7a7e)
+  * Add support for deleting reactions (#1708) (f7d203c0)
+  * Add get_timeline() to Issue's type stubs (#1663) (6bc9ecc8)</comment>
+    <requestid>892366</requestid>
+  </revision>
 </revisionlist>
