@@ -40,8 +40,10 @@
 %define with_ldacBT 0
 %endif
 
+%bcond_with aac
+
 Name:           pipewire
-Version:        0.3.26
+Version:        0.3.27
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -56,6 +58,7 @@ BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9
 %endif
+BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -64,6 +67,9 @@ BuildRequires:  xmltoman
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
+%if %{with aac}
+BuildRequires:  pkgconfig(fdk-aac)
+%endif
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
@@ -278,13 +284,17 @@ export CC=gcc-9
 %endif
     -Dtest=enabled \
     -Daudiotestsrc=enabled \
-        -Dbluez5-codec-aac=disabled \
-        -Dbluez5-codec-aptx=disabled \
-        -Dlibcamera=disabled \
-%if %{with_ldacBT}
-        -Dbluez5-codec-ldac=enabled \
+%if %{with aac}
+    -Dbluez5-codec-aac=enabled \
 %else
-        -Dbluez5-codec-ldac=disabled \
+    -Dbluez5-codec-aac=disabled \
+%endif
+    -Dbluez5-codec-aptx=disabled \
+    -Dlibcamera=disabled \
+%if %{with_ldacBT}
+    -Dbluez5-codec-ldac=enabled \
+%else
+    -Dbluez5-codec-ldac=disabled \
 %endif
     %{nil}
 %meson_build
@@ -440,7 +450,9 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-adapter.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-client-device.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-client-node.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-echo-cancel.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-link-factory.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-loopback.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-metadata.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-portal.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-profiler.so
