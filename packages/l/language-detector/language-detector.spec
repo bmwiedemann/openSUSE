@@ -1,7 +1,7 @@
 #
 # spec file for package language-detector
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/optimaize/language-detector
 Source0:        https://github.com/optimaize/language-detector/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 8
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.guava:guava:18.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.intellij:annotations)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch

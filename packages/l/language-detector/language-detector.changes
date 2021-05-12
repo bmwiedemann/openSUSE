@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 17:54:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy version of guava
+
+-------------------------------------------------------------------
 Mon Mar  2 11:03:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging language-detector 0.6
