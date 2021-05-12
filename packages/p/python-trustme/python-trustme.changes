@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 17:12:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  - trustme can now be used a command line interface with ``python -m
+    trustme``. Get the help with ``python -m trustme --help``. 
+
+-------------------------------------------------------------------
 Thu Mar 12 07:55:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

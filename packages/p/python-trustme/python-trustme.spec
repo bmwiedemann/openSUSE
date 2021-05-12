@@ -1,7 +1,7 @@
 #
 # spec file for package python-trustme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-trustme
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Fake CA provider for Python tests
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trustme
 Source:         https://files.pythonhosted.org/packages/source/t/trustme/trustme-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
