@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  9 18:54:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+ * mkfs.exfat: adjust the boundary alignment calculations to compensate
+   for the volume offset.
+ * mkfs.exfat: add the "--pack-bitmap" option to relocate the allocation
+   bitmap to allow the FAT and the bitmap to share the same allocation
+   unit on flash media.
+ * Fix wrong bit operations on 64-bit big.
+ * Fix memory leaks in error paths.
+
+-------------------------------------------------------------------
 Wed Feb 10 07:03:06 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Switch to tar.xz tarball

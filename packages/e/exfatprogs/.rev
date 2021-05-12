@@ -86,4 +86,12 @@
 - Add exfatlabel binary and manpaeg to %files section</comment>
     <requestid>870776</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>db224db9dc28a18cc11e7b09ebefa0a9</srcmd5>
+    <version>1.1.1</version>
+    <time>1620840691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891917</requestid>
+  </revision>
 </revisionlist>
