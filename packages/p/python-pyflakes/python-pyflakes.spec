@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyflakes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-pyflakes
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Passive checker of Python programs
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 # the pkg_resources module is required at runtime
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
