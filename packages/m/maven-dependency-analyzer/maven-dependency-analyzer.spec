@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-analyzer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,10 @@ BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-lib
-#BuildRequires:  maven-project
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
@@ -80,7 +79,7 @@ build-jar-repository -s lib \
 	apache-commons-lang3 \
 	atinject \
 	commons-cli \
-	guava20/guava-10.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
 	maven/maven-artifact \
