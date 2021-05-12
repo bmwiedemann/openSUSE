@@ -243,4 +243,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>885540</requestid>
   </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>2c41ce376b0138f28d503901fc85a95d</srcmd5>
+    <version>20181130</version>
+    <time>1620840706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892097</requestid>
+  </revision>
 </revisionlist>

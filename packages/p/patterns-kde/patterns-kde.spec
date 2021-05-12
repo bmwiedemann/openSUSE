@@ -302,6 +302,7 @@ Requires:       breeze5-decoration
 Requires:       breeze5-icons
 Requires:       breeze5-style
 Requires:       plasma5-session
+Requires:       qqc2-desktop-style
 # bnc#508120
 Requires:       xdg-user-dirs
 # bnc#430161
