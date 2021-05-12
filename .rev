@@ -1353,4 +1353,32 @@
   * The anything RA getpid() function can fail to return the pid in the OCF_RESKEY_pidfile if the root user has commands in .profile which prints numeric characters. To demonstrate, /root/.profile contains: echo -e '911 WARNING: YOU ARE SUPERUSER!' Write only the pid into the pidfile.</comment>
     <requestid>885588</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>7955836c60700372e99960402a3a8265</srcmd5>
+    <version>4.8.0+git28.5c54175d</version>
+    <time>1620840700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0+git28.5c54175d:
+  * LVM-activate: Disable VG autoactivation in system_id access_mode
+  * gcp-vpc-move-vip.in: Adds retries
+  * gcp-ilb: resource wrapping nc or socat to respond to health checks (#1541)
+  * azure-events: update api_version
+  * openstack-cinder-volume: CLI output parsing fixes, fetch of node ID consistency, monitor action simplification, and proper use of osvol_validate.
+  * openstack-virtual-ip: New resource agent for virtual IP support in OpenStack.
+  * openstack-floating-ip: Proper use of osflip_validate and small log message fixes.
+  * configure: add /usr/local/share to fallback path to be scanned for docbook path
+  * openstack-info: Use OSInfo_validate in start action. (#1639)
+  (bsc#1178680) HA-LVM systemid race condition introduces an error &quot;active on 2 nodes&quot;
+
+  (bsc#1183971) L3: azure-events puts both nodes in standby
+  (bsc#1177796) ethmonitor bloats journal with warnings for VLAN
+  (bsc#1180590) azure-events URLError fixed upstream
+  (bsc#1184607) gcp-vpc-move-route resource agent file_cache is unavailable when using oauth2client
+  (bsc#1179977) L3: anything RA stop operation fails if /root/.profile has unexpected content
+  (bsc#1178977) ocf.py does not handle probe actions
+  (bsc#1175435) Last commit of a galera cluster member is not saved into grastate.dat
+  (bsc#1175101) GCP Resource Agents - Support for Multi Alias IP
+  (bsc#1170354) OCF version check for pacemaker is incompatible with the SUSE version strings</comment>
+    <requestid>892020</requestid>
+  </revision>
 </revisionlist>
