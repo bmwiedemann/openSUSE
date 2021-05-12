@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 11 23:39:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.8.7:
+  * enable SPI abuse: Limit for the block size doesn't reflect how
+    far you can push most drivers. The driver itself should complain
+    if the block size is too large.
+  * Fixed typos
+
+-------------------------------------------------------------------
 Fri Apr 17 08:15:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to versions 0.8.4:
