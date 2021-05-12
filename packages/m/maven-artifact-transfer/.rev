@@ -23,4 +23,13 @@
     <comment>Fix build breakage</comment>
     <requestid>888573</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bdd9a1ad6b86541250416cdb225385ca</srcmd5>
+    <version>0.11.0</version>
+    <time>1620840731</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use the legacy guava20 any more
+</comment>
+    <requestid>892409</requestid>
+  </revision>
 </revisionlist>

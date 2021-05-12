@@ -34,7 +34,7 @@ BuildRequires:  apache-commons-codec
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava20
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-common-artifact-filters
@@ -93,7 +93,7 @@ build-jar-repository -s lib \
 	atinject \
 	commons-cli \
 	commons-codec \
-	guava20/guava-20.0 \
+	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
 	maven-common-artifact-filters/maven-common-artifact-filters \
