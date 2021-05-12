@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 17:39:20 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy version of guava
+
+-------------------------------------------------------------------
 Thu Jan 14 17:25:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Add jersey-bom artifact to the package

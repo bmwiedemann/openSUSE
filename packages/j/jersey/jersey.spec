@@ -22,7 +22,7 @@ Version:        2.28
 Release:        0
 Summary:        JAX-RS (JSR 311) production quality Reference Implementation
 # Some files in core-server are under ASL 2.0 license
-License:        (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
 URL:            https://github.com/eclipse-ee4j/jersey
 Source0:        https://github.com/eclipse-ee4j/jersey/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
@@ -35,7 +35,7 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
-BuildRequires:  mvn(com.google.guava:guava:18.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.sun.istack:istack-commons-maven-plugin)
 BuildRequires:  mvn(com.sun:tools)
 BuildRequires:  mvn(jakarta.ws.rs:jakarta.ws.rs-api)

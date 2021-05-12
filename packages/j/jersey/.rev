@@ -15,4 +15,13 @@
     <comment>Distribute the bom artifact too</comment>
     <requestid>863249</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>daf5aafce702d9e572b72c9ed25b6f3d</srcmd5>
+    <version>2.28</version>
+    <time>1620840745</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy version of guava
+</comment>
+    <requestid>892406</requestid>
+  </revision>
 </revisionlist>
