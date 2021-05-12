@@ -64,4 +64,21 @@
     <comment></comment>
     <requestid>856864</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>147c8cc78016745e11ec004a02b44d86</srcmd5>
+    <version>2.0.10</version>
+    <time>1620840738</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.10:
+  * Add the --connect-timeout option (credit alkalim)
+  * Fix a typo in output
+  * Warn on TLSv1.1, as it's now deprecated by RFC 8996
+  * Fix a bug with LDAP STARTTLS
+  * Fix certificate detection on some broken servers
+  * Fix missing SCSV Fallback in XML output
+  * Don't show server signature algorithms by default
+  * Use --show-sigs to display them
+</comment>
+    <requestid>892437</requestid>
+  </revision>
 </revisionlist>
