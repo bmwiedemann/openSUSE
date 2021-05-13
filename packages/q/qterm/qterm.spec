@@ -1,7 +1,7 @@
 #
 # spec file for package qterm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qterm
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        QTerm is BBS client
 License:        GPL-2.0-or-later
@@ -51,7 +51,7 @@ QTerm is a full featured BBS client written in Qt.
 
 %build
 %cmake -DQT5=YES
-%make_jobs
+%make_build
 
 %install
 %cmake_install

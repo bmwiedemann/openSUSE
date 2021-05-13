@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  8 16:48:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.4
+  * No relevant changes
+- Add information about upstream issue to
+  qterm-qt5qcollectiongenerator.patch
+
+-------------------------------------------------------------------
 Sat Jan  5 12:53:22 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - fix tumbleweed build
