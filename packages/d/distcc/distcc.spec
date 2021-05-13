@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           distcc
-Version:        3.3.5
+Version:        3.4
 Release:        0
 Summary:        A distributed C/C++ compiler
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-client)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libgssglue)
 BuildRequires:  pkgconfig(pango)

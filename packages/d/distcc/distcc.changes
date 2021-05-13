@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 12 21:18:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4:
+  * distccmon-gnome ported from gtk2 to gtk3
+  * Remove debug lag in spawning new threads. (better multi-core performance)
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Sun Feb 28 17:29:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.5:
