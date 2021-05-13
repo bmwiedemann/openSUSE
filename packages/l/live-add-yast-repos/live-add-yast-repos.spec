@@ -1,7 +1,7 @@
 #
 # spec file for package live-add-yast-repos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Group:          System/YaST
 URL:            https://build.opensuse.org/package/show/system:install:head/live-add-yast-repos
 Source1:        geturls.xsl
 Source2:        gpl-2.0.txt
+BuildRequires:  distribution-release
 BuildRequires:  libxslt-tools
-BuildRequires:  openSUSE-release
+#!BuildConflicts: dummy-release
+#!BuildConflicts: MicroOS-release
 
 %description
 This package contains a script which adds all defined repositories from

@@ -31,4 +31,14 @@
     <comment>- autorefresh defaults to true (boo#1173873)</comment>
     <requestid>819372</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5f865f527a7f8e8e1055680b5cc72c60</srcmd5>
+    <version>1.0</version>
+    <time>1620937101</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore MicroOS-release to solve have choice
+
+- Don't hardcode release package name</comment>
+    <requestid>892503</requestid>
+  </revision>
 </revisionlist>

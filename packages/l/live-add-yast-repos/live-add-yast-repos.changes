@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 11:02:33 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Ignore MicroOS-release to solve have choice
+
+-------------------------------------------------------------------
+Thu Apr 15 13:00:33 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Don't hardcode release package name
+
+-------------------------------------------------------------------
 Wed Jul  8 07:27:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - autorefresh defaults to true (boo#1173873)
