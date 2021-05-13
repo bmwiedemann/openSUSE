@@ -50,4 +50,12 @@ dependency of guix</comment>
 </comment>
     <requestid>850989</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b2922e1344f11e12184be59010fe598</srcmd5>
+    <version>0.5.1</version>
+    <time>1620937124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:</comment>
+    <requestid>892666</requestid>
+  </revision>
 </revisionlist>

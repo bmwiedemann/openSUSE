@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 12 20:56:10 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 0.5.1:
+  * Fix crash when using ‘config-foreach’ or ‘config-fold’
+  * commit: Prevent dangling repository references
+  * New diff bindings in (git diff)
+  * New configuration parsing support in (git config)
+  * New tag procedures: ‘tag-fold’, ‘tag-foreach’
+  * New tree procedures: ‘tree-entry-byname’, ‘tree-entry-type’
+  * New remote procedures: ‘remote-url’, ‘remote-set-url!’
+  * Submodule interface changes 
+
+-------------------------------------------------------------------
 Fri Nov  6 17:29:36 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to version 0.4.0:
