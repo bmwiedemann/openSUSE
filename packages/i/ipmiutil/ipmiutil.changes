@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 17:56:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1.7
+  * Add SDR conflict 0xC5 handling retries with delay
+  * Minor bug fixes
+
+-------------------------------------------------------------------
 Sun Aug 16 14:04:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.6:

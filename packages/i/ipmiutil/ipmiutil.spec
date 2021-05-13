@@ -1,7 +1,7 @@
 #
 # spec file for package ipmiutil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Andy Cress
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %{!?_unitdir: %define _unitdir  %{_prefix}/lib/systemd/system}
 Name:           ipmiutil
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Easy-to-use IPMI server management utilities
 License:        BSD-3-Clause
 Group:          System/Management
 URL:            http://ipmiutil.sourceforge.net
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/ipmiutil/files/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
