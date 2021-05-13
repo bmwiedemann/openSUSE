@@ -1,0 +1,5 @@
+<package name="python-solo-python" project="openSUSE:Factory">
+  <title>Python library for SoloKeys</title>
+  <description>Python tool and library for SoloKeys</description>
+  <devel project="security" package="python-solo-python"/>
+</package>

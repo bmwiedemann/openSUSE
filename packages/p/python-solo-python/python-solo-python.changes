@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed May 12 19:16:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We don't actually need single-spec, this is just one command,
+  so we can use just primary_python.
+- Use already existing intelhex package, not develop new one.
+
+-------------------------------------------------------------------
+Fri Apr  2 17:12:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of solo 0.0.27
