@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           ceph-csi
-Version:        3.2.1+git0.bf0cc1032
+Version:        3.3.1+git0.a07260f19
 Release:        0
 Summary:        Container Storage Interface driver for Ceph block and file
 License:        Apache-2.0

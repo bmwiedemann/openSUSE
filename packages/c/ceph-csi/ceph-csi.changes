@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  7 13:14:33 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to 3.3.1
+  * Build
+    * Update ceph to 15.2.11
+    * Fix helm chart push issue
+  * RBD
+    * Modified logic to check image watchers to avoid already in use issue for mirroring image
+    * Return crypt error for the rpc return
+
+-------------------------------------------------------------------
 Mon Mar 29 22:17:28 UTC 2021 - Mike Latimer <mlatimer@suse.com>
 
 - Update to 3.2.1
