@@ -249,4 +249,18 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
     <comment></comment>
     <requestid>866420</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9a0b40a2f0052fd84aca199b8d6a56c0</srcmd5>
+    <version>1.2.21</version>
+    <time>1620937085</time>
+    <user>dimstar_suse</user>
+    <comment>- remove stale _service and fix Source url 
+
+- update to 1.2.21:
+  * minor bug fixes
+  * Support some missing types like nullable unsigned smallint
+- add baselibs.conf to allow building of i586 libraries (necessary
+  to use the driver for programs running under wine)</comment>
+    <requestid>892166</requestid>
+  </revision>
 </revisionlist>

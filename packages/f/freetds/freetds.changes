@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 11 07:04:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove stale _service and fix Source url 
+
+-------------------------------------------------------------------
+Sun May 09 18:28:41 UTC 2021 - brassh@web.de
+
+- update to 1.2.21:
+  * minor bug fixes
+  * Support some missing types like nullable unsigned smallint
+- add baselibs.conf to allow building of i586 libraries (necessary
+  to use the driver for programs running under wine)
+
+-------------------------------------------------------------------
 Sun Jan 24 18:53:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.18:

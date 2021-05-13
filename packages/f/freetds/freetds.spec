@@ -17,12 +17,13 @@
 
 
 Name:           freetds
-Version:        1.2.18
+Version:        1.2.21
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.freetds.org/
-Source:         https://www.freetds.org/files/stable/freetds-1.2.18.tar.gz
+Source:         https://www.freetds.org/files/stable/freetds-%{version}.tar.gz
+Source1:        baselibs.conf
 Patch0:         configure-return-void-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -58,7 +59,7 @@ them.
 
 %package    tools
 Summary:        Applications for working with the TDS (Tabular Data Stream) protocol
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 
 %description tools
 FreeTDS is a project to document and implement the TDS (Tabular Data Stream)
@@ -112,7 +113,7 @@ for several kinds of servers.
 
 %package    doc
 Summary:        User documentation for FreeTDS
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 
 %description doc
 The freetds-doc package contains the useguide and reference of FreeTDS
@@ -154,6 +155,7 @@ find %{buildroot}%{_sysconfdir}  -type f -print0 | xargs -0 chmod -x
 %postun -n libct4 -p /sbin/ldconfig
 %post   -n libsybdb5 -p /sbin/ldconfig
 %postun -n libsybdb5 -p /sbin/ldconfig
+
 %post -n libtdsodbc0
 echo "[FreeTDS]
 Description = FreeTDS unixODBC Driver
@@ -166,6 +168,7 @@ Setup = %{_libdir}/libtdsodbc.so.0" | odbcinst -i -d -r || true
 /sbin/ldconfig
 
 %postun -n libtdsodbc0 -p /sbin/ldconfig
+
 %preun -n libtdsodbc0
 odbcinst -u -d -n 'FreeTDS'
 odbcinst -u -d -n 'SQL Server'
