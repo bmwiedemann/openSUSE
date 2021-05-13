@@ -31,4 +31,22 @@
     <comment></comment>
     <requestid>865313</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b1bfd5d02045e09ae87a3e0395c5f80</srcmd5>
+    <version>0.0.10</version>
+    <time>1620937120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.10.
+  * Minor bug fixes
+  * Function that writes sidpy.Dataset to USID formatted HDF5 files.
+  * Refactoring
+    * Renamed numpy_translator to array_translator
+    * Renamed write_utils to anc_build_utils
+    * Separate module for Dimension
+    * Removed unnecessary files like dtype_utils, io_utils
+    * Updated imports to use sidpy instead of pyUSID
+- Remove fix_tests_h5py-3.0.patch as it has been upstreamed.
+</comment>
+    <requestid>892621</requestid>
+  </revision>
 </revisionlist>

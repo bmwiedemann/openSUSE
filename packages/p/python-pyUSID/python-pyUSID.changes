@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 20:16:29 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.0.10.
+  * Minor bug fixes
+  * Function that writes sidpy.Dataset to USID formatted HDF5 files.
+  * Refactoring
+    * Renamed numpy_translator to array_translator
+    * Renamed write_utils to anc_build_utils
+    * Separate module for Dimension
+    * Removed unnecessary files like dtype_utils, io_utils
+    * Updated imports to use sidpy instead of pyUSID
+- Remove fix_tests_h5py-3.0.patch as it has been upstreamed.
+
+-------------------------------------------------------------------
 Wed Jan 20 19:19:11 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python36 because sidpy has no python36 build.
