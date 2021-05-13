@@ -17,7 +17,7 @@
 
 
 Name:           virt-what
-Version:        1.20
+Version:        1.21
 Release:        0
 Summary:        Detect if running in a virtual machine
 License:        GPL-2.0-or-later

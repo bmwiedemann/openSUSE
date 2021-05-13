@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 22:07:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21:
+  * Nutanix Acropolis Hypervisor detection
+  * podman detection
+
+-------------------------------------------------------------------
 Mon Jan 27 18:33:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add "which" to Requires

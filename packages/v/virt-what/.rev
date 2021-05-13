@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>768546</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>813ea80f6e440ceac60671e559a96be5</srcmd5>
+    <version>1.21</version>
+    <time>1620937117</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21:
+  * Nutanix Acropolis Hypervisor detection
+  * podman detection</comment>
+    <requestid>892602</requestid>
+  </revision>
 </revisionlist>
