@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 10 22:41:00 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 1.52.1:
+  - This release works around broken builds on 1.52.0, which are caused by newly
+    added verification. The bugs this verification detects are present in all
+    Rust versions, and can trigger miscompilations in incremental builds, so
+    downgrading to a prior stable version is not a fix.
+  - What should a Rust programmer do in response?
+    - upgrade to 1.52.1
+    - deleting your incremental compilation cache (e.g. by running cargo clean)
+    - forcing incremental compilation to be disabled, by setting
+      CARGO_INCREMENTAL=0 in your environment or build.incremental to false in
+      the config.toml.
+  - For more: https://blog.rust-lang.org/2021/05/10/Rust-1.52.1.html
+
+-------------------------------------------------------------------
 Fri May  7 00:29:37 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update to version 1.52:

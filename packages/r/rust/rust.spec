@@ -17,7 +17,7 @@
 #
 
 
-%global version_current 1.52.0
+%global version_current 1.52.1
 %global version_previous 1.51.0
 %global version_bootstrap 1.51.0
 
