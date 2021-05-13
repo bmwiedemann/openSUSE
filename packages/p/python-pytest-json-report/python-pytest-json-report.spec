@@ -25,13 +25,14 @@ Summary:        A pytest plugin to report test results as JSON files
 License:        MIT
 URL:            https://github.com/numirias/pytest-json-report
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-json-report/pytest-json-report-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Patch1:         version_compatibility.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest-metadata}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pytest-metadata}
+BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pytest
@@ -44,6 +45,7 @@ A pytest plugin to report test results as JSON files
 
 %prep
 %setup -q -n pytest-json-report-%{version}
+%patch1 -p1
 
 %build
 %python_build

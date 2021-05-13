@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 16:02:14 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Add version_compatibility.patch to enable package with older
+  versions of pytest and flaky.
+
+-------------------------------------------------------------------
 Tue Apr 27 20:01:43 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
 
 - Initial release (2021-04-27)
