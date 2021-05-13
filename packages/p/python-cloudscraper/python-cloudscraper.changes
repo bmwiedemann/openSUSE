@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 17:06:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace nodejs10 BuildRequires with nodejs-default:
+  + Use the distro-provided default version of nodejs without
+    pinning to an old version.
+
+-------------------------------------------------------------------
 Wed May  5 09:09:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.2.58:

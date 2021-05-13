@@ -35,7 +35,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.2}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module responses}
-BuildRequires:  nodejs10
+BuildRequires:  nodejs-default
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pyparsing >= 2.4.7
