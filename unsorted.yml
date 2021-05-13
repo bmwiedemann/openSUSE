@@ -16922,9 +16922,6 @@ unsorted:
   - nodejs10 
   - nodejs10-devel 
   - nodejs10-docs 
-  - nodejs15: [x86_64] 
-  - nodejs15-devel: [x86_64] 
-  - nodejs15-docs: [x86_64] 
   - nodejs16-devel 
   - nodejs16-docs 
   - noisetorch 
@@ -17172,7 +17169,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10 
-  - npm15: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -20986,6 +20982,7 @@ unsorted:
   - python-sip4-common 
   - python-sip4-doc 
   - python-six-doc 
+  - python-solo-python: [i586] 
   - python-solv 
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
