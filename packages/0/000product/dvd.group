@@ -615,6 +615,7 @@
     <package name="glabels" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glabels-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glade" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="glade-catalog-gtkdatabox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glade-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="glib-networking" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="glib-networking-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1650,7 +1651,7 @@
     <package name="libamtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libaom2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libaom3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2088,6 +2089,7 @@
     <package name="libgtk-3-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgtk-4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtk-vnc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgtkdatabox1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkhex-3-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkimageview0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkmm-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5363,6 +5365,7 @@
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
