@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  4 09:46:14 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.14
+  * nvme-discover: add json output
+  * nvme: add support for lba status log page
+  * nvme: add support for endurance group event aggregate log
+  * nvme: add endurance group event configuration feature
+  * nvme: add latest opcodes for command supported and effects log
+  * zns: print select_all field for Zone Management Send
+  * print topology for NVMe nodes in kernel and path
+  * nvme: add support for predictable latency event aggregate log page
+  * nvme: add support for persistent event log page
+  * Show more async event config fields
+
+-------------------------------------------------------------------
 Fri Nov 13 17:46:38 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop '-f' option with %service_del_postun
