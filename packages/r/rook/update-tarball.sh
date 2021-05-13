@@ -5,7 +5,7 @@ set -xEeuo pipefail
 #ROOK_REPO="github.com/rook/rook"
 #ROOK_REV="v1.4.0"
 ROOK_REPO="github.com/SUSE/rook"
-ROOK_REV="suse-release-1.5"
+ROOK_REV="suse-release-1.6"
 
 if ! command -V go;
 then

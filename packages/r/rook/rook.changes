@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri May  7 11:57:36 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.6.2
+  * Set base Ceph operator image and example deployments to v16.2.2
+  * Update snapshot APIs from v1beta1 to v1
+  * Documentation for creating static PVs
+  * Allow setting primary-affinity for the OSD
+  * Remove unneeded debug log statements
+  * Preserve volume claim template annotations during upgrade
+  * Allow re-creating erasure coded pool with different settings
+  * Double mon failover timeout during a node drain
+  * Remove unused volumesource schema from CephCluster CRD
+  * Set the device class on raw mode osds
+  * External cluster schema fix to allow not setting mons
+  * Add phase to the CephFilesystem CRD
+  * Generate full schema for volumeClaimTemplates in the CephCluster CRD
+  * Automate upgrades for the MDS daemon to properly scale down and scale up
+  * Add Vault KMS support for object stores
+  * Ensure object store endpoint is initialized when creating an object user
+  * Support for OBC operations when RGW is configured with TLS
+  * Preserve the OSD topology affinity during upgrade for clusters on PVCs
+  * Unify timeouts for various Ceph commands
+  * Allow setting annotations on RGW service
+  * Expand PVC size of mon daemons if requested
+
+- Update to v1.6.1
+  * Disable host networking by default in the CSI plugin with option to enable
+  * Fix the schema for erasure-coded pools so replication size is not required
+  * Improve node watcher for adding new OSDs
+  * Operator base image updated to v16.2.1
+  * Deployment examples updated to Ceph v15.2.11
+  * Update Ceph-CSI to v3.3.1
+  * Allow any device class for the OSDs in a pool instead of restricting the schema
+  * Fix metadata OSDs for Ceph Pacific
+  * Allow setting the initial CRUSH weight for an OSD
+  * Fix object store health check in case SSL is enabled
+  * Upgrades now ensure latest config flags are set for MDS and RGW
+  * Suppress noisy RGW log entry for radosgw-admin commands
+
+- Update to v1.6.0
+  * Removed Storage Providers
+    * CockroachDB
+    * EdgeFS
+    * YugabyteDB
+  * Ceph
+    * Support for creating OSDs via Drive Groups was removed.
+    * Ceph Pacific (v16) support
+    * CephFilesystemMirror CRD to support mirroring of CephFS volumes with Pacific
+    * Ceph CSI Driver
+      * CSI v3.3.0 driver enabled by default
+      * Volume Replication Controller for improved RBD replication support
+      * Multus support
+      * GRPC metrics disabled by default
+    * Ceph RGW
+      * Extended the support of vault KMS configuration
+      * Scale with multiple daemons with a single deployment instead of a separate deployment for each rgw daemon
+    * OSDs
+      * LVM is no longer used to provision OSDs
+      * More efficient updates for multiple OSDs at the same time
+
+    * Multiple Ceph mgr daemons are supported for stretch clusters 
+      and other clusters where HA of the mgr is critical (set count: 2 under mgr in the CephCluster CR)
+    * Pod Disruption Budgets (PDBs) are enabled by default for Mon, 
+      RGW, MDS, and OSD daemons. See the disruption management settings.
+    * Monitor failover can be disabled, for scenarios where 
+      maintenance is planned and automatic mon failover is not desired
+    * CephClient CRD has been converted to use the controller-runtime library
+
+-------------------------------------------------------------------
 Wed Apr 21 12:38:54 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
 
 - Update to v1.5.10
