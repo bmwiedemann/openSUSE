@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 12 21:08:03 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 4.5.2:
+  * Add missing modules to record.scm.
+  * Allow false values in JSON mappings.
+  * Introduce (define-json-type)
+  * Fixed a few parsing issues from JSON Parsing Test Suite 
+
+-------------------------------------------------------------------
 Fri Nov  6 17:32:37 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 4.4.0:
