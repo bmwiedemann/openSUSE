@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 10:13:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.38.2
+  * Support for creating notebook sessions with larger block volumes in the Data Science service
+  * Support for database maintenance run patch modes in the Database service
+  * Fixed a bug where `timeout=None` was not respected when passed to clients. The older
+    versions of the SDK still use the default connection timeout(10s) and read timeout(60s)
+    when initialized with `timeout=None`
+  * Improvement in the performance of Upload Manager for parallel uploads. This is achieved
+    by overriding the default read size of Python HTTP client from 8192 bytes to 64 kb.
+
+-------------------------------------------------------------------
 Wed May 12 12:50:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.38.1
