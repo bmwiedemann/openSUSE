@@ -3360,6 +3360,7 @@ unsorted:
   - extra-cmake-modules-doc 
   - extra166y 
   - extra166y-javadoc 
+  - extrace 
   - extract-appdata-icons 
   - extractpdfmark 
   - extreme-tuxracer 
@@ -6337,6 +6338,9 @@ unsorted:
   - gtkam-doc 
   - gtkam-lang 
   - gtkd-devel 
+  - gtkdatabox-devel 
+  - gtkdatabox-devel-examples 
+  - gtkdatabox-gtk-doc 
   - gtkglext-devel 
   - gtkglext-doc 
   - gtkgreet 
@@ -9395,7 +9399,7 @@ unsorted:
   - libao4-32bit: [x86_64] 
   - libaom-devel 
   - libaom-devel-doc 
-  - libaom2-32bit: [x86_64] 
+  - libaom3-32bit: [x86_64] 
   - libapparmor-devel 
   - libappindicator-devel 
   - libappindicator1 
@@ -10545,7 +10549,7 @@ unsorted:
   - libfl-devel-32bit: [x86_64] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
-  - libflatbuffers1 
+  - libflatbuffers2 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
@@ -15786,6 +15790,7 @@ unsorted:
   - miao-fonts 
   - microcom 
   - microdnf: [i586] 
+  - microos-devel-tools 
   - microos-tools: [i586] 
   - midori 
   - midori-devel 
@@ -21857,6 +21862,7 @@ unsorted:
   - python36-azure-mgmt-servermanager 
   - python36-azure-mgmt-servicebus 
   - python36-azure-mgmt-servicefabric 
+  - python36-azure-mgmt-servicefabricmanagedclusters 
   - python36-azure-mgmt-signalr 
   - python36-azure-mgmt-sql 
   - python36-azure-mgmt-sqlvirtualmachine 
@@ -23563,7 +23569,6 @@ unsorted:
   - python36-qtwebengine-qt5 
   - python36-qtwebengine-qt5-api 
   - python36-qtwebengine-qt5-sip 
-  - python36-quantum-blackbird: [i586] 
   - python36-queuelib 
   - python36-quicktions 
   - python36-radexreader 
@@ -24644,6 +24649,7 @@ unsorted:
   - python38-azure-mgmt-servermanager 
   - python38-azure-mgmt-servicebus 
   - python38-azure-mgmt-servicefabric 
+  - python38-azure-mgmt-servicefabricmanagedclusters 
   - python38-azure-mgmt-signalr 
   - python38-azure-mgmt-sql 
   - python38-azure-mgmt-sqlvirtualmachine 
@@ -25794,8 +25800,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_20_1-gnu-hpc 
-  - python38-numpy_1_20_1-gnu-hpc-devel 
+  - python38-numpy_1_20_2-gnu-hpc 
+  - python38-numpy_1_20_2-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -27561,6 +27567,7 @@ unsorted:
   - python39-azure-mgmt-servermanager 
   - python39-azure-mgmt-servicebus 
   - python39-azure-mgmt-servicefabric 
+  - python39-azure-mgmt-servicefabricmanagedclusters 
   - python39-azure-mgmt-signalr 
   - python39-azure-mgmt-sql 
   - python39-azure-mgmt-sqlvirtualmachine 
@@ -28710,6 +28717,7 @@ unsorted:
   - python39-neovim 
   - python39-neovim-remote 
   - python39-nest-asyncio 
+  - python39-net-snmp 
   - python39-netCDF4 
   - python39-netaddr 
   - python39-netifaces 
@@ -28754,8 +28762,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_20_1-gnu-hpc 
-  - python39-numpy_1_20_1-gnu-hpc-devel 
+  - python39-numpy_1_20_2-gnu-hpc 
+  - python39-numpy_1_20_2-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -29419,7 +29427,7 @@ unsorted:
   - python39-qtwebengine-qt5-api 
   - python39-qtwebengine-qt5-sip 
   - python39-quantities 
-  - python39-quantum-blackbird: [x86_64] 
+  - python39-quantum-blackbird 
   - python39-queuelib 
   - python39-quicktions 
   - python39-quimb: [x86_64] 
@@ -30776,7 +30784,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
