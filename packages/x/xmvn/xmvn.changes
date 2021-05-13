@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 13 10:07:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Require the maven-libs we built against in order to avoid hanging
+  symlinks
+
+-------------------------------------------------------------------
 Mon May 11 08:02:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Do not use %%pretrans

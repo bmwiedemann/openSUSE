@@ -39,4 +39,12 @@
     <comment>pretrans -&gt; pre</comment>
     <requestid>802616</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>028cd56f607ddee4c373699735be42b9</srcmd5>
+    <version>3.1.0</version>
+    <time>1620937125</time>
+    <user>dimstar_suse</user>
+    <comment>maven-libs and xmvn-minimal must be in sync</comment>
+    <requestid>892670</requestid>
+  </revision>
 </revisionlist>

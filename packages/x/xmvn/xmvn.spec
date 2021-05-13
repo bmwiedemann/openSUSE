@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Group:          Development/Tools/Building
 Requires:       %{name}-api = %{version}
 Requires:       %{name}-connector-aether = %{version}
 Requires:       %{name}-core = %{version}
-Requires:       maven-lib >= 3.4.0
+%requires_eq    maven-lib
 
 %description    minimal
 This package provides minimal version of XMvn, incapable of using
