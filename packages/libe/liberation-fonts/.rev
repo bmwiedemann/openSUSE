@@ -208,4 +208,12 @@ The correct license from the spreadsheet linked at license.opensuse.org (forward
     <comment>- Update to release 2.1.3</comment>
     <requestid>874519</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e9dcdb2e128d822f9b0d9dc636142131</srcmd5>
+    <version>2.1.4</version>
+    <time>1620937084</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>892164</requestid>
+  </revision>
 </revisionlist>

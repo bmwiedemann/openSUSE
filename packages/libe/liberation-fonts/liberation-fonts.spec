@@ -17,14 +17,14 @@
 
 
 Name:           liberation-fonts
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Liberation Fonts
 License:        SUSE-Liberation
 Group:          System/X11/Fonts
-URL:            https://fedorahosted.org/liberation-fonts/
-Source:         https://github.com/liberationfonts/liberation-fonts/files/6026893/liberation-fonts-ttf-2.1.3.tar.gz
-Source100:      %{name}-rpmlintrc
+URL:            https://github.com/liberationfonts/liberation-fonts
+Source:         https://github.com/liberationfonts/liberation-fonts/files/6418984/liberation-fonts-ttf-2.1.4.tar.gz
+Source9:        %{name}-rpmlintrc
 BuildRequires:  fontpackages-devel
 Provides:       locale(bg;el;ru;bg)
 Obsoletes:      liberation2-fonts < 2
@@ -41,14 +41,14 @@ and "Courier New".
 %build
 
 %install
-mkdir -p %{buildroot}%{_ttfontsdir}
-install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
+mkdir -p %{buildroot}/%{_ttfontsdir}
+install -m 0644 *.ttf %{buildroot}/%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets
 
 %files
 %license LICENSE
 %doc AUTHORS ChangeLog README.md
-%{_ttfontsdir}
+%{_ttfontsdir}/
 
 %changelog

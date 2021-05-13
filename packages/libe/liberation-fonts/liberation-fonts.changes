@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 05:25:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.4
+  * Superscript and subscript numbers were added (U+2074..2089)
+  * Added astrological symbols (U+263F..2647)
+
+-------------------------------------------------------------------
 Tue Feb 23 09:06:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.3
