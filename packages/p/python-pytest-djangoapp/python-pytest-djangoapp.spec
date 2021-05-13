@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-djangoapp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-djangoapp
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Pytest plugin for Django pluggable application testing
 License:        BSD-3-Clause
@@ -29,14 +29,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
-Requires:       python-pytest
 Requires:       python-mock
+Requires:       python-pytest
 Recommends:     python-ipdb
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
