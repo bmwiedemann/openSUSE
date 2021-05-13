@@ -1,7 +1,7 @@
 #
 # spec file for package python-distorm3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname distorm3
 Name:           python-%{modname}
-Version:        3.5.0
+Version:        3.5.2
 Release:        0
 Summary:        Disassembler Library For x86/AMD64
 License:        BSD-3-Clause

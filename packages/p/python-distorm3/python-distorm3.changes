@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 12 21:22:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * fixed signedd of 32 bits immediates in formatting code
+  * fix for default segment in MEM/DISP for 64 bits
+  * added registers list for used registers in every instruction in python
+
+-------------------------------------------------------------------
 Wed Jul  1 05:54:34 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.5.0:

@@ -149,4 +149,15 @@
   * No upstream changelog.</comment>
     <requestid>817970</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>56fb16207e910370d218da0c8dcd4f65</srcmd5>
+    <version>3.5.2</version>
+    <time>1620937117</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.2:
+  * fixed signedd of 32 bits immediates in formatting code
+  * fix for default segment in MEM/DISP for 64 bits
+  * added registers list for used registers in every instruction in python</comment>
+    <requestid>892587</requestid>
+  </revision>
 </revisionlist>
