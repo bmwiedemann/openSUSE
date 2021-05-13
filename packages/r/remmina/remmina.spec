@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.13
+Version:        1.4.15
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gvnc-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
@@ -167,6 +168,15 @@ Requires:       remmina = %{version}
 %description plugin-vnc
 This package provides the RDP protocol plugin for Remmina.
 
+%package plugin-gvnc
+Summary:        VNC Protocol Plugin for Remmina via GTK+ widget
+Group:          Productivity/Networking/Other
+Requires:       remmina = %{version}
+
+%description plugin-gvnc
+This package provides the RDP protocol plugin for Remmina using the
+VNC viewer widget for GTK+.
+
 %package plugin-www
 Summary:        WWW Protocol Plugin for Remmina
 Group:          Productivity/Networking/Other
@@ -201,9 +211,9 @@ export CFLAGS="$CFLAGS -fPIC"
 %endif
 
 %if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
-%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_KF5WALLET=ON
+%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_KF5WALLET=ON -DWITH_GVNC=ON
 %else
-%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_APPINDICATOR=OFF
+%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_APPINDICATOR=OFF -DWITH_GVNC=ON
 %endif
 
 %make_build
@@ -273,6 +283,12 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %icon_theme_cache_post
 
 %postun plugin-vnc
+%icon_theme_cache_postun
+
+%post  plugin-gvnc
+%icon_theme_cache_post
+
+%postun plugin-gvnc
 %icon_theme_cache_postun
 
 %post  plugin-www
@@ -366,6 +382,10 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_libdir}/remmina/plugins/remmina-plugin-vnc.so
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-vnc-ssh-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-vnc-symbolic.svg
+
+%files plugin-gvnc
+%{_libdir}/remmina/plugins/remmina-plugin-gvnc.so
+%{_datadir}/icons/hicolor/scalable/emblems/remmina-gvnc-symbolic.svg
 
 %files plugin-www
 %{_libdir}/remmina/plugins/remmina-plugin-www.so

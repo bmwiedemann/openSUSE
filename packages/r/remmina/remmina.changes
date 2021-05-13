@@ -1,7 +1,43 @@
 -------------------------------------------------------------------
+Tue May 11 10:02:14 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 1.4.15
+  * Fixing SSH plugin colour palette initialization. !2255
+
+-------------------------------------------------------------------
+Mon May 10 13:56:37 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 1.4.14
+  * NEW: Experimental VNC plugin using GTK-VNC
+
+  * VNC - Ignore remote Bell option and other fixes !2237
+  * Fixing color palette size for themed SSH !2253
+  * Bump FreeRDP version to 2.3.2 !2226
+  * Fixes search bar shortcuts wrong bahavior
+  * Honour theme settings when run from command line
+  * FTP UI improvements
+  * Config SSH tunnel username takes precedence.
+  * Allow groups to be expanded and collapsed by using the keyboard
+  * Fixing VNC repeater logic.
+  * Send text clipboard content as keystrokes
+  * scrolled viewport: explicitly recheck whether the timeout is active
+  * Resolve Host+Page_Down triggers search text in SSH
+  * UNIX sockets initial support
+  * Fixed wrong freerdp_settings function use
+  * Fixing RemminaConnectionWindow map/unmap events
+  * Spelling: Comma-separated, List monitor IDs
+  * Set Remmina specific FreeRDP config data folder
+  * Optional port connection instead of server
+  * Resolve "Use LZO compression for Snap to improve startup speed"
+  * Make wayland not mandatory during compile time
+  * Do not use alpha as it is not used for the Desktop
+  * Refactoring: Deprecations and warnings
+  * Removing unneeded widgets in the headerbar
+
+-------------------------------------------------------------------
 Thu Apr  8 12:38:02 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 1.4.13:
+- Update to 1.4.13
   * Use freerdp_settings_get|set API 
   * rdp: Allow autoreconnect for ERRINFO_GRAPHICS_SUBSYSTEM_FAILED
   * Disable cert file auth when libssh < 0.9.0 
