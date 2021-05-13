@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Wed May 12 12:50:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.38.1
+  * Support for the Operator Access Control service
+  * Support for the Service Catalog service
+  * Support for the AI Language service
+  * Support for autonomous database on Exadata Cloud at Customer
+    infrastructure patching in the Database service
+- from version 2.38.0
+  * Support for RACs (real application clusters) for external container,
+    non-container, and pluggable databases in the Database service
+  * Support for data masking in the Cloud Guard service
+  * Support for opting out of DNS records during instance launch, as well as
+    attaching secondary VNICs, in the Compute service
+  * Support for mutable sizes on cluster networks in the Autoscaling service
+  * Support for auto-tiering on buckets in the Object Storage service
+  * VCN id parameters were moved from being required to being optional on
+    all list operations in the Networking service
+- from version 2.37.0
+  * Support for opting in/out of live migration on instances in the Compute service
+  * Support for enabling/disabling Operations Insights on external non-container
+    and external pluggable databases in the Database service
+  * Support for a GraphStudio URL as a connection URL on databases in the Database service
+  * Support for adding customer contacts on autonomous databases in the Database service
+  * Support for name annotations on harvested objects in the Data Catalog service
+  * If retries are enabled, the SDK will now retry on status 409/IncorrectState.
+    It will not retry on status 501.
+  * Bumped cryptography version to 3.3.2 to address security vulnerability
+    https://github.com/oracle/oci-python-sdk/pull/322
+- from version 2.36.0
+  * Support for the Database Migration service
+  * Support for the Networking Topology service
+  * Support for getting the id of peered VCNs on local peering
+    gateways in the Networking service
+  * Support for burstable instances in the Compute service
+  * Support for preemptible instances in the Compute service
+  * Support for fractional resource usage and availability in the Limits service
+  * Support for streaming analytics in the Service Connector Hub service
+  * Support for flexible routing inside DRGs to enable packet flow between
+    any two attachments in the Networking service
+  * Support for routing policy to customize dynamic import/export
+    of routes in the Networking service
+  * Support for IPv6, including on FastConnect and IPsec resources,
+    in the Networking service
+  * Support for request validation policies in the API Gateway service
+  * Support for RESP-compliant (e.g. REDIS) response caches, and for
+    configuring response caching per-route in the API Gateway service
+  * Support for flexible billing in the VMWare Solution service
+  * Support for new DNS format for the Web Application Acceleration and Security service
+  * Support for configuring APM tracing on applications and functions in the Functions service
+  * Support for Enterprise Manager external databases and Management Agent Service
+    managed external databases and hosts in the Operations Insights service
+  * Support for getting cluster cache metrics for RAC CDB managed databases
+    in the Database Management service
+  * Removed response codes `200`, `201`, `202`, `204`, `206`, `300`, `301`, `302`, `303`, `304`,
+    `307` and `444` from attribute `block_response_code` in model `AddressRateLimiting` in the
+    Web Application Acceleration and Security Service
+  * `VcnId` was made optional in CreateDrgAttachmentDetails model under Core services.
+  * The property `IsInternetAccessAllowed` was removed from CreateIpv6Details
+    model under Core services.
+  * The property `Ipv6CidrBlock` was removed from CreateVcnDetails model under Core services.
+  * The property `PublicIpAddress` and `IsInternetAccessAllowed` were
+    removed from Ipv6 model under Core services.
+  * Required property `PeerId` was added to LocalPeeringGateway model under Core services.
+  * The property `Ipv6PublicCidrBlock` was removed from Subnet model under Core services.
+  * The property `Ipv6PublicCidrBlock` was replaced by `Ipv6CidrBlocks`
+    in Vcn model in Core services.
+  * Required property `CurrentSku` was added under CreateEsxiHostDetails under Ocvp service.
+  * Required property `InitialSku` was added under CreateSddcDetails under Ocvp service.
+  * Required properties `BillingContractEndDate`, `NextSku` & `CurrentSku`
+    were added under EsxiHost under Ocvp service.
+  * Required properties `BillingContractEndDate`, `NextSku` & `CurrentSku`
+    were added under EsxiHostSummary under Ocvp service.
+  * Required property `InitialSku` was added under Sddc under Ocvp service.
+  * Required property `Id` was added under DatabaseDetails under Opsi service.
+  * `compartment_id` and `database_id` are now optional in operation
+    `ingest_sql_bucket` under Opsi service.
+  * `compartment_id` and `database_id` are now optional in operation
+    `ingest_sql_plan_lines` under Opsi service.
+  * `compartment_id` and `database_id` are now optional in operation
+    `ingest_sql_text` under Opsi service.
+  * `compartment_id` is now optional in operation `list_database_insights`
+     under Opsi service.
+  * `database_id` is now optional in operation `list_sql_plans` under Opsi service.
+  * `database_id` is now optional in operation `summarize_sql_response_time_distributions`
+    under Opsi service.
+  * `database_id` is now optional in operation `summarize_sql_statistics_time_series_by_plan`
+    under Opsi service.
+  * `database_id` is now optional in operation `summarize_sql_plan_insights` under Opsi service.
+  * Value of attribute `model_type` in model `ConnectionDetails` in Data Integration service
+    defaults to UNKNOWN_ENUM_VALUE when it receives an invalid value. In the earlier versions,
+    this raises a ValueError
+- from version 2.35.1
+  * Support for scheduling the suspension and resumption of compute instance pools based
+    on predefined schedules in the Autoscaling service
+  * Support for database software images for Cloud@Customer in the Database service
+  * Support for OCIC IDCS authorization details in the Application Migration service
+  * Support for cross-region asynchronous volume replication in the Block Storage service
+  * Support for SDK generation in the API Gateway service
+  * Support for container image signing in the Registry service
+  * Support for cluster features as a part of the Container Engine for Kubernetes service
+  * Support for filtering dedicated virtual machine hosts by remaining memory
+    and OCPUs in the Compute service
+  * Support for read/write-any object from buckets using pre-authenticated requests
+    in the Object Storage service
+  * Support for restricting pre-authenticated requests by prefix in the Object Storage service
+  * Support for route filtering on public virtual circuits in the Virtual Networking service
+  * Support for calculating content length of a non-resettable stream for binary uploads.
+    A non-resettable stream will be buffered into memory to calculate the content length.
+    A buffer_limit may be passed into the request to provide a buffer limit. The default
+    buffer limit is 100 MiB. More documentation can be found here:
+    https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/sdk_behaviors/index.html
+- from version 2.35.0
+  * Support for the Vulnerability Scanning service
+  * Support for vSphere 7.0 in the VMware Solution service
+  * Support for forecasting in the Usage service
+  * Support for viewing, searching, and modifying parameters for on-premise
+    Oracle databases in the Database Management service
+  * Support for listing tablespaces of managed databases in the Database Management service
+  * Support for cross-regional replication of keys in the Key Management service
+  * Support for highly-available database systems in the MySQL Database service
+  * Support for Oracle Enterprise Manager bridges, source auto-association, source event
+    type mappings, and plugins to upload data in the Logging Analytics service
+  * Name of Enum attribute "forcast_type" in Usage API service renamed to "forecast_type"
+  * Value of Enum attribute "forecast_type" in Usage API service defaults to UNKNOWN_ENUM_VALUE
+    when it receives an invalid value. In the earlier versions, this raises a ValueError
+  * Retries are now enabled in Upload Manager. The SDK used to explicitly override retry
+    configuration on binary upload operations because of potential data corruption issue
+    (https://github.com/oracle/oci-python-sdk/issues/203).
+- from version 2.34.0
+  * Support for the Network Load Balancing service
+  * Support for maintenance runs on autonomous databases in the Database service
+  * Support for announcement preferences in the Announcements service
+  * Support for domain claiming in the Organizations service
+  * Support for saved reports in the Usage service
+  * Support for the HeatWave in-memory analytics accelerator in the MySQL Database service
+  * Support for community applications in the Marketplace service
+  * Support for capacity reservations in the Compute service
+  * Parameter `vnic_id` changed from optional to required in model
+    `CreateIpv6Details` in the core services
+  * Parameter `vnic_id` changed from optional to required in model
+    `Ipv6` in the core services
+  * Value of Enum attribute `operator` in Usage API service defaults to `UNKNOWN_ENUM_VALUE`
+    when it receives an invalid value. In the earlier versions, this raises a `ValueError`
+- from version 2.33.0
+  * Support for routing policies and HTTP2 listener protocols in the Load Balancing service
+  * Support for model deployments in the Data Science service
+  * Support for private clusters in the Container Engine for Kubernetes service
+  * Support for updating an instance's usage type in the Content and Experience service
+  * Retries are now enabled on all operations performing binary data upload, except upload
+    manager. The SDK used to explicitly override retry configuration on binary upload
+    operations because of potential data corruption issue
+    (https://github.com/oracle/oci-python-sdk/issues/203).
+- from version 2.32.1
+  * Support for the Application Performance Monitoring service
+  * Support for the Golden Gate service
+  * Support for SMS subscriptions in the Notifications service
+  * Support for friendly-formatted messages in the Service Connector Hub service
+  * Support for attaching and detaching instances to instance pools
+    in the Autoscaling service
+- from version 2.32.0
+  * Support for pipelines, pipeline tasks, and favorites in the Data Integration service
+  * Support for publishing tasks to OCI Data Flow in the Data Integration service
+  * Support for clones in the File Storage service
+  * Changed model `UniqueKey` in the Dataintegration service to not inherit from Key.
+  * Changed model `PrimaryKey` in the Dataintegration service to inherit from `UniqueKey`.
+  * Removed enum values `PRIMARY_KEY` and `UNIQUE_KEY` in property `model_type` from model
+    `key` in the Dataintegration service.
+- from version 2.31.2
+  * Support for the OCI Registry service
+  * Support for exporting an existing running VM, or a copy of VM, into a VMDK, QCOW2, VDI,
+    VHD, or OCI formatted image in the Compute service
+  * Support for platform configurations on instances in the Compute service
+  * Support for providing target tags and target compartments on profiles in the Optimizer service
+  * Support for the 'Fix it' feature in the Optimizer service
+- from version 2.31.1
+  * Support for scan DNS names and zone ids on database system, cloud VM cluster, and
+    autonomous Exadata infrastructure responses in the Database service
+  * Support for specifying ACL rules to limit ingress into public load balancers
+    in the Integration service
+  * Support for Cloud at Customer as a source type in the Application Migration service
+  * Support for selective migration of specific resources in the
+    Application Migration service
+- Refresh patches for new version
+  + ops_relax-python-depends.patch
+- Update file list to fix Python imports for unvendoring
+- Update BuildRequires and Requires from requirements.txt and setup.py
+
+-------------------------------------------------------------------
 Thu Feb 11 15:13:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.31.0
