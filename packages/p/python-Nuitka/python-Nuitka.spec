@@ -105,7 +105,7 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        0.6.14.4
+Version:        0.6.14.7
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0

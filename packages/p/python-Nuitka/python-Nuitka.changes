@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 13 03:14:03 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.6.14.7
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
 Tue Apr 20 18:29:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Split out the tests into clang/gcc and python flavor multibuilds
