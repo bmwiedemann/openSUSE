@@ -1,6 +1,8 @@
---- src/api.c
+Index: src/api.c
+===================================================================
+--- src/api.c.orig
 +++ src/api.c
-@@ -156,6 +156,12 @@
+@@ -156,6 +156,12 @@ wmf_error_t wmf_lite_create (wmfAPI** AP
  	}
  
  	API->write_data = 0;
@@ -13,10 +15,11 @@
  
  	API->MetaHeader.pmh = &(API->PlaceableMetaHeader);
  	API->MetaHeader.wmfheader = &(API->Head);
-
---- src/extra/gd/gd.c
+Index: src/extra/gd/gd.c
+===================================================================
+--- src/extra/gd/gd.c.orig
 +++ src/extra/gd/gd.c
-@@ -784,6 +784,7 @@
+@@ -810,6 +810,7 @@ gdImageTileApply (gdImagePtr im, int x,
      }
    else
      {
@@ -24,27 +27,15 @@
        /* Allow for transparency */
        if (p != gdImageGetTransparent (im->tile))
  	{
-
---- src/extra/gd/gd.h
+Index: src/extra/gd/gd.h
+===================================================================
+--- src/extra/gd/gd.h.orig
 +++ src/extra/gd/gd.h
-@@ -21,6 +21,7 @@
-  * documentation. */
- 
- #include <stdlib.h>
-+#include <string.h>
+@@ -22,6 +22,7 @@ extern "C" {
  
  /* stdio is needed for file I/O. */
  #include <stdio.h>
-
---- src/player/record.h
-+++ src/player/record.h
-@@ -96,6 +96,7 @@
- 	new_record.function = record->function;
- 	new_record.size = 0;
- 	new_record.parameter = 0;
-+	new_record.position = 0;
++#include <string.h>
+ #include <gd_io.h>
+ #include <gd_clip.h>
  
- 	if (index > record->size)
- 	{	WMF_ERROR (API,"Bad record - unexpectedly short!");
- 
-

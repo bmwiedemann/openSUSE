@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat May  8 09:25:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.12:
+  * upstream changed to fork from Fedora: https://github.com/caolanm/libwmf
+  * fix abi
+  * merge in fixes for libgd CVE-2019-6978
+  * release with coverity, clang and shellcheck fixes
+  * Seeing as wvware.sourceforge.net seems to be dead, but libwmf is still in
+    use and has had a bunch of security bugs reported against, and I've a
+    history with libwmf, I'll call this libwmf 0.2.9 and merge in my (Red Hat)
+    fixes.
+- drop libwmf-0.2.8.4-ia64.patch, libwmf-0.2.8.4-config.patch: obsolete
+- drop libwmf-0.2.8.4-overflow-CVE-2006-3376.patch: upstream via
+  https://github.com/caolanm/libwmf/commit/b9cc022c8d7dd8c557e2dae5681c2d344237b4f9
+- drop libwmf-0.2.8.4-CVE-2015-0848.patch: part of
+  https://github.com/caolanm/libwmf/commit/879d6bffa6dd21b8c0e9ec3b5aa31b6ae090ef83
+- drop libwmf-0.2.8.4-badrle.patch: part of 
+  https://github.com/caolanm/libwmf/commit/879d6bffa6dd21b8c0e9ec3b5aa31b6ae090ef83
+- drop libwmf-0.2.8.4-CVE-2015-4696.patch: upstream via
+  https://github.com/caolanm/libwmf/commit/f47cbdf96838c2daa7b8e489f59e62371d33352a
+- drop libwmf-0.2.8.4-CVE-2015-4695.patch: upstream via 
+  https://github.com/caolanm/libwmf/commit/b5ae5d1f3bbddf051a5c9dd01897bd835817f013
+- drop reproducible.patch: differently done upstream
+- drop use-pkg-config-for-freetype.patch: obsolete
+
+-------------------------------------------------------------------
+Mon Aug 24 14:20:00 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Fri May  4 08:43:30 UTC 2018 - idonmez@suse.com
 
 - Add use-pkg-config-for-freetype.patch to use pkgconfig to detect
