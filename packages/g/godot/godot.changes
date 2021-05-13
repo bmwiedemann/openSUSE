@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 29 12:37:28 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable modules unsupported on aarch64 and %arm:
+  * module_denoise_enabled
+  * module_lightmapper_cpu_enabled
+  * module_raycast_enabled
+
+-------------------------------------------------------------------
 Thu Apr 22 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.3

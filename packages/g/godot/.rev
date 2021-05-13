@@ -163,4 +163,15 @@
     <comment>Update to 3.3</comment>
     <requestid>888858</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fea02344bc84e033533a53279f4d6476</srcmd5>
+    <version>3.3</version>
+    <time>1620937108</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable modules unsupported on aarch64 and %arm:
+  * module_denoise_enabled
+  * module_lightmapper_cpu_enabled
+  * module_raycast_enabled</comment>
+    <requestid>892540</requestid>
+  </revision>
 </revisionlist>

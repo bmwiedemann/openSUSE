@@ -293,10 +293,17 @@ done
 mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
-%define build_args %{?_smp_mflags} \\\
+%define build_args_common %{?_smp_mflags} \\\
         progress=no verbose=yes udev=yes use_lto=1 \\\
         use_static_cpp=no CCFLAGS='%{optflags}' \\\
         system_certs_path=%{ca_bundle} $system_libs
+
+%ifarch aarch64 %arm
+# Disable unsupported features - https://github.com/godotengine/godot/issues/48297#issuecomment-829165296
+%define build_args %{build_args_common} module_denoise_enabled=no module_lightmapper_cpu_enabled=no module_raycast_enabled=no
+%else
+%define build_args %{build_args_common}
+%endif
 
 # Build graphical editor (tools)
 # rename x11 to linuxbsd ?
