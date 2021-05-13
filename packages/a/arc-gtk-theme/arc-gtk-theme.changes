@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 12 11:59:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20210412:
+  + Support GNOME 40
+  + Switch to meson build system.
+- Replace autoconf and automake BuildRequires with meson.
+
+-------------------------------------------------------------------
 Thu May  7 20:32:54 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 20200502:

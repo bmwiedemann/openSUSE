@@ -1,7 +1,7 @@
 #
 # spec file for package arc-gtk-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,17 @@
 %define _theme  Arc
 %define _name   arc
 Name:           arc-gtk-theme
-Version:        20200502
+Version:        20210412
 Release:        0
 Summary:        Arc GTK theme
 License:        GPL-3.0-or-later
 URL:            https://github.com/jnsh/arc-theme
 Source:         %{_name}-theme-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  cinnamon
 BuildRequires:  fdupes
 BuildRequires:  gnome-shell
 BuildRequires:  inkscape
+BuildRequires:  meson
 BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
@@ -80,17 +79,14 @@ This package contains the GTK 3 theme.
 
 %prep
 %setup -q -n %{_name}-theme-%{version}
-sed -i '/configure/d' autogen.sh
 sed -i 's/^\(IconTheme=\).*$/\1Adwaita/' common/index/*/index.theme
 
 %build
-./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot}%{_datadir}/ -type f -name '*.sh' -delete
+%meson_install
 %fdupes %{buildroot}%{_datadir}/
 
 %files -n metatheme-%{_name}-common
