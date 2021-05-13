@@ -72,6 +72,8 @@ Patch11:        libxml2-CVE-2021-3516.patch
 Patch12:        libxml2-CVE-2021-3517.patch
 # PATCH-FIX-UPSTREAM bsc#1185408 CVE-2021-3518 use-after-free in xinclude.c:xmlXIncludeDoProcess()
 Patch13:        libxml2-CVE-2021-3518.patch
+# PATCH-FIX-UPSTREAM bsc#1185698 CVE-2021-3537 NULL pointer dereference in valid.c:xmlValidBuildAContentModel
+Patch14:        libxml2-CVE-2021-3537.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -181,6 +183,7 @@ or manipulate any kind of XML files.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 %if !%{with python}

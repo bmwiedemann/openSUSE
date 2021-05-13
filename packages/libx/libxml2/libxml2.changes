@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 10 11:44:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1185698, CVE-2021-3537]
+  * NULL pointer dereference in valid.c:xmlValidBuildAContentModel
+  * Add libxml2-CVE-2021-3537.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 16:24:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1185408, CVE-2021-3518]
