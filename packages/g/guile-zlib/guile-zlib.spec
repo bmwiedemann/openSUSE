@@ -1,7 +1,7 @@
 #
 # spec file for package guile-zlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           guile-zlib
-Version:        0.0.1
+Version:        0.1.0
 Release:        0
 Summary:        Guile bindings to zlib
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://notabug.org/guile-zlib/guile-zlib
-Source0:        https://notabug.org/guile-zlib/guile-zlib/archive/%{version}.tar.gz
+Source0:        https://notabug.org/guile-zlib/guile-zlib/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-devel
-BuildRequires:  zlib-devel
 BuildRequires:  pkg-config
+BuildRequires:  zlib-devel
 Requires:       guile
 Requires:       zlib-devel
 

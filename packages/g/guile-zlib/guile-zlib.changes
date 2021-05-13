@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 12 21:17:07 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 0.1.0:
+  * New procedures: ‘make-zlib-input-port’, ‘make-zlib-output-port’
+  * New ‘compress’ and ‘uncompress’ procedures
+- tag starts now with a 'v' -> adjust link 
+
+-------------------------------------------------------------------
 Sat Nov  7 17:44:05 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - let there be guile-zlib 
