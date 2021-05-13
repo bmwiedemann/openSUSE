@@ -33,13 +33,18 @@ BuildRequires:  unzip
 Requires:       python-matplotlib >= 2.0.0
 Requires:       python-matplotlib-latex
 Requires:       python-numpy >= 1.0.0
-Requires:       tex(type1cm.sty)
+# \usepackage{amsmath, amsfonts, amssymb, bm}
+Requires:       texlive-amsmath
+Requires:       texlive-amsfonts
+Requires:       texlive-tools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-latex}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  tex(type1cm.sty)
+BuildRequires:  texlive-amsfonts
+BuildRequires:  texlive-amsmath
+BuildRequires:  texlive-tools
 # /SECTION
 %python_subpackages
 

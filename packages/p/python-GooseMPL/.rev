@@ -25,4 +25,12 @@
 - Don't build on Python 3.6, due to no NumPy.</comment>
     <requestid>886808</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>792d4e3f0b629f27675a9a4319afebfd</srcmd5>
+    <version>0.5.0</version>
+    <time>1620937106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891302</requestid>
+  </revision>
 </revisionlist>
