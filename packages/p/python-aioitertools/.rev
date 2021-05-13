@@ -7,4 +7,16 @@
     <comment> </comment>
     <requestid>821957</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38ed2a394354d29f622148a518c5de0c</srcmd5>
+    <version>0.7.1</version>
+    <time>1620937129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  - Fix groupby() not working with empty iterables (#39)
+- Add stdlib-typing_extensions.patch making typing_extensions
+  package just an optional requirement (gh#omnilib/aioitertools#49).
+</comment>
+    <requestid>892943</requestid>
+  </revision>
 </revisionlist>

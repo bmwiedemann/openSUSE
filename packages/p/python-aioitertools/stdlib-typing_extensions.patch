@@ -1,0 +1,49 @@
+From b8a14c2bee11a954b01288669f4b35a5e4d4c493 Mon Sep 17 00:00:00 2001
+From: Bryan Forbes <bryan@reigndropsfall.net>
+Date: Mon, 4 Jan 2021 19:26:31 -0600
+Subject: [PATCH] Improve dependencies for Python 3.8+
+
+---
+ aioitertools/helpers.py |    8 ++++++--
+ pyproject.toml          |    2 +-
+ requirements.txt        |    2 +-
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+--- a/aioitertools/helpers.py
++++ b/aioitertools/helpers.py
+@@ -2,12 +2,16 @@
+ # Licensed under the MIT license
+ 
+ import inspect
++import sys
+ from typing import Awaitable, Union
+ 
+-from typing_extensions import Protocol
+-
+ from .types import T
+ 
++if sys.version_info < (3, 8):
++    from typing_extensions import Protocol
++else:
++    from typing import Protocol  # pylint: disable=no-name-in-module
++
+ 
+ class Orderable(Protocol):  # pragma: no cover
+     def __lt__(self, other):
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,7 @@ author = "John Reese"
+ author-email = "john@noswap.com"
+ description-file = "README.md"
+ home-page = "https://aioitertools.omnilib.dev"
+-requires = ["typing_extensions>=3.7"]
++requires = ["typing_extensions>=3.7; python_version < '3.8'"]
+ requires-python = ">=3.6"
+ classifiers = [
+     "Development Status :: 4 - Beta",
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1 +1 @@
+-typing_extensions>=3.7
+\ No newline at end of file
++typing_extensions>=3.7;python_version<"3.8"

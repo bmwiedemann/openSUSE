@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioitertools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aioitertools
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        itertools and builtins for AsyncIO and mixed iterables
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://aioitertools.omnilib.dev
 Source:         https://files.pythonhosted.org/packages/source/a/aioitertools/aioitertools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#omnilib/aioitertools#49 mcepl@suse.com
+# Improve dependencies for Python 3.8+
+Patch0:         stdlib-typing_extensions.patch
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 3.7}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing_extensions >= 3.7
+Requires:       (python3-typing_extensions >= 3.7 if python3-base < 3.8)
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,7 +42,7 @@ BuildArch:      noarch
 Implementation of itertools, builtins, and more for AsyncIO and mixed-type iterables.
 
 %prep
-%setup -q -n aioitertools-%{version}
+%autosetup -p1 -n aioitertools-%{version}
 
 %build
 %python_build
@@ -49,7 +52,7 @@ Implementation of itertools, builtins, and more for AsyncIO and mixed-type itera
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
