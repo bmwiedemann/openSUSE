@@ -18,7 +18,7 @@
 
 
 Name:           kdiskmark
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  kauth-devel
 Requires:       fio
 
 %description
@@ -54,10 +55,14 @@ KDiskMark is an HDD and SSD benchmark tool with a very friendly graphical user i
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_kf5_libdir}/libexec/
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/icons/hicolor/*/*/*
+%{_kf5_sharedir}/dbus-1/system-services/org.jonmagon.kdiskmark.service
+%{_kf5_dbuspolicydir}//org.jonmagon.kdiskmark.conf
+%{_kf5_sharedir}/polkit-1/actions/org.jonmagon.kdiskmark.policy
 
 %changelog

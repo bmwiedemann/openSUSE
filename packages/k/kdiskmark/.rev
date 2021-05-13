@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>867649</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>690181b52b9bc217448b782a89dbe95a</srcmd5>
+    <version>2.2.0</version>
+    <time>1620937104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0
+  * The ability to drop pagecache before doing a test job (using K5Auth).
+</comment>
+    <requestid>884473</requestid>
+  </revision>
 </revisionlist>
