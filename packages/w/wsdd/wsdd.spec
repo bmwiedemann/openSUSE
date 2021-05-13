@@ -93,9 +93,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %{_mandir}/man1/wsdd.1%{?ext_man}
 %{_sbindir}/rc%{name}
 %{_unitdir}/wsdd.service
-%dir %{_libexecdir}
 %{_libexecdir}/wsdd-init.sh
-%dir %{_tmpfilesdir}
 %{_tmpfilesdir}/wsdd.conf
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services

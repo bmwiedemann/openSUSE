@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 08:00:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem rpm (bsc#1184786)
+
+-------------------------------------------------------------------
 Wed Apr  7 18:42:01 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Remove unneccessary (and deprecated) PermissionsStartOnly=true
