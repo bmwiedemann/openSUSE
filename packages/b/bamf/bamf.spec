@@ -1,7 +1,7 @@
 #
 # spec file for package bamf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,14 @@
 %define _binver 3
 %define _version 0.5
 Name:           bamf
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Window matching library
 License:        GPL-3.0-only AND LGPL-3.0-only
 URL:            https://launchpad.net/bamf
-Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz
-Source2:        https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz.asc
+Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.xz
+Source2:        https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
-# PATCH-FIX-OPENSUSE bamf-fix-gtester2xunit.patch -- Make gtester2xunit requirements easier to meet.
-Patch0:         bamf-fix-gtester2xunit.patch
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -92,7 +90,7 @@ bamf matches application windows to desktop files.
 This package contains files that are needed to build applications.
 
 %prep
-%autosetup -p1
+%autosetup
 
 sed -i '/^CFLAGS=/s/-Werror //' configure.ac
 

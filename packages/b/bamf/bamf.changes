@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 12 22:16:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update keyring for new key Marco Trevisan
+  D4C501DA48EB797A081750939449C2F50996635F
+
+-------------------------------------------------------------------
+Sun Apr 18 14:52:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.5:
+  * bamf-tab: Fix spelling
+  * bamf-view: avoid overriding the `timeout` variables after
+    setting them
+  * Run gtester2xunit.py with Python3, port libxml2/libxslt to
+    lxml module, this obsoletes bamf-fix-gtester2xunit.patch
+
+-------------------------------------------------------------------
 Mon Dec  9 20:40:24 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.5.4:
