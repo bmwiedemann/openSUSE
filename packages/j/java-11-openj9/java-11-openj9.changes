@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 14 08:50:17 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.11 with OpenJ9 0.26.0 virtual machine
+  * including Oracle April 2021 CPU changes (bsc#1185055 and
+    bsc#1185056)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.26
+- Added patch:
+  * maybe-uninitialized.patch
+    + initialize variables in constructor
+    + fixes build with newer gcc
+
+-------------------------------------------------------------------
 Tue Jan 26 07:20:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.10 with OpenJ9 0.24.0 virtual machine

@@ -28,20 +28,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       10
+%global updatever       11
 %global patchver        0
-%global datever         2021-01-19
+%global datever         2021-04-20
 %global buildver        9
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   0a86953833177e8104be499247f52d0d0d138647
-%global root_branch     openj9-0.24.0
+%global root_revision   7796c80419e3e37731bdcf4a61361a8bb8a333fe
+%global root_branch     openj9-0.26.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    741e94ea8673b021fc7edc59a2ec8bd203fa2b03
-%global omr_branch      v0.24.0-release
+%global omr_revision    162e6f729733666e22726ce5326f5982bb030330
+%global omr_branch      v0.26.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 345e1b09e2a1f2cf6323b25edc901cce197f4365
-%global openj9_branch   v0.24.0-release
-%global openj9_tag      openj9-0.24.0
+%global openj9_revision b4cc246d9d2362346bc567861e6e0e536da3f390
+%global openj9_branch   v0.26.0-release
+%global openj9_tag      openj9-0.26.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # JavaEE modules
@@ -161,6 +161,7 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
 Patch32:        omr-no-return-in-nonvoid-function.patch
+Patch33:        maybe-uninitialized.patch
 #
 # OpenJDK specific patches
 #
@@ -294,7 +295,7 @@ Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -332,7 +333,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -381,7 +382,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
@@ -453,6 +454,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch30 -p1
 %patch31 -p1
 %patch32
+%patch33 -p1
 
 %patch302 -p1
 %patch303 -p1
@@ -482,8 +484,8 @@ done
 %build
 export ARCH_DATA_MODEL=64
 
-EXTRA_CFLAGS="-Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
-EXTRA_CPP_FLAGS="-Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
+EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
 
 %ifarch ppc64le
 EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
@@ -533,8 +535,6 @@ make \
     DEBUG_BINARIES=true \
     STRIP_POLICY=no_strip \
     POST_STRIP_CMD="" \
-    WARNINGS_ARE_ERRORS="-Wno-error" \
-    CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error" \
     %{imagestarget} docs
 
 # remove redundant *diz and *debuginfo files
@@ -1040,10 +1040,9 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/lib
 %dir %{_jvmdir}/%{sdkdir}/lib/jli
 %dir %{_jvmdir}/%{sdkdir}/lib/server
+%dir %{_jvmdir}/%{sdkdir}/lib/default
 %dir %{_jvmdir}/%{sdkdir}/lib/desktop
 %dir %{_jvmdir}/%{sdkdir}/lib/security
-%dir %{_jvmdir}/%{sdkdir}/lib/compressedrefs
-%dir %{_jvmdir}/%{sdkdir}/lib/ddr
 %dir %{_jvmdir}/%{sdkdir}/lib/j9vm
 %dir %{_jvmdir}/%{sdkdir}/conf
 %dir %{_jvmdir}/%{sdkdir}/conf/security
@@ -1078,28 +1077,30 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/tz.properties
 %{_jvmdir}/%{sdkdir}/lib/J9TraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/j9ddr.dat
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libcuda4j29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9dmp29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9gc29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9gcchk29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9hookable29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9jextract.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9jit29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9jnichk29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9jvmti29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9prt29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9shr29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9thr29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9trc29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9vm29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9vmchk29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9vrb29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9zlib29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libjclse29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libmanagement_ext.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libomrsig.so
-%{_jvmdir}/%{sdkdir}/lib/ddr/j9ddr.jar
+%{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
+%{_jvmdir}/%{sdkdir}/lib/default/libcuda4j29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9dmp29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9gc29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk_full29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9gc_full29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9hookable29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9jextract.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9jit29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9jnichk29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9jvmti29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9prt29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9shr29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9thr29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9trc29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9vm29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9vmchk29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9vrb29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9vrb_full29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libj9zlib29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libjclse29.so
+%{_jvmdir}/%{sdkdir}/lib/default/libmanagement_ext.so
+%{_jvmdir}/%{sdkdir}/lib/default/libomrsig.so
 %{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 %{_jvmdir}/%{sdkdir}/lib/java*.properties
 %{_jvmdir}/%{sdkdir}/lib/jexec
@@ -1184,6 +1185,7 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/jlink
 %{_jvmdir}/%{sdkdir}/bin/jmap
 %{_jvmdir}/%{sdkdir}/bin/jmod
+%{_jvmdir}/%{sdkdir}/bin/jpackcore
 %{_jvmdir}/%{sdkdir}/bin/jps
 %{_jvmdir}/%{sdkdir}/bin/jrunscript
 %{_jvmdir}/%{sdkdir}/bin/jshell

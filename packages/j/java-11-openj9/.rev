@@ -39,4 +39,12 @@
     <comment>Oracle January 2021 CPU</comment>
     <requestid>866734</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a89a7b0886ea8ae08a1cb756ba9169a</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1621034648</time>
+    <user>dimstar_suse</user>
+    <comment>OpenJ9 0.26 including the April 2021 CPU changes</comment>
+    <requestid>893062</requestid>
+  </revision>
 </revisionlist>
