@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 14 08:52:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.0.1:
+  * Replaced /usr/local with the use of ${PREFIX} in calc Makefiles.
+    The ${PREFIX} is not the same as ${T}.  The ${T} specifies
+    a top level directory under which calc installs things.
+    While usually ${T} is empty, it can be specific path
+    as if calc where "chrooted" during an install.
+    The ${PREFIX} value, during install, is a path between
+    the top level ${T} install directory and the object
+    such as an include file.
+
+  * Corrected a few more typos in Makefile comments.
+    - Added Makefile.local, a file with a single comment.  The main
+     Makefile includes Makefile.local just before the first all rule.
+     One may override any Makefile setting by modifying Makefile.local.
+     For example, Makefile.local could force BLD_TYPE:
+     HAVE_STRING_H:= YES
+     HAVE_TIMES_H:= YES
+     SED:= /usr/local/bin/nsed
+    - Added ${LOC_MKF} to specify the make of the file that is
+      included just before the all file.  So one could place
+      the above override lines into a different file and call
+      make changing the ${LOC_MKF} value.  For example:
+    - make LOC_MKF=Makefile.private clobber all chk
+    - Updated HOWTO.INSTALL to mention Makefile.local.
+
+-------------------------------------------------------------------
 Wed Apr  7 07:41:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.13.0.0:
