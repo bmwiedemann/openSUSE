@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu May 13 09:40:14 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 1.3.0:
+  * Package management
+  ** POWER9 (powerpc64le-linux) is now supported as a technology preview
+     -> not yet enabled on openSUSE
+  ** New ‘--export-manifest’ and ‘--export-channels’ options of ‘guix package’
+  ** New ‘--profile’ option for ‘guix environment’
+  ** New ‘--discover’ option of ‘guix-daemon’, for local substitute discovery
+  ** New ‘--advertise’ option of ‘guix publish’
+  ** New ‘--with-patch’ and ‘--with-latest’ package transformation options
+  ** ‘guix system image’ supersedes the ‘disk-image’ and ‘vm-image’ sub-commands
+  ** ‘--verbosity=1’ no longer displays download URLs
+  ** ‘guix publish -C’ now supports zstd compression via Guile-zstd
+  ** ‘guix-daemon’ now supports zstd substitutes, which decompress faster
+  ** New ‘guix import go’ command, to import Go packages
+  ** ‘guix import opam’ now supports Coq packages and has a ‘--repo’ option
+  ** ‘guix import crate’ now honors semantic versioning (“semver”)
+  ** ‘guix import nix’ has been removed
+  ** New updaters (see ‘guix refresh’): ‘sourceforge’ and ‘generic-html’
+  ** Substitute installation has been optimized
+  ** ‘guix’ commands suggest alternative sub-commands or options upon typos
+  ** Offloading no longer requires ‘guile’ to be in $PATH on build machines
+  ** ‘GUIX_EXTENSIONS_PATH’ is honored when looking for extensions such as GWL
+  ** New ‘--format’ option for ‘guix processes’
+  ** ‘guix upgrade’ can now be passed several regexps
+  * 2009 new packages
+  * 3100 package updates
+  * Various bug fixes
+  ** Risk of local privilege escalation via guix-daemon fixed: CVE-2021-27851
+     (boo#1184622)
+  ** Fix sound problems with ALSA plugins on foreign distros
+  ** Fix ‘guix substitute’ crash when interleaving lzip and gzip
+  * Updated and improved translations
+- don't install OpenRC init files as they are not used on openSUSE
+- add key of Maxim Cournoyer to the keyring -> he made the release this time
+
+-------------------------------------------------------------------
 Tue Dec 15 11:21:39 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Require on libguile-ssh13

@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define guile	guile-2.0.9.tar.xz
 %define guix_builder_group	guixbuild
 Name:           guix
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        GNU Package manager
 License:        GPL-3.0-only
@@ -115,7 +115,7 @@ rm %{buildroot}%{_infodir}/dir
 install -d -m 0755 %{buildroot}/gnu
 install -d -m 0755 %{buildroot}/gnu/store
 # only systemd is used, so upstart or sysv init files are not needed
-rm -rvf %{buildroot}%{_libdir}/upstart %{buildroot}%{_sysconfdir}/init.d/guix-daemon
+rm -rvf %{buildroot}%{_libdir}/upstart %{buildroot}%{_sysconfdir}/init.d/guix-daemon %{buildroot}%{_sysconfdir}/openrc
 install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE20}
 install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE21}
 sed -i 's@^ExecStart=.*@ExecStart=/usr/bin/run_guix_daemon.sh@' %{buildroot}%{_unitdir}/guix-daemon.service
