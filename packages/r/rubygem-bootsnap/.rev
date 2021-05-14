@@ -79,4 +79,12 @@
     <comment>update (forwarded request 880666 from mschnitzer)</comment>
     <requestid>880667</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7988c5b7dd95b9d0864da43dec828c1</srcmd5>
+    <version>1.7.5</version>
+    <time>1621034677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893191</requestid>
+  </revision>
 </revisionlist>
