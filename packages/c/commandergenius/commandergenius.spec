@@ -53,9 +53,8 @@ It has 4-player cooperative mode and six difficulty modes.
 %cmake \
   -DBUILD_STATIC_LIBS:BOOL=ON \
   -DBUILD_SHARED_LIBS:BOOL=OFF \
-  -DCMAKE_INSTALL_PREFIX="%_prefix" \
   -DAPPDIR="%_bindir"
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

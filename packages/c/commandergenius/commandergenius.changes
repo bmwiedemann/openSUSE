@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- %cmake_build is now the recommended way to build cmake projects
+- DCMAKE_INSTALL_PREFIX is set by the cmake macro
+
+-------------------------------------------------------------------
 Tue Apr 13 12:52:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.0
