@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 16:39:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * plexus-containers-asm6.patch
+    + build using asm >= 7
+
+-------------------------------------------------------------------
 Sun Nov 24 14:50:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.1.0

@@ -52,4 +52,12 @@
     <comment>2.1</comment>
     <requestid>750672</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>666a44a553383d28e9b40844e2839e3d</srcmd5>
+    <version>2.1.0</version>
+    <time>1621034679</time>
+    <user>dimstar_suse</user>
+    <comment>Build against asm &gt;= 7</comment>
+    <requestid>893210</requestid>
+  </revision>
 </revisionlist>

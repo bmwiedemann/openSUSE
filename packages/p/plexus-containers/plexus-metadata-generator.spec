@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-metadata-generator
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/%{base_n
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
 Source100:      %{base_name}-build.tar.xz
-Patch0:         plexus-containers-asm6.patch
 Patch1:         plexus-metadata-generator-cli.patch
 Patch1000:      %{name}-nomojo.patch
 BuildRequires:  ant
@@ -43,7 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  junit
-BuildRequires:  objectweb-asm
+BuildRequires:  objectweb-asm >= 7
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
@@ -54,7 +53,7 @@ BuildRequires:  xbean
 Requires:       apache-commons-cli
 Requires:       guava
 Requires:       jdom2
-Requires:       objectweb-asm
+Requires:       objectweb-asm >= 7
 Requires:       plexus-cli
 Requires:       plexus-containers-component-annotations = %{version}
 Requires:       plexus-containers-container-default = %{version}
@@ -89,7 +88,6 @@ build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-com
 build-jar-repository -s lib hamcrest/core
 %endif
 
-%patch0 -p1
 %patch1 -p1
 
 %patch1000 -p1

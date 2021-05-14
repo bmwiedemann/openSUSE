@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-component-metadata
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ URL:            https://github.com/codehaus-plexus/plexus-containers
 Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/%{base_name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
-Patch0:         plexus-containers-asm6.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.thoughtworks.qdox:qdox)
@@ -47,7 +46,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.jdom:jdom2)
-BuildRequires:  mvn(org.ow2.asm:asm)
+BuildRequires:  mvn(org.ow2.asm:asm) >= 7
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap
@@ -73,8 +72,6 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -n %{base_name}-%{base_name}-%{version}
-
-%patch0 -p1
 
 cp %{SOURCE1} .
 cp %{SOURCE2} .
