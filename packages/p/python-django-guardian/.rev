@@ -156,4 +156,12 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
  * Run migrations check only if required version of django is installed</comment>
     <requestid>812905</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e775ad8b7dd2786d166128b4699cadc2</srcmd5>
+    <version>2.3.0</version>
+    <time>1621034674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893154</requestid>
+  </revision>
 </revisionlist>

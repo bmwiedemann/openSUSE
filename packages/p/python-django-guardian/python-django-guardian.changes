@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 14 14:29:48 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add django32.patch to fix build
+
+-------------------------------------------------------------------
 Tue Jun  9 11:44:07 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2.3.0

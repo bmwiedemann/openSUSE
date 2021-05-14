@@ -1,0 +1,35 @@
+From 5ac8be19d484e389ee43a72759e3308771b19660 Mon Sep 17 00:00:00 2001
+From: David Smith <smithdc@gmail.com>
+Date: Fri, 9 Oct 2020 20:52:54 +0100
+Subject: [PATCH] Fixed headers test for Django 3.2 The response.headers
+ interface is added in Django 3.2
+ https://github.com/django/django/commit/dcb69043d0de45bb55998fc418d93c28bc7689ae
+
+---
+ guardian/testapp/tests/test_decorators.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/guardian/testapp/tests/test_decorators.py b/guardian/testapp/tests/test_decorators.py
+index c1de6de1..ea487b5b 100644
+--- a/guardian/testapp/tests/test_decorators.py
++++ b/guardian/testapp/tests/test_decorators.py
+@@ -1,3 +1,4 @@
++import django
+ from django.conf import global_settings
+ from django.contrib.auth import get_user_model
+ from django.contrib.auth.models import Group, AnonymousUser
+@@ -383,8 +384,12 @@ def dummy_view(request, project_name):
+             pass
+         response = dummy_view(request, project_name='foobar')
+         self.assertTrue(isinstance(response, HttpResponseRedirect))
+-        self.assertTrue(response._headers['location'][1].startswith(
+-            '/foobar/'))
++        if django.VERSION >= (3, 2):
++            self.assertTrue(response.headers['location'].startswith(
++                '/foobar/'))
++        else:
++            self.assertTrue(response._headers['location'][1].startswith(
++                '/foobar/'))
+ 
+     @override_settings(LOGIN_URL='django.contrib.auth.views.login')
+     def test_redirection_class(self):

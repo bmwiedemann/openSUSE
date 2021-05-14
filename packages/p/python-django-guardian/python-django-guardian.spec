@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-guardian
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ Summary:        Implementation of per object permissions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/lukaszb/django-guardian
 Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.0}
+Patch0:         django32.patch
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-environ}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
@@ -33,7 +34,7 @@ BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.0
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,6 +44,7 @@ authorization backend.
 
 %prep
 %setup -q -n django-guardian-%{version}
+%autopatch -p1
 
 %build
 %python_build
