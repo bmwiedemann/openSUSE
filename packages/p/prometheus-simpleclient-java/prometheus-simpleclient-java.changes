@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 11 17:47:28 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava version
+
+-------------------------------------------------------------------
 Fri Feb 28 07:15:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of prometheus-simpleclient-java 0.8.0

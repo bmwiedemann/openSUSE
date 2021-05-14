@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-simpleclient-java
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(ch.qos.logback:logback-classic)
-BuildRequires:  mvn(com.google.guava:guava:18.0)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(log4j:log4j:1.2.17)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
