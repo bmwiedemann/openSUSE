@@ -1,7 +1,7 @@
 #
 # spec file for package unionfs-fuse
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unionfs-fuse
+Version:        2.1
+Release:        0
+Summary:        Userspace Unionfs File System
+License:        BSD-3-Clause
+Group:          System/Filesystems
+URL:            https://github.com/rpodgorny/unionfs-fuse
+Source:         https://github.com/rpodgorny/unionfs-fuse/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libattr-devel
 Requires:       fuse
-Summary:        Userspace Unionfs File System
-License:        BSD-3-Clause
-Group:          System/Filesystems
-Version:        1.0
-Release:        0
-Source:         https://github.com/rpodgorny/unionfs-fuse/archive/v%{version}.tar.gz
-Url:            https://github.com/rpodgorny/unionfs-fuse
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 unionfs-fuse overlays several directory into one single mount point
@@ -44,17 +43,15 @@ copied to to a higher level read-write branch if the copy-on-write
 %setup -q
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-export CXXFLAGS=$CFLAGS 
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_XATTR=1 .
-make %{?_smp_mflags}
+%cmake -DWITH_XATTR=1
+%cmake_build
 
 %install
-make DESTDIR="$RPM_BUILD_ROOT" install
+%cmake_install
 
 %files
-%defattr(-,root,root)
-%doc LICENSE CREDITS NEWS
+%license LICENSE
+%doc CREDITS NEWS
 %{_mandir}/man?/*
 %{_bindir}/unionfs
 %{_bindir}/unionfsctl

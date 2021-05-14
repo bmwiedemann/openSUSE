@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  9 17:35:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  - fixed Finder fails on MacOS
+  - Implement access() for "cow,relaxed_permissions" use case
+  - fixed NEWS file ;-)
+  - reverted meta directory name back to .unionfs (from .unionfs-fuse)
+    this was never meant to be changed and slipped in in 1.0 release
+  - fixes and speed improvements
+
+-------------------------------------------------------------------
 Mon Jul 11 05:17:05 UTC 2016 - coolo@suse.com
 
 - fix build by adding -fPIC 
