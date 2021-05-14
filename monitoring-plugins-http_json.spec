@@ -19,6 +19,7 @@
 %define modname monitoring-plugins-http_json
 %define skip_python2 1
 %define skip_python36 1
+%define skip_python39 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           monitoring-plugins-http_json
 Version:        2.1.1

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 10:35:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Skip build with python39
+
+-------------------------------------------------------------------
 Mon Mar  8 21:27:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Don't use python_alternatives
