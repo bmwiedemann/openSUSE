@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri May 14 03:06:38 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.5.5
+  - Add a `.desktop` file to make Mousepad appear in Xfce settings
+    (gxo#apps/mousepad!94)
+  - Add a command line option to open the prefs dialog 
+    (gxo#apps/mousepad!94)
+  - Plugin support (gxo#apps/mousepad!92)
+  - Add gspell plugin (gxo#apps/mousepad#1, gxo#apps/mousepad!92)
+  - Disable and wipe recent history if recent-menu-items is set to 0
+    (gxo#apps/mousepad#112, gxo#apps/mousepad!89)
+  - Support -ve line and column values for "Go to" location
+    (gxo#apps/mousepad#113, gxo#apps/mousepad!84)
+  - Switch to client-side decorations (gxo#apps/mousepad!97)
+  - Remove Xfconf dependency 
+    (gxo#apps/mousepad#60, gxo#apps/mousepad#122, gxo#apps/mousepad!98)
+  - A general review of sanity checks
+  - A review of window lifetime management
+  - A review of document lifetime management
+  - Automate and sanitize memory management of sources
+  - A small review of GSettings use
+  - Do not use `== (TRUE|FALSE)` for boolean conditions
+  - Fix actions to show/hide bars in fullscreen mode 
+    (gxo#apps/mousepad#129)
+  - Fix broken "Revert" action
+  - Fix and extend "Move Lines" action 
+    (gxo#apps/mousepad#87, gxo#apps/mousepad#116, gxo#apps/mousepad!96)
+  - Support for drag and drop of tabs when search is active
+  - Do a silent search when changing tabs with the search bar enabled
+  - Use get/set_real_line_offset () functions for "Paste as Column"
+    (gxo#apps/mousepad#114, gxo#apps/mousepad!91)
+  - Restore cursor position after transpose 
+    (gxo#apps/mousepad#115, gxo#apps/mousepad!88)
+  - Fix "Delete Line" action 
+    (gxo#apps/mousepad#117, gxo#apps/mousepad!86)
+  - Fix recent_sort function (gxo#apps/mousepad!90)
+  - Reset line and column number if not given on command line
+    (gxo#apps/mousepad#121, gxo#apps/mousepad!87)
+  - menu: "Spaces to Tabs" converter converts leading spaces
+    (gxo#apps/mousepad#118, gxo#apps/mousepad!85)
+  - Make window require attention when opening new tabs
+    (gxo#apps/mousepad#119)
+  - Translation Updates 
+
+-------------------------------------------------------------------
 Sat Apr  3 11:54:39 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.4

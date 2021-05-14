@@ -17,7 +17,7 @@
 
 
 Name:           mousepad
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gthread-2.0)  >= 2.52.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxfconf-0)
 
 %description
@@ -59,10 +59,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %license COPYING
 %{_bindir}/mousepad
 %{_datadir}/applications/mousepad.desktop
+%{_datadir}/applications/mousepad-settings.desktop
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.gschema.xml
 %{_datadir}/polkit-1/
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.xfce.mousepad.*
+%{_libdir}/libmousepad.*
 
 %files lang -f %{name}.lang
 
