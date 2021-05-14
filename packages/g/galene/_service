@@ -3,8 +3,8 @@
     <param name="url">git://github.com/jech/galene.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">galene-0.3.4</param>
-    <param name="version">0.3.4</param>
+    <param name="revision">galene-0.3.5</param>
+    <param name="version">0.3.5</param>
     <param name="changesgenerate">enable</param>
     <!--param name="versionrewrite-pattern">galene-(\d+)</param>
     <param name="versionrewrite-replacement">\1</param-->

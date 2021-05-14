@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
