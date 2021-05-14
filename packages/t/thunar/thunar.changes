@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  8 10:04:26 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.8
+  * Activating Desktop Icon does not Use Default Application
+    (gxo#xfce/thunar#575)
+- changes from 4.16.7:
+  * Prevent crash if invalid-symlink is used as bookmark
+    (gxo#xfce/thunar#552)
+  * Dont execute files, passed via command line due to security risks
+  * Avoid excessively checking whether files are executables
+    (gxo#xfce/thunar#180)
+  * CDDA appears twice in side pane (gxo#xfce/thunar#486)
+  * Critical error when opening Edit menu (gxo#xfce/thunar#542)
+  * Shortcuts view regression : Watch trash for changes
+    (gxo#xfce/thunar#538)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 21 14:57:09 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.6
