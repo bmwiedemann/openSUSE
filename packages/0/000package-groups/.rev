@@ -1091,4 +1091,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Fixes for armv7</comment>
     <requestid>880129</requestid>
   </revision>
+  <revision rev="151" vrev="149">
+    <srcmd5>bf6bafa5d3144b26b0908fe00e3bf88b</srcmd5>
+    <version>unknown</version>
+    <time>1620985341</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome_ide: users of the IDE need -devel packages anyway, so they want the FTP tree enabled</comment>
+  </revision>
 </revisionlist>

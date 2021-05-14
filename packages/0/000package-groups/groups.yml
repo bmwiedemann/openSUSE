@@ -52,7 +52,6 @@ dvd:
   - patterns-gnome-gnome_basis: [required,suggested]
   - patterns-gnome-gnome_basis_opt: [required,suggested]
   - patterns-gnome-gnome_games: [required,suggested]
-  - patterns-gnome-gnome_ide: [required,suggested]
   - patterns-gnome-gnome_imaging: [required,suggested]
   - patterns-gnome-gnome_internet: [required,suggested]
   - patterns-gnome-gnome_multimedia: [required,suggested]
