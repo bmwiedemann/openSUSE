@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        173
+Version:        174
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ URL:            https://diffoscope.org/
 Source0:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2
 Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
 Source2:        diffoscope.keyring
-Patch0:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/7bf04a62623d234a870fd62b0ee745c9b940f5d7.patch#/fix-file-5.40.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -113,7 +112,6 @@ debbindiff.
 %prep
 %setup -q
 sed -i '0,/#!\/usr\/bin\/env/ d' diffoscope/main.py
-%patch0 -p1
 
 %build
 %python3_build
@@ -137,9 +135,7 @@ fi
 
 %check
 # test_identification https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/98
-# test_content_source_without_extension temporarily disabled to get build working
-# test_text_proper_indentation test_equal, test_different temporarily for: https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/251
-py.test-%{python3_bin_suffix} -k 'not test_identification and not test_content_source_without_extension and not test_text_proper_indentation and not test_equal and not test_different'
+py.test-%{python3_bin_suffix} -k 'not test_identification'
 
 %files
 %doc README.rst
