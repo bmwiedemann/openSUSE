@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
+%define args prefix="%{_prefix}" etc_dir="%{_sysconfdir}/authbind" lib_dir="%{_libdir}/authbind" libexec_dir="%{_libexecdir}/authbind"
 Name:           authbind
 Version:        2.1.2
 Release:        0
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Url:            http://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git
 Source:         http://ftp.debian.org/debian/pool/main/a/authbind/authbind_%{version}.tar.gz
+Patch:          fix-Makefile.patch
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         permissions
 
@@ -35,30 +36,28 @@ http://en.wikipedia.org/wiki/Authbind
 
 %prep
 %setup -q -n authbind
+%patch -p1
 
 %build
-make %{?_smp_mflags} OPTIMISE="%{optflags} -fPIE" LDFLAGS="-g -pie" prefix="%{_prefix}" etc_dir="%{_sysconfdir}/authbind"
+%define _lto_cflags %{nil}
+%make_build OPTIMISE="%{optflags} -fPIE" LDFLAGS="-g -pie" LD="ld --build-id" %{args}
 
 %install
-install -m 0755 -d %{buildroot}%{_bindir}
-
-INSTALL_FILE="install -m 644" \
-INSTALL_PROGRAM="install -m 755 -s" \
-INSTALL_DIR="install -m 755 -d" \
-make install install_man prefix="%{buildroot}%{_prefix}" etc_dir="%{buildroot}%{_sysconfdir}/authbind"
+%make_install install_man %{args}
 
 %post
 # the actual settings for helper will come from security whitelisting in the permissions package.
-%set_permissions %{_prefix}/lib/authbind/helper
+%set_permissions %{_libexecdir}/authbind/helper
 
 %verifyscript
-%verify_permissions -e %{_prefix}/lib/authbind/helper
+%verify_permissions -e %{_libexecdir}/authbind/helper
 
 %files
 %{_bindir}/authbind
-%dir %{_prefix}/lib/authbind
-%verify(not mode) %attr(4755,root,root) %{_prefix}/lib/authbind/helper
-%{_prefix}/lib/authbind/libauthbind.so.*
+%dir %{_libdir}/authbind
+%dir %{_libexecdir}/authbind
+%verify(not mode) %attr(4755,root,root) %{_libexecdir}/authbind/helper
+%{_libdir}/authbind/libauthbind.so.*
 
 %dir %{_sysconfdir}/authbind
 %dir %{_sysconfdir}/authbind/byport

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 27 17:55:04 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add fix-Makefile.patch: make Makefile work properly
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+- Fix incorrect location of plugins
+
+-------------------------------------------------------------------
 Tue Nov 20 12:30:21 UTC 2018 - Panagiotis Georgiadis <pgeorgiadis@suse.com>
 
 - Allow normal users to execute /usr/bin/authbind
