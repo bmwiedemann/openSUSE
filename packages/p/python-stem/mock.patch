@@ -1,0 +1,802 @@
+From 5691ff000a40059a2a9812e627574ac88cc7c754 Mon Sep 17 00:00:00 2001
+From: Damian Johnson <atagar@torproject.org>
+Date: Fri, 3 Jan 2020 15:54:22 -0800
+Subject: [PATCH] Drop mock fallback
+
+Python 3.3 added mock as a builtin. As such we no longer need to use python
+2.x's standalone mock module as a fallback.
+---
+ run_tests.py                              | 15 --------
+ stem/prereq.py                            | 43 -----------------------
+ test/integ/connection/connect.py          |  8 ++---
+ test/integ/process.py                     |  8 ++---
+ test/integ/response/protocolinfo.py       |  6 +---
+ test/integ/util/system.py                 |  8 ++---
+ test/task.py                              |  2 --
+ test/unit/connection/authentication.py    |  8 ++---
+ test/unit/connection/connect.py           | 15 ++++----
+ test/unit/control/controller.py           |  8 ++---
+ test/unit/descriptor/bandwidth_file.py    |  8 ++---
+ test/unit/descriptor/collector.py         |  8 ++---
+ test/unit/descriptor/hidden_service_v3.py |  8 ++---
+ test/unit/descriptor/reader.py            |  6 +---
+ test/unit/descriptor/remote.py            |  8 ++---
+ test/unit/descriptor/server_descriptor.py |  8 ++---
+ test/unit/directory/authority.py          |  6 +---
+ test/unit/directory/fallback.py           |  6 +---
+ test/unit/doctest.py                      |  8 ++---
+ test/unit/exit_policy/policy.py           |  6 +---
+ test/unit/interpreter/__init__.py         |  6 +---
+ test/unit/interpreter/autocomplete.py     |  9 ++---
+ test/unit/interpreter/commands.py         |  8 ++---
+ test/unit/manual.py                       |  8 ++---
+ test/unit/response/events.py              |  8 ++---
+ test/unit/response/protocolinfo.py        |  8 ++---
+ test/unit/tutorial.py                     |  8 ++---
+ test/unit/tutorial_examples.py            |  8 ++---
+ test/unit/util/connection.py              |  8 ++---
+ test/unit/util/proc.py                    |  7 ++--
+ test/unit/util/system.py                  |  8 ++---
+ test/unit/version.py                      |  8 ++---
+ 32 files changed, 56 insertions(+), 231 deletions(-)
+
+Index: stem-1.8.0/run_tests.py
+===================================================================
+--- stem-1.8.0.orig/run_tests.py
++++ stem-1.8.0/run_tests.py
+@@ -194,20 +194,6 @@ def main():
+     println('Nothing to run (for usage provide --help)\n')
+     sys.exit()
+ 
+-  if not stem.prereq.is_mock_available():
+-    try:
+-      import mock
+-      println(MOCK_OUT_OF_DATE_MSG % mock.__version__)
+-    except ImportError:
+-      println(MOCK_UNAVAILABLE_MSG)
+-
+-    if stem.util.system.is_available('pip'):
+-      println("You can get it by running 'sudo pip install mock'.")
+-    elif stem.util.system.is_available('apt-get'):
+-      println("You can get it by running 'sudo apt-get install python-mock'.")
+-
+-    sys.exit(1)
+-
+   test.task.run(
+     'INITIALISING',
+     test.task.STEM_VERSION,
+@@ -215,7 +201,6 @@ def main():
+     test.task.PYTHON_VERSION,
+     test.task.PLATFORM_VERSION,
+     test.task.CRYPTO_VERSION,
+-    test.task.MOCK_VERSION,
+     test.task.PYFLAKES_VERSION,
+     test.task.PYCODESTYLE_VERSION,
+     test.task.CLEAN_PYC,
+Index: stem-1.8.0/stem/prereq.py
+===================================================================
+--- stem-1.8.0.orig/stem/prereq.py
++++ stem-1.8.0/stem/prereq.py
+@@ -17,7 +17,6 @@ stem will still read descriptors - just
+   is_crypto_available - checks if the cryptography module is available
+   is_zstd_available - checks if the zstd module is available
+   is_lzma_available - checks if the lzma module is available
+-  is_mock_available - checks if the mock module is available
+ """
+ 
+ import functools
+@@ -207,48 +206,6 @@ def is_lzma_available():
+     return False
+ 
+ 
+-def is_mock_available():
+-  """
+-  Checks if the mock module is available. In python 3.3 and up it is a builtin
+-  unittest module, but before this it needed to be `installed separately
+-  <https://pypi.org/project/mock/>`_. Imports should be as follows....
+-
+-  ::
+-
+-    try:
+-      # added in python 3.3
+-      from unittest.mock import Mock
+-    except ImportError:
+-      from mock import Mock
+-
+-  :returns: **True** if the mock module is available and **False** otherwise
+-  """
+-
+-  try:
+-    # checks for python 3.3 version
+-    import unittest.mock
+-    return True
+-  except ImportError:
+-    pass
+-
+-  try:
+-    import mock
+-
+-    # check for mock's patch.dict() which was introduced in version 0.7.0
+-
+-    if not hasattr(mock.patch, 'dict'):
+-      raise ImportError()
+-
+-    # check for mock's new_callable argument for patch() which was introduced in version 0.8.0
+-
+-    if 'new_callable' not in inspect.getargspec(mock.patch).args:
+-      raise ImportError()
+-
+-    return True
+-  except ImportError:
+-    return False
+-
+-
+ def _is_lru_cache_available():
+   """
+   Functools added lru_cache to the standard library in Python 3.2. Prior to
+Index: stem-1.8.0/test/integ/connection/connect.py
+===================================================================
+--- stem-1.8.0.orig/test/integ/connection/connect.py
++++ stem-1.8.0/test/integ/connection/connect.py
+@@ -8,17 +8,13 @@ import stem.connection
+ import test.require
+ import test.runner
+ 
++from unittest.mock import patch
++
+ try:
+   from StringIO import StringIO
+ except ImportError:
+   from io import StringIO
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch
+-except ImportError:
+-  from mock import patch
+-
+ 
+ class TestConnect(unittest.TestCase):
+   @test.require.controller
+Index: stem-1.8.0/test/integ/process.py
+===================================================================
+--- stem-1.8.0.orig/test/integ/process.py
++++ stem-1.8.0/test/integ/process.py
+@@ -28,13 +28,9 @@ import test
+ import test.require
+ 
+ from contextlib import contextmanager
+-from stem.util.test_tools import asynchronous, assert_equal, assert_in, skip
++from unittest.mock import patch, Mock
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch, Mock
+-except ImportError:
+-  from mock import patch, Mock
++from stem.util.test_tools import asynchronous, assert_equal, assert_in, skip
+ 
+ BASIC_RELAY_TORRC = """\
+ SocksPort 9089
+Index: stem-1.8.0/test/integ/response/protocolinfo.py
+===================================================================
+--- stem-1.8.0.orig/test/integ/response/protocolinfo.py
++++ stem-1.8.0/test/integ/response/protocolinfo.py
+@@ -14,11 +14,7 @@ import test.integ.util.system
+ import test.require
+ import test.runner
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from unittest.mock import Mock, patch
+ 
+ 
+ class TestProtocolInfo(unittest.TestCase):
+Index: stem-1.8.0/test/integ/util/system.py
+===================================================================
+--- stem-1.8.0.orig/test/integ/util/system.py
++++ stem-1.8.0/test/integ/util/system.py
+@@ -14,13 +14,9 @@ import stem.util.system
+ import test.require
+ import test.runner
+ 
+-from stem.util.system import State, DaemonTask
++from unittest.mock import Mock, patch
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from stem.util.system import State, DaemonTask
+ 
+ 
+ def filter_system_call(prefixes):
+Index: stem-1.8.0/test/task.py
+===================================================================
+--- stem-1.8.0.orig/test/task.py
++++ stem-1.8.0/test/task.py
+@@ -14,7 +14,6 @@
+   |- PYTHON_VERSION - checks our python version
+   |- PLATFORM_VERSION - checks our operating system version
+   |- CRYPTO_VERSION - checks our version of cryptography
+-  |- MOCK_VERSION - checks our version of mock
+   |- PYFLAKES_VERSION - checks our version of pyflakes
+   |- PYCODESTYLE_VERSION - checks our version of pycodestyle
+   |- CLEAN_PYC - removes any *.pyc without a corresponding *.py
+@@ -333,7 +332,6 @@ TOR_VERSION = Task('tor version', _check
+ PYTHON_VERSION = Task('python version', _check_python_version)
+ PLATFORM_VERSION = Task('operating system', _check_platform_version)
+ CRYPTO_VERSION = ModuleVersion('cryptography version', 'cryptography', stem.prereq.is_crypto_available)
+-MOCK_VERSION = ModuleVersion('mock version', ['unittest.mock', 'mock'], stem.prereq.is_mock_available)
+ PYFLAKES_VERSION = ModuleVersion('pyflakes version', 'pyflakes')
+ PYCODESTYLE_VERSION = ModuleVersion('pycodestyle version', ['pycodestyle', 'pep8'])
+ CLEAN_PYC = Task('checking for orphaned .pyc files', _clean_orphaned_pyc, (SRC_PATHS,), print_runtime = True)
+Index: stem-1.8.0/test/unit/connection/authentication.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/connection/authentication.py
++++ stem-1.8.0/test/unit/connection/authentication.py
+@@ -14,15 +14,11 @@ import unittest
+ import stem.connection
+ import test
+ 
++from unittest.mock import Mock, patch
++
+ from stem.response import ControlMessage
+ from stem.util import log
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ 
+ class TestAuthenticate(unittest.TestCase):
+   @patch('stem.connection.get_protocolinfo')
+Index: stem-1.8.0/test/unit/connection/connect.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/connection/connect.py
++++ stem-1.8.0/test/unit/connection/connect.py
+@@ -4,20 +4,17 @@ Unit tests for the stem.connection.conne
+ 
+ import unittest
+ 
++import stem
++import stem.connection
++import stem.socket
++
++from unittest.mock import Mock, patch
++
+ try:
+   from StringIO import StringIO
+ except ImportError:
+   from io import StringIO
+ 
+-try:
+-  from mock import Mock, patch
+-except ImportError:
+-  from unittest.mock import Mock, patch
+-
+-import stem
+-import stem.connection
+-import stem.socket
+-
+ 
+ class TestConnect(unittest.TestCase):
+   @patch('sys.stdout', new_callable = StringIO)
+Index: stem-1.8.0/test/unit/control/controller.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/control/controller.py
++++ stem-1.8.0/test/unit/control/controller.py
+@@ -14,17 +14,13 @@ import stem.socket
+ import stem.util.system
+ import stem.version
+ 
++from unittest.mock import Mock, patch
++
+ from stem import ControllerError, DescriptorUnavailable, InvalidArguments, InvalidRequest, ProtocolError, UnsatisfiableRequest
+ from stem.control import MALFORMED_EVENTS, _parse_circ_path, Listener, Controller, EventType
+ from stem.response import ControlMessage
+ from stem.exit_policy import ExitPolicy
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ NS_DESC = 'r %s %s u5lTXJKGsLKufRLnSyVqT7TdGYw 2012-12-30 22:02:49 77.223.43.54 9001 0\ns Fast Named Running Stable Valid\nw Bandwidth=75'
+ TEST_TIMESTAMP = 12345
+ 
+Index: stem-1.8.0/test/unit/descriptor/bandwidth_file.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/bandwidth_file.py
++++ stem-1.8.0/test/unit/descriptor/bandwidth_file.py
+@@ -4,6 +4,7 @@ Unit tests for stem.descriptor.bandwidth
+ 
+ import datetime
+ import unittest
++from unittest.mock import Mock, patch
+ 
+ import stem.descriptor
+ 
+@@ -16,12 +17,6 @@ try:
+ except ImportError:
+   from stem.util.ordereddict import OrderedDict
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ EXPECTED_MEASUREMENT_1 = {
+   'scanner': '/scanner.1/scan-data/bws-0.0:0.8-done-2019-01-13-22:55:22',
+   'measured_at': '1547441722',
+Index: stem-1.8.0/test/unit/descriptor/collector.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/collector.py
++++ stem-1.8.0/test/unit/descriptor/collector.py
+@@ -5,6 +5,7 @@ Unit tests for stem.descriptor.collector
+ import datetime
+ import io
+ import unittest
++from unittest.mock import Mock, patch
+ 
+ import stem.prereq
+ 
+@@ -13,12 +14,6 @@ from stem.descriptor.collector import Co
+ from test.unit.descriptor import get_resource
+ from test.unit.descriptor.data.collector.index import EXAMPLE_INDEX
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ URL_OPEN = 'urllib.request.urlopen' if stem.prereq.is_python_3() else 'urllib2.urlopen'
+ 
+ 
+Index: stem-1.8.0/test/unit/descriptor/hidden_service_v3.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/hidden_service_v3.py
++++ stem-1.8.0/test/unit/descriptor/hidden_service_v3.py
+@@ -13,6 +13,8 @@ import stem.prereq
+ 
+ import test.require
+ 
++from unittest.mock import patch, Mock
++
+ from stem.descriptor.hidden_service import (
+   IntroductionPointV3,
+   HiddenServiceDescriptorV3,
+@@ -33,12 +35,6 @@ try:
+ except ImportError:
+   from stem.util.ordereddict import OrderedDict
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch, Mock
+-except ImportError:
+-  from mock import patch, Mock
+-
+ require_sha3 = test.require.needs(stem.prereq._is_sha3_available, 'requires sha3')
+ require_x25519 = test.require.needs(lambda: stem.descriptor.hidden_service.X25519_AVAILABLE, 'requires openssl x5509')
+ 
+Index: stem-1.8.0/test/unit/descriptor/reader.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/reader.py
++++ stem-1.8.0/test/unit/descriptor/reader.py
+@@ -19,11 +19,7 @@ import stem.util.system
+ 
+ import test.unit.descriptor
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch
+-except ImportError:
+-  from mock import patch
++from unittest.mock import patch
+ 
+ BASIC_LISTING = """
+ /tmp 123
+Index: stem-1.8.0/test/unit/descriptor/remote.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/remote.py
++++ stem-1.8.0/test/unit/descriptor/remote.py
+@@ -13,6 +13,8 @@ import stem.descriptor.remote
+ import stem.prereq
+ import stem.util.str_tools
+ 
++from unittest.mock import patch, Mock, MagicMock
++
+ from stem.descriptor.remote import Compression
+ from test.unit.descriptor import read_resource
+ 
+@@ -21,12 +23,6 @@ try:
+ except ImportError:
+   from httplib import HTTPMessage  # python2
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch, Mock, MagicMock
+-except ImportError:
+-  from mock import patch, Mock, MagicMock
+-
+ # The urlopen() method is in a different location depending on if we're using
+ # python 2.x or 3.x. The 2to3 converter accounts for this in imports, but not
+ # mock annotations.
+Index: stem-1.8.0/test/unit/descriptor/server_descriptor.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/descriptor/server_descriptor.py
++++ stem-1.8.0/test/unit/descriptor/server_descriptor.py
+@@ -20,6 +20,8 @@ import stem.version
+ import stem.util.str_tools
+ import test.require
+ 
++from unittest.mock import Mock, patch
++
+ from stem.client.datatype import CertType
+ from stem.descriptor import DigestHash, DigestEncoding
+ from stem.descriptor.certificate import ExtensionType
+@@ -37,12 +39,6 @@ try:
+ except ImportError:
+   from stem.util.ordereddict import OrderedDict
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ TARFILE_FINGERPRINTS = set([
+   'B6D83EC2D9E18B0A7A33428F8CFA9C536769E209',
+   'E0BD57A11F00041A9789577C53A1B784473669E4',
+Index: stem-1.8.0/test/unit/directory/authority.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/directory/authority.py
++++ stem-1.8.0/test/unit/directory/authority.py
+@@ -9,11 +9,7 @@ import stem
+ import stem.directory
+ import stem.prereq
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch, Mock
+-except ImportError:
+-  from mock import patch, Mock
++from unittest.mock import patch, Mock
+ 
+ URL_OPEN = 'urllib.request.urlopen' if stem.prereq.is_python_3() else 'urllib2.urlopen'
+ 
+Index: stem-1.8.0/test/unit/directory/fallback.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/directory/fallback.py
++++ stem-1.8.0/test/unit/directory/fallback.py
+@@ -17,11 +17,7 @@ try:
+ except ImportError:
+   from stem.util.ordereddict import OrderedDict
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import patch, Mock
+-except ImportError:
+-  from mock import patch, Mock
++from unittest.mock import patch, Mock
+ 
+ URL_OPEN = 'urllib.request.urlopen' if stem.prereq.is_python_3() else 'urllib2.urlopen'
+ 
+Index: stem-1.8.0/test/unit/doctest.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/doctest.py
++++ stem-1.8.0/test/unit/doctest.py
+@@ -15,13 +15,9 @@ import stem.util.system
+ import stem.version
+ import test
+ 
+-from stem.response import ControlMessage
++from unittest.mock import Mock, patch
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from stem.response import ControlMessage
+ 
+ EXPECTED_CIRCUIT_STATUS = """\
+ 20 EXTENDED $718BCEA286B531757ACAFF93AE04910EA73DE617=KsmoinOK,$649F2D0ACF418F7CFC6539AB2257EB2D5297BAFA=Eskimo BUILD_FLAGS=NEED_CAPACITY PURPOSE=GENERAL TIME_CREATED=2012-12-06T13:51:11.433755
+Index: stem-1.8.0/test/unit/exit_policy/policy.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/exit_policy/policy.py
++++ stem-1.8.0/test/unit/exit_policy/policy.py
+@@ -5,11 +5,7 @@ Unit tests for the stem.exit_policy.Exit
+ import pickle
+ import unittest
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from unittest.mock import Mock, patch
+ 
+ from stem.exit_policy import (
+   DEFAULT_POLICY_RULES,
+Index: stem-1.8.0/test/unit/interpreter/__init__.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/interpreter/__init__.py
++++ stem-1.8.0/test/unit/interpreter/__init__.py
+@@ -9,11 +9,7 @@ __all__ = [
+   'help',
+ ]
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock
+-except ImportError:
+-  from mock import Mock
++from unittest.mock import Mock
+ 
+ GETINFO_NAMES = """
+ info/names -- List of GETINFO options, types, and documentation.
+Index: stem-1.8.0/test/unit/interpreter/autocomplete.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/interpreter/autocomplete.py
++++ stem-1.8.0/test/unit/interpreter/autocomplete.py
+@@ -1,15 +1,10 @@
+ import unittest
+ 
+-from stem.interpreter.autocomplete import _get_commands, Autocompleter
++from unittest.mock import Mock
+ 
++from stem.interpreter.autocomplete import _get_commands, Autocompleter
+ from test.unit.interpreter import CONTROLLER
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock
+-except ImportError:
+-  from mock import Mock
+-
+ 
+ class TestAutocompletion(unittest.TestCase):
+   def test_autocomplete_results_from_config(self):
+Index: stem-1.8.0/test/unit/interpreter/commands.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/interpreter/commands.py
++++ stem-1.8.0/test/unit/interpreter/commands.py
+@@ -5,16 +5,12 @@ import stem
+ import stem.response
+ import stem.version
+ 
++from unittest.mock import Mock, patch
++
+ from stem.interpreter.commands import ControlInterpreter, _get_fingerprint
+ from stem.response import ControlMessage
+ from test.unit.interpreter import CONTROLLER
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ EXPECTED_EVENTS_RESPONSE = """\
+ \x1b[34mBW 15 25\x1b[0m
+ \x1b[34mBW 758 570\x1b[0m
+Index: stem-1.8.0/test/unit/manual.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/manual.py
++++ stem-1.8.0/test/unit/manual.py
+@@ -13,6 +13,8 @@ import stem.manual
+ import stem.util.system
+ import test.require
+ 
++from unittest.mock import Mock, patch
++
+ try:
+   # account for urllib's change between python 2.x and 3.x
+   import urllib.request as urllib
+@@ -20,12 +22,6 @@ except ImportError:
+   import urllib2 as urllib
+ 
+ try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+-try:
+   # added in python 2.7
+   from collections import OrderedDict
+ except ImportError:
+Index: stem-1.8.0/test/unit/response/events.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/response/events.py
++++ stem-1.8.0/test/unit/response/events.py
+@@ -10,16 +10,12 @@ import stem.response
+ import stem.response.events
+ import stem.util.log
+ 
++from unittest.mock import Mock
++
+ from stem import *  # enums and exceptions
+ from stem.response import ControlMessage
+ from stem.descriptor.router_status_entry import RouterStatusEntryV3
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock
+-except ImportError:
+-  from mock import Mock
+-
+ # ADDRMAP event
+ 
+ ADDRMAP = '650 ADDRMAP www.atagar.com 75.119.206.243 "2012-11-19 00:50:13" \
+Index: stem-1.8.0/test/unit/response/protocolinfo.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/response/protocolinfo.py
++++ stem-1.8.0/test/unit/response/protocolinfo.py
+@@ -11,15 +11,11 @@ import stem.util.proc
+ import stem.util.system
+ import stem.version
+ 
++from unittest.mock import Mock, patch
++
+ from stem.response import ControlMessage
+ from stem.response.protocolinfo import AuthMethod
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ NO_AUTH = """250-PROTOCOLINFO 1
+ 250-AUTH METHODS=NULL
+ 250-VERSION Tor="0.2.1.30"
+Index: stem-1.8.0/test/unit/tutorial.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/tutorial.py
++++ stem-1.8.0/test/unit/tutorial.py
+@@ -7,6 +7,8 @@ import unittest
+ 
+ import stem.descriptor.remote
+ 
++from unittest.mock import Mock, patch
++
+ from stem.control import Controller
+ from stem.descriptor.router_status_entry import RouterStatusEntryV2, RouterStatusEntryV3
+ from stem.descriptor.networkstatus import NetworkStatusDocumentV3
+@@ -19,12 +21,6 @@ try:
+ except ImportError:
+   from io import StringIO
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ 
+ OVER_THE_RIVER_OUTPUT = """\
+  * Connecting to tor
+Index: stem-1.8.0/test/unit/tutorial_examples.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/tutorial_examples.py
++++ stem-1.8.0/test/unit/tutorial_examples.py
+@@ -15,6 +15,8 @@ import stem.response
+ import stem.descriptor.remote
+ import stem.prereq
+ 
++from unittest.mock import Mock, patch
++
+ from stem.control import Controller
+ from stem.descriptor.networkstatus import NetworkStatusDocumentV3
+ from stem.descriptor.router_status_entry import RouterStatusEntryV3
+@@ -24,12 +26,6 @@ from stem.response import ControlMessage
+ 
+ from test.unit import exec_documentation_example
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ OPEN_FUNCTION = open  # make a reference so mocking open() won't mess with us
+ 
+ CIRC_CONTENT = '650 CIRC %d %s \
+Index: stem-1.8.0/test/unit/util/connection.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/util/connection.py
++++ stem-1.8.0/test/unit/util/connection.py
+@@ -9,6 +9,8 @@ import unittest
+ import stem
+ import stem.util.connection
+ 
++from unittest.mock import Mock, patch
++
+ from stem.util.connection import Resolver, Connection
+ 
+ try:
+@@ -17,12 +19,6 @@ try:
+ except ImportError:
+   import urllib2 as urllib
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ URL_OPEN = 'urllib.request.urlopen' if stem.prereq.is_python_3() else 'urllib2.urlopen'
+ URL = 'https://example.unit.test.url'
+ 
+Index: stem-1.8.0/test/unit/util/proc.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/util/proc.py
++++ stem-1.8.0/test/unit/util/proc.py
+@@ -7,14 +7,11 @@ import unittest
+ 
+ import test
+ 
++from unittest.mock import Mock, patch
++
+ from stem.util import proc
+ from stem.util.connection import Connection
+ 
+-try:
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
+-
+ TITLE_LINE = b'sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt  uid  timeout'
+ 
+ TCP6_CONTENT = b"""\
+Index: stem-1.8.0/test/unit/util/system.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/util/system.py
++++ stem-1.8.0/test/unit/util/system.py
+@@ -14,13 +14,9 @@ import unittest
+ 
+ import stem.prereq
+ 
+-from stem.util import system
++from unittest.mock import Mock, patch
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from stem.util import system
+ 
+ # Base responses for the pid_by_name tests. The 'success' and
+ # 'multiple_results' entries are filled in by tests.
+Index: stem-1.8.0/test/unit/version.py
+===================================================================
+--- stem-1.8.0.orig/test/unit/version.py
++++ stem-1.8.0/test/unit/version.py
+@@ -7,13 +7,9 @@ import unittest
+ import stem.util.system
+ import stem.version
+ 
+-from stem.version import Version
++from unittest.mock import Mock, patch
+ 
+-try:
+-  # added in python 3.3
+-  from unittest.mock import Mock, patch
+-except ImportError:
+-  from mock import Mock, patch
++from stem.version import Version
+ 
+ VERSION_CMD_OUTPUT = """Mar 22 23:09:37.088 [notice] Tor v0.2.2.35 \
+ (git-73ff13ab3cc9570d). This is experimental software. Do not rely on it for \

@@ -1,7 +1,7 @@
 #
 # spec file for package python-stem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Python controller library for Tor
 License:        LGPL-3.0-only
 URL:            https://stem.torproject.org/
 Source:         https://files.pythonhosted.org/packages/source/s/stem/stem-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/torproject/stem/commit/5691ff000a40059a2a9812e627574ac88cc7c754 Drop mock fallback
+Patch0:         mock.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
@@ -32,7 +34,7 @@ BuildRequires:  fdupes
 Requires:       python
 Requires:       python-cryptography
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,6 +44,7 @@ to interact with Tor (https://www.torproject.org/).
 
 %prep
 %setup -q -n stem-%{version}
+%autopatch -p1
 
 %build
 %python_build
