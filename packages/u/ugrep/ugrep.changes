@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 13 14:26:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 3.2.2:
+  * Add support for file search on zstd-compressed files:
+    -z (.zst, .zstd, .tzstd) and advanced .zipx method zstd (93)
+
+-------------------------------------------------------------------
 Sat May  1 09:45:09 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.15:
