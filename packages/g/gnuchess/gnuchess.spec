@@ -17,21 +17,20 @@
 
 
 Name:           gnuchess
-Version:        6.2.7
+Version:        6.2.8
 Release:        0
 Summary:        GNU Chess Program
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://www.gnu.org/software/chess/
-Source0:        http://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz
+Source0:        https://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz.sig
 # WARNING: Don't forget to re-generate book.dat manually before submit!
 # Simply remove the source and build, updated book will be generated.
-Source1:        book_1.02.pgn.bz2
-#Source2:        book.dat.bz2
+Source2:        book_1.02.pgn.bz2
 Source3:        genbook.sh
-Source5:        xgnuchess
-Source6:        http://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz.sig
-Source7:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=chess&download=1#/gnuchess.keyring
+Source4:        xgnuchess
+Source5:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=chess&download=1#/gnuchess.keyring
 # PATCH-FIX-UPSTREAM txtJ07eHdR0m6.patch CVE-2021-30184 mcepl@suse.com
 # https://lists.gnu.org/archive/html/bug-gnu-chess/2021-04/msg00000.html
 # Patch from https://src.fedoraproject.org/rpms/gnuchess/c/bb2dd55d0daf.patch
@@ -58,12 +57,12 @@ in the xboard package.
 %configure
 %make_build
 sed -i 's/^Book[[:space:]]*=[[:space:]]*false/Book = true/;s/^OwnBook[[:space:]]=[[:space:]]*false/OwnBook = true/' src/gnuchess.ini
-sh %{SOURCE3} %{SOURCE1}
+sh %{SOURCE3} %{SOURCE2}
 
 %install
 %make_install
 # install xgnuchess
-install -m 755 %{SOURCE5} %{buildroot}/%{_bindir}
+install -m 755 %{SOURCE4} %{buildroot}/%{_bindir}
 %find_lang %{name}
 
 %post

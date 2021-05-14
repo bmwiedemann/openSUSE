@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 12:42:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.2.8
+  * Bug fixes in the input/output processing
+
+-------------------------------------------------------------------
 Thu Apr  8 20:46:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add txtJ07eHdR0m6.patch to fix CVE-2021-30184 (reported upstream on 
