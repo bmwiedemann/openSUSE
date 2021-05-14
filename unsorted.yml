@@ -298,6 +298,8 @@ unsorted:
   - acarsdec 
   - accel-config 
   - accel-config-devel 
+  - accerciser 
+  - accerciser-lang 
   - accerciser-plugin-IPython 
   - accounts-qml-module 
   - accounts-qml-module-doc 
@@ -938,12 +940,14 @@ unsorted:
   - auto-value 
   - autobench 
   - autobuild 
+  - autoconf: [i586] 
   - autoconf-archive 
   - autoconf213 
   - autocutsel 
   - autofdo 
   - autogen 
   - autojump 
+  - automake: [i586] 
   - autonym-fonts 
   - autoopts 
   - autossh 
@@ -1380,6 +1384,7 @@ unsorted:
   - branding-upstream 
   - brasero-devel 
   - breeze5-icons-rcc 
+  - breezy 
   - brevity 
   - brial-devel 
   - brickd 
@@ -1538,6 +1543,7 @@ unsorted:
   - busybox-attr 
   - busybox-bc 
   - busybox-bind-utils 
+  - busybox-bzip2 
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
@@ -1555,6 +1561,7 @@ unsorted:
   - busybox-ncurses-utils 
   - busybox-net-tools 
   - busybox-netcat 
+  - busybox-patch 
   - busybox-policycoreutils 
   - busybox-procps 
   - busybox-selinux-tools 
@@ -1569,6 +1576,7 @@ unsorted:
   - busybox-time 
   - busybox-traceroute 
   - busybox-tunctl 
+  - busybox-unzip 
   - busybox-util-linux 
   - busybox-vi 
   - busybox-vlan 
@@ -2791,7 +2799,9 @@ unsorted:
   - desktopfolder-lang 
   - deutex 
   - dev86 
+  - devhelp 
   - devhelp-devel 
+  - devhelp-lang 
   - device-mapper-devel 
   - device-mapper-devel-32bit: [x86_64] 
   - devilspie2 
@@ -3635,6 +3645,7 @@ unsorted:
   - flashfocus 
   - flashrom 
   - flatbuffers-devel 
+  - flatpak-builder 
   - flatpak-devel 
   - flatpak-spawn 
   - flatpak-xdg-utils 
@@ -4083,6 +4094,7 @@ unsorted:
   - gedit-plugin-colorpicker 
   - gedit-plugin-colorschemer 
   - gedit-plugin-commander 
+  - gedit-plugin-devhelp 
   - gedit-plugin-drawspaces 
   - gedit-plugin-findinfiles 
   - gedit-plugin-git 
@@ -5408,7 +5420,9 @@ unsorted:
   - ghc-zstd: [x86_64] 
   - ghc-zstd-devel: [x86_64] 
   - ghcid: [x86_64] 
+  - ghex 
   - ghex-devel 
+  - ghex-lang 
   - ghostscript-devel 
   - ghostscript-mini 
   - ghostscript-mini-devel 
@@ -5498,6 +5512,8 @@ unsorted:
   - git-subrepo-zsh-completion 
   - git-sync 
   - git-test 
+  - gitg 
+  - gitg-lang 
   - gitolite 
   - gitslave 
   - gitslave-doc 
@@ -5513,9 +5529,11 @@ unsorted:
   - gkrellmd 
   - gl2ps-devel 
   - glabels-devel 
+  - glade 
   - glade-catalog-anjuta 
   - glade-catalog-evolution 
   - glade-catalog-gitg 
+  - glade-catalog-gtkdatabox 
   - glade-catalog-gtkhtml 
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
@@ -5523,6 +5541,7 @@ unsorted:
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
   - glade-catalog-vte 
+  - glade-lang 
   - glade-sharp2 
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
@@ -5663,6 +5682,11 @@ unsorted:
   - gnome-boxes 
   - gnome-boxes-lang 
   - gnome-branding-MicroOS: [i586] 
+  - gnome-builder 
+  - gnome-builder-doc 
+  - gnome-builder-lang 
+  - gnome-builder-plugin-jedi 
+  - gnome-builder-plugin-jhbuild 
   - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
@@ -10735,6 +10759,7 @@ unsorted:
   - libgdiplus-devel 
   - libgdiplus0 
   - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
+  - libgdlmm-3_0-2 
   - libgdruntime1 
   - libgdruntime1-32bit: [x86_64] 
   - libgdruntime2 
@@ -10790,14 +10815,18 @@ unsorted:
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2-1_1-32bit: [x86_64] 
   - libgit2-devel 
+  - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
+  - libgitg-1_0-0 
   - libgitg-devel 
+  - libgitg-ext-1_0-0 
   - libgivaro9 
   - libgjs-devel 
   - libgl2ps1 
   - libglade-2_0-0-32bit: [x86_64] 
   - libglade2-devel 
   - libglade2-doc 
+  - libgladeui-2-13 
   - libgladeui-2-devel 
   - libgle-devel 
   - libglfw-devel 
@@ -10996,10 +11025,12 @@ unsorted:
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-0 
   - libgtkdatabox-devel 
+  - libgtkdatabox1 
   - libgtkdgl-3-0 
   - libgtkdsv-3-0 
   - libgtkglext-x11-1_0-0 
   - libgtkglext-x11-1_0-0-32bit: [x86_64] 
+  - libgtkhex-3-0 
   - libgtkhotkey-devel 
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
@@ -11013,6 +11044,7 @@ unsorted:
   - libgtkmm-4_0-0-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
+  - libgtksourceviewmm-3_0-0 
   - libgtksourceviewmm-4_0-0 
   - libgtop 
   - libgtop-2_0-11-32bit: [x86_64] 
@@ -11459,6 +11491,7 @@ unsorted:
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjsoncpp24 
+  - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
@@ -13832,6 +13865,7 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
+  - libtemplate_glib-1_0-0 
   - libtensorflow2: [x86_64] 
   - libtensorflow2-gnu-hpc: [x86_64] 
   - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
@@ -13904,6 +13938,7 @@ unsorted:
   - libtommath-examples 
   - libtommath1-32bit: [x86_64] 
   - libtomoe-gtk0 
+  - libtool: [i586] 
   - libtool-32bit: [x86_64] 
   - libtorch: [x86_64] 
   - libtorrent-devel 
@@ -16678,7 +16713,9 @@ unsorted:
   - nekohtml-demo 
   - nekohtml-javadoc 
   - nemesis 
+  - nemiver 
   - nemiver-devel 
+  - nemiver-lang 
   - nemo 
   - nemo-devel 
   - nemo-extension-actions 
@@ -18338,6 +18375,7 @@ unsorted:
   - patterns-devel-tcl-devel_tcl 
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
+  - patterns-gnome-gnome_ide 
   - patterns-hpc-compute_node: [x86_64] 
   - patterns-hpc-development_node: [x86_64] 
   - patterns-hpc-libraries: [x86_64] 
@@ -25127,6 +25165,7 @@ unsorted:
   - python38-duckduckgo2 
   - python38-dukpy 
   - python38-dukpy-kovidgoyal 
+  - python38-dulwich 
   - python38-dynaconf 
   - python38-easy-thumbnails 
   - python38-easydev 
@@ -25188,6 +25227,7 @@ unsorted:
   - python38-fann2 
   - python38-fastcluster 
   - python38-fasteners 
+  - python38-fastimport 
   - python38-fastnumbers 
   - python38-fastparquet 
   - python38-fastremap 
@@ -25287,6 +25327,7 @@ unsorted:
   - python38-geomet 
   - python38-geopy 
   - python38-getmac 
+  - python38-geventhttpclient 
   - python38-ggplot 
   - python38-gi-docgen 
   - python38-girder-client 
@@ -25314,6 +25355,7 @@ unsorted:
   - python38-google-resumable-media 
   - python38-googleapis-common-protos 
   - python38-googlemaps 
+  - python38-gpg 
   - python38-gpgme 
   - python38-gphoto2 
   - python38-gprof2dot 
@@ -25479,6 +25521,7 @@ unsorted:
   - python38-javaproperties 
   - python38-jdatetime 
   - python38-jdcal 
+  - python38-jedi 
   - python38-jedihttp 
   - python38-jeepney 
   - python38-jellyfish 
@@ -25882,6 +25925,7 @@ unsorted:
   - python38-parsedatetime 
   - python38-parsel 
   - python38-parsimonious 
+  - python38-parso 
   - python38-parsy 
   - python38-partd 
   - python38-parted 
@@ -25899,6 +25943,7 @@ unsorted:
   - python38-pathspec 
   - python38-pathtools 
   - python38-pathvalidate 
+  - python38-patiencediff 
   - python38-patsy 
   - python38-pbkdf2 
   - python38-pbr 
@@ -26368,6 +26413,7 @@ unsorted:
   - python38-python-utils 
   - python38-python-vlc 
   - python38-python-whois 
+  - python38-python-xlib 
   - python38-python-yubico 
   - python38-python3-openid 
   - python38-python3-saml 
@@ -32174,8 +32220,11 @@ unsorted:
   - syslog-ng-snmp 
   - syslog-ng-sql 
   - syslogd 
+  - sysprof 
   - sysprof-capture-devel-static 
   - sysprof-devel 
+  - sysprof-lang 
+  - sysprof-ui 
   - sysprof-ui-devel 
   - sysstat 
   - sysstat-isag 
@@ -32312,6 +32361,7 @@ unsorted:
   - telnet 
   - telnet-server 
   - template-glib-devel 
+  - template-glib-lang 
   - template-resolver 
   - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
@@ -40962,6 +41012,7 @@ unsorted:
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
   - typelib-1_0-Jcat-1_0 
+  - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libags-3_0 
@@ -41004,6 +41055,7 @@ unsorted:
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
+  - typelib-1_0-Template-1_0 
   - typelib-1_0-Tepl-6 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
@@ -41016,6 +41068,7 @@ unsorted:
   - typelib-1_0-Unique-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_10 
+  - typelib-1_0-Vte-2.91 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
@@ -41355,6 +41408,7 @@ unsorted:
   - vim-plugin-colorschemes 
   - vim-plugin-colorsel 
   - vim-plugin-conky 
+  - vim-plugin-devhelp 
   - vim-plugin-diffchanges 
   - vim-plugin-editorconfig 
   - vim-plugin-file-line 
