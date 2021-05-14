@@ -1,0 +1,2 @@
+addFilter("W: shared-lib-without-dependency-information /usr/lib64/traceevent1/plugins/.*")
+addFilter("libtraceevent1-plugins.*W: shlib-policy-missing-lib")

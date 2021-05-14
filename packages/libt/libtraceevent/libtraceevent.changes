@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri May 14 18:23:17 UTC 2021 - Tony Jones <tonyj@suse.com>
+
+- Update rpmlintrc to suppress warnings about plugins 
+
+-------------------------------------------------------------------
+Fri May 14 14:48:42 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version (1.3.0)
+
+-------------------------------------------------------------------
+Wed May 12 16:39:50 UTC 2021 - Tony Jones <tonyj@suse.com>
+
+- Make package compliant with SLPP.
+  Package plugins into so-ver specific directory.
+
+-------------------------------------------------------------------
+Fri May  7 17:25:48 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version (1.2.1)
+- Fix one rpmlint warning
+
+-------------------------------------------------------------------
+Tue Dec 22 19:35:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Rectify License: fields to mirror the SPDX lines found in source
+  and the object builds.
+- Rectify Group: fields.
+- Fix duplicate manpages.
+- Rename rpmlintrc according to policy.
+- Update to release 1.1.1
+  * trace-cmd libtraceevent: Fix bprint '#' parsing
+  * Man page for tep_add_plugin_path() API
+  * Man page for libtraceevent debug APIs
+
+-------------------------------------------------------------------
+Tue Oct 20 15:05:45 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Initial checkin of libtraceevent. 
