@@ -733,4 +733,41 @@
 - Add YAML support for REST API to build (bsc#1185603). (forwarded request 890261 from eeich)</comment>
     <requestid>890262</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>28cf01358f0be265d0210138364d1fe2</srcmd5>
+    <version>20.11.7</version>
+    <time>1621034662</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 20.11.7 which fixes CVE-2021-31215 (bsc#1186024)
+- New featuresi from 20.11.7:
+ * slurmd - handle configless failures gracefully instead of hanging
+   indefinitely.
+ * select/cons_tres - fix Dragonfly topology not selecting nodes in the same
+   leaf switch when it should as well as requests with *-switches option.
+ * Fix issue where certain step requests wouldn't run if the first node in the
+   job allocation was full and there were idle resources on other nodes in
+   the job allocation.
+ * Fix deadlock issue with &lt;Prolog|Epilog&gt;Slurmctld.
+ * torque/qstat - fix printf error message in output.
+ * When adding associations or wckeys avoid checking multiple times a user or
+   cluster name.
+ * Fix wrong jobacctgather information on a step on multiple nodes
+   due to timeouts sending its the information gathered on its node.
+ * Fix missing xstrdup which could result in slurmctld segfault on array jobs.
+ * Fix security issue in PrologSlurmctld and EpilogSlurmctld by always
+   prepending SPANK_ to all user-set environment variables. CVE-2021-31215.
+- New features from 20.11.6:
+ * Fix sacct assert with the --qos option.
+ * Use pkg-config --atleast-version instead of --modversion for systemd.
+ * common/fd - fix getsockopt() call in fd_get_socket_error().
+ * Properly handle the return from fd_get_socket_error() in _conn_readable().
+ * cons_res - Fix issue where running jobs were not taken into consideration
+   when creating a reservation.
+ * Avoid a deadlock between job_list for_each and assoc QOS_LOCK.
+ * Fix TRESRunMins usage for partition qos on restart/reconfig.
+ * Fix printing of number of tasks on a completed job that didn't request
+   tasks.
+ * Fix updating GrpTRESRunMins when decrementing job time is bigger than it.</comment>
+    <requestid>893087</requestid>
+  </revision>
 </revisionlist>

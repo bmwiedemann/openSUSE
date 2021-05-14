@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri May 14 10:07:04 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Updated to 20.11.7 which fixes CVE-2021-31215 (bsc#1186024)
+- New featuresi from 20.11.7:
+ * slurmd - handle configless failures gracefully instead of hanging
+   indefinitely.
+ * select/cons_tres - fix Dragonfly topology not selecting nodes in the same
+   leaf switch when it should as well as requests with *-switches option.
+ * Fix issue where certain step requests wouldn't run if the first node in the
+   job allocation was full and there were idle resources on other nodes in
+   the job allocation.
+ * Fix deadlock issue with <Prolog|Epilog>Slurmctld.
+ * torque/qstat - fix printf error message in output.
+ * When adding associations or wckeys avoid checking multiple times a user or
+   cluster name.
+ * Fix wrong jobacctgather information on a step on multiple nodes
+   due to timeouts sending its the information gathered on its node.
+ * Fix missing xstrdup which could result in slurmctld segfault on array jobs.
+ * Fix security issue in PrologSlurmctld and EpilogSlurmctld by always
+   prepending SPANK_ to all user-set environment variables. CVE-2021-31215.
+- New features from 20.11.6:
+ * Fix sacct assert with the --qos option.
+ * Use pkg-config --atleast-version instead of --modversion for systemd.
+ * common/fd - fix getsockopt() call in fd_get_socket_error().
+ * Properly handle the return from fd_get_socket_error() in _conn_readable().
+ * cons_res - Fix issue where running jobs were not taken into consideration
+   when creating a reservation.
+ * Avoid a deadlock between job_list for_each and assoc QOS_LOCK.
+ * Fix TRESRunMins usage for partition qos on restart/reconfig.
+ * Fix printing of number of tasks on a completed job that didn't request
+   tasks.
+ * Fix updating GrpTRESRunMins when decrementing job time is bigger than it.
+ * Make it so we handle multithreaded allocations correctly when doing
+   --exclusive or --core-spec allocations.
+ * Fix incorrect round-up division in _pick_step_cores
+ * Use appropriate math to adjust cpu counts when --ntasks-per-core=1.
+ * cons_tres - Fix consideration of power downed nodes.
+ * cons_tres - Fix DefCpuPerGPU, increase cpus-per-task to match with
+   gpus-per-task * cpus-per-gpu.
+ * Fix under-cpu memory auto-adjustment when MaxMemPerCPU is set.
+ * Make it possible to override CR_CORE_DEFAULT_DIST_BLOCK.
+ * Perl API - fix retrieving/storing of slurm_step_id_t in job_step_info_t.
+ * Recover state of burst buffers when slurmctld is restarted to avoid skipping
+   burst buffer stages.
+ * Fix race condition in burst buffer plugin which caused a burst buffer
+   in stage-in to not get state saved if slurmctld stopped.
+ * auth/jwt - print an error if jwt_file= has not been set in slurmdbd.
+ * Fix RESV_DEL_HOLD not being a valid state when using squeue --states.
+ * Add missing squeue selectable states in valid states error message.
+ * Fix scheduling last array task multiple times on error, causing segfault.
+ * Fix issue where a step could be allocated more memory than the job when
+   dealing with --mem-per-cpu and --threads-per-core.
+ * Fix removing qos from assoc with -= can lead to assoc with no qos
+ * auth/jwt - fix segfault on invalid credential in slurmdbd due to
+   missing validate_slurm_user() function in context.
+ * Fix single Port= not being applied to range of nodes in slurm.conf
+ * Fix Jobs not requesting a tres are not starting because of that tres limit.
+ * acct_gather_energy/rapl - fix AveWatts calculation.
+ * job_container/tmpfs - Fix issues with cleanup and slurmd restarting on
+   running jobs.
+
+
+-------------------------------------------------------------------
 Mon May  3 16:09:44 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Ship REST API version and auth plugins with slurmrestd.
