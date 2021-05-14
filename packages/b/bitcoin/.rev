@@ -356,4 +356,12 @@
   * For full details see release-notes-0.21.0.md</comment>
     <requestid>864261</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>62016184a52a6ea7c09ca1f9d123b334</srcmd5>
+    <version>0.21.1</version>
+    <time>1621034673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893127</requestid>
+  </revision>
 </revisionlist>

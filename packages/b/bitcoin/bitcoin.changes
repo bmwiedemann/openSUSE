@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 14 10:54:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.21.1
+  * Consensus:
+    * Speedy trial support for versionbits
+    * Speedy trial activation parameters for Taproot
+  * P2P protocol and network code
+    * allow CSubNet of non-IP networks
+    * Avoid UBSan warning in ProcessMessage
+  * Wallet
+    * Introduce DeferredSignatureChecker and have
+      SignatureExtractorClass subclass it
+    * Avoid requesting fee rates multiple times during coin selection
+  * RPC and other APIs:
+    * Disallow sendtoaddress and sendmany when private keys disabled
+      CVE-2021-3195
+
+-------------------------------------------------------------------
 Tue Jan 19 08:59:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.21.0:
