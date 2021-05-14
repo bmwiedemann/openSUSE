@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 19 16:46:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replaced broken URLs with current upstream
+
+-------------------------------------------------------------------
 Thu Aug 20 08:32:42 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

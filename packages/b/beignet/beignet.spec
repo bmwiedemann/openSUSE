@@ -1,7 +1,7 @@
 #
 # spec file for package beignet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        OpenCL implementation for Intel GPUs
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://01.org/beignet/
-Source0:        https://01.org/sites/default/files/%{name}-%{version}-source.tar.gz
+URL:            https://www.freedesktop.org/wiki/Software/Beignet/
+Source0:        https://gitlab.freedesktop.org/beignet/beignet/-/archive/Release_v%{version}/%{name}-Release_v%{version}.tar.bz2
 Source99:       beignet-rpmlintrc
 Patch0:         beignet-llvm6.patch
 Patch1:         0008-Add-preliminary-LLVM-7-support.patch
@@ -68,7 +68,7 @@ Devel package for Beignet, an implementation of the OpenCL
 specification, a generic compute oriented API.
 
 %prep
-%setup -q -n Beignet-%{version}-Source
+%setup -q -n %{name}-Release_v%{version}
 %autopatch -p1
 rm README.md
 cp docs/Beignet.mdwn README.md
