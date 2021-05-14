@@ -13766,6 +13766,7 @@ unsorted:
   - libswresample3_9-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
   - libsybdb5 
+  - libsybdb5-32bit: [x86_64] 
   - libsymmetrica2 
   - libsympol0_1 
   - libsymspg1 
@@ -13815,6 +13816,7 @@ unsorted:
   - libtcnative-1-0-devel 
   - libtdb-devel 
   - libtdsodbc0 
+  - libtdsodbc0-32bit: [x86_64] 
   - libteam-devel 
   - libteam-tools 
   - libteam5 
@@ -20982,7 +20984,7 @@ unsorted:
   - python-sip4-common 
   - python-sip4-doc 
   - python-six-doc 
-  - python-solo-python: [i586] 
+  - python-solo-python 
   - python-solv 
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
@@ -30594,6 +30596,7 @@ unsorted:
   - remmina-devel 
   - remmina-kiosk 
   - remmina-plugin-exec 
+  - remmina-plugin-gvnc 
   - remmina-plugin-kwallet 
   - remmina-plugin-spice 
   - remmina-plugin-st 
