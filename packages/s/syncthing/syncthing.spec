@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -138,6 +138,7 @@ getent passwd strelaysrv >/dev/null || \
 %endif
 
 %files relaysrv
+%license LICENSE
 %{_bindir}/strelaysrv
 %{_unitdir}/strelaysrv.service
 %dir %attr(750,strelaysrv,strelaysrv) %{_localstatedir}/lib/strelaysrv
