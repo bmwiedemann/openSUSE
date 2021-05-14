@@ -5455,4 +5455,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.12.2 &amp; 5.12.1 &amp; kasan fix &amp; other fixes</comment>
     <requestid>891383</requestid>
   </revision>
+  <revision rev="587" vrev="1">
+    <srcmd5>0f730639aa94cd821b72294367b4b30a</srcmd5>
+    <version>5.12.3</version>
+    <time>1621034620</time>
+    <user>dimstar_suse</user>
+    <comment>5.12.3 &amp; sctp CVE fix &amp; other fixes</comment>
+    <requestid>892448</requestid>
+  </revision>
 </revisionlist>

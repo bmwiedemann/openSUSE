@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.2
+%define patchversion 5.12.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.12.2
+Version:        5.12.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6fcec30
+Release:        <RELEASE>.g25d4ec7
 %else
 Release:        0
 %endif
@@ -48,6 +48,7 @@ BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 BuildRequires:  python3-Sphinx < 3
+BuildRequires:  texlive-amscls
 BuildRequires:  texlive-anyfontsize
 %if %build_pdf
 BuildRequires:  python3-Sphinx-latex
@@ -63,7 +64,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-6fcec3073b225cb9375a0e73524dfd20b8f79c5a
+Provides:       %name-srchash-25d4ec701b8e9fb1331197fb330a9cf388cda7a3
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -249,7 +250,7 @@ cd linux-%srcversion
 
 %build
 cd linux-%srcversion
-export LANG=en_US
+export LANG=en_US.utf8
 %if %build_html
 mkdir -p html
 make %{?make_arg} O=$PWD/html PYTHON=python3 htmldocs
