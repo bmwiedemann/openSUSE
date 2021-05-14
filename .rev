@@ -7,4 +7,20 @@
     <comment>another authlib dep</comment>
     <requestid>851898</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17aedaffe69d19c0772c7a7ba2c00caa</srcmd5>
+    <version>0.17.0</version>
+    <time>1621034639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  - Connection objects now raise ValueError when closed and a
+    command is executed (#79)
+  - Fix documented examples in readme (#104)
+  - Reduce logging severity for exceptions (#93)
+  - Stop logging result objects; they can be big (#102)
+- Add stdlib-typing_extensions.patch to avoid necessity for BR
+  python-typing_extensions (gh#omnilib/aiosqlite#114).
+</comment>
+    <requestid>893040</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 07:10:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.17.0:
+  - Connection objects now raise ValueError when closed and a
+    command is executed (#79)
+  - Fix documented examples in readme (#104)
+  - Reduce logging severity for exceptions (#93)
+  - Stop logging result objects; they can be big (#102)
+- Add stdlib-typing_extensions.patch to avoid necessity for BR
+  python-typing_extensions (gh#omnilib/aiosqlite#114).
+
+-------------------------------------------------------------------
 Sat Nov 28 04:23:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.16.0

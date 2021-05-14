@@ -1,0 +1,42 @@
+---
+ aiosqlite/context.py |    5 ++---
+ pyproject.toml       |    2 +-
+ setup.py             |    2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+--- a/aiosqlite/context.py
++++ b/aiosqlite/context.py
+@@ -3,9 +3,8 @@
+ 
+ 
+ from functools import wraps
+-from typing import Any, Callable, Coroutine, Generator, TypeVar
+-
+-from typing_extensions import AsyncContextManager
++from typing import (Any, Callable, Coroutine, Generator, TypeVar,
++                    AsyncContextManager)
+ 
+ from .cursor import Cursor
+ 
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,7 @@ author = "John Reese"
+ author-email = "john@noswap.com"
+ description-file = "README.rst"
+ home-page = "https://aiosqlite.omnilib.dev"
+-requires = ["typing_extensions>=3.7.2"]
++requires = []
+ requires-python = ">=3.6"
+ classifiers = [
+     "Development Status :: 5 - Production/Stable",
+--- a/setup.py
++++ b/setup.py
+@@ -10,7 +10,7 @@ package_data = \
+ {'': ['*']}
+ 
+ install_requires = \
+-['typing_extensions>=3.7.2']
++[]
+ 
+ setup(name='aiosqlite',
+       version='0.17.0',
