@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 14 15:59:38 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 10.2.5.0
+
+  * Fixed `:` support in `@supports` (by Dmitry Semigradsky).
+  * Update Can I Use data.
+  * Lock to execjs < 2.8.0 for now (#203)
+
+-------------------------------------------------------------------
 Sat Feb  6 11:46:57 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 10.2.4.0
