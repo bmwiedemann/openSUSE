@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May  8 09:58:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.16.3
+  * panel: Change width of default panel-2 to 1%
+    (gxo#xfce/xfce4-panel#454)
+  * panel: Fix xfce4-panel-CRITICAL
+  * panel: Fix xfce4-panel-CRITICAL when already running
+  * libxfce4panel: Do not destroy context menu if popped up
+    (gxo#xfce/xfce4-panel#442)
+  * launcher: Check for menu item initialization
+  * launcher: Fix garcon-CRITICAL at startup
+  * systray: Fix GObject-CRITICAL
+  * systray: Fix Gtk-CRITICAL at startup/shutdown
+  * systray: Fix libsystray-CRITICAL
+  * tasklist: Fix Gtk-CRITICAL
+  * Silent `-Wcast-align` from Clang
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Feb 28 18:29:31 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 4.16.2

@@ -677,4 +677,27 @@
 </comment>
     <requestid>876903</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>9a43e54a8fb6203af320b563c8a6a73b</srcmd5>
+    <version>4.16.3</version>
+    <time>1621034636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.16.3
+  * panel: Change width of default panel-2 to 1%
+    (gxo#xfce/xfce4-panel#454)
+  * panel: Fix xfce4-panel-CRITICAL
+  * panel: Fix xfce4-panel-CRITICAL when already running
+  * libxfce4panel: Do not destroy context menu if popped up
+    (gxo#xfce/xfce4-panel#442)
+  * launcher: Check for menu item initialization
+  * launcher: Fix garcon-CRITICAL at startup
+  * systray: Fix GObject-CRITICAL
+  * systray: Fix Gtk-CRITICAL at startup/shutdown
+  * systray: Fix libsystray-CRITICAL
+  * tasklist: Fix Gtk-CRITICAL
+  * Silent `-Wcast-align` from Clang
+  * Translation Updates
+</comment>
+    <requestid>892980</requestid>
+  </revision>
 </revisionlist>
