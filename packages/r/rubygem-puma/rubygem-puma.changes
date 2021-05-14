@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May 14 16:22:43 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.3.1
+
+  ## 5.3.1 / 2021-05-11
+
+  * Security
+    * Close keepalive connections after the maximum number of fast inlined requests (#2625)
+
+  ## 5.3.0 / 2021-05-07
+
+  * Features
+    * Add support for Linux's abstract sockets ([#2564], [#2526])
+    * Add debug to worker timeout and startup ([#2559], [#2528])
+    * Print warning when running one-worker cluster ([#2565], [#2534])
+    * Don't close systemd activated socket on pumactl restart ([#2563], [#2504])
+
+  * Bugfixes
+    * systemd - fix event firing ([#2591], [#2572])
+    * Immediately unlink temporary files ([#2613])
+    * Improve parsing of HTTP_HOST header ([#2605], [#2584])
+    * Handle fatal error that has no backtrace ([#2607], [#2552])
+    * Fix timing out requests too early ([#2606], [#2574])
+    * Handle segfault in Ruby 2.6.6 on thread-locals ([#2567], [#2566])
+    * Server#closed_socket? - parameter may be a MiniSSL::Socket ([#2596])
+    * Define UNPACK_TCP_STATE_FROM_TCP_INFO in the right place ([#2588], [#2556])
+    * request.rb - fix chunked assembly for ascii incompatible encodings, add test ([#2585], [#2583])
+
+  * Performance
+    * Reset peerip only if remote_addr_header is set ([#2609])
+    * Reduce puma_parser struct size ([#2590])
+
+  * Refactor
+    * Refactor drain on shutdown ([#2600])
+    * Micro optimisations in `wait_for_less_busy_worker` feature ([#2579])
+    * Lots of test fixes
+
+-------------------------------------------------------------------
 Mon Mar 15 04:30:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 5.2.2

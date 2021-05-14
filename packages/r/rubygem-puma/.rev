@@ -342,4 +342,12 @@
     <comment>update (forwarded request 879036 from mschnitzer)</comment>
     <requestid>879042</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ff4e55b1e89fbabcd626c667ab23fcd8</srcmd5>
+    <version>5.3.1</version>
+    <time>1621034680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893206</requestid>
+  </revision>
 </revisionlist>
