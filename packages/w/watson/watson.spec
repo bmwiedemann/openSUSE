@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           watson
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
@@ -40,7 +40,7 @@ It generates reports for clients.
 Summary:        Bash completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -50,7 +50,7 @@ Bash command line completion support for %{name}.
 Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -60,7 +60,7 @@ Fish command line completion support for %{name}.
 Summary:        Zsh completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
