@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 14 18:54:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Use correct lname
+
+-------------------------------------------------------------------
+Fri May 14 17:45:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.0
+  * This release is mostly about expanding support for new
+    algorithms and fixing bugs.
+  * Full changelog: https://hashcat.net/forum/thread-10103.html
+
+-------------------------------------------------------------------
 Sun Nov 22 17:07:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - OpenCL required at runtime [boo#1177190]

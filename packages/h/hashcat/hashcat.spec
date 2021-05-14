@@ -1,7 +1,7 @@
 #
 # spec file for package hashcat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           hashcat
-%define lname	libhashcat6_1_1
-Version:        6.1.1
+%define lname	libhashcat6_2_0
+Version:        6.2.0
 Release:        0
 Summary:        CPU-based password recovery utility
-License:        MIT AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Security
 URL:            https://hashcat.net/
 
-Source:         https://github.com/hashcat/hashcat/archive/v%version.tar.gz
+Source:         https://github.com/hashcat/hashcat/archive/refs/tags/v%{version}.tar.gz
 Source9:        %name-rpmlintrc
 Patch1:         system-libs.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  pkgconfig(clzma)

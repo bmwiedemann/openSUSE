@@ -40,4 +40,12 @@
     <comment>- OpenCL required at runtime [boo#1177190]</comment>
     <requestid>849989</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>262163896de81cf7ec3453af1a730bf3</srcmd5>
+    <version>6.2.0</version>
+    <time>1621034682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893228</requestid>
+  </revision>
 </revisionlist>
