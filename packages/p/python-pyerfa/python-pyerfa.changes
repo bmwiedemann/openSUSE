@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 15:48:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Reenable test_version but disable test_sofa_version
+  * upstream fixed it for the next release in gh#liberfa/pyerfa#73
+
+-------------------------------------------------------------------
 Sun Feb 21 16:19:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to Version 1.7.2
