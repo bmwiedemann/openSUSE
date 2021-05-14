@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.15
+Version:        1.4.16
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
