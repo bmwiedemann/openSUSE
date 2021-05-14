@@ -1,0 +1,165 @@
+From 5ca4ecaa7d6e152e66f4d078b3a68f1919841376 Mon Sep 17 00:00:00 2001
+From: Esun Kim <veblush@google.com>
+Date: Wed, 31 Mar 2021 10:33:34 -0700
+Subject: [PATCH] Use absl pkg-config instead of linking them directly (#25840)
+
+---
+ CMakeLists.txt                    | 20 +++++++--------
+ templates/CMakeLists.txt.template | 42 ++++++++++++++++++-------------
+ 2 files changed, 34 insertions(+), 28 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6729fc4600..cfd843f951 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15505,8 +15505,8 @@ generate_pkgconfig(
+   "gpr"
+   "gRPC platform support library"
+   "${gRPC_CORE_VERSION}"
+-  ""
+-  "-lgpr -labsl_synchronization -labsl_time -labsl_time_zone -labsl_civil_time -labsl_graphcycles_internal -labsl_status -labsl_cord -labsl_str_format_internal -labsl_bad_optional_access -labsl_symbolize -labsl_strings -labsl_strings_internal -labsl_int128 -labsl_demangle_internal -labsl_malloc_internal -labsl_stacktrace -labsl_debugging_internal -labsl_throw_delegate -labsl_base -labsl_spinlock_wait -labsl_raw_logging_internal -labsl_log_severity"
++  "absl_base absl_memory absl_optional absl_status absl_str_format absl_strings absl_synchronization absl_time"
++  "-lgpr"
+   ""
+   "gpr.pc")
+ 
+@@ -15515,8 +15515,8 @@ generate_pkgconfig(
+   "gRPC"
+   "high performance general RPC framework"
+   "${gRPC_CORE_VERSION}"
+-  "gpr openssl"
+-  "-lgrpc -laddress_sorting -lre2 -lupb -lcares -lz -labsl_statusor -labsl_status -labsl_raw_hash_set -labsl_hashtablez_sampler -labsl_synchronization -labsl_time -labsl_time_zone -labsl_civil_time -labsl_graphcycles_internal -labsl_symbolize -labsl_demangle_internal -labsl_malloc_internal -labsl_stacktrace -labsl_debugging_internal -labsl_exponential_biased -labsl_cord -labsl_str_format_internal -labsl_hash -labsl_bad_variant_access -labsl_bad_optional_access -labsl_strings -labsl_strings_internal -labsl_base -labsl_spinlock_wait -labsl_int128 -labsl_city -labsl_throw_delegate -labsl_raw_logging_internal -labsl_log_severity"
++  "gpr openssl absl_base absl_bind_front absl_flat_hash_map absl_inlined_vector absl_memory absl_optional absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time"
++  "-lgrpc -laddress_sorting -lre2 -lupb -lcares -lz"
+   ""
+   "grpc.pc")
+ 
+@@ -15525,8 +15525,8 @@ generate_pkgconfig(
+   "gRPC unsecure"
+   "high performance general RPC framework without SSL"
+   "${gRPC_CORE_VERSION}"
+-  "gpr"
+-  "-lgrpc_unsecure -labsl_statusor -labsl_status -labsl_raw_hash_set -labsl_hashtablez_sampler -labsl_synchronization -labsl_time -labsl_time_zone -labsl_civil_time -labsl_graphcycles_internal -labsl_symbolize -labsl_demangle_internal -labsl_malloc_internal -labsl_stacktrace -labsl_debugging_internal -labsl_exponential_biased -labsl_cord -labsl_str_format_internal -labsl_hash -labsl_bad_variant_access -labsl_bad_optional_access -labsl_strings -labsl_strings_internal -labsl_base -labsl_spinlock_wait -labsl_int128 -labsl_city -labsl_throw_delegate -labsl_raw_logging_internal -labsl_log_severity"
++  "gpr absl_base absl_flat_hash_map absl_inlined_vector absl_memory absl_optional absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time"
++  "-lgrpc_unsecure"
+   ""
+   "grpc_unsecure.pc")
+ 
+@@ -15535,8 +15535,8 @@ generate_pkgconfig(
+   "gRPC++"
+   "C++ wrapper for gRPC"
+   "${gRPC_CPP_VERSION}"
+-  "grpc"
+-  "-lgrpc++ -labsl_statusor -labsl_status -labsl_raw_hash_set -labsl_hashtablez_sampler -labsl_synchronization -labsl_time -labsl_time_zone -labsl_civil_time -labsl_graphcycles_internal -labsl_symbolize -labsl_demangle_internal -labsl_malloc_internal -labsl_stacktrace -labsl_debugging_internal -labsl_exponential_biased -labsl_cord -labsl_str_format_internal -labsl_hash -labsl_bad_variant_access -labsl_bad_optional_access -labsl_strings -labsl_strings_internal -labsl_base -labsl_spinlock_wait -labsl_int128 -labsl_city -labsl_throw_delegate -labsl_raw_logging_internal -labsl_log_severity"
++  "grpc absl_base absl_bind_front absl_flat_hash_map absl_inlined_vector absl_memory absl_optional absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time"
++  "-lgrpc++"
+   ""
+   "grpc++.pc")
+ 
+@@ -15545,7 +15545,7 @@ generate_pkgconfig(
+   "gRPC++ unsecure"
+   "C++ wrapper for gRPC without SSL"
+   "${gRPC_CPP_VERSION}"
+-  "grpc_unsecure"
+-  "-lgrpc++_unsecure -labsl_statusor -labsl_status -labsl_raw_hash_set -labsl_hashtablez_sampler -labsl_synchronization -labsl_time -labsl_time_zone -labsl_civil_time -labsl_graphcycles_internal -labsl_symbolize -labsl_demangle_internal -labsl_malloc_internal -labsl_stacktrace -labsl_debugging_internal -labsl_exponential_biased -labsl_cord -labsl_str_format_internal -labsl_hash -labsl_bad_variant_access -labsl_bad_optional_access -labsl_strings -labsl_strings_internal -labsl_base -labsl_spinlock_wait -labsl_int128 -labsl_city -labsl_throw_delegate -labsl_raw_logging_internal -labsl_log_severity"
++  "grpc_unsecure absl_base absl_flat_hash_map absl_inlined_vector absl_memory absl_optional absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time"
++  "-lgrpc++_unsecure"
+   ""
+   "grpc++_unsecure.pc")
+diff --git a/templates/CMakeLists.txt.template b/templates/CMakeLists.txt.template
+index 0a14440523..40cf7ff615 100644
+--- a/templates/CMakeLists.txt.template
++++ b/templates/CMakeLists.txt.template
+@@ -39,13 +39,20 @@
+   def get_absl_dep(lib_name):
+       return lib_map[lib_name].cmake_target
+ 
+-  def list_absl_lib_files_for(lib_name):
+-    ret = []
+-    lib = lib_map[lib_name]
+-    for dep in lib.transitive_deps:
+-      if is_absl_lib(dep) and len(lib_map[dep].src) > 0:
+-        ret.append(get_absl_dep(dep).replace("::", "_"))
+-    return ret
++  def lib_and_transitive_deps(lib):
++    return list(sorted(set({lib} | set(lib_map[lib].transitive_deps))))
++
++  def list_abseil_pkg_targets(lib):
++    # This returns a list of abseil pkg targets which the given lib and
++    # its non-abseil transitive dependencies depend on.
++    # As a result, internal abseil libraries are excluded from the result.
++    absl_specs = set()
++    for lib_name in lib_and_transitive_deps(lib):
++      if is_absl_lib(lib_name): continue
++      for dep in lib_map[lib_name].deps:
++        if is_absl_lib(dep):
++          absl_specs.add(get_absl_dep(dep).replace("::", "_"))
++    return list(sorted(absl_specs))
+ 
+   def is_shared_only_lib(lib_name):
+     """Returns True if only shared library should be generated."""
+@@ -53,7 +60,6 @@
+     # only makes sense as a shared lib.
+     return lib_name in ['grpc_csharp_ext']
+ 
+-
+   def get_deps(target_dict):
+     deps = []
+     if target_dict.get('baselib', False) or target_dict['name'] == 'address_sorting':
+@@ -739,8 +745,8 @@
+     "gpr"
+     "gRPC platform support library"
+     "<%text>${gRPC_CORE_VERSION}</%text>"
+-    ""
+-    "${" ".join(("-l" + l) for l in ["gpr",] + list_absl_lib_files_for("gpr"))}"
++    "${" ".join(list_abseil_pkg_targets("gpr"))}"
++    "${" ".join(("-l" + l) for l in ["gpr"])}"
+     ""
+     "gpr.pc")
+ 
+@@ -749,8 +755,8 @@
+     "gRPC"
+     "high performance general RPC framework"
+     "<%text>${gRPC_CORE_VERSION}</%text>"
+-    "gpr openssl"
+-    "${" ".join(("-l" + l) for l in ["grpc", "address_sorting", "re2", "upb", "cares", "z"] + list_absl_lib_files_for("grpc"))}"
++    "${" ".join(["gpr", "openssl"] + list_abseil_pkg_targets("grpc"))}"
++    "${" ".join(("-l" + l) for l in ["grpc", "address_sorting", "re2", "upb", "cares", "z"])}"
+     ""
+     "grpc.pc")
+ 
+@@ -759,8 +765,8 @@
+     "gRPC unsecure"
+     "high performance general RPC framework without SSL"
+     "<%text>${gRPC_CORE_VERSION}</%text>"
+-    "gpr"
+-    "${" ".join(("-l" + l) for l in ["grpc_unsecure",] + list_absl_lib_files_for("grpc_unsecure"))}"
++    "${" ".join(["gpr"] + list_abseil_pkg_targets("grpc_unsecure"))}"
++    "${" ".join(("-l" + l) for l in ["grpc_unsecure"])}"
+     ""
+     "grpc_unsecure.pc")
+ 
+@@ -769,8 +775,8 @@
+     "gRPC++"
+     "C++ wrapper for gRPC"
+     "<%text>${gRPC_CPP_VERSION}</%text>"
+-    "grpc"
+-    "${" ".join(("-l" + l) for l in ["grpc++",] + list_absl_lib_files_for("grpc++"))}"
++    "${" ".join(["grpc"] + list_abseil_pkg_targets("grpc++"))}"
++    "${" ".join(("-l" + l) for l in ["grpc++"])}"
+     ""
+     "grpc++.pc")
+ 
+@@ -779,7 +785,7 @@
+     "gRPC++ unsecure"
+     "C++ wrapper for gRPC without SSL"
+     "<%text>${gRPC_CPP_VERSION}</%text>"
+-    "grpc_unsecure"
+-    "${" ".join(("-l" + l) for l in ["grpc++_unsecure",] + list_absl_lib_files_for("grpc++_unsecure"))}"
++    "${" ".join(["grpc_unsecure"] + list_abseil_pkg_targets("grpc++_unsecure"))}"
++    "${" ".join(("-l" + l) for l in ["grpc++_unsecure"])}"
+     ""
+     "grpc++_unsecure.pc")
+-- 
+2.26.2
+

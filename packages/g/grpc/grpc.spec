@@ -30,6 +30,8 @@ Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
 # PATCH-FIX-UPSTREAM grpc-correct-pkgconfig-path.patch badshah400@gmail.com -- Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
 Patch1:         grpc-correct-pkgconfig-path.patch
+# PATCH-FIX-UPSTREAM 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch -- Keep track of devel dependencies
+Patch2:         0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes

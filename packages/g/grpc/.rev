@@ -272,4 +272,12 @@ put together with abseil-cpp</comment>
     <comment>- Update to release 1.37.1</comment>
     <requestid>889564</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f3bc7edcc33e20444873e3d082d01a56</srcmd5>
+    <version>1.37.1</version>
+    <time>1621034671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893121</requestid>
+  </revision>
 </revisionlist>
