@@ -38,7 +38,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  maxima >= 5.30.0
 BuildRequires:  maxima-exec-sbcl
 BuildRequires:  ninja
-BuildRequires:  pandoc
 BuildRequires:  po4a
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert

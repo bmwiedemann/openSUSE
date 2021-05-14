@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 12:03:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove pandoc dependency (seems to build without and is not available
+  on 32bit platforms) 
+
+-------------------------------------------------------------------
 Tue Apr 13 11:41:23 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21.04.0:
