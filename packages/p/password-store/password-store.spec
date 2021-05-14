@@ -21,7 +21,6 @@ Version:        1.7.3+git20210216.918992c
 Release:        0
 Summary:        Utility to store, retrieve, generate and synchronize passwords
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://zx2c4.com/projects/%{name}/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bash-completion
@@ -31,11 +30,11 @@ BuildRequires:  qrencode
 BuildRequires:  tree
 BuildRequires:  xz
 BuildRequires:  zsh
+Requires:       (xclip or wl-clipboard)
 Requires:       gpg2
 Requires:       qrencode
 Requires:       tree >= 1.7.0
 Recommends:     pwgen
-Requires:       xclip
 Suggests:       git
 BuildArch:      noarch
 %if 0%{?suse_version} > 1320
@@ -62,7 +61,7 @@ A dmenu interface to "pass", a password manager.
 %prep
 %autosetup
 for shell_script in src/%{name}.sh contrib/dmenu/passmenu; do
-    sed -i "s|#\!/usr/bin/env bash|#\!/bin/bash|" $shell_script
+    sed -i "s|#\!%{_bindir}/env bash|#\!/bin/bash|" $shell_script
 done
 
 %build
@@ -73,7 +72,7 @@ install -p -D -m 0755 contrib/dmenu/passmenu %{buildroot}%{_bindir}/passmenu
 
 %check
 %if 0%{?suse_version} >= 1320
-make test %{?_smp_mflags}
+%make_build test
 %endif
 
 %files
