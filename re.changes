@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sat Apr 24 10:08:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  Added
+  * aac: add AAC_STREAMTYPE_AUDIO enum value
+  * aac: add AAC_ prefix
+  * Video mode param to call_answer(), ua_answer() and
+    ua_hold_answer
+  * video_stop_display() API function
+  * module: add path to module_load() function
+  * conf: add conf_configure_buf
+  * test: add usage of g711.so module
+  * JSON initial codec state command and response
+  * account_set_video_codecs() API function
+  * net: add fallback dns nameserver
+  * gtk: show call_peername in notify title
+  * call: Added call_state() API function that returns enum state
+    of the call
+  * account_set_stun_user() and account_set_stun_pass() API
+    functions.
+  * API functions account_stun_uri and account_set_stun_uri.
+  * ausine: Audio sine wave input module
+  * gtk/menu: replace spaces from uri
+  * jack: allowing jack client name to be specified in the
+    config file
+  * snapshot: Add snapshot_send and snapshot_recv commands
+  * webrtc_aec: 'extended_filter' config option
+  * avfilter: FFmpeg filter graphs integration
+  * reg: view proxy expiry value in reg_status
+  * account: add parameter rwait for re-register interval
+  * call, stream, menu: add cmd to set the direction of video
+    stream
+  * Added AMRWBENC_PATH env var to amr module module.mk
+  Changed
+  * Using baresip/re fork now
+  * audio: move calculation to audio_jb_current_value
+  * avformat: clean up docs
+  * gzrtp: update docs
+  * account: increased size of audio codec list to 16
+  * video: make video_sdp_attr_decode public
+  * config: Derive default audio driver from default audio device
+  * jack: modifying info message on jack client creation
+  * call: when video stream is disabled, stop also video display
+  * dtls_srtp: use tls_set_selfsigned_rsa with keysize 2048
+  * rst: use a min ptime of 20ms
+  * aac: change ptime to 4ms
+  Fixed
+  * avcodec: fix H.264 interop with Firefox
+  * avcodec: call av_hwdevice_ctx_create before if-statement
+  * account: use single quote instead of backtick
+  * ice: fix segfault in connh #980
+  * call: Update call->got_offer when re-INVITE or answer to
+    re-INVITE is received
+  * config: Allow distribution specific CA trust bundle locations
+  * config: Allow distribution specific default audio device
+  * mqtt: fix err is never read (found by clang static analyzer)
+  * avcodec: fix err is never read (found by clang static analyzer)
+  * gtk: notification buttons do not work on Systems #1012
+  * gtk: fix dtmf_tone and add tones as feedback #1010
+  * pulse: drain pulse buffers before freeing #1016
+  * jack: jack_play connect all physical ports #1028
+  * Makefile: do not try to install modules if build is static
+  * gzrtp: media_alloc function is missing #1034 #1022
+  * call: when updating video, check if video stream has been
+    disabled #1037
+  * amr: fix length check, fixes #1011
+  * modules: fix search path for avdevice.h #1043
+  * gtk: declare variables C89 style
+  * config: init newly added member
+  * menu: fix segfault in ua_event_handler #1059 #1061
+  * debug_cmd: fix OpenSSL no-deprecated #1065
+  * aac: handle missing bitrate parameter in SDP format
+  * av1: properly configure encoder
+  * call: When terminating outgoing call, terminate also possible
+    refer subscription #1082
+  * menu: fix segfault in /aubitrate command
+  * amr: should check if file (instead of directory) exists
+  Removed
+  * ice: remove support for ICE-lite
+  * ice: remove ice_debug, use log level DEBUG instead
+  * ice: make stun server optional
+  * config: remove ice_debug option (unused)
+  * opengles: remove module (not working) #1079
+
+-------------------------------------------------------------------
 Wed Jun 24 07:32:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile cleanup

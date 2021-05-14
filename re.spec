@@ -1,7 +1,7 @@
 #
 # spec file for package re
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# using 0suse0 instead of suse0 due to a bug in rpmlint/post-build-checks
-# falsely complaining about name
-%global sover   0suse0
+
+%global sover   1
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        0.6.1
+Version:        2.0.1
 Release:        0
 Summary:        Library for real-time communications with async IO support
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-#Git-Clone:     https://github.com/creytiv/re
-URL:            http://www.creytiv.com/re.html
-Source:         http://www.creytiv.com/pub/re-%{version}.tar.gz
+#Git-Clone:     https://github.com/baresip/re.git
+URL:            https://github.com/baresip/re
+Source:         https://github.com/baresip/re/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
@@ -69,13 +68,10 @@ sed -e 's|@$(CC)|$(CC)|g' \
 %make_build \
     RELEASE=1 \
     USE_OPENSSL=1 \
-    EXTRA_CFLAGS="%optflags" \
-    EXTRA_LFLAGS="-Wl,-soname,libre.so.0suse0" \
-    LIB_SUFFIX=".so.0suse0"
+    EXTRA_CFLAGS="%optflags"
 
 %install
-make DESTDIR=%{buildroot} LIBDIR=%{_libdir} LIB_SUFFIX=".so.0suse0" install
-ln -s %{_libdir}/libre.so.0suse0 %{buildroot}%{_libdir}/libre.so
+make DESTDIR=%{buildroot} LIBDIR=%{_libdir} install
 rm %{buildroot}/%{_libdir}/libre.a
 
 %post -n %{libname} -p /sbin/ldconfig
