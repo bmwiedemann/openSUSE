@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 12 22:23:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.1.0
+  * Added DTMF tones for A B C D
+  * Fix interaction between CLI menu and GTK menu
+  * gtk: show call_peername in notify title
+  * call: when video stream is disabled, stop also video display
+  * dtls_srtp: use tls_set_selfsigned_rsa with keysize 2048
+  * avcodec: fix H.264 interop with Firefox
+  * ice: fix segfault in connh
+  * aac: handle missing bitrate parameter in SDP format
+  * menu: fix segfault in /aubitrate command
+  * ice: remove support for ICE-lite
+  * opengles: remove module
+  * A lot other bug fixes and enhancements
+
+-------------------------------------------------------------------
 Mon Jun 29 10:58:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid sentences in title lines.

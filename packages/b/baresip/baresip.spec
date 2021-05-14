@@ -1,7 +1,7 @@
 #
 # spec file for package baresip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,32 @@
 
 
 Name:           baresip
-Version:        0.6.6
+Version:        1.1.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/SIP/Clients
-URL:            http://www.creytiv.com/baresip.html
-Source:         https://github.com/baresip/baresip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/baresip/baresip
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  re-devel
-BuildRequires:  rem-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(codec2)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-net-1.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libre) >= 2.0
+BuildRequires:  pkgconfig(librem) >= 1.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sdl2)
@@ -97,11 +97,13 @@ support.
 %prep
 %setup -q
 mv modules/mqtt/README.md README.mqtt
-sed 's|%{_prefix}/local/lib|%{_libdir}/|g' -i src/config.c
-sed 's|%{_prefix}/local/lib|%{_libdir}/|g' -i docs/examples/config
-sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
+sed 's|/usr/local/lib|%{_libdir}/|g' -i src/config.c
+sed 's|/usr/local/lib|%{_libdir}/|g' -i docs/examples/config
+sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 
 %build
+export CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg"
+export LFLAGS="%{optflags} -pie"
 %make_build \
     V=1 \
     RELEASE=1 \
@@ -109,11 +111,9 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
     PREFIX=%{_prefix}/ \
     MOD_PATH="%{_libdir}/baresip/modules" \
     EXTRA_MODULES="avcodec avformat swscale" \
-    EXTRA_CFLAGS="%{optflags} -fPIE -I/usr/include/ffmpeg" \
-    EXTRA_LFLAGS="-pie"
 
 %install
-make DESTDIR=%{buildroot} LIBDIR=%{_libdir} EXTRA_MODULES="avcodec avformat swscale" install
+%make_install LIBDIR=%{_libdir} EXTRA_MODULES="avcodec avformat swscale"
 
 %files
 %license docs/COPYING
@@ -127,11 +127,13 @@ make DESTDIR=%{buildroot} LIBDIR=%{_libdir} EXTRA_MODULES="avcodec avformat swsc
 %{_libdir}/baresip/modules/alsa.so
 %{_libdir}/baresip/modules/aubridge.so
 %{_libdir}/baresip/modules/aufile.so
+%{_libdir}/baresip/modules/ausine.so
 %{_libdir}/baresip/modules/auloop.so
 %{_libdir}/baresip/modules/b2bua.so
 %{_libdir}/baresip/modules/codec2.so
 %{_libdir}/baresip/modules/cons.so
 %{_libdir}/baresip/modules/contact.so
+%{_libdir}/baresip/modules/ctrl_dbus.so
 %{_libdir}/baresip/modules/ctrl_tcp.so
 %{_libdir}/baresip/modules/debug_cmd.so
 %{_libdir}/baresip/modules/dtls_srtp.so
@@ -144,10 +146,13 @@ make DESTDIR=%{buildroot} LIBDIR=%{_libdir} EXTRA_MODULES="avcodec avformat swsc
 %{_libdir}/baresip/modules/gsm.so
 %{_libdir}/baresip/modules/gtk.so
 %{_libdir}/baresip/modules/httpd.so
+%{_libdir}/baresip/modules/httpreq.so
 %{_libdir}/baresip/modules/ice.so
 %{_libdir}/baresip/modules/jack.so
 %{_libdir}/baresip/modules/l16.so
 %{_libdir}/baresip/modules/menu.so
+%{_libdir}/baresip/modules/mixausrc.so
+%{_libdir}/baresip/modules/multicast.so
 %{_libdir}/baresip/modules/mwi.so
 %{_libdir}/baresip/modules/natpmp.so
 %{_libdir}/baresip/modules/opus.so
@@ -156,6 +161,9 @@ make DESTDIR=%{buildroot} LIBDIR=%{_libdir} EXTRA_MODULES="avcodec avformat swsc
 %{_libdir}/baresip/modules/plc.so
 %{_libdir}/baresip/modules/presence.so
 %{_libdir}/baresip/modules/pulse.so
+%{_libdir}/baresip/modules/rtcpsummary.so
+%{_libdir}/baresip/modules/serreg.so
+%{_libdir}/baresip/modules/snapshot.so
 %{_libdir}/baresip/modules/sndfile.so
 %{_libdir}/baresip/modules/speex_pp.so
 %{_libdir}/baresip/modules/srtp.so
