@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-parser
-Version:        3.0.1.0
+Version:        3.0.1.1
 Release:        0
 %define mod_name parser
 %define mod_full_name %{mod_name}-%{version}

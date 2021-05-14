@@ -63,4 +63,12 @@
     <comment>update (forwarded request 884399 from mschnitzer)</comment>
     <requestid>884402</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4ed15ba81eb76b702c10a66c5896ca5</srcmd5>
+    <version>3.0.1.1</version>
+    <time>1621034680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893205</requestid>
+  </revision>
 </revisionlist>
