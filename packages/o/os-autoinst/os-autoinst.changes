@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 12 15:34:00 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1620833632.f1d52cb5:
+  * Replace raw prints with the correct logs messages in qemu
+  * Support UEFI_PFLASH_VARS is a basename
+  * Add checks for 'info' type in serial failure detection
+  * t: Reduce runtime of 31-sshSerial by mocking time based methods
+
+-------------------------------------------------------------------
 Thu May 06 19:31:13 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1620235366.b165997a:
