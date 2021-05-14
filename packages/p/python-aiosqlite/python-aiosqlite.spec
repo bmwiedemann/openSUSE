@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosqlite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,22 +20,23 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiosqlite
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        AsyncIO Bridge to the Standard Python sqlite3 Module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jreese/aiosqlite
 Source:         https://files.pythonhosted.org/packages/source/a/aiosqlite/aiosqlite-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#omnilib/aiosqlite#114 mcepl@suse.com
+# Dependency on typing_extensions is unnecessary
+Patch0:         stdlib-typing_extensions.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-typing_extensions
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiounittest}
-BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{pythons}
 # /SECTION
 %python_subpackages
@@ -46,7 +47,7 @@ the standard connection and cursor methods, and context managers for
 automatically closing connections.
 
 %prep
-%setup -q -n aiosqlite-%{version}
+%autosetup -p1 -n aiosqlite-%{version}
 
 %build
 %python_build
