@@ -411,4 +411,13 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   - several bugfixes, see CHANGELOG.TXT for details (forwarded request 867541 from cboltz)</comment>
     <requestid>867542</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>98449f4319d2f374606ccdbd827dc0fd</srcmd5>
+    <version>3.3.9</version>
+    <time>1621034633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to PostfixAdmin 3.3.9
+  - several bugfixes, see CHANGELOG.TXT for details (forwarded request 892955 from cboltz)</comment>
+    <requestid>892956</requestid>
+  </revision>
 </revisionlist>
