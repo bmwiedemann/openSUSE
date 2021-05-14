@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu May 13 18:16:14 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.11.9:
+  Security: 
+  * mod_limits, prosody.cfg.lua: Enable rate limits by default
+  * certmanager: Disable renegotiation by default
+  * mod_proxy65: Restrict access to local c2s connections by default
+  * util.startup: Set more aggressive defaults for GC
+  * mod_c2s, mod_s2s, mod_component, mod_bosh, mod_websockets: Set default stanza size limits
+  * mod_authinternal{plain,hashed}: Use constant-time string comparison for secrets
+  * mod_dialback: Remove dialback-without-dialback feature
+  * mod_dialback: Use constant-time comparison with hmac
+  Minor changes
+  * util.hashes: Add constant-time string comparison (binding to CRYPTO_memcmp)
+  * mod_c2s: Don’t throw errors in async code when connections are gone
+  * mod_c2s: Fix traceback in session close when conn is nil
+  * core.certmanager: Improve detection of LuaSec/OpenSSL capabilities
+  * mod_saslauth: Use a defined SASL error
+  * MUC: Add support for advertising muc#roomconfig_allowinvites in room disco#info
+  * mod_saslauth: Don’t throw errors in async code when connections are gone
+  * mod_pep: Advertise base pubsub feature (fixes #1632: mod_pep missing pubsub feature in disco)
+  * prosodyctl check config: Add ‘gc’ to list of global options
+  * prosodyctl about: Report libexpat version if known
+  * util.xmppstream: Add API to dynamically configure the stanza size limit for a stream
+  * util.set: Add is_set() to test if an object is a set
+  * mod_http: Skip IP resolution in non-proxied case
+  * mod_c2s: Log about missing conn on async state changes
+  * util.xmppstream: Reduce internal default xmppstream limit to 1MB
+- Relevant: https://prosody.im/security/advisory_20210512
+  * boo#1186027: Prosody XMPP server advisory 2021-05-12
+  * CVE-2021-32919
+  * CVE-2021-32917
+  * CVE-2021-32917
+  * CVE-2021-32920
+  * CVE-2021-32918
+
+-------------------------------------------------------------------
 Tue Feb 16 11:06:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.8:
