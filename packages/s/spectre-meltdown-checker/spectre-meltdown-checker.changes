@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  7 14:56:38 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.44
+  - feat: add support for SRBDS related vulnerabilities
+  - feat: add zstd kernel decompression (#370)
+  - enh: arm: add experimental support for binary arm images
+  - enh: rsb filling: no longer need the 'strings' tool to check for kernel support in live mode
+  - fix: fwdb: remove Intel extract tempdir on exit
+  - fix: has_vmm: ignore kernel threads when looking for a hypervisor (fixes #278)
+  - fix: fwdb: use the commit date as the intel fwdb version
+  - fix: fwdb: update Intel's repository URL
+  - fix: arm64: cve-2017-5753: kernels 4.19+ use a different nospec macro
+  - fix: on CPU parse info under FreeBSD
+  - chore: github: add check run on pull requests
+  - chore: fwdb: update to v165.20201021+i20200616
+
+-------------------------------------------------------------------
 Fri Jan 24 11:52:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo (s/Require:/Requires:/).

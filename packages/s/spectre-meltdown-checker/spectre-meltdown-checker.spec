@@ -1,7 +1,7 @@
 #
 # spec file for package spectre-meltdown-checker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           spectre-meltdown-checker
-Version:        0.43
+Version:        0.44
 Release:        0
 Summary:        Spectre & Meltdown Vulnerability Checker
 License:        GPL-3.0-only

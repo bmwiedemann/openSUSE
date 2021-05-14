@@ -106,4 +106,12 @@
     <comment>- Fix typo (s/Require:/Requires:/). (forwarded request 766868 from dimstar)</comment>
     <requestid>766875</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e798ba0f2263a037424faab618020e2e</srcmd5>
+    <version>0.44</version>
+    <time>1621034675</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893161</requestid>
+  </revision>
 </revisionlist>
