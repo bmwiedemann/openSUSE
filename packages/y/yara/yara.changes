@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May  6 12:30:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1.0
+  * New operators icontains, endswith, iendswith, startswith,
+    istartswith
+  * Accept \t escape sequence in text strings.
+  * Add --no-follow-links command-line option to yara.
+  * Prevent yara from following links to "."
+  * Implemented non-blocking scanning API
+  * When a string causes too many matches, YARA raises a warning
+    instead of failing
+  * BUGFIX: The use of --timeout could hang yara when scanning
+    directories or lists of files
+  * BUGFIX: Incorrect parsing of PE certificates
+  * BUGFIX: Short-circuit evaluation not working fine with
+    undefined expressions
+- Drop yara-fix-arm.patch, upstream merged
+
+-------------------------------------------------------------------
 Mon Feb  8 22:17:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.5:

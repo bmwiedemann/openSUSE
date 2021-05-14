@@ -16,17 +16,15 @@
 #
 
 
-%define soname 4
+%define soname 8
 Name:           yara
-Version:        4.0.5
+Version:        4.1.0
 Release:        0
 Summary:        A malware identification and classification tool
 License:        Apache-2.0
 Group:          System/Filesystems
 URL:            https://plusvic.github.io/yara/
-Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz
-#PATCH-FIX-UPSTREAM - https://github.com/VirusTotal/yara/pull/1352
-Patch1:         yara-fix-arm.patch
+Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  file-devel
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -83,7 +81,6 @@ determines its logic.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 autoreconf -fvi
@@ -95,8 +92,10 @@ autoreconf -fvi
 
 %install
 %make_install
+# Remove static library
+# --disable-static can not be used, static library needed for tests
+rm -vf %{buildroot}%{_libdir}/libyara.a
 find %{buildroot} -type f -name "*.la" -delete -print
-rm %{buildroot}%{_libdir}/libyara.a
 
 %check
 %make_build check
@@ -115,8 +114,7 @@ rm %{buildroot}%{_libdir}/libyara.a
 %files -n libyara%{soname}
 %license COPYING
 %doc README.md CONTRIBUTORS AUTHORS
-%{_libdir}/libyara.so.%{soname}
-%{_libdir}/libyara.so.%{version}
+%{_libdir}/libyara.so.%{soname}*
 
 %files -n libyara-devel
 %license COPYING
