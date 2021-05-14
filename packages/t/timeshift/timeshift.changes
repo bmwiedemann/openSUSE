@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 12 21:53:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.11.1:
+  * Escape single quote in LUKS password when unlocking device
+  * Filters: Save filter order changes when clicking OK
+  * Filters: Save changes after Include/Exclude radio is toggled
+  * Filters: Save changes immediately after a pattern is added or edited
+  * Filters: Save changes before showing Summary
+  * Fix #497, #467: Fix missing hourly backups
+  * Move config file to /etc/timeshift/timeshift.json
+  * Move default config to /etc/timeshift/default.json
+  * AppStream: Install only under /usr/share/metainfo. Don't install under /usr/share/appdata/
+  * Option to unmark snapshots that are marked for deletion
+  * Launcher: No need to pass DISPLAY and AUTHORITY to pkexec
+  * Remove unused functions and code
+  * Update translations
+- drop timeshift-fix-timeshift-launcher.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Mar 15 10:23:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to using explicit release tag in .service. Also clean up

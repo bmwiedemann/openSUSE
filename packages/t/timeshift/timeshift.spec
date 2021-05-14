@@ -1,7 +1,7 @@
 #
 # spec file for package timeshift
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,12 @@
 
 
 Name:           timeshift
-Version:        20.03
+Version:        20.11.1
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
 URL:            https://teejeetech.in/timeshift/
-Source0:        %{name}-%{version}.tar.xz
-#PATCH-FIX-OPENSUSE timeshift-fix-timeshift-launcher.patch malcolmlewis@opensuse.org -- Fix `pkexec env` invocation in `timeshift-launcher` is wrong.
-Patch0:         timeshift-fix-timeshift-launcher.patch
+Source0:        https://github.com/teejee2008/timeshift/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -60,7 +58,7 @@ using BTRFS tools.
 chrpath --delete %{buildroot}%{_bindir}/timeshift
 chrpath --delete %{buildroot}%{_bindir}/timeshift-gtk
 #Fix file permissions
-chmod 0644 %{buildroot}%{_sysconfdir}/default/timeshift.json
+chmod 0644 %{buildroot}%{_sysconfdir}/timeshift/default.json
 chmod 0644 %{buildroot}%{_datadir}/metainfo/timeshift.appdata.xml
 chmod 0644 %{buildroot}%{_datadir}/timeshift/images/*.svg
 #Remove as we use rpm/zypper
@@ -75,9 +73,9 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %fdupes -s %{buildroot}
 
 %files
-%doc AUTHORS
 %license LICENSE.md
-%config(noreplace) %{_sysconfdir}/default/timeshift.json
+%dir %{_sysconfdir}/timeshift
+%config(noreplace) %{_sysconfdir}/timeshift/default.json
 %{_bindir}/timeshift*
 %{_datadir}/applications/timeshift-gtk.desktop
 %{_datadir}/icons/hicolor/*/apps/*
