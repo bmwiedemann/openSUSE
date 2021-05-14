@@ -1,7 +1,7 @@
 #
 # spec file for package rem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 %global sover   0
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        0.6.0
+Version:        1.0.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.creytiv.com/rem.html
-Source:         http://www.creytiv.com/pub/rem-%{version}.tar.gz
+URL:            https://github.com/baresip/rem
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          0001-mk-add-abi-versioning.patch
 BuildRequires:  pkgconfig
-BuildRequires:  re-devel
+BuildRequires:  pkgconfig(libre) >= 2.0
 
 %description
 Librem is a generic library for real-time audio
@@ -65,22 +66,17 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of librem.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -e 's|@$(CC)|$(CC)|g' \
     -e 's|@$(LD)|$(LD)|g' \
     -e 's|@$(AR)|$(AR)|g' \
     -e 's|@rm -rf|rm -rf|g' -i Makefile
 
 %build
-%make_build \
-    RELEASE=1 \
-    EXTRA_CFLAGS="%optflags" \
-    EXTRA_LFLAGS="-Wl,-soname,librem.so.0" \
-    LIB_SUFFIX=".so.0"
+CFLAGS="%optflags" %make_build RELEASE=1
 
 %install
-make DESTDIR=%{buildroot} LIBDIR=%{_libdir} LIB_SUFFIX=".so.0" install
-ln -s %{_libdir}/librem.so.0 %{buildroot}%{_libdir}/librem.so
+%make_install LIBDIR=%{_libdir}
 rm %{buildroot}/%{_libdir}/librem.a
 
 %post -n %{libname} -p /sbin/ldconfig

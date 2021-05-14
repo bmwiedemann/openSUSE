@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 23:24:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Switch baresip fork, required for baresip.
+- Update to fork version 1.0.0:
+  * aac: add module for AAC header parsing
+  * flv: add MP3 and PCM_LE
+  * fix ALAW and ULAW encoding
+  * vid: add NV12/NV21 to vidframe_fill
+  * H264: added SPS decode
+  * aubuf: read also last frame if it has not the full size
+  * add aulevel module
+- Add 0001-mk-add-abi-versioning.patch
+
+-------------------------------------------------------------------
 Sun Jun 28 10:27:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update RPM groups and description.
