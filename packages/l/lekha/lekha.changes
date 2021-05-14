@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 00:55:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.2.1
+  * Add paged scrolling
+  * Add zoom on CTRL + Mouse Wheel
+  * Fix reading PDF's with no metadata
+  * Fix outlines panel inadvertedly being controlled by mouse wheel
+- Dropped upstream fixed fix-panel-on-mouse.patch and
+  feature-mouse-zoom.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 09:35:18 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - Refresh broken patch

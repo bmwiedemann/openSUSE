@@ -1,7 +1,7 @@
 #
 # spec file for package lekha
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,18 @@
 
 
 Name:           lekha
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        PDF Reader
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PDF
-Url:            https://github.com/kaihu/lekha
-Source0:        Lekha-%{version}.tar.gz
+URL:            https://github.com/kaihu/lekha
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Lekha doesn't ship a icon so ship a generic one for it for now
 Source1:        graphics-viewer-document.png
-# 661193de60e542a80e88019d59342f345f10a1ae
-Patch0:         fix-panel-on-mouse.patch
-# f0ab75e3016f10dce01f6543ae99955a8492e9a8
-Patch1:         feature-mouse-zoom.patch
 # .desktop files contained actions with no action defined
 #  I couldn't work out what the actions should do so they are removed
-Patch2:         fix-invalid-actions-in-desktop-file.patch
+Patch0:         fix-invalid-actions-in-desktop-file.patch
 BuildRequires:  efl-devel
 BuildRequires:  python3-PyPDF2
 BuildRequires:  python3-distutils-extra
@@ -41,7 +37,6 @@ BuildRequires:  python3-xdg
 Requires:       python3-PyPDF2
 Requires:       python3-efl
 Requires:       python3-xdg
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -53,10 +48,8 @@ ExcludeArch:    %ix86
 EFL and python based pdf reader.
 
 %prep
-%setup -q -n Lekha-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2
+%setup -q
+%patch0
 
 %build
 python3 setup.py build
@@ -77,7 +70,7 @@ rm -rf "%{buildroot}/%{_datadir}/doc"
 %defattr(-,root,root,-)
 %doc README.md COPYING
 %{_bindir}/lekha
-%{python_sitelib}/*
+%{python3_sitelib}/*
 %{_datadir}/pixmaps/accessories-document-viewer.png
 %{_datadir}/applications/lekha.desktop
 
