@@ -1,0 +1,10 @@
+<package name="procmon" project="openSUSE:Factory">
+  <title>procmon</title>
+  <description>Process Monitor (Procmon) is a Linux reimagining of the classic Procmon
+tool from the Sysinternals suite of tools for Windows. Procmon provides
+a convenient and efficient way for Linux developers to trace the syscall
+activity on the system.
+</description>
+  <devel project="devel:tools" package="procmon"/>
+  <url>https://github.com/microsoft/ProcMon-for-Linux</url>
+</package>

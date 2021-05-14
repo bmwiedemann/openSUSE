@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu May  6 06:34:02 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to stable version 1.0.1
+  * Small bug fixes
+- Remove _service file
+- Refresh procmon-use_system_libs.patch
+
+-------------------------------------------------------------------
+Sun Dec 27 19:18:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add procmon-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Thu Dec 24 10:37:55 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0+git20201031.d65e7b2:
+  * building against 0.15 (#54)
+  * Spelling (#45)
+  * Avoid telemetry data copy in ITelemetry (#50)
+  * CancellableMessageQueue: push(value) using move same as push(vector)
+  * Update required cmake version (#23)
+  * fixed potential heap corruption and updated minimum specs for OS (#16)
+  * patch for f1 segv (#9)
+  * fixing cmake for rename of license file
+  * documentation cleanup and polish
+  * Initial commit of preview from AZDO
+
+-------------------------------------------------------------------
+Tue Jul 21 15:29:37 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.

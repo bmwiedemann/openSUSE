@@ -1,0 +1,119 @@
+Index: ProcMon-for-Linux-1.0.1/CMakeLists.txt
+===================================================================
+--- ProcMon-for-Linux-1.0.1.orig/CMakeLists.txt
++++ ProcMon-for-Linux-1.0.1/CMakeLists.txt
+@@ -15,38 +15,11 @@ configure_file (
+   "${PROJECT_BINARY_DIR}/src/version.h"
+ )
+ 
+-include(FetchContent)
+-
+-# Fetch bcc. 
+-# TODO: Consider maybe making this a CMake script to be called.
+-FetchContent_Declare(
+-  bcc
+-  GIT_REPOSITORY https://github.com/iovisor/bcc.git
+-  GIT_TAG        v0.19.0
+-)
+-
+-FetchContent_GetProperties(bcc)
+-if(NOT bcc_POPULATED)
+-  FetchContent_Populate(bcc)
+-  add_subdirectory(${bcc_SOURCE_DIR} ${bcc_BINARY_DIR} EXCLUDE_FROM_ALL)
+-endif()
+-
+-# Include Sqlite3 amalgamation.
+-add_library(sqlite3-static STATIC
+-  "${CMAKE_SOURCE_DIR}/vendor/sqlite3/sqlite3.c"
+-)
+-set_target_properties(sqlite3-static
+-  PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "dl;pthread"
+-)
+-
+-# Fetch Catch2 testing framework.
+-FetchContent_Declare(
+-  Catch2
+-  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+-  GIT_TAG        v2.7.2
+-)
+-FetchContent_MakeAvailable(Catch2)
++find_package (Threads REQUIRED)
++include(FindPkgConfig)
++pkg_search_module(BCC REQUIRED libbcc)
++pkg_search_module(SQLITE3 REQUIRED sqlite3)
++pkg_search_module(CATCH2 REQUIRED catch2)
+ 
+ # Set compiler flags.
+ set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -fno-omit-frame-pointer -DELPP_THREAD_SAFE -D ELPP_DEFAULT_LOG_FILE='\"/var/log/procmon.log\"'")
+@@ -56,11 +29,9 @@ set (CMAKE_CXX_STANDARD_REQUIRED True)
+ # Include required versioning, bcc, logging and sqlite3 header files. 
+ include_directories(
+   "${PROJECT_BINARY_DIR}/src/"
+-  "/usr/include/bcc/compat"
+-  "${bcc_SOURCE_DIR}/src/cc/api" 
+-  "${bcc_SOURCE_DIR}/src/cc"
+-  "${CMAKE_SOURCE_DIR}/vendor/sqlite3"
+-  ${CURSES_INCLUDE_DIR}
++   ${BCC_INCLUDE_DIRS}
++   ${SQLITE3_INCLUDE_DIRS}
++   ${NCURSES_INCLUDE_DIRS}
+ )
+ 
+ enable_testing()
+@@ -89,8 +60,9 @@ target_link_libraries(
+   storage-static
+   display-static 
+   common-static
+-  bcc-static
+-  ${CURSES_LIBRARIES}
++  ${BCC_LIBRARIES}
++  ${NCURSES_LIBRARIES}
++  Threads::Threads
+   -lpanel
+   logging-static
+   stdc++fs
+Index: ProcMon-for-Linux-1.0.1/src/storage/CMakeLists.txt
+===================================================================
+--- ProcMon-for-Linux-1.0.1.orig/src/storage/CMakeLists.txt
++++ ProcMon-for-Linux-1.0.1/src/storage/CMakeLists.txt
+@@ -7,7 +7,7 @@ add_library(storage-static STATIC
+ 
+ target_link_libraries(
+     storage-static
+-    sqlite3-static
++    ${SQLITE3_LIBRARIES}
+ )
+ 
+ # Create test target for sqlite3 storage engine.
+@@ -16,7 +16,7 @@ target_link_libraries(
+     test-sqlite3-storage
+     storage-static
+     logging-static
+-    Catch2
++    Threads::Threads
+ )
+ 
+-add_test(NAME test-procmon-sqlite3-storage COMMAND test-sqlite3-storage)
+\ No newline at end of file
++add_test(NAME test-procmon-sqlite3-storage COMMAND test-sqlite3-storage)
+Index: ProcMon-for-Linux-1.0.1/src/tracer/ebpf/ebpf_tracer_engine.h
+===================================================================
+--- ProcMon-for-Linux-1.0.1.orig/src/tracer/ebpf/ebpf_tracer_engine.h
++++ ProcMon-for-Linux-1.0.1/src/tracer/ebpf/ebpf_tracer_engine.h
+@@ -3,7 +3,7 @@
+ 
+ #pragma once
+ 
+-#include <BPF.h>
++#include <bcc/BPF.h>
+ #include <map>
+ #include <memory>
+ #include <vector>
+@@ -67,4 +67,4 @@ public:
+     void AddPids(std::vector<int> pidsToTrace) override;   
+ 
+     void SetRunState(int runState) override;
+-};
+\ No newline at end of file
++};
