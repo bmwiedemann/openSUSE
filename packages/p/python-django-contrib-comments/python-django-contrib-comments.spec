@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-contrib-comments
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-contrib-comments
-Version:        1.9.2
+Version:        2.1.0
 Release:        0
 Summary:        Framework for attaching comments to Django models
 License:        BSD-3-Clause
@@ -27,10 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-contrib-
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 # /SECTION
 %python_subpackages
 
