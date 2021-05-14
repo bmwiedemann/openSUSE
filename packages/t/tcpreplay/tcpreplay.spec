@@ -1,7 +1,7 @@
 #
 # spec file for package tcpreplay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,27 @@
 
 
 Name:           tcpreplay
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            http://tcpreplay.appneta.com/
-Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  dbus-1-devel
 BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  tcpdump
 Requires:       tcpdump
-%if 0%{?suse_version} > 1110
+%if 0%{?suse_version} >= 1130
 BuildRequires:  libnl3-devel
-%endif
+%else
 # only needed for suse_version < 1130 (i.e. SLE11)
+BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 
 %description
 Tcpreplay is a suite of utilities for editing and replaying

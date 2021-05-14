@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May  8 14:22:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.3.4
+  * Fixes ASAN reports memory leaks while running tests
+  * clean up new_cidr_map() string manipulation on error exit
+  * Fixed invalid --pps value protection
+  * Fixed packets slowly drift further and further behind when they
+    should be sent
+  * Fixed 64 bit rollover can cause pps replay issues after several
+    hours
+  * DLT_NULL/DLT_LOOP support for cross-platform PF_INET6
+  * Fixed heap buffer overflow in tcpreplay fast_edit_packet
+  * Fixed heap buffer overflow in tcpreplay get_next_packet
+  * Fixed CVE-2020-24266 heap buffer overflow in tcpprep get_l2len
+  * Fixed CVE-2020-24265 heap buffer overflow in tcpprep
+  * handle malformed and unsupported packets as soft errors
+  * Fixed tcprewrite --fixlen not working on DLT conversion
+  * Fixed with multiplier option only first file can be sent and hang
+  * do not create tap0 if device already exists
+
+-------------------------------------------------------------------
 Mon Jun 15 10:28:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.3.3:
