@@ -25,18 +25,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       282
-%global buildver        b08
+%global updatever       222
+%global buildver        b10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   ab07c6a8fd534eb77c4946e4546e659f8f043b8b
-%global root_branch     openj9-0.24.0
+%global root_revision   2a5e26881428745325f8ebc14e1abd34edb9bd81
+%global root_branch     openj9-0.26.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    741e94ea8673b021fc7edc59a2ec8bd203fa2b03
-%global omr_branch      v0.24.0-release
+%global omr_revision    162e6f729733666e22726ce5326f5982bb030330
+%global omr_branch      v0.26.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 345e1b09e2a1f2cf6323b25edc901cce197f4365
-%global openj9_branch   v0.24.0-release
-%global openj9_tag      openj9-0.24.0
+%global openj9_revision b4cc246d9d2362346bc567861e6e0e536da3f390
+%global openj9_branch   v0.26.0-release
+%global openj9_tag      openj9-0.26.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
@@ -128,6 +128,7 @@ Patch205:       link-with-as-needed.patch
 
 Patch210:       openj9-no-werror.patch
 Patch211:       omr-no-return-in-nonvoid-function.patch
+Patch212:       maybe-uninitialized.patch
 
 Patch300:       alternative-path-to-tzdb_dat.patch
 
@@ -135,6 +136,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils
+BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -142,7 +144,6 @@ BuildRequires:  fontconfig
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
-BuildRequires:  git
 BuildRequires:  gtk2-devel
 BuildRequires:  java-ca-certificates
 BuildRequires:  libX11-devel
@@ -234,7 +235,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -272,7 +273,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -313,7 +314,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
@@ -370,6 +371,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 
 %patch210
 %patch211
+%patch212 -p1
 
 %patch1 -p1
 %patch2 -p1
@@ -895,7 +897,7 @@ fi
 %dir %{_jvmdir}/%{jredir}/bin
 %dir %{_jvmdir}/%{jredir}/lib
 %dir %{_jvmdir}/%{jredir}/lib/%{archinstall}
-%dir %{_jvmdir}/%{jredir}/lib/%{archinstall}/compressedrefs
+%dir %{_jvmdir}/%{jredir}/lib/%{archinstall}/default
 %dir %{_jvmdir}/%{jredir}/lib/%{archinstall}/jli
 %dir %{_jvmdir}/%{jredir}/lib/%{archinstall}/j9vm
 %dir %{_jvmdir}/%{jredir}/lib/%{archinstall}/server
