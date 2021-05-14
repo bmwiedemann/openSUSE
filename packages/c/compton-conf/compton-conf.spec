@@ -55,7 +55,7 @@ sed -i '/Categories/s/\(LXQt\;\)/X-\1/' compton-conf.desktop.in
 %cmake \
       -DUSE_QT5=ON \
       -DPULL_TRANSLATIONS=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

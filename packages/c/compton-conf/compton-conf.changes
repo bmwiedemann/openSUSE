@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
+
+-  %cmake_build is now the recommended way to build cmake projects
+
+-------------------------------------------------------------------
 Wed Nov  4 14:18:50 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
