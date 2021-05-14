@@ -59,4 +59,12 @@
 - Add cmake(KDecoration2) &gt;= 5.12 to BuildRequires</comment>
     <requestid>750569</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c422cad3852192fd2c0e5e3ce42dbaa2</srcmd5>
+    <version>0.6.0</version>
+    <time>1621034670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893126</requestid>
+  </revision>
 </revisionlist>
