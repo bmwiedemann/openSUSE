@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 14 01:22:52 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.9.5:
+  * Pin pywinpty version #98 (@jtpio)
+
+- changes from version 0.9.4:
+  * Allow non-strict decode for process output #95 (@dong-zeyu)
+  * Switch to GitHub Actions #93 (@afshin)
+  * Add generated changelog #92 (@blink1073)
+
+- changes from version 0.9.3:
+  * Make sure SIGPIPE has default handler set #91 (@dlukes)
+
+-------------------------------------------------------------------
 Sat Jan  9 20:19:40 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.9.2:
