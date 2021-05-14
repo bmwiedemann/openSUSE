@@ -1333,4 +1333,41 @@
   * options: Make validation and help possible for all option types</comment>
     <requestid>884888</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>6fa4973d3f8c4652e826ce14257a49c9</srcmd5>
+    <version>0.33.1+git.20210511T222233.ded36a4470</version>
+    <time>1621034667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210511T222233.ded36a4470:
+  * options: add some entries to --display-tags defaults
+  * ytdl_hook: expose some JSON fields as tags
+  * edl: add a way to add tags
+  * zsh completion: perform globbing on binary path
+  * vo_gpu: fix trivial memory leak
+  * Revert &quot;vo_gpu: revert 8a09299 and conditionally clear framebuffer again&quot;
+  * vf_sub: restore OSD if removed
+  * options: extend --replaygain-preamp range
+  * audio: fix replaygain being completely broken
+  * Revert &quot;audio: set audio chain ao on reinit&quot;
+  * mac: add support for display-width/display-height property
+  * command: add display-width/display-height property
+  * DOCS/input.rst: clarify --no-input-default-keybindings docs
+  * filter_kernels: fix quadric window
+  * DOCS/lua.rst: fix docs for utils.file_info
+  * build: address AVCodec, AVInputFormat, AVOutputFormat const warnings
+  * scripting (lua/js): utils.getpid: make wrapper of pid property
+  * command: new property: pid (process id)
+  * DOCS: clarify how client/script names work
+  * command: osd-dimensions: return ints and doc fixes
+  * audio: add two minor log messages
+  * ao/pulse: fix incorrect state reported after reset
+  * osc: reset margins when using boxvideo with showfullscreen/showwindowed
+  * wayland: ignore toplevel listener if geometry is 0
+  * osc: display immediately when visibility changes from never to always
+  * mac: fix window geometry calculation on secondary screens
+  * stream_file: add new identifier for macOS FUSE filesystems
+  * DOCS: mpv.rst: minor escaping clarifications
+  * win32: fit_window_on_screen: simplify, add comments</comment>
+    <requestid>893106</requestid>
+  </revision>
 </revisionlist>

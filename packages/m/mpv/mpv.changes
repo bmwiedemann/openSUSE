@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri May 14 11:26:34 UTC 2021 - ismail@i10z.com
+
+- Update to version 0.33.1+git.20210511T222233.ded36a4470:
+  * options: add some entries to --display-tags defaults
+  * ytdl_hook: expose some JSON fields as tags
+  * edl: add a way to add tags
+  * zsh completion: perform globbing on binary path
+  * vo_gpu: fix trivial memory leak
+  * Revert "vo_gpu: revert 8a09299 and conditionally clear framebuffer again"
+  * vf_sub: restore OSD if removed
+  * options: extend --replaygain-preamp range
+  * audio: fix replaygain being completely broken
+  * Revert "audio: set audio chain ao on reinit"
+  * mac: add support for display-width/display-height property
+  * command: add display-width/display-height property
+  * DOCS/input.rst: clarify --no-input-default-keybindings docs
+  * filter_kernels: fix quadric window
+  * DOCS/lua.rst: fix docs for utils.file_info
+  * build: address AVCodec, AVInputFormat, AVOutputFormat const warnings
+  * scripting (lua/js): utils.getpid: make wrapper of pid property
+  * command: new property: pid (process id)
+  * DOCS: clarify how client/script names work
+  * command: osd-dimensions: return ints and doc fixes
+  * audio: add two minor log messages
+  * ao/pulse: fix incorrect state reported after reset
+  * osc: reset margins when using boxvideo with showfullscreen/showwindowed
+  * wayland: ignore toplevel listener if geometry is 0
+  * osc: display immediately when visibility changes from never to always
+  * mac: fix window geometry calculation on secondary screens
+  * stream_file: add new identifier for macOS FUSE filesystems
+  * DOCS: mpv.rst: minor escaping clarifications
+  * win32: fit_window_on_screen: simplify, add comments
+  * win32: fit_window_on_screen: centralize logic (no-op)
+  * win32: fit_window_on_screen: ensure top edge is inside
+  * options: win32: ignore and deprecate --fit-border
+  * demux_lavf: fix minor memory leaks
+  * vo_gpu: greatly increase maximum shader cache size
+  * wayland: workaround hidden state detection badness
+  * audio: set audio chain ao on reinit
+  * wayland: update geometry + cursor on output event
+
+-------------------------------------------------------------------
 Tue Apr 13 08:56:24 UTC 2021 - idoenmez+factory@suse.de
 
 - Update to version 0.33.1+git.20210412T140928.74f5d4940e:
