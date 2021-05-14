@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
 # Remove deprecated methods
 Patch0:         %{name}-1.1.11-jetty.patch
+Patch1:         logback-1.2.3-getCallerClass.patch
 BuildRequires:  fdupes
-BuildRequires:  maven-local
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.mail:mail)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
@@ -45,7 +45,6 @@ BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
-BuildConflicts: java-devel >= 9
 #!BuildRequires: groovy-lib
 BuildArch:      noarch
 
@@ -91,6 +90,7 @@ find . -type f -exec chmod -x {} \;
 chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 
 %patch0 -p1
+%patch1 -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin
@@ -125,6 +125,9 @@ rm -r %{name}-*/src/test/java/*
 # unavailable test dep maven-scala-plugin
 # slf4jJAR and org.apache.felix.main are required by logback-examples modules for maven-antrun-plugin
 %{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
   -Dorg.slf4j:slf4j-api:jar=$(build-classpath slf4j/api) \
   -Dorg.apache.felix:org.apache.felix.main:jar=$(build-classpath felix/org.apache.felix.main)
 

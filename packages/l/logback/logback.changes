@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:15:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java < 9
+- Specifiy maven.compiler.release=8 to access the
+  java.util.function.Supplier API, introduced in java 8
+- Added patch:
+  * logback-1.2.3-getCallerClass.patch
+    + Access the sun.reflect.Reflection.getCallerClass by
+      by reflection, in order to be able to build with jdk >= 9
+
+-------------------------------------------------------------------
 Sun Nov 17 19:45:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of logback 1.2.3
