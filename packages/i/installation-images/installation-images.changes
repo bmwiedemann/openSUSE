@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed May 12 08:46:21 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#510
+- openssh-server now uses /usr/etc for its config files
+  (bsc#1185709)
+- 17.3
+
+--------------------------------------------------------------------
 Tue May 4 14:17:56 UTC 2021 - mvidner@suse.cz
 
 - merge gh#openSUSE/installation-images#506
