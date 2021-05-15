@@ -224,4 +224,12 @@
     <comment>- Update to release 1.14.6</comment>
     <requestid>887230</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>082fe3a5e7fe8dd5742ac2979fb6dff0</srcmd5>
+    <version>1.14.7</version>
+    <time>1621113332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.14.7</comment>
+    <requestid>892452</requestid>
+  </revision>
 </revisionlist>
