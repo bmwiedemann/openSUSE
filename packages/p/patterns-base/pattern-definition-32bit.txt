@@ -85,7 +85,6 @@ Recommends:     attr-32bit
 Recommends:     autofs-32bit
 Recommends:     bash-completion-32bit
 Recommends:     bind-utils-32bit
-Recommends:     binutils-32bit
 Recommends:     bzip2-32bit
 Recommends:     cifs-utils-32bit
 Recommends:     command-not-found-32bit
@@ -194,7 +193,6 @@ Recommends:     prctl-32bit
 Recommends:     psmisc-32bit
 Recommends:     smp_utils-32bit
 Recommends:     strace-32bit
-Recommends:     syslinux-32bit
 Recommends:     tnftp-32bit
 Recommends:     tuned-32bit
 Recommends:     wireless-tools-32bit

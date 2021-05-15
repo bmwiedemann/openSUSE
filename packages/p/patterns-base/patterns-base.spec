@@ -324,7 +324,6 @@ Recommends:     attr
 Recommends:     autofs
 Recommends:     bash-completion
 Recommends:     bind-utils
-Recommends:     binutils
 # compressor is interesting
 Recommends:     bzip2
 # #375103
@@ -480,7 +479,6 @@ Recommends:     psmisc
 Recommends:     smp_utils
 # useful for debugging
 Recommends:     strace
-Recommends:     syslinux
 # having a ftp command line client is good for moving log files
 Recommends:     tnftp
 Recommends:     tuned
