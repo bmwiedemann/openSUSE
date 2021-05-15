@@ -1,5 +1,5 @@
 #
-# spec file for package virtualbox%{?dash}%{?name_suffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -298,8 +298,6 @@ Obsoletes:      virtualbox-guest-kmp
 Obsoletes:      virtualbox-host-kmp
 # end of kmp_package
 %endif
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
 ### Description and subpackages of virtualbox main package ###
@@ -311,6 +309,8 @@ and derivations of Windows, Linux, BSD, OS/2, Solaris, Haiku, OSx86
 and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
+
+
 
 
 
@@ -368,6 +368,8 @@ This package contains the code for the GUI used to control VMs.
 
 
 
+
+
 #########################################
 
 %package websrv
@@ -379,6 +381,8 @@ Obsoletes:      %{name}-vboxwebsrv
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
+
+
 
 
 
@@ -432,6 +436,8 @@ This package contains X11 guest utilities and X11 guest mouse and video drivers
 
 
 
+
+
 ###########################################
 
 %package guest-tools
@@ -445,9 +451,13 @@ Obsoletes:      %{name}-ose-guest-tools < %{version}
 %if ! 0%{?suse_version} > 1325
 Requires(pre):  net-tools-deprecated
 %endif
+# for /usr/lib/virtualbox/vboxadd-service
+Requires:       which
 
 %description guest-tools
 VirtualBox guest addition tools.
+
+
 
 
 
@@ -506,6 +516,8 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
+
 ###########################################
 
 %package devel
@@ -519,6 +531,8 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
 
 
 
@@ -574,6 +588,8 @@ sudo /sbin/vboxguestconfig
 
 
 
+
+
 ###########################################
 
 %package guest-desktop-icons
@@ -585,6 +601,8 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
 
 
 
@@ -805,7 +823,6 @@ pushd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
 install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
 popd
-install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
 
 #
 ##############################################################
@@ -1106,7 +1123,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 #######################################################
 
 %files
-%defattr(-, root, root)
 %doc README.autostart UserManual.pdf README.build
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
@@ -1178,7 +1194,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/autostart.cfg
 
 %files qt
-%defattr(-, root, root)
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxPermissionMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSUIDMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxUSB_DevRules
@@ -1210,7 +1225,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_udevrulesdir}/60-vboxdrv.rules
 
 %files guest-x11
-%defattr(-, root, root)
 %dir %{_libdir}/xorg/modules/drivers
 %dir %{_libdir}/xorg/modules/input
 %dir %{_libdir}/dri/
@@ -1218,7 +1232,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_distconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 %files guest-tools
-%defattr(-, root, root)
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
 /sbin/vboxguestconfig
@@ -1232,7 +1245,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %endif
 
 %files -n python3-%{name}
-%defattr(-, root, root)
 %dir %{_vbox_instdir}/sdk
 %dir %{_vbox_instdir}/sdk/bindings
 %dir %{_vbox_instdir}/sdk/bindings/xpcom
@@ -1242,7 +1254,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{python3_sitelib}/vboxapi/
 
 %files devel
-%defattr(-,root, root)
 %dir %{_vbox_instdir}/sdk
 %dir %{_vbox_instdir}/sdk/bindings
 %dir %{_vbox_instdir}/sdk/bindings/xpcom
@@ -1253,12 +1264,10 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/sdk/bindings/auth
 
 %files host-source
-%defattr(-,root, root)
 %dir %{_usrsrc}/kernel-modules
 %{_usrsrc}/kernel-modules/virtualbox
 
 %files guest-source
-%defattr(-,root, root)
 %dir %{_usrsrc}/kernel-modules
 %dir %{_usrsrc}/kernel-modules/additions
 %{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2
@@ -1271,16 +1280,13 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/vboxwebsrv
 
 %files guest-desktop-icons
-%defattr(-,root, root)
 %dir %{_datadir}/pixmaps/virtualbox
 %{_datadir}/pixmaps/virtualbox/*.png
 
 %files vnc
-%defattr(-,root, root)
+%license COPYING
 %dir %{_datadir}/virtualbox/extensions
 %{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack
-%dir %{_datadir}/licenses
-%{_datadir}/licenses/LICENSE.vnc
 
 # main_package
 %endif

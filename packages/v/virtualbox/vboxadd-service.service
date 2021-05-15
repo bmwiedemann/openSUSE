@@ -17,5 +17,4 @@ ExecStart=/usr/lib/virtualbox/vboxadd-service start
 ExecStop=/usr/lib/virtualbox/vboxadd-service stop
 
 [Install]
-WantedBy=multi-user.target.wants
-
+WantedBy=multi-user.target

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 14 10:35:52 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Correct WantedBy entry in vboxadd-service
+
+-------------------------------------------------------------------
+Wed May 12 09:38:28 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Require which for /usr/lib/virtualbox/vboxadd-service
+
+-------------------------------------------------------------------
+Mon May 10 21:16:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix license packaging, small cruft cleanup (avoid owning directories provided by filesystem rpm) 
+
+-------------------------------------------------------------------
 Fri Apr 30 18:38:18 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.22 (released April 29 2021 by Oracle)
