@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>889094</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9055a2a01bfe4805bf7bae3feb68d416</srcmd5>
+    <version>4.0+0</version>
+    <time>1621113375</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missed change in gnome-screensaver-helper.patch
+</comment>
+    <requestid>893282</requestid>
+  </revision>
 </revisionlist>

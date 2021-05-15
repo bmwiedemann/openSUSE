@@ -280,7 +280,7 @@ Index: gnome-screensaver-3.2.1/src/gs-auth-helper.c
 +                }
 +
 +                /* Helper is invoked as helper service-name [user] */
-+                execlp (PASSWD_HELPER_PROGRAM, PASSWD_HELPER_PROGRAM, "gnome-screensaver", user, NULL);
++                execlp (PASSWD_HELPER_PROGRAM, PASSWD_HELPER_PROGRAM, "budgie-screensaver", user, NULL);
 +                if (verbose) {
 +                        g_message ("%s: %s", PASSWD_HELPER_PROGRAM, g_strerror (errno));
 +                }
