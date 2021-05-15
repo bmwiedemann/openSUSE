@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 15 08:26:31 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Split new libraries into subpackages
+- Make sure plugins support is enabled
+- Switch to GtkSourceView 4
+- Added ldconfig scriplets for the new shared libraries
+
+-------------------------------------------------------------------
 Fri May 14 03:06:38 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 0.5.5
