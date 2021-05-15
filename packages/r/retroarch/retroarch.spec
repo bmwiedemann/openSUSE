@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -223,7 +223,8 @@ export CXXFLAGS="$CFLAGS"
     --enable-vulkan \
 %endif
     --enable-7zip \
-    --enable-mmap
+    --enable-mmap \
+    --disable-git_version
 make %{?_smp_mflags}
 
 %install

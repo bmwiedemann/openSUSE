@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/RetroArch.git</param>
+              <param name="changesrevision">cf6ca2a47f44126f4caf9242cfa7917b94abbc52</param></service></servicedata>

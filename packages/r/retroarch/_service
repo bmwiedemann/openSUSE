@@ -1,20 +1,23 @@
 <services>
-  <service name="tar_scm" mode="localonly">
-    <param name="scm">git</param>
+  <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/libretro/RetroArch.git</param>
+    <param name="scm">git</param>
     <param name="filename">retroarch</param>
-    <param name="revision">v1.9.0</param>
-    <param name="version">1.9.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v1.9.1</param>
+    <param name="changesgenerate">enable</param>
     <param name="exclude">media/icons</param>
     <param name="exclude">ps2</param>
     <param name="exclude">uwp</param>
+    <param name="exclude">vita</param>
     <param name="exclude">wii</param>
     <param name="exclude">wiiu</param>
   </service>
-  <service name="recompress" mode="localonly">
+  <service mode="disabled" name="set_version">
+  </service>
+  <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="localonly"/>
 </services>
-

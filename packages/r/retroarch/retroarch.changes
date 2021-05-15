@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 30 10:16:56 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.9.1:
+  * Update CHANGES.md
+  * Update CHANGES.md
+  * Update CHANGES.md
+  * Update CHANGES.md
+  * (iOS6) Add assets.zip/modules dir
+  * OpenDingux: Improve handling of unsupported display resolutions + buffer overflow fix
+  * (shader_gl_core) Cut down on some std::string usage
+  * Bump up version (but don't tag yet)
+  * (iOS6/iOS9) Take out HAVE_UPDATE_CORES
+  * Relocate 'Menu Scroll' settings
+
+-------------------------------------------------------------------
 Wed Aug 12 16:37:30 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Change recommended PlayStation core:
