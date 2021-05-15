@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,14 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://djvu.sourceforge.net
 Source:         http://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
+# CVE-2021-32490 [bsc#1185895], Out of bounds write in function DJVU:filter_bv() via crafted djvu file
+Patch0:         djvulibre-CVE-2021-32490.patch
+# CVE-2021-32491 [bsc#1185900], Integer overflow in function render() in tools/ddjvu via crafted djvu file
+Patch1:         djvulibre-CVE-2021-32491.patch
+# CVE-2021-32492 [bsc#1185904], Out of bounds read in function DJVU:DataPool:has_data() via crafted djvu file
+Patch2:         djvulibre-CVE-2021-32492.patch
+# CVE-2021-32493 [bsc#1185905], Heap buffer overflow in function DJVU:GBitmap:decode() via crafted djvu file
+Patch3:         djvulibre-CVE-2021-32493.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -79,6 +87,10 @@ This package contains the documentation.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 # configure script missing; generate using autogen.sh

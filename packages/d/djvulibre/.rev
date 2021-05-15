@@ -336,4 +336,21 @@
   BuildRequires and post(un) scripts.</comment>
     <requestid>858983</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7978eebb0b1408a2cf942e4c9248794a</srcmd5>
+    <version>3.5.28</version>
+    <time>1621113332</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2021-32490 [bsc#1185895], Out of bounds write in function DJVU:filter_bv() via crafted djvu file
+  + djvulibre-CVE-2021-32490.patch
+  fix CVE-2021-32491 [bsc#1185900], Integer overflow in function render() in tools/ddjvu via crafted djvu file
+  + djvulibre-CVE-2021-32491.patch
+  fix CVE-2021-32492 [bsc#1185904], Out of bounds read in function DJVU:DataPool:has_data() via crafted djvu file
+  + djvulibre-CVE-2021-32492.patch
+  fix CVE-2021-32493 [bsc#1185905], Heap buffer overflow in function DJVU:GBitmap:decode() via crafted djvu file
+  + djvulibre-CVE-2021-32493.patch</comment>
+    <requestid>892460</requestid>
+  </revision>
 </revisionlist>
