@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 17:09:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- SPEC file: Fixed outdated URL and use secured SourceURLs
+
+-------------------------------------------------------------------
 Mon May  3 12:35:44 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to bind 9.16.15

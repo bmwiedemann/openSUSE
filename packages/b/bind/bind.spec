@@ -50,10 +50,10 @@ Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
 Group:          Productivity/Networking/DNS/Servers
-URL:            http://isc.org/sw/bind/
-Source:         ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
-Source1:        vendor-files.tar.bz2
-Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
+URL:            https://www.isc.org/bind/
+Source0:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
+Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
+Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source4:        %{name}.keyring
 Source9:        ftp://ftp.internic.net/domain/named.root
@@ -145,7 +145,7 @@ BuildArch:      noarch
 This package provides a module which allows commands to be sent to rndc directly from Python programs.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1 -a2
 
 # use the year from source gzip header instead of current one to make reproducible rpms
 year=$(perl -e 'sysread(STDIN, $h, 8); print (1900+(gmtime(unpack("l",substr($h,4))))[5])' < %{SOURCE0})
