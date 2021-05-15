@@ -18,14 +18,15 @@
 
 
 %global base_name jetty
-%global addver  .v20210224
+%global addver  .v20210413
+%define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.38
+Version:        9.4.40
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
-Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz
+Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
@@ -187,7 +188,7 @@ Summary:        Javadoc for %{name}
 %{summary}.
 
 %prep
-%setup -q -n %{base_name}.project-%{base_name}-%{version}%{addver}
+%setup -q -n %{src_name}
 
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;

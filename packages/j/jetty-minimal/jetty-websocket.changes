@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 14 16:57:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 9.4.40.v20210413
+  * Fix: CVE-2021-28165 - jetty server high CPU when client send
+    data length > 17408
+  * Fix: CVE-2021-28164 - Normalize ambiguous URIs
+  * Fix: CVE-2021-28163 - Exclude webapps directory from deployment
+    scan
+  * Improve handling of unconsumed content
+  * Jetty start.jar always reports jetty.tag.version as master
+  * HttpConnection.getBytesIn() incorrect for requests with chunked
+    content
+  * SslConnection compacting
+
+-------------------------------------------------------------------
 Fri Mar 12 11:11:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 9.4.38.v20210224
