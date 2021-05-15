@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 15 19:18:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.11
+  New features:
+  * ^t flag can be used to mark commands with "transient"
+    outputs. These outputs are removed after all dependent
+    commands have been processed. (See the manual for details if
+    you think this will be useful for you)
+  * Internal lua version is now 5.4.3
+  Bug fixes:
+  * Environment variable changes now show in --debug-logging logs
+  * Including a lua file from a regular Tupfile no longer breaks
+    updating variables with +=
+  * Tup now detects if it is running inside of Conemu's
+    dependency injection and issues a warning
+  * Changing external files now correctly re-parses if
+    full_deps=1 (thanks alightr!)
+  * 'tup varsed' now works inside a 'tup generate' script
+  * Fixes to the progress bar that sometimes showed a non-zero
+    ending state.
+  * Argument ordering for partial updates is no longer strict
+    (both 'tup filename -k' and 'tup -k filename' should work to
+    update filename with the keep-going flag enabled).
+- Drop tup-32bit.patch (merged upstream)
+
+-------------------------------------------------------------------
 Fri Oct 30 14:41:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7.10
