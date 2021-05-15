@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 17:12:16 CEST 2021 - ro@suse.de
+
+- also buildrequire pkgconfig(systemd) to make sure configure
+  detects systemd 
+
+-------------------------------------------------------------------
 Sat Mar 13 12:41:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace ancient RPM variables by modern equivalents.
