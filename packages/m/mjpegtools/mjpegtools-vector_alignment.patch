@@ -3,10 +3,10 @@
  mpeg2enc/imageplanes.hh |    1 +
  2 files changed, 8 insertions(+), 4 deletions(-)
 
-Index: mpeg2enc/imageplanes.cc
+Index: mjpegtools-2.2.0/mpeg2enc/imageplanes.cc
 ===================================================================
---- mpeg2enc/imageplanes.cc.orig
-+++ mpeg2enc/imageplanes.cc
+--- mjpegtools-2.2.0.orig/mpeg2enc/imageplanes.cc	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/mpeg2enc/imageplanes.cc	2021-05-11 12:30:02.082436818 +0200
 @@ -19,19 +19,22 @@ ImagePlanes::ImagePlanes( EncoderParams
          switch( c )
          {
@@ -41,13 +41,13 @@ Index: mpeg2enc/imageplanes.cc
 +        if( raw_planes[c] != 0 )
 +            delete [] raw_planes[c];
      }
+     DiscardUserData();
  }
- 
-Index: mpeg2enc/imageplanes.hh
+Index: mjpegtools-2.2.0/mpeg2enc/imageplanes.hh
 ===================================================================
---- mpeg2enc/imageplanes.hh.orig
-+++ mpeg2enc/imageplanes.hh
-@@ -50,6 +50,7 @@ class ImagePlanes
+--- mjpegtools-2.2.0.orig/mpeg2enc/imageplanes.hh	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/mpeg2enc/imageplanes.hh	2021-05-11 12:30:02.082436818 +0200
+@@ -55,6 +55,7 @@ class ImagePlanes
                                  int image_data_width, int image_data_height);
      protected:
          uint8_t *planes[NUM_PLANES];

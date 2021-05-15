@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 11 10:50:23 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.2.0~beta
+- modified patches
+  % mjpegtools-2.0.0-fix-bashisms.patch (refreshed)
+  % mjpegtools-v4l-2.6.38.patch (refreshed)
+  % mjpegtools-vector_alignment.patch (refreshed)
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - mjpegtools-config_h.patch (upstreamed)
+  - mjpegtools-cpuinfo.patch (not needed)
+  - mjpegtools-gcc47.patch (upstreamed)
+  - mjpegtools-more-pie.patch (upstreamed)
+  - mjpegtools-no_arch_tuning.patch
+
+-------------------------------------------------------------------
 Wed Aug 22 10:37:29 UTC 2018 - dimstar@opensuse.org
 
 - Inject pkg-config --cflags SDL_gfx into CFLAGS: the build system

@@ -28,12 +28,4 @@ diff -Ndur mjpegtools-2.0.0/scripts/lav2mpeg mjpegtools-2.0.0-fix-bashisms/scrip
  shift `expr $MOPTIND - 1`
  
  if [ "${QUIETLOG}" != "" ]; then
-diff -Ndur mjpegtools-2.0.0/scripts/lavtc.sh mjpegtools-2.0.0-fix-bashisms/scripts/lavtc.sh
---- mjpegtools-2.0.0/scripts/lavtc.sh	2009-01-23 17:52:24.000000000 +0200
-+++ mjpegtools-2.0.0-fix-bashisms/scripts/lavtc.sh	2014-11-29 22:04:07.719912496 +0200
-@@ -1,4 +1,4 @@
--#!/bin/sh
-+#!/bin/bash
- #
- # lav2tc.bash - use transcode to convert MJPEG avi files to another 
- #               video/audio format.
+

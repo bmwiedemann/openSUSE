@@ -1,7 +1,7 @@
-Index: lavtools/lavvideo.c
+Index: mjpegtools-2.2.0/lavtools/lavvideo.c
 ===================================================================
---- lavtools/lavvideo.c.orig
-+++ lavtools/lavvideo.c
+--- mjpegtools-2.2.0.orig/lavtools/lavvideo.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/lavvideo.c	2021-05-11 12:24:57.188741183 +0200
 @@ -63,7 +63,7 @@ Copyright by Gernot Ziegler.
   * errors here, check your linux/time.h && sys/time.h header setup.
   */
@@ -11,10 +11,10 @@ Index: lavtools/lavvideo.c
  
  #include <videodev_mjpeg.h>
  #include <frequencies.h>
-Index: lavtools/liblavplay.c
+Index: mjpegtools-2.2.0/lavtools/liblavplay.c
 ===================================================================
---- lavtools/liblavplay.c.orig
-+++ lavtools/liblavplay.c
+--- mjpegtools-2.2.0.orig/lavtools/liblavplay.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/liblavplay.c	2021-05-11 12:24:57.188741183 +0200
 @@ -68,7 +68,8 @@
   * errors here, check your linux/time.h && sys/time.h header setup.
   */
@@ -25,24 +25,25 @@ Index: lavtools/liblavplay.c
  #else
  #define VIDEO_MODE_PAL		0
  #define VIDEO_MODE_NTSC		1
-Index: lavtools/liblavrec.c
+Index: mjpegtools-2.2.0/lavtools/liblavrec.c
 ===================================================================
---- lavtools/liblavrec.c.orig
-+++ lavtools/liblavrec.c
-@@ -63,7 +63,8 @@
+--- mjpegtools-2.2.0.orig/lavtools/liblavrec.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/liblavrec.c	2021-05-11 12:25:27.076907401 +0200
+@@ -63,7 +63,9 @@
   * errors here, check your linux/time.h && sys/time.h header setup.
   */
  #define _LINUX_TIME_H
 -#include <linux/videodev.h>
 +#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
 +#define BASE_VIDIOCPRIVATE  192     /* 192-255 are private */
  #ifdef HAVE_SYS_SOUNDCARD_H
  #include <sys/soundcard.h>
  #endif
-Index: lavtools/testrec.c
+Index: mjpegtools-2.2.0/lavtools/testrec.c
 ===================================================================
---- lavtools/testrec.c.orig
-+++ lavtools/testrec.c
+--- mjpegtools-2.2.0.orig/lavtools/testrec.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/testrec.c	2021-05-11 12:24:57.192741206 +0200
 @@ -89,7 +89,7 @@
   * errors here, check your linux/time.h && sys/time.h header setup.
   */
@@ -52,11 +53,11 @@ Index: lavtools/testrec.c
  #include <linux/soundcard.h>
  
  /* These are explicit prototypes for the compiler, to prepare separation of audiolib.c */
-Index: configure.ac
+Index: mjpegtools-2.2.0/configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -164,7 +164,7 @@ AC_ARG_WITH([v4l], AC_HELP_STRING([--wit
+--- mjpegtools-2.2.0.orig/configure.ac	2021-02-11 06:09:59.000000000 +0100
++++ mjpegtools-2.2.0/configure.ac	2021-05-11 12:24:57.192741206 +0200
+@@ -153,7 +153,7 @@ AC_ARG_WITH([v4l], AC_HELP_STRING([--wit
  AS_IF([test "x$with_v4l" != "xno"], [
  case $host in
    *-*-linux*)
@@ -65,20 +66,11 @@ Index: configure.ac
                    [have_video4linux=true
                     AC_DEFINE(HAVE_V4L, 1,
  		             [Building for Linux - using the video4linux API])], [])
-@@ -173,7 +173,7 @@ esac])
- 
- AS_IF([test "x$have_video4linux" != "xtrue" && test "x$with_v4l" != "xno"],
-         [have_video4linux=false
--	 AC_MSG_WARN([videodev.h not found - please install the linux kernel headers programms needing v4l disabled])])
-+	 AC_MSG_WARN([libv4l1-videodev.h not found - please install the linux kernel headers programms needing v4l disabled])])
- AM_CONDITIONAL(HAVE_V4L, test x$have_video4linux = xtrue)
- 
- dnl *********************************************************************
-Index: configure
+Index: mjpegtools-2.2.0/configure
 ===================================================================
---- configure.orig
-+++ configure
-@@ -16392,7 +16392,7 @@ if test "x$with_v4l" != "xno"; then :
+--- mjpegtools-2.2.0.orig/configure	2021-02-11 06:23:37.000000000 +0100
++++ mjpegtools-2.2.0/configure	2021-05-11 12:24:57.192741206 +0200
+@@ -17764,7 +17764,7 @@ if test "x$with_v4l" != "xno"; then :
  
  case $host in
    *-*-linux*)
@@ -87,14 +79,3 @@ Index: configure
  if test "x$ac_cv_header_linux_videodev_h" = xyes; then :
    have_video4linux=true
  
-@@ -16407,8 +16407,8 @@ fi
- 
- if test "x$have_video4linux" != "xtrue" && test "x$with_v4l" != "xno"; then :
-   have_video4linux=false
--	 { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: videodev.h not found - please install the linux kernel headers programms needing v4l disabled" >&5
--$as_echo "$as_me: WARNING: videodev.h not found - please install the linux kernel headers programms needing v4l disabled" >&2;}
-+	 { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: libv4l1-videodev.h not found - please install the linux kernel headers programms needing v4l disabled" >&5
-+$as_echo "$as_me: WARNING: libv4l1-videodev.h not found - please install the linux kernel headers programms needing v4l disabled" >&2;}
- fi
-  if test x$have_video4linux = xtrue; then
-   HAVE_V4L_TRUE=
