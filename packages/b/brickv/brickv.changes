@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 14 20:33:11 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.19:
+  - Add support for DC 2.0, Industrial PTC and Silent Stepper Bricklet 2.0
+  - Add Data Logger support for DC 2.0, Industrial PTC and Silent Stepper Bricklet 2.0
+  - Fix Healthmonitor error handling
+  - Filter Updates/Flashing and RED Brick Console serial port selection based on
+    USB product- and vendor-ID  
+  version 2.4.18:
+  - Add minimal health monitor dialog
+  - Fix state handling for untabbed plugins
+  - Force correct UI state after aborting autoreconnect on error
+  - Handle errors while opening Data Logger debug log file
+  - Update download.tinkerforge.com certificate chain to fix update autodetection
+  - Autoselect download directory for Brick Viewer downloads
+  - Check if NFC Bricklet is in correct state to start cardemu discovery
+
+-------------------------------------------------------------------
 Wed Jan 20 21:22:02 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Adapt build recipe to python 3 parallel installation support
