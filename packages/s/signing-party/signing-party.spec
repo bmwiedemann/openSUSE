@@ -1,7 +1,7 @@
 #
 # spec file for package signing-party
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           signing-party
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        GPG Tools
 License:        GPL-2.0-or-later
@@ -94,7 +94,7 @@ popd
 rm -rf keyanalyze
 %endif
 
-make %{?_smp_mflags} V=1 CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 
@@ -129,29 +129,7 @@ install -m 644 keyart/doc/keyart.1 %{buildroot}%{_mandir}/man1
 %doc caff/README caff/README.gpg-agent caff/README.many-keys caff/README.v3-keys caff/caffrc.sample
 %doc gpgsigs/gpgsigs-lt2k5*.txt gpg-mailkeys/example.gpg-mailkeysrc
 %doc keylookup/NEWS
-%{_bindir}/caff
-%{_bindir}/gpg-key2ps
-%{_bindir}/gpg-mailkeys
-%{_bindir}/gpglist
-%{_bindir}/gpgsigs
-%{_bindir}/keyart
-%{_bindir}/keylookup
-%{_bindir}/pgp-clean
-%{_bindir}/pgp-fixkey
-%if 0%{?suse_version} > 1320
-%{_bindir}/signing-party-pgpring
-%endif
-%{_mandir}/man1/caff.1%{?ext_man}
-%{_mandir}/man1/gpg-key2ps.1%{?ext_man}
-%{_mandir}/man1/gpg-mailkeys.1%{?ext_man}
-%{_mandir}/man1/gpglist.1%{?ext_man}
-%{_mandir}/man1/gpgsigs.1%{?ext_man}
-%{_mandir}/man1/keyart.1%{?ext_man}
-%{_mandir}/man1/keylookup.1%{?ext_man}
-%{_mandir}/man1/pgp-clean.1%{?ext_man}
-%{_mandir}/man1/pgp-fixkey.1%{?ext_man}
-%if 0%{?suse_version} > 1320
-%{_mandir}/man1/signing-party-pgpring.1%{?ext_man}
-%endif
+%{_bindir}/*
+%{_mandir}/man1/*%{?ext_man}
 
 %changelog
