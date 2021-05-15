@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 10:27:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix the logic for testing cookiecutter only on python3 flavor.
+  The non-primary python3 flavors can change and be more than one
+
+-------------------------------------------------------------------
 Wed Jan 20 07:28:02 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Enable test_cookiecutter_recipe

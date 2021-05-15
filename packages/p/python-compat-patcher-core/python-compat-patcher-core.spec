@@ -59,15 +59,9 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Cookiecutter is only available as python3, which is not 3.6 on Tumbleweed
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-if [ "$python" = "python3.6" -o "$python" = "python2" ]; then
-  ignore="tests/test_cookiecutter_recipe.py"
-else
-  ignore=""
-fi
-$python -m pytest tests ${ignore:+ --ignore "$ignore"}
-}
+# Cookiecutter is only available as python3
+%python_expand [ %{_bindir}/$python -ef %{_bindir}/python3 ] ||  $python_ignore="--ignore tests/test_cookiecutter_recipe.py"
+%pytest tests ${$python_ignore}
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
