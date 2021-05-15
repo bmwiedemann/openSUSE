@@ -874,7 +874,7 @@ FS_MODULES="btrfs ext2 xfs jfs reiserfs"
 CD_MODULES=" all_video boot cat chain configfile echo true \
 		efinet font gfxmenu gfxterm gzio halt iso9660 \
 		jpeg minicmd normal part_apple part_msdos part_gpt \
-		password_pbkdf2 png reboot search search_fs_uuid \
+		password password_pbkdf2 png reboot search search_fs_uuid \
 		search_fs_file search_label sleep test video fat loadenv"
 PXE_MODULES="efinet tftp http"
 CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 02:14:06 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix plaintext password in grub config didn't work to unlock menu entry if
+  enabling secure boot in UEFI (bsc#1181892)
+
+-------------------------------------------------------------------
 Fri Apr 23 03:27:37 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix obsolete syslog in systemd unit file and updating to use journal as
