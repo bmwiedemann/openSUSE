@@ -16,6 +16,15 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
 # NEP 29: numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
 
@@ -59,6 +68,7 @@ BuildRequires:  swig >= 4.0
 %else
 BuildRequires:  swig >= 3.0
 %endif
+%if %{with test}
 # SECTION For tests (only the default python3 flavor)
 BuildRequires:  python3-freezegun
 BuildRequires:  python3-ligo-lw
@@ -67,6 +77,7 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-scipy
 # /SECTION
+%endif
 
 %python_subpackages
 
@@ -142,6 +153,7 @@ popd
 }
 
 %install
+%if %{without test}
 %{python_expand #  all python flavors as configured above
 export PYTHON=$python
 pushd ../${PYTHON}_build
@@ -154,8 +166,6 @@ rm %{buildroot}%{_sysconfdir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot}%{_libdir} -name "*.a" -delete -print
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}/
-
 %{python_expand # FIX env HASHBANGS
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/gpstime.py
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/series.py
@@ -163,7 +173,11 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/an
 }
 %{?python_compileall}
 
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/
+%endif
+
 %check
+%if %{with test}
 %{python_expand # Run tests from the build dir of the primary python3 flavor only
 if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
 export PYTHON=$python
@@ -172,7 +186,9 @@ pushd ../${PYTHON}_build
 popd
 fi
 }
+%endif
 
+%if %{without test}
 %post -n %{shliblal} -p /sbin/ldconfig
 %post -n %{shliblalsupport} -p /sbin/ldconfig
 %postun -n %{shliblal} -p /sbin/ldconfig
@@ -202,6 +218,8 @@ fi
 %dir %{_libdir}/octave/*/site/oct
 %dir %{_libdir}/octave/*/site/oct/*
 %{_libdir}/octave/*/site/oct/*/*.oct
+%endif
+
 %endif
 
 %changelog
