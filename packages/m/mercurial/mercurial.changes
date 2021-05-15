@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue May  9 13:42:36 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.8
+  
+  + New Features
+    * `hg purge` is now a core command using `--confirm` by default.
+    * The `rev-branch-cache` is now updated incrementally whenever changesets 
+      are added.
+    * The new options `experimental.bundlecompthreads` and 
+      `experimental.bundlecompthreads.<engine>` can be used to instruct the 
+      compression engines for bundle operations to use multiple threads for 
+      compression. The default is single threaded operation. Currently only 
+      supported for zstd.
+
+  + Default Format Change
+    These changes affects newly created repositories (or new clone) done with 
+    Mercurial 5.8. 
+    
+    * The `ZSTD` compression will now be used by default for new repositories 
+      when available. This compression format was introduced in Mercurial 5.0, 
+      released in May 2019. See `hg help config.format.revlog-compression` for 
+      details.
+    * Mercurial installation built with the Rust parts will now use the 
+      "persistent nodemap" feature by default. This feature was introduced in 
+      Mercurial 5.4 (May 2020). However Mercurial instalation built without 
+      the fast Rust implementation will refuse to interract with them 
+      by default. This restriction can be lifted through configuration. 
+      See `hg help config.format.use-persistent-nodemap` for details
+
+  + New Experimental Features 
+
+    * There's a new `diff.merge` config option to show the changes relative to 
+      an automerge for merge changesets. This makes it easier to detect and 
+      review manual changes performed in merge changesets. It is supported 
+      by `hg diff --change`, `hg log -p` `hg incoming -p`, 
+      and `hg outgoing -p` so far.
+
+  + Bug Fixes 
+
+    * gracefully recover from inconsistent persistent-nodemap data from disk.
+
+  + Backwards Compatibility Changes
+    
+    * In normal repositories, the first parent of a changeset is not null, 
+      unless both parents are null (like the first changeset). Some legacy 
+      repositories violate this condition. The revlog code will now silentely 
+      swap the parents if this condition is tested. This can change the output 
+      of `hg log` when explicitly asking for first or second parent. The 
+      changesets "nodeid" are not affected.
+  
+  + Internal API Changes
+    * `changelog.branchinfo` is deprecated and will be removed after 5.8. 
+      It is superseded by `changelogrevision.branchinfo`.
+    * Callbacks for revlog.addgroup and the changelog._nodeduplicatecallback 
+      hook now get a revision number as argument instead of a node.
+    * revlog.addrevision returns the revision number instead of the node.
+    * `nodes.nullid` and related constants are being phased out as part of 
+      the deprecation of SHA1. Repository instances and related classes 
+      provide access via `nodeconstants` and in some cases `nullid` attributes.
+- updated mercurial-locale-path-fix.patch
+
+-------------------------------------------------------------------
 Thu Apr 29 17:39:02 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - enable building `chg` (thanks @expehaa) 

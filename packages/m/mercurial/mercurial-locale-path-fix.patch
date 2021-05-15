@@ -1,6 +1,6 @@
 --- a/mercurial/i18n.py
 +++ b/mercurial/i18n.py
-@@ -48,7 +48,7 @@ if (
+@@ -58,7 +58,7 @@ if (
  
  
  datapath = pycompat.fsdecode(resourceutil.datapath)
@@ -8,4 +8,4 @@
 +localedir = '/usr/share/locale'
  t = gettextmod.translation('hg', localedir, _languages, fallback=True)
  try:
-     _ugettext = t.ugettext
+     _ugettext = t.ugettext  # pytype: disable=attribute-error
