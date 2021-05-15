@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           dnsdiag
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause

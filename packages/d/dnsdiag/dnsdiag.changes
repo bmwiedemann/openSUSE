@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 13 13:47:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * Bugfix release
+- Update to version 2.0.1
+  * Add support for DNSSEC
+  * Add -F to display flags for each response (dnsping)
+  * Display full response in verbose mode (dnsping)
+  * Add DoT (DNS over TLS) support (dnsping, dnseval)
+  * Add DoH (DNS over HTTPS) support (dnsping, dnseval)
+  * Add TCP support
+  * Improved JSON output support for dnseval
+  * Refactor and PEP8 cleanup
+  * Do not use system resolver when not needed
+  * Add support for user defined source IP address
+  * Add user-specified destination port (-p/--port)
+  * Improve error handling
+  * Display last response code for each entry
+  * Rework custom socket and custom TTL support
+  * Rework time calculation logic to eliminate an extra DNS
+    request that was just sent for timing (dnstraceroute)
+  * Update docs (output samples, use cases, etc)
+  * Use proper terminology (in code) to reduce confusion
+
+-------------------------------------------------------------------
 Sun Apr  4 20:13:35 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0
