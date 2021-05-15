@@ -714,4 +714,12 @@
 - add BuildRequires for go &gt;= 1.15.5, to align with kubernetes1.20 package</comment>
     <requestid>885156</requestid>
   </revision>
+  <revision rev="77" vrev="17">
+    <srcmd5>3a8b0692bafe2a172d2283dc36f0d9d7</srcmd5>
+    <version>unknown</version>
+    <time>1621113329</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes-*-minus1 to 1.20.6</comment>
+    <requestid>892399</requestid>
+  </revision>
 </revisionlist>

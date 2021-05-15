@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 12 08:22:40 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Bump kubernetes-*-minus1 to 1.20.6 
+
+-------------------------------------------------------------------
 Tue Apr 13 13:45:25 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Remove BuildRequires for Go, bump kubernetes to 1.21.0 and 1.20.5 
