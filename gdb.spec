@@ -1,5 +1,5 @@
 #
-# spec file for package gdb-testresults
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 RedHat
@@ -317,7 +317,6 @@ Patch2016:      gdb-testsuite-ignore-debuginfod_urls.patch
 Patch2017:      gdb-testsuite-fix-unset-of-debuginfod_urls-in-default_gdb_init.patch
 Patch2018:      gdb-tui-fix-len_without_escapes-in-tui-disasm.c.patch
 Patch2019:      gdb-build-hardcode-with-included-regex.patch
-Patch2020:      gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder.patch
 Patch2021:      gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
 
 # Testsuite patches
@@ -736,7 +735,6 @@ find -name "*.info*"|xargs rm -f
 %patch2017 -p1
 %patch2018 -p1
 %patch2019 -p1
-%patch2020 -p1
 %patch2021 -p1
 
 %patch2500 -p1
