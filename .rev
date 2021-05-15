@@ -49,4 +49,15 @@
 </comment>
     <requestid>893217</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc551079bdd6431655c1b685a75b6c9e</srcmd5>
+    <version>1.7.3</version>
+    <time>1621113376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.7.3
+  * Bundling updates
+  * Fixed a bug that caused the output of ``rx``, ``ry``, and
+  ``rz`` to be boolean rather than float for some compilers/OS.</comment>
+    <requestid>893286</requestid>
+  </revision>
 </revisionlist>
