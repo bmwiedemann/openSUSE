@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 18:15:55 UTC 2021 - Scott Young <dev@iotib.net>
+
+- Added fuse2fs as a subpackage
+
+-------------------------------------------------------------------
 Sun Mar 14 15:25:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - e2fsprogs 1.46.2:
