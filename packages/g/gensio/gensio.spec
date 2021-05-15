@@ -25,11 +25,11 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
-License:        GPL-2.0-only AND LGPL-2.1-only AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/cminyard/gensio
 #Git-Clone:     https://github.com/cminyard/gensio.git
