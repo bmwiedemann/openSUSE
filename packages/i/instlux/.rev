@@ -481,4 +481,14 @@
 </comment>
     <requestid>818931</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4c912e997a1e0f36080e7d5c9f260972</srcmd5>
+    <version>15.3.1</version>
+    <time>1621113371</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.3.1.
+  * Set Leap 15.3 as default (latest stable)
+</comment>
+    <requestid>893246</requestid>
+  </revision>
 </revisionlist>
