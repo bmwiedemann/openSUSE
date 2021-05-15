@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 15 11:09:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.7
+  * The Control Agent now supports TLS/HTTPS.
+  * kea-shell supports TLS/HTTPS.
+  * kea-admin now accepts the -P, --port parameter
+  * kea-dhcp4 now supports specifying valid-lifetime in
+    client classes.
+
+-------------------------------------------------------------------
 Mon Apr  5 10:02:22 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Own directory /var/lib/kea, as that is used as default for
