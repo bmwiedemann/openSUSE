@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 13 18:16:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * support for portable terminal bitmaps;
+  * both Sixel and Kitty are supported using a single NCBLIT_PIXEL
+    interface.
+  * Extensive work has gone into flicker-free, fast presentation.
+- Update to version 2.2.11
+  * Adds ncplane_erase_region() to erase a subregion of a plane.
+  * Adds ncblit_rgb_packed() and ncblit_rgb_loose() to blit RGBx
+    and pure RGB.
+  * Fixes some flicker when using sixel.
+  * Fixes an error in sixel wiping.
+- Update to version 2.2.10
+  * Add NCVISUAL_OPTION_CHILDPLANE
+
+-------------------------------------------------------------------
+Sun Apr 25 09:28:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.8
+  * Add sprixel support
+
+-------------------------------------------------------------------
 Sun Apr  4 20:27:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.5
