@@ -11,10 +11,10 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  utils.h |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: btrfs-progs-v4.10.2/fsfeatures.h
+Index: btrfs-progs-v5.12/common/fsfeatures.h
 ===================================================================
---- btrfs-progs-v4.10.2.orig/common/fsfeatures.h
-+++ btrfs-progs-v4.10.2/common/fsfeatures.h
+--- btrfs-progs-v5.12.orig/common/fsfeatures.h
++++ btrfs-progs-v5.12/common/fsfeatures.h
 @@ -19,10 +19,14 @@
  
  #include "kerncompat.h"
@@ -29,4 +29,4 @@ Index: btrfs-progs-v4.10.2/fsfeatures.h
 +#endif
  
  /*
-  * Avoid multi-device features (RAID56) and mixed block groups
+  * Avoid multi-device features (RAID56), mixed block groups, and zoned mode
