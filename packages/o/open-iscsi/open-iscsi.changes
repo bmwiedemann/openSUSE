@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 16:20:38 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Merge latest upstream, which added fix (bsc#1185930):
+  * Set default 'startup' to 'onboot' for FW nodes
+
+-------------------------------------------------------------------
 Wed Apr 28 16:26:08 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Local (SUSE) change: update iscsi.service so that it tries to
