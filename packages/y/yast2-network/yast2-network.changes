@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 16:46:00 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Write IP addresses in order preventing an alias to set the
+  primary IP address (bsc#1185967)
+- 4.4.10
+
+-------------------------------------------------------------------
 Wed May  5 11:18:43 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Allow the user to disable the network service during installation
