@@ -17,13 +17,13 @@
 
 
 Name:           ccache
-Version:        4.2.1
+Version:        4.3
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
 URL:            https://ccache.dev/
-Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz#/%{name}-%{version}.tar.xz
-Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
+Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
+Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
 BuildRequires:  cmake
@@ -65,10 +65,7 @@ ln -sf ../../bin/%{name} c++
 ln -sf ../../bin/%{name} nvcc
 
 %check
-# Following failure needs to be adressed:
-# The following tests FAILED:
-#        29 - test.upgrade (Failed)
-%ctest ||:
+%ctest
 
 %files
 %license LICENSE.* GPL-3.0.txt

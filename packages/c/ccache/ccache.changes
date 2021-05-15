@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 21:29:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ccache 4.3:
+  * ignore Clang compiler option -ivfsoverlay
+  * When using -P in combination with -E, ccache now reports this
+    as "called for preprocessing" instead of "unsupported compiler
+    option"
+  * Add support for -specs file.specs and --specs file.specs
+    without an equal sign between the arguments
+  * multiple bug fixes
+
+-------------------------------------------------------------------
 Tue Apr  6 08:12:49 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.2.1:

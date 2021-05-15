@@ -595,4 +595,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
   * Upgraded to doctest 2.4.6. This fixes a build error with glibc &gt;= 2.34.</comment>
     <requestid>883205</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2cbbe810f5f57ef3f850c26157fc81b5</srcmd5>
+    <version>4.3</version>
+    <time>1621113352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892591</requestid>
+  </revision>
 </revisionlist>
