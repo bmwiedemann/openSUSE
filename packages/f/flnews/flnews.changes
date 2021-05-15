@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Thu May 13 12:35:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  Important notes:
+  * The new configuration data format is not compatible with versions 0.x
+    (indicated by the major number bump)!
+    A script is provided to automatically convert existing configuration
+    data to the new format. Read "migration/README" for details.
+  * Because the location of the configuration has changed (see new XDG
+    module below), the configuration for versions 0.x is preserved.
+  * It is still possible to downgrade flnews to 0.x, the preserved old
+    configuration data is used again in this case.
+  * Now the release version contains 3 numbers "x.y.z"
+    Major (x) indicates compatibility with configuration data
+    Minor (y) is incremented for new features
+    Patch (z) is incremented for bug fixes
+  Bug fixes:
+  * CORE: Request for group information is no longer rejected with error
+    if the group list is empty.
+  * GUI: After unsubscribing the last group, the article tree/list was not
+    cleared and the user can click on articles for which the associated
+    data no longer exists. Such operations will crash the program
+    (reported by Martin Schnitkemper).
+  * CORE: Line length limit (998 octets) is now checked before injection.
+  * GUI: On macOS with system menu bar the status updates to menu entry
+    "Group->Sort by article number" work now (patch from Dennis Preiser).
+    The required method update() is not available with old FLTK 1.3
+    libraries, the option CFG_COCOA_SYS_MENUBAR now requires FLTK 1.4.
+  * ENC: URI percent encoder for scheme <news> fixed: The characters
+    defined as <gen-delims> (RFC 3986 Section 2.2) are now encoded
+    (reported by Marcel Logen).
+  * GUI: The URI parser now accepts empty <host> for scheme <news>.
+  * GUI: The current group selection is now restored after a click into
+    the empty space below the group list (reported by Christian
+    Schumacher).
+  * GUI: The article list/tree is now cleared after selecting an empty
+    group (formerly articles of an unrelated group may still be visible).
+  * GUI: Some FLTK versions accept selection of deactivated items. There
+    is now a workaround implemented to make such selections nonfatal.
+  * GUI: Horizontal scrolling to highlighted result of search fixed.
+  * GUI: Use FLTK default forground color for group subscription window
+    too. This should make the content readable with dark background
+    (reported by Christian Schumacher).
+  * NLS: German translation "Artikel herunterladen fehlgeschlagen" fixed
+    (reported by Marcel Logen).
+  * GUI: If there are multiple signature separators ("-- ") present, now
+    the last one is used according to "Usenet Best Practice" draft 01
+    (reported by Marcel Logen).
+  New features and improvements:
+  * XDG: Moved default configuration directory to location defined by XDG
+  * Base Directory Specification 0.7 ("$XDG_CONFIG_HOME/$CFG_NAME").
+    Other modules now ask the XDG module for the configuration path.
+  * MAIN: The new command line option "-confprefix" can be used to
+    override the configuration directory (proposed by Helmut Waitzmann).
+  * GUI: It is now possible to mark all articles in all groups as read
+    (menu entry "Group->Mark all groups as read").
+  * MAIN: New command line option "-debug" to enable debug mode early.
+  * CONF: configfile entry "domain" replaced with "fqdn". Some users
+    saw the hostname field in Message-ID algorithm A1 as privacy problem.
+    A <dot-atom> can be configured for the new entry "fqdn" (should be a
+    fully qualified domain name, but without root domain). It is used as
+    <id-right> element when a Message-ID is created with algorithm A2.
+  * Support for SOURCE_DATE_EPOCH Specification 1.1 added to build system.
+    Reproducible build option CFG_REPRODUCIBLE removed from CONFIG.
+    The SOURCE_DATE_EPOCH variable from the environment now overrides the
+    dates in the GUI, the output of the "-v" command line option and the
+    man pages (original patch from Bernhard M. Wiedemann).
+  * Support for target "install-strip" added to build system. The target
+    "install" no longer strips unnecessary symbols from binaries
+    (proposed by Martin Schnitkemper).
+  * EXT: Support for external inews added.
+    Pathname can be specified with the new "inews" entry in configfile.
+  * TLS: Protocol versions 1.0 and 1.1 are now disabled as required by
+    RFC 8996. Both versions are still available in "weak" encryption mode.
+  * GUI: New menu entry "Group->Mark subthread as read".
+  * GUI: If there is only one entity to display for a MIME multipart
+    message (e.g. the selected one with multipart/alternative), the
+    entity header is now displayed too.
+  * GUI: An initial greeting phrase can now be specified with the new
+    "initial_greeting" entry in configfile. It is inserted into articles
+    that start a new thread (proposed by Wolfgang Bauer).
+  * FUTIL: Function added to create (multiple) missing directories of a
+    path.
+  * FILTER: New scorefile syntax to eliminate the workaround with type
+    "extended". All score rules now have a wildmat in the first field.
+  * FILTER: Simplified default regex for test group detection to
+    "\.test$|^test$", removing the ".*" part at the beginning (proposed by
+    Urs Janßen).
+  * POSIX: Support for POSIX.1-2008 and SUSv4 added.
+    No local replacement functions are used anymore on modern operating
+    systems. snprintf() replacement function now uses SUSv4 semantics.
+  * ENC: MIME encoded-words are now generated with "US-ASCII" charset
+    declaration if there is no 8-bit data to encode in the header field
+    (e.g. to represent words like " =?-?= " in a RFC 2049 conformant way).
+    This follows the "lowest common denominator" principle decribed in
+    RFC 2046 Section 4.1.2.
+  * TLS: Deprecated functions from OpenSSL 3 API are no longer used.
+  * GUI: Modified question popup windows to handle pressing ESC key as
+    "No" or "Reject" respectively.
+  * GUI: Some entries moved from menu "Article" to "Group".
+
+-------------------------------------------------------------------
+Fri Apr  9 17:20:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre42
+
+-------------------------------------------------------------------
+Sun Mar 28 13:34:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre34
+
+-------------------------------------------------------------------
+Sun Feb 28 12:14:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre29
+
+-------------------------------------------------------------------
+Mon Feb 22 07:11:21 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre27
+
+-------------------------------------------------------------------
+Sat Feb  6 20:59:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre23
+
+-------------------------------------------------------------------
+Thu Jan 28 21:34:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre19
+
+-------------------------------------------------------------------
+Fri Jan 15 14:12:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre16
+
+-------------------------------------------------------------------
+Tue Jan 12 07:42:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre14
+
+-------------------------------------------------------------------
+Fri Jan  8 11:27:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0pre13
+- Drop not longer needed patch:
+  * reproducible.patch
+
+-------------------------------------------------------------------
 Wed Dec 30 22:02:18 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
