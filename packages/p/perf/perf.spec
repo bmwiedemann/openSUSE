@@ -49,6 +49,7 @@ BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
+BuildRequires:  libtraceevent-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  newt-devel
 BuildRequires:  openssl-devel
@@ -62,6 +63,8 @@ Requires:       kernel >= 2.6.31
 %ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
 BuildRequires:  libnuma-devel
 %endif
+
+Patch1:         perf-tools-enable-libtraceevent-dynamic-linking.patch
 
 %description
 This package provides a userspace tool 'perf', which monitors performance for
@@ -84,7 +87,8 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 cd tools/perf
 export WERROR=0
 # PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
-make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 \
+make %{?_smp_mflags} -f Makefile.perf V=1 PYTHON=python3 \
+	LIBTRACEEVENT_DYNAMIC=1 \
 	EXTRA_CFLAGS="%{optflags}" \
 	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
 	prefix=%{_prefix} \
@@ -98,6 +102,7 @@ make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 \
 cd tools/perf
 export WERROR=0
 make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
+	LIBTRACEEVENT_DYNAMIC=1 \
 	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
 	prefix=%{_prefix} \
 	libdir=%{_libdir} \
@@ -114,6 +119,9 @@ mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/e
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
 
+# temp workaround as perf Makefile is still installing plugins even with LIBTRACEEVENT_DYNAMIC=1
+rm -rf %{buildroot}/%{_libdir}/traceevent
+
 %files
 %license COPYING
 %doc CREDITS README tools/perf/design.txt
@@ -123,11 +131,6 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bas
 %{_bindir}/perf
 %{_bindir}/trace
 %{_libdir}/libperf-gtk.so
-%ifnarch armv7l
-%dir %{_libdir}/traceevent
-%dir %{_libdir}/traceevent/plugins
-%{_libdir}/traceevent/plugins/plugin_*.so
-%endif
 %{_prefix}/lib/%{name}-core
 %{_datadir}/bash-completion/completions/perf
 %{_datadir}/%{name}-core

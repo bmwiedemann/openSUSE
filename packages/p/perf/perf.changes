@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  8 00:01:31 UTC 2021 - Tony Jones <tonyj@suse.com>
+
+- Switch to using libtraceevent shared library package.
+  New patch: perf-tools-enable-libtraceevent-dynamic-linking.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 05:44:30 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - remove:

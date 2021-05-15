@@ -1,0 +1,148 @@
+From: Michael Petlan <mpetlan@redhat.com>
+Date: Wed, 28 Apr 2021 11:20:23 +0200
+Subject: perf tools: Enable libtraceevent dynamic linking
+Git-commit: 56d32d4cac645bac05fa70d935fa5040e3ab6bb3
+Patch-mainline: v5.13-rc1
+
+Currently we support only static linking with kernel's libtraceevent
+(tools/lib/traceevent). This patch adds libtraceevent package detection
+and support to link perf with it dynamically.
+
+  The libtraceevent package status is displayed with:
+  $ make VF=1 LIBTRACEEVENT_DYNAMIC=1
+  ...
+  ...                 libtraceevent: [ on  ]
+
+Default behavior remains the same (static linking).
+
+Committer testing:
+
+  $ make LIBTRACEEVENT_DYNAMIC=1 VF=1 O=/tmp/build/perf -C tools/perf install-bin |& grep traceevent
+  Makefile.config:1090: *** Error: No libtraceevent devel library found, please install libtraceevent-devel.  Stop.
+  $
+
+Signed-off-by: Michael Petlan <mpetlan@redhat.com>
+Tested-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+Cc: Jiri Olsa <jolsa@redhat.com>
+LPU-Reference: 20210428092023.4009-1-mpetlan@redhat.com
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+Signed-off-by: Tony Jones <tonyj@suse.de>
+---
+ tools/build/Makefile.feature             |  1 +
+ tools/build/feature/Makefile             |  4 ++++
+ tools/build/feature/test-libtraceevent.c | 12 ++++++++++++
+ tools/perf/Makefile.config               |  9 +++++++++
+ tools/perf/Makefile.perf                 |  8 ++++++--
+ 5 files changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/tools/build/Makefile.feature b/tools/build/Makefile.feature
+index 74e255d58d8d..b3221a43fa65 100644
+--- a/tools/build/Makefile.feature
++++ b/tools/build/Makefile.feature
+@@ -52,6 +52,7 @@ FEATURE_TESTS_BASIC :=                  \
+         libpython-version               \
+         libslang                        \
+         libslang-include-subdir         \
++        libtraceevent                   \
+         libcrypto                       \
+         libunwind                       \
+         pthread-attr-setaffinity-np     \
+diff --git a/tools/build/feature/Makefile b/tools/build/feature/Makefile
+index 3e55edb3ea54..ec203e28407f 100644
+--- a/tools/build/feature/Makefile
++++ b/tools/build/feature/Makefile
+@@ -36,6 +36,7 @@ FILES=                                          \
+          test-libpython-version.bin             \
+          test-libslang.bin                      \
+          test-libslang-include-subdir.bin       \
++         test-libtraceevent.bin                 \
+          test-libcrypto.bin                     \
+          test-libunwind.bin                     \
+          test-libunwind-debug-frame.bin         \
+@@ -196,6 +197,9 @@ $(OUTPUT)test-libslang.bin:
+ $(OUTPUT)test-libslang-include-subdir.bin:
+ 	$(BUILD) -lslang
+ 
++$(OUTPUT)test-libtraceevent.bin:
++	$(BUILD) -ltraceevent
++
+ $(OUTPUT)test-libcrypto.bin:
+ 	$(BUILD) -lcrypto
+ 
+diff --git a/tools/build/feature/test-libtraceevent.c b/tools/build/feature/test-libtraceevent.c
+new file mode 100644
+index 000000000000..416b11ffd4b4
+--- /dev/null
++++ b/tools/build/feature/test-libtraceevent.c
+@@ -0,0 +1,12 @@
++// SPDX-License-Identifier: GPL-2.0
++#include <traceevent/trace-seq.h>
++
++int main(void)
++{
++	int rv = 0;
++	struct trace_seq s;
++	trace_seq_init(&s);
++	rv += !(s.state == TRACE_SEQ__GOOD);
++	trace_seq_destroy(&s);
++	return rv;
++}
+diff --git a/tools/perf/Makefile.config b/tools/perf/Makefile.config
+index 3514fe956ed1..99c73a7b6a26 100644
+--- a/tools/perf/Makefile.config
++++ b/tools/perf/Makefile.config
+@@ -1079,6 +1079,15 @@ ifdef LIBPFM4
+   endif
+ endif
+ 
++ifdef LIBTRACEEVENT_DYNAMIC
++  $(call feature_check,libtraceevent)
++  ifeq ($(feature-libtraceevent), 1)
++    EXTLIBS += -ltraceevent
++  else
++    dummy := $(error Error: No libtraceevent devel library found, please install libtraceevent-devel);
++  endif
++endif
++
+ # Among the variables below, these:
+ #   perfexecdir
+ #   perf_include_dir
+diff --git a/tools/perf/Makefile.perf b/tools/perf/Makefile.perf
+index 6240fbb1646e..e47f04e5b51e 100644
+--- a/tools/perf/Makefile.perf
++++ b/tools/perf/Makefile.perf
+@@ -128,6 +128,8 @@ include ../scripts/utilities.mak
+ #
+ # Define BUILD_BPF_SKEL to enable BPF skeletons
+ #
++# Define LIBTRACEEVENT_DYNAMIC to enable libtraceevent dynamic linking
++#
+ 
+ # As per kernel Makefile, avoid funny character set dependencies
+ unexport LC_ALL
+@@ -310,7 +312,6 @@ endif
+ 
+ LIBTRACEEVENT = $(TE_PATH)libtraceevent.a
+ export LIBTRACEEVENT
+-
+ LIBTRACEEVENT_DYNAMIC_LIST = $(PLUGINS_PATH)libtraceevent-dynamic-list
+ 
+ #
+@@ -375,12 +376,15 @@ endif
+ 
+ export PERL_PATH
+ 
+-PERFLIBS = $(LIBAPI) $(LIBTRACEEVENT) $(LIBSUBCMD) $(LIBPERF)
++PERFLIBS = $(LIBAPI) $(LIBSUBCMD) $(LIBPERF)
+ ifndef NO_LIBBPF
+   ifndef LIBBPF_DYNAMIC
+     PERFLIBS += $(LIBBPF)
+   endif
+ endif
++ifndef LIBTRACEEVENT_DYNAMIC
++  PERFLIBS += $(LIBTRACEEVENT)
++endif
+ 
+ # We choose to avoid "if .. else if .. else .. endif endif"
+ # because maintaining the nesting to match is a pain.  If
+

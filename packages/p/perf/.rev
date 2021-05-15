@@ -484,4 +484,12 @@
   They are part of 5.12 and therefore create a conflict.</comment>
     <requestid>888347</requestid>
   </revision>
+  <revision rev="59" vrev="68">
+    <srcmd5>dcc1355d504fdea6a935b01fba95f31e</srcmd5>
+    <version>MACRO</version>
+    <time>1621113369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892958</requestid>
+  </revision>
 </revisionlist>
