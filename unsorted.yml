@@ -11117,7 +11117,7 @@ unsorted:
   - libharfbuzz-subset0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
-  - libhashcat6_1_1 
+  - libhashcat6_2_0 
   - libhdf5-103 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
@@ -13118,7 +13118,7 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
-  - libre0suse0 
+  - libre1 
   - libre2-9-32bit: [x86_64] 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
@@ -13955,6 +13955,9 @@ unsorted:
   - libtpl-extensions3 
   - libtpm_unseal1 
   - libtpms-devel 
+  - libtraceevent-devel 
+  - libtraceevent1 
+  - libtraceevent1-plugins 
   - libtranscript-devel 
   - libtranscript1 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
@@ -14655,7 +14658,7 @@ unsorted:
   - libyang-extentions 
   - libyang1 
   - libyara-devel 
-  - libyara4 
+  - libyara8 
   - libyate6 
   - libyaz-devel 
   - libyaz-devel-32bit: [x86_64] 
@@ -20626,6 +20629,7 @@ unsorted:
   - procenv 
   - procmeter 
   - procmeter-devel 
+  - procmon: [x86_64] 
   - procps-devel 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
@@ -28830,6 +28834,7 @@ unsorted:
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
+  - python39-onionshare 
   - python39-onnx 
   - python39-onnxconverter-common 
   - python39-opcodes 
@@ -29745,6 +29750,7 @@ unsorted:
   - python39-starlette 
   - python39-statsd 
   - python39-statsmodels 
+  - python39-stem 
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
