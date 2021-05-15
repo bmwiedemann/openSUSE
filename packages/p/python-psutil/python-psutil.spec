@@ -40,7 +40,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       net-tools
 Requires:       procps
 %if %{with test}
 %if 0%{suse_version} < 1550

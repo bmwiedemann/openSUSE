@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 20:14:46 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- remove the dependency on net-tools, since it conflicts with
+  busybox-hostnmame which is default on MicroOS. boo#1184753
+
+-------------------------------------------------------------------
 Fri Jan 29 08:19:00 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not install tests (and change the way they're run since they

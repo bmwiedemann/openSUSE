@@ -580,4 +580,13 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>867674</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>a3a2432c856170bb37f7681733f99f4e</srcmd5>
+    <version>5.8.0</version>
+    <time>1621113347</time>
+    <user>dimstar_suse</user>
+    <comment>- remove the dependency on net-tools, since it conflicts with
+  busybox-hostnmame which is default on MicroOS. boo#1184753</comment>
+    <requestid>892577</requestid>
+  </revision>
 </revisionlist>
