@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 08:23:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- nan-undefined-conversion.patch: ICU-21613 Fix undefined behaviour in
+  ComplexUnitsConverter::applyRounder
+
+-------------------------------------------------------------------
 Sat Apr 10 22:41:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 69.1
