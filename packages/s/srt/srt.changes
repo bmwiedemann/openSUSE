@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May 11 23:55:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.3
+  * API/ABI/Integration Changes
+    * fixed/changed cast to bool instead of int in srt_getsockopt and 
+      srt_getsockflag API functions
+    * Fixed ABI compatibility around SRTO_BINDTODEVICE value
+      depending on ENABLE_EXPERIMENTAL_BONDING.
+    * Made SRT versioned SO named with major and minor
+  * New Features and Enhancements
+    * New API function srt_clock_type() to retrieve SRT internal
+      clock type.
+    * New SRTO_MININPUTBW socket option to control the minimum
+      allowed value of the input bitrate estimate.
+    * Run the accept hook (listener callback) before opening an
+      accepted socket providing an opportunity to set some ‘PRE’
+      options (like SRTO_RCVBUF).
+  * Fixed wrong check of common FEC configuration.
+  * Added handshake data check to prevent rogue handshakes.
+  * Fixed crash and hang up related to CSndLossList.
+  * Fixed miscalculations on extreme loss conditions in FEC.
+  * Fixed Data race when TLPKTDROP while checking loss for ACK
+    candidate.
+  * Fixed handshake IP parsing in IPv4-IPv6 connections.
+  * Fixed race starting and joining TSBPD thread.
+  * SRTO_RETRANSMITALGO becomes readable.
+  * Fixed sender hang up
+  * Fixed SRTO_MINVERSION not rejecting too old SRT version.
+  * Fixed a bug repeating a conclusion HS with rejection
+- Drop upstream merged 0001-Fix-build-with-GCC-11.patch
+  * https://github.com/Haivision/srt/pull/1806
+
+-------------------------------------------------------------------
 Wed Feb 10 10:29:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC 11 (boo#1181883)

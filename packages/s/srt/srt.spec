@@ -16,10 +16,10 @@
 #
 
 
-%define sover 1
+%define sover 1_4
 
 Name:           srt
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
@@ -27,8 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.srtalliance.org
 Source0:        https://github.com/Haivision/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
