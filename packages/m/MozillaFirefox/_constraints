@@ -34,11 +34,14 @@
     </conditions>
     <hardware>
       <processors>4</processors>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
       <memoryperjob>
         <size unit="M">1000</size>
       </memoryperjob>
       <physicalmemory>
-        <size unit="G">12</size>
+        <size unit="G">9</size>
       </physicalmemory>
     </hardware>
   </overwrite>
