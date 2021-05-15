@@ -1,5 +1,5 @@
 #
-# spec file for package oci-cli
+# spec file for package oci-cli-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        2.21.1
+Version:        2.24.4
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -39,14 +39,14 @@ Patch0:         oc_relax-python-depends.patch
 Patch1:         oc_name-defaults_file-parameter.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-PyJWT
-BuildRequires:  python3-PyYAML >= 5.1.2
+BuildRequires:  python3-PyYAML >= 5.4.1
 BuildRequires:  python3-arrow >= 0.14.7
 BuildRequires:  python3-certifi
 BuildRequires:  python3-click >= 6.7
-BuildRequires:  python3-cryptography >= 3.2.1
+BuildRequires:  python3-cryptography >= 3.3.2
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.9.4
-BuildRequires:  python3-oci-sdk >= 2.23.0
+BuildRequires:  python3-oci-sdk >= 2.38.2
 BuildRequires:  python3-pyOpenSSL >= 18.0.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
@@ -78,13 +78,13 @@ BuildRequires:  python3-tox >= 2.9.1
 BuildRequires:  python3-vcrpy >= 1.13.0
 BuildRequires:  python3-virtualenv >= 15.1.0
 %endif
-Requires:       python3-PyYAML >= 5.1.2
+Requires:       python3-PyYAML >= 5.4.1
 Requires:       python3-arrow >= 0.14.7
 Requires:       python3-certifi
 Requires:       python3-click >= 6.7
-Requires:       python3-cryptography >= 3.2.1
+Requires:       python3-cryptography >= 3.3.2
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.23.0
+Requires:       python3-oci-sdk >= 2.38.2
 Requires:       python3-pyOpenSSL >= 18.0.0
 Requires:       python3-python-dateutil >= 2.5.3
 Requires:       python3-pytz >= 2016.10
