@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May 15 12:26:39 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 1.2.8:
+  Enhancements
+  - Introduced new Kubernetes images v1.20.6-rancher1-1, v1.19.10-rancher1-1, v1.18.18-rancher1-2 and v1.17.17-rancher2-3
+  - Kubeconfig and state files have file permissions set to 0600
+  - The S3 Access Key and Secret Key are passed as environment variables to the etcd-rolling-snapshots container
+  Known Major Issues
+  - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  Kubernetes Versions
+  - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+    - v1.20.6-rancher1-1
+    - v1.19.10-rancher1-1
+    - v1.18.18-rancher1-2
+    - v1.17.17-rancher2-3
+  New Images in v1.20.6-rancher1-1, v1.19.10-rancher1-1, v1.18.18-rancher1-2 and v1.17.17-rancher2-3
+  - Updated Hyperkube Image based on k8s versions
+    - rancher/hyperkube:v1.20.6-rancher1
+    - rancher/hyperkube:v1.19.10-rancher1
+    - rancher/hyperkube:v1.18.18-rancher1
+    - rancher/hyperkube:v1.17.17-rancher2
+
+-------------------------------------------------------------------
 Thu Apr 01 19:06:30 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 1.2.7:

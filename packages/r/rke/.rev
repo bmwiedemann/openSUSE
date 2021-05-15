@@ -7,4 +7,12 @@
     <comment>new package rke for Rancher's rke</comment>
     <requestid>882646</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f059710727e0b52d18882895aa5def65</srcmd5>
+    <version>1.2.8</version>
+    <time>1621113382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893314</requestid>
+  </revision>
 </revisionlist>

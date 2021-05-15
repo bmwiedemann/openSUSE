@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Remove stripping of Go binaries.
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           rke
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
