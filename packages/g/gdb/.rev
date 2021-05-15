@@ -1798,4 +1798,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>891447</requestid>
   </revision>
+  <revision rev="150" vrev="7">
+    <srcmd5>8a489a5bec74a81a267670075a19183b</srcmd5>
+    <version>10.1</version>
+    <time>1621113344</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove fix due to regressions [bsc#1185638, swo#26327]:
+  * gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder.patch
+</comment>
+    <requestid>892545</requestid>
+  </revision>
 </revisionlist>

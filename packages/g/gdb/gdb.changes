@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 14:12:41 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Remove fix due to regressions [bsc#1185638, swo#26327]:
+  * gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder.patch
+
+-------------------------------------------------------------------
 Fri May  7 10:43:38 UTC 2021 - Tom de Vries <tdevries@suse.com>
 - Replace tentative fix with upstreamed fix [swo#27681]:
   Remove:
