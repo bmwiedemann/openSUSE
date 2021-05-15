@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 14 01:15:35 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.37.2:
+  * Added python_requires to setup.py
+
+- changes from version 0.37.1:
+  * Removed py27 from pypi wheel
+
+- changes from version 0.37.0:
+  * Added SQLAlchemy 1.4 support
+  * Fixed database_exists() on PostgreSQL (#462)
+  * Added create_database support pymssql (#486)
+  * Removed sort_query, get_query_entities and
+    get_query_entity_by_alias functions
+
+-------------------------------------------------------------------
 Sat Jul 11 18:37:48 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.36.8:
