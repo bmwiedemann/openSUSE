@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.7.3
+Version:        1.8.2
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 3.7.2}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
@@ -40,7 +40,7 @@ BuildRequires:  (python36-dataclasses if python36-base)
 %if 0%{?python_version_nodots} == 36
 Requires:       python-dataclasses
 %endif
-Recommends:     python-typing_extensions >= 3.7.2
+Requires:       python-typing_extensions >= 3.7.4.3
 Suggests:       python-email_validator >= 1.0.3
 Suggests:       python-python-dotenv >= 0.10.4
 BuildArch:      noarch
@@ -51,8 +51,6 @@ Data validation and settings management using Python type hinting.
 
 %prep
 %setup -q -n pydantic-%{version}
-# compatibility with new pytest
-sed -i 's/yield_fixture/fixture/' tests/conftest.py
 
 %build
 %python_build

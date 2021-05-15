@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 13 11:07:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.2 (bsc#1186019, CVE-2021-29510)
+  * Security fix: Fix date and datetime parsing so passing either 'infinity' 
+    or float('inf') (or their negative values) does not cause an infinite loop
+  * Allow passing json_encoders in class kwargs
+  * support arbitrary types with custom __eq__
+  * Hypothesis plugin for testing
+  * support for NamedTuple and TypedDict
+  * Support Annotated hints on model fields
+  * frozen parameter on Config to allow models to be hashed
+  * Breaking Change, remove old deprecation aliases from v1
+  * Breaking Change: always validate only first sublevel items with each_item
+  * many more changes, see upstream changelog
+
+-------------------------------------------------------------------
 Fri Jan  8 13:10:40 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.7.3
