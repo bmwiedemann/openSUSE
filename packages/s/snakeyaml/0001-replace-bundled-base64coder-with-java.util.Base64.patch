@@ -27,13 +27,13 @@ index 8112370..ae308c7 100644
 +        <maven.compiler.source>8</maven.compiler.source>
 +        <maven.compiler.target>8</maven.compiler.target>
          <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-         <spring.version>3.2.17.RELEASE</spring.version>
          <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
+         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version><!-- for Github CI -->
 diff --git a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
 index bd022cc..217835d 100644
 --- a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
 +++ b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
-@@ -17,6 +17,7 @@ package org.yaml.snakeyaml.constructor;
+@@ -17,6 +17,7 @@
  
  import java.math.BigInteger;
  import java.util.ArrayList;
@@ -41,15 +41,15 @@ index bd022cc..217835d 100644
  import java.util.Calendar;
  import java.util.HashMap;
  import java.util.Iterator;
-@@ -30,7 +31,6 @@ import java.util.regex.Matcher;
- import java.util.regex.Pattern;
+@@ -31,7 +32,6 @@
  
+ import org.yaml.snakeyaml.LoaderOptions;
  import org.yaml.snakeyaml.error.YAMLException;
 -import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
  import org.yaml.snakeyaml.nodes.MappingNode;
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.NodeId;
-@@ -313,7 +313,7 @@ public class SafeConstructor extends BaseConstructor {
+@@ -348,7 +348,7 @@
              // Ignore white spaces for base64 encoded scalar
              String noWhiteSpaces = constructScalar((ScalarNode) node).toString().replaceAll("\\s",
                      "");
@@ -373,7 +373,7 @@ diff --git a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java b
 index 2cc15d9..e5ac480 100644
 --- a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
 +++ b/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
-@@ -19,6 +19,7 @@ import java.io.UnsupportedEncodingException;
+@@ -19,6 +19,7 @@
  import java.math.BigInteger;
  import java.util.ArrayList;
  import java.util.Arrays;
@@ -381,7 +381,7 @@ index 2cc15d9..e5ac480 100644
  import java.util.Calendar;
  import java.util.Date;
  import java.util.HashMap;
-@@ -33,7 +34,6 @@ import java.util.regex.Pattern;
+@@ -33,7 +34,6 @@
  
  import org.yaml.snakeyaml.DumperOptions;
  import org.yaml.snakeyaml.error.YAMLException;
@@ -389,7 +389,7 @@ index 2cc15d9..e5ac480 100644
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.Tag;
  import org.yaml.snakeyaml.reader.StreamReader;
-@@ -131,7 +131,7 @@ class SafeRepresenter extends BaseRepresenter {
+@@ -131,7 +131,7 @@
                      if (!checkValue.equals(value)) {
                          throw new YAMLException("invalid string value has occurred");
                      }
@@ -398,7 +398,7 @@ index 2cc15d9..e5ac480 100644
                  } catch (UnsupportedEncodingException e) {
                      throw new YAMLException(e);
                  }
-@@ -433,7 +433,7 @@ class SafeRepresenter extends BaseRepresenter {
+@@ -433,7 +433,7 @@
  
      protected class RepresentByteArray implements Represent {
          public Node representData(Object data) {
@@ -490,7 +490,7 @@ diff --git a/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
 index e425f25..a0c4f6a 100644
 --- a/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
 +++ b/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
-@@ -18,6 +18,7 @@ package org.yaml.snakeyaml.issues.issue99;
+@@ -18,6 +18,7 @@
  import java.io.BufferedInputStream;
  import java.io.IOException;
  import java.io.InputStream;
@@ -498,7 +498,7 @@ index e425f25..a0c4f6a 100644
  import java.util.Map;
  
  import junit.framework.TestCase;
-@@ -27,7 +28,6 @@ import org.yaml.snakeyaml.Yaml;
+@@ -27,7 +28,6 @@
  import org.yaml.snakeyaml.YamlDocument;
  import org.yaml.snakeyaml.constructor.AbstractConstruct;
  import org.yaml.snakeyaml.constructor.Constructor;
@@ -506,7 +506,7 @@ index e425f25..a0c4f6a 100644
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.ScalarNode;
  import org.yaml.snakeyaml.nodes.Tag;
-@@ -50,7 +50,7 @@ public class YamlBase64Test extends TestCase {
+@@ -50,7 +50,7 @@
              all = all + lines[i].trim();
          }
          // System.out.println(all);
@@ -515,7 +515,7 @@ index e425f25..a0c4f6a 100644
          assertEquals(3737, decoded.length);
          checkBytes(decoded);
      }
-@@ -122,7 +122,7 @@ public class YamlBase64Test extends TestCase {
+@@ -122,7 +122,7 @@
              public Object construct(Node node) {
                  String contentWithNewLines = constructScalar((ScalarNode) node).toString();
                  String noNewLines = contentWithNewLines.replaceAll("\\s", "");

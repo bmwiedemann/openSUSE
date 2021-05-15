@@ -1,7 +1,7 @@
 #
 # spec file for package snakeyaml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global vertag 8450addf3473
+%global vertag b28f0b4d87c6
 %bcond_with tests
 Name:           snakeyaml
-Version:        1.25
+Version:        1.28
 Release:        0
 Summary:        YAML parser and emitter for the Java programming language
 License:        Apache-2.0
@@ -36,9 +36,6 @@ Source1:        %{name}-build.xml
 Patch0:         0001-replace-bundled-base64coder-with-java.util.Base64.patch
 # We don't have gdata-java, use commons-codec instead
 Patch1:         0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
-# Fix a broken test, change backported from upstream:
-# https://bitbucket.org/asomov/snakeyaml/commits/345408c
-Patch2:         0003-fix-broken-test.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-codec
 BuildRequires:  base64coder
@@ -84,7 +81,6 @@ This package contains %{summary}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %pom_remove_plugin :cobertura-maven-plugin
 %pom_remove_plugin :maven-changes-plugin
@@ -107,9 +103,6 @@ rm src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java
 
 # convert CR+LF to LF
 sed -i 's/\r//g' LICENSE.txt
-
-%pom_remove_dep org.springframework
-rm -r src/test/java/org/yaml/snakeyaml/issues/issue9
 
 %build
 mkdir -p lib
