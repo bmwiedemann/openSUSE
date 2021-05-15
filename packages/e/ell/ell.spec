@@ -16,15 +16,14 @@
 #
 
 
-Name:           ell
 %define lname   libell0
-Version:        0.39
+Name:           ell
+Version:        0.40
 Release:        0
 Summary:        Wireless setup and cryptography library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://01.org/ell
-#Git-URL:       https://git.kernel.org/pub/scm/libs/ell/ell.git/
 Source:         https://mirrors.kernel.org/pub/linux/libs/ell/%name-%version.tar.xz
 Source2:        https://mirrors.kernel.org/pub/linux/libs/ell/%name-%version.tar.sign
 Source3:        %name.keyring

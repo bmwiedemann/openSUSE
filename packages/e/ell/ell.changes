@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 11 21:32:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.40:
+  * Fix issue with handling failure from missing CA certificates.
+  * Fix issue with handling DBus.Introspectable queries.
+
+-------------------------------------------------------------------
 Tue Apr  6 09:36:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.39:
