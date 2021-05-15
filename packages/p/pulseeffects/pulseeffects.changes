@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 15 00:18:19 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 4.8.5
+  Added:
+  * Improved compatibility with dconf 0.40. Now our plugins should
+    be enabled when using this version. 
+
+-------------------------------------------------------------------
+Wed Mar  3 17:55:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Revert the last change. pulseeffects requires the real pulseaudio
+  so keep the Requires: pulseaudio (boo#1182730).
+
+-------------------------------------------------------------------
+Thu Feb 25 11:48:57 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
 Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 4.8.4
