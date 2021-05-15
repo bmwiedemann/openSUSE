@@ -86,4 +86,25 @@
     <comment>1</comment>
     <requestid>438253</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b84661e4ea626fe11293dcadf262b038</srcmd5>
+    <version>6.0.0</version>
+    <time>1621113330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.0
+  * The big new feature here is support for the new 
+    ClientDisconnectMode. From the corresponding
+    xorgproto announcement:
+    An X server that is started on demand (Xwayland) should ideally
+    also terminate when the last client disconnects. However, some
+    X11 clients that provide system services will linger around
+    forever, preventing that shutdown.
+  * With the new XFixes request, a client can designate itself as
+    to-be-terminated and the X server can ignore those clients when
+    counting the number of remaining clients. If no other clients
+    are left, the server can shut down.
+  * Note that this requires changes to the X server and each
+    client to work.</comment>
+    <requestid>892438</requestid>
+  </revision>
 </revisionlist>
