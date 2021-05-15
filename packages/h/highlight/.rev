@@ -650,4 +650,18 @@
     <comment></comment>
     <requestid>881677</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f3ae3272353b0a61f06095f414d017d2</srcmd5>
+    <version>4.1</version>
+    <time>1621113353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1:
+  * Improved handling of Custom theme attributes
+    (gl#saalen/highlight#182).
+  * Fixed wrong color code in edit-kwrite.theme.
+  * Added rng file mapping.
+  * Improved Lisp highlighting.
+  * GUI: Fixed highlighting options tab title.</comment>
+    <requestid>892605</requestid>
+  </revision>
 </revisionlist>

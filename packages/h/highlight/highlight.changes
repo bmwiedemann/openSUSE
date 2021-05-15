@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 12 22:28:50 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 4.1:
+  * Improved handling of Custom theme attributes
+    (gl#saalen/highlight#182).
+  * Fixed wrong color code in edit-kwrite.theme.
+  * Added rng file mapping.
+  * Improved Lisp highlighting.
+  * GUI: Fixed highlighting options tab title.
+
+-------------------------------------------------------------------
 Sat Mar 27 19:11:47 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 4.0.
