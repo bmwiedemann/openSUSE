@@ -22,11 +22,11 @@
 
 # Package-wide golang version
 %define go_version 1.13
-%define _version 1.0.0-rc93
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.0.0~rc93
+Version:        1.0.0~rc94
+%define _version 1.0.0-rc94
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -36,10 +36,6 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
-# SUSE-FIX: SLE-12 has too old a glibc for memfd_create(2) and __ppc64__
-#           doesn't appear to match ppc64le for some reason. This is a backport
-#           of <https://github.com/opencontainers/runc/pull/2919>.
-Patch1:         0001-cloned_binary-switch-from-error-to-warning-for-SYS_m.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -73,8 +69,6 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{_version}
-# fix build on SLE-12 ppc64le
-%patch1 -p1
 
 %build
 # build runc
