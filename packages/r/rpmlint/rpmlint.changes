@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 12 07:25:07 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- whitelist systemd-homed (boo#1185285) 
+
+-------------------------------------------------------------------
 Fri May  7 08:07:14 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix whitelisting for kdiskmark service (bsc#1182521)

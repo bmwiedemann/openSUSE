@@ -805,7 +805,10 @@ setOption("DBUSServices.WhiteList", (
     "org.kde.filesharing.samba.conf",
     # KDiskMark, HDD/SSD benchmark GUI (bsc#1182521)
     "org.jonmagon.kdiskmark.service",
-    "org.jonmagon.kdiskmark.conf"
+    "org.jonmagon.kdiskmark.conf",
+    # systemd-homed (boo#1185285)
+    "org.freedesktop.home1.conf",
+    "org.freedesktop.home1.service",
 ))
 
 setOption("PAMModules.WhiteList", (
@@ -890,6 +893,8 @@ setOption("PAMModules.WhiteList", (
     "pam_xauth.so",
     # systemd
     "pam_systemd.so",
+    # systemd-homed (boo#1185285)
+    "pam_systemd_home.so",
     # sssd
     "pam_sss.so",
     # pam_mktemp

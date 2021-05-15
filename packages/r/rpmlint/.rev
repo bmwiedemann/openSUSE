@@ -3139,4 +3139,12 @@ will self heal once rpmlint-mini is rebuild
     <comment>- fix whitelisting for kdiskmark service (bsc#1182521)</comment>
     <requestid>891225</requestid>
   </revision>
+  <revision rev="353" vrev="42">
+    <srcmd5>307dfb28576fd74c146cb996977a0143</srcmd5>
+    <version>1.11</version>
+    <time>1621113667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892552</requestid>
+  </revision>
 </revisionlist>
