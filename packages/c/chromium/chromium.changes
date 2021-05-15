@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 11 10:59:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 90.0.4430.212 (boo#1185908)
+  * CVE-2021-30506: Incorrect security UI in Web App Installs
+  * CVE-2021-30507: Inappropriate implementation in Offline
+  * CVE-2021-30508: Heap buffer overflow in Media Feeds
+  * CVE-2021-30509: Out of bounds write in Tab Strip
+  * CVE-2021-30510: Race in Aura
+  * CVE-2021-30511: Out of bounds read in Tab Group
+  * CVE-2021-30512: Use after free in Notifications
+  * CVE-2021-30513: Type Confusion in V8
+  * CVE-2021-30514: Use after free in Autofill
+  * CVE-2021-30515: Use after free in File API
+  * CVE-2021-30516: Heap buffer overflow in History
+  * CVE-2021-30517: Type Confusion in V8
+  * CVE-2021-30518: Heap buffer overflow in Reader Mode
+  * CVE-2021-30519: Use after free in Payments
+  * CVE-2021-30520: Use after free in Tab Strip
+- FTP support disabled at runtime by default since release 88.
+  Chromium 91 will remove support for ftp altogether
+  (boo#1185496)
+
+-------------------------------------------------------------------
 Thu May  6 15:45:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
   * Patch change *

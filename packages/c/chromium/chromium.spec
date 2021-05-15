@@ -48,7 +48,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        90.0.4430.93
+Version:        90.0.4430.212
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
