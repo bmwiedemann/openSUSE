@@ -1,7 +1,7 @@
 #
 # spec file for package sha3sum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sha3sum
-Version:        1.1.5
+Version:        1.2.1
 Release:        0
 Summary:        SHA-3 and Keccak checksum utility
 License:        ISC
@@ -37,15 +37,15 @@ A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
-%make_install PREFIX=%{_prefix}
+%make_install PREFIX="%{_prefix}"
 # packaged via macro
 rm -rvf %{buildroot}%{_datadir}/licenses/%{name}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license LICENSE
