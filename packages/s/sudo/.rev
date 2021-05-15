@@ -1171,4 +1171,41 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
     <comment></comment>
     <requestid>886601</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>a103820c3131c0cda7b82e33a794597c</srcmd5>
+    <version>1.9.7</version>
+    <time>1621113347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.7
+  * The &quot;fuzz&quot; Makefile target now runs all the fuzzers for 8192
+    passes (can be overridden via the FUZZ_RUNS variable).  This makes
+    it easier to run the fuzzers in-tree.  To run a fuzzer indefinitely,
+    set FUZZ_RUNS=-1, e.g. &quot;make FUZZ_RUNS=-1 fuzz&quot;.
+  * Fixed fuzzing on FreeBSD where the ld.lld linker returns an
+    error by default when a symbol is multiply-defined.
+  * Added support for determining local IPv6 addresses on systems
+    that lack the getifaddrs() function.  This now works on AIX,
+    HP-UX and Solaris (at least).  Bug #969.
+  * Fixed a bug introduced in sudo 1.9.6 that caused &quot;sudo -V&quot; to
+    report a usage error.  Also, when invoked as sudoedit, sudo now
+    allows a more restricted set of options that matches the usage
+    statement and documentation.  GitHub issue #95.
+  * Fixed a crash in sudo_sendlog when the specified certificate
+    or key does not exist or is invalid.  Bug #970
+  * Fixed a compilation error when sudo is configured with the
+    --disable-log-client option.
+  * Sudo's limited support for SUCCESS=return entries in nsswitch.conf
+    is now documented.  Bug #971.
+  * Sudo now requires autoconf 2.70 or higher to regenerate the
+    configure script.  Bug #972.
+  * sudo_logsrvd now has a relay mode which can be used to create
+    a hierarchy of log servers.  By default, when a relay server is
+    defined, messages from the client are forwarded immediately to
+    the relay.  However, if the &quot;store_first&quot; setting is enabled,
+    the log will be stored locally until the command completes and
+    then relayed.  Bug #965.
+  * Sudo now links with OpenSSL by default if it is available unless
+    the --disable-openssl configure option is used or both the</comment>
+    <requestid>892573</requestid>
+  </revision>
 </revisionlist>
