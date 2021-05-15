@@ -4436,4 +4436,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     spriv, v3d, meson</comment>
     <requestid>891259</requestid>
   </revision>
+  <revision rev="405" vrev="277">
+    <srcmd5>d7090cc025e325404e2e0d80986aa752</srcmd5>
+    <version>unknown</version>
+    <time>1621113668</time>
+    <user>dimstar_suse</user>
+    <comment>- reenabled build of device-select and overlay vulkan layers</comment>
+    <requestid>893063</requestid>
+  </revision>
 </revisionlist>

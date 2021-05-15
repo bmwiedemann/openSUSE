@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 14 03:24:24 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- reenabled build of device-select and overlay vulkan layers
+
+-------------------------------------------------------------------
 Thu May  6 19:00:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - adjusted filelist to removed vulkan files in Mesa 21.1.0 
