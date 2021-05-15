@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 10 14:25:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem (bsc#1184786)
+
+-------------------------------------------------------------------
 Mon Oct 12 16:48:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.9.0:

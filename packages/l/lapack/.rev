@@ -412,4 +412,12 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>876617</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>5acbdcb4c2b3f8f40d4d9c955cb74fe9</srcmd5>
+    <version>3.9.0</version>
+    <time>1621113326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892381</requestid>
+  </revision>
 </revisionlist>

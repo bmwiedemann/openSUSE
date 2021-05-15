@@ -33,7 +33,7 @@ Obsoletes:      blas-man < %{version}
 BuildArch:      noarch
 
 %description
-The lapack-man package contains documentation for LAPACK 
+The lapack-man package contains documentation for LAPACK
 (Linear Algebra PACKage) and BLAS (Basic Linear Algebra
 Subprograms) routines, in the form of man pages.
 
@@ -55,6 +55,6 @@ install -m 0644 DOCS/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 %fdupes %{buildroot}/%{_mandir}/man3/
 
 %files
-%doc %{_mandir}/man3/
+%doc %{_mandir}/man3/*.3%{?ext_man}
 
 %changelog

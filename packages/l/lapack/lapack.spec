@@ -201,7 +201,6 @@ The cblas-devel-static package contains the CBLAS static libraries
 for -static linking. You do not need these, unless you link
 statically, which is highly discouraged.
 
-
 %prep
 %setup -q
 %autopatch -p1
