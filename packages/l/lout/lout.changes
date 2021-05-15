@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 14 13:46:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use fork by William Bader
+  * https://mail.gnu.org/archive/html/lout-users/2021-04/msg00001.html
+- Update to version 3.42:
+  * Support for embedding PDF and bitmapped images in lout.
+  * Small images are now placed more accurately.
+  * Improve accuracy of the CM unit.
+  * Add support for segmented postscript files.
+  * Fix the fatal error "AdjustSize: Up(x) == x!"
+  * Fix possible memory overwrite
+  * Fix some bad memory accesses
+  * Full changes:
+    https://github.com/william8000/lout/blob/3.42/whatsnew#L615
+- Update to version 3.41:
+  * Fix CVE-2019-19918 and CVE-2019-19917
+- Always generate the PDFs, dropped as sources
+- Drop upstream resolved
+  * makefile.patch
+  * lout-3.40-cve.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 13:40:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lout-3.40-cve.patch from
