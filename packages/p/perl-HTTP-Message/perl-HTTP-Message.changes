@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.31
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.31      2021-05-11 18:07:37Z
+      - Fix test writing to files (GH#156) (Michal Josef Špaček)
+
+  6.30      2021-05-10 14:55:55Z
+      - Don't inherit from Exporter anymore (GH#155) (Max Maischein)
+      - Remove superfluous Perl version requirement. This module requires Perl
+        5.6 or newer. (GH#155) (Max Maischein)
+
+-------------------------------------------------------------------
 Sun Mar  7 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.29
