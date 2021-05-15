@@ -1,0 +1,21 @@
+From 397ca180b8e58bf38525afcf9af249b190120607 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Sat, 10 Apr 2021 13:52:15 +0200
+Subject: [PATCH] doc/openssl.cnf: Increase default_bits to 2048
+
+NIST guidelines mandate that all SSL certificates must be of at least 2048 key length
+---
+ doc/dovecot-openssl.cnf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/dovecot-openssl.cnf b/doc/dovecot-openssl.cnf
+index b2dfebfea9..f65a80cc2f 100644
+--- a/doc/dovecot-openssl.cnf
++++ b/doc/dovecot-openssl.cnf
+@@ -1,5 +1,5 @@
+ [ req ]
+-default_bits = 1024
++default_bits = 2048
+ encrypt_key = yes
+ distinguished_name = req_dn
+ x509_extensions = cert_type

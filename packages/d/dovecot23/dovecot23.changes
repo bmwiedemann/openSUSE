@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 10:07:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix insecure default openssl.cnf (boo#1184552):
+  * openssl-cnf-default_bits-2048.patch
+- Use %autosetup
+
+-------------------------------------------------------------------
 Thu Mar  4 10:28:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.3.14 and pigeonhole to 0.5.14
