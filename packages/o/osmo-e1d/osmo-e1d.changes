@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 11:15:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.1
+  * e1d: fix ASSERT during "write terminal"
+
+-------------------------------------------------------------------
 Sun Mar 14 20:40:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.0
