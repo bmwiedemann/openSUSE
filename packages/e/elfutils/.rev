@@ -859,4 +859,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   a failing test-case with GCC 11 (PR27367). (forwarded request 879585 from marxin)</comment>
     <requestid>879926</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7a263b505d5f8e66bd5dd47564ccfef6</srcmd5>
+    <version>0.184</version>
+    <time>1621113290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892118</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 10 19:39:44 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.184:
+  debuginfod: Use libarchive's bsdtar as the .deb-family file unpacker.
+  debuginfod-client: Client caches negative results. If a query for a
+                     file failed with 404, an empty 000 permission
+                     file is created in the cache. This will prevent
+                     requesting the same file for the next 10 minutes.
+
+                     Client objects now carry long-lived curl handles
+                     for outgoing connections.  This makes it more
+                     efficient for multiple sequential queries, because
+                     the TCP connections and/or TLS state info are kept
+                     around awhile, avoiding O(100ms) setup latencies.
+
+  libdw: handle DW_FORM_indirect when reading attributes
+  translations: Update Polish translation.
+- Add 2 build dependences for tests.
+
+-------------------------------------------------------------------
 Tue Mar 16 15:40:31 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Enable https://debuginfod.opensuse.org/ debuginfod server

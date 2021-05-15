@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.183
+Version:        0.184
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -32,6 +32,8 @@ Patch0:         disable-run-readelf-self-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  bsdtar
+BuildRequires:  procps
 # For the run-debuginfod-find.sh test case in %%check for /usr/sbin/ss
 BuildRequires:  curl
 BuildRequires:  flex
