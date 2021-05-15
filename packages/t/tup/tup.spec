@@ -1,7 +1,7 @@
 #
 # spec file for package tup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tup
-Version:        0.7.10
+Version:        0.7.11
 Release:        0
 Summary:        File-based build system
 License:        GPL-2.0-only
@@ -25,8 +25,6 @@ URL:            http://gittup.org/tup/
 Source0:        https://github.com/gittup/tup/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}.rpmlintrc
 Patch0:         tup-add_archs.patch
-# PATCH-FIX-UPSTREAM tup-32bit.patch
-Patch1:         tup-32bit.patch
 BuildRequires:  awk
 BuildRequires:  pkgconfig
 BuildRequires:  vim
