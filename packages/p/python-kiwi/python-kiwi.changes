@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Mon May 03 12:40:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.27 → 9.23.28
+
+-------------------------------------------------------------------
+Fri Apr 30 14:39:10 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Upgrade tests accoring to #1805
+
+  This commit is a follow up of #1805 which missed to update the related
+  unit test.
+
+-------------------------------------------------------------------
+Fri Apr 30 09:40:05 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Make installation media unattended
+
+  This commit configures install media of several tests to run unattended
+  installation. This is done to facilitate the logic of functional tests.
+
+-------------------------------------------------------------------
+Wed Apr 28 15:14:27 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed unit tests for parallel invocation
+
+  With the change to allow the platform architecture to be
+  set application global, the unit tests might fail if tests
+  run in parallel and using different mock architectures
+  for the test. Thus test that runs depending on a platform
+  name needs to set the name in the test
+
+-------------------------------------------------------------------
+Wed Apr 28 14:41:48 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update Debian integration test for UEFI testing
+
+  Updated the Virtual disk profile to make use of the EFI
+  secure boot feature.
+
+-------------------------------------------------------------------
+Tue Apr 27 20:23:08 CEST 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix WSL appx filemap relative paths not preserved
+
+  During WSL appx image type creation step the file hierarchy under metadata_path
+  is written to a temporary file for eventual use as argument to utility appx.
+  The file hierarchy information is dropped resulting in all filemap entries
+  appearing to be at the metadata_path root. The resulting image will side load
+  and run but without icon and other resources. Stricter checks at Windows Store
+  submission will fail due to mismatch between image manifest and contents.
+
+  Fix by preserving relative path of filemap entries relative to metadata_path.
+  Add log output showing both input absolute path and output relative path.
+
+-------------------------------------------------------------------
+Tue Apr 27 16:07:02 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update Ubuntu integration test for UEFI testing
+
+  Updated the Virtual disk profile to make use of the EFI
+  secure boot feature.
+
+-------------------------------------------------------------------
+Tue Apr 27 16:01:35 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added support for UEFI on Debian based distros
+
+  The Debian/Ubuntu folks have a different system to support
+  EFI secure boot. In order to make use of it kiwi needs some
+  adaptions done in this pull request. This Fixes #1743
+
+-------------------------------------------------------------------
+Tue Apr 20 10:53:42 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.26 → 9.23.27
+
+-------------------------------------------------------------------
+Mon Apr 19 10:15:21 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed spec file on Debian tool settings
+
+  debootstrap should always come with dpkg because we don't
+  want to handle the architecture names used on Debian when
+  dpkg knows them better than we do. since debootstrap itself
+  considers the possibility of being called without dpkg on
+  the system we generate the dependency by a spec change
+  here. This Fixes #1778
+
+-------------------------------------------------------------------
+Mon Apr 19 09:40:34 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Change zypper download mode to in-advance
+
+  In relation to upcoming zypper changes e.g to make use of librpm on
+  single transaction operations there is the possibility that file
+  triggers start being used. To ensure zypper behaves consistently
+  DownloadInAdvance mode should be used, this way the transaction
+  happens as a whole and with the upcoming zypper changes zypper
+  will still be capable to handle the file triggers.
+  This Fixes #1789
+
+-------------------------------------------------------------------
+Sun Apr 18 17:49:05 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added shadow package to pxe integration test
+
+  Tools like usermod were moved from coreutils to shadow
+
+-------------------------------------------------------------------
+Sun Apr 18 17:33:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added shadow package to integration test
+
+  Tools like usermod were moved from coreutils to shadow
+
+-------------------------------------------------------------------
+Fri Apr 16 15:50:09 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Fix appx manifest for WSL containers
+
+  This commit prevents KIWI from setting Identity Name attribute and
+  DisplayName and PublisherDisplayName elements.
+
+  Fixes #1780
+
+-------------------------------------------------------------------
+Fri Apr 16 15:03:46 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Do not apply default subcommand for derivate containers
+
+  This commit does not apply the default subcommand for derivate
+  containers.
+
+  Fixes bsc#1184823
+
+-------------------------------------------------------------------
+Fri Apr 16 10:30:19 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed integration tests requesting grub
+
+  For some reason two integration tests requests the "grub" and
+  the "grub2" package. On TW there is now no longer a provider of
+  grub and thus the image build became unresolvable. There is
+  only grub2 for quite some time, so I deleted this package
+  setting from the tests in question
+
+-------------------------------------------------------------------
+Fri Apr 16 10:24:14 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.25 → 9.23.26
+
+-------------------------------------------------------------------
+Thu Apr 15 11:05:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed platform setup for vagrant unit tests
+
+-------------------------------------------------------------------
+Thu Apr 15 10:53:34 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add support for a custom exclude file
+
+  The new optional metadata file image/exclude_files.yaml can
+  be placed inside of the local image root tree. At creation time of
+  the image binary the file contents are used to extend the default
+  exclude list with additional information. The structure of the
+  file must be as follows:
+
+  ```yaml
+  exclude:
+  - exclude-name-used-in-rsync
+  ```
+
+-------------------------------------------------------------------
 Wed Apr 14 20:52:04 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.24 → 9.23.25
