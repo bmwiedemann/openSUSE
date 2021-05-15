@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>893228</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b53be6c03c11d7fb208b46ebf6995e90</srcmd5>
+    <version>6.2.1</version>
+    <time>1621113384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.2.1</comment>
+    <requestid>893318</requestid>
+  </revision>
 </revisionlist>

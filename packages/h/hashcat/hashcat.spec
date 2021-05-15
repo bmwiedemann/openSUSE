@@ -17,15 +17,15 @@
 
 
 Name:           hashcat
-%define lname	libhashcat6_2_0
-Version:        6.2.0
+%define lname	libhashcat6_2_1
+Version:        6.2.1
 Release:        0
 Summary:        CPU-based password recovery utility
 License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Security
 URL:            https://hashcat.net/
 
-Source:         https://github.com/hashcat/hashcat/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/hashcat/hashcat/archive/refs/tags/v%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch1:         system-libs.patch
 BuildRequires:  fdupes

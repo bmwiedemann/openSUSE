@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 13:28:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.2.1
+  * Build procedure changes allowing not to use unrar
+
+-------------------------------------------------------------------
 Fri May 14 18:54:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Use correct lname

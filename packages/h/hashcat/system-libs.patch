@@ -1,8 +1,12 @@
-diff --git a/src/Makefile b/src/Makefile
-index bd16932..114aa1d 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -3,16 +3,16 @@
+---
+ src/Makefile |   19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+Index: hashcat-6.2.1/src/Makefile
+===================================================================
+--- hashcat-6.2.1.orig/src/Makefile
++++ hashcat-6.2.1/src/Makefile
+@@ -3,17 +3,17 @@
  ## License.....: MIT
  ##
  
@@ -10,9 +14,10 @@ index bd16932..114aa1d 100644
 +SHARED                  ?= 1
  DEBUG                   := 0
  PRODUCTION              := 1
- PRODUCTION_VERSION      := v6.2.0
+ PRODUCTION_VERSION      := v6.2.1
  ENABLE_CUBIN            ?= 1
  ENABLE_BRAIN            ?= 1
+ ENABLE_UNRAR            ?= 1
 -USE_SYSTEM_LZMA         ?= 0
 -USE_SYSTEM_ZLIB         ?= 0
 +USE_SYSTEM_LZMA         ?= 1
@@ -23,7 +28,7 @@ index bd16932..114aa1d 100644
  ## do not change, requires some hacks
  USE_SYSTEM_UNRAR        ?= 0
  
-@@ -100,7 +100,7 @@ VERSION_PURE            := $(shell echo "$(VERSION_TAG)" | $(SED) 's/.*v\([\.0-9
+@@ -101,7 +101,7 @@ VERSION_PURE            := $(shell echo
  ##
  
  DESTDIR                 ?=
@@ -32,7 +37,7 @@ index bd16932..114aa1d 100644
  
  INSTALL_FOLDER          ?= $(PREFIX)/bin
  SHARED_ROOT_FOLDER      ?= $(PREFIX)/share
-@@ -117,7 +117,7 @@ LIBRARY_DEV_FOLDER      ?= $(LIBRARY_DEV_ROOT_FOLDER)/hashcat
+@@ -118,7 +118,7 @@ LIBRARY_DEV_FOLDER      ?= $(LIBRARY_DEV
  ifeq ($(USE_SYSTEM_LZMA),0)
  DEPS_LZMA_PATH          := deps/LZMA-SDK/C
  else
@@ -41,7 +46,7 @@ index bd16932..114aa1d 100644
  endif
  
  ifeq ($(USE_SYSTEM_ZLIB),0)
-@@ -169,7 +169,7 @@ endif # MSYS2
+@@ -172,7 +172,7 @@ endif # MSYS2
  ## Misc stuff
  ##
  
@@ -50,7 +55,7 @@ index bd16932..114aa1d 100644
  
  ##
  ## General compiler and linker options
-@@ -177,6 +177,7 @@ COMPTIME                := $(shell date +%s)
+@@ -180,6 +180,7 @@ COMPTIME                := $(shell date
  
  LFLAGS                  := $(LDFLAGS)
  
@@ -58,7 +63,7 @@ index bd16932..114aa1d 100644
  ifeq ($(PRODUCTION),0)
  CFLAGS                  += -W
  CFLAGS                  += -Wall
-@@ -219,7 +220,7 @@ endif
+@@ -224,7 +225,7 @@ endif
  ifeq ($(DEBUG),0)
  CFLAGS                  += -O2
  ifneq ($(UNAME),Darwin)
@@ -67,7 +72,7 @@ index bd16932..114aa1d 100644
  endif
  else
  ifeq ($(DEBUG),1)
-@@ -245,7 +246,7 @@ CFLAGS                  += -pipe -Iinclude/ -IOpenCL/
+@@ -250,7 +251,7 @@ CFLAGS                  += -pipe -Iinclu
  # LZMA
  CFLAGS                  += -I$(DEPS_LZMA_PATH)
  ifeq ($(USE_SYSTEM_LZMA),1)
