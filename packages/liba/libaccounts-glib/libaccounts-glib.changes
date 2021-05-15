@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 05:37:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed baselibs.conf, so version changed
+
+-------------------------------------------------------------------
+Mon May  3 12:38:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.25:
+  * Add support for provider tags
+  * Reference counting is implemented atomically
+  * Add option to specify path to pygobject override directory
+- Use SourceUrls
+
+-------------------------------------------------------------------
 Fri Oct 11 09:12:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24:

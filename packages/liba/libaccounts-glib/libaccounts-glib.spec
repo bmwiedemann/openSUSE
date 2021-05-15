@@ -1,7 +1,7 @@
 #
 # spec file for package libaccounts-glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %define typelib typelib-1_0-Accounts-1_0
-%define sover   1
+%define sover   0
 
 Name:           libaccounts-glib
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        Account management library for GLib Applications
 License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            https://gitlab.com/accounts-sso/libaccounts-glib
-Source:         %{name}-%{version}.tar.xz
+URL:            https://gitlab.com/accounts-sso/libaccounts-glib
+Source:         %{URL}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkg-config
@@ -113,9 +112,10 @@ This package contains the tools for the accounts-glib library.
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
+%doc NEWS
 %license COPYING
-%doc NEWS README.md
 %{_libdir}/%{name}.so.%{sover}*
+%{_libdir}/%{name}.so.%{version}
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Accounts-1.0.typelib
