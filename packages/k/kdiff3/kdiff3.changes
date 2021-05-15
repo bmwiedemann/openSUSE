@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 15 11:24:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9.1
+  * Hotfix for possible display problems (kde#436958)
+  * Add default shortcut for "Go to [Previous/Next] Unsolved
+    Conflict" (kde#436003)
+  * Port away from KIconThemes
+
+-------------------------------------------------------------------
+Wed May  5 06:11:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL.
+
+-------------------------------------------------------------------
 Mon May  3 06:37:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.9.0

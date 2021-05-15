@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
-URL:            http://kdiff3.sourceforge.net/
+URL:            https://apps.kde.org/kdiff3
 Source0:        %{name}-%{version}.tar.xz
 Source1:        kdiff3-lang.tar.xz
 BuildRequires:  boost-devel
@@ -36,7 +36,6 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WidgetsAddons)
