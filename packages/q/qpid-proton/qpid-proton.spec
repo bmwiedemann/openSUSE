@@ -171,7 +171,7 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
     -DSYSINSTALL_PYTHON=1 \
     -DCHECK_SYSINSTALL_PYTHON=0
 
-%make_build all docs
+make %{?_smp_mflags} all docs
 # build from the created sdist for all enabled python flavors
 pushd python/dist
 # Note: never python_expand in the root source tree. It removes the build/ directory
@@ -192,9 +192,6 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 
 %fdupes %{buildroot}
-
-%check
-%ctest
 
 %post -n libqpid-proton%{qpid_proton_soversion} -p /sbin/ldconfig
 %postun -n libqpid-proton%{qpid_proton_soversion} -p /sbin/ldconfig
