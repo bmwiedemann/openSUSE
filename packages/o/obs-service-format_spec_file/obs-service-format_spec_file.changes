@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 11 17:00:33 UTC 2021 - coolo@suse.com
+
+- Update to version 20210511:
+  * Refresh licenses from spdx.org
+  * Be more wary on usage of macros in Tags
+  * Do not Cache Source.* but only Source[0-9]*
+  * Stop pretending we can guess what the spec file is for
+  * Avoid deep recursion in merge_comments
+  * Allow to override date (#45)
+
+-------------------------------------------------------------------
 Thu Jan 28 10:06:54 UTC 2021 - coolo@suse.com
 
 - Update to version 20210128:

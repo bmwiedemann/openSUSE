@@ -710,4 +710,18 @@
   * Test case for issue 19</comment>
     <requestid>867421</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>184fe54adce21982af5299dc64dc6092</srcmd5>
+    <version>20210511</version>
+    <time>1621113297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210511:
+  * Refresh licenses from spdx.org
+  * Be more wary on usage of macros in Tags
+  * Do not Cache Source.* but only Source[0-9]*
+  * Stop pretending we can guess what the spec file is for
+  * Avoid deep recursion in merge_comments
+  * Allow to override date (#45)</comment>
+    <requestid>892275</requestid>
+  </revision>
 </revisionlist>
