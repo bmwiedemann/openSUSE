@@ -1651,4 +1651,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>KDE Plasma 5.21.5</comment>
     <requestid>890600</requestid>
   </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>e1e23553d664f09d735260f62869a202</srcmd5>
+    <version>5.21.5</version>
+    <time>1621113341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892495</requestid>
+  </revision>
 </revisionlist>

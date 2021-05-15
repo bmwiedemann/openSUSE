@@ -1,0 +1,70 @@
+From 40f69fbb53a3ffa6a9a71b172433a4fedcaf7a88 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Thu, 8 Apr 2021 11:59:44 +0100
+Subject: [PATCH] [startkde] Reset systemd failed units on login
+
+If a service has recently failed multiple times, systemd will (quite
+cleverly) not restart it. This includes DBus activation so is indepdent
+of the systemd boot.
+
+If a service gets into a broken state on a previous session where ithas
+different environment variables and a different display server, we
+shouldn't treat it as failed for a new session.
+
+This shouldn't be needed with the other recent fixes, but it seems like
+a good practice nevertheless.
+
+Gnome are doing something similar:
+https://gitlab.gnome.org/GNOME/gnome-session/-/blob/master/gnome-session/main.c#L565
+
+(cherry picked from commit b0997076c194b1cb72fc4380c8ebbe67b0ebc58a)
+---
+ startkde/startplasma.cpp | 12 ++++++++++++
+ startkde/startplasma.h   |  1 +
+ 2 files changed, 13 insertions(+)
+
+diff --git a/startkde/startplasma.cpp b/startkde/startplasma.cpp
+index c159035a0..4120582b5 100644
+--- a/startkde/startplasma.cpp
++++ b/startkde/startplasma.cpp
+@@ -349,6 +349,17 @@ QProcess *setupKSplash()
+     return p;
+ }
+ 
++// If something went on an endless restart crash loop it will get blacklisted, as this is a clean login we will want to reset those counters
++// This is independent of whether we use the Plasma systemd boot
++void resetSystemdFailedUnits()
++{
++    QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.systemd1"),
++                                                          QStringLiteral("/org/freedesktop/systemd1"),
++                                                          QStringLiteral("org.freedesktop.systemd1.Manager"),
++                                                          QStringLiteral("ResetFailed"));
++    QDBusConnection::sessionBus().call(message);
++}
++
+ bool hasSystemdService(const QString &serviceName)
+ {
+     auto msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.systemd1"),
+@@ -390,6 +401,7 @@ bool useSystemdBoot()
+ 
+ bool startPlasmaSession(bool wayland)
+ {
++    resetSystemdFailedUnits();
+     OrgKdeKSplashInterface iface(QStringLiteral("org.kde.KSplash"), QStringLiteral("/KSplash"), QDBusConnection::sessionBus());
+     iface.setStage(QStringLiteral("kinit"));
+     // finally, give the session control to the session manager
+diff --git a/startkde/startplasma.h b/startkde/startplasma.h
+index dcd6187f6..0e1ab08dc 100644
+--- a/startkde/startplasma.h
++++ b/startkde/startplasma.h
+@@ -48,6 +48,7 @@ bool startPlasmaSession(bool wayland);
+ 
+ void waitForKonqi();
+ 
++static void resetSystemdFailedUnits();
+ static bool hasSystemdService(const QString &serviceName);
+ static bool useSystemdBoot();
+ 
+-- 
+2.25.1
+

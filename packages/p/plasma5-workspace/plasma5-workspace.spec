@@ -42,6 +42,8 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspa
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-startkde-Reset-systemd-failed-units-on-login.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
