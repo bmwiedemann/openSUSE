@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 20:43:16 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- getappcore checks for valid compression binary (bsc#1185991)
+- getappcore does not trigger errors with help message (bsc#1185993)
+
+-------------------------------------------------------------------
 Mon Apr 19 17:05:13 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Additions to version 3.1.15
