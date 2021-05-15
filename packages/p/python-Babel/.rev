@@ -265,4 +265,14 @@
     <comment></comment>
     <requestid>877077</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2d7abb75649f3c231a2d0d810ff71c91</srcmd5>
+    <version>2.9.1</version>
+    <time>1621113320</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1:
+  * The internal locale-data loading functions now validate the name of the
+    locale file to be loaded and only allow files within Babel's data directory.</comment>
+    <requestid>892302</requestid>
+  </revision>
 </revisionlist>

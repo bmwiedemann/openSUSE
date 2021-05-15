@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Babel
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz >= 2015.7
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %ifpython2
 Obsoletes:      %{oldpython}-babel < %{version}
