@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 10 20:30:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.62:
+  * work around unexpected sign-extending of left-shifted unsigned
+    values by gcc
+
+-------------------------------------------------------------------
 Tue Apr 27 14:09:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 9.61: 
