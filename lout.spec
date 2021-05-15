@@ -1,7 +1,7 @@
 #
 # spec file for package lout
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,16 @@
 #
 
 
-%global makedocs 0
 Name:           lout
-Version:        3.40
-Release:        1%{?dist}
+Version:        3.42
+Release:        0
 Summary:        A document formatting system
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
 URL:            http://savannah.nongnu.org/projects/lout/
-Source0:        http://download.savannah.gnu.org/releases/lout/lout-%{version}.tar.gz
-Patch0:         makefile.patch
-# PATCH-FIX-UPSTREAM lout-3.40-cve.patch mcepl@suse.com
-# from https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
-# Fix for bsc#1159713 and bsc#1159714 (CVE-2019-19918 and CVE-2019-19917)
-Patch1:         lout-3.40-cve.patch
+Source0:        https://github.com/william8000/lout/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
-%if !%{makedocs}
-Source1:        design.pdf
-Source2:        expert-guide.pdf
-Source3:        user-guide.pdf
-Source4:        slides.pdf
-%endif
 
 %description
 Lout is a document formatting system. The system reads a high-level
@@ -48,7 +36,7 @@ fed to a printer. Lout is offered in multiple languages.
 
 %prep
 %setup -q
-%autopatch -p1
+chmod 0644 README
 
 %build
 make COPTS="%{optflags}" \
@@ -85,37 +73,25 @@ function render_docs {
     popd
 }
 
-# For some reason, ps2pdf segfaults in koji.
-%if %{makedocs}
 render_docs design design.pdf       3
 render_docs expert expert-guide.pdf 4
 render_docs slides slides.pdf       2
 render_docs user   user-guide.pdf   6
-%else
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} doc/
-%endif
 
 %install
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}/%{_datadir}/%{name}/doc
-mkdir -p %{buildroot}/%{_mandir}/man1
+mkdir -p %{buildroot}%{_bindir}
 make BINDIR=%{buildroot}%{_bindir} \
      LOUTLIBDIR=%{buildroot}%{_datadir}/%{name} \
      LOUTDOCDIR=%{buildroot}%{_datadir}/%{name}/doc \
      MANDIR=%{buildroot}%{_mandir}/man1 \
      install installman installdoc
-
-# Looks like vim dump?
-rm -rf %{buildroot}%{_datadir}/%{name}/doc/user/.pie_intr.swp
-
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 %files
-%doc %attr(0644,-,-) README READMEPDF
+%doc README READMEPDF
 %license COPYING
 %{_bindir}/*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*
+%{_datadir}/%{name}/
 %{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
