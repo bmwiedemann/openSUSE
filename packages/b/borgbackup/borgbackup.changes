@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 16 10:33:52 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Remove the version from recommends pyfuse3,
+  because it doesn't work in suse.
+
+-------------------------------------------------------------------
+Sun May 16 07:57:17 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Use recommends pyfuse3 instead of llfuse for Tumbleweed.
+  Upstream says use primary pyfuse3 and secondary llfuse.
+
+-------------------------------------------------------------------
 Sun Mar 28 08:29:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.1.16:

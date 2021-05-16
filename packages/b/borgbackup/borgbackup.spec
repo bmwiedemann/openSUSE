@@ -90,7 +90,13 @@ BuildRequires:  python3-pytest
 %endif
 
 Requires:       python3-setuptools
+%if 0%{?suse_version} > 1500
+# upstream use pyfuse3 >= 3.1.1
+# suse has 3.2.0 but ">= 3.1.1" does not work in suse. Why?
+Recommends:     python3-pyfuse3
+%else
 Recommends:     python3-llfuse
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
