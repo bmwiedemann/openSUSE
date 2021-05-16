@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 15 10:20:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't build two identical packages python{3,38}-pytest-cookies
+
+-------------------------------------------------------------------
 Wed Jan 20 08:06:16 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Submit as python 3.8 only package on Tumbleweed to match cookiecutter

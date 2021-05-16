@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cookies
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if %{?python3_version_nodots} == 38
-%define pythons python3 python38
-%else
+%{?!python_module:%define python_module() python3-%{**}}
+# cookiecutter is only available for python3
 %define pythons python3
-%endif
 Name:           python-pytest-cookies
 Version:        0.5.1
 Release:        0
