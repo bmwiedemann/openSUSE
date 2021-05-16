@@ -7,8 +7,10 @@
     <memory>
       <size unit="G">5</size>
     </memory>
+    <!--
     <memoryperjob>
-      <size unit="M">2200</size>
+      <size unit="M">2500</size>
     </memoryperjob>
+    -->
   </hardware>
 </constraints>

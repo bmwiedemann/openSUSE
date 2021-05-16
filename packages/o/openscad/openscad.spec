@@ -39,6 +39,7 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libcgal-devel
 BuildRequires:  libqscintilla-qt5-devel
 BuildRequires:  libspnav-devel
+BuildRequires:  memory-constraints
 BuildRequires:  opencsg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -64,6 +65,9 @@ aspects, e.g. modelling of machine parts.
 
 %build
 %qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget CONFIG+=c++14
+# As of 08.05.2021, memoryperjob constraint is not working correctly,
+# so limit memory per job here.
+%limit_build -m 2500
 %make_build
 
 %install

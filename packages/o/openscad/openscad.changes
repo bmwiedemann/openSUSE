@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  8 07:00:15 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Reintroduce memory-contraints macro %limit_build -m 2500.
+  Constraint memoryperjob is allowing too small workers for 
+  the jobs it provides.
+
+-------------------------------------------------------------------
+Thu May  6 05:08:29 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Increased memoryperjob constraint to 2500 MB.
+
+-------------------------------------------------------------------
 Tue Apr 20 11:48:29 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Update to 2021.1 release
