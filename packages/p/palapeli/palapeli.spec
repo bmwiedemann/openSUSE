@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           palapeli
-Version:        21.04.0
+Version:        21.04.1
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       palapeli-data = %{version}
