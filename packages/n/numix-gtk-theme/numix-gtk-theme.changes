@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 16 13:48:33 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 2.6.7.1617863126.0d6b4c8
+  * Fix Thunar sidebar
+    (#gh#numixproject/numix-gtk-theme#742)
+  * eclipse: fix small toolbar buttons
+    (#gh#numixproject/numix-gtk-theme#748)
+  * Replace deprecated Ruby Sass with SassC
+    (#gh#numixproject/numix-gtk-theme#734)
+    (#gh#numixproject/numix-gtk-theme#740)
+  * Update budgie panel and workspace-switcher colors
+    (gh#numixproject/numix-gtk-theme#368)
+  * Gtk-3.20:xfce Add whisker menu style
+    (#gh#numixproject/numix-gtk-theme#666)
+  * Update xfce4-notifyd specific gtk3 style
+    (#gh#numixproject/numix-gtk-theme#677).
+  * Correct maximize button behavior in Openbox
+    (#gh#numixproject/numix-gtk-theme#77)
+  * [Gtk-2.0] Remove unnecessary executable permissions
+    (#gh#numixproject/numix-gtk-theme#690)
+
+- Package changes:
+  * Replace saas with sassc.
+  * Don't build for EOL distribution versions.
+  * Spec-cleaner run
+  * Pull the source using obs_scm/_service until upstream
+    tags the new release.
+
+-------------------------------------------------------------------
 Sat Nov 18 00:00:12 UTC 2017 - sor.alexei@meowr.ru
 
 - Update to version 2.6.7:
