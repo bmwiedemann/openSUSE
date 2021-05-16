@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 16 13:32:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip a failing test on Python 3.9.5: request url with tabs
+  gh#pipermerriam/flex#234
+- Skip python2 because it fails on Leap: factory_boy does not
+  support Python 2 anymore
+
+-------------------------------------------------------------------
 Thu Sep 17 06:45:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.14.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-flex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Python 2 is not supported by factory_boy anymore
+%define skip_python2 1
 Name:           python-flex
 Version:        6.14.1
 Release:        0
@@ -50,7 +52,7 @@ Requires:       python-six >= 1.7.3
 Requires:       python-strict-rfc3339 >= 0.7
 Requires:       python-validate_email >= 1.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,7 +71,9 @@ Validation tooling for Swagger 2.0 specifications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pipermerriam/flex/issues/234
+python39_donttest=" or (test_request_parameter_array_extraction and tsv)"
+%pytest -k "not (donttestdummyprefix ${$python_donttest})"
 
 %post
 %python_install_alternative swagger-flex

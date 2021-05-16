@@ -24,4 +24,12 @@
   * Fixed all warnings about importing from collections on Python 3</comment>
     <requestid>835101</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a0de62bec779a9f776ac85004d5e0179</srcmd5>
+    <version>6.14.1</version>
+    <time>1621201322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893470</requestid>
+  </revision>
 </revisionlist>
