@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 19:30:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.5
+  * fix buffer overflow
+- Drop upstream fixed chasen244-secfix.diff
+
+-------------------------------------------------------------------
 Wed Nov  8 21:22:00 UTC 2017 - bwiedemann@suse.com
 
 - Add chasen-initialize-memory.patch to make ipadic build

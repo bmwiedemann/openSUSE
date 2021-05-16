@@ -1,7 +1,7 @@
 #
 # spec file for package chasen
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           chasen
-BuildRequires:  darts gcc-c++
-BuildRequires:  libtool
 License:        BSD-3-Clause
 Group:          System/I18n/Japanese
-Requires:       ipadic
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
-Url:            http://chasen.aist-nara.ac.jp/
-# original source http://chasen.aist-nara.ac.jp/stable/chasen/chasen-2.4.4.tar.gz
-Source0:        %{name}-%{version}.tar.gz
-Patch1:         chasen-decls.diff
-Patch2:         chasen244-secfix.diff
-# PATCH-FIX-UPSTREAM
-Patch3:         chasen-initialize-memory.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Japanese Morphological Analysis System
+URL:            https://osdn.net/projects/chasen-legacy
+Source0:        %{URL}/downloads/56305/chasen-%{version}.tar.xz
+Patch1:         chasen-decls.diff
+# PATCH-FIX-UPSTREAM
+Patch2:         chasen-initialize-memory.patch
+BuildRequires:  gcc-c++
+BuildRequires:  darts
+BuildRequires:  libtool
+Requires:       ipadic
 # Summary(ja): 形態素解析システム 茶筌
 # %description -l ja
 # 計算機による日本語の解析において，欧米の言語の解析と比べてまず問題になるの
@@ -149,7 +146,6 @@ ChaSen Perl Module
 %setup -q
 %patch1
 %patch2 -p1
-%patch3 -p1
 
 %build
 autoreconf --force --install
@@ -172,7 +168,6 @@ make -C perl DESTDIR=$RPM_BUILD_ROOT install_vendor
 rm -f %{buildroot}%{_libdir}/*.la
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files 
