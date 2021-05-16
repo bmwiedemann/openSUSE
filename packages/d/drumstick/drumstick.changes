@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 15 21:01:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.2.0
+  * New option BUILD_UTILS
+  * FluidSynth backend: initialization moved to a background thread
+  * Retrieve dynamically the audio driver names for using in
+    configuration dialog
+  * new QWrk class signals with a QByteArray parameter
+    instead of QString
+  * Standarization: MIDI texts/lyrics encoding defaults to Latin1
+  * removed warnings when buiding with Qt >= 5.15
+  *  * French and German translations updated
+
+-------------------------------------------------------------------
 Thu Apr 22 07:14:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.1.1. Fixes:

@@ -82,4 +82,21 @@
   See the installed ChangeLog file for other changes.</comment>
     <requestid>887498</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1747907f7635f97ad3d0900c13599d0b</srcmd5>
+    <version>2.2.0</version>
+    <time>1621201305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  * New option BUILD_UTILS
+  * FluidSynth backend: initialization moved to a background thread
+  * Retrieve dynamically the audio driver names for using in
+    configuration dialog
+  * new QWrk class signals with a QByteArray parameter
+    instead of QString
+  * Standarization: MIDI texts/lyrics encoding defaults to Latin1
+  * removed warnings when buiding with Qt &gt;= 5.15
+  *  * French and German translations updated</comment>
+    <requestid>893357</requestid>
+  </revision>
 </revisionlist>
