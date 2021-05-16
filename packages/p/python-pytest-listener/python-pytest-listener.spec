@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-listener
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,10 +39,12 @@ BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
-A simple network listener for py.test.
+Simple JSON listener using TCP that listens for data and stores it in a queue for later retrieval.
 
 %prep
 %setup -q -n pytest-listener-%{version}
+# required to find the one file in the topdir
+sed -i "/packages=find_packages/ a \        py_modules=['pytest_listener']," setup.py
 
 %build
 %python_build
@@ -57,6 +59,8 @@ A simple network listener for py.test.
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_listener.py*
+%{python_sitelib}/pytest_listener-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/pytest_listener*.pyc
 
 %changelog

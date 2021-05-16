@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 10:08:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix a prolem with our version of setuptools not finding the
+  single module.
+
+-------------------------------------------------------------------
 Sat Dec 28 17:17:37 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - use pytest macro 
