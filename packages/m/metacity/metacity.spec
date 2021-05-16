@@ -1,7 +1,7 @@
 #
 # spec file for package metacity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %define soname  libmetacity
 %define sover   3
-%define _version 3.37
+%define _version 3.40
 Name:           metacity
-Version:        3.37.1
+Version:        3.40.0
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
 URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM metacity-3.37.1-fix-vulkan-build.patch alberts.muktupavels@gmail.com -- Fix compositor-vulkan build (commit 99361f28).
-Patch0:         metacity-3.37.1-fix-vulkan-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -52,6 +50,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xpresent)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender) >= 0.0
 BuildRequires:  pkgconfig(xres)
@@ -102,7 +101,7 @@ This package contains all necessary include files and libraries
 needed to develop applications that require libmetacity.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 autoreconf -fi
@@ -126,6 +125,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/metacity
 %{_bindir}/metacity-message
 %{_datadir}/applications/metacity.desktop
+%{_datadir}/glib-2.0/schemas/org.gnome.metacity.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.metacity.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.metacity.keybindings.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.metacity.theme.gschema.xml

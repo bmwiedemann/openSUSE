@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 15 16:28:22 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.40.0 (changes since 3.37.1):
+  * Fix segfault when using META_DEBUG_NO_SHADOW=0.
+  * New "compositor" setting and commandline option.
+  * Fix a few memory leaks.
+  * Update translations.
+- Remove metacity-3.37.1-fix-vulkan-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.37.1 (changes since 3.36.0):
