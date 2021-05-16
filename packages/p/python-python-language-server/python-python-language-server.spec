@@ -33,9 +33,11 @@ Patch1:         test_snippet_fix.patch
 Patch2:         test_numpy_hover_fix.patch
 # PATCH-FIX-UPSTREAM test_py39-code_folding.patch -- gh#python-ls/python-ls#9
 Patch3:         test_py39-code_folding.patch
+# PATCH-FIX-UPSTREAM python-lsp-pylint-consider-with.patch -- gh#python-lsp/python-lsp-server#20
+Patch4:         python-lsp-pylint-consider-with.patch
 # PATCH-FIX-OPENSUSE pyls-openSUSE-unpin-extras.patch -- unpin extras_requires,
 # because entrypoints requiring pyls[all] now check the requirements in the egg-info/requires.txt
-Patch4:         pyls-openSUSE-unpin-extras.patch
+Patch99:        pyls-openSUSE-unpin-extras.patch
 BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module python-jsonrpc-server >= 0.4.0}

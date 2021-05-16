@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 16 17:22:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add python-lsp-pylint-consider-with.patch in order to fix
+  failures with pylint 2.8, gh#python-lsp/python-lsp-server#20
+
+-------------------------------------------------------------------
 Mon Apr 19 17:52:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add pyls-openSUSE-unpin-extras.patch -- unpin extras_requires,
