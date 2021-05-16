@@ -900,4 +900,11 @@
     <comment></comment>
     <requestid>892170</requestid>
   </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>1b95414537742221aed13f8f44dbf085</srcmd5>
+    <version>1.46.2</version>
+    <time>1621157914</time>
+    <user>dimstar_suse</user>
+    <comment>e2fsprogs is ring0, fuse as dep is unavceptable</comment>
+  </revision>
 </revisionlist>

@@ -246,17 +246,6 @@ Obsoletes:      libcom_err-devel-64bit
 Development files for the com_err error message display library. Static libraries.
 %endif
 
-%if ! %{build_mini}
-%package -n fuse2fs
-Summary:       A FUSE file system client that supports reading and writing ext4/3/2 filesystems.
-License:       MIT
-Group:         System/Filesystems
-BuildRequires: fuse-devel
-
-%description -n fuse2fs
-fuse2fs is a FUSE file system client that supports reading and writing from devices or image files containing ext2, ext3, and ext4 file systems.
-%endif
-
 %prep
 %setup -q -n e2fsprogs-%{version}
 # libcom_err patches
@@ -466,7 +455,6 @@ done
 %{_mandir}/man5/mke2fs.conf.5.gz
 %{_mandir}/man8/*.8.gz
 
-
 %files devel
 %defattr(-,root,root)
 %doc README.SUSE
@@ -561,10 +549,5 @@ done
 %{_libdir}/libext2fs.a
 %{_libdir}/libe2p.a
 %endif
-
-%files -n fuse2fs
-%defattr(-, root, root)
-%{_bindir}/fuse2fs
-%{_mandir}/man1/fuse2fs.1.gz
 
 %changelog
