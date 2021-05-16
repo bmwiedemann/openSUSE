@@ -193,7 +193,6 @@
     <package name="bind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="bind-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="bind-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="binutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="biosdevname" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bitstream-vera-fonts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="blinken" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -833,7 +832,6 @@
     <package name="gtk4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtk4-schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gtksourceview4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtkspell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtkspell3-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -1617,7 +1615,7 @@
     <package name="liba52-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libabw-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libaccounts-glib1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libaccounts-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libaccounts-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libaccountsservice0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1785,8 +1783,6 @@
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libctf-nobfd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libctf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libcue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2062,7 +2058,6 @@
     <package name="libgtk-vnc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkimageview0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkmm-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgtksourceview-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgtksourceview-4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkspell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkspell3-3-0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -2198,10 +2193,10 @@
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="liblavfile-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavjpeg-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavplay-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavrec-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavrec-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblayout" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblcms2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldac2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2262,7 +2257,7 @@
     <package name="libminiupnpc17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmission-control-plugins0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmjpegutils-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmjpegutils-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmlx4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libmlx5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libmm-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2272,16 +2267,17 @@
     <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmodulemd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libmousepad0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libmozjs-78-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmp3lame0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmpath0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmpc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpcdec6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpeg2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmpeg2encpp-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmpeg2encpp-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmpg123-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libmplex2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmplex2-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmspack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmspub-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmtdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2633,7 +2629,7 @@
     <package name="libspice-server1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libsqlite3-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsratom-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsrt1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsrt1_4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsrtp2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3102,8 +3098,8 @@
     <package name="ncompress" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="net-snmp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="netcat-openbsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="netpbm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4478,7 +4474,7 @@
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-pl-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="tracker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tracker-data-files" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tracker-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5012,6 +5008,7 @@
     <package name="autoconf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="automake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="binutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5123,6 +5120,8 @@
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptmount0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptsetup12-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libctf-nobfd0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libctf0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcups2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdatrie1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdbus-1-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5323,6 +5322,7 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

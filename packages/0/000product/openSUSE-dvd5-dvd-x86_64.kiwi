@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210514" schemaversion="4.1">
+<image name="OBS__openSUSE___20210515" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210514</productvar>
+      <productvar name="VERSION">20210515</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210514,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210515,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210514/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210515/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -206,7 +206,7 @@
       <repopackage name="bind"/>
       <repopackage name="bind-doc"/>
       <repopackage name="bind-utils"/>
-      <repopackage name="binutils"/>
+      <repopackage name="binutils" arch="x86_64"/>
       <repopackage name="biosdevname"/>
       <repopackage name="bison" arch="x86_64"/>
       <repopackage name="bison-lang" arch="x86_64"/>
@@ -876,7 +876,6 @@
       <repopackage name="gtk4-lang"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtkiterm"/>
-      <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtkspell-lang"/>
       <repopackage name="gtkspell3-lang"/>
@@ -1399,7 +1398,7 @@
       <repopackage name="liba52-0"/>
       <repopackage name="libaa1"/>
       <repopackage name="libabw-0_1-1"/>
-      <repopackage name="libaccounts-glib1"/>
+      <repopackage name="libaccounts-glib0"/>
       <repopackage name="libaccounts-qt5-1"/>
       <repopackage name="libaccountsservice0"/>
       <repopackage name="libacl1"/>
@@ -1602,8 +1601,8 @@
       <repopackage name="libcryptui-data"/>
       <repopackage name="libcryptui-lang"/>
       <repopackage name="libcryptui0"/>
-      <repopackage name="libctf-nobfd0"/>
-      <repopackage name="libctf0"/>
+      <repopackage name="libctf-nobfd0" arch="x86_64"/>
+      <repopackage name="libctf0" arch="x86_64"/>
       <repopackage name="libcue2"/>
       <repopackage name="libcups2"/>
       <repopackage name="libcups2-32bit" arch="x86_64"/>
@@ -1916,7 +1915,6 @@
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkimageview0"/>
       <repopackage name="libgtkmm-3_0-1"/>
-      <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtkspell0"/>
       <repopackage name="libgtkspell3-3-0"/>
@@ -2243,10 +2241,10 @@
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
       <repopackage name="liblastfm5-1"/>
-      <repopackage name="liblavfile-2_0-0"/>
-      <repopackage name="liblavjpeg-2_0-0"/>
-      <repopackage name="liblavplay-2_0-0"/>
-      <repopackage name="liblavrec-2_0-0"/>
+      <repopackage name="liblavfile-2_2-0"/>
+      <repopackage name="liblavjpeg-2_2-0"/>
+      <repopackage name="liblavplay-2_2-0"/>
+      <repopackage name="liblavrec-2_2-0"/>
       <repopackage name="liblayout"/>
       <repopackage name="liblcms2-2"/>
       <repopackage name="libldac2"/>
@@ -2321,7 +2319,7 @@
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libmission-control-plugins0"/>
-      <repopackage name="libmjpegutils-2_0-0"/>
+      <repopackage name="libmjpegutils-2_2-0"/>
       <repopackage name="libmlx4-1"/>
       <repopackage name="libmlx5-1"/>
       <repopackage name="libmm-glib0"/>
@@ -2332,16 +2330,17 @@
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmount1-32bit" arch="x86_64"/>
+      <repopackage name="libmousepad0"/>
       <repopackage name="libmozjs-78-0"/>
       <repopackage name="libmp3lame0"/>
       <repopackage name="libmpath0"/>
       <repopackage name="libmpc3"/>
       <repopackage name="libmpcdec6"/>
       <repopackage name="libmpeg2-0"/>
-      <repopackage name="libmpeg2encpp-2_0-0"/>
+      <repopackage name="libmpeg2encpp-2_2-0"/>
       <repopackage name="libmpfr6"/>
       <repopackage name="libmpg123-0"/>
-      <repopackage name="libmplex2-2_0-0"/>
+      <repopackage name="libmplex2-2_2-0"/>
       <repopackage name="libmspack0"/>
       <repopackage name="libmspub-0_1-1"/>
       <repopackage name="libmtdev1"/>
@@ -2789,7 +2788,7 @@
       <repopackage name="libSPIRV-Tools-suse21"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsratom-0-0"/>
-      <repopackage name="libsrt1"/>
+      <repopackage name="libsrt1_4"/>
       <repopackage name="libsrtp2-1"/>
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1"/>
@@ -4744,6 +4743,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
