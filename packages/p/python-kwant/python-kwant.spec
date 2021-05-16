@@ -30,6 +30,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://kwant-project.org/
 Source0:        https://files.pythonhosted.org/packages/source/k/kwant/kwant-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
@@ -51,6 +52,8 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module sympy}
 BuildRequires:  %{python_module tinyarray}
 # /SECTION
+# mumps exclusion list is "i586 s390 ppc armv7l" (sic!)
+ExcludeArch:    %ix86 %arm
 
 %python_subpackages
 
@@ -71,7 +74,7 @@ functions, out-of-equilibrium local quantities.
 %build
 # CAN'T FIND mumps HEADERS
 export CFLAGS="%{optflags} -I%{_includedir}/mumps"
-%python_build
+%python_build --cython
 
 %install
 %python_install
