@@ -25,7 +25,7 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       222
+%global updatever       292
 %global buildver        b10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
 %global root_revision   2a5e26881428745325f8ebc14e1abd34edb9bd81

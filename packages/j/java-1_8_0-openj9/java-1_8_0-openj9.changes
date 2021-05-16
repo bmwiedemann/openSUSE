@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 16 07:25:18 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Fix version typo in spec file
+
+-------------------------------------------------------------------
 Fri May 14 08:55:58 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u292 build 10 with OpenJ9 0.26.0 virtual
