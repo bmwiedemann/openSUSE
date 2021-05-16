@@ -1,7 +1,7 @@
 #
 # spec file for package dc3dd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,6 +89,6 @@ chmod +x configure
 %{_mandir}/man1/dc3dd.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%{_datadir}/locale
+%dir /usr/share/locale/*/LC_TIME
 
 %changelog

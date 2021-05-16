@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 15 19:22:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem rpm (bsc#1184786) 
+
+-------------------------------------------------------------------
 Thu Dec 24 17:21:37 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - BuildRequires p7zip for Leap <= 15.1 only
