@@ -1,5 +1,5 @@
 #
-# spec file for package openQA-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 %define         short_name openQA
 Name:           %{short_name}-test
-Version:        4.6.1620897674.b48ba1486
+Version:        4.6.1620996956.bd2066072
 Release:        0
 Summary:        Test package for openQA
 License:        GPL-2.0-or-later
