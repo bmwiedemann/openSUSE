@@ -21,7 +21,7 @@
 # NEP 29: Numpy 1.20 dropped support for Python 3.6, python36-numpy is removed from Tumbleweed. xarray will follow on next release
 %define         skip_python36 1
 Name:           python-xarray
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
