@@ -49,4 +49,14 @@
     <comment></comment>
     <requestid>806000</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7b1b4c55053f597bcefd9829910caae7</srcmd5>
+    <version>1.1.2</version>
+    <time>1621201305</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_end_to_end which fails due to recent changes in
+  Sphinx (gh#python-trio/sphinxcontrib-trio#260).
+</comment>
+    <requestid>893360</requestid>
+  </revision>
 </revisionlist>

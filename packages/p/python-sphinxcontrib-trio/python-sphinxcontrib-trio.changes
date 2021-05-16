@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 21:05:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_end_to_end which fails due to recent changes in
+  Sphinx (gh#python-trio/sphinxcontrib-trio#260).
+
+-------------------------------------------------------------------
 Fri May 15 23:02:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v1.1.2

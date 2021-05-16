@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-trio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           python-sphinxcontrib-trio
 Version:        1.1.2
 Release:        0
 Summary:        Sphinx extension for documenting Python functions and methods
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/sphinxcontrib-trio
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-trio/sphinxcontrib-trio-%{version}.tar.gz
@@ -58,7 +58,8 @@ for documenting Python functions and methods smarter.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+# gh#python-trio/sphinxcontrib-trio#260
+%pytest -k 'not test_end_to_end' tests
 
 %files %{python_files}
 %doc README.rst
