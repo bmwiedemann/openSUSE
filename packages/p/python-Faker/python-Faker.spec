@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-Faker
-Version:        6.3.0
+Version:        8.1.4
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -28,25 +27,20 @@ URL:            https://github.com/joke2k/faker
 Source:         https://files.pythonhosted.org/packages/source/F/Faker/Faker-%{version}.tar.gz
 BuildRequires:  %{python_module UkPostcodeParser >= 1.1.1}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest >= 3.8.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest >= 6.0.1}
 BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4
-Requires:       python-setuptools
-Requires:       python-six >= 1.10
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Obsoletes:      python3-fake-factory < %{version}
-Provides:       python3-fake-factory = %{version}
+Requires(postun):update-alternatives
+Obsoletes:      python3-fake-factory < %{version}-%{release}
+Provides:       python3-fake-factory = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -83,6 +77,7 @@ sed -i -e 's:==:>=:g' setup.py
 %license LICENSE.txt
 %doc CHANGELOG.md README.rst
 %python_alternative %{_bindir}/faker
-%{python_sitelib}/*
+%{python_sitelib}/faker
+%{python_sitelib}/Faker-%{version}*-info
 
 %changelog

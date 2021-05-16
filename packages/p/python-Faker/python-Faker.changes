@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 16 12:06:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.4:
+  * Support distant past dates on Windows. Thanks @prescod.
+  * Fixes #1439: Cast Path to a string for pkgutil.iter_modules
+    (#1441). Thanks @fcurella.
+  * Fix company suffix typo for th_TH. Thanks @bact.
+  * Remove gmail.co.uk from en_GB email Provider. Thanks @bact.
+  * Extend pl_PL Pesel To support greater range of dates. Thanks
+    @IlfirinPL.
+  * Fix CLI only giving 10 possible outputs. Thanks @andrewdotn.
+  * Fix faker module loader to use strings rather than Paths.
+    Thanks @mgorny.
+  * Make sure pyfloat fails when asked to produce more digits than
+    the system supports. Thanks @rossjones.
+  * Ensure pytuple returns the correct number of items. Thanks
+    @rossjones.
+  * Fix ro_RO phone numbers generation. Thanks @feketemihai.
+  * set uk_UA address street titles to proper language. Thanks
+    @fessua.
+  * Add address provider for ro_RO. Thanks @feketemihai.
+  * Fix a problem with pyfloat where it can return sys.epsilon
+    when right_digits=N and positive=True. Thanks @tomage.
+  * Replace es_MX RFC name initials when they are forbidden words.
+    Thanks @briferz.
+  * Add address provider for de_CH. Thanks @andre-dasilva.
+  * user_agent: bump platform versions. Thanks @gsilvan.
+  * Add cs_CZ lorem - word list. Thanks @jakubno.
+
+-------------------------------------------------------------------
 Thu Feb 18 13:32:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 6.3.0: 
