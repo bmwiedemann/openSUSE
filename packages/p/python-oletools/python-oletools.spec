@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oletools
-Version:        0.56.1
+Version:        0.56.2
 Release:        0
 Summary:        Tools to analyze security characteristics of MS Office and OLE files
 License:        BSD-2-Clause AND MIT
