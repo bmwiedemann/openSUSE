@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 16 03:31:19 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1621025086.2605c1fc:
+  * Improve log output of bare "CORE::say" in vnc_base
+
+-------------------------------------------------------------------
 Wed May 12 15:34:00 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1620833632.f1d52cb5:
