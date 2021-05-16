@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 16 08:03:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.0
+  - Fix long-standing rounding error in file date handling when the
+    nanosecond part of file dates were > 999999500.
+  - There is a new pyfuse3.terminate() function to gracefully end
+    the main loop.
+- Changes from 3.1.1
+  - No source changes. Regenerated Cython files with Cython 0.29.21
+    for Python 3.9 compatibility.
+- Changes from 3.1.0
+  - Made compatible with newest Trio module.
+- Drop fix_catch_log_handler.patch because now in upstream.
+- Change source url to pythonhosted.
+
+-------------------------------------------------------------------
 Mon Mar 15 18:11:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_catch_log_handler.patch to make tests compatible with
