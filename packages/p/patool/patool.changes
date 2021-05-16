@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 14 15:13:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix up dependency of -bash-completion subpackage:
+  + Require the main package. The bash completion is useless
+    without the application.
+  + Supplement it against bash-completion, not against bash.
+
+-------------------------------------------------------------------
 Thu Nov 16 10:44:09 UTC 2017 - mpluskal@suse.com
 
 - Update to version 1.12:

@@ -2,7 +2,7 @@
 #
 # spec file for package patool
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Name:           patool
 Version:        1.12
 Release:        0
 Summary:        Portable Command Line Archive File Manager
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/wummel/patool
 Source:         https://github.com/wummel/patool/archive/upstream/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -51,8 +51,9 @@ It relies on helper applications to handle those archive formats.
 %package bash-completion
 Summary:        Bash Completion for patool
 Group:          Productivity/Archiving/Compression
+Requires:       %{name}
 Requires:       bash-completion
-Supplements:    packageand(bash:patool)
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 This package contains bash completion for patool, a portable command line
