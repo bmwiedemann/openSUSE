@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 16 13:01:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.2.0
+  * Add support for Django 3.1
+  * Add support for Python 3.9
+  * Drop support for Django 1.11. This version is not maintained
+    anymore.
+  * Drop support for Python 3.5. This version is not maintained
+    anymore.
+  Deprecated:
+  * factory.use_strategy(). Use factory.FactoryOptions.strategy
+    instead. The purpose of use_strategy() duplicates the factory
+    option. Follow PEP 20: There should be one– and preferably only
+    one –obvious way to do it.
+  * use_strategy() will be removed in the next major version.
+  Bug fix:
+  * Calls to factory.Faker and factory.django.FileField within a
+    Trait or Maybe no longer lead to a KeyError crash.
+- Remove python2 build conditional: Not supported upstream
+
+-------------------------------------------------------------------
 Mon Oct  5 06:11:53 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Use PyPI tarball and revise test runner to python -m unittest

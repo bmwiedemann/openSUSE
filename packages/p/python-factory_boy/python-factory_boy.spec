@@ -1,7 +1,7 @@
 #
 # spec file for package python-factory_boy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-factory_boy
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python test fixtures
 License:        MIT
@@ -28,16 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/fac
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Faker >= 0.7.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-ipaddress
-%endif
 %python_subpackages
 
 %description
@@ -60,11 +56,12 @@ sed -i -e '/test_alchemy/d' tests/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/factory
+%{python_sitelib}/factory_boy-%{version}*-info
 
 %changelog
