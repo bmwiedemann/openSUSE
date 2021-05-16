@@ -1,5 +1,0 @@
-<package name="openMVG" project="openSUSE:Factory">
-  <title>Multiple View Geometry library - openMVG</title>
-  <description>Library for computer-vision scientists and especially targeted to the Multiple View Geometry community. It is designed to provide an easy access to the classical problem solvers in Multiple View Geometry and solve them accurately.</description>
-  <devel project="graphics" package="openMVG"/>
-</package>
