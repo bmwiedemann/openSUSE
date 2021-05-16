@@ -105,7 +105,9 @@ unsorted:
   - Mesa-libglapi-devel-32bit: [x86_64] 
   - Mesa-libglapi0-32bit: [x86_64] 
   - Mesa-vulkan-device-select 
+  - Mesa-vulkan-device-select-32bit: [x86_64] 
   - Mesa-vulkan-overlay 
+  - Mesa-vulkan-overlay-32bit: [x86_64] 
   - MicroOS-release-appliance-kubic 
   - MicroOS-release-dvd 
   - MicroOS-release-kubic-dvd 
@@ -1212,6 +1214,7 @@ unsorted:
   - bin86 
   - bindfs 
   - bing 
+  - binutils: [i586] 
   - binutils-devel 
   - binutils-devel-32bit: [x86_64] 
   - binutils-gold 
@@ -3854,6 +3857,7 @@ unsorted:
   - fuse-exfat 
   - fuse-oscfs 
   - fuse-overlayfs: [i586] 
+  - fuse2fs 
   - fuse3-devel 
   - fuse3-doc 
   - fuseiso 
@@ -6384,6 +6388,7 @@ unsorted:
   - gtkpod-devel 
   - gtkpod-lang 
   - gtksourceview-devel 
+  - gtksourceview-lang 
   - gtksourceview2-devel 
   - gtksourceview2-lang 
   - gtksourceview4-devel 
@@ -9329,7 +9334,7 @@ unsorted:
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
-  - libaccounts-glib1-32bit: [x86_64] 
+  - libaccounts-glib0-32bit: [x86_64] 
   - libaccounts-qt5-1-32bit: [x86_64] 
   - libaccounts-qt5-devel 
   - libaccounts-qt5-doc 
@@ -10145,6 +10150,8 @@ unsorted:
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
+  - libctf-nobfd0: [i586] 
+  - libctf0: [i586] 
   - libcthreads-devel 
   - libcthreads1 
   - libctl-devel 
@@ -11044,6 +11051,7 @@ unsorted:
   - libgtkmm-4_0-0-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
+  - libgtksourceview-3_0-1 
   - libgtksourceviewmm-3_0-0 
   - libgtksourceviewmm-4_0-0 
   - libgtop 
@@ -11117,7 +11125,7 @@ unsorted:
   - libharfbuzz-subset0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
-  - libhashcat6_2_0 
+  - libhashcat6_2_1 
   - libhdf5-103 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
@@ -11519,27 +11527,27 @@ unsorted:
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
   - libkdumpfile8 
-  - libkea-asiodns1 
-  - libkea-asiolink19 
-  - libkea-cc8 
-  - libkea-cfgclient10 
-  - libkea-cryptolink5 
-  - libkea-database6 
-  - libkea-dhcp++30 
-  - libkea-dhcp_ddns14 
-  - libkea-dhcpsrv39 
-  - libkea-dns++5 
-  - libkea-eval22 
+  - libkea-asiodns12 
+  - libkea-asiolink25 
+  - libkea-cc23 
+  - libkea-cfgclient23 
+  - libkea-cryptolink16 
+  - libkea-database22 
+  - libkea-dhcp++33 
+  - libkea-dhcp_ddns16 
+  - libkea-dhcpsrv45 
+  - libkea-dns++16 
+  - libkea-eval25 
   - libkea-exceptions0 
-  - libkea-hooks27 
-  - libkea-http20 
-  - libkea-log6 
-  - libkea-mysql17 
-  - libkea-pgsql15 
-  - libkea-process22 
-  - libkea-stats16 
+  - libkea-hooks33 
+  - libkea-http25 
+  - libkea-log19 
+  - libkea-mysql22 
+  - libkea-pgsql19 
+  - libkea-process27 
+  - libkea-stats18 
   - libkea-util-io0 
-  - libkea-util28 
+  - libkea-util32 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -11921,7 +11929,7 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmisdn1 
-  - libmjpegutils-2_0-0-32bit: [x86_64] 
+  - libmjpegutils-2_2-0-32bit: [x86_64] 
   - libmjpegutils-devel 
   - libmlag_pb0 
   - libmlt++-devel 
@@ -11985,7 +11993,7 @@ unsorted:
   - libmpeg2-0-32bit: [x86_64] 
   - libmpeg2-devel 
   - libmpeg2convert0 
-  - libmpeg2encpp-2_0-0-32bit: [x86_64] 
+  - libmpeg2encpp-2_2-0-32bit: [x86_64] 
   - libmpfi0 
   - libmpfpx0 
   - libmpfr6-32bit: [x86_64] 
@@ -11994,7 +12002,7 @@ unsorted:
   - libmpir-devel 
   - libmpir23 
   - libmpirxx8 
-  - libmplex2-2_0-0-32bit: [x86_64] 
+  - libmplex2-2_2-0-32bit: [x86_64] 
   - libmpv1 
   - libmpx2-gcc7 
   - libmpx2-gcc7-32bit: [x86_64] 
@@ -13651,7 +13659,7 @@ unsorted:
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
   - libsrecord0 
-  - libsrt1-32bit: [x86_64] 
+  - libsrt1_4-32bit: [x86_64] 
   - libsrtp-devel 
   - libsrtp1 
   - libsrtp1-32bit: [x86_64] 
@@ -13958,6 +13966,8 @@ unsorted:
   - libtraceevent-devel 
   - libtraceevent1 
   - libtraceevent1-plugins 
+  - libtracefs-devel 
+  - libtracefs1 
   - libtranscript-devel 
   - libtranscript1 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
@@ -16129,6 +16139,7 @@ unsorted:
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
   - motv 
+  - mousepad-devel 
   - movit-devel 
   - movit8-data 
   - mozaddon-devel 
@@ -27831,6 +27842,7 @@ unsorted:
   - python39-colour 
   - python39-combi 
   - python39-commentjson 
+  - python39-compat-patcher-core 
   - python39-compileall2 
   - python39-compizconfig 
   - python39-concurrentloghandler 
@@ -32208,7 +32220,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
