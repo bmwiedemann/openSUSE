@@ -23,7 +23,7 @@
 %bcond_without  pandoc
 %endif
 Name:           growlight
-Version:        1.2.32
+Version:        1.2.33
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(libcryptsetup) >= 2.0.2
 BuildRequires:  pkgconfig(libpci) >= 3.1.9
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(nettle) >= 3.5.1
-BuildRequires:  pkgconfig(notcurses) >= 2.1.8
+BuildRequires:  pkgconfig(notcurses) >= 2.2.9
 BuildRequires:  pkgconfig(pciaccess) >= 0.13.1
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
