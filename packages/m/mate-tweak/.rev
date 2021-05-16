@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>830055</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>907c136a659f425dbee176ef7ef503eb</srcmd5>
+    <version>21.04.3</version>
+    <time>1621201324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.04.3.</comment>
+    <requestid>893500</requestid>
+  </revision>
 </revisionlist>

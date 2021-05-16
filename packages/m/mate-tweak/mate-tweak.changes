@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:22:30 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 21.04.3:
+  * Drop MATE Dock requirement for Netbook layout.
+  * When switching to/from Mutiny update the Plank configuration
+    accordingly.
+  * Make Mutiny layout available if Plank is available.
+    + Mutiny no longer uses mate-dock-applet.
+  * Mutiny no longer uses Maximus or left-aligned window controls.
+  * Fallback to a sane default Plank theme when not using a known
+    GTK theme.
+  * When switching to Mutiny layout pick a suitable Plank theme
+    (lp#1917740).
+  * Keep Brisk menu label visible in the Mutiny layout.
+
+-------------------------------------------------------------------
 Thu Aug 27 12:53:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
