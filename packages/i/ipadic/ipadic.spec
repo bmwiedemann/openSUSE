@@ -1,7 +1,7 @@
 #
 # spec file for package ipadic
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,55 +12,51 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ipadic
-BuildRequires:  chasen-devel
-BuildRequires:  perl-Text-ChaSen
-#!BuildIgnore:  ipadic
-PreReq:         %install_info_prereq
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
-Url:            http://chasen.aist-nara.ac.jp/
-# Original Source is gzipped.
-Source0:        http://chasen.aist-nara.ac.jp/stable/ipadic/ipadic-2.6.3.tar.bz2
-Patch0:         ipadic.patch
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Standard Japanese Dictionary for ChaSen
 License:        SUSE-Permissive
 Group:          System/I18n/Japanese
+URL:            https://osdn.net/projects/ipadic/
+Source0:        https://osdn.net/projects/ipadic/downloads/24435/ipadic-2.7.0.tar.gz
+Patch0:         ipadic.patch
+BuildRequires:  automake
+BuildRequires:  chasen-devel
+BuildRequires:  perl-Text-ChaSen
+#!BuildIgnore:  ipadic
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         %{install_info_prereq}
+BuildArch:      noarch
 
 %description
 Standard Japanese dictionary for ChaSen.
 
-
 %prep
-%setup
-%patch0 -p 1
+%autosetup -p1
 
 %build
-./configure --prefix=%{_prefix} \
-	    --sysconfdir=%{_sysconfdir} \
-            --with-dicdir=%{_prefix}/share/chasen/dic/ \
-            --with-chasenrc-path=/etc/chasenrc \
-            --mandir=%{_mandir} \
-	    --infodir=%{_infodir} \
+autoreconf -fi
+%configure \
+  --with-dicdir=%{_datadir}/chasen/dic/ \
+  --with-chasenrc-path=%{_sysconfdir}/chasenrc
+# single thread, broken with parallel build
 make
 
 %install
-mkdir -p $RPM_BUILD_ROOT/etc
-make DESTDIR=$RPM_BUILD_ROOT install
-rm -f $RPM_BUILD_ROOT/%{_infodir}/dir
+%make_install
+rm -f %{buildroot}/%{_infodir}/dir
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS* README*
+%license COPYING
+%doc AUTHORS ChangeLog NEWS* README*
 %doc doc/*.pdf
-%dir %{_prefix}/share/chasen/
-%{_prefix}/share/chasen/*
-%config /etc/chasenrc
+%dir %{_datadir}/chasen/
+%{_datadir}/chasen/*
+%config %{_sysconfdir}/chasenrc
 
 %changelog

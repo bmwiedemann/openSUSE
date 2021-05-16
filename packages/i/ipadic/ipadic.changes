@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 12 18:00:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.7.0
+  * Parameters are updated
+  * CTYPE/CFORM are modified
+- Use configure macro
+- Updated ipadic.patch
+
+-------------------------------------------------------------------
 Sat Dec 21 17:00:51 UTC 2013 - coolo@suse.com
 
 - buildignore our own name to avoid bootstap problems with
