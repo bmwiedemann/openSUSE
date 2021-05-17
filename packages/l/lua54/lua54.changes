@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 10 08:54:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add shared_link.patch: fix dynamic linking executable
+- Stop building static library
+
+-------------------------------------------------------------------
 Mon Apr 19 09:15:40 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add upstream-bugs.patch and upstream-bugs-test.patch to fix

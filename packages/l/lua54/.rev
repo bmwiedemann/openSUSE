@@ -91,4 +91,14 @@
   bugs 1,2,3 for build and tests respectively.</comment>
     <requestid>886619</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ae75a6440e0f7dea578e6a397991abf</srcmd5>
+    <version>5.4.3</version>
+    <time>1621269887</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shared_link.patch: fix dynamic linking executable
+- Stop building static library
+</comment>
+    <requestid>891995</requestid>
+  </revision>
 </revisionlist>

@@ -44,6 +44,7 @@ Patch3:         main_test.patch
 # PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.3
 Patch4:         upstream-bugs.patch
 Patch5:         upstream-bugs-test.patch
+Patch6:         shared_link.patch
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
 %else
@@ -144,6 +145,7 @@ of C functions, written in ANSI C.
 %setup -q -n lua-%{version}
 %patch0 -p1
 %patch4 -p1
+%patch6 -p1
 %endif
 
 # manpage
@@ -152,19 +154,19 @@ cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_ver
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
-export LIBTOOL="libtool --quiet"
-make -O -j3 V=1 VERBOSE=1 -C src \
+make %{_smp_mflags} VERBOSE=1 -C src \
     CC="cc" \
     MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_USE_LINUX -DLUA_COMPAT_MODULE" \
     MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses" \
     V=%{major_version} \
+    LIBTOOL="libtool --quiet" \
     all
 
 %install
 %make_install \
     V=%{major_version} \
+    LIBTOOL="libtool --quiet" \
     INSTALL_TOP="%{buildroot}%{_prefix}" \
     INSTALL_LIB="%{buildroot}%{_libdir}"
 
@@ -267,7 +269,6 @@ fi
 %{_includedir}/lua%{major_version}/lua.hpp
 %{_includedir}/lua%{major_version}/luaconf.h
 %{_includedir}/lua%{major_version}/lualib.h
-%{_libdir}/liblua%{major_version}.a
 %{_libdir}/liblua%{major_version}.so
 %{_libdir}/pkgconfig/lua%{major_version}.pc
 # alternatives

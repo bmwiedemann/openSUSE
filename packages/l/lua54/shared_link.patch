@@ -1,0 +1,22 @@
+--- a/src/ldebug.h
++++ b/src/ldebug.h
+@@ -36,7 +36,7 @@
+ #endif
+
+
+-LUAI_FUNC int luaG_getfuncline (const Proto *f, int pc);
++LUA_API int luaG_getfuncline (const Proto *f, int pc);
+ LUAI_FUNC const char *luaG_findlocal (lua_State *L, CallInfo *ci, int n,
+                                                     StkId *pos);
+ LUAI_FUNC l_noret luaG_typeerror (lua_State *L, const TValue *o,
+--- a/src/lundump.h
++++ b/src/lundump.h
+@@ -30,7 +30,7 @@
+ LUAI_FUNC LClosure* luaU_undump (lua_State* L, ZIO* Z, const char* name);
+
+ /* dump one chunk; from ldump.c */
+-LUAI_FUNC int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
++LUA_API int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
+                          void* data, int strip);
+
+ #endif
