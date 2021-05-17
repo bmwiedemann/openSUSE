@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 17 13:47:51 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.3.1
+  * Django 3.1 support
+  * New setting CURRENCY_DECIMAL_PLACES_DISPLAY configures decimal 
+    places to display for each configured currency.
+
+-------------------------------------------------------------------
 Tue Mar 31 04:58:29 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.0
