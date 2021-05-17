@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 14:47:55 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- provide real shell in example conf
+  * fixes # https://github.com/openSUSE/openSUSEway/issues/37
+
+-------------------------------------------------------------------
 Tue Mar 23 23:28:41 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - avoid restarts on update by using %service_del_postun_without_restart 
