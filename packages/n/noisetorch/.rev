@@ -32,4 +32,14 @@
   * remove commented out code</comment>
     <requestid>882007</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d02465a124c18c852f5f975aed51ba00</srcmd5>
+    <version>0.10.1</version>
+    <time>1621269928</time>
+    <user>dimstar_suse</user>
+    <comment>- remove -tags release to avoid the auto-updater 
+
+- use buildmode=pie</comment>
+    <requestid>893718</requestid>
+  </revision>
 </revisionlist>

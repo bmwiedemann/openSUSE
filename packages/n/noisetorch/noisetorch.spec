@@ -45,7 +45,8 @@ pushd c/ladspa
 %make_build
 popd
 go generate
-CGO_ENABLED=0 GOOS=linux go build -tags release -a -ldflags '-s -w -extldflags "-static"' .
+# -tags release would enable the auto-updater (update.go)
+CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-s -w -extldflags "-static"' .
 
 %install
 install -D -m 644 assets/icon/noisetorch.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/noisetorch.png

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 17 11:33:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove -tags release to avoid the auto-updater 
+
+-------------------------------------------------------------------
+Sat Apr 24 09:22:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use buildmode=pie 
+
+-------------------------------------------------------------------
 Mon Mar 29 15:00:15 UTC 2021 - dmueller@suse.com
 
 - Update to version 0.10.1:
