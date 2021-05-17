@@ -26,6 +26,7 @@ Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
 URL:            https://github.com/libfuse/pyfuse3
 Source:         https://files.pythonhosted.org/packages/source/p/%{pname}/%{pname}-%{version}.tar.gz
+Patch0:         0001-timestamp-rounding-tests-avoid-y2038-issue.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pytest >= 3.4.0}

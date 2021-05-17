@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 17 11:22:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix build in i586 where a test fails
+  due to the y2038 issue:
+  * 0001-timestamp-rounding-tests-avoid-y2038-issue.patch
+
+-------------------------------------------------------------------
 Sun May 16 08:03:01 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.2.0
