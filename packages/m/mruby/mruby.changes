@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sat May 15 14:01:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.0
+  * New Core Language Features
+    * Implement endless-def. Ruby:Feature#16746
+    * Replace R-assignment by single-line pattern matching.
+      Ruby:Feature#15921
+    * Support squiggly heredocs. Ruby:Feature#5246
+  * Breaking Changes
+    * mruby VM and bytecode:
+      mruby binaries are no longer backward compatible
+      Upgrade mruby VM version RITE_VM_VER to 0300 (means mruby 3.0).
+      Upgrade mruby binary version RITE_BINARY_FORMAT_VER to 0200.
+    * Integer has been changed to a specification similar to CRuby.
+    * Integrate Fixnum and Integer.
+    * Remove Integral.
+    * int / int -> int
+    * Add APIs for Integer.
+  * Full change log:
+    https://mruby.org/releases/2021/03/05/mruby-3.0.0-released.html
+
+-------------------------------------------------------------------
+Fri May  7 14:26:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.2
+  * IO#readchar returns a UTF-8 character fragment instead of
+    EOFError if EOF is reached in the middle of UTF-8 characters.
+  * This behavior is different from CRuby, but it is a mruby
+    specification that supports either ASCII or UTF-8 exclusively.
+  * Remove mrb_run() from C APIs.
+  * Fixed segmentation fault at mrb_io_s_select
+  * Fixed segmentation fault at mrb_vm_exec.
+  * Fixed some Hash methods are inconsistent with values when hash
+    has duplicate key.
+  * Fixed get local variable names from orphan block.
+  * Fixed memory leaks in some places when out of memory.
+  * Fixed heap buffer overflow in mruby interpreter.
+  * Fixed type tag not used when calculating hash code.
+  * Full log:
+    https://mruby.org/releases/2020/08/06/mruby-2.1.2-released.html
+
+-------------------------------------------------------------------
+Mon Jun 15 22:45:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.1.1 
+  too many changes to include here
+  https://mruby.org/releases/2020/06/04/mruby-2.1.1-released.html
+  https://mruby.org/releases/2019/11/19/mruby-2.1.0-released.html
+  https://mruby.org/releases/2019/04/04/mruby-2.0.1-released.html
+  https://mruby.org/releases/2018/12/11/mruby-2.0.0-released.html
+  https://mruby.org/releases/2018/04/27/mruby-1.4.1-released.html
+  https://mruby.org/releases/2017/07/04/mruby-1.3.0-released.html
+  https://mruby.org/releases/2015/11/18/mruby-1.2.0-released.html
+  https://mruby.org/releases/2014/11/19/mruby-1.1.0-released.html
+  https://mruby.org/releases/2014/02/09/mruby-1.0.0-released.html
+
+-------------------------------------------------------------------
+Tue Jul 03 06:20:43 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.0+20120701)
+
