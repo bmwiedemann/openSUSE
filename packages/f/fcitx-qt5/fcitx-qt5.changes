@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 12 02:13:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.6
+  * Updated translations
+  * Fix potential recursion in libreoffice
+  * Fix delete surrounding text
+  * Allow building with QT_NO_KEYWORDS
+
+-------------------------------------------------------------------
 Tue Dec  1 07:39:32 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 1.2.5
