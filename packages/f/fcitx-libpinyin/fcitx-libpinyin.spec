@@ -19,35 +19,29 @@
 %define sover 12
 
 Name:           fcitx-libpinyin
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Libpinyin Wrapper for Fcitx
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-URL:            https://github.com/fcitx/fcitx-libpinyin
-Source:         http://download.fcitx-im.org/fcitx-libpinyin/%{name}-%{version}_dict.tar.xz
+URL:            https://fcitx-im.org/wiki/Libpinyin
+Source0:        https://github.com/fcitx/fcitx-libpinyin/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://download.fcitx-im.org/data/model.text.20161206.tar.gz
 #PATCH-FIX-UPSTREAM downgrade qt5 requirement to 5.4 since qtwebengine is available
 # starting from that release
 Patch0:         dictmanager-qt5.4.patch
-#PATCH-FIX-UPSTREAM linking against fcitx
-Patch1:         fcitx-libpinyin-linking.patch
-#PATCH-FIX-UPSTREAM libpinyin 2.4.92 used new table format
-Patch2:         %{name}-libpinyin-2.4.92-database_format.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.6
 BuildRequires:  fcitx-devel
 BuildRequires:  fcitx-qt5-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  glib2-devel
 BuildRequires:  intltool
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtwebengine-devel
-BuildRequires:  xz
+BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libpinyin)
+BuildRequires:  pkgconfig(libpinyin) >= 2.6
 Provides:       locale(fcitx:zh_CN;zh_SG)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{fcitx_requires}
 
 %description
@@ -56,12 +50,11 @@ Fcitx-libpinyin is a Frontend of the Intelligent Pinyin IME Backend.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+cp %{SOURCE1} data
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -72,8 +65,7 @@ make %{?_smp_mflags}
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_fcitx_libdir}/qt
 %{_fcitx_libdir}/%{name}.so
 %{_fcitx_libdir}/qt/lib%{name}-dictmanager.so

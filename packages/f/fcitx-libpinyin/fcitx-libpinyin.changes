@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 01:41:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.4
+  * Updated translation
+  * Support libpinyin 2.6.0
+- Drop upstream fixed
+  fcitx-libpinyin-libpinyin-2.4.92-database_format.patch and
+  fcitx-libpinyin-linking.patch
+
+-------------------------------------------------------------------
 Mon Mar  1 04:18:57 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - drop fcitx-libpinyin-0.5.3-libpinyin-2.4.92.patch
