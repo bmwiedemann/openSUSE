@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 17 14:13:02 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.15.0
+  * Improve Django REST Framework (DRF) integration.
+  * Add Python 3.9 support.
+  * Add support for resetting attempts with cache backend.
+  * Remove support for Django 2.0.
+  * Add support for Django 3.2.
+
+-------------------------------------------------------------------
 Sun Sep 13 13:28:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v5.6.0
