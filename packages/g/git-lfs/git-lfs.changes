@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  8 20:04:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.3:
+  * This release fixes two bugs that caused `git lfs prune` to hang, updates some
+    dependencies to versions which lack a security issue (which did not affect Git
+    LFS), and adds support for ARM64 builds on macOS.
+
+-------------------------------------------------------------------
 Wed Feb 10 15:25:32 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - add missing "#" for the tarball rename

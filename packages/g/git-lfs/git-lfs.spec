@@ -18,15 +18,13 @@
 
 %define rb_build_ruby_abis     %{rb_default_ruby_abi}
 %define rb_build_versions      %{rb_default_ruby}
-
 %if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
 %bcond_with    build_docs
 %else
 %bcond_with    build_docs
 %endif
-
 Name:           git-lfs
-Version:        2.13.2
+Version:        2.13.3
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
@@ -35,9 +33,6 @@ URL:            https://git-lfs.github.com/
 Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        README.packaging
 Patch0:         Makefile_path.patch
-%if %{with build_docs}
-BuildRequires:  %{rubygem ronn}
-%endif
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2
@@ -46,8 +41,11 @@ BuildRequires:  golang-packaging
 BuildRequires:  which
 Requires:       git-core >= 1.8.2
 Requires(post): git-core >= 1.8.2
-Requires(preun): git-core >= 1.8.2
+Requires(preun):git-core >= 1.8.2
 %{go_nostrip}
+%if %{with build_docs}
+BuildRequires:  %{rubygem ronn}
+%endif
 
 %description
 Git Large File Storage (LFS) replaces large files such as audio samples,
@@ -98,7 +96,7 @@ rm -rf ${GIT_LFS_TEST_DIR}
 %files
 %{_bindir}/git-lfs
 %license LICENSE.md
-%doc CHANGELOG.md CODE-OF-CONDUCT.md CONTRIBUTING.md  INSTALLING.md README.md
+%doc CHANGELOG.md CODE-OF-CONDUCT.md CONTRIBUTING.md INSTALLING.md README.md
 %if %{with build_docs}
 %{_mandir}/man*/*
 %endif
