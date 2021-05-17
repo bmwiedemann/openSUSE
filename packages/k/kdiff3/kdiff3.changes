@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 08:14:30 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9.2
+  * Remove erroneous #ifdef (kde#436958)
+
+-------------------------------------------------------------------
 Sat May 15 11:24:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9.1

@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="disabled">
-   <param name="version">1.9.1</param>
+   <param name="version">1.9.2</param>
    <param name="url">https://invent.kde.org/sdk/kdiff3</param>
-   <param name="revision">refs/tags/1.9.1</param>
+   <param name="revision">refs/tags/1.9.2</param>
    <param name="scm">git</param>
    <param name="filename">kdiff3</param>
    <param name="exclude">windows_installer</param>

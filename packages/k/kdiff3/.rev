@@ -279,4 +279,13 @@
     <comment></comment>
     <requestid>893302</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a3dd872a325abaf458f99c7e8c7844a9</srcmd5>
+    <version>1.9.2</version>
+    <time>1621269909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2
+  * Remove erroneous #ifdef (kde#436958) (forwarded request 893578 from wolfi323)</comment>
+    <requestid>893581</requestid>
+  </revision>
 </revisionlist>
