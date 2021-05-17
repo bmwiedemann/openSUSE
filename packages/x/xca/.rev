@@ -31,4 +31,12 @@
     <comment>update to 2.3.0 (forwarded request 822873 from computersalat)</comment>
     <requestid>822874</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>635456cb7e5d74f19616a734cff2c99e</srcmd5>
+    <version>2.4.0</version>
+    <time>1621269939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893795</requestid>
+  </revision>
 </revisionlist>

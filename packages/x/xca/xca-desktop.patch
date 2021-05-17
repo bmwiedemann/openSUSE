@@ -1,8 +1,8 @@
-Index: misc/xca.desktop
-===================================================================
---- misc/xca.desktop.orig
-+++ misc/xca.desktop
-@@ -11,5 +11,5 @@ Comment[nl]=Een grafische gebruikers int
+diff --git a/misc/xca.desktop b/misc/xca.desktop
+index 2cdd7a9..89bc823 100644
+--- a/misc/xca.desktop
++++ b/misc/xca.desktop
+@@ -13,5 +13,5 @@ Comment[pt_BR]=Interface gráfica para gerenciar e emitir Certificados X.509
  Exec=xca %F
  Icon=xca
  Terminal=false

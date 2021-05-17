@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xca
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
@@ -26,15 +26,14 @@ Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 URL:            https://sourceforge.net/projects/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-desktop.patch
-Patch1:         %{name}-configure.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  sgmltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(openssl)
@@ -59,9 +58,20 @@ das Signieren und Widerrufen von PEM/DER/PKCS12, und die
 Auswahl von X509v3-Erweiterungen. Die Zertifikate werden in einer
 Baumstruktur präsentiert.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          Productivity/Networking/Security
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    packageand(%{name}:bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
-%autopatch -p0
+%autopatch -p1
 
 %build
 %configure --with-qt-version=5 \
@@ -79,9 +89,13 @@ Baumstruktur präsentiert.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/mimetypes/x-xca-*.png
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/pixmaps/%{name}*
 %{_datadir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
