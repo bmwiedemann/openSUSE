@@ -1,7 +1,7 @@
 #
 # spec file for package python-subprocrunner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-subprocrunner
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A Python wrapper library for subprocess module
 License:        MIT
@@ -29,18 +29,18 @@ Source:         https://files.pythonhosted.org/packages/source/s/subprocrunner/s
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module loguru >= 0.4.1}
-BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module typepy}
-# /SECTION
 Requires:       python-loguru >= 0.4.1
 Requires:       python-mbstrdecoder >= 1.0.0
 Requires:       python-six
 Requires:       python-typepy
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module loguru >= 0.4.1}
+BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module typepy}
+# /SECTION
 %python_subpackages
 
 %description

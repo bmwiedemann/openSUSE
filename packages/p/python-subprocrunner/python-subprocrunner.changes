@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 16 18:30:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't require pytest-runner, when we don't need it.
+
+-------------------------------------------------------------------
+Thu May 13 16:40:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  * Add support for Python 3.10
+  * Modify type annotations
+  * Add subprocrunner.typing
+
+-------------------------------------------------------------------
 Sat Apr  4 11:15:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - version update to 1.2.1
