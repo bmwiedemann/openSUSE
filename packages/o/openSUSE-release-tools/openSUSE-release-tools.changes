@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Mon May 10 10:46:57 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210510.0d5a9cfe:
+  * pkglistgen: Force outdir for the checkouts
+
+-------------------------------------------------------------------
+Fri May 07 12:38:08 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210507.a59ce12e:
+  * Do rebuilds for Step
+
+-------------------------------------------------------------------
+Thu May 06 07:16:37 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210506.bdf351d3:
+  * gocd: fix incorrect yaml for BCI
+
+-------------------------------------------------------------------
+Wed May 05 18:06:18 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210505.9888ea18:
+  * add packagelist and release package bots for BCI
+
+-------------------------------------------------------------------
+Thu Apr 29 11:29:48 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210429.5470e3d1:
+  * Update email address for Factory mailing list
+
+-------------------------------------------------------------------
+Mon Apr 26 15:32:22 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210426.57b78c17:
+  * Fix for wrong indented json in #2537
+
+-------------------------------------------------------------------
+Thu Apr 22 10:32:20 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210422.ab2264e1:
+  * Drop the old path for releasing SP3:GA/sles15-image
+
+-------------------------------------------------------------------
+Tue Apr 20 11:57:43 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210420.1c2151c4:
+  * Update check_source.asciidoc
+  * Update testing.asciidoc
+  * Update staging.asciidoc
+  * Update staging.asciidoc
+  * grammar-gender
+
+-------------------------------------------------------------------
+Fri Apr 16 11:40:23 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210416.730e78b0:
+  * Add automated rebuilds for step Backports
+
+-------------------------------------------------------------------
+Thu Apr 15 09:53:12 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210415.4a57f7a7:
+  * gocd: Drop obsolete projects, fix whitespace
+
+-------------------------------------------------------------------
+Tue Apr 13 12:17:27 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210413.d92c1396:
+  * Remove release from images-ndb repository
+
+-------------------------------------------------------------------
+Thu Apr 08 11:38:55 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210408.3990fecd:
+  * Remove comment inside script
+
+-------------------------------------------------------------------
+Thu Apr 08 10:46:53 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210408.89c0136c:
+  * Release SUSE:SLE-15-SP3:GA sles-image into :TEST and :PUBLISH
+
+-------------------------------------------------------------------
+Thu Apr 08 10:35:55 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210408.b593b12c:
+  * Revert pkglistgen: ignore bootstrap_copy repo
+
+-------------------------------------------------------------------
+Tue Apr 06 19:42:13 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210406.a75bf5b7:
+  * Update MicroOS IBS project (MicroOS51) in botmaster
+  * pkglistgen: don't die on unset pkglistgen-ignore_repos
+
+-------------------------------------------------------------------
+Tue Apr 06 07:09:03 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210406.0e9a3e52:
+  * Revert "Add bot for Camerleon project"
+
+-------------------------------------------------------------------
+Tue Apr 06 07:00:02 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210406.1055d062:
+  * legal import: Scan openSUSE projects more often
+  * legal-auto: Reopen obsolete reviews while scanning projects
+
+-------------------------------------------------------------------
+Tue Apr 06 05:56:08 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210406.6b65b00a:
+  * pkglistgen: ignore bootstrap_copy repo
+
+-------------------------------------------------------------------
+Tue Apr 06 05:54:07 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210406.2fec2dbe:
+  * pkglistgen: After solving check all packages listed
+
+-------------------------------------------------------------------
+Tue Mar 30 08:35:57 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210330.e6a45eb4:
+  * legal: Only wait 2 hours for legal reviews for openSUSE:Factory
+
+-------------------------------------------------------------------
+Wed Mar 24 13:26:11 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210324.a747e490:
+  * Add release to PUBLISH for containers
+
+-------------------------------------------------------------------
+Fri Mar 19 15:08:11 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210319.fd0124a9:
+  * Add missing repos for 15.3
+  * Add Leap 15.3 Maintenance configuration
+
+-------------------------------------------------------------------
+Fri Mar 19 10:12:12 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210319.de08ea9d:
+  * findfileconflicts: hardcode exception for glibc and bash
+  * handle usrmerge
+
+-------------------------------------------------------------------
+Mon Mar 15 13:07:17 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210315.d6cd0125:
+  * Build containerfile and images repos against each other
+  * Add containerfile_products type to totest-manager
+  * Add a containerfile repo to adi stagings
+  * Make Dockerfile builds pass check_source.py
+
+-------------------------------------------------------------------
+Mon Mar 15 09:32:41 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210315.167397b8:
+  * Add Leap:15.3:ARM to test armv7 Step:15
+
+-------------------------------------------------------------------
+Thu Mar 11 14:26:04 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210311.1b7e79b9:
+  * build-fail-reminder: don't use cgi.escape, but rather html escape the fixed string directly
+
+-------------------------------------------------------------------
+Wed Mar 10 13:54:20 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210310.18652691:
+  * metrics: add sample Apache vhost config
+  * metrics: accept more flavors
+
+-------------------------------------------------------------------
+Wed Mar 03 14:19:50 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210303.440e1a88:
+  * Monitor release process
+
+-------------------------------------------------------------------
+Wed Mar 03 10:17:08 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210303.72b45750:
+  * adi: stage Non-Ring delete requests in adi projects
+
+-------------------------------------------------------------------
 Mon Feb 15 14:39:49 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210215.e68b5e0b:

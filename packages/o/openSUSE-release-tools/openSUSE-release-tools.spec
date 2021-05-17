@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20210215.e68b5e0b
+Version:        20210510.0d5a9cfe
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -178,8 +178,8 @@ Summary:        Ingest access logs to generate metrics
 Group:          Development/Tools/Other
 BuildArch:      noarch
 # Used to stream log files.
-Requires:       %{name}-metrics = %{version}
 Requires:       curl
+Requires:       %{name}-metrics = %{version}
 Requires:       php > 7
 # Used to install influxdb/influxdb-php.
 Requires:       php-composer
@@ -256,7 +256,6 @@ PreReq:         openSUSE-release-tools-repo-checker
 %description pkglistgen
 Generates package lists based on 000package-groups and puts them
 in 000product, resp 000release-packages
-
 
 %package -n osclib
 Summary:        Supplemental osc libraries
