@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 16 11:13:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.3
+  * LDAP module functionality expanded with support for PAC and
+    LDAP based authentication.
+  * Changed child.maxrequests behavior to be an upper limit on
+    requests handled and added child.maxlifetime, which can be
+    used to specify the limit on how long child-processes will
+    receive new requests.
+  * Added Linux service specification file.
+  * Work around an issue where "logoutput: syslog" in the client
+    could create issues for the application being socksified.
+  * Added missing NULL argument check in Raccept().
+  * Fix an error case where the Dante mother process would never
+    terminate a request process that failed handling a client
+    due to resource shortage, leading the request process to hang
+    around idle forever.
+  * Will hopefully fix problem reported by ANON.
+  * Fix for server crash in builds with preloading disabled
+    (preloading is enabled by default).
+  * Fix for module related SIOCGIFHWADDR warning in obscure
+    situations.
+  * Removal of arbitrary interface limit in getifaddrs()
+    compatibility function.
+  * Some minor automated build/test related changes.
+  * Minor documentation fixes.
+- Update patch dante-1.4.1-gcc5-fixes.patch
+
+-------------------------------------------------------------------
 Thu Oct 18 10:33:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop authorship; this ought not to be part of descriptions.

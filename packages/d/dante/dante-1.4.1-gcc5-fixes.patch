@@ -1,7 +1,7 @@
-Index: dante-1.4.1/lib/Rcompat.c
-===================================================================
---- dante-1.4.1.orig/lib/Rcompat.c
-+++ dante-1.4.1/lib/Rcompat.c
+diff --git a/lib/Rcompat.c b/lib/Rcompat.c
+index f03e125..fc79abe 100755
+--- a/lib/Rcompat.c
++++ b/lib/Rcompat.c
 @@ -44,6 +44,8 @@
  
  #include "common.h"
@@ -9,9 +9,9 @@ Index: dante-1.4.1/lib/Rcompat.c
 +#include<stdio.h>
 +
  static const char rcsid[] =
- "$Id: Rcompat.c,v 1.89.4.2 2014/08/15 18:16:40 karls Exp $";
+ "$Id: Rcompat.c,v 1.89.4.2.6.2 2020/11/11 16:11:51 karls Exp $";
  
-@@ -509,7 +511,7 @@ Rgets(buf)
+@@ -513,7 +515,7 @@ Rgets(buf)
     slog(LOG_DEBUG, "%s: fd %d", function, d);
  
     if (!gssapi_isencrypted(d))

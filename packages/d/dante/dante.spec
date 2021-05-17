@@ -1,7 +1,7 @@
 #
 # spec file for package dante
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libsocks0
 Name:           dante
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        A SOCKSv4 and v5 client implementation
 License:        BSD-3-Clause
@@ -139,6 +139,7 @@ rm %{buildroot}%{_bindir}/socksify.old
 find %{buildroot} -type f -name "*.la" -delete -print
 
 rm Makefile* SPECS/Makefile*
+rm INSTALL
 
 %pre server
 %service_add_pre sockd.service
@@ -148,6 +149,7 @@ rm Makefile* SPECS/Makefile*
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
+
 %post server
 %service_add_post sockd.service
 
