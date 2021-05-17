@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  3 07:08:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210501
+  + add a special case in the configure script to work around one of the
+    build-time breakages reported for OpenBSD 6 here:
+       https://www.mail-archive.com/bugs@openbsd.org/msg13200.html
+    There is no workaround for the other issue, a broken linker spec.
+  + modify configure check for libtool to prevent accidental use of an
+    OpenBSD program which uses the same name.
+  + update config.guess, config.sub
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Apr 26 07:02:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210424
