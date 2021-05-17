@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 03:10:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Test-Script/Changes
+
+  1.29      2021-05-13 09:17:30 -0600
+    - Production release identical to 1.28_01 release.
+
+  1.28_01   2021-05-10 10:12:22 -0600
+    - Added script_fails and program_fails functions (brainbuz++ gh#34, gh#38)
+
+-------------------------------------------------------------------
 Thu Feb 18 03:09:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.27

@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Script
 Name:           perl-Test-Script
-Version:        1.27
+Version:        1.29
 Release:        0
 Summary:        Basic cross-platform tests for scripts
 License:        Artistic-1.0 OR GPL-1.0-or-later
