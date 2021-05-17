@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 13 16:27:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.6
+  * Change enum type of iov.BufferType to IntEnum to fix load on
+    Python 3.10 - #10
+  * Make pyspnego-parse and entry point which uses __main__.py in
+    the spnego package. This allows users to use the parser script
+    by running python -m spnego --token ...
+
+-------------------------------------------------------------------
 Tue Jan 12 09:47:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.5

@@ -19,9 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyspnego
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
-Summary:        Python SPNEGO authentication library 
+Summary:        Python SPNEGO authentication library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/pyspnego
