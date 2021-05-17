@@ -80,4 +80,38 @@
     <comment></comment>
     <requestid>862821</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>acaebd5fbc99395089f7bcd91465a04f</srcmd5>
+    <version>2.1.1</version>
+    <time>1621269926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BR on python-flaky.
+- Update to v2.1.1
+  * [mac] Fix callback exceptions when the watcher is deleted but
+    still receiving events
+- Update to v2.1.0
+  * [inotify] Simplify libc loading
+  * [mac] Add support for non-recursive watches in FSEventsEmitter
+  * [watchmedo] Add support for --debug-force-* arguments to tricks
+- Update to v2.0.3
+  * [mac] Use logger.debug() instead of logger.info()
+  * Updated documentation links
+- Update to v2.0.2
+  * [mac] Add missing exception objects
+- Update to v2.0.1
+  * [mac] Fix a segmentation fault when dealing with unicode paths
+  * Moved the CI from Travis-CI to GitHub Actions
+- Update to v2.0.0
+  * [mac] Drop support for macOS 10.12 and earlier
+  * [mac] Support coalesced filesystem events
+  * [mac] Fix an issue when renaming an item changes only the
+    casing
+  * [inotify] Add support for IN_CLOSE_WRITE events.
+    A FileCloseEvent event will be fired. Note that
+    IN_CLOSE_NOWRITE events are not handled to prevent much noise.
+  * [inotify] Allow to stop the emitter multiple times
+  * Avoid deprecated PyEval_InitThreads on Python 3.7+
+</comment>
+    <requestid>893715</requestid>
+  </revision>
 </revisionlist>
