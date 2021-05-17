@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-luv</param>
-    <param name="revision">4b49d3edad2179c76d685500edf1b44f61ec4be8</param>
+    <param name="revision">78f665ecf5c863de5361caec7763a31200f689d8</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aantron/luv.git</param>

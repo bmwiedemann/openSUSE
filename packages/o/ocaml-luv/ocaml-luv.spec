@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-luv
 Name:           %{pkg}%{nsuffix}
-Version:        0.5.7
+Version:        0.5.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
@@ -74,7 +74,7 @@ developing applications that use %{name}.
 
 %build
 export LUV_USE_SYSTEM_LIBUV=yes
-dune_release_pkgs='luv'
+dune_release_pkgs='luv,luv_unix'
 %ocaml_dune_setup
 %if "%{build_flavor}" == ""
 %ocaml_dune_build
@@ -89,8 +89,11 @@ export LUV_USE_SYSTEM_LIBUV=yes
 
 %if "%{build_flavor}" == "testsuite"
 %check
+%if %{without ocaml_luv_testsuite}
 exit 0
+%endif
 export LUV_USE_SYSTEM_LIBUV=yes
+OCAML_DUNE_RUNTEST_ARGS='--no-buffer -j1'
 %ocaml_dune_test
 %endif
 
