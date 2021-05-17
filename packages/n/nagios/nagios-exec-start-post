@@ -1,0 +1,46 @@
+#! /bin/sh
+# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany
+#
+# Original Author: Tim Hardeck
+# bases on the SUSE Icinga init script from Wolfgang Rosenauer, Lars Vogdt
+#
+CONFIG='/etc/nagios/nagios.cfg'
+
+# grab a config option
+get_var() {
+    if [ -n "$2" ]; then
+        set -- `grep ^$1 $2 | sed 's@=@ @' | tr -d '[:cntrl:]'`
+    else
+        set -- `grep ^$1 "$CONFIG" | sed 's@=@ @' | tr -d '[:cntrl:]'`
+    fi
+    shift # remove first ARG => search-string
+    echo $*
+}
+
+# get variables from config file
+log_file="$(get_var log_file)"
+nagios_user="$(get_var nagios_user)"
+nagios_group="$(get_var nagios_group)"
+nagios_cmdgrp="$(get_var nagios_cmdgrp)"
+resource_file="$(get_var resource_file)"
+state_retention_file="$(get_var state_retention_file)"
+status_file="$(get_var status_file)"
+
+# use default values if above check doesn't work
+: ${log_file:=/var/log/nagios/nagios.log}
+: ${nagios_user:=nagios}
+: ${nagios_group:=nagios}
+: ${nagios_cmdgrp:=nagcmd}
+: ${resource_file:=/etc/nagios/resource.cfg}
+: ${state_retention_file:=/var/log/nagios/retention.dat}
+: ${status_file:=/var/log/nagios/status.dat}
+
+# set default access rights for files and directories
+for file in "$log_file" "$state_retention_file" "$status_file"; do
+    if [ ! -e "$file" ]; then
+        touch "$file"
+    fi
+    chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$file"
+done
+chmod 660 "$resource_file"
+chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$resource_file"

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 10 14:53:04 UTC 2021 - lars@linux-schulserver.de - 4.4.6
+
+- new nagios-exec-start-post script to fix bsc#1003362
+
+-------------------------------------------------------------------
+Mon May 10 11:24:02 UTC 2021 - lars@linux-schulserver.de - 4.4.6
+
+- fix nagios_upgrade.sh writing to log file in user controlled 
+  directory (bsc#1182398). The nagios_upgrade.sh script writes the 
+  logfile directly below /var/log/ 
+
+-------------------------------------------------------------------
 Wed Jun  3 14:41:41 UTC 2020 - Stefan Botter <obs@botter.cc>
 
 - 4.4.6
@@ -7,7 +19,7 @@ Wed Jun  3 14:41:41 UTC 2020 - Stefan Botter <obs@botter.cc>
 * Fixed NERD not building when enabled in ./configure (#723)
 * Fixed build process when using GCC 10 (#721)
 * Fixed postauth vulnerabilities in histogram.js, map.js, trends.js 
-  (CVE-2020-1408)
+  (CVE-2020-13977, bsc#1172794)
 * When using systemd, configuration will be verified before
   reloading (#715)
 * Fixed HARD OK states triggering on the maximum check attempt (#757)
@@ -321,7 +333,7 @@ Fri Feb 24 08:12:54 UTC 2017 - lars@linux-schulserver.de
 
 - Update to 4.3.1
   SECURITY FIXES
-  * Fix for CVE-2016-6209 - The "corewindow" parameter (as in
+  * Fix for CVE-2016-6209 (bsc#989759) - The "corewindow" parameter (as in
     http://localhost/nagios?corewindow=www.somewhere.com) has been disabled by
     default. See the UPGRADING document for how to enable it. (John Frickson)
   FIXES
@@ -365,7 +377,7 @@ Sun Dec 11 11:53:10 UTC 2016 - lars@linux-schulserver.de
 - update to 4.2.4
   SECURITY FIXES
   * Fixed another root privilege escalation (CVE-2016-9566) Thanks for
-    bringing this to our attention go to Dawid Golunski 
+    bringing this to our attention go to Dawid Golunski (bsc#1014637)
     (http://legalhackers.com).
 
 -------------------------------------------------------------------

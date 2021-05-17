@@ -34,10 +34,10 @@
 #set -x
 VERSION=1
 NAGIOS_CFG='/etc/nagios/nagios.cfg'
-LOCK_FILE='/var/run/nagios/nagios.pid'
+LOCK_FILE='/run/nagios/nagios.pid'
 DATE=$(date "+%Y-%m-%d-%H:%M")
 TMPFILE=$(mktemp /tmp/$(basename $0)-XXXXXX)
-LOGFILE='/var/log/nagios/nagios_upgrade.log'
+LOGFILE='/var/log/nagios_upgrade.log'
 VERBOSE='no'
 DO_ECHO=''
 

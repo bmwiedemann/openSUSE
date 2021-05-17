@@ -43,6 +43,7 @@ Source3:        %{name}.sysconfig
 Source4:        suse.de-nagios
 Source5:        nagios.8
 Source6:        nagiosstats.8
+Source7:        nagios-exec-start-post
 Source8:        upgrade_nagios.sh
 Source9:        upgrade_nagios.8
 Source10:       %{name}-README.SuSE
@@ -349,6 +350,7 @@ install -Dm644 lib/libnagios.a %{buildroot}%{_libdir}/libnagios.a
 %if %{with systemd}
 install -D -m0755 %{SOURCE100} %{buildroot}%{_sbindir}/rc%{name}
 install -D -m0755 %{SOURCE2}  %{buildroot}/%{nagios_libdir}/%{name}-exec-start-pre
+install -D -m0755 %{SOURCE7}  %{buildroot}/%{nagios_libdir}/%{name}-exec-start-post
 install -D -m0644 %{SOURCE12} %{buildroot}/%{_unitdir}/%{name}.service
 install -D -m0644 %{SOURCE13} %{buildroot}/%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %else
@@ -558,6 +560,7 @@ fi
 %{_fillupdir}/sysconfig.%{name}
 %if %{with systemd}
 %attr(0755,root,root) %{nagios_libdir}/%{name}-exec-start-pre
+%attr(0755,root,root) %{nagios_libdir}/%{name}-exec-start-post
 %{_unitdir}/%{name}.service
 %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %attr(0755,root,root) %{_sbindir}/nagios-archive
