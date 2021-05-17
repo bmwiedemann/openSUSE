@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
@@ -100,7 +100,7 @@ rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 %doc README ChangeLog AUTHORS NEWS
 %license COPYING
 %{_bindir}/%{name}
-%{_sbindir}/%{name}bin
+%{_libexecdir}/%{name}bin
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
