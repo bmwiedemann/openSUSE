@@ -1,7 +1,7 @@
 #
-# spec file for package kicad
+# spec file for package kicad-doc%{?pkg_suffix}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        Documentation and tutorials for KiCad
-License:        GPL-3.0-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Documentation/HTML
 URL:            https://kicad-pcb.org
 Source:         https://gitlab.com/kicad/services/%{sname}/-/archive/%{version}/%{sname}-%{version}.tar.bz2#/%{sname}-%{version}.tar.bz2
@@ -90,7 +90,6 @@ Kicad is an open source software for the creation of electronic
 schematic diagrams and printed circuit board artwork.
 This is the documentation package for KiCad. It contains documentation
 and tutorials.
-
 
 %package        ca
 Summary:        Catalan documentation and tutorials for KiCad

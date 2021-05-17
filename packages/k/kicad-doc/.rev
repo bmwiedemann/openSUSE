@@ -203,4 +203,14 @@
     <comment></comment>
     <requestid>859782</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b8ebbee03c4be77a6bafd54cdde8f75c</srcmd5>
+    <version>5.1.10</version>
+    <time>1621269897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.10
+  See https://kicad.org/blog/2021/05/KiCad-5.1.10-Release/ for details.
+</comment>
+    <requestid>892954</requestid>
+  </revision>
 </revisionlist>
