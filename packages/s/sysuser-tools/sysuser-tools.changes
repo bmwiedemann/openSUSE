@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  8 13:19:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use /usr/sbin/nologin instead of /sbin/nologin
+
+-------------------------------------------------------------------
 Mon Feb 15 07:30:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't abort on unbound first argument

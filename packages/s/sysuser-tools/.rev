@@ -126,4 +126,12 @@
     <comment>- Don't abort on unbound first argument (forwarded request 872279 from kukuk)</comment>
     <requestid>872280</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>ea402a924035265510a8acb2908681e0</srcmd5>
+    <version>3.0</version>
+    <time>1621269889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892049</requestid>
+  </revision>
 </revisionlist>

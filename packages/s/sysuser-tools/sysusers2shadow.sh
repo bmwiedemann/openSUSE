@@ -65,13 +65,13 @@ else
 			    ARGUMENTS="-U $ARGUMENTS"
 			fi
 
-			run /usr/sbin/useradd -r -s /sbin/nologin -c "$3" -d "${homedir}" $ARGUMENTS
+			run /usr/sbin/useradd -r -s /usr/sbin/nologin -c "$3" -d "${homedir}" $ARGUMENTS
 		    fi
 		elif [ -x "$busybox" ]; then
 		    /usr/bin/getent group "$1" >> /dev/null || $busybox addgroup -S "$1"
 
 		    if ! /usr/bin/getent passwd "$1" >> /dev/null; then
-			run $busybox adduser -S -H -s /sbin/nologin -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS
+			run $busybox adduser -S -H -s /usr/sbin/nologin -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS
 		    fi
 		else
 		    echo "ERROR: neither useradd nor busybox found!"
