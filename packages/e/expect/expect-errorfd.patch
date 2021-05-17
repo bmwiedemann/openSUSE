@@ -1,0 +1,44 @@
+Index: exp_clib.c
+==================================================================
+--- exp_clib.c
++++ exp_clib.c
+@@ -2043,11 +2043,16 @@
+ 
+ #endif /* SYSV3 */
+ #endif /* DO_SETSID */
+ 
+ 	/* save error fd while we're setting up new one */
++#ifdef F_DUPFD_CLOEXEC
++	errorfd = fcntl(2,F_DUPFD_CLOEXEC,3);
++#else
+ 	errorfd = fcntl(2,F_DUPFD,3);
++	fcntl(errorfd, F_SETFD, FD_CLOEXEC);
++#endif /* F_DUPFD_CLOXEC */
+ 	/* and here is the macro to restore it */
+ #define restore_error_fd {close(2);fcntl(errorfd,F_DUPFD,2);}
+ 
+ 	if (exp_autoallocpty) {
+ 
+
+Index: exp_command.c
+==================================================================
+--- exp_command.c
++++ exp_command.c
+@@ -1159,11 +1159,16 @@
+ 
+     /* save stderr elsewhere to avoid BSD4.4 bogosity that warns */
+     /* if stty finds dev(stderr) != dev(stdout) */
+ 
+     /* save error fd while we're setting up new one */
++#ifdef F_DUPFD_CLOEXEC
++    errorfd = fcntl(2,F_DUPFD_CLOEXEC,3);
++#else
+     errorfd = fcntl(2,F_DUPFD,3);
++    fcntl(errorfd, F_SETFD, FD_CLOEXEC);
++#endif /* F_DUPFD_CLOXEC */
+     /* and here is the macro to restore it */
+ #define restore_error_fd {close(2);fcntl(errorfd,F_DUPFD,2);}
+ 
+     close(0);
+     close(1);
+

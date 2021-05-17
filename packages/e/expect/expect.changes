@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 10 13:44:24 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1183904, expect-errorfd.patch:
+  errorfd file descriptors should be closed when forking
+
+-------------------------------------------------------------------
 Tue May  4 11:02:42 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix previous change regarding PIE linking. Passing SHLIB_CFLAGS="-shared"

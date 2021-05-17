@@ -204,4 +204,13 @@
     <comment></comment>
     <requestid>890332</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>2c523322d63a02583123aa97506afc6f</srcmd5>
+    <version>5.45.4</version>
+    <time>1621269890</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1183904, expect-errorfd.patch:
+  errorfd file descriptors should be closed when forking</comment>
+    <requestid>892068</requestid>
+  </revision>
 </revisionlist>

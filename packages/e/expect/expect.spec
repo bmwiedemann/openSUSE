@@ -29,6 +29,7 @@ Patch1:         expect.patch
 Patch2:         expect-fixes.patch
 Patch3:         expect-log.patch
 Patch4:         config-guess-sub-update.patch
+Patch5:         expect-errorfd.patch
 BuildRequires:  autoconf
 BuildRequires:  tcl-devel
 
@@ -57,6 +58,7 @@ expect package loaded.
 %patch2
 %patch3
 %patch4
+%patch5
 
 %build
 export CFLAGS="%{optflags} -fPIC -pie"
