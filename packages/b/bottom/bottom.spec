@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.5.7
+Version:        0.6.1
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT
@@ -26,6 +26,7 @@ Group:          System/Monitoring
 URL:            https://github.com/ClementTsang/bottom
 Source:         https://github.com/ClementTsang/bottom/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  rust
 
@@ -34,15 +35,8 @@ A cross-platform graphical process/system monitor with a
 customizable interface and a multitude of features.
 
 %prep
-%setup -qa1
-mkdir -p .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%autosetup -p 1 -a 1
+install -D -m 0644 %{SOURCE2} .cargo/config
 
 %build
 cargo build --release --locked %{?_smp_mflags}

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 13 16:17:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.1
+  * Fine-grained kill signals - bottom defaulted to kill -15, but
+    now, on Unix-based systems, you can directly choose which kill
+    signal you want.
+  * You can disable this feature if you want with the
+    --disable_advanced_kill flag or config option, which will
+    instead revert to the older style with just two options.
+  * Scroll position indicator using --show_table_scroll_position.
+  * Added Nord colour schemes. This can be enabled either in the
+    config file or command line with color=nord or color=nord-light.
+  * Add Ctrl-w and Ctrl-h shortcuts in search in order to delete a
+    word or a character respectively.
+  * Added mouse support for sorting process columns:
+  * Added users as a column in the process widget.
+
+-------------------------------------------------------------------
 Sat Mar  6 12:33:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.7
