@@ -45,7 +45,7 @@ sed -ie "s,lib/cmake/cpptoml,%{_libdir}/cmake/%{name}," CMakeLists.txt
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %check
 %ctest

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
+
+-  %cmake_build is now the recommended way to build cmake projects
+
+-------------------------------------------------------------------
 Tue May 19 08:30:34 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of cpptoml 0.1.1
