@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May  7 16:54:16 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.3.0:
+  *  Stop GParted hanging when non-named device is hung
+     (glgo#GNOME/gparted#131) (glgo#GNOME/gparted!65)
+  *  Avoid detecting exfat-utils commands as exfatprogs commands
+     (glgo#GNOME/gparted#137) (glgo#GNOME/gparted!66)
+  *  Fix crash in Create New Partition dialog when changing type
+     (glgo#GNOME/gparted#101) (glgo#GNOME/gparted!73)
+  *  Install gpartedbin under /usr/libexec instead of /usr/sbin
+     (glgo#GNOME/gparted#85)  (glgo#GNOME/gparted!75)
+  *  Restore detection of encrypted file systems
+     (glgo#GNOME/gparted#148) (glgo#GNOME/gparted!78)
+  *  Fix crash probing libparted unrecognised encrypted file system
+     (glgo#GNOME/gparted#152) (glgo#GNOME/gparted!79)
+  *  Support resizing open LUKS2 encryption mappings with passphrase
+     (glgo#GNOME/gparted#59)  (glgo#GNOME/gparted!80)
+  *  Add support for reading exFAT usage and updating the UUID
+     (glgo#GNOME/gparted!67)
+
+-------------------------------------------------------------------
 Tue Jan 26 19:48:02 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.2.0:
