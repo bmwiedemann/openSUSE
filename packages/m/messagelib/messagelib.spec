@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        21.04.0
+Version:        21.04.1
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-CVE-2021-31855.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel

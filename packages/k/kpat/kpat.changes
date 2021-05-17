@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 06:08:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix ace auto move crash (kde#436181)
+  * fix unitialized value sometimes causing solver to exit and report
+    game as unsolvable
+
+-------------------------------------------------------------------
 Fri Apr 16 16:12:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

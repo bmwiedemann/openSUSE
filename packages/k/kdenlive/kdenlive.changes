@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 06:07:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Too many changes since 21.04.0, only listing bugfixes:
+  * Invalidate preview render on subtitle actions (kde#435692)
+  * Improve naming of newely created profile (kde#385981)
+  * Fix several archiving issues with mlt files (kde#435882)
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

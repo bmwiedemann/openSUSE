@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 12 06:08:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Clazy warning:  container inside loop
+  * Replace some SIGNAL and SLOT macros
+  * Replace some SLOT macros
+  * Replace some SIGNAL macros
+  * Initialize the timeline view's preferences
+  * Fix some compiler warnings
+
+-------------------------------------------------------------------
 Fri Apr 16 16:12:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

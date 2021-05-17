@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 12 06:07:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Add mailing_list in messagelist view menu too
+  * Fix Bug 436375 - "Editing as new" selects the wrong transport (kde#436375)
+
+-------------------------------------------------------------------
 Fri Apr 16 16:12:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

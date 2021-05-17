@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 06:06:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Restore the compatiblity with ffmpeg 3. (kde#430266)
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

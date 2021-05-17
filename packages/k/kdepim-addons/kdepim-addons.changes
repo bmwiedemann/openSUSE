@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 06:07:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix country field in address-based OSM map links
+  * Add missing closing bold tag for canceled hotel reservations
+  * Remove dead url
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 12 06:08:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix Screen::_cuY position inside screen
+  * Fix crash showing Settings Dialog (kde#436366)
+  * Add missing include to fix build on gcc-11
+  * Make CompactHistoryBlock size variable (v21.04.0) (kde#436031)
+  * Use inverted colours when calculated fancy BG has too low contrast (kde#435309)
+
+-------------------------------------------------------------------
 Fri Apr 16 16:12:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

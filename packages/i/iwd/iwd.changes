@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 11 21:30:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14:
+  * Fix issue with scanning property and quick scan cancellation.
+  * Fix issue with handling authentication timeouts from SAE.
+  * Fix issue with handling association timeouts and retries.
+  * Fix issue with handling roaming frequencies after roaming.
+  * Fix issue with requesting neighbor report after roaming.
+  * Add support for handling PSK offload connections.
+  * Fix issue with EAPoL protocol version 2010 handling.
+  * Fix issue with authenticator method logic handling.
+  * Fix issue with getting scan results from firmware.
+  * Add support for handling SAE offload connections.
+  * Add support for roaming with FullMAC devices.
+
+-------------------------------------------------------------------
 Thu Feb 25 20:36:16 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - Update to version 1.12:

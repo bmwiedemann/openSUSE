@@ -183,4 +183,12 @@
     <comment>update (forwarded request 887362 from mschnitzer)</comment>
     <requestid>887363</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a9553490101bc19c1156e7e06179cd8e</srcmd5>
+    <version>1.14.0</version>
+    <time>1621201225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890732</requestid>
+  </revision>
 </revisionlist>

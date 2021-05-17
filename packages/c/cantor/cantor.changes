@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 06:06:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * plugins: fix path to server on Windows
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konversation
-Version:        21.04.0
+Version:        21.04.1
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later

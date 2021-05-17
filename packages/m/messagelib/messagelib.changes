@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 12 06:09:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix CVE-2021-31855
+  * Minor: Fix compiler warning
+- Drop 0001-Fix-CVE-2021-31855.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Fri Apr 30 07:09:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change to fix a misbehaviour when deleting

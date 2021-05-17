@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 12 06:07:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix possible leak when commiting
+  * Fix branch change not reflected if projectbase != dotGit
+  * git: Don't report error if git not found
+  * Fix changing branch doesn't update the branch button
+  * Try to fix of a rare crash with Ctrl + Click in LSP
+  * show new mascot in about dialog
+  * Html escape lsptooltip text
+  * Downgrade .git not found warning to info message (kde#435945)
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

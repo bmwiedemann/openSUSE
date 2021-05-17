@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  6 16:19:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+## 1.5.0 (2021-05-02)
+
+### New features
+
+* [#182](https://github.com/rubocop-hq/rubocop-ast/pull/182): Support `Parser::Ruby31` for Ruby 3.1 parser (experimental). ([@koic][])
+
+## 1.4.2 (2021-05-02)
+
+### Bug fixes
+
+* [#179](https://github.com/rubocop-hq/rubocop-ast/pull/179): Have `ast_with_comments` distinguish nodes with same content. ([@marcandre][])
+
+-------------------------------------------------------------------
 Thu Apr  8 08:26:44 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.4.1

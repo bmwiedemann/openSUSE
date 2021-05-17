@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 12 06:09:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * try to stabilize test
+  * Fix saving signed revisions of a signature
+  * Fix bug: select browse tool after trim select
+  * Fix: Viewport coords normalized w.r.t. full page
+
+-------------------------------------------------------------------
 Fri Apr 16 16:13:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0

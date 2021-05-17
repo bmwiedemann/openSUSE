@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop-ast
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        RuboCop tools to deal with Ruby code AST
 License:        MIT
@@ -33,7 +33,7 @@ Group:          Development/Languages/Ruby
 URL:            https://github.com/rubocop-hq/rubocop-ast
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 # MANUAL
