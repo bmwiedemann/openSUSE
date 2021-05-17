@@ -72,4 +72,41 @@
     <comment></comment>
     <requestid>861707</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a037ba664bb66f5e1735521aa696d618</srcmd5>
+    <version>0.17.2</version>
+    <time>1621269904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2:
+  * Upgrade fanal dependency (#976)
+  * docs: mention upx binaries (#974)
+  * Upgrade alpine to fix git and libcurl vulnerabilities in trivy docker image scan (#971)
+  * fix(fs): skip dirs (#969)
+  * chore(ci): replace GITHUB_TOKEN with ORG_GITHUB_TOKEN (#965)
+  * chore(ci): clone trivy-repo after releasing binaries (#963)
+  * docs: add golang support (#962)
+  * fix(table): skip zero vulnerabilities on java (#961)
+  * chore(ci): create a release discussion (#959)
+  * feat(go): support binary scan (#948)
+  * feat(java): support GitLab Advisory Database (#917)
+  * feat: show help message when the context's deadline passes (#955)
+  * chore(mkdocs): replace github token (#954)
+  * Update SARIF report template (#935)
+  * Update install docs to make commands consistent (#933)
+  * Docker multi-platform image build with `buildx`, using Goreleaser (#915)
+  * Fix JUnit template for AWS CodeBuild compatibility (#904)
+  * break(cli): use StringSliceFlag for skip-dirs/files (#916)
+  * docs: add white logo (#914)
+  * add package name in ruleID (#913)
+  * feat: gh-action for stale issues (#908)
+  * chore(triage): add lifecycle/active label (#909)
+  * feat: publish helm repository (#888)
+  * Fix Documentation Typo (#901)
+  * docs: migrate README to MkDocs (#884)
+  * refactor(internal): export internal packages (#887)
+  * feat: support plugins (#878)
+  * chore(ci): deploy dev docs only for the main branch (#882)
+  * add MkDocs implementation (#870)</comment>
+    <requestid>893510</requestid>
+  </revision>
 </revisionlist>
