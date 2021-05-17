@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,13 @@
 %bcond_without extension
 
 Name:           hamster-time-tracker
-Version:        3.0.1+8
+Version:        3.0.2
 Release:        0
 Summary:        A time tracker for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Other
 Url:            https://github.com/projecthamster/hamster
-Source:         %{name}-v%{version}.tar.xz
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/hamster-%{version}.tar.gz
 # https://github.com/projecthamster/hamster-shell-extension/archive/0.10.0.tar.gz
 Source1:        hamster-shell-extension-%{ext_version}.tar.gz
 Source2:        https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js
@@ -137,7 +137,7 @@ is spent during the day on activities that are set up.
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version} -a1
+%setup -q -n hamster-%{version} -a1
 %patch1 -p1
 %patch2 -p1
 %if %{with extension}
@@ -222,7 +222,7 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
 %files
 %defattr(-, root, root)
 %license COPYING
-%doc AUTHORS NEWS README.md MAINTAINERS
+%doc AUTHORS NEWS.md README.md MAINTAINERS
 %{_bindir}/hamster
 %{_datadir}/applications/org.gnome.Hamster.GUI.desktop
 %{_datadir}/dbus-1/services/org.gnome.Hamster.service

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 17:24:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.2
+  * Fix off-by-one-day error in CSV exports
+
+-------------------------------------------------------------------
 Tue Apr 28 15:34:47 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Fix malfunction of backspace key in GNOME extension (3.36)
