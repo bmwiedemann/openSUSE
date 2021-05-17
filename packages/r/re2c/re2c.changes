@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May  9 17:24:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  - Added missing CMakeLists.txt to release tarballs
+  - Added GitHub Actions CI for Linux, macOS and Windows and fixed numerous build
+    issues on those platforms
+  - Added benchmarks for submatch extraction in lexer generators (ragel vs.
+    kleenex vs. re2c with TDFA(0), TDFA(1) or sta-DFA algorithms).
+    + New CMake options: ``-DRE2C_BUILD_BENCHMARKS``, ``-DRE2C_REGEN_BENCHMARKS``
+    + New `json2pgfplot.py
+  - Added option ``--depfile <filename>`` to generate build dependency files
+  - Added option ``--fixed-tags <none | all | toplevel>`` and improved fixed-tag
+    optimization to work with nested tags.
+  - Added lzip to the distribution tarballs.
+  - Added registerless-TDFA algorithm in the experimental libre2c library.
+  - Explicitly disallowed invalid configuration when ``-f``, ``--storable-state``
+    option is used, but ``YYFILL`` is disabled
+  - Fixed bug in UTF-8 decode for 4-bytes rune
+  - Fixed bugs in rare cases of the end-of-input rule ``$`` usage
+  - Optimized ``--skeleton`` generation time.
+  - Renamed internal option ``--dfa`` to ``--nested-negative-tags``.
+  - Updated documentation for end of input handling and submatch extraction.
+
+-------------------------------------------------------------------
 Fri Sep  4 21:00:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.3:
