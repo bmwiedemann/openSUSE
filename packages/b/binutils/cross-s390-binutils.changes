@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  7 15:34:22 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- ppc-ensure-undef-dynamic-weak-undefined.patch: PPC: ensure_undef_dynamic
+  on weak undef only in plt
+- ppc-use-local-plt.patch: PowerPC use_local_plt (prerequisite for above
+  patch)
+
+-------------------------------------------------------------------
 Fri Mar 26 10:06:58 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update 2.36 branch diff which fixes PR27587.

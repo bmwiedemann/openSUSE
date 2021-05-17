@@ -101,6 +101,8 @@ Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
 Patch40:        binutils-fix-abierrormsg.diff
 Patch41:        binutils-fix-relax.diff
+Patch42:        ppc-use-local-plt.patch
+Patch43:        ppc-ensure-undef-dynamic-weak-undefined.patch
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -192,6 +194,8 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
+%patch43 -p1
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h

@@ -1936,4 +1936,15 @@ contain it.
     <comment></comment>
     <requestid>881490</requestid>
   </revision>
+  <revision rev="149" vrev="4">
+    <srcmd5>9e8dfd7c5d107ce57b05412c501e3ffe</srcmd5>
+    <version>2.36</version>
+    <time>1621269888</time>
+    <user>dimstar_suse</user>
+    <comment>- ppc-ensure-undef-dynamic-weak-undefined.patch: PPC: ensure_undef_dynamic
+  on weak undef only in plt
+- ppc-use-local-plt.patch: PowerPC use_local_plt (prerequisite for above
+  patch) (forwarded request 891347 from Andreas_Schwab)</comment>
+    <requestid>892038</requestid>
+  </revision>
 </revisionlist>
