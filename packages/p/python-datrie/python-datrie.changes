@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 09:07:53 UTC 2021 - pgajdos@suse.com
+
+- use %pytest_arch macro
+
+-------------------------------------------------------------------
 Thu Apr  2 10:14:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.8.2
