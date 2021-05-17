@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 12 06:09:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix crash related to multiple calls of m_source.unicode()
+  * lib/cppparser/lexer.{h,cpp} cosmetics and error detection improvement:
+  * lib/cppparser/driver.cpp cosmetics in class Driver::ParseHelper
+  * Support C++11 "enum class" in C++ Import:
+  * Compile on Qt4: QStringLiteral -> QLatin1String
+  * test/import/cxx/namespace-enum-literal.h : Document semicolon after end of namespace.
+  * test/import/cxx/comments-class-enums.h: Fix typo in comment, add newline at EOF.
+
+-------------------------------------------------------------------
 Fri Apr 16 16:13:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0
