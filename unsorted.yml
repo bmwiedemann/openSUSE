@@ -12339,7 +12339,6 @@ unsorted:
   - libopenCOLLADA-doc 
   - libopenCOLLADA-utils 
   - libopenEMS0 
-  - libopenMVG1: [x86_64] 
   - libopen_amp0 
   - libopenal0 
   - libopenal0-32bit: [x86_64] 
@@ -17722,8 +17721,6 @@ unsorted:
   - openEMS 
   - openEMS-devel 
   - openEMS-matlab 
-  - openMVG: [x86_64] 
-  - openMVG-devel: [x86_64] 
   - openQA: [x86_64] 
   - openQA-auto-update: [x86_64] 
   - openQA-bootstrap: [x86_64] 
@@ -21345,7 +21342,6 @@ unsorted:
   - python3-pyside2-examples 
   - python3-pysol-cards 
   - python3-pytest-cookies 
-  - python3-pytest-listener 
   - python3-python-pseudorandom: [i586] 
   - python3-renderspec 
   - python3-reno 
@@ -23437,6 +23433,7 @@ unsorted:
   - python36-pytest-isort 
   - python36-pytest-json-report 
   - python36-pytest-lazy-fixture 
+  - python36-pytest-listener 
   - python36-pytest-localserver 
   - python36-pytest-metadata 
   - python36-pytest-mock 
@@ -26277,7 +26274,6 @@ unsorted:
   - python38-pytest-check-links 
   - python38-pytest-click 
   - python38-pytest-console-scripts 
-  - python38-pytest-cookies 
   - python38-pytest-cov 
   - python38-pytest-curio 
   - python38-pytest-datadir 
@@ -26308,6 +26304,7 @@ unsorted:
   - python38-pytest-isort 
   - python38-pytest-json-report 
   - python38-pytest-lazy-fixture 
+  - python38-pytest-listener 
   - python38-pytest-localserver 
   - python38-pytest-metadata 
   - python38-pytest-mock 
@@ -28573,6 +28570,7 @@ unsorted:
   - python39-kombu 
   - python39-korean-lunar-calendar 
   - python39-kubernetes 
+  - python39-kwant: [x86_64] 
   - python39-l20n 
   - python39-labelImg 
   - python39-labels 
@@ -29297,6 +29295,7 @@ unsorted:
   - python39-pytest-isort 
   - python39-pytest-json-report 
   - python39-pytest-lazy-fixture 
+  - python39-pytest-listener 
   - python39-pytest-localserver 
   - python39-pytest-metadata 
   - python39-pytest-mock 
@@ -29743,6 +29742,7 @@ unsorted:
   - python39-sphinxcontrib-seqdiag 
   - python39-sphinxcontrib-serializinghtml 
   - python39-sphinxcontrib-svg2pdfconverter 
+  - python39-sphinxcontrib-trio 
   - python39-sphinxcontrib-websupport 
   - python39-sphobjinv 
   - python39-spidev 
