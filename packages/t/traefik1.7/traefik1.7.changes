@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Apr 29 14:22:24 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.7.30:
+  * Prepare release v1.7.30
+  * prometheus: fixing prom Handler to use the custom registry
+  * Prepare release v1.7.29
+  * Update to go1.16
+  * Prepare release v1.7.28
+  * chore: Do a Docker login on Travis CI.
+  * fix: encrypted key in Travis CI.
+  * Prepare release v1.7.27
+  * Update copyright year for 2021
+  * Fix tlsclientheaders integration test
+
+-------------------------------------------------------------------
+Thu Jan 10 14:50:22 UTC 2019 - pgeorgiadis@suse.com
+
+- Initial package release to version 1.7.7:
+ * Check for watched namespace before getting kubernetes objects
+ * Allow empty path with App-root annotation
+ * kubernetes: sort and uniq TLS secrets
+ * Skip TLS section with no secret in Kubernetes ingress
