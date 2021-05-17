@@ -58,4 +58,13 @@
     <comment></comment>
     <requestid>875541</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>8eb065a9b3c6fe9bd4b4f345f7ff7841</srcmd5>
+    <version>0.7.0+git88.18b629b</version>
+    <time>1621269941</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_set_url_info test as well
+</comment>
+    <requestid>893788</requestid>
+  </revision>
 </revisionlist>

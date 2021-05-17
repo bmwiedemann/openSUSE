@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 13:18:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_set_url_info test as well
+
+-------------------------------------------------------------------
 Fri Feb 26 15:46:38 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip two tests failing due to updated dependencies

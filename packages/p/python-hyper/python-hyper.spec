@@ -1,7 +1,7 @@
 #
 # spec file for package python-hyper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%bcond_without python36
 Name:           python-hyper
 Version:        0.7.0+git88.18b629b
 Release:        0
@@ -48,7 +49,7 @@ Requires:       python-h2 > 2.5.0
 Requires:       python-hyperframe >= 3.2
 Requires:       python-rfc3986 >= 1.1.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.0.4
 BuildRequires:  python-futures
@@ -85,7 +86,7 @@ wanted http.client.
 # test_HTTPConnection_with_custom_context - TLS 1.3 does not support h2
 # test_useful_error_with_no_protocol test_goaway_frame_PROTOCOL_ERROR test_goaway_frame_HTTP_1_1_REQUIRED test_goaway_frame_invalid_error_code - httplib update changed error messages reported
 # test_we_can_read_from_the_socket and test_connection_no_window_update_on_zero_length_data_frame fail due to updated dependencies
-%pytest -rs -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code or test_we_can_read_from_the_socket or test_connection_no_window_update_on_zero_length_data_frame)' test/
+%pytest -rs -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code or test_we_can_read_from_the_socket or test_connection_no_window_update_on_zero_length_data_frame or test_set_url_info)' test/
 
 %post
 %python_install_alternative hyper
