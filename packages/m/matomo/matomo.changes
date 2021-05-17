@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon May 17 08:45:18 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.3.0
+  * Breaking Changes
+    - Before every JS error was tracked, from this version the same
+      JS error will be only tracked once per page view. If the very
+      same error is happening multiple times, then it will be
+      tracked only once within the same page view. If another page
+      view is tracked or when the page reloads, then the error will
+      be tracked again.
+    - It's no longer possible to store any class instances directly
+      in the session object. Please use arrays or plain data instead.
+  * Upcoming Breaking Changes
+    - In Matomo 4.3.0 we have added a 'passwordConfirmation' 
+      parameter to the CorePluginsAdmin.setSystemSettings API 
+      method. It is currently optional, but will become mandatory
+      in version 4.4.0. Plugin developers and users of the API
+      should make sure to update their plugins and apps before this
+      happens.
+  * New config.ini.php settings
+    - The password_hash_algorithm, password_hash_argon2_threads,
+      password_hash_argon2_memory_cost and 
+      password_hash_argon2_time_cost INI config options have been
+      added to allow using specific password_hash algorithms and
+      options if desired.
+    - The enable_php_profiler INI config option was added. This 
+      must now be set to 1 before profiling is allowed in Matomo.
+  For a full changelog, look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.1
+  https://matomo.org/changelog/matomo-4-3-0/
+- Rebase matomo-package_update.patch.
+
+-------------------------------------------------------------------
 Mon Mar  1 08:24:34 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.2.1

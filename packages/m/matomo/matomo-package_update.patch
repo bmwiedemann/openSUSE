@@ -1,15 +1,17 @@
-diff -Pdpru matomo.orig/plugins/CoreUpdater/Commands/Update.php matomo/plugins/CoreUpdater/Commands/Update.php
---- matomo.orig/plugins/CoreUpdater/Commands/Update.php	2020-11-23 20:20:18.000000000 +0100
-+++ matomo/plugins/CoreUpdater/Commands/Update.php	2020-11-24 14:16:58.087597130 +0100
-@@ -70,7 +70,11 @@ class Update extends ConsoleCommand
-                 $this->writeSuccessMessage($output, array(Piwik::translate('CoreUpdater_DbUpgradeNotExecuted')));
-             }
+Index: matomo/plugins/CoreUpdater/Commands/Update.php
+===================================================================
+--- matomo.orig/plugins/CoreUpdater/Commands/Update.php
++++ matomo/plugins/CoreUpdater/Commands/Update.php
+@@ -79,8 +79,11 @@ class Update extends ConsoleCommand
+                     $this->writeSuccessMessage($output, array(Piwik::translate('CoreUpdater_DbUpgradeNotExecuted')));
+                 }
  
-+            // Only show if autoupdate is enabled. Don't show if update through distribution package update.
-+            $enableAutoUpdate = (bool) Config::getInstance()->General['enable_auto_update'];
-+            if ($enableAutoUpdate === true){
-             $this->writeAlertMessageWhenCommandExecutedWithUnexpectedUser($output);
-+            }
++                // Only show if autoupdate is enabled. Don't show if update through distribution package update.
++                $enableAutoUpdate = (bool) Config::getInstance()->General['enable_auto_update'];
++                if ($enableAutoUpdate === true){
+                 $this->writeAlertMessageWhenCommandExecutedWithUnexpectedUser($output);
+-
++                }
  
- 
-         } catch(NoUpdatesFoundException $e) {
+             } catch (NoUpdatesFoundException $e) {
+                 // Do not fail if no updates were found
