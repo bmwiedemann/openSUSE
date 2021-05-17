@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri May 14 11:28:18 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 2.28.1:
+  * Features:
+    * Add c_hash to id_token, issued on /auth endpoint, when in
+      hybrid flow
+    * Allow configuration of returned auth proxy header
+    * Allow to disable os.ExpandEnv for storage + connector configs
+      by env variable DEX_EXPAND_ENV = false
+    * Added the possibility to activate lowercase for UPN-Strings
+    * Add "Cache-control: no-store" and "Pragma: no-cache" headers
+      to token responses
+    * Graceful shutdown
+    * Allow public clients created with API to have no client_secret
+  * Bugfixes:
+    * Fix the etcd PKCE AuthCode deserialization
+    * Fix garbage collection logging of device codes and device request
+    * Discovery endpoint contains updated claims and auth methods
+    * Return invalid_grant error if auth code is invalid or expired
+    * Return an error to auth requests with the "request" parameter
+- Update to version 2.27.0:
+  * Security release, fixing: CVE-2020-26290
+  * connector/saml: Validate XML roundtrip data before processing
+    request
+- Update to version 2.26.0:
+  * Require go 1.15
+  * Features:
+    * Add constructor for static key strategy
+    * Add team groups support to bitbucket connector
+    * Allow Authorization header when doing CORS
+    * Retry Kubernetes update requests
+    * PKCE support
+    * Allow public clients to have redirect URLs other than localhost
+  * Bugfixes:
+    * Abort connector login if connector was already set
+    * Replace deprecated teams endpoint in bitbucket connector
+    * Log errors from login during password grant
+    * Handle Kubernetes API conflicts properly for signing keys
+- Update to version 2.25.0:
+  * Features:
+    * Move the API package to a separate module
+    * OAuth2 Device Authorization Grant
+    * Support username, email and groups claim in OIDC connector
+  * Bugfixes:
+    * Add offline_access scope in microsoft connector, if required
+    * Allow the google connector to work without a service account
+- Update to version 2.24.0:
+  * Features:
+    * Keystone connector: Added Email to Identity
+    * Atlassian Crowd connector: allow preferred_username claim
+      to be set
+    * Github connector: pass redirect_uri
+    * server: allow having no secret for static public clients
+    * SAML connector: add flag for filtering groups
+  * Bug fixes, misc changes:
+    * storage/kubernetes: wrap Kubernetes host address in square
+      brackets for IPv6
+    * storage/kubernetes: remove shadowed ResourceVersion from
+      connector
+    * server/handlers: do not fail login if refresh token gone
+    * server/handlers: automatic consistency fixing in case of
+      missing refresh token in db
+    * OIDC connector: add Icon
+    * OpenShift connector: rootCA option
+
+-------------------------------------------------------------------
 Fri Apr 03 10:44:54 UTC 2020 - fcastelli@suse.com
 
 - Remove example programs from the final package. They are not needed and

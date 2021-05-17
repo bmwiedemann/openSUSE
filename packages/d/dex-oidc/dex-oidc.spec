@@ -1,7 +1,7 @@
 #
 # spec file for package dex-oidc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 # Project name when using go tooling.
-%define go_version 1.13
+%define go_version 1.15
 
 Name:           dex-oidc
-Version:        2.23.0
+Version:        2.28.1
 Release:        0
 Summary:        OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/dexidp/dex
-Source:         dex-%{version}.tar.xz
+Source0:        dex-%{version}.tar.xz
+Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  golang-packaging
@@ -50,7 +51,7 @@ GitHub, Google, and Active Directory. Clients write their authentication logic o
 dex handles the protocols for a given backend.
 
 %prep
-%setup -q -n dex-%{version}
+%setup -q -n dex-%{version} -a 1
 
 %build
 %define ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}"
@@ -66,6 +67,7 @@ dex handles the protocols for a given backend.
 for file in $(find web -type f); do
   install -D -m 0644 $file %{buildroot}/%{_datadir}/%{name}/$file
 done
+%fdupes %{buildroot}%{_datadir}/%{name}
 
 %files -f file.lst
 %license LICENSE
@@ -76,8 +78,6 @@ done
 %dir %{_datadir}/%{name}/web/static/img
 %dir %{_datadir}/%{name}/web/templates
 %dir %{_datadir}/%{name}/web/themes
-%dir %{_datadir}/%{name}/web/themes/coreos
-%dir %{_datadir}/%{name}/web/themes/tectonic
 %{_datadir}/%{name}/web/*
 %{_bindir}/dex
 

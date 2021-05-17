@@ -4,8 +4,9 @@
     <param name="scm">git</param>
     <param name="filename">dex</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">2.23.0</param>
-    <param name="revision">v2.23.0</param>
+    <param name="revision">v2.28.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.+)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -14,5 +15,8 @@
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">dex</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="compression">xz</param>
   </service>
 </services>
