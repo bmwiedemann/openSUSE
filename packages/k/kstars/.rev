@@ -993,4 +993,13 @@
     <comment></comment>
     <requestid>888480</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>23aaf75b5e5b1684a5eda0bf6d263e3a</srcmd5>
+    <version>3.5.3</version>
+    <time>1621269906</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix crash, when using EKOS, caused by a missing runtime 
+  dependency (boo#1185891)</comment>
+    <requestid>893564</requestid>
+  </revision>
 </revisionlist>

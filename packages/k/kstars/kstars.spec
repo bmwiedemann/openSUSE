@@ -72,6 +72,7 @@ BuildRequires:  pkgconfig(wcslib)
 Recommends:     %{name}-lang
 Recommends:     libindi
 Recommends:     xplanet
+Requires:       libqt5-qtquickcontrols
 
 %description
 KStars is astronomy software. It provides an accurate graphical

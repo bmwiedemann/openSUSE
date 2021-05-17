@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 08:42:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix crash, when using EKOS, caused by a missing runtime 
+  dependency (boo#1185891) 
+
+-------------------------------------------------------------------
 Mon Apr 26 11:15:49 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.3:
