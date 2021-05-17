@@ -135,7 +135,7 @@
   boo#1181038: '20210223'
   boo#1181497: '20210127'
   boo#1182233: '20210302'
-  boo#1182240: '20210515'
+  boo#1182240: '20210516'
   boo#1182247: '20210318'
   boo#1182507: '20210222'
   boo#1182544: '20210311'
@@ -143,7 +143,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210515'
   boo#1183082: '20210515'
-  boo#1183454: '20210515'
+  boo#1183454: '20210516'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210515'
@@ -343,7 +343,7 @@
   poo#91079: '20210515'
   poo#91088: '20210502'
   poo#91533: '20210427'
-  poo#91545: '20210515'
+  poo#91545: '20210516'
   poo#91830: '20210515'
   poo#92004: '20210515'
   poo#92080: '20210515'
@@ -528,8 +528,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-#  - opensuse-tensorflow2-image:
-#    - x86_64
+  - opensuse-tensorflow2-image:
+    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
@@ -708,7 +708,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20210515'
 publishing: '20210515'
-testing: '20210515'
+testing: '20210516'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
