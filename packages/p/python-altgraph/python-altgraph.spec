@@ -1,7 +1,7 @@
 #
 # spec file for package python-altgraph
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Python graph (network) package
 License:        MIT
 URL:            https://github.com/ronaldoussoren/altgraph/
 Source:         https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +58,7 @@ sed -i 's/\r$//' doc/_build/html/_static/jquery.js
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
