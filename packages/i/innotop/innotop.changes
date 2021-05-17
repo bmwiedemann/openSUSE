@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 15 12:16:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- innotop 1.13.0:
+  * UI tweaks
+  * Fix Perl strict error
+  * Fix version detection for MariaDB
+  * Add fix for Maria-verion and MySQL 8
+  * Support MySQL 8.0 MariaDB 10.3
+  * Add options for SSL usage
+
+-------------------------------------------------------------------
 Sun Mar 26 12:12:49 UTC 2017 - astieger@suse.com
 
 - innotop 1.11.4:

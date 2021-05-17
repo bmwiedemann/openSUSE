@@ -1,7 +1,7 @@
 #
 # spec file for package innotop
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           innotop
-Version:        1.11.4
+Version:        1.13.0
 Release:        0
 Summary:        A MySQL and InnoDB monitor program
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
-Url:            https://github.com/innotop/innotop/
+URL:            https://github.com/innotop/innotop/
 Source0:        https://github.com/innotop/innotop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  perl(DBD::mysql)
 BuildRequires:  perl(DBI)
@@ -44,7 +44,6 @@ Requires:       perl(Getopt::Long)
 Requires:       perl(List::Util)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Time::HiRes)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version} < 1140
 Requires:       perl = %{perl_version}
@@ -63,7 +62,7 @@ PROCESSLIST, and SHOW ENGINE INNODB STATUS, among other things.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %install
 make pure_install PERL_INSTALL_ROOT=%{buildroot}
@@ -72,12 +71,12 @@ find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 chmod -R u+w %{buildroot}/*
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING Changelog
+%license COPYING LICENSE
+%doc Changelog
 %{_bindir}/innotop
-%{_mandir}/man1/innotop.1*
+%{_mandir}/man1/innotop.1%{?ext_man}
 
 %changelog

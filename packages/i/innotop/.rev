@@ -37,4 +37,12 @@
     <comment>innotop 1.11.4 (forwarded request 482737 from AndreasStieger)</comment>
     <requestid>482738</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>441c3e9b20f423f2e9fd57eaa6e88331</srcmd5>
+    <version>1.13.0</version>
+    <time>1621269923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893695</requestid>
+  </revision>
 </revisionlist>
