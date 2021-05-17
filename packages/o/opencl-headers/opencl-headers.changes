@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon May 17 08:02:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2+git.20210426:
+  * add cl_khr_pci_bus_info and cl_khr_suggested_local_work_size (#166)
+  * Add missing 'stdint.h' include to 'CL/cl.h' (#164)
+  * disable failing CI configs (#163)
+  * Fixes for usage of macro CL_API_ENTRY (#162)
+  * cl_intel_command_queue_families extension (#155)
+  * Update default OpenCL version in README (#160)
+  * Replace uses of CL_EXT_{PRE,SUF}FIX* with CL_API_{PRE,SUF}FIX* (#158)
+  * do not include cl_gl_ext.h from opencl.h (#159)
+  * move cl_khr_gl_event to cl_gl.h (#156)
+  * Add testing for cl_d3d10.h, cl_d3d11.h, and cl_dx9_media_sharing.h (#123)
+  * Add definitions for cl_arm_import_memory_android_hardware_buffer v1.1.0 (#157)
+  * Add support for user-supplied prefix/suffix in function declarations (#154)
+  * Move cl_icd_layer.h from OpenCL-ICD-Loader to OpenCL-Headers. (#148)
+  * Add definitions for cl_arm_controlled_kernel_termination (#152)
+  * Add definitions for cl_arm_scheduling_controls v0.3.0 (#151)
+  * Remove unused CL_EXTENSION_WEAK_LINK definition (#150)
+  * move Intel extensions into common files (#129)
+  * Add definitions for cl_arm_scheduling_controls v0.2.0 (#147)
+  * Update apt package list in CI before running cmake (#143)
+  * re-enable format string warning in CI
+  * use PRId64 and PRIu64 when printing 64-bit values
+  * fix test format string warnings
+  * fix origin argument names for rect functions
+  * Enable GitHub Actions for pull requests (#141)
+  * Added definitions for cl_img_generate_mipmap. (#135)
+  * Added missing define for cl_img_use_gralloc_ptr. (#134)
+  * Use the alignment attribute under Integrity OS. (#131)
+  * Comprehensive CMake Package Config support (#107)
+  * Added definitions for cl_img_mem_properties. (#136)
+  * switch the default version for the OpenCL headers to OpenCL 3.0
+  * re-enable anonymous unions by default (#125)
+  * Avoid anon structs when MSVC uses /Za (#116)
+  * update APIs and enums for cl_intel_unified_shared_memory for rev Q (#108)
+  * header changes for cl_intel_mem_force_host_memory (#114)
+  * Add definitions for cl_ext_cxx_for_opencl (#109)
+  * Add definitions for cl_arm_scheduling_controls (#110)
+  * Add cl_intel_create_buffer_with_properties and cl_intel_mem_channel_property extensions (#106)
+  * add cl_api prefix for clSetContextDestructorCallback
+  * update ICD dispatch table with clSetContextDestructorCallback
+  * deprecate clSetProgramReleaseCallback
+  * add CL_DEVICE_LATEST_CONFORMANCE_VERSION_PASSED
+  * add clSetContextDestructorCallback
+  * Introduce cl_properties type (#97)
+  * switch device enqueue boolean query to capabilities query
+  * Fix build of dependent software with clang (#93)
+  * add APIs and enums for cl_intel_unified_shared_memory (#65)
+  * Add cl_khr_device_uuid definitions (#91)
+
+-------------------------------------------------------------------
 Wed May 27 08:47:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2+git.20200512:

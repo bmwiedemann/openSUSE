@@ -177,4 +177,41 @@
   * move two subgroup queries from cl_kernel_info to cl_kernel_sub_group_info</comment>
     <requestid>809455</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d158fa18240c01a76cb18bd610aac6e4</srcmd5>
+    <version>2.2+git.20210426</version>
+    <time>1621269909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20210426:
+  * add cl_khr_pci_bus_info and cl_khr_suggested_local_work_size (#166)
+  * Add missing 'stdint.h' include to 'CL/cl.h' (#164)
+  * disable failing CI configs (#163)
+  * Fixes for usage of macro CL_API_ENTRY (#162)
+  * cl_intel_command_queue_families extension (#155)
+  * Update default OpenCL version in README (#160)
+  * Replace uses of CL_EXT_{PRE,SUF}FIX* with CL_API_{PRE,SUF}FIX* (#158)
+  * do not include cl_gl_ext.h from opencl.h (#159)
+  * move cl_khr_gl_event to cl_gl.h (#156)
+  * Add testing for cl_d3d10.h, cl_d3d11.h, and cl_dx9_media_sharing.h (#123)
+  * Add definitions for cl_arm_import_memory_android_hardware_buffer v1.1.0 (#157)
+  * Add support for user-supplied prefix/suffix in function declarations (#154)
+  * Move cl_icd_layer.h from OpenCL-ICD-Loader to OpenCL-Headers. (#148)
+  * Add definitions for cl_arm_controlled_kernel_termination (#152)
+  * Add definitions for cl_arm_scheduling_controls v0.3.0 (#151)
+  * Remove unused CL_EXTENSION_WEAK_LINK definition (#150)
+  * move Intel extensions into common files (#129)
+  * Add definitions for cl_arm_scheduling_controls v0.2.0 (#147)
+  * Update apt package list in CI before running cmake (#143)
+  * re-enable format string warning in CI
+  * use PRId64 and PRIu64 when printing 64-bit values
+  * fix test format string warnings
+  * fix origin argument names for rect functions
+  * Enable GitHub Actions for pull requests (#141)
+  * Added definitions for cl_img_generate_mipmap. (#135)
+  * Added missing define for cl_img_use_gralloc_ptr. (#134)
+  * Use the alignment attribute under Integrity OS. (#131)
+  * Comprehensive CMake Package Config support (#107)
+  * Added definitions for cl_img_mem_properties. (#136)</comment>
+    <requestid>893572</requestid>
+  </revision>
 </revisionlist>

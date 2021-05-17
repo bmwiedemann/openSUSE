@@ -1,7 +1,7 @@
 #
 # spec file for package opencl-headers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opencl-headers
-Version:        2.2+git.20200512
+Version:        2.2+git.20210426
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT
