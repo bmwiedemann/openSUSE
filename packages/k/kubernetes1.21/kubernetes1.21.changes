@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 12:50:21 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Revert remove workaround in 10-kubeadm.conf - still needed [boo#1186125]
+
+-------------------------------------------------------------------
 Wed May  5 15:49:22 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
 
 - Remove workaround in 10-kubeadm.conf for boo#1171770 causing sysctl values to be reset

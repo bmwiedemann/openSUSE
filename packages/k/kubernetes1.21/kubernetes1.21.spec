@@ -69,6 +69,7 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
+
 # packages to build containerized control plane
 
 %package apiserver
@@ -158,9 +159,9 @@ kubeadm bootstrapping tool
 Summary:        Kubernetes client tools
 Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
-Requires:       kubernetes-client-common >= %{version} 
+Requires:       kubernetes-client-common >= %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description client
 Kubernetes client tools like kubectl.

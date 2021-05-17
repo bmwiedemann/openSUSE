@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>892467</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d6f9d7a859802aa538f6df0a3cc0d7fb</srcmd5>
+    <version>1.21.0</version>
+    <time>1621269915</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert remove workaround in 10-kubeadm.conf - still needed [boo#1186125]</comment>
+    <requestid>893739</requestid>
+  </revision>
 </revisionlist>
