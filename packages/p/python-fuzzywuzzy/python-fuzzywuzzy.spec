@@ -1,7 +1,7 @@
 #
 # spec file for package python-fuzzywuzzy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/seatgeek/fuzzywuzzy
 Source:         https://files.pythonhosted.org/packages/source/f/fuzzywuzzy/fuzzywuzzy-%{version}.tar.gz
 BuildRequires:  %{python_module Levenshtein}
 BuildRequires:  %{python_module pycodestyle}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +49,7 @@ Fuzzy string matching in python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README README.rst
