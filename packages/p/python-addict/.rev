@@ -46,4 +46,12 @@
 - Switch to pytest to run tests</comment>
     <requestid>834472</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a6cb4ce4e69a9ebe03094350e6e44869</srcmd5>
+    <version>2.4.0</version>
+    <time>1621269908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893573</requestid>
+  </revision>
 </revisionlist>

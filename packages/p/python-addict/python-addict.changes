@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 07:36:43 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.4.0
+  * Calling .freeze() forbids getting/setting missing keys. Use .unfreeze() to undo.
+
+-------------------------------------------------------------------
 Tue Sep 15 05:07:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.0:
