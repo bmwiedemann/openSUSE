@@ -202,6 +202,8 @@ install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
 
 mkdir -p %{buildroot}%{_datadir}/kube-virt
 cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
+# Dont install OLM manifests
+rm -rf %{buildroot}%{_datadir}/kube-virt/manifests/release/olm
 # TODO:
 # Create a proper Pod Security Policy (PSP) for KubeVirt. For now, add one
 # that uses the CaaSP privileged PSP. It can be used with CaaSP-based

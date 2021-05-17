@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 09:02:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Do not package OLM manifests
+
+-------------------------------------------------------------------
 Thu May  6 11:19:59 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install virt-launcher SELinux policy (bsc#1185714)
