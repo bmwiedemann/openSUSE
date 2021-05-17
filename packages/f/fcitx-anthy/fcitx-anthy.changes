@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 12 01:28:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.2.4
+  * Updated translations
+  * Add support for building with anthy-unicode
+  * Fix NICOLA voicing
+- Fix URL and SourceUrls
+- Use cmake macros
+
+-------------------------------------------------------------------
 Thu Nov 23 03:50:23 UTC 2017 - i@marguerite.su
 
 - update version 0.2.3
