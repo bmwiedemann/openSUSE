@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 09:09:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop execute bits for files under utils, stop a spurious requirement. 
+
+-------------------------------------------------------------------
 Thu May  6 14:18:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39 build gh#CiscoUcs/ucsmsdk#204

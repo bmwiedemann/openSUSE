@@ -1,7 +1,7 @@
 #
 # spec file for package python-ucsmsdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Python Software Developer Kit for Cisco Unified Computing System (UCS) Manager.
 
 %prep
 %setup -q -n ucsmsdk-%{version}
+chmod -x ucsmsdk/utils/*.py
 
 %build
 %python_build

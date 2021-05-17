@@ -54,4 +54,12 @@
     <comment></comment>
     <requestid>891239</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3598979da48d5336dc3c138b58ed9a2c</srcmd5>
+    <version>0.9.10</version>
+    <time>1621269910</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop execute bits for files under utils, stop a spurious requirement.</comment>
+    <requestid>893651</requestid>
+  </revision>
 </revisionlist>
