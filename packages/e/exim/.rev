@@ -755,4 +755,12 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>890644</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>7abb45e362e0bd294669792acb05a7aa</srcmd5>
+    <version>4.94.2</version>
+    <time>1621269936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893769</requestid>
+  </revision>
 </revisionlist>

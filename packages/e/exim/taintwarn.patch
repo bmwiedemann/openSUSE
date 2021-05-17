@@ -1,0 +1,1052 @@
+diff --git a/src/EDITME b/src/EDITME
+index 8da36a353..cebb8e2ec 100644
+--- a/src/EDITME
++++ b/src/EDITME
+@@ -749,6 +749,13 @@ FIXED_NEVER_USERS=root
+ 
+ # WHITELIST_D_MACROS=TLS:SPOOL
+ 
++# The next setting enables a main config option
++# "allow_insecure_tainted_data" to turn taint failures into warnings.
++# Though this option is new, it is deprecated already now, and will be
++# ignored in future releases of Exim. It is meant as mitigation for
++# upgrading old (possibly insecure) configurations to more secure ones.
++ALLOW_INSECURE_TAINTED_DATA=yes
++
+ #------------------------------------------------------------------------------
+ # Exim has support for the AUTH (authentication) extension of the SMTP
+ # protocol, as defined by RFC 2554. If you don't know what SMTP authentication
+diff --git a/src/acl.c b/src/acl.c
+index 7061230b4..bdc2b351d 100644
+--- a/src/acl.c
++++ b/src/acl.c
+@@ -3598,20 +3598,22 @@ for (; cb; cb = cb->next)
+     #endif
+ 
+     case ACLC_QUEUE:
+-    if (is_tainted(arg))
+       {
+-      *log_msgptr = string_sprintf("Tainted name '%s' for queue not permitted",
+-				    arg);
+-      return ERROR;
+-      }
+-    if (Ustrchr(arg, '/'))
+-      {
+-      *log_msgptr = string_sprintf(
+-	      "Directory separator not permitted in queue name: '%s'", arg);
+-      return ERROR;
++      uschar *m;
++      if ((m = is_tainted2(arg, 0, "Tainted name '%s' for queue not permitted", arg)))
++        {
++        *log_msgptr = m;
++        return ERROR;
++        }
++      if (Ustrchr(arg, '/'))
++        {
++        *log_msgptr = string_sprintf(
++                "Directory separator not permitted in queue name: '%s'", arg);
++        return ERROR;
++        }
++      queue_name = string_copy_perm(arg, FALSE);
++      break;
+       }
+-    queue_name = string_copy_perm(arg, FALSE);
+-    break;
+ 
+     case ACLC_RATELIMIT:
+     rc = acl_ratelimit(arg, where, log_msgptr);
+@@ -4007,10 +4009,8 @@ if (Ustrchr(ss, ' ') == NULL)
+   else if (*ss == '/')
+     {
+     struct stat statbuf;
+-    if (is_tainted(ss))
++    if (is_tainted2(ss, LOG_MAIN|LOG_PANIC, "Tainted ACL file name '%s'", ss))
+       {
+-      log_write(0, LOG_MAIN|LOG_PANIC,
+-	"attempt to open tainted ACL file name \"%s\"", ss);
+       /* Avoid leaking info to an attacker */
+       *log_msgptr = US"internal configuration error";
+       return ERROR;
+diff --git a/src/config.h.defaults b/src/config.h.defaults
+index e17f015f9..4e8b18904 100644
+--- a/src/config.h.defaults
++++ b/src/config.h.defaults
+@@ -17,6 +17,8 @@ Do not put spaces between # and the 'define'.
+ #define ALT_CONFIG_PREFIX
+ #define TRUSTED_CONFIG_LIST
+ 
++#define ALLOW_INSECURE_TAINTED_DATA
++
+ #define APPENDFILE_MODE            0600
+ #define APPENDFILE_DIRECTORY_MODE  0700
+ #define APPENDFILE_LOCKFILE_MODE   0600
+diff --git a/src/dbstuff.h b/src/dbstuff.h
+index c1fb54346..dcee78696 100644
+--- a/src/dbstuff.h
++++ b/src/dbstuff.h
+@@ -643,11 +643,9 @@ after reading data. */
+       : (flags) == O_RDWR ? "O_RDWR"	\
+       : (flags) == (O_RDWR|O_CREAT) ? "O_RDWR|O_CREAT"	\
+       : "??");	\
+-  if (is_tainted(name) || is_tainted(dirname)) \
+-    { \
+-    log_write(0, LOG_MAIN|LOG_PANIC, "Tainted name for DB file not permitted"); \
++  if (is_tainted2(name, LOG_MAIN|LOG_PANIC, "Tainted name '%s' for DB file not permitted", name) \
++      || is_tainted2(dirname, LOG_MAIN|LOG_PANIC, "Tainted name '%s' for DB directory not permitted", dirname)) \
+     *dbpp = NULL; \
+-    } \
+   else \
+     { EXIM_DBOPEN__(name, dirname, flags, mode, dbpp); } \
+   DEBUG(D_hints_lookup) debug_printf_indent("returned from EXIM_DBOPEN: %p\n", *dbpp); \
+diff --git a/src/deliver.c b/src/deliver.c
+index f5f065e63..4d5b12bde 100644
+--- a/src/deliver.c
++++ b/src/deliver.c
+@@ -5538,10 +5538,11 @@ FILE * fp = NULL;
+ if (!s || !*s)
+   log_write(0, LOG_MAIN|LOG_PANIC,
+     "Failed to expand %s: '%s'\n", varname, filename);
+-else if (*s != '/' || is_tainted(s))
+-  log_write(0, LOG_MAIN|LOG_PANIC,
+-    "%s is not %s after expansion: '%s'\n",
+-    varname, *s == '/' ? "untainted" : "absolute", s);
++else if (*s != '/')
++  log_write(0, LOG_MAIN|LOG_PANIC, "%s is not absolute after expansion: '%s'\n",
++    varname, s);
++else if (is_tainted2(s, LOG_MAIN|LOG_PANIC, "Tainted %s after expansion: '%s'\n", varname, s))
++  ;
+ else if (!(fp = Ufopen(s, "rb")))
+   log_write(0, LOG_MAIN|LOG_PANIC, "Failed to open %s for %s "
+     "message texts: %s", s, reason, strerror(errno));
+@@ -6151,9 +6152,10 @@ else if (system_filter && process_recipients != RECIP_FAIL_TIMEOUT)
+           if (!tmp)
+             p->message = string_sprintf("failed to expand \"%s\" as a "
+               "system filter transport name", tpname);
+-	  if (is_tainted(tmp))
+-            p->message = string_sprintf("attempt to used tainted value '%s' for"
+-	      "transport '%s' as a system filter", tmp, tpname);
++          { uschar *m;
++	  if ((m = is_tainted2(tmp, 0, "Tainted values '%s' " "for transport '%s' as a system filter", tmp, tpname)))
++            p->message = m;
++          }
+           tpname = tmp;
+           }
+         else
+diff --git a/src/directory.c b/src/directory.c
+index 2d4d565f4..ece1ee8f3 100644
+--- a/src/directory.c
++++ b/src/directory.c
+@@ -44,6 +44,11 @@ uschar c = 1;
+ struct stat statbuf;
+ uschar * path;
+ 
++/* does not work with 4.94
++if (is_tainted2(name, LOG_MAIN|LOG_PANIC, "Tainted path '%s' for new directory", name))
++  { p = US"create"; path = US name; errno = EACCES; goto bad; }
++*/
++
+ if (parent)
+   {
+   path = string_sprintf("%s%s%s", parent, US"/", name);
+diff --git a/src/exim.c b/src/exim.c
+index ee75739ec..7411f0467 100644
+--- a/src/exim.c
++++ b/src/exim.c
+@@ -2789,9 +2789,11 @@ on the second character (the one after '-'), to save some effort. */
+ 		  else badarg = TRUE;
+ 		  break;
+ 
+-    /* -MCG: set the queue name, to a non-default value */
++    /* -MCG: set the queue name, to a non-default value. Arguably, anything
++       from the commandline should be tainted - but we will need an untainted
++       value for the spoolfile when doing a -odi delivery process. */
+ 
+-	case 'G': if (++i < argc) queue_name = string_copy_taint(exim_str_fail_toolong(argv[i], EXIM_DRIVERNAME_MAX, "-MCG"), TRUE);
++	case 'G': if (++i < argc) queue_name = string_copy_taint(exim_str_fail_toolong(argv[i], EXIM_DRIVERNAME_MAX, "-MCG"), FALSE);
+ 		  else badarg = TRUE;
+ 		  break;
+ 
+diff --git a/src/expand.c b/src/expand.c
+index 05de94c49..dc4b4e102 100644
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -4383,13 +4383,13 @@ DEBUG(D_expand)
+ f.expand_string_forcedfail = FALSE;
+ expand_string_message = US"";
+ 
+-if (is_tainted(string))
++{ uschar *m;
++if ((m = is_tainted2(string, LOG_MAIN|LOG_PANIC, "Tainted string '%s' in expansion", s)))
+   {
+-  expand_string_message =
+-    string_sprintf("attempt to expand tainted string '%s'", s);
+-  log_write(0, LOG_MAIN|LOG_PANIC, "%s", expand_string_message);
++  expand_string_message = m;
+   goto EXPAND_FAILED;
+   }
++}
+ 
+ while (*s != 0)
+   {
+@@ -7629,10 +7629,12 @@ while (*s != 0)
+ 	/* Manually track tainting, as we deal in individual chars below */
+ 
+ 	if (is_tainted(sub))
++          {
+ 	  if (yield->s && yield->ptr)
+ 	    gstring_rebuffer(yield);
+ 	  else
+ 	    yield->s = store_get(yield->size = Ustrlen(sub), TRUE);
++          }
+ 
+ 	/* Check the UTF-8, byte-by-byte */
+ 
+@@ -8193,6 +8195,7 @@ that is a bad idea, because expand_string_message is in dynamic store. */
+ EXPAND_FAILED:
+ if (left) *left = s;
+ DEBUG(D_expand)
++  {
+   DEBUG(D_noutf8)
+     {
+     debug_printf_indent("|failed to expand: %s\n", string);
+@@ -8212,6 +8215,7 @@ DEBUG(D_expand)
+     if (f.expand_string_forcedfail)
+       debug_printf_indent(UTF8_UP_RIGHT "failure was forced\n");
+     }
++  }
+ if (resetok_p && !resetok) *resetok_p = FALSE;
+ expand_level--;
+ return NULL;
+diff --git a/src/functions.h b/src/functions.h
+index e22fd4f99..b4b2e3293 100644
+--- a/src/functions.h
++++ b/src/functions.h
+@@ -1084,36 +1084,66 @@ if (f.running_in_test_harness && f.testsuite_delays) millisleep(millisec);
+ 
+ /******************************************************************************/
+ /* Taint-checked file opens */
++static inline uschar *
++is_tainted2(const void *p, int lflags, const char* fmt, ...)
++{
++va_list ap;
++uschar *msg;
++rmark mark;
++
++if (!is_tainted(p))
++  return NULL;
++
++mark = store_mark();
++va_start(ap, fmt);
++msg = string_from_gstring(string_vformat(NULL, SVFMT_TAINT_NOCHK|SVFMT_EXTEND, fmt, ap));
++va_end(ap);
++
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++if (allow_insecure_tainted_data)
++  {
++  if LOGGING(tainted) log_write(0, LOG_MAIN, "Warning: %s", msg);
++  store_reset(mark);
++  return NULL;
++  }
++#endif
++
++if (lflags) log_write(0, lflags, "%s", msg);
++return msg; /* no store_reset(), as the message might be used afterwards and Exim
++            is expected to exit anyway, so we do not care about the leaked
++            storage */
++}
+ 
+ static inline int
+ exim_open2(const char *pathname, int flags)
+ {
+-if (!is_tainted(pathname)) return open(pathname, flags);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname);
++if (!is_tainted2(pathname, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname))
++  return open(pathname, flags);
+ errno = EACCES;
+ return -1;
+ }
++
+ static inline int
+ exim_open(const char *pathname, int flags, mode_t mode)
+ {
+-if (!is_tainted(pathname)) return open(pathname, flags, mode);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname);
++if (!is_tainted2(pathname, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname))
++  return open(pathname, flags, mode);
+ errno = EACCES;
+ return -1;
+ }
+ static inline int
+ exim_openat(int dirfd, const char *pathname, int flags)
+ {
+-if (!is_tainted(pathname)) return openat(dirfd, pathname, flags);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname);
++if (!is_tainted2(pathname, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname))
++  return openat(dirfd, pathname, flags);
+ errno = EACCES;
+ return -1;
+ }
+ static inline int
+ exim_openat4(int dirfd, const char *pathname, int flags, mode_t mode)
+ {
+-if (!is_tainted(pathname)) return openat(dirfd, pathname, flags, mode);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname);
++if (!is_tainted2(pathname, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname))
++  return openat(dirfd, pathname, flags, mode);
+ errno = EACCES;
+ return -1;
+ }
+@@ -1121,8 +1151,8 @@ return -1;
+ static inline FILE *
+ exim_fopen(const char *pathname, const char *mode)
+ {
+-if (!is_tainted(pathname)) return fopen(pathname, mode);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname);
++if (!is_tainted2(pathname, LOG_MAIN|LOG_PANIC, "Tainted filename '%s'", pathname))
++  return fopen(pathname, mode);
+ errno = EACCES;
+ return NULL;
+ }
+@@ -1130,8 +1160,8 @@ return NULL;
+ static inline DIR *
+ exim_opendir(const uschar * name)
+ {
+-if (!is_tainted(name)) return opendir(CCS name);
+-log_write(0, LOG_MAIN|LOG_PANIC, "Tainted dirname '%s'", name);
++if (!is_tainted2(name, LOG_MAIN|LOG_PANIC, "Tainted dirname '%s'", name))
++  return opendir(CCS name);
+ errno = EACCES;
+ return NULL;
+ }
+diff --git a/src/globals.c b/src/globals.c
+index fcb9cc0b5..5e42f5b90 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -98,6 +98,10 @@ int     sqlite_lock_timeout    = 5;
+ BOOL    move_frozen_messages   = FALSE;
+ #endif
+ 
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++BOOL    allow_insecure_tainted_data = FALSE;
++#endif
++
+ /* These variables are outside the #ifdef because it keeps the code less
+ cluttered in several places (e.g. during logging) if we can always refer to
+ them. Also, the tls_ variables are now always visible.  Note that these are
+@@ -1034,6 +1038,9 @@ int     log_default[]          = { /* for initializing log_selector */
+   Li_size_reject,
+   Li_skip_delivery,
+   Li_smtp_confirmation,
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++  Li_tainted,
++#endif
+   Li_tls_certificate_verified,
+   Li_tls_cipher,
+   -1
+@@ -1101,6 +1108,9 @@ bit_table log_options[]        = { /* must be in alphabetical order,
+   BIT_TABLE(L, smtp_protocol_error),
+   BIT_TABLE(L, smtp_syntax_error),
+   BIT_TABLE(L, subject),
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++  BIT_TABLE(L, tainted),
++#endif
+   BIT_TABLE(L, tls_certificate_verified),
+   BIT_TABLE(L, tls_cipher),
+   BIT_TABLE(L, tls_peerdn),
+diff --git a/src/globals.h b/src/globals.h
+index bb811553c..e0ca348ff 100644
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -77,6 +77,10 @@ extern int     sqlite_lock_timeout;    /* Internal lock waiting timeout */
+ extern BOOL    move_frozen_messages;   /* Get them out of the normal directory */
+ #endif
+ 
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++extern BOOL    allow_insecure_tainted_data;
++#endif
++
+ /* These variables are outside the #ifdef because it keeps the code less
+ cluttered in several places (e.g. during logging) if we can always refer to
+ them. Also, the tls_ variables are now always visible. */
+diff --git a/src/host.c b/src/host.c
+index dbc7ce20d..2047b9798 100644
+--- a/src/host.c
++++ b/src/host.c
+@@ -1197,9 +1197,9 @@ for (c = buffer, k = -1, i = 0; i < 8; i++)
+   c++;
+   }
+ 
+-c[-1] = '\0';	/* drop trailing colon */
++*--c = '\0';	/* drop trailing colon */
+ 
+-/* debug_printf("%s: D k %d <%s> <%s>\n", __FUNCTION__, k, d, d + 2*(k+1)); */
++/* debug_printf("%s: D k %d <%s> <%s>\n", __FUNCTION__, k, buffer, buffer + 2*(k+1)); */
+ if (k >= 0)
+   {			/* collapse */
+   c = d + 2*(k+1);
+@@ -1581,7 +1581,7 @@ Put it in permanent memory. */
+ 
+   if (hosts->h_aliases)
+     {
+-    int count = 1;
++    int count = 1;  /* need 1 more for terminating NULL */
+     uschar **ptr;
+ 
+     for (uschar ** aliases = USS hosts->h_aliases; *aliases; aliases++) count++;
+@@ -1690,7 +1690,7 @@ while ((ordername = string_nextinlist(&list, &sep, NULL, 0)))
+       {
+       uschar **aptr = NULL;
+       int ssize = 264;
+-      int count = 0;
++      int count = 1;  /* need 1 more for terminating NULL */
+       int old_pool = store_pool;
+ 
+       sender_host_dnssec = dns_is_secure(dnsa);
+diff --git a/src/log.c b/src/log.c
+index 5d36b4983..1d308d008 100644
+--- a/src/log.c
++++ b/src/log.c
+@@ -287,8 +287,11 @@ if (fd < 0 && errno == ENOENT)
+   uschar *lastslash = Ustrrchr(name, '/');
+   *lastslash = 0;
+   created = directory_make(NULL, name, LOG_DIRECTORY_MODE, FALSE);
+-  DEBUG(D_any) debug_printf("%s log directory %s\n",
+-    created ? "created" : "failed to create", name);
++  DEBUG(D_any)
++    if (created)
++      debug_printf("created log directory %s\n", name);
++    else
++      debug_printf("failed to create log directory %s: %s\n", name, strerror(errno));
+   *lastslash = '/';
+   if (created) fd = Uopen(name, flags, LOG_MODE);
+   }
+@@ -394,9 +397,7 @@ int fd = -1;
+ const uid_t euid = geteuid();
+ 
+ if (euid == exim_uid)
+-  {
+   fd = log_open_already_exim(name);
+-  }
+ else if (euid == root_uid)
+   {
+   int sock[2];
+@@ -457,7 +458,7 @@ return fd;
+ it does not exist. This may be called recursively on failure, in order to open
+ the panic log.
+ 
+-The directory is in the static variable file_path. This is static so that it
++The directory is in the static variable file_path. This is static so that
+ the work of sorting out the path is done just once per Exim process.
+ 
+ Exim is normally configured to avoid running as root wherever possible, the log
+@@ -492,60 +493,64 @@ people want, I hope. */
+ 
+ ok = string_format(buffer, sizeof(buffer), CS file_path, log_names[type]);
+ 
+-/* Save the name of the mainlog for rollover processing. Without a datestamp,
+-it gets statted to see if it has been cycled. With a datestamp, the datestamp
+-will be compared. The static slot for saving it is the same size as buffer,
+-and the text has been checked above to fit, so this use of strcpy() is OK. */
+-
+-if (type == lt_main && string_datestamp_offset >= 0)
++switch (type)
+   {
+-  Ustrcpy(mainlog_name, buffer);
+-  mainlog_datestamp = mainlog_name + string_datestamp_offset;
+-  }
++  case lt_main:
++    /* Save the name of the mainlog for rollover processing. Without a datestamp,
++    it gets statted to see if it has been cycled. With a datestamp, the datestamp
++    will be compared. The static slot for saving it is the same size as buffer,
++    and the text has been checked above to fit, so this use of strcpy() is OK. */
++
++    Ustrcpy(mainlog_name, buffer);
++    if (string_datestamp_offset > 0)
++      mainlog_datestamp = mainlog_name + string_datestamp_offset;
++    break;
+ 
+-/* Ditto for the reject log */
++  case lt_reject:
++    /* Ditto for the reject log */
+ 
+-else if (type == lt_reject && string_datestamp_offset >= 0)
+-  {
+-  Ustrcpy(rejectlog_name, buffer);
+-  rejectlog_datestamp = rejectlog_name + string_datestamp_offset;
+-  }
++    Ustrcpy(rejectlog_name, buffer);
++    if (string_datestamp_offset > 0)
++      rejectlog_datestamp = rejectlog_name + string_datestamp_offset;
++    break;
+ 
+-/* and deal with the debug log (which keeps the datestamp, but does not
+-update it) */
++  case lt_debug:
++    /* and deal with the debug log (which keeps the datestamp, but does not
++    update it) */
+ 
+-else if (type == lt_debug)
+-  {
+-  Ustrcpy(debuglog_name, buffer);
+-  if (tag)
+-    {
+-    /* this won't change the offset of the datestamp */
+-    ok2 = string_format(buffer, sizeof(buffer), "%s%s",
+-      debuglog_name, tag);
+-    if (ok2)
+-      Ustrcpy(debuglog_name, buffer);
+-    }
+-  }
++    Ustrcpy(debuglog_name, buffer);
++    if (tag)
++      {
++      /* this won't change the offset of the datestamp */
++      ok2 = string_format(buffer, sizeof(buffer), "%s%s",
++        debuglog_name, tag);
++      if (ok2)
++        Ustrcpy(debuglog_name, buffer);
++      }
++    break;
+ 
+-/* Remove any datestamp if this is the panic log. This is rare, so there's no
+-need to optimize getting the datestamp length. We remove one non-alphanumeric
+-char afterwards if at the start, otherwise one before. */
++  default:
++    /* Remove any datestamp if this is the panic log. This is rare, so there's no
++  need to optimize getting the datestamp length. We remove one non-alphanumeric
++  char afterwards if at the start, otherwise one before. */
+ 
+-else if (string_datestamp_offset >= 0)
+-  {
+-  uschar * from = buffer + string_datestamp_offset;
+-  uschar * to = from + string_datestamp_length;
++    if (string_datestamp_offset >= 0)
++      {
++      uschar * from = buffer + string_datestamp_offset;
++      uschar * to = from + string_datestamp_length;
+ 
+-  if (from == buffer || from[-1] == '/')
+-    {
+-    if (!isalnum(*to)) to++;
+-    }
+-  else
+-    if (!isalnum(from[-1])) from--;
++      if (from == buffer || from[-1] == '/')
++        {
++        if (!isalnum(*to)) to++;
++        }
++      else
++        if (!isalnum(from[-1])) from--;
+ 
+-  /* This copy is ok, because we know that to is a substring of from. But
+-  due to overlap we must use memmove() not Ustrcpy(). */
+-  memmove(from, to, Ustrlen(to)+1);
++      /* This copy is ok, because we know that to is a substring of from. But
++      due to overlap we must use memmove() not Ustrcpy(). */
++      memmove(from, to, Ustrlen(to)+1);
++      }
++    break;
+   }
+ 
+ /* If the file name is too long, it is an unrecoverable disaster */
+@@ -559,9 +564,7 @@ if (!ok)
+ *fd = log_open_as_exim(buffer);
+ 
+ if (*fd >= 0)
+-  {
+   return;
+-  }
+ 
+ euid = geteuid();
+ 
+@@ -713,26 +716,62 @@ return total_written;
+ }
+ 
+ 
++/* Pull the file out of the configured or the compiled-in list.
++Called for an empty log_file_path element, for debug logging activation
++when file_path has not previously been set, and from the appenfile transport setup. */
+ 
+-static void
+-set_file_path(void)
++void
++set_file_path(BOOL *multiple)
+ {
++uschar *s;
+ int sep = ':';              /* Fixed separator - outside use */
+-uschar *t;
+-const uschar *tt = US LOG_FILE_PATH;
+-while ((t = string_nextinlist(&tt, &sep, log_buffer, LOG_BUFFER_SIZE)))
+-  {
+-  if (Ustrcmp(t, "syslog") == 0 || t[0] == 0) continue;
+-  file_path = string_copy(t);
+-  break;
+-  }
++const uschar *ss = *log_file_path ? log_file_path : US LOG_FILE_PATH;
++
++if (*ss)
++  for (logging_mode = 0;
++       s = string_nextinlist(&ss, &sep, log_buffer, LOG_BUFFER_SIZE); )
++    {
++    if (Ustrcmp(s, "syslog") == 0)
++      logging_mode |= LOG_MODE_SYSLOG;
++    else if (!(logging_mode & LOG_MODE_FILE))  /* no file yet */
++      {
++      logging_mode |= LOG_MODE_FILE;
++      if (*s) file_path = string_copy(s);     /* If a non-empty path is given, use it */
++      }
++    else if (multiple) *multiple = TRUE;
++    }
++else
++  logging_mode = LOG_MODE_FILE;
++
++/* Set up the ultimate default if necessary. */
++
++if (logging_mode & LOG_MODE_FILE  &&  !*file_path)
++  if (LOG_FILE_PATH[0])
++    {
++      /* If we still do not have a file_path, we take
++      the first non-empty, non-syslog item in LOG_FILE_PATH, if there is
++      one.  If there is no such item, use the ultimate default in the
++      spool directory. */
++
++       for (ss = US LOG_FILE_PATH;
++            s = string_nextinlist(&ss, &sep, log_buffer, LOG_BUFFER_SIZE);)
++          {
++            if (*s != '/') continue;
++            file_path = string_copy(s);
++          }
++    }
++  else file_path = string_sprintf("%s/log/%%slog", spool_directory);
+ }
+ 
+ 
+ void
+ mainlog_close(void)
+ {
+-if (mainlogfd < 0) return;
++/* avoid closing it if it is closed already or if we do not see a chance
++to open the file mainlog later again */
++if (mainlogfd < 0 /* already closed */
++   || !(geteuid() == 0 || geteuid() == exim_uid))
++  return;
+ (void)close(mainlogfd);
+ mainlogfd = -1;
+ mainlog_inode = 0;
+@@ -844,41 +883,9 @@ if (!path_inspected)
+ 
+   store_pool = POOL_PERM;
+ 
+-  /* If nothing has been set, don't waste effort... the default values for the
+-  statics are file_path="" and logging_mode = LOG_MODE_FILE. */
+-
+-  if (*log_file_path)
+-    {
+-    int sep = ':';              /* Fixed separator - outside use */
+-    uschar *s;
+-    const uschar *ss = log_file_path;
+-
+-    logging_mode = 0;
+-    while ((s = string_nextinlist(&ss, &sep, log_buffer, LOG_BUFFER_SIZE)))
+-      {
+-      if (Ustrcmp(s, "syslog") == 0)
+-        logging_mode |= LOG_MODE_SYSLOG;
+-      else if (logging_mode & LOG_MODE_FILE)
+-	multiple = TRUE;
+-      else
+-        {
+-        logging_mode |= LOG_MODE_FILE;
+-
+-        /* If a non-empty path is given, use it */
+-
+-        if (*s)
+-          file_path = string_copy(s);
+-
+-        /* If the path is empty, we want to use the first non-empty, non-
+-        syslog item in LOG_FILE_PATH, if there is one, since the value of
+-        log_file_path may have been set at runtime. If there is no such item,
+-        use the ultimate default in the spool directory. */
+-
+-        else
+-	  set_file_path();  /* Empty item in log_file_path */
+-        }    /* First non-syslog item in log_file_path */
+-      }      /* Scan of log_file_path */
+-    }
++  /* make sure that we have a valid log file path in "file_path",
++  the open_log() later relies on it */
++  set_file_path(&multiple);
+ 
+   /* If no modes have been selected, it is a major disaster */
+ 
+@@ -886,11 +893,8 @@ if (!path_inspected)
+     die(US"Neither syslog nor file logging set in log_file_path",
+         US"Unexpected logging failure");
+ 
+-  /* Set up the ultimate default if necessary. Then revert to the old store
+-  pool, and record that we've sorted out the path. */
++  /* Revert to the old store pool, and record that we've sorted out the path. */
+ 
+-  if (logging_mode & LOG_MODE_FILE  &&  !file_path[0])
+-    file_path = string_sprintf("%s/log/%%slog", spool_directory);
+   store_pool = old_pool;
+   path_inspected = TRUE;
+ 
+@@ -1244,6 +1248,7 @@ if (flags & LOG_PANIC)
+ 
+   if (logging_mode & LOG_MODE_FILE)
+     {
++    if (!*file_path) set_file_path(NULL);
+     panic_recurseflag = TRUE;
+     open_log(&paniclogfd, lt_panic, NULL);  /* Won't return on failure */
+     panic_recurseflag = FALSE;
+@@ -1499,7 +1504,7 @@ if (opts)
+ resulting in certain setup not having been done.  Hack this for now so we
+ do not segfault; note that nondefault log locations will not work */
+ 
+-if (!*file_path) set_file_path();
++if (!*file_path) set_file_path(NULL);
+ 
+ open_log(&fd, lt_debug, tag_name);
+ 
+@@ -1521,5 +1526,14 @@ debug_file = NULL;
+ unlink_log(lt_debug);
+ }
+ 
++/* Called from the appendfile transport setup. */
++void
++open_logs(void)
++{
++set_file_path(NULL);
++if (!(logging_mode & LOG_MODE_FILE)) return;
++open_log(&mainlogfd, lt_main, 0);
++open_log(&rejectlogfd, lt_reject, 0);
++}
+ 
+ /* End of log.c */
+diff --git a/src/lookups/lf_sqlperform.c b/src/lookups/lf_sqlperform.c
+index ad1df29d1..38b7c2ad3 100644
+--- a/src/lookups/lf_sqlperform.c
++++ b/src/lookups/lf_sqlperform.c
+@@ -102,11 +102,13 @@ if (Ustrncmp(query, "servers", 7) == 0)
+         }
+       }
+ 
+-    if (is_tainted(server))
+-      {
+-      *errmsg = string_sprintf("%s server \"%s\" is tainted", name, server);
++    { uschar *m;
++    if ((m = is_tainted2(server, 0, "Tainted %s server '%s'", name, server)))
++     {
++      *errmsg = m;
+       return DEFER;
+       }
++    }
+ 
+     rc = (*fn)(ss+1, server, result, errmsg, &defer_break, do_cache, opts);
+     if (rc != DEFER || defer_break) return rc;
+@@ -158,11 +160,13 @@ else
+ 	server = ele;
+ 	}
+ 
+-      if (is_tainted(server))
++      { uschar *m;
++      if ((m = is_tainted2(server, 0, "Tainted %s server '%s'", name, server)))
+         {
+-        *errmsg = string_sprintf("%s server \"%s\" is tainted", name, server);
++        *errmsg = m;
+         return DEFER;
+         }
++      }
+ 
+       rc = (*fn)(query, server, result, errmsg, &defer_break, do_cache, opts);
+       if (rc != DEFER || defer_break) return rc;
+diff --git a/src/macros.h b/src/macros.h
+index b2f86ed53..aeaaeb736 100644
+--- a/src/macros.h
++++ b/src/macros.h
+@@ -497,6 +497,9 @@ enum logbit {
+   Li_smtp_mailauth,
+   Li_smtp_no_mail,
+   Li_subject,
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++  Li_tainted,
++#endif
+   Li_tls_certificate_verified,
+   Li_tls_cipher,
+   Li_tls_peerdn,
+diff --git a/src/parse.c b/src/parse.c
+index 086b010c3..bf780998f 100644
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -1410,12 +1410,8 @@ for (;;)
+       return FF_ERROR;
+       }
+ 
+-    if (is_tainted(filename))
+-      {
+-      *error = string_sprintf("Tainted name '%s' for included file  not permitted\n",
+-       filename);
++    if ((*error = is_tainted2(filename, 0, "Tainted name '%s' for included file not permitted\n", filename)))
+       return FF_ERROR;
+-      }
+ 
+     /* Check file name if required */
+ 
+diff --git a/src/rda.c b/src/rda.c
+index ce6e7a36d..d2a8eb310 100644
+--- a/src/rda.c
++++ b/src/rda.c
+@@ -179,10 +179,8 @@ struct stat statbuf;
+ /* Reading a file is a form of expansion; we wish to deny attackers the
+ capability to specify the file name. */
+ 
+-if (is_tainted(filename))
++if ((*error = is_tainted2(filename, 0, "Tainted name '%s' for file read not permitted\n", filename)))
+   {
+-  *error = string_sprintf("Tainted name '%s' for file read not permitted\n",
+-			filename);
+   *yield = FF_ERROR;
+   return NULL;
+   }
+diff --git a/src/readconf.c b/src/readconf.c
+index f962f9029..694a5bbdb 100644
+--- a/src/readconf.c
++++ b/src/readconf.c
+@@ -68,6 +68,9 @@ static optionlist optionlist_config[] = {
+   { "add_environment",          opt_stringptr,   {&add_environment} },
+   { "admin_groups",             opt_gidlist,     {&admin_groups} },
+   { "allow_domain_literals",    opt_bool,        {&allow_domain_literals} },
++#ifdef ALLOW_INSECURE_TAINTED_DATA
++  { "allow_insecure_tainted_data", opt_bool,     {&allow_insecure_tainted_data} },
++#endif
+   { "allow_mx_to_ip",           opt_bool,        {&allow_mx_to_ip} },
+   { "allow_utf8_domains",       opt_bool,        {&allow_utf8_domains} },
+   { "auth_advertise_hosts",     opt_stringptr,   {&auth_advertise_hosts} },
+diff --git a/src/routers/rf_get_transport.c b/src/routers/rf_get_transport.c
+index 4a43818ff..32bde9ec3 100644
+--- a/src/routers/rf_get_transport.c
++++ b/src/routers/rf_get_transport.c
+@@ -66,10 +66,8 @@ if (expandable)
+       "\"%s\" in %s router: %s", tpname, router_name, expand_string_message);
+     return FALSE;
+     }
+-  if (is_tainted(ss))
++  if (is_tainted2(ss, LOG_MAIN|LOG_PANIC, "Tainted tainted value '%s' from '%s' for transport", ss, tpname))
+     {
+-    log_write(0, LOG_MAIN|LOG_PANIC,
+-      "attempt to use tainted value '%s' from '%s' for transport", ss, tpname);
+     addr->basic_errno = ERRNO_BADTRANSPORT;
+     /* Avoid leaking info to an attacker */
+     addr->message = US"internal configuration error";
+diff --git a/src/search.c b/src/search.c
+index f8aaacb04..f6e4d1f5b 100644
+--- a/src/search.c
++++ b/src/search.c
+@@ -343,12 +343,8 @@ lookup_info *lk = lookup_list[search_type];
+ uschar keybuffer[256];
+ int old_pool = store_pool;
+ 
+-if (filename && is_tainted(filename))
+-  {
+-  log_write(0, LOG_MAIN|LOG_PANIC,
+-    "Tainted filename for search: '%s'", filename);
++if (filename && is_tainted2(filename, LOG_MAIN|LOG_PANIC, "Tainted filename for search '%s'", filename))
+   return NULL;
+-  }
+ 
+ /* Change to the search store pool and remember our reset point */
+ 
+@@ -639,7 +635,7 @@ DEBUG(D_lookup)
+ /* Arrange to put this database at the top of the LRU chain if it is a type
+ that opens real files. */
+ 
+-if (  open_top != (tree_node *)handle 
++if (  open_top != (tree_node *)handle
+    && lookup_list[t->name[0]-'0']->type == lookup_absfile)
+   {
+   search_cache *c = (search_cache *)(t->data.ptr);
+diff --git a/src/smtp_out.c b/src/smtp_out.c
+index d1f69024e..ade098c9e 100644
+--- a/src/smtp_out.c
++++ b/src/smtp_out.c
+@@ -53,11 +53,8 @@ if (!(expint = expand_string(istring)))
+   return FALSE;
+   }
+ 
+-if (is_tainted(expint))
++if (is_tainted2(expint, LOG_MAIN|LOG_PANIC, "Tainted value '%s' from '%s' for interface", expint, istring))
+   {
+-  log_write(0, LOG_MAIN|LOG_PANIC,
+-    "attempt to use tainted value '%s' from '%s' for interface",
+-    expint, istring);
+   addr->transport_return = PANIC;
+   addr->message = string_sprintf("failed to expand \"interface\" "
+       "option for %s: configuration error", msg);
+@@ -425,7 +422,7 @@ if (ob->socks_proxy)
+   {
+   int sock = socks_sock_connect(sc->host, sc->host_af, port, sc->interface,
+ 				sc->tblock, ob->connect_timeout);
+-  
++
+   if (sock >= 0)
+     {
+     if (early_data && early_data->data && early_data->len)
+diff --git a/src/transports/appendfile.c b/src/transports/appendfile.c
+index 8ab8b6016..c0f4de4c8 100644
+--- a/src/transports/appendfile.c
++++ b/src/transports/appendfile.c
+@@ -217,6 +217,9 @@ Arguments:
+ Returns:     OK, FAIL, or DEFER
+ */
+ 
++void
++open_logs(void);
++
+ static int
+ appendfile_transport_setup(transport_instance *tblock, address_item *addrlist,
+   transport_feedback *dummy, uid_t uid, gid_t gid, uschar **errmsg)
+@@ -231,6 +234,9 @@ dummy = dummy;
+ uid = uid;
+ gid = gid;
+ 
++/* we can't wait until we're not privileged anymore */
++open_logs();
++
+ if (ob->expand_maildir_use_size_file)
+ 	ob->maildir_use_size_file = expand_check_condition(ob->expand_maildir_use_size_file,
+ 		US"`maildir_use_size_file` in transport", tblock->name);
+@@ -1286,12 +1292,14 @@ if (!(path = expand_string(fdname)))
+     expand_string_message);
+   goto ret_panic;
+   }
+-if (is_tainted(path))
++{ uschar *m;
++if ((m = is_tainted2(path, 0, "Tainted '%s' (file or directory "
++          "name for %s transport) not permitted", path, tblock->name)))
+   {
+-  addr->message = string_sprintf("Tainted '%s' (file or directory "
+-    "name for %s transport) not permitted", path, tblock->name);
++  addr->message = m;
+   goto ret_panic;
+   }
++}
+ 
+ if (path[0] != '/')
+   {
+diff --git a/src/transports/autoreply.c b/src/transports/autoreply.c
+index 865abbf4f..80c7c0db0 100644
+--- a/src/transports/autoreply.c
++++ b/src/transports/autoreply.c
+@@ -404,14 +404,15 @@ recipient cache. */
+ 
+ if (oncelog && *oncelog && to)
+   {
++  uschar *m;
+   time_t then = 0;
+ 
+-  if (is_tainted(oncelog))
++  if ((m = is_tainted2(oncelog, 0, "Tainted '%s' (once file for %s transport)"
++      " not permitted", oncelog, tblock->name)))
+     {
+     addr->transport_return = DEFER;
+     addr->basic_errno = EACCES;
+-    addr->message = string_sprintf("Tainted '%s' (once file for %s transport)"
+-      " not permitted", oncelog, tblock->name);
++    addr->message = m;
+     goto END_OFF;
+     }
+ 
+@@ -515,13 +516,14 @@ if (oncelog && *oncelog && to)
+ 
+   if (then != 0 && (once_repeat_sec <= 0 || now - then < once_repeat_sec))
+     {
++    uschar *m;
+     int log_fd;
+-    if (is_tainted(logfile))
++    if ((m = is_tainted2(logfile, 0, "Tainted '%s' (logfile for %s transport)"
++	" not permitted", logfile, tblock->name)))
+       {
+       addr->transport_return = DEFER;
+       addr->basic_errno = EACCES;
+-      addr->message = string_sprintf("Tainted '%s' (logfile for %s transport)"
+-	" not permitted", logfile, tblock->name);
++      addr->message = m;
+       goto END_OFF;
+       }
+ 
+@@ -548,12 +550,13 @@ if (oncelog && *oncelog && to)
+ /* We are going to send a message. Ensure any requested file is available. */
+ if (file)
+   {
+-  if (is_tainted(file))
++  uschar *m;
++  if ((m = is_tainted2(file, 0, "Tainted '%s' (file for %s transport)"
++      " not permitted", file, tblock->name)))
+     {
+     addr->transport_return = DEFER;
+     addr->basic_errno = EACCES;
+-    addr->message = string_sprintf("Tainted '%s' (file for %s transport)"
+-      " not permitted", file, tblock->name);
++    addr->message = m;
+     return FALSE;
+     }
+   if (!(ff = Ufopen(file, "rb")) && !ob->file_optional)
+diff --git a/src/transports/pipe.c b/src/transports/pipe.c
+index 27422bd42..fc44fa585 100644
+--- a/src/transports/pipe.c
++++ b/src/transports/pipe.c
+@@ -599,13 +599,16 @@ if (!cmd || !*cmd)
+     tblock->name);
+   return FALSE;
+   }
+-if (is_tainted(cmd))
++
++{ uschar *m;
++if ((m = is_tainted2(cmd, 0, "Tainted '%s' (command "
++    "for %s transport) not permitted", cmd, tblock->name)))
+   {
+-  addr->message = string_sprintf("Tainted '%s' (command "
+-    "for %s transport) not permitted", cmd, tblock->name);
+   addr->transport_return = PANIC;
++  addr->message = m;
+   return FALSE;
+   }
++}
+ 
+ /* When a pipe is set up by a filter file, there may be values for $thisaddress
+ and numerical the variables in existence. These are passed in
+diff --git a/src/transports/smtp.c b/src/transports/smtp.c
+index f26e2337a..64ca788b0 100644
+--- a/src/transports/smtp.c
++++ b/src/transports/smtp.c
+@@ -2015,7 +2015,7 @@ if (continue_hostname && continue_proxy_cipher)
+       {
+       case OK:		sx->conn_args.dane = TRUE;
+ 			ob->tls_tempfail_tryclear = FALSE;	/* force TLS */
+-			ob->tls_sni = sx->first_addr->domain;	/* force SNI */
++                        ob->tls_sni = sx->conn_args.host->name; /* force SNI */
+ 			break;
+       case FAIL_FORCED:	break;
+       default:		set_errno_nohost(sx->addrlist, ERRNO_DNSDEFER,
+@@ -2097,7 +2097,7 @@ if (!continue_hostname)
+ 	  {
+ 	  case OK:		sx->conn_args.dane = TRUE;
+ 				ob->tls_tempfail_tryclear = FALSE;	/* force TLS */
+-				ob->tls_sni = sx->first_addr->domain;	/* force SNI */
++				ob->tls_sni = sx->conn_args.host->name; /* force SNI */
+ 				break;
+ 	  case FAIL_FORCED:	break;
+ 	  default:		set_errno_nohost(sx->addrlist, ERRNO_DNSDEFER,
+@@ -4715,11 +4715,8 @@ if (!hostlist || (ob->hosts_override && ob->hosts))
+     else
+       if (ob->hosts_randomize) s = expanded_hosts = string_copy(s);
+ 
+-    if (is_tainted(s))
++    if (is_tainted2(s, LOG_MAIN|LOG_PANIC, "Tainted host list '%s' from '%s' in transport %s", s, ob->hosts, tblock->name))
+       {
+-      log_write(0, LOG_MAIN|LOG_PANIC,
+-	"attempt to use tainted host list '%s' from '%s' in transport %s",
+-	s, ob->hosts, tblock->name);
+       /* Avoid leaking info to an attacker */
+       addrlist->message = US"internal configuration error";
+       addrlist->transport_return = PANIC;
