@@ -1,6 +1,6 @@
 --- a/src/Makefile.in
 +++ b/src/Makefile.in
-@@ -136,7 +136,7 @@
+@@ -139,7 +139,7 @@ perlxsi.c: Makefile
  	$(PERL) -MExtUtils::Embed -e xsinit -- -std urxvt
  
  rxvtperl.C: rxvtperl.xs iom_perl.h iom_perl.xs typemap typemap.iom

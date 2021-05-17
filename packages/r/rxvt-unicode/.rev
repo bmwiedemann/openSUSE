@@ -322,4 +322,12 @@ adds .desktop files</comment>
     <comment>- restore the -256color binaries</comment>
     <requestid>870637</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>db8c88f2a6ece7ce9b8d08036b37b8cc</srcmd5>
+    <version>9.26</version>
+    <time>1621269921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.26</comment>
+    <requestid>893692</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon May 17 07:57:50 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 9.26
+	- ev_iouring.c was wrongly required during compilation, and wrongly
+          not packaged.
+- Update to 9.25
+	- for the 17.5th anniversary, and because many distributions seem to
+          remove rxvt in favour of urxvt, this release resurrects rclock as
+          urclock.
+	- add support for systemd socket-based activation - debian bug #917105,
+	  freebsd bug #234276.
+	- do not destruct perl on exit anymore: this might fail for a variety of
+          reasons, and takes unneccessary time.
+        - remove any macros from urxvtperl manpage(s), should fix debian
+          bug 858385.
+	- the old bg image resources are now provided by the background
+	  extension, and perl is thus required for bg image support. No
+	  configuration change is needed: urxvt autoloads the background
+	  ext if any bg image resource/option is present (for OSC sequences to
+          work you need to enable it explicity). The old bg image
+	  resources are also now deprecated; users are encouraged to
+	  switch to the new bg image interface (see man urxvt-background).
+        - confirm-paste now checks for any ctlchars, not just newlines.
+        - searchable scrollback will now ignore bracketed paste mode sequences
+          (prompted by Daniel Gröber's patch).
+	- drop ISO 2022 locale support. ISO 2022 encodings are not supported in
+          POSIX locales and clash with vt100 charset emulation (the luit
+          program can be used as a substitute).
+        - perl didn't parse rgba colours specified as an array correctly,
+          only allowing 0 and 100% intensity for each component (this affected
+          fill and tint).
+        - when iterating over resources, urxvt will now try to properly handle
+          multipart resources (such as "*background.expr"), for the benefit
+          of autoloading perl extensions.
+        - ESC G (query rxvt graphics mode) has been disabled due to security
+          implications. The rxvt graphics mode was removed in rxvt-unicode 1.5,
+          and no programs relying on being able to query the mode are known.
+	- work around API change breakage in perl 5.28, based on a patch by
+          Roman Bogorodskiy.
+	- improved security: rob nation's (obsolete) graphics mode queries
+          no longer reply with linefeed in secure/default mode.
+	- ISO 8613-3 direct colour SGR sequences (patch by Fengguang Wu).
+	- xterm focus reporting mode (patch by Daniel Hahler).
+	- xterm SGR mouse mode.
+	- implement DECRQM. Patch by Přemysl Eric Janouch.
+	- add missing color index parameter to OSC 4 response. Patch
+	  by Přemysl Eric Janouch.
+	- in some window managers, if smart resize was enabled, urxvt
+	  erroneously moved the window on font change - awesome bug
+	  #532, arch linux bug ##34807 (patch by Uli Schlachter).
+	- fix urxvtd crash when using a background expression.
+	- properly restore colors when using fading and reverse video
+	  is enabled while urxvt is focused and then disabled while it
+	  is not focused, or vice versa (patch by Daniel Hahler).
+	- fix high memory usage when an extension repeatedly hides and
+	  shows an overlay (reported by Marcel Lautenbach).
+        - expose priv_modes member and constants to perl extensions
+          (patch by Rastislav Barlik).
+        - fix a whole slew of const sillyness, unfortunately forced upon
+          us by ISO C++.
+        - update to libecb 0x00010006.
+        - disable all thread support in ecb.h as we presumably don't need it.
+        - slightly improve Makefile source dependencies.
+        - work around bugs in newer Pod::Xhtml versions (flags incorrect formatting codes
+          in xhtml/html sections but does not interpret correct ones).
+
+- New file: /usr/bin/urclock
+- Add BuildRequires: pkgconfig(xt)
+- Remove rxvt-unicode-9.22-perl_environ_segfault.patch (accepted upstream)
+- Refresh patches:
+    - rxvt-unicode-hardening.patch,
+    - rxvt-unicode-9.21-xsubpp.patch
+    - rxvt-unicode-9.20-CVE-2008-1142-DISPLAY.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 16:23:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - restore the -256color binaries

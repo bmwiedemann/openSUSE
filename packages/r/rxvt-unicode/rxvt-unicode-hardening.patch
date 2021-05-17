@@ -1,7 +1,7 @@
 diff -ru rxvt-unicode-9.22/src/command.C rxvt-unicode-9.22-patched/src/command.C
 --- rxvt-unicode-9.22/src/command.C	2016-01-18 20:35:08.000000000 +0100
 +++ rxvt-unicode-9.22-patched/src/command.C	2017-04-28 09:52:35.440245607 +0200
-@@ -2868,7 +2868,7 @@
+@@ -2842,7 +2842,7 @@ rxvt_term::process_csi_seq ()
    i = ch - CSI_ICH;
    ndef = get_byte_array_bit (csi_defaults, i);
    for (p = 0; p < nargs; p++)

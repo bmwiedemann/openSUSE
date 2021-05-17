@@ -22,7 +22,7 @@
 %define with_265color_terminfo_files 1
 %endif
 Name:           rxvt-unicode
-Version:        9.22
+Version:        9.26
 Release:        0
 #
 Summary:        Rxvt X Terminal with Unicode Support
@@ -40,7 +40,6 @@ Patch2:         rxvt-unicode-9.21-xsubpp.patch
 Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
-Patch6:         rxvt-unicode-9.22-perl_environ_segfault.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
@@ -53,6 +52,7 @@ BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xt)
 %requires_eq    perl
 Provides:       locale(xorg-x11:ja;ko;zh)
 %if ! 0%{?with_265color_terminfo_files}
@@ -140,6 +140,7 @@ rm %{buildroot}/%{_terminfo}/r/%{name}
 %doc doc/etc
 %doc examples/
 %{_bindir}/urxvt*
+%{_bindir}/urclock
 %dir %{_terminfo}/r
 %if ! 0%{?with_265color_terminfo_files}
 %exclude %{_terminfo}/r/%{name}-256color
