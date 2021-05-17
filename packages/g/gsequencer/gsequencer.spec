@@ -1,7 +1,7 @@
 #
 # spec file for package gsequencer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ Name:           gsequencer
 Version:        3.8.10
 Release:        0
 Summary:        Audio processing engine
-License:        GPL-3.0-or-later AND AGPL-3.0-or-later AND GFDL-1.3-only
+License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
-Url:            https://nongnu.org/gsequencer
+URL:            https://nongnu.org/gsequencer
 Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.8.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
@@ -37,6 +37,8 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  dssi-devel
 BuildRequires:  fluid-soundfont-gm
 BuildRequires:  gettext-devel >= 0.19.8
+BuildRequires:  gstreamer-plugins-base
+BuildRequires:  gstreamer-plugins-good
 BuildRequires:  gtk-doc
 BuildRequires:  hydrogen
 BuildRequires:  ladspa-cmt
@@ -46,18 +48,15 @@ BuildRequires:  lv2-devel
 BuildRequires:  lv2-swh-plugins
 BuildRequires:  pkgconfig
 BuildRequires:  pulseaudio
-BuildRequires:  gstreamer-plugins-base
-BuildRequires:  gstreamer-plugins-good
 BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libinstpatch-1.0)
@@ -67,6 +66,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
 
 %description
 Advanced Gtk+ Sequencer is an audio
@@ -86,7 +86,7 @@ autoreconf -fi
 export CPPFLAGS='-std=gnu99 -include errno.h -DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_START_FILENAME=\"file://'%{_docdir}'/gsequencer/html/index.html/\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -DAGS_WITH_LIBINSTPATCH=1'
 %configure \
 %if %{with run_functional_tests}
-    --enable-run-functional-tests \ 
+    --enable-run-functional-tests \
 %endif
     HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
 
@@ -121,8 +121,8 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/gsequencer.desktop
 %{_docdir}/gsequencer/
 %{_datadir}/applications/gsequencer.desktop
 %{_datadir}/icons/hicolor/*/apps/gsequencer.png
-%{_datadir}/metainfo/
-%{_datadir}/mime/packages/
+%{_datadir}/metainfo/*
+%{_datadir}/mime/packages/*
 
 %package -n libags%{libagssonumber}
 Summary:        GSequencer core libraries
@@ -191,7 +191,6 @@ Advanced Gtk+ Sequencer library development documentation.
 %{_libdir}/libags_server.so.%{libagssonumber}*
 %{_libdir}/libags_gui.so.%{libagssonumber}*
 %{_libdir}/libags_audio.so.%{libagssonumber}*
-
 
 %files -n typelib-1_0-Libags-3_0
 %defattr(-,root,root)
