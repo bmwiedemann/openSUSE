@@ -1,0 +1,25 @@
+diff -U 3 -dHrN -- a/Resources/Orthanc/Stone/OrthancHttpConnection.cpp b/Resources/Orthanc/Stone/OrthancHttpConnection.cpp
+--- a/Resources/Orthanc/Stone/OrthancHttpConnection.cpp	2021-01-14 08:49:23.000000000 +0100
++++ b/Resources/Orthanc/Stone/OrthancHttpConnection.cpp	2021-05-17 10:40:46.167136256 +0200
+@@ -66,8 +66,9 @@
+ 
+     client_.SetMethod(Orthanc::HttpMethod_Post);
+     client_.SetUrl(url_ + uri);
+-    client_.SetBody(body);
++    client_.SetExternalBody(body);
+     client_.ApplyAndThrowException(result);
++    client_.ClearBody();
+   }
+ 
+ 
+@@ -79,8 +80,9 @@
+ 
+     client_.SetMethod(Orthanc::HttpMethod_Put);
+     client_.SetUrl(url_ + uri);
+-    client_.SetBody(body);
++    client_.SetExternalBody(body);
+     client_.ApplyAndThrowException(result);
++    client_.ClearBody();
+   }
+ 
+ 
