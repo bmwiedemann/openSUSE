@@ -1,7 +1,7 @@
 #
 # spec file for package python-aina
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.5
 Requires:       python-click >= 6.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 6.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -58,8 +59,7 @@ dos2unix AUTHORS.rst README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py test
+%pytest
 
 %post
 %python_install_alternative aina

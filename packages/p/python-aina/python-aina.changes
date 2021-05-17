@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 08:54:37 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
 Wed May 27 09:36:01 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
