@@ -1,7 +1,7 @@
 #
 # spec file for package python-fluent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/projectfluent/python-fluent
 Source:         https://github.com/projectfluent/python-fluent/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -46,7 +47,7 @@ A localization framework for natural language translations.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
