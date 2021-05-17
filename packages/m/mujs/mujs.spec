@@ -17,7 +17,7 @@
 
 
 Name:           mujs
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        AGPL-3.0-or-later
