@@ -1,7 +1,7 @@
 #
 # spec file for package libclaw
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           libclaw
 Version:        1.7.4
 Release:        0
 Summary:        C++ library of various utility functions
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://libclaw.sourceforge.net/
+URL:            http://libclaw.sourceforge.net/
 Source:         http://downloads.sf.net/%{name}/%{name}-%{version}.tar.gz
 # FEATURE-OPENSUSE not to strip libs.
 Patch0:         libclaw-1.6.1-nostrip.patch
@@ -34,6 +34,8 @@ Patch2:         libclaw-doxy-w-date-time.patch
 Patch3:         fix-cmake.patch
 # PATCH-FIX-UPSTREAM to be built via gcc7.
 Patch4:         libclaw-1.7.4-gcc7.patch
+# PATCH-FIX-UPSTREAM no-boost-math.patch -- Boost.Math now requires c++11, so get rid of it
+Patch5:         no-boost-math.patch
 BuildRequires:  boost-devel >= 1.42
 BuildRequires:  cmake >= 2.8.8
 BuildRequires:  doxygen
@@ -84,6 +86,7 @@ libclaw.
 %patch2
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 # Fix encoding of examples
 find examples -type f |
 while read F
@@ -94,12 +97,8 @@ do
 done
 
 %build
-%cmake \
-%if 0%{suse_version} > 1320
-	-DCMAKE_CXX_FLAGS="%{optflags} -std=c++98" \
-%endif
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo
-make %{?_smp_mflags} VERBOSE=1
+%cmake
+%make_build
 
 %install
 %cmake_install
@@ -109,24 +108,19 @@ rm %{buildroot}%{_libdir}/*.a
 %find_lang %{name}
 
 %post -n %{name}1 -p /sbin/ldconfig
-
 %postun -n %{name}1 -p /sbin/ldconfig
 
 %files -n %{name}1 -f %{name}.lang
-%defattr(-,root,root)
-%{_libdir}/*.so.*
-%doc COPYING
+%license COPYING
+%{_libdir}/%{name}*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/claw-config
-%dir %{_datadir}/cmake/%{name}
-%{_datadir}/cmake/libclaw/%{name}*.cmake
-%{_includedir}/claw
-%{_libdir}/*.so
+%{_datadir}/cmake/libclaw/
+%{_includedir}/claw/
+%{_libdir}/%{name}*.so
 
 %files doc
-%defattr(-,root,root)
 %doc %{_datadir}/doc/%{name}1
 
 %changelog
