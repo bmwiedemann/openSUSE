@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 16 21:18:43 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- stat-ver-riscv.patch: fix _STAT_VER on riscv
+- reenable testsuite
+
+-------------------------------------------------------------------
 Wed Mar 17 14:56:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes to fix build with glibc 2.33:

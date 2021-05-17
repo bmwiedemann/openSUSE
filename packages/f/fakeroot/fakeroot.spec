@@ -32,6 +32,7 @@ Patch2:         %{name}-1.21-fix-shell-in-fakeroot
 Patch3:         fakeroot-drop-tartest.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-glibc-2.33-compatibility-fixes.patch
+Patch5:         stat-ver-riscv.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
@@ -44,7 +45,7 @@ BuildRequires:  sharutils
 BuildRequires:  group(sys)
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description
 fakeroot runs a command in an environment wherein it appears to have
@@ -108,11 +109,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/{faked,fakeroot}{,.1%{ext_man}}
 
 %check
-%if 0%{?suse_version} < 1315
 for type in sysv tcp; do
   %make_build -C obj-$type check
 done
-%endif
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/fakeroot fakeroot %{_bindir}/fakeroot-sysv 20 \

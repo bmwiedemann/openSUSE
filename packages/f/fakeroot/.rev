@@ -82,4 +82,12 @@
   * 0001-glibc-2.33-compatibility-fixes.patch (forwarded request 879703 from cgiboudeaux)</comment>
     <requestid>879818</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>56a66246f306c5f823a35be37069282b</srcmd5>
+    <version>1.25.3</version>
+    <time>1621269914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893677</requestid>
+  </revision>
 </revisionlist>

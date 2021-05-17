@@ -1,0 +1,13 @@
+Index: fakeroot-1.25.3/libfakeroot.c
+===================================================================
+--- fakeroot-1.25.3.orig/libfakeroot.c
++++ fakeroot-1.25.3/libfakeroot.c
+@@ -91,7 +91,7 @@
+ #endif
+ 
+ #ifndef _STAT_VER
+- #if defined (__aarch64__)
++ #if defined (__aarch64__) || defined (__riscv)
+   #define _STAT_VER 0
+  #elif defined (__x86_64__)
+   #define _STAT_VER 1
