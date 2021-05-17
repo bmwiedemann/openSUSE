@@ -98,4 +98,21 @@
     <comment></comment>
     <requestid>824828</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e06ff483cfd83c9c463c314cf966d35</srcmd5>
+    <version>0.9.6</version>
+    <time>1621269905</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * Python 3.6+ required
+  * Convert to newer email.message.EmailMessage format for processing. Closes #98
+  * Hopefully fix #105. Escapes every &quot;&amp;&quot; in the URL
+  * Attempt --run-safe implementation
+  * Fixes #106
+  * Scan a selection of email headers for URLs. Closes #97.
+  * Add option for custom regex. Closes #79.
+  * Allow $ as an acceptable trailing character
+  * Fix urwid reverse error. Thanks to @pavoljuhas. Closes #99 (forwarded request 892593 from dirkmueller)</comment>
+    <requestid>893552</requestid>
+  </revision>
 </revisionlist>

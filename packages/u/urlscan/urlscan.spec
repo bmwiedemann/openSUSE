@@ -1,7 +1,7 @@
 #
 # spec file for package urlscan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define python_flavor python3
 Name:           urlscan
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
@@ -25,16 +26,14 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/firecat53/urlscan
 Source0:        https://github.com/firecat53/urlscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        muttrc
-Requires:       python3
-Requires:       python3-base
-Requires:       python3-urwid
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python3
+Requires:       python3-base
+Requires:       python3-urwid
 BuildArch:      noarch
-%define python_flavor python3
 
 %description
 The urlscan utility displays URLs found in an email message with
@@ -50,18 +49,17 @@ python3 setup.py build
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-rm -rf %{buildroot}/usr/share/doc/%{name}*
+rm -rf %{buildroot}%{_datadir}/doc/%{name}*
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
-install -m 0644 %{S:1} %{buildroot}%{_defaultdocdir}/%{name}
+install -m 0644 %{SOURCE1} %{buildroot}%{_defaultdocdir}/%{name}
 rm -rvf %{buildroot}%{python_sitelib}/%{name}-%{version}-*-info
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README.rst
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %doc %{_defaultdocdir}/%{name}/muttrc
 
 %changelog
