@@ -56,6 +56,8 @@ cp %{SOURCE2} .cargo/config
 install -D -p -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -D -p -m 0755 target/release/agreety %{buildroot}%{_bindir}/agreety
 
+# https://github.com/openSUSE/openSUSEway/issues/37
+sed -i -e "s|\$SHELL|bash|" config.toml
 install -D -p -m 0644 config.toml %{buildroot}/%{_sysconfdir}/%{name}/config.toml
 
 install -D -m 0644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service

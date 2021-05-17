@@ -51,4 +51,14 @@
     <comment></comment>
     <requestid>886916</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4f4c5d813e64c3a1ed95fdcdd49aebe3</srcmd5>
+    <version>0.7.0</version>
+    <time>1621269938</time>
+    <user>dimstar_suse</user>
+    <comment>- provide real shell in example conf
+  * fixes # https://github.com/openSUSE/openSUSEway/issues/37
+</comment>
+    <requestid>893781</requestid>
+  </revision>
 </revisionlist>
