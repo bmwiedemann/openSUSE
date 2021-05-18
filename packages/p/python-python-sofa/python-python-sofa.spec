@@ -63,11 +63,17 @@ by the SOFA conventions (version 1.0).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-echo '[regex1]
+echo "
+[regex1]
 regex: DateCreated: .*
 replace: DateCreated: 0000-00-00 00:00:00
-' > nodate.cfg
-%pytest --nbval --sanitize-with nodate.cfg doc/examples/SOFA-file-access.ipynb
+
+[regex2]
+regex: <module 'sofa' from '.*'
+replace: <module 'sofa' from 'somewhere'
+
+" > nbval_sanitize.cfg
+%pytest --nbval --sanitize-with nbval_sanitize.cfg doc/examples/SOFA-file-access.ipynb
 
 %files %{python_files}
 %doc README.rst
