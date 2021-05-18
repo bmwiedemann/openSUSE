@@ -853,4 +853,24 @@ Now with build cycle removed.</comment>
   * New Jelastic public domains are added and existing ones are reviewed (#1259)</comment>
     <requestid>886892</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6f537b0d78a2d5f63a1a6f7a8e6bba3c</srcmd5>
+    <version>20210511</version>
+    <time>1621355185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210511:
+  * util: gTLD data autopull updates for 2021-05-11T15:13:51 UTC (#1316)
+  * Add authgearapps.com authgear-staging.com (#1304)
+  * Add goupile.fr (#1307)
+  * Add hosp.uk to our existing domains (#1308)
+  * Update README.md
+  * Add noop.app and *.developer.app to PSL (#1265)
+  * Add github dev domains (#1290)
+  * added Storebase.store (#1291)
+  * Update to pythonanywhere entries (#1298)
+  * Update README.md - added Apple / Facebook note
+  * addition of ss sld's sch.ss and me.ss (#1247)
+  * util: gTLD data autopull updates for 2021-04-22T15:17:15 UTC (#1292)</comment>
+    <requestid>893031</requestid>
+  </revision>
 </revisionlist>

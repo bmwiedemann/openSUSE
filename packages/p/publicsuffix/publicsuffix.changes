@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 14 06:43:45 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210511:
+  * util: gTLD data autopull updates for 2021-05-11T15:13:51 UTC (#1316)
+  * Add authgearapps.com authgear-staging.com (#1304)
+  * Add goupile.fr (#1307)
+  * Add hosp.uk to our existing domains (#1308)
+  * Update README.md
+  * Add noop.app and *.developer.app to PSL (#1265)
+  * Add github dev domains (#1290)
+  * added Storebase.store (#1291)
+  * Update to pythonanywhere entries (#1298)
+  * Update README.md - added Apple / Facebook note
+  * addition of ss sld's sch.ss and me.ss (#1247)
+  * util: gTLD data autopull updates for 2021-04-22T15:17:15 UTC (#1292)
+
+-------------------------------------------------------------------
 Tue Apr 20 07:44:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210419:
