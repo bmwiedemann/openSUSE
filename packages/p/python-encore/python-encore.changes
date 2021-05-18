@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 18 09:51:20 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
 Mon Apr 20 12:44:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

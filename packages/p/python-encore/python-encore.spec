@@ -1,7 +1,7 @@
 #
 # spec file for package python-encore
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           python-encore
 Version:        0.7.0
 Release:        0
 Summary:        Low-level core modules for building Python applications
-License:        LGPL-2.1-only AND Apache-2.0 AND Python-2.0
+License:        Apache-2.0 AND LGPL-2.1-only AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/enthought/encore
 Source:         https://files.pythonhosted.org/packages/source/e/encore/encore-%{version}.tar.gz
@@ -34,6 +34,7 @@ Recommends:     python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 %if %{with python2}
 BuildRequires:  python-futures
@@ -80,7 +81,7 @@ Packages:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
