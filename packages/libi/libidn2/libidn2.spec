@@ -1,7 +1,7 @@
 #
 # spec file for package libidn2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %define lname	libidn2-0
+%{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           libidn2
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
-License:        GPL-3.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later)
+License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
 URL:            https://www.gnu.org/software/libidn/#libidn2
 Source0:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz.sig
 Source3:        baselibs.conf
+Source4:        %{name}-rpmlintrc
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 
@@ -35,7 +36,6 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 %package tools
 Summary:        Command line utility to convert Int. Domain Names
 License:        GPL-3.0-or-later
-Requires(post): %{install_info_prereq}
 
 %description tools
 An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -51,7 +51,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later)
+License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -69,7 +69,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
     --disable-static \
     --disable-gtk-doc
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -79,13 +79,7 @@ rm -rf %{buildroot}/%{_datadir}/gtk-doc/
 %find_lang %{name}
 
 %check
-make check %{?_smp_mflags}
-
-%post tools
-%install_info --info-dir=%{_infodir} %{_infodir}/libidn2.info.*
-
-%preun tools
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libidn2.info.*
+%make_build check
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
