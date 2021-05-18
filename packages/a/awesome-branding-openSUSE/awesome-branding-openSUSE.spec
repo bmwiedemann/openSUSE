@@ -1,7 +1,7 @@
 #
 # spec file for package awesome-branding-openSUSE
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu <toganm@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,10 +23,11 @@ Name:           awesome-branding-openSUSE
 Version:        4.0
 Release:        0
 Summary:        openSUSE Branding for awesome
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/madanyang/awesome-branding-opensuse
+URL:            https://github.com/madanyang/awesome-branding-opensuse
 Source:         %{name}-%{_version}.tar.xz
+Patch0:         awesome-branding-without-calendar.patch
 BuildRequires:  awesome-branding-upstream >= 4.0
 Requires:       adwaita-icon-theme
 Requires:       awesome = %{awesome_version}
@@ -47,7 +48,7 @@ This package provides the openSUSE specific additions both for
 functions and look and feel for awesome window manager.
 
 %prep
-%setup -q -n %{name}-%{_version}
+%autosetup -n %{name}-%{_version} -p1
 
 %build
 # Nothing to build.

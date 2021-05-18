@@ -1,0 +1,22 @@
+Index: awesome-branding-openSUSE-4.0-v0.1/rc.lua
+===================================================================
+--- awesome-branding-openSUSE-4.0-v0.1.orig/rc.lua
++++ awesome-branding-openSUSE-4.0-v0.1/rc.lua
+@@ -38,7 +38,7 @@ local gtk = lgi.require("Gtk", "3.0")
+ -- Freedesktop integration
+ local freedesktop = require("freedesktop")
+ -- calendar functions
+-local calendar2 = require("calendar2")
++-- local calendar2 = require("calendar2")
+ -- Extra widgets
+ local vicious = require("vicious")
+ 
+@@ -184,7 +184,7 @@ separator:set_text("|")
+ 
+ -- Create a textclock widget
+ mytextclock = wibox.widget.textclock()
+-calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
++-- calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
+ 
+ mycpuwidget = wibox.widget.textbox()
+ vicious.register(mycpuwidget, vicious.widgets.cpu, "$1%")

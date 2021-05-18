@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 11:30:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add awesome-branding-without-calendar.patch: Disable the calendar
+  widget for now (boo#1182240).
+
+-------------------------------------------------------------------
 Sun Jan  8 20:12:29 UTC 2017 - sor.alexei@meowr.ru
 
 - Bump to version 4.0-v0.1:
