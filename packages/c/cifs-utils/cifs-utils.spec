@@ -21,7 +21,7 @@
 %endif
 
 Name:           cifs-utils
-Version:        6.12
+Version:        6.13
 Release:        0
 Summary:        Utilities for doing and managing mounts of the Linux CIFS filesystem
 License:        GPL-3.0-or-later
@@ -37,8 +37,7 @@ Source100:      README.cifstab.migration
 Source1:        cifs.init
 
 Patch1:         fix-sbin-install-error.patch
-Patch2:         0001-cifs.upcall-try-to-use-container-ipc-uts-net-pid-mnt.patch
-Patch3:         0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
+Patch2:         0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
 # /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
@@ -136,7 +135,6 @@ done
 
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

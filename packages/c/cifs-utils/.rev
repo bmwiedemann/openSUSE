@@ -679,4 +679,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
   (bsc#1182682).</comment>
     <requestid>888794</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5c896dc57c7bb0294948509f6b1880f6</srcmd5>
+    <version>6.13</version>
+    <time>1621355205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893218</requestid>
+  </revision>
 </revisionlist>

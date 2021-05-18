@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 11:13:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to cifs-utils 6.13
+  * Fixes CVE-2021-20208, cifs.upcall kerberos auth leak in container
+  * remove cifs-utils-6.12.tar.bz2
+  * remove cifs-utils-6.12.tar.bz2.asc
+  * add    cifs-utils-6.13.tar.bz2
+  * add    cifs-utils-6.13.tar.bz2.asc
+- Drop upstream fixed patches:
+  * 0001-cifs.upcall-try-to-use-container-ipc-uts-net-pid-mnt.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 10:41:59 UTC 2021 - Aurelien Aptel <aaptel@suse.com>
 
 - cifs.upcall: fix regression in kerberos mount; (bsc#1184815).
