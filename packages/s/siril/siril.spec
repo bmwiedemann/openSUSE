@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
+#PATCH-FIX-UPSTREAM https://gitlab.com/free-astro/siril/-/commit/d319fceca5b00f156e1c5e3512d3ac1f41beb16a
+Patch0:         fix_glib_2_68_error.patch
 BuildRequires:  gcc-c++
 # Remove git build dep when fixed upstream: https://gitlab.com/free-astro/siril/-/issues/583
 BuildRequires:  git
@@ -58,6 +60,7 @@ automatically or manually, stack them and enhance final images.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # override build directory, the default "build" is a regular source directory

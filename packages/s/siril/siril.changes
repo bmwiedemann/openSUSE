@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 07:26:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix glib 2.68 compilation error
+- Add fix_glib_2_68_error.patch
+
+-------------------------------------------------------------------
 Thu Feb 18 07:59:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.99.8.1:

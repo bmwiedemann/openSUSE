@@ -1,0 +1,32 @@
+From d319fceca5b00f156e1c5e3512d3ac1f41beb16a Mon Sep 17 00:00:00 2001
+From: Cyril Richard <cyril.richard42@gmail.com>
+Date: Tue, 2 Mar 2021 13:46:32 +0100
+Subject: [PATCH] Should fix the bug in issue #680
+
+---
+ src/core/exif.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/exif.cpp b/src/core/exif.cpp
+index dd58b1dc..f3070198 100644
+--- a/src/core/exif.cpp
++++ b/src/core/exif.cpp
+@@ -25,7 +25,6 @@ extern "C" {
+ #include "config.h"
+ #endif
+ 
+-#include <glib.h>
+ #ifdef _OPENMP
+ #include <omp.h>
+ #endif
+@@ -33,6 +32,8 @@ extern "C" {
+ }
+ #endif
+ 
++#include <glib.h>
++
+ #include <cassert>
+ #include <fstream>
+ #include <iostream>
+-- 
+GitLab
