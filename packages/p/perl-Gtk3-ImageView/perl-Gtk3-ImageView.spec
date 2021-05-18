@@ -18,7 +18,7 @@
 
 %define cpan_name Gtk3-ImageView
 Name:           perl-Gtk3-ImageView
-Version:        8
+Version:        9
 Release:        0
 Summary:        Image viewer widget for Gtk3
 License:        Artistic-1.0 OR GPL-1.0-or-later
