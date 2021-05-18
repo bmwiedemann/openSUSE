@@ -1,7 +1,7 @@
 #
 # spec file for package pam_yubico
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pam_yubico
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        Yubico Pluggable Authentication Module (PAM)
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Security
-Url:            https://developers.yubico.com/yubico-pam/
+URL:            https://developers.yubico.com/yubico-pam/
 Source:         https://developers.yubico.com/yubico-pam/Releases/pam_yubico-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubico-pam/Releases/pam_yubico-%{version}.tar.gz.sig
 Source2:        baselib.conf
@@ -35,7 +35,10 @@ BuildRequires:  pkgconfig(ykpers-1) >= 1.11
 
 %description
 
-This module allows you to use the Yubikey device to authenticate to the PAM system.
+The Yubico PAM module provides an easy way to integrate the YubiKey into your
+existing user authentication infrastructure. PAM is used by GNU/Linux, Solaris
+and Mac OS X for user authentication, and by other specialized applications
+such as NCSA MyProxy.
 
 %prep
 %setup -q

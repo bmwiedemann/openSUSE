@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 17 15:36:30 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Version 2.27 (released 2021-04-09)
+  - Add always_prompt configuration option.
+  - Add client certificate support for ldap.
+  - Add starttls support for ldap.
+  - Add ldap_bind_as_user support.
+  - Parsing, cleanliness and string fixes.
+  - Documentation and spelling fixes.
+
+-------------------------------------------------------------------
 Fri Apr 20 11:58:00 UTC 2018 - kbabioch@suse.com
 
 - Version 2.26 (released 2018-04-20)
@@ -196,30 +207,29 @@ Wed Jan  7 20:55:40 UTC 2015 - mrueckert@suse.de
 -------------------------------------------------------------------
 Thu Mar 17 15:40:54 UTC 2011 - crrodriguez@opensuse.org
 
-- Update GIT snapshot 
+- Update GIT snapshot
 
 -------------------------------------------------------------------
 Sat Mar 12 14:12:28 UTC 2011 - crrodriguez@opensuse.org
 
-- Update git snapshot 
+- Update git snapshot
 
 -------------------------------------------------------------------
 Thu Mar  3 21:02:33 UTC 2011 - crrodriguez@opensuse.org
 
-- Use an slightly newer git snapshot 
+- Use an slightly newer git snapshot
 
 -------------------------------------------------------------------
 Sun Jan 30 21:39:14 UTC 2011 - cristian.rodriguez@opensuse.org
 
-- run make check 
+- run make check
 
 -------------------------------------------------------------------
 Sun Jan 30 18:19:29 UTC 2011 - cristian.rodriguez@opensuse.org
 
-- fix some wrong ldap calls 
+- fix some wrong ldap calls
 
 -------------------------------------------------------------------
 Sun Jan 30 16:25:26 UTC 2011 - cristian.rodriguez@opensuse.org
 
-- Initial version 
-
+- Initial version
