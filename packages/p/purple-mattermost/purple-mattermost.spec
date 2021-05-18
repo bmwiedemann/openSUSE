@@ -1,7 +1,7 @@
 #
 # spec file for package purple-mattermost
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   mattermost
 Name:           purple-mattermost
-Version:        1.2
+Version:        2.0
 Release:        0
 Summary:        A libpurple/Pidgin plugin to connect to Mattermost
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/EionRobb/purple-mattermost
-Source:         https://github.com/EionRobb/purple-mattermost/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/EionRobb/purple-mattermost/archive/v%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libmarkdown)
@@ -70,7 +70,7 @@ This package provides the icon set for Pidgin.
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1 \
+%make_build V=1 \
   CFLAGS="%{optflags} -DMATTERMOST_PLUGIN_VERSION='\"%{version}\"'"
 
 %install
