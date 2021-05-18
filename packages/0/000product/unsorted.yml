@@ -6411,9 +6411,6 @@ unsorted:
   - guava 
   - guava-javadoc 
   - guava-testlib 
-  - guava20 
-  - guava20-javadoc 
-  - guava20-testlib 
   - gucharmap-devel 
   - gude-mouseclock-udev 
   - gudev-sharp 
@@ -12011,6 +12008,7 @@ unsorted:
   - libmrss-devel 
   - libmrss0 
   - libmrss0-32bit: [x86_64] 
+  - libmruby3 
   - libmsgpackc2 
   - libmsi0 
   - libmsiecf-devel 
@@ -16292,6 +16290,8 @@ unsorted:
   - mrsh-rsh-compat 
   - mrsh-rsh-server-compat 
   - mrsh-server 
+  - mruby 
+  - mruby-devel 
   - mscgen 
   - msgpack-devel 
   - msitools 
@@ -17433,7 +17433,6 @@ unsorted:
   - ocaml-minisat-devel 
   - ocaml-num 
   - ocaml-num-devel 
-  - ocaml-obuild 
   - ocaml-ocaml-compiler-libs 
   - ocaml-ocaml-compiler-libs-devel 
   - ocaml-ocamlbuild 
@@ -27376,6 +27375,7 @@ unsorted:
   - python39-apache-libcloud 
   - python39-apipkg 
   - python39-apiron 
+  - python39-apns2 
   - python39-appdirs 
   - python39-application 
   - python39-applicationinsights 
@@ -28053,6 +28053,7 @@ unsorted:
   - python39-django-picklefield 
   - python39-django-pipeline 
   - python39-django-polymorphic 
+  - python39-django-push-notifications 
   - python39-django-pyscss 
   - python39-django-q 
   - python39-django-qsessions 
@@ -28399,6 +28400,7 @@ unsorted:
   - python39-husl 
   - python39-hvac 
   - python39-hvplot 
+  - python39-hyper 
   - python39-hyperframe 
   - python39-hyperlink 
   - python39-hypothesis 
@@ -40725,6 +40727,7 @@ unsorted:
   - trader 
   - trader-lang 
   - traefik 
+  - traefik1.7 
   - trang 
   - transconnect 
   - transfig 
@@ -41803,6 +41806,7 @@ unsorted:
   - xbsql 
   - xbsql-devel 
   - xca 
+  - xca-bash-completion 
   - xcalc 
   - xcalib 
   - xcalib-profiles 
