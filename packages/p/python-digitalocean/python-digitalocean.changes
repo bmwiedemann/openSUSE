@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 18 09:40:47 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.16.0
+  * no upstream changelog except git log:
+  https://github.com/koalalorenzo/python-digitalocean/compare/v1.15.0...v1.16.0
+
+-------------------------------------------------------------------
 Thu Jan 30 11:37:49 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Bump to 1.15.2
