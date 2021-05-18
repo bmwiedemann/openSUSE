@@ -330,4 +330,23 @@
   time ago.</comment>
     <requestid>878019</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5a1100aaa7ccc22abc1cc73eba447acb</srcmd5>
+    <version>9.6.22</version>
+    <time>1621355196</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 9.6.22.
+  * https://www.postgresql.org/docs/9.6/release-9-6-22.html
+  * CVE-2021-32027, bsc#1185924:
+    Prevent integer overflows in array subscripting calculations.
+  * CVE-2021-32028, bsc#1185925: Fix mishandling of “junk”
+    columns in INSERT ... ON CONFLICT ... UPDATE target lists.
+- Don't use %_stop_on_removal, because it was meant to be private
+  and got removed from openSUSE. %_restart_on_update is also
+  private, but still supported and needed for now (bsc#1183168).
+
+- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now (boo#1183118).</comment>
+    <requestid>893131</requestid>
+  </revision>
 </revisionlist>

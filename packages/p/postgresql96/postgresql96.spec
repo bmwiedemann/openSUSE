@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 9.6.21
+%define pgversion 9.6.22
 %define pgmajor 9.6
 %define pgsuffix 96
 %define buildlibs 0
@@ -88,7 +88,7 @@ BuildRequires:  %libpq
 %bcond_with     systemd
 %bcond_with     systemd_notify
 %endif
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
+%if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
 %bcond_without  llvm
 %else
 # LLVM is currently unsupported on SLE, so don't use it
@@ -764,10 +764,10 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 %preun server
 # Stop only when we are uninstalling the currently running version
 test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -eq 0 -a -x /usr/bin/systemctl ]; then
+if [ "$FIRST_ARG" -eq 0 ]; then
   %if %{with systemd}
-    %define stop %_stop_on_removal postgresql.service
-    eval $(systemctl show postgresql --property=MainPID)
+    %define stop systemctl stop postgresql.service
+    eval $(systemctl show postgresql.service --property=MainPID)
   %else
     %define stop /sbin/init.d postgresql stop
     MainPID=$(pidof -s postgres) || :
