@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Tue May 11 16:21:41 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 10.17:
+  * https://www.postgresql.org/docs/10/release-10-17.html
+  * CVE-2021-32027, bsc#1185924:
+    Prevent integer overflows in array subscripting calculations.
+  * CVE-2021-32028, bsc#1185925: Fix mishandling of “junk”
+    columns in INSERT ... ON CONFLICT ... UPDATE target lists.
+
+- Don't use %_stop_on_removal, because it was meant to be private
+  and got removed from openSUSE. %_restart_on_update is also
+  private, but still supported and needed for now (bsc#1183168).
+
+-------------------------------------------------------------------
 Mon Mar 15 19:29:39 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Re-enable build of the llvmjit subpackage on SLE, but it will
-  only be delivered on PackageHub for now.
+  only be delivered on PackageHub for now (boo#1183118).
 
 -------------------------------------------------------------------
 Tue Mar  9 13:52:19 UTC 2021 - Reinhard Max <max@suse.com>
