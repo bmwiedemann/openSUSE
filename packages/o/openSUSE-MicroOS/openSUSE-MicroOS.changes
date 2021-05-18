@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 12:28:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fix match of Pine64 in config.sh
+- Set the libcontainers storage driver to btrfs
+
+-------------------------------------------------------------------
 Wed Apr 21 14:56:21 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Force network-legacy, network-wicked is not usable (boo#1182227)

@@ -425,4 +425,13 @@
     <comment></comment>
     <requestid>887333</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>24f174da9307b4ebf68e5c8fc7dfa072</srcmd5>
+    <version>16.0.0</version>
+    <time>1621355237</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix match of Pine64 in config.sh
+- Set the libcontainers storage driver to btrfs (forwarded request 894059 from favogt)</comment>
+    <requestid>894060</requestid>
+  </revision>
 </revisionlist>

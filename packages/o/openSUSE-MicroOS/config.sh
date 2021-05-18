@@ -131,6 +131,12 @@ cat >/etc/dracut.conf.d/50-microos-growfs.conf <<"EOF"
 install_items+=" /usr/lib/systemd/systemd-growfs "
 EOF
 
+# Use the btrfs storage driver. This is usually detected in %post, but with kiwi
+# that happens outside of the final FS.
+if [ -e /etc/containers/storage.conf ]; then
+	sed -i 's/driver = "overlay"/driver = "btrfs"/g' /etc/containers/storage.conf
+fi
+
 #======================================
 # Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
 #--------------------------------------
@@ -154,7 +160,7 @@ fi
 #======================================
 # Configure Pine64 specifics
 #--------------------------------------
-if [[ "$kiwi_profiles" == *"Pine64" ]]; then
+if [[ "$kiwi_profiles" == *"Pine64"* ]]; then
 	echo 'add_drivers+=" fixed sunxi-mmc axp20x-regulator axp20x-rsb "' > /etc/dracut.conf.d/sunxi_modules.conf
 fi
 
