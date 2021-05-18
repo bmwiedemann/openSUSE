@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 18 07:07:22 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.0.8
+  * no upstream changelog (see github log)
+- test package via %pytest macro
+
+-------------------------------------------------------------------
 Thu Apr 16 07:39:12 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
