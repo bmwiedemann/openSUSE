@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_account_invoice
-Version:        %{majorver}.11
+Version:        %{majorver}.12
 Release:        0
 Summary:        The "account_invoice" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -45,16 +45,16 @@ BuildArch:      noarch
 The account_invoice module add invoices and payment terms.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
