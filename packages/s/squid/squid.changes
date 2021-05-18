@@ -3,15 +3,17 @@ Tue May 11 21:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.15:
   - Bug 5112: Excessively loud chunked reply parsing error reporting
-  - Bug 5106: Broken cache manager URL parsing
+  - Bug 5106: Broken cache manager URL parsing (bsc#1185918, CVE-2021-28652)
   - Bug 5104: Memory leak in RFC 2169 response parsing
+    (bsc#1185921, CVE-2021-28651)
   - Bug 3556: "FD ... is not an open socket" for accept() problems
   - Profiling: CPU timing implemented for MAC non-x86
   - Fix HttpHeaderStats definition to include hoErrorDetail
   - Fix Squid-to-client write_timeout triggers client_lifetime timeout
   - Limit HeaderLookupTable_t::lookup() to BadHdr and specific IDs
-  - Handle more Range requests
-  - Handle more partial responses
+    (bsc#1185919, CVE-2021-28662)
+  - Handle more Range requests (bsc#1185916, CVE-2021-31806)
+  - Handle more partial responses (bsc#1185923)
   - Stop processing a response if the Store entry is gone
   - ... and some portability fixes
   - ... and some documentation updates
