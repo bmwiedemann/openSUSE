@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:03:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.12:
+  * Added experimental CRAM 3.1 and 4.0 support.
+  * Added a general filtering syntax for alignment records in
+    SAM/BAM/CRAM readers.
+  * The knet networking code has been removed if favor of libcurl
+  * The old htslib/knetfile.h interfaces have been marked as deprecated.
+  * Added an introspection API for checking some of the capabilities
+    provided by HTSlib
+  * Made performance improvements to probaln_glocal method, which
+    speeds up mpileup BAQ calculations.
+  * Added a public method for constructing a BAM record from the
+    component pieces.
+  * Added two public methods, sam_parse_cigar and bam_parse_cigar,
+    as part of a small CIGAR API
+  * HTSlib, and the included htsfile program, will now recognise
+    the old RAZF compressed file format. Note that while the format
+    is detected, HTSlib is unable to read it.
+  * The S3 plugin now has options to force the address style.
+    It will recognise the addressing_style and host_bucket entries
+    in the respective AWS .credentials and s3cmd .s3cfg files.
+  * Fixed VCF #CHROM header parsing to only separate columns at tab
+    characters.
+  * Fixed a crash reported in bcf_sr_sort_set, which expects REF
+    to be present.
+  * Fixed a bcf synced reader bug when filtering with a region list,
+    and the first record for a chromosome had the same position as
+    the last record for the previous chromosome.
+  * Fixed a bug in the overlapping logic of mpileup, dealing with
+    iterating over CIGAR segments.
+  * Fixed a tabix bug that prevented setting the correct number of
+    lines to be skipped in a region file.
+  * Made bam_itr_next an alias for sam_itr_next, to prevent it from
+    crashing when working with htsFile pointers.
+  * Fixed once per outgoing multi-threaded block bgzf_idx_flush
+    assertion, to accommodate situations when a single record could
+    span multiple blocks.
+  * Fixed assumption of pthread_t being a non-structure, as
+    permitted by POSIX.
+  * Fixed the minimum offset of a BAI index bin, to account for
+    unmapped reads.
+  * Fixed the CRLF handling in sam_parse_worker method.
+  * Included unistd.h and errno.h directly in HTSlib files, as
+    opposed to including them indirectly, via third party code.
+
+-------------------------------------------------------------------
 Fri Feb 19 01:11:53 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 1.11: https://github.com/samtools/htslib/releases/tag/1.11

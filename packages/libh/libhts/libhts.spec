@@ -17,7 +17,7 @@
 
 
 Name:           libhts
-Version:        1.11
+Version:        1.12
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
