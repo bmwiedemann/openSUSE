@@ -1,3 +1,18 @@
+-------------------------------------------------------------------
+Thu Apr 22 11:10:11 UTC 2021 - Jesús Bermúdez Velázquez <jesus.bv@suse.com>
+
+- Version 2.6.9
+- Fix: Don't append slash to custom repository urls 
+- Add enabled attribute to syncing process
+  This fixes wrong marked repositories when syncing
+  This references bsc#1184814
+
+- Enable 'Installer-Updates' repositories when
+  enabling a product, so they can get used by
+  the installer to patch the installation system itself.
+
+  This references bsc#1184814
+-------------------------------------------------------------------
 Mon Mar 29 10:51:13 UTC 2021 - Felix Schnizlein <fschnizlein@suse.com>
 
 - Version 2.6.8
@@ -21,9 +36,9 @@ Tue Mar 16 08:20:24 UTC 2021 - Jens Mammen <jmammen@suse.com>
 -------------------------------------------------------------------
 Fri Feb 26 18:56:56 UTC 2021 - Jesús Bermúdez Velázquez <jesus.bv@suse.com>
 
-- Do not raise an exception when mirroring 
+- Do not raise an exception when mirroring
   if info missing is in alpha or beta stage
-  This references bsc#1180018 
+  This references bsc#1180018
 
 -------------------------------------------------------------------
 Thu Feb 18 14:20:53 UTC 2021 - Natnael Getahun <natnael.getahun@suse.com>
@@ -236,6 +251,11 @@ Tue Jun  9 07:16:15 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 - Fix generic dependencies:
   - systemd ordering was missing
   - shadow is required for pre-install
+
+-------------------------------------------------------------------
+Fri Jun  5 13:41:29 UTC 2020 - Jesús Bermúdez Velázquez <jesus.bv@suse.com>
+
+- Set cloud_povider info when registering the instance
 
 -------------------------------------------------------------------
 Fri May 29 14:54:06 UTC 2020 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
