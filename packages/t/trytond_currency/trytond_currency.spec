@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_currency
-Version:        %{majorver}.4
+Version:        %{majorver}.5
 Release:        0
 Summary:        The "currency" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -40,16 +40,16 @@ The currency module defines the concepts of currency and rate
 in the Tryton application platform.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
-%python3_build   
+%python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
