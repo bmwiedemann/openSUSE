@@ -2,7 +2,7 @@
 #
 # spec file for package libgig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,21 @@
 #
 
 
-%define sover_gig  9
+%define sover_gig  10
 %define sover_akai 0
 Name:           libgig
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Library for loading Gigasampler and DLS Level 1/2 files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://linuxsampler.org/
-ExclusiveArch:  %ix86 x86_64
+URL:            https://linuxsampler.org/
 Source0:        http://download.linuxsampler.org/packages/libgig-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source1:        libgig-rpmlintrc
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile) >= 1.0.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 C++ library for loading Gigasampler and DLS Level 1/2 files.
@@ -83,7 +79,7 @@ Some example applications for the libgig package.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -98,8 +94,7 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 %postun -n libgig%{sover_gig} -p /sbin/ldconfig
 
 %files -n libgig%{sover_gig}
-%defattr(-,root,root)
-%license  COPYING
+%license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
 %dir %{_libdir}/libgig/
 %{_libdir}/libgig/libgig.so.%{sover_gig}
@@ -110,46 +105,23 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 %postun -n libakai%{sover_akai} -p /sbin/ldconfig
 
 %files -n libakai%{sover_akai}
-%defattr(-,root,root)
-%license  COPYING
+%license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_libdir}/libgig/libakai.so.%{sover_akai}
 %{_libdir}/libgig/libakai.so.%{sover_akai}.*
 %config %{_sysconfdir}/ld.so.conf.d/libakai%{sover_akai}.conf
 
 %files -n libgig-devel
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/libgig/
-%dir %{_includedir}/libgig/
-%{_libdir}/libgig/libgig.so
-%{_includedir}/libgig/Akai.h
-%{_includedir}/libgig/DLS.h
-%{_includedir}/libgig/Korg.h
-%{_includedir}/libgig/RIFF.h
-%{_includedir}/libgig/SF.h
-%{_includedir}/libgig/Serialization.h
-%{_includedir}/libgig/gig.h
-%{_libdir}/libgig/libakai.so
-%{_libdir}/pkgconfig/akai.pc
-%{_libdir}/pkgconfig/gig.pc
+%{_libdir}/libgig/*.so
+%{_includedir}/libgig/
+%{_libdir}/pkgconfig/*.pc
 
 %files -n libgig-tools
-%defattr(-,root,root)
-%license  COPYING
+%license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
-%{_bindir}/akaidump
-%{_bindir}/akaiextract
-%{_bindir}/dlsdump
-%{_bindir}/gig2mono
-%{_bindir}/gig2stereo
-%{_bindir}/gigdump
-%{_bindir}/gigextract
-%{_bindir}/gigmerge
-%{_bindir}/korg2gig
-%{_bindir}/korgdump
-%{_bindir}/rifftree
-%{_bindir}/sf2dump
-%{_bindir}/sf2extract
-%{_mandir}/man1/*.1*
+%{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog

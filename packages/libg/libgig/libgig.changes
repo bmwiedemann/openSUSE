@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 18 08:36:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 4.3.0 (libgig.so.10):
+  * requires a C++11 compliant compiler
+  * gig file format extensions used by recent versions of
+    LinuxSampler
+  * Fix compatibility with GigaStudio 3
+  * Extend Serialization framework o support common C++ STL classes
+
+-------------------------------------------------------------------
 Fri Oct 18 08:52:09 UTC 2019 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 4.2.0
