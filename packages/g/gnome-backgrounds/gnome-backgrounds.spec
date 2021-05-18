@@ -17,7 +17,7 @@
 
 
 Name:           gnome-backgrounds
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        GNOME Backgrounds
 License:        CC-BY-2.0 AND GPL-2.0-or-later AND CC-BY-SA-2.0 AND CC-BY-SA-3.0

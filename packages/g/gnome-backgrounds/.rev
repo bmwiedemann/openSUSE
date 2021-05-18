@@ -581,4 +581,12 @@
     <comment>Update to 40.0 (forwarded request 886226 from dimstar)</comment>
     <requestid>887478</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6bae2dafb403600d8800c0aaf1d571c5</srcmd5>
+    <version>40.1</version>
+    <time>1621355224</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893929 from dimstar)</comment>
+    <requestid>893956</requestid>
+  </revision>
 </revisionlist>
