@@ -1,7 +1,7 @@
 #
 # spec file for package wv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           wv
 Version:        1.2.9
 Release:        0
 Summary:        Tools for Importing Microsoft Word (tm) Documents
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Word
-Url:            http://wvware.sourceforge.net/
+URL:            http://wvware.sourceforge.net/
 Source0:        https://www.abisource.com/downloads/%{name}/%{version}/%{name}-%{version}.tar.gz
 Patch0:         wv-1.2.2-automake.patch
 Patch5:         wv-1.0.3-wvText.patch
@@ -31,6 +31,9 @@ Patch9:         wv-1.2.2-fiximplicit.patch
 Patch10:        wv-strcasecmp.patch
 Patch11:        wv-gsf.patch
 Patch12:        wv-noansi.patch
+BuildRequires:  libexpat-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libwmf-devel
 BuildRequires:  pkgconfig
@@ -83,20 +86,21 @@ CFLAGS="%{optflags} %{warn_flags} -fno-strict-aliasing -fstack-protector" \
     --disable-dependency-tracking \
     --disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install manonedir=%{_mandir}/man1
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%doc COPYING README
+%license COPYING
+%doc README
 %{_bindir}/wvAbw
 %{_bindir}/wvCleanLatex
 %{_bindir}/wvConvert

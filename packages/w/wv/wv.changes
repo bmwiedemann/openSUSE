@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 09:55:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: add explicit BuildRequires for libexpat-devel,
+  libjpeg-devel, and libpng-devel.
+
+-------------------------------------------------------------------
 Mon Feb  5 20:27:17 UTC 2018 - jengelh@inai.de
 
 - --with-pic has no effect with --disable-static.
