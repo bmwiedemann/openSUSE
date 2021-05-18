@@ -329,4 +329,13 @@
 </comment>
     <requestid>889050</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>92828dd45894753a380c588ade284e76</srcmd5>
+    <version>4.5.15</version>
+    <time>1621355188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.15 (no changelog)
+</comment>
+    <requestid>893048</requestid>
+  </revision>
 </revisionlist>
