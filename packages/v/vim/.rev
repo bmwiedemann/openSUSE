@@ -5146,4 +5146,41 @@ always built-in because vim has direct perl dependencies anyway.
   * :sleep! does not always hide the cursor.</comment>
     <requestid>888016</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>63dc7a278cf76a7a8a16979b580ec10e</srcmd5>
+    <version>8.2.2850</version>
+    <time>1621355192</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.2850, fixes the following problems
+  * After a timer displays text a hit-enter prompt is given.
+  * Free Pascal makefile not recognized.
+  * Vim9: illegal memory access.
+  * Flicker when the popup menu has an info popup.
+  * Setting buffer local mapping with mapset() changes global mapping.
+  * Vim9: cannot use legacy syntax in Vim9 script.
+  * Vim9: using &quot;++nr&quot; as a command might not work.
+  * Build fails with tiny features.
+  * Vim9: increment and decrement not sufficiently tested.
+  * Vim9: :def function compilation fails when using :legacy.
+  * Vim9: crash when calling a function in a substitute expression.
+  * Vim9: error for missing white space doesn't say where it is missing
+  * Vim9: still crash when using substitute expression.
+  * Cannot grep using fuzzy matching.
+  * Vim9: unused variable. (John Marriott)
+  * Status line flickers when redrawing popup menu info.
+  * Vim9: comment below expression in lambda causes problems.
+  * Vim9: script sourcing continues after an error.
+  * No jump added to jumplist when opening terminal in current window.
+  * Finishing an abbreviation with a multi-byte char may not work.
+  * Session file may divide by zero.
+  * Code in checkreadonly() not fully tested.
+  * Compiler warnings for int to size_t conversion. (Randall W. Morris)
+  * Test file was not deleted.
+  * Coverity complains about not checking the rename() return value.
+  * Some comments are not correct or clear.
+  * Terminal colors are not updated when 'background' is set.
+  * Vim9: expandcmd() not tested.
+  * Operator cancelled by moving mouse when using popup. (Sergey Vlasov)</comment>
+    <requestid>893060</requestid>
+  </revision>
 </revisionlist>
