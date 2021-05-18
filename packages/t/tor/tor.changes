@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 11 01:54:10 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.5.8
+  * https://lists.torproject.org/pipermail/tor-announce/2021-May/000219.html
+  * allow Linux sandbox with Glibc 2.33
+  * work with autoconf 2.70+
+  * several other minor features and bugfixes (see announcement)
+
+-------------------------------------------------------------------
 Sat Apr 24 19:07:24 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix packaging warnings related to tor-master service
