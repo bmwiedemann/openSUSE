@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 18 09:05:01 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.3:
+  * Expose actual system error codes via client interface
+  * Added new client interface function for checking whether client
+    lost connection to server
+  * Fixed potential missing NULL termination of locale strings
+- drop liblscp-remove_build_timestamps.patch, no longer needed
+
+-------------------------------------------------------------------
 Mon Mar 12 09:18:30 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM group. Rename %soname to %sover to better reflect

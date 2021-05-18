@@ -1,7 +1,7 @@
 #
 # spec file for package liblscp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define sover  6
 Name:           liblscp
-Version:        0.5.8
+Version:        0.9.3
 Release:        0
 Summary:        LinuxSampler control protocol library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://linuxsampler.org
 Source:         https://download.linuxsampler.org/packages/liblscp-%{version}.tar.gz
-Patch1:         liblscp-remove_build_timestamps.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -51,15 +51,14 @@ proposed as a C language API.
 
 %prep
 %setup -q
-%patch1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot} -name "*.la" -type f -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n liblscp%{sover} -p /sbin/ldconfig
 %postun -n liblscp%{sover} -p /sbin/ldconfig
