@@ -21,7 +21,7 @@
 %bcond_with meson
 %endif
 Name:           libwacom
-Version:        1.6
+Version:        1.10
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -88,7 +88,7 @@ built-in on-screen tablet", "what is the size of this model", etc.
 
 %build
 %if %{with meson}
-%meson -Db_lto=true
+%meson -Db_lto=true -Dtests=disabled
 %meson_build
 %else
 %configure \
@@ -130,7 +130,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_udevhwdbdir}/65-libwacom.hwdb
 
 %files tools
+%{_bindir}/libwacom-list-devices
+%{_bindir}/libwacom-update-db
+%{_bindir}/libwacom-show-stylus
 %{_bindir}/libwacom-list-local-devices
+%{_mandir}/man1/libwacom-list-devices.1%{?ext_man}
 %{_mandir}/man1/libwacom-list-local-devices.1%{?ext_man}
 
 %files devel

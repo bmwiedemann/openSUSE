@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat May  8 18:29:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  - Duplicate matches in /etc no longer cause conflicts with the
+    system-provided .tablet files
+  - libwacom-list-local-devices now prints YAML by default
+  - New tools:
+    - libwacom-list-devices lists all supported devices
+    - libwacom-update-db to update the db after adding tablet files
+  - New devices:
+    - Elan 2514 variant 25BF
+    - Huion H640P
+    - Lenovo X1 Yoga Gen 6
+    - Samsung CHromebook Pro
+  - libwacom can now read tablet and stylus files from /etc/libwacom
+  - New tool: libwacom-show-stylus to interactively show stylus IDs and serial
+    numbers
+  - New devices:
+    - HP Envy x360, Pro Tablet 508
+    - Lenovo X1 Yoga Gen5, Yoga6, Ideapad Flex 5, Yoga 7, Yoga C650, L13 Yoga
+    - Microsoft Surface Go
+  - New devices:
+    - Dell XPS 15 7590
+    - HP EliteBook x360 (830 and 1030), Spectre x360
+    - Lenovo Thinkpad P15 Gen1, Yoga, Yoga 3, Yoga 11e, X13 Yoga
+  - New devices:
+    - Dell XPS 13 2-in-1 9310
+    - Lenovo IdeaPad Flex 14API, Flex 5
+    - HP Envy x360, EliteBook x360
+    - Huawei MateBook HZ-W19
+    - XP Pen Star G640
+
+-------------------------------------------------------------------
 Mon Nov  9 18:20:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.6:
