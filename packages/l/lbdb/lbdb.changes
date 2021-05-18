@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 17 15:03:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.49
+  * lbdbq: re-add $exec_prefix, which may be used in libdir.
+  * Strip suffixes starting with "+" from elpa version.
+  * Forward INMAIL_DB default from m_inmail to lbdb-munge.
+  * Build-Depends on dh-elpa >= 1.16 to avoid path injection (Closes: #973971)
+  * Upgrade to debhelper v13 and use debhelper-compat instead of d/compat.
+  * Upgrade Standards-Version to 4.5.0.
+  * Move mutt_ldap_query to /usr/bin, since it can be called separately.
+  * Linitian override for false positive bin-sbin-mismatch.
+
+-------------------------------------------------------------------
 Wed May  6 08:15:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.48.1:

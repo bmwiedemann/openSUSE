@@ -17,13 +17,13 @@
 
 
 Name:           lbdb
-Version:        0.48.1
+Version:        0.49
 Release:        0
 Summary:        Address Database for mutt
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-URL:            http://www.spinnaker.de/lbdb/
-Source:         http://www.spinnaker.de/debian/lbdb_%{version}.tar.xz
+URL:            https://www.spinnaker.de/lbdb/
+Source:         https://www.spinnaker.de/lbdb/download/lbdb_%{version}.tar.gz
 Patch0:         lbdb.rc.dif
 Patch2:         lbdb-hostname.diff
 Suggests:       perl(Getopt::Long)
@@ -45,7 +45,7 @@ To use the database in mutt, put the following line into your .muttrc:
 set query_command="lbdbq %{s}"
 
 %prep
-%setup -q -n lbdb-%{version}
+%setup -q
 %patch0 -p1
 %patch2 -p1
 
@@ -77,12 +77,11 @@ make \
   install
 
 %files
-%defattr(-, root, root)
-%doc README COPYING TODO
+%license COPYING
+%doc README TODO
 %config(noreplace) %{_sysconfdir}/*
 %{_bindir}/*
-%{_libdir}/lbdb/*
-%dir %{_libdir}/lbdb
+%{_libdir}/lbdb/
 %{_mandir}/man?/*
 
 %changelog
