@@ -1,7 +1,7 @@
 #
 # spec file for package dmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define bootstrap_version 2.078.0
-%define sover	0_94
+%define sover	0_96
 %define auto_bootstrap 1
 Name:           dmd
-Version:        2.094.2
+Version:        2.096.1
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0

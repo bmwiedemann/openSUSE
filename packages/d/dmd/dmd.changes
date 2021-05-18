@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon May 17 14:32:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.096.1
+  * Runtime changes:
+    * Variables suspendSignalNumber and resumeSignalNumber are now
+      private
+    * The druntime option callStructDtorsDuringGC has been removed
+    * Experimental llvm-libunwind based backtrace printing was added
+  * Library changes
+    * Return the number of characters consumed by std.conv.parse
+    * Deprecate std.stdio.getdelim and std.stdio.getline
+    * Add integer conversions in JSONValue.get
+    * Deprecate std.math : approxEqual
+  * Compiler changes
+    * Deprecate bypassing of symbol visibility when doing overload
+      resolution
+    * Deprecation triggered inside of templates now show instantiation
+      trace
+    * Improvements for the C++ header generation
+    * Diagnostics for conflicting function definitions within a module
+    * extern(Pascal) has been removed
+    * The compiler now accepts -extern-std=c++20
+    * C++ compability standard now c++11 by default
+    * Add -preview=inclusiveincontracts: in contracts must be an
+      explicit superset of the parent in contracts.
+    * Add support for Objective-C protocols
+    * Allow any compile-time argument in pragma(inline)
+    * Add __traits(getCppNamespaces, symbol) to retrieve the C++
+      namespaces a symbol resides in.
+  * DMD Compiler regressions / bugs:
+    * printf check does not recognize GNU extensions
+    * Function alias reported as conflicting function
+    * Slice assignment segmentation fault
+    * ssignment inside assert accepted if -checkaction=context
+      is given
+    * Struct dtor is called twice if struct is created inside
+      ternary operator
+    * Mangling problem wrt. backrefs and function types
+    * build.d install fails, can't find dmd.conf
+    * Constructor flow analysis doesn't understand unions
+    * Confusing error message for CTFE pointer in static initializer
+    * checkaction=context creates temporary of type void
+    * Overload selection ignores slice
+    * -preview=rvaluerefparam does not work with template deduction
+    * CTFE doesn't call base class destructor for extern(D) classes
+    * Wrong ParameterStorageClass when -preview=in is used
+  * Phobos enhancements / regression fixes:
+    * std.process.browse does not work with URLs 256 characters
+      or longer
+    * std.regex performance regression (additional GC allocation)
+    * Specifying null as bitfields variable name now fails
+    * avoid quadratic template expansion in constraints of multiple
+      search term versions of std.algorithm.searching.startsWith & endsWith
+    * casting std.BigInts to built-in floating point types
+      doesn't work without -preview=dip1000
+    * std.algorithm.mutation.copy fails on overlapping arrays if
+      the source array's pointer is less than the destination
+      array's pointer
+    * std.experimental.checkedint opBinaryRight with integer
+      left-hand side does not compile for any operators
+    * std.typecons.ReplaceType does not work for in parameters
+    * Deprecated Nullable.get warning with Appenders
+  * Druntime bugs / regression fixes:
+    * std.conv.emplace not usable in betterC - 2.096
+    * casWeak is not implemented
+    * joining a detached thread results in segfault.
+    * core.atomic.atomicFetchSub for pointers incorrectly calls
+      wrong function from core.internal.atomic
+
+-------------------------------------------------------------------
 Sun Dec 27 21:29:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.094.2
