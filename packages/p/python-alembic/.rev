@@ -1326,4 +1326,12 @@
 - Drop pytest_depr_from_parent.patch, pytest plugin no longer used.</comment>
     <requestid>883477</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d0761766988d7ae35cb3e39ea45bca5a</srcmd5>
+    <version>1.6.2</version>
+    <time>1621355239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894051</requestid>
+  </revision>
 </revisionlist>

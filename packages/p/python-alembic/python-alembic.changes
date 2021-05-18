@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri May 14 01:18:46 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.6.2:
+  * bug
+    + [bug] [regression] [versioning] Fixed additional regression
+      nearly the same as that of #838 just released in 1.6.1 but
+      within a slightly different codepath, where “alembic downgrade
+      head” (or equivalent) would fail instead of iterating no
+      revisions.
+
+- changes from version 1.6.1:
+  * bug
+    + [bug] [regression] [versioning] Fixed regression in new
+      revisioning traversal where “alembic downgrade base” would fail
+      if the database itself were clean and unversioned; additionally
+      repairs the case where downgrade would fail if attempting to
+      downgrade to the current head that is already present.
+
+- changes from version 1.6.0:
+  * feature
+    + [feature] [autogenerate] Fix the documentation regarding the
+      default command-line argument position of the revision script
+      filename within the post-write hook arguments. Implement a
+      REVISION_SCRIPT_FILENAME token, enabling the position to be
+      changed. Switch from str.split() to shlex.split() for more
+      robust command-line argument parsing.
+    + [feature] Implement a .cwd (current working directory) suboption
+      for post-write hooks (of type console_scripts). This is useful
+      for tools like pre-commit, which rely on the working directory
+      to locate the necessary config files. Add pre-commit as an
+      example to the documentation. Minor change: rename some
+      variables from ticket #819 to improve readability.
+  * bug
+    + [bug] [autogenerate] Refactored the implementation of
+      MigrateOperation constructs such as CreateIndexOp,
+      CreateTableOp, etc. so that they no longer rely upon maintaining
+      a persistent version of each schema object internally; instead,
+      the state variables of each operation object will be used to
+      produce the corresponding construct when the operation is
+      invoked. The rationale is so that environments which make use of
+      operation-manipulation schemes such as those those discussed in
+      Fine-Grained Autogenerate Generation with Rewriters are better
+      supported, allowing end-user code to manipulate the public
+      attributes of these objects which will then be expressed in the
+      final output, an example is
+      some_create_index_op.kw["postgresql_concurrently"] = True.
+
+      Previously, these objects when generated from autogenerate would
+      typically hold onto the original, reflected element internally
+      without honoring the other state variables of each construct,
+      preventing the public API from working.
+    + [bug] [environment] Fixed regression caused by the SQLAlchemy
+      1.4/2.0 compatibility switch where calling .rollback() or
+      .commit() explicitly within the context.begin_transaction()
+      context manager would cause it to fail when the block ended, as
+      it did not expect that the transaction was manually closed.
+    + [bug] [autogenerate] Improved the rendering of op.add_column()
+      operations when adding multiple columns to an existing table, so
+      that the order of these statements matches the order in which
+      the columns were declared in the application’s table
+      metadata. Previously the added columns were being sorted
+      alphabetically.
+    + [bug] [versioning] The algorithm used for calculating
+      downgrades/upgrades/iterating revisions has been rewritten, to
+      resolve ongoing issues of branches not being handled
+      consistently particularly within downgrade operations, as well
+      as for overall clarity and maintainability. This change includes
+      that a deprecation warning is emitted if an ambiguous command
+      such as “downgrade -1” when multiple heads are present is given.
+
+      In particular, the change implements a long-requested use case
+      of allowing downgrades of a single branch to a branchpoint.
+
+      Huge thanks to Simon Bowly for their impressive efforts in
+      successfully tackling this very difficult problem.
+    + [bug] [batch] Added missing batch_op.create_table_comment(),
+      batch_op.drop_table_comment() directives to batch ops.
+
+-------------------------------------------------------------------
 Wed Apr  7 05:16:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.8:
