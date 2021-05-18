@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_party
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 Summary:        The "party" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -44,16 +44,16 @@ mechanism in the Tryton application platform. It also comes with
 reports to print labels and letters and a "Check VIES" wizard.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
