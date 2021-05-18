@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 13 16:34:28 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Compute the FIPS hmac file without re-defining the
+  __os_install_post macro, use the brp-50-generate-fips-hmac
+  script instead. [bsc#1184555]
+
+-------------------------------------------------------------------
+Thu Mar 18 13:13:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Require the main package in devel and lib packages as the default
+  priorities are now set via crypto-policies. [bsc#1183082]
+
+-------------------------------------------------------------------
 Fri Mar 12 18:45:38 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.7.1:

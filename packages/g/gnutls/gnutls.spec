@@ -31,7 +31,7 @@ Name:           gnutls
 Version:        3.7.1
 Release:        0
 Summary:        The GNU Transport Layer Security Library
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnutls.org/
 Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz
@@ -135,6 +135,7 @@ Summary:        Development package for the GnuTLS C API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
+Requires:       gnutls = %{version}-%{release}
 Requires:       libgnutls%{gnutls_sover} = %{version}
 Requires(pre):  %{install_info_prereq}
 Provides:       gnutls-devel = %{version}-%{release}
@@ -208,26 +209,14 @@ export CXXFLAGS="%{optflags} -fPIE"
 
 make %{?_smp_mflags}
 
-# the hmac hashes:
-#
-# this is a hack that re-defines the __os_install_post macro
-# for a simple reason: the macro strips the binaries and thereby
-# invalidates a HMAC that may have been created earlier.
-# solution: create the hashes _after_ the macro runs.
-#
-# this shows up earlier because otherwise the %%expand of
-# the macro is too late.
-# remark: This is the same as running
-#   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
-%{expand:%%global __os_install_post {%__os_install_post
-%{_bindir}/fipshmac %{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}
-}}
-
 %install
 %make_install
 rm -rf %{buildroot}%{_datadir}/locale/en@{,bold}quot
 # Do not package static libs and libtool files
 find %{buildroot} -type f -name "*.la" -delete -print
+
+# Compute FIPS hmac using the brp-50-generate-fips-hmac script
+export BRP_FIPSHMAC_FILES=%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}
 
 # install docs
 mkdir -p %{buildroot}%{_docdir}/libgnutls-devel/
@@ -264,6 +253,7 @@ make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
 
 %post -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 %postun -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
+
 %post -n libgnutls-devel
 %install_info --info-dir=%{_infodir} %{_infodir}/gnutls.info.gz
 
