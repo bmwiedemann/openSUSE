@@ -25,7 +25,9 @@ Group:          System/Benchmark
 URL:            https://github.com/hpc/ior
 Source:         https://github.com/hpc/ior/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  hdf5-openmpi2-devel
+%ifarch  x86_64 aarch64 ppc64le s390x
 BuildRequires:  librbd-devel
+%endif
 BuildRequires:  libs3-devel
 BuildRequires:  openmpi2-devel
 BuildRequires:  zlib-devel
@@ -46,7 +48,10 @@ export MPICC="%{_libdir}/mpi/gcc/openmpi2/bin/mpicc"
   --with-mpiio \
   --with-posix \
   --with-hdf5 \
+%ifarch  x86_64 aarch64 ppc64le s390x
   --with-rados
+%endif
+  %nil
 %make_build
 
 %install
