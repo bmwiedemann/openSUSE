@@ -1,7 +1,7 @@
 #
 # spec file for package python-argh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,7 @@ work that a custom dispatcher may not do.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LC_CTYPE="en_US.UTF-8"
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
