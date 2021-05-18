@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 14 10:04:36 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.2.4
+  * pytest used to create directories under /tmp with world-readable 
+    permissions. This means that any user in the system was able to 
+    read information written by tests in temporary directories (such 
+    as those created by the tmp_path/tmpdir fixture). Now the 
+    directories are created with private permissions.
+  * Fixed assertion rewriting on Python 3.10.
+
+-------------------------------------------------------------------
 Sun Feb 14 20:30:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't require python36-numpy for testing, because Tumbleweed

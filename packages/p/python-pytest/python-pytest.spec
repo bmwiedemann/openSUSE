@@ -1,5 +1,5 @@
 #
-# spec file for package python
+# spec file for package python-pytest%{psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.2.2
+Version:        6.2.4
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
@@ -48,7 +48,7 @@ Requires:       python-setuptools
 Requires:       python-toml
 Requires:       python-wcwidth
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Obsoletes:      python-pytest-doc
 BuildArch:      noarch
 %if %{with test}
