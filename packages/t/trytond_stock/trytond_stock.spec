@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_stock
-Version:        %{majorver}.12
+Version:        %{majorver}.13
 Release:        0
 Summary:        The "stock" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -45,16 +45,16 @@ locations, shipments for product arrivals and departures and
 inventory to control and update stock levels.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
-%python3_build   
+%python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 

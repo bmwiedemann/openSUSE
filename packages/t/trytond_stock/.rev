@@ -188,4 +188,12 @@
     <comment>add upstream signing key and validate source signature (forwarded request 875672 from AndreasStieger)</comment>
     <requestid>875736</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb538ff06cd5e4d7e5093e7293a099ca</srcmd5>
+    <version>5.0.13</version>
+    <time>1621355218</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893826</requestid>
+  </revision>
 </revisionlist>
