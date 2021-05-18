@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 17 14:53:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.108
+  * Handle more fonts
+  * otftotfm -a: Run updmap-sys by default
+  * Some corrections to output of --math-spacing
+  * Reduce undefined behavior
+  * Handle some incorrect fonts more gracefully
+
+-------------------------------------------------------------------
 Wed Dec 13 00:54:09 UTC 2017 - plinnell@opensuse.org
 
 - Update to 2.106

@@ -1,7 +1,7 @@
 #
 # spec file for package lcdf-typetools
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Summary:        Programs to manipulate OpenType and multiple-master fonts
-
 Name:           lcdf-typetools
-Version:        2.106
+Version:        2.108
 Release:        0
-License:        GPL-2.0
-Url:            http://www.lcdf.org/type/
+Summary:        Programs to manipulate OpenType and multiple-master fonts
+License:        GPL-2.0-only
 Group:          System/X11/Fonts
-Source:         http://www.lcdf.org/type/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.lcdf.org/type/
+Source:         https://www.lcdf.org/type/lcdf-typetools-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  texlive
@@ -79,13 +77,13 @@ mmpfb        creates a normal, single-master font program that looks
 --without-kpathsea \
 --disable-selfauto-set \
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
+%make_install
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %{_bindir}/cfftot1
 %{_bindir}/mmafm
 %{_bindir}/mmpfb
