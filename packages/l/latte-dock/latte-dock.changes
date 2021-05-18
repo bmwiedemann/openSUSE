@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 08:03:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix compatibility with Plasma 5.22:
+  * 0001-Tasks-support-new-private-api-for-Plasma-5.22.patch
+
+-------------------------------------------------------------------
 Wed Apr 15 10:35:27 UTC 2020 - wbauer@tmo.at
 
 - Update to 0.9.11

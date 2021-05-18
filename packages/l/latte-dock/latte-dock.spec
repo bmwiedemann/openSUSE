@@ -1,7 +1,7 @@
 #
 # spec file for package latte-dock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017  Smith AR <audoban@openmailbox.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://phabricator.kde.org/source/latte-dock/
 Source:         https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Tasks-support-new-private-api-for-Plasma-5.22.patch
 BuildRequires:  fdupes
 BuildRequires:  libSM-devel
 BuildRequires:  pkgconfig
@@ -67,7 +69,7 @@ contents by using parabolic zoom effect.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} <= 1315
