@@ -1,7 +1,7 @@
 #
 # spec file for package jo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ URL:            https://github.com/jpmens/jo/
 Source:         https://github.com/jpmens/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 11:16:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire pandoc: it's not available on all
+  architectures.
+
+-------------------------------------------------------------------
 Mon Jul 20 20:47:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versrion 1.4
