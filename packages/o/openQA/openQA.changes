@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 18 11:31:43 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1621307093.e6e7d0a8c:
+  * Improve locking of archiving task
+  * Test case of copy error when archiving job
+  * Mention the archiving feature within the documentation
+  * Show archive icon on test details page for archived jobs
+  * Archive important jobs which would be otherwise preserved during log cleanup
+  * Add Minion job for archiving job results
+  * Add function to archive a job
+  * Add archive dir, allow customization via OPENQA_ARCHIVEDIR
+  * Mention `MAX_SETUP_TIME` and `TIMEOUT_SCALE` in timeout documentation
+  * worker: Add MAX_SETUP_TIME to limit job setup time (by default to one hour)
+  * Use constants from Time::Seconds for declaring our own time-related constants
+  * worker: Write code for stopping job in a more compact way
+  * worker: Pass result USER_CANCELLED when stopping job due to cancellation
+  * Add test for some error cases when calling rsync to sync tests
+  * worker: Allow cancellation of jobs while waiting for asset cache
+  * worker: Unify loops for polling the cache service
+
+-------------------------------------------------------------------
 Sun May 16 04:00:12 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1620996956.bd2066072:
