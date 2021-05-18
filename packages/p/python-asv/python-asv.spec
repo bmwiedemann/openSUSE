@@ -1,7 +1,7 @@
 #
 # spec file for package python-asv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asv
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.4
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-python-hglib >= 1.5
 # SECTION test requirements
 BuildRequires:  %{python_module pip}
@@ -66,7 +66,7 @@ export CFLAGS="%{optflags}"
 %check
 #MVY: there are so MANY tests failing inside OBS - like test_continuous calling pip and building bad command line
 exit 0
-# % python_exec setup.py test
+# % pytest
 
 %post
 %python_install_alternative asv
