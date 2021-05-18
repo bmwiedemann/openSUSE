@@ -105,4 +105,16 @@
   for readability instead of '.' (forwarded request 891335 from jfkw)</comment>
     <requestid>891336</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>cdaf8815f49470fe21b82c9a01ffc60b</srcmd5>
+    <version>1</version>
+    <time>1621355210</time>
+    <user>dimstar_suse</user>
+    <comment>Provide metadata for kiwi wsl builds jsc#SLE-12986
+
+- wsl-appx package is now metadata input kiwi wsl image type
+  * wsl-appx packages metadata for appx utility to consume via kiwi
+  * WSL kiwi images require wsl-appx metadata and output appx image type (forwarded request 892386 from jfkw)</comment>
+    <requestid>892569</requestid>
+  </revision>
 </revisionlist>

@@ -18,6 +18,13 @@ Thu May  6 17:32:35 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
   for readability instead of '.'
 
 -------------------------------------------------------------------
+Fri Mar 5 13:13:26 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- wsl-appx package is now metadata input kiwi wsl image type
+  * wsl-appx packages metadata for appx utility to consume via kiwi
+  * WSL kiwi images require wsl-appx metadata and output appx image type
+
+-------------------------------------------------------------------
 Fri Mar 5 08:29:47 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Format AppxManifest.xml template for min diff to kiwi output
