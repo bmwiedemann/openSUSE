@@ -18,15 +18,15 @@
 
 %define __requires_exclude typelib\\(AppIndicator(|3)\\)
 Name:           gcdemu
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        GTK+ application for controlling CDEmu daemon
 License:        GPL-2.0+
 Group:          System/GUI/Other
-Url:            http://cdemu.sf.net/about/gcdemu
-Source0:        http://downloads.sf.net/cdemu/%{name}-%{version}.tar.bz2
+Url:            https://cdemu.sourceforge.io/
+Source0:        https://sourceforge.net/projects/cdemu/files/gcdemu/gcdemu-%{version}.tar.xz
 BuildRequires:  gdk-pixbuf
-BuildRequires:  cmake >= 2.8.5
+BuildRequires:  cmake >= 3.7
 BuildRequires:  gettext >= 0.15
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool >= 0.21
@@ -64,7 +64,7 @@ Features:
 
 %build
 %cmake
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %cmake_install
@@ -72,16 +72,14 @@ make %{?_smp_mflags} V=1
 %find_lang %{name}
 
 %post
-%desktop_database_post
 %glib2_gsettings_schema_post
 
 %postun
-%desktop_database_postun
 %glib2_gsettings_schema_postun
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}*
