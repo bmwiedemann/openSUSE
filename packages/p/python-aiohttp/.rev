@@ -178,4 +178,14 @@
     <comment></comment>
     <requestid>875795</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b8a037fc62f6a0fdf1049e5a634b200c</srcmd5>
+    <version>3.7.4</version>
+    <time>1621355186</time>
+    <user>dimstar_suse</user>
+    <comment>- Add stdlib-typing_extensions.patch to avoid necessity for BR
+  python-typing_extensions (gh#aio-libs/aiohttp#5374).
+</comment>
+    <requestid>893032</requestid>
+  </revision>
 </revisionlist>

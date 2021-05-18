@@ -26,6 +26,9 @@ License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 Patch0:         unbundle-http-parser.patch
+# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#aio-libs/aiohttp#5374 mcepl@suse.com
+# Fix typing_extensions imports.
+Patch1:         stdlib-typing_extensions.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}
@@ -35,7 +38,7 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module idna_ssl >= 1.0}
 BuildRequires:  %{python_module multidict >= 4.5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 3.6.5}
+BuildRequires:  %{python_module typing_extensions >= 3.6.5 if %python-base < 3.8}
 BuildRequires:  %{python_module yarl >= 1.0}
 BuildRequires:  fdupes
 BuildRequires:  http-parser-devel
@@ -46,8 +49,8 @@ Requires:       python-attrs >= 17.3.0
 Requires:       python-chardet >= 2.0
 Requires:       python-gunicorn
 Requires:       python-multidict >= 4.5
-Requires:       python-typing_extensions >= 3.6.5
 Requires:       python-yarl >= 1.0
+Requires:       (python3-typing_extensions >= 3.6.5 if python3-base < 3.8)
 Recommends:     python-aiodns
 Recommends:     python-brotlipy
 Recommends:     python-cChardet
@@ -94,8 +97,8 @@ Asynchronous HTTP client/server framework for Python.
 HTML documentation on the API and examples for %{name}.
 
 %prep
-%setup -q -n aiohttp-%{version}
-%patch0 -p1
+%autosetup -p1 -n aiohttp-%{version}
+
 # Prevent building with vendor version
 rm vendor/http-parser/*.c
 

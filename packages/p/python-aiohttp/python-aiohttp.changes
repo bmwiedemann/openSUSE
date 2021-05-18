@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 13 21:58:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add stdlib-typing_extensions.patch to avoid necessity for BR
+  python-typing_extensions (gh#aio-libs/aiohttp#5374).
+
+-------------------------------------------------------------------
 Sun Feb 28 13:09:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.7.4 - no upstream changelog available

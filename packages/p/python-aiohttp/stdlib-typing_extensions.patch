@@ -1,0 +1,60 @@
+---
+ aiohttp/helpers.py           |    5 ++++-
+ aiohttp/tracing.py           |    5 ++++-
+ aiohttp/web_urldispatcher.py |    5 ++++-
+ setup.py                     |    2 +-
+ 4 files changed, 13 insertions(+), 4 deletions(-)
+
+--- a/aiohttp/helpers.py
++++ b/aiohttp/helpers.py
+@@ -45,7 +45,10 @@ from urllib.request import getproxies
+ import async_timeout
+ import attr
+ from multidict import MultiDict, MultiDictProxy
+-from typing_extensions import Protocol
++try:
++    from typing import Protocol
++except (ImportError, ModuleNotFoundError):
++    from typing_extensions import Protocol
+ from yarl import URL
+ 
+ from . import hdrs
+--- a/aiohttp/tracing.py
++++ b/aiohttp/tracing.py
+@@ -9,7 +9,10 @@ from .client_reqrep import ClientRespons
+ from .signals import Signal
+ 
+ if TYPE_CHECKING:  # pragma: no cover
+-    from typing_extensions import Protocol
++    try:
++        from typing import Protocol
++    except (ImportError, ModuleNotFoundError):
++        from typing_extensions import Protocol
+ 
+     from .client import ClientSession
+ 
+--- a/aiohttp/web_urldispatcher.py
++++ b/aiohttp/web_urldispatcher.py
+@@ -33,7 +33,10 @@ from typing import (
+     cast,
+ )
+ 
+-from typing_extensions import TypedDict
++try:
++    from typing import TypedDict
++except (ImportError, ModuleNotFoundError):
++    from typing_extensions import TypedDict
+ from yarl import URL, __version__ as yarl_version  # type: ignore
+ 
+ from . import hdrs
+--- a/setup.py
++++ b/setup.py
+@@ -70,7 +70,7 @@ install_requires = [
+     "async_timeout>=3.0,<4.0",
+     "yarl>=1.0,<2.0",
+     'idna-ssl>=1.0; python_version<"3.7"',
+-    "typing_extensions>=3.6.5",
++    'typing_extensions>=3.7.4; python_version<"3.8"',
+ ]
+ 
+ 
