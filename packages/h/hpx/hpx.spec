@@ -18,7 +18,7 @@
 
 
 Name:           hpx
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
@@ -79,7 +79,7 @@ This package contains libraries for the hpx package.
 
 # add lib atomic for s390x and ppc64
 %ifarch s390x ppc64
-%define cmake_opts -DCMAKE_SHARED_LINKER_FLAGS="%{optflags} -latomic" -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -latomic"
+%define cmake_opts -DCMAKE_SHARED_LINKER_FLAGS="%{optflags} -Wl,--push-state,--no-as-needed -latomic -Wl,--pop-state" -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -Wl,--push-state,--no-as-needed -latomic -Wl,--pop-state"
 %endif
 
 %{setup_openmpi}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:43:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.6.0
+  - Continued focus on C++20 conformance with multiple
+    new algorithms adapted to be C++20 conformant
+  - hpxMP support has been completely removed.
+  - The ``verbs`` parcelport has been removed.
+
+-------------------------------------------------------------------
 Tue Sep  8 09:41:39 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.5.0

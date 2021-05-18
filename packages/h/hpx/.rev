@@ -35,4 +35,12 @@
   - Now requires a C++14 compatible compiler and the standard is set by default to C++14.</comment>
     <requestid>879945</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8b886e77f09c767ba2606834cbd074e</srcmd5>
+    <version>1.6.0</version>
+    <time>1621355252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894096</requestid>
+  </revision>
 </revisionlist>
