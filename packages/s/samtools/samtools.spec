@@ -17,14 +17,13 @@
 
 
 Name:           samtools
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Tools for manipulating next-generation sequencing data
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/samtools/samtools
 Source:         https://github.com/samtools/samtools/releases/download/%{version}/samtools-%{version}.tar.bz2
-BuildRequires:  autoconf
 BuildRequires:  ncurses-utils
 BuildRequires:  perl
 BuildRequires:  pkgconfig(htslib) >= %{version}
@@ -44,10 +43,8 @@ with bcftools), and a simple alignment viewer.
 %setup -q -n %{name}-%{version}
 
 %build
-autoheader
-autoconf -Wno-syntax
 %configure --with-htslib=system
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
