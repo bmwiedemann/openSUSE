@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,16 @@
 
 %define libname libspice-server1
 Name:           spice
-Version:        0.14.3
+Version:        0.15.0
 Release:        0
 Summary:        SPICE client and server library
 License:        LGPL-2.1-or-later OR GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.spice-space.org/
 Source:         https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2
-Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sign
+Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
-Patch0:         0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
-Patch1:         0002-quic-Check-image-size-in-quic_decode_begin.patch
-Patch2:         0003-quic-Check-RLE-lengths.patch
-Patch3:         0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -99,12 +95,6 @@ and devices.
 
 %prep
 %setup -q
-cd subprojects/spice-common
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-cd ../../
 
 %build
 %configure \

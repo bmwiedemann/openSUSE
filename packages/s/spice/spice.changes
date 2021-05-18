@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  7 11:07:29 MDT 2021 - carnold@suse.com
+
+- Update to v0.15.0 release
+  This is the first release in the new 0.15.x stable series.
+  * Minor updates to CI
+  * Some compatibility with OpenSSL
+  * Change the behavior of handle_dev_start ignoring multiple start requests
+  * Ignore multiple calls to handle_dev_stop
+  * Pick up newer spice-common to fix a buffer overflow issue
+- Dropped patches contained in new tarball
+  0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+  0002-quic-Check-image-size-in-quic_decode_begin.patch
+  0003-quic-Check-RLE-lengths.patch
+  0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+
+-------------------------------------------------------------------
 Fri Oct  9 19:51:19 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Note: The Mar 9, 2020 spec file cleanup and the following change
