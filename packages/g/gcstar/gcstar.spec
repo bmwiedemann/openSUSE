@@ -1,7 +1,7 @@
 #
 # spec file for package gcstar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,49 @@
 
 
 Name:           gcstar
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Application to manage collections
 License:        GPL-2.0-only
-URL:            http://www.gcstar.org/
-Source0:        http://download.gna.org/gcstar/%{name}-%{version}.tar.gz
+URL:            https://wiki.gcstar.org/en
+Source0:        https://gitlab.com/Kerenoc/GCstar/-/archive/v%{version}/GCstar-v%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE gcstar-fix-desktop.patch vuntz@opensuse.org -- Fix desktop file for openSUSE
 Patch0:         gcstar-fix-desktop.patch
 BuildRequires:  fdupes
 BuildRequires:  perl
-BuildRequires:  perl-libwww-perl
-BuildRequires:  perl(Crypt::SSLeay)
-BuildRequires:  perl(Gtk2) >= 1.054
-BuildRequires:  perl(HTML::Parser)
-BuildRequires:  perl(XML::Parser)
+BuildRequires:  perl(DateTime::Format::Strptime)
+BuildRequires:  perl(Gtk3)
+BuildRequires:  perl(Gtk3::SimpleList)
+BuildRequires:  perl(JSON)
+BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(XML::Simple)
+BuildRequires:  typelib-1_0-GdkPixdata-2_0
+BuildRequires:  typelib-1_0-Gtk-3_0
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 Requires:       perl
-Requires:       perl-libwww-perl
-Requires:       perl(Crypt::SSLeay)
-Requires:       perl(Gtk2) >= 1.054
-Requires:       perl(HTML::Parser)
-Requires:       perl(XML::Parser)
+Requires:       perl(DateTime::Format::Strptime)
+Requires:       perl(Gtk3)
+Requires:       perl(Gtk3::SimpleList)
+Requires:       perl(JSON)
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(XML::Simple)
+Recommends:     perl(Archive::Tar)
 Recommends:     perl(Archive::Zip)
+Recommends:     perl(Compress::Zlib)
+Recommends:     perl(Date::Calc)
+Recommends:     perl(Digest::MD5)
 Recommends:     perl(GD)
-Recommends:     perl(GD::Graph::area)
-Recommends:     perl(GD::Graph::bars)
-Recommends:     perl(GD::Graph::pie)
+Recommends:     perl(GD::Graph)
 Recommends:     perl(GD::Text)
+Recommends:     perl(Image::ExifTool)
+Recommends:     perl(MIME::Base64)
+Recommends:     perl(MP3::Info)
+Recommends:     perl(MP3::Tag)
+Recommends:     perl(Net::FreeDB)
+Recommends:     perl(Ogg::Vorbis::Header::PurePerl)
+Recommends:     perl(Time::Piece)
 BuildArch:      noarch
 
 %description
@@ -59,13 +70,15 @@ data, such as the location or who you've lent it to. You may also
 search and filter your collection by many criteria.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%setup -q -n GCstar-v%{version}
+%patch0 -p0
 
 %build
 
 %install
+pushd %{name}
 ./install --prefix=%{buildroot}%{_prefix}/
+rm -rf %{buildroot}%{_datadir}/{mime,applications}
 for icon in share/gcstar/icons/gcstar_*.png; do
   size=`echo $icon | sed 's,.*gcstar_,,;s,\.png,,'`
   # Only install sizes that exist in hicolor
@@ -78,19 +91,19 @@ for icon in share/gcstar/icons/gcstar_*.png; do
 done
 install -D -m644 share/gcstar/icons/gcstar_scalable.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/gcstar.svg
 install -D -m644 share/gcstar/icons/gcstar_scalable.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/application-x-gcstar.svg
-mkdir -p %{buildroot}%{_mandir}/man1/
-mv %{buildroot}%{_prefix}/man/man1/gcstar.1.gz %{buildroot}%{_mandir}/man1/
 mkdir -p %{buildroot}%{_datadir}/mime/packages
 install -m 644 share/applications/gcstar.xml %{buildroot}%{_datadir}/mime/packages
 mkdir -p %{buildroot}%{_datadir}/applications
 %suse_update_desktop_file -i gcstar Database
 %fdupes %{buildroot}%{_datadir}
+popd
 
 %files
 %{_bindir}/gcstar
 %{_prefix}/lib/gcstar/
 %{_datadir}/applications/gcstar.desktop
 %{_datadir}/gcstar/
+%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/icons/hicolor/*/apps/gcstar.*
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-gcstar.*
 %{_datadir}/mime/packages/gcstar.xml

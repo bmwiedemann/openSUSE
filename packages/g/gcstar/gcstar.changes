@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May 17 16:56:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.7.3
+  * Support Gtk3
+  * New features for users
+    * Support for series in book collections
+    * Support of original title for books
+    * Identification of broken plugins (ZZZ...)
+    * Max number in comics series increased to 9999999
+    * Additionnal artist roles for comics (inker, letterer...)
+    * Possible use of Amazon for book scanning
+    * Support for TS video files (DVB recordings)
+    * Memory of previous proxy setting
+    * Improved default location for choosing files
+    * Replacing an empty string for field will set the field if
+      empty for all items of a collections (for example tags)
+  * New plugins: BDphile (books), GBooks
+  * User interfaces changes: Small changes in some panel layouts
+  * Bugs fixed
+    * Range for advanced search
+    * Exportation of miniatures (jpeg, png)
+    * Actors support and imags support in Tellico export
+    * File extension for exporting
+    * Better support of default values for fields in GCS files
+    * Some bugs fixed in website plugins
+  * Deprecation of plugins:
+    * Alapage
+    * InternetBokHandeln
+    * LiberOnWeb
+    * Mareno
+
+-------------------------------------------------------------------
 Mon Sep 14 08:26:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Adapt file list for /usr/libexec migration.
