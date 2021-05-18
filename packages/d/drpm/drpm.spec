@@ -36,7 +36,7 @@
 %endif
 
 Name:           drpm
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        A small library for fetching information from DeltaRPM packages
 License:        LGPL-2.1-or-later

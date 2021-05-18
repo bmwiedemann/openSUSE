@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 11:43:41 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.5.0:
+  * fix a memory leak on invalid input
+  * Hide the internal library symbols
+
+-------------------------------------------------------------------
 Fri Feb 19 14:02:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip valgrind checking on aarch64 (bsc#1182493) 
