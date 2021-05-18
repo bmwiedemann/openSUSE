@@ -7,4 +7,12 @@
     <comment>The upstream maintainers are now making regular (every 1–4 months) releases that backport all important security fixes from the current Firefox ESR, and the openSUSE package has a new co-maintainer (me) who has been packaging the new releases plus relevant patches.</comment>
     <requestid>888958</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8858067692b2f061fea84954f325f6a6</srcmd5>
+    <version>2.53.7.1</version>
+    <time>1621355242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894071</requestid>
+  </revision>
 </revisionlist>

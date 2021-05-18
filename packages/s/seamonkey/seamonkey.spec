@@ -25,10 +25,18 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel
+# Using system AV1 decoder depends on pending patch from
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
+#BuildRequires:  dav1d5-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
+#BuildRequires:  libvpx-devel # Compile errors with 1.10.0
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
+BuildRequires:  libwebp-devel >= 1.0.0
+BuildRequires:  libicu-devel >= 63.1
+%endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
 BuildRequires:  python-devel
@@ -78,6 +86,8 @@ Patch2:         mozilla-language.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
+Patch6:         seamonkey-websocketloop.patch
+Patch7:         seamonkey-rustc-bootstrap.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -210,6 +220,8 @@ cp %{SOURCE12} GNUmakefile
 %patch3 -p2
 %patch4 -p2
 %patch5 -p0
+%patch6 -p1
+%patch7 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
@@ -235,11 +247,24 @@ ac_add_options --disable-elf-hack
 %endif
 
 ac_add_options --disable-debug
+
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
+ac_add_options --with-system-webp
+ac_add_options --with-system-icu
+%endif
 
-# Mozilla's internal JPEG library is used, probably because of the "turbo" patches
+# Compile errors with system libvpx-1.10.0
+#ac_add_options --with-system-libvpx
+
+# Using system AV1 decoder depends on pending patch from
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
+# ac_add_options --with-system-av1
+
+# Mozilla's internal JPEG library is used because of the "turbo" patches
 # that make it more efficient than the stock system libjpeg:
 #  https://bugzilla.mozilla.org/show_bug.cgi?id=573948
 #ac_add_options --with-system-jpeg

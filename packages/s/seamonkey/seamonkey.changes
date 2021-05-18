@@ -1,5 +1,37 @@
 -------------------------------------------------------------------
-Mon Apr 27 11:54:30 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+Tue May 18 07:04:59 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add patch seamonkey-rustc-bootstrap.patch adapted from
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1710154 to enable
+  compilation with rust >= 1.50.0
+
+-------------------------------------------------------------------
+Tue May 05 18:36:24 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update GNU Makefile from upstream
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1692516#c8 -- besides
+  some general improvements, this Makefile now allows the language
+  packs for the bundled extensions to be split off again if desired
+  (though our spec file does not yet take advantage of this)
+
+-------------------------------------------------------------------
+Tue May 04 08:19:42 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- use system libraries for bz2, webp, and icu to reduce package size
+  and because this is probably more secure (since our own libraries
+  are probably updated more often than the ones bundled with
+  SeaMonkey)
+
+-------------------------------------------------------------------
+Wed Apr 28 07:59:04 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add upstream patch seamonkey-websocketloop.patch from
+  https://bugzilla.mozilla.org/attachment.cgi?id=9218795&action=diff
+  to solve critical performance issue
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1633339
+
+-------------------------------------------------------------------
+Tue Apr 27 11:54:30 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - requested inclusion in Leap 15.2:
   https://bugzilla.opensuse.org/show_bug.cgi?id=1185349

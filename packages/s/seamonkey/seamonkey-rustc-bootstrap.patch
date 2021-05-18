@@ -1,0 +1,55 @@
+# HG changeset patch
+# User Mike Hommey <mh+mozilla@glandium.org>
+# Date 1613598448 0
+# Node ID b182a3466285a41aa7393af0359eeee16be1350a
+# Parent  83d58b5de13b57d482f6e5e3744c98ca96b6669c
+Bug 1670538 - Use an allow-list in RUSTC_BOOTSTRAP for rustc >= 1.50.0. r=firefox-build-system-reviewers,andi,sheehan,mhentges
+
+While we could change qcms, encoding_rs and packed_simd to not emit
+RUSTC_BOOTSTRAP on newer versions of rust, like we do for gkrust-shared,
+it's not worth the effort (especially for those that are vendored).
+
+Differential Revision: https://phabricator.services.mozilla.com/D105423
+
+diff --git a/config/rules.mk b/config/rules.mk
+--- a/config/rules.mk
++++ b/config/rules.mk
+@@ -866,6 +866,17 @@
+ endif
+ endif
+ 
++ifndef RUSTC_BOOTSTRAP
++ifeq (,$(filter 1.47.% 1.48.% 1.49.%,$(RUSTC_VERSION)))
++# RUSTC_BOOTSTRAP := gkrust_shared,qcms for later
++RUSTC_BOOTSTRAP := gkrust_shared
++ifdef MOZ_RUST_SIMD
++RUSTC_BOOTSTRAP := $(RUSTC_BOOTSTRAP),encoding_rs,packed_simd
++endif
++export RUSTC_BOOTSTRAP
++endif
++endif
++
+ rustflags_override = RUSTFLAGS='$(MOZ_RUST_DEFAULT_FLAGS) $(RUSTFLAGS)'
+ 
+ ifdef MOZ_MSVCBITS
+diff --git a/toolkit/library/rust/shared/build.rs.1670538.later b/toolkit/library/rust/shared/build.rs.1670538.later
+new file mode 100644
+--- /dev/null
++++ b/toolkit/library/rust/shared/build.rs.1670538.later
+@@ -0,0 +1,16 @@
++--- build.rs
+++++ build.rs
++@@ -17,12 +17,12 @@ fn main() {
++     } else if std::env::var("MOZ_AUTOMATION").is_ok() {
++         panic!("Builds on automation must use a version of rust for which we know how to hook OOM: want < {}, have {}",
++                max_oom_hook_version, ver);
++     }
++ 
++     // This is a rather awful thing to do, but we're only doing it on
++     // versions of rustc that are not going to change the unstable APIs
++     // we use from under us, all being already released or beta.
++-    if bootstrap {
+++    if bootstrap && ver < Version::parse("1.50.0").unwrap() {
++         println!("cargo:rustc-env=RUSTC_BOOTSTRAP=1");
++     }
++ }
