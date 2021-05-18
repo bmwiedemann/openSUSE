@@ -1,7 +1,7 @@
 #
 # spec file for package python-delegator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,12 @@ URL:            https://github.com/hugobast/delegator
 Source:         https://files.pythonhosted.org/packages/source/d/delegator/delegator-%{version}.tar.gz
 Patch0:         split-readme.patch
 Patch1:         remove-exceptions-import.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Conflicts:      python-delegator.py
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,7 +52,7 @@ touch test/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD} $python setup.py test
+%pytest test/tests_delegator.py
 
 %files %{python_files}
 %license LICENSE
