@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pingparsing
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        CLI-tool/Python-library for parsing ping command output
 License:        MIT
@@ -35,10 +35,10 @@ Requires:       python-pyparsing >= 2.0.3
 Requires:       python-pytz >= 2018.9
 Requires:       python-setuptools >= 38.3.0
 Requires:       python-simplejson
-Requires:       python-subprocrunner >= 1.2.1
+Requires:       python-subprocrunner >= 1.2.2
 Requires:       python-typepy >= 1.1.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module humanreadable >= 0.1.0}
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2018.9}
 BuildRequires:  %{python_module simplejson}
-BuildRequires:  %{python_module subprocrunner >= 1.2.1}
+BuildRequires:  %{python_module subprocrunner >= 1.2.2}
 BuildRequires:  %{python_module typepy >= 1.1.0}
 # /SECTION
 %python_subpackages
