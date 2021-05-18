@@ -1,7 +1,7 @@
 #
 # spec file for package quadrapassel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           quadrapassel
-Version:        3.38.1
+Version:        40.1
 Release:        0
 Summary:        Tetris Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://live.gnome.org/Quadrapassel
-Source0:        https://download.gnome.org/sources/quadrapassel/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/quadrapassel/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
