@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 15 11:11:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make cookiecutter usable by all python3X flavors
+
+-------------------------------------------------------------------
+Fri May 14 16:19:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.7.3:
+ - Fixed jinja2 and markupsafe dependencies
+
+-------------------------------------------------------------------
 Wed Jan 20 08:32:20 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Changed dependency from git to git-core

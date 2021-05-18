@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,9 @@
 #
 
 
+%define skip_python2 1
 Name:           cookiecutter
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
@@ -26,43 +27,49 @@ Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
+BuildRequires:  %{python_module Jinja2 >= 2.7}
+BuildRequires:  %{python_module binaryornot >= 0.2.0}
+BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module future >= 0.15.2}
+BuildRequires:  %{python_module jinja2-time >= 0.1.0}
+BuildRequires:  %{python_module poyo >= 0.1.0}
+BuildRequires:  %{python_module python-slugify}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module whichcraft >= 0.4.0}
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  python3-Jinja2 >= 2.7
-BuildRequires:  python3-binaryornot >= 0.2.0
-BuildRequires:  python3-click >= 7.0
-BuildRequires:  python3-future >= 0.15.2
-BuildRequires:  python3-jinja2-time >= 0.1.0
-BuildRequires:  python3-poyo >= 0.1.0
-BuildRequires:  python3-python-slugify
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-whichcraft >= 0.4.0
+BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python3-Jinja2 >= 2.7
-Requires:       python3-binaryornot >= 0.2.0
-Requires:       python3-click >= 7.0
-Requires:       python3-future >= 0.15.2
-Requires:       python3-jinja2-time >= 0.1.0
-Requires:       python3-poyo >= 0.1.0
-Requires:       python3-python-slugify
-Requires:       python3-requests >= 2.18.0
-Requires:       python3-whichcraft >= 0.4.0
+Requires:       python-Jinja2 >= 2.7
+Requires:       python-binaryornot >= 0.2.0
+Requires:       python-click >= 7.0
+Requires:       python-future >= 0.15.2
+Requires:       python-jinja2-time >= 0.1.0
+Requires:       python-poyo >= 0.1.0
+Requires:       python-python-slugify
+Requires:       python-requests >= 2.18.0
+Requires:       python-whichcraft >= 0.4.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION Testing requirements
-BuildRequires:  python3-chardet >= 2.0.0
-BuildRequires:  python3-freezegun
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-requests >= 2.18.0
+BuildRequires:  %{python_module chardet >= 2.0.0}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.18.0}
 # /SECTION
 # SECTION Documentation requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-recommonmark
 # /SECTION
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       cookiecutter = %{version}-%{release}
+Obsoletes:      cookiecutter < %{version}-%{release}
+%endif
+%python_subpackages
 
-%package doc
+%package -n cookiecutter-doc
 Summary:        Documentation files for %{name}
 Group:          Documentation/HTML
 
@@ -73,7 +80,7 @@ project template.
 
 Project templates can be in any programming language or markup format.
 
-%description doc
+%description -n cookiecutter-doc
 A command-line utility that creates projects from cookiecutters (project
 templates), e.g. creating a Python package project from a Python package
 project template.
@@ -82,50 +89,49 @@ This package contains the documentation for cookiecutter.
 
 %prep
 %setup -q -n cookiecutter-%{version}
-sed -i "s/cookiecutter =/cookiecutter-%{py3_ver} =/" setup.py
 cp %{SOURCE1} docs
 # Remove pytest addopts:
 rm setup.cfg
 
 %build
-python3 setup.py build
+%python_build
 pushd docs
 make %{?_smp_mflags} html
 rm _build/html/.buildinfo
 popd
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/cookiecutter
-ln -sf %{_sysconfdir}/alternatives/cookiecutter %{buildroot}%{_bindir}/cookiecutter
-%fdupes %{buildroot}%{python3_sitelib}
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/cookiecutter
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# the doc directive in the files section cannot deduplicate, so do it manually
+mkdir -p %{buildroot}%{_docdir}/cookiecutter-doc
+cp -r docs/_build/html %{buildroot}%{_docdir}/cookiecutter-doc/
+%fdupes %{buildroot}%{_docdir}/cookiecutter-doc
 
 %check
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-PYTHONPATH=%{buildroot}%{python3_sitelib} py.test tests
+%pytest tests
 
 %pre
+# delete command if the old package was not update-alternatives controlled
 [ -h %{_bindir}/cookiecutter ] || rm -f %{_bindir}/cookiecutter
 
 %post
-update-alternatives --install %{_bindir}/cookiecutter cookiecutter %{_bindir}/cookiecutter-%{py3_ver} 30
+%python_install_alternative cookiecutter
 
 %postun
-if [ $1 -eq 0 ] ; then
-    update-alternatives --remove cookiecutter %{_bindir}/cookiecutter-%{py3_ver}
-fi
+%python_uninstall_alternative cookiecutter
 
-%files
+%files %{python_files}
 %license LICENSE
-%ghost %{_sysconfdir}/alternatives/cookiecutter
-%{_bindir}/cookiecutter
-%{_bindir}/cookiecutter-%{py3_ver}
-%{python3_sitelib}/*
+%python_alternative cookiecutter
+%{python_sitelib}/cookiecutter
+%{python_sitelib}/cookiecutter-%{version}*-info
 
-%files doc
-%doc docs/_build/html
+%files -n cookiecutter-doc
 %license LICENSE
+%doc %{_docdir}/cookiecutter-doc
 
 %changelog
