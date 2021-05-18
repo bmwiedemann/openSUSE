@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 12.6
+%define pgversion 12.7
 %define pgmajor 12
 %define pgsuffix %pgmajor
 %define buildlibs 0
@@ -764,10 +764,10 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 %preun server
 # Stop only when we are uninstalling the currently running version
 test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -eq 0 -a -x /usr/bin/systemctl ]; then
+if [ "$FIRST_ARG" -eq 0 ]; then
   %if %{with systemd}
-    %define stop %_stop_on_removal postgresql.service
-    eval $(systemctl show postgresql --property=MainPID)
+    %define stop systemctl stop postgresql.service
+    eval $(systemctl show postgresql.service --property=MainPID)
   %else
     %define stop /sbin/init.d postgresql stop
     MainPID=$(pidof -s postgres) || :
