@@ -626,4 +626,12 @@
     <comment>icedtea 3.18.0 (January 2021 CPU)</comment>
     <requestid>870211</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0af662329d1498849222826dc0cdae7e</srcmd5>
+    <version>1.8.0.292</version>
+    <time>1621355189</time>
+    <user>dimstar_suse</user>
+    <comment>April 2021 CPU</comment>
+    <requestid>893055</requestid>
+  </revision>
 </revisionlist>
