@@ -275,10 +275,8 @@ fi
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
-%dir %{_datadir}/mime/packages/
 %{_datadir}/mime/packages/pspp.xml
 %{_datadir}/applications/org.fsf.pspp.desktop
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/org.fsf.pspp.metainfo.xml
 %if 0%{?mandriva_version} 
 %doc %{_mandir}/man1/pspp.1.xz

@@ -138,4 +138,12 @@
     <comment>update to v1.4.1, split -lang package, add documentation packages</comment>
     <requestid>837843</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bdeb223c3f86cf99b8b84ad1c65bbbeb</srcmd5>
+    <version>1.4.1</version>
+    <time>1621355218</time>
+    <user>dimstar_suse</user>
+    <comment>Do not own filesystem owned directories</comment>
+    <requestid>893831</requestid>
+  </revision>
 </revisionlist>
