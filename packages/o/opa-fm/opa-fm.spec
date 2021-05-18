@@ -1,7 +1,7 @@
 #
 # spec file for package opa-fm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.dd537b757410
+%define git_ver .0.6133b2fe5b39
 
 %define pseudo_opt %{_prefix}/lib/opa-fm
 %define opasysconfdir %{_sysconfdir}/opa-fm/
 %define opavarlibdir %{_localstatedir}/usr/lib/opa-fm/
 Name:           opa-fm
-Version:        10.10.3.0.11
+Version:        10.11.0.0.574
 Release:        0
 Summary:        Intel Omni-Path Fabric Management Software
 License:        BSD-3-Clause
