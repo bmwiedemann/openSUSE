@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 14 13:28:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.11
+  - workaround for go 1.15 certificate handling changes, all
+    certificates should be re-generated with kubicctl 0.11
+  - adjust for kubeadm removed upgrade node arguments
+
+-------------------------------------------------------------------
 Fri Apr  9 12:10:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - kubicd: require kubernetes-kubeadm

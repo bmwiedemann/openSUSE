@@ -17,7 +17,7 @@
 
 
 Name:           kubic-control
-Version:        0.10.2
+Version:        0.11
 Release:        0
 Summary:        Simple setup tool for kubernetes
 License:        Apache-2.0
@@ -81,6 +81,8 @@ install -p -m 0755 bin/kubicd %{buildroot}%{_sbindir}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rckubicd
 mkdir -p %{buildroot}%{_distconfdir}/kubicd/
 cp -av etc/kubicd/* %{buildroot}%{_distconfdir}/kubicd
+# Not really supported
+rm -rf %{buildroot}%{_distconfdir}/kubicd/helm/cilium.yaml
 mkdir -p %{buildroot}%{_sysconfdir}/kubicd/pki
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system
 cp -av systemd/* %{buildroot}%{_prefix}/lib/systemd/system
