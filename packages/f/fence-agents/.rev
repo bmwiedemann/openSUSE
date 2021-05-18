@@ -781,4 +781,12 @@
   * Major rework of the original agent:</comment>
     <requestid>892055</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>9d690ad50daf7741646ab533419c8d5d</srcmd5>
+    <version>4.8.0+git.1619794372.c48ba825</version>
+    <time>1621355207</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893986</requestid>
+  </revision>
 </revisionlist>

@@ -14,6 +14,7 @@ Mon May 10 12:51:57 UTC 2021 - varkoly@suse.com
   * Use standard logging.
   * Revert change to __all__
   * Major rework of the original agent:
+  (bsc#1182701) [0.9.10-GCE-Build1.6] fence_gce doesn't restart the node as expected
 
 -------------------------------------------------------------------
 Fri Apr 09 08:38:18 UTC 2021 - trenn@suse.de
