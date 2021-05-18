@@ -18,6 +18,7 @@
 
 %if 0%{?suse_version} > 1500
 %define with_avif 1
+%define with_heif 1
 %endif
 %define _tar_path 5.82
 # Full KF5 version (e.g. 5.33.0)
@@ -50,6 +51,9 @@ BuildRequires:  cmake(Qt5Test) >= 5.15.0
 %if 0%{?with_avif}
 BuildRequires:  cmake(libavif) >= 0.8.2
 %endif
+%if 0%{?with_heif}
+BuildRequires:  cmake(libheif) >= 1.10.0
+%endif
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
 Recommends:     libqt5-qtimageformats >= 5.12.0
@@ -76,7 +80,7 @@ environments.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DKIMAGEFORMATS_HEIF=ON
 %cmake_build
 
 %install
@@ -89,6 +93,9 @@ environments.
 %{_kf5_plugindir}/imageformats/kimg_ani.so
 %if 0%{?with_avif}
 %{_kf5_plugindir}/imageformats/kimg_avif.so
+%endif
+%if 0%{?with_heif}
+%{_kf5_plugindir}/imageformats/kimg_heif.so
 %endif
 %{_kf5_plugindir}/imageformats/kimg_exr.so
 %{_kf5_plugindir}/imageformats/kimg_hdr.so
@@ -105,6 +112,9 @@ environments.
 %{_kf5_servicesdir}/qimageioplugins/ani.desktop
 %if 0%{?with_avif}
 %{_kf5_servicesdir}/qimageioplugins/avif.desktop
+%endif
+%if 0%{?with_heif}
+%{_kf5_servicesdir}/qimageioplugins/heif.desktop
 %endif
 %{_kf5_servicesdir}/qimageioplugins/dds.desktop
 %{_kf5_servicesdir}/qimageioplugins/exr.desktop

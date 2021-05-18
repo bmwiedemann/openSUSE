@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 14 05:15:36 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Enable HEIF plugin build on openSUSE Tumbleweed (requires libheif)
+
+-------------------------------------------------------------------
 Sat May  1 16:40:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
