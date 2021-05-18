@@ -146,4 +146,13 @@
     <comment></comment>
     <requestid>867518</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>5680683b9a564eb60f5f9acadfb94da7</srcmd5>
+    <version>1.14.0</version>
+    <time>1621355253</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /usr/sbin/sg_write_buffer. This file is already provided
+  by sg3_utils as /usr/bin/sg_write_buffer.</comment>
+    <requestid>894099</requestid>
+  </revision>
 </revisionlist>

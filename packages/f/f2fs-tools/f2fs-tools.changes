@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  3 08:32:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove /usr/sbin/sg_write_buffer. This file is already provided
+  by sg3_utils as /usr/bin/sg_write_buffer.
+
+-------------------------------------------------------------------
 Tue Nov 24 16:40:28 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

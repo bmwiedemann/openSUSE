@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,11 +80,13 @@ This package contains development files for %name.
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install -p /bin/bash
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
+# sg3_utils already ships this
+rm -f "%buildroot/%_sbindir/sg_write_buffer"
 
 mkdir -p "%buildroot/sbin" "%buildroot/%_includedir"
 %if !0%{?usrmerged}
