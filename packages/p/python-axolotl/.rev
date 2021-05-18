@@ -32,4 +32,12 @@
   * no upstream changelog</comment>
     <requestid>714391</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1066c639d26ac2c9a2e119f7c69ecf71</srcmd5>
+    <version>0.2.3</version>
+    <time>1621355223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893908</requestid>
+  </revision>
 </revisionlist>

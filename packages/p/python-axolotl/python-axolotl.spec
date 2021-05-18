@@ -1,7 +1,7 @@
 #
 # spec file for package python-axolotl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module axolotl-curve25519 >= 0.4.1}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module protobuf >= 3.0.0.b2}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -54,7 +55,7 @@ Marlinspike.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
