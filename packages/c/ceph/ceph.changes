@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 14 10:20:23 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.4-26-g555d38aa5a5:
+  + rebased on top of v16.2.4 tag
+    https://ceph.io/releases/v16-2-4-pacific-released/
+    * mgr/dashboard: fix base-href: revert it to previous approach
+    * (bsc#1186021) mgr/dashboard: fix cookie injection issue (CVE-2021-3509)
+    * mgr/dashboard: fix set-ssl-certificate{,-key} commands
+    * (bsc#1186020) rgw: RGWSwiftWebsiteHandler::is_web_dir checks empty subdir_name (CVE-2021-3531)
+    * (bsc#1185619) rgw: sanitize \r in s3 CORSConfiguration’s ExposeHeader (CVE-2021-3524)
+    * systemd: remove ProtectClock=true for ceph-osd@.service
+
+-------------------------------------------------------------------
 Thu May  6 21:46:52 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.3-26-g422932e923:

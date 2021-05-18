@@ -541,4 +541,12 @@
     <comment>16.2.3 (forwarded request 891241 from smithfarm)</comment>
     <requestid>891242</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>4a773033dd58ff9437eb481cd38d7752</srcmd5>
+    <version>16.2.4.26+g555d38aa5a5</version>
+    <time>1621355207</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1186020 (forwarded request 893735 from smithfarm)</comment>
+    <requestid>893736</requestid>
+  </revision>
 </revisionlist>
