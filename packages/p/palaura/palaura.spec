@@ -17,7 +17,7 @@
 
 
 Name:           palaura
-Version:        1.2.2
+Version:        1.5.1
 Release:        0
 Summary:        A dictionary with word definitions
 License:        GPL-3.0-or-later
