@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,18 +23,12 @@
 %define libname lib%{name}5
 
 Name:           insighttoolkit
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
 URL:            https://www.itk.org
 Source:         https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
-Patch1:         nrrdio-linking.patch
-# PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
-Patch3:         itklbfgs-linking.patch
-# PATCH-FIX-OPENSUSE reproducible.patch boo#1100677 gh#InsightSoftwareConsortium/ITK#1939
-Patch100:       reproducible.patch
 BuildRequires:  CastXML-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -63,6 +57,8 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
+# https://github.com/InsightSoftwareConsortium/ITK/issues/2529
+ExcludeArch:    %{ix86}
 
 %description
 The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
