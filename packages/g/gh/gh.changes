@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.0:
+  - Improvements to JSON exporting
+    * Add gh repo list/view --json support #3627
+    * Add gh release view --json support #3656
+    * Fixes numerous issues with gh pr list/view --json support #3547
+      - fetching closed field
+      - fetching date fields like createdAt or mergedAt
+      - fetching files field
+    * Fix exporting milestone field for issues and PRs #3529
+    * Add commits field to JSON export for PRs #3547
+    * Show more than 100 comments in gh issue view --json comments #3547
+    * Add shell completion for valid --json flag values #3628
+
+  - New Features
+    * Add gh repo fork --org option #3611
+    * Allow passinggh alias set value via standard input #3490
+    * Prompt for value in gh secret set #3499
+    * Update gh api placeholder syntax to {owner}, {repo} to match
+      GitHub API documentation #3536
+    * Extend our package repository to support Ubuntu Hirsute and
+      Kali linux #3398
+  - Fixes
+    * Speedup across most gh pr commands #3547
+    * Fix gh pr operations from GitHub Actions when a PR was added
+      as a card to an org project #3547
+    * Allow deleting local git branch in gh pr close #3547
+    * Fix showing more than 100 checks in gh pr checks #3547
+    * Fix viewing and editing draft releases with GitHub Actions token #3656
+    * Fix Windows path in gh auth status output #3491
+    * Ignore HTTP 404 error for annotations in gh run watch #3517
+    * Handle Incorrect function exception for MinTTY users
+      (typically in Git Bash) by suggesting switching to Windows Terminal #3537
+    * Query fewer fields to determine issue status #3525
+    * Warn about empty contents on gh gist create #3578
+    * Fix "null" display in colored JSON output #3626
+    * Fix some docs formatting for the web #3648
+
+-------------------------------------------------------------------
 Tue Apr 20 23:40:06 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.9.2:
