@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 10:36:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch
+  [CVE-2020-24119] [boo#1186238]
+
+-------------------------------------------------------------------
 Thu Jan 23 06:58:20 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.96

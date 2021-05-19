@@ -1,7 +1,7 @@
 #
 # spec file for package upx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://upx.github.io/
 Source:         https://github.com/upx/upx/releases/download/v%{version}/upx-%{version}-src.tar.xz
 Patch0:         upx-aarch64.patch
 Patch1:         upx-endiantests.patch
+Patch2:         0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel
 BuildRequires:  zlib-devel
@@ -38,9 +39,7 @@ temporary file, the latter of which does not support setuid programs,
 or the proper name in argv[0].
 
 %prep
-%setup -q -n %{name}-%{version}-src
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}-src
 
 # BSD-4-Clause licensed file, remove just in case bnc#753791
 rm src/stub/src/i386-dos32.djgpp2-stubify.asm

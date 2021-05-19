@@ -124,4 +124,13 @@
     <comment></comment>
     <requestid>766781</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>620475b704d959cd25feb583700af101</srcmd5>
+    <version>3.96</version>
+    <time>1621439381</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch
+  [CVE-2020-24119] [boo#1186238] (forwarded request 894300 from jengelh)</comment>
+    <requestid>894328</requestid>
+  </revision>
 </revisionlist>
