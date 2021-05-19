@@ -48,4 +48,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705959</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>58434cfb36846335f019099e73eaec0a</srcmd5>
+    <version>3.0.7+git20151023.72.a0ff256</version>
+    <time>1621439323</time>
+    <user>dimstar_suse</user>
+    <comment>- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Upstream project is archived and will not be converting to modules
+  * go1.16 adds binary data embed capability that can replace this package
+    once there are no dependencies</comment>
+    <requestid>882555</requestid>
+  </revision>
 </revisionlist>

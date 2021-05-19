@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-jteeuwen-go-bindata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A small utility which generates Go code from any file
 License:        CC0-1.0
 Group:          Development/Languages/Golang
-Url:            https://github.com/jteeuwen/go-bindata
+URL:            https://github.com/jteeuwen/go-bindata
 Source:         go-bindata-v%{version}.tar.xz
 BuildRequires:  golang-packaging
 BuildRequires:  xz
@@ -43,6 +43,10 @@ It comes with a command line tool in the go-bindata sub directory. This tool off
 
 %build
 %{goprep} github.com/jteeuwen/go-bindata
+# go1.16+ default is GO111MODULE=on set to auto
+# Upstream project is archived and will not be converting to modules
+# In a future version of go support for non-module projects will be removed
+export GO111MODULE=auto
 %{gobuild} ...
 
 %install
@@ -54,6 +58,10 @@ It comes with a command line tool in the go-bindata sub directory. This tool off
 %endif
 
 %check
+# go1.16+ default is GO111MODULE=on set to auto
+# Upstream project is archived and will not be converting to modules
+# In a future version of go support for non-module projects will be removed
+export GO111MODULE=auto
 %{gotest} github.com/jteeuwen/go-bindata
 
 %files -f file.lst

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 16 00:30:35 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Upstream project is archived and will not be converting to modules
+  * go1.16 adds binary data embed capability that can replace this package
+    once there are no dependencies
+
+-------------------------------------------------------------------
 Wed Jun 13 13:39:23 UTC 2018 - dcassany@suse.com
 
 - Make use of %license macro 
