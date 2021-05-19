@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-deprecated
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-deprecated
 Version:        1.3
 Release:        0
-License:        GPL-2.0-only
 Summary:        Flake8 deprecations plugin
-Url:            https://github.com/gforcada/flake8-deprecated
+License:        GPL-2.0-only
 Group:          Development/Languages/Python
+URL:            https://github.com/gforcada/flake8-deprecated
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-deprecated/flake8-deprecated-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module flake8 >= 3.0.0}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-flake8 >= 3.0.0
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module flake8 >= 3.0.0}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -50,7 +51,7 @@ they should be replaced with.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest run_tests.py
 
 %files %{python_files}
 %license LICENSE LICENSE.rst
