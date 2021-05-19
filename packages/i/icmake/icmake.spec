@@ -1,7 +1,7 @@
 #
 # spec file for package icmake
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           icmake
-Version:        9.02.02
+Version:        9.03.01
 Release:        0
 Summary:        A program maintenance (make) utility using a C-like grammar
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Development/Tools/Building
-Url:            https://fbb-git.github.io/icmake/
-Source:         https://github.com/fbb-git/icmake/archive/%{version}.tar.gz
+Url:            https://gitlab.com/fbb-git/icmake
+Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
 Patch1:         prevent-double-slash.patch
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Icmake allows the programmer to use a program language (closely
@@ -61,7 +60,6 @@ pushd %{name}
 popd
 
 %files
-%defattr(-,root,root)
 %doc %{name}/changelog
 %doc %{_docdir}/%{name}/
 %{_bindir}/icmake
