@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 18 21:10:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5
+  * maintenance release
+  * updated auto-generated package list
+  * drop python 3.5 support, add 3.9
+
+-------------------------------------------------------------------
 Wed May 20 07:26:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
