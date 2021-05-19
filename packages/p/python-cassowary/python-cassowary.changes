@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 19 08:42:53 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro in %check
+
+-------------------------------------------------------------------
 Mon Mar 30 12:42:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.5.2
