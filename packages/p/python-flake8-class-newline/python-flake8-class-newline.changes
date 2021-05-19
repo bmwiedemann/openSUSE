@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 19 06:46:49 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro in %check
+
+-------------------------------------------------------------------
 Mon Jul 15 21:48:40 UTC 2019 - Andreas Färber <afaerber@suse.de>
 
 - Initial (v1.6.0)
