@@ -923,4 +923,13 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
     <comment>Restore changelog ref to bsc#1123013 (forwarded request 874753 from jfkw)</comment>
     <requestid>874754</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>49ac733501975214c9efdcc72c0854d2</srcmd5>
+    <version>1.16</version>
+    <time>1621439322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current stable go1.16
+  Refs boo#1182345 go1.16 release tracking (forwarded request 875491 from jfkw)</comment>
+    <requestid>875492</requestid>
+  </revision>
 </revisionlist>
