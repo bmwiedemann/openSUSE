@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 19 09:27:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.7.0
+  * rlgl module for greater abstraction level. Now rlgl functionality
+    is self-contained in the module and used by higher-level layers,
+  * Multiple rlgl functions have been renamed for consistency
+  * A new API has been added, more comprehensive and better integrated
+    with raylib, the new stereo rendering can be combined with
+    RenderTexture and Shader API allowing the user to manage fbo and
+    distortion shader directly.
+  * New file access callbacks system.
+  * glTF animations support.
+  * raylib supports music streamming from memory data for all
+    supported file formats: WAV, OGG, MP3, FLAC, XM and MOD.
+  * Most raylib enums names and values names have been renamed for
+    consistency, now all value names start with the type of data
+    they represent.
+  * See: https://github.com/raysan5/raylib/blob/3.7.0/CHANGELOG
+- Drop raylib-3.0.0-noexamples.patch
+- Edit _service:
+  * Exclude examples as they are licensed under unsupported licenses
+    (Upstream does not provid the -noexamples package anymore)
+
+-------------------------------------------------------------------
 Mon Jan  4 14:46:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5.0:
