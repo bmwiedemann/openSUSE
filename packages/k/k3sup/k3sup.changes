@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon May 17 17:04:27 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * Update README.md
+  * Fix two ToC links
+  * Update headings and add 2fa note
+  * Handle absense of SSH_AUTH_SOCK and agent errors
+  * Add ssh-agent with fall-through to join command.
+  * Transparently use ssh-agent on linux/darwin
+  * Update ToC and switch out sponsors image
+  * Update troubleshooting section
+  * Fix 321 for local skip-install option
+  * Update ISSUE_TEMPLATE.md
+
+-------------------------------------------------------------------
+Mon May 17 17:02:52 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of the package k3sup 

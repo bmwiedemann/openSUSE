@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/alexellis/k3sup</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">0.11.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">(.*)</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">k3sup</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">k3sup-0.11.0.tar.gz</param>
+  </service>
+</services>

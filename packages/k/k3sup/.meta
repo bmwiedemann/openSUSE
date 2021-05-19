@@ -1,0 +1,10 @@
+<package name="k3sup" project="openSUSE:Factory">
+  <title>k3sup (said 'ketchup')</title>
+  <description>k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM. All you need is ssh access and the k3sup binary to get kubectl access immediately.
+
+The tool is written in Go and is cross-compiled for Linux, Windows, MacOS and even on Raspberry Pi.
+
+How do you say it? Ketchup, as in tomato.</description>
+  <devel project="devel:kubic" package="k3sup"/>
+  <url>k3sup.dev</url>
+</package>
