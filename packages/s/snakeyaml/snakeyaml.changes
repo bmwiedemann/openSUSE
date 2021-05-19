@@ -2,7 +2,7 @@
 Sat May 15 17:33:53 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 1.28
-  * Fixes bsc#1186088, CVE-2017-18640
+  * Fixes bsc#1159488, bsc#1186088, CVE-2017-18640
 - Removed patch:
   * 0003-fix-broken-test.patch
     + not needed since integrated upstream
@@ -29,5 +29,36 @@ Sun Nov 10 05:55:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Fri Mar  1 06:32:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
-- Initial packaging of snakeyaml 1.17 based on Fedora package
+- Packaging of snakeyaml 1.17 based on Fedora package
 - Generated and customized ant build file
+- Removed patch:
+  * snakeyaml-1.10-jdk9.patch
+    + not needed any more
+
+-------------------------------------------------------------------
+Thu Nov 02 13:12:11 UTC 2017 - jgonzalez@suse.com
+
+- Fix build with java9
+- Add:
+  * snakeyaml-1.10-jdk9.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 13:06:37 UTC 2014 - mseidl@suse.de
+
+- modified for sle12
+
+-------------------------------------------------------------------
+Fri Nov 18 01:48:56 CET 2011 - ro@suse.de
+
+- explicitly add java-devel to buildrequires
+
+-------------------------------------------------------------------
+Fri Aug 26 14:55:26 UTC 2011 - bmaryniuk@suse.com
+
+- Removed bootstrap binaries.
+
+-------------------------------------------------------------------
+Fri Aug 26 14:32:27 UTC 2011 - bmaryniuk@suse.com
+
+- Initial build with a bootstrap binaries.
+

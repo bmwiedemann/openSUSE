@@ -38,10 +38,9 @@ Patch0:         0001-replace-bundled-base64coder-with-java.util.Base64.patch
 Patch1:         0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-codec
-BuildRequires:  base64coder
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-Requires:       mvn(biz.source_code:base64coder)
 Requires:       mvn(commons-codec:commons-codec)
 BuildArch:      noarch
 %if %{with tests}
@@ -93,8 +92,6 @@ rm -f src/test/java/examples/SpringTest.java
 
 # Replacement for bundled gdata-java-client
 %pom_add_dep commons-codec:commons-codec
-# Re-add bundled base64coder
-%pom_add_dep biz.source_code:base64coder
 
 # fails in rpmbuild only due to different locale
 rm src/test/java/org/yaml/snakeyaml/issues/issue67/NonAsciiCharsInClassNameTest.java
@@ -106,7 +103,7 @@ sed -i 's/\r//g' LICENSE.txt
 
 %build
 mkdir -p lib
-build-jar-repository -s lib base64coder commons-codec
+build-jar-repository -s lib commons-codec
 %if %{with tests}
 build-jar-repository -s lib junit hamcrest/core velocity commons-collections commons-lang oro joda-time
 %endif
@@ -122,8 +119,8 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/

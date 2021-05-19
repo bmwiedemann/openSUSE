@@ -23,4 +23,12 @@
     <comment>bsc#1186088, CVE-2017-18640</comment>
     <requestid>893328</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eef7ebfa64007797630f94fd70a70b70</srcmd5>
+    <version>1.28</version>
+    <time>1621439382</time>
+    <user>dimstar_suse</user>
+    <comment>syncing changelog with older sle versions</comment>
+    <requestid>894352</requestid>
+  </revision>
 </revisionlist>
