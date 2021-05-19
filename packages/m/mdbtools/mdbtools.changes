@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 06:23:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to new upstream url
+- Update to version 0.9.3 - see NEWS for detailed list of changes
+
+-------------------------------------------------------------------
 Sat May 19 01:23:54 UTC 2018 - bjorn.lie@gmail.com
 
 - No longer build gui sub-package:

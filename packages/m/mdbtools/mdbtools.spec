@@ -1,7 +1,7 @@
 #
 # spec file for package mdbtools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libmdb    libmdb2
-%define libmdbsql libmdbsql2
+%define libmdb    libmdb3
+%define libmdbsql libmdbsql3
 Name:           mdbtools
-Version:        0.7.1
+Version:        0.9.3
 Release:        0
 Summary:        A Suite of Libraries and Programs to Access Microsoft Access Databases
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
-URL:            https://github.com/brianb/mdbtools
-Source0:        https://github.com/brianb/mdbtools/archive/%{version}.tar.gz
-
+URL:            https://github.com/mdbtools
+Source0:        https://github.com/mdbtools/mdbtools/releases/download/v%{version}/mdbtools-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -86,7 +85,7 @@ Group:          Productivity/Databases/Tools
 Contains shared library %{libmdbsql} from %{name}
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
@@ -97,10 +96,10 @@ autoreconf -fiv
   --disable-gmdb2 \
   --disable-gtk-doc \
   %{nil}
-make %{?_smp_mflags} V=1
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -113,18 +112,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc README AUTHORS NEWS HACKING ChangeLog TODO
+%doc AUTHORS NEWS HACKING
 %{_bindir}/mdb-*
 %{_mandir}/man1/mdb-*.1%{?ext_man}
-%{_mandir}/man1/gmdb2.1%{?ext_man}
+%{_datadir}/bash-completion/completions/mdb-*
 
 %files -n %{libmdb}
-%{_libdir}/libmdb.so.2
-%{_libdir}/libmdb.so.2.0.1
+%{_libdir}/libmdb.so.3*
 
 %files -n %{libmdbsql}
-%{_libdir}/libmdbsql.so.2
-%{_libdir}/libmdbsql.so.2.0.0
+%{_libdir}/libmdbsql.so.3*
 
 %files devel
 %{_includedir}/mdb*.h
