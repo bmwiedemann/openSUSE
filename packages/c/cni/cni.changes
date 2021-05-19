@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 24 09:19:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use buildmode=pie (cnitool is installed into sbindir) 
+
+-------------------------------------------------------------------
+Tue Mar 16 05:16:27 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Set temporarily until using upstream release with go.mod
+  * Drop BuildRequires: golang-packaging not currently using macros
+  * Add BuildRequires: golang(API) >= 1.13 recommended dependency expression
+
+-------------------------------------------------------------------
 Thu Oct  1 12:47:37 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.0:

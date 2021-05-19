@@ -13,10 +13,10 @@ export GO15VENDOREXPERIMENT=1
 export GOPATH=${PWD}/gopath
 
 echo "Building API"
-go build "$@" ${REPO_PATH}/libcni
+go build -buildmode=pie "$@" ${REPO_PATH}/libcni
 
 echo "Building reference CLI"
-go build -o ${PWD}/bin/cnitool "$@" ${REPO_PATH}/cnitool
+go build -buildmode=pie -o ${PWD}/bin/cnitool "$@" ${REPO_PATH}/cnitool
 
 echo "Building plugins"
 PLUGINS="plugins/test/*"
@@ -24,6 +24,6 @@ for d in $PLUGINS; do
 	if [ -d $d ]; then
 		plugin=$(basename $d)
 		echo "  " $plugin
-		go build -o ${PWD}/bin/$plugin "$@" ${REPO_PATH}/$d
+		go build -buildmode=pie -o ${PWD}/bin/$plugin "$@" ${REPO_PATH}/$d
 	fi
 done

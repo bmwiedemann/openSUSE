@@ -1,7 +1,7 @@
 #
 # spec file for package cni
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,16 +30,16 @@ URL:            https://github.com/containernetworking/cni
 Source:         %{name}-%{version}.tar.xz
 Source1:        99-loopback.conf
 Source2:        build.sh
-BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.13
 Recommends:     cni-plugins
 Requires(post): %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-# Make sure that the binary is not getting stripped.
-%{go_nostrip}
+# Remove stripping of Go binaries.
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %description
 The CNI (Container Network Interface) project consists of a
@@ -55,6 +55,9 @@ range of support and the specification is simple to implement.
 cp %{SOURCE2} build.sh
 
 %build
+# go1.16+ default is GO111MODULE=on set to auto temporarily
+# until using upstream release with go.mod
+export GO111MODULE=auto
 sh ./build.sh
 
 %install
