@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 18 22:15:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.10:
+  - AWS Secrets Engine: Add support for iam_tags when creating roles. GH-684
+  - Add Active Directory generate credential capability. GH-657
+  - Add `policies` Parameter to Userpass `create_or_update_user()` Method. GH-562
+  - Add handling of unsupported HTTP methods inside adapter. GH-689
+  - Add Convenience `read_secret()` Method for KVv2 Class. GH-686
+  - Set daemon attribute instead of using setDaemon method that was deprecated in Python 3.10. GH-688
+  - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68 
+
+-------------------------------------------------------------------
 Thu Apr 22 20:22:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.8:

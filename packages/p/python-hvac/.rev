@@ -81,4 +81,19 @@
   - Support database secrets static roles. GH-662</comment>
     <requestid>887883</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ca9112c6a41d2dd6ccf194279ab66c6</srcmd5>
+    <version>0.10.10</version>
+    <time>1621439358</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.10:
+  - AWS Secrets Engine: Add support for iam_tags when creating roles. GH-684
+  - Add Active Directory generate credential capability. GH-657
+  - Add `policies` Parameter to Userpass `create_or_update_user()` Method. GH-562
+  - Add handling of unsupported HTTP methods inside adapter. GH-689
+  - Add Convenience `read_secret()` Method for KVv2 Class. GH-686
+  - Set daemon attribute instead of using setDaemon method that was deprecated in Python 3.10. GH-688
+  - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68</comment>
+    <requestid>894170</requestid>
+  </revision>
 </revisionlist>
