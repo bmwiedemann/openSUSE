@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 18 18:35:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.3
+  * Improved error handling when using Security Key Series devices.
+  * PIV: Fix generation of certificate in slot 9c.
+
+-------------------------------------------------------------------
 Thu May  6 14:06:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.2

@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
 Requires:       python3-pyotherside
-Requires:       python3-yubikey-manager >= 4.0.2
+Requires:       python3-yubikey-manager >= 4.0.3
 
 %description
 A graphical application for configuring a YubiKey over all transport modes..
