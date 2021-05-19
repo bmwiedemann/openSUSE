@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 13 13:42:05 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 3.4.16:
+  * version: 3.4.16
+  * Backport-3.4 exclude alarms from health check conditionally
+  * etcdserver/mvcc: update trace.Step condition
+  * Backport-3.4 etcdserver/util.go: reduce memory when logging range requests
+  * .travis,Makefile,functional: Bump go 1.12 version to v1.12.17
+  * integration: Fix 'go test --tags cluster_proxy --timeout=30m -v ./integration/...'
+  * pkg/tlsutil: Adjust cipher suites for go 1.12
+  * Fix pkg/tlsutil (test) to not fail on 386.
+  * bill-of-materials.json: Update golang.org/x/sys
+  * .travis,test: Turn race off in Travis for go version 1.15
+  * integration : fix TestTLSClientCipherSuitesMismatch in go1.13
+  * vendor: Run go mod vendor
+  * go.mod,go.sum: Bump github.com/creack/pty that includes patch
+  * go.mod,go.sum: Comply with go v1.15
+  * etcdserver,wal: Convert int to string using rune()
+  * integration,raft,tests: Comply with go v1.15 gofmt
+  * .travis.yml: Test with go v1.15.11
+  * pkpkg/testutil/leak.go: Allowlist created by testing.runTests.func1
+  * vendor: Run go mod vendor
+  * go.sum, go.mod: Run go mod tidy with go 1.12
+  * go.mod: Pin go to 1.12 version
+  * etcdserver: fix incorrect metrics generated when clients cancel watches
+  * integration: relax leader timeout from 3s to 4s
+  * etcdserver: when using --unsafe-no-fsync write data
+  * server: Added config parameter experimental-warning-apply-duration
+  * etcdserver: Fix PeerURL validation
+
+-------------------------------------------------------------------
 Fri Apr 16 20:34:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update etcd.service: avoid args from commandline and environment

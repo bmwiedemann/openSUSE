@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.4.15
+Version:        3.4.16
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -67,26 +67,19 @@ to explore an etcd cluster.
 cp %{SOURCE15} .
 
 %build
-%{goprep} go.etcd.io/etcd
-export GOPATH=$HOME/go
-mkdir -pv $HOME/go/src/%{project}
-rm -rf $HOME/go/src/%{project}/*
-cp -avr * $HOME/go/src/%{project}
+%{goprep} %{project}
 
-cd $HOME/go/src/%{project}
-go build -v -buildmode=pie -o etcd
+mkdir -p ./bin
 
-cd $HOME/go/src/%{project}/etcdctl
-go build -v -buildmode=pie -o etcdctl
+go build -v -buildmode=pie -mod=vendor -o ./bin/etcd
+go build -v -buildmode=pie -mod=vendor -o ./bin/etcdctl ./etcdctl
 
 %install
-cd $HOME/go/src/%{project}
-
 install -d %{buildroot}/%{_sbindir}
-install -D -m 0755 etcd %{buildroot}/%{_sbindir}/etcd
+install -D -m 0755 ./bin/etcd %{buildroot}/%{_sbindir}/etcd
 
 install -d %{buildroot}/%{_bindir}
-install -D -m 0755 etcdctl/etcdctl %{buildroot}/%{_bindir}/etcdctl
+install -D -m 0755 ./bin/etcdctl %{buildroot}/%{_bindir}/etcdctl
 
 # Service
 install -D -p -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}.service
