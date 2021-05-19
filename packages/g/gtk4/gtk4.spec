@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later

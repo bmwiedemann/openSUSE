@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May 14 13:23:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.2.1:
+  + GtkVideo: Detect stream metadata when using gstreamer
+  + GtkFileChooser: Fix a crash
+  + GtkButton: Add back visual feedback for keynav activation
+  + GtkFontChooser: Fix initial font selection
+  + GtkScrolledWindow: Stop using scroll cursors
+  + GtkMenuButton: Make focus-on-click work
+  + GtkToggleButton: Make grouped buttons mutually exclusive
+  + GtkPasswordEntry: Use MADV_DONTDUMP for secure memory
+  + GtkListBox: Allow repeated selection extension for MULTIPLE
+  + GdkClipboard: Ensure strings are nul-terminated
+  + GSK:
+    - Fix offscreen rendering with transforms
+    - Fix downscaled textures
+    - Avoid huge intermediate textures
+    - Make shadow rendering match across renderers
+  + Text widgets: Support translucent selections
+  + Wayland:
+    - Improve font settings fallback
+    - Avoid unintentional rendering freezes with popovers
+  + X11:
+    - Don't beep on untrusted displays
+    - Don't crash when popovers are outside the workarea
+  + Themes:
+    - Fix resize border sizing
+    - Fix solid-csd window decorations
+  + Input:
+    - Revert some Compose sequence changes
+    - Consume all key events during preedit, to avoid unexpected
+      interactions
+    - Ignore more modifiers during preedit, to allow using 3rd
+      and 5th level choosers
+    - Fix handling of cursor positions in non-ASCII preedit text
+    - Fix a problem with deferred focus setting
+
+-------------------------------------------------------------------
 Sat Apr 17 09:18:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.2.0:
