@@ -18,7 +18,7 @@
 
 %define lname	liberfa1
 Name:           erfa
-Version:        1.7.3
+Version:        2.0.0
 Release:        0
 Summary:        Essential Routines for Fundamental Astronomy
 License:        BSD-3-Clause
