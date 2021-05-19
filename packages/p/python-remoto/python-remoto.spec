@@ -1,7 +1,7 @@
 #
 # spec file for package python-remoto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
-BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
 BuildArch:      noarch

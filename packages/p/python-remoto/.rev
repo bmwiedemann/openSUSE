@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>824183</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d6ea6a20f6708122d265cbc59f84bea6</srcmd5>
+    <version>1.2.0</version>
+    <time>1621439339</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary dependency on python-devel.
+</comment>
+    <requestid>893680</requestid>
+  </revision>
 </revisionlist>
