@@ -51,4 +51,12 @@
   * fix-test-includes.patch</comment>
     <requestid>831415</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>804459244d23d5988197fa128b81e4cf</srcmd5>
+    <version>0.9.1</version>
+    <time>1621439391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894388</requestid>
+  </revision>
 </revisionlist>
