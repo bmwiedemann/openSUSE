@@ -23,4 +23,12 @@
   * Fixes build with new netsurf-buildsystem</comment>
     <requestid>831411</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5c82067b04dfd7c83ed78e53d03154b3</srcmd5>
+    <version>0.4.3</version>
+    <time>1621439391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894393</requestid>
+  </revision>
 </revisionlist>
