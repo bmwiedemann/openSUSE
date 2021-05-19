@@ -75,6 +75,9 @@ reduces the complexity of doing port mapping.
 %build
 gofmt -w -r "x -> \"%{version}\"" version/version.go
 %{goprep} github.com/coreos/flannel
+# go1.16+ default is GO111MODULE=on set to auto temporarily
+# until using an upstream version with go.mod
+export GO111MODULE=auto
 %{gobuild}
 
 %install

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 28 13:20:33 UTC 2021 - Ralf Haferkamp <ralf@h4kamp.de>
+
+- Sync manifest with upstream (0.13.0 release). Includes the
+  following changes:
+  * Fix typo and invalid indent in kube-flannel.yml
+  * Use stable os and arch label for node
+  * set priorityClassName to system-node-critical
+  * Add NET_RAW capability to support cri-o
+  * Use multi-arch Docker images in the Kubernetes manifest
+
+-------------------------------------------------------------------
+Wed Mar 17 01:25:43 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Set temporarily until using upstream version with go.mod
+
+-------------------------------------------------------------------
 Fri Feb 26 09:43:39 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - update to 0.13.0:
