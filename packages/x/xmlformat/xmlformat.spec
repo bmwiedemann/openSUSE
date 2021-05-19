@@ -1,7 +1,7 @@
 #
 # spec file for package xmlformat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xmlformat
-Version:        1.04
+Version:        1.9
 Release:        0
 Summary:        XML document formatter
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND GPL-3.0-only
 Group:          Productivity/Publishing/XML
-URL:            http://www.kitebird.com/software/xmlformat/
-Source0:        http://www.kitebird.com/software/xmlformat/%{name}-%{version}.tar.bz2
+URL:            https://github.com/someth2say/xmlformat
+Source0:        https://github.com/someth2say/xmlformat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  perl
+BuildRequires:  ruby
+BuildRequires:  shunit2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %description
@@ -35,21 +39,37 @@ wrapping. These properties can be defined on a per-element basis.
 xmlformat provides improved diagnostic information when a document is not
 well-formed. (Prints line and token number, and stack trace).
 
+Based on Kitebird's original implementation v1.04
+
 %prep
 %setup -q
 
 %build
+# --
 
 %install
-install -Dpm 0755 xmlformat.pl  \
-  %{buildroot}%{_bindir}/xmlformat.pl
-install -Dpm 0755 xmlformat.rb  \
-  %{buildroot}%{_bindir}/xmlformat.rb
+install -Dpm 0755 bin/xmlformat.pl  %{buildroot}%{_bindir}/xmlformat.pl
+install -Dpm 0755 bin/xmlformat.rb  %{buildroot}%{_bindir}/xmlformat.rb
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/xmlformat %{buildroot}/%{_bindir}/xmlformat
+
+%check
+(cd test; ./test.sh )
+
+%post
+%{_sbindir}/update-alternatives --install %{_bindir}/xmlformat xmlformat %{_bindir}/xmlformat.rb 10
+%{_sbindir}/update-alternatives --install %{_bindir}/xmlformat xmlformat %{_bindir}/xmlformat.pl 20
+
+%postun
+if [ ! -f %{_bindir}/xmlformat ] ; then
+   update-alternatives --remove xmlformat %{_bindir}/xmlformat
+fi
 
 %files
-%doc BUGS ChangeLog INSTALL LICENSE README TODO
-%doc bad* test.conf
-%doc docs tests
-%{_bindir}/xmlformat.*
+%doc README.md *.html
+%doc bin/xmlformat.conf
+%license LICENSE.txt
+%{_bindir}/xmlformat*
+%ghost %_sysconfdir/alternatives/xmlformat
 
 %changelog
