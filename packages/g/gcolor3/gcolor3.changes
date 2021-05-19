@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 17 17:47:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use SourceUrl, fixes Factory CI scripts
+
+-------------------------------------------------------------------
+Wed Aug 26 16:47:05 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to version 2.4.0
+  * Color Picker now works on Wayland
+  * typography and iconography changed to be consistent with GNOME HIG
+  * dropped use of deprecated GTK APIs to make porting to GTK4 a smooth process
+  * multiple other under-the-hood improvements
+
+-------------------------------------------------------------------
 Tue Jan 14 20:12:37 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
 
 - Fix typo in git version

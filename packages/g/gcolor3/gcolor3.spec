@@ -1,7 +1,7 @@
 #
 # spec file for package gcolor3
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%global         commit be7d539383da129c0e8187946a67e062f934c8dc
-%global         rev git78
 Name:           gcolor3
-Version:        2.3.1+%{rev}
+Version:        2.4.0
 Release:        0
 Summary:        A color chooser written in GTK3 (like gcolor2)
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
-URL:            https://gitlab.gnome.org/World/%{name}/-/archive/%{commit}/%{name}-%{commit}.tar.gz
-Source0:        %{name}-%{commit}.tar.gz
+URL:            https://www.hjdskes.nl/projects/gcolor3/
+Source0:        https://gitlab.gnome.org/World/gcolor3/-/archive/v%{version}/gcolor3-v%{version}.tar.bz2
 Patch0:         gcolor3-suse.patch
 BuildRequires:  cmake
+BuildRequires:  git
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libportal-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -41,7 +41,7 @@ also offers a palette to mix and match a couple of colors together.
 Colors can be saved and retrieved.
 
 %prep
-%autosetup -p1 -n %{name}-%{commit}
+%autosetup -p1 -n gcolor3-v%{version}
 
 %build
 %meson
