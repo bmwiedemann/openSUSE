@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 18 17:26:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.18.2
+  * processors.converter Add support for large hexadecimal strings
+  * inputs.apcupsd Fix apcupsd 'ALARMDEL' bug via forked repo
+  * parsers.json Make JSON format compatible with nulls
+  * inputs.nfsclient Fix nfsclient ops map to allow collection of
+    metrics other than read and write
+  * inputs.snmp Log snmpv3 auth failures
+  * common.shim Accept larger inputs from scanner
+  * inputs.vsphere Add MetricLookback setting to handle reporting
+    delays in vCenter 6.7 and later
+  * outputs.sumologic Carbon2 serializer: sanitize metric name
+  * inputs.opcua Fix error handling
+
+-------------------------------------------------------------------
 Wed Apr 07 21:36:28 UTC 2021 - jkowalczyk@suse.com
 
 - Update to version 1.18.1:

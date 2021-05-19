@@ -3,7 +3,7 @@
     <param name="url">https://github.com/influxdata/telegraf</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.18.1</param>
+    <param name="revision">v1.18.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -13,8 +13,9 @@
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="compression">xz</param>
   </service>
   <service name="go_modules" mode="disabled">
+    <param name="compression">xz</param>
   </service>
 </services>

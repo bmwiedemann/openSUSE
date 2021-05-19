@@ -79,4 +79,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * Close running outputs when reloading (#8769) (forwarded request 883694 from jfkw)</comment>
     <requestid>883695</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d37451efffd4769c62191911fd031ca</srcmd5>
+    <version>1.18.2</version>
+    <time>1621439351</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.18.2 (forwarded request 894123 from susnux)</comment>
+    <requestid>894126</requestid>
+  </revision>
 </revisionlist>
