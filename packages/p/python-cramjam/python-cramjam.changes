@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue May 18 14:12:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for 2.3.1
+- new requirement of python-fastparquet 0.6
+- use rust cargo crate vendoring following the how-to from
+  https://fy.blackhats.net.au/blog/html/2021/02/15/getting_started_packaging_a_rust_cli_tool_in_suse_obs.html
