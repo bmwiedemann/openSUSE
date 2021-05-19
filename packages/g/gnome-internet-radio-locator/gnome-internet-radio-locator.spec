@@ -17,15 +17,13 @@
 
 
 Name:           gnome-internet-radio-locator
-Version:        4.0.2
+Version:        5.0.0
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Apps/InternetRadioLocator
-Source0:        https://download.gnome.org/sources/%{name}/4.0/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch dimstar@opensuse.org -- Fix prototype of gtk_internet_radio_locator_radius
-Patch0:         0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch
+Source0:        https://download.gnome.org/sources/%{name}/5.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
 BuildRequires:  itstool
@@ -73,10 +71,10 @@ make %{?_smp_mflags}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README THANKS NEWS
+%doc AUTHORS ChangeLog THANKS NEWS
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/gnome-internet-radio-locator-4.0.dtd
+%{_datadir}/%{name}/gnome-internet-radio-locator-5.0.dtd
 %{_datadir}/%{name}/gnome-internet-radio-locator.xml
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024

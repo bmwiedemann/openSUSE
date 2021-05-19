@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 14 20:12:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.0.0:
+  + Add a bunch of BBC radio stations.
+- Drop upstream merged patch:
+  + 0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch
+
+-------------------------------------------------------------------
 Fri Apr 30 19:14:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.0.2:
