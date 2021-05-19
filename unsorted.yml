@@ -2232,7 +2232,6 @@ unsorted:
   - converseen 
   - converseen-lang 
   - convmv 
-  - cookiecutter 
   - cookiecutter-doc 
   - cool-retro-term 
   - coolkey 
@@ -6989,7 +6988,7 @@ unsorted:
   - input-pad-devel 
   - input-pad-eek 
   - input-pad-xtest 
-  - insighttoolkit-devel 
+  - insighttoolkit-devel: [x86_64] 
   - inspectrum 
   - inst-source-utils 
   - install-initrd-Kubic: [x86_64] 
@@ -9922,9 +9921,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10804,7 +10803,7 @@ unsorted:
   - libgif7-32bit: [x86_64] 
   - libgig-devel 
   - libgig-tools 
-  - libgig9 
+  - libgig10 
   - libgimp-2_0-0-32bit: [x86_64] 
   - libgimpui-2_0-0-32bit: [x86_64] 
   - libginac11 
@@ -11399,7 +11398,7 @@ unsorted:
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
-  - libinsighttoolkit5 
+  - libinsighttoolkit5: [x86_64] 
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
   - libinstpatch-devel 
@@ -12645,7 +12644,7 @@ unsorted:
   - libpgf-devel 
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
-  - libphobos2-0_94 
+  - libphobos2-0_96 
   - libphobos2-ldc94 
   - libphonenumber-devel 
   - libphonon4qt5-32bit: [x86_64] 
@@ -13085,8 +13084,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13109,7 +13108,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13338,7 +13337,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -19071,6 +19070,7 @@ unsorted:
   - perl-HTML-FormHandler 
   - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
+  - perl-HTML-FromANSI-Tiny 
   - perl-HTML-Restrict 
   - perl-HTML-RewriteAttributes 
   - perl-HTML-Scrubber 
@@ -19432,6 +19432,7 @@ unsorted:
   - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
+  - perl-Parse-ANSIColor-Tiny 
   - perl-Parse-CPAN-Packages 
   - perl-Parse-MIME 
   - perl-Parse-Method-Signatures 
@@ -21175,7 +21176,7 @@ unsorted:
   - python3-ipa_hbac 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
-  - python3-itk 
+  - python3-itk: [x86_64] 
   - python3-jenkins-job-builder 
   - python3-kea 
   - python3-keras2onnx: [x86_64] 
@@ -22126,6 +22127,7 @@ unsorted:
   - python36-contextvars 
   - python36-conu 
   - python36-convertdate 
+  - python36-cookiecutter 
   - python36-cookies 
   - python36-cooldict 
   - python36-copr 
@@ -24920,6 +24922,7 @@ unsorted:
   - python38-control 
   - python38-conu 
   - python38-convertdate 
+  - python38-cookiecutter 
   - python38-cookies 
   - python38-cooldict 
   - python38-copr 
@@ -27856,6 +27859,7 @@ unsorted:
   - python39-control 
   - python39-conu 
   - python39-convertdate 
+  - python39-cookiecutter 
   - python39-cookies 
   - python39-cooldict 
   - python39-copr 
@@ -30549,7 +30553,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
