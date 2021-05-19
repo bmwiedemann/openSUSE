@@ -17,4 +17,14 @@
   see gh#kennethreitz/clint#167</comment>
     <requestid>660690</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72efada792dafa00a0a1708fa9dbd840</srcmd5>
+    <version>0.5.1</version>
+    <time>1621439371</time>
+    <user>dimstar_suse</user>
+    <comment>- remove enable-setup-test.patch as pytest is used now
+- use %pytest macro in %check
+</comment>
+    <requestid>894263</requestid>
+  </revision>
 </revisionlist>

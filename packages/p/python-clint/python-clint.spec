@@ -1,7 +1,7 @@
 #
 # spec file for package python-clint
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,16 @@ Release:        0
 Summary:        Python Command Line Interface Tools
 License:        ISC
 Group:          Development/Languages/Python
-Url:            https://github.com/kennethreitz/clint
+URL:            https://github.com/kennethreitz/clint
 # pypi release misses docs and tests
 Source:         https://github.com/kennethreitz/clint/archive/v%{version}.tar.gz
-# Enables support for `python3 setup.py test`, see https://github.com/kennethreitz/clint/pull/167
-Patch0:         https://github.com/kennethreitz/clint/pull/167.patch#/enable-setup-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module args}
+BuildRequires:  %{python_module pytest}
 %endif
 Requires:       python-args
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -49,7 +47,6 @@ console size, wrapping your words properly to fit the column size.
 
 %prep
 %setup -q -n clint-%{version}
-%patch0 -p1
 
 %build
 sed -i '1s/^#!.*//' examples/*.py clint/packages/appdirs.py examples/unicode.sh
@@ -61,17 +58,12 @@ sed -i '1s/^#!.*//' examples/*.py clint/packages/appdirs.py examples/unicode.sh
 %if %{with test}
 %check
 export LANG=en_US.utf8
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS HISTORY.rst README.rst docs examples
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %%license LICENSE
-%else
-%doc LICENSE
-%endif
 %{python_sitelib}/*
 
 %changelog
