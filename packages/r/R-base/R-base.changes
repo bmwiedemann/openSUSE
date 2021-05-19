@@ -1,4 +1,633 @@
 -------------------------------------------------------------------
+Tue May 18 17:01:25 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.1.0:
+
+  FUTURE DIRECTIONS:
+
+    * It is planned that the 4.1.x series will be the last to support
+      32-bit Windows, with production of binary packages for that
+      series continuing until early 2023.
+
+  SIGNIFICANT USER-VISIBLE CHANGES:
+
+    * Data set esoph in package datasets now provides the correct
+      numbers of controls; previously it had the numbers of cases added
+      to these.  (Reported by Alexander Fowler in PR#17964.)
+
+  NEW FEATURES:
+
+    * www.omegahat.net is no longer one of the repositories known by
+      default to setRepositories().  (Nowadays it only provides source
+      packages and is often unavailable.)
+
+    * Function package_dependencies() (in package tools) can now use
+      different dependency types for direct and recursive dependencies.
+
+    * The checking of the size of tarball in R CMD check --as-cran
+      <pkg> may be tweaked via the new environment variable
+      _R_CHECK_CRAN_INCOMING_TARBALL_THRESHOLD_, as suggested in
+      PR#17777 by Jan Gorecki.
+
+    * Using c() to combine a factor with other factors now gives a
+      factor, an ordered factor when combining ordered factors with
+      identical levels.
+
+    * apply() gains a simplify argument to allow disabling of
+      simplification of results.
+
+    * The format() method for class "ftable" gets a new option justify.
+      (Suggested by Thomas Soeiro.)
+
+    * New ...names() utility.  (Proposed by Neal Fultz in PR#17705.)
+
+    * type.convert() now warns when its as.is argument is not
+      specified, as the help file always said it _should_.  In that
+      case, the default is changed to TRUE in line with its change in
+      read.table() (related to stringsAsFactor) in R 4.0.0.
+
+    * When printing list arrays, classed objects are now shown _via_
+      their format() value if this is a short enough character string,
+      or by giving the first elements of their class vector and their
+      length.
+
+    * capabilities() gets new entry "Rprof" which is TRUE when R has
+      been configured with the equivalent of --enable-R-profiling (as
+      it is by default).  (Related to Michael Orlitzky's report
+      PR#17836.)
+
+    * str(xS4) now also shows extraneous attributes of an S4 object
+      xS4.
+
+    * Rudimentary support for vi-style tags in rtags() and R CMD rtags
+      has been added.  (Based on a patch from Neal Fultz in PR#17214.)
+
+    * checkRdContents() is now exported from tools; it and also
+      checkDocFiles() have a new option chkInternal allowing to check
+      Rd files marked with keyword "internal" as well.  The latter can
+      be activated for R CMD check via environment variable
+      _R_CHECK_RD_INTERNAL_TOO_.
+
+    * New functions numToBits() and numToInts() extend the raw
+      conversion utilities to (double precision) numeric.
+
+    * Functions URLencode() and URLdecode() in package utils now work
+      on vectors of URIs.  (Based on patch from Bob Rudis submitted
+      with PR#17873.)
+
+    * path.expand() can expand ~user on most Unix-alikes even when
+      readline is not in use.  It tries harder to expand ~, for example
+      should environment variable HOME be unset.
+
+    * For HTML help (both dynamic and static), Rd file links to help
+      pages in external packages are now treated as references to
+      topics rather than file names, and fall back to a file link only
+      if the topic is not found in the target package. The earlier rule
+      which prioritized file names over topics can be restored by
+      setting the environment variable _R_HELP_LINKS_TO_TOPICS_ to a
+      false value.
+
+    * c() now removes NULL arguments before dispatching to methods,
+      thus simplifying the implementation of c() methods, _but_ for
+      back compatibility keeps NULL when it is the first argument.
+      (From a report and patch proposal by Lionel Henry in PR#17900.)
+
+    * Vectorize()'s result function's environment no longer keeps
+      unneeded objects.
+
+    * Function ...elt() now propagates visibility consistently with
+      ..n.  (Thanks to Lionel Henry's PR#17905.)
+
+    * capture.output() no longer uses non-standard evaluation to
+      evaluate its arguments.  This makes evaluation of functions like
+      parent.frame() more consistent.  (Thanks to Lionel Henry's
+      PR#17907.)
+
+    * packBits(bits, type="double") now works as inverse of
+      numToBits().  (Thanks to Bill Dunlap's proposal in PR#17914.)
+
+    * curlGetHeaders() has two new arguments, timeout to specify the
+      timeout for that call (overriding getOption("timeout")) and TLS
+      to specify the minimum TLS protocol version to be used for
+      https:// URIs (_inter alia_ providing a means to check for sites
+      using deprecated TLS versions 1.0 and 1.1).
+
+    * For nls(), an optional constant scaleOffset may be added to the
+      denominator of the relative offset convergence test for cases
+      where the fit of a model is expected to be exact, thanks to a
+      proposal by John Nash.  nls(*, trace=TRUE) now also shows the
+      convergence criterion.
+
+    * Numeric differentiation _via_ numericDeriv() gets new optional
+      arguments eps and central, the latter for taking central divided
+      differences.  The latter can be activated for nls() via
+      nls.control(nDcentral = TRUE).
+
+    * nls() now passes the trace and control arguments to getInitial(),
+      notably for all self-starting models, so these can also be fit in
+      zero-noise situations via a scaleOffset.  For this reason, the
+      initial function of a selfStart model must now have ... in its
+      argument list.
+
+    * bquote(splice = TRUE) can now splice expression vectors with
+      attributes: this makes it possible to splice the result of
+      parse(keep.source = TRUE).  (Report and patch provided by Lionel
+      Henry in PR#17869.)
+
+    * textConnection() gets an optional name argument.
+
+    * get(), exists(), and get0() now signal an error if the first
+      argument has length greater than 1.  Previously additional
+      elements were silently ignored.  (Suggested by Antoine Fabri on
+      R-devel.)
+
+    * R now provides a shorthand notation for creating functions, e.g.
+      \(x) x + 1 is parsed as function(x) x + 1.
+
+    * R now provides a simple native forward pipe syntax |>.  The
+      simple form of the forward pipe inserts the left-hand side as the
+      first argument in the right-hand side call.  The pipe
+      implementation as a syntax transformation was motivated by
+      suggestions from Jim Hester and Lionel Henry.
+
+    * all.equal(f, g) for functions now by default also compares their
+      environment(.)s, notably via new all.equal method for class
+      function.  Comparison of nls() fits, e.g., may now need
+      all.equal(m1, m2, check.environment = FALSE).
+
+    * .libPaths() gets a new option include.site, allowing to _not_
+      include the site library.  (Thanks to Dario Strbenac's suggestion
+      and Gabe Becker's PR#18016.)
+
+    * Lithuanian translations are now available.  (Thanks to Rimantas
+      Zakauskas.)
+
+    * names() now works for DOTSXP objects.  On the other hand, in
+      R-lang, the R language manual, we now warn against relying on the
+      structure or even existence of such dot-dot-dot objects.
+
+    * all.equal() no longer gives an error on DOTSXP objects.
+
+    * capabilities("cairo") now applies only to the file-based devices
+      as it is now possible (if very unusual) to build R with Cairo
+      support for those but not for X11().
+
+    * There is optional support for tracing the progress of
+      loadNamespace() - see its help.
+
+    * (Not Windows.)  l10n_info() reports an additional element, the
+      name of the encoding as reported by the OS (which may differ from
+      the encoding part (if any) of the result from
+      Sys.getlocale("LC_CTYPE").
+
+    * New function gregexec() which generalizes regexec() to find _all_
+      disjoint matches and well as all substrings corresponding to
+      parenthesized subexpressions of the given regular expression.
+      (Contributed by Brodie Gaslam.)
+
+    * New function charClass() in package utils to query the
+      wide-character classification functions in use (such as
+      iswprint).
+
+    * The names of quantile()'s result no longer depend on the global
+      getOption("digits"), but quantile() gets a new optional argument
+      digits = 7 instead.
+
+    * grep(), sub(), regexp and variants work considerably faster for
+      long factors with few levels.  (Thanks to Michael Chirico's
+      PR#18063.)
+
+    * Provide grouping of x11() graphics windows within a window
+      manager such as Gnome or Unity; thanks to a patch by Ivan Krylov
+      posted to R-devel.
+
+    * The split() method for class data.frame now allows the f argument
+      to be specified as a formula.
+
+    * sprintf now warns on arguments unused by the format string.
+
+    * New palettes "Rocket" and "Mako" for hcl.colors() (approximating
+      palettes of the same name from the 'viridisLite' package).
+
+      Contributed by Achim Zeileis.
+
+    * The base environment and its namespace are now locked (so one can
+      no longer add bindings to these or remove from these).
+
+    * Rterm handling of multi-byte characters has been improved,
+      allowing use of such characters when supported by the current
+      locale.
+
+    * Rterm now accepts ALT+ +xxxxxxxx sequences to enter Unicode
+      characters as hex digits.
+
+    * Environment variable LC_ALL on Windows now takes precedence over
+      LC_CTYPE and variables for other supported categories, matching
+      the POSIX behaviour.
+
+    * duplicated() and anyDuplicated() are now optimized for integer
+      and real vectors that are known to be sorted via the ALTREP
+      framework. Contributed by Gabriel Becker via PR#17993.
+
+  GRAPHICS:
+
+    * The graphics engine version, R_GE_version, has been bumped to 14
+      and so packages that provide graphics devices should be
+      reinstalled.
+
+    * Graphics devices should now specify deviceVersion to indicate
+      what version of the graphics engine they support.
+
+    * Graphics devices can now specify deviceClip.  If TRUE, the
+      graphics engine will never perform any clipping of output itself.
+
+      The clipping that the graphics engine does perform (for both
+      canClip = TRUE and canClip = FALSE) has been improved to avoid
+      producing unnecessary artifacts in clipped output.
+
+    * The grid package now allows gpar(fill) to be a linearGradient(),
+      a radialGradient(), or a pattern().  The viewport(clip) can now
+      also be a grob, which defines a clipping path, and there is a new
+      viewport(mask) that can also be a grob, which defines a mask.
+
+      These new features are only supported so far on the Cairo-based
+      graphics devices and on the pdf() device.
+
+    * (Not Windows.)  A warning is given when a Cairo-based type is
+      specified for a png(), jpeg(), tiff() or bmp() device but Cairo
+      is unsupported (so type = "Xlib" is tried instead).
+
+    * grSoftVersion() now reports the versions of FreeType and
+      FontConfig if they are used directly (not _via_ Pango), as is
+      most commonly done on macOS.
+
+  C-LEVEL FACILITIES:
+
+    * The _standalone_ libRmath math library and R's C API now provide
+      log1pexp() again as documented, and gain log1mexp().
+
+  INSTALLATION on a UNIX-ALIKE:
+
+    * configure checks for a program pkgconf if program pkg-config is
+      not found.  These are now only looked for on the path (like
+      almost all other programs) so if needed specify a full path to
+      the command in PKG_CONFIG, for example in file config.site.
+
+    * C99 function iswblank is required - it was last seen missing ca
+      2003 so the workaround has been removed.
+
+    * There are new configure options --with-internal-iswxxxxx,
+      --with-internal-towlower and --with-internal-wcwidth which allows
+      the system functions for wide-character classification,
+      case-switching and width (wcwidth and wcswidth) to be replaced by
+      internal ones.  The first has long been used on macOS, AIX (and
+      Windows) but this enables it to be unselected there and selected
+      for other platforms (it is the new default on Solaris).  The
+      second is new in this version of R and is selected by default on
+      macOS and Solaris.  The third has long been the default and
+      remains so as it contains customizations for East Asian
+      languages.
+
+      System versions of these functions are often minimally
+      implemented (sometimes only for ASCII characters) and may not
+      cover the full range of Unicode points: for example Solaris (and
+      Windows) only cover the Basic Multilingual Plane.
+
+    * Cairo installations without X11 are more likely to be detected by
+      configure, when the file-based Cairo graphics devices will be
+      available but not X11(type = "cairo").
+
+    * There is a new configure option --with-static-cairo which is the
+      default on macOS.  This should be used when only static cairo
+      (and where relevant, Pango) libraries are available.
+
+    * Cairo-based graphics devices on platforms without Pango but with
+      FreeType/FontConfig will make use of the latter for font
+      selection.
+
+  LINK-TIME OPTIMIZATION on a UNIX-ALIKE:
+
+    * Configuring with flag --enable-lto=R now also uses LTO when
+      installing the recommended packages.
+
+    * R CMD INSTALL and R CMD SHLIB have a new flag --use-LTO to use
+      LTO when compiling code, for use with R configured with
+      --enable-lto=R.  For R configured with --enable-lto, they have
+      the new flag --no-use-LTO.
+
+      Packages can opt in or out of LTO compilation _via_ a UseLTO
+      field in the DESCRIPTION file.  (As usual this can be overridden
+      by the command-line flags.)
+
+  BUILDING R on Windows:
+
+    * for GCC >= 8, FC_LEN_T is defined in config.h and hence character
+      lengths are passed from C to Fortran in _inter alia_ BLAS and
+      LAPACK calls.
+
+    * There is a new text file src/gnuwin32/README.compilation, which
+      outlines how C/Fortran code compilation is organized and
+      documents new features:
+
+        * R can be built with Link-Time Optimization with a suitable
+          compiler - doing so with GCC 9.2 showed several
+          inconsistencies which have been corrected.
+
+        * There is support for cross-compiling the C and Fortran code
+          in R and standard packages on suitable (Linux) platforms.
+          This is mainly intended to allow developers to test later
+          versions of compilers - for example using GCC 9.2 or 10.x has
+          detected issues that GCC 8.3 in Rtools40 does not.
+
+        * There is experimental support for cross-building R packages
+          with C, C++ and/or Fortran code.
+
+    * The R installer can now be optionally built to support a single
+      architecture (only 64-bit or only 32-bit).
+
+  PACKAGE INSTALLATION:
+
+    * The default C++ standard has been changed to C++14 where
+      available (which it is on all currently checked platforms): if
+      not (as before) C++11 is used if available otherwise C++ is not
+      supported.
+
+      Packages which specify C++11 will still be installed using C++11.
+
+      C++14 compilers may give deprecation warnings, most often for
+      std::random_shuffle (deprecated in C++14 and removed in C++17).
+      Either specify C++11 (see 'Writing R Extensions') or modernize
+      the code and if needed specify C++14.  The latter has been
+      supported since R 3.4.0 so the package's DESCRIPTION would need
+      to include something like
+
+           Depends: R (>= 3.4)
+      
+  PACKAGE INSTALLATION on Windows:
+
+    * R CMD INSTALL and R CMD SHLIB make use of their flag --use-LTO
+      when the LTO_OPT make macro is set in file etc/${R_ARCH}/Makeconf
+      or in a personal/site Makevars file.  (For details see 'Writing R
+      Extensions' SS4.5.)
+
+      This provides a valuable check on code consistency.  It does work
+      with GCC 8.3 as in Rtools40, but that does not detect everything
+      the CRAN checks with current GCC do.
+
+  PACKAGE INSTALLATION on macOS:
+
+    * The default personal library directory on builds with
+      --enable-aqua (including CRAN builds) now differs by CPU type,
+      one of
+
+            ~/Library/R/x86_64/x.y/library
+            ~/Library/R/arm64/x.y/library
+      
+      This uses the CPU type R (and hence the packages) were built for,
+      so when a x86_64 build of R is run under Rosetta emulation on an
+      arm64 Mac, the first is used.
+
+  UTILITIES:
+
+    * R CMD check can now scan package functions for bogus return
+      statements, which were possibly intended as return() calls (wish
+      of PR#17180, patch by Sebastian Meyer). This check can be
+      activated via the new environment variable
+      _R_CHECK_BOGUS_RETURN_, true for --as-cran.
+
+    * R CMD build omits tarballs and binaries of previous builds from
+      the top-level package directory.  (PR#17828, patch by Sebastian
+      Meyer.)
+
+    * R CMD check now runs sanity checks on the use of LazyData, for
+      example that a data directory is present and that
+      LazyDataCompression is not specified without LazyData and has a
+      documented value.  For packages with large LazyData databases
+      without specifying LazyDataCompression, there is a reference to
+      the code given in 'Writing R Extensions' SS1.1.6 to test the
+      choice of compression (as in all the CRAN packages tested a
+      non-default method was preferred).
+
+    * R CMD build removes LazyData and LazyDataCompression fields from
+      the DESCRIPTION file of packages without a data directory.
+
+  ENCODING-RELATED CHANGES:
+
+    * The parser now treats \Unnnnnnnn escapes larger than the upper
+      limit for Unicode points (\U10FFFF) as an error as they cannot be
+      represented by valid UTF-8.
+
+      Where such escapes are used for outputting non-printable
+      (including unassigned) characters, 6 hex digits are used (rather
+      than 8 with leading zeros).  For clarity, braces are used, for
+      example \U{0effff}.
+
+    * The parser now looks for non-ASCII spaces on Solaris (as
+      previously on most other OSes).
+
+    * There are warnings (including from the parser) on the use of
+      unpaired surrogate Unicode points such as \uD834.  (These cannot
+      be converted to valid UTF-8.)
+
+    * Functions nchar(), tolower(), toupper() and chartr() and those
+      using regular expressions have more support for inputs with a
+      marked Latin-1 encoding.
+
+    * The character-classification functions used (by default) to
+      replace the system iswxxxxx functions on Windows, macOS and AIX
+      have been updated to Unicode 13.0.0.
+
+      The character-width tables have been updated to include new
+      assignments in Unicode 13.0.0.
+
+    * The code for evaluating default (extended) regular expressions
+      now uses the same character-classification functions as the rest
+      of R (previously they differed on Windows, macOS and AIX).
+
+    * There is a build-time option to replace the system's
+      wide-character wctrans C function by tables shipped with R: use
+      configure option --with-internal-towlower or (on Windows)
+      -DUSE_RI18N_CASE in CFLAGS when building R.  This may be needed
+      to allow tolower() and toupper() to work with Unicode characters
+      beyond the Basic Multilingual Plane where not supported by system
+      functions (e.g. on Solaris where it is the new default).
+
+    * R is more careful when truncating UTF-8 and other multi-byte
+      strings that are too long to be printed, passed to the system or
+      libraries or placed into an internal buffer.  Truncation will no
+      longer produce incomplete multibyte characters.
+
+  DEPRECATED AND DEFUNCT:
+
+    * Function plclust() from the package stats and
+      package.dependencies(), pkgDepends(), getDepList(),
+      installFoundDepends(), and vignetteDepends() from package tools
+      are defunct.
+
+    * Defunct functions checkNEWS() and readNEWS() from package tools
+      and CRAN.packages() from utils have been removed.
+
+    * R CMD config CXXCPP is defunct (it was deprecated in R 3.6.2).
+
+    * parallel::detectCores() drops support for Irix (retired in 2013).
+
+    * The LINPACK argument to chol.default(), chol2inv(),
+      solve.default() and svd() has been defunct since R 3.1.0.  It was
+      silently ignored up to R 4.0.3 but now gives an error.
+
+    * Subsetting/indexing, such as ddd[*] or ddd$x on a DOTSXP
+      (dot-dot-dot) object ddd has been disabled; it worked by accident
+      only and was undocumented.
+
+  BUG FIXES:
+
+    * Many more C-level allocations (mainly by malloc and strdup) are
+      checked for success with suitable alternative actions.
+
+    * Bug fix for replayPlot(); this was turning off graphics engine
+      display list recording if a recorded plot was replayed in the
+      same session.  The impact of the bug became visible if resize the
+      device after replay OR if attempted another savePlot() after
+      replay (empty display list means empty screen on resize or empty
+      saved plot).
+
+    * R CMD check etc now warn when a package exports non-existing S4
+      classes or methods, also in case of no "methods" presence.
+      (Reported by Alex Bertram; reproducible example and patch by
+      Sebastian Meyer in PR#16662.)
+
+    * boxplot() now also accepts calls for labels such as ylab, the
+      same as plot().  (Reported by Marius Hofert.)
+
+    * The help page for xtabs() now correctly states that addNA is
+      setting na.action = na.pass among others.  (Reported as PR#17770
+      by Thomas Soeiro.)
+
+    * The R CMD check <pkg> gives a longer and more comprehensible
+      message when DESCRIPTION misses dependencies, e.g., in Imports:.
+      (Thanks to the contributors of PR#17179.)
+
+    * update.default() now calls the generic update() on the formula to
+      work correctly for models with extended formulas.  (As reported
+      and suggested by Neal Fultz in PR#17865.)
+
+    * The horizontal position of leaves in a dendrogram is now correct
+      also with center = FALSE.  (PR#14938, patch from Sebastian
+      Meyer.)
+
+    * all.equal.POSIXt() no longer warns about and subsequently ignores
+      inconsistent "tzone" attributes, but describes the difference in
+      its return value (PR#17277).  This check can be disabled _via_
+      the new argument check.tzone = FALSE as suggested by Sebastian
+      Meyer.
+
+    * as.POSIXct() now populates the "tzone" attribute from its tz
+      argument when x is a logical vector consisting entirely of NA
+      values.
+
+    * x[[2^31]] <- v now works.  (Thanks to the report and patch by
+      Suharto Anggono in PR#17330.)
+
+    * In log-scale graphics, axis() ticks and label positions are now
+      computed more carefully and symmetrically in their range,
+      typically providing _more_ ticks, fulfilling wishes in PR#17936.
+      The change really corresponds to an improved axisTicks() (package
+      grDevices), potentially influencing grid and lattice, for
+      example.
+
+    * qnorm(<very large negative>, log.p=TRUE) is now correct to at
+      least five digits where it was catastrophically wrong,
+      previously.
+
+    * sum(df) and similar "Summary"- and "Math"-group member functions
+      now work for data frames df with logical columns, notably also of
+      zero rows.  (Reported to R-devel by Martin "b706".)
+
+    * unsplit() had trouble with tibbles due to unsound use of rep(NA,
+      len)-indexing, which should use NA_integer_ (Reported to R-devel
+      by Mario Annau.)
+
+    * pnorm(x, log.p = TRUE) underflows to -Inf slightly later.
+
+    * show(<hidden S4 generic>) prints better and without quotes for
+      non-hidden S4 generics.
+
+    * read.table() and relatives treated an "NA" column name as missing
+      when check.names = FALSE PR#18007.
+
+    * Parsing strings containing UTF-16 surrogate pairs such as
+      "\uD834\uDD1E" works better on some (uncommon) platforms.
+      sprintf("%X", utf8ToInt("\uD834\uDD1E")) should now give "1D11E"
+      on all platforms.
+
+    * identical(x,y) is no longer true for differing DOTSXP objects,
+      fixing PR#18032.
+
+    * str() now works correctly for DOTSXP and related exotics, even
+      when these are doomed.
+
+      Additionally, it no longer fails for lists with a class and
+      "irregular" method definitions such that e.g. lapply(*) will
+      necessarily fail, as currently for different igraph objects.
+
+    * Too long lines in environment files (e.g. Renviron) no longer
+      crash R. This limit has been increased to 100,000 bytes.
+      (PR#18001.)
+
+    * There is a further workaround for FreeType giving incorrect
+      italic font faces with cairo-based graphics devices on macOS.
+
+    * add_datalist(*, force = TRUE) (from package tools) now actually
+      updates an existing data/datalist file for new content.  (Thanks
+      to a report and patch by Sebastian Meyer in PR#18048.)
+
+    * cut.Date() and cut.POSIXt() could produce an empty last interval
+      for breaks = "months" or breaks = "years".  (Reported as PR#18053
+      by Christopher Carbone.)
+
+    * Detection of the encoding of 'regular' macOS locales such as
+      en_US (which is UTF-8) had been broken by a macOS change:
+      fortunately these are now rarely used with en_US.UTF-8 being
+      preferred.
+
+    * sub() and gsub(pattern, repl, x, *) now keep attributes of x such
+      as names() also when pattern is NA (PR#18079).
+
+    * Time differences ("difftime" objects) get a replacement and a
+      rep() method to keep "units" consistent.  (Thanks to a report and
+      patch by Nicolas Bennett in PR#18066.)
+
+    * The \RdOpts macro, setting defaults for \Sexpr options in an Rd
+      file, had been ineffective since R 2.12.0: it now works again.
+      (Thanks to a report and patch by Sebastian Meyer in PR#18073.)
+
+    * mclapply and pvec no longer accidentally terminate parallel
+      processes started before by mcparallel or related calls in
+      package parallel (PR#18078).
+
+    * grep and other functions for evaluating (extended) regular
+      expressions handle in Unicode also strings not explicitly flagged
+      UTF-8, but flagged native when running in UTF-8 locale.
+
+    * Fixed a crash in fifo implementation on Windows (PR#18031).
+
+    * Binary mode in fifo on Windows is now properly detected from
+      argument open (PR#15600, PR#18031).
+
+
+-------------------------------------------------------------------
+Tue May 18 13:10:15 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- improved spec file according to comments of dimstar in
+  https://build.opensuse.org/request/show/892685
+
+-------------------------------------------------------------------
+Thu May  6 12:43:28 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- To get in sync with d:l:R:autoCRAN the Matrix package's split
+  in -devel was reversed.
+
+-------------------------------------------------------------------
 Wed Mar 31 18:41:20 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.0.5:

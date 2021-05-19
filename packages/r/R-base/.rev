@@ -1646,4 +1646,41 @@ CHANGES IN R 3.4.2:
 	        DESCRIPTION file (in R versions 4.0.0 to 4.0.4).</comment>
     <requestid>882498</requestid>
   </revision>
+  <revision rev="79" vrev="36">
+    <srcmd5>5bae3ce43278f7eadd08b2b738e61129</srcmd5>
+    <version>unknown</version>
+    <time>1621439343</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.1.0:
+  FUTURE DIRECTIONS:
+    * It is planned that the 4.1.x series will be the last to support
+      32-bit Windows, with production of binary packages for that
+      series continuing until early 2023.
+  SIGNIFICANT USER-VISIBLE CHANGES:
+    * Data set esoph in package datasets now provides the correct
+      numbers of controls; previously it had the numbers of cases added
+      to these.  (Reported by Alexander Fowler in PR#17964.)
+  NEW FEATURES:
+    * www.omegahat.net is no longer one of the repositories known by
+      default to setRepositories().  (Nowadays it only provides source
+      packages and is often unavailable.)
+    * Function package_dependencies() (in package tools) can now use
+      different dependency types for direct and recursive dependencies.
+    * The checking of the size of tarball in R CMD check --as-cran
+      &lt;pkg&gt; may be tweaked via the new environment variable
+      _R_CHECK_CRAN_INCOMING_TARBALL_THRESHOLD_, as suggested in
+      PR#17777 by Jan Gorecki.
+    * Using c() to combine a factor with other factors now gives a
+      factor, an ordered factor when combining ordered factors with
+      identical levels.
+    * apply() gains a simplify argument to allow disabling of
+      simplification of results.
+    * The format() method for class &quot;ftable&quot; gets a new option justify.
+      (Suggested by Thomas Soeiro.)
+    * New ...names() utility.  (Proposed by Neal Fultz in PR#17705.)
+    * type.convert() now warns when its as.is argument is not
+      specified, as the help file always said it _should_.  In that
+      case, the default is changed to TRUE in line with its change in</comment>
+    <requestid>894139</requestid>
+  </revision>
 </revisionlist>

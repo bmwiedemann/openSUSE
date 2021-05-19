@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.0.5
+Version:        4.1.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -57,9 +57,11 @@ BuildRequires:  perl
 BuildRequires:  readline-devel
 BuildRequires:  shadow
 BuildRequires:  tcl-devel
+BuildRequires:  texlive-ae
 BuildRequires:  texlive-bibtex
 BuildRequires:  texlive-cm-super
 BuildRequires:  texlive-dvips
+BuildRequires:  texlive-fancyvrb
 BuildRequires:  texlive-helvetic
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
@@ -162,10 +164,10 @@ mkdir -p %{buildroot}%{_datadir}/R/library
 %files -n R-base
 
 %package -n R-base-devel
-Summary:        Metapackage, requires R-core-devel, R-core-libs, R-Matrix-devel
+Summary:        Metapackage, requires R-core-devel, R-core-libs
 Version:        %{Rversion}
 Release:        %release
-Requires:       R-Matrix-devel
+#Requires:       R-Matrix-devel
 Requires:       R-core-devel
 Requires:       R-core-libs
 
@@ -262,6 +264,9 @@ This package provides the core of R, i.e. all that is in base.
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/R-base.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/R.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/RGui.mo
+
+%dir %{_libdir}/R/library/translations/lt/
+%dir %{_libdir}/R/library/translations/lt/LC_MESSAGES/
 
 %dir %{_libdir}/R/library/translations/nn
 %dir %{_libdir}/R/library/translations/nn/LC_MESSAGES
@@ -847,6 +852,7 @@ This package provides R-stats, one of R-core packages.
 %license %{_libdir}/R/library/stats/COPYRIGHTS.modreg
 %{_libdir}/R/library/stats/demo/
 %{_libdir}/R/library/stats/DESCRIPTION
+%{_libdir}/R/library/stats/doc/
 %{_libdir}/R/library/stats/help/
 %{_libdir}/R/library/stats/html/
 %{_libdir}/R/library/stats/INDEX
@@ -864,21 +870,74 @@ This package provides R-stats, one of R-core packages.
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/stats.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R-stats.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/stats.mo
+%lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/utils.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-compiler.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-grid.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-methods.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-parallel.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-splines.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-utils.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/methods.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/parallel.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/splines.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/tcltk.mo
+%lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/utils.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-stats.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/stats.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-stats.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/stats.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/R-stats.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/stats.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-base.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-compiler.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-grDevices.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-graphics.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-grid.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-parallel.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-stats4.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-tcltk.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-utils.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/RGui.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/grDevices.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/graphics.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/grid.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/methods.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/parallel.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/splines.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/stats.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/tcltk.mo
+%lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/utils.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/R-stats.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/stats.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-stats.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/stats.mo
 %lang(ru) %{_libdir}/R/library/translations/ru/LC_MESSAGES/R-stats.mo
 %lang(ru) %{_libdir}/R/library/translations/ru/LC_MESSAGES/stats.mo
+%lang(ru) %{_libdir}/R/library/translations/ru/LC_MESSAGES/utils.mo
 %lang(tr) %{_libdir}/R/library/translations/tr/LC_MESSAGES/R-stats.mo
 %lang(zh_CN) %{_libdir}/R/library/translations/zh_CN/LC_MESSAGES/R-stats.mo
 %lang(zh_CN) %{_libdir}/R/library/translations/zh_CN/LC_MESSAGES/stats.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-base.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-compiler.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-grDevices.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-graphics.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-grid.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-parallel.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-splines.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-stats.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-stats4.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-tcltk.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/R-utils.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/grDevices.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/grid.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/methods.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/parallel.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/splines.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/stats.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/tcltk.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/tools.mo
+%lang(zh_TW) %{_libdir}/R/library/translations/zh_TW/LC_MESSAGES/utils.mo
 
 # stats4
 %package -n R-stats4
@@ -1077,7 +1136,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.27
+Version:        1.3.28
 Release:        %release
 Requires:       R-base
 
@@ -1109,7 +1168,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.18
+Version:        7.3.19
 Release:        %release
 Requires:       R-base
 
@@ -1141,7 +1200,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.1
+Version:        2.1.2
 Release:        %release
 Requires:       R-base
 
@@ -1170,6 +1229,7 @@ This packages provides R-cluster, one of the recommended packages.
 %lang(fr) %{_libdir}/R/library/cluster/po/fr/
 %lang(ko) %{_libdir}/R/library/cluster/po/it/
 %lang(ko) %{_libdir}/R/library/cluster/po/ko/
+%lang(ko) %{_libdir}/R/library/cluster/po/lt/
 %lang(pl) %{_libdir}/R/library/cluster/po/pl/
 
 %package -n R-codetools
@@ -1225,7 +1285,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.18
+Version:        2.23.20
 Release:        %release
 Requires:       R-base
 
@@ -1254,7 +1314,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.20.41
+Version:        0.20.44
 Release:        %release
 Requires:       R-base
 
@@ -1280,13 +1340,14 @@ This packages provides R-lattice, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/lattice/po/de/
 %lang(en) %{_libdir}/R/library/lattice/po/en*/
 %lang(fr) %{_libdir}/R/library/lattice/po/fr/
+%lang(ko) %{_libdir}/R/library/lattice/po/it/
 %lang(ko) %{_libdir}/R/library/lattice/po/ko/
 %lang(pl) %{_libdir}/R/library/lattice/po/pl/
 %{_libdir}/R/library/lattice/R/
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.53.1
+Version:        7.3.54
 Release:        %release
 Requires:       R-base
 
@@ -1319,9 +1380,13 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.3.2
+Version:        1.3.3
 Release:        %release
 Requires:       R-base
+Obsoletes:      R-Matrix-devel < 1.3.3
+Provides:       R-Matrix-devel
+# This is for backwards-compatibility only. Nothind *should*
+# (Build)Require R-Matrix-devel
 
 %description -n R-Matrix
 This packages provides R-Matrix, one of the recommended packages.
@@ -1348,34 +1413,40 @@ This packages provides R-Matrix, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/Matrix/po/de/
 %lang(en) %{_libdir}/R/library/Matrix/po/en*/
 %lang(fr) %{_libdir}/R/library/Matrix/po/fr/
+%lang(ko) %{_libdir}/R/library/Matrix/po/it/
 %lang(ko) %{_libdir}/R/library/Matrix/po/ko/
+%lang(ko) %{_libdir}/R/library/Matrix/po/lt/
 %lang(pl) %{_libdir}/R/library/Matrix/po/pl/
 %{_libdir}/R/library/Matrix/R/
 %{_libdir}/R/library/Matrix/test-tools.R
 %{_libdir}/R/library/Matrix/test-tools-1.R
 %{_libdir}/R/library/Matrix/test-tools-Matrix.R
-
-%package -n R-Matrix-devel
-Summary:        Package provides header files for recommended R-Matrix
-Version:        1.3.2
-Release:        %release
-Requires:       R-Matrix
-Requires:       R-base
-
-%description -n R-Matrix-devel
-Package provides header files for recommended R-Matrix
-
-%files -n R-Matrix-devel
-%defattr(-, root, root)
-
 %dir %{_libdir}/R/library/Matrix/include/
 %{_libdir}/R/library/Matrix/include/Matrix.h
 %{_libdir}/R/library/Matrix/include/Matrix_stubs.c
 %{_libdir}/R/library/Matrix/include/cholmod.h
 
+#%package -n R-Matrix-devel
+#Summary:        Package provides header files for recommended R-Matrix
+#Version:        1.3.2
+#Release:        %release
+#Requires:       R-Matrix
+#Requires:       R-base
+#
+#%description -n R-Matrix-devel
+#Package provides header files for recommended R-Matrix
+#
+#%files -n R-Matrix-devel
+#%defattr(-, root, root)
+#
+#%dir %{_libdir}/R/library/Matrix/include/
+#%{_libdir}/R/library/Matrix/include/Matrix.h
+#%{_libdir}/R/library/Matrix/include/Matrix_stubs.c
+#%{_libdir}/R/library/Matrix/include/cholmod.h
+
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.34
+Version:        1.8.35
 Release:        %release
 Requires:       R-base
 
@@ -1400,6 +1471,7 @@ This packages provides R-mgcv, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/mgcv/po/de/
 %lang(en) %{_libdir}/R/library/mgcv/po/en*/
 %lang(fr) %{_libdir}/R/library/mgcv/po/fr/
+%lang(ko) %{_libdir}/R/library/mgcv/po/it/
 %lang(ko) %{_libdir}/R/library/mgcv/po/ko/
 %lang(pl) %{_libdir}/R/library/mgcv/po/pl/
 
@@ -1438,7 +1510,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.15
+Version:        7.3.16
 Release:        %release
 Requires:       R-base
 
@@ -1501,7 +1573,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.13
+Version:        7.3.14
 Release:        %release
 Requires:       R-base
 
@@ -1534,7 +1606,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.2.10
+Version:        3.2.11
 Release:        %release
 Requires:       R-base
 
