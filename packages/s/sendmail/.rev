@@ -980,4 +980,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>882201</requestid>
   </revision>
+  <revision rev="104" vrev="8">
+    <srcmd5>a87c4eabefcc952fff8ad7c2f0678a1b</srcmd5>
+    <version>8.16.1</version>
+    <time>1621439332</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /var/mail to /var/spool/mail patch (forwarded request 893473 from gmbr3)</comment>
+    <requestid>893554</requestid>
+  </revision>
 </revisionlist>

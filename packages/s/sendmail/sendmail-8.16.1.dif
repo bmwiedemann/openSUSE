@@ -1036,21 +1036,6 @@
  	@echo "NOTE: This version of mail.local is not suited for some operating"
  	@echo "      systems such as HP-UX and Solaris.  Please consult the"
  	@echo "      README file in the mail.local directory.  You can force"
---- mail.local/mail.local.8
-+++ mail.local/mail.local.8	2020-07-28 08:17:37.980108646 +0000
-@@ -123,10 +123,10 @@ Used to set the appropriate time zone on
- /tmp/local.XXXXXX
- temporary files
- .TP
--/var/mail/user
-+/var/spool/mail/user
- user's default mailbox directory
- .TP 
--/var/mail/user.lock
-+/var/spool/mail/user.lock
- lock file for a user's default mailbox
- .PD
- .SH SEE ALSO
 --- mailstats/mailstats.8
 +++ mailstats/mailstats.8	2020-07-28 08:17:37.980108646 +0000
 @@ -108,10 +108,13 @@ The default
