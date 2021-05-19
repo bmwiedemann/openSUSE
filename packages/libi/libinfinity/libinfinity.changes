@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 17 13:39:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.2
+  + Fix user table iteration order to be deterministic, possibly
+    fixing on out-of-sync bug.
+  + Fix a possible crash when running g-ir-scanner.
+  + infinoted: Add support for notifying systemd when the service
+    is running.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:14:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

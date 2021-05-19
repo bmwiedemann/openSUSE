@@ -281,4 +281,12 @@
     <comment>Removal of -lang recommends (forwarded request 768637 from dimstar)</comment>
     <requestid>768693</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e8a2d923b98bd1f5eb98fc50ff588ac0</srcmd5>
+    <version>0.7.2</version>
+    <time>1621439345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2 (forwarded request 893762 from susnux)</comment>
+    <requestid>893949</requestid>
+  </revision>
 </revisionlist>

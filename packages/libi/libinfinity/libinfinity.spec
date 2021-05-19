@@ -1,7 +1,7 @@
 #
 # spec file for package libinfinity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           libinfinity
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Implementation of the Infinote collaborative editing protocol
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://gobby.0x539.de/
-Source0:        http://releases.0x539.de/libinfinity/%{name}-%{version}.tar.gz
+URL:            https://gobby.github.io/
+Source0:        https://github.com/gobby/libinfinity/releases/download/%{version}/libinfinity-%{version}.tar.gz
 Source1:        infinoted.service
 Source2:        infinoted.sysconfig
 Source3:        infinoted.conf
