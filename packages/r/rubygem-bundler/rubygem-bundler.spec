@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bundler
-Version:        2.2.6
+Version:        2.2.17
 Release:        0
 %define mod_name bundler
 %define mod_full_name %{mod_name}-%{version}
@@ -35,9 +35,8 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://bundler.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gemspec_remove_pem.patch
-Source2:        series
-Source3:        gem2rpm.yml
+Source1:        series
+Source2:        gem2rpm.yml
 Summary:        The best way to manage your application's dependencies
 License:        MIT
 Group:          Development/Languages/Ruby

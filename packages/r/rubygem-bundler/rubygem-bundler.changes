@@ -1,9 +1,26 @@
 -------------------------------------------------------------------
-Wed Jan 20 12:24:47 UTC 2021 - Stephan Kulow <coolo@suse.com>
+Mon May 17 14:46:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-updated to version 2.2.6
+- forgot to unlist removed patch
+
+-------------------------------------------------------------------
+Mon May 17 10:17:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 2.2.17
+ see installed CHANGELOG.md
+- drop gemspec_remove_pem.patch
+
+-------------------------------------------------------------------
+Wed May  5 08:08:33 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 2.2.16
  see installed CHANGELOG.md
 
+-------------------------------------------------------------------
+Wed Jan 20 12:24:47 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.2.6
+ see installed CHANGELOG.md
 
 -------------------------------------------------------------------
 Mon Feb 10 14:16:07 UTC 2020 - Stephan Kulow <coolo@suse.com>

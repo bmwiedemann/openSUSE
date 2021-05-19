@@ -69,5 +69,4 @@
 :patches:
   #  gemspec_remove_pem.patch: -p1
 :sources:
-  - gemspec_remove_pem.patch
   - series
