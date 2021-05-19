@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 18 16:01:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.2.1
+  * Fixed panel in Markdown exploding
+- Update to version 10.2.0
+  Added
+  * syntax for call, i.e. "Foo(bar)"
+  * Console.measure as a convenient alias for Measurement.get
+  * support for pretty printing attrs objects
+  * mappingproxy to pretty print
+  * UserDict and UserList support to pretty printer
+  Changed
+  * colorama init to set strip=False
+  * Changed highlighter for False, True, None to not match in the
+    middle of a word. i.e. NoneType is no longer highlighted as
+    None
+
+-------------------------------------------------------------------
 Tue Apr  6 09:20:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.1.0
