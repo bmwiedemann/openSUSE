@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 13:49:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.1:
+  * Fix pr checkout for cross-repository pull requests #3663 
+
+-------------------------------------------------------------------
 Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.0:
@@ -13,7 +19,6 @@ Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
     * Add commits field to JSON export for PRs #3547
     * Show more than 100 comments in gh issue view --json comments #3547
     * Add shell completion for valid --json flag values #3628
-
   - New Features
     * Add gh repo fork --org option #3611
     * Allow passinggh alias set value via standard input #3490
