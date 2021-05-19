@@ -17,13 +17,13 @@
 
 
 Name:           zaz
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Puzzle game about arranging balls in triplets
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            http://zaz.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - zaz-extra_zaz.desktop.patch -- Add GenericName
 Patch0:         %{name}-extra_zaz.desktop.patch
 BuildRequires:  Mesa-devel
@@ -63,10 +63,6 @@ chmod 0644 extra/%{name}.desktop
 
 %build
 %configure --docdir=%{_defaultdocdir}/%{name}
-
-# Inject -lvorbis into the Makefile
-sed -i -e "/^LIBS\s*=*/s|$| -lvorbis|" Makefile src/Makefile
-
 %make_build
 
 %install
