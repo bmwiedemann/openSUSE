@@ -1,7 +1,7 @@
 #
 # spec file for package paho-mqtt-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.5
+Version:        1.3.8
 Release:        0
 Summary:        MQTT C Client
 License:        EPL-1.0 AND BSD-3-Clause
 URL:            https://eclipse.org/paho/clients/c/
-Source:         https://github.com/eclipse/paho.mqtt.c/archive/v%{version}.tar.gz
+Source:         https://github.com/eclipse/paho.mqtt.c/archive/v%{version}.tar.gz#/paho.mqtt.c-%{version}.tar.gz
+Patch1:         cmake-libdir.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
-Patch1:         cmake-libdir.patch
 Requires:       openssl
 
 %description
@@ -54,7 +54,7 @@ Development files for the the Paho MQTT C Client.
 
 %build
 %cmake -DPAHO_WITH_SSL=TRUE -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=FALSE -DPAHO_ENABLE_TESTING=FALSE -DPAHO_ENABLE_CPACK=FALSE ..
-%make_jobs
+%make_build
 
 %install
 %cmake_install
