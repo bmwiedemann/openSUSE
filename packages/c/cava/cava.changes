@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 19 06:52:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.4:
+  improvements:
+  * added faster autosens at startup
+  bugfixes:
+  * better installation of custom console font
+  * suppress error about vla parameter introduced in gcc11 or 10?
+
+-------------------------------------------------------------------
 Thu Oct  8 10:32:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.3:

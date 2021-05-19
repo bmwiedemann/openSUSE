@@ -131,4 +131,17 @@
   * #385 fix eq</comment>
     <requestid>840230</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>811122935779ae8521a088a349155320</srcmd5>
+    <version>0.7.4</version>
+    <time>1621439367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.4:
+  improvements:
+  * added faster autosens at startup
+  bugfixes:
+  * better installation of custom console font
+  * suppress error about vla parameter introduced in gcc11 or 10?</comment>
+    <requestid>894224</requestid>
+  </revision>
 </revisionlist>
