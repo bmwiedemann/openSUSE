@@ -5,7 +5,7 @@
 
 --- configure.ac
 +++ configure.ac	2021-01-14 11:31:31.640709812 +0000
-@@ -145,7 +145,7 @@ AC_CHECK_MEMBERS([struct user_regs_struc
+@@ -129,7 +129,7 @@ AC_CHECK_MEMBERS([struct user_regs_struc
  		struct user_regs_struct.rdi,
  		struct user_regs_struct.rsi,
  		struct user_regs_struct.rdx], [],[],
@@ -16,7 +16,7 @@
  		struct pt_regs.gpr], [],[], [#include <linux/ptrace.h>])
 --- src/fuser.c
 +++ src/fuser.c	2021-01-14 11:31:31.640709812 +0000
-@@ -1145,6 +1145,7 @@ int main(int argc, char *argv[])
+@@ -1146,6 +1146,7 @@ int main(int argc, char *argv[])
  	struct option *optr;
  	char *nsptr;
  	int skip_argv;
@@ -24,7 +24,7 @@
  
  	struct option options[] = {
  		{"all", 0, NULL, 'a'},
-@@ -1188,6 +1189,7 @@ int main(int argc, char *argv[])
+@@ -1189,6 +1190,7 @@ int main(int argc, char *argv[])
  #endif
  	atexit(atexit_free_lists);
  
@@ -32,7 +32,7 @@
  	for (argc_cnt = 1; argc_cnt < argc; argc_cnt++) {
  		current_argv = argv[argc_cnt];
  		if (current_argv[0] == '-') {	/* its an option */
-@@ -1332,6 +1334,7 @@ int main(int argc, char *argv[])
+@@ -1333,6 +1335,7 @@ int main(int argc, char *argv[])
  			}
  		}
  		this_name->matched_procs = NULL;
@@ -40,7 +40,7 @@
  		if (opts & (OPT_MOUNTS | OPT_ISMOUNTPOINT)
  		    && this_name->name_space != NAMESPACE_FILE) {
  			free(this_name);
-@@ -1385,7 +1388,7 @@ int main(int argc, char *argv[])
+@@ -1386,7 +1389,7 @@ int main(int argc, char *argv[])
  			names_tail->next = this_name;
  		names_tail = this_name;
  	}			/* for across the argvs */

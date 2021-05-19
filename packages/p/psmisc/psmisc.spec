@@ -23,8 +23,6 @@ BuildRequires:  dejagnu
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
-BuildRequires:  libcap-devel
-BuildRequires:  libcap-progs
 BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
@@ -96,16 +94,13 @@ rm -f %{buildroot}%{_mandir}/man1/peekfd.1*
 %endif
 %find_lang psmisc
 
-%post
-setcap cap_dac_read_search=ep %{_bindir}/fuser
-
 %files
 %defattr (-,root,root,755)
 %license COPYING
 %if !0%{?usrmerged}
 /bin/fuser
 %endif
-%verify(not mode caps) %{_bindir}/fuser
+%{_bindir}/fuser
 %{_bindir}/killall
 %ifarch %have_peekfd
 %{_bindir}/peekfd
