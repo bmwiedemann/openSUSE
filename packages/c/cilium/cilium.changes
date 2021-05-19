@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 17 12:13:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cilium-no-ineffassign-in-root.patch: Do not run ineffassign
+  in the source root, where no go files exist.
+
+-------------------------------------------------------------------
+Thu Apr  1 09:15:23 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Set temporarily until using upstream release with go.mod
+  * Add BuildRequires: golang(API) >= 1.13 recommended dependency expression
+
+-------------------------------------------------------------------
 Fri Oct 30 16:50:02 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 1.8.5

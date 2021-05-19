@@ -325,4 +325,12 @@
   * 0001-operator-make-Add-install-target.patch (forwarded request 845099 from mrostecki)</comment>
     <requestid>845100</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>addefdd3699d3e738168489b907f9da1</srcmd5>
+    <version>1.8.5</version>
+    <time>1621439325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894256</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package cilium
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
 # PATCH-FIX-UPSTREAM 0001-operator-make-Add-install-target.patch
 Patch0:         0001-operator-make-Add-install-target.patch
+# PATCH-FIX-OPENSUSE cilium-no-ineffassign-in-root.patch dimstar@opensuse.org -- Do not run ineffassing in source root ('inefassign .' without go files present)
+Patch1:         cilium-no-ineffassign-in-root.patch
 # Cilium needs to be aware of the version string of cilium-proxy
 BuildRequires:  cilium-proxy
 BuildRequires:  clang
@@ -60,7 +62,7 @@ BuildRequires:  llvm
 BuildRequires:  protobuf-devel
 BuildRequires:  shadow
 BuildRequires:  unzip
-BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(API) >= 1.13
 Requires:       awk
 Requires:       binutils
 Requires:       bpftool
@@ -182,6 +184,9 @@ containers in a Kubernetes cluster.
 find bpf/ -type f | grep -v .gitignore | tr "\n" ' ' > BPF_SRCFILES
 
 %build
+# go1.16+ default is GO111MODULE=on set to auto temporarily
+# until using upstream release with go.mod
+export GO111MODULE=auto
 %goprep %{provider_prefix}
 export GOPATH=%{_builddir}/go
 cd $GOPATH/src/%{provider_prefix}
@@ -198,7 +203,6 @@ make -C daemon CILIUM_ENVOY_SHA="${CILIUM_ENVOY_SHA}"
 %if 0%{?suse_version} > 1510 && 0%{?is_opensuse}
 make precheck
 make govet
-make ineffassign
 make logging-subsys-field
 %endif
 
