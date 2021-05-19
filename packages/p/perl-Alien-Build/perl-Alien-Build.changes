@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 14 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.40
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.40      2021-05-13 06:44:37 -0600
+    - Test::Alien tests will issue a diagnostic if you call them without
+      alien_ok which is probably a mistake (gh#262, gh#263)
+
+  2.39_01   2021-05-12 04:14:06 -0600
+    - Add support for HTTP request headers on all appropriate core fetch plugins
+      (gh#256, gh#259)
+    - The fetch method on Alien::Build  now has a http_headers option
+      (gh#256, gh#259)
+    - Fix bug where symlinks to directories were incorrectly being skipped
+      (gh#255, gh#260)
+
+-------------------------------------------------------------------
 Tue Jan 12 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.38

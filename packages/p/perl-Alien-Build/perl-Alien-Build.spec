@@ -18,7 +18,7 @@
 
 %define cpan_name Alien-Build
 Name:           perl-Alien-Build
-Version:        2.38
+Version:        2.40
 Release:        0
 Summary:        Build external dependencies for use in CPAN
 License:        Artistic-1.0 OR GPL-1.0-or-later
