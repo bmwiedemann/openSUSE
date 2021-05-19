@@ -1,7 +1,7 @@
 #
 # spec file for package kamerka
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           kamerka
-Version:        0.12+git20161002
+Version:        0.20
 Release:        0
 Summary:        Take photographs with a webcam and an animated interface
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://dos1.github.com/kamerka
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/dos1/kamerka
+Source:         https://github.com/dos1/kamerka/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE kamerka-suse-qimageblitz.patch sor.alexei@meowr.ru
 Patch0:         kamerka-suse-qimageblitz.patch
 BuildRequires:  kf5-filesystem
@@ -57,12 +57,11 @@ possibilities to show an animated UI.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-make %{?_smp_mflags} V=1
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -70,27 +69,18 @@ make %{?_smp_mflags} V=1
 
 %find_lang %{name}
 
-%if 0%{?suse_version} <= 1320
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
 %license COPYING
 %doc AUTHORS README
-%{_kf5_bindir}/kamerka
-%dir %{_kf5_configkcfgdir}/
-%{_kf5_configkcfgdir}/kamerka.kcfg
-%{_kf5_applicationsdir}/kamerka.desktop
 %dir %{_kf5_appsdir}/kamerka/
+%{_kf5_applicationsdir}/kamerka.desktop
 %{_kf5_appsdir}/kamerka/camera_click.ogg
 %{_kf5_appsdir}/kamerka/timer.ogg
+%{_kf5_bindir}/kamerka
+%{_kf5_configkcfgdir}/kamerka.kcfg
+%{_kf5_mandir}/man1/kamerka.1%{?ext_man}
 %{_kf5_notifydir}/kamerka.notifyrc
 %{_kf5_prefix}/share/pixmaps/kamerka.png
-%{_kf5_mandir}/man1/kamerka.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

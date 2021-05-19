@@ -17,4 +17,17 @@
 </comment>
     <requestid>612302</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8191ad68840ed12b498ef42fb870ad75</srcmd5>
+    <version>0.20</version>
+    <time>1621439354</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec cleanup
+- Update URL
+
+- Update to 0.20
+  * Update translations
+- Drop the _service file</comment>
+    <requestid>894233</requestid>
+  </revision>
 </revisionlist>
