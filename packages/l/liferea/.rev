@@ -47,4 +47,41 @@
   * Fix translations not applied to application menu bar and tool bar (forwarded request 859033 from polslinux)</comment>
     <requestid>859193</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a92165c42356e85972a76557e20b18f3</srcmd5>
+    <version>1.13.6</version>
+    <time>1621439344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.6:
+  * Change reader mode toggle from item view icon to toggle entry in item view context menu.
+  * #343: UX redesign of the update message in the status bar. Now shows a update counter of the feeds being in update.
+  * #964: Added pane position fix plugin providing a workaround for pane position issues when using the headerbar
+  * #983: Use GtkFileChooserNative to allow selecting local files when run in sandbox.
+  * Fixes #780: Improve date formatting when in locale en_GB
+  * Fixes #944: Broken RTL text direction in feed content view
+  * Fixes #949: Regression in notification plugin that caused it to show non-new items 
+  * Fixes #963: Checking for git command in plugin installer -&gt; warn user
+  * Fixes #973: Broken CSS in Webkit2Gtk &gt;= 2.32
+  * Updated Albanian translation
+  * Updated French translation
+  * Updated Italian translation
+  * Updated German translation
+  * #907: Add new search folder property that allows hiding read items
+  * Now always shows the unread count of a search folder (instead of the item count) in the feed list
+  * Now search folders are automatically rebuild when rules are changed
+  * Adds a new simple focus plugin that adds transparency on the feed list when it is not focussed.
+  * Add F10 hotkey to headerbar plugin to allow triggering the hamburger menu
+  * Update Flatpak AppData with release dates
+  * Make several plugins support gettext
+  * Fixes #192: wrong button order of media player in RTL locales
+  * Fixes #343: Usability of update infos in status bar. Now a total count is displayed on mass-updates and a per-feed info on single feed updates
+  * Fixes #809: Usability of feed fetching errors.
+  * Updated Polish translation
+  * Updated German translation
+  * Prevent endless loop on favicon discovery
+  * #903: Prevent endless loop in feed autodiscovery
+  * #912: Allow mutiple feed in same libnotify notification
+  * Further favicon discovery improvements: now detects all types of Apple Touch Icons, MS Tile Images and Safari Mask Icons Fixes #440 (forwarded request 891616 from fusionfuture)</comment>
+    <requestid>893948</requestid>
+  </revision>
 </revisionlist>

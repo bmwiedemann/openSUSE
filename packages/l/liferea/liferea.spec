@@ -1,7 +1,7 @@
 #
 # spec file for package liferea
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        1.12.9
+Version:        1.13.6
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
@@ -80,7 +80,7 @@ rm doc/html/Makefile*
 
 %fdupes %{buildroot}
 
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %if 0%{?suse_version} < 1500
 %post
@@ -101,20 +101,17 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.xml
 %{_bindir}/liferea-add-feed
 %{_datadir}/applications/net.sourceforge.liferea.desktop
 %{_datadir}/dbus-1/services/net.sourceforge.liferea.service
-%{_datadir}/liferea/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/%{name}/
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/net.sourceforge.liferea.appdata.xml
 %{_datadir}/GConf/gsettings/liferea.convert
 %{_datadir}/glib-2.0/schemas/net.sf.liferea.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*.*
 %{_libdir}/%{name}/
 %doc %{_mandir}/man1/liferea.1*
+
 # We can't really move the localized manpages to the lang package, since they'd
 # create a conflict between the lang subpackage and bundles
-%lang(pl) %dir %{_mandir}/pl
-%lang(pl) %dir %{_mandir}/pl/man1
-%lang(pl) %{_mandir}/pl/man1/liferea.1*
-
 %files lang -f %{name}.lang
 
 %changelog
