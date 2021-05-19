@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 14 01:34:50 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.4.2:
+  * Generate wheels usable on older PyPy7.3.{0,1}
+  * Fix compatibility with Python 3.10
+  * Add subplot_mosaic Axes in the order the user gave them to us
+  * Correctly handle 'none' facecolors in do_3d_projection
+  * Ensure that Matplotlib is importable even if there's no HOME
+  * Fix CenteredNorm with halfrange
+  * Fix bar_label for bars with NaN values
+  * Fix clip paths when zoomed such that they are outside the figure
+  * Fix creation of RangeSlider with valinit
+  * Fix handling of "d" glyph in backend_ps, fixing EPS output
+  * Fix handling of datetime coordinates in pcolormesh with Pandas
+  * Fix processing of some errorbar arguments
+  * Fix removal of shared polar Axes
+  * Fix resetting grid visibility
+  * Fix subfigure indexing error and tight bbox
+  * Fix textbox cursor color
+  * Fix TkAgg event loop error on window close
+  * Ignore errors for sip with no setapi (Qt4Agg import errors)
+
+-------------------------------------------------------------------
 Fri May  7 11:10:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update build and runtime TeX requirements for -latex subpackage.

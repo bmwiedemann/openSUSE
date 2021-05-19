@@ -31,7 +31,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
