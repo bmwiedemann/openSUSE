@@ -23,6 +23,7 @@
 %bcond_without saml
 %bcond_without url_preview
 %bcond_without jwt
+%bcond_without cache_memory
 %bcond_with    redis
 # missing deps
 %bcond_with    opentracing
@@ -45,7 +46,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.33.2
+Version:        1.34.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -179,6 +180,10 @@ BuildRequires:  python3-txredisapi >= 1.4.7
 %requires_eq    python3-txredisapi
 BuildRequires:  python3-hiredis
 %requires_eq    python3-hiredis
+%endif
+%if %{with cache_memory}
+BuildRequires:  python3-Pympler
+%requires_eq    python3-Pympler
 %endif
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
