@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 18 20:43:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.2
+  * New rig_get_mode_bandwidths: returns token set for bandwidths
+    for given mode
+  * New rig_get_info: returns token set for all vfos where order
+    does not matter.
+  * New rig_get_vfo_info
+  * FILPATHLEN has changed to HAMLIB_FILPATHLEN
+  * USRP lib and gnuradio are deprecated and will be removed in 5.0
+  * Added Radan rotator
+  * Added Malachite SDR
+  * Major rework for PRM80
+  * Add twiddle_timeout and twiddle_rit --set-conf options
+  * rigctld --twiddle is deprecated and will be removed in 5.0
+    along with get_twiddle and set_twiddle
+
+-------------------------------------------------------------------
 Tue Mar 16 22:26:11 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1
