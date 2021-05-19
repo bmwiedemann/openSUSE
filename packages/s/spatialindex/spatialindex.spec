@@ -1,5 +1,5 @@
 #
-# spec file for package libspatialindex
+# spec file for package spatialindex
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -12,10 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 
 Name:           spatialindex
 Version:        1.9.3
@@ -23,15 +22,15 @@ Release:        0
 Summary:        A library for spatial indexing
 License:        MIT
 Group:          Productivity/Graphics/Other
-Url:            https://libspatialindex.org/
+URL:            https://libspatialindex.org/
 Source0:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2
 Source1:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2.sha512sum
 # PATCH-FIX-OPENSUSE restore-pkg-config-functionality.patch -- pkg-config: restore functionality (via CMake), change Cflags
 Patch0:         restore-pkg-config-functionality.patch
 BuildRequires:  cmake
-BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  pkg-config
 
 %description
@@ -50,11 +49,14 @@ algorithm, etc. should be easy to customize.
 Index persistence. Internal memory and external memory structures should be
 supported. Clustered and non-clustered indices should be easy to be persisted.
 
-%package -n lib%{name}4
+%package -n lib%{name}6
 Summary:        A library for spatial indexing
 Group:          Productivity/Graphics/Other
+# Version 1.9.3 of spatialindex was wrongly shipping the .so.6 in libspatialindex4
+# Help tp replace this package version
+Obsoletes:      libspatialindex4 = 1.9.3
 
-%description -n lib%{name}4
+%description -n lib%{name}6
 libspatialindex provides a general framework for developing spatial indices.
 Currently it defines generic interfaces, provides simple main memory and disk
 based storage managers and a robust implementation of an R*-tree, an MVR-tree
@@ -63,7 +65,7 @@ and a TPR-tree.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries
-Requires:       lib%{name}4 = %{version}
+Requires:       lib%{name}6 = %{version}
 Provides:       lib%{name}-devel
 
 %description    devel
@@ -81,14 +83,14 @@ developing applications that use %{name}.
 %install
 %cmake_install
 
-%post -n lib%{name}4 -p /sbin/ldconfig
+%post -n lib%{name}6 -p /sbin/ldconfig
 
-%postun -n lib%{name}4 -p /sbin/ldconfig
+%postun -n lib%{name}6 -p /sbin/ldconfig
 
-%files -n lib%{name}4
+%files -n lib%{name}6
 %defattr(-,root,root,-)
 %doc COPYING
-%{_libdir}/*.so.*
+%{_libdir}/*.so.6*
 
 %files devel
 %defattr(-,root,root,-)

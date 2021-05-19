@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 19 09:55:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libspatialindex4 subpackage to libspatialindex6, following
+  the actual soname of the libraries shipped.
+- Obsolete libspatialindex4 = 1.9.3 by libspatialindex6: help
+  zypper for the upgrade case from the wrongly packaged
+  libspatialindex4 to libspatialindex6. We obsolete only the
+  version that was wrongly packaged, so that actual users
+  of libspatialindex.so.4 have a chance to co-exist.
+
+-------------------------------------------------------------------
 Sun Feb 28 15:07:42 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - added patch to restore functionality (via CMake), change Cflags
