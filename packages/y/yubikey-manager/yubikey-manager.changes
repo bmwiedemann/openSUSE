@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 18 18:39:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.3
+  * Add support for fido reset over NFC.
+  * Bugfix: The --touch argument to piv change-management-key was
+    ignored.
+  * Bugfix: Don’t prompt for password when importing PIV key/cert
+    if file is invalid.
+  * Bugfix: Fix setting touch-eject/auto-eject for YubiKey 4 and NEO.
+  * Bugfix: Detect PKCS#12 format when outer sequence uses
+    indefinite length.
+  * Dependency: Add support for Click 8.
+
+-------------------------------------------------------------------
 Thu May  6 14:10:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.2
