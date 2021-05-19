@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 19 05:22:47 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.5.4:
+  * Add/update deprecation notices
+  * Wrap validation error instead of recreating
+  * Move default to avoid nil check
+  * Add name validation rules for object kinds
+  * Use kube libraries v0.20.4
+
+-------------------------------------------------------------------
+Wed Mar 17 15:45:02 UTC 2021 - dmueller@suse.com
+
+- Update to version 3.5.3:
+  * Fix the example for --time-format flag
+  * Improve the console output for resource policy keep to align with helm2.
+  * test(pkg/storage): Verify that storage.Create returns an error if it fails to clean up least-recent release versions
+  * fix(pkg/storage): If storage.Create fails to clean up recent release versions, return an error
+  * fix(test): Increase golangci-lint timeout
+  * fix release sha256
+  * Fix-9253: Change the deprecated charts repo URL in release notes
+  * Update default ingress values section to correspond with template
+  * use kube libraries v0.20.2
+
+-------------------------------------------------------------------
 Fri Feb 05 01:47:42 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 3.5.2:
