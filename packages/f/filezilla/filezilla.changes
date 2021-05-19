@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 19 10:45:58 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.54.1
+  * Bugfixes and minor changes:
+    - Fix control visibility logic in Site Manager
+- Changes from 3.54.0
+  * Bugfixes and minor changes:
+    - SFTP: Fixed a regression loading configured key files
+- Changes from 3.54.0-rc1:
+  * Bugfixes and minor changes:
+    - Refactored network activity handling, the activity indicators
+      tooltips now display more accurate data
+    - Updated SFTP components
+    - Small performance improvement sorting very large directory
+      listings
+    - Fixed a crash changing numeric permissions value in chmod
+      dialog
+
+-------------------------------------------------------------------
 Tue Mar 23 11:39:43 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.53.1
