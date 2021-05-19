@@ -1,7 +1,7 @@
 #
 # spec file for package liborigin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define shlib %{name}3
 Name:           liborigin
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        A library for reading OriginLab OPJ project files
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://sourceforge.net/projects/liborigin/
+URL:            https://sourceforge.net/projects/liborigin/
 Source:         http://downloads.sourceforge.net/liborigin/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM liborigin-link-opj2dat-against-sharedlib.patch badshah400@gmail.com -- Link opj2dat against the shared library so we avoid generating and installing the static lib (https://sourceforge.net/p/liborigin/bugs/24)
-Patch1:         liborigin-link-opj2dat-against-sharedlib.patch
-# PATCH-FIX-UPSTREAM liborigin-remove-exit-calls.patch badshah400@gmail.com -- Remove exit calls from library; patch taken from upstream commit
-Patch2:         liborigin-remove-exit-calls.patch
+Source2:        liborigin-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -83,11 +80,10 @@ Features:
 %prep
 %autosetup -p1
 
-# fix documentation directory
-sed -i "s|DESTINATION share/doc/liborigin|DESTINATION %{_docdir}/%{name}|" CMakeLists.txt
-
 %build
-%cmake
+%cmake \
+	-DBUILD_STATIC_LIBS=off \
+	-DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}
 %cmake_build origin opj2dat doc
 
 %install
