@@ -1,7 +1,7 @@
 #
 # spec file for package python-fb-re2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,15 @@ Release:        0
 Summary:        Python wrapper for Google's RE2
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/facebook/pyre2
+URL:            https://github.com/facebook/pyre2
 Source:         https://github.com/facebook/pyre2/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  re2-devel
-
 %python_subpackages
 
 %description
@@ -49,7 +49,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
