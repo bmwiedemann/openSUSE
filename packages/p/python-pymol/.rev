@@ -81,4 +81,13 @@
     <comment></comment>
     <requestid>874400</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1445963e9066f109caae69e47e801348</srcmd5>
+    <version>2.4.0</version>
+    <time>1621439358</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the execute bit from some test scripts to remove a spurious
+  requirement.</comment>
+    <requestid>894191</requestid>
+  </revision>
 </revisionlist>

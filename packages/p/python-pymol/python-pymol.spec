@@ -59,7 +59,7 @@ BuildRequires:  %{python_module pymol}
 Requires:       python-numpy
 Requires:       python-qt5
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Obsoletes:      pymol < %{version}
 Provides:       pymol = %{version}
 %python_subpackages
@@ -84,6 +84,7 @@ ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 %setup -q -n %{modname}-%{version}
 %autopatch -p1
 sed -i "1d" modules/pmg_tk/startup/apbs_tools.py # Remove she-bang line
+chmod -x test/cyg test/run test/show
 %if %{with test}
 # Unpack data for pymol-testing
 tar -xvf %{SOURCE1} -C %{_builddir}/%{modname}-%{version}

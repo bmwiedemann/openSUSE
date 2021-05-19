@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 04:27:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove the execute bit from some test scripts to remove a spurious
+  requirement. 
+
+-------------------------------------------------------------------
 Sun Feb 21 10:23:25 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Skip python3.6 because numpy no longer support it.
