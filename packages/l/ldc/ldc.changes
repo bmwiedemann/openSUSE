@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May 17 13:49:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.26.0:
+  * Frontend, druntime and Phobos are at version 2.096.1+
+    incl. new ldmd2 command-line option -gdwarf=<version>
+  * Supports LLVM 6.0 - 12.0
+  * LDC invocations can now be nicely profiled via --ftime-trace.
+  * Struct TypeInfos are emitted into referencing object files only,
+    and special TypeInfo member functions into the owning object
+    file only.
+  * Bug fixes:
+    * TypeInfo for interface gives invalid string for name.
+    * dcompute: Don’t reject CUDA versions 7.x - 8.0.0.
+    * Don’t enforce the frame pointer for functions with GCC-style
+      inline asm.
+    * Fix some cases of insufficient alignment for arguments and
+      parameters.
+    * Fix a few issues with LLVM 12.
+    * Add source location information for TypeInfo diagnostics
+      with -betterC.
+    * Keep init symbols of built-in TypeInfo classes mutable just
+      like any other TypeInfo, so that e.g. synchronized() can be
+      used on the implicit monitor.
+    * Predefine version FreeStanding when targeting bare-metal.
+    * druntime: Define rt.aaA.AA as naked pointer, no struct wrapper
+    * Misc. fixes and improvements for the CMake scripts,
+      incl. new defaults for LDC_INSTALL_{LTOPLUGIN,LLVM_RUNTIME_LIBS}
+    * -cleanup-obj: Put object files into unique temporary directory
+      by default.
+    * druntime: Add missing core.atomic.atomicFetch{Add,Sub}.
+    * Fix regression wrt. non-deleted temporary -run executable.
+  * Breaking ABI changes:
+    * extern(D): Pass non-PODs by ref to temporary.
+    * -linkonce-templates comes with a new experimental template
+      emission scheme and is now suited for projects consisting of
+      multiple object files too.
+- 1.13+ is now required for 1.26+ on 32bit
+
+-------------------------------------------------------------------
 Mon Dec 28 18:33:03 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.24.0:

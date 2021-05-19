@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        94
+%define so_ver        96
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -31,15 +31,16 @@
 
 %ifarch %{ix86} %arm
 # 32-bit needs 1.12.0 intermediate build due to: https://github.com/ldc-developers/ldc/issues/2947
-%bcond_without 1_12_0_intermediate
+# And 1.26+ needs a more recent intermediate compiler: https://github.com/ldc-developers/ldc/issues/3729
+%bcond_without ldc_intermediate
 %else
-%bcond_with 1_12_0_intermediate
+%bcond_with ldc_intermediate
 %endif
 
 %bcond_with ldc_tests
 
 Name:           ldc
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        BSD-3-Clause AND Artistic-1.0
@@ -57,13 +58,14 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  clang7
 BuildRequires:  llvm7-devel
 %else
-BuildRequires:  llvm-clang
-BuildRequires:  llvm-devel >= 3.9
+BuildRequires:  llvm-clang >= 6.0
+BuildRequires:  llvm-devel >= 6.0
 %endif
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  binutils-gold
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
 Recommends:     ldc-runtime-devel = %{version}
@@ -74,9 +76,10 @@ Requires:       binutils-gold
 %if %{with ldc_bootstrap}
 # v0.17.6 is the last version buildable with a C++ compiler, so use it for bootstrapping
 Source10:       https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz
-%if %{with 1_12_0_intermediate}
+%if %{with ldc_intermediate}
 # 1.12.0 is needed to build on 32-bit: https://github.com/ldc-developers/ldc/issues/2947
 Source11:       https://github.com/ldc-developers/ldc/releases/download/v1.12.0/ldc-1.12.0-src.tar.gz
+Source12:       https://github.com/ldc-developers/ldc/releases/download/v1.25.1/ldc-1.25.1-src.tar.gz
 %endif
 %endif
 %if %{with ldc_tests}
@@ -84,7 +87,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gdb
 %endif
 %if %{without ldc_bootstrap}
-BuildRequires:  binutils-gold
 BuildRequires:  ldc
 BuildRequires:  ldc-phobos-devel
 BuildRequires:  ldc-runtime-devel
@@ -163,9 +165,13 @@ Optional dependency offering bash completion for ldc2
 tar xf %{SOURCE10}
 pushd ldc-0.17.6-src
 popd
-%if %{with 1_12_0_intermediate}
+%if %{with ldc_intermediate}
 tar xf %{SOURCE11}
 pushd ldc-1.12.0-src
+%patch0 -p1
+popd
+tar xf %{SOURCE12}
+pushd ldc-1.25.1-src
 %patch0 -p1
 popd
 %endif
@@ -196,7 +202,7 @@ cmake \
 %make_build
 popd
 popd
-%if %{with 1_12_0_intermediate}
+%if %{with ldc_intermediate}
 pushd ldc-1.12.0-src
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
 touch ./no-suse-rules
@@ -214,6 +220,23 @@ cmake \
 %make_build
 popd
 popd
+pushd ldc-1.25.1-src
+#Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
+touch ./no-suse-rules
+mkdir build && pushd build
+# FIXME: you should use %%cmake macros
+cmake \
+    -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
+    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
+    -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
+    -DD_COMPILER:PATH=`pwd`/../../ldc-1.12.0-src/build/bin/ldmd2 \
+    -DCMAKE_CXX_FLAGS="-std=c++11" \
+    -DCMAKE_C_FLAGS="-fPIC" \
+    ..
+%make_build
+popd
+popd
 %endif
 %endif
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
@@ -224,8 +247,8 @@ touch no-suse-rules
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
     -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
 %if %{with ldc_bootstrap}
-%if %{with 1_12_0_intermediate}
-    -DD_COMPILER:PATH=`pwd`/../ldc-1.12.0-src/build/bin/ldmd2 \
+%if %{with ldc_intermediate}
+    -DD_COMPILER:PATH=`pwd`/../ldc-1.25.1-src/build/bin/ldmd2 \
 %else
     -DD_COMPILER:PATH=`pwd`/../ldc-0.17.6-src/build/bin/ldmd2 \
 %endif
