@@ -1,0 +1,67 @@
+From 132dfe35ccb4272e49cbc43dfccf6f8a432ec513 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 11 May 2021 22:36:41 +0200
+Subject: [PATCH] Use standard paths and allow setting custom DOCDIR
+
+* Add GenericName and categories to .desktop file
+* Install icon into more standard location /usr/share/pixmaps
+* Allow setting custom directory for documentation
+---
+ qt-fsarchiver/qt-fsarchiver.pro             |  15 +++++++++------
+ qt-fsarchiver/starter/qt-fsarchiver.desktop |   7 ++++---
+ 4 files changed, 13 insertions(+), 9 deletions(-)
+ mode change 100644 => 120000 qt-fsarchiver/src/images/harddrive2.png
+ create mode 100644 qt-fsarchiver/src/images/qt-fsarchiver.png
+
+diff --git a/qt-fsarchiver/qt-fsarchiver.pro b/qt-fsarchiver/qt-fsarchiver.pro
+index c38f179..2dcb696 100755
+--- a/qt-fsarchiver/qt-fsarchiver.pro
++++ b/qt-fsarchiver/qt-fsarchiver.pro
+@@ -53,16 +53,19 @@ SOURCES += src/clone.cpp \
+            src/thread.cpp \
+            src/treeview.cpp 
+ RESOURCES += src/icon.qrc
++isEmpty(DOC_DIR) {
++  DOC_DIR = /usr/share/doc/qt-fsarchiver
++}
+ # install
+  target.path = /usr/sbin
+- icon.files = src/images/harddrive2.png
+- icon.path = /usr/share/app-install/icons
++ icon.files = src/images/qt-fsarchiver.png
++ icon.path = /usr/share/pixmaps
+  autostart.files = starter/qt-fsarchiver.desktop
+  autostart.path = /usr/share/applications
+- doc.files = doc
+- doc.path = /usr/share/doc/qt-fsarchiver/doc
+- smbfind.files = src/sbin
+- smbfind.path = /usr
++ doc.files = doc/*
++ doc.path = $$DOC_DIR
++ smbfind.files = src/sbin/findsmb-qt src/sbin/qt-fsarchiver.sh
++ smbfind.path = /usr/sbin
+ TRANSLATIONS += translations/qt-fsarchiver_ar.ts \
+                 translations/qt-fsarchiver_ca.ts \
+                 translations/qt-fsarchiver_ch.ts \
+diff --git a/qt-fsarchiver/starter/qt-fsarchiver.desktop b/qt-fsarchiver/starter/qt-fsarchiver.desktop
+index 9f37765..1058cf2 100644
+--- a/qt-fsarchiver/starter/qt-fsarchiver.desktop
++++ b/qt-fsarchiver/starter/qt-fsarchiver.desktop
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Name=qt-fsarchiver
+ Name[de_DE]=qt-fsarchiver
+-Comment=Qt GUI for fsarchiver
++GenericName=Qt GUI for fsarchiver
++GenericName[lt]=Qt fsarchiver
+ Exec=/usr/sbin/qt-fsarchiver
+-Icon=/usr/share/app-install/icons/harddrive2.png
++Icon=qt-fsarchiver
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-
++Categories=System;Filesystem;
+-- 
+2.26.2
+

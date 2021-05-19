@@ -1,7 +1,7 @@
 #
 # spec file for package qt-fsarchiver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,20 +13,24 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-# or upstream https://sourceforge.net/p/qt-fsarchiver/tickets/
+#
 
 
-%define hyphen_version 0.8.5-18
-%define terminal_version 0.8.5-12
+%define hyphen_version 0.8.5-22
+%define terminal_version 0.8.5-22
 Name:           qt-fsarchiver
-Version:        0.8.5_18
+Version:        0.8.5_22
 Release:        0
 Summary:        Qt GUI for fsarchiver
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://qt-fsarchiver.sourceforge.net/
-Source0:        %{name}-%{hyphen_version}.tar.gz
-Source1:        %{name}-terminal-%{terminal_version}.tar.gz
+URL:            https://sourceforge.net/projects/qt-fsarchiver
+Source0:        %{URL}/files/source/%{name}/%{name}-%{hyphen_version}.tar.gz
+Source1:        %{URL}/files/source/%{name}-terminal/%{name}-terminal-%{terminal_version}.tar.gz
+# PATCH-FEATURE-UPSTREAM 0001-Use-standard-paths-and-allow-setting-custom-DOCDIR.patch -- https://github.com/DieterBaum/qt-fsarchiver/pull/12
+Patch0:         0001-Use-standard-paths-and-allow-setting-custom-DOCDIR.patch
+# PATCH-FEATURE-UPSTREAM 0001-Allow-setting-custom-DOCDIR.patch -- https://github.com/DieterBaum/qt-fsarchiver-terminal/pull/2
+Patch1:         0001-Allow-setting-custom-DOCDIR.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
@@ -48,6 +52,7 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+Requires:       ccrypt
 Recommends:     btrfsprogs
 Recommends:     gdisk
 Recommends:     jfsutils
@@ -65,65 +70,50 @@ qt-fsarchiver is a GUI for the program fsarchiver to backup/save/restore partiti
 %prep
 %setup -q -n %{name}
 %setup -T -D -a 1 -n %{name}
-rm -f .qmake.stash
-rm -f translations/*.qm
-sed "s|target.path = /usr/sbin|target.path = %{_sbindir}|" -i %{name}.pro
-sed "s|icon.path = /usr/share/app-install/icons|icon.path = %{_datadir}/icons/hicolor/48x48/apps|" -i %{name}.pro
-sed "s|autostart.path = /usr/share/applications|autostart.path = %{_datadir}/applications|" -i %{name}.pro
-sed "s|doc.path = /usr/share/doc/qt-fsarchiver/doc|doc.path = %{_docdir}/%{name}|" -i %{name}.pro
-sed "s|Icon=/usr/share/app-install/icons/harddrive2.png|Icon=%{name}|" -i starter/%{name}.desktop
-echo "GenericName=Qt GUI for fsarchiver" >> starter/%{name}.desktop
-echo "GenericName[lt]=Qt fsarchiver" >> starter/%{name}.desktop
+# Part of %%patch0 but binary diffs are not supported
+ln src/images/harddrive2.png src/images/qt-fsarchiver.png
+%patch0 -p2
+%patch1 -p1
+
+rm -vf .qmake.stash
+rm -vf translations/*.qm
+# Fix file permissions
+find doc -type f -exec chmod -x \{\} +
+# Remove prebuilt binaries
+rm -vf src/sbin/{ccguess,de}
 
 %build
 export CFLAGS="%{optflags} -fcommon"
 pushd %{name}-terminal
-%qmake5 %{name}-terminal.pro
-%make_jobs
+%qmake5 "DOC_DIR=%{_docdir}/%{name}-terminal" %{name}-terminal.pro
+%make_build
 popd
-%qmake5 %{name}.pro
-%make_jobs
+%qmake5 "DOC_DIR=%{_docdir}/%{name}" %{name}.pro
+%make_build
 
 %install
 pushd %{name}-terminal
 %make_install INSTALL_ROOT=%{buildroot}
 popd
 %make_install INSTALL_ROOT=%{buildroot}
-
-#clean doc directory from backup files
-rm -rf %{buildroot}%{_datadir}/doc/%{name}/*~
-rm -rf %{buildroot}%{_datadir}/doc/%{name}-terminal
-
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
-mkdir -p %{buildroot}%{_datadir}/applications
-mv ~/rpmbuild/BUILD/qt-fsarchiver/src/sbin/findsmb-qt %{buildroot}/%{_sbindir}
-mv ~/rpmbuild/BUILD/qt-fsarchiver/src/sbin/qt-fsarchiver.sh %{buildroot}/%{_sbindir}
-mv %{buildroot}/%{_datadir}/icons/hicolor/48x48/apps/harddrive2.png %{buildroot}/%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-
+# Install translations
 mkdir -p %{buildroot}%{_datadir}/qt5/translations/
-install -m 0644 -p translations/*.qm %{buildroot}%{_datadir}/qt5/translations/
-
-%suse_update_desktop_file -r %{name} System Filesystem
+install -m 0644 translations/*.qm %{buildroot}%{_datadir}/qt5/translations/
+# -terminal package contains the same documentation
+rm -rf %{buildroot}%{_docdir}/%{name}-terminal
 
 %files
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}.sh
 %{_sbindir}/%{name}-terminal
-%{_sbindir}/findsmb-qt
-%{_sbindir}/ccguess
-%{_sbindir}/de
-%defattr(644,root,root,755)
+%doc %{_docdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/icons/hicolor/48x48
-%dir %{_datadir}/icons/hicolor/48x48/apps
-%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-%{_docdir}/%{name}
+%{_datadir}/pixmaps/%{name}.png
 %exclude %{_datadir}/qt5/translations/%{name}*.qm
 
 %files lang
 %dir %{_datadir}/qt5
 %dir %{_datadir}/qt5/translations
 %{_datadir}/qt5/translations/%{name}*.qm
-
 
 %changelog
