@@ -18,19 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-furl
-Version:        2.1.0
+Version:        2.1.2
 Release:        0
 Summary:        A Python URL manipulation library
 License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/gruns/furl
 Source:         https://files.pythonhosted.org/packages/source/f/furl/furl-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tests_overcome_bpo42967.patch gh#gruns/furl#135 mcepl@suse.com
-# With fix for bpo#42967, it is not possible to separate
-# parameters of URL query with semicolon
-Patch0:         tests_overcome_bpo42967.patch
-# PATCH-FIX-UPSTREAM furl-py39-join.patch -- gh#gruns/furl#139
-Patch1:         furl-py39-join.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 17 10:41:58 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.1.2
+  Fixed: Support Python 3.9's changed urllib.parse.urljoin() behavior.
+  Changed: Drop semicolon query delimiters. See https://bugs.python.org/issue42967.
+  Changed: Drop support for EOL Python 3.4 and Python 3.5.
+- deleted patches
+  - furl-py39-join.patch (upstreamed)
+  - tests_overcome_bpo42967.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Mar 29 22:10:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add furl-py39-join.patch to fix Python 3.9 test failure
