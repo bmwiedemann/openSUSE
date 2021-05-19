@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 18 15:51:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.8.2
+  * store timestamps in session in seconds to avoid string conversion 
+    problems on some (libapr-1) platform build/run combinations, causing 
+    "maximum session duration exceeded" errors
+
+-------------------------------------------------------------------
 Fri May  7 17:38:51 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.8.1
