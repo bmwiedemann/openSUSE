@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May 18 23:57:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 7.9.0
+  * BACKEND
+    * Pea 1.00
+    * Added 512 bit hash functions to PeaUtils menu
+  * FILE MANAGER
+    * Improved theming: new customizable parameters
+    * Spacing [small, medium, large] to increase spacing in file
+      manager and row height in tables
+    * Zooming [100% to 150%] to enlarge icons and graphic elements
+    * Working directory is now set to by default to: user tmp for
+      preview operations, output for other operations
+    * "Extract everything for" preview for special file types now
+      uses working directory
+    * "Interactive extraction" now uses working directory
+  * EXTRACTION and ARCHIVING
+    * Improved interactive extraction, which is now set on by
+      default in extraction screen
+    * If no naming conflict is detected, the output data is now
+      moved, if possible
+    * Improved support for ZPAQ format
+
+-------------------------------------------------------------------
 Wed Mar 24 13:46:55 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.8.0
