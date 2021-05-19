@@ -16,6 +16,13 @@
 #
 
 
+# Enabled for Tumbleweed
+%if 0%{?suse_version} >= 1550
+%define with_govirt 1
+%else
+%define with_govirt 0
+%endif
+
 Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
@@ -39,7 +46,9 @@ BuildRequires:  cmake
 BuildRequires:  gtk-vnc-devel >= 0.3.8
 BuildRequires:  intltool
 BuildRequires:  libglade2-devel
+%if %{with_govirt}
 BuildRequires:  libgovirt-devel
+%endif
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  meson
@@ -60,9 +69,16 @@ the display, and libvirt for looking up VNC server details.
 %prep
 %autosetup -p1
 
+%if ! %{with_govirt}
+%define govirt_arg -Dovirt=disabled
+%else
+%define govirt_arg -Dovirt=enabled
+%endif
+
 %build
 %meson \
     -Dspice=enabled \
+    %{govirt_arg} \
     %{nil}
 %meson_build
 
