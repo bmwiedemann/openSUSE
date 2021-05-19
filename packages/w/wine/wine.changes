@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 19 12:28:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86 (without mingw)
+
+-------------------------------------------------------------------
 Sat May  8 12:56:00 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.8 development release

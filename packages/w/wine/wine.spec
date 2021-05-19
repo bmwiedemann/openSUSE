@@ -469,9 +469,11 @@ chmod 755 %winedir/my-find-requires.sh
 %{_libdir}/wine/*-unix/*.a
 %{_libdir}/wine/*-unix/*.def
 %if 0%{?suse_version} >= 1550
+%ifarch %{ix86} x86_64
 # only generated with mingw
 %dir %{_libdir}/wine/*-windows
 %{_libdir}/wine/*-windows/*.a
+%endif
 %endif
 %doc %{_mandir}/man1/winemaker.1*
 %doc %{_mandir}/*/man1/winemaker.1*
