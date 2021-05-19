@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage-env-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,21 @@ Release:        0
 Summary:        Coverage environment plugin
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jayvdb/coverage_env_plugin
+URL:            https://github.com/jayvdb/coverage_env_plugin
 Source:         https://files.pythonhosted.org/packages/source/c/coverage-env-plugin/coverage-env-plugin-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-coverage >= 4.0
+Requires:       python-packaging
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module coverage-config-reload-plugin}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module unittest-mixins}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-coverage >= 4.0
-Requires:       python-packaging
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,7 +54,7 @@ Environment plugin for the coverage package.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
