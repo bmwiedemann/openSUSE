@@ -1,7 +1,7 @@
 #
-# spec file for package python-incremental
+# spec file for package python-incremental-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-incremental%{psuffix}
-Version:        17.5.0
+Version:        21.3.0
 Release:        0
 Summary:        Library that versions your Python projects
 License:        MIT

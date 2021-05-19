@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  9 16:52:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.3.0:
+  - The output of incremental is now compatible with Black (#56, #60)
+  - Incremental now properly supports PEP 440-compliant dev, rc, post suffixes (#62)
+  - Incremental now properly supports PEP 440-compliant post releases (#37)
+  - Incremental will no longer attempt to read git or svn repositories to see if
+    the project is running from a checkout. (#30, #31, #32)
+
+-------------------------------------------------------------------
 Wed Apr 29 13:35:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip two tests that fail due to changes in pytest framework

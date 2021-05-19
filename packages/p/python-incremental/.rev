@@ -34,4 +34,12 @@
   needs to be fixed by upstream</comment>
     <requestid>798928</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ecf5ac8670f437df3e7f5044b422c5bc</srcmd5>
+    <version>21.3.0</version>
+    <time>1621439329</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893488</requestid>
+  </revision>
 </revisionlist>
