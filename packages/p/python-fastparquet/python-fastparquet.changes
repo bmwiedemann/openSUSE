@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 18 14:41:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.6.3
+  * no release notes
+  * new requirement: cramjam instead of separate compression libs
+    and their bindings
+  * switch from numba to Cython
+
+-------------------------------------------------------------------
 Fri Feb 12 14:50:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 build 

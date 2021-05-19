@@ -21,39 +21,29 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-fastparquet
-Version:        0.5.0
+Version:        0.6.3
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
-BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module bson}
-BuildRequires:  %{python_module cffi >= 0.6}
-BuildRequires:  %{python_module lz4 >= 0.19.1}
-BuildRequires:  %{python_module numba >= 0.49}
+BuildRequires:  %{python_module cramjam >= 2.3.0}
+BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module numpy-devel >= 1.11}
 BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
-BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module thrift >= 0.11.0}
-BuildRequires:  %{python_module zstandard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numba >= 0.49
+Requires:       python-cramjam >= 2.3.0
+Requires:       python-fsspec
 Requires:       python-numpy >= 1.11
 Requires:       python-pandas >= 1.1.0
 Requires:       python-thrift >= 0.11.0
-Recommends:     python-Brotli
-Recommends:     python-bson
-Recommends:     python-lz4 >= 0.19.1
 Recommends:     python-python-lzo
-Recommends:     python-python-snappy
-Recommends:     python-zstandard
 %python_subpackages
 
 %description
@@ -73,7 +63,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm -v %{buildroot}%{$python_sitearch}/fastparquet/speedups.c
+%python_expand rm -v %{buildroot}%{$python_sitearch}/fastparquet/{speedups,cencoding}.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
