@@ -271,4 +271,16 @@
   AAC support. (forwarded request 891571 from namtrac)</comment>
     <requestid>892064</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>75ea5c05c1c4f3ddc56125de4f4d0f8c</srcmd5>
+    <version>0.3.27</version>
+    <time>1621439336</time>
+    <user>dimstar_suse</user>
+    <comment>This comes late because I had to package libopenaptx for Packman first (not yet committed, pending access).
+Build tested.
+
+- Add %bcond_with aptx conditional to let 3rd parties to enable
+  aptX support. (forwarded request 892963 from namtrac)</comment>
+    <requestid>893652</requestid>
+  </revision>
 </revisionlist>

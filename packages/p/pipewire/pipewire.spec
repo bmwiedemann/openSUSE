@@ -41,6 +41,7 @@
 %endif
 
 %bcond_with aac
+%bcond_with aptx
 
 Name:           pipewire
 Version:        0.3.27
@@ -88,6 +89,9 @@ BuildRequires:  pkgconfig(ldacBT-enc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
+%if %{with aptx}
+BuildRequires:  pkgconfig(libopenaptx)
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
@@ -289,7 +293,11 @@ export CC=gcc-9
 %else
     -Dbluez5-codec-aac=disabled \
 %endif
+%if %{with aptx}
+    -Dbluez5-codec-aptx=enabled \
+%else
     -Dbluez5-codec-aptx=disabled \
+%endif
     -Dlibcamera=disabled \
 %if %{with_ldacBT}
     -Dbluez5-codec-ldac=enabled \

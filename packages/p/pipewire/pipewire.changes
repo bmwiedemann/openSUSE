@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 13 20:33:25 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Add %bcond_with aptx conditional to let 3rd parties to enable
+  aptX support.
+
+-------------------------------------------------------------------
 Sat May  8 18:02:57 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Add %bcond_with aac conditional to let 3rd parties to enable
