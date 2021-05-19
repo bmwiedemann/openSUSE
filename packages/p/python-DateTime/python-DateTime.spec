@@ -1,7 +1,7 @@
 #
 # spec file for package python-DateTime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Requires:       python-pytz
 Requires:       python-zope.interface
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module zope.interface}
 # /SECTION
@@ -53,7 +54,7 @@ better off using Python's built-in datetime module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.txt
