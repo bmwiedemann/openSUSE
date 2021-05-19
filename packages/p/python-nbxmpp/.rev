@@ -220,4 +220,32 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
   * Currently no Client Cert support</comment>
     <requestid>831611</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5410cc649e5ab908397dc02c5154a484</srcmd5>
+    <version>2.0.2</version>
+    <time>1621439347</time>
+    <user>dimstar_suse</user>
+    <comment>- Make running tests verbose
+- Enable testing
+  * Use gitlab sources, pypi.org package does not contain the test files
+- Skip not supported python flavors (&lt; 3.7)
+- Update to version 2.0.2
+  * New
+    * Properties: is_from_us() Method
+    * New JID object
+    * Add JID Escaping (XEP-0106) support
+    * Add VCard4 (XEP-0292) support
+    * Make module calls generator based
+    * Add GSSAPI support (XEP-0233)
+    * Simplify and harmonize module API
+  * Bugfixes
+    * Fix handling invalid websocket uris
+    * Add get_text() for Error Base class
+    * Client: Remove GSSAPI from default mechanisms
+    * Presence: Fix is_nickname_changed check
+    * UserAvatar: Add default argument
+  
+</comment>
+    <requestid>894054</requestid>
+  </revision>
 </revisionlist>
