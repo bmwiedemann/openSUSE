@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 14 13:51:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.16:
+  + Escape markup in property values.
+  + introspection: Clear idle id when done with it.
+  + introspection: Load introspection data asynchronously.
+  + DFeetWindow: switch to the added bus watch.
+  + DFeetWindow: factor out connect_to(address).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul 28 16:53:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Build as noarch again, with new meson version it works again.

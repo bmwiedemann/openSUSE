@@ -569,4 +569,18 @@
     <comment> (forwarded request 823320 from dimstar)</comment>
     <requestid>823596</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>912aa16a663981599cfb785cdbd8230d</srcmd5>
+    <version>0.3.16</version>
+    <time>1621439345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.16:
+  + Escape markup in property values.
+  + introspection: Clear idle id when done with it.
+  + introspection: Load introspection data asynchronously.
+  + DFeetWindow: switch to the added bus watch.
+  + DFeetWindow: factor out connect_to(address).
+  + Updated translations.</comment>
+    <requestid>893973</requestid>
+  </revision>
 </revisionlist>

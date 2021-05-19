@@ -1,7 +1,7 @@
 #
 # spec file for package d-feet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           d-feet
-Version:        0.3.15
+Version:        0.3.16
 Release:        0
 Summary:        Graphical D-Bus Debugger
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://live.gnome.org/DFeet/
-Source0:        http://download.gnome.org/sources/d-feet/0.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/d-feet/0.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -62,7 +62,7 @@ export PYTHON=%{_bindir}/python3
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{python3_sitelib}/dfeet/
