@@ -42,4 +42,12 @@
   * Tests: Fix read before start of unused expected buffer</comment>
     <requestid>829747</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8b2c0394602fd92ff0cd78d43bf0a6c7</srcmd5>
+    <version>0.2.4</version>
+    <time>1621439390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894382</requestid>
+  </revision>
 </revisionlist>

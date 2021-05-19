@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 15:00:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define conditionally make_build to fix build on systems that do
+  not have that macro
+
+-------------------------------------------------------------------
 Wed Aug 26 12:16:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the compilation to actually work
