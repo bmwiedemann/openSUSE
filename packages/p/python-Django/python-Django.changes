@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 17 07:37:47 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.3
+  + Prepared for mysqlclient > 2.0.3 support
+  + Fixed a regression in Django 3.2 that caused the incorrect
+    filtering of querysets combined with the | operator
+  + Fixed a regression in Django 3.2.1 where saving FileField would
+    raise a SuspiciousFileOperation even when a custom upload_to
+    returns a valid file path
+
+-------------------------------------------------------------------
 Thu May  6 08:54:41 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.2 (CVE-2021-32052)
