@@ -1,3 +1,21 @@
+osc (0.173.0-0) unstable; urgency=low
+  - Update to 0.173.0:
+    - add showlinked command to show all references of packages linking to a given one
+    - add build --shell-after-build flag. It can also be set via .oscrc.
+    - add build --stage flag. Useful for example for fixing file lists and just
+      running the install section to see the result of it (use --stage=i=).
+      Check the help for more details.
+    - allow to run build script as non-root, by setting su-wrapper empty
+      => osc is not guessing anymore if user builds are wanted
+    - add support for cross arch local build using a sysroot
+    - support slash notation in "osc creq -a <action type> args"
+    - add "--force" option to the "osc add" command (can be used to override
+      the exclude_glob config option)
+    - support the commit of arbitrary sized files
+    - add support for sccache
+
+ -- Marcus Huewe <suse-tux@gmx.de>  Tue, 18 May 2021 22:52:25 +0200
+
 osc (0.172.0-0) unstable; urgency=low
   - Update to 0.172.0:
     - support --lastsucceeded/--last-succeeded in "osc buildlog", "osc
