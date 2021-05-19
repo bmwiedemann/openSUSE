@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 18 16:22:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 60.1.0
+  * Input-output subsystem was rewritten.
+  * QML support is dropped. No more plugins.
+  * Added 2/Rexx, Lua, Windows batch files as scripts support
+  * TEA now uses some icons from the desktop theme.
+  * Spellchecker module has been rewritten.
+  * Syntax highlighting engine is almost new, and old syntax
+    highlighting rule file format is not supported anymore
+    * TEA uses the new one, although based on the old one.
+  * Use Ctrl-mouse wheel to zoom text at current file.
+  * TEA start time is shorter due to some improvements
+    * spell checker now initialized on demand only
+  * Adds a sort of syntax highlighting for SRT and
+    Youtube subtitles (sbv, vtt) formats (timecode highlighting)
+  * Haskell highlighting also featured.
+  * Dates panel becomes more fancy.
+- Build with QT6 on Factory
+- Add 0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 16:53:18 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 50.1.0:

@@ -1,0 +1,112 @@
+From 32e05bb203811cb00d91af8f025b9087e5e2fdd9 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 18 May 2021 18:50:04 +0200
+Subject: [PATCH] Add metainfo, use GNUInstallDirs, install metainfo + desktop
+
+---
+ CMakeLists.txt       | 23 +++++++++++++++--------
+ desktop/metainfo.xml | 24 ++++++++++++++++++++++++
+ desktop/tea.desktop  |  7 +++++--
+ 3 files changed, 44 insertions(+), 10 deletions(-)
+ create mode 100644 desktop/metainfo.xml
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5c4d078..6d8f99e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0.2)
+ set (QT_MIN_VERSION "5.4.0")
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+@@ -119,6 +119,11 @@ set(tea_DESKTOP
+     ./desktop/tea.desktop
+ )
+ 
++set(tea_METAINFO
++    ./desktop/metainfo.xml
++)
++
++set(TEA_FQN "org.semiletov.tea")
+ 
+ #add_custom_target(dist
+ #COMMAND git archive --prefix=${PROJECT}-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}/ master | bzip2 >${PROJECT}-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.tar.bz2
+@@ -241,13 +246,15 @@ if(Qt${QT_VERSION_MAJOR} STREQUAL "Qt5")
+ target_link_libraries(tea Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Core)
+ endif()
+ 
++include (GNUInstallDirs)
+ 
+-install (TARGETS tea DESTINATION bin)
+-install (FILES ${tea_ICONSVG} DESTINATION share/icons/hicolor/scalable/apps)
+-install (FILES ${tea_ICONPNG32} DESTINATION share/icons/hicolor/32x32/apps)
+-install (FILES ${tea_ICONPNG48} DESTINATION share/icons/hicolor/48x48/apps)
+-install (FILES ${tea_ICONPNG64} DESTINATION share/icons/hicolor/64x64/apps)
+-install (FILES ${tea_ICONPNG128} DESTINATION share/icons/hicolor/128x128/apps)
++install (TARGETS tea DESTINATION ${CMAKE_INSTALL_BINDIR})
++install (FILES ${tea_ICONSVG}    DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
++install (FILES ${tea_ICONPNG32}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/32x32/apps)
++install (FILES ${tea_ICONPNG48}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/48x48/apps)
++install (FILES ${tea_ICONPNG64}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/64x64/apps)
++install (FILES ${tea_ICONPNG128} DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/128x128/apps)
+ 
+-install (FILES ${tea_DESKTOP} DESTINATION share/applications)
++install (FILES ${tea_DESKTOP}  RENAME ${TEA_FQN}.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
++install (FILES ${tea_METAINFO} RENAME ${TEA_FQN}.metainfo.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
+ 
+diff --git a/desktop/metainfo.xml b/desktop/metainfo.xml
+new file mode 100644
+index 0000000..0bc821c
+--- /dev/null
++++ b/desktop/metainfo.xml
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- Copyright 2016 Sorokin Alexei <sor.alexei@meowr.ru> -->
++<component type="desktop">
++  <id>org.semiletov.tea</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>GPL-3.0-or-later</project_license>
++  <name>TEA</name>
++  <summary>Powerful text editor in Qt</summary>
++  <description>
++    <p>
++      TEA is a Qt-based text editor for UNIX-like systems. With an
++      ultimate small size TEA provides you hundreds of functions.
++    </p>
++  </description>
++
++  <launchable type="desktop-id">org.semiletov.tea.desktop</launchable>
++
++  <url type="homepage">http://semiletov.org/tea</url>
++  <developer_name>Peter Semiletov</developer_name>
++
++  <provides>
++    <binary>tea</binary>
++  </provides>
++</component>
+diff --git a/desktop/tea.desktop b/desktop/tea.desktop
+index 1dafaed..b806505 100644
+--- a/desktop/tea.desktop
++++ b/desktop/tea.desktop
+@@ -4,12 +4,15 @@ Terminal=false
+ Type=Application
+ Icon=tea
+ Exec=tea %U
+-Categories=Utility;TextEditor;
++Categories=Qt;Utility;TextEditor;
+ StartupNotify=false
+-MimeType=text/plain;
+ NoDisplay=false
+ Version=1.1
+ Keywords=text editor;text;editor;
+ Keywords[de]=Texteditor;Text;Editor;
+ Comment=Text editor with hundreds of functions
+ Comment[de]=Texteditor mit hunderten Funktionen
++Comment[eo]=Funkcia tekstoredaktilo per Qt
++Comment[ru]=Функциональный текстовый редактор на Qt
++Comment[uk]=Функціональний текстовий редактор на Qt
++MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+-- 
+2.26.2
+

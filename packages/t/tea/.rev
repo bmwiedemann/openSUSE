@@ -87,4 +87,12 @@
     <comment>- Update to version 50.1.0.</comment>
     <requestid>839226</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8671dec8c8e33de3c5d816e053e5d32d</srcmd5>
+    <version>60.1.0</version>
+    <time>1621439350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894119</requestid>
+  </revision>
 </revisionlist>

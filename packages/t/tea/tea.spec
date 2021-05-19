@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,40 @@
 #
 
 
+%if 0%{suse_version} >= 1550
+%bcond_without qt6
+%else
+%bcond_with qt6
+%endif
 Name:           tea
-Version:        50.1.0
+Version:        60.1.0
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
 URL:            http://semiletov.org/tea
 Source:         https://github.com/psemiletov/tea-qt/archive/%{version}.tar.gz#/%{name}-qt-%{version}.tar.gz
-Source1:        org.semiletov.tea.desktop
-Source2:        org.semiletov.tea.appdata.xml
+# PATCH-FEATURE-UPSTREAM -- https://github.com/psemiletov/tea-qt/pull/45
+Patch0:         0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if %{with qt6}
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6Widgets)
+%else
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(zlib)
 
@@ -47,34 +62,25 @@ Midnight-Commander-style file manager, integrates spell checking
 
 %prep
 %setup -q -n tea-qt-%{version}
-
-cp -a %{SOURCE1} org.semiletov.tea.desktop
-cp -a %{SOURCE2} org.semiletov.tea.appdata.xml
-sed -i '/DESTINATION share\/applications/d' CMakeLists.txt
+%patch0 -p1
 
 %build
 %cmake \
   -DUSE_ASPELL=ON  \
   -DUSE_PRINTER=ON \
   -DUSE_PDF=ON     \
-  -DUSE_DJVU=ON    \
-  -DUSE_QML=ON
+  -DUSE_DJVU=ON
 %cmake_build
 
 %install
 %cmake_install
 
-install -Dpm 0644 org.semiletov.tea.desktop %{buildroot}%{_datadir}/applications/org.semiletov.tea.desktop
-install -Dpm 0644 icons/%{name}-icon-v3-01.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-install -Dpm 0644 org.semiletov.tea.appdata.xml %{buildroot}%{_datadir}/metainfo/org.semiletov.tea.appdata.xml
-
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS* README TODO
+%doc AUTHORS ChangeLog NEWS* README.md TODO
 %{_bindir}/%{name}
-%{_datadir}/applications/org.semiletov.tea.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.*
-%dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.semiletov.tea.appdata.xml
+%{_datadir}/metainfo/org.semiletov.tea.metainfo.xml
+%{_datadir}/applications/org.semiletov.tea.desktop
 
 %changelog
