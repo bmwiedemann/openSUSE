@@ -1,7 +1,7 @@
 #
 # spec file for package rbtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           RBTools
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Command line tools for interacting with review board
 License:        MIT
