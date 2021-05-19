@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>665276</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4bc89ebc472e3f8a2afc46d2bd8c1306</srcmd5>
+    <version>0.0.0+git20210225.2e10b26</version>
+    <time>1621439322</time>
+    <user>dimstar_suse</user>
+    <comment>Add ineffassign-rpmlintrc to sources (forwarded request 879531 from jfkw)</comment>
+    <requestid>879532</requestid>
+  </revision>
 </revisionlist>
