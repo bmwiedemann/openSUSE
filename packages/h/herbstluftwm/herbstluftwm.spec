@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -33,6 +33,7 @@ BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  glib2-devel
 BuildRequires:  libXft-devel
 BuildRequires:  libXrandr-devel
+BuildRequires:  libXrender-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-utils
 BuildRequires:  pkgconfig
@@ -109,9 +110,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE}
 %license LICENSE
 %doc NEWS
 %dir %{_datadir}/doc/%{name}/
-%{_datadir}/doc/%{name}/herbstclient.html
-%{_datadir}/doc/%{name}/%{name}-tutorial.html
-%{_datadir}/doc/%{name}/%{name}.html
+%{_datadir}/doc/%{name}/html/
 %dir %{_sysconfdir}/xdg/%{name}
 %{_sysconfdir}/xdg/%{name}/autostart
 %{_sysconfdir}/xdg/%{name}/panel.sh
@@ -126,27 +125,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE}
 %{_datadir}/doc/herbstluftwm/hlwm-doc.json
 
 %files examples
-%dir %{_datadir}/doc/%{name}/examples
-%{_datadir}/doc/%{name}/examples/README
-%{_datadir}/doc/%{name}/examples/dmenu.sh
-%{_datadir}/doc/%{name}/examples/dumpbeautify.sh
-%{_datadir}/doc/%{name}/examples/exec_on_tag.sh
-%{_datadir}/doc/%{name}/examples/execwith.sh
-%{_datadir}/doc/%{name}/examples/float-maximize.sh
-%{_datadir}/doc/%{name}/examples/floatmon.sh
-%{_datadir}/doc/%{name}/examples/herbstcommander.sh
-%{_datadir}/doc/%{name}/examples/keychain.sh
-%{_datadir}/doc/%{name}/examples/lasttag.sh
-%{_datadir}/doc/%{name}/examples/layout.sh
-%{_datadir}/doc/%{name}/examples/loadstate.sh
-%{_datadir}/doc/%{name}/examples/maximize.sh
-%{_datadir}/doc/%{name}/examples/q3terminal.sh
-%{_datadir}/doc/%{name}/examples/savestate.sh
-%{_datadir}/doc/%{name}/examples/scratchpad.sh
-%{_datadir}/doc/%{name}/examples/toggledualhead.sh
-%{_datadir}/doc/%{name}/examples/windowmenu.sh
-%{_datadir}/doc/%{name}/examples/wselect.sh
-%{_datadir}/doc/herbstluftwm/examples/perclient_kb_layout.sh
+%{_datadir}/doc/%{name}/examples/
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_herbstclient

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue May 18 16:07:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * herbstclient prints error messages always on stderr and normal
+    output always on stdout (before, both were printed to the same channel).
+  * True transparency support for frame and client decorations
+    (requires a compositor like picom, compton, or xcompmgr)
+  * Colors contain alpha-values (format #RRGGBBAA)
+  * Do not draw frame background behind clients (so for semi-transparent
+    client decorations, one does not see the frame decoration behind but the wallpaper instead)
+  * New command line option '--replace' for replacing an existing window manager.
+  * New command 'list_clients'.
+  * The frame attributes ('selection', 'algorithm', 'fraction',
+    'split_type') are now writable.
+  * New objects for panels (under 'panels', exposing attributes
+    'instance', 'class', 'geometry', 'winid')
+  * The setting 'monitors_locked' is now explicitly an unsigned integer.
+  * The setting 'default_frame_layout' now holds an algorithm name.
+  * New client attributes:
+    - 'floating_geometry' holding the client’s floating size (writable).
+    - 'content_geometry' holding the geometry of the application’s content.
+  * The 'shift' command now moves the window to a neighboured monitor if the
+    window cannot be moved within a tag in the desired direction.
+  * New command 'lower' to lower a window in the stack.
+  * The 'cycle_value' command now expects an attribute (and only works for
+    settings for compatibility).
+  * New object 'types' containing documentation on (attribute-) types.
+  * New command 'attr_type' printing the type of a given attribute.
+  * New client alias 'last-minimized' and 'longest-minimized' for
+    focusing and unminimizing minimized clients.
+  * Relative values for integer attributes ('+=N' and '-=N')
+  * The 'cycle' command now also cycles through floating windows.
+  * The 'rule' command now reports errors already during rule creation.
+  * In rule consequences, 'toggle' is not allowed anymore.
+  * New rule consequences:
+    - 'floating_geometry' for setting the attribute of the same name (i.e.
+      position and size of the new client)
+  * The python bindings automatically convert from and to python’s types
+  * Bug fixes:
+    - Fix mistakenly transparent borders of argb clients
+  * New dependency: xrender
+
+-------------------------------------------------------------------
 Wed Feb 17 15:02:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:
