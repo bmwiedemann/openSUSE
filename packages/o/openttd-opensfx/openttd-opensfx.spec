@@ -40,7 +40,7 @@ to make OpenTTD independent.
 %make_build REPO_VERSION=%{version} _V=
 
 %install
-make install INSTALL_DIR=%{buildroot}%{_datadir}/openttd/data REPO_VERSION=%{version} _V=
+make install INSTALL_DIR=%{buildroot}%{_datadir}/openttd/data REPO_VERSION=%{version} _V= TAR_FLAGS='--mtime="@${SOURCE_DATE_EPOCH}" --sort=name --owner=0 --group=0 --numeric-owner --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime,delete=mtime -cf'
 
 %files
 %license docs/license.txt
