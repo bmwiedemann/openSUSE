@@ -806,4 +806,12 @@
   * fix unintentional bug of the head/tail modifiers</comment>
     <requestid>888711</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>be536b8a4b061cb8886f0ec96f4f1e6b</srcmd5>
+    <version>6.22.04</version>
+    <time>1621439333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update MAILDIR to /var/mail (forwarded request 893234 from gmbr3)</comment>
+    <requestid>893555</requestid>
+  </revision>
 </revisionlist>

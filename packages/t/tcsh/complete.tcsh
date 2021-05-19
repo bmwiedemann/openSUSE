@@ -25,7 +25,7 @@
     endif
     set hosts=(`echo $hosts localhost $HOSTNAME|tr ' ' '\n'|sort -u -t '.'`)
     unset _f
-    set _maildir = /var/spool/mail
+    set _maildir = /var/mail
     set _ypdir  =  /var/yp
     set _domain =  "`domainname`"
     if ($?MANPATH) then

@@ -205,7 +205,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %doc %{_mandir}/man1/csh.1.gz
 %doc %{_mandir}/man1/tcsh.1.gz
 
-%files -n tcsh-lang
+%files lang
 %defattr(0644,root,root)
 %{_datadir}/locale/*/LC_MESSAGES/tcsh*
 
