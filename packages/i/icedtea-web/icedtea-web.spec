@@ -29,7 +29,7 @@
 %bcond_without docs
 %bcond_with plugin
 Name:           icedtea-web
-Version:        1.8.4
+Version:        1.8.6
 Release:        0
 Summary:        Java Web Start implementation
 License:        GPL-2.0-only WITH Classpath-exception-2.0
