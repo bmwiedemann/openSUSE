@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 17 08:30:46 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.1:
+  * Drop support for Python 2.7
+  * Move to pycodestyle from pep8 and drop setup.py requirement for it
+  * Minor maintenance documentation updates 
+- Drop execute bits for installed modules, stop a spurious requirement.
+
+-------------------------------------------------------------------
 Thu Dec  3 15:53:31 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Revert previous commit. We don't have to uninstall slave alternative.

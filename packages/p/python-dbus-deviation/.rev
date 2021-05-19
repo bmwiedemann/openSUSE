@@ -26,4 +26,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854619</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4f9ed972f734b50b198158e8385426d</srcmd5>
+    <version>0.6.1</version>
+    <time>1621439336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Drop support for Python 2.7
+  * Move to pycodestyle from pep8 and drop setup.py requirement for it
+  * Minor maintenance documentation updates 
+- Drop execute bits for installed modules, stop a spurious requirement.</comment>
+    <requestid>893603</requestid>
+  </revision>
 </revisionlist>

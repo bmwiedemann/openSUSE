@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-deviation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-dbus-deviation
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Parse D-Bus introspection XML and process it in various ways
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            http://people.collabora.com/~pwith/dbus-deviation/
 Source:         https://files.pythonhosted.org/packages/source/d/dbus-deviation/dbus-deviation-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
@@ -45,8 +45,8 @@ This functionality is also available as a Python module, dbusdeviation.
 %prep
 %setup -q -n dbus-deviation-%{version}
 sed -i -e "/setuptools_/d" setup.py
-chmod -x dbusapi/tests/*.py dbusdeviation/utilities/*.py
-sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/utilities/*.py
+chmod -x dbusapi/tests/*.py dbusdeviation/tests/*.py dbusdeviation/utilities/*.py
+sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/tests/*.py dbusdeviation/utilities/*.py
 
 %build
 %python_build
@@ -67,7 +67,7 @@ sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/utilities/*.py
 %python_uninstall_alternative dbus-interface-diff
 
 %files %{python_files}
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %license COPYING
 %python_alternative %{_bindir}/dbus-interface-diff
 %python_alternative %{_bindir}/dbus-interface-vcs-helper
