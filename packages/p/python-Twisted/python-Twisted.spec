@@ -36,6 +36,8 @@ Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 # We don't want to package yet another module, and it is easily skippable
 Patch4:         no-cython_test_exception_raiser.patch
+# PATCH-FIX-UPSTREAM incremental-21.patch https://github.com/twisted/twisted/commit/ab934c065177422a7121e44c792c56c32962c4e4.patch
+Patch5:         incremental-21.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h2 >= 3.0}
 BuildRequires:  %{python_module hyperlink >= 17.1.1}
 BuildRequires:  %{python_module idna >= 2.4}
-BuildRequires:  %{python_module incremental >= 16.10.1}
+BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module pyOpenSSL >= 16.0.0}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pyserial >= 3.0}
@@ -71,7 +73,7 @@ Requires:       python-cryptography >= 2.6
 Requires:       python-h2 >= 3.0
 Requires:       python-hyperlink >= 17.1.1
 Requires:       python-idna >= 2.4
-Requires:       python-incremental >= 16.10.1
+Requires:       python-incremental >= 21.3.0
 Requires:       python-pyOpenSSL >= 16.0.0
 Requires:       python-pyasn1
 Requires:       python-pyserial >= 3.0

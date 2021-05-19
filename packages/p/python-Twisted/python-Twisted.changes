@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 10:15:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add incremental-21.patch: support newer incremental versions 
+
+-------------------------------------------------------------------
 Wed Mar 10 06:11:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 21.2.0:
