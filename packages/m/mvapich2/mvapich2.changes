@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 18 08:08:52 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mvapich2 2.3.6
+    - Enhanced performance for UD-Hybrid code
+    - Add multi-rail support for UD-Hybrid code
+    - Enhanced performance for shared-memory collectives
+    - Enhanced job-startup performance for flux job launcher
+    - Use PMI2 by default when SLURM is selected as process manager
+    - Add support to use aligned memory allocations for multi-threaded
+      applications
+    - Architecture detection and enhanced point-to-point tuning for
+      Oracle BM.HPC2 cloud shape
+    - Add support for GCC compiler v11
+    - Update hwloc v1 code to v1.11.14
+    - Update hwloc v2 code to v2.4.2
+- Drop obsolete patches:
+  - fix-missing-return-code.patch as it was fixed upstream
+  - mvapich2-remove-deprecated-sys_siglist.patch
+  - rdma_find_network_type-return-MV2_NETWORK_CLASS_UNKNOWN-when-dev_list-is-freed.patch
+- Refresh reproducible.patch
+
+-------------------------------------------------------------------
 Wed Mar 24 10:06:26 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update mvapich2 to 2.3.5.

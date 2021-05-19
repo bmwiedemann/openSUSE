@@ -1,24 +1,23 @@
-http://mailman.cse.ohio-state.edu/pipermail/mvapich-discuss/2019-April/006837.html
-
-commit 2d6233b60e419059240e054e40fc6ece6fd94929
+commit a99404dac8f07ec7e72aa244ff0527d9c85ad482
 Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
 Date:   Mon Mar 25 11:12:56 2019 +0100
 
-    Sort input file list
+    reproducible
     
-    so that mpich builds in a reproducible way
+    Sort input file list so that mpich builds in a reproducible way
     in spite of indeterministic filesystem readdir order
     
     See https://reproducible-builds.org/ for why this is good.
     
-    Without this patch,
-    README.envvar, /usr/lib64/mpi/gcc/mpich/bin/mpivars and other
-    output files varied between builds.
+    Without this patch, README.envvar, /usr/lib64/mpi/gcc/mpich/bin/mpivars
+    and other output files varied between builds.
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
-Index: mvapich2-2.2/maint/extractcvars.in
-===================================================================
---- mvapich2-2.2.orig/maint/extractcvars.in
-+++ mvapich2-2.2/maint/extractcvars.in
+diff --git maint/extractcvars.in maint/extractcvars.in
+index b627a6f8d937..0eaa673adf1e 100755
+--- maint/extractcvars.in
++++ maint/extractcvars.in
 @@ -594,7 +594,7 @@ sub ExpandDir {
      my @subdirs = ();
      my $DIR_HANDLE;
@@ -28,10 +27,10 @@ Index: mvapich2-2.2/maint/extractcvars.in
          if ($filename =~ /^\./) {
              next;
          } elsif (-d "$dir/$filename") {
-Index: mvapich2-2.2/maint/extractfixme.in
-===================================================================
---- mvapich2-2.2.orig/maint/extractfixme.in
-+++ mvapich2-2.2/maint/extractfixme.in
+diff --git maint/extractfixme.in maint/extractfixme.in
+index 6b2567f037ed..7636fad296b8 100644
+--- maint/extractfixme.in
++++ maint/extractfixme.in
 @@ -114,7 +114,7 @@ sub ExpandDir {
      my @otherdirs = ();
      my @files = ();
@@ -41,11 +40,11 @@ Index: mvapich2-2.2/maint/extractfixme.in
  	if ($filename =~ /^\./ || $filename eq ".svn") {
  	    next;
  	}
-Index: mvapich2-2.2/maint/extractstrings.in
-===================================================================
---- mvapich2-2.2.orig/maint/extractstrings.in
-+++ mvapich2-2.2/maint/extractstrings.in
-@@ -71,7 +71,7 @@ sub GetFileNamesInDirectory {
+diff --git maint/extractstrings.in maint/extractstrings.in
+index 4e8a599c89ca..449a8c007499 100644
+--- maint/extractstrings.in
++++ maint/extractstrings.in
+@@ -73,7 +73,7 @@ sub GetFileNamesInDirectory {
      my @filesFound = ();
  
      opendir DIR, $dir || die "Could not open $dir\n";
@@ -54,7 +53,7 @@ Index: mvapich2-2.2/maint/extractstrings.in
  	if (! -f "$dir/$file") { next; }
  	if ($file =~ /^\.$/ || $file =~ /^\.\.$/) { next; }
  	if ($file =~ /$pattern/) {
-@@ -244,7 +244,7 @@ sub processDirs {
+@@ -246,7 +246,7 @@ sub processDirs {
      my @dirs = ();
      # Find the directories
      opendir DIR, "$dir" || die "Cannot open $dir\n";
@@ -63,7 +62,7 @@ Index: mvapich2-2.2/maint/extractstrings.in
  	if (! -d "$dir/$file") { next; }
  	if ($file =~ /^\./) { next; }
  	if ($file =~ /^.svn/) { next; }
-@@ -271,7 +271,7 @@ sub processDirsAndAction {
+@@ -273,7 +273,7 @@ sub processDirsAndAction {
      my @dirs = ();
      # Find the directories
      opendir DIR, "$dir" || die "Cannot open $dir\n";
@@ -72,10 +71,10 @@ Index: mvapich2-2.2/maint/extractstrings.in
  	if (! -d "$dir/$file") { next; }
  	if ($file =~ /^\./) { next; }
  	if ($file =~ /^.svn/) { next; }
-Index: mvapich2-2.2/maint/gen_subcfg_m4
-===================================================================
---- mvapich2-2.2.orig/maint/gen_subcfg_m4
-+++ mvapich2-2.2/maint/gen_subcfg_m4
+diff --git maint/gen_subcfg_m4 maint/gen_subcfg_m4
+index 80654263401d..34cb19ed0649 100755
+--- maint/gen_subcfg_m4
++++ maint/gen_subcfg_m4
 @@ -118,7 +118,7 @@ while (my $dir = pop @dirstack) {
      # the stack to continue the traversal
      opendir DH, $dir
@@ -85,11 +84,11 @@ Index: mvapich2-2.2/maint/gen_subcfg_m4
      foreach my $f (@contents) {
          # avoid endless recursion
          next if $f eq "." || $f eq "..";
-Index: mvapich2-2.2/maint/getcoverage.in
-===================================================================
---- mvapich2-2.2.orig/maint/getcoverage.in
-+++ mvapich2-2.2/maint/getcoverage.in
-@@ -773,7 +773,7 @@ sub ExpandDir {
+diff --git maint/getcoverage.in maint/getcoverage.in
+index c9c69f299261..f4fc35be72f6 100644
+--- maint/getcoverage.in
++++ maint/getcoverage.in
+@@ -779,7 +779,7 @@ sub ExpandDir {
      my @otherdirs = ();
      my @files = ();
      opendir DIR, "$dir";

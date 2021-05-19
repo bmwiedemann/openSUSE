@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.5
-%define _vers 2_3_5
+%define vers  2.3.6
+%define _vers 2_3_6
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -252,9 +252,6 @@ Patch2:         mvapich2-arm-support.patch
 # It's been merged upstream, should be removed with the next release
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
-Patch5:         fix-missing-return-code.patch
-Patch6:         mvapich2-remove-deprecated-sys_siglist.patch
-Patch7:         rdma_find_network_type-return-MV2_NETWORK_CLASS_UNKNOWN-when-dev_list-is-freed.patch
 
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
@@ -392,10 +389,7 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch0
 %patch2
 %patch3
-%patch4 -p1
-%patch5
-%patch6
-%patch7 -p1
+%patch4
 
 # Only apply these patches on Armv7
 %ifarch armv7hl
