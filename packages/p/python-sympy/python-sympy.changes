@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 14 01:35:35 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.8:
+  * Backwards compatibility breaks and deprecations
+    + Please manually add any backwards compatibility breaks or
+      deprecations here, in addition to the automatic listing below.
+    + assumptions
+      AskHandler(), register_handler() and remove_handler() are
+      deprecated. Handler now must be multipledispatch
+      instance. (#20835 by @JSS95)
+    + parsing
+      Parsing of "Q" returns AssumptionKeys instance in assumptions
+      module. This means that sympify("Q") will no longer return a
+      symbol. (#21152 by @JSS95)
+  * Full changelog at
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.8
+
+-------------------------------------------------------------------
 Mon Jan 25 21:45:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.1:

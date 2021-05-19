@@ -20,29 +20,29 @@
 %define skip_python2 1
 %bcond_with     test
 Name:           python-sympy
-Version:        1.7.1
+Version:        1.8
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://www.sympy.org/
+URL:            https://www.sympy.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/sympy/sympy-%{version}.tar.gz
 Source99:       python-sympy-rpmlintrc
 BuildRequires:  %{python_module mpmath >= 0.19}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
 Requires:       python-mpmath >= 0.19
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-ipython
 Recommends:     python-numpy
 Recommends:     python-symengine
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -74,7 +74,7 @@ sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitel
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
 }
-%python_compileall
+%{python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/isympy
