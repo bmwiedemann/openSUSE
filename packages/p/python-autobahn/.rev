@@ -239,4 +239,21 @@
   * fix: wamp.close.goodbye_and_out counts as a clean exit</comment>
     <requestid>872023</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb938a2f88b6cba7e2810e2ddfc9eced</srcmd5>
+    <version>21.3.1</version>
+    <time>1621439347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.1:
+  * fix: Twisted v21.2.0 breaks Crossbar.io
+  * new: use_binary_hex_encoding option for JSON object serializer
+  * fix: correct some sphinx doc references
+  * new: minimum supported Python (language) version is now 3.7 (on CPython and PyPy)
+  * new: more XBR proxy/stub code generation capabilities (RPC call/invoation handlers)
+  * fix: wamp-cryptosign loading of keys from SSH agent
+  * fix: update Docker image building and build Docker multi-arch images
+  * new: add more WAMP-cryptosign signature test vectors and unit tests
+  * fix: include XBR code rendering templates in package manifest</comment>
+    <requestid>894061</requestid>
+  </revision>
 </revisionlist>

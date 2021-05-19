@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 18 11:41:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.3.1:
+  * fix: Twisted v21.2.0 breaks Crossbar.io
+  * new: use_binary_hex_encoding option for JSON object serializer
+  * fix: correct some sphinx doc references
+  * new: minimum supported Python (language) version is now 3.7 (on CPython and PyPy)
+  * new: more XBR proxy/stub code generation capabilities (RPC call/invoation handlers)
+  * fix: wamp-cryptosign loading of keys from SSH agent
+  * fix: update Docker image building and build Docker multi-arch images
+  * new: add more WAMP-cryptosign signature test vectors and unit tests
+  * fix: include XBR code rendering templates in package manifest 
+
+-------------------------------------------------------------------
 Sat Feb 13 20:06:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.2.1:
