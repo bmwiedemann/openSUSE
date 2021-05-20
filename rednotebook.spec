@@ -17,7 +17,7 @@
 
 
 Name:           rednotebook
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        Graphical diary and journal
 # See note at the end of README: code is using some LGPL-3.0+ module, so the resulting work is GPL-3.0+.
