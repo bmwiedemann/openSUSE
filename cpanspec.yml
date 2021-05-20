@@ -4,9 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  0001-Remove-use-of-Mozilla-CA.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-
@@ -18,3 +17,4 @@
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+ignore_requires: Mozilla::CA
