@@ -611,4 +611,24 @@
     <comment></comment>
     <requestid>857034</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>210b54b104b066ec5c10b29d9259b28f</srcmd5>
+    <version>5.6.0</version>
+    <time>1621531403</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.0:
+  * Reverse ordering of 'D1\_D2\_SETUP\_ARGS'
+  * Add test for cfg -&gt; py transformation
+  * Don't pass empty 'long\_description'
+  * Move flake8 as a pre-commit local target
+  * Map requires-python to python-requires (attempt 2)
+  * Update dependencies to avoid failure with old pip
+  * Increase OS\_TEST\_TIMEOUT to 1200
+  * Prevent test failure due to use of setpref
+  * util: Convert 'D1\_D2\_SETUP\_ARGS' to a list of tuples
+  * Revert &quot;Map requires-python to python-requires&quot;
+  * Dropping lower constraints testing
+  * Adding pre-commit</comment>
+    <requestid>894160</requestid>
+  </revision>
 </revisionlist>
