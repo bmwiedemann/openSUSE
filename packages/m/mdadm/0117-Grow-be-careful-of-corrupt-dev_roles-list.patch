@@ -1,0 +1,166 @@
+From 8818d4e7fe7cda900d5c00014b05cdde058bdd29 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Fri, 26 Feb 2021 12:02:36 +1100
+Subject: [PATCH] Grow: be careful of corrupt dev_roles list
+Git-commit: 8818d4e7fe7cda900d5c00014b05cdde058bdd29
+Patch-mainline: mdadm-4.1+
+References: bsc#1181619
+
+I've seen a case where the dev_roles list of a linear array
+was corrupt.  ->max_dev was > 128 and > raid_disks, and the
+extra slots were '0', not 0xFFFE or 0xFFFF.
+
+This caused problems when a 128th device was added.
+
+So:
+ 1/ make Grow_Add_device more robust so that if numbers
+   look wrong, it fails-safe.
+
+ 2/ make examine_super1() report details if the dev_roles
+   array is corrupt.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Grow.c   | 15 ++++++++++++---
+ super1.c | 48 ++++++++++++++++++++++++++++++++++++++----------
+ 2 files changed, 50 insertions(+), 13 deletions(-)
+
+diff --git a/Grow.c b/Grow.c
+index 5c2512f..cec8388 100644
+--- a/Grow.c
++++ b/Grow.c
+@@ -197,7 +197,12 @@ int Grow_Add_device(char *devname, int fd, char *newdev)
+ 	info.disk.minor = minor(rdev);
+ 	info.disk.raid_disk = d;
+ 	info.disk.state = (1 << MD_DISK_SYNC) | (1 << MD_DISK_ACTIVE);
+-	st->ss->update_super(st, &info, "linear-grow-new", newdev, 0, 0, NULL);
++	if (st->ss->update_super(st, &info, "linear-grow-new", newdev,
++				 0, 0, NULL) != 0) {
++		pr_err("Preparing new metadata failed on %s\n", newdev);
++		close(nfd);
++		return 1;
++	}
+ 
+ 	if (st->ss->store_super(st, nfd)) {
+ 		pr_err("Cannot store new superblock on %s\n", newdev);
+@@ -250,8 +255,12 @@ int Grow_Add_device(char *devname, int fd, char *newdev)
+ 		info.array.active_disks = nd+1;
+ 		info.array.working_disks = nd+1;
+ 
+-		st->ss->update_super(st, &info, "linear-grow-update", dv,
+-				     0, 0, NULL);
++		if (st->ss->update_super(st, &info, "linear-grow-update", dv,
++				     0, 0, NULL) != 0) {
++			pr_err("Updating metadata failed on %s\n", dv);
++			close(fd2);
++			return 1;
++		}
+ 
+ 		if (st->ss->store_super(st, fd2)) {
+ 			pr_err("Cannot store new superblock on %s\n", dv);
+diff --git a/super1.c b/super1.c
+index b5b379b..7bee026 100644
+--- a/super1.c
++++ b/super1.c
+@@ -330,6 +330,7 @@ static void examine_super1(struct supertype *st, char *homehost)
+ 	int layout;
+ 	unsigned long long sb_offset;
+ 	struct mdinfo info;
++	int inconsistent = 0;
+ 
+ 	printf("          Magic : %08x\n", __le32_to_cpu(sb->magic));
+ 	printf("        Version : 1");
+@@ -576,14 +577,16 @@ static void examine_super1(struct supertype *st, char *homehost)
+ 			if (role == d)
+ 				cnt++;
+ 		}
+-		if (cnt == 2)
++		if (cnt == 2 && __le32_to_cpu(sb->level) > 0)
+ 			printf("R");
+ 		else if (cnt == 1)
+ 			printf("A");
+ 		else if (cnt == 0)
+ 			printf(".");
+-		else
++		else {
+ 			printf("?");
++			inconsistent = 1;
++		}
+ 	}
+ #if 0
+ 	/* This is confusing too */
+@@ -598,6 +601,21 @@ static void examine_super1(struct supertype *st, char *homehost)
+ #endif
+ 	printf(" ('A' == active, '.' == missing, 'R' == replacing)");
+ 	printf("\n");
++	for (d = 0; d < __le32_to_cpu(sb->max_dev); d++) {
++		unsigned int r = __le16_to_cpu(sb->dev_roles[d]);
++		if (r <= MD_DISK_ROLE_MAX &&
++		    r > __le32_to_cpu(sb->raid_disks) + delta_extra)
++			inconsistent = 1;
++	}
++	if (inconsistent) {
++		printf("WARNING Array state is inconsistent - each number should appear only once\n");
++		for (d = 0; d < __le32_to_cpu(sb->max_dev); d++)
++			if (__le16_to_cpu(sb->dev_roles[d]) >= MD_DISK_ROLE_FAULTY)
++				printf(" %d:-", d);
++			else
++				printf(" %d:%d", d, __le16_to_cpu(sb->dev_roles[d]));
++		printf("\n");
++	}
+ }
+ 
+ static void brief_examine_super1(struct supertype *st, int verbose)
+@@ -1264,19 +1282,25 @@ static int update_super1(struct supertype *st, struct mdinfo *info,
+ 			rv = 1;
+ 		}
+ 	} else if (strcmp(update, "linear-grow-new") == 0) {
+-		unsigned int i;
++		int i;
+ 		int fd;
+-		unsigned int max = __le32_to_cpu(sb->max_dev);
++		int max = __le32_to_cpu(sb->max_dev);
++
++		if (max > MAX_DEVS)
++			return -2;
+ 
+ 		for (i = 0; i < max; i++)
+ 			if (__le16_to_cpu(sb->dev_roles[i]) >=
+ 			    MD_DISK_ROLE_FAULTY)
+ 				break;
++		if (i != info->disk.number)
++			return -2;
+ 		sb->dev_number = __cpu_to_le32(i);
+-		info->disk.number = i;
+-		if (i >= max) {
++
++		if (i == max)
+ 			sb->max_dev = __cpu_to_le32(max+1);
+-		}
++		if (i > max)
++			return -2;
+ 
+ 		random_uuid(sb->device_uuid);
+ 
+@@ -1302,10 +1326,14 @@ static int update_super1(struct supertype *st, struct mdinfo *info,
+ 		}
+ 	} else if (strcmp(update, "linear-grow-update") == 0) {
+ 		int max = __le32_to_cpu(sb->max_dev);
+-		sb->raid_disks = __cpu_to_le32(info->array.raid_disks);
+-		if (info->array.raid_disks > max) {
++		int i = info->disk.number;
++		if (max > MAX_DEVS || i > MAX_DEVS)
++			return -2;
++		if (i > max)
++			return -2;
++		if (i == max)
+ 			sb->max_dev = __cpu_to_le32(max+1);
+-		}
++		sb->raid_disks = __cpu_to_le32(info->array.raid_disks);
+ 		sb->dev_roles[info->disk.number] =
+ 			__cpu_to_le16(info->disk.raid_disk);
+ 	} else if (strcmp(update, "resync") == 0) {
+-- 
+2.26.2
+

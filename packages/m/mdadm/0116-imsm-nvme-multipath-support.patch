@@ -1,0 +1,232 @@
+From d835518b6b5381da773e1ce1ae10614239017ecf Mon Sep 17 00:00:00 2001
+From: Blazej Kucman <blazej.kucman@intel.com>
+Date: Fri, 12 Mar 2021 10:30:16 +0100
+Subject: [PATCH] imsm: nvme multipath support
+Patch-mainline: mdadm-4.1+
+Git-commit: d835518b6b5381da773e1ce1ae10614239017ecf
+References: bsc#1175758
+
+Add support for nvme devices which are represented
+via nvme-subsystem.
+Print warning when multi-path disk is added to RAID.
+
+Signed-off-by: Oleksandr Shchirskyi <oleksandr.shchirskyi@intel.com>
+Signed-off-by: Blazej Kucman <blazej.kucman@intel.com>
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ platform-intel.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++-
+ platform-intel.h |  2 ++
+ super-intel.c    | 38 ++++++++++++++---------
+ 3 files changed, 104 insertions(+), 15 deletions(-)
+
+diff --git a/platform-intel.c b/platform-intel.c
+index f1f6d4c..0e1ec3d 100644
+--- a/platform-intel.c
++++ b/platform-intel.c
+@@ -30,6 +30,8 @@
+ #include <sys/stat.h>
+ #include <limits.h>
+ 
++#define NVME_SUBSYS_PATH "/sys/devices/virtual/nvme-subsystem/"
++
+ static int devpath_to_ll(const char *dev_path, const char *entry,
+ 			 unsigned long long *val);
+ 
+@@ -668,12 +670,63 @@ const struct imsm_orom *find_imsm_capability(struct sys_dev *hba)
+ 	return NULL;
+ }
+ 
++/* Check whether the nvme device is represented by nvme subsytem,
++ * if yes virtual path should be changed to hardware device path,
++ * to allow IMSM capabilities detection.
++ * Returns:
++ *	hardware path to device - if the device is represented via
++ *		nvme virtual subsytem
++ *	NULL - if the device is not represented via nvme virtual subsytem
++ */
++char *get_nvme_multipath_dev_hw_path(const char *dev_path)
++{
++	DIR *dir;
++	struct dirent *ent;
++	char *rp = NULL;
++
++	if (strncmp(dev_path, NVME_SUBSYS_PATH, strlen(NVME_SUBSYS_PATH)) != 0)
++		return NULL;
++
++	dir = opendir(dev_path);
++	if (!dir)
++		return NULL;
++
++	for (ent = readdir(dir); ent; ent = readdir(dir)) {
++		char buf[strlen(dev_path) + strlen(ent->d_name) + 1];
++
++		/* Check if dir is a controller, ignore namespaces*/
++		if (!(strncmp(ent->d_name, "nvme", 4) == 0) ||
++		    (strrchr(ent->d_name, 'n') != &ent->d_name[0]))
++			continue;
++
++		sprintf(buf, "%s/%s", dev_path, ent->d_name);
++		rp = realpath(buf, NULL);
++		break;
++	}
++
++	closedir(dir);
++	return rp;
++}
++
+ char *devt_to_devpath(dev_t dev)
+ {
+ 	char device[46];
++	char *rp;
++	char *buf;
+ 
+ 	sprintf(device, "/sys/dev/block/%d:%d/device", major(dev), minor(dev));
+-	return realpath(device, NULL);
++
++	rp = realpath(device, NULL);
++	if (!rp)
++		return NULL;
++
++	buf = get_nvme_multipath_dev_hw_path(rp);
++	if (buf) {
++		free(rp);
++		return buf;
++	}
++
++	return rp;
+ }
+ 
+ char *diskfd_to_devpath(int fd)
+@@ -797,3 +850,27 @@ int imsm_is_nvme_supported(int disk_fd, int verbose)
+ 	}
+ 	return 1;
+ }
++
++/* Verify if multipath is supported by NVMe controller
++ * Returns:
++ *	0 - not supported
++ *	1 - supported
++ */
++int is_multipath_nvme(int disk_fd)
++{
++	char path_buf[PATH_MAX];
++	char ns_path[PATH_MAX];
++	char *kname = fd2kname(disk_fd);
++
++	if (!kname)
++		return 0;
++	sprintf(path_buf, "/sys/block/%s", kname);
++
++	if (!realpath(path_buf, ns_path))
++		return 0;
++
++	if (strncmp(ns_path, NVME_SUBSYS_PATH, strlen(NVME_SUBSYS_PATH)) == 0)
++		return 1;
++
++	return 0;
++}
+diff --git a/platform-intel.h b/platform-intel.h
+index 7371478..8396a0f 100644
+--- a/platform-intel.h
++++ b/platform-intel.h
+@@ -236,6 +236,7 @@ static inline char *guid_str(char *buf, struct efi_guid guid)
+ 	return buf;
+ }
+ 
++char *get_nvme_multipath_dev_hw_path(const char *dev_path);
+ char *diskfd_to_devpath(int fd);
+ __u16 devpath_to_vendor(const char *dev_path);
+ struct sys_dev *find_driver_devices(const char *bus, const char *driver);
+@@ -252,4 +253,5 @@ const struct imsm_orom *get_orom_by_device_id(__u16 device_id);
+ struct sys_dev *device_by_id(__u16 device_id);
+ struct sys_dev *device_by_id_and_path(__u16 device_id, const char *path);
+ int imsm_is_nvme_supported(int disk_fd, int verbose);
++int is_multipath_nvme(int disk_fd);
+ char *vmd_domain_to_controller(struct sys_dev *hba, char *buf);
+diff --git a/super-intel.c b/super-intel.c
+index 2bfcad1..6617dd6 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -2386,9 +2386,9 @@ static int ahci_enumerate_ports(const char *hba_path, int port_count, int host_b
+ static int print_nvme_info(struct sys_dev *hba)
+ {
+ 	char buf[1024];
++	char *device_path;
+ 	struct dirent *ent;
+ 	DIR *dir;
+-	char *rp;
+ 	int fd;
+ 
+ 	dir = opendir("/sys/block/");
+@@ -2397,19 +2397,23 @@ static int print_nvme_info(struct sys_dev *hba)
+ 
+ 	for (ent = readdir(dir); ent; ent = readdir(dir)) {
+ 		if (strstr(ent->d_name, "nvme")) {
+-			sprintf(buf, "/sys/block/%s", ent->d_name);
+-			rp = realpath(buf, NULL);
+-			if (!rp)
++			fd = open_dev(ent->d_name);
++			if (fd < 0)
+ 				continue;
+-			if (path_attached_to_hba(rp, hba->path)) {
+-				fd = open_dev(ent->d_name);
+-				if (!imsm_is_nvme_supported(fd, 0)) {
+-					if (fd >= 0)
+-						close(fd);
+-					free(rp);
+-					continue;
+-				}
+ 
++			if (!imsm_is_nvme_supported(fd, 0)) {
++				if (fd >= 0)
++					close(fd);
++				continue;
++			}
++
++			device_path = diskfd_to_devpath(fd);
++			if (!device_path) {
++				close(fd);
++				continue;
++			}
++
++			if (path_attached_to_hba(device_path, hba->path)) {
+ 				fd2devname(fd, buf);
+ 				if (hba->type == SYS_DEV_VMD)
+ 					printf(" NVMe under VMD : %s", buf);
+@@ -2420,9 +2424,9 @@ static int print_nvme_info(struct sys_dev *hba)
+ 					printf(" (%s)\n", buf);
+ 				else
+ 					printf("()\n");
+-				close(fd);
+ 			}
+-			free(rp);
++			free(device_path);
++			close(fd);
+ 		}
+ 	}
+ 
+@@ -5938,6 +5942,7 @@ static int add_to_super_imsm(struct supertype *st, mdu_disk_info_t *dk,
+ 		int i;
+ 		char *devpath = diskfd_to_devpath(fd);
+ 		char controller_path[PATH_MAX];
++		char *controller_name;
+ 
+ 		if (!devpath) {
+ 			pr_err("failed to get devpath, aborting\n");
+@@ -5948,6 +5953,11 @@ static int add_to_super_imsm(struct supertype *st, mdu_disk_info_t *dk,
+ 		}
+ 
+ 		snprintf(controller_path, PATH_MAX-1, "%s/device", devpath);
++
++		controller_name = basename(devpath);
++		if (is_multipath_nvme(fd))
++			pr_err("%s controller supports Multi-Path I/O, Intel (R) VROC does not support multipathing\n", controller_name);
++
+ 		free(devpath);
+ 
+ 		if (!imsm_is_nvme_supported(dd->fd, 1)) {
+-- 
+2.26.2
+
