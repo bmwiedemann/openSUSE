@@ -25,9 +25,9 @@ Summary:        Glade Library Compatible with the GNOME 2.x Desktop Platform
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.daa.com.au/~james/gnome/
-Source:         ftp://ftp.gnome.org/pub/GNOME/sources/%{_name}/2.6/%{_name}-%{version}.tar.bz2
+Source:         https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 Source99:       baselibs.conf
-# PATCH-FREATURE-OPENSUSE libglade2-python3.patch dimstar@opensuse.org -- Use python3
+# PATCH-FEATURE-OPENSUSE libglade2-python3.patch dimstar@opensuse.org -- Use python3
 Patch0:         libglade2-python3.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc

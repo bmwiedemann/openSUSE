@@ -329,4 +329,18 @@ additions, including new UTF-8 compose sequences for:
   p_xlib_skip_ext_env.diff</comment>
     <requestid>849881</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3d7a2807425c51f790280aeb010dd29f</srcmd5>
+    <version>1.7.1</version>
+    <time>1621531484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1
+  * security update for CVE-2021-31535 (bsc#1182506)
+- supersedes U_CVE-2021-31535.patch 
+
+- U_CVE-2021-31535.patch
+  * adds missing request length checks in libX11 (CVE-2021-31535,
+    bsc#1182506)</comment>
+    <requestid>894113</requestid>
+  </revision>
 </revisionlist>

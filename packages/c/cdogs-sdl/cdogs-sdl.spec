@@ -17,14 +17,16 @@
 
 
 Name:           cdogs-sdl
-Version:        0.10.2
+Version:        0.11.1
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        GPL-2.0-only AND BSD-2-Clause AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            https://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.12
+# PATCH-FIX-UPSTREAM fix-multiple-definitions.patch -- Fix multiple definitions linking error in test file
+Patch0:         fix-multiple-definitions.patch
+BuildRequires:  cmake >= 3.1
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -46,6 +48,7 @@ from up to 11 weapons, and try over 100 user-created campaigns. Have fun!
 
 %prep
 %setup -q
+%patch0 -p1
 # use system enet
 rm -rf src/cdogs/enet
 
@@ -57,9 +60,12 @@ rm -rf src/cdogs/enet
 %cmake_install
 %fdupes %{buildroot}%{_datadir}
 
+%check
+%ctest
+
 %files
 %license COPYING
-%doc README.md
+%doc %{_datadir}/%{name}/README.md
 %{_datadir}/applications/*.desktop
 %{_bindir}/%{name}*
 %{_datadir}/%{name}/

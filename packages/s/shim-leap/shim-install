@@ -221,15 +221,6 @@ do
     esac
 done
 
-# bsc#1185464
-# The Azure firmware doesn't respect the boot option created by either
-# efibootmgr or fallback.efi so we have to skip the installation of
-# fallback.efi to avoid the endless reset loop.
-if is_azure; then
-    no_nvram=yes
-    removable=yes
-fi
-
 if test -n "$efidir"; then
     efi_fs=`"$grub_probe" --target=fs "${efidir}"`
     if test "x$efi_fs" = xfat; then :; else
@@ -441,3 +432,22 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
     fi
 fi
 
+# bsc#1185464 bsc#1185961
+# The Azure firmware sometimes doesn't respect the boot option created by
+# either efibootmgr or fallback.efi so we have to remove fallback.efi to
+# avoid the endless reset loop.
+if is_azure; then
+    # Skip the workaround if we don't own \EFI\Boot or the removable
+    # option is used
+    if test "$update_boot" = "yes" && test "$removable" = "no"; then
+        # Remove fallback.efi which could cause the reset loop in Azure
+        rm -f "${efibootdir}/fallback.efi"
+        # Remove the older grub binary and config
+        rm -f "${efibootdir}/grub.efi"
+        rm -f "${efibootdir}/grub.cfg"
+        # Install new grub binary and config file to \EFI\Boot as
+        # the "removable" option
+        cp "${efidir}/grub.cfg" "${efibootdir}/grub.cfg"
+        cp "${efidir}/grub.efi" "${efibootdir}/grub.efi"
+    fi
+fi

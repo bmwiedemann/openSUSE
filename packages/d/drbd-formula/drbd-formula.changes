@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 17 05:43:52 UTC 2021 - nick wang <nwang@suse.com>
+
+- Version bump 0.4.3
+  * Support more parameters for variable rate resync
+    max_buffers, sndbuf_size, rcvbuf_size, c_delay_target, c_min_rate
+
+-------------------------------------------------------------------
 Thu Mar 11 05:04:03 UTC 2021 - nick wang <nwang@suse.com>
 
 - Version bump 0.4.2

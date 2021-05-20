@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 15:39:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update jaxen to version 1.1.6
+  * Bug fixes
+
+-------------------------------------------------------------------
 Tue Apr  6 09:10:12 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Increase java stack size to avoid overflow

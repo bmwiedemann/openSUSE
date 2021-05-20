@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 20 00:35:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.8.0
+  * feat: IME composition preview not appearing on Windows
+  * feat: Synchronized terminal updates using DCS = 1 s ST/DCS = 2 s ST
+  * feat: Regex terminal hints (see features.md)
+  * feat: macOS keybinding (cmd+alt+H) hiding all windows other than alacritty
+  * feat: Support for magnet URLs
+  * change: The vi mode cursor is now created in the top-left if the terminal
+    cursor is invisible
+  * change: Focused search match will use cell instead of match colors
+    for CellForeground/CellBackground
+  * change: URL highlighting has moved from mouse.url to the hints
+    config section
+  * fix: alacritty failing to start on X11 with invalid DPI reported by XRandr
+  * fix: Text selected after search without any match
+  * fix: Incorrect vi cursor position after leaving search
+  * fix: Clicking on URLs on Windows incorrectly opens File Explorer
+  * fix: Incorrect underline cursor thickness on wide cell
+  * fix: Viewport moving around when resizing while scrolled into history
+  * fix: Block cursor not expanding across fullwidth characters when
+    on the right side of it
+  * fix: Overwriting fullwidth characters only clearing one of the involved cells
+
+-------------------------------------------------------------------
 Sat Feb 20 22:34:40 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.7.2

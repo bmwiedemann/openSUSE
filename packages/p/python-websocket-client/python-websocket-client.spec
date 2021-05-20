@@ -1,7 +1,7 @@
 #
 # spec file for package python-websocket-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# RHEL provides this backport in its own repository
-%if 0%{?rhel} == 7
-%define ssl_match_hostname python-backports-ssl_match_hostname
-%else
-%define ssl_match_hostname python-backports.ssl_match_hostname
-%endif
 %bcond_without python2
 Name:           python-websocket-client
-Version:        0.57.0
+Version:        0.58.0
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only
@@ -37,15 +30,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-websocket-client-test = %{version}
 Obsoletes:      python-websocket-client-test < %{version}
 BuildArch:      noarch
 %if %{with python2}
-BuildRequires:  %{ssl_match_hostname}
+BuildRequires:  python-backports.ssl_match_hostname
 %endif
 %ifpython2
-Requires:       %{ssl_match_hostname}
+Requires:       python-backports.ssl_match_hostname
 %endif
 %python_subpackages
 
@@ -57,6 +50,7 @@ Websocket-client supports only hybi-13.
 
 %prep
 %setup -q -n websocket_client-%{version}
+sed -i '1 i #!/usr/bin/python' bin/wsdump.py
 
 %build
 %python_build

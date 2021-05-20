@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -36,6 +36,7 @@ Requires:       python3-Pygments >= 2.0
 Requires:       python3-QDarkStyle >= 3.0.2
 Requires:       python3-QtAwesome >= 1.0.2
 Requires:       python3-QtPy >= 1.5.0
+Requires:       python3-Rtree >= 0.9.7
 Requires:       python3-Sphinx >= 0.6.6
 Requires:       python3-atomicwrites >= 1.2.0
 Requires:       python3-autopep8
@@ -111,6 +112,7 @@ BuildRequires:  python3-Pygments >= 2.0
 BuildRequires:  python3-QDarkStyle >= 3.0.2
 BuildRequires:  python3-QtAwesome >= 1.0.2
 BuildRequires:  python3-QtPy >= 1.5.0
+BuildRequires:  python3-Rtree >= 0.9.7
 BuildRequires:  python3-Sphinx >= 0.6.6
 BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-autopep8
@@ -356,9 +358,11 @@ donttest+=" or test_apps_dialog"
 donttest+=" or test_load_time"
 # no online help within qtbot timeout
 donttest+=" or test_get_pydoc or test_pydocbrowser"
-# seccomp bpf failures on i586
 if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # seccomp bpf failures on i586
   donttest+=" or test_ipythonconsole"
+  # no appearance / css_path option on i586 (?)
+  donttest+=" or test_config_dialog"
 fi
 
 # tests marked slow:

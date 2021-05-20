@@ -254,7 +254,6 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %endif
 
 %files xsession
-%dir %{_datadir}/xsessions
 %{_datadir}/xsessions/xsession.desktop
 
 %changelog

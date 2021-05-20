@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue May 18 17:43:13 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.6+10+suse.47711374:
+  * Github workflows: add CI for SUSE-specific branches
+
+-------------------------------------------------------------------
+Fri Apr  2 00:01:23 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Disabled LTO for multipath-tools
+  * The test for is_valid_path fails if LTO is enabled, just
+    disabling it for %check is insufficient.
+
+-------------------------------------------------------------------
+Thu Apr 01 21:00:32 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.6+9+suse.6c05a61:
+  Update to upstream 0.8.6.
+
+  * add eh_deadline option to avoid endless SCSI error handling
+  * add wwid_recheck option to detect storage configuration changes
+  * add library versioning for libmultipath, libmpathpersist etc. and
+    to libmultipath plugins
+  * move some global symbols to libmultipath (udev, logsink, etc)
+    and provide default implementations for get_multipath_config() etc.
+    This allows simplifiying libmpathpersist_example.c drastically.
+  * fixes for shutdown issues and various race conditions on exit
+  * improve cleanup on exit, fix memory leaks
+  * add libmpathvalid library
+  * fixes for SAS expanders (bsc#1178377, bsc#1178379, bsc#1177081)
+  * Avoid access to root FS while queueing IO (bsc#1178049,
+    bsc#1181234)
+  * lots of bug fixes, additions to built-in hardware table, and
+    CI improvements (bsc#1186212)
+  * kpartx: free loop device after listing partitions (boo#1107187)
+
+  Bug fixes on top of 0.8.5 mentioned below are also included in
+  this upstream version.
+
+-------------------------------------------------------------------
 Thu Apr 01 11:01:34 UTC 2021 - mwilck@suse.com
 
 - Update to version 0.8.5+30+suse.633836e:
@@ -18,14 +57,14 @@ Fri Mar 12 14:53:41 UTC 2021 - mwilck@suse.com
 
 - Update to version 0.8.5+26+suse.2cbedfd:
   Avoid "illegal request" errors on non-RDAC storage
-  (bsc#bsc#1182072, bsc#1177371)
+  (bsc#1182072, bsc#1177371)
 
 -------------------------------------------------------------------
 Wed Mar 10 10:16:38 UTC 2021 - mwilck@suse.com
 
 - Update to version 0.8.5+23+suse.c11b054:
   * multipath -U: reduce log level of "adding new path" message 
-   (bsc#1181435)
+   (bsc#1181435, bsc#1183666)
 
 -------------------------------------------------------------------
 Wed Feb 10 14:30:15 UTC 2021 - mwilck@suse.com
@@ -318,6 +357,7 @@ Tue Apr 30 14:48:40 UTC 2019 - mwilck@suse.com
   (bsc##1110060, bsc#1110439)
   * Improve handling of changed WWIDs and temporary failure
   to obtain WWID. Option "disable_changed_wwids" is now ignored.
+  (bsc#1184260)
   * Fixes for PATH_PENDING state handling (bsc#1125043)
   * libmultipath: hwtable: add Lenovo DE series (bsc#1125507)
 

@@ -16,18 +16,21 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %global libname    libxmlsec1-1
 %global libopenssl libxmlsec1-openssl1
 %global libgcrypt  libxmlsec1-gcrypt1
 %global libgnutls  libxmlsec1-gnutls1
 %global libnss     libxmlsec1-nss1
 Name:           xmlsec1
-Version:        1.2.31
+Version:        1.2.32
 Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
 URL:            https://www.aleksey.com/xmlsec/
 Source0:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.tar.gz
+Source1:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.sig#/xmlsec1-%{version}.tar.gz.sig
+Source2:        %{name}.keyring
 Source99:       xmlsec1-rpmlintrc
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
@@ -143,6 +146,7 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %configure \
     --disable-static \
     --disable-silent-rules \
+    --enable-werror \
     --disable-md5
 %make_build
 
@@ -216,18 +220,22 @@ export GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null
 %{_mandir}/man1/xmlsec1-config.1%{?ext_man}
 
 %files openssl-devel
+%license COPYING
 %{_includedir}/xmlsec1/xmlsec/openssl/
 %{_libdir}/pkgconfig/xmlsec1-openssl.pc
 
 %files gcrypt-devel
+%license COPYING
 %{_includedir}/xmlsec1/xmlsec/gcrypt/
 %{_libdir}/pkgconfig/xmlsec1-gcrypt.pc
 
 %files gnutls-devel
+%license COPYING
 %{_includedir}/xmlsec1/xmlsec/gnutls/
 %{_libdir}/pkgconfig/xmlsec1-gnutls.pc
 
 %files nss-devel
+%license COPYING
 %{_includedir}/xmlsec1/xmlsec/nss/
 %{_libdir}/pkgconfig/xmlsec1-nss.pc
 

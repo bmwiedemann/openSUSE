@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 16 08:11:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- only list specific files installed in common directories (metainfo,
+  icons, fillupdir)
+
+- 4.4.1 (bsc#1186066, bsc#1184786)
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)

@@ -1,7 +1,7 @@
 #
 # spec file for package trader
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-20 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,8 +30,8 @@
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
 
-%define upstream_version   7.14
-%define normalised_version 7.14
+%define upstream_version   7.16
+%define normalised_version 7.16
 %define rpm_release_num    1
 %define is_prerelease      0
 
@@ -84,16 +84,9 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_mandir}/man6/trader.6%{ext_man}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 
 %files lang -f %{name}.lang
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %changelog

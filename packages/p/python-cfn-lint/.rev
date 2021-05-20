@@ -82,4 +82,17 @@
   - Remove newlines from parseable format messages</comment>
     <requestid>868436</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>39c02f017d6d35cbb99cd91c327f1e8f</srcmd5>
+    <version>0.48.1</version>
+    <time>1621531523</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable two test modules test_update_resource_specs* that require
+  internet.
+- Remove skip_python36 no longer needed
+- update to v0.48.1
+  * See https://github.com/aws-cloudformation/cfn-python-lint/blob/master/CHANGELOG.md#v0481
+    for changes since 0.44.5</comment>
+    <requestid>894585</requestid>
+  </revision>
 </revisionlist>

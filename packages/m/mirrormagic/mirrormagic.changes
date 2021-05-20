@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 29 21:58:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.0.0
+  * Build with SDL2
+  * Integrated the classic Mirror Magic game engine into the game
+    Rocks’n’Diamonds as a new custom game engine
+  * Mirror Magic now also offers new features already known from
+    R’n’D like scalable window size and fullscreen mode and
+    solution tapes were added to the included level sets
+    “Deflektor” and “Mindbender”.
+- Add fix-multiple-definitions.patch
+- Drop upstream fixed mirrormagic-2.0.2-src_tools.c.patch,
+  mirrormagic-2.0.2-src_editor.c.patch,
+  mirrormagic-2.0.2-src_events.c.patch,
+  mirrormagic-2.0.2-src_files.c.patch,
+  mirrormagic-2.0.2-src_libgame_sdl.c.patch,
+  mirrormagic-2.0.2-src_libgame_sdl.h.patch,
+  mirrormagic-2.0.2-src_libgame_gadgets.c.patch and
+  mirrormagic-2.0.2-src_main.h.patch
+
+
+-------------------------------------------------------------------
 Mon May  8 15:30:44 UTC 2017 - rpm@fthiessen.de
 
 - Fixed user and group for Factory

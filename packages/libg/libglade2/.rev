@@ -174,4 +174,12 @@
     <comment></comment>
     <requestid>861558</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>5b3e59ae6818977d300fb180c0f33690</srcmd5>
+    <version>2.6.4</version>
+    <time>1621531476</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize patch tag line. (forwarded request 893971 from dimstar)</comment>
+    <requestid>893989</requestid>
+  </revision>
 </revisionlist>

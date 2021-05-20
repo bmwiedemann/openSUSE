@@ -7,4 +7,12 @@
     <comment>New package, needed for updated xdg-desktop-portal </comment>
     <requestid>759707</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd20a5fb894d6b6b603cfb1344ad501d</srcmd5>
+    <version>0.4</version>
+    <time>1621531470</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893938 from dimstar)</comment>
+    <requestid>893963</requestid>
+  </revision>
 </revisionlist>

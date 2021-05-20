@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  4 15:39:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 21.05.0: 
+  core:
+    * Fix crashes in malformed files
+    * Export SplashFont* symbols used by Scribus
+    * Minor code improvements
+  glib:
+    * Enhance find to support multi-line matching
+  qt5/qt6:
+    * Make sure new signatures are always properly oriented
+    * Allow to pass the border width when signing
+  utils:
+    * pdftoppm: Fix regression when using single scaleTo. 
+- Drop Export-SplashFont-symbols-used-by-Scribus.patch as the change
+  was upstreamed
+
+-------------------------------------------------------------------
 Mon Apr 26 10:47:39 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Export-SplashFont-symbols-used-by-Scribus.patch to fix

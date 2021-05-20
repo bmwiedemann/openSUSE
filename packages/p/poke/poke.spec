@@ -18,25 +18,25 @@
 
 %define sover   0
 Name:           poke
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-only
 URL:            https://www.gnu.org/software/poke/
 Source:         https://ftp.gnu.org/gnu/poke/%{name}-%{version}.tar.gz
-BuildRequires:  dejagnu
-BuildRequires:  gawk
-BuildRequires:  help2man
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake >= 1.16
 BuildRequires:  bison >= 3.6
+BuildRequires:  dejagnu
 BuildRequires:  flex >= 2.5.37
+BuildRequires:  gawk
 BuildRequires:  gettext >= 0.18.2
-BuildRequires:  makeinfo >= 6.0
+BuildRequires:  help2man
+BuildRequires:  libtool
 BuildRequires:  lua53
+BuildRequires:  makeinfo >= 6.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bdw-gc)
 # /SECTION
 %if 0%{?suse_version} > 1500
 BuildRequires:  libtextstyle-devel

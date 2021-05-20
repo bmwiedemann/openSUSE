@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri May 14 01:05:31 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- updated line numbers in patch
+
+- update to version 1.4.15:
+  * general
+    + [general] [feature] A new approach has been applied to the
+      warnings system in SQLAlchemy to accurately predict the
+      appropriate stack level for each warning dynamically. This
+      allows evaluating the source of SQLAlchemy-generated warnings
+      and deprecation warnings to be more straightforward as the
+      warning will indicate the source line within end-user code,
+      rather than from an arbitrary level within SQLAlchemy’s own
+      source code.
+  * orm
+    + [orm] [bug] [regression] Fixed additional regression caused by
+      “eager loaders run on unexpire” feature #1763 where the feature
+      would run for a contains_eager() eagerload option in the case
+      that the contains_eager() were chained to an additional eager
+      loader option, which would then produce an incorrect query as
+      the original query-bound join criteria were no longer present.
+    + [orm] [bug] Fixed issue in subquery loader strategy which
+      prevented caching from working correctly. This would have been
+      seen in the logs as a “generated” message instead of “cached”
+      for all subqueryload SQL emitted, which by saturating the cache
+      with new keys would degrade overall performance; it also would
+      produce “LRU size alert” warnings.
+  * sql
+    + [sql] [bug] Adjusted the logic added as part of #6397 in 1.4.12
+      so that internal mutation of the BindParameter object occurs
+      within the clause construction phase as it did before, rather
+      than in the compilation phase. In the latter case, the mutation
+      still produced side effects against the incoming construct and
+      additionally could potentially interfere with other internal
+      mutation routines.
+  * mysql
+    + [mysql] [bug] [documentation] Added support for the
+      ssl_check_hostname= parameter in mysql connection URIs and
+      updated the mysql dialect documentation regarding secure
+      connections. Original pull request courtesy of Jerry Zhao.
+
+- changes from version 1.4.14:
+  * orm
+    + [orm] [bug] [regression] Fixed regression involving
+      lazy='dynamic' loader in conjunction with a detached object. The
+      previous behavior was that the dynamic loader upon calling
+      methods like .all() returns empty lists for detached objects
+      without error, this has been restored; however a warning is now
+      emitted as this is not the correct result. Other dynamic loader
+      scenarios correctly raise DetachedInstanceError.
+  * engine
+    + [engine] [usecase] [orm] Applied consistent behavior to the use
+      case of calling .commit() or .rollback() inside of an existing
+      .begin() context manager, with the addition of potentially
+      emitting SQL within the block subsequent to the commit or
+      rollback. This change continues upon the change first added in
+      #6155 where the use case of calling “rollback” inside of a
+      .begin() contextmanager block was proposed:
+        o calling .commit() or .rollback() will now be allowed without
+          error or warning within all scopes, including that of legacy
+          and future Engine, ORM Session, asyncio
+          AsyncEngine. Previously, the Session disallowed this.
+        o The remaining scope of the context manager is then closed;
+          when the block ends, a check is emitted to see if the
+          transaction was already ended, and if so the block returns
+          without action.
+        o It will now raise an error if subsequent SQL of any kind is
+          emitted within the block, after .commit() or .rollback() is
+          called. The block should be closed as the state of the
+          executable object would otherwise be undefined in this
+          state.
+    + [engine] [bug] [regression] Established a deprecation path for
+      calling upon the CursorResult.keys() method for a statement that
+      returns no rows to provide support for legacy patterns used by
+      the “records” package as well as any other non-migrated
+      applications. Previously, this would raise
+      ResourceClosedException unconditionally in the same way as it
+      does when attempting to fetch rows. While this is the correct
+      behavior going forward, the _cursor.LegacyCursorResult object
+      will now in this case return an empty list for .keys() as it did
+      in 1.3, while also emitting a 2.0 deprecation warning. The
+      _cursor.CursorResult, used when using a 2.0-style “future”
+      engine, will continue to raise as it does now.
+  * sql
+    + [sql] [bug] [regression] Fixed regression caused by the “empty
+      in” change just made in #6397 1.4.12 where the expression needs
+      to be parenthesized for the “not in” use case, otherwise the
+      condition will interfere with the other filtering criteria.
+    + [sql] [bug] [regression] The TypeDecorator class will now emit a
+      warning when used in SQL compilation with caching unless the
+      .cache_ok flag is set to True or False. A new class-level
+      attribute TypeDecorator.cache_ok may be set which will be used
+      as an indication that all the parameters passed to the object
+      are safe to be used as a cache key if set to True, False means
+      they are not.
+
+-------------------------------------------------------------------
 Thu May  6 08:22:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove %ifpython2 (python2 flavor is disabled).

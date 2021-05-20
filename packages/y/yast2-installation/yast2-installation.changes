@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 18 12:39:25 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fallback to ncurses when a X display is not opened after 15
+  seconds (bsc#1185095)
+- 4.4.7
+
+-------------------------------------------------------------------
 Thu Apr 29 15:59:52 UTC 2021 - Martin Vidner <mvidner@suse.com>
 
 - Allow memory profiling of the main installer process, via

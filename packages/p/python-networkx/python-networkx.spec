@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-networkx
-Version:        2.5
+Version:        2.5.1
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause

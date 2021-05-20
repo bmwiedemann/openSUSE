@@ -1,6 +1,6 @@
-commit 435ad204d32f9f3b7a72a171e2e6d04a90ba9b6e
+commit 1b8594d94f6573e5f359383362ecd97fcbaddc13
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
-Date:   Fri Jan 24 16:01:18 2020 +0100
+Date:   Tue May 18 11:18:54 2021 +0200
 
     disable rdma interface renaming
     
@@ -9,12 +9,15 @@ Date:   Fri Jan 24 16:01:18 2020 +0100
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git kernel-boot/rdma-persistent-naming.rules kernel-boot/rdma-persistent-naming.rules
-index 9b61e1630d56..274d7c87727e 100644
+index 6f9c53a53bbb..41d86df10a54 100644
 --- kernel-boot/rdma-persistent-naming.rules
 +++ kernel-boot/rdma-persistent-naming.rules
-@@ -25,4 +25,4 @@
+@@ -26,7 +26,7 @@
  #   Device type = RoCE
  #   mlx5_0 -> rocex525400c0fe123455
  #
 -ACTION=="add", SUBSYSTEM=="infiniband", PROGRAM="rdma_rename %k NAME_FALLBACK"
 +#ACTION=="add", SUBSYSTEM=="infiniband", PROGRAM="rdma_rename %k NAME_FALLBACK"
+ 
+ # Example:
+ # * NAME_FIXED 

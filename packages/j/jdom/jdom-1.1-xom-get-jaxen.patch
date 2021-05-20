@@ -6,7 +6,7 @@
    <target name="get-jaxen" description="Download Jaxen source code" depends="prepare">
 -      <unzip src="jaxen-1.1-src.zip" dest="${build.dir}" />
 +      <copy todir="${build.dir}/jaxen">
-+          <fileset dir="../jaxen-1.1.1/" />
++          <fileset dir="../jaxen-1.1.6/" />
 +      </copy>
    </target>
  

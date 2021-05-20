@@ -493,4 +493,12 @@
 - Trigger udevadm in rdma-ndd %post (bsc#1182391)</comment>
     <requestid>874835</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>28093dbfbcd6c47e044364f16b38d534</srcmd5>
+    <version>35.0</version>
+    <time>1621531479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894019</requestid>
+  </revision>
 </revisionlist>

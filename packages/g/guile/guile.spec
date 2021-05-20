@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.5
+Version:        %{guilevers}.7
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -38,6 +38,7 @@ Patch0:         guile-3.0-gc_pkgconfig_private.patch
 # The out-of-memory test is flaky, so disable it
 Patch1:         disable-test-out-of-memory.patch
 Patch2:         gcc10-x86-disable-one-test.patch
+Patch3:         0007-Fix-non-revealed-port-is-closed-ports.test.patch
 BuildRequires:  gmp-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libltdl-devel
@@ -102,6 +103,7 @@ linked in as a library when building extensible programs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # remove broken prebuilt objects
 rm -r prebuilt/32-bit-big-endian

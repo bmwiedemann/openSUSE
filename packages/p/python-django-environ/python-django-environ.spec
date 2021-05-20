@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-environ
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/joke2k/django-environ
 Source:         https://files.pythonhosted.org/packages/source/d/django-environ/django-environ-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +49,7 @@ variables to configure Django applications.
 
 %check
 LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest environ/test.py
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst README.rst.txt

@@ -18,7 +18,7 @@
 
 
 Name:           pagein
-Version:        0.01.05
+Version:        0.01.06
 Release:        0
 Summary:        A tool to force swapped out pages back into memory
 License:        GPL-2.0-only

@@ -17,16 +17,16 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.37.0
+%define commonver 0.38.2
 
 # podman - version from containers/podman
 %define podmanver 3.1.2
 
 # storagever - version from containers/storage
-%define storagever 1.30.1
+%define storagever 1.31.0
 
 # imagever - version from containers/image
-%define imagever 5.11.1
+%define imagever 5.12.0
 
 Name:           libcontainers-common
 Version:        20210112

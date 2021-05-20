@@ -39,10 +39,6 @@ Source99:       NetworkManager-rpmlintrc
 Patch0:         systemd-network-config.patch
 # PATCH-FIX-UPSTREAM nm-probe-radius-server-cert.patch bnc#574266 glin@suse.com -- Probe the RADIUS server certificate
 Patch1:         nm-probe-radius-server-cert.patch
-# PATCH-NEEDS-REBASE networkmanager-checks-po.patch tchvatal@suse.com -- fix translation validation error caused by our patch systemd-network-config.patch was: PATCH-FIX-OPENSUSE
-Patch2:         networkmanager-checks-po.patch
-# PATCH-NEEDS-REBASE networkmanager-obs-net.patch tchvatal@suse.com -- disable tests that are by design broken on OBS workers # WAS PATCH-FIX-OPENSUSE
-Patch3:         networkmanager-obs-net.patch
 # PATCH-FIX-OPENSUSE nm-dont-overwrite-resolv-conf.patch bsc#1021665, bsc#960153 sckang@suse.com -- NetworkManager spawns netconfig to update DNS settings, and terminates netconfig after 1s. But 1s isn't quite long enough for netconfig to complete the task. Adjust it to 0 seconds(don't send SIGKILL) to avoid NM overwriting /etc/resolv.conf.
 Patch4:         nm-dont-overwrite-resolv-conf.patch
 # PATCH-FIX-OPENSUSE NetworkManager-1.10.6-netconfig.patch boo#1092352 -- Don't return SR_NOTFOUND if netconfig fails to launch
@@ -52,7 +48,9 @@ Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 # PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
-Patch9:         nm-dhcp-use-valid-lease-on-timeout.patch
+Patch8:         nm-dhcp-use-valid-lease-on-timeout.patch
+# PATCH-FIX-UPSTREAM nm-add-CAP_CHOWN-capability.patch glfd#NetworkManager/NetworkManager!860, bsc#1185424 sckang@suse.com Add CAP_CHOWN to CapabilityBoundingSet to make teamd work properly
+Patch9:         nm-add-CAP_CHOWN-capability.patch
 
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
@@ -185,12 +183,11 @@ translation-update-upstream
 %if %{with_cacert_patch}
 %patch1 -p1
 %endif
-#patch2 -p1
-#patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %patch9 -p1
 
 %build
@@ -229,8 +226,8 @@ if grep "with_netconfig='no'" config.log; then
 fi
 make %{?_smp_mflags} nmrundir="/run/%{name}"
 
-%check
-#make %%{?_smp_mflags} check
+#check
+#make %{?_smp_mflags} check
 
 %install
 %make_install nmrundir="/run/%{name}"

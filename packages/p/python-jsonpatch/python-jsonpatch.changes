@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 21:54:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.32:
+  * take_index causing 'move' of incorrect values due to bad True==1 comparison 
+
+-------------------------------------------------------------------
 Thu Apr 22 20:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.31:

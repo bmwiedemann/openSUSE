@@ -16,4 +16,15 @@
   * Make colours independant of the Gtk theme</comment>
     <requestid>825258</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3747f2f3c7a5ed9b02f41244d68e03a</srcmd5>
+    <version>1.0.0</version>
+    <time>1621531516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * -n, --colour-land=COLOUR_LAND
+  * -o, --colour-ocean=COLOUR_OCEAN
+  * internally the map is now an SVG, so the quality may be better</comment>
+    <requestid>894530</requestid>
+  </revision>
 </revisionlist>

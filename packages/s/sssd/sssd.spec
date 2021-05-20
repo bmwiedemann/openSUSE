@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later

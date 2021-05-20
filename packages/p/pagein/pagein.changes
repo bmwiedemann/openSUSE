@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 22:21:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.01.06
+  * Fixed uninitialized variables
+
+-------------------------------------------------------------------
 Mon Aug 17 19:25:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.01.05:

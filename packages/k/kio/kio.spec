@@ -37,6 +37,10 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-MimeTypeFinderJob-Resolve-symlinks-for-a-local-file.patch
+Patch2:         0002-MimeTypeFinderJob-the-StatJob-details-should-include.patch
+Patch3:         0003-kio_file-pass-the-absolute-path-to-QMimeDatabase-mim.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

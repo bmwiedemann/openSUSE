@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 18 15:57:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.1
+  * security update for CVE-2021-31535 (bsc#1182506)
+- supersedes U_CVE-2021-31535.patch 
+
+-------------------------------------------------------------------
+Mon May 17 09:45:43 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2021-31535.patch
+  * adds missing request length checks in libX11 (CVE-2021-31535,
+    bsc#1182506)
+
+-------------------------------------------------------------------
 Sat Nov 21 19:09:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.0

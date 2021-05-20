@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 20 05:28:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Enable HEIF plugin also on Leap 15.3 now that libheif was added
+
+-------------------------------------------------------------------
 Mon Mar 29 07:57:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.4.3

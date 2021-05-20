@@ -325,4 +325,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   Ethernet, but a WWAN modem is available to the system.</comment>
     <requestid>890985</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>71c384ad489bab5efcf019410152d629</srcmd5>
+    <version>5.0</version>
+    <time>1621531425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894310</requestid>
+  </revision>
 </revisionlist>

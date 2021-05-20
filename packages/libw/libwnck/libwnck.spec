@@ -1,7 +1,7 @@
 #
 # spec file for package libwnck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libwnck
-Version:        3.36.0
+Version:        40.0
 Release:        0
 Summary:        Window Navigator Construction Kit (Library Package)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
-Source0:        https://download.gnome.org/sources/libwnck/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libwnck/40/%{name}-%{version}.tar.xz
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
 

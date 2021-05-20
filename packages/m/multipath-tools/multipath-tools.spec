@@ -16,6 +16,8 @@
 #
 
 
+%global _lto_cflags %{nil}
+
 # Whether to build libdmmp
 # Default YES except for SLE12 / Leap 42
 %if 0%{?suse_version} >= 1500
@@ -39,7 +41,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.5+30+suse.633836e
+Version:        0.8.6+10+suse.4771137
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -52,6 +54,7 @@ Source2:        dont-del-part-nodes.rules
 # Dracut conf file to make sure 11-dm-parts.rules is included in initrd
 Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
+Source5:        libmpathpersist-example-old.c
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 BuildRequires:  libaio-devel
@@ -72,12 +75,13 @@ BuildRequires:  pkgconfig(cmocka)
 # For now, we still need to require suse-module-tools
 # See https://github.com/openSUSE/rpm-config-SUSE/pull/6
 BuildRequires:  suse-module-tools
-Requires(post):	suse-module-tools
+Requires(post): suse-module-tools
 Requires:       device-mapper >= 1.2.78
 Requires:       kpartx
 Requires:       sg3_utils
 Obsoletes:      multipath-tools-rbd <= %{version}
-PreReq:         coreutils grep
+PreReq:         coreutils
+PreReq:         grep
 
 %description
 This package provides the multipath tool and the multipathd daemon
@@ -87,10 +91,12 @@ monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
 
+
 # Currently, it makes no sense to split out libmpathpersist and libmpathcmd
 # separately. libmultipath has no stable API at all, and it depends
 # on libmpathcmd (to be fixed). libmpathpersist depends on libmultipath
 # and it loads prioritizers (to be fixed) and checkers.
+
 %package -n libmpath0
 Summary:        Libraries for multipath-tools
 # This is for libmpathcmd, which is useless without multipathd.
@@ -152,6 +158,7 @@ This package provides development files and documentation for libdmmp.
 %setup -q -n multipath-tools-%{version}
 # This must be before autopatch for code 12, otherwise build error
 cp %{SOURCE4} .
+cp %{SOURCE5} .
 %autopatch -p1
 
 %build
@@ -164,7 +171,6 @@ cp %{SOURCE4} .
 %check
 # ld fails to resolve cmocka's __wrap symbols with -flto
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643
-%define _lto_cflags %{nil}
 make OPTFLAGS="%{optflags}" %{_make_output_sync} %{?_smp_mflags} test
 %endif
 
@@ -173,7 +179,7 @@ make OPTFLAGS="%{optflags}" %{_make_output_sync} %{?_smp_mflags} test
 mkdir -p %{buildroot}%{_defaultlicensedir}
 mkdir -p %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/%{_lib}
-for x in multipath mpathpersist mpathcmd; do
+for x in multipath mpathpersist mpathcmd mpathvalid; do
     rm -f %{buildroot}/%{_lib}/lib$x.so
     ln -sf /%{_lib}/lib$x.so.0  %{buildroot}/usr/%{_lib}/lib$x.so
 done
@@ -238,6 +244,7 @@ exit 0
 /%{_lib}/libmultipath.so.0
 /%{_lib}/libmpathcmd.so.0
 /%{_lib}/libmpathpersist.so.0
+/%{_lib}/libmpathvalid.so.0
 /%{_lib}/multipath
 %license LICENSES/GPL-2.0
 %license LICENSES/LGPL-2.0
@@ -249,10 +256,13 @@ exit 0
 /usr/%{_lib}/libmultipath.so
 /usr/%{_lib}/libmpathcmd.so
 /usr/%{_lib}/libmpathpersist.so
+/usr/%{_lib}/libmpathvalid.so
 /usr/include/mpath_cmd.h
 /usr/include/mpath_persist.h
+/usr/include/mpath_valid.h
 %{_mandir}/man3/mpath_persistent_*
 %doc libmpathpersist-example.c
+%doc libmpathpersist-example-old.c
 
 %files -n kpartx
 %defattr(-,root,root)

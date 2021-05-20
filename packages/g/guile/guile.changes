@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri May 14 14:15:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.7
+  * Guile now defines constants such as `O_NOFOLLOW', `O_CLOEXEC',
+    `O_TMPFILE', and more.  These may be passed as arguments to
+    procedures such as `open' and `open-fdes'.
+  * Fix deadlock after `primitive-fork'
+  * Fix duplicates handlers for interfaces that use interfaces
+  * Fix R7RS include-library-declarations, cond-expand
+  * Fix excessive compile times for vectors >16k elements long
+  * Fix use of literal tree-il as source language
+  * Fix SRFI-64 test-end to not remove globally-installed test runner
+- Update to version 3.0.6
+  * Reimplement dynamic library loading ("dlopening") without libltdl
+    * New library search path variable, `GUILE_EXTENSIONS_PATH'.
+  * Fix important incompatibility with GnuTLS and GMP, but this may
+    slow down some uses of bignums.
+  * New `read' implementation in Scheme
+  * Syntax objects record source locations
+  * Optimized run-time relocations
+  * Optimized calls to known functions
+  * Reduce code size for calls to module variables
+  * Updated Gnulib
+  * New interfaces and functionality
+    * `call-with-port'
+    * `call-with-input-bytevector', `call-with-output-bytevector'
+    * `mkdtemp' and `mkstemp'
+    * `(system foreign-library)' module
+    * `read-syntax'
+    * `quote-syntax'
+    * `syntax-sourcev'
+  * Fix reverse-list->string docstring
+  * Fix R7RS "member" result when no item found
+  * Fix make-transcoded-port on input+output ports
+  * Fix (ice-9 ftw) on filesystems where inode values are meaningless
+  * Fix srfi-69 merge-hash
+  * Fix suspendable-ports implementation of get-bytevector-some!
+  * Fix overread in string-locale<?, string-locale-ci<?, and friends
+  * Fix handling of parameter lists to elisp defun to allow nil
+  * Fix closure-conversion bug for SCC with no free vars and one
+    not-well-known function
+  * Fix error when < passed non-real value
+  * Fix bug in which exported and private names in a used module
+    could alias each other
+  * Fix bug with slot options in redefinable GOOPS classes
+  * Fix bugs regarding port buffering for TLS connections in web client
+  * `dynamic-unlink': Deprecated! has now no effect
+  * `call-with-output-string': Changed! closes port on normal exit
+- Update disable-test-out-of-memory.patch
+- Add 0007-Fix-non-revealed-port-is-closed-ports.test.patch from
+  Debian
+
+-------------------------------------------------------------------
 Fri Jan 22 12:59:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Skip test-stack-overflow on qemu builds

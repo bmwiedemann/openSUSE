@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 17 22:58:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.3
+  * Add rtree as a dependency for our pip packages.
+  * Scroll pager content with keys (IPython console)
+  * Move css_path to Appearance config section (IPython Console)
+
+-------------------------------------------------------------------
 Mon May 10 12:22:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.0.2

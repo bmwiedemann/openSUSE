@@ -2,9 +2,9 @@ Index: src/QuExt.c
 ===================================================================
 --- src/QuExt.c.orig
 +++ src/QuExt.c
-@@ -40,6 +40,20 @@ XQueryExtension(
-     xQueryExtensionReply rep;
-     register xQueryExtensionReq *req;
+@@ -45,6 +45,20 @@ XQueryExtension(
+     if (strlen(name) >= USHRT_MAX)
+         return false;
  
 +    if (name && strlen (name) < 256)
 +    {

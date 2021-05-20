@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-capistrano
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
 %define mod_name capistrano
 %define mod_full_name %{mod_name}-%{version}
@@ -52,7 +52,7 @@ multiple remote machines, via SSH.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md LICENSE.txt README.md" \
+  --doc-files="LICENSE.txt README.md" \
   -f
 
 %gem_packages

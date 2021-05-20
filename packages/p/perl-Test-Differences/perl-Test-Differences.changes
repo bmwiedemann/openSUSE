@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 19 03:09:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.68
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.68   2021-05-18
+      - Revert undocumented change that was causing unreasonably verbose output
+        See https://github.com/DrHyde/perl-modules-Test-Differences/issues/5
+      - Improve documentation about text vs data mode and eq_or_diff_{text,data}
+        See https://github.com/DrHyde/perl-modules-Test-Differences/issues/8
+
+-------------------------------------------------------------------
 Thu Mar  7 12:58:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - updated to 0.65

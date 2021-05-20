@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 20 11:02:03 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Include all available docs in the javadoc subpackage
+
+-------------------------------------------------------------------
 Tue May 18 13:52:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Include pre-generated html docs, jEdit expects them (bsc#845615)

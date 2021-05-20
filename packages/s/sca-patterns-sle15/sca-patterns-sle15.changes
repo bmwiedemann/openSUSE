@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 19 15:52:54 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Updated regular patterns (1)
+  + sle15all/lvm-00003.pl: Physical volumes can be removed or damaged and appear missing. This pattern looks for missing physical volumes.
+
+-------------------------------------------------------------------
+Tue May 18 21:41:12 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.3
+  - New regular patterns (9)
+    + sle15all/lvm-00003.pl: Physical volumes can be removed or damaged and appear missing. This pattern looks for missing physical volumes.
+    + sle15all/lvm-00004.pl: LMV Check sum errors may indicate corrupted LVM metadata
+    + sle15all/lvm-00005.pl: Duplicate volume groups are usually a configuration issue
+    + sle15all/proxy-00003.pl: Checks for proxy environment variables
+    + sle15sp1/namespace-000019571.py: Activation of multiple namespaces simultaneously may lead to an activation failure (bsc#1157778)
+    + sle15sp1/nfit-000019688.py: dmesg shows NFIT related messages after updating the kernel (bsc#1159356)
+    + sle15sp1/nfsipv6_151-000019618.py: Timeout when attempting NFS mount over IPv6 (bsc#1144162)
+    + sle15sp1/nfsperf-151-000019615.py: Performance loss when writing large files over NFS (bsc#1163403)
+    + sle15sp2/ipmitool-000020250.py: hanging on getting cipher suites (bsc#1185684)
+
+-------------------------------------------------------------------
 Wed May  5 15:41:13 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - New security announcement patterns (30) for version 1.0.3

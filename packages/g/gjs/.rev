@@ -1614,4 +1614,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>GNOME 40 - here we come (forwarded request 880934 from dimstar)</comment>
     <requestid>881107</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>970cdb08ca7255db84f8d5dd2d423437</srcmd5>
+    <version>1.68.1</version>
+    <time>1621531466</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893927 from dimstar)</comment>
+    <requestid>893954</requestid>
+  </revision>
 </revisionlist>

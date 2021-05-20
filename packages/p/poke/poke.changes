@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu May 13 08:30:21 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.2
+  * User visible changes
+    - The .file dot-command now supports a /c flag for creating new,
+      empty files.
+    - A new compiler built-in `ioflags' is available, that returns
+      the flags of some given IO space.
+    - Certain operations now raise a E_perm exception, instead of the
+      more generic E_io.
+    - A new kind of IO device is now supported: the `zero' IOD.
+      Opening "<zero>" will result in an IO space covering the full
+      64-bit byte range, that always returns zero on reads and that
+      ignores writes.
+    - Function values (closures) can now be compared at language-level.
+      They are compared by pointer.
+    - The compiler now rejects casts from `any' to function types
+      instead of ICEing.
+    - The `dump' command now doesn't try to print anything if the
+      current IOS is not readable.
+    - The `dump' command now prints ?? for "unknown" bytes, i.e. for bytes
+      in addresses that are not readable in the underlying IO space.
+    - The standard function `ltos' now gets an additional optional
+      argument `base', that defaults to 10.
+    - The `big' and `little' annotations can now be used in any struct
+      type field, regardless of its type.
+  * Bug fixes
+    - A very nasty performance bottleneck in pvm_array_insert has been
+      fixed.
+    - Fix the opening mode of write-only files when the user doesn't
+      specify explicit flags in `open'.
+    - Avoid spurious EOF exceptions when writing weird integers past
+      the end of an IOS.
+    - Fix method `value' in leb128.pk
+    - Fix ICE while compiling for-statements with several declarations.
+    - Properly print > 2^32 addresses in `dump'
+    - Other minor fixes.
+  * Other changes
+    - The JSON MI machinery has been rewriten and much improved.
+    - More tests in several areas.
+
+-------------------------------------------------------------------
 Tue Mar 23 16:06:33 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
 
 - Update to version 1.1

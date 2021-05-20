@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  9 19:54:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.32:
+  + Remove MD5 for NSS 3.59 and above
+  + Fix PKCS12_parse return code handling
+  + Fix OpenSSL lookup
+  + xmlSecX509DataGetNodeContent(): don't return 0 for non-empty
+    elements - fix for LibreOffice
+- add upstream signing key and validate source signature
+- put license text into all subpackages
+- treat all compiler warnings as errors
+
+-------------------------------------------------------------------
 Wed Feb 17 12:17:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the crypto policies for the test-suite. This allows the

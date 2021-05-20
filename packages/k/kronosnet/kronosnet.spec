@@ -1,7 +1,6 @@
-#
 # spec file for package kronosnet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +11,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,65 +28,85 @@
 %bcond_without lzo2
 %bcond_without lzma
 %bcond_without bzip2
+%bcond_without zstd
 %bcond_with kronosnetd
-%bcond_with libtap
+%bcond_without libnozzle
 %bcond_without runautogen
 %bcond_with rpmdebuginfo
 %bcond_with overriderpmdebuginfo
 %bcond_without buildman
+%bcond_with installtests
 
 %if %{with overriderpmdebuginfo}
 %undefine _enable_debug_packages
 %endif
 
 %if %{with sctp}
-%global buildsctp 1
+BuildRequires: lksctp-tools-devel
 %endif
 %if %{with nss}
-%global buildcryptonss 1
+%if 0%{suse_version}
+BuildRequires: mozilla-nss-devel
+%else
+BuildRequires: nss-devel
+%endif
 %endif
 %if %{with openssl}
-%global buildcryptoopenssl 1
+%if 0%{?suse_version}
+BuildRequires: libopenssl-devel
+%else
+BuildRequires: openssl-devel
+%endif
 %endif
 %if %{with zlib}
-%global buildcompresszlib 1
+BuildRequires: zlib-devel
 %endif
 %if %{with lz4}
-%global buildcompresslz4 1
+%if 0%{?suse_version}
+BuildRequires: liblz4-devel
+%else
+BuildRequires: lz4-devel
+%endif
 %endif
 %if %{with lzo2}
-%global buildcompresslzo2 1
+BuildRequires: lzo-devel
 %endif
 %if %{with lzma}
-%global buildcompresslzma 1
+BuildRequires: xz-devel
 %endif
 %if %{with bzip2}
-%global buildcompressbzip2 1
+%if 0%{?suse_version}
+BuildRequires: libbz2-devel
+%else
+BuildRequires: bzip2-devel
 %endif
-%if %{with libtap}
-%global buildlibtap 1
+%endif
+%if %{with zstd}
+BuildRequires: libzstd-devel
+%endif
+%if %{with libnozzle}
+BuildRequires: libnl3-devel
 %endif
 %if %{with kronosnetd}
-%global buildlibtap 1
-%global buildkronosnetd 1
+BuildRequires: pam-devel
 %endif
 %if %{with runautogen}
-%global buildautogen 1
+BuildRequires: autoconf automake libtool
 %endif
 %if %{with buildman}
-%global buildmanpages 1
+BuildRequires: libqb-devel libxml2-devel doxygen
 %endif
 # main (empty) package
 # http://www.rpm.org/max-rpm/s1-rpm-subpack-spec-file-changes.html
 Name:           kronosnet
-Version:        1.3
+Version:        1.21
 Release:        0
 Summary:        Multipoint-to-Multipoint VPN daemon
 License:        GPL-2.0+ AND LGPL-2.1+
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/kronosnet/kronosnet/
-Source0:        %{name}-%{version}%{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}.tar.gz
-Patch1:         add-version.patch
+Url:            https://kronosnet.org
+Source0:        https://kronosnet.org/releases/kronosnet-%{version}.tar.xz
+
 ## Setup/build bits
 # Build dependencies
 BuildRequires:  gcc
@@ -125,6 +144,9 @@ BuildRequires:  xz-devel
 %if %{defined buildcompressbzip2}
 BuildRequires:  libbz2-devel
 %endif
+%if %{defined buildcompresszstd}
+BuildRequires:  libzstd-devel
+%endif
 %if %{defined buildkronosnetd}
 BuildRequires:  libqb-devel
 BuildRequires:  pam-devel
@@ -134,126 +156,122 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
+%if %{defined buildlibnozzle}
+BuildRequires: libnl3-devel
+%endif
 
 %prep
 %setup -q -n %{name}-%{version}%{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
 
-%patch1 -p1
 
 %build
 %if %{with runautogen}
-    ./autogen.sh
+./autogen.sh
 %endif
 
 %configure \
-%if %{defined buildmanpages}
+%if %{with installtests}
+    --enable-install-tests \
+%else
+    --disable-install-tests \
+%endif
+%if %{with buildman}
     --enable-man \
 %else
     --disable-man \
 %endif
-%if %{defined buildsctp}
+%if %{with sctp}
     --enable-libknet-sctp \
 %else
     --disable-libknet-sctp \
 %endif
-%if %{defined buildcryptonss}
+%if %{with nss}
     --enable-crypto-nss \
 %else
     --disable-crypto-nss \
 %endif
-%if %{defined buildcryptoopenssl}
+%if %{with openssl}
     --enable-crypto-openssl \
 %else
     --disable-crypto-openssl \
 %endif
-%if %{defined buildcompresszlib}
+%if %{with zlib}
     --enable-compress-zlib \
 %else
     --disable-compress-zlib \
 %endif
-%if %{defined buildcompresslz4}
+%if %{with lz4}
     --enable-compress-lz4 \
 %else
     --disable-compress-lz4 \
 %endif
-%if %{defined buildcompresslzo2}
+%if %{with lzo2}
     --enable-compress-lzo2 \
 %else
     --disable-compress-lzo2 \
 %endif
-%if %{defined buildcompresslzma}
+%if %{with lzma}
     --enable-compress-lzma \
 %else
     --disable-compress-lzma \
 %endif
-%if %{defined buildcompressbzip2}
+%if %{with bzip2}
     --enable-compress-bzip2 \
 %else
     --disable-compress-bzip2 \
 %endif
-%if %{defined buildkronosnetd}
-    --enable-kronosnetd \
+%if %{with zstd}
+    --enable-compress-zstd \
+%else
+    --disable-compress-zstd \
 %endif
-%if %{defined buildlibtap}
-    --enable-libtap \
+%if %{with kronosnetd}
+    --enable-kronosnetd \
+%else
+    --disable-kronosnetd \
+%endif
+%if %{with libnozzle}
+    --enable-libnozzle \
+%else
+    --disable-libnozzle \
 %endif
     --with-initdefaultdir=%{_sysconfdir}/sysconfig/ \
-%if %{defined _unitdir}
     --with-systemddir=%{_unitdir}
-%else
-    --with-initddir=%{_sysconfdir}/rc.d/init.d/
-%endif
 
 make %{?_smp_mflags}
 
 %install
-%make_install
+rm -rf %{buildroot}
+make install DESTDIR=%{buildroot}
 
 # tree cleanup
 # remove static libraries
-find %{buildroot} -name "*.a" -delete
+find %{buildroot} -name "*.a" -exec rm {} \;
 # remove libtools leftovers
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -exec rm {} \;
 
-# handle systemd vs init script
-%if %{defined _unitdir}
 # remove init scripts
-rm -rf %{buildroot}%{_initddir}
-%else
-# remove systemd specific bits
-find %{buildroot} -name "*.service" -delete
-%endif
+rm -rf %{buildroot}/etc/init.d
 
 # remove docs
-rm -rf %{buildroot}%{_datadir}/doc/kronosnet
+rm -rf %{buildroot}/usr/share/doc/kronosnet
 
 # main empty package
 %description
-kronosnet source
+ The kronosnet source
 
-%if %{defined buildkronosnetd}
+%if %{with kronosnetd}
 ## Runtime and subpackages section
 %package -n kronosnetd
-Summary:        Multipoint-to-Multipoint VPN daemon
-Group:          Productivity/Clustering/HA
-Requires:       %{_sysconfdir}/pam.d/passwd
-Requires:       pam
-%if %{defined buildkronosnetd}
-Requires:       %{_sysconfdir}/pam.d/passwd
-Requires:       pam
-Requires(post): shadow-utils
-Requires(preun): shadow-utils
-%if %{defined _unitdir}
-# Needed for systemd unit
-Requires(post): systemd-sysv
-Requires(post): systemd-units
+Summary: Multipoint-to-Multipoint VPN daemon
+Group: Productivity/Clustering/HA
+Requires(post):   systemd-sysv
+Requires(post):   systemd-units
+Requires(preun):  systemd-units
 Requires(postun): systemd-units
-Requires(preun): systemd-units
-%else
-Requires(post): chkconfig
-Requires(preun): chkconfig
-Requires(preun): initscripts
-%endif
+Requires(post):   shadow-utils
+Requires(preun):  shadow-utils
+Requires: pam, /etc/pam.d/passwd
 
 %description -n kronosnetd
 The kronosnet daemon is a bridge between kronosnet switching engine
@@ -266,33 +284,11 @@ reconfiguration of the kronosnet(s) without daemon reload
 or service disruption.
 
 %post -n kronosnetd
-%if %{defined _unitdir}
- %if 0%{?systemd_post:1}
-  %systemd_post kronosnetd.service
- %else
-  /bin/systemctl daemon-reload >/dev/null 2>&1 || :
- %endif
-%else
-/sbin/chkconfig --add kronosnetd
-%endif
-getent group kronosnetadm >/dev/null || %{_sbindir}/groupadd -r kronosnetadm
+%systemd_post kronosnetd.service
+getent group kronosnetadm >/dev/null || %{_sbindir}/groupadd --force --system kronosnetadm
 
 %preun -n kronosnetd
-%if %{defined _unitdir}
- %if 0%{?systemd_preun:1}
-  %systemd_preun kronosnetd.service
- %else
-if [ "$1" -eq 0 ]; then
-    /bin/systemctl --no-reload disable kronosnetd.service
-    /bin/systemctl stop kronosnetd.service >/dev/null 2>&1
-fi
-%endif
-%else
-if [ "$1" = 0 ]; then
-    /sbin/service kronosnetd stop >/dev/null 2>&1
-    /sbin/chkconfig --del kronosnetd
-fi
-%endif
+%systemd_preun kronosnetd.service
 
 %files -n kronosnetd
 %doc COPYING.* COPYRIGHT
@@ -301,51 +297,49 @@ fi
 %config(noreplace) %{_sysconfdir}/sysconfig/kronosnetd
 %config(noreplace) %{_sysconfdir}/pam.d/kronosnetd
 %config(noreplace) %{_sysconfdir}/logrotate.d/kronosnetd
-%if %{defined _unitdir}
 %{_unitdir}/kronosnetd.service
-%else
-%config(noreplace) %{_sysconfdir}/rc.d/init.d/kronosnetd
-%endif
 %{_sbindir}/*
 %{_mandir}/man8/*
 %endif
 
-%if %{defined buildlibtap}
-%package -n libtap1
-Summary:        Userland wrapper around kernel tap devices
-Group:          System/Libraries
+%if %{with libnozzle}
+%package -n libnozzle1
+Summary:       Simple userland wrapper around kernel tap devices 
 
-%description -n libtap1
+%description -n libnozzle1
 This is an over-engineered commodity library to manage a pool
 of tap devices and provides the basic
 pre-up.d/up.d/down.d/post-down.d infrastructure.
 
-%post -n libtap1 -p /sbin/ldconfig
-%postun -n libtap1 -p /sbin/ldconfig
-
-%files -n libtap1
+%files -n libnozzle1
 %doc COPYING.* COPYRIGHT
-%{_libdir}/libtap.so.*
+%{_libdir}/libnozzle.so.*
 
-%post -n libtap1 -p /sbin/ldconfig
-%postun -n libtap1 -p /sbin/ldconfig
+%if 0%{?ldconfig_scriptlets}
+%ldconfig_scriptlets -n libnozzle1
+%else
+%post -n libnozzle1 -p /sbin/ldconfig
+%postun -n libnozzle1 -p /sbin/ldconfig
 %endif
 
-%package -n libtap1-devel
-Summary:        Development files for libtap, a userland wrapper around kernel tap devices
-Group:          Development/Libraries/C and C++
-Requires:       libtap1 = %{version}-%{release}
+%package -n libnozzle1-devel
+Summary:        Simple userland wrapper around kernel tap devices (developer files)
+Requires:       libnozzle1%{_isa} = %{version}-%{release}
+Requires:       pkgconfig
 
-%description -n libtap1-devel
+%description -n libnozzle1-devel
 This is an over-engineered commodity library to manage a pool
 of tap devices and provides the basic
 pre-up.d/up.d/down.d/post-down.d infrastructure.
 
-%files -n libtap1-devel
+%files -n libnozzle1-devel
 %doc COPYING.* COPYRIGHT
-%{_libdir}/libtap.so
-%{_includedir}/libtap.h
-%{_libdir}/pkgconfig/libtap.pc
+%{_libdir}/libnozzle.so
+%{_includedir}/libnozzle.h
+%{_libdir}/pkgconfig/libnozzle.pc
+%if %{with buildman}
+%{_mandir}/man3/nozzle*.3.gz
+%endif
 %endif
 
 %package -n libknet1
@@ -362,13 +356,18 @@ information.
 %{_libdir}/libknet.so.*
 %dir %{_libdir}/kronosnet
 
+%if 0%{?ldconfig_scriptlets}
+%ldconfig_scriptlets -n libknet1
+%else
 %post -n libknet1 -p /sbin/ldconfig
 %postun -n libknet1 -p /sbin/ldconfig
+%endif
 
 %package -n libknet1-devel
 Summary:        Development files fro the Kronosnet core switching implementation
 Group:          Development/Libraries/C and C++
-Requires:       libknet1 = %{version}-%{release}
+Requires: libknet1%{_isa} = %{version}-%{release}
+Requires: pkgconfig
 
 %description -n libknet1-devel
 The whole kronosnet core is implemented in this library.
@@ -380,151 +379,183 @@ information.
 %{_libdir}/libknet.so
 %{_includedir}/libknet.h
 %{_libdir}/pkgconfig/libknet.pc
-%{_mandir}/man3/*.3%{ext_man}
+%if %{with buildman}
+%{_mandir}/man3/knet_*.3.gz
+%endif
 
-%if %{defined buildcryptonss}
+%if %{with nss}
 %package -n libknet1-crypto-nss-plugin
-Summary:        NSS crypto support for libknet1
+Summary:        Provides libknet1 nss support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-crypto-nss-plugin
-NSS crypto support for libknet1.
+Provides NSS crypto support for libknet1.
 
 %files -n libknet1-crypto-nss-plugin
 %{_libdir}/kronosnet/crypto_nss.so
 %endif
 
-%if %{defined buildcryptoopenssl}
+%if %{with openssl}
 %package -n libknet1-crypto-openssl-plugin
-Summary:        OpenSSL support for libknet1
+Summary:        Provides libknet1 openssl support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-crypto-openssl-plugin
-OpenSSL crypto support for libknet1.
+Provides OpenSSL crypto support for libknet1.
 
 %files -n libknet1-crypto-openssl-plugin
 %{_libdir}/kronosnet/crypto_openssl.so
 %endif
 
-%if %{defined buildcompresszlib}
+%if %{with zlib}
 %package -n libknet1-compress-zlib-plugin
-Summary:        zlib support for libknet1
+Summary:        Provides libknet1 zlib support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-compress-zlib-plugin
-zlib compression support for libknet1.
+Provides zlib compression support for libknet1.
 
 %files -n libknet1-compress-zlib-plugin
 %{_libdir}/kronosnet/compress_zlib.so
 %endif
 
-%if %{defined buildcompresslz4}
+%if %{with lz4}
 %package -n libknet1-compress-lz4-plugin
-Summary:        LZ4 and LZ4HC support for libknet1
+Summary:        Provides libknet1 lz4 and lz4hc support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-compress-lz4-plugin
-lz4 and lz4hc compression support for libknet1.
+Provides lz4 and lz4hc compression support for libknet1.
 
 %files -n libknet1-compress-lz4-plugin
 %{_libdir}/kronosnet/compress_lz4.so
 %{_libdir}/kronosnet/compress_lz4hc.so
 %endif
 
-%if %{defined buildcompresslzo2}
+%if %{with lzo2}
 %package -n libknet1-compress-lzo2-plugin
-Summary:        LZO2 support for libknet1
+Summary:        Provides libknet1 lzo2 support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:     	libknet1%{_isa} = %{version}-%{release} 
 
 %description -n libknet1-compress-lzo2-plugin
-lzo2 compression support for libknet1.
+Provides lzo2 compression support for libknet1.
 
 %files -n libknet1-compress-lzo2-plugin
 %{_libdir}/kronosnet/compress_lzo2.so
 %endif
 
-%if %{defined buildcompresslzma}
+%if %{with lzma}
 %package -n libknet1-compress-lzma-plugin
-Summary:        LZMA support for libknet1
+Summary:        Provides libknet1 lzma support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-compress-lzma-plugin
-lzma compression support for libknet1.
+Provides lzma compression support for libknet1.
 
 %files -n libknet1-compress-lzma-plugin
 %{_libdir}/kronosnet/compress_lzma.so
 %endif
 
-%if %{defined buildcompressbzip2}
+%if %{with bzip2}
 %package -n libknet1-compress-bzip2-plugin
-Summary:        bzip2 support for libknet1
+Summary:        Provides libknet1 bzip2 support
 Group:          System/Libraries
-Requires:       libknet1 = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-compress-bzip2-plugin
-bzip2 compression support for libknet1.
+Provides bzip2 compression support for libknet1.
 
 %files -n libknet1-compress-bzip2-plugin
 %{_libdir}/kronosnet/compress_bzip2.so
 %endif
 
-%package -n libknet1-crypto-plugins-all
-Summary:        Libknet1 crypto plugins meta package
+%if %{with zstd}
+%package -n libknet1-compress-zstd-plugin
+Summary:        Provides libknet1 zstd support
 Group:          System/Libraries
-%if %{defined buildcryptonss}
-Requires:       libknet1-crypto-nss-plugin
+Requires:       libknet1%{_isa} = %{version}-%{release}
+
+%description -n libknet1-compress-zstd-plugin
+Provides zstd compression support for libknet1.
+
+%files -n libknet1-compress-zstd-plugin
+%{_libdir}/kronosnet/compress_zstd.so
 %endif
-%if %{defined buildcryptoopenssl}
-Requires:       libknet1-crypto-openssl-plugin
+
+%package -n libknet1-crypto-plugins-all
+Summary:        Provides libknet1 crypto plugins meta package
+Group:          System/Libraries
+%if %{with nss}
+Requires:       libknet1-crypto-nss-plugin%{_isa} = %{version}-%{release}
+%endif
+%if %{with openssl}
+Requires:       libknet1-crypto-openssl-plugin%{_isa} = %{version}-%{release}
 %endif
 
 %description -n libknet1-crypto-plugins-all
-Meta package to install all of libknet1 crypto plugins.
+Provides meta package to install all of libknet1 crypto plugins
 
 %files -n libknet1-crypto-plugins-all
 
 %package -n libknet1-compress-plugins-all
-Summary:        Libknet1 compress plugins meta package
+Summary:        Provides libknet1 compress plugins meta package
 Group:          System/Libraries
-%if %{defined buildcompresszlib}
-Requires:       libknet1-compress-zlib-plugin
+%if %{with zlib}
+Requires: libknet1-compress-zlib-plugin%{_isa} = %{version}-%{release}
 %endif
-%if %{defined buildcompresslz4}
-Requires:       libknet1-compress-lz4-plugin
+%if %{with lz4}
+Requires: libknet1-compress-lz4-plugin%{_isa} = %{version}-%{release}
 %endif
-%if %{defined buildcompresslzo2}
-Requires:       libknet1-compress-lzo2-plugin
+%if %{with lzo2}
+Requires: libknet1-compress-lzo2-plugin%{_isa} = %{version}-%{release}
 %endif
-%if %{defined buildcompresslzma}
-Requires:       libknet1-compress-lzma-plugin
+%if %{with lzma}
+Requires: libknet1-compress-lzma-plugin%{_isa} = %{version}-%{release}
 %endif
-%if %{defined buildcompressbzip2}
-Requires:       libknet1-compress-bzip2-plugin
+%if %{with bzip2}
+Requires: libknet1-compress-bzip2-plugin%{_isa} = %{version}-%{release}
+%endif
+%if %{with zstd}
+Requires: libknet1-compress-zstd-plugin%{_isa} = %{version}-%{release}
 %endif
 
 %description -n libknet1-compress-plugins-all
-Meta package to install all of libknet1 compress plugins
+ Meta package to install all of libknet1 compress plugins
 
 %files -n libknet1-compress-plugins-all
 
 %package -n libknet1-plugins-all
-Summary:        Libknet1 plugins meta package
+Summary: Provides libknet1 plugins meta package
 Group:          System/Libraries
-Requires:       libknet1-compress-plugins-all
-Requires:       libknet1-crypto-plugins-all
+Requires: libknet1-compress-plugins-all%{_isa} = %{version}-%{release}
+Requires: libknet1-crypto-plugins-all%{_isa} = %{version}-%{release}
 
 %description -n libknet1-plugins-all
-Meta package to install all of libknet1 plugins.
+ Meta package to install all of libknet1 plugins
 
 %files -n libknet1-plugins-all
 
+%if %{with installtests}
+%package -n kronosnet-tests
+Summary: Provides kronosnet test suite
+Group:          System/Libraries
+Requires: libknet1%{_isa} = %{version}-%{release}
+
+%description -n kronosnet-tests
+ This package contains all the libknet and libnozzle test suite.
+
+%files -n kronosnet-tests
+%{_libdir}/kronosnet/tests/*
+%endif
+
 %if %{with rpmdebuginfo}
+%debug_package
 %endif
 
 %changelog

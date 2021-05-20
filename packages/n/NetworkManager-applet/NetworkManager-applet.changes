@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 14 19:22:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.22.0:
+  + Support activating WireGuard connections as VPNs from the
+    applet.
+  + Fix nm-connection-editor crash when evaluating secondary
+    connections.
+  + Show missing toggle in the 802.1X security page of the editor.
+  + Fix updating Polkit permission in the editor.
+  + Adapt peers table in the WireGuard editor page when the window
+    is resized.
+  + Update translations.
+
+-------------------------------------------------------------------
 Wed Feb  3 09:31:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.0:

@@ -1,8 +1,0 @@
---- graphviz-2.46.1/cmd/gvmap/gvmap.sh.orig	2021-02-18 18:41:12.414357238 +0100
-+++ graphviz-2.46.1/cmd/gvmap/gvmap.sh	2021-02-18 18:41:23.626463135 +0100
-@@ -1,4 +1,4 @@
--#!/usr/bin/env ksh
-+#!/usr/bin/ksh
- 
- # Script for gvmap pipeline
- # Use -A to add flags for gvmap; e.g., -Ae results in gvmap -e

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 14 13:05:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.47.1
+  * More detailed error messages when opening input file fails
+  * The edges in JSON output are ordered now
+  * Fixed xdot man page does not document some functions
+  * Fixed PIC renderer
+  * Fixed dot conversion to dia format
+  * Fixed memory leak of reference-counted HTML strings
+  * Fix for TBbalance attribute code
+  * Fixed HTML parser error with single closing square bracket in
+    table row
+  * Fixed reference counted strings put the HTML bit in the middle
+    of the reference count
+  * Fixed &amp; escape disappearing
+  * Fixed gvpr -? to actually print usage and exit non-zero
+  * Fixed memory leak in libmingle
+  * Fixed memory leak in ANN bridge
+  * Fixed buffer overflow in unflatten
+  * Fixed agxbputc macro does not bracket its arguments
+- Drop upstream fixed graphviz-2.46-fix-shebang.patch
+  * Using POSIX shell, no need for ksh
+
+-------------------------------------------------------------------
 Wed Apr 14 08:19:54 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Remove obsolete pre_checkin.sh

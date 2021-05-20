@@ -68,4 +68,12 @@
   * fix text:sender-lastname when creating meta-data</comment>
     <requestid>815735</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>879ce9f91f337fe89aefa0f595b75291</srcmd5>
+    <version>0.0.7</version>
+    <time>1621531430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894381</requestid>
+  </revision>
 </revisionlist>

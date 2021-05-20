@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu May 20 13:19:09 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Restore 90-kubeadm.conf, still needed [boo#1186125] 
+
+-------------------------------------------------------------------
+Wed May 19 11:28:32 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Stop setting sysctls on kubelet start with `sysctl -a --system`.
+  Instead use more specific sysctl calls in kubelet service start.
+  [boo#1186125]
+
+-------------------------------------------------------------------
+Wed May 19 11:17:58 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.21.1:
+  * [go1.16] Update to go1.16.4
+  * Automated cherry pick of #101377: Fix validation in kubectl create ingress (#101426)
+  * Update tests to use agnhost 2.32
+  * Fix EndpointSlice describe panic when an Endpoint doesn't have zone
+  * Add test create service with ns
+  * Set namespace when using kubectl create service
+  * Update pkg/volume/azure_file/azure_provision.go
+  * Normalize share name to not include capital letters
+  * Extend pod start timeout to 5min for storage subpath configmap test
+  * Fix cleanupMountpoint issue for Windows
+  * fix: set "host is down" as corrupted mount
+  * no watch endpointslice in userpace mode
+  * Ensure service deleted when the Azure resource group has been deleted
+  * Update Makefile
+  * Update dependencies.yaml
+  * update debian-base to buster-v1.5.0 for CVEs
+  * fix TestMutatingWebhookResetsInvalidManagedFields flakes
+  * Updating EndpointSlice validation to match Endpoints validation
+  * fix: azure file namespace issue in csi translation
+  * pkg/kubelet: improve the node informer sync check
+  * Remove Limits from scheduling e2e balanced pod resources
+  * Additional CVE-2021-3121 fix
+  * Fix RBAC of generic ephemeral volumes controller
+  * move filesystem resize code to kubernetes/mount-utils and add need resize function
+  * Fix panic when killing container fails
+  * Fix startupProbe behaviour changed
+  * Fix test
+  * [go1.16] Update to go1.16.3
+  * Fix Job describe for completion mode
+  * Upgrade kustomize-in-kubectl to v4.1.2
+  * exec test should not run in Parallel as feature gate is not locked
+  * respect ExecProbeTimeout
+  * apf: exempt probes /healthz /livez /readyz
+  * DelegatingAuthenticationOptions TokenReview request timeout
+  * add node handlers to the metaproxier
+  * Updating Topology Aware Hints to support "Auto" value for annotation
+  * list pod list once to avoid timeout
+  * gce configure containerd default_runtime_name
+  * Update the containerd runtime binary path - gce
+  * Cleanup portforward streams after their usage
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.0
+  * e2e test with hostNetwork pods can't run in parallel
+  * do not tag user created public IPs
+
+-------------------------------------------------------------------
 Mon May 17 12:50:21 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Revert remove workaround in 10-kubeadm.conf - still needed [boo#1186125]

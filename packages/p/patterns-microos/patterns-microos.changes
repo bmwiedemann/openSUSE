@@ -1,12 +1,41 @@
 -------------------------------------------------------------------
+Wed May 19 10:56:08 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Drop partitionmanager due to bsc#1178848.
+  We'll revisit when that is fixed.
+
+-------------------------------------------------------------------
+Fri May 14 15:09:08 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- make cups-pk-helper conditional to PackageKit
+
+-------------------------------------------------------------------
+Fri May 14 10:34:24 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- add qemu-guest-agent to the DVD, to improve experience in case we
+  install in a VM
+- add some cups and printing related packages so that a new printer
+  can actually be succesfully added (tested with GNOME only)
+- add some disk handling GUI tools (for partitioning USB keys, ext.
+  disks, etc) for both GNOME and KDE
+
+-------------------------------------------------------------------
+Wed May 12 10:15:46 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Conditionally install cockpit-packagekit in the Cockpit pattern
+  if the PackageKit pattern is installed to allow system updates
+  through Cockpit on package managed MicroOS systems.
+- Fix previous changelog entry to be formatted correctly
+
+-------------------------------------------------------------------
 Thu May 06 10:16:16 UTC 2021 - Syds Bearda <opensuse@syds.eu>
 
-Added the following to the pattern:
-- glibc-locale to the desktop common pattern as it's necessary to
-  choose a different language in Gnome settings
-- ModemManager to the DVD only pattern. So I can choose it in the
-  software section during install. For times there is no WiFi or
-  Ethernet, but a WWAN modem is available to the system.
+- Added the following to the pattern:
+  + glibc-locale to the desktop common pattern as it's necessary to
+    choose a different language in Gnome settings
+  + ModemManager to the DVD only pattern. So I can choose it in the
+    software section during install. For times there is no WiFi or
+    Ethernet, but a WWAN modem is available to the system.
 
 -------------------------------------------------------------------
 Thu Apr 22 07:06:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>

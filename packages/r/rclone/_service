@@ -3,8 +3,9 @@
     <param name="url">https://github.com/ncw/rclone.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.55.0</param>
-    <param name="revision">v1.55.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v1.55.1</param>
     <param name="filename">rclone</param>
   </service>
   <service name="set_version" mode="disabled"/>
@@ -12,6 +13,9 @@
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="go_modules" mode="disabled">
     <param name="compression">xz</param>
   </service>
 </services>

@@ -7,4 +7,12 @@
     <comment>Renamed from pkgname with underscores</comment>
     <requestid>777618</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e1382fc664d1864c1c515cdfa2b5178</srcmd5>
+    <version>1.8.0</version>
+    <time>1621531530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894582</requestid>
+  </revision>
 </revisionlist>

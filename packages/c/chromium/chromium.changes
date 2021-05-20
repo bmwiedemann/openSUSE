@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 10:44:26 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- use asimdrdm CPU flag for aarch64 to select only more powerful buildhosts.
+
+-------------------------------------------------------------------
 Tue May 11 10:59:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 90.0.4430.212 (boo#1185908)

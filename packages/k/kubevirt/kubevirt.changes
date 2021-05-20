@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 18 05:15:45 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop fix-virsh-domcapabilities-error.patch (bsc#1185119)
+
+-------------------------------------------------------------------
 Mon May 17 09:02:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Do not package OLM manifests

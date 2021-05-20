@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 18 09:21:31 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v35.0
+  - Bugfixes on all providers
+  - Many improvements on pyverbs
+  - Fixes dracut path issues on Tumbleweed
+- Refresh patches to latest sources:
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - disable-rdma-interface-renaming.patch
+
+-------------------------------------------------------------------
 Fri Feb 19 08:23:46 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to rdma-core v33.1

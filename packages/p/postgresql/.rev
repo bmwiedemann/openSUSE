@@ -469,4 +469,18 @@
     <comment>- Bump major and default version to 13.</comment>
     <requestid>843219</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>d368b02c4fed32b19c6de2b48db33871</srcmd5>
+    <version>13</version>
+    <time>1621531483</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now (boo#1183118).
+
+- Bump default version to 13 for SLE-15-SP3.
+
+- Bump major version to 13.
+- Bump default version to 13 in OBS.</comment>
+    <requestid>894073</requestid>
+  </revision>
 </revisionlist>

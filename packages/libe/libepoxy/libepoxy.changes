@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 18 08:04:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.7:
+  * Remove type redefinition
+- Includes changes from 1.5.6:
+  * Fix issue loading OpenGL/GLX/EGL libraries
+  * Expose dependency variables in pkg-config file
+  * Close output objects when generating files
+
+-------------------------------------------------------------------
 Tue Dec 22 17:17:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.5:

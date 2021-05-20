@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 18 09:54:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.73:
+  * new function for vector-backed responses
+  * compatibility with autoconf 2.70+
+  * Implement ALPN support
+
+-------------------------------------------------------------------
 Tue Dec 29 13:25:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmicrohttpd 0.9.72:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 19 10:00:00 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.0~rc95. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc95
+
+  This release of runc contains a fix for CVE-2021-30465, and users are
+  strongly recommended to update (especially if you are providing
+  semi-limited access to spawn containers to untrusted users). bsc#1185405
+
+-------------------------------------------------------------------
 Wed May 12 08:03:58 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.0~rc94. Upstream changelog is available from

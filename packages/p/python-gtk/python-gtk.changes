@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 19:27:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix patch tag line of
+  pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch.
+
+-------------------------------------------------------------------
 Mon Mar 23 13:27:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Make sure we build with py2 only

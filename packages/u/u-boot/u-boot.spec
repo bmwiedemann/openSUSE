@@ -74,7 +74,7 @@
 %define rockchip_spl 1
 %define rkimages $()
 %endif
-%if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399" || "%target" == "rockpro64-rk3399"
+%if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399" || "%target" == "rockpro64-rk3399" || "%target" == "rock-pi-n10-rk3399pro"
 %define is_rk3399 1
 %define is_armv8 1
 %define rockchip_idb 1
@@ -280,21 +280,19 @@ Name:           u-boot-%target
 %endif
 %if 0%{?is_rk3328} && %{with uboot_atf}
 BuildRequires:  arm-trusted-firmware-rk3328
+# make_fit_atf.py
+BuildRequires:  python3-pyelftools
 %endif
 %if 0%{?is_rk3399} && %{with uboot_atf}
 BuildRequires:  arm-trusted-firmware-rk3399
+# make_fit_atf.py
+BuildRequires:  python3-pyelftools
 %endif
 %if (0%{?is_a64} || 0%{?is_h5}) && %{with uboot_atf}
 BuildRequires:  arm-trusted-firmware-sun50i_a64
 %endif
 %if 0%{?is_h6} && %{with uboot_atf}
 BuildRequires:  arm-trusted-firmware-sun50i_h6
-%endif
-%if %{with uboot_atf}
-%if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399" || "%target" == "rockpro64-rk3399"
-# make_fit_atf.py
-BuildRequires:  python3-pyelftools
-%endif
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"
 # Owns /usr/share/qemu directory
@@ -383,7 +381,6 @@ make syncconfig
 make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
 
 %else
-export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 %if 0%{?is_a64} || 0%{?is_h5}
 %if %{with uboot_atf}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_a64/bl31.bin
@@ -404,10 +401,10 @@ export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %endif
 
 %if %{with uboot_atf}
-%if "%{name}" == "u-boot-rock64-rk3328"
+%if 0%{?is_rk3328}
 cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
-%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399" || "%target" == "rockpro64-rk3399"
+%if 0%{?is_rk3399}
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
@@ -439,12 +436,7 @@ echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
 echo "Tweaking text base for TF-A."
 echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
 %endif
-make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" \
-%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
-     all u-boot.itb
-%else
-     all
-%endif
+make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" all
 
 %if "%{name}" == "u-boot-snow" || "%{name}" == "u-boot-spring"
 # Chromebook ARM (snow) and HP Chromebook 11 (spring) need a uImage format
@@ -479,7 +471,6 @@ install -D -m 0755 tools/mkimage %{buildroot}%{_bindir}/mkimage
 install -D -m 0644 doc/mkimage.1 %{buildroot}%{_mandir}/man1/mkimage.1
 
 %else
-export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 export NO_BRP_STRIP_DEBUG=true
 export NO_DEBUGINFO_STRIP_DEBUG=true
 %define uboot_dir /boot
@@ -502,7 +493,7 @@ for f in u-boot u-boot.bin u-boot.dtb u-boot-dtb.bin; do
 done
 %else
 install -D -m 0644 u-boot%{binext} %{buildroot}%{uboot_dir}/u-boot%{binext}
-%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
+%if 0%{?rockchip_spl} && %{with uboot_atf}
 install -D -m 0644 u-boot.itb %{buildroot}%{uboot_dir}/u-boot.itb
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"

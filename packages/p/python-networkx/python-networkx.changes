@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 21:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * pin requirements
+
+-------------------------------------------------------------------
 Tue Feb 23 18:12:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Refine the optional test dependencies. We want to test python39 

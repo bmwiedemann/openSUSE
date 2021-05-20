@@ -60,4 +60,12 @@
   ``rz`` to be boolean rather than float for some compilers/OS.</comment>
     <requestid>893286</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66b4418015a179a51bf1de9c92f0a8da</srcmd5>
+    <version>2.0.0</version>
+    <time>1621531496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894407</requestid>
+  </revision>
 </revisionlist>

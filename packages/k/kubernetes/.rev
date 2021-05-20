@@ -722,4 +722,14 @@
     <comment>- Bump kubernetes-*-minus1 to 1.20.6</comment>
     <requestid>892399</requestid>
   </revision>
+  <revision rev="78" vrev="18">
+    <srcmd5>207ba8f708c04594d5791bdc534665f7</srcmd5>
+    <version>unknown</version>
+    <time>1621531427</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes-* to 1.21.1 
+
+- Bump kubernetes-*-minus1 to 1.20.7</comment>
+    <requestid>894323</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 20 01:25:06 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: instead of assuming "removable" for Azure, remove
+  fallback.efi from \EFI\Boot and copy grub.efi/cfg to \EFI\Boot
+  to make \EFI\Boot bootable and keep the boot option created by
+  efibootmgr (bsc#1185464, bsc#1185961)
+
+-------------------------------------------------------------------
 Fri May  7 08:54:20 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - shim-install: always assume "removable" for Azure to avoid the

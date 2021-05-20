@@ -400,4 +400,16 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>877233</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>44530a7446bb93e9a84e05e02a6c1d8a</srcmd5>
+    <version>0.19.1</version>
+    <time>1621531404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.1:
+  * auth header parsing performance optimizations; Thanks to Paul McGuire
+  * Use mock from the standard library on Python&gt;=3.3
+
+- update to 0.18.1: (bsc#1171998, CVE-2020-11078)</comment>
+    <requestid>894163</requestid>
+  </revision>
 </revisionlist>

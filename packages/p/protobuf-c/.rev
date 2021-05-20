@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>791018</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>39c995b55cc5cab920165fd74ac40354</srcmd5>
+    <version>1.4.0</version>
+    <time>1621531420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.0</comment>
+    <requestid>894235</requestid>
+  </revision>
 </revisionlist>

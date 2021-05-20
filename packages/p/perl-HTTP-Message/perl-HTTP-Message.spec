@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.31
+Version:        6.32
 Release:        0
 Summary:        HTTP style message (base class)
 License:        Artistic-1.0 OR GPL-1.0-or-later

@@ -13,7 +13,7 @@
  import re
  
  from .interfaces import Dialect
-@@ -218,7 +219,7 @@ class URL(object):
+@@ -700,7 +701,7 @@ class URL(object):
          return translated
  
  
@@ -22,7 +22,7 @@
      """Given a string or unicode instance, produce a new URL instance.
  
      The given string is parsed according to the RFC 1738 spec.  If an
-@@ -226,12 +227,12 @@ def make_url(name_or_url):
+@@ -708,12 +709,12 @@ def make_url(name_or_url):
      """
  
      if isinstance(name_or_url, util.string_types):
@@ -37,7 +37,7 @@
      pattern = re.compile(
          r"""
              (?P<name>[\w\+]+)://
-@@ -261,7 +262,12 @@ def _parse_rfc1738_args(name):
+@@ -743,7 +744,12 @@ def _parse_rfc1738_args(name):
              if len(tokens) > 1:
                  query = {}
  
@@ -53,7 +53,7 @@
                      if key in query:
 --- a/test/dialect/mssql/test_engine.py
 +++ b/test/dialect/mssql/test_engine.py
-@@ -164,7 +164,8 @@ class ParseConnectTest(fixtures.TestBase
+@@ -169,7 +169,8 @@ class ParseConnectTest(fixtures.TestBase
          u = url.make_url(
              "mssql+pyodbc://@server_name/db_name?"
              "driver=ODBC+Driver+17+for+SQL+Server&"

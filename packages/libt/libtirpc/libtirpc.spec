@@ -1,7 +1,7 @@
 #
 # spec file for package libtirpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 Name:           libtirpc
-# src/crypt_client.c and tirpc/rpcsvc/crypt.x have the BSD advertising clause
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/libtirpc/
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://download.sourceforge.net/libtirpc/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5)
@@ -56,8 +55,6 @@ This RPM contains the netconfig configuration file and manual page for
 the TI-RPC Library.
 
 %package devel
-# src/crypt_client.c tirpc/spinlock.h and tirpc/rpcsvc/crypt.x have the BSD
-# advertising clause
 Summary:        Development files for the Transport Independent RPC Library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel

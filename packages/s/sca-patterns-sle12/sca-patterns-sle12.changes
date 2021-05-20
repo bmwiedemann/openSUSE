@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 19 15:51:17 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Updated regular patterns (1)
+  + sle12all/lvm-00003.pl: Physical volumes can be removed or damaged and appear missing. This pattern looks for missing physical volumes.
+- Deleted regular patterns (2)
+  + sle12all/pdc-00001.pl: Pattern removed OES Dependent
+  + sle12all/pdc-00002.pl: Pattern removed OES Dependent
+
+-------------------------------------------------------------------
+Tue May 18 21:40:11 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.3
+  - New regular patterns (5)
+    + sle12sp4/nfsperf-124-000019615.py: Performance loss when writing large files over NFS (bsc#1163403)
+    + sle12sp4/tailf-000019885.py: Aborting tailf causes bash session to be corrupted (bsc#1177369)
+    + sle12sp5/nfsipv6_125-000019618.py: Timeout when attempting NFS mount over IPv6 (bsc#1144162)
+    + sle12sp5/nfsperf-125-000019615.py: Performance loss when writing large files over NFS (bsc#1163403)
+    + sle12sp5/tailf-000019885.py: Aborting tailf causes bash session to be corrupted (bsc#1177369)
+  - Updated regular patterns (3)
+    + sle12all/lvm-00003.pl: Physical volumes can be removed or damaged and appear missing. This pattern looks for missing physical volumes.
+    + sle12all/lvm-00004.pl: LMV Check sum errors may indicate corrupted LVM metadata
+    + sle12all/lvm-00005.pl: Duplicate volume groups are usually a configuration issue
+  - Deleted regular patterns (2)
+    + sle12all/lvm-00001.pl: Pattern removed
+    + sle12all/lvm-00002.pl: Pattern removed
+
+-------------------------------------------------------------------
 Wed May  5 15:38:43 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - New security announcement patterns (69) for version 1.0.3

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 15:18:37 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- allow cockpit socket to bind nodes (fix_cockpit.patch)
+- use %autosetup to get rid of endless patch lines
+
+-------------------------------------------------------------------
 Tue Apr 27 06:30:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated fix_networkmanager.patch to allow NetworkManager to watch

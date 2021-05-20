@@ -1,7 +1,7 @@
 #
 # spec file for package autotrash
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,19 +11,23 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:             autotrash
-Version:          0.2.0
-Release:          0
-Summary:          Tool to automatically purge old trashed files
-License:          GPL-3.0+
-Url:              http://www.logfish.net/pr/autotrash/
-Source:           https://github.com/bneijt/autotrash/archive/v%{version}.tar.gz
-BuildArch:        noarch
-Requires:         python3
-BuildRequires:    python3
-BuildRequires:    pandoc
+
+Name:           autotrash
+Version:        0.2.0
+Release:        0
+Summary:        Tool to automatically purge old trashed files
+License:        GPL-3.0-or-later
+URL:            http://www.logfish.net/pr/autotrash/
+Source:         https://github.com/bneijt/autotrash/archive/v%{version}.tar.gz
+# autotrash has been generated using pandoc -s -t man < doc/autotrash.md > autotrash.1
+Source1:        autotrash.1
+BuildArch:      noarch
+Requires:       python3
+BuildRequires:  python3
 
 %description
 Autotrash is a small python script to automatically remove (permanently delete)
@@ -32,6 +36,8 @@ information.
 
 %prep
 %setup -q
+# if the pre-built autotrash.1 is outdated, the build will fail
+cp %{SOURCE1} doc
 
 %build
 python3 setup.py build
@@ -52,4 +58,3 @@ cp -a doc/%{name}.1* %{buildroot}%{_mandir}/man1
 %{python3_sitelib}/*
 
 %changelog
-

@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed May 19 10:57:38 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#512
+- Fix previous typo adding chipidea modules
+- 17.5
+
+--------------------------------------------------------------------
+Wed May 19 09:22:26 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#511
+- Add chipidea modules (bsc#1184867)
+- 17.4
+
+--------------------------------------------------------------------
 Wed May 12 08:46:21 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#510

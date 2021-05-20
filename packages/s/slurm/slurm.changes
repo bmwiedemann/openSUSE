@@ -2,7 +2,7 @@
 Fri May 14 10:07:04 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Updated to 20.11.7 which fixes CVE-2021-31215 (bsc#1186024)
-- New featuresi from 20.11.7:
+- New features in 20.11.7:
  * slurmd - handle configless failures gracefully instead of hanging
    indefinitely.
  * select/cons_tres - fix Dragonfly topology not selecting nodes in the same
@@ -19,7 +19,7 @@ Fri May 14 10:07:04 UTC 2021 - Christian Goll <cgoll@suse.com>
  * Fix missing xstrdup which could result in slurmctld segfault on array jobs.
  * Fix security issue in PrologSlurmctld and EpilogSlurmctld by always
    prepending SPANK_ to all user-set environment variables. CVE-2021-31215.
-- New features from 20.11.6:
+- New features in 20.11.6:
  * Fix sacct assert with the --qos option.
  * Use pkg-config --atleast-version instead of --modversion for systemd.
  * common/fd - fix getsockopt() call in fd_get_socket_error().
@@ -59,7 +59,6 @@ Fri May 14 10:07:04 UTC 2021 - Christian Goll <cgoll@suse.com>
  * acct_gather_energy/rapl - fix AveWatts calculation.
  * job_container/tmpfs - Fix issues with cleanup and slurmd restarting on
    running jobs.
-
 
 -------------------------------------------------------------------
 Mon May  3 16:09:44 UTC 2021 - Egbert Eich <eich@suse.com>
@@ -238,7 +237,7 @@ Fri Jan  8 13:27:02 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Fri Jan  8 12:20:27 UTC 2021 - Egbert Eich <eich@suse.com>
 
-- Fix Provides:/Conflicts: for libnss_slurm.
+- Fix Provides:/Conflicts: for libnss_slurm (bsc#1180700).
 
 -------------------------------------------------------------------
 Tue Jan  5 08:02:02 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>

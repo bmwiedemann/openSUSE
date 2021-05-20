@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 18 05:40:50 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210518.46a0704a:
+  * Dev: cibconfig: resolve TypeError for fencing-topology tag
+
+-------------------------------------------------------------------
+Mon May 10 06:38:01 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210510.2775a5e2:
+  * Dev: unittest: move watchdog unit test code into test_watchdog.py
+  * Dev: watchdog: split class Watchdog into watchdog.py from bootstrap.py
+
+-------------------------------------------------------------------
 Fri May 07 02:46:22 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210507.bf02d791:

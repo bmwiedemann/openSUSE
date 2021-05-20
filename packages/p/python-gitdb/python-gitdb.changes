@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 18 22:00:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.7:
+  * Fix exception causes in loose.py
+  * Fix exception causes all over the codebase
+  * Add Ram Rachum to AUTHORS
+  * Update smmap upper bound in setup.py 
+
+-------------------------------------------------------------------
 Tue Jun  2 15:21:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.5:

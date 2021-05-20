@@ -1085,4 +1085,12 @@
     <comment>- 0001-Fix-memory-allocation.patch: fixed a crash during oscap oval eval (forwarded request 859045 from msmeissn)</comment>
     <requestid>859046</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>a353a2d93368afd2c9c1c6d4aa1aad4c</srcmd5>
+    <version>1.3.5</version>
+    <time>1621531544</time>
+    <user>dimstar_suse</user>
+    <comment>update openscap to 1.3.5 (forwarded request 894638 from rfrohl)</comment>
+    <requestid>894646</requestid>
+  </revision>
 </revisionlist>

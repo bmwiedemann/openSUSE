@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-packagekit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,11 @@ Source0:        https://download.gnome.org/sources/gnome-packagekit/3.32/%{name}
 Patch0:         gnome-packagekit-displaysize.patch
 # PATCH-FEATURE-OPENSUSE -- Only show gnome-packagekit in gnome.
 Patch1:         gnome-packagekit-OnlyShowIn.patch
-# PATCH-FIX-SLED bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch rlmu@suse.com -- Restart gpk-update-viewer after certain update.
+# PATCH-FIX-SLE bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch rlmu@suse.com -- Restart gpk-update-viewer after certain update.
 Patch2:         bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch
 # PATCH-FIX-UPSTREAM bnc-946886-install-signatures-in-viewer.patch bsc#946886 mgorse@suse.com -- install signatures in gpk-update-viewer if needed
 Patch3:         bnc-946886-install-signatures-in-viewer.patch
-# PATCH-FIX-SLED bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch rlmu@suse.com -- Fixed asks for passwd too early.
+# PATCH-FIX-SLE bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch rlmu@suse.com -- Fixed asks for passwd too early.
 Patch4:         bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch
 # PATCH-FIX-UPSTREAM gnome-packagekit-fix-not-responding-after-update.patch bgo#782673, bsc#1036542 sckang@suse.com -- Fix gpk-update-viewer not responding after installing available updates.
 Patch5:         gnome-packagekit-fix-not-responding-after-update.patch

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 17 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.8001
+   see /usr/share/doc/packages/perl-ExtUtils-Depends/Changes
+
+  0.8001
+      - Remove hack (cf https://rt.cpan.org/Ticket/Display.html?id=45224)
+        The hijacking of EUMM's `static_lib` method is now obsolete, as well as
+        causing problems.
+      - Also added a couple of code tidy-ups
+
+-------------------------------------------------------------------
 Wed Apr 10 05:05:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.8000

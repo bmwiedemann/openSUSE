@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-polyfill
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-flake8-polyfill
 Version:        1.0.2
 Release:        0
 Summary:        Polyfill package for Flake8 plugins
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://gitlab.com/pycqa/flake8-polyfill
+URL:            https://gitlab.com/pycqa/flake8-polyfill
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-polyfill/flake8-polyfill-%{version}.tar.gz
+# https://gitlab.com/pycqa/flake8-polyfill/-/merge_requests/8
+Patch0:         python-flake8-polyfill-use-unittest-mock.patch
+# https://gitlab.com/pycqa/flake8-polyfill/-/issues/3
+Patch1:         python-flake8-polyfill-tool-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module flake8}
-%endif
 Requires:       python-flake8
 BuildArch:      noarch
-
+# SECTION test requirements
+%if %{suse_version} <= 1500
+BuildRequires:  python2-mock
+%endif
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -43,6 +49,8 @@ Flake8 plugins that intend to support Flake8 2.x and 3.x simultaneously.
 
 %prep
 %setup -q -n flake8-polyfill-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -51,13 +59,11 @@ Flake8 plugins that intend to support Flake8 2.x and 3.x simultaneously.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# tests/test_stdin.py: we do not have pep8 module in TW
+%pytest tests/test_options.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/*

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 18 21:55:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.21:
+ * Add basic support for a GcsObjectStore that stores
+   pack files in gcs.
+ * In porcelain.push, default to local active branch.
+ * Support fetching symrefs.
+
+-------------------------------------------------------------------
 Thu Apr 22 20:19:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.20:

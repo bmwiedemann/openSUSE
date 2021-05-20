@@ -1505,4 +1505,12 @@
     <comment>- Update to release 2021.04.17</comment>
     <requestid>886125</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>c6bb9a56b3698b7d707a6941e1256302</srcmd5>
+    <version>2021.05.16</version>
+    <time>1621531532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.05.16</comment>
+    <requestid>894590</requestid>
+  </revision>
 </revisionlist>

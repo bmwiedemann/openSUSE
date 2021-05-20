@@ -26,7 +26,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{_name}-%{version}.tar.xz
 
-# PATCh-FIX-UPSTREAM tracker-miners-bsc1165635-crawl-timestamp.patch boo#1165635 mgorse@suse.com -- properly set crawl timestamp.
+# PATCH-FIX-UPSTREAM tracker-miners-bsc1165635-crawl-timestamp.patch boo#1165635 mgorse@suse.com -- properly set crawl timestamp.
 Patch0:         tracker-miners-bsc1165635-crawl-timestamp.patch
 # PATCH-FIX-UPSTREAM tracker-miners-boo1183879-seccomp-allow-fstatat64.patch glgo#GNOME/tracker-miners#167 boo#1183879
 Patch1:         tracker-miners-boo1183879-seccomp-allow-fstatat64.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package imake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,17 +22,16 @@ Release:        0
 Summary:        C preprocessor interface to the make utility
 License:        MIT
 Group:          Development/Tools/Building
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
-# This was part of the xorg-x11-util-devel package up to version 7.6
-Conflicts:      xorg-x11-util-devel <= 7.6
 # For Imake.tmpl, Just in case packagers don't know it's in this package.
 Requires:       xorg-cf-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# This was part of the xorg-x11-util-devel package up to version 7.6
+Conflicts:      xorg-x11-util-devel <= 7.6
 
 %description
 Imake is used to generate Makefiles from a template, a set of cpp macro
@@ -50,14 +49,14 @@ converted.
 
 %build
 %configure --with-config-dir=%{_datadir}/X11/config
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/ccmakedep
 %{_bindir}/cleanlinks
 %{_bindir}/imake

@@ -1,7 +1,7 @@
 #
 # spec file for package mirrormagic
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,49 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mirrormagic
-Version:        2.0.2
+Version:        3.0.0
 Release:        0
 Summary:        Puzzle game where you steer a beam of light using mirrors
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Logic
-Url:            http://www.artsoft.org/mirrormagic/
-Source0:        http://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.artsoft.org/mirrormagic/
+Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
-# Fix deprecated code
-Patch0:         %{name}-%{version}-src_editor.c.patch
-# Correct SDL code
-Patch1:         %{name}-%{version}-src_events.c.patch
-# Correct highscore
-Patch2:         %{name}-%{version}-src_files.c.patch
-# Correct GCC code
-Patch3:         %{name}-%{version}-src_main.h.patch
-# Correct that works with 64 and 386 bit
-Patch4:         %{name}-%{version}-src_libgame_gadgets.c.patch
-# Correct SDL code
-Patch5:         %{name}-%{version}-src_libgame_sdl.c.patch
-# Correct SDL code
-Patch6:         %{name}-%{version}-src_libgame_sdl.h.patch
-# Correct security code
-Patch7:         %{name}-%{version}-src_tools.c.patch
-%if 0%{?suse_version}
+# PATCH-FIX-UPSTREAM -- Fix LTO multiple definitions linking issue
+Patch0:         fix-multiple-definitions.patch
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(sdl)
-%if 0%{?suse_version} < 1330
-Requires(pre):	/usr/sbin/useradd /usr/sbin/groupadd
-%else
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(sdl2)
 Requires(pre):  group(games) user(games)
-%endif
 
 %description
 This is a nice little game with color graphics and sound for your
@@ -68,18 +49,15 @@ C64 game "Deflektor".
 
 %prep
 %setup -q -b 1
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
+%patch0 -p1
+rm -rfv lib mirrormagic
+find . -name "*.orig" -delete
 
 %build
-make %{?_smp_mflags} sdl \
-    OPTIONS="%{optflags} -w -fgnu89-inline" \
+%make_build sdl2 \
+    PROGBASE=%{name} \
+    OPTIONS="%{optflags} -fPIE" \
+    EXTRA_LDFLAGS="%{optflags} -pie" \
     RO_GAME_DIR=%{_datadir}/%{name} \
     RW_GAME_DIR=%{_localstatedir}/games/%{name}
 
@@ -102,25 +80,17 @@ done
 # install Desktop file
 install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}
+install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}/scores
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-    %fdupes -s %{buildroot}%{_prefix}
-%endif
-
-%if 0%{?suse_version} < 1330
-%pre
-getent group games >/dev/null || groupadd -r games
-getent passwd games >/dev/null || useradd -r -g games -d /var/games -s /sbin/nologin
-%endif
+%suse_update_desktop_file %{name}
+%fdupes -s %{buildroot}%{_prefix}
 
 %files
-%defattr(-,root,root,-)
-%doc CHANGES COPYING README TODO
+%license COPYING
+%doc ChangeLog CREDITS
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/%{name}
 %attr(0775,games,games) %{_localstatedir}/games/%{name}
 

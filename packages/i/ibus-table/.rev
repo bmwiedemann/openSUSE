@@ -310,4 +310,14 @@
     <comment></comment>
     <requestid>891518</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a17cfabfc58ba8ec0807cd2ef2ab1e71</srcmd5>
+    <version>1.13.1</version>
+    <time>1621531506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.1
+  * Fix reading the source file for the suggestions phrase.txt.bz2
+  * Update translations from Weblate (updates for ca, fr)</comment>
+    <requestid>894461</requestid>
+  </revision>
 </revisionlist>

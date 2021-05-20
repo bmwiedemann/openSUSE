@@ -254,6 +254,8 @@ Provides:       pattern-order() = 9060
 Provides:       pattern-visible()
 Requires:       cockpit-podman
 Requires:       cockpit-system
+# If PackageKit pattern is installed, pull in Cockpit's PackageKit module
+Requires:       (cockpit-packagekit if patterns-microos-base-packagekit)
 
 %description cockpit
 Packages required to run the Cockpit system management service.
@@ -322,9 +324,15 @@ Requires:       pulseaudio-utils
 
 # Allow users to print (and add some common printer drivers)
 Requires:       OpenPrintingPPDs
+Requires:       bluez-cups
 Requires:       cups
 Requires:       cups-filters
+Requires:       ghostscript
 Requires:       hplip-hpijs
+Requires:       system-config-printer-common
+Requires:       system-config-printer-dbus-service
+Requires:       udev-configure-printer
+Requires:       (cups-pk-helper if PackageKit)
 
 # Common tools
 Requires:       bash-completion
@@ -374,6 +382,7 @@ Requires:       gnome-keyring-pam
 # implied by gnome-keyring-pam
 #Requires:     gnome-keyring
 Requires:       gnome-power-manager
+Requires:       gnome-disk-utility
 # implied by gdm
 #Requires: gnome-shell
 #Requires: gnome-settings-daemon
@@ -542,6 +551,7 @@ Requires:       open-vm-tools
 %endif
 Requires:       pam_pwquality
 Requires:       policycoreutils-python-utils
+Requires:       qemu-guest-agent
 Requires:       spice-vdagent
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64

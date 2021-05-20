@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 12:02:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to use host with 'asimdrdm' cpu flag to avoid
+  slow CPU and be scheduled on faster systems
+
+-------------------------------------------------------------------
 Wed Apr 14 15:01:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4.1

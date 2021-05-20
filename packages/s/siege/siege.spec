@@ -1,7 +1,7 @@
 #
 # spec file for package siege
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           siege
-Version:        4.0.7
+Version:        4.0.9
 Release:        0
 Summary:        HTTP Regression Testing/Benchmarking Utility
 License:        GPL-2.0-or-later

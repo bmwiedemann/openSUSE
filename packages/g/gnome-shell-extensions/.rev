@@ -950,4 +950,12 @@
   since gnome-shell-classic-session is no longer used. (forwarded request 888050 from mgorse)</comment>
     <requestid>888739</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>6652117651e6adec757a4d35e9498a26</srcmd5>
+    <version>40.1</version>
+    <time>1621531469</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893934 from dimstar)</comment>
+    <requestid>893961</requestid>
+  </revision>
 </revisionlist>

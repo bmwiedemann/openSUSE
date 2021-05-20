@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 16 12:39:45 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Changed 'BACKEND' to "/usr/libexec/sshg-fw-iptables" from incorrect syntax
+
+-------------------------------------------------------------------
 Wed May 12 00:04:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4.2

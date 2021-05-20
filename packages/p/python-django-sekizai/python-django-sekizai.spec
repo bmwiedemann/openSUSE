@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-sekizai
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,8 @@ Django Template Blocks with extra functionality
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+export PYTHONPATH='.'
+%python_exec tests/settings.py
 
 %files %{python_files}
 %license LICENSE.txt

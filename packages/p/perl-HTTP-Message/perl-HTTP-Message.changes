@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 19 03:08:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.32
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.32      2021-05-18 18:54:27Z
+      - Use File::Spec for MSWin32 on Content-Disposition filename (GH#157)
+        (tzccinct)
+
+-------------------------------------------------------------------
 Wed May 12 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.31

@@ -20,7 +20,7 @@
 %define fdir %{_datadir}/salt-formulas
 # See also https://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           drbd-formula
-Version:        0.4.2+git.1616116365.1e3ab34
+Version:        0.4.3+git.1621498620.45e1839
 Release:        0
 Summary:        DRBD deployment salt formula
 License:        Apache-2.0

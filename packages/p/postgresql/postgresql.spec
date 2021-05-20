@@ -29,10 +29,9 @@
 %bcond_with     systemd
 %endif
 
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500 && %pgmajor >= 11 && %pgmajor < 90
+%if 0%{?suse_version} >= 1500 && %pgmajor >= 11 && %pgmajor < 90
 %bcond_without  llvm
 %else
-# LLVM is currently unsupported on SLE, so don't use it
 %bcond_with     llvm
 %endif
 

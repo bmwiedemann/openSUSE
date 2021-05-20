@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-coverage-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module coverage >= 4.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module unittest-mixins}
 # /SECTION
@@ -55,7 +56,7 @@ Django template coverage.py plugin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

@@ -1,7 +1,7 @@
 #
 # spec file for package libmicrohttpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010,2011,2012  Stephan Kleine
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,17 +20,17 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        0.9.72
+Version:        0.9.73
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
 # check phase and not shipped further
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Servers
 URL:            https://www.gnu.org/software/libmicrohttpd/
 Source0:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=90068#/%{name}.keyring
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0

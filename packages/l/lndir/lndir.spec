@@ -1,7 +1,7 @@
 #
 # spec file for package lndir
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           lndir
 Version:        1.0.3
 Release:        0
-License:        MIT
 Summary:        Utility to create a shadow directory of symbolic links to another directory tree
-Url:            http://xorg.freedesktop.org/
+License:        MIT
 Group:          Development/Tools/Building
-Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
-BuildRequires:  pkg-config
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The lndir program makes a shadow copy of a directory tree, except that
@@ -40,14 +40,14 @@ links pointing at the real files in the original directory tree.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/lndir
 %{_mandir}/man1/lndir.1%{?ext_man}
 

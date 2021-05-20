@@ -1,5 +1,5 @@
 #
-# spec file for package python-arrow
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-arrow%{?psuffix}
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0

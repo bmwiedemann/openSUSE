@@ -1,7 +1,7 @@
 #
 # spec file for package tclx
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tclx
-BuildRequires:  autoconf
-BuildRequires:  tcl-devel
-Version:        8.4.1
+Version:        8.4.4
 Release:        0
 Summary:        TclX - Extended Tcl
 License:        SUSE-Permissive and BSD-3-Clause
+URL:            http://tclx.sourceforge.net/
 Group:          Development/Languages/Tcl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %name%version.tar.bz2
+Source0:        https://github.com/flightaware/tclx/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  tcl-devel
 
 %description 
 Extended Tcl is a superset of standard Tcl. Extended Tcl has three
@@ -36,39 +36,28 @@ automatically loaded on the first attempt to execute it.
 
 In addition, a detailed help system is available for Tcl/Tk: tclhelp.
 
-
-
-Authors:
---------
-    Karl Lehenbauer and Mark Diekhan <info@NeoSoft.com>
-
 %prep
-%setup -q -n %{name}8.4
+%setup -q
 
 %build
-autoconf
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+autoreconf -fi
+export CFLAGS="%optflags -fno-strict-aliasing"
 %configure \
 	--with-tcl=%_libdir \
 	--with-help \
 	--enable-threads
-make
+%make_build
 
 %install
-make install DESTDIR=%buildroot pkglibdir=%tcl_archdir/%{name}8.4
+%make_install pkglibdir=%tcl_archdir/%{name}8.4
 
-%post -p /sbin/ldconfig
-
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
-%tcl_archdir
-%doc %_mandir/mann/*
-%_prefix/include/*
-%doc ChangeLog README
+%doc README.md
+%tcl_archdir/%{name}8.4
+%_mandir/mann/*
+%_includedir/*
 
 %changelog

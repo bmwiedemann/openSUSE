@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue May 18 09:35:39 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.20.7:
+  * staging/publishing: Set default go version to go1.15.12
+  * build: Update to k/repo-infra@v0.1.7 (supports go1.15.12)
+  * Use go-runner:v2.3.1-go1.15.12-buster.0 image (built on go1.15.12)
+  * Update to go1.15.12
+  * fix: not tagging static public IP
+  * Add test create service with ns
+  * Set namespace when using kubectl create service
+  * Automated cherry pick of #101377: Fix validation in kubectl create ingress (#101428)
+  * Updating EndpointSlice controllers to avoid duplicate creations
+  * Update pkg/volume/azure_file/azure_provision.go
+  * Normalize share name to not include capital letters
+  * Extend pod start timeout to 5min for storage subpath configmap test
+  * fix: set "host is down" as corrupted mount
+  * no watch endpointslice in userpace mode
+  * Ensure service deleted when the Azure resource group has been deleted
+  * Updating EndpointSlice validation to match Endpoints validation
+  * Make parallel build memory threshold configurable
+  * fix: azure file namespace issue in csi translation
+  * pkg/kubelet: improve the node informer sync check
+  * Additional CVE-2021-3121 fix
+  * Fix startupProbe behaviour changed
+  * Fix test
+  * staging/publishing: Set default go version to go1.15.10
+  * build: Update to k/repo-infra@v0.1.6 (supports go1.15.11)
+  * Use go-runner:v2.3.1-go1.15.11-buster.0 image (built on go1.15.11)
+  * Update to go1.15.11
+  * add duration encoder to structured logger
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.6
+  * exec test should not run in Parallel as feature gate is not locked
+  * hack/update-bazel.sh
+  * respect ExecProbeTimeout
+  * apf: exempt probes /healthz /livez /readyz
+  * DelegatingAuthenticationOptions TokenReview request timeout
+  * list pod list once to avoid timeout
+  * Cleanup portforward streams after their usage
+  * fix smb mount issue on Windows
+
+-------------------------------------------------------------------
 Thu Apr 15 07:59:12 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.20.6:

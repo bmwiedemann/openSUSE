@@ -1,7 +1,7 @@
 #
 # spec file for package libidn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define lname	libidn12
 Name:           libidn
-Version:        1.36
+Version:        1.37
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://www.gnu.org/software/libidn/
+URL:            https://www.gnu.org/software/libidn/
 Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libidn&download=1#/%{name}.keyring
+Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  pkgconfig
-Requires(post): %{install_info_prereq}
 
 %description
 GNU Libidn is an implementation of the Stringprep, Punycode, and IDNA
@@ -110,7 +109,7 @@ IDNA is supported.
     --disable-silent-rules \
     --disable-static \
     --disable-gtk-doc
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -120,22 +119,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make check %{?_smp_mflags}
+%make_build check
 %endif
-
-%post tools
-%install_info --info-dir=%{_infodir} %{_infodir}/libidn.info.*
-
-%preun tools
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libidn.info.*
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files tools -f %{name}.lang
+%license COPYING*
 %dir %{_datadir}/emacs
 %dir %{_datadir}/emacs/site-lisp
-%doc AUTHORS ChangeLog FAQ NEWS README THANKS TODO
+%doc AUTHORS ChangeLog FAQ NEWS README THANKS
 %{_infodir}/libidn*
 %{_bindir}/idn
 %{_mandir}/man1/idn.1%{?ext_man}
@@ -147,6 +141,7 @@ make check %{?_smp_mflags}
 %{_libdir}/libidn.so.12*
 
 %files devel
+%license COPYING*
 %{_libdir}/libidn.so
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/libidn.pc

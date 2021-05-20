@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 16 21:49:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 586:
+  * Make less able to read lesskey source files (deprecating lesskey).
+  * If XDG_CONFIG_HOME is set, find lesskey source file 
+    in $XDG_CONFIG_HOME/lesskey rather than $HOME/.lesskey.
+  * If XDG_DATA_HOME is set, find and store history file 
+    in $XDG_DATA_HOME/lesshst rather than $HOME/.lesshst.
+  * Add the --lesskey-src option.
+  * Add the --file-size option.
+  * Fix bug which could leave terminal in mouse-reporting mode 
+    after exiting less.
+  * Fix bug which caused failure to respond to window resize.
+  * Fix backslash bug searching in tag file.
+
+-------------------------------------------------------------------
 Thu Apr 29 07:19:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 581.2:

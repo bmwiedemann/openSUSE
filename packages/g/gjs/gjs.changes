@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 13:50:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.68.1:
+  + Many stability fixes due to refactoring how disposed GObjects
+    are handled.
+
+-------------------------------------------------------------------
 Sat Mar 20 17:25:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.68.0:

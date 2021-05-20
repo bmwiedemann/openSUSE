@@ -44,7 +44,7 @@ BuildRequires:  kseexpr-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
 BuildRequires:  libheif-devel
 %endif
 BuildRequires:  libjpeg-devel

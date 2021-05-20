@@ -129,6 +129,8 @@ Patch048:       fix_apache.patch
 Patch049:       fix_nis.patch
 Patch050:       fix_libraries.patch
 Patch051:       fix_dovecot.patch
+# https://github.com/cockpit-project/cockpit/pull/15758
+Patch052:       fix_cockpit.patch
 
 Patch100:       sedoctool.patch
 
@@ -386,58 +388,7 @@ fi;
 exit 0
 
 %prep
-%setup -n fedora-policy-%{version}
-%patch001 -p1
-%patch002 -p1
-%patch003 -p1
-%patch004 -p1
-%patch005 -p1
-%patch006 -p1
-%patch007 -p1
-%patch008 -p1
-%patch009 -p1
-%patch010 -p1
-%patch011 -p1
-%patch012 -p1
-%patch013 -p1
-%patch014 -p1
-%patch016 -p1
-%patch017 -p1
-%patch018 -p1
-%patch019 -p1
-%patch020 -p1
-%patch021 -p1
-%patch022 -p1
-%patch024 -p1
-%patch025 -p1
-%patch026 -p1
-%patch027 -p1
-%patch028 -p1
-%patch029 -p1
-%patch030 -p1
-#% patch031 -p1
-%patch032 -p1
-%patch033 -p1
-%patch034 -p1
-%patch035 -p1
-%patch036 -p1
-%patch037 -p1
-%patch038 -p1
-%patch039 -p1
-%patch040 -p1
-%patch041 -p1
-%patch042 -p1
-#% patch043 -p1
-%patch044 -p1
-%patch045 -p1
-%patch046 -p1
-%patch047 -p1
-%patch048 -p1
-%patch049 -p1
-%patch050 -p1
-%patch051 -p1
-
-%patch100 -p1
+%autosetup -n fedora-policy-%{version} -p1
 find . -type f -exec sed -i -e "s/distro_suse/distro_redhat/" \{\} \;
 
 %build

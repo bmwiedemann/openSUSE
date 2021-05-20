@@ -353,4 +353,12 @@ Changelog:
     <comment></comment>
     <requestid>791908</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a4846ac0cea9d13844ee4d02dc4b1d30</srcmd5>
+    <version>3.1.1</version>
+    <time>1621531424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>894305</requestid>
+  </revision>
 </revisionlist>

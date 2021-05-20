@@ -28,7 +28,7 @@
 %define saxpath_version   1.0
 %define saxpath_suffix  -FCS
 %define saxpath_dir     %{_builddir}/%{name}-%{jdom_version}/saxpath-%{saxpath_version}%{saxpath_suffix}
-%define jaxen_version   1.1.1
+%define jaxen_version   1.1.6
 %define jaxen_suffix    %{nil}
 %define jaxen_dir       %{_builddir}/%{name}-%{jdom_version}/jaxen-%{jaxen_version}
 %define jdom_dir        %{_builddir}/%{name}-%{jdom_version}/%{name}
@@ -50,11 +50,11 @@ Source2:        xom-%{xom_version}-src.tar.bz2
 # rm dom4j/lib/tools/clover.license
 # tar --exclude-vcs -cjf dom4j-1.6.1-debian.tar.bz2 dom4j/
 Source3:        dom4j-%{dom4j_version}-debian.tar.bz2
-Source4:        jaxen-%{jaxen_version}-src.tar.bz2
+Source4:        jaxen-%{jaxen_version}.tar.gz
 Source10:       http://repo.maven.apache.org/maven2/org/%{name}/%{name}/%{jdom_version}%{jdom_suffix}/%{name}-%{jdom_version}%{jdom_suffix}.pom
 Source11:       http://repo.maven.apache.org/maven2/saxpath/saxpath/%{saxpath_version}%{saxpath_suffix}/saxpath-%{saxpath_version}%{saxpath_suffix}.pom
 Source12:       http://repo.maven.apache.org/maven2/xom/xom/1.2.5/xom-1.2.5.pom
-Source13:       http://repo.maven.apache.org/maven2/jaxen/jaxen/%{jaxen_version}%{jaxen_suffix}/jaxen-%{jaxen_version}%{jaxen_suffix}.pom
+Source13:       https://repo.maven.apache.org/maven2/jaxen/jaxen/%{jaxen_version}%{jaxen_suffix}/jaxen-%{jaxen_version}%{jaxen_suffix}.pom
 Patch0:         jdom-1.1-build.xml.patch
 Patch1:         jdom-1.1-OSGiManifest.patch
 Patch2:         jdom-1.1-xom-get-jaxen.patch
@@ -142,7 +142,7 @@ including Namespaces in XML, XPath, XSLT, XInclude, xml:id, and
 Canonical XML. XOM documents can be converted to and from SAX and DOM.
 
 %package -n   jaxen
-Version:        1.1.1
+Version:        1.1.6
 Release:        0
 Summary:        The jaxen project is a Java XPath Engine
 License:        Apache-2.0
@@ -175,6 +175,7 @@ cp %{SOURCE12} xom-%{xom_version}.pom
 cp %{SOURCE13} jaxen-%{jaxen_version}.pom
 
 %pom_xpath_set pom:project/pom:version "%{xom_version}%{xom_suffix}" xom-%{xom_version}.pom
+%pom_remove_parent jaxen-%{jaxen_version}.pom
 
 %build
 export JAVA_OPTS="-source 1.6 -target 1.6 -encoding UTF-8 -J-Xss6m"

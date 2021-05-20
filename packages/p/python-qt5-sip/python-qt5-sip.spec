@@ -1,7 +1,7 @@
 #
-# spec file for package python-
+# spec file for package python-qt5-sip
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-qt5-sip
-Version:        12.8.1
+Version:        12.9.0
 Release:        0
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Summary:        The sip module support for PyQt5
-Url:            https://www.riverbankcomputing.com/software/sip/
+URL:            https://www.riverbankcomputing.com/software/sip/
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt5-sip/PyQt5_sip-%{version}.tar.gz
 Source1:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE
 Source2:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE-GPL2
 Source3:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE-GPL3
-BuildRequires:  python-rpm-macros
 BuildRequires:  %pythons > 3.5
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 30.3}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 %python_subpackages
 
 %description
 The sip extension module provides support for the PyQt5 package.
 
-SIP is a tool that makes it very easy to create Python bindings for 
-C and C++ libraries. It was originally developed to create PyQt, 
-the Python bindings for the Qt toolkit, but can be used to create 
-bindings for any C or C++ library. For example, it is also used to 
+SIP is a tool that makes it very easy to create Python bindings for
+C and C++ libraries. It was originally developed to create PyQt,
+the Python bindings for the Qt toolkit, but can be used to create
+bindings for any C or C++ library. For example, it is also used to
 create wxPython, the Python bindings for the wxWidget toolkit.
 
 %prep

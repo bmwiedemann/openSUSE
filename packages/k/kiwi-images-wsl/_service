@@ -1,4 +1,11 @@
 <services>
         <service mode="buildtime" name="kiwi_metainfo_helper"/>
         <service mode="buildtime" name="kiwi_label_helper"/>
+        <service mode="buildtime" name="replace_using_env">
+                <param name="file">/usr/share/wsl-appx/AppxManifest.xml</param>
+                <param name="var">RELEASE</param>
+                <param name="eval">source ${BUILD_DIST/.dist/.data}</param>
+                <param name="eval">sed -i -e 's# Version="\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)"# Version="\1.%%RELEASE%%.\4"#' /usr/share/wsl-appx/AppxManifest.xml</param>
+                <param name="verbose">1</param>
+        </service>
 </services>

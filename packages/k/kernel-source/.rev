@@ -5463,4 +5463,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.12.3 &amp; sctp CVE fix &amp; other fixes</comment>
     <requestid>892448</requestid>
   </revision>
+  <revision rev="588" vrev="1">
+    <srcmd5>e0eb090465bf2c026baf3e7c0654d796</srcmd5>
+    <version>5.12.4</version>
+    <time>1621531400</time>
+    <user>dimstar_suse</user>
+    <comment>5.12.4 &amp; wireless and bpf CVE fixes &amp; AMD GPU and other fixes</comment>
+    <requestid>894192</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 20 15:01:44 UTC 2021 - lars@linux-schulserver.de - 1.2
+
+- Build require icinga2-bin and icinga2-common to get rid of owning 
+  directories that belong to icinga2
+
+-------------------------------------------------------------------
+Sun Jun 14 14:42:50 UTC 2020 - lars@linux-schulserver.de - 1.1
+
+- Update to 1.1:
+  + Add new option -i or --ignore-backends to exclude certain backend(s)
+    from the check. The parameter expects a single string for the backend
+    name or a list of comma-separated backend names
+  + Fix and display the maximum number of allowed concurrent sessions
+    of the backend in performance data (was always showing 0 before)
+  + Added bytes_in and bytes_out to performance data per backend
+- switch to https://github.com/Napsty/check_haproxy as upstream 
+  URL: contains latest 1.1 relase plus additional icinga2 config
+- package NRPE snipplet
+- package icinga2 CheckCommand definition template
+- use _service for sources
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Wed Jul 30 19:16:39 UTC 2014 - lars@linux-schulserver.de
 
 - Renamed package to monitoring-plugins-haproxy

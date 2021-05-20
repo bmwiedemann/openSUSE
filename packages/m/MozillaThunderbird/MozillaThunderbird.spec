@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaThunderbird
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.10.1
-%define orig_version   78.10.1
+%define mainver        %major.10.2
+%define orig_version   78.10.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -90,7 +90,7 @@ BuildRequires:  libidl-devel
 BuildRequires:  mozilla-nspr-devel >= 4.25.1
 BuildRequires:  mozilla-nss-devel >= 3.53.1
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs10 >= 10.21.0
+BuildRequires:  nodejs >= 10.21.0
 # Leap 15 still requires python2 for BE (ICU creation)
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-devel

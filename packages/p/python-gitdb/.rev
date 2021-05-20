@@ -16,4 +16,16 @@
   * Support for PyOxidizer</comment>
     <requestid>810874</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11c411eac759cc348f01d852df5a31a2</srcmd5>
+    <version>4.0.7</version>
+    <time>1621531406</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.7:
+  * Fix exception causes in loose.py
+  * Fix exception causes all over the codebase
+  * Add Ram Rachum to AUTHORS
+  * Update smmap upper bound in setup.py</comment>
+    <requestid>894166</requestid>
+  </revision>
 </revisionlist>

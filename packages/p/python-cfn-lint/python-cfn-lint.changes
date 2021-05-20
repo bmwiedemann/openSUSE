@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 29 04:24:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable two test modules test_update_resource_specs* that require
+  internet.
+- Remove skip_python36 no longer needed
+- update to v0.48.1
+  * See https://github.com/aws-cloudformation/cfn-python-lint/blob/master/CHANGELOG.md#v0481
+    for changes since 0.44.5
+
+-------------------------------------------------------------------
 Mon Feb  1 17:47:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.44.5:

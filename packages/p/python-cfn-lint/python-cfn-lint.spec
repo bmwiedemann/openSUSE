@@ -20,9 +20,8 @@
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
-%define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.44.5
+Version:        0.48.1
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -33,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-PyYAML
-Requires:       python-aws-sam-translator >= 1.25.0
+Requires:       python-aws-sam-translator >= 1.34.0
 Requires:       python-jsonpatch
 Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
@@ -52,7 +51,7 @@ Requires:       python-importlib_resources >= 1.4
 %endif
 
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-pydot
 Provides:       cfn-lint = %{version}
 Obsoletes:      cfn-lint < %{version}
@@ -62,7 +61,7 @@ BuildRequires:  python
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module aws-sam-translator >= 1.25.0}
+BuildRequires:  %{python_module aws-sam-translator >= 1.34.0}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0}
 BuildRequires:  %{python_module junit-xml >= 1.9}
@@ -90,9 +89,11 @@ spec and additional checks. Includes checking valid values for
 resource properties and best practices.
 
 %prep
-%setup -q -n cfn-python-lint-%{version}
+%setup -q -n cfn-lint-%{version}
 # do not hardcode versions
 sed -i -e 's:~=:>=:g' setup.py
+# Tests require internet
+rm test/unit/module/maintenance/test_update_resource_specs*.py
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 14:51:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define conditionally make_build to fix build on systems that do
+  not have that macro
+
+-------------------------------------------------------------------
 Tue Feb  9 16:52:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes to fix build with GCC 11 (boo#1181872):

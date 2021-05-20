@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 14 14:02:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Features:
+    - Use new GNOME versioning scheme (not strictly the same
+      schedule though).
+    - pager: Add API to disable scrolling.
+    - tasklist: Reworked the size management to use internal
+      WnckButton and GTK's preferred size.
+    - Add WnckHandle (private for now).
+  + Fixes:
+    - Do not leak pango font description.
+    - tasklist: Use geometries to respect HiDPI settings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 25 21:56:23 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:

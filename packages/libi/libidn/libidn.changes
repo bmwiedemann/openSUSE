@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 17 16:30:16 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.37:
+  * documentation and translations updates
+  * Update gnulib files and build fixes
+- package license text in every subpackage
+
+-------------------------------------------------------------------
 Sat Aug 15 21:33:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.36:

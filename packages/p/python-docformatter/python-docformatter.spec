@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docformatter
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        Utility to re-format docstrings per PEP 257
 License:        MIT
@@ -31,9 +31,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-untokenize
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+%if %{suse_version} <= 1500
+BuildRequires:  python2-mock
+%endif
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module untokenize}
 # /SECTION
 %python_subpackages
@@ -71,7 +75,7 @@ sed -i -e '/^#!\//, 1d' docformatter.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative docformatter

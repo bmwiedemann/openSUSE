@@ -24,7 +24,7 @@
 %define patgrp root
 
 Name:           sca-patterns-base
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Supportconfig Analysis Pattern Base Libraries
 License:        GPL-2.0-only

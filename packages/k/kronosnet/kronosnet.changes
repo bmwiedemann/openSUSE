@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat May  8 14:55:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.21
+  * [rx] fix per link stats for data packets
+  * [rx] fix data stats on RX to match TX model
+  * [crypto] add support for openssl 3.0
+  * [sctp] fix ifup/ifdown handling for connected sockets
+  * [sctp] make sure outgoing connections are bound to a specific
+    IP address
+  * [PMTUd] invalidate MTU for a link if the value is lower than
+    minimum
+  * A lot of other bugfixes and documentation improvements
+
+-------------------------------------------------------------------
+Fri Oct 11 05:11:13 UTC 2019 - Yuan Ren <yren@suse.com>
+
+- kronosnet-1.12
+    changes sicne 1.11
+	* Default compression level use
+	* Fix a lot of converity errors
+	* Fix lock, buffer overrun and memory release bugs
+	* Retry locking in case of failure in SCTP
+	* Stabilize latency calculation when nodes are not responsive
+    changes since 1.10
+	* Log information about detected kernel MTU
+	* Fix MTU calculation when using crypto and add docs
+	* Rework the whole math to calculate MTU
+	* Add dynamic pong timeout when using crypto
+	* Add ability to manually override MTU and disable PMTUd
+    changes since 1.9
+	* automatically add and remove point to point access lists
+	* allow knet_bench to enable/disable access lists
+	* enable access lists for GENERIC_ACL protocols (udp for example)
+	* add access lists support to sctp
+	* Do some function rename and code cleanup
+	* Add documentation for enable_access_list
+	* add external API calls to manage access lists
+	* add support for libzstd
+	* fix openssl1.0 initialization code
+    changes since 1.8
+        * remove libnss 3des support
+        * improve error message decoding from ICMP errors
+    changes since 1.7
+        * fix libnozzle man page generation target
+        * don´t specify destination address for connection oriented protocols
+        * increase log level for currently used links
+
+-------------------------------------------------------------------
+Thu Jan 31 02:38:41 UTC 2019 - Yuan Ren <yren@suse.com>
+
+- kronosnet-1.7 
+    changes since 1.6
+        * Fix minor issues with libnozzle man pages
+        * SCTP: support more kernel versions
+        * Better debugging information of internal threads status
+        * Fix build with gcc9
+        * [developers] expose API version in libknet.h and enable
+          all compiler warnings at build time
+    changes since 1.5
+        * [IMPORTANT] Fix a PMTUd packet size issue when using
+          crypto communications
+        * Fix build with older versions of openssl
+        * Fix a CPU spinning issue when iptables are set incorrectly
+        * Fix a SCTP kernel <-> userland compatibility issue
+        * Minor other fixes across the code and build infrastructure
+        * libnozzle hits the first GA release.
+
+-------------------------------------------------------------------
+Thu Oct 25 06:48:25 UTC 2018 - jchen@suse.com
+
+- kronosnet-1.5
+    changes since 1.4
+        * [IMPORTANT] fix internal loopback link handling
+        * Improved internal threads information for debugging purposes
+    changes since 1.3
+        * Reduced amount of locking around non-performance critical areas
+        * Optimized threads startup and shutdown timer
+- Removed: add-version.patch
+
+-------------------------------------------------------------------
 Tue Apr 24 06:30:54 UTC 2018 - bliu@suse.com
 
 - kronosnet-1.3 is available now(bsc#1090641)

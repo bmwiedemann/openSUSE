@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue May 19 15:19:40 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add OBS source service replace_using_env. Configure to subsitute
+  release number into digits 2, 3 of appx version in file
+  AppxManifest.xml owned by wsl-appx.
+  * The regex defined in _service matches all four digits from
+    attribute version, preserves digits 1 and 4, and replaces
+    digits 2, 3 with the string %%RELEASE%%
+  * Regex matches:
+    (space)Version="\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)"
+    Replaces with:
+    (space)Version="\1.%%RELEASE%%.\4"
+  * replace_using_evn replaces %%RELEASE%% with OBS build env var
+    ${RELEASE} string containing two dot separated integer digits.
+  * For reference, digits of appx VERSION are limited to the
+    following ranges: # 0-65535, 0-65535, 0-65535, 0
+  * At this time, the .kiwi containerconfig history package_version
+    attribute is not used to declare WSL version due to the strict
+    formatting requirements of the AppxManifest.xml XML schema.
+    A solution to set appx version in .kiwi would be preferable.
+  * The string processing required if in .kiwi would be:
+    VERSION_ID: 15.3->153 (SLE, Leap), 20210401->21096 (Tumbleweed)
+    ${RELEASE} as digits 2, 3, and enforce zero as digit 4.
+
+-------------------------------------------------------------------
+Thu May 13 08:08:24 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add zypper to bootstrap packages needed by Tumbleweed. Fixes
+  KiwiBootStrapPhaseFailed: Bootstrap package installation failed:
+  No provider of 'zypper' found.
+
+-------------------------------------------------------------------
+Thu Mar 18 02:31:36 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- kiwi image type wsl now consumes metadata from wsl-appx package
+  * wsl-appx packages metadata for appx utility to consume via kiwi
+  * WSL kiwi images require wsl-appx metadata and output appx image type
+
+-------------------------------------------------------------------
+Wed Mar 17 09:54:08 UTC 2021 - Yuchen Lin <mlin+factory@suse.de>
+
+- Bump version to 15.3
+
+-------------------------------------------------------------------
 Thu Oct  8 13:01:29 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add system-user-nobody bsc#1176401 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 16:17:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.2:
+  * Remove OpenSSL usage as OpenSSL 3.0 is deprecating MD5
+
+-------------------------------------------------------------------
 Sun Apr 25 07:41:36 UTC 2021 - nick wang <nwang@suse.com>
 
 - Correct the spec file to fit to changes in 1.8.8

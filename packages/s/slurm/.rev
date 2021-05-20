@@ -770,4 +770,14 @@
  * Fix updating GrpTRESRunMins when decrementing job time is bigger than it.</comment>
     <requestid>893087</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>816233931c0b0ad0cfb67ba5f5902c21</srcmd5>
+    <version>20.11.7</version>
+    <time>1621531501</time>
+    <user>dimstar_suse</user>
+    <comment>- New features in 20.11.7:
+- New features in 20.11.6:
+- Fix Provides:/Conflicts: for libnss_slurm (bsc#1180700).</comment>
+    <requestid>894432</requestid>
+  </revision>
 </revisionlist>

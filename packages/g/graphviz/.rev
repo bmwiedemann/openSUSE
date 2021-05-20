@@ -668,4 +668,31 @@
     <comment></comment>
     <requestid>889529</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>2c6f004daad8328473acd1aa2c37b818</srcmd5>
+    <version>2.47.1</version>
+    <time>1621531397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.47.1
+  * More detailed error messages when opening input file fails
+  * The edges in JSON output are ordered now
+  * Fixed xdot man page does not document some functions
+  * Fixed PIC renderer
+  * Fixed dot conversion to dia format
+  * Fixed memory leak of reference-counted HTML strings
+  * Fix for TBbalance attribute code
+  * Fixed HTML parser error with single closing square bracket in
+    table row
+  * Fixed reference counted strings put the HTML bit in the middle
+    of the reference count
+  * Fixed &amp;amp; escape disappearing
+  * Fixed gvpr -? to actually print usage and exit non-zero
+  * Fixed memory leak in libmingle
+  * Fixed memory leak in ANN bridge
+  * Fixed buffer overflow in unflatten
+  * Fixed agxbputc macro does not bracket its arguments
+- Drop upstream fixed graphviz-2.46-fix-shebang.patch
+  * Using POSIX shell, no need for ksh</comment>
+    <requestid>893477</requestid>
+  </revision>
 </revisionlist>

@@ -119,4 +119,12 @@
     <comment>Factory Ready (forwarded request 890774 from jrecord)</comment>
     <requestid>890775</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2c468b2b4fcefe6378356031d64cf617</srcmd5>
+    <version>1.0.3</version>
+    <time>1621531498</time>
+    <user>dimstar_suse</user>
+    <comment>Missed a couple OES patterns and syntax (forwarded request 894408 from jrecord)</comment>
+    <requestid>894409</requestid>
+  </revision>
 </revisionlist>

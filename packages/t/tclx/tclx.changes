@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 18 16:08:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 8.4.4
+  * Maintained by FlightAware
+  * Remove CONST84 use for upcoming Tcl 8.7 release.
+  * Adds coalesce command.
+  * Don't iterate over tail calls, since tailcall can only be
+    called in a proc context.
+  * Ordered traversal of directories in for_recursive_glob to
+    fix tests.
+- Drop unused tclx.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 13:55:56 UTC 2013 - max@suse.com
 
 - Update to 8.4.1 to fix build with Tcl 8.6.

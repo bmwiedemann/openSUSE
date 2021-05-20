@@ -28,8 +28,6 @@ Patch0:         fix-destdir
 Patch1:         memtest86+-5.01-no-optimization.patch
 Patch2:         memtest86+-5.31b-discard-note_gnu_property.patch
 #!BuildIgnore:  gcc-PIE
-Requires(pre):  /sbin/update-bootloader
-Requires(pre):  perl
 Provides:       lilo:/boot/memtest.bin
 Obsoletes:      memtest86 <= 3.2
 Provides:       memtest86 > 3.2
@@ -37,6 +35,9 @@ ExclusiveArch:  %{ix86} x86_64
 %ifarch x86_64
 BuildRequires:  glibc-devel-32bit
 %endif
+%define _binary_payload w1.gzdio
+BuildRequires:  update-bootloader-rpm-macros
+%{?update_bootloader_requires}
 
 %description
 Memtest86 is an image that can be booted instead of a real OS. Once booted,
@@ -57,14 +58,10 @@ install -Dpm 0644 memtest.bin \
   %{buildroot}/boot/memtest.bin
 
 %post
-if [ "$YAST_IS_RUNNING" != instsys -a $1 = 1 -a \
-	 -x /sbin/update-bootloader ]; then
-	/sbin/update-bootloader --add --image /boot/memtest.bin --name "Memory Test (memtest86+)"
-fi
-true
+%update_bootloader_check_type_refresh_post grub2
 
-%postun
-test -x /sbin/update-bootloader && /sbin/update-bootloader --remove --force --image /boot/memtest.bin || true
+%posttrans
+%update_bootloader_posttrans
 
 %files
 /boot/memtest.bin

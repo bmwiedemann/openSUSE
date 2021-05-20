@@ -23,4 +23,41 @@
     <comment>- Revert remove workaround in 10-kubeadm.conf - still needed [boo#1186125]</comment>
     <requestid>893739</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73d7fcbe1b9360e2fcf31dd34e7b7d07</srcmd5>
+    <version>1.21.1</version>
+    <time>1621531436</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore 90-kubeadm.conf, still needed [boo#1186125] 
+
+- Stop setting sysctls on kubelet start with `sysctl -a --system`.
+  Instead use more specific sysctl calls in kubelet service start.
+  [boo#1186125]
+
+- Update to version 1.21.1:
+  * [go1.16] Update to go1.16.4
+  * Automated cherry pick of #101377: Fix validation in kubectl create ingress (#101426)
+  * Update tests to use agnhost 2.32
+  * Fix EndpointSlice describe panic when an Endpoint doesn't have zone
+  * Add test create service with ns
+  * Set namespace when using kubectl create service
+  * Update pkg/volume/azure_file/azure_provision.go
+  * Normalize share name to not include capital letters
+  * Extend pod start timeout to 5min for storage subpath configmap test
+  * Fix cleanupMountpoint issue for Windows
+  * fix: set &quot;host is down&quot; as corrupted mount
+  * no watch endpointslice in userpace mode
+  * Ensure service deleted when the Azure resource group has been deleted
+  * Update Makefile
+  * Update dependencies.yaml
+  * update debian-base to buster-v1.5.0 for CVEs
+  * fix TestMutatingWebhookResetsInvalidManagedFields flakes
+  * Updating EndpointSlice validation to match Endpoints validation
+  * fix: azure file namespace issue in csi translation
+  * pkg/kubelet: improve the node informer sync check
+  * Remove Limits from scheduling e2e balanced pod resources
+  * Additional CVE-2021-3121 fix
+  * Fix RBAC of generic ephemeral volumes controller</comment>
+    <requestid>894631</requestid>
+  </revision>
 </revisionlist>

@@ -8,10 +8,10 @@
 #  - source1
 #  - source2
 patches:
+  Tk-804.029-event.diff: -p0
   Tk-804.029-macro.diff: -p0
   Tk-804.029-null.diff: -p0
   Tk-804.029-refcnt.diff: -p0
-  Tk-804.029-event.diff: -p0
 preamble: |-
   BuildRequires:  libX11-devel
   BuildRequires:  libXft-devel

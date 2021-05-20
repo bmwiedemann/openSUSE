@@ -209,4 +209,12 @@
     <comment>- Compile with %optflags (forwarded request 866611 from Andreas_Schwab)</comment>
     <requestid>866636</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b0826ee5de2111319718a7f54869c5cd</srcmd5>
+    <version>0.24</version>
+    <time>1621531399</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893479</requestid>
+  </revision>
 </revisionlist>

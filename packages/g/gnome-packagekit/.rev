@@ -1022,4 +1022,12 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
   (glgo#GNOME/gnome-packagekit!3, bsc#1134544). (forwarded request 864531 from JonathanKang)</comment>
     <requestid>865373</requestid>
   </revision>
+  <revision rev="135" vrev="6">
+    <srcmd5>2520ffcabeb65ce058402f847200e1c8</srcmd5>
+    <version>3.32.0</version>
+    <time>1621531468</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893932 from dimstar)</comment>
+    <requestid>893959</requestid>
+  </revision>
 </revisionlist>

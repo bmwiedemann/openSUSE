@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 18 20:35:23 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+* Add rockpi-n10-rk3399pro
+* Several fixes and cleanups for RK3399/3328 boards:
+  - Replace repeated board list with is_rk3399/is_rk3328 define
+  - Fix non-functional rock960, copy bl31.elf
+  - Remove "make u-boot.itb", already part of "all" target
+* Remove obsolete manual generation of SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Mon Apr 19 07:18:23 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04

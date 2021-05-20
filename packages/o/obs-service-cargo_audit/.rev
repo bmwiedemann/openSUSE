@@ -7,4 +7,12 @@
     <comment>New package obs-service-cargo_audit (depends on 879549 and 879550)</comment>
     <requestid>879551</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47f6c22e81c562846cce81d1dafc3302</srcmd5>
+    <version>0.1.2~git0.e25df37</version>
+    <time>1621531504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894456</requestid>
+  </revision>
 </revisionlist>

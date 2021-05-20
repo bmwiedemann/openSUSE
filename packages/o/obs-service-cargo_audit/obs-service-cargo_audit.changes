@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 20 00:30:47 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.1.2~git0.e25df37:
+  * generate Cargo.lock from Cargo.toml if not present (#2)
+
+-------------------------------------------------------------------
+Wed May 19 00:16:31 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.1.1~git0.a3a0827:
+  * Add outdir parameter
+
+-------------------------------------------------------------------
 Tue Mar  9 04:21:15 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Initial Release

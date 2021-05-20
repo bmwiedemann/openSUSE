@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 12 12:34:56 UTC 2021 - olaf@aepfle.de
+
+- Use _binary_payload w1.gzdio to make sure this firmware package
+  can be installed by rpm binares that lack support for the latest
+  compression trends
+- Use update-bootloader-rpm-macros
+
+-------------------------------------------------------------------
 Tue Apr 27 06:57:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Due to recent binutils update the gnu assembler defaults to

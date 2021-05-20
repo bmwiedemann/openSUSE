@@ -19,15 +19,13 @@
 
 %define kf5_version 5.38.0
 Name:           latte-dock
-Version:        0.9.11
+Version:        0.9.12
 Release:        0
 Summary:        Task manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://phabricator.kde.org/source/latte-dock/
 Source:         https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Tasks-support-new-private-api-for-Plasma-5.22.patch
 BuildRequires:  fdupes
 BuildRequires:  libSM-devel
 BuildRequires:  pkgconfig

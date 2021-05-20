@@ -141,4 +141,23 @@
   - Add Python 3.9 support to CI matrix.</comment>
     <requestid>877834</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>333ebc6a4374e967df90dbcd0f4db004</srcmd5>
+    <version>0.13.3</version>
+    <time>1621531407</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.3:
+  * Switch from Travis to GHA for deployment.
+  * Fixed incorrect type stubs for `add_callback`
+  * Fixed packages not containing type stubs.
+  * `responses.upsert()` was added. This method will `add()` a response if one
+    has not already been registered for a URL, or `replace()` an existing
+    response.
+  * `responses.registered()` was added. The method allows you to get a list of
+    the currently registered responses. This formalizes the previously private
+    `responses.mock._matches` method.
+  * A more useful `__repr__` has been added to `Response`.
+  * Error messages have been improved.</comment>
+    <requestid>894169</requestid>
+  </revision>
 </revisionlist>

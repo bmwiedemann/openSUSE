@@ -8,4 +8,14 @@
       <size unit="G">16</size>
     </disk>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+      <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
 </constraints>

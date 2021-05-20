@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 18 09:25:03 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro, run lxml tests
+
+-------------------------------------------------------------------
 Tue Mar 23 20:19:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:

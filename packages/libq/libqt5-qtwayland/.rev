@@ -316,4 +316,35 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Add compatibility with qml-autoreqprov</comment>
     <requestid>866048</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f16742ba9bacff60f39b4fcad4ab0866</srcmd5>
+    <version>5.15.2</version>
+    <time>1621531463</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more commits from KDE's 5.15 branch:
+  * 0008-Fix-memory-leak-in-QWaylandGLContext.patch (QTBUG-85608)
+  * 0009-Client-Send-set_window_geometry-only-once-configured.patch
+  * 0010-Translate-opaque-area-with-frame-margins.patch
+  * 0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
+    (QTBUG-86177)
+  * 0012-Get-correct-decoration-margins-region.patch
+  * 0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
+  * 0014-Fix-compilation.patch
+  * 0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
+    (kde#405388)
+  * 0016-Client-Announce-an-output-after-receiving-more-compl.patch
+    (kde#435124)
+  * 0017-Fix-issue-with-repeated-window-size-changes.patch
+  * 0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
+
+- Add commits from upstream's 5.15 branch:
+  * 0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762)
+  * 0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch (QTBUG-88277)
+  * 0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762, QTBUG-88064)
+  * 0005-Ensure-that-grabbing-is-performed-in-correct-context.patch (QTBUG-87597)
+  * 0006-Fix-leaked-subsurface-wayland-items.patch (QTBUG-88782)
+- Add commit from KDE's 5.15 branch:
+  * 0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch</comment>
+    <requestid>893822</requestid>
+  </revision>
 </revisionlist>

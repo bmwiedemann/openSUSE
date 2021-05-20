@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 18 21:08:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Add release note for urlquote fix
+  * Simple tests to ensure character encoding works
+  * Use requests to quote URLs
+  * Remove circleci badge from README
+  * Restore py.typed file to enable types
+  * Change tag pattern
+  * Url Quote the path provided to the mocker
+  * Use github action to push a release to PyPI (#163)
+  * Release note for type hints
+  * Add [PEP 484](https://www.python.org/dev/peps/pep-0484/) type hints
+  * Mocker.copy: Use correct type when copying mocker
+  * Run unit tests for pull requests as well
+  * Add support for Python up to 3.9
+  * Use Github Actions
+  * Make is\_bound\_method private
+  * Add release note for fixed bug
+  * Correctly handle an explicit zero byte read
+  * Add missing string delimiter in example
+  * fix: is\_bound\_method by six
+  * fix: \`session\` and \`real\_http\` cannot be used at the same time
+
+-------------------------------------------------------------------
 Wed Dec  9 10:26:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support TW with multiple python3 flavors

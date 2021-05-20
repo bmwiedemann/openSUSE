@@ -1736,4 +1736,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>888521</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>ceddb602fe2b8e177ade368cc0e488c3</srcmd5>
+    <version>21.05.0</version>
+    <time>1621531443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893750</requestid>
+  </revision>
 </revisionlist>

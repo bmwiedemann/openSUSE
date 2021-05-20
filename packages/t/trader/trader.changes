@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 29 18:59:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 7.16
+  * Added code to allow the ``TEXTDOMAINDIR`` environment variable
+    to specify where compiled translations are located.
+  * Added an application metadata file that conforms to the
+    AppStream 0.12 specification.
+  * Updated the German translation
+- Update to version 7.15
+  * Changed the default location where game files are saved
+    from `~/.trader` to `~/.local/share/trader`, so as to follow
+    the `XDG Base Directory Specification`
+  * If set to an absolute path, the ``XDG_DATA_HOME`` environment
+    variable will override this location.
+  * If the `~/.trader` directory is already present, it will
+    continue to be used.
+  * Updated the Russian translation
+
+-------------------------------------------------------------------
 Thu Jan  9 14:22:00 AEDT 2020 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.14.

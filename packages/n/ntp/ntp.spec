@@ -59,6 +59,7 @@ Patch29:        ntp-pathfind.patch
 Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
+Patch35:        ntp-clarify-interface.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -146,6 +147,7 @@ cp %{SOURCE12} .
 %patch30
 %patch33
 %patch34 -p1
+%patch35
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 14:40:40 UTC 2021 - Coly Li <colyli@suse.com>
+
+- Grow: be careful of corrupt dev_roles list (bsc#1181619)
+  0117-Grow-be-careful-of-corrupt-dev_roles-list.patch
+
+-------------------------------------------------------------------
+Fri May 14 12:17:31 UTC 2021 - Coly Li <colyli@suse.com>
+
+- imsm: nvme multipath support (bsc#1175758)
+  0116-imsm-nvme-multipath-support.patch
+
+-------------------------------------------------------------------
 Wed Mar 17 02:35:00 UTC 2021 - Heming Zhao <heming.zhao@suse.com>
 
 - cluster-md/mdadm : avoid useless re-sync (bsc#1181341)

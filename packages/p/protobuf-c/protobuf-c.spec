@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Pascal Bleser
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           protobuf-c
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        C bindings for Google's Protocol Buffers
 License:        BSD-3-Clause
@@ -67,7 +67,7 @@ Buffers from pure C (not C++).
 %define _lto_cflags %nil
 autoreconf -fvi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

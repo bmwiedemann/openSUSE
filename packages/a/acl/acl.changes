@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 16 09:19:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file (move license to licensedir) 
+
+-------------------------------------------------------------------
+Wed May 12 17:03:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.3.1
+  * Update German translation
+  * getfacl: fix indent in --help output
+  * getfacl: Add --one-file-system option, with this option getfacl
+    will not cross mount points
+  * Fix segfault on allocation failure
+  * Avoid SIGSEGV with link-time optimisation enabled
+- Use SourceUrls
+
+-------------------------------------------------------------------
 Tue Jan 26 14:15:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace system-user-{bin,daemon} with user({bin,daemon}): be

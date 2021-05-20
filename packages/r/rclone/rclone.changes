@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 19 10:18:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.55.1
+  * VFS: Fix a code path which allows dirty data to be removed
+    causing data loss
+  * Compress: Fix compressed name regexp
+  * Drive: Fix backend copyid of google doc to directory
+    * Don't open browser when service account
+  * Dropbox: Add missing team_data.member scope for use
+      with --impersonate
+    * Fix About after scopes changes - rclone config reconnect
+      needed
+    * Fix Unable to decrypt returned paths from changeNotify
+  * FTP: Fix implicit TLS
+  * Onedrive: Work around for random "Unable to initialize RPS" errors
+  * SFTP: Fix Update ReadFrom failed: failed to send packet: EOF errors
+  * Zoho: Fix error when region isn't set
+    * Do not ask for mountpoint twice when using headless setup
+
+-------------------------------------------------------------------
 Thu Apr  1 07:28:49 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.55.0

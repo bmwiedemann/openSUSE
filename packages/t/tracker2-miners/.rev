@@ -17,4 +17,12 @@
     This allows fstatat64&amp;newfstatat syscalls used by newer glibc. (forwarded request 881055 from mgorse)</comment>
     <requestid>881181</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b0867b69b5b24aaefbfbf053d1ac95ac</srcmd5>
+    <version>2.3.5</version>
+    <time>1621531471</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893943 from dimstar)</comment>
+    <requestid>893967</requestid>
+  </revision>
 </revisionlist>

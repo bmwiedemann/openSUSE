@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz%{psuffix}
+# spec file for package graphviz
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -54,26 +54,24 @@
 %endif
 %bcond_without python2
 Name:           graphviz%{psuffix}
-Version:        2.46.1
+Version:        2.47.1
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://www.graphviz.org/
-Source0:        https://gitlab.com/graphviz/graphviz/-/archive/2.46.1/graphviz-%{version}.tar.gz
+Source0:        https://gitlab.com/graphviz/graphviz/-/archive/%version/graphviz-%{version}.tar.bz2
 Source1:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
-Patch1:         graphviz-smyrna-link_against_glu.patch
-Patch2:         graphviz-fix-pkgIndex.patch
+Patch0:         graphviz-smyrna-link_against_glu.patch
+Patch1:         graphviz-fix-pkgIndex.patch
 #PATCH-FIX-UPSTREAM Off-by-one bug
-Patch3:         graphviz-array_overflow.patch
-
-Patch6:         graphviz-2.20.2-interpreter_names.patch
+Patch2:         graphviz-array_overflow.patch
+Patch3:         graphviz-2.20.2-interpreter_names.patch
 #PATCH-FIX-UPSTREAM Don't warn about harmless issues with swig generated code
-Patch7:         graphviz-useless_warnings.patch
-Patch8:         graphviz-no_strict_aliasing.patch
-Patch9:         graphviz-no_php_extra_libs.patch
-Patch10:        graphviz-2.46-fix-shebang.patch
+Patch4:         graphviz-useless_warnings.patch
+Patch5:         graphviz-no_strict_aliasing.patch
+Patch6:         graphviz-no_php_extra_libs.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -350,16 +348,13 @@ programs that use the graphviz libraries including man3 pages.
 
 %prep
 %setup -q -n %{mname}-%{version}
-
+%patch0
 %patch1
 %patch2
 %patch3
-
+%patch4
+%patch5 -p1
 %patch6
-%patch7
-%patch8 -p1
-%patch9
-%patch10 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then

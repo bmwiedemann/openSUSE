@@ -402,4 +402,21 @@ SPDX format (forwarded request 94532 from babelworx)</comment>
     <comment></comment>
     <requestid>867086</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b605951c126e5366640c274c28fe3385</srcmd5>
+    <version>2.3.1</version>
+    <time>1621531395</time>
+    <user>dimstar_suse</user>
+    <comment>- modernize spec-file (move license to licensedir) 
+
+- Update to version 2.3.1
+  * Update German translation
+  * getfacl: fix indent in --help output
+  * getfacl: Add --one-file-system option, with this option getfacl
+    will not cross mount points
+  * Fix segfault on allocation failure
+  * Avoid SIGSEGV with link-time optimisation enabled
+- Use SourceUrls</comment>
+    <requestid>893445</requestid>
+  </revision>
 </revisionlist>

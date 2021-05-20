@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 20 11:01:49 UTC 2021 - Reinhard Max <max@suse.com>
+
+- jsc#SLE-15482, ntp-clarify-interface.patch:
+  Adjust the documentation to clarify that "interface ignore all"
+  does not cover the wildcard and localhost addresses.
+
+-------------------------------------------------------------------
 Thu Apr  1 16:18:52 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
 
 - Change PIDFile path in the systemd unit file from /var/run

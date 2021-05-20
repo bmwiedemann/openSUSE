@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 09:47:33 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-python2.patch to remove the dependency on Python 2
+  (sf#ddrescue#4).
+
+-------------------------------------------------------------------
 Thu Apr 29 21:15:14 CEST 2021 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.11:

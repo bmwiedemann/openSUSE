@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 20 07:18:31 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.4
+  * Add --docstring-length flag
+  * Not add period for summary formatted as title
+  * Added command line exclude option
+- use %pytest macro
+
+-------------------------------------------------------------------
 Tue May 26 07:22:42 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

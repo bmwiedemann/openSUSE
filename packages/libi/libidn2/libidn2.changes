@@ -5,6 +5,7 @@ Wed May 12 22:07:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   * Implement full roundtrip for lookup functionality
   * Fix domain too long error
   * Updated gnulib files and various build fixes
+  * verify source signature again
 
 -------------------------------------------------------------------
 Tue May 26 06:14:55 UTC 2020 - Stephan Kulow <coolo@suse.com>

@@ -126,4 +126,12 @@ New dependency of python-Pyramid</comment>
  * Removed legacy flag literal_false. To get a similar behavior, use boolean_attributes.</comment>
     <requestid>819491</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>42ef6b223845a264ee1030f0b1cb84ca</srcmd5>
+    <version>3.9.1</version>
+    <time>1621531529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894587</requestid>
+  </revision>
 </revisionlist>

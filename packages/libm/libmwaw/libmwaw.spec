@@ -16,12 +16,13 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libmwaw-0_3-3
 Name:           libmwaw
 Version:        0.3.17
 Release:        0
 Summary:        Pre Mac OSX text file formats parser library
-License:        (LGPL-2.1-or-later OR MPL-2.0) AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND (LGPL-2.1-or-later OR MPL-2.0)
 URL:            https://sourceforge.net/p/libmwaw/wiki/Home/
 Source:         https://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen

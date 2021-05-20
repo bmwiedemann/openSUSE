@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        1.3.6
+Version:        1.3.9
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-dragonmapper >= 0.2
 Requires:       python-loguru >= 0.5
 Requires:       python-zhon
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-requests
 Suggests:       python-requests-html
 Suggests:       python-unicodedata2

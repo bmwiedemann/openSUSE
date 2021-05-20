@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 18 21:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix issue sissaschool/xmlschema#243 (assert with xsi:nil usage)
+  * First implementation of XPath 3.0 fn:format-integer
+  * Add function signatures at token registration
+  * Some fixes to XPath tokens and more XPath 3.0 implementations
+  * Optimize TDOP parser's tokenizer
+  * Resolve ambiguities with operators and statements that are also names
+  * Merge with XPath 3.0/3.1 develop (to be completed)
+  * Add tests and apply small fixes to TDOP parser
+  * Fix wildcard selection of attributes (issue #35) 
+
+-------------------------------------------------------------------
 Mon Feb  1 22:10:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:

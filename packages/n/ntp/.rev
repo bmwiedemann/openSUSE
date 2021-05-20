@@ -1228,4 +1228,14 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment></comment>
     <requestid>883348</requestid>
   </revision>
+  <revision rev="129" vrev="6">
+    <srcmd5>42d3bf53d0178f059f985902ef0aa154</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1621531540</time>
+    <user>dimstar_suse</user>
+    <comment>- jsc#SLE-15482, ntp-clarify-interface.patch:
+  Adjust the documentation to clarify that &quot;interface ignore all&quot;
+  does not cover the wildcard and localhost addresses.</comment>
+    <requestid>894615</requestid>
+  </revision>
 </revisionlist>

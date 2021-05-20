@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 20 07:39:01 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * -n, --colour-land=COLOUR_LAND
+  * -o, --colour-ocean=COLOUR_OCEAN
+  * internally the map is now an SVG, so the quality may be better
+
+-------------------------------------------------------------------
 Mon Aug 10 06:53:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.1:

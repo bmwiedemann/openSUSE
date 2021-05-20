@@ -17,13 +17,13 @@
 
 
 Name:           gajim
-Version:        1.2.2
+Version:        1.3.2
 Release:        0
 Summary:        XMPP client written in Python and Gtk3
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.2/gajim-%{version}.tar.gz
+Source:         https://gajim.org/downloads/1.3/gajim-%{version}.tar.gz
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -31,48 +31,33 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.7.0
-BuildRequires:  python3-nbxmpp >= 0.6.10
+BuildRequires:  python3-nbxmpp >= 2.0.1
 BuildRequires:  python3-precis-i18n >= 1.0.0
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       ca-certificates-mozilla
 Requires:       python3 >= 3.7.0
 Requires:       python3-css-parser
-Requires:       python3-docutils
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
-Requires:       python3-nbxmpp >= 1.0.2
+Requires:       python3-keyring
+Requires:       python3-nbxmpp >= 2.0.1
 Requires:       python3-precis-i18n >= 1.0.0
 Requires:       python3-pyOpenSSL >= 16.2
 Requires:       python3-pycairo >= 1.16.0
-Requires:       python3-pycurl
-Requires:       python3-xml
-Recommends:     %{name}-lang
+# gajim-remote
+Recommends:     python3-dbus-python
+# WebP avatars.
+Recommends:     python3-Pillow
 # OMEMO encryption
 Recommends:     gajim-plugin-omemo
 Recommends:     python3-axolotl
-# End-to-end encryption.
-Recommends:     python3-pycrypto
+#
+Recommends:     %{name}-lang
 # zeroconf support.
 Suggests:       dbus-1-glib
-# Idle module.
-Suggests:       libXss1
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
-Requires:       python3-Pillow
-Requires:       python3-dbus-python
-Requires:       python3-keyring
-# GPG encryption.
-Recommends:     python3-python-gnupg
-%else
-Requires:       dbus-1-python3
-# WebP avatars.
-Recommends:     python3-Pillow
-# GPG encryption.
-Recommends:     python3-gnupg
-# Password storage.
-Recommends:     python3-keyring
-%endif
+
 
 %description
 Gajim is a Jabber/XMPP client. It works with MATE and GNOME, but does
@@ -120,16 +105,6 @@ ln -s %{_datadir}/%{name} %{buildroot}%{python3_sitelib}/%{name}/data
 %suse_update_desktop_file -r org.gajim.Gajim Network InstantMessaging
 %fdupes %{buildroot}%{_prefix}/
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

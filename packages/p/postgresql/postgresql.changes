@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Tue May 18 13:43:45 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now (boo#1183118).
+
+-------------------------------------------------------------------
+Mon Jan 25 08:56:54 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Bump default version to 13 for SLE-15-SP3.
+
+-------------------------------------------------------------------
 Fri Sep 25 07:58:58 UTC 2020 - Reinhard Max <max@suse.com>
 
-- Bump major and default version to 13.
+- Bump major version to 13.
+- Bump default version to 13 in OBS.
 
 -------------------------------------------------------------------
 Thu Aug 13 08:22:16 UTC 2020 - Reinhard Max <max@suse.com>

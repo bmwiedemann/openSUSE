@@ -1347,4 +1347,12 @@ which haven't landed upstream yet
   0115-super1.c-avoid-useless-sync-when-bitmap-switches-fro.patch (forwarded request 879542 from hmzhao)</comment>
     <requestid>880599</requestid>
   </revision>
+  <revision rev="128" vrev="13">
+    <srcmd5>06837c2356062021f297c7a21579be28</srcmd5>
+    <version>4.1</version>
+    <time>1621531396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893458</requestid>
+  </revision>
 </revisionlist>

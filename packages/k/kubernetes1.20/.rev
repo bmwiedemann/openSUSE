@@ -92,4 +92,41 @@
   * Update sigs.k8s.io/structured-merge-diff to v4.0.3</comment>
     <requestid>885590</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22952b648f04581a671f482b7321dc06</srcmd5>
+    <version>1.20.7</version>
+    <time>1621531428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.7:
+  * staging/publishing: Set default go version to go1.15.12
+  * build: Update to k/repo-infra@v0.1.7 (supports go1.15.12)
+  * Use go-runner:v2.3.1-go1.15.12-buster.0 image (built on go1.15.12)
+  * Update to go1.15.12
+  * fix: not tagging static public IP
+  * Add test create service with ns
+  * Set namespace when using kubectl create service
+  * Automated cherry pick of #101377: Fix validation in kubectl create ingress (#101428)
+  * Updating EndpointSlice controllers to avoid duplicate creations
+  * Update pkg/volume/azure_file/azure_provision.go
+  * Normalize share name to not include capital letters
+  * Extend pod start timeout to 5min for storage subpath configmap test
+  * fix: set &quot;host is down&quot; as corrupted mount
+  * no watch endpointslice in userpace mode
+  * Ensure service deleted when the Azure resource group has been deleted
+  * Updating EndpointSlice validation to match Endpoints validation
+  * Make parallel build memory threshold configurable
+  * fix: azure file namespace issue in csi translation
+  * pkg/kubelet: improve the node informer sync check
+  * Additional CVE-2021-3121 fix
+  * Fix startupProbe behaviour changed
+  * Fix test
+  * staging/publishing: Set default go version to go1.15.10
+  * build: Update to k/repo-infra@v0.1.6 (supports go1.15.11)
+  * Use go-runner:v2.3.1-go1.15.11-buster.0 image (built on go1.15.11)
+  * Update to go1.15.11
+  * add duration encoder to structured logger
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.6
+  * exec test should not run in Parallel as feature gate is not locked</comment>
+    <requestid>894325</requestid>
+  </revision>
 </revisionlist>

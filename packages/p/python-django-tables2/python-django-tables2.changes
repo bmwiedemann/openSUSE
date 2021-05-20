@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 18 11:06:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip python36 build: no pandas
+
+-------------------------------------------------------------------
 Tue Jan 19 00:56:08 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.3.4

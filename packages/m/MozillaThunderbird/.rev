@@ -3630,4 +3630,32 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>891142</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>5f25da428ceaad3dc432221a4eff56af</srcmd5>
+    <version>78.10.2</version>
+    <time>1621531410</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.10.2
+  * Added support for importing OpenPGP keys without a primary
+    secret key
+  * Add-ons manager displays a preferences icon for mail extensions
+    that include an options page
+  Fixed
+  * OpenPGP messages with a high compression ratio (over 10x) could
+    not be decrypted
+  * Selected OpenPGP key was lost after opening the Key Properties
+    dialog in Account Settings
+  * Parsing some OpenPGP user IDs failed
+  * Various improvements to OpenPGP partial encryption reminders
+  * Mail toolbar buttons were too big when displaying both icons
+    and text
+  MFSA 2021-22
+  * CVE-2021-29956 (bmo#1710290)
+    Thunderbird stored OpenPGP secret keys without master password
+    protection
+  * CVE-2021-29957 (bmo#1673241)
+    Partial protection of inline OpenPGP message not indicated
+- do not rely on nodejs10 explicitely</comment>
+    <requestid>894215</requestid>
+  </revision>
 </revisionlist>

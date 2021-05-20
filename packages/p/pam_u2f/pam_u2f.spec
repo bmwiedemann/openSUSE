@@ -1,7 +1,7 @@
 #
 # spec file for package pam_u2f
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pam_u2f
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        U2F authentication integration into PAM
 License:        BSD-2-Clause
@@ -29,7 +29,7 @@ Source2:        baselib.conf
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(libfido2) >= 1.3.0
 
 %description
 The PAM U2F module provides a way to integrate the Yubikey

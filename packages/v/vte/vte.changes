@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 14 13:46:37 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.64.1:
+  + widget: Move clipboard store from finalize to unrealize.
+  + build: Work around a meson bug with dist scripts in
+    subprojects.
+  + build: Add missing includes.
+
+-------------------------------------------------------------------
 Sat Apr 17 08:46:03 UTC 2021 - dimstar@opensuse.org
 
 - Update to version 0.64.0:

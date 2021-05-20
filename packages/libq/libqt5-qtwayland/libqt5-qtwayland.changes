@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 16 18:22:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add more commits from KDE's 5.15 branch:
+  * 0008-Fix-memory-leak-in-QWaylandGLContext.patch (QTBUG-85608)
+  * 0009-Client-Send-set_window_geometry-only-once-configured.patch
+  * 0010-Translate-opaque-area-with-frame-margins.patch
+  * 0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
+    (QTBUG-86177)
+  * 0012-Get-correct-decoration-margins-region.patch
+  * 0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
+  * 0014-Fix-compilation.patch
+  * 0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
+    (kde#405388)
+  * 0016-Client-Announce-an-output-after-receiving-more-compl.patch
+    (kde#435124)
+  * 0017-Fix-issue-with-repeated-window-size-changes.patch
+  * 0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
+
+-------------------------------------------------------------------
+Wed Apr  7 06:55:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add commits from upstream's 5.15 branch:
+  * 0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762)
+  * 0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch (QTBUG-88277)
+  * 0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762, QTBUG-88064)
+  * 0005-Ensure-that-grabbing-is-performed-in-correct-context.patch (QTBUG-87597)
+  * 0006-Fix-leaked-subsurface-wayland-items.patch (QTBUG-88782)
+- Add commit from KDE's 5.15 branch:
+  * 0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch
+
+-------------------------------------------------------------------
 Sat Jan 16 16:25:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov

@@ -289,4 +289,12 @@ The main modification of the package is:
     <comment></comment>
     <requestid>888979</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>aa8498e37a2b7ed48459a0b0f3acc7d0</srcmd5>
+    <version>5.31b</version>
+    <time>1621531482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894064</requestid>
+  </revision>
 </revisionlist>

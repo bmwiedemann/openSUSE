@@ -18,7 +18,7 @@
 
 %define islsover 23
 Name:           isl
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        Integer Set Library
 License:        MIT
@@ -56,7 +56,7 @@ bounded by linear constraints.
 %setup -q
 
 %build
-export CFLAGS_FOR_BUILD="%optflags"
+export CFLAGS_FOR_BUILD="%{optflags}"
 %configure --disable-static
 %make_build
 

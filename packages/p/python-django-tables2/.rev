@@ -7,4 +7,12 @@
     <comment>dependency of other python packages, esp django-oscar</comment>
     <requestid>874215</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a10e4390192f258e109720825cb8b42</srcmd5>
+    <version>2.3.4</version>
+    <time>1621531518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894541</requestid>
+  </revision>
 </revisionlist>

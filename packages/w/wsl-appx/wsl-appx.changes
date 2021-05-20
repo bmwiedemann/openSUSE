@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 13 07:24:07 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove circular dependency on kiwi WSL image to set release
+  number as digits of VERSION passed to AppxManifest.xml template.
+  * Previously an aggregate package ensured kiwi
+    opensuse-wsl-image or suse-wsl-image were available at
+    wsl-appx build time.
+  * Now that kiwi directly produces appx images and wsl-appx is
+    used only for creating appx metadata, this circular dependency
+    should be removed.
+  * One option would be to use another package for release number,
+    e.g. openSUSE-release.
+  * At this time, set digits two and three of appx VERSION to 0
+    for subsequent regex or template substitution during kiwi
+    image build.
+  * A future revision may set digit two and three of appx VERSION
+    to this wsl-appx $RELEASE digits so they will increment for
+    sideload upgrades, although still are not suitable for
+    Microsoft Store upload without kiwi substitution.
+  * Kiwi image build must now substitute a release number in
+    AppxManifest.xml via OBS source service or other templating
+    mechanism available to kiwi.
+  * For reference, digits of appx VERSION are limited to the
+    following ranges: # 0-65535, 0-65535, 0-65535, 0
+
+-------------------------------------------------------------------
+Thu May 13 04:35:23 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix Tumbleweed appx VERSION assignment. Bash printf %02d parses
+  string dates 08 and 09 as octal so force base 10 with 10#expr.
+
+-------------------------------------------------------------------
 Thu May  6 17:32:35 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Set appx version for Microsoft Store using first segment for OS

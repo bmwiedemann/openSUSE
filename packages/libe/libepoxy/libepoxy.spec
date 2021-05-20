@@ -1,7 +1,7 @@
 #
 # spec file for package libepoxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           libepoxy
 %define sonum   0
-Version:        1.5.5
+Name:           libepoxy
+Version:        1.5.7
 Release:        0
 Summary:        OpenGL function pointer management library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anholt/libepoxy
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-
 BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

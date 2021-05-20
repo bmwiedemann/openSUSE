@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/cisco/libsrtp
 
 Source:         https://github.com/cisco/libsrtp/archive/v%version.tar.gz
 Source99:       baselibs.conf
+Patch1:         0001-Adjust-.pc-file-not-to-expose-used-crypto-library.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 # srtp was last used in openSUSE 13.1.
@@ -62,7 +63,7 @@ Protocol (SRTP) originally authored by Cisco Systems, Inc.
 This subpackage contains the development headers.
 
 %prep
-%autosetup -p1 -n libsrtp-%version
+%autosetup -p0 -n libsrtp-%version
 
 %build
 %configure --enable-openssl

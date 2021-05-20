@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 20 12:36:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.8.1
+  * Fix XSS in doc_link
+  * MySQL: Allow moving views to other DB and renaming DB with views
+  * MariaDB: Do not treat sequences as views
+  * PostgreSQL: Support UPDATE OF triggers
+  * PostgreSQL: Support triggers with more events (OR)
+  * PostgreSQL: Fix parsing of foreign keys with non-ASCII column names
+  * PostgreSQL < 10 PDO: Avoid displaying GENERATED ALWAYS BY IDENTITY everywhere
+  * SQLite: Fix displayed types
+  * Avoid PHP warnings with PDO drivers
+  * Fix PHP 8 warnings
+
+-------------------------------------------------------------------
 Thu Feb 11 16:37:50 UTC 2021 - jimmy@boombatower.com
 
 - Update to version 4.8.0:

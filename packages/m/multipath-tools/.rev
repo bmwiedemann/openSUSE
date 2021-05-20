@@ -1442,4 +1442,41 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   (bsc#1183963)</comment>
     <requestid>882546</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>ca1387652b98eef82e3119fcf6b10f8b</srcmd5>
+    <version>0.8.6+10+suse.4771137</version>
+    <time>1621531435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.6+10+suse.47711374:
+  * Github workflows: add CI for SUSE-specific branches
+
+- Disabled LTO for multipath-tools
+  * The test for is_valid_path fails if LTO is enabled, just
+    disabling it for %check is insufficient.
+
+- Update to version 0.8.6+9+suse.6c05a61:
+  Update to upstream 0.8.6.
+  * add eh_deadline option to avoid endless SCSI error handling
+  * add wwid_recheck option to detect storage configuration changes
+  * add library versioning for libmultipath, libmpathpersist etc. and
+    to libmultipath plugins
+  * move some global symbols to libmultipath (udev, logsink, etc)
+    and provide default implementations for get_multipath_config() etc.
+    This allows simplifiying libmpathpersist_example.c drastically.
+  * fixes for shutdown issues and various race conditions on exit
+  * improve cleanup on exit, fix memory leaks
+  * add libmpathvalid library
+  * fixes for SAS expanders (bsc#1178377, bsc#1178379, bsc#1177081)
+  * Avoid access to root FS while queueing IO (bsc#1178049,
+    bsc#1181234)
+  * lots of bug fixes, additions to built-in hardware table, and
+    CI improvements (bsc#1186212)
+  * kpartx: free loop device after listing partitions (boo#1107187)
+  Bug fixes on top of 0.8.5 mentioned below are also included in
+  this upstream version.
+
+  (bsc#1182072, bsc#1177371)
+   (bsc#1181435, bsc#1183666)</comment>
+    <requestid>894440</requestid>
+  </revision>
 </revisionlist>

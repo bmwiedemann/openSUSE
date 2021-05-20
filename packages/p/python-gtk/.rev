@@ -315,4 +315,13 @@
     <comment>- Make sure we build with py2 only</comment>
     <requestid>787478</requestid>
   </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>1eac0062760f70d747da2eaf178923b8</srcmd5>
+    <version>2.24.0</version>
+    <time>1621531477</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix patch tag line of
+  pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch. (forwarded request 893983 from dimstar)</comment>
+    <requestid>893991</requestid>
+  </revision>
 </revisionlist>

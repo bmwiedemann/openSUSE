@@ -1837,4 +1837,22 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment>Update to 1.30.4 (forwarded request 887063 from dimstar)</comment>
     <requestid>887494</requestid>
   </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>b4d5a6e41dece68dd13914be9cceea83</srcmd5>
+    <version>1.30.4</version>
+    <time>1621531474</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nm-add-CAP_CHOWN-capability.patch: Add CAP_CHOWN to
+  CapabilityBoundingSet to make teamd work properly
+  (glfd#NetworkManager/NetworkManager!860, bsc#1185424).
+
+- Drop networkmanager-obs-net.patch: the patch needs a full rework.
+- Drop networkmanager-checks-po.patch: as it was supposed to fix
+  something introduced by another patch which we still carry, yet
+  we can live with this patch disabled, I'd infer this patch is not
+  nescessary.
+
+  requesting the 'server-id' option (boo#912315).</comment>
+    <requestid>893974</requestid>
+  </revision>
 </revisionlist>

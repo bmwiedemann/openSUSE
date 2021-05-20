@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 19 03:10:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+  0.23	- 18 May 2021, H.Merijn Brand
+      * It's 2021
+      * Enable use of tables with extra fields
+
+-------------------------------------------------------------------
 Thu Dec 24 03:08:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.22

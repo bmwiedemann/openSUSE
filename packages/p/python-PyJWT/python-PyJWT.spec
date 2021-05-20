@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-PyJWT
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 3.3.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

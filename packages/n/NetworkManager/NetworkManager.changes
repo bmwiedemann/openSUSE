@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 18 02:07:00 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-add-CAP_CHOWN-capability.patch: Add CAP_CHOWN to
+  CapabilityBoundingSet to make teamd work properly
+  (glfd#NetworkManager/NetworkManager!860, bsc#1185424).
+
+-------------------------------------------------------------------
+Fri May 14 21:19:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop networkmanager-obs-net.patch: the patch needs a full rework.
+- Drop networkmanager-checks-po.patch: as it was supposed to fix
+  something introduced by another patch which we still carry, yet
+  we can live with this patch disabled, I'd infer this patch is not
+  nescessary.
+
+-------------------------------------------------------------------
 Tue Apr 20 09:46:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.30.4:
@@ -2175,7 +2191,7 @@ Sun Jan 25 23:35:54 UTC 2015 - badshah400@gmail.com
 Thu Jan  8 21:44:31 UTC 2015 - sfalken@opensuse.org
 
 - Add NetworkManager-dhcpv6.patch: dhcp: let dhclient handle
-  requesting the 'server-id' option (boo#912315). 
+  requesting the 'server-id' option (boo#912315).
 
 -------------------------------------------------------------------
 Thu Dec 18 19:57:47 UTC 2014 - arvidjaar@gmail.com

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr 29 19:50:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove RHEL 7 compatibility from specfile
+- update to version 0.58.0:
+ - fix callback
+ - Capitalize default connection header
+ - Fix None.lower() when sec-websocket-protocol response header does notexist
+ - Fix for #516
+ - Tweak Python 3.4 build settings
+ - fix callback
+ - Fix None.lower() when sec-websocket-protocol response header doesn't exist
+ - Create README.md and fix minor typo (both from existing pull requests)
+ - Fix _handshake.py error where subproto is None
+ - fix documentation: create_connection, settimeout
+ - Capitalize default connection header
+ - Edit README.md for clarification and to add missing material from parent repo
+ - Fix minor typo - getdefauttimeout to getdefaulttimeout
+ - Remove README text copied from fork that is not applicable
+ - Add support for Python 3.8 and 3.9 (#596)
+ - Fix a few minor typo/misspellings (#659)
+ - Add pip command to README for 2nd dependency
+ - Improve README code example formatting
+ - Use thread.is_alive() to replace deprecated thread.isAlive() (#594)
+ - Add first draft of Sphinx documentation
+ - Edit README.md to include docs links and badges
+ - Replace README.md FAQ with link to documentation FAQ page
+ - Add acknowledgements section to README.md
+ - Add detail to Autobahn testing README (still needs improvement)
+ - Add autobahn test report and additional test instructions
+ - Add sample connection code to example docs page
+ - Fixes #631
+ - Improve documentation, mostly new examples but some code comment upgrades
+ - Add suppress origin example to documentation
+ - Add FAQ advice to ping server
+ - 'ping_interval' should be less than 'ping_timeout' (#611)
+ - Allow optional, not mandatory, argument for pong() in WebSocket
+ - Add basic ping/pong and HTTP proxy documentation and examples
+ - Properly revert _app.py callback to state before PR #442 (previously only partially reverted)
+ - Add timeout examples to documentation
+ - Edit documentation to clarify timeout can be int or float (#654)
+ - Reshuffle and enhance documentation
+ - Fix #526 by reverting invalid BSD license migration in commit e94ed9e to return to LGPL2.1
+ - Fix #526 by reverting invalid BSD license migration in commit e94ed9e to return to LGPL2.1
+ - Fix #546 by removing comments introduced by PR #513
+ - Update contribution guidelines
+ - Revert PR #611
+ - Replace deprecated assertEquals() with assertEqual()
+ - The plural 'assertEquals()' is deprecated in Python 3 and triggers a warning
+ - during CI:
+ - https://docs.python.org/3/library/unittest.html#deprecated-aliases
+
+-------------------------------------------------------------------
 Thu Mar 12 07:49:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

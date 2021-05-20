@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 11 09:38:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire pandoc (as it does not exist on all
+  architectures).
+- Inject autotrash.1: build will fail when this needs to be
+  regenerated (as pandoc would be missing).
+
+-------------------------------------------------------------------
 Sat Feb  6 13:51:15 UTC 2016 - mailaender@opensuse.org
 
 - initial packaging

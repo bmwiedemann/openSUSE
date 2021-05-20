@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libwps-0_4-4
 Name:           libwps
 Version:        0.4.12

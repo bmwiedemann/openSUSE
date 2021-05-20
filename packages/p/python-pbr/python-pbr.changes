@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 18 21:10:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Reverse ordering of 'D1\_D2\_SETUP\_ARGS'
+  * Add test for cfg -> py transformation
+  * Don't pass empty 'long\_description'
+  * Move flake8 as a pre-commit local target
+  * Map requires-python to python-requires (attempt 2)
+  * Update dependencies to avoid failure with old pip
+  * Increase OS\_TEST\_TIMEOUT to 1200
+  * Prevent test failure due to use of setpref
+  * util: Convert 'D1\_D2\_SETUP\_ARGS' to a list of tuples
+  * Revert "Map requires-python to python-requires"
+  * Dropping lower constraints testing
+  * Adding pre-commit
+
+-------------------------------------------------------------------
 Sat Dec 19 15:41:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 5.5.1

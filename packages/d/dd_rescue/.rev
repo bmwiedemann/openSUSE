@@ -491,4 +491,12 @@
   * Code safety against len==0 en/decryption.</comment>
     <requestid>889534</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>6c08d29216e8bca8f7893ef6b004fe61</srcmd5>
+    <version>1.99.11</version>
+    <time>1621531475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893985</requestid>
+  </revision>
 </revisionlist>

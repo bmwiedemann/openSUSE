@@ -1010,4 +1010,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>Scripted push from GNOME:Next (forwarded request 890083 from dimstar)</comment>
     <requestid>890145</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>e2dc35b3871770c3fd4e8a839fc36dd8</srcmd5>
+    <version>0.64.1</version>
+    <time>1621531473</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893944 from dimstar)</comment>
+    <requestid>893968</requestid>
+  </revision>
 </revisionlist>

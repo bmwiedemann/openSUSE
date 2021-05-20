@@ -117,4 +117,12 @@
   * WSL kiwi images require wsl-appx metadata and output appx image type (forwarded request 892386 from jfkw)</comment>
     <requestid>892569</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>09f326574a22f9ab14fda989aee8349d</srcmd5>
+    <version>1</version>
+    <time>1621531485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894520</requestid>
+  </revision>
 </revisionlist>

@@ -51,6 +51,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  jsr-305
 BuildRequires:  junit
 BuildRequires:  rhino
+Recommends:     %{name}-javadoc = %{version}
 BuildArch:      noarch
 
 %description
@@ -126,9 +127,7 @@ export CLASSPATH=$(build-classpath apache-commons-logging)
 # Run the build
 # XXX: there's NPE on build-docs, but who care about html docs those times, right?
 %ant -Divy.done=true build docs-javadoc
-cp -r doc/tips build/doc/
-cp doc/welcome.html build/doc/
-cp doc/jedit.png build/doc/
+cp -r doc/* build/doc/
 
 # plugins-build hardcodes the jedit.jar path - so to make it happy
 ln -s build/jedit.jar
@@ -189,10 +188,10 @@ install %{name} %{buildroot}%{_bindir}
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/icons/hicolor/
-%exclude %{_datadir}/%{name}/doc/api
+%exclude %{_datadir}/%{name}/doc
 
 %files javadoc
 %doc %{_javadocdir}/%{name}
-%{_datadir}/%{name}/doc/api
+%{_datadir}/%{name}/doc
 
 %changelog

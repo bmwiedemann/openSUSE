@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 10 13:58:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.0
+  * Added support for automatic renewal of renewable TGTs that
+    are stored in KCM ccache. This can be enabled by setting
+    tgt_renewal = true. See the sssd-kcm man page for more
+    details. This feature requires MIT Kerberos
+    krb5-1.19-0.beta2.3 or higher.
+  * ad_gpo_implicit_deny is now respected even if there are no
+    applicable GPOs present.
+
+-------------------------------------------------------------------
 Tue Apr  6 12:08:29 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Move sssctl command from sssd to sssd-tools package; (bsc#1184289);

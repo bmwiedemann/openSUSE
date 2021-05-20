@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May 17 15:56:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3.2
+  * New
+    * Setting for automatic history cleanup
+    * Chat-specific ‘Group Chat Settings’ page
+    * ‘Mark as Read’ button for message notifications
+    * ‘Send Message’ button in chat windows
+    * Support for vCard4 (XEP-0292)
+    * Added a preview when pasting images from the clipboard
+    * Added setting to explicitly enable GSSAPI authentication
+    * Added account switch description (On/Off) for better
+      accessability
+  * Changes
+    * MessageInput: Removed custom placeholder (‘Type a message…')
+    * MessageInput: Added focus borders for better accessability
+    * Gajim will use direct messages in non-anonymous group chats
+      instead of PMs (this is configurable)
+    * Message styling: removed _underline_ style and added ~strikethrough~
+      style, making Gajim standard compliant
+    * Removed notification for contact sign in/out
+    * Removed ‘Auto copy’ workaround for Ctrl+C usage in the chat window
+    * If Gajim fails to join a group chat, it now offers a Retry button
+    * Emoji button now opens GTK’s native Emoji chooser
+    * Improved A/V codec selection
+    * Fixed some regressions with non-english keyboard layouts
+    * Fixed command for opening the Start Chat window
+    * A/V menu entries are now updated (enabled/disabled) correctly
+      when receiving the contact’s capabilities
+    * Fixed GSSAPI support
+    * Some shortcuts now use Primary (Ctrl/Cmd) instead of Alt
+    * Fixed a bug where dropping selected text on a chat window
+      would fail
+    * Fixed ‘Show status changes’ setting being ignored for group
+      chats
+    * Fixed a bug where removing a plugin would fail
+    * And much more: Have a look at the full changelog
+
+
+-------------------------------------------------------------------
 Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
 
 - Gajim needs Python 3.7+

@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname liborcus-0_16-0
 Name:           liborcus
 Version:        0.16.1

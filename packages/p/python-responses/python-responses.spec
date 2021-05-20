@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-responses
-Version:        0.12.1
+Version:        0.13.3
 Release:        0
 Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0

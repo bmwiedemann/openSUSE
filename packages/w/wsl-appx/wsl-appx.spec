@@ -19,12 +19,6 @@
 
 # needsappxsslcertforbuild
 
-%if 0%{?is_opensuse}
-%define image_package  opensuse-wsl-image
-%else
-%define image_package  suse-wsl-image
-%endif
-
 Name:           wsl-appx
 Version:        1
 Release:        0
@@ -44,7 +38,6 @@ BuildRequires:  openSUSE-release
 %else
 BuildRequires:  sles-release
 %endif
-BuildRequires:  %image_package
 BuildRequires:  openssl(cli)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -100,8 +93,12 @@ LAUNCHERNAME="${PRETTY_NAME//[^[:alnum:].]/-}.exe"
 # 'SUSE Linux Enterprise Server 15 SP3 (Snapshot11)' -> 'SUSE Linux Enterprise Server 15 SP3'
 SHORT_NAME="${PRETTY_NAME::35}"
 
-# Use the release number of the image package to set appx version submitted to the MS Store
-RELEASE="`rpm -q --qf '%%{release}' %image_package`"
+# RELEASE is used for digits of the appx version submitted to the MS Store.
+# To remove the circular dependency on kiwi opensuse-wsl-image or suse-wsl-image,
+# set RELEASE here to be an easily matched string of integer digits.
+# Substitute these digits with an actual release number during kiwi
+# image build using OBS source services.
+RELEASE="0.0"
 ARCH="%_arch"
 case "$ARCH" in
 	x86_64) ARCH="x64" ;;
@@ -120,12 +117,15 @@ PUBLISHER_DISPLAY_NAME="SUSE"
 # 0-65535, 0-65535, 0-65535, 0
 # Where the fourth segment is reserved for the MS Store use.
 if [ "$ID" = "opensuse-tumbleweed" ]; then
-	VERSION=`printf "%d.%d.%d%02d.0" "${VERSION_ID:2:4}" "${VERSION_ID:6}" "${RELEASE%.*}" "${RELEASE#*.}"`
+	# Specify base 10 (10#) for VERSION_ID substring
+	# to avoid octal parsing for dates ending in 08 and 09
+	# printf: 08: invalid octal number
+	VERSION=`printf "%d.%d.%d%02d.0" "${VERSION_ID:2:4}" "$((10#${VERSION_ID:6}))" "${RELEASE%.*}" "${RELEASE#*.}"`
 	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$VERSION_ID.$RELEASE.appx"
 else
 	RELEASE="${RELEASE/lp???./}"
 	# Concatenate digits of VERSION_ID to consume only one segment 0-65535 e.g. 15.3 -> 153
-	# Retain image package version number in the two remaining segments 0-65535.0-65535
+	# Retain RELEASE version number in the two remaining segments 0-65535.0-65535
 	VERSION=`printf "%d.%d.%d.0" "${VERSION_ID//\./}" "${RELEASE%.*}" "${RELEASE#*.}"`
 	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$RELEASE.appx"
 fi

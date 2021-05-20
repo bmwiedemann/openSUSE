@@ -65,4 +65,12 @@
     ``xml.etree.ElementTree.ParseError`` again.</comment>
     <requestid>880820</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c8b83fc46b68eb73ef45313bda94c01c</srcmd5>
+    <version>0.7.1</version>
+    <time>1621531479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893999</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-logger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            http://telepathy.freedesktop.org/wiki/Logger
 Source:         http://telepathy.freedesktop.org/releases/telepathy-logger/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM telepathy-logger-tests-Rename-function.patch zaitor@opensuse.org -- Fix build
 Patch0:         telepathy-logger-tests-Rename-function.patch
-# PATCH-FIx-UPSTREAM libtpl-extensions-dependencies.patch gh#TelepathyIM/telepathy-logger#2 dimstar@opensuse.org -- Fix dependencies of tpl-extensions
+# PATCH-FIX-UPSTREAM libtpl-extensions-dependencies.patch gh#TelepathyIM/telepathy-logger#2 dimstar@opensuse.org -- Fix dependencies of tpl-extensions
 Patch1:         libtpl-extensions-dependencies.patch
 # PATCH-FIX-UPSTREAM 1.diff dimstar@opensuse.org -- tools: Fix the build with Python 3
 Patch2:         https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1.diff

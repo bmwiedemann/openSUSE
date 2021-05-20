@@ -36,7 +36,24 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
+Patch1:         0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
+Patch2:         0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
+Patch3:         0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch
+Patch4:         0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
+Patch5:         0005-Ensure-that-grabbing-is-performed-in-correct-context.patch
+Patch6:         0006-Fix-leaked-subsurface-wayland-items.patch
+Patch7:         0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch
+Patch8:         0008-Fix-memory-leak-in-QWaylandGLContext.patch
+Patch9:         0009-Client-Send-set_window_geometry-only-once-configured.patch
+Patch10:        0010-Translate-opaque-area-with-frame-margins.patch
+Patch11:        0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
+Patch12:        0012-Get-correct-decoration-margins-region.patch
+Patch13:        0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
+Patch14:        0014-Fix-compilation.patch
+Patch15:        0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
+Patch16:        0016-Client-Announce-an-output-after-receiving-more-compl.patch
+Patch17:        0017-Fix-issue-with-repeated-window-size-changes.patch
+Patch18:        0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}

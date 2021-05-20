@@ -1,7 +1,7 @@
 #
 # spec file for package python-distro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,10 @@ Patch0:         assert_locale.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test
 %if %{with test}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
@@ -60,7 +59,7 @@ It is a renewed alternative implementation for Python's original platform.linux_
 %if %{with test}
 %check
 # Explicit settings of locale is necessary gh#nir0s/distro#223
-LANG=en_US.utf8 %python_exec setup.py pytest
+LANG=en_US.utf8 %pytest
 %endif
 
 %post

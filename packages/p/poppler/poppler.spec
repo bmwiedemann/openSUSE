@@ -1,5 +1,5 @@
 #
-# spec file for package poppler
+# spec file for package poppler%{?psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@ ExclusiveArch:  do_not_build
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
-%define poppler_sover 109
+%define poppler_sover 110
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.04.0
+Version:        21.05.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -44,8 +44,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org/
 Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM -- https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/839
-Patch:          Export-SplashFont-symbols-used-by-Scribus.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -204,7 +202,6 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
-%patch -p1
 
 %build
 %if "%{flavor}" == "qt5"

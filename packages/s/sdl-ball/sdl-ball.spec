@@ -1,7 +1,7 @@
 #
 # spec file for package sdl-ball
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright Vincent Petry <PVince81@yahoo.fr>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           sdl-ball
-Version:        1.03
+Version:        1.04
 Release:        0
 Summary:        A Free/OpenSource brick-breaking game with pretty graphics
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Breakout
-URL:            https://dustedgames.blogspot.co.uk/p/sdl-ball_20.html
-Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/SDL-Ball_%{version}_build-6_src.tar.xz
+URL:            http://sdl-ball.sourceforge.net/
+# Git-Clone:    https://github.com/DusteDdk/SDL-Ball
+Source0:        https://sourceforge.net/projects/sdl-ball/files/sdl-ball/%{version}/SDL-Ball_%{version}_src.tar.xz
 Source1:        %{name}.sh
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -33,9 +34,7 @@ BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(SDL_ttf)
 BuildRequires:  pkgconfig(sdl)
-%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-%endif
 
 %description
 SDL-Ball is a Free/OpenSource brick-breaking game.
@@ -65,7 +64,7 @@ Features:
 * Screenshot function
 
 %prep
-%setup -q -n SDL-Ball_source_build_0006_src
+%setup -q -n SDL-Ball_src
 
 # Convert to unix line end
 find . -name "*.cpp" -exec dos2unix "{}" "+"
@@ -79,13 +78,15 @@ export CFLAGS="%{optflags}"
 
 %install
 # install wrapper
-install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
+mkdir -p %{buildroot}%{_bindir}
+sed 's|@LIBEXECDIR@|%{_libexecdir}|' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
+chmod 755 %{buildroot}%{_bindir}/%{name}
 
 # install executable
 install -Dm 0755 %{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
 
-# install directories
-mkdir -p %{buildroot}%{_libexecdir}/%{name}/themes/{default,dio-sound-theme}
+# install data / themes
+mkdir -p %{buildroot}%{_libexecdir}/%{name}/themes
 for d in default dio-sound-theme ; do
     cp -a themes/$d %{buildroot}%{_libexecdir}/%{name}/themes/
 done
@@ -93,15 +94,12 @@ done
 # install icon
 install -Dm 0644 themes/default/icon32.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
-# install Desktop file
-install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+# install .desktop file
+%suse_update_desktop_file -i %{name}
 
 # install meta data
 install -Dm 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
 
 %files
 %license LICENSE.txt

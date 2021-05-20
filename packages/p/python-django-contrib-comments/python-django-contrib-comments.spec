@@ -52,7 +52,7 @@ This is the same framework that was removed from Django 1.6.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_exec tests/runtests.py
 
 %files %{python_files}
 %doc README.rst HISTORY.rst

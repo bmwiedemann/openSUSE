@@ -191,4 +191,23 @@
 - drop 0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch (obsolete)</comment>
     <requestid>868465</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7a42ae2fb148dfb9a49e727db8a963a1</srcmd5>
+    <version>2.1.0</version>
+    <time>1621531408</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  - Allow claims validation without making JWT signature validation mandatory. `
+  - Remove padding from JWK test data. `
+  - Make `kty` mandatory in JWK to be compliant with RFC7517. `
+  - Allow JWK without `alg` to be compliant with RFC7517. `
+  - Allow to verify with private key on ECAlgorithm, as well as on Ed25519Algorithm. `
+  - Add caching by default to PyJWKClient `
+  - Add missing exceptions.InvalidKeyError to jwt module __init__ imports `
+  - Add support for ES256K algorithm `
+  - Add `from_jwk()` to Ed25519Algorithm `
+  - Add `to_jwk()` to Ed25519Algorithm `
+  - Export `PyJWK` and `PyJWKSet`</comment>
+    <requestid>894171</requestid>
+  </revision>
 </revisionlist>

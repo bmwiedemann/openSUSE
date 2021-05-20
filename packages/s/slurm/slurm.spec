@@ -1,5 +1,5 @@
 #
-# spec file for package slurm%{?upgrade:_20_11}
+# spec file for package slurm
 #
 # Copyright (c) 2021 SUSE LLC
 #

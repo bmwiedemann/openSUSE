@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 16 08:33:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file (move license to licensedir) 
+
+-------------------------------------------------------------------
 Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
 
 - Split lndir from xorg-x11-util-devel. Initial version: 1.0.3.

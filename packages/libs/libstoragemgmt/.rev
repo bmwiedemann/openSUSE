@@ -254,4 +254,13 @@
     <comment></comment>
     <requestid>888376</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e55727c60bfb34467a1de96cd4f66a55</srcmd5>
+    <version>1.9.2</version>
+    <time>1621531418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * Remove OpenSSL usage as OpenSSL 3.0 is deprecating MD5</comment>
+    <requestid>894217</requestid>
+  </revision>
 </revisionlist>

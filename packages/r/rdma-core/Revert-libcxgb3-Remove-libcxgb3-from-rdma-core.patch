@@ -1,4 +1,4 @@
-commit 2f56b7b7737d603c408117b88c60be29019818e4
+commit 87b0208768d75fad7f232552408f981f6f5b53b2
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Fri Jan 10 09:07:51 2020 +0100
 
@@ -7,10 +7,10 @@ Date:   Fri Jan 10 09:07:51 2020 +0100
     This reverts commit 36588f5844af4ef1e5b0d6ad002fa1adf9032653.
 
 diff --git CMakeLists.txt CMakeLists.txt
-index 5579b5a187c0..66eb0b2fbc4b 100644
+index bee504f9bac3..29b177abb4d3 100644
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -648,6 +648,7 @@ add_subdirectory(librdmacm/man)
+@@ -665,6 +665,7 @@ add_subdirectory(librdmacm/man)
  # Providers
  if (HAVE_COHERENT_DMA)
  add_subdirectory(providers/bnxt_re)
@@ -19,7 +19,7 @@ index 5579b5a187c0..66eb0b2fbc4b 100644
  add_subdirectory(providers/efa)
  add_subdirectory(providers/efa/man)
 diff --git MAINTAINERS MAINTAINERS
-index 948c3a7fb53f..050113e1f60a 100644
+index c317f980abe8..8bbd57b61113 100644
 --- MAINTAINERS
 +++ MAINTAINERS
 @@ -51,6 +51,11 @@ M:	Devesh Sharma  <Devesh.sharma@broadcom.com>
@@ -35,7 +35,7 @@ index 948c3a7fb53f..050113e1f60a 100644
  M:	Steve Wise <swise@opengridcomputing.com>
  S:	Supported
 diff --git README.md README.md
-index b649c6f2bc0f..b31d448264e5 100644
+index 48113de790cb..61d181756c85 100644
 --- README.md
 +++ README.md
 @@ -15,6 +15,7 @@ under the providers/ directory. Support for the following Kernel RDMA drivers
@@ -46,32 +46,6 @@ index b649c6f2bc0f..b31d448264e5 100644
   - iw_cxgb4.ko
   - hfi1.ko
   - hns-roce.ko
-diff --git debian/control debian/control
-index a423e4f8a4d2..33677170a22a 100644
---- debian/control
-+++ debian/control
-@@ -91,6 +91,7 @@ Description: User space provider drivers for libibverbs
-  This package contains the user space verbs drivers:
-  .
-   - bnxt_re: Broadcom NetXtreme-E RoCE HCAs
-+  - cxgb3: Chelsio T3 iWARP HCAs
-   - cxgb4: Chelsio T4 iWARP HCAs
-   - efa: Amazon Elastic Fabric Adapter
-   - hfi1verbs: Intel Omni-Path HFI
-diff --git debian/copyright debian/copyright
-index 3bf582b46e06..5c90b2550cf0 100644
---- debian/copyright
-+++ debian/copyright
-@@ -148,7 +148,8 @@ Files: providers/bnxt_re/*
- Copyright: 2015-2017, Broadcom Limited and/or its subsidiaries
- License: BSD-2-clause or GPL-2
- 
--Files: providers/cxgb4/*
-+Files: providers/cxgb3/*
-+       providers/cxgb4/*
- Copyright: 2003-2016, Chelsio Communications, Inc.
- License: BSD-MIT or GPL-2
- 
 diff --git kernel-boot/rdma-description.rules kernel-boot/rdma-description.rules
 index 48a7cede9bc8..57bb8f1273cd 100644
 --- kernel-boot/rdma-description.rules
@@ -97,10 +71,10 @@ index 95eaf7206702..a9b5350aa79c 100644
  ENV{ID_NET_DRIVER}=="hns", RUN{builtin}+="kmod load hns_roce"
  ENV{ID_NET_DRIVER}=="i40e", RUN{builtin}+="kmod load i40iw"
 diff --git libibverbs/verbs.h libibverbs/verbs.h
-index da782f2ad2f2..a528b49a4fea 100644
+index 7d42095652af..726832e0abe6 100644
 --- libibverbs/verbs.h
 +++ libibverbs/verbs.h
-@@ -2190,6 +2190,7 @@ struct ibv_device **ibv_get_device_list(int *num_devices);
+@@ -2204,6 +2204,7 @@ struct ibv_device **ibv_get_device_list(int *num_devices);
  
  struct verbs_devices_ops;
  extern const struct verbs_device_ops verbs_provider_bnxt_re;
@@ -3090,29 +3064,8 @@ index 000000000000..39a44192e29c
 +		break;
 +	}
 +}
-diff --git redhat/rdma-core.spec redhat/rdma-core.spec
-index 1bdc4872a233..af0a2e69e3ea 100644
---- redhat/rdma-core.spec
-+++ redhat/rdma-core.spec
-@@ -147,6 +147,8 @@ Summary: A library and drivers for direct userspace use of RDMA (InfiniBand/iWAR
- Requires(post): /sbin/ldconfig
- Requires(postun): /sbin/ldconfig
- Requires: %{name}%{?_isa} = %{version}-%{release}
-+Provides: libcxgb3 = %{version}-%{release}
-+Obsoletes: libcxgb3 < %{version}-%{release}
- Provides: libcxgb4 = %{version}-%{release}
- Obsoletes: libcxgb4 < %{version}-%{release}
- Provides: libefa = %{version}-%{release}
-@@ -177,6 +179,7 @@ fast path operations.
- 
- Device-specific plug-in ibverbs userspace drivers are included:
- 
-+- libcxgb3: Chelsio T3 iWARP HCA
- - libcxgb4: Chelsio T4 iWARP HCA
- - libefa: Amazon Elastic Fabric Adapter
- - libhfi1: Intel Omni-Path HFI
 diff --git suse/rdma-core.spec suse/rdma-core.spec
-index 63f8699ade18..082515dc11c3 100644
+index e5d0950e332b..ff66281047b6 100644
 --- suse/rdma-core.spec
 +++ suse/rdma-core.spec
 @@ -182,6 +182,7 @@ RDMA core development libraries and headers.

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 19 10:52:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.38.0
+  * ipv6 introducers and peer test
+  * Support .b32.i2p addresses and hostnames for SAM STREAM CREATE
+  * Blinding of EdDSA signing keys
+  * Publish iexp param for introducers
+  * Send updated LeaseSet for incoming ECIES-x25519 session
+  * Bind ipv6 or yggdrasil NTCP2 acceptor to specified address
+  * Don't publish LeaseSet without inbound tunnels
+  * Rekey of all routers but floodfills to ECIES
+  * Recognize ipv4 and ipv6 SSU addresses without host
+  * Show ipv6 network status and router version on the webconsole
+
+-------------------------------------------------------------------
 Sat May  8 10:46:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.37.0

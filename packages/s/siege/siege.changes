@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 19 19:13:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.9
+  * Added NULL checks for getters
+  * Prettified json
+  * Added handling for null pointer detection
+
+-------------------------------------------------------------------
 Mon Sep 28 20:35:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.7:

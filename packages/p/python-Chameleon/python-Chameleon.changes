@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 20 09:41:02 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.9.1
+  * Avoid various traceback reference cycles.
+  * Removed compatibility code for unsupported Python versions
+  * Dropped support for obsolete Python 3.4
+  * Fixed namespace handling when redefining a variable in the same tal:define (#237)
+  * Fixed failure computing a template's digest if template.filename is None (#254)
+- %check: use %pytest macro
+
+-------------------------------------------------------------------
 Wed Jul  8 14:03:55 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.8.1

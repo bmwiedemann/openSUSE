@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 15:40:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.2:
+  + Fixes for gdb when using zsh/fish.
+  + Improve Flatpak runtime discovery when SDK extensions are used.
+
+-------------------------------------------------------------------
 Fri Apr 30 13:35:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.40.1:

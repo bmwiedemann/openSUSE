@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  3 17:53:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.16.0
+  * Add a :verify_commit option; if enabled, checks that the
+    revision being deployed has a valid signature (git only)
+- Drop CHANGELOG.md as changes are no longer tracked there since
+  version 3.11.2. They are now published on Github:
+  https://github.com/capistrano/capistrano/releases
+  
+-------------------------------------------------------------------
 Wed Jan 20 12:25:53 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.15.0

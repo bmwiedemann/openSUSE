@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,24 @@
 #
 
 
-Name:           perl-Tk
-Version:        804.035
-Release:        0
 %define cpan_name Tk
+Name:           perl-Tk
+Version:        804.036
+Release:        0
 Summary:        Graphical user interface toolkit for Perl
-License:        (GPL-1.0-or-later OR Artistic-1.0) AND Zlib
-Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/Tk
+License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SREZIC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL BEGIN
+Patch0:         Tk-804.029-event.diff
 Patch1:         Tk-804.029-macro.diff
 Patch2:         Tk-804.029-null.diff
 Patch3:         Tk-804.029-refcnt.diff
-Patch4:         Tk-804.029-event.diff
 # MANUAL END
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+%{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libX11-devel
 BuildRequires:  libXft-devel
@@ -62,10 +61,15 @@ BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  xorg-x11-server
 %endif
 # MANUAL END
-%{perl_requires}
 
 %description
-Tk - a graphical user interface toolkit for Perl
+This a re-port of a perl interface to Tk8.4.
+C code is derived from Tcl/Tk8.4.5.
+It also includes all the C code parts of Tix8.1.4 from SourceForge.
+The perl code corresponding to Tix's Tcl code is not fully implemented.
+
+Perl API is essentially the same as Tk800 series Tk800.025 but has not
+been verified as compliant. There ARE differences see pod/804delta.pod.
 
 %package devel
 Summary:        Development files for perl-Tk
@@ -76,11 +80,7 @@ Requires:       %{name} = %{version}
 Development files for Tk - a graphical user interface toolkit for Perl
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
+%autosetup  -n %{cpan_name}-%{version} -p0
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 find . -type f -name "Tcl-pTk" -print0 | xargs -0 chmod +x
@@ -92,7 +92,7 @@ for file in `find -type f` ; do
   grep -q "%{_prefix}/local/bin/perl" $file && \
       sed -i -e "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@g" "$file"
   grep -q "%{_prefix}/local/bin/nperl" $file && \
-      sed -i -e "s@%{_prefix}/local/bin/nperl@%{_bindir}/nperl@g" "$file" 
+      sed -i -e "s@%{_prefix}/local/bin/nperl@%{_bindir}/nperl@g" "$file"
   grep -q "#!\s*/bin/perl" $file && \
       sed -i -e "s@/bin/perl@%{_bindir}/perl@g" "$file"
   grep -q "#!\s*/tools/local/perl" $file && \
@@ -115,7 +115,7 @@ DISPLAY=:95 make test %{?_smp_mflags}
 %endif
 
 %install
-make DESTDIR=%{buildroot} install_vendor
+%perl_make_install
 %perl_process_packlist
 rm -f %{buildroot}/%{perl_vendorarch}/fix_4_os2.pl
 find %{buildroot} -type f -name '*.bs' -size 0 -delete

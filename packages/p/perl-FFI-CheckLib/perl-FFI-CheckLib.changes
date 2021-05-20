@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 17 03:06:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.28      2021-05-16 15:10:34 -0600
+    - Avoid undef warning from File::Spec->catpath (gh#30, gh#33)
+    - The alien option now works in fallback mode; if one or more of the
+      Aliens are not installed then they will be ignored, previously this
+      module would throw whatever exception was produced by require (gh#23, gh#34)
+    - Move to PerlFFI org on GitHub (previously this dist lived in Perl5-FFI)
+      (gh#24)
+
+-------------------------------------------------------------------
 Tue May 12 03:07:50 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.27

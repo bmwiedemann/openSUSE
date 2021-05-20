@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 18 21:47:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.1:
+  * auth header parsing performance optimizations; Thanks to Paul McGuire
+  * Use mock from the standard library on Python>=3.3
+
+-------------------------------------------------------------------
 Fri Feb 26 12:49:45 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Update in SLE to 0.19.0 (bsc#1182053, CVE-2021-21240)
@@ -13,7 +20,7 @@ Thu Feb 18 21:41:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 13 07:26:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 0.18.1:
+- update to 0.18.1: (bsc#1171998, CVE-2020-11078)
   * explicit build-backend workaround for pip build isolation bug
   * IMPORTANT security vulnerability CWE-93 CRLF injection
   Force %xx quote of space, CR, LF characters in uri.

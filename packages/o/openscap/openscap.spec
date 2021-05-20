@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define with_bindings 0
 
 Name:           openscap
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
 # temp snapshot to make it build with new RPM before 1.3.2
@@ -38,15 +38,12 @@ Source3:        scap-yast2sec-xccdf.xml
 Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
-Patch0:         openscap-new-suse.patch
-Patch1:         openscap-leap-cpe-15.12.patch
-Patch2:         0001-Fix-memory-allocation.patch
 URL:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  doxygen
 # Next few lines are needed for unit tests, they expect /etc/os-release to exist
-%if !0%{?is_opensuse} && 0%{?sle_version} < 130000 
+%if !0%{?is_opensuse} && 0%{?sle_version} < 130000
 BuildRequires:  sles-release
 %else
 BuildRequires:  distribution-release
@@ -79,6 +76,8 @@ BuildRequires:  rpm-devel
 BuildRequires:  sendmail
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
+BuildRequires:  xmlsec1-devel
+BuildRequires:  xmlsec1-openssl-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 Summary:        A Set of Libraries for Integration with SCAP
@@ -106,7 +105,7 @@ Summary:        Development Files for OpenSCAP
 Group:          Development/Libraries/C and C++
 
 %description devel
-This package contains the development files (mainly C header files) for the 
+This package contains the development files (mainly C header files) for the
 OpenSCAP C library.
 
 %package docker
@@ -174,9 +173,6 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %if 0%{?with_bindings}

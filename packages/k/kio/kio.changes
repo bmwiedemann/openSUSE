@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 14 13:00:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix issues with MimeTypeFinderJob (kde#398908):
+  * 0001-MimeTypeFinderJob-Resolve-symlinks-for-a-local-file.patch
+  * 0002-MimeTypeFinderJob-the-StatJob-details-should-include.patch
+  * 0003-kio_file-pass-the-absolute-path-to-QMimeDatabase-mim.patch
+
+-------------------------------------------------------------------
 Thu May  6 18:12:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop 0001-PreviewJob-Create-a-larger-SHM-when-necessary.patch.

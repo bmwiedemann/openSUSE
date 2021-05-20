@@ -192,4 +192,12 @@
     <comment></comment>
     <requestid>884498</requestid>
   </revision>
+  <revision rev="27" vrev="35">
+    <srcmd5>76bd4be3d2ecbcf05acba4ca1ccfe30a</srcmd5>
+    <version>unknown</version>
+    <time>1621531390</time>
+    <user>dimstar_suse</user>
+    <comment>Update jaxen to 1.1.6</comment>
+    <requestid>893310</requestid>
+  </revision>
 </revisionlist>

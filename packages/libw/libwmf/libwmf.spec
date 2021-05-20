@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define lname	libwmf-0_2-7
 Name:           libwmf
 Version:        0.2.12

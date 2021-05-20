@@ -132,4 +132,12 @@
   * Updates test matrix and PyPI metadata for latest versions of Django.</comment>
     <requestid>791172</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>988f390b15d26c14e170cc029700297b</srcmd5>
+    <version>1.0.4</version>
+    <time>1621531519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894543</requestid>
+  </revision>
 </revisionlist>

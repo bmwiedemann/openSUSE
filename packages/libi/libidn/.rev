@@ -443,4 +443,12 @@
 - remove disable-rwlock-test.patch (builds fine again)</comment>
     <requestid>826897</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6ba4bb5c5e4012d37b6c1ee3a9463b7d</srcmd5>
+    <version>1.37</version>
+    <time>1621531400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894142</requestid>
+  </revision>
 </revisionlist>

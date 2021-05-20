@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 18 15:14:28 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 804.036
+   see /usr/share/doc/packages/perl-Tk/Changes
+  * Tk-804.036 release (2021-02-14)
+    - This is basically the same like Tk-804.035_501.
+  * Tk-804.035_501 release (2021-02-07)
+    - Fixes:
+       Compiles again with Strawberry Perl 5.32.x
+       Fix double free in validatecommand
+       myConfig: add ability to define HAVE_INTTYPES_H
+       Smaller build improvements and typo corrections
+       Prevent some compiler warnings
+    - Documentation:
+       Several smaller Pod fixes
+    - Tests:
+       Introduce CI testing with github actionsTk-804.036
+	   release (2021-02-14)
+
+-------------------------------------------------------------------
 Mon May  4 22:43:10 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Use https and metacpan.org for url and sources

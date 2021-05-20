@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 20 09:47:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Build without fluidsynth on Leap 15, the included one is too old
+
+-------------------------------------------------------------------
 Sat May 15 21:01:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.2.0

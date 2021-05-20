@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-appconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/django-compressor/django-appconf
 Source:         https://github.com/django-compressor/django-appconf/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -52,7 +53,7 @@ gracefully.
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.test_settings
-%python_exec setup.py test
+%pytest tests/tests.py
 
 %files %{python_files}
 %license LICENSE

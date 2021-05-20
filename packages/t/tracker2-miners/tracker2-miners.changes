@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 14 19:28:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix patch tag line of
+  tracker-miners-bsc1165635-crawl-timestamp.patch.
+
+-------------------------------------------------------------------
 Mon Mar 22 13:00:58 UTC 2021 - Javier S. Pedro <dev.rpm@javispedro.com>
 
 - Backport 3.x fix for glgo#GNOME/tracker-miners#167 boo#1183879:

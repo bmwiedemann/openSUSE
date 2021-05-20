@@ -17,7 +17,7 @@
 
 
 Name:           yast2-metapackage-handler
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        YaST2 - Easy Installation of Add-on RPMs using Metapackages
 License:        GPL-2.0-or-later
@@ -62,13 +62,13 @@ with a simple click on a link in a website.
 %suse_update_desktop_file org.opensuse.yast.MetapackageHandler
 
 %files
-%doc %{yast_docdir}
 %license COPYING
+%doc %{yast_docdir}
 %{_bindir}/OneClickInstall*
 %{yast_clientdir}
 %{yast_moduledir}
-%{yast_icondir}
-%{_datadir}/mime/packages/
-%{_datadir}/applications/
+%{_datadir}/icons/hicolor/*/apps/yast-oneclick*
+%{_datadir}/applications/org.opensuse.yast.MetapackageHandler.desktop
+%{_datadir}/mime/packages/yast2-metapackage-handler-mimetypes.xml
 
 %changelog

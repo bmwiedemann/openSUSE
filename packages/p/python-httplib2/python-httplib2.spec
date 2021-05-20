@@ -20,10 +20,10 @@
 # Tests require network connection
 %bcond_with tests
 Name:           python-httplib2
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        A Python HTTP client library
-License:        MIT AND Apache-2.0 AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
+License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later)
 URL:            https://github.com/httplib2/httplib2
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

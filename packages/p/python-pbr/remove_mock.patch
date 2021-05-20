@@ -1,8 +1,19 @@
-Index: pbr-5.5.1/pbr/tests/test_packaging.py
-===================================================================
---- pbr-5.5.1.orig/pbr/tests/test_packaging.py
-+++ pbr-5.5.1/pbr/tests/test_packaging.py
-@@ -48,7 +48,10 @@ import tempfile
+From 8c4eafa33100f68bccc30575ac3113532e247f23 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sat, 19 Dec 2020 17:07:07 +0100
+Subject: [PATCH] remove explicit mock
+
+The explicit mock package is not required if you can use unittest.mock
+from python >= 3.3
+
+Change-Id: I1e3a764b38be66b994d790768bc5eb9be4237444
+---
+
+diff --git a/pbr/tests/test_packaging.py b/pbr/tests/test_packaging.py
+index 9e95a86..ec51146 100644
+--- a/pbr/tests/test_packaging.py
++++ b/pbr/tests/test_packaging.py
+@@ -48,7 +48,10 @@
  import textwrap
  
  import fixtures
@@ -14,10 +25,10 @@ Index: pbr-5.5.1/pbr/tests/test_packaging.py
  import pkg_resources
  import six
  import testscenarios
-Index: pbr-5.5.1/pbr/tests/test_pbr_json.py
-===================================================================
---- pbr-5.5.1.orig/pbr/tests/test_pbr_json.py
-+++ pbr-5.5.1/pbr/tests/test_pbr_json.py
+diff --git a/pbr/tests/test_pbr_json.py b/pbr/tests/test_pbr_json.py
+index f066971..eb9a08a 100644
+--- a/pbr/tests/test_pbr_json.py
++++ b/pbr/tests/test_pbr_json.py
 @@ -10,7 +10,10 @@
  # License for the specific language governing permissions and limitations
  # under the License.
@@ -30,16 +41,15 @@ Index: pbr-5.5.1/pbr/tests/test_pbr_json.py
  
  from pbr import pbr_json
  from pbr.tests import base
-Index: pbr-5.5.1/test-requirements.txt
-===================================================================
---- pbr-5.5.1.orig/test-requirements.txt
-+++ pbr-5.5.1/test-requirements.txt
-@@ -5,7 +5,7 @@
- wheel>=0.32.0 # MIT
+diff --git a/test-requirements.txt b/test-requirements.txt
+index 4d586e4..3af261d 100644
+--- a/test-requirements.txt
++++ b/test-requirements.txt
+@@ -6,7 +6,6 @@
  fixtures>=3.0.0 # Apache-2.0/BSD
- hacking>=1.1.0,<4.0.0 # Apache-2.0
--mock>=2.0.0 # BSD
-+mock>=2.0.0;python_version<='3.3' # BSD
+ hacking>=1.1.0,<4.0.0;python_version>='3.6' # Apache-2.0
+ mock>=2.0.0,<4.0.0;python_version=='2.7' # BSD
+-mock>=2.0.0;python_version>='3.6' # BSD
  six>=1.12.0 # MIT
  stestr>=2.1.0,<3.0;python_version=='2.7' # Apache-2.0
  stestr>=2.1.0;python_version>='3.0' # Apache-2.0

@@ -211,4 +211,12 @@
   placeholder and the funcionality handled by file triggers. (forwarded request 853072 from dimstar)</comment>
     <requestid>853262</requestid>
   </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>67dac650a967c04e2003a9040af53a9f</srcmd5>
+    <version>0.8.2</version>
+    <time>1621531476</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize patch tag line. (forwarded request 893972 from dimstar)</comment>
+    <requestid>893990</requestid>
+  </revision>
 </revisionlist>
