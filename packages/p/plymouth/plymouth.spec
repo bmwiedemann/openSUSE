@@ -86,7 +86,7 @@ Requires:       %{name}-branding
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
-Requires(postun): coreutils
+Requires(postun):coreutils
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5
@@ -98,6 +98,7 @@ Plymouth provides an attractive graphical boot animation in
 place of the text messages that normally get shown.  Text
 messages are instead redirected to a log file for viewing
 after boot.
+%lang_package
 
 %package -n libply-boot-client%{soversion}
 Summary:        Plymouth core library
@@ -416,6 +417,8 @@ cp $RPM_SOURCE_DIR/boot-duration %{buildroot}%{_localstatedir}/lib/plymouth
 rm -f  %{buildroot}%{_sysconfdir}/plymouth/plymouthd.conf
 rm -f  %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 
+%find_lang %{name}
+
 %post
 %{?regenerate_initrd_post}
 if [ ! -e /.buildenv ]; then
@@ -551,7 +554,8 @@ fi
 %ghost %{_localstatedir}/lib/plymouth/boot-duration
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
-/usr/share/locale/
+
+%files lang -f %{name}.lang
 
 %files branding-upstream
 %{_datadir}/plymouth/plymouthd.defaults

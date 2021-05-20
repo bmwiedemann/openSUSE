@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 14 14:19:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not own /usr/share/locale (owned by filesystem):
+  + Split out -lang package
+  + Use find_lang macro to create file list for -lang package
+
+-------------------------------------------------------------------
 Wed Feb 24 08:25:42 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Pickup plymouth-only_use_fb_for_cirrus_bochs.patch: Currently our
