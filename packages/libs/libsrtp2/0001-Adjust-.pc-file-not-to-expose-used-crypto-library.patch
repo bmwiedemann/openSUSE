@@ -1,0 +1,29 @@
+From 676bf7481aa96f3d691c6e44730e8308214f3a76 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 15 May 2021 02:24:03 +0200
+Subject: [PATCH] Adjust .pc file not to expose used crypto library
+References: https://github.com/cisco/libsrtp/pull/537
+References: https://bugzilla.suse.com/show_bug.cgi?id=1185931
+
+srtp headers are not directly including openssl headers. The srtp (shared)
+library already has links to libcrypto and so -lcrypto is at best only needed
+for static linking, but that must go into a the field called "private".
+---
+ libsrtp2.pc.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git libsrtp2.pc.in libsrtp2.pc.in
+index fcb8652..f2097a3 100644
+--- libsrtp2.pc.in
++++ libsrtp2.pc.in
+@@ -7,5 +7,6 @@ Name: @PACKAGE_NAME@
+ Version: @PACKAGE_VERSION@
+ Description: Library for SRTP (Secure Realtime Transport Protocol)
+ 
+-Libs: -L${libdir} -lsrtp2 @LIBS@
++Libs: -L${libdir} -lsrtp2
++Libs.private: @LIBS@
+ Cflags: -I${includedir}
+-- 
+2.31.1
+
