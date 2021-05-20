@@ -1,0 +1,32 @@
+From ac8dc55ebbd43306eb54989f096a6814dadda974 Mon Sep 17 00:00:00 2001
+From: Rob Browning <rlb@defaultvalue.org>
+Date: Sat, 19 Sep 2020 14:09:04 -0500
+Subject: Fix "non-revealed port is closed" ports.test
+
+Don't close the test port's file descriptor because the port still has a
+reference to it, and could still close it at any time when finally
+garbage collected.  This did soemetimes break subsequent tests.
+
+Bug: https://debbugs.gnu.org/43521
+---
+ test-suite/tests/ports.test | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/test-suite/tests/ports.test b/test-suite/tests/ports.test
+index 31fb2b0a8..9dca62df8 100644
+--- a/test-suite/tests/ports.test
++++ b/test-suite/tests/ports.test
+@@ -623,9 +623,10 @@
+         (seek fdes 0 SEEK_CUR)
+ 
+         ;; If we get here, it might be because PORT was not GC'd, we
+-        ;; don't know (and we can't use a guardian because it would keep
+-        ;; PORT alive.)
+-        (close-fdes fdes)
++        ;; don't know, and we can't use a guardian because it would keep
++        ;; PORT alive, and we can't close the descriptor because
++        ;; subseuqent opens may re-use it, and then if this port is
++        ;; garbage collected, it'll close the descriptor unexpectedly.
+         (throw 'unresolved))
+       (lambda args
+         (system-error-errno args)))))
