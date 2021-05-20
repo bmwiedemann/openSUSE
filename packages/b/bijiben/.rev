@@ -432,4 +432,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 890059 from dimstar)</comment>
     <requestid>890121</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>4e694119a24be6dac2e9c331e3705558</srcmd5>
+    <version>40.1</version>
+    <time>1621531385</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer own /usr/share/help/C: this is owned by the file system
+  package. (forwarded request 893556 from dimstar)</comment>
+    <requestid>893558</requestid>
+  </revision>
 </revisionlist>

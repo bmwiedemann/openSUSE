@@ -84,8 +84,6 @@ search results from documents.
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md TODO
-%dir %{_datadir}/help
-%dir %{_datadir}/help/C
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/applications/org.gnome.Notes.desktop

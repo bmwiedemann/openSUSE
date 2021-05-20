@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 07:32:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer own /usr/share/help/C: this is owned by the file system
+  package.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:14:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.1:
