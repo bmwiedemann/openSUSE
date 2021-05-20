@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/solanum-ircd/solanum</param>
+		<param name="revision">3ff5a12e75662e9a642f2a4364797bd361eb0925</param>
+		<param name="parent-tag">charybdis-4.1.2</param>
+		<param name="versionformat">0~ch@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
