@@ -23,11 +23,11 @@
 %bcond_without systemlibs
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define erfaversion 1.7.3
+%define erfaversion 2.0.0
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-pyerfa
-Version:        1.7.3
+Version:        2.0.0
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
@@ -79,7 +79,11 @@ export PYERFA_USE_SYSTEM_LIBERFA=1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch --pyargs erfa
+%if %{with systemlibs}
+# detection of non-embedded lib fails on ppc
+%define skip_embedded_test -k "not test_version_with_embedded_liberfa"
+%endif
+%pytest_arch --pyargs erfa %{?skip_embedded_test}
 
 %files %{python_files}
 %license LICENSE.rst licenses/ERFA.rst
