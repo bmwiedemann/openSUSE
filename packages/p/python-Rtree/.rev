@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f64b86fc5ba5c19e1ca2d3a0844d8683</srcmd5>
+    <version>0.9.7</version>
+    <time>1621531489</time>
+    <user>dimstar_suse</user>
+    <comment>now with the new dynamic shlib requirement. required for spyder 5.0.3</comment>
+    <requestid>894343</requestid>
+  </revision>
+</revisionlist>
