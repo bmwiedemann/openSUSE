@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libodfgen-0_1-1
 Name:           libodfgen
 Version:        0.1.8
