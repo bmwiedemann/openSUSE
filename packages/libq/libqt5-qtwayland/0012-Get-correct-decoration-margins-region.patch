@@ -1,0 +1,39 @@
+From 6810b0f66a34056bfe0da7299d7a768e700e58f5 Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Thu, 11 Feb 2021 15:12:32 +0100
+Subject: [PATCH 12/18] Get correct decoration margins region
+
+Size we use to calculate margins region already contains size including
+margins. This resulted into bigger region and not properly damaging
+region we need to update.
+
+Pick-to: 5.15 6.0 6.1
+Change-Id: Id1b7f4cd2a7b894b82db09c5af2b2d1f1f43fa2a
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+---
+ src/client/qwaylandabstractdecoration.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/client/qwaylandabstractdecoration.cpp b/src/client/qwaylandabstractdecoration.cpp
+index 87dd6cea..b6ee43c9 100644
+--- a/src/client/qwaylandabstractdecoration.cpp
++++ b/src/client/qwaylandabstractdecoration.cpp
+@@ -108,11 +108,11 @@ void QWaylandAbstractDecoration::setWaylandWindow(QWaylandWindow *window)
+ static QRegion marginsRegion(const QSize &size, const QMargins &margins)
+ {
+     QRegion r;
+-    const int widthWithMargins = margins.left() + size.width() + margins.right();
+-    r += QRect(0, 0, widthWithMargins, margins.top()); // top
+-    r += QRect(0, size.height()+margins.top(), widthWithMargins, margins.bottom()); //bottom
++
++    r += QRect(0, 0, size.width(), margins.top()); // top
++    r += QRect(0, size.height()-margins.bottom(), size.width(), margins.bottom()); //bottom
+     r += QRect(0, margins.top(), margins.left(), size.height()); //left
+-    r += QRect(size.width()+margins.left(), margins.top(), margins.right(), size.height()); // right
++    r += QRect(size.width()-margins.left(), margins.top(), margins.right(), size.height()-margins.top()); // right
+     return r;
+ }
+ 
+-- 
+2.25.1
+

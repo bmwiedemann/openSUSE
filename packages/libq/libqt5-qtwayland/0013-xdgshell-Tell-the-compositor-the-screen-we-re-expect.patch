@@ -1,0 +1,41 @@
+From cea69b8adec1e61adc1fa04cbf46b77c0d72c75e Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Mon, 23 Nov 2020 20:07:02 +0100
+Subject: [PATCH 13/18] xdgshell: Tell the compositor the screen we're
+ expecting to fill
+
+The xdgshell protocol allows us to tell the output to fill. This makes
+it possible to use fullscreen confidently on systems with multiple
+screens knowing that our windows won't be overlapping one another by
+calling setScreen accordingly before QWindow::showFullScreen.
+
+Pick-to: 6.1 6.0 5.15
+Change-Id: I757854c3698639472f3a25ef298ddcca031e1ed5
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+---
+ .../shellintegration/xdg-shell/qwaylandxdgshell.cpp      | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp b/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
+index 1c762944..3a1569f7 100644
+--- a/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
++++ b/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
+@@ -178,9 +178,12 @@ void QWaylandXdgSurface::Toplevel::requestWindowStates(Qt::WindowStates states)
+     }
+ 
+     if (changedStates & Qt::WindowFullScreen) {
+-        if (states & Qt::WindowFullScreen)
+-            set_fullscreen(nullptr);
+-        else
++        if (states & Qt::WindowFullScreen) {
++            auto screen = m_xdgSurface->window()->waylandScreen();
++            if (screen) {
++                set_fullscreen(screen->output());
++            }
++        } else
+             unset_fullscreen();
+     }
+ 
+-- 
+2.25.1
+

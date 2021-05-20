@@ -1,0 +1,41 @@
+From 7db4f83c39d2a0c709bc0b9c0de3946d3b4ebfd5 Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Mon, 16 Nov 2020 14:57:36 +0000
+Subject: [PATCH 09/18] Client: Send set_window_geometry only once configured
+
+The geometry only makes sense when a buffer exists, our currently send
+value is somewhat meaningless, but till now harmless.
+
+A specification clarification implies that it is an error if the
+calculated effective window geometry is null, rather than just checking
+the sent value. This is the case if set_window_geometry is sent before a
+buffer is attached.
+
+On our first configure call we enter resizeFromApplyConfigure which will
+hit this path and send the initial state.
+
+Pick-to: 5.15
+Pick-to: 6.1
+Pick-to: 6.0
+Change-Id: Ib57ebe8b64210eae86e79dfdd6b5cb8a986b020b
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ src/client/qwaylandwindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 9b343702..e875af3a 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -365,7 +365,7 @@ void QWaylandWindow::setGeometry(const QRect &rect)
+     if (isExposed() && !mInResizeFromApplyConfigure && exposeGeometry != mLastExposeGeometry)
+         sendExposeEvent(exposeGeometry);
+ 
+-    if (mShellSurface)
++    if (mShellSurface && isExposed())
+         mShellSurface->setWindowGeometry(windowContentGeometry());
+ 
+     if (isOpaque() && mMask.isEmpty())
+-- 
+2.25.1
+

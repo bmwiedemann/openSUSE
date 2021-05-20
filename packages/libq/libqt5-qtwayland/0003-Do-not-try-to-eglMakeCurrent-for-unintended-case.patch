@@ -1,0 +1,62 @@
+From 2c0a03e9aea13831d05ac03996949f888afd5085 Mon Sep 17 00:00:00 2001
+From: Jaehak Lee <jaehak.lee@mobis.co.kr>
+Date: Sun, 8 Nov 2020 11:40:06 +0900
+Subject: [PATCH 3/7] Do not try to eglMakeCurrent for unintended case
+
+The QSGThreadedRenderLoop::hide can be called at twice,
+when the QWindowPrivate::setVisible(false) is called.
+
+The eglSurface is EGL_NO_SURFACE when the second QSGThreadedRenderLoop::hide is
+called. And if EGL_KHR_surfaceless_context is supported, the eglMakeCurrent
+don't return the false.
+
+But this case is not intended. So, add the defence code for above case.
+
+Fixes: QTBUG-88277
+Change-Id: Ia9e5990303e98f0eedc48531e5af62ff9961f419
+Reviewed-by: Laszlo Agocs <laszlo.agocs@qt.io>
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ .../client/wayland-egl/qwaylandglcontext.cpp                | 6 ++++++
+ .../client/wayland-egl/qwaylandglcontext.h                  | 1 +
+ 2 files changed, 7 insertions(+)
+
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+index ccebf43d..681f82f4 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+@@ -336,6 +336,8 @@ QWaylandGLContext::QWaylandGLContext(EGLDisplay eglDisplay, QWaylandDisplay *dis
+                                << "It may also cause the event loop to freeze in some situations";
+     }
+ 
++    m_supportSurfaceLessContext = q_hasEglExtension(m_eglDisplay, "EGL_KHR_surfaceless_context");
++
+     updateGLFormat();
+ }
+ 
+@@ -439,6 +441,10 @@ bool QWaylandGLContext::makeCurrent(QPlatformSurface *surface)
+         eglSurface = window->eglSurface();
+     }
+ 
++    if (eglSurface == EGL_NO_SURFACE && m_supportSurfaceLessContext) {
++        return false;
++    }
++
+     if (!eglMakeCurrent(m_eglDisplay, eglSurface, eglSurface, m_context)) {
+         qWarning("QWaylandGLContext::makeCurrent: eglError: %x, this: %p \n", eglGetError(), this);
+         window->setCanResize(true);
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.h b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.h
+index 46c7bb76..93edaec0 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.h
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.h
+@@ -93,6 +93,7 @@ private:
+     DecorationsBlitter *m_blitter = nullptr;
+     uint m_api;
+     bool m_supportNonBlockingSwap = true;
++    bool m_supportSurfaceLessContext = false;
+ };
+ 
+ }
+-- 
+2.25.1
+

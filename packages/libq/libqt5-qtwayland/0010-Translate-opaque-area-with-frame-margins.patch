@@ -1,0 +1,40 @@
+From a3e3ac1c86a956b25b1dc24f14518b6e6c96bcfc Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Wed, 10 Feb 2021 17:11:27 +0100
+Subject: [PATCH 10/18] Translate opaque area with frame margins
+
+The opaque area doesn't take window decorations into account, which may
+result into possible graphical artefacts.
+
+Pick-to: 5.15 6.0 6.1
+Change-Id: I1606e8256e7e204dad927931eb1221b576e227fd
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+---
+ src/client/qwaylandwindow.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index e875af3a..2af39977 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -1234,12 +1234,14 @@ bool QWaylandWindow::isOpaque() const
+ 
+ void QWaylandWindow::setOpaqueArea(const QRegion &opaqueArea)
+ {
+-    if (opaqueArea == mOpaqueArea || !mSurface)
++    const QRegion translatedOpaqueArea = opaqueArea.translated(frameMargins().left(), frameMargins().top());
++
++    if (translatedOpaqueArea == mOpaqueArea || !mSurface)
+         return;
+ 
+-    mOpaqueArea = opaqueArea;
++    mOpaqueArea = translatedOpaqueArea;
+ 
+-    struct ::wl_region *region = mDisplay->createRegion(opaqueArea);
++    struct ::wl_region *region = mDisplay->createRegion(translatedOpaqueArea);
+     mSurface->set_opaque_region(region);
+     wl_region_destroy(region);
+ }
+-- 
+2.25.1
+

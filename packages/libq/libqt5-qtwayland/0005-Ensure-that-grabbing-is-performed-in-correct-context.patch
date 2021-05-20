@@ -1,0 +1,35 @@
+From dba4bc4f1d6dfee9fe9433c55b15653d703bed4f Mon Sep 17 00:00:00 2001
+From: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+Date: Wed, 2 Dec 2020 20:55:52 +0100
+Subject: [PATCH 5/7] Ensure that grabbing is performed in correct context
+
+For multi-display rendering on EGL, it is mandatory that the grabbing of
+the surface happens in the same EGL context as the surface belongs to.
+By adding the grabbing to the rendering stage of the image, this
+relation is forced.
+
+Task-number: QTBUG-87597
+Change-Id: I50f40df1215aa771d714065e942c5a738ba6269f
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+(cherry picked from commit ab3a1a07f3d1e0d5a9e9d97b6b3b587180e2f4c8)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/compositor/compositor_api/qwaylandquickcompositor.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/compositor/compositor_api/qwaylandquickcompositor.cpp b/src/compositor/compositor_api/qwaylandquickcompositor.cpp
+index 49f0860e..db1cf00f 100644
+--- a/src/compositor/compositor_api/qwaylandquickcompositor.cpp
++++ b/src/compositor/compositor_api/qwaylandquickcompositor.cpp
+@@ -161,7 +161,7 @@ void QWaylandQuickCompositor::grabSurface(QWaylandSurfaceGrabber *grabber, const
+     GrabState *state = new GrabState;
+     state->grabber = grabber;
+     state->buffer = buffer;
+-    static_cast<QQuickWindow *>(output->window())->scheduleRenderJob(state, QQuickWindow::NoStage);
++    static_cast<QQuickWindow *>(output->window())->scheduleRenderJob(state, QQuickWindow::AfterRenderingStage);
+ #else
+     emit grabber->failed(QWaylandSurfaceGrabber::UnknownBufferType);
+ #endif
+-- 
+2.25.1
+

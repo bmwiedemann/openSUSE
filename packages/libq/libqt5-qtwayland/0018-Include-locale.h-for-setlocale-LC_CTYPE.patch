@@ -1,0 +1,31 @@
+From 1ccebbab3a42690a0812e2c4c76016799bf6cf1f Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <albert.astals.cid@kdab.com>
+Date: Mon, 10 May 2021 14:38:49 +0200
+Subject: [PATCH 18/18] Include locale.h for setlocale/LC_CTYPE
+
+Pick-to: 5.15
+Change-Id: Iced32a31a63cec71008549c1e0961d59ffc45a37
+Reviewed-by: Aleix Pol Gonzalez <aleixpol@kde.org>
+(cherry picked from commit e9522eda46028f351d87311d898ab985856970b0)
+---
+ src/client/qwaylandinputcontext.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/client/qwaylandinputcontext.cpp b/src/client/qwaylandinputcontext.cpp
+index ef5aa375..503fd735 100644
+--- a/src/client/qwaylandinputcontext.cpp
++++ b/src/client/qwaylandinputcontext.cpp
+@@ -51,6 +51,10 @@
+ #include "qwaylandinputmethodeventbuilder_p.h"
+ #include "qwaylandwindow_p.h"
+ 
++#if QT_CONFIG(xkbcommon)
++#include <locale.h>
++#endif
++
+ QT_BEGIN_NAMESPACE
+ 
+ Q_LOGGING_CATEGORY(qLcQpaInputMethods, "qt.qpa.input.methods")
+-- 
+2.25.1
+

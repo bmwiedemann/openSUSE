@@ -1,0 +1,112 @@
+From 10005185e06857ce119c50fe710f9eedde06ec5e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Morten=20Johan=20S=C3=B8rvig?= <morten.sorvig@qt.io>
+Date: Fri, 13 Nov 2020 11:21:50 +0100
+Subject: [PATCH 4/7] Make setting QT_SCALE_FACTOR work on Wayland
+
+QWindow geometry accessors return geometry in device
+independent pixels. Normally this coordinate system
+is equivalent to the Wayland native coordinate system,
+but this is not the case when QT_SCALE_FACTOR is set.
+
+Replace QWindow geometry calls with the helpers from
+QPlatformWindow which return geometry in the native
+coordinate system:
+
+QWindow::geometry() -> QPlatformWindow::windowGeometry()
+QWindow::frameGeometry() -> QPlatformWindow::windowFrameGeometry()
+
+Task-number: QTBUG-87762
+Fixes: QTBUG-88064
+(cherry-picked from commit 8cb1b07aea12d50b4fecc45c903705dfd368022a)
+Change-Id: I6e2029bc6210f12441ae7c9d8b678271e9922dde
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ src/client/qwaylandwindow.cpp                              | 7 ++++---
+ .../shellintegration/wl-shell/qwaylandwlshellsurface.cpp   | 2 +-
+ .../shellintegration/xdg-shell-v5/qwaylandxdgsurfacev5.cpp | 2 +-
+ .../shellintegration/xdg-shell-v6/qwaylandxdgshellv6.cpp   | 2 +-
+ .../shellintegration/xdg-shell/qwaylandxdgshell.cpp        | 2 +-
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index eb053406..9b343702 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -194,10 +194,11 @@ void QWaylandWindow::initWindow()
+     if (QScreen *s = window()->screen())
+         setOrientationMask(s->orientationUpdateMask());
+     setWindowFlags(window()->flags());
+-    if (window()->geometry().isEmpty())
++    QRect geometry = windowGeometry();
++    if (geometry.isEmpty())
+         setGeometry_helper(QRect(QPoint(), QSize(500,500)));
+     else
+-        setGeometry_helper(window()->geometry());
++        setGeometry_helper(geometry);
+     setMask(window()->mask());
+     if (mShellSurface)
+         mShellSurface->requestWindowStates(window()->windowStates());
+@@ -431,7 +432,7 @@ void QWaylandWindow::setVisible(bool visible)
+         initWindow();
+         mDisplay->flushRequests();
+ 
+-        setGeometry(window()->geometry());
++        setGeometry(windowGeometry());
+         // Don't flush the events here, or else the newly visible window may start drawing, but since
+         // there was no frame before it will be stuck at the waitForFrameSync() in
+         // QWaylandShmBackingStore::beginPaint().
+diff --git a/src/plugins/shellintegration/wl-shell/qwaylandwlshellsurface.cpp b/src/plugins/shellintegration/wl-shell/qwaylandwlshellsurface.cpp
+index 245fec19..8f41118d 100644
+--- a/src/plugins/shellintegration/wl-shell/qwaylandwlshellsurface.cpp
++++ b/src/plugins/shellintegration/wl-shell/qwaylandwlshellsurface.cpp
+@@ -134,7 +134,7 @@ void QWaylandWlShellSurface::applyConfigure()
+ {
+     if ((m_pending.states & (Qt::WindowMaximized|Qt::WindowFullScreen))
+             && !(m_applied.states & (Qt::WindowMaximized|Qt::WindowFullScreen))) {
+-        m_normalSize = m_window->window()->frameGeometry().size();
++        m_normalSize = m_window->windowFrameGeometry().size();
+     }
+ 
+     if (m_pending.states != m_applied.states)
+diff --git a/src/plugins/shellintegration/xdg-shell-v5/qwaylandxdgsurfacev5.cpp b/src/plugins/shellintegration/xdg-shell-v5/qwaylandxdgsurfacev5.cpp
+index 770fad7e..73aba1ee 100644
+--- a/src/plugins/shellintegration/xdg-shell-v5/qwaylandxdgsurfacev5.cpp
++++ b/src/plugins/shellintegration/xdg-shell-v5/qwaylandxdgsurfacev5.cpp
+@@ -157,7 +157,7 @@ void QWaylandXdgSurfaceV5::applyConfigure()
+     if (m_pending.isResizing)
+         m_normalSize = m_pending.size;
+     else if (!(m_acked.states & (Qt::WindowMaximized|Qt::WindowFullScreen)))
+-        m_normalSize = m_window->window()->frameGeometry().size();
++        m_normalSize = m_window->windowFrameGeometry().size();
+ 
+     if ((m_pending.states & Qt::WindowActive) && !(m_acked.states & Qt::WindowActive))
+         m_window->display()->handleWindowActivated(m_window);
+diff --git a/src/plugins/shellintegration/xdg-shell-v6/qwaylandxdgshellv6.cpp b/src/plugins/shellintegration/xdg-shell-v6/qwaylandxdgshellv6.cpp
+index c137b308..8c371661 100644
+--- a/src/plugins/shellintegration/xdg-shell-v6/qwaylandxdgshellv6.cpp
++++ b/src/plugins/shellintegration/xdg-shell-v6/qwaylandxdgshellv6.cpp
+@@ -72,7 +72,7 @@ QWaylandXdgSurfaceV6::Toplevel::~Toplevel()
+ void QWaylandXdgSurfaceV6::Toplevel::applyConfigure()
+ {
+     if (!(m_applied.states & (Qt::WindowMaximized|Qt::WindowFullScreen)))
+-        m_normalSize = m_xdgSurface->m_window->window()->frameGeometry().size();
++        m_normalSize = m_xdgSurface->m_window->windowFrameGeometry().size();
+ 
+     if ((m_pending.states & Qt::WindowActive) && !(m_applied.states & Qt::WindowActive))
+         m_xdgSurface->m_window->display()->handleWindowActivated(m_xdgSurface->m_window);
+diff --git a/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp b/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
+index b6d23ac1..1c762944 100644
+--- a/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
++++ b/src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp
+@@ -83,7 +83,7 @@ QWaylandXdgSurface::Toplevel::~Toplevel()
+ void QWaylandXdgSurface::Toplevel::applyConfigure()
+ {
+     if (!(m_applied.states & (Qt::WindowMaximized|Qt::WindowFullScreen)))
+-        m_normalSize = m_xdgSurface->m_window->window()->frameGeometry().size();
++        m_normalSize = m_xdgSurface->m_window->windowFrameGeometry().size();
+ 
+     if ((m_pending.states & Qt::WindowActive) && !(m_applied.states & Qt::WindowActive))
+         m_xdgSurface->m_window->display()->handleWindowActivated(m_xdgSurface->m_window);
+-- 
+2.25.1
+

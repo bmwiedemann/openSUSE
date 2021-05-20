@@ -1,0 +1,38 @@
+From 9df11e79b46c77d8c83f765b2a8e85b639fd55a2 Mon Sep 17 00:00:00 2001
+From: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+Date: Tue, 5 Jan 2021 09:08:50 +0100
+Subject: [PATCH 08/18] Fix memory leak in QWaylandGLContext
+
+We were leaking an EGL context with every GL context created,
+which lead to rapid OOM errors in stress tests.
+
+[ChangeLog][Qt Wayland Client] Fixed a memory leak when creating
+QOpenGLContexts on Wayland and using the wayland-egl backend.
+
+Fixes: QTBUG-85608
+Pick-to: 5.15
+Pick-to: 6.0
+Change-Id: I8426b5df36ec7ab9e66ce15f9e02edad3aca60b9
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+---
+ .../client/wayland-egl/qwaylandglcontext.cpp                  | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+index 681f82f4..befadedc 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+@@ -406,7 +406,9 @@ void QWaylandGLContext::updateGLFormat()
+ QWaylandGLContext::~QWaylandGLContext()
+ {
+     delete m_blitter;
+-    eglDestroyContext(m_eglDisplay, m_context);
++    m_blitter = nullptr;
++    if (m_decorationsContext != EGL_NO_CONTEXT)
++        eglDestroyContext(eglDisplay(), m_decorationsContext);
+ }
+ 
+ bool QWaylandGLContext::makeCurrent(QPlatformSurface *surface)
+-- 
+2.25.1
+

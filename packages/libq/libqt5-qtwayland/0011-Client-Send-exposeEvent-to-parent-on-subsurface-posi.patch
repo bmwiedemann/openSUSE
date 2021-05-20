@@ -1,0 +1,97 @@
+From 2073ff99e62d4f99ed3f1f45559c5b68a61c5f66 Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Mon, 14 Sep 2020 17:08:39 +0100
+Subject: [PATCH 11/18] Client: Send exposeEvent to parent on subsurface
+ position changes
+
+When a subsurface is moved, we need the parent window to commit to apply
+that move. Ideally we want this in sync with any potential rendering on
+the parent window.
+
+Currently the code calls requestUpdate() which acts more like a frame
+callback; it will only do something if the main QWindow considers itself
+dirty.
+
+We want to force a repaint, which is semantically more similar to an
+ExposeEvent.
+
+Fixes: QTBUG-86177
+Pick-to: 5.15
+Change-Id: I30bdfa357beee860ce2b00a256eaea6d040dd55c
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ src/client/qwaylandwindow.cpp             |  7 ++++-
+ tests/auto/client/surface/tst_surface.cpp | 33 +++++++++++++++++++----
+ 2 files changed, 34 insertions(+), 6 deletions(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 2af39977..e96d8fe9 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -342,7 +342,12 @@ void QWaylandWindow::setGeometry_helper(const QRect &rect)
+     if (mSubSurfaceWindow) {
+         QMargins m = QPlatformWindow::parent()->frameMargins();
+         mSubSurfaceWindow->set_position(rect.x() + m.left(), rect.y() + m.top());
+-        mSubSurfaceWindow->parent()->window()->requestUpdate();
++
++        QWaylandWindow *parentWindow = mSubSurfaceWindow->parent();
++        if (parentWindow && parentWindow->isExposed()) {
++            QRect parentExposeGeometry(QPoint(), parentWindow->geometry().size());
++            parentWindow->sendExposeEvent(parentExposeGeometry);
++        }
+     }
+ }
+ 
+diff --git a/tests/auto/client/surface/tst_surface.cpp b/tests/auto/client/surface/tst_surface.cpp
+index b8a65f15..95e4e609 100644
+--- a/tests/auto/client/surface/tst_surface.cpp
++++ b/tests/auto/client/surface/tst_surface.cpp
+@@ -167,17 +167,40 @@ void tst_surface::negotiateShmFormat()
+ void tst_surface::createSubsurface()
+ {
+     QRasterWindow window;
+-    window.resize(64, 64);
+-    window.show();
+-    QCOMPOSITOR_TRY_VERIFY(xdgToplevel());
+-    exec([=] { xdgToplevel()->sendCompleteConfigure(); });
+-    QCOMPOSITOR_TRY_VERIFY(xdgSurface()->m_committedConfigureSerial);
++    window.setObjectName("main");
++    window.resize(200, 200);
+ 
+     QRasterWindow subWindow;
++    subWindow.setObjectName("subwindow");
+     subWindow.setParent(&window);
+     subWindow.resize(64, 64);
++
++    window.show();
+     subWindow.show();
++
+     QCOMPOSITOR_TRY_VERIFY(subSurface());
++    QCOMPOSITOR_TRY_VERIFY(xdgToplevel());
++    exec([=] { xdgToplevel()->sendCompleteConfigure(); });
++    QCOMPOSITOR_TRY_VERIFY(xdgSurface()->m_committedConfigureSerial);
++
++    const Surface *mainSurface = exec([=] {return surface(0);});
++    const Surface *childSurface = exec([=] {return surface(1);});
++    QSignalSpy  mainSurfaceCommitSpy(mainSurface, &Surface::commit);
++    QSignalSpy childSurfaceCommitSpy(childSurface, &Surface::commit);
++
++    // Move subsurface. The parent should redraw and commit
++    subWindow.setGeometry(100, 100, 64, 64);
++    // the toplevel should commit to indicate the subsurface moved
++    QCOMPOSITOR_TRY_COMPARE(mainSurfaceCommitSpy.count(), 1);
++    mainSurfaceCommitSpy.clear();
++    childSurfaceCommitSpy.clear();
++
++    // Move and resize the subSurface. The parent should redraw and commit
++    // The child should also redraw
++    subWindow.setGeometry(50, 50, 80, 80);
++    QCOMPOSITOR_TRY_COMPARE(mainSurfaceCommitSpy.count(), 1);
++    QCOMPOSITOR_TRY_COMPARE(childSurfaceCommitSpy.count(), 1);
++
+ }
+ 
+ // Used to cause a crash in libwayland (QTBUG-79674)
+-- 
+2.25.1
+

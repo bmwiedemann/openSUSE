@@ -1,0 +1,26 @@
+From 2f84a874da064069461284db1da36dc818949ec1 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sat, 10 Apr 2021 12:10:16 +0200
+Subject: [PATCH 14/18] Fix compilation
+
+9df11e79b46c77d8c83f765b2a8e85b639fd55a2 can't be backported 1:1
+---
+ .../client/wayland-egl/qwaylandglcontext.cpp                    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+index befadedc..95d1049c 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+@@ -408,7 +408,7 @@ QWaylandGLContext::~QWaylandGLContext()
+     delete m_blitter;
+     m_blitter = nullptr;
+     if (m_decorationsContext != EGL_NO_CONTEXT)
+-        eglDestroyContext(eglDisplay(), m_decorationsContext);
++        eglDestroyContext(m_eglDisplay, m_decorationsContext);
+ }
+ 
+ bool QWaylandGLContext::makeCurrent(QPlatformSurface *surface)
+-- 
+2.25.1
+
