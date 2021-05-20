@@ -130,7 +130,7 @@ BuildRequires:  pkgconfig
 %if %{without hpc}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -243,7 +243,7 @@ This package contains examples for GSL
 %if %{with hpc}
 %package module
 Summary:        Module files for %{name}
-# Package can not be noarch, as this will lead to the situation, so 
+# Package can not be noarch, as this will lead to the situation, so
 # that sometimes 32bit rpm is used with %%{_lib}=lib or 64 bit, where
 # %%{_lib}=lib64
 Group:          Development/Libraries/Parallel
@@ -350,6 +350,7 @@ EOF
 %post   -n %{libcblas} -p /sbin/ldconfig
 %postun -n %{libcblas} -p /sbin/ldconfig
 %else
+
 %post   -n %{libname}
 /sbin/ldconfig -N %{p_libdir}
 
@@ -398,7 +399,6 @@ EOF
 %{?with_hpc:%dir %{p_includedir}/gsl}
 %{p_libdir}/libgsl*.so
 %if %{without hpc}
-%{p_libdir}/pkgconfig
 %{p_libdir}/pkgconfig/gsl.pc
 %else
 %{hpc_pkgconfig_file}
