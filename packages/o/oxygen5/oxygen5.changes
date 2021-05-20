@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 17 07:37:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not own the directory /usr/share/sounds, but only the content
+  of it. The directory is owned by the filesystem package.
+
+-------------------------------------------------------------------
+Thu May 13 18:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Update oxygenbutton.cpp to keep toggle buttons glowing when being checked.
+  * Don't call BlurHelper::clear() for unregistered widgets (kde#435129)
+  * Raise minimum CMake version to 3.16
+  * Use versionless Qt cmake target
+
+-------------------------------------------------------------------
 Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
