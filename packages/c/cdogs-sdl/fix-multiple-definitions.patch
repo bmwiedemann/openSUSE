@@ -1,0 +1,17 @@
+diff -Nur cdogs-sdl-0.11.1/src/tests/player_test.c cdogs-new/src/tests/player_test.c
+--- cdogs-sdl-0.11.1/src/tests/player_test.c	2021-04-13 12:56:58.000000000 +0200
++++ cdogs-new/src/tests/player_test.c	2021-04-29 14:16:24.644077308 +0200
+@@ -11,13 +11,6 @@
+ #include <player_template.h>
+ #include <utils.h>
+ 
+-// Stubs
+-Campaign gCampaign;
+-NetClient gNetClient;
+-PlayerTemplates gPlayerTemplates;
+-Config gConfig;
+-
+-
+ FEATURE(assign_unused, "Assign unused input device")
+ 	// This feature is used to assign input devices to players, before the game
+ 	// begins. All input devices can emit the "fire" command, at which point
