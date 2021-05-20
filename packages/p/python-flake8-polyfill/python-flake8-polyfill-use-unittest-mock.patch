@@ -1,0 +1,16 @@
+Index: flake8-polyfill-1.0.2/tests/test_options.py
+===================================================================
+--- flake8-polyfill-1.0.2.orig/tests/test_options.py	2017-12-30 14:45:28.000000000 +0100
++++ flake8-polyfill-1.0.2/tests/test_options.py	2021-05-19 09:45:18.723426614 +0200
+@@ -2,7 +2,10 @@
+ import optparse
+ import os
+ 
+-import mock
++try:
++    import unittest.mock as mock
++except ImportError:
++    import mock
+ import pytest
+ 
+ from flake8_polyfill import options
