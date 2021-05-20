@@ -1,7 +1,7 @@
 #
 # spec file for package gccmakedep
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,10 @@ Release:        0
 Summary:        Utility to list the resource database of an X application
 License:        MIT
 Group:          Development/Tools/Building
-Url:            http://xorg.freedesktop.org/
-#Source URL:    http://xorg.freedesktop.org/releases/individual/util/
-Source0:        %{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org/
+Source0:        https://www.x.org/releases/individual/util/%{name}-%{version}.tar.bz2
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -40,14 +38,14 @@ which object files must be recompiled when a dependency has changed.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING
+%license COPYING
+%doc ChangeLog
 %{_bindir}/gccmakedep
 %{_mandir}/man1/gccmakedep.1%{?ext_man}
 
