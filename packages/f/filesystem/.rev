@@ -1198,4 +1198,26 @@
     <comment></comment>
     <requestid>883755</requestid>
   </revision>
+  <revision rev="157" vrev="40">
+    <srcmd5>fa1b0da29feeeca88d6bb8554481db98</srcmd5>
+    <version>MACRO</version>
+    <time>1621531385</time>
+    <user>dimstar_suse</user>
+    <comment>- temporarily revert icon and fillup dir to 0755 until fallout
+  is fixed (bsc#1184786) 
+
+- Remove /usr/share/java, as it was moved to
+  javapackages-filesystem long ago
+
+- temporarily mark appdata and applications 0755 again until fallout
+  is fixed (bsc#1184786)
+
+- make restricteddir and datadir readonly (bsc#1184786)
+
+- also make includedir, mandir, licensedir readonly (bsc#1184786)
+
+- also fix /var/lib/empty to be readonly (bsc#1184786)
+  runpath-to-writeable-directory warning (bsc#1184786)</comment>
+    <requestid>893334</requestid>
+  </revision>
 </revisionlist>

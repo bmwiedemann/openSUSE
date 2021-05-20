@@ -1,13 +1,41 @@
 -------------------------------------------------------------------
+Sat May 15 19:27:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- temporarily revert icon and fillup dir to 0755 until fallout
+  is fixed (bsc#1184786) 
+
+-------------------------------------------------------------------
+Fri May 14 09:06:40 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove /usr/share/java, as it was moved to
+  javapackages-filesystem long ago
+
+-------------------------------------------------------------------
+Mon May 10 13:47:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- temporarily mark appdata and applications 0755 again until fallout
+  is fixed (bsc#1184786)
+
+-------------------------------------------------------------------
+Fri Apr 16 09:03:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- make restricteddir and datadir readonly (bsc#1184786)
+
+-------------------------------------------------------------------
+Mon Mar 29 21:02:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- also make includedir, mandir, licensedir readonly (bsc#1184786)
+
+-------------------------------------------------------------------
 Fri Mar 26 11:32:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- also fix /var/lib/empty to be readonly 
+- also fix /var/lib/empty to be readonly (bsc#1184786)
 
 -------------------------------------------------------------------
 Thu Mar 25 19:56:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - make bindir/ _lib and _libdir readonly (mode 0555) to avoid
-  runpath-to-writeable-directory warning
+  runpath-to-writeable-directory warning (bsc#1184786)
 
 -------------------------------------------------------------------
 Wed Feb 10 18:34:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
