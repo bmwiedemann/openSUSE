@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /usr/lib/sdl-ball
+cd @LIBEXECDIR@/sdl-ball
 exec ./sdl-ball "${@}"

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:07:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.04:
+  * Improved .desktop file
+  * Added metadata for Linux App store
+  * Paddle no longer "jumps" to some weird place when menu was used
+  * Fixed the bug where the paddle would lock up in one corner
+- Fixed wrapper with new libexec directory
+
+-------------------------------------------------------------------
 Mon Mar 30 10:10:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.03
