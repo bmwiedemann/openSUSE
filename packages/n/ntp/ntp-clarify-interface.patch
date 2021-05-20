@@ -1,0 +1,77 @@
+--- ntpd/ntp.conf.def.orig
++++ ntpd/ntp.conf.def
+@@ -2695,6 +2695,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++.Cm all
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ .Ar prefixlen
+ determines how many bits must match for this rule to apply.
+--- ntpd/invoke-ntp.conf.texi.orig
++++ ntpd/invoke-ntp.conf.texi
+@@ -2559,6 +2559,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++@code{all}
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ @kbd{prefixlen}
+ determines how many bits must match for this rule to apply.
+--- ntpd/ntp.conf.5man.orig
++++ ntpd/ntp.conf.5man
+@@ -2857,6 +2857,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++\f\*[B-Font]allf[]
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ \f\*[I-Font]prefixlen\f[]
+ determines how many bits must match for this rule to apply.
+--- ntpd/ntp.conf.5mdoc.orig
++++ ntpd/ntp.conf.5mdoc
+@@ -2692,6 +2692,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++.Cm all
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ .Ar prefixlen
+ determines how many bits must match for this rule to apply.
+--- ntpd/ntp.conf.html.orig
++++ ntpd/ntp.conf.html
+@@ -2862,6 +2862,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++<code>all</code>
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ <kbd>prefixlen</kbd>
+ determines how many bits must match for this rule to apply.
+--- ntpd/ntp.conf.man.in.orig
++++ ntpd/ntp.conf.man.in
+@@ -2857,6 +2857,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++\f\*[B-Font]all\f[]
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ \f\*[I-Font]prefixlen\f[]
+ determines how many bits must match for this rule to apply.
+--- ntpd/ntp.conf.mdoc.in.orig
++++ ntpd/ntp.conf.mdoc.in
+@@ -2692,6 +2692,8 @@ which match the second parameter.
+ The second parameter specifies a class of addresses,
+ or a specific interface name,
+ or an address.
++.Cm all
++matches all addresses, except wildcard and localhost.
+ In the address case,
+ .Ar prefixlen
+ determines how many bits must match for this rule to apply.
