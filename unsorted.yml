@@ -201,7 +201,6 @@ unsorted:
   - R-KernSmooth 
   - R-MASS 
   - R-Matrix 
-  - R-Matrix-devel 
   - R-base 
   - R-base-devel 
   - R-boot 
@@ -7663,6 +7662,7 @@ unsorted:
   - jzlib-javadoc 
   - k3b-devel 
   - k3s 
+  - k3sup 
   - k8s-sidecar 
   - kColorPicker-devel 
   - kImageAnnotator 
@@ -10322,7 +10322,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc94 
+  - libdruntime-ldc96 
   - libdtkcore5 
   - libdtkgui5 
   - libdtkwidget5 
@@ -11653,7 +11653,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit94 
+  - libldc-jit96 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -11856,8 +11856,8 @@ unsorted:
   - libmcpp0 
   - libmd-devel 
   - libmd0 
-  - libmdb2 
-  - libmdbsql2 
+  - libmdb3 
+  - libmdbsql3 
   - libmed-devel: [x86_64] 
   - libmed-python: [x86_64] 
   - libmed11: [x86_64] 
@@ -12645,7 +12645,7 @@ unsorted:
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
   - libphobos2-0_96 
-  - libphobos2-ldc94 
+  - libphobos2-ldc96 
   - libphonenumber-devel 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
@@ -13622,7 +13622,7 @@ unsorted:
   - libsoxr-lsr0-32bit: [x86_64] 
   - libsoxr0-32bit: [x86_64] 
   - libspandsp2-32bit: [x86_64] 
-  - libspatialindex4 
+  - libspatialindex6 
   - libspatialite-devel 
   - libspatialite7 
   - libspdlog1 
@@ -16461,21 +16461,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_5-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_5-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_5-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_5-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_5-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_5-gnu-hpc 
-  - mvapich2-psm_2_3_5-gnu-hpc-devel 
-  - mvapich2-psm_2_3_5-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_5-gnu-hpc-doc 
-  - mvapich2-psm_2_3_5-gnu-hpc-macros-devel 
-  - mvapich2_2_3_5-gnu-hpc 
-  - mvapich2_2_3_5-gnu-hpc-devel 
-  - mvapich2_2_3_5-gnu-hpc-devel-static 
-  - mvapich2_2_3_5-gnu-hpc-doc 
-  - mvapich2_2_3_5-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_6-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_6-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_6-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_6-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_6-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_6-gnu-hpc 
+  - mvapich2-psm_2_3_6-gnu-hpc-devel 
+  - mvapich2-psm_2_3_6-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_6-gnu-hpc-doc 
+  - mvapich2-psm_2_3_6-gnu-hpc-macros-devel 
+  - mvapich2_2_3_6-gnu-hpc 
+  - mvapich2_2_3_6-gnu-hpc-devel 
+  - mvapich2_2_3_6-gnu-hpc-devel-static 
+  - mvapich2_2_3_6-gnu-hpc-doc 
+  - mvapich2_2_3_6-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -21713,7 +21713,7 @@ unsorted:
   - python36-augeas 
   - python36-authheaders 
   - python36-authres 
-  - python36-autobahn 
+  - python36-autobahn: [i586] 
   - python36-autodoc 
   - python36-autodocsumm 
   - python36-autoflake 
@@ -22960,8 +22960,6 @@ unsorted:
   - python36-nbsphinx 
   - python36-nbsphinx-link 
   - python36-nbval 
-  - python36-nbxmpp 
-  - python36-nbxmpp-doc 
   - python36-ncclient 
   - python36-ndg-httpsclient 
   - python36-neovim 
@@ -24941,6 +24939,7 @@ unsorted:
   - python38-cpplint 
   - python38-cppy 
   - python38-cracklib 
+  - python38-cramjam 
   - python38-crashtest 
   - python38-crayons 
   - python38-crcmod 
@@ -27878,6 +27877,7 @@ unsorted:
   - python39-cpplint 
   - python39-cppy 
   - python39-cracklib 
+  - python39-cramjam 
   - python39-crashtest 
   - python39-crayons 
   - python39-crcmod 
