@@ -1,0 +1,28 @@
+From d63e6cf43bfe32d53b371b6920d4c09431647ddd Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Wed, 28 Apr 2021 17:09:49 +0200
+Subject: [PATCH] cockpit: allow cockpit socket to bind nodes
+
+Looks like this setting is implicit with kerberos enabled.
+cockpit.socket fails to start if kerberos_enabled=false
+---
+ policy/modules/contrib/cockpit.te | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/policy/modules/contrib/cockpit.te b/policy/modules/contrib/cockpit.te
+index a160ca6b6..5984711fa 100644
+--- a/policy/modules/contrib/cockpit.te
++++ b/policy/modules/contrib/cockpit.te
+@@ -52,7 +52,9 @@ can_exec(cockpit_ws_t,cockpit_session_exec_t)
+ dev_read_urand(cockpit_ws_t) # for authkey
+ dev_read_rand(cockpit_ws_t)  # for libssh
+ 
++# cockpit-ws allows connections on websm port
+ corenet_tcp_bind_websm_port(cockpit_ws_t)
++corenet_tcp_bind_generic_node(cockpit_ws_t)
+ 
+ # cockpit-ws can connect to other hosts via ssh
+ corenet_tcp_connect_ssh_port(cockpit_ws_t)
+-- 
+2.26.2
+
