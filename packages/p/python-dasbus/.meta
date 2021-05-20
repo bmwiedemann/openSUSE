@@ -1,0 +1,5 @@
+<package name="python-dasbus" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:SELinux" package="python-dasbus"/>
+</package>

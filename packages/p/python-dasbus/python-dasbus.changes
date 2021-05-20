@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed May 19 16:03:56 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to dasbus-1.5
+ * Provide additional info about the DBus call (vponcova)
+ * Rename TestMessageBus class to silence pytest warning (luca)
+ * Fix the raise-missing-from warning (vponcova)
+- Add gobject-introspection to BuildRequires
+   Needed for typelib() requires auto-detection.
+
+- Require python-gobject instead of python3-gobject
+   Otherwise every built python flavor (3.6, 3.8, and 3.9) will depend on python 3.8.
+
+-------------------------------------------------------------------
+Mon Mar 15 16:01:09 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Initial packaging.
