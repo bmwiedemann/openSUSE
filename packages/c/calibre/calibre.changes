@@ -1,7 +1,49 @@
 -------------------------------------------------------------------
+Fri May 21 10:57:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.18.0
+  * New Features
+    - Content server viewer: Improved search functionality
+      Searching can now be done for whole words and regular
+      expressions. And all search results are listed at once with
+      some context for easy navigation.
+    - E-book viewer: Allow fullscreening the image popup
+    - E-book viewer: Allow expanding/collapsing all items in the
+      Table of Contents at a particular level by right clicking on
+      one item of that level and choosing the option to
+      expand/collapse
+    - E-book viewer: Add shortcuts shift+home and shift+end to
+       extend current selection to start/end of line
+    - Book details: When creating rules to convert identifiers to
+      URLs allow using {id_unquoted} to avoid quoting the
+      identifier value
+    - Review downloaded metadata: Allow double clicking on a cover
+      to see it at a larger size
+    - Annotations browser: Add a Refresh button
+  * Bug Fixes
+    - Edit book: Fix ctrl-clicking on a class name jumping to the
+      wrong CSS rule if the stylesheet contains top level comments
+    - Fix search and replace on identifiers not working if the
+      replaced value has colons
+    - Annotations browser: Sort the entries in order of position in
+      book
+    - ToC editor: Dark mode: Fix colors in location selection panel
+      not dark
+    - E-book viewer: Fix right or shift-clicking to extend
+      selection not shrinking selection when the click is inside
+      the selection
+    - Avoid spurious errors on multiple simultaneous calibre
+      launches
+    - E-book viewer: Ignore mouse scroll events that would turn
+      pages when editing notes
+    - E-book viewer: Fix sorting bookmarks by title not working
+    - Windows WPD driver: Fix an error reading the filesystem on
+      some MTP based devices
+
+-------------------------------------------------------------------
 Fri Apr 30 05:47:57 UTC 2021 - ecsos <ecsos@opensuse.org>
 
-- Update to 1.17.0
+- Update to 5.17.0
   * New Features
     - E-book viewer: Image popup: Allow dragging with the mouse to
       pan the image
@@ -48,7 +90,7 @@ Fri Apr 30 05:47:57 UTC 2021 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Apr 19 05:37:04 UTC 2021 - ecsos <ecsos@opensuse.org>
 
-- Update to 1.16.1
+- Update to 5.16.1
   * Bug Fixes
     - CHM Input: Fix handling of some CHM files that use non-ASCII
       internal filenames and dont specify a character encoding in
