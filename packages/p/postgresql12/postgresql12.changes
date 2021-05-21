@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 15:24:24 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1185952: llvm12 breaks PostgreSQL 11 and 12 on s390x.
+  Use llvm11 as a workaround.
+
+-------------------------------------------------------------------
 Tue May 11 16:19:19 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Upgrade to version 12.7:
