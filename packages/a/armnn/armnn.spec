@@ -26,8 +26,6 @@
 %if "%{target}" != ""
 %define package_suffix -%{target}
 %endif
-# Use Tensorflow version 2
-%define tf_version_2 1
 # Compute library has neon enabled for aarch64 only
 %ifarch aarch64
 %bcond_without compute_neon
@@ -47,7 +45,8 @@
 %endif
 # Extra tests require opencv(3)-devel, but it is broken for Leap 15.1 - boo#1154091
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-%bcond_without armnn_extra_tests
+# FIXME: disabled for now, as it fails with version 21.05
+%bcond_with armnn_extra_tests
 %else
 %bcond_with armnn_extra_tests
 %endif
@@ -57,16 +56,6 @@
 %else
 %bcond_with armnn_flatbuffers
 %endif
-# Enable TensorFlow on TW and Leap 15.2/SLE15SP2 for aarch64 and x86_64 (TF fails to build on armv7)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-%ifarch aarch64 x86_64
-%bcond_without armnn_tf
-%else
-%bcond_with armnn_tf
-%endif # ifarch
-%else  # suse_version
-%bcond_with armnn_tf
-%endif # suse_version
 # ONNX is available on Leap 15.2+/SLE15SP2+, but there is a compatibility issue
 # with ONNX 1.7.0 in Tumbleweed - https://github.com/ARM-software/armnn/issues/419
 %if 0%{?sle_version} >= 150200
@@ -75,12 +64,11 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 21
-%define version_minor 02
-%define version_lib 24
-# Do not package ArmnnConverter and ArmnnQuantizer, by default
+%define version_minor 05
+%define version_lib 25
+%define version_lib_tfliteparser 24
+# Do not package ArmnnConverter, by default
 %bcond_with armnn_tools
-# Enable CAFFE
-%bcond_without armnn_caffe
 Name:           armnn%{?package_suffix}
 Version:        %{version_major}.%{version_minor}
 Release:        0
@@ -92,6 +80,8 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
 Patch1:         96beb97.diff
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/545
+Patch2:         armnn-fix-include.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -121,22 +111,16 @@ BuildRequires:  libboost_log-devel >= 1.59
 BuildRequires:  libboost_thread-devel >= 1.59
 %endif
 %endif
-%if %{with armnn_caffe}
-BuildRequires:  caffe-devel
-%endif
 %if %{with armnn_flatbuffers}
 BuildRequires:  flatbuffers-devel
-%if %{tf_version_2}
 BuildRequires:  tensorflow2-lite-devel
-%else
-BuildRequires:  tensorflow-lite-devel
-%endif
 %endif
 %if %{with compute_cl}
 # Mesa-libOpenCl is required for tests
 BuildRequires:  Mesa-libOpenCL
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
+BuildRequires:  opencl-headers
 %endif
 %if %{with armnn_extra_tests}
 %if 0%{?suse_version} > 1500
@@ -151,13 +135,6 @@ BuildRequires:  python3-onnx
 %if %{with armnn_tests}
 BuildRequires:  stb-devel
 %endif
-%if %{with armnn_tf}
-%if %{tf_version_2}
-BuildRequires:  tensorflow2-devel
-%else
-BuildRequires:  tensorflow-devel
-%endif
-%endif
 %if %{with PyArmnn}
 BuildRequires:  python3-devel
 BuildRequires:  python3-wheel
@@ -168,16 +145,10 @@ Recommends:     Mesa-libOpenCL
 %endif
 %if %{with armnn_flatbuffers}
 Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
-Requires:       libarmnnTfLiteParser%{version_lib}%{?package_suffix} = %{version}
-%endif
-%if %{with armnn_caffe}
-Requires:       libarmnnCaffeParser%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
 Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
-%endif
-%if %{with armnn_tf}
-Requires:       libarmnnTfParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 %if "%{target}" == "opencl"
@@ -191,7 +162,7 @@ ExclusiveArch:  aarch64 armv7l armv7hl x86_64
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 %package devel
@@ -210,23 +181,17 @@ Conflicts:      armnn-opencl-devel
 %endif
 %if %{with armnn_flatbuffers}
 Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
-Requires:       libarmnnTfLiteParser%{version_lib}%{?package_suffix} = %{version}
-%endif
-%if %{with armnn_caffe}
-Requires:       libarmnnCaffeParser%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
 Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
-%endif
-%if %{with armnn_tf}
-Requires:       libarmnnTfParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 
 %description devel
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the development libraries and headers for armnn.
@@ -248,7 +213,7 @@ Conflicts:      armnn-opencl-extratests
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains additionnal downstream tests for armnn.
@@ -267,7 +232,7 @@ Conflicts:      libarmnn%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnn library from armnn.
@@ -285,7 +250,7 @@ Conflicts:      libarmnnBasePipeServer%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnnBasePipeServer library from armnn.
@@ -303,7 +268,7 @@ Conflicts:      libtimelineDecoder%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libtimelineDecoder library from armnn.
@@ -321,7 +286,7 @@ Conflicts:      libtimelineDecoderJson%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libtimelineDecoder library from armnn.
@@ -340,68 +305,28 @@ Conflicts:      libarmnnSerializer%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnnSerializer library from armnn.
 
-%package -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
+%package -n libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix}
 Summary:        libarmnnTfLiteParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnTfLiteParser%{version_lib}
+Conflicts:      libarmnnTfLiteParser%{version_lib_tfliteparser}
 %else
-Conflicts:      libarmnnTfLiteParser%{version_lib}-opencl
+Conflicts:      libarmnnTfLiteParser%{version_lib_tfliteparser}-opencl
 %endif
 
-%description -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
+%description -n libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnnTfLiteParser library from armnn.
-%endif
-
-%if %{with armnn_tf}
-%package -n libarmnnTfParser%{version_lib}%{?package_suffix}
-Summary:        libarmnnTfParser from armnn
-Group:          Development/Libraries/C and C++
-%if "%{target}" == "opencl"
-Conflicts:      libarmnnTfParser%{version_lib}
-%else
-Conflicts:      libarmnnTfParser%{version_lib}-opencl
-%endif
-
-%description -n libarmnnTfParser%{version_lib}%{?package_suffix}
-Arm NN is an inference engine for CPUs, GPUs and NPUs.
-It bridges the gap between existing NN frameworks and the underlying IP.
-It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
-modification – across Arm Cortex CPUs and Arm Mali GPUs.
-
-This package contains the libarmnnTfParser library from armnn.
-%endif
-
-%if %{with armnn_caffe}
-%package -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
-Summary:        libarmnnCaffeParser from armnn
-Group:          Development/Libraries/C and C++
-%if "%{target}" == "opencl"
-Conflicts:      libarmnnCaffeParser%{version_lib}
-%else
-Conflicts:      libarmnnCaffeParser%{version_lib}-opencl
-%endif
-
-%description -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
-Arm NN is an inference engine for CPUs, GPUs and NPUs.
-It bridges the gap between existing NN frameworks and the underlying IP.
-It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
-modification – across Arm Cortex CPUs and Arm Mali GPUs.
-
-This package contains the libarmnnCaffeParser library from armnn.
 %endif
 
 %if %{with armnn_onnx}
@@ -418,7 +343,7 @@ Conflicts:      libarmnnOnnxParser%{version_lib}-opencl
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
-such as TensorFlow and Caffe, allowing them to run efficiently – without
+such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnnOnnxParser library from armnn.
@@ -426,7 +351,13 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
+%if %{with armnn_flatbuffers}
+%if %{pkg_vcmp tensorflow2-lite-devel >= 2.4}
+# This patch breaks build on TF < 2.4
 %patch1 -p1
+%endif
+%endif
+%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -447,27 +378,11 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
 %if 0%{?suse_version} > 1500
 export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=deprecated-copy -Wno-error=deprecated-declarations"
 %endif
-%if 0%{?sle_version} == 150200
-%if %{with armnn_tf}
-%if %{tf_version_2}
-# TensorFlow2 in Leap 15.2 shows erros on major/minor due to '-Werror' option:
-#   /usr/lib/python3.6/site-packages/tensorflow_core/include/tensorflow/core/protobuf/autotuning.pb.cc:930:13: error: In the GNU C Library, "major" is defined by <sys/sysmacros.h>.
-#   For historical compatibility, it is currently defined by <sys/types.h> as well, but we plan to remove this soon. To use "major", include <sys/sysmacros.h> directly.
-sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
-%endif
-%endif
-%endif
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
   -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread $CXX_ADDITIONAL_FLAGS -Wno-error=implicit-fallthrough -Wno-error=unused-parameter" \
   -DBOOST_LIBRARYDIR=%{_libdir} \
-%if %{with armnn_caffe}
-  -DBUILD_CAFFE_PARSER=ON \
-%else
-  -DBUILD_CAFFE_PARSER=OFF \
-%endif
-  -DCAFFE_GENERATED_SOURCES=%{_includedir}/ \
 %if %{with armnn_onnx}
   -DBUILD_ONNX_PARSER=ON \
   -DONNX_GENERATED_SOURCES=../onnx_deps/ \
@@ -478,23 +393,11 @@ sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
   -DBUILD_ARMNN_SERIALIZER=ON \
   -DFLATC_DIR=%{_bindir} \
   -DFLATBUFFERS_INCLUDE_PATH=%{_includedir} \
-  -DBUILD_ARMNN_QUANTIZER=ON \
   -DBUILD_TF_LITE_PARSER=ON \
   -DTF_LITE_SCHEMA_INCLUDE_PATH=%{_includedir}/tensorflow/lite/schema/ \
 %else
   -DBUILD_ARMNN_SERIALIZER=OFF \
-  -DBUILD_ARMNN_QUANTIZER=OFF \
   -DBUILD_TF_LITE_PARSER=OFF \
-%endif
-%if %{with armnn_tf}
-  -DBUILD_TF_PARSER=ON \
-%if %{tf_version_2}
-  -DTF_GENERATED_SOURCES=%{python3_sitelib}/tensorflow_core/include/ \
-%else
-  -DTF_GENERATED_SOURCES=%{python3_sitelib}/tensorflow/include/ \
-%endif
-%else
-  -DBUILD_TF_PARSER=OFF \
 %endif
 %if %{with compute_neon} || %{with compute_cl}
   -DARMCOMPUTE_INCLUDE=%{_includedir} \
@@ -568,8 +471,6 @@ cp $CP_ARGS ./build/samples/SimpleSample %{buildroot}%{_bindir}
 %if %{with armnn_tools}
 # Install ArmNNConverter
 cp $CP_ARGS ./build/ArmnnConverter %{buildroot}%{_bindir}
-# Install ArmNNQuantizer
-cp $CP_ARGS ./build/ArmnnQuantizer %{buildroot}%{_bindir}
 %endif
 %endif
 # Drop static libs - https://github.com/ARM-software/armnn/issues/514
@@ -579,10 +480,6 @@ rm -f  %{buildroot}%{_libdir}/*.a
 %if %{without compute_cl} && %{with armnn_tests}
 %check
 # Run tests
-%if !%{tf_version_2}
-# Skip some TF Lite tests because TensorFlow < 1.14 is used and make some tests failing
-export UnitTestFlags="-t !TensorflowLiteParser/SliceSingleDim -t !TensorflowLiteParser/SliceD123 -t !TensorflowLiteParser/SliceD213 -t !TensorflowLiteParser/TransposeWithPermuteData -t !TensorflowLiteParser/TransposeWithoutPermuteDims"
-%endif
 LD_LIBRARY_PATH="$(pwd)/build/" \
 ./build/UnitTests $UnitTestFlags
 %endif
@@ -603,18 +500,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %post -n libarmnnSerializer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %postun -n libarmnnSerializer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 
-%post -n libarmnnTfLiteParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnTfLiteParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%endif
-
-%if %{with armnn_tf}
-%post -n libarmnnTfParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnTfParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%endif
-
-%if %{with armnn_caffe}
-%post -n libarmnnCaffeParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnCaffeParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %if %{with armnn_onnx}
@@ -628,23 +515,14 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %license LICENSE
 %if %{with armnn_tests}
 %{_bindir}/ExecuteNetwork
-%if %{with armnn_caffe}
-%{_bindir}/Caffe*-Armnn
-%{_bindir}/MultipleNetworksCifar10
-%endif
 %if %{with armnn_flatbuffers}
 %if %{with armnn_tools}
 %{_bindir}/ArmnnConverter
-%{_bindir}/ArmnnQuantizer
 %endif
 %{_bindir}/TfLite*-Armnn
-%{_bindir}/Image*Generator
 %endif
 %if %{with armnn_onnx}
 %{_bindir}/Onnx*-Armnn
-%endif
-%if %{with armnn_tf}
-%{_bindir}/Tf*-Armnn
 %endif
 %if %{with armnn_flatbuffers}
 %{_bindir}/SimpleSample
@@ -672,18 +550,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %files -n libarmnnSerializer%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnSerializer.so.*
 
-%files -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
+%files -n libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix}
 %{_libdir}/libarmnnTfLiteParser.so.*
-%endif
-
-%if %{with armnn_tf}
-%files -n libarmnnTfParser%{version_lib}%{?package_suffix}
-%{_libdir}/libarmnnTfParser.so.*
-%endif
-
-%if %{with armnn_caffe}
-%files -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
-%{_libdir}/libarmnnCaffeParser.so.*
 %endif
 
 %if %{with armnn_onnx}
@@ -706,18 +574,12 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnn/utility/*.hpp
 %dir %{_includedir}/armnnUtils
 %{_includedir}/armnnUtils/*.hpp
-%dir %{_includedir}/armnnCaffeParser/
-%{_includedir}/armnnCaffeParser/*.hpp
 %dir %{_includedir}/armnnOnnxParser/
 %{_includedir}/armnnOnnxParser/*.hpp
 %dir %{_includedir}/armnnTfLiteParser/
 %{_includedir}/armnnTfLiteParser/*.hpp
-%dir %{_includedir}/armnnTfParser/
-%{_includedir}/armnnTfParser/*.hpp
 %dir %{_includedir}/armnnDeserializer/
 %{_includedir}/armnnDeserializer/IDeserializer.hpp
-%dir %{_includedir}/armnnQuantizer
-%{_includedir}/armnnQuantizer/INetworkQuantizer.hpp
 %dir %{_includedir}/armnnSerializer/
 %{_includedir}/armnnSerializer/ISerializer.hpp
 %dir %{_libdir}/cmake/armnn
@@ -729,12 +591,6 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %if %{with armnn_flatbuffers}
 %{_libdir}/libarmnnSerializer.so
 %{_libdir}/libarmnnTfLiteParser.so
-%endif
-%if %{with armnn_tf}
-%{_libdir}/libarmnnTfParser.so
-%endif
-%if %{with armnn_caffe}
-%{_libdir}/libarmnnCaffeParser.so
 %endif
 %if %{with armnn_onnx}
 %{_libdir}/libarmnnOnnxParser.so

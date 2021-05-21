@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 21 06:55:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.05
+  * Main changes: 
+    - new capabilities to allow users attain higher performance by:
+      * Making the Arm NN Core thread safe opening the possibility of
+      running multiple inferences on the same model in parallel
+      software threads.
+      * Allowing graphs on the GPU backend import their input and
+      output buffers either from correctly aligned main memory or
+      from kernel memory exposed as a dma_buf, thus reducing memory
+      usage and saving the time involved in copying data into and
+      out of the GPU memory space.
+    - In addition to this, support was added to allow the MobileBERT
+    network to be parsed and run.
+    - Finally three deprecated components: the Tensorflow Parser,
+    the Caffe Parser and the Arm NN Quantizer tool, were removed
+- Add patch to fix include path:
+  * armnn-fix-include.patch
+- Disable armnn-extratests as it fails to build with current version
+
+-------------------------------------------------------------------
 Mon Mar 29 12:17:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 21.02:

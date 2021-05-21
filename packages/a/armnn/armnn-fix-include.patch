@@ -1,0 +1,11 @@
+--- armnn-21.05/src/backends/cl/ClImportTensorHandle.hpp.orig	2021-05-21 11:52:42.847054405 +0000
++++ armnn-21.05/src/backends/cl/ClImportTensorHandle.hpp	2021-05-21 11:52:52.676788673 +0000
+@@ -19,7 +19,7 @@
+ #include <arm_compute/core/TensorShape.h>
+ #include <arm_compute/core/Coordinates.h>
+ 
+-#include <include/CL/cl_ext.h>
++#include <CL/cl_ext.h>
+ #include <arm_compute/core/CL/CLKernelLibrary.h>
+ 
+ namespace armnn
