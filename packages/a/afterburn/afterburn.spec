@@ -16,20 +16,20 @@
 
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:       afterburn
-Version:    4.6.0
+Version:    5.0.0
 Release:    0
 Summary:    A cloud provider agent
 License:    Apache-2.0
-URL:        https://github.com/coreos/afterburn/
-Source0:    %{name}-%{version}.tar.gz
-Source1:    vendor.tar.gz
+URL:        https://coreos.github.io/afterburn/
+Source0:    https://github.com/coreos/afterburn/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:    https://github.com/coreos/afterburn/releases/download/v%{version}/afterburn-%{version}-vendor.tar.gz
 Source2:    cargo_config
 
 ExcludeArch: %ix86 s390x ppc64le armhfp armv7hl
 
 BuildRequires:  cargo
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  rust >= 1.40.0
+BuildRequires:  rust >= 1.44.0
 
 %description
 Afterburn is a one-shot agent for cloud-like platforms which interacts with provider-specific metadata endpoints.

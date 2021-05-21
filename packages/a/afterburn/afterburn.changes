@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 26 15:18:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.0
+  * Update minimum rust toolchain version 1.44
+  * Switch from error-chain to anyhow
+  * Remove cl-legacy feature
+  * ibmcloud: don't ignore I/O error when parsing metadata
+  * providers: fix clippy::unnecessary_wraps lint on 1.50
+  * workflows: update pinned lint toolchain to 1.50.0
+  * cli: stop wrapping command-line parse errors
+  * github: release checklist cleanups
+  * providers: add Azure Stack Hub
+
+-------------------------------------------------------------------
 Fri Mar 19 14:13:46 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
 
 - Set rust version to minimum required by upstream 
