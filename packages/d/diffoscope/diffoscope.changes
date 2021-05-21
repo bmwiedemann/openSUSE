@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 16:24:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 175:
+  * Use the actual filesystem path name (instead of diffoscope's concept of the
+    source name) to correct APK filename filtering when an APK file is in
+    another container -- we need to filter the auto-generated "1.apk" instead
+    of "original-filename.apk". (Closes: reproducible-builds/diffoscope#255)
+  * Don't call os.path.basename twice.
+  * Correct grammar in a fsimage.py debug message.
+  * Add a comment about stripping filenames.
+
+-------------------------------------------------------------------
 Fri May  7 11:27:26 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove fix-file-5.40.patch, merged upstream
