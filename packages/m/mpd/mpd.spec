@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.22.6
+Version:        0.22.7
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -36,10 +36,10 @@ Patch1:         %{name}-sndfile.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  group(audio)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libcue-devel
-BuildRequires:  group(audio)
 # MPD_ENABLE_AUTO_LIB
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libmikmod-devel

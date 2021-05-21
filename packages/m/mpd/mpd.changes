@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 21 06:04:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.22.7
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.7/NEWS
+  * protocol:
+    * don't use glibc extension to parse time stamps
+    * optimize the "albumart" command
+  * input:
+    * curl: send user/password in the first request, save one roundtrip
+  * decoder:
+    * ffmpeg: fix build problem with FFmpeg 3.4
+    * gme: support RSN files
+  * storage: curl: don't use glibc extension
+  * database: simple: fix database corruption bug
+  * output:
+    * fix crash when pausing with multiple partitions
+    * httpd: send header "Access-Control-Allow-Origin: *"
+
+-------------------------------------------------------------------
 Fri Feb 19 23:49:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.6:
