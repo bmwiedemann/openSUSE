@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May 18 03:12:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 21.05.1:
+  * Resolved a segfault on printing that could be triggered on
+    some computers.
+- Changes from version 21.05.0:
+  * Long numbers now can be broken into lines.
+  * On Export long numbers sometimes got lost.
+  * The height of folded cells now is calculated correctly, again
+    (gh#wxMaxima-developers/wxmaxima#1532).
+  * Printing now can insert pagebreaks within GroupCells
+    (gh#wxMaxima-developers/wxmaxima#970,
+    gh#wxMaxima-developers/wxmaxima#1528,
+    gh#wxMaxima-developers/wxmaxima#1241,
+    gh#wxMaxima-developers/wxmaxima#181,
+    gh#wxMaxima-developers/wxmaxima#573,
+    gh#wxMaxima-developers/wxmaxima#1082).
+  * Changed the font for the PDF manuals to free Google Noto
+    fonts.
+  * Now all PDF manuals can be created without missing characters.
+  * Solved a crash when printing.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue May  4 12:03:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove pandoc dependency (seems to build without and is not available
