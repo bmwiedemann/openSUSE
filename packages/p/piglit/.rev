@@ -153,4 +153,12 @@
   * framework: fix loading time start/end in junit test results</comment>
     <requestid>858980</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e575ea706ecd78c0b0283e787d5241aa</srcmd5>
+    <version>1~20201223.ff2a7650b</version>
+    <time>1621626591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894677</requestid>
+  </revision>
 </revisionlist>
