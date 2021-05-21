@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          System/Base
 URL:            https://github.com/stefanberger/swtpm
 Source:         https://github.com/stefanberger/swtpm/archive/v%{version}.tar.gz
+Patch0:         swtpm-rename_deprecated_libtasn1_types.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
@@ -68,6 +69,7 @@ The development files for SWTPM
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 

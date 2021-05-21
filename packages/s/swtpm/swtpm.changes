@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 20 06:56:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- swtpm_cert: rename deprecated libtasn1 types.
+  * https://github.com/stefanberger/swtpm/pull/443
+  * Add swtpm-rename_deprecated_libtasn1_types.patch
+
+-------------------------------------------------------------------
 Sun Dec 27 11:42:50 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 0.5.2
