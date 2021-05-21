@@ -25,6 +25,8 @@ Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
 Source0:        https://download.gnome.org/sources/gnumeric/1.12/%{name}-%{version}.tar.xz
 Source1:        gnumeric-rpmlintrc
+# PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
+Patch0:         libgda-6.patch
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
 BuildRequires:  fdupes
@@ -44,8 +46,8 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 #BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.7
-BuildRequires:  pkgconfig(libgda-5.0) >= 5.0.0
-BuildRequires:  pkgconfig(libgda-ui-5.0) >= 5.0.0
+BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
+BuildRequires:  pkgconfig(libgda-ui-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.47
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.33
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
@@ -130,7 +132,7 @@ Gnumeric is part of the GNOME project.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 translation-update-upstream po-functions gnumeric-functions
 # remove incomplete translations caused by translation-update-upstream (global LINGUAS file, two domains)

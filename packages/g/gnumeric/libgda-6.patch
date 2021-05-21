@@ -1,0 +1,52 @@
+From 5862048949405f02819bad6a4ff3878dca7f41a9 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Mon, 29 Mar 2021 17:32:31 +0100
+Subject: [PATCH] Bump gda dependency to 6.0.0
+
+---
+ configure.ac             | 2 +-
+ plugins/gda/plugin-gda.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7e87b44b5..63af2f9e8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -298,7 +298,7 @@ AC_ARG_WITH(gda,
+ 	fi
+ )
+ if test "$try_gda" = true; then
+-	PKG_CHECK_MODULES(GDA, [libgda-5.0 >= 5.0.0, libgda-ui-5.0 >= 5.0.0],
++	PKG_CHECK_MODULES(GDA, [libgda-6.0 >= 6.0.0, libgda-ui-6.0 >= 6.0.0],
+ 		[gda_msg=yes],
+ 		[gda_msg="NO.  libgda problem"])
+ 	if test "$gda_msg" = yes; then
+diff --git a/plugins/gda/plugin-gda.c b/plugins/gda/plugin-gda.c
+index 3f62a1f03..f8414f7e6 100644
+--- a/plugins/gda/plugin-gda.c
++++ b/plugins/gda/plugin-gda.c
+@@ -69,9 +69,9 @@ gnm_value_new_from_gda (GValue const *gval,
+ 
+ 	if (t == GDA_TYPE_TIME) {
+ 		GdaTime const *time = gda_value_get_time (gval);
+-		res = value_new_float ( (time->hour +
+-					 (time->minute +
+-					  time->second / 60.) / 60.) / 24.),
++		res = value_new_float ( (g_date_time_get_hour (time) +
++					 (g_date_time_get_minute (time) +
++					  g_date_time_get_second (time) / 60.) / 60.) / 24.),
+ 		value_set_fmt (res, go_format_default_time ());
+ 		return res;
+ 	}
+@@ -527,7 +527,7 @@ view_data_sources (GnmAction const *action, WorkbookControl *wbc)
+ {
+ 	char *argv[2];
+ 
+-	argv[0] = gda_get_application_exec_path ("gda-control-center");
++	argv[0] = "/usr/bin/env gda-control-center-6.0";
+ 	argv[1] = NULL;
+ 	if (!g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL)) {
+ 		go_gtk_notice_dialog (wbcg_toplevel (WBC_GTK (wbc)), GTK_MESSAGE_INFO,
+-- 
+GitLab
+
