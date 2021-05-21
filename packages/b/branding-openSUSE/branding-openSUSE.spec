@@ -26,7 +26,7 @@
 %define gfxboot 1
 %endif
 
-%ifarch %{arm} aarch64 %{ix86} x86_64
+%ifarch %{arm} aarch64 %{ix86} x86_64 riscv64
 %define grub2 1
 %endif
 
@@ -66,8 +66,8 @@ a trigger for installation of correct vendor brand packages.
 %package -n wallpaper-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} default wallpapers
 License:        BSD-3-Clause
-Requires(post):     update-alternatives
-Requires(postun):   update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      wallpaper-branding
 Provides:       wallpaper-branding = %{version}
 BuildArch:      noarch
@@ -148,7 +148,7 @@ Summary:        %{theme_name} %{theme_version_clean} branding for gfxboot
 License:        BSD-3-Clause
 BuildRequires:  gfxboot-devel
 PreReq:         gfxboot >= 4
-Requires(post):     gfxboot >= 4
+Requires(post): gfxboot >= 4
 Supplements:    (gfxboot and branding-openSUSE)
 Conflicts:      gfxboot-branding
 Provides:       gfxboot-branding = %{version}
@@ -165,8 +165,8 @@ License:        GPL-2.0-or-later
 BuildRequires:  plymouth-theme-bgrt
 Requires:       distribution-logos
 Requires:       plymouth-theme-bgrt
-PreReq:         plymouth-theme-bgrt
 PreReq:         plymouth-scripts
+PreReq:         plymouth-theme-bgrt
 Supplements:    (plymouth and branding-%{theme_name})
 Conflicts:      plymouth-branding
 Provides:       plymouth-branding = %{version}

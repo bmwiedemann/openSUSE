@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 20 12:09:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Enable grub2-branding on riscv64
+
+-------------------------------------------------------------------
 Thu Apr 29 14:05:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also skip *.tr as config files in
