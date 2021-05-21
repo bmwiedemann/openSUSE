@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 20 13:16:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.05.0
+  * optimize info,``exists`` (and related) calls for non-version
+    aware mode
+  * copy with entries without ETag (#480)
+  * find not to corrups parent listing (#476)
+  * short listing to determine directory (#472, 471)
+- Release 2021.04.0
+  * switch to calver and fsspec pin
+  * py36 (#462)
+  * async fixes (#456, 452)
+- Drop s3fs-pr462-py36-and-moto2.patch merged upstream
+- Drop unsupported python2 build alltogether
+
+-------------------------------------------------------------------
+Thu Apr 15 11:00:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * update for fsspec 0.9.0 (#448)
+  * better errors (#443)
+  * cp to preserve ETAG (#441)
+  * CI (#435, #427, #395)
+  * 5GB PUT (#425)
+  * partical cat (#389)
+  * direct find (#360)
+- Release 0.5.0
+  * Asynchronous filesystem based on aiobotocore
+- Add s3fs-pr462-py36-and-moto2.patch to support moto2
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

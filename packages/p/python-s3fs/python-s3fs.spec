@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3fs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,42 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%endif
 Name:           python-s3fs
-Version:        0.4.2
+Version:        2021.5.0
 Release:        0
-Summary:        Python filesystem interface over S3
+Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
 URL:            https://github.com/dask/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
-BuildRequires:  %{python_module botocore >= 1.12.91}
-BuildRequires:  %{python_module fsspec >= 0.6.0}
-BuildRequires:  %{python_module moto >= 1.3.12}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module aiobotocore >= 1.0.1}
+BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module fsspec >= 2021.5.0}
+BuildRequires:  %{python_module moto-server >= 2.0}
 BuildRequires:  %{python_module pytest >= 4.2.0}
 BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore >= 1.12.91
-Requires:       python-fsspec >= 0.6.0
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
+Requires:       python-aiobotocore >= 1.0.1
+Requires:       python-fsspec >= 2021.5.0
+Recommends:     aws-cli
+Recommends:     python-boto3
 BuildArch:      noarch
 %python_subpackages
 
 %description
-S3FS builds on boto3 to provide a Python filesystem
+S3FS builds on aiobotocore to provide a Python filesystem
 interface for S3.
 
 %prep
-%setup -q -n s3fs-%{version}
+%autosetup -p1 -n s3fs-%{version}
+chmod -x s3fs.egg-info/*
 
 %build
 %python_build
@@ -61,6 +67,7 @@ interface for S3.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/s3fs
+%{python_sitelib}/s3fs-%{version}*-info
 
 %changelog
