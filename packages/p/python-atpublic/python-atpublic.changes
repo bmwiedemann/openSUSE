@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 21 08:42:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.3
+  2.3 (2021-04-13)
+  ================
+  * Do type hinting the right way. (GL#10)
+  
+  2.2 (2021-04-13)
+  ================
+  * ``public()`` and ``private()`` can't be correctly type annotated, so the
+    type hints on these two functions have been removed.  The ``ModuleAware``
+    was also removed.  (GL#10)
+  * Added a ``py.typed`` file to satisfy type checkers.  (GL#9)
+  * Fixed a documentation cross-reference bug.
+
+-------------------------------------------------------------------
 Mon Nov 30 07:48:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.1
