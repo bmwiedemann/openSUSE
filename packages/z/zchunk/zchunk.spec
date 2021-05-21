@@ -22,7 +22,7 @@
 %global devname libzck-devel
 
 Name:           zchunk
-Version:        1.1.11
+Version:        1.1.14
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT

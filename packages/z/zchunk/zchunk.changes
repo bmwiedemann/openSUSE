@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 21 04:53:18 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 1.1.14
+  * Final fixes for zstd 1.5 support
+
+-------------------------------------------------------------------
+Sat May 15 18:14:53 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 1.1.12
+  * Update testsuite for zstd 1.5
+
+-------------------------------------------------------------------
 Mon May  3 16:19:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.1.11
