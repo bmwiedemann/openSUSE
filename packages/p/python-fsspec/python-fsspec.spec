@@ -1,5 +1,5 @@
 #
-# spec file for package python-fsspec
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,13 +26,15 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
+%define ghversion 2021.05.0
 Name:           python-fsspec%{psuffix}
-Version:        0.8.5
+Version:        2021.5.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/intake/filesystem_spec
-Source:         https://files.pythonhosted.org/packages/source/f/fsspec/fsspec-%{version}.tar.gz
+# the tests are only in the GitHub archive
+Source:         %{url}/archive/%{ghversion}.tar.gz#/fsspec-%{ghversion}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +45,6 @@ Requires:       python-importlib_metadata
 %endif
 Suggests:       python-adlfs
 Suggests:       python-aiohttp
-Suggests:       python-pyarrow
 Suggests:       python-pygit2
 Suggests:       python-dropboxdrivefs
 Suggests:       python-dropbox
@@ -58,7 +59,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module notebook}
@@ -70,6 +70,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  %{python_module zstandard}
+BuildRequires:  %{python_module distributed if (%python-base without python36-base)}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 # cannot test git and http in the same installation (?)
@@ -82,7 +83,7 @@ BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 A specification for pythonic filesystems.
 
 %prep
-%setup -q -n fsspec-%{version}
+%setup -q -n filesystem_spec-%{ghversion}
 # don't test nonexistent python36-numpy
 sed -i -e '/^import numpy as np/ d' -e '/^import pytest/ a np = pytest.importorskip("numpy")' fsspec/tests/test_spec.py
 
@@ -98,8 +99,14 @@ sed -i -e '/^import numpy as np/ d' -e '/^import pytest/ a np = pytest.importors
 %if %{with test}
 %check
 # test_basic relies on speed of FS and timeouts in OBS
+donttest="test_basic"
 # test_not_cached needs sockets
-%pytest -rfEs  -k 'not test_basic and not test_not_cached'
+donttest+=" or test_not_cached"
+# wants to open a socket connection to "my_instance.com"
+donttest+=" or test_dbfs"
+# wants to connect to ftp.fau.de
+donttest+=" or test_find"
+%pytest -rfEs  -k "not ($donttest)"
 %endif
 
 %if ! %{with test}

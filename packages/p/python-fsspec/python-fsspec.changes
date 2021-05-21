@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu May 20 13:22:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.05.0
+  * Enable listings cache for HTTP filesystem (#560)
+  * Fold ZipFileSystem and LibArchiveFileSystem into a generic
+    implementation and add new TarFileSystem (#561)
+  * Use throttling for the ``get``/``put`` methods of
+    ``AsyncFileSystem``.
+- Release 2021.04.0
+  * Major changes: calendar versioning
+  * better link and size finding for HTTP (#610, %99)
+  * link following in Local (#608)
+  * ReferenceFileSystem dev (#606, #604, #602)
+  * Fix: drop metadata dep (#605)
+
+-------------------------------------------------------------------
+Thu Apr 15 13:10:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9
+  * avoid nested sync calls by copying code (#581, #586, docs #593)
+  * release again for py36 (#564, #575)
+  * logging in mmap cacher, explicitly close files (#559)
+  * make LocalFileOpener an IOBase (#589)
+  * better reference file system (#568, #582, #584, #585)
+  * first-chunk cache (#580)
+  * sftp listdir (#571)
+  * http logging and fetch all (#551, #558)
+  * doc: entry points (#548)
+  * get_mapper for caching filesystems (#559)
+  * fix cross-device file move (#547)
+  * store paths without trailing "/" for DBFS (#557)
+  * errors that happen on _initiate_upload when closing the
+    AbstractBufferedFile will now be propagated (#587)
+  * infer_compressions with upper case suffix ($595)
+  * file initialiser errors (#587)
+  * CI fix (#563)
+  * local file commit cross-device (#547)
+- Version 0.8.7
+  * fix error with pyarrow metadata for some pythons (#546)
+- Version 0.8.6
+  * Add dbfs:// support (#504, #514)
+  * don't import pyarrow (#503)
+  * update entry points syntax (#515)
+  * ci precommit hooks (#534)
+  * random appending of a directory within the filesystems find()
+    method (#507, 537)
+  * fix git tests (#501)
+  * fix recursive memfs operations (#502)
+  * fix recorsive/maxdepth for cp (#508)
+  * fix listings cache timeout (#513)
+  * big endian bytes tests (#519)
+  * docs syntax (#535, 524, 520, 542)
+  * transactions and reads (#533)
+- Don't test with distributed on python36 -- not available anymore
+
+-------------------------------------------------------------------
 Mon Feb 22 16:55:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update python36 requirements. Don't try to test nonexistent
