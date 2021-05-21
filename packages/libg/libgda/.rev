@@ -704,4 +704,12 @@ file is not available on the system.
   disabled (boo#1179203). (forwarded request 851344 from dimstar)</comment>
     <requestid>851787</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>58ec8829796f7134256fa357d0f42930</srcmd5>
+    <version>6.0.0</version>
+    <time>1621626617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894835</requestid>
+  </revision>
 </revisionlist>

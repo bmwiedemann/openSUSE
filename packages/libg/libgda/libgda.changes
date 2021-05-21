@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May 21 14:03:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix incorrect Requires tag in glade catalog
+
+-------------------------------------------------------------------
+Wed Feb 10 15:01:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 6.0.0:
+  + MySQL: now supports version 8.0
+  + PostgreSQL now support GdaText values, so take care because
+    some SELECT operations concatenating strings return
+    GdaText values instead of strings
+  + Lot of memory leaks fixed
+  + Added a new module named GdaDB to simplify DDL operations
+  + Added database generation from an XML file
+  + Updated internal SQLite3 version
+  + Added "examples" directory as a target to be built
+  + Numerous improvements in CI organization
+  + Documentation reorganisation and porting to the new format
+  + Code modernized for multiple objects
+  + Added new API for GdaConnection object
+  + Added uniform LOG_DOMAIN usage between translation units
+  + Added Uniform debug code generation
+  + Eliminated multiple static global variable
+  + Improved code quality for libgda to use -Werror
+  + Multiple code improvements, formation, and corrections
+  + Batch parsing, should remove spacesa and enters before
+    return next statement
+  + Only PostgreSQL, MySQL and SQLite providers are supported
+  + Improved Meson options name and behavior
+- Remove libgda-mysql-bool.patch: contained in upstream
+- Remove libgda-no-pg_config.patch: contained in upstream
+
+-------------------------------------------------------------------
+Wed Feb  3 15:36:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 5.2.10:
+  + MySQL: initial support for JSON type
+  + MySQL: test against 8.0
+  + GdaParser: remove spaces and enters before next statement
+  + GdauiSet: fix gdaui_set_source_get_ref_columns() return value
+  + SqlParser: fix Vala bindings
+  + Vala: added missing variadic methods to VAPI
+  + Removing Python 2 support to use Python 3 by default
+  + Glade catalog and pixmaps installation directory
+    fixed for make distcheck
+- Add libgda-mysql-bool.patch: fixes conflicting types
+
+-------------------------------------------------------------------
 Wed Nov 25 17:43:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only conditionally build with firebird support, currently
