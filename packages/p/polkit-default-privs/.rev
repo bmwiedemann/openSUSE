@@ -1799,4 +1799,13 @@ for 12.3</comment>
   * whitelist deepin-system-monitor pkexec actions (bsc#1181886)</comment>
     <requestid>890018</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>e6792b5d0d346aafa05dd8d309e9e7dc</srcmd5>
+    <version>1550+20210517.56da22d</version>
+    <time>1621626583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210517.56da22d:
+  * Add systemd homed (boo#1185285) (forwarded request 893791 from pperego)</comment>
+    <requestid>893792</requestid>
+  </revision>
 </revisionlist>

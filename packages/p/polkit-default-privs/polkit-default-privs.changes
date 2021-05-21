@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 17 14:32:51 UTC 2021 - paolo.perego@suse.com
+
+- Update to version 1550+20210517.56da22d:
+  * Add systemd homed (boo#1185285)
+
+-------------------------------------------------------------------
 Mon May 03 11:16:01 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210503.88baaca:
