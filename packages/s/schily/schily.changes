@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 20 10:02:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.05.19
+  * Bourne Shell: The "ERR" trap is now also triggered in case that
+    the error is of type "command not found" or "cannot execute".
+  * Bourne Shell: the fc(1) builtin now handles "fc -l -0" the same
+    way as ksh does and refers to the current command. Before, only
+    "fc -l -1" did work to select the previous command.
+
+-------------------------------------------------------------------
 Tue May  4 10:50:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.04.21

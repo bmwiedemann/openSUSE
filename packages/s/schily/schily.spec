@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2021.04.21
+%global box_version	2021.05.19
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
-%global smake_version	1.4
+%global smake_version	1.5
 %global star_version	1.6.1
 %global libfind_version 1.8
 %global ved_version     1.8
-%define rver	2021-04-21
+%define rver	2021-05-19
 
 Name:           schily
 Version:        %box_version
