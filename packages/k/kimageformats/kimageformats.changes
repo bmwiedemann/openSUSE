@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 19 13:28:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable HEIF plugin also on Leap 15.3 now
+
+-------------------------------------------------------------------
 Fri May 14 05:15:36 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Enable HEIF plugin build on openSUSE Tumbleweed (requires libheif)

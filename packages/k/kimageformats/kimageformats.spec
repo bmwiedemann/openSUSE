@@ -18,6 +18,8 @@
 
 %if 0%{?suse_version} > 1500
 %define with_avif 1
+%endif
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
 %define with_heif 1
 %endif
 %define _tar_path 5.82
