@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1611078054.be9dd333f
+Version:        1.1621516512.d2de45c99
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -49,6 +49,8 @@ Requires:       perl(Mojo::File)
 Requires:       perl(Mojo::JSON)
 Requires:       perl(Mojo::UserAgent)
 Requires:       perl(Mojo::Util)
+Requires:       perl(Net::IP)
+Requires:       perl(NetAddr::IP)
 Requires:       perl(POSIX)
 Requires:       perl(Perl::Critic::Freenode)
 Requires:       perl(Regexp::Common)

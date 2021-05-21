@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 20 22:12:09 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(Net::IP)
+- Added dependency perl(NetAddr::IP)
+
+-------------------------------------------------------------------
 Wed Jan 20 05:17:31 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(DateTime)
