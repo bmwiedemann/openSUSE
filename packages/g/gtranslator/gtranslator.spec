@@ -17,16 +17,16 @@
 
 
 Name:           gtranslator
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/40/%{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
-#PATCH-FIX-UPSTREAM gtranslator-remove-statusbar.patch glgo#GNOME/gtranslator!70 malcolmlewis@opensuse.org -- Remove leftovers of statusbar.
-Patch0:         gtranslator-remove-statusbar.patch
+# PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
+Patch0:         libgda-6.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  intltool
@@ -45,12 +45,13 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
-BuildRequires:  pkgconfig(libgda-5.0)
+BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
+BuildRequires:  pkgconfig(libhandy-1)
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
-Requires:       libgda-5_0-sqlite
+Requires:       libgda-sqlite >= 6.0.0
 Obsoletes:      gtranslator-devel <= 2.91.7
 
 %description
@@ -92,7 +93,6 @@ find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
 %{_datadir}/metainfo/org.gnome.Gtranslator.appdata.xml
-%{_datadir}/pixmaps/gtranslator-*.png
 
 %files doc
 %doc AUTHORS MAINTAINERS NEWS THANKS

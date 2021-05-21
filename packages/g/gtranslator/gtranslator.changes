@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  5 11:50:38 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.0:
+  + Add libhandy widgets to improve the user interface for
+    different sizes.
+  + Add new integration with l10n.gnome.org so now it's possible
+    to reserve a file and upload using the desktop app.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+- Remove gtranslator-remove-statusbar.patch: merged
+- Add libgda-6.patch: support GDA 6
+
+-------------------------------------------------------------------
 Thu Oct  8 02:09:52 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add gtranslator-remove-statusbar.patch: Remove leftovers of

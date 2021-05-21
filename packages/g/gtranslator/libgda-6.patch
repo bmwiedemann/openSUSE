@@ -1,0 +1,53 @@
+From 3764a9c0c5f33ff07a3c08664f945a526d12bfa1 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Mon, 29 Mar 2021 16:46:10 +0100
+Subject: [PATCH] Bump gda dependency to 6.0
+
+---
+ build-aux/flatpak/org.gnome.Gtranslator.json | 8 ++++----
+ meson.build                                  | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/build-aux/flatpak/org.gnome.Gtranslator.json b/build-aux/flatpak/org.gnome.Gtranslator.json
+index 65cb5082..b726a69e 100644
+--- a/build-aux/flatpak/org.gnome.Gtranslator.json
++++ b/build-aux/flatpak/org.gnome.Gtranslator.json
+@@ -76,9 +76,9 @@
+         },
+         {
+             "name": "libgda",
++            "buildsystem": "meson",
+             "config-opts": [
+-                "--enable-json=yes",
+-                "--enable-system-sqlite=yes"
++                "-Djson=true"
+             ],
+             "build-options" : {
+                 "env" : {
+@@ -89,8 +89,8 @@
+             "sources": [
+                 {
+                     "type": "archive",
+-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libgda/5.2/libgda-5.2.9.tar.xz",
+-                    "sha256": "59caed8ca72b1ac6437c9844f0677f8a296d52cfd1c0049116026abfb1d87d9b"
++                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libgda/6.0/libgda-6.0.0.tar.xz",
++                    "sha256": "995f4b420e666da5c8bac9faf55e7aedbe3789c525d634720a53be3ccf27a670"
+                 }
+             ],
+             "modules": [
+diff --git a/meson.build b/meson.build
+index 94734ce2..021ac296 100644
+--- a/meson.build
++++ b/meson.build
+@@ -109,7 +109,7 @@ gtr_deps = [
+   gtk_dep,
+   libhandy_dep,
+   dependency('libdazzle-1.0', version: '>= 3.33.90'),
+-  dependency('libgda-5.0'),
++  dependency('libgda-6.0'),
+   dependency('gio-2.0', version: '>= 2.36.0'),
+   dependency('gsettings-desktop-schemas'),
+   dependency('gspell-1', version: '>= 1.2.0'),
+-- 
+GitLab
+
