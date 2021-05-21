@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-libcst%{psuffix}
-Version:        0.3.17
+Version:        0.3.19
 Release:        0
 Summary:        Python 3.5+ concrete syntax tree with AST-like properties
 License:        MIT
@@ -66,8 +66,8 @@ A concrete syntax tree with AST-like properties for Python 3.5+ programs.
 %setup -q -n libcst-%{version}
 %autopatch -p1
 
-# wrong executable call, when fixed, fails to detect syntax error  gh#Instagram/LibCST#468
-rm libcst/codemod/tests/test_codemod_cli.py
+# wrong executable call when outside of venv (gh#Instagram/LibCST#468)
+sed -i 's/"python"/sys.executable/' libcst/codemod/tests/test_codemod_cli.py
 
 # Depends on optional pyre
 rm \
@@ -86,10 +86,6 @@ sed -i 's/import AbstractBaseMatcherNodeMeta/import Optional, AbstractBaseMatche
 %install
 %if !%{with test}
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-# fix mtimes
-%{python_compileall}
-# need a double treatment here
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
