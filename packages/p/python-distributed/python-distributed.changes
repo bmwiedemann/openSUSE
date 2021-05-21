@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue May 18 10:12:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 2021.5.0
+  * Merge global annotations on the client (GH#4691) Mads R. B.
+    Kristensen
+  * Add support for click 8 (GH#4810) James Bourbeau
+  * Add HTML reprs to some scheduler classes (GH#4795) James
+    Bourbeau
+  * Use JupyterLab theme variables (GH#4796) Ian Rose
+  * Allow the dashboard to run on multiple ports (GH#4786) Jacob
+    Tomlinson
+  * Remove release_dep from WorkerPlugin API (GH#4791) James
+    Bourbeau
+  * Support for UCX 1.10+ (GH#4787) Peter Andreas Entschev
+  * Reduce complexity of test_gather_allow_worker_reconnect
+    (GH#4739) Florian Jetter
+  * Fix doctests in utils.py (GH#4785) Jacob Tomlinson
+  * Ensure deps are actually logged in worker (GH#4753) Florian
+    Jetter
+  * Add stacklevel keyword into performance_report() to allow for
+    selecting calling code to be displayed (GH#4777) Nathan
+    Danielsen
+  * Unregister worker plugin (GH#4748) Naty Clementi
+  * Fixes some pickling issues in the Cythonized Scheduler
+    (GH#4768) jakirkham
+  * Improve graceful shutdown if nanny is involved (GH#4725)
+    Florian Jetter
+  * Update cythonization in CI (GH#4764) James Bourbeau
+  * Use contextlib.nullcontext (GH#4763) James Bourbeau
+  * Cython fixes for MemoryState (GH#4761) jakirkham
+  * Fix errors in check_thread_leak (GH#4747) James Bourbeau
+  * Handle missing key case in report_on_key (GH#4755) jakirkham
+  * Drop temporary set variables s (GH#4758) jakirkham
+- skip even more flaky tests
+- stress that upstream wants to use dask with a matching version
+  number
+
+-------------------------------------------------------------------
+Mon May  3 01:35:36 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2021.4.1:
+  * Avoid active_threads changing size during iteration (GH#4729)
+    James Bourbeau
+  * Fix UnboundLocalError in AdaptiveCore.adapt() (GH#4731) Anderson
+    Banihirwe
+  * Minor formatting updates for HTTP endpoints doc (GH#4736) James
+    Bourbeau
+  * Unit test for metrics["memory"]=None (GH#4727) crusaderky
+  * Enable configuration of prometheus metrics namespace (GH#4722)
+    Jacob Tomlinson
+  * Reintroduce weight function (GH#4723) James Bourbeau
+  * Add ready->memory to transitions in worker (GH#4728) Gil Forsyth
+  * Fix regressions in GH#4651 (GH#4719) crusaderky
+  * Add descriptions for UCX config options (GH#4683) Charles
+    Blackmon-Luca
+  * Split RAM measure into dask keys/other old/other new (GH#4651)
+    crusaderky
+  * Fix DeprecationWarning on Python 3.9 (GH#4717) George Sakkis
+  * ipython causes test_profile_nested_sizeof crash on windows
+    (GH#4713) crusaderky
+  * Add iterate_collection argument to serialize (GH#4641) Richard J
+    Zamora
+  * When closing Server, close all listeners (GH#4704) Florian Jetter
+  * Fix timeout in client.restart (GH#4690) Matteo De Wint
+  * Avoid repeatedly using the same worker on first task with quiet
+    cluster (GH#4638) Doug Davis
+  * Grab func for finish case only if used (GH#4702) jakirkham
+  * Remove hostname check in test_dashboard (GH#4706) James Bourbeau
+  * Faster tests_semaphore::test_worker_dies (GH#4703) Florian Jetter
+  * Clean up test_dashboard (GH#4700) crusaderky
+  * Add timing information to TaskGroup (GH#4671) Matthew Rocklin
+  * Remove WSSConnector TLS presence check (GH#4695) Marcos Moyano
+  * Fix typo and remove unused time.time import (GH#4689) Hristo
+    Georgiev
+  * Don’t initialize CUDA context in monitor (GH#4688) Charles
+    Blackmon-Luca
+  * Add support for extra conn args for HTTP protocols (GH#4682)
+    Marcos Moyano
+  * Adjust timings in test_threadpoolworkers (GH#4681) Florian Jetter
+  * Add GPU metrics to SystemMonitor (GH#4661) Charles Blackmon-Luca
+  * Removing dumps_msgpack() and loads_msgpack() (GH#4677) Mads
+    R. B. Kristensen
+  * Expose worker SystemMonitor s to scheduler via RPC (GH#4657)
+    Charles Blackmon-Luca
+
+-------------------------------------------------------------------
 Sun Apr  4 16:37:00 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 2021.4.0:

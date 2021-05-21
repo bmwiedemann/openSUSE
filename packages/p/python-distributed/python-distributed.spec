@@ -32,7 +32,8 @@
 # cython optimizations not supported on 32-bit: https://github.com/dask/dask/issues/7489
 %endif
 Name:           python-distributed%{psuffix}
-Version:        2021.4.0
+# Note: please always update together with python-dask
+Version:        2021.5.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -48,7 +49,7 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
-Requires:       python-dask >= %{version}
+Requires:       python-dask = %{version}
 Requires:       python-msgpack
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
@@ -62,7 +63,7 @@ BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
 BuildRequires:  %{python_module cloudpickle >= 1.5.0}
-BuildRequires:  %{python_module dask-all >= %{version}}
+BuildRequires:  %{python_module dask-all = %{version}}
 # need built extension
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
@@ -112,8 +113,6 @@ chmod -x %{buildroot}%{$python_sitearch}/distributed/tests/test_utils_test.py
 
 %if %{with test}
 %check
-# add fail and error summaries to pytest report, but xfail is not interesting
-sed -i '/pytest/,/addopts/ s/-rsx/-rfEs/' setup.cfg
 # many tests from multiple files are broken by new pytest-asyncio
 # (see https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168)
 # as a proof build it with old pytest-asyncio and see these tests pass
@@ -137,6 +136,7 @@ donttest+=" or (test_client and test_secede_balances)"
 donttest+=" or (test_client and test_secede_simple)"
 donttest+=" or (test_client and test_serialize_collections)"
 donttest+=" or (test_client_executor and test_cancellation)"
+donttest+=" or (test_client_loop and test_close_loop_sync)"
 donttest+=" or (test_collections and test_sparse_arrays)"
 donttest+=" or (test_events and test_event_on_workers)"
 donttest+=" or (test_events and test_set_not_set_many_events)"
@@ -177,6 +177,7 @@ donttest+=" or (test_semaphore and test_close_async)"
 donttest+=" or (test_semaphore and test_oversubscribing_leases)"
 donttest+=" or (test_semaphore and test_release_failure)"
 donttest+=" or (test_semaphore and test_release_once_too_many_resilience)"
+donttest+=" or (test_semaphore and test_release_semaphore_after_timeout)"
 donttest+=" or (test_semaphore and test_release_simple)"
 donttest+=" or (test_semaphore and test_threadpoolworkers_pick_correct_ioloop)"
 donttest+=" or (test_sparse_arrays and concurrent)"
@@ -227,7 +228,7 @@ donttest+=" or (test_stress and test_stress_communication)"
 donttest+=" or (test_asyncprocess and test_exit_callback)"
 donttest+=" or (test_client and test_cleanup_after_broken_client_connection)"
 donttest+=" or (test_client and test_open_close_many_workers)"
-donttest+=" or (test_client and test_profile_server)"
+donttest+=" or (test_client and test_profile)"
 donttest+=" or (test_client and test_quiet_quit_when_cluster_leaves)"
 donttest+=" or (test_client and test_reconnect)"
 donttest+=" or (test_client and test_sub_submit_priority)"
@@ -242,8 +243,14 @@ donttest+=" or (test_steal and test_dont_steal_fast_tasks_compute_time)"
 donttest+=" or (test_stress and test_close_connections)"
 donttest+=" or (test_worker and test_fail_write_to_disk)"
 donttest+=" or test_queue_in_task or test_variable_in_task"
-
-%pytest_arch -ra -n auto distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" --timeout 180
+# https://github.com/dask/distributed/pull/4719: "This test is heavily influenced by hard-to-control factors such as memory management"
+# probably influenced by OBS scheduling
+donttest+=" or (test_scheduler and test_memory)"
+# likely related to the above (https://github.com/dask/distributed/pull/4651)
+donttest+=" or (test_worker and test_spill_to_disk)"
+# flaky on i586
+donttest+=" or (test_client_executor and test_map)"
+%pytest_arch -rfE -n auto distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" --timeout 180
 %endif
 
 %if ! %{with test}
