@@ -91,7 +91,6 @@ BuildRequires:  %libpq
 %if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
 %bcond_without  llvm
 %else
-# LLVM is currently unsupported on SLE, so don't use it
 %bcond_with     llvm
 %endif
 %endif
@@ -116,9 +115,14 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang
 BuildRequires:  gcc-c++
+%ifarch s390x
+BuildRequires:  clang11
+BuildRequires:  llvm11-devel
+%else
+BuildRequires:  clang
 BuildRequires:  llvm-devel
+%endif
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel

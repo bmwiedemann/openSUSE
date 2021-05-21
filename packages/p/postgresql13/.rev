@@ -115,4 +115,13 @@
   only be delivered on PackageHub for now (boo#1183118).</comment>
     <requestid>893135</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c570a7388fbf926918de586a3141ab4c</srcmd5>
+    <version>13.3</version>
+    <time>1621626570</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: llvm12 breaks PostgreSQL 11 and 12 on s390x.
+  Use llvm11 as a workaround.</comment>
+    <requestid>894524</requestid>
+  </revision>
 </revisionlist>
