@@ -303,4 +303,16 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>894272</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c7afd54cd139558bf9df630d2ee51cf8</srcmd5>
+    <version>5.0.3</version>
+    <time>1621626627</time>
+    <user>dimstar_suse</user>
+    <comment>- Unpin watchdog. boo#1186327
+- Fix spyder-kernels dep
+- reenable ipythonconsole tests for 32-bit: no bpf failures anymore
+- reenable dependency checks during tests
+</comment>
+    <requestid>894844</requestid>
+  </revision>
 </revisionlist>

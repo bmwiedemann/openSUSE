@@ -71,7 +71,7 @@ Requires:       python3-qtconsole >= 5.1.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.0.2
+Requires:       python3-spyder-kernels >= 2.0.3
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -260,16 +260,23 @@ rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 
 # remove pinned dependencies where OpenSUSE already has newer versions
 # that triggers an annoying warning on startup
+# note: before you add any unpin here, check that it works with the new version.
 # gh#spyder-ide/spyder#11975
-sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
-sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
-# prevent pinned jedi, parso, pyqt5, pyqtwebengine in egg-info, read at runtime startup
-sed -e 's/jedi==/jedi>=/' \
-    -e 's/parso==/parso>=/' \
-    -e 's/pyqt5<5.13/pyqt5/' \
-    -e 's/pyqtwebengine<5.13/pyqtwebengine/' \
-    -i setup.py
+# watchdog: boo#1186327
+sed -e "/JEDI_REQVER =/ s/'=/'>=/" \
+    -e "/PARSO_REQVER =/ s/'=/'>=/" \
+    -e "/WATCHDOG_REQVER =/ s/;<[^']*//" \
+    -i spyder/dependencies.py
+
+# remove egg package pins read at runtime startup and for the test suite dependency sync checks
+sed -r \
+    -e 's/(jedi\s*)=*/\1>=/' \
+    -e 's/(parso\s*)=*/\1>=/' \
+    -e 's/(pyqt[5 ])<5.13/\1/' \
+    -e 's/(pyqtwebengine.*)<5.13/\1/' \
+    -e "/watchdog/ s/,<[^']*//" \
+    -i setup.py requirements/conda.txt binder/environment.yml
 
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
@@ -319,9 +326,6 @@ mkdir -p /tmp/spyder-abuild
 donttest+=" or test_tab_copies_find_to_replace"
 # requires internet connection
 donttest+=" or test_github_backend"
-# we modified the dependencies in %%prep, these are pure developer tests
-donttest+=" or test_dependencies_for_spyder_dialog_in_sync"
-donttest+=" or test_dependencies_in_sync"
 # (* no CI) fails on last assert
 donttest+=" or test_connection_dialog_remembers_input_with_ssh_passphrase"
 donttest+=" or test_connection_dialog_remembers_input_with_password"
@@ -358,12 +362,6 @@ donttest+=" or test_apps_dialog"
 donttest+=" or test_load_time"
 # no online help within qtbot timeout
 donttest+=" or test_get_pydoc or test_pydocbrowser"
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-  # seccomp bpf failures on i586
-  donttest+=" or test_ipythonconsole"
-  # no appearance / css_path option on i586 (?)
-  donttest+=" or test_config_dialog"
-fi
 
 # tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)

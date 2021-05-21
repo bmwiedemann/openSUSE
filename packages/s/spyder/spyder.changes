@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 21 09:06:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unpin watchdog. boo#1186327
+- Fix spyder-kernels dep
+- reenable ipythonconsole tests for 32-bit: no bpf failures anymore
+- reenable dependency checks during tests
+
+-------------------------------------------------------------------
 Mon May 17 22:58:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.0.3
