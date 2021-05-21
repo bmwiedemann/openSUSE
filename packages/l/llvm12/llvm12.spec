@@ -77,6 +77,9 @@
         test "$max_%{1}_jobs" -le 0 && max_%{1}_jobs=1 && echo "Warning: Not %{1}ing in parallel at all because of memory limits" \
     fi
 
+%define _dwz_low_mem_die_limit  40000000
+%define _dwz_max_die_limit     200000000
+
 Name:           llvm12
 Version:        %_relver%{?_rc:~rc%_rc}
 Release:        0

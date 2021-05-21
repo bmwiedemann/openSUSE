@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 13 08:20:30 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Set memory limits for DWZ to 4x.
+
+-------------------------------------------------------------------
 Fri Apr 16 21:59:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 12.0.0.

@@ -7,4 +7,12 @@
     <comment>- New LLVM version 12.</comment>
     <requestid>886662</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a31c6eb2c16ee289617aa26ba96a77fc</srcmd5>
+    <version>12.0.0</version>
+    <time>1621626575</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>894564</requestid>
+  </revision>
 </revisionlist>
