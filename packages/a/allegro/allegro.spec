@@ -1,7 +1,7 @@
 #
 # spec file for package allegro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.6.0
+Version:        5.2.7.0
 Release:        0
 Summary:        A game programming library
 License:        Zlib AND BSD-3-Clause
@@ -34,25 +34,29 @@ URL:            https://liballeg.org
 Source0:        https://github.com/liballeg/allegro5/releases/download/%{version}/allegro-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libphysfs-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(dumb) >= 2.0
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gdk-x11-2.0)
+BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-x11-2.0)
+BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbisfile)

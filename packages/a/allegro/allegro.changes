@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:50:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed dumb dependency
+
+-------------------------------------------------------------------
+Thu Apr 15 01:21:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.2.7.0
+  * Avoid some undefined behavior errors.
+  * Return key modifiers in ALLEGRO_EVENT_KEY_UP and ALLEGRO_EVENT_KEY_DOWN.
+  * Allow calling al_map_* color functions before Allegro is
+    initialized.
+  * Allow minimum bitmap size to be something other than 16 on
+    non-Android platforms
+  * Fix ALLEGRO_KEEP_INDEX flag for bitmaps.
+  * Add ALLEGRO_OPENGL_CORE_PROFILE display flag.
+  * The experimental Emscripten support (via the SDL backend) is
+    now documented in README_sdl.txt.
+  * Fix bug in SDL voice driver.
+  * Audio: Allows playing sounds in reverse by specifying a
+     negative speed.
+    Use more sensible values for PulseAudio's playback buffer,
+     potentially resolving some crashes and high CPU usage.
+  * Acodec: Fix edge-case looping in Ogg Vorbis stream
+  * Native Dialog: Migrate from GTK2 to GTK3.
+     GTK3 dropped support for menu icons.
+  * TTF: Allow initializing TTF addon before the Font addon.
+     Shut-down the TTF addon automatically in
+     al_uninstall_system.
+  * PhysFS: Fix handling of native path separators.
+    Stop using deprecated PhysFS API.
+  * Primitives: Fix segfault in al_draw_ribbon when
+     num_segments > 128
+    Issue 1215: Correctly handle small scales when
+     determining subdivision level for high level
+     primitives
+- Enabled Opus audio and freeImage support
+
+-------------------------------------------------------------------
 Wed Mar 11 11:17:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.6.0
