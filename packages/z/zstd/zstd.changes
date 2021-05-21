@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 14 20:34:25 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 1.5.0
+  * https://github.com/facebook/zstd/releases/tag/v1.5.0
+  * Improved Middle-Level Compression Speed
+  * Improved High-Level Compression Ratio
+  * Faster Decompression Speed
+  * Dynamic Library Supports Multithreading by Default
+- Drop zstd-1.4.9-Avoid-SIGBUS-on-armv6.patch, merged upstream
+
+-------------------------------------------------------------------
+Tue May 11 18:28:45 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add zstd-1.4.9-Avoid-SIGBUS-on-armv6.patch
+  to fix crashes when running armv6 userspace on armv8 64-bit kernels
+
+-------------------------------------------------------------------
 Thu Mar  4 01:36:14 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.4.9

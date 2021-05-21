@@ -244,4 +244,21 @@
   * cli: Allow Input From Console When -f/--force is Passed</comment>
     <requestid>876633</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>05fb229190ed517f831a11b12a349473</srcmd5>
+    <version>1.5.0</version>
+    <time>1621626566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0
+  * https://github.com/facebook/zstd/releases/tag/v1.5.0
+  * Improved Middle-Level Compression Speed
+  * Improved High-Level Compression Ratio
+  * Faster Decompression Speed
+  * Dynamic Library Supports Multithreading by Default
+- Drop zstd-1.4.9-Avoid-SIGBUS-on-armv6.patch, merged upstream
+
+- Add zstd-1.4.9-Avoid-SIGBUS-on-armv6.patch
+  to fix crashes when running armv6 userspace on armv8 64-bit kernels</comment>
+    <requestid>893241</requestid>
+  </revision>
 </revisionlist>

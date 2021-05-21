@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.4.9
+Version:        %{major}.5.0
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/facebook/zstd
-Source0:        https://github.com/facebook/zstd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+Source2:        zstd.keyring
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
 BuildRequires:  gcc
@@ -82,8 +84,7 @@ targeting faster compression than zlib at comparable ratios.
 Needed for compiling programs that link with the library.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
