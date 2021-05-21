@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 20 21:32:29 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1621511845.b2720ea04:
+  * Tweak routing again to work for Mojo < 9 or >=9.11
+  * Show alert box linking to first bad test
+  * Do not build openQA-devel for archs where it would be unresolvable
+  * Install auto-update systemd files for SUSE as well and not only openSUSE
+  * Remove previous tmpdir (on web UI side) when preparing worker for its next job
+
+-------------------------------------------------------------------
 Tue May 18 11:31:43 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1621307093.e6e7d0a8c:

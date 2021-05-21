@@ -49,7 +49,7 @@
 # The following line is generated from dependencies.yaml
 %define assetpack_requires perl(CSS::Minifier::XS) >= 0.01 perl(JavaScript::Minifier::XS) >= 0.11 perl(Mojolicious::Plugin::AssetPack) >= 1.36
 # The following line is generated from dependencies.yaml
-%define common_requires perl >= 5.20.0 perl(Archive::Extract) > 0.7 perl(Config::IniFiles) perl(Cpanel::JSON::XS) >= 4.09 perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Getopt::Long) perl(Minion) >= 10.12 perl(Mojolicious) >= 9.11 perl(Regexp::Common) perl(Storable) perl(Try::Tiny)
+%define common_requires perl >= 5.20.0 perl(Archive::Extract) > 0.7 perl(Config::IniFiles) perl(Cpanel::JSON::XS) >= 4.09 perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Getopt::Long) perl(Minion) >= 10.12 perl(Mojolicious) >= 8.55 perl(Regexp::Common) perl(Storable) perl(Try::Tiny)
 # runtime requirements for the main package that are not required by other sub-packages
 # The following line is generated from dependencies.yaml
 %define main_requires %assetpack_requires git-core perl(BSD::Resource) perl(Carp) perl(Carp::Always) perl(CommonMark) perl(Config::Tiny) perl(DBD::Pg) >= 3.7.4 perl(DBI) >= 1.632 perl(DBIx::Class) >= 0.082801 perl(DBIx::Class::DeploymentHandler) perl(DBIx::Class::DynamicDefault) perl(DBIx::Class::OptimisticLocking) perl(DBIx::Class::ResultClass::HashRefInflator) perl(DBIx::Class::Schema::Config) perl(DBIx::Class::Storage::Statistics) perl(Date::Format) perl(DateTime) perl(DateTime::Duration) perl(DateTime::Format::Pg) perl(Exporter) perl(Fcntl) perl(File::Basename) perl(File::Copy) perl(File::Copy::Recursive) perl(File::Path) perl(File::Spec) perl(Filesys::Df) perl(FindBin) perl(Getopt::Long::Descriptive) perl(IO::Handle) perl(IPC::Run) perl(JSON::Validator) perl(LWP::UserAgent) perl(Module::Load::Conditional) perl(Module::Pluggable) perl(Mojo::Base) perl(Mojo::ByteStream) perl(Mojo::IOLoop) perl(Mojo::JSON) perl(Mojo::Pg) perl(Mojo::RabbitMQ::Client) >= 0.2 perl(Mojo::URL) perl(Mojo::Util) perl(Mojolicious::Commands) perl(Mojolicious::Plugin) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) perl(POSIX) perl(Pod::POM) perl(SQL::Translator) perl(Scalar::Util) perl(Sort::Versions) perl(Text::Diff) perl(Time::HiRes) perl(Time::ParseDate) perl(Time::Piece) perl(Time::Seconds) perl(URI::Escape) perl(YAML::PP) >= 0.026 perl(YAML::XS) perl(aliased) perl(base) perl(constant) perl(diagnostics) perl(strict) perl(warnings)
@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1621307093.e6e7d0a8c
+Version:        4.6.1621511845.b2720ea04
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -88,9 +88,11 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        cache.txz
 Source101:      update-cache.sh
 BuildRequires:  fdupes
-%if 0%{?is_opensuse}
 # for install-opensuse in Makefile
+%if 0%{is_opensuse}
 BuildRequires:  openSUSE-release
+%else
+BuildRequires:  sles-release
 %endif
 BuildRequires:  %{build_requires}
 Requires:       %{main_requires}
@@ -151,6 +153,10 @@ Development package pulling in all build+test dependencies except chromedriver f
 Summary:        Development package pulling in all build+test dependencies
 Group:          Development/Tools/Other
 Requires:       %{devel_requires}
+%ifarch ppc ppc64 ppc64le s390x
+# missing chromedriver dependency
+ExclusiveArch:  do_not_build
+%endif
 
 %description devel
 Development package pulling in all build+test dependencies.
@@ -241,7 +247,6 @@ Group:          Development/Tools/Other
 Documentation material covering installation, configuration, basic test writing, etc.
 Covering both openQA and also os-autoinst test engine.
 
-%if 0%{?is_opensuse}
 %package auto-update
 Summary:        Automatically upgrade and reboot the system when required
 Group:          Development/Tools/Other
@@ -251,7 +256,6 @@ Requires:       rebootmgr
 %description auto-update
 Use this package to install and enable a systemd service for nightly upgrading
 and rebooting the system if devel:openQA packages are stable.
-%endif
 
 %prep
 %setup -q -a1
@@ -320,10 +324,6 @@ ln -s %{_datadir}/openqa/script/setup-db %{buildroot}%{_bindir}/openqa-setup-db
 %if %{with python_scripts}
 ln -s %{_datadir}/openqa/script/openqa-label-all %{buildroot}%{_bindir}/openqa-label-all
 %endif
-%if !0%{is_opensuse}
-# Drop auto-update part if not openSUSE
-rm %{buildroot}%{_datadir}/openqa/script/openqa-auto-update
-%endif
 
 cd %{buildroot}
 grep -rl %{_bindir}/env . | while read file; do
@@ -376,10 +376,8 @@ fi
 
 %service_add_pre %{openqa_worker_services}
 
-%if 0%{?is_opensuse}
 %pre auto-update
 %service_add_pre openqa-auto-update.timer
-%endif
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/openqa-webui.conf
@@ -411,10 +409,8 @@ fi
 %tmpfiles_create %{_tmpfilesdir}/openqa.conf
 %service_add_post %{openqa_worker_services}
 
-%if 0%{?is_opensuse}
 %post auto-update
 %service_add_post openqa-auto-update.timer
-%endif
 
 %preun
 %service_del_preun %{openqa_services}
@@ -422,11 +418,9 @@ fi
 %preun worker
 %service_del_preun %{openqa_worker_services}
 
-%if 0%{?is_opensuse}
 %preun auto-update
 # not changing the service which might have triggered this update itself
 %service_del_preun openqa-auto-update.timer
-%endif
 
 %postun
 %service_del_postun %{openqa_services}
@@ -443,10 +437,8 @@ if [ -x /usr/bin/systemctl ] && [ $1 -ge 1 ]; then
     /usr/bin/systemctl reload 'openqa-worker-auto-restart@*.service' || :
 fi
 
-%if 0%{?is_opensuse}
 %postun auto-update
 %service_del_postun openqa-auto-update.timer
-%endif
 
 %post local-db
 %service_add_post openqa-setup-db.service
@@ -658,11 +650,9 @@ fi
 %{_datadir}/openqa/script/openqa-bootstrap
 %{_datadir}/openqa/script/openqa-bootstrap-container
 
-%if 0%{?is_opensuse}
 %files auto-update
 %dir %{_unitdir}
 %{_unitdir}/openqa-auto-update.*
 %{_datadir}/openqa/script/openqa-auto-update
-%endif
 
 %changelog

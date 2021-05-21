@@ -18,12 +18,16 @@
 
 %define         short_name openQA-devel
 Name:           %{short_name}-test
-Version:        4.6.1621307093.e6e7d0a8c
+Version:        4.6.1621511845.b2720ea04
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
 BuildRequires:  %{short_name} == %{version}
 ExcludeArch:    i586
+%ifarch ppc ppc64 ppc64le s390x
+# missing chromedriver dependency
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 .
