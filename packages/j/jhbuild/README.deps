@@ -1,8 +1,0 @@
-This package installs dependencies that are generally useful when using jhbuild
-to build GNOME. Some of those dependencies would be built by jhbuild by default,
-but it can be configured to skip them. This is the default configuration
-proposed in sample.jhbuildrc.
-
-If you build GNOME and the build fails because of a missing dependency while
-jhbuild-recommended-deps is installed, please file a bug about this at
-https://bugzilla.opensuse.org
