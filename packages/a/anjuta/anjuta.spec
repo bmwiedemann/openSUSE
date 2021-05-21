@@ -1,7 +1,7 @@
 #
 # spec file for package anjuta
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Tools/IDE
 URL:            https://wiki.gnome.org/Apps/Anjuta
 Source0:        https://download.gnome.org/sources/anjuta/3.34/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
+Patch0:         libgda-6.patch
 BuildRequires:  autogen
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -44,6 +46,7 @@ BuildRequires:  subversion-devel
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  yelp-tools
+BuildRequires:  gnome-common
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gdl-3.0) >= 3.5.5
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.12.0
@@ -51,7 +54,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.6.0
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.7.5
-BuildRequires:  pkgconfig(libgda-5.0) >= 5.0.0
+BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libgvc)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
 BuildRequires:  pkgconfig(serf-1)
@@ -62,7 +65,7 @@ Requires:       autogen
 Requires:       automake
 Requires:       gettext
 # libgda-sqlite is needed by the symbol-db plugin. See bnc#624924.
-Requires:       libgda-sqlite
+Requires:       libgda-sqlite >= 6.0.0
 Requires:       libtool
 %ifnarch ia64 s390 s390x aarch64 ppc64le
 BuildRequires:  valgrind-devel
@@ -125,10 +128,12 @@ GNOME desktop.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
+export AUTOPOINT='intltoolize --automake --copy'
+autoreconf -fiv
 %configure\
         --disable-static \
         --enable-glade-catalog \

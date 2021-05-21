@@ -842,4 +842,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767096 from dimstar)</comment>
     <requestid>767337</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>3927fef4fad831fa681f90791091e85b</srcmd5>
+    <version>3.34.0</version>
+    <time>1621626616</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 894770 from dimstar)</comment>
+    <requestid>894782</requestid>
+  </revision>
 </revisionlist>
