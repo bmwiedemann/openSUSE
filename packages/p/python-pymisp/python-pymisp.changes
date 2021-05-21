@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 14 16:12:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.143:
+ - New
+   - Method to get the raw object template. [Raphaël Vinot]
+ - Changes
+   - Bump version, deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump objects templates. [Raphaël Vinot]
+ - Fix
+   - First-seen and last-seen on attributes and objects were not checked
+     for sanity. [Raphaël Vinot]
+   - Remove search_all example, use search instead. [Raphaël Vinot]
+
+-------------------------------------------------------------------
 Thu Apr 29 19:10:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.4.142:
