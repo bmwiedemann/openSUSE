@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-lookup
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -22,19 +23,19 @@ Version:        0.3.1
 Release:        0
 License:        MIT
 Summary:        Remote lookup tables for agate
-Url:            http://agate-lookup.readthedocs.org/
+URL:            http://agate-lookup.readthedocs.org/
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/a/agate-lookup/agate-lookup-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/wireservice/agate-lookup/%{version}/COPYING
+Source:         https://github.com/wireservice/agate-lookup/archive/refs/tags/%{version}.tar.gz#/agate-lookup-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module agate >= 1.5.0}
 BuildRequires:  %{python_module PyYAML >= 3.11}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
-%endif
+# /SECTION
 Requires:       python-agate >= 1.5.0
 Requires:       python-PyYAML >= 3.11
 Requires:       python-requests >= 2.9.1
@@ -47,7 +48,6 @@ Agate-lookup adds one-line access to lookup tables to agate.
 
 %prep
 %setup -q -n agate-lookup-%{version}
-cp %{SOURCE10} .
 sed -i -e '/^#!\//, 1d' agatelookup/*.py
 
 %build
@@ -57,10 +57,9 @@ sed -i -e '/^#!\//, 1d' agatelookup/*.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# online tests
+#%%pytest
 
 %files %{python_files}
 %defattr(-,root,root,-)
