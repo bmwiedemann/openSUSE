@@ -1,0 +1,32 @@
+Index: openssl-3.0.0-alpha5/util/perl/OpenSSL/config.pm
+===================================================================
+--- openssl-3.0.0-alpha5.orig/util/perl/OpenSSL/config.pm
++++ openssl-3.0.0-alpha5/util/perl/OpenSSL/config.pm
+@@ -525,14 +525,19 @@ EOF
+             return { target => "linux-ppc64" } if $KERNEL_BITS eq '64';
+ 
+             my %config = ();
+-            if (!okrun('echo __LP64__',
+-                       'gcc -E -x c - 2>/dev/null',
+-                       'grep "^__LP64__" 2>&1 >/dev/null') ) {
+-                %config = ( cflags => [ '-m32' ],
+-                            cxxflags =>  [ '-m32' ] );
+-            }
+-            return { target => "linux-ppc",
+-                     %config };
++	    # ##
++            # if (!okrun('echo __LP64__', 'gcc -E -x c - 2>/dev/null', 'grep "^__LP64__" 2>&1 >/dev/null') ) { %config = ( cflags => [ '-m32' ], cxxflags =>  [ '-m32' ] ); }
++            # return { target => "linux-ppc",
++            #          %config };
++	    # ##
++            if (okrun('echo __LP64__', 'gcc -E -x c - 2>/dev/null',
++                      'grep "^__LP64__" 2>&1 >/dev/null') )
++                {
++                    return { target => "linux-ppc", %config };
++                } else {
++                    return { target => "linux-ppc64", %config };
++                }
++            ##
+         }
+       ],
+       [ 'ppc64le-.*-linux2',      { target => "linux-ppc64le" } ],

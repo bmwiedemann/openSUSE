@@ -1,0 +1,13 @@
+Index: openssl-1.1.1-pre1/util/mkbuildinf.pl
+===================================================================
+--- openssl-1.1.1-pre1.orig/util/mkbuildinf.pl	2018-02-13 16:31:28.011389734 +0100
++++ openssl-1.1.1-pre1/util/mkbuildinf.pl	2018-02-13 16:31:51.539764582 +0100
+@@ -28,7 +28,7 @@ print <<"END_OUTPUT";
+  */
+ 
+ #define PLATFORM "platform: $platform"
+-#define DATE "built on: $date"
++#define DATE ""
+ 
+ /*
+  * Generate compiler_flags as an array of individual characters. This is a
