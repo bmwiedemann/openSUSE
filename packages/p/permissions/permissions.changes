@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 18 11:16:07 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 20210518:
+  * whitelist please (bsc#1183669)
+
+-------------------------------------------------------------------
+Tue May 18 08:02:20 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 20210518:
+  * Fix enlightenment paths for 32-bit architectures
+
+-------------------------------------------------------------------
 Mon Jan 25 12:14:46 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 20210125:

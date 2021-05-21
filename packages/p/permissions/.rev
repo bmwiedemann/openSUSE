@@ -1363,4 +1363,16 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: finish usage of variable for polkit-agent-helper-1</comment>
     <requestid>866579</requestid>
   </revision>
+  <revision rev="148" vrev="28">
+    <srcmd5>c9ef8b8e862c54933e5516692ce55c4c</srcmd5>
+    <version>unknown</version>
+    <time>1621626584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210518:
+  * whitelist please (bsc#1183669)
+
+- Update to version 20210518:
+  * Fix enlightenment paths for 32-bit architectures</comment>
+    <requestid>894035</requestid>
+  </revision>
 </revisionlist>
