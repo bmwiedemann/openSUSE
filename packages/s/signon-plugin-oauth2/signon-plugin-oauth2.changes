@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 19 19:03:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.25
+  * OAuth2: try using specialized hostname first, use "Host" as
+    fallback only
+  * OAuth1: add UserAgent parameter
+  * OAuth2: pass token query in request body
+  * OAuth2: always try normal authentication if refresh token fails
+  * OAuth2: let the client read all extra info from the response
+  * Plugin: implement also new AuthPluginInterface2
+
+-------------------------------------------------------------------
 Tue Apr  9 07:46:56 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't treat use of deprecated declarations as error to fix build

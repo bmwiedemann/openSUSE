@@ -1,7 +1,7 @@
 #
 # spec file for package signon-plugin-oauth2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%define _version VERSION_0.24-2dd9ba521a0dd4277c4bf6970a7f4e3894fd85ae
-
 Name:           signon-plugin-oauth2
-Version:        0.24
+Version:        0.25
 Release:        0
 Summary:        Oauth2 plugin for the Single Sign On Framework
 License:        LGPL-2.0-only
 Group:          System/GUI/Other
-Url:            https://gitlab.com/accounts-sso/signon-plugin-oauth2
-Source:         https://gitlab.com/accounts-sso/%{name}/repository/VERSION_%{version}/archive.tar.bz2#/%{name}-%{_version}.tar.bz2
+URL:            https://gitlab.com/accounts-sso/signon-plugin-oauth2
+Source:         %{url}/-/archive/VERSION_%{version}/signon-plugin-oauth2-VERSION_%{version}.tar.bz2
 Patch0:         0001_Multilib.patch
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -48,7 +46,7 @@ This package contains the development files for the Oauth2 plugin for the Single
 Sign On Framework.
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n signon-plugin-oauth2-VERSION_%{version}
 
 %patch0 -p1 -b .multilib
 sed -i 's|@LIB@|%{_lib}|g' src/signon-oauth2plugin.pc src/src.pro
@@ -70,8 +68,6 @@ pushd build
 # Remove examples and tests
 rm -rf %{buildroot}/%{_bindir} %{buildroot}/%{_datadir}
 popd
-
-rm -v %{buildroot}%{_sysconfdir}/signon-ui/webkit-options.d/*
 
 %files
 %license COPYING
