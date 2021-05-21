@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,7 @@ autoreconf -fiv
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
+    -DCMAKE_C_FLAGS=-std=gnu99 \
     -DENABLE_THREADING=ON \
     -DENABLE_RDRAND=ON
 

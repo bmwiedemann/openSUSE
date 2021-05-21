@@ -244,4 +244,12 @@ Added one by one changes for patches in the changes
      followed by a &quot;-&quot;, &quot;.&quot; or &quot;e&quot;.  This makes parsing things like &quot;123-45&quot;</comment>
     <requestid>827515</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>36b223afa34376a184ec20eca212b88a</srcmd5>
+    <version>0.15</version>
+    <time>1621626570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894477</requestid>
+  </revision>
 </revisionlist>
