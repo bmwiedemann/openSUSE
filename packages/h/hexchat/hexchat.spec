@@ -31,6 +31,8 @@ Source3:        hexchat.keyring
 Patch1:         migrate-configuration-from-xchat.patch
 # PATCH-FIX-UPSTREAM 2559.patch dimstar@opensuse.org -- fix segfault on lua_pop with Lua 5.4.3
 Patch2:         https://patch-diff.githubusercontent.com/raw/hexchat/hexchat/pull/2559.patch
+# https://github.com/hexchat/hexchat/commit/a25f2381689d2c2279a0e43b33f6c0ec8305a096.patch
+Patch3:         feature-add-libera-chat.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel
