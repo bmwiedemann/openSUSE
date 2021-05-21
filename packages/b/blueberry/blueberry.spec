@@ -1,7 +1,7 @@
 #
 # spec file for package blueberry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.3.9
+Version:        1.4.2
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
@@ -52,8 +52,6 @@ Utility for Bluetooth devices graphical configuration.
 %prep
 %autosetup -p1
 cp -a %{SOURCE1} %{name}-rfkill.rules
-# Do not use env for Python scripts.
-sed -i '/^#!/s/env python3$/python3/' usr/lib/blueberry/*
 # Replace the icon with an existing one.
 sed -i 's/^\(Icon=\).*$/\1%{name}/' .%{_datadir}/applications/%{name}.desktop
 
