@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 21 08:05:59 UTC 2021 - pgajdos@suse.com
+
+- use github release which contains tests, run them via %pytest macro
+- deleted sources
+  - COPYING (not needed)
+- added patches
+  fix https://github.com/wireservice/agate-stats/compare/0.4.0...master.diff
+  + python-agate-stats-remove-mysterious-line.patch
+
+-------------------------------------------------------------------
 Wed May  9 19:03:10 UTC 2018 - toddrme2178@gmail.com
 
 - Add license file
