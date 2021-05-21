@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 19 12:53:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.8.1:
+  * Ogawa: Sanity check that we have a valid group to avoid
+    infinite recursion during traversal.
+- Enable testsuite
+- Add fuzztest.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 14:46:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.8.0:

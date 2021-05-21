@@ -19,18 +19,22 @@
 
 %define libname libAlembic1_8
 Name:           alembic
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.alembic.io
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fuzztest.patch -- Workaround https://github.com/alembic/alembic/issues/346
+Patch0:         fuzztest.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(zlib)
+# Ogawa does only support little endianess
+ExcludeArch:    ppc64
 
 %description
 Alembic distills complex, animated scenes into a non-procedural, application-
@@ -60,15 +64,20 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \
     -DALEMBIC_LIB_INSTALL_DIR=%{_libdir} \
     -DUSE_ARNOLD=OFF \
     -DUSE_BINARIES=OFF \
-    -DUSE_TESTS=OFF
+    -DUSE_TESTS=ON
 
 %make_build
+
+%check
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
+%ctest --verbose
 
 %install
 %cmake_install
