@@ -17,7 +17,7 @@
 
 
 Name:           charliecloud
-Version:        0.22
+Version:        0.23
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
@@ -29,15 +29,15 @@ BuildRequires:  python3-base
 # Recommend for ch-grow
 # used to build images
 Requires:       fakeroot
-Recommends:     docker
 Recommends:     buildah >= 1.11.2
+Recommends:     docker
 Recommends:     python3-requests >= 2.6.0
 Recommends:     squashfs >= 4.2
-%if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
+%if !(0%{?sle_version} <= 120500 && !0%{?is_opensuse})
 Recommends:     python3-lark-parser >= 0.7.1
 %endif
 # Build the documentation
-%if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
+%if !(0%{?sle_version} <= 120500 && !0%{?is_opensuse})
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  rsync
@@ -80,7 +80,9 @@ This package provides example files for Charliecloud.
 
 %prep
 %setup -q
+%if "%{_lib}" == "lib64"
 %patch0 -p 1
+%endif
 
 %build
 %configure --disable-test
@@ -90,7 +92,7 @@ make %{?_smp_mflags}
 %make_install
 
 # Documentation won't build on SLE-12
-%if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
+%if !(0%{?sle_version} <= 120500 && !0%{?is_opensuse})
 mv %{buildroot}%{_datadir}/doc/charliecloud/html .
 %endif
 
@@ -114,7 +116,7 @@ rm -rf %{buildroot}%{_bindir}/ch-test %{buildroot}%{_libdir}/charliecloud/contri
 %dir %{_libdir}/charliecloud/
 %{_libdir}/charliecloud/*
 
-%if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
+%if !(0%{?sle_version} <= 120500 && !0%{?is_opensuse})
 %{_mandir}/man1/*
 %{_mandir}/man7/*
 

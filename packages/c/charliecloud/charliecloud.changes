@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  3 16:37:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.23
+  * ch-image push: now works with Docker Hub
+  * ch-image:
+    * remove compatibility alias ch-grow
+    * new subcommand reset
+  * ch-image build: fix bugs in whitespace handling
+  * miscellaneous bug fixes and improvements
+  * Full changes:
+    https://github.com/hpc/charliecloud/compare/v0.22...v0.23
+- Only apply Replace-hardcode-path.patch if needed
+
+-------------------------------------------------------------------
 Mon Feb 22 09:06:46 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.22.
