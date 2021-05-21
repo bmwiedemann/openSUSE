@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 13 03:06:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000140
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000140  2021-05-12 08:08:17-07:00 America/Los_Angeles
+
+      - Add L() "length" quick check for comparisons
+
+-------------------------------------------------------------------
 Thu Dec 17 03:07:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000139
