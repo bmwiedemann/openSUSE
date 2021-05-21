@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 19 10:41:57 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1621420911.f21226c3:
+  * Add note about GENERAL_HW_CMD_DIR ignored by openQA
+  * Fix table formatting
+  * Add test for log indentation
+  * Indent the new lines in logs using the log format
+
+-------------------------------------------------------------------
 Sun May 16 03:31:19 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1621025086.2605c1fc:
