@@ -1,6 +1,7 @@
 #
 # spec file for package python-freeipa
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,17 +21,18 @@
 %global srcname freeipa
 
 Name:           python-%{srcname}
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Lightweight FreeIPA client
 License:        MIT
 URL:            https://python-freeipa.readthedocs.io/
 Source0:        https://github.com/opennode/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 Requires:       python-requests
@@ -53,7 +55,7 @@ rm -rf %{pypi_name}.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest src/python_freeipa/tests/suite.py
 
 %files %{python_files}
 %license LICENSE.md
