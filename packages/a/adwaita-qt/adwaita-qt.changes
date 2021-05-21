@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 21 10:02:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: create libadwaitaqt1-32bit as needed by
+  QGNomePlatform.
+
+-------------------------------------------------------------------
 Thu Apr 15 13:36:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix SLPP package name:
