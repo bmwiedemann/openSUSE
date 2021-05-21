@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed May 19 16:13:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Version update to 1.20.75
+  * api-change:support: Documentation updates for support
+  * api-change:apprunner: AWS App Runner is a service that provides
+    a fast, simple, and cost-effective way to deploy from source
+    code or a container image directly to a scalable and secure web
+    application in the AWS Cloud.
+  * api-change:compute-optimizer: This release enables compute
+    optimizer to support exporting recommendations to Amazon S3 for
+    EBS volumes and Lambda Functions.
+  * api-change:personalize: Amazon Personalize now supports the
+    ability to optimize a solution for a custom objective in
+    addition to maximizing relevance.
+  * api-change:license-manager: AWS License Manager now supports
+    periodic report generation.
+  * api-change:iotsitewise: Documentation updates for AWS IoT
+    SiteWise.
+  * api-change:lexv2-models: Update lexv2-models client to latest
+    version
+- from version 1.20.74
+  * api-change:mediaconnect: MediaConnect now supports JPEG XS for
+    AWS Cloud Digital Interface (AWS CDI) uncompressed workflows,
+    allowing you to establish a bridge between your on-premises
+    live video network and the AWS Cloud.
+  * api-change:sagemaker-a2i-runtime: Documentation updates for
+    Amazon A2I Runtime model
+  * api-change:applicationcostprofiler: APIs for AWS Application
+    Cost Profiler.
+  * api-change:neptune: Neptune support for CopyTagsToSnapshots
+  * api-change:iotdeviceadvisor: AWS IoT Core Device Advisor is
+    fully managed test capability for IoT devices. Device
+    manufacturers can use Device Advisor to test their IoT devices
+    for reliable and secure connectivity with AWS IoT.
+  * api-change:elasticache: Documentation updates for elasticache
+- from version 1.20.73
+  * api-change:events: Update InputTransformer variable limit from
+    10 to 100 variables.
+  * enhancement:s3: Block endpoint resolution of clients configured
+    with S3 pseudo-regions (e.g. aws-global, s3-external-1) that
+    will never resolve to a correct access point endpoint.
+  * api-change:macie2: This release of the Amazon Macie API adds
+    support for defining run-time, S3 bucket criteria for
+    classification jobs. It also adds resources for querying data
+    about AWS resources that Macie monitors.
+  * api-change:es: Adds support for cold storage.
+  * api-change:securityhub: Updated descriptions to add notes on
+    array lengths.
+  * api-change:detective: Updated descriptions of array parameters
+    to add the restrictions on the array and value lengths.
+  * api-change:transcribe: Transcribe Medical now supports
+    identification of PHI entities within transcripts
+  * api-change:imagebuilder: Text-only updates for bundled
+    documentation feedback tickets - spring 2021.
+  * enhancement:FIPS: Add validation to only attempt to connect to
+    FIPS endpoints with a FIPS pseudo-region if the pseudo-region
+    is explicitly known to the SDK.
+- from version 1.20.72
+  * api-change:ec2: High Memory virtual instances are powered by
+    Intel Sky Lake CPUs and offer up to 12TB of memory.
+- from version 1.20.71
+  * api-change:ssm-incidents: AWS Systems Manager Incident Manager
+    enables faster resolution of critical application availability
+    and performance issues, management of contacts and
+    post-incident analysis
+  * api-change:ssm-contacts: AWS Systems Manager Incident Manager
+    enables faster resolution of critical application availability
+    and performance issues, management of contacts and post
+    incident analysis
+  * api-change:s3control: Documentation updates for Amazon
+    S3-control
+- from version 1.20.70
+  * api-change:mediaconvert: AWS Elemental MediaConvert SDK has
+    added support for Kantar SNAP File Audio Watermarking with a
+    Kantar Watermarking account, and Display Definition
+    Segment(DDS) segment data controls for DVB-Sub caption outputs.
+  * api-change:ecs: This release contains updates for Amazon ECS.
+  * api-change:codeartifact: Documentation updates for CodeArtifact
+  * api-change:eks: This release updates create-nodegroup and
+    update-nodegroup-config APIs for adding/updating taints on
+    managed nodegroups.
+  * api-change:iotwireless: Add three new optional fields to
+    support filtering and configurable sub-band in WirelessGateway
+    APIs. The filtering is for all the RF region supported. The
+    sub-band configuration is only applicable to LoRa gateways of
+    US915 or AU915 RF region.
+  * api-change:ssm: This release adds new APIs to associate,
+    disassociate and list related items in SSM OpsCenter; and this
+    release adds DisplayName as a version-level attribute for SSM
+    Documents and introduces two new document types:
+    ProblemAnalysis, ProblemAnalysisTemplate.
+  * api-change:kinesisanalyticsv2: Amazon Kinesis Analytics now
+    supports ListApplicationVersions and DescribeApplicationVersion
+    API for Apache Flink applications
+  * api-change:config: Adds paginator to multiple APIs: By default,
+    the paginator allows user to iterate over the results and
+    allows the CLI to return up to 1000 results.
+
+-------------------------------------------------------------------
 Mon May 10 06:28:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Version update to 1.20.69
