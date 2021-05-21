@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-remote
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with     test
 Name:           python-agate-remote
 Version:        0.2.0
 Release:        0
 License:        MIT
 Summary:        Read support for remote files for agate
-Url:            http://agate-remote.readthedocs.org/
+URL:            http://agate-remote.readthedocs.org/
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/a/agate-remote/agate-remote-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/wireservice/agate-remote/%{version}/COPYING
+Source:         https://github.com/wireservice/agate-remote/archive/refs/tags/%{version}.tar.gz#/agate-remote-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module agate >= 1.5.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
-%endif
 Requires:       python-agate >= 1.5.0
 Requires:       python-requests >= 2.9.1
 BuildArch:      noarch
@@ -45,7 +44,6 @@ Agate-remote adds read support for remote files to agate.
 
 %prep
 %setup -q -n agate-remote-%{version}
-cp %{SOURCE10} .
 sed -i -e '/^#!\//, 1d' agateremote/*.py
 
 %build
@@ -55,10 +53,9 @@ sed -i -e '/^#!\//, 1d' agateremote/*.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# online tests only
+#%%pytest
 
 %files %{python_files}
 %defattr(-,root,root,-)
