@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  4 07:40:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Improvements to the sidebar-based layout, including a single
+    headerbar.
+  + Port to GTK4.
+  + Asynchronous providers.
+  + Updated translations.
+- Drop gnome-todo-eds-libecal-2.0.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:12:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
@@ -7,7 +18,7 @@ Sat Jan 25 14:12:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Sep 19 16:49:04 CST 2019 - alynx.zhou@suse.com
 
 - Update to version 3.91.1:
-  + Project: Redesign the main user interface by introducing a 
+  + Project: Redesign the main user interface by introducing a
     sidebar-based layout
 - Remove doc AUTHORS because it is removed in the tarball
 - Update spec beacuse docs dir changed
