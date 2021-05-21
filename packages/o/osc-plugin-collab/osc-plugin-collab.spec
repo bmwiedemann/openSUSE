@@ -23,7 +23,7 @@
 %define oscplugindir %{_localstatedir}/lib/osc-plugins
 %endif
 Name:           osc-plugin-collab
-Version:        0.104+11
+Version:        0.104+14
 Release:        0
 Summary:        Plugin to make collaboration easier with osc
 License:        BSD-3-Clause

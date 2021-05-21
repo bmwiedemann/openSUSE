@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 14 13:59:03 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+14:
+  * obs-db/upstream: range expects an int value
+  * No longer try to download GNOME 3.12 data - EOL
+  * Upstream: track gnome-tour (new in GNOME 40)
+
+-------------------------------------------------------------------
 Tue Feb 09 11:08:41 UTC 2021 - dimstar@opensuse.org
 
 - Update to version 0.104+11:

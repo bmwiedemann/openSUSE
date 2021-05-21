@@ -133,4 +133,12 @@
   * gnome-versions: fix crash in new GNOME version scheme code (forwarded request 870503 from dimstar)</comment>
     <requestid>870504</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9ccf8a64661cca6ec77c5a9d35acedb2</srcmd5>
+    <version>0.104+14</version>
+    <time>1621626604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894743</requestid>
+  </revision>
 </revisionlist>
