@@ -1277,7 +1277,6 @@
     <package name="kscreenlocker-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ksh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="kshisen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kshisen-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ksirk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2413,7 +2412,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler109" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler110" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3499,6 +3498,7 @@
     <package name="plymouth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="plymouth-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-plugin-label" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-plugin-two-step" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

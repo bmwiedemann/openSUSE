@@ -1281,7 +1281,7 @@ unsorted:
   - bluemoon 
   - blueprint-cursor-theme 
   - bluez-auto-enable-devices 
-  - bluez-cups 
+  - bluez-cups: [i586] 
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
@@ -2077,7 +2077,7 @@ unsorted:
   - cockpit-kdump 
   - cockpit-machines 
   - cockpit-networkmanager 
-  - cockpit-packagekit 
+  - cockpit-packagekit: [i586] 
   - cockpit-pcp 
   - cockpit-podman: [i586] 
   - cockpit-storaged 
@@ -8146,6 +8146,7 @@ unsorted:
   - kservice-32bit: [x86_64] 
   - kservice-devel 
   - kservice-devel-32bit: [x86_64] 
+  - ksh 
   - ksh-devel 
   - kshutdown 
   - ksmtp-devel 
@@ -11575,6 +11576,7 @@ unsorted:
   - libknet1-compress-lzo2-plugin 
   - libknet1-compress-plugins-all 
   - libknet1-compress-zlib-plugin 
+  - libknet1-compress-zstd-plugin 
   - libknet1-crypto-nss-plugin 
   - libknet1-crypto-openssl-plugin 
   - libknet1-crypto-plugins-all 
@@ -12235,6 +12237,8 @@ unsorted:
   - libnotmuch5 
   - libnova-0_15-0 
   - libnova-devel 
+  - libnozzle1 
+  - libnozzle1-devel 
   - libnpupnp-devel 
   - libnpupnp4 
   - libnscd-devel 
@@ -12741,7 +12745,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-1 
   - libpoppler-qt6-devel 
-  - libpoppler109-32bit: [x86_64] 
+  - libpoppler110-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -22061,6 +22065,7 @@ unsorted:
   - python36-cffi 
   - python36-cfgdiff 
   - python36-cfgv 
+  - python36-cfn-lint 
   - python36-cfscrape 
   - python36-chai 
   - python36-chainmap 
@@ -22177,6 +22182,7 @@ unsorted:
   - python36-d2to1 
   - python36-daemonize 
   - python36-daiquiri 
+  - python36-dasbus 
   - python36-dash 
   - python36-dash-core-components 
   - python36-dash-html-components 
@@ -22285,7 +22291,6 @@ unsorted:
   - python36-django-guardian 
   - python36-django-haystack 
   - python36-django-health-check 
-  - python36-django-import-export 
   - python36-django-invitations 
   - python36-django-ipware 
   - python36-django-jinja 
@@ -22304,7 +22309,6 @@ unsorted:
   - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
   - python36-django-oscar 
-  - python36-django-pandas 
   - python36-django-parler 
   - python36-django-perf-rec 
   - python36-django-pglocks 
@@ -22331,7 +22335,6 @@ unsorted:
   - python36-django-settings-toml 
   - python36-django-silk 
   - python36-django-sortedm2m 
-  - python36-django-tables2 
   - python36-django-tagging 
   - python36-django-tastypie 
   - python36-django-threadedcomments 
@@ -22916,6 +22919,8 @@ unsorted:
   - python36-moreorless 
   - python36-moretools 
   - python36-moto 
+  - python36-moto-all 
+  - python36-moto-server 
   - python36-mpmath 
   - python36-msal 
   - python36-msal-extensions 
@@ -24338,6 +24343,7 @@ unsorted:
   - python38-QtPy 
   - python38-RegexOrder 
   - python38-Routes 
+  - python38-Rtree 
   - python38-SPARQLWrapper 
   - python38-SQLAlchemy-Utils 
   - python38-Scrapy 
@@ -24971,6 +24977,7 @@ unsorted:
   - python38-d2to1 
   - python38-daemonize 
   - python38-daiquiri 
+  - python38-dasbus 
   - python38-dash 
   - python38-dash-core-components 
   - python38-dash-html-components 
@@ -25756,6 +25763,8 @@ unsorted:
   - python38-moreorless 
   - python38-moretools 
   - python38-moto 
+  - python38-moto-all 
+  - python38-moto-server 
   - python38-mpi4py 
   - python38-mpi4py-devel 
   - python38-mplcursors 
@@ -27256,6 +27265,7 @@ unsorted:
   - python39-QtPy 
   - python39-RegexOrder 
   - python39-Routes 
+  - python39-Rtree 
   - python39-SPARQLWrapper 
   - python39-SQLAlchemy 
   - python39-SQLAlchemy-Utils 
@@ -27912,6 +27922,7 @@ unsorted:
   - python39-d2to1 
   - python39-daemonize 
   - python39-daiquiri 
+  - python39-dasbus 
   - python39-dash 
   - python39-dash-core-components 
   - python39-dash-html-components 
@@ -28033,6 +28044,7 @@ unsorted:
   - python39-django-guardian 
   - python39-django-haystack 
   - python39-django-health-check 
+  - python39-django-import-export 
   - python39-django-invitations 
   - python39-django-ipware 
   - python39-django-jinja 
@@ -28050,6 +28062,7 @@ unsorted:
   - python39-django-nose 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
+  - python39-django-pandas 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -28075,6 +28088,7 @@ unsorted:
   - python39-django-sekizai 
   - python39-django-settings-toml 
   - python39-django-sortedm2m 
+  - python39-django-tables2 
   - python39-django-tagging 
   - python39-django-threadedcomments 
   - python39-django-timezone-field 
@@ -28721,6 +28735,9 @@ unsorted:
   - python39-more-itertools 
   - python39-moreorless 
   - python39-moretools 
+  - python39-moto 
+  - python39-moto-all 
+  - python39-moto-server 
   - python39-mpi4py 
   - python39-mpi4py-devel 
   - python39-mplcursors 
@@ -31867,6 +31884,7 @@ unsorted:
   - solaar 
   - solaar-doc 
   - solaar-udev 
+  - solanum 
   - solarus 
   - solarus-devel 
   - solarus-gui 
