@@ -69,6 +69,7 @@ echo '[core]' > snallygaster-testdata-master/.git/config
 fdupes %{buildroot}%{python_sitelib}
 
 %check
+rm tests/test_codingstyle.py
 TESTDATA_REPOSITORY=$(pwd)/snallygaster-testdata-master/ RUN_ONLINETESTS=1 python3 setup.py test
 
 %files
