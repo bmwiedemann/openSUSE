@@ -1,7 +1,7 @@
 #
 # spec file for package python-papermill
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-papermill
-Version:        2.1.1
+Version:        2.3.3
 Release:        0
 Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
@@ -34,16 +35,15 @@ Requires:       python-black
 Requires:       python-click
 Requires:       python-entrypoints
 Requires:       python-ipython >= 5.0
-Requires:       python-jupyter-client
 Requires:       python-nbclient >= 0.2.0
 Requires:       python-nbconvert >= 5.5
-Requires:       python-nbformat
+Requires:       python-nbformat >= 5.1.2
 Requires:       python-pandas
 Requires:       python-requests >= 2.21.0
 Requires:       python-tenacity
 Requires:       python-tqdm >= 4.32.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-azure-datalake-store >= 0.0.30
 Recommends:     python-azure-storage-blob
 Recommends:     python-black
@@ -61,15 +61,15 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module ipython >= 5.0}
-BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module nbclient >= 0.2.0}
 BuildRequires:  %{python_module nbconvert >= 5.5}
-BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module nbformat >= 5.1.2}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module tenacity}
 BuildRequires:  %{python_module tqdm >= 4.32.2}
 # /SECTION
@@ -91,7 +91,7 @@ and analyzing Jupyter Notebooks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -x
 
 %post
 %python_install_alternative papermill
@@ -103,6 +103,7 @@ and analyzing Jupyter Notebooks.
 %doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/papermill
-%{python_sitelib}/*
+%{python_sitelib}/papermill
+%{python_sitelib}/papermill-%{version}*-info
 
 %changelog
