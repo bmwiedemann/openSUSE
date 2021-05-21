@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 20 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302185
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302185  2021-05-19 11:08:39-07:00 America/Los_Angeles
+      - Fix test from last commit to pass on older perls
+  1.302184  2021-05-19 09:19:08-07:00 America/Los_Angeles
+      - Fix Test::Builder->skip to stringify arguments
+
+-------------------------------------------------------------------
 Fri Oct 23 03:11:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302183
