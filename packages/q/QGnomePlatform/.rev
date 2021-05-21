@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>810721</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46f743e327596cceb3653afc4d979889</srcmd5>
+    <version>0.7.1</version>
+    <time>1621626587</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.1 (forwarded request 889605 from susnux)</comment>
+    <requestid>893947</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package QGnomePlatform
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright © 2016      Yuriy Gorodilin <yurg27@gmail.com>
 # Copyright © 2018–2019 Markus S. <kamikazow@opensuse.org>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           QGnomePlatform
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        A better Qt application inclusion in GNOME
 # Most code is LGPL-2.1-or-later but qgtk3dialoghelpers files forked from
@@ -29,9 +29,8 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM QGnomePlatform-qt-5.15.patch dimstar@opensuse.org -- Fix build with Qt 5.15
-Patch0:         QGnomePlatform-qt-5.15.patch
-BuildRequires:  cmake
+# PATCH-FIX-OPENSUSE fix-qt5-x11-config.patch -- x11 requirement is missing from gtk+-x11-3.0
+Patch0:         fix-qt5-x11-config.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -39,15 +38,13 @@ BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libqt5-qtwayland-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.12
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.12
+BuildRequires:  pkgconfig(adwaita-qt)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(udev)
-BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(gtk+-x11-3.0)
+BuildRequires:  pkgconfig(x11)
 Requires:       adwaita-qt5
 
 Supplements:    (libQt5Gui5 and gnome-session)
@@ -64,8 +61,8 @@ to fit into the environment as well as possible.
 %autosetup -p1
 
 %build
-qmake-qt5
-make %{?_smp_mflags}
+%qmake5
+%make_build
 
 %install
 %qmake5_install

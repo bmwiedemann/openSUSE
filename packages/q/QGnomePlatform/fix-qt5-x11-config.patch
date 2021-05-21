@@ -1,0 +1,11 @@
+diff -Nur QGnomePlatform-0.7.1/theme/theme.pro new/theme/theme.pro
+--- QGnomePlatform-0.7.1/theme/theme.pro	2021-04-08 14:02:16.000000000 +0200
++++ new/theme/theme.pro	2021-04-30 02:00:39.333569873 +0200
+@@ -19,6 +19,7 @@
+ 
+ PKGCONFIG += adwaita-qt \
+              gtk+-3.0 \
++             x11 \
+              gtk+-x11-3.0
+ 
+ TARGET = qgnomeplatform

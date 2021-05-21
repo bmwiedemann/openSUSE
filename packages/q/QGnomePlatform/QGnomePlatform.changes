@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 29 23:15:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.1:
+  + Fixed wrong color palette with Qt 5.15
+  + Fixed issue when font configuration was not parsed properly
+  + Use xdg-desktop-portal for opening files
+  + Prioritize Adwaita dark variant for all themes
+    containing "-dark" suffix
+  + Use FileChooser portal only when possible
+  + Take QT_STYLE_OVERRIDE into account when considering dark variant
+  + Fixed memory leaks
+- Add  fix-qt5-x11-config.patch, linking fails because of missing
+  x11 link time dependency of gtk3
+- Drop QGnomePlatform-qt-5.15.patch: Upstream fixed
+
+-------------------------------------------------------------------
 Tue Jun  2 07:12:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.6.1:
