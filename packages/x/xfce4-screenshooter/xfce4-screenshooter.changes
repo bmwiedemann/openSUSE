@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 20 09:02:54 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.9
+  * Add link to Imgur ToS (gxo#apps/xfce4-screenshooter#54)
+  * Add notice about imgur (gxo#apps/xfce4-screenshooter#53)
+  * Add launchable tag to appdata.xml
+  * Update help message for --save option
+  * Add combobox with file extensions
+    (gxo#apps/xfce4-screenshooter#6)
+  * Add option to capture window border or not
+    (gxo#apps/xfce4-screenshooter#4)
+  * Preserve last used extension
+  * Save screenshots according to the extension
+    (gxo#apps/xfce4-screenshooter#6)
+  * Avoid save dialog loop if action was specified from CLI
+    (gxo#apps/xfce4-screenshooter#41)
+  * Respect windows scaling (gxo#apps/xfce4-screenshoote!18)
+  * Fix compilation warnings
+  * Add version check for pango
+  * Correctly calculate dimensions of size window
+    (gxo#apps/xfce4-screenshooter#37)
+  * Add option to disable Imgur upload
+    (gxo#apps/xfce4-screenshooter#20)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 23 02:32:41 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.9.8
