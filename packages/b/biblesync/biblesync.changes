@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 17 08:06:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.1.0
+  * No functional changes.
+  * The underlying code that discovers default route interface
+    address had to be re-implemented due to the old code having
+	stopped working though having not changed in 6 years: rtnetlink
+	changed, apparently.
+  * New method is to read /proc/net/route to get default route
+    directly, used to feed getifaddrs(3) comparison as before.
+
+-------------------------------------------------------------------
 Sun Aug 19 10:47:50 UTC 2018 - jengelh@inai.de
 
 - Wrap description only at spaces. Trim redundancies from

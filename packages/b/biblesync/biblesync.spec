@@ -1,7 +1,7 @@
 #
 # spec file for package biblesync
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _soversion 2.0
 %define _shlibname libbiblesync2_0
-
 Name:           biblesync
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A library for sharing Bible navigation
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/karlkleinpaste/biblesync
+URL:            https://github.com/karlkleinpaste/biblesync
 Source0:        https://github.com/karlkleinpaste/biblesync/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libuuid-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 BibleSync is a multicast protocol to support Bible software shared
@@ -42,7 +41,7 @@ mode setting, setup for packet reception, transmit on local navigation, and
 handling of incoming packets.
 
 %package -n %{_shlibname}
-Summary:        A library for sharing Bible navigation 
+Summary:        A library for sharing Bible navigation
 Group:          System/Libraries
 
 %description -n %{_shlibname}
@@ -80,20 +79,18 @@ make %{?_smp_mflags}
 %cmake_install DESTDIR=%{buildroot}
 
 %post -n %{_shlibname} -p /sbin/ldconfig
-
 %postun -n %{_shlibname} -p /sbin/ldconfig
 
 %files -n %{_shlibname}
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libbiblesync.so.%{_soversion}
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README.md WIRESHARK
+%license COPYING
+%doc AUTHORS ChangeLog README.md WIRESHARK
 %{_includedir}/biblesync
 %{_libdir}/pkgconfig/biblesync.pc
 %{_libdir}/libbiblesync.so
-%{_mandir}/man7/biblesync.7*
+%{_mandir}/man7/biblesync.7%{?ext_man}
 
 %changelog
