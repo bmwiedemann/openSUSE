@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 19 13:16:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Some enhanced_base cleanup
+  * alsa-plugins will be pulled in by alsa if needed
+  * cronie is not needed in favor of systemd timers
+  * The cups server is not needed in general
+  * postfix used to be required by cron but not anymore today
+  * cyrus-sasl will be pulled in by others if needed
+  * openslp will be pulled in by rsync so far
+  * translation-update is for build systems only
+  * udev is pulled in by systemd if needed
+  * perl-TermReadLine-Gnu ???
+
+-------------------------------------------------------------------
 Mon May 10 08:57:35 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Don't recommend syslinux and binutils in enhanced_base

@@ -317,8 +317,6 @@ Requires:       openssh
 Recommends:     aaa_base-extras
 # getfacl and setfacl
 Recommends:     acl
-# #302569
-Recommends:     alsa-plugins
 # getattr and setattr
 Recommends:     attr
 Recommends:     autofs
@@ -331,18 +329,8 @@ Recommends:     cifs-utils
 Recommends:     command-not-found
 Recommends:     cpio
 Recommends:     cpupower
-Recommends:     cronie
 Recommends:     cryptsetup
-# cups server for remote printing queues
-Recommends:     cups
-# printing considered cool
-Recommends:     cups-client
 Recommends:     curl
-Recommends:     cyrus-sasl
-Recommends:     cyrus-sasl-crammd5
-Recommends:     cyrus-sasl-digestmd5
-Recommends:     cyrus-sasl-gssapi
-Recommends:     cyrus-sasl-plain
 # bnc#430895
 # cyrus-sasl-saslauthd
 # delta rpms are considered cool for updates
@@ -399,7 +387,6 @@ Recommends:     nscd
 # mount NTFS rw (bsc#1087242)
 Recommends:     ntfs-3g
 Recommends:     ntfsprogs
-Recommends:     openslp
 # TODO: should this be in more places
 Recommends:     pam-config
 Recommends:     parted
@@ -408,7 +395,6 @@ Recommends:     pciutils-ids
 Recommends:     perl-Bootloader
 Recommends:     perl-base
 Recommends:     pinentry
-Recommends:     postfix
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     rsync
@@ -433,8 +419,6 @@ Recommends:     system-tuning-common-SUSE
 Recommends:     systemd-sysvinit
 Recommends:     time
 Recommends:     timezone
-Recommends:     translation-update
-Recommends:     udev
 # autoconfig new printers - bnc#808014
 Recommends:     udev-configure-printer
 # lsusb is good for debugging USB devices - #401593
@@ -499,7 +483,6 @@ Recommends:     ucode-intel
 %endif
 Recommends:     joe
 Recommends:     mpt-status
-Recommends:     perl-TermReadLine-Gnu
 Recommends:     prctl
 Recommends:     procinfo
 Recommends:     procmail
