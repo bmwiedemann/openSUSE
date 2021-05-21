@@ -1,7 +1,7 @@
 #
 # spec file for package gajim-plugin-omemo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 %define _name   omemo
 Name:           gajim-plugin-omemo
-Version:        2.6.80
+Version:        2.7.14
 Release:        0
 Summary:        Gajim plugin for OMEMO Multi-End Message and Object Encryption
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 Source:         https://ftp.gajim.org/plugins_releases/omemo_%{version}.zip
-BuildRequires:  gajim >= 1.1
+BuildRequires:  gajim >= 1.2.91
 BuildRequires:  python3-protobuf
 BuildRequires:  unzip
 Requires:       gajim
 Requires:       python3-axolotl
 Requires:       python3-cryptography
 Requires:       python3-protobuf
-Requires:       python3-qrcode
+# Verification QR Codes
+Recommends:     python3-qrcode
 BuildArch:      noarch
 
 %description

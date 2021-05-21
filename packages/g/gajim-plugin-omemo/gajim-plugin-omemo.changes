@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 17 16:02:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.7.14
+  * Fix file download
+  * Add hints for the fingerprint dialog
+  * Implement Blind Trust Before Verification
+  * Show outgoing messages as VERIFIED
+  * Don't drop message silently on decryption error
+  * Don't include inactive devices on checking undecided trust
+  * Don't use deprecated attribute
+  * Use nbxmpp.namespaces
+
+-------------------------------------------------------------------
 Fri Sep 11 07:44:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.6.80 (bsc#1176388):
