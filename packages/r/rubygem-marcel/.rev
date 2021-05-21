@@ -23,4 +23,12 @@
     <comment>update (forwarded request 887022 from mschnitzer)</comment>
     <requestid>887027</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f479ba92967a1750e77f28612eeb06fd</srcmd5>
+    <version>0.3.3</version>
+    <time>1621626608</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1185213</comment>
+    <requestid>894758</requestid>
+  </revision>
 </revisionlist>
