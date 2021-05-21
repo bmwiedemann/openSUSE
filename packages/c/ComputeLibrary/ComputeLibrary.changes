@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 21 06:45:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.05/
+- Drop patch which is not needed anymore:
+  * acl-fix-packaging-issue.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 16:40:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build of ArmNN with openCL:

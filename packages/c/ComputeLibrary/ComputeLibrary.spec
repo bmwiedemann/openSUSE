@@ -16,18 +16,16 @@
 #
 
 
-%define so_ver 22
+%define so_ver 23
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        21.02
+Version:        21.05
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
 URL:            https://developer.arm.com/technologies/compute-library
 Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/531
-Patch1:         acl-fix-packaging-issue.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  ocl-icd-devel
@@ -124,7 +122,7 @@ mkdir -p %{buildroot}%{_libdir}
 cp -a build/*.so* %{buildroot}%{_libdir}/
 # FIXME: scons should install headers thanks to: install_dir=%%{buildroot}%%{_prefix} but this is broken
 mkdir -p %{buildroot}%{_includedir}/
-cp -a arm_compute/ support/ utils/ include/half/ include/libnpy/ include/linux %{buildroot}%{_includedir}/
+cp -a arm_compute/ support/ utils/ include/half/ include/libnpy/ %{buildroot}%{_includedir}/
 # Remove *.cpp files from includedir
 rm -f $(find %{buildroot}%{_includedir}/ -name *.cpp)
 # Install sample data
@@ -137,6 +135,8 @@ rm -f %{buildroot}%{_bindir}/*.h
 for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
   sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python|' $pyfile
 done
+# Drop txt files
+rm %{buildroot}%{_bindir}/*.txt
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
@@ -171,13 +171,11 @@ LD_LIBRARY_PATH="build/" build/tests/arm_compute_validation
 %dir %{_includedir}/arm_compute
 %dir %{_includedir}/half
 %dir %{_includedir}/libnpy
-%dir %{_includedir}/linux
 %dir %{_includedir}/support
 %dir %{_includedir}/utils
 %{_includedir}/arm_compute/*
 %{_includedir}/half/*
 %{_includedir}/libnpy/*
-%{_includedir}/linux/*
 %{_includedir}/support/*
 %{_includedir}/utils/*
 %{_libdir}/*.so
