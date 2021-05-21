@@ -28,7 +28,8 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-dask%{psuffix}
-Version:        2021.4.0
+# Note: please always update together with python-distributed!
+Version:        2021.5.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -49,7 +50,9 @@ Recommends:     %{name}-dataframe = %{version}
 Recommends:     %{name}-delayed = %{version}
 Recommends:     %{name}-distributed = %{version}
 Recommends:     %{name}-dot = %{version}
-Recommends:     python-SQLAlchemy
+# sqlalchemy 1.4.0 causes deprecation warnings to be raised from pandas
+# along with other issues https://github.com/pandas-dev/pandas/issues/40467
+Recommends:     python-SQLAlchemy < 1.4.0
 Recommends:     python-cityhash
 Recommends:     python-distributed >= %{version}
 Recommends:     python-fastparquet
@@ -72,7 +75,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # SECTION additional optionally tested (importorskip) packages
-BuildRequires:  %{python_module SQLAlchemy}
+#BuildRequires:  %%{python_module SQLAlchemy}
 BuildRequires:  %{python_module cachey}
 BuildRequires:  %{python_module fastparquet}
 # optional zarr increases fsspec miminum to 0.8.4 if present
@@ -211,7 +214,8 @@ on a single machine, or on many different machines in a cluster.
 %package distributed
 Summary:        Interface with the distributed task scheduler in dask
 Requires:       %{name} = %{version}
-Requires:       python-distributed >= %{version}
+# dask and distributed are always updated together
+Requires:       python-distributed = %{version}
 
 %description distributed
 A flexible library for parallel computing in Python.
@@ -326,7 +330,8 @@ donttest+="or (test_distributed and test_persist)"
 donttest+="or (test_distributed and test_local_get_with_distributed_active)"
 donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
-%pytest --pyargs dask -ra -m "not network" -k "not ($donttest)" -n auto
+donttest+="or (test_threaded and test_interrupt)"
+%pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
 %endif
 
 %if !%{with test}

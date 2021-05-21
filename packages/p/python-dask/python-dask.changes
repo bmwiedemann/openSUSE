@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Tue May 18 10:12:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+ 
+- update to version 2021.5.0
+  * Remove deprecated kind kwarg to comply with pandas 1.3.0
+    (GH#7653) Julia Signell
+  * Fix bug in DataFrame column projection (GH#7645) Richard (Rick)
+    Zamora
+  * Merge global annotations when packing (GH#7565) Mads R. B.
+    Kristensen
+  * Avoid inplace= in pandas set_categories (GH#7633) James
+    Bourbeau
+  * Change the active-fusion default to False for Dask-Dataframe
+    (GH#7620) Richard (Rick) Zamora
+  * Array: remove extraneous code from RandomState (GH#7487) Gabe
+    Joseph
+  * Implement str.concat when others=None (GH#7623) Daniel
+    Mesejo-León
+  * Fix dask.dataframe in sandboxed environments (GH#7601) Noah D.
+    Brenowitz
+  * Support for cupyx.scipy.linalg (GH#7563) Benjamin Zaitlen
+  * Move timeseries and daily-stock to Blockwise (GH#7615) Richard
+    (Rick) Zamora
+  * Fix bugs in broadcast join (GH#7617) Richard (Rick) Zamora
+  * Use Blockwise for DataFrame IO (parquet, csv, and orc)
+    (GH#7415) Richard (Rick) Zamora
+  * Adding chunk & type information to Dask HighLevelGraph s
+    (GH#7309) Genevieve Buckley
+  * Add pyarrow sphinx intersphinx_mapping (GH#7612) Ray Bell
+  * Remove skip on test freq (GH#7608) Julia Signell
+  * Defaults in read_parquet parameters (GH#7567) Ray Bell
+  * Remove ignore_abc_warning (GH#7606) Julia Signell
+  * Harden DataFrame merge between column-selection and index
+    (GH#7575) Richard (Rick) Zamora
+  * Get rid of ignore_abc decorator (GH#7604) Julia Signell
+  * Remove kwarg validation for bokeh (GH#7597) Julia Signell
+  * Add loky example (GH#7590) Naty Clementi
+  * Delayed: nout when arguments become tasks (GH#7593) Gabe Joseph
+  * Update distributed version in mindep CI build (GH#7602) James
+    Bourbeau
+  * Support all or no overlap between partition columns and real
+    columns (GH#7541) Richard (Rick) Zamora
+- Stress that python-distributed, if used, has to have a matching
+  version number. Always update at the same time.
+
+-------------------------------------------------------------------
+Mon May  3 01:34:23 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2021.4.1:
+  * Handle Blockwise HLG pack/unpack for concatenate=True (:pr:`7455`)
+    Richard (Rick) Zamora
+  * map_partitions: use tokenized info as name of the SubgraphCallable
+    (:pr:`7524`) Mads R. B. Kristensen
+  * Using tmp_path and tmpdir to avoid temporary files and directories
+    hanging in the repo (:pr:`7592`) Naty Clementi
+  * Contributing to docs (development guide) (:pr:`7591`) Naty
+    Clementi
+  * Add more packages to Python 3.9 CI build (:pr:`7588`) James
+    Bourbeau
+  * Array: Fix NEP-18 dispatching in finalize (:pr:`7508`) Gabe Joseph
+  * Misc fixes for numpydoc (:pr:`7569`) Matthias Bussonnier
+  * Avoid pandas level= keyword deprecation (:pr:`7577`) James
+    Bourbeau
+  * Map e.g. .repartition(freq="M") to .repartition(freq="MS")
+    (:pr:`7504`) Ruben van de Geer
+  * Remove hash seeding in parallel CI runs (:pr:`7128`) Elliott Sales
+    de Andrade
+  * Add defaults in parameters in to_parquet (:pr:`7564`) Ray Bell
+  * Simplify transpose axes cleanup (:pr:`7561`) Julia Signell
+  * Make ValueError in len(index_names) > 1 explicit it's using
+    fastparquet (:pr:`7556`) Ray Bell
+  * Fix dict-column appending for pyarrow parquet engines (:pr:`7527`)
+    Richard (Rick) Zamora
+  * Add a documentation auto label (:pr:`7560`) Doug Davis
+  * Add dask.delayed.Delayed to docs so it can be referenced by other
+    sphinx docs (:pr:`7559`) Doug Davis
+  * Fix upstream idxmaxmin for uneven split_every (:pr:`7538`) Julia
+    Signell
+  * Make normalize_token for pandas Series/DataFrame future proof (no
+    direct block access) (:pr:`7318`) Joris Van den Bossche
+  * Redesigned __setitem__ implementation (:pr:`7393`) David Hassell
+  * histogram, histogramdd improvements (docs; return consistencies)
+    (:pr:`7520`) Doug Davis
+  * Force nightly pyarrow in the upstream build (:pr:`7530`) Joris Van
+    den Bossche
+  * Fix Configuration Reference (:pr:`7533`) Benjamin Zaitlen
+  * Use .to_parquet on dask.dataframe in doc string (:pr:`7528`) Ray
+    Bell
+  * Avoid double msgpack serialization of HLGs (:pr:`7525`) Mads
+    R. B. Kristensen
+  * Encourage usage of yaml.safe_load() in configuration doc
+    (:pr:`7529`) Hristo Georgiev
+  * Fix reshape bug. Add relevant test. Fixes #7171. (:pr:`7523`)
+    JSKenyon
+  * Support custom_metadata= argument in to_parquet (:pr:`7359`)
+    Richard (Rick) Zamora
+  * Clean some documentation warnings (:pr:`7518`) Daniel Mesejo-León
+  * Getting rid of more docs warnings (:pr:`7426`) Julia Signell
+  * Added product (alias of prod) (:pr:`7517`) Freyam Mehta
+  * Fix upstream __array_ufunc__ tests (:pr:`7494`) Julia Signell
+  * Escape from map_overlap to map_blocks if depth is zero
+    (:pr:`7481`) Genevieve Buckley
+  * Add check_type to array assert_eq (:pr:`7491`) Julia Signell
+
+-------------------------------------------------------------------
 Fri Apr  9 13:47:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Reenable 32bit tests after distributed is not cythonized anymore
