@@ -600,4 +600,15 @@ Lets break everything :)
   * add brp-50-fipscheck for bsc#1184555</comment>
     <requestid>887052</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>530922465858b7eaf9ce178127d386b3</srcmd5>
+    <version>84.87+git20210517.7005a76</version>
+    <time>1621626582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210517.7005a76:
+  * support cross arch builds
+  * Makefile only set CXXFLAGS and CXX if not set in env yet
+  * brp-25-symlink: Follow deeper symlinks to avoid false positives</comment>
+    <requestid>893668</requestid>
+  </revision>
 </revisionlist>

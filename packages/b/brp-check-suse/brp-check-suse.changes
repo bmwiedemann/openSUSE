@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 17 09:22:27 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210517.7005a76:
+  * support cross arch builds
+  * Makefile only set CXXFLAGS and CXX if not set in env yet
+  * brp-25-symlink: Follow deeper symlinks to avoid false positives
+
+-------------------------------------------------------------------
 Tue Apr 20 15:09:48 UTC 2021 - ro@suse.de
 
 - Update to version 84.87+git20210420.a4765d7:
