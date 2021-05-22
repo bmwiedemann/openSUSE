@@ -263,4 +263,22 @@
     <comment></comment>
     <requestid>883885</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6533dcbffd0c0bf5977f97c23b87e1d8</srcmd5>
+    <version>0.27.1</version>
+    <time>1621721165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.1:
+  - Added unbind action. In the following Ripgrep launcher
+    example, you can use unbind(reload) to switch to fzf-only
+    filtering mode.
+    See https://github.com/junegunn/fzf/blob/master/ADVANCED.md#switching-to-fzf-only-search-mode
+  - Vim plugin will stop immediately even when the source command hasn't finished
+    &quot; fzf will read the stream file while allowing other processes to append to it
+    call fzf#run(fzf#wrap({'source': 'cat /dev/null &gt; /tmp/stream; tail -f /tmp/stream'}))
+  - It is now possible to open popup window relative to the currrent window
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+</comment>
+    <requestid>894915</requestid>
+  </revision>
 </revisionlist>
