@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 14 21:24:51 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- make sure we have getent and groupadd/useradd in pre
+  * added dependency on shadow and glibc
+  * might be related to bnc#1186023
+
+-------------------------------------------------------------------
+Wed May 12 12:43:44 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.0.6, see:
+  https://www.knot-dns.cz/2021-05-12-version-306.html
+
+-------------------------------------------------------------------
+Tue May 11 09:24:39 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Make /etc/knot directory owned by knot - fix reload action
+
+-------------------------------------------------------------------
 Sat Mar 27 12:05:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions, remove unsubstantiated claims.

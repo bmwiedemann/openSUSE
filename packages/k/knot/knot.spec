@@ -45,7 +45,7 @@
 %define libzscanner libzscanner3
 
 Name:           knot
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 %define pkg_name knot
 Summary:        An authoritative DNS daemon
@@ -73,6 +73,8 @@ BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  libcap-ng-devel
 BuildRequires:  xz
 Requires(pre):  pwdutils
+Requires(pre):  shadow
+Requires(pre):  glibc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  lmdb-devel >= 0.9.15
 %if %{with docs}
@@ -247,7 +249,7 @@ fi
 %postun -n %{libzscanner} -p /sbin/ldconfig
 
 %files
-%dir %attr(750,root,root) %{_sysconfdir}/%{pkg_name}
+%dir %attr(750,knot,knot) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
 %{_sbindir}/*
 %{_bindir}/*
