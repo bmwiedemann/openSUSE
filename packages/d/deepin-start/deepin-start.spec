@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-start
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name       startdde
 %define import_path pkg.deepin.io/dde/startdde
@@ -22,7 +23,7 @@ Name:           deepin-start
 Version:        5.8.7
 Release:        0
 Summary:        Starter of deepin desktop
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/linuxdeepin/startdde
 Source0:        https://github.com/linuxdeepin/startdde/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -32,21 +33,24 @@ Source99:       deepin-start-rpmlintrc
 Patch0:         deepin-start-disable-gobuild-in-makefile.patch
 Group:          System/Daemons
 BuildRequires:  fdupes
-# BuildRequires:  golang(API) = 1.11
-BuildRequires:  golang-packaging
-BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
+%if 0%{?suse_version} > 1500
+BuildRequires:  golang(API) = 1.15
+%endif
 BuildRequires:  golang-github-linuxdeepin-dde-api
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
+BuildRequires:  golang-packaging
+BuildRequires:  jq
+BuildRequires:  xdg-user-dirs
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(gnome-keyring-1)
-BuildRequires:  jq
 Requires:       deepin-daemon
 # Requires:       libcgroup-tools
 Provides:       startdde
@@ -62,7 +66,6 @@ Group:          Development/Languages/Golang
 BuildArch:      noarch
 Requires:       golang-github-linuxdeepin-dde-api
 Requires:       golang-github-linuxdeepin-go-dbus-factory
-AutoReqProv:    On
 AutoReq:        Off
 %{go_provides}
 
@@ -104,13 +107,11 @@ rm -rf %{buildroot}%{_datadir}/lightdm/
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{_bindir}/startdde
 %{_bindir}/wl_display_daemon
 %{_sbindir}/deepin-fix-xauthority-perm
-%dir %{_datadir}/xsessions
 %{_datadir}/xsessions/deepin.desktop
 %dir %{_datadir}/startdde
 %{_datadir}/startdde/auto_launch.json
@@ -120,12 +121,9 @@ rm -rf %{buildroot}%{_datadir}/lightdm/
 %dir %{_prefix}/lib/deepin-daemon
 %{_prefix}/lib/deepin-daemon/greeter-display-daemon
 %config %{_sysconfdir}/profile.d/deepin-xdg-dir.sh
-%dir %{_sysconfdir}/X11/xinit
-%dir %{_sysconfdir}/X11/xinit/xinitrc.d/
 %config %{_sysconfdir}/X11/xinit/xinitrc.d/01deepin-profile
 %config %{_sysconfdir}/X11/xinit/xinitrc.d/00deepin-dde-env
 
 %files -n golang-github-linuxdeepin-startdde -f file.lst
-%defattr(-,root,root,-)
 
 %changelog

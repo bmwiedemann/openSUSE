@@ -7,4 +7,12 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886029</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3535e182ba06ff0dfe7b9b663e2f9a81</srcmd5>
+    <version>5.8.7</version>
+    <time>1621721177</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 894970 from hillwood)</comment>
+    <requestid>894971</requestid>
+  </revision>
 </revisionlist>
