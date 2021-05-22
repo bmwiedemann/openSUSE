@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 22 17:03:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6
+  * Widescreen graphics for Heretic and Hexen
+  * Sprite shadows like in the Build engine. Both in software and
+    hardware renderer.
+  * 16 bit channel PNG files can be read.
+  * DEHEXTRA working properly now.
+  * Various enhancements and fixes for ZScript.
+
+-------------------------------------------------------------------
 Thu Mar  4 19:55:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-fixed-zipdir-inability-to-update-empty-zip-file.patch

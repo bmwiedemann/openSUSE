@@ -9,11 +9,11 @@ Use LZMA system libraries instead of bundled code.
  tools/zipdir/CMakeLists.txt |    4 ++--
  3 files changed, 6 insertions(+), 6 deletions(-)
 
-Index: gzdoom-g4.4.0/CMakeLists.txt
+Index: gzdoom-g4.6.0/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.4.0.orig/CMakeLists.txt
-+++ gzdoom-g4.4.0/CMakeLists.txt
-@@ -12,6 +12,7 @@ endif()
+--- gzdoom-g4.6.0.orig/CMakeLists.txt
++++ gzdoom-g4.6.0/CMakeLists.txt
+@@ -17,6 +17,7 @@ endif()
  
  list( APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
  include( FindPackageHandleStandardArgs )
@@ -21,7 +21,7 @@ Index: gzdoom-g4.4.0/CMakeLists.txt
  
  # Support cross compiling
  option( FORCE_CROSSCOMPILE "Turn on cross compiling." NO )
-@@ -369,7 +370,7 @@ else()
+@@ -378,7 +379,7 @@ else()
  endif()
  
  
@@ -30,7 +30,7 @@ Index: gzdoom-g4.4.0/CMakeLists.txt
  
  if( NOT CMAKE_CROSSCOMPILING )
  	if( NOT CROSS_EXPORTS )
-@@ -389,7 +390,6 @@ install(DIRECTORY docs/
+@@ -398,7 +399,6 @@ install(DIRECTORY docs/
  
  option( DYN_OPENAL "Dynamically load OpenAL" ON )
  
@@ -38,11 +38,11 @@ Index: gzdoom-g4.4.0/CMakeLists.txt
  add_subdirectory( tools )
  add_subdirectory( libraries/gdtoa )
  add_subdirectory( wadsrc )
-Index: gzdoom-g4.4.0/src/CMakeLists.txt
+Index: gzdoom-g4.6.0/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.4.0.orig/src/CMakeLists.txt
-+++ gzdoom-g4.4.0/src/CMakeLists.txt
-@@ -437,7 +437,7 @@ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LI
+--- gzdoom-g4.6.0.orig/src/CMakeLists.txt
++++ gzdoom-g4.6.0/src/CMakeLists.txt
+@@ -406,7 +406,7 @@ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LI
  if (HAVE_VULKAN)
  	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
  endif()
@@ -51,7 +51,7 @@ Index: gzdoom-g4.4.0/src/CMakeLists.txt
  
  if( ${HAVE_VM_JIT} )
  	add_definitions( -DHAVE_VM_JIT )
-@@ -1238,7 +1238,7 @@ if( UNIX )
+@@ -1231,7 +1231,7 @@ if( UNIX )
  	endif()
  endif()
  
@@ -60,12 +60,12 @@ Index: gzdoom-g4.4.0/src/CMakeLists.txt
  
  include_directories( .
  	common/audio/sound
-Index: gzdoom-g4.4.0/tools/zipdir/CMakeLists.txt
+Index: gzdoom-g4.6.0/tools/zipdir/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.4.0.orig/tools/zipdir/CMakeLists.txt
-+++ gzdoom-g4.4.0/tools/zipdir/CMakeLists.txt
+--- gzdoom-g4.6.0.orig/tools/zipdir/CMakeLists.txt
++++ gzdoom-g4.6.0/tools/zipdir/CMakeLists.txt
 @@ -1,9 +1,9 @@
- cmake_minimum_required( VERSION 2.8.7 )
+ cmake_minimum_required( VERSION 3.1.0 )
  
  if( NOT CMAKE_CROSSCOMPILING )
 -	include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
