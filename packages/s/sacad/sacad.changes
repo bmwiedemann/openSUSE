@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Wed May 19 19:37:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.0
+  * Fix embedding cover in files without tags
+  * drop Python 3.5 + officially support Python 3.9
+  * Set PIL flag to allow loading partial images
+  * Improve handling of APEv2 tags
+
+-------------------------------------------------------------------
 Sat Oct 24 08:24:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to verssion 2.3.4
+- Update to version 2.3.4
   * Workaround bitarray.bitdiff deprecation
 
 -------------------------------------------------------------------
