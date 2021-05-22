@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 14 11:58:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update LTS version to maintenance release 19.11.8
+  * vhost/crypto: fix data length check (CVE-2020-14374)
+  * vhost/crypto: fix incorrect descriptor deduction (CVE-2020-14378)
+  * vhost/crypto: fix incorrect write back source
+  * vhost/crypto: fix missed request check for copy mode
+    (CVE-2020-14376 CVE-2020-14377)
+  * vhost/crypto: fix pool allocation
+  * vhost/crypto: fix possible TOCTOU attack (CVE-2020-14375)
+  * Changes from 19.11.6:
+    https://doc.dpdk.org/guides-19.11/rel_notes/release_19_11.html#id14
+  * Changes from 19.11.7:
+    https://doc.dpdk.org/guides-19.11/rel_notes/release_19_11.html#id18
+- Drop security patches, fixed with 19.11.5
+  * 0001-vhost-crypto-fix-pool-allocation.patch
+  * 0002-vhost-crypto-fix-incorrect-descriptor-deduction.patch
+  * 0003-vhost-crypto-fix-missed-request-check-for-copy-mode.patch
+  * 0004-vhost-crypto-fix-incorrect-write-back-source.patch
+  * 0005-vhost-crypto-fix-data-length-check.patch
+  * 0006-vhost-crypto-fix-possible-TOCTOU-attack.patch
+- Drop 0001-kni-fix-build-with-Linux-5.9.patch, fixed with 19.11.6
+- Updated 0001-SLE15-SP3-compatibility-patch-for-kni.patch
+
+-------------------------------------------------------------------
 Wed Apr 21 10:36:13 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add 0001-kni-fix-build-with-Linux-5.9.patch: fixes the build against kernel
