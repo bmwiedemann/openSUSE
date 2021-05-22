@@ -1,0 +1,11 @@
+--- FreeFileSync_11.9_Source_orig/FreeFileSync/Source/base/icon_loader.cpp	2021-04-01 20:49:34.000000000 +0200
++++ FreeFileSync_11.9_Source/FreeFileSync/Source/base/icon_loader.cpp	2021-05-14 16:26:33.212337647 +0200
+@@ -216,7 +216,7 @@
+     //the remaining icon types won't block!
+     assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
+ 
+-    return FileIconHolder(static_cast<GIcon*>(::g_object_ref(gicon)) /*pass ownership*/, maxSize);
++    return FileIconHolder(gicon /*pass ownership*/, maxSize);
+ 
+ }
+ 

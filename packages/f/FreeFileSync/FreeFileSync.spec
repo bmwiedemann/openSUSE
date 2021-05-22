@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.7
+Version:        11.9
 Release:        0
 Summary:        Free backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source3:        RealTimeSync.desktop
 Source4:        RealTimeSync.png
 Patch0:         FreeFileSync-Build.patch
 Patch1:         FreeFileSync-Resources.patch
+Patch2:         FreeFileSync-icon_loader.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel

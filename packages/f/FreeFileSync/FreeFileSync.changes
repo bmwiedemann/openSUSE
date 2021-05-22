@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 21 19:40:09 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.9
+  - Save different layouts depending on screen resolution
+  - Fixed large file icon scaling quality (Windows)
+  - Fixed broken default filter excluding DocumentRevisions (macOS)
+  - Don't immediately exit terminal when installer error is showing (Linux)
+  - Explicitly set file permissions when installing missing directories (Linux)
+  - Support installation using noexec temp directory (Linux)
+  - Don't fail installation if root is the only user (Linux)
+  - Added automatic socket close on execv (Linux, macOS)
+  - Fixed Google Drive login hanging after authentication (Linux)
+  - Correctly generate and parse Windows epoch time (Windows, macOS)
+- Changes from 11.8
+  - Fixed unexpected file size error when copying to (S)FTP, and Google Drive
+- add FreeFileSync-icon_loader.patch to fix build error
+  
+-------------------------------------------------------------------
 Tue Mar  2 22:17:33 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.7
