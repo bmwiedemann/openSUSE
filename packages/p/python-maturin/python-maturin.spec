@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-maturin
-Version:        0.10.4
+Version:        0.10.6
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT

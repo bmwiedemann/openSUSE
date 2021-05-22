@@ -22,4 +22,33 @@
 </comment>
     <requestid>891567</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>509695542ec31ec87e3a562c3e93344a</srcmd5>
+    <version>0.10.6</version>
+    <time>1621721185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.6
+  * Fix build with the “upload” feature disabled by ravenexp
+    gh#PyO3/maturin#548
+- Changes in 0.10.5:
+  * Add manylinux_2_27 support
+    gh#PyO3/maturin#521
+  * Add support for Windows arm64 target
+    gh#PyO3/maturin#524
+  * Always output PEP 600 platform tags
+    gh#PyO3/maturin#525
+  * Fix missing PyInit_&lt;module_name&gt; warning with Rust submodule
+    gh#PyO3/maturin#528
+  * Better cross compiling support for PyO3 binding on Unix
+    gh#PyO3/maturin#454
+  * Fix s390x architecture support
+    gh#PyO3/maturin#530
+  * Fix auditwheel panic with s390x wheels
+    gh#PyO3/maturin#532
+  * Support uploading heterogenous wheels by ravenexp
+    gh#PyO3/maturin#544
+  * Warn about pyproject.toml missing maturin version constraint
+    gh#PyO3/maturin#545</comment>
+    <requestid>894986</requestid>
+  </revision>
 </revisionlist>
