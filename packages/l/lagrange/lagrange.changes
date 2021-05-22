@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 22 10:29:52 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.2
+  - Fixed UI colors being all black on the first run.
+  - Fixed right mouse click on an inactive split not having any effect.
+  - Fixed action buttons showing under the Help link in an empty Identities
+    sidebar.
+  - Fixed potential crash at shutdown.
+  - Fixed minor UI layout issues.
+
+-------------------------------------------------------------------
 Thu May 13 15:50:59 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.4.1
