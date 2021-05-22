@@ -1,0 +1,11 @@
+diff -Nur black-hole-solver-1.10.1/libblack-hole-solver.pc.in black-new/libblack-hole-solver.pc.in
+--- black-hole-solver-1.10.1/libblack-hole-solver.pc.in	2019-12-27 16:06:01.000000000 +0100
++++ black-new/libblack-hole-solver.pc.in	2021-04-29 13:52:47.298340002 +0200
+@@ -1,6 +1,6 @@
+ prefix="@CMAKE_INSTALL_PREFIX@"
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include
+ 
+ Name:  Black Hole Solitaire Solver

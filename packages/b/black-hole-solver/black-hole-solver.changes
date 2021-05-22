@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:35:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.10.1:
+  * Add "--show-max-num-played-cards" flag, inspired by
+    https://politaire.com/article/blackhole.html
+- Add fix-pkgconfig-libdir.patch to fix path of library dir in
+  pkgconfig file.
+
+-------------------------------------------------------------------
 Mon Jul 27 17:46:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Initial commit

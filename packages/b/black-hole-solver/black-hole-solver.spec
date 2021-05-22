@@ -1,7 +1,7 @@
 #
 # spec file for package black-hole-solver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 # Missing perl(Env::Path), should also skip some tests like build-process
 %global run_tests 0
 Name:           black-hole-solver
-Version:        1.8.0
+Version:        1.10.1
 Release:        0
 Summary:        The Black Hole Solver Executable
 License:        MIT
-Group:          Amusements/Games
+Group:          Amusements/Games/Board/Card
 URL:            https://www.shlomifish.org/open-source/projects/black-hole-solitaire-solver/
-Source:         https://fc-solve.shlomifish.org/downloads/fc-solve/black-hole-solver-%{version}.tar.xz
+Source:         https://sourceforge.net/projects/fc-solve/files/fc-solve/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE fix-pkgconfig-libdir.patch -- https://sourceforge.net/p/fc-solve/tickets/1/
+Patch0:         fix-pkgconfig-libdir.patch
 BuildRequires:  cmake
 BuildRequires:  cmake(Rinutils)
 BuildRequires:  gcc-c++
@@ -34,8 +36,9 @@ BuildRequires:  perl(Path::Tiny)
 BuildRequires:  xxhash-devel
 %if %{run_tests}
 # For testing
-BuildRequires:  perl(Env::Path)
 BuildRequires:  perl(Getopt::Long)
+BuildRequires:  perl(Env::Path)
+BuildRequires:  perl(Test::Some)
 BuildRequires:  perl(Test::More)
 %endif
 
@@ -46,11 +49,11 @@ a command line application that after being fed with a layout will emit the
 cards to move.
 
 %package -n libblack_hole_solver%{sover}
-Summary:        The Black Hole Solitaire Solver dynamic libraries
+Summary:        Solitaire Solver dynamic libraries
 Group:          System/Libraries
 
 %description -n libblack_hole_solver%{sover}
-Contains the Black Hole Solitaire library.
+Contains the Black Hole Solitaire dynamic library.
 
 %package devel
 Summary:        Black Hole Solver development headers
@@ -61,10 +64,13 @@ Requires:       libblack_hole_solver%{sover} = %{version}
 Files needed for building applications against Black Hole Solver.
 
 %prep
-%autosetup -p3
+%autosetup -p1
 
 %build
-%cmake -DFCS_AVOID_TCMALLOC=ON -DUSE_SYSTEM_XXHASH=ON -DBUILD_STATIC_LIBRARY=OFF
+%cmake -DFCS_AVOID_TCMALLOC=ON \
+  -DUSE_SYSTEM_XXHASH=ON \
+  -DBUILD_STATIC_LIBRARY=OFF \
+  -DENABLE_DISPLAYING_MAX_NUM_PLAYED_CARDS=ON
 %cmake_build
 
 %if %{run_tests}
@@ -76,8 +82,6 @@ export FCS_TEST_WITHOUT_VALGRIND=1
 
 %install
 %cmake_install
-# Fix the .pc file manually for now
-sed -i'' 's#/lib$#/%{_lib}#g' %{buildroot}/%{_libdir}/pkgconfig/*.pc
 
 %post -p /sbin/ldconfig -n libblack_hole_solver1
 %postun -p /sbin/ldconfig -n libblack_hole_solver1
