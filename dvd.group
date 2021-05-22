@@ -97,10 +97,10 @@
     <package name="alsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="alsa-oss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
-    <package name="alsa-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="alsa-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-plugins-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="alsa-plugins-speexrate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="alsa-plugins-speexrate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -312,8 +312,8 @@
     <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
+    <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cryptsetup-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="csmash" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -329,9 +329,8 @@
     <package name="cvsps" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="cyreal-lobster-cyrillic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dar-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1777,6 +1776,7 @@
     <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptsetup12-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2418,7 +2418,7 @@
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpostproc55_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2545,6 +2545,7 @@
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreofficekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librepository" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libressl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librest-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2557,6 +2558,7 @@
     <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libruby3_0-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libsamba-credentials1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2633,6 +2635,7 @@
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libssl48" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2678,6 +2681,7 @@
     <package name="libtiff5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtls20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtomcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtotem-plparser-mini18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3161,14 +3165,14 @@
     <package name="openconnect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openldap2-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
-    <package name="openslp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="openslp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openslp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-askpass-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3372,7 +3376,6 @@
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Test-Pod" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Text-CSV_XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3862,10 +3865,12 @@
     <package name="ruby2.7-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby2.7-rubygem-actioncable-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actioncable-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-actionmailbox-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailer-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailer-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-actiontext-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activejob-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3874,6 +3879,8 @@
     <package name="ruby2.7-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-activestorage-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-activestorage-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3972,6 +3979,7 @@
     <package name="ruby2.7-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gpgme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4109,6 +4117,8 @@
     <package name="ruby2.7-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-rails-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-rails-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4237,6 +4247,53 @@
     <package name="ruby2.7-rubygem-yard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-bindex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-bootsnap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-builder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-byebug" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-crass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rzip" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4488,23 +4545,23 @@
     <package name="tracker2-miners-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="transactional-update-zypp-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
-    <package name="translation-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-en_GB" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-pt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-ru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="translation-update-zh_TW" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="translation-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-en_GB" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-pt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-ru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="translation-update-zh_TW" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="transmission-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="transmission-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="transmission-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4836,6 +4893,7 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -5018,6 +5076,7 @@
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ffmpeg-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fontconfig-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5216,6 +5275,7 @@
     <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbldap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libspf2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-pp-gcc11-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsuil-0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
