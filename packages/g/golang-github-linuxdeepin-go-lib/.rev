@@ -7,4 +7,13 @@
     <comment>Ready to bring Deepin Desktop to openSUSE offical</comment>
     <requestid>884784</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>04a348f17714337c17f73883509576e0</srcmd5>
+    <version>5.7.0</version>
+    <time>1621721175</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep golang version on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ (forwarded request 894948 from hillwood)</comment>
+    <requestid>894963</requestid>
+  </revision>
 </revisionlist>

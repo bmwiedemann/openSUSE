@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 21 14:32:12 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ 
+
+-------------------------------------------------------------------
 Wed Mar 10 14:56:06 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.7.0
@@ -12,7 +18,6 @@ Thu Apr 25 03:23:37 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
   * chore(desktopappinfo): remove redundant println
   * fix: build failed
   * feat(desktopappinfo): do not process X-Deepin-Vendor field
-
 
 -------------------------------------------------------------------
 Wed Apr 10 13:13:00 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
