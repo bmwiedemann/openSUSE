@@ -20,13 +20,13 @@
 %{!?_udevdir:%global _udevdir  %{_udevrulesdir}/..}
 
 Name:           laptop-mode-tools
-Version:        1.73.1
+Version:        1.74
 Release:        0
 Summary:        The Laptop Mode Tools
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            http://rickysarraf.github.io/laptop-mode-tools/
-Source:         https://github.com/rickysarraf/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/rickysarraf/laptop-mode-tools/releases/download/%{version}/laptop-mode-tools_%{version}.tar.gz
 Source1:        README.SUSE
 Patch0:         laptop-mode-1.53_conf.diff
 Patch1:         laptop-mode-1.49-new-dirty-ratio-defaults.diff
@@ -58,7 +58,7 @@ BuildArch:      noarch
 This package contains a graphical user interface for laptop-mode-tools.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n laptop-mode-tools_%{version}
 cp %{SOURCE1} .
 
 %build
