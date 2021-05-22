@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 20 16:16:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.24.5
+  * Support for Object storage configuration source in the
+    Resource Manager service
+  * Support for spark-submit compatible options in the Data Flow service
+  * Fixed: Wait for state parameter for the following commands were
+    returning an error on valid states
+  * Fixed list commands in Artifacts service
+- Refresh oc_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Fri May 14 11:21:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.24.4

@@ -1,5 +1,5 @@
 #
-# spec file for package oci-cli-test
+# spec file for package oci-cli
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,16 +28,17 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        2.24.4
+Version:        2.24.5
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/cli.htm
-Source:         https://github.com/oracle/oci-cli/archive/v%{version}.tar.gz
+Source:         https://github.com/oracle/oci-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         oc_relax-python-depends.patch
 Patch1:         oc_name-defaults_file-parameter.patch
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyJWT
 BuildRequires:  python3-PyYAML >= 5.4.1
 BuildRequires:  python3-arrow >= 0.14.7
@@ -46,7 +47,7 @@ BuildRequires:  python3-click >= 6.7
 BuildRequires:  python3-cryptography >= 3.3.2
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.9.4
-BuildRequires:  python3-oci-sdk >= 2.38.2
+BuildRequires:  python3-oci-sdk >= 2.38.3
 BuildRequires:  python3-pyOpenSSL >= 18.0.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
@@ -84,7 +85,7 @@ Requires:       python3-certifi
 Requires:       python3-click >= 6.7
 Requires:       python3-cryptography >= 3.3.2
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.38.2
+Requires:       python3-oci-sdk >= 2.38.3
 Requires:       python3-pyOpenSSL >= 18.0.0
 Requires:       python3-python-dateutil >= 2.5.3
 Requires:       python3-pytz >= 2016.10
@@ -102,25 +103,23 @@ Some of these, such as the ability to run scripts, extend the Console's
 functionality.
 
 %prep
-%setup -q -n oci-cli-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 # Fix includes
 sed -i 's/from oci._vendor //' src/oci_cli/*.py services/container_engine/src/oci_cli_container_engine/*.py services/object_storage/src/oci_cli_object_storage/object_storage_transfer_manager/*.py services/dts/src/oci_cli_dts/physical_appliance_control_plane/client/*.py services/dts/src/oci_cli_dts/*.py tests/*.py
 sed -i 's/oci\._vendor\.//' src/oci_cli/*.py services/dts/src/oci_cli_dts/*.py services/container_engine/src/oci_cli_container_engine/*.py tests/*.py tests/vcr_mods/*.py
 
 %build
-python3 setup.py build
+%python3_build
 
-%check
 %if %{with test}
+%check
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
 py.test -s tests/unit
 %endif
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot} --install-scripts=%{_bindir}
+%python3_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files
