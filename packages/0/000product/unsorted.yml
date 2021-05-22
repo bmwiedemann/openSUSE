@@ -733,10 +733,8 @@ unsorted:
   - armadillo-doc 
   - armnn: [x86_64] 
   - armnn-devel: [x86_64] 
-  - armnn-extratests: [x86_64] 
   - armnn-opencl: [x86_64] 
   - armnn-opencl-devel: [x86_64] 
-  - armnn-opencl-extratests: [x86_64] 
   - arp-scan 
   - arpack-ng-devel 
   - arpack-ng-devel-32bit: [x86_64] 
@@ -1868,7 +1866,6 @@ unsorted:
   - charliecloud-doc 
   - charliecloud-examples 
   - chartmuseum 
-  - charybdis 
   - chasen 
   - chasen-devel 
   - chck-devel 
@@ -2583,6 +2580,7 @@ unsorted:
   - cyrus-sasl-bdb-otp 
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
+  - cyrus-sasl-crammd5 
   - cyrus-sasl-crammd5-32bit: [x86_64] 
   - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit: [x86_64] 
@@ -3029,6 +3027,9 @@ unsorted:
   - dub 
   - duc 
   - duktape-devel 
+  - dumb 
+  - dumb-devel 
+  - dumb-devel-doc 
   - dummy-release 
   - dump 
   - dump1090-fa 
@@ -3356,7 +3357,7 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
-  - exim 
+  - exim: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -5538,6 +5539,7 @@ unsorted:
   - glade-catalog-gtkhtml 
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
+  - glade-catalog-libgda 
   - glade-catalog-libhandy 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
@@ -7445,9 +7447,6 @@ unsorted:
   - jgroups-javadoc 
   - jgroups-manual 
   - jgroups-repolib 
-  - jhbuild 
-  - jhbuild-lang 
-  - jhbuild-recommended-deps 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -9355,7 +9354,11 @@ unsorted:
   - libadns1-32bit: [x86_64] 
   - libadolc2 
   - libadolc2-32bit: [x86_64] 
+  - libadwaita-1-0 
+  - libadwaita-devel 
+  - libadwaita-lang 
   - libadwaitaqt-devel 
+  - libadwaitaqt1-32bit: [x86_64] 
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
@@ -9442,23 +9445,19 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute22: [x86_64] 
-  - libarm_compute_core22: [x86_64] 
-  - libarm_compute_graph22: [x86_64] 
+  - libarm_compute23: [x86_64] 
+  - libarm_compute_core23: [x86_64] 
+  - libarm_compute_graph23: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
-  - libarmnn24: [x86_64] 
-  - libarmnn24-opencl: [x86_64] 
-  - libarmnnBasePipeServer24: [x86_64] 
-  - libarmnnBasePipeServer24-opencl: [x86_64] 
-  - libarmnnCaffeParser24: [x86_64] 
-  - libarmnnCaffeParser24-opencl: [x86_64] 
-  - libarmnnSerializer24: [x86_64] 
-  - libarmnnSerializer24-opencl: [x86_64] 
+  - libarmnn25: [x86_64] 
+  - libarmnn25-opencl: [x86_64] 
+  - libarmnnBasePipeServer25: [x86_64] 
+  - libarmnnBasePipeServer25-opencl: [x86_64] 
+  - libarmnnSerializer25: [x86_64] 
+  - libarmnnSerializer25-opencl: [x86_64] 
   - libarmnnTfLiteParser24: [x86_64] 
   - libarmnnTfLiteParser24-opencl: [x86_64] 
-  - libarmnnTfParser24: [x86_64] 
-  - libarmnnTfParser24-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -10108,7 +10107,6 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto46 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_5_0 
@@ -10329,6 +10327,7 @@ unsorted:
   - libdtkwidget5 
   - libdtkwm5 
   - libduktape206 
+  - libdumb2 
   - libdv 
   - libdv-devel 
   - libdv-playdv 
@@ -10732,26 +10731,21 @@ unsorted:
   - libgcrypt-devel-32bit: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
   - libgd3-32bit: [x86_64] 
-  - libgda-5_0-4 
-  - libgda-5_0-4-lang 
-  - libgda-5_0-bdb 
-  - libgda-5_0-devel 
-  - libgda-5_0-doc 
-  - libgda-5_0-jdbc 
-  - libgda-5_0-ldap 
-  - libgda-5_0-mdb 
-  - libgda-5_0-mysql 
-  - libgda-5_0-postgres 
-  - libgda-5_0-sqlcipher 
-  - libgda-5_0-sqlite 
-  - libgda-5_0-tools 
-  - libgda-5_0-web 
-  - libgda-report-5_0-4 
-  - libgda-tools 
-  - libgda-ui-5_0-4 
-  - libgda-ui-5_0-plugins 
-  - libgda-ui-5_0-tools 
-  - libgda-xslt-5_0-4 
+  - libgda-6_0-6_0_0 
+  - libgda-6_0-6_0_0-lang 
+  - libgda-6_0-devel 
+  - libgda-6_0-doc 
+  - libgda-6_0-ldap 
+  - libgda-6_0-mysql 
+  - libgda-6_0-postgres 
+  - libgda-6_0-sqlcipher 
+  - libgda-6_0-sqlite 
+  - libgda-6_0-tools 
+  - libgda-report-6_0-6_0_0 
+  - libgda-ui-6_0-6_0_0 
+  - libgda-ui-6_0-plugins 
+  - libgda-ui-6_0-tools 
+  - libgda-xslt-6_0-6_0_0 
   - libgdal28 
   - libgdamm-5_0-13 
   - libgdamm-devel 
@@ -12401,6 +12395,8 @@ unsorted:
   - libopenssl-1_0_0-devel-32bit: [x86_64] 
   - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit: [x86_64] 
+  - libopenssl-3-devel 
+  - libopenssl-3-devel-32bit: [x86_64] 
   - libopenssl-devel 
   - libopenssl10 
   - libopenssl1_0_0 
@@ -12409,6 +12405,8 @@ unsorted:
   - libopenssl1_0_0-hmac-32bit: [x86_64] 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
+  - libopenssl3 
+  - libopenssl3-32bit: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -13277,7 +13275,6 @@ unsorted:
   - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
-  - libressl 
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
@@ -13365,7 +13362,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
-  - libruby3_0-3_0 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -13629,7 +13625,7 @@ unsorted:
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
-  - libspf2-2 
+  - libspf2-2: [i586] 
   - libspf2-devel 
   - libspf2-tools 
   - libsphinxbase1 
@@ -13661,7 +13657,6 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl48 
   - libssl48-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
@@ -13903,10 +13898,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
-  - libtimelineDecoder24: [x86_64] 
-  - libtimelineDecoder24-opencl: [x86_64] 
-  - libtimelineDecoderJson24: [x86_64] 
-  - libtimelineDecoderJson24-opencl: [x86_64] 
+  - libtimelineDecoder25: [x86_64] 
+  - libtimelineDecoder25-opencl: [x86_64] 
+  - libtimelineDecoderJson25: [x86_64] 
+  - libtimelineDecoderJson25-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -13919,7 +13914,6 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-8 
   - libtirpc-devel 
-  - libtls20 
   - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
@@ -17988,6 +17982,8 @@ unsorted:
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
   - openssl-1_1-doc 
+  - openssl-3 
+  - openssl-3-doc 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
   - openssl_tpm2_engine 
@@ -19625,6 +19621,7 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
+  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -21249,7 +21246,6 @@ unsorted:
   - python3-lttngust 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
-  - python3-mailman-web 
   - python3-mailmanclient 
   - python3-manilaclient 
   - python3-marisa 
@@ -21367,7 +21363,6 @@ unsorted:
   - python3-talloc-32bit: [x86_64] 
   - python3-talloc-devel 
   - python3-tdb-32bit: [x86_64] 
-  - python3-testinfra 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
   - python3-tvtk 
@@ -23055,7 +23050,6 @@ unsorted:
   - python36-pandas-ext 
   - python36-pandocfilters 
   - python36-panflute 
-  - python36-papermill 
   - python36-parallax 
   - python36-param 
   - python36-parameterized 
@@ -28909,6 +28903,7 @@ unsorted:
   - python39-pandocfilters 
   - python39-panel 
   - python39-panflute 
+  - python39-papermill 
   - python39-parallax 
   - python39-param 
   - python39-parameterized 
@@ -29603,6 +29598,7 @@ unsorted:
   - python39-ruffus 
   - python39-runthis-sphinxext 
   - python39-rustcfg 
+  - python39-s3fs 
   - python39-s3transfer 
   - python39-sadisplay 
   - python39-samplerate 
@@ -30892,21 +30888,13 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
-  - ruby2.7-rubygem-actionmailbox-6.0 
-  - ruby2.7-rubygem-actiontext-6.0 
-  - ruby2.7-rubygem-activestorage-5.2 
-  - ruby2.7-rubygem-activestorage-6.0 
   - ruby2.7-rubygem-gettext-setup 
-  - ruby2.7-rubygem-gettext_i18n_rails_js 
   - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
-  - ruby2.7-rubygem-rails-5.2 
-  - ruby2.7-rubygem-rails-6.0 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
   - ruby2.7-rubygem-unicorn-doc 
   - ruby2.7-rubygem-unicorn-testsuite 
-  - ruby3.0 
   - ruby3.0-devel 
   - ruby3.0-devel-extra 
   - ruby3.0-doc 
@@ -30919,20 +30907,16 @@ unsorted:
   - ruby3.0-rubygem-actionmailer-5.2 
   - ruby3.0-rubygem-actionmailer-6.0 
   - ruby3.0-rubygem-actionpack-5.2 
-  - ruby3.0-rubygem-actionpack-6.0 
   - ruby3.0-rubygem-actiontext-6.0 
   - ruby3.0-rubygem-actionview-5.2 
-  - ruby3.0-rubygem-actionview-6.0 
   - ruby3.0-rubygem-activejob-5.2 
   - ruby3.0-rubygem-activejob-6.0 
   - ruby3.0-rubygem-activemodel-5.2 
-  - ruby3.0-rubygem-activemodel-6.0 
   - ruby3.0-rubygem-activerecord-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
   - ruby3.0-rubygem-activestorage-5.2 
   - ruby3.0-rubygem-activestorage-6.0 
   - ruby3.0-rubygem-activesupport-5.2 
-  - ruby3.0-rubygem-activesupport-6.0 
   - ruby3.0-rubygem-addressable 
   - ruby3.0-rubygem-aes_key_wrap 
   - ruby3.0-rubygem-afm 
@@ -30951,13 +30935,9 @@ unsorted:
   - ruby3.0-rubygem-bcrypt_pbkdf 
   - ruby3.0-rubygem-benchmark 
   - ruby3.0-rubygem-bindata 
-  - ruby3.0-rubygem-bindex 
   - ruby3.0-rubygem-binding_of_caller 
-  - ruby3.0-rubygem-bootsnap 
-  - ruby3.0-rubygem-builder 
   - ruby3.0-rubygem-bundler 
   - ruby3.0-rubygem-bundler-audit 
-  - ruby3.0-rubygem-byebug 
   - ruby3.0-rubygem-capistrano 
   - ruby3.0-rubygem-celluloid 
   - ruby3.0-rubygem-cfa 
@@ -30974,10 +30954,8 @@ unsorted:
   - ruby3.0-rubygem-coffee-script-source 
   - ruby3.0-rubygem-colorator 
   - ruby3.0-rubygem-commander 
-  - ruby3.0-rubygem-concurrent-ruby 
   - ruby3.0-rubygem-cool.io 
   - ruby3.0-rubygem-crack 
-  - ruby3.0-rubygem-crass 
   - ruby3.0-rubygem-css_parser 
   - ruby3.0-rubygem-debase 
   - ruby3.0-rubygem-debase-ruby_core_source 
@@ -31002,7 +30980,6 @@ unsorted:
   - ruby3.0-rubygem-ed25519 
   - ruby3.0-rubygem-em-websocket 
   - ruby3.0-rubygem-equalizer 
-  - ruby3.0-rubygem-erubi 
   - ruby3.0-rubygem-erubis 
   - ruby3.0-rubygem-eventmachine 
   - ruby3.0-rubygem-exception_notification 
@@ -31014,7 +30991,6 @@ unsorted:
   - ruby3.0-rubygem-faraday_middleware 
   - ruby3.0-rubygem-fast_gettext 
   - ruby3.0-rubygem-fast_gettext-1.1 
-  - ruby3.0-rubygem-ffi 
   - ruby3.0-rubygem-flog 
   - ruby3.0-rubygem-fluentd 
   - ruby3.0-rubygem-fog-core 
@@ -31051,11 +31027,9 @@ unsorted:
   - ruby3.0-rubygem-http-cookie 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
-  - ruby3.0-rubygem-i18n 
   - ruby3.0-rubygem-ice_nine 
   - ruby3.0-rubygem-inifile 
   - ruby3.0-rubygem-jaro_winkler 
-  - ruby3.0-rubygem-jbuilder 
   - ruby3.0-rubygem-jekyll 
   - ruby3.0-rubygem-jekyll-sass-converter 
   - ruby3.0-rubygem-jekyll-watch 
@@ -31074,18 +31048,15 @@ unsorted:
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
-  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
   - ruby3.0-rubygem-logging 
   - ruby3.0-rubygem-lolcat 
-  - ruby3.0-rubygem-loofah 
   - ruby3.0-rubygem-mail 
   - ruby3.0-rubygem-manpages 
   - ruby3.0-rubygem-marcel 
   - ruby3.0-rubygem-mercenary 
-  - ruby3.0-rubygem-method_source 
   - ruby3.0-rubygem-micromachine 
   - ruby3.0-rubygem-mime 
   - ruby3.0-rubygem-mime-types 
@@ -31102,7 +31073,6 @@ unsorted:
   - ruby3.0-rubygem-mixlib-shellout 
   - ruby3.0-rubygem-mocha 
   - ruby3.0-rubygem-moneta 
-  - ruby3.0-rubygem-msgpack 
   - ruby3.0-rubygem-multi_json 
   - ruby3.0-rubygem-multi_xml 
   - ruby3.0-rubygem-multipart-post 
@@ -31117,8 +31087,6 @@ unsorted:
   - ruby3.0-rubygem-net-ssh 
   - ruby3.0-rubygem-net-ssh-6.1 
   - ruby3.0-rubygem-netrc 
-  - ruby3.0-rubygem-nio4r 
-  - ruby3.0-rubygem-nokogiri 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-oauth2 
   - ruby3.0-rubygem-omniauth 
@@ -31155,30 +31123,21 @@ unsorted:
   - ruby3.0-rubygem-public_suffix-3.1 
   - ruby3.0-rubygem-puma 
   - ruby3.0-rubygem-puma-4 
-  - ruby3.0-rubygem-puma-4.1 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
-  - ruby3.0-rubygem-rack 
   - ruby3.0-rubygem-rack-1_6 
   - ruby3.0-rubygem-rack-2.0 
   - ruby3.0-rubygem-rack-accept 
   - ruby3.0-rubygem-rack-oauth2 
   - ruby3.0-rubygem-rack-protection 
-  - ruby3.0-rubygem-rack-proxy 
-  - ruby3.0-rubygem-rack-test-0_6 
   - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
-  - ruby3.0-rubygem-rails-dom-testing 
-  - ruby3.0-rubygem-rails-html-sanitizer 
   - ruby3.0-rubygem-rails-i18n 
   - ruby3.0-rubygem-railties-5.2 
-  - ruby3.0-rubygem-railties-6.0 
   - ruby3.0-rubygem-rainbow 
   - ruby3.0-rubygem-raindrops 
   - ruby3.0-rubygem-rake-12_0 
   - ruby3.0-rubygem-rake-compiler 
-  - ruby3.0-rubygem-rb-fsevent 
-  - ruby3.0-rubygem-rb-inotify 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
   - ruby3.0-rubygem-regexp_parser 
@@ -31218,11 +31177,8 @@ unsorted:
   - ruby3.0-rubygem-safe_yaml 
   - ruby3.0-rubygem-sass 
   - ruby3.0-rubygem-sass-listen 
-  - ruby3.0-rubygem-sass-rails 
   - ruby3.0-rubygem-sass-rails-5.1 
-  - ruby3.0-rubygem-sassc 
   - ruby3.0-rubygem-sassc-2.2 
-  - ruby3.0-rubygem-sassc-rails 
   - ruby3.0-rubygem-sdoc 
   - ruby3.0-rubygem-semantic_range 
   - ruby3.0-rubygem-serverengine 
@@ -31235,13 +31191,8 @@ unsorted:
   - ruby3.0-rubygem-sinatra 
   - ruby3.0-rubygem-slim 
   - ruby3.0-rubygem-slop 
-  - ruby3.0-rubygem-spring 
-  - ruby3.0-rubygem-spring-watcher-listen 
-  - ruby3.0-rubygem-sprockets 
   - ruby3.0-rubygem-sprockets-3.7 
   - ruby3.0-rubygem-sprockets-helpers 
-  - ruby3.0-rubygem-sprockets-rails 
-  - ruby3.0-rubygem-sqlite3 
   - ruby3.0-rubygem-sshkit 
   - ruby3.0-rubygem-stomp 
   - ruby3.0-rubygem-strptime 
@@ -31250,21 +31201,15 @@ unsorted:
   - ruby3.0-rubygem-temple 
   - ruby3.0-rubygem-terminal-table 
   - ruby3.0-rubygem-text 
-  - ruby3.0-rubygem-thor 
   - ruby3.0-rubygem-thor-0_19 
-  - ruby3.0-rubygem-thread_safe 
-  - ruby3.0-rubygem-tilt 
   - ruby3.0-rubygem-timers 
   - ruby3.0-rubygem-tmuxinator 
   - ruby3.0-rubygem-tomlrb 
   - ruby3.0-rubygem-treetop 
   - ruby3.0-rubygem-trollop 
   - ruby3.0-rubygem-ttfunk 
-  - ruby3.0-rubygem-turbolinks 
-  - ruby3.0-rubygem-turbolinks-source 
   - ruby3.0-rubygem-tzinfo 
   - ruby3.0-rubygem-tzinfo-0 
-  - ruby3.0-rubygem-tzinfo-1.2 
   - ruby3.0-rubygem-tzinfo-data 
   - ruby3.0-rubygem-uglifier 
   - ruby3.0-rubygem-unf 
@@ -31277,11 +31222,9 @@ unsorted:
   - ruby3.0-rubygem-validate_url 
   - ruby3.0-rubygem-virtus 
   - ruby3.0-rubygem-warden 
-  - ruby3.0-rubygem-web-console 
   - ruby3.0-rubygem-webfinger 
   - ruby3.0-rubygem-webmock-2_3 
   - ruby3.0-rubygem-webpacker 
-  - ruby3.0-rubygem-webpacker-4.0 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
   - ruby3.0-rubygem-websocket-extensions 
@@ -31294,7 +31237,6 @@ unsorted:
   - ruby3.0-rubygem-xmlhash 
   - ruby3.0-rubygem-yajl-ruby 
   - ruby3.0-rubygem-yard 
-  - ruby3.0-rubygem-zeitwerk 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -40985,8 +40927,8 @@ unsorted:
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-GcrUi-3 
-  - typelib-1_0-Gda-5_0 
-  - typelib-1_0-Gdaui-5_0 
+  - typelib-1_0-Gda-6_0 
+  - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gdl-3 
   - typelib-1_0-Gee-0_8 
@@ -41031,7 +40973,6 @@ unsorted:
   - typelib-1_0-GstVulkanWayland-1_0 
   - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
-  - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
@@ -42282,7 +42223,6 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
-  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
