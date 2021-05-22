@@ -1,7 +1,7 @@
 #
 # spec file for package cppzmq-devel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           cppzmq-devel
-Version:        4.6.0
+Version:        4.7.1
 Release:        0
 Summary:        Header-only C++ binding for libzmq
 License:        MIT

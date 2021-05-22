@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 12 13:25:55 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to version 4.7.1
+  * Fixes syntax issues with MSVC
+  * Add shutdown() for context_t
+  * Typesafe context options
+  * Typesafe socket options
+  * Better C++ standard detection
+  * CMake fixes and improvements
+  * Multipart message encoding and decoding
+  * Fix (unlikely) UB in message_t constructor
+  * Improved poll() overloads
+  * Require non-null handlers to active_poller
+  * Fix socket move assignment bug
+  * Deprecate surprising message_t constructor from string literals
+
+
+-------------------------------------------------------------------
 Sat Apr 25 18:17:32 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 4.6.0

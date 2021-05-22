@@ -44,4 +44,12 @@
     + added != and == operators and equals method marked as deprecated</comment>
     <requestid>805758</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9905b83e04bb551b33e50b58c22cae87</srcmd5>
+    <version>4.7.1</version>
+    <time>1621721169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894927</requestid>
+  </revision>
 </revisionlist>
