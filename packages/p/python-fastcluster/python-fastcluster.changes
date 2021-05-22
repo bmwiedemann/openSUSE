@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 22 11:40:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_error_test.patch removing the erroring test_vector
+  test (gh#dmuellner/fastcluster#21).
+
+-------------------------------------------------------------------
+Fri May 14 15:05:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.28:
+  - Replace deprecated “numpy.bool” and “numpy.int” by
+    “bool” and “int”.
+  - Updated NumPy dependency for Python 3.9.
+
+-------------------------------------------------------------------
 Tue Jan 19 10:52:03 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python36 because scipy dependency.

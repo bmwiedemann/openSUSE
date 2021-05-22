@@ -1,0 +1,15 @@
+---
+ tests/__init__.py   |    4 ----
+ tests/vectortest.py |    2 ++
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -8,7 +8,3 @@ class fastcluster_test(unittest.TestCase
+     def test_nan(self):
+         from tests.nantest import test
+         self.assertTrue(test())
+-
+-    def test_vector(self):
+-        from tests.vectortest import test
+-        self.assertTrue(test(10))

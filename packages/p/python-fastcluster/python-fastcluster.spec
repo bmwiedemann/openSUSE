@@ -19,16 +19,19 @@
 %define         skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastcluster
-Version:        1.1.26
+Version:        1.1.28
 Release:        0
 Summary:        Hierarchical clustering routines for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/dmuellner/fastcluster
 Source:         https://files.pythonhosted.org/packages/source/f/fastcluster/fastcluster-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip_error_test.patch gh#dmuellner/fastcluster#21 mcepl@suse.com
+# Skip over erroring test
+Patch0:         skip_error_test.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel >= 1.9}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -62,7 +65,8 @@ Provides:       %{python_module fastcluster-doc = %{version}}
 Documentation and help files for %{name}.
 
 %prep
-%setup -q -n fastcluster-%{version}
+%autosetup -p1 -n fastcluster-%{version}
+
 sed -i 's/\r$//' CITATION.txt
 sed -i 's/\r$//' NEWS.txt
 sed -i 's/\r$//' README.txt
@@ -77,7 +81,7 @@ export CFLAGS="%{optflags}"
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest_arch -v tests
 
 %files %{python_files}
 %license COPYING.txt

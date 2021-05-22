@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>864327</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>449d5466e58257dfc48ca9f0e540e47c</srcmd5>
+    <version>1.1.28</version>
+    <time>1621721174</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_error_test.patch removing the erroring test_vector
+  test (gh#dmuellner/fastcluster#21).
+- Update to 1.1.28:
+  - Replace deprecated “numpy.bool” and “numpy.int” by
+    “bool” and “int”.
+  - Updated NumPy dependency for Python 3.9.
+</comment>
+    <requestid>894946</requestid>
+  </revision>
 </revisionlist>
