@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0

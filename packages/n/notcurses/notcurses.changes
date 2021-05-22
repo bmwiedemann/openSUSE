@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 18 15:20:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  * Honors maxx and maxy when rendering images in direct mode
+  * Robustifies direct mode cursor queries, especially when
+    redirected to a file
+  * Don't acquire the signal atomic if we're not registering any
+   signal handlers
+  * Add ncdirectf_{from_file, geom, render, free}(), a rather
+    roundabout way of providing efficient access to media
+    information in direct mode
+  * Fix ncvisual_resize() when enlarging a frame using ffmpeg
+  * notcurses-tester: accept any argument starting with -l and
+    treat it as -l8
+  * Always enable 8bpc RGB for foot, kitty, and alacritty, without
+    needing COLORTERM
+  * Add artix art to ncneofetch
+  * Add spaceships to box demo
+
+-------------------------------------------------------------------
 Thu May 13 18:16:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0
