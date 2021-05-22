@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloud-sptheme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://cloud-sptheme.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/cloud_sptheme/cloud_sptheme-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sphinx-4-compat.patch -- https://foss.heptapod.net/doc-utils/cloud_sptheme/-/issues/45
+Patch0:         sphinx-4-compat.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,6 +51,7 @@ HTML documentation and examples for %name.
 
 %prep
 %setup -q -n cloud_sptheme-%{version}
+%patch0 -p1
 
 %build
 %python_build

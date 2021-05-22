@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>833991</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1179bc2fe0a48803c8e1bd66d4b8a5e2</srcmd5>
+    <version>1.10.1.post20200504175005</version>
+    <time>1621721180</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch sphinx-4-compat.patch to fix compatibility with sphinx 4
+</comment>
+    <requestid>894956</requestid>
+  </revision>
 </revisionlist>
