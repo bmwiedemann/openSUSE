@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-passivetotal
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ Requires:       python-ez_setup
 Requires:       python-future
 Requires:       python-python-dateutil
 Requires:       python-requests
+Requires:       python-tldextract
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
