@@ -1,14 +1,14 @@
-diff -Nru oci-cli-2.24.4.orig/requirements.txt oci-cli-2.24.4/requirements.txt
---- oci-cli-2.24.4.orig/requirements.txt	2021-05-11 22:38:54.000000000 +0200
-+++ oci-cli-2.24.4/requirements.txt	2021-05-14 13:21:01.440182907 +0200
-@@ -2,41 +2,40 @@
+diff -Nur oci-cli-2.24.5/requirements.txt new/requirements.txt
+--- oci-cli-2.24.5/requirements.txt	2021-05-19 01:47:14.000000000 +0200
++++ new/requirements.txt	2021-05-20 18:19:50.801629082 +0200
+@@ -2,41 +2,41 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
 -appdirs==1.4.3
 -arrow==0.17.0
-+appdirs>=1.4.3
-+arrow>=0.17.0
++appdirs~=1.4.3
++arrow~=0.17.0
  certifi
  cffi>=1.9.1
 -click==6.7
@@ -20,7 +20,7 @@ diff -Nru oci-cli-2.24.4.orig/requirements.txt oci-cli-2.24.4/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.38.2
+-oci==2.38.3
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -30,30 +30,31 @@ diff -Nru oci-cli-2.24.4.orig/requirements.txt oci-cli-2.24.4/requirements.txt
 -pyparsing==2.2.0
 -pytest==3.2.3
 -pytest-cov==2.5.1
-+click>=6.7
-+coverage>=4.5.2
-+cryptography>=3.3.2
-+httpsig-cffi>=15.0.0
-+Jinja2>=2.11.3
-+jmespath>=0.10.0
-+ndg-httpsclient>=0.4.2
-+mock>=2.0.0
-+oci>=2.38.2
-+packaging>=20.2
-+pluggy>=0.13.0
-+py>=1.10.0
-+pyasn1>=0.2.3
-+pyOpenSSL>=19.1.0
-+pycparser>=2.20
-+pyparsing>=2.2.0
-+pytest>=3.2.3
-+pytest-cov>=2.5.1
++click~=6.7
++configparser~=4.0.2
++coverage~=4.5.2
++cryptography~=3.3.2
++httpsig-cffi~=15.0.0
++Jinja2~=2.11.3
++jmespath~=0.10.0
++ndg-httpsclient~=0.4.2
++mock~=2.0.0
++oci~=2.38.3
++packaging~=20.2
++pluggy~=0.13.0
++py~=1.10.0
++pyasn1~=0.2.3
++pyOpenSSL~=19.1.0
++pycparser~=2.20
++pyparsing~=2.2.0
++pytest~=3.2.3
++pytest-cov~=2.5.1
  python-dateutil>=2.5.3,<3.0.0
  pytz>=2016.10
 -requests==2.21.0
 -retrying==1.3.3
-+requests>=2.21.0
-+retrying>=1.3.3
++requests~=2.21.0
++retrying~=1.3.3
  setuptools<45
 -six==1.14.0
 -sphinx==1.6.4
@@ -65,35 +66,36 @@ diff -Nru oci-cli-2.24.4.orig/requirements.txt oci-cli-2.24.4/requirements.txt
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
 -PyYAML==5.4.1
-+six>=1.14.0
-+sphinx>=1.6.4
-+sphinx-rtd-theme>=0.2.5b1
-+terminaltables>=3.1.0
-+tox>=3.23.0
-+vcrpy>=1.13.0
-+virtualenv>=16.7.10
-+pytest-xdist>=1.22.2
-+pytest-forked>=1.0.2
-+PyYAML>=5.4.1
-diff -Nru oci-cli-2.24.4.orig/setup.py oci-cli-2.24.4/setup.py
---- oci-cli-2.24.4.orig/setup.py	2021-05-11 22:38:54.000000000 +0200
-+++ oci-cli-2.24.4/setup.py	2021-05-14 13:21:19.100333555 +0200
-@@ -30,24 +30,23 @@
++six~=1.14.0
++sphinx~=1.6.4
++sphinx-rtd-theme~=0.2.5b1
++terminaltables~=3.1.0
++tox~=3.23.0
++vcrpy~=1.13.0
++virtualenv~=16.7.10
++pytest-xdist~=1.22.2
++pytest-forked~=1.0.2
++PyYAML~=5.4.1
+diff -Nur oci-cli-2.24.5/setup.py new/setup.py
+--- oci-cli-2.24.5/setup.py	2021-05-19 01:47:14.000000000 +0200
++++ new/setup.py	2021-05-20 18:19:50.801629082 +0200
+@@ -30,24 +30,24 @@
      readme = f.read()
  
  requires = [
--    'oci==2.38.2',
+-    'oci==2.38.3',
 -    'arrow==0.17.0',
-+    'oci>=2.38.2',
-+    'arrow>=0.17.0',
++    'oci~=2.38.3',
++    'arrow~=0.17.0',
      'certifi',
 -    'click==6.7',
 -    'configparser==4.0.2',
 -    'cryptography==3.3.2',
 -    'jmespath==0.10.0',
-+    'click>=6.7',
-+    'cryptography>=3.3.2',
-+    'jmespath>=0.10.0',
++    'click~=6.7',
++    'configparser~=4.0.2',
++    'cryptography~=3.3.2',
++    'jmespath~=0.10.0',
      'python-dateutil>=2.5.3,<3.0.0',
      'pytz>=2016.10',
 -    'retrying==1.3.3',
@@ -101,16 +103,16 @@ diff -Nru oci-cli-2.24.4.orig/setup.py oci-cli-2.24.4/setup.py
 -    'terminaltables==3.1.0',
 -    'pyOpenSSL==19.1.0',
 -    'PyYAML==5.4.1'
-+    'retrying>=1.3.3',
-+    'six>=1.14.0',
-+    'terminaltables>=3.1.0',
-+    'pyOpenSSL>=19.1.0',
-+    'PyYAML>=5.4.1'
++    'retrying~=1.3.3',
++    'six~=1.14.0',
++    'terminaltables~=3.1.0',
++    'pyOpenSSL~=19.1.0',
++    'PyYAML~=5.4.1'
  ]
  
  extras = {
 -    'db': ['cx_Oracle==7.0']
-+    'db': ['cx_Oracle>=7.0']
++    'db': ['cx_Oracle~=7.0']
  }
  
  fips_libcrypto_file = os.getenv("OCI_CLI_FIPS_LIBCRYPTO_FILE")
