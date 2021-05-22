@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.40.0
+Version:        0.41.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,9 +28,8 @@ Source1:        kubevirt-psp-caasp.yaml
 Source2:        kubevirt_containers_meta
 Source3:        kubevirt_containers_meta.service
 Source100:      %{name}-rpmlintrc
-Patch0:         dont-build-virtctl-darwin.patch
-Patch1:         dont-use-bazel-in-build-manifests.patch
-Patch2:         fix-double-free-of-VirDomain.patch
+Patch0:         0001-Don-t-build-virtctl-for-darwin-and-windows.patch
+Patch1:         0002-Don-t-use-Bazel-in-build-manifests.sh.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

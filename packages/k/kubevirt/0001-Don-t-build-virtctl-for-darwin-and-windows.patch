@@ -1,28 +1,35 @@
-Don't build virtctl for darwin and windows
+From f8882298f6a38a61add3af08136e86830cc97796 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Thu, 20 May 2021 10:42:24 +0200
+Subject: [PATCH 1/2] Don't build virtctl for darwin and windows
 
 Noticed the following build failure when specifying '-buildmode=pie'
 in GOFLAGS
 
 /usr/lib64/go/1.13/pkg/tool/linux_amd64/link: running gcc failed: exit status 1
-/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: cannot 
+/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: cannot
 find 1144: No such file or directory
 
 The failure was encountered when building virtctl for darwin and windows.
 Remove the builds for these OSes.
 
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
 Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ hack/build-go.sh | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-Index: kubevirt-0.37.0/hack/build-go.sh
-===================================================================
---- kubevirt-0.37.0.orig/hack/build-go.sh
-+++ kubevirt-0.37.0/hack/build-go.sh
-@@ -114,15 +114,6 @@ for arg in $args; do
+diff --git a/hack/build-go.sh b/hack/build-go.sh
+index 9e0f3fe22..d46310f36 100755
+--- a/hack/build-go.sh
++++ b/hack/build-go.sh
+@@ -125,15 +125,6 @@ for arg in $args; do
  
              kubevirt::version::get_version_vars
              echo "$KUBEVIRT_GIT_VERSION" >${CMD_OUT_DIR}/${BIN_NAME}/.version
 -
--            # build virtctl also for darwin and windows
--            if [ "${BIN_NAME}" = "virtctl" ]; then
+-            # build virtctl also for darwin and windows on amd64
+-            if [ "${BIN_NAME}" = "virtctl" -a "${ARCH}" = "amd64" ]; then
 -                GOOS=darwin GOARCH=amd64 go_build -i -o ${CMD_OUT_DIR}/${BIN_NAME}/${ARCH_BASENAME}-darwin-amd64 -ldflags "$(kubevirt::version::ldflags)" $(pkg_dir darwin amd64)
 -                GOOS=windows GOARCH=amd64 go_build -i -o ${CMD_OUT_DIR}/${BIN_NAME}/${ARCH_BASENAME}-windows-amd64.exe -ldflags "$(kubevirt::version::ldflags)" $(pkg_dir windows amd64)
 -                # Create symlinks to the latest binary of each architecture
@@ -32,3 +39,6 @@ Index: kubevirt-0.37.0/hack/build-go.sh
          )
      else
          (
+-- 
+2.31.1
+

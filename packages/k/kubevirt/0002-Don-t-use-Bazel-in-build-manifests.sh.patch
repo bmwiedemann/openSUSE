@@ -1,4 +1,7 @@
-Don't use Bazel in build-manifests.sh
+From 1228a2f14f4f3aeab91a43f7a71a74ecf61fb8f9 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Thu, 20 May 2021 10:48:30 +0200
+Subject: [PATCH 2/2] Don't use Bazel in build-manifests.sh
 
 This is a partial revert of the commit
 
@@ -8,20 +11,26 @@ which switches to using Bazel during manifests build. That in turn
 does not work well during OBS build since Bazel tends to download
 dependencies from the web.
 
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
+---
+ hack/build-manifests.sh | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
 diff --git a/hack/build-manifests.sh b/hack/build-manifests.sh
-index 79b8676b8..6add64769 100755
+index c93f19e3f..abfd6fa07 100755
 --- a/hack/build-manifests.sh
 +++ b/hack/build-manifests.sh
-@@ -33,20 +33,15 @@ kubevirt_logo_path="assets/kubevirt_logo.png"
+@@ -33,19 +33,16 @@ kubevirt_logo_path="assets/kubevirt_logo.png"
  rm -rf ${MANIFESTS_OUT_DIR}
  rm -rf ${MANIFEST_TEMPLATES_OUT_DIR}
  
 -rm -rf "${TESTS_OUT_DIR}/tools"
 -mkdir -p "${TESTS_OUT_DIR}/tools"
 -templator=${TESTS_OUT_DIR}/tools/manifest-templator
--
++templator=${KUBEVIRT_DIR}/tools/manifest-templator/manifest-templator
+ 
 -bazel run \
--    --config=${ARCHITECTURE} \
+-    --config=${HOST_ARCHITECTURE} \
 -    //:build-manifest-templator -- ${templator}
 +(cd ${KUBEVIRT_DIR}/tools/manifest-templator/ && go_build)
  
@@ -30,27 +39,10 @@ index 79b8676b8..6add64769 100755
  for arg in $args; do
      infile=${KUBEVIRT_DIR}/manifests/${arg}
      outfile=${KUBEVIRT_DIR}/manifests/${arg}.tmp
--    ${templator} \
 +
-+    ${KUBEVIRT_DIR}/tools/manifest-templator/manifest-templator \
+     ${templator} \
          --process-files \
          --generated-manifests-dir=${KUBEVIRT_DIR}/manifests/generated/ \
-         --input-file=${infile} >${outfile}
-@@ -75,7 +70,7 @@ for arg in $args; do
-     outfile=${final_out_dir}/${manifest}
-     template_outfile=${final_templates_out_dir}/${manifest}.j2
- 
--    ${templator} \
-+    ${KUBEVIRT_DIR}/tools/manifest-templator/manifest-templator \
-         --process-vars \
-         --namespace=${namespace} \
-         --cdi-namespace=${cdi_namespace} \
-@@ -103,7 +98,7 @@ for arg in $args; do
-         continue
-     fi
- 
--    ${templator} \
-+    ${KUBEVIRT_DIR}/tools/manifest-templator/manifest-templator \
-         --process-vars \
-         --namespace="{{ namespace }}" \
-         --cdi-namespace="{{ cdi_namespace }}" \
+-- 
+2.31.1
+

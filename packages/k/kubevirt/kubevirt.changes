@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 20 11:34:20 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use git format-patch:
+  0001-Don-t-build-virtctl-for-darwin-and-windows.patch
+  0002-Don-t-use-Bazel-in-build-manifests.sh.patch
+- Drop patches:
+  dont-build-virtctl-darwin.patch
+  dont-use-bazel-in-build-manifests.patch
+  fix-double-free-of-VirDomain.patch
+
+-------------------------------------------------------------------
+Thu May 20 08:52:49 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.41.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.41.0
+
+-------------------------------------------------------------------
 Tue May 18 05:15:45 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop fix-virsh-domcapabilities-error.patch (bsc#1185119)
