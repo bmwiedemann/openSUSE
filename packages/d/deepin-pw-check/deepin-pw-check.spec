@@ -37,7 +37,9 @@ Source0:        https://github.com/linuxdeepin/deepin-pw-check/archive/%{version
 Source1:        vendor.tar.gz
 Patch0:         disable-gobuild-in-makefile.patch
 BuildRequires:  gcc
-# BuildRequires:  golang(API) = 1.11
+%if 0%{?suse_version} > 1500
+BuildRequires:  golang(API) = 1.15
+%endif
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gdk-3.0)
@@ -50,7 +52,6 @@ BuildRequires:  libiniparser-devel
 BuildRequires:  polkit
 BuildRequires:  pam
 AutoReqProv:    Off
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 deepin-pw-check is a tool to verify the validity of the password
@@ -149,7 +150,6 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_libdir}/*.so
@@ -157,7 +157,6 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_includedir}/*.h
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 

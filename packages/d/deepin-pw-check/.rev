@@ -7,4 +7,12 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886023</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e74e982642510a63a9c294d70f048dfb</srcmd5>
+    <version>5.0.11</version>
+    <time>1621721181</time>
+    <user>dimstar_suse</user>
+    <comment>golang 1.16+ (forwarded request 894979 from hillwood)</comment>
+    <requestid>894980</requestid>
+  </revision>
 </revisionlist>
