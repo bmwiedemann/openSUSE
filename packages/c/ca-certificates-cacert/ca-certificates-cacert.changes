@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 22 11:15:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run (bsc#1186362)
+
+-------------------------------------------------------------------
+Thu May 20 21:35:37 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update Class 3 certificate from https://www.cacert.org/class3.crt
+  (the old one expired today)
+
+-------------------------------------------------------------------
 Sun Jan  8 07:44:41 UTC 2017 - mpluskal@suse.com
 
 - Use urls for sources

@@ -96,4 +96,15 @@
     <comment>1</comment>
     <requestid>449485</requestid>
   </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>b0b3b6e6318c132a99fd537059ee8332</srcmd5>
+    <version>1</version>
+    <time>1621721187</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner run (bsc#1186362)
+
+- update Class 3 certificate from https://www.cacert.org/class3.crt
+  (the old one expired today)</comment>
+    <requestid>894991</requestid>
+  </revision>
 </revisionlist>

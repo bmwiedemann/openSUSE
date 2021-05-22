@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-cacert
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,15 +23,19 @@ Release:        0
 Summary:        CAcert root certificates
 License:        SUSE-CacertRoot
 Group:          Productivity/Networking/Security
-Url:            http://www.cacert.org
-Source:         http://www.cacert.org/certs/class3.crt#/CAcert_class3.pem
-Source1:        http://www.cacert.org/certs/root.crt#/CAcert.pem
+URL:            https://www.cacert.org/
+# TEMP - source validator rejects validation because root cert expired
+# Source:         https://www.cacert.org/certs/class3.crt#/CAcert_class3.pem
+# Source1:        https://www.cacert.org/certs/root.crt#/CAcert.pem
+Source:         CAcert_class3.pem
+Source1:        CAcert.pem
+# from http://www.cacert.org/policy/RootDistributionLicense.html
 Source2:        LICENSE.cacert
 BuildRequires:  ca-certificates
 BuildRequires:  openssl
 BuildRequires:  p11-kit-devel
 Requires(post): ca-certificates
-Requires(postun): ca-certificates
+Requires(postun):ca-certificates
 BuildArch:      noarch
 
 %description
@@ -55,8 +59,7 @@ update-ca-certificates || true
 update-ca-certificates || true
 
 %files
-%defattr(-, root, root)
-%doc LICENSE
+%license LICENSE
 %{certdir}
 
 %changelog
