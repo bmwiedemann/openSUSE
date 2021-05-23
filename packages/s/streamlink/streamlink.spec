@@ -16,26 +16,43 @@
 #
 
 
+%define pythons python3
 Name:           streamlink
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
+# PATCH-FIX-UPSTREAM streamlink-fix_removed_plugin_test.patch https://github.com/streamlink/streamlink/pull/3653
+Patch0:         streamlink-fix_removed_plugin_test.patch
+
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel >= 3.4
 BuildRequires:  python3-requests >= 1.0
 BuildRequires:  python3-setuptools
+
+# TEST REQUIREMENTS
+BuildRequires:  python3-pytest
+BuildRequires:  python3-PySocks
+BuildRequires:  python3-freezegun
+BuildRequires:  python3-isodate
+BuildRequires:  python3-pycountry
+BuildRequires:  python3-pycryptodome
+BuildRequires:  python3-requests-mock
+BuildRequires:  python3-websocket-client
+
 Requires:       python3-PySocks
 Requires:       python3-isodate
 Requires:       python3-pycountry
 Requires:       python3-pycryptodome
 Requires:       python3-requests >= 1.0
 Requires:       python3-websocket-client
+
 Recommends:     vlc
 Suggests:       ffmpeg
 Suggests:       rtmpdump
@@ -51,6 +68,7 @@ Streamlink is a fork of the livestreamer project.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %python3_build
@@ -69,6 +87,9 @@ find %{buildroot}{%{python3_sitelib},%{python_sitelib}} -type f -name '*.py' | w
     fi
 done
 %fdupes -s %{buildroot}
+
+%check
+%pytest
 
 %files
 %license LICENSE

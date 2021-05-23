@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 19 22:13:33 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 2.1.1
+  * Added: --interface, -4 / --ipv4 and -6 / --ipv6 (#3483)
+  * Added: --niconico-purge-credentials (#3434)
+  * Added: --twitcasting-password (#3505)
+  * Added: Linux AppImages (#3611)
+  * Added: pre-built man page to bdist wheels and sdist tarballs (#3459, #3510)
+  * Added: plugin for ahaber.com.tr and atv.com.tr (#3484), nimo.tv (#3508)
+  * Fixed: --player-http / --player-continuous-http HTTP server being bound to all interfaces (#3450)
+  * Fixed: handling of languages without alpha_2 code when using pycountry (#3518)
+  * Fixed: memory leak when calling streamlink.streams() (#3486)
+  * Fixed: race condition in HLS related tests (#3454)
+  * Fixed: --player-fifo issues on Windows with VLC or MPV (#3619)
+  * Fixed: various plugins issues (see detailed changelog down below)
+  * Removed: Windows portable (RosadinTV) (#3535)
+  * Removed: plugin for micous.com (#3457), ntvspor.net (#3485), btsports (#3636)
+  * Dependencies: set websocket-client to >=0.58.0 (#3634)
+- Fix tests at build time (streamlink-fix_removed_plugin_test.patch, #3653)
+
+-------------------------------------------------------------------
 Thu Feb 18 22:14:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

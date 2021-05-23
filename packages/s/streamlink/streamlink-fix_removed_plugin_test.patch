@@ -1,0 +1,22 @@
+From 05c3daad638073efb520ca3c27201cb41c341bc3 Mon Sep 17 00:00:00 2001
+From: Alexis Murzeau <amubtdx@gmail.com>
+Date: Fri, 26 Mar 2021 22:58:52 +0100
+Subject: [PATCH] build: include .removed file in build
+
+This file is required by tests when executing them with the build dir.
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index ac1bc9294a..9db3a46a50 100644
+--- a/setup.py
++++ b/setup.py
+@@ -98,6 +98,7 @@ def is_wheel_for_windows():
+       license="Simplified BSD",
+       packages=find_packages("src"),
+       package_dir={"": "src"},
++      package_data={"streamlink.plugins": [".removed"]},
+       entry_points=entry_points,
+       data_files=data_files,
+       install_requires=deps,
