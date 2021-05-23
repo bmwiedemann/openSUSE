@@ -1387,4 +1387,20 @@ Hence, recommended to be added to 12.3</comment>
   (bsc#1185026). (forwarded request 887211 from xiaoguang_wang)</comment>
     <requestid>887506</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>029c62a3c1d2ed51e528b006e9d5ae27</srcmd5>
+    <version>40.1</version>
+    <time>1620334310</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890080 from dimstar)</comment>
+    <requestid>890142</requestid>
+  </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>cbca778b8681e381d4e596a0fd245cc8</srcmd5>
+    <version>40.1</version>
+    <time>1621805438</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 894774 from dimstar)</comment>
+    <requestid>894785</requestid>
+  </revision>
 </revisionlist>

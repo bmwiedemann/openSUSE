@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/nautilus/40/%{name}-%{version
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
 Source3:        set_trusted.sh
-Source99:       baselibs.conf
 # needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
