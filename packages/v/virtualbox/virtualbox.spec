@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virtualbox%{?dash}%{?name_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -186,6 +186,8 @@ Patch137:       handle_gsoap_208103.patch
 # Fix for struct file_operations backport in 15.3
 Patch139:       fixes_for_leap15.3.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
+# Fixes for kernel 5.13
+# Patch142:       fixes_for_5.13.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -331,6 +333,10 @@ the terms of the GNU Public License (GPL).
 
 
 
+
+
+
+
 ##########################################
 
 %package qt
@@ -348,6 +354,10 @@ Obsoletes:      %{name}-ose-qt < %{version}
 
 %description qt
 This package contains the code for the GUI used to control VMs.
+
+
+
+
 
 
 
@@ -403,6 +413,10 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
+
+
+
+
 #########################################
 
 %package guest-x11
@@ -416,6 +430,10 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
+
+
+
+
 
 
 
@@ -478,6 +496,10 @@ VirtualBox guest addition tools.
 
 
 
+
+
+
+
 ###########################################
 
 %package -n python3-%{name}
@@ -518,6 +540,10 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
+
+
+
 ###########################################
 
 %package devel
@@ -531,6 +557,10 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
+
+
 
 
 
@@ -590,6 +620,10 @@ sudo /sbin/vboxguestconfig
 
 
 
+
+
+
+
 ###########################################
 
 %package guest-desktop-icons
@@ -601,6 +635,10 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
+
+
 
 
 
@@ -696,6 +734,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch139 -p1
 %endif
 %patch141 -p1
+#%patch142 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 
@@ -1367,10 +1406,10 @@ COMMON_KMK_FLAGS+="
 #
 # build kernel modules for guest and host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxsf vboxvideo
+# guest modules : vboxguest,vboxsf
 echo "build kernel modules"
 for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
+           out/linux.*/release/bin/additions/src/vbox{guest,sf}; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1413,7 +1452,7 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
-for module_name in vbox{drv,netflt,netadp,guest,sf,video}
+for module_name in vbox{drv,netflt,netadp,guest,sf}
 do
 	#and through the all flavors
 	for flavor in %{flavors_to_build}; do

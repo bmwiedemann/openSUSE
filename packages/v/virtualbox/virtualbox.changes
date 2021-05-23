@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 15:59:52 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Disable the build of kmp vboxvideo, at least temporarily. 
+
+-------------------------------------------------------------------
 Fri May 14 10:35:52 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Correct WantedBy entry in vboxadd-service
