@@ -81,6 +81,9 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # allow reading crypto policies (submitted upstream 2021-03-08 - https://gitlab.com/apparmor/apparmor/-/merge_requests/720)
 Patch7:         crypto-policies-mr720.diff
 
+# extend abstractions/php for PHP 8 (submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/755)
+Patch8:         abstractions-php8.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -345,6 +348,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch4
 %patch5
 %patch7 -p1
+%patch8 -p1
 
 %build
 %define _lto_cflags %{nil}

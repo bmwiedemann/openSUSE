@@ -1,0 +1,47 @@
+commit 5853f52233d9d86754096e4b64415226b943b502
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Fri May 21 22:50:54 2021 +0200
+
+    abstractions/php: support PHP 8
+    
+    References: https://bugzilla.opensuse.org/show_bug.cgi?id=1186267
+
+diff --git a/profiles/apparmor.d/abstractions/php b/profiles/apparmor.d/abstractions/php
+index cd3172d4..ddafb077 100644
+--- a/profiles/apparmor.d/abstractions/php
++++ b/profiles/apparmor.d/abstractions/php
+@@ -13,26 +13,26 @@
+   abi <abi/3.0>,
+ 
+   # shared snippets for config files
+-  /etc/php{,5,7}/**/ r,
+-  /etc/php{,5,7}/**.ini r,
++  /etc/php{,5,7,8}/**/ r,
++  /etc/php{,5,7,8}/**.ini r,
+ 
+   # Xlibs
+   /usr/X11R6/lib{,32,64}/lib*.so* mr,
+   # php extensions
+-  /usr/lib{64,}/php{,5,7}/*/*.so mr,
++  /usr/lib{64,}/php{,5,7,8}/*/*.so mr,
+ 
+   # ICU (unicode support) data tables
+   /usr/share/icu/*/*.dat r,
+ 
+   # php session mmap socket
+-  /var/lib/php{,5,7}/session_mm_* rwlk,
++  /var/lib/php{,5,7,8}/session_mm_* rwlk,
+   # file based session handler
+-  /var/lib/php{,5,7}/sess_* rwlk,
+-  /var/lib/php{,5,7}/sessions/* rwlk,
++  /var/lib/php{,5,7,8}/sess_* rwlk,
++  /var/lib/php{,5,7,8}/sessions/* rwlk,
+ 
+   # php libraries
+-  /usr/share/php{,5,7}/ r,
+-  /usr/share/php{,5,7}/** mr,
++  /usr/share/php{,5,7,8}/ r,
++  /usr/share/php{,5,7,8}/** mr,
+ 
+   # MySQL extension
+   /usr/share/mysql/** r,

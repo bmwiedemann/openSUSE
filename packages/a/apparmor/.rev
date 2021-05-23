@@ -2121,4 +2121,12 @@ libapparmor:
   systemd into containers just because apparmor-parser ships a *.service file (forwarded request 888862 from cboltz)</comment>
     <requestid>888863</requestid>
   </revision>
+  <revision rev="152" vrev="7">
+    <srcmd5>2c31501285618b4dc1f5290d7ac6ac15</srcmd5>
+    <version>3.0.1</version>
+    <time>1621805442</time>
+    <user>dimstar_suse</user>
+    <comment>- add abstractions-php8.diff to support PHP8 in abstractions/php (boo#1186267) (forwarded request 894864 from cboltz)</comment>
+    <requestid>894865</requestid>
+  </revision>
 </revisionlist>
