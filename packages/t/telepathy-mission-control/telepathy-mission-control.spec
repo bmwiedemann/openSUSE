@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-mission-control
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           telepathy-mission-control
-Version:        5.16.5
+Version:        5.16.6
 Release:        0
 Summary:        Telepathy Mission Control instant messaging connection manager
 License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            http://mission-control.sourceforge.net/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-mission-control/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tp-mc-fix-prop-name.patch -- account: Fix property name
-Patch:          tp-mc-fix-prop-name.patch
-
 BuildRequires:  fdupes
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 18 17:20:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.16.6
+  + Update tests to Python 3
+  + account: Fix property name
+- Drop tp-mc-fix-prop-name.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 20:37:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.16.5:
