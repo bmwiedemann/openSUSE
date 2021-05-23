@@ -20,19 +20,19 @@
 %define skip_python2 1
 
 Name:           python-xkcdpass
-Version:        1.17.6
+Version:        1.19.2
 Release:        0
 Summary:        A flexible and scriptable password generator which generates strong passphrases
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/redacted/XKCD-password-generator
-Source:         https://files.pythonhosted.org/packages/cc/3a/065130b94cb57cbbd7057e4627cc15bcb16bb9f9d9ef6290e8138273b7a6/xkcdpass-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/a3/46/c86f1c11abe2679c3d7e7e9a8f1dc2d4d400ef0273e2ab35fe7a09e8d9f7/xkcdpass-1.19.2.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 23 07:48:24 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 1.19.2
+  * Added randomised delimiters
+  * Initial support for multiple wordfiles
+
+-------------------------------------------------------------------
 Fri Jan 29 11:41:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix singlespec
@@ -6,7 +13,7 @@ Fri Jan 29 11:41:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sat Dec 19 08:33:59 UTC 2020 - İsmail Dönmez <idoenmez+factory@suse.de>
 
-- Update to version 1.7.6
+- Update to version 1.17.6
   * No changelog upstream
 
 -------------------------------------------------------------------
