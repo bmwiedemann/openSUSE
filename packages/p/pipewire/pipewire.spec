@@ -44,7 +44,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.27
+Version:        0.3.28
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmltoman
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
 %if %{with aac}
@@ -314,7 +315,7 @@ cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
-touch %{buildroot}%{_sysconfdir}/pipewire/media-session.d/with-alsa
+touch %{buildroot}%{_datadir}/pipewire/media-session.d/with-alsa
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
 
@@ -387,17 +388,17 @@ fi
 %{_mandir}/man1/pipewire.1%{ext_man}
 %{_mandir}/man5/pipewire.conf.5%{ext_man}
 
-%dir %{_sysconfdir}/pipewire
-%config(noreplace) %{_sysconfdir}/pipewire/pipewire.conf
-%config(noreplace) %{_sysconfdir}/pipewire/client.conf
-%config(noreplace) %{_sysconfdir}/pipewire/client-rt.conf
-%config(noreplace) %{_sysconfdir}/pipewire/jack.conf
-%config(noreplace) %{_sysconfdir}/pipewire/pipewire-pulse.conf
-%dir %{_sysconfdir}/pipewire/media-session.d
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/media-session.conf
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/alsa-monitor.conf
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/bluez-monitor.conf
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/v4l2-monitor.conf
+%dir %{_datadir}/pipewire
+%{_datadir}/pipewire/pipewire.conf
+%{_datadir}/pipewire/client.conf
+%{_datadir}/pipewire/client-rt.conf
+%{_datadir}/pipewire/jack.conf
+%{_datadir}/pipewire/pipewire-pulse.conf
+%dir %{_datadir}/pipewire/media-session.d
+%{_datadir}/pipewire/media-session.d/media-session.conf
+%{_datadir}/pipewire/media-session.d/alsa-monitor.conf
+%{_datadir}/pipewire/media-session.d/bluez-monitor.conf
+%{_datadir}/pipewire/media-session.d/v4l2-monitor.conf
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -415,7 +416,7 @@ fi
 %{_bindir}/pw-jack
 %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
 %{_mandir}/man1/pw-jack.1%{ext_man}
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-jack
+%{_datadir}/pipewire/media-session.d/with-jack
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -473,9 +474,18 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node-factory.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-filter-chain.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-pulse-tunnel.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-zeroconf-discover.so
 %dir %{_datadir}/alsa-card-profile
 %dir %{_datadir}/alsa-card-profile/mixer
 %{_datadir}/alsa-card-profile/mixer/*
+%dir %{_datadir}/pipewire/filter-chain
+%{_datadir}/pipewire/filter-chain/demonic.conf
+%{_datadir}/pipewire/filter-chain/sink-dolby-surround.conf
+%{_datadir}/pipewire/filter-chain/sink-eq6.conf
+%{_datadir}/pipewire/filter-chain/sink-matrix-spatialiser.conf
+%{_datadir}/pipewire/filter-chain/source-rnnoise.conf
 
 %files spa-plugins-%{spa_ver_str}
 %{_libdir}/spa-%{spa_ver}/alsa/libspa-alsa.so
@@ -531,7 +541,7 @@ fi
 %files pulseaudio
 %{_bindir}/pipewire-pulse
 %{_userunitdir}/pipewire-pulse.*
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-pulseaudio
+%{_datadir}/pipewire/media-session.d/with-pulseaudio
 
 %files alsa
 %dir %{_libdir}/alsa-lib
@@ -544,7 +554,7 @@ fi
 %dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
-%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-alsa
+%{_datadir}/pipewire/media-session.d/with-alsa
 %{_udevrulesdir}/90-pipewire-alsa.rules
 
 %files lang -f %{name}.lang
