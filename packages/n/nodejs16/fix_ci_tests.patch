@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v16.0.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v16.2.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v16.0.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v16.0.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v16.2.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v16.2.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v16.0.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v16.0.0/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v16.2.0/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-v16.0.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-v16.0.0/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v16.2.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v16.2.0/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,52 +29,47 @@ Index: node-v16.0.0/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-v16.0.0/test/parallel/test-tls-passphrase.js
+Index: node-v16.2.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v16.0.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v16.0.0/test/parallel/test-tls-passphrase.js
+--- node-v16.2.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v16.2.0/test/parallel/test-tls-passphrase.js
 @@ -224,7 +224,7 @@ server.listen(0, common.mustCall(functio
  })).unref();
  
  const errMessagePassword = common.hasOpenSSL3 ?
--  /Error: PEM_read_bio_PrivateKey/ : /bad decrypt/;
-+  /Error: PEM_read_bio_PrivateKey/ : /bad (decrypt|password read)/;
+-  /Error: error:1400006B:UI routines::processing error/ : /bad decrypt/;
++  /Error: error:1400006B:UI routines::processing error/ : /bad (decrypt|password read)/;
  
  // Missing passphrase
  assert.throws(function() {
-@@ -255,7 +255,7 @@ assert.throws(function() {
+@@ -254,7 +254,7 @@ assert.throws(function() {
+   });
  }, errMessagePassword);
  
- const errMessageDecrypt = common.hasOpenSSL3 ?
--  /Error: PEM_read_bio_PrivateKey/ : /bad decrypt/;
-+  /Error: PEM_read_bio_PrivateKey/ : /bad (decrypt|password read)/;
+-const errMessageDecrypt = /bad decrypt/;
++const errMessageDecrypt = /bad (decrypt|password read)/;
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-v16.0.0/test/parallel/test-repl-envvars.js
+Index: node-v16.2.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v16.0.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v16.0.0/test/parallel/test-repl-envvars.js
-@@ -2,12 +2,14 @@
+--- node-v16.2.0.orig/test/parallel/test-repl-envvars.js
++++ node-v16.2.0/test/parallel/test-repl-envvars.js
+@@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
  
 -require('../common');
 +const common = require('../common');
++common.skip('Not running test in OBS');
++
  const stream = require('stream');
  const REPL = require('internal/repl');
  const assert = require('assert');
- const inspect = require('util').inspect;
- 
-+common.skip('Not running test in OBS');
-+
- const tests = [
-   {
-     env: {},
-Index: node-v16.0.0/test/common/index.mjs
+Index: node-v16.2.0/test/common/index.mjs
 ===================================================================
---- node-v16.0.0.orig/test/common/index.mjs
-+++ node-v16.0.0/test/common/index.mjs
+--- node-v16.2.0.orig/test/common/index.mjs
++++ node-v16.2.0/test/common/index.mjs
 @@ -44,6 +44,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
@@ -91,10 +86,10 @@ Index: node-v16.0.0/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    getTTYfd,
-Index: node-v16.0.0/Makefile
+Index: node-v16.2.0/Makefile
 ===================================================================
---- node-v16.0.0.orig/Makefile
-+++ node-v16.0.0/Makefile
+--- node-v16.2.0.orig/Makefile
++++ node-v16.2.0/Makefile
 @@ -511,7 +511,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
@@ -105,7 +100,7 @@ Index: node-v16.0.0/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -690,7 +691,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -686,7 +687,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -115,10 +110,10 @@ Index: node-v16.0.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v16.0.0/test/parallel/test-crypto-dh.js
+Index: node-v16.2.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v16.0.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v16.0.0/test/parallel/test-crypto-dh.js
+--- node-v16.2.0.orig/test/parallel/test-crypto-dh.js
++++ node-v16.2.0/test/parallel/test-crypto-dh.js
 @@ -189,7 +189,7 @@ assert.throws(() => {
    dh3.computeSecret('');
  }, { message: common.hasOpenSSL3 ?

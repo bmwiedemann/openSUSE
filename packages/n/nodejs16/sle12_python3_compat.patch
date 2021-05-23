@@ -1,9 +1,9 @@
-Index: node-v16.0.0/configure
+Index: node-v16.2.0/configure
 ===================================================================
---- node-v16.0.0.orig/configure
-+++ node-v16.0.0/configure
-@@ -18,7 +18,7 @@ import sys
- from distutils.spawn import find_executable
+--- node-v16.2.0.orig/configure
++++ node-v16.2.0/configure
+@@ -21,7 +21,7 @@ except ImportError:
+   from distutils.spawn import find_executable as which
  
  print('Node.js configure: Found Python {}.{}.{}...'.format(*sys.version_info))
 -acceptable_pythons = ((3, 9), (3, 8), (3, 7), (3, 6))
@@ -11,10 +11,10 @@ Index: node-v16.0.0/configure
  if sys.version_info[:2] in acceptable_pythons:
    import configure
  else:
-Index: node-v16.0.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+Index: node-v16.2.0/deps/npm/node_modules/node-gyp/lib/find-python.js
 ===================================================================
---- node-v16.0.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
-+++ node-v16.0.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+--- node-v16.2.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
++++ node-v16.2.0/deps/npm/node_modules/node-gyp/lib/find-python.js
 @@ -18,7 +18,7 @@ PythonFinder.prototype = {
    log: logWithPrefix(log, 'find Python'),
    argsExecutable: ['-c', 'import sys; print(sys.executable);'],

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 20 14:56:23 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 16.2.0:
+  * async_hooks: use new v8::Context PromiseHook API
+  * deps: npm updated to 7.13.0
+  * lib: support setting process.env.TZ on windows
+  * module: add support for URL to import.meta.resolve
+  * process: add 'worker' event
+  * util: add util.types.isKeyObject and util.types.isCryptoKey
+
+-------------------------------------------------------------------
 Wed May  5 11:21:13 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 16.1.0

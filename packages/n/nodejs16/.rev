@@ -7,4 +7,18 @@
     <comment>new node to replace 10 and 15</comment>
     <requestid>890950</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee86ab5b3834cfd244e5e68a3fa4dd2d</srcmd5>
+    <version>16.2.0</version>
+    <time>1621805420</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 16.2.0:
+  * async_hooks: use new v8::Context PromiseHook API
+  * deps: npm updated to 7.13.0
+  * lib: support setting process.env.TZ on windows
+  * module: add support for URL to import.meta.resolve
+  * process: add 'worker' event
+  * util: add util.types.isKeyObject and util.types.isCryptoKey</comment>
+    <requestid>894665</requestid>
+  </revision>
 </revisionlist>
