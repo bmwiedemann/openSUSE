@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 21 11:50:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit as patch 6827c09d.patch
+  Global buffer overflow in fig2dev/read.c in function read_colordef() 
+  (boo#1186329, CVE-2021-3561) 
+
+-------------------------------------------------------------------
 Thu Apr  1 11:58:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to fig2dev version 3.2.8 Patchlevel 8a (Mar 2021)

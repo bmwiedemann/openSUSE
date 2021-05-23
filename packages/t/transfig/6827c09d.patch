@@ -1,0 +1,68 @@
+From 6827c09d2d6491cb2ae3ac7196439ff3aa791fd9 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Sun, 25 Apr 2021 00:49:15 +0200
+Subject: [PATCH] Sanitize color definitions, ticket #116
+
+---
+ fig2dev/read.c | 35 +++++++++++++++++++++--------------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
+
+diff --git fig2dev/read.c fig2dev/read.c
+index 7e18fda..4c6bacc 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -520,30 +520,37 @@ read_colordef(char *line, int line_no)
+ 
+ 	if (num_usr_cols >= MAX_USR_COLS) {
+ 		if (num_usr_cols == MAX_USR_COLS) {
+-			put_msg("Maximum number of color definitions (%d) exceeded at line %d.",
++			put_msg("Maximum number of color definitions (%d) "
++					"exceeded at line %d.",
+ 					MAX_USR_COLS, line_no);
+ 			++num_usr_cols;
+ 		}
+ 		/* ignore additional colors */
+ 		return;
+ 	}
+-	if (sscanf(line, "%*d %d #%2x%2x%2x", &c, &r, &g, &b) != 4) {
+-		if (c >= NUM_STD_COLS && c < NUM_STD_COLS + MAX_USR_COLS) {
+-			put_msg("Invalid color definition at line %d: %s, setting to black (#00000).",
+-					line_no, line);
+-			r = g = b = 0;
+-		} else {
+-			put_msg("User color number at line %d out of range (%d), should be between %d and %d.",
++	if (sscanf(line, "%*d %d #%2x%2x%2x", &c, &r, &g, &b) == 4) {
++		if (c >= NUM_STD_COLS && c < NUM_STD_COLS + MAX_USR_COLS &&
++				r >=0 && r < 256 && g >=0 && g < 256 &&
++				b >= 0 && b < 256 ) {
++			user_col_indx[num_usr_cols] = c;
++			user_colors[num_usr_cols].r = r;
++			user_colors[num_usr_cols].g = g;
++			user_colors[num_usr_cols].b = b;
++			++num_usr_cols;
++		} else if (c < NUM_STD_COLS || c >= NUM_STD_COLS+MAX_USR_COLS) {
++			put_msg("User color number at line %d out of range (%d)"
++					", should be between %d and %d.",
+ 					line_no, c, NUM_STD_COLS,
+ 					NUM_STD_COLS + MAX_USR_COLS - 1);
+-			return;
++		} else {
++			put_msg("Invalid color definition at line %d: %s, color"
++				       " values must be between 0 through 255.",
++								line_no, line);
+ 		}
++	} else {
++		put_msg("Invalid color definition at line %d: %s.",
++							line_no, line);
+ 	}
+-	user_col_indx[num_usr_cols] = c;
+-	user_colors[num_usr_cols].r = r;
+-	user_colors[num_usr_cols].g = g;
+-	user_colors[num_usr_cols].b = b;
+-	++num_usr_cols;
+ }
+ 
+ static void
+-- 
+2.26.2
+

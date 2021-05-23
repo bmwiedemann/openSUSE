@@ -53,6 +53,7 @@ License:        MIT
 Group:          Productivity/Graphics/Convertors
 Source:         fig2dev-%{version}.tar.xz
 Patch0:         transfig-3.2.8.dif
+Patch1:         6827c09d.patch
 Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
@@ -94,6 +95,7 @@ Authors:
 %setup -q -n fig2dev-%{version}
 find -type f | xargs -r chmod a-x,go-w
 %patch0 -p0 -b .0
+%patch1 -p0 -b .1
 %patch4 -p1 -b .afl
 %patch43 -p1 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
