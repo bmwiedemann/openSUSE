@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 21.1.0
+%define _version 21.1.1
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -70,6 +70,11 @@
   %define with_opencl 1
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
+    %define vulkan_drivers swrast,amd,intel
+  %endif
+  %ifarch %{arm} aarch64
+    %define with_vulkan 1
+    %define vulkan_drivers swrast,amd,broadcom,freedreno
   %endif
 %endif
 
@@ -109,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        21.1.0
+Version:        21.1.1
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -650,11 +655,41 @@ Supplements:    xf86-video-ati
 %description -n libvulkan_radeon
 This package contains the Vulkan parts for Mesa.
 
+%package -n libvulkan_lvp
+Summary:        Mesa vulkan driver for LVP
+Group:          System/Libraries
+
+%description -n libvulkan_lvp
+This package contains the Vulkan parts for Mesa.
+
+%ifarch %{arm} aarch64
+%package -n libvulkan_broadcom
+Summary:        Mesa vulkan driver for Broadcom
+Group:          System/Libraries
+
+%description -n libvulkan_broadcom
+This package contains the Vulkan parts for Mesa.
+
+%package -n libvulkan_freedreno
+Summary:        Mesa vulkan driver for Freedreno
+Group:          System/Libraries
+
+%description -n libvulkan_freedreno
+This package contains the Vulkan parts for Mesa.
+%endif
+
 %package -n Mesa-libVulkan-devel
 Summary:        Mesa's Vulkan development files
 Group:          Development/Libraries/C and C++
+%ifarch %{ix86} x86_64
 Requires:       libvulkan_intel = %{version}
+%endif
+Requires:       libvulkan_lvp = %{version}
 Requires:       libvulkan_radeon = %{version}
+%ifarch %arm} aarch64
+Requires:       libvulkan_broadcom = %{version}
+Requires:       libvulkan_freedreno = %{version}
+%endif
 
 %description -n Mesa-libVulkan-devel
 This package contains the development files for Mesa's Vulkan implementation.
@@ -662,8 +697,15 @@ This package contains the development files for Mesa's Vulkan implementation.
 %package -n Mesa-vulkan-device-select
 Summary:        Vulkan layer to select Vulkan devices provided by Mesa
 Group:          System/Libraries
+%ifarch %{ix86} x86_64
 Requires:       libvulkan_intel = %{version}
+%endif
+Requires:       libvulkan_lvp = %{version}
 Requires:       libvulkan_radeon = %{version}
+%ifarch %arm} aarch64
+Requires:       libvulkan_broadcom = %{version}
+Requires:       libvulkan_freedreno = %{version}
+%endif
 
 %description -n Mesa-vulkan-device-select
 This package contains the VK_MESA_device_select Vulkan layer
@@ -671,8 +713,15 @@ This package contains the VK_MESA_device_select Vulkan layer
 %package -n Mesa-vulkan-overlay
 Summary:        Mesa Vulkan Overlay layer
 Group:          System/Libraries
+%ifarch %{ix86} x86_64
 Requires:       libvulkan_intel = %{version}
+%endif
+Requires:       libvulkan_lvp = %{version}
 Requires:       libvulkan_radeon = %{version}
+%ifarch %arm} aarch64
+Requires:       libvulkan_broadcom = %{version}
+Requires:       libvulkan_freedreno = %{version}
+%endif
 
 %description -n Mesa-vulkan-overlay
 This package contains the VK_MESA_Overlay Vulkan layer
@@ -777,7 +826,7 @@ egl_platforms=x11,wayland
             -Dgallium-xa=true \
 %endif
 %if 0%{with_vulkan}
-            -Dvulkan-drivers=intel,amd \
+            -Dvulkan-drivers=%{?vulkan_drivers} \
             -Dvulkan-layers=device-select,overlay \
 %else
             -Dvulkan-drivers= \
@@ -1120,17 +1169,39 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if 0%{with_vulkan}
+%ifarch %{ix86} x86_64
 %files -n libvulkan_intel
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/intel_icd.*.json
 %{_libdir}/libvulkan_intel.so
+%endif
 
 %files -n libvulkan_radeon
 %{_libdir}/libvulkan_radeon.so
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/radeon_icd.*.json
+
+%files -n libvulkan_lvp
+%{_libdir}/libvulkan_lvp.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/lvp_icd.*.json
+
+%ifarch %{arm} aarch64
+%files -n libvulkan_broadcom
+%{_libdir}/libvulkan_broadcom.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/broadcom_icd.*.json
+
+%files -n libvulkan_freedreno
+%{_libdir}/libvulkan_freedreno.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/freedreno_icd.*.json
+%endif
 
 %files -n Mesa-libVulkan-devel
 %dir %{_includedir}/vulkan

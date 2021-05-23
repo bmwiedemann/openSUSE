@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 20 10:25:35 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.1.1
+  * bugfix release
+  * mostly AMD and Intel changes as usual, but also a decent amount
+    of ARM fixes and more 
+
+-------------------------------------------------------------------
+Wed May 19 08:29:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add swrast to vulkan
+- Enable vulkan on %{arm} and aarch64 with: swrast, amd, 
+  broadcom and freedreno
+
+-------------------------------------------------------------------
 Fri May 14 03:24:24 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled build of device-select and overlay vulkan layers

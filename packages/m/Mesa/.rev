@@ -4444,4 +4444,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- reenabled build of device-select and overlay vulkan layers</comment>
     <requestid>893063</requestid>
   </revision>
+  <revision rev="406" vrev="278">
+    <srcmd5>793c46a0e020c12c4c1388221b53f511</srcmd5>
+    <version>unknown</version>
+    <time>1621805443</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.1.1
+  * bugfix release
+  * mostly AMD and Intel changes as usual, but also a decent amount
+    of ARM fixes and more 
+
+- Add swrast to vulkan
+- Enable vulkan on %{arm} and aarch64 with: swrast, amd, 
+  broadcom and freedreno</comment>
+    <requestid>894910</requestid>
+  </revision>
 </revisionlist>
