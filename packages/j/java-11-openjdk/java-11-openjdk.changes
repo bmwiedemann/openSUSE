@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 20 13:52:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * nss-security-provider.patch
+    + make the NSS provider first in the list
+
+-------------------------------------------------------------------
 Wed Apr 21 08:24:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.11+9 (April 2021, CPU)

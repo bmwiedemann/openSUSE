@@ -1,10 +1,10 @@
 --- openjdk/src/java.base/share/conf/security/java.security	2021-03-16 07:15:49.798093653 +0100
 +++ openjdk/src/java.base/share/conf/security/java.security	2021-03-16 11:38:01.416893125 +0100
-@@ -84,6 +84,7 @@
- #ifndef solaris
- security.provider.tbd=SunPKCS11
- #endif
-+security.provider.tbd=SunPKCS11 ${java.home}/conf/security/nss.cfg
- 
+@@ -60,6 +60,7 @@
  #
- # A list of preferred providers for specific algorithms. These providers will
+ # List of providers and their preference orders (see above):
+ #
++security.provider.tbd=SunPKCS11 ${java.home}/conf/security/nss.cfg
+ #ifdef solaris
+ security.provider.tbd=OracleUcrypto
+ security.provider.tbd=SunPKCS11 ${java.home}/conf/security/sunpkcs11-solaris.cfg
