@@ -297,4 +297,12 @@
   * Implement missing mutual exclusion for Windows hosts (forwarded request 827323 from dirkmueller)</comment>
     <requestid>828182</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>9f14f25b61ed2272d16e7434fbc959e7</srcmd5>
+    <version>0.15.2</version>
+    <time>1621805437</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 894771 from dimstar)</comment>
+    <requestid>894783</requestid>
+  </revision>
 </revisionlist>

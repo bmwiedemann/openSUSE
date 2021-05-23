@@ -1,7 +1,7 @@
 #
 # spec file for package check
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libcheck.github.io/check/
 Source:         https://github.com/libcheck/check/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -87,10 +86,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm %{buildroot}%{_docdir}/%{name}/{COPYING.LESSER,ChangeLog,NEWS,README}
 
 %post -n %{libname} -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %postun -n %{libname} -p /sbin/ldconfig
+
 %preun devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
