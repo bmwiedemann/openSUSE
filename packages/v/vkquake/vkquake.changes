@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  7 16:46:45 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.05.2
+  * Only use VK_EXT_full_screen_exclusive with NVIDIA drivers as
+    people reported problems with other configurations
+  * Fall back to non exclusive full screen if swap chain can't be created
+  * Fix descriptor set leak
+  * Fix rare crash in vertex buffer memory management
+  * Fix world dynamic light update lagging one frame behind brushes
+
+-------------------------------------------------------------------
 Sat Dec 26 22:42:48 UTC 2020 - Jacob Tice <jacob.a.tice@gmail.com>
 
 - Update to version 1.05.1

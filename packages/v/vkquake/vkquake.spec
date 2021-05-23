@@ -1,7 +1,7 @@
 #
 # spec file for package vkquake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.05.1
+Version:        1.05.2
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
