@@ -1,0 +1,38 @@
+Index: fedora-policy-20210419/policy/modules/system/systemd.te
+===================================================================
+--- fedora-policy-20210419.orig/policy/modules/system/systemd.te
++++ fedora-policy-20210419/policy/modules/system/systemd.te
+@@ -1357,3 +1357,10 @@ fstools_rw_swap_files(systemd_sleep_t)
+ 
+ # systemd-sleep needs to getattr swap partitions
+ storage_getattr_fixed_disk_dev(systemd_sleep_t)
++
++
++#######################################
++#
++# Allow systemd to watch certificate dir for ca-certificates
++# 
++watch_dirs_pattern(init_t,cert_t,cert_t)
+Index: fedora-policy-20210419/policy/modules/system/init.te
+===================================================================
+--- fedora-policy-20210419.orig/policy/modules/system/init.te
++++ fedora-policy-20210419/policy/modules/system/init.te
+@@ -317,7 +317,10 @@ files_etc_filetrans_etc_runtime(init_t,
+ # Run /etc/X11/prefdm:
+ files_exec_etc_files(init_t)
+ files_watch_etc_dirs(init_t)
++files_watch_etc_files(init_t)
+ files_read_usr_files(init_t)
++files_watch_usr_dirs(init_t)
++files_watch_usr_files(init_t)
+ files_watch_root_dirs(init_t)
+ files_write_root_dirs(init_t)
+ files_watch_var_dirs(init_t)
+@@ -334,6 +337,7 @@ files_remount_rootfs(init_t)
+ files_create_var_dirs(init_t)
+ files_watch_home(init_t)
+ files_watch_all_pid(init_t)
++watch_dirs_pattern(init_t,lib_t,lib_t)
+ 
+ fs_list_inotifyfs(init_t)
+ # cjp: this may be related to /dev/log

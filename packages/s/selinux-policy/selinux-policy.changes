@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 18 11:10:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- allow systemd to watch /usr, /usr/lib, /etc, /etc/pki as we have path units
+  that trigger on changes in those.
+  Added fix_systemd_watch.patch
+- own /usr/share/selinux/packages/$SELINUXTYPE/ and
+  /var/lib/selinux/$SELINUXTYPE/active/modules/* to allow packages to install
+  files there
+
+-------------------------------------------------------------------
 Wed Apr 28 15:18:37 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - allow cockpit socket to bind nodes (fix_cockpit.patch)

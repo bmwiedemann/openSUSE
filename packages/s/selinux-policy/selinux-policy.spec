@@ -131,6 +131,7 @@ Patch050:       fix_libraries.patch
 Patch051:       fix_dovecot.patch
 # https://github.com/cockpit-project/cockpit/pull/15758
 Patch052:       fix_cockpit.patch
+Patch053:       fix_systemd_watch.patch
 
 Patch100:       sedoctool.patch
 
@@ -183,6 +184,7 @@ make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} install \
 make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} install-appconfig \
 make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} SEMODULE="%{_sbindir}/semodule -p %{buildroot} -X 100 " load \
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/selinux/%1/logins \
+%{__mkdir} -p %{buildroot}%{_sharedstatedir}/selinux/%1/active/modules/{1,2,4}00 \
 touch %{buildroot}%{_sysconfdir}/selinux/%1/contexts/files/file_contexts.subs \
 install -m0644 selinux_config/securetty_types-%1 %{buildroot}%{_sysconfdir}/selinux/%1/contexts/securetty_types \
 install -m0644 selinux_config/file_contexts.subs_dist %{buildroot}%{_sysconfdir}/selinux/%1/contexts/files \
@@ -210,6 +212,8 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/semanage.trans.LOCK \
 %dir %attr(700,root,root) %{_sharedstatedir}/selinux/%1/active/modules \
 %dir %{_sharedstatedir}/selinux/%1/active/modules/100 \
+%dir %{_sharedstatedir}/selinux/%1/active/modules/200 \
+%dir %{_sharedstatedir}/selinux/%1/active/modules/400 \
 %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/modules/100/base \
 %dir %{_sysconfdir}/selinux/%1/policy/ \
 %verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/policy/policy.* \
@@ -250,6 +254,7 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %config(noreplace) %{_sysconfdir}/selinux/%1/contexts/users/user_u \
 %config(noreplace) %{_sysconfdir}/selinux/%1/contexts/users/staff_u \
 %dir %{_datadir}/selinux/%1 \
+%dir %{_datadir}/selinux/packages/%1 \
 %{_datadir}/selinux/%1/base.lst \
 %{_datadir}/selinux/%1/modules-base.lst \
 %{_datadir}/selinux/%1/modules-contrib.lst \
@@ -409,7 +414,7 @@ sed -i 's|SELINUXSTOREPATH|%{_sharedstatedir}/selinux|' %{buildroot}%{_rpmconfig
 mkdir -p %{buildroot}%{_datadir}/selinux/{targeted,mls,minimum,modules}/
 mkdir -p %{buildroot}%{_sharedstatedir}/selinux/{targeted,mls,minimum,modules}/
 
-mkdir -p %{buildroot}%{_datadir}/selinux/packages
+mkdir -p %{buildroot}%{_datadir}/selinux/packages/{targeted,mls,minimum,modules}/
 
 mkdir selinux_config
 for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE91} %{SOURCE92} %{SOURCE94};do

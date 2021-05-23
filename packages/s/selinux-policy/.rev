@@ -100,4 +100,17 @@
     <comment></comment>
     <requestid>893917</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fdf7d3970c4be32aa209b29639848731</srcmd5>
+    <version>20210419</version>
+    <time>1621805429</time>
+    <user>dimstar_suse</user>
+    <comment>- allow systemd to watch /usr, /usr/lib, /etc, /etc/pki as we have path units
+  that trigger on changes in those.
+  Added fix_systemd_watch.patch
+- own /usr/share/selinux/packages/$SELINUXTYPE/ and
+  /var/lib/selinux/$SELINUXTYPE/active/modules/* to allow packages to install
+  files there</comment>
+    <requestid>894727</requestid>
+  </revision>
 </revisionlist>
