@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun May 16 17:55:36 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1711:
+  * Fix Disk shader cache when accurate multiplication is off (#5711)
+  * Update translations (2021-03-01) (#5730)
+  * NWM_UDS: implement disconnect_reason and EjectClient (#5331)
+  * Update dynarmic
+  * gcc 11 compatibility fix (suggestion) (#5778)
+  * sdl2_sink: remove SDL_AUDIO_ALLOW_FREQUENCY_CHANGE flag
+  * Re-update catch and dynarmic
+  * input_common: Fix libusb include on Arch
+  * libusb: Add /utf-8 compile option for MSVC.
+  * gcadapter: Implement auto map feature
+  * cmake: unbreak system libusb support
+  * configure_input: Add frontend text for GC adapter
+  * gc_adapter: Port code cleanup and feature updates from yuzu
+  * input_common: Add support for GameCube Adapter
+  * externals: Track upstream libusb
+  * Update src/citra_qt/configuration/configure_storage.cpp
+  * Update src/citra_qt/configuration/configure_storage.h
+  * citra-qt: Added configure storage to handle NAND and SDMC dir location
+  * config: better variable naming
+  * config: Added nand_directory and sdmc_directory to Settings
+  * file_util: Add a function to update the user path
+  * settings: Save and load NAND/SD dirs from config
+  * update catch
+  * Update dynarmic
+  * gl_rasterizer: check for GL_ARB_copy_image
+  * shader_disk_cache: warn the user when ARB_get_program_binary is not supported.
+  * fix(net): prevent gibberish padding on linux
+  * common/telemetry: Migrate namespace into the Common namespace
+  * main/common: Log/append AVX/FMA to the Host CPU string if available and add AVX512 detection
+  * common/telemetry: Migrate core-independent info gathering to common
+  * Rename profiler parameter names
+  * Mark variables only used on trace logs as maybe_unused
+  * Use maybe_unused instead of Q_UNUSED
+  * fix clang format
+  * fix some conversion warnings
+  * unreachable code
+  * Fix nihstro include style to conform to the style used in other instances.
+  * Solve some unreferenced parameter warnings
+  * Resolve some variable hiding warnings
+  * Resolve unused variable warnings
+  * Resolve some type conversion warnings
+  * remove unnecessary headers
+  * resolve warnings of deprecated Qt members
+
+-------------------------------------------------------------------
 Sun Mar 07 00:11:54 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version nightly1696:
