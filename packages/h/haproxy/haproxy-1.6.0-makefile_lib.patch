@@ -1,8 +1,8 @@
-Index: haproxy-2.2/Makefile
+Index: haproxy-2.4/Makefile
 ===================================================================
---- haproxy-2.2.orig/Makefile
-+++ haproxy-2.2/Makefile
-@@ -660,7 +660,7 @@ PCRE_CONFIG    	:= pcre-config
+--- haproxy-2.4.orig/Makefile
++++ haproxy-2.4/Makefile
+@@ -716,7 +716,7 @@ PCRE_CONFIG    	:= pcre-config
  PCREDIR	        := $(shell $(PCRE_CONFIG) --prefix 2>/dev/null || echo /usr/local)
  ifneq ($(PCREDIR),)
  PCRE_INC        := $(PCREDIR)/include
@@ -11,7 +11,7 @@ Index: haproxy-2.2/Makefile
  endif
  
  ifeq ($(USE_STATIC_PCRE),)
-@@ -679,7 +679,7 @@ PCRE2_CONFIG 	:= pcre2-config
+@@ -735,7 +735,7 @@ PCRE2_CONFIG 	:= pcre2-config
  PCRE2DIR	:= $(shell $(PCRE2_CONFIG) --prefix 2>/dev/null || echo /usr/local)
  ifneq ($(PCRE2DIR),)
  PCRE2_INC       := $(PCRE2DIR)/include

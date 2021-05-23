@@ -1,15 +1,17 @@
---- a/Makefile
-+++ b/Makefile
-@@ -101,7 +101,7 @@
+Index: haproxy-2.4/Makefile
+===================================================================
+--- haproxy-2.4.orig/Makefile
++++ haproxy-2.4/Makefile
+@@ -104,7 +104,7 @@
  #   LUA_LIB        : force the lib path to lua
  #   LUA_INC        : force the include path to lua
  #   LUA_LIB_NAME   : force the lib name (or automatically evaluated, by order of
 -#                                        priority : lua5.3, lua53, lua).
-+#                                        priority : lua5.4, lua54, lua5.3, lua53, lua).
- #   IGNOREGIT      : ignore GIT commit versions if set.
- #   VERSION        : force haproxy version reporting.
- #   SUBVERS        : add a sub-version (eg: platform, model, ...).
-@@ -579,11 +579,11 @@
++#                                        priority : lua5.4, lua5.3, lua53, lua).
+ #   OT_DEBUG       : compile the OpenTracing filter in debug mode
+ #   OT_INC         : force the include path to libopentracing-c-wrapper
+ #   OT_LIB         : force the lib path to libopentracing-c-wrapper
+@@ -608,11 +608,11 @@ OPTIONS_CFLAGS  += $(if $(LUA_INC),-I$(L
  LUA_LD_FLAGS := -Wl,$(if $(EXPORT_SYMBOL),$(EXPORT_SYMBOL),--export-dynamic) $(if $(LUA_LIB),-L$(LUA_LIB))
  ifeq ($(LUA_LIB_NAME),)
  # Try to automatically detect the Lua library
@@ -24,9 +26,11 @@
  ifneq ($(LUA_INC),)
  OPTIONS_CFLAGS  += -I$(LUA_INC)
  endif
---- a/INSTALL
-+++ b/INSTALL
-@@ -295,9 +295,9 @@
+Index: haproxy-2.4/INSTALL
+===================================================================
+--- haproxy-2.4.orig/INSTALL
++++ haproxy-2.4/INSTALL
+@@ -318,9 +318,9 @@ Lua is an embedded programming language
  advanced scripting capabilities. Only versions 5.3 and above are supported.
  In order to enable Lua support, please specify "USE_LUA=1" on the command line.
  Some systems provide this library under various names to avoid conflicts with
@@ -36,6 +40,6 @@
 +previous versions. By default, HAProxy looks for "lua5.4", "lua54","lua5.3",
 +"lua53","lua". If your system uses a different naming, you may need to set
 +the library name in the "LUA_LIB_NAME" variable.
-
+ 
  If Lua is not provided on your system, it can be very simply built locally. It
  can be downloaded from https://www.lua.org/, extracted and built, for example :

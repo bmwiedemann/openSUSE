@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 14 08:31:04 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.0+git0.6cbbecf09:
+  https://www.haproxy.com/blog/announcing-haproxy-2-4/
+  
+  for all the details see /usr/share/doc/packages/haproxy/CHANGELOG
+- refreshed patches to apply cleanly again
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+  lua54.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 20:35:49 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.10+git0.4764f0e4e:

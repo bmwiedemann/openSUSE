@@ -53,7 +53,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.3.10+git0.4764f0e4e
+Version:        2.4.0+git0.6cbbecf09
 Release:        0
 #
 #
@@ -171,26 +171,31 @@ make %{?_smp_mflags} \
     USE_RELRO_NOW=1 \
     LIB="%{_lib}" \
     PREFIX="%{_prefix}" \
-    EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o" \
+    USE_PROMEX=1 \
+    %if %{with opentracing}
+    USE_OT=1 \
+    %endif
+    %if %{with memory_profiling}
+    USE_MEMORY_PROFILING=1 \
+    %endif
     DEBUG_CFLAGS="%{optflags}" V=1
 %if %{with systemd}
-make -C contrib/systemd  PREFIX="%{_prefix}"
+make -C admin/systemd  PREFIX="%{_prefix}"
 %if %{with sysusers}
 %sysusers_generate_pre %{SOURCE5} haproxy
 %endif
 %endif
-make -C contrib/halog    PREFIX="%{_prefix}" \
-    DEFINE="%{optflags} -pie -fpie -fstack-protector -Wl,-z,relro,-z,now"
+make admin/halog/halog DEBUG_CFLAGS="%{optflags}" V=1
 
 %install
 install -D -m 0755 %{pkg_name}         %{buildroot}%{_sbindir}/%{pkg_name}
 install -d -m 0750                     %{buildroot}%{_sysconfdir}/%{pkg_name}/
 install    -m 0640 %{S:4}              %{buildroot}%{_sysconfdir}/%{pkg_name}/%{pkg_name}.cfg
 
-install -D -m 0755 contrib/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
+install -D -m 0755 admin/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 
 %if %{with systemd}
-install -D -m 0644 contrib/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
+install -D -m 0644 admin/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
 ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
 %if %{with sysusers}
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
@@ -201,7 +206,7 @@ ln -fs %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
 %endif
 
 install -d -m 0750                          %{buildroot}%{pkg_home}
-install -D -m 0644 contrib/syntax-highlight/haproxy.vim     %{buildroot}%{vim_data_dir}/syntax/%{pkg_name}.vim
+install -D -m 0644 admin/syntax-highlight/haproxy.vim     %{buildroot}%{vim_data_dir}/syntax/%{pkg_name}.vim
 install -D -m 0644 doc/%{pkg_name}.1        %{buildroot}%{_mandir}/man1/%{pkg_name}.1
 %if %{with apparmor}
 install -D -m 0644 %{S:2}                   %{buildroot}/etc/apparmor.d/usr.sbin.haproxy
@@ -260,7 +265,7 @@ getent passwd %{pkg_name} >/dev/null || \
 %license LICENSE
 %doc CHANGELOG README
 %doc ROADMAP doc/* examples/
-%doc contrib/netsnmp-perl/ contrib/selinux/
+%doc admin/netsnmp-perl/ admin/selinux/
 %dir               %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}/*
 %if %{with systemd}
