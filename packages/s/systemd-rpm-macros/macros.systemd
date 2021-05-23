@@ -216,19 +216,66 @@ fi											\
 [ -x /usr/bin/journalctl ] && /usr/bin/journalctl --update-catalog || : \
 %{nil}
 
+# Deprecated. Use %tmpfiles_create_package instead
 %tmpfiles_create() \
 [ -z "${TRANSACTIONAL_UPDATE}" -a -x /usr/bin/systemd-tmpfiles ] && \
 	/usr/bin/systemd-tmpfiles --create %{?*} || : \
 %{nil}
 
+# This may be used by package installation scripts to create files according to
+# their tmpfiles configuration from a package installation script, even before
+# the files of that package are installed on disk.
+#
+# Example:
+#   Source1: %{name}-tmpfiles.conf
+#   ...
+#   %install
+#   install -D %SOURCE1 %{buildroot}%{_tmpfilesdir}/%{name}.conf
+#   %pre
+#   %tmpfiles_create_package %{name} %SOURCE1
+#   %files
+#   %{_tmpfilesdir}/%{name}.conf
+#
+%tmpfiles_create_package() \
+if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
+	/usr/bin/systemd-tmpfiles --replace=%_tmpfilesdir/%1.conf --create - <<SYSTEMD_INLINE_EOF || : \
+%(cat %2) \
+SYSTEMD_INLINE_EOF\
+%fi \
+%{nil}
+
+# Deprecated. Use %sysusers_create_package instead
 %sysusers_create() \
+%{warn: %%sysusers_create is deprecated, use %%sysusers_create_package instead} \
 [ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || : \
 %{nil}
 
+# Deprecated. Use %sysusers_create_package instead
 %sysusers_create_inline() \
-if [ -x /usr/bin/systemd-sysusers ]; then \
-	echo %{?*} | systemd-sysusers - || : \
-fi \
+%{warn: %%sysusers_create_inline is deprecated, use %%sysusers_create_package instead} \
+[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers - <<SYSTEMD_INLINE_EOF || : \
+%{?*} \
+SYSTEMD_INLINE_EOF\
+%{nil}
+
+# This should be used by package installation scripts which require users or
+# groups to be present before the files installed by the package are present on
+# disk (for example because some files are owned by those users or groups).
+#
+# Example:
+#   Source1: %{name}-sysusers.conf
+#   ...                      
+#   %install                 
+#   install -D %SOURCE1 %{buildroot}%{_sysusersdir}/%{name}.conf
+#   %pre
+#   %sysusers_create_package %{name} %SOURCE1
+#   %files
+#   %{_sysusersdir}/%{name}.conf
+#
+%sysusers_create_package() \
+/usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
+%(cat %2) \
+SYSTEMD_INLINE_EOF\
 %{nil}
 
 %sysctl_apply() \

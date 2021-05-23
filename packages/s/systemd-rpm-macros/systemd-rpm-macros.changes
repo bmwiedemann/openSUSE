@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 20 10:18:23 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Bump to version 12
+
+-------------------------------------------------------------------
+Thu May 20 09:54:00 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Introduce %sysusers_create_package
+
+  %sysusers_create and %sysusers_create_inline are now deprecated and
+  the new macro should be used instead.
+
+  Upstream commit 07a7d4a0040d221ff09e527e91c112b4ffab1dba.
+
+- Introduce %tmpfiles_create_package
+
+  %%tmpfiles_create is now deprecreated and the new macros should be
+  used instead.
+
+  Upstream commit 0f78fee8d039000b987848a558fbaa15d916e14e.
+
+-------------------------------------------------------------------
+Thu May 20 09:45:11 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- %sysusers_create_inline: use here-docs instead of echo (bsc#1186282)
+
+  Upstream commit dd2490ae12ad1e1795ecbf8f8944b950da9c8d06.
+
+-------------------------------------------------------------------
 Fri Mar  5 12:27:14 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Bump to version 11

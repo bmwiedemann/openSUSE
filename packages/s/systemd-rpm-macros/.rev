@@ -547,4 +547,24 @@
   --global to systemctl (boo#1183051, boo#1182661).</comment>
     <requestid>877267</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a8f73dc11b38a900350a8ab96b95d755</srcmd5>
+    <version>12</version>
+    <time>1621805419</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 12
+
+- Introduce %sysusers_create_package
+  %sysusers_create and %sysusers_create_inline are now deprecated and
+  the new macro should be used instead.
+  Upstream commit 07a7d4a0040d221ff09e527e91c112b4ffab1dba.
+- Introduce %tmpfiles_create_package
+  %%tmpfiles_create is now deprecreated and the new macros should be
+  used instead.
+  Upstream commit 0f78fee8d039000b987848a558fbaa15d916e14e.
+
+- %sysusers_create_inline: use here-docs instead of echo (bsc#1186282)
+  Upstream commit dd2490ae12ad1e1795ecbf8f8944b950da9c8d06.</comment>
+    <requestid>894598</requestid>
+  </revision>
 </revisionlist>
