@@ -1,7 +1,7 @@
 #
 # spec file for package octant
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define goipath github.com/vmware-tanzu/octant
-%define commit 8aebb34922f83894fb02ad393740e96ee1b3d8fe
+%define commit b716185f5d9f85eeec5284a760d7f04dd0c03ab5
 
 Name:           octant
-Version:        0.16.3
+Version:        0.20.0
 Release:        0
 Summary:        A platform to better understand the complexity of Kubernetes clusters
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Group:          System/Management
 URL:            https://github.com/vmware-tanzu/octant
 Source:         https://github.com/vmware-tanzu/octant/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) = 1.16
 
 %description
 Octant is a tool for developers to understand how applications run on a Kubernetes cluster.

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu May 20 16:58:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20.0
+  * Requires Go 1.16
+  * Added expandable row display option per column
+  * Allowed to pass multiple components next to a title in a
+    ContentResponse
+  * Exposed client state as an interface from service
+  * Migrated website to Hugo
+  * Overhaul of Octant storybook implementation
+- Update to version 0.19.0
+  * Breaking API Changes:
+    * Moved request.ClientID to request.ClientState
+    * Changed button groups to accept button components
+  * Upgraded project to Clarity 5
+  * Shared partial octant state with plugins
+  * Created ButtonComponent and extended LinkComponent to receive
+    components to be wrapped as links
+  * Added Delete and Create object store calls for Go Plugins
+- Update to version 0.18.0
+  * Breaking API Change:
+    * Allow UI validators to set constraints on Forms
+  * Added support for the StorageClass resource
+  * Updated resource viewer visual styles
+  * Added support for plugins to add multiple tabs (#2165, @GuessWhoSamFoo)
+- Update to version 0.17.0
+  * Added dropdowns to breadcrumbs
+  * Redesigned left navigation
+  * Added tooltips, support for different segment colors and
+    thickness to donut charts
+  * Added Preferences to the bottom of the Vertical Navigation
+  * Added dropdown component
+  * Added pods table to node overview
+  * Added official language for approver status
+  * Added version skew policy (#1896, @GuessWhoSamFoo)
+
+-------------------------------------------------------------------
 Thu Dec 10 01:53:43 UTC 2020 - jenting.hsiao@suse.com
 
 - Update to version 0.16.3:
