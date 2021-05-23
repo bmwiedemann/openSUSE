@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 19 01:10:34 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.32.1:
+  + Support building against the Musl C library.
+  + Support building against ICU version 69 or newer.
+  + Improve handling of Media Capture devices.
+  + Improve WebAudio playback.
+  + Improve video orientation handling.
+  + Improve seeking support for MSE playback.
+  + Improve flush support in EME decryptors.
+  + Fix HTTP status codes for requests done through a custom URI
+    handler.
+  + Fix the Bubblewrap sandbox in certain 32-bit systems.
+  + Fix inconsistencies between the WebKitWebView.is-muted property
+    state and values returned by
+    webkit_web_view_is_playing_audio().
+  + Fix the build with ENABLE_VIDEO=OFF.
+  + Fix wrong timestamps for long-lived cookies.
+  + Fix UI process crash when failing to load favicons.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop webkit2gtk3-icu69.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Apr 28 06:41:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add webkit2gtk3-icu69.patch: Fix build with ICU 69:

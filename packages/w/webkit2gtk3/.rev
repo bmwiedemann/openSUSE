@@ -1043,4 +1043,12 @@
   + ICU 69 deprecates ubrk_safeClone in favor of ubrk_clone. (forwarded request 888968 from dimstar)</comment>
     <requestid>888972</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ae2b6e71099d68e0bf05e42f04230918</srcmd5>
+    <version>2.32.1</version>
+    <time>1621805435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.1 (forwarded request 894185 from mgorse)</comment>
+    <requestid>894780</requestid>
+  </revision>
 </revisionlist>
