@@ -1403,4 +1403,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Scripted push from GNOME:Next (forwarded request 890079 from dimstar)</comment>
     <requestid>890141</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>3ce68510e9e1ac8db19bbcd9475b508e</srcmd5>
+    <version>40.1</version>
+    <time>1621805430</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893940 from dimstar)</comment>
+    <requestid>893965</requestid>
+  </revision>
 </revisionlist>
