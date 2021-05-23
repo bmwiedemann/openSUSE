@@ -755,4 +755,16 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1186258</comment>
   </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>fcba3b55af9d3f865f70ec71b073760d</srcmd5>
+    <version>23.3</version>
+    <time>1621805440</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not change CAP within spec file (boo#1186258) 
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Fix bsc#1185208 to make private mount namespaces work as well
+    as to distinguish NFS mounts from same remote device share.</comment>
+    <requestid>894798</requestid>
+  </revision>
 </revisionlist>

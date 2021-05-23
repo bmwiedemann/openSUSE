@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 20 07:21:45 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Do not change CAP within spec file (boo#1186258) 
+
+-------------------------------------------------------------------
+Fri May  7 14:53:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Fix bsc#1185208 to make private mount namespaces work as well
+    as to distinguish NFS mounts from same remote device share.
+
+-------------------------------------------------------------------
 Fri Mar  5 14:10:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
