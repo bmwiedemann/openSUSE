@@ -27,10 +27,6 @@ Group:          System/Filesystems
 URL:            https://sourceforge.net/projects/qt-fsarchiver
 Source0:        %{URL}/files/source/%{name}/%{name}-%{hyphen_version}.tar.gz
 Source1:        %{URL}/files/source/%{name}-terminal/%{name}-terminal-%{terminal_version}.tar.gz
-# PATCH-FEATURE-UPSTREAM 0001-Use-standard-paths-and-allow-setting-custom-DOCDIR.patch -- https://github.com/DieterBaum/qt-fsarchiver/pull/12
-Patch0:         0001-Use-standard-paths-and-allow-setting-custom-DOCDIR.patch
-# PATCH-FEATURE-UPSTREAM 0001-Allow-setting-custom-DOCDIR.patch -- https://github.com/DieterBaum/qt-fsarchiver-terminal/pull/2
-Patch1:         0001-Allow-setting-custom-DOCDIR.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
@@ -70,17 +66,11 @@ qt-fsarchiver is a GUI for the program fsarchiver to backup/save/restore partiti
 %prep
 %setup -q -n %{name}
 %setup -T -D -a 1 -n %{name}
-# Part of %%patch0 but binary diffs are not supported
-ln src/images/harddrive2.png src/images/qt-fsarchiver.png
-%patch0 -p2
-%patch1 -p1
 
 rm -vf .qmake.stash
 rm -vf translations/*.qm
 # Fix file permissions
 find doc -type f -exec chmod -x \{\} +
-# Remove prebuilt binaries
-rm -vf src/sbin/{ccguess,de}
 
 %build
 export CFLAGS="%{optflags} -fcommon"
