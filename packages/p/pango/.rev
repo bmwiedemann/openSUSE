@@ -1021,4 +1021,12 @@
     <comment>Update to 1.48.4 (forwarded request 886237 from dimstar)</comment>
     <requestid>887483</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>a3e46549cde72fa31f7d587e91cb1046</srcmd5>
+    <version>1.48.5</version>
+    <time>1621805434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.48.5 (forwarded request 894180 from mgorse)</comment>
+    <requestid>894779</requestid>
+  </revision>
 </revisionlist>

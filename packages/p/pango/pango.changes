@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 18 16:16:14 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.48.5:
+  + Only initialize fontconfig once.
+  + Add missing deprecation notices.
+  + Add some missing apis to the markup docs.
+  + Speed up Emoji classification.
+  + Fix hangs and memory leaks.
+  + Don't insert hyphens at word boundaries.
+  + Handle empty lines better.
+  + Avoid width fluctuations with ellipsized text.
+  + Add a utility to show text segmentation.
+
+-------------------------------------------------------------------
 Sat Apr 17 08:42:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.48.4:
