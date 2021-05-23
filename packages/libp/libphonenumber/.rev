@@ -24,4 +24,12 @@
   * See https://github.com/google/libphonenumber/blob/v8.12.22/release_notes.txt (forwarded request 890937 from favogt)</comment>
     <requestid>890938</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fcbed0a1be92527999f39778488baac</srcmd5>
+    <version>8.12.23</version>
+    <time>1621805422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894682</requestid>
+  </revision>
 </revisionlist>

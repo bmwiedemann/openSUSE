@@ -17,7 +17,7 @@
 
 
 Name:           libphonenumber
-Version:        8.12.22
+Version:        8.12.23
 Release:        0
 %define lib_ver 8
 %define lib_ver2 8.12
