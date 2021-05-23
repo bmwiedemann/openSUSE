@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 22 11:22:31 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.9 development release
+  - WPCAP library converted to PE.
+  - Support for paper forms in the print spooler.
+  - More math functions from Musl in the C runtime.
+  - Various bug fixes.
+- update staging to 6.9 release
+
+-------------------------------------------------------------------
 Wed May 19 12:28:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non-x86 (without mingw)

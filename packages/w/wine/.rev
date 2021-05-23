@@ -3993,4 +3993,17 @@
     <comment>- Fix build on non-x86 (without mingw) (forwarded request 894339 from Guillaume_G)</comment>
     <requestid>894341</requestid>
   </revision>
+  <revision rev="342" vrev="1">
+    <srcmd5>7e92ad7f06643fbc88250e26bd6a28df</srcmd5>
+    <version>6.9</version>
+    <time>1621805449</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9 development release
+  - WPCAP library converted to PE.
+  - Support for paper forms in the print spooler.
+  - More math functions from Musl in the C runtime.
+  - Various bug fixes.
+- update staging to 6.9 release</comment>
+    <requestid>895051</requestid>
+  </revision>
 </revisionlist>
