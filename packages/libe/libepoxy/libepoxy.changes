@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 21 18:03:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.8:
+  + Revert changes from PR #238 / #229
+  + Fixes regressions: #240, #252, #253
+
+-------------------------------------------------------------------
 Tue May 18 08:04:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.7:
