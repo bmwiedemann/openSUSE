@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 23 00:20:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.15.0:
+  * Particle class:
+    - Literals now defined for all particles in the loaded
+      "database" CSV file, excluding nuclei.
+    - Defined and/or fixed the programmatic names for diquarks and
+      SUSY particles.
+  * Data CSV files:
+    - Version 9 of package data files, with all antiparticle bars
+      done with \overline instead of \bar.
+  * Miscellaneous:
+    - Added latex_name_unicode() function to convert in particle
+      names in LaTeX all greek letters by their unicode.
+    - Added a .zenodo.json file to provide enhanced metadata for
+      Zenodo.
+
+-------------------------------------------------------------------
 Sat May  8 15:09:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.14.1:
