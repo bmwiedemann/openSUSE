@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 23 03:31:49 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1621582962.3db67fb03:
+  * Dependency cron 2021-05-21
+  * Fix retry/delay in FinalizeResults.pm leading to failing Minion jobs
+
+-------------------------------------------------------------------
 Thu May 20 21:32:29 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1621511845.b2720ea04:
