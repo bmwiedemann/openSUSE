@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 21 13:02:56 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove %ghost from /var/cache/lightdm. With SELinux enabled
+  lightdm would otherwise not be allowed to create that directory.
+
+-------------------------------------------------------------------
 Mon Feb  8 16:04:34 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add lightdm-glibc-2.33-fix.patch that fixes issue with glibc 2.33

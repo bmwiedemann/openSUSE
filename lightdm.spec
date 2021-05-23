@@ -359,7 +359,7 @@ fi
 %attr(750,lightdm,lightdm) %dir %{_localstatedir}/log/lightdm/
 %attr(750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm/
 %attr(750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm-data/
-%ghost %attr(711,root,root) %dir %{_localstatedir}/cache/lightdm/
+%attr(711,root,root) %dir %{_localstatedir}/cache/lightdm/
 %{_mandir}/man1/lightdm.1%{?ext_man}
 %{_mandir}/man1/dm-tool.1%{?ext_man}
 
