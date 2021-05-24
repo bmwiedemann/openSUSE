@@ -1411,4 +1411,11 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Scripted push from GNOME:Next (forwarded request 893940 from dimstar)</comment>
     <requestid>893965</requestid>
   </revision>
+  <revision rev="165" vrev="4">
+    <srcmd5>b0003072d565a9fee03f7e0887c01f5c</srcmd5>
+    <version>40.0</version>
+    <time>1621870430</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:mutter revision:163, using expand</comment>
+  </revision>
 </revisionlist>
