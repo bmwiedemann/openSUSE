@@ -9944,7 +9944,6 @@ unsorted:
   - libchck0 
   - libchealpix0 
   - libcheck0 
-  - libcheck0-32bit: [x86_64] 
   - libchewing-devel 
   - libchewing3-32bit: [x86_64] 
   - libchipcard 
@@ -12065,7 +12064,6 @@ unsorted:
   - libmysqlcppconn8-devel 
   - libmysqlcppconn9 
   - libnanomsg5 
-  - libnautilus-extension1-32bit: [x86_64] 
   - libnauty-2_7_1 
   - libnbcompat-devel 
   - libnbcompat0 
@@ -14280,6 +14278,7 @@ unsorted:
   - libvtk1-openmpi3 
   - libvulkan1-32bit: [x86_64] 
   - libvulkan_intel-32bit: [x86_64] 
+  - libvulkan_lvp 
   - libvulkan_radeon-32bit: [x86_64] 
   - libwacom-devel 
   - libwacom-tools 
