@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 12 12:15:26 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Fix one more GCC 11 warning.
+
+-------------------------------------------------------------------
 Wed May  5 07:01:28 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - redo presage-0.9.1-gcc11.patch (boo#1181881)

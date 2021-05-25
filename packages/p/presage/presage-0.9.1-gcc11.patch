@@ -235,3 +235,28 @@ Index: presage-0.9.1/src/lib/presage.h
  
      /*
       * Presage public API ends here
+From e9faf7fa918e75bdf26f3068794c97b34d14b406 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Wed, 12 May 2021 14:13:23 +0200
+Subject: [PATCH] Fix GCC 11 warning.
+
+---
+ apps/gtk/gprompter/scintilla/gtk/ScintillaGTK.cxx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apps/gtk/gprompter/scintilla/gtk/ScintillaGTK.cxx b/apps/gtk/gprompter/scintilla/gtk/ScintillaGTK.cxx
+index 926457b..8f4816d 100644
+--- a/apps/gtk/gprompter/scintilla/gtk/ScintillaGTK.cxx
++++ b/apps/gtk/gprompter/scintilla/gtk/ScintillaGTK.cxx
+@@ -1626,7 +1626,7 @@ void ScintillaGTK::ReceivedDrop(GtkSelectionData *selection_data) {
+ 		drop.push_back('\0');
+ 		NotifyURIDropped(&drop[0]);
+ 	} else if ((TypeOfGSD(selection_data) == GDK_TARGET_STRING) || (TypeOfGSD(selection_data) == atomUTF8)) {
+-		if (TypeOfGSD(selection_data) > 0) {
++		if (TypeOfGSD(selection_data) != NULL) {
+ 			SelectionText selText;
+ 			GetGtkSelectionText(selection_data, selText);
+ 			DropAt(posDrop, selText.Data(), selText.Length(), false, selText.rectangular);
+-- 
+2.31.1
+
