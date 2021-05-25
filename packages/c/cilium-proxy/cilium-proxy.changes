@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 19 08:17:15 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Build it with GCC 10 for now (boo#1181866).
+
+-------------------------------------------------------------------
 Tue Mar 16 14:21:17 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Double DWZ memory limits.
