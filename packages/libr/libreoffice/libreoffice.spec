@@ -103,6 +103,8 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch4:         use-comphelper.patch
 # PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/9fed7b07af44792012028eb57900640a5ee833cb tdf#141930 document set as unmodified if editengine didn't modify on keyevent
 Patch5:         bsc1184961.patch
+# PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
+Patch6:         gcc11-fix-error.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -232,7 +234,9 @@ Requires:       libreoffice-l10n-en = %{version}
 Requires:       python3
 Recommends:     dejavu-fonts
 Recommends:     google-carlito-fonts
+%if %{with kdeintegration}
 Recommends:     (libreoffice-qt5 if lxqt-session)
+%endif
 Provides:       %{name}-draw-extensions = %{version}
 Obsoletes:      %{name}-draw-extensions < %{version}
 Provides:       %{name}-impress-extensions = %{version}
@@ -412,10 +416,10 @@ Obsoletes:      %{name}-base-drivers-mysql
 Requires:       %{name}-base-drivers-firebird
 %else
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.6
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64
-Requires:       jre-64 >= 1.6
+Requires:       jre-64 >= 1.8
 %endif
 %endif
 
@@ -617,10 +621,10 @@ Summary:        OfficeBean Java Bean component for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.6
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 1.6
+Requires:       jre-64 >= 1.8
 %endif
 
 %description officebean
@@ -648,10 +652,10 @@ Requires:       libreoffice-pyuno = %{version}
 Requires(pre):  libreoffice = %{version}
 # the watchWindow extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 9.0
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 9.0
+Requires:       jre-64 >= 1.8
 %endif
 
 %description calc-extensions
@@ -668,10 +672,10 @@ Requires:       libreoffice-writer = %{version}
 Requires(pre):  libreoffice = %{version}
 # the wiki extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 9.0
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 9.0
+Requires:       jre-64 >= 1.8
 %endif
 
 %description writer-extensions
@@ -973,6 +977,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 19 10:26:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Recommend libreoffice-qt5 only when it is actually created
+
+-------------------------------------------------------------------
+Tue May 18 06:59:06 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add gcc11-fix-error.patch as fix for boo#1186110.
+
+-------------------------------------------------------------------
+Fri May 14 07:04:57 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- libreoffice requires at least java 1.8.0 to run properly
+- mention some forgotten issues in the changelog
+
+-------------------------------------------------------------------
 Tue May  4 11:31:27 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add bsc1184961.patch to fix bsc#1184961 more cleanly
@@ -75,7 +91,7 @@ Fri Feb 12 08:07:45 UTC 2021 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Mon Feb  1 13:08:22 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
-- Update to 7.1.0.3
+- Update to 7.1.0.3 (bsc#1176198, bsc#1176197, bsc#1175552)
   * RC3 7.1 series
 - Update bundled dependencies
 - New patch use-comphelper.patch to fix build
@@ -163,7 +179,7 @@ Tue Oct  6 08:26:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Sep  3 11:13:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 7.0.1.2:
+- Update to 7.0.1.2 (bsc#1172941, bsc#1162022):
   * RC2 release of 7.0.1
 
 -------------------------------------------------------------------
