@@ -156,7 +156,7 @@ BuildRequires:  c-ares-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fmt-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc10-c++
 BuildRequires:  gcovr
 BuildRequires:  git
 BuildRequires:  golang-packaging
@@ -213,7 +213,8 @@ git add .
 GIT_AUTHOR_DATE=2000-01-01T01:01:01 GIT_COMMITTER_DATE=2000-01-01T01:01:01 \
 git commit -m "Dummy commit just to satisfy bazel" &> /dev/null
 
-bazel build \
+# workaround for boo#1183836
+CC=gcc-10 CXX=g++-10 bazel build \
     -c dbg \
     --color=no \
     --copt="-fsigned-char" \
