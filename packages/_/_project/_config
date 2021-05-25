@@ -238,7 +238,7 @@ Required: gcc-PIE
 
 # the basic stuff
 Support: perl
-Support: build-mkbaselibs
+Support: build-mkbaselibs compat-usrmerge-build
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
 Support: post-build-checks
@@ -1563,4 +1563,14 @@ Macros:
 # %info_del(:-:) test -x /sbin/install-info -a ! -f %{?2}%{?!2:%{_infodir}}/%{1}%ext_info && /sbin/install-info --quiet --delete --info-dir=%{?2}%{?!2:%{_infodir}} %{?2}%{?!2:%{_infodir}}/%{1}%ext_info \
 # %{nil}
 :Macros
+
+
+# UsrMerge - 2021-05-25
+%define usrmerged 1
+Macros:
+%usrmerged 1
+%_pamdir /usr/%{_lib}/security
+%_firmwaredir /usr/lib/firmware
+:Macros
+
 
