@@ -355,4 +355,41 @@
     <comment></comment>
     <requestid>809934</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e6425487d2e7bfb81ace19db851a1e11</srcmd5>
+    <version>20200921</version>
+    <time>1621969665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200921 (fixes bsc#1183836, bsc#1181866):
+  * Add SSL_CIPHER_get_protocol_id.
+  * Add TrustTokenV2.
+  * Add X509_get_pathlen and X509_REVOKED_get0_extensions.
+  * Add some accommodations for FreeRDP
+  * Require non-NULL store in X509_STORE_CTX_init.
+  * Const-correct X509V3_CONF_METHOD.
+  * Avoid unions in X509_NAME logic.
+  * Bump OPENSSL_VERSION_NUMBER to 1.1.1.
+  * Document more of x509.h.
+  * Fix potential leak in bssl::Array::Shrink.
+  * Remove ASN1_STRING_length_set.
+  * Revert &quot;Check AlgorithmIdentifier parameters for RSA and ECDSA signatures.&quot;
+  * Implement PSK variants of HPKE setup functions.
+  * acvp: support working with files.
+  * Document a few more functions in x509.h.
+  * Add subject key ID and authority key ID accessors.
+  * Remove sxnet and pkey_usage_period extensions.
+  * Const-correct various X509 functions.
+  * Make X509_set_not{Before,After} functions rather than macros.
+  * Add X509_get0_uids from OpenSSL 1.1.0.
+  * Bound RSA and DSA key sizes better.
+  * Add set1 versions of X509 timestamp setters.
+  * Consistently sort generated build files.
+  * delocate: use 64-bit GOT offsets in the large memory model.
+  * Update HPKE implementation and test vectors to draft-irtf-cfrg-hpke-05.
+  * Handle NULL arguments in some i2d_* functions.
+  * aarch64: support BTI and pointer authentication in assembly
+  * Support delegated credentials verison 06
+  * delocation: large memory model support. (forwarded request 893861 from mrostecki)</comment>
+    <requestid>893862</requestid>
+  </revision>
 </revisionlist>

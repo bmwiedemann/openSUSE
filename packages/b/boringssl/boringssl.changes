@@ -1,4 +1,242 @@
 -------------------------------------------------------------------
+Mon May 17 09:56:04 UTC 2021 - mrostecki@suse.com
+
+- Update to version 20200921 (fixes bsc#1183836, bsc#1181866):
+  * Add SSL_CIPHER_get_protocol_id.
+  * Add TrustTokenV2.
+  * Add X509_get_pathlen and X509_REVOKED_get0_extensions.
+  * Add some accommodations for FreeRDP
+  * Require non-NULL store in X509_STORE_CTX_init.
+  * Const-correct X509V3_CONF_METHOD.
+  * Avoid unions in X509_NAME logic.
+  * Bump OPENSSL_VERSION_NUMBER to 1.1.1.
+  * Document more of x509.h.
+  * Fix potential leak in bssl::Array::Shrink.
+  * Remove ASN1_STRING_length_set.
+  * Revert "Check AlgorithmIdentifier parameters for RSA and ECDSA signatures."
+  * Implement PSK variants of HPKE setup functions.
+  * acvp: support working with files.
+  * Document a few more functions in x509.h.
+  * Add subject key ID and authority key ID accessors.
+  * Remove sxnet and pkey_usage_period extensions.
+  * Const-correct various X509 functions.
+  * Make X509_set_not{Before,After} functions rather than macros.
+  * Add X509_get0_uids from OpenSSL 1.1.0.
+  * Bound RSA and DSA key sizes better.
+  * Add set1 versions of X509 timestamp setters.
+  * Consistently sort generated build files.
+  * delocate: use 64-bit GOT offsets in the large memory model.
+  * Update HPKE implementation and test vectors to draft-irtf-cfrg-hpke-05.
+  * Handle NULL arguments in some i2d_* functions.
+  * aarch64: support BTI and pointer authentication in assembly
+  * Support delegated credentials verison 06
+  * delocation: large memory model support.
+  * Enforce presence of ALPN when QUIC is in use.
+  * Fix the naming of alert error codes.
+  * Use golang.org/x/crypto in runner.
+  * Disable ClientHello padding for QUIC.
+  * Add X509_SIG_get0 and X509_SIG_getm.
+  * Implement HPKE.
+  * Disallow TLS 1.3 compatibility mode in QUIC.
+  * Switch clang-format IncludeBlocks to Preserve.
+  * Fix unterminated clang-format off.
+  * Add line number to doc.go error messages.
+  * Kick the bots.
+  * Add a JSON output to generate_build_files.py.
+  * Add details of 20190808 FIPS certification.
+  * Link to ws2_32 more consistently.
+  * Allow explicitly-encoded X.509v1 versions for now.
+  * Opaquify PKCS8_PRIV_KEY_INFO.
+  * Implement i2d_PUBKEY and friends without crypto/asn1.
+  * Remove TRUST_TOKEN_experiment_v0.
+  * Clarify in-place rules for low-level AES mode functions.
+  * acvp: add CMAC-AES support.
+  * acvp: add SP800-108 KDF support.
+  * Remove x509->name.
+  * Maybe build for AArch64 Windows.
+  * sha1-x86_64: fix CFI.
+  * Use |crypto_word_t| and |size_t| more consistently in ECC scalar recoding.
+  * Enable shaext path for sha1.
+  * Avoid relying on SSL_get_session's behavior during the handshake.
+  * Add a -wait-for-debugger flag to runner.
+  * Add missing OPENSSL_EXPORT to X509_get_X509_PUBKEY.
+  * Const-correct various functions in crypto/asn1.
+  * Remove uneeded switch statement.
+  * Convert X.509 accessor macros to proper functions.
+  * Remove X509_CINF_get_issuer and X509_CINF_get_extensions.
+  * Remove X509_get_signature_type.
+  * clang-format x509.h and run comment converter.
+  * Check AlgorithmIdentifier parameters for RSA and ECDSA signatures.
+  * Remove some unimplemented prototypes.
+  * Check the X.509 version when parsing.
+  * Fix x509v3_cache_extensions error-handling.
+  * Work around Windows command-line limits in embed_test_data.go.
+  * Move crypto/x509 test data into its own directory.
+  * Test resumability of same, different, and default ticket keys.
+  * Fixes warning when redefining PATH_MAX when building with MINGW.
+  * Abstract fd operations better in tool.
+  * Use CMAKE_SIZEOF_VOID_P instead of CMAKE_CL_64
+  * Enforce the keyUsage extension in TLS 1.2 client certs.
+  * Reword some comments.
+  * Add “Z Computation” KAT.
+  * acvptool: handle negative sizeConstraint.
+  * Let memory hooks override the size prefix.
+  * acvptool: go fmt
+  * Assert md_size > 0.
+  * Remove -enable-ed25519 compat hack.
+  * Add a |SSL_process_tls13_new_session_ticket|.
+  * Use ctr32 optimizations for AES_ctr128_encrypt.
+  * Test AES mode wrappers.
+  * Bump minimum CMake version.
+  * Modify how QUIC 0-RTT go/no-go decision is made.
+  * Remove RAND_set_urandom_fd.
+  * Document that getrandom support must be consistent.
+  * Fix docs link for SSL_CTX_load_verify_locations
+  * Fix TRUST_TOKEN experiment_v1 SRR map.
+  * Add CRYPTO_pre_sandbox_init.
+  * Still query getauxval if reading /proc/cpuinfo fails.
+  * Add missing header to ec/wnaf.c
+  * Fix OPENSSL_TSAN typo.
+  * Fix p256-x86_64-table.h indentation.
+  * Enable avx2 implementation of sha1.
+  * Trim Z coordinates from the OPENSSL_SMALL P-256 tables.
+  * Use public multi-scalar mults in Trust Tokens where applicable.
+  * Use batched DLEQ proofs for Trust Token.
+  * Restrict when 0-RTT will be accepted in QUIC.
+  * Disable TLS 1.3 compatibility mode for QUIC.
+  * Use a 5-bit comb for some Trust Tokens multiplications.
+  * Use a (mostly) constant-time multi-scalar mult for Trust Tokens.
+  * Batch inversions in Trust Tokens.
+  * Rearrange the DLEQ logic slightly.
+  * Use token hash to encode private metadata for Trust Token Experiment V1.
+  * Introduce an EC_AFFINE abstraction.
+  * Make the fuzzer PRNG thread-safe.
+  * Disable fork-detect tests under TSAN.
+  * Introduce TRUST_TOKENS_experiment_v1.
+  * Route PMBToken calls through TRUST_TOKEN_METHOD.
+  * Introduce a TRUST_TOKEN_METHOD hook to select TRUST_TOKEN variations.
+  * fork_detect: be robust to qemu.
+  * Move serialization of points inside pmbtoken.c.
+  * Introduce PMBTOKENS key abstractions.
+  * Fix the types used in token counts.
+  * Remove unused code from ghash-x86_64.pl.
+  * Switch the P-384 hash-to-curve to draft-07.
+  * Add hash-to-curve code for P384.
+  * Write down the expressions for all the NIST primes.
+  * Move fork_detect files into rand/
+  * Harden against fork via MADV_WIPEONFORK.
+  * Fix typo in comment.
+  * Use faster addition chains for P-256 field inversion.
+  * Tidy up third_party/fiat.
+  * Prefix g_pre_comp in p256.c as well.
+  * Add missing curve check to ec_hash_to_scalar_p521_xmd_sha512.
+  * Add a tool to compare the output of bssl speed.
+  * Benchmark ECDH slightly more accurately.
+  * Align remaining Intel copyright notice.
+  * Don't retain T in PMBTOKEN_PRETOKEN.
+  * Check for trailing data in TRUST_TOKEN_CLIENT_finish_issuance.
+  * Properly namespace everything in third_party/fiat/p256.c.
+  * Update fiat-crypto.
+  * Add missing ERR_LIB_TRUST_TOKEN constants.
+  * Add bssl speed support for hashtocurve and trusttoken.
+  * Implement DLEQ checks for Trust Token.
+  * Fix error-handling in EVP_BytesToKey.
+  * Fix Trust Token CBOR.
+  * Match parameter names between header and source.
+  * Trust Token Implementation.
+  * Include mem.h for |CRYPTO_memcmp|
+  * acvptool: add subprocess tests.
+  * Add SHA-512-256.
+  * Make ec_GFp_simple_cmp constant-time.
+  * Tidy up CRYPTO_sysrand variants.
+  * Do a better job testing EC_POINT_cmp.
+  * Follow-up comments to hash_to_scalar.
+  * Add a hash_to_scalar variation of P-521's hash_to_field.
+  * Add SSL_SESSION_copy_without_early_data.
+  * Double-check secret EC point multiplications.
+  * Make ec_felem_equal constant-time.
+  * Fix hash-to-curve comment.
+  * Make ec_GFp_simple_is_on_curve constant-time.
+  * Implement draft-irtf-cfrg-hash-to-curve-06.
+  * Update list of tested SDE configurations.
+  * Only draw from RDRAND for additional_data if it's fast.
+  * Generalize bn_from_montgomery_small.
+  * Remove BIGNUM from uncompressed coordinate parsing.
+  * Add EC_RAW_POINT serialization function.
+  * Base EC_FELEM conversions on bytes rather than BIGNUMs.
+  * runner: Replace supportsVersions calls with allVersions.
+  * Enable QUIC for some perMessageTest runner tests
+  * Move BN_nnmod calls out of low-level group_set_curve.
+  * Clean up various EC inversion functions.
+  * Start to organize ec/internal.h a little.
+  * Fix CFI for AVX2 ChaCha20-Poly1305.
+  * Remove unused function prototype.
+  * Enable more runner tests for QUIC
+  * Require QUIC method with Transport Parameters and vice versa
+  * acvptool: support non-interactive mode.
+  * Add is_quic bit to SSL_SESSION
+  * Update SDE.
+  * Update tools.
+  * Add simpler getters for DH and DSA.
+  * Don't define default implementations for weak symbols.
+  * Don't automatically run all tests for ABI testing.
+  * Fix test build with recent Clang.
+  * Remove LCM dependency from RSA_check_key.
+  * Simplify bn_sub_part_words.
+  * No-op commit to test Windows SDE bots.
+  * ABI-test each AEAD.
+  * Add memory tracking and sanitization hooks
+  * Add X509_STORE_CTX_get0_chain.
+  * Add DH_set_length.
+  * Static assert that CRYPTO_MUTEX is sufficiently aligned.
+  * [bazel] Format toplevel BUILD file with buildifier
+  * Add |SSL_CTX_get0_chain|.
+  * Configure QUIC secrets inside set_{read,write}_state.
+  * Allow setting QUIC transport parameters after parsing the client's
+  * Fix comment for |BORINGSSL_self_test|.
+  * Trust Token Key Generation.
+  * Revise QUIC encryption secret APIs.
+  * Fix ec_point_mul_scalar_public's documentation.
+  * Don't infinite loop when QUIC tests fail.
+  * Tidy up transitions out of 0-RTT keys on the client.
+  * Remove bn_sub_part_words assembly.
+  * Keep the encryption state and encryption level in sync.
+  * Add ECDSA_SIG_get0_r and ECDSA_SIG_get0_s.
+  * Fix a couple of comment typos.
+  * Const-correct various X509_NAME APIs.
+  * Ignore old -enable-ed25519 flag.
+  * Provide __NR_getrandom fillins in urandom test too.
+  * Skip RSATest.DISABLED_BlindingCacheConcurrency in SDE.
+  * Fix client handling of 0-RTT rejects with cipher mismatch.
+  * runner: Tidy up 0-RTT support.
+  * Add X509_getm_notBefore and X509_getm_notAfter.
+  * Clean up TLS 1.3 handback logic.
+  * Require handshake flights end at record boundaries.
+  * Delete unreachable DTLS check.
+  * Rename TLS-specific functions to tls_foo from ssl3_foo.
+  * Rename ssl3_choose_cipher.
+  * SSL_apply_handback: don't choke on trailing data.
+  * ssl_test: test early data with split handshakes.
+  * Check for overflow in massive mallocs.
+  * Add more convenient RSA getters.
+  * Remove SSL_CTX_set_ed25519_enabled.
+  * Improve signature algorithm tests.
+  * bazel: explicitly load C++ rules
+  * Check enum values in handoff.
+  * Restore fuzz/cert_corpus.
+  * Add a -sigalgs option to bssl client.
+  * Add SSL_set_verify_algorithm_prefs.
+  * Switch verify sigalg pref functions to SSL_HANDSHAKE.
+  * Add SSL_AD_NO_APPLICATION_PROTOCOL
+  * Refresh corpora due to TLS 1.3 changes in handoff serialization.
+  * handoff: set |enable_early_data| as part of handback.
+  * Add 109 and 120 to SSL_alert_desc_string_long
+  * runner: enable split handshake tests for TLS 1.3.
+  * Make TLS 1.3 split handshakes work with early data.
+  * Split half-RTT tickets out into a separate TLS 1.3 state.
+  * Use BCryptGenRandom when building as Windows UWP app.
+
+-------------------------------------------------------------------
 Thu May 28 11:48:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify groups.

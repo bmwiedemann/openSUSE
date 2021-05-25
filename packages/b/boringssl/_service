@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">boringssl</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">1c2769383f027befac5b75b6cedd25daf3bf4dcf</param>
+    <param name="revision">1ce6682c7f6cfe0426ed54a37c10775bea9d3502</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

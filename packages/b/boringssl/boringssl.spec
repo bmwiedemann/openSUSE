@@ -1,7 +1,7 @@
 #
 # spec file for package boringssl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libboringssl%{sover}
 %define src_install_dir /usr/src/%{name}
 Name:           boringssl
-Version:        20200122
+Version:        20200921
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
