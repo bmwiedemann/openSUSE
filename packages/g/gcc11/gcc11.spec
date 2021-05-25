@@ -81,7 +81,7 @@
 %define build_d 0
 %endif
 
-%ifarch x86_64 aarch64
+%ifarch x86_64
 %define build_nvptx 1
 %else
 %define build_nvptx 0
@@ -185,6 +185,15 @@
 %define selfconflict() otherproviders(%1)
 %endif
 
+%define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
+
+URL:            https://gcc.gnu.org/
+Version:        11.1.1+git121
+Release:        0
+%define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
+%define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
+%define binsuffix -11
+
 Name:           gcc11
 BuildRequires:  xz
 %if %{suse_version} > 1500
@@ -213,6 +222,7 @@ BuildRequires:  systemtap-headers
 %if %{suse_version} >= 1230
 BuildRequires:  isl-devel
 %endif
+%define hostsuffix %{nil}
 %if %{build_ada}
 %if 0%{?gcc_version:%{gcc_version}} > 11
 %define hostsuffix %{binsuffix}
@@ -229,6 +239,11 @@ BuildRequires:  gcc-ada
 %endif
 %endif
 %endif
+# We now require a C++ 11 capable compiler for bootstrapping
+%if %{suse_version} < 1220
+%define hostsuffix -4.8
+BuildRequires:  gcc48-c++
+%endif
 %if 0%{?building_testsuite:1}
 # For building the libstdc++ API reference
 BuildRequires:  doxygen
@@ -241,6 +256,9 @@ BuildRequires:  libunwind-devel
 BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
+%if %{build_go}
+BuildRequires:  procps
+%endif
 %if %{build_nvptx}
 BuildRequires:  cross-nvptx-gcc11
 BuildRequires:  cross-nvptx-newlib11-devel
@@ -280,15 +298,6 @@ BuildRequires:  cross-amdgcn-newlib11-devel
 %else
 %define build_primary_64bit 0
 %endif
-
-%define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
-
-URL:            https://gcc.gnu.org/
-Version:        11.0.0+git183291
-Release:        0
-%define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
-%define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
-%define binsuffix -11
 
 %if !0%{?building_testsuite:1}
 Requires:       binutils
@@ -335,17 +344,18 @@ Source1:        change_spec
 Source2:        gcc11-rpmlintrc
 Source3:        gcc11-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-3.3.0.tar.xz
+Source5:        newlib-4.1.0.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
 Patch7:         gcc48-libstdc++-api-reference.patch
-Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
 Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
+Patch19:        gcc11-gdwarf-4-default.patch
+Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -946,9 +956,11 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0 WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11 = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-11
+# FIXME: remove %{after} service-format_spec_file is fixed
+# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
+Conflicts:      %selfconflict libgnarl-11%{nil}
 Provides:       libgnat-11 = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11
+Conflicts:      %selfconflict libgnat-11%{nil}
 
 %description -n libada11
 This package contains the shared libraries required to run programs
@@ -966,9 +978,11 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0 WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-11-32bit
+# FIXME: remove %{after} service-format_spec_file is fixed
+# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
+Conflicts:      %selfconflict libgnarl-11-32bit%{nil}
 Provides:       libgnat-11-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11-32bit
+Conflicts:      %selfconflict libgnat-11-32bit%{nil}
 
 %description -n libada11-32bit
 This package contains the shared libraries required to run programs
@@ -986,9 +1000,11 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0 WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-11-64bit
+# FIXME: remove %{after} service-format_spec_file is fixed
+# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
+Conflicts:      %selfconflict libgnarl-11-64bit%{nil}
 Provides:       libgnat-11-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11-64bit
+Conflicts:      %selfconflict libgnat-11-64bit%{nil}
 
 %description -n libada11-64bit
 This package contains the shared libraries required to run programs
@@ -1766,6 +1782,7 @@ Summary:        The GNU Compiler Collection JIT library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Provides:       libgccjit%{libgccjit_sover} = %{version}-%{release}
+Requires:       gcc11
 
 %description -n libgccjit%{libgccjit_sover}%{libgccjit_suffix}
 Support for embedding GCC inside programs and libraries
@@ -1886,7 +1903,7 @@ Results from running the gcc and target library testsuites.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-3.3.0/newlib .
+ln -s newlib-4.1.0/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -1897,9 +1914,6 @@ ln -s newlib-3.3.0/newlib .
 %patch5
 %patch6
 %patch7
-%if %{suse_version} < 1310
-%patch9
-%endif
 %patch11
 %patch15
 %patch16
@@ -1907,6 +1921,11 @@ ln -s newlib-3.3.0/newlib .
 %if "%{TARGET_ARCH}" == "amdgcn"
 %patch18 -p1
 %endif
+# In SLE15 and earlier default to dwarf4, not dwarf5
+%if %{suse_version} < 1550
+%patch19 -p1
+%endif
+%patch20 -p1
 %patch51
 %patch52 -p1
 %patch60 -p1
@@ -1993,16 +2012,18 @@ ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"
 %endif
 
-%if %{build_ada}
+%if "%{hostsuffix}" != ""
+mkdir -p host-tools/bin
 # Using the host gnatmake like
 #   CC="gcc%%{hostsuffix}" GNATBIND="gnatbind%%{hostsuffix}"
 #   GNATMAKE="gnatmake%%{hostsuffix}"
 # doesn't work due to PR33857, so an un-suffixed gnatmake has to be
 # available
-mkdir -p host-tools/bin
+%if %{build_ada}
 cp -a /usr/bin/gnatmake%{hostsuffix} host-tools/bin/gnatmake
 cp -a /usr/bin/gnatlink%{hostsuffix} host-tools/bin/gnatlink
 cp -a /usr/bin/gnatbind%{hostsuffix} host-tools/bin/gnatbind
+%endif
 cp -a /usr/bin/gcc%{hostsuffix} host-tools/bin/gcc
 cp -a /usr/bin/g++%{hostsuffix} host-tools/bin/g++
 ln -sf /usr/%{_lib} host-tools/%{_lib}
@@ -2065,7 +2086,13 @@ amdgcn-amdhsa,\
 %endif
 	--enable-version-specific-runtime-libs \
 	--with-gcc-major-version-only \
+%if 0%{!?gcc_target_arch:1}
 	--enable-linker-build-id \
+%else
+%if 0%{?gcc_target_glibc:1}
+	--enable-linker-build-id \
+%endif
+%endif
 	--enable-linux-futex \
 %if %{suse_version} >= 1315
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
@@ -2528,7 +2555,12 @@ cp `find . -name "*.log"  \! -name "config.log" | grep -v 'acats.\?/tests' | gre
 chmod 644 ../testresults/*
 %endif
 # Remove files that we do not need to clean up filelist
+
+# Preserve %{GCCDIST}-gcc%{binsuffix} binary for libgccjit as it is used as a driver
+mv %{buildroot}/%{_prefix}/bin/%{GCCDIST}-gcc%{binsuffix} %{buildroot}
 rm -f %{buildroot}/%{_prefix}/bin/%{GCCDIST}-*
+mv %{buildroot}/%{GCCDIST}-gcc%{binsuffix} %{buildroot}/%{_prefix}/bin/
+
 rm -rf %{buildroot}/%{libsubdir}/install-tools
 rm -f %{buildroot}/%{libsubdir}/include-fixed/zutil.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/a.out.h
@@ -2646,6 +2678,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc11-locale.lang
 %endif
 %endif
 %{_prefix}/bin/gcc%{binsuffix}
+%{_prefix}/bin/%{GCCDIST}-gcc%{binsuffix}
 %{_prefix}/bin/gcov%{binsuffix}
 %{_prefix}/bin/gcov-dump%{binsuffix}
 %{_prefix}/bin/gcov-tool%{binsuffix}

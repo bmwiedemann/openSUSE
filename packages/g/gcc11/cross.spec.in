@@ -1,11 +1,11 @@
 #
-# spec file for package gcc (Version 4.0.1)
+# spec file template for cross packages of gcc${version}
 #
-# Copyright (c) 2005 SUSE Linux AG, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
 #
-# Please submit bugfixes or comments via http://www.suse.de/feedback/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # nospeccleaner
@@ -22,7 +22,7 @@ ExclusiveArch: do-not-build
 %define build_libjava 0
 %define build_java 0
 
-%define build_fortran 0
+%define build_fortran 0%{?gcc_accel:1}
 %define build_objc 0
 %define build_objcp 0
 %define build_go 0
@@ -98,7 +98,13 @@ BuildRequires: cross-%{binutils_target}-binutils
 Requires: cross-%{binutils_target}-binutils
 %endif
 %endif
+%define hostsuffix %{nil}
+%if 0%{suse_version} < 1220
+%define hostsuffix -4.8
+BuildRequires: gcc48-c++
+%else
 BuildRequires: gcc-c++
+%endif
 %if %{suse_version} > 1500
 BuildRequires: libzstd-devel
 %endif
@@ -115,7 +121,9 @@ BuildRequires: makeinfo
 BuildRequires: texinfo
 %endif
 BuildRequires: zlib-devel
+%if %{suse_version} >= 1230
 BuildRequires: isl-devel
+%endif
 %ifarch ia64
 BuildRequires: libunwind-devel
 %endif
@@ -133,14 +141,15 @@ BuildRequires: cross-%cross_arch-glibc-devel
 BuildRequires: nvptx-tools
 Requires: nvptx-tools
 Requires: cross-nvptx-newlib-devel >= %{version}-%{release}
-ExclusiveArch: x86_64 aarch64
+ExclusiveArch: x86_64
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
-# amdgcn uses the llvm assembler and linker
-BuildRequires: llvm
+# amdgcn uses the llvm assembler and linker, llvm-mc-12 doesn't
+# work at the moment so require llvm11
+BuildRequires: llvm11
 BuildRequires: lld
-Requires: llvm
+Requires: llvm11
 Requires: lld
 Requires: cross-amdgcn-newlib-devel >= %{version}-%{release}
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
@@ -179,7 +188,6 @@ BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Summary:	The GNU Compiler Collection targeting %{cross_arch}
-License:	GPL-3.0-or-later
 
 %description
 The GNU Compiler Collection as a cross-compiler targeting %{cross_arch}.
@@ -299,13 +307,14 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 %endif
 # for amdgcn install the symlinks to the llvm tools
+# follow alternatives symlinks to the hardcoded version requirement
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
-ln -s /usr/bin/llvm-ar $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
-ln -s /usr/bin/llvm-mc $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s `readlink -f /usr/bin/llvm-ar` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s `readlink -f /usr/bin/llvm-mc` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
 ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
-ln -s /usr/bin/llvm-nm $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
-ln -s /usr/bin/llvm-ranlib $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s `readlink -f /usr/bin/llvm-nm` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s `readlink -f /usr/bin/llvm-ranlib` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
 ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld

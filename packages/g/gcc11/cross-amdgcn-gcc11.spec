@@ -21,12 +21,12 @@
 %define gcc_target_arch amdgcn-amdhsa
 %define gcc_accel 1
 #
-# spec file for package gcc (Version 4.0.1)
+# spec file template for cross packages of gcc${version}
 #
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
 #
-# Please submit bugfixes or comments via http://www.suse.de/feedback/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # nospeccleaner
@@ -43,7 +43,7 @@ ExclusiveArch:  do-not-build
 %define build_libjava 0
 %define build_java 0
 
-%define build_fortran 0
+%define build_fortran 0%{?gcc_accel:1}
 %define build_objc 0
 %define build_objcp 0
 %define build_go 0
@@ -114,7 +114,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.0.0+git183291
+Version:        11.1.1+git121
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -127,17 +127,18 @@ Source1:        change_spec
 Source2:        gcc11-rpmlintrc
 Source3:        gcc11-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-3.3.0.tar.xz
+Source5:        newlib-4.1.0.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
 Patch7:         gcc48-libstdc++-api-reference.patch
-Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
 Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
+Patch19:        gcc11-gdwarf-4-default.patch
+Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -185,7 +186,13 @@ BuildRequires:  cross-%{binutils_target}-binutils
 Requires:       cross-%{binutils_target}-binutils
 %endif
 %endif
+%define hostsuffix %{nil}
+%if 0%{suse_version} < 1220
+%define hostsuffix -4.8
+BuildRequires:  gcc48-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
@@ -201,8 +208,10 @@ BuildRequires:  makeinfo
 %else
 BuildRequires:  texinfo
 %endif
-BuildRequires:  isl-devel
 BuildRequires:  zlib-devel
+%if %{suse_version} >= 1230
+BuildRequires:  isl-devel
+%endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
 %endif
@@ -220,16 +229,17 @@ BuildRequires:  cross-%cross_arch-glibc-devel
 BuildRequires:  nvptx-tools
 Requires:       cross-nvptx-newlib-devel >= %{version}-%{release}
 Requires:       nvptx-tools
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
-# amdgcn uses the llvm assembler and linker
+# amdgcn uses the llvm assembler and linker, llvm-mc-12 doesn't
+# work at the moment so require llvm11
 BuildRequires:  lld
-BuildRequires:  llvm
+BuildRequires:  llvm11
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
 Requires:       lld
-Requires:       llvm
+Requires:       llvm11
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
 # technically also SLE12 SP5 but do not bother there
 %if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
@@ -283,7 +293,7 @@ only, it is not intended for any other use.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-3.3.0/newlib .
+ln -s newlib-4.1.0/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -294,9 +304,6 @@ ln -s newlib-3.3.0/newlib .
 %patch5
 %patch6
 %patch7
-%if %{suse_version} < 1310
-%patch9
-%endif
 %patch11
 %patch15
 %patch16
@@ -304,6 +311,11 @@ ln -s newlib-3.3.0/newlib .
 %if "%{TARGET_ARCH}" == "amdgcn"
 %patch18 -p1
 %endif
+# In SLE15 and earlier default to dwarf4, not dwarf5
+%if %{suse_version} < 1550
+%patch19 -p1
+%endif
+%patch20 -p1
 %patch51
 %patch52 -p1
 %patch60 -p1
@@ -390,16 +402,18 @@ ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"
 %endif
 
-%if %{build_ada}
+%if "%{hostsuffix}" != ""
+mkdir -p host-tools/bin
 # Using the host gnatmake like
 #   CC="gcc%%{hostsuffix}" GNATBIND="gnatbind%%{hostsuffix}"
 #   GNATMAKE="gnatmake%%{hostsuffix}"
 # doesn't work due to PR33857, so an un-suffixed gnatmake has to be
 # available
-mkdir -p host-tools/bin
+%if %{build_ada}
 cp -a /usr/bin/gnatmake%{hostsuffix} host-tools/bin/gnatmake
 cp -a /usr/bin/gnatlink%{hostsuffix} host-tools/bin/gnatlink
 cp -a /usr/bin/gnatbind%{hostsuffix} host-tools/bin/gnatbind
+%endif
 cp -a /usr/bin/gcc%{hostsuffix} host-tools/bin/gcc
 cp -a /usr/bin/g++%{hostsuffix} host-tools/bin/g++
 ln -sf /usr/%{_lib} host-tools/%{_lib}
@@ -462,7 +476,13 @@ amdgcn-amdhsa,\
 %endif
 	--enable-version-specific-runtime-libs \
 	--with-gcc-major-version-only \
+%if 0%{!?gcc_target_arch:1}
 	--enable-linker-build-id \
+%else
+%if 0%{?gcc_target_glibc:1}
+	--enable-linker-build-id \
+%endif
+%endif
 	--enable-linux-futex \
 %if %{suse_version} >= 1315
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
@@ -751,13 +771,14 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 %endif
 # for amdgcn install the symlinks to the llvm tools
+# follow alternatives symlinks to the hardcoded version requirement
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
-ln -s /usr/bin/llvm-ar $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
-ln -s /usr/bin/llvm-mc $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s `readlink -f /usr/bin/llvm-ar` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s `readlink -f /usr/bin/llvm-mc` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
 ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
-ln -s /usr/bin/llvm-nm $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
-ln -s /usr/bin/llvm-ranlib $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s `readlink -f /usr/bin/llvm-nm` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s `readlink -f /usr/bin/llvm-ranlib` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
 ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld

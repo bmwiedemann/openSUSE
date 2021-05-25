@@ -1,12 +1,75 @@
 -------------------------------------------------------------------
-Mon Feb  8 17:41:34 UTC 2021 - Martin Liška <mliska@suse.cz>
+Mon May 10 12:08:19 UTC 2021 - Richard Biener <rguenther@suse.com>
 
-- Bump to efcd941e86b507d77e90a1b13f621e036eacdb45.
+- Update to gcc-11 branch head (23855a176609fe8dda6abaf2b2), git121
+- Disable build-id generation on non-glibc targeting cross compilers.
 
 -------------------------------------------------------------------
-Fri Feb  5 18:04:49 UTC 2021 - Martin Liška <mliska@suse.cz>
+Thu Apr 29 08:39:32 UTC 2021 - Richard Biener <rguenther@suse.com>
 
-- Bump to 7a18bc4ae62081021f4fd90d591a588cac931f77.
+- Update to gcc-11 branch head (cd0a059bd384da58d43674496a7), git67
+  * Includes GCC 11.1 release
+- Drop upstreamed gcc11-no-offload.patch.
+
+-------------------------------------------------------------------
+Wed Apr 21 12:31:23 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (7a7fc01b9d20afb1a2b805d93cb), git31
+  * Includes GCC 11.1 RC2
+- Add gcc11-no-offload.patch and
+  gcc11-amdgcn-disable-hot-cold-partitioning.patch.
+- Enable gfortran for offload compilers.
+- BuildRequire procps from gcc11-testresults if we test go.
+- Force using llvm11 for amdgcn offloading since llvm12 doesn't
+  yet work.  Package expanded symlinks so concurrent installs do
+  not pull in another llvm-mc.
+- Add gcc11-gdwarf-4-default.patch to default to DWARF4 generation
+  in SLES15 and older.
+
+-------------------------------------------------------------------
+Tue Apr 20 14:57:07 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (27350b77a92062667427100afb4), git10
+  * Includes GCC 11.1 RC1
+
+-------------------------------------------------------------------
+Fri Apr 16 19:54:03 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to 49813aad3292f7f2bef69206274da78a9a7116ed.
+
+-------------------------------------------------------------------
+Thu Apr 15 11:22:19 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Disable nvptx offloading on aarch64 since it doesn't work.
+
+-------------------------------------------------------------------
+Wed Apr 14 19:51:08 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to a87d3f964df31d4fbceb822c6d293e85c117d992.
+
+-------------------------------------------------------------------
+Fri Apr  9 12:25:39 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Remove gcc48-remove-mpfr-2.4.0-requirement.patch which does no
+  longer apply.
+- Arrange for a C++ 11 capable host compiler to be available.
+- Do not require ISL for cross compiler builds on old distros.
+
+-------------------------------------------------------------------
+Thu Apr  8 19:52:03 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to 123b3e03c911a43054c1f88f5d3110e1d084dd4e.
+
+-------------------------------------------------------------------
+Mon Mar  8 14:10:15 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update embedded newlib version from 3.3.0 to 4.1.0.
+
+-------------------------------------------------------------------
+Mon Feb 22 10:44:40 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Pack %{GCCDIST}-gcc%{binsuffix}.
+- Add a new dependency for libgccjit.
 
 -------------------------------------------------------------------
 Fri Feb  5 08:40:22 UTC 2021 - Martin Liška <mliska@suse.cz>
