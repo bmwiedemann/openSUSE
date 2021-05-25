@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Wed May 12 16:35:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1271.patch: Fix build using GCC 11 (boo#1185218).
+- Drop the sed hack to remove -fcf-protection: this is properly
+  solved with the above patch.
+
+-------------------------------------------------------------------
+Wed May 12 15:28:24 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- -fcf-protection doesn't work on i586 with gcc11 either (boo#1185218)
+
+-------------------------------------------------------------------
 Thu Aug 20 09:36:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Fix build on non-x86 by dropping -fcf-protection flag 
+- Fix build on non-x86 by dropping -fcf-protection flag
   on non-x86 architectures
 
 -------------------------------------------------------------------
@@ -14,7 +26,7 @@ Sun Aug 16 01:27:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Revised build and test environments
   * Revised documentation
   * Improved charset handling in UserComment
-  * Other improvements 
+  * Other improvements
 
 -------------------------------------------------------------------
 Fri Apr 17 11:26:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>

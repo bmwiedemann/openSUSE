@@ -1,7 +1,7 @@
 #
 # spec file for package exiv2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@ Name:           exiv2
 Version:        0.27.3
 Release:        0
 Summary:        Tool to access image Exif metadata
-License:        GPL-2.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://www.exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/Exiv2/exiv2/pull/1271.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -103,10 +104,6 @@ documentation in HTML format.
 # Upstream will switch to C++11 with 0.28.0, but googletest requires C++11
 # See https://github.com/Exiv2/exiv2/issues/1163
 sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
-%ifnarch %{ix86} x86_64
-# Drop -fcf-protection flag on architectures which do not support it
-sed -i -e 's/-fcf-protection//' cmake/compilerFlags.cmake
-%endif
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
