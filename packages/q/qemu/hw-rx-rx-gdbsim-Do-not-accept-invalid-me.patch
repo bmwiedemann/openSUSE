@@ -1,0 +1,37 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Thu, 8 Apr 2021 00:30:56 +0200
+Subject: hw/rx/rx-gdbsim: Do not accept invalid memory size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 9197b5d4b5f163455c891baec531ae73f5d3a73a
+References: bsc#1186000
+
+We check the amount of RAM is enough, warn when it is
+not, but if so we neglect to bail out. Fix that by
+adding the missing exit() call.
+
+Fixes: bda19d7bb56 ("hw/rx: Add RX GDB simulator")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+Message-Id: <20210407223056.1870497-1-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/rx/rx-gdbsim.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+index b1d7c2488ff332cfc3de1e39f6d4..4e4ececae4b060ea75e6454f3a8c 100644
+--- a/hw/rx/rx-gdbsim.c
++++ b/hw/rx/rx-gdbsim.c
+@@ -93,6 +93,7 @@ static void rx_gdbsim_init(MachineState *machine)
+         char *sz = size_to_str(mc->default_ram_size);
+         error_report("Invalid RAM size, should be more than %s", sz);
+         g_free(sz);
++        exit(1);
+     }
+ 
+     /* Allocate memory space */

@@ -1737,7 +1737,7 @@ fi
 %_docdir/%name/_static/doctools.js
 %_docdir/%name/_static/documentation_options.js
 %_docdir/%name/_static/file.png
-%_docdir/%name/_static/jquery-3.5.1.js
+%_docdir/%name/_static/jquery-*
 %_docdir/%name/_static/jquery.js
 %_docdir/%name/_static/language_data.js
 %_docdir/%name/_static/minus.png

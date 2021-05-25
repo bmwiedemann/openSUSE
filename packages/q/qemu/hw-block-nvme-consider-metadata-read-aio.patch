@@ -1,0 +1,50 @@
+From: Gollu Appalanaidu <anaidu.gollu@samsung.com>
+Date: Fri, 16 Apr 2021 12:52:33 +0530
+Subject: hw/block/nvme: consider metadata read aio return value in compare
+
+Git-commit: b4a983239343efd0a2d8a6cdf0690d0d707ec4ea
+
+Currently in compare command metadata aio read blk_aio_preadv return
+value ignored. Consider it and complete the block accounting.
+
+Signed-off-by: Gollu Appalanaidu <anaidu.gollu@samsung.com>
+Fixes: 0a384f923f51 ("hw/block/nvme: add compare command")
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/nvme.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+index 5fe082ec34c57471fab0fa7e8a0c..ba90053b63ed4884deb98d62b6d6 100644
+--- a/hw/block/nvme.c
++++ b/hw/block/nvme.c
+@@ -2369,10 +2369,19 @@ static void nvme_compare_mdata_cb(void *opaque, int ret)
+     uint32_t reftag = le32_to_cpu(rw->reftag);
+     struct nvme_compare_ctx *ctx = req->opaque;
+     g_autofree uint8_t *buf = NULL;
++    BlockBackend *blk = ns->blkconf.blk;
++    BlockAcctCookie *acct = &req->acct;
++    BlockAcctStats *stats = blk_get_stats(blk);
+     uint16_t status = NVME_SUCCESS;
+ 
+     trace_pci_nvme_compare_mdata_cb(nvme_cid(req));
+ 
++    if (ret) {
++        block_acct_failed(stats, acct);
++        nvme_aio_err(req, ret);
++        goto out;
++    }
++
+     buf = g_malloc(ctx->mdata.iov.size);
+ 
+     status = nvme_bounce_mdata(n, buf, ctx->mdata.iov.size,
+@@ -2421,6 +2430,8 @@ static void nvme_compare_mdata_cb(void *opaque, int ret)
+         goto out;
+     }
+ 
++    block_acct_done(stats, acct);
++
+ out:
+     qemu_iovec_destroy(&ctx->data.iov);
+     g_free(ctx->data.bounce);

@@ -1,0 +1,171 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Apr 2021 19:13:12 +0200
+Subject: vhost-user-blk: Don't reconnect during initialisation
+
+Git-commit: dabefdd6abcbc7d858e9413e4734aab2e0b5c8d9
+
+This is a partial revert of commits 77542d43149 and bc79c87bcde.
+
+Usually, an error during initialisation means that the configuration was
+wrong. Reconnecting won't make the error go away, but just turn the
+error condition into an endless loop. Avoid this and return errors
+again.
+
+Additionally, calling vhost_user_blk_disconnect() from the chardev event
+handler could result in use-after-free because none of the
+initialisation code expects that the device could just go away in the
+middle. So removing the call fixes crashes in several places.
+
+For example, using a num-queues setting that is incompatible with the
+backend would result in a crash like this (dereferencing dev->opaque,
+which is already NULL):
+
+ #0  0x0000555555d0a4bd in vhost_user_read_cb (source=0x5555568f4690, condition=(G_IO_IN | G_IO_HUP), opaque=0x7fffffffcbf0) at ../hw/virtio/vhost-user.c:313
+ #1  0x0000555555d950d3 in qio_channel_fd_source_dispatch (source=0x555557c3f750, callback=0x555555d0a478 <vhost_user_read_cb>, user_data=0x7fffffffcbf0) at ../io/channel-watch.c:84
+ #2  0x00007ffff7b32a9f in g_main_context_dispatch () at /lib64/libglib-2.0.so.0
+ #3  0x00007ffff7b84a98 in g_main_context_iterate.constprop () at /lib64/libglib-2.0.so.0
+ #4  0x00007ffff7b32163 in g_main_loop_run () at /lib64/libglib-2.0.so.0
+ #5  0x0000555555d0a724 in vhost_user_read (dev=0x555557bc62f8, msg=0x7fffffffcc50) at ../hw/virtio/vhost-user.c:402
+ #6  0x0000555555d0ee6b in vhost_user_get_config (dev=0x555557bc62f8, config=0x555557bc62ac "", config_len=60) at ../hw/virtio/vhost-user.c:2133
+ #7  0x0000555555d56d46 in vhost_dev_get_config (hdev=0x555557bc62f8, config=0x555557bc62ac "", config_len=60) at ../hw/virtio/vhost.c:1566
+ #8  0x0000555555cdd150 in vhost_user_blk_device_realize (dev=0x555557bc60b0, errp=0x7fffffffcf90) at ../hw/block/vhost-user-blk.c:510
+ #9  0x0000555555d08f6d in virtio_device_realize (dev=0x555557bc60b0, errp=0x7fffffffcff0) at ../hw/virtio/virtio.c:3660
+
+Note that this removes the ability to reconnect during initialisation
+(but not during operation) when there is no permanent error, but the
+backend restarts, as the implementation was buggy. This feature can be
+added back in a follow-up series after changing error paths to
+distinguish cases where retrying could help from cases with permanent
+errors.
+
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20210429171316.162022-3-kwolf@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/vhost-user-blk.c | 59 +++++++++++----------------------------
+ 1 file changed, 17 insertions(+), 42 deletions(-)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index 7c85248a7b78b9d9ec8614a3b5fe..c0b9958da1b4e155e063fb3426d0 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -50,6 +50,8 @@ static const int user_feature_bits[] = {
+     VHOST_INVALID_FEATURE_BIT
+ };
+ 
++static void vhost_user_blk_event(void *opaque, QEMUChrEvent event);
++
+ static void vhost_user_blk_update_config(VirtIODevice *vdev, uint8_t *config)
+ {
+     VHostUserBlk *s = VHOST_USER_BLK(vdev);
+@@ -362,19 +364,6 @@ static void vhost_user_blk_disconnect(DeviceState *dev)
+     vhost_dev_cleanup(&s->dev);
+ }
+ 
+-static void vhost_user_blk_event(void *opaque, QEMUChrEvent event,
+-                                 bool realized);
+-
+-static void vhost_user_blk_event_realize(void *opaque, QEMUChrEvent event)
+-{
+-    vhost_user_blk_event(opaque, event, false);
+-}
+-
+-static void vhost_user_blk_event_oper(void *opaque, QEMUChrEvent event)
+-{
+-    vhost_user_blk_event(opaque, event, true);
+-}
+-
+ static void vhost_user_blk_chr_closed_bh(void *opaque)
+ {
+     DeviceState *dev = opaque;
+@@ -382,12 +371,11 @@ static void vhost_user_blk_chr_closed_bh(void *opaque)
+     VHostUserBlk *s = VHOST_USER_BLK(vdev);
+ 
+     vhost_user_blk_disconnect(dev);
+-    qemu_chr_fe_set_handlers(&s->chardev, NULL, NULL,
+-            vhost_user_blk_event_oper, NULL, opaque, NULL, true);
++    qemu_chr_fe_set_handlers(&s->chardev, NULL, NULL, vhost_user_blk_event,
++                             NULL, opaque, NULL, true);
+ }
+ 
+-static void vhost_user_blk_event(void *opaque, QEMUChrEvent event,
+-                                 bool realized)
++static void vhost_user_blk_event(void *opaque, QEMUChrEvent event)
+ {
+     DeviceState *dev = opaque;
+     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+@@ -401,17 +389,7 @@ static void vhost_user_blk_event(void *opaque, QEMUChrEvent event,
+         }
+         break;
+     case CHR_EVENT_CLOSED:
+-        /*
+-         * Closing the connection should happen differently on device
+-         * initialization and operation stages.
+-         * On initalization, we want to re-start vhost_dev initialization
+-         * from the very beginning right away when the connection is closed,
+-         * so we clean up vhost_dev on each connection closing.
+-         * On operation, we want to postpone vhost_dev cleanup to let the
+-         * other code perform its own cleanup sequence using vhost_dev data
+-         * (e.g. vhost_dev_set_log).
+-         */
+-        if (realized && !runstate_check(RUN_STATE_SHUTDOWN)) {
++        if (!runstate_check(RUN_STATE_SHUTDOWN)) {
+             /*
+              * A close event may happen during a read/write, but vhost
+              * code assumes the vhost_dev remains setup, so delay the
+@@ -431,8 +409,6 @@ static void vhost_user_blk_event(void *opaque, QEMUChrEvent event,
+              * knowing its type (in this case vhost-user).
+              */
+             s->dev.started = false;
+-        } else {
+-            vhost_user_blk_disconnect(dev);
+         }
+         break;
+     case CHR_EVENT_BREAK:
+@@ -489,33 +465,32 @@ static void vhost_user_blk_device_realize(DeviceState *dev, Error **errp)
+     s->vhost_vqs = g_new0(struct vhost_virtqueue, s->num_queues);
+     s->connected = false;
+ 
+-    qemu_chr_fe_set_handlers(&s->chardev,  NULL, NULL,
+-                             vhost_user_blk_event_realize, NULL, (void *)dev,
+-                             NULL, true);
+-
+-reconnect:
+     if (qemu_chr_fe_wait_connected(&s->chardev, errp) < 0) {
+         goto virtio_err;
+     }
+ 
+-    /* check whether vhost_user_blk_connect() failed or not */
+-    if (!s->connected) {
+-        goto reconnect;
++    if (vhost_user_blk_connect(dev) < 0) {
++        error_setg(errp, "vhost-user-blk: could not connect");
++        qemu_chr_fe_disconnect(&s->chardev);
++        goto virtio_err;
+     }
++    assert(s->connected);
+ 
+     ret = vhost_dev_get_config(&s->dev, (uint8_t *)&s->blkcfg,
+                                sizeof(struct virtio_blk_config));
+     if (ret < 0) {
+-        error_report("vhost-user-blk: get block config failed");
+-        goto reconnect;
++        error_setg(errp, "vhost-user-blk: get block config failed");
++        goto vhost_err;
+     }
+ 
+-    /* we're fully initialized, now we can operate, so change the handler */
++    /* we're fully initialized, now we can operate, so add the handler */
+     qemu_chr_fe_set_handlers(&s->chardev,  NULL, NULL,
+-                             vhost_user_blk_event_oper, NULL, (void *)dev,
++                             vhost_user_blk_event, NULL, (void *)dev,
+                              NULL, true);
+     return;
+ 
++vhost_err:
++    vhost_dev_cleanup(&s->dev);
+ virtio_err:
+     g_free(s->vhost_vqs);
+     s->vhost_vqs = NULL;

@@ -1,0 +1,44 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Apr 2021 19:13:11 +0200
+Subject: vhost-user-blk: Make sure to set Error on realize failure
+
+Git-commit: f26729715ef21325f972f693607580a829ad1cbb
+
+We have to set errp before jumping to virtio_err, otherwise the caller
+(virtio_device_realize()) will take this as success and crash when it
+later tries to access things that we've already freed in the error path.
+
+Fixes: 77542d431491788d1e8e79d93ce10172ef207775
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20210429171316.162022-2-kwolf@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Acked-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/vhost-user-blk.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index f5e9682703f3433c4b363003f90f..7c85248a7b78b9d9ec8614a3b5fe 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -447,7 +447,6 @@ static void vhost_user_blk_device_realize(DeviceState *dev, Error **errp)
+ {
+     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+     VHostUserBlk *s = VHOST_USER_BLK(vdev);
+-    Error *err = NULL;
+     int i, ret;
+ 
+     if (!s->chardev.chr) {
+@@ -495,8 +494,7 @@ static void vhost_user_blk_device_realize(DeviceState *dev, Error **errp)
+                              NULL, true);
+ 
+ reconnect:
+-    if (qemu_chr_fe_wait_connected(&s->chardev, &err) < 0) {
+-        error_report_err(err);
++    if (qemu_chr_fe_wait_connected(&s->chardev, errp) < 0) {
+         goto virtio_err;
+     }
+ 

@@ -1,0 +1,86 @@
+From: Stefan Reiter <s.reiter@proxmox.com>
+Date: Mon, 22 Mar 2021 16:40:24 +0100
+Subject: monitor/qmp: fix race on CHR_EVENT_CLOSED without OOB
+
+Git-commit: a67b996e7894edfafbcd3fd007c9f58f26d25908
+
+The QMP dispatcher coroutine holds the qmp_queue_lock over a yield
+point, where it expects to be rescheduled from the main context. If a
+CHR_EVENT_CLOSED event is received just then, it can race and block the
+main thread on the mutex in monitor_qmp_cleanup_queue_and_resume.
+
+monitor_resume does not need to be called from main context, so we can
+call it immediately after popping a request from the queue, which allows
+us to drop the qmp_queue_lock mutex before yielding.
+
+Suggested-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Signed-off-by: Stefan Reiter <s.reiter@proxmox.com>
+Message-Id: <20210322154024.15011-1-s.reiter@proxmox.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ monitor/qmp.c | 40 ++++++++++++++++++++++------------------
+ 1 file changed, 22 insertions(+), 18 deletions(-)
+
+diff --git a/monitor/qmp.c b/monitor/qmp.c
+index 2b0308f93371dde1a8085ac9c402..092c527b6fc9c6363f4bf81d8573 100644
+--- a/monitor/qmp.c
++++ b/monitor/qmp.c
+@@ -257,24 +257,6 @@ void coroutine_fn monitor_qmp_dispatcher_co(void *data)
+         trace_monitor_qmp_in_band_dequeue(req_obj,
+                                           req_obj->mon->qmp_requests->length);
+ 
+-        if (qatomic_xchg(&qmp_dispatcher_co_busy, true) == true) {
+-            /*
+-             * Someone rescheduled us (probably because a new requests
+-             * came in), but we didn't actually yield. Do that now,
+-             * only to be immediately reentered and removed from the
+-             * list of scheduled coroutines.
+-             */
+-            qemu_coroutine_yield();
+-        }
+-
+-        /*
+-         * Move the coroutine from iohandler_ctx to qemu_aio_context for
+-         * executing the command handler so that it can make progress if it
+-         * involves an AIO_WAIT_WHILE().
+-         */
+-        aio_co_schedule(qemu_get_aio_context(), qmp_dispatcher_co);
+-        qemu_coroutine_yield();
+-
+         /*
+          * @req_obj has a request, we hold req_obj->mon->qmp_queue_lock
+          */
+@@ -298,8 +280,30 @@ void coroutine_fn monitor_qmp_dispatcher_co(void *data)
+             monitor_resume(&mon->common);
+         }
+ 
++        /*
++         * Drop the queue mutex now, before yielding, otherwise we might
++         * deadlock if the main thread tries to lock it.
++         */
+         qemu_mutex_unlock(&mon->qmp_queue_lock);
+ 
++        if (qatomic_xchg(&qmp_dispatcher_co_busy, true) == true) {
++            /*
++             * Someone rescheduled us (probably because a new requests
++             * came in), but we didn't actually yield. Do that now,
++             * only to be immediately reentered and removed from the
++             * list of scheduled coroutines.
++             */
++            qemu_coroutine_yield();
++        }
++
++        /*
++         * Move the coroutine from iohandler_ctx to qemu_aio_context for
++         * executing the command handler so that it can make progress if it
++         * involves an AIO_WAIT_WHILE().
++         */
++        aio_co_schedule(qemu_get_aio_context(), qmp_dispatcher_co);
++        qemu_coroutine_yield();
++
+         /* Process request */
+         if (req_obj->req) {
+             if (trace_event_get_state(TRACE_MONITOR_QMP_CMD_IN_BAND)) {

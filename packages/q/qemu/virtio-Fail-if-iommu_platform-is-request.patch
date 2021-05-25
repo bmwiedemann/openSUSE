@@ -1,0 +1,44 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Apr 2021 19:13:15 +0200
+Subject: virtio: Fail if iommu_platform is requested, but unsupported
+
+Git-commit: 04ceb61a4075fadbf374ef89662c41999da83489
+
+Commit 2943b53f6 (' virtio: force VIRTIO_F_IOMMU_PLATFORM') made sure
+that vhost can't just reject VIRTIO_F_IOMMU_PLATFORM when it was
+requested. However, just adding it back to the negotiated flags isn't
+right either because it promises support to the guest that the device
+actually doesn't support. One example of a vhost-user device that
+doesn't have support for the flag is the vhost-user-blk export of QEMU.
+
+Instead of successfully creating a device that doesn't work, just fail
+to plug the device when it doesn't support the feature, but it was
+requested. This results in much clearer error messages.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1935019
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Message-Id: <20210429171316.162022-6-kwolf@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/virtio/virtio-bus.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+index d6332d45c3b201d6528d84306da9..859978d24877a04ed5eaa03d060d 100644
+--- a/hw/virtio/virtio-bus.c
++++ b/hw/virtio/virtio-bus.c
+@@ -69,6 +69,11 @@ void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
+         return;
+     }
+ 
++    if (has_iommu && !virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
++        error_setg(errp, "iommu_platform=true is not supported by the device");
++        return;
++    }
++
+     if (klass->device_plugged != NULL) {
+         klass->device_plugged(qbus->parent, &local_err);
+     }

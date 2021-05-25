@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May 24 23:20:04 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix CVE-2021-3527 in usb/redir:
+  usb-redir-avoid-dynamic-stack-allocation.patch
+- Fix issues found upstream:
+  hw-block-nvme-consider-metadata-read-aio.patch
+  sockets-update-SOCKET_ADDRESS_TYPE_FD-li.patch
+  vfio-ccw-Permit-missing-IRQs.patch
+  vhost-user-blk-Check-that-num-queues-is-.patch
+  vhost-user-blk-Don-t-reconnect-during-in.patch
+  vhost-user-blk-Fail-gracefully-on-too-la.patch
+  vhost-user-blk-Get-more-feature-flags-fr.patch
+  vhost-user-blk-Make-sure-to-set-Error-on.patch
+  virtio-blk-Fix-rollback-path-in-virtio_b.patch
+  virtio-Fail-if-iommu_platform-is-request.patch
+  virtiofsd-Fix-side-effect-in-assert.patch
+  monitor-qmp-fix-race-on-CHR_EVENT_CLOSED.patch
+
+-------------------------------------------------------------------
+Mon May 17 20:34:14 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Brotli VLA error was already fixed in v5.2 but the patches wasn't
+  included in v6.0. This change fixed that
+- Patches added:
+  brotli-fix-actual-variable-array-paramet.patch
+  hw-rx-rx-gdbsim-Do-not-accept-invalid-me.patch
+  ui-Fix-memory-leak-in-qemu_xkeymap_mappi.patch
+
+-------------------------------------------------------------------
+Thu May  6 00:33:36 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- For the record, these issues are fixed in this package already.
+  Most are alternate references to previously mentioned issues:
+  (CVE-2019-15890, bsc#1149813, CVE-2020-8608, bsc#1163019,
+  CVE-2020-14364, bsc#1175534, CVE-2020-25707, bsc#1178683,
+  CVE-2020-25723, bsc#1178935, CVE-2020-29130, bsc#1179477,
+  CVE-2020-29129, bsc#1179484, CVE-2021-3419, bsc#1182975)
+
+-------------------------------------------------------------------
 Fri Apr 30 16:37:51 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Update to v6.0: see https://wiki.qemu.org/ChangeLog/6.0

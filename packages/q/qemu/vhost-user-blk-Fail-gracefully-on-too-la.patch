@@ -1,0 +1,47 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Tue, 13 Apr 2021 18:56:54 +0200
+Subject: vhost-user-blk: Fail gracefully on too large queue size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 68bf7336533faa6aa90fdd4558edddbf5d8ef814
+
+virtio_add_queue() aborts when queue_size > VIRTQUEUE_MAX_SIZE, so
+vhost_user_blk_device_realize() should check this before calling it.
+
+Simple reproducer:
+
+qemu-system-x86_64 \
+    -chardev null,id=foo \
+    -device vhost-user-blk-pci,queue-size=4096,chardev=foo
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1935014
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20210413165654.50810-1-kwolf@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/vhost-user-blk.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index 0b5b9d44cdb0ed4d4a43974e7cdd..f5e9682703f3433c4b363003f90f 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -467,6 +467,11 @@ static void vhost_user_blk_device_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, "vhost-user-blk: queue size must be non-zero");
+         return;
+     }
++    if (s->queue_size > VIRTQUEUE_MAX_SIZE) {
++        error_setg(errp, "vhost-user-blk: queue size must not exceed %d",
++                   VIRTQUEUE_MAX_SIZE);
++        return;
++    }
+ 
+     if (!vhost_user_init(&s->vhost_user, &s->chardev, errp)) {
+         return;

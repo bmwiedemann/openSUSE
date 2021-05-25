@@ -1,0 +1,35 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Apr 2021 19:13:14 +0200
+Subject: vhost-user-blk: Get more feature flags from vhost device
+
+Git-commit: 7556a320c98812ca6648b707393f4513387faf73
+
+VIRTIO_F_RING_PACKED and VIRTIO_F_IOMMU_PLATFORM need to be supported by
+the vhost device, otherwise advertising it to the guest doesn't result
+in a working configuration. They are currently not supported by the
+vhost-user-blk export in QEMU.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1935020
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Acked-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Message-Id: <20210429171316.162022-5-kwolf@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/vhost-user-blk.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index c0b9958da1b4e155e063fb3426d0..738e8498b4a1d650047f7190c435 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -47,6 +47,8 @@ static const int user_feature_bits[] = {
+     VIRTIO_RING_F_INDIRECT_DESC,
+     VIRTIO_RING_F_EVENT_IDX,
+     VIRTIO_F_NOTIFY_ON_EMPTY,
++    VIRTIO_F_RING_PACKED,
++    VIRTIO_F_IOMMU_PLATFORM,
+     VHOST_INVALID_FEATURE_BIT
+ };
+ 

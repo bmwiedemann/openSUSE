@@ -1,0 +1,71 @@
+From: Eric Farman <farman@linux.ibm.com>
+Date: Wed, 21 Apr 2021 17:20:53 +0200
+Subject: vfio-ccw: Permit missing IRQs
+
+Git-commit: 6178d4689a1e6a0d2b6dea1dad990e74148fa9d1
+
+Commit 690e29b91102 ("vfio-ccw: Refactor ccw irq handler") changed
+one of the checks for the IRQ notifier registration from saying
+"the host needs to recognize the only IRQ that exists" to saying
+"the host needs to recognize ANY IRQ that exists."
+
+And this worked fine, because the subsequent change to support the
+CRW IRQ notifier doesn't get into this code when running on an older
+kernel, thanks to a guard by a capability region. The later addition
+of the REQ(uest) IRQ by commit b2f96f9e4f5f ("vfio-ccw: Connect the
+device request notifier") broke this assumption because there is no
+matching capability region. Thus, running new QEMU on an older
+kernel fails with:
+
+  vfio: unexpected number of irqs 2
+
+Let's adapt the message here so that there's a better clue of what
+IRQ is missing.
+
+Furthermore, let's make the REQ(uest) IRQ not fail when attempting
+to register it, to permit running vfio-ccw on a newer QEMU with an
+older kernel.
+
+Fixes: b2f96f9e4f5f ("vfio-ccw: Connect the device request notifier")
+Signed-off-by: Eric Farman <farman@linux.ibm.com>
+Message-Id: <20210421152053.2379873-1-farman@linux.ibm.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/vfio/ccw.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
+index b2df708e4b0192cc6af898edeca4..400bc07fe260837953de87d0f272 100644
+--- a/hw/vfio/ccw.c
++++ b/hw/vfio/ccw.c
+@@ -412,8 +412,8 @@ static void vfio_ccw_register_irq_notifier(VFIOCCWDevice *vcdev,
+     }
+ 
+     if (vdev->num_irqs < irq + 1) {
+-        error_setg(errp, "vfio: unexpected number of irqs %u",
+-                   vdev->num_irqs);
++        error_setg(errp, "vfio: IRQ %u not available (number of irqs %u)",
++                   irq, vdev->num_irqs);
+         return;
+     }
+ 
+@@ -696,13 +696,15 @@ static void vfio_ccw_realize(DeviceState *dev, Error **errp)
+ 
+     vfio_ccw_register_irq_notifier(vcdev, VFIO_CCW_REQ_IRQ_INDEX, &err);
+     if (err) {
+-        goto out_req_notifier_err;
++        /*
++         * Report this error, but do not make it a failing condition.
++         * Lack of this IRQ in the host does not prevent normal operation.
++         */
++        error_report_err(err);
+     }
+ 
+     return;
+ 
+-out_req_notifier_err:
+-    vfio_ccw_unregister_irq_notifier(vcdev, VFIO_CCW_CRW_IRQ_INDEX);
+ out_crw_notifier_err:
+     vfio_ccw_unregister_irq_notifier(vcdev, VFIO_CCW_IO_IRQ_INDEX);
+ out_io_notifier_err:

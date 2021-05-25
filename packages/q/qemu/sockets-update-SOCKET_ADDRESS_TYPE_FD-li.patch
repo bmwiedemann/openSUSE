@@ -1,0 +1,97 @@
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 10 Mar 2021 17:30:04 +0000
+Subject: sockets: update SOCKET_ADDRESS_TYPE_FD listen(2) backlog
+
+Git-commit: 37179e9ea45d6428b29ae789209c119ac18c1d39
+
+socket_get_fd() fails with the error "socket_get_fd: too many
+connections" if the given listen backlog value is not 1.
+
+Not all callers set the backlog to 1. For example, commit
+582d4210eb2f2ab5baac328fe4b479cd86da1647 ("qemu-nbd: Use SOMAXCONN for
+socket listen() backlog") uses SOMAXCONN. This will always fail with in
+socket_get_fd().
+
+This patch calls listen(2) on the fd to update the backlog value. The
+socket may already be in the listen state. I have tested that this works
+on Linux 5.10 and macOS Catalina.
+
+As a bonus this allows us to detect when the fd cannot listen. Now we'll
+be able to catch unbound or connected fds in socket_listen().
+
+Drop the num argument from socket_get_fd() since this function is also
+called by socket_connect() where a listen backlog value does not make
+sense.
+
+Fixes: e5b6353cf25c99c3f08bf51e29933352f7140e8f ("socket: Add backlog parameter to socket_listen")
+Reported-by: Richard W.M. Jones <rjones@redhat.com>
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20210310173004.420190-1-stefanha@redhat.com>
+Tested-by: Richard W.M. Jones <rjones@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ util/qemu-sockets.c | 29 ++++++++++++++++++++++-------
+ 1 file changed, 22 insertions(+), 7 deletions(-)
+
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 8af0278f15c69fea136192e91650..2463c49773eae5ccac4c6c832c76 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -1116,14 +1116,10 @@ fail:
+     return NULL;
+ }
+ 
+-static int socket_get_fd(const char *fdstr, int num, Error **errp)
++static int socket_get_fd(const char *fdstr, Error **errp)
+ {
+     Monitor *cur_mon = monitor_cur();
+     int fd;
+-    if (num != 1) {
+-        error_setg_errno(errp, EINVAL, "socket_get_fd: too many connections");
+-        return -1;
+-    }
+     if (cur_mon) {
+         fd = monitor_get_fd(cur_mon, fdstr, errp);
+         if (fd < 0) {
+@@ -1159,7 +1155,7 @@ int socket_connect(SocketAddress *addr, Error **errp)
+         break;
+ 
+     case SOCKET_ADDRESS_TYPE_FD:
+-        fd = socket_get_fd(addr->u.fd.str, 1, errp);
++        fd = socket_get_fd(addr->u.fd.str, errp);
+         break;
+ 
+     case SOCKET_ADDRESS_TYPE_VSOCK:
+@@ -1187,7 +1183,26 @@ int socket_listen(SocketAddress *addr, int num, Error **errp)
+         break;
+ 
+     case SOCKET_ADDRESS_TYPE_FD:
+-        fd = socket_get_fd(addr->u.fd.str, num, errp);
++        fd = socket_get_fd(addr->u.fd.str, errp);
++        if (fd < 0) {
++            return -1;
++        }
++
++        /*
++         * If the socket is not yet in the listen state, then transition it to
++         * the listen state now.
++         *
++         * If it's already listening then this updates the backlog value as
++         * requested.
++         *
++         * If this socket cannot listen because it's already in another state
++         * (e.g. unbound or connected) then we'll catch the error here.
++         */
++        if (listen(fd, num) != 0) {
++            error_setg_errno(errp, errno, "Failed to listen on fd socket");
++            closesocket(fd);
++            return -1;
++        }
+         break;
+ 
+     case SOCKET_ADDRESS_TYPE_VSOCK:

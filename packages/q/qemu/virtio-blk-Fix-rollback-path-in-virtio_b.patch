@@ -1,0 +1,68 @@
+From: Greg Kurz <groug@kaod.org>
+Date: Wed, 7 Apr 2021 16:34:58 +0200
+Subject: virtio-blk: Fix rollback path in virtio_blk_data_plane_start()
+
+Git-commit: 570fe439e5d1b8626cf344c6bc97d90cfcaf0c79
+
+When dataplane multiqueue support was added in QEMU 2.7, the path
+that would rollback guest notifiers assignment in case of error
+simply got dropped.
+
+Later on, when Error was added to blk_set_aio_context() in QEMU 4.1,
+another error path was introduced, but it ommits to rollback both
+host and guest notifiers.
+
+It seems cleaner to fix the rollback path in one go. The patch is
+simple enough that it can be adjusted if backported to a pre-4.1
+QEMU.
+
+Fixes: 51b04ac5c6a6 ("virtio-blk: dataplane multiqueue support")
+Cc: stefanha@redhat.com
+Fixes: 97896a4887a0 ("block: Add Error to blk_set_aio_context()")
+Cc: kwolf@redhat.com
+Signed-off-by: Greg Kurz <groug@kaod.org>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20210407143501.244343-2-groug@kaod.org>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/dataplane/virtio-blk.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
+index e9050c8987e7d4c8496135dd87ea..d7b5c95d26d9ec818118513b40c3 100644
+--- a/hw/block/dataplane/virtio-blk.c
++++ b/hw/block/dataplane/virtio-blk.c
+@@ -207,7 +207,7 @@ int virtio_blk_data_plane_start(VirtIODevice *vdev)
+                 virtio_bus_set_host_notifier(VIRTIO_BUS(qbus), i, false);
+                 virtio_bus_cleanup_host_notifier(VIRTIO_BUS(qbus), i);
+             }
+-            goto fail_guest_notifiers;
++            goto fail_host_notifiers;
+         }
+     }
+ 
+@@ -221,7 +221,7 @@ int virtio_blk_data_plane_start(VirtIODevice *vdev)
+     aio_context_release(old_context);
+     if (r < 0) {
+         error_report_err(local_err);
+-        goto fail_guest_notifiers;
++        goto fail_aio_context;
+     }
+ 
+     /* Process queued requests before the ones in vring */
+@@ -245,6 +245,13 @@ int virtio_blk_data_plane_start(VirtIODevice *vdev)
+     aio_context_release(s->ctx);
+     return 0;
+ 
++  fail_aio_context:
++    for (i = 0; i < nvqs; i++) {
++        virtio_bus_set_host_notifier(VIRTIO_BUS(qbus), i, false);
++        virtio_bus_cleanup_host_notifier(VIRTIO_BUS(qbus), i);
++    }
++  fail_host_notifiers:
++    k->set_guest_notifiers(qbus->parent, nvqs, false);
+   fail_guest_notifiers:
+     /*
+      * If we failed to set up the guest notifiers queued requests will be

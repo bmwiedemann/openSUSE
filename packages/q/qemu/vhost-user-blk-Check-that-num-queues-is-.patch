@@ -1,0 +1,74 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Apr 2021 19:13:16 +0200
+Subject: vhost-user-blk: Check that num-queues is supported by backend
+
+Git-commit: c90bd505a3e8210c23d69fecab9ee6f56ec4a161
+
+Creating a device with a number of queues that isn't supported by the
+backend is pointless, the device won't work properly and the error
+messages are rather confusing.
+
+Just fail to create the device if num-queues is higher than what the
+backend supports.
+
+Since the relationship between num-queues and the number of virtqueues
+depends on the specific device, this is an additional value that needs
+to be initialised by the device. For convenience, allow leaving it 0 if
+the check should be skipped. This makes sense for vhost-user-net where
+separate vhost devices are used for the queues and custom initialisation
+code is needed to perform the check.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1935031
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Message-Id: <20210429171316.162022-7-kwolf@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/vhost-user-blk.c | 1 +
+ hw/virtio/vhost-user.c    | 5 +++++
+ include/hw/virtio/vhost.h | 2 ++
+ 3 files changed, 8 insertions(+)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index 738e8498b4a1d650047f7190c435..ceb6bdde71e57640677a48425148 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -324,6 +324,7 @@ static int vhost_user_blk_connect(DeviceState *dev)
+     }
+     s->connected = true;
+ 
++    s->dev.num_queues = s->num_queues;
+     s->dev.nvqs = s->num_queues;
+     s->dev.vqs = s->vhost_vqs;
+     s->dev.vq_index = 0;
+diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+index ded0c10453095830e24b6e53e8f8..ee57abe04526f6c55d983cb0254c 100644
+--- a/hw/virtio/vhost-user.c
++++ b/hw/virtio/vhost-user.c
+@@ -1909,6 +1909,11 @@ static int vhost_user_backend_init(struct vhost_dev *dev, void *opaque)
+                 return err;
+             }
+         }
++        if (dev->num_queues && dev->max_queues < dev->num_queues) {
++            error_report("The maximum number of queues supported by the "
++                         "backend is %" PRIu64, dev->max_queues);
++            return -EINVAL;
++        }
+ 
+         if (virtio_has_feature(features, VIRTIO_F_IOMMU_PLATFORM) &&
+                 !(virtio_has_feature(dev->protocol_features,
+diff --git a/include/hw/virtio/vhost.h b/include/hw/virtio/vhost.h
+index 4a8bc75415f6bba597c195e10a47..21a9a52088dd01838099046587fd 100644
+--- a/include/hw/virtio/vhost.h
++++ b/include/hw/virtio/vhost.h
+@@ -74,6 +74,8 @@ struct vhost_dev {
+     int nvqs;
+     /* the first virtqueue which would be used by this vhost dev */
+     int vq_index;
++    /* if non-zero, minimum required value for max_queues */
++    int num_queues;
+     uint64_t features;
+     uint64_t acked_features;
+     uint64_t backend_features;

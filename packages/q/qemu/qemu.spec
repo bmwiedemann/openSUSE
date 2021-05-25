@@ -177,6 +177,21 @@ Patch00041:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00042:     module-for-virtio-gpu-pre-load-module-to.patch
 Patch00043:     qom-handle-case-of-chardev-spice-module-.patch
 Patch00044:     doc-add-our-support-doc-to-the-main-proj.patch
+Patch00045:     ui-Fix-memory-leak-in-qemu_xkeymap_mappi.patch
+Patch00046:     hw-rx-rx-gdbsim-Do-not-accept-invalid-me.patch
+Patch00047:     monitor-qmp-fix-race-on-CHR_EVENT_CLOSED.patch
+Patch00048:     vhost-user-blk-Fail-gracefully-on-too-la.patch
+Patch00049:     usb-redir-avoid-dynamic-stack-allocation.patch
+Patch00050:     virtiofsd-Fix-side-effect-in-assert.patch
+Patch00051:     sockets-update-SOCKET_ADDRESS_TYPE_FD-li.patch
+Patch00052:     virtio-blk-Fix-rollback-path-in-virtio_b.patch
+Patch00053:     hw-block-nvme-consider-metadata-read-aio.patch
+Patch00054:     vhost-user-blk-Make-sure-to-set-Error-on.patch
+Patch00055:     vhost-user-blk-Don-t-reconnect-during-in.patch
+Patch00056:     vhost-user-blk-Get-more-feature-flags-fr.patch
+Patch00057:     virtio-Fail-if-iommu_platform-is-request.patch
+Patch00058:     vhost-user-blk-Check-that-num-queues-is-.patch
+Patch00059:     vfio-ccw-Permit-missing-IRQs.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -192,6 +207,8 @@ Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
 # Patches applied in roms/qboot/:
 Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
+# Patches applied in roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/:
+Patch27000:     brotli-fix-actual-variable-array-paramet.patch
 
 # Please do not add patches manually here.
 
@@ -1052,6 +1069,21 @@ This package records qemu testsuite results and represents successful testing.
 %if %{legacy_qemu_kvm}
 %patch00044 -p1
 %endif
+%patch00045 -p1
+%patch00046 -p1
+%patch00047 -p1
+%patch00048 -p1
+%patch00049 -p1
+%patch00050 -p1
+%patch00051 -p1
+%patch00052 -p1
+%patch00053 -p1
+%patch00054 -p1
+%patch00055 -p1
+%patch00056 -p1
+%patch00057 -p1
+%patch00058 -p1
+%patch00059 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1065,6 +1097,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch03000 -p1
 %patch03001 -p1
 %patch11000 -p1
+%patch27000 -p1
 
 %if "%{name}" != "qemu-linux-user"
 # for the record, this set of firmware files is installed, but we don't
@@ -1863,7 +1896,7 @@ fi
 %_docdir/%name/_static/doctools.js
 %_docdir/%name/_static/documentation_options.js
 %_docdir/%name/_static/file.png
-%_docdir/%name/_static/jquery-3.5.1.js
+%_docdir/%name/_static/jquery-*
 %_docdir/%name/_static/jquery.js
 %_docdir/%name/_static/language_data.js
 %_docdir/%name/_static/minus.png
