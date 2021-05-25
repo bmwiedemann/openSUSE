@@ -169,4 +169,13 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795017 from iznogood)</comment>
     <requestid>795173</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a6c52906fed5050d405080739d9b6c31</srcmd5>
+    <version>0.2.9+4</version>
+    <time>1621969661</time>
+    <user>dimstar_suse</user>
+    <comment>- Add farstream-glib-non-volatile.patch: Fix build againat GCC11
+  with glib no longer misusing 'volatile' (boo#1185220). (forwarded request 892516 from dimstar)</comment>
+    <requestid>892520</requestid>
+  </revision>
 </revisionlist>

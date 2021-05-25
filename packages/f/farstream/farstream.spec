@@ -1,7 +1,7 @@
 #
 # spec file for package farstream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source1:        baselibs.conf
 
 # PATCH-FEATURE-OPENSUSE farstream-plugin-path.patch fcrozat@suse.com -- Use library policy compliant path for plugin
 Patch0:         farstream-plugin-path.patch
+# PATCH-FIX-UPSTREAM farstream-glib-non-volatile.patch boo#1185220 dimstar@opensuse.org -- Fix build against GCC11/glib2 without misusing 'volatile'
+Patch1:         farstream-glib-non-volatile.patch
 
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.32

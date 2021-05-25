@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 12 14:17:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add farstream-glib-non-volatile.patch: Fix build againat GCC11
+  with glib no longer misusing 'volatile' (boo#1185220).
+
+-------------------------------------------------------------------
 Thu Mar 12 21:01:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 2.4.9+4:
