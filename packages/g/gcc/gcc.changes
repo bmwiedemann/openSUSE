@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 08:45:13 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Switch gcc to default 11.
+- Adjust liblto_plugin.so naming for GCC 11.
+
+-------------------------------------------------------------------
 Thu Nov 12 11:42:44 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - BuildRequire packages we build symlinks to.  [bsc#1178675]

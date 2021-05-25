@@ -545,4 +545,17 @@ from GCC 6).
     <comment>- BuildRequire packages we build symlinks to.  [bsc#1178675]</comment>
     <requestid>848107</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7cf98e8e3b85e717bdea4396929083a9</srcmd5>
+    <version>11</version>
+    <time>1621969657</time>
+    <user>dimstar_suse</user>
+    <comment>It was a bad idea to try to fix bsc#1185348 together with the switch
+
+---
+
+- Switch gcc to default 11.
+- Adjust liblto_plugin.so naming for GCC 11.</comment>
+    <requestid>889462</requestid>
+  </revision>
 </revisionlist>

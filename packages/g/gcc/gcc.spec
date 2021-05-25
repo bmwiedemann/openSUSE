@@ -1,7 +1,7 @@
 #
 # spec file for package gcc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,9 +42,9 @@ Name:           gcc
 %define build_d 0
 %endif
 URL:            http://gcc.gnu.org/
-%define gcc_version 10
-%define gcc_suffix 10
-Version:        10
+%define gcc_version 11
+%define gcc_suffix 11
+Version:        11
 Release:        0
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
@@ -479,7 +479,7 @@ ln -sf g++-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/c++.1.gz
 ln -sf gcc-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/cc.1.gz
 # Install the LTO linker plugin so it is auto-loaded by BFD
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/bfd-plugins
-ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so.0.0.0` $RPM_BUILD_ROOT%{_prefix}/lib/bfd-plugins/liblto_plugin.so.0.0.0
+ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_prefix}/lib/bfd-plugins/liblto_plugin.so
 
 dir=`gcc-%{gcc_suffix} -print-prog-name=cc1`
 dir=${dir%/cc1}
@@ -514,7 +514,7 @@ fi
 %{_prefix}/bin/gcc-nm
 %{_prefix}/bin/gcc-ranlib
 %dir %{_prefix}/lib/bfd-plugins
-%{_prefix}/lib/bfd-plugins/liblto_plugin.so.0.0.0
+%{_prefix}/lib/bfd-plugins/liblto_plugin.so
 %doc %{_mandir}/man1/gcc.1.gz
 %doc %{_mandir}/man1/cc.1.gz
 %doc %{_mandir}/man1/gcov.1.gz
