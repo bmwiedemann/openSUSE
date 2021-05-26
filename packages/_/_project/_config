@@ -2,7 +2,7 @@
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
-%define gcc_version 10
+%define gcc_version 11
 
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
@@ -10,7 +10,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20210416
+ExpandFlags: macroserial:20210525
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1552,7 +1552,7 @@ Macros:
 %product_libs_gcc_ver_libgphobos1 10
 %product_libs_gcc_ver_libgdruntime1 10
 %product_libs_gcc_ver_libgo16 10
-%gcc_version 10
+%gcc_version 11
 
 %ext_info .gz
 %ext_man .gz
@@ -1569,8 +1569,6 @@ Macros:
 %define usrmerged 1
 Macros:
 %usrmerged 1
-%_pamdir /usr/%{_lib}/security
-%_firmwaredir /usr/lib/firmware
 :Macros
 
 
