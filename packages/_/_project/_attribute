@@ -364,7 +364,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = devel:languages:rust:crates devel:kanku devel:languages:javascript devel:sap KDE:Qt6
+devel-whitelist = devel:languages:rust:crates devel:kanku devel:languages:javascript devel:sap KDE:Qt6 devel:languages:python:aliyun
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
