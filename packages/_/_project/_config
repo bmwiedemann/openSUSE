@@ -1567,6 +1567,7 @@ Macros:
 
 # UsrMerge - 2021-05-25
 %define usrmerged 1
+Prefer: -glibc-usrmerge-bootstrap-helper
 Macros:
 %usrmerged 1
 :Macros
