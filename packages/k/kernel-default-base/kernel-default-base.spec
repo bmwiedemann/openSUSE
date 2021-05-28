@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-default-base
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #

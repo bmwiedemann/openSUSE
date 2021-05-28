@@ -154,4 +154,11 @@
     <comment></comment>
     <requestid>874542</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>a19330c2555cad35477bc26c5b0fc37d</srcmd5>
+    <version>MACRO</version>
+    <time>1622236421</time>
+    <user>dimstar_suse</user>
+    <comment>Dummy CI-count bump</comment>
+  </revision>
 </revisionlist>
