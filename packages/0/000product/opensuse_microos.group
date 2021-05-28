@@ -9,6 +9,7 @@
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="chkstat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -238,7 +239,7 @@
     <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="containers-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-container_runtime -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="cpp10" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="cpp11" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

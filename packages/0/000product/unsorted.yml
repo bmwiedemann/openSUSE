@@ -1117,6 +1117,7 @@ unsorted:
   - bash-completion-doc 
   - bash-devel 
   - bash-git-prompt 
+  - bash-legacybin 
   - bash-loadables 
   - bat 
   - batctl 
@@ -2147,7 +2148,6 @@ unsorted:
   - compartm 
   - compat-usrmerge 
   - compat-usrmerge-build 
-  - compat-usrmerge-tools 
   - compface 
   - compface-devel 
   - compicc 
@@ -2276,7 +2276,7 @@ unsorted:
   - cpanspec 
   - cpluff 
   - cpmono_v07-fonts 
-  - cpp11 
+  - cpp10 
   - cpp7 
   - cpp9 
   - cppcheck-gui 
@@ -3384,7 +3384,6 @@ unsorted:
   - ezstream 
   - f2c 
   - f2c-devel 
-  - f2fs-tools-compat 
   - f2fs-tools-devel 
   - f3 
   - fIcy 
@@ -3938,7 +3937,7 @@ unsorted:
   - gcc-obj-c++ 
   - gcc-objc 
   - gcc-objc-32bit: [x86_64] 
-  - gcc10: [i586] 
+  - gcc10 
   - gcc10-32bit: [x86_64] 
   - gcc10-ada 
   - gcc10-ada-32bit: [x86_64] 
@@ -3951,14 +3950,14 @@ unsorted:
   - gcc10-fortran-32bit: [x86_64] 
   - gcc10-go 
   - gcc10-go-32bit: [x86_64] 
-  - gcc10-info: [i586] 
-  - gcc10-locale: [i586] 
+  - gcc10-info 
+  - gcc10-locale 
   - gcc10-obj-c++ 
   - gcc10-obj-c++-32bit: [x86_64] 
   - gcc10-objc 
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
-  - gcc11 
+  - gcc11: [i586] 
   - gcc11-32bit: [x86_64] 
   - gcc11-ada 
   - gcc11-ada-32bit: [x86_64] 
@@ -3971,8 +3970,8 @@ unsorted:
   - gcc11-fortran-32bit: [x86_64] 
   - gcc11-go 
   - gcc11-go-32bit: [x86_64] 
-  - gcc11-info 
-  - gcc11-locale 
+  - gcc11-info: [i586] 
+  - gcc11-locale: [i586] 
   - gcc11-obj-c++ 
   - gcc11-obj-c++-32bit: [x86_64] 
   - gcc11-objc 
@@ -5628,6 +5627,7 @@ unsorted:
   - glibc-locale-base-32bit: [x86_64] 
   - glibc-profile 
   - glibc-profile-32bit: [x86_64] 
+  - glibc-usrmerge-bootstrap-helper 
   - glibc-utils 
   - glibc-utils-32bit: [x86_64] 
   - glibmm2-devel 
@@ -7594,7 +7594,6 @@ unsorted:
   - jupyter-jupyter-client 
   - jupyter-jupyter-contrib-nbextensions 
   - jupyter-jupyter-full-width 
-  - jupyter-jupyter-require 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
@@ -9921,9 +9920,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -12591,6 +12590,7 @@ unsorted:
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
   - libpcre2-32-0-32bit: [x86_64] 
+  - libpcre2-posix2 
   - libpcre2-posix2-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
@@ -13077,8 +13077,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13101,7 +13101,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13329,7 +13329,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -13672,8 +13672,8 @@ unsorted:
   - libstatgrab10 
   - libstatgrab10-32bit: [x86_64] 
   - libstdc++-devel-32bit: [x86_64] 
+  - libstdc++6-devel-gcc10 
   - libstdc++6-devel-gcc10-32bit: [x86_64] 
-  - libstdc++6-devel-gcc11 
   - libstdc++6-devel-gcc11-32bit: [x86_64] 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit: [x86_64] 
@@ -14495,7 +14495,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-xinerama0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-sync1 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -22746,7 +22746,6 @@ unsorted:
   - python36-jupyter-nbutils 
   - python36-jupyter-packaging 
   - python36-jupyter-protocol 
-  - python36-jupyter-require 
   - python36-jupyter-server 
   - python36-jupyter-server-mathjax 
   - python36-jupyter-sphinx 
@@ -25571,7 +25570,6 @@ unsorted:
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-protocol 
-  - python38-jupyter-require 
   - python38-jupyter-server 
   - python38-jupyter-server-mathjax 
   - python38-jupyter-sphinx 
@@ -27157,6 +27155,7 @@ unsorted:
   - python39-Kajiki 
   - python39-Kivy 
   - python39-Kivy-devel 
+  - python39-LHAPDF 
   - python39-LTTL 
   - python39-Lektor 
   - python39-Levenshtein 
@@ -27244,6 +27243,7 @@ unsorted:
   - python39-Pyphen 
   - python39-Pyro4 
   - python39-QDarkStyle 
+  - python39-QR-Code-generator 
   - python39-Qt.py 
   - python39-QtAwesome 
   - python39-QtPy 
@@ -27378,6 +27378,7 @@ unsorted:
   - python39-apptools 
   - python39-apsw 
   - python39-arabic-reshaper 
+  - python39-archmage 
   - python39-arf 
   - python39-argcomplete 
   - python39-argh 
@@ -28291,6 +28292,7 @@ unsorted:
   - python39-git-url-parse 
   - python39-gitdb 
   - python39-github3.py 
+  - python39-gitlint 
   - python39-glean 
   - python39-glfw 
   - python39-glob2 
@@ -28490,6 +28492,7 @@ unsorted:
   - python39-jaraco.packaging 
   - python39-jaraco.stream 
   - python39-jaraco.text 
+  - python39-javapackages 
   - python39-javaproperties 
   - python39-jdatetime 
   - python39-jdcal 
@@ -28532,6 +28535,7 @@ unsorted:
   - python39-junit-xml 
   - python39-junitxml 
   - python39-junos-eznc 
+  - python39-jupyter 
   - python39-jupyter-client 
   - python39-jupyter-core 
   - python39-jupyter-jupyterlab-server 
@@ -28615,9 +28619,11 @@ unsorted:
   - python39-libarchive 
   - python39-libarchive-c 
   - python39-libcst 
+  - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-libnacl 
+  - python39-libpfm 
   - python39-librosa 
   - python39-librouteros 
   - python39-libsass 
@@ -28634,7 +28640,9 @@ unsorted:
   - python39-lineup-widget 
   - python39-link-traits 
   - python39-linstor 
+  - python39-linstor-client 
   - python39-linux-procfs 
+  - python39-lit 
   - python39-llvmlite 
   - python39-lmdb 
   - python39-lmfit 
@@ -28699,6 +28707,7 @@ unsorted:
   - python39-mimesis 
   - python39-minidb 
   - python39-minio 
+  - python39-miniupnpc 
   - python39-misaka 
   - python39-mistune 
   - python39-mitmproxy 
@@ -28975,7 +28984,9 @@ unsorted:
   - python39-pip-api 
   - python39-pip-licenses 
   - python39-pip-shims 
+  - python39-pip-test 
   - python39-pip-tools 
+  - python39-pip-wheel 
   - python39-pipdeptree 
   - python39-pipreqs 
   - python39-pipx 
@@ -29096,6 +29107,7 @@ unsorted:
   - python39-pyblake2 
   - python39-pybluez 
   - python39-pybtex 
+  - python39-pybugz 
   - python39-pycairo 
   - python39-pycairo-devel 
   - python39-pycapnp 
@@ -29602,6 +29614,7 @@ unsorted:
   - python39-sadisplay 
   - python39-samplerate 
   - python39-sane 
+  - python39-sanlock 
   - python39-sarge 
   - python39-sas7bdat 
   - python39-sasl 
@@ -29648,6 +29661,7 @@ unsorted:
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
+  - python39-setuptools-test 
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
   - python39-setuptools_scm 
@@ -29803,6 +29817,7 @@ unsorted:
   - python39-tabpy 
   - python39-tabulate 
   - python39-tap.py 
+  - python39-targetcli-fb 
   - python39-tasklib 
   - python39-tbb 
   - python39-tblib 
@@ -29904,6 +29919,7 @@ unsorted:
   - python39-txWS 
   - python39-txZMQ 
   - python39-txaio 
+  - python39-txt2tags 
   - python39-txtorcon 
   - python39-typed-ast 
   - python39-typeguard 
@@ -29986,6 +30002,7 @@ unsorted:
   - python39-w3lib 
   - python39-wadllib 
   - python39-waitress 
+  - python39-waitress-doc 
   - python39-wakeonlan 
   - python39-warlock 
   - python39-watchdog 
@@ -30110,6 +30127,7 @@ unsorted:
   - python39-zstandard 
   - python39-zstd 
   - python39-zxcvbn 
+  - python39-zypp-plugin 
   - pytorch-converters: [x86_64] 
   - pytorch-examples: [x86_64] 
   - pyzo 
@@ -30556,7 +30574,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -31487,7 +31505,6 @@ unsorted:
   - scrub 
   - scrypt 
   - scs-devel 
-  - scsh 
   - scsh-base 
   - scsirastools 
   - scsires 
@@ -41682,6 +41699,7 @@ unsorted:
   - ws-jaxme-manual 
   - wsdl4j 
   - wsdl4j-javadoc 
+  - wsl-appx 
   - wslay 
   - wslay-devel 
   - wsmancli 

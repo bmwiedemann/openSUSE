@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20210524" schemaversion="4.1">
+<image name="OBS__MicroOS___20210525" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210524</productvar>
+      <productvar name="VERSION">20210525</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210524,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210525,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210524/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210525/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -100,6 +100,7 @@
       <repopackage name="cockpit-packagekit" arch="x86_64"/>
       <repopackage name="cockpit-podman" arch="x86_64"/>
       <repopackage name="cockpit-system" arch="x86_64"/>
+      <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="conmon" arch="x86_64"/>
       <repopackage name="conntrack-tools" arch="x86_64"/>
       <repopackage name="container-selinux" arch="x86_64"/>
