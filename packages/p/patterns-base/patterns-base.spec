@@ -141,14 +141,15 @@ Requires:       systemd
 Requires:       util-linux
 Requires:       zypper
 %if 0%{?sle_version}
-Recommends:     rollback-helper
 Recommends:     SUSEConnect
+Recommends:     rollback-helper
 %endif
 # Support multiversion(kernel) (jsc#SLE-10162)
 Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     elfutils
+Recommends:     glibc-locale-base
 Recommends:     hostname
 Recommends:     iproute2
 Recommends:     issue-generator
@@ -162,7 +163,6 @@ Recommends:     terminfo
 Recommends:     terminfo-iterm
 Recommends:     terminfo-screen
 Recommends:     timezone
-Recommends:     glibc-locale-base
 %ifarch ppc64 ppc64le
 # bsc#1098849
 Requires:       ppc64-diag
@@ -177,6 +177,10 @@ Suggests:       xz
 Suggests:       postfix
 # we have two providers for 'pulseaudio' - prefer the real one for the time being
 Suggests:       pulseaudio
+# There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
+Suggests:       openssl
+# In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
+Suggests:       openssl-1_1
 
 %description base
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
@@ -347,8 +351,8 @@ Recommends:     firewalld
 Recommends:     fuse
 Recommends:     gawk
 Recommends:     gettext-runtime
-Recommends:     glibc-locale-base
 Recommends:     glibc-locale
+Recommends:     glibc-locale-base
 Recommends:     gpart
 Recommends:     gpg2
 Recommends:     gpm
@@ -775,8 +779,8 @@ Provides:       pattern-order() = 1801
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = x11
-Recommends:     pattern() = yast2_desktop
 Recommends:     pattern() = x11_yast
+Recommends:     pattern() = yast2_desktop
 
 # 1057377
 Requires:       glibc-locale

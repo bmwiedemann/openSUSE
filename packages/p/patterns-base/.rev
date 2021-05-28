@@ -613,4 +613,14 @@
     <comment></comment>
     <requestid>894466</requestid>
   </revision>
+  <revision rev="71" vrev="17">
+    <srcmd5>cd1157fb2d198591d137ddc207885d0a</srcmd5>
+    <version>20200505</version>
+    <time>1622234032</time>
+    <user>dimstar_suse</user>
+    <comment>- Suggest openssl from patterns-base-base: in case something
+  requires /usr/bin/openssl or openssl(cli), we want to declare
+  openssl as our default.</comment>
+    <requestid>896032</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 28 20:07:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Suggest openssl from patterns-base-base: in case something
+  requires /usr/bin/openssl or openssl(cli), we want to declare
+  openssl as our default.
+
+-------------------------------------------------------------------
 Wed May 19 13:16:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Some enhanced_base cleanup
