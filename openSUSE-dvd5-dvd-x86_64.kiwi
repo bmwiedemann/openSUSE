@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210524" schemaversion="4.1">
+<image name="OBS__openSUSE___20210525" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210524</productvar>
+      <productvar name="VERSION">20210525</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210524,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210525,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210524/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210525/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -310,6 +310,7 @@
       <repopackage name="colord-color-profiles"/>
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
+      <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
       <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
@@ -319,7 +320,7 @@
       <repopackage name="cpio-lang"/>
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
-      <repopackage name="cpp10"/>
+      <repopackage name="cpp11"/>
       <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
@@ -564,9 +565,9 @@
       <repopackage name="gcal-lang"/>
       <repopackage name="gcc" arch="x86_64"/>
       <repopackage name="gcc-info" arch="x86_64"/>
-      <repopackage name="gcc10" arch="x86_64"/>
-      <repopackage name="gcc10-info" arch="x86_64"/>
-      <repopackage name="gcc10-locale" arch="x86_64"/>
+      <repopackage name="gcc11" arch="x86_64"/>
+      <repopackage name="gcc11-info" arch="x86_64"/>
+      <repopackage name="gcc11-locale" arch="x86_64"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
       <repopackage name="gcin-gtk2"/>
@@ -2463,7 +2464,6 @@
       <repopackage name="libpcre2-32-0"/>
       <repopackage name="libpcre2-8-0"/>
       <repopackage name="libpcre2-8-0-32bit" arch="x86_64"/>
-      <repopackage name="libpcre2-posix2"/>
       <repopackage name="libpcreposix0"/>
       <repopackage name="libpcsclite1"/>
       <repopackage name="libpeas-1_0-0"/>
@@ -2805,7 +2805,7 @@
       <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
       <repopackage name="libstdc++6-32bit" arch="x86_64"/>
-      <repopackage name="libstdc++6-devel-gcc10"/>
+      <repopackage name="libstdc++6-devel-gcc11"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp-gcc11"/>
       <repopackage name="libstdc++6-pp-gcc11-32bit" arch="x86_64"/>

@@ -295,6 +295,7 @@
     <package name="colord-color-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -303,7 +304,7 @@
     <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="cpp10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cpp11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2380,7 +2381,6 @@
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpcre2-posix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2643,7 +2643,7 @@
     <package name="libstartup-notification-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libstdc++-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libstdc++6-devel-gcc10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libstdc++6-devel-gcc11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libstdc++6-locale" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libstdc++6-pp-gcc11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstoken1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5083,9 +5083,9 @@
     <package name="freetype2-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcc-info" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gcc10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gcc10-info" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="gcc10-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gcc11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gcc11-info" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gcc11-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="git-daemon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
