@@ -32,6 +32,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -17976,7 +17977,6 @@ unsorted:
   - openssh-cavs 
   - openssh-fips 
   - openssh-helpers 
-  - openssl: [i586] 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -32192,7 +32192,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
