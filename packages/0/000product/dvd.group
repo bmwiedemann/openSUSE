@@ -3172,6 +3172,7 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5055,7 +5056,6 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5340,7 +5340,6 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5382,7 +5381,6 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
