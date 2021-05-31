@@ -16,7 +16,7 @@
 #
 
 
-%define isc_version   4.4.2
+%define isc_version   4.4.2-P1
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -27,7 +27,7 @@
 %define sbindir /sbin
 %endif
 Name:           dhcp
-Version:        4.4.2
+Version:        4.4.2.P1
 Release:        0
 Summary:        Common Files Used by ISC DHCP Software
 License:        MPL-2.0
@@ -182,6 +182,10 @@ This package contains all of the libraries and headers for developing
 with the Internet Software Consortium (ISC) dhcpctl API.
 
 %prep
+if test "%version" != $(echo %isc_version | tr "-" "."); then
+   echo "error: %%version and %%isc_version are not in sync."
+   exit 1
+fi
 %setup -q -n %{name}-%{isc_version} -a 44 -a 45
 ##
 %patch1 -p1
@@ -222,7 +226,7 @@ popd
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused -fcommon"
+CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused -fcommon -fno-strict-aliasing"
 %ifarch ppc ppc64 s390x
   # bugs 134590, 171532
   CFLAGS="$CFLAGS -fsigned-char"

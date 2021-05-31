@@ -1122,4 +1122,19 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>870911</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>3bcdc1ef2481612200f5b90e4d9628ec</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1622454220</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -fno-strict-aliasing to CFLAGS to avoid a segfault in dhcpd
+  (boo#1186631).
+
+- Update to 4.4.2-P1:
+  * CVE-2021-25217, bsc#1186382: A buffer overrun in lease file
+    parsing code can be used to exploit a common vulnerability
+    shared by dhcpd and dhclient.
+- Error out, if %version and %isc_version are not in sync.</comment>
+    <requestid>896316</requestid>
+  </revision>
 </revisionlist>
