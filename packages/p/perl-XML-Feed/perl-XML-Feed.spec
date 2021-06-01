@@ -18,7 +18,7 @@
 
 %define cpan_name XML-Feed
 Name:           perl-XML-Feed
-Version:        0.61
+Version:        0.63
 Release:        0
 Summary:        Syndication feed parser and auto-discovery
 License:        Artistic-1.0 OR GPL-1.0-or-later
