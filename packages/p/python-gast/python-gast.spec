@@ -1,7 +1,7 @@
 #
 # spec file for package python-gast
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ as produced by ``ast.parse`` from the standard ``ast`` module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v tests
 
 %files %{python_files}
 %{python_sitelib}/*

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 24 11:41:36 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest macro
+
+-------------------------------------------------------------------
 Wed Aug 26 06:01:54 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.0:
