@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 17:59:48 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Correct /etc/ipmievd config file to point to the new pidfile in /run
+  not /var/run
+
+-------------------------------------------------------------------
 Wed Apr 28 08:19:29 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Use /run instead of /var/run (bsc#1185162)
