@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 26 14:24:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.0
+  * Add support for Python 3.9 and Django 3.2
+  * Allow sorting PhoneNumbers from Python
+  * Drop support for end-of-life Django 1.11 and 2.1.
+
+-------------------------------------------------------------------
 Sat Jun 27 01:38:05 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
