@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 27 16:28:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23:
+  * Fix a bug that the user could set floating-point parameters to nan
+  via command-line argument or config file option
+  * Fix broken display if the user uses custom font and non-default
+  aspect ratio
+  * Fix a bug that the code incorrectly assumed that mktime returns UTC
+  * Add an option that enables cookie saving 
+
+-------------------------------------------------------------------
 Mon Mar 22 21:25:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22:
