@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  4 23:23:50 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.5.1:
+  * Fix compatibility with Python 2.7.
+
+- changes from version 2.5.0:
+  * Update to support SQLAlchemy 1.4.
+  * SQLAlchemy URL objects are immutable. Some internal methods have
+    changed to return a new URL instead of None. :issue:`885`
+
+-------------------------------------------------------------------
 Sat Jul 18 18:04:37 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.4.4:
