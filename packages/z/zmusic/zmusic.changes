@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 29 10:28:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 1.1.8
+  * support dynamic loading of FluidSynth 2.2
+  * fixed file header in MIDI wave writer
+- Drop 0001-made-sndfile-imported-library-global.patch, was merged
+
+-------------------------------------------------------------------
 Sat Apr 10 21:07:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.6
