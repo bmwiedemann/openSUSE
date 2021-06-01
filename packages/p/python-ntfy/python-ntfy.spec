@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntfy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,7 +41,7 @@ Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-dnspython3
 Suggests:       python-emoji
 Suggests:       python-instapush
@@ -78,7 +78,7 @@ Quickstart
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/ntfy*
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative ntfy

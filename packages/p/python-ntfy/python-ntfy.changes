@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 10:53:45 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Dec 24 18:29:42 UTC 2020 - Matthias Bach <marix@marix.org> - 2.7.0
 
 - Modernise spec file
