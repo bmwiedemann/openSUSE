@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 19 10:10:27 UTC 2021 - psimons@suse.com
+
+- Update xmobar to version 0.38.
+  ## Version 0.38 (May, 2021)
+
+  _Bug fixes_
+
+    - Fix off-by-one in strut calculation for `Static` position which reserved
+      space for the panel than necessary and caused issues in some multi-head
+      setups (fixes #530).
+    - Revert the double-UTF-8 encoding workarounds of 0.36 (#482), as they're no
+      longer necessary with xmonad-contrib master, and aren't needed with any
+      released version of xmonad-contrib either.
+    - Fix slow reactions to SIGUSR1/2 signals (reposition, change screen).
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

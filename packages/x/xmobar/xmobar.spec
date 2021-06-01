@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.37
+Version:        0.38
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -115,13 +115,13 @@ This package provides the Haskell %{name} library development files.
 
 %files
 %license license
-%doc changelog.md examples readme.md
+%doc changelog.md doc examples readme.org
 %{_bindir}/%{name}
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license license
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc changelog.md examples readme.md
+%doc changelog.md doc examples readme.org
 
 %changelog
