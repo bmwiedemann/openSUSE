@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>786166</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5a36112bf67e8278bad9d0a2741da1ba</srcmd5>
+    <version>2020.1.29.1857</version>
+    <time>1622536639</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895621</requestid>
+  </revision>
 </revisionlist>

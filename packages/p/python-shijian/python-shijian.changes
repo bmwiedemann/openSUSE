@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 27 05:07:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Wed Mar 18 11:53:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 2020.1.29.1857
