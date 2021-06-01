@@ -27,6 +27,10 @@ License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Documentation/Other
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-GCC-11-include-limits.patch
+Patch2:         0002-Build-fixes-for-GCC-11.patch
+Patch3:         0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
 # Breaks make_jobs
 #!BuildIgnore:  cmake
 BuildRequires:  alsa-devel
@@ -126,7 +130,7 @@ required.
 %autopatch -p1
 
 %build
-# We need to link to some of the programs used as that the source assumes they were just build.
+# We need to link to some of the programs used as that the source assumes they were just built.
 ln -s %{_bindir}/rcc-qt5 qtbase/bin/rcc
 ln -s %{_bindir}/uic-qt5 qtbase/bin/uic
 ln -s %{_bindir}/moc-qt5 qtbase/bin/moc
@@ -137,13 +141,13 @@ ln -s %{_libqt5_bindir} qttools/bin
 
 # FIXME: you should use the %%configure macro
 ./configure \
-	-verbose \
+    -verbose \
     -prefix %{_prefix} \
     -bindir %{_libqt5_bindir} \
-	-docdir %{_libqt5_docdir} \
-	-accessibility \
-	-no-strip \
-	-opensource \
+    -docdir %{_libqt5_docdir} \
+    -accessibility \
+    -no-strip \
+    -opensource \
     -confirm-license \
     -release \
     -nomake tests \
