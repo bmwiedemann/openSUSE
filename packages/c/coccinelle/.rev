@@ -241,4 +241,12 @@
     <comment></comment>
     <requestid>885344</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>029f14a956a31f248e7762e2895d2414</srcmd5>
+    <version>1.1.0</version>
+    <time>1622536540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add wrapper script to set COCCINELLE_HOME [boo#1184563]</comment>
+    <requestid>895342</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,15 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocaml-ocamldoc >= 3.11
+BuildRequires:  python-rpm-macros
+BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(menhir)
 BuildRequires:  ocamlfind(parmap)
 BuildRequires:  ocamlfind(pcre)
 BuildRequires:  ocamlfind(pyml)
 BuildRequires:  ocamlfind(stdcompat)
-BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(python3)
 Requires:       python3-base
 
@@ -62,9 +62,10 @@ fixing bugs in systems code.
 autoreconf -fi
 %configure
 # internal copy of stdcompat
-make -j1
+%make_build -j1
 
 %install
+b="%buildroot"
 # "because it is simply not possible to strip ocaml binaries that are built
 # with the -custom option."
 export NO_BRP_STRIP_DEBUG=true
@@ -76,14 +77,26 @@ export NO_DEBUGINFO_STRIP_DEBUG=true
 
 %make_install
 # Remove coccilib, don't have the deps
-rm -Rf "%buildroot/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
-	"%buildroot/%_mandir/man3"/Coccilib*
-%fdupes %buildroot/%_prefix
+rm -Rf "$b/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
+	"$b/%_mandir/man3"/Coccilib*
+
+# Until https://github.com/coccinelle/coccinelle/issues/259 is fixed
+for i in spatch spgen; do
+	mv -v "$b/%_bindir/$i" "$b/%_bindir/$i.bin"
+	cat >"$b/%_bindir/$i" <<-EOF
+		#!/bin/bash
+		if test -z "\$COCCINELLE_HOME"; then export COCCINELLE_HOME="%_libdir/coccinelle"; fi
+		exec %_bindir/$i.bin "\$@"
+	EOF
+	chmod -v a+x "$b/%_bindir/$i"
+done
+
+%fdupes $b/%_prefix
 
 # Python library have been named after directories in the site-packages hierarchy
-mkdir -p "%buildroot/%python3_sitelib"
-mv "%buildroot/%_libdir/%name/python/coccilib" "%buildroot/%python3_sitelib"
-%fdupes %buildroot/%python3_sitelib/coccilib
+mkdir -p "$b/%python3_sitelib"
+mv "$b/%_libdir/%name/python/coccilib" "$b/%python3_sitelib"
+%fdupes $b/%python3_sitelib/coccilib
 
 %files
 %doc authors.txt bugs.txt changes.txt copyright.txt credits.txt
