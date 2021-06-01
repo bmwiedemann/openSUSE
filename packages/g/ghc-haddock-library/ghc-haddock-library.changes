@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 30 18:14:56 UTC 2021 - psimons@suse.com
+
+- Update haddock-library to version 1.10.0.
+  ## Changes in version 1.10.0
+
+   * Add support for labeled module references (#1319, #1315)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
