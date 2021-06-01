@@ -1,0 +1,5 @@
+<package name="SVT-AV1" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="SVT-AV1"/>
+</package>

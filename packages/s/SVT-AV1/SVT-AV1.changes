@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri May 28 09:52:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.7
+  * Feature optimizations: creating new mode decision /
+    encode-decode feature levels allowing better speed / quality
+    trade-off granularity.
+  * Preset repositioning after adopting new levels.
+  * Preset 8 achieving similar speed levels to that of x265
+    medium in the VOD (shot-based encoding) use-case while
+    maintaining quality gains.
+  * New 1-pass and 2-pass VBR implementation ported from libaom
+    and adapted to the SVT architecture.
+- Drop 1568-backport.patch (no longer applies)
+- Remove wrong Obsoletes/Provides
+
+-------------------------------------------------------------------
+Tue Nov 10 11:04:19 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.5
+  * https://github.com/AOMediaCodec/SVT-AV1/blob/v0.8.5/CHANGELOG.md
+- Added 1568-backport.patch
+- Added manpages
+
+-------------------------------------------------------------------
+Wed May  1 09:09:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Go back to tar_scm; obs_scm does not work with quilt.
+- Bump SO version for change from Apr 25/29 2019.
+
+-------------------------------------------------------------------
+Tue Apr 30 20:56:41 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix missing parts for decode lib
+
+-------------------------------------------------------------------
+Thu Apr 25 08:47:09 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to b4ca700d36c9655e37e9f091bfe983a23ec0c1bd
+  * new decode sub package
+- use obs_scm again (it is on purpose for git snapshots)
+
+-------------------------------------------------------------------
+Mon Feb 18 11:59:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use %cmake macro
+
+-------------------------------------------------------------------
+Sat Feb 16 12:18:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions, make it fit for Factory.
+- Use the same macro style everywhere.
+- Edit fix-build.patch to conform to SLPP.
+
+-------------------------------------------------------------------
+Tue Feb  5 08:58:20 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- initial package of current git master (no tags yet)
