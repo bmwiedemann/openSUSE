@@ -19,13 +19,12 @@
 %global pkg_name persistent-sqlite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.13.0.0
+Version:        2.13.0.3
 Release:        0
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-bytestring-devel
@@ -78,7 +77,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %define cabal_configure_options -fsystemlib

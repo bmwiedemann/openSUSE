@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 27 17:15:25 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.3.
+  ## 2.13.0.3
+
+  * Somehow failed to properly release the safe-to-remove changes.
+
+  ## 2.13.0.2
+
+  * [#1275](https://github.com/yesodweb/persistent/pull/1275)
+      * Fix SafeToRemove
+
+-------------------------------------------------------------------
+Wed May 26 08:46:17 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.2.
+  ## 2.13.0.1
+
+  * [#1265](https://github.com/yesodweb/persistent/pull/1265)
+      * Support GHC 9
+
+-------------------------------------------------------------------
 Sat May  8 10:03:32 UTC 2021 - psimons@suse.com
 
 - Update persistent-sqlite to version 2.13.0.0 revision 1.
