@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 26 07:30:55 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Update to version 0.21.2
+  * Include `py.typed <https://www.python.org/dev/peps/pep-0561/#packaging-type-information>`__
+    file to mark :mod:`bidict` as type hinted.
+
+-------------------------------------------------------------------
 Tue Sep  1 04:48:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.21.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bidict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bidict
-Version:        0.21.0
+Version:        0.21.2
 Release:        0
 Summary:        Bidirectional map implementation for Python
 License:        MPL-2.0
