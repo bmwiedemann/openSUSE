@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-servant-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Automatic derivation of querying functions for servant
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-devel
@@ -87,7 +88,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver http-client '< 0.7' '< 0.8'
+cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver 'base' '< 4.15' '< 5'
+cabal-tweak-dep-ver 'http-client' '< 0.7' '< 0.8'
 
 %build
 %ghc_lib_build
