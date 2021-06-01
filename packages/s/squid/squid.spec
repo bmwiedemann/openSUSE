@@ -153,7 +153,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--disable-arch-native \
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
-%make_build -O SAMBAPREFIX=%{_prefix}
+make -O SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
 %endif
@@ -200,9 +200,6 @@ for i in errors/*; do
 done
 ln -sf %{_datadir}/%{name}/errors/en %{buildroot}%{squidconfdir}/errors
 
-# fix file duplicates
-%fdupes -s %{buildroot}%{_prefix}
-
 # systemd
 install -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 755 %{SOURCE15} %{buildroot}%{squidlibexecdir}/cache_dir.sed
@@ -219,13 +216,15 @@ mkdir -p %{buildroot}%{_datadir}/snmp/mibs
 mv %{buildroot}%{_datadir}/squid/mib.txt \
   %{buildroot}%{_datadir}/snmp/mibs/SQUID-MIB.txt
 
+%if 0%{?suse_version} >= 1500
 # Install sysusers file.
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
+%endif
 
 %check
 # Fails in chroot environment
-%make_build check
+make check %{?_smp_mflags}
 
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
@@ -298,7 +297,9 @@ fi
 %dir %{_tmpfilesdir}
 %dir %{_libexecdir}/%{name}
 %{_tmpfilesdir}/squid.conf
+%if 0%{?suse_version} >= 1500
 %{_sysusersdir}/squid-user.conf
+%endif
 %config(noreplace) %{squidconfdir}/cachemgr.conf
 %config(noreplace) %{squidconfdir}/errorpage.css
 %config(noreplace) %{squidconfdir}/errors

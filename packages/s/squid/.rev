@@ -940,4 +940,12 @@ from the squid 3.x changelog</comment>
     <comment>Adding bug and CVE references only</comment>
     <requestid>893984</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>1b2808e308166ccca8b5323a1f680980</srcmd5>
+    <version>4.15</version>
+    <time>1622536607</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895417</requestid>
+  </revision>
 </revisionlist>

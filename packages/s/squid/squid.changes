@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 18 09:43:49 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- fix building with SLE12
+
+-------------------------------------------------------------------
 Tue May 11 21:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.15:
@@ -22,6 +27,7 @@ Tue May 11 21:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Tue Feb  9 22:55:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.14:
+  - fixes HTTP Request Smuggling vulnerability (bsc#1183436, CVE-2020-25097)
   - Regression Fix: support for non-lowercase Transfer-Encoding value
   - Regression Fix: cachemgr.cgi wrong 403 response to authenticated menu URIs
   - Bug 5076: WCCP Security Info incorrect
