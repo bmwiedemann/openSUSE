@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-engineio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-python-engineio
-Version:        3.14.1
+Version:        4.2.0
 Release:        0
 Summary:        EngineIO server
 License:        MIT
@@ -27,7 +28,6 @@ Source:         https://github.com/miguelgrinberg/python-engineio/archive/v%{ver
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9.0
 Recommends:     python-eventlet
 Suggests:       python-aiohttp >= 3.4
 Suggests:       python-requests >= 2.21.0
@@ -36,10 +36,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.4}
 BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module websocket-client >= 0.54.0}
 # /SECTION
@@ -64,6 +62,7 @@ Python implementation of the Engine.IO realtime server.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/engineio
+%{python_sitelib}/python_engineio-%{version}*-info
 
 %changelog
