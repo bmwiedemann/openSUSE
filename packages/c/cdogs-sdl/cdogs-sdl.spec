@@ -17,16 +17,16 @@
 
 
 Name:           cdogs-sdl
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Classic overhead run-and-gun game
-License:        GPL-2.0-only AND BSD-2-Clause AND CC-BY-3.0 AND CC-BY-SA-3.0
+License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            https://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-multiple-definitions.patch -- Fix multiple definitions linking error in test file
 Patch0:         fix-multiple-definitions.patch
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.12
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

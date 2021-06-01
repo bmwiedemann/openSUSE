@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 22 14:09:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.12.0
+  Game
+  * Fix LAN bugs
+  * Fix crash if laser sight is enabled
+  * Fix crash in AI Insurgency II campaign
+  * Add dual-wielded pistols
+  * Add pistol and chaingun gun models
+  * Add score text popup on collecting score pickups
+  * Improve AI by waking immediately on being hit
+  * Improve AI by not reacting immediately on wake
+  * Improve changing volume options by not rewinding music
+  Editor / Modding
+  * Fix "HitsObjects": false behavior for bullets, should not
+    damage map objects if set
+  * Add highlights to walk-through walls
+  * Add customizable door auto-close delay in campaign options
+  * Add ability to set character direction in static map type
+  * Add customizable special damage duration in bullets.json
+  * Add customizable corpse map object in character_classes.json
+  * Change map object placement to allow them to be placed over
+    ones with 0 health (e.g. wrecks, blood pools)
+
+-------------------------------------------------------------------
 Thu Apr 29 11:55:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.11.1
