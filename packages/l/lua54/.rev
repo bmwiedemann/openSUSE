@@ -101,4 +101,13 @@
 </comment>
     <requestid>891995</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fd19955717a1af6b21b0bfea13f4de3d</srcmd5>
+    <version>5.4.3</version>
+    <time>1622536430</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix doc location (boo#1186233)
+</comment>
+    <requestid>895306</requestid>
+  </revision>
 </revisionlist>

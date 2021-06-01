@@ -24,6 +24,7 @@
 %endif
 %define major_version 5.4
 %define libname liblua5_4-5
+%define lua_docdir %{_datadir}/doc/lua%{major_version}
 Name:           lua54%{name_ext}
 Version:        5.4.3
 Release:        0
@@ -121,6 +122,7 @@ of C functions, written in ANSI C.
 Summary:        Documentation for Lua, a small embeddable language
 Group:          Documentation/HTML
 BuildArch:      noarch
+Supplements:    (lua54 and patterns-base-documentation)
 
 %description doc
 Lua is a programming language originally designed for extending
@@ -207,6 +209,11 @@ touch %{buildroot}%{_sysconfdir}/alternatives/liblua.so
 ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
 touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
 ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
+# doc
+mkdir -p %{buildroot}%{lua_docdir}/doc
+install -Dm644 README %{buildroot}%{lua_docdir}
+install -Dm644 doc/* %{buildroot}%{lua_docdir}/doc
+rm %{buildroot}%{lua_docdir}/doc/*.1
 %else
 %check
 LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
@@ -239,7 +246,8 @@ if [ "$1" = 0 ] ; then
 fi
 
 %files
-%doc README
+%dir %{lua_docdir}
+%doc %{lua_docdir}/README
 %dir %{_libdir}/lua
 %dir %{_libdir}/lua/%{major_version}
 %dir %{_datadir}/lua
@@ -278,7 +286,8 @@ fi
 %ghost %{_sysconfdir}/alternatives/lua.pc
 
 %files doc
-%doc doc/*
+%dir %{lua_docdir}/doc
+%doc %{lua_docdir}/doc/*
 
 %endif
 %changelog

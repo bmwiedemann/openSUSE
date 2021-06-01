@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 22 12:58:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix doc location (boo#1186233)
+
+-------------------------------------------------------------------
 Mon May 10 08:54:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add shared_link.patch: fix dynamic linking executable
