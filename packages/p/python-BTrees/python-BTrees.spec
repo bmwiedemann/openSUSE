@@ -1,7 +1,7 @@
 #
 # spec file for package python-BTrees
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-BTrees
-Version:        4.7.2
+Version:        4.8.0
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
@@ -27,6 +27,7 @@ URL:            https://github.com/zopefoundation/BTrees
 Source:         https://files.pythonhosted.org/packages/source/B/BTrees/BTrees-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module persistent-devel >= 4.1.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module transaction}
 BuildRequires:  %{python_module zope.interface}
@@ -69,7 +70,10 @@ rm -rf BTrees.egg-info
 }
 
 %check
-%python_exec setup.py -q test
+# testPurePython tests would require this step which setup.py test did:
+#%%{python_expand cp build/lib.linux-*/BTrees/*.so src/BTrees/}
+# it can be overcome with --import-mode=append
+%pytest_arch -k 'not testPurePython'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst PKG-INFO

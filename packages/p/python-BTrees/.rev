@@ -105,4 +105,12 @@
   * Fix more cases of C and Python inconsistency.</comment>
     <requestid>793790</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d15be95c12f1a5b4fc256d33939b34f</srcmd5>
+    <version>4.8.0</version>
+    <time>1622536370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895163</requestid>
+  </revision>
 </revisionlist>
