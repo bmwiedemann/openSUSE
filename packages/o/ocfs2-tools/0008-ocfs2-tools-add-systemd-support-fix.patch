@@ -16,9 +16,9 @@ diff --git a/vendor/common/ocfs2.service b/vendor/common/ocfs2.service
 index 768f806..c7ecbea 100644
 --- a/vendor/common/ocfs2.service
 +++ b/vendor/common/ocfs2.service
-@@ -1,7 +1,7 @@
- [Unit]
- Description=Load ocfs2 Modules
+@@ -2,7 +2,7 @@
+ Description=Mount ocfs2 Filesystems
+ Documentation=man:ocfs2(7) man:mount.ocfs2(8)
  Requires=o2cb.service
 -After=o2cb.service
 +After=o2cb.service remote-fs.target

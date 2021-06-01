@@ -1,7 +1,7 @@
 #
 # spec file for package ocfs2-tools
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           ocfs2-tools
-Version:        1.8.5
+Version:        1.8.7
 Release:        0
 Summary:        Oracle Cluster File System 2 Core Tools
 License:        GPL-2.0-only
@@ -47,7 +47,6 @@ Patch103:       debug-ocfs2_hb_ctl.patch
 Patch105:       bug-470741-debug_start_failures.patch
 Patch106:       ocfs2-devel.diff
 Patch107:       reflink-no-syscall.patch
-Patch201:       bug-543119-o2dlm.patch
 Patch202:       fix-configure-check-libs.patch
 Patch204:       dont-use-var-lock-subsys.patch
 Patch205:       ocfs2-tools-kernel33.patch
@@ -56,13 +55,6 @@ Patch225:       0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
 Patch228:       0007-Improve-error-message-if-DLM-service-is-unavailable.patch
 Patch405:       0007-vendor-Add-vendor-files-for-sles12.patch
 Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
-Patch501:       bnc#96864-ocfs2console-fix-starting-failure.patch
-Patch502:       fsck.ocfs2-fix-compile-error-when-glibc-upgrade.patch
-Patch503:       mounted.ocfs2-use-sys-sysmacros.h-include-for-makede.patch
-Patch504:       fix-build-failure-with-glibc-2.28.patch
-Patch505:       debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
-Patch506:       mount.ocfs2-add-nocluster-mount-option-support.patch
-Patch507:       mount.ocfs2-point-out-the-default-value-of-mount-opt.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -162,7 +154,6 @@ OCFS2 filesystem.
 %patch105 -p1
 %patch106 -p1
 %patch107 -p0
-%patch201 -p1
 %patch202 -p1
 %patch204 -p1
 %patch205 -p1
@@ -171,13 +162,6 @@ OCFS2 filesystem.
 %patch228 -p1
 %patch405 -p1
 %patch406 -p1
-%patch501 -p1
-%patch502 -p1
-%patch503 -p1
-%patch504 -p1
-%patch505 -p1
-%patch506 -p1
-%patch507 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -226,6 +210,8 @@ cd reflink
 make DESTDIR="%{buildroot}" install
 cd ..
 
+rm %{buildroot}/sbin/defragfs.ocfs2
+rm %{buildroot}/%{_mandir}/man8/defragfs.ocfs2.8
 mv %{buildroot}/{,/usr}/sbin/o2image
 mv %{buildroot}/{,/usr}/sbin/debugfs.ocfs2
 #mv %{buildroot}/{,/usr}/sbin/ocfs2_controld.pcmk

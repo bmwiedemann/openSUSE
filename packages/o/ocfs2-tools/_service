@@ -3,7 +3,7 @@
     <param name="url">https://github.com/markfasheh/ocfs2-tools.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.8.5</param>
+    <param name="versionformat">1.8.7</param>
     <param name="revision">master</param>
   </service>
 

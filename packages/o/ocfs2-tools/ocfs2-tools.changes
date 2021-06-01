@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 26 10:32:30 UTC 2021 - ghe@suse.com
+
+- Update ocfs2-tools.tar.gz to upstream v1.8.7 (bsc#1186308)
+- Update patch due to patching failure
+  + 0008-ocfs2-tools-add-systemd-support-fix.patch
+- Drop patches (merged upstream):
+  - bug-543119-o2dlm.patch
+  - bnc#96864-ocfs2console-fix-starting-failure.patch
+  - fsck.ocfs2-fix-compile-error-when-glibc-upgrade.patch
+  - mounted.ocfs2-use-sys-sysmacros.h-include-for-makede.patch
+  - fix-build-failure-with-glibc-2.28.patch
+  - debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
+  - mount.ocfs2-add-nocluster-mount-option-support.patch
+  - mount.ocfs2-point-out-the-default-value-of-mount-opt.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 11:10:30 UTC 2020 - ghe@suse.com
 
 - Point out the default value of mount options (bsc#1178248)
