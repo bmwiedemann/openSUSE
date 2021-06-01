@@ -19,13 +19,13 @@
 %define packname   vicious
 
 Name:           awesome-vicious
-Version:        2.3.3
+Version:        2.5.0
 Release:        0
 Summary:        Vicious plugins for awesome
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/vicious-widgets/vicious
-Source:         %{URL}/archive/v%{version}.tar.gz#/%{packname}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz#/%{packname}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       awesome >= 3.4.4
 Recommends:     awesome-freedesktop
@@ -52,22 +52,22 @@ are used instead, where available:
   - wireless_tools for the Wireless widget type
   - curl           for widget types accessing network resources
 
-
 %prep
-%setup -q -n %{packname}-%{version}
+%autosetup -n %{packname}-%{version}
 
 %build
 
 %install
-%{__install} -d %{buildroot}/%{_datadir}/awesome/lib/vicious/contrib
-%{__install} -d %{buildroot}/%{_datadir}/awesome/lib/vicious/widgets
-%{__install} -m 644 -D contrib/* %{buildroot}/%{_datadir}/awesome/lib/vicious/contrib
-%{__install} -m 644 -D widgets/* %{buildroot}/%{_datadir}/awesome/lib/vicious/widgets
-%{__install} -m 644 -D init.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
-%{__install} -m 644 -D helpers.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
+install -d %{buildroot}/%{_datadir}/awesome/lib/vicious/contrib
+install -d %{buildroot}/%{_datadir}/awesome/lib/vicious/widgets
+install -Dm 644 contrib/* %{buildroot}/%{_datadir}/awesome/lib/vicious/contrib
+install -Dm 644 widgets/* %{buildroot}/%{_datadir}/awesome/lib/vicious/widgets
+install -Dm 644 init.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
+install -Dm 644 helpers.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
+install -Dm 644 spawn.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
 
 %files
-%doc README.md Changes.md TODO
+%doc README.md CHANGELOG.rst TODO
 %license LICENSE
 %dir %{_datadir}/awesome
 %dir %{_datadir}/awesome/lib
