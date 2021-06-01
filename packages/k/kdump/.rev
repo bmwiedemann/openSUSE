@@ -951,4 +951,22 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
 </comment>
     <requestid>883777</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>d3da6db558d97bb119b2fb9794737448</srcmd5>
+    <version>0.9.1</version>
+    <time>1622536423</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix use of DNS in the panic environment (bsc#1183070):
+  * kdump-avoid-endless-loop-on-EAI_AGAIN.patch: Avoid an endless
+    loop when resolving a hostname fails with EAI_AGAIN.
+  * kdump-install-real-resolv.conf.patch: Install /etc/resolv.conf
+    using its resolved path.
+- kdump-fix-incorrect-exit-code-checking.patch: Fix incorrect exit
+  code checking after &quot;local&quot; with assignment (bsc#1184616,
+  LTC#192282)
+- kdump-do-not-iterate-past-end-of-string.patch: Fix a crash caused
+  by iterating past end of string (bsc#1186037).
+</comment>
+    <requestid>895992</requestid>
+  </revision>
 </revisionlist>

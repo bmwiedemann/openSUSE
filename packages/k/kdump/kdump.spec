@@ -37,6 +37,10 @@ Patch9:         %{name}-use-pbl.patch
 Patch10:        %{name}-on-error-option-yesno.patch
 Patch11:        %{name}-mounts.cc-Include-sys-ioctl.h.patch
 Patch12:        %{name}-Add-bootdev-to-dracut-command-line.patch
+Patch13:        %{name}-do-not-iterate-past-end-of-string.patch
+Patch14:        %{name}-fix-incorrect-exit-code-checking.patch
+Patch15:        %{name}-avoid-endless-loop-on-EAI_AGAIN.patch
+Patch16:        %{name}-install-real-resolv.conf.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -93,6 +97,10 @@ after a crash dump has occured.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"

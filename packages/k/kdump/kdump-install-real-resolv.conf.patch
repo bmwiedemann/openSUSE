@@ -1,0 +1,36 @@
+From: Petr Pavlu <petr.pavlu@suse.com>
+Date: Thu Mar 25 12:43:32 2021 +0100
+Subject: Install /etc/resolv.conf using its resolved path
+References: bsc#1183070
+Upstream: merged
+Git-commit: b8439e03d4479f3ffa4b42961a5da18f4b819122
+
+Resolve /etc/resolv.conf first to install directly the target file if it
+is a symlink. This simplifies the setup and avoids any problems when the
+real resolv.conf could be in a location that gets hidden by a mount done
+in the kdump environment, for instance, /etc/resolv.conf ->
+/run/netconfig/resolv.conf with tmpfs getting mounted on /run.
+
+---
+ init/module-setup.sh |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -308,7 +308,15 @@ install() {
+ 
+     inst_multiple makedumpfile makedumpfile-R.pl kdumptool \
+ 	$KDUMP_REQUIRED_PROGRAMS
+-    inst_simple /etc/resolv.conf
++
++    # Install /etc/resolv.conf to provide initial DNS configuration. The file
++    # is resolved first to install directly the target file if it is a symlink.
++    # The real resolv.conf could be in a location that gets hidden by a mount
++    # done in the kdump environment, for instance, /etc/resolv.conf ->
++    # /run/netconfig/resolv.conf with tmpfs getting mounted on /run.
++    local resolv=$(realpath /etc/resolv.conf)
++    inst_simple "$resolv" /etc/resolv.conf
++
+     inst_simple /usr/share/zoneinfo/UTC
+     inst_simple /etc/localtime
+ }

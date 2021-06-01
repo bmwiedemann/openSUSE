@@ -1,0 +1,27 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Fri May 28 11:30:48 2021 +0200
+Subject: URLParser::extractAuthority(): Do not iterate past end of string
+References: bsc#1186037
+Upstream: merged
+Git-commit: 208ed364ac926f800f37874d08e5b2c26547974e
+    
+If there is no '/', '?' or '#' at the end of the authority part of
+the URL, kdumptool must not crash.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ kdumptool/urlparser.cc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/kdumptool/urlparser.cc
++++ b/kdumptool/urlparser.cc
+@@ -117,7 +117,7 @@ string URLParser::extractAuthority(strin
+ 
+     it += 2;
+     string::iterator const start = it;
+-    while (*it != '/' && *it != '?' && *it != '#')
++    while (it != end && *it != '/' && *it != '?' && *it != '#')
+ 	++it;
+ 
+     return string(start, it);

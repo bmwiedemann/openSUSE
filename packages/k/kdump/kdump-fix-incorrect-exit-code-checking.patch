@@ -1,0 +1,40 @@
+Author: Petr Tesarik <ptesarik@suse.com>
+Date: Tue May 25 12:48:08 2021 +0200
+Subject: Fix incorrect exit code checking after "local" with assignment
+References: bsc#1184616 LTC#192282
+Upstream: merged
+Git-commit: 33abc7c481f62c23727505eafa354253088dae8d
+
+The "local" keyword cannot be combined with the assignment if the
+exit status is needed later. The exit status of the whole
+statement is that of the "local" built-in (always zero),
+regardless of the the exit status of the assignment.
+
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/load.sh |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a/init/load.sh
++++ b/init/load.sh
+@@ -312,7 +312,8 @@ function load_kdump_fadump()
+ # Find the desired kernel and initrd
+ function find_kernel()
+ {
+-    local output=$($KDUMPTOOL find_kernel)
++    local output
++    output=$($KDUMPTOOL find_kernel)
+     test $? -eq 0 || return 1
+ 
+     kdump_kernel=$(echo "$output" | grep ^Kernel | cut -f 2)
+@@ -325,7 +326,8 @@ function find_kernel()
+ # Rebuild the kdump initramfs if necessary
+ function rebuild_kdumprd()
+ {
+-    local output=$(mkdumprd -K "$kdump_kernel" -I "$kdump_initrd" 2>&1)
++    local output
++    output=$(mkdumprd -K "$kdump_kernel" -I "$kdump_initrd" 2>&1)
+     if [ $? -ne 0 ] ; then
+ 	echo "$output"
+ 	return 1
