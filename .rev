@@ -111,4 +111,23 @@
     <comment></comment>
     <requestid>784406</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>17c8f50a26a94eb8894d687a9c1344b7</srcmd5>
+    <version>1.9.5</version>
+    <time>1622536411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.5:
+  + libmediaart:
+    - Remove QT4 support
+    - Mandate that input strings are UTF8
+  + extract: Remove local storage
+  + build:
+    - Drop autotools support
+    - Update to recent glib API
+    - Introspection fixes
+    - Added CI
+- Drop meson-Introspection-fix.patch: Fixed upstream.
+- Update meson option for building docs to new gtk_doc=true value. (forwarded request 894993 from iznogood)</comment>
+    <requestid>895941</requestid>
+  </revision>
 </revisionlist>
