@@ -700,4 +700,12 @@ require it nevertheless
   * fix a build failure on OpenBSD</comment>
     <requestid>886900</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>c4d4bb5db4414b3b30418524ddfe61ee</srcmd5>
+    <version>4.31</version>
+    <time>1622536383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895808</requestid>
+  </revision>
 </revisionlist>

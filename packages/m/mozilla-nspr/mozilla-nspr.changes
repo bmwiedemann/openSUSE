@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 27 16:54:45 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 4.31:
+  * Lock access to PRCallOnceType members in PR_CallOnce* for
+    thread safety bmo#1686138
+
+-------------------------------------------------------------------
 Sun Apr 18 07:30:01 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.30
