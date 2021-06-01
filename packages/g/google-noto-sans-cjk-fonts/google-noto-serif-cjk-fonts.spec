@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-serif-cjk-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%define _version 2.001
+%define _version 2.002
+%define reponame noto-cjk
+%define tag 20201206-cjk
 
 Name:           google-noto-serif-cjk-fonts
-Version:        20170403
+Version:        20201206
 Release:        0
 Summary:        Noto Serif CJK Font Families
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-cjk
-Source0:        https://github.com/googlefonts/noto-cjk/archive/NotoSansV%{_version}.tar.gz
+Source0:        https://github.com/googlefonts/noto-cjk/archive/refs/tags/v%{tag}.tar.gz#/%{reponame}-%{tag}.tar.gz
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -431,13 +433,14 @@ heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Korean, hinted.
 
 %prep
-%setup -q -n noto-cjk-NotoSansV%{_version}
+%setup -q -n %{reponame}-%{tag}
 
 %build
 
 %install
+rm -rf NotoSans* NotoSerifCJK*
 mkdir -p %{buildroot}%{_ttfontsdir}
-cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
+cp NotoSerif*.?tf %{buildroot}%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets -n noto-serif-sc-regular-fonts
 
@@ -498,181 +501,181 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 %files -n noto-serif-sc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-Regular.?tf
+%{_ttfontsdir}/NotoSerifSC-Regular.?tf
 
 %files -n noto-serif-sc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-Bold.?tf
+%{_ttfontsdir}/NotoSerifSC-Bold.?tf
 
 %files -n noto-serif-sc-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-SemiBold.?tf
+%{_ttfontsdir}/NotoSerifSC-SemiBold.?tf
 
 %files -n noto-serif-sc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-Light.?tf
+%{_ttfontsdir}/NotoSerifSC-Light.?tf
 
 %files -n noto-serif-sc-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-ExtraLight.?tf
+%{_ttfontsdir}/NotoSerifSC-ExtraLight.?tf
 
 %files -n noto-serif-sc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-Black.?tf
+%{_ttfontsdir}/NotoSerifSC-Black.?tf
 
 %files -n noto-serif-sc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKsc-Medium.?tf
+%{_ttfontsdir}/NotoSerifSC-Medium.?tf
 
 %files -n noto-serif-sc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-sc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-tc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-Regular.?tf
+%{_ttfontsdir}/NotoSerifTC-Regular.?tf
 
 %files -n noto-serif-tc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-Bold.?tf
+%{_ttfontsdir}/NotoSerifTC-Bold.?tf
 
 %files -n noto-serif-tc-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-SemiBold.?tf
+%{_ttfontsdir}/NotoSerifTC-SemiBold.?tf
 
 %files -n noto-serif-tc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-Light.?tf
+%{_ttfontsdir}/NotoSerifTC-Light.?tf
 
 %files -n noto-serif-tc-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-ExtraLight.?tf
+%{_ttfontsdir}/NotoSerifTC-ExtraLight.?tf
 
 %files -n noto-serif-tc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-Black.?tf
+%{_ttfontsdir}/NotoSerifTC-Black.?tf
 
 %files -n noto-serif-tc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKtc-Medium.?tf
+%{_ttfontsdir}/NotoSerifTC-Medium.?tf
 
 %files -n noto-serif-tc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-tc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-jp-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-Regular.?tf
+%{_ttfontsdir}/NotoSerifJP-Regular.?tf
 
 %files -n noto-serif-jp-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-Bold.?tf
+%{_ttfontsdir}/NotoSerifJP-Bold.?tf
 
 %files -n noto-serif-jp-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-SemiBold.?tf
+%{_ttfontsdir}/NotoSerifJP-SemiBold.?tf
 
 %files -n noto-serif-jp-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-Light.?tf
+%{_ttfontsdir}/NotoSerifJP-Light.?tf
 
 %files -n noto-serif-jp-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-ExtraLight.?tf
+%{_ttfontsdir}/NotoSerifJP-ExtraLight.?tf
 
 %files -n noto-serif-jp-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-Black.?tf
+%{_ttfontsdir}/NotoSerifJP-Black.?tf
 
 %files -n noto-serif-jp-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKjp-Medium.?tf
+%{_ttfontsdir}/NotoSerifJP-Medium.?tf
 
 %files -n noto-serif-jp-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-jp-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-kr-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-Regular.?tf
+%{_ttfontsdir}/NotoSerifKR-Regular.?tf
 
 %files -n noto-serif-kr-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-Bold.?tf
+%{_ttfontsdir}/NotoSerifKR-Bold.?tf
 
 %files -n noto-serif-kr-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-SemiBold.?tf
+%{_ttfontsdir}/NotoSerifKR-SemiBold.?tf
 
 %files -n noto-serif-kr-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-Light.?tf
+%{_ttfontsdir}/NotoSerifKR-Light.?tf
 
 %files -n noto-serif-kr-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-ExtraLight.?tf
+%{_ttfontsdir}/NotoSerifKR-ExtraLight.?tf
 
 %files -n noto-serif-kr-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-Black.?tf
+%{_ttfontsdir}/NotoSerifKR-Black.?tf
 
 %files -n noto-serif-kr-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSerifCJKkr-Medium.?tf
+%{_ttfontsdir}/NotoSerifKR-Medium.?tf
 
 %files -n noto-serif-kr-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-serif-kr-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-sans-cjk-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%define _version 2.001
+%define _version 2.002
+%define reponame noto-cjk
+%define tag 20201206-cjk
 
 Name:           google-noto-sans-cjk-fonts
-Version:        20190410
+Version:        20201206
 Release:        0
 Summary:        Noto Sans CJK Font Families
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-cjk
-Source0:        https://github.com/googlefonts/noto-cjk/archive/NotoSansV%{_version}.tar.gz
+Source0:        https://github.com/googlefonts/noto-cjk/archive/refs/tags/v%{tag}.tar.gz#/%{reponame}-%{tag}.tar.gz
 BuildRequires:  fontpackages-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -145,7 +147,7 @@ Requires:       noto-sans-sc-thin-fonts = %{version}
 %description -n noto-sans-sc-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
 and stroke thicknesses) across languages. This package contains All weights for
-Sans and Monospace fonts for Simplified Chinese, hinted.
+Sans fonts for Simplified Chinese, hinted.
 
 %package -n noto-sans-tc-regular-fonts
 Summary:        Noto Sans Traditional Chinese Font - Regular
@@ -258,7 +260,7 @@ Requires:       noto-sans-tc-thin-fonts = %{version}
 %description -n noto-sans-tc-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
 and stroke thicknesses) across languages. This package contains All weights for
-Sans and Monospace fonts for Traditional Chinese, hinted.
+Sans fonts for Traditional Chinese, hinted.
 
 %package -n noto-sans-hk-regular-fonts
 Summary:        Noto Sans Traditional Chinese Font for HongKong - Regular
@@ -370,7 +372,7 @@ Requires:       noto-sans-hk-thin-fonts = %{version}
 %description -n noto-sans-hk-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
 and stroke thicknesses) across languages. This package contains All weights for
-Sans and Monospace fonts for Traditional Chinese, hinted.
+Sans fonts for Traditional Chinese, hinted.
 
 %package -n noto-sans-jp-regular-fonts
 Summary:        Noto Sans Japanese Font - Regular
@@ -482,7 +484,7 @@ Requires:       noto-sans-jp-thin-fonts = %{version}
 %description -n noto-sans-jp-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
 and stroke thicknesses) across languages. This package contains All weights for
-Sans and Monospace fonts for Japanese, hinted.
+Sans fonts for Japanese, hinted.
 
 %package -n noto-sans-kr-regular-fonts
 Summary:        Noto Sans Korean Font - Regular
@@ -594,7 +596,7 @@ Requires:       noto-sans-kr-thin-fonts = %{version}
 %description -n noto-sans-kr-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
 and stroke thicknesses) across languages. This package contains All weights for
-Sans and Monospace fonts for Korean, hinted.
+Sans fonts for Korean, hinted.
 
 %package -n noto-sans-cjk-fonts
 Summary:        Noto Sans CJK Font - Regular and Bold
@@ -612,14 +614,14 @@ and stroke thicknesses) across languages. This package contains Regular and Bold
 weights for Noto Sans fonts for the four CJK languages.
 
 %prep
-%setup -q -n noto-cjk-NotoSansV%{_version}
+%setup -q -n %{reponame}-%{tag}
 
 %build
 
 %install
 rm -rf NotoSansCJK* NotoSerif*
 mkdir -p %{buildroot}%{_ttfontsdir}
-cp *.?tf %{buildroot}%{_ttfontsdir}/
+cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets -n noto-sans-sc-regular-fonts
 
@@ -743,12 +745,12 @@ cp *.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-sc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-sc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-tc-regular-fonts
@@ -793,12 +795,12 @@ cp *.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-tc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-tc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-hk-regular-fonts
@@ -843,12 +845,12 @@ cp *.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-hk-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-hk-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-jp-regular-fonts
@@ -893,12 +895,12 @@ cp *.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-jp-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-jp-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-kr-regular-fonts
@@ -943,17 +945,17 @@ cp *.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-kr-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-kr-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-cjk-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %changelog
