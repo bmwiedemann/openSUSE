@@ -1,7 +1,7 @@
 #
 # spec file for package liblangtag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname liblangtag1
 Name:           liblangtag
 Version:        0.6.3
@@ -100,13 +101,14 @@ The %{name}-doc package contains documentation files for %{name}.
 %setup -q
 
 %build
+export CFLAGS=-std=gnu99
 %configure \
 	--disable-silent-rules \
 	--disable-static \
 	--enable-test \
 	--disable-introspection \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -114,7 +116,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
