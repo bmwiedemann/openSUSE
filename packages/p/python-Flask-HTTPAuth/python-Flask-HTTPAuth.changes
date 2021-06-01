@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 26 17:46:21 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 4.2.0:
+  * Allow error response to return a 200 status code #114 (commit)
+  * Add optional argument to MultiAuth class #115 (commit) (thanks
+    pryankster and Michael Wright!)
+  * Remove python 3.5 and add python 3.9 to build (commit)
+
+-------------------------------------------------------------------
 Sun Jun 28 19:01:44 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

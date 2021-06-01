@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-HTTPAuth
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Basic and Digest HTTP authentication for Flask routes
 License:        MIT
