@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        23.2.2
+Version:        24.0.1
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -50,7 +50,7 @@ BuildRequires:  openssh
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
-BuildRequires:  wxWidgets-devel < 3.1
+BuildRequires:  wxWidgets-devel >= 3.1
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
@@ -267,9 +267,6 @@ export CXXFLAGS=$CFLAGS
     --enable-threads \
     --enable-smp-support \
     --enable-kernel-poll \
-%ifnarch s390 s390x
-    --enable-hipe \
-%endif
     --enable-shared-zlib
 # clean stalled files before rebuild them
 %make_build clean
@@ -379,7 +376,6 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %{_libdir}/erlang/lib/erl_interface-*/
 %{_libdir}/erlang/lib/erts-*/
 %{_libdir}/erlang/lib/eunit-*/
-%{_libdir}/erlang/lib/hipe-*/
 %{_libdir}/erlang/lib/ftp-*/
 %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/kernel-*/

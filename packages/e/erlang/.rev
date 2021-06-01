@@ -880,4 +880,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>884956</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>19f8aaeac8afb343dfcd475194ed5c92</srcmd5>
+    <version>24.0.1</version>
+    <time>1622536703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>896026</requestid>
+  </revision>
 </revisionlist>
