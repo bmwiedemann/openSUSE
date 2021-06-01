@@ -35,6 +35,8 @@ Patch1:         djvulibre-CVE-2021-32491.patch
 Patch2:         djvulibre-CVE-2021-32492.patch
 # CVE-2021-32493 [bsc#1185905], Heap buffer overflow in function DJVU:GBitmap:decode() via crafted djvu file
 Patch3:         djvulibre-CVE-2021-32493.patch
+# CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
+Patch4:         djvulibre-CVE-2021-3500.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -91,6 +93,7 @@ This package contains the documentation.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # configure script missing; generate using autogen.sh

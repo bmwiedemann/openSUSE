@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 24 08:55:21 UTC 2021 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
+  + djvulibre-CVE-2021-3500.patch
+
+-------------------------------------------------------------------
 Wed May 12 10:09:21 UTC 2021 - pgajdos@suse.com
 
 - security update

@@ -353,4 +353,15 @@
   + djvulibre-CVE-2021-32493.patch</comment>
     <requestid>892460</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>e662fe872563d91959a1ccc1281de5ac</srcmd5>
+    <version>3.5.28</version>
+    <time>1622536369</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
+  + djvulibre-CVE-2021-3500.patch</comment>
+    <requestid>895143</requestid>
+  </revision>
 </revisionlist>
