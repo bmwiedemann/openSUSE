@@ -1,5 +1,43 @@
 -------------------------------------------------------------------
-Wed Apr 14 11:57:25 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+Fri May 21 13:40:56 CEST 2021 - jsmeix@suse.de
+
+- Version upgrade to 9.54.0
+  Highlights in this release include
+  (excerpts from the Ghostscript upstream release summary
+   in https://www.ghostscript.com/doc/9.54.0/News.htm):
+  * The 9.54.0 release is a maintenance release,
+    and also adds new functionality.
+  * Overprint simulation is now available to all output devices,
+    allowing quality previewing/proofing of PostScript and
+    PDF jobs that rely on overprint. See the -dOverprint option
+    documentation in: doc/9.54.0/Use.htm#Overprint
+  * The "docxwrite" device adds the ability to output
+    to Microsoft Word "docx" format.
+    See: doc/9.54.0/VectorDevices.htm#DOCX
+  * The pdfwrite device is now capable of using the Tesseract OCR
+    engine when it is built into Ghostscript to improve
+    searchability and copy and paste functionality when the input
+    lacks the metadata for that purpose.
+    See: doc/9.54.0/VectorDevices.htm#UseOCR
+  * Ghostscript/GhostPDL now includes a "map text to black"
+    function, where text drawn by an input job (except when drawn
+    using a Type 3 font) can be forced to draw in solid black.
+    See: doc/9.54.0/Use.htm#BlackText
+  * Ghostscript/GhostPDL now supports simple N-up imposition
+    "internally". See: doc/9.54.0/Use.htm#NupControl
+  * Our efforts in code hygiene and maintainability continue.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  * For a list of open issues, or to report problems, please visit
+    bugs.ghostscript.com
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.54.0/News.htm
+  For details see the News.htm and History9.htm files.
+- 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch is no longer
+  needed because it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Wed Apr 14 11:56:22 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: compile with PIC, link as PIE
 
