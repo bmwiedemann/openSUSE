@@ -19,7 +19,7 @@
 %global pkg_name commonmark
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.4
+Version:        0.2
 Release:        0
 Summary:        Pure Haskell commonmark parser
 License:        BSD-3-Clause
@@ -32,9 +32,9 @@ BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unicode-transforms-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
