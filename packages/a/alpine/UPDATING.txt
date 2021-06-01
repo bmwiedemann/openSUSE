@@ -5,9 +5,11 @@ provided as patches (but by the same author..). So when there is a new
 release, the OOT patches on the website get updated too.
 
 	version="2.24"
-	for i in WrtAcc colortext fancy fillpara fromheader insertpat maildir rules; do
+	for i in WrtAcc colortext fancy fillpara fromheader insertpat maildir rules DelText; do
 	wget -O- "http://alpine.x10host.com/alpine/patches/alpine-$version/$i.patch.gz" | gzip -cd >"chappa-$i.patch";
 	done
 
 These do not necessarily apply cleanly, so they also need to be
 quilt-refreshed as needed.
+
+fillpara is known to collide with DelText.

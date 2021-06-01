@@ -1,0 +1,8 @@
+From: http://alpine.x10host.com/alpine/info/DelText.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows Pico and Alpine to remove all text of the message from the
+position of the cursor up to the end of the file or message. All you need to do
+is to press ^W ^X. If your signature is delimited by the string "-- " (two
+dashes and a space), it will not be erased by this command.
+

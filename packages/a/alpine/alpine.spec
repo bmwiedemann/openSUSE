@@ -61,6 +61,8 @@ Source615:      chappa-fromheader.txt
 Patch615:       chappa-fromheader.patch
 Source616:      chappa-rules.txt
 Patch616:       chappa-rules.patch
+Source617:      chappa-DelText.txt
+Patch617:       chappa-DelText.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  krb5-devel
 BuildRequires:  libtool
@@ -132,6 +134,7 @@ fi
 %patch614 -p1
 %patch615 -p1
 %patch616 -p1
+%patch617 -p1
 #
 # SuSE patches - warning fixes, etc:
 #

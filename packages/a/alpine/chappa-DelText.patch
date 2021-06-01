@@ -1,0 +1,106 @@
+---
+ pico/basic.c  |   50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ pico/efunc.h  |    1 +
+ pico/search.c |    8 ++++++--
+ 3 files changed, 57 insertions(+), 2 deletions(-)
+
+Index: alpine-2.24/pico/basic.c
+===================================================================
+--- alpine-2.24.orig/pico/basic.c
++++ alpine-2.24/pico/basic.c
+@@ -959,7 +959,57 @@ scrolldownline(int f, int n)
+     return (scrollforw (1, FALSE));
+ }
+ 
++/* deltext deletes from the specified position until the end of the file
++ * or until the signature (when called from Pine), whichever comes first.
++ */
+ 
++int
++deltext (f,n)
++int f,n;
++{               
++  LINE *currline = curwp->w_dotp;
++  static int firsttime = 0;
++
++  if ((lastflag&CFKILL) == 0)
++     kdelete();
++  
++  curwp->w_markp = curwp->w_dotp;
++  curwp->w_marko = curwp->w_doto;
++  
++  while (curwp->w_dotp != curbp->b_linep){
++     if ((Pmaster) 
++    	&& (llength(curwp->w_dotp) == 3) 
++	&& (lgetc(curwp->w_dotp, 0).c == '-') 
++	&& (lgetc(curwp->w_dotp, 1).c == '-') 
++	&& (lgetc(curwp->w_dotp, 2).c == ' ')){
++	  if (curwp->w_dotp == currline){
++	     if (curwp->w_doto)
++		curwp->w_dotp = lforw(curwp->w_dotp);
++	     else
++	   	break;
++     	  }
++     	  else{
++	     curwp->w_dotp = lback(curwp->w_dotp);
++	     curwp->w_doto = llength(curwp->w_dotp);
++	     break;
++          }
++     }
++     else{
++	if(lforw(curwp->w_dotp) != curbp->b_linep)
++	 curwp->w_dotp = lforw(curwp->w_dotp);
++	else{
++	 curwp->w_doto = llength(curwp->w_dotp);
++	 break;
++	}
++     }
++  }         
++  killregion(FALSE,1);
++  lastflag |= CFKILL;
++  if(firsttime == 0)
++     emlwrite("Deleted text can be recovered with the ^U command", NULL);
++  firsttime = 1;
++  return TRUE;
++}
+ 
+ /*
+  * Scroll to a position.
+Index: alpine-2.24/pico/efunc.h
+===================================================================
+--- alpine-2.24.orig/pico/efunc.h
++++ alpine-2.24/pico/efunc.h
+@@ -59,6 +59,7 @@ extern  unsigned char accent(UCS, UCS);
+ extern  unsigned char GetAccent(void);
+ extern	int forwpage(int, int);
+ extern	int backpage(int, int);
++extern  int deltext (int, int);
+ extern  int scrollupline(int, int);
+ extern  int scrolldownline(int, int);
+ extern  int scrollto(int, int);
+Index: alpine-2.24/pico/search.c
+===================================================================
+--- alpine-2.24.orig/pico/search.c
++++ alpine-2.24/pico/search.c
+@@ -73,7 +73,7 @@ EXTRAKEYS    menu_srchpat[] = {
+ 	{"^O", N_("End of Para"),   (CTRL|'O')},
+ 	{"^U", N_("FullJustify"),   (CTRL|'U')},
+ 	{"^P", N_("Delete Para"),   (CTRL|'P')},
+-	{NULL, NULL, 0}
++ 	{"^X", N_("Del End"),       (CTRL|'X')},
+ };
+ 
+ #define EXACTSR_KEY     1	/* toggle an exact or approximate search */
+@@ -286,7 +286,11 @@ forwsearch(int f, int n)
+ 	    break;
+ 
+ 	  case (CTRL|'X'):
+-	    if(flags & SR_OPTNMEN){
++	    if (flags & SR_ORIGMEN){
++	       deltext(f,n);
++	       FWS_RETURN(TRUE);
++	    }
++	    else if(flags & SR_OPTNMEN){
+ 	      if (flags & SR_NOEXACT){
+ 		flags &= ~SR_NOEXACT;
+ 		flags |=  SR_EXACTSR;
