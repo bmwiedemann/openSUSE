@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed May 26 08:44:46 UTC 2021 - psimons@suse.com
+
+- Update text-icu to version 0.7.1.0.
+  0.7.1.0
+
+  * Add fix for undefined TRUE value in cbits (#52)
+  * Improve CI and documentation (#20)
+
+  Thanks to everyone who contributed!
+
+-------------------------------------------------------------------
+Thu May 13 08:26:27 UTC 2021 - psimons@suse.com
+
+- Add text-icu at version 0.7.0.1.
+- add 48.patch to build with ICU-68
