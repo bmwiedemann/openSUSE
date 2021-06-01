@@ -412,4 +412,41 @@ s etc.
   invocation in configure.ac.</comment>
     <requestid>890270</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>84acd03a14541d0daa8c7c11078d29ea</srcmd5>
+    <version>5.1</version>
+    <time>1622536682</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch: no longer use a
+  fixed AES key in the context of the tpm2_import command. Fixes CVE-2021-3565
+  (bsc#1186490).
+- drop fix_pie_linking.patch: now contained in upstream tarball
+- drop fix_warnings.patch: now contained in upstream tarball
+- update to upstream version 5.1:
+  - Minimum tpm2-tss version dependency bumped to 3.1.0
+  - Minimum tpm2-abrmd version dependency bumped to 2.4.0
+  - tss2:
+    - Support in tools for PolicyRef inclusion in policy search per latest TSS.
+    - Support to use TPM objects protected by a policy with PolicySigned.
+    - Enable backward compatibility to old Fapi callback API.
+    - Fix PCR selection for tss2 quote.
+    - Support policy signed policies by implementing Fapi_SetSignCB.
+  - Command/ response parameter support for auditing and pHash policies:
+    - lib/tpm2_util.c: Add method to determine hashing alg for cp/rphash
+    - Add support to calculate rphash for tpm2_create, tpm2_activatecredential,
+      tpm2_certify, tpm2_certifycreation, tpm2_changeauth, tpm2_changeeps,
+      tpm2_changepps, tpm2_nvdefine, tpm2_nvextend, tpm2_unseal
+    - Add support to calculate cphash for tpm2_changeeps, tpm2_changepps.
+  - Session-support:
+    - tpm2_sessionconfig: Add tool to display and configure session attributes.
+    - tpm2_getrandom: Fix— session input was hardcoded for audit-only
+    - tpm2_startauthsession: Add option to specify the bind object  and its
+      authorization value.
+    - tpm2_startauthsession: support for bounded-only session.
+    - tpm2_startauthsession: support for salted-only session.
+    - tpm2_startauthsession: add option to specify an hmac session type.
+    - Add support for specifying non-authorization sessions for audit and
+      parameter encryption for tpm2_getrandom, tpm2_create, tpm2_nvextend,</comment>
+    <requestid>895955</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           tpm2.0-tools
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
@@ -25,8 +25,7 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Patch0:         fix_bogus_warning.patch
-Patch1:         fix_warnings.patch
-Patch2:         fix_pie_linking.patch
+Patch1:         0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -67,7 +66,6 @@ associated interfaces.
 %setup -q -n tpm2-tools-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 # TODO: remove autoreconf once fix_pie_linking patch is no longer needed
