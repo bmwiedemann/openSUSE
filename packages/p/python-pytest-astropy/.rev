@@ -38,4 +38,12 @@
   * Require Hypothesis 5.1 or later. [#29]</comment>
     <requestid>785478</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6be5e8a2ebe672d317d69a5c94dbb303</srcmd5>
+    <version>0.8.0</version>
+    <time>1622536673</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895855</requestid>
+  </revision>
 </revisionlist>
