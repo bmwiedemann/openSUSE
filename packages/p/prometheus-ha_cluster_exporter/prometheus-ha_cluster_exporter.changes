@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 28 07:36:31 2021 UTC - shap-staff@suse.de
+
+- Release 1.2.3
+
+  ## Changed
+  - Compress GitHub artifacts (#195)
+
+  ## Fixed
+  - Fix cloned resource collection once and for all (#194)
+
+  ## Removed
+  - Remove the `make download` target, which was mostly useless. (#194)
+
+-------------------------------------------------------------------
 Wed May 12 11:35:32 2021 UTC - shap-staff@suse.de
 
 - Release 1.2.2
