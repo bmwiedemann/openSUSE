@@ -1,7 +1,7 @@
 #
 # spec file for package mimetic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@ Version:        0.9.8
 Release:        0
 Summary:        A C++ MIME library
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            http://www.codesink.org/mimetic_mime_library.html
 Source0:        http://www.codesink.org/download/%{name}-%{version}.tar.gz
 Patch0:         signedness-fix.patch
+Patch1:         %{name}-gcc11-fix.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -37,7 +37,6 @@ RFC 5322, 2045 and 2046 for terminology, etc.
 
 %package -n lib%{name}0
 Summary:        A C++ MIME library
-Group:          System/Libraries
 
 %description -n lib%{name}0
 It has been built around the standard library; there are no custom
@@ -48,7 +47,6 @@ RFC 5322, 2045 and 2046 for terminology, etc.
 
 %package -n lib%{name}-devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}0 = %{version}
 
 %description -n lib%{name}-devel
@@ -56,8 +54,7 @@ This package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -68,7 +65,7 @@ developing applications that use %{name}.
 rm %{buildroot}%{_libdir}/lib%{name}.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n lib%{name}0 -p /sbin/ldconfig
 %postun -n lib%{name}0 -p /sbin/ldconfig
