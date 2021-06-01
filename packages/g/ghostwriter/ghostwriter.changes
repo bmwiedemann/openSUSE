@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon May 31 08:10:39 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix source url
+
+-------------------------------------------------------------------
+Sun May 30 09:08:31 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.0.1:
+  Fixed:
+  * Issue #598: Unicode characters no longer shifts syntax
+    highlighting.
+  * Sidebar now properly hides itself after the `Ctrl+J` Outline
+    command if it was
+    previously hidden on initial launch.
+  * New Norwegian translation added.
+  * Spanish and Italian translations updated.
+- Update to 2.0.0:
+  Added:
+  * cmark-gfm now replaces Sundown as the default Markdown processor
+    for live previews an export.
+  * Syntax highlighting now utilizes cmark-gfm for better accuracy,
+    especially with nested blocks.
+  * HUDs have been replaced with a side bar.
+  * Theming has been revamped to include more color options, but to
+    exclude background images.
+  * CSS for HTML Preview now adaptively changes colors based on the
+    current theme.
+  * Fonts can be customized for the HTML preview in the Preview
+    Options dialog.
+  * Themes are now composed of two color schemes: a light mode and a
+    dark mode.
+  * A new dark mode button in the status bar allows users to switch
+    to the current theme's dark mode.
+  * Find and replace dialog has been revamped into a panel at the
+    bottom of the application.
+  * Find and replace now supports highlighting all matches.
+  * Export dialog now uses native file selector dialog.
+  * Any two spaces at the end of a line are marked with dots by
+    default.
+  * Selected text now reveals tabs and spaces.
+  * Source code has been refactored to follow KDE Frameworks and Qt
+    coding style guides.
+  * ghostwriter now uses React to update only what changed in the
+    live preview since the last keystroke, significantly reducing
+    the live preview rendering time for large documents.
+  Fixed:
+  * Issue #281: Removal of HUD windows will facilitate Alt+Tab
+    switching.
+  * Issue #382, #539: IME selection window/IBUS candidate window
+    should no longer be displaced.
+  * Issue #401: Single column tables are now highlighted.
+  * Issue #439: README file was updated to remove the installation
+    of qt5-default on Debian-based systems.
+  * Issue #480: Menu bar is now accessible on relaunching ghostwriter
+    in full screen mode.
+  * Issue #494: MathJax JavaScript syntax error that was being
+    printed to the terminal and which prevented inline math from
+    being displayed with the `$` sign has been fixed.
+  * Issue #500: Preview Options dialog will now only open once.
+  * Issue #507: Multilevel lists are highlighted correctly in the
+    editor with the switch to cmark-gfm handling the syntax
+    highlighting.
+  * Issue #508: HUD windows have been replaced with a side bar for
+    compatibility with Wayland.
+  * Issue #517: README.md has been updated with correct instructions
+    location for building on MacOS.
+  * Issue #503: MathJax has now been included inside the application
+    rather than fetching it externally.
+  * Issue #532: Insert spaces for tabs now works on startup.
+  * Issue #536: Added missing Markdown file extensions to file
+    dialog filter when opening and saving files.
+ Removed:
+  * Discount support was removed due to its conflicting executable
+    name with MultiMarkdown.
+- Remove 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 17:03:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:

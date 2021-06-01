@@ -163,4 +163,41 @@
     <comment></comment>
     <requestid>811629</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7d943cf6e04e7ab410e5b39953eb22a</srcmd5>
+    <version>2.0.1</version>
+    <time>1622536763</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source url
+
+- Update to 2.0.1:
+  Fixed:
+  * Issue #598: Unicode characters no longer shifts syntax
+    highlighting.
+  * Sidebar now properly hides itself after the `Ctrl+J` Outline
+    command if it was
+    previously hidden on initial launch.
+  * New Norwegian translation added.
+  * Spanish and Italian translations updated.
+- Update to 2.0.0:
+  Added:
+  * cmark-gfm now replaces Sundown as the default Markdown processor
+    for live previews an export.
+  * Syntax highlighting now utilizes cmark-gfm for better accuracy,
+    especially with nested blocks.
+  * HUDs have been replaced with a side bar.
+  * Theming has been revamped to include more color options, but to
+    exclude background images.
+  * CSS for HTML Preview now adaptively changes colors based on the
+    current theme.
+  * Fonts can be customized for the HTML preview in the Preview
+    Options dialog.
+  * Themes are now composed of two color schemes: a light mode and a
+    dark mode.
+  * A new dark mode button in the status bar allows users to switch
+    to the current theme's dark mode.
+  * Find and replace dialog has been revamped into a panel at the
+    bottom of the application.</comment>
+    <requestid>896297</requestid>
+  </revision>
 </revisionlist>

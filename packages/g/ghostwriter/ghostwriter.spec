@@ -1,7 +1,7 @@
 #
 # spec file for package ghostwriter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           ghostwriter
-Version:        1.8.1
+Version:        2.0.1
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wereturtle.github.io/ghostwriter
-Source:         https://github.com/wereturtle/ghostwriter/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-5.15.patch
+Source:         https://github.com/wereturtle/ghostwriter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -60,7 +58,7 @@ provides a relaxing, distraction-free writing environment.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 lrelease-qt5 %{name}.pro
@@ -76,12 +74,11 @@ lrelease-qt5 %{name}.pro
 %license COPYING
 %doc README.md CREDITS.md
 %{_bindir}/ghostwriter
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/ghostwriter.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/ghostwriter.appdata.xml
 %{_datadir}/applications/ghostwriter.desktop
 %{_datadir}/icons/hicolor/*
 %{_mandir}/man1/ghostwriter.1%{?ext_man}
-%{_datadir}/pixmaps/ghostwriter.xpm
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/ghostwriter
