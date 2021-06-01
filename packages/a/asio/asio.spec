@@ -1,7 +1,7 @@
 #
 # spec file for package asio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           asio
-Version:        1.12.2
+Version:        1.18.2
 Release:        0
 Summary:        A cross-platform C++ library for network and low-level I/O programming
 License:        BSD-3-Clause
@@ -27,16 +27,12 @@ Source0:        http://downloads.sourceforge.net/asio/asio-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(openssl)
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 Asio is a cross-platform C++ library for network and low-level I/O
@@ -56,10 +52,10 @@ model using a modern C++ approach.
 
 %prep
 %setup -q
-# Upstream generate them quite creatively, so refresh
-autoreconf -fvi
 
 %build
+# Upstream generate them quite creatively, so refresh
+autoreconf -fvi
 %configure
 %make_build
 
