@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 25 11:33:03 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.12.0:
+  - mkfs: don't default to too-large physical sector size
+  - repair: phase 6 speedups
+  - man: Add dax mount option to man xfs(5)
+  - xfs_admin: pick up log arguments correctly
+  - xfs_growfs: support shrinking unused space
+  - libfrog: report inobtcount in geometry
+  - xfs_logprint: Fix buffer overflow printing quotaoff
+  - xfsprogs: include <signal.h> for platform_crash
+  - xfsprogs: remove BMV_IF_NO_DMAPI_READ flag
+  - workqueue: bound maximum queue depth
+  - libxfs changes merged from kernel 5.12
+
+-------------------------------------------------------------------
 Sat Mar 13 22:51:06 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to v5.11.0:
