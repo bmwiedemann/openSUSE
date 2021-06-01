@@ -1,7 +1,7 @@
 #
 # spec file for package python-oauthlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-oauthlib
 Version:        3.1.0
 Release:        0
@@ -25,7 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/oauthlib/oauthlib
 Source:         https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-%{version}.tar.gz
-Patch:          o_switch_to_unitest_mock.patch
+Patch0:         o_switch_to_unitest_mock.patch
 BuildRequires:  %{python_module PyJWT >= 1.0.0}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module cryptography}
@@ -58,7 +59,7 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 
 %prep
 %setup -q -n oauthlib-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 %python_build
@@ -68,7 +69,7 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

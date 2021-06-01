@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 11:02:47 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Sep 24 11:18:07 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix patch numbering
