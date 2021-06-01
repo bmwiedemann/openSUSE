@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 10:55:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove bundled libraries, use system provided ones
+
+-------------------------------------------------------------------
 Tue May  4 14:17:10 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to 3.2.3 (bug fix release) 

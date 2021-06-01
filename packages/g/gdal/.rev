@@ -517,4 +517,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>890899</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>4e96de402a998e4b397354b26f8bc15c</srcmd5>
+    <version>3.2.3</version>
+    <time>1622536497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895137</requestid>
+  </revision>
 </revisionlist>

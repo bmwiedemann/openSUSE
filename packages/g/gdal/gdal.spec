@@ -160,6 +160,15 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 %setup -q -n %{sourcename}-%{version}
 %autopatch -p1
 
+# Delete bundled libraries
+rm -rv frmts/zlib
+rm -rv frmts/png/libpng
+rm -rv frmts/gif/giflib
+rm -rv frmts/jpeg/libjpeg
+rm -rv frmts/jpeg/libjpeg12
+rm -rv frmts/gtiff/libgeotiff
+rm -rv frmts/gtiff/libtiff
+
 # Set the right (build) libproj.so version, use the upper found version.
 PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
 sed -i "s,#  define LIBNAME \"libproj.so\",#  define LIBNAME \"libproj.so.${PROJSOVER}\",g" ogr/ogrct.cpp
