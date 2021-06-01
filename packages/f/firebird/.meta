@@ -1,6 +1,0 @@
-<package name="firebird" project="openSUSE:Factory">
-  <title>SQL relational database management system</title>
-  <description>This package contains common files between firebird-classic and
-firebird-superserver. You will need this if you want to use either one.</description>
-  <devel project="server:database" package="firebird"/>
-</package>
