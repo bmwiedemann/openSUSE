@@ -1,0 +1,21 @@
+From: Dieter Baum <dieterbaum@t-online.de>
+Date: 2021-05-27 15:09:00 +0200
+Subject: error message when writing back the MBR for a user
+Upstream: sent
+
+Fix the error message when writing back the MBR
+
+diff a/src/mbr.cpp b/src/mbr.cpp
+--- a/src/mbr.cpp
++++ b/src/mbr.cpp
+@@ -503,8 +503,8 @@
+     if (efiflag == 0)
+     {
+     QString text = tr("You may have selected an incorrect file. The hidden area to be restored has a size of ", "Sie haben eventuell eine falsche Datei ausgewählt. Der wiederherzustellende verborgene Bereich hat eine Größe von") +  sA + 
+-    tr(" bytes. The hidden area of the disk ", " Byte. Der verborgene Bereich von der Festplatte ") + partition + tr(" has a size of ", " hat eine Größe von ") + Sektor_byte + tr(" bytes. Do you want to continue?", " Byte. Wollen Sie fortfahren?");
+-    if (size_ != sektor_byte && dialog_auswertung == 5 && cmb_mbr->currentIndex() == 3) {
++    tr(" bytes. The hidden area of the disk ", " Byte. Der verborgene Bereich von der Festplatte ") + partition + tr(" has a size of ", " hat eine Größe von ") + Sektor_byte_1 + tr(" bytes. Do you want to continue?", " Byte. Wollen Sie fortfahren?");
++    if (size_ != sektor_byte && dialog_auswertung == 5 && cmb_mbr->currentIndex() == 3 && sektor_byte != 0 ) {
+         ret = questionMessage(text);
+         if (ret == 2)
+             return 1;

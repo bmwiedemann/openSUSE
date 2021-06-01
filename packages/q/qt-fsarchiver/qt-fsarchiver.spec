@@ -27,6 +27,8 @@ Group:          System/Filesystems
 URL:            https://sourceforge.net/projects/qt-fsarchiver
 Source0:        %{URL}/files/source/%{name}/%{name}-%{hyphen_version}.tar.gz
 Source1:        %{URL}/files/source/%{name}-terminal/%{name}-terminal-%{terminal_version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-mbr-message.patch
+Patch1:         fix-mbr-message.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
@@ -66,6 +68,7 @@ qt-fsarchiver is a GUI for the program fsarchiver to backup/save/restore partiti
 %prep
 %setup -q -n %{name}
 %setup -T -D -a 1 -n %{name}
+%autopatch -p1
 
 rm -vf .qmake.stash
 rm -vf translations/*.qm
@@ -89,14 +92,13 @@ popd
 # Install translations
 mkdir -p %{buildroot}%{_datadir}/qt5/translations/
 install -m 0644 translations/*.qm %{buildroot}%{_datadir}/qt5/translations/
-# -terminal package contains the same documentation
-rm -rf %{buildroot}%{_docdir}/%{name}-terminal
 
 %files
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}.sh
 %{_sbindir}/%{name}-terminal
 %doc %{_docdir}/%{name}
+%doc %{_docdir}/%{name}-terminal
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %exclude %{_datadir}/qt5/translations/%{name}*.qm

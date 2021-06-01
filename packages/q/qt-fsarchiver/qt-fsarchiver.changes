@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 27 13:23:12 UTC 2021 - opensuse.lietuviu.kalba@gmail.com
+
+- Add fix-mbr-message.patch to fix the error message when writing 
+  back the MBR.
+- Include documentation for qt-fsarchiver-terminal.
+
+-------------------------------------------------------------------
 Sun May 23 18:01:31 UTC 2021 - opensuse.lietuviu.kalba@gmail.com
 
 - Updated TAR balls without version change to final upstream ones.
