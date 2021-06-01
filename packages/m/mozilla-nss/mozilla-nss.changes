@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 27 17:24:41 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to NSS 3.64
+  * bmo#1705286 - Properly detect mips64.
+  * bmo#1687164 - Introduce NSS_DISABLE_CRYPTO_VSX and
+                  disable_crypto_vsx.
+  * bmo#1698320 - replace __builtin_cpu_supports("vsx") with
+                  ppc_crypto_support() for clang.
+  * bmo#1613235 - Add POWER ChaCha20 stream cipher vector
+                  acceleration.
+
+-------------------------------------------------------------------
 Sun Apr 18 07:32:55 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.63.1

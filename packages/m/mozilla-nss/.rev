@@ -2329,4 +2329,12 @@
                   Nederlanden Root CA - G3” root cert in NSS.</comment>
     <requestid>886901</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>cb4fe0459d00eda21c54d365198fe7e4</srcmd5>
+    <version>3.64</version>
+    <time>1622536384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895810</requestid>
+  </revision>
 </revisionlist>
