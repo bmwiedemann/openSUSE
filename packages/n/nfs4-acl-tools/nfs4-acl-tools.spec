@@ -1,7 +1,7 @@
 #
 # spec file for package nfs4-acl-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           nfs4-acl-tools
-Version:        0.3.5
+Version:        0.3.7
 Release:        0
 Summary:        Command line tools for managing ACLs over NFSv4
 License:        BSD-3-Clause
 Group:          System/Filesystems
-Url:            http://linux-nfs.org/~bfields/nfs4-acl-tools/
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.tar.gz
+URL:            http://linux-nfs.org/~bfields/nfs4-acl-tools/
+Source0:        http://linux-nfs.org/~bfields/nfs4-acl-tools/nfs4-acl-tools-%{version}.tar.gz
+# GitClone:     http://git.linux-nfs.org/?p=bfields/nfs4-acl-tools.git
 Patch2:         nfs-acl-tools-xattr.patch
 BuildRequires:  libtool
 
@@ -35,21 +34,22 @@ when using NFSv4 to access a remote filesystem. The remote filesystem
 must also support ACLs.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch2 -p1
 
 %build
+autoreconf -fi
 export CFLAGS="$RPM_OPT_FLAGS -fPIE"
 export LDFLAGS="-pie"
-sed -e 's,--acdir=,-I ,' -i Makefile
-make
+%configure
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING README TODO VERSION
+%license COPYING
+%doc README TODO VERSION
 %{_bindir}/nfs4_editfacl
 %{_bindir}/nfs4_getfacl
 %{_bindir}/nfs4_setfacl

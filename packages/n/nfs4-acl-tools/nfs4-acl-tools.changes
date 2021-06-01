@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 20 13:21:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.7
+  * Remove OWNER_AT, GROUP_AT, EVERYONE_AT flags, but it is still
+    possible to set these bits using the "O", "G", and "E" in the
+    flag field on the commandline. 
+  * Add new option -c/--omit-header to not display comment header.
+  * Skip comment field while reading ACE(s). Fixes an issue where
+    nfs4_setfacl failed to handle comments while reading ACE(s)
+    from nfs4_getfacl output.
+  * Improved readability: add empty line after each acl
+  * nfs4_getfacl: return 1 for unknown option and won't use '-?' anymore
+  * nfs4_setfacl: Add file name to error output.
+
+-------------------------------------------------------------------
 Thu Nov 28 03:36:22 UTC 2019 - Neil Brown <nfbrown@suse.com>
 
 - nfs4-acl-tools-0.3.5.tar.gz - new upstream release
