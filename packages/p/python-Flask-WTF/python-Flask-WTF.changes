@@ -6,6 +6,11 @@ Thu Jan 28 09:43:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
   with a recent python-Werkzeug)
 
 -------------------------------------------------------------------
+Fri Dec 11 12:12:47 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing BR for Flask-BabelEx
+
+-------------------------------------------------------------------
 Wed Jun 10 08:30:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest

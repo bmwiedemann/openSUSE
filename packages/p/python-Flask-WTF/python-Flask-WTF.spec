@@ -36,6 +36,7 @@ Requires:       python-Werkzeug
 Requires:       python-itsdangerous
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module WTForms}
