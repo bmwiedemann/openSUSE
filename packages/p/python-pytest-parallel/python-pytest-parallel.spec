@@ -25,6 +25,9 @@ Summary:        Pytest plugin for parallel and concurrent testing
 License:        MIT
 URL:            https://github.com/browsertron/pytest-parallel
 Source:         https://github.com/browsertron/pytest-parallel/archive/%{version}.tar.gz#/pytest-parallel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python39.patch gh#browsertron/pytest-parallel#98 mcepl@suse.com
+# os._Environ in py>=3.9 has different parameters
+Patch0:         python39.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +47,7 @@ BuildRequires:  %{python_module tblib}
 A pytest plugin for parallel and concurrent testing.
 
 %prep
-%setup -q -n pytest-parallel-%{version}
+%autosetup -p1 -n pytest-parallel-%{version}
 
 %build
 %python_build

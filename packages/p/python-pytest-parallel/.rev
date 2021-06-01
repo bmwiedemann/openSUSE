@@ -35,4 +35,14 @@
 </comment>
     <requestid>870016</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4e0b4297487169fab7a0116206a3fab3</srcmd5>
+    <version>0.1.0</version>
+    <time>1622536794</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python39.patch which makes the package compatible with Python 3.9
+  as well (gh#browsertron/pytest-parallel#98).
+</comment>
+    <requestid>896458</requestid>
+  </revision>
 </revisionlist>
