@@ -1,7 +1,7 @@
 #
 # spec file for package python-hanzidentifier
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,11 +22,11 @@ Version:        1.0.2
 Release:        0
 License:        MIT
 Summary:        Python module that identifies Chinese text as Simplified or Traditional
-Url:            https://github.com/tsroten/hanzidentifier
+URL:            https://github.com/tsroten/hanzidentifier
 Group:          Development/Languages/Python
 Source:         https://github.com/tsroten/hanzidentifier/archive/v%{version}.tar.gz#/hanzidentifier-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module zhon >= 1.1.3}
 # /SECTION
@@ -49,7 +50,7 @@ Python module that identifies Chinese text as Simplified or Traditional.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst
