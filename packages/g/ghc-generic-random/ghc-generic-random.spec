@@ -19,7 +19,7 @@
 %global pkg_name generic-random
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.0.1
+Version:        1.4.0.0
 Release:        0
 Summary:        Generic random generators for QuickCheck
 License:        MIT
@@ -31,7 +31,6 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-inspection-testing-devel
 %endif
 
 %description
