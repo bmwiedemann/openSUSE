@@ -41,8 +41,8 @@ BuildRequires:  %{python_module vcrpy}
 # /SECTION
 Requires:       python-requests >= 2.3.0
 Requires:       python-six >= 1.7.3
-Recommends:     python-pyOpenSSL
 Recommends:     python-lxml
+Recommends:     python-pyOpenSSL
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +66,7 @@ sed -i 's/vcrpy<2/vcrpy/' test-requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt

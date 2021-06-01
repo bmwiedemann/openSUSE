@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 10:00:57 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Fri Apr  9 17:21:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.0.2
