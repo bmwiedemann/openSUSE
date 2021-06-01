@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 25 10:50:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.12:
+  + Fix keybinding for image rotation.
+  + Fix potential memory leak while importing from camera.
+  + Update Piwigo icon.
+  + Bugs fixed: glgo#/GNOME/shotwell#301.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov  6 08:31:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.30.11:
