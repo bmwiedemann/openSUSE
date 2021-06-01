@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 20 17:32:27 UTC 2021 - psimons@suse.com
+
+- Update time-compat to version 1.9.6.
+  # 1.9.6
+
+  - Move `Hashable` instance here from `hashable-time` package.
+    Note: `ZonedTime` instance is dropped, as `ZonedTime` doesn't have `Eq`
+    instance.
+  - Drop GHC-7.0 and GHC-7.2 support.
+
+-------------------------------------------------------------------
 Mon Feb 15 07:45:48 UTC 2021 - psimons@suse.com
 
 - Update time-compat to version 1.9.5 revision 1.
