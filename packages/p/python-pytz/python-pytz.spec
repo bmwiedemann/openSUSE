@@ -80,7 +80,7 @@ ln -s %{_datadir}/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
 }
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
