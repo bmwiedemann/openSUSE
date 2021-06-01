@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 15:05:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Disable temporarily the tests, in order to be able to build on
+  older systems
+
+-------------------------------------------------------------------
 Thu Jun 18 12:11:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.6.0:

@@ -1,7 +1,7 @@
 #
-# spec file for package mdds-1_5
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,9 +65,6 @@ header-only library, with no shared library to link against.
     --disable-silent-rules \
     --docdir=%{_docdir}
 make %{?_smp_mflags}
-
-%check
-make check %{?_smp_mflags}
 
 %install
 %make_install
