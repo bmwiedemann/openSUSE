@@ -26,11 +26,18 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp-jinja2
 Source:         https://github.com/aio-libs/aiohttp-jinja2/archive/v%{version}.tar.gz#/aiohttp-jinja2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#aio-libs/aiohttp-jinja2#451 mcepl@suse.com
+# Make typing_extensions just optional dependency
+Patch0:         stdlib-typing_extensions.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-typing_extensions if python3-base <= 3.6)
 Requires:       python-Jinja2
 Requires:       python-aiohttp
+%if 0%{?python_version_nodots} <= 36
+Requires:       python3-typing_extensions
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -43,7 +50,8 @@ BuildRequires:  %{python_module pytest-aiohttp}
 Jinja2 template renderer for aiohttp.web.
 
 %prep
-%setup -q -n aiohttp-jinja2-%{version}
+%autosetup -p1 -n aiohttp-jinja2-%{version}
+
 # for unwanted pytest extra configuration
 rm setup.cfg
 

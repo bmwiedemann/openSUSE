@@ -7,4 +7,14 @@
     <comment>with fixed reqs</comment>
     <requestid>886596</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5471e5cbd175a7ea4b43d8332f7cb82</srcmd5>
+    <version>1.4.2</version>
+    <time>1622536759</time>
+    <user>dimstar_suse</user>
+    <comment>- Add stdlib-typing_extensions.patch to avoid necessity for BR
+  python-typing_extensions (gh#aio-libs/aiohttp-jinja2#451).
+</comment>
+    <requestid>896273</requestid>
+  </revision>
 </revisionlist>

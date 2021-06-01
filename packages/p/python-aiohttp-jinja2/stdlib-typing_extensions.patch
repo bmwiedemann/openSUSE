@@ -1,0 +1,18 @@
+---
+ aiohttp_jinja2/__init__.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/aiohttp_jinja2/__init__.py
++++ b/aiohttp_jinja2/__init__.py
+@@ -19,7 +19,10 @@ from typing import (
+ import jinja2
+ from aiohttp import web
+ from aiohttp.abc import AbstractView
+-from typing_extensions import Protocol
++try:
++    from typing import Protocol
++except ImportError:
++    from typing_extensions import Protocol
+ 
+ from .helpers import GLOBAL_HELPERS
+ from .typedefs import Filters
