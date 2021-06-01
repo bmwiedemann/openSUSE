@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 25 02:58:19 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add numix-gtk-theme-add-text_view_bg.patch: New version of VTE
+  requires themes to export text_view_bg, this patch adds it.
+  (bsc#1184979)
+
+-------------------------------------------------------------------
 Sun May 16 13:48:33 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to version 2.6.7.1617863126.0d6b4c8

@@ -28,6 +28,8 @@ URL:            https://numixproject.org/
 Source0:        %{name}-%{version}.tar.xz 
 # PATCH-FIX-OPENSUSE numix-gtk-theme-light-menubars.patch sor.alexei@meowr.ru -- Make light menus (Gtk2), dark menus are buggy in Qt4 QGtk2Style.
 Patch0:         %{name}-light-menubars.patch
+# PATCH-FIX-UPSTREAM numix-gtk-theme-add-text_view_bg.patch bsc#1184979 alynx.zhou@suse.com -- Added color used by new version of vte.
+Patch1:         numix-gtk-theme-add-text_view_bg.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildArch:      noarch
@@ -79,6 +81,7 @@ This package contains the GTK+3 theme.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %make_build

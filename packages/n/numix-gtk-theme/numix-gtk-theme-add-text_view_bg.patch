@@ -1,0 +1,24 @@
+diff --git a/src/gtk-3.0/scss/_colors.scss b/src/gtk-3.0/scss/_colors.scss
+index cdd7499..30de145 100644
+--- a/src/gtk-3.0/scss/_colors.scss
++++ b/src/gtk-3.0/scss/_colors.scss
+@@ -31,6 +31,7 @@
+ @define-color success_color #{"" + $success_color};
+ @define-color warning_color #{"" + $warning_color};
+ @define-color error_color #{"" + $error_color};
++@define-color text_view_bg #{"" + $base_color};
+ 
+ /* widget colors */
+ @define-color titlebar_bg_color @dark_bg_color;
+diff --git a/src/gtk-3.20/scss/_colors.scss b/src/gtk-3.20/scss/_colors.scss
+index dda50ed..3074695 100644
+--- a/src/gtk-3.20/scss/_colors.scss
++++ b/src/gtk-3.20/scss/_colors.scss
+@@ -31,6 +31,7 @@
+ @define-color success_color #{"" + $success_color};
+ @define-color warning_color #{"" + $warning_color};
+ @define-color error_color #{"" + $error_color};
++@define-color text_view_bg #{"" + $base_color};
+ 
+ /* widget colors */
+ @define-color titlebar_bg_color @dark_bg_color;
