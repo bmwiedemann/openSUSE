@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 24 22:01:43 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- analyzevmcore supports local directories (bsc#1186397)
+
+-------------------------------------------------------------------
 Wed May 12 20:43:16 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - getappcore checks for valid compression binary (bsc#1185991)
