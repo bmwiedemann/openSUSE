@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis-fspaths
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lazka/hypothesis-fspaths
 Source:         https://files.pythonhosted.org/packages/source/h/hypothesis-fspaths/hypothesis-fspaths-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +42,8 @@ Hypothesis extension for generating filesystem paths
 
 %prep
 %setup -q -n hypothesis-fspaths-%{version}
+# https://github.com/lazka/hypothesis-fspaths/issues/3
+sed -i '/pytest-runner/d' setup.py
 
 %build
 %python_build
@@ -51,7 +53,7 @@ Hypothesis extension for generating filesystem paths
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
