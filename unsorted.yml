@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -246,6 +246,8 @@ unsorted:
   - Rivet-plugins 
   - SHERPA-MC-devel 
   - SUSEConnect: [x86_64] 
+  - SVT-AV1: [x86_64] 
+  - SVT-AV1-devel: [x86_64] 
   - SampleICC 
   - ServiceReport 
   - ShellCheck: [x86_64] 
@@ -725,6 +727,7 @@ unsorted:
   - argus-server 
   - argyllcms-doc 
   - aria2-devel 
+  - arkade 
   - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
   - arm-trusted-firmware 
@@ -1627,6 +1630,7 @@ unsorted:
   - cadabra2-examples 
   - cadabra2-gui 
   - cadaver 
+  - caddy 
   - cadsondemak-fonts 
   - caffe 
   - caffe-devel 
@@ -3634,7 +3638,6 @@ unsorted:
   - flac2all 
   - flacon 
   - flacon-lang 
-  - flamerobin 
   - flameshot 
   - flameshot-bash-completion 
   - flameshot-zsh-completion 
@@ -5221,6 +5224,8 @@ unsorted:
   - ghc-text-devel: [x86_64] 
   - ghc-text-format: [x86_64] 
   - ghc-text-format-devel: [x86_64] 
+  - ghc-text-icu: [x86_64] 
+  - ghc-text-icu-devel: [x86_64] 
   - ghc-text-manipulate: [x86_64] 
   - ghc-text-manipulate-devel: [x86_64] 
   - ghc-text-metrics: [x86_64] 
@@ -5297,6 +5302,8 @@ unsorted:
   - ghc-uglymemo-devel: [x86_64] 
   - ghc-unbounded-delays: [x86_64] 
   - ghc-unbounded-delays-devel: [x86_64] 
+  - ghc-unicode-collation: [x86_64] 
+  - ghc-unicode-collation-devel: [x86_64] 
   - ghc-unicode-transforms: [x86_64] 
   - ghc-unicode-transforms-devel: [x86_64] 
   - ghc-uniplate: [x86_64] 
@@ -7593,7 +7600,6 @@ unsorted:
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
-  - jupyter-jupyter-contrib-nbextensions 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
@@ -8198,6 +8204,8 @@ unsorted:
   - ktuberling-lang 
   - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
+  - kubectx 
+  - kubens 
   - kuberlr: [i586] 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
@@ -8245,6 +8253,7 @@ unsorted:
   - kubernetes1.21-controller-manager: [x86_64] 
   - kubernetes1.21-proxy: [x86_64] 
   - kubernetes1.21-scheduler: [x86_64] 
+  - kubetap 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
   - kubevirt-tests: [x86_64] 
@@ -8816,8 +8825,8 @@ unsorted:
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
   - libMyGUIEngine3_4_0 
-  - libOIS-1_3_0 
   - libOIS-devel 
+  - libOIS1_5_0 
   - libOSMesa-devel 
   - libOSMesa-devel-32bit: [x86_64] 
   - libOSMesa8 
@@ -9174,6 +9183,8 @@ unsorted:
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
   - libStatTimer2: [x86_64] 
+  - libSvtAv1Dec0: [x86_64] 
+  - libSvtAv1Enc0: [x86_64] 
   - libSwiften4 
   - libTMCG-devel 
   - libTMCG18 
@@ -10943,7 +10954,7 @@ unsorted:
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite5 
-  - libgraphblas4 
+  - libgraphblas5 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
@@ -11893,7 +11904,6 @@ unsorted:
   - libmicro 
   - libmicrohttpd-devel 
   - libmicrohttpd12 
-  - libmidori-core0 
   - libmikmod-devel 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
@@ -15134,7 +15144,6 @@ unsorted:
   - lua54-coxpcall 
   - lua54-devel 
   - lua54-dkjson 
-  - lua54-doc 
   - lua54-editorconfig-core-lua 
   - lua54-ldbus 
   - lua54-ldoc 
@@ -15826,9 +15835,6 @@ unsorted:
   - microdnf: [i586] 
   - microos-devel-tools 
   - microos-tools: [i586] 
-  - midori 
-  - midori-devel 
-  - midori-lang 
   - miller 
   - miltertest 
   - mimic 
@@ -18577,6 +18583,7 @@ unsorted:
   - pdfgrep 
   - pdfgrep-bash-completion 
   - pdfgrep-zsh-completion 
+  - pdfmixtool 
   - pdfquirk 
   - pdftk 
   - pdns 
@@ -21078,6 +21085,7 @@ unsorted:
   - python3-avocado-plugins-runner-vm 
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
+  - python3-avocado-plugins-vt 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babeltrace 
@@ -21332,7 +21340,6 @@ unsorted:
   - python3-pyside2-examples 
   - python3-pysol-cards 
   - python3-pytest-cookies 
-  - python3-python-pseudorandom: [i586] 
   - python3-renderspec 
   - python3-reno 
   - python3-rpmconf 
@@ -21348,7 +21355,6 @@ unsorted:
   - python3-splinter 
   - python3-spyder-notebook 
   - python3-spyder-terminal 
-  - python3-spyder-unittest 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
@@ -21447,7 +21453,6 @@ unsorted:
   - python36-Genshi 
   - python36-GitPython 
   - python36-Glances 
-  - python36-Gloo 
   - python36-GooCalendar 
   - python36-HTTPolice 
   - python36-HeapDict 
@@ -21639,7 +21644,6 @@ unsorted:
   - python36-alembic 
   - python36-allpairspy 
   - python36-alsa 
-  - python36-altair-widgets 
   - python36-altgraph 
   - python36-amqp 
   - python36-amqpstorm 
@@ -21697,7 +21701,6 @@ unsorted:
   - python36-attr 
   - python36-attrs 
   - python36-audiogrep 
-  - python36-audiomate 
   - python36-audioread 
   - python36-augeas 
   - python36-authheaders 
@@ -21709,7 +21712,6 @@ unsorted:
   - python36-autopep8 
   - python36-autoupgrade-ng 
   - python36-avahi 
-  - python36-avocado-plugins-vt 
   - python36-avro 
   - python36-awpa 
   - python36-aws-sam-translator 
@@ -22013,7 +22015,6 @@ unsorted:
   - python36-calmjs 
   - python36-calmjs.parse 
   - python36-calmjs.types 
-  - python36-calysto 
   - python36-cangjie 
   - python36-canonicaljson 
   - python36-capturer 
@@ -22083,7 +22084,6 @@ unsorted:
   - python36-cloudflare 
   - python36-cloudpickle 
   - python36-cloudscraper 
-  - python36-cluster 
   - python36-cmarkgfm 
   - python36-cmd2 
   - python36-cmdln 
@@ -22437,7 +22437,6 @@ unsorted:
   - python36-fields 
   - python36-filelock 
   - python36-filetype 
-  - python36-finance_enums 
   - python36-fire 
   - python36-first 
   - python36-fissix 
@@ -22460,6 +22459,7 @@ unsorted:
   - python36-flake8-quotes 
   - python36-flaky 
   - python36-flasgger 
+  - python36-flask-jwt-extended 
   - python36-flask-oidc 
   - python36-flask-peewee 
   - python36-flask-restplus 
@@ -22740,7 +22740,6 @@ unsorted:
   - python36-junos-eznc 
   - python36-jupyter 
   - python36-jupyter-client 
-  - python36-jupyter-contrib-nbextensions 
   - python36-jupyter-core 
   - python36-jupyter-jupyterlab-server 
   - python36-jupyter-nbutils 
@@ -22831,6 +22830,7 @@ unsorted:
   - python36-linstor-client 
   - python36-linux-procfs 
   - python36-lit 
+  - python36-llfuse 
   - python36-llvmlite 
   - python36-lmdb 
   - python36-lml 
@@ -22896,7 +22896,6 @@ unsorted:
   - python36-modernize 
   - python36-mohawk 
   - python36-moksha-common 
-  - python36-moksha-hub 
   - python36-mongoengine 
   - python36-monotonic 
   - python36-more-itertools 
@@ -23029,7 +23028,6 @@ unsorted:
   - python36-orderedmultidict 
   - python36-osc-tiny 
   - python36-oscrypto 
-  - python36-osmviz 
   - python36-ospd 
   - python36-ospd-openvas 
   - python36-outcome 
@@ -23069,6 +23067,7 @@ unsorted:
   - python36-passivetotal 
   - python36-passlib 
   - python36-pastel 
+  - python36-patatt 
   - python36-patchy 
   - python36-path 
   - python36-pathlib 
@@ -23379,7 +23378,6 @@ unsorted:
   - python36-pytest 
   - python36-pytest-aiofiles 
   - python36-pytest-aiohttp 
-  - python36-pytest-astropy 
   - python36-pytest-astropy-header 
   - python36-pytest-asyncio 
   - python36-pytest-attrib 
@@ -23517,7 +23515,6 @@ unsorted:
   - python36-python-pam 
   - python36-python-poppler 
   - python36-python-prctl 
-  - python36-python-pseudorandom: [x86_64] 
   - python36-python-ptrace 
   - python36-python-qdatamatrix 
   - python36-python-qpid-proton 
@@ -23751,7 +23748,6 @@ unsorted:
   - python36-sh 
   - python36-shaptools 
   - python36-shellingham 
-  - python36-shijian 
   - python36-shinyutils 
   - python36-shodan 
   - python36-shortuuid 
@@ -23844,7 +23840,6 @@ unsorted:
   - python36-sqlite-fts4 
   - python36-sqlitedict 
   - python36-sqlparse 
-  - python36-sqlsoup 
   - python36-srcinfo 
   - python36-ssdeep 
   - python36-sshpubkeys 
@@ -24108,13 +24103,6 @@ unsorted:
   - python36-xmlsec 
   - python36-xmltodict 
   - python36-xpybutil 
-  - python36-xsge_gui 
-  - python36-xsge_lighting 
-  - python36-xsge_particle 
-  - python36-xsge_path 
-  - python36-xsge_physics 
-  - python36-xsge_tiled 
-  - python36-xsge_tmx 
   - python36-xvfbwrapper 
   - python36-xxhash 
   - python36-yacron 
@@ -24127,6 +24115,7 @@ unsorted:
   - python36-yarg 
   - python36-yarl 
   - python36-yaspin 
+  - python36-yaswfp 
   - python36-yg.lockfile 
   - python36-youtube-dl 
   - python36-yq 
@@ -24495,7 +24484,6 @@ unsorted:
   - python38-autoupgrade-ng 
   - python38-av 
   - python38-avahi 
-  - python38-avocado-plugins-vt 
   - python38-avro 
   - python38-awkward 
   - python38-awpa 
@@ -25268,6 +25256,7 @@ unsorted:
   - python38-flake8-quotes 
   - python38-flaky 
   - python38-flasgger 
+  - python38-flask-jwt-extended 
   - python38-flask-oidc 
   - python38-flask-peewee 
   - python38-flask-restplus 
@@ -25564,7 +25553,6 @@ unsorted:
   - python38-junos-eznc 
   - python38-jupyter 
   - python38-jupyter-client 
-  - python38-jupyter-contrib-nbextensions 
   - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-nbutils 
@@ -25663,6 +25651,7 @@ unsorted:
   - python38-linstor 
   - python38-linstor-client 
   - python38-lit 
+  - python38-llfuse 
   - python38-llvmlite 
   - python38-lmdb 
   - python38-lmfit 
@@ -25738,7 +25727,6 @@ unsorted:
   - python38-modernize 
   - python38-mohawk 
   - python38-moksha-common 
-  - python38-moksha-hub 
   - python38-mongoengine 
   - python38-monitoring-plugins-http_json 
   - python38-monotonic 
@@ -25939,6 +25927,7 @@ unsorted:
   - python38-passivetotal 
   - python38-pastel 
   - python38-pastream 
+  - python38-patatt 
   - python38-patchy 
   - python38-path 
   - python38-pathlib 
@@ -26392,7 +26381,7 @@ unsorted:
   - python38-python-pam 
   - python38-python-poppler 
   - python38-python-prctl 
-  - python38-python-pseudorandom: [x86_64] 
+  - python38-python-pseudorandom 
   - python38-python-ptrace 
   - python38-python-qdatamatrix 
   - python38-python-qpid-proton 
@@ -26733,7 +26722,6 @@ unsorted:
   - python38-sqlite-utils 
   - python38-sqlitedict 
   - python38-sqlparse 
-  - python38-sqlsoup 
   - python38-srcinfo 
   - python38-ssdeep 
   - python38-sshpubkeys 
@@ -27028,7 +27016,6 @@ unsorted:
   - python38-xsge_path 
   - python38-xsge_physics 
   - python38-xsge_tiled 
-  - python38-xsge_tmx 
   - python38-xvfbwrapper 
   - python38-xxhash 
   - python38-yacron 
@@ -27043,6 +27030,7 @@ unsorted:
   - python38-yarg 
   - python38-yarl 
   - python38-yaspin 
+  - python38-yaswfp 
   - python38-yg.lockfile 
   - python38-youtube-dl 
   - python38-yq 
@@ -27430,7 +27418,6 @@ unsorted:
   - python39-autoupgrade-ng 
   - python39-av 
   - python39-avahi 
-  - python39-avocado-plugins-vt 
   - python39-avro 
   - python39-awkward 
   - python39-awpa 
@@ -27686,6 +27673,7 @@ unsorted:
   - python39-binaryornot 
   - python39-bindep 
   - python39-biopython 
+  - python39-biplist 
   - python39-bitarray 
   - python39-bitstring 
   - python39-bitstruct 
@@ -28218,6 +28206,7 @@ unsorted:
   - python39-flake8-quotes 
   - python39-flaky 
   - python39-flasgger 
+  - python39-flask-jwt-extended 
   - python39-flask-oidc 
   - python39-flask-peewee 
   - python39-flask-restplus 
@@ -28643,6 +28632,7 @@ unsorted:
   - python39-linstor-client 
   - python39-linux-procfs 
   - python39-lit 
+  - python39-llfuse 
   - python39-llvmlite 
   - python39-lmdb 
   - python39-lmfit 
@@ -28934,6 +28924,7 @@ unsorted:
   - python39-passlib 
   - python39-pastel 
   - python39-pastream 
+  - python39-patatt 
   - python39-patchy 
   - python39-path 
   - python39-pathlib 
@@ -29324,6 +29315,7 @@ unsorted:
   - python39-pytest-mypy 
   - python39-pytest-openfiles 
   - python39-pytest-order 
+  - python39-pytest-parallel 
   - python39-pytest-percent 
   - python39-pytest-plus 
   - python39-pytest-profiling 
@@ -29414,6 +29406,7 @@ unsorted:
   - python39-python-pam 
   - python39-python-poppler 
   - python39-python-prctl 
+  - python39-python-pseudorandom 
   - python39-python-ptrace 
   - python39-python-qdatamatrix 
   - python39-python-qpid-proton 
@@ -29776,7 +29769,6 @@ unsorted:
   - python39-sqlite-utils 
   - python39-sqlitedict 
   - python39-sqlparse 
-  - python39-sqlsoup 
   - python39-srcinfo 
   - python39-ssdeep 
   - python39-sshpubkeys 
@@ -29971,6 +29963,7 @@ unsorted:
   - python39-vcrpy 
   - python39-vcver 
   - python39-vcversioner 
+  - python39-vdirsyncer: [x86_64] 
   - python39-vega 
   - python39-vega_datasets 
   - python39-venusian 
@@ -30070,7 +30063,6 @@ unsorted:
   - python39-xsge_path 
   - python39-xsge_physics 
   - python39-xsge_tiled 
-  - python39-xsge_tmx 
   - python39-xvfbwrapper 
   - python39-xxhash 
   - python39-yacron 
@@ -30085,6 +30077,7 @@ unsorted:
   - python39-yarg 
   - python39-yarl 
   - python39-yaspin 
+  - python39-yaswfp 
   - python39-yg.lockfile 
   - python39-youtube-dl 
   - python39-yq 
@@ -30585,6 +30578,7 @@ unsorted:
   - rakudo 
   - raleway-fonts 
   - rang-devel 
+  - range-v3-devel 
   - ranger 
   - rapid-photo-downloader 
   - rapid-photo-downloader-lang 
@@ -30905,6 +30899,7 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
+  - ruby2.7-rubygem-autoprefixer-rails 
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
@@ -31929,13 +31924,12 @@ unsorted:
   - splint 
   - splinter-devel 
   - spotify-easyrpm 
+  - spotifyd 
   - spread-sheet-widget-devel 
   - spyder 
   - spyder-dicom 
   - spyder-hdf5 
   - spyder-lang 
-  - spyder-line-profiler 
-  - spyder-memory-profiler 
   - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
@@ -41021,7 +41015,6 @@ unsorted:
   - typelib-1_0-MatePanelApplet-4_0 
   - typelib-1_0-Matekbd-1_0 
   - typelib-1_0-Mbim-1_0 
-  - typelib-1_0-Midori-0_6 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
