@@ -630,4 +630,21 @@
   * Mark messages as read only in active window. (forwarded request 889128 from tux93)</comment>
     <requestid>889232</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>87ea8a190babffd1f50d62a1b9596ab1</srcmd5>
+    <version>2.7.5</version>
+    <time>1622536712</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily stick to GCC10 to work around build failures
+
+- Update to 2.7.5 (beta)
+  * Add &quot;Voice chats&quot; filter in &quot;Recent actions&quot; for channels.
+  * Write local drafts to disk on a background thread.
+  * Support autoupdate for Telegram in write-protected folders
+    on Linux.
+  * Fix crash in native notifications on Linux.
+  * Fix crash in file dialog on Linux.
+- Update tg_owt</comment>
+    <requestid>896097</requestid>
+  </revision>
 </revisionlist>

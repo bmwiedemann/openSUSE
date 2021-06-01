@@ -21,12 +21,8 @@
 %define _lto_cflags %{nil}
 %endif
 
-# We need at least gcc8 or higher to build
-%if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
+# Temporarily stick to gcc10 to work around build failures
 %bcond_without  fixed_gcc
-%else
-%bcond_with     fixed_gcc
-%endif
 
 %define __builder ninja
 
@@ -34,7 +30,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -60,7 +56,7 @@ BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
 %if %{with fixed_gcc}
-BuildRequires:  gcc9-c++
+BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -166,8 +162,8 @@ mv tg_owt-master Libraries/tg_owt
 
 %build
 %if %{with fixed_gcc}
-export CC=/usr/bin/gcc-9
-export CXX=/usr/bin/g++-9
+export CC="/usr/bin/gcc-10"
+export CXX="/usr/bin/g++-10"
 %endif
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client

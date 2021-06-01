@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 28 10:41:04 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Temporarily stick to GCC10 to work around build failures
+
+-------------------------------------------------------------------
+Sun May  9 12:41:03 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.5 (beta)
+  * Add "Voice chats" filter in "Recent actions" for channels.
+  * Write local drafts to disk on a background thread.
+  * Support autoupdate for Telegram in write-protected folders
+    on Linux.
+  * Fix crash in native notifications on Linux.
+  * Fix crash in file dialog on Linux.
+- Update tg_owt
+
+-------------------------------------------------------------------
 Wed Apr 28 19:47:25 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.7.4
