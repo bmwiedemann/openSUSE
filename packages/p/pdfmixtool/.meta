@@ -1,0 +1,8 @@
+<package name="pdfmixtool" project="openSUSE:Factory">
+  <title>Split, Merge, Rotate and Mix PDF Files</title>
+  <description>
+An application to split, merge, rotate, mix and create multipage PDF files.
+</description>
+  <devel project="Publishing" package="pdfmixtool"/>
+  <url>https://gitlab.com/scarpetta/pdfmixtool/</url>
+</package>

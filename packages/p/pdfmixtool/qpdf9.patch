@@ -1,0 +1,17 @@
+---
+ src/pdf_edit_lib/pdf_writer.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pdfmixtool-v0.6/src/pdf_edit_lib/pdf_writer.cpp
+===================================================================
+--- pdfmixtool-v0.6.orig/src/pdf_edit_lib/pdf_writer.cpp
++++ pdfmixtool-v0.6/src/pdf_edit_lib/pdf_writer.cpp
+@@ -465,7 +465,7 @@ void write_pdf(const Conf &conf, std::fu
+                             QPDFObjectHandle::Rectangle(
+                                 0, 0,
+                                 page_width, page_height),
+-                            false, true, true);
++                            false);
+ 
+                 if (! content.empty())
+                 {
