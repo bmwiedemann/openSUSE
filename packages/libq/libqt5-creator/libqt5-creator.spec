@@ -31,11 +31,11 @@
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
-%define major_ver 4.14
+%define major_ver 4.15
 %define qt5_version 5.14.0
-%define tar_version 4.14.2
+%define tar_version 4.15.0
 Name:           libqt5-creator
-Version:        4.14.2
+Version:        4.15.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -79,7 +79,6 @@ BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick3D) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick3DAssetImport) >= %{qt5_version}
 BuildRequires:  cmake(Qt5QuickWidgets) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Script) >= %{qt5_version}
 BuildRequires:  cmake(Qt5SerialPort) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
@@ -158,6 +157,7 @@ sed -i -e "/qtc_enable_separate_debug_info/d" cmake/QtCreatorAPI.cmake
   -DCLANGTOOLING_LINK_CLANG_DYLIB=ON \
   -DBUILD_WITH_PCH=OFF \
   -DWITH_DOCS=ON \
+  -DBUILD_LIBRARY_QLITEHTML=OFF \
   -DBUILD_EXECUTABLE_CLANGPCHMANAGERBACKEND=OFF \
   -DBUILD_EXECUTABLE_CLANGREFACTORINGBACKEND=OFF
 
@@ -228,7 +228,6 @@ EOF
 %{_libexecdir}/qtcreator/clangbackend
 %endif
 %{_libexecdir}/qtcreator/cpaster
-%{_libexecdir}/qtcreator/cplusplus-keywordgen
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser
 %{_libexecdir}/qtcreator/qml2puppet
@@ -236,7 +235,6 @@ EOF
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtpromaker
 %{_libexecdir}/qtcreator/sdktool
-%{_libexecdir}/qtcreator/valgrind-fake
 
 %files plugin-devel
 %license *GPL*

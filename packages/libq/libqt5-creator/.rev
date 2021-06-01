@@ -853,4 +853,15 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>880633</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4d7f0cbb9aecd7ad7cc1a8fa8580dba4</srcmd5>
+    <version>4.15.0</version>
+    <time>1622536499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.15.0:
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.15.0.md
+- Update 0001-Disable-some-plugins.patch
+- Rebase fix-application-output.patch (forwarded request 892673 from cgiboudeaux)</comment>
+    <requestid>895155</requestid>
+  </revision>
 </revisionlist>

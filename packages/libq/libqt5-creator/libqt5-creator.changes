@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 13 07:33:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.15.0:
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.15.0.md
+- Update 0001-Disable-some-plugins.patch
+- Rebase fix-application-output.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 17:24:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Work around boo#1179155 and explicitly require clang11

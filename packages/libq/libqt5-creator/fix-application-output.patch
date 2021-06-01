@@ -1,4 +1,4 @@
-From f6ab670d750fd1cb2a48e2c4cd829c6b532e7952 Mon Sep 17 00:00:00 2001
+From 6542ee6bc6ce420dcb2c1967c63132933d2d2f33 Mon Sep 17 00:00:00 2001
 From: Javier Llorente <javier@opensuse.org>
 Date: Tue, 8 Dec 2020 14:08:11 +0100
 Subject: [PATCH] Fix application output
@@ -10,10 +10,10 @@ Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
  1 file changed, 3 insertions(+)
 
 diff --git a/src/app/main.cpp b/src/app/main.cpp
-index d18502e1..1406332f 100644
+index bc5e61c7..c6809869 100644
 --- a/src/app/main.cpp
 +++ b/src/app/main.cpp
-@@ -490,6 +490,9 @@ int main(int argc, char **argv)
+@@ -549,6 +549,9 @@ int main(int argc, char **argv)
          QApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
      }
  
@@ -22,7 +22,7 @@ index d18502e1..1406332f 100644
 +
      Utils::TemporaryDirectory::setMasterTemporaryDirectory(QDir::tempPath() + "/" + Core::Constants::IDE_CASED_ID + "-XXXXXX");
  
- #ifdef Q_OS_MAC
+ #ifdef Q_OS_MACOS
 -- 
-2.29.2
+2.31.1
 

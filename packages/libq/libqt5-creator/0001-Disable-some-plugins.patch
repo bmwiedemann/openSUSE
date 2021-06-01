@@ -9,10 +9,6 @@ using the installer
 - The clangformat plugin requires a clang patch
 which was never accepted upstream [1]
 
-- The qlitehtml plugin causes installation issues.
-The documentation can already be browsed using
-either QtWebEngine or QTextBrowser.
-
 [1] https://reviews.llvm.org/D53072
 ---
  src/plugins/CMakeLists.txt      | 2 --
@@ -41,19 +37,6 @@ index 871f999b..e6d82385 100644
  add_subdirectory(cvs)
 diff --git a/src/plugins/help/CMakeLists.txt b/src/plugins/help/CMakeLists.txt
 index 6ec6faba..0e577cb4 100644
---- a/src/plugins/help/CMakeLists.txt
-+++ b/src/plugins/help/CMakeLists.txt
-@@ -60,8 +60,8 @@ extend_qtc_plugin(Help
-     webenginehelpviewer.h
- )
- 
--find_package(litehtml QUIET)
--add_subdirectory(qlitehtml)
-+# find_package(litehtml QUIET)
-+# add_subdirectory(qlitehtml)
- 
- extend_qtc_plugin(Help
-   CONDITION TARGET litehtml AND TARGET qlitehtml
 -- 
 2.30.1
 
