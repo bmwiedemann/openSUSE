@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 23 21:17:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.0:
+  - Dropped support for Python 2.
+  - Python interface: Updated definition of the Yule distance
+    function, following a change in SciPy 1.6.3.
+
+-------------------------------------------------------------------
 Sat May 22 11:40:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_error_test.patch removing the erroring test_vector

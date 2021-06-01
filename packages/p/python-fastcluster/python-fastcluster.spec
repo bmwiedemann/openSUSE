@@ -16,19 +16,17 @@
 #
 
 
+%define         skip_python2 1
 %define         skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastcluster
-Version:        1.1.28
+Version:        1.2.0
 Release:        0
 Summary:        Hierarchical clustering routines for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/dmuellner/fastcluster
 Source:         https://files.pythonhosted.org/packages/source/f/fastcluster/fastcluster-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_error_test.patch gh#dmuellner/fastcluster#21 mcepl@suse.com
-# Skip over erroring test
-Patch0:         skip_error_test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9}
 BuildRequires:  %{python_module pytest}
