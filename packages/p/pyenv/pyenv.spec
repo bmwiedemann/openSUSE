@@ -1,7 +1,7 @@
 #
 # spec file for package pyenv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        1.2.20
+Version:        2.0.0
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/yyuu/pyenv
-Source0:        https://github.com/pyenv/pyenv/archive/v%{version}.tar.gz
+URL:            https://github.com/pyenv/pyenv
+Source0:        https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}.rst
 BuildRequires:  bash-completion
@@ -122,7 +122,7 @@ cp -a pyenv.d %{buildroot}%{_sysconfdir}/
 
 ## Install shell completions:
 install -D -m0644 completions/pyenv.bash %{buildroot}%{_datadir}/bash-completion/completions/pyenv
-install -D -m0644 completions/pyenv.fish %{buildroot}%{_datadir}/fish/completions/pyenv.fish
+install -D -m0644 completions/pyenv.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/pyenv.fish
 install -D -m0644 completions/pyenv.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/pyenv
 
 ## Install manpage
@@ -149,12 +149,14 @@ popd
 %config %{_sysconfdir}/pyenv.d/rehash/*.d/default.list
 %config %{_sysconfdir}/pyenv.d/exec/pip-rehash.bash
 %config %{_sysconfdir}/pyenv.d/rehash/*.bash
+%config %{_sysconfdir}/pyenv.d/install/*.bash
 
 %{pyenv_dir}
 %dir %{_sysconfdir}/pyenv.d
 %dir %{_sysconfdir}/pyenv.d/exec/
 %dir %{_sysconfdir}/pyenv.d/rehash/
 %dir %{_sysconfdir}/pyenv.d/rehash/*.d/
+%dir %{_sysconfdir}/pyenv.d/install/
 
 %{_sysconfdir}/pyenv.d/exec/pip-rehash
 %{_bindir}/pyenv
@@ -166,7 +168,7 @@ popd
 %{_datadir}/bash-completion/completions/pyenv
 
 %files fish-completion
-%{_datadir}/fish/completions/pyenv.fish
+%{_datadir}/fish/vendor_completions.d/pyenv.fish
 
 %files zsh-completion
 %config %{_sysconfdir}/zsh_completion.d/pyenv
