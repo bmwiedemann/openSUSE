@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 25 22:46:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.13.0
+  * Added support for aarch64 cpu architecture.
+  * RTC_SUBDIVISION_MODE_NO_BOUNDARY now works properly for
+    non-manifold edges.
+  * Embree no longer reads the .embree3 config files, thus all
+    configuration has to get passed through the config string to
+    rtcNewDevice.
+  * Releases upgrade to TBB 2021.2.0 and ISPC 1.15.0
+
+-------------------------------------------------------------------
 Sun Apr 25 03:31:24 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - update to version 3.12.1

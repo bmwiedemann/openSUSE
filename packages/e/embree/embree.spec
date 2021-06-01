@@ -18,20 +18,20 @@
 
 
 Name:           embree
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/embree/embree
-Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.6
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(glfw3)
-# SSE2 is required: https://github.com/embree/embree/issues/186
-ExclusiveArch:  x86_64
+# SSE2 is required: https://github.com/embree/embree#supported-platforms
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Intel Embree is a collection of ray tracing kernels originally developed
@@ -67,11 +67,13 @@ export CXXFLAGS="%{optflags}"
     -DEMBREE_STATIC_LIB=ON \
     -DEMBREE_LIB_INSTALL_DIR=%{_libdir} \
     -DEMBREE_ISPC_SUPPORT=OFF \
-    -DEMBREE_TUTORIALS=OFF \
     -DEMBREE_RAY_MASK=ON \
     -DEMBREE_FILTER_FUNCTION=ON \
     -DEMBREE_BACKFACE_CULLING=OFF \
-    -DEMBREE_MAX_ISA=AVX2
+%ifarch x86_64
+    -DEMBREE_MAX_ISA=AVX2 \
+%endif
+    -DEMBREE_TUTORIALS=OFF
 
 %make_build
 
