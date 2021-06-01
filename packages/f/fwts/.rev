@@ -645,4 +645,36 @@
     <comment>- Switch to obs scm _service</comment>
     <requestid>888948</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>7ba20a9b581ee202e9e69f8648856eac</srcmd5>
+    <version>21.05.00</version>
+    <time>1622536495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.05.00:
+  * lib: fwts_version.h - update to V21.05.00
+  * debian: update changelog
+  * auto-packager:mkpackage.sh: add impish
+  * fwts-test: sync up with dbgp changes
+  * acpi: dbgp/spmi: check space ids by fwts_acpi_space_id
+  * acpiinfo: update ACPI 6.4 vs. ACPICA versions
+  * lib: acpi: fix incorrect actual vs. struct length outputs
+  * acpi: shorten helper function names by removing &quot;check&quot;
+  * lib: acpi: unify naming style by removing &quot;ACPI&quot;
+  * fwts-test: sync up with PMTT refactoring changes
+  * acpi: refactor length check by fwts_acpi_structure_length_check
+  * acpi: refactor zero length by fwts_acpi_structure_length_zero_check
+
+- Update to version 21.03.00:
+  * uefirtvariable: fix memory leak
+  * acpi: refactor by fwts_acpi_reserved_type_check
+  * acpi: refactor by fwts_acpi_structure_range_check
+  * uefirtauthvar: check variable runtime services supported before testing (LP: #1913351)
+  * uefirtvariable: check variable runtime services supported before testing (LP: #1913351)
+  * uefirtmisc: check misc runtime services supported before testing (LP: #1913351)
+  * uefirttime: check time services supported before testing (LP: #1913351)
+  * acpi: spcr: accept baud rate 0x0 as a preconfigured state
+  * fwts-test: sync up with PMTT rev 2 changes
+  * acpi: pmtt: update PMTT to revision 2 (mantis 1975)</comment>
+    <requestid>895130</requestid>
+  </revision>
 </revisionlist>
