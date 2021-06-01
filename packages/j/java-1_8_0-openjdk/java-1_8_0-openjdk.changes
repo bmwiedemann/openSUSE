@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 28 04:50:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * tls13extensions.patch
+    + make tlsv1.2 client hello not emit the optional tlsv1.3
+      extensions (fixes bsc#1184639)
+
+-------------------------------------------------------------------
 Fri May 14 08:07:18 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u292 (icedtea 3.19.0)

@@ -634,4 +634,12 @@
     <comment>April 2021 CPU</comment>
     <requestid>893055</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>22ae18ffabf6eb15facaaf017abc22ee</srcmd5>
+    <version>1.8.0.292</version>
+    <time>1622536398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895861</requestid>
+  </revision>
 </revisionlist>

@@ -202,6 +202,8 @@ Patch1002:      icedtea-3.8.0-s390.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 
+Patch3000:      tls13extensions.patch
+
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -539,6 +541,8 @@ patch -p0 -i %{PATCH103}
 
 patch -p0 -i %{PATCH2001}
 patch -p0 -i %{PATCH2002}
+
+patch -p0 -i %{PATCH3000}
 
 (cd openjdk/common/autoconf
  bash ./autogen.sh
