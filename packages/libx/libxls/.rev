@@ -31,4 +31,12 @@
     <comment>- Update to release 1.6.2</comment>
     <requestid>866814</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>961f8c14cd8562b705d286a422fa6edc</srcmd5>
+    <version>1.6.2</version>
+    <time>1622536511</time>
+    <user>dimstar_suse</user>
+    <comment>add bugref</comment>
+    <requestid>895300</requestid>
+  </revision>
 </revisionlist>
