@@ -188,6 +188,10 @@ Requires:       mozilla-nss-tools
 # We recommend this here as a supplementary tool for ldap
 # server interaction, but it's in no way required.
 Recommends:     openldap2-client
+# Tools like dscreate would call out to /usr/bin/openssl; there can
+# be other ways for the admin to maintain his certificates, thus only
+# recommend the openssl-cli tools
+Recommends:     openssl(cli)
 # These are recommended if you have selinux on your system
 # to allow some supplementary automated interactions during
 # setup, but it's not required.
