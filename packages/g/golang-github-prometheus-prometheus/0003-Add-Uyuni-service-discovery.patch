@@ -1,4 +1,4 @@
-From c19bd11c323a073a2c96f2e500de66320e3a627a Mon Sep 17 00:00:00 2001
+From 239bb9d32cb40409c8f2085700e85033f8642670 Mon Sep 17 00:00:00 2001
 From: Joao Cavalheiro <jcavalheiro@suse.de>
 Date: Mon, 27 Jul 2020 17:42:33 +0200
 Subject: [PATCH 3/3] Add Uyuni service discovery
@@ -7,14 +7,14 @@ Subject: [PATCH 3/3] Add Uyuni service discovery
  discovery/install/install.go  |   1 +
  discovery/uyuni/uyuni.go      | 411 ++++++++++++++++++++++++++++++++++
  discovery/uyuni/uyuni_test.go |  46 ++++
- go.mod                        |   1 +
+ go.mod                        |   3 +-
  go.sum                        |   2 +
- 5 files changed, 461 insertions(+)
+ 5 files changed, 462 insertions(+), 1 deletion(-)
  create mode 100644 discovery/uyuni/uyuni.go
  create mode 100644 discovery/uyuni/uyuni_test.go
 
 diff --git a/discovery/install/install.go b/discovery/install/install.go
-index 075a302e4..7cc2395bb 100644
+index 3e6f0f388..484d48db8 100644
 --- a/discovery/install/install.go
 +++ b/discovery/install/install.go
 @@ -31,5 +31,6 @@ import (
@@ -494,22 +494,29 @@ index 000000000..c5fa8cc9e
 +	}
 +}
 diff --git a/go.mod b/go.mod
-index a4b7ff2a6..d347d7682 100644
+index dd22c9be7..b283af28a 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -34,6 +34,7 @@ require (
- 	github.com/hetznercloud/hcloud-go v1.24.0
- 	github.com/influxdata/influxdb v1.8.4
- 	github.com/json-iterator/go v1.1.10
+ 	github.com/hetznercloud/hcloud-go v1.25.0
+ 	github.com/influxdata/influxdb v1.8.5
+ 	github.com/json-iterator/go v1.1.11
 +	github.com/kolo/xmlrpc v0.0.0-20201022064351-38db28db192b
  	github.com/miekg/dns v1.1.41
  	github.com/moby/term v0.0.0-20201216013528-df9cb8a40635 // indirect
  	github.com/morikuni/aec v1.0.0 // indirect
+@@ -110,4 +111,4 @@ exclude (
+ 	k8s.io/client-go v8.0.0+incompatible
+ 	k8s.io/client-go v9.0.0+incompatible
+ 	k8s.io/client-go v9.0.0-invalid+incompatible
+-)
++)
+\ No newline at end of file
 diff --git a/go.sum b/go.sum
-index d424276c8..e62734c2a 100644
+index 03a0abd29..e2fff275e 100644
 --- a/go.sum
 +++ b/go.sum
-@@ -552,6 +552,8 @@ github.com/klauspost/compress v1.9.5/go.mod h1:RyIbtBH6LamlWaDj8nUwkbUhJ87Yi3uG0
+@@ -556,6 +556,8 @@ github.com/klauspost/compress v1.9.5/go.mod h1:RyIbtBH6LamlWaDj8nUwkbUhJ87Yi3uG0
  github.com/klauspost/cpuid v0.0.0-20170728055534-ae7887de9fa5/go.mod h1:Pj4uuM528wm8OyEC2QMXAi2YiTZ96dNQPGgoMS4s3ek=
  github.com/klauspost/crc32 v0.0.0-20161016154125-cb6bfca970f6/go.mod h1:+ZoRqAPRLkC4NPOvfYeR5KNOrY6TD+/sAC3HXPZgDYg=
  github.com/klauspost/pgzip v1.0.2-0.20170402124221-0bf5dcad4ada/go.mod h1:Ch1tH69qFZu15pkjo5kYi6mth2Zzwzt50oCQKQE9RUs=
@@ -519,5 +526,5 @@ index d424276c8..e62734c2a 100644
  github.com/konsorten/go-windows-terminal-sequences v1.0.2/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
  github.com/konsorten/go-windows-terminal-sequences v1.0.3 h1:CE8S1cTafDpPvMhIxNJKvHsGVBgn1xWYf1NbHQhywc8=
 -- 
-2.26.2
+2.31.1
 
