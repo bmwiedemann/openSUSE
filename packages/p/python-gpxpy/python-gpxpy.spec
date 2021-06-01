@@ -50,7 +50,7 @@ GPX is an XML based format for GPS tracks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative gpxinfo
