@@ -22,14 +22,17 @@
 # fi
 #
 : ${EMACS_TOOLKIT:=gtk}
-if test "$EMACS_TOOLKIT" = gtk; then
-    # Currently (2013/05/24) the parser of the GNOME libs
-    # are broken that is it is not independent from locale
-    LC_NUMERIC=POSIX
-    XLIB_SKIP_ARGB_VISUALS=1
-    GDK_RGBA=0
-    export LC_NUMERIC XLIB_SKIP_ARGB_VISUALS GDK_RGBA
-fi
+#
+# Disable this for now an see if and where we need it again
+#
+#if test "$EMACS_TOOLKIT" = gtk; then
+#    # Currently (2013/05/24) the parser of the GNOME libs
+#    # are broken that is it is not independent from locale
+#    LC_NUMERIC=POSIX
+#    XLIB_SKIP_ARGB_VISUALS=1
+#    GDK_RGBA=0
+#    export LC_NUMERIC XLIB_SKIP_ARGB_VISUALS GDK_RGBA
+#fi
 arg0=$0
 argv=("$@")
 if   test -x ${arg0}-${EMACS_TOOLKIT}

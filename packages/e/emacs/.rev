@@ -1560,4 +1560,12 @@
   * pdump.patch</comment>
     <requestid>881478</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>4d7cb9e3b06d060cacbd43ebac495758</srcmd5>
+    <version>27.2</version>
+    <time>1622536432</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341)</comment>
+    <requestid>895550</requestid>
+  </revision>
 </revisionlist>
