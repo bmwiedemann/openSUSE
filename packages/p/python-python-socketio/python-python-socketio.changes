@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 25 17:26:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.0
+  * Big changelog, see CHANGES.md 
+
+-------------------------------------------------------------------
+Sun May 16 09:43:42 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- python2 build removed 
+
+-------------------------------------------------------------------
 Sun Nov 29 02:00:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Convert to single spec
