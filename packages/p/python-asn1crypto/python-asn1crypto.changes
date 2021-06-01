@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 24 12:20:00 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Aug 20 12:41:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.4.0

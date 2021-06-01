@@ -78,4 +78,12 @@
  * Fixed the asn1crypto-tests sdist on PyPi to work properly to generate a .whl</comment>
     <requestid>828177</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>67f439d2b4741a731bc3cf8678712775</srcmd5>
+    <version>1.4.0</version>
+    <time>1622536372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895186</requestid>
+  </revision>
 </revisionlist>
