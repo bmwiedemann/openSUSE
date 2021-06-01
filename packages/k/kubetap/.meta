@@ -1,0 +1,6 @@
+<package name="kubetap" project="openSUSE:Factory">
+  <title>kubetap</title>
+  <description>Kubectl plugin to interactively proxy Kubernetes Services with ease </description>
+  <devel project="devel:kubic" package="kubetap"/>
+  <url>https://soluble-ai.github.io/kubetap</url>
+</package>
