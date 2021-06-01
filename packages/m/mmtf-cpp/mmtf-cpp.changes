@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 26 10:18:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add msgpack dependency to devel package
+- Exclude msgpack and Catch2 submodules from source package
+- Do not build unused examples
+- Strip unneeded ninjs dependency
+
+-------------------------------------------------------------------
 Fri Feb  5 18:52:22 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Enable test. Add _service file to download submodule required for

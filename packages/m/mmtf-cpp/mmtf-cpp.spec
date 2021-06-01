@@ -1,8 +1,7 @@
- 
 #
 # spec file for package mmtf-cpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define __builder ninja
 
+%define spec_ver 1.0
 Name:           mmtf-cpp
 Version:        1.0.0
 Release:        0
@@ -26,11 +25,10 @@ License:        MIT
 Group:          Productivity/Scientific/Chemistry
 URL:            https://github.com/rcsb/mmtf-cpp
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE fix_catch2_not_found.patch gh#rcsb/mmtf-cpp#39 andythe_great@pm.me -- Fix issue catch.hpp not found. 
+# PATCH-FIX-OPENSUSE fix_catch2_not_found.patch gh#rcsb/mmtf-cpp#39 andythe_great@pm.me -- Fix issue catch.hpp not found.
 Patch0:         fix_catch2_not_found.patch
-BuildRequires:  cmake
 BuildRequires:  Catch2-devel
-BuildRequires:  ninja
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,24 +39,21 @@ BuildArch:      noarch
 Macromolecular transmission format documentation, including README, license and HTML docs.
 
 %package  devel
-Summary:   Development files of %{name}
-Group:     Development/Libraries/C and C++
-BuildArch: noarch
+Summary:        Development files of %{name}
+Group:          Development/Libraries/C and C++
+Requires:       msgpack-devel
 
 %description devel
 This package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 
 %build
 %cmake -DBUILD_TESTS:BOOL=ON \
-       -Dmmtf_build_local:BOOL=ON \
-       -Dmmtf_build_examples:BOOL=ON
-
-%cmake_build
-
+       -Dmmtf_build_local:BOOL=ON
+%make_build
 pushd ../docs
 doxygen
 popd
