@@ -873,4 +873,15 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2021-04-22T15:17:15 UTC (#1292)</comment>
     <requestid>893031</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d950a588e7ef430a2d2761595e21d854</srcmd5>
+    <version>20210519</version>
+    <time>1622536378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210519:
+  * Update Contributing.md
+  * Change domain list for PE Ulyanov Kirill Sergeevic (#1306)
+  * Remove wildcard (#1318)</comment>
+    <requestid>895304</requestid>
+  </revision>
 </revisionlist>
