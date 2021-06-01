@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 10 00:25:27 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to to 4.1.2
+  * Avoid NonExistentTimeError during DST transition (#70)
+  * Don't import rest_framework from package root (#67)
+  * Add Django REST Framework serializer field
+  * Add new choices_display kwarg with supported values WITH_GMT_OFFSET and STANDARD
+  * Deprecate display_GMT_offset kwarg
+
+-------------------------------------------------------------------
 Wed Nov 18 05:08:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

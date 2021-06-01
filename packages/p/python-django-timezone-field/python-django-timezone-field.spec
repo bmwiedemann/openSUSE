@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-timezone-field
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-timezone-field
-Version:        4.0
+Version:        4.1.2
 Release:        0
 Summary:        Django app providing database and form fields for pytz timezone objects
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mfogel/django-timezone-field/
 Source:         https://github.com/mfogel/django-timezone-field/archive/%{version}.tar.gz#/django-timezone-field-%{version}.tar.gz
+BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
