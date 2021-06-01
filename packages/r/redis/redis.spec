@@ -99,7 +99,7 @@ install -Dpm0640 redis.conf             %{buildroot}%{_conf_dir}/default.conf.ex
 install -Dpm0660 sentinel.conf          %{buildroot}%{_conf_dir}/sentinel.conf.example
 
 # some sysctl stuff
-install -Dpm0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysctl.d/00-%{name}.conf
+install -Dpm0644 %{SOURCE6} %{buildroot}/%{_prefix}/lib/sysctl.d/00-%{name}.conf
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.target
 install -Dpm0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
@@ -141,7 +141,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %license COPYING
 %doc 00-RELEASENOTES BUGS CONTRIBUTING README.md
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%config(noreplace) %{_sysconfdir}/sysctl.d/00-%{name}.conf
+%{_prefix}/lib/sysctl.d/00-%{name}.conf
 %{_bindir}/%{name}-*
 %{_sbindir}/%{name}-*
 %{_sbindir}/rc%{name}

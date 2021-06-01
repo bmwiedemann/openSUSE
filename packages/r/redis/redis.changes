@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 21 20:30:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Move sysctl file to /usr/lib/sysctl.d, so that it can be
+  overridden by an admin in /etc.
+
+-------------------------------------------------------------------
 Tue May  4 06:23:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - redis 6.2.3
