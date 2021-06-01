@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 29 16:31:14 UTC 2021 - ismail@i10z.com
+
+- Update to version 0.33.1+git.20210528T161101.d7f3d1fff7:
+  * wayland: refactor dispatching events
+  * manpage: mention cover-art-auto
+  * README: fix link to feature-request issues
+  * player: load cover art with the media filename
+  * win32: support the property 'focused'
+  * osc: re-initialize when chapter list changes
+  * recorder: fix codec_tag / codec_id confusion
+  * recorder: clear codec_tag if no target format support
+  * af_scaletempo2: use gcc vectors to speed up inner loop
+  * vo_gpu: replace --icc-contrast by --icc-force-contrast
+  * wayland: shuffle around the render loop again
+  * wayland: send VO_EVENT_DPI on output event as well
+  * command: add a missing comma to MP_EVENT_WIN_STATE
+  * vo_gpu: fix extreme clipping with --gamut-clipping for HDR outputs
+  * wayland: simplify render loop
+  * player/command: add secondary-sub-text property
+  * sub/osd: hide secondary subtitles if secondary-sub-visibility is false
+  * vo_gpu: hwdec_vaapi: silence errors while probing
+  * stream_lavf: remove uninitialized http_like array
+  * osxbundle: fix slow and wasteful memory allocation
+  * stream_file: disable read ahead for remote files on macOS
+  * build: move mingw jobs to Github actions
+  * build: move website rebuild into Linux/clang travis job
+
+-------------------------------------------------------------------
 Fri May 14 11:26:34 UTC 2021 - ismail@i10z.com
 
 - Update to version 0.33.1+git.20210511T222233.ded36a4470:

@@ -1370,4 +1370,35 @@
   * win32: fit_window_on_screen: simplify, add comments</comment>
     <requestid>893106</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>abe0ead8cdbb1d6cdcea2126aef65fd4</srcmd5>
+    <version>0.33.1+git.20210528T161101.d7f3d1fff7</version>
+    <time>1622536717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210528T161101.d7f3d1fff7:
+  * wayland: refactor dispatching events
+  * manpage: mention cover-art-auto
+  * README: fix link to feature-request issues
+  * player: load cover art with the media filename
+  * win32: support the property 'focused'
+  * osc: re-initialize when chapter list changes
+  * recorder: fix codec_tag / codec_id confusion
+  * recorder: clear codec_tag if no target format support
+  * af_scaletempo2: use gcc vectors to speed up inner loop
+  * vo_gpu: replace --icc-contrast by --icc-force-contrast
+  * wayland: shuffle around the render loop again
+  * wayland: send VO_EVENT_DPI on output event as well
+  * command: add a missing comma to MP_EVENT_WIN_STATE
+  * vo_gpu: fix extreme clipping with --gamut-clipping for HDR outputs
+  * wayland: simplify render loop
+  * player/command: add secondary-sub-text property
+  * sub/osd: hide secondary subtitles if secondary-sub-visibility is false
+  * vo_gpu: hwdec_vaapi: silence errors while probing
+  * stream_lavf: remove uninitialized http_like array
+  * osxbundle: fix slow and wasteful memory allocation
+  * stream_file: disable read ahead for remote files on macOS
+  * build: move mingw jobs to Github actions
+  * build: move website rebuild into Linux/clang travis job</comment>
+    <requestid>896117</requestid>
+  </revision>
 </revisionlist>
