@@ -26,4 +26,12 @@
   * Release as universal wheel. [stefan]</comment>
     <requestid>680150</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5eb407b82e0281e8c1b076a3d35e6559</srcmd5>
+    <version>1.4</version>
+    <time>1622536651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895735</requestid>
+  </revision>
 </revisionlist>
