@@ -53,10 +53,10 @@ buildignore MozillaFirefox
 buildignore tcpdump
 
 install gparted
-install midori
+install epiphany
 # Really ran of out space
 buildignore gparted-lang
-buildignore midori-lang
+buildignore epiaphy-lang
 buildignore iso-codes-lang
 buildignore glib2-lang
 buildignore thunar-lang

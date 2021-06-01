@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 09:44:02 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Switch from midori to epiphany
+
+-------------------------------------------------------------------
 Mon May 10 07:37:43 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Create /etc/fstab if it doesn't exist (boo#1185815)
