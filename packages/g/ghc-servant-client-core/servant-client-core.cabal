@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
 name:                servant-client-core
 version:             0.18.2
-x-revision: 1
+x-revision: 2
 
 synopsis:            Core functionality and class for client function generation for servant APIs
 category:            Servant, Web
@@ -104,8 +104,8 @@ test-suite spec
   -- Additional dependencies
   build-depends:
       deepseq    >= 1.4.2.0  && < 1.5
-    , hspec      >= 2.6.0    && < 2.8
+    , hspec      >= 2.6.0    && < 2.9
     , QuickCheck >= 2.12.6.1 && < 2.14
 
   build-tool-depends:
-    hspec-discover:hspec-discover >= 2.6.0 && <2.8
+    hspec-discover:hspec-discover >= 2.6.0 && <2.9
