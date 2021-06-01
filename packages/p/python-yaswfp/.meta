@@ -1,0 +1,5 @@
+<package name="python-yaswfp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-yaswfp"/>
+</package>
