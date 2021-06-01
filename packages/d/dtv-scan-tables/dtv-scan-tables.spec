@@ -1,7 +1,7 @@
 #
 # spec file for package dtv-scan-tables
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dtv-scan-tables
-Version:        20200902
+Version:        20210430
 Release:        0
 Summary:        Scan files for digital TV applications v3
 License:        GPL-2.0-or-later AND LGPL-2.1-only
