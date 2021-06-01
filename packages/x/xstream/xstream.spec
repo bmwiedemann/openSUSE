@@ -19,7 +19,7 @@
 
 %bcond_with  hibernate
 Name:           xstream
-Version:        1.4.16
+Version:        1.4.17
 Release:        0
 Summary:        Java XML serialization library
 License:        BSD-3-Clause

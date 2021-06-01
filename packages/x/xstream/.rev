@@ -31,4 +31,12 @@
     <comment>changelog fixes</comment>
     <requestid>888519</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78a233699425dbcaa938d109d9d88c7e</srcmd5>
+    <version>1.4.17</version>
+    <time>1622536762</time>
+    <user>dimstar_suse</user>
+    <comment>security fix</comment>
+    <requestid>896295</requestid>
+  </revision>
 </revisionlist>

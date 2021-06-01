@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 31 07:59:25 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.17
+  * Security fix:
+    * bsc#1186651, CVE-2021-29505: potential code execution when
+      unmarshalling with XStream instances using an uninitialized
+      security framework
+
+-------------------------------------------------------------------
 Thu Apr 15 14:31:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.16
