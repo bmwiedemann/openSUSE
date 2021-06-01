@@ -25,7 +25,7 @@ Index: build/parseSpec.c
 +		"    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
 +		"         grep -q config-patches@ $c || continue\n"
 +		"         timestamp=$(sed -n \"/^timestamp=/{s///;s/[-'\\\"]//g;p;q;}\" $c)\n"
-+		"         test -n \"$timestamp\" || continue\n"
++		"         test -n \"$timestamp\" || timestamp=0\n"
 +		"         test $timestamp -ge $mints || install -m 755 $ref/config.$s $c\n"
 +		"     done\n"
 +		"done\n"
