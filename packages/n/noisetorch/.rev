@@ -42,4 +42,12 @@
 - use buildmode=pie</comment>
     <requestid>893718</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>acb696bc57c4e85a35eb2c16f06f85ce</srcmd5>
+    <version>0.11.2</version>
+    <time>1622536547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895405</requestid>
+  </revision>
 </revisionlist>
