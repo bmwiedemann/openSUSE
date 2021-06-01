@@ -105,6 +105,8 @@ Patch4:         use-comphelper.patch
 Patch5:         bsc1184961.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
+# bsc#1185505 - LO-L3: Text highlight "bleeds" when saving as PPTX
+Patch7:         bsc1185505.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -978,6 +980,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif

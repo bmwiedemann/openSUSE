@@ -1,0 +1,37 @@
+From 097fcc9721d24f6a634b98a0033dbdf9a5a21122 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=BCl=C5=9Fah=20K=C3=B6se?= <gulsah.kose@collabora.com>
+Date: Wed, 19 May 2021 14:37:36 +0300
+Subject: [PATCH] tdf#96061 Unset the highlight property
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When we have highlight property on specific part of the text
+the following texts were highligthing. To prevent this we unset the
+highlight property when we have not highlight property anymore.
+
+Change-Id: I802cde1c784afe47201a9ba4f41827dd0c705035
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/115800
+Tested-by: Jenkins
+Reviewed-by: Gülşah Köse <gulsah.kose@collabora.com>
+Signed-off-by: Xisco Fauli <xiscofauli@libreoffice.org>
+---
+ .../drawingml/textcharacterproperties.cxx     |   2 +
+ sd/qa/unit/data/pptx/tdf96061.pptx            | Bin 0 -> 21022 bytes
+ sd/qa/unit/export-tests-ooxml2.cxx            |  35 ++++++++++++++++++
+ 3 files changed, 37 insertions(+)
+ create mode 100644 sd/qa/unit/data/pptx/tdf96061.pptx
+
+diff --git a/oox/source/drawingml/textcharacterproperties.cxx b/oox/source/drawingml/textcharacterproperties.cxx
+index 20965e33abb1..4eb5acaffb56 100644
+--- a/oox/source/drawingml/textcharacterproperties.cxx
++++ b/oox/source/drawingml/textcharacterproperties.cxx
+@@ -177,6 +177,8 @@ void TextCharacterProperties::pushToPropMap( PropertyMap& rPropMap, const XmlFil
+
+     if( maHighlightColor.isUsed() )
+         rPropMap.setProperty( PROP_CharBackColor, maHighlightColor.getColor( rFilter.getGraphicHelper() ));
++    else
++        rPropMap.setProperty( PROP_CharBackColor, sal_Int32(-1));
+ }
+
+ static void pushToGrabBag( PropertySet& rPropSet, const std::vector<PropertyValue>& aVectorOfPropertyValues )

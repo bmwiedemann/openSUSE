@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 26 13:32:48 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1185505 - LO-L3: Text highlight "bleeds" when saving as PPTX
+  * bsc1185505.patch
+
+-------------------------------------------------------------------
 Wed May 19 10:26:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Recommend libreoffice-qt5 only when it is actually created
