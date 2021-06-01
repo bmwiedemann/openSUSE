@@ -126,4 +126,12 @@
   https://discuss.linuxcontainers.org/t/lxcfs-4-0-5-lts-has-been-released/8602</comment>
     <requestid>828327</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a82a9c4753e59791c2eb8bab7a69e79</srcmd5>
+    <version>4.0.8</version>
+    <time>1622536663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895789</requestid>
+  </revision>
 </revisionlist>

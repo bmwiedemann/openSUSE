@@ -1,7 +1,7 @@
 #
 # spec file for package lxcfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           lxcfs
-Version:        4.0.5
+Version:        4.0.8
 Release:        0
 Summary:        FUSE filesystem for LXC
 License:        Apache-2.0
