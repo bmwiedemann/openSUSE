@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 27 07:43:27 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use the "armv7hl" packages on the "armv7l" architecture
+  (bsc#1183795)
+- 4.4.3
+
+-------------------------------------------------------------------
+Mon May 24 11:16:11 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Logging all available product information into directory
+  /var/log/YaST2/installation_info. This should help for evaluating
+  the cause of e.g. bsc#1180888, bsc#1180908, bsc#1178688.
+- 4.4.2
+
+-------------------------------------------------------------------
 Thu Apr 22 07:51:02 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Revert copying the libzypp cache to the target system and
