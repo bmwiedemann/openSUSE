@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 30 17:37:25 UTC 2021 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.1.2.
+  ## 0.2.1.2
+
+  - Fix bug with absolute paths in rebase_relative_paths
+    extension on Windows.
+
+-------------------------------------------------------------------
+Sat May 29 15:59:04 UTC 2021 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.1.1.
+  ## 0.2.1.1
+
+  - Fix bug in wikilinks extensions.
+
+  ## 0.2.1
+
+  - Add `rebase_relative_paths` extension.
+    New exported module Commonmark.Extensions.RebaseRelativePaths [API change].
+  - Add `wikilinks_title_before_pipe` and `wikilinks_title_after_pipe`
+    extensions (#69).
+    New exported module Commonmark.Extensions.Wikilinks [API change].
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

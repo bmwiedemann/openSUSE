@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-commonmark-extensions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,27 +19,26 @@
 %global pkg_name commonmark-extensions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.4
+Version:        0.2.1.2
 Release:        0
 Summary:        Pure Haskell commonmark parser
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-commonmark-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-emojis-devel
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
