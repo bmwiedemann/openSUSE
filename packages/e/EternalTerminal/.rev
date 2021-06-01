@@ -103,4 +103,13 @@
     <comment></comment>
     <requestid>883818</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b16186fc9708e7803ea2548e1cf19d52</srcmd5>
+    <version>6.1.8</version>
+    <time>1622536776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.8:
+  * ssh config fixes</comment>
+    <requestid>896385</requestid>
+  </revision>
 </revisionlist>
