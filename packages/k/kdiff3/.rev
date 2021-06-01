@@ -288,4 +288,15 @@
   * Remove erroneous #ifdef (kde#436958) (forwarded request 893578 from wolfi323)</comment>
     <requestid>893581</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>cec02dca6fed6f7bdb1018104e8fa263</srcmd5>
+    <version>1.9.2</version>
+    <time>1622536697</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GCC 11 build fix:
+  * 0001-Explicitly-include-limits-for-compatibility-with-gcc.patch
+- Drop the _service file. Upstream release doesn't contain
+  precompiled code anymore.</comment>
+    <requestid>895983</requestid>
+  </revision>
 </revisionlist>

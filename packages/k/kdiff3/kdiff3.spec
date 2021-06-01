@@ -24,8 +24,11 @@ Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://apps.kde.org/kdiff3
-Source0:        %{name}-%{version}.tar.xz
-Source1:        kdiff3-lang.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        kdiff3.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Explicitly-include-limits-for-compatibility-with-gcc.patch
 BuildRequires:  boost-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -57,7 +60,7 @@ KDiff3 is a program that:
 %lang_package
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

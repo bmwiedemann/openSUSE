@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 28 12:37:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 build fix:
+  * 0001-Explicitly-include-limits-for-compatibility-with-gcc.patch
+- Drop the _service file. Upstream release doesn't contain
+  precompiled code anymore.
+
+-------------------------------------------------------------------
 Mon May 17 08:14:30 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9.2
