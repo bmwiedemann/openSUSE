@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 24 17:14:59 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.1:
+ - Enhancements:
+  - Added an as_dict property across all Analyzer objects to simplify integration with other systems. Returns a dictionary representation of the object or the list.
+  - New projects attribute on IPAddress and Hostname objects returns list of projects that contain that host as an artifact.
+  - New analyzer.set_project() method on the Analyzer module to set an active project by name or guid, and new add_to_project() methods on Analyzer objects to quickly add the object to the active project.
+  - Direct methods on new Project and Artifact objects to directly manipulate monitoring status and tags.
+ - Bug Fixes:
+  - Added missing ArtifactsRequest to package-level imports
+
+
+-------------------------------------------------------------------
 Fri May 14 14:04:15 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.4.0:
