@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 28 11:23:11 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210521:
+  * glad: Update for GL 2.1 + GL_EXT_framebuffer_object
+  * Gracefully handle missing GL features
+  * NativeStateWayland: Improve surface configuration handling
+
+-------------------------------------------------------------------
 Thu Apr 29 07:40:20 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210224:

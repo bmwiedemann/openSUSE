@@ -205,4 +205,15 @@
   * Check for proper initialization of native_window and MVC matrix</comment>
     <requestid>889205</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>510a1412e078a85aacd86622c771819b</srcmd5>
+    <version>20210521</version>
+    <time>1622536684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210521:
+  * glad: Update for GL 2.1 + GL_EXT_framebuffer_object
+  * Gracefully handle missing GL features
+  * NativeStateWayland: Improve surface configuration handling</comment>
+    <requestid>895960</requestid>
+  </revision>
 </revisionlist>
