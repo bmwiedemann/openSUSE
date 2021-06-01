@@ -196,4 +196,27 @@ factory)</comment>
     <comment></comment>
     <requestid>866986</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9283684d9eb50d6bec07e67f62834e17</srcmd5>
+    <version>B.02.19+git.20210429</version>
+    <time>1622536619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19+git.20210429:
+  * Fix getting size of memory banks &lt;32GiB
+  * devtree: Add UUID property
+  * code clean-up
+  * improve portability (esp. musl)
+  * fix potential crash
+  * add static target to Makefile
+  * Avoid crash on device-tree parsing
+  * Add JEDEC manufacturer
+  * Report correct memory size on SMBIOS &lt; 2.7
+  * fix man page after previous update
+- Drop no longer needed patches:
+  * lshw-fix-segfault-in-apfs-volume-code.patch
+  * lshw-fix-mmc.patch
+  * lshw-fix-ppc.patch
+  * lshw-devtree-Add-UUID-property.patch</comment>
+    <requestid>895505</requestid>
+  </revision>
 </revisionlist>

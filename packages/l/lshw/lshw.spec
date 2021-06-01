@@ -18,29 +18,21 @@
 
 
 Name:           lshw
-Version:        B.02.19.2
+Version:        B.02.19+git.20210429
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://www.ezix.org/project/wiki/HardwareLiSter
-Source:         https://www.ezix.org/software/files/lshw-%{version}.tar.gz
+Source:         lshw-%{version}.tar.gz
 Source1:        lshw.desktop.in
 Source2:        lshw.png
-# PATCH-FIX-UPSTREAM - https://ezix.org/src/pkg/lshw/pulls/32 - boo#1168865 and boo#1169668
-Patch1:         lshw-fix-segfault-in-apfs-volume-code.patch
-# PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/pull/52 - boo#1169668
-Patch2:         lshw-fix-mmc.patch
-# PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/commit/3775782808e8b9b8aa72ed2ce23e145433e193cf - boo#1172156
-Patch3:         lshw-fix-ppc.patch
-# PATCH-FIX-UPSTREAM - https://ezix.org/src/pkg/lshw/commit/9c5c2f0706db330114ff4624e0931ac40c1d6fe2 - bsc#1181411
-Patch4:         lshw-devtree-Add-UUID-property.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.4
+BuildRequires:  pkgconfig(gtk+-3.0)
 Recommends:     hwdata
 %lang_package
 
@@ -82,7 +74,7 @@ included documentation or go to the lshw Web page,
 http://www.ezix.org/software/lshw.html
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 

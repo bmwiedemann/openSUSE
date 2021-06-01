@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 26 09:43:10 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.19+git.20210429:
+  * Fix getting size of memory banks <32GiB
+  * devtree: Add UUID property
+  * code clean-up
+  * improve portability (esp. musl)
+  * fix potential crash
+  * add static target to Makefile
+  * Avoid crash on device-tree parsing
+  * Add JEDEC manufacturer
+  * Report correct memory size on SMBIOS < 2.7
+  * fix man page after previous update
+- Drop no longer needed patches:
+  * lshw-fix-segfault-in-apfs-volume-code.patch
+  * lshw-fix-mmc.patch
+  * lshw-fix-ppc.patch
+  * lshw-devtree-Add-UUID-property.patch
+
+-------------------------------------------------------------------
 Tue Jan 26 15:38:36 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Display UUID on Power VM LPAR (bsc#1181411 ltc#191040)
