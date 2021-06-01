@@ -1,0 +1,91 @@
+From 91e876f6d13314a353d8b1ae4f3927f028b4b915 Mon Sep 17 00:00:00 2001
+From: "K.Takata" <kentkt@csc.jp>
+Date: Fri, 23 Oct 2020 08:13:18 +0900
+Subject: [PATCH 1/2] netrw: Fix gx command
+
+Fix #4738.
+Since Netrw v165, the gx command had been broken at least on macOS and
+MS-Windows. The platform-specific open commands support to handle a
+remote URL directly, however, Netrw downloaded a file first.
+
+Stop downloading a remote file when the viewer supports to handle a
+remote URL.
+---
+ runtime/autoload/netrw.vim |   16 +++++++++++-----
+ runtime/doc/pi_netrw.txt   |    7 +++++++
+ 2 files changed, 18 insertions(+), 5 deletions(-)
+
+--- a/runtime/autoload/netrw.vim
++++ b/runtime/autoload/netrw.vim
+@@ -5178,6 +5178,12 @@ fun! netrw#BrowseX(fname,remote)
+ "   call Dret("(netrw#BrowseX) did gf instead")
+   endif
+ 
++  if exists("g:netrw_browsex_viewer") && exists("g:netrw_browsex_support_remote") && !g:netrw_browsex_support_remote
++    let remote = a:remote
++  else
++    let remote = 0
++  endif
++
+   let ykeep      = @@
+   let screenposn = winsaveview()
+ "  call Decho("saving posn to screenposn<".string(screenposn).">",'~'.expand("<slnum>"))
+@@ -5222,9 +5228,9 @@ fun! netrw#BrowseX(fname,remote)
+   endif
+ "  call Decho("exten<".exten.">",'~'.expand("<slnum>"))
+ 
+-  if a:remote == 1
++  if remote == 1
+    " create a local copy
+-"   call Decho("remote: a:remote=".a:remote.": create a local copy of <".a:fname.">",'~'.expand("<slnum>"))
++"   call Decho("remote: remote=".remote.": create a local copy of <".a:fname.">",'~'.expand("<slnum>"))
+    setl bh=delete
+    call netrw#NetRead(3,a:fname)
+    " attempt to rename tempfile
+@@ -5246,7 +5252,7 @@ fun! netrw#BrowseX(fname,remote)
+     let fname= s:netrw_tmpfile
+    endif
+   else
+-"   call Decho("local: a:remote=".a:remote.": handling local copy of <".a:fname.">",'~'.expand("<slnum>"))
++"   call Decho("local: remote=".remote.": handling local copy of <".a:fname.">",'~'.expand("<slnum>"))
+    let fname= a:fname
+    " special ~ handler for local
+    if fname =~ '^\~' && expand("$HOME") != ""
+@@ -5378,12 +5384,12 @@ fun! netrw#BrowseX(fname,remote)
+   "          return to prior buffer (directory listing)
+   "          Feb 12, 2008: had to de-activiate removal of
+   "          temporary file because it wasn't getting seen.
+-"  if a:remote == 1 && fname != a:fname
++"  if remote == 1 && fname != a:fname
+ ""   call Decho("deleting temporary file<".fname.">",'~'.expand("<slnum>"))
+ "   call s:NetrwDelete(fname)
+ "  endif
+ 
+-  if a:remote == 1
++  if remote == 1
+    setl bh=delete bt=nofile
+    if g:netrw_use_noswf
+     setl noswf
+--- a/runtime/doc/pi_netrw.txt
++++ b/runtime/doc/pi_netrw.txt
+@@ -1504,6 +1504,9 @@ Netrw determines which special handler b
+     If g:netrw_browsex_viewer == '-', then netrwFileHandlers#Invoke() will be
+     used instead (see |netrw_filehandler|).
+ 
++    If the viewer doesn't support handling a remote URL, set
++    |g:netrw_browsex_support_remote| to 0.
++
+   * for Windows 32 or 64, the URL and FileProtocolHandler dlls are used.
+   * for Gnome (with gnome-open): gnome-open is used.
+   * for KDE (with kfmclient)   : kfmclient is used
+@@ -2601,6 +2604,10 @@ your browsing preferences.  (see also: |
+ 				a script/function to handle the given
+ 				extension.  (see |netrw_filehandler|).
+ 
++  *g:netrw_browsex_support_remote*
++				specify if the specified viewer supports a
++				remote URL.  (see |netrw-handler|).
++
+   *g:netrw_chgperm*		Unix/Linux: "chmod PERM FILENAME"
+ 				Windows:    "cacls FILENAME /e /p PERM"
+ 				Used to change access permission for a file.
