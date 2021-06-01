@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 27 06:29:32 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest macro
+
+-------------------------------------------------------------------
 Sun Feb  9 20:10:45 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.9.1:

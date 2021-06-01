@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedgenerator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ It is based on the current Django Version 1.5.dev20120824122350.
 
 %check
 export LC_ALL=en_US.utf8
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE
