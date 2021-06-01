@@ -51,4 +51,19 @@
 - avoid some non sles12 sp2 available macros. (forwarded request 881076 from msmeissn)</comment>
     <requestid>881077</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ad3679219a1432c1cbfe56225f4e39d</srcmd5>
+    <version>0.1.56</version>
+    <time>1622536642</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.56 release (jsc#ECO-3319)
+  - Align ism_o profile with latest ISM SSP (#6878)
+  - Align RHEL 7 STIG profile with DISA STIG V3R3
+  - Creating new RHEL 7 STIG GUI profile (#6863)
+  - Creating new RHEL 8 STIG GUI profile (#6862)
+  - Add the RHEL9 product (#6801)
+  - Initial support for SUSE SLE-15 (#6666)
+  - add support for osbuild blueprint remediations (#6970) (forwarded request 895669 from msmeissn)</comment>
+    <requestid>895670</requestid>
+  </revision>
 </revisionlist>

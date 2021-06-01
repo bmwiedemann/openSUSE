@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.55git20210323
+Version:        0.1.56
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -51,8 +51,7 @@ URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
 %else
 %endif
-#Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Source:         v%{version}.tar.gz
+Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
@@ -163,7 +162,6 @@ files to run a compliance test on Ubuntu.
 %autosetup -n content-%version
 
 %build
-mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_INSTALL_MANDIR=%{_mandir} \
@@ -184,6 +182,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_RHCOS4=ON \
 	 -DSSG_PRODUCT_RHEL7=ON \
 	 -DSSG_PRODUCT_RHEL8=ON \
+	 -DSSG_PRODUCT_RHEL9=ON \
 	 -DSSG_PRODUCT_RHOSP10=ON \
 	 -DSSG_PRODUCT_RHOSP13=ON \
 	 -DSSG_PRODUCT_RHV4=ON \

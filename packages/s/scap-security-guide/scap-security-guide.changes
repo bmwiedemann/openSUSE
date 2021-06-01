@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 26 15:19:40 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.56 release (jsc#ECO-3319)
+  - Align ism_o profile with latest ISM SSP (#6878)
+  - Align RHEL 7 STIG profile with DISA STIG V3R3
+  - Creating new RHEL 7 STIG GUI profile (#6863)
+  - Creating new RHEL 8 STIG GUI profile (#6862)
+  - Add the RHEL9 product (#6801)
+  - Initial support for SUSE SLE-15 (#6666)
+  - add support for osbuild blueprint remediations (#6970)
+
+-------------------------------------------------------------------
 Wed Mar 24 13:25:26 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to a intermediate GIT snapshot of 20210323 (jsc#ECO-3319)
