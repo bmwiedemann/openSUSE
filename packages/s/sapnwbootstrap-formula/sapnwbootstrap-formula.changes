@@ -2,7 +2,8 @@
 Fri May 21 12:59:37 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.6.4
-  * Set default empty dictionary for virtual_addresses
+  * Set default empty dictionary for virtual_addresses and ensure
+    a dictionary is obtained if the value is None (hack for SUMA)
     (bsc#1185627)
 
 -------------------------------------------------------------------
