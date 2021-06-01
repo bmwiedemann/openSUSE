@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 17 07:06:12 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to rpcbind 1.2.6
+- Remove 0031-rpcbind-manpage.patch (accepted upstream in commit 4bedcee)
+- Drop pmap_set.c (installed as pmap_set2): bnc#446388 is from 2008, for
+  openSUSE 11.
+- Refresh 0001-change-lockingdir-to-run.patch
+- Replace %setup with %autosetup
+
+-------------------------------------------------------------------
 Tue Apr 13 08:40:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Specify the appropriate set of local nss modules (boo#1177461)

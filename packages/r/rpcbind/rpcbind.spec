@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           rpcbind
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Transport independent RPC portmapper
 # Git-Web:      http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary
@@ -30,11 +30,9 @@ Group:          Productivity/Networking/System
 URL:            http://rpcbind.sourceforge.net
 Source:         https://downloads.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source2:        sysconfig.rpcbind
-Source4:        pmap_set.c
 Source5:        rpc-user.conf
 Patch1:         0001-systemd-unit-files.patch
 Patch2:         0001-change-lockingdir-to-run.patch
-Patch31:        0031-rpcbind-manpage.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -58,11 +56,7 @@ UDP over IPv6. Moreover, rpcbind provides additional functions in
 regards to portmap.
 
 %prep
-%setup -q
-cp %{SOURCE4} .
-%patch1 -p1
-%patch2 -p1
-%patch31 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -80,7 +74,6 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 	    --with-nss-modules="files usrfiles"
 
 make %{?_smp_mflags}
-gcc -I/usr/include/tirpc -pie -fpie -fwhole-program -Wl,-z,relro,-z,now %{optflags} pmap_set.c -o pmap_set -ltirpc
 %sysusers_generate_pre %{SOURCE5} rpc
 
 %install
@@ -91,8 +84,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/
 # sysusers.d config
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
-#
-install -m 755 pmap_set %{buildroot}/sbin/pmap_set2
 # create symlink for rcrpcbind
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}/%{_sbindir}/rc%{name}
@@ -114,7 +105,6 @@ ln -s /bin/rpcinfo %{buildroot}/sbin/rpcinfo
 %files
 %license COPYING
 %doc AUTHORS README
-/sbin/pmap_set2
 /sbin/%{name}
 /bin/rpcinfo
 /sbin/rpcinfo
