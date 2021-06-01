@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 26 04:51:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.2:
+  * Drop support for Python 2.
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Tue Jul 24 12:57:47 UTC 2018 - mardnh@gmx.de
 
 - Correct name of the changes file
