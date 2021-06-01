@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-scientific
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name scientific
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6.2
+Version:        0.3.7.0
 Release:        0
 Summary:        Numbers represented using scientific notation
 License:        BSD-3-Clause
@@ -34,12 +34,12 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-integer-logarithms-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-smallcheck-devel
-BuildRequires:  ghc-tasty-ant-xml-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel

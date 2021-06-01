@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 20 19:46:12 UTC 2021 - psimons@suse.com
+
+- Update scientific to version 0.3.7.0.
+  0.3.7.0
+
+  	* Make division (/) on Scientifics slightly more efficient.
+
+  	* Fix the Show instance to surround negative numbers with parentheses when
+  	necessary.
+
+  	* Add (Template Haskell) Lift Scientific instance
+
+  	* Mark modules as Safe or Trustworthy (Safe Haskell).
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
