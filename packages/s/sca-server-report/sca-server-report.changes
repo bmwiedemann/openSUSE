@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 25 23:55:37 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixed sca report header supportconfig file (bsc#1186442)
+- Fixed report file output path (bsc#1180894)
+- Removed preprocessor elements for OES Filr eDir (bsc#1186420)
+
+-------------------------------------------------------------------
+Thu May 20 19:41:18 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changed absolute paths to relative ones (bsc#1186316)
+
+-------------------------------------------------------------------
 Thu Nov 12 15:29:10 UTC 2020 - jason.record@suse.com
 
 - Additional to version 1.0.1
