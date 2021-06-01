@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 31 02:19:54 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210526.aa5f3385:
+  * Dev: behave: add more descriptions for subcommands to pass the test
+  * Dev: crm.8.adoc: remove redundant help message
+  * Fix: help: show help message from argparse(bsc#1175982)
+
+-------------------------------------------------------------------
+Tue May 25 04:51:07 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210525.8fd84a2e:
+  * Dev: behave: add functional test for ocfs2 configure process
+  * Dev: unittest: add unit test for ocfs2 related codes
+  * Dev: ocfs2: add ocfs2.OCFS2Manager to manage ocfs2 configure process
+
+-------------------------------------------------------------------
 Tue May 18 05:40:50 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210518.46a0704a:
