@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylev
 Version:        1.3.0
 Release:        0
-License:        BSD-3-Clause
 Summary:        A pure Python Levenshtein implementation
-Url:            http://github.com/toastdriven/pylev
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/toastdriven/pylev
 Source:         https://files.pythonhosted.org/packages/source/p/pylev/pylev-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/toastdriven/pylev/master/LICENSE
 Source2:        https://raw.githubusercontent.com/toastdriven/pylev/master/tests.py
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,7 +48,7 @@ cp %{SOURCE1} %{SOURCE2} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE
