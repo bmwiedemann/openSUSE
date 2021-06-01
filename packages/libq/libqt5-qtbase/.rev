@@ -2271,4 +2271,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch</comment>
     <requestid>884869</requestid>
   </revision>
+  <revision rev="119" vrev="6">
+    <srcmd5>e237fdabe646e2423d16b125c91214f8</srcmd5>
+    <version>5.15.2</version>
+    <time>1622536435</time>
+    <user>dimstar_suse</user>
+    <comment>- Add trailing newline to qtlogging.ini</comment>
+    <requestid>895566</requestid>
+  </revision>
 </revisionlist>
