@@ -47,4 +47,14 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743990</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5d925144c463adc70806a3dbb09f78d1</srcmd5>
+    <version>0.46</version>
+    <time>1622536456</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix README.rst EOL issues as well.
+
+- %check: use %pyunittest rpm macro</comment>
+    <requestid>895729</requestid>
+  </revision>
 </revisionlist>
