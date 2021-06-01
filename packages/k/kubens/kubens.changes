@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu May 20 05:30:42 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * Provide binary release for darwin/arm64
+  * Bump up go-client to fix auth plugin panic (#281)
+  * Check correct variable after current namespace retrieval (#287)
+  * Update debian installation instructions
+  * Add license headers for 2021
+  * Fix color in kubens success message when using fzf (#228)
+  * make kubectx consistent with kubens wrt. KUBECTL environment variable (#274)
+  * fix: improve kubectx completion on fish (#269)
+  * Add Homebrew install for Linux (#261)
+  * Bump CI to Go 1.15 (#266)
+
+-------------------------------------------------------------------
+Tue May 18 20:28:41 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of kubens
