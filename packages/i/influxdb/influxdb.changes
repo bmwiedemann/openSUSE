@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May 24 09:08:30 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- convert to using the go modules service to create the tarball
+  - modify spec to adjust to new vendor.tar.gz being used
+  - add _service file
+  - remove README.packaging
+
+-------------------------------------------------------------------
+Mon May 24 09:07:53 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.8.6
+  Bugfixes
+  * #21290: fix: Anti-Entropy loops endlessly with empty shard
+  * #21381: chore(ae): add more logging
+  * #21518: fix: FGA enablement
+
+-------------------------------------------------------------------
+Mon May 24 07:23:24 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.8.5
+  Features
+  * #20917: feat(inspect): Add report-disk for disk usage by measurement
+  * #20118: feat: Optimize shard lookups in groups containing only one shard. Thanks @StoneYunZhao!
+  * #20910: feat: Make meta queries respect QueryTimeout values
+  * #20989: feat: influx_inspect export to standard out
+  * #21021: feat: Log query text for POST requests
+  Bugfixes
+  * #21053: fix: help text for influx_inspect
+  * #20101: fix(write): Successful writes increment write error statistics incorrectly.
+  * #20276: fix(error): unsupported value: +Inf" error not handled gracefully.
+  * #20277: fix(query): Group By queries with offset that crosses a DST boundary can fail.
+  * #20295: fix: cp.Mux.Serve() closes all net.Listener instances silently on error.
+  * #19832: fix(prometheus): regexp handling should comply with PromQL.
+  * #20432: fix(error): SELECT INTO doesn't return error with unsupported value
+  * #20033: fix(tsm1): "snapshot in progress" error during backup
+  * #20909: fix(tsm1): data race when accessing tombstone stats
+  * #20912: fix(tsdb): minimize lock contention when adding new fields or measure
+  * #20914: fix: infinite recursion bug (#20862)
+
+-------------------------------------------------------------------
 Fri Mar  5 12:49:57 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - in preparation for new package for influxdb 2.0.x, add a Conflicts

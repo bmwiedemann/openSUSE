@@ -26,15 +26,15 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.8.4
+Version:        1.8.6
 Release:        0
 URL:            https://github.com/influxdata/influxdb
-Source:         %{name}-%{version}.tar.xz
-Source1:        influxdb.service
-Source2:        influxdb.tmpfiles
-Source3:        influxdb.init
-Source4:        Compability_note.txt
-Source5:        README.packaging
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        influxdb.service
+Source3:        influxdb.tmpfiles
+Source4:        influxdb.init
+Source5:        Compability_note.txt
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -70,6 +70,7 @@ Go sources and other development files for InfluxDB
 
 %prep
 %setup -q -n %{name}-%{version}
+%setup -q -T -D -a 1 -n %{name}-%{version}
 
 %build
 # Disable phone-home to usage.influxdata.com
@@ -90,11 +91,11 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/influxdb
 mkdir -p %{buildroot}%{_localstatedir}/lib/influxdb/{data,meta,hh,wal}
 mkdir -p %{buildroot}%{_sbindir}
 %if %{with systemd}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/influxdb.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/influxdb.service
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcinfluxdb
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/influxdb.conf
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/influxdb.conf
 %else
-install -D -m 0755 %{S:3} %{buildroot}%{_sysconfdir}/init.d/influxdb
+install -D -m 0755 %{S:4} %{buildroot}%{_sysconfdir}/init.d/influxdb
 ln -s -f %{_sysconfdir}/init.d/influxdb %{buildroot}%{_sbindir}/rcinfluxdb
 mkdir -p %{buildroot}%{_localstatedir}/run/influxdb
 %endif
@@ -102,7 +103,7 @@ install -D -m 0755 -t %{buildroot}%{_bindir} %{_builddir}/go/bin/*
 
 # Warn about compatibility problems with previous version
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
-cp -v %{SOURCE4} %{buildroot}%{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}
+cp -v %{SOURCE5} %{buildroot}%{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}
 
 make -C ./man install DESTDIR=%{buildroot}%{_prefix}
 
