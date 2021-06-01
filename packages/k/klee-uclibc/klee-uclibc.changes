@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 20 06:05:23 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Switch to LLVM 12.
+
+-------------------------------------------------------------------
 Sun Dec 13 14:14:48 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Switch to regular version 1.2. That's a slight downgrade, as we
