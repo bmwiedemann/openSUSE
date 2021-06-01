@@ -11,10 +11,10 @@ Subject: [PATCH 2/2] Removed the references to u'' and iteritems for
  3 files changed, 7 insertions(+), 10 deletions(-)
  create mode 100644 test-requirements.txt
 
-diff --git a/jsondate/__init__.py b/jsondate/__init__.py
-index 4486574..4cc10f1 100644
---- a/jsondate/__init__.py
-+++ b/jsondate/__init__.py
+Index: jsondate-0.1.2/jsondate/__init__.py
+===================================================================
+--- jsondate-0.1.2.orig/jsondate/__init__.py	2012-11-09 17:44:19.000000000 +0100
++++ jsondate-0.1.2/jsondate/__init__.py	2021-05-25 09:24:54.519218741 +0200
 @@ -15,14 +15,7 @@ def _datetime_encoder(obj):
  
  
@@ -31,35 +31,58 @@ index 4486574..4cc10f1 100644
          try:
              datetime_obj = datetime.datetime.strptime(value, ISO8601_FMT)
              dict_[key] = datetime_obj
-diff --git a/test-requirements.txt b/test-requirements.txt
-new file mode 100644
-index 0000000..ff3197f
---- /dev/null
-+++ b/test-requirements.txt
+Index: jsondate-0.1.2/test-requirements.txt
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ jsondate-0.1.2/test-requirements.txt	2021-05-25 09:24:54.519218741 +0200
 @@ -0,0 +1,4 @@
 +# Only needed for running the tests.
 +
 +pytest
 +jsonschema
-diff --git a/tests/test_jsondate.py b/tests/test_jsondate.py
-index 78e08bf..04610ff 100644
---- a/tests/test_jsondate.py
-+++ b/tests/test_jsondate.py
-@@ -1,7 +1,7 @@
+Index: jsondate-0.1.2/tests/test_jsondate.py
+===================================================================
+--- jsondate-0.1.2.orig/tests/test_jsondate.py	2012-11-09 17:42:31.000000000 +0100
++++ jsondate-0.1.2/tests/test_jsondate.py	2021-05-25 09:26:14.231638295 +0200
+@@ -1,7 +1,8 @@
  import datetime
  import json
  import unittest
 -import StringIO
-+from io import StringIO
++import sys
++from io import BytesIO, StringIO
  
  import jsondate
  
-@@ -57,7 +57,7 @@ def test_dumps_datelike_string_does_not_roundtrip(self):
+@@ -19,19 +20,6 @@
+         orig_dict = dict(foo='bar')
+         self.assertEqual(orig_dict, jsondate.loads(jsondate.dumps(orig_dict)))
+ 
+-    def test_dump_unicode_roundtrips(self):
+-        orig_dict = {u'foo': u'bar', 'empty': u''}
+-
+-        # json module broken: unicode objects, empty-string objects are str
+-        result = json.loads(json.dumps(orig_dict))
+-        self.assertTypeAndValue(unicode, u'bar', result[u'foo'])
+-        self.assertTypeAndValue(str, '', result[u'empty'])
+-
+-        # jsondate fix: always return unicode objects
+-        result = jsondate.loads(jsondate.dumps(orig_dict))
+-        self.assertTypeAndValue(unicode, u'bar', result[u'foo'])
+-        self.assertTypeAndValue(unicode, u'', result[u'empty'])
+-
+     def test_dumps_none_roundtrips(self):
+         # Generates a TypeError from _datetime_object_hook
+         orig_dict = dict(foo=None)
+@@ -57,7 +45,10 @@
  
      def test_dump_datetime_roundtrips(self):
          orig_dict = dict(created_at=datetime.date(2011, 1, 1))
 -        fileobj = StringIO.StringIO()
-+        fileobj = StringIO()
++        if sys.version_info[0] == 2:
++            fileobj = BytesIO()
++        elif sys.version_info[0] == 3:
++            fileobj = StringIO()
          jsondate.dump(orig_dict, fileobj)
          fileobj.seek(0)
          self.assertEqual(orig_dict, jsondate.load(fileobj))

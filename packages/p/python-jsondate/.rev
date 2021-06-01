@@ -21,4 +21,16 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659454</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>84e5eac7de8c161a8e50a3eb41f9983a</srcmd5>
+    <version>0.1.2</version>
+    <time>1622536522</time>
+    <user>dimstar_suse</user>
+    <comment>- update python3-fixes-pr-6.patch to fix python2 tests
+- %check: use %pyunittest macro for testing the package
+- modified patches
+  % python3-fixes-pr-6.patch (removed test broken in python3)
+</comment>
+    <requestid>895295</requestid>
+  </revision>
 </revisionlist>

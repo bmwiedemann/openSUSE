@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsondate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        JSON with datetime support
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/rconradharris/jsondate
+URL:            https://github.com/rconradharris/jsondate
 Source:         https://files.pythonhosted.org/packages/source/j/jsondate/jsondate-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: python3-fixes-pr-6.patch
 # From https://github.com/rconradharris/jsondate/pull/6.patch#/python3-fixes-pr-6.patch with removed .gitignore file
@@ -55,8 +55,8 @@ date-specific part of ISO6801 for encoding date objects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests are broken upstream and need work to get fixed for 2 and 3
-#%%check
-#%%python_exec setup.py test
+%check
+%pyunittest discover -v tests/
 
 %files %{python_files}
 %doc README.rst
