@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitstruct
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ License:        MIT
 URL:            https://github.com/eerimoq/bitstruct
 Source:         https://files.pythonhosted.org/packages/source/b/bitstruct/bitstruct-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +49,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python setup.py test
+mv bitstruct bitstruct.hide
+%pyunittest_arch discover -v tests
 
 %files %{python_files}
 %license LICENSE

@@ -17,4 +17,13 @@
   * Only build C extension for CPython 3.</comment>
     <requestid>821998</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8582ad638d42a02668c5fe543da00387</srcmd5>
+    <version>8.11.0</version>
+    <time>1622536501</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use %pyunittest_arch macro
+</comment>
+    <requestid>895161</requestid>
+  </revision>
 </revisionlist>

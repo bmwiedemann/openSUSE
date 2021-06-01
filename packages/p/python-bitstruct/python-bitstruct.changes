@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 21 09:39:29 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest_arch macro
+
+-------------------------------------------------------------------
 Tue Jul 21 05:57:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.11.0:
