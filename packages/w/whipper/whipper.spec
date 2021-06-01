@@ -17,13 +17,13 @@
 
 
 Name:           whipper
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A CD ripper aiming for accuracy over speed
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
-URL:            https://github.com/whipper-team/whipper/
-Source0:        https://github.com/whipper-team/whipper/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/whipper-team/whipper
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  libsndfile-devel
@@ -40,7 +40,7 @@ BuildRequires:  python3-musicbrainzngs
 BuildRequires:  python3-mutagen
 BuildRequires:  python3-pycdio
 BuildRequires:  python3-pytest
-BuildRequires:  python3-requests
+BuildRequires:  python3-discid
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  sox
 # /SECTION
@@ -53,7 +53,7 @@ Requires:       python3-gobject
 Requires:       python3-musicbrainzngs
 Requires:       python3-mutagen
 Requires:       python3-pycdio
-Requires:       python3-requests
+Requires:       python3-discid
 Requires:       python3-ruamel.yaml
 Requires:       sox
 Conflicts:      morituri

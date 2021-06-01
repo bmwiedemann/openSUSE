@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 31 13:56:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.10.0
+  * Allow configuring whether to auto close the drive's tray
+  * Better error handling for unconfigured drive offset
+  * Ability to group multi-disc releases in a single folder
+  * Provide option to not use disambiguation in title
+  * Save ISRCs from CD TOC
+  * Ability to skip unrippable track
+  * Grab cover art
+  * cdda2wav from cdrtools instead of cdparanoia
+  * Full changelog
+    https://github.com/whipper-team/whipper/blob/v0.10.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue May  4 10:53:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Undo single-spec abomination: this is an application, not a
