@@ -988,4 +988,19 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>- Remove /var/mail to /var/spool/mail patch (forwarded request 893473 from gmbr3)</comment>
     <requestid>893554</requestid>
   </revision>
+  <revision rev="105" vrev="9">
+    <srcmd5>09dc5bb9ee4252fedabc054099ce8ed6</srcmd5>
+    <version>8.16.1</version>
+    <time>1622536480</time>
+    <user>dimstar_suse</user>
+    <comment>- sendmail-suse.tar.bz2: add file tmpfile which will be installed
+  in tmpfiles.d as sendmail.conf.  With this /run/sendmail will
+  be created at boot.
+- Fix locations in permissions files to fit _libexecdir change (boo#1186592)
+
+- sendmail-suse.tar.bz2: add trailing slash to permissions entries for
+  /var/spool/mail, because it is a directory and `chkstat` expects trailing
+  slashes for directories.</comment>
+    <requestid>896007</requestid>
+  </revision>
 </revisionlist>

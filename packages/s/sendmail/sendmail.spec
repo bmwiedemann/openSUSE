@@ -217,6 +217,8 @@ processed mail on to the MTA (e.g. sendmail).
 	%%defattr(-,root,root)
 %if %{with sysvinit}
 	%%ghost %%dir %%attr(1750,root,root)   %{_localstatedir}/run/sendmail/
+%else
+	%{_tmpfilesdir}/sendmail.conf
 %endif
 	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail/
 	%%attr(0600,root,root)                 %{_localstatedir}/lib/sendmail/statistics
@@ -425,9 +427,19 @@ processed mail on to the MTA (e.g. sendmail).
     install -m 0644 permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
 %if %{with sysvinit}
     install -m 0755 rc   %{buildroot}%{_sysconfdir}/init.d/sendmail
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{_sysconfdir}/permissions.d/sendmail.paranoid
+    sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
+    sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
 %else
+    mkdir -p %{buildroot}%{_tmpfilesdir}
+    install -m 0644 tmpfile %{buildroot}%{_tmpfilesdir}/sendmail.conf
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
+    sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
+    sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
 %endif
     install -m 0644 smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
     install update.sendmail %{buildroot}%{_libexecdir}/sendmail.d/update

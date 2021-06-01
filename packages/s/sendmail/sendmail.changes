@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 28 13:28:07 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- sendmail-suse.tar.bz2: add file tmpfile which will be installed
+  in tmpfiles.d as sendmail.conf.  With this /run/sendmail will
+  be created at boot.
+- Fix locations in permissions files to fit _libexecdir change (boo#1186592)
+
+-------------------------------------------------------------------
+Thu May 27 08:26:42 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- sendmail-suse.tar.bz2: add trailing slash to permissions entries for
+  /var/spool/mail, because it is a directory and `chkstat` expects trailing
+  slashes for directories.
+
+-------------------------------------------------------------------
 Sun May 16 14:08:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove /var/mail to /var/spool/mail patch
