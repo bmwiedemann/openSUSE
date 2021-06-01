@@ -1,7 +1,7 @@
 #
 # spec file for package gummi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gummi
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Simple LaTeX editor
 License:        MIT
@@ -48,7 +48,7 @@ simplicity in mind, but is useful for both novice and advanced LaTeX writers.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
