@@ -6,5 +6,5 @@ brise in openSUSE is just a checkout of :all
 
     mkdir brise
     export GO111MODULE=on
-    go build rime-plum-go/plum.go
-    rime-plum-go/plum -d brise -b -r :all
+    go build rime-plum-go
+    rime_dir=brise rime-plum-go/rime-plum-go :all

@@ -181,4 +181,12 @@
     <comment>fix the Obsoletes </comment>
     <requestid>847798</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>19ed3cc8cbbdcd92c88797e443a928db</srcmd5>
+    <version>20210525+git.4f7fc2a</version>
+    <time>1622536511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895227</requestid>
+  </revision>
 </revisionlist>

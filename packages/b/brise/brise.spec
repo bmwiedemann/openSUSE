@@ -17,7 +17,7 @@
 
 
 Name:           brise
-Version:        20201009+git.3e1838a
+Version:        20210525+git.4f7fc2a
 Release:        0
 Summary:        Rime Input Schemas Collection
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/rime/brise
 Source:         brise-%{version}.tar.xz
 Source1:        rime-plum-go-%{version}.tar.xz
 Source99:       README
-BuildRequires:  go
+BuildRequires:  golang(API) >= 1.13
 
 %description
 Rime is an Traditional Chinese input method engine.
@@ -278,12 +278,12 @@ cp -r %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}/vendor/*
 %build
 pushd %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}
 export GOPATH=%{_builddir}/go
-go build plum.go
+go build
 popd
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}/plum %{buildroot}%{_bindir}/rime-plum
+install -m 0755 %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}/rime-plum-go %{buildroot}%{_bindir}/rime-plum
 mkdir -p %{buildroot}%{_datadir}/rime-data
 rm -rf package
 rm -rf config.txt
@@ -295,67 +295,46 @@ cp -r * %{buildroot}%{_datadir}/rime-data
 
 %files -n rime-schema-default
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 
 %files -n rime-schema-extra
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 
 %files -n rime-schema-all
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 
 %files -n rime-schema-bopomofo
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/bopomofo*.yaml
-%{_datadir}/rime-data/build/bopomofo*.bin
-%{_datadir}/rime-data/build/bopomofo*.yaml
+%{_datadir}/rime-data/zhuyin.yaml
 
 %files -n rime-schema-cangjie
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/cangjie*.yaml
-%{_datadir}/rime-data/build/cangjie*.bin
-%{_datadir}/rime-data/build/cangjie*.yaml
 
 %files -n rime-schema-essay
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/essay.txt
 
 %files -n rime-schema-luna-pinyin
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/luna_pinyin*.yaml
+%{_datadir}/rime-data/pinyin.yaml
 %{_datadir}/rime-data/luna_quanpin*.yaml
-%{_datadir}/rime-data/build/luna_pinyin*.bin
-%{_datadir}/rime-data/build/luna_pinyin*.yaml
-%{_datadir}/rime-data/build/luna_quanpin*.bin
-%{_datadir}/rime-data/build/luna_quanpin*.yaml
 
 %files -n rime-schema-prelude
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/default.yaml
 %{_datadir}/rime-data/key_bindings.yaml
 %{_datadir}/rime-data/punctuation.yaml
 %{_datadir}/rime-data/symbols.yaml
-%{_datadir}/rime-data/build/default.yaml
 
 %files -n rime-schema-stroke
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/stroke*.yaml
-%{_datadir}/rime-data/build/stroke*.bin
-%{_datadir}/rime-data/build/stroke*.yaml
 
 %files -n rime-schema-terra-pinyin
 %dir %{_datadir}/rime-data
-%dir %{_datadir}/rime-data/build
 %{_datadir}/rime-data/terra_pinyin*.yaml
-%{_datadir}/rime-data/build/terra_pinyin*.bin
-%{_datadir}/rime-data/build/terra_pinyin*.yaml
 
 %files -n rime-schema-array
 %dir %{_datadir}/rime-data

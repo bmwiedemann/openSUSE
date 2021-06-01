@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 25 04:24:13 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- don't install .bin files in build 
+
+-------------------------------------------------------------------
+Tue May 25 03:12:08 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update brise 20210525+git4f7fc2a
+  * revamped rime-plum-go with CLI ui support via "--select"
+    rime-plum-go is totally compatible with upstream plum and
+    the go version respects "rime_dir" "rime_frontend" environment
+    variables and "http_proxy"/"https_proxy" proxies.
+  * brise data is updated to 20210525
+
+-------------------------------------------------------------------
+Sun May  9 02:42:55 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- revert "remove rime-plum in package brise and ready to move it into a new package for easier maintenance" 
+
+-------------------------------------------------------------------
+Thu May  6 12:33:23 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- remove rime-plum in package brise and ready to move it into a new package for easier maintenance
+
+-------------------------------------------------------------------
 Sat Oct 10 09:50:38 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - split brise to rime-schema-*
