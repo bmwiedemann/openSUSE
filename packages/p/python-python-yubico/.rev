@@ -8,4 +8,12 @@
 around in openSUSE:Factory and needs to be replaced by this one.</comment>
     <requestid>704871</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27ae92c1270e339e62ebb6f4d2721189</srcmd5>
+    <version>1.3.3</version>
+    <time>1622536678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895933</requestid>
+  </revision>
 </revisionlist>
