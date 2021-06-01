@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 14:50:08 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Fix workaround to find the correct libwine directory to fix
+  Factory build.
+
+-------------------------------------------------------------------
 Sun Dec 20 10:07:34 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Add workaround for wine 6's lack of libwine.so symlink see:

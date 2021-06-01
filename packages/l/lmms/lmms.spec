@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ Patch1:         lmms-1.2.0-crippled_stk.patch
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch2:         lmms-1.2.0-libdir.patch
 Patch3:         lmms-rpmalloc-fpic.patch
-
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -170,18 +169,23 @@ export PATHBU=$PATH
 #Remove -m64 from CFLAGS, it causes VST build failure.
 export CFLAGS="-O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables"
 %define optflags $CFLAGS
+%if 0%{?suse_version} > 1501
 #Add workaround for boo#1179734 to create the missing libwine.so symlink
-if ! test -e %{_libdir}/libwine.so
+export WINELIB=$(find %{_libdir} -name libwine.so.?)
+export WINELIB32=$(find %{_prefix}/lib -name libwine.so.?)
+export WINELINK=$(echo $WINELIB | cut -d . -f 1,2)
+if ! test -e ${WINELINK}
 then
 mkdir -p $HOME/%{_lib}/wine
 mkdir -p $HOME/lib/wine
 pushd $HOME/%{_lib}/wine
-ln -sf `ls -1 %{_libdir}/libwine.so.?` libwine.so
+ln -sf ${WINELIB} libwine.so
 cd ../../lib/wine
-ln -sf `ls -1 %{_prefix}/lib/libwine.so.?` libwine.so
+ln -sf ${WINELIB32} libwine.so
 export PATH="$PATH:$HOME/%{_lib}/:$HOME/lib"
 popd
 fi
+%endif
 %endif
 export CFLAGS="$CFLAGS -fPIC"
 %cmake \
@@ -196,6 +200,10 @@ export CFLAGS="$CFLAGS -fPIC"
   -DCMAKE_SKIP_RPATH=OFF \
   -Wno-dev
 export PATH=$PATHBU
+%if 0%{?suse_version} > 1501
+sed -i 's/\/wine\/libwinecrt0.a//' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
+sed -i 's/libwinecrt0.a\/wine\///' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
+%endif
 %make_jobs
 
 %install

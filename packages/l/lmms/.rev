@@ -354,4 +354,12 @@ Require: filesystem</comment>
 </comment>
     <requestid>857143</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>af6b6808a2598d57e35b3ad91a2c4257</srcmd5>
+    <version>1.2.2</version>
+    <time>1622536546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895396</requestid>
+  </revision>
 </revisionlist>
