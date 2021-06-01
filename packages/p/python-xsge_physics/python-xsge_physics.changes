@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 26 04:55:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.2:
+  * Removed Python 2 support.
+  * Modified the platformer example to use ulvl instead of xsge_tmx.
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Thu Jul 26 15:10:35 UTC 2018 - jengelh@inai.de
 
 - Trim redundancies from description.

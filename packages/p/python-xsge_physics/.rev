@@ -7,4 +7,15 @@
     <comment>I want to maintain  in Factory</comment>
     <requestid>625703</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5692aafdaba34862ae67b0999d83c158</srcmd5>
+    <version>0.13.2</version>
+    <time>1622536611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.2:
+  * Removed Python 2 support.
+  * Modified the platformer example to use ulvl instead of xsge_tmx.
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895444</requestid>
+  </revision>
 </revisionlist>
