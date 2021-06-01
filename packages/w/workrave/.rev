@@ -208,4 +208,37 @@
 </comment>
     <requestid>886007</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a4d36574a60104b9b081b7f1b72a79a6</srcmd5>
+    <version>1.10.45</version>
+    <time>1622536784</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete fix-wayland-gnome-crash.patch
+- remove obsolete support-gnome-40.patch
+- Update to version 1.10.45:
+ - Micro breaks without a postpone button could be postponed by starting a
+ - rest break while the break prompt window was visible and then clicking
+ - postpone in the rest break window. The postpone button is now disabled
+ - when the micro break is overdue, and the maximum number of break prompts
+ - was reached.
+ - A new sound theme calls 'Bells' has been added (#225, Pieter De Decker)
+ - Added support for High-DPI displays in the Windows Applet.
+ - The Windows applet now correctly enforces a minimum size (#252)
+ - Initial support for icon themes.
+ - Fixes:
+  - Fixed build issue with libayatana-indicator3
+  - Fixed issue where Workrave would show 2 status icons on Linux (#258)
+  - Fixed a deprecation warning in the Gnome Shell applet (#251)
+  - The cinnamon applet is no longer bouncing up and down (#253)
+  - Fixed issue where the current language was always &quot;Unrecognized language&quot;
+  - Fixed issue where activity monitoring would stop after restarting Gnome Shell
+  - Fixed issue that caused the main window to disappear (#244, 259)
+ - Translation updates:
+  - Updated Chinese translation (#232, wintertee)
+  - Updated French translation (Darialalala)
+  - Updated Dutch translation (Matthias Huijgen)
+  - Fixed typo in the Italian translation (#234, albanobattistella)
+</comment>
+    <requestid>896432</requestid>
+  </revision>
 </revisionlist>

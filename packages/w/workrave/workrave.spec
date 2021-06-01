@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_10_44
+%define upstream_version    1_10_45
 Name:           workrave
-Version:        1.10.44
+Version:        1.10.45
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-only
@@ -26,10 +26,6 @@ Group:          Productivity/Other
 URL:            http://www.workrave.org
 Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
 Source2:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM fix-wayland-gnome-crash.patch boo#1184773 -- based on https://github.com/rcaelers/workrave/commit/56af818cd3e148069134551aacc7b06043d8541a
-Patch0:         fix-wayland-gnome-crash.patch
-# PATCH-FIX-UPSTREAM support-gnome-40.patch boo#1184863
-Patch1:         https://github.com/rcaelers/workrave/commit/f199d4c5df43612b7d513168a00f8094fe08218a.patch#/support-gnome-40.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -49,17 +45,6 @@ BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(sigc++-2.0)
-# other requirements that are documented or previously used but (currently?) not needed. let's see if there are problems without them
-#BuildRequires:  gdome2-devel
-#BuildRequires:  gnome-panel-devel
-#BuildRequires:  libbonobo-devel
-#BuildRequires:  libgmodule-2_0-0
-#BuildRequires:  libgthread-2_0-0
-#BuildRequires:  pkg-config
-#BuildRequires:  pkgconfig(glib-2.0)
-#BuildRequires:  pkgconfig(gstreamer-0.10)
-#BuildRequires:  gconfmm-devel
-#BuildRequires:  xorg-x11-Xvfb
 
 %description
 Workrave is a program that assists in the recovery and prevention of Repetitive Strain Injury (RSI). The program frequently alerts you to take micro-pauses, rest breaks and restricts you to your daily limit.
@@ -83,8 +68,6 @@ Workrave.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 ./autogen.sh
