@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado-plugins-vt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 %define pkgname avocado-vt
 Name:           python-avocado-plugins-vt
 Version:        69.0
 Release:        0
 Summary:        Avocado Virt Test Plugin
 License:        GPL-2.0-only
-Group:          Development/Tools/Other
 URL:            https://avocado-framework.readthedocs.org/
 Source0:        https://github.com/avocado-framework/avocado-vt/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -68,7 +68,6 @@ features, such as HTML report and Xunit output, among others.
 
 %package  -n    %{pkgname}-common
 Summary:        Avocado Test Framework
-Group:          Development/Tools/Other
 
 %description   -n  %{pkgname}-common
 Avocado Virt Test is a plugin that executes virt-tests with all the avocado

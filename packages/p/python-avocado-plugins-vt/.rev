@@ -37,4 +37,12 @@ sc
   * cpu_model_unset.host_cpu_vendor_unknown.qemu_flavor_unknown</comment>
     <requestid>682836</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0e0ce54549dedb203d38647b869b216b</srcmd5>
+    <version>69.0</version>
+    <time>1622536670</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to single-spec, like its dependencies avocado and aexpect.</comment>
+    <requestid>895858</requestid>
+  </revision>
 </revisionlist>
