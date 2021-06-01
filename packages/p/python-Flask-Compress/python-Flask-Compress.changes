@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 26 17:45:07 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.8.0:
+  * Support ETag header as defined in RFC7232 #17
+  * Implement per-view compression #14
+
+- changes from version 1.7.0 :
+  * The following parameters to control Brotli compression are now
+    available: #10
+    + COMPRESS_BR_MODE
+    + COMPRESS_BR_LEVEL
+    + COMPRESS_BR_WINDOW
+    + COMPRESS_BR_BLOCK
+  * Add deflate support, with COMPRESS_DEFLATE_LEVEL to control
+    compression level (default is -1) #8
+  * The default quality level for Brotli is now 4, which provides
+    compression comparable to gzip at the default setting, while
+    reducing the time required versus the Brotli default of 11
+
+- changes from version 1.6.0:
+  * Support for multiple compression algorithms and quality factors #7
+  * Modified default compression settings to use Brotli when available
+    before gzip
+
+-------------------------------------------------------------------
 Fri May 15 14:33:13 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Brotli is actually required
