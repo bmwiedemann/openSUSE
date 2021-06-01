@@ -19,7 +19,7 @@
 %global pkg_name unliftio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.16
+Version:        0.2.17
 Release:        0
 Summary:        The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
 License:        MIT
