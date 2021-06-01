@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 31 08:27:27 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Apr 16 12:06:02 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.3.0
