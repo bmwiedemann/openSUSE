@@ -1,7 +1,7 @@
 #
 # spec file for package python-beniget
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ A module to extract semantic information about static Python code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v tests/*.py
 
 %files %{python_files}
 %doc README.rst
