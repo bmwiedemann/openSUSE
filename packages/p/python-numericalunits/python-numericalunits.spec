@@ -1,7 +1,7 @@
 #
 # spec file for package python-numericalunits
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-numericalunits
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        Python module for defining quantities with units
 License:        MIT
@@ -57,7 +57,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test --test-suite=tests
+%pyunittest discover -v tests/
 
 %files %{python_files}
 %license LICENSE.txt

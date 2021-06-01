@@ -42,4 +42,15 @@
     <comment></comment>
     <requestid>752806</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1eb8fdceed1446923b569d2b663fb1d4</srcmd5>
+    <version>1.25</version>
+    <time>1622536540</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.25
+  * add nu_eval() function.
+- %check: use %pyunittest rpm macro
+</comment>
+    <requestid>895341</requestid>
+  </revision>
 </revisionlist>
