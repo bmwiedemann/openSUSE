@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libnumbertext-1_0-0
 Name:           libnumbertext
 Version:        1.0.7
