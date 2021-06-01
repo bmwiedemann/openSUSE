@@ -42,8 +42,8 @@
 
 %define __lib lib
 
-%if 0%{?suse_version}
-%define pamdir /%{_lib}/security
+%if %{defined _pamdir}
+%define pamdir %{_pamdir}
 %else
 %define pamdir %{_libdir}/security
 %endif
@@ -54,7 +54,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        243
+Version:        245
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -85,10 +85,10 @@ Patch0:         cockpit-redhatfont.diff
 %endif
 
 # Ship custom SELinux policy only in Fedora and RHEL-9 onward
-%if 0%{?rhel} >= 9 || 0%{?fedora}
+%if 0%{?rhel} >= 9 || 0%{?fedora} || 0%{?suse_version}
 %define selinuxtype targeted
 %define with_selinux 1
-%define selinux_policy_version %(rpm --quiet -q selinux-policy && rpm -q --queryformat "%{V}" selinux-policy || echo 1)
+%define selinux_policy_version %(rpm --quiet -q selinux-policy && rpm -q --queryformat "%{V}-%{R}" selinux-policy || echo 1)
 %endif
 
 BuildRequires: gcc
@@ -137,6 +137,7 @@ BuildRequires: xmlto
 
 %if 0%{?with_selinux}
 BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-%{selinuxtype}
 BuildRequires:  selinux-policy-devel
 %endif
 
@@ -227,8 +228,10 @@ install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
 
 %if 0%{?with_selinux}
     install -D -m 644 %{name}.pp.bz2 %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
-    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_session_selinux.8
-    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_ws_selinux.8
+    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_session_selinux.8cockpit
+    install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_ws_selinux.8cockpit
+    # create this directory in the build root so that %ghost sees the desired mode
+    install -d -m 700 %{buildroot}%{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
 %endif
 
 # only ship deprecated PatternFly API for stable releases
@@ -329,6 +332,9 @@ rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-storage
 sed -i "s|%{buildroot}||" *.list
 
 %if 0%{?suse_version}
+# setroubleshoot not yet in
+rm -r %{buildroot}%{_datadir}/cockpit/selinux
+rm %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-selinux.metainfo.xml
 # remove brandings with stale symlinks. Means they don't match
 # the distro.
 pushd %{buildroot}/%{_datadir}/cockpit/branding
@@ -337,8 +343,8 @@ popd
 # need this in SUSE as post build checks dislike stale symlinks
 install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
 # remove files of not installable packages
-rm -r %{buildroot}%{_datadir}/cockpit/{sosreport,selinux}
-rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-{selinux,sosreport}.metainfo.xml
+rm -r %{buildroot}%{_datadir}/cockpit/sosreport
+rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
 rm -f %{buildroot}%{_datadir}/pixmaps/cockpit-sosreport.png
 %else
 %global _debugsource_packages 1
@@ -443,7 +449,6 @@ Provides: cockpit-users = %{version}-%{release}
 Obsoletes: cockpit-dashboard < %{version}-%{release}
 %if 0%{?rhel}
 Provides: cockpit-networkmanager = %{version}-%{release}
-Obsoletes: cockpit-networkmanager < %{version}-%{release}
 Requires: NetworkManager >= 1.6
 Provides: cockpit-kdump = %{version}-%{release}
 Requires: kexec-tools
@@ -506,12 +511,13 @@ authentication via sssd/FreeIPA.
 %dir %{_sysconfdir}/cockpit
 %config(noreplace) %{_sysconfdir}/cockpit/ws-certs.d
 %config(noreplace) %{_sysconfdir}/pam.d/cockpit
-%config %{_sysconfdir}/issue.d/cockpit.issue
 # dir is not owned by pam in openSUSE
 %dir %{_sysconfdir}/motd.d
-%config %{_sysconfdir}/motd.d/cockpit
-%ghost /run/cockpit/motd
+# created in %post, so that users can rm the files
+%ghost %{_sysconfdir}/issue.d/cockpit.issue
+%ghost %{_sysconfdir}/motd.d/cockpit
 %ghost %dir /run/cockpit
+%ghost /run/cockpit/motd
 %dir %{_datadir}/cockpit/motd
 %{_datadir}/cockpit/motd/update-motd
 %{_datadir}/cockpit/motd/inactive.motd
@@ -542,8 +548,8 @@ authentication via sssd/FreeIPA.
 
 %if 0%{?with_selinux}
     %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
-    %{_mandir}/man8/%{name}_session_selinux.8.*
-    %{_mandir}/man8/%{name}_ws_selinux.8.*
+    %{_mandir}/man8/%{name}_session_selinux.8cockpit.*
+    %{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
     %ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
 %endif
 
@@ -566,6 +572,13 @@ if %{_sbindir}/selinuxenabled 2>/dev/null; then
     %selinux_relabel_post -s %{selinuxtype}
 fi
 %endif
+
+# set up dynamic motd/issue symlinks on first-time install; don't bring them back on upgrades if admin removed them
+if [ "$1" = 1 ]; then
+    mkdir -p /etc/motd.d /etc/issue.d
+    ln -s /run/cockpit/motd /etc/motd.d/cockpit
+    ln -s /run/cockpit/motd /etc/issue.d/cockpit.issue
+fi
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif

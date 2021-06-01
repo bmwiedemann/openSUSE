@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 27 11:01:03 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 255
+  https://cockpit-project.org/blog/cockpit-245.html
+
+-------------------------------------------------------------------
+Tue May 18 08:06:31 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 244.1
+  https://cockpit-project.org/blog/cockpit-244.html
+- enable SELinux
+
+-------------------------------------------------------------------
 Mon May  3 14:11:01 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - install all of pkg/lib in -devel package. Cockpit-machines needs more

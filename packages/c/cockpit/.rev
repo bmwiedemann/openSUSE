@@ -121,4 +121,17 @@
     <comment></comment>
     <requestid>890249</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>54b1938b849a8db29a4050d346fb06cb</srcmd5>
+    <version>245</version>
+    <time>1622536460</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 255
+  https://cockpit-project.org/blog/cockpit-245.html
+
+- new version 244.1
+  https://cockpit-project.org/blog/cockpit-244.html
+- enable SELinux</comment>
+    <requestid>895761</requestid>
+  </revision>
 </revisionlist>
