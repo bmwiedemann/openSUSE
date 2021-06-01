@@ -32,4 +32,15 @@
 </comment>
     <requestid>874894</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>49c6bdc745b7ee7528db711218c6e643</srcmd5>
+    <version>1.0.0</version>
+    <time>1622536685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest git
+  - Remove obsolete code
+- Remove wheel group
+- Adjust run, install and uninstall labels [bsc#1177487] (forwarded request 895966 from kukuk)</comment>
+    <requestid>895967</requestid>
+  </revision>
 </revisionlist>

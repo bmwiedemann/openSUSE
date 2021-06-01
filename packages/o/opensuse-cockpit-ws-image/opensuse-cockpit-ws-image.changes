@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 28 11:35:17 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to latest git
+  - Remove obsolete code
+- Remove wheel group
+- Adjust run, install and uninstall labels [bsc#1177487]
+
+-------------------------------------------------------------------
 Wed Feb 24 15:05:58 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Removed obsoleted dashboard
