@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 25 06:51:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.6:
+  Build:
+  * Support building documentation on sphinx 4.0 (#2424)
+  Fixed:
+  * Tray icons sometimes appears outside of bar (#2430, #1679)
+  * Crash in the i3 module (#2416)
+
+-------------------------------------------------------------------
 Tue Mar  2 09:08:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5.5:
