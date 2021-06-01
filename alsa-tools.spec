@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define package_version	1.2.2
-#
 %define build_hwdep_loader	0
 %if 0%{?suse_version} >  1140
 %define have_gtk3	1
@@ -25,13 +23,13 @@
 %define have_gtk3	0
 %endif
 Name:           alsa-tools
-Version:        1.2.2
+Version:        1.2.5
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://www.alsa-project.org/
-Source:         ftp://ftp.alsa-project.org/pub/tools/alsa-tools-%{package_version}.tar.bz2
+URL:            https://www.alsa-project.org/
+Source:         https://www.alsa-project.org/files/pub/tools/alsa-tools-%{version}.tar.bz2
 Source1:        README.SUSE
 Source2:        sbipatches.tar.bz2
 Source4:        rmedigicontrol.desktop
@@ -296,7 +294,7 @@ It is a tool to control the advanced routing features of the RME
 Hammerfall DSP soundcard series.
 
 %prep
-%setup -q -a 2 -n %{name}-%{package_version}
+%setup -q -a 2
 cp %{SOURCE1} .
 %patch101 -p1
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 31 12:12:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5
+  * hdspmixer: add output loopback buttons
+  * hdspmixer: enhance saving of presets 
+
+-------------------------------------------------------------------
 Fri Oct 23 14:55:54 CEST 2020 - tiwai@suse.de
 
 - Drop unnecessary buildreq alsa-topology-devel (bsc#1178064)
