@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 26 08:45:34 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.16.
+  # ChangeLog for warp
+
+  ## 3.3.16
+
+  * Move exception handling over to `unliftio` for better async exception support [#845](https://github.com/yesodweb/wai/issues/845)
+
+-------------------------------------------------------------------
 Fri Apr 16 11:05:38 UTC 2021 - psimons@suse.com
 
 - Update warp to version 3.3.15.

@@ -19,7 +19,7 @@
 %global pkg_name warp
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.15
+Version:        3.3.16
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT
@@ -27,7 +27,6 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-auto-update-devel
 BuildRequires:  ghc-bsb-http-chunked-devel
 BuildRequires:  ghc-bytestring-devel
@@ -47,6 +46,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-manager-devel
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-vault-devel
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-word8-devel
@@ -55,10 +55,10 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-http-client-devel
-BuildRequires:  ghc-lifted-base-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-time-devel
 %endif
