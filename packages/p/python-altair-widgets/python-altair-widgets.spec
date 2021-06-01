@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair-widgets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 # The test suite is not packaged in the PyPI package. The tests available on
 # GitHub require pytest-ipynb which is not available on openSUSE and was
 # abandoned upstream
