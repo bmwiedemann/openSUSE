@@ -19,7 +19,7 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Conversion between formats used to represent mathematics
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-xml-devel

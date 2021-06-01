@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 13 08:27:48 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.
+  texmath (0.12.3)
+
+    * TeX reader: implement logic to convert a Bin symbol to
+      an Op to Op when it occurs at the beginning of a group,
+      or after an Open, Pun, or Op symbol. This will give much
+      better results for unary `-` (#176).
+
+    * OMML writer: fixed rendering of EDelimited (#173).
+      We now properly render "middles" (separators).
+
+-------------------------------------------------------------------
 Tue Mar 16 09:55:34 UTC 2021 - psimons@suse.com
 
 - Update texmath to version 0.12.2.
