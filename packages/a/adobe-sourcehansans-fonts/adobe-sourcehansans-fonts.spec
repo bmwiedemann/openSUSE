@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcehansans-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,18 @@
 %define shared_description Source Han Sans is an open source Pan-CJK typeface whose OpenType/CFF fonts and CID-based sources are covered under the terms of the SIL Open Font License.
 
 Name:           adobe-sourcehansans-fonts
-Version:        2.001
+Version:        2.004
 Release:        0
 Summary:        Source Han Sans
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/adobe-fonts/source-han-sans
-Source0:        https://raw.githubusercontent.com/adobe-fonts/source-han-sans/%{version}R/SubsetOTF/SourceHanSansCN.zip
-Source1:        https://raw.githubusercontent.com/adobe-fonts/source-han-sans/%{version}R/SubsetOTF/SourceHanSansHK.zip
-Source2:        https://raw.githubusercontent.com/adobe-fonts/source-han-sans/%{version}R/SubsetOTF/SourceHanSansJP.zip
-Source3:        https://raw.githubusercontent.com/adobe-fonts/source-han-sans/%{version}R/SubsetOTF/SourceHanSansKR.zip
-Source4:        https://raw.githubusercontent.com/adobe-fonts/source-han-sans/%{version}R/SubsetOTF/SourceHanSansTW.zip
+Source0:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansCN.zip
+Source1:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansHK.zip
+Source2:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansJP.zip
+Source3:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansKR.zip
+Source4:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansTW.zip
+Source5:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSans-VF.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -44,12 +45,14 @@ unzip -o %{S:1}
 unzip -o %{S:2}
 unzip -o %{S:3}
 unzip -o %{S:4}
+unzip -o %{S:5}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
-mv */*.otf %{buildroot}%{_ttfontsdir}
+mv Variable/OTF/Subset/*.otf %{buildroot}%{_ttfontsdir}
+mv SubsetOTF/*/*.otf %{buildroot}%{_ttfontsdir}
 
 # Chinese China package
 %package -n adobe-sourcehansans-cn-fonts
@@ -63,7 +66,7 @@ Provides:       locale(zh_CN)
 %reconfigure_fonts_scriptlets -n adobe-sourcehansans-cn-fonts
 %files -n adobe-sourcehansans-cn-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSansCN/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansCN-*.otf
 
@@ -79,7 +82,7 @@ Provides:       locale(zh_HK)
 %reconfigure_fonts_scriptlets -n adobe-sourcehansans-hk-fonts
 %files -n adobe-sourcehansans-hk-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSansHK/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansHK-*.otf
 
@@ -95,7 +98,7 @@ Provides:       locale(jp)
 %reconfigure_fonts_scriptlets -n adobe-sourcehansans-jp-fonts
 %files -n adobe-sourcehansans-jp-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSansJP/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansJP-*.otf
 
@@ -111,7 +114,7 @@ Provides:       locale(kr)
 %reconfigure_fonts_scriptlets -n adobe-sourcehansans-kr-fonts
 %files -n adobe-sourcehansans-kr-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSansKR/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansKR-*.otf
 
@@ -130,7 +133,7 @@ Obsoletes:      adobe-sourcehansans-fonts < %version-%release
 %reconfigure_fonts_scriptlets -n adobe-sourcehansans-tw-fonts
 %files -n adobe-sourcehansans-tw-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSansTW/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansTW-*.otf
 
