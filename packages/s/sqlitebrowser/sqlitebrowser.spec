@@ -17,7 +17,7 @@
 
 
 Name:           sqlitebrowser
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -42,8 +42,8 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 # not on SLE-12
 %if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
 BuildRequires:  antlr-devel
@@ -106,7 +106,7 @@ EOF
 
 %files
 %doc README.md currentrelease
-%license LICENSE 
+%license LICENSE
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_bindir}/%{name}
 %{_datadir}/applications/*

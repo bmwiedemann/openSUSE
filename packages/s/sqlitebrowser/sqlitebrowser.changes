@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 24 19:09:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.2:
+  * Update internal client certificates for DBHub.io
+  * Correct a typo in the French translation
+  * Fix saving the list of extensions in the Preferences Dialog
+
+-------------------------------------------------------------------
 Wed Jan  6 12:58:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.1:
