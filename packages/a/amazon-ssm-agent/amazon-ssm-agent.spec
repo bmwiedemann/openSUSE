@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ssm-agent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,63 @@
 
 
 Name:           amazon-ssm-agent
-Version:        2.3.1205.0
+Version:        3.0.1209.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.service
-Patch1:         fix-config.patch
-Patch2:         fix-version.patch
-Patch3:         remove-unused-import.patch
-BuildRequires:  go >= 1.7.4
+BuildRequires:  go >= 1.15
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
-ExcludeArch:    s390
+Provides:       bundled(golang(github.com/Microsoft/go-winio))
+Provides:       bundled(golang(github.com/Workiva/go-datastructures))
+Provides:       bundled(golang(github.com/aws/aws-sdk-go))
+Provides:       bundled(golang(github.com/carlescere/scheduler))
+Provides:       bundled(golang(github.com/cenkalti/backoff))
+Provides:       bundled(golang(github.com/cihub/seelog))
+Provides:       bundled(golang(github.com/coreos/go-semver))
+Provides:       bundled(golang(github.com/creack/pty))
+Provides:       bundled(golang(github.com/davecgh/go-spew))
+Provides:       bundled(golang(github.com/emirpasic/gods))
+Provides:       bundled(golang(github.com/fsnotify/fsnotify))
+Provides:       bundled(golang(github.com/gabs))
+Provides:       bundled(golang(github.com/go-git/gcfg))
+Provides:       bundled(golang(github.com/go-git/go-billy))
+Provides:       bundled(golang(github.com/go-git/go-git))
+Provides:       bundled(golang(github.com/go-github))
+Provides:       bundled(golang(github.com/go-ini/ini))
+Provides:       bundled(golang(github.com/go-yaml/yaml))
+Provides:       bundled(golang(github.com/google/go-querystring))
+Provides:       bundled(golang(github.com/google/shlex))
+Provides:       bundled(golang(github.com/gorhill/cronexpr))
+Provides:       bundled(golang(github.com/gorilla/websocket))
+Provides:       bundled(golang(github.com/hectane/go-acl))
+Provides:       bundled(golang(github.com/imdario/mergo))
+Provides:       bundled(golang(github.com/jbenet/go-context))
+Provides:       bundled(golang(github.com/jmespath/go-jmespath))
+Provides:       bundled(golang(github.com/kevinburke/ssh_config))
+Provides:       bundled(golang(github.com/lsegal/gucumber))
+Provides:       bundled(golang(github.com/mitchellh/go-homedir))
+Provides:       bundled(golang(github.com/mitchellh/go-ps))
+Provides:       bundled(golang(github.com/nightlyone/lockfile))
+Provides:       bundled(golang(github.com/pborman/ansi))
+Provides:       bundled(golang(github.com/pmezard/go-difflib))
+Provides:       bundled(golang(github.com/sergi/go-diff))
+Provides:       bundled(golang(github.com/shiena/ansicolor))                    ExclusiveArch:  x86_64 aarch64
+Provides:       bundled(golang(github.com/stretchr/objx))
+Provides:       bundled(golang(github.com/stretchr/testify))
+Provides:       bundled(golang(github.com/twinj/uuid))
+Provides:       bundled(golang(github.com/xanzy/ssh-agent))
+Provides:       bundled(golang(github.com/xtaci/smux))
+Provides:       bundled(golang(go.nanomsg.org/mangos))
+Provides:       bundled(golang(golang.org/x/crypto))
+Provides:       bundled(golang(golang.org/x/net))
+Provides:       bundled(golang(golang.org/x/oauth2))
+Provides:       bundled(golang(golang.org/x/sync))
+Provides:       bundled(golang(golang.org/x/sys))
+Provides:       bundled(golang(gopkg.in/warnings.v0))
 
 %description
 This package provides the Amazon SSM Agent for managing EC2 Instances using
@@ -51,70 +93,57 @@ environment that are configured for Systems Manager.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+sed -i -e 's#const[ \s]*Version.*#const Version = "%{version}"#g' agent/version/version.go
+sed -i 's#/bin/#/sbin/#' packaging/linux/amazon-ssm-agent.service
+sed -i 's#var defaultWorkerPath = "/usr/bin/"#var defaultWorkerPath = "/usr/sbin/"#' agent/appconfig/constants_unix.go
 
 %build
-rm -rf vendor/src/github.com/aws/aws-sdk-go/vendor/
+export GO111MODULE="auto"
+cp -r Tools agent common core internal packaging vendor src
 
-mkdir -p src/github.com/aws/amazon-ssm-agent
-mv Tools agent vendor makefile amazon-ssm-agent.json.template \
-seelog_unix.xml packaging src/github.com/aws/amazon-ssm-agent/
-
-PKG_ROOT=`pwd`/src/github.com/aws/amazon-ssm-agent
-GOPATH=${PKG_ROOT}/vendor:`pwd`
+PKG_ROOT=`pwd`
+GOPATH=${PKG_ROOT}/vendor:${PKG_ROOT}
+ln -s ${PKG_ROOT} ${PKG_ROOT}/vendor/src/github.com/aws/amazon-ssm-agent
 export GOPATH
 
-go build -ldflags "-s -w" -buildmode=pie -o bin/amazon-ssm-agent -v \
-${PKG_ROOT}/agent/agent.go \
-${PKG_ROOT}/agent/agent_unix.go \
-${PKG_ROOT}/agent/agent_parser.go
-
-go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-cli -v \
-${PKG_ROOT}/agent/cli-main/cli-main.go
-
-go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-document-worker -v \
-${PKG_ROOT}/agent/framework/processor/executer/outofproc/worker/main.go
-
-go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-session-worker -v \
-${PKG_ROOT}/agent/framework/processor/executer/outofproc/sessionworker/main.go
-
-go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-session-logger -v \
-${PKG_ROOT}/agent/session/logging/main.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/amazon-ssm-agent -v core/agent.go core/agent_unix.go core/agent_parser.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/ssm-agent-worker -v agent/agent.go agent/agent_unix.go agent/agent_parser.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/ssm-document-worker -v agent/framework/processor/executer/outofproc/worker/main.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/ssm-session-worker -v agent/framework/processor/executer/outofproc/sessionworker/main.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/ssm-session-logger -v agent/session/logging/main.go
+CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/ssm-cli -v agent/cli-main/cli-main.go
 
 %install
 install -d -m 755 %{buildroot}%{_sbindir}
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_sysconfdir}/init
 install -d -m 755 %{buildroot}%{_sysconfdir}/amazon/ssm
+install -d -m 755 %{buildroot}%{_localstatedir}/log/amazon/ssm
+install -d -m 755 %{buildroot}%{_localstatedir}/lib/amazon/ssm
 install -m 755 bin/amazon-ssm-agent %{buildroot}%{_sbindir}
-install -m 755 bin/ssm-cli %{buildroot}%{_bindir}
-install -m 755 bin/ssm-document-worker %{buildroot}%{_bindir}
-install -m 755 bin/ssm-session-worker %{buildroot}%{_bindir}
-install -m 755 bin/ssm-session-logger %{buildroot}%{_bindir}
+install -m 755 bin/ssm-agent-worker %{buildroot}%{_sbindir}
+install -m 755 bin/ssm-cli %{buildroot}%{_sbindir}
+install -m 755 bin/ssm-document-worker %{buildroot}%{_sbindir}
+install -m 755 bin/ssm-session-worker %{buildroot}%{_sbindir}
+install -m 755 bin/ssm-session-logger %{buildroot}%{_sbindir}
 
 mkdir -p %{buildroot}%{_unitdir}
-install -m 644 %SOURCE1 %{buildroot}%{_unitdir}
-
-PKG_ROOT=`pwd`/src/github.com/aws/amazon-ssm-agent
-cp ${PKG_ROOT}/seelog_unix.xml %{buildroot}%{_sysconfdir}/amazon/ssm/seelog.xml.template
-cp ${PKG_ROOT}/amazon-ssm-agent.json.template %{buildroot}%{_sysconfdir}/amazon/ssm/
-cp ${PKG_ROOT}/packaging/linux/amazon-ssm-agent.conf %{buildroot}%{_sysconfdir}/init/
+cp seelog_unix.xml %{buildroot}%{_sysconfdir}/amazon/ssm/seelog.xml.template
+cp amazon-ssm-agent.json.template %{buildroot}%{_sysconfdir}/amazon/ssm/
+install -m 644 packaging/linux/amazon-ssm-agent.service %{buildroot}%{_unitdir}
 
 %files
 %defattr(-,root,root,-)
-%dir %{_sysconfdir}/init
 %dir %{_sysconfdir}/amazon
 %dir %{_sysconfdir}/amazon/ssm
+%dir %{_localstatedir}/log/amazon
+%dir %{_localstatedir}/lib/amazon
 %license LICENSE
-%doc CONTRIBUTING.md NOTICE.md README.md
-%config(noreplace) %{_sysconfdir}/init/amazon-ssm-agent.conf
+%doc CONTRIBUTING.md NOTICE.md README.md RELEASENOTES.md
 %config(noreplace) %{_sysconfdir}/amazon/ssm/amazon-ssm-agent.json.template
 %config(noreplace) %{_sysconfdir}/amazon/ssm/seelog.xml.template
 %{_sbindir}/*
-%{_bindir}/*
 %{_unitdir}/%{name}.service
+%{_localstatedir}/lib/amazon/ssm
+%ghost %{_localstatedir}/log/amazon/ssm/
 
 %pre
 %service_add_pre %{name}.service

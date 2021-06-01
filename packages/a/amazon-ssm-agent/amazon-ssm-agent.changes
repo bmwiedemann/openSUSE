@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 19 18:29:26 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 3.0.1209.0 (bsc#1186239, bsc#1186262)
+  + For detailed changes see RELEASENOTES.md
+  + Drop fix-version.patch replaced by sed expression in spec file
+  + Drop remove-unused-import.patch no longer included from upstream
+  + Drop fix-config.patch all SUSE distros use systemd
+  + Remove amazon-ssm-agent.service included in upstream source, use it
+  + Move all binaries into sbin and fix the hard coded config path via sed
+
+-------------------------------------------------------------------
 Wed May 27 07:22:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.3.1205.0:
