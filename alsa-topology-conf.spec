@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-topology-conf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%define src_ver 1.2.4.2.g15998
 Name:           alsa-topology-conf
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        ALSA topology configurations
 License:        BSD-3-Clause
-URL:            http://www.alsa-project.org/
-Source:         ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{version}.tar.bz2
+URL:            https://www.alsa-project.org/
+Source:         https://www.alsa-project.org/files/pub/lib/alsa-topology-conf-%{version}.tar.bz2
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -30,7 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 This package contains the configuration files for ALSA topology support.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{src_ver}
 
 %build
 
