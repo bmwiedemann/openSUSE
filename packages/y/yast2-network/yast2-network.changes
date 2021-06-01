@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 28 13:51:57 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to modify the network IP forwarding configuration defining
+  the defaults in the control file (bsc#1186280)
+- 4.4.12
+
+-------------------------------------------------------------------
+Mon May 24 10:47:46 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix error when determining the removed interfaces in order to
+  remove their associated routes too (bsc#1186082)
+- 4.4.11
+
+-------------------------------------------------------------------
 Wed May 12 16:46:00 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Write IP addresses in order preventing an alias to set the
