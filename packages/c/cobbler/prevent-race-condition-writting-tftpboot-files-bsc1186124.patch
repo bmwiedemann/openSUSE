@@ -1,0 +1,46 @@
+From adf4ce65d50d2385b8d1491dfa88e558fcb1c4c6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 18 May 2021 12:43:32 +0100
+Subject: [PATCH] Prevent some race conditions when writting tftpboot files
+
+---
+ cobbler/tftpgen.py | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+Index: cobbler-3.2.1+git20210315.f7482f6b/cobbler/tftpgen.py
+===================================================================
+--- cobbler-3.2.1+git20210315.f7482f6b.orig/cobbler/tftpgen.py
++++ cobbler-3.2.1+git20210315.f7482f6b/cobbler/tftpgen.py
+@@ -290,6 +290,8 @@ class TFTPGen:
+                         link_path = os.path.join(self.bootloc, "grub", "system_link", system.name)
+                         if os.path.exists(link_path):
+                             utils.rmfile(link_path)
++                        if not os.path.exists(os.path.dirname(link_path)):
++                            utils.mkdir(os.path.dirname(link_path))
+                         os.symlink(os.path.join("..", "system", grub_name), link_path)
+                 else:
+                     self.write_pxe_file(pxe_path, system, None, None, working_arch, image=profile, metadata=pxe_metadata)
+@@ -614,17 +616,11 @@ class TFTPGen:
+ 
+         if filename is not None:
+             self.logger.info("generating: %s" % filename)
+-            # This try-except is a work-around for the cases where 'open' throws
+-            # the FileNotFoundError for not apparent reason.
+-            try:
+-                with open(filename, "w") as fd:
+-                    fd.write(buffer)
+-            except FileNotFoundError as e:
+-                self.logger.error("Got \"{}\" while trying to write {}".format(e, filename))
+-                self.logger.error("Trying to write {} again after some delay.".format(filename))
+-                sleep(1)
+-                with open(filename, "w") as fd:
+-                    fd.write(buffer)
++            # Ensure destination path exists to avoid race condition
++            if not os.path.exists(os.path.dirname(filename)):
++                utils.mkdir(os.path.dirname(filename))
++            with open(filename, "w") as fd:
++                fd.write(buffer)
+         return buffer
+ 
+     def build_kernel_options(self, system, profile, distro, image, arch: str, autoinstall_path) -> str:

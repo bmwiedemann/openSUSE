@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 18 12:01:22 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent some race conditions when writting tftpboot files and
+  the destination directory is not existing (bsc#1186124)
+
+- Added:
+  * prevent-race-condition-writting-tftpboot-files-bsc1186124.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 17:11:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC file:

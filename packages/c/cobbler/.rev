@@ -1199,4 +1199,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>890271</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>9ad25e7327fa108a6564d999e40aba78</srcmd5>
+    <version>3.2.1+git20210315.f7482f6b</version>
+    <time>1622536545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895374</requestid>
+  </revision>
 </revisionlist>

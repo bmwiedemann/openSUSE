@@ -164,6 +164,7 @@ License:        GPL-2.0-or-later
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 BuildArch:      noarch
+Patch0:         prevent-race-condition-writting-tftpboot-files-bsc1186124.patch
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -278,6 +279,7 @@ Unit test files from the Cobbler project
 
 %prep
 %setup
+%patch0 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
