@@ -127,4 +127,12 @@
     <comment>Missed a couple OES patterns and syntax (forwarded request 894408 from jrecord)</comment>
     <requestid>894409</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>5458ccb73b8ef56bf965a78f363f37e7</srcmd5>
+    <version>1.0.3</version>
+    <time>1622536636</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 895597 from jrecord)</comment>
+    <requestid>895598</requestid>
+  </revision>
 </revisionlist>

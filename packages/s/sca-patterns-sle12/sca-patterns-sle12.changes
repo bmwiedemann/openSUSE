@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 26 20:43:23 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Updated regular patterns (1)
+  + sle12all/lvm-volume-list-7016683.py: Fixed execution error (bsc#1176021)
+
+-------------------------------------------------------------------
+Mon May 24 17:41:26 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.3
+  - New regular patterns (2)
+    + sle12all/coredumpctl-000018634.py: How to obtain systemd service core dumps (TID000018634)
+    + sle12all/scatool-000020253.py: scatool fails to analyze supportconfigs with xz compression (bsc#1186316)
+  - Deleted regular patterns (1)
+    + sle12all/bhc-scc.sh: Pattern removed (bsc#1184594)
+  - Updated sle12all/vmcore-00002.pl to find the list of analysis files
+
+-------------------------------------------------------------------
+Thu May 20 17:06:18 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixed crosstalk message strings (bsc#1186312)
+
+-------------------------------------------------------------------
 Wed May 19 15:51:17 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Updated regular patterns (1)
