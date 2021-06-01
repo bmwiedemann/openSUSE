@@ -1,7 +1,7 @@
 #
 # spec file for package arpack-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -250,7 +250,6 @@ source %{my_prefix}/bin/mpivars.sh
 %{my_libdir}/*.so
 %{my_incdir}/arpack
 %if %{without mpi}
-%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/*.pc
 %else
 %dir %{my_libdir}/cmake
