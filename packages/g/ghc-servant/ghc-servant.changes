@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 15 15:56:17 UTC 2021 - psimons@suse.com
+
+- Update servant to version 0.18.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Apr  6 13:22:48 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax overconstrained deps on singleton-bool
