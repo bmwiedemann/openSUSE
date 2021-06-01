@@ -22,7 +22,7 @@ Name:           python-fido2
 Version:        0.9.1
 Release:        0
 Summary:        Python-based FIDO 2.0 library
-License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MPL-2.0
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Yubico/python-fido2
 Source0:        %{URL}/releases/download/%{version}/fido2-%{version}.tar.gz
@@ -66,8 +66,7 @@ implement higher level device operations.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# %%pyunittest
-%python_expand $python -m unittest
+%pyunittest discover -v
 
 %files %{python_files}
 %doc NEWS* README*
