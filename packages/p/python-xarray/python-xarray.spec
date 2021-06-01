@@ -21,12 +21,21 @@
 # NEP 29: Numpy 1.20 dropped support for Python 3.6, python36-numpy is removed from Tumbleweed. xarray will follow on next release
 %define         skip_python36 1
 Name:           python-xarray
-Version:        0.18.0
+Version:        0.18.2
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 URL:            https://github.com/pydata/xarray
 Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
+# fix xr.tutorial.open_dataset to work with the preloaded cache.
+Patch0:         local_dataset.patch
+# PATCH-FIX-UPSTREAM scipy-interpolate.patch gh#pydata/xarray#5375 mcepl@suse.com
+# Add missing import scipy.interpolate
+Patch1:         scipy-interpolate.patch
+# PATCH-FIX-UPSTREAM test_resample_loffset.patch gh#pydata/xarray#5364 mcepl@suse.com
+# use assert_allclose in test_resample_loffset test
+Patch2:         test_resample_loffset.patch
 BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module numpy-devel >= 1.14}
 BuildRequires:  %{python_module pandas >= 0.25}
@@ -63,6 +72,7 @@ Suggests:       python-cfgrib
 #/SECTION
 # SECTION tests
 BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -80,6 +90,7 @@ The dataset is an in-memory representation of a netCDF file.
 
 %prep
 %autosetup -p1 -n xarray-%{version}
+
 chmod -x xarray/util/print_versions.py
 
 %build
@@ -92,7 +103,8 @@ chmod -x xarray/util/print_versions.py
 %check
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # precision errors on 32-bit
-  donttest="(test_interpolate_chunk_advanced and linear)"
+  # for test_resample_loffset: https://github.com/pydata/xarray/issues/5341
+  donttest="((test_interpolate_chunk_advanced or test_resample_loffset) and linear)"
 fi
 %pytest -n auto ${donttest:+ -k "not ($donttest)"} xarray
 

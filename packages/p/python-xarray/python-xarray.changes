@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue May 25 17:25:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add local_dataset.patch allowing the use of the cached datasets
+  (gh#pydata/xarray#5377).
+- Add scipy-interpolate.patch adding a missing import
+  scipy.interpolate to test_interp.py (gh#pydata/xarray#5375).
+- Add test_resample_loffset.patch to fix test_resample_loffset
+  test (gh#pydata/xarray#5364).
+
+-------------------------------------------------------------------
+Thu May 20 11:58:50 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.18.2:
+ - This release reverts a regression in xarray's unstacking of dask-backed arrays.:
+- remove fix_test_resample_loffset.patch, doesn't work
+
+-------------------------------------------------------------------
+Wed May 19 13:53:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix_test_resample_loffset.patch to fix test fail on i586
+  https://github.com/pydata/xarray/issues/5341
+
+-------------------------------------------------------------------
+Wed May 19 07:26:03 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.18.1:
+ - This release is intended as a small patch release to be compatible with the new:
+2021.5.0 ``dask.distributed`` release. It also includes a new
+``drop_duplicates`` method, some documentation improvements, the beginnings of
+ - our internal Index refactoring, and some bug fixes.:
+ - Thank you to all 16 contributors!:
+ - Anderson Banihirwe, Andrew, Benoit Bovy, Brewster Malevich, Giacomo Caria,:
+ - Illviljan, James Bourbeau, Keewis, Maximilian Roos, Ravin Kumar, Stephan Hoyer,:
+ - Thomas Nicholas, Tom Nicholas, Zachary Moon.:
+ - New Features:
+  - Implement :py:meth:`DataArray.drop_duplicates`
+    to remove duplicate dimension values (:pull:`5239`).
+    By `Andrew Huang <https://github.com/ahuang11>`_.
+  - Allow passing ``combine_attrs`` strategy names to the ``keep_attrs`` parameter of
+    :py:func:`apply_ufunc` (:pull:`5041`)
+    By `Justus Magin <https://github.com/keewis>`_.
+  - :py:meth:`Dataset.interp` now allows interpolation with non-numerical datatypes,
+    such as booleans, instead of dropping them. (:issue:`4761` :pull:`5008`).
+    By `Jimmy Westling <https://github.com/illviljan>`_.
+  - Raise more informative error when decoding time variables with invalid reference dates.
+    (:issue:`5199`, :pull:`5288`). By `Giacomo Caria <https://github.com/gcaria>`_.
+ - Bug fixes:
+  - Opening netCDF files from a path that doesn't end in ``.nc`` without supplying
+    an explicit ``engine`` works again (:issue:`5295`), fixing a bug introduced in
+    0.18.0.
+    By `Stephan Hoyer <https://github.com/shoyer>`_
+ - Documentation:
+  - Clean up and enhance docstrings for the :py:class:`DataArray.plot` and ``Dataset.plot.*``
+    families of methods (:pull:`5285`).
+    By `Zach Moon <https://github.com/zmoon>`_.
+  - Explanation of deprecation cycles and how to implement them added to contributors
+    guide. (:pull:`5289`)
+    By `Tom Nicholas <https://github.com/TomNicholas>`_.
+ - Internal Changes:
+  - Explicit indexes refactor: add an ``xarray.Index`` base class and
+    ``Dataset.xindexes`` / ``DataArray.xindexes`` properties. Also rename
+    ``PandasIndexAdapter`` to ``PandasIndex``, which now inherits from
+    ``xarray.Index`` (:pull:`5102`).
+    By `Benoit Bovy <https://github.com/benbovy>`_.
+  - Updated the release guide for developers. Now accounts for actions that are automated via github
+    actions. (:pull:`5274`).
+    By `Tom Nicholas <https://github.com/TomNicholas>`_.
+
+-------------------------------------------------------------------
 Sun May  9 09:46:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.18.0:

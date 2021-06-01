@@ -1,0 +1,18 @@
+---
+ xarray/tutorial.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/xarray/tutorial.py
++++ b/xarray/tutorial.py
+@@ -139,7 +139,10 @@ def open_dataset(
+         url = f"{base_url}/raw/{version}/{path.name}"
+ 
+     # retrieve the file
+-    filepath = pooch.retrieve(url=url, known_hash=None, path=cache_dir)
++    fname = pathlib.Path(cache_dir, path).expanduser()
++    if not fname.exists():
++        fname = None
++    filepath = pooch.retrieve(url=url, fname=fname, known_hash=None, path=cache_dir)
+     ds = _open_dataset(filepath, engine=engine, **kws)
+     if not cache:
+         ds = ds.load()
