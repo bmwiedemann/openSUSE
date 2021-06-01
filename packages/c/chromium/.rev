@@ -3607,4 +3607,61 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>893793</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>019f326c6408c618f359993b67625bcc</srcmd5>
+    <version>91.0.4472.77</version>
+    <time>1622536386</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 91.0.4472.77 (boo#1186458):
+  * Support Managed configuration API for Web Applications
+  * WebOTP API: cross-origin iframe support
+  * CSS custom counter styles
+  * Support JSON Modules
+  * Clipboard: read-only files support
+  * Remove webkitBeforeTextInserted &amp; webkitEditableCOntentChanged
+    JS events
+  * Honor media HTML attribute for link icon
+  * Import Assertions
+  * Class static initializer blocks
+  * Ergonomic brand checks for private fields
+  * Expose WebAssembly SIMD
+  * New Feature: WebTransport
+  * ES Modules for service workers ('module' type option)
+  * Suggested file name and location for the File System Access API
+  * adaptivePTime property for RTCRtpEncodingParameters
+  * Block HTTP port 10080 - mitigation for NAT Slipstream 2.0 attack
+  * Support WebSockets over HTTP/2
+  * Support 103 Early Hints for Navigation
+  * CVE-2021-30521: Heap buffer overflow in Autofill
+  * CVE-2021-30522: Use after free in WebAudio
+  * CVE-2021-30523: Use after free in WebRTC
+  * CVE-2021-30524: Use after free in TabStrip
+  * CVE-2021-30525: Use after free in TabGroups
+  * CVE-2021-30526: Out of bounds write in TabStrip
+  * CVE-2021-30527: Use after free in WebUI
+  * CVE-2021-30528: Use after free in WebAuthentication
+  * CVE-2021-30529: Use after free in Bookmarks
+  * CVE-2021-30530: Out of bounds memory access in WebAudio
+  * CVE-2021-30531: Insufficient policy enforcement in Content Security Policy
+  * CVE-2021-30532: Insufficient policy enforcement in Content Security Policy
+  * CVE-2021-30533: Insufficient policy enforcement in PopupBlocker
+  * CVE-2021-30534: Insufficient policy enforcement in iFrameSandbox
+  * CVE-2021-30535: Double free in ICU
+  * CVE-2021-21212: Insufficient data validation in networking
+  * CVE-2021-30536: Out of bounds read in V8
+  * CVE-2021-30537: Insufficient policy enforcement in cookies
+  * CVE-2021-30538: Insufficient policy enforcement in content security policy
+  * CVE-2021-30539: Insufficient policy enforcement in content security policy
+  * CVE-2021-30540: Incorrect security UI in payments
+  * Various fixes from internal audits, fuzzing and other initiatives
+  * drop chromium-90-TokenizedOutput-include.patch
+  * drop chromium-90-CrossThreadCopier-qualification.patch
+  * drop chromium-90-quantization_utils-include.patch
+  * drop chromium-90-angle-constexpr.patch
+  * add chromium-91-java-only-allowed-in-android-builds.patch
+  * add chromium-91-GCC_fix_vector_types_in_pcscan.patch
+  * add chromium-91-system-icu.patch
+</comment>
+    <requestid>895838</requestid>
+  </revision>
 </revisionlist>

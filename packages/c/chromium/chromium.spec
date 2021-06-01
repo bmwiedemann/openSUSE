@@ -16,6 +16,7 @@
 #
 
 
+%define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} > 1500
@@ -48,12 +49,12 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        90.0.4430.212
+Version:        91.0.4472.77
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
-Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{name}-%{version}.tar.xz
+Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
@@ -95,11 +96,10 @@ Patch29:        chromium-89-EnumTable-crash.patch
 Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
-Patch34:        chromium-90-angle-constexpr.patch
-Patch35:        chromium-90-TokenizedOutput-include.patch
 Patch36:        chromium-90-ruy-include.patch
-Patch37:        chromium-90-CrossThreadCopier-qualification.patch
-Patch38:        chromium-90-quantization_utils-include.patch
+Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
+Patch41:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
+Patch42:        chromium-91-system-icu.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -166,6 +166,7 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libelf)
@@ -278,7 +279,8 @@ Requires:       %{name} = %{version}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%autosetup -p1
+%setup -q -n %{rname}-%{version}
+%autopatch -p1
 
 %build
 # Fix the path to nodejs binary
@@ -379,6 +381,7 @@ keeplibs=(
     third_party/google_input_tools/third_party/closure_library/third_party/closure
     third_party/googletest
     third_party/harfbuzz-ng/utils
+    third_party/highway
     third_party/hunspell
     third_party/iccjpeg
     third_party/inspector_protocol
@@ -396,6 +399,7 @@ keeplibs=(
     third_party/libgav1
     third_party/libgifcodec
     third_party/libjingle
+    third_party/libjxl
     third_party/libphonenumber
     third_party/libsecret
     third_party/libsrtp
@@ -454,7 +458,6 @@ keeplibs=(
     third_party/rnnoise
     third_party/ruy
     third_party/s2cellid
-    third_party/schema_org
     third_party/securemessage
     third_party/shell-encryption
     third_party/simplejson
@@ -485,6 +488,7 @@ keeplibs=(
     third_party/wayland
     third_party/web-animations-js
     third_party/webdriver
+    third_party/webgpu-cts
     third_party/webrtc
     third_party/webrtc/common_audio/third_party/ooura
     third_party/webrtc/common_audio/third_party/spl_sqrt_floor
