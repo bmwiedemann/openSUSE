@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 26 04:38:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.2:
+  * Remove Python 2 support.
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Tue Oct 20 12:08:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update upstream URL

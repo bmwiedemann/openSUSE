@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>842809</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbc6640c232544b4dc9bb3aff560532f</srcmd5>
+    <version>1.0.2</version>
+    <time>1622536610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Remove Python 2 support.
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895441</requestid>
+  </revision>
 </revisionlist>
