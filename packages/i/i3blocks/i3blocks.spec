@@ -1,7 +1,7 @@
 #
 # spec file for package i3blocks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            https://github.com/vivien/i3blocks
 Source:         i3blocks-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pandoc
 Requires:       acpi
 Requires:       alsa-utils
 Requires:       i3

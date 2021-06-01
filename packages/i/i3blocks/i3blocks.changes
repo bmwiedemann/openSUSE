@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 11:12:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pandoc BuildRequires: does not exist on all archs and seem
+  unused.
+
+-------------------------------------------------------------------
 Wed Sep  2 09:26:10 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Update i3blocks to version 1.5
