@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 24 06:06:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Run the subunit filters under python3.
+- Remove duplicate BuildRequires.
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.

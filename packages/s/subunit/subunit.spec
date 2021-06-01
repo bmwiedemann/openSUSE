@@ -1,7 +1,7 @@
 #
 # spec file for package subunit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1550
 # TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
@@ -151,6 +150,7 @@ A number of useful things can be done easily with subunit:
   reported in real time.
 
 %else
+
 %package -n python3-python-%{name}
 Summary:        Streaming protocol for test results
 Group:          Development/Libraries/Python
@@ -203,7 +203,7 @@ fixtimestamp() {
 
 # Help the dependency generator
 for filt in filters/*; do
-  sed 's,%{_bindir}/env ,%{_bindir}/,' $filt > ${filt}.new
+  sed -e 's,%{_bindir}/env ,%{_bindir}/,' -e 's/python$/python3/' $filt > ${filt}.new
   chmod 0755 ${filt}.new
   touch -r $filt ${filt}.new
   mv -f ${filt}.new $filt
