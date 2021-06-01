@@ -1,0 +1,17 @@
+---
+ biplist/__init__.py |  154 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 77 insertions(+), 77 deletions(-)
+
+--- a/biplist/__init__.py
++++ b/biplist/__init__.py
+@@ -150,8 +150,8 @@ def wrapDataObject(o, for_binary=False):
+     if isinstance(o, Data) and not for_binary:
+         v = sys.version_info
+         if not (v[0] >= 3 and v[1] >= 4):
+-            o = plistlib.Data(o)
+-    elif isinstance(o, (bytes, plistlib.Data)) and for_binary:
++            o = bytes(o)
++    elif isinstance(o, bytes) and for_binary:
+         if hasattr(o, 'data'):
+             o = Data(o.data)
+     elif isinstance(o, tuple):

@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>790918</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e60eaf35770da6683b6cf0bb80d25706</srcmd5>
+    <version>1.0.3</version>
+    <time>1622536773</time>
+    <user>dimstar_suse</user>
+    <comment>- Add plistlib-Data.patch to avoid deprecated plistslib.Data
+  (bt#wooster/biplist#12).
+</comment>
+    <requestid>896364</requestid>
+  </revision>
 </revisionlist>

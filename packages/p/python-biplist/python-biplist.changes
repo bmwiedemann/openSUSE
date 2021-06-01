@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 31 12:48:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add plistlib-Data.patch to avoid deprecated plistslib.Data
+  (bt#wooster/biplist#12).
+
+-------------------------------------------------------------------
 Thu Apr  2 11:42:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove nose dep as upstream is using unittest 
