@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 27 07:41:43 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Wed Jan 20 07:14:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR python module dbm

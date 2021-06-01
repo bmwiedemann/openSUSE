@@ -57,12 +57,7 @@ of the google-api client.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-export PYTHON=$python
-[ -d .testrepository/ ] && rm -r .testrepository/
-$python setup.py testr -v
-}
+%pyunittest discover -v positional/tests/
 
 %files %{python_files}
 %license LICENSE
