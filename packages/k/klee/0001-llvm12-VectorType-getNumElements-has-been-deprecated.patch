@@ -1,0 +1,49 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Thu, 4 Mar 2021 15:02:57 +0100
+Subject: llvm12: VectorType::getNumElements() has been deprecated
+Git-repo: https://github.com/lzaoral/klee.git
+Git-commit: 74ea9e5e63c5933ca2d5d7f846858c4de6e86b81
+Patch-mainline: pr#1389
+References: LLVM 12
+
+... and has already been removed from the LLVM 13 source tree.
+
+See:
+https://reviews.llvm.org/D78127
+https://reviews.llvm.org/D95570
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ lib/Core/Executor.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/lib/Core/Executor.cpp b/lib/Core/Executor.cpp
+index a81c4882..aaa56a55 100644
+--- a/lib/Core/Executor.cpp
++++ b/lib/Core/Executor.cpp
+@@ -3137,7 +3137,11 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+       return;
+     }
+     uint64_t iIdx = cIdx->getZExtValue();
++#if LLVM_VERSION_MAJOR >= 11
++    const auto *vt = cast<llvm::FixedVectorType>(iei->getType());
++#else
+     const llvm::VectorType *vt = iei->getType();
++#endif
+     unsigned EltBits = getWidthForLLVMType(vt->getElementType());
+ 
+     if (iIdx >= vt->getNumElements()) {
+@@ -3175,7 +3179,11 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+       return;
+     }
+     uint64_t iIdx = cIdx->getZExtValue();
++#if LLVM_VERSION_MAJOR >= 11
++    const auto *vt = cast<llvm::FixedVectorType>(eei->getVectorOperandType());
++#else
+     const llvm::VectorType *vt = eei->getVectorOperandType();
++#endif
+     unsigned EltBits = getWidthForLLVMType(vt->getElementType());
+ 
+     if (iIdx >= vt->getNumElements()) {
+-- 
+2.26.2
+

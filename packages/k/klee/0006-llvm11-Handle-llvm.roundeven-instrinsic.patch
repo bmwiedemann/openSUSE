@@ -1,0 +1,31 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Thu, 27 May 2021 21:25:00 +0200
+Subject: llvm11: Handle llvm.roundeven instrinsic
+Git-repo: https://github.com/lzaoral/klee.git
+Git-commit: 2b29d86a39421ac76421b888b96613173bc18851
+Patch-mainline: pr#1389
+References: LLVM 12
+
+See: https://reviews.llvm.org/D75670
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ lib/Module/IntrinsicCleaner.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/Module/IntrinsicCleaner.cpp b/lib/Module/IntrinsicCleaner.cpp
+index a4bb4ee8..0851d8b5 100644
+--- a/lib/Module/IntrinsicCleaner.cpp
++++ b/lib/Module/IntrinsicCleaner.cpp
+@@ -427,6 +427,9 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+       case Intrinsic::readcyclecounter:
+       case Intrinsic::returnaddress:
+       case Intrinsic::round:
++#if LLVM_VERSION_CODE >= LLVM_VERSION(11, 0)
++      case Intrinsic::roundeven:
++#endif
+       case Intrinsic::sin:
+       case Intrinsic::sqrt:
+       case Intrinsic::stackrestore:
+-- 
+2.26.2
+

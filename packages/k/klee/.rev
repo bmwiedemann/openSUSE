@@ -1162,4 +1162,31 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>876179</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>53390c97c69cea5888df980e95417270</srcmd5>
+    <version>2.2+20210510</version>
+    <time>1622536494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+20210510:
+  * allocate memory objects for functions
+  * differentiate between partial and completed paths in summary and fix paths
+    stats when not dumping states
+  * posix runtime: add malloc checks
+  * Fix erroneous klee-stats legend for --print-all
+  * Replaced the time-based delay
+  * Refactored maxStaticPctChecks into a sequence of conditions.
+  * Added a warning when forking is skipped due to MaxStatic*Pct limits being
+    reached
+  * Added -max-static-pct-check-delay to replace the hardcoded delay after
+    which the MaxStatic*Pct checks are performed.
+  * klee-replay: Fix -Wformat-truncation warning
+- Switch to LLVM 12. (patches from pr#1389 + 1)
+  * 0001-llvm12-VectorType-getNumElements-has-been-deprecated.patch
+  * 0002-llvm12-Add-LLVM-12-to-lit.cfg.patch
+  * 0005-llvm12-Implement-llvm.-s-u-max-min-intrinsics.patch
+  * 0006-llvm11-Handle-llvm.roundeven-instrinsic.patch
+  * 0007-llvm12-Implement-llvm.abs-intrinsic.patch
+  * 0001-test-disable-until-it-is-fixed.patch</comment>
+    <requestid>895887</requestid>
+  </revision>
 </revisionlist>

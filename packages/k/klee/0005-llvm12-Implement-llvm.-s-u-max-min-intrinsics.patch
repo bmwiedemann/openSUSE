@@ -1,0 +1,130 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Thu, 27 May 2021 21:20:58 +0200
+Subject: llvm12: Implement llvm.{s,u}{max,min} intrinsics
+Git-repo: https://github.com/lzaoral/klee.git
+Git-commit: a34fb8961649bf3a065ec8f0eb4bc58715fd1d57
+Patch-mainline: pr#1389
+References: LLVM 12
+
+The vector variants are not implemented at the moment.
+
+See: https://reviews.llvm.org/D84125
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ lib/Module/IntrinsicCleaner.cpp | 35 ++++++++++++++++++++
+ test/Intrinsics/MinMax.ll       | 57 +++++++++++++++++++++++++++++++++
+ 2 files changed, 92 insertions(+)
+ create mode 100644 test/Intrinsics/MinMax.ll
+
+diff --git a/lib/Module/IntrinsicCleaner.cpp b/lib/Module/IntrinsicCleaner.cpp
+index eaec7722..a4bb4ee8 100644
+--- a/lib/Module/IntrinsicCleaner.cpp
++++ b/lib/Module/IntrinsicCleaner.cpp
+@@ -345,6 +345,41 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+       }
+ #endif
+ 
++#if LLVM_VERSION_CODE >= LLVM_VERSION(12, 0)
++      case Intrinsic::smax:
++      case Intrinsic::smin:
++      case Intrinsic::umax:
++      case Intrinsic::umin: {
++        IRBuilder<> builder(ii);
++        assert(ii->getNumArgOperands() == 2 && "wrong number of arguments");
++
++        Value *op1 = ii->getArgOperand(0);
++        Value *op2 = ii->getArgOperand(1);
++
++        assert(op1->getType() == op2->getType() && "operand type mismatch");
++
++        // TODO: vectors
++        assert(!isa<VectorType>(op1->getType()) &&
++               "llvm.{s,u}{max,min} with vectors is not supported");
++
++        Value *condition = nullptr;
++        if (ii->getIntrinsicID() == Intrinsic::smax)
++          condition = builder.CreateICmpSGT(op1, op2);
++        else if (ii->getIntrinsicID() == Intrinsic::smin)
++          condition = builder.CreateICmpSLT(op1, op2);
++        else if (ii->getIntrinsicID() == Intrinsic::umax)
++          condition = builder.CreateICmpUGT(op1, op2);
++        else // (ii->getIntrinsicID() == Intrinsic::umin)
++          condition = builder.CreateICmpULT(op1, op2);
++
++        Value *result = builder.CreateSelect(condition, op1, op2);
++        ii->replaceAllUsesWith(result);
++        ii->eraseFromParent();
++        dirty = true;
++        break;
++      }
++#endif
++
+       // The following intrinsics are currently handled by LowerIntrinsicCall
+       // (Invoking LowerIntrinsicCall with any intrinsics not on this
+       // list throws an exception.)
+diff --git a/test/Intrinsics/MinMax.ll b/test/Intrinsics/MinMax.ll
+new file mode 100644
+index 00000000..429fb1f2
+--- /dev/null
++++ b/test/Intrinsics/MinMax.ll
+@@ -0,0 +1,57 @@
++; REQUIRES: geq-llvm-12.0
++; RUN: %llvmas %s -o=%t.bc
++; RUN: rm -rf %t.klee-out
++; RUN: %klee -exit-on-error --output-dir=%t.klee-out --optimize=false %t.bc | \
++; RUN: FileCheck %s
++; ModuleID = 'MinMax.ll'
++source_filename = "MinMax.c"
++target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
++target triple = "x86_64-unknown-linux-gnu"
++
++@0 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
++@1 = private unnamed_addr constant [4 x i8] c"%u\0A\00", align 1
++
++; Function Attrs: nofree nounwind uwtable
++define dso_local i32 @main() local_unnamed_addr #0 {
++  ; smax
++  %1 = call i32 @llvm.smax.i32(i32 -10, i32 10)
++  %2 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @0, i64 0, i64 0), i32 %1)
++  ; CHECK: 10
++  ; smin
++  %3 = call i32 @llvm.smin.i32(i32 -10, i32 %2)
++  %4 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @0, i64 0, i64 0), i32 %3)
++  ; CHECK: -10
++  ; smin
++  %5 = call i32 @llvm.umax.i32(i32 %2, i32 20)
++  %6 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @1, i64 0, i64 0), i32 %5)
++  ; CHECK: 20
++  ; smin
++  %7 = call i32 @llvm.umin.i32(i32 10, i32 %5)
++  %8 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @1, i64 0, i64 0), i32 %7)
++  ; CHECK: 10
++  ret i32 0
++}
++
++; Function Attrs: nofree nounwind
++declare dso_local noundef i32 @printf(i8* nocapture noundef readonly, ...) local_unnamed_addr #1
++
++; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
++declare i32 @llvm.smax.i32(i32, i32) #2
++
++; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
++declare i32 @llvm.smin.i32(i32, i32) #2
++
++; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
++declare i32 @llvm.umax.i32(i32, i32) #2
++
++; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
++declare i32 @llvm.umin.i32(i32, i32) #2
++
++attributes #0 = { nofree nounwind uwtable "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
++attributes #1 = { nofree nounwind "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
++attributes #2 = { nofree nosync nounwind readnone speculatable willreturn }
++
++!0 = !{!1, !1, i64 0}
++!1 = !{!"int", !2, i64 0}
++!2 = !{!"omnipotent char", !3, i64 0}
++!3 = !{!"Simple C/C++ TBAA"}
+-- 
+2.26.2
+

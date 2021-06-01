@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version_major 11
+%define llvm_version_major 12
 %define llvm_version %{llvm_version_major}
 
 %ifarch x86_64
@@ -31,13 +31,19 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.2+20210222
+Version:        2.2+20210510
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
+Patch0:         0001-llvm12-VectorType-getNumElements-has-been-deprecated.patch
+Patch1:         0002-llvm12-Add-LLVM-12-to-lit.cfg.patch
+Patch2:         0005-llvm12-Implement-llvm.-s-u-max-min-intrinsics.patch
+Patch3:         0006-llvm11-Handle-llvm.roundeven-instrinsic.patch
+Patch4:         0007-llvm12-Implement-llvm.abs-intrinsic.patch
+Patch5:         0001-test-disable-until-it-is-fixed.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel

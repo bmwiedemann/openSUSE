@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 28 05:52:48 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 2.2+20210510:
+  * allocate memory objects for functions
+  * differentiate between partial and completed paths in summary and fix paths
+    stats when not dumping states
+  * posix runtime: add malloc checks
+  * Fix erroneous klee-stats legend for --print-all
+  * Replaced the time-based delay
+  * Refactored maxStaticPctChecks into a sequence of conditions.
+  * Added a warning when forking is skipped due to MaxStatic*Pct limits being
+    reached
+  * Added -max-static-pct-check-delay to replace the hardcoded delay after
+    which the MaxStatic*Pct checks are performed.
+  * klee-replay: Fix -Wformat-truncation warning
+- Switch to LLVM 12. (patches from pr#1389 + 1)
+  * 0001-llvm12-VectorType-getNumElements-has-been-deprecated.patch
+  * 0002-llvm12-Add-LLVM-12-to-lit.cfg.patch
+  * 0005-llvm12-Implement-llvm.-s-u-max-min-intrinsics.patch
+  * 0006-llvm11-Handle-llvm.roundeven-instrinsic.patch
+  * 0007-llvm12-Implement-llvm.abs-intrinsic.patch
+  * 0001-test-disable-until-it-is-fixed.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 07:33:34 UTC 2021 - jslaby@suse.cz
 
 - Update to version 2.2+20210222:
