@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 26 07:18:51 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Dec  4 12:49:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

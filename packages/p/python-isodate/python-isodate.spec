@@ -1,7 +1,7 @@
 #
 # spec file for package python-isodate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,15 @@
 #
 
 
-# Tests don't work and cause a dependency loop with python-SPARQLWrapper
-%bcond_without tests
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-isodate
 Version:        0.6.0
 Release:        0
-Url:            http://cheeseshop.python.org/pypi/isodate
 Summary:        An ISO 8601 Date/Time/Duration Parser and Formatter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://cheeseshop.python.org/pypi/isodate
 Source:         https://files.pythonhosted.org/packages/source/i/isodate/isodate-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,13 +48,10 @@ option.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-%python_exec setup.py -q test
-%endif
+%pyunittest discover -v src/
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGES.txt README.rst TODO.txt
 %{python_sitelib}/*
 
