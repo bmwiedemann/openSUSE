@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 09:45:01 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest_arch rpm macro
+
+-------------------------------------------------------------------
 Thu Jan  7 16:28:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove third-party/ bundled application, use the system ones

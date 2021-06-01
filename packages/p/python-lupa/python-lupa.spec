@@ -55,7 +55,9 @@ export CFLAGS="-fno-strict-aliasing %{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+mv lupa/tests .
+mv lupa lupa.hide
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
