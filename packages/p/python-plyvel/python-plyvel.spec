@@ -1,7 +1,7 @@
 #
 # spec file for package python-plyvel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ cache sizes, custom comparators.
 
 %prep
 %setup -q -n plyvel-%{version}
+mkdir tests
 
 %build
 %python_build
@@ -55,8 +56,8 @@ cache sizes, custom comparators.
 %fdupes %{buildroot}
 
 %check
-%python_exec setup.py test
-%pytest
+mv plyvel plyvel.hide
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE.rst

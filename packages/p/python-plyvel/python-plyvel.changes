@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 27 07:28:42 UTC 2021 - pgajdos@suse.com
+
+- %check: do not call setup.py test, use %pytest_arch macro
+
+-------------------------------------------------------------------
 Wed Mar 18 07:35:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.2.0
