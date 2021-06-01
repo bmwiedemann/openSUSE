@@ -1,7 +1,7 @@
 #
 # spec file for package python-Ming
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Ming
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Database mapping layer for MongoDB on Python
 License:        MIT
