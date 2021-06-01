@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 26 09:21:40 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.9
+  * Add quality slider for VP8 codec
+  * Fix setting of audio and video codecs
+  * Fix window restoration after minimizing
+  * No longer ellipsize drop down menu entries
+  * Improve camera picture quality when resizing the window
+  * Recording countdown is now shown on the same screen as the
+    recorded area
+  * Remove AAC codec support
+  * Remove x264 codec support
+  * Remove VAAPI support
+
+-------------------------------------------------------------------
 Thu Feb 25 11:49:53 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require the pulseaudio-daemon capability instead of the

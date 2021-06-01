@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
@@ -55,12 +55,8 @@ Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-ugly
 # Required for x264
 Recommends:     gstreamer-plugins-ugly-orig-addon
-Requires:       gstreamer-plugins-libav
 # Required for openh264
 Recommends:     gstreamer-plugins-bad-orig-addon
-# Required for H.264 and MPEG2 hardware encoding on Intel
-Recommends:     gstreamer-plugins-vaapi
-Recommends:     intel-vaapi-driver
 
 Provides:       vokoscreen = %{version}
 Obsoletes:      vokoscreen < %{version}
