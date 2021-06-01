@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri May 28 12:43:24 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.19.0
+  * New Features
+    - E-book viewer: Add a preference under Scrolling behavior to
+      reverse the tap zones used to turn pages. So tapping on the
+      left goes forward and the right backward
+  * Bug Fixes
+    - E-book viewer: Fix regression in 5.15 that caused incorrect
+      display of font sizes that contain a period and use absolute
+      units
+    - PDF Output: Fix font kerning issues with some TrueType fonts
+    - Edit book: Fix a regression in 5.18 that broke
+      editing/creating saved searches
+    - Windows: Fix for standalone ToC Editor not working on systems
+      where Qt WebEngine causes a crash at exit
+    - Windows MTP driver: When scanning an MTP device such as an
+      Android phone ignore folders that Windows fails to enumerate
+      instead of failing with an error
+    - ToC Editor: Fix a regression that broke choosing split points
+      in some XHTML files
+    - PDB Input: Fix a regression in calibre 5 that broke
+      processing some plucker format PDB files
+    - Edit book: Fix sorting in spell check dialog on language
+      broken for books that have unknown languages
+    - Annotations browser: Fix a typo that broke sorting for
+      highlights
+    - Annotations browser: When showing a highlight preserve
+      paragraph boundaries for multi-paragraph highlights
+    - Viewer highlights panel: Fix the "Edit notes" link not saving
+      the changes
+    - E-book viewer: When using a right click/shift-click to adjust
+      the selection, move the section boundary that is closer to
+      the click point
+
+-------------------------------------------------------------------
 Fri May 21 10:57:36 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.18.0

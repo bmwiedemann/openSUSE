@@ -2185,4 +2185,12 @@ Fix regression in Kobo driver that caused the on device column to not be updated
     <comment></comment>
     <requestid>894763</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>f9585508246e8cea6bf436f5b846596a</srcmd5>
+    <version>5.19.0</version>
+    <time>1622536694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895986</requestid>
+  </revision>
 </revisionlist>
