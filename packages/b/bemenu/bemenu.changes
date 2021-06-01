@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 25 06:48:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Makes it possible to show bemenu on focused monitor on
+    wayland #174
+
+-------------------------------------------------------------------
+Thu May 20 07:32:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Add custom key support
+  * Add key_pending field to sync wayland keyboard event loops 
+  * Add --filter option. 
+  * Support hiding filter input (#150) 
+  * Use -m option for setting monitor name and monitor
+  * Various fixes
+
+-------------------------------------------------------------------
 Sun Jul  5 07:58:26 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

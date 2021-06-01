@@ -1,7 +1,7 @@
 #
 # spec file for package bemenu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
@@ -96,7 +96,6 @@ pkg-config --cflags wayland-client
 %{_bindir}/%{name}*
 %dir %{_libdir}/bemenu/
 %{_libdir}/bemenu/bemenu-renderer-*.so
-%{_mandir}/man1/bemenu-run.1%{?ext_man}
 %{_mandir}/man1/bemenu.1%{?ext_man}
 
 %changelog

@@ -118,4 +118,22 @@
     factor</comment>
     <requestid>818829</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5ed1cd949a89686132c6693e7f68501c</srcmd5>
+    <version>0.6.1</version>
+    <time>1622536517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Makes it possible to show bemenu on focused monitor on
+    wayland #174
+
+- Update to 0.6.0:
+  * Add custom key support
+  * Add key_pending field to sync wayland keyboard event loops 
+  * Add --filter option. 
+  * Support hiding filter input (#150) 
+  * Use -m option for setting monitor name and monitor
+  * Various fixes</comment>
+    <requestid>895277</requestid>
+  </revision>
 </revisionlist>
