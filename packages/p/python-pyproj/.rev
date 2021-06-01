@@ -112,4 +112,14 @@
     <comment></comment>
     <requestid>880531</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>195e40fa4b295957adacb26b30906614</srcmd5>
+    <version>3.1.0</version>
+    <time>1622536664</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh the source tarball from pythonhosted.org.
+
+My fault that the package failed Factory acceptance tests. I originally downloaded the tarball from GitHub as I received the new release notification from that source. :) (forwarded request 895773 from LPechacek)</comment>
+    <requestid>895829</requestid>
+  </revision>
 </revisionlist>
