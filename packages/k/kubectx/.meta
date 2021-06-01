@@ -1,0 +1,6 @@
+<package name="kubectx" project="openSUSE:Factory">
+  <title>kubectx</title>
+  <description>Faster way to switch between clusters and namespaces in kubectl</description>
+  <devel project="devel:kubic" package="kubectx"/>
+  <url>https://github.com/ahmetb/kubectx</url>
+</package>
