@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May 31 06:57:57 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong Source URLs in spec 
+
+-------------------------------------------------------------------
+Mon May 24 06:26:48 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+-update to 4.0.9:
+ * You may have noticed the sudden jump from 4.0.6 to 4.0.9,
+  that's because 4.0.7 and 4.0.8 both included regressions that were
+  reported by early users and were considered bad enough to require a new release.
+  *  Testing improvements including fixes from oss-fuzz
+  *  Rework of the attach codepath
+  *  Cgroup handling rework
+  * for full list of changes see
+  https://discuss.linuxcontainers.org/t/lxc-4-0-9-lts-has-been-released/10999
+
+-------------------------------------------------------------------
+Mon May 24 06:21:37 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.6:
+  * Improve handling for compatibility architectures for seccomp
+  * Harden seccomp notifier implementation
+  * Rework parsing of /proc/<pid>/mountinfo to handle kernel regression https://bugzilla.kernel.org/show_bug.cgi?id=209971
+  * Improve network device restoration
+  * Significantly cleanup and harden config file parsing
+  * Support new capabilities CAP_PERFORM, CAP_BPF, and CAP_CHECKPOINT_RESTORE
+  * Harden containers started without CAP_NET_ADMIN
+  * for full list of changes see
+  https://discuss.linuxcontainers.org/t/lxc-4-0-6-lts-has-been-released/9926
+
+-------------------------------------------------------------------
 Thu Nov  5 11:03:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.5:

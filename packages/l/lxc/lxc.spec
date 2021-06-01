@@ -35,14 +35,14 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        4.0.5
+Version:        4.0.9
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
 License:        LGPL-2.1-or-later
 Group:          System/Management
-Source:         https://linuxcontainers.org/downloads/%{name}-%{version}.tar.gz
-Source1:        https://linuxcontainers.org/downloads/%{name}-%{version}.tar.gz.asc
+Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
