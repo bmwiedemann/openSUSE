@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  3 19:28:34 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.1.0:
+  * Update README (@hamidfzm)
+  * Bump Pipfile dependencies (@dependabot)
+
+-------------------------------------------------------------------
 Sun Apr  5 08:39:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.2:

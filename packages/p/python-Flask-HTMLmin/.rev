@@ -41,4 +41,12 @@
   * Update PyPI description</comment>
     <requestid>791501</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c5791a6d00e93ddad5f5441168f6ae6</srcmd5>
+    <version>2.1.0</version>
+    <time>1622536804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896572</requestid>
+  </revision>
 </revisionlist>
