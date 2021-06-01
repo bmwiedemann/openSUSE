@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 24 15:56:57 CEST 2021 - nine@detonation.org
+
+- update to version 2021.05
+  * Use new nqp::time instead of nqp::time_(i|n)
+  * Finish getting rid of NQPCursor
+  * Remove no longer needed $!slang override in Braid
+  * Disallow explicity specifying op write registers
+  * No need to stringify the float twice in the sprintf implementation.
+  * Hoist the repeated calculation in stringify-to-precision2 to a variable.
+  * Accurately calculate pow_n(10.0, $exp) for stringify-to-precision2.
+  * Convert scientific and shortest to use pow10 and an int for $exp.
+
+-------------------------------------------------------------------
 Sun Mar 21 21:47:04 CET 2021 - nine@detonation.org
 
 - update to version 2021.03
