@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonslicer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jsonslicer
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Streaming JSON parser with iterator interface
 License:        MIT
@@ -55,7 +55,7 @@ given path as complete Python objects.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %license LICENSE

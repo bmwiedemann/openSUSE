@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 25 09:05:08 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.1.6
+  * Provide more clear messages on missing dependencies
+- %check: use %pyunittest_arch rpm macro
+
+-------------------------------------------------------------------
 Mon Mar  9 08:45:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.5:
