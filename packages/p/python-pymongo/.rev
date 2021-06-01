@@ -397,4 +397,12 @@
     after a writeConcernError on MongoDB 4.4+ (PYTHON-2452)</comment>
     <requestid>887877</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>396e18be11586f9535d67aaa479bb7b9</srcmd5>
+    <version>3.11.4</version>
+    <time>1622536408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895918</requestid>
+  </revision>
 </revisionlist>

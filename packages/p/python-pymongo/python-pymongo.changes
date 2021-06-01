@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 28 07:38:51 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.11.4
+  - Version 3.11.4 fixes a bug where a MongoClient would mistakenly attempt to
+    create minPoolSize connections to arbiter nodes (`PYTHON-2634`_).
+
+-------------------------------------------------------------------
 Thu Apr 22 19:55:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.3:
