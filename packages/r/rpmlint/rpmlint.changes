@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 21 14:08:38 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- whitelist setroubleshoot (boo#1186344)
+
+-------------------------------------------------------------------
 Wed May 12 07:25:07 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - whitelist systemd-homed (boo#1185285) 

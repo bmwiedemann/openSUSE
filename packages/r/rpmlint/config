@@ -809,6 +809,13 @@ setOption("DBUSServices.WhiteList", (
     # systemd-homed (boo#1185285)
     "org.freedesktop.home1.conf",
     "org.freedesktop.home1.service",
+    # setroubleshoot (boo#1186344)
+    "org.fedoraproject.SetroubleshootFixit.service",
+    "org.fedoraproject.SetroubleshootPrivileged.service",
+    "org.fedoraproject.Setroubleshootd.service",
+    "org.fedoraproject.SetroubleshootFixit.conf",
+    "org.fedoraproject.SetroubleshootPrivileged.conf",
+    "org.fedoraproject.Setroubleshootd.conf",
 ))
 
 setOption("PAMModules.WhiteList", (
