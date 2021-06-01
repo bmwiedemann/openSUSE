@@ -1,7 +1,7 @@
 #
 # spec file for package issue-generator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           issue-generator
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Generates an issue files from different snippets
 License:        GPL-2.0-or-later

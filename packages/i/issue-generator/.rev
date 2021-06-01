@@ -153,4 +153,13 @@
   - Ignore *.bak, *~ and *.rpm* files [bsc#1118862]</comment>
     <requestid>843161</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>56e16e3f5bd54bd36af3f0a6da02a65f</srcmd5>
+    <version>1.13</version>
+    <time>1622536478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13
+  - SELinux: Do not call agetty --reload [bsc#1186178]</comment>
+    <requestid>895786</requestid>
+  </revision>
 </revisionlist>

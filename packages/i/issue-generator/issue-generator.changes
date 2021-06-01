@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 27 14:59:26 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.13
+  - SELinux: Do not call agetty --reload [bsc#1186178]
+
+-------------------------------------------------------------------
 Wed Oct 21 08:53:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.12
