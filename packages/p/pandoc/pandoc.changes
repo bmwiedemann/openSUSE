@@ -1,4 +1,425 @@
 -------------------------------------------------------------------
+Sun May 30 17:37:12 UTC 2021 - psimons@suse.com
+
+- Update pandoc to version 2.14.
+  ## pandoc 2.14 (2021-05-28)
+
+    * Change reader types, allowing better tracking of source positions
+      [API change].  Previously, when multiple file arguments were provided,
+      pandoc simply concatenated them and passed the contents to the readers,
+      which took a Text argument.  As a result, the readers had no way of knowing
+      which file was the source of any particular bit of text.  This meant that
+      we couldn't report accurate source positions on errors or include accurate
+      source positions as attributes in the AST.  More seriously, it meant that
+      we couldn't resolve resource paths relative to the files containing them
+      (see e.g. #5501, #6632, #6384, #3752).
+
+    * Add `rebase_relative_paths` extension (#3752).  When enabled, this
+      extension rewrites relative image and link paths by prepending
+      the (relative) directory of the containing file.  This
+      behavior is useful when your input sources are split
+      into multiple files, across several directories, with files
+      referring to images stored in the same directory.  The
+      extension can be enabled for all markdown and commonmark-based formats.
+
+    * Add Text.Pandoc.Sources (exported module), with a `Sources` type and a
+      `ToSources` class.  A `Sources` wraps a list of `(SourcePos, Text)` pairs
+      [API change]. A parsec `Stream` instance is provided for `Sources`.  The
+      module also exports versions of parsec's `satisfy` and other Char parsers
+      that track source positions accurately from a `Sources` stream (or any
+      instance of the new `UpdateSourcePos` class).
+
+    * Text.Pandoc.Parsing
+
+      + Export the modified Char parsers defined in Text.Pandoc.Sources
+        instead of the ones parsec provides.  Modified parsers to use a
+        `Sources` as stream [API change].
+      + Improve include file functions [API change].  Remove old
+        `insertIncludedFileF`.  Give `insertIncludedFile` a more general type,
+        allowing it to be used where `insertIncludedFileF` was.
+      + Add parameter to the `citeKey` parser from
+        Text.Pandoc.Parsing, which controls whether the `@{..}`
+        syntax is allowed [API change].
+
+    * Text.Pandoc.Error: Modified the constructor `PandocParsecError` to take a
+      `Sources` rather than a `Text` as first argument, so parse error locations
+      can be accurately reported.
+
+    * Fix source position reporting for YAML bibliographies (#7273).
+
+    * Issue error message when  reader or writer format is malformed
+      (#7231).  Previously we exited with an error status but (due to a bug)
+      no message.
+
+    * Smarter smart quotes (#7216, #2103).  Treat a leading `"` with no
+      closing `"` as a left curly quote.  This supports the practice, in
+      fiction, of continuing paragraphs quoting the same speaker without an
+      end quote.  It also helps with quotes that break over lines in line blocks.
+
+    * Markdown reader:
+
+      + Use MetaInlines not MetaBlocks for multimarkdown metadata fields.
+        This gives better results in converting to e.g.  pandoc markdown.
+      + Implement curly-brace syntax for Markdown citation keys (#6026).
+        The change provides a way to use citation keys that contain
+        special characters not usable with the standard citation key syntax.
+        Example: `@{foo_bar{x}'}` for the key `foo_bar{x}`.  It also allows
+        separating citation keys from immediately following text, e.g. `@{foo}A`.
+
+    * RST reader:
+
+      + Seek include files in the directory of the file
+        containing the include directive, as RST requires (#6632).
+      + Use `insertIncludedFile` from Text.Pandoc.Parsing
+        instead of reproducing much of its code.
+
+    * Org reader: Resolve org includes relative to the directory containing the
+      file containing the INCLUDE directive (#5501).
+
+    * ODT reader: Treat tabs as spaces (#7185, niszet).
+
+    * Docx reader:
+
+      + Add handling of vml image objects (#7257, mbrackeantidot).
+      + Support new table features (Emily Bourke, #6316):  column
+        spans, row spans, multiple header rows, table description
+        (parsed as a simple caption), captions, column widths.
+
+    * LaTeX reader:
+
+      + Improved siunitx support (#6658, #6620).
+      + Better support for `\xspace` (#7299).
+      + Improve parsing of `\def` macros.  We previously set "verbatim mode"
+        even for parsing the initial `\def`; this caused problems
+        for `\def` nested inside another `\def`.
+      + Implement `\newif`.
+
+    * ConTeXt writer: improve ordered lists (#5016, Denis Maier).
+      Change ordered list from itemize to enumerate.  Add new
+      itemgroup for ordered lists.  Remove manual insertion of
+      width attributes.  Use tabular figures in ordered list
+      enumerators.
+
+    * HTML reader:
+
+      + Don't fail on unmatched closing "script" tag (Albert Krenkel, #7282).
+      + Keep h1 tags as normal headers (#2293, Albert Krewinkel).
+        The tags `<title>` and `<h1 class="title">` often contain the same
+        information, so the latter was dropped from the document. However, as
+        this can lead to loss of information, the heading is now always
+        retained.  Use `--shift-heading-level-by=-1` to turn the `<h1>`
+        into the document title, or a filter to restore the previous behavior.
+      + Handle relative lengths (e.g. `2*`) in HTML column widths (#4063).
+        See <https://www.w3.org/TR/html4/types.html#h-6.6>.
+
+    * DocBook/JATS readers:
+
+      + Fix mathml regression caused by the switch in XML libraries (#7173).
+      + Fix "phrase" in DocBook: take classes from "role" not "class" (#7195).
+
+    * DocBook reader: ensure that first and last names are separated (#6541).
+
+    * Jira reader (Albert Krewinkel, #7218):
+
+      + Support "smart" links: `[alias|https://example.com|smart-card]` syntax.
+      + Allow spaces and most unicode characters in attachment links.
+      + No longer require a newline character after `{noformat}`.
+      + Only allow URI path segment characters in bare links.
+      + The `file:` schema is no longer allowed in bare links; these
+        rarely make sense.
+
+    * Plain writer: handle superscript unicode minus (#7276).
+
+    * LaTeX writer:
+
+      + Better handling of line breaks in simple tables (#7272).
+        Now we also handle the case where they're embedded in other elements,
+        e.g. spans.
+      + For beamer output, support `exampleblock` and `alertblock` (#7278).
+        A block will be rendered as an `exampleblock` if the heading
+        has class `example` and an `alertblock` if it has class `alert`.
+      + Separate successive quote chars with thin space (#6958,
+        Albert Krewinkel).  Successive quote characters are separated with
+        a thin space to improve readability and to prevent unwanted ligatures.
+        Detection of these quotes sometimes had failed if the second quote
+        was nested in a span element.
+      + Separate successive quote chars with thin space (#6958, Albert
+        Krewinkel).
+
+    * EPUB Writer: Fix belongs-to-collection XML id choice (#7267, nuew).
+      The epub writer previously used the same XML id for both the book
+      identifier and the epub collection. This causes an error on epubcheck.
+
+    * BibTeX/BibLaTeX writer: Handle `annote` field (#7266).
+
+    * ZimWiki writer: allow links and emphasis in headers (#6605,
+      Albert Krewinkel).
+
+    * ConTeXt writer:
+
+      + Support blank lines in line blocks (#6564, Albert Krewinkel,
+        thanks to @denismaier).
+      + Use span identifiers as reference anchors (#7246, Albert Krewinkel).
+
+    * HTML writer:
+
+      + Keep attributes from code nested below `pre` tag (#7221,
+        Albert Krewinkel).  If a code block is defined with `<pre><code
+        class="language-x">…</code></pre>`, where the `<pre>` element has no
+        attributes, then the attributes from the `<code>` element are used
+        instead. Any leading `language-` prefix is dropped in the code's
+        `class` attribute are dropped to improve syntax highlighting.
+      + Ensure headings only have valid attribs in HTML4 (#5944, Albert
+        Krewinkel).
+      + Parse `<header>` as a Div (Albert Krewinkel).
+
+    * Org writer:
+
+      + Inline latex envs need newlines (#7252, tecosaur).
+        As specified in https://orgmode.org/manual/LaTeX-fragments.html, an
+        inline \begin{}...\end{} LaTeX block must start on a new line.
+      + Use LaTeX style maths deliminators (#7196, tecosaur).
+
+    * JATS writer (Albert Krewinkel):
+
+      + Use either styled-content or named-content for spans (#7211).
+        If the element has a content-type attribute, or at least one class,
+        then that value is used as `content-type` and the span is put inside
+        a `<named-content>` element. Otherwise a `<styled-content>` element
+        is used instead.
+      + Reduce unnecessary use of `<p>` elements for wrapping (#7227).
+        The `<p>` element is used for wrapping in cases were the contents
+        would otherwise not be allowed in a certain context. Unnecessary
+        wrapping is avoided, especially around quotes (`<disp-quote>` elements).
+      + Convert spans to `<named-content>` elements (#7211).  Spans with
+        attributes are converted to `<named-content>` elements instead of
+        being wrapped with `<milestone-start/>` and `<milestone-end>`
+        elements. Milestone elements are not allowed in documents using the
+        articleauthoring tag set, so this change ensures the creation of valid
+        documents.
+      + Add footnote number as label in backmatter (#7210).  Footnotes in the
+        backmatter are given the footnote's number as a label.  The
+        articleauthoring output is unaffected from this change, as footnotes
+        are placed inline there.
+      + Escape disallows chars in identifiers.  XML identifiers must start
+        with an underscore or letter, and can contain only a limited set
+        of punctuation characters. Any IDs not adhering to these rules are
+        rewritten by writing the offending characters as `Uxxxx`,
+        where `xxxx` is the character's hex code.
+
+    * Jira writer:  use `{color}` when span has a color attribute
+      (Albert Krewinkel, tarleb/jira-wiki-markup#10).
+
+    * Docx writer:
+
+      + Autoset table width if no column has an explicit width (Albert
+        Krewinkel).
+      + Extract Table handling into separate module (Albert Krewinkel).
+      + Support colspans and rowspans in tables (Albert Krewinkel, #6315).
+      + Support multirow table headers (Albert Krewinkel).
+      + Improve integration of settings from reference.docx (#1209).
+        This change allows users to create a reference.docx that
+        sets `w:proofState` for spelling or grammar to `dirty`,
+        so that spell/grammar checking will be triggered on the
+        generated docx.
+      + Copy over more settings from reference.docx (#7240).  From settings.xml
+        in the reference-doc, we now include: `zoom`, `embedSystemFonts`,
+        `doNotTrackMoves`, `defaultTabStop`, `drawingGridHorizontalSpacing`,
+        `drawingGridVerticalSpacing`, `displayHorizontalDrawingGridEvery`,
+        `displayVerticalDrawingGridEvery`, `characterSpacingControl`,
+        `savePreviewPicture`, `mathPr`, `themeFontLang`, `decimalSymbol`,
+        `listSeparator`, `autoHyphenation`, `compat`.
+      + Set zoom to 100% by default in settings.xml.
+      + Align math options more with current Word defaults (e.g.  Cambria Math
+        font).
+      + Remove `rsid`s from default settings.xml.  Word will add these
+        when revisions are made.
+
+    * Ms writer: Handle tables with multiple paragraphs (#7288).
+      Previously they overflowed the table cell width.  We now set line lengths
+      per-cell and restore them after the table has been written.
+
+    * Markdown writer:
+
+      + Use cleaner braceless syntax for code blocks with a
+        single class (#7242, Jan Tojnar).
+      + Add quotes properly in markdown YAML metadata fields (#7245).
+        This fixes a bug, which caused the writer to look at the *last*
+        rather than the *first* character in determining whether quotes
+        were needed.  So we got spurious quotes in some cases and
+        didn't get necessary quotes in others.
+      + Use `@{..}` syntax for citations when needed.
+      + Use fewer unneeded escapes for `#` (see #6259).
+      + Improve escaping of `@`.  We need to escape literal `@` before
+        `{` because of the new citation syntax.
+
+    * Commonmark writer: Use backslash escapes for `<` and `|`...
+      instead of entities (#7208).
+
+    * Powerpoint writer: allow `monofont` to be specified in metadata
+      (#7187).
+
+    * LaTeX template:
+
+      + Use non-starred names for xcolor color names (#6109).
+        This should make svgnames and x11names work properly.
+      + Fix bad vertical spacing after bibliography (#7234, badumont).
+      + List of figures before list of tables (#7235, Julien Dutant).
+      + Move CSL macro definitions before header-includes so they can be
+        overridden (#7286).
+      + Improve treatment of CSL `entry-spacing` (#7296).
+        Previously with the default template settings (`indent` variable
+        not set), we would get interparagraph spaces separating bib
+        entries even with `entry-spacing="0"`.  On the other hand,
+        setting `entry-spacing="2"` gave ridiculously large spacing.
+        This change makes the spacing caused by `entry-spacing` a multiple
+        of `\parskip` by default, which gives aesthetically reasonable
+        output.  Those who want a larger or smaller unit (e.g. because
+        they use `indent` which sets `\parskip` to 0) may
+        `\setlength{\cslentryspacingunit}{10pt}` in header-includes
+        to override the defaults.
+      + Move title, author, date up to top of preamble (#7295).
+        This allows header-includes to use them, and puts them
+        in a position where you can see them immediately.
+      + Define commands for zero width non-joiner character
+        (#6639, Albert Krewinkel).  The zero-width non-joiner character
+        is used to avoid ligatures (e.g. in German).
+
+    * ConTeXt template: List of figures before list of tables (#7235,
+      Julien Dutant).
+
+    * reveal.js template:
+
+      + Support `toc-title` (#7171, Florian Kohrt).
+      + Use `hash: true` by default rather than `history: true` (#6968).
+
+    * HTML-based slide shows: add support for `institute` (#7289, Thomas
+      Hodgson).
+
+    * Text.Pandoc.Extensions: Add constructor `Ext_rebase_relative_paths` to
+      `Extensions` [API change].
+
+    * Text.Pandoc.XML.Light: add Eq, Ord instances for Content,
+      Element, Attr, CDataKind [API change].
+
+    * Text.Pandoc.MediaBag:
+
+      + Change type to use a `Text` key instead of `[FilePath]`.
+        We normalize the path and use `/` separators for consistency.
+      + Export `MediaItem` type [API change].
+      + Change `MediaBag` type to a map from Text to MediaItem [API change].
+      + `lookupMedia` now returns a `MediaItem` [API change].
+      + Change `insertMedia` so it sets the `mediaPath` to a filename based on
+        the SHA1 hash of the contents.  This will be used when contents
+        are extracted.
+
+    * Text.Pandoc.Class.PandocMonad:
+
+      + Remove `fetchMediaResource` [API change].  Use `fetchItem` to get
+        resources in `fillMediaBag`.
+      + Add informational message in `downloadOrRead` indicating what path
+        local resources have been loaded from.
+
+    * Text.Pandoc.Logging:
+
+      + Remove single quotes around paths in messages.
+      + Add LoadedResource constructor to LogMessage [API change].
+        This is for INFO-level messages telling where image data has been
+        loaded from.  (This can vary because of the resource path.)
+
+    * Text.Pandoc.Asciify: simplify code and export `toAsciiText` [API change].
+      Instead of encoding a giant (and incomplete) map, we now
+      just use unicode-transforms to normalize the text to
+      a canonical decomposition, and manipulate the result.
+
+    * App: allow tabs expansion even if file-scope is used (Albert Krewinkel,
+      #6709).  Tabs in plain-text inputs  are now handled correctly, even if
+      the `--file-scope` flag is used.
+
+    * Add new internal module Text.Pandoc.Writers.GridTable (Albert Krewinkel).
+
+    * Text.Pandoc.Highlighting: Change type of `languagesByExtension`, adding
+      a parameter for a `SyntaxMap` [API change] (Jan Tojnar, #7241).
+      Languages defined using `--syntax-definition` were not recognized by
+      `languagesByExtension`.  This patch corrects that, allowing the writers
+      to see all custom definitions.  The LaTeX writer still uses the default
+      syntax map, but that's okay in that context, since
+      `--syntax-definition` won't create new listings styles.
+
+    * Text.Pandoc.Citeproc:
+
+      + Ensure that CSL-related attributes are passed on to a Div with id
+        'refs'.  Otherwise things like `entry-spacing` won't work when
+        such Divs are used.
+      + Use metadata's `lang` for the lang parameter of citeproc, overriding
+        `localeLanguage`.
+      + Recognize locators spelled with a capital letter (#7323).
+      + Add a comma and a space in front of the suffix if it doesn't start
+        with space or punctuation (#7324).
+      + Don't detect math elements as locators (#7321).
+
+    * Remove Text.Pandoc.BCP47 module [API change].  Use types and functions
+      from UnicodeCollation.Lang instead.  This is a richer implementation
+      of BCP 47.
+
+    * Text.Pandoc.Shared:
+
+      + Fix regression in grid tables for wide characters (#7214).
+        In the translation from String to Text, a char-width-sensitive
+        `splitAt'` was dropped.  This commit reinstates it and uses it to make
+        `splitTextByInstances` char-width sensitive.
+      + Add `getLang` (formerly in the now-removed BCP47) [API change].
+
+    * Text.Pandoc.SelfContained: use `application/octet-stream`
+      for unknown mime types instead of halting with an error (#7202).
+
+    * Lua filters: respect Inlines/Blocks filter functions in `pandoc.walk_*`
+      (Albert Krewinkel).
+
+    * Add text as build-depend for trypandoc (#7193, Roman Beránek).
+
+    * Bump upper-bounds for network-uri, time, attoparsec.
+
+    * Use citeproc 0.4.
+
+    * Use texmath 0.12.3.
+
+    * Use jira-wiki-markup 1.3.5 (Albert Krewinkel).
+
+    * Require latest skylighting (fixes a bug in XML syntax highlighting).
+
+    * Use latest xml-conduit.
+
+    * Use latest commonmark, commonmark-extensions, commonmark-pandoc.
+
+    * Use haddock-library-1.10.0 (Albert Krewinkel).
+
+    * Allow compilation with base 4.15 (Albert Krewinkel).
+
+    * MANUAL:
+
+      + Add information about `lang` and bibliography sorting.
+      + Add info about YAML escape sequences, link to spec (#7152,
+        Albert Krewinkel).
+      + Note that `institute` variable works for HTML-based slides.
+      + Update documentation on citation syntax.
+      + Add citation example for locators and suffixes (Tristan Stenner)
+
+    * Updated and fixed typos in documentation (Charanjit Singh,
+      Anti-Distinctlyminty, Tatiana Porras, obcat).
+
+    * Add instructions for installing pandoc-types before compiling filter.
+
+    * INSTALL: add note that parallel installations should be avoided
+      (#6865).
+
+    * Remove `biblatex-nussbaum.md` test.  It is basically the same
+      as `biblaetx-quotes.md`.
+
+    * Command tests: fail if a file contains no tests---and fix a
+      test that failed in that way!
+
+-------------------------------------------------------------------
 Mon Mar 22 08:39:26 UTC 2021 - psimons@suse.com
 
 - Update pandoc to version 2.13.

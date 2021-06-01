@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  ghc-JuicyPixels-devel
 BuildRequires:  ghc-SHA-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
+BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-binary-devel
@@ -87,6 +88,7 @@ BuildRequires:  ghc-texmath-devel
 BuildRequires:  ghc-text-conversions-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unordered-containers-devel
@@ -144,7 +146,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build
