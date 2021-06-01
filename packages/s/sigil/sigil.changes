@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat May 29 15:57:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.0
+  * New Features:
+    - Find and Replace search targets expanded to include tabbed
+      files, CSS files, OPF and NCX files
+    - Saved Searches now save full search Controls (mode,
+      direction, options, and targets)
+    - Preview loading is now completely asynchronous with a loading
+      progress bar and loading placeholder
+    - Merge will now automatically prevent duplicate ids
+    - Merge will automatically add ids are former file boundaries
+      to prevent TOC, Guide, and href losses
+    - A new Xhtml Highlighter speeds up huge single file loading
+      considerably
+    - Redesigned CodeView Spellchecking to bring it back to
+      Sigil-1.3.0 speeds
+    - The External XHTML editor will now always pass along the OPF
+      path and spine position to simplify interface with PageEdit
+      (use "Open With" if you want the old behaviour)
+    - Added PyQtWebEngine as a newly required python module for
+      Plugins. ie. Plugins now have access to browser functionality
+      for implementing e-Readers, more complex guis.
+  * Bug Fixes:
+    - Add Qt workaround for restoring Sigil window sizes when 
+      FindReplace left open on macOS
+    - Add missing tr() calls to the tooltips in the Special
+      Character selection dialog
+    - Fix bug when all unused selectors are removed as in css
+      stylesheet - adds a comment placeholder
+    - Make empty Nav have a title to help empty epub passing
+      epubcheck
+    - Fix bug where fonts couldn't be previewed when a space was
+      in the path
+    - Redesigned code to make Merging large numbers of files much
+      faster
+    - Fix bug in blank language field in Spellcheck Dialog 
+    - Fix use of different indentation of css via PR from BeckyEbook
+    - Fix typos in plugin framework guide
+    - Fix hang on launch when opf manifested files exist inside the
+      META_INF
+    - Fix Metadata Editor bugs related to alternate-script
+    - Fix Metadata Editor bugs related to epub2 event dates
+- Update sigil user guide to version 2021.05.27.
+
+-------------------------------------------------------------------
 Fri Mar 26 19:17:58 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.5.1
