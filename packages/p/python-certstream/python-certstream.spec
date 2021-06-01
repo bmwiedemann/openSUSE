@@ -1,7 +1,7 @@
 #
 # spec file for package python-certstream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certstream
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Python library for receiving certificate transparency list updates
 License:        MIT
@@ -27,11 +27,11 @@ Source0:        https://files.pythonhosted.org/packages/source/c/certstream/cert
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 #SECTION tests
 BuildRequires:  %{python_module termcolor}
-BuildRequires:  %{python_module websocket-client >= 0.48.0}
+BuildRequires:  %{python_module websocket-client >= 0.58.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # /SECTION
 Requires:       python3-termcolor
 Requires:       python3-websocket-client >= 0.48.0
