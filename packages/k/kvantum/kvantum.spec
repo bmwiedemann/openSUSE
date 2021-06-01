@@ -17,7 +17,7 @@
 
 
 Name:           kvantum
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        SVG-based theme engine for Qt5
 License:        GPL-3.0-or-later

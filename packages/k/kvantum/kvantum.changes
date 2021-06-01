@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 31 23:04:34 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.20.0
+
+  - Fixed drawing of view-items with right-aligned decorations.
+  - Added an option for always centering normal tabs (in contrast to the document mode).
+  - Added an option (to Kvantum Manager) for styling vertical toolbars.
+  - Fixed a small problem in tab overlapping.
+  - Don't allow kinetic scrolling inside subwindows.
+  - Used version check for KWindowSystem because of method deprecations.
+  - Dropped support for Qt5 < 5.12.
+
+-------------------------------------------------------------------
 Thu Mar 25 02:03:54 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.19.0
