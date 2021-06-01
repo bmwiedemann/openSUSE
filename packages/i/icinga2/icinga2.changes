@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 27 12:35:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.4
+  * Bugfixes
+    - Fix a crash when notification objects are deleted using the
+      API #8782
+    - Fix crashes that might occur during downtime scheduling if
+      host or downtime objects are deleted using the API #8785
+    - Fix an issue where notifications may incorrectly be skipped
+      after a downtime ends #8775
+    - Don't send reminder notification if the notification is still
+      suppressed by a time period #8808
+    - Fix an issue where attempting to create a duplicate object
+      using the API might result in the original object being
+      deleted #8787
+    - IDO: prioritize program status updates #8809
+    - Improve exceptions handling, including a fix for an uncaught
+      exception on Windows #8777
+    - Retry file rename operations on Windows to avoid intermittent
+      locking issues #8771
+  * Enhancements
+    - Support Boost 1.74 (Ubuntu 21.04, Fedora 34) #8792
+
+- Drop icinga2-boost-8185-8184.patch, icinga2-boost-8185-8190.patch
+  and icinga2-boost-8185-8191.patch because now in upstream.
+
+-------------------------------------------------------------------
 Tue Dec 15 13:46:26 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.3

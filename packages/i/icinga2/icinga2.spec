@@ -1,7 +1,7 @@
 #
 # spec file for package icinga2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.12.3
+Version:        2.12.4
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
@@ -108,12 +108,6 @@ Source1:        icinga2-rpmlintrc
 %if "%{_vendor}" == "suse"
 # PATCH-FEATURE-OPENSUSE ecsos -- insert missing graphite tags as descriped in icingaweb2-module-graphite docs.
 Patch0:         icinga2-graphite.patch
-%if 0%{?suse_version} > 1500
-# PATCH-FEATURE-OPENSUSE ecsos -- Boost in Tumbleweed is to new. Fix boost build error in Tumbleweed. Should be included in version 2.13.0
-Patch1:         icinga2-boost-8185-8184.patch
-Patch2:         icinga2-boost-8185-8190.patch
-Patch3:         icinga2-boost-8185-8191.patch
-%endif
 %endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -328,12 +322,6 @@ Provides Nano syntax highlighting for icinga2.
 %if "%{_vendor}" == "suse"
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
 %patch0 -p1
-%if 0%{?suse_version} > 1500
-# Fix boost biuld error in Tumbleed. Should be fixed in 2.13.0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%endif
 %endif
 
 %build
