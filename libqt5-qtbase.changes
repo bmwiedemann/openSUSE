@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 26 11:49:02 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add trailing newline to qtlogging.ini
+
+-------------------------------------------------------------------
 Tue Apr 13 07:06:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix possible crash caused by GCC 11 build fix:
