@@ -1014,4 +1014,13 @@ Fri Aug  16 11:07:26 UTC 2019 - tmuntaner@suse.com
 </comment>
     <requestid>893979</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6194d1643e411dbb30580e954b23946f</srcmd5>
+    <version>2.6.9</version>
+    <time>1622536626</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: Store authorization tokens when adding custom repositories
+- Fix: Don't append slash to custom repository urls</comment>
+    <requestid>895562</requestid>
+  </revision>
 </revisionlist>
