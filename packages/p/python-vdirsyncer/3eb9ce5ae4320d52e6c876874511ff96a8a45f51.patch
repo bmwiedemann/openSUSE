@@ -4,15 +4,13 @@ Date: Tue, 9 Jun 2020 14:45:02 +0200
 Subject: [PATCH] Add compatibility with latest click
 
 ---
- setup.py                      | 2 +-
- tests/system/cli/test_sync.py | 5 ++++-
+ setup.py                      |    2 +-
+ tests/system/cli/test_sync.py |    5 ++++-
  2 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/setup.py b/setup.py
-index 59549f16..d584b95d 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -11,7 +11,7 @@
+@@ -11,7 +11,7 @@ from setuptools import Command, find_pac
  
  requirements = [
      # https://github.com/mitsuhiko/click/issues/200
@@ -21,11 +19,9 @@ index 59549f16..d584b95d 100644
      'click-log>=0.3.0, <0.4.0',
  
      # https://github.com/pimutils/vdirsyncer/issues/478
-diff --git a/tests/system/cli/test_sync.py b/tests/system/cli/test_sync.py
-index f2423764..43d35dd8 100644
 --- a/tests/system/cli/test_sync.py
 +++ b/tests/system/cli/test_sync.py
-@@ -123,7 +123,10 @@ def test_verbosity(tmpdir, runner):
+@@ -122,7 +122,10 @@ def test_verbosity(tmpdir, runner):
      runner.write_with_general('')
      result = runner.invoke(['--verbosity=HAHA', 'sync'])
      assert result.exception

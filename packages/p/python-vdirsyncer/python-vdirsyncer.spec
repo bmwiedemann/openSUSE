@@ -32,6 +32,9 @@ Source2:        vdirsyncer.timer
 Patch1:         python-vdirsyncer-shift-deadline.patch
 # Compatibility with latest click - taken directly from upstream git
 Patch2:         3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch
+# PATCH-FIX-UPSTREAM deprecated_getiterator.patch gh#pimutils/vdirsyncer#880 mcepl@suse.com
+# .getiterator() in etree.Element is obsolete, use just plain iter()
+Patch0:         deprecated_getiterator.patch
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
@@ -71,9 +74,8 @@ resources, vdir and some more. It aims to be for CalDAV and CardDAV
 what OfflineIMAP is for IMAP.
 
 %prep
-%setup -q -n vdirsyncer-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n vdirsyncer-%{version}
+
 rm -rf vdirsyncer.egg-info
 
 %build

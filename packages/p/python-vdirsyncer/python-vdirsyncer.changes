@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 31 15:07:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add deprecated_getiterator.patch (.getiterator() in
+  etree.Element is obsolete, use just plain iter())
+  gh#pimutils/vdirsyncer#880
+
+-------------------------------------------------------------------
 Tue Apr 12 06:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove ifpython3 macro guarding the Provides/Obsoletes 

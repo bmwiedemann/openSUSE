@@ -113,4 +113,15 @@
  * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch</comment>
     <requestid>884562</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>df25fa84af7566d8bd3b05683d07b757</srcmd5>
+    <version>0.16.8</version>
+    <time>1622536781</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deprecated_getiterator.patch (.getiterator() in
+  etree.Element is obsolete, use just plain iter())
+  gh#pimutils/vdirsyncer#880
+</comment>
+    <requestid>896413</requestid>
+  </revision>
 </revisionlist>
