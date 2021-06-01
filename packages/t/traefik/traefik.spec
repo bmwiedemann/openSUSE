@@ -16,7 +16,6 @@
 #
 
 %define project github.com/traefik/traefik
-%define build_date %(date +"%Y%m%d")
 
 Name:           traefik
 Version:        2.4.8
@@ -51,6 +50,7 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 %setup -q
 
 %build
+build_date=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +"%%Y%%m%%d")
 %{goprep} %{project}
 
 # tarball causes "inconsistent vendoring"
@@ -63,7 +63,7 @@ go generate
 go build \
   -buildmode=pie \
   -mod=vendor \
-  -ldflags "-s -w -X github.com/traefik/traefik/v2/pkg/version.Version=%{version} -X github.com/traefik/traefik/v2/pkg/version.Codename='' -X github.com/traefik/traefik/v2/pkg/version.BuildDate=%{build_date}" \
+  -ldflags "-s -w -X github.com/traefik/traefik/v2/pkg/version.Version=%{version} -X github.com/traefik/traefik/v2/pkg/version.Codename='' -X github.com/traefik/traefik/v2/pkg/version.BuildDate=${build_date}" \
   -o traefik ./cmd/traefik/
 
 %install
