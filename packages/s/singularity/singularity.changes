@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 19 18:52:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.3
+  Fix for CVE-2021-29136:
+  A dependency used to extract docker/OCI image layers can be
+  tricked into modifying host files by creating a malicious layer
+  that has a symlink with the name "." (or "/"), when running as root.
+
+-------------------------------------------------------------------
 Fri Mar 12 10:00:35 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.7.2
