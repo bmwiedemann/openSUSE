@@ -17,17 +17,17 @@
 
 
 Name:           logrotate
-Version:        3.18.0
+Version:        3.18.1
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/logrotate/logrotate
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # SUSE specific logrotate configurations
 Source1:        logrotate.wtmp
 Source2:        logrotate.default
+Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source100:      %{name}-rpmlintrc
 Patch0:         logrotate-3.13.0-systemd_add_home_env.patch
 BuildRequires:  acl
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(systemd) >= 197
-Requires:       /usr/bin/xz
+Requires:       %{_bindir}/xz
 %{?systemd_ordering}
 
 %description
@@ -56,10 +56,10 @@ It manages plain files only and is not involved in systemd's journal rotation.
     --disable-silent-rules \
     --with-state-file-path=%{_localstatedir}/lib/misc/logrotate.status \
     --disable-werror
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -94,8 +94,8 @@ fi
 %doc ChangeLog.md README.md
 %{_sbindir}/logrotate
 %{_sbindir}/rc%{name}
-%{_mandir}/man8/logrotate.8*
-%{_mandir}/man5/logrotate.conf.5*
+%{_mandir}/man8/logrotate.8%{?ext_man}
+%{_mandir}/man5/logrotate.conf.5%{?ext_man}
 %config %{_sysconfdir}/logrotate.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/wtmp
 %{_unitdir}/%{name}.service

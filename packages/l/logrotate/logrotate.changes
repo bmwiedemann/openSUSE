@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 27 16:31:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.1:
+  * fix memory leaks on error-handling paths
+  * make `renamecopy` and `copytruncate` override each other
+  * improve error handling in the parser of configuration files
+  * improve user experience for non-privileged users of logrotate
+
+-------------------------------------------------------------------
 Wed Feb  3 07:45:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.18.0:
