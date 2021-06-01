@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 28 15:54:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not own /usr/share/help and /usr/share/help/C: those
+  directories are owned by the filesystem package.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:27:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.12.1:

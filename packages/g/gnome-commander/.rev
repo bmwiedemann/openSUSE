@@ -15,4 +15,13 @@
     <comment>Update to 1.12.1 (forwarded request 889632 from dimstar)</comment>
     <requestid>890150</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5b154d1675690209d9edca1783d4d336</srcmd5>
+    <version>1.12.1</version>
+    <time>1622536700</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not own /usr/share/help and /usr/share/help/C: those
+  directories are owned by the filesystem package.</comment>
+    <requestid>896011</requestid>
+  </revision>
 </revisionlist>

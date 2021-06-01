@@ -98,8 +98,6 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %{_mandir}/man1/gnome-commander.1%{ext_man}
 
 %files doc
-%dir %{_datadir}/help
-%dir %{_datadir}/help/C
 %doc %{_datadir}/help/C/%{name}
 
 %files lang -f %{name}.lang
