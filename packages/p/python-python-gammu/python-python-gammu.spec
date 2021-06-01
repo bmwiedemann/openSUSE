@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gammu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,8 @@ export CFLAGS="%{optflags}"
 # Need to limit tests due to brekage of libdbi
 rm test/test_smsd.py
 export LANG=en_US.UTF-8
-%python_expand $python setup.py test -s test.test_dummy
+mv gammu gammu.hide
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %license COPYING
