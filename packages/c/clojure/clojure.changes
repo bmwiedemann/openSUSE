@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu May 27 05:49:14 UTC 2021 - Petr Cervinka <petr@cervinka.net>
+
+- Update to 1.10.3.855:
+  * Fix in applying :jvm-opts with -X execution on Windows
+
+- Changes in 1.10.3.849:
+  * Adds support for a trailing map of kvs in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
+  * Updates all Maven deps to latest (maven-resolver 1.7.0, maven core 1.8.3) to address these security concerns
+    - CVE-2020-13956 - bumps deps on Apache HttpClient used by Maven
+    - CVE-2021-26291 - potential security problems regarding Maven repositories:
+      - Due to the possibility of MITM (man in the middle) attacks, http repo access is now blocked by default.
+        tools.deps/Clojure CLI has always used https repos in the default repository list (central and clojars),
+        so this mostly impacts any explicit http repositories defined in deps.edn
+      - Concerns over the "hijacking" of repository urls by transitive pom deps (or their super poms) to download
+        artifacts from malicious repos. Maven made no changes here, but did clarify how repos are resolved on this page.
+        From a deps perspective, we only use repositories declared in the top-level deps.edn (if transitive deps need a custom repo,
+        you will need to add it at top-level too). For tools.deps use of pom dependencies, we are providing the repos of
+        the top deps.edn file (which should always put Maven Central and Clojars first), then deferring to Maven for the rest.
+   * Use tools.deps.alpha 0.11.922
+
+- Changes in 1.10.3.839:
+  * Fix Linux installer breakage in 1.10.3.833
+
+- Changes in 1.10.3.833:
+  * TDEPS-177 - Fix Maven mirrors to look up by id, not name
+  * Remove flag when fetching git deps so that older git versions work
+  * Tweak some warning messages
+  * Clean up scripts to simplify variable replacement
+  * Use tools.deps.alpha 0.11.918
+
+- Changes in 1.10.3.822:
+  * Fix issue with git deps where new commits on branches were not fetched
+
+- Changes in 1.10.3.814:
+  * git deps: switch from using jgit to shelling out to git (must be git >= 2.5)
+  * New env vars for control:
+    - GITLIBS_COMMAND - command to invoke when shelling out to git, default = git
+    - GITLIBS_DEBUG - set to true to print git commands and output to stderr, default = false
+  * Made git fetch only when shas can’t be resolved to improve performance
+  * Bump dep versions for tools.cli and aws api to latest
+  * Use tools.deps.alpha 0.11.905
+
+- Changes in 1.10.2.796:
+  * Fix clj -X:deps git-resolve-tags to update the sha to match the tag
+  * Perf improvements for git or local deps using pom.xml
+  * Use tools.deps.alpha 0.9.884
+
+- Changes in 1.10.2.790:
+  * Add -version and --version options
+  * TDEPS-56 - Fix main-opts and jvm-opts word splitting on spaces
+  * TDEPS-125 - Use JAVA_CMD if set (thanks Gregor Middell!)
+  * Add warning if :paths or :extra-paths refers to a directory outside the project root (in the future will become an error)
+  * Use tools.deps.alpha 0.9.871
+
+-------------------------------------------------------------------
 Wed Jan 27 07:49:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.2:

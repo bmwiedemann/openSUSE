@@ -73,4 +73,12 @@
     - CLJ-1005 Use transient map in zipmap</comment>
     <requestid>867076</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d45311c706602649634cae9a7194ec9d</srcmd5>
+    <version>1.10.3.855</version>
+    <time>1622536640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895664</requestid>
+  </revision>
 </revisionlist>
