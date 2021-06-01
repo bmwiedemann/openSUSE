@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May 15 15:57:09 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.8.2.
+  ## Changes in 2.8.2
+    - Add `mapSubject` and `ignoreSubject`
+
+-------------------------------------------------------------------
+Wed May 12 17:28:01 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.8.1.
+  ## Changes in 2.8.1
+    - Take the environment variable `NO_COLOR` into account
+
+-------------------------------------------------------------------
+Tue May 11 17:19:21 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.8.0.
+  ## Changes in 2.8.0
+    - Add `--times` to print times for individual spec items
+    - Add `--print-slow-items`
+    - Use `-XNoImplicitPrelude` and do not rely on `base` for `hspec-discover`
+      generated test drivers. This ensures full compatibility with custom
+      preludes.
+    - Add new APIs for formatters `Test.Hspec.Core.Format` and
+      `Test.Hspec.Core.Formatters.V2`
+    - Add `getItemCount` to `Formatter` API
+    - Add `--qc-max-shrinks` (see #380)
+    - Add location information for failing `afterAll`-hooks
+    - hspec-discover: Deprecate `--no-main` and `--formatter` (use
+      `--module-name` instead) (#196)
+    - Remove `--verbose` option (this has been a noop since at least 2013)
+    - Remove `--out` option (use shell output redirection instead)
+
+-------------------------------------------------------------------
 Thu Apr 15 10:26:46 UTC 2021 - psimons@suse.com
 
 - Update hspec to version 2.7.10.
