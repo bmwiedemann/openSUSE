@@ -44,19 +44,22 @@
   <packages type="bootstrap">
     <package name="gdb"/>
     <package name="glibc-locale"/>
-    <package name="strace"/>
-    <package name="ltrace"/>
-    <package name="traceroute"/>
+    <package name="hwinfo"/>
     <package name="iputils"/>
-    <package name="socat"/>
-    <package name="supportutils"/>
-    <package name="tcpdump"/>
-    <package name="vim"/>
     <package name="less"/>
-    <package name="man"/>
-    <package name="sudo"/>
-    <package name="system-group-wheel"/>
     <package name="libcap-progs"/>
+    <package name="ltrace"/>
+    <package name="man"/>
+    <package name="pciutils"/>
+    <package name="socat"/>
+    <package name="strace"/>
+    <package name="sudo"/>
+    <package name="supportutils"/>
+    <package name="system-group-wheel"/>
+    <package name="tcpdump"/>
+    <package name="traceroute"/>
+    <package name="usbutils"/>
+    <package name="vim"/>
     <package name="container-support-utils"/>
   </packages>
 </image>

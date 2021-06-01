@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 11:46:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add pciutils, usbutils and hwinfo by default to analyze the
+  hardware.
+
+-------------------------------------------------------------------
 Thu Feb 25 17:44:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add socat to the container
