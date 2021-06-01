@@ -1,0 +1,409 @@
+From 9d6e0c024833bd41421f0798a94ef2bbf27a31d5 Mon Sep 17 00:00:00 2001
+From: PrettyWood <em.jolibois@gmail.com>
+Date: Mon, 15 Mar 2021 22:33:21 +0100
+Subject: [PATCH 1/2] build(deps): switch to sqlalchemy 1.4
+
+---
+ databases/backends/aiopg.py    |   35 ++++++++++++++++++++------
+ databases/backends/mysql.py    |   35 ++++++++++++++++++++------
+ databases/backends/postgres.py |   23 ++++++++++++++++-
+ databases/backends/sqlite.py   |   35 ++++++++++++++++++++------
+ databases/core.py              |    2 -
+ requirements.txt               |    2 -
+ setup.py                       |    2 -
+ tests/test_database_url.py     |    4 ++
+ tests/test_databases.py        |   55 ++++++++++++++++++++++++++++++++++++++---
+ 9 files changed, 160 insertions(+), 33 deletions(-)
+
+--- a/databases/backends/aiopg.py
++++ b/databases/backends/aiopg.py
+@@ -7,11 +7,11 @@ import uuid
+ import aiopg
+ from aiopg.sa.engine import APGCompiler_psycopg2
+ from sqlalchemy.dialects.postgresql.psycopg2 import PGDialect_psycopg2
++from sqlalchemy.engine.cursor import CursorResultMetaData
+ from sqlalchemy.engine.interfaces import Dialect, ExecutionContext
+-from sqlalchemy.engine.result import ResultMetaData, RowProxy
++from sqlalchemy.engine.result import Row
+ from sqlalchemy.sql import ClauseElement
+ from sqlalchemy.sql.ddl import DDLElement
+-from sqlalchemy.types import TypeEngine
+ 
+ from databases.core import DatabaseURL
+ from databases.interfaces import ConnectionBackend, DatabaseBackend, TransactionBackend
+@@ -119,9 +119,15 @@ class AiopgConnection(ConnectionBackend)
+         try:
+             await cursor.execute(query, args)
+             rows = await cursor.fetchall()
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             return [
+-                RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+                 for row in rows
+             ]
+         finally:
+@@ -136,8 +142,14 @@ class AiopgConnection(ConnectionBackend)
+             row = await cursor.fetchone()
+             if row is None:
+                 return None
+-            metadata = ResultMetaData(context, cursor.description)
+-            return RowProxy(metadata, row, metadata._processors, metadata._keymap)
++            metadata = CursorResultMetaData(context, cursor.description)
++            return Row(
++                metadata,
++                metadata._processors,
++                metadata._keymap,
++                Row._default_key_style,
++                row,
++            )
+         finally:
+             cursor.close()
+ 
+@@ -169,9 +181,15 @@ class AiopgConnection(ConnectionBackend)
+         cursor = await self._connection.cursor()
+         try:
+             await cursor.execute(query, args)
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             async for row in cursor:
+-                yield RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                yield Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+         finally:
+             cursor.close()
+ 
+@@ -196,6 +214,7 @@ class AiopgConnection(ConnectionBackend)
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._loose_column_name_matching,
+             )
+         else:
+             args = {}
+--- a/databases/backends/mysql.py
++++ b/databases/backends/mysql.py
+@@ -5,11 +5,11 @@ import uuid
+ 
+ import aiomysql
+ from sqlalchemy.dialects.mysql import pymysql
++from sqlalchemy.engine.cursor import CursorResultMetaData
+ from sqlalchemy.engine.interfaces import Dialect, ExecutionContext
+-from sqlalchemy.engine.result import ResultMetaData, RowProxy
++from sqlalchemy.engine.result import Row
+ from sqlalchemy.sql import ClauseElement
+ from sqlalchemy.sql.ddl import DDLElement
+-from sqlalchemy.types import TypeEngine
+ 
+ from databases.core import LOG_EXTRA, DatabaseURL
+ from databases.interfaces import ConnectionBackend, DatabaseBackend, TransactionBackend
+@@ -107,9 +107,15 @@ class MySQLConnection(ConnectionBackend)
+         try:
+             await cursor.execute(query, args)
+             rows = await cursor.fetchall()
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             return [
+-                RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+                 for row in rows
+             ]
+         finally:
+@@ -124,8 +130,14 @@ class MySQLConnection(ConnectionBackend)
+             row = await cursor.fetchone()
+             if row is None:
+                 return None
+-            metadata = ResultMetaData(context, cursor.description)
+-            return RowProxy(metadata, row, metadata._processors, metadata._keymap)
++            metadata = CursorResultMetaData(context, cursor.description)
++            return Row(
++                metadata,
++                metadata._processors,
++                metadata._keymap,
++                Row._default_key_style,
++                row,
++            )
+         finally:
+             await cursor.close()
+ 
+@@ -159,9 +171,15 @@ class MySQLConnection(ConnectionBackend)
+         cursor = await self._connection.cursor()
+         try:
+             await cursor.execute(query, args)
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             async for row in cursor:
+-                yield RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                yield Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+         finally:
+             await cursor.close()
+ 
+@@ -186,6 +204,7 @@ class MySQLConnection(ConnectionBackend)
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._loose_column_name_matching,
+             )
+         else:
+             args = {}
+--- a/databases/backends/postgres.py
++++ b/databases/backends/postgres.py
+@@ -104,8 +104,29 @@ class Record(Mapping):
+         self._dialect = dialect
+         self._column_map, self._column_map_int, self._column_map_full = column_maps
+ 
++    @property
++    def _mapping(self) -> asyncpg.Record:
++        return self._row
++
++    def keys(self) -> typing.KeysView:
++        import warnings
++
++        warnings.warn(
++            "The `Row.keys()` method is deprecated to mimic SQLAlchemy behaviour, "
++            "use `Row._mapping.keys()` instead.",
++            DeprecationWarning,
++        )
++        return self._mapping.keys()
++
+     def values(self) -> typing.ValuesView:
+-        return self._row.values()
++        import warnings
++
++        warnings.warn(
++            "The `Row.values()` method is deprecated to mimic SQLAlchemy behaviour, "
++            "use `Row._mapping.values()` instead.",
++            DeprecationWarning,
++        )
++        return self._mapping.values()
+ 
+     def __getitem__(self, key: typing.Any) -> typing.Any:
+         if len(self._column_map) == 0:  # raw query
+--- a/databases/backends/sqlite.py
++++ b/databases/backends/sqlite.py
+@@ -4,11 +4,11 @@ import uuid
+ 
+ import aiosqlite
+ from sqlalchemy.dialects.sqlite import pysqlite
++from sqlalchemy.engine.cursor import CursorResultMetaData
+ from sqlalchemy.engine.interfaces import Dialect, ExecutionContext
+-from sqlalchemy.engine.result import ResultMetaData, RowProxy
++from sqlalchemy.engine.result import Row
+ from sqlalchemy.sql import ClauseElement
+ from sqlalchemy.sql.ddl import DDLElement
+-from sqlalchemy.types import TypeEngine
+ 
+ from databases.core import LOG_EXTRA, DatabaseURL
+ from databases.interfaces import ConnectionBackend, DatabaseBackend, TransactionBackend
+@@ -92,9 +92,15 @@ class SQLiteConnection(ConnectionBackend
+ 
+         async with self._connection.execute(query, args) as cursor:
+             rows = await cursor.fetchall()
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             return [
+-                RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+                 for row in rows
+             ]
+ 
+@@ -106,8 +112,14 @@ class SQLiteConnection(ConnectionBackend
+             row = await cursor.fetchone()
+             if row is None:
+                 return None
+-            metadata = ResultMetaData(context, cursor.description)
+-            return RowProxy(metadata, row, metadata._processors, metadata._keymap)
++            metadata = CursorResultMetaData(context, cursor.description)
++            return Row(
++                metadata,
++                metadata._processors,
++                metadata._keymap,
++                Row._default_key_style,
++                row,
++            )
+ 
+     async def execute(self, query: ClauseElement) -> typing.Any:
+         assert self._connection is not None, "Connection is not acquired"
+@@ -129,9 +141,15 @@ class SQLiteConnection(ConnectionBackend
+         assert self._connection is not None, "Connection is not acquired"
+         query, args, context = self._compile(query)
+         async with self._connection.execute(query, args) as cursor:
+-            metadata = ResultMetaData(context, cursor.description)
++            metadata = CursorResultMetaData(context, cursor.description)
+             async for row in cursor:
+-                yield RowProxy(metadata, row, metadata._processors, metadata._keymap)
++                yield Row(
++                    metadata,
++                    metadata._processors,
++                    metadata._keymap,
++                    Row._default_key_style,
++                    row,
++                )
+ 
+     def transaction(self) -> TransactionBackend:
+         return SQLiteTransaction(self)
+@@ -158,6 +176,7 @@ class SQLiteConnection(ConnectionBackend
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._loose_column_name_matching,
+             )
+ 
+         query_message = compiled.string.replace(" \n", " ").replace("\n", " ")
+--- a/databases/core.py
++++ b/databases/core.py
+@@ -5,7 +5,7 @@ import logging
+ import sys
+ import typing
+ from types import TracebackType
+-from urllib.parse import SplitResult, parse_qsl, urlsplit, unquote
++from urllib.parse import SplitResult, parse_qsl, unquote, urlsplit
+ 
+ from sqlalchemy import text
+ from sqlalchemy.sql import ClauseElement
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -22,4 +22,4 @@ mypy
+ pytest
+ pytest-cov
+ starlette
+-requests
++requests
+\ No newline at end of file
+--- a/setup.py
++++ b/setup.py
+@@ -48,7 +48,7 @@ setup(
+     packages=get_packages("databases"),
+     package_data={"databases": ["py.typed"]},
+     data_files=[("", ["LICENSE.md"])],
+-    install_requires=['sqlalchemy<1.4', 'aiocontextvars;python_version<"3.7"'],
++    install_requires=['sqlalchemy>=1.4,<1.5', 'aiocontextvars;python_version<"3.7"'],
+     extras_require={
+         "postgresql": ["asyncpg"],
+         "mysql": ["aiomysql"],
+--- a/tests/test_database_url.py
++++ b/tests/test_database_url.py
+@@ -1,7 +1,9 @@
+-from databases import DatabaseURL
+ from urllib.parse import quote
++
+ import pytest
+ 
++from databases import DatabaseURL
++
+ 
+ def test_database_url_repr():
+     u = DatabaseURL("postgresql://localhost/name")
+--- a/tests/test_databases.py
++++ b/tests/test_databases.py
+@@ -3,6 +3,7 @@ import datetime
+ import decimal
+ import functools
+ import os
++import re
+ 
+ import pytest
+ import sqlalchemy
+@@ -336,8 +337,8 @@ async def test_result_values_allow_dupli
+             query = "SELECT 1 AS id, 2 AS id"
+             row = await database.fetch_one(query=query)
+ 
+-            assert list(row.keys()) == ["id", "id"]
+-            assert list(row.values()) == [1, 2]
++            assert list(row._mapping.keys()) == ["id", "id"]
++            assert list(row._mapping.values()) == [1, 2]
+ 
+ 
+ @pytest.mark.parametrize("database_url", DATABASE_URLS)
+@@ -981,7 +982,7 @@ async def test_iterate_outside_transacti
+ @async_adapter
+ async def test_column_names(database_url, select_query):
+     """
+-    Test that column names are exposed correctly through `.keys()` on each row.
++    Test that column names are exposed correctly through `._mapping.keys()` on each row.
+     """
+     async with Database(database_url) as database:
+         async with database.transaction(force_rollback=True):
+@@ -993,6 +994,52 @@ async def test_column_names(database_url
+             results = await database.fetch_all(query=select_query)
+             assert len(results) == 1
+ 
+-            assert sorted(results[0].keys()) == ["completed", "id", "text"]
++            assert sorted(results[0]._mapping.keys()) == ["completed", "id", "text"]
+             assert results[0]["text"] == "example1"
+             assert results[0]["completed"] == True
++
++
++@pytest.mark.parametrize("database_url", DATABASE_URLS)
++@async_adapter
++async def test_posgres_interface(database_url):
++    """
++    Since SQLAlchemy 1.4, `Row.values()` is removed and `Row.keys()` is deprecated.
++    Custom postgres interface mimics more or less this behaviour by deprecating those
++    two methods
++    """
++    database_url = DatabaseURL(database_url)
++
++    if database_url.scheme != "postgresql":
++        pytest.skip("Test is only for postgresql")
++
++    async with Database(database_url) as database:
++        async with database.transaction(force_rollback=True):
++            query = notes.insert()
++            values = {"text": "example1", "completed": True}
++            await database.execute(query, values)
++
++            query = notes.select()
++            result = await database.fetch_one(query=query)
++
++            with pytest.warns(
++                DeprecationWarning,
++                match=re.escape(
++                    "The `Row.keys()` method is deprecated to mimic SQLAlchemy behaviour, "
++                    "use `Row._mapping.keys()` instead."
++                ),
++            ):
++                assert (
++                    list(result.keys())
++                    == [k for k in result]
++                    == ["id", "text", "completed"]
++                )
++
++            with pytest.warns(
++                DeprecationWarning,
++                match=re.escape(
++                    "The `Row.values()` method is deprecated to mimic SQLAlchemy behaviour, "
++                    "use `Row._mapping.values()` instead."
++                ),
++            ):
++                # avoid checking `id` at index 0 since it may change depending on the launched tests
++                assert list(result.values())[1:] == ["example1", True]
