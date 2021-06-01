@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May 24 12:51:31 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.1+k3s1:
+  * [backport 1.21] containerd: v1.4.4-k3s2
+  * [backport 1.21] runc: v1.0.0-rc95 (#3348) (#3352)
+  * Handle conntrack-related sysctls in supervisor agent setup
+  * Bump to go 1.16.4
+  * Update Kubernetes to v1.21.1-k3s1
+  * Add the ability to prune etcd snapshots (#3310)
+  * Fix passthrough of SystemDefaultRegistry from server config
+  * change --disable-apiserver flag
+  * runc: v1.0.0-rc94 (#3305)
+  * Add executor.Bootstrap hook for pre-execution setup
+  * Add the ability to list etcd snapshots (#3303)
+  * Add system-default-registry support and remove shared code (#3285)
+  * Fix cluster restoration in rke2 (#3295)
+  * Use config file values in node-args annotation
+  * Add the ability to delete an etcd snapshot locally or from S3 (#3277)
+  * Sign CSRs for kubelet-serving with the server CA
+  * Add cgroup2 CI (Fedora on Vagrant on GHA)
+  * add new-line
+  * Invoke cluster reset function when only reset flag is passed (#3276)
+  * Add ci step to validate incorerct replacement fork
+  * reference node name when needed
+  * fixes #3264 - unmount CSI plugins on uninstall
+  * remove accidentially commited dapper files
+  * Collect and Store etcd Snapshots and Metadata (#3239)
+  * Typo fix in README.md
+  * Export CriConnection function (#3225)
+  * Use same SANs on ServingKubeAPICert as dynamiclistener
+  * Add ability to append to slice during config file merge
+  * Add install script option to force a restart of the K3s service (#3235)
+
+-------------------------------------------------------------------
 Thu Apr 29 09:11:09 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.0+k3s1:
