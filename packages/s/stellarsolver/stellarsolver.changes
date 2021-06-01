@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 17 13:26:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix License as, according to
+  https://github.com/rlancaste/stellarsolver/blob/master/LICENSE#L640,
+  it should be GPL 3.0 or later and not GPL 3.0 only.
+
+-------------------------------------------------------------------
 Fri Nov 27 10:30:45 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Initial package

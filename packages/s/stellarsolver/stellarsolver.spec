@@ -1,7 +1,7 @@
 #
 # spec file for package stellarsolver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           stellarsolver
 Version:        1.5
 Release:        0
 Summary:        Astrometric Solver
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/rlancaste/stellarsolver
 Source0:        https://github.com/rlancaste/stellarsolver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
