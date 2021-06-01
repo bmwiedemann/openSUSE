@@ -156,4 +156,35 @@
   * Fixed Zen3 asm for cn/upx2</comment>
     <requestid>888387</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d58f3e7fa75606a4b2eaf51110d48e42</srcmd5>
+    <version>6.12.2</version>
+    <time>1622536764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.12.2:
+  * v6.12.2
+  * Update CHANGELOG.md
+  * RandomX: fix broken light mode mining
+  * Add &quot;argon2/ninja&quot; algorithm alias.
+  * RandomX ARMv8: optimized dataset read
+  * RandomX: rewrote dataset read code
+  * RandomX: added BMI2 version for scratchpad prefetch
+  * Enabled IMUL_RCP optimization for light mode mining
+  * Regenerate OpenCL headers.
+  * Fix CL code for KawPow where it assumes everything is AMD
+  * Fixed broken light mode mining on x86
+  * Fixup MacOS CUDA backend default loader name
+  * Update openssl version to 1.1.1k
+  * ...and --cpu-affinity.
+  * #2351 Fixed help output for --cpu-priority option.
+  * Update sse2neon.h
+  * Fix AES detection on FreeBSD on ARM
+  * Update randomx_boost.sh
+  * Add  missing allow_writes=on to randomx_boost.sh
+  * #2280 Disable GPU backends in benchmark mode.
+  * Removed unnecessary system call.
+  * v6.12.2-dev
+  * support builtin msr</comment>
+    <requestid>896293</requestid>
+  </revision>
 </revisionlist>

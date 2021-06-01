@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 31 07:43:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.2:
+  * v6.12.2
+  * Update CHANGELOG.md
+  * RandomX: fix broken light mode mining
+  * Add "argon2/ninja" algorithm alias.
+  * RandomX ARMv8: optimized dataset read
+  * RandomX: rewrote dataset read code
+  * RandomX: added BMI2 version for scratchpad prefetch
+  * Enabled IMUL_RCP optimization for light mode mining
+  * Regenerate OpenCL headers.
+  * Fix CL code for KawPow where it assumes everything is AMD
+  * Fixed broken light mode mining on x86
+  * Fixup MacOS CUDA backend default loader name
+  * Update openssl version to 1.1.1k
+  * ...and --cpu-affinity.
+  * #2351 Fixed help output for --cpu-priority option.
+  * Update sse2neon.h
+  * Fix AES detection on FreeBSD on ARM
+  * Update randomx_boost.sh
+  * Add  missing allow_writes=on to randomx_boost.sh
+  * #2280 Disable GPU backends in benchmark mode.
+  * Removed unnecessary system call.
+  * v6.12.2-dev
+  * support builtin msr
+
+-------------------------------------------------------------------
 Mon Apr 26 08:02:48 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.12.1:
