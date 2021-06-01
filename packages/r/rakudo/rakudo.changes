@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May 24 15:57:56 CEST 2021 - nine@detonation.org
+
+- update to version 2021.05
+  + Make methods keys, values, kv, pairs, antipairs, invert work on Enum
+  + Make uniname and uniparse method work on all Cool values such as Num or Match
+  + Add the user and group methods to IO::Path
+  + Add new methods day-fraction, modified-julian-date and julian-date to DateTime
+  + Add support for ∊ and ∍ as aliases for ∈ and ∋
+  + Deprecate Cool.path method in favor of Cool.IO and NQP operators time_i and time_n in favor of time
+  + Rename deterministic method on Iterator introduced in 2020.12 into is-deterministic
+  + Calling ord method on Str:U now throws an exception instead of silently returning Nil
+  + Make Int.chr and Int.unival handling of negative values consistent
+  + Faster now, Str.wordcase, Str.uniparse, lines, words, my %h is QuantHash =, Int.unival,
+    Str.unival, Str.ords, List.sum, Any.sum, chrs for native int arrays, uninames, Str.univals,
+    Datish.daycount, uniprop, uniprops, Baggy.AT-KEY, infix (elem), DateTime.posix
+  + Fix a regression in command line arguments parser
+  + Fix compilation failure with EVAL in precompiled module's mainline
+  + Fix an edge case of sub-signature handling, making say :([]) eqv :(@); properly result in False
+  + Make signal handler setup synchronous to avoid race conditions
+  + Fix race condition in ThreadPoolScheduler
+  + Fix a potential issue on subclassing from NQP classes or consuming NQP roles
+  + Fix Int.uniname to handle big negative and big positive integers
+  + Fix handling of holes in raku method for native str arrays
+  + Fix resource leak when iterating files using dir method on IO::Path
+  + Fix an exception when grab was called on an empty SetHash that had contained entries before
+  + Fix DateTime equivalence check with eqv relying on raku representation
+  + Fix methods substr, substr-rw, chop, chomp, pred, succ, comb, lines, words, wordcase, trans,
+    indent, uc, lc, tc, fc, tclc, flip, split, trim, trim-leading, trim-trailing, samemark,
+    samespace, samecase, subst, subst-mutate when called on a Str subclass
+  + Make Allomorph methods comb, chop, chomp, lc, uc, tc, tclc, fc, flip, substr, substr-rw return Str
+  + Make sure trim, trim-leading, trim-trailing, split, samecase, samemark, samespace methods handle Allomorph values
+  + Fix copying of empty shaped array
+
+-------------------------------------------------------------------
 Sun Mar 21 21:49:09 CET 2021 - nine@detonation.org
 
 - update to version 2021.03
