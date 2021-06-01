@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 26 06:21:08 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Mon Aug 31 04:08:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.0:
