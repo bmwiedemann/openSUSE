@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 24 17:43:35 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.3
+  - New regular patterns (5)
+    + sle15all/coredumpctl-000018634.py: How to obtain systemd service core dumps (TID000018634)
+    + sle15all/scatool-000004685.py: scatool fails with traceback (TID000004685)
+    + sle15all/scatool-000020253.py: scatool fails to analyze supportconfigs with xz compression (bsc#1155181)
+    + sle15all/vmcore-00001.pl: Identifies kernel core dumps for review
+    + sle15all/vmcore-00002.pl: Detects the need for a kernel core analysis
+
+  - Deleted regular patterns (1)
+    + sle15all/bhc-scc.sh: Pattern removed (bsc#1184594, bsc#1186317)
+
+-------------------------------------------------------------------
+Thu May 20 17:10:51 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixed crosstalk message strings (bsc#1186312)
+
+-------------------------------------------------------------------
 Wed May 19 15:52:54 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Updated regular patterns (1)
