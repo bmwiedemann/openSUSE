@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 31 20:05:11 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.0.2
+  * When copying files to the audiobook library goes wrong, the user is now informed with the error
+  * Fix: Possible error while displaying offline cache copy progress
+  * Fix: When changing the audiobook location or selecting a file in the file not found dialog an unexpected error could occur
+  * Fix: Removing a storage dir in settings did not work
+  * Fix: Removing a book from the library did sometimes not work
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
+Sun May 30 08:38:21 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.0.1
+  * A long awaited feature has finally arrived: Chapter support for m4b files.
+  * Books with inconsistent spelling are now grouped into a single book (thanks chris-kobrzak!).
+  * Improved reliability of restoring the previous playback position.
+  * Fix: clicking on a currently playing chapter did not pause the chapter as expected.
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
+Sun May 30 07:07:06 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.0.0
+  * A long awaited feature has finally arrived: Chapter support for m4b files.
+  * Books with inconsistent spelling are now grouped into a single book (thanks chris-kobrzak!).
+  * Improved reliability of restoring the previous playback position.
+  * Fix: clicking on a currently playing chapter did not pause the chapter as expected.
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sun May  9 19:39:32 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 0.9.5

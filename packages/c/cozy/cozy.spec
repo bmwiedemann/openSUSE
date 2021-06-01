@@ -17,7 +17,7 @@
 
 
 Name:           cozy
-Version:        0.9.5
+Version:        1.0.2
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  libhandy-devel
+BuildRequires:  pkgconfig(granite) >= 5.3.0
 Requires:       python3-cairo
 Requires:       python3-distro
 Requires:       python3-gst
@@ -44,6 +45,7 @@ Requires:       python3-peewee >= 3.9.6
 Requires:       python3-apsw
 Requires:       python3-pytaglib
 Requires:       libhandy-1-0
+Requires:       granite
 Requires:	python3-pytz
 Requires:	python3-requests
 Requires:	python3-packaging
