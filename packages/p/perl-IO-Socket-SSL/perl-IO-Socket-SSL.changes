@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 24 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.071
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.071 2021/05/23
+  - fix t/nonblock.t race on some systems. Fixes issue #102, maybe #98 too.
+
+-------------------------------------------------------------------
 Sat Feb 27 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.070
