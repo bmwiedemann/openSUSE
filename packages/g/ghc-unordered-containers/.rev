@@ -201,4 +201,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857638</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e22c69682f9a36bdc89666c75f43c0ae</srcmd5>
+    <version>0.2.14.0</version>
+    <time>1622536739</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>896203</requestid>
+  </revision>
 </revisionlist>
