@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri May 21 13:28:05 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.37:
+  * Fix crashing Glib::convert_with_fallback(),
+    (gh#giuspen/cherrytree#1593).
+  * Fix after undo, redo jumps to the top of the document,
+    (gh#giuspen/cherrytree#1151).
+  * Assigned keyboard shortcut to move table columns Left/Right:
+    Ctrl+{ and Ctrl+}.
+  * Assigned keyboard shortcut to move table rows Up/Down: Ctrl+[
+    and Ctrl+], (gh#giuspen/cherrytree#1626).
+  * Ctrl+Arrows in tables disconnected from cells navigation,
+    Ctrl+( and Ctrl+) to navigate Up/Down; Tab and Shift+Tab for
+    navigate Right/Left, (gh#giuspen/cherrytree#194).
+  * Help--Open Preferences Directory moved under File--Preferences.
+  * Fix content in the table can be modified while the node is read
+    only, (gh#giuspen/cherrytree#1674).
+  * Preferences file export complete.
+  * Adding preferences file import/export.
+  * ct_menu_actions.cc just splitted too long lines.
+  * Added dialog listing all available symbols auto replacements,
+    (gh#giuspen/cherrytree#1659).
+  * Preserve print page setup settings,
+    (gh#giuspen/cherrytree#1664).
+  * Fix URL detection doesn't recognize TAB as a delimiter,
+    (gh#giuspen/cherrytree#1654).
+  * Added configurable option to show the full path in the node
+    name header, (gh#giuspen/cherrytree#1399).
+  * Preferences dialog language selection explicit label
+    'System Default' in place of '-'.
+  * Fixed import of text files with extension not .txt on linux,
+    (gh#giuspen/cherrytree#1656).
+  * Reinstating Gtk::FileFilter::add_mime_type for importing text
+    files, (gh#giuspen/cherrytree#1656).
+  * Configurability of log enable/disable + directory in
+    preferences dialog, tab miscellaneous,
+    (gh#giuspen/cherrytree#1614).
+  * Preferences dialog, custom backup directory simplified using
+    Gtk::FileChooserButton.
+  * Configurability of log enable/disable + directory,
+    (gh#giuspen/cherrytree#1614).
+  * Spell check enabled also for plain text,
+    (gh#giuspen/cherrytree#1651).
+  * Fix [gtk] [critical] gtk_widget_set_visible: assertion
+    'GTK_IS_WIDGET (widget)' failed after,
+    (gh#giuspen/cherrytree#1643).
+  * Move config.cfg.tmp to config.cfg if not shutting down,
+    (gh#giuspen/cherrytree#1614).
+  * Added added configurable option to have bookmarks under
+    dedicated menu in top menu bar, (gh#giuspen/cherrytree#1643).
+  * New configurable scalable tags allow partial
+    bold/italic/underline when not on by default,
+    (gh#giuspen/cherrytree#1633).
+  * Fix SHIFT+ENTER Able to Modify Locked Notes with Lists,
+    (gh#giuspen/cherrytree#1640).
+  * Translation updates.
+- Changes from version 0.99.36:
+  * Fix segfault on startup when configured to start on systray,
+    (gh#giuspen/cherrytree#1610).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Fri Apr 16 07:09:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.99.35:
