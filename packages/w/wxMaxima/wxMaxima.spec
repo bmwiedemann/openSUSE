@@ -19,13 +19,13 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        21.05.1
+Version:        21.05.2
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
-Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{tarname}-Version-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM wxMaxima-disable-slow-multithreadtest.patch gh#wxMaxima-developers/wxmaxima#1504 badshah400@gmail.com -- Disable a slow test that causes timeouts on OBS workers for openSUSE >= 1550
 Patch0:         wxMaxima-disable-slow-multithreadtest.patch
 BuildRequires:  appstream-glib
@@ -98,9 +98,10 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
 # REMOVE UNNECESSARY ICONS OUT OF PIXMAPS
 rm %{buildroot}%{_datadir}/pixmaps/*
 
-# REMOVE README.md AND COPYING FILES INSTALLED BY mak install, WE INCLUDE THEM BY USING %%doc
-rm -fr %{buildroot}%{_datadir}/doc/%{tarname}/README*
-rm -fr %{buildroot}%{_datadir}/doc/%{tarname}/COPYING
+# Remove doc files installed by make install, we include them by using %%doc and %%license
+for f in AUTHORS COPYING ChangeLog GPL.txt NEWS.md README README.md; do
+  rm -fv "%{buildroot}%{_datadir}/doc/%{tarname}/$f"
+done
 
 %suse_update_desktop_file io.github.wxmaxima_developers.wxMaxima
 
@@ -122,7 +123,7 @@ sleep 5
 
 %files
 %license COPYING GPL.txt
-%doc AUTHORS README.md ChangeLog
+%doc AUTHORS NEWS.md README.md
 %{_datadir}/doc/%{tarname}/
 %{_bindir}/*
 %{_datadir}/wxMaxima/
