@@ -1,7 +1,7 @@
 #
 # spec file for package xmlrpc-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define soname 3
 %define soname_cpp 8
 Name:           xmlrpc-c
-Version:        1.51.06
+Version:        1.51.07
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://xmlrpc-c.sourceforge.net/
-Source:         https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/%{version}/xmlrpc-c-%{version}.tgz
+Source:         https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%{20}Super%{20}Stable/%{version}/xmlrpc-c-%{version}.tgz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
