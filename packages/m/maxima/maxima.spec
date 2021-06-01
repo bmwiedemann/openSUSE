@@ -1,7 +1,7 @@
 #
 # spec file for package maxima
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,14 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-suse
 
 Name:           maxima
-Version:        5.44.0
+Version:        5.45.0
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
 URL:            http://maxima.sourceforge.net/
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
-Source2:        README.SUSE.packaging 
+Source2:        README.SUSE.packaging
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
 BuildRequires:  bash-completion
@@ -57,7 +57,7 @@ Suggests:       maxima-exec-sbcl
 ExcludeArch:    ppc64 ppc64le
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 %if %{with clisp}
 BuildRequires:  clisp >= 2.34.0
@@ -88,7 +88,7 @@ Requires:       tk
 Provides:       xmaxima = %{version}
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 
 %description xmaxima
@@ -147,7 +147,7 @@ Requires:       maxima = %{version}
 Provides:       locale(maxima:de)
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 
 %description lang-de-utf8
@@ -159,7 +159,7 @@ Requires:       maxima = %{version}
 Provides:       locale(maxima:es)
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 
 %description lang-es-utf8
@@ -171,7 +171,7 @@ Requires:       maxima = %{version}
 Provides:       locale(maxima:pt)
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 
 %description lang-pt-utf8
@@ -183,7 +183,7 @@ Requires:       maxima = %{version}
 Provides:       locale(maxima:pt_BR)
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
-Requires(postun): /sbin/install-info
+Requires(postun):/sbin/install-info
 %endif
 
 %description lang-pt_BR-utf8
@@ -239,7 +239,7 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 
 %suse_update_desktop_file net.sourceforge.maxima.xmaxima
 
-# FIXME CHECKS TAKE TOO LONG AND TIME-OUT (LAST CHECK: VERSION 5.44.0)
+# FIXME CHECKS TAKE TOO LONG AND TIME-OUT (LAST CHECK: VERSION 5.45.0)
 #%%check
 #make check
 # /FIXME
