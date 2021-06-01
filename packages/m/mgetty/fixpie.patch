@@ -1,7 +1,7 @@
-Index: mgetty-1.1.36/fax/Makefile
+Index: mgetty-1.2.1/fax/Makefile
 ===================================================================
---- mgetty-1.1.36.orig/fax/Makefile
-+++ mgetty-1.1.36/fax/Makefile
+--- mgetty-1.2.1.orig/fax/Makefile
++++ mgetty-1.2.1/fax/Makefile
 @@ -36,7 +36,7 @@ faxheader: faxheader.in ../sedscript
  	@cd .. ; $(MAKE) sedscript
  
@@ -11,3 +11,16 @@ Index: mgetty-1.1.36/fax/Makefile
  
  faxq-helper.o: faxq-helper.c ../sedscript
  	$(CC) $(CFLAGS) -DFAX_SPOOL_OUT=\"$(FAX_SPOOL_OUT)\" \
+Index: mgetty-1.2.1/Makefile
+===================================================================
+--- mgetty-1.2.1.orig/Makefile
++++ mgetty-1.2.1/Makefile
+@@ -569,7 +569,7 @@ sendfax.config: sendfax.cfg.in sedscript
+ 	./sedscript <sendfax.cfg.in >sendfax.config
+ 
+ newslock: compat/newslock.c
+-	$(CC) $(CFLAGS) -o newslock compat/newslock.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o newslock compat/newslock.c
+ 
+ # internal: use this to create a "clean" mgetty+sendfax tree
+ bindist: all doc-all sedscript

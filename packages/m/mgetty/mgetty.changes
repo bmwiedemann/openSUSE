@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 16:44:06 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Link /usr/bin/newslock as PIE (bsc#1184124).
+  - Modified fixpie.patch
+
+-------------------------------------------------------------------
 Tue Mar 16 06:59:42 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - mgetty-fix-errlist.patch: just use strerror() here.

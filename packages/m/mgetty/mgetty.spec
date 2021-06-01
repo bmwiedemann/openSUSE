@@ -47,7 +47,7 @@ BuildRequires:  netpbm
 BuildRequires:  systemd-rpm-macros
 Requires:       g3utils
 Requires(post): %{install_info_prereq}
-Requires(postun): %{install_info_prereq}
+Requires(postun):%{install_info_prereq}
 Recommends:     logrotate
 %systemd_requires
 
