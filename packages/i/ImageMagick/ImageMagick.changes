@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 25 11:45:05 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.11.13
+  * Fixed reading and writing the XMP chunk in a WebP image (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3617).
+  * label and caption sanity check is too conservative.
+
+-------------------------------------------------------------------
 Mon May 10 06:24:27 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.12
