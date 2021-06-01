@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-ja
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           man-pages-ja
-Version:        20201215
+Version:        20210515
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        GPL-2.0-only AND BSD-3-Clause AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
 Summary(ja):    Linux 日本語マニュアルページ
-URL:            http://linuxjm.sourceforge.jp/download.html
-Source:         http://linuxjm.sourceforge.jp/man-pages-ja-%{version}.tar.gz
+URL:            https://linuxjm.osdn.jp/download.html
+Source:         https://linuxjm.osdn.jp/man-pages-ja-%{version}.tar.gz
 # Some manpages are only shipped if the programs exist..
 BuildRequires:  cdparanoia
 BuildRequires:  fdupes
 Provides:       locale(man:ja)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description -l ja
