@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 01 01:28:10 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210601:
+  * Assigned RUSTSEC-2021-0069 to lettre (#925)
+  * Add lettre smtp vulnerability (#924)
+  * Assigned RUSTSEC-2021-0068 to iced-x86 (#923)
+  * iced-x86: fix lint (#922)
+  * Add advisory for iced-x86 soundness bug (#914)
+  * Assigned RUSTSEC-2021-0067 to cranelift-codegen (#921)
+  * fixes #915 - remove duplicate word (#916)
+  * Add RUSTSEC notice for CVE-2021-32629, a Cranelift miscompilation bug. (#918)
+  * Bump rustsec-admin to v0.4.3 (#919)
+  * evm-core: fix crate name (#911)
+
+-------------------------------------------------------------------
 Fri May 07 03:16:33 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210507:
