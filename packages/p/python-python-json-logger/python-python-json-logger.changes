@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 08:49:54 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Mon Dec 21 14:29:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Disable Python 2 builds
