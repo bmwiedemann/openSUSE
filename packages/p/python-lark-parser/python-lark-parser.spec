@@ -1,7 +1,7 @@
 #
 # spec file for package python-lark-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.9.0
+Version:        0.11.3
 Release:        0
 Summary:        A parsing library for Python
 License:        MPL-2.0
@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/lark-parser
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
 # extracted test gramars from nearley -> https://github.com/kach/nearley
-Source1:        testdata.tar.gz
 BuildRequires:  %{python_module Js2Py >= 0.68}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +42,7 @@ Lark is a general-purpose parsing library for Python.
 With Lark, one can parse any context-free grammar with little code.
 
 %prep
-%setup -q -n lark-%{version} -a1
+%setup -q -n lark-%{version}
 
 %build
 %python_build
@@ -52,7 +52,8 @@ With Lark, one can parse any context-free grammar with little code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# __main__.py: Skipping tests for Nearley grammar imports (js2py required)
+%pytest -k 'not (TestNearley or test_imports or test_override_rule)'
 
 %files %{python_files}
 %license LICENSE
