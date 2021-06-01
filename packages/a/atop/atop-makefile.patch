@@ -1,25 +1,16 @@
-diff -Naur atop-2.5.0.orig/Makefile atop-2.5.0/Makefile
---- atop-2.5.0.orig/Makefile	2020-07-30 23:18:00.229258992 +0200
-+++ atop-2.5.0/Makefile	2020-07-30 23:22:03.727237162 +0200
+diff -Nur atop-2.6.0/Makefile new/Makefile
+--- atop-2.6.0/Makefile	2020-12-21 20:57:55.000000000 +0100
++++ new/Makefile	2021-04-13 23:52:53.597971062 +0200
 @@ -20,7 +20,7 @@
  PMPATH2  = /usr/lib64/pm-utils/sleep.d
  PMPATHD  = /usr/lib/systemd/system-sleep
  
--CFLAGS  += -O2 -I. -Wall  # -DNOPERFEVENT   # -DHTTPSTATS
-+CFLAGS  += $(OPTFLAGS) -I. -Wall  # -DHTTPSTATS
+-CFLAGS  += -O2 -I. -Wall -Wno-stringop-truncation # -DNOPERFEVENT   # -DHTTPSTATS
++CFLAGS  += $(OPTFLAGS) -I. -Wall -Wno-stringop-truncation # -DNOPERFEVENT   # -DHTTPSTATS
  OBJMOD0  = version.o
  OBJMOD1  = various.o  deviate.o   procdbase.o
  OBJMOD2  = acctproc.o photoproc.o photosyst.o  rawlog.o ifprop.o parseable.o
-@@ -46,7 +46,7 @@
- 		$(CC) atopconvert.o -o atopconvert -lz $(LDFLAGS)
- 
- netlink.o:	netlink.c
--		$(CC) -I. -Wall -c netlink.c
-+		$(CC) -I. -Wall $(OPTFLAGS) -c netlink.c
- 
- clean:
- 		rm -f *.o atop atopacctd atopconvert
-@@ -155,19 +155,19 @@
+@@ -156,22 +156,22 @@
  		chmod 644      		$(DESTDIR)$(DEFPATH)/atop
  		#
  		cp atop   		$(DESTDIR)$(BINPATH)/atop
@@ -41,5 +32,9 @@ diff -Naur atop-2.5.0.orig/Makefile atop-2.5.0/Makefile
 -		chown root		$(DESTDIR)$(BINPATH)/atopconvert
 +		#chown root		$(DESTDIR)$(BINPATH)/atopconvert
  		chmod 0711 		$(DESTDIR)$(BINPATH)/atopconvert
+ 		cp atopcat 		$(DESTDIR)$(BINPATH)/atopcat
+-		chown root		$(DESTDIR)$(BINPATH)/atopcat
++		#chown root		$(DESTDIR)$(BINPATH)/atopcat
+ 		chmod 0711 		$(DESTDIR)$(BINPATH)/atopcat
  		cp man/atop.1    	$(DESTDIR)$(MAN1PATH)
  		cp man/atopsar.1 	$(DESTDIR)$(MAN1PATH)

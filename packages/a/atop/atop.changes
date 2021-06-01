@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 13 21:33:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.6.0
+  * Sort threads within process.
+  * Individual threads within a process (key 'y') are shown in the
+    order of their TID. With the additional key 'Y' threads within
+    a process are sorted based on the current sort criterium.
+  * Show the WCHAN per thread.
+  * With the key 'W' is active, the wait channel is determined per
+    thread and shown with the scheduling information (key 's').
+  * Show runqueue delay per thread/process.
+  * For every process (cumulated) and every thread the time spent
+    waiting on the runqueue is shown as value 'RDELAY'.
+  * Show other modified/new metrics:
+    + PSI pressure during interval time is shown
+    + Counter 'avio' (average I/O time) for fast disks in
+      microseconds or nanoseconds
+    + Counter 'zfarc' showing the current size of the ARC (cache)
+      for ZFSonlinux
+    + Counter 'swcac' showing the current size of the swap cache
+    + Counter LOCKSZ showing the virtual locked memory size
+  * Avoid crash with very high load average values.
+  * Fix errors in reading InfiniBand states.
+  * Support of rawlog files spanning multiple days.
+  * The time specification to define the begin time (-b flag)
+    and end time (-e flag) of both atop and atopsar is
+    [YYYYMMDD]hhmm now
+  * This also applies to the branch key ('b') when using atop
+    interactively.
+  * Support reading rawlog from a pipe.
+  * Rawlog data can be read from a pipe by atop and atopsar with
+    the option '-r -'. In this way, concatenated rawlog data from
+    the command atopcat can be directly processed.
+  * New program atopcat, the program atopcat concatenates rawlog
+    files and writes this data to stdout. The output can be
+    redirected to a new rawlog file or to atop/atopsar directly
+    via a pipe (see option '-r -' of these commands).
+    In this way e.g. weekly or monthly reports or extractions
+    can be created.
+
+-------------------------------------------------------------------
 Fri Jul 31 20:26:06 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.5.0 

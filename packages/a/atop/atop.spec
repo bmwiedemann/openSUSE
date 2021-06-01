@@ -2,8 +2,7 @@
 #
 # spec file for package atop
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018 The openSUSE Project.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +19,16 @@
 
 
 Name:           atop
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only
 URL:            https://www.atoptool.nl/
-Source0:        http://www.atoptool.nl/download/atop-%{version}.tar.gz
+Source0:        https://www.atoptool.nl/download/atop-%{version}.tar.gz
 Source1:        atop.desktop
 Source2:        atop.default
 Source99:       atop-rpmlintrc
-Patch1:         atop-makefile.patch
+Patch0:         atop-makefile.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  make
@@ -83,7 +82,7 @@ install -d "%{buildroot}%{_sbindir}"
 install -d "%{buildroot}%{_sysconfdir}/default"
 install -Dp -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/default/atop
 
-make systemdinstall DESTDIR=%{buildroot}
+make systemdinstall DESTDIR=%{buildroot} SYSDPATH=%{_unitdir}
 
 rm -f "%{buildroot}%{_localstatedir}/log/atop"/*
 
@@ -115,35 +114,37 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatop-rotate
 %license COPYING
 %doc README
 %attr(0755,root,root) %{_bindir}/atop
+%{_bindir}/atopcat
 %{_bindir}/atopsar
 %{_bindir}/atopconvert
 %{_bindir}/atop-%{version}
 %{_bindir}/atopsar-%{version}
 %{_mandir}/man1/atop.1%{?ext_man}
-%{_mandir}/man1/atopconvert.1%{?ext_man}
+%{_mandir}/man1/atopcat.1%{?ext_man}
 %{_mandir}/man1/atopsar.1%{?ext_man}
+%{_mandir}/man1/atopconvert.1%{?ext_man}
 %{_mandir}/man5/atoprc.5%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 
 %files daemon
 %license COPYING
 %doc README
-%config(noreplace)%{_sysconfdir}/default/atop
-%{_localstatedir}/log/atop
-%{_usr}/lib/systemd/system/%{name}.service
-%{_mandir}/man8/atopacctd.8%{?ext_man}
-%{_mandir}/man8/atopgpud.8%{?ext_man}
-%{_usr}/lib/systemd/system/atopacct.service
-%{_usr}/lib/systemd/system/atopgpu.service
-%{_prefix}/lib/systemd/system/atop-rotate.service
-%{_prefix}/lib/systemd/system/atop-rotate.timer
-%dir %{_usr}/lib/systemd/system-sleep
-%{_usr}/lib/systemd/system-sleep/atop-pm.sh
-%{_sbindir}/atopacctd
 %{_sbindir}/atopgpud
+%{_sbindir}/atopacctd
 %{_sbindir}/rcatopacct
 %{_sbindir}/rcatop-rotate
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcatopgpu
+%{_localstatedir}/log/atop
+%{_mandir}/man8/atopgpud.8%{?ext_man}
+%{_mandir}/man8/atopacctd.8%{?ext_man}
+%{_unitdir}/atop.service
+%{_unitdir}/atopgpu.service
+%{_unitdir}/atopacct.service
+%{_unitdir}/atop-rotate.timer
+%{_unitdir}/atop-rotate.service
+%dir %{_prefix}/lib/systemd/system-sleep
+%{_prefix}/lib/systemd/system-sleep/atop-pm.sh
+%config(noreplace)%{_sysconfdir}/default/atop
 
 %changelog
