@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 28 11:03:04 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1622199777.577b4d3e1:
+  * containers: Add test to check that webui can connect to scheduler
+  * Also cover shell scripts in tools/ by shellcheck
+  * Apply shellcheck rules to tools/tidy as well
+  * Give permission of dmesg to worker
+  * Simplify test code for OBS rsync plugin
+  * Restore test coverage for OBS rsync code in obs_rsync.js
+  * Remove 27-plugin_obs_rsync_status_details.t from unstable tests
+  * Restore test coverage for OBS rsync code in Task.pm
+  * Restore test coverage for OBS rsync code in ObsRsync.pm, Folders.pm and Gru.pm
+  * t: Remove all unstable test code in ui/27-plugin_obs_rsync_status_details.t potentially covered elsewhere
+  * containers: Fix scheduler and websockets URLs in webui container
+
+-------------------------------------------------------------------
 Sun May 23 03:31:49 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1621582962.3db67fb03:
