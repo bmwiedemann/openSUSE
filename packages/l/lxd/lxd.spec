@@ -26,7 +26,7 @@
 %define lxd_ovmfdir %{lxd_datadir}/ovmf
 
 Name:           lxd
-Version:        4.13
+Version:        4.14
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -43,8 +43,6 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
-# Backport of <https://github.com/lxc/lxd/pull/8700>. boo#1181549
-Patch1:         boo1181549-0001-vm-qemu-configure-spice-using-spice-parameter.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -108,8 +106,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-# boo#1181549
-%patch1 -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice
