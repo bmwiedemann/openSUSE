@@ -1,7 +1,7 @@
 #
 # spec file for package python-tld
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tld
-Version:        0.12.3
+Version:        0.12.5
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
-License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-or-later
+License:        GPL-2.0-only OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/barseghyanartur/tld
 Source:         https://files.pythonhosted.org/packages/source/t/tld/tld-%{version}.tar.gz
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six >= 1.9
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
