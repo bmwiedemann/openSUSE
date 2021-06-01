@@ -19,7 +19,7 @@
 %global pkg_name citeproc
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.9
+Version:        0.4
 Release:        0
 Summary:        Generates citations and bibliography from CSL styles
 License:        BSD-2-Clause
@@ -35,12 +35,12 @@ BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-pandoc-types-devel
-BuildRequires:  ghc-rfc5051-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-uniplate-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-xml-conduit-devel
