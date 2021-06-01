@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 11 09:10:44 UTC 2021 - psimons@suse.com
+
+- Update file-embed to version 0.0.14.0.
+  ## 0.0.14.0
+
+  * Add `embedFileIfExists`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

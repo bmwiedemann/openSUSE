@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-file-embed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name file-embed
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.13.0
+Version:        0.0.14.0
 Release:        0
 Summary:        Use Template Haskell to embed file contents directly
 License:        BSD-2-Clause
