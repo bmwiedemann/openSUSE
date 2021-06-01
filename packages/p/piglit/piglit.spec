@@ -26,7 +26,7 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20201223.ff2a7650b
+Version:        1~20210326.6a4be9e99
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
@@ -93,9 +93,6 @@ be generated, including the ability to compare different test runs.
 %setup -q
 
 %build
-# FIXME: you should use %%cmake macros
-# Note: Using the cmake rpm macro to get good defaults for installation
-# directories, CFLAGS etc. Some changes on top:
 # Note: Overwriting CMAKE_SHARED_LINKER_FLAGS with those from the cmake macro,
 # but leaving out -Wl,--no-undefined
 # Note: Overwriting CMAKE_SKIP_RPATH to be off,  but enabling

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu May 27 08:33:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20210326.6a4be9e99:
+  * .gitlab-ci.yml: Change pages build to trigger main branch
+  * glsl-1.30: test right-shift of a left-shift
+  * arb_gpu_shader_int64: test masking after addition
+  * arb_gpu_shader_int64: test shift-left of shift-right with same count
+  * gl-3.0: add additional case for clearbufferfi correctness
+  * ext_external_objects: Another semaphores test
+  * ext_external_objects: New semaphores test
+  * ext_external_objects: Vulkan framework additions
+  * gbm: Add test for multi-planar GBM BOs
+  * ext_external_objects: Removed unused varyings from image test
+  * gitlab-ci: Build with MinGW cross-compilers.
+  * cmake: Package Waffle DLL when provided.
+  * appveyor: Remove integration.
+  * editorconfig: Add more file extensions.
+  * arb_shader_texture_image_samples/builtin-image: use skip as default result
+  * draw-prim-rate: add a test for indexed triangle strips
+  * glx-multithread-buffer-refcount-bug: new test for a recent bug
+  * cmake: Install MinGW CRT DLLs instead of statically linking them.
+  * cmake: Use 7-Zip packaging and strip debugging symbols.
+  * tests: ignore unsupported texture type + num samples
+  * tests: fix test binary name in opengl.py
+  * tests/glx: remove unnecessary calls to XMapWindow
+  * test/amd_perf_monitor: don't use exit(0)
+  * spec/glsl-1.20: Use min and max with NaN
+  * ext_external_objects: All supported image usage flags are set
+  * ext_external_objects: Replaced TexImage2D with TexSubImage2D in display
+  * ext_external_objects: Fix in external buffers
+  * tests: speed up gl-1.3-texture-env test
+  * util: expose read_pixels_float/compare_pixels_float
+  * arb_shader_storage_buffer_object/indirect: add dynamic store test
+  * arb_uniform_buffer_object: Migrate to Python 3.
+  * arb_fragment_program: Test KIL using result of SLT
+  * tests: fix running the replay profile with the --test-list arg
+  * opengl.py: fix adj-prims arg construction
+  * framework/replay: adapt GFXReconstruct backend to >=0.9.4
+  * framework: add P0XX format support for piglit_gbm_buf_create
+  * framework/replay: do not raise in compare if no images were dumped
+  * tests: fix documentation typos for the replay profile
+  * tests: add reproducer for issue 3712
+  * ext_external_objects: add mutable flag bit to external images
+  * ext_external_objects: fix for image tests
+  * EXT_separate_shader_objects: add redeclare built-in variable test
+  * ext_external_objects: fix validation error on vertex binding descriptions
+  * egl: add the most basic test of EGL_EXT_protected_content
+  * tests: Add an EGL test for exporting a texture
+  * ext_external_objects: remove VK_IMAGE_USAGE_STORAGE_BIT usage
+  * arb_es2_compatibility: Check return value.
+  * arb_separate_shader_objects: Check return values.
+  * util: Fix draws in ManifestStencil/Depth.
+  * arb_derivative_control: verify interaction with flat inputs
+  * ext_framebuffer_object: setup max mipmap level to make fbo complete
+  * fbo: setup max mipmap level to make fbo complete with 2 levels
+  * nv_shader_atomic_int64: add tests that check for namespace pollution
+  * arb_gpu_shader_int64: add some tests for up-conversions
+  * nv_shader_atomic_int64: don't require GLSL 4.40
+  * khr_texture_compression_astc/basic: add texture 3d and 2d array support checks
+  * khr_texture_compression_astc/basic: test first the non-extension checks
+  * ext_external_objects/vk-image-overwrite: fix in color probe
+  * arb_compute_shader: Add test for double-precision arithmetic in combination with large group size.
+  * test: add fbo blit + texture view testcase
+  * nv_conditional_render: Test a glClear optimization
+  * shader_draw_parameters: Add dummy count=0 draws to each glMultiDrawElements call
+  * draw-elements: Add dummy count=0 draws to each glMultiDrawElements call
+  * ati_fragment_shader/render-ops: Fix format-security warning
+  * CMake: Add python 3.9 to supported versions
+  * simple-barrier-atomics: properly synchronize access to atomic
+  * shader_storage_buffer_object-indirect: require GL_ARB_gpu_shader5
+  * tes-gs-max-output: Require GL_ARB_gpu_shader5 to get max GS invocations
+  * arb_texture_buffer_range-ranges-2: Fix buffer alignment
+  * tests: test depth clear verifying its result using compute shader
+
+-------------------------------------------------------------------
 Thu May 20 12:36:37 UTC 2021 - Jozef Pupava <jpupava@suse.com>
 
 - Update suse_qa-skip-tests.txt with tests crashing on 15 SP3

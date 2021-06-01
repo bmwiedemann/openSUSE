@@ -161,4 +161,41 @@
     <comment></comment>
     <requestid>894677</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1483e8f2bb9389dad84ae9b0219e5006</srcmd5>
+    <version>1~20210326.6a4be9e99</version>
+    <time>1622536643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20210326.6a4be9e99:
+  * .gitlab-ci.yml: Change pages build to trigger main branch
+  * glsl-1.30: test right-shift of a left-shift
+  * arb_gpu_shader_int64: test masking after addition
+  * arb_gpu_shader_int64: test shift-left of shift-right with same count
+  * gl-3.0: add additional case for clearbufferfi correctness
+  * ext_external_objects: Another semaphores test
+  * ext_external_objects: New semaphores test
+  * ext_external_objects: Vulkan framework additions
+  * gbm: Add test for multi-planar GBM BOs
+  * ext_external_objects: Removed unused varyings from image test
+  * gitlab-ci: Build with MinGW cross-compilers.
+  * cmake: Package Waffle DLL when provided.
+  * appveyor: Remove integration.
+  * editorconfig: Add more file extensions.
+  * arb_shader_texture_image_samples/builtin-image: use skip as default result
+  * draw-prim-rate: add a test for indexed triangle strips
+  * glx-multithread-buffer-refcount-bug: new test for a recent bug
+  * cmake: Install MinGW CRT DLLs instead of statically linking them.
+  * cmake: Use 7-Zip packaging and strip debugging symbols.
+  * tests: ignore unsupported texture type + num samples
+  * tests: fix test binary name in opengl.py
+  * tests/glx: remove unnecessary calls to XMapWindow
+  * test/amd_perf_monitor: don't use exit(0)
+  * spec/glsl-1.20: Use min and max with NaN
+  * ext_external_objects: All supported image usage flags are set
+  * ext_external_objects: Replaced TexImage2D with TexSubImage2D in display
+  * ext_external_objects: Fix in external buffers
+  * tests: speed up gl-1.3-texture-env test
+  * util: expose read_pixels_float/compare_pixels_float</comment>
+    <requestid>895688</requestid>
+  </revision>
 </revisionlist>
