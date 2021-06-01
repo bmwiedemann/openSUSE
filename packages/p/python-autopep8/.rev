@@ -213,4 +213,12 @@
   * exit code correctly on permission denied failure</comment>
     <requestid>892298</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>59dafcadd24f8118b5263d0a5c69c9fd</srcmd5>
+    <version>1.5.7</version>
+    <time>1622536760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896274</requestid>
+  </revision>
 </revisionlist>

@@ -54,7 +54,7 @@ sed -i '1s/^#!.*//' autopep8.py # Remove she-bang line
 
 %check
 export LANG="en_US.UTF-8"
-%python_exec setup.py test -q
+%pyunittest discover -v
 
 %pre
 # Since /usr/bin/autopep8 became ghosted to be used with update-alternatives, we have to get rid
