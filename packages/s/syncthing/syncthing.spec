@@ -81,6 +81,14 @@ sed -i '/Service\]/a EnvironmentFile=-\/etc\/default/strelaysrv'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i 's,^ExecStart=.*,ExecStart=/usr/bin/strelaysrv $OPTIONS,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
+sed -i 's,EnvironmentFile=/etc/default/syncthing-relaysrv,EnvironmentFile=-/etc/default/syncthing-relaysrv,'    \
+  %{buildroot}%{_unitdir}/strelaysrv.service
+sed -i 's/^User=.*/User=strelaysrv/'    \
+  %{buildroot}%{_unitdir}/strelaysrv.service
+sed -i 's/^Group=.*/Group=strelaysrv/'    \
+  %{buildroot}%{_unitdir}/strelaysrv.service
+sed -i 's,^ReadWritePaths=.*,ReadWritePaths=/var/lib/strelaysrv,'    \
+  %{buildroot}%{_unitdir}/strelaysrv.service
 install -Dpm 0644 etc/linux-systemd/system/%{name}@.service        \
   %{buildroot}%{_unitdir}/%{name}@.service
 install -Dpm 0644 etc/linux-systemd/system/%{name}-resume.service  \
