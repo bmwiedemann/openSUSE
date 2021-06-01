@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 29 15:59:30 UTC 2021 - psimons@suse.com
+
+- Update commonmark-pandoc to version 0.2.1.
+  ## 0.2.1
+
+  - commonmark-pandoc.cabal: remove unneeded build-depend on containers.
+  - Support wikilinks extension.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-commonmark-pandoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name commonmark-pandoc
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.1
+Version:        0.2.1
 Release:        0
 Summary:        Bridge between commonmark and pandoc AST
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-commonmark-devel
 BuildRequires:  ghc-commonmark-extensions-devel
-BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
