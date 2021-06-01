@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 17 17:35:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't depend on python2, when we don't need it.
+
+-------------------------------------------------------------------
 Sat Feb  8 12:31:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.10.0

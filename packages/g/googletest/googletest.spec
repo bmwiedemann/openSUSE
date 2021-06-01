@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source1:        googletest-rpmlintrc
 BuildRequires:  cmake >= 2.6.4
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  pkgconfig(pthread-stubs)
 
 %description
