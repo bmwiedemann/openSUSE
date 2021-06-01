@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 26 08:44:37 UTC 2021 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.4.0.
+  1.4.0
+  -----
+
+  Released 2021-05-25.
+
+  * Allow quoted image parameters.
+
+  * Added support for "smart links".
+
+  * **API Change**: Add new constructors `SmartCard` and `SmartLink` to
+    Text.Jira.Markup.LinkType.
+
+-------------------------------------------------------------------
+Mon May 24 08:33:30 UTC 2021 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.3.5.
+  1.3.5
+  -----
+
+  Released 2021-05-24.
+
+  * Allow spaces and most unicode characters in attachment links.
+
+  * No longer require a newline character after `{noformat}`.
+
+  * Only allow URI path segment characters in bare links.
+
+  * The `file:` schema is no longer allowed in bare links; these
+    rarely make sense.
+
+-------------------------------------------------------------------
 Sun Mar 14 22:19:01 UTC 2021 - psimons@suse.com
 
 - Update jira-wiki-markup to version 1.3.4.
