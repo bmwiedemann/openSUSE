@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-compressor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
-Version:        2.4
+Version:        2.4.1
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
-License:        MIT AND BSD-3-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause AND MIT
 URL:            https://github.com/django-compressor/django-compressor
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0.6}
