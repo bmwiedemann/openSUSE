@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cachetools
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
@@ -48,7 +48,7 @@ function decorator.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

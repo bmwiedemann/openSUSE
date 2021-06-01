@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 28 06:44:53 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.2.2
+  * Update build environment.
+  * Remove Python 2 remnants.
+  * Format code with Black.
+- %check: use %pyunittest macro
+
+-------------------------------------------------------------------
 Thu Jan 28 22:51:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.1:

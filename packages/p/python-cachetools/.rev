@@ -121,4 +121,12 @@
   - Clean up ``__missing__()`` example.</comment>
     <requestid>867588</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef5a48d7a38f12b3c7cfe2e890f8226b</srcmd5>
+    <version>4.2.2</version>
+    <time>1622536406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895908</requestid>
+  </revision>
 </revisionlist>
