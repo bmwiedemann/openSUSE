@@ -19,7 +19,7 @@
 %global pkg_name call-stack
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Use GHC call-stacks in a backward compatible way
 License:        MIT
@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-nanospec-devel
 %endif
 
