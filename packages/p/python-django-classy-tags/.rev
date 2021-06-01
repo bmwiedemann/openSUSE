@@ -30,4 +30,12 @@
   * Added support for Python 3.8</comment>
     <requestid>777578</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c4dea386e384116afd870e5c5b5ca34c</srcmd5>
+    <version>2.0.0</version>
+    <time>1622536505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895355</requestid>
+  </revision>
 </revisionlist>

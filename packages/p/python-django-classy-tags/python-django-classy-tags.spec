@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-classy-tags
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-classy-tags
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Class based template tags for Django
 License:        MIT
@@ -45,13 +45,16 @@ which is fully compatible with the current Django templating infrastructure.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 
 %check
-%python_exec setup.py test
+export PYTHONPATH='.'
+%python_exec tests/settings.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/classytags
+%{python_sitelib}/django_classy_tags*egg-info
 
 %changelog
