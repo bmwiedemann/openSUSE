@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon May 24 06:49:39 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.0
+  * added media library plugin (experimental)
+  * added PipeWire plugin (experimental)
+  * added built-in CUE editor
+  * added m4b support in the ffmpeg plugin
+  * added option to enable CRC checking in the mpeg plugin
+  * added ID3v1/ID3v2 charset detection using librcd library in
+    the mpeg plugin
+  * added WebP format support for cover image
+  * added groups rebuilding after playlist updating
+  * added metadata formatter optimization
+  * added "%dir()" function in the metadata formatter
+  * added feature to integrate widgets to the main interface
+    from plugins
+  * added feature to execute external command in the fileops
+    plugin
+  * improved visualization synchronization
+  * improved lyrics plugin:
+    + added widget mode
+    + show text of the current playing song (in the widget mode
+      only)
+    + changed user interface
+  * improved qsui plugin:
+    + added feature to add dock widgets from plugins
+    + added feature to change tab bar position
+    + added icons to the file system browser menu
+    + added feature to place dock widgets in the multiple lines
+    + removed "Actions" submenu, using "Tools" menu instead
+  * improved skinned plugin:
+    + added playlist color settings
+    + moved "Show playlists" option to "Playlist" submenu
+    + moved "group tracks" and "show header" options to
+      "Playlist" submenu
+  * removed some deprecated API usage
+  * removed obsolete code
+  * changed minimal FFmpeg version to 3.4
+  * updated Portuguese, Dutch, Polish, Galician, Spanish,
+    Russian, Ukrainian, French, Indonesian, Greek, Italian,
+    German and Finnish translations
+- Refresh qmmp-fix-openmpt.patch
+- Switch build from mad to mpg123
+
+-------------------------------------------------------------------
 Sun May  9 13:09:55 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.6

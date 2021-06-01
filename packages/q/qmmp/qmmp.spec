@@ -17,11 +17,11 @@
 
 
 %define sover   1
-%define mver    1.4
+%define mver    1.5
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.4.6
+Version:        1.5.0
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -63,11 +63,11 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmms)
 BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libprojectM) >= 3.1.0
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libsidplayfp)
-BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(opus) >= 1.0.2
 BuildRequires:  pkgconfig(opusfile) >= 0.2
 BuildRequires:  pkgconfig(sndfile)
