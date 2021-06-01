@@ -1,7 +1,7 @@
 #
 # spec file for package wxsqlite3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define wx_version_soname  %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@')
 %define sover 0
 Name:           wxsqlite3
-Version:        4.6.1
+Version:        4.7.2
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1
@@ -67,7 +67,7 @@ wx-config --version
 %autosetup
 
 %build
-CFLAGS='%{optflags} -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unused-function' 
+CFLAGS='%{optflags} -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unused-function'
 CXXFLAGS="${CFLAGS}"
 autoreconf -fi
 %configure \

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">wxsqlite3</param>
-    <param name="revision">30959307c058d258db166a69be3dc72626712488</param>
+    <param name="revision">9c0ccfee774360ab11bb8e8677164f79d7ff9730</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/utelle/wxsqlite3</param>

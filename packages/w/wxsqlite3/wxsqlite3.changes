@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 31 12:35:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.7.2
+  * Added method wxSQLite3Database::QueryTransactionState
+  * Upgrade to SQLite3 Multiple Ciphers version 1.3.2
+  * Based on SQLite 3.35.5
+  * Enabled new SQLite Math Extension
+  * Fixed a memory leak in method wxSQLite3Database::GetTable
+  * WAL journals left behind by versions <= 1.2.5 are not
+    compatible with this new implementation. To be able to access
+    WAL journals created by prior versions, the configuration
+    parameter mc_legacy_wal was introduced.
+
+-------------------------------------------------------------------
 Tue Oct 13 13:13:13 UTC 2020 - olaf@aepfle.de
 
 - Update to version 4.6.1.
