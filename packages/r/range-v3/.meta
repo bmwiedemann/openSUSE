@@ -1,0 +1,7 @@
+<package name="range-v3" project="openSUSE:Factory">
+  <title>range-v3</title>
+  <description>Range library for C++14/17/20, basis for C++20's std::ranges
+
+</description>
+  <devel project="devel:libraries:c_c++" package="range-v3"/>
+</package>
