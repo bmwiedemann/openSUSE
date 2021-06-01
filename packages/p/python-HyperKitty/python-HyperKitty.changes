@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 26 14:04:05 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove the hyperkitty-admin user
+
+-------------------------------------------------------------------
+Tue May 25 18:55:19 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create static files as part of the build process
+- Fixed CVE-2021-25322
+
+-------------------------------------------------------------------
 Tue May  4 09:31:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - restrict to primary python3 flavor due to mailman 

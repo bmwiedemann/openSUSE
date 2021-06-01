@@ -45,7 +45,6 @@ Source0:        https://files.pythonhosted.org/packages/source/H/HyperKitty/Hype
 Source1:        python-HyperKitty-rpmlintrc
 #
 Source10:       hyperkitty-manage.sh
-Source11:       hyperkitty-permissions.sh
 Source12:       hyperkitty.uwsgi
 #
 Source20:       hyperkitty-qcluster.service
@@ -64,6 +63,7 @@ BuildRequires:  acl
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
+BuildRequires:  rsync
 BuildRequires:  sudo
 Requires:       python-Django >= 1.11
 Requires:       python-django-compressor >= 1.3
@@ -138,9 +138,14 @@ A web user interface for GNU Mailman.
 This package holds the uwsgi configuration.
 
 %prep
-%autosetup -p1 -n HyperKitty-%{version}
+%setup -n HyperKitty-%{version}
 cp %{SOURCE30} .
 touch settings_local.py
+
+# Copy exmaple_project to just build the static files
+rsync -a example_project/* build_static_files
+
+%autopatch -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
@@ -148,10 +153,12 @@ sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
 
 %python_build
 
-%install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Build static files
+export PYTHONPATH=$(pwd)
+%python_exec build_static_files/manage.py collectstatic --clear --noinput
+%python_exec build_static_files/manage.py compress --force
 
+%install
 install -d -m 0750 \
     %{buildroot}%{hyperkitty_etcdir} \
     %{buildroot}%{hyperkitty_libdir} \
@@ -166,7 +173,15 @@ install -d -m 0755 \
     %{buildroot}%{hyperkitty_staticdir}/CACHE \
     %{buildroot}%{_unitdir}
 
-cp -a example_project/* %{buildroot}%{hyperkitty_basedir}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# Copy static files
+rsync -a build_static_files/static %{buildroot}%{hyperkitty_basedir}
+# Remove the directory
+rm -rf %{buildroot}%{python_sitelib}/build_static_files
+
+rsync -a example_project/* %{buildroot}%{hyperkitty_basedir}
 chmod -x %{buildroot}%{hyperkitty_basedir}/wsgi.py
 
 for f in \
@@ -193,7 +208,6 @@ ln -svf %{hyperkitty_etcdir}/settings_local.py \
 # Manage script
 install -d -m 0755 %{buildroot}%{_sbindir}
 install -m 0750 %{SOURCE10} %{buildroot}%{_sbindir}/hyperkitty-manage
-install -m 0750 %{SOURCE11} %{buildroot}%{_sbindir}/hyperkitty-fix-permissions
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/hyperkitty.ini
@@ -235,29 +249,21 @@ done
 
 %check
 export DJANGO_SETTINGS_MODULE="hyperkitty.tests.settings_test"
-export PYTHONPATH='.'
+export PYTHONPATH=$(pwd)
 %python_exec example_project/manage.py test
 
 %pre -n %{hyperkitty_pkgname}-web
 /usr/sbin/groupadd -r hyperkitty &>/dev/null || :
 /usr/sbin/useradd  -g hyperkitty -s /bin/false -r -c "HyperKitty" -d %{hyperkitty_basedir} hyperkitty &>/dev/null || :
 
-/usr/sbin/groupadd -r hyperkitty-admin &>/dev/null || :
-/usr/sbin/useradd  -g hyperkitty-admin -s /bin/bash  -r -c "HyperKitty Admin" -d %{hyperkitty_basedir} hyperkitty-admin &>/dev/null || :
-
 %service_add_pre %{hyperkitty_services}
 
 %post -n %{hyperkitty_pkgname}-web
-%{_sbindir}/hyperkitty-fix-permissions
 # We need a SECRET_KEY for manage to work
 if ! grep -q "^SECRET_KEY.*" %{hyperkitty_etcdir}/settings_local.py; then
     echo "SECRET_KEY='$(openssl rand -base64 48)'" >> %{hyperkitty_etcdir}/settings_local.py
 fi
 %{_sbindir}/hyperkitty-manage migrate --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
-%{_sbindir}/hyperkitty-manage collectstatic --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --clear --noinput
-%{_sbindir}/hyperkitty-manage compress --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --force
-# Run hyperkitty-fix-permissions again for cache dir permissions
-%{_sbindir}/hyperkitty-fix-permissions
 
 %service_add_post %{hyperkitty_services}
 
@@ -276,7 +282,6 @@ fi
 %files -n %{hyperkitty_pkgname}-web
 %doc README.SUSE.md
 %{_sbindir}/hyperkitty-manage
-%{_sbindir}/hyperkitty-fix-permissions
 %{_sbindir}/rchyperkitty-qcluster
 %{_sbindir}/rchyperkitty-runjob-*
 %dir %{webapps_dir}
@@ -285,7 +290,7 @@ fi
 %{_unitdir}/hyperkitty-runjob-*.service
 %{_unitdir}/hyperkitty-runjob-*.timer
 
-%defattr(-,hyperkitty-admin,hyperkitty)
+%defattr(-,root,hyperkitty)
 %dir %{hyperkitty_basedir}
 %{hyperkitty_basedir}/__init__.py
 %{hyperkitty_basedir}/manage.py
@@ -294,16 +299,32 @@ fi
 %{hyperkitty_basedir}/urls.py
 %{hyperkitty_basedir}/wsgi.py
 
+%dir %{hyperkitty_basedir}/static
+%{hyperkitty_basedir}/static/admin
+%{hyperkitty_basedir}/static/debug_toolbar
+%{hyperkitty_basedir}/static/django-mailman3
+%{hyperkitty_basedir}/static/django_extensions
+%{hyperkitty_basedir}/static/facebook
+%{hyperkitty_basedir}/static/hyperkitty
+%{hyperkitty_basedir}/static/rest_framework
+
+# The wsgi needs to write to static/CACHE
+%attr(755,hyperkitty,hyperkitty) %dir %{hyperkitty_basedir}/static/CACHE
+%attr(644,hyperkitty,hyperkitty) %{hyperkitty_basedir}/static/CACHE/manifest.json
+
+%attr(755,hyperkitty,hyperkitty) %dir %{hyperkitty_basedir}/static/CACHE/css
+%attr(644,hyperkitty,hyperkitty) %{hyperkitty_basedir}/static/CACHE/css/output.*.css
+
+%attr(755,hyperkitty,hyperkitty) %dir %{hyperkitty_basedir}/static/CACHE/js
+%attr(644,hyperkitty,hyperkitty) %{hyperkitty_basedir}/static/CACHE/js/output.*.js
+
 %dir %{hyperkitty_localedir}
 
-%dir %{hyperkitty_staticdir}
-%dir %{hyperkitty_staticdir}/CACHE
-
-%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_etcdir}
-%attr(640,hyperkitty-admin,hyperkitty) %config(noreplace) %{hyperkitty_etcdir}/settings_local.py
-%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_libdir}
-%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_datadir}
-%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_logdir}
+%attr(750,root,hyperkitty) %dir %{hyperkitty_etcdir}
+%attr(640,root,hyperkitty) %config(noreplace) %{hyperkitty_etcdir}/settings_local.py
+%attr(750,root,hyperkitty) %dir %{hyperkitty_libdir}
+%attr(750,hyperkitty,hyperkitty) %dir %{hyperkitty_datadir}
+%attr(770,root,hyperkitty) %dir %{hyperkitty_logdir}
 
 %files -n %{hyperkitty_pkgname}-web-uwsgi
 %dir %{_sysconfdir}/uwsgi

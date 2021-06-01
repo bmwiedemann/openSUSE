@@ -4,5 +4,5 @@ Description=HyperKitty runjob @HYPERKITTY_RUNJOB@
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/python3 /srv/www/webapps/mailman/hyperkitty/manage.py runjob @HYPERKITTY_RUNJOB@ --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
-User=hyperkitty-admin
-Group=hyperkitty-admin
+User=hyperkitty
+Group=hyperkitty
