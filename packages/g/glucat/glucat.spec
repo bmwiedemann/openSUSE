@@ -1,7 +1,7 @@
 #
 # spec file for package glucat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,41 @@ BuildRequires:  python3-numpy
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-metafont-bin
+%if 0%{?suse_version} > 1500
+BuildRequires:  tex(amsfonts.sty)
+BuildRequires:  tex(auxhook.sty)
+BuildRequires:  tex(bigintcalc.sty)
+BuildRequires:  tex(bitset.sty)
+BuildRequires:  tex(collectbox.sty)
+BuildRequires:  tex(courier.sty)
+BuildRequires:  tex(etexcmds.sty)
+BuildRequires:  tex(etoolbox.sty)
+BuildRequires:  tex(fancyvrb.sty)
+BuildRequires:  tex(geometry.sty)
+BuildRequires:  tex(gettitlestring.sty)
+BuildRequires:  tex(graphics.sty)
+BuildRequires:  tex(hycolor.sty)
+BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(ifoddpage.sty)
+BuildRequires:  tex(iftex.sty)
+BuildRequires:  tex(infwarerr.sty)
+BuildRequires:  tex(intcalc.sty)
+BuildRequires:  tex(kvdefinekeys.sty)
+BuildRequires:  tex(kvoptions.sty)
+BuildRequires:  tex(kvsetkeys.sty)
+BuildRequires:  tex(letltxmacro.sty)
+BuildRequires:  tex(listofitems.sty)
+BuildRequires:  tex(ltxcmds.sty)
+BuildRequires:  tex(pdfescape.sty)
+BuildRequires:  tex(pdftexcmds.sty)
+BuildRequires:  tex(refcount.sty)
+BuildRequires:  tex(rerunfilecheck.sty)
+BuildRequires:  tex(uniquecounter.sty)
+BuildRequires:  tex(url.sty)
+BuildRequires:  tex(varwidth.sty)
+BuildRequires:  tex(xcolor.sty)
+BuildRequires:  tex(xkeyval.sty)
+%endif
 BuildRequires:  tex(adjustbox.sty)
 BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(colortbl.sty)
@@ -147,3 +182,4 @@ make %{?_smp_mflags} check
 %{_docdir}/%{name}/demos/
 
 %changelog
+
