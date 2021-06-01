@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 04:59:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:51:03 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
