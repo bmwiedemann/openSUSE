@@ -59,4 +59,29 @@
     <comment></comment>
     <requestid>889925</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5da16784339539d762a69de5d18845c</srcmd5>
+    <version>0.16.2</version>
+    <time>1622536526</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.16.1
+  * Major performance improvement for spack load and other commands.
+  * spack fetch is now environment-aware. (#19166)
+  * Numerous fixes for the new, clingo-based concretizer.
+  * Supoprt for automatically bootstrapping clingo from source.
+  * Python 3.10 support: collections.abc
+  * Fix import issues by using __import__ instead of Spack package import.
+  * Bugfixes and --source-dir argument for spack location.
+  * Better support for externals in shared prefixes.
+  * spack build-env now prefers specs defined in the active environment. 
+  * Remove erroneous warnings about quotes in from_sourcing_files.
+  * Fix clearing cache of InternalConfigScope.
+  * Bugfix for active when pkg is already active error.
+  * Make SingleFileScope able to repopulate the cache after clearing it.
+  * Channelflow: Fix the package.
+  * More descriptive error message for bugs in package.py
+  * Use package-supplied autogen.sh
+  * Respect -k/verify-ssl-false in _existing_url method.</comment>
+    <requestid>895310</requestid>
+  </revision>
 </revisionlist>
