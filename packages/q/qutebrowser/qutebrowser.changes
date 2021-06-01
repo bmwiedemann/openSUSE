@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 20 18:58:16 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.2.2
+Fixed
+  * When awesomewm's "naughty" notification daemon was used with a
+    development version of AwesomeWM and an unknown version number,
+    qutebrowser would crash when trying to parse the version
+    string. This is now fixed.
+  * Due to a bug with QtWebEngine 5.15.4, old Service Worker data
+    could cause renderer process crashes. This is now worked around
+    by qutebrowser.
+  * When an (broken) binding to set-cmd-text without any argument
+    existed, using : would crash, which is now fixed.
+  * New site-specific quirk (again) working around not being able
+    to type accented/composed characters on Google Docs.
+  * When running with python -OO (which is not recommended), a
+    notification being shown would result in a crash, which is now
+    fixed.
+
+-------------------------------------------------------------------
 Sat May  8 15:49:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.2.1
