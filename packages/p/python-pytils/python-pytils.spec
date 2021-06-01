@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,9 @@ transliteration, etc.)
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# requires django, it is skipped in pytils/test/__init__.py
+rm -r pytils/test/templatetags
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

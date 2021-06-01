@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 09:51:17 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Nov 22 17:25:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summary. Adjust grammar.
