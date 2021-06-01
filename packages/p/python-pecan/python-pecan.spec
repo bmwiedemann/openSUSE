@@ -82,7 +82,7 @@ sed -ie "/^pep8$/d" test-requirements.txt
 %python_clone -a %{buildroot}%{_bindir}/gunicorn_pecan
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative pecan
