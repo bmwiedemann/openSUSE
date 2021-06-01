@@ -47,6 +47,7 @@ Django Template Blocks with extra functionality
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

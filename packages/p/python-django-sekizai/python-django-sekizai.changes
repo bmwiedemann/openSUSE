@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 10:38:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Do not package tests
+
+-------------------------------------------------------------------
 Thu May 20 07:56:25 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use deprecated setup.py test
