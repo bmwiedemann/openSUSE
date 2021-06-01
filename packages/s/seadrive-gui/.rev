@@ -33,4 +33,14 @@
 </comment>
     <requestid>888929</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a3bf81abeb9bbcf7ae10b34f1574b93</srcmd5>
+    <version>2.0.14</version>
+    <time>1622536613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.14:
+  * Report nicer error message when a library is too large to sync
+</comment>
+    <requestid>895447</requestid>
+  </revision>
 </revisionlist>

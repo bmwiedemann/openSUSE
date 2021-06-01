@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 26 05:38:52 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v2.0.14:
+  * Report nicer error message when a library is too large to sync
+
+-------------------------------------------------------------------
 Wed Apr 28 05:43:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add seadrive-gui_fix-compilation-glib2_68.patch
