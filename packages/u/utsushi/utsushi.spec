@@ -17,7 +17,7 @@
 
 
 Name:           utsushi
-Version:        1610777387.ab70633
+Version:        1622031929.7d9d76a
 Release:        0
 Summary:        Next Generation Image Acquisition Utilities
 License:        GPL-3.0-or-later
