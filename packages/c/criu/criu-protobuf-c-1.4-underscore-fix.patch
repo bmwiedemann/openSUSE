@@ -1,0 +1,147 @@
+From fec1925a7ed89ce85c991ed27aa82b22bf5a8a8c Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 26 May 2021 18:22:24 +0200
+Subject: [PATCH] Fix struct name incompatibilities with protobuf-c 1.4
+
+Since protobuf-c 1.4, the generated struct names have no longer the
+leading underscore.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ criu/include/irmap.h            |  6 +++---
+ criu/include/parasite-syscall.h | 10 +++++-----
+ criu/include/pstree.h           |  2 +-
+ criu/include/rst_info.h         |  4 ++--
+ criu/include/shmem.h            |  2 +-
+ criu/mem.c                      |  2 +-
+ lib/c/criu.h                    |  2 +-
+ 7 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/criu/include/irmap.h b/criu/include/irmap.h
+index 033f71e3722a..53479e8b506a 100644
+--- a/criu/include/irmap.h
++++ b/criu/include/irmap.h
+@@ -1,13 +1,13 @@
+ #ifndef __CR_IRMAP__H__
+ #define __CR_IRMAP__H__
+ char *irmap_lookup(unsigned int s_dev, unsigned long i_ino);
+-struct _FhEntry;
++struct FhEntry;
+ int irmap_queue_cache(unsigned int dev, unsigned long ino,
+-		struct _FhEntry *fh);
++		struct FhEntry *fh);
+ int irmap_predump_prep(void);
+ int irmap_predump_run(void);
+ int check_open_handle(unsigned int s_dev, unsigned long i_ino,
+-		struct _FhEntry *f_handle);
++		struct FhEntry *f_handle);
+ int irmap_load_cache(void);
+ int irmap_scan_path_add(char *path);
+ #endif
+diff --git a/criu/include/parasite-syscall.h b/criu/include/parasite-syscall.h
+index c86a724fd163..38c7675ff7b9 100644
+--- a/criu/include/parasite-syscall.h
++++ b/criu/include/parasite-syscall.h
+@@ -11,8 +11,8 @@ struct parasite_dump_misc;
+ struct parasite_drain_fd;
+ struct vm_area_list;
+ struct pstree_item;
+-struct _CredsEntry;
+-struct _CoreEntry;
++struct CredsEntry;
++struct CoreEntry;
+ struct list_head;
+ struct cr_imgset;
+ struct fd_opts;
+@@ -31,11 +31,11 @@ extern int parasite_dump_posix_timers_seized(struct proc_posix_timers_stat *proc
+ 		struct parasite_ctl *ctl, struct pstree_item *);
+ 
+ extern int parasite_dump_misc_seized(struct parasite_ctl *ctl, struct parasite_dump_misc *misc);
+-extern int parasite_dump_creds(struct parasite_ctl *ctl, struct _CredsEntry *ce);
+-extern int parasite_dump_thread_leader_seized(struct parasite_ctl *ctl, int pid, struct _CoreEntry *core);
++extern int parasite_dump_creds(struct parasite_ctl *ctl, struct CredsEntry *ce);
++extern int parasite_dump_thread_leader_seized(struct parasite_ctl *ctl, int pid, struct CoreEntry *core);
+ extern int parasite_dump_thread_seized(struct parasite_thread_ctl *tctl,
+ 				       struct parasite_ctl *ctl, int id,
+-				       struct pid *tid, struct _CoreEntry *core);
++				       struct pid *tid, struct CoreEntry *core);
+ extern int dump_thread_core(int pid, CoreEntry *core,
+ 					const struct parasite_dump_thread *dt);
+ 
+diff --git a/criu/include/pstree.h b/criu/include/pstree.h
+index 61ab0ce0eb23..d33474998a91 100644
+--- a/criu/include/pstree.h
++++ b/criu/include/pstree.h
+@@ -113,7 +113,7 @@ extern int prepare_task_entries(void);
+ extern int prepare_dummy_task_state(struct pstree_item *pi);
+ 
+ extern int get_task_ids(struct pstree_item *);
+-extern struct _TaskKobjIdsEntry *root_ids;
++extern struct TaskKobjIdsEntry *root_ids;
+ 
+ extern void core_entry_free(CoreEntry *core);
+ extern CoreEntry *core_entry_alloc(int alloc_thread_info, int alloc_tc);
+diff --git a/criu/include/rst_info.h b/criu/include/rst_info.h
+index 3283849e448e..735f4a632536 100644
+--- a/criu/include/rst_info.h
++++ b/criu/include/rst_info.h
+@@ -25,7 +25,7 @@ struct fdt {
+ 	futex_t			fdt_lock;
+ };
+ 
+-struct _MmEntry;
++struct MmEntry;
+ 
+ struct rst_info {
+ 	struct list_head	fds;
+@@ -40,7 +40,7 @@ struct rst_info {
+ 	struct fdt		*fdt;
+ 
+ 	struct vm_area_list	vmas;
+-	struct _MmEntry		*mm;
++	struct MmEntry		*mm;
+ 	struct list_head	vma_io;
+ 	unsigned int		pages_img_id;
+ 
+diff --git a/criu/include/shmem.h b/criu/include/shmem.h
+index 9afdb799afcf..114eb176341a 100644
+--- a/criu/include/shmem.h
++++ b/criu/include/shmem.h
+@@ -5,7 +5,7 @@
+ #include "common/lock.h"
+ #include "images/vma.pb-c.h"
+ 
+-struct _VmaEntry;
++struct VmaEntry;
+ struct vma_area;
+ 
+ extern int collect_shmem(int pid, struct vma_area *vma);
+diff --git a/criu/mem.c b/criu/mem.c
+index 167838b98541..9cd827d840da 100644
+--- a/criu/mem.c
++++ b/criu/mem.c
+@@ -1225,7 +1225,7 @@ err_addr:
+ 
+ static int maybe_disable_thp(struct pstree_item *t, struct page_read *pr)
+ {
+-	struct _MmEntry *mm = rsti(t)->mm;
++	struct MmEntry *mm = rsti(t)->mm;
+ 
+ 	/*
+ 	 * There is no need to disable it if the page read doesn't
+diff --git a/lib/c/criu.h b/lib/c/criu.h
+index e9b2f1e9d3aa..77b215ccd8e9 100644
+--- a/lib/c/criu.h
++++ b/lib/c/criu.h
+@@ -111,7 +111,7 @@ int criu_set_pre_dump_mode(enum criu_pre_dump_mode mode);
+  * some non-existing one is reported.
+  */
+ 
+-typedef struct _CriuNotify *criu_notify_arg_t;
++typedef struct CriuNotify *criu_notify_arg_t;
+ void criu_set_notify_cb(int (*cb)(char *action, criu_notify_arg_t na));
+ 
+ /* Get pid of root task. 0 if not available */
+-- 
+2.26.2
+

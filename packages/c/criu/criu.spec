@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@
 %define _lto_cflags %{nil}
 %endif
 
+%define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
+
 Name:           criu
 Version:        3.15
 Release:        0
@@ -35,6 +37,7 @@ URL:            https://criu.org/
 Source0:        https://download.openvz.org/criu/%{name}-%{version}.tar.bz2
 Patch1:         criu-py-install-fix.diff
 Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
+Patch3:         criu-protobuf-c-1.4-underscore-fix.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
@@ -99,6 +102,9 @@ to develop applications with CRIU library.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%if "%{rpm_vercmp %proto_c_ver 1.4.0}" >= "0"
+%patch3 -p1
+%endif
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 

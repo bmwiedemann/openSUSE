@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 26 18:23:43 CEST 2021 - tiwai@suse.de
+
+- Fix the build with protobuf-c 1.4:
+  criu-protobuf-c-1.4-underscore-fix.patch
+
+-------------------------------------------------------------------
 Tue Dec  1 15:58:59 CET 2020 - tiwai@suse.de
 
 - Update to criu 3.15:
