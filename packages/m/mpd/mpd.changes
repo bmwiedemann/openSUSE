@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 30 15:39:04 UTC 2021 - Fabian Niepelt <fniepelt@takios.de>
+
+- Update to 0.22.8
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.8/NEWS
+  * fix crash bug in "albumart" command (0.22.7 regression) 
+
+-------------------------------------------------------------------
 Fri May 21 06:04:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.22.7
