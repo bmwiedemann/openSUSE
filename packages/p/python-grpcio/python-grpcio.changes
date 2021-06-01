@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 23 00:55:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.38.0:
+  * Add grpcio-admin Python package (gh#grpc/grpc#26166).
+  * Add CSDS API to Python (gh#grpc/grpc#26114).
+  * Expose code and details from context on the server side
+    (gh#grpc/grpc#25457).
+  * Explicitly import importlib.abc; required on Python 3.10.
+    Fixes #26062 (gh#grpc/grpc#26083).
+  * Fix potential deadlock on the GIL in AuthMetdataPlugin
+    (gh#grpc/grpc#26009).
+  * Introduce new Python package "xds_protos"
+    (gh#grpc/grpc#25975).
+  * Remove async mark for set_trailing_metadata interface
+    (gh#grpc/grpc#25814).
+
+-------------------------------------------------------------------
 Sat May  8 14:08:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.37.1:
