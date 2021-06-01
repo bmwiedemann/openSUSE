@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ap-normalize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ap-normalize
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.0
+Version:        0.1.0.1
 Release:        0
 Summary:        Self-normalizing applicative expressions
 License:        MIT
@@ -70,6 +70,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.md
+%doc CHANGELOG.md README.md
 
 %changelog
