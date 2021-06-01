@@ -111,4 +111,12 @@ update to version v2.5
   - Support for V2 UTS 46 test vectors.</comment>
     <requestid>868498</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c2597caf694b1633c62fef367e6bd860</srcmd5>
+    <version>3.1</version>
+    <time>1622536459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895758</requestid>
+  </revision>
 </revisionlist>

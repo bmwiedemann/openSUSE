@@ -54,7 +54,7 @@ library but currently only supports the older 2003 specification.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.md
