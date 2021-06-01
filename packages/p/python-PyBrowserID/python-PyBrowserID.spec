@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBrowserID
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-PyBrowserID
 Version:        0.14.0
 Release:        0
@@ -26,15 +25,19 @@ Summary:        Python library for the BrowserID Protocol
 License:        MPL-2.0
 URL:            https://github.com/mozilla/PyBrowserID
 Source:         https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyBrowserID-%{version}.tar.gz
+# https://github.com/mozilla/PyBrowserID/issues/42
+Patch0:         python-PyBrowserID-unittest-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
+%if %{suse_version} < 1550
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module requests}
 %endif
+BuildRequires:  %{python_module requests}
+# /SECTION
 %python_subpackages
 
 %description
@@ -43,6 +46,7 @@ Mozilla Persona.
 
 %prep
 %setup -q -n PyBrowserID-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -51,10 +55,8 @@ Mozilla Persona.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pyunittest discover -v
 
 %files %{python_files}
 %doc CHANGES.txt README.rst

@@ -1,0 +1,34 @@
+Index: PyBrowserID-0.14.0/browserid/tests/test_supportdoc.py
+===================================================================
+--- PyBrowserID-0.14.0.orig/browserid/tests/test_supportdoc.py	2014-12-12 06:15:36.000000000 +0100
++++ PyBrowserID-0.14.0/browserid/tests/test_supportdoc.py	2021-05-27 11:15:09.807769893 +0200
+@@ -1,7 +1,11 @@
+ import json
+ import socket
+ 
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
++
+ from requests.exceptions import RequestException
+ 
+ from browserid.supportdoc import fetch_support_document, SupportDocumentManager
+Index: PyBrowserID-0.14.0/browserid/tests/test_verifiers.py
+===================================================================
+--- PyBrowserID-0.14.0.orig/browserid/tests/test_verifiers.py	2018-01-11 22:01:14.000000000 +0100
++++ PyBrowserID-0.14.0/browserid/tests/test_verifiers.py	2021-05-27 11:15:59.064034201 +0200
+@@ -5,7 +5,11 @@
+ import time
+ import warnings
+ 
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
++
+ 
+ import browserid
+ from browserid.tests.support import (patched_supportdoc_fetching,

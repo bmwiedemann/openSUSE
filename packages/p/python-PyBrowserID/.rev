@@ -24,4 +24,14 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746316</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c766f3ba58ef6c78530d7f9191807fd0</srcmd5>
+    <version>0.14.0</version>
+    <time>1622536655</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use %pyunittest rpm macro
+- Add python-PyBrowserID-unittest-mock.patch removes dependency
+  on mock package (gh#mozilla/PyBrowserID#42).</comment>
+    <requestid>895756</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 27 08:31:12 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+- Add python-PyBrowserID-unittest-mock.patch removes dependency
+  on mock package (gh#mozilla/PyBrowserID#42).
+
+-------------------------------------------------------------------
 Thu Nov  7 15:14:07 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
