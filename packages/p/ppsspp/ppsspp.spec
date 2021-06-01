@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.11.2~git20210422
+Version:        1.11.3~git20210522
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later

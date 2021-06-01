@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Sat May 22 10:23:09 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210522:
+  * Add gamecontrollerdb.txt entry for Switch controller.
+  * SDL: Ignore commas in joystick names.
+
+-------------------------------------------------------------------
+Tue May 18 18:32:15 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210517:
+  * Fix FixPathCase bug when constructing the full path. Swap the append order for / and the path component.
+  * http: Show a more standard browser for remote.
+  * http: Improve navigating up within http:// paths.
+  * http: Fix remote disc browsing.
+  * Update to libpng v1.7.0beta90.
+  * Update zstd to 1.5.0.
+  * Reporting: Cancel requests on shutdown.
+
+-------------------------------------------------------------------
+Sun May 16 17:59:25 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210516:
+  * Show Port Offset value too when detecting Data coming from incorrect port.
+  * Fix possible crash issue on blocking socket implementation.
+  * Common: Prevent non_path IOFile usage.
+  * Common: Use Path for GetExeDirectory().
+  * VFS: Use Path for DirectoryAssetReader.
+  * Common: Use Path for GetFileSize().
+  * Config: Move data path settings to Paths.
+  * Common: Remove File funcs redundant with Path.
+  * Common: Remove File::GetFilename().
+  * SaveState: Use Path instead of strings.
+  * UI: Correct fallback to screenshots for icons.
+  * Debugger: Simplify symbol map filename build.
+  * Common: Cleanup some Path constructions.
+  * http: Use Path for the download file.
+  * headless: Correct tests.
+  * Revert gradle update (investigating build server issue)
+  * Fix ZipAssetReader file listing. Fixes post shaders on Android
+  * Fix crash in homebrew store after installing game
+  * Fix path bug installing homebrew
+  * Minor error message improvement
+  * UWP iso-loading fix
+  * GameManager: Base isDir off of zipped file name.
+  * Additional feedback.
+  * Remove unused function GetHostPath from filesystems
+  * Address additional feedback
+  * Address all the easy feedback. Some is left.
+  * Clean up PathBrowser a bit
+  * It never ends...
+  * Use Path for fullName in dirlisting. Bugfixes.
+  * Change Copy, Rename to use Path. Remove std::string version of Exists().
+  * Change parameter of DeleteDir and friends to Path
+  * Load IniFile from Path
+  * Introduce Path, start using it all over the place.
+  * Update gradle again, for Android Studio 4.2
+  * CPUDetect: Ensure we never get zero cores.
+  * Common: Fix read of special files with fake size.
+  * FileUtil: check for errors after a fread() in ReadFileToString()
+  * CPUDetect: saturate lower bound of CPU count to 1
+  * CPUDetect: prevent a divide-by-zero when ParseCPUList() fails
+  * Common: Fix dir listing extension filter.
+  * Common: Correct ReadFileToString() with no size.
+  * UWP: Order includes, avoid file attrs to buildfix.
+  * Update libzip to 1.7.3.
+  * Common: Remove OpenCPPFile().
+  * CPUDetect: Avoid usage of OpenCPPFile().
+  * Common: Cleanup AssetReader extension filter.
+  * Common: Update path browser extension handling.
+  * Loaders: Look for PSP/GAME/ not /PSP/GAME/.
+  * Loaders: Avoid fileToStart compare with "".
+  * headless: Avoid empty string compares for mountIso.
+  * Loaders: Remove fileLoader->Extension().
+  * Loaders: Rename Path() to GetPath().
+  * Cheats: Avoid OpenCPPFile for cheat import.
+  * Cheats: Parse files using C files for Path compat.
+  * headless: Avoid C++ files for Path support.
+  * Windows: Avoid C++ files for consistency.
+  * Core: Fix virtual disc index reading.
+  * Common: Use C FILE for log file output.
+  * Core: Remove some uses of OpenCPPFile.
+  * Core: Leave delay slot when re-entering jit.
+  * Ctrl: Apply analog limiter to real sticks too.
+  * GPU: Minor cleanup duplicate header/conditions.
+  * GPU: Correctly initialize HW tessellation support.
+  * http: Add progress to missing request.
+  * http: Skip processing response body for void.
+  * Store: Retain cancel/speed on resize or switch.
+  * Store: Show a rough speed indicator.
+  * http: Always use/require progress in requests.
+  * http: Always use non-blocking in http.
+  * http: Remove timeoutless requests.
+  * http: Separate out net buffer code from formatting.
+  * Draw: Centralize funcs in ColorConv.
+  * Draw: Optimize GL A1R5G5B5 conversion.
+  * Common: Move ColorConv to a more appropriate place.
+  * UWP: Ignore _CRT_SECURE_NO_WARNINGS in UI.
+  * Common: Cleanup some logging warnings.
+  * Usb: Stub sceUsbstorBootSetCapacity().
+  * http: Set a more useful user agent.
+  * GameInfoCache: Don't expose the workqueue.
+  * Common: Capitalize setCurrentThreadName().
+  * Common: Cleanup some mismatched indentation.
+  * Common: Cleanup HTTPServer indentation.
+  * Common: Get rid of Executor.cpp/h.
+  * Core: Fix vrot cos(2) typo.
+  * Savedata: Eat less cycles in savedata init.
+  * Core: Correct thread dependency in relocations.
+  * Common: FileUtil rename buildfix.
+  * Common: UWP buildfix.
+  * Buildfix, and more renaming while we're at it.
+  * Buildfixes
+  * Delete unused function, rename two more.
+  * Merge GetFileInfo/GetFileDetails into GetFileInfo
+  * Rename a couple of functions.
+  * Move remaining FileUtil functions into the File namespace.
+  * Compat: Remove single/double sincos path.
+  * Windows: Reduce focus juggling on game start.
+  * UI: Change background when dangerous settings on.
+  * UI: Show cheats and plugins on exceptions.
+  * Core: Special case 1/-1 for cosine.
+  * Core: Strip off lower bits of sin/cos results.
+  * Core: Switch to double precision VFPU sin/cos.
+  * Core: Apply custom narrowing before VFPU sin/cos.
+  * Core: Cleanup VFPU float bit handling.
+  * unittest: Fix jit harness init.
+  * Update assets/lang
+  * Debugger: Try harder to validate UTF-8.
+  * MemMap: Map 0xC0000000 into virtual memory.
+  * MemMap: Cleanup memory mirror pointers.
+  * Update version to 1.11.3
+  * GPU: Dirty texparams when cropping a self-copy.
+  * Only consider the actual PPGe texture in kernel ram reliable.
+
+-------------------------------------------------------------------
 Fri Apr 23 13:17:29 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.11.2~git20210422:
