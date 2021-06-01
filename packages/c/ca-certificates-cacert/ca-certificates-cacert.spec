@@ -25,7 +25,7 @@ License:        SUSE-CacertRoot
 Group:          Productivity/Networking/Security
 URL:            https://www.cacert.org/
 # TEMP - source validator rejects validation because root cert expired
-# Source:         https://www.cacert.org/certs/class3.crt#/CAcert_class3.pem
+# Source:         https://www.cacert.org/class3.crt#/CAcert_class3.pem
 # Source1:        https://www.cacert.org/certs/root.crt#/CAcert.pem
 Source:         CAcert_class3.pem
 Source1:        CAcert.pem

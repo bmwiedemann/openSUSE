@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 23 15:18:32 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update class3.crt to the new one expiring 2031 again
+
+-------------------------------------------------------------------
 Sat May 22 11:15:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run (bsc#1186362)
