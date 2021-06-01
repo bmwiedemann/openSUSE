@@ -1,7 +1,7 @@
 #
 # spec file for package qtile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %bcond_without test
 Name:           qtile
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
-License:        MIT AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND MIT
 Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
 Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
@@ -44,7 +44,7 @@ Requires:       python3-cffi >= 1.11.5
 Requires:       python3-six >= 1.11.0
 Requires:       python3-xcffib >= 0.8.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     libxcb-cursor0
 Recommends:     pulseaudio
 Recommends:     python3-iwlib
@@ -53,6 +53,7 @@ Recommends:     python3-psutil
 Recommends:     python3-python-dateutil
 Recommends:     python3-python-mpd2
 Recommends:     python3-pyxdg
+Recommends:     sensors
 Suggests:       python3-jupyter_console
 Suggests:       python3-jupyter_ipykernel
 Suggests:       python3-tk
@@ -78,6 +79,7 @@ BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xrandr
 BuildRequires:  xterm
 BuildRequires:  xvfb-run
+BuildRequires:  typelib(Notify)
 %endif
 
 %description
@@ -92,9 +94,8 @@ A pure-Python tiling window manager.
 
 %prep
 %setup -q -n qtile-%{version}
-# Fix rpmlint warnings
-sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' bin/dqtile-cmd
-sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/qtile_cmd.py
+# Fix rpmlint warning
+sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
 
 %build
 %python3_build
@@ -122,9 +123,8 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
-cp %{buildroot}%{_bindir}/qtile-cmd bin/
 # test_images_good and other svg tests fail https://github.com/qtile/qtile/issues/1352
-PYTHONPATH=%{buildroot}%{python3_sitearch} xvfb-run python3 -m pytest -rs -k "not (svg or test_images_good)"
+PYTHONPATH=%{buildroot}%{python3_sitearch} xvfb-run python3 -m pytest -rs -k "not (svg or test_images_good or test_qtile_cmd)"
 %endif
 
 %post
@@ -140,16 +140,8 @@ PYTHONPATH=%{buildroot}%{python3_sitearch} xvfb-run python3 -m pytest -rs -k "no
 %ghost %{_sysconfdir}/alternatives/default.desktop
 %license LICENSE
 %doc CHANGELOG README.rst
-%{_bindir}/iqshell
 %{_bindir}/qtile
-%{_bindir}/qtile-run
-%{_bindir}/qtile-top
-%{_bindir}/qshell
-%{_bindir}/qtile-cmd
-%{_bindir}/dqtile-cmd
 %{python3_sitearch}/*
-%{_mandir}/man1/qtile.1%{?ext_man}
-%{_mandir}/man1/qshell.1%{?ext_man}
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/qtile.desktop
 

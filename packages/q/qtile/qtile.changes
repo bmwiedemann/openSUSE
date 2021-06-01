@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu May 27 08:45:51 UTC 2021 - Petr Cervinka <petr@cervinka.net>
+
+- Update to version 0.17.0:
+  * Python 3.5 and 3.6 are no longer supported
+  * Config breakage:
+    - Pacman widget has been removed. Use CheckUpdates instead.
+    - Mpris widget has been removed. Use Mpris2 instead.
+    - property "masterWindows" of Tile layout renamed to master_length
+    - Match objects now only allow one string argument for their wm
+      name/class/etc. properties. to update your config, do e.g.
+               Group('www', spawn='firefox', layout='xmonad',
+          -          matches=[Match(wm_class=['Firefox', 'google-chrome', 'Google-chrome'])]),
+          +          matches=[Match(wm_class='Firefox'), Match(wm_class='google-chrome'), Match(wm_class='Google-chrome')]),
+     - properties wname, wmclass and role of Slice-layout replaced by Match-
+       type property "match"
+     - rules specified in `layout.Floating`'s `float_rules` are now evaluated with
+       AND-semantics instead of OR-semantics, i.e. if you specify 2 different
+       property rules, both have to match
+    - check the new `float_rules` for `floating_layout` in the default config and
+      extend your own rules appropriately: some non-configurable auto-floating rules
+      were made explicit and added to the default config
+    - using `dict`s for `layout.Floating`'s `float_rules` is now deprecated, please
+      use `config.Match` objects instead
+    - `no_reposition_match` in `layout.Floating` has been removed; use the list of
+      `config.Match`-objects `no_reposition_rules` instead
+    - Command line has been modernized to a single entry point, the `qtile`
+      binary. Translations are below:
+            qtile     -> qtile start
+            qtile-cmd -> qtile cmd-obj
+            qtile-run -> qtile run-cmd
+            qtile-top -> qtile top
+            qshell    -> qtile shell
+      iqshell and dqtile-cmd are no longer distributed with the
+      package, as they were either user or developer scripts. Both are
+      still available in the qtile repo in /scripts.
+    - Running `qtile` without arguments will continue to work for the
+      forseeable future, but will be eventually deprecated. qtile prints a
+      warning when run in this configuration.
+    - Qtile.cmd_focus_by_click is no longer an available command.
+    - Qtile.cmd_get_info is no longer an available command.
+    - libqtile.command_* has been deprecated, it has been moved to
+      libqtile.command.*
+    - libqtile.widget.base.ThreadedPollText has been removed; out of tree
+      widgets can use ThreadPoolText in the same package instead.
+    - the YahooWeather widget was removed since Yahoo retired their free
+      tier of the weather API
+    - Deprecated hook `window_name_change` got removed, use
+      `client_name_updated` instead.
+    - show_state attribute from WindowName widget has been removed. Use format attribute instead.
+            show_state = True  -> format = '{state}{name}'
+            show_state = False -> format = '{name}'
+    - mouse_callbacks no longer receives the qtile object as an argument
+      (they receive no arguments); import it via `from libqtile import
+      qtile` instead.
+  * Features
+    - new WidgetBox widget
+    - new restart and shutdown hooks
+    - rules specified in `layout.Floating`'s `float_rules` are now evaluated with
+      AND-semantics, allowing for more complex and specific rules
+    - Python 3.9 support
+    - switch to Github Actions for CI
+    - Columns layout has new `margin_on_single` option to specify margin
+      size when there is only one window (default -1: use `margin` option).
+    - new OpenWeather widget to replace YahooWeather
+    - new format attribute for WindowName widget
+    - new max_chars attribute for WindowName widget
+    - libqtile now exports type information
+    - add a new `qtile check` subcommand, which will check qtile configs
+      for various things:
+          - validates configs against the newly exported type information
+            if mypy is present in the environment
+          - validates that qtile can import the config file (e.g. that
+            syntax is correct, ends in a .py extension, etc.)
+          - validates Key and Mouse mod/keysym arguments are ok.
+    - Columns layout now enables column swapping by using swap_column_left and swap_column_right
+  * Warning
+    When (re)starting, Qtile passes its state to the new process in a
+    file now, where previously it passed state directly as a string. This
+    fixes a bug where some character encodings (i.e. in group names) were
+    getting messed up in the conversion to/from said string. This change
+    will cause issues if you update Qtile then restart it, causing the
+    running old version to pass state in the previous format to the new
+    process which recognises the new.
+- Update qtile-rpmlintrc, remove warning related to dqtile-cmd, ignore zero-length for py.typed
+- Remove shebang in cmd_obj.py 
+- Add typelib(Notify) to test requirements
+- Remove man pages (dropped in upstream)
+- Add sensors to recommends
+- Disable tests test_qtile_cmd (unstable in obs, works fine in local build osc environment)
+
+-------------------------------------------------------------------
 Wed Oct 28 07:54:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix Source
