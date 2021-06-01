@@ -1,7 +1,7 @@
 #
 # spec file for package python-inflection
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@ Release:        0
 Summary:        A port of Ruby on Rails inflector to Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/jpvanhal/inflection
+URL:            https://github.com/jpvanhal/inflection
 Source:         https://files.pythonhosted.org/packages/source/i/inflection/inflection-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -52,7 +52,7 @@ Inflection is a port of `Ruby on Rails`_' `inflector`_ to Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
