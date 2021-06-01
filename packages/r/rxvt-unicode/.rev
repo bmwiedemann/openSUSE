@@ -330,4 +330,12 @@ adds .desktop files</comment>
     <comment>- Update to 9.26</comment>
     <requestid>893692</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>5a4cc768f121ad990f570e4b418b778f</srcmd5>
+    <version>9.26</version>
+    <time>1622536527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895314</requestid>
+  </revision>
 </revisionlist>

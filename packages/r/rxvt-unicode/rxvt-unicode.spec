@@ -40,6 +40,7 @@ Patch2:         rxvt-unicode-9.21-xsubpp.patch
 Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
+Patch6:         perl-avoiding-recursive-loading.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl

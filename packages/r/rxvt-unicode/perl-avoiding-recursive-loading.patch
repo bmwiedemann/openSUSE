@@ -1,0 +1,49 @@
+From d95be93135afa8a2dcec1654c61e4d13c8a76687 Mon Sep 17 00:00:00 2001
+From: Marc Lehmann <schmorp@schmorp.de>
+Date: Mon, 24 May 2021 20:21:51 +0000
+Subject: [PATCH] *** empty log message ***
+
+From upstream (after 9.26)
+http://lists.schmorp.de/pipermail/rxvt-unicode/2021q2/002610.html
+http://cvs.schmorp.de/rxvt-unicode/src/urxvt.pm?r1=1.259&r2=1.260&sortby=date
+http://cvs.schmorp.de/rxvt-unicode/Changes?r1=1.1235&r2=1.1236&sortby=date
+
+[ pvorel: fix typo ]
+Reviewed-by: Petr Vorel <pvorel@suse.cz>
+---
+ Changes      | 4 ++++
+ src/urxvt.pm | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Changes b/Changes
+index f33d9164..ba0ff63f 100644
+--- a/Changes
++++ b/Changes
+@@ -44,6 +44,10 @@ TODO: confirm-paste should be the default
+ TODO: xterm-osc does not autoload background
+ TODO: think about daemon delaying urxvt client exit.
+ 
++	- allow perl-ext and perl-ext-common to override autoloaded extensions.
++          this allows tabbed to disable itself in subtabs, avoiding recursive
++          loading.
++
+ 9.26 Fri May 14 19:14:14 CEST 2021
+ 	- ev_iouring.c was wrongly required during compilation, and wrongly
+           not packaged.
+diff --git a/src/urxvt.pm b/src/urxvt.pm
+index ec13b094..4e4c56d9 100644
+--- a/src/urxvt.pm
++++ b/src/urxvt.pm
+@@ -731,8 +731,8 @@ sub invoke {
+       }
+ 
+       for (
++         @{ delete $TERM->{perl_ext_3} },
+          (grep $_, map { split /,/, $TERM->resource ("perl_ext_$_") } 1, 2),
+-         @{ delete $TERM->{perl_ext_3} }
+       ) {
+          if ($_ eq "default") {
+ 
+-- 
+2.31.1
+

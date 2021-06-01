@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 07:56:46 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Backport patch from upstream: perl-avoiding-recursive-loading.patch
+
+-------------------------------------------------------------------
 Mon May 17 07:57:50 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to 9.26
