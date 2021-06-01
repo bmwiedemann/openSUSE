@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon May 31 11:30:21 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#809
+- work on image mode
+- 4.4.11
+
+--------------------------------------------------------------------
+Fri May 28 06:34:26 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#808
+- adjust partition names from set_source
+- 4.4.10
+
+--------------------------------------------------------------------
 Fri May 21 14:52:25 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#807
