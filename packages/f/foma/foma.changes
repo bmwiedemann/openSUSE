@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 19 15:14:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define conditionally make_build to fix build on systems that do
+  not have that macro
+
+-------------------------------------------------------------------
 Mon Mar 02 12:07:36 UTC 2020 - tchvatal@suse.com
 
 - Update to version 0.9.18+git20200221.5e5521e bsc#1160265:

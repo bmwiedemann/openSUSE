@@ -38,4 +38,12 @@
   * foma-fix-sizeof.patch</comment>
     <requestid>780929</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e75e497d70d271750f69831f3dbdf8c9</srcmd5>
+    <version>0.9.18+git20200221.5e5521e</version>
+    <time>1622536436</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895575</requestid>
+  </revision>
 </revisionlist>
