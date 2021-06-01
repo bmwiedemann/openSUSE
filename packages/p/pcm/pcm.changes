@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 25 10:04:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202105:
+* support Intel Atom Processor P5900 Series (previously codenamed SnowRidge)
+* address Linux warnings
+
+-------------------------------------------------------------------
 Tue May 04 09:51:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202104:
