@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 27 14:03:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.6:
+  + Librsvg now requires at least Pango 1.44.
+  + glgo#GNOME/librsvg#730: Incorrect text spacing when the
+    transform is not 1:1. You can see this when a small font-size
+    is scaled up due to a transform. It is less visible for a large
+    font-size scaled down.
+  + glgo#GNOME/librsvg#704: Fix circle/ellipse in paths when they
+    are made out of a single Arc command.
+
+-------------------------------------------------------------------
 Fri Apr 30 19:11:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.50.5:

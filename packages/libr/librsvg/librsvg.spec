@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.50.5
+Version:        2.50.6
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
@@ -45,8 +45,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
-BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
-BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.44.0
+BuildRequires:  pkgconfig(pangoft2) >= 1.44.0
 # Avoid cycle: we do not require the adwaita-icon-theme to be present. libgtk-3.0 requires this for end users
 #!BuildIgnore:  adwaita-icon-theme
 
