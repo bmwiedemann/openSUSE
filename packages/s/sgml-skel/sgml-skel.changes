@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 27 11:41:23 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- %post uses sed, so add `Requires(post): sed`.
+
+-------------------------------------------------------------------
 Tue Jan 31 17:47:56 UTC 2017 - mpluskal@suse.com
 
 - Use pretty url
