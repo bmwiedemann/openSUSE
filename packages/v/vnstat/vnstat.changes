@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun May 16 16:18:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7
+  Fixed
+  * Possibility of segmentation fault with image list output when
+    database existed but no data was available.
+  * ./configure output could show invalid install paths with some
+    parameter combinations.
+  * Columns in text hours graph output could get misaligned if the
+    selected system locale used a UTF-8 sequence for the thousands
+    separator instead of a single character.
+  New
+  * Add -5g / --fivegraph options to image output with sizing
+    related parameters for the output of a 5 minute resolution bar
+    graph
+  * Add configuration option SummaryGraph and optional parameter
+    for --hsummary and --vsummary for selecting which graph is
+    shown next to the summary data in the horizontal and vertical
+    summary image outputs.
+  * Add --large / --small options and configuration option
+    LargeFonts for controlling the image output font size.
+  * Add --scale and configuration option ImageScale for scaling the
+    image output to a given percent.
+  * Add configuration option LineSpacingAdjustment for adjusting
+    the line spacing of list format image outputs.
+  * Add bar visualizations for traffic estimations in image output
+  * Allow writing image output to a filename starting with "-".
+  * Add --initdb to daemon for creating a new empty database
+    without having the daemon process staying running, doesn't
+    discard data if a database already exists.
+  * Add configuration option BarColumnShowsRate for having the bar
+    column in image list outputs be scaled according to the average
+    rate column values when those values are visible, disabled by
+    default.
+  * Add --dbiflist for getting a list of interfaces in the
+    database, both --iflist and --dbiflist also get alternative
+    more parseable outputs.
+  * Add configuration option for large font output and make 5
+    minute resolution graph visible in "vnstat.cgi".
+
+-------------------------------------------------------------------
 Thu Oct  1 15:33:08 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - Adapt mod_authz_host parameter instead of deprecated mod_access_compat
