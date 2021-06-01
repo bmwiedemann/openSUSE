@@ -212,7 +212,6 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %{_bindir}/lyxclient
 %{_bindir}/tex2lyx
 %{_datadir}/applications/lyx.desktop
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/lyx.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/texmf
@@ -226,7 +225,6 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %{_datadir}/bash-completion/completions/lyx
 
 %files fonts
-%dir %{_fontsdir}
 %dir %{_fontsdir}/lyx
 %{_fontsdir}/lyx/*.ttf
 %doc lib/fonts/BaKoMaFontLicense.txt

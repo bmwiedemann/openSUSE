@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 31 19:30:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop owning directories provided by the filesystem package
+  (boo#1184786)
+
+-------------------------------------------------------------------
 Tue Feb  9 13:40:43 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Add texlive-cprotect and texlive-doublestroke, needed to build
