@@ -1,7 +1,7 @@
 #
 # spec file for package avfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           avfs
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,6 +27,7 @@ Source1:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  emacs-nox
 BuildRequires:  help2man
+BuildRequires:  lzlib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(e2p)
@@ -76,6 +77,7 @@ or changing the kernel.
   --enable-shared \
   --with-system-zlib \
   --with-system-bzlib \
+  --with-lzip \
   --with-lzma \
   --with-xz
 %make_build
