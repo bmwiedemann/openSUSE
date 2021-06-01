@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 19 21:29:18 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- Update to version 5.10.0
+  * GraphBLAS upgraded to 5.0.4: many new features, much faster
+    performance
+
+-------------------------------------------------------------------
 Wed Apr  7 06:18:07 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add disable-Wmisleading-indentation.patch as a temporary workaround
