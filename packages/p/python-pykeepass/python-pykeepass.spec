@@ -18,32 +18,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykeepass
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/libkeepass/pykeepass
 Source:         https://github.com/libkeepass/pykeepass/archive/%{version}.tar.gz#/pykeepass-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-pykeepass-fix-version.patch badshah400@gmail.com -- Fix version so that egg-infos don't end up with the wrong version; patch taken from upstream commit
-Patch0:         python-pykeepass-fix-version.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-argon2-cffi
+Requires:       python-argon2-cffi >= 20.1.0
 Requires:       python-construct >= 2.10.54
 Requires:       python-future
-Requires:       python-lxml
-Requires:       python-pycryptodomex >= 3.6.2
+Requires:       python-lxml >= 4.6.1
+Requires:       python-pycryptodomex >= 3.10.1
 Requires:       python-python-dateutil
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module argon2-cffi}
+BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
 BuildRequires:  %{python_module construct >= 2.10.54}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pycryptodomex >= 3.6.2}
+BuildRequires:  %{python_module lxml >= 4.6.1}
+BuildRequires:  %{python_module pycryptodomex >= 3.10.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 # /SECTION
