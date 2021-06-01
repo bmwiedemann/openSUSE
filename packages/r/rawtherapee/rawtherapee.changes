@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 26 08:30:03 UTC 2021 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Fix sgfault on exit, add patch fix-segfault-on-exit.patch
+  boo#1186455 
+
+-------------------------------------------------------------------
 Mon Jun  8 11:35:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Adding -fno-tree-loop-vectorize because GCC10 causes a weird bug:
