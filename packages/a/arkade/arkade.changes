@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun May 23 15:41:55 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 0.7.15:
+  * fix for --function-pull-policy flag at install command for openfaas
+  * add flux v2 CLI supporrt
+  * trivy CLI added
+  * Update influxdb install message
+  * Add Rancher's kim to arkade get
+  * Add influxdb to arkade
+  * feat(inlets-pro): support installation of inlets-pro CLI
+  * feat(docker-compose): docker-compose version upgraded from 1.27.4 to 1.29.1
+  * tools: add tkn (tekton cli)
+  * Bump github.com/cheggaaa/pb/v3 from 3.0.7 to 3.0.8
+
+-------------------------------------------------------------------
+Sun May 23 15:40:41 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 0.7.15:
+  * Extract local variable
+  * Update flag help message to show default
+  * Default the inlets-pro license location
+  * Update README.md
+  * fix for --function-pull-policy flag at install command for openfaas
+  * add flux v2 CLI supporrt
+  * trivy CLI added
+  * Update influxdb install message
+  * Add Rancher's kim to arkade get
+  * Add influxdb to arkade
+
+-------------------------------------------------------------------
+Sun May 23 15:39:09 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- inital version of package arkade
