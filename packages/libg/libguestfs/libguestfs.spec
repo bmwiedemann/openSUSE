@@ -608,10 +608,14 @@ export HAVE_PACMAN_FALSE="#"
 #Workaround an autotools bug
 make -j1 -C builder index-parse.c
 # 'INSTALLDIRS' ensures that perl libs are installed in the vendor dir instead of the site dir
+build_it() {
 make \
 	INSTALLDIRS=vendor \
 	LD_RUN_PATH= \
-	%{?_smp_mflags}
+	"$@"
+}
+
+build_it %{?_smp_mflags} || build_it
 
 %install
 %makeinstall \

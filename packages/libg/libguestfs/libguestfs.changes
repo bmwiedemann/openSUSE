@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 28 10:20:30 UTC 2021 - ohering@suse.de
+
+- For unknown reasons the appliance build fails randomly
+  Workaround it by retrying the build once
+
+-------------------------------------------------------------------
 Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
 
 - Update to version 1.44.1

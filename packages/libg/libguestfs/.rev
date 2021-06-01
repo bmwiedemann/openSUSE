@@ -885,4 +885,13 @@
   build native target unconditionally</comment>
     <requestid>887312</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>163435c49028c183c815c80b72630930</srcmd5>
+    <version>1.44.1</version>
+    <time>1622536682</time>
+    <user>dimstar_suse</user>
+    <comment>- For unknown reasons the appliance build fails randomly
+  Workaround it by retrying the build once</comment>
+    <requestid>895958</requestid>
+  </revision>
 </revisionlist>
