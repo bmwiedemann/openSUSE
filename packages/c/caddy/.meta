@@ -1,0 +1,5 @@
+<package name="caddy" project="openSUSE:Factory">
+  <title>Caddy</title>
+  <description>Fast, multi-platform web server with automatic HTTPS</description>
+  <devel project="server:http" package="caddy"/>
+</package>
