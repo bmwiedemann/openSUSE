@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 06:28:49 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sun Dec 27 19:13:13 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to 2.1.0 version

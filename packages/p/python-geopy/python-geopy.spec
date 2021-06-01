@@ -87,7 +87,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/changelog_09x.rst docs/changelog_1xx.rst
