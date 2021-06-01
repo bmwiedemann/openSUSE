@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyroma
-Version:        2.6
+Version:        3.1
 Release:        0
 Summary:        Program to test a Python project's adherence to packaging guidelines
 License:        MIT
@@ -34,7 +35,7 @@ Requires:       python-Pygments
 Requires:       python-docutils
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,7 +63,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative pyroma
