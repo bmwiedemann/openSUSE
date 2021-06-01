@@ -1,7 +1,7 @@
 #
 # spec file for package zvbi
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch06:        06_sizeof-FTBFS.patch
 Patch07:        07_fix-spelling-in-binaries.patch
 Patch08:        08_fix-manpage.patch
 Patch09:        09_fix-FTBFS-GCC6.patch
+Patch10:        10_fix_private_libs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -107,6 +108,7 @@ sliced VBI data, and to interpret the data of several popular services.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 ACLOCAL="aclocal -I m4" autoreconf -fi
