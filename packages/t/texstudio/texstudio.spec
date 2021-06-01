@@ -17,10 +17,10 @@
 
 
 Name:           texstudio
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        LaTeX Editor
-License:        GPL-2.0-only AND GPL-3.0-only AND Apache-2.0 AND MPL-1.1
+License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.texstudio.org
 Source0:        https://github.com/texstudio-org/texstudio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -48,7 +48,7 @@ syntax highlighting, automatically code completion and more.
 %setup -q
 
 %build
-%ifarch aarch64 %{arm}
+%ifarch aarch64 %{arm} s390x
 %define crashhandler NO_CRASH_HANDLER=true
 %endif
 
