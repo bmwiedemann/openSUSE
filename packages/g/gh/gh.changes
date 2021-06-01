@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.3:
+  * Fix gh pr merge with GitHub Enterprise Server < 3.0 #3688
+  * Speed up measuring display width of text #3668
+  * Simplify Debian/Ubuntu installation docs #3672 
+
+- Changes from 1.10.2:
+  * Fix creating Windows directory for gh config #3666
+
+-------------------------------------------------------------------
 Wed May 19 13:49:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.1:
