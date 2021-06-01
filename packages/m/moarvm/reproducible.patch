@@ -5,17 +5,25 @@ https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 do not detect CPU features at compile time
 to make package build reproducible
 
+Forward ported to new build system by Stefan Seifert <nine@detonation.org>
+Date: 2021-05-24
 
-Index: MoarVM-2018.04.1/build/probe.pm
+Index: MoarVM-2021.05/build/probe.pm
 ===================================================================
---- MoarVM-2018.04.1.orig/build/probe.pm
-+++ MoarVM-2018.04.1/build/probe.pm
-@@ -503,7 +503,7 @@ int main(int argc, char **argv) {
- EOT
+diff --git a/build/probe.pm b/build/probe.pm
+index 7c81e1a6f..8e94a592e 100644
+--- a/build/probe.pm
++++ b/build/probe.pm
+@@ -1022,12 +1022,6 @@ sub rdtscp {
+ #endif
  
-     print ::dots('    probing support of rdtscp intrinsic');
--    my $can_rdtscp = compile($config, 'try');
-+    my $can_rdtscp = 0;
-     unless ($config->{crossconf}) {
-         $can_rdtscp  &&= !system './try';
-     }
+ int main(int argc, char **argv) {
+-    unsigned int _tsc_aux;
+-    unsigned int tscValue;
+-    tscValue = __rdtscp(&_tsc_aux);
+-
+-    if (tscValue > 1)
+-        return EXIT_SUCCESS;
+     return EXIT_FAILURE;
+ }
+ EOT

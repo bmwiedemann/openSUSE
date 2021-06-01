@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2021.03
+%global mvrel 2021.05
 Name:           moarvm
 Version:        %mvrel
 Release:        2.1
@@ -67,6 +67,6 @@ mkdir -p $RPM_BUILD_ROOT/%{_libdir}/moar/share
 %files devel
 %defattr(-,root,root)
 %{_includedir}/*
-%{_datadir}/pkgconfig
+%{_datadir}/pkgconfig/*
 
 %changelog

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May 24 14:01:50 UTC 2021 - Stefan Seifert <nine@detonation.org>
+
+- Forward port reproducible.patch after build system changes
+
+-------------------------------------------------------------------
+Mon May 24 15:46:17 CEST 2021 - nine@detonation.org
+
+- update to version 2021.05
+
++ No longer require an exception as argument of nqp::backtrace
++ Remove nqp::time_i and nqp::time_n in favor of nqp:time which just return integer nanoseconds since the epoch
++ Deprecate now unused graphs_s operator
++ Eliminate the sec_n, asec_n and sech_h operators, which are no longer used
++ Prohibit hllbool when the HLL doesn't have special booleans
++ Add a setup_notify handler and queue to nqp::signal to avoid race conditions when setting up a signal handler
++ Fix getobjsc returning NULL when the object has no SC
++ Always log the type coming out of an nqp::decont
++ Make smrt_intify specializable like other smrt_* operators
++ More thorough --full-cleanup
++ Do not downcast bytes argument to write()/send() calls
++ Fix spesh missing writes to containers
++ Fix missing gc_mark of simstackframe's arg_types
++ Propagate spesh facts after optimizations
++ Fix getting garbage numbers after spesh optimized away smart_intify
++ Fix inlines missing synthetic deopt points
++ Constrain C pointer serialization to sizes <= INT32_MAX
++ Fix possible GC upset caused by half-deserialized STables
++ Use the FSA for MVMActiveHandlers
++ Fix a segfault in VMArray's copy_elems
++ Fix a segfault on trying to use an untyped array with buffer write functions
++ Fixing generated backtraces missing inlined frames
++ Save a malloc+free per frame when creating a Backtrace object
++ Fix a memory leak related to Unicode hashes
++ Only call MVM_jit_bytecode_dump_enabled if code is non-NULL
++ Fix JITed ordfirst/ordat/ordbaseat returning 4294967295 instead of -1
++ Fix expr JITed ordbaseat and getcpbyname returning 4294967295 instead of -1
++ Fix spesh removing not-really-dead code
++ Fix possible segfault on exit when using spesh log
+
+-------------------------------------------------------------------
 Sun Mar 21 21:43:23 CET 2021 - nine@detonation.org
 
 - update to version 2021.03
