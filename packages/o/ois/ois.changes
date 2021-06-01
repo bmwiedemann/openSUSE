@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  3 22:10:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5
+  * Clean CMake based build system
+  * CapsLock and NumLock are modifiers bits
+  * Improved Linux keyboard support (should not depend on the X11
+    current keyboard layout anymore)
+  * Added clang-format for consistent coding style
+  * Diverse code cleaning and housekeeping changes
+- Using cmake instead of autoconf
+- Fixed sub package names to match so version
+- Drop upstream fixed ois-gcc47.patch
+- Add upstream patches
+  * 0001-Install-headers-from-CMAKE_CURRENT_SOURCE_DIR-instea.patch
+  * 0001-CMakeLists.txt-Respect-user-s-libdir.patch
+
+-------------------------------------------------------------------
 Wed Dec 13 18:51:06 UTC 2017 - crrodriguez@opensuse.org
 
 - Replace xorg-x11-devel for the needed individual libraries. 

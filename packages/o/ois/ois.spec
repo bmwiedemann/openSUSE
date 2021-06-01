@@ -1,7 +1,7 @@
 #
 # spec file for package ois
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 1_3_0
-
+%define sover 1_5_0
 Name:           ois
-Version:        1.3.0
+Version:        1.5
 Release:        0
 Summary:        Object Oriented Input System
 License:        Zlib
 Group:          System/Libraries
-Url:            http://sourceforge.net/projects/wgois
-Source0:        %{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM ois-gcc47.patch
-Patch0:         %{name}-gcc47.patch
+URL:            https://wgois.github.io/OIS/
+Source0:        https://github.com/wgois/OIS/archive/refs/tags/v%{version}.tar.gz#/OIS-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Install-headers-from-CMAKE_CURRENT_SOURCE_DIR-instea.patch -- https://github.com/wgois/OIS/pull/64
+Patch0:         0001-Install-headers-from-CMAKE_CURRENT_SOURCE_DIR-instea.patch
+# PATCH-FIX-UPSTREAM 0001-CMakeLists.txt-Respect-user-s-libdir.patch -- https://github.com/wgois/OIS/pull/69
+Patch1:         0001-CMakeLists.txt-Respect-user-s-libdir.patch
+BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Object Oriented Input System (OIS) is a solution for using all kinds
 of Input Devices (Keyboards, Mice, Joysticks, etc) and feedback
 devices (e.g. forcefeedback).
 
-%package -n libOIS-%{sover}
+%package -n libOIS%{sover}
 Summary:        Object Oriented Input System development package
 Group:          System/Libraries
 
-%description -n libOIS-%{sover}
+%description -n libOIS%{sover}
 Object Oriented Input System (OIS) is a solution for using all kinds
 of Input Devices (Keyboards, Mice, Joysticks, etc) and feedback
 devices (e.g. forcefeedback).
@@ -53,8 +53,7 @@ devices (e.g. forcefeedback).
 %package -n libOIS-devel
 Summary:        Object Oriented Input System development package
 Group:          Development/Libraries/C and C++
-Requires:       libOIS-%{sover} = %{version}
-Requires:       libstdc++-devel
+Requires:       libOIS%{sover} = %{version}
 
 %description -n libOIS-devel
 Object Oriented Input System (OIS) is a solution for using all kinds
@@ -62,36 +61,28 @@ of Input Devices (Keyboards, Mice, Joysticks, etc) and feedback
 devices (e.g. forcefeedback).
 
 %prep
-%setup -q -n ois
-%patch0 -p1
-chmod +x bootstrap
-dos2unix ReadMe.txt
+%autosetup -p1 -n OIS-%{version}
 
 %build
-./bootstrap
-%if 0%{?suse_version} <= 1010
-export LDFLAGS="$LDFLAGS -L/usr/X11R6/%{_lib}"
+%cmake \
+%if 0%{?sle_version} == 150200
+  -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 %endif
-export LDFLAGS="$LDFLAGS -Wl,--no-undefined"
-export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
-%configure --disable-static
-make %{?_smp_mflags}
+  -DOIS_BUILD_SHARED_LIBS=ON
+%cmake_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
-rm -f %{buildroot}%{_libdir}/lib*.la
+%cmake_install
 
-%post -n libOIS-%{sover} -p /sbin/ldconfig
-%postun -n libOIS-%{sover} -p /sbin/ldconfig
+%post   -n libOIS%{sover} -p /sbin/ldconfig
+%postun -n libOIS%{sover} -p /sbin/ldconfig
 
-%files -n libOIS-%{sover}
-%defattr(0644,root,root)
-%{_libdir}/libOIS-%{version}.so
+%files -n libOIS%{sover}
+%license LICENSE.md
+%{_libdir}/libOIS.so.*
 
 %files -n libOIS-devel
-%defattr(-,root,root)
-%doc ReadMe.txt
-%{_includedir}/OIS
+%{_includedir}/ois
 %{_libdir}/libOIS.so
 %{_libdir}/pkgconfig/OIS.pc
 
