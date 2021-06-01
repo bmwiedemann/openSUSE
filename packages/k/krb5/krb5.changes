@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  3 09:40:17 UTC 2021 - Rodrigo Lourenço <rzl@rzl.ooo>
+
+- Build with full Cyrus SASL support
+  * Negotiating SASL credentials with an EXTERNAL bind mechanism requires
+    interaction. Kerberos provides its own interaction function that skips
+    all interaction, thus preventing the mechanism from working.
+
+-------------------------------------------------------------------
 Thu Apr 22 15:10:12 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Use /run instead of /var/run for daemon PID files; (bsc#1185163);

@@ -44,6 +44,7 @@ Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  keyutils
 BuildRequires:  keyutils-devel
 BuildRequires:  openldap2-devel
