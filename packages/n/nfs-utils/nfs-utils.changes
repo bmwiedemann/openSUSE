@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon May 24 14:34:19 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.5.4-rc4 to get all recent fixes:
+  - nfs-utils-2-5-4-rc4.patch
+	e4ce810a Move declaration of etab and rmtab into libraries
+	7a4e2d1d Remove 'force' arg from cache_flush()
+	c5528f40 Fix NFSv4 export of tmpfs filesystems
+	ed83085f gssd: use mutex to protect decrement of refcount
+  - nfs-utils-2-5-4-rc3.patch
+	972dba0f nfs-utils: Enable the retrieval of raw config settings without expansion
+	964f4861 nfs-utils: Factor out common structure cleanup calls
+	8219bdb0 Replace all /var/run with /run
+	81727afe Fix `statx()` emulation breaking exports
+	a41afe9e mountd/exports: Fix typo in the man page
+  - nfs-utils-2-5-4-rc2.patch
+	2f669b6f NFS server should enable RDMA by default
+	d77ece22 mountd/exportd: only log confirmed clients, and poll for updates
+	ac266e2e exportfs: fix unexporting of '/'
+  - nfs-utils-2-5-4-rc1.patch
+	7abd15e3 nfsdclnts: Ignore SIGPIPE signal
+	edeb3815 mountd: add logging of NFSv4 clients attaching and detaching.
+	f8e2c8d4 mountd: make default ttl settable by option
+	cc150093 mountd: add --cache-use-ipaddr option to force use_ipaddr
+	c7a954ae mountd: add logging for authentication results for accesses.
+	1a8156f8 mountd/exports: update man page
+	fec7347e mountd: Don't proactively add export info when fh info is requested.
+	a72c151f mountd: reject unknown client IP when !use_ipaddr.
+	05bacfed gssd: Add options to rpc.gssd to allow for the use of $HOME/.k5identity files
+	7e559dbd exportd: server-side gid management
+
+- 0001-Replace-all-var-run-with-run.patch is now part of nfs-utils-2-5-4-rc3.patch
+
+-------------------------------------------------------------------
 Tue May  4 01:09:57 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Add 0001-Replace-all-var-run-with-run.patch

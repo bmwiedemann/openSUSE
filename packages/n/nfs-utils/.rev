@@ -1528,4 +1528,16 @@
   (bsc#1185170)</comment>
     <requestid>891928</requestid>
   </revision>
+  <revision rev="163" vrev="24">
+    <srcmd5>40e0a622c8bfde1f1250aaeaeea85ea0</srcmd5>
+    <version>unknown</version>
+    <time>1622536374</time>
+    <user>dimstar_suse</user>
+    <comment>Mention patches in changelog (required in Factory):
+  - nfs-utils-2-5-4-rc4.patch
+  - nfs-utils-2-5-4-rc3.patch
+  - nfs-utils-2-5-4-rc2.patch
+  - nfs-utils-2-5-4-rc1.patch (forwarded request 895268 from pevik)</comment>
+    <requestid>895272</requestid>
+  </revision>
 </revisionlist>

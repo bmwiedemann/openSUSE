@@ -1,0 +1,192 @@
+Commits:
+2f669b6f NFS server should enable RDMA by default
+d77ece22 mountd/exportd: only log confirmed clients, and poll for updates
+ac266e2e exportfs: fix unexporting of '/'
+
+diff --git a/nfs.conf b/nfs.conf
+index 9042d27d..31994f61 100644
+--- a/nfs.conf
++++ b/nfs.conf
+@@ -72,9 +72,9 @@
+ # vers4.0=y
+ # vers4.1=y
+ # vers4.2=y
+-# rdma=n
+-# rdma-port=20049
+-#
++rdma=y
++rdma-port=20049
++
+ [statd]
+ # debug=0
+ # port=0
+diff --git a/support/export/v4clients.c b/support/export/v4clients.c
+index 056ddc9b..dd985463 100644
+--- a/support/export/v4clients.c
++++ b/support/export/v4clients.c
+@@ -48,12 +48,15 @@ void v4clients_set_fds(fd_set *fdset)
+ }
+ 
+ static void *tree_root;
++static int have_unconfirmed;
+ 
+ struct ent {
+ 	unsigned long num;
+ 	char *clientid;
+ 	char *addr;
+ 	int vers;
++	int unconfirmed;
++	int wid;
+ };
+ 
+ static int ent_cmp(const void *av, const void *bv)
+@@ -89,15 +92,14 @@ static char *dup_line(char *line)
+ 	return ret;
+ }
+ 
+-static void add_id(int id)
++static void read_info(struct ent *key)
+ {
+ 	char buf[2048];
+-	struct ent **ent;
+-	struct ent *key;
+ 	char *path;
++	int was_unconfirmed = key->unconfirmed;
+ 	FILE *f;
+ 
+-	if (asprintf(&path, "/proc/fs/nfsd/clients/%d/info", id) < 0)
++	if (asprintf(&path, "/proc/fs/nfsd/clients/%lu/info", key->num) < 0)
+ 		return;
+ 
+ 	f = fopen(path, "r");
+@@ -105,35 +107,64 @@ static void add_id(int id)
+ 		free(path);
+ 		return;
+ 	}
+-	key = calloc(1, sizeof(*key));
+-	if (!key) {
+-		fclose(f);
+-		free(path);
+-		return;
+-	}
+-	key->num = id;
++	if (key->wid < 0)
++		key->wid = inotify_add_watch(clients_fd, path, IN_MODIFY);
++
+ 	while (fgets(buf, sizeof(buf), f)) {
+-		if (strncmp(buf, "clientid: ", 10) == 0)
++		if (strncmp(buf, "clientid: ", 10) == 0) {
++			free(key->clientid);
+ 			key->clientid = dup_line(buf+10);
+-		if (strncmp(buf, "address: ", 9) == 0)
++		}
++		if (strncmp(buf, "address: ", 9) == 0) {
++			free(key->addr);
+ 			key->addr = dup_line(buf+9);
++		}
+ 		if (strncmp(buf, "minor version: ", 15) == 0)
+ 			key->vers = atoi(buf+15);
++		if (strncmp(buf, "status: ", 8) == 0 &&
++		    strstr(buf, " unconfirmed") != NULL) {
++			key->unconfirmed = 1;
++			have_unconfirmed = 1;
++		}
++		if (strncmp(buf, "status: ", 8) == 0 &&
++		    strstr(buf, " confirmed") != NULL)
++			key->unconfirmed = 0;
+ 	}
+ 	fclose(f);
+ 	free(path);
+ 
+-	xlog(L_NOTICE, "v4.%d client attached: %s from %s",
+-	     key->vers, key->clientid, key->addr);
++	if (was_unconfirmed && !key->unconfirmed)
++		xlog(L_NOTICE, "v4.%d client attached: %s from %s",
++		     key->vers, key->clientid ?: "-none-",
++		     key->addr ?: "-none-");
++	if (!key->unconfirmed && key->wid >= 0) {
++		inotify_rm_watch(clients_fd, key->wid);
++		key->wid = -1;
++	}
++}
++
++static void add_id(int id)
++{
++	struct ent **ent;
++	struct ent *key;
++
++	key = calloc(1, sizeof(*key));
++	if (!key) {
++		return;
++	}
++	key->num = id;
++	key->wid = -1;
+ 
+ 	ent = tsearch(key, &tree_root, ent_cmp);
+ 
+ 	if (!ent || *ent != key)
+ 		/* Already existed, or insertion failed */
+ 		free_ent(key);
++	else
++		read_info(key);
+ }
+ 
+-static void del_id(int id)
++static void del_id(unsigned long id)
+ {
+ 	struct ent key = {.num = id};
+ 	struct ent **e, *ent;
+@@ -143,11 +174,27 @@ static void del_id(int id)
+ 		return;
+ 	ent = *e;
+ 	tdelete(ent, &tree_root, ent_cmp);
+-	xlog(L_NOTICE, "v4.%d client detached: %s from %s",
+-	     ent->vers, ent->clientid, ent->addr);
++	if (!ent->unconfirmed)
++		xlog(L_NOTICE, "v4.%d client detached: %s from %s",
++		     ent->vers, ent->clientid, ent->addr);
++	if (ent->wid >= 0)
++		inotify_rm_watch(clients_fd, ent->wid);
+ 	free_ent(ent);
+ }
+ 
++static void check_id(unsigned long id)
++{
++	struct ent key = {.num = id};
++	struct ent **e, *ent;
++
++	e = tfind(&key, &tree_root, ent_cmp);
++	if (!e || !*e)
++		return;
++	ent = *e;
++	if (ent->unconfirmed)
++		read_info(ent);
++}
++
+ int v4clients_process(fd_set *fdset)
+ {
+ 	char buf[4096] __attribute__((aligned(__alignof__(struct inotify_event))));
+@@ -172,8 +219,9 @@ int v4clients_process(fd_set *fdset)
+ 				add_id(id);
+ 			if (ev->mask & IN_DELETE)
+ 				del_id(id);
++			if (ev->mask & IN_MODIFY)
++				check_id(id);
+ 		}
+ 	}
+ 	return 1;
+ }
+-
+diff --git a/utils/exportfs/exportfs.c b/utils/exportfs/exportfs.c
+index 262dd19a..25d757d8 100644
+--- a/utils/exportfs/exportfs.c
++++ b/utils/exportfs/exportfs.c
+@@ -383,7 +383,7 @@ unexportfs_parsed(char *hname, char *path, int verbose)
+ 	 * so need to deal with it.
+ 	*/
+ 	size_t nlen = strlen(path);
+-	while (path[nlen - 1] == '/')
++	while ((nlen > 1) && (path[nlen - 1] == '/'))
+ 		nlen--;
+ 
+ 	for (exp = exportlist[htype].p_head; exp; exp = exp->m_next) {

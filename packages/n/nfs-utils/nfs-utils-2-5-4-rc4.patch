@@ -1,0 +1,450 @@
+Commits:
+e4ce810a Move declaration of etab and rmtab into libraries
+7a4e2d1d Remove 'force' arg from cache_flush()
+c5528f40 Fix NFSv4 export of tmpfs filesystems
+ed83085f gssd: use mutex to protect decrement of refcount
+
+diff --git a/support/export/auth.c b/support/export/auth.c
+index cea37630..03ce4b8a 100644
+--- a/support/export/auth.c
++++ b/support/export/auth.c
+@@ -41,8 +41,6 @@ static nfs_client my_client;
+ 
+ extern int use_ipaddr;
+ 
+-extern struct state_paths etab;
+-
+ /*
+ void
+ auth_init(void)
+@@ -80,7 +78,7 @@ check_useipaddr(void)
+ 		use_ipaddr = 0;
+ 
+ 	if (use_ipaddr != old_use_ipaddr)
+-		cache_flush(1);
++		cache_flush();
+ }
+ 
+ unsigned int
+diff --git a/support/export/cache.c b/support/export/cache.c
+index 3e4f53c0..a5823e92 100644
+--- a/support/export/cache.c
++++ b/support/export/cache.c
+@@ -981,7 +981,8 @@ static int dump_to_cache(int f, char *buf, int blen, char *domain,
+ 		write_secinfo(&bp, &blen, exp, flag_mask);
+ 		if (exp->e_uuid == NULL || different_fs) {
+ 			char u[16];
+-			if (uuid_by_path(path, 0, 16, u)) {
++			if ((exp->e_flags & flag_mask & NFSEXP_FSID) == 0 &&
++			    uuid_by_path(path, 0, 16, u)) {
+ 				qword_add(&bp, &blen, "uuid");
+ 				qword_addhex(&bp, &blen, u, 16);
+ 			}
+diff --git a/support/export/export.c b/support/export/export.c
+index c753f68e..03390dfc 100644
+--- a/support/export/export.c
++++ b/support/export/export.c
+@@ -10,9 +10,11 @@
+ #include <config.h>
+ #endif
+ 
++#include <unistd.h>
+ #include <string.h>
+ #include <sys/types.h>
+ #include <sys/param.h>
++#include <fcntl.h>
+ #include <netinet/in.h>
+ #include <limits.h>
+ #include <stdlib.h>
+@@ -420,3 +422,30 @@ export_hash(char *str)
+ 
+ 	return num % HASH_TABLE_SIZE;
+ }
++
++int export_test(struct exportent *eep, int with_fsid)
++{
++	char *path = eep->e_path;
++	int flags = eep->e_flags | (with_fsid ? NFSEXP_FSID : 0);
++	/* beside max path, buf size should take protocol str into account */
++	char buf[NFS_MAXPATHLEN+1+64] = { 0 };
++	char *bp = buf;
++	int len = sizeof(buf);
++	int fd, n;
++
++	n = snprintf(buf, len, "-test-client- ");
++	bp += n;
++	len -= n;
++	qword_add(&bp, &len, path);
++	if (len < 1)
++		return 0;
++	snprintf(bp, len, " 3 %d 65534 65534 0\n", flags);
++	fd = open("/proc/net/rpc/nfsd.export/channel", O_WRONLY);
++	if (fd < 0)
++		return 0;
++	n = nfsd_path_write(fd, buf, strlen(buf));
++	close(fd);
++	if (n < 0)
++		return 0;
++	return 1;
++}
+diff --git a/support/export/v4root.c b/support/export/v4root.c
+index 3654bd7c..c12a7d85 100644
+--- a/support/export/v4root.c
++++ b/support/export/v4root.c
+@@ -20,6 +20,7 @@
+ 
+ #include <unistd.h>
+ #include <errno.h>
++#include <uuid/uuid.h>
+ 
+ #include "xlog.h"
+ #include "exportfs.h"
+@@ -89,11 +90,31 @@ v4root_create(char *path, nfs_export *export)
+ 	strncpy(eep.e_path, path, sizeof(eep.e_path)-1);
+ 	if (strcmp(path, "/") != 0)
+ 		eep.e_flags &= ~NFSEXP_FSID;
++
++	if (strcmp(path, "/") != 0 &&
++	    !export_test(&eep, 0)) {
++		/* Need a uuid - base it on path using a fixed seed that
++		 * was generated randomly.
++		 */
++		const char seed_s[] = "39c6b5c1-3f24-4f4e-977c-7fe6546b8a25";
++		uuid_t seed, uuid;
++		char uuid_s[UUID_STR_LEN];
++		unsigned int i, j;
++
++		uuid_parse(seed_s, seed);
++		uuid_generate_sha1(uuid, seed, path, strlen(path));
++		uuid_unparse_upper(uuid, uuid_s);
++		/* strip hyhens */
++		for (i = j = 0; uuid_s[i]; i++)
++			if (uuid_s[i] != '-')
++				uuid_s[j++] = uuid_s[i];
++		eep.e_uuid = uuid_s;
++	}
+ 	set_pseudofs_security(&eep);
+ 	exp = export_create(&eep, 0);
+ 	if (exp == NULL)
+ 		return NULL;
+-	xlog(D_CALL, "v4root_create: path '%s' flags 0x%x", 
++	xlog(D_CALL, "v4root_create: path '%s' flags 0x%x",
+ 		exp->m_export.e_path, exp->m_export.e_flags);
+ 	return &exp->m_export;
+ }
+diff --git a/support/export/xtab.c b/support/export/xtab.c
+index 00b25eaa..c888a80a 100644
+--- a/support/export/xtab.c
++++ b/support/export/xtab.c
+@@ -27,7 +27,7 @@
+ #include "misc.h"
+ 
+ static char state_base_dirname[PATH_MAX] = NFS_STATEDIR;
+-extern struct state_paths etab;
++struct state_paths etab;
+ 
+ int v4root_needed;
+ static void cond_rename(char *newfile, char *oldfile);
+diff --git a/support/include/exportfs.h b/support/include/exportfs.h
+index 81d13721..9edf0d04 100644
+--- a/support/include/exportfs.h
++++ b/support/include/exportfs.h
+@@ -145,6 +145,7 @@ nfs_export *			export_create(struct exportent *, int canonical);
+ void				exportent_release(struct exportent *);
+ void				export_freeall(void);
+ 
++extern struct state_paths etab;
+ int				xtab_export_read(void);
+ int				xtab_export_write(void);
+ 
+@@ -173,5 +174,6 @@ struct export_features {
+ struct export_features *get_export_features(void);
+ void fix_pseudoflavor_flags(struct exportent *ep);
+ char *exportent_realpath(struct exportent *eep);
++int export_test(struct exportent *eep, int with_fsid);
+ 
+ #endif /* EXPORTFS_H */
+diff --git a/support/include/nfslib.h b/support/include/nfslib.h
+index 84d8270b..6faba71b 100644
+--- a/support/include/nfslib.h
++++ b/support/include/nfslib.h
+@@ -106,6 +106,7 @@ void			dupexportent(struct exportent *dst,
+ 					struct exportent *src);
+ int			updateexportent(struct exportent *eep, char *options);
+ 
++extern struct state_paths rmtab;
+ int			setrmtabent(char *type);
+ struct rmtabent *	getrmtabent(int log, long *pos);
+ void			putrmtabent(struct rmtabent *xep, long *pos);
+@@ -132,7 +133,7 @@ int			wildmat(char *text, char *pattern);
+ 
+ int qword_get(char **bpp, char *dest, int bufsize);
+ int qword_get_int(char **bpp, int *anint);
+-void cache_flush(int force);
++void cache_flush(void);
+ void qword_add(char **bpp, int *lp, char *str);
+ void qword_addhex(char **bpp, int *lp, char *buf, int blen);
+ void qword_addint(char **bpp, int *lp, int n);
+diff --git a/support/nfs/cacheio.c b/support/nfs/cacheio.c
+index 70ead94d..73f4be4a 100644
+--- a/support/nfs/cacheio.c
++++ b/support/nfs/cacheio.c
+@@ -32,8 +32,6 @@
+ #include <time.h>
+ #include <errno.h>
+ 
+-extern struct state_paths etab;
+-
+ void qword_add(char **bpp, int *lp, char *str)
+ {
+ 	char *bp = *bpp;
+@@ -213,7 +211,7 @@ int qword_get_uint(char **bpp, unsigned int *anint)
+  */
+ 
+ void
+-cache_flush(int force)
++cache_flush(void)
+ {
+ 	struct stat stb;
+ 	int c;
+@@ -234,12 +232,13 @@ cache_flush(int force)
+ 		NULL
+ 	};
+ 	now = time(0);
+-	if (force ||
+-	    stat(etab.statefn, &stb) != 0 ||
+-	    stb.st_mtime > now)
+-		stb.st_mtime = time(0);
+-	
+-	sprintf(stime, "%" PRId64 "\n", (int64_t)stb.st_mtime);
++
++	/* Since v4.16-rc2-3-g3b68e6ee3cbd the timestamp written is ignored.
++	 * It is safest always to flush caches if there is any doubt.
++	 * For earlier kernels, writing the next second from now is
++	 * the best we can do.
++	 */
++	sprintf(stime, "%" PRId64 "\n", (int64_t)now+1);
+ 	for (c=0; cachelist[c]; c++) {
+ 		int fd;
+ 		sprintf(path, "/proc/net/rpc/%s/flush", cachelist[c]);
+diff --git a/support/nfs/rmtab.c b/support/nfs/rmtab.c
+index 9f03167d..154b26fa 100644
+--- a/support/nfs/rmtab.c
++++ b/support/nfs/rmtab.c
+@@ -33,7 +33,7 @@
+ 
+ static FILE	*rmfp = NULL;
+ 
+-extern struct state_paths rmtab;
++struct state_paths rmtab;
+ 
+ int
+ setrmtabent(char *type)
+diff --git a/utils/exportd/Makefile.am b/utils/exportd/Makefile.am
+index eb521f15..c95bdee7 100644
+--- a/utils/exportd/Makefile.am
++++ b/utils/exportd/Makefile.am
+@@ -16,7 +16,7 @@ exportd_SOURCES = exportd.c
+ exportd_LDADD = ../../support/export/libexport.a \
+ 			../../support/nfs/libnfs.la \
+ 			../../support/misc/libmisc.a \
+-			$(OPTLIBS) $(LIBBLKID) $(LIBPTHREAD) 
++			$(OPTLIBS) $(LIBBLKID) $(LIBPTHREAD) -luuid
+ 
+ exportd_CPPFLAGS = $(AM_CPPFLAGS) $(CPPFLAGS) \
+ 		-I$(top_srcdir)/support/export
+diff --git a/utils/exportd/exportd.c b/utils/exportd/exportd.c
+index f36f51d2..2dd12cb6 100644
+--- a/utils/exportd/exportd.c
++++ b/utils/exportd/exportd.c
+@@ -25,8 +25,6 @@
+ 
+ extern void my_svc_run(void);
+ 
+-struct state_paths etab;
+-
+ /* Number of mountd threads to start.   Default is 1 and
+  * that's probably enough unless you need hundreds of
+  * clients to be able to mount at once.  */
+diff --git a/utils/exportfs/exportfs.c b/utils/exportfs/exportfs.c
+index 25d757d8..6ba615d1 100644
+--- a/utils/exportfs/exportfs.c
++++ b/utils/exportfs/exportfs.c
+@@ -52,13 +52,6 @@ static void release_lockfile(void);
+ static const char *lockfile = EXP_LOCKFILE;
+ static int _lockfd = -1;
+ 
+-struct state_paths etab;
+-
+-static ssize_t exportfs_write(int fd, const char *buf, size_t len)
+-{
+-	return nfsd_path_write(fd, buf, len);
+-}
+-
+ /*
+  * If we aren't careful, changes made by exportfs can be lost
+  * when multiple exports process run at once:
+@@ -193,7 +186,7 @@ main(int argc, char **argv)
+ 
+ 	if (optind == argc && ! f_all) {
+ 		if (force_flush) {
+-			cache_flush(1);
++			cache_flush();
+ 			free_state_path_names(&etab);
+ 			return 0;
+ 		} else {
+@@ -240,7 +233,7 @@ main(int argc, char **argv)
+ 				unexportfs(argv[i], f_verbose);
+ 	}
+ 	xtab_export_write();
+-	cache_flush(force_flush);
++	cache_flush();
+ 	free_state_path_names(&etab);
+ 	export_freeall();
+ 
+@@ -510,33 +503,6 @@ static int can_test(void)
+ 	return 1;
+ }
+ 
+-static int test_export(nfs_export *exp, int with_fsid)
+-{
+-	char *path = exp->m_export.e_path;
+-	int flags = exp->m_export.e_flags | (with_fsid ? NFSEXP_FSID : 0);
+-	/* beside max path, buf size should take protocol str into account */
+-	char buf[NFS_MAXPATHLEN+1+64] = { 0 };
+-	char *bp = buf;
+-	int len = sizeof(buf);
+-	int fd, n;
+-
+-	n = snprintf(buf, len, "-test-client- ");
+-	bp += n;
+-	len -= n;
+-	qword_add(&bp, &len, path);
+-	if (len < 1)
+-		return 0;
+-	snprintf(bp, len, " 3 %d 65534 65534 0\n", flags);
+-	fd = open("/proc/net/rpc/nfsd.export/channel", O_WRONLY);
+-	if (fd < 0)
+-		return 0;
+-	n = exportfs_write(fd, buf, strlen(buf));
+-	close(fd);
+-	if (n < 0)
+-		return 0;
+-	return 1;
+-}
+-
+ static void
+ validate_export(nfs_export *exp)
+ {
+@@ -568,12 +534,12 @@ validate_export(nfs_export *exp)
+ 
+ 	if ((exp->m_export.e_flags & NFSEXP_FSID) || exp->m_export.e_uuid ||
+ 	    fs_has_fsid) {
+-		if ( !test_export(exp, 1)) {
++		if ( !export_test(&exp->m_export, 1)) {
+ 			xlog(L_ERROR, "%s does not support NFS export", path);
+ 			return;
+ 		}
+-	} else if ( !test_export(exp, 0)) {
+-		if (test_export(exp, 1))
++	} else if ( !export_test(&exp->m_export, 0)) {
++		if (export_test(&exp->m_export, 1))
+ 			xlog(L_ERROR, "%s requires fsid= for NFS export", path);
+ 		else
+ 			xlog(L_ERROR, "%s does not support NFS export", path);
+diff --git a/utils/gssd/krb5_util.c b/utils/gssd/krb5_util.c
+index 28b60ba3..51e0c6a2 100644
+--- a/utils/gssd/krb5_util.c
++++ b/utils/gssd/krb5_util.c
+@@ -169,18 +169,28 @@ static int gssd_get_single_krb5_cred(krb5_context context,
+ static int query_krb5_ccache(const char* cred_cache, char **ret_princname,
+ 		char **ret_realm);
+ 
+-static void release_ple(krb5_context context, struct gssd_k5_kt_princ *ple)
++static void release_ple_locked(krb5_context context,
++			       struct gssd_k5_kt_princ *ple)
+ {
+ 	if (--ple->refcount)
+ 		return;
+ 
+-	printerr(3, "freeing cached principal (ccname=%s, realm=%s)\n", ple->ccname, ple->realm);
++	printerr(3, "freeing cached principal (ccname=%s, realm=%s)\n",
++		 ple->ccname, ple->realm);
+ 	krb5_free_principal(context, ple->princ);
+ 	free(ple->ccname);
+ 	free(ple->realm);
+ 	free(ple);
+ }
+ 
++static void release_ple(krb5_context context, struct gssd_k5_kt_princ *ple)
++{
++	pthread_mutex_lock(&ple_lock);
++	release_ple_locked(context, ple);
++	pthread_mutex_unlock(&ple_lock);
++}
++
++
+ /*
+  * Called from the scandir function to weed out potential krb5
+  * credentials cache files
+@@ -1420,7 +1430,7 @@ gssd_destroy_krb5_principals(int destroy_machine_creds)
+ 			}
+ 		}
+ 
+-		release_ple(context, ple);
++		release_ple_locked(context, ple);
+ 	}
+ 	pthread_mutex_unlock(&ple_lock);
+ 	krb5_free_context(context);
+diff --git a/utils/gssd/svcgssd.c b/utils/gssd/svcgssd.c
+index 3ab2100b..881207b3 100644
+--- a/utils/gssd/svcgssd.c
++++ b/utils/gssd/svcgssd.c
+@@ -67,7 +67,6 @@
+ #include "misc.h"
+ #include "svcgssd_krb5.h"
+ 
+-struct state_paths etab; /* from cacheio.c */
+ static bool signal_received = false;
+ static struct event_base *evbase = NULL;
+ static int nullrpc_fd = -1;
+diff --git a/utils/mountd/Makefile.am b/utils/mountd/Makefile.am
+index 859f28ec..13b25c90 100644
+--- a/utils/mountd/Makefile.am
++++ b/utils/mountd/Makefile.am
+@@ -18,7 +18,7 @@ mountd_LDADD = ../../support/export/libexport.a \
+ 	       ../../support/nfs/libnfs.la \
+ 	       ../../support/misc/libmisc.a \
+ 	       $(OPTLIBS) \
+-	       $(LIBBSD) $(LIBWRAP) $(LIBNSL) $(LIBBLKID) $(LIBTIRPC) \
++	       $(LIBBSD) $(LIBWRAP) $(LIBNSL) $(LIBBLKID) -luuid $(LIBTIRPC) \
+ 	       $(LIBPTHREAD)
+ mountd_CPPFLAGS = $(AM_CPPFLAGS) $(CPPFLAGS) \
+ 		  -I$(top_builddir)/support/include \
+diff --git a/utils/mountd/mountd.c b/utils/mountd/mountd.c
+index 39e85fd5..bcf749fa 100644
+--- a/utils/mountd/mountd.c
++++ b/utils/mountd/mountd.c
+@@ -43,9 +43,6 @@ int reverse_resolve = 0;
+ int manage_gids;
+ int use_ipaddr = -1;
+ 
+-struct state_paths etab;
+-struct state_paths rmtab;
+-
+ /* PRC: a high-availability callout program can be specified with -H
+  * When this is done, the program will receive callouts whenever clients
+  * send mount or unmount requests -- the callout is not needed for 2.6 kernel */
+diff --git a/utils/mountd/rmtab.c b/utils/mountd/rmtab.c
+index c8962439..2da97615 100644
+--- a/utils/mountd/rmtab.c
++++ b/utils/mountd/rmtab.c
+@@ -28,8 +28,6 @@
+ 
+ extern int reverse_resolve;
+ 
+-extern struct state_paths rmtab;
+-
+ /* If new path is a link do not destroy it but place the
+  * file where the link points.
+  */

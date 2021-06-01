@@ -1,0 +1,1256 @@
+Commits:
+7abd15e3 nfsdclnts: Ignore SIGPIPE signal
+edeb3815 mountd: add logging of NFSv4 clients attaching and detaching.
+f8e2c8d4 mountd: make default ttl settable by option
+cc150093 mountd: add --cache-use-ipaddr option to force use_ipaddr
+c7a954ae mountd: add logging for authentication results for accesses.
+1a8156f8 mountd/exports: update man page
+fec7347e mountd: Don't proactively add export info when fh info is requested.
+a72c151f mountd: reject unknown client IP when !use_ipaddr.
+05bacfed gssd: Add options to rpc.gssd to allow for the use of $HOME/.k5identity files
+7e559dbd exportd: server-side gid management
+
+diff --git a/nfs.conf b/nfs.conf
+index bebb2e3d..9042d27d 100644
+--- a/nfs.conf
++++ b/nfs.conf
+@@ -24,6 +24,7 @@
+ # keytab-file=/etc/krb5.keytab
+ # cred-cache-directory=
+ # preferred-realm=
++# set-home=1
+ #
+ [lockd]
+ # port=0
+@@ -31,8 +32,11 @@
+ #
+ [exportd]
+ # debug="all|auth|call|general|parse"
++# manage-gids=n
+ # state-directory-path=/var/lib/nfs
+ # threads=1
++# cache-use-ipaddr=n
++# ttl=1800
+ [mountd]
+ # debug="all|auth|call|general|parse"
+ # manage-gids=n
+@@ -42,6 +46,8 @@
+ # reverse-lookup=n
+ # state-directory-path=/var/lib/nfs
+ # ha-callout=
++# cache-use-ipaddr=n
++# ttl=1800
+ #
+ [nfsdcld]
+ # debug=0
+diff --git a/support/export/Makefile.am b/support/export/Makefile.am
+index a9e710c0..eec737f6 100644
+--- a/support/export/Makefile.am
++++ b/support/export/Makefile.am
+@@ -12,7 +12,8 @@ EXTRA_DIST	= mount.x
+ noinst_LIBRARIES = libexport.a
+ libexport_a_SOURCES = client.c export.c hostname.c \
+ 		      xtab.c mount_clnt.c mount_xdr.c \
+-			  cache.c auth.c v4root.c fsloc.c
++		      cache.c auth.c v4root.c fsloc.c \
++		      v4clients.c
+ BUILT_SOURCES 	= $(GENFILES)
+ 
+ noinst_HEADERS = mount.h
+diff --git a/support/export/auth.c b/support/export/auth.c
+index 0bfa77d1..cea37630 100644
+--- a/support/export/auth.c
++++ b/support/export/auth.c
+@@ -66,6 +66,10 @@ check_useipaddr(void)
+ 	int old_use_ipaddr = use_ipaddr;
+ 	unsigned int len = 0;
+ 
++	if (use_ipaddr > 1)
++		/* fixed - don't check */
++		return;
++
+ 	/* add length of m_hostname + 1 for the comma */
+ 	for (clp = clientlist[MCL_NETGROUP]; clp; clp = clp->m_next)
+ 		len += (strlen(clp->m_hostname) + 1);
+diff --git a/support/export/cache.c b/support/export/cache.c
+index f1569afb..3e4f53c0 100644
+--- a/support/export/cache.c
++++ b/support/export/cache.c
+@@ -42,13 +42,6 @@
+ #include "blkid/blkid.h"
+ #endif
+ 
+-/*
+- * Invoked by RPC service loop
+- */
+-void	cache_set_fds(fd_set *fdset);
+-int	cache_process_req(fd_set *readfds);
+-void cache_process_loop(void);
+-
+ enum nfsd_fsid {
+ 	FSID_DEV = 0,
+ 	FSID_NUM,
+@@ -96,7 +89,6 @@ static bool path_lookup_error(int err)
+  * Record is terminated with newline.
+  *
+  */
+-static int cache_export_ent(char *buf, int buflen, char *domain, struct exportent *exp, char *path);
+ 
+ #define INITIAL_MANAGED_GROUPS 100
+ 
+@@ -114,6 +106,7 @@ static void auth_unix_ip(int f)
+ 	char class[20];
+ 	char ipaddr[INET6_ADDRSTRLEN + 1];
+ 	char *client = NULL;
++	struct addrinfo *ai = NULL;
+ 	struct addrinfo *tmp = NULL;
+ 	char buf[RPC_CHAN_BUF_SIZE], *bp;
+ 	int blen;
+@@ -139,21 +132,26 @@ static void auth_unix_ip(int f)
+ 
+ 	auth_reload();
+ 
+-	/* addr is a valid, interesting address, find the domain name... */
+-	if (!use_ipaddr) {
+-		struct addrinfo *ai = NULL;
+-
+-		ai = client_resolve(tmp->ai_addr);
+-		if (ai) {
+-			client = client_compose(ai);
+-			nfs_freeaddrinfo(ai);
+-		}
++	/* addr is a valid address, find the domain name... */
++	ai = client_resolve(tmp->ai_addr);
++	if (ai) {
++		client = client_compose(ai);
++		nfs_freeaddrinfo(ai);
+ 	}
++	if (!client)
++		xlog(D_AUTH, "failed authentication for IP %s", ipaddr);
++	else if	(!use_ipaddr)
++		xlog(D_AUTH, "successful authentication for IP %s as %s",
++		     ipaddr, *client ? client : "DEFAULT");
++	else
++		xlog(D_AUTH, "successful authentication for IP %s",
++			     ipaddr);
++
+ 	bp = buf; blen = sizeof(buf);
+ 	qword_add(&bp, &blen, "nfsd");
+ 	qword_add(&bp, &blen, ipaddr);
+-	qword_adduint(&bp, &blen, time(0) + DEFAULT_TTL);
+-	if (use_ipaddr) {
++	qword_adduint(&bp, &blen, time(0) + default_ttl);
++	if (use_ipaddr && client) {
+ 		memmove(ipaddr + 1, ipaddr, strlen(ipaddr) + 1);
+ 		ipaddr[0] = '$';
+ 		qword_add(&bp, &blen, ipaddr);
+@@ -225,7 +223,7 @@ static void auth_unix_gid(int f)
+ 
+ 	bp = buf; blen = sizeof(buf);
+ 	qword_adduint(&bp, &blen, uid);
+-	qword_adduint(&bp, &blen, time(0) + DEFAULT_TTL);
++	qword_adduint(&bp, &blen, time(0) + default_ttl);
+ 	if (rv >= 0) {
+ 		qword_adduint(&bp, &blen, ngroups);
+ 		for (i=0; i<ngroups; i++)
+@@ -873,18 +871,13 @@ static void nfsd_fh(int f)
+ 	    !is_mountpoint(found->e_mountpoint[0]?
+ 			   found->e_mountpoint:
+ 			   found->e_path)) {
+-		/* Cannot export this yet 
++		/* Cannot export this yet
+ 		 * should log a warning, but need to rate limit
+ 		   xlog(L_WARNING, "%s not exported as %d not a mountpoint",
+ 		   found->e_path, found->e_mountpoint);
+ 		 */
+ 		/* FIXME we need to make sure we re-visit this later */
+ 		goto out;
+-	} else if (cache_export_ent(buf, sizeof(buf), dom, found, found_path) < 0) {
+-		if (!path_lookup_error(errno))
+-			goto out;
+-		/* The kernel is saying the path is unexportable */
+-		found = NULL;
+ 	}
+ 
+ 	bp = buf; blen = sizeof(buf);
+@@ -905,6 +898,8 @@ static void nfsd_fh(int f)
+ 	qword_addeol(&bp, &blen);
+ 	if (blen <= 0 || cache_write(f, buf, bp - buf) != bp - buf)
+ 		xlog(L_ERROR, "nfsd_fh: error writing reply");
++	if (!found)
++		xlog(D_AUTH, "denied access to %s", *dom == '$' ? dom+1 : dom);
+ out:
+ 	if (found_path)
+ 		free(found_path);
+@@ -966,7 +961,7 @@ static int dump_to_cache(int f, char *buf, int blen, char *domain,
+ 	ssize_t err;
+ 
+ 	if (ttl <= 1)
+-		ttl = DEFAULT_TTL;
++		ttl = default_ttl;
+ 
+ 	qword_add(&bp, &blen, domain);
+ 	qword_add(&bp, &blen, path);
+@@ -996,8 +991,13 @@ static int dump_to_cache(int f, char *buf, int blen, char *domain,
+ 			qword_add(&bp, &blen, "uuid");
+ 			qword_addhex(&bp, &blen, u, 16);
+ 		}
+-	} else
++		xlog(D_AUTH, "granted access to %s for %s",
++		     path, *domain == '$' ? domain+1 : domain);
++	} else {
+ 		qword_adduint(&bp, &blen, now + ttl);
++		xlog(D_AUTH, "denied access to %s for %s",
++		     path, *domain == '$' ? domain+1 : domain);
++	}
+ 	qword_addeol(&bp, &blen);
+ 	if (blen <= 0) {
+ 		errno = ENOBUFS;
+@@ -1530,6 +1530,7 @@ void cache_process_loop(void)
+ 	for (;;) {
+ 
+ 		cache_set_fds(&readfds);
++		v4clients_set_fds(&readfds);
+ 
+ 		selret = select(FD_SETSIZE, &readfds,
+ 				(void *) 0, (void *) 0, (struct timeval *) 0);
+@@ -1545,6 +1546,7 @@ void cache_process_loop(void)
+ 
+ 		default:
+ 			cache_process_req(&readfds);
++			v4clients_process(&readfds);
+ 		}
+ 	}
+ }
+diff --git a/support/export/export.h b/support/export/export.h
+index 4296db1a..8d5a0d30 100644
+--- a/support/export/export.h
++++ b/support/export/export.h
+@@ -3,13 +3,14 @@
+  *
+  * support/export/export.h
+  *
+- * Declarations for export support 
++ * Declarations for export support
+  */
+ 
+ #ifndef EXPORT_H
+ #define EXPORT_H
+ 
+ #include "nfslib.h"
++#include "exportfs.h"
+ 
+ unsigned int	auth_reload(void);
+ nfs_export *	auth_authenticate(const char *what,
+@@ -17,8 +18,14 @@ nfs_export *	auth_authenticate(const char *what,
+ 					const char *path);
+ 
+ void		cache_open(void);
++void		cache_set_fds(fd_set *fdset);
++int		cache_process_req(fd_set *readfds);
+ void		cache_process_loop(void);
+ 
++void		v4clients_init(void);
++void		v4clients_set_fds(fd_set *fdset);
++int		v4clients_process(fd_set *fdset);
++
+ struct nfs_fh_len *
+ 		cache_get_filehandle(nfs_export *exp, int len, char *p);
+ int		cache_export(nfs_export *exp, char *path);
+diff --git a/support/export/v4clients.c b/support/export/v4clients.c
+new file mode 100644
+index 00000000..056ddc9b
+--- /dev/null
++++ b/support/export/v4clients.c
+@@ -0,0 +1,179 @@
++/*
++ * support/export/v4clients.c
++ *
++ * Montior clients appearing in, and disappearing from, /proc/fs/nfsd/clients
++ * and log relevant information.
++ */
++
++#include <unistd.h>
++#include <stdlib.h>
++#include <sys/inotify.h>
++#include <errno.h>
++#include "export.h"
++
++/* search.h declares 'struct entry' and nfs_prot.h
++ * does too.  Easiest fix is to trick search.h into
++ * calling its struct "struct Entry".
++ */
++#define entry Entry
++#include <search.h>
++#undef entry
++
++static int clients_fd = -1;
++
++void v4clients_init(void)
++{
++	if (clients_fd >= 0)
++		return;
++	clients_fd = inotify_init1(IN_NONBLOCK);
++	if (clients_fd < 0) {
++		xlog_err("Unable to initialise v4clients watcher: %s\n",
++			 strerror(errno));
++		return;
++	}
++	if (inotify_add_watch(clients_fd, "/proc/fs/nfsd/clients",
++			      IN_CREATE | IN_DELETE) < 0) {
++		xlog_err("Unable to watch /proc/fs/nfsd/clients: %s\n",
++			 strerror(errno));
++		close(clients_fd);
++		clients_fd = -1;
++		return;
++	}
++}
++
++void v4clients_set_fds(fd_set *fdset)
++{
++	if (clients_fd >= 0)
++		FD_SET(clients_fd, fdset);
++}
++
++static void *tree_root;
++
++struct ent {
++	unsigned long num;
++	char *clientid;
++	char *addr;
++	int vers;
++};
++
++static int ent_cmp(const void *av, const void *bv)
++{
++	const struct ent *a = av;
++	const struct ent *b = bv;
++
++	if (a->num < b->num)
++		return -1;
++	if (a->num > b->num)
++		return 1;
++	return 0;
++}
++
++static void free_ent(struct ent *ent)
++{
++	free(ent->clientid);
++	free(ent->addr);
++	free(ent);
++}
++
++static char *dup_line(char *line)
++{
++	char *ret;
++	char *e = strchr(line, '\n');
++	if (!e)
++		e = line + strlen(line);
++	ret = malloc(e - line + 1);
++	if (ret) {
++		memcpy(ret, line, e - line);
++		ret[e-line] = 0;
++	}
++	return ret;
++}
++
++static void add_id(int id)
++{
++	char buf[2048];
++	struct ent **ent;
++	struct ent *key;
++	char *path;
++	FILE *f;
++
++	if (asprintf(&path, "/proc/fs/nfsd/clients/%d/info", id) < 0)
++		return;
++
++	f = fopen(path, "r");
++	if (!f) {
++		free(path);
++		return;
++	}
++	key = calloc(1, sizeof(*key));
++	if (!key) {
++		fclose(f);
++		free(path);
++		return;
++	}
++	key->num = id;
++	while (fgets(buf, sizeof(buf), f)) {
++		if (strncmp(buf, "clientid: ", 10) == 0)
++			key->clientid = dup_line(buf+10);
++		if (strncmp(buf, "address: ", 9) == 0)
++			key->addr = dup_line(buf+9);
++		if (strncmp(buf, "minor version: ", 15) == 0)
++			key->vers = atoi(buf+15);
++	}
++	fclose(f);
++	free(path);
++
++	xlog(L_NOTICE, "v4.%d client attached: %s from %s",
++	     key->vers, key->clientid, key->addr);
++
++	ent = tsearch(key, &tree_root, ent_cmp);
++
++	if (!ent || *ent != key)
++		/* Already existed, or insertion failed */
++		free_ent(key);
++}
++
++static void del_id(int id)
++{
++	struct ent key = {.num = id};
++	struct ent **e, *ent;
++
++	e = tfind(&key, &tree_root, ent_cmp);
++	if (!e || !*e)
++		return;
++	ent = *e;
++	tdelete(ent, &tree_root, ent_cmp);
++	xlog(L_NOTICE, "v4.%d client detached: %s from %s",
++	     ent->vers, ent->clientid, ent->addr);
++	free_ent(ent);
++}
++
++int v4clients_process(fd_set *fdset)
++{
++	char buf[4096] __attribute__((aligned(__alignof__(struct inotify_event))));
++	const struct inotify_event *ev;
++	ssize_t len;
++	char *ptr;
++
++	if (clients_fd < 0 ||
++	    !FD_ISSET(clients_fd, fdset))
++		return 0;
++
++	while ((len = read(clients_fd, buf, sizeof(buf))) > 0) {
++		for (ptr = buf; ptr < buf + len;
++		     ptr += sizeof(struct inotify_event) + ev->len) {
++			int id;
++			ev = (const struct inotify_event *)ptr;
++
++			id = atoi(ev->name);
++			if (id <= 0)
++				continue;
++			if (ev->mask & IN_CREATE)
++				add_id(id);
++			if (ev->mask & IN_DELETE)
++				del_id(id);
++		}
++	}
++	return 1;
++}
++
+diff --git a/support/export/v4root.c b/support/export/v4root.c
+index 6f640aa9..3654bd7c 100644
+--- a/support/export/v4root.c
++++ b/support/export/v4root.c
+@@ -45,7 +45,7 @@ static nfs_export pseudo_root = {
+ 		.e_nsqgids = 0,
+ 		.e_fsid = 0,
+ 		.e_mountpoint = NULL,
+-		.e_ttl = DEFAULT_TTL,
++		.e_ttl = 0,
+ 	},
+ 	.m_exported = 0,
+ 	.m_xtabent = 1,
+@@ -84,6 +84,7 @@ v4root_create(char *path, nfs_export *export)
+ 	struct exportent *curexp = &export->m_export;
+ 
+ 	dupexportent(&eep, &pseudo_root.m_export);
++	eep.e_ttl = default_ttl;
+ 	eep.e_hostname = curexp->e_hostname;
+ 	strncpy(eep.e_path, path, sizeof(eep.e_path)-1);
+ 	if (strcmp(path, "/") != 0)
+diff --git a/support/include/exportfs.h b/support/include/exportfs.h
+index daa7e2a0..81d13721 100644
+--- a/support/include/exportfs.h
++++ b/support/include/exportfs.h
+@@ -105,7 +105,8 @@ typedef struct mexport {
+ } nfs_export;
+ 
+ #define HASH_TABLE_SIZE 1021
+-#define DEFAULT_TTL	(30 * 60)
++
++extern int default_ttl;
+ 
+ typedef struct _exp_hash_entry {
+ 	nfs_export * p_first;
+diff --git a/support/nfs/exports.c b/support/nfs/exports.c
+index 037febd0..2c8f0752 100644
+--- a/support/nfs/exports.c
++++ b/support/nfs/exports.c
+@@ -47,6 +47,8 @@ struct flav_info flav_map[] = {
+ 
+ const int flav_map_size = sizeof(flav_map)/sizeof(flav_map[0]);
+ 
++int default_ttl = 30 * 60;
++
+ static char	*efname = NULL;
+ static XFILE	*efp = NULL;
+ static int	first;
+@@ -100,7 +102,7 @@ static void init_exportent (struct exportent *ee, int fromkernel)
+ 	ee->e_nsquids = 0;
+ 	ee->e_nsqgids = 0;
+ 	ee->e_uuid = NULL;
+-	ee->e_ttl = DEFAULT_TTL;
++	ee->e_ttl = default_ttl;
+ }
+ 
+ struct exportent *
+diff --git a/systemd/nfs.conf.man b/systemd/nfs.conf.man
+index d2187f8a..4436a38a 100644
+--- a/systemd/nfs.conf.man
++++ b/systemd/nfs.conf.man
+@@ -132,12 +132,22 @@ but on the server, this will resolve to the path
+ .B exportd
+ Recognized values:
+ .BR threads ,
++.BR cache-use-upaddr ,
++.BR ttl ,
+ .BR state-directory-path
+ 
+ See
+ .BR exportd (8)
+ for details.
+ 
++Note that setting 
++.B "\[dq]debug = auth\[dq]"
++for
++.B exportd
++is equivalent to providing the
++.B \-\-log\-auth
++option.
++
+ .TP
+ .B nfsdcltrack
+ Recognized values:
+@@ -188,6 +198,8 @@ Recognized values:
+ .BR port ,
+ .BR threads ,
+ .BR reverse-lookup ,
++.BR cache-use-upaddr ,
++.BR ttl ,
+ .BR state-directory-path ,
+ .BR ha-callout .
+ 
+@@ -197,6 +209,14 @@ section, are used to configure mountd.  See
+ .BR rpc.mountd (8)
+ for details.
+ 
++Note that setting 
++.B "\[dq]debug = auth\[dq]"
++for
++.B mountd
++is equivalent to providing the
++.B \-\-log\-auth
++option.
++
+ The
+ .B state-directory-path
+ value in the
+@@ -253,7 +273,8 @@ Recognized values:
+ .BR rpc-timeout ,
+ .BR keytab-file ,
+ .BR cred-cache-directory ,
+-.BR preferred-realm .
++.BR preferred-realm ,
++.BR set-home .
+ 
+ See
+ .BR rpc.gssd (8)
+diff --git a/tools/nfsdclnts/nfsdclnts.py b/tools/nfsdclnts/nfsdclnts.py
+index 5e7e03c2..b7280f2c 100755
+--- a/tools/nfsdclnts/nfsdclnts.py
++++ b/tools/nfsdclnts/nfsdclnts.py
+@@ -223,6 +223,7 @@ def nfsd4_show():
+ 
+     global verbose
+     verbose = False
++    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+     if args.verbose:
+         verbose = True
+ 
+diff --git a/utils/exportd/exportd.c b/utils/exportd/exportd.c
+index 7130bcbf..f36f51d2 100644
+--- a/utils/exportd/exportd.c
++++ b/utils/exportd/exportd.c
+@@ -42,9 +42,14 @@ static struct option longopts[] =
+ 	{ "foreground", 0, 0, 'F' },
+ 	{ "debug", 1, 0, 'd' },
+ 	{ "help", 0, 0, 'h' },
++	{ "manage-gids", 0, 0, 'g' },
+ 	{ "num-threads", 1, 0, 't' },
++	{ "log-auth", 0, 0, 'l' },
++	{ "cache-use-ipaddr", 0, 0, 'i' },
++	{ "ttl", 0, 0, 'T' },
+ 	{ NULL, 0, 0, 0 }
+ };
++static char shortopts[] = "d:fghs:t:liT:";
+ 
+ /*
+  * Signal handlers.
+@@ -174,33 +179,43 @@ usage(const char *prog, int n)
+ {
+ 	fprintf(stderr,
+ 		"Usage: %s [-f|--foreground] [-h|--help] [-d kind|--debug kind]\n"
++"	[-g|--manage-gids] [-l|--log-auth] [-i|--cache-use-ipaddr] [-T|--ttl ttl]\n"
+ "	[-s|--state-directory-path path]\n"
+ "	[-t num|--num-threads=num]\n", prog);
+ 	exit(n);
+ }
+ 
+-inline static void 
++inline static void
+ read_exportd_conf(char *progname, char **argv)
+ {
+ 	char *s;
++	int ttl;
+ 
+ 	conf_init_file(NFS_CONFFILE);
+ 
+ 	xlog_set_debug(progname);
+ 
++	manage_gids = conf_get_bool("exportd", "manage-gids", manage_gids);
+ 	num_threads = conf_get_num("exportd", "threads", num_threads);
++	if (conf_get_bool("mountd", "cache-use-ipaddr", 0))
++		use_ipaddr = 2;
+ 
+ 	s = conf_get_str("exportd", "state-directory-path");
+ 	if (s && !state_setup_basedir(argv[0], s))
+ 		exit(1);
++
++	ttl = conf_get_num("mountd", "ttl", default_ttl);
++	if (ttl > 0)
++		default_ttl = ttl;
+ }
+ 
+ int
+ main(int argc, char **argv)
+ {
+ 	char *progname;
+-	int	foreground = 0;
+-	int	 c;
++	int foreground = 0;
++	int c;
++	int ttl;
+ 
+ 	/* Set the basename */
+ 	if ((progname = strrchr(argv[0], '/')) != NULL)
+@@ -214,17 +229,35 @@ main(int argc, char **argv)
+ 	/* Read in config setting */
+ 	read_exportd_conf(progname, argv);
+ 
+-	while ((c = getopt_long(argc, argv, "d:fhs:t:", longopts, NULL)) != EOF) {
++	while ((c = getopt_long(argc, argv, shortopts, longopts, NULL)) != EOF) {
+ 		switch (c) {
+ 		case 'd':
+ 			xlog_sconfig(optarg, 1);
+ 			break;
++		case 'l':
++			xlog_sconfig("auth", 1);
++			break;
+ 		case 'f':
+ 			foreground++;
+ 			break;
++		case 'g':
++			manage_gids = 1;
++			break;
+ 		case 'h':
+ 			usage(progname, 0);
+ 			break;
++		case 'i':
++			use_ipaddr = 2;
++			break;
++		case 'T':
++			ttl = atoi(optarg);
++			if (ttl <= 0) {
++				fprintf(stderr, "%s: bad ttl number of seconds: %s\n",
++					argv[0], optarg);
++				usage(argv[0], 1);
++			}
++			default_ttl = ttl;
++			break;
+ 		case 's':
+ 			if (!state_setup_basedir(argv[0], optarg))
+ 				exit(1);
+@@ -241,8 +274,8 @@ main(int argc, char **argv)
+ 
+ 	if (!setup_state_path_names(progname, ETAB, ETABTMP, ETABLCK, &etab))
+ 		return 1;
+-	
+-	if (!foreground) 
++
++	if (!foreground)
+ 		xlog_stderr(0);
+ 
+ 	daemon_init(foreground);
+@@ -264,6 +297,7 @@ main(int argc, char **argv)
+ 
+ 	/* Open files now to avoid sharing descriptors among forked processes */
+ 	cache_open();
++	v4clients_init();
+ 
+ 	/* Process incoming upcalls */
+ 	cache_process_loop();
+diff --git a/utils/exportd/exportd.man b/utils/exportd/exportd.man
+index 1d65b5e0..b238ff05 100644
+--- a/utils/exportd/exportd.man
++++ b/utils/exportd/exportd.man
+@@ -10,35 +10,74 @@ nfsv4.exportd \- NFSv4 Server Mount Daemon
+ .SH DESCRIPTION
+ The
+ .B nfsv4.exportd
+-is used to manage NFSv4 exports. The NFSv4 server
+-receives a mount request from a client and pass it up to 
+-.B nfsv4.exportd. 
+-.B nfsv4.exportd 
+-then uses the exports(5) export
+-table to verify the validity of the mount request.
+-.PP
+-An NFS server maintains a table of local physical file systems
+-that are accessible to NFS clients.
+-Each file system in this table is referred to as an
+-.IR "exported file system" ,
+-or
+-.IR export ,
+-for short.
+-.PP
+-Each file system in the export table has an access control list.
++is used to manage NFSv4 exports.
++The NFS server
++.RI ( nfsd )
++maintains a cache of authentication and authorization information which
++is used to identify the source of each requent, and then what access
++permissions that source has to any local filesystem.  When required
++information is not found in the cache, the server sends a request to
+ .B nfsv4.exportd
+-uses these access control lists to determine
+-whether an NFS client is permitted to access a given file system.
+-For details on how to manage your NFS server's export table, see the
+-.BR exports (5)
+-and
+-.BR exportfs (8)
+-man pages.
++to fill in the missing information.  
++.B nfsv4.exportd
++uses a table of information stored in
++.B /var/lib/nfs/etab
++and maintained by
++.BR exportfs (8),
++possibly based on the contents of 
++.BR exports (5),
++to respond to each request.
+ .SH OPTIONS
+ .TP
+ .B \-d kind " or " \-\-debug kind
+ Turn on debugging. Valid kinds are: all, auth, call, general and parse.
+ .TP
++.BR \-l " or " \-\-log\-auth
++Enable logging of responses to authentication and access requests from
++nfsd.  Each response is then cached by the kernel for 30 minutes (or as set by
++.B \-\-ttl
++below), and will be refreshed after 15 minutes (half the ttl time) if
++the relevant client remains active.
++Note that
++.B -l
++is equivalent to
++.B "-d auth"
++and so can be enabled in
++.B /etc/nfs.conf
++with
++.B "\[dq]debug = auth\[dq]"
++in the
++.B "[exportd]"
++section.
++.TP
++.BR \-i " or " \-\-cache\-use\-ipaddr
++Normally each client IP address is matched against each host identifier
++(name, wildcard, netgroup etc) found in
++.B /etc/exports
++and a combined identity is formed from all matching identifiers.
++Often many clients will map to the same combined identity so performing
++this mapping reduces the number of distinct access details that the
++kernel needs to store.
++Specifying the
++.B \-i
++option suppresses this mapping so that access to each filesystem is
++requested and cached separately for each client IP address.  Doing this
++can increase the burden of updating the cache slightly, but can make the
++log messages produced by the
++.B -l
++option easier to read.
++.TP
++.B \-T " or " \-\-ttl
++Provide a time-to-live (TTL) for cached information given to the kernel.
++The kernel will normally request an update if the information is needed
++after half of this time has expired.  Increasing the provided number,
++which is in seconds, reduces the rate of cache update requests, and this
++is particularly noticeable when these requests are logged with
++.BR \-l .
++However increasing also means that changes to hostname to address
++mappings can take longer to be noticed.
++The default TTL is 1800 (30 minutes).
++.TP
+ .B \-F " or " \-\-foreground
+ Run in foreground (do not daemonize)
+ .TP
+@@ -46,11 +85,27 @@ Run in foreground (do not daemonize)
+ Display usage message.
+ .TP
+ .BR "\-t N" " or " "\-\-num\-threads=N " or  " \-\-num\-threads N "
+-This option specifies the number of worker threads that rpc.mountd
++This option specifies the number of worker threads that 
++.B nfsv4.exports
+ spawns.  The default is 1 thread, which is probably enough.  More
+ threads are usually only needed for NFS servers which need to handle
+ mount storms of hundreds of NFS mounts in a few seconds, or when
+ your DNS server is slow or unreliable.
++.TP
++.BR \-g " or " \-\-manage-gids
++Accept requests from the kernel to map user id numbers into lists of
++group id numbers for use in access control.  An NFS request will
++normally (except when using Kerberos or other cryptographic
++authentication) contain a user-id and a list of group-ids.  Due to a
++limitation in the NFS protocol, at most 16 groups ids can be listed.
++If you use the
++.B \-g
++flag, then the list of group ids received from the client will be
++replaced by a list of group ids determined by an appropriate lookup on
++the server. Note that the 'primary' group id is not affected so a
++.B newgroup
++command on the client will still be effective.  This function requires
++a Linux Kernel with version at least 2.6.21.
+ .SH CONFIGURATION FILE
+ Many of the options that can be set on the command line can also be
+ controlled through values set in the
+@@ -63,6 +118,9 @@ configuration file.
+ Values recognized in the
+ .B [exportd]
+ section include 
++.B cache\-use\-ipaddr ,
++.BR ttl ,
++.BR manage-gids ", and"
+ .B debug 
+ which each have the same effect as the option with the same name.
+ .SH FILES
+@@ -78,4 +136,6 @@ listing exports, export options, and access control lists
+ .BR nfs.conf (5),
+ .BR firwall-cmd (1),
+ .sp
+-RFC 3530 - "Network File System (NFS) version 4 Protocol"
++RFC 7530 - "Network File System (NFS) Version 4 Protocol"
++.br
++RFC 8881 - "Network File System (NFS) Version 4 Minor Version 1 Protocol"
+diff --git a/utils/gssd/gssd.c b/utils/gssd/gssd.c
+index 85bc4b07..1541d371 100644
+--- a/utils/gssd/gssd.c
++++ b/utils/gssd/gssd.c
+@@ -87,6 +87,8 @@ unsigned int  context_timeout = 0;
+ unsigned int  rpc_timeout = 5;
+ char *preferred_realm = NULL;
+ char *ccachedir = NULL;
++/* set $HOME to "/" by default */
++static bool set_home = true;
+ /* Avoid DNS reverse lookups on server names */
+ static bool avoid_dns = true;
+ static bool use_gssproxy = false;
+@@ -900,7 +902,7 @@ sig_die(int signal)
+ static void
+ usage(char *progname)
+ {
+-	fprintf(stderr, "usage: %s [-f] [-l] [-M] [-n] [-v] [-r] [-p pipefsdir] [-k keytab] [-d ccachedir] [-t timeout] [-R preferred realm] [-D]\n",
++	fprintf(stderr, "usage: %s [-f] [-l] [-M] [-n] [-v] [-r] [-p pipefsdir] [-k keytab] [-d ccachedir] [-t timeout] [-R preferred realm] [-D] [-H]\n",
+ 		progname);
+ 	exit(1);
+ }
+@@ -941,6 +943,7 @@ read_gss_conf(void)
+ 		preferred_realm = s;
+ 
+ 	use_gssproxy = conf_get_bool("gssd", "use-gss-proxy", use_gssproxy);
++	set_home = conf_get_bool("gssd", "set-home", set_home);
+ }
+ 
+ int
+@@ -961,7 +964,7 @@ main(int argc, char *argv[])
+ 	verbosity = conf_get_num("gssd", "verbosity", verbosity);
+ 	rpc_verbosity = conf_get_num("gssd", "rpc-verbosity", rpc_verbosity);
+ 
+-	while ((opt = getopt(argc, argv, "DfvrlmnMp:k:d:t:T:R:")) != -1) {
++	while ((opt = getopt(argc, argv, "HDfvrlmnMp:k:d:t:T:R:")) != -1) {
+ 		switch (opt) {
+ 			case 'f':
+ 				fg = 1;
+@@ -1009,6 +1012,9 @@ main(int argc, char *argv[])
+ 			case 'D':
+ 				avoid_dns = false;
+ 				break;
++			case 'H':
++				set_home = false;
++				break;
+ 			default:
+ 				usage(argv[0]);
+ 				break;
+@@ -1018,13 +1024,19 @@ main(int argc, char *argv[])
+ 	/*
+ 	 * Some krb5 routines try to scrape info out of files in the user's
+ 	 * home directory. This can easily deadlock when that homedir is on a
+-	 * kerberized NFS mount. By setting $HOME unconditionally to "/", we
+-	 * prevent this behavior in routines that use $HOME in preference to
+-	 * the results of getpw*.
++	 * kerberized NFS mount. By setting $HOME to "/" by default, we prevent
++	 * this behavior in routines that use $HOME in preference to the results
++	 * of getpw*.
++	 *
++	 * Some users do not use Kerberized home dirs and need $HOME to remain
++	 * unchanged. Those users can leave $HOME unchanged by setting set_home
++	 * to false.
+ 	 */
+-	if (setenv("HOME", "/", 1)) {
+-		printerr(0, "gssd: Unable to set $HOME: %s\n", strerror(errno));
+-		exit(1);
++	if (set_home) {
++		if (setenv("HOME", "/", 1)) {
++			printerr(0, "gssd: Unable to set $HOME: %s\n", strerror(errno));
++			exit(1);
++		}
+ 	}
+ 
+ 	if (use_gssproxy) {
+diff --git a/utils/gssd/gssd.man b/utils/gssd/gssd.man
+index 26095a89..9ae6def9 100644
+--- a/utils/gssd/gssd.man
++++ b/utils/gssd/gssd.man
+@@ -8,7 +8,7 @@
+ rpc.gssd \- RPCSEC_GSS daemon
+ .SH SYNOPSIS
+ .B rpc.gssd
+-.RB [ \-DfMnlvr ]
++.RB [ \-DfMnlvrH ]
+ .RB [ \-k
+ .IR keytab ]
+ .RB [ \-p
+@@ -282,6 +282,16 @@ The default timeout is set to 5 seconds.
+ If you get messages like "WARNING: can't create tcp rpc_clnt to server
+ %servername% for user with uid %uid%: RPC: Remote system error -
+ Connection timed out", you should consider an increase of this timeout.
++.TP
++.B -H
++Avoids setting $HOME to "/". This allows rpc.gssd to read per user k5identity
++files versus trying to read /.k5identity for each user.
++
++If
++.B \-H
++is not set, rpc.gssd will use the first match found in
++/var/kerberos/krb5/user/$EUID/client.keytab and will not use a principal based on
++host and/or service parameters listed in $HOME/.k5identity.
+ .SH CONFIGURATION FILE
+ Many of the options that can be set on the command line can also be
+ controlled through values set in the
+@@ -339,6 +349,13 @@ Equivalent to
+ .B preferred-realm
+ Equivalent to
+ .BR -R .
++.TP
++.B set-home
++Setting to
++.B false
++is equivalent to providing the
++.B -H
++flag.
+ .P
+ In addtion, the following value is recognized from the
+ .B [general]
+diff --git a/utils/mountd/mountd.c b/utils/mountd/mountd.c
+index 612063ba..39e85fd5 100644
+--- a/utils/mountd/mountd.c
++++ b/utils/mountd/mountd.c
+@@ -31,6 +31,7 @@
+ #include "pseudoflavors.h"
+ #include "nfsd_path.h"
+ #include "nfslib.h"
++#include "export.h"
+ 
+ extern void my_svc_run(void);
+ 
+@@ -74,8 +75,12 @@ static struct option longopts[] =
+ 	{ "reverse-lookup", 0, 0, 'r' },
+ 	{ "manage-gids", 0, 0, 'g' },
+ 	{ "no-udp", 0, 0, 'u' },
++	{ "log-auth", 0, 0, 'l'},
++	{ "cache-use-ipaddr", 0, 0, 'i'},
++	{ "ttl", 1, 0, 'T'},
+ 	{ NULL, 0, 0, 0 }
+ };
++static char shortopts[] = "o:nFd:p:P:hH:N:V:vurs:t:gliT:";
+ 
+ #define NFSVERSBIT(vers)	(0x1 << (vers - 1))
+ #define NFSVERSBIT_ALL		(NFSVERSBIT(2) | NFSVERSBIT(3) | NFSVERSBIT(4))
+@@ -669,6 +674,7 @@ inline static void
+ read_mountd_conf(char **argv)
+ {
+ 	char	*s;
++	int	ttl;
+ 
+ 	conf_init_file(NFS_CONFFILE);
+ 
+@@ -679,6 +685,8 @@ read_mountd_conf(char **argv)
+ 	num_threads = conf_get_num("mountd", "threads", num_threads);
+ 	reverse_resolve = conf_get_bool("mountd", "reverse-lookup", reverse_resolve);
+ 	ha_callout_prog = conf_get_str("mountd", "ha-callout");
++	if (conf_get_bool("mountd", "cache-use-ipaddr", 0))
++		use_ipaddr = 2;
+ 
+ 	s = conf_get_str("mountd", "state-directory-path");
+ 	if (s && !state_setup_basedir(argv[0], s))
+@@ -701,6 +709,10 @@ read_mountd_conf(char **argv)
+ 		else
+ 			NFSCTL_VERUNSET(nfs_version, vers);
+ 	}
++
++	ttl = conf_get_num("mountd", "ttl", default_ttl);
++	if (ttl > 0)
++		default_ttl = ttl;
+ }
+ 
+ int
+@@ -710,6 +722,7 @@ main(int argc, char **argv)
+ 	unsigned int listeners = 0;
+ 	int	foreground = 0;
+ 	int	c;
++	int	ttl;
+ 	struct sigaction sa;
+ 	struct rlimit rlim;
+ 
+@@ -727,7 +740,7 @@ main(int argc, char **argv)
+ 
+ 	/* Parse the command line options and arguments. */
+ 	opterr = 0;
+-	while ((c = getopt_long(argc, argv, "o:nFd:p:P:hH:N:V:vurs:t:g", longopts, NULL)) != EOF)
++	while ((c = getopt_long(argc, argv, shortopts, longopts, NULL)) != EOF)
+ 		switch (c) {
+ 		case 'g':
+ 			manage_gids = 1;
+@@ -798,6 +811,21 @@ main(int argc, char **argv)
+ 		case 'u':
+ 			NFSCTL_UDPUNSET(_rpcprotobits);
+ 			break;
++		case 'l':
++			xlog_sconfig("auth", 1);
++			break;
++		case 'i':
++			use_ipaddr = 2;
++			break;
++		case 'T':
++			ttl = atoi(optarg);
++			if (ttl <= 0) {
++				fprintf(stderr, "%s: bad ttl number of seconds: %s\n",
++					argv[0], optarg);
++				usage(argv[0], 1);
++			}
++			default_ttl = ttl;
++			break;
+ 		case 0:
+ 			break;
+ 		case '?':
+@@ -897,6 +925,7 @@ main(int argc, char **argv)
+ 	nfsd_path_init();
+ 	/* Open files now to avoid sharing descriptors among forked processes */
+ 	cache_open();
++	v4clients_init();
+ 
+ 	xlog(L_NOTICE, "Version " VERSION " starting");
+ 	my_svc_run();
+@@ -913,6 +942,7 @@ usage(const char *prog, int n)
+ {
+ 	fprintf(stderr,
+ "Usage: %s [-F|--foreground] [-h|--help] [-v|--version] [-d kind|--debug kind]\n"
++"	[-l|--log-auth] [-i|--cache-use-ipaddr] [-T|--ttl ttl]\n"
+ "	[-o num|--descriptors num]\n"
+ "	[-p|--port port] [-V version|--nfs-version version]\n"
+ "	[-N version|--no-nfs-version version] [-n|--no-tcp]\n"
+diff --git a/utils/mountd/mountd.h b/utils/mountd/mountd.h
+index f058f01d..d3077531 100644
+--- a/utils/mountd/mountd.h
++++ b/utils/mountd/mountd.h
+@@ -60,9 +60,4 @@ bool ipaddr_client_matches(nfs_export *exp, struct addrinfo *ai);
+ bool namelist_client_matches(nfs_export *exp, char *dom);
+ bool client_matches(nfs_export *exp, char *dom, struct addrinfo *ai);
+ 
+-static inline bool is_ipaddr_client(char *dom)
+-{
+-	return dom[0] == '$';
+-}
+-
+ #endif /* MOUNTD_H */
+diff --git a/utils/mountd/mountd.man b/utils/mountd/mountd.man
+index 9978afcd..1155cf94 100644
+--- a/utils/mountd/mountd.man
++++ b/utils/mountd/mountd.man
+@@ -13,24 +13,24 @@ The
+ .B rpc.mountd
+ daemon implements the server side of the NFS MOUNT protocol,
+ an NFS side protocol used by NFS version 2 [RFC1094] and NFS version 3 [RFC1813].
++It also responds to requests from the Linux kernel to authenticate
++clients and provides details of access permissions.
+ .PP
+-An NFS server maintains a table of local physical file systems
+-that are accessible to NFS clients.
+-Each file system in this table is referred to as an
+-.IR "exported file system" ,
+-or
+-.IR export ,
+-for short.
+-.PP
+-Each file system in the export table has an access control list.
+-.B rpc.mountd
+-uses these access control lists to determine
+-whether an NFS client is permitted to access a given file system.
+-For details on how to manage your NFS server's export table, see the
+-.BR exports (5)
+-and
+-.BR exportfs (8)
+-man pages.
++The NFS server
++.RI ( nfsd )
++maintains a cache of authentication and authorization information which
++is used to identify the source of each requent, and then what access
++permissions that source has to any local filesystem.  When required
++information is not found in the cache, the server sends a request to
++.B mountd
++to fill in the missing information.  Mountd uses a table of information
++stored in
++.B /var/lib/nfs/etab
++and maintained by
++.BR exportfs (8),
++possibly based on the contents of 
++.BR exports (5),
++to respond to each request.
+ .SS Mounting exported NFS File Systems
+ The NFS MOUNT protocol has several procedures.
+ The most important of these are
+@@ -78,11 +78,69 @@ A client may continue accessing an export even after invoking UMNT.
+ If the client reboots without sending a UMNT request, stale entries
+ remain for that client in
+ .IR /var/lib/nfs/rmtab .
++.SS Mounting File Systems with NFSv4
++Version 4 (and later) of NFS does not use a separate NFS MOUNT
++protocol.  Instead mounting is performed using regular NFS requests
++handled by the NFS server in the Linux kernel
++.RI ( nfsd ).
++Consequently
++.I /var/lib/nfs/rmtab
++is not updated to reflect any NFSv4 activity.
+ .SH OPTIONS
+ .TP
+ .B \-d kind " or " \-\-debug kind
+ Turn on debugging. Valid kinds are: all, auth, call, general and parse.
+ .TP
++.BR \-l " or " \-\-log\-auth
++Enable logging of responses to authentication and access requests from
++nfsd.  Each response is then cached by the kernel for 30 minutes (or as set by
++.B \-\-ttl
++below), and will be refreshed after 15 minutes (half the ttl time) if
++the relevant client remains active.
++Note that
++.B -l
++is equivalent to
++.B "-d auth"
++and so can be enabled in
++.B /etc/nfs.conf
++with
++.B "\[dq]debug = auth\[dq]"
++in the
++.B "[mountd]"
++section.
++.IP
++.B rpc.mountd
++will always log authentication responses to MOUNT requests when NFSv3 is
++used, but to get similar logs for NFSv4, this option is required.
++.TP
++.BR \-i " or " \-\-cache\-use\-ipaddr
++Normally each client IP address is matched against each host identifier
++(name, wildcard, netgroup etc) found in
++.B /etc/exports
++and a combined identity is formed from all matching identifiers.
++Often many clients will map to the same combined identity so performing
++this mapping reduces the number of distinct access details that the
++kernel needs to store.
++Specifying the
++.B \-i
++option suppresses this mapping so that access to each filesystem is
++requested and cached separately for each client IP address.  Doing this
++can increase the burden of updating the cache slightly, but can make the
++log messages produced by the
++.B -l
++option easier to read.
++.TP
++.B \-T " or " \-\-ttl
++Provide a time-to-live (TTL) for cached information given to the kernel.
++The kernel will normally request an update if the information is needed
++after half of this time has expired.  Increasing the provided number,
++which is in seconds, reduces the rate of cache update requests, and this
++is particularly noticeable when these requests are logged with
++.BR \-l .
++However increasing also means that changes to hostname to address
++mappings can take longer to be noticed.
++The default TTL is 1800 (30 minutes).
++.TP
+ .B \-F " or " \-\-foreground
+ Run in foreground (do not daemonize)
+ .TP
+@@ -213,9 +271,11 @@ Values recognized in the
+ .B [mountd]
+ section include
+ .BR manage-gids ,
++.BR cache\-use\-ipaddr ,
+ .BR descriptors ,
+ .BR port ,
+ .BR threads ,
++.BR ttl ,
+ .BR reverse-lookup ", and"
+ .BR state-directory-path ,
+ .B ha-callout
+@@ -295,5 +355,9 @@ table of clients accessing server's exports
+ RFC 1094 - "NFS: Network File System Protocol Specification"
+ .br
+ RFC 1813 - "NFS Version 3 Protocol Specification"
++.br
++RFC 7530 - "Network File System (NFS) Version 4 Protocol"
++.br
++RFC 8881 - "Network File System (NFS) Version 4 Minor Version 1 Protocol"
+ .SH AUTHOR
+ Olaf Kirch, H. J. Lu, G. Allan Morris III, and a host of others.
+diff --git a/utils/mountd/svc_run.c b/utils/mountd/svc_run.c
+index 41b96d7f..167b9757 100644
+--- a/utils/mountd/svc_run.c
++++ b/utils/mountd/svc_run.c
+@@ -56,10 +56,9 @@
+ #ifdef HAVE_LIBTIRPC
+ #include <rpc/rpc_com.h>
+ #endif
++#include "export.h"
+ 
+ void my_svc_run(void);
+-void cache_set_fds(fd_set *fdset);
+-int cache_process_req(fd_set *readfds);
+ 
+ #if defined(__GLIBC__) && LONG_MAX != INT_MAX
+ /* bug in glibc 2.3.6 and earlier, we need
+@@ -101,6 +100,7 @@ my_svc_run(void)
+ 
+ 		readfds = svc_fdset;
+ 		cache_set_fds(&readfds);
++		v4clients_set_fds(&readfds);
+ 
+ 		selret = select(FD_SETSIZE, &readfds,
+ 				(void *) 0, (void *) 0, (struct timeval *) 0);
+@@ -116,6 +116,7 @@ my_svc_run(void)
+ 
+ 		default:
+ 			selret -= cache_process_req(&readfds);
++			selret -= v4clients_process(&readfds);
+ 			if (selret)
+ 				svc_getreqset(&readfds);
+ 		}

@@ -42,7 +42,10 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-Replace-all-var-run-with-run.patch
+Patch1:         nfs-utils-2-5-4-rc1.patch
+Patch2:         nfs-utils-2-5-4-rc2.patch
+Patch3:         nfs-utils-2-5-4-rc3.patch
+Patch4:         nfs-utils-2-5-4-rc4.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
@@ -184,7 +187,7 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 %service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
-# lib/nfs must be root-owned. 
+# lib/nfs must be root-owned.
 # sm and sm.back and contents should be statd:statd,
 # but only chown if the dirs are currently root-owned.
 # This is needed for some upgraded, but chown is best avoided
