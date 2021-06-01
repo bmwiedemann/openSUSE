@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 24 00:26:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Wed May 15 15:12:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 since some dependencies are python3-only

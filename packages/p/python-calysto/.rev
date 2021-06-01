@@ -9,4 +9,12 @@
 - Split jupyter components into own subpackage.</comment>
     <requestid>703189</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a2168bacb10ed8e71fc4f19a8a6338af</srcmd5>
+    <version>1.0.6</version>
+    <time>1622536487</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895084</requestid>
+  </revision>
 </revisionlist>
