@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pseudorandom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-python-pseudorandom
 Version:        0.2.2
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        A Python library for generating pseudorandom condition
-Url:            https://github.com/smathot/python-pseudorandom
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/smathot/python-pseudorandom
 Source:         https://github.com/smathot/python-pseudorandom/archive/release/%{version}.tar.gz#/python-pseudorandom-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-python-datamatrix
+Recommends:     python-fastnumbers
+Recommends:     python-numpy
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module fastnumbers}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module python-datamatrix}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-python-datamatrix
-Recommends:     python-fastnumbers
-Recommends:     python-numpy
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,7 +57,7 @@ touch _unittest/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test --test-suite=_unittest
+%pyunittest discover -v
 
 %files %{python_files}
 %license copyright COPYING
