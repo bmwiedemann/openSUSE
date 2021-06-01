@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 09:03:46 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Toggle ip4/ipv6 forwarding sysctls to ensure all devices are
+  refreshed [boo#1186125]
+
+-------------------------------------------------------------------
 Thu May 20 13:19:09 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Restore 90-kubeadm.conf, still needed [boo#1186125] 
