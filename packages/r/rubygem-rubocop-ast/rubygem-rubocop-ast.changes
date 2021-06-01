@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:42:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.0
+
+  ## 1.7.0 (2021-05-28)
+
+  ### New features
+
+  * [#171](https://github.com/rubocop-hq/rubocop-ast/pull/171): Add `SendNode#def_modifier` that returns the `def` node it modifies, or `nil`. ([@marcandre][])
+  * [#186](https://github.com/rubocop-hq/rubocop-ast/pull/186): Add `pattern` method for `AST::InPatternNode` node. ([@koic][])
+
+  ## 1.6.0 (2021-05-26)
+
+  ### New features
+
+  * [#183](https://github.com/rubocop-hq/rubocop-ast/pull/183): Add `AST::InPatternNode` node. ([@koic][])
+
+-------------------------------------------------------------------
 Thu May  6 16:19:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 ## 1.5.0 (2021-05-02)
