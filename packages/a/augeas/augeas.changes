@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 26 23:58:36 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Allow all printable ASCII characters in WPA-PSK definition
+  * augeas-allow_printable_ASCII.patch
+  * bsc#1185524
+  * Sourced from https://github.com/hercules-team/augeas/pull/723/commits
+  * Credit to Michal Filka <mfilka@suse.com>
+
+-------------------------------------------------------------------
 Tue Feb  9 15:17:04 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Add new directives and options supported in chrony since 3.3 up to 4.0.

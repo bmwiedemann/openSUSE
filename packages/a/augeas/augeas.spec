@@ -30,6 +30,7 @@ Source3:        baselibs.conf
 Patch0:         augeas-modprobe-lense.patch
 Patch1:         gcc9-disable-broken-test.patch
 Patch2:         augeas-new_options_for_chrony.patch
+Patch3:         augeas-allow_printable_ASCII.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -95,6 +96,7 @@ modifying the official lenses, or when creating new ones.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure \

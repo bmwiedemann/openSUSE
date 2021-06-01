@@ -582,4 +582,12 @@ semicolon is ambiguous (forwarded request 137763 from babelworx)</comment>
     <comment></comment>
     <requestid>876385</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>0b453a4b73e8a1a093b276f28ca29ab6</srcmd5>
+    <version>1.12.0</version>
+    <time>1622536479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895787</requestid>
+  </revision>
 </revisionlist>
