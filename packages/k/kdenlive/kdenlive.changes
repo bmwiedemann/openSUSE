@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 10:15:47 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Remove unneeded libmlt-devel BuildRequires
+
+-------------------------------------------------------------------
 Wed May 12 06:07:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1

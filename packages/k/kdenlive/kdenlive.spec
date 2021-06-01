@@ -39,7 +39,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libmlt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rttr-devel
 BuildRequires:  cmake(KF5Archive)
