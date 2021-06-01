@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 26 08:45:16 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.0.2.
+  ## 2.13.0.2
+
+  * [#1265](https://github.com/yesodweb/persistent/pull/1265)
+      * Support GHC 9
+
+-------------------------------------------------------------------
+Tue May 11 17:19:27 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-2.13.0.1/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Sat May  8 10:05:44 UTC 2021 - psimons@suse.com
 
 - Update persistent to version 2.13.0.0 revision 2.
