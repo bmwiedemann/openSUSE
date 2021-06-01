@@ -25,6 +25,9 @@ Summary:        Async database support for Python
 License:        BSD-3-Clause
 URL:            https://github.com/encode/databases
 Source:         https://github.com/encode/databases/archive/%{version}.tar.gz#/databases-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sqlalchemy-14.patch gh#encode/databases#299 mcepl@suse.com
+# Upgrade used API of SQLAlchemy to 1.4
+Patch0:         sqlalchemy-14.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +53,8 @@ BuildRequires:  (python36-aiocontextvars if python36-base)
 Async database support for Python.
 
 %prep
-%setup -q -n databases-%{version}
+%autosetup -p1 -n databases-%{version}
+
 # tests/test_integration.py depends on starlette
 rm tests/test_integration.py
 

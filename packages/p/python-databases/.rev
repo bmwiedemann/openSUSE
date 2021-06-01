@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>885363</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>55e72ddbbae5db730ef9028347056dab</srcmd5>
+    <version>0.4.3</version>
+    <time>1622536623</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sqlalchemy-14.patch upgrading used API of SQLAlchemy to 1.4.
+</comment>
+    <requestid>895539</requestid>
+  </revision>
 </revisionlist>

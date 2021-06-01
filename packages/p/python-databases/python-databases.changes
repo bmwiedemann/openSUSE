@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 26 12:10:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add sqlalchemy-14.patch upgrading used API of SQLAlchemy to 1.4.
+
+-------------------------------------------------------------------
 Tue Apr 13 21:28:51 UTC 2021 - simmphonie@opensuse.org
 
 - update to version 0.4.3
