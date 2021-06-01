@@ -1,7 +1,7 @@
 #
 # spec file for package libmediaart
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libmediaart
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        Media Art extraction library
 # License note: src.rpm contains GPL-2.0+ (tests) and LGPL-2.1+ code
@@ -26,9 +26,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Other
 URL:            https://gitlab.gnome.org/GNOME/libmediaart
 Source0:        https://download.gnome.org/sources/libmediaart/1.9/%{name}-%{version}.tar.xz
-
-# PATCH-FIX-UPSTREAM meson-Introspection-fix.patch bgo#792272 robert.munteanu@gmail.com -- meson: Introspection fix
-Patch1:         meson-Introspection-fix.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel >= 1.30.0
@@ -83,7 +80,7 @@ extraction and lookup for applications on the desktop.
 %build
 %meson \
 	-Dimage_library=gdk-pixbuf \
-	-Dwith-docs=yes \
+	-Dgtk_doc=true \
 	%{nil}
 %meson_build
 
