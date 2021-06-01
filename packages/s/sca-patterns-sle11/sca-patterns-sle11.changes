@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 24 14:42:28 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.3.2
+  - Deleted regular patterns (1)
+    + sle11all/bhc-scc.sh: Pattern removed (bsc#1184594)
+
+-------------------------------------------------------------------
 Wed May  5 15:37:01 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - New security announcement patterns (10) for version 1.3.2
