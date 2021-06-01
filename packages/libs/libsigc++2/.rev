@@ -361,4 +361,12 @@
     <comment>New upstream release (forwarded request 850820 from iznogood)</comment>
     <requestid>851053</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>84187134abda23b8524b950eaaa0955b</srcmd5>
+    <version>2.10.7</version>
+    <time>1622536382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895801</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 21 12:03:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.10.7:
+  + Meson build:
+    - Make it possible to use sigc++ as a subproject.
+    - Fix dependency on files generated from .h.m4 files.
+    - No implicit_include_directories.
+    - Make quiet installations possible.
+    - Fix build as subproject without building documentation.
+  + Documentation fixes.
+
+-------------------------------------------------------------------
 Wed Nov 25 21:03:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.10.6:

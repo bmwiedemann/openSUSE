@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.10.6
+Version:        2.10.7
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://download.gnome.org/sources/libsigc++/2.10/%{_name}-%{ver
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 
 %description
