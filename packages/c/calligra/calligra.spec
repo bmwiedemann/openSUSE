@@ -1,7 +1,7 @@
 #
 # spec file for package calligra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\(org\\.calligra\\..*
+
 %bcond_without lang
 Name:           calligra
 Version:        3.2.1
@@ -25,22 +28,15 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Revert-Chart-Depend-on-KChart-2.7.0.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
-BuildRequires:  gsl-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_system-devel
-BuildRequires:  libeigen3-devel
 BuildRequires:  libetonyek-devel
-BuildRequires:  libgit2-devel
-BuildRequires:  liblcms2-devel
 BuildRequires:  libodfgen-devel
-BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libvisio-devel
 BuildRequires:  libwpd-devel
@@ -76,11 +72,11 @@ BuildRequires:  cmake(KF5Kross)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Okular5)
 BuildRequires:  cmake(Phonon4Qt5)
@@ -99,6 +95,12 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(poppler-qt5)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): shared-mime-info
@@ -318,18 +320,11 @@ Provides:       calligra-l10n-zh_TW = %{version}
 This package contains application translations for the Calligra Suite
 
 %prep
-%setup -q
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150100
-%patch0 -p1
-%endif
-%if %pkg_vcmp kdoctools < 5.57.0
-# older kdoctools versions lack the necessary support for indonesian language causing the build to fail
-rm -r po/id/docs/
-%endif
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 cd build
@@ -368,7 +363,10 @@ cd build
 cd ..
 
 # Remove doc files from filelists (packaged in calligra-doc)
-sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
+sed -ri s,.*%{_kf5_sharedir}/doc/kde/HTML/en/.*,, filelists/*
+
+%find_lang %{name} --all-name
+%kf5_find_htmldocs
 
 %suse_update_desktop_file -r org.kde.karbon     Qt KDE Graphics VectorGraphics
 %suse_update_desktop_file -r org.kde.calligragemini     Qt KDE Graphics RasterGraphics
@@ -376,14 +374,8 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %suse_update_desktop_file -r org.kde.calligrastage      Qt KDE Office Presentation
 %suse_update_desktop_file -r org.kde.calligrawords      Qt KDE Office WordProcessor
 
-%post
-/sbin/ldconfig
-%mime_database_post
-
-%postun
-/sbin/ldconfig
-%mime_database_postun
-
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 %post   gemini -p /sbin/ldconfig
 %postun gemini -p /sbin/ldconfig
 %post   karbon -p /sbin/ldconfig
@@ -402,15 +394,14 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %files -f filelists/main
 %license COPYING COPYING.LIB
 %doc README
+%dir %{_kf5_iconsdir}/hicolor/1024x1024
+%dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
 %dir %{_kf5_qmldir}/org/kde
-%{_kf5_qmldir}/org/kde/calligra/
-%{_datadir}/calligra/
-%{_kf5_iconsdir}/hicolor/
-%dir %{_kf5_servicesdir}/ServiceMenus
-%dir %{_kf5_servicesdir}/ServiceMenus/calligra
-%dir %{_kf5_appstreamdir}
-%{_kf5_applicationsdir}/calligra.desktop
+%dir %{_kf5_sharedir}/color
+%dir %{_kf5_sharedir}/color/icc
+%dir %{_kf5_sharedir}/color/icc/calligra
 %dir %{_kf5_plugindir}/calligra
+%dir %{_kf5_plugindir}/calligra/colorspaces
 %dir %{_kf5_plugindir}/calligra/devices
 %dir %{_kf5_plugindir}/calligra/dockers
 %dir %{_kf5_plugindir}/calligra/formatfilters
@@ -420,19 +411,21 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %dir %{_kf5_plugindir}/calligra/textediting
 %dir %{_kf5_plugindir}/calligra/textinlineobjects
 %dir %{_kf5_plugindir}/calligra/tools
-%dir %{_kf5_plugindir}/calligra/colorspaces
-%dir %{_datadir}/color
-%dir %{_datadir}/color/icc
-%dir %{_datadir}/color/icc/calligra
-%exclude %{_datadir}/calligra_shape_music/fonts/Emmentaler-14.ttf
+%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_servicesdir}/ServiceMenus/calligra
+%{_kf5_sharedir}/calligra/
+%{_kf5_applicationsdir}/calligra.desktop
+%{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_qmldir}/org/kde/calligra/
+%exclude %{_kf5_sharedir}/calligra_shape_music/fonts/Emmentaler-14.ttf
 
 %files extras-converter -f filelists/converter
 
 %files extras-dolphin -f filelists/dolphin
 
 %files extras-filemanagertemplates -f filelists/filemanagertemplates
-%dir %{_datadir}/templates
-%dir %{_datadir}/templates/.source
+%dir %{_kf5_sharedir}/templates
+%dir %{_kf5_sharedir}/templates/.source
 
 %files extras-okular -f filelists/okular
 %{_kf5_applicationsdir}/okular*.desktop
@@ -440,7 +433,7 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %{_kf5_servicesdir}/okular*.desktop
 
 %files devel -f filelists/devel
-%{_libdir}/libkookularGenerator_odt.so
+%{_kf5_libdir}/libkookularGenerator_odt.so
 
 %files doc
 %license COPYING.DOC
@@ -449,63 +442,60 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %files karbon -f filelists/karbon
 %license karbon/COPYING.LIB
 %doc karbon/AUTHORS karbon/CHANGES karbon/IDEAS karbon/README karbon/TODO
-%exclude %{_kf5_iconsdir}
-%{_datadir}/karbon/
 %dir %{_kf5_kxmlguidir}/karbon
-%exclude %{_datadir}/calligra
 %{_kf5_plugindir}/karbon/
+%{_kf5_sharedir}/karbon/
+%exclude %{_kf5_iconsdir}
+%exclude %{_kf5_sharedir}/calligra
 
 %files gemini -f filelists/gemini
-%{_kf5_sharedir}/calligragemini/
-%exclude %{_kf5_iconsdir}/hicolor
 %dir %{_kf5_qmldir}/Calligra
 %dir %{_kf5_qmldir}/Calligra/Gemini
 %dir %{_kf5_qmldir}/Calligra/Gemini/Dropbox
 %dir %{_kf5_qmldir}/Calligra/Gemini/Git
 %dir %{_kf5_qmldir}/org
+%{_kf5_sharedir}/calligragemini/
+%exclude %{_kf5_iconsdir}/hicolor
 
 %files sheets -f filelists/sheets
 %doc sheets/AUTHORS sheets/CHANGES sheets/README sheets/TODO
-%exclude %{_datadir}/calligra
-%exclude %{_kf5_iconsdir}
-%{_kf5_plugindir}/calligrasheets/
 %{_kf5_htmldir}/en/calligrasheets/
-%{_datadir}/calligrasheets/
 %{_kf5_kxmlguidir}/calligrasheets/
+%{_kf5_plugindir}/calligrasheets/
+%{_kf5_sharedir}/calligrasheets/
+%exclude %{_kf5_iconsdir}
+%exclude %{_kf5_sharedir}/calligra
 
 %files stage -f filelists/stage
 %doc stage/AUTHORS stage/CHANGES stage/TODO
-%exclude %{_datadir}/calligra
-%exclude %{_kf5_iconsdir}
-%{_kf5_plugindir}/calligrastage/
 %dir %{_kf5_plugindir}/calligra/presentationeventactions
 %{_kf5_htmldir}/en/calligrastage/
+%{_kf5_kxmlguidir}/calligrastage/
+%{_kf5_plugindir}/calligrastage/
+%{_kf5_sharedir}/calligra_shape_music/
+%{_kf5_sharedir}/calligrastage/
+%exclude %{_kf5_sharedir}/calligra
 %exclude %{_kf5_applicationsdir}/okular*.desktop
+%exclude %{_kf5_iconsdir}
 %exclude %{_kf5_plugindir}/okular/
 %exclude %{_kf5_servicesdir}/okular*.desktop
-%{_datadir}/calligra_shape_music/
-%{_datadir}/calligrastage/
-%{_kf5_kxmlguidir}/calligrastage/
 
 %files tools -f filelists/tools
 
 %files words -f filelists/words
+%dir %{_kf5_plugindir}/calligra/parts
 %{_kf5_applicationsdir}/org.kde.calligrawords.desktop
 %{_kf5_bindir}/calligrawords
-%{_kf5_libdir}/libkdeinit5_calligrawords.so
-%exclude %{_kf5_iconsdir}/hicolor
-%{_datadir}/calligrawords/
 %{_kf5_kxmlguidir}/calligrawords/
+%{_kf5_libdir}/libkdeinit5_calligrawords.so
+%{_kf5_sharedir}/calligrawords/
 %exclude %{_kf5_applicationsdir}/okular*.desktop
+%exclude %{_kf5_iconsdir}/hicolor
 %exclude %{_kf5_plugindir}/okular/
 %exclude %{_kf5_servicesdir}/okular*.desktop
-%dir %{_kf5_plugindir}/calligra/parts
 
 %if %{with lang}
-%files lang
-%{_datadir}/locale/
-%{_kf5_htmldir}/
-%exclude %{_kf5_htmldir}/en/
+%files lang -f calligra.lang
 %endif
 
 %changelog

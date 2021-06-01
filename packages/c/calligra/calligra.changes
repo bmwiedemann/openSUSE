@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 28 10:18:13 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use %find_lang + %kf5_find_htmldocs
+
+-------------------------------------------------------------------
+Fri May 21 11:33:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mark org.calligra as internal QML module
+
+-------------------------------------------------------------------
+Tue Apr 20 08:53:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+- Drop obsolete patch:
+  * 0001-Revert-Chart-Depend-on-KChart-2.7.0.patch
+
+-------------------------------------------------------------------
 Thu May 14 20:41:20 UTC 2020 - wbauer@tmo.at
 
 - Update to 3.2.1:
