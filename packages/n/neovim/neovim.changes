@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 31 06:00:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add vim7188-fix-netrw-command.patch to fix gh#vim/vim#4738.
+
+-------------------------------------------------------------------
 Thu Apr  8 10:06:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build against lua 5.3 (for non-luajit) for Leap/SLE since

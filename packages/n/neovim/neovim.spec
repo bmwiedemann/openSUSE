@@ -58,6 +58,9 @@ Patch1:         neovim-0.1.7-bitop.patch
 Patch2:         libuv-compat.patch
 # PATCH-FIx-UPSTREAM https://github.com/neovim/neovim/pull/12820
 Patch3:         neovim-0.4.4-findlua54.patch
+# PATCH-FIX-UPSTREAM vim7188-fix-netrw-command.patch gh#vim/vim#4738 mcepl@suse.com
+# make gx in netrw working again
+Patch4:         vim7188-fix-netrw-command.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -109,13 +112,13 @@ Requires:       gperf
 Requires:       libvterm0 >= 0.1
 Requires:       python3-neovim
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 # XSel provides access to the system clipboard
 Recommends:     xsel
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
-Requires(postun): gtk3-tools
+Requires(postun):gtk3-tools
 %endif
 
 %description
@@ -140,6 +143,7 @@ parts of Vim, without compromise, and more.
 %patch2 -p1
 %endif
 %patch3 -p1
+%patch4 -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')

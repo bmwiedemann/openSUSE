@@ -365,4 +365,13 @@
     <comment></comment>
     <requestid>883845</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>e6e5b095d02960faccd81e868b8ee2e6</srcmd5>
+    <version>0.4.4</version>
+    <time>1622536765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vim7188-fix-netrw-command.patch to fix gh#vim/vim#4738.
+</comment>
+    <requestid>896317</requestid>
+  </revision>
 </revisionlist>
