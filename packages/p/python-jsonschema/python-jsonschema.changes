@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 07:59:29 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Fri Jan 15 13:12:18 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Disable python2 build as indirect build dependencies to

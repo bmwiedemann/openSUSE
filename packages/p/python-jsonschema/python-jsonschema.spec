@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jsonpointer > 1.13}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyrsistent >= 0.14.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3987}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +46,7 @@ Requires:       python-importlib-metadata
 Requires:       python-pyrsistent >= 0.14.0
 Requires:       python-six >= 1.11.0
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,7 +72,7 @@ for Python (supporting 2.6+ including Python 3).
 %python_clone -a %{buildroot}%{_bindir}/jsonschema
 
 %check
-%python_exec setup.py test --test-suite=jsonschema.tests
+%pytest jsonschema/tests
 
 %post
 %python_install_alternative jsonschema
