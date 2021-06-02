@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  1 00:21:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.22.22
+  * Fixed doubling in height of some rows in the Caja Places, Tree,
+    History and Bookmarks sidebars in all themes, and the chopping
+    off of the left side of said Caja sidebars in the Traditional
+    family of themes.
+  * gtk-widgets.css: Add the missing .context-menu class
+  * Blue-submarine: Use procedural adaptive-sized icons
+  * Green-Submarine: Use procedural adaptive-sized icons
+  * Remove the execution bit
+  * Set gtk-print-preview-command in settings.ini
+  * i18n: icon theme ContrastHigh
+  * Traditional themes: fix tooltip shadow on openindiana
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.22.21 (changes since 3.22.18):
