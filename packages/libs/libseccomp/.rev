@@ -265,4 +265,18 @@
   generate is part of the tarball already. (forwarded request 833241 from dimstar)</comment>
     <requestid>833243</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6c931f295867b89c7fa1afe255c9c5bc</srcmd5>
+    <version>2.5.1</version>
+    <time>1622664626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+ * Fix a bug where seccomp_load() could only be called once
+ * Change the notification fd handling to only request a notification fd if
+ * the filter has a _NOTIFY action
+ * Add documentation about SCMP_ACT_NOTIFY to the seccomp_add_rule(3) manpage
+ * Clarify the maintainers' GPG keys
+- remove testsuite-riscv64-missing-syscalls.patch</comment>
+    <requestid>895486</requestid>
+  </revision>
 </revisionlist>

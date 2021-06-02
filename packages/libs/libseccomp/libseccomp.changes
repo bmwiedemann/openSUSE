@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 21 16:59:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.5.1:
+ * Fix a bug where seccomp_load() could only be called once
+ * Change the notification fd handling to only request a notification fd if
+ * the filter has a _NOTIFY action
+ * Add documentation about SCMP_ACT_NOTIFY to the seccomp_add_rule(3) manpage
+ * Clarify the maintainers' GPG keys
+- remove testsuite-riscv64-missing-syscalls.patch 
+
+-------------------------------------------------------------------
 Wed Sep  9 13:49:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not rely on gperf: pass GPERF=/bin/true to configure and

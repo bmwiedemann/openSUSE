@@ -1,7 +1,7 @@
 #
 # spec file for package libseccomp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libseccomp2
 Name:           libseccomp
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
@@ -28,7 +28,6 @@ Source:         https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
-Patch:          testsuite-riscv64-missing-syscalls.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
@@ -46,16 +45,6 @@ Summary:        An enhanced Seccomp (mode 2) helper library
 Group:          System/Libraries
 
 %description -n %lname
-The libseccomp library provides an interface to the Linux Kernel's
-syscall filtering mechanism, seccomp. The libseccomp API abstracts
-away the underlying BPF-based syscall filter language and presents a
-more conventional function-call based filtering interface.
-
-%package -n python-%name
-Summary:        Python bindings for Seccomp (mode 2)
-Group:          Development/Languages/Python
-
-%description -n python-%name
 The libseccomp library provides an interface to the Linux Kernel's
 syscall filtering mechanism, seccomp. The libseccomp API abstracts
 away the underlying BPF-based syscall filter language and presents a
