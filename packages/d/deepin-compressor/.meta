@@ -1,0 +1,5 @@
+<package name="deepin-compressor" project="openSUSE:Factory">
+  <title></title>
+  <description>Archive Manager is a fast and lightweight application for creating and extracting archives.</description>
+  <devel project="X11:Deepin" package="deepin-compressor"/>
+</package>
