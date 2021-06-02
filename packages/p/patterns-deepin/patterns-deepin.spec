@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-deepin
-Version:        15.2.20210440
+Version:        15.2.20210508
 Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
@@ -65,8 +65,16 @@ Recommends:     deepin-editor
 # Tool for advanced configuration of printers, instead of deepin-printer
 Recommends:     system-config-printer-applet
 Recommends:     system-config-printer
+Recommends:     deepin-manual
 Suggests:       deepin-wallpapers-community
 Suggests:       deepin-feature-enable
+Suggests:       deepin-system-monitor
+Suggests:       deepin-draw
+Suggests:       deepin-music-player
+Suggests:       deepim-movie
+Suggests:       deepin-calendar
+Suggests:       deepin-voice-note
+Suggests:       deepin-calculator
 
 %description deepin
 The Deepin desktop environment is a desktop environment using traditional metaphors.
