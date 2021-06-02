@@ -19,7 +19,7 @@
 %define _name dde-session-ui
 
 Name:           deepin-session-ui
-Version:        5.4.5
+Version:        5.4.6
 Release:        0
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPL-3.0+
