@@ -35,6 +35,8 @@ Source2:        minetest@.service
 Patch0:         minetest-fix-luajit-include-path.patch
 # PATCH-FIX-OPENSUSE old-desktopfile-standard.patch dmueller@suse.com -- build without 'PrefersNonDefaultGPU' option in desktopfile on Leap 15.3 and below
 Patch1:         old-desktopfile-standard.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-for-newer-versions-of-GCC-11246.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -134,6 +136,7 @@ This package contains data for minetest and minetestserver.
 %if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150300
 %patch1 -p1
 %endif
+%patch2 -p1
 
 # Purge bundled libraries.
 rm -rf lib

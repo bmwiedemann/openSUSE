@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 13:18:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility patch:
+  * 0001-Fix-build-for-newer-versions-of-GCC-11246.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 17:02:35 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.4.1:
