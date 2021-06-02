@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Tue May 18 18:13:48 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.30 → 9.23.31
+
+-------------------------------------------------------------------
+Tue May 18 13:10:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Stop plymouth also for progress dialogs
+
+-------------------------------------------------------------------
+Mon May 17 14:39:29 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Prevent explicit man page compression
+
+  The manual pages are compressed by the packager tooling.
+  There is no need to do this ourselves
+
+-------------------------------------------------------------------
+Mon May 17 14:27:50 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.29 → 9.23.30
+
+-------------------------------------------------------------------
+Mon May 17 13:02:02 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Increase integration tests boot timeout
+
+  Increase integration tests timeout from 2sec to 10sec
+
+-------------------------------------------------------------------
+Mon May 17 10:44:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update integration tests to be non interactive
+
+  Some integration tests allows for interactive dialogs on the
+  bootloader menu or in the installation process. As we plan to
+  use these tests for automated functional testing there should
+  be no interaction whenever possible. This Fixes #1811
+
+-------------------------------------------------------------------
+Mon May 17 09:39:53 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update kiwi installation documentation
+
+  The installation chapter contained information about the manual
+  install of package keys. That information is suspect to be always
+  outdated because these keys changes. Instead of describing the
+  manual install of the package key the docs moved to use the
+  auto-import feature of the package manager. As the instructions
+  were also rpm specific but we also support install via other
+  package mangers the complete chapter was a bit reworked and
+  should be more straight forward now. This Fixes #1799
+
+-------------------------------------------------------------------
+Mon May 17 08:53:26 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation qemu calls
+
+  We use the kiwi integration tests as base for the documentation
+  example images now. The integration tests are all configured
+  to set the console to serial. Thus the docs should explain
+  the qemu call for test runs using the -serial stdio option
+  to make sure the console information is displayed to the
+  user
+
+-------------------------------------------------------------------
+Sun May 16 17:43:50 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update and fix documentation
+
+  The documentation had a broken link to the buildservice
+  tests for suse. Since we changed this into leap and tumbleweed
+  the subproject link to :suse became invalid. In addition to
+  the fix the macro setup and build instructions were moved
+  to use the kiwi integration tests as example appliance
+  descriptions. The user experience in building the integration
+  test images should be better because we only release kiwi
+  if those appliances build successfully. This Fixes #1812
+
+-------------------------------------------------------------------
+Sun May 16 16:10:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed package build
+
+  The new version of sphinx puts manual pages into doc/build/man/8
+  when it was doc/build/man before. This breaks the Makefile target
+  to install the documentation. This commit updates the Makefile
+  to follow the change.
+
+-------------------------------------------------------------------
+Wed May 12 15:47:28 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fix dnf arch setting
+
+-------------------------------------------------------------------
+Wed May 12 14:35:39 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update shim path lookup
+
+  Distributions like Fedora has changed the EFI binaries location
+  to be shim<efiarch>.efi in /boot/efi/EFI/<vendor> in order to
+  support multiarch setup for UEFI. This change requires the
+  lookup in KIWI to be more global matching. This Fixes #1806
+
+-------------------------------------------------------------------
+Wed May 12 11:42:15 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Move integration test for Fedora to v34
+
+-------------------------------------------------------------------
+Wed May 12 11:32:17 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed live network setup to be generic
+
+  In dracut the network setup comes with different models
+  providing a different set of functions. The ifup method as
+  used in the live iso dracut module is only available with the
+  network-legacy mode and fails with network-wicked. This commit
+  uses a dracut conf file in /etc/cmdline.d which uses the dracut
+  network interface parameters instead of calling module specific
+  methods. This Fixes #1802
+
+-------------------------------------------------------------------
+Wed May 12 09:45:54 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed setup of repository architecture
+
+  Unfortunately the architecture reported by uname is not
+  necessarily the same name as used in the repository metadata.
+  Therefore it was not a good idea to set the architecture
+  and manage the name via a mapping table. It also has turned
+  out that repo arch names are distro specific which causes
+  more complexity on an eventual mapping table. In the end
+  this commit changes the way how the repository architecture
+  is setup in a way that we only set the architecture if
+  a name was explicitly specified such that the user keeps
+  full control over it without any mapping magic included
+  This Fixes bsc#1185287
+
+-------------------------------------------------------------------
+Fri May 07 15:09:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.28 → 9.23.29
+
+-------------------------------------------------------------------
 Mon May 03 12:40:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.27 → 9.23.28
@@ -203,6 +348,33 @@ Wed Apr 14 12:53:28 CEST 2021 - Marcus Schäfer <ms@suse.de>
   on providing a plugin for kiwi which should be used to
   manage the needed binfmt settings for cross arch image
   builds
+
+-------------------------------------------------------------------
+Tue Apr 13 12:58:22 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Refactor disk and install builders and dracut boot image
+
+  This commit mainly refactors the DiskBuilder class. Then install builder
+  and dracut boot image refactors are mostly to drop no longer needed
+  code. The refactors tries to make the build simpler and easier to read and
+  also prevent the reuse of the BootImage instance used for the main image
+  when creating the installation media (this aplies only for
+  dracut based images).
+
+  Fixes #873
+
+-------------------------------------------------------------------
+Tue Apr 13 12:41:08 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Refactor create_disk method
+
+  This commit refactor create_disk method and related utility methods
+  to ensure runtime objects are not stored as attributes of the object.
+
+  This is done to ensure proper clearing and destruction of those objects
+  once create_disk method is done.
+
+  Related to #873
 
 -------------------------------------------------------------------
 Mon Apr 12 10:43:33 CEST 2021 - Marcus Schäfer <ms@suse.de>
