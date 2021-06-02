@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.20.0
+Version:        1.20.1
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -83,8 +83,8 @@ It has been running on many heavily loaded Russian sites for more than two years
 Summary:        VIM support for nginx config files
 Group:          Productivity/Text/Editors
 %requires_eq    vim
-BuildArch:      noarch
 Supplements:    (nginx and vim_client)
+BuildArch:      noarch
 
 %description -n vim-plugin-nginx
 nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.

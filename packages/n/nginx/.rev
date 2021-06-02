@@ -727,4 +727,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>888899</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>8977df0adc4b59bc317e33250953b622</srcmd5>
+    <version>1.20.1</version>
+    <time>1622664629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.1
+  * https://nginx.org/en/CHANGES
+  * 1-byte memory overwrite might occur during DNS server response processing
+    if the &quot;resolver&quot; directive was used, allowing an attacker who is able to
+    forge UDP packets from the DNS server to cause worker process crash or,
+    potentially, arbitrary code execution (CVE-2021-23017, boo#1186126).</comment>
+    <requestid>895782</requestid>
+  </revision>
 </revisionlist>
