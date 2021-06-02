@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 31 07:30:34 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest_arch rpm macro for post 15
+
+-------------------------------------------------------------------
 Thu Apr  9 11:12:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.4.9

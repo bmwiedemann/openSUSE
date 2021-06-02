@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,13 +43,18 @@ about thirty times faster than the "html5lib" pure Python based parser.
 %setup -q -n html5-parser-%{version}
 
 %build
+find . -name '*.py' -exec sed -i '/#.*usr.bin.env.*python/d' {} \;
 %python_build
 
 %install
 %python_install
 
 %check
+%if 0%{?suse_version} > 1500
+%pyunittest_arch -v test/*.py
+%else
 %python_exec setup.py test
+%endif
 
 %files %{python_files}
 %license LICENSE
