@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 23 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.0701
+   see /usr/share/doc/packages/perl-DateTime-Format-MySQL/Changes
+
+  0.0701  2021-05-22
+
+  - Fix versioning, reindex
+
+  0.07    2021-05-21
+
+  - if microseconds are set on provided DateTime object to time_format,
+    use them. Fixes RT #136549
+
+-------------------------------------------------------------------
 Sat Feb 13 09:55:38 UTC 2016 - coolo@suse.com
 
 - updated to 0.06
