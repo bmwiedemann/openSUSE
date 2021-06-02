@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 0.6.2+5
+%define version_unconverted 0.7.0+0
 Name:           b4
-Version:        0.6.2+5
+Version:        0.7.0+0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -26,12 +26,17 @@ Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
-# for checks
+# SECTION test requirements
 BuildRequires:  git-core
+BuildRequires:  python3-dkimpy
+BuildRequires:  python3-dnspython
+BuildRequires:  python3-patatt
 BuildRequires:  python3-requests
+# /SECTION
 BuildRequires:  python3-setuptools
 Requires:       python3-dkimpy >= 1.0.5
 Requires:       python3-dnspython >= 2.0.0
+Requires:       python3-patatt >= 0.4
 Requires:       python3-requests >= 2.24.0
 
 %description
@@ -46,6 +51,9 @@ precursor to Lore and Data in the Star Trek universe.
 %prep
 %autosetup -p1
 
+# use the system one
+rm -rf patatt
+
 # ditch shebang from .py files, they are non-executables anyway
 sed -i.old '1{/#!.*/d}' b4/*.py
 
@@ -59,11 +67,11 @@ mv %{buildroot}/%{_mandir}/man5 %{buildroot}/%{_mandir}/man.5
 %check
 python3 setup.py check
 export PYTHONPATH="./"
-THEIRS=`python3 ./b4/command.py --version`
+THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
 OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
 test "$THEIRS" = "$OURS"
-python3 ./b4/command.py --help |grep -q 'mbox,am,attest'
-python3 ./b4/command.py mbox abc |& grep -q 'Looking up https://lore.kernel.org/r/abc'
+%{buildroot}/%{_bindir}/b4 --help |grep -q 'mbox,am,attest'
+%{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Looking up https://lore.kernel.org/r/abc'
 
 %files
 %doc README.rst

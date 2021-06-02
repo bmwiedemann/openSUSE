@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu May 27 06:30:41 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.0+0:
+  * Add new b4 pr flags
+  * Check uids on the key when using default keyring
+  * Update attestation section in the README
+  * Don't depend on List-Archive lore header
+  * Handle situations where -f only has an email
+  * Fix pr -l where we introduced var collision
+  * Bump patatt to 0.4.2
+  * Avoid type error when local mbox lacks specified message ID
+  * Tweak lore.kernel.org match
+  * Return early if no messages retrieved
+  * Strip any List-* headers matching lore
+  * Move --show-keys into its own kr subcommand
+  * Handle partial reroll of series without cover
+  * Don't crash on absent cover letter
+  * Warn when we find an "Obsoleted-by" trailer
+  * Reimplement single-msgid cherrypicking
+  * Initial support for Obsoleted-by: trailer
+  * Cherrypick from the correct series revision
+  * Write maildir atomically
+  * Minor visual tweak in output
+  * Fix a crash on incomplete/missing threads
+  * Tweak output filenames
+  * Document save-maildirs and -M options
+  * Don't use mboxo for anything
+  * Allow passing entire mbox via stdin
+  * Perform mboxo unescaping before DKIM check
+  * Implement partial reroll
+  * Don't try to read stdin multiple times
+  * Restore check for attestation-check-dkim
+  * Improve subject parsing for bracketed prefixes
+  * Ensure trailers are tracked with source messages
+  * Fix DKIM check on headers that don't lowercase h
+  * Properly fail with BADSIG on bad signature
+  * Force datetime to UTC if it's native
+  * Fix crash when PGP key not in default keyring
+  * Clean up after ourselves
+  * Rudimentary support for showing patatt key info
+  * Fix for DKIM signatures without t= field
+  * Reimplement attestation-staleness-days
+  * Python 3.6 compatibility fixes
+  * Remove sendemail-validte hook
+  * Reimplement attestation code one more time
+  * Loosen compatible release identifiers for install_requires
+  * Save to/cc headers as-is for tracking
+  * Add -f to "b4 mbox" to filter dupes
+  * Check if -o is a maildir
+  * Recognize merged PRs when attempting auto-base
+  * Raise RuntimeError instead of exiting
+  * Convert mboxrd to mboxo
+  * Allow passing extra opts to git-format-patch
+  * Fix crasher when we don't use -g with b4 pr
+  * Rework b4 pr exploder for transparency log needs
+  * DKIM: remove extra public-inbox headers
+  * Only check allow-list of trailers in follow-ups
+  * Add BugLink to non-person trailers
+
+-------------------------------------------------------------------
 Tue Mar 30 04:28:36 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.6.2+5:
