@@ -125,4 +125,12 @@
   * Added missing ``HashClient.close()`` and ``HashClient.quit()``.</comment>
     <requestid>841415</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a5189924fa2ab15843a4ed4729607df6</srcmd5>
+    <version>3.3.0</version>
+    <time>1622664723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896756</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 10:41:18 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Oct 13 07:29:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.3.0:
