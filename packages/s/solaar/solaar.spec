@@ -105,7 +105,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 /usr/bin/udevadm trigger --subsystem-match=hidraw --action=add
 
 %files
-%doc ChangeLog COPYRIGHT README.md
+%doc ChangeLog COPYRIGHT docs/index.md
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli

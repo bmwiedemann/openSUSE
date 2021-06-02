@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:37:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %doc files. README.md is a symlink to
+  'docs/index.md'. Let's use this file directly.
+
+-------------------------------------------------------------------
 Sat Feb 27 15:50:43 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.0.5
