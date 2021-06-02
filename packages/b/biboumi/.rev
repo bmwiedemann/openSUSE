@@ -29,4 +29,12 @@ changes since last attempt:
   * Fix a possible crash that could be caused by a very well timed identd query</comment>
     <requestid>829827</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29dd733142d0513c3478ba479ea8e011</srcmd5>
+    <version>9.0</version>
+    <time>1622664742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896906</requestid>
+  </revision>
 </revisionlist>

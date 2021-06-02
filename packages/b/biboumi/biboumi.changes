@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Apr 18 15:18:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 9.0:
+  * Messages reflections are now properly cut if the body was cut
+    befor being to sent to IRC
+  * Messages from unjoined resources are now rejected instead of
+    being accepted.
+  * All commands sent to IRC servers are now throttled to avoid
+    being disconnected for excess flood. The limit value can be
+    customized using the ad-hoc configuration form on a server JID.
+  * Support for XEP-0410 Self-Ping Optimization.
+  * SASL support has been added.
+  * SIGHUP is now caught and reloads the configuration like
+    SIGUSR1 and 2.
+  * Add a verify_certificate policy option that lets the admin
+    disable certificate validation per-domain.
+  * The WatchdogSec value in the biboumi.service file
+    now defaults to the empty string, which means “disabled”.
+- Added do-not-require-git.patch, use system Catch2
+- Enable tests
+
+-------------------------------------------------------------------
 Wed Aug 26 19:30:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.5:

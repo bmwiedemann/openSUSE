@@ -1,7 +1,7 @@
 #
 # spec file for package biboumi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Tomáš Čech <sleep_walker@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,22 @@
 
 
 Name:           biboumi
-Version:        8.5
+Version:        9.0
 Release:        0
 Summary:        XMPP to IRC gateway
 License:        Zlib
 Group:          Productivity/Networking/IRC
 URL:            https://biboumi.louiz.org/
 Source0:        https://git.louiz.org/biboumi/snapshot/biboumi-%{version}.tar.xz
+# PATCH-FEATURE-UPSTREAM do-not-require-git.patch -- Only add git target if file is missing
+Patch0:         do-not-require-git.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  git
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  udns-devel
 BuildRequires:  pkgconfig(botan-2)
+BuildRequires:  pkgconfig(catch2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libpq)
@@ -63,16 +65,21 @@ It provides the following features:
  * Message Archive Management support
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install
 install -m 0755 -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%check
+pushd %{__builddir}
+%make_build check
+popd
 
 %pre
 %service_add_pre %{name}.service
@@ -88,7 +95,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files
 %license COPYING
-%doc CHANGELOG.rst README.rst CONTRIBUTING.rst
+%doc CHANGELOG.rst README.rst
 %dir %{_sysconfdir}/biboumi
 %config %{_sysconfdir}/biboumi/*
 %{_unitdir}/%{name}.service
