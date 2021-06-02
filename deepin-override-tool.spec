@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-override-tool
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   import_path     github.com/linuxdeepin/deepin-desktop-schemas
 %define   provider        github
@@ -25,14 +26,17 @@ Name:           deepin-override-tool
 Version:        5.9.5
 Release:        0
 Summary:        Deepin override tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
 Source0:        https://github.com/linuxdeepin/deepin-desktop-schemas/archive/%{version}/%{repo}-%{version}.tar.gz
-Group:          System/GUI/Other
-# BuildRequires:  golang(API) = 1.11
+%if 0%{?suse_version} > 1500
+BuildRequires:  golang(API) = 1.15
+%endif
 BuildRequires:  golang-packaging
 BuildRequires:  golang(pkg.deepin.io/lib/keyfile)
 Requires:       dconf
+AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -43,7 +47,6 @@ Summary:        Deepin override tool codes
 Group:          Development/Languages/Golang
 Requires:       golang(pkg.deepin.io/lib/keyfile)
 BuildArch:      noarch
-AutoReqProv:    On
 AutoReq:        Off
 %{go_provides}
 
