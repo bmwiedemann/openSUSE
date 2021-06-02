@@ -1,8 +1,8 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Aaron Puchert.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           include-what-you-use
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -29,10 +29,10 @@ Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 Patch3:         remove-x86-specific-code.patch
 BuildRequires:  c++_compiler
-BuildRequires:  clang11-devel
+BuildRequires:  clang12-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm11-devel
+BuildRequires:  llvm12-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -60,7 +60,7 @@ This package contains additional scripts for using %{name} as automated
 refactoring tool.
 
 %prep
-%setup -q -c
+%setup -q -n %{name}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -80,15 +80,13 @@ rm iwyu.gcc.imp
 
 %check
 # We don't support MS style inline assembly, because we removed the dependency
-# on the X86 target of LLVM.
-rm tests/cxx/ms_inline_asm.cc
-
-# Test doesn't work on ARM.
+# on the X86 target of LLVM. On ARM, badinc doesn't work for some reason.
 %ifarch %arm
-rm tests/cxx/badinc.cc
+%define exclude_tests ^cxx.test_(badinc|ms_inline_asm)$
+%else
+%define exclude_tests ^cxx.test_ms_inline_asm$
 %endif
-
-%ctest
+%{ctest '-E' '%exclude_tests'}
 
 %files
 %license LICENSE.TXT

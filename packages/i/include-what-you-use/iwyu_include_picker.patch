@@ -20,9 +20,9 @@ index be318e2..089e911 100644
    // I then added in NULL, which according to [diff.null] C.2.2.3, can
    // be defined in <clocale>, <cstddef>, <cstdio>, <cstdlib>,
 @@ -237,11 +237,28 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {
-   { "std::char_traits", kPrivate, "<string>", kPublic },
-   { "std::char_traits", kPrivate, "<ostream>", kPublic },
-   { "std::char_traits", kPrivate, "<istream>", kPublic },
+   { "std::size_t", kPrivate, "<ctime>", kPublic },
+   { "std::size_t", kPrivate, "<cuchar>", kPublic },
+   { "std::size_t", kPrivate, "<cwchar>", kPublic },
 +  // Using pair.
 +  { "std::pair", kPrivate, "<map>", kPublic },
 +  { "std::pair", kPrivate, "<multimap>", kPublic },
