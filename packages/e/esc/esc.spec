@@ -1,7 +1,7 @@
 #
 # spec file for package esc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global provider        github
 %global provider_tld    com
@@ -29,9 +30,9 @@ License:        MIT
 Group:          System/Management
 URL:            https://github.com/mjibson/esc
 Source0:        %{name}-v%{version}.tar.gz
-Source1:	vendor.tar.gz
-BuildRequires:  golang(API) >= 1.11
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.15
 %{go_nostrip}
 %{go_provides}
 
