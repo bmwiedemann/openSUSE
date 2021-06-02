@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 12:34:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.5
+  * Add TimeUpdate API for com.deepin.daemon.Timedate
+  * Add show and hide for OSD
+
+-------------------------------------------------------------------
 Sun Mar 28 17:01:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit dependency.

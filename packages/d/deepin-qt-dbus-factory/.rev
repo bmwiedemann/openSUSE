@@ -88,4 +88,14 @@
   * Add some new apis (forwarded request 884198 from hillwood)</comment>
     <requestid>884199</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1e0ca9527adf515c9728d190b3156be7</srcmd5>
+    <version>5.4.5</version>
+    <time>1622664652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.5
+  * Add TimeUpdate API for com.deepin.daemon.Timedate
+  * Add show and hide for OSD</comment>
+    <requestid>891663</requestid>
+  </revision>
 </revisionlist>
