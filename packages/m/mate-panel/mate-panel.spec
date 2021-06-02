@@ -162,7 +162,8 @@ install -pm 0644 zz-mate-panel-upream-branding.gschema.override \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/help/C/
+%{_datadir}/help/C/mate-clock/
+%{_datadir}/help/C/mate-fish/
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/%{name}/
 # Files from branding-upstream.
@@ -186,7 +187,9 @@ install -pm 0644 zz-mate-panel-upream-branding.gschema.override \
 %{_datadir}/gtk-doc/html/%{name}-applet/
 
 %files lang -f %{name}.lang
-%{_datadir}/help/
-%exclude %{_datadir}/help/C/
+%{_datadir}/help/*//mate-clock/
+%{_datadir}/help/*//mate-fish/
+%exclude %{_datadir}/help/C/mate-clock/
+%exclude %{_datadir}/help/C/mate-fish/
 
 %changelog

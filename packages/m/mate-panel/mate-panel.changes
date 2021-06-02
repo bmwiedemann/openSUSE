@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  1 13:30:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also fix files section for -lang package.
+
+-------------------------------------------------------------------
+Fri May 28 15:56:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not own /usr/share/help/C, but only the package specific
+  subdirectories. Avoid conflicts with more restrictive filesystem
+  package.
+
+-------------------------------------------------------------------
 Mon Apr 26 20:01:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.2:
