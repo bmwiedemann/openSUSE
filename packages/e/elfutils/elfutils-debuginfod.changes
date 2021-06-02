@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 24 07:39:53 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.185:
+  debuginfod-client: Simplify curl handle reuse so downloads which
+                     return an error are retried.
+
+  elfcompress: Always exit with code 0 when the operation succeeds (even
+               when nothing was done). On error the exit code is now always 1.
+
+-------------------------------------------------------------------
 Mon May 10 19:39:44 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.184:

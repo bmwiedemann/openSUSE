@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.184
+Version:        0.185
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later

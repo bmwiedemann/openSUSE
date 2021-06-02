@@ -867,4 +867,16 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>892118</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d10b723d4b36cabd9fac361ac7477312</srcmd5>
+    <version>0.185</version>
+    <time>1622664618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.185:
+  debuginfod-client: Simplify curl handle reuse so downloads which
+                     return an error are retried.
+  elfcompress: Always exit with code 0 when the operation succeeds (even
+               when nothing was done). On error the exit code is now always 1.</comment>
+    <requestid>895138</requestid>
+  </revision>
 </revisionlist>
