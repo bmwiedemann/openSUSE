@@ -26,4 +26,12 @@
   * pil-fix-test.patch</comment>
     <requestid>666942</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ba243bb5e9f494090bebee788f8c46e8</srcmd5>
+    <version>2.0</version>
+    <time>1622664689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896631</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 08:51:39 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Fri Jan 18 10:15:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix tests with new PIL (due to ordering there were
