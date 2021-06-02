@@ -18,18 +18,22 @@
 
 
 %define libver  5
-%define apiver  5.0.0
+%define apiver  5.5.0
 
 Name:           dtkgui
-Version:        5.4.0
+Version:        5.4.13
 Release:        0
 Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
 Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/dtkgui
 Source0:        https://github.com/linuxdeepin/dtkgui/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX_UPSTREAM fix-library-link.patch hillwood@opensuse.org - Should link glib-2.0
+Patch0:         fix-library-link.patch
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  gtest
+BuildRequires:  dtkcommon
+BuildRequires:  pkgconfig(dtkcore) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -38,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  libQt5Gui-private-headers-devel
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A GUI module for DDE look and feel for the Deepin Toolkit.
@@ -65,15 +70,14 @@ You should first read the "Deepin Application Specification".
 %autosetup -p1
 
 %build
-qmake-qt5 DEFINES+=QT_NO_DEBUG_OUTPUT \
-          PREFIX=%{_prefix} \
-          LIB_INSTALL_DIR=%{_libdir}
+%qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
+        PREFIX=%{_prefix} \
+        LIB_INSTALL_DIR=%{_libdir}
 
 %install
 %qmake5_install
 
 # Workaround boo#1181642
-rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 
 %post -n lib%{name}%{libver} -p /sbin/ldconfig
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
@@ -101,3 +105,4 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 %{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}.pri
 
 %changelog
+

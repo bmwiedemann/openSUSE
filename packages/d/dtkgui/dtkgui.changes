@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  5 10:57:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+ 
+- Update version ro 5.4.13
+  * Update apiversion to 5.5.0
+  * Use dtkcommonn
+  * Support the use of setAttribute function for some settings
+  * Fix color for TextTips
+  * Recode DFontManager
+  * Add Q_GADGET for DPalette
+  * Optimize pad support
+  * Support set wm class name
+  * Add interface for set wallpaper effect parameters 
+  * Fix bugs
+- Add fix-library-link.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 11:25:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim obsolete specfile constructs.
