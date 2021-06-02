@@ -1,0 +1,12 @@
+Index: LVM2.2.03.10/test/Makefile.in
+===================================================================
+--- LVM2.2.03.10.orig/test/Makefile.in
++++ LVM2.2.03.10/test/Makefile.in
+@@ -31,6 +31,7 @@ LVM_TEST_RESULTS ?= results
+ SOURCES = lib/not.c lib/harness.c lib/dmsecuretest.c
+ CXXSOURCES = lib/runner.cpp
+ CXXFLAGS += $(EXTRA_EXEC_CFLAGS)
++LDFLAGS += -pie
+ 
+ CLEAN_DIRS += dbus/__pycache__ $(LVM_TEST_RESULTS)
+ ifneq (.,$(firstword $(srcdir)))

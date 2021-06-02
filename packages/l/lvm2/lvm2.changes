@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 11:23:12 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Link test as position independent executable (bsc#1184124).
+  + bug-1184124-link-tests-as-PIE.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 03:45:00 UTC 2021 - heming.zhao@suse.com
 
 - Honor lvm.conf event_activation=0 on "pvscan --cache -aay" (bsc#1185190)

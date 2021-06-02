@@ -1,5 +1,5 @@
 #
-# spec file for package lvm2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,8 +26,8 @@
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 0
 %define dlm_version     4.0.9
-# from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd. 
-# so the obseletes version is 2.03 
+# from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd.
+# so the obseletes version is 2.03
 %define lvm2_clvm_version 2.03
 %define lvm2_cmirrord_version 2.03
 %define liblvm2app2_2_version 2.03
@@ -79,6 +79,7 @@ Patch1007:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
+Patch3001:      bug-1184124-link-tests-as-PIE.patch
 # SUSE patches 4000+ for lvm2.spec
 Patch4001:      bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.patch
 # To detect modprobe during build
@@ -90,7 +91,7 @@ BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
@@ -138,6 +139,7 @@ Volume Manager.
 %patch1006 -p1
 %patch1007 -p1
 %patch2001 -p1
+%patch3001 -p1
 
 %if !%{with lockd}
 %patch4001 -p1
@@ -479,6 +481,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/rclvm2-lvmlocking
 
 %else
+
 %pre
 %service_add_pre blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
 
