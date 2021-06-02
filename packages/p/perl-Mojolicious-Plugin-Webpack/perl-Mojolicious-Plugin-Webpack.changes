@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 25 03:08:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  1.01 2021-05-25T07:36:24+0900
+   - Removed need for assets/asset_map.mode.json
+   - Add support for mojo webpack --build
+
+  1.00 2021-05-24T15:17:08+0900
+   - Add Mojo::Alien::npm
+   - Add Mojo::Alien::rollup
+   - Add Mojo::Alien::webpack
+   - Made Mojo::Alien::npm compatible with https://pnpm.io/
+   - Improved dependency tracking in ./node_modules
+   - Rewrote Plugin::Webpack using new Mojo::Alien:: modules
+   - Updated examples to match "alien" modules
+   - Fix being able to include images and other processed assets #7
+   - Fix vulnerabilities reported by GitHub #12
+   - Fix CI Ubuntu workflow
+
+-------------------------------------------------------------------
 Mon Dec 21 03:07:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14
