@@ -49,4 +49,17 @@
     <comment>- Don't install polkit profiles, install deepin-system-monitor-root.desktop (forwarded request 873451 from hillwood)</comment>
     <requestid>873452</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b7c41226c53f1f83a761b3a7da4a71b</srcmd5>
+    <version>5.8.0.27</version>
+    <time>1622664657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.0.27
+  * Update translations
+  * Fix bugs
+  * Support gcc 10+
+  * Add user guide documents
+- Enable policykit feature, fix boo#1181886</comment>
+    <requestid>891667</requestid>
+  </revision>
 </revisionlist>

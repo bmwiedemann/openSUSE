@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
+
 Name:           deepin-system-monitor
-Version:        5.8.0.9
+Version:        5.8.0.27
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
@@ -25,7 +31,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
-Source2:        %{name}-root.desktop
 BuildRequires:  appstream-glib
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
@@ -52,7 +57,10 @@ BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
 BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libnl-route-3.0)
 BuildRequires:  pkgconfig(libprocps)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
@@ -76,25 +84,20 @@ translations/desktop/%{name}.desktop
 
 %if 0%{?suse_version} > 1500
 # Workaround build failure with GCC 10
-sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
-sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
-sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
+# sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
+# sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
+# sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
 %endif
 
 %build
-%cmake
+%cmake -DVERSION=%{version}-%{distribution}
 %make_build
 
 %install
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-install -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/
-
-# Should be reviewed by security team first, workaround boo#1181886
-rm -rf %{buildroot}%{_datadir}/polkit-1
 
 %suse_update_desktop_file -r %{name} QT System Monitor
-%suse_update_desktop_file -r %{name}-root QT System Monitor
 %fdupes %{buildroot}%{_datadir}
 
 %files
@@ -104,10 +107,10 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/%{name}-root.desktop
-# %dir %{_datadir}/polkit-1
-# %dir %{_datadir}/polkit-1/actions
-# %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
+%{_datadir}/deepin-manual
+%dir %{_datadir}/polkit-1
+%dir %{_datadir}/polkit-1/actions
+%{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/deepin-system-monitor.svg
 
