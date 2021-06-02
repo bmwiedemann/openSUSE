@@ -54,6 +54,8 @@ Source22:       hyperkitty-runjob.timer
 Source30:       README.SUSE.md
 #
 Patch0:         hyperkitty-settings.patch
+# CVE-2021-33038 [bsc#1186575], information disclosure when importing a private mailing list
+Patch1:         python-HyperKitty-CVE-2021-33038.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}

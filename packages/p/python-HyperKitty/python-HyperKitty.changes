@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  2 12:25:48 UTC 2021 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-33038 [bsc#1186575], information disclosure when importing a private mailing list
+  + python-HyperKitty-CVE-2021-33038.patch
+
+-------------------------------------------------------------------
 Wed May 26 14:04:05 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Remove the hyperkitty-admin user
