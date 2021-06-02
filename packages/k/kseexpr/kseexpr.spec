@@ -34,6 +34,8 @@ Source0:        https://download.kde.org/stable/%{name}/4.0.1/%{name}-%{version}
 Patch0:         Fix-translation-lookup-in-stock-Linux-deployments.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         Fix-possible-compiler-error.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-charconv-support-with-MSVC-GCC11.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
