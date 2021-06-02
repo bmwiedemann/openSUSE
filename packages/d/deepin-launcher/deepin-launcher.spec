@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-launcher
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.4.4
+Version:        5.4.5
 Release:        0
 Summary:        Deepin Launcher
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-launcher
 Source0:        https://github.com/linuxdeepin/dde-launcher/archive/%{version}/%{_name}-%{version}.tar.gz
 Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  gtest
-BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
-BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(dframeworkdbus) >= 0.4.1
-BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  libQt5Gui-private-headers-devel 
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  hicolor-icon-theme
-Requires:       deepin-desktop-schemas >= 5.9.3
+BuildRequires:  pkgconfig(dframeworkdbus) >= 0.4.1
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
+BuildRequires:  pkgconfig(gsettings-qt)
+BuildRequires:  pkgconfig(xcb-ewmh)
 Requires:       deepin-daemon
+Requires:       deepin-desktop-schemas >= 5.9.3
 Requires:       deepin-start
 Requires:       libqt5-qdbus
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -65,8 +66,6 @@ sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 sed -i 's|qdbus|qdbus-qt5|g' dde-launcher-wapper
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS"
-export CXXFLAGS="$RPM_OPT_FLAGS"
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DWITHOUT_UNINSTALL_APP=1
 %make_build
