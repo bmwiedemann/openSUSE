@@ -18,10 +18,10 @@
 
 
 %define libver 5
-%define apiver 5.0.0
+%define apiver 5.5.0
 
 Name:           dtkwidget
-Version:        5.4.1
+Version:        5.4.16
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        LGPL-3.0-only
@@ -30,7 +30,11 @@ URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM dtkwidget-fix-lost-pkgconfig.patch hillwood@opensuse.org - fix lost pkgconfig
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
+# PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix a return type error
+Patch1:         fix-return-type.patch
 BuildRequires:  fdupes
+BuildRequires:  gtest
+BuildRequires:  dtkcommon
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
@@ -40,8 +44,8 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(dframeworkdbus)
-BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
-BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
+BuildRequires:  pkgconfig(dtkcore) >= 5.5.0
+BuildRequires:  pkgconfig(dtkgui) >= 5.5.0
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
@@ -77,9 +81,10 @@ docs for dtkcore.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+# sed -i 's/lrelease/qt5/g' tools/translate_generation.*
 
 %build
-# sed -i "s/lrelease/lrelease-qt5/g" tools/translate_generation.*
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
         PREFIX=%{_prefix} \
         LIB_INSTALL_DIR=%{_libdir}

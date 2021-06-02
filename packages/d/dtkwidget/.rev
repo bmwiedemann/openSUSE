@@ -176,4 +176,16 @@
     <comment> (forwarded request 869753 from hillwood)</comment>
     <requestid>869754</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f12ddd7b6dfee43f219ce769b1fa094</srcmd5>
+    <version>5.4.16</version>
+    <time>1622664661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.16
+  * Use dtkcommon
+  * Update apiverion to 5.5.0
+  * Fix bugs
+- Add fix-return-type.patch</comment>
+    <requestid>891673</requestid>
+  </revision>
 </revisionlist>

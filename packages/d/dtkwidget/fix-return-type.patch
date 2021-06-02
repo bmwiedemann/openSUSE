@@ -1,0 +1,11 @@
+diff -Nur dtkwidget-5.4.16/src/widgets/dprintpreviewwidget.cpp dtkwidget-5.4.16-new/src/widgets/dprintpreviewwidget.cpp
+--- dtkwidget-5.4.16/src/widgets/dprintpreviewwidget.cpp	2021-03-19 10:45:55.000000000 +0800
++++ dtkwidget-5.4.16-new/src/widgets/dprintpreviewwidget.cpp	2021-05-05 20:27:53.036472340 +0800
+@@ -672,6 +672,7 @@
+     case DPrintPreviewWidget::FourRowFourCol:
+         return FOUR_ROW_FOUR_COL_PAGES;
+     }
++    return ONE_PAGE;
+ }
+ 
+ QImage DPrintPreviewWidgetPrivate::generateWaterMarkImage() const

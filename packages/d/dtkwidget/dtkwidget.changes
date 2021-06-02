@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  5 12:35:55 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.16
+  * Use dtkcommon
+  * Update apiverion to 5.5.0
+  * Fix bugs
+- Add fix-return-type.patch 
+
+-------------------------------------------------------------------
 Fri Jan 29 12:29:58 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.1
