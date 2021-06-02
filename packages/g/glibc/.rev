@@ -2471,4 +2471,13 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   libpthread/ld.so load orders (bsc#1184214, BZ #27744)</comment>
     <requestid>890996</requestid>
   </revision>
+  <revision rev="250" vrev="7">
+    <srcmd5>c17a2c0f60a604fdff5fdf03289c1873</srcmd5>
+    <version>2.33</version>
+    <time>1622664631</time>
+    <user>dimstar_suse</user>
+    <comment>- tst-cpu-features-amx.patch: x86: tst-cpu-features-supports.c: Update AMX
+  check (forwarded request 895836 from Andreas_Schwab)</comment>
+    <requestid>895837</requestid>
+  </revision>
 </revisionlist>

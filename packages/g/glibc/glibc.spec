@@ -259,6 +259,10 @@ Patch1004:      nss-database-lookup.patch
 Patch1005:      select-modify-timeout.patch
 # PATCH-FIX-UPSTREAM: nptl_db: Support different libpthread/ld.so load orders (BZ #27744)
 Patch1006:      nptl-db-libpthread-load-order.patch
+# PATCH-FIX-UPSTREAM: string: Work around GCC PR 98512 in rawmemchr
+Patch1007:      rawmemchr-warning.patch
+# PATCH-FIX-UPSTREAM: x86: tst-cpu-features-supports.c: Update AMX check
+Patch1008:      tst-cpu-features-amx.patch
 
 ###
 # Patches awaiting upstream approval
@@ -483,6 +487,8 @@ Internal usrmerge bootstrap helper
 %patch1004 -p1
 %patch1005 -p1
 %patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
 
 %patch2000 -p1
 %patch2001 -p1

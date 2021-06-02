@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 27 18:05:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- tst-cpu-features-amx.patch: x86: tst-cpu-features-supports.c: Update AMX
+  check
+
+-------------------------------------------------------------------
+Wed May 26 09:55:50 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- rawmemchr-warning.patch: string: Work around GCC PR 98512 in rawmemchr
+
+-------------------------------------------------------------------
 Tue May  4 12:19:24 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - nptl-db-libpthread-load-order.patch: nptl_db: Support different
