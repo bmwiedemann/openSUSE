@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:51:34 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.8.1
+  * Fixed bug where built-in interface dict overwrote `interface` 
+    methods from Almanac (`interface.search`, `interface.edit`). 
+    The `Resource` attribute `interface` is renamed `_interface`.
+  * Switch to using requests
+  * Allow library to be used from a zip archive
+  * Deprecated parameters are now set to optional
+  * Fixed bug where instance attribute was shadowing API endpoint
+  * Update interfaces.json
+  * Update README
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu May  2 02:00:01 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - Create initial package

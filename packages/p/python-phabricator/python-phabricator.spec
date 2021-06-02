@@ -1,7 +1,7 @@
 #
 # spec file for package python-phabricator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-phabricator
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
-License:        Apache-2.0
 Summary:        Phabricator API Bindings
-Url:            http://github.com/disqus/python-phabricator
+License:        Apache-2.0
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/p/phabricator/phabricator-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-# For tests
-BuildRequires:  %{python_module mock}
+URL:            https://github.com/disqus/python-phabricator
+Source:         https://github.com/disqus/python-phabricator/archive/refs/tags/%{version}.tar.gz#/phabricator-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+# SECTION test requirements
+BuildRequires:  %{python_module requests >= 2.22}
+BuildRequires:  %{python_module responses >= 0.12}
+# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-requests >= 2.22
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Phabricator API Bindings
 
 %prep
-%setup -q -n phabricator-%{version}
+%setup -q -n python-phabricator-%{version}
 
 %build
 %python_build
@@ -47,8 +50,7 @@ Phabricator API Bindings
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests currently broken
-#%%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst
