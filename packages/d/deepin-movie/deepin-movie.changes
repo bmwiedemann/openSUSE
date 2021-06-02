@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 28 13:12:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.11
+  * Fix bugs
+  * Add help documents
+  * Use mpris-qt5 and dbusextended-qt5
+- Drop deepin-movie-add-qthelper.patch and libavformat-version-check.patch
+  merged by upstream. 
+
+-------------------------------------------------------------------
 Wed Apr 21 14:16:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-build-on-ARM.patch 

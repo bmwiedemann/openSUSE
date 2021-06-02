@@ -71,4 +71,12 @@
     <comment>- Add fix-build-on-ARM.patch</comment>
     <requestid>887710</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f79e778f3fdef2852be0562bf80dca99</srcmd5>
+    <version>5.7.11</version>
+    <time>1622664637</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>891506</requestid>
+  </revision>
 </revisionlist>

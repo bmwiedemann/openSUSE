@@ -15,11 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
 
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        5.7.6.165
+Version:        5.7.11
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later AND OpenSSL
@@ -29,14 +34,9 @@ Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{ver
 # PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org
 # fix library link error and add this includedir for ffmpeg
 Patch0:         Fix-library-link.patch
-# PATCH-FIX-UPSTEAM deepin-movie-add-qthelper.patch hillwood@opensuse.org
-# qthelper.hpp was removed from mpv project, move this api in this project.
-Patch1:         deepin-movie-add-qthelper.patch
-# PATCH-FIX-UPSTEAM libavformat-version-check.patch hillwood@opensuse.org - fix build on new ffmpeg
-Patch2:         libavformat-version-check.patch
 %ifarch aarch64
 # PATCH-FIX-UPSTEAM fix-build-on-ARM.patch hillwood@opensuse.org
-Patch3:         fix-build-on-ARM.patch
+Patch1:         fix-build-on-ARM.patch
 %endif
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
@@ -69,6 +70,8 @@ BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(mpris-qt5)
+BuildRequires:  pkgconfig(dbusextended-qt5)
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -100,11 +103,11 @@ deepin movie.
 
 %prep
 %autosetup -p1 -n %{name}-reborn-%{version}
-sed -i '/#include <DPalette>/a #include <QPainterPath>' src/widgets/{tip,toolbutton}.h
-sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g' src/%{name}.desktop
+sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g' %{name}.desktop
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake -DCMAKE_BUILD_TYPE=Release \
+       -DVERSION=%{version}-%{distribution}
 %make_build
 
 %install
@@ -122,6 +125,7 @@ sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g'
 %license LICENSE LICENSE.OpenSSL
 %{_bindir}/%{name}
 %{_datadir}/%{name}
+%{_datadir}/deepin-manual
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/scalable
