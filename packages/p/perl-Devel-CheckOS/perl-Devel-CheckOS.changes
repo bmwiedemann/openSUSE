@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 26 03:06:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.87
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.87    2021-05-25
+  - Add support for Devuan Linux
+  1.86    2021-05-20
+  - Belatedly add doco on Debian family to Families.pod
+  - Add Mac OS 11 (Big Sur)
+
+-------------------------------------------------------------------
 Fri Oct 16 03:07:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.85

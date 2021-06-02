@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-CheckOS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define cpan_name Devel-CheckOS
 Name:           perl-Devel-CheckOS
-Version:        1.85
+Version:        1.87
 Release:        0
 #Upstream:  This software is free-as-in-speech software, and may be used, distributed, and modified under the terms of either the GNU General Public Licence version 2 or the Artistic Licence. It's up to you which one you use. The full text of the licences can be found in the files GPL2.txt and ARTISTIC.txt, respectively.
-%define cpan_name Devel-CheckOS
 Summary:        Check what OS we're running on
 License:        GPL-2.0-only OR Artistic-1.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Find::Rule) >= 0.28
@@ -52,12 +50,12 @@ It spares perl the embarrassment of wearing its pants on its head by
 covering them with a splendid Fedora.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -68,8 +66,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc CHANGELOG GPL2.txt README TODO
-%license ARTISTIC.txt
+%doc CHANGELOG README TODO
+%license ARTISTIC.txt GPL2.txt
 
 %changelog
