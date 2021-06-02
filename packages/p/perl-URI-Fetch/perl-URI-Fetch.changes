@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 28 03:07:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-URI-Fetch/Changes
+
+  0.15 2021-05-27 NEILB
+      - Specify min perl as 5.008001 rather than 5.008_001, which was
+        causing problems with some versions of ExtUtils::MakeMaker.
+        RT#133491
+
+  0.14 2021-05-26 NEILB
+      - When Benjamin created this, he had a server set up for doing the
+        tests, but that's gone now. So to stop all the fails, I'm skipping
+        the live tests for now. Could do with mocking, but this is a stop-gap.
+
+  0.13_01 2021-05-25 NEILB
+      - Changed the test suite to use some online HTTP status code test servers.
+        Let's see how reliable they are.
+
+-------------------------------------------------------------------
 Mon Jul  4 13:26:03 UTC 2016 - coolo@suse.com
 
 - updated to 0.13
