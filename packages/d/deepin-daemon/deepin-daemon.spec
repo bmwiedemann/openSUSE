@@ -19,7 +19,7 @@
 %define   import_path pkg.deepin.io/dde/daemon
 
 Name:           deepin-daemon
-Version:        5.13.6
+Version:        5.13.10
 Release:        0
 Summary:        Daemon handling the DDE session settings
 License:        GPL-3.0+
@@ -40,7 +40,9 @@ Patch1:         %{name}-libinput.patch
 Patch2:         disable-gobuild-in-makefile.patch
 Patch3:         xvfb-run.patch
 Group:          System/GUI/Other
-# BuildRequires:  golang(API) = 1.11
+%if 0%{?suse_version} > 1500
+BuildRequires:  golang(API) = 1.15
+%endif
 BuildRequires:  golang-packaging
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  fontpackages-devel
@@ -70,7 +72,7 @@ BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
 BuildRequires:  golang-github-linuxdeepin-dde-api
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} == 150200
 BuildRequires:  golang-github-stretchr-testify
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
@@ -163,7 +165,7 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup -p1 -a2 -n %{_name}-%{version}
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} == 150200
 rm -rf vendor/github.com/stretchr/testify/
 %endif
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
@@ -192,10 +194,10 @@ rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
 %goinstall
 %gosrc
 %make_install
+%gofilelist
 pushd %{buildroot}%{_prefix}/lib/deepin-daemon
     ln -s ../../bin/* .
 popd
-%gofilelist
 
 install -Dm644 %{SOURCE1} %{buildroot}%{_prefix}/lib/sysusers.d/deepin-daemon.conf
 install -Dm755 %{SOURCE3} %{buildroot}%{_bindir}/%{name}-dbus-installer
@@ -329,3 +331,4 @@ fi
 %files lang -f %{_name}.lang
 
 %changelog
+

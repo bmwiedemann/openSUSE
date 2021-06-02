@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 22 11:53:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+  
+
+-------------------------------------------------------------------
+Sat May  1 13:46:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.13.10
+  * Disble bluetooth by default
+  * Disble calender service
+  * Fix save password on WIFI setting
+  * Update call power button on dde-lock
+  * Fix bluetooth connecting status
+
+-------------------------------------------------------------------
+Sun Apr 25 13:59:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15.3 
+
+-------------------------------------------------------------------
 Fri Mar 12 13:14:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-daemon-dbus-installer and deepin-daemon-polkit-installer 
