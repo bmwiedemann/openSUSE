@@ -81,6 +81,8 @@ Patch6:         shim-bsc1184454-allocate-mok-config-table-BS.patch
 Patch7:         shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
 # PATCH-FIX-UPSTREAM shim-bsc1185621-relax-max-var-sz-check.patch bsc#1185621 glin@suse.com -- Relax the maximum variable size check for u-boot
 Patch8:         shim-bsc1185621-relax-max-var-sz-check.patch
+# PATCH-FIX-UPSTREAM shim-bsc1185261-relax-import_mok_state_check.patch bsc#1185261 glin@suse.com -- Relax the check for import_mok_state() when Secure Boot is off
+Patch9:         shim-bsc1185261-relax-import_mok_state-check.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -127,6 +129,7 @@ The source code of UEFI shim loader
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 # generate the vendor SBAT metadata

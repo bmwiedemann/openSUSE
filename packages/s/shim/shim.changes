@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 19 01:07:43 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: instead of assuming "removable" for Azure, remove
+  fallback.efi from \EFI\Boot and copy grub.efi/cfg to \EFI\Boot
+  to make \EFI\Boot bootable and keep the boot option created by
+  efibootmgr (bsc#1185464, bsc#1185961)
+
+-------------------------------------------------------------------
+Tue May 11 02:57:14 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1185261-relax-import_mok_state-check.patch to relax
+  the check for import_mok_state() when Secure Boot is off.
+  (bsc#1185261)
+
+-------------------------------------------------------------------
 Fri May  7 08:33:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - shim-install: always assume "removable" for Azure to avoid the
