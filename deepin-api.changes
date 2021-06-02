@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 21 14:02:11 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang verion on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ 
+
+-------------------------------------------------------------------
+Sat May  1 12:51:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.5
+  * Fix deepin-login-sound.service is invalid
+  * Disable calendar service 
+
+-------------------------------------------------------------------
 Sat Mar 13 11:53:36 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-api-polkit-installer and deepin-api-dbus-installer 
