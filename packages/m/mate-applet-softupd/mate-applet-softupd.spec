@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applet-softupd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _ver_date 2017/06
 Name:           mate-applet-softupd
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        MATE panel applet for software update notifications
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            http://zavedil.com/mate-software-updates-applet
-Source:         http://zavedil.com/wp-content/uploads/%{_ver_date}/mate-applet-softupd-%{version}.tar.gz
+URL:            http://zavedil.com/mate-software-updates-applet
+Source:         https://github.com/assen-totin/mate-applet-softupd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE no-gtk2.patch -- Strip GTK2 from autoconf, we do not use it so no need to require it for autoreconf
+Patch0:         no-gtk2.patch
 BuildRequires:  PackageKit-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-packagekit
 BuildRequires:  hicolor-icon-theme
@@ -50,14 +53,15 @@ The information is obtained from PackageKit.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+NO_CONFIGURE=1 sh ./autogen.sh
 %configure \
   --enable-gtk=3                       \
   --enable-backend=package-kit         \
   --enable-installer=gpk-update-viewer
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
