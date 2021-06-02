@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Flask-Admin
-Version:        1.5.6
+Version:        1.5.8
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
@@ -41,13 +41,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Flask >= 0.7
+Requires:       python-WTForms
+BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-ipaddr
 %endif
-Requires:       python-Flask >= 0.7
-Requires:       python-WTForms
-BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34
 %endif

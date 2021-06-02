@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:05:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.5.8:
+  - SQLAlchemy 1.4/2.0, 1.4.5+ compatibility fixes
+  - Redis CLI fixes
+  - Bootstrap 4 support!
+  - Added hook for custom SQLAlchemy models initializers
+- Patch remove_nose.patch rebased.
+
+-------------------------------------------------------------------
 Thu Oct 29 20:46:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch to remove dependency on nose

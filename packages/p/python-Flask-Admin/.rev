@@ -63,4 +63,18 @@
     <comment></comment>
     <requestid>844933</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b4edd4f927feaef2a3d74498c5913c12</srcmd5>
+    <version>1.5.8</version>
+    <time>1622664684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.8:
+  - SQLAlchemy 1.4/2.0, 1.4.5+ compatibility fixes
+  - Redis CLI fixes
+  - Bootstrap 4 support!
+  - Added hook for custom SQLAlchemy models initializers
+- Patch remove_nose.patch rebased.
+</comment>
+    <requestid>896587</requestid>
+  </revision>
 </revisionlist>
