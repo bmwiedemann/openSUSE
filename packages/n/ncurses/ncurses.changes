@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 17 06:29:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210515
+  + improve manual pages for wgetnstr, newwin (prompted by
+    report/testcase by Bill Gray).
+- Add ncurses patch 20210508
+  + modify tputs' error check to allow it to be used without first
+    calling tgetent or setupterm, noting that terminfo initialization
+    is requires for supporting the terminfo delay feature (report by
+    Sebastiano Vigna).
+  + fix several warnings from clang --analyze
+  + add null-pointer check in comp_parse.c, when a "use=" clause refers
+    to a nonexisting terminal description (report/patch by Miroslav
+    Lichvar, cf: 20210227).
+
+-------------------------------------------------------------------
 Mon May  3 07:08:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210501
