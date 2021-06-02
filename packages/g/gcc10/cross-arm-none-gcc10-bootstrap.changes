@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:31:06 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Force using llvm11 for amdgcn offloading since llvm12 doesn't
+  yet work.
+
+-------------------------------------------------------------------
+Tue May 25 19:21:01 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix value of %slibdir64 for usrmerge
+
+-------------------------------------------------------------------
 Thu Apr 15 11:14:23 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 10.3.0 release (63fa67847628e5f358e7e2e7e), git1587

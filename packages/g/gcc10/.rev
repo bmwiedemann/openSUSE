@@ -218,4 +218,15 @@
 - Disable nvptx offloading for aarch64 again since it doesn't work</comment>
     <requestid>885612</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e4ecf4fc9f368d7e54f981477e51afd7</srcmd5>
+    <version>10.3.0+git1587</version>
+    <time>1622664634</time>
+    <user>dimstar_suse</user>
+    <comment>- Force using llvm11 for amdgcn offloading since llvm12 doesn't
+  yet work.
+
+- Fix value of %slibdir64 for usrmerge</comment>
+    <requestid>896592</requestid>
+  </revision>
 </revisionlist>

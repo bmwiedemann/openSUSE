@@ -223,12 +223,13 @@ ExclusiveArch:
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
-# amdgcn uses the llvm assembler and linker
-BuildRequires:  lld
-BuildRequires:  llvm
+# amdgcn uses the llvm assembler and linker, llvm12 doesn't
+# work at the moment
+BuildRequires:  lld11
+BuildRequires:  llvm11
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
-Requires:       lld
-Requires:       llvm
+Requires:       lld11
+Requires:       llvm11
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
 # technically also SLE12 SP5 but do not bother there
 %if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
