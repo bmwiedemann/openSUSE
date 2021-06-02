@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 31 16:04:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.52.14
+  * Fixed: SQLSetEnvAttr doesn't return SQL_SUCCESS for option
+    SQL_ATTR_APP_UNICODE_TYPE
+  * Fixed: issue with switching ODBC driver to best supported
+    Unicode codepage
+  * Fixed: misprint in SQLBrowseConnect
+  * Fixed: SQLGetConnectOption returned wrong value for
+    SQL_CURRENT_QUALIFIER
+  * Fixed: mixing calls to SQLFetchScroll with SQLFetch
+  * Fixed: Misc Unicode issues
+  * Added extra validation for SQLAllocHandle
+  * Added missing define SQL_CONVERT_GUID
+  * Fixed issue using heap after free in SQLConnect_internal
+  * Fixed issue with global mutex
+  * Fixed SQLSetStmtAttr to cache the correct values for
+    SQL_ATTR_ROW_ARRAY_SIZE and SQL_ATTR_ROW_BIND_TYPE
+  * Fixed format specifiers and some casts to fix trace output
+  * Fixed missing check for section in SQLGetPrivateProfileString
+  * Fixed non-void function needs to return a value
+  * Fixed iODBC apps/frameworks CFBundleGetInfoString attribute
+  * Fixed small memory leaks
+- Split library packages, so other packages can require only
+  needed ones
+- Refresh fix-nonvoid-return.diff
+- Drop config-h.diff
+
+-------------------------------------------------------------------
 Thu Jan 26 11:05:59 UTC 2017 - adam.majer@suse.de
 
 - Update to version 0.52.12:

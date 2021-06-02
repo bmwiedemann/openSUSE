@@ -1,7 +1,7 @@
 #
 # spec file for package iodbc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,16 @@
 
 
 Name:           iodbc
-Version:        3.52.12
+Version:        3.52.14
 Release:        0
 Summary:        ODBC compliant driver manager
 License:        LGPL-2.0 or BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Url:            http://www.iodbc.org/
-Source:         http://sourceforge.net/projects/iodbc/files/iodbc/%{version}/libiodbc-%{version}.tar.gz
-Patch1:         fix-nonvoid-return.diff
-Patch2:         config-h.diff
-Requires:       libiodbc3 = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1110
+Source:         https://download.sourceforge.net/iodbc/libiodbc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-nonvoid-return.diff -- https://github.com/openlink/iODBC/issues/58
+Patch0:         fix-nonvoid-return.diff
 BuildRequires:  pkgconfig(gtk+-2.0)
-%else
-BuildRequires:  gtk2-devel
-%endif
 
 %description
 The iODBC Driver Manager is a free implementation of the SAG CLI and
@@ -45,11 +39,9 @@ Summary:        Include Files and Libraries mandatory for Development
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libiodbc3 = %{version}
-%if 0%{?suse_version} > 1110
+Requires:       libdrvproxy2 = %{version}
+Requires:       libiodbcadm2 = %{version}
 Requires:       pkgconfig(gtk+-2.0)
-%else
-Requires:       gtk2-devel
-%endif
 
 %description -n libiodbc-devel
 This package contains all necessary include files and libraries needed
@@ -67,6 +59,20 @@ appropriate backend drivers.
 
 This package provides the shared libraries needed by iODBC
 
+%package -n libdrvproxy2
+Summary:        Administration library for iODBC
+Group:          Development/Libraries/C and C++
+
+%description -n libdrvproxy2
+This package provides libdrvproxy for administering iODBC
+
+%package -n libiodbcadm2
+Summary:        Administration library for iODBC
+Group:          Development/Libraries/C and C++
+
+%description -n libiodbcadm2
+This package provides libiodbcadm for administering iODBC
+
 %package admin
 Summary:        Administration tools for iODBC
 Group:          Development/Libraries/C and C++
@@ -81,8 +87,7 @@ This package provides tools for configuring and administering iODBC
 
 %prep
 %setup -q -n libiodbc-%{version}
-%patch1 -p1
-%patch2
+%patch0 -p1
 
 %build
 %configure \
@@ -100,28 +105,27 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libiodbc3 -p /sbin/ldconfig
-
 %postun -n libiodbc3 -p /sbin/ldconfig
-
-%post   -n iodbc-admin -p /sbin/ldconfig
-
-%postun -n iodbc-admin -p /sbin/ldconfig
+%post   -n libiodbcadm2 -p /sbin/ldconfig
+%postun -n libiodbcadm2 -p /sbin/ldconfig
+%post   -n libdrvproxy2 -p /sbin/ldconfig
+%postun -n libdrvproxy2 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
+%license LICENSE
 %{_bindir}/iodbctest
 %{_bindir}/iodbctestw
 %{_mandir}/man1/iodbctest.1*
 %{_mandir}/man1/iodbctestw.1*
 
-%files -n libiodbc3
-%defattr(-,root,root)
-%doc AUTHORS LICENSE LICENSE.LGPL LICENSE.BSD ChangeLog NEWS README
-%{_libdir}/libiodbc.so.*
-%{_libdir}/libiodbcinst.so.*
+%files admin
+%license LICENSE
+%{_bindir}/iodbcadm-gtk
+%{_mandir}/man1/iodbcadm-gtk.1*
 
 %files -n libiodbc-devel
-%defattr(-,root,root)
+%license LICENSE LICENSE.LGPL LICENSE.BSD
+%doc AUTHORS ChangeLog NEWS README
 %doc etc/odbc.ini.sample
 %doc etc/odbcinst.ini.sample
 %{_bindir}/iodbc-config
@@ -144,11 +148,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libiodbc.pc
 %{_mandir}/man1/iodbc-config.1*
 
-%files admin
-%defattr(-,root,root)
-%{_bindir}/iodbcadm-gtk
+%files -n libiodbc3
+%license LICENSE
+%{_libdir}/libiodbc.so.*
+%{_libdir}/libiodbcinst.so.*
+
+%files -n libdrvproxy2
+%license LICENSE
 %{_libdir}/libdrvproxy.so.*
+
+%files -n libiodbcadm2
+%license LICENSE
 %{_libdir}/libiodbcadm.so.*
-%{_mandir}/man1/iodbcadm-gtk.1*
 
 %changelog
