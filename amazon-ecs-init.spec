@@ -18,7 +18,7 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.50.1
+Version:        1.52.1
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
@@ -27,6 +27,7 @@ URL:            https://github.com/aws/amazon-ecs-init
 Source0:        %{name}-%{version}-1.tar.gz
 Source1:        %{short_name}.service
 Patch0:         reproducible.patch
+Patch1:         use-agent-container-built-in-certs.patch
 BuildRequires:  go  >= 1.7
 BuildRequires:  pkgconfig(systemd)
 # We cannot handle cross module dependencies properly, i.e. one module can
@@ -139,6 +140,7 @@ Amazon EC2.
 %prep
 %setup -q -n %{name}-%{version}-1
 %patch0 -p1
+%patch1
 
 %build
 export GO111MODULE="auto"
@@ -160,7 +162,7 @@ touch %{buildroot}/%{_sysconfdir}/ecs/ecs.config.json
 
 mkdir -p %{buildroot}/%{_localstatedir}/cache/ecs
 touch %{buildroot}/%{_localstatedir}/cache/ecs/ecs-agent.tar
-touch %{buildroot}/%{_localstatedir}/cache/ecs/state
+echo 0 > %{buildroot}/%{_localstatedir}/cache/ecs/state
 
 %files
 %defattr(-,root,root,-)

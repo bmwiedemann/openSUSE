@@ -7,6 +7,11 @@ Requires=network-online.target
 
 [Service]
 Type=simple
+Restart=on-failure
+RestartPreventExitStatus=5
+RestartSec=10s
+EnvironmentFile=-/var/lib/ecs/ecs.config
+EnvironmentFile=-/etc/ecs/ecs.config
 ExecStartPre=/usr/sbin/amazon-ecs-init pre-start
 ExecStart=/usr/sbin/amazon-ecs-init start
 ExecStop=/usr/sbin/amazon-ecs-init pre-stop

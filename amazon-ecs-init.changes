@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 26 11:33:16 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add use-agent-container-built-in-certs.patch to use the built in certs from
+  the downloaded agent container
+- Update amazon-ecs.service to consider the proper environment files
+- Set the cache state to ensure the latest agent container gets pulled
+
+-------------------------------------------------------------------
+Wed May 19 18:19:51 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.52.1 (bsc#1186239, bsc#1186262)
+  + Cache Agent version 1.52.1
+  + Add support for ECS EXTERNAL launch type (ECS Anywhere)
+
+-------------------------------------------------------------------
 Mon Mar 15 13:51:52 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add info about bundled dependencies in spec
