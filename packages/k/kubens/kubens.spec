@@ -15,14 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           kubens
 Version:        0.9.3
 Release:        0
-Summary:        Faster way to switch between clusters and namespaces in kubectl 
+Summary:        Faster way to switch between clusters and namespaces in kubectl
 License:        Apache-2.0
 URL:            https://github.com/ahmetb/kubectx
 Source:         kubectx-%{version}.tar.gz
-BuildRequires:  go >= 1.13
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 11:25:56 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Drop go BuildRequires, this is just a shell script 
+
+-------------------------------------------------------------------
 Thu May 20 05:30:42 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 0.9.3:
