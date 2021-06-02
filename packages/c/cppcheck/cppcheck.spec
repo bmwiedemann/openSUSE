@@ -24,6 +24,9 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-i586.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-gcc11-build-errors.patch
+Patch2:         0002-Another-gcc11-fix-3179.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++

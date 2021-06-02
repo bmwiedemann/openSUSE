@@ -1,0 +1,30 @@
+From 19889ea3957b5c59369b3ba2a24273d5c316a531 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolfgang=20St=C3=B6ggl?= <c72578@yahoo.de>
+Date: Sat, 19 Dec 2020 20:47:55 +0100
+Subject: [PATCH] Fix gcc11 build errors
+
+- Include required header file <limits>
+- Fixes the following errors when compiling with GCC 11:
+  lib/programmemory.cpp:477:44: error: 'numeric_limits' is not a member
+  of 'std'
+  test/testsymboldatabase.cpp:5978:18: error: 'numeric_limits' is not a
+  member of 'std'
+---
+ lib/programmemory.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/programmemory.cpp b/lib/programmemory.cpp
+index 440dd22..5bc55f0 100644
+--- a/lib/programmemory.cpp
++++ b/lib/programmemory.cpp
+@@ -6,6 +6,7 @@
+ #include "token.h"
+ #include <algorithm>
+ #include <cassert>
++#include <limits>
+ #include <cstdio>
+ #include <limits>
+ #include <memory>
+-- 
+2.31.1
+

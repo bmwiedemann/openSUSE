@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:00:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC compatibility fixes:
+  * 0001-Fix-gcc11-build-errors.patch
+  * 0002-Another-gcc11-fix-3179.patch
+
+-------------------------------------------------------------------
 Mon May 10 06:49:08 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - add fix-i586.patch to fix compilation on i586, where the test
