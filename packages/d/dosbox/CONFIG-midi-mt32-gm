@@ -52,14 +52,14 @@ and place them in the directory with the executable file of this game.
 4.3 MT-32 or GM is manually turned on every time before starting the game.
 To install / uninstall MT-32, run "sudo zypper in mt32emu-qt" / "sudo zypper rm mt32emu-qt"
 in the console and enter the root password.
-To start MT-32, run "Munt: MT-32 Emulator" from KDE menu or run krunner (Alt+F2) and enter mt32emu-qt and Enter.
+To start MT-32, run "MT-32 emulator" from KDE menu or run krunner (Alt+F2) and enter mt32emu-qt and Enter.
 To configure mt32emu-qt, start and stop mt32emu-qt, copy two ROMs files
 from ~/.dosbox to ~/.config/muntemu.org, start mt32emu-qt again, check all checkboxes in the options,
 then select the "ROM Configuration..." and specify the path to the ~/.config/muntemu.org directory
 2 ROMs should appear with marked checkboxes and click OK.
 
-To install / uninstall fluidsynth from GM, run "sudo zypper in fluidsynth" / "sudo zypper rm fluidsynth"
-in the console and enter the root password.
+To install / uninstall fluidsynth from GM, run "sudo zypper in fluidsynth fluid-soundfont-gm" /
+"sudo zypper rm fluidsynth fluid-soundfont-gm" in the console and enter the root password.
 To start / stop fluidsynth from the GM, run "sudo systemctl start fluidsynth" / "sudo systemctl stop fluidsynth"
 in the console and enter the root password.
 To enable / disable fluidsynth immediately at boot time, run the command "sudo systemctl enable fluidsynth" /

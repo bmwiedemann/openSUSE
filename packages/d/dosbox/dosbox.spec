@@ -30,19 +30,18 @@ Source3:        CONFIG-midi-mt32-gm
 Patch0:         dosbox-0.71-manpage.diff
 # Patch from https://github.com/munt/munt/releases the latest release libmt32emu.
 Patch1:         dosbox-0.74-3-mt32-patch.diff
-BuildRequires:  Mesa-devel
-BuildRequires:  SDL_net-devel
 BuildRequires:  SDL_sound-devel
-BuildRequires:  alsa-devel
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
-BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SDL_net)
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-BuildRequires:  libmt32emu-devel
+BuildRequires:  pkgconfig(mt32emu)
 %endif
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Used pkgconfig everywhere and removed BuildRequires: Mesa-devel.
+- Refresh CONFIG-midi-mt32-gm file.
+
+-------------------------------------------------------------------
 Thu Mar 18 13:28:47 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Remove Roland MT-32 support for openSUSE Leap 15.3.
