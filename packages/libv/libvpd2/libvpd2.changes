@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 08:43:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Remove-dynamic-exception-specification.patch
+
+-------------------------------------------------------------------
 Mon Nov 16 10:39:12 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 2.2.8 (jsc#SLE-12939).

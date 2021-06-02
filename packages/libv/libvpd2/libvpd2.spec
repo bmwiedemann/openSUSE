@@ -25,6 +25,8 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/power-ras/libvpd
 Source:         https://github.com/power-ras/libvpd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-dynamic-exception-specification.patch
 Patch1:         libvpd2.makefile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -51,8 +53,7 @@ files that are used to access a vpd database created by vpdupdate in
 the lsvpd package.
 
 %prep
-%setup -q -n libvpd-%{version}
-%autopatch -p1
+%autosetup -p1 -n libvpd-%{version}
 
 %build
 autoreconf -fiv
