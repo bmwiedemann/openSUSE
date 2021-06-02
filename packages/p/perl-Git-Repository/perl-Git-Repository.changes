@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:07:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.325
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.325 2021-06-01 BOOK
+      [ENHANCEMENTS]
+      - Prevent Test::Git from clobbering its arguments in some cases
+      [TESTS]
+      - Stop t/24-errors.t from failing with git >= 2.30.0-rc0
+        (Fix RT #133951, RT #134115, GH #20)
+
+-------------------------------------------------------------------
 Fri Feb 19 08:16:19 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build issues with git 2.30 (git-2.30.0.patch)

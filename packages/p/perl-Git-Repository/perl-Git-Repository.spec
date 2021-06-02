@@ -18,7 +18,7 @@
 
 %define cpan_name Git-Repository
 Name:           perl-Git-Repository
-Version:        1.324
+Version:        1.325
 Release:        0
 Summary:        Perl interface to Git repositories
 License:        Artistic-1.0 OR GPL-1.0-or-later
