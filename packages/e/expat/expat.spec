@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_3_0
+%global unversion 2_4_1
 Name:           expat
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -96,7 +96,7 @@ chmod 0644 examples/elements.c
 %{_docdir}/%{name}
 %license COPYING
 %doc README.md expatfaq.html
-%doc doc/expat.png doc/reference.html doc/style.css doc/valid-xhtml10.png
+%doc doc/reference.html doc/style.css doc/valid-xhtml10.png
 %doc examples/elements.c examples/outline.c examples/Makefile.am examples/Makefile.in
 %doc AUTHORS Changes
 %{_bindir}/xmlwf
