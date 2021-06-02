@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  4 13:27:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.3
+  * Add a deepin-dock plugin
+  * Add user guide documents
+  * Fix bugs
+- Drop deepin-screen-recorder-qt5.15.patch, merged by upstream
+
+-------------------------------------------------------------------
 Thu Feb 25 07:50:14 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.1

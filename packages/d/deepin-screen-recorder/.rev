@@ -7,4 +7,16 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886024</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e5d96b95427e82614665f3f044452780</srcmd5>
+    <version>5.9.3</version>
+    <time>1622664653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.9.3
+  * Add a deepin-dock plugin
+  * Add user guide documents
+  * Fix bugs
+- Drop deepin-screen-recorder-qt5.15.patch, merged by upstream</comment>
+    <requestid>891664</requestid>
+  </revision>
 </revisionlist>

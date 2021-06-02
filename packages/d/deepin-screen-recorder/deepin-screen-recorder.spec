@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-screen-recorder
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,48 +12,50 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           deepin-screen-recorder
-Version:        5.8.1
+Version:        5.9.3
 Release:        0
 Summary:        Deepin Screen Recorder
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE deepin-screen-recorder-qt5.15.patch hillwood@opensuse.org - Support Qt 5.15+
-Patch0:         %{name}-qt5.15.patch
 Group:          Productivity/Multimedia/Video/Editors and Convertors
+BuildRequires:  deepin-dock
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-BuildRequires:  libqt5-linguist
 BuildRequires:  gtest
-BuildRequires:  pkgconfig(dframeworkdbus)
-BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
-BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dde-dock)
+BuildRequires:  pkgconfig(dframeworkdbus)
+BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
-BuildRequires:  pkgconfig(libprocps)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xtst)
 Recommends:     %{name}-lang
 Requires:       byzanz
 Requires:       ffmpeg
@@ -62,6 +64,14 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 deepin-screen-recorder is free and open source software for screen recording.
 
+%package -n deepin-dock-plugin-screen-recorder
+Summary:        The screen recorder plugin of deepin dock
+Requires:       %{name} = %{version}
+Requires:       deepin-dock
+
+%description -n deepin-dock-plugin-screen-recorder
+The deepin screen recorder plugin of deepin dock
+
 %lang_package
 
 %prep
@@ -69,41 +79,43 @@ deepin-screen-recorder is free and open source software for screen recording.
 sed -i '/include <X11.extensions.XTest.h>/a #undef min' src/event_monitor.cpp
 sed -i '/#include <iostream>/d;1i #include <iostream>' src/screen_shot_event.cpp
 sed -i '/include <X11.extensions.shape.h>/a #undef None' src/utils.cpp
-sed -i 's|$$ETCDIR/modules-load.d|/usr/lib/modules-load.d|g' screen_shot_recorder.pro
+sed -i 's|/usr/lib|$$LIB_INSTALL_DIR|g' src/dde-dock-plugins/recordtime/recordtime.pro
 
 %build
-%qmake5 lupdate=/usr/bin/lupdate-qt5 \
+%qmake5 LIB_INSTALL_DIR=%{_libdir} \
+        lupdate=/usr/bin/lupdate-qt5 \
         lrelease=/usr/bin/lrelease-qt5
 %make_build
 
 %install
 %qmake5_install
 
-rm %{buildroot}%{_sysconfdir}/modprobe.d/deepin-screen-recorder.conf \
-%{buildroot}%{_prefix}/lib/modules-load.d/deepin-screen-recorder.conf
-
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}
 
+find %{buildroot}%{_datadir}/deepin-manual -name '*.svg' -type f -print -exec chmod -x {} \;
+find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chmod -x {} \;
+
+%suse_update_desktop_file %{name}
+
 %files
-%defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
-# %config %{_sysconfdir}/modprobe.d/deepin-screen-recorder.conf
-# %dir %{_sysconfdir}/modules-load.d
-# %{_prefix}/lib/modules-load.d/deepin-screen-recorder.conf
+%dir %{_sysconfdir}/due-shell
+%dir %{_sysconfdir}/due-shell/json
+%config %{_sysconfdir}/due-shell/json/screenRecorder.json
 %{_bindir}/%{name}
-%dir %{_datadir}/dman
-%{_datadir}/dman/%{name}/
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/dbus-1/services/com.deepin.ScreenRecorder.service
 %{_datadir}/dbus-1/services/com.deepin.Screenshot.service
+%{_datadir}/deepin-manual
+
+%files -n deepin-dock-plugin-screen-recorder
+%{_libdir}/dde-dock/plugins/libdeepin-screen-recorder-plugin.so
 
 %files lang
-%defattr(-,root,root,-)
 %{_datadir}/%{name}
 
 %changelog
