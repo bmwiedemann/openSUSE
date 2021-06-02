@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           deepin-network-utils
-Version:        5.3.0.8
+Version:        5.4.5
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Network Utils
