@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Apr 19 14:37:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 5.10.0.15
+- Add 001-fix-libdir.patch and 002-install-compressor-ChardetDetector.patch
