@@ -1,0 +1,6 @@
+<package name="deepin-draw" project="openSUSE:Factory">
+  <title>deepin-draw</title>
+  <description>Draw is a lightweight drawing tool for users to freely draw and simply edit
+images developed by Deepin Technology.</description>
+  <devel project="X11:Deepin" package="deepin-draw"/>
+</package>
