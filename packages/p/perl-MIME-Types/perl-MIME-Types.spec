@@ -18,7 +18,7 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        Definition of MIME types
 License:        Artistic-1.0 OR GPL-1.0-or-later

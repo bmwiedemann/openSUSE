@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 29 03:06:39 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.21
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.21: Fri 28 May 12:01:00 CEST 2021
+
+  	Changes:
+  	- application/octet-stream is better for .dat [issue #11, Даша Федорова]
+  	- add video/webm which Google forgot to register [issue #12, Brent Laabs]
+  	- add image/webp which Google registered too late [issue #12, Brent Laabs]
+
+-------------------------------------------------------------------
 Fri Apr 23 03:08:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20
