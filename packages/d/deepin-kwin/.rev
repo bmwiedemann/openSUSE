@@ -7,4 +7,17 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886017</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1bda04f002d62deeb9692a7b0d6cabfb</srcmd5>
+    <version>5.3.7</version>
+    <time>1622664648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.3.7
+  * Support kwin 5.19, drop support-kwin-5_19+.patch
+  * Add translation files
+  * update dde-kwin.postinst base on update DTK's /etc/os-version 
+  * Fix bugs
+- Drop deepin-kwin-unload-blur.patch, merged by upstream</comment>
+    <requestid>891657</requestid>
+  </revision>
 </revisionlist>

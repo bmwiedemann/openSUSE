@@ -1,6 +1,6 @@
-diff -Nur dde-kwin-5.2.0.13/configures/kwinrc dde-kwin-5.2.0.13-new/configures/kwinrc
---- dde-kwin-5.2.0.13/configures/kwinrc	2020-11-11 11:40:53.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/configures/kwinrc	2021-03-01 11:58:19.340082770 +0800
+diff -Nur dde-kwin-5.3.7/configures/kwinrc dde-kwin-5.3.7-new/configures/kwinrc
+--- dde-kwin-5.3.7/configures/kwinrc	2021-03-17 17:39:07.000000000 +0800
++++ dde-kwin-5.3.7-new/configures/kwinrc	2021-05-04 19:39:18.739036254 +0800
 @@ -40,7 +40,7 @@
  ApplicationsMode=0
  DesktopMode=1
@@ -10,10 +10,10 @@ diff -Nur dde-kwin-5.2.0.13/configures/kwinrc dde-kwin-5.2.0.13-new/configures/k
  MinimizedMode=0
  MultiScreenMode=0
  ShowDesktopMode=1
-diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0.13-new/tabbox/chameleon/contents/ui/main.qml
---- dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml	1970-01-01 08:00:00.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/tabbox/chameleon/contents/ui/main.qml	2020-11-11 11:40:53.000000000 +0800
-@@ -0,0 +1,303 @@
+diff -Nur dde-kwin-5.3.7/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.3.7-new/tabbox/chameleon/contents/ui/main.qml
+--- dde-kwin-5.3.7/tabbox/chameleon/contents/ui/main.qml	1970-01-01 08:00:00.000000000 +0800
++++ dde-kwin-5.3.7-new/tabbox/chameleon/contents/ui/main.qml	2021-03-17 17:39:07.000000000 +0800
+@@ -0,0 +1,327 @@
 +import QtQuick 2.0
 +import QtQuick.Window 2.0
 +import QtGraphicalEffects 1.0
@@ -151,6 +151,11 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +                anchors.fill: parent
 +                hoverEnabled: true
 +                onPositionChanged: dialogMainItem.mouseEnabled = true
++
++                Accessible.role: Accessible.Button
++                Accessible.name: "Ma_tabbox_mouseDetector"
++                Accessible.description: "tabbox_mouseDetector"
++                Accessible.onPressAction: pressed()
 +            }
 +
 +            Rectangle {
@@ -175,8 +180,12 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +                        x: itemsView.currentItem ? itemsView.currentItem.x : 0
 +                        y: itemsView.currentItem ? itemsView.currentItem.y : 0
 +
-+                        Behavior on x { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 200 } }
-+                        Behavior on y { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 200 } }
++                        Behavior on x { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 80 } }
++                        Behavior on y { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 80 } }
++
++                        Accessible.role: Accessible.Indicator
++                        Accessible.name: "Rect_tabbox_Indicator_"+itemsView.currentIndex
++                        Accessible.description: "tabbox_Indicator_currentIndex_currentWindowId"
 +                    }
 +                }
 +
@@ -200,6 +209,10 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +                            anchors.fill: parent
 +                            wId: modelWId
 +                        }
++
++                        Accessible.role: Accessible.Graphic
++                        Accessible.name: "Rect_tabbox_desktopImage_" + modelWId
++                        Accessible.description: "tabbox_desktopImage_desktopImageId"
 +                    }
 +
 +                }
@@ -231,6 +244,11 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +                            color: "#32000000"
 +                            source: iconItem
 +                        }
++
++                        Accessible.role: Accessible.Graphic
++                        Accessible.name: !isCloseable && (modelIndex+1) == itemsView.count ?
++                                             "Rect_tabbox_desktopImage_" + modelWId : "Rect_tabbox_windowImage_" + modelWId
++                        Accessible.description: "tabbox_windowImage_windowImageId"
 +                    }
 +                }
 +
@@ -271,6 +289,12 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +                            onClicked: {
 +                                parent.select()
 +                            }
++
++                            Accessible.role: Accessible.Button
++                            Accessible.name: !closeable && (index+1) == itemsView.count ?
++                                                 "Ma_tabbox_desktopItem_" + windowId : "Ma_tabbox_windowItem_" + windowId
++                            Accessible.description: "tabbox_window/desktopItem_winId"
++                            Accessible.onPressAction: pressed()
 +                        }
 +
 +                        function select() {
@@ -317,12 +341,12 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/contents/ui/main.qml dde-kwin-5.2.0
 +        }
 +    } // Dialog
 +}
-diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/metadata.desktop dde-kwin-5.2.0.13-new/tabbox/chameleon/metadata.desktop
---- dde-kwin-5.2.0.13/tabbox/chameleon/metadata.desktop	1970-01-01 08:00:00.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/tabbox/chameleon/metadata.desktop	2021-03-01 11:59:13.003414750 +0800
+diff -Nur dde-kwin-5.3.7/tabbox/chameleon/metadata.desktop dde-kwin-5.3.7-new/tabbox/chameleon/metadata.desktop
+--- dde-kwin-5.3.7/tabbox/chameleon/metadata.desktop	1970-01-01 08:00:00.000000000 +0800
++++ dde-kwin-5.3.7-new/tabbox/chameleon/metadata.desktop	2021-05-04 19:40:45.083066022 +0800
 @@ -0,0 +1,17 @@
 +[Desktop Entry]
-+Name=Thumbnail Grid
++Name=chameleon
 +Comment=
 +
 +Type=Service
@@ -338,9 +362,9 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/chameleon/metadata.desktop dde-kwin-5.2.0.13-
 +X-KDE-PluginInfo-Version=4
 +X-KDE-PluginInfo-Website=https://github.com/linuxdeepin/dde-kwin
 +X-KDE-PluginInfo-Depends=
-diff -Nur dde-kwin-5.2.0.13/tabbox/CMakeLists.txt dde-kwin-5.2.0.13-new/tabbox/CMakeLists.txt
---- dde-kwin-5.2.0.13/tabbox/CMakeLists.txt	2020-11-11 11:40:53.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/tabbox/CMakeLists.txt	2021-03-01 11:58:38.827848658 +0800
+diff -Nur dde-kwin-5.3.7/tabbox/CMakeLists.txt dde-kwin-5.3.7-new/tabbox/CMakeLists.txt
+--- dde-kwin-5.3.7/tabbox/CMakeLists.txt	2021-03-17 17:39:07.000000000 +0800
++++ dde-kwin-5.3.7-new/tabbox/CMakeLists.txt	2021-05-04 19:39:31.263040571 +0800
 @@ -1,6 +1,6 @@
  install(
      DIRECTORY
@@ -349,10 +373,10 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/CMakeLists.txt dde-kwin-5.2.0.13-new/tabbox/C
      DESTINATION
      ${CMAKE_INSTALL_PREFIX}/share/kwin/tabbox
  )
-diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-5.2.0.13-new/tabbox/thumbnail_grid/contents/ui/main.qml
---- dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml	2020-11-11 11:40:53.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/tabbox/thumbnail_grid/contents/ui/main.qml	1970-01-01 08:00:00.000000000 +0800
-@@ -1,303 +0,0 @@
+diff -Nur dde-kwin-5.3.7/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-5.3.7-new/tabbox/thumbnail_grid/contents/ui/main.qml
+--- dde-kwin-5.3.7/tabbox/thumbnail_grid/contents/ui/main.qml	2021-03-17 17:39:07.000000000 +0800
++++ dde-kwin-5.3.7-new/tabbox/thumbnail_grid/contents/ui/main.qml	1970-01-01 08:00:00.000000000 +0800
+@@ -1,327 +0,0 @@
 -import QtQuick 2.0
 -import QtQuick.Window 2.0
 -import QtGraphicalEffects 1.0
@@ -490,6 +514,11 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -                anchors.fill: parent
 -                hoverEnabled: true
 -                onPositionChanged: dialogMainItem.mouseEnabled = true
+-
+-                Accessible.role: Accessible.Button
+-                Accessible.name: "Ma_tabbox_mouseDetector"
+-                Accessible.description: "tabbox_mouseDetector"
+-                Accessible.onPressAction: pressed()
 -            }
 -
 -            Rectangle {
@@ -514,8 +543,12 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -                        x: itemsView.currentItem ? itemsView.currentItem.x : 0
 -                        y: itemsView.currentItem ? itemsView.currentItem.y : 0
 -
--                        Behavior on x { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 200 } }
--                        Behavior on y { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 200 } }
+-                        Behavior on x { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 80 } }
+-                        Behavior on y { SmoothedAnimation { easing.type: Easing.InOutCubic; duration: 80 } }
+-
+-                        Accessible.role: Accessible.Indicator
+-                        Accessible.name: "Rect_tabbox_Indicator_"+itemsView.currentIndex
+-                        Accessible.description: "tabbox_Indicator_currentIndex_currentWindowId"
 -                    }
 -                }
 -
@@ -539,6 +572,10 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -                            anchors.fill: parent
 -                            wId: modelWId
 -                        }
+-
+-                        Accessible.role: Accessible.Graphic
+-                        Accessible.name: "Rect_tabbox_desktopImage_" + modelWId
+-                        Accessible.description: "tabbox_desktopImage_desktopImageId"
 -                    }
 -
 -                }
@@ -570,6 +607,11 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -                            color: "#32000000"
 -                            source: iconItem
 -                        }
+-
+-                        Accessible.role: Accessible.Graphic
+-                        Accessible.name: !isCloseable && (modelIndex+1) == itemsView.count ?
+-                                             "Rect_tabbox_desktopImage_" + modelWId : "Rect_tabbox_windowImage_" + modelWId
+-                        Accessible.description: "tabbox_windowImage_windowImageId"
 -                    }
 -                }
 -
@@ -610,6 +652,12 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -                            onClicked: {
 -                                parent.select()
 -                            }
+-
+-                            Accessible.role: Accessible.Button
+-                            Accessible.name: !closeable && (index+1) == itemsView.count ?
+-                                                 "Ma_tabbox_desktopItem_" + windowId : "Ma_tabbox_windowItem_" + windowId
+-                            Accessible.description: "tabbox_window/desktopItem_winId"
+-                            Accessible.onPressAction: pressed()
 -                        }
 -
 -                        function select() {
@@ -656,9 +704,9 @@ diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/contents/ui/main.qml dde-kwin-
 -        }
 -    } // Dialog
 -}
-diff -Nur dde-kwin-5.2.0.13/tabbox/thumbnail_grid/metadata.desktop dde-kwin-5.2.0.13-new/tabbox/thumbnail_grid/metadata.desktop
---- dde-kwin-5.2.0.13/tabbox/thumbnail_grid/metadata.desktop	2020-11-11 11:40:53.000000000 +0800
-+++ dde-kwin-5.2.0.13-new/tabbox/thumbnail_grid/metadata.desktop	1970-01-01 08:00:00.000000000 +0800
+diff -Nur dde-kwin-5.3.7/tabbox/thumbnail_grid/metadata.desktop dde-kwin-5.3.7-new/tabbox/thumbnail_grid/metadata.desktop
+--- dde-kwin-5.3.7/tabbox/thumbnail_grid/metadata.desktop	2021-03-17 17:39:07.000000000 +0800
++++ dde-kwin-5.3.7-new/tabbox/thumbnail_grid/metadata.desktop	1970-01-01 08:00:00.000000000 +0800
 @@ -1,17 +0,0 @@
 -[Desktop Entry]
 -Name=Thumbnail Grid

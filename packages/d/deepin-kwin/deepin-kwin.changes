@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  4 11:46:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.7
+  * Support kwin 5.19, drop support-kwin-5_19+.patch
+  * Add translation files
+  * update dde-kwin.postinst base on update DTK's /etc/os-version 
+  * Fix bugs
+- Drop deepin-kwin-unload-blur.patch, merged by upstream
+
+-------------------------------------------------------------------
 Sun Apr 11 08:20:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Support kwin 5.21+, add support-kwin-5_19+.patch and

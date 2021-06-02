@@ -20,7 +20,7 @@
 %define   sover           0
 
 Name:           deepin-kwin
-Version:        5.2.0.13
+Version:        5.3.7
 Release:        0
 Summary:        KWin configures/plugins on the DDE
 License:        GPL-3.0-or-later
@@ -28,11 +28,11 @@ Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/dde-kwin
 Source0:        https://github.com/linuxdeepin/dde-kwin/archive/%{version}/%{_name}-%{version}.tar.gz
 # Source0:        https://github.com/ukui/dde-kwin/archive/%{commit}/%{_name}-%{shortcommit}.tar.gz
-Patch1:         deepin-kwin-unload-blur.patch
+# Patch1:         deepin-kwin-unload-blur.patch
 Patch0:         deepin-kwin-tabbox-chameleon-rename.patch
 %if 0%{suse_version} > 1500
 Patch2:         deepin-kwin-crash.patch
-Patch4:         support-kwin-5_19+.patch
+# Patch4:         support-kwin-5_19+.patch
 Patch5:         support-kwin-5_21+.patch
 BuildRequires:  cmake(KWaylandServer)
 %else
