@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 19:35:29 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Switch to Go 1.14 as Go 1.16 breaks the build
+
+-------------------------------------------------------------------
 Thu Dec 24 15:36:30 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Modernise spec file

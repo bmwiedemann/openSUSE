@@ -52,4 +52,12 @@ should be accepted after, or in combination with that package.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>859622</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>eb1d4c519e78c1d66da4cf57d8cccf99</srcmd5>
+    <version>2.11.0</version>
+    <time>1622664749</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to Go 1.14 as Go 1.16 breaks the build</comment>
+    <requestid>896984</requestid>
+  </revision>
 </revisionlist>

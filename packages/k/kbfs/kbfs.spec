@@ -1,7 +1,7 @@
 #
 # spec file for package kbfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018, Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,7 @@ Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
 BuildRequires:  fdupes
 BuildRequires:  git
+BuildRequires:  go1.14
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
 BuildRequires:  pkgconfig
