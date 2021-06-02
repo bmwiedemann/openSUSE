@@ -3,8 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/abraunegg/onedrive.git</param>
     <param name="filename">onedrive</param>
-    <param name="revision">v2.4.11</param>
-    <param name="version">2.4.11</param>
+    <param name="revision">v2.4.12</param>
+    <param name="version">2.4.12</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">**/bad-file-name.tar.xz</param>
   </service>
