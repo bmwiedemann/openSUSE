@@ -226,4 +226,17 @@
     <comment>- Fix library link, add Fix-library-link.patch (forwarded request 872536 from hillwood)</comment>
     <requestid>872538</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c18850797abf75c591b2adc09f71d250</srcmd5>
+    <version>6.1.2</version>
+    <time>1622664650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 6.1.2
+  * Add help documents
+  * Fix bug
+  * Use mpris-qt5
+- Add Patches: fix-return-type.patch and recompile-with-fPIC.patch
+- Drop deepin-music-Qt-5_15.patch, merged by upstream.</comment>
+    <requestid>891660</requestid>
+  </revision>
 </revisionlist>

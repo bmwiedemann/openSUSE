@@ -1,0 +1,12 @@
+diff -Nur deepin-music-6.1.2/CMakeLists.txt deepin-music-6.1.2-new/CMakeLists.txt
+--- deepin-music-6.1.2/CMakeLists.txt	2021-03-18 19:27:28.000000000 +0800
++++ deepin-music-6.1.2-new/CMakeLists.txt	2021-04-14 20:45:54.390757392 +0800
+@@ -9,6 +9,8 @@
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)
+ set(CMAKE_AUTOUIC ON)
++set(CMAKE_C_FLAGS "-fPIC")
++set(CMAKE_CXX_FLAGS "-fPIC")
+ 
+ option(USE_DXCB "integration with dxcb platform plugin" OFF)
+ option(DMR_DEBUG "turn on debug output" off)

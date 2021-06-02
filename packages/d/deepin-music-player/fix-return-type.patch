@@ -1,0 +1,11 @@
+diff -Nur deepin-music-6.1.2/src/music-player/widget/searchresulttabwidget.cpp deepin-music-6.1.2-new/src/music-player/widget/searchresulttabwidget.cpp
+--- deepin-music-6.1.2/src/music-player/widget/searchresulttabwidget.cpp	2021-03-18 19:27:28.000000000 +0800
++++ deepin-music-6.1.2-new/src/music-player/widget/searchresulttabwidget.cpp	2021-04-14 20:19:50.671019283 +0800
+@@ -189,6 +189,7 @@
+     } else if (m_StackedWidget->currentWidget() == m_singerListView) {
+         return m_singerListView->getSortType();
+     }
++    return DataBaseService::SortByNull;
+ }
+ 
+ QListView::ViewMode SearchResultTabWidget::getViewMode()

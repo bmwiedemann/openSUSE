@@ -2,7 +2,7 @@
 # spec file for package deepin-music-player
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2013-2020 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2013-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,14 @@
 #
 
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
+
 Name:           deepin-music-player
-Version:        6.0.1.91
+Version:        6.1.2
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later
@@ -27,8 +33,10 @@ URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix-library-link.patch hillwood@opensuse.org - Fix library link
 Patch0:         Fix-library-link.patch
-# PATCH-FIX-UPSTREAM deepin-music-Qt-5_15.patch  hillwood@opensuse.org - Support Qt 5.15+
-Patch1:         deepin-music-Qt-5_15.patch 
+# PATCH-FIX-UPSTREAM deepin-music-Qt-5_15.patch hillwood@opensuse.org - Fix return type error
+Patch1:         fix-return-type.patch
+# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
+Patch2:         recompile-with-fPIC.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Network-devel
@@ -41,6 +49,8 @@ BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(dbusextended-qt5)
+BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkgui)
 BuildRequires:  pkgconfig(dtkwidget)
@@ -52,10 +62,14 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue)
 BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(mpris-qt5)
 BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(udisks2-qt5)
 BuildRequires:  pkgconfig(xext)
 Requires:       qt5integration
 Provides:       deepin-music
+Requires:       vlc
+Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -68,10 +82,13 @@ supports colorful lyrics, online audio support and a "mini mode".
 %prep
 %autosetup -p1 -n deepin-music-%{version}
 sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-music/g' \
-music/music-player/data/deepin-music.desktop
+src/music-player/data/deepin-music.desktop
+sed -i '/CMAKE_INSTALL_VOICE_LIBDIR/s|/usr/lib|${CMAKE_INSTALL_LIBDIR}|' \
+src/libmusic-plugin/CMakeLists.txt
 
 %build
-%cmake
+%cmake -DVERSION=%{version}-%{distribution} \
+       -DAPP_VERSION=%{version}-%{distribution}
 %make_build
 
 %install
@@ -79,7 +96,7 @@ music/music-player/data/deepin-music.desktop
 
 find %{buildroot} -type f -name "*.a" -delete -print
 
-%suse_update_desktop_file -r deepin-music Player AudioVideo
+%suse_update_desktop_file -r deepin-music Audio Player
 %fdupes %{buildroot}%{_datadir}
 
 %files
@@ -89,6 +106,10 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_bindir}/deepin-music
 %{_datadir}/applications/deepin-music.desktop
 %{_datadir}/icons/hicolor/scalable/apps/deepin-music.svg
+%{_datadir}/deepin-manual
+%dir %{_libdir}/deepin-aiassistant
+%dir %{_libdir}/deepin-aiassistant/serivce-plugins
+%{_libdir}/deepin-aiassistant/serivce-plugins/libmusic-plugin.so
 
 %files lang
 %defattr(-,root,root,-)
