@@ -19,7 +19,7 @@
 %define _name dde-session-shell
 
 Name:           deepin-session-shell
-Version:        5.4.5
+Version:        5.4.9
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
 License:        GPL-3.0+
@@ -34,7 +34,7 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
 BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(gsettings-qt)
@@ -94,6 +94,7 @@ src/widgets/fullscreenbackground.cpp
 sed -i 's|backgrounds/deepin/desktop.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
 src/dde-shutdown/view/contentwidget.cpp
 sed -i 's|qdbus|qdbus-qt5|g' files/com.deepin.dde.lockFront.service files/com.deepin.dde.shutdownFront.service
+sed -i 's|DtkWidget5.5|DtkWidget|g' CMakeLists.txt tests/dde-lock/CMakeLists.txt tests/lightdm-deepin-greeter/CMakeLists.txt
 cp %{_datadir}/icons/hicolor/scalable/apps/openSUSE-distributor-logo.svg src/widgets/img/logo.svg
 
 %build
@@ -116,6 +117,7 @@ chmod 755 %{buildroot}%{_bindir}/*
 %{_sysconfdir}/deepin/greeters.d/00-xrandr
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/com.deepin.dde.session-shell.gschema.xml
 
 %files -n lightdm-deepin-greeter
 %defattr(-,root,root,-)
