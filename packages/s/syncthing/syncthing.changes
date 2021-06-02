@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  1 14:26:19 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.17.0
+  * This release deprecates TLS 1.2 for sync connections; other side should
+    be Syncthing 1.3.0 or newer, or see
+    insecureAllowOldTLSVersions.
+
+  * Bugfixes:
+    #7592: Web UI doesn't handle long machine names well
+    #7593: ChaCha priority detection logic broken
+    #7608: Files ignored on one remote do not get synced
+    #7649: Incorrect local and global states after ignoring and unignoring files
+    #7673: bug: cli subcommand is stuck on non-interactive shell
+    #7677: UTF-8 normalization doesn't work on macOS
+    #7685: CLI: strconv.ParseInt error when adding new device via CLI
+    #7699: Sharing receive encrypted folder as receive encrypted with yet another device creates conflicts
+
+  * Enhancements:
+    #7471: Improve UDP hole punching
+    #7580: Improve logging for service failures
+    #7594: Consider removing support for TLS <1.3 on sync connections
+    #7600: Fast connect to new devices following config update
+    #7636: Improve QUIC performance
+
+-------------------------------------------------------------------
 Sat May 29 12:40:56 UTC 2021 - Fabian Niepelt <fniepelt@takios.de>
 
 - Fix User, Group, EnvironmentFile and ReadWritePaths in systemd.service unit
