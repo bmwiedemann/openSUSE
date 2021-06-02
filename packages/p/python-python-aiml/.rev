@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>807676</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d4fdf3f55d2329ae311ca706732cb917</srcmd5>
+    <version>0.9.3</version>
+    <time>1622664722</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Provides for obsoleted symbol.
+- %check: use %pyunittest rpm macro
+</comment>
+    <requestid>896757</requestid>
+  </revision>
 </revisionlist>

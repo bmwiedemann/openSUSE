@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-aiml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+Provides:       python-aiml = %{version}-%{release}
 Obsoletes:      python-aiml < 0.9.0
 BuildArch:      noarch
 %python_subpackages
@@ -56,7 +57,7 @@ for a long time.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative aiml-bot

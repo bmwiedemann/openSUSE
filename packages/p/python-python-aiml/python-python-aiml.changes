@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 18:15:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing Provides for obsoleted symbol.
+
+-------------------------------------------------------------------
+Tue Jun  1 11:28:14 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Wed May 20 07:26:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
