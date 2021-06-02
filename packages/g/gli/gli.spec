@@ -1,7 +1,7 @@
 #
 # spec file for package gli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://gli.g-truc.net/
 Source:         https://github.com/g-truc/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gli-cmake-config.patch -- Fix cmake config location
 Patch1:         gli-cmake-config.patch
+Patch2:         gli-std::strstr.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  glm-devel
@@ -80,6 +81,7 @@ This package provides the documentation for GLI library.
 %prep
 %setup -q
 %patch1 
+%patch2 -p1
 
 %build
 %if 0%{?suse_version} < 1500
