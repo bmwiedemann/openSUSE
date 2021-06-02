@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-branding-openSUSE
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define deepin_desktop_schemas_version %(rpm -q --queryformat '%%{VERSION}' deepin-desktop-schemas)
 %define deepin_launcher_version %(rpm -q --queryformat '%%{VERSION}' deepin-launcher)
@@ -23,16 +24,17 @@ Name:           deepin-branding-openSUSE
 Version:        15.0
 Release:        0
 Summary:        openSUSE Branding of the Deepin Desktop Environment
-License:        GPL-2.0+
-URL:            https://github.com/linuxdeepin
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
+URL:            https://github.com/linuxdeepin
 Source0:        deepin-launcher.svg
 Source1:        com.deepin.dde.appearance.gschema.xml
 Source2:        com.deepin.dde.desktop.gschema.xml
 Source3:        com.deepin.dde.dock.gschema.xml
+Source4:        com.deepin.xsettings.gschema.xml
 BuildRequires:  deepin-desktop-schemas
-BuildRequires:  deepin-launcher
 BuildRequires:  deepin-icon-theme
+BuildRequires:  deepin-launcher
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -41,6 +43,7 @@ This package provides the openSUSE look and feel for the deepin desktop environm
 
 %package -n deepin-desktop-schemas-branding-openSUSE
 Summary:        openSUSE Branding of the Deepin Desktop Environment
+Group:          System/GUI/Other
 Requires:       deepin-desktop-schemas
 Conflicts:      otherproviders(deepin-desktop-schemas-branding)
 Provides:       deepin-desktop-schemas-branding = %{deepin_desktop_schemas_version}
@@ -51,6 +54,7 @@ This package provides the openSUSE definition for Deepin Desktop GSchemas.
 
 %package -n deepin-launcher-branding-openSUSE
 Summary:        openSUSE Branding of the Deepin Launcher
+Group:          System/GUI/Other
 Requires:       deepin-launcher
 Conflicts:      otherproviders(deepin-launcher-schemas-branding)
 Provides:       deepin-launcher-branding = %{deepin_launcher_version}
@@ -66,7 +70,7 @@ This package provides the openSUSE Logo for the deepin-launcher
 %install
 install -d %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 install -d %{buildroot}%{_datadir}/glib-2.0/schemas/
-install -m 0644 %{SOURCE1} %{SOURCE2} %{SOURCE3} %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -m 0644 %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 pushd %{_datadir}/icons/bloom/places
 ICON=`ls`
@@ -78,7 +82,6 @@ do
     install -d %{buildroot}%{_datadir}/icons/bloom-dark/places/$i/
     install -m 0644 %{SOURCE0} %{buildroot}%{_datadir}/icons/bloom-dark/places/$i/
 done
-
 
 %files -n deepin-desktop-schemas-branding-openSUSE
 %defattr(-,root,root,-)

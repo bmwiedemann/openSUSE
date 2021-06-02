@@ -7,4 +7,12 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886005</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>db2ab1c6e34f85bbc7a460b8790eed83</srcmd5>
+    <version>15.0</version>
+    <time>1622664643</time>
+    <user>dimstar_suse</user>
+    <comment>- Change defaut theme as deepin-dark</comment>
+    <requestid>891652</requestid>
+  </revision>
 </revisionlist>

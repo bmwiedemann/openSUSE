@@ -2,7 +2,7 @@
 <schemalist>
   <schema path="/com/deepin/dde/appearance/" id="com.deepin.dde.appearance" gettext-domain="DDE">
     <key type="s" name="gtk-theme">
-      <default>'deepin'</default>
+      <default>'deepin-dark'</default>
       <summary>Gtk+ theme</summary>
       <description>
         Basename of the default theme used by gtk+.
