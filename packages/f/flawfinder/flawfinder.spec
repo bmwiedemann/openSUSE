@@ -17,7 +17,7 @@
 
 
 Name:           flawfinder
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        C/C++ source code security flaw examination tool
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ sorted by severity, with the riskiest lines first.
 
 %prep
 %setup -q
-sed -i "s|!%{_bindir}/env python|!%{_bindir}/python3|" flawfinder
 
 %build
 %python3_build

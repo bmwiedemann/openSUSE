@@ -53,4 +53,21 @@
     number uniquely identifies a specific release.</comment>
     <requestid>862538</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>667bd22e6d0fecfb00b93c12487e4f41</srcmd5>
+    <version>2.0.16</version>
+    <time>1622664685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.16:
+  * The distributed source file is now flawfinder.py, not flawfinder.
+    This is part of a change that improves
+    improve cross-platform ease-of-use by using entry_points.
+    That said, &quot;make install&quot; will still
+    install it as &quot;flawfinder&quot; (so those who install it via
+    &quot;make install&quot; will see no change).
+  * Added support for generating SARIF output, use --sarif.
+  * Track curly brace level to reduce some problems, my thanks to
+  * Improved handling of Git patch format</comment>
+    <requestid>896596</requestid>
+  </revision>
 </revisionlist>
