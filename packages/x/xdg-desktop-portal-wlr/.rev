@@ -50,4 +50,17 @@
   * screencast: add outputchooser with config option</comment>
     <requestid>886483</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0038369edc1f0a5052ddf6973a42215</srcmd5>
+    <version>0.4.0</version>
+    <time>1622664726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * some CLI options have been replaced with config options.
+  * quotes in the config file are no longer allowed.
+  * Add wlroots to portal manifest UseIn list
+  * screenshot: implement `interactive` option
+  * screenshot: implement PickColor method</comment>
+    <requestid>896762</requestid>
+  </revision>
 </revisionlist>

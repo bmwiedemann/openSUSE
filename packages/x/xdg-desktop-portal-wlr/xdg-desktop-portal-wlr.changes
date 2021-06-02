@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 17:19:27 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.4.0:
+  * some CLI options have been replaced with config options.
+  * quotes in the config file are no longer allowed.
+  * Add wlroots to portal manifest UseIn list
+  * screenshot: implement `interactive` option
+  * screenshot: implement PickColor method
+
+-------------------------------------------------------------------
 Sun Apr 18 17:10:56 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 0.3.0:

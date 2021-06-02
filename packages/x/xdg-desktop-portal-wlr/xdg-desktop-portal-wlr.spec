@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-wlr
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        An xdg-desktop-portal backend for wlroots
 License:        MIT
@@ -25,10 +25,10 @@ Group:          System/Libraries
 URL:            https://github.com/emersion/xdg-desktop-portal-wlr
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{url}/releases/download/v%{version}/xdg-desktop-portal-wlr-%{version}.tar.gz.sig
-BuildRequires:  libiniparser-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.7
+BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.2
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 # Screencasting won't work without pipewire, but it's not a hard dependency.
 Recommends:     pipewire >= 0.3.2
-Requires:       libiniparser1
 Requires:       xdg-desktop-portal
 
 %description
