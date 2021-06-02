@@ -1,0 +1,37 @@
+diff -Nur deepin-manual-5.7.0.35/src/view/widget/search_button.cpp deepin-manual-5.7.0.35-new/src/view/widget/search_button.cpp
+--- deepin-manual-5.7.0.35/src/view/widget/search_button.cpp	2020-11-17 14:09:59.000000000 +0800
++++ deepin-manual-5.7.0.35-new/src/view/widget/search_button.cpp	2021-05-07 21:01:25.858787300 +0800
+@@ -24,6 +24,8 @@
+ #include <QHBoxLayout>
+ #include <QStylePainter>
+ 
++#include <QPainterPath>
++
+ DWIDGET_USE_NAMESPACE
+ 
+ SearchButton::SearchButton(QWidget *parent)
+diff -Nur deepin-manual-5.7.0.35/src/view/widget/search_completion_delegate.cpp deepin-manual-5.7.0.35-new/src/view/widget/search_completion_delegate.cpp
+--- deepin-manual-5.7.0.35/src/view/widget/search_completion_delegate.cpp	2020-11-17 14:09:59.000000000 +0800
++++ deepin-manual-5.7.0.35-new/src/view/widget/search_completion_delegate.cpp	2021-05-07 21:01:47.926778764 +0800
+@@ -3,6 +3,8 @@
+ 
+ #include <DStyleHelper>
+ 
++#include <QPainterPath>
++
+ SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
+     : DStyledItemDelegate(parent)
+     , m_parentView(parent)
+diff -Nur deepin-manual-5.7.0.35/src/view/widget/search_completion_window.cpp deepin-manual-5.7.0.35-new/src/view/widget/search_completion_window.cpp
+--- deepin-manual-5.7.0.35/src/view/widget/search_completion_window.cpp	2020-11-17 14:09:59.000000000 +0800
++++ deepin-manual-5.7.0.35-new/src/view/widget/search_completion_window.cpp	2021-05-07 21:02:20.294766249 +0800
+@@ -22,6 +22,9 @@
+ #include <DWindowManagerHelper>
+ 
+ #include <QStylePainter>
++
++#include <QPainterPath>
++
+ namespace {
+ 
+ const int kItemHeight = 34;

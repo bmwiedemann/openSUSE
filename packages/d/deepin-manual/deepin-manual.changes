@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun May 23 04:21:33 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Install a directoriy: %{_datadir}/deepin-manual/manual-assets/application 
+  for deepin application
+
+-------------------------------------------------------------------
+Fri May  7 13:44:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 5.7.0.35
+- Add support-Qt-5_15+.patch

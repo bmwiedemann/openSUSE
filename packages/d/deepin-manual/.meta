@@ -1,0 +1,5 @@
+<package name="deepin-manual" project="openSUSE:Factory">
+  <title>Deepin Manual</title>
+  <description>Deepin User Manual</description>
+  <devel project="X11:Deepin" package="deepin-manual"/>
+</package>
