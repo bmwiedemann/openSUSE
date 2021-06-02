@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  1 08:37:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.27.2:
+  - 16 base ANSI colors can be specified by their names
+
+    fzf --color fg:3,fg+:11
+    fzf --color fg:yellow,fg+:bright-yellow
+
+  - Fix bug where --read0 not properly displaying long lines
+
+-------------------------------------------------------------------
 Sat May 22 08:33:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.27.1:
