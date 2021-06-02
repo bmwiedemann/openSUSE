@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  2 10:13:30 CEST 2021 - tiwai@suse.de
+
+- Fix the build on TW after UsrMerge
+- Drop the ugly workaround for the symlink fixups again, as we
+  moved the base directory due to UsrMerge
+
+-------------------------------------------------------------------
 Tue Apr  6 16:08:30 CEST 2021 - tiwai@suse.de
 
 - Update to version 1.7:
