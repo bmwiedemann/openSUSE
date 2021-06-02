@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-prometheus_client
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0

@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  2 13:19:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.11.0 release
+  * [CHANGE] Specify that the labelvalues argument on metric constructors
+    is internal by renaming it to _labelvalues. If you are affected by this
+    change, it is likely that the metric was not being registered. #660
+  * [BUGFIX] write_to_textfile will overwrite files in windows. If using
+    python 3.4 or newer the replace will be atomic. #650
+
+-------------------------------------------------------------------
 Thu Apr  8 17:16:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.10.1 release
-  * [BUGFIX] Support lowercase prometheus_multiproc_dir environment 
+  * [BUGFIX] Support lowercase prometheus_multiproc_dir environment
     variable in mark_process_dead.
 
 -------------------------------------------------------------------
@@ -10,7 +20,7 @@ Mon Apr  5 23:44:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.10.0 release
   * [CHANGE] Python 2.6 is no longer supported. #592
-  * [CHANGE] The prometheus_multiproc_dir environment variable is 
+  * [CHANGE] The prometheus_multiproc_dir environment variable is
     deprecated in favor of PROMETHEUS_MULTIPROC_DIR. #624
   * [FEATURE] Follow redirects when pushing to Pushgateway using
     passthrough_redirect_handler. #622
@@ -49,7 +59,7 @@ Mon Feb 17 14:57:12 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 -------------------------------------------------------------------
 Mon Jul 29 11:39:05 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
 
-- Require python-futures instead of python2-futures for building for both sle12 and sle15 
+- Require python-futures instead of python2-futures for building for both sle12 and sle15
 
 -------------------------------------------------------------------
 Tue Jul 23 11:11:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -85,15 +95,15 @@ Thu May 23 12:32:36 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Be more resilient to certain file corruptions
   * Permit subclassing of MetricsHandler
   * Updates based on latest OpenMetrics draft spec discussions
-  * In multiprocess mode, ensure that metrics initialise to the 
+  * In multiprocess mode, ensure that metrics initialise to the
     correct file
   * Avoid re-entrant calls to GC collector's callback
   0.4.?
   * Disable GCCollector in multiprocess mode to prevent a deadlock
   * Fix OpenMetrics http negotiation handling
-  * Counter time series will now always be exposed with _total, and 
-    counter metrics will have a _total suffix stripped. This is as 
-    the internal data model is now OpenMetrics, rather than 
+  * Counter time series will now always be exposed with _total, and
+    counter metrics will have a _total suffix stripped. This is as
+    the internal data model is now OpenMetrics, rather than
     Prometheus Text Format
   * Samples now use a namedtuple
   * Add OpenMetrics exposition and parser
