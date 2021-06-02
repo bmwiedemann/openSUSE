@@ -7,4 +7,15 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886011</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0d0b1593485775a1ba23ad159c30074</srcmd5>
+    <version>5.4.7</version>
+    <time>1622664647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.7
+  * Update com.deepin.daemon.Timedate API
+  * Add Mock
+  * Fix bugs</comment>
+    <requestid>891655</requestid>
+  </revision>
 </revisionlist>

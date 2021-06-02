@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  1 14:44:15 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.7
+  * Update com.deepin.daemon.Timedate API
+  * Add Mock
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Mar 16 05:07:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.4

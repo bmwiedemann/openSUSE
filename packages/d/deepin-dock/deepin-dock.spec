@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-dock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,50 +13,52 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.4.4
+Version:        5.4.7
 Release:        0
-License:        GPL-3.0+
 Summary:        Deepin dock
-Url:            https://github.com/linuxdeepin/dde-dock
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
+URL:            https://github.com/linuxdeepin/dde-dock
 Source0:        https://github.com/linuxdeepin/dde-dock/archive/%{version}/%{_name}-%{version}.tar.gz
 Patch0:         %{name}-link-libraries.patch
+BuildRequires:  cmake
+BuildRequires:  dtkcore >= 5.0.0
+BuildRequires:  gmock
+BuildRequires:  gtest
+BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  dtkcore >= 5.0.0
-BuildRequires:  gtest
-BuildRequires:  pkgconfig(dde-network-utils)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5WebKit)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
+BuildRequires:  pkgconfig(dde-network-utils)
+BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
+BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
-BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  cmake
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xtst)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -74,6 +76,21 @@ The deepin-dock-devel package contains the header files for deepin-dock.
 %patch0 -p1
 sed -i "s/lrelease/lrelease-qt5/g" translate_generation.sh
 sed -i 's|no</allow_any>|auth_admin</allow_any>|g' plugins/overlay-warning/com.deepin.dde.dock.overlay.policy
+# sed -i 's|lib/|${CMAKE_INSTALL_LIBDIR}/|g' plugins/*/CMakeLists.txt
+# sed -i 's|/usr/lib|@CMAKE_INSTALL_LIBDIR@|g' frame/controller/dockpluginscontroller.cpp \
+# plugins/tray/system-trays/systemtrayscontroller.cpp
+
+sed -i '/TARGETS/s|lib|%{_lib}|' plugins/*/CMakeLists.txt \
+                                 plugins/plugin-guide/plugins-developer-guide.md
+
+sed -i 's|/usr/lib|%{_libdir}|' frame/controller/dockpluginscontroller.cpp \
+                          frame/panel/mainpanelcontrol.cpp \
+                          plugins/tray/system-trays/systemtrayscontroller.cpp
+
+sed -i 's|libdir.*|libdir=%{_libdir}|' dde-dock.pc.in
+
+sed -i 's|/usr/lib/dde-dock/plugins|%{_libdir}/dde-dock/plugins|' plugins/plugin-guide/plugins-developer-guide.md
+sed -i 's|local/lib/dde-dock/plugins|local/%{_lib}/dde-dock/plugins|' plugins/plugin-guide/plugins-developer-guide.md
 
 %build
 %cmake
@@ -87,12 +104,9 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 %defattr(-,root,root)
 %doc README.md CHANGELOG.md
 %license LICENSE
-%dir %{_sysconfdir}/dde-dock
-%dir %{_sysconfdir}/dde-dock/indicator
-%config %{_sysconfdir}/dde-dock/indicator/keybord_layout.json
-%{_bindir}/dde-dock
-%{_prefix}/lib/dde-dock
-%{_datadir}/dde-dock
+%{_bindir}/%{_name}
+%{_libdir}/%{_name}
+%{_datadir}/%{_name}
 # %dir %{_datadir}/polkit-1
 # %dir %{_datadir}/polkit-1/actions
 # %{_datadir}/polkit-1/actions/com.deepin.dde.dock.overlay.policy
@@ -100,10 +114,9 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 
 %files devel
 %defattr(-,root,root)
-%{_includedir}/dde-dock
+%{_includedir}/%{_name}
 %dir %{_libdir}/cmake/DdeDock
 %{_libdir}/cmake/DdeDock/DdeDockConfig.cmake
 %{_libdir}/pkgconfig/%{_name}.pc
 
 %changelog
-
