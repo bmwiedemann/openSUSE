@@ -24,7 +24,7 @@
 %else
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
-%define slibdir64 %{_libdir}
+%define slibdir64 %{_prefix}/lib64
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only

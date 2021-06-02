@@ -82,4 +82,12 @@ The compiler is NOT used by default.</comment>
   longer apply.</comment>
     <requestid>892216</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6e4ea500efa4f1a73897e7dc41d0c358</srcmd5>
+    <version>11.1.1+git121</version>
+    <time>1622664627</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix value of %slibdir64 for usrmerge (forwarded request 895524 from Andreas_Schwab)</comment>
+    <requestid>895536</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 19:21:01 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix value of %slibdir64 for usrmerge
+
+-------------------------------------------------------------------
 Mon May 10 12:08:19 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (23855a176609fe8dda6abaf2b2), git121
