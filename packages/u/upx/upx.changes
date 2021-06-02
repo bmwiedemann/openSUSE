@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:28:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix build with GCC 11:
+  * 0001-Silence-yet-some-more-compilation-warnings.patch
+
+-------------------------------------------------------------------
 Wed May 19 10:36:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch

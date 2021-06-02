@@ -133,4 +133,13 @@
   [CVE-2020-24119] [boo#1186238] (forwarded request 894300 from jengelh)</comment>
     <requestid>894328</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0c926f2c04292230aaed2c8f3f9e75e4</srcmd5>
+    <version>3.96</version>
+    <time>1622664686</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix build with GCC 11:
+  * 0001-Silence-yet-some-more-compilation-warnings.patch</comment>
+    <requestid>896605</requestid>
+  </revision>
 </revisionlist>

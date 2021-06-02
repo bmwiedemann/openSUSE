@@ -27,6 +27,7 @@ Source:         https://github.com/upx/upx/releases/download/v%{version}/upx-%{v
 Patch0:         upx-aarch64.patch
 Patch1:         upx-endiantests.patch
 Patch2:         0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch
+Patch3:         0001-Silence-yet-some-more-compilation-warnings.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel
 BuildRequires:  zlib-devel
