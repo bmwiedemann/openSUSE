@@ -23,6 +23,8 @@ Summary:        Single-header testing framework
 License:        MIT
 URL:            http://bit.ly/doctest-docs
 Source0:        https://github.com/onqtam/doctest/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -37,11 +39,12 @@ Summary:        Single-header testing framework
 C++98/C++11 single-header testing framework for unit tests and TDD.
 
 %prep
-%autosetup
+%autosetup -p1
+
+%build
 # fix cmake module path
 sed -i 's|lib/cmake|%{_lib}/cmake|g' CMakeLists.txt
 
-%build
 %cmake
 %cmake_build
 

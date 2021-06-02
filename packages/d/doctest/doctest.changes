@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:19:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 15:28:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.6

@@ -1,0 +1,40 @@
+From e0ff2bd492fd0dc4d25e6a507aa7d6766ce2da83 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jan.kundrat@cesnet.cz>
+Date: Mon, 17 May 2021 12:41:37 +0200
+Subject: [PATCH] Fix build with GCC 11
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 11 started warning about unused-but-set variables. Here's how it
+fails:
+
+ examples/all_features/stringification.cpp: In function ‘void _DOCTEST_ANON_FUNC_20()’:
+ examples/all_features/stringification.cpp:106:26: error: variable ‘bla2’ set but not used [-Werror=unused-but-set-variable]
+   106 |     MyTypeInherited<int> bla2;
+       |                          ^~~~
+
+I don't think that that assignment is actually doing anything; in fact,
+there's that other variable which is assigned in a similar manner, but
+that one is also used for an assert.
+---
+ examples/all_features/stringification.cpp | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/examples/all_features/stringification.cpp b/examples/all_features/stringification.cpp
+index a8b5d5b..492e1ec 100644
+--- a/examples/all_features/stringification.cpp
++++ b/examples/all_features/stringification.cpp
+@@ -103,9 +103,6 @@ TEST_CASE("all asserts should fail and show how the objects get stringified") {
+     MyTypeInherited<int> bla1;
+     bla1.one = 5;
+     bla1.two = 4u;
+-    MyTypeInherited<int> bla2;
+-    bla2.one = 5;
+-    bla2.two = 6u;
+ 
+     Bar::Foo f1;
+     Bar::Foo f2;
+-- 
+2.31.1
+
