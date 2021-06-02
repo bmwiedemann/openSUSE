@@ -28,7 +28,8 @@ URL:            http://rofi.roger-ferrer.org/eiciel/
 Source0:        http://rofi.roger-ferrer.org/eiciel/files/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM eiciel-sys-xattr.patch -- <attr/xattr.h> is deprecated, use <sys/xattr.h> instead
 Patch0:         eiciel-sys-xattr.patch
-
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Remove-deprecated-dynamic-exception-specifications.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel

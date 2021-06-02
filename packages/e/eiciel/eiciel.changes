@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 15:11:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Remove-deprecated-dynamic-exception-specifications.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 11:09:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
