@@ -258,4 +258,19 @@
       package to facilitate code sharing</comment>
     <requestid>879120</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1efb6ec68a8f2e27e44f0c4f157d6295</srcmd5>
+    <version>0.15.0</version>
+    <time>1622664743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.0:
+  * Helm chart: Migrate Helm chart to version 2 of the chart
+    format (only compatible with Helm 3)
+  * Helm chart: Add option to set activeDeadlineSeconds for
+    cronjobs (benji.cronJob.activeDeadlineSeconds) (#108)
+  * Update container images to fix CVE-2021-20288 in the
+    Ceph client code
+  * Revalidate invalid blocks during deep-scrubbing (#105)</comment>
+    <requestid>896938</requestid>
+  </revision>
 </revisionlist>

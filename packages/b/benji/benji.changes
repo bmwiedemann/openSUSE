@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  2 15:13:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * Helm chart: Migrate Helm chart to version 2 of the chart
+    format (only compatible with Helm 3)
+  * Helm chart: Add option to set activeDeadlineSeconds for
+    cronjobs (benji.cronJob.activeDeadlineSeconds) (#108)
+  * Update container images to fix CVE-2021-20288 in the
+    Ceph client code
+  * Revalidate invalid blocks during deep-scrubbing (#105)
+
+-------------------------------------------------------------------
 Mon Mar 15 09:23:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.1:
