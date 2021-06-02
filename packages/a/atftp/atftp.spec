@@ -23,7 +23,7 @@
 %endif
 
 Name:           atftp
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 Summary:        Advanced TFTP Server and Client
 License:        GPL-2.0-or-later
@@ -44,8 +44,6 @@ Patch4:         atftp-0.7-default_user_man.patch
 # PATCH-FIX-SUSE update default directory in man (bnc#507011)
 Patch5:         atftp-0.7-default_dir_man.patch
 Patch6:         atftp-drop_privileges_non-daemon.patch
-# PATCH-FIX-UPSTREAM bsc#1176437 CVE-2020-6097 Fix for DoS issue
-Patch7:         atftp-CVE-2020-6097.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pcre-devel
@@ -77,7 +75,6 @@ boot of hundreds of machines simultaneously.
 %patch4
 %patch5
 %patch6 -p1
-%patch7 -p1
 
 %build
 autoreconf -fi
@@ -86,7 +83,7 @@ CFLAGS="%optflags -fgnu89-inline"
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # SuSE rc
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_unitdir}/atftpd.service
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/atftpd.socket

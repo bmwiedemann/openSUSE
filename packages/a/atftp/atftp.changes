@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 25 23:26:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.4
+  * fix compile, missing include
+  * fix compile, add missing defines
+  * link against libpthread for atftp
+  * fixed atftp fails to write to /proc/self/fd/1
+  * Fix for DoS issue CVE-2020-6097
+  * remove inline keyword from definitions
+  * remove extern inlines
+  * sys/cdefs usage
+- Drop fixed atftp-CVE-2020-6097.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 08:30:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use system wide tftp user/group, don't create them again
