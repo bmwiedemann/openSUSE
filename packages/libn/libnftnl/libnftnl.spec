@@ -18,7 +18,7 @@
 
 Name:           libnftnl
 %define lname	libnftnl11
-Version:        1.1.9
+Version:        1.2.0
 Release:        0
 Summary:        Userspace library to access the nftables Netlink interface
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Source:         http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.bz2
 Source2:        http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.bz2.sig
 Source9:        %name.keyring
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libmnl) >= 1.0.3
+BuildRequires:  pkgconfig(libmnl) >= 1.0.4
 
 %description
 libnftnl is a userspace library providing a low-level netlink
