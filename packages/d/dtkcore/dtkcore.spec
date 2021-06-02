@@ -18,24 +18,27 @@
 
 
 %define libver 5
-%define apiver 5.0.0
+%define apiver 5.5.0
 
 Name:           dtkcore
-Version:        5.4.0
+Version:        5.4.13
 Release:        0
 Summary:        Deepin Tool Kit Core
 License:        LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dtkcore
 Source0:        https://github.com/linuxdeepin/dtkcore/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org - Need link to dl
+Patch0:         Fix-library-link.patch
+BuildRequires:  dtkcommon
 BuildRequires:  fdupes
+BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(gsettings-qt)
-Requires:       deepin-desktop-base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -48,6 +51,8 @@ firstly.
 %package -n lib%{name}%{libver}
 Summary:        Deepin Toolkit Core libraries
 Group:          System/Libraries
+Requires:       deepin-desktop-base
+Recommends:     qt5integration
 
 %description -n lib%{name}%{libver}
 Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work
@@ -56,6 +61,7 @@ on Deepin.
 %package devel
 Summary:        Development tools for dtkcore
 Group:          Development/Languages/C and C++
+Requires:       dtkcommon
 Requires:       lib%{name}%{libver} = %{version}
 
 %description devel
@@ -65,15 +71,16 @@ docs for dtkcore.
 You shoud firstly read the "Deepin Application Specification".
 
 %prep
-%setup -q
-sed -i 's/system(lrelease/system(lrelease-qt5/g' src/dtk_translation.prf
+%autosetup -p1
+# sed -i 's/system(lrelease/system(lrelease-qt5/g' src/dtk_translation.prf
 sed -i 's|#!/usr/bin/env python|#!/usr/bin/python3|g' tools/script/dtk-license.py
 sed -i 's|#!env python|#!/usr/bin/python3|g' tools/script/dtk-translate.py
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
         PREFIX=%{_prefix} \
-        LIB_INSTALL_DIR=%{_libdir}
+        LIB_INSTALL_DIR=%{_libdir} \
+        lrelease=lrelease-qt5
 %make_build
 
 %install
@@ -89,7 +96,6 @@ rm -rf %{buildroot}/usr/tests
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{_libdir}/libdtk-%{apiver}
-%{_datadir}/glib-2.0/schemas/com.deepin.dtk.gschema.xml
 
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
@@ -102,7 +108,7 @@ rm -rf %{buildroot}/usr/tests
 %{_includedir}/libdtk-%{apiver}
 %dir %{_libdir}/qt5
 %dir %{_libdir}/qt5/mkspecs
-%{_libdir}/qt5/mkspecs/features
+# %{_libdir}/qt5/mkspecs/features
 %{_libdir}/qt5/mkspecs/modules
 %dir %{_libdir}/cmake
 %{_libdir}/cmake/*

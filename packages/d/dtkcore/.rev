@@ -164,4 +164,13 @@
     <comment>- Need deepin-desktop-base (forwarded request 874463 from hillwood)</comment>
     <requestid>874464</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca09d07ee4ee2bbedf017f41516d8e1a</srcmd5>
+    <version>5.4.13</version>
+    <time>1622664677</time>
+    <user>dimstar_suse</user>
+    <comment>- Change Requires to Recommends for qt5integration, fix cycle dependence
+  for dtkgui and dtkwidget (forwarded request 896683 from hillwood)</comment>
+    <requestid>896684</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:59:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Change Requires to Recommends for qt5integration, fix cycle dependence
+  for dtkgui and dtkwidget
+
+-------------------------------------------------------------------
+Wed May  5 08:39:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.13
+  * Split some files to dtkcommon
+  * Update apiversion to 5.5.0
+  * Fix bugs
+  * Add qdbusxml2cpp-fix
+- Add Fix-library-link.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 03:26:24 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Need deepin-desktop-base 
