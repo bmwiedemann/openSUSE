@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 07:11:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Install ReadMe.txt instead of ReadMe.md.
+  Readme.md is a symlink pointing to the text file.
+
+-------------------------------------------------------------------
 Thu Apr 22 07:37:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.2.8

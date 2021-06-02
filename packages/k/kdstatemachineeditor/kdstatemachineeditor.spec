@@ -140,7 +140,7 @@ or QML that can then be used in Qt or QtQuick projects.
 
 %files -n %{libnamecore}
 %license LICENSES/*
-%doc CHANGES ReadMe.md
+%doc CHANGES ReadMe.txt
 %{_libdir}/libkdstatemachineeditor_core.so.%{sover}
 
 %files -n %{libnamedebuginterfaceclient}
