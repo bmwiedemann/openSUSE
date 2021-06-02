@@ -1,0 +1,5 @@
+<package name="deepin-voice-note" project="openSUSE:Factory">
+  <title></title>
+  <description>Voice Notes is a lightweight memo tool to make text notes and voice and audio recordings.</description>
+  <devel project="X11:Deepin" package="deepin-voice-note"/>
+</package>
