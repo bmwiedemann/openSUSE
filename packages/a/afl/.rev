@@ -921,4 +921,41 @@
     <comment>- Fix packaging for aarch64 and %arm (forwarded request 884046 from Guillaume_G)</comment>
     <requestid>884083</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c7d20b09976f613e5192b628a3442cc6</srcmd5>
+    <version>3.13c</version>
+    <time>1622664698</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.13c
+  - Note: plot_data switched to relative time from unix time in 3.10
+  - frida_mode - new mode that uses frida to fuzz binary-only targets,
+    it currently supports persistent mode and cmplog.
+    thanks to @WorksButNotTested!
+  - create a fuzzing dictionary with the help of CodeQL thanks to
+    @microsvuln! see utils/autodict_ql
+  - afl-fuzz:
+    - added patch by @realmadsci to support @@ as part of command line
+      options, e.g. `afl-fuzz ... -- ./target --infile=@@`
+    - add recording of previous fuzz attempts for persistent mode
+      to allow replay of non-reproducable crashes, see
+      AFL_PERSISTENT_RECORD in config.h and docs/envs.h
+    - fixed a bug when trimming for stdin targets
+    - cmplog -l: default cmplog level is now 2, better efficiency.
+      level 3 now performs redqueen on everything. use with care.
+    - better fuzzing strategy yield display for enabled options
+    - ensure one fuzzer sync per cycle
+    - fix afl_custom_queue_new_entry original file name when syncing
+      from fuzzers
+    - fixed a crash when more than one custom mutator was used together
+      with afl_custom_post_process
+    - on a crashing seed potentially the wrong input was disabled
+    - added AFL_EXIT_ON_SEED_ISSUES env that will exit if a seed in
+      -i dir crashes the target or results in a timeout. By default
+      afl++ ignores these and uses them for splicing instead.
+    - added AFL_EXIT_ON_TIME env that will make afl-fuzz exit fuzzing
+      after no new paths have been found for n seconds
+    - when AFL_FAST_CAL is set a variable path will now be calibrated
+      8 times instead of originally 40. Long calibration is now 20. (forwarded request 896670 from msmeissn)</comment>
+    <requestid>896671</requestid>
+  </revision>
 </revisionlist>
