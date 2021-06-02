@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 01 11:58:00 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1622538546.3dbc437d2:
+  * Fix failing stylecheck for tools/test_containers_compose
+  * Update docs about the special case of  BACKEND variable precedence
+
+-------------------------------------------------------------------
 Fri May 28 11:03:04 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1622199777.577b4d3e1:
