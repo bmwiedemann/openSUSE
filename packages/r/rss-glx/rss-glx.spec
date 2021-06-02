@@ -1,7 +1,7 @@
 #
 # spec file for package rss-glx
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch0:         rss-glx-optflags.patch
 # include MagickCore/MagickCore.h and MagickWand/MagickWand.h for
 # ImageMagick-7 instead; the upstream seem to be dead anyway though
 Patch1:         rss-glx-ImageMagick7.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  gcc-c++
 # directory ownership
@@ -54,15 +56,17 @@ Cool collection of 3D screensavers. Linux port of Really Slick Screensavers
 %setup -q -n %{name}_%{version}
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fiv
 %configure --disable-static \
-	--enable-shared \
-	--with-pic \
-    --with-configdir=%{_sysconfdir}/xscreensaver \
-	--program-prefix="%{name}-"
-make %{?_smp_mflags}
+  --enable-shared \
+  --with-pic \
+  --with-configdir=%{_sysconfdir}/xscreensaver \
+  --program-prefix="%{name}-"
+
+%make_build
 
 %install
 %make_install
@@ -77,7 +81,7 @@ rm -rf %{buildroot}%{_bindir}/%{name}-%{name}_install.pl
 mkdir -pv %{buildroot}%{_libdir}/xscreensaver
 pushd %{buildroot}%{_bindir}
 for i in `ls` ; do
-	ln -sf %{_bindir}/${i} %{buildroot}%{_libdir}/xscreensaver
+  ln -sf %{_bindir}/${i} %{buildroot}%{_libdir}/xscreensaver
 done
 popd
 
