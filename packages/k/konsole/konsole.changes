@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 12:17:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix scrollbar appearance in some configurations (kde#437223):
+  * 0001-Fix-alpha-channel-of-scrollbar-colors.patch
+
+-------------------------------------------------------------------
 Wed May 12 06:08:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
