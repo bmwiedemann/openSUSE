@@ -22,7 +22,7 @@
 %define   import_path     pkg.deepin.io/dde/api
 
 Name:           deepin-api
-Version:        5.4.2
+Version:        5.4.5
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
 License:        GPL-3.0+
@@ -40,7 +40,9 @@ Patch1:         disable-gosrc-install-in-makefile.patch
 Group:          System/GUI/Other
 BuildRequires:  fdupes
 BuildRequires:  deepin-gettext-tools
-# BuildRequires:  golang(API) = 1.11
+%if 0%{?suse_version} > 1500
+BuildRequires:  golang(API) = 1.15
+%endif
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(cairo-ft)
@@ -62,15 +64,13 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  update-desktop-files
 BuildRequires:  deepin-sound-theme
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(pkg.deepin.io/lib)
-BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.wm)
+BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-github-linuxdeepin-go-x11-client
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
 BuildRequires:  deepin-gir-generator
 Requires:       deepin-desktop-base
 Requires:       rfkill
 AutoReqProv:    Off
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
@@ -121,11 +121,10 @@ Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xi)
 Requires:       pkgconfig(libpulse-simple)
 Requires:       pkgconfig(alsa)
-Requires:       golang(pkg.deepin.io/lib)
-Requires:       golang(github.com/linuxdeepin/go-x11-client)
-Requires:       golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.wm)
+Requires:       golang-github-linuxdeepin-go-lib
 Requires:       golang-github-linuxdeepin-go-x11-client
-Requires:       go-gir-generator
+Requires:       golang-github-linuxdeepin-go-dbus-factory
+Requires:       deepin-gir-generator
 BuildArch:      noarch
 AutoReqProv:    On
 AutoReq:        Off
@@ -211,7 +210,6 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_bindir}/*
@@ -235,16 +233,13 @@ fi
 /var/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
 
 %files polkit
-%defattr(-,root,root,-)
 %{_bindir}/deepin-api-polkit-installer
 %{_datadir}/dde-api/polkit.tar.gz
 
 %files dbus
-%defattr(-,root,root,-)
 %{_bindir}/deepin-api-dbus-installer
 %{_datadir}/dde-api/dbus.tar.gz
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
-%defattr(-,root,root,-)
 
 %changelog
