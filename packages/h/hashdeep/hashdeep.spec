@@ -24,6 +24,8 @@ License:        SUSE-Public-Domain AND GPL-2.0-or-later
 Group:          System/Base
 URL:            http://md5deep.sourceforge.net/
 Source0:        https://github.com/jessek/hashdeep/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-errors-found-by-clang.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -39,7 +41,7 @@ directory structure. md5deep can also match input files against lists of known
 hashes in a variety of formats.
 
 %prep
-%setup -q -n %{name}-release-%{version}
+%autosetup -p1 -n %{name}-release-%{version}
 
 %build
 autoreconf -fiv
