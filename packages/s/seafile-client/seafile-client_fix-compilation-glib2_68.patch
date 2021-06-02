@@ -1,7 +1,24 @@
-diff -ru old/src/open-local-helper.cpp new/src/open-local-helper.cpp
---- old/src/open-local-helper.cpp	2021-04-28 08:02:48.192595377 +0200
-+++ new/src/open-local-helper.cpp	2021-04-28 08:03:11.732766082 +0200
-@@ -7,15 +7,12 @@
+From abea2a0afa14ed2976a5fbc00094a2933b946b56 Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Fri, 19 Feb 2021 14:01:31 +0000
+Subject: [PATCH] Remove `extern "C"` around glib headers
+
+Glib release 2.67.3 started conditionally using some C++ code[1] in the
+public headers and it's no longer legal to include "glib.h" or anything
+that includes it transitively from `extern "C"` block.
+---
+ src/open-local-helper.cpp       | 3 ---
+ src/rpc/rpc-client.cpp          | 4 ----
+ src/rpc/rpc-client.h            | 4 ----
+ src/rpc/rpc-server.cpp          | 4 ++--
+ src/utils/uninstall-helpers.cpp | 3 ---
+ 5 files changed, 2 insertions(+), 16 deletions(-)
+
+diff --git a/src/open-local-helper.cpp b/src/open-local-helper.cpp
+index a06d46532..2e4c26adb 100644
+--- a/src/open-local-helper.cpp
++++ b/src/open-local-helper.cpp
+@@ -7,7 +7,6 @@
  #include <QUrlQuery>
  #include <QVariant>
  
@@ -9,35 +26,38 @@ diff -ru old/src/open-local-helper.cpp new/src/open-local-helper.cpp
  #include <searpc-client.h>
  
  #include <searpc.h>
- #include <seafile/seafile.h>
+@@ -19,8 +18,6 @@ extern "C" {
  #include <seafile/seafile-object.h>
+ #endif
  
 -}
 -
  #include "utils/utils.h"
  #include "seafile-applet.h"
  #include "ui/main-window.h"
-diff -ru old/src/rpc/rpc-client.cpp new/src/rpc/rpc-client.cpp
---- old/src/rpc/rpc-client.cpp	2021-04-28 08:02:48.192595377 +0200
-+++ new/src/rpc/rpc-client.cpp	2021-04-28 08:03:23.492851190 +0200
+diff --git a/src/rpc/rpc-client.cpp b/src/rpc/rpc-client.cpp
+index 2c8b7fdf3..e60741b74 100644
+--- a/src/rpc/rpc-client.cpp
++++ b/src/rpc/rpc-client.cpp
 @@ -1,5 +1,3 @@
 -extern "C" {
 -
  #include <searpc-client.h>
  #include <searpc-named-pipe-transport.h>
  
-@@ -7,8 +5,6 @@
- #include <seafile/seafile.h>
+@@ -12,8 +10,6 @@ extern "C" {
  #include <seafile/seafile-object.h>
+ #endif
  
 -}
 -
  #include <QtDebug>
  #include <QMutexLocker>
  
-diff -ru old/src/rpc/rpc-client.h new/src/rpc/rpc-client.h
---- old/src/rpc/rpc-client.h	2021-04-28 08:02:48.192595377 +0200
-+++ new/src/rpc/rpc-client.h	2021-04-28 08:03:40.088971311 +0200
+diff --git a/src/rpc/rpc-client.h b/src/rpc/rpc-client.h
+index e92d06281..011656c81 100644
+--- a/src/rpc/rpc-client.h
++++ b/src/rpc/rpc-client.h
 @@ -6,14 +6,10 @@
  #include <QObject>
  #include <QMutex>
@@ -53,10 +73,11 @@ diff -ru old/src/rpc/rpc-client.h new/src/rpc/rpc-client.h
  // Here we can't forward-declare type json_t because it is an anonymous typedef
  // struct, and unlike libsearpc we have no way to rewrite its definition to give
  // it a name.
-diff -ru old/src/rpc/rpc-server.cpp new/src/rpc/rpc-server.cpp
---- old/src/rpc/rpc-server.cpp	2021-04-28 08:02:48.192595377 +0200
-+++ new/src/rpc/rpc-server.cpp	2021-04-28 08:04:15.493227483 +0200
-@@ -1,13 +1,11 @@
+diff --git a/src/rpc/rpc-server.cpp b/src/rpc/rpc-server.cpp
+index a17b50e0c..dbe78ccb8 100644
+--- a/src/rpc/rpc-server.cpp
++++ b/src/rpc/rpc-server.cpp
+@@ -1,10 +1,10 @@
 -extern "C" {
 -
  #include <searpc.h>
@@ -65,25 +86,26 @@ diff -ru old/src/rpc/rpc-server.cpp new/src/rpc/rpc-server.cpp
  #include <searpc-named-pipe-transport.h>
  
 +extern "C" {
++
  #include "searpc-signature.h"
  #include "searpc-marshal.h"
--
- }
  
- #include <QCoreApplication>
-diff -ru old/src/utils/uninstall-helpers.cpp new/src/utils/uninstall-helpers.cpp
---- old/src/utils/uninstall-helpers.cpp	2021-04-28 08:02:48.196595405 +0200
-+++ new/src/utils/uninstall-helpers.cpp	2021-04-28 08:04:27.749316151 +0200
-@@ -1,12 +1,9 @@
+diff --git a/src/utils/uninstall-helpers.cpp b/src/utils/uninstall-helpers.cpp
+index a238cf45e..e99db527d 100644
+--- a/src/utils/uninstall-helpers.cpp
++++ b/src/utils/uninstall-helpers.cpp
+@@ -1,4 +1,3 @@
 -extern "C" {
  #include <searpc-client.h>
  
  #include <searpc.h>
- #include <seafile/seafile.h>
+@@ -10,8 +9,6 @@ extern "C" {
  #include <seafile/seafile-object.h>
+ #endif
  
 -}
 -
  #include <QtGlobal>
  
  #if defined(Q_OS_WIN32)
+

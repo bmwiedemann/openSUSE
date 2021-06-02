@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 26 06:03:00 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v8.0.2:
+  * Fix bug for updating server address
+  * [Mac, Linux] Pop-up notification when uploading files whose names
+    are invalid on Windows
+  * [Cli] Add --json option for listing libraries
+  * Don't stop syncing a library when local folder is unavailable,
+    if option is set
+  * Use SOCKS5 proxy to resolve domain names
+- Removed fix_qpainterpath.patch
+- Rebase seafile-client_fix-compilation-glib2_68.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 05:45:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add seafile-client_fix-compilation-glib2_68.patch
