@@ -65,7 +65,7 @@ This package provides the development files for cmark.
 
 %build
 %cmake -DCMARK_TESTS=OFF -DCMARK_STATIC=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

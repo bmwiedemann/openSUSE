@@ -138,4 +138,12 @@
   * Include `references.h` in `parser.h` (#287). (forwarded request 721248 from mimi_vx)</comment>
     <requestid>721249</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4d0c80c113c7179036908f507cf358c0</srcmd5>
+    <version>0.29.0</version>
+    <time>1622664692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896649</requestid>
+  </revision>
 </revisionlist>
