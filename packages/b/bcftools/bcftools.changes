@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Fri May 14 10:42:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.12
+  * The output file type is determined from the output file name
+    suffix, where available, so the -O/--output-type option is often
+    no longer necessary.
+  * Make F_MISSING in filtering expressions work for sites with
+    multiple ALT alleles
+  * Fix N_PASS and F_PASS to behave according to expectation when
+    reverse logic is used (#1397). This fix has the side effect of
+    query (or programs like +trio-stats) behaving differently with
+    these expressions, operating now in site-oriented rather than
+    sample-oriented mode.
+  * bcftools annotate:
+    * New --rename-annots option to help fix broken VCFs
+    * New -C option allows to read a long list of options from a file
+      to prevent very long command lines.
+    * New append-missing logic allows annotations to be added for
+      each ALT allele in the same order as they appear in the VCF.
+  * bcftools concat:
+    * Do not phase genotypes by mistake if they are not already
+      phased with -l
+  * bcftools consensus:
+    * New --mask-with, --mark-del, --mark-ins, --mark-snv options
+    * Symbolic <DEL> should have only one REF base. If there are
+      multiple, take POS+1 as the first deleted base.
+    * Make consensus work when the first base of the reference genome
+      is deleted.
+  * bcftools +contrast:
+    * The NOVELGT annotation was previously not added when requested.
+  * bcftools convert:
+    * Make the --hapsample and --hapsample2vcf options consistent with
+      each other and with the documentation.
+  * bcftools call:
+    * Revamp of call -G, previously sample grouping by population was
+      not truly independent and could still be influenced by the
+      presence of other sample groups.
+    * Optional addition of INFO/PV4 annotation with call -a INFO/PV4
+    * Remove generation of useless HOB and ICB annotation;
+      use +fill-tags -- -t HWE,ExcHet instead
+    * The call -f option was renamed to -a to (1) make it consistent
+      with mpileup and (2) to indicate that it includes both INFO and
+      FORMAT annotations
+  * bcftools csq:
+    * Fix a bug wich caused incorrect FORMAT/BCSQ formatting at sites
+      with too many per-sample consequences
+    * Fix a bug which incorrectly handled the --ncsq parameter and
+      could clash with reserved BCF values, consequently producing
+      truncated or even incorrect output of the %TBCSQ formatting
+      expression in bcftools query.
+  * bcftools +fill-tags:
+    * MAF definition revised for multiallelic sites, the second most
+      common allele is considered to be the minor allele
+    * New FORMAT/VAF, VAF1 annotations to set the fraction of
+      alternate reads provided FORMAT/AD is present
+  * bcftools gtcheck:
+    * support matching of a single sample against all other samples
+      in the file with -s qry:sample -s gt:-.
+  * bcftools merge:
+    * Make merge -R behavior consistent with other commands and pull
+      in overlapping records with POS outside of the regions
+    * Bug fix
+  * bcftools mpileup:
+    * Add new optional tag mpileup -a FORMAT/QS
+  * bcftools norm:
+    * New -a, --atomize functionality to decompose complex variants,
+      for example MNVs into consecutive SNVs
+    * New option --old-rec-tag to indicate the original variant
+  * bcftools query:
+    * Incorrect fields were printed in the per-sample output when
+      subset of samples was requested via -s/-S and the order of
+      samples in the header was different from the requested -s/-S order
+  * bcftools +prune:
+    * New options --random-seed and --nsites-per-win-mode
+  * bcftools +split-vep:
+    * Transcript selection now works also on the raw CSQ/BCSQ annotation.
+    * Bug fix, samples were dropped on VCF input and VCF/BCF output
+  * bcftools stats:
+    * Changes to QUAL and ts/tv plotting stats: avoid capping QUAL to
+      predefined bins, use an open-range logarithmic binning instead
+    * plot dual ts/tv stats: per quality bin and cumulative as if
+      threshold applied on the whole dataset
+  * bcftools +trio-dnm2:
+    * Major revamp of +trio-dnm plugin, which is now deprecated
+      and replaced by +trio-dnm2.
+    * The original trio-dnm calling model used genotype likelihoods
+      (PLs) as the input for calling.
+    * This new version also implements the DeNovoGear model.
+    * For more details see http://samtools.github.io/bcftools/trio-dnm.pdf
+- Update use_python3.patch
+
+-------------------------------------------------------------------
+Thu May 13 00:53:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.11
+  * Breaking change in -i/-e expressions on the FILTER column.
+    The new behaviour is:
+        Expression 	Result
+        FILTER="A" 	Exact match, for example "A;B" does not pass
+        FILTER!="A" 	Exact match, for example "A;B" does pass
+        FILTER~"A" 	Both "A" and "A;B" pass
+        FILTER!~"A" 	Neither "A" nor "A;B" pass
+  * Fix in commutative comparison operators, in some cases reversing
+    sides would produce incorrect results
+  * Better support for filtering on sample subsests
+  * bcftools annotate:
+    * Previously it was not possible to use --columns =TAG with INFO
+      tags and the --merge-logic feature was restricted to tab files
+      with BEG,END columns, now extended to work also with REF,ALT.
+    * Make annotate -TAG/+TAG work also with FORMAT fields.
+    * ID and FILTER can be transferred to INFO and ID can be populated
+      from INFO.
+  * bcftools consensus:
+    * Fix in handling symbolic deletions and overlapping variants.
+    * Fix --iupac-codes crash on REF-only positions with ALT=".".
+    * Fix --chain crash
+    * Preserve the case of the genome reference.
+    * Add new -a, --absent option which allows to set positions with
+      no supporting evidence to "N" (or any other character).
+  * bcftools convert:
+    * The option --vcf-ids now works also with -haplegendsample2vcf.
+    * New option --keep-duplicates
+  * bcftools csq:
+    * Add misc/gff2gff.py script for conversion between various
+      flavors of GFF files. The initial commit supports only one type
+    * Add missing consequence types.
+    * Allow overlapping CDS to support ribosomal slippage.
+  * bcftools +fill-tags:
+    * Added new annotations: INFO/END, TYPE, F_MISSING.
+  * bcftools filter:
+    * Make --SnpGap optionally filter also SNPs close to other variant
+      types.
+  * bcftools gtcheck:
+    * Complete revamp of the command. The new version is faster and allows
+    N:M sample comparisons, not just 1:N or NxN comparisons. Some
+    functionality was lost (plotting and clustering) but may be added back
+    on popular demand.
+  * bcftools +mendelian:
+    * Revamp of user options, output VCFs with mendelian errors annotation,
+    read PED files
+  * bcftools merge:
+    * Update headers when appropriate with the '--info-rules *:join'
+      INFO rule.
+    * Local alleles merging that produce LAA and LPL when requested, a
+      draft implementation of samtools/hts-specs#434
+    * New --no-index which allows to merge unindexed files.
+    * Fixes in gVCF merging.
+  * bcftools norm:
+    * Fixes in --check-ref s reference setting features with non-ACGT bases.
+    * New --keep-sum switch to keep vector sum constant when splitting
+      multiallelics.
+  * bcftools +prune:
+    * Extend to allow annotating with various LD metrics: r^2, Lewontin's D'
+  * bcftools query:
+    * New %N_PASS() formatting expression to output the number of samples
+      that pass the filtering expression.
+  * bcftools reheader:
+    * Improved error reporting to prevent user mistakes.
+  * bcftools roh:
+    * The --AF-file description incorrectly suggested "REF\tALT"
+      instead of the correct "REF,ALT".
+    * RG lines could have negative length.
+    * new --include-noalt option to allow also ALT=. records.
+  * bcftools scatter:
+    * New plugin intended as a convenient inverse to concat
+  * bcftools +split:
+    * New --groups-file option for more flexibility of defining
+      desired output
+    * New --hts-opts option to reduce required memory by reusing
+      one output
+      header and allow overriding the default hFile's block size
+    * Add support for multisample output and sample renaming
+  * bcftools +split-vep:
+    * Add default types (Integer, Float, String) for VEP subfields
+      and make --columns - extract all subfields into INFO tags
+      in one go.
+
+-------------------------------------------------------------------
 Tue Feb 25 11:46:58 UTC 2020 - Pierre Bonamy <flyos@mailoo.org>
 
 - Changed python dependencies from python3 to python3-base and

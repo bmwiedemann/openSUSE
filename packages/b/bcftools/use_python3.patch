@@ -6,11 +6,10 @@ The package currently uses the "python" executable, but it should be
 python3 compatible according to the documentation.  This patch changes
 all the executables to use "python3" instead of "python".
 
-
-diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.1 b/doc/bcftools.1
---- a/doc/bcftools.1
-+++ b/doc/bcftools.1
-@@ -5440,7 +5440,7 @@
+diff -Nur bcftools-1.12/doc/bcftools.1 new/doc/bcftools.1
+--- bcftools-1.12/doc/bcftools.1	2021-03-17 10:16:18.000000000 +0100
++++ new/doc/bcftools.1	2021-05-14 12:40:00.545719382 +0200
+@@ -5773,7 +5773,7 @@
  .nf
  # The final looks can be customized by editing the generated
  # \*(Aqoutdir/plot\&.py\*(Aq script and re\-running manually
@@ -19,24 +18,22 @@ diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.1 b/doc/bcftools.1
  .fi
  .if n \{\
  .RE
-
-diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.html b/doc/bcftools.html
---- a/doc/bcftools.html
-+++ b/doc/bcftools.html
-@@ -3012,7 +3012,7 @@
+diff -Nur bcftools-1.12/doc/bcftools.html new/doc/bcftools.html
+--- bcftools-1.12/doc/bcftools.html	2021-03-17 10:16:18.000000000 +0100
++++ new/doc/bcftools.html	2021-05-14 12:40:00.553719441 +0200
+@@ -3171,7 +3171,7 @@
  bcftools stats -s - &gt; file.vchk</pre><pre class="literallayout"># Plot the stats
  plot-vcfstats -p outdir file.vchk</pre><pre class="literallayout"># The final looks can be customized by editing the generated
  # 'outdir/plot.py' script and re-running manually
--cd outdir &amp;&amp; python plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1" title="PERFORMANCE"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
-+cd outdir &amp;&amp; python3 plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1" title="PERFORMANCE"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
+-cd outdir &amp;&amp; python plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
++cd outdir &amp;&amp; python3 plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
  are internally converted into BCF representation. Simple operations, like removing
  a single column from a VCF file, can be therefore done much faster with standard
  UNIX commands, such as <span class="strong"><strong>awk</strong></span> or <span class="strong"><strong>cut</strong></span>.
-
-diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.txt b/doc/bcftools.txt
---- a/doc/bcftools.txt
-+++ b/doc/bcftools.txt
-@@ -3101,7 +3101,7 @@
+diff -Nur bcftools-1.12/doc/bcftools.txt new/doc/bcftools.txt
+--- bcftools-1.12/doc/bcftools.txt	2021-03-10 17:48:14.000000000 +0100
++++ new/doc/bcftools.txt	2021-05-14 12:40:00.557719471 +0200
+@@ -3278,7 +3278,7 @@
  
      # The final looks can be customized by editing the generated
      # 'outdir/plot.py' script and re-running manually
@@ -45,10 +42,18 @@ diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.txt b/doc/bcftools.txt
  --
  
  PERFORMANCE
-
-diff -U 3 -H -w -E -d -r -N -- a/polysomy.c b/polysomy.c
---- a/polysomy.c
-+++ b/polysomy.c
+diff -Nur bcftools-1.12/misc/guess-ploidy.py new/misc/guess-ploidy.py
+--- bcftools-1.12/misc/guess-ploidy.py	2019-11-05 15:56:36.000000000 +0100
++++ new/misc/guess-ploidy.py	2021-05-14 12:40:24.421895595 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ #
+ # Plot the output of "bcftools +guess-ploidy -v"
+ #
+diff -Nur bcftools-1.12/polysomy.c new/polysomy.c
+--- bcftools-1.12/polysomy.c	2019-05-30 23:56:51.000000000 +0200
++++ new/polysomy.c	2021-05-14 12:40:24.421895595 +0200
 @@ -253,7 +253,7 @@
      FILE *fp = open_file(&fname,"w","%s/dist.py", args->output_dir);
  //-------- matplotlib script --------------
@@ -58,11 +63,10 @@ diff -U 3 -H -w -E -d -r -N -- a/polysomy.c b/polysomy.c
          "#\n"
          "import matplotlib as mpl\n"
          "mpl.use('Agg')\n"
-
-diff -U 3 -H -w -E -d -r -N -- a/vcfcnv.c b/vcfcnv.c
---- a/vcfcnv.c
-+++ b/vcfcnv.c
-@@ -320,7 +320,7 @@
+diff -Nur bcftools-1.12/vcfcnv.c new/vcfcnv.c
+--- bcftools-1.12/vcfcnv.c	2020-02-17 14:05:23.000000000 +0100
++++ new/vcfcnv.c	2021-05-14 12:40:00.537719323 +0200
+@@ -321,7 +321,7 @@
  {
      if ( th>100 ) return;   // create no plots
  
@@ -70,17 +74,4 @@ diff -U 3 -H -w -E -d -r -N -- a/vcfcnv.c b/vcfcnv.c
 +    char *cmd = msprintf("python3 %s -p %f", script, th);
      int ret = system(cmd);
      if ( ret) fprintf(stderr, "The command returned non-zero status %d: %s\n", ret, cmd);
-     free(cmd);
-
-diff -U 3 -H -w -E -d -r -N -- a/vcfgtcheck.c b/vcfgtcheck.c
---- a/vcfgtcheck.c
-+++ b/vcfgtcheck.c
-@@ -60,7 +60,7 @@
- {
-     mkdir_p(script);
-     int len = strlen(script);
--    char *cmd = !strcmp(".py",script+len-3) ? msprintf("python %s", script) : msprintf("python %s.py", script);
-+    char *cmd = !strcmp(".py",script+len-3) ? msprintf("python3 %s", script) : msprintf("python3 %s.py", script);
-     int ret = system(cmd);
-     if ( ret ) fprintf(stderr, "The command returned non-zero status %d: %s\n", ret, cmd);
      free(cmd);

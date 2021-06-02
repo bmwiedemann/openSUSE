@@ -1,7 +1,7 @@
 #
 # spec file for package bcftools
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bcftools
-Version:        1.10.2
-%define minor   %(cut -d '.' -f 1,2 <<< %{version})
+Version:        1.12
 Release:        0
+%define minor   %(cut -d '.' -f 1,2 <<< %{version})
 Summary:        Tools for manipulating variant calls in the Variant Call Format (VCF)
 License:        MIT
 Group:          Productivity/Scientific/Other
@@ -28,7 +28,7 @@ URL:            http://www.htslib.org/
 Source:         https://github.com/samtools/bcftools/releases/download/%{version}/bcftools-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE use_python3.patch -- Use python3 executable instead of python2
 Patch0:         use_python3.patch
-BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gsl-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libhts-devel >= %{minor}
@@ -53,8 +53,7 @@ of samtools. BCFtools are meant as a faster replacement for most of the perl VCF
 %autosetup -p1
 
 %build
-autoheader
-autoconf
+autoreconf -fi
 %configure --with-htslib=system
 make USE_GSL=1 %{?_smp_mflags}
 
@@ -66,7 +65,7 @@ perlbin=`which perl`
 sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/*.pl
 sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/plot-vcfstats
 pybin=`which python3`
-sed -i "s:/usr/bin/env python:${pybin}:" %{buildroot}/%{_bindir}/*.py
+sed -i -E "s:/usr/bin/env python3?:${pybin}:" %{buildroot}/%{_bindir}/*.py
 
 %files
 %license LICENSE
