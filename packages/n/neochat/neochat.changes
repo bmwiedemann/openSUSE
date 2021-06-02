@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 14:04:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.0
+  * major UI redesign
+  * chage page is now using bubbles
+  * it's now possible to send custom reactions by replying
+    to a comment with /react <message>
+  * now supports opening Matrix URI from the web browser
+
+-------------------------------------------------------------------
 Thu Feb 25 18:52:07 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.1.1

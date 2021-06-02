@@ -16,13 +16,13 @@
 #
 
 
-%define _kf5_version 5.76.0
+%define _kf5_version 5.77.0
 %bcond_without  lang
 Name:           neochat
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
-License:        GPL-3.0-or-later AND GPL-3.0-only AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/neochat/%{version}/%{name}-%{version}.tar.xz
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
+BuildRequires:  cmake(KF5QQC2DesktopStyle) >= %{_kf5_version}
 BuildRequires:  cmake(KQuickImageEditor) >= 0.1
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
