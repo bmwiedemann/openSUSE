@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2-Plugin-WebSocket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Dancer2-Plugin-WebSocket
-Version:        0.2.0
-Release:        0
 %define cpan_name Dancer2-Plugin-WebSocket
+Name:           perl-Dancer2-Plugin-WebSocket
+Version:        0.3.1
+Release:        0
 Summary:        Add a websocket interface to your Dancers app
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Dancer2::Plugin)
@@ -56,12 +55,12 @@ supports the psgi _streaming_, _nonblocking_ and _io_. Twiggy is the most
 popular server fitting the bill.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,7 +71,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc AUTHOR_PLEDGE Changes CODE_OF_CONDUCT.md CONTRIBUTORS doap.xml example README.mkdn
 %license LICENSE
 

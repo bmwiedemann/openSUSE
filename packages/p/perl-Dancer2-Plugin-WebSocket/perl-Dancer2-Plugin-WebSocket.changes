@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 31 03:06:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.1
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-WebSocket/Changes
+
+  0.3.1 2021-05-30
+   [BUG FIXES]
+   - Fixed pod errors as reported by CPANTS. (GH#7, Mohammad S Anwar)
+   [STATISTICS]
+   - code churn: 3 files changed, 55 insertions(+), 41 deletions(-)
+  0.3.0 2021-05-30
+   [ENHANCEMENTS]
+   - add login hook. (GH#8, Vladislav Kantor)
+   [STATISTICS]
+   - code churn: 10 files changed, 306 insertions(+), 39 deletions(-)
+
+-------------------------------------------------------------------
 Mon Nov  9 11:07:08 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - updated with cpanspec version 1.79.01
