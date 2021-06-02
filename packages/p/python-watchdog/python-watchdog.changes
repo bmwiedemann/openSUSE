@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:02:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v2.1.2
+  * [mac] Fix relative path handling for non-recursive watch
+  * [windows] On PyPy, events happening right after start() were
+    missed. Add a workaround for that
+
+-------------------------------------------------------------------
 Mon May 17 11:26:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR on python-flaky.
