@@ -1,7 +1,7 @@
 #
 # spec file for package disomaster
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define  sover  1
 
 Name:           disomaster
-Version:        5.0.5
+Version:        5.0.7
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        A libisoburn wrapper
-Url:            https://github.com/linuxdeepin/disomaster
+URL:            https://github.com/linuxdeepin/disomaster
 Group:          Hardware/Other
 Source0:        https://github.com/linuxdeepin/disomaster/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(libisoburn-1)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(libisoburn-1)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
