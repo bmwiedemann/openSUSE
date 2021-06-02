@@ -1,7 +1,7 @@
 #
 # spec file for package racket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012, 2013 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 Name:           racket
-Version:        7.8
+Version:        8.1
 Release:        0
 Summary:        Scheme implementation with teaching tools
-License:        MIT or Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Scheme
 URL:            http://racket-lang.org
 Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{version}-src.tgz
@@ -62,7 +62,7 @@ BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-# The rpmbuild does not detect those! 
+# The rpmbuild does not detect those!
 Requires:       libcairo2
 Requires:       libedit0
 Requires:       libglib-2_0-0
@@ -116,7 +116,6 @@ Requires:       libffi-devel
 This package contains the symlinks, headers and object files needed to
 compile and link programs which use Racket.
 
-
 %prep
 %setup -q
 %patch0 -p0
@@ -127,12 +126,20 @@ cp -p %{SOURCE2} src/
 %build
 cd src/
 
-%add_optflags -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500 -fno-gcse
-%configure  --prefix="%{_datadir}" --docdir="%{_defaultdocdir}/%{name}" --enable-shared \
-    --disable-static --disable-strip --enable-places --enable-lt="%{_bindir}/libtool" \
+%add_optflags -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500 -fno-gcse -Wno-stringop-overread
+%configure \
+    --prefix="%{_prefix}" \
+    --docdir="%{_defaultdocdir}/%{name}" \
+    --enable-shared \
+%ifarch ppc64 ppc64le s390x
+    --enable-bcdefault \
+%endif
+    --disable-static \
+    --disable-strip \
+    --enable-places \
+    --enable-lt="%{_bindir}/libtool" \
     --enable-pthread
-
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 cd src/
@@ -146,7 +153,6 @@ install -d %{buildroot}/%{_datadir}/doc/%{name}/
 %make_install
 
 # we do not need *.la and *.a files
-
 find %{buildroot}%{_libdir} -name "*.la" -delete
 find %{buildroot}%{_libdir} -name "*.a" -delete
 find %{buildroot}%{_datadir} -name ".LOCKpkgs.rktd" -delete
@@ -169,7 +175,6 @@ do
     sed -ri '1s@(/usr/bin/)env +@\1@p' $bin
     chmod 755 $bin
 done
-chmod 755 %{buildroot}%{_datadir}/%{name}/pkgs/htdp-lib/2htdp/uchat/xrun
 
 for html in syntax/module-helpers rackunit/api reference/collects
 do
@@ -182,8 +187,13 @@ done
 install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/bash_completion/completions/%{name}
 install -Dm 644 %{_builddir}/%{name}-%{version}/share/pkgs/drracket/drracket/drracket.png %{buildroot}%{_datadir}/pixmaps/drracket.png
 
-# rewrite path in .desktop files
+# Remove references to buildroot
+sed -i "s|%{buildroot}||g" %{buildroot}%{_docdir}/%{name}/ts-reference/Typed_Classes.html
 
+# Remove compiled files
+rm -rf %{buildroot}%{_libdir}/racket/compiled
+
+# rewrite path in .desktop files
 %suse_update_desktop_file -c drracket "DrRacket" "DrRacket is an interactive, integrated, graphical programming environment for the Racket programming languages" "%{_bindir}/drracket" "drracket" Development IDE
 %suse_update_desktop_file -c slideshow "Slideshow" "Slideshow is a Racket-based tool for writing slide presentations as programs" "%{_bindir}/slideshow" "drracket" Development Documentation
 
@@ -225,13 +235,20 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %{_bindir}/slatex
 %{_bindir}/slideshow
 %{_bindir}/swindle
-%{_libdir}/libracket3m-%{version}.so
-%{_libdir}/%{name}/mzdyn3m.o
-%{_datadir}/%{name}/*
 %{_libdir}/%{name}/starter
 %{_libdir}/%{name}/gracket
 %{_libdir}/%{name}/starter-sh
 %{_libdir}/%{name}/*.rktd
+%ifnarch ppc64 ppc64le s390x
+%{_libdir}/%{name}/petite.boot
+%{_libdir}/%{name}/racket.boot
+%{_libdir}/%{name}/scheme.boot
+%endif
+%ifarch ppc64 ppc64le s390x
+%{_libdir}/libracket3m*
+%{_libdir}/%{name}/buildinfo
+%{_libdir}/%{name}/mzdyn3m.o
+%endif
 %{_mandir}/man1/mz*
 %{_mandir}/man1/racket*
 %{_mandir}/man1/raco*
@@ -244,13 +261,13 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/bash_completion
 %dir %{_datadir}/bash_completion/completions
-%dir %{_sysconfdir}/%{name}
 %{_datadir}/bash_completion/completions/%{name}
-%config %{_sysconfdir}/%{name}/config.rktd
 %{_datadir}/applications/drracket.desktop
 %{_datadir}/applications/slideshow.desktop
 %{_datadir}/pixmaps/drracket.png
-%exclude %{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/*
+%{_datadir}/%{name}/*
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/config.rktd
 
 %files doc
 %doc %{_docdir}/%{name}/*
@@ -258,9 +275,6 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 
 %files devel
 %{_includedir}/%{name}/*
-%{_libdir}/%{name}/buildinfo
-%{_libdir}/libracket3m.so
 %dir %{_includedir}/%{name}
-%{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/*
 
 %changelog

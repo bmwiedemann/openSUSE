@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May 31 08:09:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.1:
+  * DrRacket tabs can be dragged, and have new close buttons.
+  * Racket CS supports cross-compilation using raco exe.
+  * Racket CS supports Android on 32-bit and 64-bit ARM processors.
+  * The database library supports running queries in OS threads.
+  * Check-Syntax arrows correctly identify the definition site of
+    identifiers with contracts.
+  * Racket CS performance has improved for structure predicates
+    and accessors
+  * Racket CS is faster at multiplying extremely large numbers
+    and dividing large integers.
+  * Racket CS allows callbacks to raise exceptions if they are
+    annotated with #:callback-exns?.
+  * New ephemeron hash tables simplify the implementation of
+    tables where keys can refer to values.
+  * Typed Racket supports for/foldr.
+  * The stepper works for #lang htdp/*sl.
+  * Struct signatures work for the ASL teaching language.
+
+-------------------------------------------------------------------
+Tue Apr 27 11:34:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0:
+  * Racket CS is the default implementation
+    (except for ppc64le and s390x)
+  * Racket CS has better parallel garbage collection, a 10%–30% reduction
+    in the size of generated code, and various targeted optimizations.
+  * A rewrite of the test-engine package allows the #lang versions of
+    teaching languages to produce linked test-failure messages.
+  * The release comes with a new mark-up DSL for composing text to appear
+    in the REPL (simple-tree-text-markup).
+  * Redex has an added define-overriding-judgment form and improved
+    error source location reporting.
+  * Windows scrolling speed reflects the system preference.
+  * The db package uses the utf8mb4 charset for MySQL connections.
+- Rebase dont-strip.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 13:14:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.8:

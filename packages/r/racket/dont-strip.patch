@@ -1,7 +1,19 @@
-diff -ru old/src/cfg-racket new/src/cfg-racket
---- old/src/cfg-racket	2020-08-21 15:04:58.350336921 +0200
-+++ new/src/cfg-racket	2020-08-21 15:05:24.934420798 +0200
-@@ -7011,7 +7011,7 @@
+diff -ru old/src/bc/configure new/src/bc/configure
+--- old/src/bc/configure	2021-01-11 23:44:10.000000000 +0100
++++ new/src/bc/configure	2021-04-27 13:40:11.656962958 +0200
+@@ -7052,7 +7052,7 @@
+   LIBSFX=la
+   WXLIBS=WXLIBSDYN
+   ICP="${LIBTOOLPROG} --mode=install cp"
+-  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
++  ICP_LIB="${LIBTOOLPROG} --mode=install install"
+   ICP_STATIC_LIB='$(NOOP)'
+   MRLIBINSTALL="install-lib"
+   LIBFINISH="${LIBTOOLPROG} --mode=finish"
+diff -ru old/src/bc/configure.ac new/src/bc/configure.ac
+--- old/src/bc/configure.ac	2021-01-11 23:44:10.000000000 +0100
++++ new/src/bc/configure.ac	2021-04-27 13:40:12.884967341 +0200
+@@ -1358,7 +1358,7 @@
    LIBSFX=la
    WXLIBS=WXLIBSDYN
    ICP="${LIBTOOLPROG} --mode=install cp"
@@ -11,45 +23,33 @@ diff -ru old/src/cfg-racket new/src/cfg-racket
    MRLIBINSTALL="install-lib"
    LIBFINISH="${LIBTOOLPROG} --mode=finish"
 diff -ru old/src/cs/c/configure new/src/cs/c/configure
---- old/src/cs/c/configure	2020-08-21 15:04:58.366336971 +0200
-+++ new/src/cs/c/configure	2020-08-21 15:05:45.366485257 +0200
-@@ -5429,7 +5429,7 @@
+--- old/src/cs/c/configure	2021-01-11 23:44:14.000000000 +0100
++++ new/src/cs/c/configure	2021-04-27 13:40:17.672984418 +0200
+@@ -5570,7 +5570,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
 -  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
 +  ICP_LIB="${LIBTOOLPROG} --mode=install install"
+ 
+   CONFIGURE_RACKET_SO_COMPILE="env PLT_CS_MAKE_LINK_SHARED=y"
  else
-   ICP=cp
-   LTO="o"
 diff -ru old/src/cs/c/configure.ac new/src/cs/c/configure.ac
---- old/src/cs/c/configure.ac	2020-08-21 15:04:58.366336971 +0200
-+++ new/src/cs/c/configure.ac	2020-08-21 15:06:01.478536085 +0200
-@@ -658,7 +658,7 @@
+--- old/src/cs/c/configure.ac	2021-01-11 23:44:14.000000000 +0100
++++ new/src/cs/c/configure.ac	2021-04-27 13:39:05.168699229 +0200
+@@ -688,7 +688,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
 -  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
 +  ICP_LIB="${LIBTOOLPROG} --mode=install install"
+ 
+   CONFIGURE_RACKET_SO_COMPILE="env PLT_CS_MAKE_LINK_SHARED=y"
  else
-   ICP=cp
-   LTO="o"
-diff -ru old/src/racket/configure.ac new/src/racket/configure.ac
---- old/src/racket/configure.ac	2020-08-21 15:04:58.350336921 +0200
-+++ new/src/racket/configure.ac	2020-08-21 15:06:14.246576366 +0200
-@@ -1408,7 +1408,7 @@
-   LIBSFX=la
-   WXLIBS=WXLIBSDYN
-   ICP="${LIBTOOLPROG} --mode=install cp"
--  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
-+  ICP_LIB="${LIBTOOLPROG} --mode=install install"
-   ICP_STATIC_LIB='$(NOOP)'
-   MRLIBINSTALL="install-lib"
-   LIBFINISH="${LIBTOOLPROG} --mode=finish"
 diff -ru old/src/rktio/configure new/src/rktio/configure
---- old/src/rktio/configure	2020-08-21 15:04:58.406337098 +0200
-+++ new/src/rktio/configure	2020-08-21 15:06:40.086657892 +0200
-@@ -4568,7 +4568,7 @@
+--- old/src/rktio/configure	2021-01-11 23:44:18.000000000 +0100
++++ new/src/rktio/configure	2021-04-27 13:40:21.736998921 +0200
+@@ -4624,7 +4624,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
@@ -59,9 +59,9 @@ diff -ru old/src/rktio/configure new/src/rktio/configure
    ICP=cp
    LTO="o"
 diff -ru old/src/rktio/configure.ac new/src/rktio/configure.ac
---- old/src/rktio/configure.ac	2020-08-21 15:04:58.406337098 +0200
-+++ new/src/rktio/configure.ac	2020-08-21 15:06:49.942688988 +0200
-@@ -393,7 +393,7 @@
+--- old/src/rktio/configure.ac	2021-01-11 23:44:18.000000000 +0100
++++ new/src/rktio/configure.ac	2021-04-27 13:40:22.965003300 +0200
+@@ -425,7 +425,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
