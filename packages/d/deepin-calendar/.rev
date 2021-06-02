@@ -16,4 +16,12 @@
   * The new ui design. (forwarded request 869909 from hillwood)</comment>
     <requestid>869910</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cac3c3ef45bab8b487ff2cb91fc15c6</srcmd5>
+    <version>5.8.0.19</version>
+    <time>1622664641</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>891530</requestid>
+  </revision>
 </revisionlist>

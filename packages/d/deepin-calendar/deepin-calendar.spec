@@ -18,8 +18,14 @@
 
 %define _name dde-calendar
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
+
 Name:           deepin-calendar
-Version:        5.8.0.8
+Version:        5.8.0.19
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
@@ -79,7 +85,7 @@ sed -i 's/Exec=dde-calendar/Exec=env QT_QPA_PLATFORMTHEME=deepin dde-calendar/g'
 calendar-client/assets/dde-calendar.desktop
 
 %build
-%cmake
+%cmake -DVERSION=%{version}-%{distribution}
 %make_build
 
 %install
@@ -106,6 +112,7 @@ install -m0644 calendar-client/assets/resources/icon/%{_name}.svg \
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{_name}.svg
+%{_datadir}/deepin-manual
 
 %files lang
 %defattr(-,root,root,-)
