@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 25 07:46:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to versio 2.18.3:
+ - remove trailing comma after removed list comp
+
+-------------------------------------------------------------------
+Mon May 24 17:12:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.18.2:
+ -  don't rewrite list comp to generator expression in short-circuiting functions
+
+-------------------------------------------------------------------
+Fri May 21 16:01:15 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.18.1:
+ - check argument count for generator rewrite
+- update to version 2.18.0:
+ - use generator expressions in single arg func calls
+
+-------------------------------------------------------------------
+Wed May 19 07:23:18 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.17.0:
+ - Fix typo in the "is" example of README
+ - use generator to unpack list comprehension
+- update to version 2.16.0:
+ - don't crash on --py311-plus
+ - Use more inclusive language
+ - pep584-rewrite
+ - note pep584 change in README
+
+-------------------------------------------------------------------
 Sun May  9 09:50:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.15.0:
