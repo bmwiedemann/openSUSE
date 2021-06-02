@@ -315,6 +315,17 @@ make %{?_smp_mflags} all
 
 %install
 make install DESTDIR=%{buildroot}
+
+%ifarch x86_64
+mkdir -p \
+   %{buildroot}/usr/lib/wine/i386-windows \
+   %{buildroot}/usr/lib/wine/i386-unix
+ln -s \
+    /usr/lib/wine/i386-windows \
+    /usr/lib/wine/i386-unix    \
+  %buildroot/usr/%_lib/wine/
+%endif
+
 # install desktop file
 install -d %{buildroot}%{_datadir}/applications/
 %suse_update_desktop_file %{SOURCE4} System Emulator
@@ -444,6 +455,11 @@ chmod 755 %winedir/my-find-requires.sh
 %ifarch x86_64 aarch64
 %{_bindir}/wine64
 %{_bindir}/wine64-preloader
+%dir /usr/lib/wine/
+%dir /usr/lib/wine/i386-windows
+%dir /usr/lib/wine/i386-unix
+/usr/%{_lib}/wine/i386-windows
+/usr/%{_lib}/wine/i386-unix
 %endif
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/*-windows

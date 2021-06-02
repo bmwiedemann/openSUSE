@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 15:46:28 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- adjusted directories to load 32bit wine things from 64bit wine.
+
+-------------------------------------------------------------------
 Sat May 22 11:22:31 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.9 development release

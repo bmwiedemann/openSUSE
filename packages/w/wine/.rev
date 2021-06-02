@@ -4006,4 +4006,12 @@
 - update staging to 6.9 release</comment>
     <requestid>895051</requestid>
   </revision>
+  <revision rev="343" vrev="2">
+    <srcmd5>5a5d6b97b582bd6dbcf141455143cacc</srcmd5>
+    <version>6.9</version>
+    <time>1622664718</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>896736</requestid>
+  </revision>
 </revisionlist>
