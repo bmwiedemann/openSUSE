@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 27 17:07:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Bugs fixed:
+    - glgo#GNOME/hitori!28 help: Add Hitori icon as SVG
+    - glgo#GNOME/hitori!29 appdata: Fix project license
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar  8 09:57:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.1:

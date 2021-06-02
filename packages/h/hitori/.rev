@@ -214,4 +214,16 @@
     <comment>Update to 3.38.1 (forwarded request 877653 from dimstar)</comment>
     <requestid>880095</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9c643528f62cca90d851997ff8c6ebb5</srcmd5>
+    <version>3.38.2</version>
+    <time>1622664689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.38.2:
+  + Bugs fixed:
+    - glgo#GNOME/hitori!28 help: Add Hitori icon as SVG
+    - glgo#GNOME/hitori!29 appdata: Fix project license
+  + Updated translations. (forwarded request 896109 from iznogood)</comment>
+    <requestid>896636</requestid>
+  </revision>
 </revisionlist>
