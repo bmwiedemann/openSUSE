@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:32:33 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 10.2.5.1
+
+  * Remove nodejs version check via ExecJS, to be compatible with 2.8.1 (#203)
+
+-------------------------------------------------------------------
 Fri May 14 15:59:38 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 10.2.5.0
