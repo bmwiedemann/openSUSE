@@ -54,7 +54,7 @@ across mozilla services projects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
