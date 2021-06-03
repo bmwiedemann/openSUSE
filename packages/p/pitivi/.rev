@@ -309,4 +309,15 @@
     <comment></comment>
     <requestid>870249</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>271b5678bf476fe169ce0fcea23e1e3b</srcmd5>
+    <version>2021.05</version>
+    <time>1622759630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2021.05:
+  + Clips in the Media Library can be tagged.
+  + Drag a keyframe vertically or horizontally by pressing Ctrl.
+  + Keyboard shortcuts to seek to the previous/next marker. (forwarded request 896726 from polslinux)</comment>
+    <requestid>897162</requestid>
+  </revision>
 </revisionlist>
