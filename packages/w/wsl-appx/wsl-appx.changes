@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 28 20:41:06 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Set Tumbleweed appx version using same method as SLE and Leap.
+  * Concatenate VERSION_ID year and day of year to consume only one
+    segment of four segment appx version:
+    VERSION_ID="20210524" date --date=$VERSION_ID +"%y%j" -> 21144
+  * Transforming the TW version date to fit in one segment 0-65535
+    is necessary for compliance with the MS Store restriction that
+    version numbers must always increase. The two RELEASE digits
+    are each given their own segment for this reason.
+  * The kiwi generated appx file now contains both TW VERSION_ID
+    and the appx version for easier cross reference.
+  * As with SLE and Leap set digits two and three of appx VERSION
+    to 0 for subsequent regex or template substitution during kiwi
+    image build. With the zero digits e.g. 153.0.0.0 it is still
+    possible to manually create valid appx images for side load.
+  * Remove unused APPXNAME which is now set by kiwi direct appx
+    image creation.
+
+-------------------------------------------------------------------
 Thu May 13 07:24:07 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Remove circular dependency on kiwi WSL image to set release

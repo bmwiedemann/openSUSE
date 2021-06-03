@@ -117,20 +117,18 @@ PUBLISHER_DISPLAY_NAME="SUSE"
 # 0-65535, 0-65535, 0-65535, 0
 # Where the fourth segment is reserved for the MS Store use.
 if [ "$ID" = "opensuse-tumbleweed" ]; then
-	# Specify base 10 (10#) for VERSION_ID substring
-	# to avoid octal parsing for dates ending in 08 and 09
-	# printf: 08: invalid octal number
-	VERSION=`printf "%d.%d.%d%02d.0" "${VERSION_ID:2:4}" "$((10#${VERSION_ID:6}))" "${RELEASE%.*}" "${RELEASE#*.}"`
-	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$VERSION_ID.$RELEASE.appx"
+	# Concatenate VERSION_ID year and day to consume only one segment 0-65535 e.g. 20210524 -> 21144
+	# Retain RELEASE version number in the two remaining segments 0-65535.0-65535
+	# Example: VERSION_ID="20210524" date --date=$VERSION_ID +"%y%j" -> 21144
+	VERSION=`printf "%d.%d.%d.0" "$(date --date=$VERSION_ID +"%y%j")" "${RELEASE%.*}" "${RELEASE#*.}"`
 else
 	RELEASE="${RELEASE/lp???./}"
 	# Concatenate digits of VERSION_ID to consume only one segment 0-65535 e.g. 15.3 -> 153
 	# Retain RELEASE version number in the two remaining segments 0-65535.0-65535
 	VERSION=`printf "%d.%d.%d.0" "${VERSION_ID//\./}" "${RELEASE%.*}" "${RELEASE#*.}"`
-	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$RELEASE.appx"
 fi
 
-for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME SHORT_NAME APPXNAME; do
+for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME SHORT_NAME; do
 	eval echo "\"$i='\$$i'\""
 done > .settings
 

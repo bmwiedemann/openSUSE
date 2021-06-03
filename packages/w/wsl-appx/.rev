@@ -125,4 +125,27 @@
     <comment></comment>
     <requestid>894520</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>2eaa445604909faa00cd1ba234ed2035</srcmd5>
+    <version>1</version>
+    <time>1622759600</time>
+    <user>dimstar_suse</user>
+    <comment>- Set Tumbleweed appx version using same method as SLE and Leap.
+  * Concatenate VERSION_ID year and day of year to consume only one
+    segment of four segment appx version:
+    VERSION_ID=&quot;20210524&quot; date --date=$VERSION_ID +&quot;%y%j&quot; -&gt; 21144
+  * Transforming the TW version date to fit in one segment 0-65535
+    is necessary for compliance with the MS Store restriction that
+    version numbers must always increase. The two RELEASE digits
+    are each given their own segment for this reason.
+  * The kiwi generated appx file now contains both TW VERSION_ID
+    and the appx version for easier cross reference.
+  * As with SLE and Leap set digits two and three of appx VERSION
+    to 0 for subsequent regex or template substitution during kiwi
+    image build. With the zero digits e.g. 153.0.0.0 it is still
+    possible to manually create valid appx images for side load.
+  * Remove unused APPXNAME which is now set by kiwi direct appx
+    image creation.</comment>
+    <requestid>896705</requestid>
+  </revision>
 </revisionlist>
