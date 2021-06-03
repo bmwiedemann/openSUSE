@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  3 14:00:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %pkg_vcmp for util-linux requirement for %check
+- Add patch to avoid occasional test failure:
+  * 0001-Initialize-m_lastChildrenRefresh-to-be-really-in-the.patch
+
+-------------------------------------------------------------------
 Sun Mar 21 14:37:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.0.1:

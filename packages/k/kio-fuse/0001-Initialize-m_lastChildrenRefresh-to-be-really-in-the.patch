@@ -1,0 +1,28 @@
+From 1a8862daee5c3ef502d7cf04e451180c15e8f3a3 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 3 Jun 2021 15:50:40 +0200
+Subject: [PATCH] Initialize m_lastChildrenRefresh to be really in the past
+
+steady_clock's epoch is the system start and such a default constructed
+steady_clock::time_point might actually not be older than ATTR_TIMEOUT.
+By setting it to min() explicitly, it should be sufficiently behind.
+---
+ kiofusenode.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kiofusenode.h b/kiofusenode.h
+index 357b094..28a920a 100644
+--- a/kiofusenode.h
++++ b/kiofusenode.h
+@@ -76,7 +76,7 @@ public:
+ 	// be emitted on finish.
+ 	bool m_childrenRequested = false;
+ 	// Stores the last time a node's children were refreshed via KIO::listDir.
+-	std::chrono::steady_clock::time_point m_lastChildrenRefresh;
++	std::chrono::steady_clock::time_point m_lastChildrenRefresh = decltype(m_lastChildrenRefresh)::min();
+ 	// Returns true if a node is due for a readdir refresh, false otherwise.
+ 	bool haveChildrenTimedOut() { return m_lastChildrenRefresh < g_timeoutEpoch || (std::chrono::steady_clock::now() - m_lastChildrenRefresh) >= ATTR_TIMEOUT; }
+ 
+-- 
+2.25.1
+

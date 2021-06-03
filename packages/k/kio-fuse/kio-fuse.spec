@@ -29,6 +29,8 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kio-fuse.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Initialize-m_lastChildrenRefresh-to-be-really-in-the.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5KIO) >= 5.66.0
@@ -55,7 +57,7 @@ applications using FUSE.
 %install
 %kf5_makeinstall -C build
 
-%if 0%{?suse_version} > 1500
+%if %{pkg_vcmp util-linux >= 2.34}
 %check
 # The hack below only works with util-linux 3.34+.
 # Without working umount, the tests can't work :-(
