@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 21 13:31:07 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Backport fix for assert [bsc#1186040, swo#27889]:
+  * gdb-breakpoint-fix-assert-in-jit_event_handler.patch
+
+-------------------------------------------------------------------
 Wed May 12 14:12:41 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Remove fix due to regressions [bsc#1185638, swo#26327]:
