@@ -299,4 +299,12 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     <comment></comment>
     <requestid>874254</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>b731c30b08538dddc9dadf19fb8dcbc3</srcmd5>
+    <version>0.4.8</version>
+    <time>1622759628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897111</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,91 @@
+From a0ebd0037df973aed14779b51d59da3edc506b6a Mon Sep 17 00:00:00 2001
+From: Sebastian Freundt <freundt@ga-group.nl>
+Date: Fri, 5 Mar 2021 08:52:07 +0000
+Subject: [PATCH] fix, extend slot to capture INT64_MIN, fixes bug #124
+
+---
+ lib/dt-core-strpf.c |  4 ++--
+ lib/dt-core.c       |  2 +-
+ lib/strops.c        | 16 ++++++----------
+ 3 files changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/lib/dt-core-strpf.c b/lib/dt-core-strpf.c
+index e03f6501..b09608d6 100644
+--- a/lib/dt-core-strpf.c
++++ b/lib/dt-core-strpf.c
+@@ -289,8 +289,8 @@ __strpdt_card(struct strpdt_s *d, const char *sp, struct dt_spec_s s, char **ep)
+ 			sp = tp;
+ 		}
+ 		if (s.spfl == DT_SPFL_N_EPOCHNS) {
+-			d->st.ns = d->i % 1000000000;
+-			d->i /= 1000000000;
++			d->st.ns = d->i % 1000000000LL;
++			d->i /= 1000000000LL;
+ 		}
+ 		break;
+ 	}
+diff --git a/lib/dt-core.c b/lib/dt-core.c
+index 0232e788..913ed5c1 100644
+--- a/lib/dt-core.c
++++ b/lib/dt-core.c
+@@ -85,7 +85,7 @@
+ struct strpdt_s {
+ 	struct strpd_s sd;
+ 	struct strpt_s st;
+-	long int i;
++	int64_t i;
+ 
+ 	/* use 31 bits for the difference */
+ 	int32_t zdiff:31;
+diff --git a/lib/strops.c b/lib/strops.c
+index 5dd20965..7cc205a0 100644
+--- a/lib/strops.c
++++ b/lib/strops.c
+@@ -113,7 +113,7 @@ strtoi32(const char *str, const char **ep)
+ {
+ 	const char *sp = str;
+ 	bool negp = false;
+-	int32_t res = 0;
++	int32_t res = INT32_MIN;
+ 
+ 	if (*str == '-') {
+ 		negp = true;
+@@ -122,12 +122,10 @@ strtoi32(const char *str, const char **ep)
+ 	while (res < INT32_MAX / 10 && (unsigned char)(*sp ^ '0') < 10U) {
+ 		res *= 10, res += (unsigned char)(*sp++ ^ '0');
+ 	}
+-	if (UNLIKELY(sp == str)) {
+-		res = INT32_MIN;
+-	} else if (negp) {
++	if (negp) {
+ 		res = -res;
+ 	}
+-	*ep = (char*)sp;
++	*ep = res > INT32_MIN ? (char*)sp : (char*)str;
+ 	return res;
+ }
+ 
+@@ -137,7 +135,7 @@ strtoi64(const char *str, const char **ep)
+ {
+ 	const char *sp = str;
+ 	bool negp = false;
+-	int64_t res = 0;
++	int64_t res = INT64_MIN;
+ 
+ 	if (*str == '-') {
+ 		negp = true;
+@@ -146,12 +144,10 @@ strtoi64(const char *str, const char **ep)
+ 	while (res < INT64_MAX / 10 && (unsigned char)(*sp ^ '0') < 10U) {
+ 		res *= 10, res += (unsigned char)(*sp++ ^ '0');
+ 	}
+-	if (UNLIKELY(sp == str)) {
+-		res = INT64_MIN;
+-	} else if (negp) {
++	if (negp) {
+ 		res = -res;
+ 	}
+-	*ep = (char*)sp;
++	*ep = res > INT64_MIN ? (char*)sp : (char*)str;
+ 	return res;
+ }
+ 

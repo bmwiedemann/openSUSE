@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 17 09:48:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd.patch and
+  a0ebd0037df973aed14779b51d59da3edc506b6a.patch: fix test suite
+  run on 32bit archs.
+
+-------------------------------------------------------------------
 Sun Feb 21 18:58:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key

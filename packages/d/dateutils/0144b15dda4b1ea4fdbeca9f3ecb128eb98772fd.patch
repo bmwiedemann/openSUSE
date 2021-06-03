@@ -1,0 +1,88 @@
+From 0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd Mon Sep 17 00:00:00 2001
+From: Sebastian Freundt <freundt@ga-group.nl>
+Date: Mon, 22 Feb 2021 12:21:40 +0000
+Subject: [PATCH] minor, condense %s%N to DT_SPFL_N_EPOCHNS, fixes issue 123
+
+---
+ lib/dt-core-strpf.c | 10 ++++++++--
+ lib/dt-core.c       |  2 +-
+ lib/token.c         |  4 ++++
+ lib/token.h         |  2 ++
+ 4 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/lib/dt-core-strpf.c b/lib/dt-core-strpf.c
+index 2d460fef..e03f6501 100644
+--- a/lib/dt-core-strpf.c
++++ b/lib/dt-core-strpf.c
+@@ -277,7 +277,8 @@ __strpdt_card(struct strpdt_s *d, const char *sp, struct dt_spec_s s, char **ep)
+ 		res = __strpt_card(&d->st, sp, s, ep);
+ 		goto out_direct;
+ 
+-	case DT_SPFL_N_EPOCH: {
++	case DT_SPFL_N_EPOCH:
++	case DT_SPFL_N_EPOCHNS: {
+ 		/* read over @ */
+ 		const char *tp = sp;
+ 		tp += *tp == '@';
+@@ -287,6 +288,10 @@ __strpdt_card(struct strpdt_s *d, const char *sp, struct dt_spec_s s, char **ep)
+ 		} else {
+ 			sp = tp;
+ 		}
++		if (s.spfl == DT_SPFL_N_EPOCHNS) {
++			d->st.ns = d->i % 1000000000;
++			d->i /= 1000000000;
++		}
+ 		break;
+ 	}
+ 
+@@ -358,7 +363,8 @@ __strfdt_card(
+ 		res = __strft_card(buf, bsz, s, &d->st, that.t);
+ 		break;
+ 
+-	case DT_SPFL_N_EPOCH: {
++	case DT_SPFL_N_EPOCH:
++	case DT_SPFL_N_EPOCHNS: {
+ 		/* convert to sexy */
+ 		int64_t sexy = dt_conv_to_sexy(that).sexy;
+ 		res = snprintf(buf, bsz, "%" PRIi64, sexy);
+diff --git a/lib/dt-core.c b/lib/dt-core.c
+index afbd18fa..0232e788 100644
+--- a/lib/dt-core.c
++++ b/lib/dt-core.c
+@@ -702,7 +702,7 @@ dt_strpdt(const char *str, const char *fmt, char **ep)
+ 
+ 		if (spec.spfl == DT_SPFL_UNK) {
+ 			/* must be literal */
+-			if (*fp_sav != *sp++) {
++			if (UNLIKELY(*fp_sav != *sp++)) {
+ 				goto fucked;
+ 			}
+ 		} else if (LIKELY(!spec.rom)) {
+diff --git a/lib/token.c b/lib/token.c
+index e9e06df5..07dd0263 100644
+--- a/lib/token.c
++++ b/lib/token.c
+@@ -146,6 +146,10 @@ __tok_spec(const char *fp, const char **ep)
+ 		break;
+ 	case 's':
+ 		res.spfl = DT_SPFL_N_EPOCH;
++		if (fp[1U] == '%' && fp[2U] == 'N') {
++			res.spfl = DT_SPFL_N_EPOCHNS;
++			fp += 2U;
++		}
+ 		break;
+ 	case 'Z':
+ 		res.spfl = DT_SPFL_N_ZDIFF;
+diff --git a/lib/token.h b/lib/token.h
+index caca1dcd..72718fb0 100644
+--- a/lib/token.h
++++ b/lib/token.h
+@@ -85,6 +85,8 @@ typedef enum {
+ 	/* date/time specs */
+ 	/* %s epoch spec, non-standard */
+ 	DT_SPFL_N_EPOCH,
++	/* %s%N epoch spec, non-standard */
++	DT_SPFL_N_EPOCHNS,
+ 	/* %Z zone difference */
+ 	DT_SPFL_N_ZDIFF,
+ 	DT_SPFL_N_DTLAST = DT_SPFL_N_ZDIFF,

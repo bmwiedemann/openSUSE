@@ -26,6 +26,8 @@ URL:            https://github.com/hroptatyr/dateutils/
 Source0:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.asc
 Source2:        %{name}.keyring
+Patch0:         https://github.com/hroptatyr/dateutils/commit/0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd.patch
+Patch1:         https://github.com/hroptatyr/dateutils/commit/a0ebd0037df973aed14779b51d59da3edc506b6a.patch
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  timezone
