@@ -1487,4 +1487,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>883802</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>9df08fd0d56c277c9376b0048b579492</srcmd5>
+    <version>2.4.106</version>
+    <time>1622759590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894907</requestid>
+  </revision>
 </revisionlist>
