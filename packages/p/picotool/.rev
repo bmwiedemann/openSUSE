@@ -31,4 +31,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>892433</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>016cd8317c99215740e03e4edcdeeb14</srcmd5>
+    <version>1.0.1</version>
+    <time>1622759597</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC11:
+  * picotool-gh30.patch
+- Upstream started to tag versions so drop _service and change
+  source to upstream tarball 
+</comment>
+    <requestid>897118</requestid>
+  </revision>
 </revisionlist>
