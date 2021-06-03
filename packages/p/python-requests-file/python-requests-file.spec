@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
 Name:           python-requests-file
 Version:        1.5.1
 Release:        0
@@ -48,10 +47,8 @@ library to allow local filesystem access via file:// URLs.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-%python_exec -m unittest discover tests
-%endif
+%pyunittest discover -v tests
 
 %files %{python_files}
 %license LICENSE
