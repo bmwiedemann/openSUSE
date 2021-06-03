@@ -21,10 +21,10 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
-%define tarball_version 3_7_0
+%define tarball_version 3_8_0
 
 Name:           Jamulus
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
