@@ -499,4 +499,12 @@
     <comment></comment>
     <requestid>893985</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>7623a70ea4ea6f37658457ec96dd22fe</srcmd5>
+    <version>1.99.11</version>
+    <time>1622759592</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't break compatibility with SLE-12</comment>
+    <requestid>894931</requestid>
+  </revision>
 </revisionlist>

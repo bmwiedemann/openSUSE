@@ -111,7 +111,8 @@ though more will have to be done to feel confident about feeding untrusted
 data to the decompressor; the plugin is still young and might expose bugs.
 
 %prep
-%autosetup -p1
+%setup -q
+%autopatch -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')

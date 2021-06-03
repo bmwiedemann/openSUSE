@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 22 11:08:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't break compatibility with SLE-12 
+
+-------------------------------------------------------------------
 Mon May 17 09:47:33 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add no-python2.patch to remove the dependency on Python 2
