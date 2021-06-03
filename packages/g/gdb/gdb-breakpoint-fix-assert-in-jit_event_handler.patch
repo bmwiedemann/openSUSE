@@ -1,0 +1,114 @@
+[gdb/breakpoint] Fix assert in jit_event_handler
+
+Consider a minimal test-case test.c:
+...
+int main (void) { return 0; }
+...
+which we can compile into llvm byte code using clang:
+...
+$ clang -g -S -emit-llvm --target=x86_64-unknown-unknown-elf test.c
+...
+and then run using lli, which uses the llvm jit:
+...
+$ lli test.ll
+...
+
+If we run this under gdb, we run into an assert:
+...
+$ gdb -q -batch -ex run --args /usr/bin/lli test.ll
+Dwarf Error: Cannot not find DIE at 0x18a936e7 \
+  [from module libLLVM.so.10-10.0.1-lp152.30.4.x86_64.debug]
+
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+src/gdb/jit.c:1178: internal-error: \
+  void jit_event_handler(gdbarch*, objfile*): \
+  Assertion `jiter->jiter_data != nullptr' failed.
+...
+
+This is caused by the following.
+
+When running jit_breakpoint_re_set_internal, we first handle
+libLLVM.so.10.debug, and set a jit breakpoint.
+
+Next we handle libLLVM.so.10:
+...
+(gdb) p the_objfile.original_name
+$42 = 0x2494170 "libLLVM.so.10"
+...
+but the minimal symbols we find are from libLLVM.so.10.debug:
+...
+(gdb) p reg_symbol.objfile.original_name
+$43 = 0x38e7c50 "libLLVM.so.10-10.0.1-lp152.30.4.x86_64.debug"
+(gdb) p desc_symbol.objfile.original_name
+$44 = 0x38e7c50 "libLLVM.so.10-10.0.1-lp152.30.4.x86_64.debug"
+...
+and consequently, the objf_data is the one from libLLVM.so.10.debug:
+...
+      jiter_objfile_data *objf_data
+        = get_jiter_objfile_data (reg_symbol.objfile);
+...
+and so we hit this:
+...
+      if (objf_data->cached_code_address == addr)
+        continue;
+...
+and no second jit breakpoint is inserted.
+
+Subsequently, the jit breakpoint is triggered and handled, but when finding
+the symbol for the breakpoint address we get:
+...
+(gdb) p jit_bp_sym.objfile.original_name
+$52 = 0x2494170 "libLLVM.so.10"
+...
+
+The assert 'jiter->jiter_data != nullptr' triggers because it checks
+libLLVM.so.10 while the one with jiter_data setup is libLLVM.so.10.debug.
+
+This fixes the assert:
+...
+       jiter_objfile_data *objf_data
+-        = get_jiter_objfile_data (reg_symbol.objfile);
+-        = get_jiter_objfile_data (the_objfile);
+...
+but consequently we'll have two jit breakpoints, so we also make sure we don't
+set a jit breakpoint on separate debug objects like libLLVM.so.10.debug.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2021-05-21  Tom de Vries  <tdevries@suse.de>
+
+	PR breakpoint/27889
+	* jit.c (jit_breakpoint_re_set_internal): Skip separate debug
+	objects.  Call get_jiter_objfile_data with the_objfile.
+
+---
+ gdb/jit.c     | 6 +++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/jit.c b/gdb/jit.c
+index 296b436c796..be10f197fd6 100644
+--- a/gdb/jit.c
++++ b/gdb/jit.c
+@@ -807,6 +807,10 @@ jit_breakpoint_re_set_internal (struct gdbarch *gdbarch, program_space *pspace)
+ {
+   for (objfile *the_objfile : pspace->objfiles ())
+     {
++      /* Skip separate debug objects.  */
++      if (the_objfile->separate_debug_objfile_backlink != nullptr)
++	continue;
++
+       if (the_objfile->skip_jit_symbol_lookup)
+ 	continue;
+ 
+@@ -833,7 +837,7 @@ jit_breakpoint_re_set_internal (struct gdbarch *gdbarch, program_space *pspace)
+ 	}
+ 
+       jiter_objfile_data *objf_data
+-	= get_jiter_objfile_data (reg_symbol.objfile);
++	= get_jiter_objfile_data (the_objfile);
+       objf_data->register_code = reg_symbol.minsym;
+       objf_data->descriptor = desc_symbol.minsym;
+ 
