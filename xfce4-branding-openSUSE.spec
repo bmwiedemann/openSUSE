@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,13 +47,13 @@ BuildRequires:  wallpaper-branding
 Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 BuildRequires:  desktop-file-utils
-BuildRequires:  openSUSE-xfce-icon-theme
 BuildRequires:  gtk2-metatheme-greybird-geeko
 BuildRequires:  gtk3-metatheme-greybird-geeko
 BuildRequires:  hack-fonts
 BuildRequires:  metatheme-greybird-geeko-common
 BuildRequires:  noto-coloremoji-fonts
 BuildRequires:  noto-sans-fonts
+BuildRequires:  openSUSE-xfce-icon-theme
 BuildRequires:  openSUSE-xfce-icon-theme
 BuildRequires:  thunar-volman
 BuildRequires:  xfce4-notifyd
@@ -75,8 +75,8 @@ Summary:        openSUSE Branding of xfce4-panel
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Recommends:     pavucontrol
-Recommends:     xfce4-panel-plugin-pulseaudio
 Recommends:     xfce4-panel-plugin-power-manager
+Recommends:     xfce4-panel-plugin-pulseaudio
 # require. Because without this, many things (package-update-indicator...) will not work well, it's not really optional.
 Requires:       xfce4-panel-plugin-whiskermenu
 Conflicts:      otherproviders(xfce4-panel-branding)
@@ -94,10 +94,10 @@ Group:          System/GUI/XFCE
 Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 Requires:       desktop-file-utils
-Requires:       openSUSE-xfce-icon-theme
 Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       metatheme-greybird-geeko-common
+Requires:       openSUSE-xfce-icon-theme
 Requires:       thunar-volman
 Conflicts:      otherproviders(xfce4-session-branding)
 Provides:       xfce4-session-branding = %{xfce4_session_version}
@@ -111,7 +111,6 @@ Summary:        openSUSE Branding of xfce4-settings
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       desktop-data-openSUSE
-Requires:       openSUSE-xfce-icon-theme
 Requires:       gtk2-metatheme-adwaita
 Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-adwaita
@@ -120,6 +119,7 @@ Requires:       hack-fonts
 Requires:       metatheme-greybird-geeko-common
 Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
+Requires:       openSUSE-xfce-icon-theme
 Requires:       openSUSE-xfce-icon-theme
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
@@ -222,7 +222,7 @@ This package provides the openSUSE look and feel for the Thunar Volume Manager.
 %build
 
 %install
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
+%if 0%{?suse_version} < 1550 && 0%{?is_opensuse}
 # Make sure Adwaita cursor theme is used in QT applications boo#1178511
 echo -e "[Icon Theme]\nInherits=Adwaita" > index.theme
 mkdir -p %{buildroot}%{_datadir}/icons/default/
@@ -281,7 +281,7 @@ done
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/xfce-settings-manager.menu
 %config %{_sysconfdir}/xdg/xfce4/helpers.rc
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
+%if 0%{?suse_version} < 1550 && 0%{?is_opensuse}
 %dir %{_datadir}/icons/default
 %{_datadir}/icons/default/index.theme
 %endif

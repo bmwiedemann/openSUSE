@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 15:31:14 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Enable the fix for boo#1178511 on all Leap versions
+
+-------------------------------------------------------------------
 Tue Jan 12 07:37:09 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Upstrem dropped libxfce4ui-1-0. Dependency no longer needed.
