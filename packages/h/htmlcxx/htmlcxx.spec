@@ -1,7 +1,7 @@
 #
 # spec file for package htmlcxx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Klaus Singvogel, Kaierberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,8 @@ License:        LGPL-2.0-only AND Apache-2.0
 Group:          Productivity/File utilities
 URL:            http://htmlcxx.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Patch1:         %{name}-0.84-cstddef.patch
+Patch0:         %{name}-0.84-cstddef.patch
+Patch1:         0001-Remove-throw-specifications.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -49,28 +50,25 @@ The htmlcxx-devel package contains libraries and header files for
 developing applications that use htmlcxx.
 
 %prep
-%setup -q
-%patch1 -p1
-./configure \
-	--prefix=%{_prefix} \
-	--bindir=%{_bindir} \
-	--libdir=%{_libdir} \
-	--mandir=%{_mandir}
+%autosetup -p1
 
 %build
-make %{?_smp_mflags}
+# Don't use the %%configure macro
+./configure \
+    --prefix=%{_prefix} \
+    --bindir=%{_bindir} \
+    --libdir=%{_libdir} \
+    --mandir=%{_mandir}
+
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags} \
-    PREFIX=%{_prefix} \
-    LIBDIR=%{_libdir} \
-    OPTFLAGS="%{optflags}" \
-    OPTLDFLAGS=""
+%make_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{name} -p /sbin/ldconfig
 %postun -n %{name} -p /sbin/ldconfig
