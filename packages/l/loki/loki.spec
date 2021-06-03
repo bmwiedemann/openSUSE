@@ -1,7 +1,7 @@
 #
 # spec file for package loki
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           loki
-Version:        2.0.0+git.1603727260.6978ee5d
+Version:        2.2.1+git.1617669398.babea82e
 Release:        0
 Summary:        Loki: like Prometheus, but for logs.
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source4:        sysconfig.promtail
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.15
 Requires:       group(loki)
 Requires:       user(loki)
 Requires(post): %fillup_prereq
@@ -41,6 +41,19 @@ Requires(post): %fillup_prereq
 
 %description
 Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+
+This package contains the Loki server
+
+%package -n promtail
+Summary:        Promtail Client
+Group:          System/Monitoring
+Requires:       group(loki)
+Requires:       user(loki)
+
+%description -n promtail
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+
+This package contains the Promtail client.
 
 %prep
 %setup -q %{name}-%{version}
@@ -83,34 +96,47 @@ install -Dm755 promtail %{buildroot}%{_bindir}
 install -Dm755 logcli %{buildroot}%{_bindir}
 
 %pre
-%service_add_pre loki.service promtail.service
+%service_add_pre loki.service
 
 %post
-%fillup_only -n loki
-%fillup_only -n promtail
-%service_add_post loki.service promtail.service
+%fillup_only -n loki-server
+%service_add_post loki.service
 
 %preun
-%service_del_preun loki.service promtail.service
+%service_del_preun loki.service
 
 %postun
 %service_del_postun loki.service promtail.service
 
+%pre -n promtail
+%service_add_pre promtail.service
+
+%post -n promtail
+%fillup_only -n promtail
+%service_add_post promtail.service
+
+%preun -n promtail
+%service_del_preun promtail.service
+
+%postun -n promtail
+%service_del_postun promtail.service
+
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_unitdir}/loki.service
-%{_unitdir}/promtail.service
 %{_fillupdir}/sysconfig.loki
-%{_fillupdir}/sysconfig.promtail
 %{_bindir}/loki
-%{_bindir}/promtail
 %{_bindir}/logcli
 %dir %{_sysconfdir}/loki
 %config(noreplace) %{_sysconfdir}/loki/loki.yaml
-%config(noreplace) %{_sysconfdir}/loki/promtail.yaml
 %{_sbindir}/rcloki
+
+%files -n promtail
+%{_unitdir}/promtail.service
+%{_fillupdir}/sysconfig.promtail
+%{_bindir}/promtail
+%config(noreplace) %{_sysconfdir}/loki/promtail.yaml
 %{_sbindir}/rcpromtail
 
 %changelog

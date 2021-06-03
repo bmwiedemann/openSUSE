@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>854273</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>42285ae35a85e97e38761a04fddf3484</srcmd5>
+    <version>2.2.1+git.1617669398.babea82e</version>
+    <time>1622759595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 2.2.1
+- Split Loki server and Promtail client into separate packages</comment>
+    <requestid>897231</requestid>
+  </revision>
 </revisionlist>
