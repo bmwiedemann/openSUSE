@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 02 06:01:51 UTC 2021 - wbrown@suse.de
+
+- Update _service to use upstream monorepo and cargo-audit
+- Update to version 0.14.1~git0.e46dce8:
+  * v0.14.1 (#342)
+  * Cargo.lock: update several dependencies (#341)
+  * Generate release builds with github actions (#337)
+  * Cargo.lock: bump various dependencies (#335)
+  * Bump rustsec from 0.23.2 to 0.23.3 (#333)
+  * v0.14.0 (#330)
+  * Cargo.lock: bump `rustsec` to v0.23.2 (#329)
+  * README.md: fix "Report Vulnerability" button (#328)
+  * Rename 'master' branch to 'main'
+  * Bump `rustsec` dependency to v0.23; MSRV 1.46+ (#327)
+
+-------------------------------------------------------------------
 Wed Mar 17 00:41:16 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.14.0~git0.08c9f3e:

@@ -7,4 +7,12 @@
     <comment>New package cargo_audit</comment>
     <requestid>879549</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5e9b14c5cf2303678d3f7726b77f3ca</srcmd5>
+    <version>0.14.1~git0.e46dce8</version>
+    <time>1622759614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897045</requestid>
+  </revision>
 </revisionlist>
