@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">xiphos</param>
-    <param name="versionprefix">4.1.0+git</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

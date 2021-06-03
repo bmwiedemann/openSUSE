@@ -1,0 +1,18 @@
+--- xiphos-4.1.0+git.1580414635.9e573336/src/main/sword.h	2020-01-30 21:03:55.000000000 +0100
++++ xiphos-4.1.0+git.1580414635.9e573336/src/main/sword.h	2021-05-17 08:57:31.991514248 +0200
+@@ -22,12 +22,12 @@
+ #ifndef _SWORD_H__
+ #define _SWORD_H__
+ 
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
+ #include "main/configs.h"
+ 
+ /*** these defs need to be seen by gui and backend ***/

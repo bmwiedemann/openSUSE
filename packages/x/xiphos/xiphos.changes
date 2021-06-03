@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon May 17 07:43:27 UTC 2021 - fstrba@suse.com
+
+- Update to version 4.2.1.7:
+  * Update fr.po
+  * #1073 add vietnamese translation.
+  * INSTALL.md update Ubuntu pkgs section
+  * update #1036 restrict to actual commentaries.
+  * fix #1036 commentary by chapter default on.
+  * Two new entries for locale in the IBT repository (#1031)
+  * Fix #1025, #1026 - windows remove cpack stuff from build dir
+  * update #1018 final for 4.2.1
+  * Fix up release builds and process: (#1020)
+  * Fix vendored path
+  * Tell github-linguist to ignore Festival
+  * fix #1019 bracket search results disposal w/flag to avoid
+    unneeded verse formatting.
+  * update #1018
+  * fix #1018 release notes
+  * Use pre-built MinGW Biblesync package (#1016)
+  * More ci (#1015)
+  * Fix #1013 zip help dependency issue
+  * Update INSTALL.md
+  * Get rid of the additional install page about paths, moreover
+    it is not translatable, and make adding a Desktop icon a silent
+    operation
+  * Small fix path to xiphos source
+  * Cpack: xiphos.spec -> Fix download link
+  * Win32 installer: Add exe path and desktop icon options
+  * Win32 builds (#1012)
+  * fix multi-arch build in xc-xiphos-win.sh, add toolbox info
+  * Fix Windows build
+  * fix #1011 2020 copyright update.
+  * update #845. == REQUIRES SWORD @ SVN 3721+. == re-worked
+    .introMaterial: sword no longer generates self-closing <div/>.
+  * Generate version string at build time from git tags (#979)
+  * fix #895 re-arrange code to obtain "controlling module" earlier,
+    for v11n & display purposes, pushed into previous calling
+    function in order to have use of getRenderHeader(). unreliable:
+    1st parallel module wins. should be OSIS, which is typical, but
+    not guaranteed.
+  * fix #910 do not show previewer on state change of
+    sidebar-or-not, if previewer is not to be shown at all.
+  * fix #990 adjust row spacing in strongs/morph blocked layout.
+    best i can manage. varies with font choice. it will be wrong
+    again in a year or 2 when webkit goes through more updates.
+  * update #845 an ultimately gratuitous change. had no beneficial
+    effect toward getting widgets interpreted by webkit as xhtml.
+    done anyway because it is the correct use even if i cannot make
+    it fly properly.
+  * fix #1006 NULL out parallel dialog widget pointer on close.
+  * Fix build errors for minizip (#1004)
+  * Use minizip to replace libgsf (#1003)
+  * Locale my and bg updated (#1002)
+  * fix #1000 trim parenthesized language descriptions
+  * Fix Arch build (#997)
+  * fix #996 add constant for hist.list element content length,
+    distinct from length of hist.list
+  * fix #919 - disabled status bar reappeared when launching
+    program (#983)
+  * Remove all #if 0...#endif and some other dead code (#913)
+  * Remove specific handling of NASB lexica (#994)
+  * Locale (#992)
+  * Add Ubuntu and Debian deps
+  * Add build badge from Travis
+  * More CI cleanup
+  * Don't double-install on Arch
+  * Test on Ubuntu 19.10
+  * Fix Arch Linux Docker setup
+  * Remove gconf mentions from .travis.yml as well.
+  * Try to update testing
+  * Update .travis.yml to fix all builds
+  * remove gconf-2.0 from xiphos (after CMake)
+- Use version in format parent_tag.tag_offset, since this is the
+  format that the upstream generated cmake/source_version.txt
+  uses
+- Removed xiphos-remove-gconf-2.0.patch that is integrated upstream
+- Modified find_biblesync.patch to accept cmake 3.10
+
+-------------------------------------------------------------------
+Mon May 17 06:59:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Add xiphos-glib.patch to fix build in factory with newer glib
+  * do not include glib headers in extern "C" block
+
+-------------------------------------------------------------------
 Mon Mar 16 11:16:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add find_biblesync.patch to make the package build on the
@@ -229,7 +314,7 @@ Sun Dec 28 01:26:49 UTC 2014 - lars@linux-schulserver.de
 Thu Sep  4 18:51:52 UTC 2014 - kkirill@opensuse.org
 
 - update to 3.2.2: this is a cosmetic/clean-up release. No new
-  capability is present.  
+  capability is present.
   + Building against GTK3 (i.e. waf configure --gtk=3) should once again
     be reasonable.  Generally, GTK3 will require --enable-webkit-editor,
     because the older editor seems not fully de-lintable for GTK3.
@@ -310,7 +395,7 @@ Sun Feb  2 16:13:41 UTC 2014 - zaitor@opensuse.org
     3.1.5's missing export submenu is back.
   + Addition of repository support for HTTP, HTTPS, and SFTP.
   + Version differences in dbus IPC (xiphos-nav) have been
-    homogenized.   
+    homogenized.
   + Build inconsistencies across Linux distributions are fixed.
   + Removed last vestiges of unneeded, defunct KJV pilcrow (¶)
     handling.
@@ -389,7 +474,7 @@ Sat Dec 18 19:12:48 UTC 2010 - lars@linux-schulserver.de
 - update to 3.1.4:
   + Many smaller issues that have been waiting for a long time have been
     implemented. Again, classified as new, enhancements, and fixes.
-    Please have a look at /usr/share/doc/packages/xiphos/ChangeLog 
+    Please have a look at /usr/share/doc/packages/xiphos/ChangeLog
     for details
 - package xiphos manpage
 
@@ -433,7 +518,7 @@ Sun Mar 28 21:52:25 UTC 2010 - lars@linux-schulserver.de
 Thu Aug 13 01:52:41 CEST 2009 - kirill.kirillov@gmail.com
 
 - update to 3.1.1
-  + The Help->Chat interface had to change 
+  + The Help->Chat interface had to change
   + Per-verse user annotations ("inline marking")
   + There is a new geography interface through BibleMap.org
   + Module manager now can do automatic repository discovery
@@ -477,7 +562,7 @@ Fri Mar 20 00:53:16 MSK 2009 - kirill.kirillov@gmail.com
   + Fixed a disappearing-button problem in the module manager, as well
     as several instances of faulty mutex usage.
 - changes for 3.0.0 (Xiphos begins life, as the former GnomeSword)
-  + Invocation of the editor (personal commentary, prayer list/journal) 
+  + Invocation of the editor (personal commentary, prayer list/journal)
     will induce several harmless warning messages to occur.
   + A fabulous new look, with the support of professional graphics
     designers having done a facelift of our graphics
@@ -493,7 +578,7 @@ Fri Mar 20 00:53:16 MSK 2009 - kirill.kirillov@gmail.com
     functions correctly with both shared and personal storage areas.
   + Compatibility with forthcoming Sword engine updates for dynamic
     versification ("dv11n"). Future modules will support e.g.
-    deuterocanonical books in Catholic Bibles. 
+    deuterocanonical books in Catholic Bibles.
   + More uniform module option support in parallel window.
   + Dictionary links auto-display in the previewer, after the
     fashion of Strong's and morphology references.
@@ -512,7 +597,7 @@ Fri Mar 20 00:53:16 MSK 2009 - kirill.kirillov@gmail.com
   + Respect for configuration-specified font choices (Font= and
     Fontsize= in module configuration files).
   + Improvements to build-time configuration support.
-  + Fixed fast search ("lucene") index creation. 
+  + Fixed fast search ("lucene") index creation.
 
 -------------------------------------------------------------------
 Tue Dec 30 21:16:59 CET 2008 - lars@linux-schulserver.de
@@ -554,7 +639,7 @@ Fri Oct 31 01:20:00 MSK 2008 - kirill.kirillov@gmail.com
 -update to 2.4.0:
   + fixed bugs: 2036800, 2040344, 2040347, 2069455, 2069476, 2079930
     2084401, 2105812
-  + closed feature request: 2056615 
+  + closed feature request: 2056615
   + Journal/prayer list support is enabled by default.
   + Selecting choices for Strong's modules is now complete, and Preferences
     comboboxes have gained an instructive "--Select--" first entry.
@@ -585,7 +670,7 @@ Tue Aug  5 10:21:40 CEST 2008 - lars@linux-schulserver.de
   + In the module manager, along with the usual per-module-type
     categorization of modules, the mod.mgr also produces a parallel
     per-availability categorization, for updated and uninstalled
-    modules.  This makes it easier to find new stuff, rather than 
+    modules.  This makes it easier to find new stuff, rather than
     having to crawl through all the per-type listings.
   + General books' bookmarks are generated using the key text rather
     than an arcane internal numeric module offset.
@@ -605,7 +690,7 @@ Tue Aug  5 10:21:40 CEST 2008 - lars@linux-schulserver.de
 -------------------------------------------------------------------
 Thu Jun 12 17:33:51 CEST 2008 - lars@linux-schulserver.de
 
-- added 
+- added
   Recommends:     sword-bible
   Recommends:     sword-commentary
 
