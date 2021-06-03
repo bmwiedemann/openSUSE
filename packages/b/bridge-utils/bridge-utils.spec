@@ -1,7 +1,7 @@
 #
 # spec file for package bridge-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           bridge-utils
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        Utilities for Configuring the Linux Ethernet Bridge
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://www.linuxfoundation.org/collaborate/workgroups/networking/bridge
-Source0:        https://kernel.org/pub/linux/kernel/people/shemminger/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://kernel.org/pub/linux/kernel/people/shemminger/%{name}/%{name}-%{version}.tar.sign
+Source0:        https://mirrors.edge.kernel.org/pub/linux/utils/net/bridge-utils/%{name}-%{version}.tar.xz
+Source1:        https://mirrors.edge.kernel.org/pub/linux/utils/net/bridge-utils/%{name}-%{version}.tar.sign
 Patch0:         %{name}-1.5-hz.diff
 Patch1:         %{name}-1.5-optflags.patch
 Patch2:         bridge-utils-1.5-ip6.patch
 BuildRequires:  automake
 BuildRequires:  libsysfs
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains utilities for configuring the Linux ethernet
@@ -57,10 +56,10 @@ The %{name} devel package contains files needed for development.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 install -d -m 755 %{buildroot}/sbin
 install -D -m 644 libbridge/libbridge.h %{buildroot}%{_includedir}/libbridge.h
 install -D -m 644 libbridge/libbridge.a %{buildroot}%{_libdir}/libbridge.a
