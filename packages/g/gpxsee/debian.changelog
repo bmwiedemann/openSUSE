@@ -1,3 +1,12 @@
+gpxsee (9.1) stable; urgency=low
+
+  * Added support for TomTom OV2 and ITN files.
+  * Various waypoint properties enhancements.
+  * Mapsforge maps rendering fixes/improvements.
+  * Some more minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 29 May 2021 10:43:54 +0200
+
 gpxsee (9.0) stable; urgency=low
 
   * Added support for Mapsforge maps.
