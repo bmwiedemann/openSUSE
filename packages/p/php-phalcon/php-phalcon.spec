@@ -17,7 +17,6 @@
 
 
 %define pkg_name    phalcon
-%define pkg_cname   cphalcon
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -32,13 +31,13 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        4.1.0
+Version:        4.1.2
 Release:        0
 Summary:        PHP7 Extension Module
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
-URL:            http://phalconphp.com/
-Source0:        https://github.com/%{pkg_name}/%{pkg_cname}/archive/v%{version}.tar.gz#/%{pkg_cname}-%{version}.tar.gz
+URL:            https://pecl.php.net/package/%{pkg_name}
+Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
@@ -51,32 +50,31 @@ BuildRequires:  %{php_name}-json
 Requires:       %{php_name}-mysql
 
 %description
-Phalcon is a framework for PHP 5 written as a C extension.
+Phalcon is a framework for PHP7 written as a C extension.
 Zephir is a high-level language, something between C and PHP. It is
 both dynamic and static typed and it supports the features we need to
 create and maintain a project like Phalcon.
 
 %prep
-%setup -q -n %{pkg_cname}-%{version}
+%setup -q -n %{pkg_name}-%{version}
 
 %build
-cd build/%{php_name}/safe
 %{__phpize}
 %configure --enable-%{pkg_name}
 %make_build
 
 %install
-cd build/%{php_name}/safe
 make INSTALL_ROOT=%{buildroot} install-modules
 mkdir -p %{buildroot}%{php_cfgdir}
 cat >> %{buildroot}%{php_cfgdir}/%{pkg_name}.ini << EOF
 ; comment out next line to disable %{pkg_name} extension in php
-extension=%{pkg_name}.so"
+extension=%{pkg_name}.so
 EOF
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG.md CONTRIBUTING.md README.md
+%license LICENSE.txt
+%doc CODE_OF_CONDUCT.md CODE_OWNERS.TXT
 %config(noreplace) %{php_cfgdir}/%{pkg_name}.ini
 %{php_extdir}/%{pkg_name}.so
 

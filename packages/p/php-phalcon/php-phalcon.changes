@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  3 07:42:57 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 4.1.2
+  * Fixed Logger\Log::log() log to recognize all log levels.
+  * Changed setClaims to be protected so that the
+    Phalcon\Security\JWT\Builder class can be properly extended.
+- Changed to PECL repository
+- Fix specfile typos and include %license
+
+-------------------------------------------------------------------
 Thu Feb 18 22:51:45 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild (prepare to build for php8)

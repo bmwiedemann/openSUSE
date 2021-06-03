@@ -7,4 +7,18 @@
     <comment>Rename php7-phalcon to php-phalcon</comment>
     <requestid>873884</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf967f591e94831c7e66e933ac2d5371</srcmd5>
+    <version>4.1.2</version>
+    <time>1622759618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2
+  * Fixed Logger\Log::log() log to recognize all log levels.
+  * Changed setClaims to be protected so that the
+    Phalcon\Security\JWT\Builder class can be properly extended.
+- Changed to PECL repository
+- Fix specfile typos and include %license
+</comment>
+    <requestid>897090</requestid>
+  </revision>
 </revisionlist>
