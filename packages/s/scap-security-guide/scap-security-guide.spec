@@ -49,7 +49,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
-%else
+Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 BuildRequires:  cmake

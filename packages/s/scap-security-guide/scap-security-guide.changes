@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 15:03:42 UTC 2021 - Julio González Gil <jgonzalez@suse.com>
+
+- Specify the maintainer, for deb packages.
+
+-------------------------------------------------------------------
 Wed May 26 15:19:40 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.56 release (jsc#ECO-3319)
