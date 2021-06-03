@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 03 04:03:19 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.1+0:
+  * Fix cache aging cleanup of threads
+  * Limit 'From mboxrd@z' replacement to start of message
+
+-------------------------------------------------------------------
 Thu May 27 06:30:41 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.7.0+0:
