@@ -326,7 +326,7 @@ fi
 %attr(640,root,hyperkitty) %config(noreplace) %{hyperkitty_etcdir}/settings_local.py
 %attr(750,root,hyperkitty) %dir %{hyperkitty_libdir}
 %attr(750,hyperkitty,hyperkitty) %dir %{hyperkitty_datadir}
-%attr(770,root,hyperkitty) %dir %{hyperkitty_logdir}
+%attr(770,hyperkitty,hyperkitty) %dir %{hyperkitty_logdir}
 
 %files -n %{hyperkitty_pkgname}-web-uwsgi
 %dir %{_sysconfdir}/uwsgi
