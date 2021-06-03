@@ -1,7 +1,7 @@
 #
 # spec file for package xmonad
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        A tiling window manager
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 Source10:       xmonad.desktop
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
@@ -81,18 +82,19 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 install -m0644 -D man/xmonad.1 %{buildroot}%{_mandir}/man1/xmonad.1
 gzip %{buildroot}%{_mandir}/man1/xmonad.1
 %define desktop_src %{buildroot}%{_datadir}/xsessions/xmonad.desktop
 install -m0644 -D %{SOURCE10} %{desktop_src}
 %suse_update_desktop_file %{desktop_src}
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %check
 %cabal_test
