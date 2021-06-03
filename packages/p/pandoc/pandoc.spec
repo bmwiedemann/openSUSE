@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.14
+Version:        2.14.0.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
