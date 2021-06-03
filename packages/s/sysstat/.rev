@@ -813,4 +813,15 @@
     <comment></comment>
     <requestid>873664</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>19192637843183f692db5c8d303caacc</srcmd5>
+    <version>12.4.3</version>
+    <time>1622759615</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't hard require systemd, it works without,too. (bsc#1186827)
+- Dropped patches, fixed upstream:
+  * sysstat-don-t-send-signal-to-init.patch
+  * sysstat-fix-possible-race-in-signal-handler.patch</comment>
+    <requestid>897273</requestid>
+  </revision>
 </revisionlist>

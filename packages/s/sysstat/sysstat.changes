@@ -41,7 +41,7 @@ Fri Jan 29 00:01:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Oct  3 07:38:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
-- Don't hard require systemd, it works without,too.
+- Don't hard require systemd, it works without,too. (bsc#1186827)
 
 -------------------------------------------------------------------
 Fri Sep 18 14:47:02 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
@@ -491,6 +491,9 @@ Fri Feb 20 18:44:59 UTC 2015 - mpluskal@suse.com
   * Fix description of %util in iostat and sar manual pages
   * Make sure that no crontabs are activated when configure's 
     option --enable-copy-only is used.
+- Dropped patches, fixed upstream:
+  * sysstat-don-t-send-signal-to-init.patch
+  * sysstat-fix-possible-race-in-signal-handler.patch
 
 -------------------------------------------------------------------
 Fri Jul 18 02:34:05 UTC 2014 - tabraham@suse.com
