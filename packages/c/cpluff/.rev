@@ -16,4 +16,12 @@
   refresh cpluff.patch</comment>
     <requestid>801844</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1a83e7c3bdc779985625d0b1de6cfade</srcmd5>
+    <version>0.2.0</version>
+    <time>1622759630</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897121</requestid>
+  </revision>
 </revisionlist>

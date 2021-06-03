@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 27 09:09:09 UTC 2021 - Olaf olaf@aepfle.de
+
+- Pass --enable-gcc-warnings to configure to use a fixed variant
+  of C and C++ standards
+
+-------------------------------------------------------------------
 Sat May  2 19:19:19 UTC 2020 - olaf@aepfle.de
 
 - Update to version 0.2.0, no code changes

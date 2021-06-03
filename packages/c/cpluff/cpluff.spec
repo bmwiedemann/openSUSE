@@ -79,6 +79,7 @@ developing applications that use lib%{name}xx.
 ./autogen.sh
 %configure \
 	--enable-cpluffxx \
+	--enable-gcc-warnings \
 	--disable-nls \
 	--disable-static
 %make_build
