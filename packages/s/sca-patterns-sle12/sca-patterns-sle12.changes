@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  2 22:43:01 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.4
+  - New regular patterns (4)
+    + sle12all/sysdjobs-000020261.py: Troubleshooting systemd jobs that are hung or stuck (TID000020261)
+    + sle12sp4/nobarrier-000020240.py: XFS nobarrier option has been completely deprecated starting from SLES15 SP2 (bsc#1176375)
+    + sle12sp5/nfstimeout_125-000019943.py: Delayed outgoing packets causing NFS timeouts (bsc#1183405)
+    + sle12sp5/nobarrier-000020240.py: XFS nobarrier option has been completely deprecated starting from SLES15 SP2 (bsc#1176375)
+  - New security announcement patterns (39)
+    + May 2021 (39) for SUSE-SU-2021:1580-1 SUSE-SU-2021:1621-1 SUSE-SU-2021:1490-1 SUSE-SU-2021:1783-1 SUSE-SU-2021:1782-1 SUSE-SU-2021:1576-1 SUSE-SU-2021:1658-1 SUSE-SU-2021:1524-1 SUSE-SU-2021:1766-1 SUSE-SU-2021:1595-1 SUSE-SU-2021:1572-1 SUSE-SU-2021:1760-1 SUSE-SU-2021:1646-1 SUSE-SU-2021:1813-1 SUSE-SU-2021:1645-1 SUSE-SU-2021:1763-1 SUSE-SU-2021:1468-1 SUSE-SU-2021:1494-1 SUSE-SU-2021:1648-1 SUSE-SU-2021:1492-1 SUSE-SU-2021:1621-1 SUSE-SU-2021:1658-1 SUSE-SU-2021:1596-1 SUSE-SU-2021:1646-1 SUSE-SU-2021:1813-1 SUSE-SU-2021:1645-1 SUSE-SU-2021:1786-1 SUSE-SU-2021:1468-1 SUSE-SU-2021:1492-1 SUSE-SU-2021:1621-1 SUSE-SU-2021:1658-1 SUSE-SU-2021:1623-1 SUSE-SU-2021:1646-1 SUSE-SU-2021:1813-1 SUSE-SU-2021:1645-1 SUSE-SU-2021:1469-1 SUSE-SU-2021:1621-1 SUSE-SU-2021:1617-1 SUSE-SU-2021:1469-1
+
+
+-------------------------------------------------------------------
 Wed May 26 20:43:23 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Updated regular patterns (1)
