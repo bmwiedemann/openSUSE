@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:23:59 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop cni-bin-dir.patch in favor a sed command to handle multiple
+  %{_libexec} values - boo#1186566
+
+-------------------------------------------------------------------
 Mon May 24 12:51:31 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.1+k3s1:

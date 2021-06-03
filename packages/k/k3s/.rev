@@ -123,4 +123,14 @@
     <comment></comment>
     <requestid>895269</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9718c7b13e2e31d6ee30e21182f54286</srcmd5>
+    <version>1.21.1+k3s1</version>
+    <time>1622759639</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop cni-bin-dir.patch in favor a sed command to handle multiple
+  %{_libexec} values - boo#1186566
+</comment>
+    <requestid>897218</requestid>
+  </revision>
 </revisionlist>

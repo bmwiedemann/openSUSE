@@ -34,7 +34,6 @@ Source1:        k3s-server.service
 Source2:        k3s-agent.service
 Source3:        server.conf
 Source4:        agent.conf
-Patch0:         cni-bin-dir.patch
 BuildRequires:  c_compiler
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -70,8 +69,7 @@ distribution that differs from the original Kubernetes (colloquially
 
 %prep
 %setup -q -n %{name}-%(echo %{version} | tr '+' '-')
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
-%patch0 -p1
+sed -i 's#exec.LookPath("host-local")#exec.LookPath("%{_libexecdir}/cni/host-local")#' pkg/agent/config/config.go
 
 %build
 %{goprep} github.com/rancher/k3s
