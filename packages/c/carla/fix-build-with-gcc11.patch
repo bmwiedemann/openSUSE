@@ -1,0 +1,35 @@
+From 545304f5cfa484d4037b845a4df4abd530f82669 Mon Sep 17 00:00:00 2001
+From: falkTX <falktx@falktx.com>
+Date: Thu, 15 Apr 2021 13:18:37 +0100
+Subject: [PATCH] Fix build with GCC11 Closes #1396
+
+Signed-off-by: falkTX <falktx@falktx.com>
+---
+ source/modules/water/text/CharacterFunctions.h | 1 +
+ source/modules/water/text/String.h             | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/source/modules/water/text/CharacterFunctions.h b/source/modules/water/text/CharacterFunctions.h
+index 4108e995f..d9dfe8ab8 100644
+--- a/source/modules/water/text/CharacterFunctions.h
++++ b/source/modules/water/text/CharacterFunctions.h
+@@ -29,6 +29,7 @@
+ #include "../memory/Memory.h"
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ namespace water {
+ 
+diff --git a/source/modules/water/text/String.h b/source/modules/water/text/String.h
+index b6361468d..ad5dd6f1b 100644
+--- a/source/modules/water/text/String.h
++++ b/source/modules/water/text/String.h
+@@ -29,6 +29,7 @@
+ #include "CharPointer_UTF8.h"
+ #include "../memory/Memory.h"
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace water {

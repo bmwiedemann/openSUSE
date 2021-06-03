@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 31 02:53:51 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Use correct plugin paths for openSUSE (/usr/lib64/*)
+  * use-correct-plugin-paths.patch
+- Cadence uses carla_util.py which also uses carla_backend.py
+  so add these to pythonsitelib
+- Fix gcc-11 build
+  * fix-build-with-gcc11.patch
+- Add carla-host-plugin.pc to carla-remove-pkgconf-rpath.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 13:39:23 UTC 2021 - ecsos@opensuse.org
 
 - Update to version 2.3.0:
@@ -852,7 +863,7 @@ Thu Jun 25 11:22:38 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 Fri Jun 12 10:23:37 UTC 2020 - davejplater@gmail.com
 
 - Update to version 2.1.1 and remove incorporated patches:
-  0001-Fix-a-const-variable.patch and 
+  0001-Fix-a-const-variable.patch and
   0001-Add-missing-QPainterPath-include.patch
 - Upstream changes:
   * Use CARLA_CATCH_UNWIND in the base utils
@@ -971,7 +982,7 @@ Thu Nov  8 10:12:16 UTC 2018 - Edgar Aichinger <edogawa@aon.at>
 
 - updated to 2.0-RC2 (aka 1.9.12)
   * reenabled fluidsynth support
-  
+
 -------------------------------------------------------------------
 Thu Sep 27 11:42:26 UTC 2018 - Edgar Aichinger <edogawa@aon.at>
 
@@ -1150,4 +1161,3 @@ Tue Mar 31 13:15:07 UTC 2015 - edogawa@aon.at
 Sat Jan 10 14:28:46 UTC 2015 - edogawa@aon.at
 
 - initial package (version 2.0-beta3)
-

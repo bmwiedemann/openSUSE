@@ -32,7 +32,7 @@ Name:           carla
 Version:        2.3.0
 Release:        0
 Summary:        An audio plugin host
-License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kx.studio/Applications:Carla
 #https://github.com/falkTX/Carla/archive/v%%{version}.tar.gz#/
@@ -44,6 +44,10 @@ Source2:        bsd-2-clause.txt
 Patch0:         carla-systemlibs.patch
 # PATCH-FIX-OPENSUSE -- Remove rpath from .pc files davejplater@gmail.com
 Patch1:         carla-remove-pkgconf-rpath.patch
+# PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
+Patch2:         use-correct-plugin-paths.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/falkTX/Carla/commit/545304f5cfa484d4037b845a4df4abd530f82669
+Patch3:         fix-build-with-gcc11.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
@@ -140,7 +144,7 @@ export CFLAGS="%{optflags}"
 # list build configuration, no need for optflags or -j
 make features
 
-# bulding with high -j numbers often results in build failures, thus we're disabling _smp_flags for now 
+# bulding with high -j numbers often results in build failures, thus we're disabling _smp_flags for now
 make %{_smp_mflags} \
 %ifnarch %{ix86} x86_64
 	BASE_OPTS= \
@@ -168,6 +172,13 @@ for i in `grep -rl "/usr/bin/python3"`;do chmod +x ${i} ;done
 popd
 
 cp -v source/modules/lilv/serd-0.24.0/tests/TurtleTests/LICENSE LICENSE.TurtleTests
+
+# Cadence uses carla_util.py which also uses carla_backend.py so they need to be in pythonsitelib
+mkdir -p %{buildroot}/%{python_sitelib}
+pushd %{buildroot}/%{python_sitelib}
+ln -s ../../../../%{_datadir}/carla/carla_backend.py .
+ln -s ../../../../%{_datadir}/carla/carla_utils.py .
+popd
 
 # SUSE specific
 %if 0%{?suse_version}
@@ -201,6 +212,7 @@ cp %{S:2} .
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/mime/packages/carla.xml
+%{python_sitelib}/carla*.py
 %{_localstatedir}/adm/update-messages/%{name}-warning
 
 %post

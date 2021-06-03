@@ -1,0 +1,51 @@
+Index: carla-2.3.0/source/frontend/carla_shared.py
+===================================================================
+--- carla-2.3.0.orig/source/frontend/carla_shared.py
++++ carla-2.3.0/source/frontend/carla_shared.py
+@@ -444,27 +444,27 @@ else:
+     splitter = ":"
+ 
+     DEFAULT_LADSPA_PATH  = HOME + "/.ladspa"
+-    DEFAULT_LADSPA_PATH += ":/usr/lib/ladspa"
++    DEFAULT_LADSPA_PATH += ":/usr/lib64/ladspa"
+     DEFAULT_LADSPA_PATH += ":/usr/local/lib/ladspa"
+ 
+     DEFAULT_DSSI_PATH    = HOME + "/.dssi"
+-    DEFAULT_DSSI_PATH   += ":/usr/lib/dssi"
++    DEFAULT_DSSI_PATH   += ":/usr/lib64/dssi"
+     DEFAULT_DSSI_PATH   += ":/usr/local/lib/dssi"
+ 
+     DEFAULT_LV2_PATH     = HOME + "/.lv2"
+-    DEFAULT_LV2_PATH    += ":/usr/lib/lv2"
++    DEFAULT_LV2_PATH    += ":/usr/lib64/lv2"
+     DEFAULT_LV2_PATH    += ":/usr/local/lib/lv2"
+ 
+     DEFAULT_VST2_PATH    = HOME + "/.vst"
+-    DEFAULT_VST2_PATH   += ":/usr/lib/vst"
++    DEFAULT_VST2_PATH   += ":/usr/lib64/vst"
+     DEFAULT_VST2_PATH   += ":/usr/local/lib/vst"
+ 
+     DEFAULT_VST2_PATH   += HOME + "/.lxvst"
+-    DEFAULT_VST2_PATH   += ":/usr/lib/lxvst"
++    DEFAULT_VST2_PATH   += ":/usr/lib64/lxvst"
+     DEFAULT_VST2_PATH   += ":/usr/local/lib/lxvst"
+ 
+     DEFAULT_VST3_PATH    = HOME + "/.vst3"
+-    DEFAULT_VST3_PATH   += ":/usr/lib/vst3"
++    DEFAULT_VST3_PATH   += ":/usr/lib64/vst3"
+     DEFAULT_VST3_PATH   += ":/usr/local/lib/vst3"
+ 
+     DEFAULT_SF2_PATH     = HOME + "/.sounds/sf2"
+Index: carla-2.3.0/source/frontend/carla_widgets.py
+===================================================================
+--- carla-2.3.0.orig/source/frontend/carla_widgets.py
++++ carla-2.3.0/source/frontend/carla_widgets.py
+@@ -1854,7 +1854,7 @@ if __name__ == '__main__':
+     _loadHostSettings(_host)
+ 
+     _host.engine_init("JACK", "Carla-Widgets")
+-    _host.add_plugin(BINARY_NATIVE, PLUGIN_DSSI, "/usr/lib/dssi/karplong.so", "karplong", "karplong", 0, None, 0x0)
++    _host.add_plugin(BINARY_NATIVE, PLUGIN_DSSI, "/usr/lib64/dssi/karplong.so", "karplong", "karplong", 0, None, 0x0)
+     _host.set_active(0, True)
+ 
+     gui1 = CarlaAboutW(None, _host)
