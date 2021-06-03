@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-X11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %global pkg_name X11
 Name:           ghc-%{pkg_name}
-Version:        1.9.2
+Version:        1.10
 Release:        0
 Summary:        A binding to the X11 graphics library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -76,5 +76,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGES.md README.md
 
 %changelog
