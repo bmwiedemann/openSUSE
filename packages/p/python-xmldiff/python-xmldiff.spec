@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmldiff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Requires:       python-lxml >= 3.1.0
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      %{oldpython}-xmldiff < %{version}
 BuildArch:      noarch
 # SECTION test requirements
@@ -63,7 +63,7 @@ Garcia-Molina, and J. Widom, Stanford University, 1996.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative xmlpatch

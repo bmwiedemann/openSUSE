@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:19:51 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Fri May 15 12:55:40 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
