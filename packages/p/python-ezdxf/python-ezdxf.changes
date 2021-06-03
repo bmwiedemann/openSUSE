@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:35:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.3
+  * release notes: https://ezdxf.mozman.at/release-v0-16.html
+  * The new command line script ezdxf launches various sub-commands
+  * Bounding Box Module bbox
+  * Module zoom
+  * Support Module disassemble
+  * text2path Add-on
+  * Extended path sub-package
+  * Math Tools
+  * DXF Entity Enhancements
+- Cythonize
+- Update build, test, and runtime requirements
+
+-------------------------------------------------------------------
 Sat Jan 16 07:57:51 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python36 because scipy dep. 
