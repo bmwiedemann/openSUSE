@@ -1,7 +1,7 @@
 #
 # spec file for package libzbc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_9_0
-Version:        5.9.0
+%define lname   libzbc-5_10_0
+Version:        5.10.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
 Group:          Hardware/Other
-URL:            https://github.com/hgst/libzbc
+URL:            https://github.com/westerndigitalcorporation/libzbc
 
-Source:         https://github.com/hgst/libzbc/archive/v%version.tar.gz
+Source:         https://github.com/westerndigitalcorporation/libzbc/archive/v%version.tar.gz
 BuildRequires:  autoconf-archive
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
@@ -66,7 +66,7 @@ Group:          Hardware/Other
 A simple graphical interface showing zone information of a zoned device.
 It also displays the write status (write pointer position) of zones
 graphically using color coding (red for written space and green for
-unwritten space). 
+unwritten space).
 
 %package tools
 Summary:        Command line utilities for ZBC/ZAC disk manipulation
@@ -81,25 +81,27 @@ Block Command (ZBC), Zoned-device ATA command set (ZAC) disks.
 
 %build
 autoreconf -fi
-mkdir obj
-pushd obj/
-%define _configure ../configure
+#mkdir obj
+#pushd obj/
+#define _configure ../configure
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name" CFLAGS="%optflags -fno-common"
-make %{?_smp_mflags}
-popd
+%make_build
+#popd
 
 %install
-%make_install -C obj
+%make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %check
-make -C obj check %{?_smp_mflags}
+%make_build check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files tools
 %_bindir/zbc_*
+%_mandir/man*/*z*
 %license COPYING.LESSER
 
 %files gui

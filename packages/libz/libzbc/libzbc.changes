@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 22 10:50:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.10
+  * Fix the block backend driver to always issue a reset zone ioctl
+  * Fix the fake backend driver zbc_fake_set_write_pointer() function
+  * Fix the tools command line parsing and error messages
+
+-------------------------------------------------------------------
 Thu Jul 30 15:53:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.0
