@@ -1,5 +1,0 @@
-<package name="python-blindspin" project="openSUSE:Factory">
-  <title>python-blindspin</title>
-  <description>Braille Spinner for Python</description>
-  <devel project="devel:languages:python" package="python-blindspin"/>
-</package>
