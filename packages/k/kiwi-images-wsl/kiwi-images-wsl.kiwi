@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="6.1" name="opensuse-wsl">
+<image schemaversion="6.1" name="openSUSE-Leap-%OS_VERSION_ID%-WSL">
   <description type="system">
     <author>SUSE WSL Team</author>
     <contact>wsl@suse.com</contact>
@@ -7,7 +7,7 @@
   </description>
   <preferences>
     <type image="appx" metadata_path="/usr/share/wsl-appx"/>
-    <version>15.3</version>
+    <version>1.0.0</version>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
@@ -54,7 +54,7 @@
     <package name="filesystem"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-wsl"/>
-    <!-- needed by tumbleweed and other projects using kiwi-nobasepackages until obs-build#562 resolved -->    
-    <package name="zypper"/>    
+    <!-- needed by tumbleweed and other projects using kiwi-nobasepackages until obs-build#562 resolved -->
+    <package name="zypper"/>
   </packages>
 </image>

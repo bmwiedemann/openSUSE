@@ -58,4 +58,41 @@
     <comment></comment>
     <requestid>894518</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0a4304680538642984313094f206fa5</srcmd5>
+    <version>1.0.0</version>
+    <time>1622759599</time>
+    <user>dimstar_suse</user>
+    <comment>- Set kiwi definition version to 1.0.0. Use OBS build time _service
+  replace_using_env to substitute four-digit appx version. Example:
+  &lt;version&gt;1.0.0&lt;/version&gt; at build time becomes
+  &lt;version&gt;153.3.2.0&lt;/version&gt;
+  * Image filename examples:
+    SUSE-Linux-Enterprise-Server-15.3-WSL.x86_64-153.3.2.0-Build3.2.appx
+    openSUSE-Leap-15.3-WSL.x86_64-153.3.2.0-Build3.2.appx
+    openSUSE-Tumbleweed-20210524-WSL.x86_64-21144.3.2.0-Build3.2.appx
+  * Full OS name and VERSION_ID e.g. 15.3 or 20210528 (TW) are now
+    included in the first part of the image file name making the
+    second occurrence redundant.
+  * The 1.0.0 version allows use of unmodified kiwi definition to
+    produce valid manual kiwi appx image builds for side loading.
+  * Builds in OBS use _service replace_using_env to substitute the
+    four-digit appx version including RELEASE digits in place of
+    the three digit kiwi definition version.
+  * replace_using_env sets APPX_VERSION as AppxManifest.xml match
+    on Version=(W.X.Y.Z). Two grep passes are required to mitigate
+    apparent lack of group-only replacement in grep, sed, awk
+  * replace_using_env replaces &lt;version&gt;1.0.0&lt;/version&gt; with
+    &lt;version&gt;%%APPX_VERSION%%/version&gt;
+  * replace_using_env replaces %%APPX_VERSION%% with appx version
+    at build time.
+  * For reference, digits of appx VERSION are limited to the
+    following ranges: # 0-65535, 0-65535, 0-65535, 0
+
+- Use full OS name and VERSION_ID for appx image filename
+  * SUSE-Linux-Enterprise-Server-%OS_VERSION_ID%-WSL
+  * openSUSE-Leap-%OS_VERSION_ID%-WSL
+  * openSUSE-Tumbleweed-%OS_VERSION_ID%-WSL</comment>
+    <requestid>896704</requestid>
+  </revision>
 </revisionlist>

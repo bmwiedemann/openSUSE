@@ -1,7 +1,48 @@
 -------------------------------------------------------------------
+Fri May 28 20:41:06 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Set kiwi definition version to 1.0.0. Use OBS build time _service
+  replace_using_env to substitute four-digit appx version. Example:
+  <version>1.0.0</version> at build time becomes
+  <version>153.3.2.0</version>
+  * Image filename examples:
+    SUSE-Linux-Enterprise-Server-15.3-WSL.x86_64-153.3.2.0-Build3.2.appx
+    openSUSE-Leap-15.3-WSL.x86_64-153.3.2.0-Build3.2.appx
+    openSUSE-Tumbleweed-20210524-WSL.x86_64-21144.3.2.0-Build3.2.appx
+  * Full OS name and VERSION_ID e.g. 15.3 or 20210528 (TW) are now
+    included in the first part of the image file name making the
+    second occurrence redundant.
+  * The 1.0.0 version allows use of unmodified kiwi definition to
+    produce valid manual kiwi appx image builds for side loading.
+  * Builds in OBS use _service replace_using_env to substitute the
+    four-digit appx version including RELEASE digits in place of
+    the three digit kiwi definition version.
+  * replace_using_env sets APPX_VERSION as AppxManifest.xml match
+    on Version=(W.X.Y.Z). Two grep passes are required to mitigate
+    apparent lack of group-only replacement in grep, sed, awk
+  * replace_using_env replaces <version>1.0.0</version> with
+    <version>%%APPX_VERSION%%/version>
+  * replace_using_env replaces %%APPX_VERSION%% with appx version
+    at build time.
+  * For reference, digits of appx VERSION are limited to the
+    following ranges: # 0-65535, 0-65535, 0-65535, 0
+
+-------------------------------------------------------------------
+Fri May 28 06:20:59 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use full OS name and VERSION_ID for appx image filename
+  * SUSE-Linux-Enterprise-Server-%OS_VERSION_ID%-WSL
+  * openSUSE-Leap-%OS_VERSION_ID%-WSL
+  * openSUSE-Tumbleweed-%OS_VERSION_ID%-WSL
+  * Previously used generic image names suse-wsl and opensuse-wsl
+    as holdover from kiwi-images-wsl to wsl-appx workflow.
+    With kiwi direct appx generation, restore appx image filenames
+    specific to the OS branding.
+
+-------------------------------------------------------------------
 Tue May 19 15:19:40 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Add OBS source service replace_using_env. Configure to subsitute
+- Add OBS source service replace_using_env. Configure to substitute
   release number into digits 2, 3 of appx version in file
   AppxManifest.xml owned by wsl-appx.
   * The regex defined in _service matches all four digits from
@@ -11,7 +52,7 @@ Tue May 19 15:19:40 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
     (space)Version="\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)"
     Replaces with:
     (space)Version="\1.%%RELEASE%%.\4"
-  * replace_using_evn replaces %%RELEASE%% with OBS build env var
+  * replace_using_env replaces %%RELEASE%% with OBS build env var
     ${RELEASE} string containing two dot separated integer digits.
   * For reference, digits of appx VERSION are limited to the
     following ranges: # 0-65535, 0-65535, 0-65535, 0
@@ -45,7 +86,7 @@ Wed Mar 17 09:54:08 UTC 2021 - Yuchen Lin <mlin+factory@suse.de>
 -------------------------------------------------------------------
 Thu Oct  8 13:01:29 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
 
-- Add system-user-nobody bsc#1176401 
+- Add system-user-nobody bsc#1176401
   Part of patterns-base-base but not in minimal_base
 
 -------------------------------------------------------------------
@@ -116,25 +157,25 @@ Wed May 22 22:03:04 UTC 2019 - Rich Williams <riwilliams@suse.com>
   - "lsb-release" is part of the Linux Standard Base.
   - If "openSUSE-release" is _not_ specified, then "dummy-release"
     seems to be automatically picked.
-- Deliberately deleted the "dummy-release" package.  DO NOT WANT. 
+- Deliberately deleted the "dummy-release" package.  DO NOT WANT.
 
 -------------------------------------------------------------------
 Tue Apr  9 13:06:34 UTC 2019 - Rich Williams <riwilliams@suse.com>
 
-- package change 15.0->15.1: 
+- package change 15.0->15.1:
   openSUSE-release -> openSUSE-release-appliance-custom
 - WSL tarball built sucessfully!
 
 -------------------------------------------------------------------
 Tue Apr  9 12:43:32 UTC 2019 - Rich Williams <riwilliams@suse.com>
 
-- working thru included packages errors when building 
-  (libyui-ncurses-pkg8 -> libyui-ncurses-pkg) 
+- working thru included packages errors when building
+  (libyui-ncurses-pkg8 -> libyui-ncurses-pkg)
 
 -------------------------------------------------------------------
 Tue Apr  9 12:38:43 UTC 2019 - Rich Williams <riwilliams@suse.com>
 
-- Updated for building 15.1 
+- Updated for building 15.1
 
 -------------------------------------------------------------------
 Wed Jan 30 14:14:39 UTC 2019 - agraf@suse.com

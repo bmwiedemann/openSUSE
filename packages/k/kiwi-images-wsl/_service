@@ -8,4 +8,11 @@
                 <param name="eval">sed -i -e 's# Version="\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)"# Version="\1.%%RELEASE%%.\4"#' /usr/share/wsl-appx/AppxManifest.xml</param>
                 <param name="verbose">1</param>
         </service>
+        <service mode="buildtime" name="replace_using_env">
+                <param name="file">kiwi-images-wsl.kiwi</param>
+                <param name="var">APPX_VERSION</param>
+                <param name="eval">APPX_VERSION=$(grep -o -e ' Version="[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*.[0-9]*"' /usr/share/wsl-appx/AppxManifest.xml |grep -o '[0-9.]*')</param>
+                <param name="eval">sed -i -e 's#\(.version.\)\([0-9\.]*\)\(..version.\)#\1%%APPX_VERSION%%\3#' kiwi-images-wsl.kiwi</param>
+                <param name="verbose">1</param>
+        </service>
 </services>
