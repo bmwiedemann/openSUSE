@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  3 11:27:14 UTC 2021 - pgajdos@suse.com
+
+- use github tarball with tests
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Tue Aug 28 12:15:23 UTC 2018 - tchvatal@suse.com
 
 - Version update to 1.1:
