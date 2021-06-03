@@ -1,7 +1,7 @@
-Index: miniupnpc-2.1/updateminiupnpcstrings.sh
+Index: miniupnpc-2.2.2/updateminiupnpcstrings.sh
 ===================================================================
---- miniupnpc-2.1.orig/updateminiupnpcstrings.sh
-+++ miniupnpc-2.1/updateminiupnpcstrings.sh
+--- miniupnpc-2.2.2.orig/updateminiupnpcstrings.sh
++++ miniupnpc-2.2.2/updateminiupnpcstrings.sh
 @@ -8,8 +8,8 @@ TMPFILE=miniupnpcstrings.h.tmp
  TEMPLATE_FILE=${FILE}.in
  

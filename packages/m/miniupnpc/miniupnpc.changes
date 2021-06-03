@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 18 17:53:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Wed Apr 28 10:53:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.2:
+  * miniupnpcmodule.c: throw an exception in UPnP_discover()
+  * Fix usage of IP_MULTICAST_IF with struct ip_mreqn
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.

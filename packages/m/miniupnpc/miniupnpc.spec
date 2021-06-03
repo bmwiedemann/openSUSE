@@ -1,7 +1,7 @@
 #
 # spec file for package miniupnpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %define soname 17
 %bcond_without python2
 Name:           miniupnpc
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
 URL:            http://miniupnp.free.fr/
 Source:         http://miniupnp.free.fr/files/miniupnpc-%{version}.tar.gz
+Source2:        http://miniupnp.free.fr/files/miniupnpc-%{version}.tar.gz.sig
+Source3:        http://miniupnp.free.fr/A31ACAAF.asc#/%{name}.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE: do not hardcode kernel version in headers
 Patch0:         miniupnpc-kernelversion.patch
