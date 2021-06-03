@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt5
 License:        GPL-3.0-or-later
