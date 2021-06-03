@@ -19,14 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-zeroconf
-Version:        0.29.0
+Version:        0.31.0
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
-Source:         https://github.com/jstasiak/python-zeroconf/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
+Patch0:         disable-tests.patch
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +45,7 @@ is not tied to Bonjour or Avahi, does not use D-Bus and
 does not force you to use a particular event loop or python-twisted.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python_build
