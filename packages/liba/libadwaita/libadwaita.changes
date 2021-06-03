@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  3 10:19:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0~alpha.1 (factually a downgrade, but
+  upstream is still in prorgress of finalizing their versioning
+  scheme):
+  + First official libadwaita 1 alpha.
+- Enable introspection support:
+  + Pass -Dintrospection=enabled to meson.
+  + Create new typelib-1_0-Adw-1 sub package.
+
+-------------------------------------------------------------------
 Sat May 15 00:08:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 1.1.0

@@ -17,17 +17,19 @@
 
 
 Name:           libadwaita
-Version:        1.1.0~20210512
+Version:        1.0.0~alpha.1
 Release:        0
 Summary:        Adwaita library for mobile device UIs using GTK/GNOME
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
-Source:        %{name}-%{version}.tar.xz
-BuildRequires:  vala sassc meson
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gtk4)
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  meson
+BuildRequires:  sassc
+BuildRequires:  vala
 BuildRequires:  pkgconfig(fribidi)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk4)
 %lang_package
 
 %description
@@ -36,7 +38,7 @@ The aim of the Adwaita library is to help with developing UI for mobile devices 
 %package -n libadwaita-1-0
 Summary:        Adwaita library for mobile device UIs using GTK/GNOME
 # Make the -lang package installable
-Provides:        %{name} = %{version}
+Provides:       %{name} = %{version}
 
 %description -n libadwaita-1-0
 The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
@@ -44,9 +46,19 @@ The aim of the Adwaita library is to help with developing UI for mobile devices 
 %package devel
 Summary:        Development files for the Adwaita library
 Requires:       libadwaita-1-0 = %{version}
+Requires:       typelib-1_0-Adw-1 = %{version}
 
 %description devel
 The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+
+%package -n typelib-1_0-Adw-1
+Summary:        Introspection bindings for Adwaita
+Group:          System/Libraries
+
+%description -n typelib-1_0-Adw-1
+The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+
+This package provides the GObject Introspection bindings for Adwaita.
 
 %prep
 %setup -q
@@ -54,7 +66,7 @@ The aim of the Adwaita library is to help with developing UI for mobile devices 
 %build
 %meson \
   -Dexamples=false \
-  -Dintrospection=disabled
+  -Dintrospection=enabled
 %meson_build
 
 %install
@@ -70,22 +82,15 @@ The aim of the Adwaita library is to help with developing UI for mobile devices 
 %doc README.md
 %{_libdir}/libadwaita-1.so.0
 
+%files -n typelib-1_0-Adw-1
+%{_libdir}/girepository-1.0/Adw-1.typelib
+
 %files devel
 %{_includedir}/libadwaita-1/
 %{_libdir}/libadwaita-1.so
 %{_libdir}/pkgconfig/libadwaita-1.pc
-
-
-
-
-
-
-
-
-
-
-
-
-
+%{_datadir}/gir-1.0/Adw-1.gir
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/libadwaita-1.{deps,vapi}
 
 %changelog
