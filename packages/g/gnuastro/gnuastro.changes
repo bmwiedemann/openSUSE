@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  2 07:37:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.15 (library 13.0.0):
+  * New programs: astscript-ds9-region, astscript-radial-profile
+  * Recognized FITS files even without a FITS suffix
+  * --wcslinearmatrix: new option in all programs to select the
+    output WCS linear matrix format
+  * documentation updates
+  * New arithmetic operators
+  * --envseed: new option to get random number generator settings
+    for the new 'mknoise-sigma' and 'mknoise-poisson' operators
+    from the environment for reproducibility
+  * New and updated options to multiple operations
+  * Extended support for 3d datacubes
+  * The default end to a "night" is set to 11:00a.m
+  * Bug fixes
+  * now supports bash completion
+
+-------------------------------------------------------------------
 Sat Jan 30 07:55:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.14 (library 12.0.0):

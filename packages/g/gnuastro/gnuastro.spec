@@ -16,17 +16,17 @@
 #
 
 
-%define sover 12
+%define sover 13
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/gnuastro/
 Source:         https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz.sig
-Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gnuastro&download=1#/%{name}.keyring
+Source3:        https://akhlaghi.org/public-pgp-key.txt#/%{name}.keyring
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -70,6 +70,16 @@ BuildArch:      noarch
 %description doc
 Additional documentation for the GNU Astromomy Utilities.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}
+
 %prep
 %setup -q
 
@@ -84,6 +94,8 @@ Additional documentation for the GNU Astromomy Utilities.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions
+mv -v %{buildroot}/%{_datadir}/%{name}/completion.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 
 %check
 %if %{with tests}
@@ -113,5 +125,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files doc
 %{_infodir}/gnuastro.info*.gz
 %{_infodir}/gnuastro-figures
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
