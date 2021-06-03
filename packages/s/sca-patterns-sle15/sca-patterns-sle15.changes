@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  2 22:23:25 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.4
+  - New regular patterns (4)
+    + sle15all/nobarrier-000020240.py: XFS nobarrier option has been completely deprecated starting from SLES15 SP2 (bsc#1176375)
+    + sle15all/sysdjobs-000020261.py: Troubleshooting systemd jobs that are hung or stuck (TID000020261)
+    + sle15all/udevmac-000020260.py: systemd-udevd Could not generate persistent MAC address for br0 No such file or directory (bsc#1185357)
+    + sle15sp2/nfstimeout_152-000019943.py: Delayed outgoing packets causing NFS timeouts (bsc#1183405)
+  - New security announcement patterns (39)
+    + May 2021 (39) for SUSE-SU-2021:1557-1 SUSE-SU-2021:1806-1 SUSE-SU-2021:1785-1 SUSE-SU-2021:1466-1 SUSE-SU-2021:1491-1 SUSE-SU-2021:1577-1 SUSE-SU-2021:1654-1 SUSE-SU-2021:1523-1 SUSE-SU-2021:1765-1 SUSE-SU-2021:1755-1 SUSE-SU-2021:1599-1 SUSE-SU-2021:1761-1 SUSE-SU-2021:1655-1 SUSE-SU-2021:1598-1 SUSE-SU-2021:1762-1 SUSE-SU-2021:1474-1 SUSE-SU-2021:1493-1 SUSE-SU-2021:1557-1 SUSE-SU-2021:1806-1 SUSE-SU-2021:1785-1 SUSE-SU-2021:1466-1 SUSE-SU-2021:1491-1 SUSE-SU-2021:1577-1 SUSE-SU-2021:1654-1 SUSE-SU-2021:1523-1 SUSE-SU-2021:1765-1 SUSE-SU-2021:1755-1 SUSE-SU-2021:1574-1 SUSE-SU-2021:1599-1 SUSE-SU-2021:1761-1 SUSE-SU-2021:1636-1 SUSE-SU-2021:1655-1 SUSE-SU-2021:1598-1 SUSE-SU-2021:1762-1 SUSE-SU-2021:1474-1 SUSE-SU-2021:1493-1 SUSE-SU-2021:1500-1 SUSE-SU-2021:1792-1 SUSE-SU-2021:1573-1
+
+-------------------------------------------------------------------
 Mon May 24 17:43:35 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.3
