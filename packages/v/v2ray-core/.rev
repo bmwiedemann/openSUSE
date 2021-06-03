@@ -209,4 +209,46 @@
 - add geo files manually since upstream removed them from source (forwarded request 885541 from zzndb001)</comment>
     <requestid>885561</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd87c48660ee521d8633039db4b14c02</srcmd5>
+    <version>4.39.2</version>
+    <time>1622759612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.39.2
+  * Websocket: support header based Websocket early data &amp; its partial browser
+  forwarder support
+  * GeoData: add a memory efficient geodata decoder called memconservative for
+  memory-limited devices #934 #953 #964 #965 #967 #977 Thanks @Loyalsoldier @rurirei
+  * HTTP/2 Transport: support to set method and headers for outgoing connections
+  * TCP Socket Option: support to set keepalive interval on Linux operating system
+  #962 Thanks @therealak12
+  * Fix BrowserForwarder panics with empty config (#954) Thanks @AkinoKaede
+  @Loyalsoldier
+  * Fix FakeDNS prints error with empty config (#955) Thanks @Loyalsoldier
+  * Fix Dual stack FakeDNS Close method (#956) Thanks @Loyalsoldier
+  * Fix Observatory starts with empty config &amp; fails to close (#957) Thanks
+  @Loyalsoldier
+  * Fix Null check on alternative system dialer (#959) Thanks @rurirei
+  * Fixed the chain proxy support for gRPC and HTTP/2 transport
+  * Fixed leastping logic (#1019) Thanks @fanyiguang
+  * Fixed v2ctl unable to create geodata loaders (#1014) Thanks @ght99
+- Update in 4.38.3
+  - FakeDNS: Added fakedns+others sniffer , based on #697 . Thanks @yuhan6665
+  - TLS: A SECURITY improvement that allow the remote peer's TLS certificate
+  to be pinned to a known value. Document for TLS is updated
+  - Observatory: A component that measure the connectivity of selected outbounds
+  The document for Observatory is updated.
+  - Routing : leastPing balancing strategy is added. This strategy will select
+  a outbound that is alive and completed HTTPS GET request in the least time.
+  The document for Routing is updated.
+  - Fixed crashing in fake dns. #931 Thanks @IceCodeNew
+  - Added IPv6 pool in fake dns by default. #925 Thanks @Loyalsoldier
+  - Return ErrEmptyResponse for fakedns. #926 Thanks @sixg0000d
+  - Fixed UDP DNS connection cause crash. Thanks @nekohasekai
+  - Fixed two typo in comments. Thanks @U-v-U
+  * Multi-json support for observatory, browser forwarder.
+  #944 Thanks @ha-ku @AkinoKaede
+- Add browserforwarder related v2ray-extra.zip (forwarded request 896867 from zzndb001)</comment>
+    <requestid>897040</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v4
 
 Name:           v2ray-core
-Version:        4.37.3
+Version:        4.39.2
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -37,12 +37,14 @@ Source2:        v2ray.service
 Source3:        v2ray@.service
 Source4:        https://github.com/v2fly/geoip/raw/release/geoip.dat
 Source5:        https://github.com/v2fly/domain-list-community/raw/release/dlc.dat
+Source6:        https://github.com/v2fly/v2ray-core/releases/download/v%{version}/v2ray-extra.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 # This package (v4.37.3+) can not be built with go version < 1.16
 BuildRequires:  golang(API) = 1.16
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       v2ray = %{version}-%{release}
@@ -67,7 +69,7 @@ It secures network connections and protects privacy.
 This package provide source code for %{repo}
 
 %prep
-%setup -q -a1 -n %{repo}-%{version}
+%setup -q -a1 -a6 -n %{repo}-%{version}
 
 %build
 %goprep %{import_path}
@@ -95,6 +97,10 @@ install -m0644 release/config/*.json %{buildroot}%{_sysconfdir}/v2ray/
 install -d %{buildroot}%{_sbindir}/
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 
+install -d %{buildroot}%{_datadir}/v2ray/browserforwarder
+install -m0644 browserforwarder/index.js %{buildroot}%{_datadir}/v2ray/browserforwarder/
+install -m0644 browserforwarder/index.html %{buildroot}%{_datadir}/v2ray/browserforwarder/
+
 %fdupes %{buildroot}
 
 %pre
@@ -121,6 +127,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %{_datadir}/v2ray/*
 %config(noreplace) %{_sysconfdir}/v2ray/*.json
 %{_sbindir}/rcv2ray
+%{_datadir}/v2ray/browserforwarder/
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
 %doc README.md
