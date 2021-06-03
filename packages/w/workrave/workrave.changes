@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  3 08:25:16 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Add back the removed patches that were not included yet in the latest
+  upstream release that was done already in March.
+  - Add fix-wayland-gnome-crash.patch, now not needing rebasing
+  - Add support-gnome-40.patch
+
+-------------------------------------------------------------------
 Mon May 31 18:43:24 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove obsolete fix-wayland-gnome-crash.patch

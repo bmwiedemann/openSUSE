@@ -26,6 +26,10 @@ Group:          Productivity/Other
 URL:            http://www.workrave.org
 Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM fix-wayland-gnome-crash.patch boo#1184773
+Patch0:         fix-wayland-gnome-crash.patch
+# PATCH-FIX-UPSTREAM support-gnome-40.patch boo#1184863
+Patch1:         support-gnome-40.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -68,6 +72,8 @@ Workrave.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 ./autogen.sh
