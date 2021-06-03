@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:05:02 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- add cluster init support for OCFS2 device
+
+-------------------------------------------------------------------
 Wed Dec 16 09:04:29 UTC 2020 - Aleksei Burlakov <aburlakov@suse.com>
 
 - qdevice support: it can be created when initializing a cluster
