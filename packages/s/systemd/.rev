@@ -5346,4 +5346,25 @@ handle manual pages that consist only of a .so directive such as
   option to the kernel command line.</comment>
     <requestid>882182</requestid>
   </revision>
+  <revision rev="329" vrev="2">
+    <srcmd5>5114f3dbb0a4f1d3e194301fa99d80eb</srcmd5>
+    <version>246.13</version>
+    <time>1622759587</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd.spec: clean some of the build deps up:
+  - libpcre is redundant with libpcre2 (only required by the full
+    build) and the mini variant needs none of them. Hence drop the ref
+    to libpcre.
+  - normally libidn2 is needed by some optional features in
+    systemd-network (only). But it's implicitly pulled in by libgnutls
+    (required by the main package). Let's make sure the related
+    features won't be disabled inadvertently in the future by making
+    the dep explicit.
+
+- enable libiptc for masquerading support in networkd
+
+- create subpackage systemd-experimental to host pstore, repart,
+  userdb and homed</comment>
+    <requestid>885896</requestid>
+  </revision>
 </revisionlist>

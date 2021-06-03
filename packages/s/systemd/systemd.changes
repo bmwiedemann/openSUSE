@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  7 08:59:15 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: clean some of the build deps up:
+
+  - libpcre is redundant with libpcre2 (only required by the full
+    build) and the mini variant needs none of them. Hence drop the ref
+    to libpcre.
+
+  - normally libidn2 is needed by some optional features in
+    systemd-network (only). But it's implicitly pulled in by libgnutls
+    (required by the main package). Let's make sure the related
+    features won't be disabled inadvertently in the future by making
+    the dep explicit.
+
+-------------------------------------------------------------------
 Tue Mar 30 13:35:38 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 14581e01203df7aa63c7c8383a12e6ebe258476f (merge of v246.13)
@@ -23,6 +38,11 @@ Wed Mar 24 07:05:22 UTC 2021 - Franck Bui <fbui@suse.com>
 
   Temporary workaround for bsc#1183745 (upstream issue 18917) until an
   actual fix is found.
+
+-------------------------------------------------------------------
+Tue Mar 23 14:11:03 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- enable libiptc for masquerading support in networkd
 
 -------------------------------------------------------------------
 Mon Mar 22 21:12:40 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
@@ -64,6 +84,12 @@ Mon Mar 15 11:06:54 UTC 2021 - Franck Bui <fbui@suse.com>
   da7bba9438 udev: fix memleak
   e06139117c nspawn: make rootfs relative to oci bundle path (bsc#1182598)
   8ba587d46c PATCH] Always free deserialized_subscribed on reload (bsc#1180020)
+
+-------------------------------------------------------------------
+Thu Mar 11 16:58:44 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- create subpackage systemd-experimental to host pstore, repart,
+  userdb and homed
 
 -------------------------------------------------------------------
 Thu Mar 11 09:51:53 UTC 2021 - Franck Bui <fbui@suse.com>

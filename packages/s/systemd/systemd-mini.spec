@@ -38,6 +38,7 @@
 %bcond_with     portabled
 %bcond_with     resolved
 %bcond_with     sysvcompat
+%bcond_with     experimental
 %else
 %bcond_without  coredump
 %ifarch %{ix86} x86_64
@@ -50,6 +51,7 @@
 %bcond_without  portabled
 %bcond_without  resolved
 %bcond_without  sysvcompat
+%bcond_without  experimental
 %endif
 %bcond_with     parentpathid
 
@@ -99,7 +101,6 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
 BuildRequires:  pkgconfig(libkmod) >= 15
 BuildRequires:  pkgconfig(libpci) >= 3
-BuildRequires:  pkgconfig(libpcre)
 %if %{with importd}
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libcurl)
@@ -111,6 +112,10 @@ BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 %endif
 %if %{with gnuefi}
 BuildRequires:  gnu-efi
+%endif
+%if %{with experimental}
+BuildRequires:  pkgconfig(fdisk)
+BuildRequires:  pkgconfig(openssl)
 %endif
 
 %if 0%{?bootstrap}
@@ -367,6 +372,7 @@ Summary:        Systemd tools for networkd and resolved
 License:        LGPL-2.1-or-later
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
+BuildRequires:  pkgconfig(libidn2)
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
 %systemd_requires
@@ -493,6 +499,24 @@ This package contains systemd-journal-gatewayd,
 systemd-journal-remote, and systemd-journal-upload.
 %endif
 
+%package experimental
+Summary:        Experimental systemd features
+License:        LGPL-2.1-or-later
+Group:          System/Base
+Requires:       %{name} = %{version}-%{release}
+%systemd_requires
+
+%description experimental
+This package contains optional extra systemd services that are
+considered a preview feature. Behaviour details and option names are
+subject to change without the usual backwards-compatibility promises.
+
+Components that turn out to be stable may be merged into the main or a
+dedicated package later.
+
+Use at your own risk.
+
+
 %if ! 0%{?bootstrap}
 %lang_package
 %endif
@@ -526,14 +550,22 @@ systemd-journal-remote, and systemd-journal-upload.
         -Dsmack=false \
         -Dima=false \
         -Delfutils=auto \
+%if %{with experimental}
+        -Dpstore=true \
+        -Drepart=true \
+        -Dhomed=true \
+        -Duserdb=true \
+%else
         -Dpstore=false \
         -Drepart=false \
-        -Duserdb=false \
         -Dhomed=false \
+        -Duserdb=false \
+%endif
+%if 0%{?bootstrap}
         -Dfdisk=false \
         -Dpwquality=false \
         -Dp11kit=false \
-%if ! 0%{?bootstrap}
+%else
         -Dman=true \
         -Dhtml=true \
 %endif
@@ -1049,6 +1081,29 @@ fi
 %service_del_postun systemd-portabled.service
 %endif
 
+%if %{with experimental}
+%pre experimental
+%service_add_pre systemd-pstore.service
+%service_add_pre systemd-userdbd.service systemd-userdbd.socket
+%service_add_pre systemd-homed.service
+
+%post experimental
+%tmpfiles_create systemd-pstore.conf
+%service_add_post systemd-pstore.service
+%service_add_post systemd-userdbd.service systemd-userdbd.socket
+%service_add_post systemd-homed.service
+
+%preun experimental
+%service_del_preun systemd-pstore.service
+%service_del_preun systemd-userdbd.service systemd-userdbd.socket
+%service_del_preun systemd-homed.service
+
+%postun experimental
+%service_del_postun systemd-pstore.service
+%service_del_postun systemd-userdbd.service systemd-userdbd.socket
+%service_del_postun systemd-homed.service
+%endif
+
 %clean
 
 %files
@@ -1145,6 +1200,22 @@ fi
 %exclude %{_unitdir}/systemd-portabled.service
 %exclude %{_unitdir}/dbus-org.freedesktop.portable1.service
 %exclude %{_tmpfilesdir}/portables.conf
+%endif
+%if %{with experimental}
+%exclude %{_prefix}/lib/systemd/systemd-pstore
+%exclude %{_unitdir}/systemd-pstore.service
+%exclude %{_tmpfilesdir}/systemd-pstore.conf
+%exclude %{_unitdir}/systemd-repart.service
+%exclude %{_unitdir}/initrd-root-fs.target.wants/systemd-repart.service
+%exclude %{_unitdir}/sysinit.target.wants/systemd-repart.service
+%exclude %{_prefix}/lib/systemd/systemd-userwork
+%exclude %{_prefix}/lib/systemd/systemd-userdbd
+%exclude %{_unitdir}/systemd-userdbd.service
+%exclude %{_unitdir}/systemd-userdbd.socket
+%exclude %{_prefix}/lib/systemd/systemd-homed
+%exclude %{_prefix}/lib/systemd/systemd-homework
+%exclude %{_unitdir}/systemd-homed-activate.service
+%exclude %{_unitdir}/systemd-homed.service
 %endif
 
 %{_unitdir}/*.automount
@@ -1307,6 +1378,17 @@ fi
 %if %{with portabled}
 %exclude %{_mandir}/man*/portablectl*
 %exclude %{_mandir}/man*/systemd-portabled*
+%endif
+%if %{with experimental}
+%exclude %{_mandir}/man*/*pstore*
+%exclude %{_mandir}/man*/*repart*
+%exclude %{_mandir}/man*/userdbctl*
+%exclude %{_mandir}/man*/systemd-userdbd*
+%exclude %{_mandir}/man*/*homectl*
+%exclude %{_mandir}/man*/*homed*
+%exclude %{_mandir}/man*/org.freedesktop.home1*
+%exclude %{_mandir}/man*/pam_systemd_home*
+%exclude %{_datadir}/bash-completion/completions/homectl
 %endif
 %endif
 
@@ -1612,6 +1694,40 @@ fi
 %{_tmpfilesdir}/portables.conf
 %{_mandir}/man*/portablectl*
 %{_mandir}/man*/systemd-portabled*
+%endif
+
+%if %{with experimental}
+%files experimental
+%defattr(-,root,root)
+%config(noreplace) /etc/systemd/pstore.conf
+%{_prefix}/lib/systemd/systemd-pstore
+%{_unitdir}/systemd-pstore.service
+%{_tmpfilesdir}/systemd-pstore.conf
+%{_mandir}/man*/*pstore*
+%{_bindir}/systemd-repart
+%{_unitdir}/systemd-repart.service
+%{_mandir}/man*/*repart*
+/usr/bin/userdbctl
+%{_prefix}/lib/systemd/systemd-userwork
+%{_prefix}/lib/systemd/systemd-userdbd
+%{_unitdir}/systemd-userdbd.service
+%{_unitdir}/systemd-userdbd.socket
+%{_mandir}/man*/userdbctl*
+%{_mandir}/man*/systemd-userdbd*
+%config %{_sysconfdir}/homed.conf
+%{_bindir}/homectl
+%{_prefix}/lib/systemd/systemd-homed
+%{_prefix}/lib/systemd/systemd-homework
+%{_unitdir}/systemd-homed.service
+%{_pamdir}/pam_systemd_home.so
+%{_datadir}/dbus-1/system-services/org.freedesktop.home1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.home1.policy
+%{_datadir}/bash-completion/completions/homectl
+%{_mandir}/man*/*homectl*
+%{_mandir}/man*/*homed*
+%{_mandir}/man*/org.freedesktop.home1*
+%{_mandir}/man*/pam_systemd_home*
 %endif
 
 %changelog
