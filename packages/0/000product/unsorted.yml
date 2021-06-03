@@ -2718,6 +2718,8 @@ unsorted:
   - deepin-calculator-lang 
   - deepin-calendar 
   - deepin-calendar-lang 
+  - deepin-compressor 
+  - deepin-compressor-lang 
   - deepin-control-center 
   - deepin-control-center-data 
   - deepin-control-center-devel 
@@ -2733,6 +2735,9 @@ unsorted:
   - deepin-desktop-schemas-branding-upstream 
   - deepin-dock 
   - deepin-dock-devel 
+  - deepin-dock-plugin-screen-recorder 
+  - deepin-draw 
+  - deepin-draw-lang 
   - deepin-editor 
   - deepin-editor-lang 
   - deepin-feature-enable 
@@ -2754,6 +2759,7 @@ unsorted:
   - deepin-launcher-branding-openSUSE 
   - deepin-launcher-branding-upstream 
   - deepin-launcher-devel 
+  - deepin-manual 
   - deepin-movie 
   - deepin-movie-devel 
   - deepin-movie-lang 
@@ -2784,6 +2790,8 @@ unsorted:
   - deepin-terminal-lang 
   - deepin-turbo 
   - deepin-turbo-devel 
+  - deepin-voice-note 
+  - deepin-voice-note-lang 
   - deepin-wallpapers 
   - deepin-wallpapers-community 
   - deepin-wayland-devel 
@@ -3019,6 +3027,7 @@ unsorted:
   - dtach 
   - dtc 
   - dtdinst 
+  - dtkcommon 
   - dtkcore 
   - dtkcore-devel 
   - dtkgui 
@@ -10226,6 +10235,7 @@ unsorted:
   - libdbus-c++-devel 
   - libdbus-c++-glib-1-1 
   - libdbus-c++-glib-devel 
+  - libdbusextended-qt5-1 
   - libdbusmenu-glib-devel 
   - libdbusmenu-glib-doc 
   - libdbusmenu-gtk2-devel 
@@ -10332,6 +10342,7 @@ unsorted:
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
   - libdruntime-ldc96 
+  - libdrvproxy2 
   - libdtkcore5 
   - libdtkgui5 
   - libdtkwidget5 
@@ -11411,6 +11422,7 @@ unsorted:
   - libint2-2 
   - libiodbc-devel 
   - libiodbc3 
+  - libiodbcadm2 
   - libiomp5: [x86_64] 
   - libiomp5-gnu-hpc: [x86_64] 
   - libiomp5-gnu-openmpi2-hpc: [x86_64] 
@@ -11996,6 +12008,7 @@ unsorted:
   - libmpir23 
   - libmpirxx8 
   - libmplex2-2_2-0-32bit: [x86_64] 
+  - libmpris-qt5-1 
   - libmpv1 
   - libmpx2-gcc7 
   - libmpx2-gcc7-32bit: [x86_64] 
@@ -21445,6 +21458,7 @@ unsorted:
   - python36-Flask-SQLAlchemy 
   - python36-Flask-Script 
   - python36-Flask-Security-Too 
+  - python36-Flask-SocketIO 
   - python36-Flask-Testing 
   - python36-Flask-WTF 
   - python36-Flask-doc 
@@ -24207,6 +24221,7 @@ unsorted:
   - python38-Flask-SQLAlchemy 
   - python38-Flask-Script 
   - python38-Flask-Security-Too 
+  - python38-Flask-SocketIO 
   - python38-Flask-Testing 
   - python38-Flask-WTF 
   - python38-Flask-doc 
@@ -27119,6 +27134,7 @@ unsorted:
   - python39-Flask-SQLAlchemy 
   - python39-Flask-Script 
   - python39-Flask-Security-Too 
+  - python39-Flask-SocketIO 
   - python39-Flask-Testing 
   - python39-Flask-WTF 
   - python39-Flask-doc 
@@ -29963,7 +29979,7 @@ unsorted:
   - python39-vcrpy 
   - python39-vcver 
   - python39-vcversioner 
-  - python39-vdirsyncer: [x86_64] 
+  - python39-vdirsyncer 
   - python39-vega 
   - python39-vega_datasets 
   - python39-venusian 
@@ -30142,6 +30158,7 @@ unsorted:
   - qcustomplot-doc 
   - qd-devel 
   - qdirstat 
+  - qdl 
   - qdox 
   - qdox-javadoc 
   - qelectrotech 
@@ -30499,6 +30516,7 @@ unsorted:
   - qtcurve-gtk2-32bit: [x86_64] 
   - qtcurve-qt5 
   - qtcurve-qt5-32bit: [x86_64] 
+  - qtdbusextended-devel 
   - qtdeclarative-imports-provides-qt6 
   - qtel 
   - qterm 
@@ -30511,6 +30529,8 @@ unsorted:
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
   - qtkeychain-qt6-lang 
+  - qtmpris 
+  - qtmpris-devel 
   - qtodotxt 
   - qtox 
   - qtractor 
@@ -31590,6 +31610,7 @@ unsorted:
   - shared-color-targets 
   - sharpfont 
   - sharpfont-devel 
+  - shells-cli 
   - shelltestrunner: [x86_64] 
   - shepherd 
   - shepherd-bins 
@@ -42295,6 +42316,7 @@ unsorted:
   - yast2-trans-tk 
   - yast2-update-FACTORY 
   - yast2-usbauth 
+  - yast2-widget-demo 
   - yast2-ycp-ui-bindings-devel 
   - yate 
   - yate-bts 
