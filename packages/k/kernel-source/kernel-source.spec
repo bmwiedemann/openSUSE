@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kernel-source
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.4
+%define patchversion 5.12.9
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.12.4
+Version:        5.12.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gcf6ea2f
+Release:        <RELEASE>.gf17eb01
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-cf6ea2f794d6aaeb6b0afb4ba3cfa7351eed3dc4
+Provides:       %name-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

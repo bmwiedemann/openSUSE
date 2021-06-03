@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.4
+%define patchversion 5.12.9
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.12.4
+Version:        5.12.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gcf6ea2f
+Release:        <RELEASE>.gf17eb01
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-cf6ea2f794d6aaeb6b0afb4ba3cfa7351eed3dc4
-Provides:       kernel-srchash-cf6ea2f794d6aaeb6b0afb4ba3cfa7351eed3dc4
+Provides:       kernel-%build_flavor-base-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
+Provides:       kernel-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
 # END COMMON DEPS
-Provides:       %name-srchash-cf6ea2f794d6aaeb6b0afb4ba3cfa7351eed3dc4
+Provides:       %name-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
