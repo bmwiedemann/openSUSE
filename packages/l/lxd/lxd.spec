@@ -25,6 +25,14 @@
 %define lxd_datadir %{_datadir}/lxd
 %define lxd_ovmfdir %{lxd_datadir}/ovmf
 
+# We need OVMF in order to support VMs with LXD. At the moment this means we
+# can only support it on x86_64.
+%ifarch x86_64
+%define arch_vm_support 1
+%else
+%define arch_vm_support 0
+%endif
+
 Name:           lxd
 Version:        4.14
 Release:        0
@@ -72,6 +80,7 @@ Requires:       rsync
 Requires:       squashfs
 Requires:       tar
 Requires:       xz
+%if 0%{arch_vm_support} != 0
 # Needed for VM support.
 Requires:       qemu-ovmf-x86_64
 BuildRequires:  qemu-ovmf-x86_64
@@ -82,7 +91,13 @@ Requires:       qemu-ui-spice-core
 %else
 Requires:       qemu-ui-spice-app
 %endif
+%ifarch %ix86 x86_64
 Requires:       qemu-x86
+%endif
+%ifarch aarch64 %arm
+Requires:       qemu-arm
+%endif
+%endif
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
 # blessed configuration.
 Recommends:     lvm2
@@ -309,6 +324,7 @@ install -D -m 0644 %{S:201} %{buildroot}%{_sysconfdir}/dnsmasq.d/60-lxd.conf
 install -d -m 0711 %{buildroot}%{_localstatedir}/lib/%{name}
 install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 
+%if 0%{arch_vm_support} != 0
 # In order for VM support in LXD to function, you need to have OVMF configured
 # in the way it expects. In particular, LXD depends on specific filenames for
 # the firmware files so we create fake ones with symlinks.
@@ -316,6 +332,7 @@ mkdir -p %{buildroot}%{lxd_ovmfdir}
 ln -s %{_datarootdir}/qemu/ovmf-x86_64-code.bin %{buildroot}%{lxd_ovmfdir}/OVMF_CODE.fd
 ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.fd
 ln -s OVMF_VARS.fd %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
+%endif
 
 %fdupes %{buildroot}
 
@@ -373,7 +390,9 @@ grep -q '^root:' /etc/subgid || \
 %config(noreplace) /etc/lxd/config.yml
 %dir /etc/lxd/servercerts
 
+%if 0%{arch_vm_support} != 0
 %{lxd_datadir}
+%endif
 
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service

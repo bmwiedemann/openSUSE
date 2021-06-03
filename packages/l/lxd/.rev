@@ -268,4 +268,14 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>896242</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4526b963180f6de74742863c81051106</srcmd5>
+    <version>4.14</version>
+    <time>1622759600</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependencies for aarch64/armv7l 
+
+- Fix build on i586 by if_arch-ing out the VM support on non-x86_64 platforms.</comment>
+    <requestid>896774</requestid>
+  </revision>
 </revisionlist>

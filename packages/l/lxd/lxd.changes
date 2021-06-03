@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 20:35:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix dependencies for aarch64/armv7l 
+
+-------------------------------------------------------------------
+Tue Jun  1 11:57:52 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Fix build on i586 by if_arch-ing out the VM support on non-x86_64 platforms.
+
+-------------------------------------------------------------------
 Mon May 31 05:11:38 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.14. The full upstream changelog is available from:
