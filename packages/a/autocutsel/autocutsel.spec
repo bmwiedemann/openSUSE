@@ -1,7 +1,7 @@
 #
 # spec file for package autocutsel
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           autocutsel
-Url:            http://www.nongnu.org/autocutsel/
+URL:            https://www.nongnu.org/autocutsel/
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Clipboard / Cutbuffer management helper
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 Source:         https://github.com/sigmike/autocutsel/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 X servers use two schemes to copy text between applications. The first one
@@ -56,16 +55,15 @@ three "clipboards" are always kept synchronized.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 
 %files
-%defattr(-,root,root)
 %doc COPYING
-/usr/bin/cutsel
-/usr/bin/autocutsel
+%{_bindir}/cutsel
+%{_bindir}/autocutsel
 %doc README
 
 %changelog
