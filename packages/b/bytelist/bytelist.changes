@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  3 00:19:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- DEPRECATED: JRuby no longer maintains org.jruby.util.ByteList as
+  a separate library 
+- Update to version 1.0.15
+  * Update to latest jcodings
+
+-------------------------------------------------------------------
 Wed May 16 08:02:40 UTC 2018 - fstrba@suse.com
 
 - Modified patch:

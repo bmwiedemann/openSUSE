@@ -17,13 +17,13 @@
 
 
 Name:           bytelist
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        A java library for lists of bytes
 License:        CPL-1.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            https://github.com/jruby/bytelist
-Source0:        https://github.com/jruby/bytelist/archive/%{name}-%{version}.tar.gz
+URL:            https://github.com/jruby/bytelist
+Source0:        %{url}/archive/refs/tags/bytelist-%{version}.tar.gz#/%{name}-%{name}-%{version}.tar.gz
 Patch0:         %{name}-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
