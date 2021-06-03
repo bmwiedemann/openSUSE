@@ -280,4 +280,13 @@ put together with abseil-cpp</comment>
     <comment></comment>
     <requestid>893121</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8e3c339630dad4fad0009d50aa4b5b38</srcmd5>
+    <version>1.38.0</version>
+    <time>1622759598</time>
+    <user>dimstar_suse</user>
+    <comment>- Add grpc-cxx17.patch
+- Update to release 1.38.0</comment>
+    <requestid>897022</requestid>
+  </revision>
 </revisionlist>

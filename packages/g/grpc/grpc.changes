@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  2 23:13:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add grpc-cxx17.patch
+
+-------------------------------------------------------------------
+Fri May 21 11:24:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38.0
+  * Invalidate ExecCtx now before computing timeouts in all
+    repeating timer events using a WorkSerializer or combiner.
+  * Fix use-after-unref bug in fault_injection_filter
+  * New gRPC EventEngine Interface
+  * Allow the AWS_DEFAULT_REGION environment variable
+  * s/OnServingStatusChange/OnServingStatusUpdate/
+- Drop 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch
+  (merged)
+
+-------------------------------------------------------------------
 Fri May 14 10:01:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch

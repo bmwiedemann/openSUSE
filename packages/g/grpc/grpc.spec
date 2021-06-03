@@ -16,11 +16,11 @@
 #
 
 
-%define lver 15
+%define lver 16
 %define lverp 1
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.37.1
+Version:        1.38.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -28,10 +28,8 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-# PATCH-FIX-UPSTREAM grpc-correct-pkgconfig-path.patch badshah400@gmail.com -- Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
 Patch1:         grpc-correct-pkgconfig-path.patch
-# PATCH-FIX-UPSTREAM 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch -- Keep track of devel dependencies
-Patch2:         0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch
+Patch2:         grpc-cxx17.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -71,11 +69,11 @@ The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
 
-%package -n libgrpc_plugin_support1_37
+%package -n libgrpc_plugin_support1_38
 Summary:        HTTP/2-based Remote Procedure Call implementation - plugin support
 Group:          System/Libraries
 
-%description -n libgrpc_plugin_support1_37
+%description -n libgrpc_plugin_support1_38
 The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
@@ -98,7 +96,7 @@ Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call imple
 Group:          Development/Tools/Building
 Requires:       libgrpc%lver = %version
 Requires:       libgrpc++%lverp = %version
-Requires:       libgrpc_plugin_support1_37 = %version
+Requires:       libgrpc_plugin_support1_38 = %version
 Requires:       pkgconfig(libcares)
 Requires:       pkgconfig(re2)
 
@@ -180,8 +178,8 @@ cp -r * "%buildroot/%src_install_dir"
 %postun -n libgrpc%lver -p /sbin/ldconfig
 %post   -n libgrpc++%lverp -p /sbin/ldconfig
 %postun -n libgrpc++%lverp -p /sbin/ldconfig
-%post   -n libgrpc_plugin_support1_37 -p /sbin/ldconfig
-%postun -n libgrpc_plugin_support1_37 -p /sbin/ldconfig
+%post   -n libgrpc_plugin_support1_38 -p /sbin/ldconfig
+%postun -n libgrpc_plugin_support1_38 -p /sbin/ldconfig
 %post   -n libupb%lver -p /sbin/ldconfig
 %postun -n libupb%lver -p /sbin/ldconfig
 
@@ -194,8 +192,8 @@ cp -r * "%buildroot/%src_install_dir"
 %_libdir/libgrpc++*.so.%{lverp}*
 %_libdir/libgrpcpp_channelz.so.%{lverp}*
 
-%files -n libgrpc_plugin_support1_37
-%_libdir/libgrpc_plugin_support.so.1.37*
+%files -n libgrpc_plugin_support1_38
+%_libdir/libgrpc_plugin_support.so.1.38*
 
 %files -n libupb%lver
 %_libdir/libupb*.so.%{lver}*
