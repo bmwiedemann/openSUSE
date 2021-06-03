@@ -212,4 +212,12 @@
   * Dropped Python 3.5 support</comment>
     <requestid>887379</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b8c33043608c3e447d29dce05cd9e6cb</srcmd5>
+    <version>0.31.0</version>
+    <time>1622759636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897198</requestid>
+  </revision>
 </revisionlist>

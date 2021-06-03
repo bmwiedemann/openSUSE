@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/jstasiak/python-zeroconf</param>
+    <param name="scm">git</param>
+    <param name="revision">87ba2a3960576cfcf4207ea74a711b2c0cc584a7</param>
+    <param name="version">0.31.0</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
