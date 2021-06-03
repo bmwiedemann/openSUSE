@@ -24,4 +24,15 @@
   directories are owned by the filesystem package.</comment>
     <requestid>896011</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c6c12fcdfc70d9fbd41f01439c70f9c3</srcmd5>
+    <version>1.12.2</version>
+    <time>1622759631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.2:
+  + Bugs fixed: Segmentation fault when pressing Ctrl+Right /
+    Ctrl+Left / Ctrl+Shift+.
+  + Updated translations. (forwarded request 896972 from iznogood)</comment>
+    <requestid>897163</requestid>
+  </revision>
 </revisionlist>

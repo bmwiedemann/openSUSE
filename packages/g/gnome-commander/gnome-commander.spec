@@ -17,7 +17,7 @@
 
 
 Name:           gnome-commander
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
