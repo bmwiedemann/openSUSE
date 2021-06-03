@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1622545881.99ce6034
+Version:        4.6.1622595893.93f70700
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -223,6 +223,7 @@ cd %{__builddir}
 %{_prefix}/lib/os-autoinst/consoles
 %{_prefix}/lib/os-autoinst/autotest.pm
 %{_prefix}/lib/os-autoinst/*.py
+%{_prefix}/lib/os-autoinst/check_qemu_oom
 
 %files openvswitch
 %defattr(-,root,root)

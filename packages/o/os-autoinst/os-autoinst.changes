@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 03 19:31:47 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1622595893.93f70700:
+  * Find out if qemu is killed because of out-of-memory
+
+-------------------------------------------------------------------
 Tue Jun 01 11:31:44 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1622545881.99ce6034:
