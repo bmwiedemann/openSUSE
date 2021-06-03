@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 27 10:43:06 UTC 2021 - varkoly@suse.com
+
+- Update to version 0.0.5:
+  * spec: Tidy specfile a bit
+  * spec: Use license and set_build_flags macros
+  * Makefile: Use install -p to preserve timestamps
+  * Makefile: Add -O to CFLAGS
+  * Remove fedorahosted references
+  * Add banner
+  * Add README file
+  * Move is_dup_packet to rhfunc
+  * Move msg mcast prefix check to msg
+  * Pass omping_instance to cli_parse
+
+-------------------------------------------------------------------
 Thu Apr 27 07:03:14 UTC 2017 - bliu@suse.com
 
 Initial package for SUSE
