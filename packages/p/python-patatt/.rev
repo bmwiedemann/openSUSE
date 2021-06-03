@@ -7,4 +7,12 @@
     <comment>add python-patatt, required for b4 &gt;= 0.7</comment>
     <requestid>895859</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02e2eeeecbfd45c67673864c4da6816e</srcmd5>
+    <version>0.4.4</version>
+    <time>1622759628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897115</requestid>
+  </revision>
 </revisionlist>
