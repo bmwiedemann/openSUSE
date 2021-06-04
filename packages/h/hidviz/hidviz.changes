@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 05:26:49 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Ad hidviz-gcc11.patch and fix build in Factory
+
+-------------------------------------------------------------------
 Sun May  3 16:57:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add hidviz-moc_policy.patch to fix build problem

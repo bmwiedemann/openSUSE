@@ -1,7 +1,7 @@
 #
 # spec file for package hidviz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://hidviz.org/releases/%{name}-%{version}.tar.gz
 Patch0:         hidviz-libexec_path.patch
 # PATCH-FIX-OPENSUSE hidviz-moc_policy.patch aloisio@gmx.com -- fix MOC problem with cmake 3.17
 Patch1:         hidviz-moc_policy.patch
+# PATCH-FIX-UPSTREAM hidviz-gcc11.patch
+Patch2:         hidviz-gcc11.patch
 BuildRequires:  ImageMagick
 BuildRequires:  asio-devel
 BuildRequires:  cmake
