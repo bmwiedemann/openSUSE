@@ -188,4 +188,12 @@
     <comment>- Trim old specfile constructs.</comment>
     <requestid>832619</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>68d4a96df3a039a3055200548dda325d</srcmd5>
+    <version>7.0.0</version>
+    <time>1622839412</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc11.patch</comment>
+    <requestid>897364</requestid>
+  </revision>
 </revisionlist>

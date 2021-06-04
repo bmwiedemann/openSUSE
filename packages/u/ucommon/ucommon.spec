@@ -1,7 +1,7 @@
 #
 # spec file for package ucommon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008, 2009 David Sugar, Tycho Softworks.
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -33,6 +33,7 @@ URL:            http://www.gnu.org/software/commoncpp
 Source:         http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz
 Source2:        http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz.sig
 Source3:        %name.keyring
+Patch1:         gcc11.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
