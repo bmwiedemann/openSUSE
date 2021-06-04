@@ -175,6 +175,8 @@ Recommends:     haveged
 Suggests:       xz
 # if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
 Suggests:       postfix
+# If anything requests "kernel", pick the full kernel package by default
+Suggests:       kernel-default
 # we have two providers for 'pulseaudio' - prefer the real one for the time being
 Suggests:       pulseaudio
 # There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl

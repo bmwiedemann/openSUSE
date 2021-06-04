@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:53:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Suggest kernel-default from patterns-base-base
+
+-------------------------------------------------------------------
 Fri May 28 20:07:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Suggest openssl from patterns-base-base: in case something

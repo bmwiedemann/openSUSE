@@ -623,4 +623,12 @@
   openssl as our default.</comment>
     <requestid>896032</requestid>
   </revision>
+  <revision rev="72" vrev="18">
+    <srcmd5>f297e1204ed1d6456206dc1fb1fe9b3c</srcmd5>
+    <version>20200505</version>
+    <time>1622839377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896931</requestid>
+  </revision>
 </revisionlist>
