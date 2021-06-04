@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.41
+Version:        6.1.48
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -29,6 +29,8 @@ Source3:        %{name}.changes
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
 Patch2:         praat-no-return-in-nonvoid.patch
+# PATCH-FIX-UPSTREAM praat-gcc11.patch
+Patch3:         praat-gcc11.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme

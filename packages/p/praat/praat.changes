@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun  4 07:16:31 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.48
+  * TextGrid window: Shift-drag drags multiple boundaries again
+    even if the Shift key is not released.
+  * Scripting: publishing ("Extract") an object from an editor
+    window returns its ID again.
+  * Scripting: "Select..." in an editor window is now prevented
+    from selecting outside the time domain.
+  version 6.1.47:
+  * The Escape key now means Cancel also in a non-pausing pause
+    window.
+  version 6.1.46:
+  * Fixed a bug with line types in the Picture window.
+  * TextGrid window: shift-click on a boundary again extends the
+    selection.
+  version 6.1.45:
+  * Praat picture files can be drawn with Read from file again.
+  version 6.1.44:
+  * Scripting: queries in editor windows are scriptable again.
+  version 6.1.43:
+  * TextGrid window: characters in the IPA chart grow with the
+    window.
+  * TextGrid window: seeing the maroon shadow now always means
+    that the boundary will be moved when the mouse is released
+    (problem since 6.1.20 or so).
+  version 6.1.42:
+  * Settings windows: taller text fields for formulas and
+    vectors.
+- Add praat-gcc11.patch to fix build in Factory
+
+-------------------------------------------------------------------
 Tue Apr 13 13:23:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.41
