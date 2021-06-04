@@ -874,4 +874,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.17.3</comment>
     <requestid>895553</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>763ba6abfcca7dd774d5e96653722684</srcmd5>
+    <version>1.18.0</version>
+    <time>1622839356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.18</comment>
+    <requestid>896872</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:06:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18
+  * Gestures' unaccelerated motion now matches the accelerated
+    motion (without accel, obviously).
+  * Better gesture detection should reduce the amount of pinch
+    gestures detected as two-finger scrolling.
+  * Pressing the wheel button down now suppresses accidental
+    scroll wheel events.
+  * Reworked clickpad detection means we should be more robust
+    for devices with broken firmware.
+
+-------------------------------------------------------------------
 Wed May 26 13:02:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.17.3
