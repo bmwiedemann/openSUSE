@@ -42,17 +42,24 @@
 #   https://github.com/matrix-org/synapse/releases or synapse/CHANGES.md
 # * Commit+submit
 
+%if 0%{?suse_version} >= 1550
+%define use_python python38
+%else
+%define use_python python3
+%endif
+
 %define         modname synapse
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.34.0
+Version:        1.35.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/matrix-org/synapse
 Source0:        %{pkgname}-%{version}.tar.xz
+Source47:       matrix-synapse-user.conf
 Source48:       README.SUSE
 Source49:       matrix-synapse.tmpfiles.d
 Source50:       %{pkgname}.service
@@ -65,132 +72,134 @@ Patch:          matrix-synapse-1.4.1-paths.patch
 Patch1:         dont-bump-cryptography-with-system-openssl.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base
-BuildRequires:  python3-psutil >= 2.0.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-treq >= 15.1.0
+BuildRequires:  %{use_python}-base >= 3.5
+BuildRequires:  %{use_python}-setuptools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  unzip
 %{?systemd_requires}
-Requires(pre):  shadow
-Requires:       python3-base >= 3.5
+%{sysusers_requires}
+%requires_eq    %{use_python}-base
 # NOTE: Keep this is in the same order as synapse/python_dependencie.py.
-BuildRequires:  python3-Jinja2 >= 2.9
-%requires_eq    python3-Jinja2
-BuildRequires:  python3-Pillow >= 4.3.0
-%requires_eq    python3-Pillow
-BuildRequires:  python3-PyNaCl >= 1.2.1
-%requires_eq    python3-PyNaCl
-BuildRequires:  python3-PyYAML >= 3.11
-%requires_eq    python3-PyYAML
-BuildRequires:  python3-Twisted >= 20.3.0
-%requires_eq    python3-Twisted
-BuildRequires:  ((python3-attrs >= 19.1.0 with python3-attrs < 21.1.0) or python3-attrs > 21.1.0)
-%requires_eq    python3-attrs
-BuildRequires:  python3-bcrypt >= 3.2.0
-%requires_eq    python3-bcrypt
-BuildRequires:  python3-bleach >= 1.4.3
-%requires_eq    python3-bleach
-BuildRequires:  python3-canonicaljson >= 1.4.0
-%requires_eq    python3-canonicaljson
-BuildRequires:  python3-cryptography
-%requires_eq    python3-cryptography
-BuildRequires:  python3-frozendict >= 1
-%requires_eq    python3-frozendict
-BuildRequires:  python3-idna >= 2.5
-%requires_eq    python3-idna
-BuildRequires:  python3-jsonschema >= 2.5.1
-%requires_eq    python3-jsonschema
-BuildRequires:  python3-msgpack >= 0.5.2
-%requires_eq    python3-msgpack
-BuildRequires:  python3-netaddr >= 0.7.18
-%requires_eq    python3-netaddr
-BuildRequires:  python3-phonenumbers >= 8.2.0
-%requires_eq    python3-phonenumbers
-BuildRequires:  python3-prometheus_client >= 0.4.0
-%requires_eq    python3-prometheus_client
-BuildRequires:  python3-psutil >= 2.0.0
-%requires_eq    python3-psutil
-BuildRequires:  python3-pyOpenSSL >= 16.0.0
-%requires_eq    python3-pyOpenSSL
-BuildRequires:  python3-pyasn1 >= 0.1.9
-%requires_eq    python3-pyasn1
-BuildRequires:  python3-pyasn1-modules >= 0.0.7
-%requires_eq    python3-pyasn1-modules
-BuildRequires:  python3-pymacaroons >= 0.13.0
-%requires_eq    python3-pymacaroons
-BuildRequires:  python3-service_identity >= 18.1.0
-%requires_eq    python3-service_identity
-BuildRequires:  python3-signedjson >= 1.1.0
-%requires_eq    python3-signedjson
-BuildRequires:  python3-six >= 1.10
-%requires_eq    python3-six
-BuildRequires:  python3-sortedcontainers >= 1.4.4
-%requires_eq    python3-sortedcontainers
-BuildRequires:  python3-systemd  >= 231
-%requires_eq    python3-systemd
-BuildRequires:  python3-typing_extensions >= 3.7.4
-%requires_eq    python3-typing_extensions
-BuildRequires:  python3-treq >= 15.1
-%requires_eq    python3-treq
-BuildRequires:  python3-unpaddedbase64 >= 1.1.0
-%requires_eq    python3-unpaddedbase64
+BuildRequires:  %{use_python}-Jinja2 >= 2.9
+%requires_eq    %{use_python}-Jinja2
+BuildRequires:  %{use_python}-Pillow >= 4.3.0
+%requires_eq    %{use_python}-Pillow
+BuildRequires:  %{use_python}-PyNaCl >= 1.2.1
+%requires_eq    %{use_python}-PyNaCl
+BuildRequires:  %{use_python}-PyYAML >= 3.11
+%requires_eq    %{use_python}-PyYAML
+BuildRequires:  %{use_python}-Twisted >= 20.3.0
+%requires_eq    %{use_python}-Twisted
+BuildRequires:  ((%{use_python}-attrs >= 19.1.0 with %{use_python}-attrs < 21.1.0) or %{use_python}-attrs > 21.1.0)
+%requires_eq    %{use_python}-attrs
+BuildRequires:  %{use_python}-bcrypt >= 3.2.0
+%requires_eq    %{use_python}-bcrypt
+BuildRequires:  %{use_python}-bleach >= 1.4.3
+%requires_eq    %{use_python}-bleach
+BuildRequires:  %{use_python}-canonicaljson >= 1.4.0
+%requires_eq    %{use_python}-canonicaljson
+BuildRequires:  %{use_python}-cryptography
+%requires_eq    %{use_python}-cryptography
+BuildRequires:  %{use_python}-frozendict >= 1
+%requires_eq    %{use_python}-frozendict
+BuildRequires:  %{use_python}-idna >= 2.5
+%requires_eq    %{use_python}-idna
+BuildRequires:  %{use_python}-ijson >= 3.0
+%requires_eq    %{use_python}-ijson
+BuildRequires:  %{use_python}-jsonschema >= 2.5.1
+%requires_eq    %{use_python}-jsonschema
+BuildRequires:  %{use_python}-msgpack >= 0.5.2
+%requires_eq    %{use_python}-msgpack
+BuildRequires:  %{use_python}-netaddr >= 0.7.18
+%requires_eq    %{use_python}-netaddr
+BuildRequires:  %{use_python}-phonenumbers >= 8.2.0
+%requires_eq    %{use_python}-phonenumbers
+BuildRequires:  %{use_python}-prometheus_client >= 0.4.0
+%requires_eq    %{use_python}-prometheus_client
+BuildRequires:  %{use_python}-psutil >= 2.0.0
+%requires_eq    %{use_python}-psutil
+BuildRequires:  %{use_python}-pyOpenSSL >= 16.0.0
+%requires_eq    %{use_python}-pyOpenSSL
+BuildRequires:  %{use_python}-pyasn1 >= 0.1.9
+%requires_eq    %{use_python}-pyasn1
+BuildRequires:  %{use_python}-pyasn1-modules >= 0.0.7
+%requires_eq    %{use_python}-pyasn1-modules
+BuildRequires:  %{use_python}-pymacaroons >= 0.13.0
+%requires_eq    %{use_python}-pymacaroons
+BuildRequires:  %{use_python}-service_identity >= 18.1.0
+%requires_eq    %{use_python}-service_identity
+BuildRequires:  %{use_python}-signedjson >= 1.1.0
+%requires_eq    %{use_python}-signedjson
+BuildRequires:  %{use_python}-six >= 1.10
+%requires_eq    %{use_python}-six
+BuildRequires:  %{use_python}-sortedcontainers >= 1.4.4
+%requires_eq    %{use_python}-sortedcontainers
+BuildRequires:  %{use_python}-systemd  >= 231
+%requires_eq    %{use_python}-systemd
+BuildRequires:  %{use_python}-typing_extensions >= 3.7.4
+%requires_eq    %{use_python}-typing_extensions
+BuildRequires:  %{use_python}-treq >= 15.1
+%requires_eq    %{use_python}-treq
+BuildRequires:  %{use_python}-unpaddedbase64 >= 1.1.0
+%requires_eq    %{use_python}-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
 %if %{with ldap}
-BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
-%requires_eq    python3-matrix-synapse-ldap3
+BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
+%requires_eq    %{use_python}-matrix-synapse-ldap3
 %endif
 %if %{with postgres}
-BuildRequires:  python3-psycopg2 >= 2.8
-%requires_eq    python3-psycopg2
+BuildRequires:  %{use_python}-psycopg2 >= 2.8
+%requires_eq    %{use_python}-psycopg2
 %endif
 %if %{with acme}
-BuildRequires:  python3-txacme >= 0.9.2
-%requires_eq    python3-txacme
+BuildRequires:  %{use_python}-txacme >= 0.9.2
+%requires_eq    %{use_python}-txacme
 %endif
 %if %{with saml}
-BuildRequires:  python3-pysaml2 >= 4.5.0
-%requires_eq    python3-pysaml2
+BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
+%requires_eq    %{use_python}-pysaml2
 %endif
 %if %{with oidc}
-BuildRequires:  python3-authlib >= 0.15.1
-%requires_eq    python3-authlib
+BuildRequires:  %{use_python}-authlib >= 0.15.1
+%requires_eq    %{use_python}-authlib
 %endif
 %if %{with url_preview}
-BuildRequires:  python3-lxml >= 3.5.0
-%requires_eq    python3-lxml
+BuildRequires:  %{use_python}-lxml >= 3.5.0
+%requires_eq    %{use_python}-lxml
 %endif
 %if %{with sentry}
-BuildRequires:  python3-sentry-sdk >= 0.7.2
-%requires_eq    python3-sentry-sdk
+BuildRequires:  %{use_python}-sentry-sdk >= 0.7.2
+%requires_eq    %{use_python}-sentry-sdk
 %endif
 %if %{with jwt}
-BuildRequires:  python3-PyJWT >= 1.6.4
-%requires_eq    python3-PyJWT
+BuildRequires:  %{use_python}-PyJWT >= 1.6.4
+%requires_eq    %{use_python}-PyJWT
 %endif
 %if %{with opentracing}
-BuildRequires:  python3-jaeger-client >= 4.0.0
-%requires_eq    python3-jaeger-client
-BuildRequires:  python3-opentracing   >= 2.2.0
-%requires_eq    python3-opentracing
+BuildRequires:  %{use_python}-jaeger-client >= 4.0.0
+%requires_eq    %{use_python}-jaeger-client
+BuildRequires:  %{use_python}-opentracing   >= 2.2.0
+%requires_eq    %{use_python}-opentracing
 %endif
 %if %{with redis}
-BuildRequires:  python3-txredisapi >= 1.4.7
-%requires_eq    python3-txredisapi
-BuildRequires:  python3-hiredis
-%requires_eq    python3-hiredis
+BuildRequires:  %{use_python}-txredisapi >= 1.4.7
+%requires_eq    %{use_python}-txredisapi
+BuildRequires:  %{use_python}-hiredis
+%requires_eq    %{use_python}-hiredis
 %endif
 %if %{with cache_memory}
-BuildRequires:  python3-Pympler
-%requires_eq    python3-Pympler
+BuildRequires:  %{use_python}-Pympler
+%requires_eq    %{use_python}-Pympler
 %endif
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
 Provides:       python2-matrix-synapse = %{version}-%{release}
-Obsoletes:      python3-matrix-synapse < %{version}-%{release}
-Provides:       python3-matrix-synapse = %{version}-%{release}
+Obsoletes:      %{use_python}-matrix-synapse < %{version}-%{release}
+Provides:       %{use_python}-matrix-synapse = %{version}-%{release}
 
 %description
 Synapse is a Python-based reference "homeserver" implementation of
@@ -213,6 +222,7 @@ sed -i 's|@PYTHON_FLAVOR@|%{__python3}|g' %{S:50}
 
 %build
 %python3_build
+%sysusers_generate_pre %{SOURCE47} %{name}
 
 %install
 cp %{S:48} README.SUSE
@@ -242,6 +252,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{pkgname}
 #
 install -D -m 0644 %{S:50} %{buildroot}%{_unitdir}/%{pkgname}.service
 install -D -m 0644 %{S:49} %{buildroot}%{_tmpfilesdir}/%{pkgname}.conf
+install -D -m 0644 %{SOURCE47} %{buildroot}%{_sysusersdir}/%{name}.conf
 #
 install -D -m 0755 %{S:51} %{buildroot}%{_sbindir}/matrix-synapse-generate-config
 
@@ -252,12 +263,7 @@ install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 
 %fdupes %{buildroot}%{python3_sitelib}
 
-%pre
-getent group synapse >/dev/null || groupadd -r synapse
-getent passwd synapse >/dev/null || \
-    /usr/sbin/useradd -r -g synapse -s /bin/false -c 'Matrix Synapse' \
-        -d %{_rundir}/%{pkgname} synapse
-usermod --shell=/bin/false --home=%{_localstatedir}/lib/%{pkgname} --gid=synapse synapse
+%pre -f %{name}.pre
 %service_add_pre %{pkgname}.service
 
 %post
@@ -286,6 +292,7 @@ usermod --shell=/bin/false --home=%{_localstatedir}/lib/%{pkgname} --gid=synapse
 %{_sbindir}/rc%{pkgname}
 %{_sbindir}/matrix-synapse-generate-config
 %{_unitdir}/%{pkgname}.service
+%{_sysusersdir}/%{name}.conf
 %{_tmpfilesdir}/%{pkgname}.conf
 # Man pages.
 %{_mandir}/man*/*
