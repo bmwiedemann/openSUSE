@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-database
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libretro-database
-Version:        1.8.9
+Version:        1.9.1
 Release:        0
 Summary:        RetroArch Database
 License:        MIT
 Group:          System/Emulators/Other
-URL:            https://github.com/libretro/%{name}
-
-Source:         https://github.com/libretro/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-
+URL:            https://github.com/libretro/libretro-database
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  make
 BuildArch:      noarch
