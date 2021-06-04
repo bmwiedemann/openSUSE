@@ -19,20 +19,18 @@
 %define         sover 1
 
 Name:           stlink
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        STM32 discovery line linux programmer
 License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/stlink-org/stlink/
 Source0:        https://github.com/stlink-org/stlink/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         change-desktopfile-category.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-install-path-of-stlink-gui.ui-file.patch
 BuildRequires:  cmake
 BuildRequires:  gtk3-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
@@ -64,9 +62,7 @@ Requires:       libstlink%{sover} = %{version}
 STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake -DSTLINK_UDEV_RULES_DIR="%_udevrulesdir" \
@@ -76,8 +72,11 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %install
 %cmake_install
+
 # remove static lib sdi
-rm -f %{buildroot}%{_libdir}/*.a
+rm %{buildroot}%{_libdir}/*.a
+
+%suse_update_desktop_file -r stlink-gui Development Debugger
 
 %post -n libstlink%{sover} -p /sbin/ldconfig
 
@@ -104,9 +103,7 @@ rm -f %{buildroot}%{_libdir}/*.a
 
 %files devel
 %dir %{_includedir}/stlink
-%{_includedir}/stlink.h
-%{_includedir}/stm32.h
-%{_includedir}/stlink/*.h
+%{_includedir}/stlink/
 %{_libdir}/libstlink.so
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  1 11:10:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.7.0. Check CHANGELOG.md for the full list of changes
+  + New features:
+    * Extended set of cmd line arguments for st-info and st-util
+    * Extended support for STM32H7 & rework of software reset
+    * Added support for STM32H742/743/753
+    * Official support for STLINK-V3 programmers
+    * Added preliminary support for STM32L5x2
+    * Option bytes on the STM32F767 ZIT6 Nucleo-144
+    * Increase STM32L0 `option_size` to 20
+    * st-util: Add specialized memory map for STM32H7 devices
+    * Support for STM32F4 option bytes
+    * ITM functionality for STLink/V2 and STM32Fxx chipsets
+- Use the %suse_update_desktop_file macro instead of
+  change-desktopfile-category.patch
+- Drop 0001-Fix-install-path-of-stlink-gui.ui-file.patch
+
+-------------------------------------------------------------------
 Sat Aug 29 09:34:35 UTC 2020 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Fix download link

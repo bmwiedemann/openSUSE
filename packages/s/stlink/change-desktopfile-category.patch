@@ -1,8 +1,0 @@
---- a/src/stlink-gui/stlink-gui.desktop	2020-03-15 10:38:10.799548436 +0100
-+++ b/src/stlink-gui/stlink-gui.desktop	2020-03-15 10:38:23.375569348 +0100
-@@ -6,4 +6,4 @@
- Icon=stlink-gui
- Terminal=false
- Type=Application
--Categories=Development;Electronics;
-+Categories=Development;Debugger;
