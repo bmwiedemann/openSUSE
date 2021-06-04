@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  3 03:11:44 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.1.2
+  * second bugfix
+  * mostly AMD and Intel changes as usual, but also a decent amount
+    of ARM fixes and more.
+
+-------------------------------------------------------------------
+Wed Jun  2 09:27:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer autoselect Mesa-dri-nouveau at all; autoselect 
+  libvdpau_nouveau depending on PCI ID (boo#1186721)
+
+-------------------------------------------------------------------
 Thu May 20 10:25:35 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.1.1

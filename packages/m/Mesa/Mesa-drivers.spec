@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 21.1.1
+%define _version 21.1.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        21.1.1
+Version:        21.1.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -493,7 +493,6 @@ compiling programs and libraries using the DRI API.
 Summary:        Mesa DRI plug-in for 3D acceleration via Nouveau
 Group:          System/Libraries
 Requires:       Mesa = %{version}
-Supplements:    xf86-video-nouveau
 
 %description -n Mesa-dri-nouveau
 This package contains nouveau_dri.so, which is necessary for
@@ -589,7 +588,8 @@ videos and artefacts all over.
 %package -n libvdpau_nouveau
 Summary:        XVMC state tracker for Nouveau
 Group:          System/Libraries
-Supplements:    xf86-video-nouveau
+Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v000012D2d*sv*sd*bc03sc*i*)
 
 %description -n libvdpau_nouveau
 This package contains the VDPAU state tracker for Nouveau.

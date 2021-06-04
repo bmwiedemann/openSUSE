@@ -4459,4 +4459,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   broadcom and freedreno</comment>
     <requestid>894910</requestid>
   </revision>
+  <revision rev="407" vrev="279">
+    <srcmd5>9f0045993c78f634bb4216025d27e09e</srcmd5>
+    <version>unknown</version>
+    <time>1622839381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.1.2
+  * second bugfix
+  * mostly AMD and Intel changes as usual, but also a decent amount
+    of ARM fixes and more.
+
+- no longer autoselect Mesa-dri-nouveau at all; autoselect 
+  libvdpau_nouveau depending on PCI ID (boo#1186721)</comment>
+    <requestid>897046</requestid>
+  </revision>
 </revisionlist>
