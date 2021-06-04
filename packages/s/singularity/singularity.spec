@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.7.3
+Version:        3.7.4
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://github.com/hpcng/singularity
@@ -45,15 +45,14 @@ BuildRequires:  binutils-gold
 Requires:       squashfs
 PreReq:         permissions
 
-# there's no golang for ppc64, just ppc64le
-ExcludeArch:    ppc64
+# there's no golang for ppc64, ppc64le does not have non pie builds
+ExcludeArch:    ppc64 ppc64le
 
 Provides:       %{name}-runtime
 
 %description
 Singularity provides functionality to make portable
 containers that can be used across host environments.
-
 
 %prep
 %setup -q -n gopath/%{singgopath} -c
@@ -111,11 +110,11 @@ done
 mv .tmp/* .
 rmdir .tmp
 
-%pre 
+%pre
 getent group singularity >/dev/null || groupadd -r singularity
 exit 0
 
-%post 
+%post
 %set_permissions %{_libexecdir}/singularity/bin/starter-suid
 
 %verifyscript

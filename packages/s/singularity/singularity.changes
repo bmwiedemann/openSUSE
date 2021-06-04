@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  4 11:35:15 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Update to version 3.7.4  (boo#1186619)
+  Fix for CVE-2021-32635:  
+  Due to incorrect use of a default URL, singularity action commands
+  (run/shell/exec) specifying a container using a library:// URI will always
+  attempt to retrieve the container from the default remote endpoint
+  (cloud.sylabs.io) rather than the configured remote endpoint. An attacker may
+  be able to push a malicious container to the default remote endpoint with a
+  URI that is identical to the URI used by a victim with a non-default remote
+  endpoint, thus executing the malicious container. 
+- Disabled ppc64le builds as these are non pie builds and so not
+  suiteable for the distribution in SLE and ppc64le is not relevant
+  for openSUSE
+
+-------------------------------------------------------------------
 Wed May 19 18:52:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.7.3
