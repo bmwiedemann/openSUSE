@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 01 12:40:06 UTC 2021 - christophe@krop.fr
+
+- Update to version 0~git20210515:
+  * Avoid typedefs for word, byte - conflicts with PS2 SDK
+  * remove some files not needed in dependencies
+  * Add ios-arm64/tvos-arm64
+  * (MSVC) Embed MSVCR runtime
+  * Add MSVC 2005/2010
+  * (macOS) Add ARM 64bit MacOS support
+  * Fix case in MSXturboR config for ROM/rom files
+  * Update bins for new PS2 toolchain
+  * add armv8
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add ps2 to .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add Gitlab CI
+  * Add Github CI
+  * Add PS2 support
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml
+  * libretro: use input bitmask
+  * fixed missing of strcasestr on PS3
+  * Fixed missing of _mftb on some PS3 SDK
+
+-------------------------------------------------------------------
 Sat May 30 17:23:18 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200507:

@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-bluemsx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libretro-bluemsx
-Version:        0~git20200507
+Version:        0~git20210515
 Release:        0
 Summary:        BlueMSX libretro core for MSX emulation
 License:        GPL-2.0-only
 Group:          System/Emulators/Other
-URL:            http://www.retroarch.com
+URL:            https://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
-
 BuildRequires:  gcc-c++
 BuildRequires:  make
 
@@ -37,7 +36,7 @@ This package is for RetroArch/libretro front-end.
 %setup -q
 
 %build
-make -f Makefile.libretro
+%make_build -f Makefile.libretro
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro
