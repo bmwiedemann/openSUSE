@@ -1,7 +1,7 @@
 #
 # spec file for package ax25-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
+%define src_ver 0.0.10-rc5
 Name:           ax25-tools
-Version:        0.0.10rc4_87
+Version:        0.0.10rc5
 Release:        0
 Summary:        AX.25 tools
 License:        GPL-2.0-only
 URL:            http://www.linux-ax25.org
-Source:         ax25-tools-%{version}.tar.xz
+Source:         http://www.linux-ax25.org/pub/ax25-tools/ax25-tools-%{src_ver}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  libax25-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -37,7 +39,7 @@ mostly configuration utilities, applications can be found in the
 package ax25apps.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{src_ver}
 
 %build
 export CFLAGS="%optflags -fcommon"
@@ -50,10 +52,12 @@ make %{?_smp_mflags}
 %make_install installconf
 rm -rf %{buildroot}%{_datadir}/doc/ax25-tools
 rm -rf %{buildroot}%{_localstatedir}/lib/ax25/mheard/mheard.dat
+%fdupes %{buildroot}%{_mandir}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README yamdrv/README.yamdrv
+%license COPYING
+%doc AUTHORS ChangeLog README yamdrv/README.yamdrv
 %doc dmascc/README.dmascc user_call/README.user_call tcpip/ttylinkd.INSTALL
 %doc tcpip/ttylinkd.README
 %dir %{_sysconfdir}/ax25
