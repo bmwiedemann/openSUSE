@@ -22,7 +22,7 @@
             <label name="org.opencontainers.image.description" value="Image containing Cilium - software for providing and securing network connectivity and load balancing between containers"/>
             <label name="org.opencontainers.image.version" value="%%LONG_VERSION%%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/kubic/cilium:%%LONG_VERSION%%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/kubic/cilium:%%LONG_VERSION%%-%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
         </labels>
