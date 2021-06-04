@@ -1,7 +1,7 @@
 #
 # spec file for package libax25
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 %define         sover 0
+%define src_ver 0.0.12-rc5
 Name:           libax25
-Version:        0.0.12~rc4.22
+Version:        0.0.12~rc5
 Release:        0
 Summary:        AX.25 data link layer protocol library
 License:        LGPL-2.1+
 Group:          Development/Libraries/C and C++
 Url:            http://www.linux-ax25.org/wiki/LinuxAX25
-Source:         %{name}-%{version}.tar.xz
+Source:         http://www.linux-ax25.org/pub/libax25/libax25-%{src_ver}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  xz
 BuildRequires:  zlib-devel
 
 %description
@@ -78,13 +78,13 @@ Header files for libax25. Used to build packages that are
 linked against kernel ax25.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{src_ver}
 
 %build
 autoreconf -fiv
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install installconf
@@ -96,8 +96,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libax25io%{sover} -p /sbin/ldconfig
 
 %files common
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
 %dir %{_sysconfdir}/ax25
 %config %{_sysconfdir}/ax25/axports
 %config %{_sysconfdir}/ax25/nrports
@@ -107,15 +106,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man5/rsports.5%{ext_man}
 
 %files -n libax25-%{sover}
-%defattr(-,root,root)
 %{_libdir}/libax25.so.%{sover}*
 
 %files -n libax25io%{sover}
-%defattr(-,root,root)
 %{_libdir}/libax25io.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
+%doc AUTHORS ChangeLog README
 %{_libdir}/libax25io.so
 %{_libdir}/libax25.so
 %{_includedir}/netax25

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  3 17:11:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.0.12rc5
+  * Lots of stylistic cleanups to the code trying to follow the
+    coding style of the kernel.
+  * Lots of small cleanup and fixes to silence warnings and issues
+  * Build system related changes
+
+-------------------------------------------------------------------
 Thu Jun 29 10:32:03 UTC 2017 - mpluskal@suse.com
 
 - Update licensing information 
