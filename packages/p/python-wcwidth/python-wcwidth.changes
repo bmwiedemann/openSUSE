@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:42:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %doc files. README.rst is a symlink pointing to
+  docs/intro.rst.
+
+-------------------------------------------------------------------
 Mon Oct 12 14:12:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Remove nonsense keyword (breaks pytest)

@@ -85,7 +85,7 @@ sed -i 's/looponfailroots.*//' tox.ini
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc docs/intro.rst
 %{python_sitelib}/*
 %endif
 
