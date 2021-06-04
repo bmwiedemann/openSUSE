@@ -37,23 +37,86 @@ Thu Apr 15 14:31:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
     + revert changes that would force us to add new dependency
 
 -------------------------------------------------------------------
-Mon Jan 18 10:14:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+Tue Mar  9 16:16:01 UTC 2021 - Johannes Renner <jrenner@suse.com>
 
 - Upgrade to 1.4.15
   * fixes bsc#1180146, CVE-2020-26258 and bsc#1180145,
     CVE-2020-26259
-
--------------------------------------------------------------------
-Mon Jan 18 09:58:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
-
 - Upgrade to 1.4.14
   * fixes bsc#1180994, CVE-2020-26217
-- Remove patches:
-  * 0001-Prevent-deserialization-of-void.patch
-  * xstream-1.4.9-javadoc.patch
-    + integrated in upstream sources
+- Update xstream to 1.4.15~susemanager
+  Removed:
+  * xstream_1_4_10-jdk11.patch
+  * xstream_1_4_10-buildsh-sle12.patch
+  * build.sh
 
 -------------------------------------------------------------------
-Tue Jun  4 08:18:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+Tue Mar  5 15:43:30 UTC 2019 - Frantisek Kobzik <fkobzik@suse.com>
 
-- Initial packaging of xstream 1.4.9
+- Update xstream to 1.4.10
+  Added:
+  * xstream_1_4_10-jdk11.patch
+  * xstream_1_4_10-buildsh-sle12.patch
+  * xstream-XSTREAM_1_4_10.tar.gz
+  Removed:
+  * 0001-Prevent-deserialization-of-void.patch
+  * xstream-XSTREAM_1_4_9.tar.gz
+  * xstream-XSTREAM_1_4_9-jdk11.patch
+
+- Major changes:
+- New XStream artifact with -java7 appended as version suffix for a library explicitly without the Java 8 stuff (lambda expression support, converters for java.time.* package).
+- Fix PrimitiveTypePermission to reject type void to prevent CVE-2017-7957 with an initialized security framework.
+- Improve performance by minimizing call stack of mapper chain.
+- XSTR-774: Add converters for types of java.time, java.time.chrono, and java.time.temporal packages (converters for LocalDate, LocalDateTime, LocalTime, OffsetDateTime, and ZonedDateTime by Matej Cimbora).
+- JavaBeanConverter does not respect ignored unknown elements.
+- Add XStream.setupDefaultSecurity to initialize security framework with defaults of XStream 1.5.x.
+- Emit error warning if security framework has not been initialized and the XStream instance is vulnerable to known exploits.
+
+-------------------------------------------------------------------
+Tue Feb  5 17:29:18 UTC 2019 - michele.bologna@suse.com
+
+- Feat: modify patch to be compatible with JDK 11 building
+  Added:
+  * xstream-XSTREAM_1_4_9-jdk11.patch
+  Removed:
+  * xstream-XSTREAM_1_4_9-jdk9.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 15:27:00 UTC 2018 - moio@suse.com
+
+- fixes for SLE 15 compatibility
+
+-------------------------------------------------------------------
+Fri Dec  1 13:22:06 UTC 2017 - mc@suse.com
+
+- fix possible Denial of Service when unmarshalling void.
+  (CVE-2017-7957, bsc#1070731)
+  Added:
+  * 0001-Prevent-deserialization-of-void.patch
+
+-------------------------------------------------------------------
+Tue Nov  7 14:04:11 UTC 2017 - jgonzalez@suse.com
+
+- Fix build for JDK9
+- Disable javadoc generation (broken for SLE15 and Tumbleweed)
+- Add:
+  * xstream-XSTREAM_1_4_9-jdk9.patch
+- Changed:
+  * build.sh
+
+-------------------------------------------------------------------
+Tue Apr  5 21:17:09 UTC 2016 - moio@suse.com
+
+- Require building on Java 8, otherwise the LambdaMapper class is skipped
+(issue 30)
+
+-------------------------------------------------------------------
+Tue Mar 29 12:50:05 UTC 2016 - moio@suse.com
+
+- Upgrade to version 1.4.9, which fixes CVE-2016-3674 (bsc#972950) 
+
+-------------------------------------------------------------------
+Tue Nov 10 07:25:59 UTC 2015 - moio@suse.com
+
+- Initial version
+
