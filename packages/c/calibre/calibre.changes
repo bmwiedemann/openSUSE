@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun  4 07:15:34 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.20.0
+  * New Features
+    - E-book viewer: Highlights: Make URLs in the notes for
+      highlights clickable
+    - Book details: Ctrl-clicking on tags now adds them to the
+      existing search instead of replacing it
+    - E-book viewer: Allow using the back button to return from
+      jumping to a search result
+  * Bug Fixes
+    - Get books: Fix the Kobo store plugin for changes to the
+      website
+    - Edit book: Fix non breaking spaces in snippets being
+      converted to normal spaces
+    - ToC Editor: Fix a regression that caused changes to not be
+      saved on machines where running a worker process takes more
+      than ten seconds
+    - Fix error when changing the "Search the net" URLs for the
+      Content server
+
+-------------------------------------------------------------------
 Fri May 28 12:43:24 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.19.0
