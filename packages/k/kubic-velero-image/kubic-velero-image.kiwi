@@ -13,6 +13,7 @@
       <containerconfig
         name="kubic/velero"
         tag="%%PKG_VERSION%%"
+        additionaltags="%%PKG_VERSION%%-%RELEASE%"
         maintainer="Richard Brown &lt;rbrown@suse.com&gt;"
         user="nobody">
         <entrypoint execute="velero"/>
@@ -24,7 +25,7 @@
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.version" value="%%PKG_VERSION%%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-            <label name="com.suse.reference" value="registry.opensuse.org/kubic/velero:v%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/kubic/velero:%%PKG_VERSION%%-%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
       </containerconfig>
