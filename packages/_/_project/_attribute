@@ -539,8 +539,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-  - opensuse-tensorflow2-image:
-    - x86_64
+#  - opensuse-tensorflow2-image:
+#    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
@@ -719,7 +719,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20210602'
 publishing: '20210602'
-testing: '20210602'
+testing: '20210603'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
