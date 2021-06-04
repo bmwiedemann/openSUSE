@@ -1,5 +1,5 @@
 #
-# spec file for package apache2
+# spec file for package apache2%{psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -115,7 +115,7 @@
 %endif
 
 Name:           apache2%{psuffix}
-Version:        2.4.46
+Version:        2.4.48
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0
@@ -189,17 +189,13 @@ Patch2:         apache2-logresolve-tmp-security.patch
 Patch3:         apache2-LimitRequestFieldSize-limits-headers.patch
 # [fate317766] backport of an upstream commit
 Patch4:         apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch
-# [bsc#1174052] picked upstream commit
-Patch5:         apache2-mod_proxy_uwsgi-fix-crash.patch
-# PATCH:  https://svn.apache.org/viewvc?view=revision&revision=1880678
-Patch6:         lua54.patch
 # PATCH:  https://marc.info/?l=apache-httpd-users&m=147448312531134&w=2
 Patch100:       apache-test-application-xml-type.patch
 # PATCH:  /test_ssl_var_lookup?SSL_SERVER_SAN_DNS_0 returns <build-host-name>
 #         /test_ssl_var_lookup?SSL_SERVER_SAN_OTHER_dnsSRV_0 _https.<build-host-name>
 # but Apache::Test::vars()->{servername} returns 'localhost' instead of <build-host-name>
 # (see $san_dns and $san_dnssrv variables in t/ssl/varlookup.t)
-# even if in live system I do not experience this inconsistency, let's turn off 
+# even if in live system I do not experience this inconsistency, let's turn off
 # these variables from the test
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
 BuildRequires:  apache-rpm-macros-control
@@ -309,7 +305,7 @@ Requires(pre):  permissions
 Requires(post): %fillup_prereq
 Requires(post): grep
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 %if %{test} || "%{flavor}" == "manual"
 BuildArch:      noarch
@@ -329,8 +325,6 @@ provides HTTP services in sync with the current HTTP standards.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %patch100 -p1
 %patch101 -p1
 
@@ -358,7 +352,7 @@ export CPPFLAGS="%{optflags} -DSSL_EXPERIMENTAL_ENGINE -DMAX_SERVER_LIMIT=200000
 cat > config.layout <<-EOF
 # SUSE Layout
 <Layout SUSE>
-    prefix:        %{datadir}
+Prefix:         %{datadir}
     exec_prefix:   %{_prefix}
     bindir:        %{_bindir}
     sbindir:       %{_sbindir}
@@ -439,7 +433,7 @@ EOF
         --enable-proxy-http \
 %if %{build_http2}
         --enable-proxy-http2 \
-%endif          
+%endif
         --enable-proxy-fdpass \
         --enable-cache \
         --enable-disk-cache \
@@ -480,7 +474,7 @@ popd
 %if "%{flavor}" == "utils"
 pushd support
 make %{?_smp_mflags}
-cp %{SOURCE130} gensslcert 
+cp %{SOURCE130} gensslcert
 cp %{SOURCE131} check_forensic
 cp %{SOURCE132} find_directives
 popd
@@ -720,6 +714,7 @@ mkdir -p $PWD{%{_sysconfdir}/sysconfig,%{localstatedir},%{runtimedir},%{logfiled
 cp %{_sysconfdir}/sysconfig/apache2 $PWD%{_sysconfdir}/sysconfig/
 sed -i -e "s:\(APACHE_HTTPD_CONF=\).*:\1$PWD%{sysconfdir}/httpd.conf:" \
        -e "s:\(%{_localstatedir}\):$PWD\1:" $PWD%{_sysconfdir}/sysconfig/apache2
+sed -i 's:\(APACHE_MPM=\).*:\1"prefork":' $PWD%{_sysconfdir}/sysconfig/apache2
 # copy and adjust configuration (paths and Listen)
 cp -r %{_sysconfdir}/apache2/ %{_sysconfdir}/mime.types etc 2>/dev/null || true
 find etc/apache2 -name *.conf | xargs sed -i "s:\(%{_localstatedir}\):$PWD\1:"
@@ -944,7 +939,7 @@ exit 0
 if [ "$1" = 1 ]; then
   %apache_request_restart
 fi
-if [ "$1" = 0 ]; then 
+if [ "$1" = 0 ]; then
   %{_sbindir}/update-alternatives --quiet --force --remove httpd %{_sbindir}/httpd
   for module in %{dynamic_modules}; do
     %{_sbindir}/update-alternatives --quiet --force --remove mod_$module.so %{_libdir}/apache2/mod_$module.so
@@ -981,6 +976,7 @@ exit 0
 
 %posttrans
 %apache_restart_if_needed
+
 %verifyscript
 %verify_permissions -e %{_sbindir}/suexec
 
