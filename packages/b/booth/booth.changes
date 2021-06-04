@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu May 27 10:48:45 UTC 2021 - varkoly@suse.com
+
+- Update to version 1.0+20210519.bfb2f92:
+  * config: Remove deprecated net functions
+  * configure: drop unnecessary check and define
+  * configure: move exec_prefix sanitizer closer to prefix
+  * configure: drop dead code
+  * configure: drop unnecessary macro
+  * configure: use PKG_CONFIG to detect pacemaker user/group
+  * configure: use resource-agents pkg-config info to determine ocfdir
+  * configure: add BOOTH_PKG_CHECK_VAR macro to wrap PKG_CHECK_VAR
+  * configure: detect and init pkg-config with proper macro
+  * configure: Simplify libqb detection when libqb is not installed in standard paths
+  * [build] ship booth.pc with basic booth build information for downstream packages to use
+  * booth.spec: Change naming scheme for upgrades
+  * boot.spec.in: Package html files when generated
+  * build: Fix building of html docs with asciidoc
+  * git-version-gen: Use fallback for git-archive
+  * configure: Make sure without-html_man works
+  * test: Add compatibility with iproute ss command
+  * test: fix the delimiter in the here-string
+  * build: Remove bashisms
+  * booth.spec: Add fedora compatibility provides
+  * build: Add option to enable tests during rpmbuild
+  * build: Substitute hauser and haclient in RPM
+  * build: Substitute python dependency in RPM
+  * build: Substitute glue dependency in RPM
+  * build: Substitute asciidoc or asciidoctor for RPM
+  * build: Rework build of RPM
+  * build: Use git-version-gen
+  * configure: Always let automake set python vars
+  * build: Delete cov directory on clean
+  * build: Make sure tarball contains all needed files
+  * build: Remove unneeded OS detection section
+  * build: Make generating of HTML man work
+- remove applied patch
+   test-fix-read-a-issue.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 12:37:52 UTC 2020 - aburlakov@suse.com
 
 - Update to version 1.0+20200702.2f043da:

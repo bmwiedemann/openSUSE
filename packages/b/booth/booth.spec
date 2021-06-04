@@ -1,7 +1,7 @@
 #
 # spec file for package booth
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,6 @@
 
 %bcond_with glue
 
-# local commit:
-%global commit 1.0+20200702.2f043da
-
 %global uname hacluster
 %global gname haclient
 
@@ -32,15 +29,14 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
-Version:        1.0
+Version:        1.0+20210519.bfb2f92
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/ClusterLabs/booth
-Source:         %{name}-%{commit}.tar.bz2
+URL:            https://github.com/ClusterLabs/booth
+Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
-Patch1:         test-fix-read-a-issue.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -78,8 +74,7 @@ This package contains automated tests for Booth,
 the Cluster Ticket Manager for Pacemaker.
 
 %prep
-%setup -q -n %{name}-%{commit}
-%patch1  -p1
+%setup -q -n %{name}-%{version}
 
 %build
 autoreconf -fvi
@@ -169,13 +164,14 @@ fi
 %{_datadir}/booth/service-runnable
 %doc AUTHORS README COPYING
 %doc README.upgrade-from-v0.1
+/usr/share/pkgconfig/booth.pc
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/booth/
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/booth/cores
 
 %files test
 %defattr(-,root,root)
-%doc README-testing
+/usr/share/doc/packages/booth/README-testing
 %{test_path}
 %dir %{_prefix}/lib/ocf
 %dir %{_prefix}/lib/ocf/resource.d
