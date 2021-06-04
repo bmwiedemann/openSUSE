@@ -1,8 +1,8 @@
 #
 # spec file for package solo
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Matthias Bach <marix@marix.org>.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           solo
-Version:        2.3.0
+Version:        4.1.2
 Release:        0
 Summary:        Support for the Solo and Solo Tap security keys
 License:        Apache-2.0 OR MIT
