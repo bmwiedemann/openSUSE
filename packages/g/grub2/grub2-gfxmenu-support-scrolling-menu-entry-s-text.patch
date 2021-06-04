@@ -144,7 +144,15 @@ Index: grub-2.04/grub-core/gfxmenu/view.c
  
  static void
  init_terminal (grub_gfxmenu_view_t view);
-@@ -142,6 +143,7 @@ grub_gfxmenu_view_destroy (grub_gfxmenu_
+@@ -103,6 +104,7 @@ grub_gfxmenu_view_new (const char *theme
+   view->title_text = grub_strdup (_("GRUB Boot Menu"));
+   view->progress_message_text = 0;
+   view->theme_path = 0;
++  view->menu_title_offset = 0;
+ 
+   /* Set the timeout bar's frame.  */
+   view->progress_message_frame.width = view->screen.width * 4 / 5;
+@@ -142,6 +144,7 @@ grub_gfxmenu_view_destroy (grub_gfxmenu_
    grub_free (view->title_text);
    grub_free (view->progress_message_text);
    grub_free (view->theme_path);
@@ -152,7 +160,7 @@ Index: grub-2.04/grub-core/gfxmenu/view.c
    if (view->canvas)
      view->canvas->component.ops->destroy (view->canvas);
    grub_free (view);
-@@ -410,6 +412,52 @@ grub_gfxmenu_set_chosen_entry (int entry
+@@ -410,6 +413,52 @@ grub_gfxmenu_set_chosen_entry (int entry
    grub_gfxmenu_redraw_menu (view);
  }
  
