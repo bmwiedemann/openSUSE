@@ -1023,4 +1023,14 @@ Fri Aug  16 11:07:26 UTC 2019 - tmuntaner@suse.com
 - Fix: Don't append slash to custom repository urls</comment>
     <requestid>895562</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eab31a6701f071ffb65f937270f0bfe2</srcmd5>
+    <version>2.6.10</version>
+    <time>1622839470</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.6.10
+- Fix: Rails 6.1 zeitwerk autoloading errors
+This references bsc#1186798</comment>
+    <requestid>897523</requestid>
+  </revision>
 </revisionlist>
