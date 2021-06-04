@@ -1,7 +1,7 @@
 #
 # spec file for package google-glog
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           google-glog
-Version:        0.3.5
+Version:        0.5.0
 Release:        0
 Summary:        Logging library for C++
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            https://github.com/google/glog
-Source:         glog-%{version}.zip
-BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  unzip
+URL:            https://github.com/google/glog
+Source:         https://github.com/google/glog/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cmake
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 The glog library implements application-level logging.
@@ -60,11 +59,11 @@ This package provides development files for libglog0.
 %setup -q -n glog-%{version}
 
 %build
-%configure
-make %{?_smp_mflags}
+%cmake -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%cmake_install
 rm -rf %{buildroot}%{_libdir}/*.{a,la}
 rm -rf %{buildroot}%{_datadir}/doc/glog-*
 
@@ -72,16 +71,16 @@ rm -rf %{buildroot}%{_datadir}/doc/glog-*
 %postun -n libglog0 -p /sbin/ldconfig
 
 %files -n libglog0
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libglog.so.0
-%{_libdir}/libglog.so.0.0.0
+%{_libdir}/libglog.so.0.5.0
 
 %files -n glog-devel
-%defattr(-,root,root)
-%doc COPYING AUTHORS ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README.rst
 %{_includedir}/glog/
 %{_libdir}/libglog.so
 %{_libdir}/pkgconfig/libglog.pc
+%{_libdir}/cmake/glog
 
 %changelog

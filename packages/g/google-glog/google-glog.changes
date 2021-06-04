@@ -1,4 +1,296 @@
 -------------------------------------------------------------------
+Fri Jun  4 10:12:26 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.5.0
+  * Implemented enhancements:
+    + Add support for customizing the prefix format #578
+    + "sprintf" function being used in googletest.h which is not secure #536
+    + stacktrace is not produced on aarch64 #531
+    + Documenting minimum C++ version #527
+    + Glog file separation by year #516
+    + Bazel support for windows #472
+    + GOOGLE_GLOG_DLL_DECL needs to be put into header file #469
+    + Glog should delete old log files automaticly #423
+    + CHECK_XX variants do not compile if nullptr is an argument #341
+    + autogen.sh makes git directory dirty #308
+    + LogSink::ToString has no microsecond precision. #307
+    + Conan package for glog #262
+    + How to change format of logger? for example time and verbose level name and etc #229
+    + Username lookup needs a tuneup #211
+    + Feature request for sudo make uninstall #163
+    + glog should use ThreadSanitizer (TSAN) dynamic annotations #80
+    + Add support for deleting old logs #36
+    + CHECK support for nullptr (fixes #341) #641 (sergiud)
+    + cmake: do not require a C compiler #627 (sergiud)
+    + use C++ headers #626 (sergiud)
+    + removed windows-specific headers #625 (sergiud)
+    + document C++ version #623 (sergiud)
+    + Add support for customizing the prefix format #554 (santigl)
+    + Add extra information in log file header (application build/version, actual duration time) #438 (d-uspenskiy)
+    + Use libunwind as an imported target #368 (UVV-gh)
+    + Annotate LOG_EVERY_N macros as a benign race for TSAN #263 (kennyyu)
+  * Fixed bugs:
+    + Incorrect Unwind version parser #598
+    + Large integers get truncated #594
+    + Windows shared library generates linkage warnings #569
+    + Replace obsolete __CYGWIN64__ macro #566
+    + Disabling 'Symbolize functionality' is not working #563
+    + LOG_TO_STRING and std namespace #550
+    + Ownership with SetLogger #524
+    + gtest usage not implemented in CMake build system #510
+    + ac_cv___attribute___printf_4_5 not set in CMake build system #509
+    + --max_log_size not work when larger than 4096 #497
+    + vmodule flag is not declared #466
+    + TSan warning: a race in LOG_EVERY_N and friends #439
+    + stacktrace unittest hangs on MSVC #328
+    + EXC_BAD_ACCESS on iOS #275
+    + Signal handler tests fail on ARM #256
+    + glog 0.3.5 compilation failed on Centos 7 #243
+    + ./libtool: line 6000: cd: no/lib: No such file or directory #215
+    + Test stl_logging fails in macOS CMake build #201
+    + autoconf build does not version the library #196
+    + gcc 4.7.2, 4.8.3, 4.9.2 unit test failures on C++11 #14
+    + fix gflags windows linker warnings #640 (sergiud)
+    + fixed windows builds #639 (sergiud)
+    + fix LogCleaner::IsLogFromCurrentProject for filename_extension #637 (xiaobfly)
+    + fully qualify std::string #624 (sergiud)
+    + handle --max_log_size overflow #622 (sergiud)
+    + cmake: optionally use gtest #621 (sergiud)
+    + cmake: allow to disable symbolize #620 (sergiud)
+    + build: set ac_cv___attribute___printf_4_5 #618 (sergiud)
+    + cmake: fixed unwind patch component match check #613 (sergiud)
+  * Closed issues:
+    + call InitGoogleLogging get a segment fault #607
+    + BUILD file will create a conflict with build/ folder #606
+    + glog don't create log file in visual c++ dll project #605
+    + error in CMAKE installation steps--$ git clone git@github.com:google/glog.git should change to $ git clone https://github.com/google/glog.git #603
+    + No system link created along with the log files #599
+    + CMake build instructions do not work for paths with ampersand #597
+    + publicly visible Bazel target no longer provides any headers #596
+    + LogCleaner::IsLogFromCurrentProject incorrect when SetLogFilenameExtension #589
+    + EnableLogCleaner not recognized #586
+    + IsGlogLog problem #584
+    + Build fails with clang-cl due to undefined symbols #575
+    + Write the correct Windows version in the log header #572
+    + Ability to write time in UTC in log files #571
+    + compile error: use of overloaded operator '<<' is ambiguous #562
+    + glog error log was incorrrectly written to unexpected memory #561
+    + How to disable logging. #556
+    + Cannot compile "configure: WARNING: 'missing' script is too old or missing" #544
+    + Support to modify verbose log level for mudules #538
+    + Dropping autoconf support #537
+    + Failed to print INFO and WARNING log #533
+    + glog rpm installation fails if openstack-train repo is enabled #522
+    + stripped binaries produce useless backtraces #514
+    + Flag --incompatible_no_implicit_file_export will break Google Logging in a future Bazel release #512
+    + Flag --incompatible_load_cc_rules_from_bzl will break Google Logging in Bazel 1.2.1 #507
+    + Flag --incompatible_no_implicit_file_export will break Google Logging in Bazel 1.2.1 #506
+    + Is there any way logging without a mutex #504
+    + Including glog/logging.h triggers -Wunused-parameter on g++ #493
+    + Bazel: building glog with custom version gflags #480
+    + max_log_size flag does not work on AIX or linux #476
+    + cmake/DetermineGflagsNamespace.cmake was ignored when repush #473
+    + Conflict with gflags #458
+    + log file name error after application restart #457
+    + App security test reports Insecure API for React Native iOS App - Binary Analysis (IPA) #453
+    + multi thread cant share glog setting #450
+    + How do I write logs to files only? #436
+    + Crash in symbolize_unittest on Ubuntu 18.04 x86_64 #435
+    + Does glog support compress log files? #434
+    + Bazel build doesn't set correct compile flags. #430
+    + how to change the name of final dynamic library #427
+    + suggest about gflags #426
+    + about filename_extension_ in CreateLogfile #395
+    + Add cc_library for ScopedMockLog #392
+    + When building a react native project glog is causing a failure. #382
+    + glog's endline is not thread safe when using with another logging system?! #379
+    + Logfile full within 1s results in error #378
+    + InitGoogleLogging bug \uff0cCould not create logging file #375
+    + golang/glog sometime can not create the log_dir? #369
+    + static google::log_mutex destroyed on exit, while other still existing threads want to log #363
+    + Does GLOG support log logs by day? #362
+    + how to compile it for android ndk? #360
+    + Cross Compile Error #358
+    + add daemon(1,0) ,then log is missing #357
+    + logtostderr filtering #356
+    + Get trouble in compiling glog for android! #355
+    + stl_logging unit test don't pass #348
+    + Stacktrace is not printed by failure signal handler when built with Bazel #346
+    + When might 0.3.6 be released? #345
+    + Unittest generates warning with C++17 regarding auto_ptr #335
+    + Use Upstream GoogleTest #333
+    + Static declaration of 'pread' follows non-static declaration error while building in xcode #326
+    + __declspec(dllimport) public: __thiscall google::base::CheckOpMessageBuilder::CheckOpMessageBuilder(char const *) #316
+    + glog can't be compiled using Android NDK r16 #306
+    + libunwind GetStackTrace implementation doesn't allow concurrent invocations #298
+    + VLOG before InitGoogleLogging causes crash #290
+    + macro 'AM_CONFIG_HEADER' not found in library #271
+    + Print binary-identifying info at the top of each file #269
+    + The spec.prepare_command lead an error #255
+    + signalhandler_unittest tests fails on aarch64 #219
+    + Compiling error: undefined references to `google::base::CheckOpMessageBuilder::NewString[abi:cxx11]() #195
+    + [0.3.5] errors during make check #194
+    + Allow coredump to be generated upon LOG(FATAL) #192
+    + Thread ID on macOS #182
+    + signalhandler_unittest tests fails on ppc64le #177
+    + --without-gflags is not working #175
+    + (gflags_reporting.cc.o): relocation R_X86_64_32 against.rodata.str1.1' can not be used when making a shared object; recompile with -fPIC #174
+    + Flag to give users choice to enable or disable time_pid_string attaching to the log file name #173
+    + DCHECK_NOTNULL generates "expression result unused" errors with clang in strict compilation mode #172
+    + C4722: destructor never returns potential memory leak #171
+    + Logging to the same file from multiple processes #170
+    + stacktrace_libunwind-inl.h: reentrancy check should use a thread-local instead of a global variable #160
+    + Support vmodule filter support on non GNU compilers #154
+    + can glog write to a specified file name? #147
+    + Expose DumpStackTraceToString to application/user #144
+    + Adding LOG_IF_OR_EVERY_N() #143
+    + Support initializing logger and sinker by configuration #135
+    + Logging UnitTest failed on x64 VS2015. Reason: Pointer format not consistent #134
+    + source/logging_unittest.cc:64 error : 'GFLAGS_NAMESPACE' is not not a namespance-name #131
+    + Allow glog to be queried as to whether or not InitGoogleLogging has been called. #125
+    + Allow a log file to be simply named "foobar.log" with no appended string #124
+    + Can I use default FailureSignalHandler() and my custom failure funcion together? #121
+    + logging_fail fail for x64 in VS2013, libglog_static #119
+    + travis env build failure : /bin/bash: aclocal-1.14: command not found #117
+    + Allow more than just argv[0] in InitGoogleLogging #113
+    + Can glog be shutdown totally? #111
+    + A memory bug detected by valgrind? #109
+    + src/demangle.h:80:27: error: expected initializer before 'Demangle' bool GOOGLE_GLOG_DLL_DECL Demangle(const char *mangled, char *out, int out_size); #108
+    + glog fails to build on ARM64/AArch64 #107
+    + logging_unittest-logging_unittest.o ERROR 1 #104
+    + FATAL error with pthread_cancel in multi-thread program #102
+    + configure: Hardcoded am__api_version='1.14' breaks build on systems with autoconf 1.15 #97
+    + ppc64le support for glog #89
+    + please remove generated autotools from the git repo #86
+    + module based minloglevel #66
+    + glog print wchar_t? #64
+    + Android build is broken #59
+    + libglog.pc.in should include libunwind as private dep for static linking case #57
+    + demangle_unittest.sh fails with GCC 5 (configured --with-default-libstdcxx-abi=new, which is the default) #40
+    + Make the documentation browsable online #39
+    + Make error: failed to link with libgflags.a #38
+    + Mark LOG(FATAL) with [[noreturn]] #28
+    + Logfile with more restrictive permissions control #23
+    + Asynchronous/double-buffering support? #16
+    + clang34, 35, 36 fails to pass unit tests with C++03 #13
+  * Merged pull requests:
+    + readme: update CMake source directory option #642 (husskade)
+    + Add Windows builds using GitHub Actions #638 (NeroBurner)
+    + Use generated config.h for Windows. #635 (drigz)
+    + cmake: build shared libs by default #632 (sergiud)
+    + fixed file extension #631 (xiaobfly)
+    + bazel: use expand_template instead of genrules #628 (drigz)
+    + cmake: export symbols selectively #619 (sergiud)
+    + bazel: declare headers in top-level rule #615 (drigz)
+    + Rename BUILD to BUILD.bazel. #614 (drigz)
+    + replaced __CYGWIN32__ and __CYGWIN64__ by __CYGWIN__ #611 (sergiud)
+    + consolidate readme #610 (sergiud)
+    + cmake: handle empty unwind version patch component #609 (sergiud)
+    + Make stl_logging_unittest more robust. #608 (mahiuchun)
+    + Fix the symlink creation bug if using bazel #600 (zoukyle)
+    + Change counter type to uint64 #595 (r-barnes)
+    + src/logging.cc: Fix a typo in comment #593 (aesophor)
+    + src/logging.cc: Make LogCleaner aware of filename extension (#589) #592 (aesophor)
+    + remove autoconf support #585 (sergiud)
+    + Make cmake build on path with spaces. #580 (Yicong-Huang)
+    + Added check for if info.dli_sname is NULL #579 (arj-fb)
+    + Add override to LogStreamBuf::overflow() #576 (santigl)
+    + Add FLAGS_log_utc_time; when 'true' the time will be written in log in UTC, resolves #571 #573 (msamoila)
+    + Connect glog to Andorid logging API #570 (jiuqiant)
+    + Output to logcat on Android #553 (huangqinjin)
+    + Make message text null-terminated #552 (huangqinjin)
+    + Replace sprintf() with snprintf() (#536) #551 (aesophor)
+    + Fix build for Emscripten #546 (schoppmp)
+    + OpenBSD/powerpc: clang does not define _CALL_*, use proper ifdef instead #545 (julianaito)
+    + Use NULL to indicate uninitialized VLOG_IS_ON site. #542 (xulongwu4)
+    + Fix unused parameter warning on gcc. #540 (pwnall)
+    + Prepend the year to each glog line (#516) #530 (aesophor)
+    + fix bazel build for freebsd #526 (dfr)
+    + Allow CMake user to disable Symbolize functionality #523 (edbaunton)
+    + Add target existence checks to Unwind find module #518 (MichaelDarr)
+    + Add vcpkg installation instructions #517 (LilyWangL)
+    + Explain log levels. #515 (fmayer)
+    + Use file offsets in traces if object has no symbols #513 (mspang)
+    + Don't call close(2) more than once #508 (xiaosuo)
+    + Fix missing deletion of custom Logger #503 (alexsmac)
+    + src/logging.cc: encapsulate log cleaner, match logfile with <base_filename_><date>-<time>.<pid> #502 (aesophor)
+    + Address review comments for Bazel/Win32 build #499 (drigz)
+    + Fix race conditions in LOG_EVERY_N #492 (aesophor)
+    + doc: add information about log cleaner #491 (aesophor)
+    + Added fixed log name support, take 2 #489 (ezegomez)
+    + Add windows support for bazel build #488 (skeptic-monkey)
+    + src/logging.cc: fix wrong assignment #487 (Telunsu)
+    + src/symbolize.cc: do not check for HAVE_DLFCN_H for macOS #485 (ffontaine)
+    + removed executable flag from .cmake file #484 (sergiud)
+    + Support pkg-config #483 (loop0day)
+    + Revert "Added fixed log name support" #482 (sergiud)
+    + logging: Fix compilation with uClibc++ #479 (neheb)
+    + src/utilities: fix build without pthread #477 (ffontaine)
+    + src/symbolize.cc: fix build without dlfcn.h #475 (ffontaine)
+    + declare FLAGS_vmodule #467 (sukill)
+    + I supported clang-cl with BUILD_SHARED_LIBS #465 (durswd)
+    + googletest: Switch to nanosleep #460 (neheb)
+    + fix typo: TOOD -> TODO #448 (ukai)
+    + Don't test on Ubuntu 14.04 #446 (philwo)
+    + Fix symbolize_unittest for musl builds #443 (ammubhave)
+    + Extend the LogSink interface to be able to pass microseconds #441 (asekretenko)
+    + Add support for automatic removal of old logs #432 (aesophor)
+    + Fix logmailer problem for dynamic lib use of glog. #400 (guoyuhong)
+    + Fix warnings #370 (hemantbits)
+    + Allow getpwuid_r to return missing entry. #350 (TheModMaker)
+    + Fix stacktrace on Bazel build. #347 (nya3jp)
+    + Fix build for Android API < 21 #312 (ruslo)
+    + Use thread local for libunwind GetStackTrace() reentrancy protection #161 (mpercy)
+    + Respect configured docdir #88 (kekstee)
+    + Added fixed log name support #19 (ezegomez)
+  * Fixes of version 0.4.0
+    + build: cleanup temps and remove NEWS by @jackwish (#410)
+    + Fix unused variable warning in GCC by @pwnall (#412)
+    + automake: relax GNU standard directory style by @jackwish (#408)
+    + update README.md filename in Makefile.am by @NeroBurner (#403)
+    + ci: add clang-cxx17 toolchain by @NeroBurner (#406)
+    + remove register keyword from unittest by @NeroBurner (#405)
+    + Use push/pop macro when supressing warning by @kwaegel (#397)
+    + ci: add appveyor and travis config by @NeroBurner (#330)
+    + Make symbolize.cc thread safe even on shared fds by @tzik (#388)
+    + Don't crash on some forms of invalid ELF files by @bsilver8192 (#367)
+    + Fix mistype in comment by @zaporozhets (#371)
+    + Fix errors with BUILD_SHARED_LIBS=ON for Visual Studio 2017 (fixes #343) by @dzung (#344)
+    + fix glog.html link to gflags repository by @NeroBurner (#336)
+    + Delete NEWS by @NeroBurner (#337)
+    + Fix windows logging unittest by @NeroBurner (#331)
+    + tests: fix compilation with C++17 by @NeroBurner (#332)
+    + Fix mingw cross compile by @NeroBurner (#324)
+    + Resolve missing prototype warning by @nazg (#302)
+    + Fix redefined warnings from config.h by @nazg (#303)
+    + Make int conversion explicit and fix clang warning by @samuela (#305)
+    + konsole family of terminfo supports colored output by @nazg (#304)
+    + CMake Update by @Mizux (#292)
+    + Use target gflags instead of old VARIABLES by @Mizux (#283)
+    + Add an example using glog from Bazel by @drigz (#276)
+    + Update gflags to latest master by @drigz (#277)
+    + Fixed undeclared identifier error by @sergiud (#281)
+    + Build with Bazel. by @qzmfranklin (#232)
+    + Compute base addresses from program headers while reading /proc/self/maps. by @pcc (#261)
+    + Cache strlen outside of cycles (PVS-Studio) by @dimhotepus (#106)
+    + Shell escape arguments to /bin/mail. by @ukai (#260)
+    + Fix username lookup in case of missing USER environment variable by @DariuszOstolski (#245)
+    + #253: Use MS preprocessor idiom to disable warning by @DariuszOstolski (#254)
+    + Zero allocation fix by @sergiud (#226)
+    + Fix for missing exports (fixes #227) by @sergiud (#228)
+    + Fix LOG_EVERY_N with clang -Wunused-local-typedef by @jray272 (#225)
+    + Run src/windows/preprocess.sh to pick up latest logging.h.in changes by @jray272 (#224)
+    + Update Windows docs by @andschwa (#218)
+    + cmake: fixed gflags namespace detection (fixes #193) by @sergiud (#209)
+    + cmake: do not hardcode relative install directories by @sergiud (#153)
+    + cmake: changed project name from google-glog to glog by @sergiud (#152)
+    + Cygwin support by @sergiud (#157)
+    + [RFC] reduce heap memory allocations to zero by @sergiud (#158)
+    + rate limit calls to posix_fadvise() by @pixelb (#145)
+    + Use gflags ALIAS instead of ${gflags_XXX} vars by @v1bri (#199)
+    + Port stack tracing to Windows by @andschwa (#168)
+
+-------------------------------------------------------------------
 Sun Jun  4 04:25:12 UTC 2017 - plinnell@opensuse.org
 
 - Update to 0.3.5
