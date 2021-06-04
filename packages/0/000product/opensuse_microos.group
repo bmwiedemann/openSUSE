@@ -58,6 +58,7 @@
     <package name="libesmtp6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libexpat1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libffi8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfido2-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -81,6 +82,7 @@
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -749,7 +751,6 @@
     <package name="libexiv2-27" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libext2fs2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfam0-gamin" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libffi8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfftw3-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libfontconfig1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
@@ -963,7 +964,6 @@
     <package name="libosinfo-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libostree" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libostree-1-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
     <package name="libpackagekitqt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

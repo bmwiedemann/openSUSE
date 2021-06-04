@@ -2565,8 +2565,6 @@ unsorted:
   - cvs-doc 
   - cwstudio 
   - cxref 
-  - cxsc 
-  - cxsc-devel 
   - cxxtools-devel 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
@@ -5849,6 +5847,7 @@ unsorted:
   - gnu_parallel 
   - gnu_parallel-doc 
   - gnuastro 
+  - gnuastro-bash-completion 
   - gnuastro-devel 
   - gnuastro-doc 
   - gnubg 
@@ -10184,7 +10183,6 @@ unsorted:
   - libcvc-devel 
   - libcvc0 
   - libcwnn0 
-  - libcxsc2 
   - libcxsparse3 
   - libcxx-gtk-utils-2-2_2-0 
   - libcxx-gtk-utils-2-devel 
@@ -10896,7 +10894,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro12 
+  - libgnuastro13 
   - libgnuradio-3_8_3 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
@@ -10979,8 +10977,8 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc15 
-  - libgrpc_plugin_support1_37 
+  - libgrpc16 
+  - libgrpc_plugin_support1_38 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -14096,7 +14094,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb15 
+  - libupb16 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14714,7 +14712,7 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_9_0 
+  - libzbc-5_10_0 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -20720,6 +20718,7 @@ unsorted:
   - prometheus-simpleclient-java-pushgateway 
   - prometheus-simpleclient-java-servlet 
   - prometheus-webhook-snmp 
+  - promtail 
   - pronsole 
   - pronterface 
   - prosody 
@@ -21988,7 +21987,6 @@ unsorted:
   - python36-bleach 
   - python36-blessed 
   - python36-blessings 
-  - python36-blindspin 
   - python36-blinker 
   - python36-blist 
   - python36-blockdiag 
@@ -24761,7 +24759,6 @@ unsorted:
   - python38-bleach 
   - python38-blessed 
   - python38-blessings 
-  - python38-blindspin 
   - python38-blinker: [i586] 
   - python38-blist 
   - python38-blockdiag 
@@ -27698,7 +27695,6 @@ unsorted:
   - python39-bleach 
   - python39-blessed 
   - python39-blessings 
-  - python39-blindspin 
   - python39-blinker 
   - python39-blist 
   - python39-blockdiag 
@@ -30919,7 +30915,6 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
-  - ruby2.7-rubygem-autoprefixer-rails 
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
@@ -32246,6 +32241,7 @@ unsorted:
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
+  - systemd-experimental 
   - systemd-journal-remote 
   - systemd-mini 
   - systemd-mini-container 
@@ -40882,6 +40878,7 @@ unsorted:
   - tycho-bootstrap: [x86_64] 
   - tycho-javadoc: [x86_64] 
   - typelib-1_0-Accounts-1_0 
+  - typelib-1_0-Adw-1 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppIndicator-0_1 
