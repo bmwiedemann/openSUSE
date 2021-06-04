@@ -142,4 +142,14 @@
     <comment></comment>
     <requestid>788638</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c549c1fb49c7d1e62138abb8a1f21ae2</srcmd5>
+    <version>1.2.1+git20210604.1fc6def</version>
+    <time>1622839450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1+git20210604.1fc6def to fix Factory build
+- drop 0001-Port-Qt5-deprecated-methods.patch (upstream)
+</comment>
+    <requestid>897412</requestid>
+  </revision>
 </revisionlist>

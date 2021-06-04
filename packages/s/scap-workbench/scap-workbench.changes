@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:44:15 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.2.1+git20210604.1fc6def to fix Factory build
+
+- drop 0001-Port-Qt5-deprecated-methods.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Mar 25 14:07:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.2.1. No changelog.

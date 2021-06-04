@@ -1,7 +1,7 @@
 #
 # spec file for package scap-workbench
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           scap-workbench
-Version:        1.2.1
+Version:        1.2.1+git20210604.1fc6def
 Release:        0
 Summary:        A SCAP scanner and SCAP content editor
 License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            https://github.com/OpenSCAP/scap-workbench
-Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%{version}/scap-workbench-%{version}.tar.bz2
+#Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%{version}/scap-workbench-%{version}.tar.bz2
+Source:         scap-workbench-%{version}.tar.gz
 Patch0:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Port-Qt5-deprecated-methods.patch
+BuildRequires:  asciidoc
 BuildRequires:  cmake >= 2.6
 BuildRequires:  openscap-devel
 # SLE 11 SP3: libopenscap needs libxslt without requiring it
@@ -40,6 +40,12 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+# scap-security-guide provides 'content'
+Recommends:     scap-security-guide
+
+# openscap-utils provides 'oscap' to run profiles
+Recommends:     openscap-utils
 
 %description
 The main goal of this application is to lower the initial barrier of
@@ -59,9 +65,8 @@ Group:          Documentation/HTML
 This package provides HTML documentation for scap-workbench.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %if 0%{?cmake}
