@@ -2,12 +2,7 @@
  <service name="download_url" mode="disabled">
    <param name="protocol">https</param>
    <param name="host">github.com</param>
-   <param name="filename">sysfsutils-sysfsutils-2_1_0.tar.gz</param>
-   <param name="path">linux-ras/sysfsutils/archive/sysfsutils-2_1_0.tar.gz</param>
- </service>
- <service name="verify_file" mode="disabled">
-   <param name="file">sysfsutils-sysfsutils-2_1_0.tar.gz</param>
-   <param name="verifier">sha256</param>
-   <param name="checksum">035cd517c2465fa86e4f82d035ae5817d9a8b23ba2ba42fe623eb36d3d9b973f</param>
+   <param name="filename">sysfsutils-2_1_1.tar.gz</param>
+   <param name="path">linux-ras/sysfsutils/archive/refs/tags/v2.1.1.tar.gz</param>
  </service>
 </services>
