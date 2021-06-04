@@ -1,7 +1,7 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ URL:            http://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
 Patch1:         0001-Fix-build-with-CharLS-2.1.0.patch
 Patch2:         gdcm-2.4.0-usecopyright.patch
+Patch3:         0002-gcc11-changes.diff
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets

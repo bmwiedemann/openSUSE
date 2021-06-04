@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 07:05:18 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- 0002-gcc11-changes.diff added to fix TW build failure 
+
+-------------------------------------------------------------------
 Thu Nov  5 09:38:14 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - typo corrected: fix_charls_2.patch removed
