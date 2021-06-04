@@ -1,9 +1,23 @@
 -------------------------------------------------------------------
+Wed May 19 08:49:35 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to version 0.8
+  * Multiple fixes (#67, #77)
+  * IPv6 support (Sebastien Valat) 
+- dropped knock-0.5.patch, knock-include.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 08:48:00 CET 2019 - brassh@web.de
+
+- fix uninitialized tcpflags variables in knockd.c
+  (Bug#1138376: Knockd unable to start after upgrade to LEAP 15.1) 
+
+-------------------------------------------------------------------
 Thu Nov 23 13:46:18 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
   %_fillupdir macro (boo#1069468)
-
+  
 -------------------------------------------------------------------
 Tue Dec  1 14:49:38 UTC 2015 - p.drouand@gmail.com
 

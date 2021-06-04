@@ -1,7 +1,7 @@
 #
 # spec file for package knock
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,19 +28,17 @@
 %endif
 
 Name:           knock
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        A Port-Knocking Client
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.zeroflux.org/knock/
+URL:            http://www.zeroflux.org/knock/
 Source0:        http://www.zeroflux.org/proj/knock/files/%{name}-%{version}.tar.gz
 Source1:        %{name}d.sysconfig
 Source2:        %{name}d.init
 Source3:        %{name}d.conf
 Source4:        %{name}d.service
-Patch0:         %{name}-0.5.patch
-Patch1:         %{name}-include.patch
 BuildRequires:  libpcap-devel
 %if %{with_systemd}
 BuildRequires:  systemd-rpm-macros
@@ -78,8 +76,6 @@ to open up holes in a firewall for quick access.
 
 %prep
 %setup -q
-%patch0
-%patch1
 
 %build
 %configure
@@ -129,10 +125,12 @@ rm -rf %{buildroot}%{_datadir}/doc
 %defattr(-,root,root)
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.*
+%{_sbindir}/knock_helper_ipt.sh
 
 %files -n knockd
 %defattr(-,root,root)
-%doc README.md COPYING ChangeLog TODO
+%doc README.md ChangeLog TODO
+%license COPYING
 %{_sbindir}/%{name}d
 %if %{with_systemd}
 %{_unitdir}/%{name}d.service
