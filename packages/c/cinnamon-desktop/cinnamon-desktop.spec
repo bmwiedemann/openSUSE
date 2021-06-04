@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        4.8.1
+Version:        5.0.0
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT
@@ -238,7 +238,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{soname}-data
 %license COPYING*
 %doc AUTHORS README debian/changelog
-#%{_bindir}/cinnamon-desktop-migrate-mediakeys
+#%%{_bindir}/cinnamon-desktop-migrate-mediakeys
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/%{soname}/
 

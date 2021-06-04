@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 27 20:12:12 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * avoid deprecated g_type_class_add_private
+  * libcinnamon-desktop: Fix some various build warnings, and an
+    incorrect free.
+  * gnome-bg.c: fix a leak
+    https://gitlab.gnome.org/GNOME/gnome-desktop/-/commit/af0f0fbb835e5bb22b7bce4581d3f081462b5f5b
+    and another similar instance
+  * Always parse date/time integers in base-10
+
+-------------------------------------------------------------------
 Tue Dec  8 16:58:05 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.1.
