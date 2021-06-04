@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  2 23:58:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.1
+  * Support Ice Lake Thunderbolt 3 i/o subsystem
+  * Don't store domains where uuids change across reboots
+  * Fixes for the journal and the domain's acl-log
+  * Version the store and use that to clean up stale domains once
+  * Host identification for embedded thunderbolt controllers [!233]
+  * Various other small bug fixes and memory leak fixes.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:41:37 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 0.9
