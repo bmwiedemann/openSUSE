@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 31 10:38:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1:
+  * This is a security release that fixes a single bug:
+    - Tighten up plugin-finding logic (#811).
+
+-------------------------------------------------------------------
 Sat Apr 24 09:19:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use buildmode=pie (cnitool is installed into sbindir) 
