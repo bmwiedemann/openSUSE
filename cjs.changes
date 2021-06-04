@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 27 19:52:13 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * fix readline build on certain systems
+  * overrides/Gtk: Set BuilderScope in class init
+  * gi/wrapperutils: Move gjs_get_string_id() into resolve()
+    implementations
+  * Revert "arg-cache: Save space by not caching GType"
+  * Fixed error in _init() that prevented GType objects from being
+    created. Improved the regression test, implementing Marco T's
+    feedback.
+
+-------------------------------------------------------------------
+Thu Jan 14 10:53:44 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.2.
+  * Rebase on gjs 1.66.1.
+
+-------------------------------------------------------------------
 Thu Dec 31 12:17:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not add RPM dependencies for installed-tests: some tests there

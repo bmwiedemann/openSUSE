@@ -1,7 +1,7 @@
 #
 # spec file for package cjs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 %define typelib typelib-1_0-CjsPrivate-1_0
 %define __requires_exclude_from ^.*installed-tests.*$
 Name:           cjs
-Version:        4.8.1
+Version:        5.0.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
-License:        MIT AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
+License:        (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later) AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cjs
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
