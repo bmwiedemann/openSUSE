@@ -87,6 +87,7 @@ if [ -f /run/rpm-%{name}-preset-all ]; then
   # Don't disable services, since this would disable the
   # complete network stack.
   systemctl preset-all --preset-mode=enable-only
+  systemctl preset-all --preset-mode=enable-only --global
 fi
 rm -f /run/rpm-%{name}-preset-all
 

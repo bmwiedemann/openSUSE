@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 27 15:40:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- When installing the systemd-presets-common-SUSE package for the
+  first time in a new system, it might happen that some services
+  are installed before systemd so the %systemd_pre/post macros
+  would not work. This is handled by enabling all preset services
+  in this package's %posttrans section but it wasn't enabling
+  user services, just system services. Now it enables also the
+  user services installed before this package, thus fixing
+  boo#1186561
+
+-------------------------------------------------------------------
 Wed Apr  7 09:38:24 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Enable hcn-init.service for HNV on POWER (bsc#1184136 ltc#192155).
