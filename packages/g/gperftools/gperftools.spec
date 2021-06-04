@@ -31,8 +31,8 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-Provides:       google-perftools
-Obsoletes:      google-perftools
+Provides:       google-perftools = %{version}
+Obsoletes:      google-perftools < %{version}
 Requires:       pprof
 # based on basictypes.h in the source tree
 ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x riscv64
@@ -69,6 +69,38 @@ Group:          System/Libraries
 This subpackage contains a library with optimized thread-caching
 malloc().
 
+%package -n libtcmalloc_debug4
+Summary:        Thread-caching malloc library
+Group:          System/Libraries
+
+%description -n libtcmalloc_debug4
+This subpackage contains a library with optimized thread-caching
+malloc().
+
+%package -n libtcmalloc_minimal4
+Summary:        Thread-caching malloc library
+Group:          System/Libraries
+
+%description -n libtcmalloc_minimal4
+This subpackage contains a library with optimized thread-caching
+malloc().
+
+%package -n libtcmalloc_minimal_debug4
+Summary:        Thread-caching malloc library
+Group:          System/Libraries
+
+%description -n libtcmalloc_minimal_debug4
+This subpackage contains a library with optimized thread-caching
+malloc().
+
+%package -n libtcmalloc_and_profiler4
+Summary:        Thread-caching malloc library
+Group:          System/Libraries
+
+%description -n libtcmalloc_and_profiler4
+This subpackage contains a library with optimized thread-caching
+malloc().
+
 %package devel
 Summary:        Performance tools for C++
 Group:          Development/Libraries/C and C++
@@ -76,8 +108,12 @@ Requires:       %{name} = %{version}
 Requires:       libprofiler0 = %{version}
 Requires:       libstdc++-devel
 Requires:       libtcmalloc4 = %{version}
-Provides:       google-perftools-devel
-Obsoletes:      google-perftools-devel
+Requires:       libtcmalloc_debug4 = %{version}
+Requires:       libtcmalloc_minimal4 = %{version}
+Requires:       libtcmalloc_minimal_debug4 = %{version}
+Requires:       libtcmalloc_and_profiler4 = %{version}
+Provides:       google-perftools-devel = %{version}
+Obsoletes:      google-perftools-devel < %{version}
 
 %description devel
 The gperftools-devel package contains static and debug libraries and header
@@ -129,6 +165,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libprofiler0 -p /sbin/ldconfig
 %post   -n libtcmalloc4 -p /sbin/ldconfig
 %postun -n libtcmalloc4 -p /sbin/ldconfig
+%post   -n libtcmalloc_debug4 -p /sbin/ldconfig
+%postun -n libtcmalloc_debug4 -p /sbin/ldconfig
+%post   -n libtcmalloc_minimal4 -p /sbin/ldconfig
+%postun -n libtcmalloc_minimal4 -p /sbin/ldconfig
+%post   -n libtcmalloc_minimal_debug4 -p /sbin/ldconfig
+%postun -n libtcmalloc_minimal_debug4 -p /sbin/ldconfig
+%post   -n libtcmalloc_and_profiler4 -p /sbin/ldconfig
+%postun -n libtcmalloc_and_profiler4 -p /sbin/ldconfig
 
 %files
 %{_bindir}/pprof-symbolize
@@ -138,9 +182,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libtcmalloc4
 %{_libdir}/libtcmalloc.so.4*
+
+%files -n libtcmalloc_debug4
 %{_libdir}/libtcmalloc_debug.so.4*
+
+%files -n libtcmalloc_minimal4
 %{_libdir}/libtcmalloc_minimal.so.4*
+
+%files -n libtcmalloc_minimal_debug4
 %{_libdir}/libtcmalloc_minimal_debug.so.4*
+
+%files -n libtcmalloc_and_profiler4
 %{_libdir}/libtcmalloc_and_profiler.so.4*
 
 %files devel
