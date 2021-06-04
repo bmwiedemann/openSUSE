@@ -71,9 +71,9 @@ BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(sndfile)
-Requires:       jack
 Requires:       meterbridge
 Requires:       vorbis-tools
+Requires:       (jack or pipewire-libjack-0_3)
 Recommends:     lv2-%{name}
 Recommends:     bestplugins
 %if %{with ladspa}

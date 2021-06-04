@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 06:56:42 UTC 2021 - Mark Trompell <mark@marktrompell.de>
+
+- Add pipewire-libjack-0_3 as an alternative requirement
+
+-------------------------------------------------------------------
 Wed Apr 28 12:26:32 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Used -fpermissive flag to fix factory build.

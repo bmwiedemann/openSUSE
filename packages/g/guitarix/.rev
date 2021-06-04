@@ -256,4 +256,12 @@
     <comment></comment>
     <requestid>889021</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>02a53ed2084a9b1dad3a7ac3117bb177</srcmd5>
+    <version>0.42.1</version>
+    <time>1622839452</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pipewire-libjack-0_3 as an alternative requirement</comment>
+    <requestid>897418</requestid>
+  </revision>
 </revisionlist>
