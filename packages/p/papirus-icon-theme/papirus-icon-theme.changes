@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Jun  4 02:03:58 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210601
+  
+  - Added icons
+    
+     * add-subtitle (actions)
+     * Allusion
+     * application-default-symbolic #2672
+     * ASCIIpOrtal #2541
+     * Athena File Manager
+     * AutoRemesher
+     * AwesomeBump
+     * Bootstrap Studio #2686
+     * Calibre icons (Flatpak) #2693
+     * Clapper #2699
+     * Daily Wallpaper
+     * DeSmuME
+     * Dopamine
+     * DSDA-Doom #2685
+     * DuckStation (Flathub) #2007
+     * EasyEffects #2680
+     * Electron Cash #2671
+     * Foot
+     * gtkcord
+     * Hatari (Flathub) #2007
+     * Identity
+     * KLatexFormula #2664
+     * KLayout #2683
+     * Knowte
+     * LibreWolf Community
+     * Mail filetype icons #2688
+         * application/mbox
+         * application/vnd.stardivision.mail
+         * message/rfc822
+         * text/vcard
+     * Mate Desktop #2700
+     * media-playlist-repeat-song/single (actions) #2675
+     * Mednaffe (Flathub) #2007
+     * Melvor Idle #2694
+     * Monero GUI #2678
+     * Motrix (Flathub) #2007
+     * mpv (Flathub) #2007
+     * Outwiker
+     * PC Engine (mimetypes) #2505
+     * Pocket Casts (app & tray) #2670
+     * Portal Reloaded #2667
+     * Programming filetype icons #2691
+         * application/vnd.chess-pgn
+         * application/x-asp
+         * text/vnd.wap.wmlscript
+         * text/x-cobol
+         * text/x-eiffel
+         * text/x-erlang
+         * text/x-fortran
+         * text/x-gradle
+         * text/x-gradle
+         * text/x-lilypond
+         * text/x-ms-regedit
+         * text/x-ocaml
+         * text/x-opml+xml
+         * text/x-scheme
+         * text/x-vbscript
+     * PyMOL (Flathub) #2007
+     * QElectroTech (Flathub) #2007
+     * Qt Creator (Flathub) #2007
+     * REDRIVER2
+     * Remote Raspberry
+     * Rolled Out #2674
+     * SciDAVis (Flathub) #2007
+     * Spot
+     * Sunvox #2689
+     * Super Mario 64
+     * tomboy-ng
+     * TOML (mimetypes) #2676
+     * torrenttools
+     * Tribler (Flathub) #2007
+     * Veusz (Flathub) #2007
+     * Virtual Boy (mimetypes) #2505
+     * Vitomu
+     * Worms Armageddon
+     * YouTube Music (app & tray)
+     * Yuna
+    
+  - Updated icons
+    
+     * 1Password (tray icons)
+     * Azure Data Studio #2701
+     * Discord (app and tray icons) #2679
+     * Fedora #2684
+     * Fedora Media Writer #2684
+     * Google Meet #2703
+     * Kitty #2673
+     * Linux Mint #2684
+     * Mint Dev Settings #2684
+     * PulseEffects
+     * Zulip #2684
+    
+  - Changes and fixes
+    
+     * Added and remapped a lot of mimetypes symlinks #2697
+     * Added Carmine folder color #2692
+     * Renamed Nicotine+ tray icons #2687
+
+-------------------------------------------------------------------
 Thu Apr  1 23:42:03 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20210401
