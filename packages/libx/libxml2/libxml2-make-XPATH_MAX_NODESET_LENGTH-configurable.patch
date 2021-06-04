@@ -1,6 +1,6 @@
 --- libxml2-2.9.4/xpath.c	
 +++ libxml2-2.9.4/xpath.c	
-@@ -119,14 +119,32 @@ 
+@@ -129,14 +129,32 @@ 
  #define XPATH_MAX_STACK_DEPTH 1000000
  
  /*
@@ -37,7 +37,7 @@
 +}
  
  /*
-  * TODO:
+  * XPATH_MAX_RECRUSION_DEPTH:
 @@ -3672,7 +3690,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;

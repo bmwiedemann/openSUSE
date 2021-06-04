@@ -1,5 +1,5 @@
 #
-# spec file for package python-libxml2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -31,7 +31,7 @@
 %define bname libxml2
 %define lname libxml2-2
 Name:           %{pprefix}%{bname}
-Version:        2.9.10
+Version:        2.9.12
 Release:        0
 %if !%{with python}
 Summary:        A Library to Manipulate XML Files
@@ -45,35 +45,15 @@ Source:         ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz
 Source1:        ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz.asc
 Source2:        baselibs.conf
 Source3:        libxml2.keyring
-Patch0:         fix-perl.diff
 Patch1:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
-# don't return a NULL string for an invalid UTF-8 conversion.
+# https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
 Patch2:         libxml2-python3-string-null-check.patch
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
 Patch3:         libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
-# PATCH-FIX-UPSTREAM bsc#1157450 This commit breaks perl-XML-LibXSLT
-Patch4:         libxml2-xmlFreeNodeList-recursive.patch
-# PATCH-FIX-UPSTREAM bsc#1161517 CVE-2020-7595 Infinite loop in xmlStringLenDecodeEntities
-Patch5:         libxml2-CVE-2020-7595.patch
-# PATCH-FIX-UPSTREAM bsc#1159928 CVE-2019-19956 Revert usptream commit
-Patch6:         libxml2-CVE-2019-19956.patch
-# PATCH-FIX-UPSTREAM bsc#1176179 CVE-2020-24977 xmllint: global-buffer-overflow in xmlEncodeEntitiesInternal
-Patch7:         libxml2-CVE-2020-24977.patch
-# PATCH-FIX-SUSE bsc#1178823 Avoid quadratic checking of identity-constraints
-Patch8:         libxml2-Avoid-quadratic-checking-of-identity-constraints.patch
-# PATCH-FIX-UPSTREAM bsc#1161521 CVE-2019-20388 Memory leak in xmlSchemaPreRun
-Patch9:         libxml2-CVE-2019-20388.patch
-# PATCH-FIX-UPSTREAM Fix building against Python 3.9
-Patch10:        libxml2-python39.patch
-# PATCH-FIX-UPSTREAM bsc#1185409 CVE-2021-3516 use-after-free in entities.c:xmlEncodeEntitiesInternal()
-Patch11:        libxml2-CVE-2021-3516.patch
-# PATCH-FIX-UPSTREAM bsc#1185410 CVE-2021-3517 heap-based buffer overflow entities.c:xmlEncodeEntitiesInternal()
-Patch12:        libxml2-CVE-2021-3517.patch
-# PATCH-FIX-UPSTREAM bsc#1185408 CVE-2021-3518 use-after-free in xinclude.c:xmlXIncludeDoProcess()
-Patch13:        libxml2-CVE-2021-3518.patch
-# PATCH-FIX-UPSTREAM bsc#1185698 CVE-2021-3537 NULL pointer dereference in valid.c:xmlValidBuildAContentModel
-Patch14:        libxml2-CVE-2021-3537.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/libxml2/-/issues/255
+Patch4:         libxml2-fix-lxml-corrupted-subtree-structures.patch
+Patch5:         libxml2-fix-regression-in-xmlNodeDumpOutputInternal.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -169,21 +149,11 @@ or manipulate any kind of XML files.
 
 %prep
 %setup -q -n libxml2-%{version}
-%patch0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1 -R
+%patch4 -p1
 %patch5 -p1
-%patch6 -p1 -R
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
 
 %build
 %if !%{with python}

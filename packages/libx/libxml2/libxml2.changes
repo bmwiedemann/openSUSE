@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jun  1 11:04:14 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix python-lxml regression with libxml2 2.9.12:
+  * Work around lxml API abuse:
+      gitlab.gnome.org/GNOME/libxml2/issues/255
+- Add upstream patches:
+  * libxml2-fix-lxml-corrupted-subtree-structures.patch
+  * libxml2-fix-regression-in-xmlNodeDumpOutputInternal.patch
+
+-------------------------------------------------------------------
+Tue Jun  1 03:02:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.9.12
+  * Fix CVE-2021-3541, CVE-2021-3537, CVE-2021-3518, CVE-2021-3517,
+    CVE-2021-3516, CVE-2020-7595, CVE-2019-20388, CVE-2020-24977,
+    and CVE-2019-19956
+  * Fix null deref in legacy SAX1 parser
+  * Fix handling of unexpected EOF in xmlParseContent
+  * Fix user-after-free
+  * Validate UTF8 in xmlEncodeEntities
+  * Fix memory leak in xmlParseElementMixedContentDecl
+  * Fix integer overflow in xmlSchemaGetParticleTotalRangeMin
+  * Fix SEGV in xmlSAXParseFileWithData
+  * Don't process siblings of root in xmlXIncludeProcess
+  * Full changes: http://xmlsoft.org/news.html
+- Drop upstream fixed
+  * libxml2-CVE-2021-3541.patch
+  * libxml2-CVE-2021-3537.patch
+  * libxml2-CVE-2021-3518.patch
+  * libxml2-CVE-2021-3517.patch
+  * libxml2-CVE-2021-3516.patch
+  * libxml2-CVE-2020-7595.patch
+  * libxml2-CVE-2019-20388.patch
+  * libxml2-CVE-2020-24977.patch
+  * libxml2-CVE-2019-19956.patch
+  * libxml2-python39.patch
+  * libxml2-Avoid-quadratic-checking-of-identity-constraints.patch
+- Drop since 2.9.10 merged libxml2-xmlFreeNodeList-recursive.patch
+- Drop since 2.8.0 merged fix-perl.diff
+- Refresh libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+
+-------------------------------------------------------------------
+Wed May 19 11:14:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1186015, CVE-2021-3541]
+  * Exponential entity expansion attack bypasses all existing
+    protection mechanisms.
+- Add libxml2-CVE-2021-3541.patch
+
+-------------------------------------------------------------------
 Mon May 10 11:44:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1185698, CVE-2021-3537]
