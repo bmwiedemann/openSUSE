@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 27 20:09:17 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * Accept Desktop Entry Specification v1.4
+  * util: Blacklist some session-specific variables
+  * util: Blacklist NOTIFY_SOCKET
+  * Fix libexec path for cinnamon-session-check-accelerated-helper
+
+-------------------------------------------------------------------
 Tue Dec  8 15:05:01 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.0.
