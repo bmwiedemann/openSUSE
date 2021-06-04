@@ -44,4 +44,12 @@
     <comment></comment>
     <requestid>847321</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b60dfa27f4814fcccc203489fe3c36</srcmd5>
+    <version>1.1.0+git.1622804483.3ca98bd</version>
+    <time>1622839436</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename grafana-sleha-cluster-provider subpackage to grafana-sleha-provider</comment>
+    <requestid>897409</requestid>
+  </revision>
 </revisionlist>
