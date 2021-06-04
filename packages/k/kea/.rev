@@ -61,4 +61,12 @@
     <comment>- Update to release 1.9.7</comment>
     <requestid>893315</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f60504ed70855876d895a021370a8778</srcmd5>
+    <version>1.9.8</version>
+    <time>1622839431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.9.8</comment>
+    <requestid>897365</requestid>
+  </revision>
 </revisionlist>

@@ -17,33 +17,33 @@
 
 
 %define asiodns_sover 12
-%define asiolink_sover 25
+%define asiolink_sover 26
 %define cc_sover 23
-%define cfgclient_sover 23
+%define cfgclient_sover 24
 %define cryptolink_sover 16
-%define database_sover 22
-%define dhcppp_sover 33
+%define database_sover 23
+%define dhcppp_sover 34
 %define dhcp_ddns_sover 16
-%define dhcpsrv_sover 45
-%define dnspp_sover 16
-%define eval_sover 25
+%define dhcpsrv_sover 46
+%define dnspp_sover 17
+%define eval_sover 26
 %define exceptions_sover 0
-%define hooks_sover 33
-%define http_sover 25
-%define log_sover 19
-%define mysql_sover 22
+%define hooks_sover 34
+%define http_sover 26
+%define log_sover 20
+%define mysql_sover 23
 %define pgsql_sover 19
-%define process_sover 27
+%define process_sover 28
 %define stats_sover 18
 %define util_io_sover 0
-%define util_sover 32
+%define util_sover 33
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  3 23:21:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.8
+  * Kea now recognizes requests sent from vendors that include
+    their information in DHCPv6 Vendor Class option (code 16).
+  * Fixed the server ignoring the Subnet Selection option
+    supplied by a client if its query contained a Relay Agent
+    Information (RAI) option without a Link Selection option.
+
+-------------------------------------------------------------------
 Sat May 15 11:09:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.7
