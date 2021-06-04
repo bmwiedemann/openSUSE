@@ -1,7 +1,48 @@
 -------------------------------------------------------------------
+Fri Jun  4 12:22:46 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 1.4.18
+  * Try more shells as launcher if default isn't found !2269
+  * Minor fixes for v1.4.17 !2270
+  * SSH session improvements !2271
+  * Fixes - Auto-start file created on tray icon disabled !2272
+  * RDP: Remove older usage of ClientHostname
+  * Fix libfreerdp version check
+  * Explicitly set user resolution to a multiple of 4
+  * Code refactoring - ASAN exceptions !2274
+
+- Fixed remmina-plugin-nx dependencies
+
+-------------------------------------------------------------------
+Sat May 22 14:19:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 1.4.17
+  * Fix build with musl libc
+  * Fix typos
+  * Improving CI cache
+  * Fix System Tray Icon Broken/Missing
+  * VNC quality deafults now to good
+  * Flatpak refactoring
+  * Adding Gateway websocket support
+  * Revert "Linking snap and flatpak to FreeRDP 2.3.1"
+  * Set FreeRDP config path to Remmina profiles path
+
+- Fixed build-logic for NX, enable per default
+- Enable kwallet and appindicator non SLE distributions
+
+-------------------------------------------------------------------
+Sun May 16 05:05:05 UTC 2021 - olaf@aepfle.de
+
+- Rename internal bcond from nx to remmina_nx
+- Use cmake_build
+- Use bcond for kwallet, which defaults to enabled
+- Use bcond for appindicator, which defaults to disabled
+  GtkStatusIcon works everywhere, while Appindicator works just in KDE
+
+-------------------------------------------------------------------
 Fri May 14 08:33:59 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Update to 1.1.16
+- Update to 1.4.16
   * Fix Data PATH for the FreeRDP files
 
 -------------------------------------------------------------------

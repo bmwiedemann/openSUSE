@@ -16,9 +16,16 @@
 #
 
 
-%bcond_with nx
+%bcond_without  remmina_nx
+%if 0%{?is_opensuse}
+%bcond_without  remmina_kwallet
+%bcond_without  remmina_appindicator
+%else
+%bcond_with	remmina_kwallet
+%bcond_with	remmina_appindicator
+%endif
 Name:           remmina
-Version:        1.4.16
+Version:        1.4.18
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -62,13 +69,13 @@ Recommends:     %{name}-plugin-secret
 Recommends:     %{name}-plugin-vnc
 Provides:       %{name}-plugins-common = %{version}
 Obsoletes:      %{name}-plugins-common < 1.0.0
-%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
+%if %{with remmina_kwallet}
 BuildRequires:  cmake(KF5Wallet)
 %endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(wayland-client)
 %endif
-%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
+%if %{with remmina_appindicator}
 BuildRequires:  pkgconfig(appindicator3-0.1)
 %endif
 
@@ -122,18 +129,17 @@ Requires:       remmina = %{version}
 %description plugin-xdmcp
 This package provides the XDMCP protocol plugin for Remmina.
 
-%if %{with nx}
+%if %{with remmina_nx}
 %package plugin-nx
 Summary:        NX Protocol Plugin for Remmina
 Group:          Productivity/Networking/Other
-Requires:       NX
 Requires:       remmina = %{version}
 
 %description plugin-nx
 This package provides the NX protocol plugin for Remmina.
 %endif
 
-%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
+%if %{with remmina_kwallet}
 %package plugin-kwallet
 Summary:        Remmina plugin to support the KDE Wallet
 Group:          Productivity/Networking/Other
@@ -210,18 +216,34 @@ export CFLAGS="%{optflags} -fPIE -pie"
 export CFLAGS="$CFLAGS -fPIC"
 %endif
 
-%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
-%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_KF5WALLET=ON -DWITH_GVNC=ON
+%cmake \
+	-DWITH_NEWS=OFF \
+	-DWITH_KIOSK_SESSION=ON \
+	-DWITH_GVNC=ON \
+%if %{with remmina_kwallet}
+	-DWITH_KF5WALLET=ON \
 %else
-%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_APPINDICATOR=OFF -DWITH_GVNC=ON
+	-DWITH_KF5WALLET=OFF \
+%endif
+%if %{with remmina_appindicator}
+	-DWITH_APPINDICATOR=ON \
+%else
+	-DWITH_APPINDICATOR=OFF \
+%endif
+%if %{with remmina_nx}
+        -DWITH_NX=ON \
+%else
+        -DWITH_NX=OFF \
 %endif
 
-%make_build
+	%{nil}
+
+%cmake_build
 
 %install
 %cmake_install
 
-%if %{without nx}
+%if %{without remmina_nx}
 rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
     %{buildroot}%{_datadir}/icons/hicolor/*/emblems/remmina-nx.png
 %endif
@@ -262,7 +284,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %postun plugin-xdmcp
 %icon_theme_cache_postun
 
-%if %{with nx}
+%if %{with remmina_nx}
 %post plugin-nx
 %icon_theme_cache_post
 
@@ -335,7 +357,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/xsessions/remmina-gnome.desktop
 %{_datadir}/applications/%{name}-gnome.desktop
 
-%if !%{with nx}
+%if %{without remmina_nx}
 %exclude %{_datadir}/icons/hicolor/scalable/emblems/remmina-nx-symbolic.svg
 %endif
 
@@ -359,13 +381,13 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-xdmcp-ssh-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-xdmcp-symbolic.svg
 
-%if %{with nx}
+%if %{with remmina_nx}
 %files plugin-nx
 %{_libdir}/remmina/plugins/remmina-plugin-nx.so
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-nx-symbolic.svg
 %endif
 
-%if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
+%if %{with remmina_kwallet}
 %files plugin-kwallet
 %{_libdir}/remmina/plugins/remmina-plugin-kwallet.so
 %endif
