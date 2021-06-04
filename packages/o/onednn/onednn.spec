@@ -31,12 +31,16 @@
 
 %define libname libdnnl2
 Name:           onednn
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
-Summary:        Intel(R) Math Kernel Library for Deep Neural Networks
+Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
 URL:            https://01.org/onednn
-Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM onednn-1045.patch -- https://github.com/oneapi-src/oneDNN/pull/1045
+Patch0:         onednn-1045.patch
+# PATCH-FIX-UPSTREAM 0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
+Patch1:         0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -57,18 +61,18 @@ Obsoletes:      mkl-dnn <= %{version}
 Provides:       oneDNN = %{version}
 
 %description
-Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
+Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
 open-source performance library for deep-learning applications. The library
 accelerates deep-learning applications and frameworks on Intel architecture.
 Intel MKL-DNN contains vectorized and threaded building blocks that you can use
 to implement deep neural networks (DNN) with C and C++ interfaces.
 
 %package -n benchdnn
-Summary:        Header files of Intel(R) Math Kernel Library
+Summary:        Header files of Intel Math Kernel Library
 Requires:       %{libname} = %{version}
 
 %description -n benchdnn
-Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
+Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
 open-source performance library for deep-learning applications. The library
 accelerates deep-learning applications and frameworks on Intel architecture.
 Intel MKL-DNN contains vectorized and threaded building blocks that you can use
@@ -77,43 +81,42 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
 This package only includes the benchmark utility including its input files.
 
 %package devel
-Summary:        Header files of Intel(R) Math Kernel Library
+Summary:        Header files of Intel Math Kernel Library
 Requires:       %{libname} = %{version}
 Provides:       mkl-dnn-devel = %{version}
 Obsoletes:      mkl-dnn-devel <= %{version}
 Provides:       oneDNN-devel = %{version}
 
 %description devel
-Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
+Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
 open-source performance library for deep-learning applications. The library
 accelerates deep-learning applications and frameworks on Intel architecture.
 Intel MKL-DNN contains vectorized and threaded building blocks that you can use
 to implement deep neural networks (DNN) with C and C++ interfaces.
 
 This package includes the required headers and library files to develop software
-with the Intel(R) MKL-DNN.
+with the Intel MKL-DNN.
 
 %package doc
-Summary:        Reference documentation for the Intel(R) Math Kernel Library
+Summary:        Reference documentation for the Intel Math Kernel Library
 BuildArch:      noarch
 
 %description doc
-The reference documentation for the Intel(R) Math Kernel Library can be installed
+The reference documentation for the Intel Math Kernel Library can be installed
 with this package.
 
 %package -n %{libname}
-Summary:        Header files of Intel(R) Math Kernel Library
+Summary:        Header files of Intel Math Kernel Library
 
 %description -n %{libname}
-Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) is an
+Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
 open-source performance library for deep-learning applications. The library
 accelerates deep-learning applications and frameworks on Intel architecture.
 Intel MKL-DNN contains vectorized and threaded building blocks that you can use
 to implement deep neural networks (DNN) with C and C++ interfaces.
 
 %prep
-%setup -q -n oneDNN-%{version}
-%autopatch -p1
+%autosetup -p1 -n oneDNN-%{version}
 
 %build
 %cmake \
@@ -167,6 +170,7 @@ popd
 %{_datadir}/benchdnn
 
 %files devel
+%doc README.md
 %{_includedir}/mkl-dnn
 %{_includedir}/mkldnn*.h*
 %{_includedir}/dnnl*.h*
@@ -185,7 +189,6 @@ popd
 
 %files -n %{libname}
 %license LICENSE
-%doc README.md
 %{_libdir}/libdnnl.so.*
 %{_libdir}/libmkldnn.so.*
 

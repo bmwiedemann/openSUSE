@@ -1,0 +1,21 @@
+From a94acd4e2dfaf51552dd2a60b059df1c1f14e452 Mon Sep 17 00:00:00 2001
+From: Alexandre Truong <alexandre.truong@arm.com>
+Date: Wed, 28 Apr 2021 10:32:35 +0100
+Subject: [PATCH] cpu: aarch64: missing include for arm_compute::Scheduler
+
+---
+ src/cpu/aarch64/acl_indirect_gemm_convolution.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cpu/aarch64/acl_indirect_gemm_convolution.hpp b/src/cpu/aarch64/acl_indirect_gemm_convolution.hpp
+index 86d2bed73..040311f8c 100644
+--- a/src/cpu/aarch64/acl_indirect_gemm_convolution.hpp
++++ b/src/cpu/aarch64/acl_indirect_gemm_convolution.hpp
+@@ -26,6 +26,7 @@
+ 
+ #include "arm_compute/runtime/FunctionDescriptors.h"
+ #include "arm_compute/runtime/NEON/NEFunctions.h"
++#include "arm_compute/runtime/Scheduler.h"
+ 
+ namespace dnnl {
+ namespace impl {

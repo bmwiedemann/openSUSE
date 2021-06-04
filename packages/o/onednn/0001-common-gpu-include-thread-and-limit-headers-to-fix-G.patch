@@ -1,0 +1,38 @@
+From cfbefd8d744d4cdcdf3dd2f18576f487b36911b6 Mon Sep 17 00:00:00 2001
+From: Denis Samoilov <denis.samoylov@intel.com>
+Date: Fri, 2 Apr 2021 19:46:22 -0700
+Subject: [PATCH] common, gpu: include thread and limit headers to fix GCC 11
+ build issues
+
+---
+ src/common/primitive_cache.hpp      | 1 +
+ src/gpu/jit/ngen/ngen_auto_swsb.hpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/common/primitive_cache.hpp b/src/common/primitive_cache.hpp
+index 73cb1224f..05a3e53e5 100644
+--- a/src/common/primitive_cache.hpp
++++ b/src/common/primitive_cache.hpp
+@@ -20,6 +20,7 @@
+ #include <future>
+ #include <list>
+ #include <memory>
++#include <thread>
+ #include <unordered_map>
+ 
+ #include "c_types_map.hpp"
+diff --git a/src/gpu/jit/ngen/ngen_auto_swsb.hpp b/src/gpu/jit/ngen/ngen_auto_swsb.hpp
+index de3417af3..62ef2a571 100644
+--- a/src/gpu/jit/ngen/ngen_auto_swsb.hpp
++++ b/src/gpu/jit/ngen/ngen_auto_swsb.hpp
+@@ -33,6 +33,7 @@
+ 
+ #include <list>
+ #include <map>
++#include <limits>
+ 
+ namespace ngen {
+ namespace autoswsb {
+-- 
+2.26.2
+

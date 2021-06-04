@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jun  3 01:38:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.3
+  * Fixed a bug in int8 depthwise convolution ptimitive with groups
+    and 1d spatial size for processors with AVX-512 and AVX2 support
+  * Fixed correctness issue for PReLU primitive
+  * Fixed corretness issue in reorder for blocked layouts with
+    zero padding
+  * Improved performance of weights reorders used by BRGEMM-based
+    convolution primitive for processors with AVX-512 support
+  * Added -fp-model=precise build flag for DPC++ code
+  * Fixed potential memory leak in matmul primitive
+  * Fixed performance of matmul primitive when fused with bias
+    update and sum
+  * Fixed a bug in matmul primitive when writing to non-contiguous
+    destination buffer
+- Add upstream patch for GCC11 support
+  * 0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
+
+-------------------------------------------------------------------
+Thu May 27 08:10:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed May 26 13:29:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.2.2, changes:
+  * Fixed performance regression in fp32 forward inner product for
+  shapes with number of output channels equal to 1 for processors
+  with Intel AVX-512 support (714b1fd)
+  * Fixed performance regression in forward convolutions with groups
+  for processors with Intel AVX-512 support(3555d4a)
+  * Removed -std=c++11 build flag for DPC++ headers (1fcb867)
+  * Fixed buffer access in initializing workspace in RNN
+  implementation on GPU (9b03091)
+  * Fixed fix a bug in convolution with 1x1 kernel and mixed
+  strides on processors with Intel AVX-512 support (d0b3e3f)
+  * Used getauxval for Linux to get CPU features on for AArch64
+  systems (25c4cea)
+  * Added -fp-model=precise build flag for DPC++ code (3e40e5e)
+  * Fixed out-of-bounds writes in elementwise primitive on
+  Intel Processor Graphics (bcf823c)
+- Fix build with Arm Compute Library:
+  * onednn-1045.patch
+
+-------------------------------------------------------------------
 Tue Apr 13 07:53:16 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.2.1, changes:
