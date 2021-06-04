@@ -20,7 +20,7 @@
 %define soname  libxapp
 %define sover   1
 Name:           xapps
-Version:        2.0.7
+Version:        2.2.0
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later
