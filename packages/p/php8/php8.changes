@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  4 06:01:16 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.7: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.7
+
+-------------------------------------------------------------------
+Thu Jun  3 17:18:17 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.6: This release reverts a bug related to PDO_pgsql
+  that was introduced in PHP 8.0.5.
+
+-------------------------------------------------------------------
 Thu Apr 29 14:30:56 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.5: This is a bug fix release. See
