@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 27 20:05:58 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * build: Add missing libtool depedencies.
+  * build: Fix undefined references with slibtool.
+  * Revert "Remove useless, annoying window activation warning."
+  * windows: Fix focus-stealing prevention. Cinnamon no longer
+    attempts to deal with this.
+  * Do not unmaximize windows that are not maximized or
+    tiled - fixes Wine bug
+  * Add newline to debug message
+
+-------------------------------------------------------------------
 Thu Jan 14 10:21:20 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.1.
