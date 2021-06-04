@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
+# PATCH-FIX-UPSTREAM Adapt test_etree.py to a behavioural change in libxml2 2.9.11+
+Patch0:         python-lxml-test_etree.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -70,6 +72,7 @@ This package contains header files needed to use lxml's C API.
 
 %prep
 %setup -q -n lxml-%{version}
+%patch0 -p1
 cp %{SOURCE1} .
 
 # remove generated files
