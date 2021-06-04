@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 28 12:23:02 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210528.983c167a:
+  * Add Backports to the updates being tested
+
+-------------------------------------------------------------------
+Fri May 28 12:21:36 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210528.c321aed8:
+  * check_source.py: Decline if source_revision not set
+
+-------------------------------------------------------------------
+Thu May 27 09:03:44 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210527.973d7cea:
+  * gocd: add SLE_BCI packagelist generation
+
+-------------------------------------------------------------------
 Thu May 20 07:32:05 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210520.9bd9aeb2:
