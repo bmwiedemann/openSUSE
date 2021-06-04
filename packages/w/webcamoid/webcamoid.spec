@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE webcamoid-gcc11.patch add missing include -- aloisio@gmx.com
+Patch0:         webcamoid-gcc11.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -85,7 +87,7 @@ Avkys library provides a wide range of plugins for audio and
 video playing, recording, capture, and processing.
 
 %prep
-%setup -q -n webcamoid-%{version}
+%autosetup -p1
 
 %build
 %qmake5 \
