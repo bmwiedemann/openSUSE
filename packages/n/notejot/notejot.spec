@@ -1,7 +1,7 @@
 #
 # spec file for package notejot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           notejot
-Version:        1.6.3
+Version:        3.0.4
 Release:        0
 Summary:        A Sticky Note App
 License:        GPL-3.0-only
@@ -31,11 +31,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite) >= 0.5
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 Recommends:     %{name}-lang
 
 %description
@@ -53,33 +55,18 @@ or ideas.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.lainsce.notejot GTK Utility DesktopUtility
-%find_lang com.github.lainsce.notejot %{name}.lang
+%find_lang io.github.lainsce.Notejot %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-# Switch to the default system font
-find %{buildroot} -type f -name "*.ttf" -delete -print
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/com.github.lainsce.notejot
-%{_datadir}/applications/com.github.lainsce.notejot.desktop
-%{_datadir}/glib-2.0/schemas/com.github.lainsce.notejot.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.lainsce.notejot.??g
-%{_datadir}/metainfo/com.github.lainsce.notejot.appdata.xml
+%{_bindir}/io.github.lainsce.Notejot
+%{_datadir}/applications/io.github.lainsce.Notejot.desktop
+%{_datadir}/glib-2.0/schemas/io.github.lainsce.Notejot.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/io.github.lainsce.Notejot*.??g
+%{_datadir}/icons/hicolor/scalable/actions/*.svg
+%{_datadir}/metainfo/io.github.lainsce.Notejot.appdata.xml
 
 %files lang -f %{name}.lang
 
