@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  1 10:41:44 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with libxml2 2.9.12 that removes maxParserDepth XPath limit
+- Add upstream patches:
+  * libxslt-Stop-using-maxParserDepth-XPath-limit.patch
+  * libxslt-Do-not-set-maxDepth-in-XPath-contexts.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 12:58:31 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.1.34: Oct 30 2019

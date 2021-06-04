@@ -1,0 +1,54 @@
+From 77c26bad0433541f486b1e7ced44ca9979376908 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Wed, 26 Aug 2020 00:34:38 +0200
+Subject: [PATCH] Don't set maxDepth in XPath contexts
+
+The maximum recursion depth is hardcoded in libxml2 now.
+---
+ libxslt/functions.c |  2 +-
+ tests/fuzz/fuzz.c   | 11 ++---------
+ 2 files changed, 3 insertions(+), 10 deletions(-)
+
+Index: libxslt-1.1.34/tests/fuzz/fuzz.c
+===================================================================
+--- libxslt-1.1.34.orig/tests/fuzz/fuzz.c
++++ libxslt-1.1.34/tests/fuzz/fuzz.c
+@@ -168,7 +168,6 @@ xsltFuzzXPathInit(int *argc_p ATTRIBUTE_
+     xpctxt = tctxt->xpathCtxt;
+ 
+     /* Resource limits to avoid timeouts and call stack overflows */
+-    xpctxt->maxDepth = 500;
+     xpctxt->opLimit = 500000;
+ 
+     /* Test namespaces used in xpath.xml */
+@@ -299,12 +298,6 @@ xsltFuzzXsltInit(int *argc_p ATTRIBUTE_U
+     return 0;
+ }
+ 
+-static void
+-xsltSetXPathResourceLimits(xmlXPathContextPtr ctxt) {
+-    ctxt->maxDepth = 200;
+-    ctxt->opLimit = 100000;
+-}
+-
+ xmlChar *
+ xsltFuzzXslt(const char *data, size_t size) {
+     xmlDocPtr xsltDoc;
+@@ -334,7 +327,7 @@ xsltFuzzXslt(const char *data, size_t si
+         xmlFreeDoc(xsltDoc);
+         return NULL;
+     }
+-    xsltSetXPathResourceLimits(sheet->xpathCtxt);
++    sheet->xpathCtxt->opLimit = 100000;
+     sheet->xpathCtxt->opCount = 0;
+     if (xsltParseStylesheetUser(sheet, xsltDoc) != 0) {
+         xsltFreeStylesheet(sheet);
+@@ -346,7 +339,7 @@ xsltFuzzXslt(const char *data, size_t si
+     xsltSetCtxtSecurityPrefs(sec, ctxt);
+     ctxt->maxTemplateDepth = 100;
+     ctxt->opLimit = 20000;
+-    xsltSetXPathResourceLimits(ctxt->xpathCtxt);
++    ctxt->xpathCtxt->opLimit = 100000;
+     ctxt->xpathCtxt->opCount = sheet->xpathCtxt->opCount;
+ 
+     result = xsltApplyStylesheetUser(sheet, doc, NULL, NULL, NULL, ctxt);

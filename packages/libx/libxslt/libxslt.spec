@@ -1,7 +1,7 @@
 #
 # spec file for package libxslt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           libxslt
 Version:        1.1.34
 Release:        0
 Summary:        XSL Transformation Library
-License:        MIT AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://xmlsoft.org/XSLT/
 Source0:        ftp://xmlsoft.org/libxslt/libxslt-%{version}.tar.gz
@@ -34,10 +34,14 @@ Patch0:         %{name}-1.1.24-no-net-autobuild.patch
 Patch1:         libxslt-config-fixes.patch
 Patch2:         0009-Make-generate-id-deterministic.patch
 Patch3:         libxslt-random-seed.patch
+# PATCH-FIX-UPSTREAM gitlab.gnome.org/GNOME/libxslt/commit/9ae2f94df1721e002941b40665efb762aefcea1a
+Patch4:         libxslt-Stop-using-maxParserDepth-XPath-limit.patch
+# PATCH-FIX-UPSTREAM gitlab.gnome.org/GNOME/libxslt/commit/77c26bad0433541f486b1e7ced44ca9979376908
+Patch5:         libxslt-Do-not-set-maxDepth-in-XPath-contexts.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
-BuildRequires:  libxml2-devel
+BuildRequires:  libxml2-devel >= 2.9.12
 BuildRequires:  pkgconfig
 Obsoletes:      libxslt-python
 
@@ -88,7 +92,7 @@ applications that want to make use of the XSLT libraries.
 
 %package tools
 Summary:        Extended Stylesheet Language (XSL) Transformation utilities
-License:        MIT AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 Group:          Development/Tools/Other
 Provides:       %{name} = %{version}
 Provides:       xsltproc = %{version}
@@ -103,6 +107,8 @@ xtend the
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 autoreconf -fvi
