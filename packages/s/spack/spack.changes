@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 14:04:26 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- fix typo to export prefix in patch:
+  Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
+
+-------------------------------------------------------------------
 Tue May 25 08:55:42 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - update to version 0.16.1

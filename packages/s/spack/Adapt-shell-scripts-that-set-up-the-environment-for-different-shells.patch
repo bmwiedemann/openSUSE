@@ -127,7 +127,7 @@ index 5761d1636..768866abe 100755
  }
  _sp_multi_pathadd MODULEPATH "$_sp_tcl_roots"
  
-++export SPACK_ROOT=@@_prefix@@
++export SPACK_ROOT=@@_prefix@@
 +
 +
  # Add programmable tab completion for Bash

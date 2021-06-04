@@ -84,4 +84,12 @@
   * Respect -k/verify-ssl-false in _existing_url method.</comment>
     <requestid>895310</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5f1ef28ef4aa363c141bd2e5a97819b4</srcmd5>
+    <version>0.16.2</version>
+    <time>1622839457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897435</requestid>
+  </revision>
 </revisionlist>
