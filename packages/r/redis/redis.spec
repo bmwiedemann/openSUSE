@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause

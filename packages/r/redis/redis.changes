@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  2 07:57:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.2.4:
+  * CVE-2021-32625: An integer overflow bug could be exploited by
+    using the STRALGO LCS command to cause remote remote code
+    execution (boo#1186722)
+  * Fix crash after a diskless replication fork child is terminated
+  * Fix redis-benchmark crash on unsupported configs
+  * Fix crash in UNLINK on a stream key with deleted consumer groups
+  * SINTERSTORE: Add missing keyspace del event when none of the
+    sources exist
+  * Sentinel: Fix CONFIG SET of empty string
+    sentinel-user/sentinel-pass configs
+  * Enforce client output buffer soft limit when no traffic
+  * Hide AUTH passwords in MIGRATE command from slowlog
+
+-------------------------------------------------------------------
 Fri May 21 20:30:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Move sysctl file to /usr/lib/sysctl.d, so that it can be
