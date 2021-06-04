@@ -17,13 +17,14 @@
 
 
 %define skip_python2 1
+%define modname breathe
 Name:           python-breathe
-Version:        4.27.0
+Version:        4.30.0
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 URL:            https://github.com/michaeljones/breathe
-Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz
+Source:         https://github.com/michaeljones/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 3.0.4}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module mock}
@@ -37,7 +38,7 @@ Requires:       python-docutils >= 0.12
 Requires:       python-setuptools
 Requires:       python-six >= 1.9
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-sphinxcontrib-breathe = %{version}
 Obsoletes:      python-sphinxcontrib-breathe < %{version}
 BuildArch:      noarch

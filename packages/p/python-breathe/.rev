@@ -162,4 +162,30 @@
   * Allow lookup in doxygenfunction without writing param names. #606</comment>
     <requestid>874949</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>884a5cbe5032eaa57f5eae17be164d00</srcmd5>
+    <version>4.30.0</version>
+    <time>1622839345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.30.0:
+  - Fix retval rendering. #687
+  - Correctly label example as C. #690
+  - apidoc: add -m, --members option flag. #694
+  - Do not add inline modifier for C#. #668
+  - Use add_css_file instead of deprecated/removed add_stylesheet. #669
+  - Use native docutils for field lists, notes, and warnings. #670
+  - Handle directives returning no nodes on error. #672
+  - Code and documentation for membergroups and members-only options.
+    #637
+  - Add example.tag to gitignore as it gets modified during build
+    process. #644
+  - Add support for content-only flag when rendering pages. #645
+  - When rendering a section, add target after title. #647
+  - Render pages content in order. #651
+  - Adds an ID to the rubric created for each section of a group. #658
+  - Add missing getter and setter for C#. #661
+  - Add support for rowspan/colspan to tables. #642
+</comment>
+    <requestid>896766</requestid>
+  </revision>
 </revisionlist>
