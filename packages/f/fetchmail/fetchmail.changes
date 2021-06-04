@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 13 16:57:09 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Backported support for OAUTH2 authentication from Fetchmail 7.0.
+  - add imap oauthbearer support
+  - support oauthbearer/xoauth2 with pop3
+  - add passwordfile and passwordfd options
+  - add contrib/fetchnmail-oauth2.py token acquisition utility
+  - FAQ: list gmail options including oauthbearer and app password
+  - give each ctl it's own copy of password
+  - re-read passwordfile on every poll
+  - add query_to64_outsize() utility function
+  - Chase and integrate interface change.
+  - oauth2.c: calculate and pass in correct buffer size to to64frombits()
+  - Increase max password length to handle oauth tokens
+  - Bump max. passwordlen to 10000 bytes.
+  - Add README.OAUTH2
+- Added patches:
+  * fetchmail-add-imap-oauthbearer-support.patch
+  * fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+  * fetchmail-add-passwordfile-and-passwordfd-options.patch
+  * fetchmail-add-contrib-fetchnmail-oauth2.py-token-acquisition-u.patch
+  * fetchmail-FAQ-list-gmail-options-including-oauthbearer-and-app.patch
+  * fetchmail-give-each-ctl-it-s-own-copy-of-password.patch
+  * fetchmail-re-read-passwordfile-on-every-poll.patch
+  * fetchmail-add-query_to64_outsize-utility-function.patch
+  * fetchmail-chase-and-integrate-interface-change.patch
+  * fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-to64frombits.patch
+  * fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
+  * fetchmail-bump-max-passwordlen-to-1bytes.patch
+  * fetchmail-add-readme-oauth2-issue-27.patch
+
+-------------------------------------------------------------------
 Sat May  8 19:55:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.19:

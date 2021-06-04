@@ -1,0 +1,164 @@
+From: William Bader <william@newspapersystems.com>
+Date: Sun, 31 Jan 2021 06:42:46 +0000
+Subject: Add README.OAUTH2 issue #27
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: d52ba9652c9207358e0b9acc11403688f6f16b9e
+
+---
+ README.OAUTH2 | 147 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 147 insertions(+)
+
+diff --git a/README.OAUTH2 b/README.OAUTH2
+new file mode 100644
+index 00000000..e861c812
+--- /dev/null
++++ b/README.OAUTH2
+@@ -0,0 +1,147 @@
++OAUTH2 support for gmail
++========================
++
++Preface
++-------
++
++fetchmail 7 adds support for OAuth2.
++You create a project in google that requests gmail access to request an OAuth2 client id and client secret.
++Then you use the contributed fetchmail-oauth2.py to request a refresh token for gmail access to your gmail account.
++Then you use the fetchmail-oauth2.py again to request temporary access tokens that fetchmail uses like a password.
++
++Create a Google project and request an OAuth2 client id and client secret
++-------------------------------------------------------------------------
++
++* Open the Google API Dashboard: https://console.developers.google.com/apis/dashboard
++* The first time that you enter the page, you will have to select your country and agree to terms of service.
++* You should see a title bar with "Google APIs" and a menu down the left with "Dashboard, Library,
++  Credentials, OAuth consent screen, Domain verification, Page usage agreements".
++* Click to create a new project, possibly on a pull-down arrow to the right of "Google APIs" on the title bar.
++* Click on "NEW PROJECT".
++  + Enter a project name like "fetchmail".
++  + You can leave "Location" as "No organization" for personal email.
++  + If you are a G Suite administrator, you might be able to enter your G Suite organization.
++  + When you enter the project name, you will get a message like "Project ID: fetchmail-123456. It cannot be changed later."
++  + Make a note of the full project name.
++  + Click on "CREATE".
++  + Google will take a few seconds to create the project.
++* Switch to the new project, either from "SELECT PROJECT" in the notification window or on the title bar pulldown after "Google APIs".
++* Click on "Credentials" on the menu at the left.
++* Click on "+ CREATE CREDENTIALS" at the top of the window.
++* Select "OAuth client ID" from the list of credential types.
++* Click on "CONFIGURE CONSENT SCREEN" at the right.
++  + Select "External" from the list of user types. "Internal" is for organizations with G Suite.
++  + Click "CREATE".
++* Fill out the app registration form.
++  + "App name" can be the full project name, like "fetchmail-123456". It has to be unique.
++  + "User support email" can be your gmail email.
++  + "App logo" can be empty. I used /usr/share/icons/Adwaita/256x256/legacy/emblem-mail.png
++  + "Application home page" can be empty.
++  + "Application privacy policy link" can be empty.
++  + "Application terms of service link" can be empty.
++  + "Authorized domain" can be empty.
++  + "Developer contact email address" can be your gmail email.
++  + Click "SAVE AND CONTINUE".
++  + Click "ADD OR REMOVE SCOPES" on the "Edit app registration" screen.
++  + Click on "Google API Library". This opens a new tab.
++  + Filter for "Email" and click on "Gmail API".
++  + Click on "ENABLE".
++  + Return to the "Edit app registration" tab and refresh.
++  + Click "ADD OR REMOVE SCOPES" on the "Edit app registration" screen.
++  + I think that the scope ".../auth/gmail.modify" to "View and modify but not delete your email" is sufficient.
++  + Click on "SAVE AND CONTINUE". This opens the "Test Users" window.
++  + Click on "+ ADD USERS".
++  + Enter you gmail address and click on "ADD".
++  + Click on "SAVE AND CONTINUE".
++  + This opens a "Summary" page.
++  + If you need to change something, click on "OAuth consent screen" on the menu at the left and then "EDIT APP" to step through the screens again.
++* Click on "Credentials" on the menu at the left to create client credentials.
++  + Click on "+ CREATE CREDENTIALS" at the top of the window.
++  + Select "OAuth client ID" from the list of credential types.
++  + Select "Desktop app" from the list of "Application types".
++  + "Name" can be "DesktopClient1" or whatever the screen suggests.
++  + Click on "CREATE".
++  + It will show a window with "Your Client ID" and "Your Client Secret". Copy them somewhere safe.
++
++Download and build fetchmail 7
++------------------------------
++```
++git clone https://gitlab.com/fetchmail/fetchmail.git
++cd fetchmail
++git checkout -t origin/next
++./autogen.sh
++./configure
++make
++make check
++sudo make install
++```
++
++Configure fetchmail-oauth2.py
++-----------------------------
++* Create a file, for example /home/yourname/.fetchmail-oauth2
++```
++client_id=YOUR-CLIENT-ID
++client_secret=YOUR-CLIENT-SECRET
++refresh_token_file=/home/yourname/.fetchmail-refresh
++access_token_file=/home/yourname/.fetchmail-token
++max_age_sec=3000
++```
++* Replace YOUR-CLIENT-ID and YOUR-CLIENT-SECRET with the keys for "Your Client ID" and "Your Client Secret" from the previous step.
++* The refresh and token files do not need to exist, but they have to be valid paths.
++* Run `contrib/fetchmail-oauth2.py -c /home/yourname/.fetchmail-oauth2 --obtain_refresh_token_file`
++  + The script will give you a URL.
++  + Paste the URL into a web browser.
++  + URL should open a google authentication page.
++  + Select the email account.
++  + Google will warn that the app isn't verified. Click on "Continue".
++  + Google will warn that "fetchmail-123456 wants to access your Google Account `your.name@gmail.com`".
++  + Click on "Allow".
++  + The page will display the sign in key.
++  + Paste the key into the script.
++  + The script will report:
++```
++Refresh token saved to '/home/yourname/.fetchmail-refresh'
++Initial access token saved to '/home/yourname/.fetchmail-token'
++Access Token Expiration Seconds: 3599
++```
++  + Hopefully you will not need to do this again for months or years.
++* Run `chmod 0600` on all of the files .fetchmail-oauth2 .fetchmail-refresh .fetchmail-token
++
++Configure fetchmail
++---------------------
++* Create an entry in your `.fetchmailrc`
++```
++poll imap.gmail.com protocol imap
++  auth oauthbearer username "your.name@gmail.com"
++  passwordfile "/home/yourname/.fetchmail-token"
++  is yourname here
++  fetchlimit 10 folder "Download"
++  keep
++  sslmode wrapped sslcertck
++```
++* Run `chmod 0400` on your `.fetchmailrc`
++* The optional "fetchlimit #" limits the number of emails if you are testing.
++* The optional "folder name" sets the folder to check.
++* I made gmail filters that add a "Download" label to important emails.
++* Fetchmail downloads unread emails. You can go into gmail and mark a few emails unread for testing.
++* Try running fetchmail once at a command line.
++
++Script fetchmail
++----------------
++* Each access token expires after an hour.
++* If you run fetchmail from cron, you should run `fetchmail-oauth2.py -c /home/yourname/.fetchmail-oauth2 --auto_refresh ; fetchmail`
++* For example, `*/2 * * * * (fetchmail-oauth2.py -c /home/yourname/.fetchmail-oauth2 --auto_refresh ; fetchmail) > /home/yourname/fetchmail.log 2>&1`
++* The `--auto_refresh` option checks the age of the key against the `max_age_sec` and renews it if necessary.
++* `max_age_sec=3000` in `.fetchmail-oauth2` renews the key after 50 minutes, which should give a safe margin.
++
++Further reading
++---------------
++* Instructions by the author of OAuth2 support for Fetchmail and Postfix
++  + Setting Up OAUTH2 Support for Fetchmail and Postfix http://mmogilvi.users.sourceforge.net/software/oauthbearer.html
++  + Run `fetchmail-oauth2.py --help | less`
++* Documents from Google
++  + Using OAuth 2.0 to Access Google APIs https://developers.google.com/identity/protocols/oauth2
++  + Integrating Google Sign-In into your web app https://developers.google.com/identity/sign-in/web/devconsole-project
++* Google links
++  + Google API Dashboard: https://console.developers.google.com/apis/dashboard
++  + Google Cloud Resource Manager: https://console.developers.google.com/cloud-resource-manager
+

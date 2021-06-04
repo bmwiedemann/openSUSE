@@ -1,0 +1,279 @@
+From: Matthew Ogilvie <mmogilvi+fml@zoho.com>
+Date: Sat, 27 May 2017 15:32:28 -0600
+Subject: add imap oauthbearer support
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: 5c44df6df70b90f06d3204c6fbdd1ff19e990ca0
+
+This expects an oauth2 access token in place of password.
+When configured, it will also fall back on trying xoauth2.
+---
+ conf.c           |    2 +
+ fetchmail.c      |    3 +
+ fetchmail.h      |    2 +
+ fetchmail.man    |   23 +++++++++++-
+ fetchmailconf.py |    2 -
+ imap.c           |  104 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ options.c        |    2 +
+ rcfile_l.l       |    1 
+ 8 files changed, 136 insertions(+), 3 deletions(-)
+
+--- a/conf.c
++++ b/conf.c
+@@ -288,6 +288,8 @@ void dump_config(struct runctl *runp, st
+ 		stringdump("auth", "otp");
+ 	    else if (ctl->server.authenticate == A_MSN)
+ 		stringdump("auth", "msn");
++	    else if (ctl->server.authenticate == A_OAUTHBEARER)
++		stringdump("auth", "oauthbearer");
+ 
+ #ifdef HAVE_RES_SEARCH
+ 	    booldump("dns", ctl->server.dns);
+--- a/fetchmail.c
++++ b/fetchmail.c
+@@ -1766,6 +1766,9 @@ static void dump_params (struct runctl *
+ 	case A_SSH:
+ 	    printf(GT_("  End-to-end encryption assumed.\n"));
+ 	    break;
++	case A_OAUTHBEARER:
++	    printf(GT_("  OAUTHBEARER will be forced; expecting password to really be OAUTH2 authentication token\n"));
++	    break;
+ 	}
+ 	if (ctl->server.principal != (char *) NULL)
+ 	    printf(GT_("  Mail service principal is: %s\n"), ctl->server.principal);
+--- a/fetchmail.h
++++ b/fetchmail.h
+@@ -79,6 +79,7 @@ struct addrinfo;
+ #define		A_SSH		8	/* authentication at session level */
+ #define		A_MSN		9	/* same as NTLM with keyword MSN */
+ #define		A_EXTERNAL	10	/* external authentication (client cert) */
++#define			A_OAUTHBEARER	11	/** oauth2 access token (not password) */
+ 
+ /* some protocols or authentication types (KERBEROS, GSSAPI, SSH) don't
+  * require a password */
+@@ -114,6 +115,7 @@ struct addrinfo;
+ #define		MSGBUFSIZE	8192
+ 
+ #define		NAMELEN		64	/* max username length */
++/* oauth2 access tokens seem to be about 130 characters; make this longer: */
+ #define		PASSWORDLEN	256	/* max password length */
+ #define		DIGESTLEN	33	/* length of MD5 digest */
+ 
+--- a/fetchmail.man
++++ b/fetchmail.man
+@@ -1001,7 +1001,7 @@ AUTHENTICATION below for details).  The
+ \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
+ excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
+ \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
+-\fBexternal\fP (only IMAP) and \fBssh\fP.
++\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (only IMAP).
+ When \fBany\fP (the default) is specified, fetchmail tries
+ first methods that don't require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
+ KERBEROS\ 5); then it looks for methods that mask your password
+@@ -1021,6 +1021,23 @@ GSSAPI or K4.  Choosing KPOP protocol au
+ authentication.  This option does not work with ETRN.  GSSAPI service names are
+ in line with RFC-2743 and IANA registrations, see
+ .URL https://www.iana.org/assignments/gssapi-service-names/ "Generic Security Service Application Program Interface (GSSAPI)/Kerberos/Simple Authentication and Security Layer (SASL) Service Names" .
++.sp
++\fBoauthbearer\fP expects the supplied password to be an oauth2 authentication
++token instead of a password, as used by services like gmail.
++See RFC 7628 and RFC 6750.  The \fBoauthbearer\fP
++setting also allows the non-standard "xoauth2" SASL scheme (using
++the same token) if the server only claims to support "xoauth2".
++External tools are necessary to obtain
++such tokens.  Access tokens often expire fairly quickly (e.g. 1 hour),
++and new ones need to be generated from renewal tokens.  See the
++oauth2.py script from
++.URL https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough "Google's Oauth2 Run Through" ,
++and other oauth2 documentation.  For services like gmail, an "App Password"
++is probably preferable if available, because it has roughly the same
++security risks, and is a whole lot simpler to get working.  "App Password"
++and oauthbearer both need to protect secrets on the client machine (files) and
++over the network (SSL/TLS).  But "App Password" is
++sometimes completely disabled by business "G-suite" administrators.
+ .SS Miscellaneous Options
+ .TP
+ .B \-f <pathname> | \-\-fetchmailrc <pathname>
+@@ -2327,7 +2344,9 @@ Legal protocol identifiers for use with
+ .PP
+ Legal authentication types are 'any', 'password', 'kerberos',
+ \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
+-(only for POP3), 'ntlm', 'ssh', 'external' (only IMAP).
++(only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
++'oauthbearer' (only for IMAP; requires authentication token in
++place of password).
+ The 'password' type specifies
+ authentication by normal transmission of a password (the password may be
+ plain text or subject to protocol-specific encryption as in CRAM-MD5);
+--- a/fetchmailconf.py
++++ b/fetchmailconf.py
+@@ -487,7 +487,7 @@ defaultports = {"auto":None,
+                 "ODMR":"odmr"}
+ 
+ authlist = ("any", "password", "gssapi", "kerberos", "ssh", "otp",
+-            "msn", "ntlm")
++            "msn", "ntlm", "oauthbearer")
+ 
+ listboxhelp = {
+     'title' : 'List Selection Help',
+--- a/imap.c
++++ b/imap.c
+@@ -26,6 +26,10 @@
+ #define IMAP4		0	/* IMAP4 rev 0, RFC1730 */
+ #define IMAP4rev1	1	/* IMAP4 rev 1, RFC2060 */
+ 
++/* imap_plus_cont_context values */
++#define IPLUS_NONE	        0
++#define IPLUS_OAUTHBEARER	1	/* oauthbearer (for more error info) */
++
+ /* global variables: please reinitialize them explicitly for proper
+  * working in daemon mode */
+ 
+@@ -38,6 +42,8 @@ static int imap_version = IMAP4;
+ static flag do_idle = FALSE, has_idle = FALSE;
+ static int expunge_period = 1;
+ 
++static int plus_cont_context = IPLUS_NONE;
++
+ /* mailbox variables initialized in imap_getrange() */
+ static int count = 0, oldcount = 0, recentcount = 0, unseen = 0, deletions = 0;
+ static unsigned int startcount = 1;
+@@ -202,6 +208,21 @@ static int imap_response(int sock, char
+ 	if (ok != PS_SUCCESS)
+ 	    return(ok);
+ 
++	if (buf[0] == '+' && buf[1] == ' ') {
++	    if (plus_cont_context == IPLUS_OAUTHBEARER) {
++		/* future: Consider decoding the base64-encoded JSON
++		 * error response info and logging it.  But for now,
++		 * ignore continuation data, send the expected blank
++		 * line, and assume that the next response will be
++		 * a tagged "NO" as documented.
++		 */
++		SockWrite(sock, "\r\n", 2);
++		if (outlevel >= O_MONITOR)
++		    report(stdout, "IMAP> \n");
++		continue;
++	    }
++	}
++
+ 	/* all tokens in responses are caseblind */
+ 	for (cp = buf; *cp; cp++)
+ 	    if (islower((unsigned char)*cp))
+@@ -316,6 +337,69 @@ static int do_imap_ntlm(int sock, struct
+ }
+ #endif /* NTLM */
+ 
++static int do_imap_oauthbearer(int sock, struct query *ctl,flag xoauth2)
++{
++    /* Implements relevant parts of RFC-7628, RFC-6750, and
++     * https://developers.google.com/gmail/imap/xoauth2-protocol
++     *
++     * This assumes something external manages obtaining an up-to-date
++     * authentication/bearer token and arranging for it to be in
++     * ctl->password.  This may involve renewing it ahead of time if
++     * necessary using a renewal token that fetchmail knows nothing about.
++     * See:
++     * https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough
++     */
++    const char *name;
++    char *oauth2str;
++    int oauth2len;
++    int saved_suppress_tags = suppress_tags;
++
++    char *oauth2b64;
++
++    int ok;
++
++    oauth2len = strlen(ctl->remotename) + strlen(ctl->password) + 32;
++    oauth2str = (char *)xmalloc(oauth2len);
++    if (xoauth2)
++    {
++	snprintf(oauth2str, oauth2len,
++	         "user=%s\1auth=Bearer %s\1\1",
++	         ctl->remotename,
++	         ctl->password);
++	name = "XOAUTH2";
++    }
++    else
++    {
++	snprintf(oauth2str, oauth2len,
++	         "n,a=%s,\1auth=Bearer %s\1\1",
++	         ctl->remotename,
++	         ctl->password);
++	name = "OAUTHBEARER";
++    }
++
++    oauth2b64 = (char *)xmalloc(2*strlen(oauth2str)+8);
++    to64frombits(oauth2b64, oauth2str, strlen(oauth2str));
++
++    memset(oauth2str, 0x55, strlen(oauth2str));
++    free(oauth2str);
++
++    /* Protect the access token like a password in logs, despite the
++     * usually-short expiration time and base64 encoding:
++     */
++    strlcpy(shroud, oauth2b64, sizeof(shroud));
++
++    plus_cont_context = IPLUS_OAUTHBEARER;
++    ok = gen_transact(sock, "AUTHENTICATE %s %s", name, oauth2b64);
++    plus_cont_context = IPLUS_NONE;
++
++    memset(shroud, 0x55, sizeof(shroud));
++    shroud[0] = '\0';
++    memset(oauth2b64, 0x55, strlen(oauth2b64));
++    free(oauth2b64);
++
++    return ok;
++}
++
+ static void imap_canonicalize(char *result, char *raw, size_t maxlen)
+ /* encode an IMAP password as per RFC1730's quoting conventions */
+ {
+@@ -510,6 +594,26 @@ static int imap_getauth(int sock, struct
+      */
+     ok = PS_AUTHFAIL;
+ 
++    if (ctl->server.authenticate == A_OAUTHBEARER)
++    {
++	/* Fetchmail's oauthbearer and xoauth2 support expects the "password"
++	 * to actually be an oauth2 authentication token, so only
++	 * try these options if specifically enabled.
++	 * (Generating a token using the complex https-based oauth2
++	 * protocol is left as an exercise for the user.)
++	 */
++	if (strstr(capabilities, "AUTH=OAUTHBEARER") ||
++	    !strstr(capabilities, "AUTH=XOAUTH2"))
++	{
++	    ok = do_imap_oauthbearer(sock, ctl, FALSE); /* OAUTHBEARER */
++	}
++	if (ok && strstr(capabilities, "AUTH=XOAUTH2"))
++	{
++	    ok = do_imap_oauthbearer(sock, ctl, TRUE); /* XOAUTH2 */
++	}
++	return ok;
++    }
++
+     /* Yahoo hack - we'll just try ID if it was offered by the server,
+      * and IGNORE errors. */
+     {
+--- a/options.c
++++ b/options.c
+@@ -421,6 +421,8 @@ int parsecmdline (int argc /** argument
+ 		ctl->server.authenticate = A_ANY;
+ 	    else if (strcmp(optarg, "msn") == 0)
+ 		ctl->server.authenticate = A_MSN;
++	    else if (strcmp(optarg, "oauthbearer") == 0)
++		ctl->server.authenticate = A_OAUTHBEARER;
+ 	    else {
+ 		fprintf(stderr,GT_("Invalid authentication `%s' specified.\n"), optarg);
+ 		errflag++;
+--- a/rcfile_l.l
++++ b/rcfile_l.l
+@@ -106,6 +106,7 @@ cram(-md5)?	{ SETSTATE(0); yylval.proto
+ msn		{ SETSTATE(0); yylval.proto = A_MSN; return AUTHTYPE;}
+ ntlm		{ SETSTATE(0); yylval.proto = A_NTLM; return AUTHTYPE;}
+ <AUTH>password	{ SETSTATE(0); yylval.proto = A_PASSWORD; return AUTHTYPE;}
++oauthbearer 	{ SETSTATE(0); yylval.proto = A_OAUTHBEARER; return AUTHTYPE;}
+ timeout		{ return TIMEOUT;}
+ envelope	{ return ENVELOPE; }
+ qvirtual	{ return QVIRTUAL; }

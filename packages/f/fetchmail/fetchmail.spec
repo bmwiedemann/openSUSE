@@ -26,7 +26,8 @@ Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.fetchmail.info/
-Source:         https://sourceforge.net/projects/%{name}/files/branch_6.4/%{name}-%{version}.tar.xz
+#Source:         fetchmail-7.0.0-alpha8.tar.xz
+Source0:        https://sourceforge.net/projects/%{name}/files/branch_6.4/%{name}-%{version}.tar.xz
 Source1:        https://sourceforge.net/projects/%{name}/files/branch_6.4/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.logrotate
 Source3:        sysconfig.%{name}
@@ -35,8 +36,24 @@ Source6:        %{name}.service
 Source7:        %{name}.tmpfiles
 Source8:        %{name}.exec
 Source9:        %{name}.sysusers
+
 Patch0:         fetchmail-6.3.8-smtp_errors.patch
+Patch1:         fetchmail-add-imap-oauthbearer-support.patch
+Patch2:         fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+Patch3:         fetchmail-add-passwordfile-and-passwordfd-options.patch
+Patch4:         fetchmail-add-contrib-fetchnmail-oauth2.py-token-acquisition-u.patch
+Patch5:         fetchmail-FAQ-list-gmail-options-including-oauthbearer-and-app.patch
+Patch6:         fetchmail-give-each-ctl-it-s-own-copy-of-password.patch
+Patch7:         fetchmail-re-read-passwordfile-on-every-poll.patch
+Patch8:         fetchmail-add-query_to64_outsize-utility-function.patch
+Patch9:         fetchmail-chase-and-integrate-interface-change.patch
+Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-to64frombits.patch
+Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
+Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
+Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
 BuildRequires:  automake
+BuildRequires:  bison
+BuildRequires:  flex
 BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
 BuildRequires:  opie
@@ -78,6 +95,19 @@ files (.fetchmailrc).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 cp -a %{SOURCE2} %{SOURCE3} .
 
 ACLOCAL="aclocal -I m4 -I m4-local" autoreconf -fvi
@@ -143,7 +173,7 @@ rm -r contrib/gai*
 
 %files -f %{name}.lang
 %license COPYING
-%doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
+%doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.OAUTH2 README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %{_bindir}/fetchmail
 %dir %attr(0700, fetchmail, fetchmail) %{_localstatedir}/lib/fetchmail
 %ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail

@@ -1,0 +1,38 @@
+From: Matthew Ogilvie <mmogilvi+fml@zoho.com>
+Date: Fri, 21 Dec 2018 09:01:40 -0700
+Subject: oauth2.c: calculate and pass in correct buffer size to to64frombits()
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: 914ee333c73baa3c58d1e819ff4d66052e663335
+
+Also allocate the actual needed size instead of an excessively large
+approximate size.
+
+---
+ oauth2.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/oauth2.c b/oauth2.c
+index 4f7a072a..addc91aa 100644
+--- a/oauth2.c
++++ b/oauth2.c
+@@ -34,6 +34,7 @@ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+     int oauth2len;
+ 
+     char *oauth2b64;
++    size_t oauth2b64alloc;
+ 
+     oauth2len = strlen(ctl->remotename) + strlen(ctl->password) + 32;
+     oauth2str = (char *)xmalloc(oauth2len);
+@@ -52,8 +53,9 @@ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+ 		 ctl->password);
+     }
+ 
+-    oauth2b64 = (char *)xmalloc(2*strlen(oauth2str)+8);
+-    to64frombits(oauth2b64, oauth2str, strlen(oauth2str), oauth2len);
++    oauth2b64alloc = query_to64_outsize(strlen(oauth2str));
++    oauth2b64 = (char *)xmalloc(oauth2b64alloc);
++    to64frombits(oauth2b64, oauth2str, strlen(oauth2str), oauth2b64alloc);
+ 
+     memset(oauth2str, 0x55, strlen(oauth2str));
+     free(oauth2str);
+

@@ -1,0 +1,415 @@
+From: Matthew Ogilvie <mmogilvi+fml@zoho.com>
+Date: Fri, 30 Jun 2017 02:35:12 -0600
+Subject: support oauthbearer/xoauth2 with pop3
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
+
+(Also factor out some common imap/pop3 oauth2 code.)
+---
+ Makefile.am   |   2 +-
+ fetchmail.man |   5 +--
+ imap.c        |  53 +++-------------------
+ oauth2.c      |  61 +++++++++++++++++++++++++
+ oauth2.h      |   6 +++
+ pop3.c        | 122 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 6 files changed, 196 insertions(+), 53 deletions(-)
+ create mode 100644 oauth2.c
+ create mode 100644 oauth2.h
+
+diff --git a/Makefile.am b/Makefile.am
+index 1e800085..d747f895 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -54,7 +54,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h \
+ 		fetchmail.c env.c idle.c options.c daemon.c \
+ 		driver.c transact.c sink.c smtp.c \
+ 		idlist.c uid.c mxget.c md5ify.c cram.c gssapi.c \
+-		opie.c interface.c netrc.c \
++		oauth2.c opie.c interface.c netrc.c \
+ 		unmime.c conf.c checkalias.c uid_db.h uid_db.c\
+ 		lock.h lock.c \
+ 		rcfile_l.l rcfile_y.y \
+diff --git a/fetchmail.man b/fetchmail.man
+index d128ece1..aece716e 100644
+--- a/fetchmail.man
++++ b/fetchmail.man
+@@ -928,7 +928,7 @@ This option permits you to specify an authentication type (see USER
+ \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
+ excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
+ \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
+-\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (only IMAP).
++\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (requires token).
+ When \fBany\fP (the default) is specified, fetchmail tries
+ first methods that don't require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
+ KERBEROS\ 5); then it looks for methods that mask your password
+@@ -2222,8 +2222,7 @@ Legal protocol identifiers for use with the 'protocol' keyword are:
+ Legal authentication types are 'any', 'password', 'kerberos',
+ \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
+ (only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
+-'oauthbearer' (only for IMAP; requires authentication token in
+-place of password).
++'oauthbearer' (requires authentication token in place of password).
+ The 'password' type specifies
+ authentication by normal transmission of a password (the password may be
+ plain text or subject to protocol-specific encryption as in CRAM-MD5);
+diff --git a/imap.c b/imap.c
+index 0ab10d31..e38706f5 100644
+--- a/imap.c
++++ b/imap.c
+@@ -14,6 +14,7 @@
+ #include  <limits.h>
+ #include  <errno.h>
+ #endif
++#include  "oauth2.h"
+ #include  "socket.h"
+ 
+ #include  "i18n.h"
+@@ -329,63 +330,23 @@ static int do_imap_ntlm(int sock, struct query *ctl)
+ 
+ static int do_imap_oauthbearer(int sock, struct query *ctl,flag xoauth2)
+ {
+-    /* Implements relevant parts of RFC-7628, RFC-6750, and
+-     * https://developers.google.com/gmail/imap/xoauth2-protocol
+-     *
+-     * This assumes something external manages obtaining an up-to-date
+-     * authentication/bearer token and arranging for it to be in
+-     * ctl->password.  This may involve renewing it ahead of time if
+-     * necessary using a renewal token that fetchmail knows nothing about.
+-     * See:
+-     * https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough
+-     */
+-    const char *name;
+-    char *oauth2str;
+-    int oauth2len;
+-    int saved_suppress_tags = suppress_tags;
+-
+-    char *oauth2b64;
+-
++    char *oauth2str = get_oauth2_string(ctl, xoauth2);
++    const char *name = xoauth2 ? "XOAUTH2" : "OAUTHBEARER";
+     int ok;
+ 
+-    oauth2len = strlen(ctl->remotename) + strlen(ctl->password) + 32;
+-    oauth2str = (char *)xmalloc(oauth2len);
+-    if (xoauth2)
+-    {
+-	snprintf(oauth2str, oauth2len,
+-	         "user=%s\1auth=Bearer %s\1\1",
+-	         ctl->remotename,
+-	         ctl->password);
+-	name = "XOAUTH2";
+-    }
+-    else
+-    {
+-	snprintf(oauth2str, oauth2len,
+-	         "n,a=%s,\1auth=Bearer %s\1\1",
+-	         ctl->remotename,
+-	         ctl->password);
+-	name = "OAUTHBEARER";
+-    }
+-
+-    oauth2b64 = (char *)xmalloc(2*strlen(oauth2str)+8);
+-    to64frombits(oauth2b64, oauth2str, strlen(oauth2str));
+-
+-    memset(oauth2str, 0x55, strlen(oauth2str));
+-    free(oauth2str);
+-
+     /* Protect the access token like a password in logs, despite the
+      * usually-short expiration time and base64 encoding:
+      */
+-    strlcpy(shroud, oauth2b64, sizeof(shroud));
++    strlcpy(shroud, oauth2str, sizeof(shroud));
+ 
+     plus_cont_context = IPLUS_OAUTHBEARER;
+-    ok = gen_transact(sock, "AUTHENTICATE %s %s", name, oauth2b64);
++    ok = gen_transact(sock, "AUTHENTICATE %s %s", name, oauth2str);
+     plus_cont_context = IPLUS_NONE;
+ 
+     memset(shroud, 0x55, sizeof(shroud));
+     shroud[0] = '\0';
+-    memset(oauth2b64, 0x55, strlen(oauth2b64));
+-    free(oauth2b64);
++    memset(oauth2str, 0x55, strlen(oauth2str));
++    free(oauth2str);
+ 
+     return ok;
+ }
+diff --git a/oauth2.c b/oauth2.c
+new file mode 100644
+index 00000000..a8a324b8
+--- /dev/null
++++ b/oauth2.c
+@@ -0,0 +1,61 @@
++/*
++ * oauth2.c -- oauthbearer and xoauth2 support
++ *
++ * Copyright 2017 by Matthew Ogilvie
++ * For license terms, see the file COPYING in this directory.
++ */
++
++#include "config.h"
++#include "fetchmail.h"
++#include "oauth2.h"
++
++#include <stdio.h>
++#include <string.h>
++
++char *get_oauth2_string(struct query *ctl,flag xoauth2)
++{
++    /* Implements the bearer token string based for a
++     * combination of RFC-7628 (ouath sasl, with
++     * examples for imap only), RFC-6750 (oauth2), and
++     * RFC-5034 (pop sasl), as implemented by gmail and others.
++     *
++     * Also supports xoauth2, which is just a couple of minor variariations.
++     * https://developers.google.com/gmail/imap/xoauth2-protocol
++     *
++     * This assumes something external manages obtaining an up-to-date
++     * authentication/bearer token and arranging for it to be in
++     * ctl->password.  This may involve renewing it ahead of time if
++     * necessary using a renewal token that fetchmail knows nothing about.
++     * See:
++     * https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough
++     */
++    char *oauth2str;
++    int oauth2len;
++
++    char *oauth2b64;
++
++    oauth2len = strlen(ctl->remotename) + strlen(ctl->password) + 32;
++    oauth2str = (char *)xmalloc(oauth2len);
++    if (xoauth2)
++    {
++	snprintf(oauth2str, oauth2len,
++		 "user=%s\1auth=Bearer %s\1\1",
++		 ctl->remotename,
++		 ctl->password);
++    }
++    else
++    {
++	snprintf(oauth2str, oauth2len,
++		 "n,a=%s,\1auth=Bearer %s\1\1",
++		 ctl->remotename,
++		 ctl->password);
++    }
++
++    oauth2b64 = (char *)xmalloc(2*strlen(oauth2str)+8);
++    to64frombits(oauth2b64, oauth2str, strlen(oauth2str));
++
++    memset(oauth2str, 0x55, strlen(oauth2str));
++    free(oauth2str);
++
++    return oauth2b64;
++}
+diff --git a/oauth2.h b/oauth2.h
+new file mode 100644
+index 00000000..67ebfd6e
+--- /dev/null
++++ b/oauth2.h
+@@ -0,0 +1,6 @@
++#ifndef OAUTH2_H
++#define OAUTH2_H
++
++char *get_oauth2_string(struct query *ctl,flag xoauth2);
++
++#endif /*OAUTH2_H*/
+diff --git a/pop3.c b/pop3.c
+index 076d890e..06fc0a0d 100644
+--- a/pop3.c
++++ b/pop3.c
+@@ -15,6 +15,7 @@
+ #include  <errno.h>
+ 
+ #include  "fetchmail.h"
++#include  "oauth2.h"
+ #include  "socket.h"
+ #include  "i18n.h"
+ #include  "uid_db.h"
+@@ -55,6 +56,10 @@ flag has_ntlm = FALSE;
+ #ifdef SSL_ENABLE
+ static flag has_stls = FALSE;
+ #endif /* SSL_ENABLE */
++static flag has_oauthbearer = FALSE;
++static flag has_xoauth2 = FALSE;
++
++static const char *next_sasl_resp = NULL;
+ 
+ /* mailbox variables initialized in pop3_getrange() */
+ static int last;
+@@ -110,12 +115,65 @@ static int pop3_ok (int sock, char *argbuf)
+     char buf [POPBUFSIZE+1];
+     char *bufp;
+ 
+-    if ((ok = gen_recv(sock, buf, sizeof(buf))) == 0)
++    while ((ok = gen_recv(sock, buf, sizeof(buf))) == 0)
+     {	bufp = buf;
+-	if (*bufp == '+' || *bufp == '-')
++	if (*bufp == '+')
++	{
+ 	    bufp++;
++	    if (*bufp == ' ' && next_sasl_resp != NULL)
++	    {
++		/* Currently only used for OAUTHBEARER/XOAUTH2, and only
++		 * rarely even then.
++		 *
++		 * This is the only case where the top while() actually
++		 * loops.
++		 *
++		 * For OAUTHBEARER, data aftetr '+ ' is probably
++		 * base64-encoded JSON with some HTTP-related error details.
++		 */
++		if (*next_sasl_resp != '\0')
++		    SockWrite(sock, next_sasl_resp, strlen(next_sasl_resp));
++		SockWrite(sock, "\r\n", 2);
++		if (outlevel >= O_MONITOR)
++		{
++		    const char *found;
++		    if (shroud[0] && (found = strstr(next_sasl_resp, shroud)))
++		    {
++			/* enshroud() without copies, and avoid
++			 * confusing with a genuine "*" (cancel).
++			 */
++			report(stdout, "POP3> %.*s[SHROUDED]%s\n",
++			       (int)(found-next_sasl_resp), next_sasl_resp,
++			       found+strlen(shroud));
++		    }
++		    else
++		    {
++			report(stdout, "POP3> %s\n", next_sasl_resp);
++		    }
++		}
++
++		if (*next_sasl_resp == '\0' || *next_sasl_resp == '*')
++		{
++		    /* No more responses expected, cancel AUTH command if
++		     * more responses requested.
++		     */
++		    next_sasl_resp = "*";
++		}
++		else
++		{
++		    next_sasl_resp = "";
++		}
++		continue;
++	    }
++	}
++	else if (*bufp == '-')
++	{
++	    bufp++;
++	}
+ 	else
++	{
+ 	    return(PS_PROTOCOL);
++	}
+ 
+ 	while (isalpha((unsigned char)*bufp))
+ 	    bufp++;
+@@ -184,6 +242,8 @@ static int pop3_ok (int sock, char *argbuf)
+ #endif
+ 	if (argbuf != NULL)
+ 	    strcpy(argbuf,bufp);
++
++	break;
+     }
+ 
+     return(ok);
+@@ -212,11 +272,13 @@ static int capa_probe(int sock)
+ #ifdef NTLM_ENABLE
+     has_ntlm = FALSE;
+ #endif /* NTLM_ENABLE */
++    has_oauthbearer = FALSE;
++    has_xoauth2 = FALSE;
+ 
+     ok = gen_transact(sock, "CAPA");
+     if (ok == PS_SUCCESS)
+     {
+-	char buffer[64];
++	char buffer[128];
+ 
+ 	/* determine what authentication methods we have available */
+ 	while ((ok = gen_recv(sock, buffer, sizeof(buffer))) == 0)
+@@ -246,6 +308,12 @@ static int capa_probe(int sock)
+ 
+ 	    if (strstr(buffer, "CRAM-MD5"))
+ 		has_cram = TRUE;
++
++	    if (strstr(buffer, "OAUTHBEARER"))
++		has_oauthbearer = TRUE;
++
++	    if (strstr(buffer, "XOAUTH2"))
++		has_xoauth2 = TRUE;
+ 	}
+     }
+     done_capa = TRUE;
+@@ -312,6 +380,40 @@ static int do_apop(int sock, struct query *ctl, char *greeting)
+     peek_capable = !ctl->fetchall && (!ctl->keep || ctl->server.uidl);
+ }
+ 
++static int do_oauthbearer(int sock, struct query *ctl, flag xoauth2)
++{
++    char *oauth2str = get_oauth2_string(ctl, xoauth2);
++    const char *name = xoauth2 ? "XOAUTH2" : "OAUTHBEARER";
++    int ok;
++
++    /* Protect the access token like a password in logs, despite the
++     * usually-short expiration time and base64 encoding:
++     */
++    strlcpy(shroud, oauth2str, sizeof(shroud));
++
++    if (4+1+1+2+strlen(name)+strlen(oauth2str) <= 255)
++    {
++	next_sasl_resp = "";
++	ok = gen_transact(sock, "AUTH %s %s", name, oauth2str);
++    }
++    else
++    {
++	/* Too long to use "initial client response" (RFC-5034 section 4,
++	 * referencing RFC-4422 section 4).
++	 */
++	next_sasl_resp = oauth2str;
++	ok = gen_transact(sock, "AUTH %s", name);
++    }
++    next_sasl_resp = NULL;
++
++    memset(shroud, 0x55, sizeof(shroud));
++    shroud[0] = '\0';
++    memset(oauth2str, 0x55, strlen(oauth2str));
++    free(oauth2str);
++
++    return ok;
++}
++
+ static int pop3_getauth(int sock, struct query *ctl, char *greeting)
+ /* apply for connection authorization */
+ {
+@@ -436,6 +538,7 @@ static int pop3_getauth(int sock, struct query *ctl, char *greeting)
+ 		(ctl->server.authenticate == A_KERBEROS_V5) ||
+ 		(ctl->server.authenticate == A_OTP) ||
+ 		(ctl->server.authenticate == A_CRAM_MD5) ||
++		(ctl->server.authenticate == A_OAUTHBEARER) ||
+ 		maybe_starttls(ctl))
+ 	{
+ 	    if ((ok = capa_probe(sock)) != PS_SUCCESS)
+@@ -540,6 +643,19 @@ static int pop3_getauth(int sock, struct query *ctl, char *greeting)
+ 	/*
+ 	 * OK, we have an authentication type now.
+ 	 */
++	if (ctl->server.authenticate == A_OAUTHBEARER)
++	{
++	    if (has_oauthbearer || !has_xoauth2)
++	    {
++		ok = do_oauthbearer(sock, ctl, FALSE); /* OAUTHBEARER */
++	    }
++	    if (ok != PS_SUCCESS && has_xoauth2)
++	    {
++		ok = do_oauthbearer(sock, ctl, TRUE); /* XOAUTH2 */
++	    }
++	    break;
++	}
++
+ #if defined(KERBEROS_V4)
+ 	/* 
+ 	 * Servers doing KPOP have to go through a dummy login sequence
+-- 
+2.31.1
+

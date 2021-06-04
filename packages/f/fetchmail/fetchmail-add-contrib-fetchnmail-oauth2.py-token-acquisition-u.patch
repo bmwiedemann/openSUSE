@@ -1,0 +1,610 @@
+From: Matthew Ogilvie <mmogilvi+fml@zoho.com>
+Date: Thu, 1 Jun 2017 00:09:02 -0600
+Subject: add contrib/fetchnmail-oauth2.py token acquisition utility
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: c82625858682eb2396b6a49da79e403c6f2b018b
+
+---
+ contrib/README              |    6 
+ contrib/fetchmail-oauth2.py |  567 ++++++++++++++++++++++++++++++++++++++++++++
+ fetchmail.man               |    3 
+ 3 files changed, 575 insertions(+), 1 deletion(-)
+ create mode 100755 contrib/fetchmail-oauth2.py
+
+--- a/contrib/README
++++ b/contrib/README
+@@ -181,6 +181,12 @@ sendmail 8.11.0 with multidrop.
+ 
+ Watchdog script to check whether fetchmail is working in daemon mode.
+ 
++### fetchmail-oauth2.py
++
++Script to obtain oauth2 access tokens that "fetchmail --auth oauthbearer"
++expects in place of the password.  See --help and comments in the
++script, as well as fetchmail --auth documentation.
++
+ ### mold-remover.py
+ 
+ A short python script to remove old read mail from a pop3 mailserver.
+--- /dev/null
++++ b/contrib/fetchmail-oauth2.py
+@@ -0,0 +1,567 @@
++#!/usr/bin/python
++#
++# Updates: Copyright 2017 Matthew Ogilvie (mogilvie+fml at zoho.com)
++#  - Started with https://github.com/google/gmail-oauth2-tools.git
++#    commit 45c39795044c604ed126205806191a8473c0f671 dated
++#    2015-06-09.
++#  - Add file interaction (--refresh, --auto_refresh,
++#    --obtain_refresh_token_file and related options).
++#  - Support both python 2 and 3.
++#  - Keeping the same license (below).
++#
++# Copyright 2012 Google Inc.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++     # http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++###############
++# POSSIBLE IMPROVEMENTS:
++#
++# FUTURE: Explicitly track expiration time of access tokens,
++#   and base --auto_refresh on actual expiration time instead of
++#   simple age.
++# FUTURE: Add a mode that can print the access token by itself to
++#   stdout, presumably piped into fetchmail or similar (either both
++#   launched by a wrapper script, this launches fetchmail, or fetchmail
++#   launches this).
++# FUTURE: Mix old and new interfaces (or get rid of old interface):
++#   Support using a config file to supply some of the details
++#   for the original google modes of operation (--generate_oauth2_token,
++#   --generate_oauth2_string, --refresh_token, and --test_*).
++#   Also support providing sensative data on the command line instead
++#   of files for the new modes of operation, despite the lack
++#   of security (process listings, .bash_history files, etc).
++# FUTURE: Revise model for how to set permissions on updated files?
++#   Preserve existing?  Somehow allow setting UID/GID?  Warn if files
++#   are accessible by anyone but the current user?
++
++"""Performs client tasks for testing IMAP OAuth2 authentication.
++
++This documentation and examples is for gmail.  For other providers,
++you will likely need to track down appropriate non-default settings
++for auth_url, token_url, and scope.
++
++To use this script, you'll need to have registered with Google as an OAuth
++application and obtained an OAuth client ID and client secret.
++See https://developers.google.com/identity/protocols/OAuth2 and
++https://developers.google.com/identity/sign-in/web/devconsole-project
++for instructions on registering and for documentation of the APIs
++invoked by this code.
++
++This script has 2 main modes of operation.
++
++1. The first mode is used to generate and authorize an OAuth2 token, the
++first step in logging in via OAuth2.
++
++First, after registering your "application" (above) you should setup a
++configuration file.  Use a text editor to do the command-line equivalent of:
++
++  sed 's/^ *//' > /path/to/oauth2Config.properties << EOF
++    client_id=1038[...].apps.googleusercontent.com
++    client_secret=VWFn8LIKAMC-MsjBMhJeOplZ
++    refresh_token_file=/home/path/to/refresh_token_file
++    access_token_file=/home/path/to/access_token_file
++EOF
++
++  chmod 600 /path/to/oauth2Config.properties
++
++Then run the following, and repeat any time the refresh token stops
++working, such as when you change your password.  This is interactive
++and requires a web browser to complete:
++
++  oauth2 -c /path/to/oauth2Config.properties --obtain_refresh_token_file
++
++The script will converse with Google and generate an oauth request
++token, then present you with a URL you should visit in your browser to
++authorize the token. Once you get the verification code from the Google
++website, enter it into the script, which will then save access and referesh
++tokens to the corresponding files for later use.
++
++Also, you'll usually need to configure fetchmail by
++including a section like the following in your .fetchmailrc:
++
++    poll imap.gmail.com protocol imap
++      auth oauthbearer username "USER@gmail.com"
++      passwordfile "/home/path/to/access_token_file"
++      is LOCALUSER here sslmode wrapped sslcertck
++
++Alternative for debugging: You can also use the original google
++script interface to obtain these tokens without involving files:
++
++  oauth2 \
++    --client_id=1038[...].apps.googleusercontent.com \
++    --client_secret=VWFn8LIKAMC-MsjBMhJeOplZ \
++    --generate_oauth2_token
++
++
++-----
++2. The script will generate new access tokens using a refresh token.
++
++This uses the same config file setup above.
++
++  oauth2 -c /path/to/oauth2Config.properties --auto_refresh
++  # Or force refresh by using --refresh instead of --auto_refresh.
++
++  fetchmail -s  # or other tools configured to use the access_token_file
++  # And/or call something to update outgoing MTA relay configuration,
++  # if necessary.
++
++You may put this sequence in a short shell script,
++and configure cron to call it a few times per hour.
++
++Alternative for debugging: You can also use the original google
++script interface to refresh the token without involving files:
++
++  oauth2 \
++    --client_id=1038[...].apps.googleusercontent.com \
++    --client_secret=VWFn8LIKAMC-MsjBMhJeOplZ \
++    --refresh_token=1/Yzm6MRy4q1xi7Dx2DuWXNgT6s37OrP_DW_IoyTum4YA
++
++-----
++Google's non-file script interface also supports a few other
++testing modes; see --help.
++"""
++
++from __future__ import print_function
++import base64
++import imaplib
++import json
++from optparse import OptionParser
++import smtplib
++import sys
++import os
++import time
++
++try:
++  import urllib.request as urlopen
++  import urllib.parse as urlparse
++except ImportError:
++  import urllib as urlopen
++  import urllib as urlparse
++
++try: input = raw_input
++except NameError: pass
++
++
++def SetupOptionParser():
++  # Usage message is the module's docstring.
++  parser = OptionParser(usage=__doc__)
++  parser.add_option('-c', '--config_file',
++                    default=None,
++                    help='Configuration file for --refresh '
++                                'and --obtain_refresh_token_file.\n'
++                         'The file should contain 4 (or more) settings, '
++                                'one per line, or they can also be overridden '
++                                'by the equivalent options:\n'
++                         ' client_id=...\n'
++                         ' client_secret=...\n'
++                         ' refresh_token_file=/path/to/...\n'
++                         ' access_token_file=/path/to/...\n'
++                         '  Also max_age_sec, scope, umask, auth_url, and'
++                         ' token_url have reasonable defaults for google.')
++  parser.add_option('--auto_refresh',
++                    action='store_const',
++                    default=None,
++                    const=1,
++                    dest='refresh',
++                    help='Automatically refresh access_token_file, '
++                         'if older than max_age_sec from '
++                         'required -c /file/ info.');
++  parser.add_option('--refresh',
++                    action='store_const',
++                    const=2,
++                    dest='refresh',
++                    help='Refresh access_token_file '
++                         'unconditionally.  Requires -c /file/ info.');
++  parser.add_option('--obtain_refresh_token_file',
++                    action='store_true',
++                    dest='obtain_refresh_token_file',
++                    default=None,
++                    help='Update refresh token in file.  This is '
++                         'interactive, and requires '
++                         'a web browser.  Also requires -c /file/ info.  '
++                         'This also saves an initial access_token_file.');
++  parser.add_option('--client_id',
++                    default=None,
++                    help='Client ID of the application that is authenticating. '
++                         'See OAuth2 documentation for details.')
++  parser.add_option('--client_secret',
++                    default=None,
++                    help='Client secret of the application that is '
++                         'authenticating. See OAuth2 documentation for '
++                         'details.')
++  parser.add_option('--access_token_file',
++                    default=None,
++                    help='File name containing OAuth2 access token')
++  parser.add_option('--refresh_token_file',
++                    default=None,
++                    help='File name containing OAuth2 refresh token')
++  parser.add_option('--max_age_sec',
++                    default=None,  # manual default 3000
++                    help='default max file age for --auto_refresh.  '
++                         'Defaults to 3000 (10 minutes short of '
++                         'normal 3600 sec token expiration).')
++  parser.add_option('--umask',
++                    default=None,  # manual default 0077
++                    help='default umask for --auto_refresh and '
++                         '--obtain_refresh_token_file.  Defaults to 0077.')
++  parser.add_option('--scope',
++                    default=None,  # manual default='https://mail.google.com/'
++                    help='scope for the access token. Multiple scopes can be '
++                         'listed separated by spaces with the whole argument '
++                         'quoted.  Defaults to https://mail.google.com/')
++  parser.add_option('--auth_url',
++                    default=None,  # manual default...
++                    help='Permission URL for --obtain_refresh_token_file.  '
++                         'Defaults to https://accounts.google.com/o/oauth2/auth.')
++  parser.add_option('--token_url',
++                    default=None,  # manual default...
++                    help='Token URL for --obtain_refresh_token_file,'
++                         ' and --refresh.  '
++                         'Defaults to https://accounts.google.com/o/oauth2/token.')
++  parser.add_option('--generate_oauth2_token',
++                    action='store_true',
++                    dest='generate_oauth2_token',
++                    help='(OLD/testing) generates an OAuth2 token for testing.'
++                         '  Ignores all files.')
++  parser.add_option('--refresh_token',
++                    default=None,
++                    help='(OLD/testing) Generate a new access token using'
++                         ' this OAuth2 refresh token.  Ignores all files.')
++  parser.add_option('--user',
++                    default=None,
++                    help='(OLD/testing) email address of user whose account'
++                         ' is being accessed')
++  parser.add_option('--access_token',
++                    default=None,
++                    help='(OLD/testing) OAuth2 access token.')
++  parser.add_option('--generate_oauth2_string',
++                    action='store_true',
++                    dest='generate_oauth2_string',
++                    help='(OLD/testing) generates an initial client response'
++                         ' string for OAuth2.  Ignores all files.')
++  parser.add_option('--test_imap_authentication',
++                    action='store_true',
++                    dest='test_imap_authentication',
++                    help='(OLD/testing) attempts to authenticate to IMAP.  '
++                         'Ignores all files.')
++  parser.add_option('--test_smtp_authentication',
++                    action='store_true',
++                    dest='test_smtp_authentication',
++                    help='(OLD/testing) attempts to authenticate to SMTP.  '
++                         'Ignores all files.')
++  return parser
++
++
++# Hardcoded dummy redirect URI for non-web apps.
++REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
++
++
++def UrlEscape(text):
++  # See OAUTH 5.1 for a definition of which characters need to be escaped.
++  return urlparse.quote(text, safe='~-._')
++
++
++def UrlUnescape(text):
++  # See OAUTH 5.1 for a definition of which characters need to be escaped.
++  return urlparse.unquote(text)
++
++
++def FormatUrlParams(params):
++  """Formats parameters into a URL query string.
++
++  Args:
++    params: A key-value map.
++
++  Returns:
++    A URL query string version of the given parameters.
++  """
++  param_fragments = []
++  for param in sorted(params.items(), key=lambda x: x[0]):
++    param_fragments.append('%s=%s' % (param[0], UrlEscape(param[1])))
++  return '&'.join(param_fragments)
++
++
++def GeneratePermissionUrl(client_id, scope, auth_url):
++  """Generates the URL for authorizing access.
++
++  This uses the "OAuth2 for Installed Applications" flow described at
++  https://developers.google.com/accounts/docs/OAuth2InstalledApp
++
++  Args:
++    client_id: Client ID obtained by registering your app.
++    scope: scope for access token, e.g. 'https://mail.google.com'
++  Returns:
++    A URL that the user should visit in their browser.
++  """
++  if not scope:
++    scope = 'https://mail.google.com/'
++  if not auth_url:
++    auth_url = 'https://accounts.google.com/o/oauth2/auth'
++  params = {}
++  params['client_id'] = client_id
++  params['redirect_uri'] = REDIRECT_URI
++  params['scope'] = scope
++  params['response_type'] = 'code'
++  return '%s?%s' % (auth_url, FormatUrlParams(params))
++
++
++def AuthorizeTokens(client_id, client_secret, authorization_code, token_url):
++  """Obtains OAuth access token and refresh token.
++
++  This uses the application portion of the "OAuth2 for Installed Applications"
++  flow at https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse
++
++  Args:
++    client_id: Client ID obtained by registering your app.
++    client_secret: Client secret obtained by registering your app.
++    authorization_code: code generated by Google Accounts after user grants
++        permission.
++  Returns:
++    The decoded response from the Google Accounts server, as a dict. Expected
++    fields include 'access_token', 'expires_in', and 'refresh_token'.
++  """
++  params = {}
++  params['client_id'] = client_id
++  params['client_secret'] = client_secret
++  params['code'] = authorization_code
++  params['redirect_uri'] = REDIRECT_URI
++  params['grant_type'] = 'authorization_code'
++  if not token_url:
++    token_url = 'https://accounts.google.com/o/oauth2/token'
++
++  response = urlopen.urlopen(token_url,
++                             urlparse.urlencode(params).encode('ascii')).read()
++  return json.loads(response.decode("utf-8"))
++
++
++def RefreshToken(client_id, client_secret, refresh_token, token_url):
++  """Obtains a new token given a refresh token.
++
++  See https://developers.google.com/accounts/docs/OAuth2InstalledApp#refresh
++
++  Args:
++    client_id: Client ID obtained by registering your app.
++    client_secret: Client secret obtained by registering your app.
++    refresh_token: A previously-obtained refresh token.
++  Returns:
++    The decoded response from the Google Accounts server, as a dict. Expected
++    fields include 'access_token', 'expires_in', and 'refresh_token'.
++  """
++  params = {}
++  params['client_id'] = client_id
++  params['client_secret'] = client_secret
++  params['refresh_token'] = refresh_token
++  params['grant_type'] = 'refresh_token'
++  if not token_url:
++    token_url = 'https://accounts.google.com/o/oauth2/token'
++
++  response = urlopen.urlopen(token_url,
++                             urlparse.urlencode(params).encode('ascii')).read()
++  return json.loads(response.decode("utf-8"))
++
++
++def GenerateOAuth2String(username, access_token, base64_encode=True):
++  """Generates an IMAP OAuth2 authentication string.
++
++  See https://developers.google.com/google-apps/gmail/oauth2_overview
++
++  Args:
++    username: the username (email address) of the account to authenticate
++    access_token: An OAuth2 access token.
++    base64_encode: Whether to base64-encode the output.
++
++  Returns:
++    The SASL argument for the OAuth2 mechanism.
++  """
++  auth_string = 'user=%s\1auth=Bearer %s\1\1' % (username, access_token)
++  if base64_encode:
++    auth_string = base64.b64encode(auth_string)
++  return auth_string
++
++
++def TestImapAuthentication(user, auth_string):
++  """Authenticates to IMAP with the given auth_string.
++
++  Prints a debug trace of the attempted IMAP connection.
++
++  Args:
++    user: The Gmail username (full email address)
++    auth_string: A valid OAuth2 string, as returned by GenerateOAuth2String.
++        Must not be base64-encoded, since imaplib does its own base64-encoding.
++  """
++  print()
++  imap_conn = imaplib.IMAP4_SSL('imap.gmail.com')
++  imap_conn.debug = 4
++  imap_conn.authenticate('XOAUTH2', lambda x: auth_string)
++  imap_conn.select('INBOX')
++
++
++def TestSmtpAuthentication(user, auth_string):
++  """Authenticates to SMTP with the given auth_string.
++
++  Args:
++    user: The Gmail username (full email address)
++    auth_string: A valid OAuth2 string, not base64-encoded, as returned by
++        GenerateOAuth2String.
++  """
++  print()
++  smtp_conn = smtplib.SMTP('smtp.gmail.com', 587)
++  smtp_conn.set_debuglevel(True)
++  smtp_conn.ehlo('test')
++  smtp_conn.starttls()
++  smtp_conn.docmd('AUTH', 'XOAUTH2 ' + base64.b64encode(auth_string))
++
++
++def RequireOptions(options, *args):
++  missing = [arg for arg in args if getattr(options, arg) is None]
++  if missing:
++    print('Missing options: %s' % ' '.join(missing))
++    sys.exit(-1)
++
++def parseConfigFile(options):
++  if options.config_file:
++    cfg = dict(line.strip().split('=',1) for line in open(options.config_file))
++  else:
++    cfg = { }
++  # defaults:
++  if not 'scope' in cfg:
++    cfg['scope'] = 'https://mail.google.com/'
++  if not 'max_age_sec' in cfg:
++    cfg['max_age_sec'] = '3000'
++  if not 'umask' in cfg:
++    cfg['umask'] = '0077'
++  if not 'auth_url' in cfg:
++    cfg['auth_url'] = 'https://accounts.google.com/o/oauth2/auth'
++  if not 'token_url' in cfg:
++    cfg['token_url'] = 'https://accounts.google.com/o/oauth2/token'
++  # overrides (from command line):
++  for arg in [ 'scope', 'client_id', 'client_secret', 'umask',
++               'max_age_sec', 'access_token_file', 'refresh_token_file',
++               'auth_url', 'token_url' ]:
++    if getattr(options,arg):
++      cfg[arg] = getattr(options,arg)
++  return cfg
++
++def requireConfig(cfg, *args):
++  missing = [arg for arg in args if not arg in cfg]
++  if missing:
++    print('Missing options: %s' % ' '.join(missing))
++    sys.exit(-1)
++
++
++def main(argv):
++  options_parser = SetupOptionParser()
++  (options, args) = options_parser.parse_args()
++  if options.refresh:
++    cfg = parseConfigFile(options)
++    requireConfig(cfg, 'refresh_token_file', 'access_token_file',
++                  'client_id', 'client_secret', 'umask')
++    st = os.stat(cfg['access_token_file'])
++    if options.refresh < 2:
++       requireConfig(cfg, 'max_age_sec')
++       if time.time()-st.st_mtime < int(cfg['max_age_sec']):
++         return
++    with open(cfg['refresh_token_file'],"r") as f:
++      reftok = f.readline().rstrip()
++    if len(reftok) == 0:
++      print('refresh token is empty')
++      sys.exit(-1)
++    response = RefreshToken(cfg['client_id'],cfg['client_secret'],reftok,
++                            cfg['token_url'])
++    newTok = response['access_token']
++    if len(newTok) == 0:
++      print('failed to obtain access token: it is empty')
++      sys.exit(-1)
++    savedUmask = os.umask(int(cfg['umask'],8))
++    try:
++      with open(cfg['access_token_file']+".tmp","w") as f:
++        f.write(newTok)
++        f.write('\n')
++      os.rename(cfg['access_token_file']+".tmp",cfg['access_token_file'])
++    finally:
++      os.umask(savedUmask)
++  elif options.obtain_refresh_token_file:
++    cfg = parseConfigFile(options)
++    requireConfig(cfg, 'refresh_token_file', 'access_token_file',
++                  'client_id', 'client_secret', 'umask')
++    print('To authorize token, visit this url and follow the directions:')
++    print('  %s' % GeneratePermissionUrl(cfg['client_id'], cfg['scope'],
++                                         cfg['auth_url']))
++    authorization_code = input('Enter verification code: ')
++    response = AuthorizeTokens(cfg['client_id'], cfg['client_secret'],
++                               authorization_code, cfg['token_url'])
++    newRefTok = response['refresh_token']
++    if len(newRefTok) == 0:
++      print('failed to obtain refresh token: it is empty')
++      sys.exit(-1)
++    newTok = response['access_token']
++    if len(newTok) == 0:
++      print('failed to obtain corresponding access token: it is empty')
++      sys.exit(-1)
++    savedUmask = os.umask(int(cfg['umask'],8))
++    try:
++      with open(cfg['refresh_token_file']+".tmp","w") as f:
++        f.write(newRefTok)
++        f.write('\n')
++      os.rename(cfg['refresh_token_file']+".tmp",cfg['refresh_token_file'])
++      with open(cfg['access_token_file']+".tmp","w") as f:
++        f.write(newTok)
++        f.write('\n')
++      print("Refresh token saved to '%s'" % cfg['refresh_token_file'])
++      print("Initial access token saved to '%s'" % cfg['access_token_file'])
++      print('Access Token Expiration Seconds: %s' % response['expires_in'])
++      os.rename(cfg['access_token_file']+".tmp",cfg['access_token_file'])
++    finally:
++      os.umask(savedUmask)
++
++  ##### (OLD/testing options)
++
++  elif options.refresh_token:
++    RequireOptions(options, 'client_id', 'client_secret')
++    response = RefreshToken(options.client_id, options.client_secret,
++                            options.refresh_token, options.token_url)
++    print('Access Token: %s' % response['access_token'])
++    print('Access Token Expiration Seconds: %s' % response['expires_in'])
++  elif options.generate_oauth2_string:
++    RequireOptions(options, 'user', 'access_token')
++    print ('OAuth2 argument:\n' +
++           GenerateOAuth2String(options.user, options.access_token))
++  elif options.generate_oauth2_token:
++    RequireOptions(options, 'client_id', 'client_secret')
++    print('To authorize token, visit this url and follow the directions:')
++    print('  %s' % GeneratePermissionUrl(options.client_id, options.scope,
++                                         options.auth_url))
++    authorization_code = input('Enter verification code: ')
++    response = AuthorizeTokens(options.client_id, options.client_secret,
++                                authorization_code, options.token_url)
++    print('Refresh Token: %s' % response['refresh_token'])
++    print('Access Token: %s' % response['access_token'])
++    print('Access Token Expiration Seconds: %s' % response['expires_in'])
++  elif options.test_imap_authentication:
++    RequireOptions(options, 'user', 'access_token')
++    TestImapAuthentication(options.user,
++        GenerateOAuth2String(options.user, options.access_token,
++                             base64_encode=False))
++  elif options.test_smtp_authentication:
++    RequireOptions(options, 'user', 'access_token')
++    TestSmtpAuthentication(options.user,
++        GenerateOAuth2String(options.user, options.access_token,
++                             base64_encode=False))
++  else:
++    options_parser.print_help()
++    print('Nothing to do, exiting.')
++    return
++
++
++if __name__ == '__main__':
++  main(sys.argv)
+--- a/fetchmail.man
++++ b/fetchmail.man
+@@ -1062,7 +1062,8 @@ External tools are necessary to obtain
+ such tokens.  Access tokens often expire fairly quickly (e.g. 1 hour),
+ and new ones need to be generated from renewal tokens, so the
+ "passwordfile", "passwordfd", or "pwmd_*" options may be useful.  See the
+-oauth2.py script from
++contrib/fetchmail-oauth2.py script from the fetchmail source code, which
++was derived from code associated with
+ .URL https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough "Google's Oauth2 Run Through" ,
+ and other oauth2 documentation.  For services like gmail, an "App Password"
+ is probably preferable if available, because it has roughly the same

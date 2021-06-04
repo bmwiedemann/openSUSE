@@ -1,0 +1,32 @@
+From: Matthias Andree <matthias.andree@gmx.de>
+Date: Sun, 25 Nov 2018 12:09:07 +0100
+Subject: Chase and integrate interface change.
+Git-repo: https://gitlab.com/fetchmail/fetchmail.git
+Git-commit: d52b7b6859d46134b46e6de9b408739b18745d47
+
+---
+ oauth2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/oauth2.c b/oauth2.c
+index a8a324b8..4f7a072a 100644
+--- a/oauth2.c
++++ b/oauth2.c
+@@ -10,6 +10,7 @@
+ #include "oauth2.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+@@ -52,7 +53,7 @@ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+     }
+ 
+     oauth2b64 = (char *)xmalloc(2*strlen(oauth2str)+8);
+-    to64frombits(oauth2b64, oauth2str, strlen(oauth2str));
++    to64frombits(oauth2b64, oauth2str, strlen(oauth2str), oauth2len);
+ 
+     memset(oauth2str, 0x55, strlen(oauth2str));
+     free(oauth2str);
+
