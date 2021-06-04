@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 10:08:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer autoinstall the package depending on PCI ID; we have
+  modesetting driver for X since a long time now (boo#1186721)
+
+-------------------------------------------------------------------
 Mon Jan 25 12:46:54 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer set CFLAGS, because "%optflags" is already included in

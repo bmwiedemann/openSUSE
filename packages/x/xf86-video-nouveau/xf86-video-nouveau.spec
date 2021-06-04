@@ -35,8 +35,6 @@ BuildRequires:  pkgconfig(libdrm_nouveau) >= 2.4.25
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(xorg-macros)
 Requires:       xorg-x11-server
-Supplements:    modalias(xorg-x11-server:pci:v000010DEd*sv*sd*bc03sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v000012D2d*sv*sd*bc03sc*i*)
 Provides:       xorg-x11-driver-video-nouveau = %{version}
 Obsoletes:      xorg-x11-driver-video-nouveau < %{version}
 ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64

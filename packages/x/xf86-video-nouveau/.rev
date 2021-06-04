@@ -183,4 +183,13 @@
 - spec-cleaner cleanups</comment>
     <requestid>866587</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b98de0ab2cf8feb183f7bad56d8a141b</srcmd5>
+    <version>1.0.17</version>
+    <time>1622839358</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer autoinstall the package depending on PCI ID; we have
+  modesetting driver for X since a long time now (boo#1186721)</comment>
+    <requestid>896889</requestid>
+  </revision>
 </revisionlist>
