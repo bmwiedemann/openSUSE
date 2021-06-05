@@ -50,6 +50,12 @@ Summary:        KDE PIM Libraries: IMAP APIs
 Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
+# Modules used for authentication
+Requires:       cyrus-sasl-crammd5
+Requires:       cyrus-sasl-digestmd5
+Requires:       cyrus-sasl-gssapi
+Requires:       cyrus-sasl-plain
+Requires:       sasl2-kdexoauth2
 
 %description  -n libKF5IMAP5
 This package provides the core library to interface and communicate with
