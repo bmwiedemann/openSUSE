@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  5 15:52:56 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.10.0
+ * Add the starttls() method
+
+-------------------------------------------------------------------
 Tue Aug 18 13:01:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.9.2
