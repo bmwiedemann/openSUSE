@@ -43,7 +43,7 @@ This package contains the models from openkim.org.
 %setup -q -n openkim-models-%{uversion}
 
 %build
-%{cmake} ..
+%{cmake} -DCMAKE_SKIP_RPATH=ON -DKIM_API_MODEL_DRIVER_INSTALL_PREFIX=%{_libdir}/kim-api/model-drivers -DKIM_API_PORTABLE_MODEL_INSTALL_PREFIX=%{_libdir}/kim-api/portable-models -DKIM_API_SIMULATOR_MODEL_INSTALL_PREFIX=%{_libdir}/kim-api/simulator-models ..
 %make_jobs
 
 %install
