@@ -30,15 +30,13 @@ Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        5.10.0
+Version:        5.10.1
 Release:        0
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
 Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE build_csparse_shared.patch -- Build CSparse as a shared library
 Patch1:         build_csparse_shared.patch
-# PATCH-FIX-OPENSUSE disable-Wmisleading-indentation.patch bsc#1183575
-Patch2:         disable-Wmisleading-indentation.patch
 Patch775418:    bnc775418-enable-SuiteSparse_time-symbol.patch
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
@@ -68,7 +66,7 @@ BuildRequires:  openblas-devel
 %define colamdver    2.9.6
 %define csparsever   3.2.0
 %define cxsparsever  3.2.0
-%define graphblasver 5.0.4
+%define graphblasver 5.0.5
 %define kluver       1.3.9
 %define ldlver       2.2.6
 %define mongoosever  2.0.3
@@ -78,7 +76,7 @@ BuildRequires:  openblas-devel
 %define umfpackver   5.7.8
 # Your need define even it's just the same as main package
 # or the %%build loop will override %%version with umfpack's version.
-%define configver    5.10.0
+%define configver    5.10.1
 %define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
 %define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
 %define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
@@ -590,7 +588,6 @@ SuiteSparse_config is part of the SuiteSparse sparse matrix suite.
 %prep
 %setup -q -n SuiteSparse-%{version}
 %patch1 -p1
-%patch2 -p1
 sed 's/^CHOLMOD_CONFIG =.*/CHOLMOD_CONFIG = -DNPARTITION/' -i SuiteSparse_config/SuiteSparse_config.mk
 %if %{without openblas}
 sed 's/-lopenblas/-lblas/' -i SuiteSparse_config/SuiteSparse_config.mk

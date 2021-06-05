@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 26 18:23:49 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- Update to version 5.10.1
+- Drop disable-Wmisleading-indentation.patch which is no longer
+  required due to an upstream fix
+
+-------------------------------------------------------------------
 Wed May 19 21:29:18 UTC 2021 - Christoph G <foss@grueninger.de>
 
 - Update to version 5.10.0
