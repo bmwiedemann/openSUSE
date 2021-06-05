@@ -11,13 +11,13 @@ Adjust the loop to clear unused entries as needed.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h |  2 ++
- tools/libxc/xc_sr_save.c   | 11 ++++++-----
+ tools/libs/guest/xg_sr_common.h |  2 ++
+ tools/libs/guest/xg_sr_save.c   | 11 ++++++-----
  2 files changed, 8 insertions(+), 5 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -224,6 +224,8 @@ struct xc_sr_save_arrays {
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -223,6 +223,8 @@ struct xc_sr_save_arrays {
      struct iovec iov[MAX_BATCH_SIZE + 4];
      /* write_batch */
      uint64_t rec_pfns[MAX_BATCH_SIZE];
@@ -26,8 +26,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_restore_arrays {
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -90,7 +90,7 @@ static int write_batch(struct xc_sr_cont
      xc_interface *xch = ctx->xch;
      xen_pfn_t *mfns = ctx->save.m->mfns, *types = ctx->save.m->types;

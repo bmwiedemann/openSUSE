@@ -1,8 +1,8 @@
-Index: xen-4.14.0-testing/tools/hotplug/Linux/vif-bridge
+Index: xen-4.15.0-testing/tools/hotplug/Linux/vif-bridge
 ===================================================================
---- xen-4.14.0-testing.orig/tools/hotplug/Linux/vif-bridge
-+++ xen-4.14.0-testing/tools/hotplug/Linux/vif-bridge
-@@ -99,7 +99,7 @@ case "$command" in
+--- xen-4.15.0-testing.orig/tools/hotplug/Linux/vif-bridge
++++ xen-4.15.0-testing/tools/hotplug/Linux/vif-bridge
+@@ -87,7 +87,7 @@ case "$command" in
          ;;
  esac
  

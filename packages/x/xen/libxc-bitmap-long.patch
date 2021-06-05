@@ -14,14 +14,14 @@ if all of them are either clear or set.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_bitops.h | 25 +++++++++++++++++++++++++
+ tools/libs/guest/xg_bitops.h | 25 +++++++++++++++++++++++++
  1 file changed, 25 insertions(+)
 
-Index: xen-4.14.0-testing/tools/libxc/xc_bitops.h
+Index: xen-4.15.0-testing/tools/libs/ctrl/xc_bitops.h
 ===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_bitops.h
-+++ xen-4.14.0-testing/tools/libxc/xc_bitops.h
-@@ -79,4 +79,29 @@ static inline void bitmap_or(void *_dst,
+--- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_bitops.h
++++ xen-4.15.0-testing/tools/libs/ctrl/xc_bitops.h
+@@ -77,4 +77,29 @@ static inline void bitmap_or(void *_dst,
          dst[i] |= other[i];
  }
  

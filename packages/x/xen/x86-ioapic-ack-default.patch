@@ -1,8 +1,10 @@
 Change default IO-APIC ack mode for single IO-APIC systems to old-style.
 
---- a/xen/arch/x86/io_apic.c
-+++ b/xen/arch/x86/io_apic.c
-@@ -2062,7 +2062,10 @@ void __init setup_IO_APIC(void)
+Index: xen-4.15.0-testing/xen/arch/x86/io_apic.c
+===================================================================
+--- xen-4.15.0-testing.orig/xen/arch/x86/io_apic.c
++++ xen-4.15.0-testing/xen/arch/x86/io_apic.c
+@@ -2030,7 +2030,10 @@ void __init setup_IO_APIC(void)
          io_apic_irqs = ~PIC_IRQS;
  
      printk("ENABLING IO-APIC IRQs\n");

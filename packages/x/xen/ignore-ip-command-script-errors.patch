@@ -11,10 +11,10 @@ host console or also by inserting a sleep before each ip command
 and executing it manually at the command line. This seems to be
 an artifact of using 'set -e' everywhere.
 
-Index: xen-4.14.0-testing/tools/hotplug/Linux/xen-network-common.sh
+Index: xen-4.15.0-testing/tools/hotplug/Linux/xen-network-common.sh
 ===================================================================
---- xen-4.14.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
-+++ xen-4.14.0-testing/tools/hotplug/Linux/xen-network-common.sh
+--- xen-4.15.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
++++ xen-4.15.0-testing/tools/hotplug/Linux/xen-network-common.sh
 @@ -90,7 +90,7 @@ _setup_bridge_port() {
      local virtual="$2"
  
@@ -33,18 +33,22 @@ Index: xen-4.14.0-testing/tools/hotplug/Linux/xen-network-common.sh
  }
  
  setup_physical_bridge_port() {
-@@ -138,11 +138,11 @@ add_to_bridge () {
- 	return
-     fi
-     if which brctl >&/dev/null; then
--        brctl addif ${bridge} ${dev}
-+        (brctl addif ${bridge} ${dev} || true)
+@@ -136,15 +136,15 @@ add_to_bridge () {
+     if [ ! -e "/sys/class/net/${bridge}/brif/${dev}" ]; then
+         log debug "adding $dev to bridge $bridge"
+         if which brctl >&/dev/null; then
+-            brctl addif ${bridge} ${dev}
++            (brctl addif ${bridge} ${dev} || true)
+         else
+-            ip link set ${dev} master ${bridge}
++            (ip link set ${dev} master ${bridge} || true)
+         fi
      else
--        ip link set ${dev} master ${bridge}
-+        (ip link set ${dev} master ${bridge} || true)
+         log debug "$dev already on bridge $bridge"
      fi
+ 
 -    ip link set dev ${dev} up
 +    (ip link set dev ${dev} up || true)
  }
  
- # Usage: set_mtu bridge dev
+ remove_from_bridge () {

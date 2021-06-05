@@ -9,13 +9,13 @@ Move it into the preallocated area.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h |  2 +-
- tools/libxc/xc_sr_save.c   | 25 +++++++++++--------------
+ tools/libs/guest/xg_sr_common.h |  2 +-
+ tools/libs/guest/xg_sr_save.c   | 25 +++++++++++--------------
  2 files changed, 12 insertions(+), 15 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -213,6 +213,7 @@ static inline int update_blob(struct xc_
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -212,6 +212,7 @@ static inline int update_blob(struct xc_
  }
  
  struct xc_sr_save_arrays {
@@ -23,7 +23,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_restore_arrays {
-@@ -250,7 +251,6 @@ struct xc_sr_context
+@@ -249,7 +250,6 @@ struct xc_sr_context
  
              struct precopy_stats stats;
  
@@ -31,8 +31,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
              unsigned int nr_batch_pfns;
              unsigned long *deferred_pages;
              unsigned long nr_deferred_pages;
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -77,7 +77,7 @@ static int write_checkpoint_record(struc
  
  /*

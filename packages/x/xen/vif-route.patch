@@ -1,10 +1,10 @@
 References: bsc#985503
 
-Index: xen-4.13.0-testing/tools/hotplug/Linux/vif-route
+Index: xen-4.15.0-testing/tools/hotplug/Linux/vif-route
 ===================================================================
---- xen-4.13.0-testing.orig/tools/hotplug/Linux/vif-route
-+++ xen-4.13.0-testing/tools/hotplug/Linux/vif-route
-@@ -61,11 +61,13 @@ case "${type_if}" in
+--- xen-4.15.0-testing.orig/tools/hotplug/Linux/vif-route
++++ xen-4.15.0-testing/tools/hotplug/Linux/vif-route
+@@ -47,11 +47,13 @@ case "${type_if}" in
  	;;
  esac
  

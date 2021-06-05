@@ -1,19 +1,145 @@
 References: bsc#1131811
 
-When the xenstored service is started it exits successfully but systemd seems to
-lose track of the service and reports an error causing other xen services to fail.
-This patch is a workaround giving systemd time to acknowledge a succesful start
-of xenstored. The real fix is believed to be needed in systemd.
+hotplug/Linux: fix starting of xenstored with restarting systemd
 
-diff --git a/tools/hotplug/Linux/launch-xenstore.in b/tools/hotplug/Linux/launch-xenstore.in
-index 991dec8d25..eb3d7c964c 100644
+A hard to trigger race with another unrelated systemd service and
+xenstored.service unveiled a bug in the way how xenstored is launched
+with systemd.
+
+launch-xenstore may start either a daemon or a domain. In case a domain
+is used, systemd-notify was called. If another service triggered a
+restart of systemd while xenstored.service was executed, systemd may
+temporary lose track of services with Type=notify. As a result,
+xenstored.service would be marked as failed and units that depend on it
+will not be started. This breaks the enire Xen toolstack.
+
+The chain of events is basically: xenstored.service sends the
+notification to systemd, this is a one-way event. Then systemd may be
+restarted by the other unit. During this time, xenstored.service is done
+and exits. Once systemd is done with its restart, it collects the pending
+notifications and childs. If it does not find the unit which sent the
+notification it will declare it as failed.
+
+A workaround for this scenario is to leave the child processes running
+for a short time after sending the "READY=1" notification. If systemd
+happens to restart it will still find the unit it launched.
+
+Adjust the callers of launch-xenstore to specifiy the init system:
+Do not fork xenstored with systemd, preserve pid. This wil also avoid
+the need for a sleep because the process which sent the "READY=1" (the
+previously forked child) is still alive.
+
+Remove the --pid-file in the systemd case because the pid of the child
+is known, and the file had probably little effect anyway due to lack of
+PidFile= and Type=forking in the unit file.
+
+Be verbose about xenstored startup only with sysv to avoid interleaved
+output in systemd journal. Do the same also for domain case, even if is
+not strictly needed because init-xenstore-domain has no output.
+
+The fix for upstream systemd which is supposed to fix it:
+575b300b795b6 ("pid1: rework how we dispatch SIGCHLD and other signals")
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+
+--
+v03:
+- remove run_xenstored function, follow style of shell built-in test function
+v02:
+- preserve Type=notify
+---
+ tools/hotplug/Linux/init.d/xencommons.in      |  2 +-
+ tools/hotplug/Linux/launch-xenstore.in        | 39 +++++++++++++------
+ .../Linux/systemd/xenstored.service.in        |  2 +-
+ 3 files changed, 30 insertions(+), 13 deletions(-)
+
+--- a/tools/hotplug/Linux/init.d/xencommons.in
++++ b/tools/hotplug/Linux/init.d/xencommons.in
+@@ -60,7 +60,7 @@ do_start () {
+ 	mkdir -m700 -p ${XEN_LOCK_DIR}
+ 	mkdir -p ${XEN_LOG_DIR}
+ 
+-	@XEN_SCRIPT_DIR@/launch-xenstore || exit 1
++	@XEN_SCRIPT_DIR@/launch-xenstore 'sysv' || exit 1
+ 
+ 	echo Setting domain 0 name, domid and JSON config...
+ 	${LIBEXEC_BIN}/xen-init-dom0 ${XEN_DOM0_UUID}
 --- a/tools/hotplug/Linux/launch-xenstore.in
 +++ b/tools/hotplug/Linux/launch-xenstore.in
-@@ -79,6 +79,7 @@ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/xencommons && . @CONFIG_DIR@/@CONFIG_LEAF
- 	echo -n Starting $XENSTORE_DOMAIN_KERNEL...
+@@ -15,6 +15,17 @@
+ # License along with this library; If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
++initd=$1
++
++case "$initd" in
++	sysv) nonl='-n' ;;
++	systemd) nonl= ;;
++	*)
++	echo "first argument must be 'sysv' or 'systemd'"
++	exit 1
++	;;
++esac
++
+ XENSTORED=@XENSTORED@
+ 
+ . @XEN_SCRIPT_DIR@/hotplugpath.sh
+@@ -44,7 +55,9 @@ timeout_xenstore () {
+ 	return 0
+ }
+ 
+-test_xenstore && exit 0
++if test "$initd" = 'sysv' ; then
++	test_xenstore && exit 0
++fi
+ 
+ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/xencommons && . @CONFIG_DIR@/@CONFIG_LEAF_DIR@/xencommons
+ 
+@@ -60,13 +73,15 @@ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/x
+ 		echo "No xenstored found"
+ 		exit 1
+ 	}
++	[ "$initd" = 'sysv' ] && {
++		echo $nonl Starting $XENSTORED...
++		$XENSTORED --pid-file @XEN_RUN_DIR@/xenstored.pid $XENSTORED_ARGS
++		timeout_xenstore $XENSTORED || exit 1
++		exit 0
++	}
+ 
+-	echo -n Starting $XENSTORED...
+-	$XENSTORED --pid-file @XEN_RUN_DIR@/xenstored.pid $XENSTORED_ARGS
+-
+-	systemd-notify --booted 2>/dev/null || timeout_xenstore $XENSTORED || exit 1
+-
+-	exit 0
++	exec $XENSTORED -N $XENSTORED_ARGS
++	exit 1
+ }
+ 
+ [ "$XENSTORETYPE" = "domain" ] && {
+@@ -76,9 +91,12 @@ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/x
+ 	XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --memory $XENSTORE_DOMAIN_SIZE"
+ 	[ -z "$XENSTORE_MAX_DOMAIN_SIZE" ] || XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --maxmem $XENSTORE_MAX_DOMAIN_SIZE"
+ 
+-	echo -n Starting $XENSTORE_DOMAIN_KERNEL...
++	echo $nonl Starting $XENSTORE_DOMAIN_KERNEL...
  	${LIBEXEC_BIN}/init-xenstore-domain $XENSTORE_DOMAIN_ARGS || exit 1
- 	systemd-notify --ready 2>/dev/null
-+	systemd-notify --booted 2>/dev/null && sleep 60
+-	systemd-notify --ready 2>/dev/null
++	[ "$initd" = 'systemd' ] && {
++		systemd-notify --ready
++		sleep 9
++	}
  
  	exit 0
  }
+--- a/tools/hotplug/Linux/systemd/xenstored.service.in
++++ b/tools/hotplug/Linux/systemd/xenstored.service.in
+@@ -11,7 +11,7 @@ Type=notify
+ NotifyAccess=all
+ RemainAfterExit=true
+ ExecStartPre=/bin/grep -q control_d /proc/xen/capabilities
+-ExecStart=@XEN_SCRIPT_DIR@/launch-xenstore
++ExecStart=@XEN_SCRIPT_DIR@/launch-xenstore 'systemd'
+ 
+ [Install]
+ WantedBy=multi-user.target

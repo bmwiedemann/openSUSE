@@ -14,14 +14,14 @@ no change in behavior is intended.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.c  | 33 +++++++++++++++----------
- tools/libxc/xc_sr_common.h  |  4 ++-
- tools/libxc/xc_sr_restore.c | 49 +++++++++++++++++++++++++------------
- tools/libxc/xc_sr_save.c    |  7 +++++-
+ tools/libs/guest/xg_sr_common.c  | 33 +++++++++++++++----------
+ tools/libs/guest/xg_sr_common.h  |  4 ++-
+ tools/libs/guest/xg_sr_restore.c | 49 +++++++++++++++++++++++++------------
+ tools/libs/guest/xg_sr_save.c    |  7 +++++-
  4 files changed, 63 insertions(+), 30 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.c
 @@ -91,26 +91,33 @@ int write_split_record(struct xc_sr_cont
      return -1;
  }
@@ -96,9 +96,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
  static void __attribute__((unused)) build_assertions(void)
  {
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -476,7 +476,9 @@ static inline int write_record(struct xc
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -475,7 +475,9 @@ static inline int write_record(struct xc
   *
   * On failure, the contents of the record structure are undefined.
   */
@@ -109,8 +109,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
  /*
   * This would ideally be private in restore.c, but is needed by
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -471,7 +471,7 @@ static int send_checkpoint_dirty_pfn_lis
      return rc;
  }
@@ -246,8 +246,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
   remus_failover:
      if ( ctx->stream_type == XC_STREAM_COLO )
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -590,6 +590,7 @@ static int send_memory_live(struct xc_sr
  static int colo_merge_secondary_dirty_bitmap(struct xc_sr_context *ctx)
  {

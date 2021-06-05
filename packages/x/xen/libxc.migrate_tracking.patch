@@ -1,8 +1,8 @@
 Track live migration state unconditionally in logfiles to see how long a domU was suspended.
 Depends on libxc.sr.superpage.patch
 
---- xen-4.14.1-testing.orig/tools/libs/toollog/include/xentoollog.h
-+++ xen-4.14.1-testing/tools/libs/toollog/include/xentoollog.h
+--- xen-4.15.0-testing.orig/tools/include/xentoollog.h
++++ xen-4.15.0-testing/tools/include/xentoollog.h
 @@ -133,6 +133,7 @@ const char *xtl_level_to_string(xentooll
  });
  
@@ -11,9 +11,9 @@ Depends on libxc.sr.superpage.patch
  #endif /* XENTOOLLOG_H */
  
  /*
---- xen-4.14.1-testing.orig/tools/libxc/xc_domain.c
-+++ xen-4.14.1-testing/tools/libxc/xc_domain.c
-@@ -69,20 +69,28 @@ int xc_domain_cacheflush(xc_interface *x
+--- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_domain.c
++++ xen-4.15.0-testing/tools/libs/ctrl/xc_domain.c
+@@ -68,20 +68,28 @@ int xc_domain_cacheflush(xc_interface *x
  int xc_domain_pause(xc_interface *xch,
                      uint32_t domid)
  {
@@ -44,9 +44,9 @@ Depends on libxc.sr.superpage.patch
  }
  
  
---- xen-4.14.1-testing.orig/tools/libxc/xc_private.h
-+++ xen-4.14.1-testing/tools/libxc/xc_private.h
-@@ -42,6 +42,15 @@
+--- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_private.h
++++ xen-4.15.0-testing/tools/libs/ctrl/xc_private.h
+@@ -43,6 +43,15 @@
  
  #include <xen-tools/libs.h>
  
@@ -62,9 +62,9 @@ Depends on libxc.sr.superpage.patch
  #if defined(HAVE_VALGRIND_MEMCHECK_H) && !defined(NDEBUG) && !defined(__MINIOS__)
  /* Compile in Valgrind client requests? */
  #include <valgrind/memcheck.h>
---- xen-4.14.1-testing.orig/tools/libxc/xc_resume.c
-+++ xen-4.14.1-testing/tools/libxc/xc_resume.c
-@@ -284,7 +284,10 @@ out:
+--- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_resume.c
++++ xen-4.15.0-testing/tools/libs/ctrl/xc_resume.c
+@@ -282,7 +282,10 @@ out:
   */
  int xc_domain_resume(xc_interface *xch, uint32_t domid, int fast)
  {
@@ -76,8 +76,8 @@ Depends on libxc.sr.superpage.patch
 +        SUSEINFO("domid %u: %s%s returned %d", domid, __func__, fast ? " fast" : "", ret);
 +    return ret;
  }
---- xen-4.14.1-testing.orig/tools/libxc/xc_sr_common.c
-+++ xen-4.14.1-testing/tools/libxc/xc_sr_common.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.c
 @@ -204,6 +204,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
      return true;
  }
@@ -144,9 +144,9 @@ Depends on libxc.sr.superpage.patch
  /*
   * Local variables:
   * mode: C
---- xen-4.14.1-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.1-testing/tools/libxc/xc_sr_common.h
-@@ -268,6 +268,7 @@ struct xc_sr_context
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -267,6 +267,7 @@ struct xc_sr_context
      xc_stream_type_t stream_type;
  
      xc_dominfo_t dominfo;
@@ -154,7 +154,7 @@ Depends on libxc.sr.superpage.patch
  
      union /* Common save or restore data. */
      {
-@@ -537,6 +538,8 @@ static inline int pfn_set_populated(stru
+@@ -536,6 +537,8 @@ static inline int pfn_set_populated(stru
      return 0;
  }
  
@@ -163,8 +163,8 @@ Depends on libxc.sr.superpage.patch
  struct xc_sr_record
  {
      uint32_t type;
---- xen-4.14.1-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.1-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -875,6 +875,7 @@ static int restore(struct xc_sr_context
      struct xc_sr_rhdr rhdr;
      int rc, saved_rc = 0, saved_errno = 0;
@@ -189,8 +189,8 @@ Depends on libxc.sr.superpage.patch
  
      if ( read_headers(&ctx) )
          return -1;
---- xen-4.14.1-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.1-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -354,7 +354,7 @@ static void show_transfer_rate(struct xc
      MiB_sec /= 1024U*1024U;
  
@@ -233,10 +233,10 @@ Depends on libxc.sr.superpage.patch
  
      if ( ctx.dominfo.hvm )
      {
---- xen-4.14.1-testing.orig/tools/xl/xl.c
-+++ xen-4.14.1-testing/tools/xl/xl.c
-@@ -398,6 +398,8 @@ int main(int argc, char **argv)
-         (progress_use_cr ? XTL_STDIOSTREAM_PROGRESS_USE_CR : 0));
+--- xen-4.15.0-testing.orig/tools/xl/xl.c
++++ xen-4.15.0-testing/tools/xl/xl.c
+@@ -406,6 +406,8 @@ int main(int argc, char **argv)
+     logger = xtl_createlogger_stdiostream(stderr, minmsglevel, xtl_flags);
      if (!logger) exit(EXIT_FAILURE);
  
 +    /* Provide context to libxl and libxc: no SUSEINFO() from xl */

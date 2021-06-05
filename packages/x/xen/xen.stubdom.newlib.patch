@@ -24,11 +24,11 @@ E: xen no-return-in-nonvoid-function ../../../../newlib-1.16.0/libgloss/i386/cyg
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 
-Index: xen-4.12.0-testing/stubdom/Makefile
+Index: xen-4.15.0-testing/stubdom/Makefile
 ===================================================================
---- xen-4.12.0-testing.orig/stubdom/Makefile
-+++ xen-4.12.0-testing/stubdom/Makefile
-@@ -88,6 +88,8 @@ newlib-$(NEWLIB_VERSION): newlib-$(NEWLI
+--- xen-4.15.0-testing.orig/stubdom/Makefile
++++ xen-4.15.0-testing/stubdom/Makefile
+@@ -95,6 +95,8 @@ newlib-$(NEWLIB_VERSION): newlib-$(NEWLI
  	patch -d $@ -p0 < newlib-chk.patch
  	patch -d $@ -p1 < newlib-stdint-size_max-fix-from-1.17.0.patch
  	patch -d $@ -p1 < newlib-disable-texinfo.patch
@@ -37,10 +37,10 @@ Index: xen-4.12.0-testing/stubdom/Makefile
  	find $@ -type f | xargs perl -i.bak \
  		-pe 's/\b_(tzname|daylight|timezone)\b/$$1/g'
  	touch $@
-Index: xen-4.12.0-testing/stubdom/newlib-cygmon-gmon.patch
+Index: xen-4.15.0-testing/stubdom/newlib-cygmon-gmon.patch
 ===================================================================
 --- /dev/null
-+++ xen-4.12.0-testing/stubdom/newlib-cygmon-gmon.patch
++++ xen-4.15.0-testing/stubdom/newlib-cygmon-gmon.patch
 @@ -0,0 +1,60 @@
 +
 +I: A function uses a 'return;' statement, but has actually a value
@@ -102,10 +102,10 @@ Index: xen-4.12.0-testing/stubdom/newlib-cygmon-gmon.patch
 + moncontrol(mode)
 +     int mode;
 + {
-Index: xen-4.12.0-testing/stubdom/newlib-makedoc.patch
+Index: xen-4.15.0-testing/stubdom/newlib-makedoc.patch
 ===================================================================
 --- /dev/null
-+++ xen-4.12.0-testing/stubdom/newlib-makedoc.patch
++++ xen-4.15.0-testing/stubdom/newlib-makedoc.patch
 @@ -0,0 +1,10 @@
 +--- newlib-1.16.0/newlib/doc/makedoc.c.orig	2015-04-08 11:56:39.283090914 +0200
 ++++ newlib-1.16.0/newlib/doc/makedoc.c	2015-04-08 11:56:51.245227742 +0200

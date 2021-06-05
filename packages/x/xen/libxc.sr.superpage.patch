@@ -12,9 +12,9 @@ that is received. In case a pfn was not populated on the sending side it
 must be freed on the receiving side to avoid over-allocation.
 
 The existing code for x86_pv is moved unmodified into its own file.
---- a/tools/libxc/xc_dom_x86.c
-+++ b/tools/libxc/xc_dom_x86.c
-@@ -45,11 +45,6 @@
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_dom_x86.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_dom_x86.c
+@@ -44,11 +44,6 @@
  
  #define SUPERPAGE_BATCH_SIZE 512
  
@@ -26,22 +26,22 @@ The existing code for x86_pv is moved unmodified into its own file.
  #define X86_CR0_PE 0x01
  #define X86_CR0_ET 0x10
  
---- a/tools/libxc/xc_private.h
-+++ b/tools/libxc/xc_private.h
-@@ -71,6 +71,11 @@ struct iovec {
- #define DECLARE_FLASK_OP struct xen_flask_op op
- #define DECLARE_PLATFORM_OP struct xen_platform_op platform_op
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_private.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_private.h
+@@ -110,6 +110,11 @@ unsigned long csum_page (void * page);
+ 
+ typedef uint64_t x86_pgentry_t;
  
 +#define SUPERPAGE_2MB_SHIFT   9
 +#define SUPERPAGE_2MB_NR_PFNS (1UL << SUPERPAGE_2MB_SHIFT)
 +#define SUPERPAGE_1GB_SHIFT   18
 +#define SUPERPAGE_1GB_NR_PFNS (1UL << SUPERPAGE_1GB_SHIFT)
 +
- #undef PAGE_SHIFT
- #undef PAGE_SIZE
- #undef PAGE_MASK
---- a/tools/libxc/xc_sr_common.c
-+++ b/tools/libxc/xc_sr_common.c
+ #define PAGE_SHIFT_ARM          12
+ #define PAGE_SIZE_ARM           (1UL << PAGE_SHIFT_ARM)
+ #define PAGE_MASK_ARM           (~(PAGE_SIZE_ARM-1))
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.c
 @@ -164,6 +164,47 @@ static void __attribute__((unused)) buil
  }
  
@@ -90,9 +90,9 @@ The existing code for x86_pv is moved unmodified into its own file.
   * Local variables:
   * mode: C
   * c-file-style: "BSD"
---- a/tools/libxc/xc_sr_common.h
-+++ b/tools/libxc/xc_sr_common.h
-@@ -19,6 +19,12 @@ const char *rec_type_to_str(uint32_t typ
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -18,6 +18,12 @@ const char *rec_type_to_str(uint32_t typ
  struct xc_sr_context;
  struct xc_sr_record;
  
@@ -105,7 +105,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  /**
   * Save operations.  To be implemented for each type of guest, for use by the
   * common save algorithm.
-@@ -142,6 +148,16 @@ struct xc_sr_restore_ops
+@@ -141,6 +147,16 @@ struct xc_sr_restore_ops
      int (*setup)(struct xc_sr_context *ctx);
  
      /**
@@ -122,7 +122,7 @@ The existing code for x86_pv is moved unmodified into its own file.
       * Process an individual record from the stream.  The caller shall take
       * care of processing common records (e.g. END, PAGE_DATA).
       *
-@@ -288,6 +304,8 @@ struct xc_sr_context
+@@ -287,6 +303,8 @@ struct xc_sr_context
  
              int send_back_fd;
              unsigned long p2m_size;
@@ -131,7 +131,7 @@ The existing code for x86_pv is moved unmodified into its own file.
              xc_hypercall_buffer_t dirty_bitmap_hbuf;
  
              /* From Image Header. */
-@@ -325,8 +343,7 @@ struct xc_sr_context
+@@ -324,8 +342,7 @@ struct xc_sr_context
              uint32_t     xenstore_domid,  console_domid;
  
              /* Bitmap of currently populated PFNs during restore. */
@@ -141,7 +141,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  
              /* Sender has invoked verify mode on the stream. */
              bool verify;
-@@ -426,6 +443,14 @@ struct xc_sr_context
+@@ -425,6 +442,14 @@ struct xc_sr_context
                      {
                          /* HVM context blob. */
                          struct xc_sr_blob context;
@@ -156,7 +156,7 @@ The existing code for x86_pv is moved unmodified into its own file.
                      } restore;
                  };
              } hvm;
-@@ -440,6 +465,78 @@ extern struct xc_sr_save_ops save_ops_x8
+@@ -439,6 +464,78 @@ extern struct xc_sr_save_ops save_ops_x8
  extern struct xc_sr_restore_ops restore_ops_x86_pv;
  extern struct xc_sr_restore_ops restore_ops_x86_hvm;
  
@@ -235,7 +235,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  struct xc_sr_record
  {
      uint32_t type;
-@@ -490,14 +587,6 @@ int read_record_header(struct xc_sr_cont
+@@ -489,14 +586,6 @@ int read_record_header(struct xc_sr_cont
  int read_record_data(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr,
                       struct xc_sr_record *rec);
  
@@ -250,8 +250,8 @@ The existing code for x86_pv is moved unmodified into its own file.
  /* Handle a STATIC_DATA_END record. */
  int handle_static_data_end(struct xc_sr_context *ctx);
  
---- a/tools/libxc/xc_sr_restore.c
-+++ b/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -71,121 +71,6 @@ static int read_headers(struct xc_sr_con
      return 0;
  }
@@ -418,8 +418,8 @@ The existing code for x86_pv is moved unmodified into its own file.
      ctx.restore.ops = ctx.dominfo.hvm
          ? restore_ops_x86_hvm : restore_ops_x86_pv;
  
---- a/tools/libxc/xc_sr_restore_x86_hvm.c
-+++ b/tools/libxc/xc_sr_restore_x86_hvm.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore_x86_hvm.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore_x86_hvm.c
 @@ -136,6 +136,8 @@ static int x86_hvm_localise_page(struct
  static int x86_hvm_setup(struct xc_sr_context *ctx)
  {
@@ -859,8 +859,8 @@ The existing code for x86_pv is moved unmodified into its own file.
      .process_record  = x86_hvm_process_record,
      .static_data_complete = x86_static_data_complete,
      .stream_complete = x86_hvm_stream_complete,
---- a/tools/libxc/xc_sr_restore_x86_pv.c
-+++ b/tools/libxc/xc_sr_restore_x86_pv.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore_x86_pv.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore_x86_pv.c
 @@ -960,6 +960,64 @@ static void x86_pv_set_gfn(struct xc_sr_
  }
  

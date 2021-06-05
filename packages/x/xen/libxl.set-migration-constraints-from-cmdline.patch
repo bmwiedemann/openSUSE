@@ -76,9 +76,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
  docs/man/xl.pod.1                |   20 +++++++++++++++++++
  tools/libxc/include/xenguest.h   |    7 ++++++
- tools/libxc/xc_nomigrate.c       |   10 +++++++++
- tools/libxc/xc_sr_common.h       |    1 
- tools/libxc/xc_sr_save.c         |   22 +++++++++++++++------
+ tools/libs/guest/xg_nomigrate.c       |   10 +++++++++
+ tools/libs/guest/xg_sr_common.h       |    1 
+ tools/libs/guest/xg_sr_save.c         |   22 +++++++++++++++------
  tools/libxl/libxl.c              |   29 ++++++++++++++++++++++++----
  tools/libxl/libxl.h              |   15 ++++++++++++++
  tools/libxl/libxl_dom_save.c     |    1 
@@ -89,11 +89,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  tools/libxl/xl_cmdtable.c        |   23 ++++++++++++++--------
  13 files changed, 156 insertions(+), 28 deletions(-)
 
-Index: xen-4.14.1-testing/docs/man/xl.1.pod.in
+Index: xen-4.15.0-testing/docs/man/xl.1.pod.in
 ===================================================================
---- xen-4.14.1-testing.orig/docs/man/xl.1.pod.in
-+++ xen-4.14.1-testing/docs/man/xl.1.pod.in
-@@ -497,6 +497,22 @@ such that it will be identical on the de
+--- xen-4.15.0-testing.orig/docs/man/xl.1.pod.in
++++ xen-4.15.0-testing/docs/man/xl.1.pod.in
+@@ -494,6 +494,22 @@ such that it will be identical on the de
  configuration is overridden using the B<-C> option. Note that it is not
  possible to use this option for a 'localhost' migration.
  
@@ -116,10 +116,10 @@ Index: xen-4.14.1-testing/docs/man/xl.1.pod.in
  =back
  
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
-Index: xen-4.14.1-testing/tools/libxc/include/xenguest.h
+Index: xen-4.15.0-testing/tools/include/xenguest.h
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxc/include/xenguest.h
-+++ xen-4.14.1-testing/tools/libxc/include/xenguest.h
+--- xen-4.15.0-testing.orig/tools/include/xenguest.h
++++ xen-4.15.0-testing/tools/include/xenguest.h
 @@ -26,6 +26,7 @@
  
  #define XCFLAGS_LIVE      (1 << 0)
@@ -128,7 +128,7 @@ Index: xen-4.14.1-testing/tools/libxc/include/xenguest.h
  
  #define X86_64_B_SIZE   64 
  #define X86_32_B_SIZE   32
-@@ -133,9 +134,20 @@ typedef enum {
+@@ -530,9 +531,20 @@ typedef enum {
   *        the destination side.
   * @return 0 on success, -1 on failure
   */
@@ -150,10 +150,10 @@ Index: xen-4.14.1-testing/tools/libxc/include/xenguest.h
  
  /* callbacks provided by xc_domain_restore */
  struct restore_callbacks {
-Index: xen-4.14.1-testing/tools/libxc/xc_nomigrate.c
+Index: xen-4.15.0-testing/tools/libs/guest/xg_nomigrate.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxc/xc_nomigrate.c
-+++ xen-4.14.1-testing/tools/libxc/xc_nomigrate.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_nomigrate.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_nomigrate.c
 @@ -20,8 +20,10 @@
  #include <xenctrl.h>
  #include <xenguest.h>
@@ -166,10 +166,10 @@ Index: xen-4.14.1-testing/tools/libxc/xc_nomigrate.c
                     xc_stream_type_t stream_type, int recv_fd)
  {
      errno = ENOSYS;
-Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
+Index: xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.1-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -992,8 +992,62 @@ static int save(struct xc_sr_context *ct
      return rc;
  };
@@ -190,7 +190,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
 +
 +    suse_flags.cnt++;
 +    errno = 0;
-+    DBGPRINTF("%s: domU %u: #%lu iteration %u total_written %u dirty_count %ld",
++    DBGPRINTF("%s: domU %u: #%lu iteration %u total_written %lu dirty_count %ld",
 +              __func__, suse_flags.ctx->domid, suse_flags.cnt, stats.iteration, stats.total_written, stats.dirty_count);
 +
 +    if ( stats.dirty_count >= 0 )
@@ -217,7 +217,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
 +    if ( suse_flags.abort_if_busy )
 +    {
 +        errno = EBUSY;
-+        PERROR("%s: domU %u busy, dirty pages %ld/%lu after %u iterations, %u pages transfered",
++        PERROR("%s: domU %u busy, dirty pages %ld/%lu after %u iterations, %lu pages transfered",
 +                __func__, suse_flags.ctx->domid,
 +                suse_flags.dirty_count, suse_flags.ctx->save.p2m_size,
 +                stats.iteration, stats.total_written);
@@ -253,11 +253,11 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
      if ( xc_domain_getinfo(xch, dom, 1, &ctx.dominfo) != 1 )
      {
          PERROR("Failed to get domain info");
-Index: xen-4.14.1-testing/tools/libxl/libxl.h
+Index: xen-4.15.0-testing/tools/include/libxl.h
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl.h
-+++ xen-4.14.1-testing/tools/libxl/libxl.h
-@@ -1667,8 +1667,23 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+--- xen-4.15.0-testing.orig/tools/include/libxl.h
++++ xen-4.15.0-testing/tools/include/libxl.h
+@@ -1731,8 +1731,23 @@ int libxl_domain_suspend(libxl_ctx *ctx,
                           int flags, /* LIBXL_SUSPEND_* */
                           const libxl_asyncop_how *ao_how)
                           LIBXL_EXTERNAL_CALLERS_ONLY;
@@ -281,10 +281,10 @@ Index: xen-4.14.1-testing/tools/libxl/libxl.h
  
  /*
   * Only suspend domain, do not save its state to file, do not destroy it.
-Index: xen-4.14.1-testing/tools/libxl/libxl_dom_save.c
+Index: xen-4.15.0-testing/tools/libs/light/libxl_dom_save.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl_dom_save.c
-+++ xen-4.14.1-testing/tools/libxl/libxl_dom_save.c
+--- xen-4.15.0-testing.orig/tools/libs/light/libxl_dom_save.c
++++ xen-4.15.0-testing/tools/libs/light/libxl_dom_save.c
 @@ -409,7 +409,8 @@ void libxl__domain_save(libxl__egc *egc,
      if (rc) goto out;
  
@@ -295,10 +295,10 @@ Index: xen-4.14.1-testing/tools/libxl/libxl_dom_save.c
  
      /* Disallow saving a guest with vNUMA configured because migration
       * stream does not preserve node information.
-Index: xen-4.14.1-testing/tools/libxl/libxl_domain.c
+Index: xen-4.15.0-testing/tools/libs/light/libxl_domain.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl_domain.c
-+++ xen-4.14.1-testing/tools/libxl/libxl_domain.c
+--- xen-4.15.0-testing.orig/tools/libs/light/libxl_domain.c
++++ xen-4.15.0-testing/tools/libs/light/libxl_domain.c
 @@ -505,8 +505,9 @@ static void domain_suspend_cb(libxl__egc
  
  }
@@ -349,11 +349,11 @@ Index: xen-4.14.1-testing/tools/libxl/libxl_domain.c
  int libxl_domain_pause(libxl_ctx *ctx, uint32_t domid,
                         const libxl_asyncop_how *ao_how)
  {
-Index: xen-4.14.1-testing/tools/libxl/libxl_internal.h
+Index: xen-4.15.0-testing/tools/libs/light/libxl_internal.h
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl_internal.h
-+++ xen-4.14.1-testing/tools/libxl/libxl_internal.h
-@@ -3643,6 +3643,9 @@ struct libxl__domain_save_state {
+--- xen-4.15.0-testing.orig/tools/libs/light/libxl_internal.h
++++ xen-4.15.0-testing/tools/libs/light/libxl_internal.h
+@@ -3645,6 +3645,9 @@ struct libxl__domain_save_state {
      const libxl_domain_remus_info *remus;
      /* private */
      int rc;
@@ -363,10 +363,10 @@ Index: xen-4.14.1-testing/tools/libxl/libxl_internal.h
      int xcflags;
      libxl__domain_suspend_state dsps;
      union {
-Index: xen-4.14.1-testing/tools/libxl/libxl_save_callout.c
+Index: xen-4.15.0-testing/tools/libs/light/libxl_save_callout.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl_save_callout.c
-+++ xen-4.14.1-testing/tools/libxl/libxl_save_callout.c
+--- xen-4.15.0-testing.orig/tools/libs/light/libxl_save_callout.c
++++ xen-4.15.0-testing/tools/libs/light/libxl_save_callout.c
 @@ -88,6 +88,7 @@ void libxl__xc_domain_save(libxl__egc *e
  
      const unsigned long argnums[] = {
@@ -375,10 +375,10 @@ Index: xen-4.14.1-testing/tools/libxl/libxl_save_callout.c
          dss->checkpointed_stream,
      };
  
-Index: xen-4.14.1-testing/tools/libxl/libxl_save_helper.c
+Index: xen-4.15.0-testing/tools/libs/light/libxl_save_helper.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/libxl/libxl_save_helper.c
-+++ xen-4.14.1-testing/tools/libxl/libxl_save_helper.c
+--- xen-4.15.0-testing.orig/tools/libs/light/libxl_save_helper.c
++++ xen-4.15.0-testing/tools/libs/light/libxl_save_helper.c
 @@ -250,6 +250,8 @@ int main(int argc, char **argv)
          uint32_t dom =                      strtoul(NEXTARG,0,10);
          uint32_t flags =                    strtoul(NEXTARG,0,10);
@@ -399,11 +399,11 @@ Index: xen-4.14.1-testing/tools/libxl/libxl_save_helper.c
          complete(r);
  
      } else if (!strcmp(mode,"--restore-domain")) {
-Index: xen-4.14.1-testing/tools/xl/xl_cmdtable.c
+Index: xen-4.15.0-testing/tools/xl/xl_cmdtable.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/xl/xl_cmdtable.c
-+++ xen-4.14.1-testing/tools/xl/xl_cmdtable.c
-@@ -160,16 +160,22 @@ struct cmd_spec cmd_table[] = {
+--- xen-4.15.0-testing.orig/tools/xl/xl_cmdtable.c
++++ xen-4.15.0-testing/tools/xl/xl_cmdtable.c
+@@ -164,16 +164,22 @@ struct cmd_spec cmd_table[] = {
        &main_migrate, 0, 1,
        "Migrate a domain to another host",
        "[options] <Domain> <host>",
@@ -436,10 +436,10 @@ Index: xen-4.14.1-testing/tools/xl/xl_cmdtable.c
      },
      { "restore",
        &main_restore, 0, 1,
-Index: xen-4.14.1-testing/tools/xl/xl_migrate.c
+Index: xen-4.15.0-testing/tools/xl/xl_migrate.c
 ===================================================================
---- xen-4.14.1-testing.orig/tools/xl/xl_migrate.c
-+++ xen-4.14.1-testing/tools/xl/xl_migrate.c
+--- xen-4.15.0-testing.orig/tools/xl/xl_migrate.c
++++ xen-4.15.0-testing/tools/xl/xl_migrate.c
 @@ -178,6 +178,7 @@ static void migrate_do_preamble(int send
  
  static void migrate_domain(uint32_t domid, int preserve_domid,
@@ -513,7 +513,7 @@ Index: xen-4.14.1-testing/tools/xl/xl_migrate.c
      case 0x200: /* --live */
          /* ignored for compatibility with xm */
          break;
-@@ -601,7 +622,8 @@ int main_migrate(int argc, char **argv)
+@@ -602,7 +623,8 @@ int main_migrate(int argc, char **argv)
                    pause_after_migration ? " -p" : "");
      }
  

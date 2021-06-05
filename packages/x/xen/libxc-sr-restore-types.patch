@@ -8,13 +8,13 @@ Remove allocation from hotpath, move types array into preallocated space.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h  |  1 +
- tools/libxc/xc_sr_restore.c | 12 +-----------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 12 +-----------
  2 files changed, 2 insertions(+), 11 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -227,6 +227,7 @@ struct xc_sr_save_arrays {
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -226,6 +226,7 @@ struct xc_sr_save_arrays {
  struct xc_sr_restore_arrays {
      /* handle_page_data */
      xen_pfn_t pfns[MAX_BATCH_SIZE];
@@ -22,8 +22,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_context
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -316,7 +316,7 @@ static int handle_page_data(struct xc_sr
      int rc = -1;
  

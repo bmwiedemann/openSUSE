@@ -12,15 +12,15 @@ area for this purpose.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h       | 22 ++++++++++++----------
- tools/libxc/xc_sr_save.c         | 25 +++----------------------
- tools/libxc/xc_sr_save_x86_hvm.c |  5 +++--
- tools/libxc/xc_sr_save_x86_pv.c  | 31 +++++++++++++++++++++----------
+ tools/libs/guest/xg_sr_common.h       | 22 ++++++++++++----------
+ tools/libs/guest/xg_sr_save.c         | 25 +++----------------------
+ tools/libs/guest/xg_sr_save_x86_hvm.c |  5 +++--
+ tools/libs/guest/xg_sr_save_x86_pv.c  | 31 +++++++++++++++++++++----------
  4 files changed, 39 insertions(+), 44 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -34,16 +34,12 @@ struct xc_sr_save_ops
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -33,16 +33,12 @@ struct xc_sr_save_ops
       * Optionally transform the contents of a page from being specific to the
       * sending environment, to being generic for the stream.
       *
@@ -42,7 +42,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
       *
       * It is valid to fail with EAGAIN if the transformation is not able to be
       * completed at this point.  The page shall be retried later.
-@@ -51,7 +47,7 @@ struct xc_sr_save_ops
+@@ -50,7 +46,7 @@ struct xc_sr_save_ops
       * @returns 0 for success, -1 for failure, with errno appropriately set.
       */
      int (*normalise_page)(struct xc_sr_context *ctx, xen_pfn_t type,
@@ -51,7 +51,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      /**
       * Set up local environment to save a domain. (Typically querying
-@@ -374,6 +370,12 @@ struct xc_sr_context
+@@ -373,6 +369,12 @@ struct xc_sr_context
                  {
                      struct
                      {
@@ -64,8 +64,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
                          /* State machine for the order of received records. */
                          bool seen_pv_info;
  
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -91,11 +91,10 @@ static int write_batch(struct xc_sr_cont
      xen_pfn_t *mfns = ctx->save.m->mfns, *types = ctx->save.m->types;
      void *guest_mapping = NULL;
@@ -129,8 +129,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save_x86_hvm.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save_x86_hvm.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save_x86_hvm.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save_x86_hvm.c
 @@ -129,9 +129,10 @@ static xen_pfn_t x86_hvm_pfn_to_gfn(cons
      return pfn;
  }
@@ -144,8 +144,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      return 0;
  }
  
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save_x86_pv.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save_x86_pv.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save_x86_pv.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save_x86_pv.c
 @@ -999,29 +999,31 @@ static xen_pfn_t x86_pv_pfn_to_gfn(const
   * save_ops function.  Performs pagetable normalisation on appropriate pages.
   */

@@ -8,12 +8,12 @@ Verify pfn type on sending side, also verify incoming batch of pfns.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_restore.c | 3 +--
- tools/libxc/xc_sr_save.c    | 6 ++++++
+ tools/libs/guest/xg_sr_restore.c | 3 +--
+ tools/libs/guest/xg_sr_save.c    | 6 ++++++
  2 files changed, 7 insertions(+), 2 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.14.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.14.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -406,8 +406,7 @@ static int handle_page_data(struct xc_sr
          }
  
@@ -24,8 +24,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          {
              ERROR("Invalid type %#"PRIx32" for pfn %#"PRIpfn" (index %u)",
                    type, pfn, i);
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.14.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.14.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -147,6 +147,12 @@ static int write_batch(struct xc_sr_cont
  
      for ( i = 0; i < nr_pfns; ++i )

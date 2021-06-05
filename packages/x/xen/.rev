@@ -2590,4 +2590,12 @@
     <comment>Updated fixes for bsc#1180491 and additional upstream fixes.</comment>
     <requestid>886799</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>499958ffccd93586f128b931e5f5e77f</srcmd5>
+    <version>4.15.0_01</version>
+    <time>1622928603</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>892565</requestid>
+  </revision>
 </revisionlist>

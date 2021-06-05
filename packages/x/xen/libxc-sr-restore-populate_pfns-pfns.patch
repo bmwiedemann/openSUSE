@@ -9,13 +9,13 @@ Use some prefix to avoid conflict with an array used in handle_page_data.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h  |  1 +
- tools/libxc/xc_sr_restore.c | 11 +----------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 11 +----------
  2 files changed, 2 insertions(+), 10 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -233,6 +233,7 @@ struct xc_sr_restore_arrays {
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -232,6 +232,7 @@ struct xc_sr_restore_arrays {
      int map_errs[MAX_BATCH_SIZE];
      /* populate_pfns */
      xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
@@ -23,8 +23,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_context
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -139,17 +139,10 @@ int populate_pfns(struct xc_sr_context *
  {
      xc_interface *xch = ctx->xch;

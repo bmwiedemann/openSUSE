@@ -11,14 +11,14 @@ No change in behavior intended.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h  | 17 +++++++++++++++++
- tools/libxc/xc_sr_restore.c | 34 +++++-----------------------------
- tools/libxc/xc_sr_save.c    | 14 ++------------
+ tools/libs/guest/xg_sr_common.h  | 17 +++++++++++++++++
+ tools/libs/guest/xg_sr_restore.c | 34 +++++-----------------------------
+ tools/libs/guest/xg_sr_save.c    | 14 ++------------
  3 files changed, 24 insertions(+), 41 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -456,6 +456,23 @@ int populate_pfns(struct xc_sr_context *
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -455,6 +455,23 @@ int populate_pfns(struct xc_sr_context *
  /* Handle a STATIC_DATA_END record. */
  int handle_static_data_end(struct xc_sr_context *ctx);
  
@@ -42,8 +42,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  #endif
  /*
   * Local variables:
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -152,9 +152,8 @@ int populate_pfns(struct xc_sr_context *
  
      for ( i = 0; i < count; ++i )
@@ -108,8 +108,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
              /* NOTAB and all L1 through L4 tables (including pinned) should
               * have a page worth of data in the record. */
              pages_of_data++;
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -153,13 +153,8 @@ static int write_batch(struct xc_sr_cont
              goto err;
          }

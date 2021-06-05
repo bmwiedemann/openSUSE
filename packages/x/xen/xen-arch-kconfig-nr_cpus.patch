@@ -1,10 +1,10 @@
-Index: xen-4.12.0-testing/xen/arch/Kconfig
+Index: xen-4.15.0-testing/xen/arch/Kconfig
 ===================================================================
---- xen-4.12.0-testing.orig/xen/arch/Kconfig
-+++ xen-4.12.0-testing/xen/arch/Kconfig
+--- xen-4.15.0-testing.orig/xen/arch/Kconfig
++++ xen-4.15.0-testing/xen/arch/Kconfig
 @@ -2,7 +2,7 @@
  config NR_CPUS
- 	int "Maximum number of physical CPUs"
+ 	int "Maximum number of CPUs"
  	range 1 4095
 -	default "256" if X86
 +	default "1024" if X86

@@ -1,0 +1,107 @@
+Fix xencommons for fillup
+
+The usage in xen.spec is like this:
+ %post tools
+ %{fillup_only -n xencommons xencommons}
+
+After fresh install, modify the key=value pairs as required, then
+upgrade the package, the sysconfig file is broken and changes are lost:
+
+ # rm /etc/sysconfig/xencommons
+ # zypper in --oldpackage xen-tools-4.12.4_02-3.30.1
+ # echo XENSTORETYPE=domain >> /etc/sysconfig/xencommons
+ # echo XENSTORE_DOMAIN_SIZE=123 >> /etc/sysconfig/xencommons
+ # zypper in --oldpackage xen-tools-4.12.4_04-3.33.1
+ # diff -u /var/adm/fillup-templates/sysconfig.xencommons /etc/sysconfig/xencommons
+
+Basically fillup removed all comments, and also the two added key=value lines.
+
+Prevent this by defining all keys, with empty values, so that consumers
+of the values will continue to use the built-in defaults.
+--- a/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
++++ b/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
+@@ -3,7 +3,9 @@
+ ## Default: "none"
+ #
+ # Log xenconsoled messages (cf xl dmesg)
+-#XENCONSOLED_TRACE=[none|guest|hv|all]
++# One of [none|guest|hv|all]
++#
++XENCONSOLED_TRACE=
+ 
+ ## Type: string
+ ## Default: daemon
+@@ -16,10 +18,10 @@
+ #
+ # Changing this requires a reboot to take effect.
+ #
+-#XENSTORETYPE=daemon
++XENSTORETYPE=
+ 
+ ## Type: string
+-## Default: xenstored
++## Default: @XENSTORED@
+ #
+ # Select xenstore implementation, this can be either
+ # of these below.
+@@ -30,7 +32,7 @@
+ #  * @sbindir@/xenstored
+ #
+ # Changing this requires a reboot to take effect.
+-#XENSTORED=@XENSTORED@
++XENSTORED=
+ 
+ ## Type: string
+ ## Default: ""
+@@ -44,30 +46,31 @@ XENSTORED_ARGS=
+ ## Type: string
+ ## Default: Not defined, tracing off
+ #
+-# Log xenstored messages
++# Log xenstored messages if a non-empty value is assigned.
+ # Only evaluated if XENSTORETYPE is "daemon".
+-#XENSTORED_TRACE=[yes|on|1]
++#
++XENSTORED_TRACE=
+ 
+ ## Type: string
+ ## Default: "@XEN_LIB_STORED@"
+ #
+ # Running xenstored on XENSTORED_ROOTDIR
+ # Only evaluated if XENSTORETYPE is "daemon".
+-#XENSTORED_ROOTDIR=@XEN_LIB_STORED@
++XENSTORED_ROOTDIR=
+ 
+ ## Type: string
+ ## Default: @LIBEXEC@/boot/xenstore-stubdom.gz
+ #
+ # xenstore domain kernel.
+ # Only evaluated if XENSTORETYPE is "domain".
+-#XENSTORE_DOMAIN_KERNEL=@LIBEXEC@/boot/xenstore-stubdom.gz
++XENSTORE_DOMAIN_KERNEL=
+ 
+ ## Type: integer
+ ## Default: 8
+ #
+ # xenstore domain memory size in MiB.
+ # Only evaluated if XENSTORETYPE is "domain".
+-#XENSTORE_DOMAIN_SIZE=8
++XENSTORE_DOMAIN_SIZE=
+ 
+ ## Type: string
+ ## Default: not set, no autoballooning of xenstore domain
+@@ -78,7 +81,7 @@ XENSTORED_ARGS=
+ # - combination of both in form of <val>:<frac> (e.g. 8:1/100), resulting
+ #   value will be the higher of both specifications
+ # Only evaluated if XENSTORETYPE is "domain".
+-#XENSTORE_MAX_DOMAIN_SIZE=
++XENSTORE_MAX_DOMAIN_SIZE=
+ 
+ ## Type: string
+ ## Default: ""
+@@ -91,4 +94,4 @@ XENSTORE_DOMAIN_ARGS=
+ #QEMU_XEN=@qemu_xen_path@
+ 
+ # Dom0 UUID
+-#XEN_DOM0_UUID=00000000-0000-0000-0000-000000000000
++XEN_DOM0_UUID=

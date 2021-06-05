@@ -6,10 +6,10 @@ http://xen.1045712.n5.nabble.com/Re-PATCH-improve-suspend-evtchn-lock-processing
 
 Signed-off-by: Chunyan Liu <cyliu@suse.com>
 
-Index: xen-4.10.0-testing/tools/libxc/xc_suspend.c
+Index: xen-4.10.0-testing/tools/libs/guest/xg_suspend.c
 ===================================================================
---- xen-4.10.0-testing.orig/tools/libxc/xc_suspend.c
-+++ xen-4.10.0-testing/tools/libxc/xc_suspend.c
+--- xen-4.10.0-testing.orig/tools/libs/guest/xg_suspend.c
++++ xen-4.10.0-testing/tools/libs/guest/xg_suspend.c
 @@ -20,6 +20,10 @@
  
  #include "xc_private.h"

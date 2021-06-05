@@ -17,13 +17,13 @@ no change in behavior is intended.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h  |   9 +
- tools/libxc/xc_sr_restore.c | 343 +++++++++++++++++++++++-------------
+ tools/libs/guest/xg_sr_common.h  |   9 +
+ tools/libs/guest/xg_sr_restore.c | 343 +++++++++++++++++++++++-------------
  2 files changed, 231 insertions(+), 121 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -231,9 +231,14 @@ struct xc_sr_restore_arrays {
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -230,9 +230,14 @@ struct xc_sr_restore_arrays {
      /* process_page_data */
      xen_pfn_t mfns[MAX_BATCH_SIZE];
      int map_errs[MAX_BATCH_SIZE];
@@ -38,7 +38,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_context
-@@ -324,7 +329,11 @@ struct xc_sr_context
+@@ -323,7 +328,11 @@ struct xc_sr_context
  
              /* Sender has invoked verify mode on the stream. */
              bool verify;
@@ -50,8 +50,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          } restore;
      };
  
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -186,123 +186,18 @@ int populate_pfns(struct xc_sr_context *
      return rc;
  }

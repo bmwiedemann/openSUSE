@@ -8,13 +8,13 @@ Remove allocation from hotpath, move map_errs array into preallocated space.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h  |  1 +
- tools/libxc/xc_sr_restore.c | 12 +-----------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 12 +-----------
  2 files changed, 2 insertions(+), 11 deletions(-)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -230,6 +230,7 @@ struct xc_sr_restore_arrays {
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -229,6 +229,7 @@ struct xc_sr_restore_arrays {
      uint32_t types[MAX_BATCH_SIZE];
      /* process_page_data */
      xen_pfn_t mfns[MAX_BATCH_SIZE];
@@ -22,8 +22,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  };
  
  struct xc_sr_context
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
 @@ -206,21 +206,13 @@ static int process_page_data(struct xc_s
  {
      xc_interface *xch = ctx->xch;

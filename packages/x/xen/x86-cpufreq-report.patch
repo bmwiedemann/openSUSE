@@ -1,7 +1,7 @@
-Index: xen-4.14.0-testing/xen/arch/x86/platform_hypercall.c
+Index: xen-4.15.0-testing/xen/arch/x86/platform_hypercall.c
 ===================================================================
---- xen-4.14.0-testing.orig/xen/arch/x86/platform_hypercall.c
-+++ xen-4.14.0-testing/xen/arch/x86/platform_hypercall.c
+--- xen-4.15.0-testing.orig/xen/arch/x86/platform_hypercall.c
++++ xen-4.15.0-testing/xen/arch/x86/platform_hypercall.c
 @@ -25,7 +25,7 @@
  #include <xen/symbols.h>
  #include <asm/current.h>
@@ -53,11 +53,11 @@ Index: xen-4.14.0-testing/xen/arch/x86/platform_hypercall.c
  
      default:
          ret = -ENOSYS;
-Index: xen-4.14.0-testing/xen/include/public/platform.h
+Index: xen-4.15.0-testing/xen/include/public/platform.h
 ===================================================================
---- xen-4.14.0-testing.orig/xen/include/public/platform.h
-+++ xen-4.14.0-testing/xen/include/public/platform.h
-@@ -553,6 +553,16 @@ struct xenpf_core_parking {
+--- xen-4.15.0-testing.orig/xen/include/public/platform.h
++++ xen-4.15.0-testing/xen/include/public/platform.h
+@@ -557,6 +557,18 @@ struct xenpf_core_parking {
  typedef struct xenpf_core_parking xenpf_core_parking_t;
  DEFINE_XEN_GUEST_HANDLE(xenpf_core_parking_t);
  
@@ -70,15 +70,17 @@ Index: xen-4.14.0-testing/xen/include/public/platform.h
 +    /* OUT variables */
 +    uint32_t freq; /* in kHz */
 +};
++typedef struct xenpf_get_cpu_freq xenpf_get_cpu_freq_t;
++DEFINE_XEN_GUEST_HANDLE(xenpf_get_cpu_freq_t);
 +
  /*
   * Access generic platform resources(e.g., accessing MSR, port I/O, etc)
   * in unified way. Batch resource operations in one call are supported and
-@@ -644,6 +654,7 @@ struct xen_platform_op {
-         struct xenpf_core_parking      core_parking;
-         struct xenpf_resource_op       resource_op;
-         struct xenpf_symdata           symdata;
-+        struct xenpf_get_cpu_freq      get_cpu_freq;
-         uint8_t                        pad[128];
+@@ -648,6 +660,7 @@ struct xen_platform_op {
+         xenpf_core_parking_t          core_parking;
+         xenpf_resource_op_t           resource_op;
+         xenpf_symdata_t               symdata;
++        xenpf_get_cpu_freq_t          get_cpu_freq;
+         uint8_t                       pad[128];
      } u;
  };

@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue May  4 14:14:14 UTC 2021 - ohering@suse.de
+
+- Add xen.sysconfig-fillup.patch to make sure xencommons is in a
+  format as expected by fillup. (bsc#1185682)
+  Each comment needs to be followed by an enabled key. Otherwise
+  fillup will remove manually enabled key=value pairs, along with
+  everything that looks like a stale comment, during next pkg update
+
+-------------------------------------------------------------------
+Tue May  4 09:09:09 UTC 2021 - ohering@suse.de
+
+- Remove init.xen_loop and /etc/modprobe.d/xen_loop.conf
+  The number of loop devices is unlimited since a while
+
+-------------------------------------------------------------------
+Tue Apr 27 12:50:50 UTC 2021 - ohering@suse.de
+
+- Refresh xenstore-launch.patch to cover also daemon case
+
+-------------------------------------------------------------------
+Wed Apr 21 16:11:28 MDT 2021 - carnold@suse.com
+
+- Now that SOURCE_DATE_EPOCH is defined and Xen Makefile uses it,
+  drop reproducible.patch
+
+-------------------------------------------------------------------
+Tue Apr 20 13:01:41 MDT 2021 - carnold@suse.com
+
+- Update to Xen 4.15.0 FCS release
+  xen-4.15.0-testing-src.tar.bz2
+  * Xen can now export Intel Processor Trace (IPT) data from guests to tools in dom0.
+  * Xen now supports Viridian enlightenments for guests with more than 64 vcpus.
+  * Xenstored and oxenstored both now support LiveUpdate (tech preview).
+  * Unified boot images
+  * Switched x86 MSR accesses to deny by default policy.
+  * Named PCI devices for xl/libxl and improved documentation for xl PCI configuration format.
+  * Support for zstd-compressed dom0 (x86) and domU kernels.
+  * Reduce ACPI verbosity by default.
+  * Add ucode=allow-same option to test late microcode loading path.
+  * Library improvements from NetBSD ports upstreamed.
+  * x86: Allow domains to use AVX-VNNI instructions.
+  * Added XEN_SCRIPT_DIR configuration option to specify location for Xen scripts.
+  * xennet: Documented a way for the backend (or toolstack) to specify MTU to the frontend.
+  * On detecting a host crash, some debug key handlers can automatically triggered to aid in debugging.
+  * Increase the maximum number of guests which can share a single IRQ from 7 to 16, and make this configurable with irq-max-guests.
+- Dropped patches contained in new tarball
+  5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
+  5fedf9f4-x86-hpet_setup-fix-retval.patch
+  5ff458f2-x86-vPCI-tolerate-disabled-MSI-X-entry.patch
+  5ff71655-x86-dpci-EOI-regardless-of-masking.patch
+  5ffc58c4-ACPI-reduce-verbosity-by-default.patch
+  5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
+  600999ad-x86-dpci-do-not-remove-pirqs-from.patch
+  600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
+  6011bbc7-x86-timer-fix-boot-without-PIT.patch
+  6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
+  6013e546-x86-HVM-reorder-domain-init-error-path.patch
+  601d4396-x86-EFI-suppress-ld-2-36-debug-info.patch
+  602bd768-page_alloc-only-flush-after-scrubbing.patch
+  602cfe3d-IOMMU-check-if-initialized-before-teardown.patch
+  602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
+  602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
+  602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
+  6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
+  60787714-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
+  60410127-gcc11-adjust-rijndaelEncrypt.patch
+  60422428-x86-shadow-avoid-fast-fault-path.patch
+  604b9070-VT-d-disable-QI-IR-before-init.patch
+  60535c11-libxl-domain-soft-reset.patch (Replaces xsa368.patch)
+  60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
+  libxc-bitmap-50a5215f30e964a6f16165ab57925ca39f31a849.patch
+  libxc-bitmap-longs.patch
+  libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
+  libxl.fix-libacpi-dependency.patch
+  stubdom-have-iovec.patch
+  xenwatchdogd-options.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 12:03:30 MDT 2021 - carnold@suse.com
 
 - bsc#1180491 - "Panic on CPU 0: IO-APIC + timer doesn't work!"

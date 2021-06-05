@@ -11,13 +11,13 @@ protocol overhead exists. So the reported MiB/sec is just for pfns.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libxc/xc_sr_common.h |  2 ++
- tools/libxc/xc_sr_save.c   | 47 ++++++++++++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h |  2 ++
+ tools/libs/guest/xg_sr_save.c   | 47 ++++++++++++++++++++++++++++++++++++++
  2 files changed, 49 insertions(+)
 
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -239,6 +239,8 @@ struct xc_sr_context
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+@@ -238,6 +238,8 @@ struct xc_sr_context
              bool debug;
  
              unsigned long p2m_size;
@@ -26,14 +26,14 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
              struct precopy_stats stats;
  
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+--- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
++++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
 @@ -1,5 +1,6 @@
  #include <assert.h>
  #include <arpa/inet.h>
 +#include <time.h>
  
- #include "xc_sr_common.h"
+ #include "xg_sr_common.h"
  
 @@ -238,6 +239,8 @@ static int write_batch(struct xc_sr_cont
      iov[3].iov_len = nr_pfns * sizeof(*rec_pfns);

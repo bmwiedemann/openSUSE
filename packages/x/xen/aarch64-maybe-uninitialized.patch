@@ -1,7 +1,7 @@
-Index: xen-4.12.0-testing/tools/libxl/libxl_arm_acpi.c
+Index: xen-4.12.0-testing/tools/libs/light/libxl_arm_acpi.c
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxl_arm_acpi.c
-+++ xen-4.12.0-testing/tools/libxl/libxl_arm_acpi.c
+--- xen-4.12.0-testing.orig/tools/libs/light/libxl_arm_acpi.c
++++ xen-4.12.0-testing/tools/libs/light/libxl_arm_acpi.c
 @@ -99,7 +99,7 @@ int libxl__get_acpi_size(libxl__gc *gc,
                           const libxl_domain_build_info *info,
                           uint64_t *out)

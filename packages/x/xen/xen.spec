@@ -29,7 +29,7 @@
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 41121
-%define xen_build_dir xen-4.14.1-testing
+%define xen_build_dir xen-4.15.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -130,12 +130,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_16
+Version:        4.15.0_01
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.14.1-testing-src.tar.bz2
+Source0:        xen-4.15.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        ipxe.tar.bz2
 Source3:        mini-os.tar.bz2
@@ -150,7 +150,6 @@ Source21:       block-npiv-common.sh
 Source22:       block-npiv
 Source23:       block-npiv-vport
 Source24:       block-dmmd
-Source28:       init.xen_loop
 # Xen API remote authentication sources
 Source30:       etc_pam.d_xen-api
 Source31:       xenapiusers
@@ -168,33 +167,7 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
-Patch2:         5fedf9f4-x86-hpet_setup-fix-retval.patch
-Patch3:         5ff458f2-x86-vPCI-tolerate-disabled-MSI-X-entry.patch
-Patch4:         5ff71655-x86-dpci-EOI-regardless-of-masking.patch
-Patch5:         5ffc58c4-ACPI-reduce-verbosity-by-default.patch
-Patch6:         5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
-Patch7:         600999ad-x86-dpci-do-not-remove-pirqs-from.patch
-Patch8:         600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
-Patch9:         6011bbc7-x86-timer-fix-boot-without-PIT.patch
-Patch10:        6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
-Patch11:        6013e546-x86-HVM-reorder-domain-init-error-path.patch
-Patch12:        601d4396-x86-EFI-suppress-ld-2-36-debug-info.patch
-Patch13:        602bd768-page_alloc-only-flush-after-scrubbing.patch
-Patch14:        602cfe3d-IOMMU-check-if-initialized-before-teardown.patch
-Patch15:        602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
-Patch16:        602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
-Patch17:        602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
-Patch18:        6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
-Patch19:        60410127-gcc11-adjust-rijndaelEncrypt.patch
-Patch20:        60422428-x86-shadow-avoid-fast-fault-path.patch
-Patch21:        604b9070-VT-d-disable-QI-IR-before-init.patch
-Patch22:        60535c11-libxl-domain-soft-reset.patch
-Patch23:        60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
-Patch24:        60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
-Patch25:        60787714-x86-HPET-avoid-legacy-replacement-mode.patch
 # libxc
-Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
 Patch302:       libxc-sr-add-xc_is_known_page_type.patch
 Patch303:       libxc-sr-use-xc_is_known_page_type.patch
@@ -218,9 +191,7 @@ Patch320:       libxc-sr-restore-populate_pfns-pfns.patch
 Patch321:       libxc-sr-restore-read_record.patch
 Patch322:       libxc-sr-restore-handle_buffered_page_data.patch
 Patch323:       libxc-sr-restore-handle_incoming_page_data.patch
-Patch324:       libxc-bitmap-50a5215f30e964a6f16165ab57925ca39f31a849.patch
-Patch325:       libxc-bitmap-longs.patch
-Patch326:       libxc-bitmap-long.patch
+Patch324:       libxc-bitmap-long.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -235,10 +206,10 @@ Patch409:       xenstore-launch.patch
 Patch410:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
-Patch422:       stubdom-have-iovec.patch
-Patch423:       vif-route.patch
-Patch424:       gcc11-fixes.patch
+Patch421:       vif-route.patch
+Patch422:       gcc11-fixes.patch
 # Other bug fixes or features
+Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
 Patch453:       stdvga-cache.patch
@@ -254,10 +225,9 @@ Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
-Patch468:       libxl.fix-libacpi-dependency.patch
-Patch469:       libxl.helper_done-crash.patch
-Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
-Patch471:       libxc.migrate_tracking.patch
+Patch468:       libxl.helper_done-crash.patch
+Patch469:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
+Patch470:       libxc.migrate_tracking.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch
@@ -266,14 +236,12 @@ Patch502:       bin-python3-conversion.patch
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
 Patch602:       x86-cpufreq-report.patch
-Patch603:       xenwatchdogd-options.patch
-Patch604:       xenwatchdogd-restart.patch
+Patch603:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
 Patch99996:     xen.stubdom.newlib.patch
-Patch99999:     reproducible.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version[:3])")
@@ -858,9 +826,6 @@ for name in vtpm-platforms.txt crashdb.txt xenpaging.txt \
     install -m 644 docs/misc/$name %{buildroot}/%{_defaultdocdir}/xen/misc/
 done
 
-mkdir -p %{buildroot}/etc/modprobe.d
-install -m644 %SOURCE28 %{buildroot}/etc/modprobe.d/xen_loop.conf
-
 # xen-utils
 make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
 install -m755 %SOURCE36 %{buildroot}/usr/sbin/xen2libvirt
@@ -992,7 +957,7 @@ rm -rf %{buildroot}/%{with_systemd_modules_load}
 rm -rf %{buildroot}/usr/sbin
 rm -rf %{buildroot}/etc/xen
 rm -rf %{buildroot}/var
-rm -f  %{buildroot}/%{_sysconfdir}/bash_completion.d/xl.sh
+rm -f  %{buildroot}/%{_sysconfdir}/bash_completion.d/xl
 rm -f  %{buildroot}/%{_sysconfdir}/init.d/xen*
 rm -f  %{buildroot}/%{_bindir}/*trace*
 rm -f  %{buildroot}/%{_bindir}/vchan-socket-proxy
@@ -1033,7 +998,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/bin/xentrace_format
 %ifarch x86_64
 /usr/bin/xen-cpuid
-/usr/sbin/xen-ucode
 %endif
 /usr/sbin/xenbaked
 /usr/sbin/xenconsoled
@@ -1046,8 +1010,8 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xenstored
 /usr/sbin/xentop
 /usr/sbin/xentrace
-/usr/sbin/xentrace_setsize
 /usr/sbin/xentrace_setmask
+/usr/sbin/xentrace_setsize
 /usr/sbin/xenwatchdogd
 /usr/sbin/flask-get-bool
 /usr/sbin/flask-getenforce
@@ -1060,13 +1024,16 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %endif
 /usr/sbin/xl
 /usr/sbin/xen2libvirt
+/usr/sbin/xen-access
 /usr/sbin/xen_maskcalc
 %ifarch %ix86 x86_64
 /usr/sbin/xen-hptool
 /usr/sbin/xen-hvmcrash
 /usr/sbin/xen-hvmctx
-/usr/sbin/xen-lowmemd
 /usr/sbin/xen-kdd
+/usr/sbin/xen-lowmemd
+/usr/sbin/xen-memshare
+/usr/sbin/xen-ucode
 %endif
 /usr/sbin/xenhypfs
 /usr/sbin/xen-list
@@ -1081,7 +1048,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /etc/xen/scripts/launch-xenstore
 /etc/xen/scripts/locking.sh
 /etc/xen/scripts/logging.sh
-/etc/xen/scripts/vif2
 /etc/xen/scripts/vif-*
 /etc/xen/scripts/vscsi
 /etc/xen/scripts/xen-hotplug-*
@@ -1120,13 +1086,11 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %config(noreplace) /etc/xen/xenapiusers
 %config(noreplace) /etc/xen/xl.conf
 %config /etc/pam.d/xen-api
-%config /etc/modprobe.d/xen_loop.conf
 %config %{_unitdir}
 %exclude %{_unitdir}/%{name}-vcpu-watch.service
 %exclude %{_unitdir}/xendomains-wait-disks.service
 %config %{with_systemd_modules_load}
-%dir /etc/modprobe.d
-/etc/bash_completion.d/xl.sh
+/etc/bash_completion.d/xl
 %dir %{_libdir}/python%{pyver}/site-packages/grub
 %dir %{_libdir}/python%{pyver}/site-packages/xen
 %dir %{_libdir}/python%{pyver}/site-packages/xen/lowlevel
@@ -1275,7 +1239,6 @@ fi
 %service_add_pre xen-qemu-dom0-disk-backend.service
 
 %post tools
-xen_tools_first_arg=$1
 %{fillup_only -n xencommons xencommons}
 %{fillup_only -n xendomains xendomains}
 %service_add_post xencommons.service

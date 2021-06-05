@@ -1,17 +1,17 @@
-Index: xen-4.14.0-testing/tools/xenstore/Makefile
+Index: xen-4.15.0-testing/tools/xenstore/Makefile
 ===================================================================
---- xen-4.14.0-testing.orig/tools/xenstore/Makefile
-+++ xen-4.14.0-testing/tools/xenstore/Makefile
-@@ -85,7 +85,7 @@ xenstored.a: $(XENSTORED_OBJS)
+--- xen-4.15.0-testing.orig/tools/xenstore/Makefile
++++ xen-4.15.0-testing/tools/xenstore/Makefile
+@@ -76,7 +76,7 @@ xenstored.a: $(XENSTORED_OBJS)
  	$(AR) cr $@ $^
  
  $(CLIENTS): xenstore
 -	ln -f xenstore $@
 +	ln -sf xenstore $@
  
- xenstore: xenstore_client.o $(LIBXENSTORE)
+ xenstore: xenstore_client.o
  	$(CC) $< $(LDFLAGS) $(LDLIBS_libxenstore) $(LDLIBS_libxentoolcore) $(SOCKET_LIBS) -o $@ $(APPEND_LDFLAGS)
-@@ -163,11 +163,12 @@ ifeq ($(XENSTORE_XENSTORED),y)
+@@ -113,11 +113,12 @@ ifeq ($(XENSTORE_XENSTORED),y)
  	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
  	$(INSTALL_DIR) $(DESTDIR)$(XEN_LIB_STORED)
  	$(INSTALL_PROG) xenstored $(DESTDIR)$(sbindir)
@@ -23,5 +23,5 @@ Index: xen-4.14.0-testing/tools/xenstore/Makefile
 -		ln -f $(DESTDIR)$(bindir)/xenstore $(DESTDIR)$(bindir)/$${c} ; \
 +		ln -sf xenstore $(DESTDIR)$(bindir)/$${c} ; \
  	done
- 	$(INSTALL_DIR) $(DESTDIR)$(libdir)
- 	$(INSTALL_SHLIB) libxenstore.so.$(MAJOR).$(MINOR) $(DESTDIR)$(libdir)
+ 
+ .PHONY: uninstall
