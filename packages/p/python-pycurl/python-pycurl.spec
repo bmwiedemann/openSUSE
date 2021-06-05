@@ -1,5 +1,5 @@
 #
-# spec file for package python-pycurl
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -44,6 +44,9 @@ Patch4:         remove_nose.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
 Patch5:         make-leap15-compat.patch
+# PATCH-FIX-UPSTREAM curl7770_compatibility.patch gh#pycurl/pycurl#689 mcepl@suse.com
+# Provide compatiblity with curl 7.77.0+
+Patch6:         curl7770_compatibility.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

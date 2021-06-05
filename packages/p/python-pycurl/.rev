@@ -325,4 +325,14 @@
     <comment></comment>
     <requestid>877724</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>b4b206155fa5e4d5d8e0deb2136aad3f</srcmd5>
+    <version>7.43.0.6</version>
+    <time>1622928682</time>
+    <user>dimstar_suse</user>
+    <comment>- Add curl7770_compatibility.patch to have package compatible
+  with curl 7.77.0.
+</comment>
+    <requestid>897519</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  4 13:59:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add curl7770_compatibility.patch to have package compatible
+  with curl 7.77.0.
+
+-------------------------------------------------------------------
 Mon Mar  8 09:27:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove a failing test-case until fixed in curl:
