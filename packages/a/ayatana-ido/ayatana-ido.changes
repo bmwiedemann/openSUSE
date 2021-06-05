@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  3 16:48:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.8.2
+  * Add a new menu item type: IDO Removable.
+  * Add optional markup to the basic menu item.
+  * Replace x-canonical attributes solely used by Ayatana Indicators
+  * Drop IDO Message Dialog.
+  * Centre playback menu item spinner/Pad application menu item label.
+  * Centre volume control/Stretch calendar horizontally.
+  * Updated colour getter for playback control.
+- Drop upstream fixed
+  * ayatana-ido-glib-2.58.patch
+  * 0001-gtk_widget_get_state-is-deprecated.patch
+- Add pkgconfig-requires.patch
+  * Add all public dependencies to pkgconfig Requires section
+
+-------------------------------------------------------------------
 Wed Sep 16 21:19:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix build:

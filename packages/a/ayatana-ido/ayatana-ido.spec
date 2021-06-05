@@ -1,7 +1,7 @@
 #
 # spec file for package ayatana-ido
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
-%define lname   libayatana-ido3-0_4-0
+%define lname   libayatana-ido3-0_4
 %define soname  libayatana-ido3-0.4
 %define sover   0
 %define typelib typelib-1_0-AyatanaIdo3-0_4
 Name:           ayatana-ido
-Version:        0.4.4
+Version:        0.8.2
 Release:        0
 Summary:        Ayatana Indicator Display Objects
 License:        GPL-3.0-only AND LGPL-3.0-only AND LGPL-2.1-only
 URL:            https://github.com/AyatanaIndicators/ayatana-ido
-Source:         https://github.com/AyatanaIndicators/ayatana-ido/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-#PATCH-FIX-UPSTREAM ayatana-ido-glib-2.58.patch g_type_class_add_private was deprecated since glib 2.58
-Patch0:         ayatana-ido-glib-2.58.patch
-# PATCH-FIX-UPSTREAM 0001-gtk_widget_get_state-is-deprecated.patch -- gtk_widget_get_state is deprecated
-Patch1:         0001-gtk_widget_get_state-is-deprecated.patch
+# PATCH-FIX-UPSTREAM pkgconfig-requires.patch -- https://github.com/AyatanaIndicators/ayatana-ido/issues/37
+Patch0:         pkgconfig-requires.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  mate-common
@@ -46,10 +44,10 @@ BuildRequires:  pkgconfig(xorg-macros)
 %description
 Widgets and other objects used for indicators.
 
-%package -n %{lname}
+%package -n %{lname}-%{sover}
 Summary:        Shared library providing extra GTK+ menu items in system indicators
 
-%description -n %{lname}
+%description -n %{lname}-%{sover}
 Shared library providing extra GTK+ menu items for display in
 system indicators.
 
@@ -67,12 +65,9 @@ Ayatana Ido.
 
 %package devel
 Summary:        Development files for Ayatana Indicator Display Objects
-Requires:       %{lname} = %{version}
+Requires:       %{lname}-%{sover} = %{version}
 Requires:       %{typelib} = %{version}
-Requires:       pkgconfig(gio-2.0) >= 2.37.0
-Requires:       pkgconfig(glib-2.0) >= 2.37.0
 Requires:       pkgconfig(gobject-introspection-1.0)
-Requires:       pkgconfig(gtk+-3.0) >= 3.8.2
 
 %description devel
 Shared library providing extra GTK+ menu items for display in
@@ -92,18 +87,19 @@ NOCONFIGURE=1 mate-autogen
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post -n %{lname}-%{sover} -p /sbin/ldconfig
+%postun -n %{lname}-%{sover} -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %{lname}-%{sover}
 %license COPYING*
-%doc AUTHORS* ChangeLog
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/AyatanaIdo3-0.4.typelib
 
 %files devel
+%license COPYING*
+%doc AUTHORS* ChangeLog
 %{_includedir}/%{soname}/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
