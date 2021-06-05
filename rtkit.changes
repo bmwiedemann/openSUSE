@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 28 21:00:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace systemd-devel BuildRequires with pkgconfig(libsystemd):
+  allow OBS to shortcut through the systemd-mini flavors.
+
+-------------------------------------------------------------------
 Mon Mar  8 22:55:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13:
@@ -11,7 +17,7 @@ Mon Mar  8 22:55:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * some pitfalls (#15 and portability problems). The tarball contains the
   * resulting file, so xxd is not necessary when building using autotools
   * Move rtkit-daemon.service from graphical.target to multi-user.target (#12)
-  * Make libsystemd an optional dependency (#13) 
+  * Make libsystemd an optional dependency (#13)
 
 -------------------------------------------------------------------
 Thu Nov 12 10:48:49 UTC 2020 - Fabian Vogt <fvogt@suse.com>
