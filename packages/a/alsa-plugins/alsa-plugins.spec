@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-plugins
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,16 @@
 %endif
 
 Name:           alsa-plugins
-Version:        1.2.2
+Version:        1.2.5
 Release:        0
 Summary:        Extra Plug-Ins for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.alsa-project.org/
-Source:         ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-%{version}.tar.bz2
+Url:            https://www.alsa-project.org
+Source:         https://www.alsa-project.org/files/pub/plugins/alsa-plugins-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  libtool
-BuildRequires:  pkgconfig(alsa) >= 1.1.6
+BuildRequires:  pkgconfig(alsa) >= 1.2.5
 %if %{build_aaf}
 BuildRequires:  pkgconfig(avtp)
 %endif

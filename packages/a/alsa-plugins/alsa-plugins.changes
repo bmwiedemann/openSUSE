@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 31 11:48:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.5
+  * Support alsa 1.2.5
+  * Fixed A52 Output plugin
+  * upmix: complete generalizing format
+  * jack: add option to allow non-jack-aligned period size
+  * oss: fix the config (port -> device)
+  * pulse: pcm - handle reading pulse stream hole
+  * usb_stream: use snd_config_get_card() to decode the card number 
+
+-------------------------------------------------------------------
 Mon Oct  5 19:25:11 CEST 2020 - tiwai@suse.de
 
 - Placeholder for SLE15-SP3 sync: jsc#SLE-11987
