@@ -204,4 +204,14 @@
     <comment></comment>
     <requestid>868393</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ee3c348b2f733a03fefbcc8dfa358d8e</srcmd5>
+    <version>1.9.12</version>
+    <time>1622928640</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.9.12
+
+Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 from susnux)</comment>
+    <requestid>896576</requestid>
+  </revision>
 </revisionlist>

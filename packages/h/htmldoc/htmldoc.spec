@@ -17,13 +17,13 @@
 
 
 Name:           htmldoc
-Version:        1.9.11
+Version:        1.9.12
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
-Source:         https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
