@@ -476,4 +476,18 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 7.2.0</comment>
     <requestid>882669</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>64e755f59c840886656891734e318866</srcmd5>
+    <version>7.4.0</version>
+    <time>1622928670</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.4.0.
+
+- Update to 7.4.0
+  - Add all new APIs and constants in libvirt 7.4.0
+
+- Update to 7.3.0
+  - Add all new APIs and constants in libvirt 7.3.0</comment>
+    <requestid>896747</requestid>
+  </revision>
 </revisionlist>
