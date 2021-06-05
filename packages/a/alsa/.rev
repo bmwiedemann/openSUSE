@@ -1721,4 +1721,12 @@
   0048-pcm-share-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch (forwarded request 866049 from tiwai)</comment>
     <requestid>866050</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>7f5838153ac746d5a6a13c790eacf86f</srcmd5>
+    <version>1.2.5</version>
+    <time>1622928628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896395</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May 31 11:54:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5
+  * https://www.alsa-project.org/wiki/Changes_v1.2.4_v1.2.5#alsa-lib
+- Drop upstream fixed patches
+  * 0001-dlmisc-the-snd_plugin_dir_set-snd_plugin_dir-must-be.patch
+  * 0002-dlmisc-fix-snd_plugin_dir-locking-for-not-DL_ORIGIN_.patch
+  * 0003-pcm-snd_pcm_mmap_readi-fix-typo-in-comment.patch
+  * 0004-topology-use-inclusive-language-for-bclk.patch
+  * 0005-topology-use-inclusive-language-for-fsync.patch
+  * 0006-topology-use-inclusive-language-in-documentation.patch
+  * 0007-pcm-set-the-snd_pcm_ioplug_status-tstamp-field.patch
+  * 0009-pcm-Add-snd_pcm_audio_tstamp_type_t-constants.patch
+  * 0045-pcm-direct-Fix-the-missing-appl_ptr-update.patch
+  * 0019-pcm-fix-__snd_pcm_state-return-value.patch
+  * 0025-pcm-plugin-optimize-sync-in-snd_pcm_plugin_status.patch
+  * 0026-Revert-pcm_plugin-fix-delay.patch
+  * 0014-rawmidi-fix-memory-leak-in-snd_rawmidi_virtual_open.patch
+  * 0037-topology-tplg_decode_pcm-add-missing-log-argument-co.patch
+  * 0040-topology-sort_config-cleanups-use-goto-for-the-error.patch
+  * 0028-pcm-rate-tidy-up-snd_pcm_rate_avail_update.patch
+  * 0046-pcm-ioplug-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_statu.patch
+  * 0030-pcm-rate-use-pcm_frame_diff-in-snd_pcm_rate_playback.patch
+  * 0047-pcm-null-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+  * 0043-pcm-dmix-dshare-delay-calculation-fixes-and-cleanups.patch
+  * 0042-pcm_plugin-set-the-initial-hw_ptr-appl_ptr-from-the-.patch
+  * 0011-pcm-Fix-a-typo-in-SND_PCM_AUDIO_TSTAMP_TYPE_LAST-def.patch
+  * 0017-pcm_multi-remove-dead-assignment-from-_snd_pcm_multi.patch
+  * 0027-pcm-ioplug-fix-the-delay-calculation-in-the-status-c.patch
+  * 0041-conf-USB-add-Xonar-U7-MKII-to-USB-Audio.pcm.iec958_d.patch
+  * 0016-pcm-remove-dead-assignments-from-snd_pcm_rate_-commi.patch
+  * 0035-topology-tplg_pprint_integer-fix-coverity-uninitaliz.patch
+  * 0034-ucm-fix-possible-memory-leak-in-parse_verb_file.patch
+  * 0021-conf-fix-return-code-in-_snd_config_load_with_includ.patch
+  * 0023-pcm-plugin-status-revert-the-recent-changes.patch
+  * 0020-confmisc-fix-memory-leak-in-snd_func_concat.patch
+  * 0029-pcm-ioplug-fix-the-delay-calculation-for-old-plugins.patch
+  * 0039-ucm-uc_mgr_substitute_tree-fix-use-after-free.patch
+  * 0024-pcm-plugin-tidy-snd_pcm_plugin_avail_update.patch
+  * 0010-test-audio_time-Make-use-of-SND_PCM_AUDIO_TSTAMP_TYP.patch
+  * 0033-pcm-rate-fix-the-capture-delay-values.patch
+  * 0015-timer-fix-sizeof-operator-mismatch-in-snd_timer_quer.patch
+  * 0036-topology-tplg_add_widget_object-do-not-use-invalid-e.patch
+  * 0044-topology-fix-parse_tuple_set-remove-dead-condition-c.patch
+  * 0038-topology-parse_tuple_set-remove-dead-condition-code.patch
+  * 0018-conf-fix-get_hexachar-return-value.patch
+  * 0013-ucm-fix-bad-frees-in-get_list0-and-get_list20.patch
+  * 0012-conf-fix-use-after-free-in-_snd_config_load_with_inc.patch
+  * 0031-pcm-plugin-fix-status-code-for-capture.patch
+  * 0048-pcm-share-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+  * 0032-pcm-rate-use-pcm_frame_diff-on-related-places.patch
+  * 0022-pcm-plugin-status-fix-the-return-value-regression.patch
+
+-------------------------------------------------------------------
 Fri Jan 22 15:50:07 CET 2021 - tiwai@suse.de
 
 - Yet more fixes for the crash with dmix plugin (bsc#1181194):
