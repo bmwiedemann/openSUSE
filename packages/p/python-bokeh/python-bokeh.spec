@@ -16,11 +16,10 @@
 #
 
 
-# tests suite disabled by default. See below.
-%bcond_with    tests
-
 %define skip_python2 1
 %define skip_python36 1
+# tests suite disabled by default. See below.
+%bcond_with     tests
 Name:           python-bokeh
 Version:        2.3.0
 Release:        0
@@ -39,17 +38,6 @@ BuildRequires:  %{python_module tornado >= 5.1}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-%if %{with tests}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
-BuildRequires:  %{python_module selenium}
-# Note: If you manage to activate the test suite, try to patch external mock out.
-BuildRequires:  %{python_module mock}
-%endif
-# /SECTION
 BuildConflicts: python-buildservice-tweak
 Requires:       python-Jinja2 >= 2.7
 Requires:       python-Pillow >= 7.1.0
@@ -60,8 +48,22 @@ Requires:       python-python-dateutil >= 2.1
 Requires:       python-tornado >= 5.1
 Requires:       python-typing_extensions >= 3.7.4
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+%if %{with tests}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module flaky}
+# Note: If you manage to activate the test suite, try to patch external mock out.
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module networkx}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module selenium}
+%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -90,9 +92,9 @@ with interactivity over large or streaming datasets.
 
 %if %{with tests}
 %check
-# Running the test suite (with datafiles from the GitHub archive) fails 
+# Running the test suite (with datafiles from the GitHub archive) fails
 # due to missing server/client setups, chromedriver, selenium etc.
-%pytest --no-js
+%pytest -k 'not (selenium or sampledata)'
 %endif
 
 %post

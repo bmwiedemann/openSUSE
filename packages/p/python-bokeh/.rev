@@ -223,4 +223,13 @@
     <comment></comment>
     <requestid>875601</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b1c83014f2fa36b189fada4954f34bc5</srcmd5>
+    <version>2.3.0</version>
+    <time>1622928710</time>
+    <user>dimstar_suse</user>
+    <comment>- Test suite complete useless.
+</comment>
+    <requestid>897701</requestid>
+  </revision>
 </revisionlist>
