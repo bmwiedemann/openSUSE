@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  5 03:02:08 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Add 0003-prioritize-gtk2.patch and enable GTK integration.
+  Fixes boo#1149986 regression.
+
+-------------------------------------------------------------------
 Fri May 28 10:41:04 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Temporarily stick to GCC10 to work around build failures

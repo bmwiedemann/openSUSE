@@ -43,6 +43,8 @@ Source1:        tg_owt-master.zip
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
+# PATCH-FIX-OPENSUSE boo#1149986
+Patch3:         0003-prioritize-gtk2.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -72,6 +74,7 @@ BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
+BuildRequires:  webkit2gtk3-devel
 BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
@@ -153,6 +156,7 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}-full
 %patch1 -p2
+%patch3 -p1
 
 cd ../
 unzip -q %{S:1}
@@ -198,8 +202,7 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
-      -DDESKTOP_APP_SPECIAL_TARGET="" \
-      -DDESKTOP_APP_DISABLE_GTK_INTEGRATION=ON
+      -DDESKTOP_APP_SPECIAL_TARGET=""
 
 %cmake_build
 

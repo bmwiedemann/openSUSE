@@ -647,4 +647,13 @@
 - Update tg_owt</comment>
     <requestid>896097</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>4dfcaa5d837189ba5c81eccddadd049f</srcmd5>
+    <version>2.7.5</version>
+    <time>1622928712</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0003-prioritize-gtk2.patch and enable GTK integration.
+  Fixes boo#1149986 regression.</comment>
+    <requestid>897722</requestid>
+  </revision>
 </revisionlist>

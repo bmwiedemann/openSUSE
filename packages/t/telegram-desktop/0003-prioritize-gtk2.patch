@@ -1,0 +1,19 @@
+diff --git a/Telegram/lib_base/base/platform/linux/base_linux_gtk_integration.cpp b/Telegram/lib_base/base/platform/linux/base_linux_gtk_integration.cpp
+index bafd075..315bab7 100644
+--- a/Telegram/lib_base/base/platform/linux/base_linux_gtk_integration.cpp
++++ b/Telegram/lib_base/base/platform/linux/base_linux_gtk_integration.cpp
+@@ -239,12 +239,12 @@ void GtkIntegration::load() {
+ 	DEBUG_LOG(("Icon theme: %1").arg(QIcon::themeName()));
+ 	DEBUG_LOG(("Fallback icon theme: %1").arg(QIcon::fallbackThemeName()));
+ 
+-	if (LoadGtkLibrary(_lib, "gtk-3", 0)) {
++	if (LoadGtkLibrary(_lib, "gtk-x11-2.0", 0)) {
+ 		Loaded = SetupGtkBase(_lib);
+ 	}
+ 	if (!Loaded
+ 		&& !TriedToInit
+-		&& LoadGtkLibrary(_lib, "gtk-x11-2.0", 0)) {
++		&& LoadGtkLibrary(_lib, "gtk-3", 0)) {
+ 		Loaded = SetupGtkBase(_lib);
+ 	}
+ 
