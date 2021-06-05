@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 27 12:30:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.37:
+  * removal of the actual POSIX names regcomp etc. from the POSIX 
+    wrapper library because these have caused issues for some
+    applications, replacing pcre2-symbol-clash.patch
+  * fix a hypothetical NULL dereference
+  * fix two bugs related to over-large numbers so the behaviour is
+    now the same as Perl
+  * Fix propagation of \K back from the full pattern recursion
+  * Restore single character repetition optimization in JIT
+
+-------------------------------------------------------------------
 Wed Apr 14 09:57:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove regcomp, regexec etc. from libpcre2-posix.
