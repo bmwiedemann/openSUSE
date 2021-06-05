@@ -238,4 +238,12 @@
     <comment>Just updating the changelog for armv7l enablement (bsc#1181571)</comment>
     <requestid>875117</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>e606fd2ca028106f079a96f1a485af78</srcmd5>
+    <version>1.1.8</version>
+    <time>1622928639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896570</requestid>
+  </revision>
 </revisionlist>

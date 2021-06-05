@@ -22,8 +22,8 @@ Release:        0
 Summary:        LD_PRELOAD-able library that translates OSS into ALSA calls
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-URL:            http://www.alsa-project.org/
-Source:         ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-%{version}.tar.bz2
+URL:            https://www.alsa-project.org
+Source:         %{url}/files/pub/oss-lib/alsa-oss-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  libtool
