@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Mon May 31 09:44:17 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202105
+  * MdeModulePkg/UfsPassThruDxe: Improve Device initialization
+    polling Loop
+  * MdePkg: MmUnblockMemoryLib: Added definition and null instance
+  * OvmfPkg: resolve MmUnblockMemoryLib (mainly for
+    VariableSmmRuntimeDxe)
+  * MdeModulePkg: VariableSmmRuntimeDxe: Added request unblock
+    memory interface
+  * SecurityPkg: Tcg2Smm: Switching from gSmst to gMmst
+  * SecurityPkg: Tcg2Smm: Separate Tcg2Smm into 2 modules
+  * SecurityPkg: Tcg2Smm: Added support for Standalone Mm
+  * SecurityPkg: Tcg2Acpi: Added unblock memory interface for NVS
+    region
+  * UefiCpuPkg/MpInitLib: Use NASM struc to avoid hardcode offset
+  * UefiCpuPkg/MpInitLib: Remove unused Lock from
+    MP_CPU_EXCHANGE_INFO
+  * UefiCpuPkg/SmmCpuFeaturesLib: Move multi-instance function decl
+    to header
+  * UefiCpuPkg/SmmCpuFeaturesLib: Rename SmmCpuFeaturesLib.c
+  * UefiCpuPkg/SmmCpuFeaturesLib: Cleanup library constructors
+  * UefiCpuPkg/SmmCpuFeaturesLib: Abstract PcdCpuMaxLogicalProcessorNumber
+  * UefiCpuPkg/SmmCpuFeaturesLib: Add Standalone MM support
+  * UefiCpuPkg/PiSmmCpu: Don't allocate Token for SmmStartupThisAp
+  * RedfishPkg/Library: RedfishLib
+  * OvmfPkg/CpuHotplugSmm: refactor hotplug logic
+  * OvmfPkg/CpuHotplugSmm: collect hot-unplug events
+  * OvmfPkg/CpuHotplugSmm: add Qemu Cpu Status helper
+  * OvmfPkg/CpuHotplugSmm: introduce UnplugCpus()
+  * OvmfPkg: define CPU_HOT_EJECT_DATA
+  * OvmfPkg/SmmCpuFeaturesLib: init CPU ejection state
+  * OvmfPkg/SmmCpuFeaturesLib: call CPU hot-eject handler
+  * OvmfPkg/CpuHotplugSmm: add EjectCpu()
+  * OvmfPkg/CpuHotplugSmm: do actual CPU hot-eject
+  * OvmfPkg/SmmControl2Dxe: negotiate CPU hot-unplug
+  * EmbeddedPkg/PrePiHobLib: replace duplicate GUID
+  * MdePkg/UefiLib: Correct the arguments passed to
+    IsLanguageSupported()
+  * UefiCpuPkg/CpuCacheInfoLib: Collect cache associative type
+  * UefiCpuPkg/MpInitLib: avoid printing debug messages in AP
+  * UefiCpuPkg/CpuDxe: Rename variables to follow EDKII coding
+    standard
+  * UefiCpuPkg/CpuDxe: Guarantee GDT is below 4GB
+  * BaseTools/Ecc: Make Ecc only check first include guard
+  * ShellPkg/SmbiosView: add more items for smbiosview -t 3
+  * MdePkg: Support standalone MM Driver Unload capability
+  * OvmfPkg/X86QemuLoadImageLib: Handle allocation failure for
+    CommandLine
+  * ShellPkg/Pci: Add valid check for PCI extended config space
+    parser
+  * CryptoPkg/OpensslLib: Upgrade OpenSSL to 1.1.1j
+  * OvmfPkg: strip build paths in release builds
+  * MdeModulePkg: Initialize local variable value before they are
+    used
+  * UefiCpuPkg/SmmCommunication: Remove out-dated comments
+  * MdePkg: use CpuPause() in CpuDeadLoop()
+  * MdePkg/Include: EFI Redfish Discover protocol
+  * ShellPkg/UefiHandleParsingLib: Support EFI Redfish protocols
+  * MdePkg/Include/Protocol: EFI_HII POPUP_PROTOCOL duplicate
+    declaration
+  * MdePkg/Include/Protocol: EFI_RESET_NOTIFICATION_PROTOCOL
+    duplicate
+  * CryptoPkg/Private/Protocol/Crypto.h: Remove duplicate function
+    type
+  * MdePkg/BaseLib: Add support for the XSETBV instruction
+  * MdeModulePkg/PiDxeS3BootScriptLib: Rename mAcpiS3Enable to
+    avoid dup symbol
+  * MdePkg/IoLib: Filter/trace port IO/MMIO access
+  * MdePkg/Baseib: Filter/trace MSR access for IA32/X64
+  * UefiCpuPkg: Remove PEI/DXE instances of CpuTimerLib.
+  * UefiCpuPkg: Add MicrocodeLib for loading microcode
+  * OvmfPkg: Add MicrocodeLib in DSC files.
+  * UefiPayloadPkg/UefiPayloadPkg.dsc: Consume MicrocodeLib
+  * UefiCpuPkg/MpInitLib: Consume MicrocodeLib to remove duplicated
+    code
+  * UefiCpuPkg/PiSmmCpuDxeSmm: Support detect SMM shadow stack
+    overflow
+  * ShellPkg: Fix smbiosview system enclosure type table
+  * UefiCpuPkg/CpuTimerLib: Update LIBRARY_CLASS of Base instance.
+  * RedfishPkg/RedfishDiscoverDxe: EFI Redfish Discover Protocol
+  * RedfishPkg/RedfishConfigHandler: EDKII RedfishConfigHandler
+    Protocol
+  * UefiCpuPkg: PiSmmCpuDxeSmm: Check buffer size before accessing
+  * BaseTools/Conf: Fix MAKE_FLAGS typos in tools_def.template
+  * MdeModulePkg: Initialize temp variable in VarCheckPolicyLib
+  * SecurityPkg/Tcg2Smm: Initialize local Status variable
+  * DynamicTablesPkg: add validation for PcdNonBsaCompliant16550SerialHid
+  * OvmfPkg/XenResetVector: Silent a warning from nasm
+  * MdePkg: Allow PcdFSBClock to by Dynamic
+  * OvmfPkg/IndustryStandard/Xen: Apply EDK2 coding style to
+    XEN_VCPU_TIME_INFO
+  * OvmfPkg/IndustryStandard: Introduce PageTable.h
+  * OvmfPkg/XenPlatformPei: Map extra physical address
+  * OvmfPkg/XenPlatformPei: Calibrate APIC timer frequency
+  * OvmfPkg/OvmfXen: Set PcdFSBClock
+  * DynamicTablesPkg: Re-order GicItsIdentifierArray struct
+  * DynamicTablesPkg: Remove EArmObjExtendedInterruptInfo
+  * MdePkg: Fix AsmReadMsr64() and AsmWriteMsr64() with GCC
+    toolchain
+  * BaseTools/PlatformAutoGen: MAKE_FLAGS and MAKE_PATH fixes
+  * RedfishPkg/RestJsonStructureDxe: Fix typo in function header
+  * MdePkg/Include: Allow CPU specific defines to be predefined
+  * CryptoPkg/Library/Include: Allow CPU specific defines to be
+    predefined
+  * ArmPlatformPkg: Fix Ecc error 8001
+  * ArmPlatformPkg: Fix Ecc error 9001
+  * ArmPlatformPkg: Remove package dependency in
+    NorFlashStandaloneMm
+  * ArmPkg: Fix Ecc error 8001 in Chipset
+  * ArmPkg: Fix Ecc error 8001 in SemihostLib
+  * ArmPkg: Fix Ecc error 8001 in ArmArchTimerLib
+  * ArmPkg: Fix Ecc error 9005 in CpuDxe
+  * ArmPkg: Fix Ecc error 10006 in ArmPkg.dsc
+  * ArmPkg: Fix Ecc error 10016 in StandaloneMmMmuLib
+  * ArmPkg: Fix Ecc error 10014 in ArmScmiDxe
+  * ArmPkg: Fix Ecc error 10014 in GenericWatchdogDxe
+  * ArmPkg: Fix Ecc error 10014 in MmCommunicationDxe
+  * ArmPkg: Fix Ecc error 10014 in SemihostLib
+  * ArmPkg: Remove ArmGic/ArmGicSecLib.c
+  * ArmPkg: Fix Ecc error 5003 in ArmExceptionLib
+  * ArmPkg: Fix Ecc error 6001 in MmCommunicationDxe
+  * ArmPkg: Fix Ecc error 6001 in ArmSoftFloatLib
+  * ArmPkg: Rename include guard in ArmGicLib.h
+  * ArmPkg: Fix Ecc error 7008 for SCMI_CLOCK_RATE
+  * ArmPkg: Fix Ecc error 7008 for OPTEE_MESSAGE_PARAM
+  * ArmPkg: Fix Ecc error 8005/8007 in ArmDisassemblerLib
+  * ArmPkg: Fix Ecc error 8005 for SCMI_PROTOCOL_ID
+  * ArmPkg: Fix Ecc error 8005 for SCMI_MESSAGE_TYPE
+  * ArmPkg: Fix Ecc error 8005 for SCMI_STATUS
+  * ArmPkg: Fix Ecc error 8005 for SCMI_MESSAGE_ID
+  * ArmPkg: Fix Ecc error 8005 for SCMI_MESSAGE_ID_BASE
+  * ArmPkg: Fix Ecc error 8005 for SCMI_MESSAGE_ID_CLOCK
+  * ArmPkg: Fix Ecc error 8005 for SCMI_CLOCK_RATE_FORMAT
+  * ArmPkg: Fix Ecc error 8005 for SCMI_MESSAGE_ID_PERFORMANCE
+  * RedfishPkg: Add EDK2 Redfish Foundation diagrams
+  * SecurityPkg/FvReportPei: remove redundant sizeof
+  * ShellPkg: Rename Address Size to Access size
+  * DynamicTablesPkg: Add access size to CM_ARM_SERIAL_PORT_INFO
+  * DynamicTablesPkg: Set the Access size for the SPCR table
+  * DynamicTablesPkg: Set the Access size for the DBG2 table
+  * UefiCpuPkg: PiSmmCpuDxeSmm: Not to Change Bitwidth During
+    Static Paging
+  * MdePkg/Cpuid.h: Define new element in CPUID Leaf(07h) data
+    structure.
+  * SecurityPkg: Add constraints on PK strength
+  * ArmPkg: Allow platforms to supply more data for SMBIOS Type3
+    record
+  * ArmPkg: Allow platforms to report their boot status via
+    OemMiscLib call
+  * ArmPkg: Fix calculation of offset of chassis SKU Number in
+    SmbiosMiscDxe
+  * ArmPkg: Fix typo of Manufacturer in comment in SmbiosMiscDxe
+  * ArmPkg: Fix Ecc error 8003
+  * ArmPkg: Fix Ecc error 3002 in StandaloneMmMmuLib
+  * ArmPkg: Add missing library headers to ArmPkg.dec
+  * ArmPlatformPkg: Document libraries in ArmPlatformPkg.dec
+  * ArmPkg: Add OemMiscLibNull library to ArmPkg.dsc
+  * ArmPkg: Correct small typos
+  * ArmPlatformPkg: Add ArmPlatformPkg.ci.yaml
+  * OvfmPkg/VmgExitLib: Properly decode MMIO MOVZX and MOVSX
+    opcodes
+  * OvmfPkg/VmgExitLib: Add support for new MMIO MOV opcodes
+  * OvmfPkg: Define a new PPI GUID to signal TPM MMIO accessability
+  * OvmfPkg/TpmMmioSevDecryptPei: Mark TPM MMIO range as
+    unencrypted for SEV-ES
+  * OvmfPkg/Tcg2ConfigPei: Update Depex for IA32 and X64
+  * ArmPkg: Update SCMI Base Protocol version to 0x20000
+  * MdePkg/BaseRngLib: Add support for ARMv8.5 RNG instructions
+  * SecurityPkg: Add support for RngDxe on AARCH64
+  * UefiCpuPkg/MpInitLib: Properly cast from PCD to SEV-ES jump
+    table pointer
+  * BaseTools: Add support for version 3 of FMP Image Header
+    structure
+  * CryptoPkg: BaseCryptLib: Add RSA PSS verify support
+  * ShellPkg/UefiShellCommandLib: suppress incorrect gcc warning
+  * OvmfPkg/VirtioFsDxe: suppress incorrect gcc warnings
+  * UefiCpuPkg/CpuExceptionHandler: Add missing comma to exception
+    name array
+  * UefiCpuPkg/PiSmmCpu: Remove hardcode 48 address size limitation
+  * MdeModulePkg: Retrieve boot manager menu from any fv
+  * ShellPkg/HttpDynamicCommand: Fix possible uninitialized use
+  * MdeModulePkg/PciBusDxe: Fix possible uninitialized use
+  * CryptoPkg/BaseCryptLib: Fix possible uninitialized use
+  * MdeModulePkg/PlatformDriOverrideDxe: Fix overflow condition
+    check
+  * MdeModulePkg/VariableLock: downgrade compatibility warnings to
+    DEBUG_WARN
+  * ArmPkg/ArmGic: Fix maximum number of interrupts in GICv3
+- Update openssl to 1.1.1j
+- Drop upstreamed patch: ovmf-bsc1184801-fix-sev-with-tpm.patch
+- Add the new Xen flavor for x86_64
+  + Update 50-xen-hvm-x86_64.json to use ovmf-x86_64-xen-4m.bin as
+    the default firmware for Xen
+
+-------------------------------------------------------------------
 Tue May  4 02:58:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the descriptors to add "acpi-s4" tag to allow libvirt

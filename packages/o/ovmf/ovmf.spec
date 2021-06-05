@@ -18,11 +18,11 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 1.1.1g
+%global openssl_version 1.1.1j
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202102
+Version:        202105
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -51,7 +51,6 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
-Patch7:         %{name}-bsc1184801-fix-sev-with-tpm.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -169,7 +168,6 @@ rm -rf $PKG_TO_REMOVE
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -344,8 +342,22 @@ find $src_list \( -name "*.c" -o -name "*.h" \) -type f -exec cp --parents -a {}
 find source/ovmf-x86_64 -name *.c -type f -exec chmod 0644 {} \;
 %endif
 
+# The extra Xen flavor for x86_64
+BUILD_OPTION_X64_XEN=" \
+	-p OvmfPkg/OvmfXen.dsc \
+	-a X64 \
+	-b DEBUG \
+	-t $TOOL_CHAIN \
+"
+#  Build the 2MB Xen flavor
+build $BUILD_OPTION_X64_XEN -D FD_SIZE_2MB
+cp Build/OvmfX64/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen.bin
+#  Build the 4MB Xen flavor
+build $BUILD_OPTION_X64_XEN -D FD_SIZE_4MB
+cp Build/OvmfX64/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen-4m.bin
+
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/OvmfX64/
+rm -rf Build/OvmfX64/ Build/Ovmf3264/
 
 # Build with keys done later (shared between archs)
 

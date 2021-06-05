@@ -499,4 +499,14 @@
 - Add ovmf-bsc1184801-fix-sev-with-tpm.patch to fix SEV-ES guest crash with TPM (bsc#1184801)</comment>
     <requestid>890204</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>559b47a079d51b07111fb7b455f8b2dc</srcmd5>
+    <version>202105</version>
+    <time>1622928621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to edk2-stable202105
+- Update openssl to 1.1.1j
+- Add the new Xen flavor for x86_64</comment>
+    <requestid>896325</requestid>
+  </revision>
 </revisionlist>
