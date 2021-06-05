@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,17 @@
 #
 
 
+%bcond_without testsuite
+
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 79ffe44
+#global clknetsim_ver 79ffe44
+%global clknetsim_ver f89702d
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           chrony
-Version:        3.5.1
+Version:        4.1
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -42,20 +45,19 @@ Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/c
 Source11:       chrony-tmpfiles
 Source12:       pool.conf.suse
 Source13:       pool.conf.opensuse
+Source99:       series
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         chrony-config.patch
 # Add NTP servers from DHCP when starting service
 Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
-Patch4:         chrony-test-fix-util-unit-test-for-NTP-era-split.patch
-Patch5:         chrony-test-update-processing-of-packet-log.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  gcc-c++
+BuildRequires:  gnutls-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libedit-devel
-BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pps-tools-devel
 # The timezone package is needed for the "make check" tests. It can be
@@ -120,6 +122,7 @@ Provides:       %name-pool-nonempty
 Conflicts:      otherproviders(%name-pool)
 Requires:       %name = %version
 BuildArch:      noarch
+Supplements:    (chrony and branding-openSUSE)
 RemovePathPostfixes: .opensuse
 
 %description pool-openSUSE
@@ -133,6 +136,7 @@ Provides:       %name-pool = %version
 Conflicts:      otherproviders(%name-pool)
 Requires:       %name = %version
 BuildArch:      noarch
+Supplements:    (chrony and branding-SLE)
 RemovePathPostfixes: .empty
 
 %description pool-empty
@@ -147,8 +151,6 @@ sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH1}
 %patch1 -p1
 %patch2 -p1
 %patch3
-%patch4 -p1
-%patch5 -p1
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
@@ -175,9 +177,7 @@ export CFLAGS="%{optflags} -Wall -fpic -DPIC $(pkg-config --cflags libseccomp)"
 export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 %configure                                  \
   --docdir="%{_docdir}/%{name}"             \
-  %if %{with syscallfilter}
   --enable-scfilter                         \
-  %endif
   --with-user=chrony                        \
   --with-hwclockfile=%{_sysconfdir}/adjtime \
   --with-sendmail=%{_sbindir}/sendmail      \
@@ -191,7 +191,7 @@ install -Dpm 0644 chrony.conf \
 mkdir %{buildroot}%{_sysconfdir}/chrony.d
 install -Dpm 0640 examples/chrony.keys.example \
   %{buildroot}%{_sysconfdir}/chrony.keys
-install -Dpm 0755 examples/chrony.nm-dispatcher \
+install -Dpm 0755 examples/chrony.nm-dispatcher.onoffline \
   %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/20-chrony
 install -Dpm 0755 %{SOURCE3} \
   %{buildroot}%{_sysconfdir}/dhcp/dhclient.d/chrony.sh
@@ -229,6 +229,7 @@ touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}
 install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}/etc/chrony.d
 touch %{buildroot}/etc/chrony.d/pool.conf.empty
 
+%if %{with testsuite}
 %ifnarch %ix86
 %check
 # Set random seed to get deterministic results
@@ -236,6 +237,7 @@ export CLKNETSIM_RANDOM_SEED=24501
 export CFLAGS="%{optflags}"
 make %{?_smp_mflags} -C test/simulation/clknetsim
 make %{?_smp_mflags} check
+%endif
 %endif
 
 %pre

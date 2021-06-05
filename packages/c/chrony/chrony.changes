@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Jun  1 12:53:23 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 4.1
+  * Add support for NTS servers specified by IP address (matching
+    Subject Alternative Name in server certificate)
+  * Add source-specific configuration of trusted certificates
+  * Allow multiple files and directories with trusted certificates
+  * Allow multiple pairs of server keys and certificates
+  * Add copy option to server/pool directive
+  * Increase PPS lock limit to 40% of pulse interval
+  * Perform source selection immediately after loading dump files
+  * Reload dump files for addresses negotiated by NTS-KE server
+  * Update seccomp filter and add less restrictive level
+  * Restart ongoing name resolution on online command
+  * Fix dump files to not include uncorrected offset
+  * Fix initstepslew to accept time from own NTP clients
+  * Reset NTP address and port when no longer negotiated by NTS-KE
+    server
+- Update clknetsim to snapshot f89702d.
+- Refresh chrony.keyring from
+  https://chrony.tuxfamily.org/gpgkey-8F375C7E8D0EE125A3D3BD51537E2B76F7680DAC.asc
+- Ensure the correct pool packages are installed for openSUSE
+  and SLE (bsc#1180689).
+
+-------------------------------------------------------------------
+Fri Feb  5 09:38:02 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Enable syscallfilter unconditionally [boo#1181826].
+
+-------------------------------------------------------------------
+Mon Dec  7 09:53:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop buildrequires on NSS. We need gnutls for NTS anyway and we
+  can do all the other required crypto via nettle+gnutls. no need
+  for another crypto library.
+
+-------------------------------------------------------------------
+Sun Nov  1 22:26:48 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0
+  - Enhancements
+    - Add support for Network Time Security (NTS) authentication
+    - Add support for AES-CMAC keys (AES128, AES256) with Nettle
+    - Add authselectmode directive to control selection of
+      unauthenticated sources
+    - Add binddevice, bindacqdevice, bindcmddevice directives
+    - Add confdir directive to better support fragmented
+      configuration
+    - Add sourcedir directive and "reload sources" command to
+      support dynamic NTP sources specified in files
+    - Add clockprecision directive
+    - Add dscp directive to set Differentiated Services Code Point
+      (DSCP)
+    - Add -L option to limit log messages by severity
+    - Add -p option to print whole configuration with included
+      files
+    - Add -U option to allow start under non-root user
+    - Allow maxsamples to be set to 1 for faster update with -q/-Q
+      option
+    - Avoid replacing NTP sources with sources that have
+      unreachable address
+    - Improve pools to repeat name resolution to get "maxsources"
+      sources
+    - Improve source selection with trusted sources
+    - Improve NTP loop test to prevent synchronisation to itself
+    - Repeat iburst when NTP source is switched from offline state
+      to online
+    - Update clock synchronisation status and leap status more
+      frequently
+    - Update seccomp filter
+    - Add "add pool" command
+    - Add "reset sources" command to drop all measurements
+    - Add authdata command to print details about NTP
+      authentication
+    - Add selectdata command to print details about source
+      selection
+    - Add -N option and sourcename command to print original names
+      of sources
+    - Add -a option to some commands to print also unresolved
+      sources
+    - Add -k, -p, -r options to clients command to select, limit,
+      reset data
+  - Bug fixes
+    - Don’t set interface for NTP responses to allow asymmetric
+      routing
+    - Handle RTCs that don’t support interrupts
+    - Respond to command requests with correct address on
+      multihomed hosts
+  - Removed features
+    - Drop support for RIPEMD keys (RMD128, RMD160, RMD256, RMD320)
+    - Drop support for long (non-standard) MACs in NTPv4 packets
+      (chrony 2.x clients using non-MD5/SHA1 keys need to use
+      option "version 3")
+    - Drop support for line editing with GNU Readline
+- add BuildRequires for gnutls-devel (which also pulls nettle to
+  enable the new features)
+- drop patches which are included in the update:
+  chrony-test-update-processing-of-packet-log.patch
+  chrony-test-fix-util-unit-test-for-NTP-era-split.patch
+- refreshed chrony-config.patch
+- track series file for easier quilt setup
+- added option to turn off testsuite with
+  osc build --without=testsuite
+
+  testsuite still runs by default
+
+-------------------------------------------------------------------
 Wed Oct 28 07:49:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - By default we don't write log files but log to journald, so
