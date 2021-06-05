@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 09:29:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix a broken symlink. libcap-devel installs libpsx.so but
+  didn't install the library it's pointing to.
+
+-------------------------------------------------------------------
 Fri Apr 16 16:05:30 CEST 2021 - tiwai@suse.de
 
 - Add explicit dependency on libcap2 with version to libcap-progs

@@ -66,6 +66,7 @@ Summary:        Development files for libcap
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libcap2 = %{version}
+Requires:       libpsx2 = %{version}
 
 %description devel
 Development files (Headers, libraries for static linking, etc) for
