@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.36
+Version:        10.37
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
@@ -31,7 +31,6 @@ Source3:        %{name}.keyring
 Source4:        baselibs.conf
 #PATCH-FIX-OPENSUSE tchvatal@suse.cz upstream thinks it is good idea to use rpath, taken from RH
 Patch1:         pcre2-10.10-multilib.patch
-Patch2:         pcre2-symbol-clash.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -55,7 +54,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libpcre2-16-0 = %{version}
 Requires:       libpcre2-32-0 = %{version}
 Requires:       libpcre2-8-0 = %{version}
-Requires:       libpcre2-posix2 = %{version}
+Requires:       libpcre2-posix3 = %{version}
 Requires:       libstdc++-devel
 
 %description devel
@@ -124,11 +123,11 @@ API.
 
 libpcre2-32 supports 32-bit and UTF-32 strings.
 
-%package -n libpcre2-posix2
+%package -n libpcre2-posix3
 Summary:        A library for Perl-compatible regular expressions
 Group:          System/Libraries
 
-%description -n libpcre2-posix2
+%description -n libpcre2-posix3
 The PCRE2 library is a set of functions that implement regular
 expression pattern matching using the same syntax and semantics
 as Perl 5.
@@ -216,8 +215,8 @@ export LANG=POSIX
 %postun -n libpcre2-16-0 -p /sbin/ldconfig
 %post -n libpcre2-32-0 -p /sbin/ldconfig
 %postun -n libpcre2-32-0 -p /sbin/ldconfig
-%post -n libpcre2-posix2 -p /sbin/ldconfig
-%postun -n libpcre2-posix2 -p /sbin/ldconfig
+%post -n libpcre2-posix3 -p /sbin/ldconfig
+%postun -n libpcre2-posix3 -p /sbin/ldconfig
 
 %files -n libpcre2-8-0
 %license COPYING LICENCE
@@ -232,7 +231,7 @@ export LANG=POSIX
 %license LICENCE
 %{_libdir}/libpcre2-32.so.*
 
-%files -n libpcre2-posix2
+%files -n libpcre2-posix3
 %license LICENCE
 %{_libdir}/libpcre2-posix.so.*
 
