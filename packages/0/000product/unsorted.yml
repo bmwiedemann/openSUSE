@@ -83,6 +83,7 @@ unsorted:
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
   - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
+  - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
   - Mesa-libEGL-devel 
@@ -1180,6 +1181,7 @@ unsorted:
   - bean-validation-api-javadoc 
   - beansbinding 
   - beansbinding-javadoc 
+  - bees 
   - beets 
   - beforelight 
   - beignet 
@@ -3869,7 +3871,6 @@ unsorted:
   - fuse3-devel 
   - fuse3-doc 
   - fuseiso 
-  - fusepod 
   - fusesmb 
   - fusesource-pom 
   - fusion-icon 
@@ -6097,7 +6098,7 @@ unsorted:
   - grafana-sap-hana-dashboards 
   - grafana-sap-netweaver-dashboards 
   - grafana-sap-providers 
-  - grafana-sleha-cluster-provider 
+  - grafana-sleha-provider 
   - grafana-status-panel 
   - grafx2 
   - grail 
@@ -11538,26 +11539,26 @@ unsorted:
   - libkdumpfile-devel 
   - libkdumpfile8 
   - libkea-asiodns12 
-  - libkea-asiolink25 
+  - libkea-asiolink26 
   - libkea-cc23 
-  - libkea-cfgclient23 
+  - libkea-cfgclient24 
   - libkea-cryptolink16 
-  - libkea-database22 
-  - libkea-dhcp++33 
+  - libkea-database23 
+  - libkea-dhcp++34 
   - libkea-dhcp_ddns16 
-  - libkea-dhcpsrv45 
-  - libkea-dns++16 
-  - libkea-eval25 
+  - libkea-dhcpsrv46 
+  - libkea-dns++17 
+  - libkea-eval26 
   - libkea-exceptions0 
-  - libkea-hooks33 
-  - libkea-http25 
-  - libkea-log19 
-  - libkea-mysql22 
+  - libkea-hooks34 
+  - libkea-http26 
+  - libkea-log20 
+  - libkea-mysql23 
   - libkea-pgsql19 
-  - libkea-process27 
+  - libkea-process28 
   - libkea-stats18 
   - libkea-util-io0 
-  - libkea-util32 
+  - libkea-util33 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -13859,6 +13860,10 @@ unsorted:
   - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
+  - libtcmalloc_and_profiler4 
+  - libtcmalloc_debug4 
+  - libtcmalloc_minimal4 
+  - libtcmalloc_minimal_debug4 
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
@@ -14186,6 +14191,7 @@ unsorted:
   - libvdpau-devel 
   - libvdpau-devel-32bit: [x86_64] 
   - libvdpau1-32bit: [x86_64] 
+  - libvdpau_nouveau 
   - libvdpau_nouveau-32bit: [x86_64] 
   - libvdpau_r300-32bit: [x86_64] 
   - libvdpau_r600-32bit: [x86_64] 
@@ -30698,6 +30704,7 @@ unsorted:
   - remmina-plugin-exec 
   - remmina-plugin-gvnc 
   - remmina-plugin-kwallet 
+  - remmina-plugin-nx 
   - remmina-plugin-spice 
   - remmina-plugin-st 
   - remmina-plugin-www 
@@ -32122,7 +32129,6 @@ unsorted:
   - supertuxkart-data 
   - supervisor 
   - supportutils 
-  - surf 
   - surfraw 
   - surfraw-woffle 
   - surgescript 
@@ -32202,9 +32208,9 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
-  - sysfsutils-32bit: [x86_64] 
+  - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
