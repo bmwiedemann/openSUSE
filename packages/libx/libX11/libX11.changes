@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 31 15:33:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Check-for-NULL-strings-before-getting-their-lengths.patch
+  * regression in libX11 1.7.1 (boo#1186643)
+    fixes segfaults for xforms applications like fdesign
+
+-------------------------------------------------------------------
 Tue May 18 15:57:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.1
