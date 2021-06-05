@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 21 15:53:16 UTC 2021 - Stefan Knorr <sknorr@suse.com>
+
+- Stable release DAPS 3.1.2:
+
+* Bug fixes:
+  - Fixed issue where irrelevant XIncludes would cause validation
+    errors (#617)
+
+* Documentation:
+  - Updated installation documentation
+
+-------------------------------------------------------------------
 Wed May 12 10:12:31 UTC 2021 - Stefan Knorr <sknorr@suse.com>
 
 - Stable release DAPS 3.1.1:
