@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:43:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.1:
+  + Account for scaling factor while estimating window size
+
+-------------------------------------------------------------------
 Thu Oct 22 14:25:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.0:
