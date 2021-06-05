@@ -53,6 +53,7 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
+Patch0:         0001-alsa-mixer-only-use-switch-to-mute-Front-in-the-Headphone-path.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -349,6 +350,28 @@ if [ -f /run/systemd/rpm/needs-user-preset/pipewire.socket ]; then
 fi
 %systemd_user_post pipewire.service pipewire.socket pipewire-media-session.service
 
+# If the pipewire-media-session user service is not enabled and the workaround
+# for boo#1186561 has never been executed, we need to execute it now
+if [ ! -L %{_sysconfdir}/systemd/user/pipewire.service.wants/pipewire-media-session.service \
+    -a ! -f %{_localstatedir}/lib/pipewire/pipewire_post_workaround \
+    -a -x /usr/bin/systemctl ]; then
+    for service in pipewire.service pipewire.socket pipewire-media-session.service ; do
+        /usr/bin/systemctl --global preset "$service" || :
+    done
+
+    mkdir -p %{_localstatedir}/lib/pipewire
+    cat << EOF > %{_localstatedir}/lib/pipewire/pipewire_post_workaround
+# The existence of this file means that the pipewire user services were
+# enabled at least once. Please don't remove this file as that would
+# make the services to be enabled again in the next package update.
+#
+# Check the following bugs for more information:
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1184852
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1183012
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
+EOF
+fi
+
 %preun
 %systemd_user_preun pipewire.service pipewire.socket pipewire-media-session.service
 
@@ -360,6 +383,26 @@ fi
 
 %post pulseaudio
 %systemd_user_post pipewire-pulse.service pipewire-pulse.socket
+# If the pipewire-pulse.socket user service is not enabled and the workaround
+# for boo#1186561 has never been executed, we need to execute it now
+if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket \
+    -a ! -f %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround \
+    -a -x /usr/bin/systemctl ]; then
+    for service in pipewire-pulse.service pipewire-pulse.socket ; do
+        /usr/bin/systemctl --global preset "$service" || :
+    done
+    mkdir -p %{_localstatedir}/lib/pipewire
+    cat << EOF > %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
+# The existence of this file means that the pipewire-pulseaudio user service was
+# enabled at least once. Please don't remove this file as that would
+# make the services to be enabled again in the next package update.
+#
+# Check the following bugs for more information:
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1184852
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1183012
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
+EOF
+fi
 
 %preun pulseaudio
 %systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
@@ -399,6 +442,8 @@ fi
 %{_datadir}/pipewire/media-session.d/alsa-monitor.conf
 %{_datadir}/pipewire/media-session.d/bluez-monitor.conf
 %{_datadir}/pipewire/media-session.d/v4l2-monitor.conf
+%ghost %dir %{_localstatedir}/lib/pipewire
+%ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -542,6 +587,7 @@ fi
 %{_bindir}/pipewire-pulse
 %{_userunitdir}/pipewire-pulse.*
 %{_datadir}/pipewire/media-session.d/with-pulseaudio
+%ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
 %files alsa
 %dir %{_libdir}/alsa-lib

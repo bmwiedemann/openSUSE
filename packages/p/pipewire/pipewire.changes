@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun  1 07:31:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to use the independent switch to mute
+  Lineout or Speaker instead of setting the volume, which on
+  some soundcards might be shared by Headphone and Lineout or
+  Headphone and Speaker (fixes boo#1186572):
+  * 0001-alsa-mixer-only-use-switch-to-mute-Front-in-the-Headphone-path.patch
+
+-------------------------------------------------------------------
+Tue May 25 07:12:32 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Introduce a workaround for systems where %systemd_user_post
+  didn't enable the user services correctly due to different
+  reasons . This workaround is only executed once, and only if
+  it's really needed. In order to execute only once a lock file
+  is created in /var/lib/pipewire. The lockfile can be removed
+  when the workaround is removed.
+
+  Everyone who upgraded their TW system between (aprox.) the 14th
+  of January and the 16th of March and who didn't enable the
+  services manually is affected by this. It also happens for
+  everyone who installed a new TW system since (aprox.) the 14th
+  of January and also for everyone doing a new installation of
+  SLE15-SP3 / Leap 15.3 from the iso (new installations using
+  online repositories will work fine once the fix in
+  systemd-presets-common-SUSE is released).
+
+  Fixes boo#1184852, boo#1183012 and boo#1186561.
+
+-------------------------------------------------------------------
 Wed May 19 11:15:08 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.3.28

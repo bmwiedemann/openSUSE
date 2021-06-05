@@ -320,4 +320,16 @@ Build tested.
     - LICENSE clarifications. (forwarded request 894376 from alarrosa)</comment>
     <requestid>894781</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>1bd1e38cf4fc6029bac2581421a24c9f</srcmd5>
+    <version>0.3.28</version>
+    <time>1622928678</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream to use the independent switch to mute
+  Lineout or Speaker instead of setting the volume, which on
+  some soundcards might be shared by Headphone and Lineout or
+  Headphone and Speaker (fixes boo#1186572):
+  * 0001-alsa-mixer-only-use-switch-to-mute-Front-in-the-Headphone-path.patch (forwarded request 896733 from alarrosa)</comment>
+    <requestid>897164</requestid>
+  </revision>
 </revisionlist>
