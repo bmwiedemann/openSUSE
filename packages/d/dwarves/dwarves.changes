@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 10:28:25 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Handle zero sized per-cpu veriables in Linux BTF.
+  + btf_encoder-fix-and-complete-filtering-out-zero-sized-per-CPU-variables.patch
+
+-------------------------------------------------------------------
 Mon May  3 08:45:43 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - add remove-ftrace-filter.patch

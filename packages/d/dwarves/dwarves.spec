@@ -29,6 +29,7 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 Patch0:         remove-ftrace-filter.patch
+Patch1:         btf_encoder-fix-and-complete-filtering-out-zero-sized-per-CPU-variables.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
 %if 0%{?suse_version} < 1550

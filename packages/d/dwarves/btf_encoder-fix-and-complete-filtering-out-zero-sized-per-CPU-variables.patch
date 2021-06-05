@@ -1,0 +1,84 @@
+From 0d17503db0580a6635d103fed030724b38ba1364 Mon Sep 17 00:00:00 2001
+From: Andrii Nakryiko <andrii@kernel.org>
+Date: Mon, 24 May 2021 16:42:22 -0700
+Subject: [PATCH] btf_encoder: fix and complete filtering out zero-sized
+ per-CPU variables
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstram: accepted - expected version 1.22
+Git-commit: 0d17503db0580a6635d103fed030724b38ba1364
+
+btf_encoder is ignoring zero-sized per-CPU ELF symbols, but the same has to be
+done for DWARF variables when matching them with ELF symbols. This is due to
+zero-sized DWARF variables matching unrelated (non-zero-sized) variable that
+happens to be allocated at the exact same address, leading to a lot of
+confusion in BTF.
+
+See [0] for when this causes big problems.
+
+  [0] https://lore.kernel.org/bpf/CAEf4BzZ0-sihSL-UAm21JcaCCY92CqfNxycHRZYXcoj8OYb=wA@mail.gmail.com/
+
+Committer notes:
+
+Kept the {} around the if block with more than one line, which
+simplifies the original patch by just removing that assignment
+to the 'dwarf_name' variable.
+
+Reported-by: Michal Suchánek <msuchanek@suse.de>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Cc: Jiri Olsa <jolsa@kernel.org>
+Cc: bpf@vger.kernel.org
+Cc: dwarves@vger.kernel.org
+Cc: kernel-team@fb.com
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ btf_encoder.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/btf_encoder.c b/btf_encoder.c
+index c711f12..033c927 100644
+--- a/btf_encoder.c
++++ b/btf_encoder.c
+@@ -538,6 +538,7 @@ int cu__encode_btf(struct cu *cu, int verbose, bool force,
+ 	cu__for_each_variable(cu, core_id, pos) {
+ 		uint32_t size, type, linkage;
+ 		const char *name, *dwarf_name;
++		const struct tag *tag;
+ 		uint64_t addr;
+ 		int id;
+ 
+@@ -550,6 +551,7 @@ int cu__encode_btf(struct cu *cu, int verbose, bool force,
+ 
+ 		/* addr has to be recorded before we follow spec */
+ 		addr = var->ip.addr;
++		dwarf_name = variable__name(var, cu);
+ 
+ 		/* DWARF takes into account .data..percpu section offset
+ 		 * within its segment, which for vmlinux is 0, but for kernel
+@@ -583,7 +585,6 @@ int cu__encode_btf(struct cu *cu, int verbose, bool force,
+ 		 *  per-CPU symbols have non-zero values.
+ 		 */
+ 		if (var->ip.addr == 0) {
+-			dwarf_name = variable__name(var, cu);
+ 			if (!dwarf_name || strcmp(dwarf_name, name))
+ 				continue;
+ 		}
+@@ -600,6 +601,13 @@ int cu__encode_btf(struct cu *cu, int verbose, bool force,
+ 			break;
+ 		}
+ 
++		tag = cu__type(cu, var->ip.tag.type);
++		if (tag__size(tag, cu) == 0) {
++			if (btf_elf__verbose)
++				fprintf(stderr, "Ignoring zero-sized per-CPU variable '%s'...\n", dwarf_name ?: "<missing name>");
++			continue;
++		}
++
+ 		type = var->ip.tag.type + type_id_off;
+ 		linkage = var->external ? BTF_VAR_GLOBAL_ALLOCATED : BTF_VAR_STATIC;
+ 
+-- 
+2.31.1
+
