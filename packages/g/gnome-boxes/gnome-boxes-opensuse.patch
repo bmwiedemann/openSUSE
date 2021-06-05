@@ -1,9 +1,10 @@
---- orig-gnome-boxes-3.38.2/data/recommended-downloads.xml	2020-11-20 17:05:54.627392000 +0100
-+++ gnome-boxes-3.38.2/data/recommended-downloads.xml	2020-11-20 20:55:55.660802275 +0100
+diff -Nur gnome-boxes-40.2-old/data/recommended-downloads.xml gnome-boxes-40.2/data/recommended-downloads.xml
+--- gnome-boxes-40.2-old/data/recommended-downloads.xml	2021-06-04 14:09:48.002527000 +0200
++++ gnome-boxes-40.2/data/recommended-downloads.xml	2021-06-04 19:36:33.338344987 +0200
 @@ -14,6 +14,7 @@
-   <os_id>http://fedoraproject.org/silverblue/33</os_id>
+   <os_id>http://fedoraproject.org/silverblue/34</os_id>
    <os_id>http://ubuntu.com/ubuntu/20.10</os_id>
-   <os_id>http://opensuse.org/opensuse/15.2</os_id>
+   <os_id>http://opensuse.org/opensuse/15.3</os_id>
 +  <os_id>http://opensuse.org/opensuse/tumbleweed</os_id>
    <os_id>http://debian.org/debian/10</os_id>
    <os_id>http://endlessos.com/eos/3.10</os_id>
