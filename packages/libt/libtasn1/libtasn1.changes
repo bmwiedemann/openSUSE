@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 17 18:08:25 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.17.0:
+  * Print deprecation messages for deprecated macros
+  * Fix some clang issues due to illegal pointers
+  * Restore handling of SIZE nodes
+  * Fix memory leak caught by oss-fuzz
+  * Gtk-doc fixes
+  * Fix bugs unveiled by Static Analysis
+  * Update gnulib files and many build fixes
+- move tools to -tools packages and clarify licenses
+- update upstream signing keyring
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Sun Feb  2 23:00:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.16.0:
