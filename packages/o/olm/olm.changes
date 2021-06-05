@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  3 01:12:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.2.4
+  * Add some checks for invalid input and ensure all fields are
+    initialized.
+  * Include LibreJS license tags.
+- Add cmake-enable-testing-builddir.patch
+- Enable testing
+
+-------------------------------------------------------------------
 Sat Apr 17 12:00:00 UTC 2021 - cunix@mail.de
 
 - Build and ship Python bindings.

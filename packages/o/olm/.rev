@@ -18,4 +18,14 @@ and
 Python bindings first time inclusion.</comment>
     <requestid>889373</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d47eb85cfa60b3cadb89840e249a59c8</srcmd5>
+    <version>3.2.4</version>
+    <time>1622928714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.4
+- Add cmake-enable-testing-builddir.patch
+- Enable testing</comment>
+    <requestid>897728</requestid>
+  </revision>
 </revisionlist>

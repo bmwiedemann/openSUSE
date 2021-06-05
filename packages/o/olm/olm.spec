@@ -24,13 +24,15 @@
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 
 Name:           %{origname}
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://git.matrix.org/git/%{origname}/about/
-Source0:        https://gitlab.matrix.org/matrix-org/%{origname}/-/archive/%{version}/%{origname}-%{version}.tar.gz
+URL:            https://gitlab.matrix.org/matrix-org/olm/
+Source0:        %{url}/-/archive/%{version}/%{origname}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM cmake-enable-testing-builddir.patch -- Enable testing inside the build directory
+Patch0:         cmake-enable-testing-builddir.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -82,31 +84,24 @@ Requires:       %{libname} = %{version}
 
 
 %prep
-%autosetup -n %{origname}-%{version}
-sed -i 's@$(PREFIX)/lib@%{_libdir}@g' Makefile
+%autosetup -p1 -n %{origname}-%{version}
 
 %build
-workdir=$(pwd)
-export CFLAGS="%{optflags}"
-export CXXFLAGS="$CFLAGS"
+%cmake
+%cmake_build
 
-#Leap 42.3 and SLE_12_SP3 with rpm < 4.12
-%if 0%{?sle_version} == 120300
-  make %{?_smp_mflags}
-%else
-  %cmake
-  %cmake_build
-%endif
-
-cd $workdir/python
+cd ../python
 %python_build
 
-%install
-workdir=$(pwd)
-mkdir -p %{buildroot}%{_includedir}/%{origname}
-%cmake_install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+%check
+%if 0%{?suse_version} < 1550
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
+%endif
+%ctest
 
-cd $workdir/python
+%install
+%cmake_install
+cd python
 %python_install
 
 %fdupes %{buildroot}
