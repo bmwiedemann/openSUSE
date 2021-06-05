@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 31 15:07:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- package licenses as %%license 
+- modernize spec file
+- list files in files-section to avoid directory permission
+  conflict with filesystem package
+
+-------------------------------------------------------------------
 Fri Apr 30 09:04:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - xorgproto 2021.4

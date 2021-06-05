@@ -125,4 +125,12 @@ Note that this requires changes to the X server and each client to work.
 yesterday's tarball.</comment>
     <requestid>889520</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c76162262ec0e61629e0963e826f5467</srcmd5>
+    <version>2021.4</version>
+    <time>1622928632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896416</requestid>
+  </revision>
 </revisionlist>

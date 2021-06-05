@@ -19,31 +19,28 @@
 Name:           xorgproto
 Version:        2021.4
 Release:        0
-URL:            http://xorg.freedesktop.org/
 Summary:        The X11 Protocol collection
 License:        MIT
 Group:          Development/Libraries/X11
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/proto/xorgproto
 #Git-Web:	http://cgit.freedesktop.org/xorg/proto/xorgproto/
-Source:         http://xorg.freedesktop.org/releases/individual/proto/%name-%version.tar.bz2
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://xorg.freedesktop.org/releases/individual/proto/%{name}-%{version}.tar.bz2
+BuildRequires:  pkgconfig
 
 %description
 The X11 protocol headers for X11 development.
 This package contains all previously split protocol packages:
 applewmproto, bigreqsproto, compositeproto, damageproto, dmxproto, dri2proto,
-dri3proto, fixesproto, fontsproto, glproto, inputproto, kbproto, presentproto, 
+dri3proto, fixesproto, fontsproto, glproto, inputproto, kbproto, presentproto,
 randrproto, recordproto, renderproto, resourceproto, scrnsaverproto, trapproto,
-videoproto, windowswmproto, xcmiscproto, xextproto, xf86bigfontproto, 
-xf86dgaproto, xf86driproto, xf86miscproto, xf86vidmodeproto, xineramaproto, 
+videoproto, windowswmproto, xcmiscproto, xextproto, xf86bigfontproto,
+xf86dgaproto, xf86driproto, xf86miscproto, xf86vidmodeproto, xineramaproto,
 xproto and xproxymngproto.
 
 %package devel
 Summary:        The X11 Protocol collection
 Group:          Development/Libraries/X11
-
 Obsoletes:      xorgproto-devel < %{version}
 # the next is for obsoleting applewmproto <= 1.4.2
 Obsoletes:      bigreqsproto-devel <= 1.1.2
@@ -82,10 +79,10 @@ Obsoletes:      xproxymngproto-devel <= 1.0.3
 The compelte X11 protocol headers for X11 development.
 This package contains all previously split protocol packages:
 applewmproto, bigreqsproto, compositeproto, damageproto, dmxproto, dri2proto,
-dri3proto, fixesproto, fontsproto, glproto, inputproto, kbproto, presentproto, 
+dri3proto, fixesproto, fontsproto, glproto, inputproto, kbproto, presentproto,
 randrproto, recordproto, renderproto, resourceproto, scrnsaverproto, trapproto,
-videoproto, windowswmproto, xcmiscproto, xextproto, xf86bigfontproto, 
-xf86dgaproto, xf86driproto, xf86miscproto, xf86vidmodeproto, xineramaproto, 
+videoproto, windowswmproto, xcmiscproto, xextproto, xf86bigfontproto,
+xf86dgaproto, xf86driproto, xf86miscproto, xf86vidmodeproto, xineramaproto,
 xproto and xproxymngproto.
 
 %prep
@@ -98,20 +95,23 @@ xproto and xproxymngproto.
 %else
 %configure
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 %if (0%{?suse_version} < 1550)
 # we seriously don't want to package that again ...
 rm %{buildroot}%{_mandir}/man7/Xprint.7
 %endif
 
 %files devel
-%defattr(-,root,root)
-%doc %_datadir/doc/*
-%_includedir/X11/
-%_includedir/GL/
+%license COPYING-*
+%doc %{_datadir}/doc/*
+%dir %{_includedir}/GL
+%{_includedir}/GL/*.h
+%{_includedir}/GL/internal
+%{_includedir}/X11/{dri,extensions,fonts}
+%{_includedir}/X11/*.h
 %{_datarootdir}/pkgconfig/*.pc
 
 %changelog
