@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>718555</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ac71280184e8c45d79c6f66dbf20c3b</srcmd5>
+    <version>2.23</version>
+    <time>1622928693</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch antimicro-gcc11-fix.patch for fix gcc11 build.</comment>
+    <requestid>897597</requestid>
+  </revision>
 </revisionlist>

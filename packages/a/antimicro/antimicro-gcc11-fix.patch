@@ -1,0 +1,12 @@
+diff -Pdpru antimicro-2.23.orig/src/mainwindow.cpp antimicro-2.23/src/mainwindow.cpp
+--- antimicro-2.23.orig/src/mainwindow.cpp	2016-11-06 04:23:03.000000000 +0300
++++ antimicro-2.23/src/mainwindow.cpp	2021-06-05 03:51:51.830675677 +0300
+@@ -364,7 +364,7 @@ void MainWindow::makeJoystickTabs()
+         ui->tabWidget->addTab(tabwidget, joytabName);
+     }
+ 
+-    if (joysticks > 0)
++    if (joysticks != nullptr)
+     {
+         ui->tabWidget->setCurrentIndex(0);
+         ui->stackedWidget->setCurrentIndex(1);

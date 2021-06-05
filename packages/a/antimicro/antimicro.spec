@@ -1,7 +1,7 @@
 #
 # spec file for package antimicro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ Group:          Hardware/Joystick
 URL:            https://github.com/AntiMicro/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         remove_datetime_aboutdialog.patch
-Patch1:         remove_qt5_wrap_cpp.patch
-Patch2:         rpmlint.patch
+Patch1:         rpmlint.patch
+Patch2:         remove_qt5_wrap_cpp.patch
+Patch3:         antimicro-gcc11-fix.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -47,8 +48,7 @@ keys and mouse controls to a game-pad. This functionality is useful
 for playing games with no built-in or poor game-pad support.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake -LA
@@ -70,10 +70,9 @@ mv gpl.txt LICENSE
 %mime_database_postun
 
 %files
-%defattr(0644,root,root,-)
 %license LICENSE
 %doc Changelog README.md
-%attr(0755,root,root) %{_bindir}/%{name}
+%{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/mime/packages/%{name}.xml
