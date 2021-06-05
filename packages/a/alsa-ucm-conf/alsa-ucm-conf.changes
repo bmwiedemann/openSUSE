@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May 31 14:14:45 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5
+  * tegra: Add UCM for more devices
+  * codecs/rt5640: Make headset optional
+  * rt715: add mic led support
+  * bytcr-rt5640: Add support for controlling a speaker-mute LED
+  * cht-bsw-rt5672: Add support for controlling speaker- and
+    mic-mute LEDs, Add support for the components string
+  * ucm2: add support to for Qualcomm RB5 Platform
+  * codecs/rt5672: Add hardware volume-control support
+  * codecs/rt5640: Add hardware volume-control support
+  * bytcr-wm5102: Add new UCM profile for BYT boards with a WM5102 codec
+  * bytcr-rt5640: Add support for devices without speakers and/or
+    an internal mic
+  * chtrt5645: Enable Internal MIC of ECS EF20EA
+  * chtnau8824: Add support for laptops using stereo DMICs and fix
+    mono speaker config not working
+  * Full changes:
+    https://www.alsa-project.org/wiki/Changes_v1.2.4_v1.2.5#alsa-ucm-conf
+- Drop upstream fixes
+  * 0001-fix-the-ucm2-codecs-hda-hdmi.conf-use.patch
+  * 0002-codecs-hda-hdmi.conf-add-DisplayPort-to-the-device-d.patch
+  * 0003-sof-soundwire-use-the-codecs-hda-hdmi.conf-macro.patch
+  * 0004-Revert-ucm2-HDA-acp-add-Capture-simple-mixer-element.patch
+  * 0005-chtnau8824-Fix-mono-speaker-config-not-working.patch
+  * 0006-chtnau8824-Add-support-for-laptops-using-stereo-DMIC.patch
+  * 0007-chtnau8824-Boost-analog-mic-volumes-a-bit.patch
+  * 0008-rt715-init-setup-ADC07-to-a-proper-volume.patch
+  * 0009-sof-hda-dsp-Set-Master-Playback-Switch-on-in-the-Boo.patch
+  * 0010-HDA-Intel-HiFi-dual-Add-EnableSequence-and-DisableSe.patch
+  * 0011-HDA-Intel-HiFi-dual-Add-BootSequence-and-disable-pla.patch
+  * 0012-chtrt5645-Enable-Internal-MIC-of-ECS-EF20EA.patch
+  * 0013-bytcr-rt5640-Add-support-for-devices-without-speaker.patch
+  * 0014-rt5640-Move-standard-DAC-setup-to-EnableSeq.conf.patch
+  * 0015-bytcr-rt5640-fix-the-execution-order.patch
+  * 0016-ucm2-add-initial-configuration-for-TRX40-Gigabyte-Ao.patch
+  * 0017-USB-Audio-ALC1220-Bump-analog-Speaker-priority-over-.patch
+  * 0018-USB-Audio-ALC1220-fix-indentation-for-Speaker-device.patch
+  * 0019-USB-Audio-fix-indentation-in-Gigabyte-Aorus-Master-M.patch
+  * 0020-chtnau8824-Add-a-SST-define-variable.patch
+  * 0021-kblrt5660-Fix-file-permissions.patch
+  
+-------------------------------------------------------------------
 Thu Jan 21 09:43:27 CET 2021 - tiwai@suse.de
 
 - Backport upstream fixes:
