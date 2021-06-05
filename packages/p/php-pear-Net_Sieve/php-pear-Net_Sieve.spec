@@ -19,7 +19,7 @@
 %define pear_name  Net_Sieve
 
 Name:           php-pear-Net_Sieve
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        PHP module for talking to a sieve server
 License:        BSD-2-Clause

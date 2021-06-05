@@ -7,4 +7,12 @@
     <comment>Replacing PHP7 specific packages by PHP version agnostic packages in preparation of PHP8</comment>
     <requestid>756758</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62c705f1254d7792d64b86eb795020b3</srcmd5>
+    <version>1.4.5</version>
+    <time>1622928717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897735</requestid>
+  </revision>
 </revisionlist>
