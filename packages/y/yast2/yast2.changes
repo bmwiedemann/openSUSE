@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  3 15:40:30 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- AutoYaST: SectionWithAttributes allows to indicate whether an
+  attribute accepts blank values (related to jsc#PM-2620).
+- 4.4.9
+
+-------------------------------------------------------------------
+Thu Jun  3 09:04:29 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- revert disable of hibernation based on product and virtual
+  machines (bsc#1184470)
+- 4.4.8
+
+-------------------------------------------------------------------
+Wed Jun  2 17:30:50 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Improve Yast2::Equatable mixin making the #hash method to be fine
+  tuned easelly (related to bsc#11806082).
+- 4.4.7
+
+-------------------------------------------------------------------
+Tue Jun  1 11:48:18 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added some names to the list of parameters handled by CFA for the
+  login.defs configuration (related to jsc#PM-2620).
+- 4.4.6
+
+-------------------------------------------------------------------
 Tue May 25 07:19:14 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Add Yast2::Equatable mixin to avoid troubles with classes that
