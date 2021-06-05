@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 31 16:38:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.10.1
+  + Improve support for systems without accountsservice
+  + Fix some data loss-causing state synchronisation problems
+  + Hide support for flatpak user repositories, as they are
+    typically not configured on systems
+  + Add manpage docs for malcontent-client
+  + Consider terminology of ‘parental controls’
+  + Improving padding/spacing in malcontent-control UI
+  + Reload ‘Restrict Apps’ list when installed apps change on system
+  + Add command line option to malcontent-control to pre-select a user
+  + Fails closed if accountsservice isn't available on the bus
+  + Fix partial loss of parental controls settings when partially
+    updating them
+  + libmalcontent-ui: Drop handling of eos-link desktop files
+  + user-controls: Only save the app filter if it’s changed
+  + Add Danish translation
+  + Update Ukrainian, Italian, Swedish, and Polish translation
+
+-------------------------------------------------------------------
 Thu Dec 10 15:52:43 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Split MalcontentControl into seperate package so a library

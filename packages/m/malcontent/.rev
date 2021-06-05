@@ -27,4 +27,12 @@
   doesn't require a desktop application. (forwarded request 854615 from hellcp)</comment>
     <requestid>854630</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f06f4e416678e00b992a21b12dfaa60</srcmd5>
+    <version>0.10.1</version>
+    <time>1622928652</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.10.1 (forwarded request 896406 from susnux)</comment>
+    <requestid>896637</requestid>
+  </revision>
 </revisionlist>

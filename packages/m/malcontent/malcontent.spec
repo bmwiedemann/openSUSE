@@ -1,7 +1,7 @@
 #
 # spec file for package malcontent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           malcontent
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Parental control system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -98,6 +98,7 @@ Parental Control management application for Malcontent
 
 %prep
 %autosetup
+sed -i 's|env python3|python3|' malcontent-client/malcontent-client.py
 
 %build
 %meson \
