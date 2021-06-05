@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:38:52 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.11.6
+
+  ## 1.11.6 / 2021-05-26
+
+  ### Fixed
+
+  * [CRuby] `DocumentFragment#path` now does proper error-checking to handle behavior introduced in libxml > 2.9.10. In v1.11.4 and v1.11.5, calling `DocumentFragment#path` could result in a segfault.
+
+
+  ## 1.11.5 / 2021-05-19
+
+  ### Fixed
+
+  [Windows CRuby] Work around segfault at process exit on Windows when using libxml2 system DLLs.
+
+  libxml 2.9.12 introduced new behavior to avoid memory leaks when unloading libxml2 shared libraries (see [libxml/!66](https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/66)). Early testing caught this segfault on non-Windows platforms (see [#2059](https://github.com/sparklemotion/nokogiri/issues/2059) and [libxml@956534e](https://gitlab.gnome.org/GNOME/libxml2/-/commit/956534e02ef280795a187c16f6ac04e107f23c5d)) but it was incompletely fixed and is still an issue on Windows platforms that are using system DLLs.
+
+  We work around this by configuring libxml2 in this situation to use its default memory management functions. Note that if Nokogiri is not on Windows, or is not using shared system libraries, it will will continue to configure libxml2 to use Ruby's memory management functions. `Nokogiri::VERSION_INFO["libxml"]["memory_management"]` will allow you to verify when the default memory management functions are being used. [[#2241](https://github.com/sparklemotion/nokogiri/issues/2241)]
+
+
+  ### Added
+
+  `Nokogiri::VERSION_INFO["libxml"]` now contains the key `"memory_management"` to declare whether libxml2 is using its `default` memory management functions, or whether it uses the memory management functions from `ruby`. See above for more details.
+
+
+  ## 1.11.4 / 2021-05-14
+
+  ### Security
+
+  [CRuby] Vendored libxml2 upgraded to v2.9.12 which addresses:
+
+  - [CVE-2019-20388](https://security.archlinux.org/CVE-2019-20388)
+  - [CVE-2020-24977](https://security.archlinux.org/CVE-2020-24977)
+  - [CVE-2021-3517](https://security.archlinux.org/CVE-2021-3517)
+  - [CVE-2021-3518](https://security.archlinux.org/CVE-2021-3518)
+  - [CVE-2021-3537](https://security.archlinux.org/CVE-2021-3537)
+  - [CVE-2021-3541](https://security.archlinux.org/CVE-2021-3541)
+
+  Note that two additional CVEs were addressed upstream but are not relevant to this release. [CVE-2021-3516](https://security.archlinux.org/CVE-2021-3516) via `xmllint` is not present in Nokogiri, and [CVE-2020-7595](https://security.archlinux.org/CVE-2020-7595) has been patched in Nokogiri since v1.10.8 (see [#1992](https://github.com/sparklemotion/nokogiri/issues/1992)).
+
+  Please see [nokogiri/GHSA-7rrm-v45f-jp64 ](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-7rrm-v45f-jp64) or [#2233](https://github.com/sparklemotion/nokogiri/issues/2233) for a more complete analysis of these CVEs and patches.
+
+
+  ### Dependencies
+
+  * [CRuby] vendored libxml2 is updated from 2.9.10 to 2.9.12. (Note that 2.9.11 was skipped because it was superseded by 2.9.12 a few hours after its release.)
+
+-------------------------------------------------------------------
 Tue Apr 20 13:47:09 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.11.3

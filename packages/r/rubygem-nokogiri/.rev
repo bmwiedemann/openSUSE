@@ -541,4 +541,12 @@
     <comment>update (forwarded request 887025 from mschnitzer)</comment>
     <requestid>887059</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>41dc44bfa294adaa3b8e76ae33af2044</srcmd5>
+    <version>1.11.6</version>
+    <time>1622928636</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 896508 from mschnitzer)</comment>
+    <requestid>896519</requestid>
+  </revision>
 </revisionlist>
