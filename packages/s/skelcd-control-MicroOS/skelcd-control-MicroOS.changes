@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 15:11:20 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Enable ipv4_forward and ipv6_forward for ALL roles (bsc#1186280).
+- 20210602
+
+-------------------------------------------------------------------
 Mon Mar 29 07:08:10 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Evaluate security module before software module and

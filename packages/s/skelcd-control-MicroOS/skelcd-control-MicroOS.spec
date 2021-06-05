@@ -31,7 +31,7 @@ Name:           skelcd-control-MicroOS
 # xmllint (for validation)
 BuildRequires:  libxml2-tools
 # RNG validation schema
-BuildRequires:  yast2-installation-control >= 4.0.10
+BuildRequires:  yast2-installation-control >= 4.4.2
 
 # xsltproc - for building control.TWMicroOS.xml from control.MicroOS.xml
 BuildRequires:  diffutils
@@ -118,7 +118,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20210329
+Version:        20210602
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT
