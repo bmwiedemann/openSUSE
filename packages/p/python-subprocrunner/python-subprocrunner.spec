@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-subprocrunner
-Version:        1.2.2
+Version:        1.6.0
 Release:        0
 Summary:        A Python wrapper library for subprocess module
 License:        MIT
@@ -37,6 +37,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module loguru >= 0.4.1}
 BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module typepy}

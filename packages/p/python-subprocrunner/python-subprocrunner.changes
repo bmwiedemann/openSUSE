@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jun  5 13:14:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * Add __repr__ method to Retry/SubprocessRunner classes
+  * Fix to properly suppress debug logs when quiet=True
+  * Fixed to save command history at runtime
+
+-------------------------------------------------------------------
+Fri Jun  4 20:34:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  * Add no_retry_returncodes parameter to Retry class
+- Update to version 1.4.2
+  * Fix retry processing
+  * Modify log messages
+- Update to version 1.4.1
+  * Fix retry processing
+- Update to version 1.4.0
+  * Add quiet mode support for SubprocessRunner/Retry
+  * Modify a retry log message
+- Update to version 1.3.0
+  * Add timeout keyword argument to SubprocessRunner.run:
+  * Add support for retry functionality to SubprocessRunner.run
+  * Add SubprocessRunner.Retry class
+  * Modify type annotation of SubprocessRunner.run return value
+
+-------------------------------------------------------------------
 Sun May 16 18:30:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't require pytest-runner, when we don't need it.
