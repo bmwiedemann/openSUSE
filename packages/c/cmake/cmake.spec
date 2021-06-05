@@ -1,5 +1,5 @@
 #
-# spec file for package cmake%{?psuffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -37,7 +37,7 @@
 %endif
 %define shortversion 3.20
 Name:           cmake%{?psuffix}
-Version:        3.20.2
+Version:        3.20.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
