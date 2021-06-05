@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define so_version 8
 %define lib_package lib%{name}-%{so_version}
 Name:           tinyxml2
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Basic XML parser in C++
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/leethomason/tinyxml2
 Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -66,7 +66,7 @@ developing applications that use libtinyxml2.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -74,22 +74,22 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # /usr/lib/cmake is not owned by cmake; avoid any further conflicts
 if [ ! -d "%{buildroot}/%{_libdir}/cmake/%{name}" ]; then
 mkdir -p %{buildroot}/%{_libdir}/cmake/%{name}
-mv %{buildroot}/usr/lib/cmake/tinyxml2 %{buildroot}/%{_libdir}/cmake/tinyxml2
+mv %{buildroot}%{_prefix}/lib/cmake/tinyxml2 %{buildroot}/%{_libdir}/cmake/tinyxml2
 fi
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post -n %{lib_package} -p /sbin/ldconfig
 %postun -n %{lib_package} -p /sbin/ldconfig
 
 %files -n %{lib_package}
-%defattr(-,root,root)
+%license LICENSE.txt
 %doc readme.md
 %{_libdir}/libtinyxml2.so.%{so_version}*
 
 %files devel
-%defattr(-,root,root)
+%license LICENSE.txt
 %{_includedir}/tinyxml2.h
 %{_libdir}/libtinyxml2.so
 %{_libdir}/pkgconfig/tinyxml2.pc
