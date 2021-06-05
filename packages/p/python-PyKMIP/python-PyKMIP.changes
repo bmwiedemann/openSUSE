@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:12:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add SQL-issues.patch skipping tests failing due to
+  incompatibilities with the current version of SQLAlchemy
+  (gh#OpenKMIP/PyKMIP#649).
+
+-------------------------------------------------------------------
 Mon Apr 20 10:38:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

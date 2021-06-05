@@ -120,4 +120,15 @@
     <comment>- Fix build without python2</comment>
     <requestid>795772</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1ea26f8f7d5b15cee3f8469c1b22731c</srcmd5>
+    <version>0.10.0</version>
+    <time>1622928703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SQL-issues.patch skipping tests failing due to
+  incompatibilities with the current version of SQLAlchemy
+  (gh#OpenKMIP/PyKMIP#649).
+</comment>
+    <requestid>897678</requestid>
+  </revision>
 </revisionlist>

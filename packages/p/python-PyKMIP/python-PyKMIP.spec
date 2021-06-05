@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/OpenKMIP/PyKMIP
 Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM SQL-issues.patch gh#OpenKMIP/PyKMIP#649 mcepl@suse.com
+# skip tests failing due to gh#OpenKMIP/PyKMIP#649
+Patch0:         SQL-issues.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
@@ -42,7 +45,7 @@ Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34
@@ -61,7 +64,7 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 1.0 - 1.2 of the KMIP specification.
 
 %prep
-%setup -q -n PyKMIP-%{version}
+%autosetup -p1 -n PyKMIP-%{version}
 
 %build
 %python_build
