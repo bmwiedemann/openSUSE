@@ -7,4 +7,34 @@
     <comment>Backup module of KDE Plasma.</comment>
     <requestid>839522</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd345e393a812a761bb57c70c11e2c5e</srcmd5>
+    <version>0.9.1</version>
+    <time>1622928700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1
+  * Fix build with Qt 5.12
+  * Bugfix for unintentional start of kup-purger (kde#438078)
+- Drop upstream patch Fix-build-with-Qt-5.12.patch
+
+- Update to 0.9.0
+  * Added detection of when a source folder has been removed.
+    Aborts saving backup and prompts user to review what should be
+    included.
+  * Added a way to prune old backup snapshots, with new small app 
+    kup-purger.
+  * Bug: fix for detecting harmless errors from bup and ignoring
+    them, bup version 0.31 had changed output format and this
+    update follows that change.
+  * Bug: fix detection of mount event for systemd automounts.
+  * Bug: fix source selection tree view handling a selected source
+    folder that has been removed.
+  * Bug: fix source selection tree view when opening and selection
+    is empty.
+  * Bug: fix trying to open a file from a backup repo passed as a
+    relative path as argument to kup-filedigger. (kde#425693)
+  * New icon.
+- Add Fix-build-with-Qt-5.12.patch to fix build on Leap 15.2/15.3</comment>
+    <requestid>897665</requestid>
+  </revision>
 </revisionlist>

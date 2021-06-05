@@ -1,7 +1,7 @@
 #
 # spec file for package kup-backup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define rname kup
 %bcond_without lang
 Name:           kup-backup
-Version:        0.8.0
+Version:        0.9.1
 Release:        0
 Summary:        Backup scheduler for the Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only
@@ -62,7 +62,7 @@ disturb you needlessly.
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -80,8 +80,10 @@ disturb you needlessly.
 %{_kf5_appstreamdir}/*.xml
 %{_kf5_bindir}/kup-daemon
 %{_kf5_bindir}/kup-filedigger
+%{_kf5_bindir}/kup-purger
 %{_kf5_configdir}/autostart/kup-daemon.desktop
-%{_kf5_iconsdir}/hicolor/scalable/apps/kup.svgz
+%{_kf5_debugdir}/kup.categories
+%{_kf5_iconsdir}/hicolor/scalable/apps/kup.svg
 %{_kf5_libdir}/libkdeinit5_kup-daemon.so
 %{_kf5_notifydir}/kupdaemon.notifyrc
 %{_kf5_plugindir}/kcm_kup.so
