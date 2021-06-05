@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 31 08:36:31 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.12.1
+  This is a bug-fix release fully compatible with the previous 2.12.0
+  version. Notable changes:
+
+  Enhancements:
+
+  - Improve diagnostic messages for compression tests.
+  - Tests performed in a GitHub continues integration are faster.
+  - Use GitHub actions to perform CI tests also on ArchLinux, Mageia,
+    Mandriva, and OpenSUSE.
+
+  Fixes:
+
+  - Relax context value up to 13 characters including an underscore
+    character in modulemd v2 format. This reenables scratch-builds in MBS.
+    Migrate Packit tests from a deprecated current_version_command to
+    a newer actions/get-current-version.
+
+-------------------------------------------------------------------
 Tue Feb  2 23:20:15 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 2.12.0

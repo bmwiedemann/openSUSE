@@ -1,6 +1,7 @@
 #
 # spec file for package libmodulemd
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,13 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global majorversion 2
 %global minorversion 12
-%global patchversion 0
+%global patchversion 1
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
 
@@ -28,26 +29,25 @@
 %global devname %{name}-devel
 %global girname typelib-1_0-Modulemd-%{majorversion}_0
 
-
 Name:           libmodulemd
 Version:        %{libmodulemd_version}
 Release:        0
 Summary:        Module metadata manipulation library
-Group:          System/Packages
 License:        MIT
+Group:          System/Packages
 URL:            https://github.com/fedora-modularity/libmodulemd
-Source0:        %{url}/releases/download/%{name}-%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
+Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
 
+BuildRequires:  file-devel
+BuildRequires:  gcc
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
-BuildRequires:  gcc
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(yaml-0.1)
-BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  python3-gobject
 BuildRequires:  rpm-devel
-BuildRequires:  file-devel
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(yaml-0.1)
 # For tests
 BuildRequires:  gcc-c++
 
@@ -94,8 +94,8 @@ for applications to use %{name}.
 %package -n %{devname}
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{libname}%{?_isa} = %{libmodulemd_version}-%{release}
 Requires:       %{girname}%{?_isa} = %{libmodulemd_version}-%{release}
+Requires:       %{libname}%{?_isa} = %{libmodulemd_version}-%{release}
 
 %description -n %{devname}
 This package provides files for developing applications to use %{name}.

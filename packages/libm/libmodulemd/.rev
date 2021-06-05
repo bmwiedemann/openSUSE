@@ -175,4 +175,12 @@
   + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
     <requestid>868780</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8e0ac65a014ff78e468a149962f7278</srcmd5>
+    <version>2.12.1</version>
+    <time>1622928617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896309</requestid>
+  </revision>
 </revisionlist>
