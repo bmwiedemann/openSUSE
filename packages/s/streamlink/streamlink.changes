@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 31 20:54:10 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 2.1.2
+  * Fixed: youtube 404 errors (#3732), consent dialog (#3672) and added short URLs (#3677)
+  * Fixed: picarto plugin (#3661)
+  * Fixed: euronews plugin (#3698)
+  * Fixed: bbciplayer plugin (#3725)
+  * Fixed: missing removed-plugins-file in setup.py build (#3653)
+  * Changed: HLS streams to use rounded bandwidth names (#3721)
+  * Removed: plugin for hitbox.tv / smashcast.tv (#3686), tvplayer.com (#3673)
+- Remove streamlink-fix_removed_plugin_test.patch
+
+-------------------------------------------------------------------
 Wed May 19 22:13:33 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 2.1.1

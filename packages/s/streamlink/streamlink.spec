@@ -18,16 +18,13 @@
 
 %define pythons python3
 Name:           streamlink
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
-# PATCH-FIX-UPSTREAM streamlink-fix_removed_plugin_test.patch https://github.com/streamlink/streamlink/pull/3653
-Patch0:         streamlink-fix_removed_plugin_test.patch
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,7 +65,6 @@ Streamlink is a fork of the livestreamer project.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %python3_build
