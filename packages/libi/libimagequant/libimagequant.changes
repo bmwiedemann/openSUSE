@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  8 18:10:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1:
+  * improved Rust API
+  * quality improvements for remapping overlays over a background
+
+-------------------------------------------------------------------
 Wed Dec 23 09:01:34 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:
