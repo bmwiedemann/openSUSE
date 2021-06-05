@@ -31,4 +31,14 @@
     <comment>- Adapt openSUSE Leap repositories to new layout for 15.3+</comment>
     <requestid>873590</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>aad8c0e938c5a282248de2c7a444fb62</srcmd5>
+    <version>unknown</version>
+    <time>1622928707</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing GPG key references to Leap base repositories
+- Add missing SLE and Backports repositories for Leap 15.3+ (boo#1186593)
+- Rework GPG key file setup to use files from openSUSE-build-key</comment>
+    <requestid>897704</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,15 @@
+[opensuse-leap-sle-update]
+name=openSUSE Leap $releasever - Updates from SUSE Linux Enterprise
+baseurl=http://download.opensuse.org/update/leap/$releasever/sle/
+#metalink=http://download.opensuse.org/update/leap/$releasever/sle/repodata/repomd.xml.metalink
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgcheck=1
+
+[opensuse-leap-sle-update-debuginfo]
+name=openSUSE Leap $releasever - OSS - Updates from SUSE Linux Enterprise - Debug
+baseurl=http://download.opensuse.org/debug/update/leap/$releasever/sle/
+#metalink=http://download.opensuse.org/debug/update/leap/$releasever/sle/repodata/repomd.xml.metalink
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgcheck=1

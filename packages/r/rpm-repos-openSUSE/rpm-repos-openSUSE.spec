@@ -1,7 +1,7 @@
 #
 # spec file for package rpm-repos-openSUSE
 #
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,8 @@ Group:          System/Management
 License:        MIT
 URL:            https://opensuse.org/
 
-# openSUSE GPG Key
-Source0:        RPM-GPG-KEY-openSUSE
+# Script to generate symlinks for RPM GPG key files
+Source0:        create-rpmgpg-symlinks.sh
 
 # openSUSE Tumbleweed repo configs
 Source1:        opensuse-tumbleweed-oss.repo
@@ -49,9 +49,11 @@ Source4:        opensuse-tumbleweed-update.repo
 Source5:        opensuse-tumbleweed-update-ports.repo.in
 
 # openSUSE Leap repo configs
-Source11:        opensuse-leap-oss.repo
-Source12:        opensuse-leap-non-oss.repo
-Source13:        opensuse-leap-oss-ports.repo.in
+Source11:       opensuse-leap-oss.repo
+Source12:       opensuse-leap-non-oss.repo
+Source13:       opensuse-leap-oss-ports.repo.in
+Source14:       opensuse-leap-sle-update.repo
+Source15:       opensuse-leap-sle-backports-update.repo
 
 %description
 openSUSE package repository files for DNF and PackageKit with GPG public keys
@@ -121,6 +123,9 @@ openSUSE %{distname} package repository files for DNF and PackageKit.
 
 %package -n rpm-repo-keys-openSUSE
 Summary:        openSUSE repository GPG keys
+# The actual keys are stored in openSUSE-build-key
+BuildRequires:  openSUSE-build-key
+Requires:       openSUSE-build-key
 BuildArch:      noarch
 
 
@@ -144,9 +149,14 @@ DNF and PackageKit.
 
 
 %install
-# Install the GPG key
+# Install the GPG key symlinks
 mkdir -p %{buildroot}%{_sysconfdir}/pki/rpm-gpg
-install %{S:0} -pm 0644 %{buildroot}%{_sysconfdir}/pki/rpm-gpg
+bash %{S:0} %{buildroot}
+
+%if (0%{?sle_version} && 0%{?sle_version} < 150300) || "%{distname}" == "Tumbleweed"
+rm %{buildroot}%{_sysconfdir}/pki/rpm-gpg/*SuSE*
+rm %{buildroot}%{_sysconfdir}/pki/rpm-gpg/*Backports*
+%endif
 
 # Install the repositories
 mkdir -p %{buildroot}%{_sysconfdir}/yum.repos.d
@@ -192,6 +202,8 @@ sed -e 's/@DIST_ARCH@/zsystems/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/open
 #ifarch ix86 x86_64 aarch64 power64 s390x
 install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+install %{S:14} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+install %{S:15} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 
 # TODO: Add "Step" repos for arm and riscv64
 
@@ -200,6 +212,11 @@ install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 %ifarch %{ix86} x86_64
 install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+
+# Remove gpgkey lines that are not useful
+sed -e "/*.RPM-GPG-KEY-SuSE*.$/d" \
+    -e "/*.RPM-GPG-KEY-openSUSE-Backports*.$/d" \
+    -i %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 %endif
 
 # Setup for ports

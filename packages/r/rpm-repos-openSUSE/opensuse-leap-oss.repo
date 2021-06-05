@@ -4,6 +4,8 @@ baseurl=http://download.opensuse.org/distribution/leap/$releasever/repo/oss/
 #metalink=http://download.opensuse.org/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1
 
 [opensuse-leap-oss-update]
@@ -20,6 +22,8 @@ baseurl=http://download.opensuse.org/debug/distribution/leap/$releasever/repo/os
 #metalink=http://download.opensuse.org/debug/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1
 
 [opensuse-leap-oss-update-debuginfo]
@@ -36,5 +40,7 @@ baseurl=http://download.opensuse.org/distribution/leap/$releasever/repo/src-oss/
 #metalink=http://download.opensuse.org/distribution/leap/$releasever/repo/src-oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1
 
