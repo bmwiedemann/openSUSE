@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  4 17:16:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix package version. Upstream didn't tag nor change the version
+  number in git although it was released in pypi as 0.31.0
+
+-------------------------------------------------------------------
 Thu Jun  3 11:53:04 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to disable some tests that fail in obs:
