@@ -46,6 +46,7 @@ does not force you to use a particular event loop or python-twisted.
 
 %prep
 %autosetup -p1
+sed -i -e "s/__version__ = '0.29.0'/__version__ = '%{version}'/" zeroconf/__init__.py
 
 %build
 %python_build
@@ -61,6 +62,7 @@ does not force you to use a particular event loop or python-twisted.
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/zeroconf*
+%{python_sitelib}/zeroconf
+%{python_sitelib}/zeroconf-%{version}-py%{python_version}.egg-info
 
 %changelog
