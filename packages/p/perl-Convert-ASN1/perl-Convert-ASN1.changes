@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:41:31 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.29
+  * typo fixes
+  * Fix unsafe decoding CVE-2013-7488
+- Drop upstream fixed perl-Convert-ASN1-CVE-2013-7488.patch
+
+-------------------------------------------------------------------
 Tue Nov  3 10:12:38 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1168934, CVE-2013-7488]

@@ -17,19 +17,17 @@
 
 
 Name:           perl-Convert-ASN1
-Version:        0.27
+Version:        0.29
 Release:        0
 %define cpan_name Convert-ASN1
 Summary:        ASN.1 Encode/Decode library
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GB/GBARR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Convert-ASN1-%{version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL BEGIN
 Patch0:         Convert-ASN1-0.22-test.diff
-# PATCH-FIX-UPSTREAM bsc#1168934 CVE-2013-7488 Infinite loop via unexpected input
-Patch1:         perl-Convert-ASN1-CVE-2013-7488.patch
 # MANUAL END
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,8 +43,7 @@ rules.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 
-%patch1 
+%patch0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
