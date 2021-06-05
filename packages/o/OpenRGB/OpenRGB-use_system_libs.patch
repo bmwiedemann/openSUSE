@@ -1,24 +1,24 @@
-diff --git a/OpenRGB.pro b/OpenRGB.pro
-index db3bc0d..205b318 100644
---- a/OpenRGB.pro
-+++ b/OpenRGB.pro
-@@ -43,7 +43,6 @@ INCLUDEPATH +=
+Index: OpenRGB-release_0.6/OpenRGB.pro
+===================================================================
+--- OpenRGB-release_0.6.orig/OpenRGB.pro
++++ OpenRGB-release_0.6/OpenRGB.pro
+@@ -50,7 +50,6 @@ INCLUDEPATH +=
      dependencies/ColorWheel                                                                     \
      dependencies/CRCpp/                                                                         \
      dependencies/json/                                                                          \
 -    dependencies/libe131/src/                                                                   \
+     dependencies/libcmmk/include/                                                               \
      i2c_smbus/                                                                                  \
      i2c_tools/                                                                                  \
-     net_port/                                                                                   \
-@@ -284,7 +283,6 @@ HEADERS +=
- SOURCES +=                                                                                      \
+@@ -376,7 +375,6 @@ SOURCES +=
+     Controllers/LogitechController/LogitechProtocolCommon.cpp \
      dependencies/dmiinfo.cpp                                                                    \
      dependencies/ColorWheel/ColorWheel.cpp                                                      \
 -    dependencies/libe131/src/e131.c                                                             \
+     dependencies/libcmmk/src/libcmmk.c                                                          \
      main.cpp                                                                                    \
      cli.cpp                                                                                     \
-     NetworkClient.cpp                                                                           \
-@@ -656,6 +654,7 @@ unix:!macx {
+@@ -828,6 +826,7 @@ unix:!macx {
      LIBS +=                                                                                     \
      -lusb-1.0                                                                                   \
      -lstdc++fs                                                                                  \

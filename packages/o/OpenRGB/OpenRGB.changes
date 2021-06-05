@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Jun  2 06:21:19 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6
+  New Features:
+  * Plugin architecture - OpenRGB plugins add functionality to
+    the user interface.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Additional user interface configurable options
+    + Exit to tray
+    + Save window geometry
+    + Display index number labels in LED view
+  * Log manager
+    + Logs are stored in configuration directory under logs
+      folder
+  * Update detector list in configuration file before detection,
+    to avoid crashes
+  * SDK server provides capability to list and load profiles
+    (protocol version updated to 2)
+  * Reworked Linux build system to test on multiple Debian-based
+    distros
+  Device Controller Changes:
+  * MSI Mystic Light re-enabled after deep dive investigation
+    into RGB controller bricking issue
+    + Only motherboards that have been tested are enabled
+    + We can help you unbrick if your board was bricked with a
+      previous version, join our Discord for help
+  * PCI ID filtering added to ASUS GPU controller
+  * Additional GPUs added to MSI GPU controller
+  * Additional GPUs added to Gigabyte GPU controller
+  * EVGA GPU v2 controller updated to support all modes
+  * HyperX Pulsefire FPS Pro controller added
+  * Yeelight controller added (see configuration in wiki)
+  * Additional serial protocols for Arduino-controlled ARGB
+    + TPM2
+    + Adalight
+  * FanBus controller added
+  * E.31 improvements
+    + Maximum channels per universe (fixes WLED compatibility)
+  * Corsair K55 support added
+  * Corsair K57 controller added (wired mode only)
+  * Corsair Vengeance Pro DRAM direct mode
+  * Standalone Razer controller, does not depend on OpenRazer
+    + A bunch of new Razer devices supported, including Razer
+      Chroma ARGB controller
+  * DAS Keyboard 4Q controller added
+  * NZXT Hue 2 Underglow device added
+  * Thermaltake Riing Quad controller added
+  * ASUS ROG Strix Flare controller added
+  * Lian Li Uni Hub controller added
+  * Creative Sound BlasterX G6 controller added
+  * Consolidated Logitech mouse controllers to reduce duplicate
+    code
+  * Added Direct mode to Logitech consolidated Logitech mouse
+    code
+  * Logitech G910 Orion Spectrum controller added
+  * QMK OpenRGB controller added (requires configuration entry)
+  * Logitech wireless mouse support improved
+  Known Issues:
+  * G502 Hero and G502 PS mice crash on startup. The issue has
+    been fixed in the pipeline builds.
+  * Plugin architecture does not have a versioning system. If
+    OpenRGB crashes on open, try deleting/updating all plugins.
+  * Some ASUS GPUs that worked in 0.5 no longer work in 0.6.
+    + Please open an issue on GitLab or join our Discord to get
+      its PCI ID added. We need the following information:
+      x Card marketing name and model number (Link to ASUS
+        website preferred)
+      x PCIe ID (Vendor, Product, Subvendor, Subproduct)
+      x Detector I2C address (you can get this using a
+        previous version of OpenRGB, version 0.5 recommended)
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+  Notes:
+  * Due to changes in device names, existing profiles you have
+    saved from previous versions may not work and will need to
+    be recreated. Same goes for saved addressable controller
+    sizes.
+  * If upgrading from a previous release, it is recommended to
+    disable OpenRazer or OpenRazer-win32 in the settings. This
+    allows use of the new Razer controller with better device
+    support.
+- Refreshed OpenRGB-use_system_libs.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 18:50:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 0.5

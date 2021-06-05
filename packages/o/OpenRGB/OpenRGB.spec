@@ -1,7 +1,7 @@
 #
 # spec file for package OpenRGB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           OpenRGB
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
