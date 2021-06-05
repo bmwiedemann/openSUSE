@@ -1,7 +1,7 @@
 #
 # spec file for package goverlay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        0.4.4
+Version:        0.5.1
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -30,10 +30,10 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  lazarus
 BuildRequires:  libQt5Pas-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  update-desktop-files
-Requires:       mangohud
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       Mesa-demo
+Requires:       mangohud
 Requires:       replay-sorcery
 Requires:       vkbasalt
 Requires:       vulkan-tools

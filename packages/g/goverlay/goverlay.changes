@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun  5 08:17:05 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.5.1.
+  * New: Mangohud - Redesigned GRAPHs layout to better suit
+    different distribution QT themes. (WIP)
+  * New: Mangohud - Added missing SWAP option
+  * New: Mangohud - Added option to force run Gamelaunchers
+    (Steam, Lutris and Heroic) with Mangohud, this can fix problems
+    with opengl games not showing mangohud correctly and some
+    distros not working properly with the global enablement.
+  * Support running previews without mangohud
+  * Replace "Find" with "Which" command for better distro compatibility
+  * Fixed notification typos
+- Updates for 0.5.0.
+  * New: Mangohud - Added option to display GRAPHs on Mangohud
+  * New: Mangohud - Added new Hud Type (GRAPH HUD)
+  * New: Mangohud - Added Fix to display power Drawn on intel CPUs
+  * New: Mangohud - Added option to display or hide the FPS counter
+  * New: Mangohud - Moved HUD version and Time options to the
+    botton part of the HUD
+  * Fix: GUI - small fixes in the interfaces.
+  * Fix: VKbasalt - Wrong color used on Toggle key combobox
+  * Fix: About - Wrong colors on about page
+
+-------------------------------------------------------------------
 Thu Feb  4 09:53:56 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.4.4.
