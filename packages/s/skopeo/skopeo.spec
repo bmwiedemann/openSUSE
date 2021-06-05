@@ -24,7 +24,7 @@
 %define with_libostree 1
 %endif
 Name:           skopeo
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -33,6 +33,7 @@ URL:            https://github.com/containers/skopeo
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
 Requires:       libcontainers-common
+BuildRequires:  bash
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
 BuildRequires:  go-go-md2man
@@ -51,8 +52,16 @@ image repositories. skopeo is able to inspect a repository on a Docker registry
 and fetch images layers. skopeo can copy container images between various
 storage mechanisms.
 
+%package bash-completion
+Summary:        Bash completion for skopeo
+
+%description bash-completion
+This package contains the bash completion for skopeo.
+
 %prep
 %setup -q
+# No shbang for completions
+sed -i 's|#! /bin/bash|# bash completion for skopeo|' completions/bash/skopeo
 
 %build
 mkdir -p .gopath/src/github.com/containers
@@ -73,19 +82,21 @@ export BUILDTAGS="exclude_graphdriver_aufs"
 
 # Build.
 GO111MODULE=on go build -mod=vendor "-buildmode=pie" -ldflags "-X main.gitCommit=" -gcflags "" -tags "$BUILDTAGS" -o skopeo %{project}/cmd/skopeo
-make %{?_smp_mflags} docs
+make %{?_smp_mflags} docs PREFIX=%{_prefix}
 
 %install
-# Install the binary.
-make INSTALLDIR="%{buildroot}/%{_bindir}" install-binary
-
-# Install the docs.
-make MANINSTALLDIR="%{buildroot}/%{_mandir}" install-docs
+%make_install PREFIX=%{_prefix}
+# Drop unneeded files
+rm -rv %{buildroot}/etc/containers
+rm -rv %{buildroot}/policy.json
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man1/skopeo*.1*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/*
 
 %changelog
