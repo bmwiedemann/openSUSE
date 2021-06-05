@@ -34,6 +34,8 @@ Patch6:         wget-1.14-no-ssl-comp.patch
 Patch7:         wget-fix-pod-syntax.diff
 Patch8:         wget-errno-clobber.patch
 Patch9:         remove-env-from-shebang.patch
+Patch10:        wget-do-not-propagate-credentials.patch
+Patch11:        0001-src-main.c-Introduce-truncate_filename-option.patch
 BuildRequires:  automake
 BuildRequires:  gpgme-devel >= 0.4.2
 BuildRequires:  libcares-devel
@@ -79,6 +81,8 @@ This can be done in script files or via the command line.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 %if 0%{?suse_version} > 1110

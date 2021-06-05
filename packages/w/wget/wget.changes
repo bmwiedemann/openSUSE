@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 10 13:15:35 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- When running recursively, wget will verify the length of the whole
+  URL when saving the files. This will make it overwrite files with
+  truncated names, throwing the "The name is too long, ... trying to
+  shorten" messages. The patch moves the length check code to a
+  separate function and call it from the append_dir_structure() for each
+  path element.
+  [ bsc#1181173, 0001-src-main.c-Introduce-truncate_filename-option.patch]
+
+-------------------------------------------------------------------
+Mon May 10 13:13:14 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- If wget for an http URL is redirected to a different site (hostname
+  parts of URLs differ), then any "Authenticate" and "Cookie" header
+  entries are discarded.
+  [bsc#1175551, wget-do-not-propagate-credentials.patch]
+
+-------------------------------------------------------------------
 Sun Jan 24 14:21:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1:
