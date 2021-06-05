@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 20 15:17:35 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Log registration details into the installation data
+  (related to bsc#1180888)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Apr 21 11:22:55 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: do not crash when cloning a registered system with
