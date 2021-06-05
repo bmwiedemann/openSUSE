@@ -1,7 +1,7 @@
 #
 # spec file for package podofo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,66 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libver 0_9_6
+%define libver 0_9_7
 Name:           podofo
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Tools to work with PDF files
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            http://podofo.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/podofo/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         r1933-Really-fix-CVE-2017-7381.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         r1936-Really-fix-CVE-2017-7382.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         r1937-Really-fix-CVE-2017-7383.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         r1938-Fix-CVE-2018-11256-PdfError-info-gives-not-found-page-0-based.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         r1941-Fix-CVE-2017-8054-and-other-issues-keeping-binary-compat.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         r1942-Fix-build-with-cmake-ge-3.12.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         r1945-Fix-possible-incompatibility-of-PdfAESStream-with-OpenSSL-1.1.0g.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         r1948-Fix-CVE-2018-12982-implementing-inline-PdfDictionary-MustGetKey.patch
-# PATCH-FIX-UPSTREAM
-Patch8:         r1949-Fix-CVE-2018-5783-by-introducing-singleton-limit-for-indirect-objects-keeping-binary-compat.patch
-# PATCH-FIX-UPSTREAM
-Patch9:         r1950-Fix-null-pointer-dereference-in-PdfTranslator-setTarget.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        r1952-Fix-CVE-2018-11255-Null-pointer-dereference-in-PdfPage-GetPageNumber.patch
-# PATCH-FIX-UPSTREAM
-Patch11:        r1953-Fix-CVE-2018-14320-Possible-undefined-behaviour-in-PdfEncoding-ParseToUnicode.patch
-# PATCH-FIX-UPSTREAM
-Patch12:        r1954-Fix-CVE-2018-20751-null-pointer-dereference-in-crop_page-of-tools-podofocrop.patch
-# PATCH-FIX-UPSTREAM
-Patch13:        r1961-EncryptTest-Fix-buffer-overflow-in-decrypted-out-buffer-in-TestEncrypt.patch
-# PATCH-FIX-UPSTREAM
-Patch14:        r1963-Fix-heap-based-buffer-overflow-vulnerability-in-PoDoFo-PdfVariant-DelayedLoad.patch
-# PATCH-FIX-UPSTREAM
-Patch15:        r1969-Fix-CVE-2019-9687-heap-based-buffer-overflow.patch
-BuildRequires:  cmake >= 2.5
+BuildRequires:  cmake >= 2.6
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-#BuildRequires:  libcppunit-devel
-BuildRequires:  libidn-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  lua-devel
-BuildRequires:  openssl-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(cppunit)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Command line tools for working with PDF files.
@@ -95,33 +63,24 @@ This package contains development files for podofo library.
 
 %prep
 %setup -q
-%autopatch -p0 
 
 # Remove build time references so build-compare can do its work
 echo "HTML_TIMESTAMP = NO" >> Doxyfile
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-export CXXFLAGS="$CFLAGS"
+%cmake \
+  -DWANT_FONTCONFIG=ON \
+  -DWANT_BOOST=ON \
+  -DPODOFO_BUILD_STATIC=OFF \
+  -DPODOFO_USE_VISIBILITY=ON
+%cmake_build
 
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DPODOFO_BUILD_STATIC=FALSE -DPODOFO_USE_VISIBILITY=1 \
-%if "%{_lib}" == "lib64"
--DWANT_LIB64=1 \
-%endif
-../
-
-make %{?_smp_mflags} VERBOSE=1
+# Build devel doc
 cd ..
-
-# Build devel docs
 doxygen
 
 %install
-pushd build
-%make_install DESTDIR=%{buildroot}
-popd
+%cmake_install
 
 # Install devel docs (do it manually to fix also rpmlint warning "files-duplicate" with %%fdupes)
 mkdir -p %{buildroot}%{_docdir}/libpodofo-devel
@@ -148,6 +107,6 @@ cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 %doc %{_docdir}/libpodofo-devel/
 %{_includedir}/podofo/
 %{_libdir}/libpodofo.so
-%{_libdir}/pkgconfig/libpodofo-0.pc
+%{_libdir}/pkgconfig/libpodofo.pc
 
 %changelog

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 14 17:27:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.7
+- Cleanup of the spec file
+- Dropped upstream fixed patches:
+  r1933-Really-fix-CVE-2017-7381.patch, r1936-Really-fix-CVE-2017-7382.patch
+  r1937-Really-fix-CVE-2017-7383.patch, r1942-Fix-build-with-cmake-ge-3.12.patch
+  r1938-Fix-CVE-2018-11256-PdfError-info-gives-not-found-page-0-based.patch
+  r1941-Fix-CVE-2017-8054-and-other-issues-keeping-binary-compat.patch
+  r1945-Fix-possible-incompatibility-of-PdfAESStream-with-OpenSSL-1.1.0g.patch
+  r1948-Fix-CVE-2018-12982-implementing-inline-PdfDictionary-MustGetKey.patch
+  r1949-Fix-CVE-2018-5783-by-introducing-singleton-limit-for-indirect-objects-keeping-binary-compat.patch
+  r1950-Fix-null-pointer-dereference-in-PdfTranslator-setTarget.patch
+  r1952-Fix-CVE-2018-11255-Null-pointer-dereference-in-PdfPage-GetPageNumber.patch
+  r1953-Fix-CVE-2018-14320-Possible-undefined-behaviour-in-PdfEncoding-ParseToUnicode.patch
+  r1954-Fix-CVE-2018-20751-null-pointer-dereference-in-crop_page-of-tools-podofocrop.patch
+  r1961-EncryptTest-Fix-buffer-overflow-in-decrypted-out-buffer-in-TestEncrypt.patch
+  r1963-Fix-heap-based-buffer-overflow-vulnerability-in-PoDoFo-PdfVariant-DelayedLoad.patch
+  r1969-Fix-CVE-2019-9687-heap-based-buffer-overflow.patch
+
+-------------------------------------------------------------------
 Wed May 15 06:47:07 UTC 2019 - qzheng <qzheng@suse.com>
 
 - Add r1969-Fix-CVE-2019-9687-heap-based-buffer-overflow.patch

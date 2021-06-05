@@ -327,4 +327,12 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>704674</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a588f6601e09916578a7b0ddd417d3ea</srcmd5>
+    <version>0.9.7</version>
+    <time>1622928662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7 (forwarded request 893317 from susnux)</comment>
+    <requestid>896701</requestid>
+  </revision>
 </revisionlist>
