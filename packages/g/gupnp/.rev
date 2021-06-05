@@ -522,4 +522,14 @@
     <comment>New stable rel (forwarded request 825290 from iznogood)</comment>
     <requestid>825310</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>fcf518c2fefec5a8e6e3ec02e60e5a46</srcmd5>
+    <version>1.2.6</version>
+    <time>1622928652</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.2.6
+
+Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comment>
+    <requestid>896638</requestid>
+  </revision>
 </revisionlist>

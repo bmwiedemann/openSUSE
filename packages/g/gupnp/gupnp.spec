@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover 1.2
 
 Name:           gupnp
-Version:        1.2.4
+Version:        1.2.6
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
@@ -29,16 +29,15 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source0:        https://download.gnome.org/sources/gupnp/1.2/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.58
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
-BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1.3
+BuildRequires:  pkgconfig(gssdp-1.2) >= 1.2.3
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)
@@ -94,6 +93,7 @@ libraries utilizing the GUPnP framework.
 
 %prep
 %autosetup -p1
+sed -i 's|env python3|python3|' tools/gupnp-binding-tool-1.2
 
 %build
 %meson \
