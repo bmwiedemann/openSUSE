@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 31 07:50:39 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to modify IPv4 and IPv6 forwarding defaults (bsc#1186280)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
