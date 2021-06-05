@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 13:25:34 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Enable ipv4_forward and ipv6_forward for ALL roles (bsc#1186280).
+- 20210531
+
+-------------------------------------------------------------------
 Tue Mar  9 08:21:56 EST 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Set package manager patterns for Kubic roles (boo#1182803, boo#1183231)
