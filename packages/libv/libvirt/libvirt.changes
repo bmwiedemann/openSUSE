@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  1 15:06:44 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    ee890f25-libxl-mock-funcs.patch
+
+-------------------------------------------------------------------
+Mon May  3 22:14:22 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.3.0
+  - libvirt-admin package merged with libvirt-daemon
+  - libvirt-bash-completion package merged with libvirt-client and
+    libvirt-daemon packages
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    suse-bump-xen-version.patch
+  - Added patches:
+    ee890f25-libxl-mock-funcs.patch
+
+-------------------------------------------------------------------
 Thu Apr  1 23:42:46 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - spec: Remove use of %fdupes since it was only acting on files

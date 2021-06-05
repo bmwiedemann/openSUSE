@@ -9,10 +9,10 @@ them using the existing API.
  src/lxc/lxc_driver.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 138 insertions(+)
 
-Index: libvirt-7.2.0/src/lxc/lxc_driver.c
+Index: libvirt-7.4.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-7.2.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-7.2.0/src/lxc/lxc_driver.c
+--- libvirt-7.4.0.orig/src/lxc/lxc_driver.c
++++ libvirt-7.4.0/src/lxc/lxc_driver.c
 @@ -74,6 +74,8 @@
  #include "netdev_bandwidth_conf.h"
  #include "virsocket.h"
@@ -22,21 +22,21 @@ Index: libvirt-7.2.0/src/lxc/lxc_driver.c
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5068,6 +5070,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5064,6 +5066,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
 +static int
-+lxcDomainGetStatsCpu(virDomainObjPtr dom,
-+                     virTypedParamListPtr params)
++lxcDomainGetStatsCpu(virDomainObj *dom,
++                     virTypedParamList *params)
 +{
-+    virLXCDomainObjPrivatePtr priv = dom->privateData;
++    virLXCDomainObjPrivate *priv = dom->privateData;
 +    return virCgroupGetStatsCpu(priv->cgroup, params);
 +}
 +
 +typedef int
-+(*lxcDomainGetStatsFunc)(virDomainObjPtr dom,
-+                         virTypedParamListPtr params);
++(*lxcDomainGetStatsFunc)(virDomainObj *dom,
++                         virTypedParamList *params);
 +
 +
 +struct lxcDomainGetStatsWorker {
@@ -53,7 +53,7 @@ Index: libvirt-7.2.0/src/lxc/lxc_driver.c
 +
 +static int
 +lxcDomainGetStats(virConnectPtr conn,
-+                  virDomainObjPtr dom,
++                  virDomainObj *dom,
 +                  unsigned int stats,
 +                  virDomainStatsRecordPtr *record)
 +{
@@ -85,9 +85,9 @@ Index: libvirt-7.2.0/src/lxc/lxc_driver.c
 +                            virDomainStatsRecordPtr **retStats,
 +                            unsigned int flags)
 +{
-+    virLXCDriverPtr driver = conn->privateData;
-+    virDomainObjPtr *vms = NULL;
-+    virDomainObjPtr vm;
++    virLXCDriver *driver = conn->privateData;
++    virDomainObj **vms = NULL;
++    virDomainObj *vm;
 +    size_t nvms;
 +    virDomainStatsRecordPtr *tmpstats = NULL;
 +    int nstats = 0;
@@ -151,7 +151,7 @@ Index: libvirt-7.2.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5165,6 +5289,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5161,6 +5285,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

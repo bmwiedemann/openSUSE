@@ -3,11 +3,11 @@ https://bugzilla.novell.com/show_bug.cgi?id=879425
  src/libxl/libxl_conf.c |   25 +++++++++++++++++++++++++
  1 file changed, 25 insertions(+)
 
-Index: libvirt-7.2.0/src/libxl/libxl_conf.c
+Index: libvirt-7.4.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-7.2.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-7.2.0/src/libxl/libxl_conf.c
-@@ -916,6 +916,30 @@ libxlDiskSetDiscard(libxl_device_disk *x
+--- libvirt-7.4.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.4.0/src/libxl/libxl_conf.c
+@@ -965,6 +965,30 @@ libxlDiskSetDiscard(libxl_device_disk *x
  #endif
  }
  
@@ -36,9 +36,9 @@ Index: libvirt-7.2.0/src/libxl/libxl_conf.c
 +}
 +
  static char *
- libxlMakeNetworkDiskSrcStr(virStorageSourcePtr src,
+ libxlMakeNetworkDiskSrcStr(virStorageSource *src,
                             const char *username,
-@@ -1158,6 +1182,7 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
+@@ -1209,6 +1233,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
      x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
      if (libxlDiskSetDiscard(x_disk, l_disk->discard) < 0)
          return -1;

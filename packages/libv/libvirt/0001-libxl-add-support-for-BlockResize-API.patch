@@ -19,11 +19,11 @@ reworking this patch and submitting it to upstream libvirt.
  src/libxl/libxl_driver.c | 91 ++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 91 insertions(+)
 
-Index: libvirt-7.2.0/src/libxl/libxl_driver.c
+Index: libvirt-7.4.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-7.2.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-7.2.0/src/libxl/libxl_driver.c
-@@ -5307,6 +5307,96 @@ libxlDomainMemoryStats(virDomainPtr dom,
+--- libvirt-7.4.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.4.0/src/libxl/libxl_driver.c
+@@ -5310,6 +5310,97 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT
  
@@ -39,11 +39,11 @@ Index: libvirt-7.2.0/src/libxl/libxl_driver.c
 +                       unsigned long long size,
 +                       unsigned int flags)
 +{
-+    libxlDriverPrivatePtr driver = dom->conn->privateData;
-+    libxlDriverConfigPtr cfg;
-+    virDomainObjPtr vm;
++    libxlDriverPrivate *driver = dom->conn->privateData;
++    libxlDriverConfig *cfg;
++    virDomainObj *vm;
 +    int ret = -1;
-+    virDomainDiskDefPtr disk = NULL;
++    virDomainDiskDef *disk = NULL;
 +    char *moncmd = NULL;
 +    char *monreply = NULL;
 +
@@ -97,7 +97,8 @@ Index: libvirt-7.2.0/src/libxl/libxl_driver.c
 +
 +    moncmd = g_strdup_printf("block_resize %s %lluB", disk->dst, size);
 +
-+    if (libxl_qemu_monitor_command(cfg->ctx, vm->def->id, moncmd, &monreply) != 0) {
++    if (libxlQemuMonitorCommandWrapper(cfg->ctx, vm->def->id,
++                                       moncmd, &monreply) != 0) {
 +        virReportError(VIR_ERR_OPERATION_FAILED,
 +                       _("block_resize command failed for device '%s' on domain '%d'"),
 +                       disk->dst, vm->def->id);
@@ -120,7 +121,7 @@ Index: libvirt-7.2.0/src/libxl/libxl_driver.c
  static int
  libxlDomainGetJobInfo(virDomainPtr dom,
                        virDomainJobInfoPtr info)
-@@ -6607,6 +6697,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6610,6 +6701,7 @@ static virHypervisorDriver libxlHypervis
  #endif
      .nodeGetFreeMemory = libxlNodeGetFreeMemory, /* 0.9.0 */
      .nodeGetCellsFreeMemory = libxlNodeGetCellsFreeMemory, /* 1.1.1 */
@@ -128,3 +129,26 @@ Index: libvirt-7.2.0/src/libxl/libxl_driver.c
      .domainGetJobInfo = libxlDomainGetJobInfo, /* 1.3.1 */
      .domainGetJobStats = libxlDomainGetJobStats, /* 1.3.1 */
      .domainMemoryStats = libxlDomainMemoryStats, /* 1.3.0 */
+Index: libvirt-7.4.0/src/libxl/libxl_api_wrapper.h
+===================================================================
+--- libvirt-7.4.0.orig/src/libxl/libxl_api_wrapper.h
++++ libvirt-7.4.0/src/libxl/libxl_api_wrapper.h
+@@ -215,3 +215,18 @@ libxlSetMemoryTargetWrapper(libxl_ctx *c
+ 
+     return ret;
+ }
++
++static inline int
++libxlQemuMonitorCommandWrapper(libxl_ctx *ctx, uint32_t domid,
++                               const char *command_line, char **output)
++{
++    int ret;
++
++#if LIBXL_API_VERSION < 0x041300
++    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output);
++#else
++    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output, NULL);
++#endif
++
++    return ret;
++}

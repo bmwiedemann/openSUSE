@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.2.0
+Version:        7.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -316,8 +316,7 @@ Patch210:       libvirt-suse-netcontrol.patch
 Patch211:       lxc-wait-after-eth-del.patch
 Patch212:       suse-libxl-disable-autoballoon.patch
 Patch213:       suse-xen-ovmf-loaders.patch
-Patch214:       suse-bump-xen-version.patch
-Patch215:       virt-create-rootfs.patch
+Patch214:       virt-create-rootfs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -368,6 +367,8 @@ Requires:       numad
 # libvirtd depends on 'messagebus' service
 Requires:       dbus-1
 Requires:       group(libvirt)
+# Needed by libvirt-guests init script.
+Requires:       gettext-runtime
 
 # A KVM or Xen libvirt stack really does need UEFI firmware these days
 %ifarch x86_64
@@ -379,6 +380,11 @@ Requires:       qemu-uefi-aarch64
 %if %{with_apparmor}
 Requires:       apparmor-abstractions
 %endif
+
+# Ensure smooth upgrades
+Obsoletes:      libvirt-admin < 7.3.0
+Provides:       libvirt-admin = %{version}
+Obsoletes:      libvirt-bash-completion < 7.3.0
 
 %description daemon
 Server side daemon required to manage the virtualization capabilities
@@ -735,7 +741,7 @@ Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       %{name}-daemon-driver-vbox = %{version}-%{release}
 # Specify supported virtualbox API explicitly. See ./src/vbox
-# Reference bsc#1017189 
+# Reference bsc#1017189
 Requires:       virtualbox < 5.3
 
 %description daemon-vbox
@@ -746,12 +752,12 @@ capabilities of VirtualBox
 Summary:        Client side utilities of the libvirt library
 Group:          System/Management
 Requires:       %{name}-libs = %{version}-%{release}
-# Needed by libvirt-guests init script.
-Requires:       gettext-runtime
 # Needed by virt-pki-validate script.
 Requires:       cyrus-sasl
 Requires:       gnutls
-Recommends:     %{name}-bash-completion = %{version}-%{release}
+
+# Ensure smooth upgrades
+Obsoletes:      libvirt-bash-completion < 7.3.0
 
 %description client
 The client binaries needed to access the virtualization
@@ -766,24 +772,6 @@ Requires:       cyrus-sasl-digestmd5
 
 %description libs
 Shared libraries for accessing the libvirt daemon.
-
-%package admin
-Summary:        Set of tools to control libvirt daemon
-Group:          System/Management
-Requires:       %{name}-libs = %{version}-%{release}
-Recommends:     %{name}-bash-completion = %{version}-%{release}
-
-%description admin
-The client side utilities to control the libvirt daemon.
-
-%package bash-completion
-Summary:        Bash completion script
-Group:          System/Shells
-BuildArch:      noarch
-Requires:       bash-completion >= 2.0
-
-%description bash-completion
-Bash completion script stub.
 
 %package devel
 Summary:        Libraries, includes, etc. to compile with the libvirt library
@@ -1141,18 +1129,20 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %pre daemon
-%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %post daemon
 /sbin/ldconfig
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
-%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 %{fillup_only -n libvirtd}
+%{fillup_only -n libvirt-guests}
 %{fillup_only -n virtlockd}
 %{fillup_only -n virtproxyd}
 %{fillup_only -n virtlogd}
+
 # The '--listen' option is incompatible with socket activation.
 # We need to forcibly remove it from /etc/sysconfig/libvirtd.
 # Also add the --timeout option to be consistent with upstream.
@@ -1163,12 +1153,15 @@ if ! grep -q -E '^\s*LIBVIRTD_ARGS=.*--timeout' %{_sysconfdir}/sysconfig/libvirt
 fi
 
 %preun daemon
-%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+if [ $1 = 0 ]; then
+    rm -f /var/lib/%{name}/libvirt-guests
+fi
 
 %postun daemon
 /sbin/ldconfig
 # Handle restart/reload in posttrans
-%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %posttrans daemon
 # virtlockd and virtlogd must not be restarted, particularly virtlockd since the
@@ -1322,22 +1315,6 @@ fi
 %postun daemon-driver-libxl
 %service_del_postun virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
 
-%pre client
-%service_add_pre libvirt-guests.service
-
-%post client
-%service_add_post libvirt-guests.service
-%{fillup_only -n libvirt-guests}
-
-%preun client
-%service_del_preun libvirt-guests.service
-if [ $1 = 0 ]; then
-    rm -f /var/lib/%{name}/libvirt-guests
-fi
-
-%postun client
-%service_del_postun_without_restart libvirt-guests.service
-
 %post libs -p /sbin/ldconfig
 
 %postun libs -p /sbin/ldconfig
@@ -1354,15 +1331,18 @@ fi
 %{_sbindir}/virtlogd
 %{_sbindir}/virtlockd
 %dir %{_libdir}/%{name}
+%attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_fillupdir}/sysconfig.libvirtd
+%{_fillupdir}/sysconfig.libvirt-guests
 %{_fillupdir}/sysconfig.virtproxyd
 %{_fillupdir}/sysconfig.virtlogd
 %{_fillupdir}/sysconfig.virtlockd
 %{_unitdir}/libvirtd.service
 %{_unitdir}/libvirtd.socket
 %{_unitdir}/libvirtd-ro.socket
+%{_unitdir}/libvirt-guests.service
 %{_unitdir}/libvirtd-admin.socket
 %{_unitdir}/libvirtd-tcp.socket
 %{_unitdir}/libvirtd-tls.socket
@@ -1380,9 +1360,12 @@ fi
 %{_unitdir}/virtlockd.socket
 %{_unitdir}/virtlockd-admin.socket
 %{_sbindir}/rclibvirtd
+%{_sbindir}/rclibvirt-guests
 %{_sbindir}/rcvirtlogd
 %{_sbindir}/rcvirtlockd
 %{_sbindir}/rcvirtproxyd
+%{_bindir}/virt-admin
+%{_bindir}/virt-host-validate
 %config(noreplace) %{_sysconfdir}/%{name}/libvirtd.conf
 %config(noreplace) %{_sysconfdir}/%{name}/virtproxyd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd
@@ -1403,11 +1386,7 @@ fi
 %{_datadir}/augeas/lenses/tests/test_virtproxyd.aug
 %{_datadir}/augeas/lenses/libvirt_lockd.aug
 %{_datadir}/augeas/lenses/tests/test_libvirt_lockd.aug
-%{_datadir}/systemtap/tapset/libvirt_probes*.stp
-%{_datadir}/systemtap/tapset/libvirt_functions.stp
-%if %{with_qemu}
-%{_datadir}/systemtap/tapset/libvirt_qemu_probes*.stp
-%endif
+%{_datadir}/bash-completion/completions/virt-admin
 %dir %{_localstatedir}/lib/%{name}/
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/images/
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/filesystems/
@@ -1423,6 +1402,8 @@ fi
 %{_datadir}/polkit-1/actions/org.libvirt.api.policy
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt_iohelper
 %attr(0755, root, root) %{_bindir}/virt-ssh-helper
+%doc %{_mandir}/man1/virt-admin.1*
+%doc %{_mandir}/man1/virt-host-validate.1*
 %doc %{_mandir}/man8/libvirtd.8*
 %doc %{_mandir}/man8/virtlogd.8*
 %doc %{_mandir}/man8/virtlockd.8*
@@ -1729,17 +1710,11 @@ fi
 %doc %{_mandir}/man1/virsh.1*
 %doc %{_mandir}/man1/virt-xml-validate.1*
 %doc %{_mandir}/man1/virt-pki-validate.1*
-%doc %{_mandir}/man1/virt-host-validate.1*
 %{_bindir}/virsh
 %{_bindir}/virt-xml-validate
 %{_bindir}/virt-pki-validate
-%{_bindir}/virt-host-validate
 %{_datadir}/bash-completion/completions/virsh
 %dir %{_libdir}/%{name}
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
-%{_fillupdir}/sysconfig.libvirt-guests
-%{_unitdir}/libvirt-guests.service
-%{_sbindir}/rclibvirt-guests
 
 %files libs -f %{name}.lang
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt.conf
@@ -1752,18 +1727,14 @@ fi
 %dir %{_datadir}/%{name}/schemas/
 %dir %{_datadir}/%{name}/cpu_map/
 %dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/
-
+%{_datadir}/systemtap/tapset/libvirt_probes*.stp
+%{_datadir}/systemtap/tapset/libvirt_functions.stp
+%if %{with_qemu}
+%{_datadir}/systemtap/tapset/libvirt_qemu_probes*.stp
+%endif
 %{_datadir}/%{name}/schemas/*.rng
 %{_datadir}/%{name}/cpu_map/*.xml
 %{_datadir}/%{name}/test-screenshot.png
-
-%files admin
-%doc %{_mandir}/man1/virt-admin.1*
-%{_bindir}/virt-admin
-%{_datadir}/bash-completion/completions/virt-admin
-
-%files bash-completion
-%{_datadir}/bash-completion/completions/vsh
 
 %files devel
 %{_libdir}/libvirt.so

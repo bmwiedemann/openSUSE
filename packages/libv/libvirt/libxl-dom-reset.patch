@@ -8,25 +8,27 @@ Date:   Mon Jun 23 15:51:20 2014 -0600
     option, but domainReset can be implemented in the libxl driver by
     forcibly destroying the domain and starting it again.
 
-Index: libvirt-7.2.0/src/libxl/libxl_driver.c
+Index: libvirt-7.4.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-7.2.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-7.2.0/src/libxl/libxl_driver.c
-@@ -1372,6 +1372,61 @@ libxlDomainReboot(virDomainPtr dom, unsi
+--- libvirt-7.4.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.4.0/src/libxl/libxl_driver.c
+@@ -1367,6 +1367,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
  }
  
  static int
 +libxlDomainReset(virDomainPtr dom, unsigned int flags)
 +{
-+    libxlDriverPrivatePtr driver = dom->conn->privateData;
-+    libxlDriverConfigPtr cfg = libxlDriverConfigGet(driver);
-+    virDomainObjPtr vm;
++    libxlDriverPrivate *driver = dom->conn->privateData;
++    libxlDriverConfig *cfg = libxlDriverConfigGet(driver);
++    virDomainObj *vm;
 +    int ret = -1;
 +
 +    virCheckFlags(0, -1);
 +
 +    if (!(vm = libxlDomObjFromDomain(dom)))
 +        goto cleanup;
++
++    LIBXL_CHECK_DOM0_GOTO(vm->def->name, cleanup);
 +
 +    if (virDomainResetEnsureACL(dom->conn, vm->def) < 0)
 +        goto cleanup;
@@ -74,7 +76,7 @@ Index: libvirt-7.2.0/src/libxl/libxl_driver.c
  libxlDomainDestroyFlags(virDomainPtr dom,
                          unsigned int flags)
  {
-@@ -6485,6 +6540,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6486,6 +6543,7 @@ static virHypervisorDriver libxlHypervis
      .domainShutdown = libxlDomainShutdown, /* 0.9.0 */
      .domainShutdownFlags = libxlDomainShutdownFlags, /* 0.9.10 */
      .domainReboot = libxlDomainReboot, /* 0.9.0 */
