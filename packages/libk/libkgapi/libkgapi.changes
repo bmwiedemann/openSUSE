@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 29 16:12:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add hard dep on sasl2-kdexoauth2, needed for authentication
+
+-------------------------------------------------------------------
 Wed May 12 06:08:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1

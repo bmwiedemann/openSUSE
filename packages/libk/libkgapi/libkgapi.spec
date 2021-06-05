@@ -86,6 +86,7 @@ Summary:        Extension for accessing Google data
 Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
+Requires:       sasl2-kdexoauth2 >= %{version}
 
 %description -n libKPimGAPICore5
 An extension for accessing some Google services, such as Google Calendar,
