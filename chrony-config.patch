@@ -1,7 +1,7 @@
-Index: chrony-3.2/examples/chrony.conf.example3
+Index: chrony-4.0/examples/chrony.conf.example3
 ===================================================================
---- chrony-3.2.orig/examples/chrony.conf.example3
-+++ chrony-3.2/examples/chrony.conf.example3
+--- chrony-4.0.orig/examples/chrony.conf.example3
++++ chrony-4.0/examples/chrony.conf.example3
 @@ -27,12 +27,38 @@
  # you can access at http://support.ntp.org/bin/view/Servers/WebHome or
  # you can use servers from the pool.ntp.org project.
@@ -45,7 +45,7 @@ Index: chrony-3.2/examples/chrony.conf.example3
  #######################################################################
  ### AVOIDING POTENTIALLY BOGUS CHANGES TO YOUR CLOCK
  #
-@@ -65,7 +91,7 @@
+@@ -79,7 +105,7 @@
  # immediately so that it doesn't gain or lose any more time.  You
  # generally want this, so it is uncommented.
  
@@ -54,7 +54,7 @@ Index: chrony-3.2/examples/chrony.conf.example3
  
  # If you want to enable NTP authentication with symmetric keys, you will need
  # to uncomment the following line and edit the file to set up the keys.
-@@ -124,8 +150,8 @@ driftfile /var/lib/chrony/drift
+@@ -165,8 +191,8 @@ ntsdumpdir /var/lib/chrony
  # produce some graphs of your system's timekeeping performance, or you
  # need help in debugging a problem.
  

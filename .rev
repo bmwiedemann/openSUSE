@@ -292,4 +292,41 @@
     <comment></comment>
     <requestid>844909</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87dd1c870de97f8c58046b60fb2befb7</srcmd5>
+    <version>4.1</version>
+    <time>1622928666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1
+  * Add support for NTS servers specified by IP address (matching
+    Subject Alternative Name in server certificate)
+  * Add source-specific configuration of trusted certificates
+  * Allow multiple files and directories with trusted certificates
+  * Allow multiple pairs of server keys and certificates
+  * Add copy option to server/pool directive
+  * Increase PPS lock limit to 40% of pulse interval
+  * Perform source selection immediately after loading dump files
+  * Reload dump files for addresses negotiated by NTS-KE server
+  * Update seccomp filter and add less restrictive level
+  * Restart ongoing name resolution on online command
+  * Fix dump files to not include uncorrected offset
+  * Fix initstepslew to accept time from own NTP clients
+  * Reset NTP address and port when no longer negotiated by NTS-KE
+    server
+- Update clknetsim to snapshot f89702d.
+- Refresh chrony.keyring from
+  https://chrony.tuxfamily.org/gpgkey-8F375C7E8D0EE125A3D3BD51537E2B76F7680DAC.asc
+- Ensure the correct pool packages are installed for openSUSE
+  and SLE (bsc#1180689).
+
+- Enable syscallfilter unconditionally [boo#1181826].
+
+- drop buildrequires on NSS. We need gnutls for NTS anyway and we
+  can do all the other required crypto via nettle+gnutls. no need
+  for another crypto library.
+
+- Update to 4.0
+  - Enhancements</comment>
+    <requestid>896714</requestid>
+  </revision>
 </revisionlist>
