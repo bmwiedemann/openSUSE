@@ -5183,4 +5183,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Operator cancelled by moving mouse when using popup. (Sergey Vlasov)</comment>
     <requestid>893060</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>71429678a6269467f071760fbabfc64e</srcmd5>
+    <version>8.2.2918</version>
+    <time>1622928657</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.2918, fixes the following problems
+  * Using &lt;Cmd&gt; mapping on the command line triggers CmdlineChanged. (Naohiro
+  Ono)
+  * Configure can add --as-needed a second time.
+  * Window is not updated after using &lt;Cmd&gt; mapping.
+  * Custom statusline cannot contain % items.
+  * White space after &quot;-&gt;&quot; does not give E274.
+  * Get readonly error for device that can't be written to.
+  * Vim9: exception in ISN_INSTR caught at wrong level.
+  * Test fails because of changed error message.
+  * Tcl test fails because of changed error message.
+  * Adding a text property causes the whole window to be redawn.
+  * Vim9: &quot;legacy return&quot; is not recognized as a return statement.
+  * Removing a text property causes the whole window to be redawn.
+  * Removing a text property does not redraw optimally.
+  * Vim9: crash when using inline function.
+  * Skipping over function body fails.
+  * Vim9: memory leak when using inline function.
+  * Build failure.
+  * Vim9: When executing a compiled expression the trylevel at start is
+  changed but not restored. (closes #8214)
+  * Using unified diff is not tested.
+  * CmdlineChange event triggered twice for CTRL-R.
+  * Unnessary VIM_ISDIGIT() calls, badly indented code.
+  * Python tests fail without the channel feature.
+  * Not enough tests for writing buffers.
+  * Cancelling inputlist() after a digit does not return zero.
+  * Configure cannot detect Python 3.10.
+  * Insufficient tests for popup menu rightleft.
+  * Vim9: for loop list unpack only allows for one &quot;_&quot;.</comment>
+    <requestid>896658</requestid>
+  </revision>
 </revisionlist>

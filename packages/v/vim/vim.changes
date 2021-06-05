@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Jun  1 10:19:44 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2918, fixes the following problems
+  * Using <Cmd> mapping on the command line triggers CmdlineChanged. (Naohiro
+  Ono)
+  * Configure can add --as-needed a second time.
+  * Window is not updated after using <Cmd> mapping.
+  * Custom statusline cannot contain % items.
+  * White space after "->" does not give E274.
+  * Get readonly error for device that can't be written to.
+  * Vim9: exception in ISN_INSTR caught at wrong level.
+  * Test fails because of changed error message.
+  * Tcl test fails because of changed error message.
+  * Adding a text property causes the whole window to be redawn.
+  * Vim9: "legacy return" is not recognized as a return statement.
+  * Removing a text property causes the whole window to be redawn.
+  * Removing a text property does not redraw optimally.
+  * Vim9: crash when using inline function.
+  * Skipping over function body fails.
+  * Vim9: memory leak when using inline function.
+  * Build failure.
+  * Vim9: When executing a compiled expression the trylevel at start is
+  changed but not restored. (closes #8214)
+  * Using unified diff is not tested.
+  * CmdlineChange event triggered twice for CTRL-R.
+  * Unnessary VIM_ISDIGIT() calls, badly indented code.
+  * Python tests fail without the channel feature.
+  * Not enough tests for writing buffers.
+  * Cancelling inputlist() after a digit does not return zero.
+  * Configure cannot detect Python 3.10.
+  * Insufficient tests for popup menu rightleft.
+  * Vim9: for loop list unpack only allows for one "_".
+  * File extension .hsig not recognized.
+  * Unified diff fails if actually used.
+  * Various pieces of code not covered by tests.
+  * Vim9: memory leak when lambda has an error.
+  * Not enough cscope code is covered by tests.
+  * searching for \%'> does not match linewise end of line. (Tim Chase)
+  * Various pieces of code not covered by tests.
+  * Crash when passing null string to fullcommand().
+  * Vim9: "k" command recognized in Vim9 script.
+  * Typo and verbose comment in Makefiles.
+  * Text property duplicated when data block splits.
+  * Cannot build with Perl 5.34.
+  * Error message contains random characters.
+  * Multi-byte text in popup title shows up wrong.
+  * Vim9: random characters appear in some error messages.
+  * Spellfile functionality not fully tested.
+  * Vim9: can use reserved words at the script level.
+  * QuitPre and ExitPre not triggered when GUI window is closed.
+  * Appveyor script does not detect nmake failure.
+  * QuitPre is triggered before :wq writes the file, which is different from
+  other commands.
+  * Some operators not fully tested.
+  * Spellfile functionality not fully tested.
+  * Cursor position wrong on wrapped line with 'signcolumn'.
+  * "g$" causes scroll if half a double width char is visible.
+  * No error when defaults.vim cannot be loaded.
+  * ASAN reports errors for test_startup for unknown reasons.
+  * Memory leak when running out of memory.
+  * Crash when using a terminal popup window from the cmdline window.
+  * Build error with non-Unix system.
+  * Test for cmdline window and terminal fails on MS-Windows.
+  * Pattern "\%V" does not match all of block selection. (Rick Howe)
+  * MS-Windows: most users expect using Unicode.
+  * MS-Windows conpty supports using mouse events.
+  * Cannot paste a block without adding padding.
+  * Operators are not fully tested.
+  * Spellfile functionality not fully tested.
+  * Builtin function can be shadowed by global variable.
+
+-------------------------------------------------------------------
 Fri May 14 08:58:50 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2850, fixes the following problems
