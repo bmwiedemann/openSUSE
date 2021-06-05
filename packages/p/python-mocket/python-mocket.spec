@@ -1,5 +1,5 @@
 #
-# spec file for package python-mocket
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.40
+Version:        3.9.41
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-decorator
+Requires:       python-decorator < 5
 Requires:       python-http-parser >= 0.9.0
 Requires:       python-python-magic
 Requires:       python-six
@@ -94,6 +94,7 @@ export LANG=en_US.UTF-8
 %if !%{with test}
 export LANG=en_US.UTF-8
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/app/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

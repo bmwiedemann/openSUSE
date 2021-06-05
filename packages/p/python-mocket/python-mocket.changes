@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 21 16:02:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.9.41:
+ - A few refactors.
+ - Adding `make setup` for local development.
+ - Migrating package creation to using build.  Avoid decorator>=5 as dependency. (#149)
+ - Avoid decorator>=5 as dependency. (#149)
+
+-------------------------------------------------------------------
 Tue Feb  2 21:33:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - disable test test_asyncio_record_replay as it requires DNS.
