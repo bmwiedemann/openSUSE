@@ -25,10 +25,16 @@
 %else
 %bcond_with dane
 %endif
+# Enable Linux kernel AF_ALG based acceleration
+%if 0%{?suse_version} >= 1550
+%bcond_without kcapi
+%else
+%bcond_with kcapi
+%endif
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.1
+Version:        3.7.2
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -61,6 +67,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(autoopts)
+%if %{with kcapi}
+BuildRequires:  pkgconfig(libkcapi)
+%endif
 %if 0%{?suse_version} <= 1320
 BuildRequires:  net-tools
 %else
@@ -94,6 +103,9 @@ Summary:        The GNU Transport Layer Security Library
 # install libopenssl and libopenssl-hmac close together (bsc#1090765)
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
+%endif
 Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
 
 %description -n libgnutls%{gnutls_sover}
@@ -124,6 +136,9 @@ This package contains the "DANE" part of gnutls.
 Summary:        C++ API for the GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
+%endif
 
 %description -n libgnutlsxx%{gnutlsxx_sover}
 The GnuTLS library provides a secure layer over a reliable transport
@@ -134,8 +149,11 @@ of the IETF's TLS working group.
 Summary:        Development package for the GnuTLS C API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
+%endif
 Requires:       glibc-devel
-Requires:       gnutls = %{version}-%{release}
+Requires:       gnutls = %{version}
 Requires:       libgnutls%{gnutls_sover} = %{version}
 Requires(pre):  %{install_info_prereq}
 Provides:       gnutls-devel = %{version}-%{release}
@@ -192,6 +210,7 @@ export CXXFLAGS="%{optflags} -fPIE"
         --disable-static \
         --disable-rpath \
         --disable-silent-rules \
+        %{?with_kcapi:--enable-afalg} \
         --with-default-trust-store-dir=%{_localstatedir}/lib/ca-certificates/pem \
         --with-system-priority-file=%{_sysconfdir}/crypto-policies/back-ends/gnutls.config \
         --with-default-priority-string="@SYSTEM" \

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  1 01:00:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.2
+  * Added Linux kernel AF_ALG based acceleration
+  * Fixed timing of early data exchange
+  * The priority string option DISABLE_TLS13_COMPAT_MODE was added
+    to disable TLS 1.3 middlebox compatibility mode
+  * The GNUTLS_NO_EXPLICIT_INIT envvar has been renamed to
+    GNUTLS_NO_IMPLICIT_INIT to reflect the purpose 
+  * certtool:
+    * When signing a CSR, CRL distribution point (CDP) is no
+      longer copied from the signing CA by default
+    * When producing certificates and certificate requests, subject
+      DN components that are provided individually will now be
+      ordered by assumed scale
+
+-------------------------------------------------------------------
+Wed May 26 11:51:56 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Rework the crypto-policies dependencies in libraries [bsc#1186385]
+
+-------------------------------------------------------------------
 Thu May 13 16:34:28 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Compute the FIPS hmac file without re-defining the
