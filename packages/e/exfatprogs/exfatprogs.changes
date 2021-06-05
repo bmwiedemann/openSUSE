@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 31 14:57:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+ * mkfs.exfat: set 0x80 to DriveSelect of the boot sector
+ * Fix issues on 4KB logical sector devices
+ * Fix issues when the sector size of of a file system is different from
+   that of a block device.
+
+-------------------------------------------------------------------
 Sun May  9 18:54:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:
