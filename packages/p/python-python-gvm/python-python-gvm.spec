@@ -1,8 +1,8 @@
 #
 # spec file for package python-python-gvm
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
+%define skip_python39 1
 Name:           python-python-gvm
-Version:        20.11.0
+Version:        21.5.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
@@ -32,13 +34,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module defusedxml >= 0.6.0}
-BuildRequires:  %{python_module lxml >= 4.5.0}
-BuildRequires:  %{python_module paramiko >= 2.7.1}
+BuildRequires:  %{python_module lxml >= 4.4.2}
+BuildRequires:  %{python_module paramiko >= 2.4.2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-defusedxml >= 0.6.0
-Requires:       python-lxml >= 4.5.0
-Requires:       python-paramiko >= 2.7.1
+Requires:       python-lxml >= 4.4.2
+Requires:       python-paramiko >= 2.4.2
 BuildArch:      noarch
 %python_subpackages
 

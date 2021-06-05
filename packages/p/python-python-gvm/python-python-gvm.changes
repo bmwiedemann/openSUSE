@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:03:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 21.5.0
+  * Dropped support for GMP v7, v8 and v9!
+  * Introduced new explicit API calls for SecInfo: get_nvt(),
+    get_nvt_list(), get_cpe(), get_cpe_list(), get_cve(),
+    get_cve_list(), get_cert_bund_advisory(),
+    get_cert_bund_advisory_list(), get_dnf_cert_advisory(),
+    get_dnf_cert_advisory_list(), get_oval_definition(),
+    get_oval_definition_list().
+  Changed
+  * Splitted up get_preference(s) into get_nvt_preference(s) and
+    get_scan_config_preference(s).
+  * Improved and changed help(): Introduced HelpFormat Enum,
+    changed format parameter to help_format using HelpFormat,
+    changed help_type to brief and bool, as it only has two
+    options (default and brief).
+  * Changed filter to filter_string in getter functions.
+  * API changes: get_setting(s) -> get_user_setting(s),
+    modify_setting -> modify_user_setting. #472
+  * Changed all API calls for _config to _scan_config to match
+    other Greenbone components. #465
+  * Split up get_asset(s) into get_host(s) and
+    get_operating_system(s). #459
+  * Split up delete_asset into delete_host and
+    delete_operating_system. #459
+  * Split up modify_asset into modify_host and
+    modify_operating_system. #459
+  * Deleted AssetType. It is not required anymore. #459
+  * Changed the API calls get_nvt() and get_nvts() to
+    get_scan_config_nvt() and get_scan_config_nvts(). #456
+  * Splitted up the GmpMonolith class
+  * Moved helper functions from gmp to utils. The response XML
+    will not be recovered by the parser anymore! #442
+  Removed
+  * Removed sync_feed, sync_scap, and sync_cert calls. #472
+  * Removed TimeUnit. It was used for schedules before iCal and
+    is not required anymore. #469
+  * Removed Gmpv214Mixin. #467
+  * Remove support of delete host/operating system by a report.
+  * Remove deprecated make_unique parameter from Targets. #446
+  * Removed deprecated Agents completely. #441
+  * Dropped support for GMP v7, v8 and v9! The oldest usable
+    GMP version is 20.8
+
+-------------------------------------------------------------------
+Mon Apr 26 14:50:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 21.1.4
+  * get_feed can also be requested with GVMD_DATA for 20.08 and
+    newer, added GVMD_DATA to the FeedType and updated API call.
+
+-------------------------------------------------------------------
+Sat Mar  6 16:39:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 21.1.3
+  Added
+  * Added protocol version "next" and GMP 21.04 doc.
+  Fixed
+  * Add missing ReportFormatType to GMP 21.04.
+- Update to version 21.1.2
+  Added
+  * Added allow_simultaneous_ips param for targets.
+  Removed
+  * dropped the GMP Scanner (4) from ScannerTypes for v21.4.
+  Fixed
+  * removing timeout from get_nvt().
+  * Add ReportFormatType and get_report_format_id_from_string to
+    latest.py, so it is usable with import gvm.protcols.latest.
+  * Fixing import_report() for v9 and v20.8 and newer, removed
+    the task_name and task_comment parameters, that do not work
+    anymore.
+- Update to version 21.1.1
+  Fixed
+  * Fixed release issues, through rerelease.
+- Update to version 21.1.0
+  * Deprecated
+  * Dropped Python 3.5 and Python 3.6 support. Python 3.7+ is
+    required now.
+  Fixed
+  * Add missing types and functions to "latest" GMP.
+
+-------------------------------------------------------------------
 Thu Nov  5 08:54:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20.11.0
