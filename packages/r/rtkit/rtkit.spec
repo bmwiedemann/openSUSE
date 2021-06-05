@@ -22,18 +22,18 @@ Release:        0
 Summary:        Realtime Policy and Watchdog Daemon
 # The daemon itself is GPL v3 or later, the reference implementation for
 # the client BSD-3-Clause
-License:        GPL-3.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          System/Base
 URL:            https://github.com/heftig/rtkit
 Source:         https://github.com/heftig/rtkit/releases/download/v%{version}/rtkit-%{version}.tar.xz
 BuildRequires:  automake
 BuildRequires:  libcap-devel
 BuildRequires:  pkg-config
-BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  vim
 BuildRequires:  xz
 BuildRequires:  pkgconfig(dbus-1) >= 1.2
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 Requires:       polkit
