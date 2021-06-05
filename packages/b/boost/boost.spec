@@ -271,6 +271,7 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libicu-devel
 BuildRequires:  zlib-devel
+BuildRequires:  xz-devel
 %if %{with boost_fiber}
 BuildRequires:  gcc-c++ > 5
 %else
@@ -691,6 +692,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(zlib)
+Requires:       pkgconfig(liblzma)
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_iostreams-devel-impl
 Conflicts:      libboost_iostreams1_66_0-devel

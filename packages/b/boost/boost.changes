@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 06:43:16 UTC 2021 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- Compile boost iostreams with lzma support for reading .xz files
+
+-------------------------------------------------------------------
 Sat May  8 16:29:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use https:// 
