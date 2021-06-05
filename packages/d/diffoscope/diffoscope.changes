@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 29 07:45:45 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update ffmpeg tests to work with ffmpeg 4.4.
+  (Closes: reproducible-builds/diffoscope#258)
+
+-------------------------------------------------------------------
 Fri May 14 16:24:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 175:
