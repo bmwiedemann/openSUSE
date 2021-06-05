@@ -3894,4 +3894,13 @@
   * Add new function xd() &quot;jump to the directory of a file&quot;</comment>
     <requestid>879700</requestid>
   </revision>
+  <revision rev="479" vrev="1">
+    <srcmd5>237a119b6db1b50fb9f5576a21297db8</srcmd5>
+    <version>84.87+git20210601.8cb043f</version>
+    <time>1622928671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210601.8cb043f:
+  * Use shell builtins for $HOSTTYPE and others (boo#1186296)</comment>
+    <requestid>896866</requestid>
+  </revision>
 </revisionlist>
