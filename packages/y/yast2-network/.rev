@@ -3429,4 +3429,12 @@ qeth attributes used to be lost once qeth device was configured)
     <comment>submit new version 4.4.12</comment>
     <requestid>896337</requestid>
   </revision>
+  <revision rev="455" vrev="1">
+    <srcmd5>8d0f14cd1202b7cdb7d4b2c5cda1ec93</srcmd5>
+    <version>4.4.13</version>
+    <time>1622928664</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.13</comment>
+    <requestid>896712</requestid>
+  </revision>
 </revisionlist>
