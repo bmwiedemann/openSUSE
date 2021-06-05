@@ -303,4 +303,12 @@
     <comment>update (forwarded request 879040 from mschnitzer)</comment>
     <requestid>879044</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>22384afd8e33778286ed1c1cff34ebd3</srcmd5>
+    <version>1.15.1</version>
+    <time>1622928635</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 896507 from mschnitzer)</comment>
+    <requestid>896518</requestid>
+  </revision>
 </revisionlist>

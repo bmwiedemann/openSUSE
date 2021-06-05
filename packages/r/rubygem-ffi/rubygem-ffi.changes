@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:38:16 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.15.1
+
+  Fixed:
+  * Append -pthread to linker options. #893
+  * Use arm or aarch64 to identify Apple ARM CPU arch. #899
+  * Allow overriding `gcc` with the `CC` env var in `const_generator.rb` and `struct_generator.rb`. #897
+
+-------------------------------------------------------------------
 Mon Mar 15 04:35:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.15.0
