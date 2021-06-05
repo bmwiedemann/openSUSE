@@ -1,7 +1,10 @@
-From 294bdb1b231e8076de37ed35afef64dd6be37755 Mon Sep 17 00:00:00 2001
+From fc1b2c14e2ca4d7ccd4a3b75a435ab7d927533bc Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 12 Jan 2021 16:54:46 +0100
-Subject: [PATCH] modprobe.d: load from /usr/lib.
+Subject: [PATCH] modprobe.d, depmod.d: load from /usr/lib.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 There is an ongoing effort to limit use of files outside of /usr (or
 $prefix on general). Currently all modprobe.d paths are hardcoded to
@@ -14,11 +17,13 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
  Makefile.am        | 1 +
  libkmod/libkmod.c  | 1 +
+ man/depmod.d.xml   | 1 +
  man/modprobe.d.xml | 1 +
- 3 files changed, 3 insertions(+)
+ tools/depmod.c     | 1 +
+ 5 files changed, 5 insertions(+)
 
 diff --git a/Makefile.am b/Makefile.am
-index b29e943a4d29..702a665f0334 100644
+index d859c240178f..8553368988c0 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -19,6 +19,7 @@ AM_CPPFLAGS = \
@@ -30,29 +35,53 @@ index b29e943a4d29..702a665f0334 100644
  
  AM_CFLAGS = $(OUR_CFLAGS)
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 43423d63a889..9399c6c902f8 100644
+index 7c2b889d713e..ddf13fb3d822 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
 @@ -65,6 +65,7 @@ static const char *default_config_paths[] = {
  	SYSCONFDIR "/modprobe.d",
  	"/run/modprobe.d",
- 	"/lib/modprobe.d",
+ 	"/usr/local/lib/modprobe.d",
 +	PREFIX "/lib/modprobe.d",
+ 	"/lib/modprobe.d",
  	NULL
  };
- 
-diff --git a/man/modprobe.d.xml b/man/modprobe.d.xml
-index 211af8488abb..ae5a83986a52 100644
---- a/man/modprobe.d.xml
-+++ b/man/modprobe.d.xml
-@@ -40,6 +40,7 @@
+diff --git a/man/depmod.d.xml b/man/depmod.d.xml
+index b315e931d635..8a898cf4a9eb 100644
+--- a/man/depmod.d.xml
++++ b/man/depmod.d.xml
+@@ -39,6 +39,7 @@
    </refnamediv>
  
    <refsynopsisdiv>
-+    <para><filename>/usr/lib/modprobe.d/*.conf</filename></para>
++    <para><filename>/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/usr/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/usr/local/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/run/depmod.d/*.conf</filename></para>
+diff --git a/man/modprobe.d.xml b/man/modprobe.d.xml
+index 0ab3e9110a7e..8a7c696dcee1 100644
+--- a/man/modprobe.d.xml
++++ b/man/modprobe.d.xml
+@@ -41,6 +41,7 @@
+ 
+   <refsynopsisdiv>
      <para><filename>/lib/modprobe.d/*.conf</filename></para>
-     <para><filename>/etc/modprobe.d/*.conf</filename></para>
++    <para><filename>/usr/lib/modprobe.d/*.conf</filename></para>
+     <para><filename>/usr/local/lib/modprobe.d/*.conf</filename></para>
      <para><filename>/run/modprobe.d/*.conf</filename></para>
+     <para><filename>/etc/modprobe.d/*.conf</filename></para>
+diff --git a/tools/depmod.c b/tools/depmod.c
+index eb810b811e35..8f6a4f8cd7cb 100644
+--- a/tools/depmod.c
++++ b/tools/depmod.c
+@@ -54,6 +54,7 @@ static const char *default_cfg_paths[] = {
+ 	SYSCONFDIR "/depmod.d",
+ 	"/run/depmod.d",
+ 	"/usr/local/lib/depmod.d",
++	PREFIX "/lib/depmod.d",
+ 	"/lib/depmod.d",
+ 	NULL
+ };
 -- 
 2.26.2
 

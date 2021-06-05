@@ -567,4 +567,12 @@
     <comment>- Fix grub's requoted kernel parameters (bsc#1181111)</comment>
     <requestid>873347</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0780280ba055b2cc061722efb2688cd7</srcmd5>
+    <version>29</version>
+    <time>1622928623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896327</requestid>
+  </revision>
 </revisionlist>

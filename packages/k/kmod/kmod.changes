@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May 29 09:58:09 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- /usr/lib should override /lib where both are available. Support /usr/lib for
+  depmod.d as well.
+  * Refresh usr-lib-modprobe.patch
+- Remove test patches included in release 29
+  - kmod-populate-modules-Use-more-bash-more-quotes.patch
+  - kmod-testsuite-compress-modules-if-feature-is-enabled.patch
+  - kmod-also-test-xz-compression.patch
+
+-------------------------------------------------------------------
+Thu May 27 22:20:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 29
+  * Fix `modinfo -F` not working for built-in modules and
+    certain fields.
+  * Fix a memory leak, overflow and double free on error path.
+- Drop 0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch,
+  0001-libkmod-config-revamp-kcmdline-parsing-into-a-state-.patch,
+  0002-libkmod-config-re-quote-option-from-kernel-cmdline.patch
+  (all merged)
+
+-------------------------------------------------------------------
 Thu Feb 18 08:19:01 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix grub's requoted kernel parameters (bsc#1181111)

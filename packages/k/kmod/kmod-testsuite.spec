@@ -18,10 +18,10 @@
 
 Name:           kmod-testsuite
 %define lname	libkmod2
-Version:        28
+Version:        29
 Release:        0
 Summary:        Testsuite of the kmod package
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
 
@@ -37,10 +37,6 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
-Patch9:         0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch
-Patch10:        kmod-populate-modules-Use-more-bash-more-quotes.patch
-Patch11:        kmod-testsuite-compress-modules-if-feature-is-enabled.patch
-Patch12:        kmod-also-test-xz-compression.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -79,7 +75,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 	--bindir="%_bindir"
-make %{?_smp_mflags} V=1 KDIR="%kdir"
+%make_build KDIR="%kdir"
 
 %install
 # empty

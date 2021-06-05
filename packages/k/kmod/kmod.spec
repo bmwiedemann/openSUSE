@@ -18,10 +18,10 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        28
+Version:        29
 Release:        0
 Summary:        Utilities to load modules into the kernel
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
 
@@ -37,9 +37,6 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
-Patch9:         0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch
-Patch10:        0001-libkmod-config-revamp-kcmdline-parsing-into-a-state-.patch
-Patch11:        0002-libkmod-config-re-quote-option-from-kernel-cmdline.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -69,7 +66,7 @@ indexes from module-init-tools project.
 
 %package bash-completion
 Summary:        Bash completion routines for the kmod utilities
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Shells
 BuildArch:      noarch
 Requires:       %{name}
@@ -116,7 +113,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 	--bindir="%_bindir"
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 b="%buildroot"
