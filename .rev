@@ -343,4 +343,14 @@ additions, including new UTF-8 compose sequences for:
     bsc#1182506)</comment>
     <requestid>894113</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c5b709d8afcb5b7e9b715f9e80224e6e</srcmd5>
+    <version>1.7.1</version>
+    <time>1622928628</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Check-for-NULL-strings-before-getting-their-lengths.patch
+  * regression in libX11 1.7.1 (boo#1186643)
+    fixes segfaults for xforms applications like fdesign</comment>
+    <requestid>896392</requestid>
+  </revision>
 </revisionlist>
