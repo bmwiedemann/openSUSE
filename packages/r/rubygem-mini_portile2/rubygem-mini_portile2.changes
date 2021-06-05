@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  1 03:47:32 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.6.1
+
+  #### Dependencies
+
+  Make `net-ftp` an optional dependency, since requiring it as a hard dependency in v2.5.2 caused warnings
+  to be emitted by Ruby 2.7 and earlier. A warning message is emitted if FTP functionality is called and
+  `net-ftp` isn't available; this should only happen in Ruby 3.1 and later.
+
+-------------------------------------------------------------------
 Fri May 14 16:20:21 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.5.1
