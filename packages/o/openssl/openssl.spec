@@ -32,6 +32,7 @@ Requires:       openssl-%{_sonum} = %{version}
 # the debuginfo package is now openssl-%%{_sonum}-debuginfo (boo#1040172)
 Obsoletes:      openssl-debuginfo
 BuildArch:      noarch
+Provides:       openssl(cli)
 
 %description
 The OpenSSL Project is a collaborative effort to develop a robust,

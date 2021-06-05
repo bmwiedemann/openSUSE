@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 31 09:56:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide openssl(cli) by the meta package: Together with the
+  suggests openssl in the base patterns, any consumer of this
+  symbols should get the openssl meta package as candidate, which
+  allows us to easier change the recommended default version.
+
+-------------------------------------------------------------------
 Thu Mar 25 22:59:26 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.1.1k release
