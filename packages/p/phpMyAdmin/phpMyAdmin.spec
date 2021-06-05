@@ -25,7 +25,7 @@
 %define apache_group    nogroup
 %endif
 Name:           phpMyAdmin
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later

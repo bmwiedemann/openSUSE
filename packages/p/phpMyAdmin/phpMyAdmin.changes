@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun  5 10:33:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.1.1
+  - Fixes for several PHP errors
+  - Fixes for "$cfg['DefaultTabDatabase']" and other related configuration directives not working properly
+  - Fix Yaml export to quote strings even when they are numeric
+  - Fix TCPDF open_basedir issue due to internal guessing code from TCPDF
+  - Fix for quick search not working when using more than one configured server
+    Fix datetime decimals displayed (.00000) after edit
+  - Fix new lines in text fields are doubled
+  - Fixed URL generation by removing un-needed &amp; escaping for & char
+  - Improvements for working with PHP 8.1
+  - Improved handling of adding a new user with the Percona database server
+  
+  For a detail cahngelog see: 
+  https://demo.phpmyadmin.net/master-config/index.php?route=/changelog
+
+-------------------------------------------------------------------
 Fri Feb 26 10:11:28 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.1.0
