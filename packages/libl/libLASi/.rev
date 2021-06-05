@@ -77,4 +77,13 @@
     <comment></comment>
     <requestid>753163</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>582e0931145ecbb2a68a7b74217cf2e5</srcmd5>
+    <version>1.1.3</version>
+    <time>1622928693</time>
+    <user>dimstar_suse</user>
+    <comment>Add GCC 11 build fix: 0001-Fix-build-with-GCC-11.patch [https://sourceforge.net/p/lasi/bugs/9/]
+</comment>
+    <requestid>897589</requestid>
+  </revision>
 </revisionlist>

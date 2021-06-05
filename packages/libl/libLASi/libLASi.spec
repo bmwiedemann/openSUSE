@@ -29,6 +29,8 @@ Source:         http://download.sourceforge.net/lasi/%{name}-%{version}.tar.gz
 Patch0:         libLASi-link_gobject2.patch
 # PATCH-FEATURE-OPENSUSE libLASi-do_not_build_examples.patch
 Patch1:         libLASi-do_not_build_examples.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-GCC-11.patch christophe@krop.fr -- Fix build with GCC 11 [https://sourceforge.net/p/lasi/bugs/9/]
+Patch2:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake >= 3.13.2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -102,9 +104,7 @@ This package provides the header files necessary for development with
 %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \

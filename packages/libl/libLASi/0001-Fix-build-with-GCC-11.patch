@@ -1,0 +1,27 @@
+From 75d1d700ecfb1627eb61722d4de31fbf4f97347e Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 1 Jun 2021 10:29:37 +0200
+Subject: [PATCH] Fix build with GCC 11
+
+Dynamic exception specification are deprecated in C++11 and were removed
+in C++17.
+---
+ src/util.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/util.h b/src/util.h
+index 8e728de..6e6f8b3 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream&, const FT_Outline);
+ 
+ /** Converts a freetype return code into an exception.
+  */
+-inline void evalReturnCode(const int errCode, const char* funcName) throw (std::runtime_error) {
++inline void evalReturnCode(const int errCode, const char* funcName) {
+   if (errCode)
+     throw std::runtime_error(std::string("Error returned from ") + funcName);
+ }
+-- 
+2.31.1
+
