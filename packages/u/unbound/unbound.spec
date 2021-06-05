@@ -62,6 +62,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  swig
 %endif
+# needed for dns over https
+BuildRequires:  pkgconfig(libnghttp2)
 
 Requires:       ldns >= %{ldns_version}
 # until we figured something else out for the unbound-anchor part in the systemd unit file
@@ -108,6 +110,7 @@ DNSSEC (secure DNS) validation and stub-resolvers (that do not run
 as a server, but are linked into an application) are easily possible.
 
 %define libname libunbound8
+
 %package -n %{libname}
 Requires:       %{name}-anchor >= %{version}
 #
@@ -205,6 +208,7 @@ pushd ../p2
   --with-pthreads \
   --disable-static \
   --with-ldns=%{_prefix} \
+  --with-libnghttp2 \
   --enable-sha2 \
   --enable-gost \
   --enable-ecdsa \
@@ -218,7 +222,8 @@ pushd ../p2
   --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
   --with-pidfile=%{piddir}%{name}/%{name}.pid \
   --with-pythonmodule --with-pyunbound PYTHON=%{__python2}\
-  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key
+  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
+  --disable-explicit-port-randomisation
 
 make %{?_smp_mflags} all streamtcp
 popd
@@ -230,6 +235,7 @@ popd
   --with-pthreads \
   --disable-static \
   --with-ldns=%{_prefix} \
+  --with-libnghttp2 \
   --enable-sha2 \
   --enable-gost \
   --enable-ecdsa \
@@ -245,7 +251,8 @@ popd
 %if %{with python3}
   --with-pythonmodule --with-pyunbound PYTHON=%{__python3}\
 %endif
-  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key
+  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
+  --disable-explicit-port-randomisation
 
 make %{?_smp_mflags} all streamtcp
 

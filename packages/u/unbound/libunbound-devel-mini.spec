@@ -36,8 +36,8 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  openssl-devel
 Requires:       this-is-only-for-build-envs
-Conflicts:      unbound-devel
 Conflicts:      libunbound8
+Conflicts:      unbound-devel
 Provides:       libunbound-devel = %{version}-%{release}
 #
 URL:            https://www.unbound.net/
@@ -87,7 +87,8 @@ export CXXFLAGS="%{optflags}"
   --with-pidfile=%{piddir}%{name}/%{name}.pid \
   --without-pythonmodule --without-pyunbound \
   --with-libunbound-only \
-  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key
+  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
+  --disable-explicit-port-randomisation
 
 make %{?_smp_mflags}
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 11 21:57:51 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Use --disable-explicit-port-randomisation, the linux kernel
+  has source port randomization by default if port is 0 since ages.
+
+-------------------------------------------------------------------
 Tue Feb  9 10:56:09 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.13.1

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 30 19:28:48 UTC 2021 - Togan Muftuoglu <toganm@dinamizm.com>
+
+- Enable DNS-over-HTTPS support
+
+-------------------------------------------------------------------
+Tue May 11 21:56:07 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Use --disable-explicit-port-randomisation, the linux kernel
+  has source port randomization by default if port is 0 since ages.
+
+-------------------------------------------------------------------
 Tue Feb  9 10:56:09 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.13.1
