@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 26 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.002009
+   see /usr/share/doc/packages/perl-Test-Needs/Changes
+
+  0.002009 - 2021-05-25
+    - fix warnings from Test::Builder if Test::Needs is loaded first, and is
+      used to check for a Test module.
+    - fix location in code reported when a module check fails.
+    - support short forms of perl versions
+    - support perl versions greater than 5
+    - fix handling of v-string versions on perl 5.6
+
+  0.002_008 - 2019-07-12
+    - fix test compatibility with Windows.
+
+  0.002_007 - 2019-07-09
+    - fix tests when @INC includes directories that shouldn't have their
+      archname or version subdirectories added.
+
+-------------------------------------------------------------------
 Fri Apr  5 05:29:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.002006
