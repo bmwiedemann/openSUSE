@@ -37,22 +37,15 @@ Name:           cups-filters
 #       and also run: zypper vcmp 'next version' 'current version'
 # e.g. zypper vcmp '1.0.49' '1.0.49.20140326' -> 1.0.49 is older than 1.0.49.20140326
 #  and zypper vcmp '1.0.50' '1.0.49.20140326' -> 1.0.50 is newer than 1.0.49.20140326
-Version:        1.27.2
+Version:        1.28.8
 Release:        0
-Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.xz
+Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.gz
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
 # in https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637
 # dowloaded via
 # wget -O fix_upstream_bug_1421.patch https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637.patch
 # and then removed the changes of the NEWS file from that patch because
 # the NEWS changes do not apply on the sources of the pristine 1.20.0 release:
-# Patch100 fix_upstream_bug_1421.patch is fixed in the cups-filters 1.20.1 sources.
-# Patch102 fix_upstream_issue348.patch fixes
-# https://github.com/OpenPrinting/cups-filters/issues/348
-# "foomatic-rip segfaults with 'job-sheets=none,none' but works with 'job-sheets=none'"
-# according to
-# https://github.com/OpenPrinting/cups-filters/commit/67c2128219ae0ba24917cb29bf0da0bddfd6864a
-Patch102:       fix_upstream_issue348.patch
 # Since cups-filters version 1.0.42 foomatic-rip is also provided by cups-filters.
 # The foomatic-rip version that is provided by cups-filters is not specified in the cups-filters sources
 # but on http://www.openprinting.org/download/foomatic/ the foomatic-filters-4.0-current.tar.gz
@@ -74,7 +67,7 @@ BuildRequires:  qpdf-devel >= 8.3.0
 # pdftops
 BuildRequires:  poppler-tools
 # pdftoraster
-BuildRequires:  ghostscript-mini-devel
+BuildRequires:  ghostscript-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
@@ -223,12 +216,6 @@ This package contains the development files for cups-filters.
 
 %prep
 %setup -q
-# Patch102 fix_upstream_issue348.patch fixes
-# https://github.com/OpenPrinting/cups-filters/issues/348
-# "foomatic-rip segfaults with 'job-sheets=none,none' but works with 'job-sheets=none'"
-# according to
-# https://github.com/OpenPrinting/cups-filters/commit/67c2128219ae0ba24917cb29bf0da0bddfd6864a
-%patch102
 
 %build
 # Just do what is described in the upstream INSTALL file
@@ -329,11 +316,13 @@ exit 0
 %{_mandir}/man8/cups-browsed.8.gz
 %{_bindir}/driverless
 %{_mandir}/man1/driverless.1.gz
+%{_bindir}/driverless-fax
 %{_bindir}/foomatic-rip
 %{_mandir}/man1/foomatic-rip.1.gz
 %dir /usr/lib/cups
 %dir /usr/lib/cups/driver
 /usr/lib/cups/driver/driverless
+/usr/lib/cups/driver/driverless-fax
 %dir /usr/lib/cups/backend
 # The wrapper backends beh and implicitclass must be installed with 0700 permissions
 # so that cupsd runs them as root (backends with root-only permissions are run as root by cupsd)
@@ -353,6 +342,7 @@ exit 0
 %attr(0700,root,root) /usr/lib/cups/backend/serial
 # Explicit attr() mode not applicable to symlink /usr/lib/cups/backend/driverless
 /usr/lib/cups/backend/driverless
+/usr/lib/cups/backend/driverless-fax
 %dir /usr/lib/cups/filter
 %attr(0755,root,root) /usr/lib/cups/filter/bannertopdf
 %attr(0755,root,root) /usr/lib/cups/filter/brftopagedbrf

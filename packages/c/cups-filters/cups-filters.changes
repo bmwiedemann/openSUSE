@@ -1,4 +1,271 @@
 -------------------------------------------------------------------
+Tue May 25 12:21:15 CEST 2021 - jsmeix@suse.de
+
+- Version upgrade to 1.28.8
+  * libcupsfilters: Made check whether the driverless PPD to
+    generate should be a fax out PPD more reliable (Issue #343).
+  * foomatic-rip: Options in the 5th command line argument of
+    the CUPS filter command line are separated only by white
+    space and not by comma, also make sure that an option "none"
+    is not considered a custom page size (Issue #348).
+  * implicitclass: Raise timeout for cups-browsed's answer from
+    20s to 60s (Pull request #346).
+  * libcupsfilters: In the PPD generator really give priority to
+    Apple Raster against PDF (Issue #331).
+- Version upgrade to 1.28.7
+  * driverless: Removed the support quality check from Pull
+    request #235 as it takes significant time for each printer
+    being listed, making cups-driverd (`lpinfo -m`) timing out
+    when there are many printers (OpenPrinting CUPS issue #65).
+  * libcupsfilters: In the PPD generator give priority to Apple
+    Raster against PDF (Issue #331).
+  * libcupsfilters: Added NULL check when removing ".Borderless"
+    suffixes from page size names (Issue #314, Pull request #328).
+  * libcupsfilters: In the cupsRasterParseIPPOptions() map the
+    color spaces the same way as in the PPD generator
+    (Issue #326, Pull request #327).
+  * libcupsfilters: Fixed addition of grayscale mode in
+    generated PPD files, to avoid duplicate entries
+    (OpenPrinting CUPS issue #59).
+- Version upgrade to 1.28.6
+  * libcupsfilters: In generated PPDs add a grayscale mode if
+    there are only color printing modes (from OpenPrinting CUPS).
+  * libcupsfilters: In generated PPDs add an "OutputBin" option
+    also if it has only one choice (OpenPrinting CUPS pull
+    request #18).
+  * libcupsfilters: Generated PPDs could have an "Unknown"
+    default InputSlot (OpenPrinting CUPS issue #44).
+  * cups-browsed: Removed unneeded IPP attribute additions
+    preventing the created local queues from preserving a
+    location or description the user assigns to them (Issue #323).
+  * cups-browsed: Removed all calls of the resolve_uri() function
+    of libcupsfilters, as these are not actually needed and in case
+    the supplied DNS-SD-based URI is not resolvable, the function
+    gets stuck for ~5 seconds.
+  * cups-browsed: Fixed several memory leaks, mainly from the
+    code to merge printer IPP attributes for clusters
+    (Pull request #322).
+  * cups-browsed: Silenced compiler warning.
+  * foomatic-rip: Fix infinite loop and input from file on raw
+    printing (Pull request #318).
+  * foomatic-rip: Remove temporary file created during pdf-to-ps
+    conversion (Pull request #313).
+- Version upgrade to 1.28.5
+  * cups-browsed: UUID from IPP response was used after its
+    pointer was freed by ippDelete() (Pull request #311).
+- Version upgrade to 1.28.4
+  * driverless: Avoid duplicate PPD list entries from the same
+    device via UUID
+  * driverless: Reduce ippfind calls by "driverless" and
+    "driverless-fax"called by CUPS. Let "driverless list" list
+    both print and fax PPDs and "driverless-fax list" do nothing.
+  * driverless: Avoid duplicate listings in printer discovery,
+    by "driverless-fax" not listing any URI as "driverless"
+    lists them all already.
+  * driverless: Vastly improve performance by doing only one
+    ippfind call instead of two (IPP, IPPS) as ippfind accepts
+    more than one reg type on the command line.
+  * Sample PPDs: Corrected manufacturer name in
+    Fuji_Xerox-DocuPrint_CM305_df-PDF.ppd.
+- Version upgrade to 1.28.3
+  * libcupsfilters, cups-browsed: Fixed inconsistency between
+    resolvers for DNS-SD-based URIs, resolve_uri() and
+    ippfind_based_uri_converter(). Now both return a freeable
+    string.
+  * libcupsfilters: Fix uninitialized buffer and parsing ippfind
+    output in ippfind_based_uri_converter() function
+    (Issue #308, Pull request #309).
+- Version upgrade to 1.28.2
+  * driverless: Free allocated memory, use MAX_OUTPUT_LEN
+    (Pull request #304).
+  * driverless: Make the two ippfind tasks(for IPP
+    and IPPS) run in parallel (Pull request #302, #305, #306).
+  * braille: Support new liblouis tables not containing a
+    display name (Pull request #303)
+  * Build system: Let ./configure not error out when there is
+    more than one DejaVuSans.ttf test font candidate (Issue #300).
+  * cups-browsed: Crash when a remote printer set as default gets
+    removed, due to missing variable in printf() call (Issue #299).
+  * libcupsfilters: Removed all signal handling and global
+    variables from get_printer_attributes() and
+    ippfind_based_uri_converter(). This is overkill for these
+    quick operations and causes problems when shutting down
+    cups-browsed (Issue #298).
+- Version upgrade to 1.28.1
+  * COPYING: Fixed several typos
+  * libcupsfilters: Fixed typo in log message of
+    get_printer_attributes functions.
+  * cups-browsed: Fixed typos in configuration file and man page
+  * libcupsfilters: Let the PPD generator not suffix page size
+    names with ".Borderless" if all page sizes would get this
+    suffix, for example for printers which generally print
+    borderless.
+  * libcupsfilters: Added "faxPrefix" option for generated IPP Fax
+    Out PPDs, so that this option also appears in print dialogs.
+  * driverless: List addresses for local services correctly when
+    using "--std-ipp-uris" (with "localhost" hostname).
+  * driverless: Make calls of the ippfind utility somewhat faster,
+    setting the timeout of ippfind to automatic.
+  * libcupsfilters: Resolve DNS-SD-based URIs for local services
+    correctly (using hostname "localhost").
+  * libcupsfilters: In get_printer_attributes() functions do not
+    try to convert URIs which are not DNS-SD-based (Issue #294).
+  * libcupsfilters: In get_printer_attributes() functions also
+    support URIs with "dnssd://..." scheme.
+  * libcupsfilters: Moved signal handling back into main
+    function of the get_printer_attributes() variants, it got
+    moved out accidentally.
+  * driverless: For generating a PPD, independent whether via
+    "driverless URI" or "driverless cat URI", always allow CUPS
+    driver URIs (prefixed with "driverless: " or
+    "driverless-fax:") and pure IPP URIs.
+  * driverless: Accept clean IPP URIs also for 'driverless cat ...'
+    (Issue #295, Pull request #296).
+  * driverless-fax: Do not use fixed path for call of driverless
+    itself (Pull request #293).
+- Version upgrade to 1.28.0
+  * driverless, driverless-fax, libcupsfilters: Added IPP Fax
+    Out support. Now printer setup tools list an additional fax
+    "driver".  A fax queue is created by selecting this driver.
+    Jobs have to be sent with "-o phone=12345" to supply
+    the destination phone number (Pull request #280).
+  * libfontembed: Silenced warning with gcc 10.x
+    (Pull request #287).
+  * cups-browsed: Added ./configure
+    options --enable-saving-created-queues
+    and --with-remote-cups-local-queue-naming
+    (Pull request: #253, #285).
+  * cups-browsed: Fixed several memory leaks, mainly from
+    the code to merge printer IPP attributes for clusters
+    (Pull request #281, #283).
+  * driverless: Added "--std-ipp-uris" command line option to
+    show listed URIs in standard hostname-based form (not the
+    CUPS DNS-SD-service-name-based form. Only for manual call of
+    the utility, for debugging purposes (Pull request #277).
+  * libfontembed: Removed assert() calls which cause crashes
+    when unsupported emoji fonts are installed (Issue #254,
+    Pull request #276).
+  * driverless: Added support for IPPS (use "ipps://..." URIs if
+    possible, Issue #251, Pull request #270, #273).
+  * gstoraster, gstopdf: When converting PostScript to PDF use
+    the "pdfwrite" output device with "-dPDFSETTINGS=/default"
+    instead of with "-dPDFSETTINGS=/printer". This reproduces
+    bitmaps in the PostScript file with their original image
+    quality (Issue #272).
+  * cups-browsed: Limit log file size and add backup file for
+    previous log entries. Introduced the configuration option
+    DebugLogFileSize in cups-browsed.conf to set the actual limit
+    in kilobytes or 0 to get the old behavior of an unlimited
+    size for the log file (Issue #260, Pull request #267).
+  * gstoraster, gstopdf: Do not apply margins when output format
+    is PDF, as then we convert an incoming PostScript file to
+    PDF (pre-pdftopdf) and do not prepare the pages for the
+    printer (post-pdftopdf, Issue #250).
+  * cups-browsed: Do not write any log messages directly to
+    stderr, there were some concerning timeouts on queue
+    creation (Issue #260).
+  * Build system: Fix cross-compilation without DejaVu test font
+    in configure.ac (Issue #262, Pull request #263).
+  * libcupsfilters: Respect the fact that PPD keywords
+    are case-sensitive when adding "*cupsManualCopies: True" in
+    PPD file (Issue #242).
+  * libcupsfilters: Older versions of libcups (< 2.3.1)
+    had the enum name for fold-accordion finishings mistyped.
+    Added a workaround.
+  * cups-browsed: Remove left-over local queues from the previous
+    session more quickly when CUPS legacy browsing is turned on.
+  * cups-browsed: Left-over local queues from the previous
+    session for which the corresponding remote printer did not
+    appear again did not get removed as they were considered
+    externally overwritten.
+  * gstoraster, gstopdf: Add option "-dDoNumCopies" to Ghostscript
+    command line if we are outputting PDF (called via gstopdf
+    wrapper) and the number of copies supplied to CUPS is 1 (4th
+    command line argument). In this case we convert incoming
+    PostScript to PDF and need to respect  embedded PostScript
+    commands to implement the number of copies (Issue #255,
+    CUPS Issue #5796, OpenSUSE bug #1173345).
+  * imagetoraster: Potential null dereference fix (when no valid
+    PPD is supplied, Pull request #256).
+  * cups-browsed: Call cupsGetNamedDest() only if
+    "OnlyUnsupportedByCUPS No"
+  * Sample PPDs: Corrected ColorModel default for Generic PWG
+    Raster PPD to Color (Pull request #247).
+  * cups-browsed: Mark the temp queue as cups-browsed-generated
+    during setting printer-is-shared (Pull request #246).
+  * cups-browsed: Remove mentions of README and AUTHORS files in
+    the man page (Pull request #244).
+  * pclmtoraster: Added new filter to extract Raster data from
+    raster-only PDF files, here for the special case of PCLm
+    files (Pull request #243, #257).
+  * Sample PPDs: In Generic-PDF_Printer-PDF.ppd add option to switch
+    between color and grayscale printing (Pull request #237).
+- Version upgrade to 1.27.5
+  * cups-browsed: Do not remove the created local queues on
+    shutdown, to avoid their re-creation on restart, so that
+    desktops get no cluttered with notifications of new queues
+    being created. One can return to the old behavior via
+    "KeepGeneratedQueuesOnShutdown No" in cups-browsed.conf
+    (Ubuntu bug #1869981, #1878241).
+  * cups-browsed: Do not accept DNS-SD broadcasts of IPPS type
+    of "remote" CUPS queues of another CUPS instance on the
+    local machine. This way we get a local queue pointing to
+    such a printer only in unencrypted version (IPP). For some
+    reason printing from one CUPS server to another on the same
+    machine works only unencrypted.
+  * foomatic-rip: Map two-sided-short-edge to DuplexTumble
+    (Pull request #236)
+  * Build system: In configure.ac use AS_IF instead of
+    AC_CHECK_FILE for font check (Issue #239, Pull request #240)
+  * cups-browsed: Cleaned up code for determining to which CUPS
+    server (host/port/domain socket) to connect, so that connection
+    via DomainSocket cups-browsed.conf directive, CUPS_SERVER and
+    IPP_PORT environment variables and all defaults and methods
+    of libcups, including CUPS' client.conf work.
+  * gstoraster, rastertopdf: Do not pass NULL to fprintf()
+    (Pull request #230).
+  * libcupsfilters: Silence compiler warning (Pull request #229).
+- Version upgrade to 1.27.4
+  * libcupsfilters, cups-browsed: Fix memory issues in
+    ppdgenerator and cups-browsed (Pull request #226).
+  * pdftops: Mention cups-filters README, CUPS README in debug log
+    (Pull request #225).
+  * pdftopdf, gstoraster, foomatic-rip: Use "-dSAFER" Ghostscript
+    option, instead of the deprecated "-dPARANOIDSAFER"
+    (Pull request #224).
+  * Build System: Replace '==' in configure.ac test with '=', as
+    the former is a bashism (Pull request #222).
+- Version upgrade to 1.27.3
+  * cups-browsed: Allow sharing local queues pointing to remote
+    CUPS queues and re-sharing printers discovered via
+    BrowsePoll by default, using AllowResharingRemoteCUPSPrinters
+    and NewBrowsePollQueuesShared directives in cups-browsed.conf
+    (Issue #101, Pull request #218).
+  * driverless: Correctly unlink temporary file when generating
+    PPD file (Pull request #220).
+  * cups-browsed: Fixed memory leaks (Pull request #219).
+  * foomatic-rip: PDF page count side-loads the PDF file to count
+    the pages in, so it cannot be run in -dSAFER mode. Run even
+    in -dNOSAFER mode to override the -dSAFER default of newer
+    Ghostscript versions. This should not cause a security problem
+    as we do not take an input file which could do arbitrary
+    side-loads but we run hard-coded PostScript commands instead
+    (Issue #216).
+  * libfontembed: Add checks to the test programs to not segfault
+    if the test font file is not found (Pull request #214).
+  * Build System: Let ./configure fail if the supplied test font
+    file path (or the default) does not exist (Pull request #214),
+    also use the "find" command to find the test font file
+    DejaVuSans.ttf under /usr/share/fonts, as every
+    distribution has it somewhere else.
+- fix_upstream_issue348.patch is no longer needed because
+  it is now fixed in the upstream sources, see the above
+  entry about "Issue #348". Entries like "Issue #NNN" or
+  "Pull request #NNN" mean cups-filters upstream issues
+  or cups-filters upstream GitHub pull requests at
+  https://github.com/OpenPrinting/cups-filters
+
+-------------------------------------------------------------------
 Thu Apr 15 09:51:25 CEST 2021 - jsmeix@suse.de
 
 - fix_upstream_issue348.patch fixes
@@ -30,51 +297,49 @@ Thu Mar  5 09:11:09 UTC 2020 - Dmitry Roshchin <dmitry_r@opensuse.org>
     that option settings did not get inserted or lines inserted
     on the wron place (Issue #208, Pull request #210).
   * foomatic-rip: For the PDF page count call Ghostscript in
-    sandbox mode and fix pointer arithmetics (Pull request
-    #212).
+    sandbox mode and fix pointer arithmetics (Pull request #212).
   * foomatic-rip: Zero-page-job handling changes made the last
     page of PostScript files not printed, also turning one-page
-    jobs into zero-page jobs (Issue #200, Issue #206, Issue
-    #208, Pull request #209, Pull request #210, Pull request
-    #211).
+    jobs into zero-page jobs (Issue #200, Issue #206, Issue #208,
+    Pull request #209, Pull request #210, Pull request #211).
     * cups-browsed: check_printer_with_option() function:
     Initialize the value, add further checks, freeing memory and
     stop allocating magic numbers (Pull request #204).
   * cups-browsed: Additional checks against crashes in the
-    is_local_hostname() function (Ubuntu bug #1863716) 
+    is_local_hostname() function (Ubuntu bug #1863716)
 
 -------------------------------------------------------------------
 Wed Feb 19 18:46:12 UTC 2020 - Javier Llorente <javier@opensuse.org>
 
 - Update to 1.27.1
-  * libcupsfilters: Let the PPD generator not put any dashes into 
-    the PPD option and choice names when translating them from IPP 
-    attribute names, to avoid that on the back-translation by CUPS 
-    no double-dashes are generated. This broke paper tray selections 
-    with tray names like "tray-1", "tray-2", ... (Issue #192, 
-    Issue #201, Debian bug #949315).
-  * foomatic-rip: Fixed segfault when PRINTER environment variable 
+  * libcupsfilters: Let the PPD generator not put any dashes into
+    the PPD option and choice names when translating them from IPP
+    attribute names, to avoid that on the back-translation by CUPS
+    no double-dashes are generated. This broke paper tray
+    selections with tray names like "tray-1", "tray-2", ...
+    (Issue #192, Issue #201, Debian bug #949315).
+  * foomatic-rip: Fixed segfault when PRINTER environment variable
     is not supplied.
-  * pdftopdf, pdftops, gstoraster, gstopdf, gstopxl, rastertoescpx, 
-    rastertopclx, foomatic-rip: Handle zero-page jobs (Issue #117, 
-    Pull request #196, Pull request #197, Pull request #198, Pull 
-    request #200).
-  * texttopdf: Added support for CJK (double-width) fonts (Issue 
-    #135, Pull request #199).
-  * cups-browsed: Switched default for "CreateIPPPrinterQueues" 
-    from "local-only" to "All". The configure script options "
-    --enable-auto-setup-local-only" and 
-    "--enable-auto-setup-driverless-only" can be used to change 
-    this default (Debian bug #921252).
+  * pdftopdf, pdftops, gstoraster, gstopdf, gstopxl, rastertoescpx,
+    rastertopclx, foomatic-rip: Handle zero-page jobs (Issue #117,
+    Pull request #196, Pull request #197, Pull request #198,
+    Pull request #200).
+  * texttopdf: Added support for CJK (double-width) fonts
+    (Issue #135, Pull request #199).
+  * cups-browsed: Switched default for "CreateIPPPrinterQueues"
+    from "local-only" to "All". The configure script options
+    "--enable-auto-setup-local-only" and
+    "--enable-auto-setup-driverless-only" can be used
+    to change this default (Debian bug #921252).
   * rastertoescpx: Fixed wrong freeing of a buffer.
-  * pdftops: Added options "crop-to-fit" and "fill" to the pdftopdf 
-    options which the pstops called by pdftops should not apply a 
+  * pdftops: Added options "crop-to-fit" and "fill" to the pdftopdf
+    options which the pstops called by pdftops should not apply a
     second time.
-  * pdftops: Added missing "-sstdout=%stderr" to Ghostscript command
-    line, to assure that all messages are redirected to stderr and 
-    do not mix up with the output data.
+  * pdftops: Added missing "-sstdout=%stderr" to Ghostscript
+    command line, to assure that all messages are redirected
+    to stderr and do not mix up with the output data.
 - Drop add-cstring-include.patch: already present upstream
-- Drop foomatic-rip-fix-compilation-with-fno-common.patch: already 
+- Drop foomatic-rip-fix-compilation-with-fno-common.patch: already
   present upstream
 
 -------------------------------------------------------------------
