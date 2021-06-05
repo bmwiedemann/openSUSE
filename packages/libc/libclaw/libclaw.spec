@@ -24,17 +24,17 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libclaw.sourceforge.net/
 Source:         http://downloads.sf.net/%{name}/%{name}-%{version}.tar.gz
-# FEATURE-OPENSUSE not to strip libs.
+# PATCH-FEATURE-OPENSUSE not to strip libs.
 Patch0:         libclaw-1.6.1-nostrip.patch
-# FIX-OPENSUSE to set libs dir.
+# PATCH-FEATURE-UPSTREAM libclaw-1.7.0-libdir.patch -- https://github.com/j-jorge/libclaw/pull/4
 Patch1:         libclaw-1.7.0-libdir.patch
-# FEATURE-OPENSUSE to prevent doxygen "W: file-contains-date-and-time".
+# PATCH-FIX-OPENSUSE libclaw-doxy-w-date-time.patch -- https://github.com/j-jorge/libclaw/pull/5
 Patch2:         libclaw-doxy-w-date-time.patch
-# PATCH-FIX-UPSTREAM fix-cmake.patch
+# PATCH-FIX-UPSTREAM fix-cmake.patch -- https://github.com/j-jorge/libclaw/commit/ff4d26816ded3da87c393b1accd07a63ee8a91cb
 Patch3:         fix-cmake.patch
-# PATCH-FIX-UPSTREAM to be built via gcc7.
+# PATCH-FIX-UPSTREAM libclaw-1.7.4-gcc7.patch -- modified https://github.com/j-jorge/libclaw/commit/6033275773313fe052f6e222321a8ec87587fbe6
 Patch4:         libclaw-1.7.4-gcc7.patch
-# PATCH-FIX-UPSTREAM no-boost-math.patch -- Boost.Math now requires c++11, so get rid of it
+# PATCH-FIX-UPSTREAM no-boost-math.patch -- https://github.com/j-jorge/libclaw/pull/3
 Patch5:         no-boost-math.patch
 BuildRequires:  boost-devel >= 1.42
 BuildRequires:  cmake >= 2.8.8
@@ -80,13 +80,7 @@ This subpackage contains the documentation and examples for using
 libclaw.
 
 %prep
-%setup -q
-%patch0 -p1 -b .nostrip
-%patch1 -p1 -b .libdir
-%patch2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 # Fix encoding of examples
 find examples -type f |
 while read F

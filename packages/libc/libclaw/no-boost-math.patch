@@ -40,7 +40,7 @@ diff -Nur libclaw-1.7.4/claw/code/tween/easing/easing_sine.cpp new/claw/code/twe
 diff -Nur libclaw-1.7.4/claw/impl/curve.tpp new/claw/impl/curve.tpp
 --- libclaw-1.7.4/claw/impl/curve.tpp	2013-07-03 21:34:38.000000000 +0200
 +++ new/claw/impl/curve.tpp	2021-05-16 14:03:12.910091138 +0200
-@@ -26,8 +26,8 @@
+@@ -26,8 +26,9 @@
   * \brief Implementation of claw::math::curve.
   * \author Julien Jorge
   */
@@ -48,6 +48,7 @@ diff -Nur libclaw-1.7.4/claw/impl/curve.tpp new/claw/impl/curve.tpp
 -#include <boost/math/constants/constants.hpp>
 +
 +#include <cmath>
++#include <limits>
  
  /*----------------------------------------------------------------------------*/
  /**
