@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:43:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.3:
+  * Update importlib-metadata version pin
+  * Display script debug output in tcsh
+  * Fish support improvements
+  * Print ``warn()`` message from beginning of line
+  * Test infrastructure improvements
+
+-------------------------------------------------------------------
 Sun Dec 20 09:17:00 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.2:

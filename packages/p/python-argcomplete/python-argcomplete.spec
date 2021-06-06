@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argcomplete
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  fish
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 0.23
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
