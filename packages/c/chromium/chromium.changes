@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  3 12:11:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add README.SUSE
+- Fix aarch64 build:
+  * chromium-91-libyuv-aarch64.patch
+  * Update highway to 0.12.2 (arm only)
+- Add -flax-vector-conversions to build flags
+
+-------------------------------------------------------------------
 Thu May 27 05:12:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 91.0.4472.77 (boo#1186458):

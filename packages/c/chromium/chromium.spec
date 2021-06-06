@@ -55,6 +55,8 @@ Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+Source1:        README.SUSE
+Source2:        highway-0.12.2.tar.gz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
@@ -100,6 +102,7 @@ Patch36:        chromium-90-ruy-include.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch41:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
 Patch42:        chromium-91-system-icu.patch
+Patch44:        chromium-91-libyuv-aarch64.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -279,10 +282,17 @@ Requires:       %{name} = %{version}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
+%ifarch aarch64
+%setup -q -T -D -b2 -n highway-0.12.2
+%endif
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
 
 %build
+%ifarch aarch64
+rm -rf third_party/highway/src/*
+mv ../highway-0.12.2/* third_party/highway/src
+%endif
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -556,6 +566,9 @@ export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-aligned"
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+%ifarch aarch64
+export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
+%endif
 export CFLAGS="${CXXFLAGS}"
 export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
 export CC=gcc

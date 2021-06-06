@@ -3664,4 +3664,17 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>895838</requestid>
   </revision>
+  <revision rev="294" vrev="2">
+    <srcmd5>9ec9b13795734a81b684c4b7f5ad59ac</srcmd5>
+    <version>91.0.4472.77</version>
+    <time>1623011982</time>
+    <user>dimstar_suse</user>
+    <comment>- Add README.SUSE
+- Fix aarch64 build:
+  * chromium-91-libyuv-aarch64.patch
+  * Update highway to 0.12.2 (arm only)
+- Add -flax-vector-conversions to build flags
+</comment>
+    <requestid>897189</requestid>
+  </revision>
 </revisionlist>
