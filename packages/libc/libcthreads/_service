@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libcthreads</param>
+		<param name="revision">036bab2b2931e518c549bbab994cea8aadb921a8</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210415</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
