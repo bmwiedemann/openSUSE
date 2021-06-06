@@ -185,4 +185,16 @@ Please link to python3-polib.
   on big-endian machines (https://bitbucket.org/izi/polib/issues/96)</comment>
     <requestid>634946</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c309864052bab320aa13495d9860a00</srcmd5>
+    <version>1.1.1</version>
+    <time>1623012060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  - Strip UTF-16 BOM (U+FEFF) from start of file
+  - Message context (msgctxt) support for MO files
+  - Dropped Python &lt; 2.7 support
+  - Updated docs and README after switch from Bitbucket to Github</comment>
+    <requestid>897853</requestid>
+  </revision>
 </revisionlist>

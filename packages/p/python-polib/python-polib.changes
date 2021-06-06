@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:39:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  - Strip UTF-16 BOM (U+FEFF) from start of file
+  - Message context (msgctxt) support for MO files
+  - Dropped Python < 2.7 support
+  - Updated docs and README after switch from Bitbucket to Github
+
+-------------------------------------------------------------------
 Mon Sep 10 11:44:59 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 
 - Add polib-1.1.0-fix-tests-big-endian.patch to overcome failing tests
