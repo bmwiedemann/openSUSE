@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:45:33 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.0:
+  * Completely reworked welcome screen.
+  * Modernized user interface and icons.
+  * Much improved opening of recently edited files.
+  * Automatic reloading of files modified outside of Poedit.
+  * Completely new source code occurrences viewers with syntax
+    highlighting for virtually all programming languages used with
+    gettext.
+  * Editing area now indicates source and translation string
+    lengths.
+  * Full python-format support for PO files.
+  * Further improvements to XLIFF handling.
+
+-------------------------------------------------------------------
 Mon Apr 26 16:53:21 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 2.4.3: Bugfixes.

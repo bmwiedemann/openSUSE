@@ -20,7 +20,7 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        2.4.3
+Version:        3.0
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
@@ -75,12 +75,14 @@ rm -r deps
 
 %install
 %make_install
+# Don't package icon cache, it will be updated at package installation via file trigger
+rm %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 %fdupes -s %{buildroot}%{_datadir}
 %find_lang %{name}
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/net.poedit.Poedit.desktop

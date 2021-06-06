@@ -506,4 +506,23 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
     <comment>- Update to version 2.4.3: Bugfixes.</comment>
     <requestid>888567</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b5601742ca8469245e69b9d47739b045</srcmd5>
+    <version>3.0</version>
+    <time>1623012028</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 3.0:
+  * Completely reworked welcome screen.
+  * Modernized user interface and icons.
+  * Much improved opening of recently edited files.
+  * Automatic reloading of files modified outside of Poedit.
+  * Completely new source code occurrences viewers with syntax
+    highlighting for virtually all programming languages used with
+    gettext.
+  * Editing area now indicates source and translation string
+    lengths.
+  * Full python-format support for PO files.
+  * Further improvements to XLIFF handling.</comment>
+    <requestid>897753</requestid>
+  </revision>
 </revisionlist>
