@@ -7,4 +7,16 @@
     <comment>Required for arm-trusted-firmware</comment>
     <requestid>866853</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c55f3718337b480ab32588b50eb1645</srcmd5>
+    <version>202105</version>
+    <time>1623012008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update edk2 to 202105:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202105
+    Fix CVE-2021-23841 and CVE-2021-23840
+- Fix build with GCC11
+</comment>
+    <requestid>897193</requestid>
+  </revision>
 </revisionlist>

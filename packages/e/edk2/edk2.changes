@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  3 12:20:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202105:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202105
+    Fix CVE-2021-23841 and CVE-2021-23840
+- Fix build with GCC11
+
+-------------------------------------------------------------------
 Tue Jan 26 13:13:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build with rpm 4.16

@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="filename">edk2-platforms</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">8f088a1224ede7f3d1dd97d79399eac3fc40af8b</param>
+    <param name="revision">1d23831b5f07a1150a44e1d03fb7e0c394dfe9ab</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*edk2-platforms*.tar</param>
@@ -18,7 +18,7 @@
     <param name="scm">git</param>
     <param name="filename">edk2-non-osi</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">659382a8038dccb802e642800b5efa2ac24c67ed</param>
+    <param name="revision">2e8dd46782451e8ae7181417a5c30d1804302b43</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*edk2-non-osi*.tar</param>

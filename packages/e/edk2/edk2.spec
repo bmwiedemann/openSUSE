@@ -1,7 +1,7 @@
 #
-# spec file for package edk2-hikey
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define platform @BUILD_FLAVOR@%{nil}
-%define edk2_platforms_version 0.0~20201209T010944~8f088a1224
-%define edk2_non_osi_version 0.0~20201209T013638~659382a
-%global openssl_version 1.1.1g
+%define edk2_platforms_version 0.0~20210602T151109~1d23831b5f
+%define edk2_non_osi_version 0.0~20210520T182705~2e8dd46
+%global openssl_version 1.1.1j
 
 # Build with edk2-non-osi
 %bcond_without edk2_non_osi
@@ -36,12 +37,12 @@ Name:           edk2-%{platform}
 %else
 Name:           edk2
 %endif
-Version:        202011
+Version:        202105
 Release:        0
 Summary:        Firmware required to run the %{platform}
-Url:            https://github.com/tianocore/edk2
 License:        SUSE-Firmware
 Group:          System/Boot
+URL:            https://github.com/tianocore/edk2
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        edk2-platforms-%{edk2_platforms_version}.tar.xz
 Source2:        edk2-non-osi-%{edk2_non_osi_version}.tar.xz
@@ -62,8 +63,8 @@ BuildRequires:  dtc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libuuid-devel
-BuildRequires:  python3
 BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if "%{platform}" == ""
@@ -77,6 +78,8 @@ Firmware required to run the %{platform}
 
 %prep
 %setup -q -n edk2-edk2-stable%{version} -a 1 -a 2 -a 3 -a 4
+# PATCH-FIX-UPSTREAM - Fix build with GCC11 - https://bugzilla.tianocore.org/show_bug.cgi?id=3417
+echo "BUILD_CFLAGS += -Wno-error=vla-parameter" >> BaseTools/Source/C/BrotliCompress/GNUmakefile
 
 ln -sf edk2-platforms-%{edk2_platforms_version} edk2-platforms
 ln -sf edk2-non-osi-%{edk2_non_osi_version} edk2-non-osi
