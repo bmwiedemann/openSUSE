@@ -17,4 +17,3 @@ sed -i -e 's|/bin/bash|/bin/sh|g' /etc/passwd
 rm /usr/bin/su
 ln /usr/bin/busybox /usr/bin/su
 chmod 4755 /usr/bin/su
-ln -sf ../usr/bin/su /bin/su

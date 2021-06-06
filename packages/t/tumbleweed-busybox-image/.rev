@@ -150,4 +150,12 @@
 - Use /bin/sh instead of bash as login shell (bash is not installed) (forwarded request 876799 from kukuk)</comment>
     <requestid>876800</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>210082d99ce0707b84b536fbf1f19324</srcmd5>
+    <version>1.0.0</version>
+    <time>1623012014</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust for usrMerge: don't create /bin/su symlink (forwarded request 897245 from kukuk)</comment>
+    <requestid>897246</requestid>
+  </revision>
 </revisionlist>
