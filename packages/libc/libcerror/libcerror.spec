@@ -1,7 +1,7 @@
 #
 # spec file for package libcerror
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,70 +12,70 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcerror
 %define lname	libcerror1
-%define timestamp 20201121
-Version:        0~%timestamp
+Version:        20210512
 Release:        0
-Summary:        Library for cross-platform C error functions
-License:        LGPL-3.0+
+Summary:        Library for C error functions
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libcerror/wiki
-Source:         https://github.com/libyal/%name/releases/download/%timestamp/%name-beta-%timestamp.tar.gz
-# BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libcerror
+Source:         %name-%version.tar.xz
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkg-config
 
-%description 
-A library for cross-platform C error functions.
+%description
+A library for C error functions.
 
 This package is part of the libyal library collection and is used by other libraries in the collection
 
 %package -n %lname
-Summary:        Library for cross-platform C error functions
+Summary:        Library for C error functions
 Group:          System/Libraries
 
 %description -n %lname
-A library for cross-platform C error functions.
+A library for C error functions.
 
 This subpackage contains the actual shared object library
 
 %package devel
-Summary:        Development files for libcerror, a cross-platform C error library
+Summary:        Development files for libcerror, a C error library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-A library for cross-platform C error functions.
+A library for C error functions.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libcerror.
 
 %prep
-%setup -qn libcerror-%timestamp
+%autosetup
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%license COPYING.LESSER
 %_libdir/libcerror.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libcerror*
 %_libdir/libcerror.so
 %_libdir/pkgconfig/libcerror.pc
