@@ -1,7 +1,7 @@
 #
 # spec file for package libclocale
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,66 +12,67 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libclocale
 %define lname	libclocale1
-%define timestamp 20200913
-Version:        0~%timestamp
+Version:        20210410
 Release:        0
-Summary:        Library for cross-platform C locale functions
-License:        LGPL-3.0+
+Summary:        Library for C locale functions
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libclocale/wiki
-Source:         https://github.com/libyal/libclocale/releases/download/%{timestamp}/%name-alpha-%timestamp.tar.gz
-BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libclocale
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libcerror) >= 20201121
 
 %description
-A library for cross-platform C locale functions. libclocale is part of the libyal family of libraries.
+A library for C locale functions. libclocale is part of the libyal family of libraries.
 
 %package -n %lname
-Summary:        Library for cross-platform C locale functions
+Summary:        Library for C locale functions
 Group:          System/Libraries
 
 %description -n %lname
-A library for cross-platform C locale functions.
+A library for C locale functions.
 
 %package devel
-Summary:        Development files for libclocale, a cross-platform C locale library
+Summary:        Development files for libclocale, a C locale library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-A library for cross-platform C locale functions.
+A library for C locale functions.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libclocale.
 
 %prep
-%setup -qn libclocale-%timestamp
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING.LESSER
 %_libdir/libclocale.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libclocale*
 %_libdir/libclocale.so
 %_libdir/pkgconfig/libclocale.pc
