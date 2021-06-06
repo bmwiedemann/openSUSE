@@ -1,7 +1,7 @@
 #
 # spec file for package libcnotify
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,67 +12,67 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcnotify
 %define lname	libcnotify1
-%define timestamp 20200913
-Version:        0~%timestamp
+Version:        20210411
 Release:        0
-Summary:        Library for cross-platform C notify functions
-License:        LGPL-3.0+
+Summary:        Library for C notify functions
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libcnotify/wiki
-Source:         https://github.com/libyal/libcnotify/releases/download/%timestamp/%name-beta-%timestamp.tar.gz
+URL:            https://github.com/libyal/libcnotify
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcerror) >= 20201121
 
 %description
-A library for cross-platform C notify functions.  Part of the libyal library collection.
+A library for C notify functions.  Part of the libyal library collection.
 
 %package -n %lname
-Summary:        Library for cross-platform C notify functions
+Summary:        Library for C notify functions
 Group:          System/Libraries
 
 %description -n %lname
-A library for cross-platform C notify functions.
+A library for C notify functions.
 
 %package devel
-Summary:        Development files for libcnotify, a cross-platform C notify library
+Summary:        Development files for libcnotify, a C notify library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-A library for cross-platform C notify functions.
+A library for C notify functions.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libcnotify.
 
 %prep
-%setup -qn libcnotify-%timestamp
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%license COPYING.LESSER
 %_libdir/libcnotify.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libcnotify*
 %_libdir/libcnotify.so
 %_libdir/pkgconfig/libcnotify.pc
