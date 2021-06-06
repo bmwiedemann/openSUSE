@@ -813,4 +813,14 @@ in req#860506.
   - Add all new APIs and constants in libvirt 7.2.0</comment>
     <requestid>882670</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>2cc50c12056b6db99ee36b570c34566b</srcmd5>
+    <version>7.3.0</version>
+    <time>1623012017</time>
+    <user>dimstar_suse</user>
+    <comment>Latest perl bindings for libvirt. Upstream has not released
+7.4.0 bindings so I needlessly revoked req#893856. Here's a
+new request.</comment>
+    <requestid>896748</requestid>
+  </revision>
 </revisionlist>

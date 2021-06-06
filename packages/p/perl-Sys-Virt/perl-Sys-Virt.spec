@@ -17,11 +17,11 @@
 
 
 Name:           perl-Sys-Virt
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 %define cpan_name Sys-Virt
 Summary:        Represent and manage a libvirt hypervisor connection
-License:        GPL-2.0-or-later OR ClArtistic
+License:        ClArtistic OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/Sys-Virt
 Source:         %{cpan_name}-%{version}.tar.gz
