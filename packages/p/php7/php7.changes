@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  3 17:13:28 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.20: This is a bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.20
+
+-------------------------------------------------------------------
 Thu May  6 11:04:43 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.19: This release reverts a bug related to PDO_pgsql
