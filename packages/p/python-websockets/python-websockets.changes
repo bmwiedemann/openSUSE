@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:00:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1:
+   **Version 9.1 fixes a security issue introduced in version 8.0.**
+  * Restored compatibility of ``python -m websockets`` with Python < 3.9.
+  * Restored compatibility with mypy.
+  * Fixed issues with the packaging of the 9.0 release.
+      * :class:`~datastructures.Headers` and
+	:exc:`~datastructures.MultipleValuesError` were moved from
+	``websockets.http`` to :mod:`websockets.datastructures`. If you're using
+	them, you should adjust the import path.
+      * The ``client``, ``server``, ``protocol``, and ``auth`` modules were
+	moved from the ``websockets`` package to ``websockets.legacy``
+	sub-package, as part of an upcoming refactoring. Despite the name,
+	they're still fully supported. The refactoring should be a transparent
+	upgrade for most uses when it's available. The legacy implementation
+	will be preserved according to the `backwards-compatibility policy`_.
+      * The ``framing``, ``handshake``, ``headers``, ``http``, and ``uri``
+	modules in the ``websockets`` package are deprecated. These modules
+	provided low-level APIs for reuse by other WebSocket implementations,
+	but that never happened. Keeping these APIs public makes it more
+	difficult to improve websockets for no actual benefit.
+  * Added compatibility with Python 3.9.
+  * Added support for IRIs in addition to URIs.
+  * Added close codes 1012, 1013, and 1014.
+  * Raised an error when passing a :class:`dict` to
+
+-------------------------------------------------------------------
 Sat Nov 28 10:59:12 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove Suggest python-asyncio, which is in Python 3 stdlib
