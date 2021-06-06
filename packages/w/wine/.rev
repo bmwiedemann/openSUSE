@@ -4014,4 +4014,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>896736</requestid>
   </revision>
+  <revision rev="344" vrev="1">
+    <srcmd5>cdbbfa159cdf9edcf52eb94669838226</srcmd5>
+    <version>6.10</version>
+    <time>1623012053</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.10 development release
+  - Mono engine updated to version 6.2.0, with upstream updates.
+  - Shell folders naming scheme follows recent Windows.
+  - WinePulse library converted to PE.
+  - More math functions from Musl in the C runtime.
+  - Various bug fixes.
+- update staging to 6.10 release</comment>
+    <requestid>897809</requestid>
+  </revision>
 </revisionlist>

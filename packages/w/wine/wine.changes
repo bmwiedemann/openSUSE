@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:27:57 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.10 development release
+  - Mono engine updated to version 6.2.0, with upstream updates.
+  - Shell folders naming scheme follows recent Windows.
+  - WinePulse library converted to PE.
+  - More math functions from Musl in the C runtime.
+  - Various bug fixes.
+- update staging to 6.10 release
+
+-------------------------------------------------------------------
 Tue May 25 15:46:28 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - adjusted directories to load 32bit wine things from 64bit wine.
