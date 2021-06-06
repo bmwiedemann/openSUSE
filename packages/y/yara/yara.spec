@@ -18,7 +18,7 @@
 
 %define soname 8
 Name:           yara
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        A malware identification and classification tool
 License:        Apache-2.0

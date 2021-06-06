@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 29 11:29:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1.1
+  * BUGFIX: Accept the "+" character as valid in DLL names
+  * BUGFIX: Buffer overrun in "macho" module.
+  * BUGFIX: Crash due to consecutive jumps in hex strings
+
+-------------------------------------------------------------------
 Thu May  6 12:30:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.1.0
