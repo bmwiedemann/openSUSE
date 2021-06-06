@@ -1977,9 +1977,6 @@ unsorted:
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
-  - clang8 
-  - clang8-devel 
-  - clang8-devel-32bit: [x86_64] 
   - clang9 
   - clang9-devel 
   - clang9-devel-32bit: [x86_64] 
@@ -2585,7 +2582,6 @@ unsorted:
   - cyrus-sasl-bdb-otp 
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
-  - cyrus-sasl-crammd5 
   - cyrus-sasl-crammd5-32bit: [x86_64] 
   - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit: [x86_64] 
@@ -8133,6 +8129,7 @@ unsorted:
   - krdc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - krdc-devel 
   - krdc-lang: [i586] 
+  - krename 
   - kreport 
   - kreport-devel 
   - kreport-lang 
@@ -8809,8 +8806,6 @@ unsorted:
   - libLLVM12-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
-  - libLLVM8 
-  - libLLVM8-32bit: [x86_64] 
   - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
   - libLTO10 
@@ -8820,8 +8815,6 @@ unsorted:
   - libLTO12-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
-  - libLTO8 
-  - libLTO8-32bit: [x86_64] 
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
@@ -10009,8 +10002,6 @@ unsorted:
   - libclang12-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
-  - libclang8 
-  - libclang8-32bit: [x86_64] 
   - libclang9 
   - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
@@ -10126,6 +10117,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
+  - libcrypto46 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_5_0 
@@ -11717,7 +11709,6 @@ unsorted:
   - liblldb11: [x86_64] 
   - liblldb12: [x86_64] 
   - liblldb7: [x86_64] 
-  - liblldb8: [x86_64] 
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
@@ -12028,6 +12019,8 @@ unsorted:
   - libmspub-devel 
   - libmspub-devel-doc 
   - libmspub-tools 
+  - libmsym-devel 
+  - libmsym0_2 
   - libmt32emu-devel 
   - libmt32emu2 
   - libmtdev1-32bit: [x86_64] 
@@ -12329,7 +12322,6 @@ unsorted:
   - libomp11-devel 
   - libomp12-devel 
   - libomp7-devel 
-  - libomp8-devel 
   - libomp9-devel 
   - libonnx 
   - libonnx_proto 
@@ -12613,8 +12605,8 @@ unsorted:
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
   - libpcre2-32-0-32bit: [x86_64] 
-  - libpcre2-posix2 
-  - libpcre2-posix2-32bit: [x86_64] 
+  - libpcre2-posix3 
+  - libpcre2-posix3-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
   - libpcreposix0-32bit: [x86_64] 
@@ -12741,6 +12733,7 @@ unsorted:
   - libpocketsphinx3 
   - libpocl2 
   - libpodofo-devel 
+  - libpodofo0_9_7 
   - libpoke0 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
@@ -13296,6 +13289,7 @@ unsorted:
   - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
+  - libressl 
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
@@ -13678,6 +13672,7 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
+  - libssl48 
   - libssl48-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
@@ -13857,6 +13852,7 @@ unsorted:
   - libtar1 
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
+  - libtasn1-tools 
   - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -13939,6 +13935,7 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-8 
   - libtirpc-devel 
+  - libtls20 
   - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
@@ -14222,8 +14219,6 @@ unsorted:
   - libvips-devel 
   - libvips42 
   - libvirt 
-  - libvirt-admin 
-  - libvirt-bash-completion: [i586] 
   - libvirt-cim 
   - libvirt-client: [i586] 
   - libvirt-daemon-config-network 
@@ -14871,7 +14866,6 @@ unsorted:
   - lld11 
   - lld12 
   - lld7 
-  - lld8 
   - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
@@ -14883,8 +14877,6 @@ unsorted:
   - lldb12-devel: [x86_64] # devel package of dvd:libLLVM12 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
-  - lldb8: [x86_64] 
-  - lldb8-devel: [x86_64] 
   - lldb9: [x86_64] 
   - lldb9-devel: [x86_64] 
   - lldpd 
@@ -14941,16 +14933,6 @@ unsorted:
   - llvm7-polly 
   - llvm7-polly-devel 
   - llvm7-vim-plugins 
-  - llvm8 
-  - llvm8-LTO-devel 
-  - llvm8-LTO-devel-32bit: [x86_64] 
-  - llvm8-devel 
-  - llvm8-devel-32bit: [x86_64] 
-  - llvm8-gold 
-  - llvm8-opt-viewer 
-  - llvm8-polly 
-  - llvm8-polly-devel 
-  - llvm8-vim-plugins 
   - llvm9 
   - llvm9-LTO-devel 
   - llvm9-LTO-devel-32bit: [x86_64] 
@@ -17824,8 +17806,6 @@ unsorted:
   - opencl-cpp-headers 
   - opencl-headers 
   - opencl-headers-1_2 
-  - openclonk 
-  - openclonk-data 
   - openconnect-devel 
   - openconnect-doc 
   - opencsg-devel 
@@ -21265,7 +21245,6 @@ unsorted:
   - python3-lldb11: [x86_64] 
   - python3-lldb12: [x86_64] 
   - python3-lldb7: [x86_64] 
-  - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
@@ -23513,7 +23492,6 @@ unsorted:
   - python36-python-gflags 
   - python36-python-gitlab 
   - python36-python-gnupg 
-  - python36-python-gvm 
   - python36-python-jenkins 
   - python36-python-jose 
   - python36-python-json-logger 
@@ -25651,6 +25629,7 @@ unsorted:
   - python38-libarchive-c 
   - python38-libcst 
   - python38-libkdumpfile 
+  - python38-libmsym 
   - python38-libnacl 
   - python38-libpfm 
   - python38-librosa 
@@ -28629,6 +28608,7 @@ unsorted:
   - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
+  - python39-libmsym 
   - python39-libnacl 
   - python39-libpfm 
   - python39-librosa 
@@ -29403,7 +29383,6 @@ unsorted:
   - python39-python-gflags 
   - python39-python-gitlab 
   - python39-python-gnupg 
-  - python39-python-gvm 
   - python39-python-jenkins 
   - python39-python-jose 
   - python39-python-json-logger 
@@ -31705,6 +31684,7 @@ unsorted:
   - skinlf-javadoc 
   - skkdic-extra 
   - skopeo: [i586] 
+  - skopeo-bash-completion 
   - skrooge 
   - skrooge-lang 
   - sl 
