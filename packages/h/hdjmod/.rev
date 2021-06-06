@@ -177,4 +177,32 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
     <comment>- Added hdjmod_kernel_5.12.patch to fix build against Linux 5.12.</comment>
     <requestid>891573</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6b6db01bcf6402f1486b601f46b9890d</srcmd5>
+    <version>1.32</version>
+    <time>1623012055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32
+  * Adds support for the Hercules Steel controller.
+- Switch to fork maintained at https://codeberg.org/Marix/hdjmod.
+  * Consolidates fixes made for openSUSE and Ubuntu packages,
+    providing support for newer kernel up to including Linux 5.12
+    without having to maintain a series of patch files.
+- Dropped obsolete patches:
+  * hdjmod_fix_buffer_overrun_in_device_name_handling.patch
+  * hdjmod_kernel_2.6.30.patch
+  * hdjmod_kernel_2.6.36.patch.bz2
+  * hdjmod_kernel_2.6.37.patch
+  * hdjmod_kernel_2.6.39.patch
+  * hdjmod_kernel_3.6.patch
+  * hdjmod_kernel_3.7.patch
+  * hdjmod_kernel_3.16.patch
+  * hdjmod_kernel_4.11.patch
+  * hdjmod_kernel_4.14.patch
+  * hdjmod_kernel_4.15.patch
+  * hdjmod_kernel_5.0.patch
+  * hdjmod_kernel_5.12.patch
+  * hdjmod-kfree.patch</comment>
+    <requestid>897814</requestid>
+  </revision>
 </revisionlist>
