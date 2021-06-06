@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  5 20:47:10 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Fixing build on latest tumbleweed by forcing C11 mode.
+
+-------------------------------------------------------------------
 Wed May  5 19:46:11 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
 
 - boo#1185665: moving the RPM macros to the proper directory.

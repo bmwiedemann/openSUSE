@@ -158,8 +158,11 @@ autoreconf -vfi
 %if 0%{?suse_version}
 echo "SUSE_VERSION=%{suse_version}"
 %endif
+
 # to avoid segmentation fault
+
 export CFLAGS="$CFLAGS -fpermissive `echo $RPM_OPT_FLAGS | sed 's/O2/O0/'`"
+export CXXFLAGS="-std=c++11 $CXXFLAGS"
 export SUSE_ASNEEDED=0
 
 ./configure --disable-static --prefix=%{_prefix}
