@@ -1,7 +1,7 @@
 #
 # spec file for package python-polib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-polib
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A library to manipulate gettext files
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://bitbucket.org/izi/polib/
+URL:            https://github.com/izimobil/polib/
 Source0:        https://files.pythonhosted.org/packages/source/p/polib/polib-%{version}.tar.gz
 Patch0:         polib-1.1.0-fix-tests-big-endian.patch
 BuildRequires:  %{python_module setuptools}
