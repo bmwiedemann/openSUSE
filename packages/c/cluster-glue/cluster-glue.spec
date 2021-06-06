@@ -1,7 +1,7 @@
 #
 # spec file for package cluster-glue
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 # Directory where we install documentation
 %global glue_docdir %{_defaultdocdir}/%{name}
 Name:           cluster-glue
-Version:        1.0.12+v1.git.1587474580.a5fda2bc
+Version:        1.0.12+v1.git.1622055853.1753f5e0
 Release:        0
 Summary:        Reusable cluster components
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/ClusterLabs/cluster-glue.git
+URL:            https://github.com/ClusterLabs/cluster-glue.git
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 Source3:        hb_report.in
@@ -37,9 +37,8 @@ Patch1:         bug-694243_cluster-glue_symbol-conflict.patch
 # PATCH-FIX-OPENSUSE: drop lrm as it's not used anymore by pacemaker
 Patch4:         cluster-glue_droplrm.patch
 # PATCH-FIX-UPSTREAM: fix warnings seen by GCC7
-# PATCH-FIX-OPENSUSE: Port scripts to Python 3
-Patch5:         0001-Port-scripts-to-Python-3.patch
 
+BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -105,7 +104,6 @@ such as Pacemaker.
 %setup -q
 %patch1 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 export CFLAGS="${CFLAGS} %{optflags}"
@@ -135,7 +133,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rclogd
 %endif
 
 %pre
-getent group %{gname} >/dev/null || groupadd -r -g %{gid} %{gname} 
+getent group %{gname} >/dev/null || groupadd -r -g %{gid} %{gname}
 getent passwd %{uname} >/dev/null || useradd -r -u %{uid} -g %{gname} -d %{_localstatedir}/lib/heartbeat/cores/%{uname} -s /sbin/nologin -c "heartbeat processes" %{uname}
 %service_add_pre logd.service
 
@@ -177,7 +175,6 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %{_sbindir}/meatclient
 %{_sbindir}/stonith
 %{_unitdir}/logd.service
-%{_mandir}/man1/*
 %{_mandir}/man8/*
 %doc AUTHORS
 %doc COPYING
@@ -188,6 +185,7 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %{_libdir}/heartbeat/plugins/InterfaceMgr/*.so
 %{_libdir}/heartbeat/plugins/compress/*.so
 %{_libdir}/stonith/plugins/external
+%{_libdir}/stonith/plugins/stonith2/ribcl.py
 %exclude %{_libdir}/stonith/plugins/stonith2/null.so
 %exclude %{_libdir}/stonith/plugins/stonith2/ssh.so
 %exclude %{_libdir}/stonith/plugins/external/ssh

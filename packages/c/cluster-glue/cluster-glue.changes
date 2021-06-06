@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May 27 10:50:16 UTC 2021 - varkoly@suse.com
+
+- Update to version 1.0.12+v1.git.1622055853.1753f5e0:
+  * ec2: add the action parameter to the getinfo_xml function
+  * drac3_command: check for truncated url
+  * wti_mpc: fix metadata mib-version description
+  * net-snmp "remote_port" is unused and deprecated since decades
+  * fix for spurious compiler warning -Werror=stringop-overflow=
+  * ipmilan_test: fix for -Werror=uninitialized
+  * fix for -Werror=sizeof-pointer-memaccess
+  * spec: drop /man1/ from file list, no longer used
+  * use git describe to generate ./.tarball-version
+  * fix config.status: QUIET_MAKE_OPTS: command not found
+  * automake: use AM_CPPFLAGS; INCLUDES was deprecated years ago
+  * reflect python3 in configure.ac and shebangs
+  * Fix Werror: format-overflow, format-truncation, stringop-truncation
+  * Stop using glib2 "deprecated symbols"
+  * Fix typo: bounary -> boundary
+  * Current Pacemaker does not use ha_logd
+  * Use pkgconfig to configure libxml-2.0 xml2-config to be removed from Debian packaging
+  * Move ha_logger manpage to section 8 Fixes lintian warning for /usr/sbin binaries.
+  * Adjust file paths for Debian Fix --with-rundir option for configure
+  * Fix interpreter for perl scripts Policy 10.4 states that Perl scripts must use /usr/bin/perl directly and not via /usr/bin/env
+  * Fix FTBFS with openipmi 2.0.25 selector_t deprecated in new openipmi version
+  * Add manpage to systemd service documentation
+  * Fix spelling errors reported by lintian
+  * Convert scripts to python3
+  * Fix cl_times on x32
+  * Fix build on hurd #650820
+  * Fix build on FreeBSD #650820
+  * Remove .hgsigs from source
+  * Remove .hgignore from source
+  * Remove .hgtags from source
+  * Fix spelling of output and improve grammar
+  * libtoolize_check
+- Remove applied patch:
+  0001-Port-scripts-to-Python-3.patch
+- Enhance BuildRequires: asciidoc is required to build man pages.
+
+-------------------------------------------------------------------
 Mon Apr 27 12:56:01 UTC 2020 - xarbulu@suse.com
 
 - Update to version 1.0.12+v1.git.1587474580.a5fda2bc:
