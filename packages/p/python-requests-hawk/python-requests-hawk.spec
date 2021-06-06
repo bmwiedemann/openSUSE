@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-hawk
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Hawk authentication strategy for the requests python library
 License:        Apache-2.0

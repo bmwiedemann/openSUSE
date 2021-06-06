@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>897197</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>282e1999538d5fab1c20f00d2b5ca076</srcmd5>
+    <version>1.1.1</version>
+    <time>1623012030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  * Handle cases where Content-Type is defined as bytes rather than
+   string. (#25)
+  * Allow for app mohawk sender parameter configuration.</comment>
+    <requestid>897756</requestid>
+  </revision>
 </revisionlist>

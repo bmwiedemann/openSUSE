@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  5 20:37:41 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.1.1:
+  * Handle cases where Content-Type is defined as bytes rather than
+   string. (#25)
+  * Allow for app mohawk sender parameter configuration.
+
+-------------------------------------------------------------------
 Thu Jun  3 12:25:12 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
