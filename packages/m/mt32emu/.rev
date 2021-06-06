@@ -42,4 +42,13 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
   * Fixed undefined behaviour that the TVP emulation code may exhibit.</comment>
     <requestid>883084</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>516e100d84c0ab273d77e809ad9382b2</srcmd5>
+    <version>2.5.1</version>
+    <time>1623012066</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed incorrect delete statement in ROMImage dtor, affects memory
+  deallocations of full ROMImages created by merging partial ones.</comment>
+    <requestid>897888</requestid>
+  </revision>
 </revisionlist>
