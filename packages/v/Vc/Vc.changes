@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  5 17:12:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Add-missing-include-to-simdarray.h-275.patch
+
+-------------------------------------------------------------------
 Wed May 13 07:10:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.4.1:
