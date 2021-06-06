@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  2 19:40:42 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add paraview-gcc11-limits.patch: Include limits header wherever
+  needed to fix compilation with GCC 11
+  [https://gitlab.kitware.com/vtk/vtk/-/issues/18194].
+
+-------------------------------------------------------------------
+Sun May 23 00:00:41 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to vetsion 5.9.1:
+  * See
+    https://gitlab.kitware.com/paraview/paraview/-/blob/master/Documentation/release/ParaView-5.9.1.md.
+- Drop paraview-Adaptors-include-txx-file.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
 Fri Feb 19 16:05:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.9.0:

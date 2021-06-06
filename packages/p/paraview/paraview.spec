@@ -31,7 +31,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -48,8 +48,8 @@ Patch0:         paraview-desktop-entry-fix.patch
 Patch2:         fix-libharu-missing-m.patch
 # PATCH-FIX-UPSTREAM paraview-vtkioss-link-pthread.patch badshah400@gmail.com -- Link against pthread when building vtkioss [https://gitlab.kitware.com/paraview/paraview/-/issues/20495]
 Patch3:         paraview-vtkioss-link-pthread.patch
-# PATCH-FIX-UPSTREAM paraview-Adaptors-include-txx-file.patch badshah400@gmail.com -- Fix Cam adaptor template instantiation [https://gitlab.kitware.com/paraview/paraview/-/merge_requests/4729]
-Patch4:         paraview-Adaptors-include-txx-file.patch
+# PATCH-FIX-UPSTREAM paraview-gcc11-limits.patch badshah400@gmail.com -- Include limits header wherever required to fix compilation with GCC 11 [https://gitlab.kitware.com/vtk/vtk/-/issues/18194]
+Patch4:         paraview-gcc11-limits.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -114,7 +114,7 @@ Recommends:     %{name}-plugins
 Requires:       gnuplot
 Requires:       graphviz
 Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
+Requires(postun):/sbin/ldconfig
 # Disable on aarch64 since GLES isn't supported for bundled vtk but is needed for paraview
 ExcludeArch:    aarch64
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
