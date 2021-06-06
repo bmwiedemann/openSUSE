@@ -1,7 +1,7 @@
 #
 # spec file for package llvm10
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,6 +132,8 @@ Patch26:        lld-default-sha1.patch
 Patch27:        fix-atomics-test.patch
 # PATCH-FIX-UPSTREAM llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch -- Fix dsymutil crash on ELF file.
 Patch28:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
+# Fix build with GCC 11. (boo#1181875)
+Patch29:        Fix-missing-include.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -146,7 +148,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-doc
 # llvm does not work on s390
 ExcludeArch:    s390
@@ -228,9 +230,9 @@ URL:            https://clang.llvm.org/
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     clang-tools
+Requires(postun):update-alternatives
 Recommends:     clang%{_sonum}-doc
+Recommends:     clang-tools
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 
@@ -428,7 +430,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -462,7 +464,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python3-lldb%{_sonum}
 ExclusiveArch:  x86_64
 
@@ -557,6 +559,7 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch25 -p1
 %patch28 -p2
+%patch29 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1
