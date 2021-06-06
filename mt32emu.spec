@@ -17,10 +17,10 @@
 
 
 %define s_name  munt-lib%{name}_%{s_ver}
-%define s_ver   2_5_0
+%define s_ver   2_5_1
 %define sover   2
 Name:           mt32emu
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
