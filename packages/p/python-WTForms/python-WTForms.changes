@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 05 19:37:37 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 2.3.3+git.1621448902.a55be54:
+  * Changelog
+  * render_kw tests for SelectField and MultipleSelectField
+  * moved test to test_radio
+  * pass RadioField (SelectFieldBase) render_kw dict in _Option class
+  * Changelog
+  * Logo integration
+  * Changelog
+  * Changelog
+  * Always call setattr in FormField.populate
+  * move test
+  * add test
+  * fix radiofield required bug
+- Skip failing tests with localization file (gh#wtforms/wtforms#697)
+
+-------------------------------------------------------------------
 Thu Sep 10 05:49:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop Requires on the code package on the doc package. 

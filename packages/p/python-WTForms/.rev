@@ -111,4 +111,26 @@ Required for python-puppetboard SR 263316</comment>
   ``email_validator``.</comment>
     <requestid>833358</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a60bbdb9f023eb1460875fc78cbf1d87</srcmd5>
+    <version>2.3.3+git.1621448902.a55be54</version>
+    <time>1623012031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.3+git.1621448902.a55be54:
+  * Changelog
+  * render_kw tests for SelectField and MultipleSelectField
+  * moved test to test_radio
+  * pass RadioField (SelectFieldBase) render_kw dict in _Option class
+  * Changelog
+  * Logo integration
+  * Changelog
+  * Changelog
+  * Always call setattr in FormField.populate
+  * move test
+  * add test
+  * fix radiofield required bug
+- Skip failing tests with localization file (gh#wtforms/wtforms#697)
+</comment>
+    <requestid>897757</requestid>
+  </revision>
 </revisionlist>

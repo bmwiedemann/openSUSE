@@ -1,7 +1,7 @@
 #
 # spec file for package python-WTForms
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-WTForms
-Version:        2.3.3
+Version:        2.3.3+git.1621448902.a55be54
 Release:        0
 Summary:        A flexible forms validation and rendering library for Python web development
 License:        BSD-3-Clause
-URL:            http://wtforms.simplecodes.com/
-Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
+URL:            https://github.com/wtforms/wtforms
+# Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%%{version}.tar.gz
+Source:         wtforms-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module email_validator}
 BuildRequires:  %{python_module setuptools}
@@ -42,8 +43,8 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 # /SECTION
-Provides:       python-WTForms-lang
-Obsoletes:      python-WTForms-lang
+Provides:       python-WTForms-lang = %{version}-%{release}
+Obsoletes:      python-WTForms-lang < %{version}
 %python_subpackages
 
 %description
@@ -59,12 +60,12 @@ Summary:        Documentation for WTForms
 Documentation for WTForms, which is a forms validation and rendering library for Python web development.
 
 %prep
-%setup -q -n WTForms-%{version}
+%autosetup -p1 -n wtforms-%{version}
 
 %build
 %python_build
 # Fix wrong EOL-encoding
-sed -i "s/\r//" CHANGES.rst 
+sed -i "s/\r//" CHANGES.rst
 # remove reference to ../CHANGES.rst
 rm docs/changes.rst
 
@@ -73,9 +74,8 @@ rm docs/changes.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd tests
-%python_expand $python runtests.py
-popd
+# Excluded tests because of gh#wtforms/wtforms#697
+%pytest -k 'not (test_us_translation or test_defaults or test_override_languages or test_ngettext or test_cache or test_typeerror or test_formatting or test_parsing)'
 
 %files %{python_files}
 %license LICENSE.rst
