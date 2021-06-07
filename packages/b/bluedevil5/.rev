@@ -904,4 +904,12 @@
     <comment>KDE Plasma 5.21.5</comment>
     <requestid>890557</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>46b5128b05f74cd9f7deb28239a5a2e5</srcmd5>
+    <version>5.22.0</version>
+    <time>1623098512</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.0</comment>
+    <requestid>897464</requestid>
+  </revision>
 </revisionlist>

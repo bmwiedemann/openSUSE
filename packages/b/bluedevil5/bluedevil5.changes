@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * [applet] Move "Add New Device..." Action to header to be consistent
+  * Restore same visibility of deprecated API for builds of tarball & checkout
+  * [applet] Set height of unloaded separator to 0 to avoid layout oddities
+  * [Applet] Correctly hide separator when there are no connected devices
+  * [applet] Use section separator consistent with plasma-nm applet
+  * [applet] Set isDefault property to true for connected items
+  * Re-add font.pointSize for one thing that needs it
+  * Set "font:" not "font.pointSize:"
+  * [applet] Port to singleton Units and Theme
+  * [sendfile] Update org.kde.bluedevilsendfile.desktop
+  * [kio] Add trailing slash to device url (kde#409179)
+  * [applet] Fix tooltip showing wrong name for connected device (kde#422691)
+  * Manually bind width of list item
+  * [applet] Enable Bluetooth checkbox should be always enabled (kde#433232)
+  * Raise minimum CMake version to 3.16
+  * Use versionless Qt cmake target
+  * Reword 'Trust && Authorize' to 'Trust and Authorize'
+
+-------------------------------------------------------------------
 Tue May  4 14:15:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
