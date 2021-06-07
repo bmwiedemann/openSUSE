@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-image-viewer
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
@@ -25,41 +26,46 @@
 Name:           deepin-image-viewer
 Version:        5.7.4
 Release:        0
-License:        GPL-3.0+
 Summary:        Deepin Image Viewer
-Url:            https://github.com/linuxdeepin/deepin-image-viewer
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
+URL:            https://github.com/linuxdeepin/deepin-image-viewer
 Source0:        https://github.com/linuxdeepin/deepin-image-viewer/archive/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}.appdata.xml
-BuildRequires:  fdupes
-BuildRequires:  libqt5-linguist
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
 BuildRequires:  deepin-gettext-tools
-BuildRequires:  freeimage-devel
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  dtkcore >= 5.0.0
+BuildRequires:  fdupes
+BuildRequires:  freeimage-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Widgets-private-headers-devel
+BuildRequires:  libqt5-linguist
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(gio-qt)
-BuildRequires:  pkgconfig(udisks2-qt5)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(udisks2-qt5)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -107,7 +113,7 @@ sed -i 's/1.2.15/%{version}/g;s/2017-08-18/2021-03-19/g' \
 %license LICENSE
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/%{name}/icons/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
@@ -120,4 +126,3 @@ sed -i 's/1.2.15/%{version}/g;s/2017-08-18/2021-03-19/g' \
 %{_datadir}/%{name}/translations
 
 %changelog
-
