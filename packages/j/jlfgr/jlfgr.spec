@@ -1,7 +1,7 @@
 #
 # spec file for package jlfgr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           jlfgr
+Version:        1.0
+Release:        0
 Summary:        Java look and feel Graphics Repository
 License:        SUSE-Redistributable-Content
 Group:          Development/Languages/Java
-Version:        1.0
-Release:        0
-Url:            http://java.sun.com/developer/techDocs/hi/repository/
+URL:            https://java.sun.com/developer/techDocs/hi/repository/
 Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  fastjar
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  javapackages-filesystem
 BuildArch:      noarch
 
 %description
@@ -44,25 +44,18 @@ terminology across different Java look and feel applications.
 To provide feedback about the graphics repository, send email to the
 Java look and feel Design Team (jlfdesign (at) sun (dot) com).
 
-
-
-Authors:
---------
-    Java look and feel Design Team (jlfdesign@sun.com)
-
 %prep
-%setup -q 
+%setup -q
 
 %build
 # NOP
 
 %install
-install -d -m 755 $RPM_BUILD_ROOT/%{_javadir}
-install -m 644 *jar $RPM_BUILD_ROOT/%{_javadir}
-(cd $RPM_BUILD_ROOT/%{_javadir}; ln -sf jlfgr-1_0.jar jlfgr-%{version}.jar; ln -sf jlfgr-1_0.jar jlfgr.jar)
+install -d -m 755 %{buildroot}/%{_javadir}
+install -m 644 *jar %{buildroot}/%{_javadir}
+(cd %{buildroot}/%{_javadir}; ln -sf jlfgr-1_0.jar jlfgr-%{version}.jar; ln -sf jlfgr-1_0.jar jlfgr.jar)
 
 %files
-%defattr(-,root,root)
 %{_javadir}/*.jar
 
 %changelog
