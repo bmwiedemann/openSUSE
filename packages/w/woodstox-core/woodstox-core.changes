@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun  4 17:15:20 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.2.3
+  * Fixes:
+    + #125: 'ArrayIndexOutOfBoundsException' for UTF-32 encoded
+      data
+    + #127: Invalid attributes producing extra null characters
+      during DTD validation
+    + #123: NPE for content that only has XML declaration and
+      unknown encoding
+    + #124: ArrayIndexOutOfBoundsException for 4-byte UTF-8
+      character at end of CDATA
+    + #122: Expected either attr limit (2147483647) >=
+      currAttrSize (0) OR >= outBuf.length (96)
+    + #117: Problem with 'Stax2ByteArraySource', encodings other
+      than UTF-8
+    + #112: Max attributes per element limit only loosely enforced
+    + #107: Sub-optimal exception with 'WstxOutputProperties
+      .P_OUTPUT_VALIDATE_NAMES'
+    + #108: Repairing 'XMLStreamWriter' tries to bind 'xml'
+      namespace URI
+    + #103: Issue caused by MSV shading
+    + #104: 'NullPointerException' in 'DTDValidator
+      .validateElementEnd()' for element undefined in DTD
+    + #105: W3CSchemaFactory constructor incorrectly references
+       relaxng
+- Removed patch:
+  * 0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
+    + Not needed with this version
+
+-------------------------------------------------------------------
 Tue Mar 31 06:35:08 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.1.1

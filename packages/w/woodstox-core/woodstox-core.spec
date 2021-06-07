@@ -1,7 +1,7 @@
 #
-# spec file for package woodstox-core
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %global base_name woodstox
 %global core_name %{base_name}-core
 Name:           %{core_name}
-Version:        6.1.1
+Version:        6.2.6
 Release:        0
 Summary:        XML processor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/woodstox
 Source0:        https://github.com/FasterXML/%{base_name}/archive/%{name}-%{version}.tar.gz
-Patch0:         0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
@@ -55,8 +54,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{base_name}-%{name}-%{version}
-
-%patch0 -p1
 
 %pom_remove_plugin :nexus-staging-maven-plugin
 
