@@ -4,7 +4,7 @@ Index: ckb-next-0.4.4/ckb-next-dev-detect
 +++ ckb-next-0.4.4/ckb-next-dev-detect
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
-+#!//bin/bash
++#!/bin/bash
  
  # Newline
  N=$'\n'
