@@ -1,9 +1,14 @@
 Author: Petr Salinger <Petr.Salinger@seznam.cz>
 Description: Fixes FTBFS on kFreeBSD (Closes: #497013).
 
-diff -Naurp libcdaudio.orig/src/cdaudio.c libcdaudio/src/cdaudio.c
---- libcdaudio.orig/src/cdaudio.c	2008-06-21 14:49:54.000000000 +0200
-+++ libcdaudio/src/cdaudio.c	2008-08-29 10:41:07.000000000 +0200
+---
+ src/cdaudio.c |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+Index: src/cdaudio.c
+===================================================================
+--- src/cdaudio.c.orig
++++ src/cdaudio.c
 @@ -118,8 +118,7 @@ cd_init_device(char *device_name)
  #elif defined(HAVE_GETMNTENT)
    FILE *mounts;

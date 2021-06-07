@@ -1,7 +1,7 @@
 #
 # spec file for package libcdaudio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Patch6:         libcdaudio-getmntinfo.patch
 BuildRequires:  pkgconfig
 
 %description
-libcdaudio is a library designed to provide functions to control
+libcdaudio is a library providing functions to control
 operation of a CD-ROM when playing audio CDs.  It also contains
 functions for CDDB and CD index lookup.
 
@@ -48,33 +48,26 @@ Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
 
 %description -n %{lname}
-libcdaudio is a library designed to provide functions to control
+libcdaudio is a library providing functions to control
 operation of a CD-ROM when playing audio CDs.  It also contains
 functions for CDDB and CD index lookup.
 
 %package devel
-Summary:        Provide functions to control operation of a CD-ROM when playing audio CDs
+Summary:        Header files for libcdaudio, a library to control operation of a CD-DA
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-libcdaudio is a library designed to provide functions to control
+libcdaudio is a library providing functions to control
 operation of a CD-ROM when playing audio CDs.  It also contains
 functions for CDDB and CD Index lookup.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6 -p1
+%autosetup -p0
 
 %build
-%configure --disable-static --with-pic
-make %{?_smp_mflags} -k
+%configure --disable-static
+%make_build -k
 
 %install
 %make_install
