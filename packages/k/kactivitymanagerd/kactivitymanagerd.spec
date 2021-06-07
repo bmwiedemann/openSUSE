@@ -20,15 +20,15 @@
 
 %bcond_without lang
 Name:           kactivitymanagerd
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
+Source:         kactivitymanagerd-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 %if 0%{?suse_version} > 1325
@@ -36,7 +36,7 @@ BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel >= 1.49.0
 %endif
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
@@ -120,6 +120,9 @@ Provides translations to the package %{name}.
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
+%dir %{_kf5_sharedir}/krunner/
+%dir %{_kf5_sharedir}/krunner/dbusplugins/
+%{_kf5_sharedir}/krunner/dbusplugins/plasma-runnners-activities.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.ActivityManager.service
 %{_kf5_debugdir}/kactivitymanagerd.categories
 %{_userunitdir}/plasma-kactivitymanagerd.service
