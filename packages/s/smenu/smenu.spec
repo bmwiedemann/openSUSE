@@ -17,13 +17,13 @@
 
 
 Name:           smenu
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/p-gen/%{name}
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://github.com/p-gen/smenu/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
