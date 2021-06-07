@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:58:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.12
+  * Fix for unintentional breakage of JunOS ExecuteRPC
+- Update to version 0.6.11
+  * Support for custom client capabilities
+  * Restructuring/refactoring of example scripts
+  * Minor bugfixes
+  * Minor unit test refactoring
+- Update to version 0.6.10
+  * NETCONF call-home (RFC8071) support
+  * YANG 1.1 action support
+  * Nokia SR OS device handler support
+  * Removal of old ALU base-r13 API documentation
+  * Increased test coverage
+  * Variety of bugfixes and minor enhancements
+
+-------------------------------------------------------------------
 Thu Jan 28 21:19:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add allow_old_sphinx.patch allowing building of documentation
