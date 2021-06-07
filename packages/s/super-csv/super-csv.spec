@@ -25,15 +25,12 @@ URL:            https://super-csv.github.io/super-csv/
 Source:         https://github.com/super-csv/super-csv/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/super-csv/super-csv/pull/169
 Patch0:         jdk6.patch
-BuildRequires:  maven-local
-BuildRequires:  mvn(ch.qos.logback:logback-classic)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.slf4j:slf4j-api)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-BuildRequires:  maven-assembly-plugin
-BuildRequires:  maven-source-plugin
 BuildRequires:  fdupes
+BuildRequires:  maven-local
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -75,10 +72,10 @@ find -name '*.jar' -print -delete
 %pom_disable_module %{name}-distribution
 
 %build
-%{mvn_build}
+%{mvn_build} -f
 
 %install
-%{mvn_install}
+%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles

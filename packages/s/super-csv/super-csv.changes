@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 08:35:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Don't build tests in production environment and clean up
+  dependencies
+
+-------------------------------------------------------------------
 Sat Mar 27 11:38:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace self-boasting in descriptions with more substance.
