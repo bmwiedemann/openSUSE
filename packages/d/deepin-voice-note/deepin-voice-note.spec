@@ -30,6 +30,11 @@ Summary:        Deepin Voice Note
 Url:            https://github.com/linuxdeepin/deepin-voice-note
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 Source0:        https://github.com/linuxdeepin/deepin-voice-note/archive/%{version}/%{name}-%{version}.tar.gz
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
@@ -78,7 +83,7 @@ sed -i 's/lupdate/lupdate-qt5/g;s/lrelease/lrelease-qt5/g' assets/translate_gene
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/%{name}.conf
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
 

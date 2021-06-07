@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  4 14:46:12 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (boo#1184786) 
+
+-------------------------------------------------------------------
 Sat Apr 17 12:59:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 5.9.0.12 

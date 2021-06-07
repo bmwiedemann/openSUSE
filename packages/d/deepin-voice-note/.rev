@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>891668</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba4d17f79fb06fba22b483e155678ddd</srcmd5>
+    <version>5.9.0.12</version>
+    <time>1623098619</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (boo#1184786) (forwarded request 897915 from hillwood)</comment>
+    <requestid>897923</requestid>
+  </revision>
 </revisionlist>
