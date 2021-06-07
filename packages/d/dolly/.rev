@@ -7,4 +7,12 @@
     <comment>dolly can be used to distribute images to a bunch of machines in a tree like structure</comment>
     <requestid>870626</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96b1ba77b2a6253a29d72ffa8a5d34ee</srcmd5>
+    <version>0.63.4</version>
+    <time>1623098653</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v0.63.4 which builds with gcc-11</comment>
+    <requestid>898117</requestid>
+  </revision>
 </revisionlist>

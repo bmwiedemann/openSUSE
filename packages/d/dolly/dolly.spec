@@ -1,7 +1,7 @@
 #
 # spec file for package dolly
 #
-# Copyright (C) 2021 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,9 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%define vers 0.63.1
+
+
+%define vers 0.63.4
 
 Name:           dolly
 Summary:        Tool for cloning the installation of one machine to other machines
@@ -23,7 +25,7 @@ Group:          Productivity/Networking/Other
 Version:        %vers
 Release:        0
 URL:            http://www.cs.inf.ethz.ch/stricker/CoPs/patagonia/dolly.html
-Source0:        https://github.com/mslacken/dolly/archive/%{version}.tar.gz#/dolly-%{version}.tar.gz
+Source0:        https://github.com/openSUSE/dolly/archive/%{version}.tar.gz#/dolly-%{version}.tar.gz
 Source1:        dolly.conf
 Source2:        dolly.md
 
@@ -73,7 +75,7 @@ install -D -m 644 dolly.1.gz %{buildroot}%{_mandir}/man1/dolly.1.gz
 %endif
 
 %files
-%doc README.md dolly.html dolly.example
+%doc README.md dolly.example
 %attr(755,root,root) %{_sbindir}/dolly
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/%{name}.conf
 %if 0%{?is_opensuse}
