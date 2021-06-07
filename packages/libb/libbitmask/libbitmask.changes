@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 12:08:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+
+-------------------------------------------------------------------
 Wed Feb  1 03:28:38 UTC 2012 - jengelh@medozas.de
 
 - Remove redundant tags/sections per specfile guideline suggestions

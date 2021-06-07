@@ -1,7 +1,7 @@
 #
 # spec file for package libbitmask
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Url:            http://oss.sgi.com/projects/cpusets/
+URL:            http://oss.sgi.com/projects/cpusets/
 
 Name:           libbitmask
 Summary:        Multi-word bitmask abstract data type (used by cpusets)
-License:        LGPL-2.1+
-Group:          Development/Languages/C and C++
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Version:        2.0
 Release:        0
 Source:         libbitmask-%{version}.tar.bz2
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Cpuset System is a processor and memory placement mechanism that
@@ -36,7 +35,7 @@ depends on libbitmask.
 
 %package -n libbitmask1
 Summary:        Multi-word bitmask abstract data type (used by cpusets)
-Group:          Development/Languages/C and C++
+Group:          System/Libraries
 
 %description -n libbitmask1
 The Cpuset System is a processor and memory placement mechanism that
@@ -46,7 +45,7 @@ depends on libbitmask.
 
 %package -n libbitmask-devel
 Summary:        Multi-word bitmask abstract data type (used by cpusets)
-Group:          Development/Languages/C and C++
+Group:          Development/Libraries/C and C++
 Requires:       libbitmask1 = %{version}
 
 %description -n libbitmask-devel
@@ -56,27 +55,25 @@ length bit masks, with a variety of operators.	The cpuset package
 depends on libbitmask.
 
 %prep
-%setup -q -n %{name}
+%autosetup -n %{name}
 
 %build
 autoreconf -i
-%configure --disable-static --with-pic
+%configure --disable-static
 make %{?_smp_mflags}
 
 %install
-%makeinstall
-rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
+%make_install
+rm -f %{buildroot}/%{_libdir}/*.la
 
 %post -n libbitmask1 -p /sbin/ldconfig
 
 %postun -n libbitmask1 -p /sbin/ldconfig
 
 %files -n libbitmask1
-%defattr(-,root,root)
 %{_libdir}/lib*so.*
 
 %files -n libbitmask-devel
-%defattr(-,root,root)
 %doc %{_mandir}/man3/*
 %{_includedir}/*
 %{_libdir}/lib*so
