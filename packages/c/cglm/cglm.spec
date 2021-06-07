@@ -18,15 +18,13 @@
 
 %define sover 0
 Name:           cglm
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        OpenGL mathematics (glm) for C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/recp/cglm
-Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM cglm-set-soversion.patch -- https://github.com/recp/cglm/issues/194
-Patch0:         cglm-set-soversion.patch
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -78,6 +76,7 @@ rm -rf html/.{buildinfo,doctrees,nojekyll}
 %install
 %meson_install
 %fdupes %buildroot/%_prefix
+%fdupes -s docs/html
 
 %check
 %meson_test
