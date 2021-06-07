@@ -40,6 +40,11 @@ Patch1:         fix-build-on-ARM.patch
 %endif
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  glslang-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -72,6 +77,10 @@ BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(mpris-qt5)
 BuildRequires:  pkgconfig(dbusextended-qt5)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  qtdbusextended-devel < 3.1.2
+BuildRequires:  qtmpris-devel < 3.1.2
+%endif
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -125,7 +134,7 @@ sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g'
 %license LICENSE LICENSE.OpenSSL
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/scalable
