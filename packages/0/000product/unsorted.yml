@@ -18801,6 +18801,7 @@ unsorted:
   - perl-Crypt-JWT 
   - perl-Crypt-MySQL 
   - perl-Crypt-OpenSSL-Guess 
+  - perl-Crypt-PBKDF2 
   - perl-Crypt-PasswdMD5 
   - perl-Crypt-RC4 
   - perl-Crypt-Rot13 
@@ -18926,6 +18927,7 @@ unsorted:
   - perl-Digest-JHash 
   - perl-Digest-MD5 
   - perl-Digest-Perl-MD5 
+  - perl-Digest-SHA3 
   - perl-Dist-CheckConflicts 
   - perl-Dist-Zilla 
   - perl-Dumbbench 
