@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:19 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * make sure we have 2 columns when loading a category (kde#435461)
+  * [sidebar] Don't show back button for subcategory header in widescreen view
+
+-------------------------------------------------------------------
+Thu May 13 18:15:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  4 14:15:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5

@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -86,7 +86,7 @@ applications by KDE.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_sharedir}/kglobalaccel
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/genericqml
@@ -95,6 +95,7 @@ applications by KDE.
 %{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
 %{_kf5_bindir}/systemsettings5
 %{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libsystemsettingsview.so.3
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
