@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           ksshaskpass5
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        Plasma 5 version of ssh-askpass
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz
+Source:         ksshaskpass-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz.sig
+Source1:        ksshaskpass-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -61,7 +61,7 @@ A Plasma 5 version of ssh-askpass with KWallet support.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_libexecdir}/ssh
 %{_libexecdir}/ssh/ksshaskpass
 %doc %lang(en) %{_kf5_mandir}/man1/ksshaskpass.1*
