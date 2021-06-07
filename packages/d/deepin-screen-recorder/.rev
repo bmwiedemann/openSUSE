@@ -19,4 +19,13 @@
 - Drop deepin-screen-recorder-qt5.15.patch, merged by upstream</comment>
     <requestid>891664</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c97c3e94d20adb698877b8d0a2a6be75</srcmd5>
+    <version>5.9.3</version>
+    <time>1623098618</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (boo#1184786) (forwarded request 897914 from hillwood)</comment>
+    <requestid>897922</requestid>
+  </revision>
 </revisionlist>

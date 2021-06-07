@@ -24,6 +24,11 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{version}/%{name}-%{version}.tar.gz
 Group:          Productivity/Multimedia/Video/Editors and Convertors
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  deepin-dock
 BuildRequires:  fdupes
 BuildRequires:  gtest
@@ -110,7 +115,7 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/dbus-1/services/com.deepin.ScreenRecorder.service
 %{_datadir}/dbus-1/services/com.deepin.Screenshot.service
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 
 %files -n deepin-dock-plugin-screen-recorder
 %{_libdir}/dde-dock/plugins/libdeepin-screen-recorder-plugin.so
