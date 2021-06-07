@@ -1,7 +1,7 @@
 #
 # spec file for package rk
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,11 @@ Version:        1.7
 Release:        0
 Summary:        A C++ library for relativistic kinematics
 License:        X11
-Group:          Development/Libraries/C and C++ 
-Url:            https://rk.hepforge.org/
+Group:          Development/Libraries/C and C++
+URL:            https://rk.hepforge.org/
 Source:         http://www.hepforge.org/archive/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 %{name} provides a C++ double precision implementation of several
@@ -40,7 +39,7 @@ particles and related formulae.
 
 %package -n %{soname}
 Summary:        A C++ library for relativistic kinematics
-Group:          Development/Libraries/C and C++ 
+Group:          Development/Libraries/C and C++
 
 %description -n %{soname}
 %{name} provides a C++ double precision implementation of several
@@ -69,31 +68,26 @@ This package provides the source files required for development
 with %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure --with-pic --disable-static
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
 %make_install
 rm %{buildroot}/%{_libdir}/*.la
 
-%post -n %{soname}
-/sbin/ldconfig
-
-%postun -n %{soname}
-/sbin/ldconfig
+%post -n %{soname} -p /sbin/ldconfig
+%postun -n %{soname} -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root)
 %doc AUTHORS LICENSE NEWS
 %{_includedir}/%{name}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n %{soname}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %changelog
