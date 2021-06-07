@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * [kcm/core/rule] Add missing include to make bsd happy
+  * Add .clang-format to gitignore file
+  * Increase margins for placeholder message
+  * Adjust the placeholder message to account for the firewall being on or off
+  * Relocate visible: property of PlaceholderMessage
+  * Give the placeholder message explanatory text
+  * Tweak button wordings to conform to the HIG
+  * Add a message and disable the firewall on forced failure
+  * Fix crash while re-entering the firewall KCM
+  * Raise minimum CMake version to 3.16
+  * Use versionless Qt cmake target
+  * Add a message and disable the firewall on forced failure
+  * Fix crash while re-entering the firewall KCM
+  * Redo the About screen
+  * removing .clang format
+  * Updated readme.md with contribution and setup guide
+  * Introduce cmake options to disable backends
+- Drop patches, now upstream:
+  * 0001-Introduce-cmake-options-to-disable-backends.patch
+
+-------------------------------------------------------------------
 Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
