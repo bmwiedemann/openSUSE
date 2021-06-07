@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jun  7 18:32:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  * Clean the Brave browser (1061).
+  * Use the new --all-but-warning CLI command (365).
+  * In the preferences, toggle the option to remember window geometry.
+    Restart BleachBit and check that the behavior matches the setting
+    (1056).
+  * Download chaff, and there should not be a ResourceWarning
+    message (issue 856).
+  * Clean Firefox favicons in URL history, and there should not
+    be a sqlite3.Warning message (1135).
+  * Wipe the free space on a FAT32 partition with more than
+    4GB of available space (1051).
+  * Clean Thunderbird - Index, and there should be a warning (363).
+  * In Google Chrome, type CTRL+S to save the page. Save it
+    to a non-default location, and not the location. Then in
+    BleachBit, clean Google Chrome - History, and back in Google
+    Chrome verify the location was forgotten (944).
+  * On a system with non-English user interface, use BleachBit to
+    wipe free space, and verify the "About # minutes remaining"
+    message is translated (1162). This also depends on whether
+    this string was translated for your language.
+  * Clean Firefox - URL History, and verify bookmark icons were
+    not deleted (1081).
+  * Clean Google Chrome unstable (1147).
+  * Open Thunderbird and try to clean it while it is running.
+    There should be an error (1112).
+  * Clean journald, and BleachBit should report how much space
+    was freed (1115).
+  * For any GTK theme, the scrollbar should not cover the
+    checkboxes (1034.)
+  * Clean System - Recent documents, and it may clean more paths (1118).
+
+-------------------------------------------------------------------
 Mon Jan  4 09:43:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.0:
