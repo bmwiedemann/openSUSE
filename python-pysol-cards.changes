@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 12:37:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only build for python3- flavor, as -oslotest is only built for
+  the main flavor too.
+
+-------------------------------------------------------------------
 Wed Aug  5 15:27:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.10.1

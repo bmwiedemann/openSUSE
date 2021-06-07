@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysol-cards
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,8 @@
 #
 
 
-%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 Name:           python-pysol-cards
 Version:        0.10.1
 Release:        0
