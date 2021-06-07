@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 12:33:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip build for python 3.6: no pandas.
+
+-------------------------------------------------------------------
 Mon Nov 18 17:14:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
