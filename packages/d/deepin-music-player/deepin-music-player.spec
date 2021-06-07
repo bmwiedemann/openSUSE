@@ -37,6 +37,11 @@ Patch0:         Fix-library-link.patch
 Patch1:         fix-return-type.patch
 # PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
 Patch2:         recompile-with-fPIC.patch
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Network-devel
@@ -66,6 +71,10 @@ BuildRequires:  pkgconfig(mpris-qt5)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(udisks2-qt5)
 BuildRequires:  pkgconfig(xext)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  qtdbusextended-devel < 3.1.2
+BuildRequires:  qtmpris-devel < 3.1.2
+%endif
 Requires:       qt5integration
 Provides:       deepin-music
 Requires:       vlc
@@ -106,7 +115,7 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_bindir}/deepin-music
 %{_datadir}/applications/deepin-music.desktop
 %{_datadir}/icons/hicolor/scalable/apps/deepin-music.svg
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/deepin-music
 %dir %{_libdir}/deepin-aiassistant
 %dir %{_libdir}/deepin-aiassistant/serivce-plugins
 %{_libdir}/deepin-aiassistant/serivce-plugins/libmusic-plugin.so
