@@ -1,0 +1,7 @@
+<package name="layer-shell-qt" project="openSUSE:Factory">
+  <title>KDE Wayland server library</title>
+  <description>kwayland-server provides a Qt-style server library wrapper for the Wayland libraries.
+
+</description>
+  <devel project="KDE:Frameworks5" package="layer-shell-qt"/>
+</package>
