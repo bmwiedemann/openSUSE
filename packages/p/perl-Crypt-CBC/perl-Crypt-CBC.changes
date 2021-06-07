@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 19 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.04
+   see /usr/share/doc/packages/perl-Crypt-CBC/Changes
+
+  3.04	 Mon 17 May 2021 10:58:37 AM EDT
+          - Fixed bug involving manually-specified IV not being used in some circumstances.
+
+-------------------------------------------------------------------
+Fri Apr 23 19:47:42 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add manual license
+
+-------------------------------------------------------------------
+Tue Apr 20 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.03
+   see /usr/share/doc/packages/perl-Crypt-CBC/Changes
+
+  3.03    Sun 18 Apr 2021 10:54:19 PM EDT
+  	- Fixed bug which caused an extraneous block of garbage data to be appended to encrypted
+  	  string when "nopadding" specified and plaintext is even multiple of blocksize.
+  3.02
+  	- CTR mode now requires the Math::Int128 module, which gives a ~5x performance
+  	  boost over Math::BigInt.
+  3.01
+  	- Warn when the deprecated opensslv1 PBKDF (key derivation function) is used
+  	  for encryption. Turn off with -nodeprecate=>1 or by choosing a different
+  	  PBKDF, such as -pbkdf=>'pbkdf2'.
+  	- Fix a regression when passing the legacy -salt=>1 argument.
+  3.00    Sun Feb  7 10:28:08 EST 2021
+          - Released version 3.00 in recognition of multiple new features
+  	  and cleanups.
+  2.37    Sun Feb  7 10:20:17 EST 2021
+          - Added better argument checking.
+  	- Fixed long-standing standard padding bug: plaintext ending with
+  	  bytes between 0x00 and 0x0A would be truncated in some conditions.
+  	- Fixed Rijndael_compat padding.
+  2.36    Wed 03 Feb 2021 09:19:06 AM EST
+          - Add support for OFB, CFB and CTR chain modes.
+  	- New dependency: Math::BigInt
+  2.35    Sun Jan 31 22:02:42 EST 2021
+          - Add support for PBKDF2 key derivation algorithm
+  	- New dependencies: Digest::SHA, Crypt::PBKDF2, Crypt::Cipher::AES
+  2.34    Fri Jan 29 18:08:12 EST 2021
+          - Support for openssl SHA-256 key derivation algorithm
+
+-------------------------------------------------------------------
 Tue Aug  6 17:49:08 UTC 2013 - coolo@suse.com
 
 - updated to 2.33
