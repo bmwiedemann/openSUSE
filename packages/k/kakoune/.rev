@@ -212,4 +212,12 @@
   * Fix crash on completion.</comment>
     <requestid>831368</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4ede80bbff7c13df0681b540e3b0193b</srcmd5>
+    <version>2020.09.01</version>
+    <time>1623098680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898148</requestid>
+  </revision>
 </revisionlist>

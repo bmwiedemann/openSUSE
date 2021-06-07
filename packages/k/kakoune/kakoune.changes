@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  1 10:45:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Add-missing-limits-includes.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 06:52:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2020.09.01:

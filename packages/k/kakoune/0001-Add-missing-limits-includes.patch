@@ -1,0 +1,86 @@
+From 6b8d1cbe4dbe21fc07eb9ab2ab654560d4df00b1 Mon Sep 17 00:00:00 2001
+From: Maxime Coste <mawww@kakoune.org>
+Date: Sun, 3 Jan 2021 10:58:09 +1100
+Subject: [PATCH] Add missing limits includes
+
+Fixes #4003
+---
+ src/file.cc          | 1 +
+ src/highlighters.cc  | 1 +
+ src/input_handler.cc | 5 +++--
+ src/regex_impl.cc    | 1 +
+ src/selection.hh     | 2 ++
+ 5 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/file.cc b/src/file.cc
+index 88c502d..890723d 100644
+--- a/src/file.cc
++++ b/src/file.cc
+@@ -10,6 +10,7 @@
+ #include "string.hh"
+ #include "unicode.hh"
+ 
++#include <limits>
+ #include <cerrno>
+ #include <cstdlib>
+ #include <cstdio>
+diff --git a/src/highlighters.cc b/src/highlighters.cc
+index 78099b0..56e3b03 100644
+--- a/src/highlighters.cc
++++ b/src/highlighters.cc
+@@ -20,6 +20,7 @@
+ #include "window.hh"
+ 
+ #include <cstdio>
++#include <limits>
+ 
+ namespace Kakoune
+ {
+diff --git a/src/input_handler.cc b/src/input_handler.cc
+index 36425ef..53261b2 100644
+--- a/src/input_handler.cc
++++ b/src/input_handler.cc
+@@ -1,5 +1,3 @@
+-#include <utility>
+-
+ #include "input_handler.hh"
+ 
+ #include "buffer_manager.hh"
+@@ -18,6 +16,9 @@
+ #include "utf8.hh"
+ #include "window.hh"
+ 
++#include <utility>
++#include <limits>
++
+ namespace Kakoune
+ {
+ 
+diff --git a/src/regex_impl.cc b/src/regex_impl.cc
+index a4457bc..c5d755a 100644
+--- a/src/regex_impl.cc
++++ b/src/regex_impl.cc
+@@ -12,6 +12,7 @@
+ 
+ #include <cstdio>
+ #include <cstring>
++#include <limits>
+ 
+ namespace Kakoune
+ {
+diff --git a/src/selection.hh b/src/selection.hh
+index 28eca5f..c880aaf 100644
+--- a/src/selection.hh
++++ b/src/selection.hh
+@@ -3,6 +3,8 @@
+ 
+ #include "buffer.hh"
+ 
++#include <limits>
++
+ namespace Kakoune
+ {
+ 
+-- 
+2.31.1
+

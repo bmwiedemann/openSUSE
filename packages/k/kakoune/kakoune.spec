@@ -24,6 +24,8 @@ License:        Unlicense
 Group:          Productivity/Text/Editors
 URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-missing-limits-includes.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.0
@@ -36,21 +38,34 @@ Kakoune is a code editor heavily inspired by Vim.
 It's faster as in less keystrokes, supports multiple selections and uses orthogonal design.
 
 %prep
-%setup -q -n %{name}-%{version}/src
+%autosetup -p1
 
 %build
+pushd src
+
 make %{?_smp_mflags} CXXFLAGS="%{optflags} -std=gnu++17"
 
+popd
+
 %install
+pushd src
+
 make %{?_smp_mflags} install PREFIX=%{buildroot}%{_prefix}
-rm -rf %{buildroot}%{_datadir}/doc
+
+popd
+
+rm -r %{buildroot}%{_datadir}/doc
 %fdupes %{buildroot}
 
 %check
+pushd src
+
 LANG=en_US.utf8 make %{?_smp_mflags} test
 
+popd
+
 %files
-%license ../UNLICENSE
+%license UNLICENSE
 %{_bindir}/kak
 %{_datadir}/kak
 %{_mandir}/man1/kak.1%{?ext_man}
