@@ -32,4 +32,19 @@
 </comment>
     <requestid>883969</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>46530a37f0d853c0c841b259c5e7d75a</srcmd5>
+    <version>20210602</version>
+    <time>1623098677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210602
+  * Fixed gnome-shell 3.38 panel issues
+- Add allow-setting-gnome-shell-version.patch
+  * Allow manually setting the gnome shell version, as on Leap
+    there is no version 40, which it otherwise defaults to
+- Update to version 20210520
+  * Minor issues fixed
+</comment>
+    <requestid>898131</requestid>
+  </revision>
 </revisionlist>

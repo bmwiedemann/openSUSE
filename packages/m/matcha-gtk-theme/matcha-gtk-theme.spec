@@ -20,15 +20,17 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2021-04-09
+%define         _version            2021-06-02
 Name:           matcha-gtk-theme
-Version:        20210409
+Version:        20210602
 Release:        0
 Summary:        Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
 Group:          System/GUI/Other
-URL:            https://github.com/vinceliuice/Matcha-gtk-theme/
-Source:         https://github.com/vinceliuice/Matcha-gtk-theme/archive/%{_version}/Matcha-gtk-theme-%{_version}.tar.gz
+URL:            https://github.com/vinceliuice/Matcha-gtk-theme
+Source:         %{url}/archive/%{_version}/Matcha-gtk-theme-%{_version}.tar.gz
+# PATCH-FEATURE-UPSTREAM allow-setting-gnome-shell-version.patch -- Allow setting the gnome shell version, so no installed one is required
+Patch0:         allow-setting-gnome-shell-version.patch
 BuildRequires:  fdupes
 
 %description
@@ -80,6 +82,7 @@ This package contains the GTK3+ themes.
 %if 0%{?suse_version} > 1500
 %package -n gtk4-metatheme-%{_name}
 Summary:        Matcha GTK+4 themes
+Group:          System/GUI/Other
 Requires:       gtk4
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gtk4)
@@ -171,13 +174,18 @@ This package contains the openbox themes.
 
 %prep
 %setup -q -n Matcha-gtk-theme-%{_version}
+%patch0 -p1
 
 %build
 # nothing to build
 
 %install
 mkdir -p %{buildroot}%{_datadir}/themes
-./install.sh -d "%{buildroot}%{_datadir}/themes"
+./install.sh \
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+	-s old \
+%endif	
+	-d "%{buildroot}%{_datadir}/themes"
 
 # Remove unity and index.theme files
 rm -rf  %{buildroot}%{_datadir}/themes/*/unity

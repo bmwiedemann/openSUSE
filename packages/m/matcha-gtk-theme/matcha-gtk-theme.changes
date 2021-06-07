@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  7 13:11:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210602
+  * Fixed gnome-shell 3.38 panel issues
+- Add allow-setting-gnome-shell-version.patch
+  * Allow manually setting the gnome shell version, as on Leap
+    there is no version 40, which it otherwise defaults to
+
+-------------------------------------------------------------------
+Tue Jun  1 00:04:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210520
+  * Minor issues fixed
+
+-------------------------------------------------------------------
 Fri Apr  9 05:46:52 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 20210409:
