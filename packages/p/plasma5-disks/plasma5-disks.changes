@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * add a test case for exit_status:1
+  * Fix spurious assertion failure
+  * [KCM] Give it an implicit size
+  * consider devices invalid (ignore them) that have smart disabled (kde#435699)
+  * use chrono literal for update interval
+  * equip SMARTData with a validity check
+  * fix up reuse compliance
+  * Fix build with -DWITH_SIMULATION=FALSE
+  * Don't define isSimulation() if not building simulation bits
+  * Fix i18n()
+  * Fix minor typos
+  * extra qml strings correctly
+  * report smartctl failure codes to the user (kde#429804)
+  * add some additional samples
+  * always try to notify on device appearance
+  * add a simulation mode based on the fixture pool
+  * Use versionless Qt cmake target
+
+-------------------------------------------------------------------
 Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
