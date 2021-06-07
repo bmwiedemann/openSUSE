@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun  5 20:02:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.1
+  * Fixed documentation typo and updated precommit settings.
+  * Ongoing improvements to code coverage: now related to image
+    handling.
+- Update to version 2.12.0
+  * Complete bindings for ``pikepdf.Annotation`` (useful for
+    interpreting PDF form widgets, comments, etc.)
+  * Ongoing improvements to code coverage: minor bug fixes,
+    unreachable code removal, more coverage.
+- Update to version 2.11.4
+  * Fix issue #160, 'Tried to call pure virtual function
+    "TokenFilter::handle_token"'; this was a Python/C++
+    reference counting problem.
+- Update to version 2.11.3
+  * Check for versions of jbig2dec that are too old to be
+    supported (lacking the necessary command line arguments to
+    extract an image from a PDF).
+  * Fix setup.py typo: cmd_class changed to cmdclass.
+
+-------------------------------------------------------------------
+Fri Apr 23 06:29:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.2
+  * Added missing documentation for ``Pdf.is_encrypted``.
+- Update to version 2.11.1
+  * Fixed an issue with ``Object.emplace()`` not retaining the
+    original object's /Parent.
+
+-------------------------------------------------------------------
 Wed Apr  7 15:49:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.11.0
