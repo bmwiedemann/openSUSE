@@ -20,19 +20,19 @@
 
 %bcond_without lang
 Name:           kscreenlocker
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pam-devel
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KF5TextWidgets) >= 5.15.0
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WindowSystem) >= 5.15.0
 BuildRequires:  cmake(KF5XmlGui) >= 5.15.0
+BuildRequires:  cmake(LayerShellQt)
 BuildRequires:  cmake(Qt5Quick) >= 5.5.0
 BuildRequires:  cmake(Qt5QuickWidgets) >= 5.5.0
 BuildRequires:  cmake(Qt5Test) >= 5.5.0
