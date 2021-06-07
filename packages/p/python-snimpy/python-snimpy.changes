@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:52:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- update to version 1.0.0:
+  * Drop compatibility with Python 2
+
+-------------------------------------------------------------------
 Wed Jan 27 04:21:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch from python3_only to python_alternative for the snimpy script

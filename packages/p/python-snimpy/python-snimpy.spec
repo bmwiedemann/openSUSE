@@ -2,7 +2,7 @@
 # spec file for package python-snimpy
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-snimpy
-Version:        0.8.14
+Version:        1.0.0
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
@@ -46,7 +47,7 @@ Requires:       python-pycryptodomex
 Requires:       python-pysnmp >= 4
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

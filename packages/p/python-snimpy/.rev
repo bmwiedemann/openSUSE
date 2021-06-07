@@ -24,4 +24,13 @@
   and its manual page.</comment>
     <requestid>867027</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>795dbc9c40ab1acd5f6c7a8a1e071e57</srcmd5>
+    <version>1.0.0</version>
+    <time>1623098634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0:
+  * Drop compatibility with Python 2</comment>
+    <requestid>897974</requestid>
+  </revision>
 </revisionlist>
