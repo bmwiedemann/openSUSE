@@ -29,6 +29,8 @@ Patch0:         %{name}-makeflags.patch
 Patch1:         %{name}-defaults.patch
 # PATCH-FIX-UPSTREAM smplayer-add_kde_protocols_to_desktop_file.patch -- To play network shared video correctly: #PM-48.
 Patch2:         %{name}-add_kde_protocols_to_desktop_file.patch
+# PATCH-FIX-UPSTREAM smplayer-21.1.0-gcc11.diff -- github.com/smplayer-dev/smplayer/commit/4aa67eac23b0f397c4d4fcc953e739d7c707aad1
+Patch3:         %{name}-21.1.0-gcc11.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
