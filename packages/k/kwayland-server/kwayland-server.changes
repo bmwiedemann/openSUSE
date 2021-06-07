@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Introduce a new signal when a drag is dropped
+  * inputmethod: Make sure to test AutoCompletion
+  * textinput: translate normal to normal
+  * textinput_v2: Make sendEnter/sendLeave the ones who decide the current surface
+  * Send surface_leave events before announcing output removal
+
+-------------------------------------------------------------------
+Thu May 13 18:15:34 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  4 14:15:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
