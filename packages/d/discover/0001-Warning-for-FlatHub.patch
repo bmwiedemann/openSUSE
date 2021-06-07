@@ -7,23 +7,23 @@ Subject: [PATCH] Warning for FlatHub
  .../backends/FlatpakBackend/FlatpakSourcesBackend.cpp      | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
-Index: discover-5.15.80git.20201202T042445~7a4215b7/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+Index: discover-5.17.80git.20210404T011831~f9348542/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 ===================================================================
---- discover-5.15.80git.20201202T042445~7a4215b7.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2020-12-02 04:24:45.000000000 +0100
-+++ discover-5.15.80git.20201202T042445~7a4215b7/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2020-12-03 09:11:22.052037067 +0100
-@@ -13,6 +13,8 @@
+--- discover-5.17.80git.20210404T011831~f9348542.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2021-04-05 10:10:15.785178715 +0200
++++ discover-5.17.80git.20210404T011831~f9348542/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2021-04-05 10:12:16.117507702 +0200
+@@ -12,6 +12,8 @@
+ #include <KLocalizedString>
  #include <KSharedConfig>
- #include <KConfigGroup>
  #include <QDebug>
 +#include <QAbstractButton>
 +#include <QMessageBox>
  #include <QNetworkAccessManager>
  #include <QNetworkReply>
- #include <QAction>
-@@ -43,8 +45,18 @@
+ 
+@@ -53,8 +55,18 @@
      m_flathubAction->setObjectName(QStringLiteral("flathub"));
      m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
-     connect(m_flathubAction, &QAction::triggered, this, [this](){
+     connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
 +        auto *warnBox = new QMessageBox(QMessageBox::Information, i18n("Adding a third-party source"),
 +                            i18n("FlatHub is not part of the openSUSE distribution.\n"
 +                                 "It contains packages of unknown quality which might not be tested to work correctly "

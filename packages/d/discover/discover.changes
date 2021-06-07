@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * [kcm] Fix margins to not be so huge (kde#437064)
+  * Prepare the ApplicationDelegate for reusing items
+  * kcm: show on mobile
+  * don't set KNotification::DefaultEvent
+  * fix bad copy paste
+  * balance notification construction
+  * packagekit: Perform installed searches case-insensitive (kde#437371)
+  * ApplicationPage: Don't show the screenshots scrollbar if there's no screenshots
+  * Remove "Restart..." option from the menu
+  * Constrain "Update Issue" popup so it doesn't span width with no margins
+
+-------------------------------------------------------------------
+Thu May 13 18:15:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Tue May  4 14:15:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
