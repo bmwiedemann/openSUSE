@@ -16,14 +16,15 @@
 #
 
 
-# org.kde.phone.homescreen is internal, MeeGo.QOfono is optional and not packaged yet
-%global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|MeeGo\\.QOfono).*
+# org.kde.phone.homescreen and org.kde.plasma.phone.taskpanel are internal,
+# MeeGo.QOfono is optional and not packaged yet
+%global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|MeeGo\\.QOfono).*
 
 %define kf5_version 5.74.0
 
 %bcond_without lang
 Name:           plasma5-phone-components
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +34,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz
+Source:         plasma-phone-components-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz.sig
+Source1:        plasma-phone-components-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -47,6 +48,7 @@ BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
+BuildRequires:  cmake(KWinDBusInterface)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
@@ -61,10 +63,10 @@ Requires:       kactivities5-imports
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kwin5
-Requires:       libqt5-qtwayland
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
+Requires:       libqt5-qtwayland
 Requires:       milou5
 Requires:       plasma-nm5
 Requires:       plasma5-nano
@@ -96,16 +98,14 @@ Plasma shell and components targeted for phones.
   %fdupes %{buildroot}
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %dir %{_kf5_qmldir}/org/kde/plasma/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/
+%{_kf5_qmldir}/org/kde/plasma/private/mobilehomescreencomponents/
 %{_kf5_qmldir}/org/kde/plasma/private/mobileshell/
 %{_kf5_bindir}/kwinwrapper
-%dir %{_datadir}/kwin/
-%dir %{_datadir}/kwin/scripts/
-%{_datadir}/kwin/scripts/org.kde.phone.multitasking/
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasma-mobile.desktop
 %dir %{_kf5_plasmadir}/look-and-feel/
@@ -118,7 +118,6 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.panel/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.taskpanel/
-%{_kf5_servicesdir}/kwin-script-org.kde.phone.multitasking.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.activities.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.krunner.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.panel.desktop
