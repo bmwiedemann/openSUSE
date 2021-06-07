@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun  6 07:03:53 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.15. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-15-has-been-released/11252
+  bsc#1186906
+
+  + Network interface hotplug in VMs
+  + Configurable shutdown timeout
+  + New persistent warnings (time skew, apparmor and virtiofsd)
+  + Location field in /dev/lxd API
+  + New type and name columns in lxc config trust list
+  + Cluster members acting as database stand-by now visible
+  + lxc monitor --pretty now supported with lifecycle events
+  + New --expire flag for lxc publish
+  + Requestor now recorded in lifecyle events
+  + Proxy header support on main API endpoint
+  + Full swagger coverage of REST API
+
+-------------------------------------------------------------------
 Tue Jun  1 20:35:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix dependencies for aarch64/armv7l 
+- fix dependencies for aarch64/armv7l
 
 -------------------------------------------------------------------
 Tue Jun  1 11:57:52 UTC 2021 - Aleksa Sarai <asarai@suse.com>

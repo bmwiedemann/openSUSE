@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        4.14
+Version:        4.15
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -55,15 +55,16 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  patchelf
 BuildRequires:  pkg-config
 BuildRequires:  rsync
 BuildRequires:  sqlite3-devel >= 3.25
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.14' here, so just require 1.14 exactly. bsc#1172608
 BuildRequires:  golang(API) = 1.14
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Needed to build dqlite and raft.
 BuildRequires:  autoconf
 BuildRequires:  libtool
