@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef-plugin-mpris2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define _name   deadbeef-mpris2-plugin
 Name:           deadbeef-plugin-mpris2
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        MPRISv2 plugin for the DeaDBeeF music player
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/Serranya/deadbeef-mpris2-plugin
-Source:         https://github.com/Serranya/%{_name}/releases/download/v%{version}/%{_name}-%{version}.tar.xz
+Source:         %{url}/releases/download/v%{version}/%{_name}-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  deadbeef-devel >= 0.6.2
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       deadbeef >= 0.6.2
-Obsoletes:      %{_name} <= %{version}
+Obsoletes:      %{_name} < %{version}
 Provides:       %{_name} = %{version}
 Provides:       deadbeef-MPRIS-plugin = %{version}
 Obsoletes:      deadbeef-MPRIS-plugin < %{version}
@@ -57,7 +57,6 @@ autoreconf -fi
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%defattr(-,root,root)
 %doc README
 %license LICENSE
 %{_libdir}/deadbeef/

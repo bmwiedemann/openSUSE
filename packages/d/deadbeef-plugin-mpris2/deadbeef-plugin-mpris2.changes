@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  7 16:09:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.14
+  * Use Deadbeef title formating to produce metadata more
+    robust/accurate
+  * Add "Previous or restart current track" behavior to "Previous"
+    action
+
+-------------------------------------------------------------------
 Fri Jan 17 13:44:58 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.13
