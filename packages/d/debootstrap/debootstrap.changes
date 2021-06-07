@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  7 18:46:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.124
+  * functions: Turn for loops variables into locals
+  * functions: add zstd control&data support to the ar extractor
+  * stage1: re-mkdir /proc if it is a symlink instead of umount.
+  * Add --inrelease-path option to allow specifying by-hash
+    InRelease location.
+
+-------------------------------------------------------------------
 Sun May  3 19:48:24 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update version to 1.0.123:

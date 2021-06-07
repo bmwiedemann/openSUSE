@@ -1,7 +1,7 @@
 #
 # spec file for package debootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           debootstrap
-Version:        1.0.123
+Version:        1.0.124
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
 URL:            https://salsa.debian.org/installer-team/debootstrap
-Source:         https://salsa.debian.org/installer-team/debootstrap/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-norootforbuild.patch
 Requires:       wget
 Recommends:     gpg2
