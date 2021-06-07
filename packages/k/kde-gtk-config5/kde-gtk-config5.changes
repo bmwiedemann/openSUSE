@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Restore preview.ui
+
+-------------------------------------------------------------------
+Thu May 13 18:15:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Add .git-blame-ignore-revs file
+  * Add pre-commit hook for clang-format
+  * Run clang-format
+  * Misc cmake cleanup
+  * Raise minimum CMake version to 3.16
+  * Use unique temporary directory for CSD assets, and clean it up (kde#433608)
+  * Support svgz buttons in Aurorae themes (kde#432712)
+  * Reset altered config in the decoration bridge
+  * Use versionless Qt cmake target
+  * Use the same configs for watching and reading (kde#421745)
+
+-------------------------------------------------------------------
 Tue May  4 14:15:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5

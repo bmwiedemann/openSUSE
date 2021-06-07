@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://projects.kde.org/kde-gtk-config
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
+Source:         kde-gtk-config-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
+Source1:        kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
@@ -97,6 +97,7 @@ the GTK3 application style from within the application style KCM
 %dir %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kconf_update/gtkconfig.upd
 %{_kf5_sharedir}/kconf_update/remove_window_decorations_from_gtk_css.sh
+%{_kf5_sharedir}/kcm-gtk-module/
 %dir %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_libdir}/kconf_update_bin/gtk_theme
 
