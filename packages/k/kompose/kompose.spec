@@ -16,21 +16,19 @@
 #
 
 
-%define GONS github.com/kubernetes
-%define SRCDIR src/%{GONS}/%{name}
 Name:           kompose
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://kompose.io
-Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM kompose-make-pie.patch sweiberg@suse.com -- use pie to fix lint-warning
-Patch1:         kompose-make-pie.patch
-BuildRequires:  git
-BuildRequires:  go >= 1.6
-BuildRequires:  make
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  gcc-c++
+BuildRequires:  golang-packaging
+# kompose README says go 1.6, but vendored apimachinery requires 1.13 to build
+BuildRequires:  golang(API) >= 1.13
 # necessary for SLE15, Leap 15, Tumbleweed and some archs (no problem for other releases as well)
 BuildRequires:  python3-PyYAML
 #!BuildIgnore:  python2-PyYAML
@@ -38,27 +36,48 @@ BuildRequires:  python3-PyYAML
 %description
 kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. kompose takes a Docker Compose file and translates it into Kubernetes resources. kompose is a convenience tool to go from local Docker development to managing your application with Kubernetes. Transformation of the Docker Compose format to Kubernetes resources manifest may not be exact, but it helps tremendously when first deploying an application on Kubernetes.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    packageand(%{name}:bash)
+BuildArch:      noarch
+
+%description bash-completion
+The official bash completion script for %{name}, generated during the build.
+
 %prep
-%setup -q
-%patch1 -p1
-mkdir -p %{SRCDIR}
-cd %{SRCDIR}
-tar xf %{SOURCE0} --strip 1
+%autosetup -a 1
 
 %build
-export GOPATH=$(pwd)
-%make_build bin
+%ifarch ppc64
+go build \
+   -mod=vendor \
+   -tags extended
+%else
+go build \
+   -mod=vendor \
+   -tags extended \
+   -buildmode=pie
+%endif
 
 %install
-mkdir -p %{buildroot}/%{_bindir}
-install -m 0755 %{name} %{buildroot}/%{_bindir}/
+# Install the binary.
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
-%post
-%postun
+# Build the bash autocomplete file
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.sh
+
+# Install the bash autocomplete file
+install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %files
 %{_bindir}/%{name}
 %license LICENSE
 %doc CHANGELOG.md README.md
+
+%files bash-completion
+%{_datadir}/bash-completion
 
 %changelog
