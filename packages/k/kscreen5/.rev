@@ -899,4 +899,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>KDE Plasma 5.21.5</comment>
     <requestid>890571</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>14c7b0bc72660a86f492c9ce52b4846a</srcmd5>
+    <version>5.22.0</version>
+    <time>1623098533</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.0</comment>
+    <requestid>897478</requestid>
+  </revision>
 </revisionlist>
