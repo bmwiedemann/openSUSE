@@ -33,8 +33,14 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gtest
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
+BuildRequires:  deepin-manual
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -87,7 +93,7 @@ sed -i '/MimeTypeDir/s|application|mime/application|' CMakeLists.txt
 %dir %{_datadir}/icons/deepin/apps
 %dir %{_datadir}/icons/deepin/apps/scalable
 %{_datadir}/icons/deepin/apps/scalable/%{name}.svg
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/mime/packages/%{name}.xml
 
 %files lang
