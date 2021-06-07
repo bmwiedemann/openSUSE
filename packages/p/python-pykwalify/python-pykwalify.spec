@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykwalify
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-pykwalify
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Python lib/cli for JSON/YAML schema validation
 License:        MIT
@@ -32,17 +31,19 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.11
 Requires:       python-docopt >= 0.6.2
 Requires:       python-python-dateutil >= 2.4.2
+Requires:       python-ruamel.yaml >= 0.16.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-ruamel.yaml >= 0.11.0
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 3.11}
 BuildRequires:  %{python_module docopt >= 0.6.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.4.2}
+BuildRequires:  %{python_module ruamel.yaml >= 0.16.0}
 BuildRequires:  %{python_module testfixtures}
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -62,10 +63,9 @@ The schema this library is base and extended from: http://www.kuwata-lab.com/kwa
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pykwalify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%if %{with test}
+
 %check
-%python_exec setup.py test
-%endif
+%pyunittest discover -v
 
 %post
 %python_install_alternative pykwalify
