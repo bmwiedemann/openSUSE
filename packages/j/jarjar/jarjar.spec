@@ -1,7 +1,7 @@
 #
 # spec file for package jarjar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Tool to repackage Java libraries
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            http://tonicsystems.com/products/jarjar/
+URL:            http://tonicsystems.com/products/jarjar/
 Source0:        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/%{name}/%{name}-src-%{version}.zip
 Source1:        jarjar.pom
 Source2:        jarjar-util.pom
@@ -41,11 +41,8 @@ Requires:       gnu-regexp
 Requires:       objectweb-anttask
 Requires:       objectweb-asm >= 5
 Requires(post): javapackages-tools
-Requires(postun): javapackages-tools
+Requires(postun):javapackages-tools
 BuildArch:      noarch
-%if 0
-BuildRequires:  maven2
-%endif
 
 %description
 Jar Jar Links is a utility that makes it easy to repackage Java
@@ -54,17 +51,6 @@ two reasons: You can easily ship a single jar file with no external
 dependencies. You can avoid problems where your library depends on a
 specific version of a library, which may conflict with the dependencies
 of another library.
-
-%package maven2-plugin
-Summary:        Maven2 plugin for %{name}
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Utilities
-Requires:       %{name} = %{version}-%{release}
-Requires:       maven2
-
-%description maven2-plugin
-
-%{summary}.
 
 %package javadoc
 Summary:        Tool to repackage Java libraries
@@ -80,12 +66,17 @@ another library.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0
 %patch1 -p1
 # remove all binary libs
 rm -f lib/*.jar
 # maven plugin
 find . -name JarJarMojo.java -delete
+
+cp %{SOURCE1} %{name}.pom
+%pom_xpath_remove pom:project/pom:distributionManagement %{name}.pom
+cp %{SOURCE2} %{name}-util.pom
+%pom_xpath_remove pom:project/pom:distributionManagement %{name}-util.pom
 
 %build
 pushd lib
@@ -94,9 +85,9 @@ ln -sf $(build-classpath objectweb-asm/asm-commons) asm-commons-4.0.jar
 ln -sf $(build-classpath ant) ant.jar
 popd
 export OPT_JAR_LIST="ant/ant-junit junit"
-ant \
+%{ant} \
     -Dcompile.source=8 -Dcompile.target=8 \
-    jar jar-util javadoc mojo test
+    jar jar-util javadoc
 
 %install
 # jars
@@ -105,16 +96,12 @@ install -m 644 dist/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 install -m 644 dist/%{name}-util-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}-util.jar
-%if 0
-install -m 644 dist/%{name}-plugin-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}-maven2-plugin.jar
-%endif
 
 # poms
 mkdir -p %{buildroot}/%{_mavenpomdir}
-install -pD -T -m 644 %{SOURCE1} \
+install -pD -T -m 644 %{name}.pom \
   %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-install -pD -T -m 644 %{SOURCE2} \
+install -pD -T -m 644 %{name}-util.pom \
   %{buildroot}%{_mavenpomdir}/JPP-%{name}-util.pom
 
 # depmaps
@@ -126,18 +113,8 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%doc COPYING
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-util.jar
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
-
-%if 0
-%files maven2-plugin
-%{_javadir}/%{name}-maven2-plugin-%{version}.jar
-%{_javadir}/%{name}-maven2-plugin.jar
-%endif
+%files -f .mfiles
+%license COPYING
 
 %files javadoc
 %{_javadocdir}/%{name}

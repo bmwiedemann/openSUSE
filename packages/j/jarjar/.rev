@@ -135,4 +135,12 @@
     <comment>Build against objectweb-asm</comment>
     <requestid>657201</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>2709f5772fa4fbdf48f1f4a504e22cfe</srcmd5>
+    <version>1.4</version>
+    <time>1623098644</time>
+    <user>dimstar_suse</user>
+    <comment>clean up</comment>
+    <requestid>897996</requestid>
+  </revision>
 </revisionlist>
