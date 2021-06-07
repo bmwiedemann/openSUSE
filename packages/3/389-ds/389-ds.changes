@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 02 05:07:04 UTC 2021 - wbrown@suse.de
+
+- Update to version 2.0.5~git0.607bfbf16:
+  * Bump version to 2.0.5
+  * Issue 4778 - RFE - Allow setting TOD for db compaction and add task
+  * Issue 4169 - UI - Port plugin tables to PF4
+  * Issue 4656 - Allow backward compatilbity for replication plugin name change
+  * Issue 4764 - replicated operation sometime checks ACI (#4783)
+  * Issue 2820 - Fix CI test suite issues
+  * Issue 4781 - There are some typos in man-pages
+  * Issue 4773 - Enable interval feature of DNA plugin
+  * Issue 4623 - RFE - Monitor the current DB locks (#4762)
+  * Issue 3555 - Fix UI audit issue
+  * Issue 4725 - Fix compiler warnings
+  * Issue 4770 - Lower FIPS logging severity
+  * Issue 4765 - database suffix unexpectdly changed from .db to .db4 (#4766)
+  * Issue 4725 - [RFE] DS - Update the password policy to support a Temporary Password Rules (#4727)
+  * Issue 4747 - Remove unstable/unstatus tests from PRCI (#4748)
+  * Issue 4759 - Fix coverity issue (#4760)
+  * Issue 4169 - UI - Migrate Buttons to PF4 (#4745)
+  * Issue 4714 - dscontainer fails with rootless podman
+  * Issue 4750 - Fix compiler warning in retrocl (#4751)
+  * Issue 4742 - UI - should always use LDAPI path when calling CLI
+  * Issue 4169 - UI - Migrate Server, Security, and Schema tables to PF4
+  * Issue 4667 - incorrect accounting of readers in vattr rwlock (#4732)
+  * Issue 4701 - RFE - Exclude attributes from retro changelog (#4723)
+  * Issue 4740 - Fix CI lib389 userPwdPolicy and subtreePwdPolicy (#4741)
+  * Issue 4711 - SIGSEV with sync_repl (#4738)
+  * Issue 4734 - import of entry with no parent warning (#4735)
+  * Issue 4729 - GitHub Actions fails to run pytest tests
+  * Issue 4656 - Remove problematic language from source code
+  * Issue 4632 - dscontainer: SyntaxWarning: "is" with a literal.
+  * Issue 4169 - UI - migrate replication tables to PF4
+  * Issue 4637 - ndn cache leak (#4724)
+  * Issue 4577 - Fix ASAN flags in specfile
+  * Issue 4169 - UI - PF4 migration - database tables
+  * issue 4653: refactor ldbm backend to allow replacement of BDB - phase 3e - dbscan (#4709)
+
+-------------------------------------------------------------------
 Thu May 27 06:45:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend openssl(cli) by lib389: admin tools like dscreate can
