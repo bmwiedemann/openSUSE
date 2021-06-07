@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Only add "All GPUs" sensors when there is at least one GPU with statistics (kde#436770)
+  * Use 500ms update rate for network traffic sensors in NetworkManager backend
+  * Init lib sensors centrally in the daemon (kde#437523)
+
+-------------------------------------------------------------------
+Tue May 18 16:02:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use GPL-2.0-or-later as substitute for LicenseRef-KDE-Accepted-GPL
+
+-------------------------------------------------------------------
+Thu May 13 18:33:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New in Plasma 5.21.90
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+
+-------------------------------------------------------------------
+Tue Apr 20 18:29:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit, split from ksysguard5
