@@ -1072,4 +1072,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>KDE Plasma 5.21.5</comment>
     <requestid>890594</requestid>
   </revision>
+  <revision rev="128" vrev="37">
+    <srcmd5>6b3e7f52e5d5124d508f959f73fd52a7</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1623098573</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.0</comment>
+    <requestid>897507</requestid>
+  </revision>
 </revisionlist>
