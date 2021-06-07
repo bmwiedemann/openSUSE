@@ -54,6 +54,9 @@ sed -i 's|/usr/lib|%{_datadir}|' Makefile
 %install
 %make_install
 install -Dm644 distribution.info %{buildroot}%{_datadir}/deepin/
+%ifarch ppc ppc64 ppc64le s390 s390x
+install -d %{buildroot}%{_datadir}/deepin-manual/manual-assets/application/
+%endif
 
 # Make a symlink for deepin-version
 ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
@@ -64,6 +67,11 @@ ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 %config(noreplace) %{_sysconfdir}/appstore.json
 %{_sysconfdir}/*-version
 %dir %{_datadir}/deepin/
+%ifarch ppc ppc64 ppc64le s390 s390x
+%dir %{_datadir}/deepin-manual/
+%dir %{_datadir}/deepin-manual/manual-assets
+%dir %{_datadir}/deepin-manual/manual-assets/application
+%endif
 %{_datadir}/deepin/distribution.info
 %{_datadir}/deepin/*-version
 %dir %{_datadir}/distro-info
