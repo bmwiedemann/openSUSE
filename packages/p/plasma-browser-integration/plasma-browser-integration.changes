@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Migrate to KDECompilerSettings
+  * disconnect m_tasksModel before marking it for deletion (kde#435811)
+  * emit -> Q_EMIT
+  * [Downloads] Show hint when download is blocked
+  * [Downloads] Port to KUIServerV2JobTracker and enable instant reporting
+  * Add toolbar badge when there's a player on a page (kde#435470)
+  * Link against KIOGui instead of KIOWidgets
+  * Install .desktop file for host
+  * [Purpose Plugin] Use MimeTypeFinderJob
+  * Port host and reminder to SPDX
+  * Raise minimum CMake version to 3.16
+  * Use versionless Qt cmake target
+  * Parent TasksModel to QGuiApplication and delete TasksModel after we've set the environment
+  * Bump manifest version
+  * Don't do DOM dance if it has a parentNode (kde#432043)
+
+-------------------------------------------------------------------
 Tue May  4 14:15:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
