@@ -31,16 +31,16 @@ diff -uNr mysql-workbench-community-8.0.19-org/backend/wbpublic/CMakeLists.txt m
 diff -uNr mysql-workbench-community-8.0.19-org/CMakeLists.txt mysql-workbench-community-8.0.19-src/CMakeLists.txt
 --- mysql-workbench-community-8.0.19-org/CMakeLists.txt	2019-12-15 21:40:32.000000000 +0200
 +++ mysql-workbench-community-8.0.19-src/CMakeLists.txt	2020-04-05 14:48:36.735862665 +0300
-@@ -137,7 +137,7 @@
+@@ -143,7 +143,7 @@
  check_function_exists (strtoimax HAVE_STRTOIMAX)
  check_function_exists (strtoumax HAVE_STRTOUMAX)
  
--set(ANTLR_JAR_FILENAME "antlr-4.7.1-complete.jar")
+-set(ANTLR_JAR_FILENAME "antlr-4.9.1-complete.jar")
 +set(ANTLR_JAR_FILENAME "antlr4.jar")
  get_filename_component(SOURCE_PARENT_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
  set(LINUX_RES_BIN_DIR ${SOURCE_PARENT_DIR}/linux-res/bin)
- if(WITH_ANTLR_JAR)
-@@ -153,6 +153,9 @@
+ message("WITH_ANTLR_JAR: ${WITH_ANTLR_JAR}")
+@@ -161,6 +161,9 @@
    message(WARNING ${ANTLR_JAR_FILENAME} " or java runtime wasn't found which is required if you'd like to rebuild Lexer and Parser files")
  endif()
  

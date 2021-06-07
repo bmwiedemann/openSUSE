@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  2 21:39:06 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.25
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-24.html
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-25.html
+- Fixed upstream libssh dependency
+  * removed mysql-workbench-ssh.patch
+- Changed patches due to code changes
+  * updated mysql-workbench-license-location.patch
+  * updated mysql-workbench-unbundle-libscintilla.patch
+
+-------------------------------------------------------------------
 Sat Jan 23 13:29:31 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to 8.0.23

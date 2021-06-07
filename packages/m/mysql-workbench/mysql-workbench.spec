@@ -18,7 +18,7 @@
 
 %define edition community
 Name:           mysql-workbench
-Version:        8.0.23
+Version:        8.0.25
 Release:        0
 Summary:        A MySQL visual database modeling, administration and querying tool
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -54,8 +54,6 @@ Patch22:        mysql-workbench-proj-ldconfig.patch
 Patch23:        mysql-workbench-antlr4.patch
 # PATCH-FIX-OPENSUSE drop unused glXQueryVersion call
 Patch24:        mysql-workbench-unused-glx-call.patch
-# PATCH-FIX-UPSTREAM change libssh header to find version
-Patch26:        mysql-workbench-ssh.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  ant
 BuildRequires:  antlr4-tool
@@ -67,7 +65,7 @@ BuildRequires:  freetds-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-keyring-devel
 BuildRequires:  gtkmm3-devel
-BuildRequires:  libantlr4-runtime-devel >= 4.7.2
+BuildRequires:  libantlr4-runtime-devel >= 4.9.1
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqlcppconn-devel >= 1.1.8
 BuildRequires:  libmysqld-devel > 5.1
@@ -90,7 +88,7 @@ BuildRequires:  pkgconfig(libctemplate)
 BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libssh) >= 0.8.5
+BuildRequires:  pkgconfig(libssh) >= 0.9.5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(lua)
@@ -105,8 +103,8 @@ Requires:       libmysqlclient-devel
 Requires:       proj
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Requires(postun):desktop-file-utils
+Requires(postun):shared-mime-info
 Suggests:       gnome-keyring
 Suggests:       mysqldump
 Conflicts:      mysql-workbench-com-se
@@ -170,7 +168,7 @@ chmod 644 %{buildroot}/%{_sysconfdir}/ld.so.conf.d/%{name}.conf
 
 rm -r %{buildroot}%{_datadir}/mime-info
 
-rm -r %{buildroot}%{_datadir}/doc/mysql-workbench
+rm -r %{buildroot}%{_datadir}/doc/mysql-workbench-community
 
 # Check for duplicate files
 %fdupes -s %{buildroot}
