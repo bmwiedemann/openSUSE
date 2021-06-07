@@ -1,0 +1,11 @@
+--- librtprocess-0.12.0+20210408/src/include/librtprocess.h.orig	2021-05-31 07:59:26.183749715 +0200
++++ librtprocess-0.12.0+20210408/src/include/librtprocess.h	2021-05-31 08:01:07.944132872 +0200
+@@ -21,7 +21,7 @@
+ #define _LIBRTPROCESS_
+ 
+ #include <functional>
+-
++#include <cstddef>
+ 
+ enum rpError {RP_NO_ERROR, RP_MEMORY_ERROR, RP_WRONG_CFA, RP_CACORRECT_ERROR};
+ rpError bayerborder_demosaic(int winw, int winh, int lborders, const float * const *rawData, float **red, float **green, float **blue, const unsigned cfarray[2][2]);
