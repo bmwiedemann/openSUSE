@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Migrate to KDECompilerSettings
+  * Use Q_EMIT to make it compile against kf5.82
+  * Port away from ECMSetupVersion's deprecated *_VERSION_STRING CMake variable
+  * Use clearer text for "Menu" decoration button
+  * Improve tooltips for "keep above"/"keep below" buttons (kde#435292)
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Add clang-format pre-commit hook
+  * Add trailing comma to enums
+  * Raise minimum CMake version to 3.16
+  * Use versionless Qt cmake target
+
+-------------------------------------------------------------------
 Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
