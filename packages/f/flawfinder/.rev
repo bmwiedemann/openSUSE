@@ -70,4 +70,17 @@
   * Improved handling of Git patch format</comment>
     <requestid>896596</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ac01dcd36c297123f64a286f0be1f7c</srcmd5>
+    <version>2.0.17</version>
+    <time>1623098697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.17:
+  * Fix the distributed tarball, which didn't include the
+    key source file due to the earlier file restructure.
+  * Minor code style fix, which simplifies the code slightly.
+  * Update date in manual page to 2021. That's important because
+    the documentation now includes information on `--sarif`.</comment>
+    <requestid>898180</requestid>
+  </revision>
 </revisionlist>

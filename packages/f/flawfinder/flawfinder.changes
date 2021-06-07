@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  7 18:35:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.17:
+  * Fix the distributed tarball, which didn't include the
+    key source file due to the earlier file restructure.
+  * Minor code style fix, which simplifies the code slightly.
+  * Update date in manual page to 2021. That's important because
+    the documentation now includes information on `--sarif`.
+
+-------------------------------------------------------------------
 Tue Jun  1 08:02:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.16:
