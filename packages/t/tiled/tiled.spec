@@ -17,14 +17,12 @@
 
 
 Name:           tiled
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
-Source:         https://github.com/bjorn/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-# https://github.com/mapeditor/tiled/issues/3037
-Patch0:         tiled-endl.patch
+Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,7 +59,6 @@ This package contains libtiled a library for the Tiled map editor.
 
 %prep
 %setup -q
-%patch0 -p1
 # Remove copy of zlib
 rm -rf src/zlib
 
