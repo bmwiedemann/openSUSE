@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 07 01:53:05 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210607.41a0731e:
+  * Fix: parse: shouldn't allow property setting with an empty value(bsc#1185423)
+
+-------------------------------------------------------------------
 Mon May 31 02:19:54 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210526.aa5f3385:
