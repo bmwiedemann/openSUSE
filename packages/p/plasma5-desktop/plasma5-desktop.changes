@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * [kcms/keyboard] Restore keyboard layout OSD on X11 (kde#435533)
+  * Don't slide when launching an app (kde#437558)
+  * [taskmanager] Skip iconified tasks when using Mouse wheel
+  * Change minimizeall to use isHidden
+  * Fix panel adaptive transparency when "show window thumbnails: always"
+  * Don't shift badge down for short sounds when audio indicator isn't acually being shown
+  * [applets/taskmanager] Ensure highlight effect is cancelled after activating a window
+  * Fix badge overlap with audio indicator
+  * kcms/keys: Align checkbox of section headers with the ones of list items
+  * [Task Manager] Optimize parent process CGroup check (kde#437259)
+  * Revert "Replace Repeater with ListView for task group list"
+  * Use python3 explicitly
+  * [applets/taskmanager] Don't anchor shadow to invalid item on Wayland
+  * [kcm/landingpage] Remove return true on sort lambda
+- Drop patches, now upstream:
+  * 0001-Use-python3-explicitly.patch
+  * 0001-kcm-landingpage-Remove-return-true-on-sort-lambda.patch
+
+-------------------------------------------------------------------
+Mon May 31 06:33:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix systemsettings5 in some cases:
+  * 0001-kcm-landingpage-Remove-return-true-on-sort-lambda.patch
+
+-------------------------------------------------------------------
+Fri May 14 15:54:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches for proper deps of kconf_update scripts:
+  * 0001-Use-python3-explicitly.patch
+  * 0002-No-usr-bin-env-in-shebangs.patch
+
+-------------------------------------------------------------------
+Thu May 13 18:15:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5

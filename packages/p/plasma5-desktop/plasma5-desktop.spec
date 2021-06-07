@@ -28,7 +28,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -38,11 +38,13 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch3:         0002-No-usr-bin-env-in-shebangs.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -59,7 +61,6 @@ BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
 BuildRequires:  cmake(KF5Attica) >= %{kf5_version}
 BuildRequires:  cmake(KF5Auth) >= %{kf5_version}
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
-BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
@@ -141,7 +142,6 @@ Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 Requires:       kinfocenter5
 Requires:       kirigami2
 Requires:       kmenuedit5
-Requires:       ksysguard5
 # Needed for sensors
 Requires:       libksysguard5-imports
 # kcm_style does DBus calls to the KDED module.
@@ -237,6 +237,9 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   cp %{_datadir}/ibus/dicts/emoji-*.dict %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
 %endif
 
+  # Work around kde#437118
+  rm %{buildroot}%{_kf5_sharedir}/kpackage/kcms/kcm_landingpage/contents/ui/FeedbackControls.qml
+
   # no devel files needed here
   rm -rfv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
   %fdupes %{buildroot}/%{_prefix}
@@ -257,24 +260,20 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_bindir}/tastenbrett
 %{_kf5_configdir}/autostart/kaccess.desktop
 %{_kf5_libdir}/libexec/
-%{_kf5_libdir}/libkdeinit5_kaccess.so
 %{_kf5_plugindir}/kcm_activities.so
 %{_kf5_plugindir}/kcm_clock.so
 %{_kf5_plugindir}/kcm_desktoppaths.so
-%{_kf5_plugindir}/kcm_formats.so
 %{_kf5_plugindir}/kcm_joystick.so
 %{_kf5_plugindir}/kcm_keyboard.so
 %{_kf5_plugindir}/kcm_plasmasearch.so
 %dir %{_kf5_plugindir}/kcms/
 %{_kf5_plugindir}/kcms/kcm_access.so
-%{_kf5_plugindir}/kcms/kcm_autostart.so
 %{_kf5_plugindir}/kcms/kcm_baloofile.so
 %{_kf5_plugindir}/kcms/kcm_componentchooser.so
 %{_kf5_plugindir}/kcms/kcm_kded.so
 %{_kf5_plugindir}/kcms/kcm_keys.so
 %{_kf5_plugindir}/kcms/kcm_launchfeedback.so
-%{_kf5_plugindir}/kcms/kcm_nightcolor.so
-%{_kf5_plugindir}/kcms/kcm_notifications.so
+%{_kf5_plugindir}/kcms/kcm_landingpage.so
 %{_kf5_plugindir}/kcms/kcm_smserver.so
 %{_kf5_plugindir}/kcms/kcm_splashscreen.so
 %{_kf5_plugindir}/kcms/kcm_users.so
@@ -310,18 +309,16 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm5_kded/
-%{_kf5_sharedir}/kpackage/kcms/kcm_autostart/
 %{_kf5_sharedir}/kpackage/kcms/kcm_baloofile/
 %{_kf5_sharedir}/kpackage/kcms/kcm_keys/
 %{_kf5_sharedir}/kpackage/kcms/kcm_launchfeedback/
-%{_kf5_sharedir}/kpackage/kcms/kcm_nightcolor/
-%{_kf5_sharedir}/kpackage/kcms/kcm_notifications/
 %{_kf5_sharedir}/kpackage/kcms/kcm_smserver/
 %{_kf5_sharedir}/kpackage/kcms/kcm_splashscreen/
 %{_kf5_sharedir}/kpackage/kcms/kcm_users/
 %{_kf5_sharedir}/kpackage/kcms/kcm_workspace/
 %{_kf5_sharedir}/kpackage/kcms/kcmaccess/
 %{_kf5_sharedir}/kpackage/kcms/kcm_componentchooser
+%{_kf5_sharedir}/kpackage/kcms/kcm_landingpage/
 %{_kf5_sharedir}/kcmkeyboard/
 %{_kf5_notifydir}/
 %{_kf5_servicesdir}/
