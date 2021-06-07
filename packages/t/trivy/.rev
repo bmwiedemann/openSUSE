@@ -109,4 +109,23 @@
   * add MkDocs implementation (#870)</comment>
     <requestid>893510</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>359f3eec11d24fd85af1af071c213117</srcmd5>
+    <version>0.18.3</version>
+    <time>1623098706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.3:
+  * chore(ci): change to more granular tokens (#1014)
+  * chore(ci): add Go scanning and update dependencies (#1001)
+  * docs: Add HIGH severity to Trivy command in GitLab CI example to match comment (#1013)
+  * fix(image): disable go.sum scanning (#1007)
+  * fix(gomod): handle go.sum with an empty line (#1006)
+  * feat: prepare for config scanning (#1005)
+  * Clarify that dev dependencies are excluded (#986)
+  * Include target value in Sarif template ruleID (#991)
+  * chore(mkdocs): allow workflow_dispatch (#989)
+  * fix(vuln) unique vulnerabilities from different data sources (#984)
+  * feat(go): added support of gomod analyzer (#978)</comment>
+    <requestid>898184</requestid>
+  </revision>
 </revisionlist>

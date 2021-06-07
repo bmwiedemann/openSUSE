@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 07 19:14:07 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.18.3:
+  * chore(ci): change to more granular tokens (#1014)
+  * chore(ci): add Go scanning and update dependencies (#1001)
+  * docs: Add HIGH severity to Trivy command in GitLab CI example to match comment (#1013)
+  * fix(image): disable go.sum scanning (#1007)
+  * fix(gomod): handle go.sum with an empty line (#1006)
+  * feat: prepare for config scanning (#1005)
+  * Clarify that dev dependencies are excluded (#986)
+  * Include target value in Sarif template ruleID (#991)
+  * chore(mkdocs): allow workflow_dispatch (#989)
+  * fix(vuln) unique vulnerabilities from different data sources (#984)
+  * feat(go): added support of gomod analyzer (#978)
+
+-------------------------------------------------------------------
 Mon May 03 10:04:22 UTC 2021 - dmueller@suse.com
 
 - Update to version 0.17.2:
