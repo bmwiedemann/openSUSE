@@ -23,6 +23,11 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/linuxdeepin/deepin-calculator
 Source:         https://github.com/linuxdeepin/deepin-calculator/archive/%{version}/%{name}-%{version}.tar.gz
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  gtest
 BuildRequires:  gmock
 BuildRequires:  fdupes
@@ -66,7 +71,7 @@ sed -i 's/lrelease/lrelease-qt5/g' translate_generation.sh
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 
 %files lang
 %defattr(-,root,root,-)
