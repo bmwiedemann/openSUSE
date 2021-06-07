@@ -75,7 +75,7 @@ original Sigil implementation, like:
 
 %check
 %if %{with test}
-%python_exec setup.py test
+%pyunittest discover -v
 %endif
 
 %files %{python_files}

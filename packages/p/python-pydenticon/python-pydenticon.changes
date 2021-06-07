@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 06:53:23 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Mon Feb  8 10:44:58 UTC 2021 - Oliver Kurz <okurz@suse.com>
 
 - Fixed no longer supported bare words in build conditions
