@@ -194,6 +194,18 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/nativeapi/mysql_native_stat
  struct MYSQL_STMT;
  #else
  struct st_mysql_stmt;
+diff -uNr mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/native_connection_wrapper.h mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/native_connection_wrapper.h
+--- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/native_connection_wrapper.h	2021-03-15 17:21:15.000000000 +0200
++++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/native_connection_wrapper.h	2021-05-12 15:54:14.223060673 +0300
+@@ -41,7 +41,7 @@
+ 
+ #include "../mysql_connection_options.h"
+ 
+-#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80004)
++#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80004 && !defined(MYCPPCONN_MARIADB_BUILD))
+ struct MYSQL_BIND;
+ #else
+ struct st_mysql_bind;
 diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/nativeapi/native_resultset_wrapper.h mysql-connector-c++-8.0.15-src/jdbc/driver/nativeapi/native_resultset_wrapper.h
 --- mysql-connector-c++-8.0.15-org/jdbc/driver/nativeapi/native_resultset_wrapper.h	2018-10-11 17:09:50.000000000 +0300
 +++ mysql-connector-c++-8.0.15-src/jdbc/driver/nativeapi/native_resultset_wrapper.h	2019-02-16 12:26:42.480429868 +0200

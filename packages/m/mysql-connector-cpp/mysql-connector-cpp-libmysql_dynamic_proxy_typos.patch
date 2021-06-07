@@ -1,5 +1,6 @@
---- mysql-connector-c++-8.0.18-org/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2018-05-21 16:06:10.000000000 +0300
-+++ mysql-connector-c++-8.0.18-src/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2018-08-09 12:38:45.453558901 +0300
+diff -uNr mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp
+--- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2021-03-15 17:21:15.000000000 +0200
++++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2021-05-12 17:00:33.080944723 +0300
 @@ -440,7 +440,7 @@
  int
  LibmysqlDynamicProxy::get_option(MYSQL * mysql, enum mysql_option option, const void *arg)
@@ -9,4 +10,46 @@
    if (ptr2_get_option != NULL) {
      if (((*ptr2_get_option)(mysql, option, arg))) {
        throw sql::InvalidArgumentException("Unsupported option provided to mysql_get_option()");
+@@ -512,6 +512,17 @@
+ /* }}} */
  
+ 
++/* {{{ LibmysqlDynamicProxy::bind_param() */
++bool
++LibmysqlDynamicProxy::bind_param(MYSQL *mysql, unsigned n_params,
++                                 st_mysql_bind *binds, const char **names)
++{
++  ptr2mysql_bind_param ptr2_bind_param = symbol_safe_cast<ptr2mysql_bind_param>(GetProcAddr("mysql_bind_param"));
++  return (*ptr2_bind_param)(mysql, n_params, binds, names);
++}
++/* }}} */
++
++
+ /* {{{ LibmysqlDynamicProxy::real_escape_string() */
+ unsigned long
+ LibmysqlDynamicProxy::real_escape_string(MYSQL * mysql, char * to, const char * from, unsigned long length)
+diff -uNr mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/libmysql_dynamic_proxy.h mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/libmysql_dynamic_proxy.h
+--- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/libmysql_dynamic_proxy.h	2021-03-15 17:21:15.000000000 +0200
++++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/libmysql_dynamic_proxy.h	2021-05-12 16:56:10.590130798 +0300
+@@ -142,6 +142,9 @@
+               const char *  db,
+               unsigned long client_flag);
+ 
++  bool bind_param(MYSQL *mysql, unsigned n_params,
++                  MYSQL_BIND *binds, const char **names) override;
++
+   unsigned long real_escape_string(MYSQL * mysql, char * to, const char * from, unsigned long length);
+ 
+   int real_query(MYSQL *, const char *, unsigned long);
+diff -uNr mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/mysql_client_api.h mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/mysql_client_api.h
+--- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/mysql_client_api.h	2021-03-15 17:21:15.000000000 +0200
++++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/mysql_client_api.h	2021-05-12 17:44:06.645123816 +0300
+@@ -111,6 +111,8 @@
+ 
+ typedef MYSQL * (STDCALL *ptr2mysql_real_connect_dns_srv)(MYSQL *, const char *, const char *, const char * , const char *, unsigned long);
+ 
++typedef bool (STDCALL *ptr2mysql_bind_param)(MYSQL *, unsigned, MYSQL_BIND *, const char **);
++
+ typedef unsigned long (STDCALL *ptr2mysql_real_escape_string)(MYSQL * mysql, char *, const char *, unsigned long);
+ 
+ typedef int (STDCALL *ptr2mysql_real_query)(MYSQL *, const char *, unsigned long);

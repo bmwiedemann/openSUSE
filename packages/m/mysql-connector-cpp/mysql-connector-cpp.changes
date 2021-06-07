@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  2 21:09:01 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.25
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-24.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-25.html
+- Fixed use of optional flag not present in mariadb or older mysql
+  * added mysql-connector-cpp-test-feature.patch
+- Updated patch due to code changes
+  * modified mysql-connector-cpp-mariadb.patch
+
+-------------------------------------------------------------------
 Sat Jan 23 12:15:38 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.23

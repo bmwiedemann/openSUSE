@@ -1,0 +1,14 @@
+--- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp	2021-03-15 17:21:15.000000000 +0200
++++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp	2021-05-12 17:23:50.806629061 +0300
+@@ -403,7 +403,11 @@
+ /* {{{ MySQL_NativeConnectionWrapper::has_query_attributes() */
+ bool MySQL_NativeConnectionWrapper::has_query_attributes()
+ {
++#ifdef CLIENT_QUERY_ATTRIBUTES
+   return mysql->server_capabilities & CLIENT_QUERY_ATTRIBUTES;
++#else
++  return false;
++#endif
+ }
+ /* }}} */
+ 
