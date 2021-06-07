@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyte
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/selectel/pyte
 Source:         https://files.pythonhosted.org/packages/source/p/pyte/pyte-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
@@ -46,6 +45,7 @@ other DEC VTs between 1970 and 1995. pyte can be used to:
 %setup -q -n pyte-%{version}
 # all fail as missing data files
 rm tests/test_input_output.py
+sed -i '/pytest-runner/d' setup.py
 
 %build
 %python_build
@@ -54,7 +54,7 @@ rm tests/test_input_output.py
 %python_install
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

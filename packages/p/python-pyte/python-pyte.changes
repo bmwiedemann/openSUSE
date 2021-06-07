@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 07:59:26 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Tue Dec  4 12:52:55 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
