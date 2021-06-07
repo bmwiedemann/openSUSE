@@ -23,15 +23,15 @@
 %define qt5_version 5.10.0
 %bcond_without lang
 Name:           plasma5-thunderbolt
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz
+Source:         plasma-thunderbolt-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz.sig
+Source1:        plasma-thunderbolt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -77,7 +77,7 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libkbolt.so
 %dir %{_kf5_plugindir}/kcms/
 %{_kf5_plugindir}/kcms/kcm_bolt.so
