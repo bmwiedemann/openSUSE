@@ -1,4 +1,4 @@
-From fa990bdf47418968fd939636b84a43d0a4696f3c Mon Sep 17 00:00:00 2001
+From 76abce728d3abb94c71076e6211a0da655397b0f Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Tue, 12 Nov 2019 13:18:26 +0100
 Subject: [PATCH] Bypass wayland interface blacklisting
@@ -6,14 +6,14 @@ Subject: [PATCH] Bypass wayland interface blacklisting
 Currently the check isn't worth anything and it breaks some applications.
 See discussion on https://phabricator.kde.org/D22571 and https://phabricator.kde.org/T4437#207062.
 ---
- wayland_server.cpp | 1 +
+ src/wayland_server.cpp | 1 +
  1 file changed, 1 insertion(+)
 
-Index: kwin-5.15.80git.20200912T061110~f5900a5fd/wayland_server.cpp
-===================================================================
---- kwin-5.15.80git.20200912T061110~f5900a5fd.orig/wayland_server.cpp	2020-09-12 06:11:10.000000000 +0200
-+++ kwin-5.15.80git.20200912T061110~f5900a5fd/wayland_server.cpp	2020-09-12 11:27:55.728309874 +0200
-@@ -270,6 +270,7 @@
+diff --git a/src/wayland_server.cpp b/src/wayland_server.cpp
+index e93d51911..95f3a746a 100644
+--- a/src/wayland_server.cpp
++++ b/src/wayland_server.cpp
+@@ -130,6 +130,7 @@ public:
      QSet<QString> m_reported;
  
      bool allowInterface(KWaylandServer::ClientConnection *client, const QByteArray &interfaceName) override {
@@ -21,3 +21,6 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/wayland_server.cpp
          if (client->processId() == getpid()) {
              return true;
          }
+-- 
+2.25.1
+

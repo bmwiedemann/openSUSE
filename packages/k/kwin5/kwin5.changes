@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * platforms/drm: log when direct scanout starts and stops
+  * Fix weird decoration glitch when using a scaled display
+  * platforms/drm: CPU copy for multi-gpu (kde#432707)
+  * Discard SurfaceItemXwayland's quads when shape changes
+  * screencasting: do not attempt to copy a null texture
+  * [kcmkwin/kwindesktop] Implement valueFromText in a spinbox (kde#437472)
+  * [kcms/virtualdesktops] Change delete icon
+  * [xwl] Notify wayland that our data offer is accepted (kde#437406)
+  * platforms/drm: Make context current before EGLStreams calls (kde#437573)
+  * inputmethod: Also update the trackingClient when there's none set
+  * inputmethod: Use the inputmethod's context as the isActive measure
+  * inputmethod: Make sure we send a state commit
+  * [kcms/virtualdesktop] Don't offer to remove the last desktop (kde#437561)
+  * [kcms/virtualdesktops] Properly track synchronizing state (kde#437466)
+  * [kcms/virtualdesktops] Enable apply button when typing desktop name (kde#435014)
+  * [kcms/virtualdesktops] Clip ListView
+  * screencasting: Make sure we don't stream after we've stopped a stream
+  * Support High DPI Aurorae decorations (kde#422342)
+  * Fix build
+  * platforms/drm: replace pointer to egl backend with QPointer
+  * effects: Fix EffectWindow::shape() for X11 windows (kde#437138,kde#435862)
+  * wayland: Signal about finished move/resize in destroyClient() (kde#409376)
+  * autotests: Stabilize tests that create Xwayland windows
+  * wayland: Make some animations less glitchy
+  * inputmethod: deactivate the input method when we textinputv3 is committed as disabled
+  * wayland: Fix internal connection teardown
+
+-------------------------------------------------------------------
+Thu May 13 18:15:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
 Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5

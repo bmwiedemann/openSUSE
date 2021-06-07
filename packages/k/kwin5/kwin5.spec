@@ -24,7 +24,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -239,6 +239,7 @@ This package provides development files.
 %{_kf5_plugindir}/kcms/kcm_kwin_virtualdesktops.so
 %{_kf5_plugindir}/kcms/kcm_kwindecoration.so
 %{_kf5_plugindir}/kcms/kcm_kwinrules.so
+%{_kf5_plugindir}/kcms/kcm_virtualkeyboard.so
 %dir %{_kf5_plugindir}/kpackage/
 %dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_aurorae.so
@@ -319,6 +320,7 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwindecoration
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
+%{_kf5_sharedir}/kpackage/kcms/kcm_virtualkeyboard
 %{_userunitdir}/plasma-kwin_x11.service
 
 %files devel
