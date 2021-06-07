@@ -969,4 +969,12 @@ found conflict of filesystem-15.5-261.1.x86_64 with oxygen5-sounds-5.21.5-2.1.no
   /usr/share/sounds [mode mismatch: d555 root:root, d755 root:root] (forwarded request 893561 from dimstar)</comment>
     <requestid>893565</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>ada924c3c015c88b5bf0808dde9bfc1a</srcmd5>
+    <version>5.22.0</version>
+    <time>1623098557</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.0</comment>
+    <requestid>897491</requestid>
+  </revision>
 </revisionlist>

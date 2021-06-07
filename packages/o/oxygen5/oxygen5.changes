@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
 Mon May 17 07:37:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own the directory /usr/share/sounds, but only the content
