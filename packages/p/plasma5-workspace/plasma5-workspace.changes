@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:17 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Too many changes to list here
+- Drop patches, now upstream:
+ * 0001-Fix-kcmfontinst-install-destination.patch
+
+-------------------------------------------------------------------
+Mon May 31 06:20:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the font management KCM (kde#436306):
+  * 0001-Fix-kcmfontinst-install-destination.patch
+
+-------------------------------------------------------------------
+Thu May 13 18:15:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-startkde-Reset-systemd-failed-units-on-login.patch
+
+-------------------------------------------------------------------
 Wed May 12 09:49:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to unbreak some services after login (kde#429415):

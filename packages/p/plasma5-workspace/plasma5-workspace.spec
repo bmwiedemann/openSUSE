@@ -17,7 +17,7 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm|org\\.kde\\.plasma\\.kcm).*
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
@@ -30,20 +30,18 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-startkde-Reset-systemd-failed-units-on-login.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -58,6 +56,7 @@ BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
+BuildRequires:  cmake(Breeze)
 BuildRequires:  cmake(KDED) >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
@@ -98,6 +97,7 @@ BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.1.0
 #!BuildIgnore:  kdialog
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
+BuildRequires:  cmake(LayerShellQt)
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Gui) >= 5.4.0
@@ -169,6 +169,8 @@ Recommends:     oxygen5-sounds >= %{_plasma5_version}
 Requires:       solid-imports
 # Used by KCMs
 Requires:       knewstuff-imports
+# Used by system monitoring applets
+Requires:       ksystemstats5
 # Used by the user feedback KCM
 Requires:       kuserfeedback-imports
 Requires:       xembedsniproxy >= %{_plasma5_version}
@@ -399,6 +401,7 @@ fi
 %{_kf5_libdir}/libweather_ion.so.*
 %{_kf5_libdir}/libcolorcorrect.so.*
 %{_kf5_libdir}/libnotificationmanager.so.*
+%{_kf5_libdir}/libkrdb.so
 
 %files
 %license COPYING*
@@ -424,6 +427,11 @@ fi
 %{_kf5_bindir}/lookandfeeltool
 %{_kf5_bindir}/kcolorschemeeditor
 %{_kf5_bindir}/krdb
+%{_kf5_bindir}/plasma-apply-colorscheme
+%{_kf5_bindir}/plasma-apply-cursortheme
+%{_kf5_bindir}/plasma-apply-desktoptheme
+%{_kf5_bindir}/plasma-apply-lookandfeel
+%{_kf5_bindir}/plasma-apply-wallpaperimage
 %{_kf5_configdir}/autostart/org.kde.plasmashell.desktop
 %{_kf5_configdir}/autostart/klipper.desktop
 %{_kf5_configkcfgdir}/
@@ -436,6 +444,7 @@ fi
 %{_kf5_knsrcfilesdir}/plasmoids.knsrc
 %{_kf5_knsrcfilesdir}/wallpaper.knsrc
 %{_kf5_knsrcfilesdir}/wallpaperplugin.knsrc
+%{_kf5_knsrcfilesdir}/wallpaper-mobile.knsrc
 %{_kf5_knsrcfilesdir}/xcursor.knsrc
 
 %config %{_kf5_configdir}/taskmanagerrulesrc
@@ -445,14 +454,12 @@ fi
 %{_kf5_libdir}/libexec/plasma-changeicons
 %{_kf5_libdir}/libkdeinit5_kcminit.so
 %{_kf5_libdir}/libkdeinit5_kcminit_startup.so
-%{_kf5_libdir}/libkdeinit5_klipper.so
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
 %{_kf5_libdir}/libexec/baloorunner
 %{_kf5_libdir}/libexec/plasma-sourceenv.sh
 %{_kf5_libdir}/libexec/startplasma-waylandsession
 %{_kf5_libdir}/libexec/plasma-dbus-run-session-if-needed
-%{_kf5_libdir}/kconf_update_bin/krdb_clearlibrarypath
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
@@ -464,7 +471,6 @@ fi
 # %%{_kf5_configkcfgdir}/feedbacksettings.kcfg
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
-%{_kf5_sharedir}/kcontrol/
 %{_kf5_sharedir}/kdisplay/
 %{_kf5_sharedir}/kpackage/
 %{_kf5_sharedir}/kfontinst/
@@ -493,7 +499,7 @@ fi
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %dir %{_kf5_sharedir}/kglobalaccel
-%{_kf5_sharedir}/kglobalaccel/krunner.desktop
+%{_kf5_sharedir}/kglobalaccel/org.kde.krunner.desktop
 %{_kf5_sharedir}/ksplash/
 %{_kf5_sharedir}/kstyle/
 %{_kf5_plasmadir}/
