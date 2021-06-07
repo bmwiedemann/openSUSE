@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Migrate to KDECompilerSettings
+  * Restore same visibility of deprecated API for builds of tarball & checkout
+  * Apply on double-click
+  * Raise the maximum allowed UID to 60513
+  * Fix broken commit to fix build
+  * Use default app font if there's no "font" entry
+  * Switch to using KNewStuffQuick's Action component
+  * Use multiple of gridUnit to size the Sync dialog (kde#434826)
+  * Use KUIT markup for list text
+  * Use Kirigami.ActionToolBar to auto-resize the SDDM KCM's footer
+  * Raise minimum CMake version to 3.16
+  * Use Kirigami.ActionToolBar to auto-resize the SDDM KCM's footer
+  * Allow for easier syncing of Plasma font (kde#432930)
+  * Allow for easier syncing of Plasma font
+  * Set index on completion instead of binding (kde#432018)
+  * Indicate that we need saving when background changes (kde#432112)
+
+-------------------------------------------------------------------
 Tue May  4 14:15:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
