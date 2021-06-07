@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 31 06:04:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.0+20210408:
+  * Add missing copyright/license headers and Boost license text
+    for files derived from sleef
+  * Fix border issue
+  * rcd demosaic: speedup and reduced memory usage
+  * Fix some double promotions
+  * Fix bug in calculation of tile size
+  * make StopWatch more robust
+  * rcd_demosaic(): SSE code for step 3
+- Add add-missing-include.patch to fix a compilation issue
+- Add missing license BSL-1.0
+
+-------------------------------------------------------------------
 Fri Oct 02 11:45:58 UTC 2020 - stefan.bruens@rwth-aachen.de
 
 - Update to version 0.11.0+20200922:

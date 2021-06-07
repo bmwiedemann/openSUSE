@@ -1,7 +1,7 @@
 #
 # spec file for package librtprocess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,14 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           librtprocess
-Version:        0.11.0+20200922
+Version:        0.12.0+20210408
 Release:        0
 Summary:        A collection of functions for processing photos
-License:        GPL-3.0-or-later
+License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/CarVac/librtprocess
 Source:         %{name}-%{version}.tar.xz
+Patch0:         add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -56,6 +58,7 @@ This package holds the development files.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake .
@@ -80,4 +83,3 @@ This package holds the development files.
 %{_libdir}/pkgconfig/rtprocess.pc
 
 %changelog
-
