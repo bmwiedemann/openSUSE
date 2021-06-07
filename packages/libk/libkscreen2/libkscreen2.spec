@@ -19,7 +19,7 @@
 %bcond_without lang
 %define lname   libKF5Screen7
 Name:           libkscreen2
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,13 +29,13 @@ Summary:        KDE's screen management library
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libkscreen-%{version}.tar.xz
+Source:         libkscreen-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libkscreen-%{version}.tar.xz.sig
+Source1:        libkscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -92,7 +92,7 @@ Shared library for dynamic display management in KDE
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files plugin
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/kscreen-doctor
 %{_kf5_plugindir}/
 %{_kf5_libexecdir}/
@@ -100,11 +100,11 @@ Shared library for dynamic display management in KDE
 %{_kf5_debugdir}/libkscreen.categories
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Screen.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Screen.so
 %{_kf5_libdir}/cmake/KF5Screen/
 %{_kf5_libdir}/pkgconfig/kscreen2.pc
