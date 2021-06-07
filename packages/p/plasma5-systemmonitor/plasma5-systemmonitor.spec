@@ -19,18 +19,18 @@
 %define kf5_version 5.73.0
 %bcond_without lang
 Name:           plasma5-systemmonitor
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/plasma-systemmonitor-%{version}.tar.xz
+Source0:        plasma-systemmonitor-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-systemmonitor-%{version}.tar.xz.sig
+Source1:        plasma-systemmonitor-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -53,6 +53,7 @@ Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       knewstuff-imports
 Requires:       kquickcharts
+Requires:       ksystemstats5
 Requires:       libqt5-qtquickcontrols2
 Requires:       qqc2-desktop-style
 

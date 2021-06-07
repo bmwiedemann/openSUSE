@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Rename BasicCellDelegate -> TextCellDelegate
+  * Move mouse handling up to a common ancestor of the item
+  * Fix flickering in table view (kde#436803)
+  * Move mouse handling back to delegates
+  * Fix initial sort order (kde#437449)
+  * Fix newstuff action connection (kde#437702)
+  * Do not position dialogs at fractional positions (kde#437805,kde#437804)
+  * Fix sorting in Applications Detail View
+  * Terminate process when pressing Delete (kde#436416)
+  * [Applications Table] Prompt only on SIGKILL/SIGTERM
+
+-------------------------------------------------------------------
+Thu May 13 18:15:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5
