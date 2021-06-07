@@ -474,4 +474,12 @@ A powertop_libc++_fix.patch</comment>
   * Add powertop-add-rocket-lake-support.patch</comment>
     <requestid>847719</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4d4e8061b32b1f1156aad1f84efac62f</srcmd5>
+    <version>2.14</version>
+    <time>1623098624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897928</requestid>
+  </revision>
 </revisionlist>

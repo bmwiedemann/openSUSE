@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  6 13:14:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14:
+  * add service file
+  * remove stale printf line
+  * Enable Rocket Lake platform support
+  * Enable Alder Lake support
+- remove powertop-add-rocket-lake-support.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Nov 11 08:25:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - jsc#SLE-13395: Add Rocket Lake support

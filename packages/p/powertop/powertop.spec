@@ -1,7 +1,7 @@
 #
 # spec file for package powertop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           powertop
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        A Linux Tool to Find out What is Using Power on a Laptop
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://01.org/powertop/
-Source0:        https://github.com/fenrus75/powertop/archive/v2.13.tar.gz
+Source0:        https://github.com/fenrus75/powertop/archive/v%{version}.tar.gz
 Source1:        powertop.service
-# jsc#SLE-13395: Add powertop support
-Patch0:         powertop-add-rocket-lake-support.patch
 # they repeatedly forget to upload a release tarball and only have the one from
 # GitHub which doesnt contain configure thus adding:
 # autoconf, autoconf-archive, automake, libtool
@@ -54,7 +52,6 @@ doing in terms of power savings.
 
 %prep
 %setup -q -n powertop-%{version}
-%patch0 -p1
 
 # Delete objects files left in tarball
 find . -name '*.o' -delete
@@ -63,8 +60,8 @@ find . -name '*.o' -delete
 # workaround for 'error: too many loops' in sle15sp3
 # also see rhbz#1826935
 autoreconf -fi || autoreconf -fi
-export CFLAGS="%{optflags} -D_GNU_SOURCE"
-%configure
+export CFLAGS="%{optflags} -D_GNU_SOURCE -pthread"
+%configure --disable-static
 %make_build
 
 %install
