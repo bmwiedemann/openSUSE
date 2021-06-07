@@ -19,7 +19,7 @@
 %define _buildshell /bin/bash
 %global         fullversion %{version}
 Name:           iosevka-fonts
-Version:        6.0.1
+Version:        7.0.2
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1
