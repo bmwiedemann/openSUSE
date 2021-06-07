@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -91,8 +91,7 @@ rm -rf %{buildroot}%{_libdir}/libchafa.{a,la}
 
 %files -n libchafa0
 %license COPYING.LESSER
-%{_libdir}/lib%{name}.so.0
-%{_libdir}/lib%{name}.so.0.5.0
+%{_libdir}/lib%{name}.so.0*
 
 %files devel
 %license COPYING.LESSER

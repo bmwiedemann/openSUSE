@@ -123,4 +123,21 @@
     - [unfiled] Bad contrast adjustment in images with transparency.</comment>
     <requestid>863252</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7d48372ae2e1f1e9aedb6d5cde97a6d</srcmd5>
+    <version>1.6.1</version>
+    <time>1623098701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * Add NOCONFIGURE variable to autogen.sh to skip configure
+  Bug fixes:
+  * #50 SIGBUS while loading huge GIFs
+  * #52 Produces small glitches in output with some images
+  * #54 Haiku port fails on 32bit
+  * [unfiled] Exclude RTL code points that could break the output.
+  * [unfiled] Apple Terminal lacks truecolor support, so make it
+    default to 256 colors
+  * [unfiled] Fix typo affecting middle dot symbol.</comment>
+    <requestid>898181</requestid>
+  </revision>
 </revisionlist>
