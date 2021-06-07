@@ -1,8 +1,8 @@
 #
 # spec file for package soapy-airspy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define soapy_modver 0.7
 %define soapy_modname soapysdr%{soapy_modver}-module-airspy
 Name:           soapy-airspy
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        SoapySDR Airspy module
 License:        MIT
 Group:          Hardware/Other
-Url:            https://github.com/pothosware/SoapyAirspy/wiki
+URL:            https://github.com/pothosware/SoapyAirspy/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyAirspy.git
 Source:         https://github.com/pothosware/SoapyAirspy/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
