@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 11:25:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for architectures where mumps does not exist
+  (i586 s390 ppc armv7l).
+
+-------------------------------------------------------------------
 Thu Feb 25 21:03:38 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.13.4:

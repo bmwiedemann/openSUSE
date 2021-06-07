@@ -42,6 +42,7 @@ BuildRequires:  strip-nondeterminism
 BuildRequires:  texlive-bibtex-bin
 BuildRequires:  texlive-dvips-bin
 BuildRequires:  texlive-latex-bin
+ExcludeArch:    i586 s390 ppc armv7l
 
 %description
 Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software
