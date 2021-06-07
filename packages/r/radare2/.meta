@@ -1,0 +1,8 @@
+<package name="radare2" project="openSUSE:Factory">
+  <title>Reverse Engineering Framework</title>
+  <description>Opensource tools to disasm, debug, analyze and manipulate binary files.
+
+</description>
+  <devel project="devel:tools" package="radare2"/>
+  <url>http://www.radare.org</url>
+</package>
