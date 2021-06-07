@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cognitiveservices-vision-computervision
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Computer Vision Client Library
 License:        MIT
