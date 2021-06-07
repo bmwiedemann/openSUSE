@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:33:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility fix:
+  * 0001-Remove-throw-specifications.patch
+- Update source-highlight-doxygen_disable_timestamp_in_footer.patch
+  to allow using %autosetup
+
+-------------------------------------------------------------------
 Mon Dec 28 08:02:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not use keyring for now as key signing key is not properly

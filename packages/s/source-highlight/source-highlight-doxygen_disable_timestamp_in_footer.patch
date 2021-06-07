@@ -1,7 +1,7 @@
-Index: lib/srchilite/srchilite.doxyfile.in
-===================================================================
---- lib/srchilite/srchilite.doxyfile.in.orig
-+++ lib/srchilite/srchilite.doxyfile.in
+diff --git a/lib/srchilite/srchilite.doxyfile.in b/lib/srchilite/srchilite.doxyfile.in
+index e98a536..45ef2d9 100644
+--- a/lib/srchilite/srchilite.doxyfile.in
++++ b/lib/srchilite/srchilite.doxyfile.in
 @@ -727,6 +727,7 @@ HTML_HEADER =
  # standard footer.
  

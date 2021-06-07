@@ -29,9 +29,11 @@ Source0:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.t
 #Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        source-highlight-apache2.conf
-Patch2:         source-highlight-doxygen_disable_timestamp_in_footer.patch
+Patch0:         source-highlight-doxygen_disable_timestamp_in_footer.patch
 # PATCH-FIX-OPENSUSE use-lessopen.patch boo#1016309 fcrozat@suse.com -- use lessopen, not lesspipe
-Patch3:         use-lessopen.patch
+Patch1:         use-lessopen.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Remove-throw-specifications.patch
 BuildRequires:  bison
 BuildRequires:  ctags
 BuildRequires:  doxygen
@@ -108,9 +110,8 @@ This package contains a CGI that can be used to highlight source code on
 your webserver using source-highlight.
 
 %prep
-%setup -q
-%patch2
-%patch3 -p1
+%autosetup -p1
+
 sed -i 's/\r//g' doc/*.css
 
 %build
