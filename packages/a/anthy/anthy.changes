@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:23:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+- Switch to %autosetup (rediff bugzilla-1175274-emacs-27.1.patch
+  as p1)
+
+-------------------------------------------------------------------
 Wed Sep 30 10:31:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Use build condition to enable or disable Xemacs support (jsc#SLE-12100) 

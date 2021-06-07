@@ -1,7 +1,7 @@
 #
 # spec file for package anthy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,18 +80,14 @@ This package contains all necessary include files and libraries needed
 to develop applications that require libanthy.
 
 %prep
-%setup -q
-%patch2 -p 1
-%patch3 -p 1
-%patch4 -p 1
-%patch5 -p 0
+%autosetup -p1
 
 %build
 autoreconf --force --install
 CFLAGS="%{optflags} -fno-strict-aliasing" \
 CXXFLAGS="%{optflags} -fno-strict-aliasing" \
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %check
 cd test
@@ -99,7 +95,7 @@ cd test
 
 %install
 %make_install
-install -m 644 $RPM_SOURCE_DIR/suse-start-anthy.el %{buildroot}%{_datadir}/emacs/site-lisp/
+install -m 644 %{_sourcedir}/suse-start-anthy.el %{buildroot}/%{_datadir}/emacs/site-lisp/
 %if %{with xemacs}
 # compile the XEmacs versions of the emacs-lisp files and install them:
 pushd src-util

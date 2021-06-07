@@ -5,8 +5,10 @@ There is no (process-kill-without-query) anymore, use
  src-util/anthy.el |   12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
---- src-util/anthy.el
-+++ src-util/anthy.el	2020-08-18 11:58:02.915408190 +0000
+Index: anthy-9100h/src-util/anthy.el
+===================================================================
+--- anthy-9100h.orig/src-util/anthy.el
++++ anthy-9100h/src-util/anthy.el
 @@ -161,11 +161,11 @@
  
  ;; From skk-macs.el From viper-util.el.  Welcome!
