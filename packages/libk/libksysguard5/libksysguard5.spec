@@ -17,16 +17,21 @@
 
 
 %bcond_without lang
+%global systemstatssover 1
 Name:           libksysguard5
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
+# Full Plasma 5 version (e.g. 5.8.95)
+%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
+# Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
+%{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -51,15 +56,20 @@ BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Network) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Network)
 %ifnarch ppc ppc64 ppc64le s390 s390x riscv64
-BuildRequires:  cmake(Qt5WebChannel) >= 5.4.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.4.0
+BuildRequires:  cmake(Qt5WebChannel)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5UiPlugin)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+# Has no effect, we use set_permissions
+#BuildRequires:  libcap-progs
+# No pkgconfig(pcap) in Leap <= 15.3 yet
+BuildRequires:  libpcap-devel
+BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(zlib)
@@ -69,30 +79,53 @@ Recommends:     %{name}-imports
 %description
 Task management and system monitoring library.
 
+%package -n libKSysGuardSystemStats%{systemstatssover}
+Summary:        Library for system monitoring plugins for KSystemStats
+Group:          System/Libraries
+Requires:       ksysguardsystemstats-data >= %{version}
+
+%description -n libKSysGuardSystemStats%{systemstatssover}
+This library is used by plugins for KSystemStats, a system monitoring daemon.
+
+%package -n ksysguardsystemstats-data
+Summary:        Data needed by libKSysGuardSystemStats
+Group:          System/Libraries
+
+%description -n ksysguardsystemstats-data
+Contains the unversioned D-Bus interface definition for KSystemStats plugins.
+
 %package devel
 Summary:        Task management and system monitoring library -- devel files
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       libKSysGuardSystemStats%{systemstatssover} = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5IconThemes)
-Requires:       cmake(Qt5Core) >= 5.4.0
-Requires:       cmake(Qt5Network) >= 5.4.0
-Requires:       cmake(Qt5Widgets) >= 5.4.0
+Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5DBus)
+Requires:       cmake(Qt5Network)
+Requires:       cmake(Qt5Widgets)
 Conflicts:      kdebase4-workspace-devel
 
 %description devel
 Task management and system monitoring library. This package contains development
 files.
 
-%package helper
-Summary:        Task management and system monitoring library -- helper files
+%package plugins
+Summary:        Task management and system monitoring library -- plugins
 Group:          Development/Libraries/C and C++
 Conflicts:      kdebase4-workspace < 5.3.0
+Requires:       %{name} = %{version}
+Provides:       %{name}-helper = %{version}
+Obsoletes:      %{name}-helper <= %{version}
+Conflicts:      ksysguard5 < 5.21.80
+# For post and verifyscript
+Requires(post): permissions
+Requires(verify): permissions
 
-%description helper
-Task management and system monitoring library. This package contains helper files
-for actions that require elevated privileges.
+%description plugins
+Task management and system monitoring library. This package contains plugins.
 
 %package imports
 Summary:        Task management and system monitoring library -- QML bindings
@@ -121,9 +154,16 @@ QML applications.
   %kf5_find_lang
 %endif
 
-%post   -p /sbin/ldconfig
+%post plugins
+%set_permissions %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 
+%verifyscript plugins
+%verify_permissions -e %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
+
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%post -n libKSysGuardSystemStats%{systemstatssover} -p /sbin/ldconfig
+%postun -n libKSysGuardSystemStats%{systemstatssover} -p /sbin/ldconfig
 
 %files
 %license COPYING*
@@ -143,12 +183,29 @@ QML applications.
 %{_kf5_plugindir}/kpackage/packagestructure/sensorface_packagestructure.so
 %{_kf5_sharedir}/ksysguard/
 
-%files helper
+%files -n libKSysGuardSystemStats%{systemstatssover}
 %license COPYING*
-%{_kf5_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
-%{_kf5_libdir}/libexec/
+%{_kf5_libdir}/libKSysGuardSystemStats.so.%{systemstatssover}
+%{_kf5_libdir}/libKSysGuardSystemStats.so.%{_plasma5_bugfix}
+
+%files -n ksysguardsystemstats-data
+%license COPYING*
+%{_kf5_sharedir}/dbus-1/interfaces/org.kde.ksystemstats.xml
+
+%files plugins
+%license COPYING*
+%dir %{_kf5_plugindir}/ksysguard/
+%dir %{_kf5_plugindir}/ksysguard/process
+%{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
+%{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
+%{_kf5_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
+%dir %{_kf5_libdir}/libexec/
+%dir %{_kf5_libdir}/libexec/kauth/
+%{_kf5_libdir}/libexec/kauth/ksysguardprocesslist_helper
+%dir %{_kf5_libdir}/libexec/ksysguard/
+%{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 
 %files imports
 %license COPYING*
@@ -177,6 +234,7 @@ QML applications.
 %{_kf5_plugindir}/designer/ksignalplotter5widgets.so
 %{_kf5_plugindir}/designer/ksysguard5widgets.so
 %{_kf5_plugindir}/designer/ksysguardlsof5widgets.so
+%{_kf5_libdir}/libKSysGuardSystemStats.so
 %{_kf5_libdir}/libKSysGuardFormatter.so
 %{_kf5_libdir}/libKSysGuardSensorFaces.so
 %{_kf5_libdir}/libKSysGuardSensors.so
