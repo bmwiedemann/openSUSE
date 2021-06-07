@@ -1,7 +1,7 @@
 #
 # spec file for package volk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %global sonum 2
-%global soname 2_4
+%global soname 2_5
 Name:           volk
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only

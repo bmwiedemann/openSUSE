@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:00:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  Kernels
+  * volk_32f_stddev_and_mean_32f_x2: implemented Young and
+    Cramer's algorithm
+  * volk_32fc_accumulator_s32fc: Add new kernel
+  * volk_16ic_x2_dot_prod_16ic_u_avx2: Fix Typo, was _axv2.
+  * Remove _mm256_zeroupper() calls
+  * Enforce consistent function prototypes
+  * 32fc_index_max: Improve speed of AVX2 version
+  * conv_k7_r2: Disable broken AVX2 code
+  * improve volk_8i_s32f_convert_32f for ARM NEON
+  * Calculate cos in AVX512F
+  * Calculate sin using AVX512F
+  Fixes:
+  * Fix segmentation fault when using GCC 8
+  * Fix python version detection
+  * cmake: Check that 'distutils' is available
+  * c11: Remove pre-C11 preprocessor instructions
+
+-------------------------------------------------------------------
 Thu Dec 17 21:06:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.1
