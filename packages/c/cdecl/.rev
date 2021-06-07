@@ -314,4 +314,12 @@
     <comment>- Update to release 10.0</comment>
     <requestid>895739</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8d1d3319b77f7000918fab54ea71f00c</srcmd5>
+    <version>10.1</version>
+    <time>1623098610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.1</comment>
+    <requestid>897901</requestid>
+  </revision>
 </revisionlist>

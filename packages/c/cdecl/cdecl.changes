@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  6 21:48:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.1
+  * More robust scoped name type checking
+  * More C++ std types
+
+-------------------------------------------------------------------
 Thu May 27 10:07:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0
