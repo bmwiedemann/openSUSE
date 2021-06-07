@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  7 08:48:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.14
+  * improve handling of seed flag in PEX messages
+  * fix issue of accruing unlimited DHT node candidates when DHT
+    is disabled
+  * fix bug in parsing chunked encoding
+  * fix incorrect reporting of active_duration when entering
+    graceful-pause
+  * fix python binding for functions taking string_view
+  * fix python binding for torrent_info constructor overloads
+  * issue python deprecation warnings for some deprecated
+    functions in the python bindings
+  * fix python binding for torrent_info::add_url_seed,
+    add_tracker and add_http_seed
+
+-------------------------------------------------------------------
 Mon Mar 29 06:11:30 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.13
