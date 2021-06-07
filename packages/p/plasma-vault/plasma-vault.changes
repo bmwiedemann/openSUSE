@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:06:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Put "Add New Vault" button in header for System Tray representation
+  * Port to singleton Units for speed and Qt6 compatibility
+  * Remove unnecessary anchor
+  * Use more conventional gridUnit-based sizing
+  * Remove dead code
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * [applet] Allow subtitle to wrap
+  * Remove unused CMake include
+  * [applet] Add "Show in File Manager" action when opened
+  * Manually bind width of list item
+  * Raise minimum CMake version to 3.16
+  * Convert many files to SPDX statements
+  * Add a trailing comma to the last enum item
+  * Add additional checks when creating and deleting vaults
+  * Use versionless Qt cmake target
+
+-------------------------------------------------------------------
 Tue May  4 14:15:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.5

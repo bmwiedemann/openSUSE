@@ -19,15 +19,15 @@
 %define kf5_version 5.58.0
 %bcond_without lang
 Name:           plasma-vault
-Version:        5.21.5
+Version:        5.22.0
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz
+Source:         plasma-vault-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz.sig
+Source1:        plasma-vault-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -77,12 +77,10 @@ Provides:       plasma-vault-backend
 %description backend-cryfs
 This package pulls in dependencies for the plasma-vault cryfs backend.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -95,7 +93,7 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/kf5/kded/
 %dir %{_kf5_plugindir}/plasma/applets
 %{_kf5_plugindir}/plasma/applets/plasma_applet_vault.so
@@ -109,15 +107,13 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %files backend-encfs
-%license COPYING*
+%license LICENSES/*
 
-%if 0%{?suse_version} >= 1500
 %files backend-cryfs
-%license COPYING*
-%endif
+%license LICENSES/*
 
 %changelog
