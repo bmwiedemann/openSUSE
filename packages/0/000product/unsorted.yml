@@ -8068,6 +8068,7 @@ unsorted:
   - kolor-manager 
   - kompare-devel 
   - kompose 
+  - kompose-bash-completion 
   - konkretcmpi-devel 
   - konkretcmpi-python3 
   - konqueror 
@@ -8170,6 +8171,8 @@ unsorted:
   - kst-devel 
   - kstars 
   - kstars-lang 
+  - ksysguard5 
+  - ksysguard5-lang 
   - ktexteditor-32bit: [x86_64] 
   - ktexteditor-devel 
   - ktexteditor-devel-32bit: [x86_64] 
@@ -8405,6 +8408,7 @@ unsorted:
   - latrace 
   - latte-dock 
   - latte-dock-lang 
+  - layer-shell-qt5-devel 
   - lazarus 
   - lbdb 
   - lbreakouthd 
@@ -10107,6 +10111,8 @@ unsorted:
   - libcpuid15 
   - libcpuset-devel 
   - libcpuset1 
+  - libcrc32c-devel 
+  - libcrc32c1 
   - libcreaterepo_c-devel 
   - libcreg-devel 
   - libcreg-tools 
@@ -11608,6 +11614,7 @@ unsorted:
   - libksi1 
   - libksieve-devel 
   - libksysguard5-devel 
+  - libksysguard5-plugins 
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
@@ -14266,7 +14273,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_4 
+  - libvolk2_5 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -20212,6 +20219,7 @@ unsorted:
   - plasma5-applet-suse-prime 
   - plasma5-firewall 
   - plasma5-firewall-lang 
+  - plasma5-integration-devel 
   - plasma5-nano 
   - plasma5-nano-lang 
   - plasma5-phone-components 
@@ -21729,6 +21737,8 @@ unsorted:
   - python36-aws-xray-sdk-requests 
   - python36-axolotl 
   - python36-axolotl-curve25519 
+  - python36-azure-agrifood-farming 
+  - python36-azure-agrifood-nspkg 
   - python36-azure-ai-anomalydetector 
   - python36-azure-ai-formrecognizer 
   - python36-azure-ai-metricsadvisor 
@@ -21768,6 +21778,7 @@ unsorted:
   - python36-azure-communication-chat 
   - python36-azure-communication-nspkg 
   - python36-azure-communication-sms 
+  - python36-azure-confidentialledger 
   - python36-azure-core 
   - python36-azure-core-tracing-opencensus 
   - python36-azure-core-tracing-opentelemetry 
@@ -22548,6 +22559,7 @@ unsorted:
   - python36-google-cloud-kms 
   - python36-google-cloud-speech 
   - python36-google-cloud-translate 
+  - python36-google-crc32c 
   - python36-google-pasta 
   - python36-google-resumable-media 
   - python36-googleapis-common-protos 
@@ -23042,7 +23054,6 @@ unsorted:
   - python36-pampy 
   - python36-pamqp 
   - python36-pan-python 
-  - python36-pandas-ext 
   - python36-pandocfilters 
   - python36-panflute 
   - python36-parallax 
@@ -24501,6 +24512,8 @@ unsorted:
   - python38-aws-xray-sdk-requests 
   - python38-axolotl 
   - python38-axolotl-curve25519 
+  - python38-azure-agrifood-farming 
+  - python38-azure-agrifood-nspkg 
   - python38-azure-ai-anomalydetector 
   - python38-azure-ai-formrecognizer 
   - python38-azure-ai-metricsadvisor 
@@ -24540,6 +24553,7 @@ unsorted:
   - python38-azure-communication-chat 
   - python38-azure-communication-nspkg 
   - python38-azure-communication-sms 
+  - python38-azure-confidentialledger 
   - python38-azure-core 
   - python38-azure-core-tracing-opencensus 
   - python38-azure-core-tracing-opentelemetry 
@@ -25340,6 +25354,7 @@ unsorted:
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
   - python38-google-cloud-translate 
+  - python38-google-crc32c 
   - python38-google-pasta 
   - python38-google-resumable-media 
   - python38-googleapis-common-protos 
@@ -27436,6 +27451,8 @@ unsorted:
   - python39-aws-xray-sdk-requests 
   - python39-axolotl 
   - python39-axolotl-curve25519 
+  - python39-azure-agrifood-farming 
+  - python39-azure-agrifood-nspkg 
   - python39-azure-ai-anomalydetector 
   - python39-azure-ai-formrecognizer 
   - python39-azure-ai-metricsadvisor 
@@ -27475,6 +27492,7 @@ unsorted:
   - python39-azure-communication-chat 
   - python39-azure-communication-nspkg 
   - python39-azure-communication-sms 
+  - python39-azure-confidentialledger 
   - python39-azure-core 
   - python39-azure-core-tracing-opencensus 
   - python39-azure-core-tracing-opentelemetry 
@@ -28301,6 +28319,7 @@ unsorted:
   - python39-google-cloud-kms 
   - python39-google-cloud-speech 
   - python39-google-cloud-translate 
+  - python39-google-crc32c 
   - python39-google-pasta 
   - python39-google-resumable-media 
   - python39-googleapis-common-protos 
@@ -28898,6 +28917,7 @@ unsorted:
   - python39-pan-python 
   - python39-pandas 
   - python39-pandas-datareader 
+  - python39-pandas-ext 
   - python39-pandocfilters 
   - python39-panel 
   - python39-panflute 
@@ -30565,6 +30585,10 @@ unsorted:
   - racket-devel 
   - racket-doc 
   - radamsa 
+  - radare2 
+  - radare2-devel 
+  - radare2-iaito 
+  - radare2-iaito-devel 
   - radcli 
   - radcli-compat-devel 
   - radcli-devel 

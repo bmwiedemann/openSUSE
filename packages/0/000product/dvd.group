@@ -1290,10 +1290,11 @@
     <package name="ksshaskpass5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ksudoku" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ksudoku-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ksysguard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ksysguard5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ksysguardsystemstats-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ksystemlog" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ksystemlog-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ksystemstats5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ksystemstats5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kteatime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kteatime-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ktexteditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1326,6 +1327,7 @@
     <package name="kwordquiz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwrited5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lame" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ldns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="lensfun-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="less" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -1509,6 +1511,7 @@
     <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKSysGuardSystemStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKUserFeedbackCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKWaylandServer5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2182,7 +2185,6 @@
     <package name="libksieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksieve-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libksysguard5-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libktorrent-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
