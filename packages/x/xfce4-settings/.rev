@@ -399,4 +399,20 @@
     <comment></comment>
     <requestid>884801</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bd56e5280fa91948b18f0ba3e623f85f</srcmd5>
+    <version>4.16.2</version>
+    <time>1623268345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.2
+  - keyboard: Mark system defaults switch as active 
+    (gxo#xfce/xfce4-settings#310 and boo#1181263)
+  - keyboard: Correctly initialize setting 
+    (gxo#xfce/xfce4-settings#310 and boo#1181263)
+  - keyboard: Fix icon name in settings dialog
+  - keyboard: Make buttons translatable (gxo#xfce/xfce4-settings#306)
+  - xfsettingsd: Fix setting float array properties
+  - Translation Updates (forwarded request 898283 from mauriziogalli)</comment>
+    <requestid>898287</requestid>
+  </revision>
 </revisionlist>
