@@ -143,4 +143,12 @@
     <comment></comment>
     <requestid>869927</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a2fa60872289b7eefe6aaf876ffde4a1</srcmd5>
+    <version>3.3.1</version>
+    <time>1623268334</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requirement version (forwarded request 898235 from alois)</comment>
+    <requestid>898236</requestid>
+  </revision>
 </revisionlist>

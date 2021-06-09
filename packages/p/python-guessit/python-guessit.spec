@@ -30,13 +30,13 @@ BuildRequires:  %{python_module babelfish >= 0.5.5}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 2.0.0}
+BuildRequires:  %{python_module rebulk >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.5.5
 Requires:       python-python-dateutil
-Requires:       python-rebulk >= 2.0.0
+Requires:       python-rebulk >= 3.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
