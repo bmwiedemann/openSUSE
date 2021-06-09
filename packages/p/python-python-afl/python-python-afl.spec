@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-afl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-python-afl
 Version:        0.7.3
 Release:        0
@@ -35,14 +34,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       afl >= 2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # name with _ automatically redirected by pypi to name with -
 Provides:       python-python_afl
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  afl >= 2
 BuildRequires:  procps
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -66,11 +66,9 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_bindir}/py-afl-cmin
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
 rm tests/test_cmin.py tests/test_fuzz.py tests/test_showmap.py tests/test_tmin.py
-%python_exec setup.py test
-%endif
+%pytest_arch
 
 %post
 %python_install_alternative py-afl-tmin
