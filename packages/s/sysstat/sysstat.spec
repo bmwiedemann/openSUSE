@@ -122,6 +122,8 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 
 %post
 %service_add_post sysstat.service sysstat-collect.timer sysstat-summary.timer
+# Earlier versions used cron, remove leftover
+rm -f /etc/cron.d/sysstat || :
 
 %preun
 %service_del_preun sysstat.service sysstat-collect.timer sysstat-summary.timer

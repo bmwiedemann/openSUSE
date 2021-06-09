@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 07:18:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove stale symlink to cronfile on update
+
+-------------------------------------------------------------------
 Thu Feb 18 22:34:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.3:
