@@ -480,4 +480,12 @@
     <comment>- Update to version 40.1 (forwarded request 889878 from mgorse)</comment>
     <requestid>890095</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>243cdd9b760f98959cb5e1ff89d98cb4</srcmd5>
+    <version>40.2</version>
+    <time>1623268293</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 897400 from iznogood)</comment>
+    <requestid>897536</requestid>
+  </revision>
 </revisionlist>
