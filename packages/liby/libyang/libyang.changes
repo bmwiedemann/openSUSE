@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun  5 13:10:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.240
+  Main changes of this release are:
+  * config deviation fixes
+  * state leaf-list validation fixes
+  * XPath derived-from() fixes
+  * minor memory problems fixes
+  * other minor bugfixes
+- Update to version 1.0.225
+  * bugfixes in various parts of the library
+- Update to version 1.0.215
+  Main changes of this release are:
+  * JSON printer bugfixes
+  * data validation fixes
+  * minor XPath optimizations
+  * C++ bindings improvements
+  * many other minor bugfixes
+
+-------------------------------------------------------------------
 Sat Aug  1 13:45:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.184
