@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  9 13:07:34 UTC 2021 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.4
+  * Added build support for libayatana-indicator as alternative to libappindicator (fixes issue #39).
+  * Added invisible tooltips to action buttons in headerbar for screen readers and applications like Plotinus.
+  * Tweaked action area margins for dialogs without headerbar.
+  * Added Control+? accelerator for opening the shortcuts window.
+  * Retired application menu and reorganized the primary menu to follow GNOME HIG.
+  * Improved init system detection for systemctl by checking if the system has actually been booted with systemd (fixes issues #35 and #36).
+  * Dropped support for gksu(do), gnomesu and kdesu(do) to gain super user privileges.
+  * Removed dconf migration for settings in old schema location.
+  * Fixed build warnings about deprecated methods and error handling.
+  * Updated Ukrainian translation.
+
+-------------------------------------------------------------------
 Sat Oct  3 15:46:30 UTC 2020 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.3
