@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  5 13:30:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.3
+  * Add ULFIUS_CHECK_VERSION macro.
+  * Add struct _websocket_manager.keep_messages flag.
+  * Add struct _u_response.free_shared_data and
+    ulfius_set_response_shared_data.
+
+-------------------------------------------------------------------
 Thu Mar 11 17:03:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Adjust BR: liborcania >= 2.1.1 is needed.
