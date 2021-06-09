@@ -16,15 +16,15 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name lua-compat-5.3
 
 # bit32 (dropped in 5.4) is the native Lua 5.2 bit manipulation library, in the version
 # from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
-%if "%{flavor}" == "lua54" 
-%bcond_without bit32
-%else
+%if "%{lua_version}" >= "5.4" 
 %bcond_with bit32
+%else
+%bcond_without bit32
 %endif
 
 Version:        0.9
@@ -38,19 +38,29 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 Requires:       %{flavor}
+%if %{without bit32}
+Requires:       %{flavor}-bit32
+%endif
 %lua_provides -e
 %if "%{flavor}" == ""
 Name:           lua-compat-5.3
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-compat-5.3
-%if %{with bit32}
-Provides:       %{flavor}-bit32
-%endif
 %endif
 
 %description
 This package provides terminal operations for Lua
+
+%if %{without bit32}
+%package -n %{flavor}-bit32
+Summary:        Lua bit manipulation library
+Group:          Development/Libraries/Other
+
+%description -n %{flavor}-bit32
+bit32 is the native Lua 5.2 bit manipulation library, in the version
+from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
+%endif
 
 %prep
 %autosetup -n %{mod_name}-%{version}
@@ -60,28 +70,39 @@ export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --
 if [ "x${EXTERNAL:-}" = xtrue ]; then
     export DEF="-DCOMPAT53_PREFIX=compat53" SRC="c-api/compat-5.3.c"
 fi
-${CC} ${CFLAGS} -Iinclude ${DEF} -shared -o testmod.so tests/testmod.c ${SRC}
-gcc ${CFLAGS} -Iinclude ${DEF} -shared -o compat53.so ltablib.c lutf8lib.c lstrlib.c ${SRC}
+gcc ${CFLAGS} -Iinclude ${DEF} -shared -o utf8.so lutf8lib.c
+gcc ${CFLAGS} -Iinclude ${DEF} -shared -o table.so ltablib.c
+gcc ${CFLAGS} -Iinclude ${DEF} -shared -o string.so lstrlib.c
 
-%if %{with bit32}
+%if %{without bit32}
 ${CC} ${CFLAGS} -Iinclude -DLUA_COMPAT_BITLIB -shared -o bit32.so lbitlib.c
 %endif
 
 %install
-install -v -m 0644 -D -p -t %{buildroot}%{lua_incdir}/c-api/ c-api/*
-install -v -m 0644 -p -t %{buildroot}%{lua_incdir} lprefix.h
+mkdir -p %{buildroot}%{lua_archdir}/compat53
+install -Dm0644 utf8.so %{buildroot}%{lua_archdir}/compat53
+install -Dm0644 table.so %{buildroot}%{lua_archdir}/compat53
+install -Dm0644 string.so %{buildroot}%{lua_archdir}/compat53
+mkdir -p %{buildroot}%{lua_noarchdir}/compat53
+install -Dm0644 compat53/* %{buildroot}%{lua_noarchdir}/compat53
+mkdir -p %{buildroot}%{lua_incdir}/c-api
+install -Dm0644 c-api/* %{buildroot}%{lua_incdir}/c-api
+install -Dm0644 lprefix.h %{buildroot}%{lua_incdir}
 
-install -v -D -m 0644 -p -t %{buildroot}%{lua_archdir} testmod.so
-cp -v -r -p compat53.so %{buildroot}%{lua_archdir}
-
-%if %{with bit32}
+%if %{without bit32}
 install -v -m 0644 -D -p -t %{buildroot}%{lua_archdir} bit32.so
 %endif
 
 %files
 %license LICENSE
 %doc README.md
-%{lua_archdir}/*.so
+%{lua_archdir}/compat53
+%{lua_noarchdir}/compat53
 %{lua_incdir}/*
+
+%if %{without bit32}
+%files -n %{flavor}-bit32
+%{lua_archdir}/bit32.so
+%endif
 
 %changelog
