@@ -1028,4 +1028,12 @@
     <comment>- Update to version 0.52.3: (forwarded request 889853 from mgorse)</comment>
     <requestid>890092</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2f68fc69f7daf31b4fed645fb660b364</srcmd5>
+    <version>0.52.4</version>
+    <time>1623268293</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 897399 from iznogood)</comment>
+    <requestid>897535</requestid>
+  </revision>
 </revisionlist>
