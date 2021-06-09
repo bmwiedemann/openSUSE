@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.13
+Version:        1.4.14
 Release:        0
 Summary:        Logging library written in C
 # Example programs in subfolder examples/ are licensed under MIT
@@ -63,9 +63,8 @@ Development and header files for yder.
 %setup -q
 
 %build
-%cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=/
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
 %cmake_install
