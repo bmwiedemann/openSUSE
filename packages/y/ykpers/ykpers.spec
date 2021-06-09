@@ -1,7 +1,7 @@
 #
 # spec file for package ykpers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,12 +62,12 @@ sed -i 's|--device=$env{DEVNAME}"|--device=$env{DEVNAME}" GROUP="users"|g' 70-yu
 sed -i 's|^const char|extern const char|g' ykpers-args.h
 
 %build
-%configure --disable-static --with-pic \
+%configure --disable-static \
     --with-udevrulesdir=%{_udevrulesdir} \
     --with-backend=libusb-1.0 --without-libusb-prefix
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags} V=1
+%make_build V=1
 
 %install
 %make_install

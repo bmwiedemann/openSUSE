@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:36:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+
+-------------------------------------------------------------------
 Mon Jun  8 06:59:22 UTC 2020 - Torsten Gruner <t.gruner@katodev.de>
 
 - Fix build with gcc 10 [gh#Yubico/yubikey-personalization#155]
