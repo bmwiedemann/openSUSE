@@ -661,4 +661,12 @@
     <comment>Update to 1.8.14 (forwarded request 886293 from dimstar)</comment>
     <requestid>887493</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>45359b9c435965d9d4a869b7ede8c6d6</srcmd5>
+    <version>1.8.14</version>
+    <time>1623268291</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using systemd-sysusers (forwarded request 897180 from gmbr3)</comment>
+    <requestid>897532</requestid>
+  </revision>
 </revisionlist>
