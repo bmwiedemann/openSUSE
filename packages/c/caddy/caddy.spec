@@ -18,7 +18,7 @@
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS 
 License:        Apache-2.0
@@ -53,8 +53,7 @@ the OSI model, though it has the ability to work with other layers.
 %{goprep} %{project}
 
 # tarball causes "inconsistent vendoring"
-tar -xf vendor.tar.gz
-rm -rf vendor.tar.gz
+tar -xf %{SOURCE1}
 
 CGO_ENABLED=0
 

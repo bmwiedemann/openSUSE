@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Mon May 24 12:55:21 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.1:
+  * logging: Implement dial timeout for net writer (fix #4083) (#4172)
+  * admin: Reinstate internal redirect for /id/ requests
+  * caddyfile: Add parse error on site address with trailing `{` (#4163)
+  * reverseproxy: Set the headers in the replacer before `handle_response` (#4165)
+  * ci: Run CI on PRs targeting minor version branches (#4164)
+  * cmd: upgrade: inherit the permissions of the original executable (#4160)
+  * httpcaddyfile: Fix automation policy consolidation again (fix #4161)
+  * caddyfile: Fix `caddy fmt` nesting not decrementing (#4157)
+  * encode: Drop `prefer` from Caddyfile (#4156)
+  * encode: Default to order the formats are enabled for `prefer` in Caddyfile (#4151)
+  * caddytls: Run replacer on ask URL, for env vars (#4154)
+  * httpcaddyfile: Add `grace_period` global option (#4152)
+  * caddyhttp: Fix fallback for the error handler chain (#4131)
+  * reverseproxy: Minor logging improvements
+  * fileserver: Fix `file` matcher with empty `try_files` (#4147)
+  * go.mod: CertMagic v0.13.1
+  * reverseproxy: Add `handle_response` blocks to `reverse_proxy` (#3710) (#4021)
+  * cmd: Add --envfile flag to `start` command (#4141)
+  * httpcaddyfile: Add `auto_https ignore_loaded_certs` (#4077)
+  * httpcaddyfile: Add global option for `storage_clean_interval` (#4134)
+  * caddyhttp: performance improvement in HeaderRE Matcher (#4143)
+  * fileserver: Share template logic for both `templates` and `file_server browse` (#4093)
+  * caddytls: Implement remote IP connection matcher (#4123)
+  * httpcaddyfile: Fix unexpectedly removed policy (#4128)
+  * reverseproxy: fix hash selection policy (#4137)
+  * fileserver: Better handling of HTTP status override (#4132)
+  * caddyfile: Fix `import` replacing unrelated placeholders (#4129)
+  * caddytls: Add `load_storage` module (#4055)
+  * reverseproxy: Admin endpoint for reporting upstream statuses (#4125)
+  * caddyhttp: Implement better logic for inserting the HTTP->HTTPS redirs (#4033)
+  * httpcaddyfile: Take into account host scheme/port (fix #4113)
+  * fuzz: fix the FuzzFormat comparison (#4117)
+  * caddytls: Disable OCSP stapling for manual certs (#4064)
+  * caddytls: Configurable storage clean interval
+  * caddyfile: reject cyclic imports (#4022)
+  * ci: fuzz: add 4 more fuzzing targets (#4105)
+  * fileserver: Add status code override (#4076)
+  * notify: Send all sd_notify signals from main caddy process (#4060)
+  * go.mod: Update quic-go to v0.20.1 (#4075)
+  * httpcaddyfile: Fix panic in automation policy consolidation (#4104)
+  * caddyfile: Normalize line endings before comparing fmt result (#4103)
+  * ci: accommodate go1.16 changes to go mod (#4102)
+  * Minor tweaks
+  * go.mod: Use latest CertMagic
+  * Use 600 instead of 644 for UUID file
+  * Change os to ioutil for now
+  * reverseproxy: Set cookie path to `/` when using cookie lb_policy (#4096)
+  * caddy: Add InstanceID() method
+  * encode,staticfiles: Content negotiation, precompressed files (#4045)
+  * reverseproxy: Implement health_uri, deprecate health_path, supports query (#4050)
+  * go.mod: Migrate to golang.org/x/term (#4073)
+  * caddyhttp: improve grammar of comment for AllowH2C (#4072)
+  * sigtrap_posix: add missing comma to SIGTERM info (#4078)
+  * cmd: Use formatted logger for config adapter warnings (#4080)
+  * cmd: main: fix minor doc typos (#4082)
+  * headers: Fix Caddyfile parsing for `request_header` with matchers (#4085)
+  * .gitignore: add IDE files (#4087)
+  * fileserver: Add a few more debug lines (#4063)
+  * fileserver: Browse listing supports dark mode (#4066)
+  * CONTRIBUTING: fix spelling (#4070)
+  * httpcaddyfile: Add `error` directive for the existing handler (#4034)
+  * logging: add replace filter for static value replacement (#4029)
+  * caddyconfig: add global option for configuring loggers (#4028)
+  * map: Accept regex substitution in outputs (#3991)
+  * reverseproxy: Fix upstreams with placeholders with no port (#4046)
+  * rewrite: Implement regex path replacements
+  * fileserver: Don't replace in request paths (fix #4027)
+  * caddypki: Add SignWithRoot option for ACME server
+  * reverseproxy: Fix round robin data race (#4038)
+  * Update docs; commit setcap.sh
+  * go.mod: Latest CertMagic (updated libdns conventions)
+  * core: Initialize logging before admin
+  * caddytls: Remove old asset migration code (close #3894)
+  * reverseproxy: Add duration/latency placeholders (close #4012) (#4013)
+  * httpcaddyfile: Fix catch-all site block sorting
+  * ci: Build and test on Go 1.16, bump minimum to 1.15 (#4024)
+  * caddy: Support SetReadBuffer and SyscallConn for QUIC (fix #3998)
+  * Improve security warnings
+  * httpcaddyfile: Configure other apps from global options (#3990)
+  * cmd: Clean up `build-info` and `upgrade` output
+  * caddyhttp: Support placeholders in header matcher values (close #3916)
+  * caddytls: Save email with account if not already specified
+  * reverseproxy: Response buffering & configurable buffer size
+  * httpcaddyfile: Fix automation policies
+  * ci: deflake integration tests (#3966)
+  * httpcaddyfile: Add resolvers subdir of tls (close #4008)
+  * acmeserver: Support custom CAs from Caddyfile
+  * caddyhttp: Check for invalid subdirectives of static_response
+  * httpcaddyfile: Fix default issuers when email provided
+  * cmd: Add --force flag to reload command (close #4005)
+  * httpcaddyfile: Warn if site address uses unspecified IP (close #4004)
+  * httpcaddyfile: Sort catch-all site blocks properly (fix #4003)
+  * ci: update the command to run tests on the s390x machine (#3995)
+  * caddyhttp: Fix redir html status code, improve flow (#3987)
+  * caddyhttp: Implement handler abort; new 'abort' directive (close #3871) (#3983)
+  * admin: Identity management, remote admin, config loaders (#3994)
+  * caddycmd: Add upgrade command (#3972)
+  * Revert "requestbody: Allow overwriting remote address"
+  * caddytest: Update Caddyfile tests for formatting, HTTP-only blocks
+  * httpcaddyfile: Skip TLS APs for HTTP-only hosts (fix #3977)
+  * cmd: Print more detailed version with --environ
+  * map: Add missing json struct tag
+  * tests: use actual admin port value in error message (#3973)
+  * cmd: Implement sd_notify() to notify systemd about readiness (#3963)
+  * templates: Add fileExists and httpError template actions
+  * requestbody: Allow overwriting remote address
+  * rewrite: Use RawPath instead of Path (fix #3596) (#3918)
+  * Update docs
+  * caddytls: Configurable OCSP stapling; global option (closes #3714)
+  * logging: Remove logfmt encoder (close #3575)
+  * httpcaddyfile: Support repeated use of cert_issuer global option
+  * caddytls: add 'key_type' subdirective (#3956)
+  * caddyfile: Refactor unmarshaling of module tokens
+  * go.mod: Update CertMagic and acmez (improved IDN support)
+  * reverseproxy: Caddyfile health check headers, host header support (#3948)
+  * httpcaddyfile: Adjust iterator when removing AP (fix #3953)
+  * cmd: Organize list-modules output; --packages flag (#3925)
+  * caddyfile: Introduce basic linting and fmt check (#3923)
+
+-------------------------------------------------------------------
 Wed Apr 28 15:47:43 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Create Caddy package 
