@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 13:00:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Refer to an existing tag in org.opensuse.reference
+
+-------------------------------------------------------------------
 Wed Sep  2 11:30:06 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - add %PKG_VERSION%-1 tag to work with hardcoded kubernetes tag requirements
