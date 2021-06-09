@@ -17,7 +17,7 @@
 
 
 Name:           qtfm
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Qt File Manager
 License:        GPL-2.0-or-later AND BSD-3-Clause

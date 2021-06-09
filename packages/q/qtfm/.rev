@@ -76,4 +76,17 @@
     <comment></comment>
     <requestid>892047</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa0524f9ac5e9d396954e5ef3157eaf4</srcmd5>
+    <version>6.2.1</version>
+    <time>1623268337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.1:
+  * fix remove symlink bug
+  * fix build with Qt 5.15
+  * fix memory leak
+  * fix for &quot;.&quot; start path
+  * fix .desktop key/value parser</comment>
+    <requestid>898263</requestid>
+  </revision>
 </revisionlist>

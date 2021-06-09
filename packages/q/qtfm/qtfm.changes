@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  8 06:28:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.1:
+  * fix remove symlink bug
+  * fix build with Qt 5.15
+  * fix memory leak
+  * fix for "." start path
+  * fix .desktop key/value parser
+
+-------------------------------------------------------------------
 Sat May  8 16:31:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 6.2.0:
