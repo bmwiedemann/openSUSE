@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  3 00:12:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop useless ldconfig dependencies for the paraview.rpm
+  main package, there are no standard location shared libs in it.
+
+-------------------------------------------------------------------
 Wed Jun  2 19:40:42 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add paraview-gcc11-limits.patch: Include limits header wherever

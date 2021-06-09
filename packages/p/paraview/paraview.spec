@@ -113,11 +113,8 @@ BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-plugins
 Requires:       gnuplot
 Requires:       graphviz
-Requires(post): /sbin/ldconfig
-Requires(postun):/sbin/ldconfig
 # Disable on aarch64 since GLES isn't supported for bundled vtk but is needed for paraview
 ExcludeArch:    aarch64
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 ParaView is a data analysis and visualization application for
