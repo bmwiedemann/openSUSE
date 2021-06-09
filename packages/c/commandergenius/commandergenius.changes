@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  5 10:41:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.1
+  * More Keen Galaxy engine fixes
+  * Menu fixes
+
+-------------------------------------------------------------------
 Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - %cmake_build is now the recommended way to build cmake projects
