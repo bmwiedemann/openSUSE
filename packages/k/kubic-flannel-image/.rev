@@ -37,4 +37,12 @@
   arguments: kiwi does this implicit now. (forwarded request 811748 from dimstar)</comment>
     <requestid>811759</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2810f3891f0e2948e4ad1a9b4cdf0aff</srcmd5>
+    <version>5.0.0</version>
+    <time>1623268286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897460</requestid>
+  </revision>
 </revisionlist>
