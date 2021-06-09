@@ -1,7 +1,7 @@
 #
 # spec file for package guake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-tools
 BuildRequires:  gobject-introspection
-BuildRequires:  pandoc
 BuildRequires:  python3-pbr
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
@@ -81,9 +80,8 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %{_datadir}/applications/guake-prefs.desktop
 %{_datadir}/applications/guake.desktop
 %{_datadir}/glib-2.0/schemas/org.guake.gschema.xml
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/guake.appdata.xml
-%{_datadir}/pixmaps/
+%{_datadir}/pixmaps/guake.png
 %{_datadir}/guake/
 
 %files lang -f %{name}.lang
