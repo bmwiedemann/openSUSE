@@ -68,6 +68,7 @@
 %bcond_without rubberband
 %bcond_without soxr
 %bcond_without zmq
+%bcond_without vulkan
 %else
 %bcond_with libaom
 %bcond_with mysofa
@@ -80,6 +81,7 @@
 %bcond_with rubberband
 %bcond_with soxr
 %bcond_with zmq
+%bcond_with vulkan
 %endif
 
 %if 0%{?suse_version} >= 1500
@@ -96,7 +98,7 @@
 Name:           ffmpeg-4
 Version:        4.4
 Release:        0
-Summary:        Library for working with various multimedia formats
+Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://ffmpeg.org/
@@ -123,6 +125,11 @@ BuildRequires:  libmysofa-devel
 %endif
 BuildRequires:  nasm
 BuildRequires:  pkg-config
+%ifarch x86_64
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(SvtAv1Enc) >= 0.8.4
+%endif
+%endif
 BuildRequires:  pkgconfig(alsa)
 %if %{with libaom}
 BuildRequires:  pkgconfig(aom)
@@ -194,6 +201,9 @@ BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vdpau)
 %if %{with vidstab}
 BuildRequires:  pkgconfig(vidstab) >= 0.98
+%endif
+%if %{with vulkan}
+BuildRequires:  pkgconfig(vulkan)
 %endif
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
@@ -613,6 +623,9 @@ LDFLAGS="%_lto_cflags" \
 	--enable-avresample \
 	--enable-gnutls \
 	--enable-ladspa \
+%if %{with vulkan}
+	--enable-vulkan \
+%endif
 %if ! %{with cuda_sdk}
 	--disable-cuda-sdk \
 %endif
@@ -652,6 +665,11 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %if %{with rubberband}
 	--enable-librubberband \
+%endif
+%ifarch x86_64
+%if 0%{?suse_version} >= 1550
+	--enable-libsvtav1 \
+%endif
 %endif
 %if %{with soxr}
 	--enable-libsoxr \

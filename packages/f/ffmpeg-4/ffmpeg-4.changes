@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  4 12:29:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable SVT-AV1 encoding
+
+-------------------------------------------------------------------
+Thu May 20 23:16:09 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Enable vulkan on on Leap 15 
+
+-------------------------------------------------------------------
 Fri Apr 16 10:20:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable libdavd1 on Leap 15.2+ [boo#1184830]

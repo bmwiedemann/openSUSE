@@ -392,4 +392,12 @@
 - Update to release 4.4</comment>
     <requestid>886260</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>27ce50256e6e4490a99462e91e0a6598</srcmd5>
+    <version>4.4</version>
+    <time>1623268300</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable SVT-AV1 encoding</comment>
+    <requestid>897550</requestid>
+  </revision>
 </revisionlist>
