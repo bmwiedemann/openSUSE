@@ -34,6 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-setuptools
+# Provide PyPi module name according to openSUSE singlespec naming policy
+Provides:       python-ConfigArgParse = %{version}
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python2-devel
