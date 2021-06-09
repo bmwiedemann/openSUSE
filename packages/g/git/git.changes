@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun  6 15:30:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.32.0:
+  * ".gitattributes", ".gitignore", and ".mailmap" files that are
+    symbolic links are ignored
+  * "git apply --3way" used to first attempt a straight
+    application, and only fell back to the 3-way merge algorithm
+    when the straight application failed.  Starting with this
+    version, the command will first try the 3-way merge algorithm
+    and only when it fails (either resulting with conflict or the
+    base versions of blobs are missing), falls back to the usual
+    patch application.
+  * "git stash show" can now show the untracked part of the stash
+  * Improved "git repack" strategy
+  * http code can now unlock a certificate with a cached password
+    respectively.
+  * "git clone --reject-shallow" option fails the clone as soon as
+    we notice that we are cloning from a shallow repository.
+  * "gitweb" learned "e-mail privacy" feature
+  * Multiple improvements to output and configuration options
+  * Bug fixes and developer visible fixes
+
+-------------------------------------------------------------------
 Thu Apr 22 13:28:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Remove deprecated "syslog" option from git-daemon.service (bsc#1185147)

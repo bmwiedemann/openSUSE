@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.31.1
+Version:        2.32.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -74,10 +74,6 @@ BuildRequires:  perl-Error
 BuildRequires:  perl-MailTools
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
-%if 0%{?suse_version} >= 1500
-BuildRequires:  system-user-nobody
-BuildRequires:  sysuser-tools
-%endif
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -91,6 +87,10 @@ Recommends:     git-svn
 Recommends:     gitk
 Suggests:       git-daemon
 Suggests:       git-web
+%if 0%{?suse_version} >= 1500
+BuildRequires:  system-user-nobody
+BuildRequires:  sysuser-tools
+%endif
 %if %{with docs}
 BuildRequires:  sgml-skel
 BuildRequires:  xmlto
@@ -126,12 +126,12 @@ CVS, and GNU arch.
 Summary:        Core git tools
 Group:          Development/Tools/Version Control
 Requires:       less
+Obsoletes:      git-remote-helpers < %{version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       openssh-clients
 %else
 Requires:       openssh
 %endif
-Obsoletes:      git-remote-helpers < %{version}
 
 %description core
 Git is a fast, scalable, distributed revision control system with an
@@ -143,8 +143,8 @@ These are the core tools with minimal dependencies.
 %package -n perl-Git
 Summary:        perl Bindings for Git
 Group:          Development/Libraries/Perl
-Provides:       git-core:%{perl_vendorlib}/Git
 Requires:       perl-Error
+Provides:       git-core:%{perl_vendorlib}/Git
 %{perl_requires}
 
 %description -n perl-Git
@@ -246,6 +246,8 @@ Email interface for the GIT version control system.
 %package daemon
 Summary:        Simple Server for Git Repositories
 Group:          Development/Tools/Version Control
+Requires:       git-core = %{version}
+Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} >= 1550
 Requires(pre):  group(nobody)
 %sysusers_requires
@@ -254,8 +256,6 @@ Requires(pre):  group(nobody)
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  shadow
 %endif
-Requires:       git-core = %{version}
-Requires(pre):  %fillup_prereq
 
 %description daemon
 A really simple TCP git daemon. In the default configuration it allows
@@ -267,7 +267,7 @@ Summary:        Git revision tree visualiser
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
-Supplements:    packageand(git-core:tk)
+Supplements:    (git-core and tk)
 
 %description -n gitk
 Grapical tool for visualization of revision trees of projects
@@ -282,7 +282,7 @@ Summary:        Grapical tool for common git operations
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
-Supplements:    packageand(git-core:tk)
+Supplements:    (git-core and tk)
 
 %description gui
 A Tcl/Tk based graphical user interface to Git. git-gui focuses on
@@ -300,7 +300,7 @@ Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       perl-CGI
 Requires:       perl-Git = %{version}
-Supplements:    packageand(git-core:apache2)
+Supplements:    (git-core and apache2)
 
 %description web
 CGI script that allows browsing git repositories via web interface.
@@ -548,8 +548,8 @@ fi
 %{_sysconfdir}/apparmor.d
 %{gitexecdir}//git-instaweb
 %{gitexecdir}//git-web--browse
-%{_mandir}/man1/*web*1*
-%{_mandir}/man5/*web*5*
+%{_mandir}/man1/*web*1%{?ext_man}
+%{_mandir}/man5/*web*5%{?ext_man}
 
 %files core -f bin-man-doc-files
 %license COPYING

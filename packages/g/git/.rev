@@ -2317,4 +2317,12 @@ git 2.12.3
     <comment>- add suse-use-builtin-add-interactive.patch (jsc#SLE-17838)</comment>
     <requestid>892021</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>03d8351b025bd3f59f6ba1b5b5dd2503</srcmd5>
+    <version>2.32.0</version>
+    <time>1623268491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897976</requestid>
+  </revision>
 </revisionlist>
