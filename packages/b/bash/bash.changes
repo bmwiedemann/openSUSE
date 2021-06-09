@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 28 13:53:55 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use well defined HOSTTYPE, as well as OS, VENDOR, and MACHTYPE (boo#1186296)
+
+-------------------------------------------------------------------
 Wed May  5 14:59:54 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch bash51-005
