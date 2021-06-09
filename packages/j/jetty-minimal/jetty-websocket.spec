@@ -1,5 +1,5 @@
 #
-# spec file for package jetty-websocket
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20210413
+%global addver  .v20210604
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-websocket
-Version:        9.4.40
+Version:        9.4.42
 Release:        0
 Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0

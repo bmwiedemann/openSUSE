@@ -63,4 +63,12 @@
     <comment>Security fixes</comment>
     <requestid>893309</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4b47a99c06b58d7c7c5ab4e0edd45dc2</srcmd5>
+    <version>9.4.42</version>
+    <time>1623268386</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes + some missing bug numbers</comment>
+    <requestid>898823</requestid>
+  </revision>
 </revisionlist>
