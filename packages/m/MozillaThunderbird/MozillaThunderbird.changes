@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 29 08:14:38 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.11.0
+  * OpenPGP could not be disabled for an account if a key was
+    previously configured
+  * Recipients were unable to decrypt some messages when the sender
+    had changed the message encryption from OpenPGP to S/MIME
+  * Contacts moved between CardDAV address books were not synced to
+    the new server
+  * CardDAV compatibility fixes for Google Contacts
+  MFSA 2021-26 (bsc#1186696)
+  * CVE-2021-29964 (bmo#1706501)
+    Out of bounds-read when parsing a `WM_COPYDATA` message
+  * CVE-2021-29967 (bmo#1602862, bmo#1703191, bmo#1703760,
+    bmo#1704722, bmo#1706041)
+    Memory safety bugs fixed in Thunderbird 78.11
+- renewed expired mozilla.keyring
+
+-------------------------------------------------------------------
 Fri May 14 08:58:19 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.10.2
@@ -16,10 +35,10 @@ Fri May 14 08:58:19 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
   * Mail toolbar buttons were too big when displaying both icons
     and text
   MFSA 2021-22
-  * CVE-2021-29956 (bmo#1710290)
+  * CVE-2021-29956 (boo#1186199, bmo#1710290)
     Thunderbird stored OpenPGP secret keys without master password
     protection
-  * CVE-2021-29957 (bmo#1673241)
+  * CVE-2021-29957 (boo#1186198, bmo#1673241)
     Partial protection of inline OpenPGP message not indicated
 - do not rely on nodejs10 explicitely
 

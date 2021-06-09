@@ -3658,4 +3658,29 @@ I cannot test locally unfortunately.
 - do not rely on nodejs10 explicitely</comment>
     <requestid>894215</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>8f3061d0f0d918837ada61386d9e6ee0</srcmd5>
+    <version>78.11.0</version>
+    <time>1623268262</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.11.0
+  * OpenPGP could not be disabled for an account if a key was
+    previously configured
+  * Recipients were unable to decrypt some messages when the sender
+    had changed the message encryption from OpenPGP to S/MIME
+  * Contacts moved between CardDAV address books were not synced to
+    the new server
+  * CardDAV compatibility fixes for Google Contacts
+  MFSA 2021-26 (bsc#1186696)
+  * CVE-2021-29964 (bmo#1706501)
+    Out of bounds-read when parsing a `WM_COPYDATA` message
+  * CVE-2021-29967 (bmo#1602862, bmo#1703191, bmo#1703760,
+    bmo#1704722, bmo#1706041)
+    Memory safety bugs fixed in Thunderbird 78.11
+- renewed expired mozilla.keyring
+
+  * CVE-2021-29956 (boo#1186199, bmo#1710290)
+  * CVE-2021-29957 (boo#1186198, bmo#1673241)</comment>
+    <requestid>897289</requestid>
+  </revision>
 </revisionlist>
