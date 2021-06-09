@@ -18,7 +18,7 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.52
+Version:        4.53
 Release:        0
 Summary:        Handle Common Gateway Interface requests and responses
 License:        Artistic-2.0

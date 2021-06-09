@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  4 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.53
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.53 2021-06-03
+
+      [ FIX ]
+      - fix typo in passing of max-age to CGI::Cookie (GH #247)
+
+-------------------------------------------------------------------
 Wed May  5 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.52
