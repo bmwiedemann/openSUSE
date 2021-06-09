@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:08:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.2
+  Closed issues:
+  * Error occurred:
+    VagrantPlugins::ProviderLibvirt::Action::HandleBoxImage::Open3
+- Update to version 0.5.1
+  Closed issues:
+  * Value for "owner" vagrant option ends up as value for
+    "access" libvirt option.
+  Merged pull requests:
+  * Provide Vagrantfile path in description by default.
+  * Vagrant up expects machine data_dir to exist afterwards.
+  * Handle extraction of keyfile from uri.
+  * Handle custom port for remote libvirt.
+  * add support for boot 'network' from a vagrant public_network.
+- Update to version 0.5.0
+  Major changes
+  * Switch to use the vagrant built-in WaitForCommunicator action
+    for SSH access. This may impact any action or trigger that was
+    relying on WaitTillUp before attempting SSH.
+  * Experiemental support for multi disk VMs using a new box format
+  Fixed bugs:
+  * vagrant destroy -f does not delete all metadata.
+  Closed issues:
+  * Error occurred:
+    uninitialized constant VagrantPlugins::GuestLinux::Guest.
+  * vagrant halt -f doesn't work as expected.
+  * Updating vagrant-libvirt from 0.3 to 0.4.1 fails because new
+    version cannot be "activated".
+  * undefined method `name' for nil:NilClass (NoMethodError): Image
+    remove fails if vm contains cdrom.
+  * vagrant-libvirt plugin won't install on ARM64.
+  * [Question] Failed to connect socket to
+    '/var/run/libvirt/libvirt-sock-ro': No such file or directory.
+  * Unusual disk image size created.
+  * Ruby Gem rexml not builted-in.
+  * vagrant destroy crashes due to nil volume in the domain.volumes
+    collection.
+  * libvirt__network_name doesn't work.
+  * vagrant-libvirt no connection to REMOTE Provider after reboot.
+  * verify the unit tests pass with rspec: 25 examples,23 failures
+  Merged pull requests:
+  * Make disks attribute path required check for name collisions.
+  * Ensure state is correct reflected in global-status.
+  * Invert forward ssh port behaviour.
+  * Ensure state is fully removed for destroy.
+  * Adjust forwarded ports test to include other network.
+  * Enable forward ssh-port to host.
+  * Exclude LIBVIRT_DEFAULT_URI from impacting tests.
+  * Since Ruby 3.0 rexml needs to be required.
+  * Corrections to two test testing tool.
+  * Bugfix Additional Disks Storage File Ownership.
+  * Retrieve disk format and virtual size directly.
+  * Handle nil volumes when cd-rom attached.
+  * Attempt to fix coveralls reporting.
+  * Allow to use many disks in vagrant box for libvirt provider.
+  * Support force halt behaviour.
+  * Revert auto_config change in #1249 #1253
+  * Add virtiofs Support to vagrant-libvirt.
+  * Auto configuration for tunnel interfaces.
+  * Add ability to define multiple private networks.
+  * Add ability to manage bridge STP and delay parameters.
+  * Support testing against ruby 3.0.
+  * Fix forward_ports with ruby 3.0.
+  * Fix interaction with reload plugin.
+  * Add option to set management network MTU.
+  * Add support for spinlocks hyperv feature.
+
+-------------------------------------------------------------------
 Tue Apr  6 08:14:21 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.4.1
