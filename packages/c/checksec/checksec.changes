@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  9 15:36:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing gawk dependency 
+
+-------------------------------------------------------------------
 Thu Mar 25 19:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (derived from Fedora spec) 

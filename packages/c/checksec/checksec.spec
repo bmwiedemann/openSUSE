@@ -27,6 +27,7 @@ Source0:        https://github.com/slimm609/checksec.sh/archive/%{version}.tar.g
 Requires:       binutils
 Requires:       file
 Requires:       findutils
+Requires:       gawk
 Requires:       which
 BuildArch:      noarch
 
@@ -53,12 +54,10 @@ sed -i 's/pkg_release=false/pkg_release=true/' checksec
 %build
 # noop
 
-
 %install
 mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
 install -pm 0755 %{name} %{buildroot}%{_bindir}
 install -pm 0644 extras/man/%{name}.1 %{buildroot}%{_mandir}/man1
-
 
 %files
 %license LICENSE.txt

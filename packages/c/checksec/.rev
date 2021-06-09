@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>881639</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de726e28b9d800d685a7841d8d636e5e</srcmd5>
+    <version>2.4.0</version>
+    <time>1623268391</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing gawk dependency</comment>
+    <requestid>898845</requestid>
+  </revision>
 </revisionlist>
