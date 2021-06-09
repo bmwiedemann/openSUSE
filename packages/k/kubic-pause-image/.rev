@@ -33,4 +33,12 @@
   upstream introduced the new tag for their windows images</comment>
     <requestid>888428</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b193278e0216d231584758087727bd6a</srcmd5>
+    <version>1.0.4</version>
+    <time>1623268286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897461</requestid>
+  </revision>
 </revisionlist>
