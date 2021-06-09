@@ -33,6 +33,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libstorage/libstoragemgmt
 Source0:        https://github.com/libstorage/libstoragemgmt/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        system-user-libstoragemgmt.conf
 Patch1:         move_to_run.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -45,6 +46,8 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  sysuser-tools
+%sysusers_requires
 %systemd_requires
 %if 0%{python3}
 BuildRequires:  python3-devel
@@ -274,6 +277,7 @@ sed -i '/^#!\/usr\/bin/s|env python|python|' ${pyfiles[@]}
 head -vn 1 ${pyfiles[@]}
 
 %make_build
+%sysusers_generate_pre %{SOURCE1} libstoragemgmt
 
 %install
 %make_install
@@ -291,6 +295,9 @@ install -m 644 tools/udev/90-scsi-ua.rules \
     %{buildroot}%{_udevrulesdir}/90-scsi-ua.rules
 install -m 755 tools/udev/scan-scsi-target \
     %{buildroot}%{_prefix}/lib/udev/scan-scsi-target
+   
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 
 # find all duplicates
 %fdupes -s %{buildroot}%{python_sitelib}
@@ -305,15 +312,7 @@ then
 fi
 %endif
 
-%pre
-if [ $1 -eq 1 ]; then
-    # New install
-    getent group %{name} >/dev/null || groupadd -r %{name}
-    getent passwd %{name} >/dev/null || \
-        useradd -r -g %{name} -d %{_rundir}/lsm -s /sbin/nologin \
-        -c "daemon account for libstoragemgmt" %{name}
-fi
-
+%pre -f libstoragemgmt.pre
 %service_add_pre %{name}.service
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -432,6 +431,7 @@ fi
 %{_bindir}/simc_lsmplugin
 %{_mandir}/man1/simc_lsmplugin.1%{?ext_man}
 %{_unitdir}/libstoragemgmt.service
+%{_sysusersdir}/system-user-libstoragemgmt.conf
 %{_tmpfilesdir}/%{name}.conf
 %dir %{_sysconfdir}/lsm
 %{_datadir}/bash-completion/completions/lsmcli

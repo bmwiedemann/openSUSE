@@ -263,4 +263,12 @@
   * Remove OpenSSL usage as OpenSSL 3.0 is deprecating MD5</comment>
     <requestid>894217</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4a8a47f9bcfe5914ba64cb229becbf86</srcmd5>
+    <version>1.9.2</version>
+    <time>1623268487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897963</requestid>
+  </revision>
 </revisionlist>

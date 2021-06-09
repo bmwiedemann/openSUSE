@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 13:35:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Tue May 18 16:17:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.2:
