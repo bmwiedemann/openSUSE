@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  8 06:52:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to new 5.22.0 tarball:
+  * scripting: Add clientArea() overload that takes mutable client (kde#437507)
+  * screencast: only use glGetTextureImage where supported
+  * platforms/drm: make context current for direct scanout
+  * effects/backgroundcontrast: Properly handle empty regions set by internal windows
+  * effects/blur: Properly handle empty blur regions set by internal windows (kde#433131)
+  * Move X11Client::wantsShadowToBeRendered to AbstractClient (kde#434213)
+  * scenes/opengl: Properly destroy backend if initialization fails
+  * AbstractEglBackend: only clean up OpenGL context if primary
+
+-------------------------------------------------------------------
 Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.0
