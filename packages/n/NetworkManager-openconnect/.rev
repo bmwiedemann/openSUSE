@@ -219,4 +219,12 @@
   %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799444 from dimstar)</comment>
     <requestid>799485</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>10eea163d78b8429da7d7543f0b517fb</srcmd5>
+    <version>1.2.6</version>
+    <time>1623268289</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using systemd-sysusers (forwarded request 897179 from gmbr3)</comment>
+    <requestid>897531</requestid>
+  </revision>
 </revisionlist>

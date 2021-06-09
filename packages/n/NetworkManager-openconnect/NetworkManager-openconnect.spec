@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openconnect/1.2/%{name}-%{version}.tar.xz
-
+Source1:        system-user-nm-openconnect.conf
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -35,10 +35,11 @@ BuildRequires:  pkgconfig(libnm) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openconnect) >= 3.02
+BuildRequires:  sysuser-tools
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       openconnect
-Requires(pre):  pwdutils
+%sysusers_requires
 ExcludeArch:    s390 s390x
 
 %description
@@ -67,20 +68,16 @@ translation-update-upstream
         --without-libnm-glib \
         %{nil}
 %make_build
+%sysusers_generate_pre %{SOURCE1} NetworkManager-openconnect
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 
-%pre
-getent group  nm-openconnect >/dev/null || groupadd -r nm-openconnect
-getent passwd nm-openconnect >/dev/null || useradd  -r -g nm-openconnect \
-                                                    -d %{_localstatedir}/lib/nm-openconnect \
-                                                    -s /sbin/nologin \
-                                                    -c "NetworkManager user for OpenConnect" \
-                                                    nm-openconnect
-exit 0
+%pre -f NetworkManager-openconnect.pre
 
 %files
 %license COPYING
@@ -90,6 +87,7 @@ exit 0
 %{_libexecdir}/nm-openconnect-service-openconnect-helper
 %{_vpnservicedir}/nm-openconnect-service.name
 %{_sysconfdir}/dbus-1/system.d/nm-openconnect-service.conf
+%{_sysusersdir}/system-user-nm-openconnect.conf
 
 %files gnome
 %{_datadir}/appdata/network-manager-openconnect.metainfo.xml
