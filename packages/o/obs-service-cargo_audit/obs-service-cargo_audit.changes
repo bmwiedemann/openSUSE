@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 08 03:56:02 UTC 2021 - wbrown@suse.de
+
+- Update to version v0.1.4~git0.a3c7623:
+  * Add a default srcdir parameter to cargo_audit, and make 
+    do_scan able to unpack and scan sources
+
+-------------------------------------------------------------------
 Wed Jun 02 06:34:49 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.1.3~git0.4f7c8fc:
