@@ -75,10 +75,12 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
-%ifarch x86_64 aarch64 ppc64 ppc64le s390x
+%ifarch x86_64 aarch64 ppc64 ppc64le s390x riscv64
 %{_libexecdir}/%{name}/afl-compiler-rt-64.o
 %{_libexecdir}/%{name}/afl-llvm-rt-64.o
+%ifnarch riscv64
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
+%endif
 %endif
 %ifarch %ix86 %{arm}
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
@@ -89,7 +91,7 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o
 %{_libexecdir}/%{name}/afl-llvm-rt.o
-%ifnarch %{arm}
+%ifnarch %{arm} riscv64
 %{_libexecdir}/%{name}/afl-llvm-rt-lto.o
 %endif
 %{_libexecdir}/%{name}/dynamic_list.txt

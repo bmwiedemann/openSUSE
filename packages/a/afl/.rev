@@ -958,4 +958,12 @@
       8 times instead of originally 40. Long calibration is now 20. (forwarded request 896670 from msmeissn)</comment>
     <requestid>896671</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>4a48cb415bfb43cd21422e8714a8f20c</srcmd5>
+    <version>3.13c</version>
+    <time>1623268347</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix filelist for riscv64 (forwarded request 898298 from Andreas_Schwab)</comment>
+    <requestid>898301</requestid>
+  </revision>
 </revisionlist>
