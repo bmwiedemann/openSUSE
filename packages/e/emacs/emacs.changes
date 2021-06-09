@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 31 05:49:58 UTC 2021 - Duncan Mac-Vicar P <duncan@mac-vicar.eu>
+
+- For terminal 24bit support, fall back to xterm+direct
+  (semicolon version) if requested by the COLORTERM environment variable.
+  Upstream commit 50f489b5dc.
+  Allows 24bit color on gnome-terminal out of the box.
+  * emacs-27.2-COLORTERM-24bit.patch
+
+-------------------------------------------------------------------
 Wed May 26 13:31:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341) 

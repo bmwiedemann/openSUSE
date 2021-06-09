@@ -178,6 +178,9 @@ Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
+# This patch allows vte based terminals like gnome-terminal to get 24bit colors
+# without setting a custom terminfo, honouring COLORTERM=truecolor
+Patch30:        emacs-27.2-COLORTERM-24bit.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -294,6 +297,7 @@ and most assembler-like syntaxes.
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
 %patch29 -p0 -b .xauth
+%patch30 -p1 -b .colorterm
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
