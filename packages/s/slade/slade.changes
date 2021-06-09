@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  1 11:00:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.13
+  * Updated ZDoom, MAPINFO and ACS language definitions
+  * Added extra UDMF flags
+  * Fixed an issue with the "optional" keyword in TEXTURES
+
+-------------------------------------------------------------------
 Thu Apr 29 10:58:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.1.12a

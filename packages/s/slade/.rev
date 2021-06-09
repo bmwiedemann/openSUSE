@@ -96,4 +96,12 @@
     <comment>- Update to 3.1.12a</comment>
     <requestid>889323</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d894a11d08fbcfbb74dc87768e722e47</srcmd5>
+    <version>3.1.13</version>
+    <time>1623268354</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898377</requestid>
+  </revision>
 </revisionlist>

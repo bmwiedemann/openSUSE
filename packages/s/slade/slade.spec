@@ -17,13 +17,13 @@
 
 
 Name:           slade
-Version:        3.1.12a
+Version:        3.1.13
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/sirjuddington/SLADE
-Source:         %URL/archive/%version.tar.gz#/SLADE-%version.tar.gz
+Source:         https://github.com/sirjuddington/SLADE/archive/refs/tags/%version.tar.gz
 Patch1:         basepk3.diff
 Patch2:         wx.diff
 Patch3:         clzma.diff
