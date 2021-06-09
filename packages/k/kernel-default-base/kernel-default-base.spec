@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kernel-default-base
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -49,7 +49,7 @@ ums-eneub6250 ums-freecom ums-isd200 ums-jumpshot ums-karma ums-onetouch \
 ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 
 %define filesystems autofs4 btrfs ext4 fuse vfat isofs jbd2 mbcache nfsv2 \
-        nfsv3 nfsv4 overlay xfs nls_cp437 nls_iso8859-1 ceph cifs squashfs
+        nfsv3 nfsv4 overlay xfs nls_cp437 nls_iso8859-1 ceph cifs squashfs nfsd
 
 %define networking \
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:49:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add nfsd for nfs server support (boo#1186363)
+
+-------------------------------------------------------------------
 Mon Feb 22 15:19:32 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add squashfs for kiwi installiso support (bsc#1182341)

@@ -161,4 +161,12 @@
     <user>dimstar_suse</user>
     <comment>Dummy CI-count bump</comment>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>fcebb3d44438ed254ad20e524f737bd8</srcmd5>
+    <version>MACRO</version>
+    <time>1623268280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897433</requestid>
+  </revision>
 </revisionlist>
