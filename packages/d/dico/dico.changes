@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  8 10:36:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.11
+  * Bugfixes in the gcide module
+  * Fix searches in the gcider utility
+  * Support for Python 2 has been withdrawn
+
+-------------------------------------------------------------------
 Fri Sep  4 10:24:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - dico 2.10:

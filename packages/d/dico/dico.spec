@@ -1,7 +1,7 @@
 #
 # spec file for package dico
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 2
 %define         lib_name lib%{name}%{sover}
 Name:           dico
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        Flexible modular implementation of DICT server (RFC 2229)
 License:        GPL-3.0-or-later
