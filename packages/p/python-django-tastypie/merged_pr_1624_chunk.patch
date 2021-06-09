@@ -1,0 +1,29 @@
+From 3b435be55871f467b9f599b59821c1faa182742f Mon Sep 17 00:00:00 2001
+From: Sam Thompson <georgedorn@users.noreply.github.com>
+Date: Thu, 3 Jun 2021 10:28:26 -0700
+Subject: Subset of [PATCH] Feature/django 3.2 (#1624)
+
+* tests: Don't use private method _headers
+
+diff --git a/tests/core/tests/resources.py b/tests/core/tests/resources.py
+index b8c63aa2..96b3cd29 100644
+--- a/tests/core/tests/resources.py
++++ b/tests/core/tests/resources.py
+@@ -4937,7 +4937,7 @@ def test_browser_cache(self):
+         self.assertEqual(resp.status_code, 200)
+         self.assertEqual(resp.content.decode('utf-8'), '{"content": "This is my very first post using my shiny new API. Pretty sweet, huh?", "created": "2010-03-30T20:05:00", "id": 1, "is_active": true, "resource_uri": "/api/v1/notes/1/", "slug": "first-post", "title": "First Post!", "updated": "2010-03-30T20:05:00"}')
+         self.assertTrue(resp.has_header('Cache-Control'))
+-        self.assertEqual(resp._headers['cache-control'], ('Cache-Control', 'no-cache'))
++        self.assertEqual(resp['Cache-Control'], 'no-cache')
+ 
+         # Now as Ajax.
+         request.META = {'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+@@ -4945,7 +4945,7 @@ def test_browser_cache(self):
+         self.assertEqual(resp.status_code, 200)
+         self.assertEqual(resp.content.decode('utf-8'), '{"content": "This is my very first post using my shiny new API. Pretty sweet, huh?", "created": "2010-03-30T20:05:00", "id": 1, "is_active": true, "resource_uri": "/api/v1/notes/1/", "slug": "first-post", "title": "First Post!", "updated": "2010-03-30T20:05:00"}')
+         self.assertTrue(resp.has_header('cache-control'))
+-        self.assertEqual(resp._headers['cache-control'], ('Cache-Control', 'no-cache'))
++        self.assertEqual(resp['Cache-Control'], 'no-cache')
+ 
+     def test_custom_paginator(self):
+         mock_request = MockRequest()

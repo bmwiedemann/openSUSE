@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  9 00:20:27 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix a failing test using a chunk of upstream PR 1624
+  merged_pr_1624_chunk.patch
+
+-------------------------------------------------------------------
 Mon Feb 22 09:39:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip two tests failing on Tumbleweed Python 3.6

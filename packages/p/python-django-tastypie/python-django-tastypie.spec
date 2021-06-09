@@ -24,6 +24,8 @@ Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM merged_pr_1624_chunk.patch -- based on PR 1624
+Patch0:         merged_pr_1624_chunk.patch
 BuildRequires:  %{python_module Django >= 1.11.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module biplist}
@@ -51,6 +53,7 @@ customizable abstraction for creating REST-style interfaces.
 
 %prep
 %setup -q -n django-tastypie-%{version}
+%patch0 -p1
 # https://github.com/django-tastypie/django-tastypie/issues/1617
 sed -Ei 's/(test_apikey_and_authentication_enforce_user|test_is_authenticated)/_\1/' tests/core/tests/authentication.py
 
@@ -63,17 +66,17 @@ sed -Ei 's/(test_apikey_and_authentication_enforce_user|test_is_authenticated)/_
 
 %check
 # The tests are doing what is specified in tox.ini
-%{python_expand export PYTHONPATH=./tests/
-$python -m django test -p '*' core.tests --settings=settings_core
-$python -m django test basic.tests --settings=settings_basic
-$python -m django test related_resource.tests --settings=settings_related
-$python -m django test alphanumeric.tests --settings=settings_alphanumeric
-$python -m django test authorization.tests --settings=settings_authorization
-$python -m django test content_gfk.tests --settings=settings_content_gfk
-$python -m django test customuser.tests --settings=settings_customuser
-$python -m django test namespaced.tests --settings=settings_namespaced
-$python -m django test slashless.tests --settings=settings_slashless
-$python -m django test validation.tests --settings=settings_validation
+%{python_expand export PYTHONPATH=${PWD}:${PWD}/tests/
+django-admin.py-%{$python_bin_suffix} test -p '*' core.tests --settings=settings_core
+django-admin.py-%{$python_bin_suffix} test basic.tests --settings=settings_basic
+django-admin.py-%{$python_bin_suffix} test related_resource.tests --settings=settings_related
+django-admin.py-%{$python_bin_suffix} test alphanumeric.tests --settings=settings_alphanumeric
+django-admin.py-%{$python_bin_suffix} test authorization.tests --settings=settings_authorization
+django-admin.py-%{$python_bin_suffix} test content_gfk.tests --settings=settings_content_gfk
+django-admin.py-%{$python_bin_suffix} test customuser.tests --settings=settings_customuser
+django-admin.py-%{$python_bin_suffix} test namespaced.tests --settings=settings_namespaced
+django-admin.py-%{$python_bin_suffix} test slashless.tests --settings=settings_slashless
+django-admin.py-%{$python_bin_suffix} test validation.tests --settings=settings_validation
 }
 
 %files %{python_files}
