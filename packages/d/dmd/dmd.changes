@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun  8 14:17:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.097.0
+  * Compiler changes
+    * Deprecation period for ambiguous ternary expressions has ended
+    * Usage of the body keyword has been deprecated
+    * Deprecate a case of using fully-qualified names to bypass imports
+    * Explicit package visibility attribute is now always applied to
+      new scopes
+    * pragma(mangle) can now be applied to aggregates
+    * Complex and imaginary types are now deprecated
+    * while (auto n = expression) is now supported
+  * Library changes
+    * Centering formatted output.
+    * AllImplicitConversionTargets replaces ImplicitConversionTargets
+    * Formatting integers with %e, %f, %g and %a is now possible.
+    * Implementation of pow(f, -2) and f ^^ -2 changed
+    * Deprecate std.format : enforceValidFormatSpec
+    * Deprecate std.format : formatElement
+    * Deprecate std.format : unformatElement
+    * FieldnameTuple now returns an empty tuple for interfaces
+    * Fields (formerly FieldTypeTuple) now returns an empty
+      tuple for interfaces
+    * Floating point numbers can be formatted at compile time
+    * Formatting floating point numbers don't allocate with the
+      GC anymore.
+    * Some reals will be downcast to double when used with
+      std.format.
+    * std.typecons.Nullable: Remove deprecated alias get this.
+    * Documentation of std.format has been completely reworked.
+    * Module std.format has been split into smaller modules
+    * Module std.math has been split into smaller modules
+    * splitWhen added to std.algorithm.iteration
+    * The old benchmarking functionality in std.datetime has been
+      removed.
+    * std.exception.enforceEx has been removed.
+    * New module: std.sumtype
+    * std.range.Transposed: Remove deprecated member save
+  * Dub changes
+    * Added support for low memory compilation option to the dub
+      settings file.
+
+-------------------------------------------------------------------
 Mon May 17 14:32:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.096.1
