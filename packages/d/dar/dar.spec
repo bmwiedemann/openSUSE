@@ -1,7 +1,7 @@
 #
 # spec file for package dar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.6.13
+Version:        2.6.15
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -26,7 +26,6 @@ URL:            http://dar.linux.free.fr/
 Source0:        http://sourceforge.net/projects/dar/files/dar/%{version}/%{name}-%{version}.tar.gz
 Source1:        http://dar.linux.free.fr/sign/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-Source3:        %{name}.changes
 BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
@@ -67,15 +66,6 @@ Summary:        Backup and Restore Application
 Recommends:     %{name}-lang
 Provides:       libdar = 2.3.10
 Obsoletes:      libdar < 2.3.10
-# Package renamed to libdar4, according the shared library policy (2012-07-06) during openSUSE 12.2 cycle.
-Provides:       libdar-4 = 2.3.10
-Obsoletes:      libdar-4 < 2.3.10
-# Package renamed to libdar-5000, following so name change
-Provides:       libdar4 = %{version}
-Obsoletes:      libdar4 < %{version}
-# Package renamed to libdar64-6000, following so name change
-Provides:       libdar5000 = %{version}
-Obsoletes:      libdar5000 < %{version}
 
 %description -n libdar64-%{sover}
 Dar stands for Disk ARchive and is a hardware independent backup
@@ -91,7 +81,7 @@ This package contains the library used by Dar and KDar.
 %package -n libdar-devel
 Summary:        Backup and Restore Application
 Requires:       glibc-devel
-Requires:       libdar64-6000 = %{version}
+Requires:       libdar64-%{sover} = %{version}
 Requires:       openssl-devel
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(zlib)

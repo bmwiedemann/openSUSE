@@ -362,4 +362,12 @@ The developers of dar included a special exception to link against openSSL (forw
     is run with.</comment>
     <requestid>856829</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>01f8811e40407cc73611d1eceeb4900c</srcmd5>
+    <version>2.6.15</version>
+    <time>1623268351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898353</requestid>
+  </revision>
 </revisionlist>
