@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.4.5
+Version:        3.4.6
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -78,10 +78,6 @@ BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(speexdsp)
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
-# enable ITU G.729 Annex A/B speech codec only in Tumbleweed
-BuildRequires:  pkgconfig(libbcg729)
-%endif
 # keep until libbrotli-devel bug is fixed
 Requires:       libbrotlidec1
 Requires(pre):  permissions
@@ -91,6 +87,10 @@ Provides:       ethereal = %{version}
 Obsoletes:      %{libcodecs} < %{version}
 Obsoletes:      ethereal < %{version}
 Provides:       group(wireshark)
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
+# enable ITU G.729 Annex A/B speech codec only in Tumbleweed
+BuildRequires:  pkgconfig(libbcg729)
+%endif
 %if %{with lz4}
 BuildRequires:  pkgconfig(liblz4)
 # in openSUSE Leap 42.3, lz4 was incorrectly packaged

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  3 08:17:22 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.6:
+  * Fix DVB-S2-BB dissector infinite loop (boo#1186790, wnpa-sec-2021-04)
+  * Fix Macro filters handling of escaped characters
+  * Fix Display filter crash
+  * Fix IEEE-1588 Signalling Unicast TLV incorrectly reported as being
+    malformed
+  * Fix IETF QUIC TLS decryption error with extraneous packets during
+    the handshake
+  * Fix Statistics - Resolved Addresses: multi-protocol (TCP/UDP/...)
+    ports not displayed
+
+-------------------------------------------------------------------
 Thu Apr 22 07:18:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.5:
