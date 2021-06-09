@@ -81,7 +81,7 @@ BuildRequires:  pkgconfig(fontutil)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(inputproto)  >= 1.9.99.902
 BuildRequires:  pkgconfig(kbproto) >= 1.0.3
 BuildRequires:  pkgconfig(libtasn1)
@@ -149,6 +149,7 @@ Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
 Patch21:        U_0001-Properly-store-certificate-exceptions.patch
 Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
 Patch23:        n_utilize-system-crypto-policies.patch
+Patch24:        tigervnc-FIPS-use-RFC7919.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -270,6 +271,7 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch22 -p1
 %patch8 -p1
 %patch23 -p1
+%patch24 -p1
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver

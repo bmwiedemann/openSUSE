@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  7 01:47:07 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Enable GnuTLS to use Diffie-Hellman parameters from RFC7919
+  instead of generating our own.
+  * bsc#1179809
+  * tigervnc-FIPS-use-RFC7919.patch
+  * DH parameter generation was depricated in GnuTLS 3.6.0.
+
+-------------------------------------------------------------------
 Mon May  3 09:19:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not carry two variants of the same servcice file, but rather
