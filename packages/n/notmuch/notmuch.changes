@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 17 10:49:07 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32.1
+=========================
+
+General
+-------
+
+Restore handling of relative values for `database.path` that was
+broken by 0.32. Extend this handling to `database.mail_root`,
+`database.backup_dir`, and `database.hook_dir`.
+
+Reload certain metadata from Xapian database in
+notmuch_database_reopen. This fixes a bug when adding messages to the
+database in a pre-new hook.
+
+Fix default of `$HOME/mail` for `database.path`. In release 0.32, this
+default worked only in "notmuch config".
+
+Emacs
+-----
+
+Restore the dynamically bound variables `tag-changes` and `query` in
+in `notmuch-before-tag-hook` and `notmuch-after-tag-hook`.
+
+-------------------------------------------------------------------
 Wed May  5 05:25:32 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 What's new in notmuch 0.32

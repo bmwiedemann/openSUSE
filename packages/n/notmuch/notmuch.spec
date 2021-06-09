@@ -18,14 +18,13 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.32
+Version:        0.32.1
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
 URL:            https://notmuchmail.org
 Source0:        %{URL}/releases/notmuch-%{version}.tar.xz
 Source1:        %{URL}/releases/notmuch-%{version}.tar.xz.asc
-Source3:        %{URL}/releases/test-databases/database-v1.tar.xz
 # key fingerprint: 7A18 807F 100A 4570 C596  8420 7E4E 65C8 720B 706B
 Source4:        notmuch.keyring
 BuildRequires:  libxapian-devel
@@ -46,16 +45,16 @@ BuildRequires:  pkgconfig(talloc)
 
 # dtach is not present on SLE
 # cannot run the tests there
-%if 0%{is_opensuse}
+%if 0%{?is_opensuse}
 %{bcond_without tests}
 %else
 %{bcond_with tests}
 %endif
 # testsuite
 %if %{with tests}
+BuildRequires:  openssl
 BuildRequires:  dtach
 BuildRequires:  gdb
-BuildRequires:  gnu_parallel
 BuildRequires:  libgcrypt-cavs
 BuildRequires:  man
 BuildRequires:  valgrind-devel
@@ -127,7 +126,7 @@ The libnotmuch3 package contains shared libraries for %{name}.
 %if %{with python3}
 %package -n python3-%{name}
 Summary:        Python3 bindings for %{name}
-Requires:       python = %{py3_ver}
+Requires:       python = %{?py3_ver:%py3_ver}%{?!py3_ver:%(python3 --version|awk '{print $2}')}
 Recommends:     python-%{name}-doc = %{version}
 
 %description -n python3-%{name}
@@ -205,7 +204,9 @@ popd
 
 %check
 %if %{with tests}
-cp %{SOURCE3} test/test-databases
+
+# ensure that the tests are not running in parallel
+export NOTMUCH_TEST_SERIALIZE=t
 
 # this test fails on PPC64 (see id:87o8mpr5w6.fsf@tethera.net)
 %ifarch ppc64
