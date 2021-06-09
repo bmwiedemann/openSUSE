@@ -814,4 +814,12 @@
     <comment>- Update MAILDIR to /var/mail (forwarded request 893234 from gmbr3)</comment>
     <requestid>893555</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>e3cb41d7cebde41a89fb92a317acf6a1</srcmd5>
+    <version>6.22.04</version>
+    <time>1623268276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897378</requestid>
+  </revision>
 </revisionlist>
