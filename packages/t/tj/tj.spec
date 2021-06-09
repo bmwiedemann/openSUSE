@@ -1,6 +1,7 @@
 #
 # spec file for package tj
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           tj
 Version:        7.0.0
@@ -24,8 +26,12 @@ Group:          System/Base
 URL:            https://github.com/sgreben/tj
 #Git-Clone:     https://github.com/sgreben/tj.git
 Source:         https://github.com/sgreben/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  golang(API) >= 1.9
 BuildRequires:  golang-packaging
+%if 0%{?suse_version} >= 1550
+BuildRequires:  golang(API) = 1.13
+%else
+BuildRequires:  golang(API) >= 1.9
+%endif
 %{go_provides}
 
 %description
