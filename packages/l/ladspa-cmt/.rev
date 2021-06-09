@@ -29,4 +29,12 @@ Resubmission after the license correction</comment>
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc52984b5d9be3f6199275fe1c8ae527</srcmd5>
+    <version>1.17</version>
+    <time>1623268307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893753</requestid>
+  </revision>
 </revisionlist>

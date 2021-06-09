@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 17 12:51:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.17
+  * avoid malloc/new mismatch.
+  * reassure compiler.
+  * Use GCC export map to ensure only ladspa_descriptor() is exported.
+  * Package with version number in archive and directory names.
+  * Use C99 isnormal() to identify denormals (and other bad numbers).
+- Drop cmt_src_1.15.diff
+- Add no-installation-doc.patch
+
+-------------------------------------------------------------------
 Mon Mar  3 13:41:48 CET 2014 - tiwai@suse.de
 
 - Remove obsoleted autoreq/autoprov tags

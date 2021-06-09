@@ -1,7 +1,7 @@
 #
 # spec file for package ladspa-cmt
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,51 +12,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ladspa-cmt
-Version:        1.15
+Version:        1.17
 Release:        0
 Summary:        LADSPA CMT plugins
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.ladspa.org/cmt/
-Source:         http://www.ladspa.org/download/cmt_src_%{version}.tgz
+URL:            https://www.ladspa.org/cmt/overview.html
+Source0:        http://www.ladspa.org/download/cmt_%{version}.tgz
 Source1:        cmt.rdf
-Patch1:         cmt_src_1.15.diff
+# PATCH-FEATURE-OPENSUSE no-installation-doc.patch -- There is no need for installation documentation
+Patch0:         no-installation-doc.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
 Supplements:    ladspa
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This package provides a LADSPA (Linux Audio Developer's Simple Plug-in API)
-CMT (Computer Music Toolkit) plugins.
+This toolkit is a set of musical sound processing and synthesis tools
+presented as a LADSPA (Linux Audio Developer's Simple Plug-in API)
+plugin library for CMT (Computer Music Toolkit).
+See the %{_docdir}/%{name} directory for documentation.
 
 %prep
-%setup -q -n cmt
-%patch1
-chmod 0644 doc/plugins.html
+%autosetup -p1 -n cmt_%{version}
 
 %build
-# This package failed when testing with -Wl,-as-needed being default.
-# So we disable it here, if you want to retest, just delete this comment and the line below.
-export SUSE_ASNEEDED=0
-make -C src %{?_smp_mflags} CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -ggdb" targets
+%make_build -C src CFLAGS="%{optflags}" targets
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ladspa
-make -C src INSTALL_PLUGINS_DIR=%{buildroot}%{_libdir}/ladspa install
-mkdir -p %{buildroot}%{_datadir}/ladspa/rdf
-cp -p %{SOURCE1} %{buildroot}%{_datadir}/ladspa/rdf
+install -d -m 0755 %{buildroot}%{_libdir}/ladspa
+install -d -m 0755 %{buildroot}%{_datadir}/ladspa/rdf
+install -D -m 0644 plugins/cmt.so %{buildroot}%{_libdir}/ladspa/cmt.so
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/ladspa/rdf/cmt.rdf
 
 %files
-%defattr(-,root,root)
+%doc doc/*.html
+%license doc/COPYING
 %{_libdir}/ladspa
 %{_datadir}/ladspa
-%doc README
-%doc doc/*
 
 %changelog
