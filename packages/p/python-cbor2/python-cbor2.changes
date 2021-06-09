@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:53:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Added new feature stringrefs, which makes repetitive dictionary structures
+    more compact. Use with care since support for this is rare in other CBOR
+    implementations.
+  * This release includes some bugfixes around decoding invalid data, which may
+    improve security on decoding untrusted data.
+
+-------------------------------------------------------------------
 Thu Apr 22 20:17:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

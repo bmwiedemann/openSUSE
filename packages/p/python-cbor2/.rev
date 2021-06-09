@@ -56,4 +56,17 @@
   * Feature: Ignore semantic tag used for file magic 55799 AKA &quot;Self-Described CBOR&quot; (kalcutter)</comment>
     <requestid>887881</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdd80b53f75f91491a1ea6625019d89c</srcmd5>
+    <version>5.4.0</version>
+    <time>1623268357</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * Added new feature stringrefs, which makes repetitive dictionary structures
+    more compact. Use with care since support for this is rare in other CBOR
+    implementations.
+  * This release includes some bugfixes around decoding invalid data, which may
+    improve security on decoding untrusted data.</comment>
+    <requestid>898419</requestid>
+  </revision>
 </revisionlist>
