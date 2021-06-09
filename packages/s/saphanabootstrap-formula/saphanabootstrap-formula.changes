@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  9 07:00:36 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- fixes a not working import of dbapi in SUSE/ha-sap-terraform-deployments#703
+- removes the installation and extraction of all hdbcli files in the /hana/shared/srHook directory
+- fixes execution order of srTakeover/srCostOptMemConfig hook
+- renames and updates hook srTakeover to srCostOptMemConfig
+
+-------------------------------------------------------------------
 Fri May  7 09:15:21 UTC 2021 - Bernd Schubert <bschubert@suse.com>
 
 - Changing exporter stickiness to => 0 and adjusting the colocation 
