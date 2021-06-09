@@ -1220,4 +1220,12 @@
   runpath-to-writeable-directory warning (bsc#1184786)</comment>
     <requestid>893334</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>0d5fe4af8305199908dd5fae9245e492</srcmd5>
+    <version>84.87</version>
+    <time>1623268306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898639</requestid>
+  </revision>
 </revisionlist>

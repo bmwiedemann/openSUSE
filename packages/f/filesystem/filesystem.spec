@@ -22,8 +22,13 @@ Name:           filesystem
 Summary:        Basic Directory Layout
 License:        MIT
 Group:          System/Fhs
+%if 0%{?sle_version}
 Version:        %(echo %suse_version | cut -b-2).%(echo %suse_version | cut -b3)
 Release:        0
+%else
+Version:        84.87
+Release:        0
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?usrmerged}
 # XXX libsolv never sees the rpmlib provides fulfilled

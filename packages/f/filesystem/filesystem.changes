@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  9 06:13:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /etc/motd.d and /usr/lib/motd.d [bsc#1185897]
+
+-------------------------------------------------------------------
+Mon Jun  7 09:45:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Set package version number for Tumbleweed to TW
+
+-------------------------------------------------------------------
+Mon May 31 23:20:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add Turkish, Romanian and Indonesian to localized man directories
+  (match up all currently supported languages by man-db)
+
+-------------------------------------------------------------------
 Sat May 15 19:27:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - temporarily revert icon and fillup dir to 0755 until fallout
