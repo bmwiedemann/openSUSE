@@ -31,10 +31,11 @@ BuildRequires:  bison
 BuildRequires:  readline-devel
 %if 0%{?suse_version} <= 1500
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 %endif
 %if %{with units_cur}
 BuildRequires:  python3-base
+Requires:       python3-requests
 %endif
 
 %description

@@ -285,4 +285,12 @@
     <comment>- use python3 by home:lorenz</comment>
     <requestid>878308</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>fd880ca1be0f13eb458e2b380e44fad7</srcmd5>
+    <version>2.21</version>
+    <time>1623268340</time>
+    <user>dimstar_suse</user>
+    <comment>- require python3-requests [bsc#1186820]</comment>
+    <requestid>898269</requestid>
+  </revision>
 </revisionlist>

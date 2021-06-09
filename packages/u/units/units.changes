@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  8 07:06:08 UTC 2021 - pgajdos@suse.com
+
+- require python3-requests [bsc#1186820]
+
+-------------------------------------------------------------------
 Thu Mar 11 10:02:54 UTC 2021 - pgajdos@suse.com
 
 - use python3 by home:lorenz
