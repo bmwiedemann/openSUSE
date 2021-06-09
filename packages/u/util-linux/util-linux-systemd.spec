@@ -370,6 +370,7 @@ Conflicts:      util-linux < 2.25
 
 %description systemd
 %else
+
 %description
 %endif
 This package contains low-level util-linux utilities that use systemd.
@@ -404,12 +405,14 @@ Group:          %group_pl
 
 %description -n python3-libmount
 %else
+
 %description
 %endif
 This package contains the Python bindings for util-linux libmount
 library.
 
 %endif
+
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{S:2} .
@@ -866,6 +869,7 @@ done
 %if 0%{?suse_version} >= 1330
 %pre -n uuidd
 %else
+
 %pre -n uuidd
 getent group uuidd >/dev/null || /usr/sbin/groupadd -r uuidd
 getent passwd uuidd >/dev/null || \
@@ -1324,6 +1328,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %if %build_util_linux
 %files systemd
 %else
+
 %files
 %endif
 %defattr(-, root, root)
@@ -1374,6 +1379,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %if %build_util_linux
 %files -n python3-libmount
 %else
+
 %files
 %endif
 %defattr(-, root, root)

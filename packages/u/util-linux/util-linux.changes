@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 25 15:02:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- login.pamd: use pam_motd to unify motd handling [bsc#1185897].
+  Else motd snippets of e.g. cockpit will not be shown.
+
+-------------------------------------------------------------------
 Tue Feb 16 19:33:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.36.2:
