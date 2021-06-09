@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  8 13:13:14 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to dasbus-1.6
+ * Allow to generate multiple output arguments (vponcova)
+ * Support multiple output arguments (vponcova)
+ * Add the is_tuple_of_one function (vponcova)
+- Package changes:
+ * Switch from PyPI to Github download.
+
+-------------------------------------------------------------------
 Wed May 19 16:03:56 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to dasbus-1.5

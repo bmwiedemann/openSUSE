@@ -19,17 +19,17 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dasbus
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        DBus library in Python 3
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/rhinstaller/dasbus
-Source:         https://files.pythonhosted.org/packages/source/d/dasbus/dasbus-%{version}.tar.gz
+Source:         https://github.com/rhinstaller/dasbus/releases/download/v%{version}/dasbus-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  gobject-introspection
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
 Requires:       python-gobject
 BuildArch:      noarch
 %python_subpackages
