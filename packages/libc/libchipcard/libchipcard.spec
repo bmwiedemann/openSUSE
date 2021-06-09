@@ -1,7 +1,7 @@
 #
 # spec file for package libchipcard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           libchipcard
 Version:        5.1.5
 Release:        0
 %define _version 5.1.5rc2
-Summary:        Library That Allows Easy Access to Smart Cards (Chipcards)
+Summary:        Library That Allows Access to Smart Cards (Chipcards)
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.aquamaniac.de/sites/libchipcard/index.php
@@ -38,10 +38,9 @@ BuildRequires:  gwenhywfar-tools
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Libchipcard allows easy access to smart cards. It provides basic access
+Libchipcard allows access to smart cards. It provides basic access
 to memory and processor cards and has special support for German
 medical cards, German "Geldkarten," and HBCI (home banking) cards (both
 type 0 and type 1). It accesses the readers via CTAPI or PC/SC
@@ -49,7 +48,7 @@ interfaces and has successfully been tested with Towitoko, Kobil, and
 Reiner-SCT readers.
 
 %package -n libchipcard6
-Summary:        Library That Allows Easy Access to Smart Cards (Chipcards)
+Summary:        Library That Allows Access to Smart Cards (Chipcards)
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
@@ -58,7 +57,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %package devel
-Summary:        Include Files and Libraries mandatory for Development
+Summary:        Header files for libchipcard, a library for accessing smartcards
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gwenhywfar-devel
@@ -82,21 +81,17 @@ cp -a /usr/include/PCSC/*.h src/PCSC/
 	--enable-release\
 	--enable-full-doc\
 	--disable-static\
-	--with-pic \
         --with-pcsc-libs=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 make srcdoc
 
 %install
-%makeinstall
+%make_install
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS COPYING ChangeLog NEWS README TODO apidoc %{buildroot}%{_docdir}/%{name}
 rm %{buildroot}%{_libdir}/*.la
 
 %fdupes %{buildroot}%{_docdir}/%{name}/apidoc
-
-%clean
-rm -rf %{buildroot}
 
 %preun
 # Unconditionally stop the service if it exists. Libchipcard 5 uses pcsc now.
@@ -107,7 +102,6 @@ rm -rf %{buildroot}
 %postun -n libchipcard6 -p /sbin/ldconfig
 
 %files
-%defattr (-, root, root)
 %doc %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/apidoc
 %{_bindir}/*
@@ -121,11 +115,9 @@ rm -rf %{buildroot}
 %config %{_sysconfdir}/chipcard
 
 %files -n libchipcard6
-%defattr (-, root, root)
 %{_libdir}/libchipcard.so.6*
 
 %files devel
-%defattr (-, root, root)
 %doc %{_docdir}/%{name}/apidoc
 %{_bindir}/*-config
 %{_libdir}/*.so

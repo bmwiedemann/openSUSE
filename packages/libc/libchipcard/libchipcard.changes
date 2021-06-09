@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  7 23:18:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static).
+- Modernize rpm macro constructs.
+- Make description neutral.
+
+-------------------------------------------------------------------
 Thu Sep 24 15:39:22 UTC 2020 - Torsten Duwe <duwe@suse.com>
 
 - Update to 5.1.5 ("rc2")
