@@ -669,4 +669,13 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>885174</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ffb0b92a7c514876c2685882b41839de</srcmd5>
+    <version>7.0.1</version>
+    <time>1623268310</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed alternatives from melt sub package
+- Update to version 7.0.1 and fix install conflicts</comment>
+    <requestid>895988</requestid>
+  </revision>
 </revisionlist>
