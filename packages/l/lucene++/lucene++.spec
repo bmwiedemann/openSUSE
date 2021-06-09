@@ -30,6 +30,9 @@ Patch0:         lucene++-3.0.8-fix-contrib-soname.patch
 Patch1:         lucene++-3.0.8-fix-pc-libdir.patch
 # PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-cmake-issues.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/163
 Patch2:         lucene++-3.0.8-fix-cmake-issues.patch
+# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-missing-headers.patch -- hillwood@opensuse.org
+# contrib headers should be installed
+Patch3:         lucene++-3.0.8-fix-missing-headers.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel

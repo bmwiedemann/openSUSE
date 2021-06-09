@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  8 06:41:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Contrib headers should be installed, add lucene++-3.0.8-fix-missing-headers.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 20:00:18 UTC 2021 - antoine.belvire@opensuse.org
 
 - Add CMake option to prevent installation of gtest files instead

@@ -57,4 +57,13 @@ A dependency for poedit 1.6.x</comment>
     <comment></comment>
     <requestid>866114</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>73d535d343c36ca9e6a63d03f68882fd</srcmd5>
+    <version>3.0.8</version>
+    <time>1623268364</time>
+    <user>dimstar_suse</user>
+    <comment>- Contrib headers should be installed, add lucene++-3.0.8-fix-missing-headers.patch
+</comment>
+    <requestid>898523</requestid>
+  </revision>
 </revisionlist>
