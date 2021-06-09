@@ -24,12 +24,14 @@ Summary:        XML Pull Parser
 License:        Apache-1.1
 Group:          Development/Libraries/Java
 Url:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/
-Source0:        http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/PullParser2/PullParser2.1.10.tar.bz2
+Source0:        http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/PullParser2/PullParser%{version}.tar.bz2
+Source1:        https://repo1.maven.org/maven2/pull-parser/pull-parser/%{version}/pull-parser-%{version}.pom
 Patch0:         xpp2-build_xml.patch
 Patch1:         xpp2-enum.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit >= 1.6
 BuildRequires:  fdupes
+BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  xerces-j2
@@ -82,7 +84,10 @@ find . -name "*.jar" -exec rm -f {} \;
 export OPT_JAR_LIST="ant/ant-junit junit"
 export CLASSPATH=$(build-classpath xml-commons-apis xerces-j2)
 ant all api api.impl
-CLASSPATH=$CLASSPATH:$(build-classpath junit):build/tests:build/lib/PullParser-2.1.10.jar
+
+%check
+export OPT_JAR_LIST="ant/ant-junit junit"
+export CLASSPATH="$(build-classpath xml-commons-apis xerces-j2):$(build-classpath junit):build/tests:build/lib/PullParser-2.1.10.jar"
 java AllTests
 
 %install
@@ -97,26 +102,25 @@ cp -p build/lib/%{originalname}-%{version}.jar \
 cp -p build/lib/%{originalname}-x2-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}-x2-%{version}.jar
 (cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+# pom
+install -D -m 0644 %{SOURCE1} %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}/api
 mkdir -p %{buildroot}%{_javadocdir}/%{name}/api_impl
 cp -pr doc/api/* %{buildroot}%{_javadocdir}/%{name}/api
 cp -pr doc/api_impl/* %{buildroot}%{_javadocdir}/%{name}/api_impl
 rm -rf doc/{build.txt,api,api_impl}
-# manual
-mkdir -p %{buildroot}%{_datadir}/doc/%{name}
-cp -pr doc/* %{buildroot}%{_datadir}/doc/%{name}
-cp -p README.html %{buildroot}%{_datadir}/doc/%{name}
-cp -p LICENSE.txt %{buildroot}%{_datadir}/doc/%{name}
 # demo
 mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -pr src/java/samples/* %{buildroot}%{_datadir}/%{name}
 %fdupes -s %{buildroot}/%{_javadocdir}/%{name}
 
 %files
-%defattr(0644,root,root,0755)
-%{_datadir}/doc/%{name}/README.html
-%{_datadir}/doc/%{name}/LICENSE.txt
+%license LICENSE.txt
+%doc README.html
+%{_mavenpomdir}/JPP-%{name}*.pom
+%{_datadir}/maven-metadata/%{name}.xml
 %{_javadir}/%{name}.jar
 %{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{name}-intf.jar
@@ -127,17 +131,12 @@ cp -pr src/java/samples/* %{buildroot}%{_datadir}/%{name}
 %{_javadir}/%{name}-x2-%{version}.jar
 
 %files javadoc
-%defattr(0644,root,root,0755)
 %{_javadocdir}/%{name}
 
 %files manual
-%defattr(0644,root,root,0755)
-%{_datadir}/doc/%{name}
-%exclude %{_datadir}/doc/%{name}/README.html
-%exclude %{_datadir}/doc/%{name}/LICENSE.txt
+%doc doc/*
 
 %files demo
-%defattr(0644,root,root,0755)
 %{_datadir}/%{name}
 
 %changelog

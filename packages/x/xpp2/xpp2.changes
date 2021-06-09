@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 16 13:55:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added pom file
+
+-------------------------------------------------------------------
 Fri Nov  8 12:01:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - BuildRequire xerces-j2, because it is not automatically pulled
