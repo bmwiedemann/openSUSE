@@ -172,4 +172,12 @@
   * pam_p11-unsigned-comparison.patch (forwarded request 722933 from 1Antoine1)</comment>
     <requestid>722958</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>279b9af3a91dc2f9bb1da1cc3bb3d17b</srcmd5>
+    <version>0.3.1</version>
+    <time>1623268370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898582</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 17 23:16:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.1
+  * CVE-2019-16058: Fixed buffer overflow when creating signatures
+    longer than 256 bytes
+- Drop upstream fixed pam_p11-0.3.0-lto-type-mismatch.patch
+
+-------------------------------------------------------------------
 Sat Aug 10 09:38:00 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 0.3.0:

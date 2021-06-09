@@ -17,16 +17,14 @@
 
 
 Name:           pam_p11
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        PAM Authentication Module for Using Cryptographic Tokens
 License:        LGPL-2.1-or-later
 Group:          Hardware/Other
 URL:            https://github.com/OpenSC/pam_p11
-Source0:        https://github.com/OpenSC/pam_p11/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/pam_p11-%{version}/pam_p11-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM -- Fix build with LTO, picked from upstream
-Patch0:         pam_p11-0.3.0-lto-type-mismatch.patch
 BuildRequires:  libp11-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
@@ -45,7 +43,6 @@ security implications, see README.SUSE.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure\
