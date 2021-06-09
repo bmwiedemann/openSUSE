@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  9 06:52:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- The modules media and web are included in the shaded jfxrt.jar
+
+-------------------------------------------------------------------
 Thu Oct  8 12:14:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Change build from using gradle to a mix of maven and ant builds

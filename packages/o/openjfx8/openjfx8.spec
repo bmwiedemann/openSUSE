@@ -1,7 +1,7 @@
 #
 # spec file for package openjfx8
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Name:           openjfx8
 Version:        8.0.202
 Release:        0
 Summary:        Rich client application platform for Java
-License:        GPL-2.0-only WITH Classpath-exception-2.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://openjdk.java.net/projects/openjfx/
 Source0:        http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/8u202-b07.tar.bz2
 Source1:        README.install
@@ -118,8 +118,6 @@ Obsoletes:      %{oldname}
 JavaFX/OpenJFX is a set of graphics and media APIs that enables Java
 developers to design, create, test, debug, and deploy rich client
 applications that operate consistently across diverse platforms.
-
-The media and web module have been removed due to missing dependencies.
 
 %package devel
 Summary:        OpenJFX development tools and libraries

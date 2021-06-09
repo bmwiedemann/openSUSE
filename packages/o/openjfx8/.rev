@@ -24,4 +24,12 @@
     <comment>move out of gradle + fix</comment>
     <requestid>840272</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>40df1a85497d1621cc8c014e09bb02dd</srcmd5>
+    <version>8.0.202</version>
+    <time>1623268374</time>
+    <user>dimstar_suse</user>
+    <comment>Description is not correct</comment>
+    <requestid>898642</requestid>
+  </revision>
 </revisionlist>
