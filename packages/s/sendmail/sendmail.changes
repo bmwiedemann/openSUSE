@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  4 12:45:51 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- sendmail-suse.tar.bz2: don't set /var/spool/mail perms, it is
+  part of filesystem
+
+-------------------------------------------------------------------
 Fri May 28 13:28:07 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - sendmail-suse.tar.bz2: add file tmpfile which will be installed

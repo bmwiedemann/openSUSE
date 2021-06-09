@@ -1003,4 +1003,13 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   slashes for directories.</comment>
     <requestid>896007</requestid>
   </revision>
+  <revision rev="106" vrev="10">
+    <srcmd5>6881b0bf14790057cebb80f160e44569</srcmd5>
+    <version>8.16.1</version>
+    <time>1623268490</time>
+    <user>dimstar_suse</user>
+    <comment>- sendmail-suse.tar.bz2: don't set /var/spool/mail perms, it is
+  part of filesystem (forwarded request 897434 from gmbr3)</comment>
+    <requestid>897975</requestid>
+  </revision>
 </revisionlist>
