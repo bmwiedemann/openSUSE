@@ -7,4 +7,12 @@
     <comment>test dep of httpcore/httpx</comment>
     <requestid>874795</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9062189cc5878520613c142d460d685a</srcmd5>
+    <version>2.7.8</version>
+    <time>1623268385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897208</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  3 09:29:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v2.7.8
+  * ssh reconnect
+- Update to v2.7.7
+  * UDP multiple jumps not working
+- Update to v2.7.6
+  * quic config
+- Update to v2.7.5
+  * quic param
+
+-------------------------------------------------------------------
 Tue Feb 23 14:30:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.7.4
