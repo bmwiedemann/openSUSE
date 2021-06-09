@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 08:36:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't build gammaray with glslang on Tumbleweed.
+  The glslang 11.4.0 update broke the build.
+
+-------------------------------------------------------------------
 Mon Dec 28 02:50:33 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - Update to version 2.11.2 

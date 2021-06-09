@@ -159,4 +159,13 @@
     <comment></comment>
     <requestid>858992</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f7111cc74d5086bfc87ab43458f14a4e</srcmd5>
+    <version>2.11.2</version>
+    <time>1623268342</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build gammaray with glslang on Tumbleweed.
+  The glslang 11.4.0 update broke the build.</comment>
+    <requestid>898285</requestid>
+  </revision>
 </revisionlist>

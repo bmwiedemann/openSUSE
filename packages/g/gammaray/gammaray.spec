@@ -71,8 +71,11 @@ BuildRequires:  cmake(VTK) = 7.1.0
 %endif
 # Needed to build the user manual
 BuildRequires:  libqt5-qtdoc-devel
-#
+# Build issue with glslang 11.4.0
+# https://github.com/KDAB/GammaRay/issues/635
+%if 0%{?suse_version} <= 1500 
 BuildRequires:  glslang-devel
+%endif
 BuildRequires:  libqt5-qtscxml-private-headers-devel >= 5.8.0
 BuildRequires:  cmake(KF5SyntaxHighlighting) >= 5.28.0
 BuildRequires:  cmake(Qt5Scxml) >= 5.8.0
