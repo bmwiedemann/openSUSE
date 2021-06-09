@@ -41,7 +41,7 @@
 
 %if 0%{?suse_version} >= 1500
   %bcond_without openblas
-  %bcond_without pcre2
+  %bcond_with    pcre2
 %endif
 
 # fails to build atm
@@ -114,7 +114,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %endif
 
 %if 0%{?suse_version} < 1500
@@ -129,6 +129,7 @@ Conflicts:      rspamd-client
 %endif
 BuildRequires:  apparmor-abstractions
 Requires:       apparmor-abstractions
+Requires(pre):  shadow
 
 %description
 Rspamd is a spam filtering system that allows evaluation of messages

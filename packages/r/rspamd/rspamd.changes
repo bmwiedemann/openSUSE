@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  2 13:55:50 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- use systemd_ordering 
+
+-------------------------------------------------------------------
+Wed Jun  2 13:55:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add Requires(pre) to shadow to fix %pre scriptlet
+
+-------------------------------------------------------------------
+Wed Jun  2 00:19:41 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable PCRE2 for now:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1182864#c10
+
+-------------------------------------------------------------------
 Tue Mar  2 11:04:58 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build with lua 5.4:
