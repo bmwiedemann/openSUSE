@@ -26,4 +26,12 @@
   behaviour</comment>
     <requestid>888500</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ddc2ea1af85b7b67f79a30b52a5fd355</srcmd5>
+    <version>6.0.0</version>
+    <time>1623268283</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897457</requestid>
+  </revision>
 </revisionlist>
