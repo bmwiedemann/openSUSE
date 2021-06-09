@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-io
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%define base_name       io
-%define short_name      commons-%{base_name}
-%bcond_with tests
+%define base_name  io
+%define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
@@ -37,9 +36,6 @@ Provides:       %{short_name} = %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
 
 %description
 Commons-IO contains utility classes, stream implementations,
@@ -58,13 +54,12 @@ This package provides %{summary}.
 cp %{SOURCE2} build.xml
 
 %pom_remove_parent
+%pom_remove_dep :junit-bom
+%pom_change_dep -r -f ::::: :::::
 
 %build
 %{ant} \
 	-Dcompiler.source=1.8 \
-%if %{without tests }
-	-Dtest.skip=true \
-%endif
     jar javadoc
 
 %install
