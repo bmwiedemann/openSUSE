@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:38:46 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.2:
+  + Disable keyboard shortcuts to switch map styles when there's no
+    aerial tiles defined
+  + Fix a crash when starting up with last-used map type being
+    aerial and no aerial tiles are defined
+  + Increase place bubble max width to allow for longer translated
+    strings for the "Directions" button
+  + Fix warning from GtkListStore when adding route points from the
+    context menu
+
+-------------------------------------------------------------------
 Sun May  2 19:45:08 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 40.1:
