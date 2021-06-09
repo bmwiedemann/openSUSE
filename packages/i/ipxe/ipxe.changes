@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Fri Jun 04 16:04:51 UTC 2021 - bwiedemann@suse.com
+
+- use xorrisofs for creating iso
+- Update to version 1.20.1+git20210604.065dce8d:
+  * [ath5k] Avoid returning uninitialised data on EEPROM read errors
+  * [crypto] Add memory output constraints for big-integer inline assembly
+  * [build] Use SOURCE_DATE_EPOCH for isohybrid MBR ID if it exists
+  * [build] Use SOURCE_DATE_EPOCH for .iso timestamps if it exists
+  * [cpio] Split out bzImage initrd CPIO header construction
+  * [x509] Use case-insensitive comparison for certificate names
+  * [libc] Add strncasecmp()
+  * [bnxt] Use hexadecimal values in PCI_ROM entries
+  * [intel] Add PCI ID for I219-V and -LM 10 to 15
+  * [image] Support archive image formats independently of "imgextract" command
+  * [image] Propagate trust flag to extracted archive images
+  * [image] Allow single-member archive images to be executed transparently
+  * [undi] Read TSC only when profiling
+  * [rng] Check for TSC support before using RTC entropy source
+  * [prefix] Specify i486 architecture for LZMA decompressor
+  * [gzip] Add support for gzip archive images
+  * [zlib] Add support for zlib archive images
+  * [image] Add "imgextract" command for extracting archive images
+  * [image] Provide image_set_len() utility function
+  * [cloud] Allow multiple images to be imported simultaneously
+  * [cloud] Attempt to include CPUID_SETTINGS only for x86 builds
+  * [cloud] Autodetect CPU architecture from AMI disk image
+  * [cloud] Use a sortable default AMI name
+  * [cloud] Add ability to generate Dokuwiki table of AMI images
+  * [settings] Add --timeout option to "read" command
+  * [readline] Add an optional timeout to readline_history()
+  * [build] Fix genfsimg to build ISO with long filenames
+  * [xen] Avoid infinite loop on allocation failure in xenstore_response()
+  * [xen] Support scatter-gather to allow for jumbo frames
+  * [int13] Do not report INT 13 extension support for emulated floppies
+  * [cloud] Enable "poweroff" command in cloud images
+  * [netdevice] Ensure driver transmit() and poll() will not be re-entered
+  * [pci] Avoid scanning nonexistent buses when using PCIAPI_DIRECT
+  * [intel] Add additional PCI device ID to table
+  * [dhcp] Handle DHCPNAK by returning to discovery state
+  * [linux] Do not assume that stat() works on sysfs files
+  * [linux] Validate length of ACPI table read from sysfs
+  * [linux] Place -lslirp at end of linker search list
+  * [linux] Use fstat() rather than statx()
+  * [linux] Use generic sysfs mechanism to read SMBIOS + ACPI tables
+  * [linux] Add a generic function for reading files from sysfs
+  * [linux] Free cached ACPI tables on shutdown
+  * [dns] Reduce debug verbosity for DNS server list
+  * [linux] Allow arbitrary settings to be applied to Linux devices
+  * [linux] Add missing pci_num_bus() stub
+  * [slirp] Add libslirp driver for Linux
+  * [linux] Provide ACPI settings via /sys/firmware/acpi/tables
+  * [acpi] Allow for platforms that provide ACPI tables individually
+  * [acpi] Eliminate redundant acpi_find_rsdt() in acpi_sx()
+  * [acpi] Use a fixed colour for debug messages
+  * [linux] Use host glibc system call wrappers
+  * [linux] Add a prefix to all symbols to avoid future name collisions
+  * [bitops] Provide an explicit operand size for bit test instructions
+  * [librm] Test for FXSAVE/FXRSTOR instruction support
+  * [librm] Add missing __asmcall on init_idt()
+  * [prefix] Add a generic raw image prefix
+  * [initrd] Allow for zero-length initrd files
+  * [cloud] Do not enable serial console on EFI platforms
+  * [pxe] Split out platform-independent portions of cachedhcp.c
+  * [ath5k] Add missing AR5K_EEPROM_READ in ath5k_eeprom_read_turbo_modes
+  * [cloud] Enable IPv6 and HTTPS in cloud boot images
+  * [cloud] Add utility for importing images to AWS EC2
+  * [cloud] Use PCIAPI_DIRECT for cloud images
+  * [ena] Switch to two-phase reset mechanism
+  * [ci] Disable redundant scheduled execution of Coverity Scan
+  * [ci] Disable Travis CI
+  * [ci] Add GitHub action for Coverity Scan
+  * [ci] Add GitHub action for build testing
+  * [contrib] Update bochsrc.txt to work with current versions
+  * [hermon] Add support for ConnectX-3 based cards
+  * [autoboot] Avoid closing and immediately reopening network device
+  * [hermon] Avoid parsing length field on completion errors
+  * [hermon] Make hermon_dump_xxx() functions no-ops on non-debug builds
+  * [hermon] Minimise reset time
+  * [hermon] Throttle debug output when sensing port type
+  * [hermon] Add a debug notice when initialization is complete
+  * [hermon] Add support for port management event
+  * [hermon] Adjust Ethernet work queue size
+  * [hermon] Use reset value suitable for ConnectX-3
+  * [hermon] Clean up whitespace in hermon.c
+  * [iscsi] Update link to iBFT reference manual
+  * [hermon] Limit link poll frequency in DOWN state
+  * [hermon] Perform clean MPT unmap on device shutdown
+  * [hermon] Use Ethernet MAC as eIPoIB local EMAC
+  * [hermon] Increase polling rate for command completions
+  * [hermon] Add event queue debug functions
+  * [hermon] Increase command timeout from 2 to 10 seconds
+  * [hermon] Add assorted debug error messages
+  * [hermon] Show "issuing command" messages only at DBGLVL_EXTRA
+  * [hermon] Reorganize PCI ROM list and document well-known product names
+  * [golan] Backport typo fix in nodnic_prm.h: s/HERMON/NODNIC/
+  * [arbel] Clean up whitespace in MT25218_PRM.h header
+  * [hermon] Clean up whitespace in MT25408_PRM.h header
+  * [image] Implicitly trust first embedded image
+  * [infiniband] Require drivers to specify the number of ports
+  * [ifmgmt] Make "ifstat" show the link-layer protocol for each netdev
+  * [cmdline] Expose "iflinkwait" as a command
+  * [image] Provide image_memory()
+  * [travis] Update to current default build environment
+  * [tftp] Allow for profiling of client and server turnaround times
+  * [image] Add the "imgmem" command
+  * [image] Provide image_set_data()
+  * [ipv6] Defer router discovery timeout while link is blocked
+  * [dhcp] Allow for links that remained blocked for up to three minutes
+  * [eap] Treat an EAP Request-Identity as indicating a blocked link
+  * [eapol] Replace EAPoL code
+  * [dhcp] Continue transmitting DHCPDISCOVER while link is blocked
+  * [isa] Add missing #include <config/isa.h>
+  * [xhci] Avoid false positive Coverity warning
+  * [xhci] Show meaningful error messages after command failures
+  * [xhci] Fail attempts to issue concurrent commands
+  * [smbios] Add support for the 64-bit SMBIOS3 entry point
+  * [sfc] Update email addresses
+  * [x509] Clarify debug message for an untrusted X.509 issuer
+  * [golan] Add new PCI IDs
+  * [iphone] Add iPhone tethering driver
+  * [crypto] Allow private key to be specified as a TLS connection parameter
+  * [tls] Include root of trust within definition of TLS session
+  * [x509] Make root of trust a reference-counted structure
+  * [x509] Record root of trust used when validating a certificate
+  * [ocsp] Remove dummy OCSP certificate root
+  * [http] Hide HTTP transport-layer filter implementation details
+  * [asn1] Define ASN1_SHORT() for constructing short tagged values
+  * [asn1] Rename ASN1_OID_CURSOR to ASN1_CURSOR
+  * [asn1] Add constant for UTF-8 string tag
+  * [tls] Allow provision of a client certificate chain
+  * [tls] Use intf_insert() to add TLS to an interface
+  * [interface] Provide intf_insert() to insert a filter interface
+  * [interface] Ignore any attempts to plug in the null interface
+  * [xhci] Update driver to use DMA API
+  * [dma] Provide dma_umalloc() for allocating large DMA-coherent buffers
+  * [netdevice] Fix misleading comment on netdev_rx()
+  * [netdevice] Do not attempt to unmap a null I/O buffer
+  * [dma] Move I/O buffer DMA operations to iobuf.h
+  * [dma] Record DMA device as part of DMA mapping if needed
+  * [dma] Modify DMA API to simplify calculation of medial addresses
+  * [intelxl] Configure DMA mask as 64-bit
+  * [intel] Configure DMA mask as 64-bit
+  * [intelxl] Update driver to use DMA API
+  * [intelxl] Read PCI bus:dev.fn number from PFFUNC_RID register
+  * [intelxl] Read MAC address from PRTPM_SA[HL] instead of PRTGL_SA[HL]
+  * [intel] Use physical addresses in debug messages
+  * [realtek] Use physical addresses in debug messages
+  * [intel] Update driver to use DMA API
+  * [realtek] Update driver to use DMA API
+  * [dma] Define a DMA API to allow for non-flat device address spaces
+  * [malloc] Rename malloc_dma() to malloc_phys()
+  * [realtek] Reset NIC when closing interface if using legacy mode
+  * [infiniband] Allow SRP device to be described using an EFI device path
+  * [fcp] Allow Fibre Channel device to be described using an EFI device path
+  * [iscsi] Allow iSCSI device to be described using an EFI device path
+  * [aoe] Allow AoE device to be described using an EFI device path
+  * [http] Allow HTTP connection to be described using an EFI device path
+  * [usbblk] Allow USB block device to be described using an EFI device path
+  * [interface] Allow for the definition of an unused interface operation
+  * [ipv6] Reduce time spent waiting for router discovery
+  * [lacp] Ignore (and do not echo) trailing padding on received packets
+  * [lacp] Detect and ignore erroneously looped back LACP packets
+  * [usbblk] Add support for USB mass storage devices
+  * [usb] Move usbio driver to end of USB driver list
+  * [usb] Allow endpoints to be refilled to a specified upper limit
+  * [usb] Allow device halt to be cleared independently of host controller
+  * [ncm] Treat a zero divisor as indicating no alignment requirements
+  * [usb] Avoid integer underflow on malformed string descriptors
+  * [usb] Show debug message on device removal
+  * [usb] Reset control endpoints immediately after failure
+  * [pci] Update drivers to use pci_ioremap()
+  * [pci] Define pci_ioremap() for mapping PCI bus addresses
+
+-------------------------------------------------------------------
 Tue Sep  1 09:55:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update url 

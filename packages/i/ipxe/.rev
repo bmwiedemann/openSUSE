@@ -89,4 +89,19 @@ to make it compile on Factory again</comment>
     <comment>- update url</comment>
     <requestid>831026</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4498f2444f81384b9ede8f6a5524077b</srcmd5>
+    <version>1.20.1+git20210604.065dce8d</version>
+    <time>1623268324</time>
+    <user>dimstar_suse</user>
+    <comment>shortened changelog, fixed build
+
+use xorrisofs for creating iso
+- Update to version 1.20.1+git20210604.065dce8d:
+  * [ath5k] Avoid returning uninitialised data on EEPROM read errors
+  * [crypto] Add memory output constraints for big-integer inline assembly
+  * [build] Use SOURCE_DATE_EPOCH for isohybrid MBR ID if it exists
+  * [build] Use SOURCE_DATE_EPOCH for .iso timestamps if it exists</comment>
+    <requestid>898356</requestid>
+  </revision>
 </revisionlist>

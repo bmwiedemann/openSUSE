@@ -17,14 +17,15 @@
 
 
 Name:           ipxe
-Version:        1.20.1+git20200817.ef2c844d
+Version:        1.20.1+git20210604.065dce8d
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  /usr/bin/mkisofs
+BuildRequires:  xorriso
+BuildRequires:  syslinux
 BuildRequires:  binutils-devel
 %ifarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
