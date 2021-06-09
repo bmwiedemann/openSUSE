@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:20:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.3.0:
+  - quotev.com: use_cloudscraper:true by default.
+  - Update translations
+  - adapter_bdsmlibrarycom: Set author Anonymous when author not found
+    instead of sys.exit(). Closes #696
+  - Fix XF authorUrl and author_avatar_cover feature. Closes #695
+  - Catch exceptions in word count.
+  - Add CLI --color option for warns and fails. Closes #692
+  - Report browser cache load fail as such.
+
+-------------------------------------------------------------------
 Wed May  5 09:05:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.2.0:
