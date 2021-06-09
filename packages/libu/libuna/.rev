@@ -94,4 +94,14 @@ Summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184991 from greg
     <comment></comment>
     <requestid>855519</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bee686b3de06fe5986dac49cadb1c207</srcmd5>
+    <version>20210418</version>
+    <time>1623268312</time>
+    <user>dimstar_suse</user>
+    <comment>try #n
+
+- Update to snapshot 20210418 (2939fe8f)</comment>
+    <requestid>898008</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package libuna
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,34 @@
 #
 
 
-Name:           libuna
-%define lname	libuna1
-%define timestamp 20201204
-Version:        0~%timestamp
+%if "@BUILD_FLAVOR@" != ""
+%define pprefix @BUILD_FLAVOR@-
+%define psuffix -@BUILD_FLAVOR@
+%else
+%define psuffix %nil
+%endif
+%define lname libuna1
+
+Name:           libuna%psuffix
+Version:        20210418
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/libyal/libuna/wiki
-Source:         https://github.com/libyal/libuna/releases/download/%timestamp/%{name}-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libuna/
+Source:         libuna-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdatetime)
-BuildRequires:  pkgconfig(libcerror) >= 20150101
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20121224
-# Using versions from OBS fails, tested 1/8/2015
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdatetime) >= 20200510
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+%if "@BUILD_FLAVOR@" != "mini"
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+%endif
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
 
 %description
 libuna is a library to support Unicode and ASCII (byte string)
@@ -41,11 +51,14 @@ conversions. It currently supports: 7-bit ASCII, ISO 8859-{1..15},
 Windows 874, 932, 936, 949, 950, 1250, 1251, 1252, 1253, 1254, 1255,
 1256, 1257, 1258, KOI8-R, KOI8-U, UTF-7, UTF-8, UTF-16, UTF-32.
 
-%package -n %lname
+%package -n %lname%psuffix
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 Group:          System/Libraries
+%if "@BUILD_FLAVOR@" == ""
+Obsoletes:      %lname-mini
+%endif
 
-%description -n %lname
+%description -n %lname%psuffix
 libuna is a library to support Unicode and ASCII (byte string)
 conversions.
 
@@ -59,7 +72,10 @@ Several tools for converting Unicode and ASCII (byte stream) based text.
 %package devel
 Summary:        Development files for libuna, a library to support Unicode/ASCII conversions
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Requires:       %lname%psuffix = %version
+%if "@BUILD_FLAVOR@" == ""
+Obsoletes:      libuna-mini-devel
+%endif
 
 %description devel
 libuna is a library to support Unicode and ASCII (byte string)
@@ -69,32 +85,35 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libuna.
 
 %prep
-%setup -qn libuna-%timestamp
+%autosetup -p1 -n libuna-%version
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure \
+%if "@BUILD_FLAVOR@" == "mini"
+	--disable-tools \
+%endif
+	--disable-static --enable-wide-character-type
+%make_build
 
 %install
 %make_install
 rm -f "%{buildroot}/%{_libdir}"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%post   -n %lname%psuffix -p /sbin/ldconfig
+%postun -n %lname%psuffix -p /sbin/ldconfig
 
-%files -n %lname
-%defattr(-,root,root)
+%files -n %lname%psuffix
 %license COPYING
-%doc AUTHORS ChangeLog ABOUT-NLS
 %{_libdir}/libuna.so.1*
 
+%if "@BUILD_FLAVOR@" != "mini"
 %files tools
-%defattr(-,root,root)
 %{_bindir}/una*
 %{_mandir}/man1/unaexport.1*
+%endif
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libuna*
 %{_libdir}/libuna.so
 %{_libdir}/pkgconfig/libuna.pc
