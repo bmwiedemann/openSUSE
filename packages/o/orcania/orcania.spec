@@ -19,7 +19,7 @@
 
 %define sover 2_2
 Name:           orcania
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        MISC function Library
 License:        LGPL-2.1-or-later
