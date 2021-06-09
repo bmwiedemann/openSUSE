@@ -45,6 +45,7 @@ Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/c
 Source11:       chrony-tmpfiles
 Source12:       pool.conf.suse
 Source13:       pool.conf.opensuse
+Source14:       system-user-chrony.conf
 Source99:       series
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         chrony-config.patch
@@ -65,10 +66,10 @@ BuildRequires:  pps-tools-devel
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  sysuser-tools
 Recommends:     logrotate
 Requires(post): %fillup_prereq
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
+%sysusers_requires
 Requires:       %name-pool
 Recommends:     %name-pool-nonempty
 Provides:       ntp-daemon
@@ -105,7 +106,7 @@ Summary:        Chrony preconfiguration for SUSE
 Group:          Productivity/Networking/Other
 Provides:       %name-pool = %version
 Provides:       %name-pool-nonempty
-Conflicts:      otherproviders(%name-pool)
+Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 RemovePathPostfixes: .suse
@@ -119,7 +120,7 @@ Summary:        Chrony preconfiguration for openSUSE
 Group:          Productivity/Networking/Other
 Provides:       %name-pool = %version
 Provides:       %name-pool-nonempty
-Conflicts:      otherproviders(%name-pool)
+Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-openSUSE)
@@ -133,7 +134,7 @@ default.
 Summary:        Empty pool preconfiguration for chrony
 Group:          Productivity/Networking/Other
 Provides:       %name-pool = %version
-Conflicts:      otherproviders(%name-pool)
+Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-SLE)
@@ -183,6 +184,7 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
   --with-sendmail=%{_sbindir}/sendmail      \
   --enable-ntp-signd
 make %{?_smp_mflags} all docs
+%sysusers_generate_pre %{SOURCE14} chrony
 
 %install
 %make_install
@@ -229,6 +231,9 @@ touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}
 install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}/etc/chrony.d
 touch %{buildroot}/etc/chrony.d/pool.conf.empty
 
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/
+
 %if %{with testsuite}
 %ifnarch %ix86
 %check
@@ -240,9 +245,7 @@ make %{?_smp_mflags} check
 %endif
 %endif
 
-%pre
-getent group %{name} >/dev/null || groupadd -r %{name}
-getent passwd %{name} >/dev/null || useradd -r -g %{name} -d "%{_localstatedir}/lib/chrony" -s /bin/false -c "Chrony Daemon" %{name}
+%pre -f chrony.pre
 %service_add_pre chronyd.service chrony-wait.service
 
 %preun
@@ -268,6 +271,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d "%{_localstatedir}/
 %dir %{_sysconfdir}/dhcp/
 %dir %{_sysconfdir}/dhcp/dhclient.d/
 %{_sysconfdir}/dhcp/dhclient.d/chrony.sh
+%{_sysusersdir}/system-user-chrony.conf
 %{_bindir}/chronyc
 %{_sbindir}/chronyd
 %{_libexecdir}/%name

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 09:10:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+- Remove otherproviders, not needed anymore
+
+-------------------------------------------------------------------
 Tue Jun  1 12:53:23 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Update to 4.1
