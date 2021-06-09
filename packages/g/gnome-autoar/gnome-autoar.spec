@@ -17,7 +17,7 @@
 
 
 Name:           gnome-autoar
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later

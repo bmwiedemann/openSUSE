@@ -67,4 +67,12 @@
     <comment>Update to 0.3.2 (forwarded request 890090 from dimstar)</comment>
     <requestid>890149</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e74847d01b522daffdd5db380ada1eff</srcmd5>
+    <version>0.3.3</version>
+    <time>1623268296</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 897403 from iznogood)</comment>
+    <requestid>897539</requestid>
+  </revision>
 </revisionlist>
