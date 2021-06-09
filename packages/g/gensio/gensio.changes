@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  5 10:42:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.7
+  * Fix: multiple connections to UDP sockets not work correctly.
+- Update to version 2.2.6
+  * Mostly small bug fixes.
+
+-------------------------------------------------------------------
 Thu May 13 11:10:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.5

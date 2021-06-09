@@ -25,7 +25,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.2.5
+Version:        2.2.7
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
