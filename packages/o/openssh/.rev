@@ -1497,4 +1497,15 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
   glibc 2.33+.</comment>
     <requestid>872342</requestid>
   </revision>
+  <revision rev="151" vrev="5">
+    <srcmd5>7c203692961e0bcea53720a2c031354e</srcmd5>
+    <version>8.4p1</version>
+    <time>1623268260</time>
+    <user>dimstar_suse</user>
+    <comment>- Change vendor configuration dir from /usr/share/ssh/ to
+  /usr/etc/ssh/.
+- Remove upgrade enablement hack. This has been fixed in
+  systemd-rpm-macros (bsc#1180083). (forwarded request 887559 from hpjansson)</comment>
+    <requestid>888799</requestid>
+  </revision>
 </revisionlist>

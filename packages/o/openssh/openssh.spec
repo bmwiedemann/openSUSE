@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define sandbox_seccomp 0
 %ifnarch ppc
 %define sandbox_seccomp 1
@@ -30,8 +29,6 @@
 %define _appdefdir  %( grep "configdirspec=" $( which xmkmf ) | sed -r 's,^[^=]+=.*-I(.*)/config.*$,\\1/app-defaults,' )
 %define CHECKSUM_SUFFIX .hmac
 %define CHECKSUM_HMAC_KEY "HMAC_KEY:OpenSSH-FIPS@SLE"
-%define _tmpenableddir  %{_localstatedir}/lib/sshd
-%define _tmpenabledfile %{_tmpenableddir}/is-enabled.rpmtmp
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -59,7 +56,6 @@ Source11:       README.FIPS
 Source12:       cavs_driver-ssh.pl
 Source13:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc#/openssh.keyring
 Source14:       sysusers-sshd.conf
-Patch0:         openssh-7.7p1-allow_root_password_login.patch
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
 Patch4:         openssh-7.7p1-eal3.patch
@@ -112,6 +108,7 @@ Patch43:        openssh-reenable-dh-group14-sha1-default.patch
 Patch44:        openssh-fix-ssh-copy-id.patch
 Patch45:        openssh-8.4p1-ssh_config_d.patch
 Patch46:        openssh-whitelist-syscalls.patch
+Patch47:        openssh-8.4p1-vendordir.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -298,7 +295,7 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --target=%{_target_cpu}-suse-linux
 
 %make_build
-%sysusers_generate_pre %{SOURCE14} sshd
+%sysusers_generate_pre %{SOURCE14} sshd sshd.conf
 
 %install
 %make_install
@@ -322,6 +319,12 @@ install -m 644 %{SOURCE8} %{buildroot}%{_fillupdir}
 install -m 755 contrib/ssh-copy-id %{buildroot}%{_bindir}
 install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
+
+# Move /etc to /usr/etc/ssh
+mkdir -p %{buildroot}%{_distconfdir}/ssh
+mv %{buildroot}%{_sysconfdir}/ssh/moduli %{buildroot}%{_distconfdir}/ssh/
+mv %{buildroot}%{_sysconfdir}/ssh/ssh_config %{buildroot}%{_distconfdir}/ssh/
+mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
 
 %if 0%{?suse_version} < 1550
 # install firewall definitions
@@ -358,52 +361,17 @@ done
 
 }}
 
-%pre
-# Remember whether the sshd service was enabled prior to an upgrade. This
-# is needed when upgrading to a split-off openssh-server package. The
-# %%service_add_post scriptlet (in %%post server) will see it as a new service
-# and apply the preset, disabling it. We need to reenable it afterwards if
-# necessary.
-mkdir -p %{_tmpenableddir} || :
-if [ -x %{_bindir}/systemctl ]; then
-    %{_bindir}/systemctl is-enabled sshd > %{_tmpenabledfile} || :
-else
-    if find %{_sysconfdir}/init.d/rc[35].d -type l -regex '.*/S[0-9]+sshd' \
-        -exec readlink -f {} \; | grep '/etc/init.d/sshd$' >/dev/null 2>&1
-    then echo "enabled" > %{_tmpenabledfile} || :; fi
-fi
-
 %pre server -f sshd.pre
 %if %{defined _distconfdir}
 # move outdated pam.d/*.rpmsave file away
 test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd.rpmsave.old ||:
 %endif
 
-# See %%pre.
-mkdir -p %{_tmpenableddir} || :
-if [ -x %{_bindir}/systemctl ]; then
-    %{_bindir}/systemctl is-enabled sshd > %{_tmpenabledfile} || :
-else
-    if find %{_sysconfdir}/init.d/rc[35].d -type l -regex '.*/S[0-9]+sshd' \
-        -exec readlink -f {} \; | grep '/etc/init.d/sshd$' >/dev/null 2>&1
-    then echo "enabled" > %{_tmpenabledfile} || :; fi
-fi
-
 %service_add_pre sshd.service
 
 %post server
 %{fillup_only -n ssh}
 %service_add_post sshd.service
-%set_permissions %{_sysconfdir}/ssh/sshd_config
-
-# Work around %%service_add_post disabling the service on upgrades where
-# the package name changed.
-if [ -x %{_bindir}/systemctl ] && [ -f %{_tmpenabledfile} ] \
-    && [ x$(cat %{_tmpenabledfile} || :) == "xenabled" ]; then
-    systemctl enable sshd || :
-fi
-
-rm -f %{_tmpenabledfile}
 
 %preun server
 %service_del_preun sshd.service
@@ -428,9 +396,6 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %triggerin -n openssh-fips -- %{name} = %{version}-%{release}
 %restart_on_update sshd
 
-%verifyscript server
-%verify_permissions -e %{_sysconfdir}/ssh/sshd_config
-
 %files
 # openssh is an empty package that depends on -clients and -server,
 # resulting in a clean upgrade path from prior to the split even when
@@ -440,7 +405,8 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %license LICENCE
 %doc README.SUSE README.kerberos README.FIPS ChangeLog OVERVIEW README TODO CREDITS
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
-%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/moduli
+%attr(0755,root,root) %dir %{_distconfdir}/ssh
+%attr(0600,root,root) %{_distconfdir}/ssh/moduli
 %attr(0444,root,root) %{_mandir}/man1/ssh-keygen.1*
 %attr(0444,root,root) %{_mandir}/man5/moduli.5*
 %attr(0755,root,root) %{_bindir}/ssh-keygen*
@@ -451,7 +417,8 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
 %dir %attr(0755,root,root) %{_localstatedir}/lib/sshd
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/sshd_config.d
-%verify(not mode) %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
+%attr(0755,root,root) %dir %{_distconfdir}/ssh
+%attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/pam.d/sshd
 %else
@@ -474,7 +441,7 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 
 %files clients
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
-%verify(not mode) %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
+%attr(0644,root,root) %{_distconfdir}/ssh/ssh_config
 %attr(0755,root,root) %{_bindir}/ssh
 %attr(0755,root,root) %{_bindir}/scp*
 %attr(0755,root,root) %{_bindir}/sftp*
