@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:46:18 UTC 2021 - simmphonie@opensuse.org
+
+- add john-1.9.0-jumbo-gcc11.patch to fix alignment compile errors
+  on GCC 11 gh#4611
+
+-------------------------------------------------------------------
 Sat Mar 13 10:10:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - enable ztex support (fix usb dependency): 
