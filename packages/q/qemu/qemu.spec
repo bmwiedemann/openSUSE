@@ -1,5 +1,5 @@
 #
-# spec file for package qemu
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -1323,7 +1323,6 @@ cd %blddir
 	--disable-sdl \
 	--disable-sdl-image \
 	--enable-seccomp \
-	--enable-sheepdog \
 	--enable-smartcard \
 	--enable-snappy \
 	--enable-spice \
@@ -1393,7 +1392,6 @@ cd %blddir
 	--disable-qcow1 \
 	--disable-qed \
 	--disable-replication \
-	--disable-sheepdog \
 	--disable-safe-stack \
 	--disable-slirp \
 	--disable-tpm \

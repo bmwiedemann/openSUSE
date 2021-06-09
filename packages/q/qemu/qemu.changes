@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  3 09:43:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- disable sheepdog, it was dropped upstream (
+  https://gitlab.com/qemu-project/qemu/-/commit/09ec85176e4095be15f233ebc870d5680123f024)
+  and fails to build with gcc 11 on non-x86
+
+-------------------------------------------------------------------
 Mon May 24 23:20:04 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Fix CVE-2021-3527 in usb/redir:
