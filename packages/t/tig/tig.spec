@@ -17,7 +17,7 @@
 
 
 Name:           tig
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        An ncurses-based text-mode interface for git
 License:        GPL-2.0-or-later
