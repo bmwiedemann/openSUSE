@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:46:55 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Adding missing brackets in csh script.
+
+-------------------------------------------------------------------
+Thu Jun  3 23:19:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Modify generating of /etc/profile.d/lmod.* to allow use of existing
+  $MODULEPATH environmental variable (bsc#1159563).
+
+-------------------------------------------------------------------
 Fri May  7 13:34:06 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Move macros out of /etc to the standard rpm macro directory

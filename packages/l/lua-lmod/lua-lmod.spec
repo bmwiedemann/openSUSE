@@ -195,9 +195,9 @@ export LMOD_COLORIZE=no
 export LMOD_PREPEND_BLOCK=normal
 
 if [ \$EUID -eq 0 ]; then
-    export MODULEPATH=%{?OHPC_MODULES:%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}:}%{lua_lmod_admin_modulesdir}:%{lua_lmod_modulesdir}
+    export MODULEPATH=\${MODULEPATH:+\${MODULEPATH}:}%{?OHPC_MODULES:%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}:}%{lua_lmod_admin_modulesdir}:%{lua_lmod_modulesdir}
 else
-    export MODULEPATH=%{?OHPC_MODULES:%{OHPC_MODULES}:}%{lua_lmod_modulesdir}
+    export MODULEPATH=\${MODULEPATH:+\${MODULEPATH}:}%{?OHPC_MODULES:%{OHPC_MODULES}:}%{lua_lmod_modulesdir}
 fi
 
 export BASH_ENV=%{_datadir}/lmod/%{version}/init/bash
@@ -227,10 +227,16 @@ setenv LMOD_FULL_SETTARG_SUPPORT "no"
 setenv LMOD_COLORIZE "no"
 setenv LMOD_PREPEND_BLOCK "normal"
 
-if ( \`id -u\` == "0" ) then
-   setenv MODULEPATH "%{?OHPC_MODULES:%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}:}%{lua_lmod_admin_modulesdir}:%{lua_lmod_modulesdir}"
+if ( \${?MODULEPATH} ) then
+   setenv MODULEPATH "\${MODULEPATH}:"
 else
-   setenv MODULEPATH "%{?OHPC_MODULES:%{OHPC_MODULES}:}%{lua_lmod_modulesdir}"
+   setenv MODULEPATH ""
+endif
+
+if ( \`id -u\` == "0" ) then
+   setenv MODULEPATH "\${MODULEPATH}%{?OHPC_MODULES:%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}:}%{lua_lmod_admin_modulesdir}:%{lua_lmod_modulesdir}"
+else
+   setenv MODULEPATH "\${MODULEPATH}%{?OHPC_MODULES:%{OHPC_MODULES}:}%{lua_lmod_modulesdir}"
 endif
 
 # Initialize modules system

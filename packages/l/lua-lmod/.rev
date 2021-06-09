@@ -335,4 +335,15 @@
 - Remove shebang and execute bit from init scripts.</comment>
     <requestid>891434</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>960c43225554f591680ea864fb45a9ca</srcmd5>
+    <version>8.4.28</version>
+    <time>1623268304</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding missing brackets in csh script.
+
+- Modify generating of /etc/profile.d/lmod.* to allow use of existing
+  $MODULEPATH environmental variable (bsc#1159563).</comment>
+    <requestid>898370</requestid>
+  </revision>
 </revisionlist>

@@ -7,10 +7,16 @@ References:
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 ---
-diff -Nrua a/messageDir/de.lua b/messageDir/de.lua
+---
+ messageDir/de.lua |    1 -
+ messageDir/en.lua |    1 -
+ messageDir/es.lua |    1 -
+ messageDir/fr.lua |    2 --
+ 4 files changed, 5 deletions(-)
+
 --- a/messageDir/de.lua
 +++ b/messageDir/de.lua
-@@ -105,7 +105,6 @@
+@@ -106,7 +106,6 @@ Verwenden Sie folgendes Kommando, um das
  
    $ module swap %{oldName} %{fullName}
  
@@ -18,10 +24,9 @@ diff -Nrua a/messageDir/de.lua b/messageDir/de.lua
  ]==],
       e_Illegal_Load        = nil,
       e_Illegal_option      = nil,
-diff -Nrua a/messageDir/en.lua b/messageDir/en.lua
 --- a/messageDir/en.lua
 +++ b/messageDir/en.lua
-@@ -118,7 +118,6 @@
+@@ -125,7 +125,6 @@ To correct the situation, please execute
  
    $  module swap %{oldName} %{fullName}
  
@@ -29,10 +34,9 @@ diff -Nrua a/messageDir/en.lua b/messageDir/en.lua
  ]==],
       e_Illegal_Load        = [==[The following module(s) are illegal: %{module_list}
  Lmod does not support modulefiles that start with two or more underscores
-diff -Nrua a/messageDir/es.lua b/messageDir/es.lua
 --- a/messageDir/es.lua
 +++ b/messageDir/es.lua
-@@ -83,7 +83,6 @@
+@@ -84,7 +84,6 @@ Para solucionar esta situación, introdu
  
    $  module swap %{oldName} %{fullName}
  
@@ -40,10 +44,9 @@ diff -Nrua a/messageDir/es.lua b/messageDir/es.lua
  ]==],
       e_Illegal_option      = nil,
       e_Illegal_Load        = nil,
-diff -Nrua a/messageDir/fr.lua b/messageDir/fr.lua
 --- a/messageDir/fr.lua
 +++ b/messageDir/fr.lua
-@@ -110,8 +110,6 @@
+@@ -111,8 +111,6 @@ Pour corriger le problème, vous pouvez
  
    $  module swap %{oldName} %{fullName}
  
@@ -52,4 +55,3 @@ diff -Nrua a/messageDir/fr.lua b/messageDir/fr.lua
  ]==],
       e_Illegal_Load      = nil,
       e_Illegal_option    = nil,
-
