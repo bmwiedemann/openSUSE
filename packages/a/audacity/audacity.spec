@@ -21,7 +21,7 @@ Version:        3.0.2
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound
+Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 #Source:         https://www.fosshub.com/Audacity.html/%%{name}-minsrc-%%{version}.tar.xz
@@ -144,12 +144,12 @@ rm -rf %{buildroot}%{_datadir}/doc
 cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
 
 # Why make install installs these is a mystery
-rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu-suse-nostl.so.4.0.0
-rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_net-suse-nostl.so.4.0.0
-rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_xml-suse-nostl.so.4.0.0
-rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_core-suse-nostl.so.4.0.0
-rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_html-suse-nostl.so.4.0.0
-rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu-suse-nostl.so.*
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_net-suse-nostl.so.*
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_xml-suse-nostl.so.*
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_core-suse-nostl.so.*
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_html-suse-nostl.so.*
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
 
 %find_lang %{name}
 

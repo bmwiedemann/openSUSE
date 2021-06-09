@@ -884,4 +884,14 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
     <comment></comment>
     <requestid>887334</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>434f440c7a3a349c440be96626d512c1</srcmd5>
+    <version>3.0.2</version>
+    <time>1623268335</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build error for Leap 15.1 and 15.2.
+Remove spurious text from changes
+</comment>
+    <requestid>898346</requestid>
+  </revision>
 </revisionlist>
