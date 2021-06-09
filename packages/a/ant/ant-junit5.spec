@@ -1,7 +1,7 @@
 #
 # spec file for package ant-junit5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %bcond_without junit5
 %bcond_with antlr
 Name:           ant-junit5
-Version:        1.10.9
+Version:        1.10.10
 Release:        0
 Summary:        Optional junit tasks for ant
 License:        Apache-2.0
@@ -104,11 +104,13 @@ Apache Ant is a Java-based build tool.
 
 This package contains optional JUnit tasks for Apache Ant.
 %elif %{with junit5}
+
 %description
 Apache Ant is a Java-based build tool.
 
 This package contains optional JUnit5 tasks for Apache Ant.
 %else
+
 %description
 Apache Ant is a Java-based build tool. In theory, it is kind of like
 Make. Build description files are written in XML.

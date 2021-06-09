@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jun  3 16:17:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.10.10
+  * SCP (with sftp=true) task would fail if fetching file located
+    in root directory.
+  * Fixed: javac task would fail if the arguments file it
+    (internally) created didn't quote the # character.
+  * Make sure LegacyXmlResultFormatter encodes characters illegal
+    in XML the same way JUnit5's built-in formatter would.
+  * LegacyXmlResultFormatter no longer double-encodes <>& in
+    system-err and system-out.
+  * Fixes a bug in junitlauncher task's legacy-xml formatter,
+    where the testcase representing a @Parameterized JUnit4 test
+    wasn't being reported in the XML.
+  * Fixes a bug where the ant-testutil-sources.jar that gets
+    published to Maven central repository didn't contain any
+    source files.
+  * The <http> condition didn't follow redirects from http to https.
+  * ZipOutputStream now overrides write(int) in order to make sure
+    single byte writes get the same treatment as array writes.
+  * Fixes a potential deadlock in junitlauncher task when using
+    legacy-xml reporter.
+  * javaversion condition now has a new "atmost" attribute. See
+    the javaversion manual for more details
+  * The "listener" nested element of the "junitlauncher" task now
+    has a new "useLegacyReportingName" attribute which can be used
+    to control the test identifiers names that get reported by the
+    listener. See the junitlauncher manual for more details. Note that
+    this change also introduces a new "setUseLegacyReportingName" method
+    on the org.apache.tools.ant.taskdefs.optional.junitlauncher.TestResultFormatter
+    interface. This will break backward compatibility with any of your custom
+    result formatters which implemented this interface and such implementations
+    are now expected to implement this new method.
+  * A new attribute preserveduplicates allows <resourcelist> to
+    return the same resource multiple times when set to true.
+  * A new attribute filterbeforeconcat in <concat> can be used to
+    decide whether the filterchain should be applied to the
+    concatenated content (the default) or each nested resource
+    individually before concatenating them.
+  * The ssh tasks now share a new nested element additionalConfig that can
+    be used to set config values for the jsch Session used by the task.
+  * Added new discardOutput and discardError properties to redirector
+    and the exec, apply and java tasks which can be used to completely
+    discard any (error) output. This is a platform independent
+    alternative to directiong output to any kind of null device.
+  * junitlauncher now prints a more useful and instantaneous summary of
+    tests being run, closely matching the junit task's summary.
+
+-------------------------------------------------------------------
 Thu Oct  1 15:38:21 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.10.9
