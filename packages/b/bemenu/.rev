@@ -136,4 +136,13 @@
   * Various fixes</comment>
     <requestid>895277</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7115b1c4c9ba0fe264bb4cc2e43ee5c</srcmd5>
+    <version>0.6.2</version>
+    <time>1623268377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * Handle multiple seats (more) correctly</comment>
+    <requestid>898693</requestid>
+  </revision>
 </revisionlist>
