@@ -549,4 +549,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>892254</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>539d54dc564c792a92ccb35e5f0a9864</srcmd5>
+    <version>20210522</version>
+    <time>1623268365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210522</comment>
+    <requestid>898490</requestid>
+  </revision>
 </revisionlist>
