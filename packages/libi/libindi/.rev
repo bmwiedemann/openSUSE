@@ -384,4 +384,15 @@
     <comment></comment>
     <requestid>888425</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1ad36ccbee64b28e87d20548dabbe1ba</srcmd5>
+    <version>1.9.0</version>
+    <time>1623268359</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ioptron_dst_fix.patch (fix boo#1187058)
+  When using iOptron mounts and KStars is set to get time and location
+  from the mount itself, if DST is enabled then KStars is off by 1 hour.
+  This patch fixes this issue.</comment>
+    <requestid>898463</requestid>
+  </revision>
 </revisionlist>

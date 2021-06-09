@@ -6,5 +6,5 @@ level hardware drivers from high level front end clients. Clients that
 use the device drivers are completely unaware of the device
 capabilities and communicate with the device drivers and build a
 completely dynamic GUI based on the services provided by the device.</description>
-  <devel project="KDE:Extra" package="libindi"/>
+  <devel project="Application:Astrophotography" package="libindi"/>
 </package>
