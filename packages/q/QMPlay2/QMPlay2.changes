@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  7 21:25:43 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-youtube-search.patch as it is merged upstream
+- Removed 0001-fix-driver-crash.patch as it is merged upstream
+- Removed 0001-fix-kde-startup-warning.patch as it is merged upstream
+- Update to version 21.06.07
+   * use WASAPI via PortAudio on Windows (including exclusive mode),
+   * set default config directory to "~/.config/QMPlay2" (Linux),
+   * use QtDBus API for suspend instead of QProcess (Linux),
+   * improve playlist sorting for entries with numbers,
+   * VA-API fix for Vulkan and new Radeon/Mesa driver,
+   * fix setting the VDPAU driver path for AppImage,
+   * fix SVG icon engine warning after KDE update,
+   * enable bypass compositor by default (Vulkan),
+   * update YouTube browser for YouTube changes,
+   * fix downloading of some network streams,
+   * add PT_BR translations (fabianski7),
+   * store/restore radio station image,
+   * fix default Vulkan GPU on Linux,
+   * other minor fixes.
+
+-------------------------------------------------------------------
 Thu Apr  1 21:56:04 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-youtube-search.patch to fix YouTube Search not working

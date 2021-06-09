@@ -18,7 +18,7 @@
 %define __builder Ninja
 
 Name:             QMPlay2
-Version:          21.03.09
+Version:          21.06.07
 Release:          0
 Summary:          A Qt based media player, streamer and downloader
 License:          LGPL-3.0-or-later
@@ -27,12 +27,6 @@ URL:              https://github.com/zaps166/QMPlay2
 Source:           https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:           0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM
-Patch2:           0001-fix-kde-startup-warning.patch
-# PATCH-FIX-UPSTREAM
-Patch3:           0001-fix-driver-crash.patch
-# PATCH-FIX-UPSTREAM
-Patch4:           0001-fix-youtube-search.patch
 BuildRequires:    cmake >= 3.16
 BuildRequires:    gcc-c++
 BuildRequires:    ninja
@@ -74,6 +68,7 @@ Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
 Recommends:       youtube-dl
 Requires:         python > 3.0.0
+Requires:         /usr/bin/python
 
 %description
 QMPlay2 is a video player, it can play and stream all formats supported by
@@ -99,21 +94,15 @@ It's a development package for %{name}.
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
   -DUSE_GIT_VERSION=OFF \
-  -DUSE_EXTENSIONS=ON \
-  -DUSE_CHIPTUNE_SID=ON \
+  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+  -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
   -DUSE_GLSLC=OFF \
-  -DUSE_MEDIABROWSER=ON \
-  -DUSE_LASTFM=ON \
-  -DUSE_LYRICS=ON \
-  -DUSE_RADIO=ON \
-  -DUSE_YOUTUBE=ON \
 %if 0%{?suse_version} >= 1550
   -DUSE_PIPEWIRE=ON \
 %else
   -DUSE_PIPEWIRE=OFF \
 %endif
-  -DUSE_UPDATES=OFF \
-  -DUSE_YOUTUBEDL=ON
+  -DUSE_UPDATES=OFF
 
 %ninja_build
 
