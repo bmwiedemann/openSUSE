@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 18 09:35:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build by removing stray pyton single spec macros: this is a
+  pure application, written in python, not a python module.
+
+-------------------------------------------------------------------
 Sun Oct 25 21:30:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - prewikka 5.2.0:

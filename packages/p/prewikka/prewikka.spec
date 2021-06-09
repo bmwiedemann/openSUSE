@@ -1,7 +1,7 @@
 #
 # spec file for package prewikka
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ Requires:       xorg-x11-fonts
 Obsoletes:      prewikka-core < %{version}-%{release}
 Provides:       prewikka-core = %{version}-%{release}
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Prewikka is the graphical front-end analysis console for the Prelude
@@ -88,7 +87,7 @@ find %{buildroot} -name __pycache__ -exec rm -rfv {} +
 
 %find_lang %{name}
 
-%files -n python3-%{name}
+%files
 %license COPYING*
 %doc AUTHORS README NEWS HACKING.README
 %attr(0750, -,-) %dir %{_sysconfdir}/%{name}/
@@ -103,6 +102,6 @@ find %{buildroot} -name __pycache__ -exec rm -rfv {} +
 %{_bindir}/prewikka-cli
 %{_bindir}/prewikka-crontab
 
-%files -n %{name}-lang -f %{name}.lang
+%files lang -f %{name}.lang
 
 %changelog
