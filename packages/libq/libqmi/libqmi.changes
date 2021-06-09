@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:43:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.28.6
+  * New request/responses:
+    - dms: implement "Foxconn Set FCC authentication"
+      request/response.
+  * libqmi-glib:
+    - Fix transport detection in the 'wwan' subsystem.
+  * build:
+    - Fix build with GCC 11 and -Wincompatible-pointer-types.
+  * Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Sat May 15 08:13:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.28.4
