@@ -1,7 +1,7 @@
 #
 # spec file for package lime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%define soname  liblime
 %define sover   0
 Name:           lime
-Version:        4.4.0
+Version:        4.5.7
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
@@ -29,8 +30,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
-BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
-BuildRequires:  pkgconfig(belle-sip) >= 4.4.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(belle-sip) >= 4.5.0
 
 %description
 LIME is an encryption library for one-to-one and group instant
@@ -46,10 +47,10 @@ LIME offers two major security benefits to instant messaging users:
     cannot be decrypted by a third party, even if a key is
     compromised in the future.
 
-%package -n lib%{name}%{sover}
+%package -n %{soname}%{sover}
 Summary:        Instant Message End-to-End Encryption Library
 
-%description -n lib%{name}%{sover}
+%description -n %{soname}%{sover}
 LIME is an encryption library for one-to-one and group instant
 messaging, allowing users to exchange messages privately and
 asynchronously. It supports multiple devices per user and multiple
@@ -65,7 +66,7 @@ LIME offers two major security benefits to instant messaging users:
 
 %package devel
 Summary:        Development files for lime
-Requires:       lib%{name}%{sover} = %{version}
+Requires:       %{soname}%{sover} = %{version}
 Requires:       soci-devel
 Requires:       soci-sqlite3-devel
 
@@ -91,19 +92,23 @@ which will use lime.
 
 %install
 %cmake_install
+chmod -x %{buildroot}%{_datadir}/%{name}_tester/data/*.pem
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
+%post -n %{soname}%{sover} -p /sbin/ldconfig
 
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n %{soname}%{sover} -p /sbin/ldconfig
 
-%files -n lib%{name}%{sover}
+%files -n %{soname}%{sover}
 %license LICENSE.txt
-%doc AUTHORS.md CHANGELOG.md README.md
-%{_libdir}/lib%{name}.so.%{sover}*
+%{_libdir}/%{soname}.so.%{sover}*
 
 %files devel
+%license LICENSE.txt
+%doc AUTHORS.md CHANGELOG.md README.md
+%{_bindir}/%{name}*
 %{_includedir}/%{name}/
-%{_libdir}/lib%{name}.so
+%{_libdir}/%{soname}.so
 %{_datadir}/%{name}/
+%{_datadir}/%{name}_tester/
 
 %changelog
