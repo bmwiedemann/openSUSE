@@ -36,6 +36,7 @@
 %bcond_with    litehtml
 %endif
 %bcond_with    tnef
+%bcond_without oauth2
 Name:           claws-mail
 Version:        3.17.8
 Release:        0
@@ -47,6 +48,7 @@ Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{
 Patch0:         libcanberra-gtk3.patch
 # patch merged upstream but not part of a release
 Patch1:         claws-mail-Reworked-fixing-unsecure-command-line-invocation.patch
+Patch2:         claws-mail-oauth.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -57,7 +59,15 @@ BuildRequires:  gpgme-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  libcanberra-devel >= 0.6
 BuildRequires:  libcurl-devel
+%if %{with oauth2}
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  libtool
+BuildRequires:  libetpan-devel >= 1.9.4 
+BuildRequires:  pkgconfig(json-c)
+%else
 BuildRequires:  libetpan-devel >= 0.57
+%endif
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgdata-devel >= 0.17.2
@@ -163,11 +173,17 @@ This package contains header files for building plugins.
 %patch0 -p1
 %endif
 %patch1 -p0
+%if %{with oauth2}
+%patch2 -p0
+%endif
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
 
 %build
+%if %{with oauth2}
+autoreconf -fi
+%endif
 %configure \
         --docdir=%{_datadir}/claws-mail \
         --disable-static \
@@ -181,6 +197,9 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
 %else
         --disable-jpilot \
 %endif
+        %if %{with oauth2}
+        --enable-oauth2 \
+        %endif
         --enable-acpi_notifier-plugin \
         --enable-address_keeper-plugin \
         --enable-archive-plugin \

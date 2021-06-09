@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  2 13:07:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- added claws-mail-oauth.patch:
+  https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4339 
+  new BR: pkgconfig(json-c) and force libeptan to be at least
+  version 1.9.4, additionally we need autotools and libtool to
+  rebuild the configure script
+
+-------------------------------------------------------------------
 Sat Oct 24 15:42:53 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Additional cleanup of the template handling

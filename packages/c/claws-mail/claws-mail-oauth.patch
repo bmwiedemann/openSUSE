@@ -1,0 +1,921 @@
+diff --git configure.ac configure.ac
+index 855e921a9..93a6e94ad 100644
+--- configure.ac
++++ configure.ac
+@@ -258,6 +258,10 @@ AC_ARG_ENABLE(enchant,
+ 		[  --disable-enchant               Do not build Enchant support for spell-checking],
+ 		[enable_enchant=$enableval], [enable_enchant=yes])
+ 
++AC_ARG_ENABLE(oauth2,
++		[  --disable-oauth2                Do not build OAUTH2 support for authentication],
++		[enable_oauth2=$enableval], [enable_oauth2=yes])
++
+ AC_ARG_ENABLE(crash-dialog,
+ 		[  --enable-crash-dialog           Build crash dialog],
+ 		[enable_crash_dialog=$enableval], [enable_crash_dialog=no])
+@@ -613,6 +617,23 @@ if test $enable_enchant = yes; then
+ 	AC_SUBST(ENCHANT_LIBS)
+ fi
+ 
++AC_MSG_CHECKING([whether to enable OAUTH2])
++AC_MSG_RESULT($enable_oauth2)
++if test $enable_oauth2 = yes; then
++	PKG_CHECK_MODULES(OAUTH2, [libetpan >= 1.9.4, json-c, libcurl],
++	[
++		AC_SUBST(OAUTH2_LIBS)
++		AC_SUBST(OAUTH2_CFLAGS)
++		AC_DEFINE(HAVE_OAUTH2, 1, [Define if oauth2 is supported.])
++		echo "Building with OAUTH2 support"
++		enable_oauth2=yes
++	],
++	[
++		echo "Building without oauth2 support"
++		enable_oauth2=no
++	])
++fi
++
+ dnl want crash dialog
+ if test $enable_crash_dialog = yes; then
+ dnl check if GDB is somewhere
+@@ -2230,6 +2251,7 @@ echo "iconv              : $am_cv_func_iconv"
+ echo "compface           : $enable_compface"
+ echo "IPv6               : $enable_ipv6"
+ echo "enchant            : $enable_enchant"
++echo "oauth2             : $enable_oauth2"
+ echo "IMAP4              : $enable_libetpan"
+ echo "NNTP               : $enable_libetpan"
+ echo "Crash dialog       : $enable_crash_dialog"
+diff --git src/Makefile.am src/Makefile.am
+index d7929b259..944327b9c 100644
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -178,6 +178,7 @@ claws_mail_SOURCES = \
+ 	news.c \
+ 	news_gtk.c \
+ 	noticeview.c \
++	oauth2.c \
+ 	partial_download.c \
+ 	password.c \
+ 	password_gtk.c \
+@@ -297,6 +298,7 @@ claws_mailinclude_HEADERS = \
+ 	news.h \
+ 	news_gtk.h \
+ 	noticeview.h \
++	oauth2.h \
+ 	partial_download.h \
+ 	password.h \
+ 	password_gtk.h \
+@@ -607,7 +609,9 @@ claws_mail_LDADD = \
+ 	$(LIBETPAN_LIBS) \
+ 	$(DBUS_LIBS) \
+ 	$(SVG_LIBS) \
+-	$(CONTACTS_LIBS)
++	$(CONTACTS_LIBS) \
++	$(CURL_LIBS) \
++	$(OAUTH2_LIBS)
+ 
+ pixmapdir=$(datadir)/icons/hicolor/48x48/apps
+ 
+diff --git src/account.c src/account.c
+index d3d7d8241..8036b5f51 100644
+--- src/account.c
++++ src/account.c
+@@ -935,6 +935,9 @@ static void account_clone(GtkWidget *widget, gpointer data)
+ 	ACP_FASSIGN(use_nntp_auth_onconnect);
+ 	ACP_FDUP(userid);
+ 	ACP_FDUP(passwd);
++#ifdef HAVE_OAUTH2
++	ACP_FDUP(oauth_refresh_server);
++#endif
+ 
+ 	ACP_FDUP(local_mbox);
+ 	ACP_FASSIGN(use_mail_command);
+diff --git src/etpan/imap-thread.c src/etpan/imap-thread.c
+index eeccac793..175fa97c9 100644
+--- src/etpan/imap-thread.c
++++ src/etpan/imap-thread.c
+@@ -999,6 +999,10 @@ static void login_run(struct etpan_thread_op * op)
+ 			param->type, NULL, NULL, NULL,
+ 			NULL, param->login,
+ 			param->password, NULL);
++#ifdef HAVE_OAUTH2
++	else if (!strcmp(param->type, "OAUTH2"))
++		r = mailimap_oauth2_authenticate(param->imap, param->login, param->password);
++#endif
+ 	else
+ 		r = mailimap_authenticate(param->imap,
+ 			param->type, NULL, NULL, NULL,
+diff --git src/imap.c src/imap.c
+index 8521e355e..965b3bd6f 100644
+--- src/imap.c
++++ src/imap.c
+@@ -49,6 +49,10 @@
+ #  include "ssl.h"
+ #endif
+ 
++#ifdef HAVE_OAUTH2
++#  include "oauth2.h"
++#endif
++
+ #include "folder.h"
+ #include "session.h"
+ #include "procmsg.h"
+@@ -916,6 +920,11 @@ static gint imap_auth(IMAPSession *session, const gchar *user, const gchar *pass
+ 	case IMAP_AUTH_GSSAPI:
+ 		ok = imap_cmd_login(session, user, pass, "GSSAPI");
+ 		break;
++#ifdef HAVE_OAUTH2
++	case IMAP_AUTH_OAUTH2:
++		ok = imap_cmd_login(session, user, pass, "OAUTH2");
++		break;
++#endif
+ 	default:
+ 		debug_print("capabilities:\n"
+ 				"\t ANONYMOUS %d\n"
+@@ -1303,11 +1312,22 @@ static gint imap_session_authenticate(IMAPSession *session,
+ 	gint ok = MAILIMAP_NO_ERROR;
+ 	g_return_val_if_fail(account->userid != NULL, MAILIMAP_ERROR_BAD_STATE);
+ 
++#ifdef HAVE_OAUTH2
++	if (account->imap_auth_type == IMAP_AUTH_OAUTH2) {
++		/* TODO(keur): Add threading here */
++		acc_pass = oauth2_get_access_token(account);
++	} else if (!password_get(account->userid, account->recv_server, "imap",
++			 SESSION(session)->port, &acc_pass)) {
++		acc_pass = passwd_store_get_account(account->account_id,
++				PWS_ACCOUNT_RECV);
++	}
++#else
+ 	if (!password_get(account->userid, account->recv_server, "imap",
+ 			 SESSION(session)->port, &acc_pass)) {
+ 		acc_pass = passwd_store_get_account(account->account_id,
+ 				PWS_ACCOUNT_RECV);
+ 	}
++#endif
+ 
+ try_again:
+ 	pass = acc_pass;
+diff --git src/imap.h src/imap.h
+index 50569e0cf..88ea60edb 100644
+--- src/imap.h
++++ src/imap.h
+@@ -31,7 +31,10 @@ typedef enum
+ 	IMAP_AUTH_DIGEST_MD5	= 1 << 4,
+ 	IMAP_AUTH_SCRAM_SHA1	= 1 << 5,
+ 	IMAP_AUTH_PLAIN   = 1 << 6,
+-	IMAP_AUTH_LOGIN   = 1 << 7
++	IMAP_AUTH_LOGIN   = 1 << 7,
++#ifdef HAVE_OAUTH2
++	IMAP_AUTH_OAUTH2 = 1 << 8,
++#endif
+ } IMAPAuthType;
+ 
+ FolderClass *imap_get_class		(void);
+diff --git src/oauth2.c src/oauth2.c
+new file mode 100644
+index 000000000..f37c94c2e
+--- /dev/null
++++ src/oauth2.c
+@@ -0,0 +1,178 @@
++/*
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2016 Hiroyuki Yamamoto and the Claws Mail team
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program. If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#include "claws-features.h"
++#endif
++
++#ifdef HAVE_OAUTH2
++
++#include <json-c/json.h>
++#include <curl/curl.h>
++
++#include "claws.h"
++#include "oauth2.h"
++#include "passwordstore.h"
++#include "utils.h"
++
++static size_t oauth2_refresh_cb(void *data, size_t size, size_t nmemb, void *userp) {
++	size_t realsize = size * nmemb;
++	struct curl_oauth2_refresh *p = (struct curl_oauth2_refresh *) userp;
++
++	p->payload = g_realloc(p->payload, p->size +  realsize + 1);
++	if (p->payload == NULL)
++		return 0;
++
++	memcpy(&(p->payload[p->size]), data, realsize);
++	p->size += realsize;
++	p->payload[p->size] = 0;
++
++	return realsize;
++}
++
++static void oauth2_refresh_api_thr(void *arg) {
++	CURL *ch = NULL;
++	gchar *ret = NULL, *form_data = NULL;
++	json_object *refresh_json = NULL, *access_token_json;
++	enum json_tokener_error jerr;
++	CURLcode res;
++	struct curl_slist *headers = NULL;
++	struct curl_oauth2_refresh sr;
++
++	OAuth2Ctx *ctx = (OAuth2Ctx *) arg;
++	ctx->success = FALSE;
++
++	memset(&sr, 0, sizeof(sr));
++	if ((ch = curl_easy_init()) == NULL)
++		goto done;
++
++	if ((headers = curl_slist_append(headers,
++			"Content-Type: application/x-www-form-urlencoded")) == NULL)
++		goto done;
++
++	form_data = g_strdup_printf(
++			"grant_type=refresh_token&client_id=%s&client_secret=%s&refresh_token=%s",
++			ctx->client_id,
++			ctx->client_secret,
++			ctx->refresh_token);
++
++	curl_easy_setopt(ch, CURLOPT_URL, ctx->refresh_server);
++	curl_easy_setopt(ch, CURLOPT_POSTFIELDS, form_data);
++	curl_easy_setopt(ch, CURLOPT_HTTPHEADER, headers);
++	curl_easy_setopt(ch, CURLOPT_WRITEFUNCTION, oauth2_refresh_cb);
++	curl_easy_setopt(ch, CURLOPT_WRITEDATA, (void *) &sr);
++	curl_easy_setopt(ch, CURLOPT_TIMEOUT, 5L);
++	curl_easy_setopt(ch, CURLOPT_FOLLOWLOCATION, 1L);
++	res = curl_easy_perform(ch);
++
++	if (res != CURLE_OK || sr.size <= 0)
++		goto done;
++
++	refresh_json = json_tokener_parse_verbose(sr.payload, &jerr);
++	if (jerr != json_tokener_success)
++		goto done;
++
++	if (!json_object_object_get_ex(refresh_json, "access_token", &access_token_json))
++		goto done;
++	ret = json_object_get_string(access_token_json);
++	if (ret == NULL)
++		goto done;
++	ctx->access_token = g_strdup(ret); /* json-c manages this memory */
++	ctx->success = TRUE;
++
++done:
++	if (ch)
++		curl_easy_cleanup(ch);
++	if (headers)
++		curl_slist_free_all(headers);
++	if (form_data)
++		g_free(form_data);
++	if (refresh_json)
++		json_object_put(refresh_json);
++	ctx->ready = TRUE;
++}
++
++static void oauth2_refresh_api(OAuth2Ctx *ctx) {
++#ifdef USE_PTHREAD
++	pthread_t pt;
++#endif
++
++	g_return_if_fail(ctx != NULL);
++
++#ifdef USE_PTHREAD
++	if (pthread_create(&pt, NULL, oauth2_refresh_api_thr,
++				(void *) ctx) != 0) {
++		oauth2_refresh_api_thr(ctx);
++	} else {
++		debug_print("OAUTH2: Waiting for thread to finish\n");
++		while (!ctx->ready) {
++			claws_do_idle();
++		}
++		debug_print("OAUTH2: Thread finished\n");
++		pthread_join(pt, NULL);
++	}
++#else
++	oauth2_refresh_api_thr(ctx);
++#endif
++}
++
++gchar *oauth2_get_access_token(PrefsAccount *account) {
++	OAuth2Ctx *ctx = NULL;
++	gchar *client_id = NULL, *client_secret = NULL, *refresh_token = NULL;
++	gchar *access_token = NULL;
++	gint ok;
++
++	ctx = g_new0(OAuth2Ctx, 1);
++	if (ctx == NULL)
++		goto done;
++
++	/* TODO(keur): Use hooks here? */
++	ctx->client_id = passwd_store_get_account(account->account_id,
++			PWS_OAUTH_CLIENT_ID);
++	if (ctx->client_id == NULL)
++		goto done;
++
++	ctx->client_secret = passwd_store_get_account(account->account_id,
++			PWS_OAUTH_CLIENT_SECRET);
++	if (ctx->client_id == NULL)
++		goto done;
++
++	ctx->refresh_token = passwd_store_get_account(account->account_id,
++			PWS_OAUTH_REFRESH_TOKEN);
++	if (ctx->refresh_token == NULL)
++		goto done;
++	ctx->refresh_server = account->oauth_refresh_server;
++
++	oauth2_refresh_api(ctx);
++	access_token = ctx->success == TRUE ? ctx->access_token : NULL;
++
++done:
++	if (ctx) {
++		if (ctx->client_id)
++			g_free(ctx->client_id);
++		if (ctx->client_secret)
++			g_free(ctx->client_secret);
++		if (ctx->refresh_token)
++			g_free(ctx->refresh_token);
++		g_free(ctx);
++	}
++
++	return access_token;
++}
++#endif /* HAVE_OAUTH2 */
+diff --git src/oauth2.h src/oauth2.h
+new file mode 100644
+index 000000000..b7220237a
+--- /dev/null
++++ src/oauth2.h
+@@ -0,0 +1,53 @@
++/*
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2016 Hiroyuki Yamamoto and the Claws Mail team
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program. If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef OAUTH2_H
++#define OAUTH2_H
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#include "claws-features.h"
++#endif
++
++#ifdef HAVE_OAUTH2
++
++#include <glib.h>
++
++#include "prefs_account.h"
++
++struct curl_oauth2_refresh {
++	gchar *payload;
++	size_t size;
++};
++
++struct _OAuth2Ctx {
++    gchar *client_id;
++    gchar *client_secret;
++    gchar *refresh_server;
++    gchar *refresh_token;
++    gchar *access_token;
++    gboolean success;
++    gboolean ready;
++};
++
++typedef struct _OAuth2Ctx OAuth2Ctx;
++
++gchar *oauth2_get_access_token(PrefsAccount *account);
++#endif /* HAVE_OAUTH2 */
++
++#endif /* OAUTH2_H */
+diff --git src/passwordstore.h src/passwordstore.h
+index b9198207e..32807342f 100644
+--- src/passwordstore.h
++++ src/passwordstore.h
+@@ -94,6 +94,12 @@ gboolean passwd_store_has_password_account(gint account_id,
+ #define PWS_ACCOUNT_SEND_CERT "send_cert"
+ #define PWS_ACCOUNT_PROXY_PASS "proxy_pass"
+ 
++#ifdef HAVE_OAUTH2
++#define PWS_OAUTH_CLIENT_ID "oauth_client_id"
++#define PWS_OAUTH_CLIENT_SECRET "oauth_client_secret"
++#define PWS_OAUTH_REFRESH_TOKEN "oauth_refresh_token"
++#endif
++
+ #define PWS_CORE_PROXY "proxy"
+ #define PWS_CORE_PROXY_PASS "proxy_pass"
+ 
+diff --git src/prefs_account.c src/prefs_account.c
+index 7f33edc00..3b7f3eea2 100644
+--- src/prefs_account.c
++++ src/prefs_account.c
+@@ -122,8 +122,20 @@ typedef struct BasicPage
+ 	GtkWidget *mailcmd_entry;
+ 	GtkWidget *uid_label;
+ 	GtkWidget *pass_label;
++#ifdef HAVE_OAUTH2
++	GtkWidget *client_id_label;
++	GtkWidget *client_secret_label;
++	GtkWidget *refresh_server_label;
++	GtkWidget *refresh_token_label;
++#endif
+ 	GtkWidget *uid_entry;
+ 	GtkWidget *pass_entry;
++#ifdef HAVE_OAUTH2
++	GtkWidget *client_id_entry;
++	GtkWidget *client_secret_entry;
++	GtkWidget *refresh_server_entry;
++	GtkWidget *refresh_token_entry;
++#endif
+ 	GtkWidget *showpwd_checkbtn;
+ 	GtkWidget *auto_configure_btn;
+ 	GtkWidget *auto_configure_cancel_btn;
+@@ -464,6 +476,11 @@ static PrefParam basic_param[] = {
+ 	{"user_id", NULL, &tmp_ac_prefs.userid, P_STRING,
+ 	 &basic_page.uid_entry, prefs_set_data_from_entry, prefs_set_entry},
+ 
++#ifdef HAVE_OAUTH2
++	{"oauth_refresh_server", NULL, &tmp_ac_prefs.oauth_refresh_server, P_STRING,
++	 &basic_page.refresh_server_entry, prefs_set_data_from_entry, prefs_set_entry},
++#endif
++
+ 	{"password", NULL, &tmp_ac_prefs.passwd, P_PASSWORD,
+ 	 NULL, NULL, NULL},
+ 
+@@ -1107,8 +1124,16 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	GtkWidget *mailcmd_entry;
+ 	GtkWidget *uid_label;
+ 	GtkWidget *pass_label;
++	GtkWidget *client_id_label;
++	GtkWidget *client_secret_label;
++	GtkWidget *refresh_server_label;
++	GtkWidget *refresh_token_label;
+ 	GtkWidget *uid_entry;
+ 	GtkWidget *pass_entry;
++	GtkWidget *client_id_entry;
++	GtkWidget *client_secret_entry;
++	GtkWidget *refresh_server_entry;
++	GtkWidget *refresh_token_entry;
+ 	GtkWidget *auto_configure_btn;
+ 	GtkWidget *auto_configure_cancel_btn;
+ 	GtkWidget *auto_configure_lbl;
+@@ -1258,7 +1283,11 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	protocol_optmenu->no_imap_warn_icon = no_imap_warn_icon;
+ 	protocol_optmenu->no_imap_warn_label = no_imap_warn_label;
+ 
++#ifdef HAVE_OAUTH2
++	serv_table = gtk_table_new (14, 4, FALSE);
++#else
+ 	serv_table = gtk_table_new (10, 4, FALSE);
++#endif
+ 	gtk_widget_show (serv_table);
+ 	gtk_box_pack_start (GTK_BOX (vbox2), serv_table, FALSE, FALSE, 0);
+ 	gtk_table_set_row_spacings (GTK_TABLE (serv_table), VSPACING_NARROW);
+@@ -1324,6 +1353,36 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 			G_CALLBACK(prefs_account_entry_changed_newline_check_cb),
+ 			GINT_TO_POINTER(ac_prefs->protocol));
+ 
++#ifdef HAVE_OAUTH2
++	client_id_entry = gtk_entry_new ();
++	gtk_widget_show (client_id_entry);
++	gtk_widget_set_size_request (client_id_entry, DEFAULT_ENTRY_WIDTH, -1);
++	g_signal_connect(G_OBJECT(client_id_entry), "changed",
++			G_CALLBACK(prefs_account_entry_changed_newline_check_cb),
++			GINT_TO_POINTER(ac_prefs->protocol));
++
++	client_secret_entry = gtk_entry_new ();
++	gtk_widget_show (client_secret_entry);
++	gtk_widget_set_size_request (client_secret_entry, DEFAULT_ENTRY_WIDTH, -1);
++	g_signal_connect(G_OBJECT(client_secret_entry), "changed",
++			G_CALLBACK(prefs_account_entry_changed_newline_check_cb),
++			GINT_TO_POINTER(ac_prefs->protocol));
++
++	refresh_server_entry = gtk_entry_new ();
++	gtk_widget_show (refresh_server_entry);
++	gtk_widget_set_size_request (refresh_server_entry, DEFAULT_ENTRY_WIDTH, -1);
++	g_signal_connect(G_OBJECT(refresh_server_entry), "changed",
++			G_CALLBACK(prefs_account_entry_changed_newline_check_cb),
++			GINT_TO_POINTER(ac_prefs->protocol));
++
++	refresh_token_entry = gtk_entry_new ();
++	gtk_widget_show (refresh_token_entry);
++	gtk_widget_set_size_request (refresh_token_entry, DEFAULT_ENTRY_WIDTH, -1);
++	g_signal_connect(G_OBJECT(refresh_token_entry), "changed",
++			G_CALLBACK(prefs_account_entry_changed_newline_check_cb),
++			GINT_TO_POINTER(ac_prefs->protocol));
++#endif
++
+ #ifndef GENERIC_UMPC
+ 	gtk_table_attach (GTK_TABLE (serv_table), uid_entry, 1, 2, 7, 8,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
+@@ -1332,6 +1391,24 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	gtk_table_attach (GTK_TABLE (serv_table), pass_entry, 3, 4, 7, 8,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++
++#ifdef HAVE_OAUTH2
++	gtk_table_attach (GTK_TABLE (serv_table), client_id_entry, 1, 2, 11, 12,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++
++	gtk_table_attach (GTK_TABLE (serv_table), client_secret_entry, 3, 4, 11, 12,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++
++	gtk_table_attach (GTK_TABLE (serv_table), refresh_server_entry, 1, 2, 13, 14,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++
++	gtk_table_attach (GTK_TABLE (serv_table), refresh_token_entry, 3, 4, 13, 14,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++#endif
+ #else
+ 	gtk_table_attach (GTK_TABLE (serv_table), uid_entry, 1, 4, 7, 8,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
+@@ -1339,6 +1416,20 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	gtk_table_attach (GTK_TABLE (serv_table), pass_entry, 1, 4, 8, 9,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
+ 			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++#ifdef HAVE_OAUTH2
++	gtk_table_attach (GTK_TABLE (serv_table), client_id_entry, 1, 4, 10, 11,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++	gtk_table_attach (GTK_TABLE (serv_table), client_secret_entry, 1, 4, 11, 12,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++	gtk_table_attach (GTK_TABLE (serv_table), refresh_server_entry, 1, 4, 12, 13,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++	gtk_table_attach (GTK_TABLE (serv_table), refresh_token_entry, 1, 4, 13, 14,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL,
++			  GTK_EXPAND | GTK_SHRINK | GTK_FILL, 0, 0);
++#endif
+ #endif
+ 	gtk_entry_set_visibility (GTK_ENTRY (pass_entry), FALSE);
+ 
+@@ -1410,6 +1501,41 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	g_signal_connect(G_OBJECT(showpwd_checkbtn), "toggled",
+ 			G_CALLBACK(prefs_account_showpwd_checkbtn_toggled), pass_entry);
+ 
++#ifdef HAVE_OAUTH2
++    client_id_label = gtk_label_new(_("Client ID"));
++    gtk_widget_show( client_id_label );
++    gtk_table_attach (GTK_TABLE (serv_table), client_id_label, 0, 1, 11, 12,
++              GTK_FILL, 0, 0, 0);
++	gtk_misc_set_alignment (GTK_MISC (client_id_label), 1, 0.5);
++
++    client_secret_label = gtk_label_new(_("Client Secret"));
++    gtk_widget_show( client_secret_label );
++    gtk_table_attach (GTK_TABLE (serv_table), client_secret_label, 2, 3, 11, 12,
++              GTK_FILL, 0, 0, 0);
++	gtk_misc_set_alignment (GTK_MISC (client_secret_label), 1, 0.5);
++
++    refresh_server_label = gtk_label_new(_("Refresh Server"));
++    gtk_widget_show( refresh_server_label );
++    gtk_table_attach (GTK_TABLE (serv_table), refresh_server_label, 0, 1, 13, 14,
++              GTK_FILL, 0, 0, 0);
++	gtk_misc_set_alignment (GTK_MISC (refresh_server_label), 1, 0.5);
++
++    refresh_token_label = gtk_label_new(_("Refresh Token"));
++    gtk_widget_show( refresh_token_label );
++    gtk_table_attach (GTK_TABLE (serv_table), refresh_token_label, 2, 3, 13, 14,
++              GTK_FILL, 0, 0, 0);
++	gtk_misc_set_alignment (GTK_MISC (refresh_token_label), 1, 0.5);
++
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, client_id_label);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, client_secret_label);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, refresh_server_label);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, refresh_token_label);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, client_id_entry);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, client_secret_entry);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, refresh_server_entry);
++	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, refresh_token_entry);
++#endif
++
+ 	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, uid_label);
+ 	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, pass_label);
+ 	SET_TOGGLE_SENSITIVITY (nntpauth_checkbtn, uid_entry);
+@@ -1448,6 +1574,16 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 	page->auto_configure_btn = auto_configure_btn;
+ 	page->auto_configure_cancel_btn = auto_configure_cancel_btn;
+ 	page->auto_configure_lbl = auto_configure_lbl;
++#ifdef HAVE_OAUTH2
++	page->client_id_label  = client_id_label;
++	page->client_secret_label  = client_secret_label;
++	page->refresh_server_label  = refresh_server_label;
++	page->refresh_token_label  = refresh_token_label;
++	page->client_id_entry  = client_id_entry;
++	page->client_secret_entry  = client_secret_entry;
++	page->refresh_server_entry  = refresh_server_entry;
++	page->refresh_token_entry  = refresh_token_entry;
++#endif
+ 
+ 	if (new_account) {
+ 		prefs_set_dialog_to_default(basic_param);
+@@ -1465,6 +1601,32 @@ static void basic_create_widget_func(PrefsPage * _page,
+ 			memset(buf, 0, strlen(buf));
+ 			g_free(buf);
+ 		}
++
++#ifdef HAVE_OAUTH2
++		buf = passwd_store_get_account(ac_prefs->account_id,
++				PWS_OAUTH_CLIENT_ID);
++		gtk_entry_set_text(GTK_ENTRY(page->client_id_entry), buf != NULL ? buf : "");
++		if (buf != NULL) {
++			memset(buf, 0, strlen(buf));
++			g_free(buf);
++		}
++
++		buf = passwd_store_get_account(ac_prefs->account_id,
++				PWS_OAUTH_CLIENT_SECRET);
++		gtk_entry_set_text(GTK_ENTRY(page->client_secret_entry), buf != NULL ? buf : "");
++		if (buf != NULL) {
++			memset(buf, 0, strlen(buf));
++			g_free(buf);
++		}
++
++		buf = passwd_store_get_account(ac_prefs->account_id,
++				PWS_OAUTH_REFRESH_TOKEN);
++		gtk_entry_set_text(GTK_ENTRY(page->refresh_token_entry), buf != NULL ? buf : "");
++		if (buf != NULL) {
++			memset(buf, 0, strlen(buf));
++			g_free(buf);
++		}
++#endif
+ 	}
+ 
+ 	page->vbox = vbox1;
+@@ -1695,6 +1857,9 @@ static void receive_create_widget_func(PrefsPage * _page,
+ 	COMBOBOX_ADD (menu, "SCRAM-SHA-1", IMAP_AUTH_SCRAM_SHA1);
+ 	COMBOBOX_ADD (menu, "PLAIN", IMAP_AUTH_PLAIN);
+ 	COMBOBOX_ADD (menu, "LOGIN", IMAP_AUTH_LOGIN);
++#ifdef HAVE_OAUTH2
++	COMBOBOX_ADD (menu, "OAUTH2", IMAP_AUTH_OAUTH2);
++#endif
+ 
+ 	hbox1 = gtk_hbox_new (FALSE, 8);
+ 	gtk_widget_show (hbox1);
+@@ -3329,6 +3494,28 @@ static gint prefs_basic_apply(void)
+ 		return -1;
+ 	}
+ 
++#ifdef HAVE_OAUTH2
++	if (strchr(gtk_entry_get_text(GTK_ENTRY(basic_page.client_id_entry)), '\n') != NULL) {
++		alertpanel_error(_("OAUTH client id cannot contain a newline character."));
++		return -1;
++	}
++
++	if (strchr(gtk_entry_get_text(GTK_ENTRY(basic_page.client_secret_entry)), '\n') != NULL) {
++		alertpanel_error(_("OAUTH client secret cannot contain a newline character."));
++		return -1;
++	}
++
++	if (strchr(gtk_entry_get_text(GTK_ENTRY(basic_page.refresh_server_entry)), '\n') != NULL) {
++		alertpanel_error(_("OAUTH refresh server cannot contain a newline character."));
++		return -1;
++	}
++
++	if (strchr(gtk_entry_get_text(GTK_ENTRY(basic_page.refresh_token_entry)), '\n') != NULL) {
++		alertpanel_error(_("OAUTH refresh token cannot contain a newline character."));
++		return -1;
++	}
++#endif
++
+ 	prefs_set_data_from_dialog(basic_param);
+ 
+ 	/* Passwords are stored outside of PrefParams. */
+@@ -3336,7 +3523,30 @@ static gint prefs_basic_apply(void)
+ 			PWS_ACCOUNT_RECV,
+ 			gtk_entry_get_text(GTK_ENTRY(basic_page.pass_entry)),
+ 			FALSE);
+-	
++
++#ifdef HAVE_OAUTH2
++    if (*gtk_entry_get_text(GTK_ENTRY(basic_page.client_id_entry)) != '\0') {
++        passwd_store_set_account(tmp_ac_prefs.account_id,
++                PWS_OAUTH_CLIENT_ID,
++                gtk_entry_get_text(GTK_ENTRY(basic_page.client_id_entry)),
++                FALSE);
++    }
++
++    if (*gtk_entry_get_text(GTK_ENTRY(basic_page.client_secret_entry)) != '\0') {
++        passwd_store_set_account(tmp_ac_prefs.account_id,
++                PWS_OAUTH_CLIENT_SECRET,
++                gtk_entry_get_text(GTK_ENTRY(basic_page.client_secret_entry)),
++                FALSE);
++    }
++
++    if (*gtk_entry_get_text(GTK_ENTRY(basic_page.refresh_token_entry)) != '\0') {
++        passwd_store_set_account(tmp_ac_prefs.account_id,
++                PWS_OAUTH_REFRESH_TOKEN,
++                gtk_entry_get_text(GTK_ENTRY(basic_page.refresh_token_entry)),
++                FALSE);
++    }
++#endif
++
+ 	if (protocol == A_IMAP4 || protocol == A_NNTP) {
+ 		new_id = g_strdup_printf("#%s/%s",
+ 				protocol == A_IMAP4 ? "imap":"news",
+@@ -4965,6 +5175,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 					   5, VSPACING_NARROW);
+ 		gtk_widget_hide(basic_page.uid_label);
+ 		gtk_widget_hide(basic_page.pass_label);
++#ifdef HAVE_OAUTH2
++		gtk_widget_hide(basic_page.client_id_label);
++		gtk_widget_hide(basic_page.client_secret_label);
++		gtk_widget_hide(basic_page.refresh_server_label);
++		gtk_widget_hide(basic_page.refresh_token_label);
++		gtk_widget_hide(basic_page.client_id_entry);
++		gtk_widget_hide(basic_page.client_secret_entry);
++		gtk_widget_hide(basic_page.refresh_server_entry);
++		gtk_widget_hide(basic_page.refresh_token_entry);
++#endif
+ 		gtk_widget_hide(basic_page.uid_entry);
+ 		gtk_widget_hide(basic_page.pass_entry);
+ 		gtk_widget_hide(basic_page.showpwd_checkbtn);
+@@ -4973,6 +5193,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 
+ 		gtk_widget_set_sensitive(basic_page.uid_label,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_label, TRUE);
++#ifdef HAVE_OAUTH2
++		gtk_widget_set_sensitive(basic_page.client_id_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_id_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_entry,  TRUE);
++#endif
+ 		gtk_widget_set_sensitive(basic_page.uid_entry,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_entry, TRUE);
+ 		gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, TRUE);
+@@ -5072,6 +5302,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 					   5, 0);
+ 		gtk_widget_show(basic_page.uid_label);
+ 		gtk_widget_show(basic_page.pass_label);
++#ifdef HAVE_OAUTH2
++		gtk_widget_show(basic_page.client_id_label);
++		gtk_widget_show(basic_page.client_secret_label);
++		gtk_widget_show(basic_page.refresh_server_label);
++		gtk_widget_show(basic_page.refresh_token_label);
++		gtk_widget_show(basic_page.client_id_entry);
++		gtk_widget_show(basic_page.client_secret_entry);
++		gtk_widget_show(basic_page.refresh_server_entry);
++		gtk_widget_show(basic_page.refresh_token_entry);
++#endif
+ 		gtk_widget_show(basic_page.uid_entry);
+ 		gtk_widget_show(basic_page.pass_entry);
+ 		gtk_widget_show(basic_page.showpwd_checkbtn);
+@@ -5080,6 +5320,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 
+ 		gtk_widget_set_sensitive(basic_page.uid_label,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_label, TRUE);
++#ifdef HAVE_OAUTH2
++		gtk_widget_set_sensitive(basic_page.client_id_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_id_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_entry,  TRUE);
++#endif
+ 		gtk_widget_set_sensitive(basic_page.uid_entry,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_entry, TRUE);
+ 		gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, TRUE);
+@@ -5173,6 +5423,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 					   5, 0);
+ 		gtk_widget_hide(basic_page.uid_label);
+ 		gtk_widget_hide(basic_page.pass_label);
++#ifdef HAVE_OAUTH2
++		gtk_widget_hide(basic_page.client_id_label);
++		gtk_widget_hide(basic_page.client_secret_label);
++		gtk_widget_hide(basic_page.refresh_server_label);
++		gtk_widget_hide(basic_page.refresh_token_label);
++		gtk_widget_hide(basic_page.client_id_entry);
++		gtk_widget_hide(basic_page.client_secret_entry);
++		gtk_widget_hide(basic_page.refresh_server_entry);
++		gtk_widget_hide(basic_page.refresh_token_entry);
++#endif
+ 		gtk_widget_hide(basic_page.uid_entry);
+ 		gtk_widget_hide(basic_page.pass_entry);
+ 		gtk_widget_hide(basic_page.showpwd_checkbtn);
+@@ -5181,6 +5441,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 
+ 		gtk_widget_set_sensitive(basic_page.uid_label,  FALSE);
+ 		gtk_widget_set_sensitive(basic_page.pass_label, FALSE);
++#ifdef HAVE_OAUTH2
++		gtk_widget_set_sensitive(basic_page.client_id_label,  FALSE);
++		gtk_widget_set_sensitive(basic_page.client_secret_label,  FALSE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_label,  FALSE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_label,  FALSE);
++		gtk_widget_set_sensitive(basic_page.client_id_entry,  FALSE);
++		gtk_widget_set_sensitive(basic_page.client_secret_entry,  FALSE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_entry,  FALSE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_entry,  FALSE);
++#endif
+ 		gtk_widget_set_sensitive(basic_page.uid_entry,  FALSE);
+ 		gtk_widget_set_sensitive(basic_page.pass_entry, FALSE);
+ 		gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, FALSE);
+@@ -5271,6 +5541,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 					   5, 0);
+ 		gtk_widget_show(basic_page.uid_label);
+ 		gtk_widget_show(basic_page.pass_label);
++#ifdef HAVE_OAUTH2
++		gtk_widget_show(basic_page.client_id_label);
++		gtk_widget_show(basic_page.client_secret_label);
++		gtk_widget_show(basic_page.refresh_server_label);
++		gtk_widget_show(basic_page.refresh_token_label);
++		gtk_widget_show(basic_page.client_id_entry);
++		gtk_widget_show(basic_page.client_secret_entry);
++		gtk_widget_show(basic_page.refresh_server_entry);
++		gtk_widget_show(basic_page.refresh_token_entry);
++#endif
+ 		gtk_widget_show(basic_page.uid_entry);
+ 		gtk_widget_show(basic_page.pass_entry);
+ 		gtk_widget_show(basic_page.showpwd_checkbtn);
+@@ -5279,6 +5559,16 @@ static void prefs_account_protocol_changed(GtkComboBox *combobox, gpointer data)
+ 
+ 		gtk_widget_set_sensitive(basic_page.uid_label,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_label, TRUE);
++#ifdef HAVE_OAUTH2
++		gtk_widget_set_sensitive(basic_page.client_id_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_label, TRUE);
++		gtk_widget_set_sensitive(basic_page.client_id_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.client_secret_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_server_entry,  TRUE);
++		gtk_widget_set_sensitive(basic_page.refresh_token_entry,  TRUE);
++#endif
+ 		gtk_widget_set_sensitive(basic_page.uid_entry,  TRUE);
+ 		gtk_widget_set_sensitive(basic_page.pass_entry, TRUE);
+ 		gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, TRUE);
+@@ -5349,6 +5639,12 @@ static void prefs_account_nntpauth_toggled(GtkToggleButton *button,
+ 	gtk_widget_set_sensitive(basic_page.pass_label, auth);
+ 	gtk_widget_set_sensitive(basic_page.uid_entry,  auth);
+ 	gtk_widget_set_sensitive(basic_page.pass_entry, auth);
++#ifdef HAVE_OAUTH2
++	gtk_widget_set_sensitive(basic_page.client_id_entry, auth);
++	gtk_widget_set_sensitive(basic_page.client_secret_entry, auth);
++	gtk_widget_set_sensitive(basic_page.refresh_server_entry, auth);
++	gtk_widget_set_sensitive(basic_page.refresh_token_entry, auth);
++#endif
+ 	gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, auth);
+ 	gtk_widget_set_sensitive(basic_page.nntpauth_onconnect_checkbtn, auth);
+ }
+@@ -5366,6 +5662,12 @@ static void prefs_account_mailcmd_toggled(GtkToggleButton *button,
+ 	gtk_widget_set_sensitive(basic_page.smtpserv_label, !use_mailcmd);
+ 	gtk_widget_set_sensitive(basic_page.uid_entry,  !use_mailcmd);
+ 	gtk_widget_set_sensitive(basic_page.pass_entry, !use_mailcmd);
++#ifdef HAVE_OAUTH2
++	gtk_widget_set_sensitive(basic_page.client_id_entry, !use_mailcmd);
++	gtk_widget_set_sensitive(basic_page.client_secret_entry, !use_mailcmd);
++	gtk_widget_set_sensitive(basic_page.refresh_server_entry, !use_mailcmd);
++	gtk_widget_set_sensitive(basic_page.refresh_token_entry, !use_mailcmd);
++#endif
+ 	gtk_widget_set_sensitive(basic_page.showpwd_checkbtn, !use_mailcmd);
+ }
+ 
+diff --git src/prefs_account.h src/prefs_account.h
+index 4c53fea07..8320d837d 100644
+--- src/prefs_account.h
++++ src/prefs_account.h
+@@ -69,6 +69,9 @@ struct _PrefsAccount
+ 	gchar *userid;
+ 	gchar *passwd;
+ 	gchar *session_passwd;
++#ifdef HAVE_OAUTH2
++	gchar *oauth_refresh_server;
++#endif
+ 
+ 	gchar * local_mbox;
+ 	gboolean use_mail_command;
