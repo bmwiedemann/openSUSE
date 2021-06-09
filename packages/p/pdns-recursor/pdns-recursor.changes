@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jun  9 11:58:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.5.2:
+  * default value of nsec3-max-iterations[1] has been lowered to 150
+  * fixed issue affecting the "refresh almost expired" function
+
+-------------------------------------------------------------------
+Tue May 11 16:10:50 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.5.1:
+- Main changes:
+  * Dropped support for 32-bit platforms!
+  * Rewrite of the way zone cuts are determined, reducing the number of 
+    outgoing queries by up to 17% when doing DNSSEC validation while reducing 
+    the CPU usage more than 20% .
+  * Added implementation of EDNS0 padding (RFC 7830) for answers sent to clients.
+  * Added implementation of RFC 8198[2]: Aggressive use of DNSSEC-Validated Cache.
+  * Added a cache of non-resolving nameservers.
+  * Re-worked negative cache that is shared between threads.
+  * Added support for Extended DNS Errors (RFC 8914[5]).
+  * A "refresh almost expired records" (also called "refetch") mechanism[8]
+    has been introduced to keep the record cache warm.
+- Other new features and improvements:
+  * The complete protobuf and dnstap logging code has been rewritten to
+    have much smaller performance impact.
+  * We have introduced non-offensive synonyms for words used in
+    settings. See the upgrade[9] guide.
+  * The default minimum TTL[10] override has been changed from 0 to 1.
+  * The spoof-nearmiss-max setting[11]'s default has been changed to 1.
+    This has the consequence that the Recursor will switch to do TCP
+    queries to authoritative nameservers sooner as an effective measure
+    against many spoofing attacks.
+  * Incoming queries over TCP now also use the packet cache, providing
+    another performance increase.
+  * File written to by the rec_control command are new opened by the
+    command itself. It is also possible to write the content to the
+    standard output stream by using a hyphen as file name.
+  * TCP FastOpen (RFC 7413[12]) support for outgoing TCP connections to
+    authoritative servers and forwarders.
+
+-------------------------------------------------------------------
 Wed Mar 31 09:36:28 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.4.3:

@@ -547,4 +547,12 @@ For details see,
 https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <requestid>882324</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>58ee234542df4d582de6c048be7ad33a</srcmd5>
+    <version>4.5.2</version>
+    <time>1623268388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898824</requestid>
+  </revision>
 </revisionlist>
