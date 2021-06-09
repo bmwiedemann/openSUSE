@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 08 01:58:24 UTC 2021 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git34.2413487:
+  * Cinnamon: Add visual differentiation for inactive pane in Nemo
+  * KDE: Update splashscreen preview
+  * Move thumbnail
+  * Cinnamon: Add gtk-3.0 thumbnail to show theme preview
+  * Gnome: Fix weird font in context menus
+  * Mate: Improve caja fle manager appearance
+  * KDE: Improve lockscreen input appearance
+  * KDE: Fix color inconsistency in checkboxes
+  * Fix css warning
+  * Mate: Fix text cursor color while renaming file in caja
+  * Revert b99589e
+  * Gnome: Fix low text contrast in calendar events widget
+  * Gnome-shell: Theme now uses system font related to #84
+  * Gnome: Fix transparent separator in headerbar
+  * KDE: Update splasscreen appearance
+  * Cinnamon: Improve nemo file manager appearance
+  * Gnome: Fix odd shadow appearing when headerbar button is selected
+
+-------------------------------------------------------------------
 Tue Jan 05 09:26:08 UTC 2021 - maurizio.galli@gmail.com
 
 - Update to version 2.0+git17.d3b3d53:

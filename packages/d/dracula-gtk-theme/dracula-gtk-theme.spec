@@ -17,7 +17,7 @@
 
 
 Name:           dracula-gtk-theme
-Version:        2.0+git17.d3b3d53
+Version:        2.0+git34.2413487
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
@@ -64,7 +64,7 @@ rm %{buildroot}%{_datadir}/themes/%{name}/README.md
 rm %{buildroot}%{_datadir}/themes/%{name}/LICENSE
 
 %files
-%doc README.md 
+%doc README.md
 %license LICENSE
 %{_datadir}/themes/%{name}/
 
