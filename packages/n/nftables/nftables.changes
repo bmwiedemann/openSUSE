@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 25 23:20:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.9
+  * Flowtable hardware offload support
+  * Support for the table owner flag.
+  * 802.1ad (QinQ) support
+  * cgroupsv2 support.
+  * match on SCTP packet chunks (dependent on Linux 5.14)
+  * Allow to use verdict in set/map typeof definitions
+
+-------------------------------------------------------------------
 Fri Jan 15 22:28:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.8

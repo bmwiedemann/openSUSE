@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -37,7 +37,7 @@ BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.9
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.0
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 
 %description
@@ -98,13 +98,14 @@ b="%buildroot"
 %make_install -C obj
 rm -f "%buildroot/%_libdir"/*.la
 mkdir -p "$b/%_docdir/%name/examples"
-mv "$b/%_sysconfdir/nftables"/* "$b/%_docdir/%name/examples/"
+mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 
 %post   -n libnftables1 -p /sbin/ldconfig
 %postun -n libnftables1 -p /sbin/ldconfig
 
 %files
 %license COPYING
+%_sysconfdir/nftables/
 %_sbindir/nft
 %_mandir/man5/*.5*
 %_mandir/man8/nft*
