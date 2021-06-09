@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Jun  5 13:21:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * ncplane_at_yx() now returns the EGC occupying that cell, even
+    if the cell is a secondary column of a wide glyph. Previously,
+    it returned an empty string in this case. ncplane_at_yx_cell()
+    still replicates the exact nccell, allowing you to fully
+    distinguish between the primary column of a wide glyph, the
+    secondary column(s) of same, and an empty string. Furthermore,
+    ncplane_at_yx() now takes the base cell into account; the
+    result is exactly what is fed into rendering logic.
+  * Added notcurses_cursor_yx() to get the current location of the
+    terminal cursor.
+  * Added ncdirect_supported_styles() and ncdirect_styles() to the
+    Direct Mode API.
+  * Closed memory leaks in ncvisual API (#1712, #1711)
+  * Support resizing visuals in the absence of a multimedia engine
+    via simple noninterpolative sampling (#1705)
+  * Explicitly prevent more than one context (struct notcurses or
+    struct ncdirect) at a time in a process
+  * ncplane_as_rgba() now supports NCBLIT_2x2 and NCBLIT_3x2, and
+    requires the desired (inverse-)blitter to be passed explicitly
+    (i.e. no NCBLIT_DEFAULT) (#1697)
+  * Restore colors properly following sgr/sgr0 in direct mode, for
+    both palette and RGB (#1703)
+  * Fix bug in ncvisual_from_bgra() that manifested as broad
+    inability to render in Rust, thanks @joseluis (#1703)
+  * Unified much of the storage shared across direct and rendered
+    mode, killing off duplicated code, and packed all escapes into
+    a single, tight, cache-friendly buffer (#1525)
+  * Always convert visuals to RGBA if not loaded in RGBA, fixing
+    ncpixel API for them (#1680)
+  * Rust bindings now use bindgen 0.57
+  * Emit rmkx on exit.
+  * Always pad image data suitably for ffmpeg's SIMD-heavy backend
+  * Rebuild auxiliary vectors on a new frame in both Sixel and
+    Kitty (#1605)
+  * Python CFFI fixes.
+  * ncplayer in direct mode (-k) was printing too many rows.
+  * Respect leny/lenx from ncvisual_options when rendering once.
+  * Strengthened a lot of unit tests, wrote about a dozen new unit
+    tests.
+  * Updated a number of man pages.
+
+-------------------------------------------------------------------
 Tue May 18 15:20:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
