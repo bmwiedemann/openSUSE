@@ -264,4 +264,12 @@ view</comment>
     <comment>1.67 -&gt; 1.68</comment>
     <requestid>862835</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>efe9ef00ae0ad4997641056393a41545</srcmd5>
+    <version>1.68</version>
+    <time>1623268496</time>
+    <user>dimstar_suse</user>
+    <comment>Get pom files by script</comment>
+    <requestid>897997</requestid>
+  </revision>
 </revisionlist>

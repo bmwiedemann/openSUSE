@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 25 11:39:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add bouncycastle_getpoms.sh to get pom files from Maven repos
+
+-------------------------------------------------------------------
 Wed Jan 13 09:44:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Version update to 1.68
@@ -88,7 +93,7 @@ Mon Dec 21 10:54:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Tue Jul 28 18:50:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
-- Version update to 1.66
+- Version update to 1.66 [bsc#1186328, CVE-2020-15522]
   * Defects Fixed:
     - EdDSA verifiers now reset correctly after rejecting overly long signatures.
     - BCJSSE: SSLSession.getPeerCertificateChain could throw NullPointerException.
