@@ -25,7 +25,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        21.03.21
+Version:        21.05.18
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -55,15 +55,15 @@ BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(mlt++) >= 6.7.0
-BuildRequires:  pkgconfig(mlt-framework) >= 6.7.0
+BuildRequires:  pkgconfig(mlt++-7)
+BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)
 # frei0r-plugins prior to 1.4-7.1 are built against qt4 and cause a segfault on startup.
 Requires:       frei0r-plugins >= 1.4-7.1
 Requires:       ladspa
-Requires:       libmlt6-modules > 6.6.0
-Requires:       melt > 6.6.0
+Requires:       libmlt7-modules
+Requires:       melt7
 Recommends:     lame
 Requires:       ffmpeg >= 2.7
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libvpx.so) --qf '%%{NAME} >= %%{VERSION}')
@@ -104,6 +104,7 @@ find . \
         DEFINES+=SHOTCUT_NOUPGRADE
 
 make %{_smp_mflags} VERBOSE=1
+
 # CC=gcc-8 CPP=cpp-8 CXX=g++-8
 %install
 %qmake5_install
@@ -150,9 +151,9 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
 %{_datadir}/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
-%{_datadir}/metainfo/
+%{_datadir}/metainfo/*
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/mime/
+%{_datadir}/mime/packages/*
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
 %exclude %{_datadir}/%{name}/translations
 
