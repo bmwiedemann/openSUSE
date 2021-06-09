@@ -42,6 +42,9 @@ Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-kcmfontinst-install-destination.patch
+Patch2:         0001-krunnerglobalshortcuts-Prevent-actions-from-becoming.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
