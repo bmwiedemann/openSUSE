@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Upload server for the data f
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-uploadserver:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-uploadserver:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
            qemu-tools qemu-block-curl tar util-linux \
