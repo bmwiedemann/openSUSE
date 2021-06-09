@@ -575,4 +575,14 @@
     <comment></comment>
     <requestid>896327</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>4692ade5e18d597c50c53d2e91197123</srcmd5>
+    <version>29</version>
+    <time>1623268500</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable support for ZSTD compressed modules
+
+testsuite still needs zstd command, the library can do without.</comment>
+    <requestid>898019</requestid>
+  </revision>
 </revisionlist>

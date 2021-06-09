@@ -46,6 +46,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma) >= 4.99
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): coreutils
 Obsoletes:      kmod-compat < %version-%release
@@ -110,6 +111,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-xz \
 	--with-zlib \
 	--with-openssl \
+	--with-zstd \
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 	--bindir="%_bindir"
