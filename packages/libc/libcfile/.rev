@@ -87,4 +87,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment></comment>
     <requestid>855523</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9fa8dee57b326e961f54c79948d92f43</srcmd5>
+    <version>20210409</version>
+    <time>1623268314</time>
+    <user>dimstar_suse</user>
+    <comment>make libuna happy</comment>
+    <requestid>898041</requestid>
+  </revision>
 </revisionlist>
