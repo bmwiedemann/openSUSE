@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun  4 10:02:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.2:
+  + ECollectionBackend: Fix a memory leak
+  + gnome_online_accounts_create_client_cb: Prefer g_clear_object()
+  + Data Factories: Miscellaneous fixes
+  + ECalCache: Drop timezones_lock
+  + ECalBackend: Deliver component change notifications in a
+    dedicated thread
+  + CardDAV: Recognize OPTIONS 'Bad Request' response as success
+    for Google
+  + Fix e_webdav_session_util_item_href_equal()
+  + Bugs fixed: glgo#GNOME/evolution-data-server#334,
+    glgo#GNOME/evolution-data-server#335
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May  5 15:16:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: eds-32bit seems no longer to be needed. Let's

@@ -1917,4 +1917,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
   try to reduce the 32bit footprint a bit further.</comment>
     <requestid>890763</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>3291f5f73daf304eb781bfc4ba4f3bb6</srcmd5>
+    <version>3.40.2</version>
+    <time>1623268297</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 897404 from iznogood)</comment>
+    <requestid>897540</requestid>
+  </revision>
 </revisionlist>
