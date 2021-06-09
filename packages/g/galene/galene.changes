@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 18:26:32 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- removed madvise from SystemCallFilter=
+
+-------------------------------------------------------------------
 Wed May 12 15:18:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 0.3.5:
