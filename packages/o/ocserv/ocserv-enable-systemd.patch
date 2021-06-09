@@ -1,8 +1,8 @@
-Index: ocserv-0.10.5/configure.ac
-===================================================================
---- ocserv-0.10.5.orig/configure.ac
-+++ ocserv-0.10.5/configure.ac
-@@ -297,11 +297,7 @@ AC_ARG_ENABLE(systemd,
+diff --git a/configure.ac b/configure.ac
+index 2e4a0e8..81ac3bd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -423,11 +423,7 @@ AC_ARG_ENABLE(systemd,
  
  if [ test "$systemd_enabled" = "yes" ];then
  AC_LIB_HAVE_LINKFLAGS(systemd,, [#include <systemd/sd-daemon.h>], [sd_listen_fds(0);])
@@ -13,4 +13,4 @@ Index: ocserv-0.10.5/configure.ac
 - fi
  fi
  
- AC_ARG_ENABLE(anyconnect-compat,
+ AC_ARG_ENABLE(namespaces,

@@ -17,7 +17,7 @@
 
 
 Name:           ocserv
-Version:        1.1.0
+Version:        1.1.2
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
@@ -144,7 +144,7 @@ install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitd
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS NEWS README.md TODO
+%doc AUTHORS NEWS README.md
 %license COPYING LICENSE
 %config %{_sysconfdir}/ocserv
 %config(noreplace) %{_sysconfdir}/sysctl.d/60-ocserv.conf
