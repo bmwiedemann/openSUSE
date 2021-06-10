@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  9 19:10:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.11
+  Security:
+  * If a MQTT v5 client connects with a crafted CONNECT packet a
+    memory leak will occur. This has been fixed.
+  Broker:
+  * Fix possible crash having just upgraded from 1.6 if
+    `per_listener_settings true` is set, and a SIGHUP is sent to
+    the broker before a client has reconnected to the broker.
+  * Fix bridge not reconnectng if the first reconnection attempt
+    fails.
+  * Improve QoS 0 outgoing packet queueing.
+  * Fix QoS 0 messages not being queued when `queue_qos0_messages`
+    was enabled.
+  Clients:
+  * If sending mosquitto_sub output to a pipe, mosquitto_sub will
+    now detect that the pipe has closed and disconnect.
+  * Fix `mosquitto_pub -l` quitting if a message publication is
+    attempted when the broker is temporarily unavailable.
+- Remove not longer needed patch:
+  * fix-undefined-symbols-in-plugins.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Tue Apr  6 18:58:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.10

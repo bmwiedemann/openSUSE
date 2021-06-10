@@ -167,4 +167,12 @@
     <comment></comment>
     <requestid>883701</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f01f666e9d7bdf0f2492f69ed226fcbc</srcmd5>
+    <version>2.0.11</version>
+    <time>1623363529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.11</comment>
+    <requestid>898992</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define c_lib   libmosquitto1
 %define cpp_lib libmosquittopp1
 Name:           mosquitto
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
@@ -35,7 +35,6 @@ Source98:       https://mosquitto.org/files/source/mosquitto-%{version}.tar.gz.a
 Source99:       %{name}.keyring
 Patch0:         mosquitto-1.4.1_apparmor.patch
 Patch1:         mosquitto-1.6.8-config.patch
-Patch2:         fix-undefined-symbols-in-plugins.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libxslt-tools
@@ -116,7 +115,6 @@ Client for Mosquitto.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 find misc -type f -exec chmod a-x "{}" "+"
 
 %build
