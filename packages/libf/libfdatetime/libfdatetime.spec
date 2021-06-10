@@ -1,7 +1,7 @@
 #
 # spec file for package libfdatetime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 Name:           libfdatetime
 %define lname	libfdatetime1
-%define timestamp 20180910
-Version:        0~%timestamp
+Version:        20210414
 Release:        0
 Summary:        A library for date and time data types
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libfdatetime/wiki
-Source:         https://github.com/libyal/libfdatetime/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libfdatetime
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcerror) >= 20201121
 
 %description
 A library for date and time data types. Part of the libyal family of libraries.
@@ -53,27 +54,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfdatetime.
 
 %prep
-%setup -qn libfdatetime-%timestamp
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libfdatetime.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libfdatetime*
 %_libdir/libfdatetime.so
 %_libdir/pkgconfig/libfdatetime.pc
