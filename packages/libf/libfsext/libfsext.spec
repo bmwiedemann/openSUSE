@@ -1,7 +1,7 @@
 #
 # spec file for package libfsext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,35 @@
 
 
 %define lname	libfsext1
-%define timestamp 20201107
 Name:           libfsext
-Version:        0~%{timestamp}
+Version:        20210513
 Release:        0
 Summary:        Library and tools to access the Extended File System
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfsext/wiki
-Source:         https://github.com/libyal/libfsext/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
-
+URL:            https://github.com/libyal/libfsext
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20170101
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfguid) >= 20130317
-BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libhmac)
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libhmac) >= 20200104
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(python3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libfsext is a library to access the Extended File System (ext).
@@ -99,8 +100,8 @@ Requires:       %{lname} = %{version}
 Tools to access the Extended File System.  See libfsext for additional details.
 
 %package devel
-Summary:        Development files for libfsext, Extended File System (ext) library 
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+Summary:        Development files for libfsext, Extended File System (ext) library
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -124,37 +125,31 @@ libfsext is a library to access extended file system (ext) format. See libfsext 
 This package contains Python 3 bindings for libfsext.
 
 %prep
-%setup -q -n libfsext-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libfsext.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_bindir}/fsext*
 %{_mandir}/man1/fsext*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{_includedir}/libfsext.h
 %{_includedir}/libfsext/
 %{_libdir}/libfsext.so
@@ -162,9 +157,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libfsext.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyfsext.so
 
 %changelog
