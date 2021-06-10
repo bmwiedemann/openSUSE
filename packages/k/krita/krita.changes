@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Jun 10 07:25:33 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.4.5:
+  * See https://krita.org/en/item/krita-4-4-5-released/
+  * Set ElideRight for the tabs in the mdiarea (kde#433640)
+  * If loading the image fails too often, stop retrying
+    (kde#433652)
+  * Use QVersionNumber to compare versions
+  * Fix oilpaint filter's tiling artifacts
+  * Only open the bug dialog when Krita is in alpha or beta
+  * Fix crash on popup palette on 125% scale (kde#431944)
+  * Fix compilation for GCC11 (kde#434150)
+  * Use opengl ES on Arm Linux (kde#421136)
+  * Fix crash on importing a broken icc profile (kde#434273)
+  * Remove the hello world demo plugin (kde#422380)
+  * Bugfix: Crash with crop tool (kde#433770)
+  * Bugfix: Transform (Shear) tool doesn't use pivot (kde#427462)
+  * Fix angle range in the angle selector in status bar and
+    overview docker (kde#434993)
+  * Implement "Scale handles proportionally" feature for the mesh
+    transform
+  * Bugfix: Crop tool doesn't respond to some events (kde#435201)
+  * Remove JPG from the list of supported clipboard image formats
+    (kde#431310)
+  * Don't set the menu text on the action if it's empty
+    (kde#437036)
+  * Expose the node's unique id to libkis
+  * Fix quicklook generator (kde#436224)
+  * Fix data corruption on pressing Ctrl+Z while crop action is
+    active (kde#433770)
+  * Fix zooming of the palette in Lazy Fill Tool (kde#410997)
+  * Fix outline-selection precision when shift-modifier is pressed
+    (kde#437048)
+  * Fix crash when closing Krita too quickly while some stroke is
+    still rendering (kde#419021)
+  * Fix incorrect memory access in KisCanvas2::setProofingOptions()
+  * Fix a race condition when starting spontaneous jobs
+    (kde#434648)
+  * Fix display color management in Overview docker (kde#428605)
+  * Fix Nearest Neighbour filter of the perspective transform mode
+    (kde#420811)
+  * Fix drift of the transformed image when moving mouse too
+    quickly (kde#416899)
+  * Fix smoothness of Free Transform mode (kde#416899)
+  * Fix input method not working on popup widgets (kde#395598)
+  * Fix export in Krita using CLI
+  * Fix order of arguments in OverviewThumbnailStrokeStrategy
+    (CID 310957)
+  * Do not rely on endianness in psd_image_data (CID 35080)
+  * Widen variables before making calculations (CID 248925)
+  * Override patchWidth and patchHeight being 0 with defaults
+    (CID 248441, CID 248622)
+  * Check value after dynamic cast in ConvertColorSpacePr.Vis.
+    (CID 304985)
+  * Properly bound values on conversions (CID 248629, CID 248458)
+  * Initialize propertyType in KisMetaData::TypeInfo::Private
+    (CID 35498)
+  * Initialize variables in KoRuler and KisFullRefreshWalker
+    (CID 35523, CID 35612)
+  * Initialize members of KisImagePyramid (CID 36041)
+  * Initialize members of DlgOffsetImage and DeformBrush
+    (CID 36144, CID 36265)
+  * Initialize members in KCanvasPreview (CID 36395)
+  * Initialize members in DlgClonesArray (CID 248509)
+  * Initialize members in KisShadeSelectorLine (CID 36338)
+  * Initialize members of assistant classes (CID 248502,
+    CID 248916)
+  * Initialize members in spin box related classes (CID 248555,
+    CID 248871)
+  * Fix xyYtoXYZ color conversion formula
+  * Make the code in the triangle color selector cleaner
+  * Fix updates in Channels docker
+  * Fix updates in Histogram docker
+  * Fix multithreading in Histogram widget
+  * Change typedef to using in HistogramDockerWidget
+  * Fix referencing of null value in SvgStyleWriter (CID 329512)
+  * Fix uninitialized values in HistogramDockerWidget (CID 329509)
+  * Fix High DPI for canvas previews in Undo History docker
+  * Fix crash on saving a huge image to .kra (kde#432182)
+  * Ensure that transform worker won't try to scale to 0
+    (kde#432182)
+  * Fix KoQuaZipStore error checking
+  * Show country in language list for disambiguation (kde#437994)
+  * Fix failing update when transforming a shape layer with a
+    Transform Tool (kde#437886)
+  * Do not append country name to zh_CN and zh_TW (kde#437994)
+  * Add more checks on saving to kra
+  * Fix non-float results in expressions for float values
+    (CID 329390, CID 329448, CID 329482)
+  * Fix uninitialized values in various classes (CID 329508,
+    CID 329504, CID 329503, CID 329502, CID 329501)
+  * Don't assert on invalid 0-bytes palettes
+  * Initialize members of SVG Symbols classes (CID 304987)
+  * Initialize members of KisColorSelector classes (CID 36349,
+    CID 248848, CID 248452, CID 248707)
+  * Bugfix: Artifact with more than one active assitant
+    (kde#401940)
+  * Bugfix: Inconsistent stroke fill and shape fill (kde#399127,
+    kde#422204, kde#434828)
+
+-------------------------------------------------------------------
 Thu May 20 05:28:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Enable HEIF plugin also on Leap 15.3 now that libheif was added
