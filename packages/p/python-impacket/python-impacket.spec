@@ -2,7 +2,7 @@
 # spec file for package python-impacket
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python39 1
 Name:           python-impacket
-Version:        0.9.22
+Version:        0.9.23
 Release:        0
 Summary:        Python3 module to easily build and dissect network protocols
 # License: modified Apache-1.1 (see file LICENSE)
@@ -73,7 +72,10 @@ sed -e '/^#!\//, 1d' -i \
 %install
 %python_install
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 impacket-`basename "$0" .py`' '{}' \;
+
+%python_clone -a %{buildroot}%{_bindir}/impacket-A
 %python_clone -a %{buildroot}%{_bindir}/impacket-GetADUsers
+%python_clone -a %{buildroot}%{_bindir}/impacket-Get-GPPPassword
 %python_clone -a %{buildroot}%{_bindir}/impacket-GetNPUsers
 %python_clone -a %{buildroot}%{_bindir}/impacket-GetUserSPNs
 %python_clone -a %{buildroot}%{_bindir}/impacket-addcomputer
@@ -114,16 +116,21 @@ sed -e '/^#!\//, 1d' -i \
 %python_clone -a %{buildroot}%{_bindir}/impacket-services
 %python_clone -a %{buildroot}%{_bindir}/impacket-smbclient
 %python_clone -a %{buildroot}%{_bindir}/impacket-smbexec
+%python_clone -a %{buildroot}%{_bindir}/impacket-smbpasswd
 %python_clone -a %{buildroot}%{_bindir}/impacket-smbrelayx
 %python_clone -a %{buildroot}%{_bindir}/impacket-smbserver
 %python_clone -a %{buildroot}%{_bindir}/impacket-sniff
 %python_clone -a %{buildroot}%{_bindir}/impacket-sniffer
 %python_clone -a %{buildroot}%{_bindir}/impacket-split
+%python_clone -a %{buildroot}%{_bindir}/impacket-testTGT
+%python_clone -a %{buildroot}%{_bindir}/impacket-testTGT2
 %python_clone -a %{buildroot}%{_bindir}/impacket-ticketConverter
 %python_clone -a %{buildroot}%{_bindir}/impacket-ticketer
 %python_clone -a %{buildroot}%{_bindir}/impacket-wmiexec
 %python_clone -a %{buildroot}%{_bindir}/impacket-wmipersist
 %python_clone -a %{buildroot}%{_bindir}/impacket-wmiquery
+%python_clone -a %{buildroot}%{_bindir}/impacket-PoC
+%python_clone -a %{buildroot}%{_bindir}/impacket-PoC2
 #
 %python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/LICENSE
 %python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/README.md
@@ -132,8 +139,10 @@ sed -e '/^#!\//, 1d' -i \
 %python_expand rm %{buildroot}%{_bindir}/_current_flavor
 
 %post
+%python_install_alternative impacket-A
 %python_install_alternative impacket-GetADUsers
 %python_install_alternative impacket-GetNPUsers
+%python_install_alternative impacket-Get-GPPPassword
 %python_install_alternative impacket-GetUserSPNs
 %python_install_alternative impacket-addcomputer
 %python_install_alternative impacket-atexec
@@ -174,18 +183,25 @@ sed -e '/^#!\//, 1d' -i \
 %python_install_alternative impacket-smbclient
 %python_install_alternative impacket-smbexec
 %python_install_alternative impacket-smbrelayx
+%python_install_alternative impacket-smbpasswd
 %python_install_alternative impacket-smbserver
 %python_install_alternative impacket-sniff
 %python_install_alternative impacket-sniffer
 %python_install_alternative impacket-split
+%python_install_alternative impacket-testTGT
+%python_install_alternative impacket-testTGT2
 %python_install_alternative impacket-ticketConverter
 %python_install_alternative impacket-ticketer
 %python_install_alternative impacket-wmiexec
 %python_install_alternative impacket-wmipersist
 %python_install_alternative impacket-wmiquery
+%python_install_alternative impacket-PoC
+%python_install_alternative impacket-PoC2
 
 %postun
+%python_uninstall_alternative impacket-A
 %python_uninstall_alternative impacket-GetADUsers
+%python_uninstall_alternative impacket-Get-GPPPassword
 %python_uninstall_alternative impacket-GetNPUsers
 %python_uninstall_alternative impacket-GetUserSPNs
 %python_uninstall_alternative impacket-addcomputer
@@ -227,15 +243,20 @@ sed -e '/^#!\//, 1d' -i \
 %python_uninstall_alternative impacket-smbclient
 %python_uninstall_alternative impacket-smbexec
 %python_uninstall_alternative impacket-smbrelayx
+%python_uninstall_alternative impacket-smbpasswd
 %python_uninstall_alternative impacket-smbserver
 %python_uninstall_alternative impacket-sniff
 %python_uninstall_alternative impacket-sniffer
 %python_uninstall_alternative impacket-split
+%python_uninstall_alternative impacket-testTGT
+%python_uninstall_alternative impacket-testTGT2
 %python_uninstall_alternative impacket-ticketConverter
 %python_uninstall_alternative impacket-ticketer
 %python_uninstall_alternative impacket-wmiexec
 %python_uninstall_alternative impacket-wmipersist
 %python_uninstall_alternative impacket-wmiquery
+%python_uninstall_alternative impacket-PoC
+%python_uninstall_alternative impacket-PoC2
 
 %check
 # Don't run tests thtat require online connections
@@ -268,12 +289,15 @@ rm tests/SMB_RPC/test_wkst.py
 rm tests/SMB_RPC/test_wmi.py
 rm tests/misc/test_dcerpc_v5_ndr.py
 rm tests/misc/test_structure.py
+#%%pytest -k 'not (test_well_formed)'
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.md
+%python_alternative %{_bindir}/impacket-A
 %python_alternative %{_bindir}/impacket-GetADUsers
+%python_alternative %{_bindir}/impacket-Get-GPPPassword
 %python_alternative %{_bindir}/impacket-GetNPUsers
 %python_alternative %{_bindir}/impacket-GetUserSPNs
 %python_alternative %{_bindir}/impacket-addcomputer
@@ -315,15 +339,20 @@ rm tests/misc/test_structure.py
 %python_alternative %{_bindir}/impacket-smbclient
 %python_alternative %{_bindir}/impacket-smbexec
 %python_alternative %{_bindir}/impacket-smbrelayx
+%python_alternative %{_bindir}/impacket-smbpasswd
 %python_alternative %{_bindir}/impacket-smbserver
 %python_alternative %{_bindir}/impacket-sniff
 %python_alternative %{_bindir}/impacket-sniffer
 %python_alternative %{_bindir}/impacket-split
+%python_alternative %{_bindir}/impacket-testTGT
+%python_alternative %{_bindir}/impacket-testTGT2
 %python_alternative %{_bindir}/impacket-ticketConverter
 %python_alternative %{_bindir}/impacket-ticketer
 %python_alternative %{_bindir}/impacket-wmiexec
 %python_alternative %{_bindir}/impacket-wmipersist
 %python_alternative %{_bindir}/impacket-wmiquery
+%python_alternative %{_bindir}/impacket-PoC
+%python_alternative %{_bindir}/impacket-PoC2
 %{python_sitelib}/impacket*
 
 %changelog

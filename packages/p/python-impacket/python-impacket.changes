@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  9 17:17:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.23
+  Library improvements
+  * Support connect timeout with SMBTransport.
+  * Speeding up DcSync.
+  * Fixed Python3 issue when serving SOCKS5 requests.
+  * Fixed Path Traversal vulnerabilities in smbserver.py .
+    CVE-2021-31800
+  * Fixed POST request processing in httprelayserver.py .
+  * Added cat command to smbclient.py .
+  * Added new features to the LDAP Interactive Shell to facilitate
+    AD exploitation.
+  * Python 3.9 support
+- Drop not longer needed patch:
+  * 1054.patch
+
+-------------------------------------------------------------------
 Sat Apr 24 15:41:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Python 3.9 is not supported yet - skip builds for now
