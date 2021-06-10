@@ -1,5 +1,5 @@
 #
-# spec file for package google-guice
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #

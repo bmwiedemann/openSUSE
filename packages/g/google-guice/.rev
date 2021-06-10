@@ -19,4 +19,12 @@
 </comment>
     <requestid>892403</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6da12aa799507ad6112383beaf256609</srcmd5>
+    <version>4.1</version>
+    <time>1623363529</time>
+    <user>dimstar_suse</user>
+    <comment>Better fix</comment>
+    <requestid>899010</requestid>
+  </revision>
 </revisionlist>

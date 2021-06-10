@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 10 10:16:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * google-guice-throwingproviderbinder.patch
+    + do not add the override of virtual function
+	+ build with source/target 8 so that the default override
+      from the interface can be used
+  * guice-4.1-javadoc.patch
+    + build javadoc with source level 8
+
+-------------------------------------------------------------------
 Tue May 11 12:46:28 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the compatibility guava20
