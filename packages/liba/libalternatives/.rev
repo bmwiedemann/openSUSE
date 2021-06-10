@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be6fe2326c00c02736fddfd07a244add</srcmd5>
+    <version>1.0</version>
+    <time>1623363519</time>
+    <user>dimstar_suse</user>
+    <comment>removed stray CFLAGS in spec file</comment>
+    <requestid>898982</requestid>
+  </revision>
+</revisionlist>

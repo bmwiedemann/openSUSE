@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Jun 09 16:50:09 UTC 2021 - adam.majer@suse.de
+
+- Version v1.0.0:
+  * Prefix symbols with libalts_ to avoid symbol clashes
+  * Add symbol visibility and versioning
+  * Decamelize public symbols and rename
+
