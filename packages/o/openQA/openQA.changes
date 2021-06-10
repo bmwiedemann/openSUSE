@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 10 18:53:07 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1623351179.452374ecb:
+  * Allow to configure Selenium chromedriver startup timeout for slow environments
+  * docs: Add explanation for OPENQA::Test::TimeLimit configuration options
+  * Give permission of check_qemu_oom
+  * docs: Improve "getting involved" paragraphs
+  * docs: Remove redundant and outdated contact reference
+  * README: Update and generalize contact information
+  * The coverage fix should not be necessary anymore
+  * The coverage fix should not be necessary anymore
+  * Make run_gru_job perform jobs without forking
+  * Run 10-jobs.t really fast
+  * parser: update IPA parser to support latest img-proof changes
+  * Increase Mojolicious version requirement to a version compatible to what we test with
+  * Fix content negotiation with .txt file extension for module source
+  * Fix loading `main.pm` from custom CASEDIR with ABSOLUTE_TEST_CONFIG_PATHS=1
+  * Add test for ABSOLUTE_TEST_CONFIG_PATHS=1 and custom CASEDIR
+  * Split 'symlink testrepo' test into further subtests
+  * worker: Fix handling CASEDIR/PRODUCTDIR/NEEDLES_DIR in certain cases
+  * worker: Fix deleting previous links when preparing pool directory
+
+-------------------------------------------------------------------
 Sun Jun 06 03:32:05 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1622818917.004fe9ea4:

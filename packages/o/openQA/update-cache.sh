@@ -12,13 +12,10 @@ osc service lr
 osc service lr tar
 
 SD=$PWD
-tmp=$(mktemp -d)
-cd $tmp
-tar xf $SD/openQA-*.tar
-cd openQA-*
-script/generate-packed-assets
+cd openQA
+tools/generate-packed-assets
 tar cvjf cache.tar.xz assets/cache assets/assetpack.db
-mv cache.tar.xz $SD/cache.txz
+mv cache.tar.xz "$SD/cache.txz"
 
-cd $SD
+cd "$SD"
 osc up
