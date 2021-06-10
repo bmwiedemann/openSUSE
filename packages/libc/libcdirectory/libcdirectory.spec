@@ -1,7 +1,7 @@
 #
 # spec file for package libcdirectory
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 %define lname	libcdirectory1
-%define timestamp 20200702
 Name:           libcdirectory
-Version:        0~%{timestamp}
+Version:        20210415
 Release:        0
 Summary:        Library for Windows NT data types
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libcdirectory/wiki
-Source:         https://github.com/libyal/libcdirectory/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libcdirectory
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libcerror) >= 20150101
-BuildRequires:  pkgconfig(libclocale) >= 20150101
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libuna) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
@@ -49,7 +49,7 @@ libyal is typically used in digital forensic tools.
 
 %package devel
 Summary:        Development files for libcdirectory
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -60,28 +60,26 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libcdirectory.
 
 %prep
-%setup -q -n libcdirectory-%{timestamp}
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static --enable-wide-character-type
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%license COPYING*
 %{_libdir}/libcdirectory.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING README ChangeLog
+%license COPYING*
 %{_includedir}/libcdirectory.h
 %{_includedir}/libcdirectory/
 %{_libdir}/libcdirectory.so
