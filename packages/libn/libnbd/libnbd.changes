@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 09 19:50:28 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.8.0:
+  * Version 1.8.0.
+  * docs: Get release notes ready for a release today
+  * copy/copy-file-to-qcow2.sh: Skip this test for old qemu-nbd
+  * docs: Put links to release notes in a separate section
+  * docs: Add preliminary release notes for libnbd 1.8
+  * common/utils: Add test-vector.c (unit test for vectors) from nbdkit
+  * copy, fuse, info: Synchronize --help output with manual
+  * generator: Update copyright year in generated files.
+  * Update README
+  * Version 1.7.12.
+
+-------------------------------------------------------------------
 Wed Apr 14 01:04:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.7.7

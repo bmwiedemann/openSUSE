@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.7.7
+Version:        1.8.0
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  ocaml(compiler)
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -97,7 +97,6 @@ Requires:       libnbd%{sover} = %{version}-%{release}
 %description bash-completion
 Install this package if you want intelligent bash tab-completion
 for %{name}.
-
 
 %prep
 %autosetup -p1
