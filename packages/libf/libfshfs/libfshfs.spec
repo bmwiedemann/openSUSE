@@ -1,7 +1,7 @@
 #
 # spec file for package libfshfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,35 @@
 
 
 %define lname	libfshfs1
-%define timestamp 20201104
 Name:           libfshfs
-Version:        0~%{timestamp}
+Version:        20210510
 Release:        0
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfshfs/wiki
-Source:         https://github.com/libyal/libfshfs/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
-
+URL:            https://github.com/libyal/libfshfs
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20170101
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfguid) >= 20130317
-BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libhmac)
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libhmac) >= 20200104
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(python3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Read-only supported HFS formats:
@@ -105,9 +106,8 @@ Planned:
 * Complete resource fork support
 * Complete named fork (extended attributes) support
 
-
 %package tools
-Summary:        Tools to access the Mac OS Hierarchical File System (HFS) 
+Summary:        Tools to access the Mac OS Hierarchical File System (HFS)
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 Requires:       %{lname} = %{version}
@@ -116,8 +116,8 @@ Requires:       %{lname} = %{version}
 Tools to access the Mac OS Hierarchical File System (HFS).  See libfshfs for additional details.
 
 %package devel
-Summary:        Development files for libfshfs, Mac OS Hierarchical File System (HFS) library 
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+Summary:        Development files for libfshfs, Mac OS Hierarchical File System (HFS) library
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -141,37 +141,31 @@ libfshfs is a library to access Mac OS Hierarchical File System (HFS) format. Se
 This package contains Python 3 bindings for libfshfs.
 
 %prep
-%setup -q -n libfshfs-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libfshfs.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_bindir}/fshfs*
 %{_mandir}/man1/fshfs*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{_includedir}/libfshfs.h
 %{_includedir}/libfshfs/
 %{_libdir}/libfshfs.so
@@ -179,9 +173,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libfshfs.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyfshfs.so
 
 %changelog
