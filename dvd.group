@@ -2769,7 +2769,7 @@
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvpx6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvulkan_intel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvulkan_radeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3168,7 +3168,7 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5114,6 +5114,7 @@
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libSvtAv1Enc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libX11-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libXau-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
