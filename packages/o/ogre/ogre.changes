@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May  3 21:29:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.12.12
+  * See https://github.com/OGRECave/ogre/releases/tag/v1.12.12
+- Refresh python3-sitelib.patch
+- Install versioned modules, unversioned only for devel package
+- Add virtual devel package, the cmake module requires all devel
+  package
+
+-------------------------------------------------------------------
+Sun Apr 18 23:14:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.12.11
+  * A lot of new features and bug fixes, please refer to
+     https://github.com/OGRECave/ogre/releases/tag/v1.12.11
+    Or the release notes provided in ogre-docs packge (Notes*.md)
+- Added python and CSharp subpackages
+- Added python3-sitelib.patch for correct python site-lib path
+- Dropped upstream fixed patches
+  * riscv64-architecture.patch
+  * fix-aarch64-detection.patch
+  * fix-template-function.patch
+  * ogre-1.9.0-fixsled.patch
+  * ogre1.9.0-browser-cmake.patch
+  * ogre-1.9.0-texturearray-ambig-uint.patch
+  * ogre-1.9.0-longlongconstants.patch
+
+-------------------------------------------------------------------
 Mon Jan 11 17:19:19 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - riscv64-architecture.patch: add riscv64 as 64bit architecture
