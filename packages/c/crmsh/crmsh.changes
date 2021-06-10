@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 10 05:24:46 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210610.c7eb914f:
+  * Dev: utils: allow configure link-local ipv6 address
+  * Dev: bootstrap: return when not specify ocfs2 device on interactive mode
+
+-------------------------------------------------------------------
 Mon Jun 07 01:53:05 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210607.41a0731e:
