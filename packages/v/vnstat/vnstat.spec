@@ -28,6 +28,7 @@ Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            http://humdi.net/vnstat
+#Git-Clone:     https://github.com/vergoh/vnstat.git
 Source:         http://humdi.net/vnstat/vnstat-%{version}.tar.gz
 Source98:       http://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
@@ -35,7 +36,6 @@ Source1:        vnstat-if.sh
 Source2:        vnstat-cgi.conf
 Source3:        vnstat-create-db.sh
 Source4:        vnstat.init
-Patch1:         systemd234.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
@@ -77,11 +77,8 @@ collected traffic statistics.
 
 %prep
 %setup -q
-%if 0%{?suse_version} <= 1500
-%patch1 -p1
-%endif
 # Add user and group to the systemd service.
-sed -i 's/\(\[Service\]\)/\1\nUser=vnstat\nGroup=vnstat/' examples/systemd/vnstat.service
+sed -i 's/\(\[Service\]\)/\1\nUser=vnstat\nGroup=vnstat/' examples/systemd/simple/vnstat.service
 
 %build
 autoreconf -fi
@@ -104,7 +101,7 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/apache2/conf.d/vnstat.con
 install -Dm 0755 %{SOURCE3} %{buildroot}%{_bindir}/vnstat-create-db
 
 %if %{with systemd}
-install -Dm 0644 examples/systemd/vnstat.service %{buildroot}%{_unitdir}/vnstatd.service
+install -Dm 0644 examples/systemd/simple/vnstat.service %{buildroot}%{_unitdir}/vnstatd.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcvnstatd
 %else
 install -Dm 0755 %{SOURCE4} %{buildroot}%{_initddir}/vnstatd

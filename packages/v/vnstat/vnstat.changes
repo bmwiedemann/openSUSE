@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  6 10:45:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Install examples/systemd/simple/vnstat.service
+- Drop not longer needed patch:
+  * systemd234.patch
+
+-------------------------------------------------------------------
 Sun May 16 16:18:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7
