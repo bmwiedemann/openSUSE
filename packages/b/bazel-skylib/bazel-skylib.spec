@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-skylib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-skylib
-Version:        0.9.0
+Version:        1.0.3
 Release:        0
 Summary:        Set of functions for writing Bazel build rules with Skylark
 License:        Apache-2.0
 Group:          Development/Tools/Building
-Url:            https://github.com/bazelbuild/bazel-skylib
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/bazelbuild/bazel-skylib
+Source:         https://github.com/bazelbuild/bazel-skylib/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 Skylib is a standard library that provides functions for manipulating
@@ -51,7 +51,7 @@ This package contains source code of Skylib.
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 
 %files source
 %license LICENSE
