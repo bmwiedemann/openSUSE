@@ -305,14 +305,15 @@ Conflict: krb5-devel:krb5-mini
 Conflict: krb5:krb5-mini-devel
 Prefer: gettext-tools-mini gettext-runtime-mini
 Prefer: ghostscript-mini
-Prefer: krb5-mini-devel:krb5-mini
 Prefer: krb5-mini krb5-mini-devel
-Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
+Prefer: krb5-mini-devel:krb5-mini
 Prefer: libdebuginfod1 debuginfod-client
+Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
+Prefer: libuna-mini-devel libuna1-mini
 Prefer: libunbound-devel-mini
 Prefer: log4j12-mini
-Prefer: systemd-mini-devel:systemd-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini
+Prefer: systemd-mini-devel:systemd-mini
 Prefer: udev-mini
 
 # break dependency of the -mini packages: they are valid for OBS, but not for end-user-installation
