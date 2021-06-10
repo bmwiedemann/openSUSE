@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  9 09:47:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.6.3:
+  * PICARD-2205[1] - Syntax highlighting ignores functions
+    starting with underscore or numbers
+  * PICARD-2206[2] - Fix tab order in option pages
+  * PICARD-2209[3] - Minimizing / maximizing Picard window
+    registers desktop status indicator multiple times
+  * PICARD-2214[4] - Backslash at end of script raises TypeError
+  * PICARD-2219[5] - Empty file naming script causes files
+    to be renamed to _ext
+  * PICARD-2226[6] - Some config changes are not applied
+    until restart
+
+-------------------------------------------------------------------
 Mon May  3 12:14:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.6.2:
