@@ -1,7 +1,7 @@
 #
 # spec file for package libbfio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,27 @@
 
 Name:           libbfio
 %define lname	libbfio1
-%define timestamp 20201127
-Version:        0~%timestamp
+Version:        20210416
 Release:        0
 Summary:        Library to provide basic file input/output abstraction
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/libyal/libbfio/wiki
-Source:         https://github.com/libyal/libbfio/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libbfio
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20190112
-BuildRequires:  pkgconfig(libcerror) >= 20150101
-BuildRequires:  pkgconfig(libcfile) >= 20120425
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20120425
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 libbfio is used in multiple other libraries like libewf, libmsiecf,
@@ -67,27 +68,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libbfio.
 
 %prep
-%setup -qn libbfio-%timestamp
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %_libdir/libbfio.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libbfio*
 %_libdir/libbfio.so
 %_libdir/pkgconfig/libbfio.pc
