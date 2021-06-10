@@ -63,4 +63,12 @@
     <comment>version typo</comment>
     <requestid>893424</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>60e70116221ed4dda00366a04b1c868d</srcmd5>
+    <version>1.8.0.292</version>
+    <time>1623363549</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory build</comment>
+    <requestid>899088</requestid>
+  </revision>
 </revisionlist>

@@ -402,6 +402,20 @@ export ARCH_DATA_MODEL=64
  bash ./autogen.sh
 )
 
+EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+
+%ifarch ppc64le
+EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
+%endif
+
+%if %{?pkg_vcmp:%pkg_vcmp gcc-c++ >= 11}%{!?pkg_vcmp:0}
+EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -g -gdwarf-4"
+EXTRA_CFLAGS="$EXTRA_CFLAGS -g -gdwarf-4"
+export CXXFLAGS="$EXTRA_CPP_FLAGS"
+export CFLAGS="$EXTRA_CFLAGS"
+%endif
+
 bash configure \
     --disable-zip-debug-info \
     --with-milestone="fcs" \
