@@ -31,6 +31,7 @@
 #include <errno.h>
 #include <getopt.h>
 #include <fcntl.h>
+#include <limits.h>
 
 #ifndef RENAME_EXCHANGE
 # define RENAME_EXCHANGE   (1 << 1)
@@ -66,10 +67,36 @@ int main(int argc, char** argv)
 	if (argc-optind < 2)
 		help(argv[0], 1);
 
-	r = syscall (SYS_renameat2, AT_FDCWD, argv[optind], AT_FDCWD, argv[optind+1], RENAME_EXCHANGE);
+	const char *source = argv[optind], *target = argv[optind+1];
+	r = syscall (SYS_renameat2, AT_FDCWD, source, AT_FDCWD, target, RENAME_EXCHANGE);
 	if (r < 0) {
-		perror("renameat2");
-		return 1;
+		if (errno != EINVAL) {
+			perror("renameat2");
+			return 1;
+		}
+
+		// Fallback for systems without renameat2 support
+		puts("!!! WARNING: rename2 RENAME_EXCHANGE not supported !!!");
+		puts("!!! fallback to unsafe rename !!!");
+		char tmp[PATH_MAX];
+		r = snprintf(tmp, sizeof(tmp), "%s.XXXXXX", target);
+		if (r < 0) {
+			perror("asprintf");
+			return 1;
+		}
+		// not intended to be use in /tmp so good enough
+		mktemp(tmp);
+
+		r = renameat(AT_FDCWD, target, AT_FDCWD, tmp);
+		if (!r)
+			r = renameat(AT_FDCWD, source, AT_FDCWD, target);
+		if (!r)
+			r = renameat(AT_FDCWD, tmp, AT_FDCWD, source);
+
+		if (r < 0) {
+			perror("renameat");
+			return 1;
+		}
 	}
 
 	return 0;

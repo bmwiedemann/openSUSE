@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:03:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- early exit in case of overlayfs (boo#1187027)
+
+-------------------------------------------------------------------
+Tue Jun  8 07:37:33 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid dependency on mountpoint from util-linux
+- Also check for availability of find
+
+-------------------------------------------------------------------
+Mon Jun  7 09:02:56 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- fix conversion with split /usr (boo#1186781)
+
+-------------------------------------------------------------------
+Wed Jun  2 15:29:15 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- exit early if one of the affected directories has mountpoint
+  beneath it
+
+-------------------------------------------------------------------
+Tue Jun  1 23:27:08 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- add fallback for filesystems without renameat2 (boo#1186637)
+
+-------------------------------------------------------------------
 Thu Mar 25 09:50:48 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - catch boolean deps

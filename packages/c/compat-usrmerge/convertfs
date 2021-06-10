@@ -3,27 +3,58 @@
 
 ROOT=
 
+is_usrmerged() {
+    local r=1
+    for dir in bin sbin lib lib64; do
+	[ -d "$ROOT/$dir" ] || continue
+	[ -L "$ROOT/$dir" ] || return 1
+	r=0
+    done
+    return "$r"
+}
+
+# check if there's anything to do
+is_usrmerged && exit 0
+
 # the package is installed with AutoReq off, so no guarantee that
 # coreutils actually works
-if ! (cp --help && mountpoint --help && mountpoint --help) > /dev/null; then
+if ! { cp --help && find --help; } > /dev/null; then
 	echo "tools not functional, exit"
 	exit 1
 fi
 
 # clean up after ourselves no matter how we die.
 cleanup() {
-    echo "Something failed, cleaning up"
+    echo "UsrMerge conversion failed, cleaning up"
     for dir in bin sbin lib lib64; do
 	rm -rf -- "$ROOT/usr/${dir}.usrmerge"
     done
+    echo "!!! ATTENTION: Do NOT proceed if you see this message during"
+    echo "!!! distribution upgrade. Chances are high that your system might"
+    echo "!!! break beyond repair if you do."
 }
 
 trap 'ret=$?; [[ $ret -ne 0 ]] && cleanup;exit $ret;' EXIT
 trap 'exit 1;' SIGINT
 
-mountpoint -q "$ROOT/usr" || CP_HARDLINK="-l"
-
 set -e
+
+if [ "$(stat -f -c %T "${ROOT:-/}")" = "overlayfs" ]; then
+	echo "UsrMerge conversion does not work on overlayfs"
+	exit 1
+fi
+
+CP_HARDLINK="-l"
+while read dev mp other; do
+    [ "$mp" = "$ROOT/usr" ] && CP_HARDLINK=""
+    for dir in bin sbin lib lib64; do
+	[ -d "$ROOT/$dir" ] || continue
+	if [ "${mp#$ROOT/$dir}" != "$mp" ] || [ "${mp#$ROOT/usr/$dir}" != "$mp" ]; then
+	    echo "Please unmount $mp before the conversion"
+	    exit 1
+	fi
+    done
+done < /proc/mounts
 
 # merge / and /usr in new dir in /usr
 for dir in bin sbin lib lib64; do
@@ -32,7 +63,7 @@ for dir in bin sbin lib lib64; do
     [[ -d "$ROOT/$dir" ]] || continue
     echo "Make a copy of \`$ROOT/$dir'."
     [[ -d "$ROOT/$dir" ]] \
-        && cp -ax -l "$ROOT/$dir" "$ROOT/usr/${dir}.usrmerge"
+        && cp -ax $CP_HARDLINK "$ROOT/$dir" "$ROOT/usr/${dir}.usrmerge"
     # cp can't handle copying a dir over non-directories. So move
     # those away in advance. Happened with /lib/udev existing as
     # link on older distros
@@ -43,7 +74,7 @@ for dir in bin sbin lib lib64; do
 	    rm -rf "$f.usrmerge~"
 	    mv "$f" "$f.usrmerge~"
 	fi
-    done < <(find "$ROOT/usr/$dir" -type d -printf "%P\n" )
+    done < <(find "$ROOT/usr/$dir" -xdev -type d -printf "%P\n" )
     echo "Merge the copy with \`$ROOT/usr/$dir'."
     [[ -d "$ROOT/usr/${dir}.usrmerge" ]] \
         || mkdir -p "$ROOT/usr/${dir}.usrmerge"
@@ -51,14 +82,14 @@ for dir in bin sbin lib lib64; do
     echo "Clean up duplicates in \`$ROOT/usr/$dir'."
     # delete all symlinks that have been backed up. /usr versions
     # override / ones
-    find "$ROOT/usr/${dir}.usrmerge" -type l -name '*.usrmerge~' -delete || :
+    find "$ROOT/usr/${dir}.usrmerge" -xdev -type l -name '*.usrmerge~' -delete || :
     # in rare cases the symlinks may point from /usr to /, so remove
     # the link in that case
     while read file; do
 	o=${file%%.usrmerge~}
 	[ -L "$o" ] && mv -f "$file" "$o"
     done < <(find "$ROOT/usr/${dir}.usrmerge" \
-        -name '*.usrmerge~' -type f)
+        -xdev -name '*.usrmerge~' -type f)
 done
 # switch over merged dirs in /usr
 for dir in bin sbin lib lib64; do
@@ -72,7 +103,7 @@ done
 for dir in bin sbin lib lib64; do
     if [ ! -L "$ROOT/$dir" -a -d "$ROOT/$dir" ]; then
 	  echo "Create \`$ROOT/$dir' symlink."
-	  rm -rf "$ROOT/${dir}.usrmerge" || :
+	  rm --one-file-system -rf "$ROOT/${dir}.usrmerge" || :
 	  ln -s usr/$dir "$ROOT/${dir}.usrmerge"
 	  /usr/libexec/xmv "$ROOT/$dir" "$ROOT/${dir}.usrmerge"
     fi
@@ -88,7 +119,7 @@ for dir in bin sbin lib lib64; do
 	if [ -d "$d" ]; then
 	    echo "$d ..."
 	    mv "$d" "$d~"
-	    rm -rf "$d~"
+	    rm --one-file-system -rf "$d~"
 	fi
     done
 done
@@ -105,10 +136,4 @@ done
 set +e
 
 echo "Run ldconfig."
-ldconfig -r "$ROOT"
-
-#. $ROOT/etc/selinux/config
-#if [ -n "$(command -v setfiles)" ] && [ "$SELINUX" != "disabled" ] && [ -f /etc/selinux/${SELINUXTYPE}/contexts/files/file_contexts ]; then
-#    echo "Fixing SELinux labels"
-#    setfiles -r $ROOT -p /etc/selinux/${SELINUXTYPE}/contexts/files/file_contexts $ROOT/sbin $ROOT/bin $ROOT/lib $ROOT/lib64 $ROOT/usr/lib $ROOT/usr/lib64 $ROOT/etc/ld.so.cache $ROOT/var/cache/ldconfig || :
-#fi
+ldconfig -r "$ROOT" || :
