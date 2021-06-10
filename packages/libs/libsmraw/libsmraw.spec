@@ -1,7 +1,7 @@
 #
 # spec file for package libsmraw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,36 @@
 
 Name:           libsmraw
 %define lname	libsmraw1
-%define timestamp 20201210
-Version:        0~%timestamp
+Version:        20210418
 Release:        0
 Summary:        Library and tools to access the (split) RAW image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libsmraw/wiki
-Source:         https://github.com/libyal/libsmraw/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libsmraw
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20120426
-BuildRequires:  pkgconfig(libcdata) >= 20120425
-BuildRequires:  pkgconfig(libcerror) >= 20170101
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20120701
-BuildRequires:  pkgconfig(libcsplit) >= 20120701
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20120701
-BuildRequires:  pkgconfig(libfcache) >= 20120425
-BuildRequires:  pkgconfig(libfdata) >= 20120425
-BuildRequires:  pkgconfig(libfvalue) >= 20120428
-BuildRequires:  pkgconfig(libhmac) >= 20120425
-BuildRequires:  pkgconfig(libuna) >= 20120425
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libhmac) >= 20200104
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(openssl) >= 1.0
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libsmraw is a library to access the storage media RAW format.
@@ -91,28 +91,25 @@ Python 3 bindings for libsmraw, which provides functionality to work
 with (split) RAW files.
 
 %prep
-%setup -qn libsmraw-%timestamp
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find "%buildroot" -name "*.la" -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING
 %_libdir/libsmraw.so.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING
 %_includedir/libsmraw*
 %_libdir/libsmraw.so
@@ -120,16 +117,12 @@ find "%buildroot" -name "*.la" -delete
 %_mandir/man3/libsmraw.3*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING
 %_bindir/smrawverify
 %_bindir/smrawmount
 %_mandir/man1/smrawmount.1*
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING
 %python3_sitearch/pysmraw.so
 
