@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 10 20:17:05 UTC 2021 - Mihaly Meszaros <mmeszaros@npsh.hu>
+
+- fix PID filename typos in systemd unit files
+
+-------------------------------------------------------------------
 Fri Jun 19 14:09:15 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Remove sysvinit remains from this package.
