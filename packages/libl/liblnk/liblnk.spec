@@ -1,7 +1,7 @@
 #
 # spec file for package liblnk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,36 @@
 
 
 %bcond_without python2
-Name:           liblnk
 %define lname	liblnk1
-%define timestamp 	20200810
-Version:        0~%timestamp
+Name:           liblnk
+Version:        20210417
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
-Group:          Productivity/File utilities
-URL:            https://github.com/libyal/liblnk/wiki
-Source:         https://github.com/libyal/liblnk/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
+Group:          Productivity/File Utilities
+URL:            https://github.com/libyal/liblnk
+Source:         %name-%version.tar.xz
 Source2:        Windows_Shortcut_File_LNK_format.pdf
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20130904
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libfdatetime) >= 20130317
-BuildRequires:  pkgconfig(libfguid) >= 20130904
-BuildRequires:  pkgconfig(libuna) >= 20120425
-#BuildRequires:  pkgconfig(libfwsi) >= 20120426 (not yet stable per upstream 9/2014)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfole) >= 20170502
+BuildRequires:  pkgconfig(libfwps) >= 20191221
+BuildRequires:  pkgconfig(libfwsi) >= 20210419
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 liblnk is a library and tools to access Windows Shortcut File (LNK) format files.
@@ -63,10 +66,10 @@ Group:          Productivity/File utilities
 
 %description tools
 liblnk is a library to access Windows Shortcut File (LNK) files.
- 
+
 %package devel
 Summary:        Development files for liblnk, a library to access Windows Shortcut Links
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -99,10 +102,11 @@ BuildRequires:  pkgconfig(python3)
 Python3 binding for liblnk, which can read Windows Shortcut Link files.
 
 %prep
-%setup -qn liblnk-%timestamp
+%autosetup -p1
 cp "%SOURCE2" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
@@ -110,28 +114,24 @@ cp "%SOURCE2" .
     --enable-python2 \
 %endif
     --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find %buildroot -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_libdir/liblnk.so.*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/lnk*
 %_mandir/man1/lnkinfo.1*
 
 %files devel
-%defattr(-,root,root)
 %doc Windows_Shortcut_File_*.pdf
 %_includedir/liblnk.h
 %_includedir/liblnk/
@@ -141,15 +141,11 @@ find %buildroot -name '*.la' -delete
 
 %if %{with python2}
 %files -n python2-%name
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %python2_sitearch/pylnk.so
 %endif
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %python3_sitearch/pylnk.so
 
