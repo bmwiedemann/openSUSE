@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 21:49:11 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add pan-signed-pointer-zero-comparison.patch -- Fix comparison
+  of pointer with int 0 (fixes building against GCC 11).
+
+-------------------------------------------------------------------
 Sat May  8 13:23:21 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add pan-glib-2.68.patch: Fix compilation with glib 2.68+; patch

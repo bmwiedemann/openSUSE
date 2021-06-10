@@ -28,6 +28,8 @@ Source0:        http://pan.rebelbase.com/download/releases/%{version}/source/%{n
 Patch0:         pan-fix-sending-with-gmime30.patch
 # PATCH-FIX-UPSTREAM pan-glib-2.68.patch glgo#GNOME/pan#128 badshah400@gmail.com -- Fix compilation with glib 2.68+; patch taken from upstream merge request with additional fixes for current version
 Patch1:         pan-glib-2.68.patch
+# PATCH-FIX-UPSTREAM pan-signed-pointer-zero-comparison.patch badshah400@gmail.com -- Fix comparison of pointer with int 0
+Patch2:         pan-signed-pointer-zero-comparison.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.19.7
