@@ -1,7 +1,7 @@
 #
 # spec file for package libfmapi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 Name:           libfmapi
 %define lname	libfmapi1
-%define timestamp 20180714
-Version:        0~%timestamp
+Version:        20210415
 Release:        0
 Summary:        Library for MAPI data types
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libfmapi/wiki
-Source:         https://github.com/libyal/libfmapi/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
+URL:            https://github.com/libyal/libfmapi
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata)
-BuildRequires:  pkgconfig(libcerror) >= 20130904
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libfguid)
-BuildRequires:  pkgconfig(libfwnt)
-BuildRequires:  pkgconfig(libuna)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 A library for MAPI data types
@@ -64,27 +65,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfmapi.
 
 %prep
-%setup -qn libfmapi-%timestamp
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %_libdir/libfmapi.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libfmapi*
 %_libdir/libfmapi.so
 %_libdir/pkgconfig/libfmapi.pc
