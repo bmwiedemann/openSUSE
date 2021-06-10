@@ -1,0 +1,15 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -20,10 +20,8 @@
+
+ all: $(OUTPUT)
+
+-lunbound.o: lunbound.c
+-
+-%.so: %.o
+-	$(LD) $(LDFLAGS) -o $@ $^ $(LDLIBS)
++%.so: %.c
++	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+
+ install:
+ 	install -d $(DESTDIR)$(LUA_LIBDIR)/
