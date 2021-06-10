@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 10 08:39:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix build against gcc 11 
+
+-------------------------------------------------------------------
 Wed Nov 15 16:57:39 UTC 2017 - mpluskal@suse.com
 
 - Clean up with spec-cleaner
