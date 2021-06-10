@@ -1,7 +1,7 @@
 #
 # spec file for package libfole
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libfole
 %define lname	libfole1
-%define timestamp 20170502
-Version:        0~%{timestamp}
+Version:        20210415
 Release:        0
 Summary:        Library for Object Linking and Embedding (OLE) data types
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfole/wiki
-Source:         https://github.com/libyal/libfole/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libfole
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libcerror) >= 20150101
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcerror) >= 20201121
 
 %description
 libfole is a library for Object Linking and Embedding (OLE) data types.
@@ -58,28 +58,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfole.
 
 %prep
-%setup -q -n libfole-%{timestamp}
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%license COPYING*
 %{_libdir}/libfole.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING README ChangeLog
 %{_includedir}/libfole.h
 %{_includedir}/libfole/
 %{_libdir}/libfole.so
