@@ -1,7 +1,7 @@
 #
 # spec file for package libscca
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,35 @@
 
 
 %define lname	libscca1
-%define timestamp 	20200717
 Name:           libscca
-Version:        0~%{timestamp}
+Version:        20210419
 Release:        0
 Summary:        Library and tools to access the Windows Prefetch File (PF) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-only
+License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libscca/wiki
-Source:         https://github.com/libyal/libscca/releases/download/%{timestamp}/%{name}-alpha-%{timestamp}.tar.gz
-#BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20130904
-BuildRequires:  pkgconfig(libcerror) > 20150407
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfcache)
-BuildRequires:  pkgconfig(libfdata)
-BuildRequires:  pkgconfig(libfdatetime) >= 20130317
-BuildRequires:  pkgconfig(libfvalue)
-BuildRequires:  pkgconfig(libfwnt)
-BuildRequires:  pkgconfig(libuna) >= 20120425
+URL:            https://github.com/libyal/libscca
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library and tools to access the Windows Prefetch File (PF) format.
@@ -72,7 +74,7 @@ Note that this project currently only focuses on the analysis of the format.
 
 %package devel
 Summary:        Development files for libscca
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -86,18 +88,15 @@ applications that want to make use of %{name}.
 Summary:        Python 3 bindings for libscca
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(python3)
-Requires:       %{lname} = %{version}
-Requires:       python3
 
 %description -n python3-%{name}
 Python 3 binding for libscca, which can access the Windows Prefetch File (PF) format.
 
 %prep
-%setup -q -n libscca-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
@@ -110,7 +109,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{lname}
 %license COPYING*
-%doc AUTHORS ChangeLog
 %{_libdir}/libscca.so.*
 
 %files tools
@@ -126,7 +124,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n python3-%{name}
 %license COPYING*
-%doc AUTHORS
 %{python3_sitearch}/pyscca.so
 
 %changelog
