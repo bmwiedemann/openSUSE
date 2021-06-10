@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  6 03:08:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.00023
+   see /usr/share/doc/packages/perl-SQL-SplitStatement/Changes
+
+  1.00023   2021-06-05 22:10:21 IDT
+  1.00022   2021-06-05 21:53:11 IDT (TRIAL RELEASE)
+     * support REPLACE as an INSERT alternative (gh #5)
+     * allow { and } to pass through in PL/Perl functions (gh #2)
+  1.00021   2021-06-04 15:21:30 IDT (TRIAL RELEASE)
+     * fix POD issues
+     * fix issues with options in bin/sql-split (breaking, but wasn't working anyways)
+
+-------------------------------------------------------------------
 Tue Jan 27 19:57:01 UTC 2015 - coolo@suse.com
 
 - regenerate spec to install LICENSE 
