@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 12 22:39:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210508 (b736acdd)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
 Thu Apr 30 01:42:30 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - convert python bindings to python3

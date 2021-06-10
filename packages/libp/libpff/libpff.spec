@@ -1,7 +1,7 @@
 #
 # spec file for package libpff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,46 +18,43 @@
 
 Name:           libpff
 %define lname	libpff1
-%define timestamp 20180714
-Version:        0~%timestamp
+Version:        20210508
 Release:        0
 Summary:        Library and tools to access Microsoft PFF and OFF format files
-License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libpff/wiki
-Source:         https://github.com/libyal/libpff/releases/download/%{timestamp}/libpff-experimental-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libpff
+Source:         %name-%version.tar.xz
 Source2:        PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
 Source3:        PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
 Source4:        Personal_Folder_File_PFF_format.pdf
 Source5:        MAPI_definitions.pdf
 Source6:        libpff-libfdata.pdf
-Patch1:         pkgconfig.diff
-
-# use factory packages if available
-%if 0%{?suse_version} > 1230
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20190112
-BuildRequires:  pkgconfig(libcerror) >= 20181117
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfdatetime) >= 20120522
-BuildRequires:  pkgconfig(libfguid) >= 20120426
+Patch1:         system-libs.patch
+Patch2:         pkgconfig.diff
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfmapi) >= 20180714
-BuildRequires:  pkgconfig(libfvalue) >= 20120428
-BuildRequires:  pkgconfig(libfwnt) >= 20120426
-BuildRequires:  pkgconfig(libuna) >= 20120425
-%endif
-# fails to build with factory package, use internal
-# verified 4/19/2019
-#BuildRequires:  pkgconfig(libcpath) >= 20181228
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libpff is a library to access the Personal Folder File (PFF) and the
@@ -90,7 +87,7 @@ File (OFF) format. These are used in several file types: PAB
 
 %package devel
 Summary:        Development files for libpff, a PFF/OFF file format library
-License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -107,8 +104,6 @@ applications that want to make use of libpff.
 Summary:        Python bindings for libpff, a PFF/OFF file format parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 #python-%name was previously the name of this submodule.  It was python2 bindings.
 Obsoletes:      python-%name <= 20180714
 
@@ -117,38 +112,33 @@ Python bindings for libpff, which can read Personal Folder File (PFF)
 and Offline Folder File (OFF) formats.
 
 %prep
-%setup -qn libpff-%timestamp
-%patch -P 1 -p1
+%autosetup -p1
 cp "%{S:2}" "%{S:3}" "%{S:4}" "%{S:5}" "%{S:6}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
+# Package has a history of not bumping on ABI breaks (e.g. 59bcd7a46e)
+echo "V_%version { global: *; };" >sym.ver
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build LDFLAGS="-Wl,--version-script=$PWD/sym.ver"
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find "%buildroot" -name "*.la" -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libpff.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_bindir/pff*
 %_mandir/man1/pff*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING 
 %doc MAPI_definitions.pdf
 %doc PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
 %doc PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
@@ -160,7 +150,6 @@ find "%buildroot" -name "*.la" -delete
 %_mandir/man3/libpff.3*
 
 %files -n python3-%name
-%defattr(-,root,root)
 %python3_sitearch/pypff.so
 
 %changelog
