@@ -1,7 +1,7 @@
 #
 # spec file for package libfsntfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,38 @@
 
 
 %define lname	libfsntfs1
-%define timestamp   20201027
 Name:           libfsntfs
-Version:        0~%{timestamp}
+Version:        20210503
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfsntfs/wiki
-Source:         https://github.com/libyal/libfsntfs/releases/download/%{timestamp}/%{name}-experimental-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libfsntfs
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20130904
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfdatetime) >= 20130317
-BuildRequires:  pkgconfig(libfguid) >= 20130904
-BuildRequires:  pkgconfig(libfwnt)
-BuildRequires:  pkgconfig(libuna) >= 20120425
-#as of Feb 28, 2017, recent releases of the below all cause compile errors.
-#BuildRequires:  pkgconfig(libfdata)
-#BuildRequires:  pkgconfig(libfcache)
-#BuildRequires:  pkgconfig(libcerror) > 20170101
-#not yet in OBS
-#BuildRequires:  pkgconfig(libfusn)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(fuse) >= 2.6
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfusn) >= 20180726
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libhmac) >= 20200104
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library and tools to access the New Technology File System (NTFS).
@@ -77,7 +77,7 @@ Note that this project currently only focuses on the analysis of the format.
 
 %package devel
 Summary:        Development files for libfsntfs
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -91,41 +91,34 @@ applications that want to make use of %{name}.
 Summary:        Python 3 bindings for libfsntfs
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%{name}
 Python 3 binding for libfsntfs, which can access the NTFS filesystem.
 
 %prep
-%setup -q -n libfsntfs-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libfsntfs.so.*
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/fsntfs*
 %{_mandir}/man1/fsntfsinfo.1*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libfsntfs.h
 %{_includedir}/libfsntfs/
 %{_libdir}/libfsntfs.so
@@ -133,9 +126,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libfsntfs.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING 
+%license COPYING*
 %{python3_sitearch}/pyfsntfs.so
 
 %changelog
