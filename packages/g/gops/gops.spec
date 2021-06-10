@@ -1,7 +1,7 @@
 #
 # spec file for package gops
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,12 @@
 %global import_path     %{provider_prefix}
 
 Name:           gops
-Version:        0.3.4
+Version:        0.3.18
 Release:        0
 Summary:        A tool to list and diagnose Go processes currently running on your system
 License:        BSD-3-Clause-Clear
 Group:          System/Monitoring
-Url:            https://%{provider_prefix}
+URL:            https://%{provider_prefix}
 Source0:        https://%{provider_prefix}/archive/v%{version}.tar.gz#/%{repo}-%{version}.tar.gz
 BuildRequires:  golang-packaging
 %{go_provides}
@@ -45,13 +45,25 @@ etc. It is possible to use gops tool both in local and remote mode.
 
 %build
 %goprep %{provider_prefix}
-%gobuild .
+go build \
+   -mod=vendor \
+   -v -p 4 -x \
+%ifnarch ppc64 ppc64le riscv64
+   -buildmode=pie \
+%endif
+   %{import_path}
 
 %install
-%goinstall
+go install \
+   -mod=vendor \
+   -v -p 4 -x \
+%ifnarch ppc64 ppc64le riscv64
+   -buildmode=pie \
+%endif
+   %{import_path}
+install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
 
 %files
 %{_bindir}/%{name}
 
 %changelog
-

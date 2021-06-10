@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 10 14:17:22 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 0.3.18
+  * Support for reporting the percent of CPU time usage within
+    given time
+  * agent: mention SO_REUSEPORT in Options.ReuseSocketAddrAndPort
+    godoc 
+
+-------------------------------------------------------------------
 Tue Jul 10 15:37:23 UTC 2018 - mrostecki@suse.com
 
 - Update to 0.3.4
