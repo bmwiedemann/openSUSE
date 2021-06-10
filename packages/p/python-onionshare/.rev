@@ -68,4 +68,12 @@
 - %python3_only -&gt; %python_alternative</comment>
     <requestid>813550</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>70899122ad5fa5de0386feb3f2b24b2e</srcmd5>
+    <version>2.3.2</version>
+    <time>1623363517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898866</requestid>
+  </revision>
 </revisionlist>

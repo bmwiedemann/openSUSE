@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:34:37 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 2.3.2
+  * New feature: Custom titles can be set for OnionShare's various modes
+  * New feature: Receive mode supports notification webhooks
+  * New feature: Receive mode supports submitting messages as well as files
+  * New feature: New ASCII art banner and prettier verbose output
+  * New feature: Partial support for range requests (pausing and resuming in HTTP)
+  * Updated Tor to 0.4.5.7
+  * Updated built-in obfs4 bridges
+  * Various bug fixes
+  * 0001-adjust_tests.diff added to skip download test
+
+-------------------------------------------------------------------
+Sun May 16 09:28:39 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 2.3.1
+  * Bugfix: Fix chat mode
+  * Bugfix: Fix –persistent in onionshare-cli
+  * Bugfix: Fix checking for updates in Windows and macOS 
+  *  Major new feature: Multiple tabs, including better support for persistent services, faster Tor connections
+  * New feature: Chat anonymously mode
+  * New feature: All new design
+  * New feature: Ability to display QR codes of OnionShare addresses
+  * New feature: Web apps have responsive design and look better on mobile
+  * New feature: Flatpak and Snapcraft packaging for Linux
+  * New dependencies added
+  * package onionshare-data removed
+  * singlespec removed
+  * update alternatives removed (pyside2 issues with python flavours)
+  
+-------------------------------------------------------------------
 Wed Jun  3 10:24:26 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - fix for dependency error (see https://build.opensuse.org/request/show/807929 ) 

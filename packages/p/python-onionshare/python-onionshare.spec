@@ -1,8 +1,8 @@
 #
-# spec file for package python-onionshare
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,43 +17,57 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define modname onionshare
-%define oldpython python
 Name:           python-%{modname}
-Version:        2.2
+Version:        2.3.2
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
+Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/micahflee/onionshare
 Source0:        https://github.com/micahflee/onionshare/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source1:        %{modname}.desktop
-BuildRequires:  %{python_module Flask-HTTPAuth}
-BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module PySocks}
-BuildRequires:  %{python_module nautilus}
-BuildRequires:  %{python_module pycrypto}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module stem}
+Patch0:         0001-adjust_tests.diff
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Flask
+BuildRequires:  python3-Flask-HTTPAuth
+BuildRequires:  python3-Flask-SocketIO
+BuildRequires:  python3-PySocks
+BuildRequires:  python3-Unidecode
+BuildRequires:  python3-colorama
+BuildRequires:  python3-nautilus
+BuildRequires:  python3-psutil
+BuildRequires:  python3-pycrypto
+BuildRequires:  python3-pyside2
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-qrcode
+BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-stem
+BuildRequires:  tor
 BuildRequires:  update-desktop-files
-Requires:       %{oldpython}-%{modname}-data
-Requires:       python-Flask
-Requires:       python-Flask-HTTPAuth
-Requires:       python-pycrypto
-Requires:       python-pytest
-Requires:       python-qt5
-Requires:       python-stem
+Requires:       python3-Flask
+Requires:       python3-Flask-HTTPAuth
+Requires:       python3-Flask-SocketIO
+Requires:       python3-Unidecode
+Requires:       python3-colorama
+Requires:       python3-psutil
+Requires:       python3-pycrypto
+Requires:       python3-pyside2
+Requires:       python3-qrcode
+Requires:       python3-requests
+Requires:       python3-stem
 Requires:       tor
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
-%python_subpackages
+
+Provides:       %{name}-%{version}
+Obsoletes:      %{name}-data < %{version}
+Obsoletes:      python36-onionshare < %{version}
+Obsoletes:      python38-onionshare < %{version}
+Obsoletes:      python39-onionshare < %{version}
 
 %description
 OnionShare lets the user share files securely and anonymously. It
@@ -64,60 +78,64 @@ third party file-sharing service. Files are hosted on the machine the
 program is run on. The receiving user just needs to open the URL in
 Tor Browser to download the file.
 
-%package -n python-onionshare-data
-Summary:        Self-hosting Tor Onion Service based file sharing
-
-%description -n python-onionshare-data
-OnionShare lets the user share files securely and anonymously. It
-works by starting a web server, making it accessible as a Tor Onion
-Service, and generating an unguessable URL to access and download the
-files. It does not require setting up a separate server or using a
-third party file-sharing service. Files are hosted on the machine the
-program is run on. The receiving user just needs to open the URL in
-Tor Browser to download the file.
-
 %prep
 %setup -q -n %{modname}-%{version}
+%autopatch -p1
 cp %{SOURCE1} .
 
+sed -i 's/sys.platform != "Linux"/sys.platform != "linux"/' cli/tests/test_cli_settings.py cli/tests/test_cli_common.py
+
 %build
-%python_build
+cd cli
+%python3_build
+cd ../desktop/src
+%python3_build
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/%{modname}
-%python_clone -a %{buildroot}%{_bindir}/%{modname}-gui
+cd cli
+%python3_install
+
+cd ../desktop/src
+%python3_install
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp install/%{modname}80.xpm %{buildroot}%{_datadir}/pixmaps/%{modname}80.xpm
+cp org.onionshare.OnionShare.svg %{buildroot}%{_datadir}/pixmaps/.
 
-desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{modname}.desktop
-%suse_update_desktop_file %{modname}
+pwd
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+desktop-file-install --dir %{buildroot}%{_datadir}/applications/ org.onionshare.OnionShare.desktop
+%suse_update_desktop_file org.onionshare.OnionShare
+
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
-%pytest tests
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+# we don't trust the update-alternatives priority: pytest could point to the wrong python3 flavor.
+# (https://github.com/openSUSE/python-rpm-macros/issues/109)
+mkdir testbin
+ln -s %{_bindir}/pytest-%{python3_bin_suffix} testbin/pytest
+export PATH=$PWD/testbin:$PATH
 
-%post
-%python_install_alternative %{modname} %{modname}-gui
+pushd cli
+pytest -v -k 'not test_large_download' -rs tests
+popd
 
-%postun
-%python_uninstall_alternative %{modname}
+pushd desktop
+# the gui test files need to be called separately upstream's way for application setup and teardown in between
+# this script calls pytest from the PATH defined above.
+./tests/run.sh
+popd
 
-%files %{python_files}
-%python_alternative %{_bindir}/%{modname}
-%python_alternative %{_bindir}/%{modname}-gui
+%files
+%{_bindir}/%{modname}
+%{_bindir}/%{modname}-cli
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
-
-%files -n python-onionshare-data
-%{_datadir}/%{modname}*
-%{_datadir}/pixmaps/*
 %{_datadir}/applications/*
-%{_datadir}/icons/*
-%{_datadir}/metainfo/*
-%{_datadir}/nautilus-python/*
+%{_datadir}/pixmaps/*
+%{python3_sitelib}/onionshare
+%{python3_sitelib}/onionshare-%{version}*-info
+%{python3_sitelib}/onionshare_cli
+%{python3_sitelib}/onionshare_cli-%{version}*-info
 
 %changelog
