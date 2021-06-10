@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libodraw</param>
+		<param name="revision">59e73642336c13de034b2444d2eba09aa2c5b76b</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210503</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

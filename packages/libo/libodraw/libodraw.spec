@@ -1,7 +1,7 @@
 #
 # spec file for package libodraw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,32 @@
 
 Name:           libodraw
 %define lname	libodraw1
-%define timestamp 20201003
-Version:        0~%timestamp
+Version:        20210503
 Release:        0
 Summary:        Library and tools to access to optical disc (split) RAW image files
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libodraw/wiki 
-Source:         https://github.com/libyal/libodraw/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libodraw
+Source:         %name-%version.tar.xz
 Source2:        CUE_sheet_format.pdf
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20120426
-BuildRequires:  pkgconfig(libcdata) >= 20120425
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20140105
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20120701
-BuildRequires:  pkgconfig(libcsplit) >= 20120701
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libuna) >= 20120425
-#use internal package, factory version causes build failure
-# verified 1/11/2015
-#BuildRequires:  pkgconfig(libcsystem) >= 20120425
-#BuildRequires:  pkgconfig(libcerror) >= 20120425
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-#BuildRequires:  pkgconfig(libhmac)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         system-libs.patch
+BuildRequires:  bison
+BuildRequires:  c_compiler
+BuildRequires:  flex
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libhmac) >= 20200104
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 libodraw is a library to access optical disc (split) RAW images such
@@ -60,7 +60,7 @@ as BIN/ISO/CUE.
 
 %package devel
 Summary:        Development files for libodraw, a disc image file library
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -82,29 +82,26 @@ This subpackage contains the utility programs from libodraw, which
 can read optical disc (split) RAW image files such as BIN/ISO/CUE.
 
 %prep
-%setup -qn libodraw-%timestamp
+%autosetup -p1
 cp "%{S:2}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_libdir/libodraw.so.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %doc CUE_*.pdf
 %_includedir/libodraw*
@@ -113,8 +110,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %_mandir/man3/libodraw.3*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_bindir/odrawverify
 %_bindir/odrawinfo
