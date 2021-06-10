@@ -7,4 +7,41 @@
     <comment>We're using it in openSUSE infra already, but it's not in any openSUSE distribution</comment>
     <requestid>861610</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f2f9627a499cfe91f2dd8662c68d8e0</srcmd5>
+    <version>0.7.0</version>
+    <time>1623363526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0:
+  * Add Changelog for v0.7.0 release
+  * update golang.org/x/crypto and replace use of deprecated terminal package
+  * cleanup tempfiles for sqlite_test
+  * Add some unit tests for tuf/utils/utils.go This PR is about adding some unit tests for tuf/utils/utils.go.
+  * cleanup tempfiles for integration_test
+  * cleanup tempfiles for client_test
+  * linting: fix Implicit memory aliasing in RangeStmt
+  * Fix typos
+  * CircleCI: run jobs in parallel
+  * Update gorethink from v3 to v6 and rename to proper rethinkdb-go package
+  * Fix some testing issues
+  * Update go mod vendor for 1.14.1
+  * Update Go to 1.14.1
+  * Remove vendor.conf as it is no longer used
+  * Fix gosec linting errors (fix G306 and G307)
+  * Apply 'go mod tidy &amp;&amp; go mod vendor'
+  * Set default go flag to use -mod=vendor for cli commands
+  * Make the validate-vendor.sh script solely to work with go mod
+  * Align golang-cross docker image version
+  * Add documentation on how to upgrade
+  * Include vendor check in circleci workflow
+  * Add vendor validation script to ensure deps are properly vendored after upgrade
+  * Update documentation for module compatibility
+  * Update docker images to use Go Modules and 1.12.15
+  * Apply 'go mod vendor' (adds indirect dependencies)
+  * Apply 'go mod download'
+  * Apply 'go mod init github.com/theupdateframework/notary'
+  * Bump mariadb from 10.1.28 to 10.4
+  * Remove duplicated words</comment>
+    <requestid>898979</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Jun 10 08:20:07 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.7.0:
+  * Add Changelog for v0.7.0 release
+  * update golang.org/x/crypto and replace use of deprecated terminal package
+  * cleanup tempfiles for sqlite_test
+  * Add some unit tests for tuf/utils/utils.go This PR is about adding some unit tests for tuf/utils/utils.go.
+  * cleanup tempfiles for integration_test
+  * cleanup tempfiles for client_test
+  * linting: fix Implicit memory aliasing in RangeStmt
+  * Fix typos
+  * CircleCI: run jobs in parallel
+  * Update gorethink from v3 to v6 and rename to proper rethinkdb-go package
+  * Fix some testing issues
+  * Update go mod vendor for 1.14.1
+  * Update Go to 1.14.1
+  * Remove vendor.conf as it is no longer used
+  * Fix gosec linting errors (fix G306 and G307)
+  * Apply 'go mod tidy && go mod vendor'
+  * Set default go flag to use -mod=vendor for cli commands
+  * Make the validate-vendor.sh script solely to work with go mod
+  * Align golang-cross docker image version
+  * Add documentation on how to upgrade
+  * Include vendor check in circleci workflow
+  * Add vendor validation script to ensure deps are properly vendored after upgrade
+  * Update documentation for module compatibility
+  * Update docker images to use Go Modules and 1.12.15
+  * Apply 'go mod vendor' (adds indirect dependencies)
+  * Apply 'go mod download'
+  * Apply 'go mod init github.com/theupdateframework/notary'
+  * Bump mariadb from 10.1.28 to 10.4
+  * Remove duplicated words
+  * Update docker/distribution to 2.7.1
+  * Makefile: disable debug to make CI more readable
+  * CircleCI: update image, and use BuildKit
+  * Update Golang 1.12.12 (CVE-2019-17596)
+  * Bump golang 1.12.10 (CVE-2019-9512, CVE-2019-9514, CVE-2019-16276)
+  * Update and pin golang-migrate to v4.6.2
+  * Use golang-migrate/migrate, because mattes/migrate was archived
+  * Fix gosec linter results not being printed
+  * Fix "make test" broken on Go 1.13
+  * gosec: ignore  G108: Profiling endpoint automatically exposed
+  * Correct spelling mistakes.
+  * bump miekg/pkcs11 v1.0.2
+  * Add --version flags
+  * Add Go version to version information
+  * bump github.com/miekg/pkcs11 553cfdd26aaafe851ca66a5e8015f0decb6b5a1e
+  * bump github.com/BurntSushi/toml v0.3.1
+  * bump github.com/pkg/errors v0.8.1
+  * Bump gorilla/mux to 1.7.0
+  * bump sirupsen/logrus v1.4.1
+  * Cleanup vendor.conf, fix mixed tabs/spaces
+  * re-vendor with current version of vndr
+  * cleanup: help message words correction in keys.go
+  * Remove the duplicated words in code comments
+  * Call flag.Parse() in testing.
+  * Update Go to 1.12.7
+  * Fix algorithm case handling (fix #1471)
+  * Fix `FileMeta.Equals`.
+  * README: fix typo
+  * Regenerate test certs
+  * Update pkcs#11 library
+  * Replacing 'HTTP' by 'HTTPS' for securing links
+  * Fix many typos Signed-off-by: Vu Cong Tuan <tuanvc@vn.fujitsu.com>
+  * Update to Go 1.11.5
+  * Update to Go 1.11.2
+  * Switch to dockercore/golang-cross image for cross-compiling
+  * Remove duplicated words in comments
+  * Update deprecated links Signed-off-by: Vu Cong Tuan <tuanvc@vn.fujitsu.com>
+  * client: fix logger format types for variables
+  * testutils: reduce dependency on testify package in testutils
+  * Update to Go 1.10.8
+  * Do not check Go version user is building with
+  * Fix golint as its location has moved
+  * Attempt to fix Ying's circleci 2.0 upgrade
+  * Refactor the notary client library to have a separate reader and downloader that may be easier to use for clients that do not need any publishing capabilities.
+  * Add import of sha1 to gosec whitelist
+  * Add security audit
+  * Add Justin Cormack to Maintainers
+  * github.com/GoASTScanner/gas has been renamed to github.com/securego/gosec, and the executable also renamed gosec.  Fix all the imports/installs so that CI works again.
+  * Minor punctuation correction in README.md
+  * Fix small typo
+  * Bump Golang to 1.10.3
+  * Do not leak cancellations for contexts
+  * Remove use of distributions old wrapped context
+  * Update prometheus vendoring to match distribution
+  * Add docker/go-metrics vendor
+  * Update docker/distribution
+  * Update instructions for getting gas
+  * Remove roadmap file that has no useful information
+  * Update to Go 1.10.2
+  * Update test certificates
+  * Fix gorethink
+  * Fix file creation permissions
+  * Use os.Open not os.OpenFile(..., os.O_RDONLY, ...)
+  * Remove baseDir from NewRepository
+  * Update vendoring for x/crypto and remove agl/ed25519
+  * Use golang/x/crypto for ed25519
+  * Temporarily disable two gas rules
+  * Add gas output to .gitignore
+  * Mark the inclusion of md5 in fips.go as ignore by gas
+  * Re-enable gas AST Scanner
+  * Add another note about serialization of ed25519 keys
+  * Add the CNCF Code of Conduct
+
+-------------------------------------------------------------------
 Mon Sep  7 09:10:16 CEST 2020 - Jiri Suchomel <jsuchome@suse.com>
 
 - Added 0001-Hide-DB-credentials.patch:
