@@ -1,7 +1,7 @@
 #
 # spec file for package libmapidb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 Name:           libmapidb
 %define lname	libmapidb1
-%define timestamp 20170304
-Version:        0~%timestamp
+Version:        20210421
 Release:        0
 Summary:        Library for accessing the Exchange MAPI database format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libmapidb/wiki
-Source:         https://github.com/libyal/libmapidb/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
+URL:            https://github.com/libyal/libmapidb
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20130904
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
 
 %description
 A library for accessing the Exchange MAPI database format
@@ -58,27 +59,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libmapidb.
 
 %prep
-%setup -qn libmapidb-%timestamp
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libmapidb.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libmapidb*
 %_libdir/libmapidb.so
 %_libdir/pkgconfig/libmapidb.pc
