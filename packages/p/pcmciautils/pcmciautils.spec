@@ -1,7 +1,7 @@
 #
 # spec file for package pcmciautils
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if %{undefined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _udevrulesdir %{_udevdir}/rules.d
 Name:           pcmciautils
 Version:        018
 Release:        0
 Summary:        Utilities for PC-Cards
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Url:            https://www.kernel.org/pub/linux/utils/kernel/pcmcia/
 Source0:        https://www.kernel.org/pub/linux/utils/kernel/pcmcia/pcmciautils-%{version}.tar.xz
@@ -40,7 +42,6 @@ Requires(pre):  permissions
 Supplements:    modalias(pci:v*d*sv*sd*bc06sc07i00*)
 Obsoletes:      pcmcia < 017
 Provides:       pcmcia >= 017
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  sysfsutils-devel
 
 %description
@@ -65,12 +66,12 @@ make %{?_smp_mflags} all DEF_CFLAGS="-fPIE %{optflags}" DEF_LDFLAGS="-pie" STRIP
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 install -m 644 suse-files/NOTE %{buildroot}%{_sysconfdir}/pcmcia
-mkdir -p %{buildroot}/lib/firmware
+mkdir -p %{buildroot}%{_firmwaredir}
 # Only install E-CARD.cis, all other files are part of
 # kernel-firmware package, so no need to duplicate them.
-install -m 644 cis-files/E-CARD.cis %{buildroot}/lib/firmware
-mkdir -p %{buildroot}/%{_docdir}/pcmciautils
-install -m 644 suse-files/README.SUSE %{buildroot}/%{_docdir}/pcmciautils
+install -m 644 cis-files/E-CARD.cis %{buildroot}%{_firmwaredir}
+mkdir -p %{buildroot}%{_docdir}/pcmciautils
+install -m 644 suse-files/README.SUSE %{buildroot}%{_docdir}/pcmciautils
 
 %post
 %set_permissions /sbin/pccardctl
@@ -89,8 +90,8 @@ rm -vf %{_sysconfdir}/sysconfig/pcmcia
 %{_udevdir}/pcmcia-check-broken-cis
 %{_udevdir}/pcmcia-socket-startup
 /sbin/lspcmcia
-/lib/firmware/*
-/%{_docdir}/pcmciautils
-/%{_mandir}/man8/*
+%{_firmwaredir}/*
+%{_docdir}/pcmciautils
+%{_mandir}/man8/*
 
 %changelog
