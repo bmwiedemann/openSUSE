@@ -1,7 +1,7 @@
 #
 # spec file for package libsigscan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,30 @@
 
 
 %define lname	libsigscan1
-%define timestamp 20201117
-%define experimental_tag experimental-
 Name:           libsigscan
-Version:        0~%{timestamp}
+Version:        20210419
 Release:        0
 Summary:        Library for binary signature scanning
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libsigscan/wiki
-Source:         https://github.com/libyal/libsigscan/releases/download/%{timestamp}/%{name}-%{?experimental_tag}%{timestamp}.tar.gz
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libbfio) >= 20120701
-BuildRequires:  pkgconfig(libcdata) >= 20120701
-BuildRequires:  pkgconfig(libcerror) >= 20120425
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20120701
-BuildRequires:  pkgconfig(libcsplit) >= 20120701
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20120426
-BuildRequires:  pkgconfig(libuna) >= 20120425
+URL:            https://github.com/libyal/libsigscan
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libsigscan is a library for binary signature scanning
@@ -75,10 +76,6 @@ applications that want to make use of libpff.
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libsigscan
 Group:          Development/Languages/Python
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(python3)
-Requires:       %{lname} = %{version}
-Requires:       python3
 Provides:       pysigscan = %{version}
 
 %description -n python3-%{name}
@@ -87,11 +84,12 @@ Python 3 bindings for libsigscan.
 libsigscan is a library for scanning for binary signatures.
 
 %prep
-%setup -q -n libsigscan-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -101,20 +99,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libsigscan.so.*
 
 %files tools
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_bindir}/sigscan
 %{_mandir}/man1/sigscan.1%{?ext_man}
 %config %{_sysconfdir}/sigscan.conf
 
 %files devel
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{_includedir}/libsigscan.h
 %{_includedir}/libsigscan/
 %{_libdir}/libsigscan.so
