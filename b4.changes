@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 10 04:19:44 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.2+0:
+  * Fix sloppy trailer handling
+  * Fix crasher on unsigned FETCH_HEAD
+  * Fix partial reroll TUI visuals for v1->v2
+
+-------------------------------------------------------------------
 Thu Jun 03 04:03:19 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.7.1+0:
