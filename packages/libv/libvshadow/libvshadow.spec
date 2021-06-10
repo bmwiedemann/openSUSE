@@ -1,7 +1,7 @@
 #
 # spec file for package libvshadow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,37 @@
 #
 
 
-Name:           libvshadow
 %define lname	libvshadow1
-%define timestamp	20201222
-Version:        0~%{timestamp}
+Name:           libvshadow
+Version:        20210507
 Release:        0
 Summary:        Library to access the Volume Shadow Snapshot (VSS) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          System/Filesystems
-URL:            https://github.com/libyal/libvshadow/wiki
-Source:         https://github.com/libyal/libvshadow/releases/download/%{timestamp}/libvshadow-alpha-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libvshadow
+Source:         %{name}-%{version}.tar.xz
 Source1:        Paper_-_Windowless_Shadow_Snapshots.pdf
 Source2:        Slides_-_Windowless_Shadow_Snapshots.pdf
 Source3:        Volume_Shadow_Snapshot_VSS_format.pdf
-BuildRequires:  fuse-devel
-BuildRequires:  gcc
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20130908
-BuildRequires:  pkgconfig(libcdata) >= 20130407
-BuildRequires:  pkgconfig(libcerror) > 20130904
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) > 20130904
-BuildRequires:  pkgconfig(libcsystem)
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libfguid)
-BuildRequires:  pkgconfig(libuna) >= 20130609
-# These packages are not released as separate packages by upstream.  Internal only
-#BuildRequires:  pkgconfig(libcmulti)
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library and tools to access the Volume Shadow Snapshot (VSS) format. The VSS format is used by Windows, as of Vista, to maintain copies of data on a storage media volume.
@@ -54,7 +54,7 @@ Library and tools to access the Volume Shadow Snapshot (VSS) format. The VSS for
 The devel package contains:
 
     OSDFC 2012: Paper - Windowless Shadow Snapshots
-    OSDFC 2012: Slides - Windowless Shadow Snapshots 
+    OSDFC 2012: Slides - Windowless Shadow Snapshots
     Volume_Shadow_Snapshot_(VSS)_format.pdf
 
 %package -n %{lname}
@@ -68,20 +68,19 @@ Library and tools to access the Volume Shadow Snapshot (VSS) format. The VSS for
 The package contains %{_docdir}/%{name}:
 
     OSDFC 2012: Paper - Windowless Shadow Snapshots
-    OSDFC 2012: Slides - Windowless Shadow Snapshots 
+    OSDFC 2012: Slides - Windowless Shadow Snapshots
 
 %package        tools
 Summary:        Tools to access the Volume Shadow Snapshot (VSS) format
 License:        LGPL-3.0-or-later
 Group:          System/Filesystems
-Requires:       %{lname} = %{version}
 
 %description    tools
 Tools to access the Volume Shadow Snapshot (VSS) format. The VSS format is used by Windows, as of Vista, to maintain copies of data on a storage media volume.
- 
+
 %package        devel
 Summary:        Development files for %{name}
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -93,52 +92,42 @@ developing applications that use %{name}.
 Summary:        Python 3 binding for libvshadow
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 
 %description    -n python3-%{name}
 Python 3 binding for libvshadow.  libvshadow can read windows event files
 
 %prep
-%setup -q -n libvshadow-%{timestamp}
+%autosetup -p1
 mkdir doc
 cp %SOURCE1 .
 cp %SOURCE2 .
 cp "%SOURCE3" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
 %configure --disable-static --enable-wide-character-type --enable-python3
-
-make %{?_smp_mflags}
+%make_build
 
 %install
-# maintain SLES compatibility
-make install DESTDIR="%buildroot"
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+%make_install
+find %{buildroot} -name '*.la' -delete
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog ABOUT-NLS
-%license COPYING 
+%license COPYING*
 %doc doc
 %{_libdir}/*.so.*
 
 %files tools
-%defattr(-,root,root,-)
 %{_bindir}/vshadow*
 %{_mandir}/man1/*.gz
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog ABOUT-NLS
-%license COPYING 
+%license COPYING*
 %doc Paper_-_Windowless_Shadow_Snapshots.pdf
 %doc Slides_-_Windowless_Shadow_Snapshots.pdf
 %doc Volume_Shadow_Snapshot_*.pdf
@@ -149,9 +138,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_mandir}/man3/*.gz
 
 %files -n python3-%{name}
-%defattr(644,root,root,755)
-%doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %{python3_sitearch}/*.so
 
 %changelog
