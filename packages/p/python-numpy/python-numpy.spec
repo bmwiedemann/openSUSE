@@ -1,5 +1,5 @@
 #
-# spec file for package python-numpy
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.20.2
-%define _ver 1_20_2
+%define ver 1.20.3
+%define _ver 1_20_3
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""

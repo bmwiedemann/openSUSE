@@ -905,4 +905,27 @@ All packages broken by this update should be fixed now</comment>
   * BUG: Fix small issues found with pytest-leaks</comment>
     <requestid>891397</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>8a49b878abbe3a54b412c5f9513c5bc5</srcmd5>
+    <version>1.20.3</version>
+    <time>1623363457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.3:
+  * BUG: Correct datetime64 missing type overload for datetime.date...
+  * MAINT: Remove __all__ in favor of explicit re-exports
+  * BLD: Strip extra newline when dumping gfortran version on MacOS
+  * BUG: fix segfault in object/longdouble operations
+  * MAINT: Use towncrier build explicitly
+  * MAINT: Relax certain integer-type constraints
+  * MAINT: Remove unsafe unions and ABCs from return-annotations
+  * MAINT: Allow more recursion depth for scalar tests.
+  * BUG: Initialize the full nditer buffer in case of error
+  * BLD: remove unnecessary flag -faltivec on macOS
+  * MAINT, CI: treats _SIMD module build warnings as errors through...
+  * BUG: for MINGW, threads.h existence test requires GLIBC &gt; 2.12
+  * BUG: Make changelog recognize gh- as a PR number prefix.
+  * REL, DOC: Prepare for the NumPy 1.20.3 release.
+  * BUG: Fix failing mypy test in 1.20.x.</comment>
+    <requestid>896981</requestid>
+  </revision>
 </revisionlist>

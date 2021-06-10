@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  2 18:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.3:
+  * BUG: Correct datetime64 missing type overload for datetime.date...
+  * MAINT: Remove __all__ in favor of explicit re-exports
+  * BLD: Strip extra newline when dumping gfortran version on MacOS
+  * BUG: fix segfault in object/longdouble operations
+  * MAINT: Use towncrier build explicitly
+  * MAINT: Relax certain integer-type constraints
+  * MAINT: Remove unsafe unions and ABCs from return-annotations
+  * MAINT: Allow more recursion depth for scalar tests.
+  * BUG: Initialize the full nditer buffer in case of error
+  * BLD: remove unnecessary flag -faltivec on macOS
+  * MAINT, CI: treats _SIMD module build warnings as errors through...
+  * BUG: for MINGW, threads.h existence test requires GLIBC > 2.12
+  * BUG: Make changelog recognize gh- as a PR number prefix.
+  * REL, DOC: Prepare for the NumPy 1.20.3 release.
+  * BUG: Fix failing mypy test in 1.20.x. 
+
+-------------------------------------------------------------------
 Fri May  7 20:39:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.2:
