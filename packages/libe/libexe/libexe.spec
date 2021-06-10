@@ -1,7 +1,7 @@
 #
 # spec file for package libexe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,33 @@
 
 
 %define lname	libexe1
-%define timestamp 20191221
 Name:           libexe
-Version:        0~%{timestamp}
+Version:        20210424
 Release:        0
 Summary:        Library to access the executable (EXE) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libexe/wiki
-Source:         https://github.com/libyal/libexe/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
-BuildRequires:  pkgconfig(libbfio)
-BuildRequires:  pkgconfig(libcdata)
-BuildRequires:  pkgconfig(libcerror)
-BuildRequires:  pkgconfig(libcfile)
-BuildRequires:  pkgconfig(libclocale)
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcpath)
-BuildRequires:  pkgconfig(libcsplit)
-BuildRequires:  pkgconfig(libcstring)
-BuildRequires:  pkgconfig(libcsystem)
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfcache)
-BuildRequires:  pkgconfig(libfdata)
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libuna)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libexe
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libexe is a library and related tools to access the executable (EXE) format.
@@ -66,14 +68,13 @@ Part of the libyal family of libraries.
 Summary:        Tools to access Microsoft executable (EXE) format files
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %lname = %version
 
 %description tools
 Tools to access Microsoft executable (EXE) format files including PE/COFF formats.
 
 %package devel
 Summary:        Development files for libexe
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -87,8 +88,6 @@ applications that want to make use of libexe.
 Summary:        Python bindings for libexe
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 #python-%name was previously the name of this submodule.  It was python2 bindings.
 Obsoletes:      python-%name <= 20181128
 
@@ -96,37 +95,31 @@ Obsoletes:      python-%name <= 20181128
 Python bindings for libexe.  Libexe is a part of the libyal family of libraries.
 
 %prep
-%setup -q -n libexe-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libexe.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_bindir/exeinfo
 %_mandir/man1/exeinfo.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING*
 %{_includedir}/libexe.h
 %{_includedir}/libexe/
 %{_libdir}/libexe.so
@@ -134,7 +127,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libexe.3*
 
 %files -n python3-%name
-%defattr(-,root,root)
 %python3_sitearch/pyexe.so
 
 %changelog
