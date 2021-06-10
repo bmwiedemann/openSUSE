@@ -1,7 +1,7 @@
 #
 # spec file for package libolecf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,39 @@
 
 
 %bcond_without python2
-Name:           libolecf
 %define lname	libolecf1
-%define timestamp	20201004
-Version:        0~%timestamp
+Name:           libolecf
+Version:        20210512
 Release:        0
 Summary:        Library and tools to access the OLE 2 Compound File (OLECF) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libolecf/wiki
-Source:         https://github.com/libyal/libolecf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libolecf
+Source:         %name-%version.tar.xz
 Source2:        OLE_Compound_File_format.pdf
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio)
-BuildRequires:  pkgconfig(libcdata) >= 20190112
-BuildRequires:  pkgconfig(libcerror) > 20160327
-BuildRequires:  pkgconfig(libcfile)
-BuildRequires:  pkgconfig(libclocale)
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcpath)
-BuildRequires:  pkgconfig(libcsplit)
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfole) >= 20120426
-BuildRequires:  pkgconfig(libuna)
-
-# using the below from factory causes python-plaso self-tests to fail
-#BuildRequires:  pkgconfig(libfdatetime) > 20180910
-#BuildRequires:  pkgconfig(libfvalue) > 20180817
-
-# released, but not yet packaged.  This is the only user in OBS.
-#BuildRequires:  pkgconfig(libwfps) > 20150104
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libfole) >= 20170502
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwps) >= 20191221
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
-Library and tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats. 
+Library and tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
 
 %package -n %lname
 Summary:        Library to access the OLE 2 Compound File (OLECF) format
@@ -60,8 +57,7 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %lname
-Library to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats. 
-
+Library to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
 
 %package tools
 Summary:        Tools to access the OLE 2 Compound File (OLECF) format
@@ -70,12 +66,11 @@ Group:          System/Filesystems
 Requires:       %lname = %version
 
 %description tools
-Tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats. 
+Tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
 
- 
 %package devel
 Summary:        Development files for %name
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -108,10 +103,11 @@ BuildRequires:  pkgconfig(python3)
 Python bindings for libolecf, which can read MS IE cache files.
 
 %prep
-%setup -qn libolecf-%timestamp
+%autosetup -p1
 cp "%SOURCE2" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
@@ -119,28 +115,24 @@ cp "%SOURCE2" .
     --enable-python2 \
 %endif
     --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find %buildroot -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_libdir/libolecf.so.*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/olecf*
 %_mandir/man1/olecf*.1*
 
 %files devel
-%defattr(-,root,root)
 %doc OLE_Compound_File_format.pdf
 %_includedir/libolecf.h
 %_includedir/libolecf/
@@ -150,15 +142,11 @@ find %buildroot -name '*.la' -delete
 
 %if %{with python2}
 %files -n python2-%name
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %python2_sitearch/pyolecf.so
 %endif
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %python3_sitearch/pyolecf.so
 
