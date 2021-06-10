@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5eceb80a8d73cdaae39dbf27dfce2522</srcmd5>
+    <version>20210415</version>
+    <time>1623363516</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency of the libyal library family currently in ADI:6.  Required to allow all builds to complete.</comment>
+    <requestid>899030</requestid>
+  </revision>
+</revisionlist>
