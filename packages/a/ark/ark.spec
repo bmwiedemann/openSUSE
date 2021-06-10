@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        21.04.1
+Version:        21.04.2
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -65,11 +65,7 @@ Recommends:     xz
 # unrar is non-free. Avoid installing it automatically.
 Suggests:       unrar
 Obsoletes:      ark-devel
-%if 0%{?suse_version} > 1500
 Recommends:     p7zip-full
-%else
-Recommends:     p7zip
-%endif
 Recommends:     %{name}-lang
 
 %description
