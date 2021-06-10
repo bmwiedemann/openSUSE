@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libmsiecf</param>
+		<param name="revision">9e94c3b815b2a58d0cc3065036ed0be789ad7734</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210506</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

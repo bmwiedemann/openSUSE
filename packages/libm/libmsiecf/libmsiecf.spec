@@ -1,7 +1,7 @@
 #
 # spec file for package libmsiecf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,33 +18,34 @@
 
 Name:           libmsiecf
 %define lname	libmsiecf1
-%define timestamp	20200710
-Version:        0~%timestamp
+Version:        20210506
 Release:        0
 Summary:        Library to parse MS Internet Explorer Cache Files
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libmsiecf/wiki
-Source:         https://github.com/libyal/libmsiecf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libmsiecf
+Source:         %name-%version.tar.xz
 Source2:        MSIE_Cache_File_index.dat_format.pdf
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20120426
-BuildRequires:  pkgconfig(libcdata) >= 20190112
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20120701
-BuildRequires:  pkgconfig(libcsplit) >= 20120701
-BuildRequires:  pkgconfig(libcsystem) >= 20150101
-BuildRequires:  pkgconfig(libfdatetime) >= 20120522
-BuildRequires:  pkgconfig(libfguid) >= 20120426
-BuildRequires:  pkgconfig(libfole) >= 20150104
-BuildRequires:  pkgconfig(libfvalue) >= 20120428
-BuildRequires:  pkgconfig(libuna) >= 20120425
-# these packages fail if the factory version is used, verified 1/14/2015
-#BuildRequires:  pkgconfig(libcerror) >= 20120425
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfole) >= 20170502
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libmsiecf is a library to parse MS Internet Explorer Cache Files.
@@ -64,10 +65,10 @@ Group:          System/Filesystems
 
 %description tools
 Several tools for reading MS Internet Explorer Cache files.
- 
+
 %package devel
 Summary:        Development files for %name
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -81,40 +82,35 @@ applications that want to make use of %name.
 Summary:        Python bindings for libmsiecf
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %lname = %version
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%name
 Python bindings for libmsiecf, which can read MS IE cache files.
 
 %prep
-%setup -qn libmsiecf-%timestamp
+%autosetup -p1
 cp "%SOURCE2" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find %buildroot -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_libdir/libmsiecf.so.*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/msiecf*
 %_mandir/man1/msiecf*.1*
 
 %files devel
-%defattr(-,root,root)
 %doc MSIE_Cache_File*.pdf
 %_includedir/libmsiecf.h
 %_includedir/libmsiecf/
@@ -123,8 +119,6 @@ find %buildroot -name '*.la' -delete
 %_mandir/man3/libmsiecf.3*
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %python3_sitearch/pymsiecf.so
 
