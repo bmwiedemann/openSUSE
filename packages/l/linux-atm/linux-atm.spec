@@ -1,7 +1,7 @@
 #
 # spec file for package linux-atm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if %{undefined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
 %global sover   1
 Name:           linux-atm
 Version:        2.5.2
@@ -36,6 +38,8 @@ Patch3:         linux-atm-2.5.2-remove-headers-crude-hack.patch
 # PATCH-FIX-UPSTREAM fix-build-after-y2038-changes-in-glibc.patch -- fix build after y2038 changes in glibc
 Patch4:         fix-build-after-y2038-changes-in-glibc.patch
 BuildRequires:  bison
+BuildRequires:  autoconf
+BuildRequires:  libtool
 BuildRequires:  flex
 BuildRequires:  glibc-devel
 
@@ -62,6 +66,8 @@ networking.
 %autosetup -p1
 
 %build
+sed 's|/lib/firmware|%{_firmwaredir}|g' -i src/extra/Makefile.am
+autoreconf -fiv
 %configure --disable-static
 %make_build
 
@@ -78,8 +84,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %config(noreplace) %{_sysconfdir}/hosts.atm
 %{_bindir}/*
 %{_sbindir}/*
-/lib/firmware/*
-%{_mandir}/man*/*.gz
+%{_firmwaredir}/*
+%{_mandir}/man*/*%{?ext_man}
 
 %files -n libatm%{sover}
 %license COPYING COPYING.GPL COPYING.LGPL
