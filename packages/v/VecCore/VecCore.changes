@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Feb 22 22:15:25 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add VecCore-support-external-ctest.patch: Support using external
+  gtest instead of building it in-source; patch sent upstream.

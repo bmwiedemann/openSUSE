@@ -1,0 +1,11 @@
+<package name="VecCore" project="openSUSE:Factory">
+  <title>C++ Library for Portable SIMD Vectorization</title>
+  <description>VecCore is a simple abstraction layer on top of other vectorization libraries.
+It provides an architecture-independent API for expressing vector operations on
+data. Code written with this API can then be dispatched to one of several
+backends like Vc, UME::SIMD, or a scalar implementation.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="VecCore"/>
+  <url>https://root-project.github.io/veccore</url>
+</package>
