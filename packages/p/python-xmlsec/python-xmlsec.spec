@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlsec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmlsec
-Version:        1.3.8
+Version:        1.3.11
 Release:        0
 Summary:        Python bindings for the XML Security Library
 License:        MIT
 URL:            https://github.com/mehcode/python-xmlsec
 Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 3.0}
 BuildRequires:  %{python_module lxml-devel}
 BuildRequires:  %{python_module pkgconfig}
@@ -60,8 +61,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# tests currently quite fail see upstream https://github.com/mehcode/python-xmlsec/issues/84
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} py.test-%{$python_bin_suffix} tests/ || :
+# Tests coredump gh#mehcode/python-xmlsec#183
+# %%pytest_arch tests/
 
 %files %{python_files}
 %doc README.rst
