@@ -1,7 +1,7 @@
 #
 # spec file for package libsmdev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 %define lname	libsmdev1
-%define timestamp 20201204
 Name:           libsmdev
-Version:        0~%{timestamp}
+Version:        20210418
 Release:        0
 Summary:        Library to access storage media devices
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libsmdev/wiki
-Source:         https://github.com/libyal/libsmdev/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20120425
-BuildRequires:  pkgconfig(libcerror) >= 20170101
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libsmdev
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libsmdev is a library to access and read storage media devices.
@@ -69,37 +72,31 @@ information about such.
 %package -n python3-%{name}
 Summary:        Python bindings for libsmdev
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-BuildRequires:  pkgconfig(python3)
 Provides:       pysmdev = %{version}
 
 %description -n python3-%{name}
 Python 3 bindings for libsmdev, which is a library to access and read storage media devices.
 
 %prep
-%setup -q -n libsmdev-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_libdir}/libsmdev.so.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_includedir}/libsmdev*
 %{_libdir}/libsmdev.so
@@ -107,15 +104,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libsmdev.3*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_bindir}/smdevinfo
 %{_mandir}/man1/smdevinfo.1*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{python3_sitearch}/pysmdev.so
 
