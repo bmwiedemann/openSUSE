@@ -1,7 +1,7 @@
 #
 # spec file for package libfcache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 Name:           libfcache
 %define lname	libfcache1
-%define timestamp 20200708
-Version:        0~%{timestamp}
+Version:        20210413
 Release:        0
 Summary:        Library to provide generic file data cache functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfcache/wiki
-Source:         https://github.com/libyal/libfcache/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libfcache
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
 
 %description
 Library to provide generic file data cache functions for the libyal family of libraries.
@@ -55,30 +56,26 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfcache.
 
 %prep
-%setup -q -n libfcache-%{timestamp}
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING COPYING.LESSER
+%license COPYING*
 %{_libdir}/libfcache.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING COPYING.LESSER
+%license COPYING*
 %{_includedir}/libfcache.h
 %{_includedir}/libfcache/
 %{_libdir}/libfcache.so
