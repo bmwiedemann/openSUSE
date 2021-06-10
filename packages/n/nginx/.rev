@@ -740,4 +740,25 @@
     potentially, arbitrary code execution (CVE-2021-23017, boo#1186126).</comment>
     <requestid>895782</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>be48d32b7caabe5cc680042932418714</srcmd5>
+    <version>1.21.0</version>
+    <time>1623363458</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.21.0
+  * https://nginx.org/en/CHANGES
+  * Added variables support in the &quot;proxy_ssl_certificate&quot;,
+    &quot;proxy_ssl_certificate_key&quot; &quot;grpc_ssl_certificate&quot;,
+    &quot;grpc_ssl_certificate_key&quot;, &quot;uwsgi_ssl_certificate&quot;, and
+    &quot;uwsgi_ssl_certificate_key&quot; directives.
+  * Added the &quot;max_errors&quot; directive in the mail proxy module.
+  * Added the mail proxy module supports POP3 and IMAP pipelining.
+  * Added the &quot;fastopen&quot; parameter of the &quot;listen&quot; directive in the
+    stream module.
+  * Fixed special characters were not escaped during automatic redirect
+    with appended trailing slash.
+  * Fixed connections with clients in the mail proxy module might be
+    closed unexpectedly when using SMTP pipelining.</comment>
+    <requestid>896986</requestid>
+  </revision>
 </revisionlist>
