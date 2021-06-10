@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-patatt
-Version:        0.4.4
+Version:        0.4.6
 Release:        0
 Summary:        Cryptographic patch attestation for the masses
 License:        MIT-0
