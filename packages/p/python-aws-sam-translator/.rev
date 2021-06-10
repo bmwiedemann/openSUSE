@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>894556</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f715bccdec90d941749ece27cb2cb79</srcmd5>
+    <version>1.36.0</version>
+    <time>1623363527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.36.0:
+  * Optimize shared API usage plan handling
+  * Resource level attributes support</comment>
+    <requestid>898980</requestid>
+  </revision>
 </revisionlist>
