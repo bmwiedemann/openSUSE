@@ -1,7 +1,7 @@
 #
 # spec file for package libwrc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,37 @@
 
 Name:           libwrc
 %define lname	libwrc1
-%define timestamp 20191221
-Version:        0~%timestamp
+Version:        20210425
 Release:        0
 Summary:        Library to support the Windows Resource Compiler format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libwrc/wiki
-Source:         https://github.com/libyal/libwrc/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20120426
-BuildRequires:  pkgconfig(libcdata) >= 20120425
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130904
-BuildRequires:  pkgconfig(libexe) >= 20120405
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfdatetime) >= 20130317
-BuildRequires:  pkgconfig(libfguid) >= 20130317
-BuildRequires:  pkgconfig(libfvalue) >= 20120428
-BuildRequires:  pkgconfig(libfwevt) >= 20120426
-BuildRequires:  pkgconfig(libfwnt) >= 20120426
-BuildRequires:  pkgconfig(libuna) >= 20130728
-#  The following packages cause build failures if factory version is used, 
-# verified 1/12/2015
-#BuildRequires:  pkgconfig(libcerror) >= 20120425
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libwrc
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libexe) >= 20210424
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwevt) >= 20210508
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libwrc is a library to support the Windows Resource Compiler format.
@@ -78,36 +79,43 @@ Group:          Productivity/File utilities
 This subpackage provides the utilities from libwrc, which allows for
 reading Windows Resource Compiler files.
 
+%package -n python3-%name
+Summary:        Python 3 bindings for libwrc
+Group:          Development/Languages/Python
+
+%description -n python3-%name
+Python 3 bindings for libwrc
+
 %prep
-%setup -qn libwrc-%timestamp
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static --enable-wide-character-type --enable-python3
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %_libdir/libwrc.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libwrc*
 %_libdir/libwrc.so
 %_libdir/pkgconfig/libwrc.pc
 %_mandir/man3/libwrc.3*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/wrcinfo
 %_mandir/man1/wrcinfo.1*
+
+%files -n python3-%name
+%python3_sitearch/*.so
 
 %changelog

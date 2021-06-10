@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 13 12:06:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210425 (89146ffc)
+  * No changelog was provided
+- Add system-libs.patch
+- Enable python3 integration
+
+-------------------------------------------------------------------
 Wed Dec 30 03:30:33 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 -  update to v0~20191221
