@@ -1,7 +1,7 @@
 #
 # spec file for package libvslvm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,35 @@
 
 
 %define lname   libvslvm1
-%define timestamp 20200817
 Name:           libvslvm
-Version:        0~%{timestamp}
+Version:        20210511
 Release:        0
 Summary:        Library to access the Linux Logical Volume Manager (LVM) volume system
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvslvm/
-Source:         https://github.com/libyal/libvslvm/releases/download/%{timestamp}/libvslvm-experimental-%{timestamp}.tar.gz
+Source:         %{name}-%{version}.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20150101
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfvalue) >= 20150101
-BuildRequires:  pkgconfig(libuna) >= 20150101
-
-#Build fails with factory version of these - tested 7/14/2016
-#BuildRequires:  pkgconfig(libcerror) >= 20140105
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libvslvm is a library to access the Linux Logical Volume Manager (LVM) volume system.
@@ -64,7 +62,6 @@ The libvslvm library is a library to access Linux Logical Volume Manager (LVM) v
 Summary:        Several tools for reading Linux Logical Volume Manager (LVM) volume systems
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
 
 %description tools
 Several tools for reading Linux Logical Volume Manager (LVM) volume systems
@@ -73,7 +70,7 @@ See libvslvm for additional details.
 
 %package devel
 Summary:        Header files and libraries for developing applications for libvslvm
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -89,50 +86,41 @@ applications that want to make use of libvslvm.
 Summary:        Python 3 bindings for libvslvm
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%{name}
 This packinge provides Python 3 bindings for libvslvm
 
 %prep
-%setup -q -n libvslvm-%{timestamp}
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-#    this fails for the python check.  
+#    this fails for the python check.
 #    It is only checking if the python modules are present, so this is a false failure.
 # make check
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libvslvm.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING
+%license COPYING*
 %{_bindir}/vslvm*
 %{_mandir}/man1/vslvm*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING
+%license COPYING*
 %{_includedir}/libvslvm.h
 %{_includedir}/libvslvm/
 %{_libdir}/libvslvm.so
@@ -140,9 +128,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libvslvm.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyvslvm.so
 
 %changelog
