@@ -320,4 +320,20 @@
   * Update translations from Weblate (updates for ca, fr)</comment>
     <requestid>894461</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>18211d86585b45ffce7f7f809a21f20b</srcmd5>
+    <version>1.13.3</version>
+    <time>1623363525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.13.3
+  * Fix bug in Unihan_Variants.txt, 只 U+53EA is both simplified and traditional
+    Chinese (Resolves: #74)
+  * Update Chinese variant detection by Unihan_Variants.txt to the version
+    “2021-05-18 Unicode 14.0.0” (draft version of Unicode 14)
+  * Update translations from Weblate (updates for es (100%), pt_BR (100%))
+  * Fix a few more bugs in Unihan_Variants.txt, the characters 着枱云裡復采吓尸揾 are
+    used both in simplified and traditional Chinese (some of them in traditional
+    Chinese in Hong Kong only). (Resolves: ibus/ibus#2323) (forwarded request 898916 from hillwood)</comment>
+    <requestid>898981</requestid>
+  </revision>
 </revisionlist>
