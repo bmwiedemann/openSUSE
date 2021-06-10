@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 12 22:27:14 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210510 (12264644)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
+Mon Dec 14 21:59:13 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201124
+        * Changes for POSIX time value type 
+
+-------------------------------------------------------------------
 Mon Mar 25 01:59:39 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20180817

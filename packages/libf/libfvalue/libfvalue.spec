@@ -1,7 +1,7 @@
 #
 # spec file for package libfvalue
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,26 @@
 
 Name:           libfvalue
 %define lname	libfvalue1
-%define timestamp 20180817
-Version:        0~%{timestamp}
+Version:        20210510
 Release:        0
 Summary:        Library to provide generic file value functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfvalue/wiki
-Source:         https://github.com/libyal/libfvalue/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libfvalue
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(libcerror)
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcthreads)
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libfguid)
-BuildRequires:  pkgconfig(libfwnt) >= 20170115
-BuildRequires:  pkgconfig(libuna)
-#version from factory causes a sigfault in plaso/run_tests.py  (as of Jan 2017)
-#BuildRequires:  pkgconfig(libcdata) > 20170102
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20201204
 
 %description
 Library to provide generic file value functions for the libyal family of libraries.
@@ -61,30 +61,25 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfvalue.
 
 %prep
-%setup -q -n libfvalue-%{timestamp}
+%autosetup -p1
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libfvalue.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
 %{_includedir}/libfvalue.h
 %{_includedir}/libfvalue/
 %{_libdir}/libfvalue.so
