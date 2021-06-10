@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 10 05:42:30 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.0.2.0
+  * Fix charconv support with MSVC/GCC11 (kde#437890)
+  * Remove unnecessary parameters in CMakeLists
+  * Fix translation lookup in stock Linux deployments (kde#429782)
+  * Make reproducible tarballs
+  * Add support for LLVM 11
+- Drop patches merged upstream:
+  * Fix-translation-lookup-in-stock-Linux-deployments.patch
+  * 0001-Fix-charconv-support-with-MSVC-GCC11.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 06:04:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 build fix (kde#437890):
