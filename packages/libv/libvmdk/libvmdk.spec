@@ -1,7 +1,7 @@
 #
 # spec file for package libvmdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,40 @@
 
 
 %define lname	libvmdk1
-%define timestamp 20200926
 Name:           libvmdk
-Version:        0~%{timestamp}
+Version:        20210418
 Release:        0
 Summary:        Library to access the VMware Virtual Disk (VMDK) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvmdk/
-Source:         https://github.com/libyal/libvmdk/releases/download/%{timestamp}/libvmdk-alpha-%{timestamp}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source2:        VMWare_Virtual_Disk_Format_VMDK.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20150101
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfvalue) >= 20150101
-BuildRequires:  pkgconfig(libuna) >= 20150101
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 
-#fails to build with this package from factory - Oct 2, 2017
-#BuildRequires:  pkgconfig(libcnotify) > 20170311
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %description
-The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format. 
+The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 Read supported extent file formats:
 - RAW (flat)
@@ -74,7 +72,7 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format. 
+The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 Read supported extent file formats:
 - RAW (flat)
@@ -90,26 +88,24 @@ VMDK format features not supported at the moment:
 - images that use a physical device
 - changed block tracking (CBT) (supported by VMDK version 3 (sparse)) / change tracking filek
 
-
 %package tools
 Summary:        Tools to access the VMDK image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
 
 %description tools
-Several tools for accessing VMware Virtual Disk (VMDK) files.  
+Several tools for accessing VMware Virtual Disk (VMDK) files.
 
 See libvmdk for additional details.
 
 %package devel
 Summary:        Header files and libraries for developing applications for libvmdk
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.  
+The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 See libvmdk for additional details.
 
@@ -120,50 +116,42 @@ applications that want to make use of libvmdk.
 Summary:        Python 3 bindings for libvmdk, a VMDK image format parser
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
 
 %description -n python3-%{name}
-The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.  
+The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 This package contains the Python 3 bindings for libvmdk.
 
 %prep
-%setup -q -n libvmdk-%{timestamp}
+%autosetup -p1
 cp "%{SOURCE2}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 #make check
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS NEWS README ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libvmdk.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS
-%license COPYING
+%license COPYING*
 %{_bindir}/vmdk*
 %{_mandir}/man1/vmdk*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS
-%license COPYING
+%license COPYING*
 %doc VMWare_Virtual_Disk_Format*
 %{_includedir}/libvmdk.h
 %{_includedir}/libvmdk/
@@ -172,9 +160,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libvmdk.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyvmdk.so
 
 %changelog
