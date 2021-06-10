@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libhmac</param>
+		<param name="revision">f97b507af5f87daf9b77497376ec3c110d7ece9b</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210419</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

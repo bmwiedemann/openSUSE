@@ -1,7 +1,7 @@
 #
 # spec file for package libhmac
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,27 @@
 
 Name:           libhmac
 %define lname	libhmac1
-%define timestamp 20200104
-Version:        0~%timestamp
+Version:        20210419
 Release:        0
 Summary:        Library to support various HMACs
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/libyal/libhmac/wiki
-Source:         https://github.com/libyal/libhmac/releases/download/%timestamp/%{name}-alpha-%timestamp.tar.gz
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcfile)   >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify)  >= 20130609
-BuildRequires:  pkgconfig(libcpath)    >= 20130609
-BuildRequires:  pkgconfig(libcsplit)   >= 20130609
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libuna)     >= 20120425
-BuildRequires:  pkgconfig(openssl)     >= 1.0
-# These packages from factory cause build failures, use the internal version instead
-#verified 1/8/2015
-#BuildRequires:  pkgconfig(libcerror)  >= 20120425
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libhmac
+Source:         %name-%version.tar.xz
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(openssl) >= 1.0
 
 %description
 A library and tools to support various Hash-based Message Authentication Codes (HMAC).
@@ -70,11 +69,12 @@ Group:          Productivity/File utilities
 Use hmacsum to calculate a Hash-based Message Authentication Code (HMAC) of the data in a file.
 
 %prep
-%setup -qn libhmac-%timestamp
+%autosetup -p1
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -84,20 +84,16 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_libdir}/libhmac.so.1*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libhmac*
 %{_libdir}/libhmac.so
 %{_libdir}/pkgconfig/libhmac.pc
 %{_mandir}/man3/libhmac.3*
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/hmacsum
 %{_mandir}/man1/hmacsum.1*
 
