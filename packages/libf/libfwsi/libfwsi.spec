@@ -1,7 +1,7 @@
 #
 # spec file for package libfwsi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,31 @@
 
 
 %define lname	libfwsi1
-%define timestamp 20201204
 Name:           libfwsi
-Version:        0~%{timestamp}
+Version:        20210419
 Release:        0
 Summary:        Library to access the Windows Shell Item format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfwsi/wiki
-Source:         https://github.com/libyal/libfwsi/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
+URL:            https://github.com/libyal/libfwsi
+Source:         %name-%version.tar.xz
 Source2:        Windows_Shell_Item_format.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libclocale)
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcstring) >= 20150101
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfdatetime)
-BuildRequires:  pkgconfig(libfguid)
-BuildRequires:  pkgconfig(libfole)
-BuildRequires:  pkgconfig(libuna)
-# not (yet) packaged in OBS
-#BuildRequires:  pkgconfig(libfwps)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfole) >= 20170502
+BuildRequires:  pkgconfig(libfwps) >= 20191221
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library to access the Windows Shell Item format for the libyal family of libraries.
@@ -57,7 +58,7 @@ libyal is typically used in digital forensic tools.
 
 %package devel
 Summary:        Development files for libfwsi
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -83,37 +84,31 @@ Python2 bindings for libfwsi, a library to access Windows Shell Items.
 Summary:        Python bindings for libfwsi
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %{lname} = %{version}
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%name
 Python3 bindings for libfwsi, a library to access Windows Shell Items.
 
 %prep
-%setup -q -n libfwsi-%{timestamp}
+%autosetup -p1
 cp "%{S:2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3 
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static --enable-python2 --enable-python3
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_libdir}/libfwsi.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
 %license COPYING*
 %doc Windows_Shell_Item_format.pdf
 %{_includedir}/libfwsi.h
@@ -123,14 +118,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libfwsi.3*
 
 %files -n python2-%name
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %python2_sitearch/pyfwsi.so
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %python3_sitearch/pyfwsi.so
 
