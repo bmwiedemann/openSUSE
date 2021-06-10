@@ -1053,4 +1053,14 @@
   https://github.com/lathiat/avahi/pull/330 (forwarded request 887071 from mgorse)</comment>
     <requestid>887505</requestid>
   </revision>
+  <revision rev="139" vrev="5">
+    <srcmd5>d4bfc0389e1d61105c96ff9686b287cb</srcmd5>
+    <version>0.8</version>
+    <time>1623363459</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix libavahi-devel requirements. The devel package installs
+  libavahi-libevent.so but didn't require the library it's
+  pointing to. (forwarded request 896879 from cgiboudeaux)</comment>
+    <requestid>897165</requestid>
+  </revision>
 </revisionlist>

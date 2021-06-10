@@ -321,6 +321,7 @@ Requires:       glibc-devel
 Requires:       libavahi-client%{avahi_client_sover} = %{version}
 Requires:       libavahi-common%{avahi_common_sover} = %{version}
 Requires:       libavahi-core%{avahi_core_sover} = %{version}
+Requires:       libavahi-libevent%{avahi_libevent_sover} = %{version}
 # Last appeared in OpenSUSE 10.3:
 Provides:       avahi-devel = %{version}
 Obsoletes:      avahi-devel < %{version}
