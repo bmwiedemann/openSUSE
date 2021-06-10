@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 09 19:46:17 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.26.0:
+  * Version 1.26.0.
+  * docs: Get release notes ready for a release today
+  * valgrind: Add OCaml suppression
+  * docs: List release notes in reverse order
+  * tests/test-ondemand-list.sh: Skip test on OpenBSD
+  * server: Use struct sockpeercred instead of ucred on OpenBSD
+  * tests: Don't break if libssh is installed but not ssh-keygen
+  * docs: Add outline release notes for 1.26 release
+  * Version 1.25.9.
+  * tests/test-debug-flags.sh: Add a positive test of debug flags
+
+-------------------------------------------------------------------
 Sat May 08 15:25:09 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.25.7:

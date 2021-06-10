@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.25.7
+Version:        1.26.0
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libnbd) >= 0.9.8
+BuildRequires:  pkgconfig(libnbd) >= 1.3.11
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libzstd)
@@ -91,13 +91,11 @@ If you want just the server, install '%{name}-server'.
 To develop plugins, install the '%{name}-devel' package and start by
 reading the nbdkit(1) and nbdkit-plugin(3) manual pages.
 
-
 %package server
 Summary:        Network Block Device server
 
 %description server
 This package contains the %{name} server with no plugins or filters.
-
 
 %package basic-plugins
 Summary:        Basic plugins for %{name}
@@ -160,7 +158,6 @@ nbdkit-streaming-plugin     A streaming file serving plugin.
 
 nbdkit-zero-plugin          Zero-length plugin for testing.
 
-
 %package example-plugins
 Summary:        Example plugins for %{name}
 
@@ -168,6 +165,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description example-plugins
 This package contains example plugins for %{name}.
+
 
 
 # The plugins below have non-trivial dependencies are so are
@@ -183,7 +181,6 @@ Requires:       podman
 %description cdi-plugin
 This package contains Containerized Data Import support for %{name}.
 
-
 %package curl-plugin
 Summary:        HTTP/FTP (cURL) plugin for %{name}
 
@@ -191,7 +188,6 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
-
 
 %package guestfs-plugin
 Summary:        libguestfs plugin for %{name}
@@ -201,7 +197,6 @@ Requires:       %{name}-server = %{version}-%{release}
 %description guestfs-plugin
 This package is a libguestfs plugin for %{name}.
 
-
 %package gzip-plugin
 Summary:        GZip plugin for %{name}
 
@@ -209,7 +204,6 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description gzip-plugin
 This package is a gzip plugin for %{name}.
-
 
 %package nbd-plugin
 Summary:        NBD proxy / forward plugin for %{name}
@@ -220,9 +214,6 @@ Requires:       %{name}-server = %{version}-%{release}
 This package lets you forward NBD connections from %{name}
 to another NBD server.
 
-
-
-
 %package python-plugin
 Summary:        Python 3 plugin for %{name}
 
@@ -231,7 +222,6 @@ Requires:       %{name}-server = %{version}-%{release}
 %description python-plugin
 This package lets you write Python 3 plugins for %{name}.
 
-
 %package ssh-plugin
 Summary:        SSH plugin for %{name}
 
@@ -239,7 +229,6 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description ssh-plugin
 This package contains SSH support for %{name}.
-
 
 %package tmpdisk-plugin
 Summary:        Remote temporary filesystem disk plugin for %{name}
@@ -254,7 +243,6 @@ Suggests:       xfsprogs
 %description tmpdisk-plugin
 This package is a remote temporary filesystem disk plugin for %{name}.
 
-
 %package vddk-plugin
 Summary:        VMware VDDK plugin for %{name}
 
@@ -263,7 +251,6 @@ Requires:       %{name}-server = %{version}-%{release}
 %description vddk-plugin
 This package is a plugin for %{name} which connects to
 VMware VDDK for accessing VMware disks and servers.
-
 
 %package basic-filters
 Summary:        Basic filters for %{name}
@@ -370,7 +357,6 @@ nbdkit-tls-fallback-filter TLS protection filter.
 
 nbdkit-truncate-filter     Truncates, expands, rounds up or rounds down size.
 
-
 %package gzip-filter
 Summary:        GZip filter for %{name}
 
@@ -378,7 +364,6 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description gzip-filter
 This package is a gzip filter for %{name}.
-
 
 %package tar-filter
 Summary:        Tar archive filter for %{name}
@@ -389,7 +374,6 @@ Requires:       tar
 %description tar-filter
 This package is a tar archive filter for %{name}.
 
-
 %package xz-filter
 Summary:        XZ filter for %{name}
 
@@ -397,7 +381,6 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description xz-filter
 This package is the xz filter for %{name}.
-
 
 %package devel
 Summary:        Development files and documentation for %{name}
@@ -410,7 +393,6 @@ This package contains development files and documentation
 for %{name}.  Install this package if you want to develop
 plugins for %{name}.
 
-
 %package bash-completion
 Summary:        Bash tab-completion for %{name}
 BuildArch:      noarch
@@ -420,7 +402,6 @@ Requires:       bash-completion >= 2.0
 %description bash-completion
 Install this package if you want intelligent bash tab-completion
 for %{name}.
-
 
 %prep
 %autosetup -p1
