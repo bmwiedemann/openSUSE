@@ -1,0 +1,12 @@
+diff -Nura libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-drawing.c libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-drawing.c
+--- libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-drawing.c	2021-06-03 11:27:52.595837755 +0800
++++ libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-drawing.c	2021-06-03 11:29:45.775631415 +0800
+@@ -2748,7 +2748,7 @@
+ 					 XklConfigRegistry * registry,
+ 					 const gchar * full_layout)
+ {
+-	const gchar *layout_name = "?";
++	const gchar *layout_name = "default";
+ 	XklConfigItem *xki = xkl_config_item_new ();
+ 	gchar *layout = NULL, *variant = NULL;
+ 

@@ -425,4 +425,12 @@
     <comment>Add libgnomekbd-avoid-coredump-on-ibus-engines.patch: avoid libgnomekbd crash when working with ibus(bnc#1160963, glgo#GNOME/libgnomekbd!6). (forwarded request 882720 from qzhao)</comment>
     <requestid>884644</requestid>
   </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>1238c93b52f3cf1dc784a930cc14a301</srcmd5>
+    <version>3.26.1</version>
+    <time>1623363461</time>
+    <user>dimstar_suse</user>
+    <comment>Add libgnomekbd_avoid_implicit_definition.patch: Add string.h into include files to avoid inplicit definition warning in building. This change is to meet the needs of the inspection of maintaince build checking script(bnc#1160963, bnc#1034390, glgo#GNOME/libgnomekbd!7) (forwarded request 897262 from qzhao)</comment>
+    <requestid>897533</requestid>
+  </revision>
 </revisionlist>

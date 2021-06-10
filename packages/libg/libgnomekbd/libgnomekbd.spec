@@ -27,6 +27,10 @@ URL:            https://gitlab.gnome.org/GNOME/libgnomekbd
 Source0:        https://download.gnome.org/sources/libgnomekbd/3.26/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM libgnomekbd-avoid-coredump-on-ibus-engines.patch bnc#1160963, glgo#GNOME/libgnomekbd!6 qzhao@suse.com -- To avoid crash when working with ibus.
 Patch0:         libgnomekbd-avoid-coredump-on-ibus-engines.patch
+# PATCH-FIX-OPENSUSE libgnomekbd-set-default-indicator.patch bnc#1034390 qzhao@suse.com -- set the common keyboard layout indicator as default to avoid misleading.
+Patch1:         libgnomekbd-set-default-indicator.patch
+# PATCH-FIX-UPSTREAM libgnomekbd_avoid_implicit_definition.patch bnc#1160963 bnc#1034390 glgo#GNOME/libgnomekbd!7 qzhao@suse.com -- To avoid inplicit definition warning in building.
+Patch2:         libgnomekbd_avoid_implicit_definition.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  1 17:24:30 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Add libgnomekbd_avoid_implicit_definition.patch: Add string.h into
+  include files to avoid inplicit definition warning in building.
+  This change is to meet the needs of the inspection of maintaince
+  build checking script(bnc#1160963, bnc#1034390, 
+  glgo#GNOME/libgnomekbd!7)
+
+-------------------------------------------------------------------
+Mon May 24 15:13:24 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Add libgnomekbd-set-default-indicator.patch: set the common
+  keyboard layout indicator as "default" to avoid misleading
+  (bnc#1034390). 
+
+-------------------------------------------------------------------
 Fri Apr  2 12:03:02 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Add libgnomekbd-avoid-coredump-on-ibus-engines.patch: avoid libgnomekbd
