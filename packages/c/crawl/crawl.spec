@@ -1,7 +1,7 @@
 #
 # spec file for package crawl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Sascha Peilicke <sasch.pe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 Your objective is to travel deep into a subterranean cave complex and retrieve the Orb of Zot, \
 which is guarded by many horrible and hideous creatures.
 Name:           crawl
-Version:        0.25.1
+Version:        0.26.1
 Release:        0
 Summary:        Roguelike dungeon exploration game
 License:        GPL-2.0-or-later
@@ -51,12 +51,8 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       %{name}-data = %{version}
-%if 0%{?suse_version} >= 1330
 Requires:       group(games)
 Requires:       user(games)
-%else
-Requires(pre):  pwdutils
-%endif
 
 %description
 %{about}
@@ -112,11 +108,6 @@ mv crawl crawl-sdl
 mv crawl.tty crawl
 
 %pre
-%if 0%{?suse_version} < 1330
-# Anything after Leap 42.x / SLE12 base uses user/group package dependencies
-getent group games >/dev/null || groupadd -r games
-getent passwd games >/dev/null || useradd -r -g games -d %{_localstatedir}/games -s /sbin/nologin
-%endif
 # move old saves
 if [ -d %{_localstatedir}/games/crawl ]; then
 	if [ -d /root/.crawl ]; then
@@ -130,14 +121,6 @@ fi
 install -D -m0644 docs/%{name}.6 %{buildroot}%{_mandir}/man6/%{name}.6
 install -D -m0755 source/crawl-sdl %{buildroot}%{_bindir}/crawl-sdl
 %fdupes %{buildroot}%{_datadir}/%{name}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files sdl
 %attr(0755,root,root) %{_bindir}/%{name}-sdl

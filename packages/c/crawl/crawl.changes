@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May  7 17:20:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.26.1
+  * ctrl-attack again no longer works while confused.
+  * Console display flickering is reduced.
+  * It is no longer possible to obtain infinite nets from net traps.
+  * Various vault placement balance adjustments and teleport closet fixes.
+  * 95 other fixes, tweaks, copy-edits, and interface improvements.
+- Update to version 0.26.0
+  * New species: Palentonga.
+  * New background: Delver.
+  * Food and hunger are removed.
+  * Swamp has many new monsters and other changes.
+  * Spells, wands, and abilities can be quivered, fired, and
+    autotargeted with an extension of the ranged quiver/autofight
+    interface.
+  * Full log: https://github.com/crawl/crawl/releases/tag/0.26.0
+- SPEC file: Drop parts related to outdated openSUSE versions
+
+-------------------------------------------------------------------
 Mon Aug 17 11:45:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.25.1
