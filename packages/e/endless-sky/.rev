@@ -55,4 +55,12 @@
     <comment>fix the build</comment>
     <requestid>830512</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>bea572d1a58006b23de3fe0cfe5851a0</srcmd5>
+    <version>0.9.12</version>
+    <time>1623363477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896624</requestid>
+  </revision>
 </revisionlist>

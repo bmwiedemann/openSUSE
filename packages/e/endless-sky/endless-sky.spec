@@ -29,6 +29,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         fix-data-path.patch
 # PATCH-FIX-UPSTREAM https://github.com/endless-sky/endless-sky/commit/bc3cab5992694547f9c6c067b5579ef06224781b#diff-b7ed3e337d47b8f4fe8af4f35db75efd
 Patch1:         string-include.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-build-fix-compilation-on-gcc11.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -53,9 +55,7 @@ Take sides in a civil war. Or leave human space behind and hope to
 find some friendly aliens whose culture is more civilized than your own...
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"

@@ -1,0 +1,38 @@
+From df961af9398ae80a0e43120ed71ba6031a32881e Mon Sep 17 00:00:00 2001
+From: tehhowch <tehhowch@users.noreply.github.com>
+Date: Wed, 3 Mar 2021 20:28:22 -0600
+Subject: [PATCH] build: fix compilation on gcc11
+
+ - add missing `<limits>` includes for uses of `numeric_limits`
+---
+ source/MapDetailPanel.cpp | 1 +
+ source/PlayerInfo.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/source/MapDetailPanel.cpp b/source/MapDetailPanel.cpp
+index 79e023d..f90a8e3 100644
+--- a/source/MapDetailPanel.cpp
++++ b/source/MapDetailPanel.cpp
+@@ -41,6 +41,7 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <set>
+ #include <utility>
+ #include <vector>
+diff --git a/source/PlayerInfo.cpp b/source/PlayerInfo.cpp
+index 8630b98..8151e36 100644
+--- a/source/PlayerInfo.cpp
++++ b/source/PlayerInfo.cpp
+@@ -41,6 +41,7 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ #include <algorithm>
+ #include <cmath>
+ #include <ctime>
++#include <limits>
+ #include <sstream>
+ 
+ using namespace std;
+-- 
+2.31.1
+
