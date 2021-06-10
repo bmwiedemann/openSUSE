@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 10 17:16:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to git snapshot 2020-09-06
+  * Fixed build with OGRE >= 1.10
+  * Many other bug fixes, this update does not introduce new
+    features, but fixs a lot build issues with newer versions of
+    CEGUI's dependencies
+- Drop outdated cegui-0.8.3-irrlicht.patch
+- Drop fix-tinyxmlparser-compile.patch,
+  as we now using libxml2 and libtinyxml2
+- Drop upstream merged
+  * use-cpp11.patch
+  * fix-findluapp.patch
+- Replace fix-pkgconfig-private-dependency.patch with upstreamed
+  0003-pkgconfig-Fix-private-dependency-of-OpenGL-renderer.patch
+- Add upstreamed patches
+  * 0001-CMake-Fix-finding-OIS-1.4.patch
+  * 0002-Irrlicht-Fix-build-with-version-1.8.patch
+  * 0004-GLES-Fix-library-names-to-look-for.patch
+  * 0005-Partially-reverting-1200-c288602.patch
+  * 0006-OpenGLES-Renderer-Fix-dependency-on-EGL-on-non-APPLE.patch
+- Split all renderer libraries into seperate packages
+
+-------------------------------------------------------------------
 Mon May  3 09:13:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-pkgconfig-private-dependency.patch for missing glew

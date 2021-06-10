@@ -1,0 +1,24 @@
+From 02be4affeca9c0d9bbfbf5b614f05f1e48c84f8a Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 11 May 2021 17:08:34 +0200
+Subject: [PATCH 3/6] pkgconfig: Fix private dependency of OpenGL renderer
+
+The old OpenGL renderer (not GL3) requires GLEW in the headers,
+so add GLEW as a private requirement inside the pkgconfig file.
+---
+ cegui/CEGUI-OPENGL.pc.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cegui/CEGUI-OPENGL.pc.in b/cegui/CEGUI-OPENGL.pc.in
+index 7614a03f0..f48e91d53 100644
+--- a/cegui/CEGUI-OPENGL.pc.in
++++ b/cegui/CEGUI-OPENGL.pc.in
+@@ -9,4 +9,5 @@ Name: CEGUI-@CEGUI_VERSION_MAJOR@ OpenGL Renderer
+ Description: OpenGL based renderer module for CEGUI.
+ Version: @CEGUI_VERSION@
+ Requires: CEGUI-@CEGUI_VERSION_MAJOR@ = @CEGUI_VERSION@
++Requires.private: glew
+ Libs: -l@CEGUI_OPENGL_RENDERER_LIBNAME@
+-- 
+2.26.2
+

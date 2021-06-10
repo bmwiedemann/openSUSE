@@ -1,0 +1,28 @@
+From b1822301162475c2f4081e17557239a91c69fbf4 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 11 May 2021 18:16:14 +0200
+Subject: [PATCH 5/6] Partially reverting #1200 (c288602)
+
+For details, see https://github.com/cegui/cegui/issues/1163#issuecomment-838766688
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 99bca69e2..96972ae55 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -115,6 +115,10 @@ if(${OGRE_FOUND})
+         set(CMAKE_CXX_STANDARD 11)
+         set(CMAKE_CXX_STANDARD_REQUIRED ON)
+         set(CMAKE_CXX_EXTENSIONS OFF)
++
++        set(CEGUI_FOUND_OGRE_VERSION_MAJOR ${OGRE_VERSION_MAJOR})
++        set(CEGUI_FOUND_OGRE_VERSION_MINOR ${OGRE_VERSION_MINOR})
++        set(CEGUI_FOUND_OGRE_VERSION_PATCH ${OGRE_VERSION_PATCH})
+     endif()
+ endif()
+ 
+-- 
+2.26.2
+

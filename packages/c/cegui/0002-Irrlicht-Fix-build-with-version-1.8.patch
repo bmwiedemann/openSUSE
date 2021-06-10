@@ -1,0 +1,46 @@
+From e844899171e941fd56a6f7a5d418aa76361cfbe5 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 11 May 2021 16:49:14 +0200
+Subject: [PATCH 2/6] Irrlicht: Fix build with version <= 1.8
+
+Fixes "error: cannot declare of abstract type 'CEGUI::IrrlichtMemoryFile'"
+---
+ cegui/include/CEGUI/RendererModules/Irrlicht/MemoryFile.h | 4 ++++
+ cegui/src/RendererModules/Irrlicht/MemoryFile.cpp         | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/cegui/include/CEGUI/RendererModules/Irrlicht/MemoryFile.h b/cegui/include/CEGUI/RendererModules/Irrlicht/MemoryFile.h
+index 87ed3430c..90a74a49b 100644
+--- a/cegui/include/CEGUI/RendererModules/Irrlicht/MemoryFile.h
++++ b/cegui/include/CEGUI/RendererModules/Irrlicht/MemoryFile.h
+@@ -52,7 +52,11 @@ public:
+     virtual ~IrrlichtMemoryFile() {};
+ 
+     // implement required interface from IReadFile
++#if CEGUI_IRR_SDK_VERSION > 18
+     std::size_t read(void* buffer, std::size_t sizeToRead);
++#else
++    irr::s32 read(void* buffer, irr::u32 sizeToRead);
++#endif
+     long getSize() const;
+     long getPos() const;
+     bool seek(long finalPos, bool relativeMovement = false);
+diff --git a/cegui/src/RendererModules/Irrlicht/MemoryFile.cpp b/cegui/src/RendererModules/Irrlicht/MemoryFile.cpp
+index 1325c2361..d6b8f9952 100644
+--- a/cegui/src/RendererModules/Irrlicht/MemoryFile.cpp
++++ b/cegui/src/RendererModules/Irrlicht/MemoryFile.cpp
+@@ -40,7 +40,11 @@ IrrlichtMemoryFile::IrrlichtMemoryFile(const String& filename,
+ {
+ }
+ 
++#if CEGUI_IRR_SDK_VERSION > 18
+ std::size_t IrrlichtMemoryFile::read(void* buffer, std::size_t sizeToRead)
++#else
++irr::s32 IrrlichtMemoryFile::read(void* buffer, irr::u32 sizeToRead)
++#endif
+ {
+     std::size_t realReadSize =
+     ((d_position + sizeToRead) > d_size) ? d_size - d_position : sizeToRead;
+-- 
+2.26.2
+

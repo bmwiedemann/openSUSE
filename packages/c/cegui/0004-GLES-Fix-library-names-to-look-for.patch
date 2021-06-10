@@ -1,0 +1,27 @@
+From 59cd489c5e80e3a2b0b7b13ca9eece6e6f217581 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 11 May 2021 17:30:40 +0200
+Subject: [PATCH 4/6] GLES: Fix library names to look for
+
+Already fixed in master, but for v0 branch CMake is still
+not searching all commonly used library names
+---
+ cmake/FindOpenGLES.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindOpenGLES.cmake b/cmake/FindOpenGLES.cmake
+index e6fd9dbc6..6b149fec5 100644
+--- a/cmake/FindOpenGLES.cmake
++++ b/cmake/FindOpenGLES.cmake
+@@ -7,7 +7,7 @@
+ include(FindPackageHandleStandardArgs)
+ 
+ find_path(OPENGLES_H_PATH NAMES GLES/gl.h)
+-find_library(OPENGLES_LIB NAMES GLES_CM)
++find_library(OPENGLES_LIB NAMES GLES_CM GLESv1_CM)
+ mark_as_advanced(OPENGLES_H_PATH OPENGLES_LIB OPENGLES_LIB_DBG)
+ 
+ find_package_handle_standard_args(OPENGLES DEFAULT_MSG OPENGLES_LIB OPENGLES_H_PATH)
+-- 
+2.26.2
+
