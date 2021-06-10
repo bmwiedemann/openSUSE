@@ -1,7 +1,7 @@
 #
 # spec file for package libregf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,43 +17,43 @@
 
 
 %bcond_without python2
-Name:           libregf
 %define lname	libregf1
-%define timestamp	20201007
-Version:        0~%timestamp
+Name:           libregf
+Version:        20210504
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libregf/wiki
-Source:         https://github.com/libyal/libregf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libregf
+Source:         %name-%version.tar.xz
 Source2:        Windows_NT_Registry_File_REGF_format.pdf
-#BuildRequires:  pkg-config
+Patch1:         system-libs.patch
 %if %{with python2}
 BuildRequires:  python-devel
 %endif
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20131003
-BuildRequires:  pkgconfig(libcdata) >= 20130904
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcfile) >= 20130809
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libfdatetime) >= 20130317
-BuildRequires:  pkgconfig(libfguid) >= 20140105
-BuildRequires:  pkgconfig(libuna) >= 20130728
-# Using these packages (libf*) are released but are not stable per upstream
-# Verified 9/19/2014; 1/1/2017 I'm going to try and use them
-BuildRequires:  pkgconfig(libfcache) >= 20170111
-BuildRequires:  pkgconfig(libfdata) >= 20170112
-BuildRequires:  pkgconfig(libfwnt) >= 20170115
-BuildRequires:  pkgconfig(libfwsi) >= 20170117
-
-#BuildRequires:  pkgconfig(libcpath) >= 20130809
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libfwsi) >= 20210419
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python3)
 
 %description
 libregf is a library to access Windows Registry files of the REGF
@@ -79,7 +79,7 @@ Typically used for computer forensics.
 
 %package devel
 Summary:        Development files for libregf, a Windows REGF-type Registry file parser
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %{version}
 
@@ -94,10 +94,7 @@ applications that want to make use of %{name}.
 Summary:        Python2 bindings for libregf, a library to access Windows REGF Registry files
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %lname = %version
-Requires:       python2
 Obsoletes:      python-%{name} <= 20190303
-BuildRequires:  pkgconfig(python2)
 
 %description -n python2-%{name}
 libregf is a library to access Windows Registry files of the REGF
@@ -109,9 +106,6 @@ This subpackage contains the Python2 bindings for libregf.
 Summary:        Python3 bindings for libregf, a library to access Windows REGF Registry files
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %lname = %version
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%{name}
 libregf is a library to access Windows Registry files of the REGF
@@ -120,10 +114,11 @@ type (a non-text representation).
 This subpackage contains the Python3 bindings for libregf.
 
 %prep
-%setup -qn libregf-%timestamp
+%autosetup -p1
 cp "%{SOURCE2}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
@@ -131,7 +126,7 @@ cp "%{SOURCE2}" .
     --enable-python2 \
 %endif
     --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -141,18 +136,14 @@ find %{buildroot} -name '*.la' -delete
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_libdir}/libregf.so.*
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/regf*
 %{_mandir}/man1/regf*.1*
 
 %files devel
-%defattr(-,root,root)
 %doc Windows_NT_Registry_File*.pdf
 %{_includedir}/libregf.h
 %{_includedir}/libregf/
@@ -162,15 +153,11 @@ find %{buildroot} -name '*.la' -delete
 
 %if %{with python2}
 %files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %{python2_sitearch}/pyregf.so
 %endif
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README
 %license COPYING*
 %{python3_sitearch}/pyregf.so
 

@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libregf</param>
+		<param name="revision">ee938acd3a691d0c44da8d1e6da7fd7e856ffe85</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210504</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
