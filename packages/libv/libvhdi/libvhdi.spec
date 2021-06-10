@@ -1,7 +1,7 @@
 #
 # spec file for package libvhdi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,35 @@
 
 
 %define lname	libvhdi1
-%define timestamp 20201018
 Name:           libvhdi
-Version:        0~%{timestamp}
+Version:        20210425
 Release:        0
 Summary:        Library and tools to access the VHD image format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvhdi/wiki
-Source:         https://github.com/libyal/libvhdi/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source2:        Virtual_Hard_Disk_VHD_image_format.pdf
-
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20170101
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfguid) >= 20130317
-BuildRequires:  pkgconfig(libuna) >= 20120425
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library and tools to access the Virtual Hard Disk (VHD) image format.
@@ -81,14 +82,13 @@ Note that an undo disk image (.vud) is also a differential image
 Summary:        Tools to access the VHD image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
 
 %description tools
 Tools to access the Virtual Hard Disk (VHD) image format.  See libvhdi for additional details.
 
 %package devel
 Summary:        Development files for libvhdi, a VHD image format library
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -102,8 +102,6 @@ applications that want to make use of libvhdi.
 Summary:        Python 3 bindings for libvhdi, a VHD image format parser
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
 Provides:       pyvhdi
 
 %description -n python3-%{name}
@@ -112,38 +110,32 @@ libvhdi is a library to access Virtual Hard Disk (VHD) image format. See libvhdi
 This package contains Python 3 bindings for libvhdi.
 
 %prep
-%setup -q -n libvhdi-%{timestamp}
+%autosetup -p1
 cp "%{SOURCE2}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libvhdi.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_bindir}/vhdi*
 %{_mandir}/man1/vhdi*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %doc Virtual_Hard_Disk_*
 %{_includedir}/libvhdi.h
 %{_includedir}/libvhdi/
@@ -152,9 +144,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libvhdi.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyvhdi.so
 
 %changelog
