@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Wed May 12 15:38:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210415 (2401fd5d)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
+Sun Dec 13 01:08:51 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200509
+        * No documented changes
+
+-------------------------------------------------------------------
 Tue Apr  2 17:51:00 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
-- update to v0~2019
+- update to v0~20190112
 	* fixed issue in libcdata_btree_node_get_sub_node_by_value
 	* Changes to array to handle failure in lock release
 	* Worked on B-tree type
