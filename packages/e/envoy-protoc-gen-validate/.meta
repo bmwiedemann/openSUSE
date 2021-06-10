@@ -1,5 +1,0 @@
-<package name="envoy-protoc-gen-validate" project="openSUSE:Factory">
-  <title>envoy-protoc-gen-validate</title>
-  <description>Envoy's fork of protoc plugin to generate message validators</description>
-  <devel project="devel:kubic" package="envoy-protoc-gen-validate"/>
-</package>
