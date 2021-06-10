@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  8 08:40:35 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Force DWARF version 4 when building with gcc >= 11
+  * the internal omr tools set error with debugging information
+    in DWARF5 format
+  * fixes build in factory
+
+-------------------------------------------------------------------
 Fri May 14 08:50:17 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.11 with OpenJ9 0.26.0 virtual machine

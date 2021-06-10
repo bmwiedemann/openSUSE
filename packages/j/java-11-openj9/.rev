@@ -47,4 +47,12 @@
     <comment>OpenJ9 0.26 including the April 2021 CPU changes</comment>
     <requestid>893062</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1e0efff130bd7d040f866093fbb1dd2e</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1623363543</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory build</comment>
+    <requestid>899087</requestid>
+  </revision>
 </revisionlist>
