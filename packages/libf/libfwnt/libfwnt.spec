@@ -1,7 +1,7 @@
 #
 # spec file for package libfwnt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,25 @@
 
 
 %define lname	libfwnt1
-%define timestamp 20200723
 Name:           libfwnt
-Version:        0~%{timestamp}
+Version:        20210421
 Release:        0
 Summary:        Library for Windows NT data types
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libfwnt/wiki
-Source:         https://github.com/libyal/libfwnt/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libfwnt
+Source:         %name-%version.tar.xz
 Source2:        Locale_identifier_LCID.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcnotify)
-BuildRequires:  pkgconfig(libcstring) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
@@ -50,7 +52,7 @@ libyal is typically used in digital forensic tools.
 
 %package devel
 Summary:        Development files for libfwnt
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -66,40 +68,35 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 Requires:       %{lname} = %{version}
 Requires:       python3
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%{name}
 This packinge provides Python 3 bindings for ${name}
 
 %prep
-%setup -q -n libfwnt-%{timestamp}
+%autosetup -p1
 cp "%{S:2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+if [ ! -e configure ]; then ./autogen.sh; fi
+%configure --disable-static --enable-python3
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 # make check
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libfwnt.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %doc Locale_identifier_LCID.pdf
 %{_includedir}/libfwnt.h
 %{_includedir}/libfwnt/
@@ -108,9 +105,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libfwnt.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyfwnt.so
 
 %changelog
