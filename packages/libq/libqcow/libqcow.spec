@@ -1,7 +1,7 @@
 #
 # spec file for package libqcow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,37 @@
 
 
 %define lname	libqcow1
-%define timestamp 20201213
 Name:           libqcow
-Version:        0~%{timestamp}
+Version:        20210419
 Release:        0
 Summary:        Library and tooling to access the QEMU Copy-On-Write (QCOW) image format
-License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libqcow/wiki
-Source:         https://github.com/libyal/libqcow/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/libqcow
+Source:         %{name}-%{version}.tar.xz
 Source2:        QEMU_Copy-On-Write_file_format.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20130721
-BuildRequires:  pkgconfig(libcaes) >= 20140731
-BuildRequires:  pkgconfig(libcdata) >= 20140105
-BuildRequires:  pkgconfig(libcerror) >= 20140105
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20130609
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libuna) >= 20120425
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcaes) >= 20201012
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(openssl) >= 1.0
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
-# using these packages from factory breaks the build, verified 2/25/2107
-#BuildRequires:  pkgconfig(libcpath) > 20170108
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library and tooling to access the QEMU Copy-On-Write (QCOW) image format.
@@ -96,7 +98,6 @@ in-image snapshots
 Summary:        Tools to access the QEMU Copy-On-Write (QCOW) image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
 
 %description tools
 Tools to access the QEMU Copy-On-Write (QCOW) image format.
@@ -116,7 +117,7 @@ in-image snapshots
 
 %package devel
 Summary:        Development files for libqcow
-License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -130,47 +131,38 @@ applications that want to make use of libqcow.
 Summary:        Python 3 bindings for libqcow
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Requires:       python3
-BuildRequires:  pkgconfig(python3)
-Requires:       %{lname} = %{version}
 
 %description -n python3-%{name}
 Python 3 bindings for libqcow, which can access the QEMU Copy-On-Write (QCOW) image format
 
 %prep
-%setup -q -n libqcow-%{timestamp}
+%autosetup -p1
 cp "%{SOURCE2}" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure --disable-static --enable-wide-character-type --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libqcow.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_bindir}/qcow*
 %{_mandir}/man1/qcow*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
 %doc QEMU_Copy-On-Write_file_format.pdf
-%license COPYING 
+%license COPYING*
 %{_includedir}/libqcow.h
 %{_includedir}/libqcow/
 %{_libdir}/libqcow.so
@@ -178,9 +170,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libqcow.3*
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING*
 %{python3_sitearch}/pyqcow.so
 
 %changelog
