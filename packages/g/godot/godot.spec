@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.3
+Version:        3.3.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -36,8 +36,6 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
-# Do not use zlib from thirdparty directory
-Patch2:         use_system_zlib_for_fbx.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -86,6 +84,7 @@ BuildRequires:  mbedtls-devel
 %endif
 %endif
 %endif
+
 Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
 Requires(post): update-desktop-files
@@ -112,7 +111,6 @@ Provides:       bundled(FastLZ)
 Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(cvtt)
 Provides:       bundled(easing)
-Provides:       bundled(embree)
 Provides:       bundled(etc2comp)
 Provides:       bundled(glad)
 Provides:       bundled(google-droid-fonts)
@@ -140,6 +138,11 @@ Provides:       bundled(recastnavigation)
 Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
+# Embree 3.13.0+ supports both x86_64 and aarch64.
+# per 20210521 Factory is at 3.12.2, Leap at 3.8 .
+# Currently build fails on Leap and Tumbleweed with Distro (unbundled) embree
+Provides:       bundled(embree) = 3.12.1
+
 %if 0%{?suse_version} > 1500
 %else
 Provides:       bundled(bullet) = 2.89
@@ -153,6 +156,9 @@ Provides:       bundled(libwslay) = 1.1.1
 Provides:       bundled(miniupnpc)
 %endif
 %endif
+
+# Build currently fails on armv7l
+ExcludeArch:    %arm
 
 %description
 Godot is a game engine. It provides a set of tools and a visually
@@ -215,7 +221,6 @@ Bash command line completion support for %{name}, %{name}-headless,
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
@@ -300,7 +305,7 @@ touch thirdparty/certs/ca-certificates.crt
 
 %ifarch aarch64 %arm
 # Disable unsupported features - https://github.com/godotengine/godot/issues/48297#issuecomment-829165296
-%define build_args %{build_args_common} module_denoise_enabled=no module_lightmapper_cpu_enabled=no module_raycast_enabled=no
+%define build_args %{build_args_common} module_denoise_enabled=no
 %else
 %define build_args %{build_args_common}
 %endif

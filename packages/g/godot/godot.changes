@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Jun 03 12:00:00 UTC 2021 - cunix@mail.de
+
+- Exclude currently failing %arm builds
+
+-------------------------------------------------------------------
+Tue May 25 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.2
+
+  Added:
+  * GDScript: Allow "warning-ignore" in the same line
+    as the respective warning
+  * Import: Print warning when importing a
+    repeating NPOT texture in a GLES2 project
+
+  Changed:
+  * Remove high radiance sizes from the editor due to issues on specific GPUs
+
+  Fixed:
+  * STL to Godot type conversion of polypartition
+  * Duplicate close file when deconstructing ZipArchive
+  * Swapped front/rear directions in viewport rotation control
+  * Editor crash when exporting profiler data
+  * glTF: Improved error handling around invalid images and invalid meshes
+  * ragdoll simulation when parent was readded to scene
+  * Crash on debug shapes update if CollisionObject is not in tree
+  * Batching: "item_batch_flags" stale state causing glitches
+
+-------------------------------------------------------------------
+Fri May 21 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.1
+
+  Added:
+  * Expose "Shape.get_debug_mesh()" to the scripting API
+  * Add Ctrl+Shift+A to instance scene in Scene Tree dock
+  * Allow negative contrast values in the editor theme settings
+  * TileMap: Apply modulate on autotile previews
+  * Add support for ARM64 architecture for the Embree raycaster
+
+  Changed:
+  * Create "CollisionObject" debug shapes using VisualServer
+
+  Fixed:
+  * SkeletonIK root bones being twisted incorrectly when rotated
+  * Skinning initialization in "MeshInstance" when loaded from thread
+  * Linux packaging fixes
+  * ZIP files being opened with two file descriptors
+  * CSG Path Polygon cache being removed after connect
+  * LineEdit: Fix double click to select words
+    and triple click to select whole line
+  * Race condition in font preview generation
+    could lock the editor on first edit
+  * 3D scene preview generation
+  * Handle having no sinks in the PulseAudio driver
+  * Batching: GLES3 light pass modulates
+  * Batching: Crash with wrong number of verts in translation
+  * Batching: Fallback for 2D skinning with unrigged polygons
+  * Lightmapper: Fixes to environment energy
+  * Disable GIProbe emission when disabled on a material
+
+- "use_system_zlib_for_fbx.patch" dropped - fixed upstream
+
+- aarch64 and %arm: enable modules lightmapper_cpu_enabled and raycast_enabled
+
+-------------------------------------------------------------------
 Thu Apr 29 12:37:28 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable modules unsupported on aarch64 and %arm:
