@@ -1,7 +1,7 @@
 #
 # spec file for package vms-empire
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           vms-empire
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Simulation of a full-scale war between two emperors
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.catb.org/~esr/vms-empire/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Pull-all-globals-into-a-context-struct.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
@@ -53,9 +51,9 @@ same rules that you do. This game is the ancestor of all the multiplayer
 %license COPYING
 %doc AUTHORS BUGS HACKING NEWS README
 %{_bindir}/%{name}
+%{_datadir}/appdata/%{name}.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
-%{_datadir}/appdata/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  7 16:41:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.16
+  * Minor bugfixes
+- Drop upstream merged 0001-Pull-all-globals-into-a-context-struct.patch
+
+-------------------------------------------------------------------
 Sat Sep 12 12:54:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC10:
