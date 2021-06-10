@@ -1,7 +1,7 @@
 #
 # spec file for package libevt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,50 +17,46 @@
 
 
 %bcond_without python2
-Name:           libevt
 %define lname	libevt1
-%define timestamp	20200926
-Version:        0~%timestamp
+Name:           libevt
+Version:        20210503
 Release:        0
 Summary:        Library and tools to access the Windows Event Log (EVT) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libevt/wiki
-Source:         https://github.com/libyal/libevt/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libevt
+Source:         %name-%version.tar.xz
 Source2:        Windows_Event_Log_EVT.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcdirectory) >= 20200702
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libexe) >= 20210424
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwevt) >= 20210508
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libregf) >= 20210419
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libwrc) >= 20210425
 %if %{with python2}
-BuildRequires:  python-devel
+BuildRequires:  pkgconfig(python2)
 %endif
-BuildRequires:  pkgconfig(libbfio) >= 20120426
-BuildRequires:  pkgconfig(libcdata) >= 20120425
-BuildRequires:  pkgconfig(libcdirectory) >= 20120423
-BuildRequires:  pkgconfig(libcfile) >= 20120526
-BuildRequires:  pkgconfig(libclocale) >= 20120425
-BuildRequires:  pkgconfig(libcnotify) >= 20120425
-BuildRequires:  pkgconfig(libcpath) >= 20120701
-BuildRequires:  pkgconfig(libcsplit) >= 20120701
-BuildRequires:  pkgconfig(libcsystem) >= 20120425
-BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libexe) >= 20120405
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libfdatetime) >= 20120522
-BuildRequires:  pkgconfig(libfguid) >= 20120426
-BuildRequires:  pkgconfig(libfwevt) >= 20160103
-BuildRequires:  pkgconfig(libregf) >= 20120405
-BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRequires:  pkgconfig(libwrc) >= 20120405
-
-#plaso/run_tests.py fails with this external package
-#verified 2.1.2016
-#BuildRequires:  pkgconfig(libfvalue) >= 20151226
-#BuildRequires:  pkgconfig(libfwnt) >= 20151206
-# build fails with version in factory, use internal version
-#verified 2.1.2016
-#BuildRequires:  pkgconfig(libcstring) >= 20150101
-#BuildRequires:  pkgconfig(libcerror) >= 20150407
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(python3)
 
 %description
 libevt is a library and tools to access the Windows Event Log
@@ -86,15 +82,15 @@ Group:          Productivity/File utilities
 Tools for reading Windows Event Log (EVT) files. These include
 evtinfo and evtexport. See evtxtools for Windows XML Event Log (EVTX)
 programs.
- 
+
 %package devel
 Summary:        Development files for libevt, a Windows event file parser
-License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
+License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-libevt is a library to access the Windows Event Log (EVT) format.  
+libevt is a library to access the Windows Event Log (EVT) format.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
@@ -103,8 +99,6 @@ applications that want to make use of %name.
 Summary:        Python bindings for libevt, a Windows event file parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-BuildRequires:  pkgconfig(python2)
-Requires:       %lname = %version
 Obsoletes:      python-%name < 20191221
 
 %description -n python2-%name
@@ -114,17 +108,16 @@ Python bindings for libevt, which can read Windows event files.
 Summary:        Python bindings for libevt, a Windows event file parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-BuildRequires:  pkgconfig(python3)
-Requires:       %lname = %version
 
 %description -n python3-%name
 Python bindings for libevt, which can read Windows event files.
 
 %prep
-%setup -qn libevt-%timestamp
+%autosetup -p1
 cp "%SOURCE2" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
@@ -132,30 +125,26 @@ cp "%SOURCE2" .
     --enable-python2 \
 %endif
     --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find %buildroot -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README
-%license COPYING 
+%license COPYING*
 %_libdir/libevt.so.*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/evt*
 %_mandir/man1/evt*.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README Windows_Event_Log*.pdf
-%license COPYING 
+%doc Windows_Event_Log*.pdf
+%license COPYING*
 %_includedir/libevt.h
 %_includedir/libevt/
 %_libdir/libevt.so
@@ -164,16 +153,12 @@ find %buildroot -name '*.la' -delete
 
 %if %{with python2}
 %files -n python2-%name
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README
-%license COPYING 
+%license COPYING*
 %python2_sitearch/pyevt.so
 %endif
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README
-%license COPYING 
+%license COPYING*
 %python3_sitearch/pyevt.so
 
 %changelog

@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libevt</param>
+		<param name="revision">bc1ed1a6414be337e4ef59d5325b2ee1c37c55a8</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210503</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
