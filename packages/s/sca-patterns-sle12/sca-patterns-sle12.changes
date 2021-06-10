@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 10 20:12:24 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.5
+  - New regular patterns (2)
+    + sle12all/zypproxy-000020275.py: zypper commands return Error code HTTP response 0 (TID000020275)
+    + sle12sp5/intelpstate_125-000020273.py: Frequency scaling driver intel_pstate not loading on some Intel Xeon Scalable processors (bsc#1185758)
+  - Requires Core library 1.3.3 which contains Core.logFullFile function
+
+-------------------------------------------------------------------
 Wed Jun  2 22:43:01 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.4
