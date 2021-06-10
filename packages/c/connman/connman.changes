@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:03:22 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Address buffer overflow in dnsproxy (bsc#1186869):
+  * Rename connman-1.35-service.patch to 0001-connman-1.35-service.patch
+  * Add 0002-dnsproxy-Check-the-length-of-buffers-before-memcpy.patch (CVE-2021-33833)
+
+-------------------------------------------------------------------
 Fri Feb 12 13:16:04 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.39 (bsc#1181751):

@@ -204,4 +204,12 @@
   * Fix issue with DHCP leaking stack data via uninitialized variable. (CVE-2021-26676)</comment>
     <requestid>876388</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>729fd71dc85e64c19e047430c254ec9a</srcmd5>
+    <version>1.39</version>
+    <time>1623363538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899071</requestid>
+  </revision>
 </revisionlist>

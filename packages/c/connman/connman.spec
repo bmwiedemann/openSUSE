@@ -36,7 +36,8 @@ Source0:        http://www.kernel.org/pub/linux/network/connman/connman-%{versio
 Source1:        http://www.kernel.org/pub/linux/network/connman/connman-%{version}.tar.sign
 Source2:        connman.keyring
 # PATCH-FIX-OPENSUSE -- Greate symlink to network.service
-Patch0:         connman-1.35-service.patch
+Patch0:         0001-connman-1.35-service.patch
+Patch1:         0002-dnsproxy-Check-the-length-of-buffers-before-memcpy.patch
 BuildRequires:  dhcp
 BuildRequires:  openvpn
 BuildRequires:  pkgconfig
@@ -75,10 +76,10 @@ Group:          Documentation/Man
 %description doc
 Documentation in form of man pages for Connman (Connection Manager).
 
+
 ##############################
 #Plugins
 ##############################
-
 %if %{hh2serial_working}
 %package plugin-hh2serial-gps
 Summary:        HH2Serial GPS plugin for connman
@@ -115,8 +116,8 @@ Requires:       vpnc
 
 %description plugin-vpnc
 Provides VPNC support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package plugin-openvpn
 Summary:        OpenVPN plugin for connman
 Group:          System/Daemons
@@ -126,8 +127,8 @@ Requires:       openvpn
 
 %description plugin-openvpn
 Provides OpenVPN support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package plugin-pptp
 Summary:        PPTP plugin for connman
 Group:          System/Daemons
@@ -135,8 +136,8 @@ Requires:       %{name} >= %{version}
 
 %description plugin-pptp
 Provides PPTP support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package plugin-wireguard
 Summary:        WireGuard plugin for connman
 Group:          System/Daemons
@@ -144,8 +145,8 @@ Requires:       %{name} >= %{version}
 
 %description plugin-wireguard
 Provides WireGuard network support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %if %{tist_working}
 %package plugin-tist
 Summary:        TIST plugin for connman
@@ -164,8 +165,8 @@ Requires:       %{name} >= %{version}
 
 %description plugin-l2tp
 Provides L2TP (Layer 2 Tunneling Protocol) support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package plugin-iospm
 Summary:        Intel OSPM plugin for connman
 Group:          System/Daemons
@@ -175,8 +176,8 @@ Requires:       ppp
 
 %description plugin-iospm
 Provides Intel OSPM support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package test
 Summary:        Test and example scripts for connman
 Group:          System/Daemons
@@ -184,8 +185,8 @@ Requires:       %{name} >= %{version}
 
 %description test
 Provides test and example scripts for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package nmcompat
 Summary:        NetworkManager compatibility for connman
 Group:          System/Daemons
@@ -193,8 +194,8 @@ Requires:       %{name} >= %{version}
 
 %description nmcompat
 Provides NetworkManager compatibility for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package plugin-polkit
 Summary:        PolicyKit plugin for connman
 Group:          System/Daemons
@@ -204,8 +205,8 @@ Requires:       polkit
 
 %description plugin-polkit
 Provides PolicyKit support for Connman (Connection Manager).
-#-------------------------------------
 
+#-------------------------------------
 %package client
 Summary:        Client script for connman
 Group:          System/Daemons
@@ -217,6 +218,7 @@ Provides client interface for Connman (Connection Manager).
 %prep
 %setup -q -n connman-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 # Using i586 repository, so explicitly forward it to CC.
