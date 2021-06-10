@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 16:24:04 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't install /sbin/lsprop if usrmerged
+
+-------------------------------------------------------------------
 Mon Apr 19 09:38:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix memore remove by index (bsc#1183958 ltc#192149).

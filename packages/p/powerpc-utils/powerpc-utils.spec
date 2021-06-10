@@ -88,8 +88,10 @@ make CFLAGS="%{optflags}" %{?_smp_mflags}
 %make_install \
     rasdir=%{_sbindir} \
     mandir=%{_mandir}
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/lsprop %{buildroot}/sbin/lsprop
+%endif
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/nvsetenv
 ln -sf serv_config %{buildroot}%{_sbindir}/uspchrp
 ln -sf %{_mandir}/man8/serv_config.8 %{buildroot}%{_mandir}/man8/uspchrp.8
@@ -124,7 +126,9 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 %{_mandir}/man*/*
 %{_sbindir}/*
 %{_bindir}/*
+%if !0%{?usrmerged}
 /sbin/lsprop
+%endif
 %dir %{_localstatedir}/lib/powerpc-utils
 %ghost %{_localstatedir}/lib/powerpc-utils/smt.state
 %{_unitdir}/hcn-init.service
