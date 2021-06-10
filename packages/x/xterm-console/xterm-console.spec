@@ -1,7 +1,7 @@
 #
 # spec file for package xterm-console
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xterm-console
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        A Linux vt console look-alike xterm wrapper
 License:        MIT

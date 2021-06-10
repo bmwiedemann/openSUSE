@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="extract">psf2bdf.pl</param>

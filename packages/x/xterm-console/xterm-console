@@ -53,7 +53,7 @@ import os
 xx = [
     "xterm",
     # console font
-    "-fn", "lat9w-16",
+    "-fn", "eurlatgr",
     "-fullscreen",
     # no scrollbar
     "+sb",

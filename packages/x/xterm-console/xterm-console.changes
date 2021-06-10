@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 10 17:58:04 UTC 2021 - okurz@suse.com
+
+- Update to version 1.1:
+  * Bump version number in spec
+  * Handle glyphs without unicode mapping gracefully
+  * Fix generating psf2 fonts with multiple codepoints per glyph
+  * psf2bdf.pl: Support mapping multiple codepoints to a glyph
+  * Use eurlatgr as font
+  * Further cleanup of spec-file
+  * Cleanup spec-file (delete unused symbol; simplify)
+  * Delete old pre-SLE11 cruft
+  * Mark as noarch as there are only scripts
+  * Cleanup spec-file
+
+-------------------------------------------------------------------
 Tue Jan 28 12:26:32 UTC 2020 - okurz@suse.com
 
 - Update to version 1.0:

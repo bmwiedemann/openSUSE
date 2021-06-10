@@ -23,6 +23,7 @@ for (@ARGV) {
 
         my ($length, $width, $height);
         my (@glyphs, @unicode);
+        my $unilen = 0;
 
         open my $fh, $_ or die $!;
         binmode $fh;
@@ -49,6 +50,7 @@ for (@ARGV) {
                         warn 'Unicode sequence ignored' if $u == 0xFFFE;
                     }
                     $unicode[$i] = [@u];
+                    $unilen += (scalar @u) - 1 if (scalar @u);
                 }
             }
         }
@@ -67,6 +69,7 @@ for (@ARGV) {
                     $buf =~ m/\G([^\xfe\xff]*+)(?:\xfe[^\xfe\xff]++)*\xff/sg;
                     utf8::decode(my $str = $1);
                     $unicode[$i] = [map ord, split //, $str];
+                    $unilen += (scalar @{$unicode[$i]}) - 1 if (scalar @{$unicode[$i]});
                 }
             }
         }
@@ -93,22 +96,32 @@ for (@ARGV) {
         }
         print "ENDPROPERTIES\n";
 
-        printf "CHARS %u\n", $length;
+        printf "CHARS %u\n", $length + $unilen;
 
         for my $i (0 .. $length - 1) {
-            printf "STARTCHAR psf%03x\n", $i;
-            if (@unicode && @{$unicode[$i]}) {
-                printf "ENCODING %u\n", $unicode[$i][0];
+            my @encodings = ($i);
+            my $is_unicode = 0;
+
+            if(@unicode && @{$unicode[$i]}) {
+                @encodings = @{$unicode[$i]};
+                $is_unicode = 1;
             }
-            else {
-                printf "ENCODING -1 %u\n", $i;
+
+            foreach my $e (@encodings) {
+                printf "STARTCHAR psf%03x-%04x\n", $i, $e;
+                if ($is_unicode) {
+                    printf "ENCODING %u\n", $e;
+                }
+                else {
+                    printf "ENCODING -1 %u\n", $e;
+                }
+                printf "SWIDTH %u 0\n",   $width * 1000 / $height;
+                printf "DWIDTH %u 0\n",   $width;
+                printf "BBX %u %u 0 0\n", $width, $height;
+                my $bw = (($width + 7) & ~7) >> 3;
+                printf "BITMAP\n%s\n", join "\n", map unpack('H*', $_), unpack "(a$bw)*", $glyphs[$i];
+                printf "ENDCHAR\n";
             }
-            printf "SWIDTH %u 0\n",   $width * 1000 / $height;
-            printf "DWIDTH %u 0\n",   $width;
-            printf "BBX %u %u 0 0\n", $width, $height;
-            my $bw = (($width + 7) & ~7) >> 3;
-            printf "BITMAP\n%s\n", join "\n", map unpack('H*', $_), unpack "(a$bw)*", $glyphs[$i];
-            printf "ENDCHAR\n";
         }
 
         print "ENDFONT\n";
