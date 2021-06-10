@@ -1,7 +1,7 @@
 #
 # spec file for package libevtx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,50 +17,46 @@
 
 
 %bcond_without python2
-Name:           libevtx
 %define lname	libevtx1
-%define timestamp	20200709
-Version:        0~%timestamp
+Name:           libevtx
+Version:        20210504
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
-License:        LGPL-3.0-or-later AND GFDL-1.3-only
+License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/libevtx/wiki
-Source:         https://github.com/libyal/libevtx/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
+URL:            https://github.com/libyal/libevtx
+Source:         %name-%version.tar.xz
 Source2:        Windows_XML_Event_Log_EVTX.pdf
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libbfio) >= 20201229
+BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcdirectory) >= 20200702
+BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcpath) >= 20200623
+BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libexe) >= 20210424
+BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdatetime) >= 20180910
+BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfwevt) >= 20210508
+BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libregf) >= 20210419
+BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libwrc) >= 20210425
 %if %{with python2}
-BuildRequires:  python-devel
+BuildRequires:  pkgconfig(python2)
 %endif
-#latest version of these in OBS as of Jan 28, 2016
-BuildRequires:  pkgconfig(libbfio) >= 20160108
-BuildRequires:  pkgconfig(libcdata) >= 20130407
-BuildRequires:  pkgconfig(libcdirectory) >= 20120425
-BuildRequires:  pkgconfig(libcfile) >= 20130609
-BuildRequires:  pkgconfig(libclocale) >= 20150101
-BuildRequires:  pkgconfig(libcnotify) >= 20150101
-BuildRequires:  pkgconfig(libcpath) >= 20130609
-BuildRequires:  pkgconfig(libcsplit) >= 20130609
-BuildRequires:  pkgconfig(libcsystem) >= 20150629
-BuildRequires:  pkgconfig(libexe) >= 20120405
-BuildRequires:  pkgconfig(libfcache) >= 20120405
-BuildRequires:  pkgconfig(libfdata) >= 20120405
-BuildRequires:  pkgconfig(libregf) >= 20140803
-BuildRequires:  pkgconfig(libuna) >= 20130609
-BuildRequires:  pkgconfig(libwrc) >= 20140803
-
-#testing fails if the factory package is used, use the internal version
-#verified 2/2/2016
-#BuildRequires:  pkgconfig(libfvalue) > 20151226
-#BuildRequires:  pkgconfig(libfguid) >= 20150104
-#BuildRequires:  pkgconfig(libfdatetime) >= 20150507
-#BuildRequires:  pkgconfig(libfwnt) >= 20151206
-#BuildRequires:  pkgconfig(libfwevt) >= 20160103
-#build fails if the factory package is used, use the internal version
-#verified 1/28/2016
-#BuildRequires:  pkgconfig(libcstring) > 20150101
-#BuildRequires:  pkgconfig(libcerror) > 20150407
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library and tools to access the Windows XML Event Log (EVTX) format.
@@ -85,7 +81,7 @@ Tools for parsing EVTX files. These include evtxinfo and evtxexport.
 
 %package devel
 Summary:        Development files for libevtx, a Windows XML Event file parser
-License:        LGPL-3.0-or-later AND GFDL-1.3-only
+License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -99,8 +95,6 @@ applications that want to make use of %name.
 Summary:        Python2 bindings for libevtx
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %lname = %version
-BuildRequires:  pkgconfig(python2)
 Obsoletes:      pyevtx <= 20191221
 Obsoletes:      python-%name <= 20191221
 
@@ -111,17 +105,16 @@ Python bindings for libevtx, which can read Windows XML Event files.
 Summary:        Python bindings for libevtx
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %lname = %version
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%name
 Python bindings for libevtx, which can read Windows XML Event files.
 
 %prep
-%setup -qn libevtx-%timestamp
+%autosetup -p1
 cp "%SOURCE2" .
 
 %build
+if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
@@ -129,28 +122,24 @@ cp "%SOURCE2" .
     --enable-python2 \
 %endif
     --enable-python3
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 find %buildroot -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libevtx.so.*
 
 %files tools
-%defattr(-,root,root)
 %_bindir/evtx*
 %_mandir/man1/evt*.1*
 
 %files devel
-%defattr(-,root,root)
 %doc Windows_XML_Event_Log*.pdf
 %_includedir/libevtx.h
 %_includedir/libevtx/
@@ -160,16 +149,12 @@ find %buildroot -name '*.la' -delete
 
 %if %{with python2}
 %files -n python2-%name
-%defattr(-,root,root)
-%doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %python2_sitearch/pyevtx.so
 %endif
 
 %files -n python3-%name
-%defattr(-,root,root)
-%doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %python3_sitearch/pyevtx.so
 
 %changelog
