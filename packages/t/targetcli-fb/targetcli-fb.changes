@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 09 15:47:58 UTC 2021 - lduncan@suse.com
+
+- Update to version 2.1.54:
+  * version 2.1.54
+  * fileio backstore: fix sparse file creation
+  * Do not install systemd files in setup.py
+  Removing the need for our patch fix-setup-install.patch,
+  since that managed systemd file locations, now handled
+  in the SPEC file. Also, fixed incorrect spelling of
+  targetclid as targetcld for preun stop_on_removal.
+
+-------------------------------------------------------------------
 Sun Jan 24 22:48:23 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Updated SPEC file to support multiple python3 versions at

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.53
+Version:        2.1.54
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -59,7 +59,6 @@ Obsoletes:      targetcli-rbd < %{version}
 # SUSE-specific patches
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
-Patch3:         fix-setup-install.patch
 
 %python_subpackages
 
@@ -89,7 +88,6 @@ all python-version-dependant packages, such as python3-*-targetcli-fb.
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %build
 %python_build
@@ -104,6 +102,8 @@ install -d -m755 %{buildroot}%{_sbindir}
 install -D -m644 targetcli.8 %{buildroot}%{_mandir}/man8/targetcli.8
 install -D -m644 targetclid.8 %{buildroot}%{_mandir}/man8/targetclid.8
 install -D -m644 %{S:1} %{buildroot}%{_unitdir}/targetcli.service
+install -D -m644 systemd/targetclid.service %{buildroot}%{_unitdir}/targetclid.service
+install -D -m644 systemd/targetclid.socket %{buildroot}%{_unitdir}/targetclid.socket
 %fdupes %{buildroot}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetcli
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
@@ -120,7 +120,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 %{service_add_pre targetcli.service targetclid.socket targetclid.service}
 
 %preun
-%{stop_on_removal targetcld targetcli}
+%{stop_on_removal targetclid targetcli}
 %{service_del_preun targetcli.service targetclid.socket targetclid.service}
 
 %post -n %{name}-common
