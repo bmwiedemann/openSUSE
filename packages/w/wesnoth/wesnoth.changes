@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 31 13:34:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.15.13
+  * Add-ons client now has a filter based on tags.
+  * Updated translations: British English, Czech, Dutch, Italian,
+    Russian
+  * Added units: Horses, Seahorse and Zombie horse variation
+  * Update piglet/boar graphics
+  * The multiplayer "turns over" dialog now uses each team's colors
+  * Full changes:
+    https://github.com/wesnoth/wesnoth/blob/1.15.13/changelog.md
+- Added fix-widgets.patch
+- Fixed rpmlint error with Tumbleweed (not versioned Obsoletes)
+
+-------------------------------------------------------------------
+Sun May  9 18:42:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.12:
+  * Long list of fixes, see https://github.com/wesnoth/wesnoth/blob/1.15.12/changelog.md
+
+-------------------------------------------------------------------
 Mon Mar 22 21:35:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.11:

@@ -18,19 +18,22 @@
 
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.15.11
+Version:        1.15.13
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
-Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz
+Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-widgets.patch -- https://github.com/wesnoth/wesnoth/issues/5823
+Patch0:         fix-widgets.patch
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  dejavu
 BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libboost_atomic-devel >= %{boost_min_version}
 BuildRequires:  libboost_chrono-devel >= %{boost_min_version}
 BuildRequires:  libboost_coroutine-devel >= %{boost_min_version}
 BuildRequires:  libboost_date_time-devel >= %{boost_min_version}
@@ -47,7 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  sazanami-fonts
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(SDL2_image) >= 2.0.0
+BuildRequires:  pkgconfig(SDL2_image) >= 2.0.2
 BuildRequires:  pkgconfig(SDL2_mixer) >= 2.0.0
 BuildRequires:  pkgconfig(SDL2_ttf) >= 2.0.12
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -55,7 +58,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.1
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(pangocairo) >= 1.22.0
-BuildRequires:  pkgconfig(sdl2) >= 2.0.4
+BuildRequires:  pkgconfig(sdl2) >= 2.0.8
 Requires:       dejavu
 Requires:       sazanami-fonts
 Requires:       wesnoth-data = %{version}
@@ -72,9 +75,9 @@ carried over from one scenario to the next campaign.
 Summary:        Architecture independent data for Battle for Wesnoth
 Group:          Amusements/Games/Strategy/Turn Based
 Requires:       wesnoth-fslayout
-Obsoletes:      wesnoth-data-base
-Obsoletes:      wesnoth-data-full
-Obsoletes:      wesnoth-data-small
+Obsoletes:      wesnoth-data-base <= %{version}
+Obsoletes:      wesnoth-data-full <= %{version}
+Obsoletes:      wesnoth-data-small <= %{version}
 BuildArch:      noarch
 
 %package campaign-server
@@ -108,6 +111,7 @@ This package solely contains the basic file structure in order to have it owned 
 
 %prep
 %setup -q
+%patch0 -p1
 # Fix rpmlint's "E: env-script-interpreter".
 sed -i "s:/usr/bin/env python:/usr/bin/python:g" $(find data/tools -type f)
 
@@ -121,8 +125,7 @@ sed -i "s:/usr/bin/env python:/usr/bin/python:g" $(find data/tools -type f)
        -DENABLE_DESKTOP_ENTRY=ON \
        -DSERVER_UID=root \
        -DSERVER_GID=root
-
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %install
 %cmake_install
@@ -144,6 +147,10 @@ done
 %{_bindir}/%{name}
 %{_datadir}/applications/org.wesnoth.Wesnoth.desktop
 %{_datadir}/icons/hicolor/*/apps/wesnoth-icon.png
+%dir %{_datadir}/icons/HighContrast
+%dir %{_datadir}/icons/HighContrast/scalable
+%dir %{_datadir}/icons/HighContrast/scalable/apps
+%{_datadir}/icons/HighContrast/*/apps/wesnoth-icon.*
 %{_datadir}/metainfo/org.wesnoth.Wesnoth.appdata.xml
 %{_mandir}/man*/wesnoth.*%{ext_man}
 %{_mandir}/*/man*/wesnoth.*%{ext_man}
