@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.4.1
+Version:        4.5.0
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        LGPL-2.1-only
@@ -27,7 +27,7 @@ URL:            http://xmp.sf.net/
 
 #Freshcode-URL:	https://freshcode.club/projects/libxmp
 #Git-Clone:	git://git.code.sf.net/p/xmp/libxmp
-Source:         http://downloads.sf.net/xmp/%name-%version.tar.gz
+Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
 BuildRequires:  pkg-config
 
 %description
@@ -66,7 +66,7 @@ libxmp.
 %build
 %global _lto_cflags %nil
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 b="%buildroot"

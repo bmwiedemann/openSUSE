@@ -237,4 +237,12 @@
 - Modernize specfile.</comment>
     <requestid>726088</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>975c2fce563d9e57a8f02c6f3b25126d</srcmd5>
+    <version>4.5.0</version>
+    <time>1623363542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.5.0</comment>
+    <requestid>899080</requestid>
+  </revision>
 </revisionlist>

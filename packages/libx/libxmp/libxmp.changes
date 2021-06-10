@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 10 09:00:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.5.0
+  * Fix incorrect handling of GDM speed effect
+  * Implement GDM surround effect
+  * Add support for DSMI 0.8 and 0.9 AMF modules
+  * Fix IT bug where Cxx on same row as SBx would not be ignored
+  * Fix IT bug where Qxy would ignore the volume parameter
+  * IT: T00 now repeats previous slide
+
+-------------------------------------------------------------------
 Mon Aug 26 08:13:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable LTO, as it leads to a build error
