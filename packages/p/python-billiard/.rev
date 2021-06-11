@@ -192,4 +192,16 @@
     <comment></comment>
     <requestid>880496</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f81f8c31f5841fb7262bedcb12943bbe</srcmd5>
+    <version>3.6.4.0</version>
+    <time>1623443415</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.4.0:
+  * Issue #309: Add Python 3.9 support to spawnv_passfds()
+  * fix #314 
+- drop billiard-pr310-py39-fork_exec.patch (upstream)
+- add billiard-sphinx4.patch: compat with Sphinx 4.x</comment>
+    <requestid>897842</requestid>
+  </revision>
 </revisionlist>

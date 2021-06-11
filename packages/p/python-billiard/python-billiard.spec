@@ -19,15 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-billiard
-Version:        3.6.3.0
+Version:        3.6.4.0
 Release:        0
 Summary:        Python multiprocessing fork
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/celery/billiard
 Source:         https://files.pythonhosted.org/packages/source/b/billiard/billiard-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM billiard-pr310-py39-fork_exec.patch -- gh#celery/billiard#310
-Patch0:         billiard-pr310-py39-fork_exec.patch
+Patch0:         billiard-sphinx4.patch
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}

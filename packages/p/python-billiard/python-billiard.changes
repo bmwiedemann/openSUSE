@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  4 20:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.4.0:
+  * Issue #309: Add Python 3.9 support to spawnv_passfds()
+  * fix #314 
+- drop billiard-pr310-py39-fork_exec.patch (upstream)
+- add billiard-sphinx4.patch: compat with Sphinx 4.x
+
+-------------------------------------------------------------------
 Fri Mar 19 19:42:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add billiard-pr310-py39-fork_exec.patch -- gh#celery/billiard#310
