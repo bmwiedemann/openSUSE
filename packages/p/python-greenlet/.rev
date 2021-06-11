@@ -338,4 +338,18 @@
   * Publish the change log to https://greenlet.readthedocs.io</comment>
     <requestid>868479</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>02d0da22a62b3d8b5d463155c3ff8200</srcmd5>
+    <version>1.1.0</version>
+    <time>1623443419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Add support for Python 3.10. Pre-built binary wheels for 3.10 are
+    not currently available for all platforms. The greenlet ABI is
+    different on Python 3.10 from all previous versions, but as 3.10 was
+    never supported before, and the ABI has not changed on other Python
+    versions, this is not considered a reason to change greenlet's major
+    version.</comment>
+    <requestid>897851</requestid>
+  </revision>
 </revisionlist>
