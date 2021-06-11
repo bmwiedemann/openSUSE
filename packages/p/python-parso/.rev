@@ -155,4 +155,13 @@
 </comment>
     <requestid>878622</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>761bf48cf39d11118ec2557cf34b6954</srcmd5>
+    <version>0.8.2</version>
+    <time>1623443420</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2:
+  - Various small bugfixes</comment>
+    <requestid>897854</requestid>
+  </revision>
 </revisionlist>
