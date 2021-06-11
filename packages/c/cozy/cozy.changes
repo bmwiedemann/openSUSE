@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  4 17:21:10 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.0.3
+  * When an issue occurs during playback the error message is displayed to the user
+  * Fix: Importing media without tags now properly decodes the file name as chapter name (thanks chris-kobrzak!)
+  * Fix: Ensure that always a default storage location is present
+  * Fix: During import an error could occur which stopped the import
+  * Fix: During the database migration an error could occur
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Mon May 31 20:05:11 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.0.2
