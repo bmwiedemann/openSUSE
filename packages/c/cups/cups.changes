@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  7 13:23:25 CEST 2021 - jsmeix@suse.de
+
+- Provide /usr/share/cups/ppdc/ in the "cups" main package
+  to avoid that "lpinfo -m" results in /var/log/cups/error_log
+  things like "ppdc: Unable to find include file font.defs"
+  or "ppdc: Unable to find include file hp.h" and then
+  "Bad driver information file /usr/share/cups/drv/sample.drv"
+  (bsc#1186843)
+
+-------------------------------------------------------------------
 Mon May  3 09:57:33 CEST 2021 - jsmeix@suse.de
 
 - When cupsd creates directories with specific owner group

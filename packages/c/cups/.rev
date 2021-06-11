@@ -1187,4 +1187,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Fixed CVE-2021-25317 (bsc#1184161) (forwarded request 889938 from jsmeix)</comment>
     <requestid>889939</requestid>
   </revision>
+  <revision rev="157" vrev="4">
+    <srcmd5>f71c491df7ef0652e39533bbccd38c3d</srcmd5>
+    <version>2.3.3op2</version>
+    <time>1623443428</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed &quot;ppdc: Unable to find include file ... Bad driver information file /usr/share/cups/drv/sample.drv&quot; (bsc#1186843) (forwarded request 898072 from jsmeix)</comment>
+    <requestid>898073</requestid>
+  </revision>
 </revisionlist>

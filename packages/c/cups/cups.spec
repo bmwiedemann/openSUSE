@@ -637,7 +637,6 @@ exit 0
 %doc %{_mandir}/man8/cupsd-helper.8.gz
 %doc %{_mandir}/man8/cupsfilter.8.gz
 %{_datadir}/cups/
-%exclude %{_datadir}/cups/ppdc/
 
 %files client
 %defattr(-,root,root)
@@ -683,7 +682,6 @@ exit 0
 %{_includedir}/cups/
 %{_libdir}/libcups.so
 %{_libdir}/libcupsimage.so
-%{_datadir}/cups/ppdc/
 
 %files ddk
 %defattr(-,root,root)
