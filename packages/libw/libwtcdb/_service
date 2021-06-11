@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libwtcdb</param>
+		<param name="revision">76a891057ec569068f0270388277abb5e5465c88</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210417</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
