@@ -1,5 +1,5 @@
 #
-# spec file for package python38-core
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -173,7 +173,7 @@ BuildRequires:  pkgconfig(libtirpc)
 %if %{with doc}
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
-BuildRequires:  python3-Sphinx < 3.0
+BuildRequires:  python3-Sphinx
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-python-docs-theme
 BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
@@ -196,7 +196,6 @@ Requires:       %{python_pkg_name}-base = %{version}
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
-Provides:       python = %{python_version}
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
 %endif
