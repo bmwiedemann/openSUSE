@@ -247,4 +247,19 @@
     <comment></comment>
     <requestid>890781</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>dae7a41e9a8fc59e491e8ebcfd832f06</srcmd5>
+    <version>3.9.5</version>
+    <time>1623443397</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert previous skip over test_capi
+- Add skip-test_pyobject_freed_is_freed.patch to skip failing
+  test on SLE-15.
+- allow build with Sphinx &gt;= 3.x 
+- Exclude test_capi on Leap (test fails there)
+- Stop providing &quot;python&quot; symbol (bsc#1185588), which means
+  python2 currently.
+</comment>
+    <requestid>899025</requestid>
+  </revision>
 </revisionlist>

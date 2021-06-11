@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun  5 21:21:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Revert previous skip over test_capi
+- Add skip-test_pyobject_freed_is_freed.patch to skip failing
+  test on SLE-15.
+
+-------------------------------------------------------------------
+Fri Jun  4 21:36:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- allow build with Sphinx >= 3.x 
+
+-------------------------------------------------------------------
+Wed Jun  2 13:12:04 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Exclude test_capi on Leap (test fails there)
+
+-------------------------------------------------------------------
+Fri May 21 15:13:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Stop providing "python" symbol (bsc#1185588), which means
+  python2 currently.
+
+-------------------------------------------------------------------
 Wed May  5 15:16:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.5:

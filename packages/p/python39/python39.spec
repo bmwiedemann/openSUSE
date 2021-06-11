@@ -1,5 +1,5 @@
 #
-# spec file for package python39-core
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -142,6 +142,9 @@ Patch32:        sphinx-update-removed-function.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
 Patch33:        no-skipif-doctests.patch
+# PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
+# skip a test failing on SLE-15
+Patch34:        skip-test_pyobject_freed_is_freed.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -162,9 +165,7 @@ BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{with doc}
-# Here we just run sphinx and we can use generic one, we don't need
-# the flavor variant
-BuildRequires:  python3-Sphinx < 3.0
+BuildRequires:  python3-Sphinx
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme
 %endif
@@ -186,7 +187,6 @@ Requires:       %{python_pkg_name}-base = %{version}
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
-Provides:       python = %{python_version}
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
 %endif
@@ -387,6 +387,9 @@ other applications.
 %patch32 -p1
 %if 0%{?suse_version} <= 1500
 %patch33 -p1
+%endif
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+%patch34 -p1
 %endif
 
 # drop Autoconf version requirement
