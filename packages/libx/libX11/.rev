@@ -353,4 +353,15 @@ additions, including new UTF-8 compose sequences for:
     fixes segfaults for xforms applications like fdesign</comment>
     <requestid>896392</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>abc15916db1448fbad8a3011f1e1c4f8</srcmd5>
+    <version>1.7.2</version>
+    <time>1623443422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2
+  * bug fix release, correcting a regression introduced by and
+    improving the checks from the fix for CVE-2021-31535.
+- supersedes U_Check-for-NULL-strings-before-getting-their-lengths.patch</comment>
+    <requestid>897894</requestid>
+  </revision>
 </revisionlist>
