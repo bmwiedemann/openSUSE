@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 31 10:19:13 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Thu Dec  3 23:06:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix Sphinx build with primary python3 flavor for

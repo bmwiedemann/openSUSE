@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://pypi.org/project/manuel/
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
 # add fixed sphinx config <hpj@urpla.net>
 Source1:        conf.py
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -71,7 +72,7 @@ fi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py -q test
+%pytest src/manuel/tests.py
 
 %files %{python_files}
 %license LICENSE.rst
