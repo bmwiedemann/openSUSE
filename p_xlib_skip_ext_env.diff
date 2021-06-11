@@ -3,7 +3,7 @@ Index: src/QuExt.c
 --- src/QuExt.c.orig
 +++ src/QuExt.c
 @@ -45,6 +45,20 @@ XQueryExtension(
-     if (strlen(name) >= USHRT_MAX)
+     if (name != NULL && strlen(name) >= USHRT_MAX)
          return false;
  
 +    if (name && strlen (name) < 256)

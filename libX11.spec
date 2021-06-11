@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -33,7 +33,6 @@ Patch0:         p_khmer-compose.diff
 Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
-Patch3:         U_Check-for-NULL-strings-before-getting-their-lengths.patch
 
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -138,7 +137,6 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch0
 %patch1
 %patch2
-%patch3 -p1
 
 %build
 %configure \

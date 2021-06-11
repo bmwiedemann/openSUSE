@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 18:54:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.2
+  * bug fix release, correcting a regression introduced by and
+    improving the checks from the fix for CVE-2021-31535.
+- supersedes U_Check-for-NULL-strings-before-getting-their-lengths.patch
+
+-------------------------------------------------------------------
 Mon May 31 15:33:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Check-for-NULL-strings-before-getting-their-lengths.patch
