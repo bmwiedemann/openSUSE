@@ -1,10 +1,48 @@
 -------------------------------------------------------------------
+Fri Jun 11 14:44:22 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.139.9:
+  * c623730 (HEAD, tag: v0.139.9)
+    Bump golang.org/x/crypto (#1877)
+
+- v0.139.8:
+  * 72e7160 (HEAD, tag: v0.139.8)
+    Fix chartify regression of missing chart dependencies (#1869)
+  * 0d4adfe Document hooks events expressions (#1870)
+
+-------------------------------------------------------------------
+Tue May 25 06:43:31 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.139.7:
+  * 1a109f7 (HEAD, tag: v0.139.7)
+    Fix chartify inability to disable chart dependency (#1861)
+  * 97bab23 Fix --skip-cleanup to work with chartify (#1860)
+  * c881544 Update README.md
+  * 92ba347 Add --skip-diff-on-install to helmfile diff (#1841)
+
+- v0.139.6:
+  * f502a0a (HEAD, tag: v0.139.6)
+    fix: Do not fail on deps when chart is fetched by go-getter (#1852)
+
+- v0.139.5:
+  * 7724160 (HEAD, tag: v0.139.5)
+    Fix Helmfile swallowing secrets decryption errors (#1849)
+
+- v0.139.4:
+  * f38958d (HEAD, tag: v0.139.4)
+    Fix cache path issue on Windows (#1846)
+
+- v0.139.3:
+  * 212e6ac (HEAD, tag: v0.139.3)
+    Fix helmfile-lint not to stop on fisrt error (#1836)
+
+-------------------------------------------------------------------
 Sun May  9 08:43:27 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.139.2
   This release fixes a breaking change introduced in v0.139.0.
 
-  * efa404e (HEAD, tag: v0.139.2, origin/master, origin/HEAD, master)
+  * efa404e (HEAD, tag: v0.139.2)
     Make --skip-needs=true the default option (#1835)
 
 - v0.139.1
@@ -13,7 +51,7 @@ Sun May  9 08:43:27 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
   and --output-dir, and also the newer aws-sdk-go for AWS SSO
   support. You should always use v0.139.1 rather than v0.139.0.
 
-  * 794ab9f (HEAD, tag: v0.139.1, origin/master, origin/HEAD, master)
+  * 794ab9f (HEAD, tag: v0.139.1)
     Fix lint and status not to fail with selector and needs (#1834)
   * 48bd5c0 Update go.sum for successful build
   * e39a0b3 bump Go to 1.16.3 and cover helm 3.5.4 (#1825)
@@ -39,7 +77,7 @@ Fri May  7 08:23:11 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
   #1831 and add --skip-needs to your helmfile command if you'd like
   to opt-in to preserve the existing behaviour.
 
-  * ded0f10 (HEAD, tag: v0.139.0, origin/master, origin/HEAD, master)
+  * ded0f10 (HEAD, tag: v0.139.0)
     Fix filepath handling on Windows (#1754)
   * 08db073 Fix broken selector and DAG calculation logic after
     --{include,skip}-needs addition with correct Release IDs (#1823)
@@ -139,7 +177,7 @@ Fri May  7 08:23:11 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 Tue Mar  9 16:01:14 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.7
-  * 8ed8a9e (HEAD, tag: v0.138.7, origin/master, origin/HEAD, master)
+  * 8ed8a9e (HEAD, tag: v0.138.7)
     allow to access oci repos without auth (#1711)
   * 14a83e7 Update reference for helm-secrets to latest maintained
     fork (#1676)
@@ -148,7 +186,7 @@ Tue Mar  9 16:01:14 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
   * 927bd30 Update README.md to show current CLI Output (#1712)
 
 - v0.138.6
-  * 247ae91 (HEAD, tag: v0.138.6, origin/master, origin/HEAD, master)
+  * 247ae91 (HEAD, tag: v0.138.6)
     Disable darwin/386 build to avoid release failure
 
 - v0.138.5
@@ -158,16 +196,16 @@ Tue Mar  9 16:01:14 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 Sat Feb 13 11:28:22 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.4
-  * f24b61f (HEAD, tag: v0.138.4, origin/master, origin/HEAD, master)
+  * f24b61f (HEAD, tag: v0.138.4)
     Fix error on concurrent go-getter on same URL (#1669)
 
 - v0.138.3
-  * 257c1f6 (HEAD, tag: v0.138.3, origin/master, origin/HEAD, master)
+  * 257c1f6 (HEAD, tag: v0.138.3)
     Fix OCI support (#1667)
   * 4e1ecb5 Bump variantdev/vals to 0.13.0 (#1666)
 
 - v0.138.2
-  * ad5fba5 (HEAD, tag: v0.138.2, origin/master, origin/HEAD, master)
+  * ad5fba5 (HEAD, tag: v0.138.2)
     Bump Helm to v3.5.0. (#1656)
   * 0ad62b5 docs: update helm command name (#1635)
   * 8487970 fix: dont sent RegistryLogin password via args (#1662)
@@ -177,13 +215,13 @@ Sat Jan 30 09:58:45 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.1: fix: fixed up OCI repos so they support paths and URLs
   that differ fr…
-  * 8212b63 (HEAD, tag: v0.138.1, origin/master, origin/HEAD, master)
+  * 8212b63 (HEAD, tag: v0.138.1)
   fix: fixed up OCI repos so they support paths and URLs that differ
   from chart names contained there (#1661)
 
 - v0.138.0: feat: added in oci repository flag and added helm
   methods to pull and…
-  * 2a71640 (HEAD, tag: v0.138.0, origin/master, origin/HEAD, master)
+  * 2a71640 (HEAD, tag: v0.138.0)
   feat: added in oci repository flag and added helm methods to pull
   and export charts (#1629)
 
@@ -191,7 +229,7 @@ Sat Jan 30 09:58:45 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 Wed Jan 13 14:36:41 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.137.0: docs: fix typo (#1645)
-  * 33880da (HEAD, tag: v0.137.0, origin/master, origin/HEAD, master)
+  * 33880da (HEAD, tag: v0.137.0)
     docs: fix typo (#1645)
   * 87fcd83 Fix typo "verion" (#1641)
   * 600721c docs(readme): fix typo (#1633)
@@ -201,7 +239,7 @@ Wed Jan 13 14:36:41 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 Sun Jan  3 09:57:17 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.136.0
-  * e5d982e (HEAD, tag: v0.136.0, origin/master, origin/HEAD, master)
+  * e5d982e (HEAD, tag: v0.136.0)
     Fix "No valid platforms to build for" build error on release
   * c815d01 Bump helm versions in Dockerfile to deal with stable and
     incubator repositories change
@@ -233,7 +271,7 @@ Mon Nov 23 10:17:01 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Thu Nov 19 09:42:48 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.135.0: Add support for Kustomize Transformers (#1592)
-  * b910591 (HEAD, tag: v0.135.0, origin/master, origin/HEAD, master)
+  * b910591 (HEAD, tag: v0.135.0)
     Add support for Kustomize Transformers (#1592)
   * d807510 Enable shell completion (#1559)
   * 4e48521 Fix the logic of helmfile deps and add tests. (#1588)
@@ -243,7 +281,7 @@ Thu Nov 19 09:42:48 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.134.1: Fix `helmfile template --include-crds` not to break with
   `chartify` (…
-  * f6bf885 (HEAD, tag: v0.134.1, origin/master, origin/HEAD, master)
+  * f6bf885 (HEAD, tag: v0.134.1)
     Fix helmfile template --include-crds not to break with chartify (#1583)
   * 2857382 fix: support arm binaries (#1580)
   * 972667f Mention openSUSE packages for helmfile (#1581)
@@ -253,14 +291,14 @@ Thu Nov 19 09:42:48 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Tue Nov 10 15:32:53 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.134.0: Bump dependencies (#1573)
-  * 709913b (HEAD, tag: v0.134.0, origin/master, origin/HEAD, master)
+  * 709913b (HEAD, tag: v0.134.0)
     Bump dependencies (#1573)
   * 88884b6 feat: helmfile template --skip-cleanup (#1570)
   * 5a15b65 feat: Add helmfile apply --skip-cleanup (#1571)
   * 3899680 feat: Add helmfile test --logs (#1569)
 
 - v0.133.0: feat: Add `helmfile template --include-crds` (#1568)
-  * 6b86408 (HEAD, tag: v0.133.0, origin/master, origin/HEAD, master)
+  * 6b86408 (HEAD, tag: v0.133.0)
     feat: Add helmfile template --include-crds (#1568)
 
 -------------------------------------------------------------------
@@ -268,12 +306,12 @@ Sun Nov  8 15:39:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.3: Fix redundant helm-dep-build and prepare hook regression
   (#1566)
-  * bdbaa00 (HEAD, tag: v0.132.3, master) Fix redundant helm-dep-build
+  * bdbaa00 (HEAD, tag: v0.132.3) Fix redundant helm-dep-build
     and prepare hook regression (#1566)
 
 - v0.132.2: Fix `helmfile --selector x=y template` with `needs`
   (#1564)
-  * 87e86dc (HEAD, tag: v0.132.2, origin/master, origin/HEAD, master)
+  * 87e86dc (HEAD, tag: v0.132.2)
     Fix helmfile --selector x=y template with needs (#1564)
   * 995b201 mention Arch Linux support (#1549)
 
@@ -282,7 +320,7 @@ Tue Oct 27 17:35:00 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.1: Disable dependency update while running helm-x/chartify
   in more cases…
-  * 0663831 (HEAD, tag: v0.132.1, origin/master, origin/HEAD, master)
+  * 0663831 (HEAD, tag: v0.132.1)
     Disable dependency update while running helm-x/chartify in more
     cases (#1548)
   * afb2653 fix: printing error to stdout together with templated
@@ -292,7 +330,7 @@ Tue Oct 27 17:35:00 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Thu Oct 22 08:50:25 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.0: Minor README improvement (#1543)
-  * 9ec4a85 (HEAD, tag: v0.132.0, origin/master, origin/HEAD, master)
+  * 9ec4a85 (HEAD, tag: v0.132.0)
     Minor README improvement (#1543)
   * 4d86879 Improve capitalization and formats of README.md. (#1545)
   * 1aca099 feat: Upgrade to kubectl version supported by latest
@@ -304,7 +342,7 @@ Thu Oct 22 08:50:25 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Sun Oct 18 08:55:59 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.131.0: Bump chartify to 0.4.4 (#1540)
-  * 080080f (HEAD, tag: v0.131.0, origin/master, origin/HEAD, master)
+  * 080080f (HEAD, tag: v0.131.0)
     Bump chartify to 0.4.4 (#1540)
   * cd4afc3 Remove duplicated logs from helm.exec. (#1538)
   * 8f86697 Support for azure acr helm repositories (#1526)
@@ -313,12 +351,12 @@ Sun Oct 18 08:55:59 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Sun Oct 18 08:48:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.130.3: Bump vals (#1537)
-  * 563fce4 (HEAD, tag: v0.130.3, origin/master, origin/HEAD, master)
+  * 563fce4 (HEAD, tag: v0.130.3)
     Bump vals (#1537)
   * b287101 Update USERS.md (#1535)
 
 - v0.130.2: Fix concurrent-map-iteration-and-write errors while running release h…
-  * ab9fb2c (HEAD, tag: v0.130.2, origin/master, origin/HEAD, master)
+  * ab9fb2c (HEAD, tag: v0.130.2)
     Fix concurrent-map-iteration-and-write errors while running
     release hooks (#1534)
   * c170b5a Minor tweaks for helmfile write-values (#1533)
@@ -336,14 +374,14 @@ Sun Oct 18 08:48:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Tue Oct  6 07:19:24 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.130.1: Fix: forceNamespace needs shouldRun is true (#1510)
-  * 954673d (HEAD, tag: v0.130.1, origin/master, origin/HEAD, master)
+  * 954673d (HEAD, tag: v0.130.1)
     Fix: forceNamespace needs shouldRun is true (#1510)
 
 -------------------------------------------------------------------
 Tue Sep 29 10:41:39 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.130.0: Add support for ChartCenter (#1492)
-  * 942b9a6 (HEAD, tag: v0.130.0, origin/master, origin/HEAD, master)
+  * 942b9a6 (HEAD, tag: v0.130.0)
     Add support for ChartCenter (#1492)
 
 -------------------------------------------------------------------
@@ -351,7 +389,7 @@ Mon Sep 21 10:57:27 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.129.4: Enable `helmfile test` testing only enabled and selected
   releases (#1…
-  * b176408 (HEAD, tag: v0.129.4, origin/master, origin/HEAD, master)
+  * b176408 (HEAD, tag: v0.129.4)
     Enable helmfile test testing only enabled and selected releases (#1486)
   * ff81b2f Enable release hook template to access .Values (#1485)
   * 8db03f9 Drop duplicated entry in extra functions list from readme (#1490)
@@ -362,47 +400,47 @@ Mon Sep 21 10:57:27 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Tue Sep 15 10:41:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.129.3: Treat selector with multiple conditions an AND (#1478)
-  * 028bcc5 (HEAD, tag: v0.129.3, origin/master, origin/HEAD, master)
+  * 028bcc5 (HEAD, tag: v0.129.3)
     Treat selector with multiple conditions an AND (#1478)
 
 - v0.129.2: Bump vals (#1475)
-  * 5dd65e8 (HEAD, tag: v0.129.2, origin/master, origin/HEAD, master)
+  * 5dd65e8 (HEAD, tag: v0.129.2)
     Bump vals (#1475)
 
 - v0.129.1: Add tailormed to users (#1467)
-  * 134d5be (HEAD, tag: v0.129.1, origin/master, origin/HEAD, master)
+  * 134d5be (HEAD, tag: v0.129.1)
     Add tailormed to users (#1467)
   * 87d04f0 Append KubeContext to temporary directory path (#1471)
   * 2d7c8e7 Update README.md (#1472)
 
 - v0.129.0: Add experimental write-values command for writing values files only (…
-  * 0fad9f0 (HEAD, tag: v0.129.0, origin/master, origin/HEAD, master)
+  * 0fad9f0 (HEAD, tag: v0.129.0)
     Add experimental write-values command for writing values files only (#1469)
 
 - v0.128.2: Re-add Release.Namespace in release values.yaml templates (#1466)
-  * 832dcf4 (HEAD, tag: v0.128.2, origin/master, origin/HEAD, master)
+  * 832dcf4 (HEAD, tag: v0.128.2)
     Re-add Release.Namespace in release values.yaml templates (#1466)
   * 1d2c8b8 Adding hellofresh as a helmfile user (#1465)
 
 - v0.128.1: Fix `index out of range [1] with length 1` error on env2map (#1463)
-  * 0482ba3 (HEAD, tag: v0.128.1, origin/master, origin/HEAD, master)
+  * 0482ba3 (HEAD, tag: v0.128.1)
     Fix index out of range [1] with length 1 error on env2map (#1463)
 
 - v0.128.0: Bump sprig to v3.1.0 and mergo 3.11 (#1456)
-  * 9d2c0d4 (HEAD, tag: v0.128.0, origin/master, origin/HEAD, master)
+  * 9d2c0d4 (HEAD, tag: v0.128.0)
     Bump sprig to v3.1.0 and mergo 3.11 (#1456)
 
 - v0.127.0: Bump sprig to v3 (#1452)
-  * efd26f2 (HEAD, tag: v0.127.0, origin/master, origin/HEAD, master)
+  * efd26f2 (HEAD, tag: v0.127.0)
     Bump sprig to v3 (#1452)
 
 - v0.126.2: Fix wrong deletion order (#1451)
-  * 5f1698d (HEAD, tag: v0.126.2, origin/master, origin/HEAD, master)
+  * 5f1698d (HEAD, tag: v0.126.2)
     Fix wrong deletion order (#1451)
   * 2ecf578 Revise GitOps doc a bit
 
 - v0.126.1: Fix test flake for `commonLabels` (#1449)
-  * 3e6542e (HEAD, tag: v0.126.1, origin/master, origin/HEAD, master)
+  * 3e6542e (HEAD, tag: v0.126.1)
     Fix test flake for commonLabels (#1449)
   * d3daea3 Fix panic on hook since v0.126.0 (#1448)
   * 19d7942 Add experimental "forceNamespace" in helmfile.yaml (#1444)
@@ -411,7 +449,7 @@ Tue Sep 15 10:41:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Mon Aug 31 12:30:56 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.126.0: Fix build error after `helmfile build --embed-values` addition
-  * cd0ecc5 (HEAD, tag: v0.126.0, origin/master, origin/HEAD, master)
+  * cd0ecc5 (HEAD, tag: v0.126.0)
     Fix build error after helmfile build --embed-values addition
   * dc6c59d Print command output in line (#1354)
   * 0fc0869 feat: helmfile build --embed-values to embed release
@@ -425,7 +463,7 @@ Mon Aug 31 12:30:56 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Mon Aug 31 12:20:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.9: Merge pull request #1442 from roboll/fix-duplicate-with-kubectx-per-r…
-  * c575587 (HEAD, tag: v0.125.9, origin/master, origin/HEAD, master)
+  * c575587 (HEAD, tag: v0.125.9)
     Merge pull request #1442 from roboll/fix-duplicate-with-kubectx-per-release
   * f2dfa7c Fix kubeContext not taken into account for release uniqueness
   * 41cd1fe Fix race while running helm dep build on local chart (#1439)
@@ -434,7 +472,7 @@ Mon Aug 31 12:20:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
   * b42e847 Fix race while running helm dep build on local chart
 
 - v0.125.8: Fix regression in helmfile deps (#1431)
-  * 14e2b9e (HEAD, tag: v0.125.8, origin/master, origin/HEAD, master)
+  * 14e2b9e (HEAD, tag: v0.125.8)
     Fix regression in helmfile deps (#1431)
   * 90a4122 fix: panic when using helm v3.3 (#1427) (#1428)
 
@@ -442,26 +480,26 @@ Mon Aug 31 12:20:16 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Mon Aug 17 15:38:34 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.7: Fix regression installing raw K8s manifests (#1417)
-  * a9aa7af (HEAD, tag: v0.125.7, origin/master, origin/HEAD, master)
+  * a9aa7af (HEAD, tag: v0.125.7)
     Fix regression installing raw K8s manifests (#1417)
   * 738409e Fix regression for helmfile template with helm v2 since
     v0.125.4 (#1416)
 
 - v0.125.6: Revert filtering on repositories to be updated (#1412)
-  * ec87a39 (HEAD, tag: v0.125.6, origin/master, origin/HEAD, master)
+  * ec87a39 (HEAD, tag: v0.125.6)
     Revert filtering on repositories to be updated (#1412)
   * ab1c118 Bump chartify to v0.4.0 (#1409)
   * c8c444d Add test case (#1410)
 
 - v0.125.5: Fix chart fetched by go-getter not to fail due to missing
   dependencies
-  * 9a03d79 (HEAD, tag: v0.125.5, origin/master, origin/HEAD, master)
+  * 9a03d79 (HEAD, tag: v0.125.5)
     Fix chart fetched by go-getter not to fail due to missing
     dependencies (#1408)
 
 - v0.125.4: Fix race on/sometimes missing postsync and cleanup hooks
   (#1407)
-  * 0ef7e65 (HEAD, tag: v0.125.4, origin/master, origin/HEAD, master)
+  * 0ef7e65 (HEAD, tag: v0.125.4)
     Fix race on/sometimes missing postsync and cleanup hooks (#1407)
   * 61b61d3 Fix helmfile template with Helm 3 ignoring chart version
     (#1406)
@@ -472,18 +510,18 @@ Mon Aug 17 15:38:34 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Thu Aug  6 07:37:04 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.3: Fix various issues in chart preparation (#1400)
-  * b85243a (HEAD, tag: v0.125.3, origin/master, origin/HEAD, master)
+  * b85243a (HEAD, tag: v0.125.3)
     Fix various issues in chart preparation (#1400)
   * 53c3fe9 Add support for selector on helmfile template (#1399)
 
 - v0.125.2
-  * 2ce57ba (HEAD, tag: v0.125.2, origin/master, origin/HEAD, master)
+  * 2ce57ba (HEAD, tag: v0.125.2)
     Handle --disable-openapi-validation parameter in helm upgrade (#1396)
   * cc9b7f3 Fix regression on template failing due to duplicate fetch
     target (#1395)
 
 - v0.125.1: Fix `helmfile lint` failure when `installed: false` (#1391)
-  * 85a2024 (HEAD, tag: v0.125.1, origin/master, origin/HEAD, master)
+  * 85a2024 (HEAD, tag: v0.125.1)
     Fix helmfile lint failure when installed: false (#1391)
   * 8757308 Fix false-positive duplicate release with kubeContext (#1390)
   * 4fb47a8 Add version sub-command (#1389)
@@ -496,25 +534,25 @@ Thu Aug  6 07:37:04 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 Fri Jul 24 12:50:14 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.125.0: Add pre/postuninstall hooks (#1375)
-  * ee8ea50 (HEAD, tag: v0.125.0, origin/master, origin/HEAD, master)
+  * ee8ea50 (HEAD, tag: v0.125.0)
     Add pre/postuninstall hooks (#1375)
   * b5830a3 Add ability to use go-getter for fetching remote manifests
     directory as chart (#1374)
 
 - v0.124.0: Add disableValidation and disableOpenAPIValidation per
   release (#1373)
-  * 4fde6e1 (HEAD, tag: v0.124.0, master) Add disableValidation and
+  * 4fde6e1 (HEAD, tag: v0.124.0) Add disableValidation and
     disableOpenAPIValidation per release (#1373)
   * a5e790c Add Jenkins OSS to the list of users (#1372)
   * 1e956ae Fix list failure when patches are used (#1371)
 
 - v0.123.0: Bump variantdev/vals for better Variant KV v2 support
   (#1367)
-  * 1671b8b (HEAD, tag: v0.123.0, origin/master, origin/HEAD, master)
+  * 1671b8b (HEAD, tag: v0.123.0)
     Bump variantdev/vals for better Variant KV v2 support (#1367)
 
 - v0.122.2: Bump chartify to 0.3.11 (#1366)
-  * 608ba19 (HEAD, tag: v0.122.2, origin/master, origin/HEAD, master)
+  * 608ba19 (HEAD, tag: v0.122.2)
     Bump chartify to 0.3.11 (#1366)
   * daf7d3b fix the issue in the documentation (#1364)
 
