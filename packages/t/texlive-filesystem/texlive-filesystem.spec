@@ -24,7 +24,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   184
+%define texlive_noarch   185
 %define texlive_source   texlive-20210325-source
 
 %define __perl_requires		%{nil}
@@ -42,8 +42,8 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
 Requires:       cron
 Requires:       python3
-Requires(pre):  /usr/bin/getent
-Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  user(mktex)
+Requires(pre):  group(mktex)
 Requires(pre):  /usr/bin/stat
 Requires(post): %fillup_prereq
 Requires(post): permissions
@@ -21143,9 +21143,11 @@ popd
     done
 
     # the permission files, any change is also required within do.mklists
+    # Note: the entry for the public program is set to
+    #   %{_libexecdir}/mktex/publici    root:%{texgrp}  2755
+    # in the standard global permission files
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive.texlive) <<-EOF
-	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
 	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
 	%{_fontcache}/ls-R	   %{texusr}:%{texgrp}	0664
 	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
@@ -21165,7 +21167,6 @@ popd
 	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	3775
 	EOF
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive) <<-EOF
-	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
 	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
 	%{_fontcache}/ls-R	   %{texusr}:%{texgrp}	0664
 	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
@@ -21238,8 +21239,6 @@ popd
 %endif
 
 %pre
-%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
-%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 # the ls-R file on update
 for dir in	%{_texmfconfdir}	\
 		%{_fontcache}		\
@@ -33962,27 +33961,27 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfmaindir}/tlpkg
 %dir %{_texmfmaindir}/tlpkg/TeXLive
 %dir %{_texmfmaindir}/tlpkg/gpg
-%dir %attr(1755,root,root) %{_texmfvardir}
-%dir %attr(1755,root,root) %{_texmfvardir}/dist
-%dir %attr(1755,root,root) %{_texmfvardir}/main
-%dir %attr(1755,root,root) %{_texmfvardir}/fonts
-%dir %attr(1755,root,root) %{_texmfvardir}/fonts/dvipdfm
-%dir %attr(1755,root,root) %{_texmfvardir}/fonts/dvips
-%dir %attr(1755,root,root) %{_texmfvardir}/fonts/pdftex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/aleph
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/eptex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/luatex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/metafont
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/pdftex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/ptex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/tex
-%dir %attr(1755,root,root) %{_texmfvardir}/web2c/xetex
-%dir %attr(1755,root,root) %{_texmfcache}
-%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}
-%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/pk
-%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source
-%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
+%dir %attr(1755,root,root) %{_texmfvardir}/
+%dir %attr(1755,root,root) %{_texmfvardir}/dist/
+%dir %attr(1755,root,root) %{_texmfvardir}/main/
+%dir %attr(1755,root,root) %{_texmfvardir}/fonts/
+%dir %attr(1755,root,root) %{_texmfvardir}/fonts/dvipdfm/
+%dir %attr(1755,root,root) %{_texmfvardir}/fonts/dvips/
+%dir %attr(1755,root,root) %{_texmfvardir}/fonts/pdftex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/aleph/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/eptex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/luatex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/metafont/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/pdftex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/ptex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/tex/
+%dir %attr(1755,root,root) %{_texmfvardir}/web2c/xetex/
+%dir %attr(1755,root,root) %{_texmfcache}/
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/pk/
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source/
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm/
 %dir %{_texmfvardir}/md5
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R

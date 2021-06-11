@@ -491,4 +491,12 @@
 - Update to TeXLive 2021</comment>
     <requestid>888675</requestid>
   </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>fc9aa8b7f0e75ac1a662568e7a3c2cf0</srcmd5>
+    <version>unknown</version>
+    <time>1623443431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898104</requestid>
+  </revision>
 </revisionlist>

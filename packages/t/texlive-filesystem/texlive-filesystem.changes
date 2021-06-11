@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 30 16:43:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
+Thu May 27 08:05:50 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- remove 'public' setgid binary from permissions.d files. This entry is
+  conflicting with the global permissions profiles from the permissions
+  package. E.g. when we set the 'paranoid' profile then the public binary is
+  supposed to end up without setgid-bit, which it does not currently.
+
+-------------------------------------------------------------------
 Mon Apr 26 15:36:21 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Force updmap-sys to sync trees 
