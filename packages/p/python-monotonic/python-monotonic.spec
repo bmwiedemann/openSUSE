@@ -1,7 +1,7 @@
 #
 # spec file for package python-monotonic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-monotonic
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        An implementation of time.monotonic() for Python 2 & < 33
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/atdt/monotonic
-Source:         https://files.pythonhosted.org/packages/source/m/monotonic/monotonic-%{version}.tar.gz
+Source:         https://github.com/atdt/monotonic/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} > 1110

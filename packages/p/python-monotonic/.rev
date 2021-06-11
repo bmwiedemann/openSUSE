@@ -60,4 +60,13 @@
   * Only import modules if needed</comment>
     <requestid>662446</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4780199df8b09395562ef3d79ee0626</srcmd5>
+    <version>1.6</version>
+    <time>1623443416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6:
+  * Fix order for converting mach absolute time</comment>
+    <requestid>897844</requestid>
+  </revision>
 </revisionlist>
