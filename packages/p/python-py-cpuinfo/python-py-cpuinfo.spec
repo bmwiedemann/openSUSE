@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-cpuinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
 Name:           python-py-cpuinfo
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        Python library and tool to get CPU info
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

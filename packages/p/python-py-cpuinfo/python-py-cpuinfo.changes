@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:53:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Fixed Bug #161: Accept arm64 as an alias for aarch64
+  * Fixed Bug #160: Add MIPS architecture support
+  * Fixed Bug #74: Add option to trace code paths to file
+  * Fixed Bug #157: Remove multiple checks for sestatus
+
+-------------------------------------------------------------------
 Wed Sep 16 21:06:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 7.0.0:
