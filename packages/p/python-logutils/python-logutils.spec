@@ -1,7 +1,7 @@
 #
 # spec file for package python-logutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://logutils.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logutils/logutils-%{version}.tar.gz
+Patch0:         sphinx4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -58,6 +59,7 @@ This package contains the documentation.
 
 %prep
 %setup -q -n logutils-%{version}
+%autopatch -p1
 
 %build
 %python_build

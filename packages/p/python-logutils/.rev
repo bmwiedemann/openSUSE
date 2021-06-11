@@ -37,4 +37,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659482</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>da290d74c9e8d32f9be019f23a03f583</srcmd5>
+    <version>0.3.5</version>
+    <time>1623443409</time>
+    <user>dimstar_suse</user>
+    <comment>- add sphinx4.patch to enable build with Sphinx 4.x</comment>
+    <requestid>897741</requestid>
+  </revision>
 </revisionlist>

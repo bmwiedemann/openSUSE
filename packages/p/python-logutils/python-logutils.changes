@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  5 19:05:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add sphinx4.patch to enable build with Sphinx 4.x 
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
