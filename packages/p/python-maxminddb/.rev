@@ -105,4 +105,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>846966</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>07b01401b156048c93e5cc7e7c5758cb</srcmd5>
+    <version>2.0.3</version>
+    <time>1623443408</time>
+    <user>dimstar_suse</user>
+    <comment>- disable python 2, fixes Leap builds. Python 2 is no longer supported.
+  fixes boo#1186841
+</comment>
+    <requestid>897729</requestid>
+  </revision>
 </revisionlist>
