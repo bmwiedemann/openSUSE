@@ -17,7 +17,7 @@
 
 
 Name:           verilator
-Version:        4.108
+Version:        4.202
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  perl
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 Verilator compiles synthesizable Verilog (not test-bench code), plus
@@ -47,17 +47,6 @@ BuildArch:      noarch
 %description devel
 Development files for Verilator, a compiling Verilog HDL simulator.
 It includes header files and a pkgconfig file.
-
-%package        doc
-Summary:        Documentation for verilator in HTML format
-Group:          Documentation/HTML
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description    doc
-Verilator is a compiling Verilog HDL simulator.
-
-This package contains documentation for verilator in HTML format.
 
 %package        doc-pdf
 Summary:        Documentation for verilator in PDF format
@@ -95,7 +84,6 @@ sed -i -e '1 s@bin/env perl@bin/perl@' bin/*
 
 # install documentation
 install -d %{buildroot}%{_docdir}/%{name}/
-install -Dm644 *.html %{buildroot}%{_docdir}/%{name}/
 install -Dm644 *.pdf %{buildroot}%{_docdir}/%{name}/
 
 # install examples
@@ -110,8 +98,7 @@ make test
 
 %files
 %license Artistic LICENSE
-%doc Changes README.adoc
-%exclude %{_docdir}/%{name}/*.html
+%doc Changes README.rst
 %exclude %{_docdir}/%{name}/*.pdf
 %exclude %{_docdir}/%{name}/examples/
 %{_bindir}/verilator
@@ -122,17 +109,14 @@ make test
 %{_bindir}/verilator_gantt
 %{_bindir}/verilator_profcfunc
 %{_datadir}/verilator
-%{_mandir}/man1/verilator.1.gz
-%{_mandir}/man1/verilator_coverage.1.gz
-%{_mandir}/man1/verilator_gantt.1.gz
-%{_mandir}/man1/verilator_profcfunc.1.gz
+%{_mandir}/man1/verilator.1%{?ext_man}
+%{_mandir}/man1/verilator_coverage.1%{?ext_man}
+%{_mandir}/man1/verilator_gantt.1%{?ext_man}
+%{_mandir}/man1/verilator_profcfunc.1%{?ext_man}
 
 %files devel
 %{_datadir}/pkgconfig/verilator.pc
 %{_includedir}/verilator
-
-%files doc
-%{_docdir}/%{name}/*.html
 
 %files doc-pdf
 %{_docdir}/%{name}/*.pdf

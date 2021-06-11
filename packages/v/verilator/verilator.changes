@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun  1 11:33:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.202. Changes since 4.200:
+  * Documentation has been rewritten into a book format.
+  * Verilated signals now use VlWide and VlPacked in place of C
+    arrays.
+  * Add an URL on warnings to point to the manual's description.
+  * Add EOFNEWLINE warning when missing a newline at EOF.
+  * Changed TIMESCALEMOD from error into a warning.
+  * Mark --no-relative-cfuncs as scheduled for deprecation.
+  * Add --coverage-max-width.
+  * Add VerilatedCovContext::forcePerInstance.
+  * Add FST SystemC tracing.
+  * Add PINNOTFOUND warning in place of error.
+  * Support overlaps in priority case statements.
+  * Support for null ports.
+  * Fix class unpacked-array compile error.
+  * Fix scope types in FST and VCD traces.
+  * Fix exceeding command-line ar limit.
+  * Fix false $dumpfile warning on model save.
+  * Fix --timescale-override not suppressing TIMESCALEMOD.
+  * Fix false TIMESCALEMOD on generate-ignored instances.
+  * Fix --output-split with class extends.
+  * Fix false WIDTHCONCAT on casted constant.
+  * Fix tracing of long hashed names.
+  * Fix --public-flat-rw / DPI issue.
+  * Fix interface localparam access.
+  * Fix Cygwin example compile issues.
+  * Fix select of with index variable.
+  * Fix cmake version number to be numeric.
+  * Fix MinGW not supportting 'localtime_r'.
+  * Fix cast from packed, typedef'ed interface signal.
+  * Fix VPI package reported as vpiModule.
+  * Fix dumping waveforms to multiple FST files.
+  * Fix assertion failure in bitOpTree.
+  * Fix V3Premit infinite loop on always read-and-write.
+  * Fix VPI packed vectors.
+  * Fix VPI public interface parameters.
+  * Check the Changes file for older changes
+
+-------------------------------------------------------------------
 Sat Jan 23 00:55:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.108:
