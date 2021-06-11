@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sortedcontainers
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Sorted container data types
 License:        Apache-2.0

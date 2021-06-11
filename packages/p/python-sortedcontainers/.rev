@@ -107,4 +107,13 @@
     <comment></comment>
     <requestid>866285</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e0c41bd63e4ab25564c1b1150832081e</srcmd5>
+    <version>2.4.0</version>
+    <time>1623443412</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Implement SortedDict methods: __or__, __ror__, and __ior__ per PEP 584.</comment>
+    <requestid>897833</requestid>
+  </revision>
 </revisionlist>

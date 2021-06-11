@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:56:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Implement SortedDict methods: __or__, __ror__, and __ior__ per PEP 584.
+
+-------------------------------------------------------------------
 Fri Jan 22 21:06:24 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove NumPy, SciPy, and Matplotlib requirement. They are not 
