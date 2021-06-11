@@ -106,4 +106,13 @@
     <comment></comment>
     <requestid>854162</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36d80f7f89f4484f758006505af8d6b1</srcmd5>
+    <version>1.14.2</version>
+    <time>1623443410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.2:
+  * fix documentation link</comment>
+    <requestid>897829</requestid>
+  </revision>
 </revisionlist>
