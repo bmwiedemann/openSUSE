@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-more-itertools
-Version:        8.7.0
+Version:        8.8.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
@@ -49,7 +49,7 @@ rm -rf more_itertools.egg-info
 %python_exec %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst
