@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radon
-Version:        4.5.0
+Version:        4.5.2
 Release:        0
 Summary:        Code Metrics in Python
 License:        MIT
@@ -68,9 +68,7 @@ rm -r */lib/radon/tests
 %python_clone -a %{buildroot}%{_bindir}/radon
 
 %check
-export LANG=en_US.UTF-8
-# Exclusions because of gh#rubik/radon#183
-%pytest --strict
+%pytest
 
 %post
 %python_install_alternative radon

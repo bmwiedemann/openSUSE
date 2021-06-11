@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 31 14:49:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.5.2
+  * Fix CC calculation for try-except-else blocks with multiple
+    statements
+  * Fix CC type field in Markdown output
+
+-------------------------------------------------------------------
 Fri May  7 10:50:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.5.0
