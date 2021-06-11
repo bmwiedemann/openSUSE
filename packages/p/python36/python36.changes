@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:41:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 22198.patch to build with Sphinx 4 
+
+-------------------------------------------------------------------
+Fri May 21 15:13:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Stop providing "python" symbol (bsc#1185588), which means
+  python2 currently.
+
+-------------------------------------------------------------------
 Sun May  2 09:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Make sure to close the import_failed.map file after the exception

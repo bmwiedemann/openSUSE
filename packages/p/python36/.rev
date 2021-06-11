@@ -2967,4 +2967,15 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>889849</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>dcbb0dc85a000fee8f136e8e5b5bcafa</srcmd5>
+    <version>3.6.13</version>
+    <time>1623443396</time>
+    <user>dimstar_suse</user>
+    <comment>- add 22198.patch to build with Sphinx 4 
+
+- Stop providing &quot;python&quot; symbol (bsc#1185588), which means
+  python2 currently.</comment>
+    <requestid>898517</requestid>
+  </revision>
 </revisionlist>

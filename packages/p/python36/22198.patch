@@ -1,0 +1,92 @@
+From 02f1485b1a26b575ad3a2c957ea279fcff789f63 Mon Sep 17 00:00:00 2001
+From: Dong-hee Na <donghee.na92@gmail.com>
+Date: Fri, 11 Sep 2020 20:41:43 +0900
+Subject: [PATCH 1/3] bpo-35293: Remove RemovedInSphinx40Warning
+
+---
+ Doc/tools/extensions/pyspecific.py            | 40 ++++++++++++-------
+ .../2020-09-12-17-37-13.bpo-35293._cOwPD.rst  |  1 +
+ 2 files changed, 26 insertions(+), 15 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Documentation/2020-09-12-17-37-13.bpo-35293._cOwPD.rst
+
+Index: Python-3.6.13/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.6.13.orig/Doc/tools/extensions/pyspecific.py
++++ Python-3.6.13/Doc/tools/extensions/pyspecific.py
+@@ -27,7 +27,12 @@ from sphinx.util.nodes import split_expl
+ from sphinx.writers.html import HTMLTranslator
+ from sphinx.writers.text import TextWriter, TextTranslator
+ from sphinx.writers.latex import LaTeXTranslator
+-from sphinx.domains.python import PyModulelevel, PyClassmember
++
++try:
++    from sphinx.domains.python import PyFunction, PyMethod
++except ImportError:
++    from sphinx.domains.python import PyClassmember as PyMethod
++    from sphinx.domains.python import PyModulelevel as PyFunction
+ 
+ # Support for checking for suspicious markup
+ 
+@@ -142,17 +147,18 @@ class PyDecoratorMixin(object):
+         return False
+ 
+ 
+-class PyDecoratorFunction(PyDecoratorMixin, PyModulelevel):
++class PyDecoratorFunction(PyDecoratorMixin, PyFunction):
+     def run(self):
+         # a decorator function is a function after all
+         self.name = 'py:function'
+-        return PyModulelevel.run(self)
++        return PyFunction.run(self)
+ 
+ 
+-class PyDecoratorMethod(PyDecoratorMixin, PyClassmember):
++# TODO: Use sphinx.domains.python.PyDecoratorMethod when possible
++class PyDecoratorMethod(PyDecoratorMixin, PyMethod):
+     def run(self):
+         self.name = 'py:method'
+-        return PyClassmember.run(self)
++        return PyMethod.run(self)
+ 
+ 
+ class PyCoroutineMixin(object):
+@@ -162,19 +168,19 @@ class PyCoroutineMixin(object):
+         return ret
+ 
+ 
+-class PyCoroutineFunction(PyCoroutineMixin, PyModulelevel):
++class PyCoroutineFunction(PyCoroutineMixin, PyFunction):
+     def run(self):
+         self.name = 'py:function'
+-        return PyModulelevel.run(self)
++        return PyFunction.run(self)
+ 
+ 
+-class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
++class PyCoroutineMethod(PyCoroutineMixin, PyMethod):
+     def run(self):
+         self.name = 'py:method'
+-        return PyClassmember.run(self)
++        return PyMethod.run(self)
+ 
+ 
+-class PyAbstractMethod(PyClassmember):
++class PyAbstractMethod(PyMethod):
+ 
+     def handle_signature(self, sig, signode):
+         ret = super(PyAbstractMethod, self).handle_signature(sig, signode)
+@@ -184,7 +190,7 @@ class PyAbstractMethod(PyClassmember):
+ 
+     def run(self):
+         self.name = 'py:method'
+-        return PyClassmember.run(self)
++        return PyMethod.run(self)
+ 
+ 
+ # Support for documenting version of removal in deprecations
+Index: Python-3.6.13/Misc/NEWS.d/next/Documentation/2020-09-12-17-37-13.bpo-35293._cOwPD.rst
+===================================================================
+--- /dev/null
++++ Python-3.6.13/Misc/NEWS.d/next/Documentation/2020-09-12-17-37-13.bpo-35293._cOwPD.rst
+@@ -0,0 +1 @@
++Fix RemovedInSphinx40Warning when building the documentation. Patch by Dong-hee Na.
