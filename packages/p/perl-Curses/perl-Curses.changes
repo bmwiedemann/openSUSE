@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  9 11:29:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Build and link against ncurses version 5 to fix missing exported
+  symbols [bsc#1119646]
+
+-------------------------------------------------------------------
+Wed Jun  9 10:24:55 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with support for MENUS, PANELS and FORMS
+- Fix perl script interpreters
+
+-------------------------------------------------------------------
 Sun Oct 18 12:05:33 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 1.37
