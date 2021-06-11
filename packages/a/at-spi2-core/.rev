@@ -1530,4 +1530,12 @@
     <comment>- Update to version 2.40.1 (forwarded request 889838 from mgorse)</comment>
     <requestid>890091</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3270d0a4c5d59eaa298483aee2b6b01f</srcmd5>
+    <version>2.40.2</version>
+    <time>1623443427</time>
+    <user>dimstar_suse</user>
+    <comment>New version (forwarded request 897882 from iznogood)</comment>
+    <requestid>898029</requestid>
+  </revision>
 </revisionlist>
