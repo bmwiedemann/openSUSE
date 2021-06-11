@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:58:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.3:
+  * Release note for 1.9.3 type annotations
+  * Additional improvements to response matching type stubs
+  * Improve MockerCore type stubs
+
+-------------------------------------------------------------------
 Tue May 18 21:08:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.2:

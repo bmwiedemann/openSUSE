@@ -217,4 +217,15 @@
   * fix: \`session\` and \`real\_http\` cannot be used at the same time</comment>
     <requestid>894157</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>679c7f196aa54c195df024a7996784ef</srcmd5>
+    <version>1.9.3</version>
+    <time>1623443414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.3:
+  * Release note for 1.9.3 type annotations
+  * Additional improvements to response matching type stubs
+  * Improve MockerCore type stubs</comment>
+    <requestid>897834</requestid>
+  </revision>
 </revisionlist>

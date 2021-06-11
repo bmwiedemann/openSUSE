@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-mock
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Module to mock out responses from the requests package
 License:        Apache-2.0
