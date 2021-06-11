@@ -1,0 +1,5 @@
+<package name="libphdi" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:forensics" package="libphdi"/>
+</package>
