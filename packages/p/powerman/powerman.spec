@@ -1,7 +1,7 @@
 #
 # spec file for package powerman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,15 +30,16 @@
 %endif
 
 Name:           powerman
-Version:        2.3.24
+Version:        2.3.26
 Release:        0
 Summary:        Centralized Power Control for Clusters
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/chaos/powerman
+URL:            https://github.com/chaos/powerman
 Source0:        https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch1:         service-dynamic-user-autofiles.patch
 Patch2:         service-dynamic-user-configure.patch
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
@@ -97,8 +98,8 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{__mkdir} -p %{buildroot}%{_tmpfilesdir}
-cat >> %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
-d /var/run/powerman 0755 %{powerman_u} %{powerman_g} -
+cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
+d /run/powerman 0755 %{powerman_u} %{powerman_g} -
 EOF
 mv %{buildroot}%{_sysconfdir}/powerman/powerman.conf.example %{buildroot}%{_sysconfdir}/powerman/powerman.conf
 rm -r %{buildroot}%{_libdir}/stonith

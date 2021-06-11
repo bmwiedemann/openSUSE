@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 13 07:54:21 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.3.26
+  * Log power state changes to syslog (Olaf Faaland, PR #37)
+  * Fix default systemd unit file path for 'make distcheck'
+  * Add etc/rancid-cisco-poe.dev (Daniel Rich, PR #28)
+  * Add etc/openbmc.dev (Albert Chu, PR #33)
+  * Add etc/kvm.dev & etc/kvm-ssh.dev (tisbeok, PR #8)
+  * Fix misinterpretation of error strings in ipmipower.dev.
+- fix [bsc#1185180] -- PIDFile under /run
+- modified patches
+  % service-dynamic-user-autofiles.patch (refreshed)
+  % service-dynamic-user-configure.patch (refreshed)
+
+-------------------------------------------------------------------
 Wed Apr 25 09:48:37 UTC 2018 - eich@suse.com
 
 - For SLE-12 set user/group to daemon/root for backward
