@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 30 16:43:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Wed May  5 06:15:46 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Correct the required versions for the perl modules for biber (boo#1185600) 

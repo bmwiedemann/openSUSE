@@ -84,6 +84,8 @@ PreReq:         sed
 #!BuildIgnore:  %{name}-kpathsea
 #!BuildIgnore:  %{name}-scripts-bin
 #!BuildIgnore:  %{name}-scripts
+Requires(pre):  user(mktex)
+Requires(pre):  group(mktex)
 Requires(post): coreutils
 Requires(postun):coreutils
 Requires(posttrans):coreutils
@@ -1500,8 +1502,8 @@ Summary:        Binary files of kpathsea
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  %{name}-filesystem >= %{texlive_version}
-Requires(pre):  /usr/bin/getent
-Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  user(mktex)
+Requires(pre):  group(mktex)
 Requires(post): %{name}-filesystem
 Requires(post): permissions
 Requires:       %{name}-gsftopk-bin
@@ -4468,18 +4470,10 @@ rm -vf %{buildroot}%{_bindir}/ebong
 %verify_permissions -e %{_libexecdir}/mktex/public
 %endif
 
-%pre kpathsea-bin
-%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
-%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
-
 %post kpathsea-bin
 %if %{defined set_permissions}
 %set_permissions %{_libexecdir}/mktex/public
 %endif
-
-%pre
-%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
-%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 
 %post
 mkdir -p /var/run/texlive
