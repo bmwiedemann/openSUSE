@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Jun  7 08:09:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  Bug Fixes
+  * Exclude plugins and tests_isolated directories from tarball
+    published to PyPI for cmd2 release
+- Update to version 2.0.0
+  Bug Fixes
+  * Fixed issue where history indexes could get repeated
+  * Fixed issue where TableCreator was tossing blank last line
+  * Corrected help text for alias command
+  Breaking Changes
+  * cmd2 2.0 supports Python 3.6+ (removed support for Python 3.5)
+  * Argparse Completion / Settables
+    + Replaced choices_function / choices_method with
+      choices_provider.
+    + Replaced completer_function / completer_method with completer.
+    + ArgparseCompleter now always passes cmd2.Cmd or CommandSet
+      instance as the first positional
+    + argument to choices_provider and completer functions.
+  * Moved basic_complete from utils into cmd2.Cmd class.
+  * Moved CompletionError to exceptions.py
+  * Namespace.__statement__ has been removed.
+    Use Namespace.cmd2_statement.get() instead.
+  * Removed --silent flag from alias/macro create since startup
+    scripts can be run silently.
+  * Removed --with_silent flag from alias/macro list since startup
+    scripts can be run silently.
+  * Removed with_argparser_and_unknown_args since it was deprecated
+    in 1.3.0.
+  * Renamed silent_startup_script to silence_startup_script for
+    clarity.
+  * Replaced cmd2.Cmd.completion_header with
+    cmd2.Cmd.formatted_completions.
+  * Settables now have new initialization parameters. It is now a
+    required parameter to supply the reference to the object that
+    holds the settable attribute. cmd2.Cmd.settables is no longer a
+    public dict attribute - it is now a property that aggregates
+    all Settables across all registered CommandSets.
+  * Failed transcript testing now sets self.exit_code to 1 instead
+    of -1.
+  * Renamed use_ipython keyword parameter of cmd2.Cmd.__init__() to
+    include_ipy.
+  * ipy command is only enabled if include_py parameter is True.
+  * Removed ability to run Python commands from the command line
+    with py. Now py takes no arguments and just opens an
+    interactive Python shell.
+  * Changed default behavior of runcmds_plus_hooks() to not stop
+    when Ctrl-C is pressed and instead run the next command in its
+    list.
+  * Removed cmd2.Cmd.quit_on_sigint flag, which when True, quit
+    the application when Ctrl-C was pressed at the prompt.
+  * The history bug fix resulted in structure changes to the
+    classes in cmd2.history. Therefore, persistent history files
+    created with versions older than 2.0.0 are not compatible.
+  Enhancements
+  * Added support for custom tab completion and up-arrow input
+    history to cmd2.Cmd2.read_input.
+  * Added cmd2.exceptions.PassThroughException to raise unhandled
+    command exceptions instead of printing them.
+  * Added support for ANSI styles and newlines in tab completion
+    results using cmd2.Cmd.formatted_completions.
+  * cmd2 provides this capability automatically if you return
+    argparse completion matches as CompletionItems.
+  * Settables enhancements:
+    + Settables may be optionally scoped to a CommandSet.
+    + Settables added to CommandSets will appear when a CommandSet
+      is registered and disappear when a CommandSet is
+      unregistered. Optionally, scoped Settables may have a
+      prepended prefix.
+    + Settables now allow changes to be applied to any arbitrary
+      object attribute. It no longer needs to match an
+    + attribute added to the cmd2 instance itself.
+    + Raising SystemExit or calling sys.exit() in a command or hook
+      function will set self.exit_code to the exit code used in
+      those calls. It will also result in the command loop stopping.
+    + ipy command now includes all of self.py_locals in the
+      IPython environment
+    + Added include_py keyword parameter to cmd2.Cmd.__init__().
+      If False, then the py command will not be available. Defaults
+      to False. run_pyscript is not affected by this parameter.
+    + Made the amount of space between columns in a SimpleTable
+      configurable On POSIX systems, shell commands and processes
+      being piped to are now run in the user's preferred shell
+      instead of /bin/sh. The preferred shell is obtained by
+      reading the SHELL environment variable. If that doesn't
+      exist or is empty, then /bin/sh is used.
+    + Changed cmd2.Cmd._run_editor() to the public method
+      cmd2.Cmd.run_editor()
+
+-------------------------------------------------------------------
 Sun Apr 25 13:46:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.0

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        1.5.0
+Version:        2.0.1
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -46,6 +46,7 @@ BuildRequires:  %{python_module attrs >= 16.3.0}
 BuildRequires:  %{python_module colorama >= 0.3.7}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyperclip >= 1.6}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
