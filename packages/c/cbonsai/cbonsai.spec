@@ -1,6 +1,7 @@
 #
 # spec file for package cbonsai
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           cbonsai
-Version:        1.0.4
+Version:        1.2.0
 Release:        0
 Summary:        A bonsai tree generator for your terminal
 License:        GPL-3.0-or-later
@@ -36,7 +37,6 @@ configurable via CLI options.
 %setup -q -n %{name}-v%{version}
 
 %build
-export CFLAGS="%{optflags} $(pkg-config --cflags ncurses)"
 %make_build
 
 %install
