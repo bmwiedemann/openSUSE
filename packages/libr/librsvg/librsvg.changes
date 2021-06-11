@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:55:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.7:
+  + Two cairo-related bug fixes:
+    - glgo#GNOME/librsvg#745: Fix mismatched cairo_save/restore
+      when running in inside the Cairo test suite.
+    - glgo#GNOME/librsvg#746: Possible cairo_save() without
+      cairo_restore() in render_layer().
+
+-------------------------------------------------------------------
 Thu May 27 14:03:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.6:

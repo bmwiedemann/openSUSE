@@ -883,4 +883,17 @@
     are made out of a single Arc command. (forwarded request 895779 from iznogood)</comment>
     <requestid>895942</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>090c3eccd4f3b9627f511ce8c59473ae</srcmd5>
+    <version>2.50.7</version>
+    <time>1623443424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.50.7:
+  + Two cairo-related bug fixes:
+    - glgo#GNOME/librsvg#745: Fix mismatched cairo_save/restore
+      when running in inside the Cairo test suite.
+    - glgo#GNOME/librsvg#746: Possible cairo_save() without
+      cairo_restore() in render_layer(). (forwarded request 897672 from iznogood)</comment>
+    <requestid>898026</requestid>
+  </revision>
 </revisionlist>
