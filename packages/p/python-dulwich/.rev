@@ -467,4 +467,32 @@
  * Support fetching symrefs.</comment>
     <requestid>894165</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ae590b91a9f3fcecdb9a0939cd5d6a22</srcmd5>
+    <version>0.20.23</version>
+    <time>1623443418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.23:
+  * Fix installation of GPG during package publishing.
+  * Prevent removal of refs directory when the last ref is
+    deleted.
+  * Fix filename: MERGE_HEADS =&gt; MERGE_HEAD.
+  * For ignored directories, porcelain.add and porcelain.status now only return
+    the path to directory itself in the list of ignored paths. Previously, paths
+    for all files within the directory would also be included in the list.
+  * Provide depth argument to ``determine_wants``.
+  * Various tag signature handling improvements.
+  * Add separate Tag.verify().  (Peter Rowlands)
+  * Add support for version 3 index files. (Jelmer Vernooĳ)
+  * Fix autocrlf=input handling. (Peter Rowlands, Boris Feld)
+  * Attempt to find C Git global config on Windows.
+  * The APIs for writing and reading individual index entries have changed
+    to handle lists of (name, entry) tuples rather than tuples.
+
+  * Add basic support for a GcsObjectStore that stores
+    pack files in gcs.
+  * In porcelain.push, default to local active branch.
+  * Support fetching symrefs.</comment>
+    <requestid>897849</requestid>
+  </revision>
 </revisionlist>
