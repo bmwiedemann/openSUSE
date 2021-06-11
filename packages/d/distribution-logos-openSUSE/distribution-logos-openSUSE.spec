@@ -2,7 +2,7 @@
 # spec file for package distribution-logos-openSUSE
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2020 Stasiek Michalski <hellcp@opensuse.org>.
+# Copyright (c) 2021 Sasi Olin <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Release:        0
 Url:            https://github.com/openSUSE/distribution-logos
 Source:         distribution-logos-master.zip
 BuildRequires:  unzip
+BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
 
 %description
@@ -88,6 +89,20 @@ Logos for openSUSE MicroOS
 
 %endif
 
+%package icons
+Summary:        Icons with distribution logos
+
+Requires:       distribution-logos
+Provides:       systemd-icon-branding
+Obsoletes:      systemd-icon-branding-openSUSE < 20200107
+Provides:       systemd-icon-branding-openSUSE = 20200107
+Conflicts:      systemd-icon-branding-openSUSE
+
+BuildArch:      noarch
+
+%description icons
+Icons with openSUSE distribution logos.
+
 %prep
 %setup -qn distribution-logos-master
 
@@ -95,16 +110,22 @@ Logos for openSUSE MicroOS
 # Skip build
 
 %install
+export NO_BRP_STALE_LINK_ERROR=yes
+mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
 %if 0%{?sle_version}
 for distro in Leap; do \
 %else
 for distro in Tumbleweed Kubic MicroOS; do \
 %endif
-mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos; \
 for file in `ls ${distro}`; do \
 cp -r ${distro}/${file} %{buildroot}%{_datadir}/pixmaps/distribution-logos/${file}.${distro}; \
 done; \
-done \
+cp -r ${distro}/square-hicolor.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/distributor-logo-${distro}.svg; \
+cp -r ${distro}/square-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/distributor-logo-${distro}-symbolic.svg; \
+done
+ln -sf %{_datadir}/pixmaps/distribution-logos/square-hicolor.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/distributor-logo.svg
+ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/distributor-logo-symbolic.svg
 
 %files
 %dir %{_datadir}/pixmaps/distribution-logos
@@ -126,5 +147,8 @@ done \
 %{_datadir}/pixmaps/distribution-logos/*.MicroOS
 
 %endif
+
+%files icons
+%{_datadir}/icons/hicolor/*
 
 %changelog

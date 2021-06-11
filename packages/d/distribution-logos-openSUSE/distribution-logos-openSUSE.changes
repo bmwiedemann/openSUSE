@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  6 16:37:14 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Add icons package to handle systemd branding better
+
+-------------------------------------------------------------------
 Sat Jan  2 11:06:52 UTC 2021 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Only build Leap subpackage on Leap base and Tumbleweed based
