@@ -16,17 +16,15 @@
 #
 
 
+%define keydir  %{_prefix}/lib/rpm/gnupg/keys/
+%define containerkeydir  %{_datadir}/container-keys/
 Name:           openSUSE-build-key
-BuildRequires:  gpg
-Provides:       build-key
-Conflicts:      suse-build-key
-Requires:       gpg
-AutoReqProv:    off
+Version:        1.0
+Release:        0
 Summary:        The public gpg keys for rpm package signature verification
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.0
-Release:        0
+URL:            https://en.opensuse.org/openSUSE:Security_team
 # build@suse.de for SLE11
 Source0:        gpg-pubkey-307e3d54-5aaa90a5.asc
 # opensuse@opensuse.org
@@ -43,11 +41,13 @@ Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
 Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
 # Container key SUSE Linux Enterprise
 Source8:        build-container-d4ade9c3-5a2e9669.asc
+# openSUSE Backports key (previously PackageHub, now also Leap 15.3)
+Source9:        gpg-pubkey-65176565-5d94a381.asc
 Source98:       security_at_suse_de.asc
 Source99:       security_at_suse_de_old.asc
-Source100:      dumpsigs
-%define keydir  %{_prefix}/lib/rpm/gnupg/keys/
-%define containerkeydir  %{_prefix}/share/container-keys/
+BuildRequires:  gpg
+Conflicts:      suse-build-key
+Provides:       build-key = %{version}
 
 %description
 This package contains the gpg keys that are used to sign the
@@ -58,43 +58,40 @@ used by anything. rpm/zypper use the keys in the rpm db instead.
 %setup -qcT
 
 %build
-cp %SOURCE98 .
-cp %SOURCE99 .
+cp %{SOURCE98} .
+cp %{SOURCE99} .
 %ifarch riscv64
-cp %SOURCE3 .
+cp %{SOURCE3} .
 %endif
 %ifarch s390 s390x
-cp %SOURCE5 .
+cp %{SOURCE5} .
 %endif
 %ifarch ppc ppc64 ppc64le
-cp %SOURCE6 .
+cp %{SOURCE6} .
 %endif
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{keydir}
-for i in %{S:0} %{S:1} %{S:2} \
+mkdir -p %{buildroot}%{keydir}
+for i in %{SOURCE0} %{SOURCE1} %{SOURCE2} %{SOURCE9} \
 %ifarch riscv64
-%{S:3} \
+%{SOURCE3} \
 %endif
 %ifarch s390 s390x
-%{S:5} \
+%{SOURCE5} \
 %endif
 %ifarch ppc ppc64 ppc64le
-%{S:6} \
+%{SOURCE6} \
 %endif
 ; do
     case "$i" in
 	*/gpg-pubkey-*.asc)
-	install -m 644 "$i" $RPM_BUILD_ROOT%{keydir}
+	install -m 644 "$i" %{buildroot}%{keydir}
 	;;
     esac
 done
-install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
-
-mkdir -p $RPM_BUILD_ROOT%{containerkeydir}/
-install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/opensuse-container-key.asc
-install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
+mkdir -p %{buildroot}%{containerkeydir}/
+install -c -m 644 %{SOURCE7} %{buildroot}%{containerkeydir}/opensuse-container-key.asc
+install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.asc
 
 %files
 %defattr(644,root,root)
@@ -102,10 +99,10 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-ke
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
 %attr(755,root,root) %dir %{containerkeydir}
-%attr(755,root,root) %{_prefix}/lib/rpm/gnupg/dumpsigs
 %{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
+%{keydir}/gpg-pubkey-65176565-5d94a381.asc
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
 %ifarch riscv64

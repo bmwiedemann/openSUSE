@@ -259,4 +259,15 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment>- fixed s390x key install (bsc#1185245)</comment>
     <requestid>888173</requestid>
   </revision>
+  <revision rev="31" vrev="40">
+    <srcmd5>297b799bfc9d83d937ce10de5935d5af</srcmd5>
+    <version>1.0</version>
+    <time>1623443436</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dumpsigs, unused since SLE12+ (rpm 4.x) (bsc#1186827)
+
+- add URL
+- spec-cleaner run (forwarded request 899435 from dirkmueller)</comment>
+    <requestid>899447</requestid>
+  </revision>
 </revisionlist>

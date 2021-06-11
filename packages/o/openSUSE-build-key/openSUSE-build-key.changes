@@ -1,7 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 11 09:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove dumpsigs, unused since SLE12+ (rpm 4.x) (bsc#1186827)
+
+-------------------------------------------------------------------
+Fri Jun 11 09:40:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add URL
+- spec-cleaner run 
+
+-------------------------------------------------------------------
+Sat Jun  5 12:21:52 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Merge changes from openSUSE Leap 15.3 for rpm-repos-openSUSE (boo#1186593)
+
+-------------------------------------------------------------------
+Fri May 21 20:17:19 UTC 2021 - Yuchen Lin <mlin+factory@suse.de>
+
+- Refresh the SLE15 build@suse.de key
+  * Updated gpg-pubkey-39db7c82-5847eb1f.asc
+
+-------------------------------------------------------------------
 Sat Apr 24 09:33:04 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - fixed s390x key install (bsc#1185245)
+
+-------------------------------------------------------------------
+Thu Jan 28 15:19:48 UTC 2021 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add openSUSE Backports key to openSUSE Leap (bsc#1181344)
+  This is needed because most of Leap 15.3+ packages are in fact
+  build in openSUSE Backport (Closing The Leap Gap)
 
 -------------------------------------------------------------------
 Fri Jan  8 17:21:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
