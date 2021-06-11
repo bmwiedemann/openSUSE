@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libvsgpt</param>
+		<param name="revision">adcd7c802752d13cae22cdc63974fef7af0113d1</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210508</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
