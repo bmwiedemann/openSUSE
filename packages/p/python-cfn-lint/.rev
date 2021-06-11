@@ -95,4 +95,19 @@
     for changes since 0.44.5</comment>
     <requestid>894585</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>307dcb1e5233ed77f2da62af71d9b27a</srcmd5>
+    <version>0.50.0</version>
+    <time>1623443437</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.50.0:
+  * Update rule E2507 to validate resource configuration in an IAM policy
+  * Update aws-sam-translator to 1.36.0
+  * Update resource specs to 37.1.0
+  * Update Lambda EOL for dotnetcore2.1
+  * UPdate Lambda EOL for nodejs10.x and ruby2.5
+  * Fix an issue with rule E7003 when a Fn::Transform was in a mapping
+  * Fix an issue when finding duplicate keys where the 2nd error wasn't to the key</comment>
+    <requestid>898995</requestid>
+  </revision>
 </revisionlist>

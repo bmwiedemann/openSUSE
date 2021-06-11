@@ -17,11 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
 %define skip_python2 1
-%endif
+%define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.48.1
+Version:        0.50.0
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -31,8 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python-PyYAML
-Requires:       python-aws-sam-translator >= 1.34.0
+Requires:       python-PyYAML >= 5.4
+Requires:       python-aws-sam-translator >= 1.36.0
 Requires:       python-jsonpatch
 Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
@@ -45,6 +44,7 @@ Requires:       python-pathlib2 >= 2.3.0
 Requires:       python-pyrsistent <= 0.16.0
 %else
 Requires:       python-networkx >= 2.4
+Requires:       python-numpy
 %if %{python_version_nodots} < 37
 Requires:       python-importlib_resources >= 1.4
 %endif
@@ -60,13 +60,14 @@ BuildArch:      noarch
 BuildRequires:  python
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module aws-sam-translator >= 1.34.0}
+BuildRequires:  %{python_module PyYAML >= 5.4}
+BuildRequires:  %{python_module aws-sam-translator >= 1.36.0}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0}
 BuildRequires:  %{python_module junit-xml >= 1.9}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module networkx >= 2.2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module requests >= 2.15.0}
 BuildRequires:  %{python_module six >= 1.11}
