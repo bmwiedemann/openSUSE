@@ -864,4 +864,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
 - Rebase fix-application-output.patch (forwarded request 892673 from cgiboudeaux)</comment>
     <requestid>895155</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ccad89eaea2530fd534c569539a1aedd</srcmd5>
+    <version>4.15.1</version>
+    <time>1623443445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899380</requestid>
+  </revision>
 </revisionlist>
