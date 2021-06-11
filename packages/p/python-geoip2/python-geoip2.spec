@@ -1,7 +1,7 @@
 #
 # spec file for package python-geoip2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-geoip2
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module maxminddb >= 2.0.0}
-BuildRequires:  %{python_module mocket >= 3.8.6}
+BuildRequires:  %{python_module mocket >= 3.8.9}
 BuildRequires:  %{python_module python-magic >= 0.4.18}
 BuildRequires:  %{python_module requests >= 2.24.0}
 # /SECTION
