@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libbfoverlay</param>
+		<param name="revision">b0637a4344d39ad6f8877c7788abfde9eeb0939d</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210416</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
