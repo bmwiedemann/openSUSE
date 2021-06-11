@@ -1,3 +1,4 @@
+#
 # spec file for package afterburn
 #
 # Copyright (c) 2021 SUSE LLC
@@ -14,25 +15,39 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global rustflags -Clink-arg=-Wl,-z,relro,-z,now
-Name:       afterburn
-Version:    5.0.0
-Release:    0
-Summary:    A cloud provider agent
-License:    Apache-2.0
-URL:        https://coreos.github.io/afterburn/
-Source0:    https://github.com/coreos/afterburn/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:    https://github.com/coreos/afterburn/releases/download/v%{version}/afterburn-%{version}-vendor.tar.gz
-Source2:    cargo_config
 
-ExcludeArch: %ix86 s390x ppc64le armhfp armv7hl
+%global rustflags -Clink-arg=-Wl,-z,relro,-z,now
+
+%global dracutmodulesdir %(pkg-config --variable=dracutmodulesdir dracut || echo '/usr/lib/dracut/modules.d')
+
+Name:           afterburn
+Version:        5.0.0
+Release:        0
+Summary:        A cloud provider agent
+License:        Apache-2.0
+URL:            https://coreos.github.io/afterburn/
+Source0:        https://github.com/coreos/afterburn/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/coreos/afterburn/releases/download/v%{version}/afterburn-%{version}-vendor.tar.gz
+Source2:        cargo_config
+
+ExcludeArch:    %ix86 s390x ppc64le armhfp armv7hl
 
 BuildRequires:  cargo
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  rust >= 1.44.0
+BuildRequires:  pkgconfig(openssl)
 
 %description
 Afterburn is a one-shot agent for cloud-like platforms which interacts with provider-specific metadata endpoints.
+
+%package dracut
+Summary:        Dracut modules for afterburn
+BuildRequires:  pkgconfig(dracut)
+Requires:       %{name}%{?_isa} = %{?epoch:}%{version}-%{release}
+Requires:       dracut
+
+%description dracut
+Dracut module that enables afterburn and corresponding services
+to run in the initramfs on boot.
 
 %prep
 %autosetup -p1 -a1
@@ -56,6 +71,8 @@ install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-firstboot-checki
 sed -e 's,@DEFAULT_INSTANCE@,'core',' < systemd/%{name}-sshkeys@.service.in > systemd/%{name}-sshkeys@.service.tmp
 mv systemd/%{name}-sshkeys@.service.tmp systemd/%{name}-sshkeys@.service
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys@.service %{buildroot}%{_unitdir}/%{name}-sshkeys@.service 
+mkdir -p %{buildroot}%{dracutmodulesdir}
+cp -a dracut/* %{buildroot}%{dracutmodulesdir}
 
 %pre
 %service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
@@ -77,5 +94,8 @@ install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys@.service
 %{_unitdir}/afterburn-checkin.service
 %{_unitdir}/afterburn-firstboot-checkin.service
 %{_unitdir}/afterburn-sshkeys@.service
+
+%files dracut
+%{dracutmodulesdir}/30afterburn/
 
 %changelog
