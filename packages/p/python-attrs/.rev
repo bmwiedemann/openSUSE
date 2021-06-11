@@ -152,4 +152,12 @@
   - ``attr.define()``, ``attr.frozen()``, ``attr.mutable()``, and ``attr.field()`` remain **provisional**.</comment>
     <requestid>850938</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1a2d57a79a9d2daf79cad5c6b44eabaa</srcmd5>
+    <version>21.2.0</version>
+    <time>1623443392</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897252</requestid>
+  </revision>
 </revisionlist>
