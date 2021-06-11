@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  6 16:13:17 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.7:
+  + Fix build with -Wformat-security=error
+  + Bump required GLib version to 2.66
+  + Fix some introspection annotations
+  + Add missing varargs functions to vapi
+  + Revert fix from 1.2.5 which causes managed control points to
+    live too long
+
+-------------------------------------------------------------------
 Tue Jun  1 01:19:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.6
