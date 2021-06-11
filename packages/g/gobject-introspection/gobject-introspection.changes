@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 13:38:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- gi-find-deps.sh: on Tumbleweed, HOSTTYPE on ppc64/ppc64le reports
+  powerpc64 and powerpc64le: accept those strings as 64bit archs.
+
+-------------------------------------------------------------------
 Sat Mar 20 07:07:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.68.0:

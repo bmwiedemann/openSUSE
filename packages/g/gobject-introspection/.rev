@@ -749,4 +749,13 @@
     <comment>GNOME 40 - here we come (forwarded request 880979 from dimstar)</comment>
     <requestid>881148</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>8682fa88d83ce6d2b48aeb2d58881317</srcmd5>
+    <version>1.68.0</version>
+    <time>1623443435</time>
+    <user>dimstar_suse</user>
+    <comment>- gi-find-deps.sh: on Tumbleweed, HOSTTYPE on ppc64/ppc64le reports
+  powerpc64 and powerpc64le: accept those strings as 64bit archs. (forwarded request 898450 from dimstar)</comment>
+    <requestid>898497</requestid>
+  </revision>
 </revisionlist>

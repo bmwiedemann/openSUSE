@@ -233,7 +233,7 @@ function inList() {
   return 1
 }
 
-x64bitarch="x86_64 ppc64 ppc64le s390x ia64 aarch64 riscv64"
+x64bitarch="x86_64 ppc64 powerpc64 ppc64le powerpc64le s390x ia64 aarch64 riscv64"
 
 for path in \
 	$(for tlpath in \
