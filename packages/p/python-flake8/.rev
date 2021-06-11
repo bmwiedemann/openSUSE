@@ -327,4 +327,15 @@
     <comment></comment>
     <requestid>879751</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4b40a71ba671f1ea0968a4e85b7d21b5</srcmd5>
+    <version>3.9.2</version>
+    <time>1623443418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.2:
+  * Fix codes being ignored by plugins utilizing ``extend_default_ignore``
+  * Fix error message for ``E111`` in ``pycodestyle``
+  *  ``indent_size_str`` is deprecated, use ``str(indent_size)`` instead</comment>
+    <requestid>897850</requestid>
+  </revision>
 </revisionlist>

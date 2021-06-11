@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:34:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.2:
+  * Fix codes being ignored by plugins utilizing ``extend_default_ignore``
+  * Fix error message for ``E111`` in ``pycodestyle``
+  *  ``indent_size_str`` is deprecated, use ``str(indent_size)`` instead
+
+-------------------------------------------------------------------
 Tue Mar 16 23:05:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.9.0

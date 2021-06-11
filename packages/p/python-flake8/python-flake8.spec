@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.9.0
+Version:        3.9.2
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-pycodestyle >= 2.7.0
 Requires:       python-pyflakes >= 2.3.0
 Requires:       python-typing
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
