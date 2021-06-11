@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  7 19:30:20 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- move Requires: python3 back to the python3-apparmor subpackage -
+  readline usage is in the python modules, not in apparmor-utils
+
+-------------------------------------------------------------------
+Tue May 25 07:35:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove python symbols (python means currently python2), work
+  only with python3 ones (fallout from bsc#1185588).
+
+-------------------------------------------------------------------
 Fri May 21 20:59:49 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add abstractions-php8.diff to support PHP8 in abstractions/php (boo#1186267)

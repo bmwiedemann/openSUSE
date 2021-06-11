@@ -81,7 +81,7 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # allow reading crypto policies (submitted upstream 2021-03-08 - https://gitlab.com/apparmor/apparmor/-/merge_requests/720)
 Patch7:         crypto-policies-mr720.diff
 
-# extend abstractions/php for PHP 8 (submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/755)
+# extend abstractions/php for PHP 8 (accepted upstream 2021-05-24 - https://gitlab.com/apparmor/apparmor/-/merge_requests/755)
 Patch8:         abstractions-php8.diff
 
 PreReq:         sed
@@ -202,9 +202,8 @@ Summary:        Python 3 interface for libapparmor functions
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 Requires:       libapparmor1 = %{version}
-Requires:       python = %{py3_ver}
+Requires:       python3
 Requires:       python(abi) = %{py3_ver}
-Provides:       python-libapparmor = %{version}
 
 %description -n python3-apparmor
 This package provides the python interface to AppArmor. It is used for python
