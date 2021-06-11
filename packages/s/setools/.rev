@@ -325,4 +325,12 @@
     <comment>big toolchain update, please stage together. so versions change, so this has high potential to break stuff. Probably best to stage it isolated</comment>
     <requestid>878583</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5912f32d5297edb9319e9fa9f302d8d2</srcmd5>
+    <version>4.4.0</version>
+    <time>1623443397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898578</requestid>
+  </revision>
 </revisionlist>

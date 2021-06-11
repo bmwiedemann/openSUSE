@@ -38,7 +38,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.4
 BuildRequires:  python3-setuptools
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
@@ -72,7 +72,7 @@ This package includes the following console tools:
 Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
-Requires:       python
+Requires:       python3 >= 3.4
 Requires:       python3-networkx
 Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}

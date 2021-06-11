@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:10:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency of python3-setools: require python3, not python
+  (which is python2).
+
+-------------------------------------------------------------------
 Tue Mar  9 09:24:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to the version 4.4.0:
@@ -9,13 +15,13 @@ Tue Mar  9 09:24:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 Tue Nov  3 17:56:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Stay on a single python3 flavor even if there are more than one
-  gh#openSUSE/python-rpm-macros#73 
+  gh#openSUSE/python-rpm-macros#73
 
 -------------------------------------------------------------------
 Wed Oct 21 07:29:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Cleanup BuildRequires
-- Fix setools-gui dependencies, we are using python-qt5 and not 
+- Fix setools-gui dependencies, we are using python-qt5 and not
   tcl/tk
 
 -------------------------------------------------------------------
@@ -31,13 +37,13 @@ Fri Apr  3 08:45:25 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
     and run time.
   * Added infiniband context support to seinfo, sediff, and apol.
   * Added apol configuration for location of Qt assistant.
-  * Fixed sediff issue where properties header would display when not 
+  * Fixed sediff issue where properties header would display when not
     requested.
   * Fixed sediff issue with type_transition file name comparison.
   * Fixed permission map socket sendto information flow direction.
-  * Added methods to TypeAttribute class to make it a complete Python 
+  * Added methods to TypeAttribute class to make it a complete Python
     collection.
-  * Genfscon now will look up classes rather than using fixed values 
+  * Genfscon now will look up classes rather than using fixed values
     which were dropped from libsepol
 - Dropped python3.8-compat.patch
 
@@ -78,7 +84,7 @@ Fri Dec  7 15:10:14 UTC 2018 - jsegitz@suse.com
 Wed Nov 21 14:17:32 UTC 2018 - jsegitz@suse.com
 
 - Upgrade to 4.2.0
-  * Support for Python 2.7 was dropped 
+  * Support for Python 2.7 was dropped
   * Symbol names are now available as the name attribute (e.g. Boolean.name, Type.name, etc.)
   * Move constraint expression to its own class.
   * Made Conditional.evaluate() more useful and added BaseTERule.enabled() method to determine if a rule is enabled..
@@ -136,7 +142,7 @@ Mon Jun 26 16:30:02 UTC 2017 - jsegitz@suse.com
 -------------------------------------------------------------------
 Thu Aug 25 15:42:18 UTC 2016 - jsegitz@novell.com
 
-- Deleted setools-3.3.7-libselinux-2.3.patch, we have a 
+- Deleted setools-3.3.7-libselinux-2.3.patch, we have a
   current libselinux now
 
 -------------------------------------------------------------------
@@ -234,7 +240,7 @@ Wed Nov 23 09:26:22 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Thu May 26 09:30:05 UTC 2011 - idonmez@novell.com
 
-- Add setools-swig-2x.patch: correctly detect swig 2.x 
+- Add setools-swig-2x.patch: correctly detect swig 2.x
 
 -------------------------------------------------------------------
 Thu Feb 25 15:46:44 UTC 2010 - prusnak@suse.cz
