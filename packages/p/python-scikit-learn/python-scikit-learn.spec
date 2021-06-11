@@ -22,14 +22,12 @@
 %define         skip_python36 1
 %bcond_with extratest
 Name:           python-scikit-learn
-Version:        0.24.1
+Version:        0.24.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM  scikit-learn-pr19101-npfloat.patch gh#scikit-learn/scikit-learn#19101
-Patch0:         https://github.com/scikit-learn/scikit-learn/pull/19101.patch#/scikit-learn-pr19101-npfloat.patch
 BuildRequires:  %{python_module Cython >= 0.28.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module joblib >= 0.11}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  6 13:27:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.2:
+  * a lot of bugfixes see https://scikit-learn.org/stable/whats_new/v0.24.html
+- drop scikit-learn-pr19101-npfloat.patch: upstream
+
+-------------------------------------------------------------------
 Sat Feb 13 19:10:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add scikit-learn-pr19101-npfloat.patch in order to work with
