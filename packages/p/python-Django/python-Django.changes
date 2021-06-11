@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  2 10:45:01 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.4 (CVE-2021-33203, CVE-2021-33571)
+  + CVE-2021-33203: Potential directory traversal via admindocs
+  + CVE-2021-33571: Possible indeterminate SSRF, RFI, and LFI attacks
+    since validators accepted leading zeros in IPv4 addresses
+  + Fixed a bug in Django 3.2 where a final catch-all view in the
+    admin didn’t respect the server-provided value of SCRIPT_NAME when
+    redirecting unauthenticated users to the login page
+  + Fixed a bug in Django 3.2 where a system check would crash on an
+    abstract model
+  + Prevented unnecessary initialization of unused caches following a
+    regression in Django 3.2
+  + Fixed a crash in Django 3.2 that could occur when running mod_wsgi
+    with the recommended settings while the Windows colorama library
+    was installed
+  + Fixed a bug in Django 3.2 that would trigger the auto-reloader for
+    template changes when directory paths were specified with strings
+  + Fixed a regression in Django 3.2 that caused a crash of
+    auto-reloader with AttributeError, e.g. inside a Conda environment
+  + Fixed a regression in Django 3.2 that caused a loss of precision
+    for operations with DecimalField on MySQL
+
+-------------------------------------------------------------------
 Mon May 17 07:37:47 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.3
