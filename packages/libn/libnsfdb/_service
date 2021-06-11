@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libnsfdb</param>
+		<param name="revision">112d6f5c0be973b14366b694ee76b99201684149</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210419</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
