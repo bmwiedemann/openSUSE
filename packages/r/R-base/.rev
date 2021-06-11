@@ -1683,4 +1683,12 @@ CHANGES IN R 3.4.2:
       case, the default is changed to TRUE in line with its change in</comment>
     <requestid>894139</requestid>
   </revision>
+  <revision rev="80" vrev="37">
+    <srcmd5>8ce3ab5859ea68c3b118ad5a712cd8b8</srcmd5>
+    <version>unknown</version>
+    <time>1623443447</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>899423</requestid>
+  </revision>
 </revisionlist>

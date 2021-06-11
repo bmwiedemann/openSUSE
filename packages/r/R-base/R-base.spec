@@ -134,7 +134,7 @@ make DESTDIR=%{buildroot} install
 make DESTDIR=%{buildroot} install-pdf
 
 # Installation of Info-files
-%{__install} -m 755 -d %{_infodir}
+#%{__install} -m 755 -d %{_infodir}
 %if 0%{?suse_version} > 1320
 make DESTDIR=%{buildroot} INFODIR=%{buildroot}%{_infodir} install-info
 %{__rm} -f %{buildroot}%{_infodir}/dir

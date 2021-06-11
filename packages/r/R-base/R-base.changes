@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  4 07:21:23 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- The line %{__install} -m 755 -d %{_infodir}
+  no longer works in TW or Factory.
+  But without that line it works everywhere. So this instruction
+  was commented out of the spec file.
+
+-------------------------------------------------------------------
 Tue May 18 17:01:25 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.1.0:
