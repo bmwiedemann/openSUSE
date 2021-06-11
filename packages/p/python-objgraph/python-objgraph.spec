@@ -1,7 +1,7 @@
 #
 # spec file for package python-objgraph
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-objgraph
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Python module to draw object reference graphs with graphviz
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            http://mg.pov.lt/objgraph/
 Source:         https://files.pythonhosted.org/packages/source/o/objgraph/objgraph-%{version}.tar.gz
 BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  graphviz-gd
@@ -57,7 +56,7 @@ xdot can be used for interactive use.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst CHANGES.rst HACKING.rst
