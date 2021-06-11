@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon May 31 14:11:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Older systems create the group but don't add the relevant symbol
+
+-------------------------------------------------------------------
+Mon May 31 13:23:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Older systemd system requires a group as well 
+
+-------------------------------------------------------------------
+Sun May 30 16:09:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging
+
