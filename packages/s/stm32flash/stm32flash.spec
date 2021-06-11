@@ -1,7 +1,7 @@
 #
 # spec file for package stm32flash
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           stm32flash
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Flash Program for the STM32 Bootloader
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            https://sourceforge.net/p/stm32flash/wiki/Home
-Source:         %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-for-device-0x442-System-memory-start-address.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0003-dev_table-Mark-0x417-0x429-0x427-for-no-mass-erase.patch
+URL:            https://sourceforge.net/p/stm32flash/wiki/Home
+Source:         https://download.sourceforge.net/stm32flash/stm32flash-0.6.tar.gz
 # PATCH-FIX-OPENSUSE stm32flash-i2c-tools-headers-clash.patch sbrabec@suse.cz -- Prevent clash between i2c.h and i2c-dev.h defining the same.
 Patch3:         stm32flash-i2c-tools-headers-clash.patch
 BuildRequires:  i2c-tools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Open source flash program for the STM32 ARM processors using the ST
@@ -53,23 +48,21 @@ Features:
 - GPIO signalling to enter bootloader mode (hardware dependent)
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
+%setup -q
 %if 0%{?suse_version} < 1315 || 0%{?suse_version} == 1320
 %patch3 -p1
 %endif
 
 %build
-make %{?_smp_mflags} CFLAGS="-O2 %{optflags}" PREFIX=%{_prefix}
+%make_build CFLAGS="-O2 %{optflags}" PREFIX=%{_prefix}
 
 %install
 make %{?_smp_mflags} CFLAGS="-O2 %{optflags}" PREFIX=%{_prefix} DESTDIR=%{buildroot} install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS gpl-2.0.txt HOWTO I2C.txt protocol.txt TODO
-%{_bindir}/*
-%{_mandir}/man?/*.*
+%license gpl-2.0.txt
+%doc HOWTO I2C.txt protocol.txt TODO
+%{_bindir}/stm32flash
+%{_mandir}/man1/stm32flash.1*
 
 %changelog
