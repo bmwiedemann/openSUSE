@@ -250,4 +250,36 @@
     <comment></comment>
     <requestid>895353</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b48ad9c7756797d8f75be02465c04774</srcmd5>
+    <version>3.1.1</version>
+    <time>1623443423</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  * #753: Fix acceptance of valid IPv6 addresses in URI validation
+  * #730: Base OAuth2 Client now has a consistent way of managing the `scope`: it consistently
+    relies on the `scope` provided in the constructor if any, except if overridden temporarily
+    in a method call. Note that in particular providing a non-None `scope` in
+    `prepare_authorization_request` or `prepare_refresh_token` does not override anymore
+    `self.scope` forever, it is just used temporarily.
+  * #726: MobileApplicationClient.prepare_request_uri and MobileApplicationClient.parse_request_uri_response,
+    ServiceApplicationClient.prepare_request_body,
+    and WebApplicationClient.prepare_request_uri now correctly use the default `scope` provided in
+    constructor.
+  * #725: LegacyApplicationClient.prepare_request_body now correctly uses the default `scope` provided in constructor
+  * #711: client_credentials grant: fix log message
+  * #746: OpenID Connect Hybrid - fix nonce not passed to add_id_token
+  * #756: Different prompt values are now handled according to spec (e.g. prompt=none)
+  * #759: OpenID Connect - fix Authorization: Basic parsing
+  * #716: improved skeleton validator for public vs private client
+  * #720: replace mock library with standard unittest.mock
+  * #727: build isort integration
+  * #734: python2 code removal
+  * #735, #750: add python3.8 support
+  * #749: bump minimum versions of pyjwt and cryptography 
+- drop o_switch_to_unitest_mock.patch (upstream)
+ 
+</comment>
+    <requestid>897897</requestid>
+  </revision>
 </revisionlist>
