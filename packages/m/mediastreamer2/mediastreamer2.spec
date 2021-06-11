@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        4.5.15
+Version:        4.5.16
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libgsm-devel
+BuildRequires:  libjpeg-turbo >= 2.0.0
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp-devel
 BuildRequires:  libv4l-devel
@@ -62,7 +63,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
 %if 0%{?suse_version} >= 1500
-BuildRequires:  libjpeg-devel
+BuildRequires:  libjpeg-devel >= 8.2.0
 %endif
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
@@ -118,7 +119,8 @@ export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
 export CXXFLAGS="$CFLAGS"
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
-    -DENABLE_STATIC=NO
+    -DENABLE_STATIC=NO \
+    -DENABLE_STRICT=NO
 %cmake_build
 
 %install

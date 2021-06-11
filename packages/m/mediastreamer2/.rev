@@ -338,4 +338,14 @@
 </comment>
     <requestid>893048</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3dc9a9dc490ee536d8aefe165066778f</srcmd5>
+    <version>4.5.16</version>
+    <time>1623443433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.16 (no changelog)
+- Bump min requirement for libjpeg-turbo to 2.0.0
+</comment>
+    <requestid>898110</requestid>
+  </revision>
 </revisionlist>
