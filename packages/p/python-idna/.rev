@@ -119,4 +119,14 @@ update to version v2.5
     <comment></comment>
     <requestid>895758</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d600fb4dc155c532e18a283abf52b257</srcmd5>
+    <version>3.2</version>
+    <time>1623443411</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2:
+  * Add type hints (Thanks, Seth Michael Larson!)
+  * Remove support for Python 3.4</comment>
+    <requestid>897831</requestid>
+  </revision>
 </revisionlist>
