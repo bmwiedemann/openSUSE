@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaFirefox
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -32,9 +32,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          88
-%define mainver        %major.0.1
-%define orig_version   88.0.1
+%define major          89
+%define mainver        %major.0
+%define orig_version   89.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -45,13 +45,6 @@
 
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    1
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
-%ifarch x86_64
-# on Tumbleweed/x86_64 this does not work due to undefined
-#  references to `__rust_probestack'
-%define clang_build    0
-%endif
-%endif
 
 # PIE, full relro
 %define build_hardened 1
@@ -118,9 +111,9 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.30
-BuildRequires:  mozilla-nss-devel >= 3.63.1
+BuildRequires:  mozilla-nss-devel >= 3.64
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs10 >= 10.22.1
+BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 BuildRequires:  python-libxml2
 BuildRequires:  python36
@@ -129,7 +122,7 @@ BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
 BuildRequires:  rust >= 1.47
-BuildRequires:  rust-cbindgen >= 0.16.0
+BuildRequires:  rust-cbindgen >= 0.19.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -512,7 +505,7 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1

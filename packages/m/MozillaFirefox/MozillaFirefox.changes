@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat May 29 20:55:56 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 89.0
+  * UI redesign
+  * The Event Timing API is now supported
+  * The CSS forced-colors media query is now supported
+  MFSA 2021-23 (bsc#1186696)
+  * CVE-2021-29965 (bmo#1709257)
+    Password Manager on Firefox for Android susceptible to domain
+    spoofing
+  * CVE-2021-29960 (bmo#1675965)
+    Filenames printed from private browsing mode incorrectly
+    retained in preferences
+  * CVE-2021-29961 (bmo#1700235)
+    Firefox UI spoof using `<select>` elements and CSS scaling
+  * CVE-2021-29963 (bmo#1705068)
+    Shared cookies for search suggestions in private browsing mode
+  * CVE-2021-29964 (bmo#1706501)
+    Out of bounds-read when parsing a `WM_COPYDATA` message
+  * CVE-2021-29959 (bmo#1395819)
+    Devices could be re-enabled without additional permission prompt
+  * CVE-2021-29962 (bmo#1701673)
+    No rate-limiting for popups on Firefox for Android
+  * CVE-2021-29967 (bmo#1602862, bmo#1703191, bmo#1703760,
+    bmo#1704722, bmo#1706041)
+    Memory safety bugs fixed in Firefox 89 and Firefox ESR 78.11
+  * CVE-2021-29966 (bmo#1660307, bmo#1686154, bmo#1702948, bmo#1708124)
+    Memory safety bugs fixed in Firefox 89
+- require
+  NSS >= 3.64
+  rust-cbindgen >= 0.19.0
+- do not rely on nodejs10 packagename anymore
+- updated mozilla.keyring
+- switched TW/x86_64 to clang as the last platform due to
+  https://bugs.gentoo.org/792705
+- but LTO with clang is broken in TW so disable LTO for it
+  https://bugs.llvm.org/show_bug.cgi?id=47872
+
+-------------------------------------------------------------------
 Thu May  6 13:40:10 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Relax RAM and disk constraints for aarch64
