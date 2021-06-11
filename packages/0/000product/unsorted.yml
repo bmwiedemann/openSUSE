@@ -265,6 +265,7 @@ unsorted:
   - Vc-devel 
   - Vc-devel-doc 
   - Vc-devel-static 
+  - VecCore-devel 
   - ViTables 
   - VirtualGL 
   - VirtualGL-32bit: [x86_64] 
@@ -474,6 +475,7 @@ unsorted:
   - alsa-topology-devel-32bit: [x86_64] 
   - alsabat 
   - alsaequal 
+  - alts 
   - alttab 
   - alure 
   - alure-devel 
@@ -1130,8 +1132,6 @@ unsorted:
   - bazel: [x86_64] 
   - bazel-apple-support-source 
   - bazel-compilation-database-source 
-  - bazel-gazelle 
-  - bazel-gazelle-source 
   - bazel-platforms 
   - bazel-rules-apple-source 
   - bazel-rules-cc-source 
@@ -1805,6 +1805,8 @@ unsorted:
   - cecilia 
   - cedict 
   - cedilla 
+  - cegui-demos-devel 
+  - cegui-devel 
   - cel-cpp-source 
   - celluloid 
   - celluloid-lang 
@@ -3213,8 +3215,6 @@ unsorted:
   - entangle-plugin-shooter 
   - entr 
   - envoy-build-tools 
-  - envoy-protoc-gen-validate 
-  - envoy-protoc-gen-validate-source 
   - envoy-proxy: [x86_64] 
   - envoy-proxy-source: [x86_64] 
   - envy24control 
@@ -8556,6 +8556,12 @@ unsorted:
   - libBulletInverseDynamicsUtils2_89 
   - libBulletWorldImporter2_89 
   - libBulletXmlWorldImporter2_89 
+  - libCEGUI-0 
+  - libCEGUIIrrlichtRenderer-0-2 
+  - libCEGUINullRenderer-0-2 
+  - libCEGUIOgreRenderer-0-2 
+  - libCEGUIOpenGLESRenderer-0-2 
+  - libCEGUIOpenGLRenderer-0-2 
   - libCGAL13 
   - libCGAL_Core13 
   - libCGAL_ImageIO14 
@@ -8737,7 +8743,7 @@ unsorted:
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
   - libKReport3-4 
-  - libKSeExpr4_0_1_0 
+  - libKSeExpr4_0_2_0 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
@@ -8775,6 +8781,27 @@ unsorted:
   - libOSMesa-devel-32bit: [x86_64] 
   - libOSMesa8 
   - libOSMesa8-32bit: [x86_64] 
+  - libOgreBites-devel 
+  - libOgreBites1_12_12 
+  - libOgreBitesQt1_12_12 
+  - libOgreMain-devel 
+  - libOgreMain1_12_12 
+  - libOgreMain1_12_12-codecs 
+  - libOgreMain1_12_12-plugins 
+  - libOgreMeshLodGenerator-devel 
+  - libOgreMeshLodGenerator1_12_12 
+  - libOgreOverlay-devel 
+  - libOgreOverlay1_12_12 
+  - libOgrePaging-devel 
+  - libOgrePaging1_12_12 
+  - libOgreProperty-devel 
+  - libOgreProperty1_12_12 
+  - libOgreRTShaderSystem-devel 
+  - libOgreRTShaderSystem1_12_12 
+  - libOgreTerrain-devel 
+  - libOgreTerrain1_12_12 
+  - libOgreVolume-devel 
+  - libOgreVolume1_12_12 
   - libOpenCL1 
   - libOpenCL1-32bit: [x86_64] 
   - libOpenCOLLADABaseUtils0_3 
@@ -9342,6 +9369,9 @@ unsorted:
   - liballegro_ttf5_2-devel 
   - liballegro_video5_2 
   - liballegro_video5_2-devel 
+  - libalternatives-devel 
+  - libalternatives-unit-test-helper 
+  - libalternatives1 
   - libalure1 
   - libalut0 
   - libalut0-32bit: [x86_64] 
@@ -10433,6 +10463,8 @@ unsorted:
   - libfcache1 
   - libfcgi0 
   - libfcitx-4_2_9-32bit: [x86_64] 
+  - libfcrypto-devel 
+  - libfcrypto1 
   - libfdata-devel 
   - libfdata1 
   - libfdatetime-devel 
@@ -10546,6 +10578,8 @@ unsorted:
   - libfonts-javadoc 
   - libformula-javadoc 
   - libfparser-4_5_2 
+  - libfplist-devel 
+  - libfplist1 
   - libfplll7 
   - libfpm_helper-devel 
   - libfpm_helper0 
@@ -10604,6 +10638,8 @@ unsorted:
   - libfunambol-devel 
   - libfuse2-32bit: [x86_64] 
   - libfuse3-3-32bit: [x86_64] 
+  - libfusn-devel 
+  - libfusn1 
   - libfuzzy-devel 
   - libfuzzy2 
   - libfvalue-devel 
@@ -10615,6 +10651,8 @@ unsorted:
   - libfwevt1 
   - libfwnt-devel 
   - libfwnt1 
+  - libfwps-devel 
+  - libfwps1 
   - libfwsi-devel 
   - libfwsi1 
   - libgadu-devel 
@@ -14940,6 +14978,7 @@ unsorted:
   - lua51-compat-5.3 
   - lua51-copas 
   - lua51-coxpcall 
+  - lua51-cyrussasl 
   - lua51-devel 
   - lua51-dkjson 
   - lua51-doc 
@@ -14968,6 +15007,7 @@ unsorted:
   - lua51-luassert 
   - lua51-luasystem 
   - lua51-luaterm 
+  - lua51-luaunbound 
   - lua51-luv 
   - lua51-luv-devel 
   - lua51-markdown 
@@ -14977,6 +15017,7 @@ unsorted:
   - lua51-mpack 
   - lua51-penlight 
   - lua51-penlight-doc 
+  - lua51-readline 
   - lua51-say 
   - lua51-slaxml 
   - lua51-zlib 
@@ -14988,6 +15029,7 @@ unsorted:
   - lua53-compat-5.3 
   - lua53-copas 
   - lua53-coxpcall 
+  - lua53-cyrussasl 
   - lua53-devel 
   - lua53-dkjson 
   - lua53-doc 
@@ -15016,6 +15058,7 @@ unsorted:
   - lua53-luassert 
   - lua53-luasystem 
   - lua53-luaterm 
+  - lua53-luaunbound 
   - lua53-luv 
   - lua53-luv-devel 
   - lua53-markdown 
@@ -15025,6 +15068,7 @@ unsorted:
   - lua53-mpack 
   - lua53-penlight 
   - lua53-penlight-doc 
+  - lua53-readline 
   - lua53-say 
   - lua53-slaxml 
   - lua53-zlib 
@@ -15037,6 +15081,7 @@ unsorted:
   - lua54-compat-5.3 
   - lua54-copas 
   - lua54-coxpcall 
+  - lua54-cyrussasl 
   - lua54-devel 
   - lua54-dkjson 
   - lua54-editorconfig-core-lua 
@@ -15064,6 +15109,7 @@ unsorted:
   - lua54-luassert 
   - lua54-luasystem 
   - lua54-luaterm 
+  - lua54-luaunbound 
   - lua54-luv 
   - lua54-luv-devel 
   - lua54-markdown 
@@ -15073,6 +15119,7 @@ unsorted:
   - lua54-mpack 
   - lua54-penlight 
   - lua54-penlight-doc 
+  - lua54-readline 
   - lua54-say 
   - lua54-slaxml 
   - lua54-zlib 
@@ -17542,6 +17589,14 @@ unsorted:
   - ofono-tests 
   - oggz-tools 
   - ogmtools 
+  - ogre-demos 
+  - ogre-demos-devel 
+  - ogre-devel 
+  - ogre-docs 
+  - ogre-media 
+  - ogre-mono 
+  - ogre-python 
+  - ogre-tools 
   - ohcount 
   - oidentd 
   - okteta-devel 
@@ -18025,8 +18080,6 @@ unsorted:
   - ovn-docker 
   - ovn-host 
   - ovn-vtep 
-  - ovnkube 
-  - ovnkube-cni 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -20610,10 +20663,6 @@ unsorted:
   - protobuf-source 
   - protoc-gen-go 
   - protoc-gen-go-source 
-  - protoc-gen-gogo 
-  - protoc-gen-gogo-source 
-  - protoc-gen-validate 
-  - protoc-gen-validate-source 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -20865,7 +20914,8 @@ unsorted:
   - python-novaclient-doc 
   - python-nss-doc 
   - python-octaviaclient-doc 
-  - python-onionshare-data 
+  - python-onionshare: [i586] 
+  - python-onionshare-data: [x86_64] 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-optcomplete 
@@ -21086,6 +21136,7 @@ unsorted:
   - python3-libbde 
   - python3-libblockdev 
   - python3-libbytesize 
+  - python3-libcaes 
   - python3-libcec 
   - python3-libcomps 
   - python3-libcreg 
@@ -21103,6 +21154,7 @@ unsorted:
   - python3-libftdi1 
   - python3-libfvde 
   - python3-libfwnt 
+  - python3-libfwps 
   - python3-libfwsi 
   - python3-libixion 
   - python3-liblnk 
@@ -21134,6 +21186,7 @@ unsorted:
   - python3-libvoikko 
   - python3-libvshadow 
   - python3-libvslvm 
+  - python3-libwrc 
   - python3-lilv 
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
@@ -22898,7 +22951,7 @@ unsorted:
   - python36-olefile 
   - python36-oletools 
   - python36-olm 
-  - python36-onionshare 
+  - python36-onionshare: [x86_64] 
   - python36-opcodes 
   - python36-openapi-codec 
   - python36-openapi-core 
@@ -25732,8 +25785,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_20_2-gnu-hpc 
-  - python38-numpy_1_20_2-gnu-hpc-devel 
+  - python38-numpy_1_20_3-gnu-hpc 
+  - python38-numpy_1_20_3-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -25754,7 +25807,7 @@ unsorted:
   - python38-oiffile 
   - python38-oletools 
   - python38-olm 
-  - python38-onionshare 
+  - python38-onionshare: [x86_64] 
   - python38-onnx 
   - python38-onnxconverter-common 
   - python38-opcodes 
@@ -28322,6 +28375,7 @@ unsorted:
   - python39-img2pdf 
   - python39-iminuit 
   - python39-immutables 
+  - python39-impacket 
   - python39-importlab 
   - python39-importlib-metadata 
   - python39-importlib-resources 
@@ -28732,8 +28786,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_20_2-gnu-hpc 
-  - python39-numpy_1_20_2-gnu-hpc-devel 
+  - python39-numpy_1_20_3-gnu-hpc 
+  - python39-numpy_1_20_3-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -28755,7 +28809,7 @@ unsorted:
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
-  - python39-onionshare 
+  - python39-onionshare: [x86_64] 
   - python39-onnx 
   - python39-onnxconverter-common 
   - python39-opcodes 
