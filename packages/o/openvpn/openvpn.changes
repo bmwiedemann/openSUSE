@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 31 15:29:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.11 (bsc#1185279):
+  * CVE-2020-15078 see https://community.openvpn.net/openvpn/wiki/SecurityAnnouncements
+
+  * This bug allows - under very specific circumstances - to trick a server using
+    delayed authentication (plugin or management) into returning a PUSH_REPLY
+    before the AUTH_FAILED message, which can possibly be used to gather
+    information about a VPN setup.
+  * In combination with "--auth-gen-token" or an user-specific token auth
+    solution it can be possible to get access to a VPN with an
+    otherwise-invalid account.
+  * Fix potential NULL ptr crash if compiled with DMALLOC
+- drop sysv5 init support, it hasn't build successfully in ages
+  and is build-disabled in devel project
+
+-------------------------------------------------------------------
 Sun Apr 25 19:24:56 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - update 'rcopenvpn' to work without /etc/rc.status (boo#1185273)

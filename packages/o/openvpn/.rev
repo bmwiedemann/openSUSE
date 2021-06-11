@@ -784,4 +784,23 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>888373</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>6e8b92b262a03678fc88f31b4ffe2c44</srcmd5>
+    <version>2.4.11</version>
+    <time>1623443428</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.11 (bsc#1185279):
+  * CVE-2020-15078 see https://community.openvpn.net/openvpn/wiki/SecurityAnnouncements
+  * This bug allows - under very specific circumstances - to trick a server using
+    delayed authentication (plugin or management) into returning a PUSH_REPLY
+    before the AUTH_FAILED message, which can possibly be used to gather
+    information about a VPN setup.
+  * In combination with &quot;--auth-gen-token&quot; or an user-specific token auth
+    solution it can be possible to get access to a VPN with an
+    otherwise-invalid account.
+  * Fix potential NULL ptr crash if compiled with DMALLOC
+- drop sysv5 init support, it hasn't build successfully in ages
+  and is build-disabled in devel project</comment>
+    <requestid>898085</requestid>
+  </revision>
 </revisionlist>

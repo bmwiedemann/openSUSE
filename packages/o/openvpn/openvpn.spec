@@ -20,16 +20,11 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} > 1210
-%define with_systemd 1
-%else
-%define with_systemd 0
-%endif
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.4.10
+Version:        2.4.11
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
@@ -37,11 +32,9 @@ Group:          Productivity/Networking/Security
 URL:            http://openvpn.net/
 Source:         https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz
 Source1:        https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz.asc
-Source2:        %{name}.init
 Source3:        %{name}.README.SUSE
 Source4:        client-netconfig.up
 Source5:        client-netconfig.down
-Source6:        %{name}.sysconfig
 Source7:        %{name}.keyring
 Source8:        %{name}.service
 Source9:        %{name}.target
@@ -59,18 +52,14 @@ BuildRequires:  openssl-devel
 BuildRequires:  p11-kit-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkcs11-helper-devel >= 1.11
+BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
 Requires:       sysvinit-tools
-%if %{with_systemd}
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(systemd)
 %systemd_ordering
-%else
-PreReq:         %fillup_prereq
-PreReq:         %insserv_prereq
-%endif
 
 %description
 OpenVPN is a full-featured SSL VPN solution which can accommodate a wide
@@ -143,13 +132,12 @@ This package provides the header file to build external plugins.
 %patch8 -p1
 %patch9 -p1
 
-sed -e "s|\" __DATE__|$(date '+%b %e %Y' -r version.m4)\"|g" \
+sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
 sed -e "s|@PLUGIN_LIBDIR@|%{_libdir}/openvpn/plugins|g" \
     -e "s|@PLUGIN_DOCDIR@|%{_defaultdocdir}/%{name}|g" \
     -i doc/openvpn.8
-sed -e "s|%{_localstatedir}/run|%{_rundir}|g" < \
-    $RPM_SOURCE_DIR/%{name}.service > %{name}.service
+sed -e "s|%{_localstatedir}/run|%{_rundir}|g" < %{SOURCE8} > %{name}.service
 
 # %%doc items shouldn't be executable.
 find contrib sample -type f -exec chmod a-x \{\} \;
@@ -157,19 +145,21 @@ find contrib sample -type f -exec chmod a-x \{\} \;
 %build
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -W -Wall -fno-strict-aliasing"
 export LDFLAGS
+%if 0%{?suse_version} >= 1550
+# usrmerge
+export IPROUTE="%{_sbindir}/ip"
+%endif
 %configure \
 	--enable-iproute2		\
 	--enable-x509-alt-username	\
 	--enable-pkcs11			\
-%if %{with_systemd}
 	--enable-systemd		\
-%endif
 	--enable-plugins		\
 	--enable-plugin-down-root	\
 	--enable-plugin-auth-pam	\
 	CFLAGS="$CFLAGS $(getconf LFS_CFLAGS) -fPIE $PLUGIN_DEFS"	\
 	LDFLAGS="$LDFLAGS -pie -lpam -rdynamic -Wl,-rpath,%{_libdir}/%{name}/plugins"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -177,40 +167,28 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_sysconfdir}/openvpn
 mkdir -p %{buildroot}/%{_rundir}/openvpn
 mkdir -p %{buildroot}/%{_datadir}/openvpn
-%if %{with_systemd}
 rm %{buildroot}%{_libdir}/systemd/system/openvpn-client@.service
 rm %{buildroot}%{_libdir}/systemd/system/openvpn-server@.service
 #use one proveded by suse
 rm %{buildroot}%{_libdir}/tmpfiles.d/openvpn.conf
 install -D -m 644 %{name}.service %{buildroot}/%{_unitdir}/%{name}@.service
-install -D -m 644 $RPM_SOURCE_DIR/%{name}.target %{buildroot}/%{_unitdir}/%{name}.target
-install -D -m 755 $RPM_SOURCE_DIR/rc%{name} %{buildroot}%{_sbindir}/rc%{name}
+install -D -m 644 %{SOURCE9} %{buildroot}/%{_unitdir}/%{name}.target
+install -D -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/rc%{name}
 # tmpfiles.d
 mkdir -p %{buildroot}%{_tmpfilesdir}
-install -m 0644 $RPM_SOURCE_DIR/%{name}-tmpfile.conf %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%else
-install -D -m 755 $RPM_SOURCE_DIR/openvpn.init %{buildroot}/%{_sysconfdir}/init.d/openvpn
-ln -sv %{_sysconfdir}/init.d/openvpn %{buildroot}/%{_sbindir}/rcopenvpn
-# the /etc/sysconfig/openvpn template only with sysvinit, no needed with systemd
-install -d -m0755 %{buildroot}%{_fillupdir}
-install    -m0600 $RPM_SOURCE_DIR/openvpn.sysconfig \
-                  %{buildroot}%{_fillupdir}/sysconfig.openvpn
-%endif
-cp -p $RPM_SOURCE_DIR/openvpn.README.SUSE README.SUSE
-install -m 755 $RPM_SOURCE_DIR/client-netconfig.up sample/sample-scripts/client-netconfig.up
-install -m 755 $RPM_SOURCE_DIR/client-netconfig.down sample/sample-scripts/client-netconfig.down
+install -m 0644 %{SOURCE10} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+cp -p %{SOURCE3} README.SUSE
+install -m 755 %{SOURCE4} sample/sample-scripts/client-netconfig.up
+install -m 755 %{SOURCE5} sample/sample-scripts/client-netconfig.down
 
 # we install docs via spec into _defaultdocdir/name/management-notes.txt
 rm -rf %{buildroot}%{_datadir}/doc/{OpenVPN,%{name}}
 find sample -name .gitignore | xargs rm -f
 
 %pre
-%if %{with_systemd}
 %service_add_pre %{name}.target
-%endif
 
 %post
-%if %{with_systemd}
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post %{name}.target
 # try to migrate openvpn.service autostart to openvpn@<CONF>.service
@@ -247,23 +225,12 @@ then
 	fi
 fi
 rm -f %{_sysconfdir}/sysconfig/openvpn || :
-%else
-%{?fillup_and_insserv:%fillup_and_insserv}
-%endif
 
 %preun
-%if %{with_systemd}
 %service_del_preun %{name}.target
-%else
-%{?stop_on_removal:%stop_on_removal openvpn}
-%endif
 
 %postun
-%if %{with_systemd}
 %service_del_postun %{name}.target
-%else
-%{?insserv_cleanup:%insserv_cleanup}
-%endif
 
 %files
 %license COPYING
@@ -277,17 +244,11 @@ rm -f %{_sysconfdir}/sysconfig/openvpn || :
 %doc doc/management-notes.txt
 %{_mandir}/man8/openvpn.8%{?ext_man}
 %config(noreplace) %{_sysconfdir}/openvpn/
-%if %{with_systemd}
 %dir %{_tmpfilesdir}
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}.target
 %{_tmpfilesdir}/%{name}.conf
 %dir %attr(0750,root,root) %ghost %{_rundir}/openvpn/
-%else
-%config %{_sysconfdir}/init.d/openvpn
-%{_fillupdir}/sysconfig.openvpn
-%dir %attr(750,root,root) %{_rundir}/openvpn/
-%endif
 %{_sbindir}/rcopenvpn
 %{_sbindir}/openvpn
 
