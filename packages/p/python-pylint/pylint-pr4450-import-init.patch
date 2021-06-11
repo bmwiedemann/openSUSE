@@ -8,7 +8,7 @@ Subject: [PATCH] Fix broken tests
  1 file changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/tests/test_self.py b/tests/test_self.py
-index 55cfbbc82..7f26ddeb3 100644
+index 55cfbbc827..7f26ddeb3a 100644
 --- a/tests/test_self.py
 +++ b/tests/test_self.py
 @@ -1077,20 +1077,24 @@ def test_allow_import_of_files_found_in_modules_during_parallel_check(self, tmpd

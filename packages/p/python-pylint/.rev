@@ -340,4 +340,14 @@
     <comment></comment>
     <requestid>891395</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>64ecfd38862cc4e4a482d1261af10ab9</srcmd5>
+    <version>2.8.3</version>
+    <time>1623443415</time>
+    <user>dimstar_suse</user>
+    <comment>
+- update to 2.8.3:
+  * pin astroid to 2.5.6</comment>
+    <requestid>897841</requestid>
+  </revision>
 </revisionlist>
