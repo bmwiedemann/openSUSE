@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 11 06:04:29 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 4.8.11:
+  * fix soundness issues, invalid models, and crashes for options
+   "tactic.default_tactic=smt sat.euf=true"
+  * centos -> glibc
+  * updated ref to esrp
+  * undo cxx hoist
+  * hoist c++ flags
+
+-------------------------------------------------------------------
 Fri Jan 29 23:04:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.10:

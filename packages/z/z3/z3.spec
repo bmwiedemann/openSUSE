@@ -18,7 +18,7 @@
 
 %define sover 4_8
 Name:           z3
-Version:        4.8.10
+Version:        4.8.11
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
