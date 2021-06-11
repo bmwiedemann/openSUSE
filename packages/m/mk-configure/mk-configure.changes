@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 11 11:52:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move macros.mkcmake from /etc/rpm to %{_rpmmacrodir}
+  (boo#1185657).
+
+-------------------------------------------------------------------
 Tue May 11 07:48:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file stop owning libexecdir (provided by filesystem rpm (bsc#1184786) 

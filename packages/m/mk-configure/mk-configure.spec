@@ -97,7 +97,7 @@ mkdir -p %{buildroot}%{_docdir}/%{name}-doc
 cp -r examples %{buildroot}%{_docdir}/%{name}-doc
 %fdupes -s %{buildroot}%{_docdir}/%{name}-doc
 # rpm macros
-install -m644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/rpm/macros.mkcmake
+install -m644 %{SOURCE1} -D %{buildroot}%{_rpmmacrodir}/macros.mkcmake
 
 %check
 unset MAKEFLAGS
@@ -112,7 +112,7 @@ bmake -k cleandir-tests
 %{_datadir}/mk-configure/
 %{_mandir}/man1/*
 %{_mandir}/man7/*
-%config %{_sysconfdir}/rpm/macros.mkcmake
+%{_rpmmacrodir}/macros.mkcmake
 %{_libexecdir}/mk-configure
 
 %files doc
