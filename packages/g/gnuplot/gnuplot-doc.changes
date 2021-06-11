@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun  7 05:53:01 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.4.2
+  * NEW in "using" context, $# means "number of columns in current data line"
+  * NEW define on program entry:   I = sqrt(-1) = {0.,1.}
+  * NEW support input data that uses epidemiological date-week formats
+  * NEW optional fillcolor for "set key opaque"
+  * NEW provide and document use of a plugin to provide uigamma function
+  * CHANGE much improved domain and precision for igamma function
+  * CHANGE generate only one key entry per multi-dataset input file Bug #2380
+  * CHANGE (Windows): attempt to convert unicode on command line to UTF-8
+  * CHANGE clip `with image` to plot boundary in 2D plots
+  * CHANGE In gprintf format "%c", add no space for a null prefix Bug #2266
+  * CHANGE Make auto-placement of left border less sensitive to plot size Bug #2415
+  * FIX time formats %U %W Bug #2390
+  * FIX cairo terminals: Do not lose font info during multi-line enhanced text
+  * FIX left-justification of titles in splot with user-specified key position
+  * FIX cairo terminals (Windows): ignore "text scaling" from user screen settings
+  * FIX win: instabilities associated with changing window size Bug #2301 #2304
+  * FIX pm: better mousing and font handling
+  * FIX qt: prevent zombie gnuplot_qt process Bug #2188
+  * FIX clipping of filled polygons that have only 1 or 2 vertices Bug #2400
+  * FIX "set tics front" unexpectedly made all grid lines invisible
+  * FIX more terminals support requested linewidth for textbox borders
+  * FIX indexing of multiple matrix data sets in a single input file
+  * FIX do not inject extra '\n' into input stream after 'set term' Bug #2292
+- Change offset of patches
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 17:15:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update spec file to work with TeXLive 2021 

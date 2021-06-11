@@ -7,7 +7,7 @@ Index: gnuplot-5.2.2/configure.ac
 
 --- gnuplot-5.4.0/configure.ac
 +++ gnuplot-5.4.0/configure.ac	2020-07-17 07:31:14.828189953 +0000
-@@ -541,63 +541,17 @@ AC_ARG_WITH(gd,dnl
+@@ -534,63 +534,17 @@ AC_ARG_WITH(gd,dnl
  
  if test "$with_gd" != no; then
    PKG_CHECK_MODULES_NOFAIL(libgd, [gdlib])

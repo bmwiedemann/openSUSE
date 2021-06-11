@@ -1,5 +1,5 @@
 #
-# spec file for package gnuplot%{?psuffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -79,7 +79,7 @@ BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
 %endif
 URL:            http://www.gnuplot.info/
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""
