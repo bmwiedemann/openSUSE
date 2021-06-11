@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 11 13:53:53 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.21.0
+  * New Features
+    - Driver for the new Kobo Ellipsa
+    - Content server: When editing metadata for fields that take
+      multiple values, make it easier to remove individual values
+      by simply tapping a button
+    - Browser viewer: Make current color scheme setting propagate
+      to all devices automatically when using user accounts
+    - E-book viewer: Image popup: Show the image resolution in the
+      popup window's titlebar
+  * Bug Fixes
+    - HTML Input: Fix handling of @import rules in stylesheets
+      nested more than one level deep
+    - Fix viewer search context menu to clear searches not clearing
+      search settings
+    - E-book viewer image popup: Fix full screen button in
+      incorrect state when starting in full screen
+
+-------------------------------------------------------------------
 Fri Jun  4 07:15:34 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.20.0
