@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:10:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  - Fix bug where a valid IRI is mishandled by ``urlparse`` and
+  ``ParseResultBytes``.
+  - Add :meth:`~rfc3986.builder.URIBuilder.extend_path`,
+
+-------------------------------------------------------------------
 Wed Apr 15 16:02:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.0
