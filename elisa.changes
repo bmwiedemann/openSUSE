@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:39:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix fields behavior when creating a radio.
+  * properly update album when removing one of its track
+  * Elisa has a wonderful site, let's point to it
+  * No need to emit trackModified when a track starts playing
+
+-------------------------------------------------------------------
+Wed May 12 06:06:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Correct ContextView's footer
+  * [ContextView] Fix visibility of "Show In Folder" button
+  * Make contextView's footer as tall as playlistView's one
+
+-------------------------------------------------------------------
 Fri Apr 16 16:11:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.0
