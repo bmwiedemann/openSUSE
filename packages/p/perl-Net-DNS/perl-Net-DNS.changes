@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  3 18:29:12 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.31
+  * 1.31 May 2, 2021
+    - Improve implementation of SVCB record.
+  * 1.30 Mar 30, 2021
+    - Simplify parsing of multi-line RRs in zone file.
+      Improve robustness of "dry" resolver tests.
+      Avoid deep recursion in non-fatal test report.
+
+-------------------------------------------------------------------
 Mon Jan 18 23:12:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.29
