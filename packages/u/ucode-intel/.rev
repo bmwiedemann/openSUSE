@@ -717,4 +717,41 @@
   | CLX-SP         | B1       | 06-55-07/bf | 05003003 | 05003006 | Xeon Scalable Gen2</comment>
     <requestid>873142</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d4fc8ddbe3e4ad53c2c0a7e545198acd</srcmd5>
+    <version>20210608</version>
+    <time>1623521131</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20210608 release.
+  - CVE-2020-24513: A domain bypass transient execution vulnerability was discovered on some Intel Atom processors that use a micro-architectural incident channel. (INTEL-SA-00465 bsc#1179833)
+    See also: https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00465.html
+  - CVE-2020-24511: The IBRS feature to mitigate Spectre variant 2 transient execution side channel vulnerabilities may not fully prevent non-root (guest) branches from controlling the branch predictions of the root (host) (INTEL-SA-00464 bsc#1179836)
+    See also https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00464.html)
+  - CVE-2020-24512: Fixed trivial data value cache-lines such as all-zero value cache-lines may lead to changes in cache-allocation or write-back behavior for such cache-lines (bsc#1179837 INTEL-SA-00464)
+    See also https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00464.html)
+  - CVE-2020-24489: Fixed Intel VT-d device pass through potential local privilege escalation (INTEL-SA-00442 bsc#1179839)
+    See also https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00442.html
+- Update for functional issues. Refer to [Third Generation Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/637780)for details.
+- Update for functional issues. Refer to [Second Generation Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
+- Update for functional issues. Refer to [Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/613537) for details.
+- Update for functional issues. Refer to [Intel Xeon Processor D-1500, D-1500 NS and D-1600 NS Spec Update](https://www.intel.com/content/www/us/en/products/docs/processors/xeon/xeon-d-1500-specification-update.html) for details.
+- Update for functional issues. Refer to [Intel Xeon E7-8800 and E7-4800 v3 Processor Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e7-v3-spec-update.html) for details.
+- Update for functional issues. Refer to [Intel Xeon Processor E5 v3 Product Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-v3-spec-update.html?wapkw=processor+spec+update+e5) for details.
+- Update for functional issues. Refer to [10th Gen Intel Core Processor Families Specification Update](https://www.intel.com/content/www/us/en/products/docs/processors/core/10th-gen-core-families-specification-update.html) for details.
+- Update for functional issues. Refer to [8th and 9th Gen Intel Core Processor Family Spec Update](https://www.intel.com/content/www/us/en/products/docs/processors/core/8th-gen-core-spec-update.html) for details.
+- Update for functional issues. Refer to [7th Gen and 8th Gen (U Quad-Core) Intel Processor Families Specification Update](https://www.intel.com/content/www/us/en/processors/core/7th-gen-core-family-spec-update.html) for details.
+- Update for functional issues. Refer to [6th Gen Intel Processor Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/332689) for details.
+- Update for functional issues. Refer to [Intel Xeon E3-1200 v6 Processor Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e3-1200v6-spec-update.html) for details.
+- Update for functional issues. Refer to [Intel Xeon E-2100 and E-2200 Processor Family Specification Update](https://www.intel.com/content/www/us/en/products/docs/processors/xeon/xeon-e-2100-specification-update.html) for details.
+### New Platforms
+| Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+|:---------------|:---------|:------------|:---------|:---------|:---------
+| CLX-SP         | A0       | 06-55-05/b7 |          | 03000010 | Xeon Scalable Gen2
+| ICX-SP         | C0       | 06-6a-05/87 |          | 0c0002f0 | Xeon Scalable Gen3
+| ICX-SP         | D0       | 06-6a-06/87 |          | 0d0002a0 | Xeon Scalable Gen3
+| SNR            | B0       | 06-86-04/01 |          | 0b00000f | Atom P59xxB
+| SNR            | B1       | 06-86-05/01 |          | 0b00000f | Atom P59xxB
+| TGL            | B1       | 06-8c-01/80 |          | 00000088 | Core Gen11 Mobile</comment>
+    <requestid>898792</requestid>
+  </revision>
 </revisionlist>

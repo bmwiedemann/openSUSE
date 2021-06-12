@@ -16,8 +16,11 @@
 #
 
 
+%if %{undefined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
 Name:           ucode-intel
-Version:        20210216
+Version:        20210608
 Release:        0
 Summary:        Microcode Updates for Intel x86/x86-64 CPUs
 License:        SUSE-Firmware
@@ -45,11 +48,11 @@ This package contains the microcode update blobs for Intel x86 and x86-64 CPUs.
 #it is closed source.. nothing to build.
 
 %install
-mkdir -p %{buildroot}/lib/firmware/intel-ucode
-cp intel-ucode/* %{buildroot}/lib/firmware/intel-ucode
+mkdir -p %{buildroot}%{_firmwaredir}/intel-ucode
+cp intel-ucode/* %{buildroot}%{_firmwaredir}/intel-ucode
 cd intel-ucode-with-caveats
 for microcode in *;do
-    cp $microcode %{buildroot}/lib/firmware/intel-ucode/$microcode
+    cp $microcode %{buildroot}%{_firmwaredir}/intel-ucode/$microcode
 done
 
 %post
@@ -65,6 +68,6 @@ done
 %defattr(-,root,root)
 %license license
 %doc releasenote.md
-/lib/firmware/intel-ucode/
+%{_firmwaredir}/intel-ucode/
 
 %changelog
