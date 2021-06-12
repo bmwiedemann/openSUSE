@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:39:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Don't ask if the user wants to overwrite two times
+  * Fix showing of dialog the user can't interact with when saving (kde#437574)
+
+-------------------------------------------------------------------
 Wed May 12 06:07:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
