@@ -1,0 +1,6 @@
+<package name="nodejs14" project="openSUSE:Factory">
+  <title>NodeJS 14.x</title>
+  <description>Node 14.x LTS codestream</description>
+  <devel project="devel:languages:nodejs" package="nodejs14"/>
+  <url>https://nodejs.org</url>
+</package>
