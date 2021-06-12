@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:41:11 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Fix Ethernet PHY initialization on OdroidC2 (boo#1187095)
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
+* Patches added:
+  0015-arm64-dts-meson-odroidc2-readd-PHY-.patch
+
+-------------------------------------------------------------------
 Tue May 18 20:35:23 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 * Add rockpi-n10-rk3399pro
