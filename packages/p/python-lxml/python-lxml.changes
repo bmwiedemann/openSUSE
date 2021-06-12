@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 19:15:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing dependency on python-base for the devel subpackage.
+
+-------------------------------------------------------------------
 Tue Jun  1 11:29:24 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Adapt test_etree.py to a behavioural change in libxml2 2.9.11+

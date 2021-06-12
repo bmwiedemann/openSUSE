@@ -60,6 +60,7 @@ This package contains documentation for lxml (HTML and PDF).
 %package devel
 Summary:        Development files for python-lxml
 Group:          Development/Libraries/Python
+BuildRequires:  %{python_module base}
 Requires:       %{name} = %{version}
 
 %description devel
