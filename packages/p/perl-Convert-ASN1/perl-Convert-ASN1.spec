@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Convert-ASN1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Convert-ASN1
-Version:        0.29
+Version:        0.31
 Release:        0
 %define cpan_name Convert-ASN1
 Summary:        ASN.1 Encode/Decode library
