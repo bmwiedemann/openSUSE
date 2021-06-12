@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:39:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix fields behavior when creating a radio.
+  * properly update album when removing one of its track
+  * Elisa has a wonderful site, let's point to it
+  * No need to emit trackModified when a track starts playing
+
+-------------------------------------------------------------------
 Wed May 12 06:06:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
