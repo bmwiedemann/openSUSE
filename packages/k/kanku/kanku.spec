@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -37,16 +37,13 @@ BuildRequires:  systemd-rpm-macros
 # perl requires for %check
 BuildRequires:  perl(Const::Fast)
 BuildRequires:  perl(Config::Tiny)
-BuildRequires:  perl(Config::Tiny)
 BuildRequires:  perl(DBIx::Class)
 BuildRequires:  perl(DBIx::Class::Fixtures)
-BuildRequires:  perl(DBIx::Class::Migration)
 BuildRequires:  perl(DBIx::Class::Migration)
 BuildRequires:  perl(Dancer2)
 BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible)
 BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
 BuildRequires:  perl(Dancer2::Plugin::DBIC)
-BuildRequires:  perl(Dancer2::Plugin::REST)
 BuildRequires:  perl(Dancer2::Plugin::REST)
 BuildRequires:  perl(Expect)
 BuildRequires:  perl(File::HomeDir)
@@ -80,17 +77,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  libvirt-daemon
 BuildRequires:  shared-mime-info
 BuildRequires:  perl(Archive::Cpio)
-BuildRequires:  perl(Dancer2)
-BuildRequires:  perl(Dancer2::Plugin)
-BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible)
-BuildRequires:  perl(Dancer2::Plugin::DBIC)
-BuildRequires:  perl(Dancer2::Plugin::REST)
-BuildRequires:  perl(Dancer2::Plugin::WebSocket)
 BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Mail::Sendmail)
 BuildRequires:  perl(Net::AMQP::RabbitMQ)
 BuildRequires:  perl(UUID)
+
 Requires:       kanku-cli = %{version}
 Requires:       kanku-dispatcher = %{version}
 Requires:       kanku-scheduler = %{version}
@@ -141,17 +133,14 @@ Requires:       libvirt-daemon-qemu
 Requires:       perl-Plack
 Requires:       sudo
 Requires:       perl(Config::Tiny)
-Requires:       perl(Config::Tiny)
 Requires:       perl(Const::Fast)
 Requires:       perl(DBIx::Class)
 Requires:       perl(DBIx::Class::Fixtures)
-Requires:       perl(DBIx::Class::Migration)
 Requires:       perl(DBIx::Class::Migration)
 Requires:       perl(Dancer2)
 Requires:       perl(Dancer2::Plugin::Auth::Extensible)
 Requires:       perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
 Requires:       perl(Dancer2::Plugin::DBIC)
-Requires:       perl(Dancer2::Plugin::REST)
 Requires:       perl(Dancer2::Plugin::REST)
 Requires:       perl(Expect)
 Requires:       perl(File::HomeDir)
@@ -169,7 +158,6 @@ Requires:       perl(Net::SSH2)
 Requires:       perl(Path::Class)
 Requires:       perl(Sys::Virt)
 Requires:       perl(Template)
-Requires:       perl(Template::Plugin::Filter::ANSIColor)
 Requires:       perl(Template::Plugin::Filter::ANSIColor)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Test::Simple)

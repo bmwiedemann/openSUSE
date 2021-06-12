@@ -41,4 +41,13 @@
 </comment>
     <requestid>885626</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5010e96c1c40313c6acb72f2a24e7e58</srcmd5>
+    <version>0.10.4</version>
+    <time>1623521307</time>
+    <user>dimstar_suse</user>
+    <comment>* updated to 0.10.4
+* spec cleanup</comment>
+    <requestid>899646</requestid>
+  </revision>
 </revisionlist>
