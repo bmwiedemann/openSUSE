@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  8 21:22:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add o2scl-cpp17-legendre-conflict.patch -- Rename function
+  legendre() to legendrex() to avoid conflict with std::legendre()
+  in c++17 (default in GCC 11) [gh#awsteiner/o2scl#17].
+- Update URL to current upstream.
+
+-------------------------------------------------------------------
 Tue May  4 23:50:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add o2scl-boost-math-gamma-header.patch: Include boost header

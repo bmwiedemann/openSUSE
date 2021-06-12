@@ -23,7 +23,7 @@ Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-URL:            https://isospin.roam.utk.edu/static/code/o2scl/
+URL:            https://neutronstars.utk.edu/code/o2scl/html/index.html
 Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE o2scl-disable-slow-hdf-test.patch badshah400@gmail.com -- Disable an hdf5 test that takes too long causing OBS workers to time out and build to fail
 Patch0:         o2scl-disable-slow-hdf-test.patch
@@ -31,6 +31,8 @@ Patch0:         o2scl-disable-slow-hdf-test.patch
 Patch1:         o2scl-exp-overflow.patch
 # PATCH-FIX-UPSTREAM o2scl-boost-math-gamma-header.patch badshah400@gmail.com -- Include boost header required for tgamma function
 Patch2:         o2scl-boost-math-gamma-header.patch
+# PATCH-FIX-UPSTREAM o2scl-cpp17-legendre-conflict.patch gh#awsteiner/o2scl#17 badshah400@gmail.com -- Rename function legendre() to legendrex() to avoid conflict with std::legendre() in c++17 (default in GCC 11)
+Patch3:         o2scl-cpp17-legendre-conflict.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
