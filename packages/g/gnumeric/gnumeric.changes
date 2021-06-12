@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 11 16:50:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.50:
+  + Fix undo problem with sorting and cell comments.
+  + Python loader cleanups.
+  + Use Python's bool type instead of rolling our own.
+  + Export file:// links to html.
+  + Export file:// links to xlsx.
+  + Improve handling of invalid formulae from xlsx.
+  + Introspection fixes.
+  + Improve CELL("format",...).
+  + wk4 import improvements.
+  + Fix some -fsanitize=undefined problems.
+  + Improve excel-specific xlsx import of validation.
+- Drop libgda-6.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Apr  5 11:48:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add libgda-6.patch: support GDA 6

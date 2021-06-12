@@ -994,4 +994,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 894768 from dimstar)</comment>
     <requestid>894775</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>ab4dd2e4a71978018e397cf858e497db</srcmd5>
+    <version>1.12.50</version>
+    <time>1623521299</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 899523 from iznogood)</comment>
+    <requestid>899643</requestid>
+  </revision>
 </revisionlist>

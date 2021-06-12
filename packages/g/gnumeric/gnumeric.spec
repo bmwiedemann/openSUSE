@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.49
+Version:        1.12.50
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -25,8 +25,7 @@ Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
 Source0:        https://download.gnome.org/sources/gnumeric/1.12/%{name}-%{version}.tar.xz
 Source1:        gnumeric-rpmlintrc
-# PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
-Patch0:         libgda-6.patch
+
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
 BuildRequires:  fdupes
@@ -48,7 +47,7 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.7
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libgda-ui-6.0) >= 6.0.0
-BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.47
+BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.50
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.33
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(pango) >= 1.24.0
