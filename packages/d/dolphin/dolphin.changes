@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:39:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix crash on Wayland when closing the mainwindow while another dialog is open
+  * [contextmenusettingspage] Fix Crash because of nullptr (kde#437539)
+  * search/facetswidget: Check for protocol before trying to fetch tags (kde#435586)
+
+-------------------------------------------------------------------
 Wed May 12 06:06:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
