@@ -1,0 +1,27 @@
+From dff7148b4ba73a41c569f3198b9b6ba9cef8d771 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 8 Jun 2021 23:35:15 +0200
+Subject: [PATCH] Handle the melt package rename nicely.
+
+To allow the mlt 6 and 7 packages to coexist, the 'melt' binary is now called 'melt6'.
+With this change, kdenliverc will be updated to use the new name.
+---
+ src/mltconnection.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/mltconnection.cpp b/src/mltconnection.cpp
+index d98deedf3..edd5e53f8 100644
+--- a/src/mltconnection.cpp
++++ b/src/mltconnection.cpp
+@@ -138,6 +138,8 @@ void MltConnection::locateMeltAndProfilesPath(const QString &mltPath)
+     QString meltPath;
+     if (qEnvironmentVariableIsSet("MLT_PREFIX")) {
+         meltPath = qgetenv("MLT_PREFIX") + QStringLiteral("/bin/melt") + exeSuffix;
++    } else if (!QStringLiteral(MLT_MELTBIN).isEmpty()) {
++        meltPath = QStringLiteral(MLT_MELTBIN);
+     } else {
+         meltPath = KdenliveSettings::rendererpath();
+     }
+-- 
+2.31.1
+

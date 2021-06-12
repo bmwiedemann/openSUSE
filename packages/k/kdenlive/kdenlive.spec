@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        21.04.1
+Version:        21.04.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -35,6 +35,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-OPENSUSE -- Rename the melt executable name in kdenliverc
+Patch0:         0001-Handle-the-melt-package-rename-nicely.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
