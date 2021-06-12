@@ -425,7 +425,10 @@ unsorted:
   - akonadi-import-wizard-devel 
   - akonadi-mime-devel 
   - akonadi-notes-devel 
+  - akonadi-search: [i586] 
   - akonadi-search-devel 
+  - akonadi-search-lang: [i586] 
+  - akonadi-server-apparmor 
   - akonadi-server-devel 
   - akonadi-server-sqlite 
   - akonadiconsole 
@@ -5857,8 +5860,6 @@ unsorted:
   - go1.9-doc 
   - go1.9-race: [x86_64] 
   - goaccess 
-  - goatattack 
-  - goatattack-data 
   - gob2 
   - gobby 
   - gobby-lang 
@@ -7974,6 +7975,11 @@ unsorted:
   - klftools-devel 
   - klickety 
   - klickety-lang 
+  - kmail: [i586] 
+  - kmail-account-wizard: [i586] 
+  - kmail-account-wizard-lang: [i586] 
+  - kmail-application-icons: [i586] 
+  - kmail-lang: [i586] 
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
@@ -8120,7 +8126,9 @@ unsorted:
   - ktextwidgets-devel-32bit: [x86_64] 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktnef: [i586] 
   - ktnef-devel 
+  - ktnef-lang: [i586] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -10108,8 +10116,6 @@ unsorted:
   - libcsync-plugin-smb 
   - libcsync0 
   - libcsync0-32bit: [x86_64] 
-  - libcsystem-devel 
-  - libcsystem1 
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
@@ -15698,6 +15704,8 @@ unsorted:
   - mayavi-doc 
   - mayavi-jupyter 
   - mbedtls-devel 
+  - mbox-importer: [i586] 
+  - mbox-importer-lang: [i586] 
   - mbpfan: [x86_64] 
   - mbpoll 
   - mbuffer 
@@ -16958,6 +16966,9 @@ unsorted:
   - nodejs10 
   - nodejs10-devel 
   - nodejs10-docs 
+  - nodejs14: [x86_64] 
+  - nodejs14-devel: [x86_64] 
+  - nodejs14-docs: [x86_64] 
   - nodejs16-devel 
   - nodejs16-docs 
   - noisetorch 
@@ -17205,6 +17216,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10 
+  - npm14: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -20132,6 +20144,10 @@ unsorted:
   - pijul 
   - pilot 
   - pilot-link 
+  - pim-data-exporter: [i586] 
+  - pim-data-exporter-lang: [i586] 
+  - pim-sieve-editor: [i586] 
+  - pim-sieve-editor-lang: [i586] 
   - pimcommon-devel 
   - pin 
   - pinentry-efl 
@@ -20962,8 +20978,7 @@ unsorted:
   - python-novaclient-doc 
   - python-nss-doc 
   - python-octaviaclient-doc 
-  - python-onionshare: [i586] 
-  - python-onionshare-data: [x86_64] 
+  - python-onionshare 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-optcomplete 
@@ -22504,8 +22519,6 @@ unsorted:
   - python36-gTTS 
   - python36-gTTS-token 
   - python36-gast 
-  - python36-gcsfs 
-  - python36-gcsfs-fuse 
   - python36-gear 
   - python36-ged4py 
   - python36-genson 
@@ -23003,7 +23016,6 @@ unsorted:
   - python36-olefile 
   - python36-oletools 
   - python36-olm 
-  - python36-onionshare: [x86_64] 
   - python36-opcodes 
   - python36-openapi-codec 
   - python36-openapi-core 
@@ -25859,7 +25871,6 @@ unsorted:
   - python38-oiffile 
   - python38-oletools 
   - python38-olm 
-  - python38-onionshare: [x86_64] 
   - python38-onnx 
   - python38-onnxconverter-common 
   - python38-opcodes 
@@ -28861,7 +28872,6 @@ unsorted:
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
-  - python39-onionshare: [x86_64] 
   - python39-onnx 
   - python39-onnxconverter-common 
   - python39-opcodes 
