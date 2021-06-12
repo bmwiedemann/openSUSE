@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 01 14:00:15 UTC 2021 - varkoly@suse.com
+
+- Update to version 2.4.5+git69.6236728a:
+  * man: replace votequorum_poll for actually used fn
+  * qnetd: sort by node_id when add new client
+  * man: adjust description about interface section
+  * qnetd: Simplify KAP Tie-breaker logic
+  * qnetd: Fix NULL dereference of client
+  * man: votequorum.5: use proper single quotes
+  * tests: Use CS_DISPATCH_BLOCKING instead of cycle
+  * totemsrp: Move token received callback
+  * common_lib: Remove trailing spaces in cs_strerror
+  * totemsrp: More informative messages
+- Remove patches:
+  bug-1166899-quorumtool-Fix-exit-status-codes.patch
+  bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
+
+-------------------------------------------------------------------
 Tue Mar  9 13:47:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop the script-dependencies on /sbin/chkconfig: deprecated
