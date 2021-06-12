@@ -491,4 +491,35 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860861</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d596b9447027cdcfcd5e4539d97e84e1</srcmd5>
+    <version>0.11.0</version>
+    <time>1623521293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0
+  * Enable `HAVE_MAGIC_H`-delimited code
+  * Add option to copy image to clipboard (!20)
+  * Allow dragging window when CSD is used (#52)
+  * Remove GSourceFunc casts
+  * Added new stock icons with reverse DNS format
+  * Make sure that argument passed to strncmp is non-NULL (!1)
+  * privacy_dialog.c: Remove dead initialization (!2)
+  * image_list.c: Remove dead assignment (!2)
+  * Add basic GitLab pipeline
+  * Bug #16717: Move from exo-csource to xdt-csource
+  * Resolve couple &quot;cast between incompatible function types&quot; warnings
+  * Fix memory leaks in Privacy Dialog
+  * Resolve deprecation warnings
+  * Resolve some deprecation warnings
+  * Add inactivity timeout setting to Preferences
+  * Hide the cursor while inactive in fullscreen mode
+  * Fix 'Status bar appears upon leaving fullscreen'
+  * Do not show translation info on --help output
+  * Fix &quot;window-state-event&quot; handler
+  * Add support for old gtk2-style bg color settings
+  * Add missing LDFLAGS (fixes build on *bsd)
+  * In fullscreen mode, show toolbar when the mouse pointer
+    is moved to the top (forwarded request 899510 from polslinux)</comment>
+    <requestid>899609</requestid>
+  </revision>
 </revisionlist>

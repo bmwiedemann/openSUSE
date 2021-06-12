@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jun 11 14:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.11.0
+  * Enable `HAVE_MAGIC_H`-delimited code
+  * Add option to copy image to clipboard (!20)
+  * Allow dragging window when CSD is used (#52)
+  * Remove GSourceFunc casts
+  * Added new stock icons with reverse DNS format
+  * Make sure that argument passed to strncmp is non-NULL (!1)
+  * privacy_dialog.c: Remove dead initialization (!2)
+  * image_list.c: Remove dead assignment (!2)
+  * Add basic GitLab pipeline
+  * Bug #16717: Move from exo-csource to xdt-csource
+  * Resolve couple "cast between incompatible function types" warnings
+  * Fix memory leaks in Privacy Dialog
+  * Resolve deprecation warnings
+  * Resolve some deprecation warnings
+  * Add inactivity timeout setting to Preferences
+  * Hide the cursor while inactive in fullscreen mode
+  * Fix 'Status bar appears upon leaving fullscreen'
+  * Do not show translation info on --help output
+  * Fix "window-state-event" handler
+  * Add support for old gtk2-style bg color settings
+  * Add missing LDFLAGS (fixes build on *bsd)
+  * In fullscreen mode, show toolbar when the mouse pointer
+    is moved to the top
+
+-------------------------------------------------------------------
 Mon Aug 31 10:07:05 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fix spec file
