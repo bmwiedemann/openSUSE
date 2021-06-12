@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:40:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Allow /bin/sh as a profile command (kde#436242)
+  * Fix alpha channel of scrollbar colors (kde#437223)
+  * Don't override profile icon in "New Tab" menu (kde#437200)
+  * Fix crash when using a color scheme with random colors (kde#434892)
+  * Fix type of randomSeed parameter
+- Drop upstream patch:
+  * 0001-Fix-alpha-channel-of-scrollbar-colors.patch
+
+-------------------------------------------------------------------
 Tue May 25 12:17:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix scrollbar appearance in some configurations (kde#437223):
