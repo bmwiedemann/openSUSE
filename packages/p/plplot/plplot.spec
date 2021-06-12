@@ -1021,7 +1021,8 @@ do
 done
 
 export CFLAGS="%{optflags} -DUSE_INTERP_RESULT -fno-strict-aliasing"
-export CXXFLAGS="%{optflags} -fno-strict-aliasing"
+# c++14 needs to use explicitly to avoid issues with GCC 11
+export CXXFLAGS="%{optflags} -std=c++14 -fno-strict-aliasing"
 export FFLAGS="%{optflags}"
 export LDFLAGS="-fPIC"
 

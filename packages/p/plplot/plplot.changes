@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 22:25:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enforce std=c++14 to avoid build failures with GCC 11 that
+  defaults to c++17.
+
+-------------------------------------------------------------------
 Sun Apr  4 13:56:35 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reenable qhull support, link against reentrant libqhull_r:
