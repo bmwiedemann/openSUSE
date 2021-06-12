@@ -64,7 +64,6 @@ BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module brotlipy}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}

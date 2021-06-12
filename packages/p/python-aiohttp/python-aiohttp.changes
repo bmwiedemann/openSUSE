@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 19:15:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove pytest-asyncio dependency which is actually harmful
+  (gh#aio-libs/aiohttp#5787).
+
+-------------------------------------------------------------------
 Thu May 13 21:58:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add stdlib-typing_extensions.patch to avoid necessity for BR
