@@ -204,4 +204,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE Gear 21.04.1</comment>
     <requestid>892801</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b062efde23e8ed9208b265482f342908</srcmd5>
+    <version>21.04.2</version>
+    <time>1623521239</time>
+    <user>dimstar_suse</user>
+    <comment>KDE gear 21.04.2</comment>
+    <requestid>899212</requestid>
+  </revision>
 </revisionlist>
