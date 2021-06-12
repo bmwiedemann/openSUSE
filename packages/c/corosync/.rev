@@ -1115,4 +1115,12 @@ v2.3.5
     <comment></comment>
     <requestid>881467</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e7c254c57d3e3b75aca1ea8cf02645d4</srcmd5>
+    <version>2.4.5+git69.6236728a</version>
+    <time>1623521122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898541</requestid>
+  </revision>
 </revisionlist>
