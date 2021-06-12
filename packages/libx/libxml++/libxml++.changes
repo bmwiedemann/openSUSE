@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  4 11:55:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.0.1:
+  + Build:
+    - libxml++config.h.*: Don't dllimport on MinGW.
+    - Meson build:
+      . Make it possible to use libxml++ as a subproject.
+      . No implicit_include_directories.
+    - MSVC build: Export classes selectively.
+
+-------------------------------------------------------------------
 Mon Dec 28 20:25:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.0.0:

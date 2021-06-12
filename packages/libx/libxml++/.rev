@@ -343,4 +343,18 @@
     <comment></comment>
     <requestid>859150</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9f4c266c2bc8d698b9b9464d864450c4</srcmd5>
+    <version>5.0.1</version>
+    <time>1623521301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.1:
+  + Build:
+    - libxml++config.h.*: Don't dllimport on MinGW.
+    - Meson build:
+      . Make it possible to use libxml++ as a subproject.
+      . No implicit_include_directories.
+    - MSVC build: Export classes selectively. (forwarded request 899511 from iznogood)</comment>
+    <requestid>899637</requestid>
+  </revision>
 </revisionlist>

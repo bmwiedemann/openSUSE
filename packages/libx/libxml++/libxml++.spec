@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define base_ver 5.0
 
 Name:           libxml++
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -32,7 +32,7 @@ Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
