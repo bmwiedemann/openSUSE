@@ -1,7 +1,7 @@
 #
 # spec file for package metslib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           metslib
 Version:        0.5.3
 Release:        0
 Summary:        Metaheuristic modeling framework and optimization toolkit in modern C++
-License:        GPL-3.0+ or CPL-1.0
+License:        CPL-1.0 OR GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://projects.coin-or.org/metslib
+URL:            https://projects.coin-or.org/metslib
 Source0:        http://www.coin-or.org/download/source/%{name}/%{name}-%{version}.tgz
 # Removes all "libdir" paths from .pc file (which are unneeded).  Not upstream
 Patch0:         %{name}-0.5.3-noarch.patch
@@ -44,8 +44,8 @@ BuildRequires:  boost-devel
 BuildArch:      noarch
 
 %description
-METSlib is a metaheuristic modeling framework and optimization toolkit in
-modern C++ released as Free/Libre/Open Source Software.
+METSlib is a metaheuristic modeling framework and optimization
+toolkit in C++.
 
 This package has no binary, but consists only of the header files and documentation.
 
@@ -54,18 +54,18 @@ Summary:        Metaheuristic modeling framework and optimization toolkit in mod
 Group:          Development/Libraries/C and C++
 
 %description    devel
-METSlib is a metaheuristic modeling framework and optimization toolkit in
-modern C++ released as Free/Libre/Open Source Software.
+METSlib is a metaheuristic modeling framework and optimization
+toolkit in C++.
 
-Model and algorithms are modular: any search algorithm can be applied to the
-same model. On the other hand no assumption is made on the model, you can
-work on any problem type: timetabling, assignment problems, vehicle routing,
-bin-packing and so on.
+Model and algorithms are modular: any search algorithm can be applied
+to the same model. On the other hand, no assumption is made on the
+model, any problem type can be worked on: timetabling, assignment
+problems, vehicle routing, bin-packing and so on.
 
-Once you have implemented your model in the problem framework, the library
-makes easy testing different Tabu Search strategies or even different
-algorithms (Simulated Annealing or other local search based algorithms) with
-a few lines of code.
+Once the model is implemented in the problem framework, the library
+allows testing of different Taboo Search strategies or even different
+algorithms (Simulated Annealing or other local search based
+algorithms) with a few lines of code.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -77,14 +77,15 @@ The %{name}-doc package provides documentation for the %{name} library.
 %prep
 %setup -q
 %patch0
-%patch1 
+%patch1
 
 # Disable -O3 optimization for unit tests
 sed -i 's| -O3||g' configure
 
 %build
+export CXXFLAGS="%{optflags} -std=c++14"
 %configure
-CXXFLAGS="%{optflags}" make %{?_smp_mflags}
+%make_build
 doxygen doxydoc/doxygen.conf
 
 %install
@@ -103,7 +104,7 @@ make %{?_smp_mflags} test
 %license COPYING
 %else
 %doc COPYING
-%endif 
+%endif
 
 %{_includedir}/*
 %{_datadir}/pkgconfig/*.pc
@@ -114,6 +115,6 @@ make %{?_smp_mflags} test
 %license COPYING
 %else
 %doc COPYING
-%endif 
+%endif
 
 %changelog

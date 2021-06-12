@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 20:42:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix building against GCC 11 by explicitly passing -std=c++14.
+- Use `%make_build` macro instead of `make %{?_smp_mflags}`.
+
+-------------------------------------------------------------------
+Sun Jul 12 09:33:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies and fix grammar of description.
+
+-------------------------------------------------------------------
 Mon Feb 13 08:32:40 UTC 2017 - bruno@ioda-net.ch
 
 - Backport from Fedora patches
