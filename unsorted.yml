@@ -399,6 +399,7 @@ unsorted:
   - aespipe 
   - afl 
   - afterburn: [x86_64] 
+  - afterburn-dracut: [x86_64] 
   - agenda 
   - agenda-lang 
   - aha 
@@ -2842,6 +2843,7 @@ unsorted:
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-MicroOS: [i586] 
+  - distribution-logos-openSUSE-icons: [i586] 
   - dita 
   - diy-devel: [x86_64] 
   - diy-mpich-devel: [x86_64] 
@@ -9326,6 +9328,9 @@ unsorted:
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
+  - libagdb-devel 
+  - libagdb-tools 
+  - libagdb1 
   - libags3 
   - libaio-devel 
   - libaio-devel-32bit: [x86_64] 
@@ -9587,6 +9592,9 @@ unsorted:
   - libbenchmark0 
   - libbfio-devel 
   - libbfio1 
+  - libbfoverlay-devel 
+  - libbfoverlay-tools 
+  - libbfoverlay1 
   - libbiblesync2_0 
   - libbitcoinconsensus-devel 
   - libbitcoinconsensus0 
@@ -10614,6 +10622,9 @@ unsorted:
   - libfsapfs 
   - libfsapfs-devel 
   - libfsapfs1 
+  - libfsclfs-devel 
+  - libfsclfs-tools 
+  - libfsclfs1 
   - libfsext-devel 
   - libfsext-tools 
   - libfsext1 
@@ -10624,9 +10635,15 @@ unsorted:
   - libfsntfs-devel 
   - libfsntfs-tools 
   - libfsntfs1 
+  - libfsrefs-devel 
+  - libfsrefs-tools 
+  - libfsrefs1 
   - libfst-hfst0 
   - libfstrcmp0 
   - libfstrm0 
+  - libfsxfs-devel 
+  - libfsxfs-tools 
+  - libfsxfs1 
   - libftdi-devel 
   - libftdi1 
   - libftdi1-2 
@@ -10634,6 +10651,10 @@ unsorted:
   - libftgl2: [i586] 
   - libftgl2-32bit: [x86_64] 
   - libftoa0_3 
+  - libftxf-devel 
+  - libftxf1 
+  - libftxr-devel 
+  - libftxr1 
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit: [x86_64] 
@@ -11240,6 +11261,9 @@ unsorted:
   - libhfst53 
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
+  - libhibr-devel 
+  - libhibr-tools 
+  - libhibr1 
   - libhidapi-devel 
   - libhidapi-libusb0 
   - libhinawa-devel 
@@ -11803,6 +11827,9 @@ unsorted:
   - libmd0 
   - libmdb3 
   - libmdbsql3 
+  - libmdmp-devel 
+  - libmdmp-tools 
+  - libmdmp1 
   - libmed-devel: [x86_64] 
   - libmed-python: [x86_64] 
   - libmed11: [x86_64] 
@@ -11894,6 +11921,9 @@ unsorted:
   - libmodbus5 
   - libmodbuspp-devel 
   - libmodbuspp1_0-0 
+  - libmodi-devel 
+  - libmodi-tools 
+  - libmodi1 
   - libmodman-devel 
   - libmodman1 
   - libmodman1-32bit: [x86_64] 
@@ -12168,6 +12198,9 @@ unsorted:
   - libnjb 
   - libnjb-devel 
   - libnjb5 
+  - libnk2-1 
+  - libnk2-devel 
+  - libnk2-tools 
   - libnl-doc 
   - libnl-tools 
   - libnl3-200-32bit: [x86_64] 
@@ -12191,6 +12224,9 @@ unsorted:
   - libnpupnp-devel 
   - libnpupnp4 
   - libnscd-devel 
+  - libnsfdb-devel 
+  - libnsfdb-tools 
+  - libnsfdb1 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
   - libnss_usrfiles2-32bit: [x86_64] 
@@ -12595,6 +12631,9 @@ unsorted:
   - libpgf-devel 
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
+  - libphdi-devel 
+  - libphdi-tools 
+  - libphdi1 
   - libphobos2-0_97 
   - libphobos2-ldc96 
   - libphonenumber-devel 
@@ -14217,12 +14256,18 @@ unsorted:
   - libvpd2-devel-32bit: [x86_64] 
   - libvpx-devel 
   - libvpx6-32bit: [x86_64] 
+  - libvsgpt-devel 
+  - libvsgpt-tools 
+  - libvsgpt1 
   - libvshadow-devel 
   - libvshadow-tools 
   - libvshadow1 
   - libvslvm-devel 
   - libvslvm-tools 
   - libvslvm1 
+  - libvsmbr-devel 
+  - libvsmbr-tools 
+  - libvsmbr1 
   - libvsqlitepp3 
   - libvted-3-0 
   - libvterm-devel 
@@ -14313,6 +14358,9 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
+  - libwtcdb-devel 
+  - libwtcdb-tools 
+  - libwtcdb1 
   - libwtdbo4_4_0 
   - libwtdbomysql4_4_0 
   - libwtdbopostgres4_4_0 
@@ -21151,6 +21199,7 @@ unsorted:
   - python3-libfsext 
   - python3-libfshfs 
   - python3-libfsntfs 
+  - python3-libfsxfs 
   - python3-libftdi1 
   - python3-libfvde 
   - python3-libfwnt 
@@ -21159,6 +21208,7 @@ unsorted:
   - python3-libixion 
   - python3-liblnk 
   - python3-libluksde 
+  - python3-libmodi 
   - python3-libmodulemd 
   - python3-libmount 
   - python3-libmsiecf 
@@ -21166,6 +21216,7 @@ unsorted:
   - python3-liborcus 
   - python3-libpamtest 
   - python3-libpff 
+  - python3-libphdi 
   - python3-libprelude 
   - python3-libpreludedb 
   - python3-libproxy 
@@ -21184,8 +21235,10 @@ unsorted:
   - python3-libvhdi 
   - python3-libvmdk 
   - python3-libvoikko 
+  - python3-libvsgpt 
   - python3-libvshadow 
   - python3-libvslvm 
+  - python3-libvsmbr 
   - python3-libwrc 
   - python3-lilv 
   - python3-lldb: [x86_64] 
@@ -21997,7 +22050,6 @@ unsorted:
   - python36-cffi 
   - python36-cfgdiff 
   - python36-cfgv 
-  - python36-cfn-lint 
   - python36-cfscrape 
   - python36-chai 
   - python36-chainmap 
@@ -32185,6 +32237,7 @@ unsorted:
   - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
+  - system-user-mktex 
   - system-user-msr 
   - system-user-ntp 
   - system-user-osc-collab 
@@ -41327,7 +41380,6 @@ unsorted:
   - velum-branding 
   - verilator 
   - verilator-devel 
-  - verilator-doc 
   - verilator-doc-pdf 
   - verilator-examples 
   - veusz: [x86_64] 
