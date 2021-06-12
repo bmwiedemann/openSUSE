@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 11 09:51:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add another patch to fix migration of krunner shortcuts from
+  Plasma < 5.17 (boo#1187204):
+  * 0001-krunerglobalshortcuts-Fix-migration-from-old-compone.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 12:00:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix migration of krunner shortcuts (kde#437364):
