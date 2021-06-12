@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           adwaita-qt
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
