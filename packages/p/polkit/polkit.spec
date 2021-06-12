@@ -39,6 +39,8 @@ Patch3:         polkit-keyinit.patch
 # adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
 
+Patch5:         CVE-2021-3560.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
@@ -169,7 +171,7 @@ exit 0
 
 %verifyscript
 %verify_permissions -e %{_bindir}/pkexec
-%verify_permissions -e %{_libexecdir}/lib/polkit-1/polkit-agent-helper-1
+%verify_permissions -e %{_libexecdir}/polkit-1/polkit-agent-helper-1
 
 %post -n libpolkit0 -p /sbin/ldconfig
 %postun -n libpolkit0 -p /sbin/ldconfig

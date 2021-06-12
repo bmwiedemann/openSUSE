@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  9 07:09:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix verifyscript: the path to the binary was wrongly defined as
+  %{_libexecdir}/lib.
+
+-------------------------------------------------------------------
+Thu May 27 11:52:44 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- CVE-2021-3560: fixed a local privilege escalation using polkit_system_bus_name_get_creds_sync()
+ (bsc#1186497)
+  CVE-2021-3560.patch
+
+-------------------------------------------------------------------
 Thu Mar 11 22:21:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move /etc/dbus-1/system.d to /usr/share/dbus-1/system.d, the
