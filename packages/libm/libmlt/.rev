@@ -678,4 +678,12 @@ Only build sdl2 module.
 - Update to version 7.0.1 and fix install conflicts</comment>
     <requestid>895988</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>bb1c73a519a3240f00afe7b926ace2e9</srcmd5>
+    <version>7.0.1</version>
+    <time>1623521296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899612</requestid>
+  </revision>
 </revisionlist>

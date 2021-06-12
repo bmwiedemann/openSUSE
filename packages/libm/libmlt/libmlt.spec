@@ -183,11 +183,6 @@ This package contains python bindings.
 %install
 %cmake_install
 
-# update-alternatives
-mkdir -pv %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/melt %{buildroot}%{_bindir}/melt
-ln -sf %{_sysconfdir}/alternatives/melt.1%{?ext_man} %{buildroot}%{_mandir}/man1/melt.1%{?ext_man}
-
 # Get the modules that need data
 for MODULE in %{buildroot}%{_libdir}/mlt-%{sover}/libmlt*.so; do
   echo $MODULE
@@ -198,6 +193,11 @@ for MODULE in %{buildroot}%{_libdir}/mlt-%{sover}/libmlt*.so; do
     echo $MODULEDIR >> module_data.dirs
   fi;
 done
+
+#Link man melt to man melt-7
+pushd  %{buildroot}%{_mandir}/man1/
+ln -s  melt-%{sover}.1 melt.1
+popd
 
 # remove dupes
 %fdupes %{buildroot}%{_datadir}/mlt-%{sover}
