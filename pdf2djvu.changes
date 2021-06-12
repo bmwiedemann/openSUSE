@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 11 13:00:35 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.9.18.
+  * Fix configure check for Poppler ≥ 20.12.
+  * Fix build failure with GCC 11.
+  * Drop support for Python 2.6.
+  * Fix typo in the Russian documentation.
+- Drop pdf2djvu-fix-poppler-check.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jan  8 00:11:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add pdf2djvu-fix-poppler-check.patch: Check for poppler instead
