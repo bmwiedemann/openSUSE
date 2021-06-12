@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:41:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * FormLineEdit: Don't run focusin action when gaining focus because of window management (kde#436990)
+  * FormLineEdit: Don't run focusout/formatfield actions when losing focus because of window management (kde#435833)
+  * FormLineEdit: Move editing=false up in the focus out event
+  * Mark items with name in toolsQuick as default
+  * Unbox alert() parameters when they are in an object
+  * Second attempt at fixing the windows/craft build
+  * Fix spectre includes
+  * Fix loading some png files inside zip comicbook files (kde#436086)
+
+-------------------------------------------------------------------
 Wed May 12 06:09:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
