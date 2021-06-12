@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:57:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- GNU Nettle 3.7.3: [CVE-2021-3580, bsc#1187060]
+  * Fix crash for zero input to rsa_sec_decrypt and
+    rsa_decrypt_tr. Potential denial of service vector.
+  * Ensure that all of rsa_decrypt_tr and rsa_sec_decrypt return
+    failure for out of range inputs, instead of either crashing,
+    or silently reducing input modulo n. Potential denial of
+    service vector.
+  * Ensure that rsa_decrypt returns failure for out of range
+    inputs, instead of silently reducing input modulo n.
+  * Ensure that rsa_sec_decrypt returns failure if the message
+    size is too large for the given key. Unlike the other bugs,
+    this would typically be triggered by invalid local
+    configuration, rather than by processing untrusted remote
+    data.
+
+-------------------------------------------------------------------
 Sun Mar 21 10:17:35 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Nettle 3.7.2:

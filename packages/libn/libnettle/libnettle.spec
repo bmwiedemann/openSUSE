@@ -19,14 +19,14 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        Cryptographic Library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.lysator.liu.se/~nisse/nettle/
-Source0:        https://www.lysator.liu.se/~nisse/archive/nettle-%{version}.tar.gz
-Source1:        https://www.lysator.liu.se/~nisse/archive/nettle-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
@@ -79,7 +79,7 @@ Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.
 
 %package -n nettle
 Summary:        Cryptographic Tools
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 
 %description -n nettle
