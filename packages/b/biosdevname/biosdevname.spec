@@ -1,7 +1,7 @@
 #
 # spec file for package biosdevname
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,21 +74,17 @@ You can enable/disable usage of biosdevname with boot option
 sed -i -e 's#@@BIOSDEVNAME_RULEDEST@@#'%{_udevrulesdir}'/71-biosdevname.rules#' configure.ac
 autoreconf -fi
 %configure \
-	--disable-rpath \
-	--prefix=/ \
-	--bindir=/bin \
-	--sbindir=/sbin
+       --disable-rpath
 make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
-rm %{buildroot}/sbin/%{name}S || :
 
 %files
 %defattr(-,root,root,-)
 %license COPYING
 %doc README
-/sbin/%{name}
+%{_sbindir}/%{name}
 %{_udevrulesdir}/71-biosdevname.rules
 
 %{_mandir}/man1/*
