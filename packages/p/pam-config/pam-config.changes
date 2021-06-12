@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:46:00 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Add "revoke" to the option list for pam_keyinit
+  (Remove some leftover debugs while we're at it)
+  [pam-config-fix-pam_keyinit-options.patch]
+
+-------------------------------------------------------------------
+Tue Jun  8 12:23:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- prior to writing an service-specific config file, the main function
+  calls access() on the destination file in /etc/pam.d.
+  This will fail and no config file will be written when the original
+  config file was installed in /usr/etc/pam.d.
+  A similar problem exists when creating the new service file:
+  create_service_file() wants to give the new service file the same
+  user, group and mode as the old one, but the old one may not exist.
+  In that case, set these to 0(root), 0(root), and 0644.
+  [pam-config-remove-bad-access-call.patch]
+
+-------------------------------------------------------------------
 Fri May  1 20:32:29 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.3

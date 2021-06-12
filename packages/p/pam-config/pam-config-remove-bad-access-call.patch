@@ -1,0 +1,54 @@
+Index: pam-config-1.3/src/pam-config.c
+===================================================================
+--- pam-config-1.3.orig/src/pam-config.c
++++ pam-config-1.3/src/pam-config.c
+@@ -1075,19 +1075,10 @@ main (int argc, char *argv[])
+       if (debug)
+ 		  printf ("*** write_config (%s/pam.d/%s)\n", confdir, gl_service);
+ 
+-      /* Check if service file exists */
+-      char *conffile;
+-      if (asprintf (&conffile, "%s/pam.d/%s", confdir, gl_service) < 0)
+-	return 1;
+-
+-      if (access (conffile, R_OK) != 0)
+-      {
+-	fprintf (stderr, _("Cannot access '%s': %m\n"), conffile);
+-	free (conffile);
+-	return 1;
+-      }
+-      free (conffile);
+-
++      /*
++       * Note that the modules in service_module_list[]
++       * do not use the "op" and the "fp" parameters.
++       */
+       while (*modptr != NULL)
+ 	{
+ 	  retval |= (*modptr)->write_config (*modptr, -1, NULL);
+Index: pam-config-1.3/src/single_config.c
+===================================================================
+--- pam-config-1.3.orig/src/single_config.c
++++ pam-config-1.3/src/single_config.c
+@@ -245,12 +245,15 @@ create_service_file (const char *service
+     return NULL;
+ 
+   if (stat (conffile, &f_stat) != 0)
+-  {
+-    fprintf (stderr, _("Cannot stat '%s': %m\n"), conffile);
+-    free (tmp_file);
+-    free (conffile);
+-    return NULL;
+-  }
++    {
++      /* Make them owned by root and writable only by root */
++      fprintf (stderr, _("Cannot stat '%s': %m\n"), conffile);
++
++      memset(&f_stat, 0, sizeof(struct stat));	/* To be on the safe side ... */
++      f_stat.st_mode = 0644;
++      f_stat.st_uid = 0;
++      f_stat.st_gid = 0;
++    }
+ 
+   free (conffile);
+   fd = mkstemp (tmp_file);
