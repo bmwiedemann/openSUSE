@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  9 01:55:17 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Resolve issue with UPDATING.md in submission
+
+-------------------------------------------------------------------
+Wed Jun 02 05:23:06 UTC 2021 - william.brown@suse.com
+
+- Update to to build from _service with cargo-audit integration
+
+-------------------------------------------------------------------
 Mon Apr 19 12:16:37 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.19.0

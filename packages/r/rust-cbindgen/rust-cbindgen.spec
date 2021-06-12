@@ -20,14 +20,16 @@
 %global crate_name cbindgen
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:           rust-%{crate_name}
-Version:        0.19.0
+Version:        0.19.0+git0
 Release:        0
 Summary:        A tool for generating C bindings from Rust code
 License:        MPL-2.0
 Group:          Development/Languages/Rust
 URL:            https://crates.io/crates/cbindgen
-Source0:        https://github.com/eqrion/cbindgen/archive/v%{version}.tar.gz#/%{crate_name}-%{version}.tar.gz
+Source0:        %{crate_name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+Source99:       UPDATING.md
 BuildRequires:  cargo >= 1.30.0
 BuildRequires:  rust >= 1.30.0
 BuildRequires:  rust-std-static >= 1.30.0
@@ -39,13 +41,7 @@ A tool for generating C bindings from Rust code.
 %setup -q -T -b 0 -n %{crate_name}-%{version}
 %setup -q -D -T -a 1 -n %{crate_name}-%{version}
 mkdir cargo-home
-cat >cargo-home/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+cp %{SOURCE2} cargo-home/config
 
 %build
 # This should eventually migrate to distro policy
