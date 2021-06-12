@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 22:19:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add swig-octave-6.patch -- Allow swig to work with octave 6 and
+  above; patch part of upstream merge request [gh#swig/swig#2020].
+
+-------------------------------------------------------------------
 Thu Nov 26 20:34:33 UTC 2020 - Michael Behrisch <oss@behrisch.de>
 
 - Fixing package dependencies for CentOS
