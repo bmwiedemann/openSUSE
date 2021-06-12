@@ -1,0 +1,70 @@
+Subject: Adjust Akonadi AppArmor profiles for openSUSE and AppArmor 3.0
+
+From: Christian Boltz <suse-beta@cboltz.de>
+
+- add paths to match the openSUSE file location
+- add 'abi' rules to enable and enforce all AppArmor features
+
+
+Index: b/apparmor/mariadbd_akonadi
+===================================================================
+--- a/apparmor/mariadbd_akonadi	2021-04-22 18:21:40.000000000 +0200
++++ b/apparmor/mariadbd_akonadi	2021-06-05 18:47:31.029159467 +0200
+@@ -1,3 +1,5 @@
++abi <abi/3.0>,
++
+ #include <tunables/global>
+ 
+ @{xdg_data_home}=@{HOME}/.local/share
+Index: b/apparmor/mysqld_akonadi
+===================================================================
+--- a/apparmor/mysqld_akonadi	2021-04-22 18:21:40.000000000 +0200
++++ b/apparmor/mysqld_akonadi	2021-06-05 18:47:36.609147822 +0200
+@@ -1,3 +1,5 @@
++abi <abi/3.0>,
++
+ #include <tunables/global>
+ 
+ @{xdg_data_home}=@{HOME}/.local/share
+Index: b/apparmor/postgresql_akonadi
+===================================================================
+--- a/apparmor/postgresql_akonadi	2021-04-22 18:21:40.000000000 +0200
++++ b/apparmor/postgresql_akonadi	2021-06-05 18:47:38.149144609 +0200
+@@ -1,3 +1,5 @@
++abi <abi/3.0>,
++
+ #include <tunables/global>
+ 
+ @{xdg_data_home}=@{HOME}/.local/share
+Index: b/apparmor/usr.bin.akonadiserver
+===================================================================
+--- a/apparmor/usr.bin.akonadiserver	2021-04-22 18:21:40.000000000 +0200
++++ b/apparmor/usr.bin.akonadiserver	2021-06-05 18:47:44.697130942 +0200
+@@ -1,3 +1,5 @@
++abi <abi/3.0>,
++
+ #include <tunables/global>
+ 
+ @{xdg_data_home}=@{HOME}/.local/share
+@@ -37,6 +39,7 @@
+   /etc/xdg/** r,
+   /usr/bin/akonadiserver mr,
+   /usr/lib/x86_64-linux-gnu/libexec/drkonqi PUx,
++  /usr/lib{,64}/libexec/drkonqi PUx,
+   /usr/bin/mariadb-admin PUx -> mariadbd_akonadi,
+   /usr/bin/mariadb-check PUx -> mariadbd_akonadi,
+   /usr/bin/mariadb-install-db PUx -> mariaddbd_akonadi,
+@@ -49,10 +52,12 @@
+   /{usr/,usr/lib/postgresql/*/,opt/pgsql*/}bin/pg_ctl PUx -> postgresql_akonadi,
+   /{usr/,usr/lib/postgresql/*/}bin/pg_upgrade PUx -> postgresql_akonadi,
+   /usr/sbin/mysqld PUx -> mysqld_akonadi,
++  /usr/share/icu/[0-9]*.[0-9]*/*.dat r,
+   /usr/share/mime/mime.cache r,
+   /usr/share/mime/packages/ r,
+   /usr/share/mime/types r,
+-  /usr/share/qt/translations/* r,
++  /usr/share/qt5/qtlogging.ini r,
++  /usr/share/qt{,5}/translations/* r,
+   /usr/share/mysql/** r,
+   @{PROC}/sys/kernel/core_pattern r,
+   @{PROC}/sys/kernel/random/boot_id r,

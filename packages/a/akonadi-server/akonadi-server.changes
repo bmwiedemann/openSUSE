@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:38:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- No code change since 21.04.1
+
+-------------------------------------------------------------------
+Thu Jun  3 18:22:09 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- Install AppArmor profiles (as -apparmor subpackage)
+- add akonadi-apparmor-opensuse.diff to adjust the profiles to
+  openSUSE paths, and to add 'abi' rules to the profiles
+
+-------------------------------------------------------------------
 Wed May 12 06:06:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1

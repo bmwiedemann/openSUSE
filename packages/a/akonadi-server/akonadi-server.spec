@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        21.04.1
+Version:        21.04.2
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -34,6 +34,10 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
+# PATCH-FIX-OPENSUSE akonadi-apparmor-opensuse.diff - adjust AppArmor profiles to work on openSUSE
+Patch:          akonadi-apparmor-opensuse.diff
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
@@ -161,13 +165,20 @@ Provides:       libKF5AkonadiPrivate-devel = %{version}
 This package contains development files of Akonadi, the KDE PIM storage
 service.
 
+%package apparmor
+Summary:        AppArmor profiles for Akonadi
+Requires:       apparmor-abstractions
+
+%description apparmor
+This package contains AppArmor profiles for Akonadi.
+
 %lang_package
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir} -DINSTALL_APPARMOR=FALSE
+  %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
   %cmake_build
 
 %install
@@ -189,6 +200,9 @@ service.
 %postun -n libKF5AkonadiPrivate5 -p /sbin/ldconfig
 %post -n libKF5AkonadiXml5 -p /sbin/ldconfig
 %postun -n libKF5AkonadiXml5 -p /sbin/ldconfig
+
+%post apparmor
+%apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
 
 %files
 %license LICENSES/*
@@ -262,6 +276,12 @@ service.
 %{_kf5_plugindir}/designer/
 %dir %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevappwizard/templates/
+
+%files apparmor
+%config(noreplace) %{_sysconfdir}/apparmor.d/mariadbd_akonadi
+%config(noreplace) %{_sysconfdir}/apparmor.d/mysqld_akonadi
+%config(noreplace) %{_sysconfdir}/apparmor.d/postgresql_akonadi
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
 
 %if %{with lang}
 %files lang -f %{name}.lang
