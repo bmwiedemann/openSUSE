@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:58:26 CEST 2021 - tiwai@suse.de
+
+- Fix regression in config read and UCM handling on pipewire and
+  pulseaudio (boo#1187079, boo#1187033):
+  0001-conf-fix-load_for_all_cards.patch
+  0002-ucm-add-_alibpref-to-get-the-private-device-prefix.patch
+  0003-ucm-fix-_alibpref-string-add-.-delimiter-to-the-end.patch
+
+-------------------------------------------------------------------
 Mon May 31 11:54:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.5

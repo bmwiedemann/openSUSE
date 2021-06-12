@@ -52,6 +52,9 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
+Patch1:         0001-conf-fix-load_for_all_cards.patch
+Patch2:         0002-ucm-add-_alibpref-to-get-the-private-device-prefix.patch
+Patch3:         0003-ucm-fix-_alibpref-string-add-.-delimiter-to-the-end.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -140,6 +143,9 @@ This package contains the library for ALSA topology support.
 
 %prep
 %setup -q -n alsa-lib-%{version}
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch101 -p1
 
 %build
