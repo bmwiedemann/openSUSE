@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:47:28 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch fix-sphinx.patch which fixes build with Sphinx 4.x.
+
+-------------------------------------------------------------------
 Tue Apr 13 12:40:10 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 0.1.16

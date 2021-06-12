@@ -1,7 +1,7 @@
 #
 # spec file for package libcomps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/libcomps
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         fix-sphinx.patch
 
 BuildRequires:  check-devel
 BuildRequires:  cmake
