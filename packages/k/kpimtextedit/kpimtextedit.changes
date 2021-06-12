@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:40:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix Bug 436880 - Kmail ignores right-to-left text direction (kde#436880)
+  * Add autotest for Bug 436880
+
+-------------------------------------------------------------------
 Wed May 12 06:08:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
