@@ -22,7 +22,7 @@ Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-URL:            http://acmel.wordpress.com/
+URL:            https://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
 Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
@@ -32,13 +32,14 @@ Patch0:         remove-ftrace-filter.patch
 Patch1:         btf_encoder-fix-and-complete-filtering-out-zero-sized-per-CPU-variables.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
-%if 0%{?suse_version} < 1550
-BuildRequires:  libebl-devel
-%endif
 BuildRequires:  libelf-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 # Also known by its most prominent tool
 Provides:       pahole = %version-%release
+%if 0%{?suse_version} < 1550
+BuildRequires:  libebl-devel
+%endif
 
 %description
 dwarves is a set of tools that use the DWARF debugging information

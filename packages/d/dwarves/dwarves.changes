@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  2 14:05:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use https for url (and more beautification changes from spec-cleaner)
+
+-------------------------------------------------------------------
 Tue Jun  1 10:28:25 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Handle zero sized per-cpu veriables in Linux BTF.
