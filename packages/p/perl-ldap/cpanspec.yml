@@ -1,0 +1,27 @@
+---
+description_paragraphs: 1
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  perl-Digest-MD5
+ BuildRequires:  perl-IO-Socket-INET6
+ BuildRequires:  perl-IO-Socket-IP
+ BuildRequires:  perl-JSON
+ BuildRequires:  perl-MIME-Base64
+ BuildRequires:  perl-URI
+#post_prep: |-
+ find contrib -type f | xargs -n 1 sed -i "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@"
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

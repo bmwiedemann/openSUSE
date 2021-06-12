@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ldap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name perl-ldap
 Name:           perl-ldap
-Version:        0.66
+Version:        0.68
 Release:        0
 Summary:        Client Interface for LDAP Servers
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/perl-ldap
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARSCHAP/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRequires:  perl-Authen-SASL
 BuildRequires:  perl-Convert-ASN1
 BuildRequires:  perl-IO-Socket-SSL
@@ -40,6 +41,14 @@ Provides:       perl_ldp
 Obsoletes:      perl-Net-LDAP < %{version}
 Obsoletes:      perl_ldp
 BuildArch:      noarch
+# MANUAL BEGIN
+BuildRequires:  perl-Digest-MD5
+BuildRequires:  perl-IO-Socket-INET6
+BuildRequires:  perl-IO-Socket-IP
+BuildRequires:  perl-JSON
+BuildRequires:  perl-MIME-Base64
+BuildRequires:  perl-URI
+# MANUAL END
 %{perl_requires}
 
 %description
@@ -48,15 +57,16 @@ A Client interface for LDAP servers.
 %prep
 %setup -q -n perl-ldap-%{version}
 find . -type f -print0 | xargs -0 chmod 644
-# MANUAL
-find contrib -type f | xargs -n 1 sed -i "s@/usr/local/bin/perl@%{_bindir}/perl@"
+# MANUAL BEGIN
+find contrib -type f | xargs -n 1 sed -i "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@"
 
+# MANUAL END
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %install
 %perl_make_install
