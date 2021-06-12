@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:26:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.1:
+  * Add interprocess reader writer lock
+  * Improve README
+  * remove unused eventlet import
+  * use stdlib monotonic instead of external for python >= 3.4
+  * Add testing for additional python versions
+  * Remove python 2.6 support
+  * Remove eventlet dependency and use threading.current_thread instead
+
+-------------------------------------------------------------------
 Mon Mar 16 10:34:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

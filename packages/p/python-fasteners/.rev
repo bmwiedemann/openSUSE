@@ -64,4 +64,19 @@
     <comment>- Fix build without python2</comment>
     <requestid>785576</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2012c79b3d8737fd9eb92b780462c8d9</srcmd5>
+    <version>0.16.1</version>
+    <time>1623521120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.1:
+  * Add interprocess reader writer lock
+  * Improve README
+  * remove unused eventlet import
+  * use stdlib monotonic instead of external for python &gt;= 3.4
+  * Add testing for additional python versions
+  * Remove python 2.6 support
+  * Remove eventlet dependency and use threading.current_thread instead</comment>
+    <requestid>897848</requestid>
+  </revision>
 </revisionlist>
