@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  5 19:36:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Use gcc10 for Tumbleweed to workaround build issues
+
+-------------------------------------------------------------------
 Sat Apr 25 05:55:23 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.0.5

@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,11 @@ Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
 Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -69,6 +73,10 @@ using the cursor keys and right Ctrl/Alt keys).
 %setup -q
 
 %build
+%if 0%{?suse_version} >= 1550
+export CC="gcc-10"
+export CXX="g++-10"
+%endif
 %if 0%{?sle_version} == 150000
 export CFLAGS="%optflags -fPIC"
 export CXXFLAGS="%optflags -fPIC"
