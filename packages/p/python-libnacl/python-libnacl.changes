@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 11 22:36:47 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
+
+- add crypto_kdf_derive.patch to fix crypto_kdf_derive_from_key() on 32-bit platforms 
+
+-------------------------------------------------------------------
 Thu Feb 18 20:17:07 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
 
 - Revert libsodium requirement back to libsodium23

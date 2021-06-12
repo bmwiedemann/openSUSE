@@ -24,6 +24,7 @@ Summary:        Python bindings for libsodium based on ctypes
 License:        Apache-2.0
 URL:            https://github.com/saltstack/libnacl
 Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz#/libnacl-%{version}.tar.gz
+Patch0:         crypto_kdf_derive.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,6 +43,7 @@ in libnacl/__init__.py can be pulled out and placed directly in any project to g
 
 %prep
 %setup -q -n libnacl-%{version}
+%patch0 -p1
 
 %build
 %python_build
