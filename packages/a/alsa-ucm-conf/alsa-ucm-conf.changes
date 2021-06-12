@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:19:50 CEST 2021 - tiwai@suse.de
+
+- Fix for HDA config lookup (boo#1187079):
+  0001-HDA-Intel-the-lookups-are-supported-from-syntax-4.patch
+
+-------------------------------------------------------------------
 Mon May 31 14:14:45 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.5
