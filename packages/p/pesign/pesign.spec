@@ -66,7 +66,7 @@ with the PE and Authenticode specifications.
 %patch8 -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie"
 
 %install
 mkdir -p %{buildroot}%{_localstatedir}/lib/pesign

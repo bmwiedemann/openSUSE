@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  8 15:55:09 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Link as Position Independent Executable (bsc#1184124).
+
+-------------------------------------------------------------------
 Fri May  7 01:38:34 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Stop marking macros.pesign as %config
