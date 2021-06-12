@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 02 05:40:32 UTC 2021 - william.brown@suse.com
+
+- Update to version 0.8.1~git0.cce1b08:
+  * Prepare for release
+  * Set the capi.library.rustflags
+  * Add a simple way to set the RUSTFLAGS from Cargo.toml
+  * CI: test example project in Windows/MSYS2 (#191)
+  * Update cargo requirement from 0.52 to 0.53
+  * Upgrade to GitHub-native Dependabot
+  * Default to nightly
+  * Use codecov
+  * Move the code coverage in a stand-alone script
+  * Enable colored help
+
+-------------------------------------------------------------------
 Tue Apr  6 02:21:28 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add README.suse-maint to fix OBS warning.

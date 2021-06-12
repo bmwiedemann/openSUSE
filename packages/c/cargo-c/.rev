@@ -71,4 +71,12 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
     to match the behavior of cargo install.</comment>
     <requestid>883123</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d8a15f960a8704cd7a6490e4c9cbb10</srcmd5>
+    <version>0.8.1~git0.cce1b08</version>
+    <time>1623521122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898572</requestid>
+  </revision>
 </revisionlist>

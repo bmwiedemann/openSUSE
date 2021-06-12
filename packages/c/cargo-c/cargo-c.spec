@@ -17,20 +17,22 @@
 #
 
 
+%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
+
 Name:           cargo-c
-Version:        0.8.0
+Version:        0.8.1~git0.cce1b08
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
 Group:          Development/Languages/Rust
 
 URL:            https://crates.io/crates/cargo-c
-#
-Source0:        https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-#
+Source2:        cargo_config
+
 Source1000:     README.suse-maint
-BuildRequires:  rust-packaging
+BuildRequires:  cargo
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -45,30 +47,19 @@ software.
 %autosetup -a1 -p1
 
 install -d -m 0755 .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-[build]
-rustc = "%{__rustc}"
-rustdoc = "%{__rustdoc}"
-rustflags = %{__global_rustflags_toml}
-[install]
-root = '%{buildroot}%{_prefix}'
-[term]
-verbose = true
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
-%cargo_build
+export RUSTFLAGS="%{rustflags}"
+cargo build --offline --release
 
 %install
-%cargo_install
+export RUSTFLAGS="%{rustflags}"
+cargo install --offline --root=%{buildroot}%{_prefix} --path .
 
 find %{buildroot} -name .crates2.json -delete
 rm -rf %{buildroot}%{_datadir}/cargo/registry
+rm %{buildroot}%{_prefix}/.crates.toml
 
 %files
 %license LICENSE
