@@ -1,7 +1,7 @@
 #
 # spec file for package apfel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@
 
 %define soname libAPFEL0
 Name:           apfel
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A Probability Distribution Function Evolution Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://apfel.hepforge.org/
-Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz
+Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM apfel-allow-disabling-pywrap.patch badshah400@gmail.com -- Allow building with python extension disabled, for example due to lack of python2 support in the system
 Patch0:         apfel-allow-disabling-pywrap.patch
 BuildRequires:  LHAPDF-devel
