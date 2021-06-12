@@ -1,8 +1,8 @@
 #
 # spec file for package kajaani-kombat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,11 @@ Source2:        %{name}-fullscreen.desktop
 Patch0:         %{name}-fix-build.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -66,6 +70,9 @@ This subpackage includes the server binary.
 %patch0 -p1
 
 %build
+%if 0%{?suse_version} >= 1550
+export CXX="g++-10"
+%endif
 export CXXFLAGS="%{optflags}"
 make all server %{?_smp_mflags}
 
