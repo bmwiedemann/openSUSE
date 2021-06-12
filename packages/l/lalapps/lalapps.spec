@@ -29,6 +29,8 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalapps-fix-uninitialised-var.patch badshah400@gmail.com -- Fix usage of uninitialised variable
 Patch0:         lalapps-fix-uninitialised-var.patch
+# PATCH-FIX-UPSTREAM lalapps-gcc11-array-bounds-decl.patch badshah400@gmail.com -- Fix building with gcc 11 by correcting array bounds declaration; patch part of upstream merge request [https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1605]
+Patch1:         lalapps-gcc11-array-bounds-decl.patch
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}

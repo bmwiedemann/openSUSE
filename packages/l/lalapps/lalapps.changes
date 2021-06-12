@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  8 20:51:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalapps-gcc11-array-bounds-decl.patch: Fix building with gcc
+  11 by correcting array bounds declaration; patch part of
+  upstream merge request
+  [https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1605].
+
+-------------------------------------------------------------------
 Tue Apr 20 13:53:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix runtime requirement for python-lal 7.1.0
