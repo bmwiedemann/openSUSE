@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  8 12:39:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Prevent crash in git-blame for HUGE git commits (kde#437683)
+  * Fix crash when turning on "bg shading" for Documents plugin
+  * deactivate Kate command bar if KXMLGui command bar is there
+
+-------------------------------------------------------------------
 Wed May 12 06:07:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.1
