@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-dbus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libvirt-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
+Requires(pre):  group(libvirt)
 Requires:       user(libvirtdbus)
 
 %description

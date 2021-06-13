@@ -24,4 +24,13 @@
   boo#1178530</comment>
     <requestid>847329</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6781ea653d9a01e67228d4b99a137299</srcmd5>
+    <version>1.4.0</version>
+    <time>1623618338</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libvirtdbus user to libvirt group
+  boo#1182538</comment>
+    <requestid>898512</requestid>
+  </revision>
 </revisionlist>
