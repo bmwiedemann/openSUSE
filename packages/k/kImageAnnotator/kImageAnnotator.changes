@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:34:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.1
+  New
+  * Add function for loading translations.
+  * Add a new tool for creating resizable movable duplicates of
+    regions.
+  * Add support for hiding annotation settings panel.
+  * Add config option for numbering tool to only set next number.
+  * Allow manually changing canvas size.
+  * Canvas background color configurable.
+  * Zoom in and out with keyboard shortcuts.
+  * Zoom in and out via buttons from UI.
+  * Add reset zoom keyboard shortcut with tooltip.
+  * Add keyboard shortcut support for text tool.
+  * Allow rotating background image.
+  * Allow flipping background image horizontally and vertically.
+  * Configurable UI with dockable settings widgets.
+  * Add invert color image effect.
+  * Allow disabling item shadow per item from UI.
+  * Add a font selection to UI.
+  * Add zoom in/out capability to crop view.
+  * Allow to zoom in modify canvas view.
+  * Select item after drawing it and allow changing settings.
+  Changed
+  * Change drop shadow to cover all sites.
+  Fixed
+  * Deleting item outside image doesn't decrease canvas size.
+  * Duplicate region of grayscale image has color.
+  * Marker shows fill and width config when modifying existing
+    item.
+  * Highlighter/Marker washed out color and overlapping.
+  * Popup menus shown outside screen.
+  * Not possible to enter value in the width tool.
+  * Obfuscation tool shows fonts settings when switching from
+    tool with font.
+  * Annotation tools are not displayed if application starts with
+    docks hidden.
+  * Vertical scrollbar missing after using Paste embedded and
+    moving the image.
+  * Not possible to disable tool automatically deselected after
+    drawn.
+  * Annotation tool shortcuts do not work if the panel is hidden.
+
+-------------------------------------------------------------------
 Wed Mar 24 07:31:17 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.4.2
