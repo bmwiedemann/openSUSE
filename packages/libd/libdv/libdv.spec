@@ -1,7 +1,7 @@
 #
-# spec file for package libdv
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,18 +91,8 @@ support the IEEE 1394 (a.k.a. FireWire or i.Link) interface. Libdv was
 developed according to the official standards for DV video: IEC 61834
 and SMPTE 314M.
 
-
 %prep
-%setup -q -n %{sname}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1 -n %{sname}-%{version}
 
 %build
 mkdir m4
@@ -116,7 +106,6 @@ export CFLAGS="${RPM_OPT_FLAGS/O2/O3} -fomit-frame-pointer -fPIC -DPIC"
 export LDFLAGS="-pie"
 %configure \
 	--disable-static \
-	--with-pic \
 %if %{with playdv}
 	--enable-sdl \
 %else
@@ -128,9 +117,9 @@ make %{?_smp_mflags}
 
 %install
 %if "%{flavor}" == "playdv"
-make DESTDIR=%{buildroot} -C playdv install %{?_smp_mflags}
+%make_install -C playdv
 %else
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
@@ -139,17 +128,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libdv4 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
 %doc %{_mandir}/man1/*.1.gz
 
 %if "%{flavor}" != "playdv"
 %files -n libdv4
-%defattr(-,root,root)
 %{_libdir}/libdv.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libdv
 %{_libdir}/libdv.so
 %{_libdir}/pkgconfig/libdv.pc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:57:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+- Upgrade old rpm constructs (rediffs libdv-fix-no-add-needed.patch
+  as p1)
+
+-------------------------------------------------------------------
 Mon Feb  3 13:09:39 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Cleanup spec file, remove obsolete conditionals.
