@@ -19,7 +19,7 @@
 %global pkg_name dhall-json
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Convert between Dhall and JSON or YAML
 License:        BSD-3-Clause

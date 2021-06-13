@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:06:40 UTC 2021 - psimons@suse.com
+
+- Update dhall-json to version 1.7.7.
+  1.7.7
+
+  * Build against `dhall-1.39.0`
+
+-------------------------------------------------------------------
 Mon Mar 29 11:00:15 UTC 2021 - psimons@suse.com
 
 - Update dhall-json to version 1.7.6.
