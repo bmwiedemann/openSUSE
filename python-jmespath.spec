@@ -1,7 +1,7 @@
 #
 # spec file for package python-jmespath
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,7 @@ Summary:        Python module for declarative JSON document element extraction
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jmespath/jmespath.py
-Source:         https://files.pythonhosted.org/packages/source/j/jmespath/jmespath-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/jmespath/jmespath.py/develop/extra/test_hypothesis.py
+Source:         https://github.com/jmespath/jmespath.py/archive/refs/tags/%{version}.tar.gz#/jmespath-%{version}.tar.gz
 # Testing
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module nose}
@@ -37,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.4
 Requires:       python-simplejson
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,8 +72,7 @@ The * can also be used for hash types:
 The expression: foo.*.name will return ["one", "two"].
 
 %prep
-%setup -q -n jmespath-%{version}
-cp %{SOURCE1} .
+%setup -q -n jmespath.py-%{version}
 
 %build
 %python_build
@@ -86,9 +84,11 @@ mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand $python setup.py test
-$python test_hypothesis.py
-}
+%if 0%{?suse_version} > 1500
+%pyunittest discover -v
+%else
+%python_exec setup.py test
+%endif
 
 %post
 %python_install_alternative jp
