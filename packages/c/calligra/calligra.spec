@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-Freetype-and-FontConfig-Linkage.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 13 14:21:18 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-Freetype-and-FontConfig-Linkage.patch to fix build with
+  KDE Frameworks 5.83
+
+-------------------------------------------------------------------
 Fri May 28 10:18:13 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Use %find_lang + %kf5_find_htmldocs
