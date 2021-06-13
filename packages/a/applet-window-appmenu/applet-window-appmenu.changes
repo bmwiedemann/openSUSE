@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 13 12:43:42 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.7.0:
+  * fix occasional crash when menu is hiding
+  * fixes when present in plasma panels
+  * position menus relevant to screen edge
+  * add filter for maximized windows
+  * apply filters properly for compact button scenario
+  * respect Fitt's law for floating latte panels
+  * position menus relevant to entire screen geometry
+  * add option to enable unity behavior in neighbour window title applets
+  * fixes for unity behavior in latte panels
+
+-------------------------------------------------------------------
 Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
 
 -  %cmake_build is now the recommended way to build cmake projects

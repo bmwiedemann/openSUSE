@@ -67,4 +67,21 @@
     <comment></comment>
     <requestid>893126</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83fbc7be179ee8d0fc5649b4b814c060</srcmd5>
+    <version>0.7.0</version>
+    <time>1623618375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * fix occasional crash when menu is hiding
+  * fixes when present in plasma panels
+  * position menus relevant to screen edge
+  * add filter for maximized windows
+  * apply filters properly for compact button scenario
+  * respect Fitt's law for floating latte panels
+  * position menus relevant to entire screen geometry
+  * add option to enable unity behavior in neighbour window title applets
+  * fixes for unity behavior in latte panels</comment>
+    <requestid>899805</requestid>
+  </revision>
 </revisionlist>
