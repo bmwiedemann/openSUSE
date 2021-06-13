@@ -1,0 +1,80 @@
+#
+# spec file for package fcft
+#
+# Copyright (c) 2021 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define libname libfcft3
+Name:           fcft
+Version:        2.4.0
+Release:        0
+Summary:        A library for font loading and glyph rasterization using FreeType/pixman
+License:        MIT
+Group:          Development/Libraries/C and C++
+URL:            https://codeberg.org/dnkl/fcft
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  meson >= 0.54
+BuildRequires:  pkgconfig
+BuildRequires:  scdoc
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(tllist)
+
+%description
+fcft is a font loading and glyph rasterization library built on-top
+of FontConfig, FreeType2 and pixman.
+
+%package -n %{libname}
+Summary:        A library for font loading and glyph rasterization using FreeType/pixman
+Group:          System/Libraries
+
+%description -n %{libname}
+fcft is a font loading and glyph rasterization library built on-top
+of FontConfig, FreeType2 and pixman.
+
+%package devel
+Summary:        Header files for fcft,  a font loading and rasterization library
+Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
+
+%description devel
+fcft is a font loading and glyph rasterization library built on-top
+of FontConfig, FreeType2 and pixman.
+
+%prep
+%autosetup -n %{name}
+
+%build
+%meson
+%meson_build
+
+%install
+%meson_install
+
+%files -n %{libname}
+%{_libdir}/libfcft.so.*
+
+%files devel
+%license LICENSE
+%doc README.md CHANGELOG.md
+%{_datadir}/doc/%{name}/
+%{_includedir}/%{name}/
+%{_libdir}/libfcft.so
+%{_libdir}/pkgconfig/%{name}.pc
+%{_mandir}/man3/fcft_*.3.gz
+
+%changelog
