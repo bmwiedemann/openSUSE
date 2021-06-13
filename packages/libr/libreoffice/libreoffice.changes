@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 10 12:31:56 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.4.2 (bsc#1178806)
+  * 7.1.4 final release
+- Dropped patches:
+  * bsc1184961.patch
+
+-------------------------------------------------------------------
+Thu May 27 11:27:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Fix bsc#1185797:  Searching in PPTX document makes LibreOffice crash
+  * bsc1185797.patch
+
+-------------------------------------------------------------------
 Wed May 26 13:32:48 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1185505 - LO-L3: Text highlight "bleeds" when saving as PPTX

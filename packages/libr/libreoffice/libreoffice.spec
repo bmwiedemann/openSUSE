@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.1.3.2
+Version:        7.1.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,12 +101,12 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/f14b83b38d35a585976ef5d422754d8e0d0266a6 ucp: fix call to getComponentContext
 Patch4:         use-comphelper.patch
-# PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/9fed7b07af44792012028eb57900640a5ee833cb tdf#141930 document set as unmodified if editengine didn't modify on keyevent
-Patch5:         bsc1184961.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 # bsc#1185505 - LO-L3: Text highlight "bleeds" when saving as PPTX
 Patch7:         bsc1185505.patch
+# bsc#1185797 Searching in PPTX document makes LibreOffice crash
+Patch8:         bsc1185797.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -978,9 +978,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
