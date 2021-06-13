@@ -17,9 +17,9 @@
 #
 
 
-%define parent_tag 4.9.3
-%define tag_offset +406
-%define revision 90d1e9dc2c70df3f60a987d8366030728f4b6352
+%define parent_tag 4.10.0
+%define tag_offset %nil
+%define revision v%{parent_tag}
 
 Name:           manpages-l10n
 Version:        %{parent_tag}%{?tag_offset}
