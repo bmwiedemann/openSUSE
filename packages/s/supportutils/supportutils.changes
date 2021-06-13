@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  7 17:38:22 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.16
+  + lsof options to improve performance (bsc#1186687)
+
+-------------------------------------------------------------------
+Thu May 27 15:15:04 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixes to supportconfig
+  + Exclude rhn.conf from etc.txt (bsc#1186347)
+
+-------------------------------------------------------------------
 Mon May 24 22:01:43 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - analyzevmcore supports local directories (bsc#1186397)
