@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Jun 11 22:07:20 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix specfile to use correct URL, meson dependency to match upstream,
+  and remove incorrect Group. Also use autosetup macro instead of setup.
+
+-------------------------------------------------------------------
+Fri Jun 11 09:26:32 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Initial package of 1.7.2 for openSUSE

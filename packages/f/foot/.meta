@@ -1,0 +1,6 @@
+<package name="foot" project="openSUSE:Factory">
+  <title>foot</title>
+  <description>A fast, lightweight and minimalistic Wayland terminal emulator.</description>
+  <devel project="X11:Wayland" package="foot"/>
+  <url>https://codeberg.org/dnkl/foot</url>
+</package>
