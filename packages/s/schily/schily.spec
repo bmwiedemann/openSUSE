@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2021.05.19
+%global box_version	2021.06.07
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.5
 %global star_version	1.6.1
 %global libfind_version 1.8
 %global ved_version     1.8
-%define rver	2021-05-19
+%define rver	2021-06-07
 
 Name:           schily
 Version:        %box_version
@@ -568,6 +568,7 @@ rm -Rfv \
    $b/usr/bin/diff \
    $b/usr/bin/dmake \
    $b/usr/bin/hdump \
+   $b/usr/bin/krcpp \
    $b/usr/bin/label \
    $b/usr/bin/lndir \
    $b/usr/bin/make \
@@ -589,6 +590,7 @@ rm -Rfv \
    $b/usr/bin/spaste \
    $b/usr/bin/spatch \
    $b/usr/bin/strar \
+   $b/usr/bin/svr4.make \
    $b/usr/bin/termcap \
    $b/usr/bin/translit \
    $b/usr/lib*/cpp \
@@ -620,6 +622,7 @@ rm -Rfv \
    $b/usr/share/man/man1/dmake.1 \
    $b/usr/share/man/man1/gnutar.1 \
    $b/usr/share/man/man1/hdump.1 \
+   $b/usr/share/man/man1/krcpp.1 \
    $b/usr/share/man/man1/label.1 \
    $b/usr/share/man/man1/lndir.1 \
    $b/usr/share/man/man1/make.1 \
