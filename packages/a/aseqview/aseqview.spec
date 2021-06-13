@@ -27,6 +27,7 @@ Source1:        aseqview.desktop
 Source2:        aseqview.png
 Patch0:         aseqview-0.2.2.dif
 Patch1:         aseqview-quote-macros.patch
+Patch2:         aseqview-piano-segfault-fix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  automake
 BuildRequires:  gtk2-devel
@@ -42,6 +43,7 @@ sequencer applications.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf --force --install

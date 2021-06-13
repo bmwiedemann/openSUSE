@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 13 10:39:56 CEST 2021 - tiwai@suse.de
+
+- Fix segfault at piano widget creation with the recent gtk2
+  (boo#1187239):
+  aseqview-piano-segfault-fix.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 08:42:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed and modernized SPEC file
