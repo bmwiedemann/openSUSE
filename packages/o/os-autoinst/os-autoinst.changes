@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 13 04:07:58 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1623425960.44a81109:
+  * t: Compare similarities with some tolerance to avoid test failures
+  * Fix typo in README
+  * virtio_terminal: Store activated state on (save_|load_)snapshot()
+
+-------------------------------------------------------------------
 Wed Jun 09 19:25:47 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1623266740.54327cdf:
