@@ -1,7 +1,7 @@
 #
 # spec file for package llvm9
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -137,6 +137,9 @@ Patch38:        fix-ppcle64-build.patch
 Patch39:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
 # PATCH-FIX-UPSTREAM Fix-big-endian-miscompile-of-bitcast-zex.patch -- Fix big-endian miscompile of (bitcast (zext/trunc (bitcast)))
 Patch40:        Fix-big-endian-miscompile-of-bitcast-zex.patch
+# Fix build with GCC 11. (boo#1181875, boo#1187254)
+Patch41:        Fix-missing-include.patch
+Patch42:        Allow-standards-based-attributes-to-have-leading-and.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  ccache
 BuildRequires:  cmake
@@ -152,7 +155,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-doc
 # llvm does not work on s390
 ExcludeArch:    s390
@@ -234,7 +237,7 @@ URL:            https://clang.llvm.org/
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     clang%{_sonum}-doc
 Recommends:     clang-tools
 Recommends:     libstdc++-devel
@@ -254,8 +257,8 @@ Conflicts:      clang5
 Conflicts:      clang6
 # hmaptool used to be contained in the llvm package.
 Conflicts:      llvm5
-Conflicts:      llvm6
 Conflicts:      emacs-llvm < %{version}
+Conflicts:      llvm6
 Provides:       emacs-llvm = %{version}
 Conflicts:      scan-build < %{version}
 Provides:       scan-build = %{version}
@@ -440,7 +443,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -474,7 +477,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python3-lldb%{_sonum}
 ExclusiveArch:  x86_64
 
@@ -572,6 +575,7 @@ This package contains the development files for Polly.
 %patch35 -p1
 %patch39 -p2
 %patch40 -p2
+%patch41 -p2
 
 pushd compiler-rt-%{version}.src
 %patch28 -p2
@@ -590,6 +594,7 @@ pushd clang-%{version}.src
 %patch30 -p1
 %patch31 -p1
 %patch38 -p1
+%patch42 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

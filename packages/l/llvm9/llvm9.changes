@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 12 19:11:49 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add Allow-standards-based-attributes-to-have-leading-and.patch:
+  Fix miscompilation with libstdc++6-devel-gcc11. The new version
+  uses [[__no_unique_address__]] in tuple's _Head_base, but Clang
+  only knew the attribute without leading and trailing underscores.
+  Subsequently it didn't do empty base optimization for tuples,
+  causing an ABI mismatch when tuples were passed around, such as
+  the member of the unique_ptr<std::thread::_State> passed by
+  std::thread::thread (in header) to an internal function (in
+  source file, thus part of libstdc++.so). (boo#1187254)
+
+-------------------------------------------------------------------
+Sat Jun  5 12:50:14 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)
+
+-------------------------------------------------------------------
 Fri Jan  1 13:05:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move BFD plugins to %{_libdir}

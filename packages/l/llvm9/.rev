@@ -218,4 +218,21 @@
     <comment></comment>
     <requestid>859728</requestid>
   </revision>
+  <revision rev="22" vrev="18">
+    <srcmd5>3987ecbc76ca5a24df83e2a954c3ca79</srcmd5>
+    <version>9.0.1</version>
+    <time>1623618353</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Allow-standards-based-attributes-to-have-leading-and.patch:
+  Fix miscompilation with libstdc++6-devel-gcc11. The new version
+  uses [[__no_unique_address__]] in tuple's _Head_base, but Clang
+  only knew the attribute without leading and trailing underscores.
+  Subsequently it didn't do empty base optimization for tuples,
+  causing an ABI mismatch when tuples were passed around, such as
+  the member of the unique_ptr&lt;std::thread::_State&gt; passed by
+  std::thread::thread (in header) to an internal function (in
+  source file, thus part of libstdc++.so). (boo#1187254)
+- Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)</comment>
+    <requestid>899821</requestid>
+  </revision>
 </revisionlist>
