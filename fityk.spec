@@ -101,6 +101,11 @@ This package contains python bindings to Fityk library.
 %autosetup -p1
 
 %build
+# Force c++14 to continue using dynamic exceptions removed in c+=17
+# https://github.com/wojdyr/fityk/issues/37
+%if 0%{?suse_version} >= 1550
+export CXXFLAGS+=' -std=c++14'
+%endif
 export PYTHON=%{_bindir}/python3
 autoreconf -fvi
 %configure \
