@@ -37,9 +37,6 @@
 %define _libdmmp_version 0.2.0
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
-# path prefix for systemd unit files and udev rules
-%define _sysdir usr/lib
-
 Name:           multipath-tools
 Version:        0.8.6+10+suse.4771137
 Release:        0
@@ -152,7 +149,15 @@ Requires:       libdmmp%{libdmmp_version} = %{version}
 This package provides development files and documentation for libdmmp.
 
 %define makeflags %{!?with_libdmmp:ENABLE_LIBDMMP=0}
-%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} SYSTEMDPATH=%{_sysdir}
+%if 0%{?suse_version} < 1550
+%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} SYSTEMDPATH=usr/lib
+%define sbindir /sbin
+%define libdir  /%{_lib}
+%else
+%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} exec_prefix=%{_prefix} syslibdir=%{_libdir} libdir=%{_libdir}/multipath SYSTEMDPATH=usr/lib
+%define sbindir %{_sbindir}
+%define libdir  %{_libdir}
+%endif
 
 %prep
 %setup -q -n multipath-tools-%{version}
@@ -179,11 +184,13 @@ make OPTFLAGS="%{optflags}" %{_make_output_sync} %{?_smp_mflags} test
 mkdir -p %{buildroot}%{_defaultlicensedir}
 mkdir -p %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/%{_lib}
+%if 0%{?suse_version} < 1550
 for x in multipath mpathpersist mpathcmd mpathvalid; do
     rm -f %{buildroot}/%{_lib}/lib$x.so
     ln -sf /%{_lib}/lib$x.so.0  %{buildroot}/usr/%{_lib}/lib$x.so
 done
-ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcmultipathd
+%endif
+ln -sf service %{buildroot}/usr/sbin/rcmultipathd
 mkdir -p %{buildroot}/usr/lib/modules-load.d
 install -m 644 -D %{SOURCE1} "%{buildroot}/usr/lib/modules-load.d/multipath.conf"
 install -m 644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/00-dont-del-part-nodes.rules
@@ -223,13 +230,12 @@ exit 0
 %license LICENSES/GPL-2.0
 %{_udevrulesdir}/11-dm-mpath.rules
 %{_udevrulesdir}/56-multipath.rules
-/sbin/multipath
-/sbin/multipathd
-/sbin/mpathpersist
+%{sbindir}/multipath
+%{sbindir}/multipathd
+%{sbindir}/mpathpersist
 /usr/sbin/rcmultipathd
-%dir /%{_sysdir}/systemd/system
-/%{_sysdir}/systemd/system/multipathd.service
-/%{_sysdir}/systemd/system/multipathd.socket
+%{_unitdir}/multipathd.service
+%{_unitdir}/multipathd.socket
 %dir /usr/lib/modules-load.d
 /usr/lib/modules-load.d/multipath.conf
 %dir /usr/lib/dracut
@@ -241,11 +247,11 @@ exit 0
 %{_mandir}/man8/mpathpersist.8*
 
 %files -n libmpath0
-/%{_lib}/libmultipath.so.0
-/%{_lib}/libmpathcmd.so.0
-/%{_lib}/libmpathpersist.so.0
-/%{_lib}/libmpathvalid.so.0
-/%{_lib}/multipath
+%{libdir}/libmultipath.so.0
+%{libdir}/libmpathcmd.so.0
+%{libdir}/libmpathpersist.so.0
+%{libdir}/libmpathvalid.so.0
+%{libdir}/multipath
 %license LICENSES/GPL-2.0
 %license LICENSES/LGPL-2.0
 %license LICENSES/LGPL-2.1
@@ -253,10 +259,10 @@ exit 0
 
 %files devel
 %defattr(-,root,root)
-/usr/%{_lib}/libmultipath.so
-/usr/%{_lib}/libmpathcmd.so
-/usr/%{_lib}/libmpathpersist.so
-/usr/%{_lib}/libmpathvalid.so
+%{_libdir}/libmultipath.so
+%{_libdir}/libmpathcmd.so
+%{_libdir}/libmpathpersist.so
+%{_libdir}/libmpathvalid.so
 /usr/include/mpath_cmd.h
 /usr/include/mpath_persist.h
 /usr/include/mpath_valid.h
@@ -267,13 +273,13 @@ exit 0
 %files -n kpartx
 %defattr(-,root,root)
 %license LICENSES/GPL-2.0
-/sbin/kpartx
+%{sbindir}/kpartx
 %{_udevrulesdir}/00-dont-del-part-nodes.rules
 %{_udevrulesdir}/11-dm-parts.rules
 %{_udevrulesdir}/66-kpartx.rules
 %{_udevrulesdir}/68-del-part-nodes.rules
-/%{_sysdir}/udev/kpartx_id
-/%{_sysdir}/dracut/dracut.conf.d/dm-parts.conf
+/usr/lib/udev/kpartx_id
+/usr/lib/dracut/dracut.conf.d/dm-parts.conf
 %{_mandir}/man8/kpartx.8*
 
 %posttrans -n kpartx
@@ -292,7 +298,7 @@ exit 0
 
 %files -n libdmmp-devel
 %defattr(-,root,root)
-/%{_libdir}/libdmmp.so
+%{_libdir}/libdmmp.so
 %{_mandir}/man3/libdmmp.h*
 %{_mandir}/man3/dmmp_*
 %{_includedir}/libdmmp

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  8 09:34:23 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- install to /usr (boo#1029961)
+
+-------------------------------------------------------------------
 Tue May 18 17:43:13 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.8.6+10+suse.47711374:

@@ -1479,4 +1479,12 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
    (bsc#1181435, bsc#1183666)</comment>
     <requestid>894440</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>f6bc3229dc2b59f8b4ecf8d233eeb59b</srcmd5>
+    <version>0.8.6+10+suse.4771137</version>
+    <time>1623618337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898496</requestid>
+  </revision>
 </revisionlist>
