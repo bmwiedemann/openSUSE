@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun 12 15:08:08 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2
+  * use pinentry for password prompts and ssh prompts
+  * nvjpeg encoder - also requires this commit to the html5
+    client
+  * gui for starting remote sessions
+  * new subcommands: recover, displays, list-sessions,
+    clean-displays, clean-sockets - #3098, #3099
+  * many fixes: window initial position, focus, non-opengl paint
+    corruption, slow rendering on MacOS, build scripts, handle
+    smooth scroll events with wayland clients, always lossy
+    screen updates for terminals, clipboard timeout, peercred
+    auth options
+  * support multiple clients using mmap simultaneously with
+    non-default file paths
+  * only synchronize xsettings with seamless servers
+  * automatic desktop scaling is now disabled
+  * workaround for gnome applications starting slowly
+- Update uglify-js to 3.13.9
+- Refresh xpra-paths.patch
+
+-------------------------------------------------------------------
 Fri May  7 11:23:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix build on architectures without pandoc 

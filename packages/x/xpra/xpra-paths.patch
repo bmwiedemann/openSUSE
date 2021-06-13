@@ -1,17 +1,17 @@
-Index: xpra-4.1.2/setup.py
+Index: xpra-4.2/setup.py
 ===================================================================
---- xpra-4.1.2.orig/setup.py
-+++ xpra-4.1.2/setup.py
-@@ -1531,7 +1531,7 @@ else:
-         add_data_files("%s/man1" % man_path,  man_pages)
-         add_data_files("share/applications",  glob.glob("fs/share/applications/*.desktop"))
-         add_data_files("share/mime/packages", ["fs/share/mime/packages/application-x-xpraconfig.xml"])
--        add_data_files("share/icons",         glob.glob("fs/share/icons/*.png"))
-+        add_data_files("share/pixmaps",         glob.glob("fs/share/icons/*.png"))
-         add_data_files("share/metainfo",      ["fs/share/metainfo/xpra.appdata.xml"])
- 
-     #here, we override build and install so we can
-@@ -1617,7 +1617,7 @@ else:
+--- xpra-4.2.orig/setup.py
++++ xpra-4.2/setup.py
+@@ -1527,7 +1527,7 @@ else:
+             add_data_files("%s/xpra/" % libexec, libexec_scripts)
+     if data_ENABLED:
+         man_path = "share/man"
+-        icons_dir = "icons"
++        icons_dir = "pixmaps"
+         if OPENBSD or FREEBSD:
+             man_path = "man"
+             icons_dir = "pixmaps"
+@@ -1623,7 +1623,7 @@ else:
              if pam_ENABLED:
                  copytodir("fs/etc/pam.d/xpra", "/etc/pam.d")
  
@@ -20,7 +20,7 @@ Index: xpra-4.1.2/setup.py
              if service_ENABLED:
                  #Linux init service:
                  subs = {}
-@@ -1625,15 +1625,15 @@ else:
+@@ -1631,15 +1631,15 @@ else:
                      cdir = "/etc/sysconfig"
                  elif is_Debian() or is_Ubuntu():
                      cdir = "/etc/default"
@@ -41,7 +41,7 @@ Index: xpra-4.1.2/setup.py
                      if sd_listen_ENABLED:
                          copytodir("fs/lib/systemd/system/xpra.service", systemd_dir,
                                    subs=subs)
-@@ -1761,7 +1761,6 @@ if scripts_ENABLED:
+@@ -1767,7 +1767,6 @@ if scripts_ENABLED:
  toggle_modules(WIN32, "xpra/scripts/win32_service")
  
  if data_ENABLED:

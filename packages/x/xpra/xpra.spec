@@ -22,9 +22,9 @@
 %endif
 %bcond_with pandoc
 
-%define xpra_ver 4.1.3
-%define html5_ver 4.1.2
-%define uglifyjs_ver 3.13.4
+%define xpra_ver 4.2
+%define html5_ver 4.2
+%define uglifyjs_ver 3.13.9
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
 Version:        %{xpra_ver}
@@ -94,6 +94,7 @@ Requires:       shared-mime-info
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
+Recommends:     pinentry
 Recommends:     python3-dnspython
 Recommends:     python3-opencv
 Recommends:     python3-opengl
