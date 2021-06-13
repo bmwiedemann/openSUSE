@@ -499,4 +499,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880957 from dimstar)</comment>
     <requestid>881129</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6d7e86d264bb1927fa3633bc6e9018bb</srcmd5>
+    <version>40.1</version>
+    <time>1623618336</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 898304 from iznogood)</comment>
+    <requestid>898494</requestid>
+  </revision>
 </revisionlist>

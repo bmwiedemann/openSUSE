@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  8 08:43:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Playlist fixes
+  + Fix CPU usage with GStreamer 1.18
+  + Flatpak improvements
+  + Updated translations.
+- Add gnome-music-fix-40.1-release.patch: Fix build.
+
+-------------------------------------------------------------------
 Mon Mar 22 07:56:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
