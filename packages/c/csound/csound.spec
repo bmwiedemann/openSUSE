@@ -16,8 +16,6 @@
 #
 
 
-%define rev 0dad8304c78efba48b4f405f4757f3e0a7e339c0
-
 %define py3version %(pkg-config python3 --modversion)
 %define support_fltk 1
 %bcond_with python
@@ -32,14 +30,14 @@
 %define min 0
 
 Name:           csound
-Version:        6.14.0+git20200601
+Version:        6.15.0
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.csounds.com
-#Source:         https://github.com/%%{name}/%%{name}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.xz
+Source:         https://github.com/csound/csound/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        COPYING_gpl2+.txt
 # Default to using pulseaudio instead of portaudio
@@ -83,6 +81,7 @@ Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %global luaver %(lua -v | sed -r 's/Lua ([[:digit:]]+\\.[[:digit:]]+).*/\\1/')
+
 %description
 Csound is a software synthesis program. It is modular and
 supports an unlimited amount of oscillators and filters.
@@ -120,6 +119,14 @@ Group:          Productivity/Multimedia/Other
 
 %description plugins
 Plugins for csound
+
+%package samples
+Summary:        Data files for csound
+License:        MIT
+Group:          Productivity/Multimedia/Other
+
+%description samples
+HRTF datafiles and Soundfont for csound
 
 %package devel
 Summary:        Development files for Csound
@@ -204,6 +211,9 @@ cp -v OOps/README.md README.OOps
 
 %files plugins
 %{_libdir}/csound/
+
+%files samples
+%{_datadir}/samples/
 
 %files devel
 %{_includedir}/csound/
