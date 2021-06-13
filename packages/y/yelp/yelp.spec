@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        40.0
+Version:        40.2
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -77,11 +77,13 @@ This package provides Yelp's development files.
 %prep
 %setup -q
 translation-update-upstream
-%patch1 -p1
+%autopatch -p1
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install
