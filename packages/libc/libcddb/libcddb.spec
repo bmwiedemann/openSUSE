@@ -1,7 +1,7 @@
 #
 # spec file for package libcddb
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,9 @@ Name:           libcddb
 %define _name libcddb
 Version:        1.3.2
 Release:        0
-Url:            http://libcddb.sourceforge.net/
+URL:            http://libcddb.sourceforge.net/
 Summary:        CDDB Access Library Utilities
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 %if %BUILD_CORE
 # bug437293
@@ -38,7 +38,6 @@ Obsoletes:      libcddb-64bit
 Source:         http://downloads.sourceforge.net/project/%{_name}/%{_name}/%{version}/%{_name}-%{version}.tar.bz2
 Source1:        %{_name}_spec-prepare.sh
 Source2:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 %if %BUILD_UTILS
@@ -117,26 +116,22 @@ sed -i 's:\(\.\.\|\$(top_builddir)\)/[^/]*/lib\([^ ]*\)\.la:-l\2:g' */Makefile.a
 autoreconf -f -i
 %configure\
 	--disable-rpath\
-	--disable-static\
-	--with-pic
+	--disable-static
 %if !%BUILD_CORE
 cd examples
 %endif
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %if !%BUILD_CORE
 cd examples
 %endif
-make DESTDIR=$RPM_BUILD_ROOT install
-%{__rm} -f %{buildroot}%{_libdir}/libcddb.la
+%make_install
+rm -f %{buildroot}%{_libdir}/libcddb.la
 
-%clean
-rm -rf $RPM_BUILD_ROOT
 %if %BUILD_UTILS
 
 %files -n libcddb-utils
-%defattr (-, root, root)
 %{_bindir}/*
 %endif
 %if %BUILD_CORE
@@ -146,11 +141,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun -n libcddb2 -p /sbin/ldconfig
 
 %files -n libcddb2
-%defattr (-, root, root)
 %{_libdir}/*.so.2*
 
 %files devel
-%defattr (-, root, root)
 %doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

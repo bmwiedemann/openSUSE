@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 15:02:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+- Trim old/redundant rpm constructs
+
+-------------------------------------------------------------------
 Thu Apr 11 14:17:46 UTC 2013 - mmeister@suse.com
 
 - Added url as source.
