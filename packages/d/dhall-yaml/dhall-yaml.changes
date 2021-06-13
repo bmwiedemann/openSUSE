@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:05:17 UTC 2021 - psimons@suse.com
+
+- Update dhall-yaml to version 1.2.7.
+  1.2.7
+
+  * Build against `dhall-1.39.0`
+
+-------------------------------------------------------------------
 Mon Mar 29 11:11:01 UTC 2021 - psimons@suse.com
 
 - Update dhall-yaml to version 1.2.6.
