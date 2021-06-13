@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  8 16:35:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.1
+  * auto_private_groups option can be set centrally through ID
+    range setting in IPA (see ipa idrange commands family). This
+    feature requires SSSD update on both client and server. This
+    feature also requires freeipa 4.9.4 and newer.
+  * Fix getsidbyname issues with IPA users with a
+    user-private-group.
+  * Default value of ldap_sudo_random_offset changed to 0
+    (disabled). This makes sure that sudo rules are available as
+    soon as possible after SSSD start in default configuration.
+
+-------------------------------------------------------------------
 Mon May 10 13:58:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.0
