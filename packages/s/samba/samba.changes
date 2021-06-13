@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun  1 08:38:12 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.14.5
+  * s3: smbd: SMB1 SMBsplwr doesn't send a reply packet on success;
+    (bso#14696);
+  * s3: smbd: Ensure POSIX default ACL is mapped into returned Windows
+    ACL for directory handles; (bso#14708);
+  * s3: smbd: Fix uninitialized memory read in process_symlink_open()
+    when used with vfs_shadow_copy2(); (bso#14721);
+  * docs: Expand the "log level" docs on audit logging; (bso#14689);
+  * smbd: Correctly initialize close timestamp fields; (bso#14714);
+  * Fix gcc11 compiler issues; (bso#14699);
+  * docs-xml: Update smbcacls manpage; (bso#14718);
+  * docs: Update list of available commands in rpcclient; (bso#14719);
+  * ctdb: Fix a crash in run_proc_signal_handler(); (bso#14475);
+  * s3:winbind: For 'security = ADS' require realm/workgroup to be set;
+    (bso#14695);
+  * lib:replace: Do not build strndup test with gcc 11 or newer;
+    (bso#14699);
+
+-------------------------------------------------------------------
 Thu Apr 29 08:34:02 UTC 2021 - Noel Power <nopower@suse.com>
 - Update to 4.14.4
   * CVE-2021-20254: Fix buffer overrun in sids_to_unixids();
