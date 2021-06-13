@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:33:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Wed Jun 12 15:06:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

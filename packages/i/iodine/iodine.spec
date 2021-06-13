@@ -34,6 +34,7 @@ Source1:        iodine.service
 Source2:        sysconfig.iodine
 Source3:        iodined.service
 Source4:        sysconfig.iodined
+Source5:        system-user-iodined.conf
 #PATCH-FIX-OPENSUSE iodine-fix-makefile-prefix.patch malcolmlewis@opensuse.org -- Modify default install prefix.
 Patch0:         iodine-fix-makefile-prefix.patch
 BuildRequires:  fdupes
@@ -42,8 +43,15 @@ BuildRequires:  zlib-devel
 # iodine still uses ifconfig
 Requires:       net-tools-deprecated
 Requires(pre):  %fillup_prereq
-PreReq:         /usr/sbin/useradd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} >= 1500
+Requires(pre):  group(nobody)
+%endif
+%if 0%{?suse_version} >= 1550
+BuildRequires:  sysuser-tools
+%sysusers_requires
+%else
+Requires(pre):  /usr/sbin/useradd
+%endif
 
 %description
 Lets you tunnel IPv4 data through a DNS server. This can be usable
@@ -56,6 +64,9 @@ queries are allowed.
 
 %build
 make PREFIX=%{_prefix} %{?_smp_mflags}
+%if 0%{?suse_version} >= 1550
+%sysusers_generate_pre %{SOURCE5} iodine
+%endif
 
 %install
 make install PREFIX=%{buildroot}%{_prefix}
@@ -76,11 +87,19 @@ mkdir -p %{buildroot}/var/lib/iodined
 # make rc-link
 ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodine
 ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodined
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
+%endif
 
+%if 0%{?suse_version} >= 1550
+%pre -f iodine.pre
+%else
 %pre
+/usr/sbin/useradd -r -d /var/lib/iodined -s /bin/false -c "user for iodine dns tunnel" -g nobody iodined 2> /dev/null || :
+%endif
 %service_add_pre iodine.service
 %service_add_pre iodined.service
-/usr/sbin/useradd -r -d /var/lib/iodined -s /bin/false -c "user for iodine dns tunnel" -g nobody iodined 2> /dev/null || :
 
 %post
 %service_add_post iodine.service
@@ -107,6 +126,9 @@ ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodined
 %{_sbindir}/rciodined
 %{_unitdir}/iodine.service
 %{_unitdir}/iodined.service
+%if 0%{?suse_version} >= 1550
+%{_sysusersdir}/system-user-iodined.conf
+%endif
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %{_mandir}/man8/%{name}d.8%{?ext_man}
 %attr(0700,iodined,nobody)/var/lib/iodined
