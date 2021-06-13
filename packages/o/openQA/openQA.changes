@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 13 03:31:59 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1623492373.886d5787f:
+  * t: Delete unused function in t/ui/13-admin.t
+  * t: Fix wrongly moved line ending up as comment statement
+  * Minor optimization: Turn SQL 'OR' into 'IN'
+  * Add automatic installation recipe autoyast profile
+  * Deployment handler: Log error message
+  * Handle ANSI escape sequences in live log as well
+  * Enable log viewer also for user logs and unify code for both log lists
+  * Improve appearance of result file list
+  * Use layout for video view to avoid rendering an incomplete HTML page
+  * Test log view
+  * Fix broken HTML by removing surplus end-tag
+  * Add log view (similar to video view) supporting ANSI escape sequences
+  * Render ANSI escape sequences within embedded log files via Anser (client-side)
+
+-------------------------------------------------------------------
 Thu Jun 10 18:53:07 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1623351179.452374ecb:
