@@ -177,11 +177,14 @@ sub parse_menuentry($$$) {
 # work and function properly on lvm, md and s390.
 sub enable_restore_grubenv_service {
 
-    my $systemctl="/usr/bin/systemctl";
+    my $systemctl = "/usr/bin/systemctl";
+    my $cleanup = "/var/tmp/grub2-cleanup-once";
 
-    if (-x $systemctl) {
-      system "$systemctl --no-reload enable grub2-once >/dev/null 2>&1";
-    } 
+    open(my $fh, ">", $cleanup) or die "open: $cleanup $!\n";
+    close($fh);
+
+    return 0 if (system("$systemctl --quiet is-enabled grub2-once") == 0);
+    system "$systemctl --no-reload enable grub2-once >/dev/null 2>&1";
 }
 
 $id_name = "";

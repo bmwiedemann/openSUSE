@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 31 07:18:56 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix running grub2-once leads to failure of starting systemd service in the
+  boot sequence (bsc#1169460)
+  * grub2-once
+  * grub2-once.service
+
+-------------------------------------------------------------------
 Fri May 28 15:16:37 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix crash in launching gfxmenu without theme file (bsc#1186481)
