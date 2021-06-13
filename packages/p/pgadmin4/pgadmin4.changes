@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:06:10 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add 0001-Fix-bug-ValueError-unsupported-format-character-D.patch
+  to fix bug reported at https://redmine.postgresql.org/issues/6522
+
+-------------------------------------------------------------------
 Tue Feb  2 13:59:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix typos (chmod being used instead of chown in %postun web and

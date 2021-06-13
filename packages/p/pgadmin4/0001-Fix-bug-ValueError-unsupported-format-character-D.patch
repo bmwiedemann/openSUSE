@@ -1,0 +1,466 @@
+From 025d14220f7303927aa11acd936e049f050832fd Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Wed, 9 Jun 2021 08:32:46 +0200
+Subject: [PATCH] Fix bug "ValueError: unsupported format character 'D'"
+
+    self.register_preferences()
+  File "/usr/lib/python3.6/site-packages/pgadmin4-web/pgadmin/browser/__init__.py", line 272, in register_preferences
+    register_browser_preferences(self)
+  File "/usr/lib/python3.6/site-packages/pgadmin4-web/pgadmin/browser/register_browser_preferences.py", line 461, in register_browser_preferences
+    'Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. '
+  File "/usr/lib/python3.6/site-packages/flask_babelex/__init__.py", line 623, in gettext
+    return get_domain().gettext(*args, **kwargs)
+  File "/usr/lib/python3.6/site-packages/flask_babelex/__init__.py", line 534, in gettext
+    return t.ugettext(string) % variables
+ValueError: unsupported format character 'D' (0x44) at index 28
+---
+ .../browser/register_browser_preferences.py   | 10 +++++-----
+ .../translations/cs/LC_MESSAGES/messages.po   | 16 +++++++--------
+ .../translations/de/LC_MESSAGES/messages.po   |  8 ++++----
+ .../translations/es/LC_MESSAGES/messages.po   |  8 ++++----
+ .../translations/fr/LC_MESSAGES/messages.po   | 16 +++++++--------
+ .../translations/it/LC_MESSAGES/messages.po   | 12 +++++------
+ .../translations/ja/LC_MESSAGES/messages.po   | 20 +++++++++----------
+ .../translations/ko/LC_MESSAGES/messages.po   |  8 ++++----
+ .../translations/pl/LC_MESSAGES/messages.po   |  8 ++++----
+ .../translations/ru/LC_MESSAGES/messages.po   |  8 ++++----
+ .../translations/zh/LC_MESSAGES/messages.po   |  8 ++++----
+ 11 files changed, 61 insertions(+), 61 deletions(-)
+
+diff --git a/web/pgadmin/browser/register_browser_preferences.py b/web/pgadmin/browser/register_browser_preferences.py
+index 7f909c41f..c4f10b14e 100644
+--- a/web/pgadmin/browser/register_browser_preferences.py
++++ b/web/pgadmin/browser/register_browser_preferences.py
+@@ -458,7 +458,7 @@ def register_browser_preferences(self):
+         'text', '%DATABASE%/%USERNAME%@%SERVER%',
+         category_label=PREF_LABEL_DISPLAY,
+         help_str=gettext(
+-            'Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. '
++            'Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. '
+             'Users can provide any string with or without placeholders of'
+             ' their choice. The blank title will be revert back to the'
+             ' default title with placeholders.'
+@@ -471,8 +471,8 @@ def register_browser_preferences(self):
+         'text', '%SCHEMA%.%TABLE%/%DATABASE%/%USERNAME%@%SERVER%',
+         category_label=PREF_LABEL_DISPLAY,
+         help_str=gettext(
+-            'Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, '
+-            '%USERNAME%, and %SERVER%. Users can provide any string with or '
++            'Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, '
++            '%%USERNAME%%, and %%SERVER%%. Users can provide any string with or '
+             'without placeholders of their choice. The blank title will be '
+             'revert back to the default title with placeholders.'
+         )
+@@ -484,8 +484,8 @@ def register_browser_preferences(self):
+         'text', '%FUNCTION%(%ARGS%)',
+         category_label=PREF_LABEL_DISPLAY,
+         help_str=gettext(
+-            'Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and'
+-            ' %DATABASE%. Users can provide any string with or '
++            'Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and'
++            ' %%DATABASE%%. Users can provide any string with or '
+             'without placeholders of their choice. The blank title will be'
+             ' revert back to the default title with placeholders.'
+         )
+diff --git a/web/pgadmin/translations/cs/LC_MESSAGES/messages.po b/web/pgadmin/translations/cs/LC_MESSAGES/messages.po
+index 1eed805b3..786cfffc9 100644
+--- a/web/pgadmin/translations/cs/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/cs/LC_MESSAGES/messages.po
+@@ -496,11 +496,11 @@ msgstr "Název karty \"Dotazovací nástroj\""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users can "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users can "
+ "provide any string with or without placeholders of their choice. The blank "
+ "title will be revert back to the default title with placeholders."
+ msgstr ""
+-"Podporované zástupné znaky jsou %DATABASE%, %USERNAME% a %SERVER%. Můžete "
++"Podporované zástupné znaky jsou %%DATABASE%%, %%USERNAME%% a %%SERVER%%. Můžete "
+ "použít libovolný řetězec s nebo bez zástupných znaků podle svého výběru. "
+ "Prázdný název vrátí zpět výchozí název se zástupnými znaky."
+ 
+@@ -510,13 +510,13 @@ msgstr "Název karty \"Zobrazit/upravit data\""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and "
+-"%SERVER%. Users can provide any string with or without placeholders of their "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and "
++"%%SERVER%%. Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+ msgstr ""
+-"Podporované zástupné znaky jsou %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME% a "
+-"%SERVER%. Můžete použít libovolný řetězec s nebo bez zástupných znaků podle "
++"Podporované zástupné znaky jsou %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%% a "
++"%%SERVER%%. Můžete použít libovolný řetězec s nebo bez zástupných znaků podle "
+ "svého výběru. Prázdný název vrátí zpět výchozí název se zástupnými znaky."
+ 
+ #: pgadmin/browser/register_browser_preferences.py:483
+@@ -526,11 +526,11 @@ msgstr "Název karty ladění"
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their choice. "
+ "The blank title will be revert back to the default title with placeholders."
+ msgstr ""
+-"Podporované zástupné znaky jsou %FUNCTION%, %ARGS%, %SCHEMA% a %DATABASE%. "
++"Podporované zástupné znaky jsou %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% a %%DATABASE%%. "
+ "Můžete použít libovolný řetězec s nebo bez zástupných znaků podle svého "
+ "výběru. Prázdný název vrátí zpět výchozí název se zástupnými znaky."
+ 
+diff --git a/web/pgadmin/translations/de/LC_MESSAGES/messages.po b/web/pgadmin/translations/de/LC_MESSAGES/messages.po
+index 7b621e2cc..4bb620a50 100644
+--- a/web/pgadmin/translations/de/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/de/LC_MESSAGES/messages.po
+@@ -465,7 +465,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -476,8 +476,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -489,7 +489,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+diff --git a/web/pgadmin/translations/es/LC_MESSAGES/messages.po b/web/pgadmin/translations/es/LC_MESSAGES/messages.po
+index d728c9251..4dce3899d 100644
+--- a/web/pgadmin/translations/es/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/es/LC_MESSAGES/messages.po
+@@ -467,7 +467,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -478,8 +478,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -491,7 +491,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+diff --git a/web/pgadmin/translations/fr/LC_MESSAGES/messages.po b/web/pgadmin/translations/fr/LC_MESSAGES/messages.po
+index b68df83a6..7ed79efcc 100644
+--- a/web/pgadmin/translations/fr/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/fr/LC_MESSAGES/messages.po
+@@ -500,11 +500,11 @@ msgstr "Titre de l'onglet éditeur de requête"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users can "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users can "
+ "provide any string with or without placeholders of their choice. The blank "
+ "title will be revert back to the default title with placeholders."
+ msgstr ""
+-"Les mots clés réservés sont %DATABASE%, %USERNAME%, and %SERVER%. Il est "
++"Les mots clés réservés sont %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Il est "
+ "possible de fournir n'importe quelle chaîne avec ou sans ces mots clés. Les "
+ "titres vides seront remplacés par les titres par défaut avec les mots clés."
+ 
+@@ -514,13 +514,13 @@ msgstr "Titre de l'onglet Afficher/Éditer les données"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and "
+-"%SERVER%. Users can provide any string with or without placeholders of their "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and "
++"%%SERVER%%. Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+ msgstr ""
+-"Les mots clés réservés sont %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and "
+-"%SERVER%. Il est possible de fournir n'importe quelle chaîne avec ou sans "
++"Les mots clés réservés sont %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and "
++"%%SERVER%%. Il est possible de fournir n'importe quelle chaîne avec ou sans "
+ "ces mots clés. Les titres vides seront remplacés par les titres par défaut "
+ "avec les mots clés."
+ 
+@@ -531,11 +531,11 @@ msgstr "Titre de l'onglet Debugger"
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their choice. "
+ "The blank title will be revert back to the default title with placeholders."
+ msgstr ""
+-"Les mots clés réservés sont %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. Il "
++"Les mots clés réservés sont %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. Il "
+ "est possible de fournir n'importe quelle chaîne avec ou sans ces mots clés. "
+ "Les titres vides seront remplacés par les titres par défaut avec les mots "
+ "clés."
+diff --git a/web/pgadmin/translations/it/LC_MESSAGES/messages.po b/web/pgadmin/translations/it/LC_MESSAGES/messages.po
+index 6589ac716..53cf4c7d9 100644
+--- a/web/pgadmin/translations/it/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/it/LC_MESSAGES/messages.po
+@@ -496,11 +496,11 @@ msgstr "Titolo della scheda Strumento query"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users can "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users can "
+ "provide any string with or without placeholders of their choice. The blank title "
+ "will be revert back to the default title with placeholders."
+ msgstr ""
+-"I segnaposto supportati sono%DATABASE%,%USERNAME% e%SERVER%. Gli utenti possono "
++"I segnaposto supportati sono%%DATABASE%%,%%USERNAME%% e%%SERVER%%. Gli utenti possono "
+ "fornire qualsiasi stringa con o senza segnaposto di loro scelta. Il titolo vuoto "
+ "verrà ripristinato al titolo predefinito con segnaposto."
+ 
+@@ -510,11 +510,11 @@ msgstr "Visualizza / Modifica il titolo della scheda dati"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and %SERVER"
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and %SERVER"
+ "%. Users can provide any string with or without placeholders of their choice. "
+ "The blank title will be revert back to the default title with placeholders."
+ msgstr ""
+-"I segnaposto supportati sono%SCHEMA%,%TABLE%,%DATABASE%,%USERNAME% e%SERVER%. "
++"I segnaposto supportati sono%%SCHEMA%%,%%TABLE%%,%%DATABASE%%,%%USERNAME%% e%%SERVER%%. "
+ "Gli utenti possono fornire qualsiasi stringa con o senza segnaposto di loro "
+ "scelta. Il titolo vuoto verrà ripristinato al titolo predefinito con segnaposto."
+ 
+@@ -525,11 +525,11 @@ msgstr "Titolo della scheda Debugger"
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. Users "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. Users "
+ "can provide any string with or without placeholders of their choice. The blank "
+ "title will be revert back to the default title with placeholders."
+ msgstr ""
+-"I segnaposto supportati sono%FUNCTION%,%ARGS%,%SCHEMA% and %DATABASE%. Gli "
++"I segnaposto supportati sono%%FUNCTION%%,%%ARGS%%,%%SCHEMA%% and %%DATABASE%%. Gli "
+ "utenti possono fornire qualsiasi stringa con o senza segnaposto di loro scelta. "
+ "Il titolo vuoto verrà ripristinato al titolo predefinito con segnaposto."
+ 
+diff --git a/web/pgadmin/translations/ja/LC_MESSAGES/messages.po b/web/pgadmin/translations/ja/LC_MESSAGES/messages.po
+index bc31fa3c7..89f34410c 100644
+--- a/web/pgadmin/translations/ja/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/ja/LC_MESSAGES/messages.po
+@@ -471,12 +471,12 @@ msgstr "クエリツールタブのタイトル"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+-"任意の文字列とプレースホルダ（%DATABASE%, %USERNAME%, "
+-"%SERVER%）を指定できます。空欄にすると、既定のタイトルに戻ります"
++"任意の文字列とプレースホルダ（%%DATABASE%%, %%USERNAME%%, "
++"%%SERVER%%）を指定できます。空欄にすると、既定のタイトルに戻ります"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:470
+ msgid "View/Edit data tab title"
+@@ -484,13 +484,13 @@ msgstr "データの閲覧/編集タブのタイトル"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+-"任意の文字列とプレースホルダ（%SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, "
+-"%SERVER%）を指定できます。空欄にすると、既定のタイトルに戻ります"
++"任意の文字列とプレースホルダ（%%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, "
++"%%SERVER%%）を指定できます。空欄にすると、既定のタイトルに戻ります"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:483
+ msgid "Debugger tab title"
+@@ -499,13 +499,13 @@ msgstr "デバッガタブのタイトル"
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+ msgstr ""
+-"任意の文字列とプレースホルダ（%FUNCTION%, %ARGS%, %SCHEMA%, "
+-"%DATABASE%）を指定できます。空欄にすると、既定のタイトルに戻ります"
++"任意の文字列とプレースホルダ（%%FUNCTION%%, %%ARGS%%, %%SCHEMA%%, "
++"%%DATABASE%%）を指定できます。空欄にすると、既定のタイトルに戻ります"
+ 
+ #: pgadmin/browser/register_browser_preferences.py:496
+ msgid "Open in new browser tab"
+diff --git a/web/pgadmin/translations/ko/LC_MESSAGES/messages.po b/web/pgadmin/translations/ko/LC_MESSAGES/messages.po
+index e9c7b6a65..f96f2aeae 100644
+--- a/web/pgadmin/translations/ko/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/ko/LC_MESSAGES/messages.po
+@@ -465,7 +465,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -476,8 +476,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -489,7 +489,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+diff --git a/web/pgadmin/translations/pl/LC_MESSAGES/messages.po b/web/pgadmin/translations/pl/LC_MESSAGES/messages.po
+index 10d52b857..c3e1a0e37 100644
+--- a/web/pgadmin/translations/pl/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/pl/LC_MESSAGES/messages.po
+@@ -466,7 +466,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -477,8 +477,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -490,7 +490,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+diff --git a/web/pgadmin/translations/ru/LC_MESSAGES/messages.po b/web/pgadmin/translations/ru/LC_MESSAGES/messages.po
+index 223b25cb4..fd3911d34 100644
+--- a/web/pgadmin/translations/ru/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/ru/LC_MESSAGES/messages.po
+@@ -464,7 +464,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -475,8 +475,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -488,7 +488,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+diff --git a/web/pgadmin/translations/zh/LC_MESSAGES/messages.po b/web/pgadmin/translations/zh/LC_MESSAGES/messages.po
+index 67302cf98..6c7e4e2d6 100644
+--- a/web/pgadmin/translations/zh/LC_MESSAGES/messages.po
++++ b/web/pgadmin/translations/zh/LC_MESSAGES/messages.po
+@@ -465,7 +465,7 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:460
+ msgid ""
+-"Supported placeholders are %DATABASE%, %USERNAME%, and %SERVER%. Users "
++"Supported placeholders are %%DATABASE%%, %%USERNAME%%, and %%SERVER%%. Users "
+ "can provide any string with or without placeholders of their choice. The "
+ "blank title will be revert back to the default title with placeholders."
+ msgstr ""
+@@ -476,8 +476,8 @@ msgstr ""
+ 
+ #: pgadmin/browser/register_browser_preferences.py:473
+ msgid ""
+-"Supported placeholders are %SCHEMA%, %TABLE%, %DATABASE%, %USERNAME%, and"
+-" %SERVER%. Users can provide any string with or without placeholders of "
++"Supported placeholders are %%SCHEMA%%, %%TABLE%%, %%DATABASE%%, %%USERNAME%%, and"
++" %%SERVER%%. Users can provide any string with or without placeholders of "
+ "their choice. The blank title will be revert back to the default title "
+ "with placeholders."
+ msgstr ""
+@@ -489,7 +489,7 @@ msgstr ""
+ #: pgadmin/browser/register_browser_preferences.py:486
+ #, python-format
+ msgid ""
+-"Supported placeholders are %FUNCTION%, %ARGS%, %SCHEMA% and %DATABASE%. "
++"Supported placeholders are %%FUNCTION%%, %%ARGS%%, %%SCHEMA%% and %%DATABASE%%. "
+ "Users can provide any string with or without placeholders of their "
+ "choice. The blank title will be revert back to the default title with "
+ "placeholders."
+-- 
+2.26.2
+

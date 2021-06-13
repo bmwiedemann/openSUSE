@@ -86,6 +86,7 @@ Source9:        README.SUSE.uwsgi.in
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         fix-python-lib.patch
+Patch3:         0001-Fix-bug-ValueError-unsupported-format-character-D.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -243,6 +244,7 @@ This package holds the uwsgi configuration.
 %if %{?pkg_vcmp:%{pkg_vcmp python3-devel >= 3.8}}%{!?pkg_vcmp:0}
 %patch2 -p1
 %endif
+%patch3 -p1
 
 sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE1} > %{name}.conf
 sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE2} > %{name}.service
