@@ -17,7 +17,7 @@
 
 
 Name:           gnome-terminal
-Version:        3.40.1
+Version:        3.40.2
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -108,6 +108,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_userunitdir}/gnome-terminal-server.service
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Terminal*.svg
 %{_mandir}/man1/gnome-terminal.1%{?ext_man}
+%dir %{_libdir}/gnome-terminal
+%{_libdir}/gnome-terminal/gschemas.compiled
 
 %files -n gnome-shell-search-provider-gnome-terminal
 %dir %{_datadir}/gnome-shell

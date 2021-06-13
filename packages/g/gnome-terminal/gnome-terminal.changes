@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  7 20:33:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.2:
+  + all:
+    - Add settings schema verifier
+    - Specify the schema source when constructing any GSettings
+  + app: Make owner-change check only on X11
+  + util: Fix deprecation warning
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 30 19:13:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.40.1:

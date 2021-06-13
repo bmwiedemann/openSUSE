@@ -2253,4 +2253,18 @@
     <comment>Scripted push from GNOME:Next (forwarded request 890075 from dimstar)</comment>
     <requestid>890136</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>5273399947476435442d0b8631da04fd</srcmd5>
+    <version>3.40.2</version>
+    <time>1623618334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.40.2:
+  + all:
+    - Add settings schema verifier
+    - Specify the schema source when constructing any GSettings
+  + app: Make owner-change check only on X11
+  + util: Fix deprecation warning
+  + Updated translations. (forwarded request 898206 from iznogood)</comment>
+    <requestid>898491</requestid>
+  </revision>
 </revisionlist>
