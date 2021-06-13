@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 13 12:09:46 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enforce `std=c++14` when building on openSUSE >= 1550 where
+  GCC 11 is the default compiler (and uses c++17 by default)
+  [gh#wojdyr/fityk#37].
+
+-------------------------------------------------------------------
 Sat Feb 13 18:52:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add fityk-support-lua-5.4.patch: Support lua up to version 5.4;
