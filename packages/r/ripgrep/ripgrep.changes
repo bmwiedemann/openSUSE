@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jun 13 06:51:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to ripgrep 13.0.0:
+  * A new short flag, -., has been added. It is an alias for the --hidden
+    flag, which includes hidden files and directories in search
+  * ripgrep is now using a new vectorized implementation of memmem, which
+    accelerates many common searches. Please report performance regressions
+    (or major improvements).
+  * BREAKING: Binary detection output has changed slightly. In this
+    release, a tweak has been made to the output format when a
+    binary file is detected.
+
+    Previous format:
+      Binary file FOO matches (found "\0" byte around offset XXX)
+
+    New format:
+      FOO: binary file matches (found "\0" byte around offset XXX)
+
+  * vimgrep output in multi-line now only prints the first line for
+    each match. In multi-line mode, --count is now equivalent
+    to --count-matches.
+  * VULN #1773: public facing issue tracking CVE-2021-3013. ripgrep's README
+    now contains a section describing how to report a vulnerability
+  * PERF #1657: Check if a file should be ignored first before issuing stat calls
+  * PERF memchr#82: ripgrep now uses a new vectorized implementation of memmem
+  * FEAT: Added or improved file type filtering for ASP, Bazel, dvc,
+    FlatBuffers, Futhark, minified files, Mint, pofiles (from GNU gettext)
+    Racket, Red, Ruby, VCL, Yang
+  * FEAT #1404: ripgrep now prints a warning if nothing is searched
+  * FEAT #1680: Add -. as a short flag alias for --hidden.
+  * FEAT #1842: Add --field-{context,match}-separator for customizing field delimiters.
+  * FEAT #1856: README now links to Spanish translation.
+  * BUG #1277: document cygwin path translation behavior in the FAQ
+  * BUG #1739: fix bug where replacements were buggy if the regex matched a line terminator
+  * BUG #1311: fix multi-line bug where a search & replace for \n didn't work as expected
+  * BUG #1401: fix buggy interaction between PCRE2 look-around and -o/--only-matching
+  * BUG #1412: fix multi-line bug with searches using look-around past matching lines
+  * BUG #1577: fish shell completions will continue to be auto-generated
+  * BUG #1642: fixes a bug where using -m and -A printed more matches than the limit
+  * BUG #1703: clarify the function of -u/--unrestricted
+  * BUG #1708: clarify how -S/--smart-case works
+  * BUG #1730: clarify that CLI invocation must always be valid, regardless of config file
+  * BUG #1741: fix stdin detection when using PowerShell in UNIX environments
+  * BUG #1756: fix bug where foo/** would match foo, but it shouldn't
+  * BUG #1765: fix panic when --crlf is used in some cases
+  * BUG #1638: correctly sniff UTF-8 and do transcoding, like we do for UTF-16
+  * BUG #1816: add documentation for glob alternate syntax, e.g., {a,b,..}
+  * BUG #1847: clarify how the --hidden flag works
+  * BUG #1866: fix bug when computing column numbers in --vimgrep mode
+  * BUG #1868: fix bug where --passthru and -A/-B/-C did not override each other
+  * BUG #1869: clarify docs for --files-with-matches and --files-without-match
+  * BUG #1878: fix bug where \A could produce unanchored matches in multiline search
+  * BUG 94e4b8e3: Fix column numbers with --vimgrep is used with -U/--multiline
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jul 28 22:49:23 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - ripgrep 12.1.1 

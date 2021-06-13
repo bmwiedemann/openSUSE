@@ -1,7 +1,7 @@
 #
 # spec file for package ripgrep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ripgrep
-Version:        12.1.1
+Version:        13.0.0
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
