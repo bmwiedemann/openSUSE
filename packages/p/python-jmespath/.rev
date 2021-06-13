@@ -174,4 +174,12 @@
   * Fix race condition when clearing cached parsed expressions. (issue 197)</comment>
     <requestid>810897</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9c3a0f094d8705458daa6ae16021a37b</srcmd5>
+    <version>0.10.0</version>
+    <time>1623618330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898355</requestid>
+  </revision>
 </revisionlist>
