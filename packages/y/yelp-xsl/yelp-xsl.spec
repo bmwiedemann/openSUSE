@@ -18,7 +18,7 @@
 
 
 Name:           yelp-xsl
-Version:        40.0
+Version:        40.2
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -39,11 +39,11 @@ BuildArch:      noarch
 This package contains XSL stylesheets that are used by the yelp help browser.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
