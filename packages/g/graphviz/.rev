@@ -695,4 +695,12 @@
   * Using POSIX shell, no need for ksh</comment>
     <requestid>893477</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>0e76a37ae9977635ac894f12c0e538a3</srcmd5>
+    <version>2.47.1</version>
+    <time>1623618332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898446</requestid>
+  </revision>
 </revisionlist>

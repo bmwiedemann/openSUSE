@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:03:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Install epl-v10.txt instead of COPYING.
+  The COPYING file is a symlink to epl-v10.txt.
+
+-------------------------------------------------------------------
 Fri May 14 13:05:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.47.1

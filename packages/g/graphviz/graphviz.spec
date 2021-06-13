@@ -528,14 +528,14 @@ fi
 
 %if "%{flavor}" == "addons"
 %files -n graphviz-gvedit
-%license COPYING
+%license epl-v10.txt
 %{_bindir}/gvedit
 %dir %{_datadir}/%{mname}/gvedit
 %{_datadir}/%{mname}/gvedit/attrs.txt
 %{_mandir}/man1/gvedit.1%{ext_man}
 
 %files -n graphviz-smyrna
-%license COPYING
+%license epl-v10.txt
 %{_bindir}/smyrna
 %{_datadir}/%{mname}/smyrna
 %{_mandir}/man1/smyrna.1%{ext_man}
@@ -589,7 +589,7 @@ fi
 %{_mandir}/man3/gv.3lua%{ext_man}
 
 %files -n graphviz-x11
-%license COPYING
+%license epl-v10.txt
 %{_bindir}/dotty
 %{_bindir}/lefty
 %{_bindir}/lneato
@@ -660,7 +660,7 @@ fi
 
 %files
 %doc doc/FAQ.html AUTHORS README NEWS ChangeLog
-%license COPYING
+%license epl-v10.txt
 %{_bindir}/acyclic
 %{_bindir}/bcomps
 %{_bindir}/ccomps
