@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  5 17:16:16 UTC 2021 - psimons@suse.com
+
+- Update path-io to version 1.6.3.
+  ## Path IO 1.6.3
+
+  * Fixed a bug that caused `removeDirLink` fail on Linux because of a
+    trailing slash that used to be passed to the underlying
+    `removeDirectoryLink` function from the `directory` package. [Issue
+    59](https://github.com/mrkkrp/path-io/issues/59).
+
+  * Works with GHC 9.0.1.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
