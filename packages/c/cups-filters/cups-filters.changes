@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:28:42 CEST 2021 - jsmeix@suse.de
+
+- The cups-brf backend needs to run as root
+  see https://bugzilla.redhat.com/show_bug.cgi?id=1657261
+  (bsc#1186844)
+
+-------------------------------------------------------------------
 Tue May 25 12:21:15 CEST 2021 - jsmeix@suse.de
 
 - Version upgrade to 1.28.8

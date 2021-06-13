@@ -336,7 +336,10 @@ exit 0
 # The parallel backend does not need to be run as root because cupsd runs backends by default as user lp group lp
 # and the parallel port kernel device node /dev/lp0 has by default rw permissions for the group lp
 %attr(0755,root,root) /usr/lib/cups/backend/parallel
-%attr(0755,root,root) /usr/lib/cups/backend/cups-brf
+# The cups-brf backend needs to run as root
+# see https://bugzilla.redhat.com/show_bug.cgi?id=1657261
+# and https://bugzilla.suse.com/show_bug.cgi?id=1186844
+%attr(0700,root,root) /usr/lib/cups/backend/cups-brf
 # Serial backend needs to run as root
 # see https://bugzilla.redhat.com/show_bug.cgi?id=212577#c4
 %attr(0700,root,root) /usr/lib/cups/backend/serial

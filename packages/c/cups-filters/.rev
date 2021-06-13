@@ -394,4 +394,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>896690</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>e63ccd387ed17d309148bbe234bb73fd</srcmd5>
+    <version>1.28.8</version>
+    <time>1623618328</time>
+    <user>dimstar_suse</user>
+    <comment>The cups-brf backend needs to run as root (bsc#1186844) (forwarded request 898312 from jsmeix)</comment>
+    <requestid>898313</requestid>
+  </revision>
 </revisionlist>
