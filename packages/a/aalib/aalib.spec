@@ -1,7 +1,7 @@
 #
 # spec file for package aalib
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ BuildRequires:  gpm-devel
 %else
 BuildRequires:  gpm
 %endif
-Url:            http://aa-project.sourceforge.net/
+URL:            http://aa-project.sourceforge.net/
 # bug437293
 %ifarch ppc64
 Obsoletes:      aalib-64bit
@@ -35,8 +35,8 @@ Obsoletes:      aalib-64bit
 Version:        1.4.0
 Release:        0
 Summary:        An ASCII Art Library
-License:        GPL-2.0+
-Group:          System/Libraries
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
 Source:         http://sourceforge.net/projects/aa-project/files/aa-lib/1.4rc5/%{name}-1.4rc5.tar.gz
 Source1:        http://downloads.sourceforge.net/project/aa-project/aavga/1.0rc1/aavga-1.0rc1.tar.gz
 Source2:        http://downloads.sourceforge.net/project/aa-project/aview/1.3.0rc1/aview-1.3.0rc1.tar.gz
@@ -55,7 +55,7 @@ Patch11:        aalib-1.4.0-config.patch
 Patch12:        aalib-1.4.0-fdleak.patch
 Patch13:        aalib-ncurses-6.0-accessors.patch
 PreReq:         %install_info_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
 
 %description
 AA-lib is a low level gfx library. AA-lib does not require a graphics
@@ -94,7 +94,7 @@ Files needed for developing software that uses AAlib.
 %patch11
 %patch12
 %patch13 -p1
-cd aavga-1.0 
+cd aavga-1.0
 %patch2
 cd ../../aview-*
 %patch4
@@ -108,35 +108,36 @@ cd ..
 %build
 %{?suse_update_config}
 autoreconf -fiv
-export CFLAGS="$RPM_OPT_FLAGS -fstrength-reduce -ffast-math -fomit-frame-pointer"
+export CFLAGS="%{optflags} -fstrength-reduce -ffast-math -fomit-frame-pointer"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -falign-loops=2 -falign-jumps=2 -falign-functions=2"
 %endif
-%configure --disable-static --with-pic --with-slang-driver=no --with-ncurses
-make %{?_smp_mflags}
+%configure --disable-static --with-slang-driver=no --with-ncurses
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}
-cp -av ANNOUNCE AUTHORS COPYING INSTALL NEWS README $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}
+%make_install
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
+cp -av ANNOUNCE AUTHORS COPYING INSTALL NEWS README %{buildroot}/%{_defaultdocdir}/%{name}
 cd ../aview-1.3.0
-PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH \
-   CFLAGS="$RPM_OPT_FLAGS -I$RPM_BUILD_ROOT/usr/include" \
-   LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}" \
-   LD_LIBRARY_PATH="$RPM_BUILD_ROOT%{_libdir}" \
+PATH=%{buildroot}/%{_bindir}:$PATH \
+   CFLAGS="%{optflags} -I%{buildroot}/usr/include" \
+   LDFLAGS="-L%{buildroot}/%{_libdir}" \
+   LD_LIBRARY_PATH="%{buildroot}/%{_libdir}" \
    ./configure --prefix=/usr --mandir=%{_mandir}
 make
-make DESTDIR=$RPM_BUILD_ROOT install
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}/aview
-cp -av README* ANNOUNCE COPYING TODO *.lsm $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}/aview
+%make_install
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/aview
+cp -av README* ANNOUNCE COPYING TODO *.lsm %{buildroot}/%{_defaultdocdir}/%{name}/aview
 cd -
-cd aavga-1.0 
-make CFLAGS="$RPM_OPT_FLAGS"
-cp -av aavga.so $RPM_BUILD_ROOT%_libdir
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}/aavga
-cp -av aavga.lsm COPYING README $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}/aavga
+cd aavga-1.0
+make CFLAGS="%{optflags}"
+cp -av aavga.so %{buildroot}/%_libdir
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/aavga
+cp -av aavga.lsm COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/aavga
 cd ..
-%{__rm} -f %{buildroot}%{_libdir}/*.la
+rm -f %{buildroot}%{_libdir}/*.la
+%fdupes %{buildroot}/%{_prefix}
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -149,7 +150,6 @@ cd ..
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %docdir %{_defaultdocdir}/%{name}
 %{_defaultdocdir}/%{name}
 %_bindir/aafire
@@ -166,13 +166,11 @@ cd ..
 %{_mandir}/man1/asciiview.1.gz
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libaa.so.1.0.4
 %_libdir/libaa.so.1
 %_libdir/aavga.so
 
 %files devel
-%defattr(-,root,root)
 %_includedir/aalib.h
 %_libdir/libaa.so
 %_datadir/aclocal/aalib.m4

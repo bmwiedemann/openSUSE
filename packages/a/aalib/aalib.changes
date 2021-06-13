@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:16:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static).
+- Run fdupes, and trim old rpm constructs.
+
+-------------------------------------------------------------------
 Sat Oct 17 12:10:53 UTC 2015 - meissner@suse.com
 
 - aavga.dif: add -fno-stack-protector to shared aavga.so object build
