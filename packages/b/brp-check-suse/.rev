@@ -611,4 +611,13 @@ Lets break everything :)
   * brp-25-symlink: Follow deeper symlinks to avoid false positives</comment>
     <requestid>893668</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e7a1a94ac49ab366c020c485eb5ea2ac</srcmd5>
+    <version>84.87+git20210607.252083e</version>
+    <time>1623618332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210607.252083e:
+  * Let symlinks from /lib/modules to /usr/src be absolute (boo#1186710)</comment>
+    <requestid>898090</requestid>
+  </revision>
 </revisionlist>

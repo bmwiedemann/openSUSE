@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 07 07:42:18 UTC 2021 - lnussel@suse.de
+
+- Update to version 84.87+git20210607.252083e:
+  * Let symlinks from /lib/modules to /usr/src be absolute (boo#1186710)
+
+-------------------------------------------------------------------
 Mon May 17 09:22:27 UTC 2021 - ro@suse.de
 
 - Update to version 84.87+git20210517.7005a76:
