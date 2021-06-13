@@ -47,6 +47,8 @@ Source99:       juliabuildopts
 Patch0:         julia-env-script-interpreter.patch
 # PATCH-FIX-OPENSUSE julia-fix_doc_build.patch ronisbr@gmail.com -- Makefile is building the docs with `USE_SYSTEM_CSL=1` even if they are already available in the tarball.
 Patch1:         julia-fix_doc_build.patch
+# PATCH-FIX-UPSTREAM julia-fix-mbedtls-build-failure-gcc-11.patch ronisbr@gmail.com - Fix MBEDTLS building using GCC 11.
+Patch2:         julia-fix-mbedtls-build-failure-gcc-11.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -179,6 +181,7 @@ Contains the Julia manual, the reference documentation of the standard library.
 %setup -q -n julia-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;
@@ -218,6 +221,12 @@ find . -name ".git*" -exec rm {} \;
 %ifarch armv6l armv6hl
 export LDFLAGS="$LDFLAGS -latomic"
 %endif
+
+# We need these compilation flags to avoid error when building MBEDTLS with
+# GCC-11.
+# Ref.: https://build.opensuse.org/package/show/security:tls/mbedtls
+export CFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
+export CXXLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
 
 %define julia_builddir %{_builddir}/%{name}/
 make %{?_smp_mflags} \

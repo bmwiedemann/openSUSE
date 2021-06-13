@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 12 19:24:28 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
+
+- Add patch `julia-fix-mbedtls-build-failure-gcc-11.patch` to fix
+  mbedtls build using GCC 11.
+
+-------------------------------------------------------------------
 Tue May  4 20:13:54 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
 
 - Version bump to 1.6.1.
