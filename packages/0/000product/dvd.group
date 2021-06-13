@@ -86,6 +86,8 @@
     <package name="akonadi-plugin-contacts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-plugin-kalarmcal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-plugin-mime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-search" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-search-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akregator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1194,6 +1196,11 @@
     <package name="kmag-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmahjongg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmahjongg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-account-wizard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-account-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-application-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmailtransport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmailtransport-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmenuedit5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1294,6 +1301,8 @@
     <package name="ktexteditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktimer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ktimer-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktouch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kturtle" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2949,6 +2958,8 @@
     <package name="mariadb-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-errormessages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mdadm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3426,6 +3437,10 @@
     <package name="pidgin-plugin-skypeweb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pidgin-plugin-telegram" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-sieve-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-sieve-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pimcommon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pimcommon-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pinentry" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5037,8 +5052,6 @@
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-search" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="akonadi-search-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5089,18 +5102,11 @@
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="kmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmail-account-wizard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmail-account-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmail-application-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmail-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krfb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krfb-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5317,8 +5323,6 @@
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
@@ -5348,10 +5352,6 @@
     <package name="perl-Sys-Guestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-Win-Hivex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-libintl-perl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pim-sieve-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pim-sieve-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="powertop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="powertop-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
