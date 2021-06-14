@@ -1,0 +1,88 @@
+From 21656e41b77295a662db3ca5b88cba16666a1c6c Mon Sep 17 00:00:00 2001
+From: Gavin Llewellyn <gavin.llewellyn@blackboard.com>
+Date: Thu, 25 Oct 2018 15:03:07 +0100
+Subject: [PATCH] Avoid C++11 deprecation warning when using g++7
+
+---
+ src/ptlib/common/object.cxx | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+Index: ptlib-2.10.11/src/ptlib/common/object.cxx
+===================================================================
+--- ptlib-2.10.11.orig/src/ptlib/common/object.cxx	2013-08-15 01:20:26.000000000 +0200
++++ ptlib-2.10.11/src/ptlib/common/object.cxx	2021-06-04 15:07:14.134480238 +0200
+@@ -255,7 +255,9 @@
+ #undef realloc
+ #undef free
+ 
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
++#if (__cplusplus >= 201103L)
++void * operator new(size_t nSize)
++#elif (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+ void * operator new(size_t nSize) throw (std::bad_alloc)
+ #else
+ void * operator new(size_t nSize)
+@@ -265,7 +267,9 @@
+ }
+ 
+ 
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
++#if (__cplusplus >= 201103L)
++void * operator new[](size_t nSize)
++#elif (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+ void * operator new[](size_t nSize) throw (std::bad_alloc)
+ #else
+ void * operator new[](size_t nSize)
+@@ -275,7 +279,9 @@
+ }
+ 
+ 
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
++#if (__cplusplus >= 201103L)
++void operator delete(void * ptr) noexcept
++#elif (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+ void operator delete(void * ptr) throw()
+ #else
+ void operator delete(void * ptr)
+@@ -285,7 +291,9 @@
+ }
+ 
+ 
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
++#if (__cplusplus >= 201103L)
++void operator delete[](void * ptr) noexcept
++#elif (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+ void operator delete[](void * ptr) throw()
+ #else
+ void operator delete[](void * ptr)
+@@ -945,30 +953,6 @@
+ }
+ 
+ 
+-#else // defined(_MSC_VER) && defined(_DEBUG)
+-
+-#if !defined(P_VXWORKS) && !defined(_WIN32_WCE)
+-
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+-void * operator new[](size_t nSize) throw (std::bad_alloc)
+-#else
+-void * operator new[](size_t nSize)
+-#endif
+-{
+-  return malloc(nSize);
+-}
+-
+-#if (__GNUC__ >= 3) || ((__GNUC__ == 2)&&(__GNUC_MINOR__ >= 95)) //2.95.X & 3.X
+-void operator delete[](void * ptr) throw ()
+-#else
+-void operator delete[](void * ptr)
+-#endif
+-{
+-  free(ptr);
+-}
+-
+-#endif // !P_VXWORKS
+-
+ #endif // defined(_MSC_VER) && defined(_DEBUG)
+ 
+ #endif // PMEMORY_CHECK

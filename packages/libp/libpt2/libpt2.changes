@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  4 12:38:44 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch:
+  fix build with old gcc.
+- Add libpt2-c11-fixes.patch: fix C++11 warnings.
+
+-------------------------------------------------------------------
 Mon Jan 18 08:40:52 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add ptlib-2.10.11-signed_int_overflow.patch: fix integer overflow

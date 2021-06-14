@@ -1,0 +1,66 @@
+From 0981bb16d5bb7d1c73a59b006c25fba7c3bc82cb Mon Sep 17 00:00:00 2001
+From: Robert Jongbloed <robertj@voxlucida.com.au>
+Date: Fri, 26 Jun 2015 09:15:49 +0000
+Subject: [PATCH] Some more C++11 changes
+
+---
+ make/post.mak                |  4 ++--
+ samples/lua/lua_test.cxx     | 10 +++++-----
+ src/ptclib/random.cxx        |  2 +-
+ src/ptlib/common/contain.cxx |  8 ++++----
+ src/ptlib/common/osutils.cxx |  2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+
+Index: ptlib-2.10.11/src/ptclib/random.cxx
+===================================================================
+--- ptlib-2.10.11.orig/src/ptclib/random.cxx	2021-06-04 14:51:07.270206457 +0200
++++ ptlib-2.10.11/src/ptclib/random.cxx	2021-06-04 14:52:13.493551821 +0200
+@@ -138,7 +138,7 @@
+ unsigned PRandom::Generate()
+ {
+   if (randcnt-- == 0) {
+-    register DWORD a,b,x,y,*m,*mm,*m2,*r,*mend;
++    DWORD a,b,x,y,*m,*mm,*m2,*r,*mend;
+     mm=randmem; r=randrsl;
+     a = randa; b = randb + (++randc);
+     for (m = mm, mend = m2 = m+(RandSize/2); m<mend; )
+Index: ptlib-2.10.11/src/ptlib/common/contain.cxx
+===================================================================
+--- ptlib-2.10.11.orig/src/ptlib/common/contain.cxx	2021-06-04 14:51:07.258206578 +0200
++++ ptlib-2.10.11/src/ptlib/common/contain.cxx	2021-06-04 14:51:07.274206416 +0200
+@@ -1161,7 +1161,7 @@
+ 
+   MakeUnique();
+ 
+-  register PINDEX slen = GetLength();
++  PINDEX slen = GetLength();
+   if (start > slen)
+     return;
+ 
+@@ -1178,7 +1178,7 @@
+   if (end < 0 || start < 0 || end < start)
+     return Empty();
+ 
+-  register PINDEX len = GetLength();
++  PINDEX len = GetLength();
+   if (start > len)
+     return Empty();
+ 
+@@ -1314,7 +1314,7 @@
+   if (offset < 0)
+     return P_MAX_INDEX;
+ 
+-  register PINDEX len = GetLength();
++  PINDEX len = GetLength();
+   while (offset < len) {
+     if (InternalCompare(offset, ch) == EqualTo)
+       return offset;
+@@ -1530,7 +1530,7 @@
+   if (len < 0 || pos < 0)
+     return;
+ 
+-  register PINDEX slen = GetLength();
++  PINDEX slen = GetLength();
+   if (pos >= slen)
+     operator+=(cstr);
+   else {

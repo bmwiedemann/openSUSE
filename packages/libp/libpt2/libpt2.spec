@@ -52,6 +52,10 @@ Patch9:         reproducible.patch
 Patch10:        libpt2-gnu-make-4.3.patch
 # PATCH-FIX-UPSTREAM ptlib-2.10.11-signed_int_overflow.patch rh#1696458 fcrozat@suse.com -- fix overflow
 Patch11:	ptlib-2.10.11-signed_int_overflow.patch
+# PATCH-FIX-UPSTREAM libpt2-c11-fixes.patch fcrozat@suse.com -- Fix warning in C++11
+Patch12:	libpt2-c11-fixes.patch
+# PATCH-FIX-UPSTREAM libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch fcrozat@suse.com -- Fix build with old gcc
+Patch13:	libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch
 BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  bison
@@ -194,6 +198,8 @@ This plugin enables pulseaudio support for %{name}.
 %patch10 -p1
 %endif
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
