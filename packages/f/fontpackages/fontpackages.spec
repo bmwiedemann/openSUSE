@@ -1,7 +1,7 @@
 #
 # spec file for package fontpackages
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,6 @@ License:        BSD-3-Clause
 Group:          System/Base
 Source0:        rpm-macros.fonts-config
 Source100:      COPYING
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -37,19 +36,17 @@ Group:          Development/Tools/Building
 %description devel
 Development commons for font packages.
 
-
 %prep
 
 %build
 cp %{SOURCE100} .
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp -a %{SOURCE0} %{buildroot}%{_sysconfdir}/rpm/macros.fonts-config
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp -a %{SOURCE0} %{buildroot}%{_rpmmacrodir}/macros.fonts-config
 
 %files devel
-%defattr(-,root,root)
-%doc COPYING
-%config %{_sysconfdir}/rpm/macros.fonts-config
+%license COPYING
+%{_rpmmacrodir}/macros.fonts-config
 
 %changelog
