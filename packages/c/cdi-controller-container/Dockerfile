@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Controller for the data fetc
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-controller:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-controller:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
            containerized-data-importer-controller \
