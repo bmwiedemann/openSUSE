@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Virtualization handler for k
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
               dbus-1 \
