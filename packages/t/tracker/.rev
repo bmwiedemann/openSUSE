@@ -1172,4 +1172,12 @@
     <comment>Update to 3.1.1 (forwarded request 886235 from dimstar)</comment>
     <requestid>887481</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>36e4080092c35edfb0746f31aeda2639</srcmd5>
+    <version>3.1.2</version>
+    <time>1623705042</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 899592 from iznogood)</comment>
+    <requestid>899639</requestid>
+  </revision>
 </revisionlist>

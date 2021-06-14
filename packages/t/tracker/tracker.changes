@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 12 09:31:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.1.2:
+  + Add missing autocleanup functions.
+  + Support empty array updates.
+  + VAPI fixes.
+  + Add missing G_BEGIN_DECLS/G_END_DECLS guards.
+  + Manpage fixes.
+  + Fix crash in "tracker3 export --2to3" subcommand.
+  + Fix rare bug that lead to triples being silently eaten.
+  + Improvements to datetime handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 17 08:39:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.1.1:
