@@ -1,7 +1,7 @@
 #
 # spec file for package python-Telethon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Python2 is not supported
 %define skip_python2 1
+%define modname Telethon
 Name:           python-Telethon
-Version:        1.17.0
+Version:        1.21.1
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT
 URL:            https://github.com/LonamiWebs/Telethon
-Source:         https://files.pythonhosted.org/packages/source/T/Telethon/Telethon-%{version}.tar.gz
+Source:         https://github.com/LonamiWebs/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-tornasync}
@@ -45,14 +46,13 @@ Telethon is an asyncio Python 3 MTProto library to interact with Telegram's API 
 
 %prep
 %setup -q -n Telethon-%{version}
-find {README.rst,LICENSE} -type f -perm /111 -exec chmod 644 {} \;
+chmod 644 *.rst LICENSE
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +62,7 @@ find {README.rst,LICENSE} -type f -perm /111 -exec chmod 644 {} \;
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/telethon
+%{python_sitelib}/Telethon-%{version}-py*.egg-info
 
 %changelog

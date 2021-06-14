@@ -71,4 +71,179 @@
     + Thumbnails are sorted, so -1 is always the largest.</comment>
     <requestid>843044</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9096a39763a7bf09dd633fda859b03c</srcmd5>
+    <version>1.21.1</version>
+    <time>1623705082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.1:
+  - New schema and QoL improvements (v1.21)
+  - Scheme layer used: 125
+  - View new and changed raw API methods.
+  - Not many changes in this release, mostly the layer
+    change. Lately quite a few people have been reporting
+    TypeNotFoundError, which occurs when the server sends types
+    that it shouldn’t. This can happen when Telegram decides
+    to add a new, incomplete layer, and then they change the
+    layer without bumping the layer number (so some constructor
+    IDs no longer match and the error occurs). This layer
+    change should fix it.
+  - Additions
+      - Message.click() now supports a password parameter,
+        needed when doing things like changing the owner of a
+        bot via @BotFather.
+  - Enhancements
+      - tgcrypto will now be used for encryption when
+        installed.
+  - Bug fixes
+      - Message.edit wasn’t working in your own chat on
+        events other than NewMessage.
+      - client.delete_dialog() was not working on chats.
+      - events.UserUpdate should now handle channels’ typing
+        status.
+      - InputNotifyPeer auto-cast should now work on other
+        TLObject.
+      - For some objects, False was not correctly serialized.
+  - New schema and QoL improvements (v1.20)
+  - Scheme layer used: 124
+  - View new and changed raw API methods.
+  - A bit late to the party, but Telethon now offers a
+    convenient way to comment on channel posts. It works very
+    similar to reply_to:
+    client.send_message(channel, 'Great update!', comment_to=1134)
+  - This code will leave a comment to the channel post with ID
+    1134 in channel.
+  - In addition, the library now logs warning or error
+    messages to stderr by default! You no longer should be
+    left wondering “why isn’t my event handler working”
+    if you forgot to configure logging. It took so long for
+    this change to arrive because nobody noticed that Telethon
+    was using a logging.NullHandler when it really shouldn’t
+    have.
+  - If you want the old behaviour of no messages being logged,
+    you can configure logging to CRITICAL severity:
+        
+        import logging
+        logging.basicConfig(level=logging.CRITICAL)
+    This is not considered a breaking change because stderr
+    should only be used for logging purposes, not to emit
+    information others may consume (use stdout for that).
+  - Additions
+      - New comment_to parameter in client.send_message(), and
+        client.send_file() to comment on channel posts.
+  - Enhancements
+      - utils.resolve_invite_link handles the newer link
+        format.
+      - Downloading files now retries once on TimeoutError,
+        which has been happening recently. It is not guaranteed
+        to work, but it should help.
+      - Sending albums of photo URLs is now supported.
+      - EXIF metadata is respected when automatically resizing
+        photos, so the orientation information should no longer
+        be lost.
+      - Downloading a thumbnail by index should now use the
+        correct size ordering.
+  - Bug fixes
+      - Fixed a KeyError on certain cases with Conversation.
+      - Thumbnails should properly render on more
+        clients. Installing hachoir may help.
+      - Message search was broken when using a certain
+        combination of parameters.
+      - utils.resolve_id was misbehaving with some identifiers.
+      - Fix TypeNotFoundError was not being propagated, causing
+        deadlocks.
+      - Invoking multiple requests at once with ordered=True
+        was deadlocking.
+  - New raw API call methods (v1.19)
+  - Scheme layer used: 122
+  - Telegram has had group calls for some weeks now. This new
+    version contains the raw API methods needed to initiate and
+    manage these group calls, however, the library will likely
+    not offer ways to stream audio directly.
+  - Telethon’s focus is being an asyncio-based, pure-Python
+    implementation to interact with Telegram’s API. Streaming
+    audio is beyond the current scope of the project and would
+    be a big undertaking.
+  - However, that doesn’t mean calls are not possible with
+    Telethon. If you want to help design a Python library to
+    perform audio calls, which can then be used with Telethon
+    (so you can use Telethon + that new library to perform
+    calls with Telethon), please refer to @pytgcallschat
+    and join the relevant chat to discuss and help with the
+    implementation!
+  - The above message was also posted in the official Telegram
+    group, if you wish to discuss it further.
+  - With that out of the way, let’s list the additions and
+    bug fixes in this release:
+  - Additions
+      - New has_left property for user permissions on
+        client.get_permissions().
+  - Enhancements
+      - Updated documentation and list of known RPC errors.
+      - The library now treats a lack of ping responses as a
+        network error.
+      - client.kick_participant() now returns the service
+        message about the user being kicked, so you can delete
+        it.
+  - Bug fixes
+      - When editing inline messages, the text parameter is
+        preferred if provided.
+      - Additional senders are unconditionally disconnected
+        when disconnecting the main client, which should reduce
+        the amount of asyncio warnings.
+      - Automatic reconnection with no retries was failing.
+      - PhotoPathSize is now ignored when determining a
+        download size, since this “size” is not a JPEG
+        thumbnail unlike the rest.
+      - events.ChatAction should misbehave less.
+  - New layer and QoL improvements (v1.18)
+  - Scheme layer used: 120
+  - Mostly fixes, and added some new things that can be done in
+    this new layer.
+  - For proxy users, a pull request was merged that will
+    use the python-socks library when available for proxy
+    support. This library natively supports asyncio, so it
+    should work better than the old pysocks. pysocks will still
+    be used if the new library is not available, and both will
+    be handled transparently by Telethon so you don’t need to
+    worry about it.
+  - Additions
+      - New client.set_proxy() method which lets you change
+        the proxy without recreating the client. You will need
+        to reconnect for it to take effect, but you won’t
+        need to recreate the client. This is also an external
+        contribution.
+      - New method to unpin messages client.unpin_message().
+  - Enhancements
+      - Empty peers are excluded from the list of dialogs.
+      - If the python-socks library is installed (new optional
+        requirement), it will be used instead of pysocks for
+        proxy support. This should fix some issues with proxy
+        timeouts, because the new library natively supports
+        asyncio.
+      - client.send_file() will now group any media
+        type, instead of sending non-image documents
+        separatedly. This lets you create music albums, for
+        example.
+      - You can now search messages with a from_user that’s
+        not a user. This is a Telegram feature, we know the
+        name isn’t great, but backwards-compatibility has to
+        be kept.
+  - Bug fixes
+      - Fixes related to conversation timeouts.
+      - Large dates (over year 2038) now wrap around a 32-bit
+        integer, which is the only way we can represent them
+        to Telegram. Even if “wrong”, it makes things not
+        crash, and it’s the best we can do with 32-bit dates.
+      - The library was accidentally using a deprecated
+        argument in one of its friendly methods, producing a
+        warning.
+      - Improvements to the way marked IDs are parsed.
+      - SlowModeWaitError floods are no longer cached.
+      - Getting the buttons for a message could fail sometimes.
+      - Getting the display name for “forbidden” chats now works.
+      - Better handling of errors in some internal methods.
+</comment>
+    <requestid>899977</requestid>
+  </revision>
 </revisionlist>
