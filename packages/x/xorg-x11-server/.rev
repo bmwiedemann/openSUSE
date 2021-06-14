@@ -3560,4 +3560,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     ZDI-CAN-1259, bsc#1180128)</comment>
     <requestid>886705</requestid>
   </revision>
+  <revision rev="392" vrev="2">
+    <srcmd5>0d8941cf407cec5050f7012b2d975151</srcmd5>
+    <version>1.20.11</version>
+    <time>1623705033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899508</requestid>
+  </revision>
 </revisionlist>

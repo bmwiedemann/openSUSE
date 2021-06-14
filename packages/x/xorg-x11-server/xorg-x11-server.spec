@@ -156,8 +156,8 @@ Requires:       libpixman-1-0 >= 0.24
 %endif
 Requires:       Mesa
 %if 0%{?suse_version} >= 1315
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %endif
 Provides:       xorg-x11-server-glx
 Obsoletes:      xorg-x11-server-glx
@@ -252,6 +252,8 @@ Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
 Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
 
 Patch1900:      u_no-lto-for-tests.patch
+
+Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
 %description
 This package contains the X.Org Server.
@@ -405,6 +407,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1600 -p1
 %patch1801 -p1
 %patch1900 -p1
+%patch1910 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

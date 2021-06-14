@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 11 11:03:18 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
+  * Fixes broken rotation support for DRM drivers without hardware
+    rotation support or direct vram access (bsc#1182955)
+
+-------------------------------------------------------------------
 Mon Apr 19 11:29:31 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - disable build of Xwayland, which is now being built in separate
