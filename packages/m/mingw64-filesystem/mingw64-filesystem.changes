@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 14 10:47:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir (boo#1185671)
+- Move profile.d entries to %_distconfdir
+- Use %_fileattrsdir macro
+
+-------------------------------------------------------------------
 Thu Nov  5 10:38:47 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 20201105
