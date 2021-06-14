@@ -1,7 +1,7 @@
 #
 # spec file for package s3backer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright 2008 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           s3backer
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        FUSE-based single file backing store via Amazon S3
 License:        GPL-2.0-or-later

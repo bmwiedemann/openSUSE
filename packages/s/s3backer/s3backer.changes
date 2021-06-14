@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 14 15:19:02 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.6.2
+  + Require test directory to be absolute unless `-f' flag given (issue #143)
+  + Show HTTP error response payload content when `--debug-http' flag given
+  + List blocks in the background; added `--listBlocksThreads' (issue #24)
+  + Don't let IAM credentials expire while listing blocks (issue #146)
+  + Fixed bug parsing "--configFile" inside comma-separated option list
+
+-------------------------------------------------------------------
 Wed Dec 30 15:51:27 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.6.1
