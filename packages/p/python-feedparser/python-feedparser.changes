@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 14 16:04:31 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.5:
+  * Prevent a TypeError crash that may occur when including a
+    username and password in the feed URL. (#276)
+
+-------------------------------------------------------------------
+Sun Jun 13 19:01:57 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.4:
+  * Prevent a UnicodeDecodeError crash that may occur when the
+    title element's type attribute exists but is empty. (#277)
+  * Prevent a UnicodeEncodeError crash that may occur if the URL
+    contains Unicode characters in the path. (#273)
+- additional changes from version 6.0.3:
+  * Fix an issue with the HTTP request status on Python >= 3.9.
+- drop numerical_return_status.patch: fixed upstream
+
+-------------------------------------------------------------------
 Thu Apr 29 14:39:29 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - add numerical_return_status.patch for 3.9 python version

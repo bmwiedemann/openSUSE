@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-feedparser
-Version:        6.0.2
+Version:        6.0.5
 Release:        0
 Summary:        Universal Feed Parser Module for Python
 License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numerical_return_status.patch gh#kurtmckee/feedparser#272/files mcepl@suse.com
-#  Maintain numeric result status code in Python>=3.9
-Patch0:         numerical_return_status.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sgmllib3k}
