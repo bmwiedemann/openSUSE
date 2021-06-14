@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.1.9
+Version:        1.2.1
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -66,6 +66,22 @@ Summary:        Python ntpsec bindings
 %description -n python3-ntp
 The ntpsec python bindings used by various ntp utilities.
 
+%package -n libntpc1
+Summary:        Shared library for NTP client applications
+Group:          System/Libraries
+
+%description -n libntpc1
+This package provides the shared library for ntp clients.
+
+%package devel
+Summary:        Development files for ntpsec
+Group:          Development/Libraries/C and C++
+Requires:       libntpc1 = %{version}
+
+%description devel
+This package contains libraries needed to develop application
+that use %{name}.
+
 %package utils
 Summary:        Utilities and commands for ntp
 Requires:       %{name} = %{version}
@@ -98,14 +114,10 @@ sed -i -e 's:, condition="ver >= num(3, 18)"::' \
     pylib/wscript
 
 %build
-# We use the date from the changes file
-epoch=`date --date "@\`stat --format %%Y %{SOURCE3}\`" +"%%s"`
-
 %global _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export CCFLAGS="%{optflags}"
 python3 ./waf configure \
-    --build-epoch="$epoch" \
     --enable-debug \
     --enable-doc --htmldir=%{_docdir}/ntpsec/html \
     --prefix=%{_prefix} \
@@ -113,6 +125,7 @@ python3 ./waf configure \
     --python=%{_bindir}/python3 \
     --pythonarchdir=%{python3_sitearch} \
     --pythondir=%{python3_sitearch} \
+    --pyshebang="/usr/bin/python3" \
     --sbindir=%{_sbindir} \
     --bindir=%{_bindir} \
     --enable-seccomp \
@@ -167,6 +180,9 @@ exit 0
 %postun utils
 %service_del_postun ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
+%post -n libntpc1 -p /sbin/ldconfig
+%postun -n libntpc1 -p /sbin/ldconfig
+
 %files -n python3-ntp
 %{python3_sitearch}/ntp*
 
@@ -204,6 +220,12 @@ exit 0
 %files doc
 %dir %{_docdir}/%{name}/html
 %doc %{_docdir}/%{name}/html/*
+
+%files -n libntpc1
+%{_libdir}/libntpc.so.1*
+
+%files devel
+%{_libdir}/libntpc.so
 
 %files
 %license LICENSE.adoc

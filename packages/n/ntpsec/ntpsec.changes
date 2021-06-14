@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun  9 15:20:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Update ntpkeygen/keygone to properly filter # characters.
+    Fix security issue: CVE-2021-22212
+  * Add dextral peers mode in ntpq and ntpmon.
+  * Drop NTPv1 as the support was not RFC compliant, maybe v2
+    except mode 6 next.
+  * Fix argument P for ntpd parsing fixed and ntpdate improvements.
+  * Fix crash for raw ntpq readvar.
+  * Add processor usage to NTS-KE logging except on NetBSD.
+  * Remove --build-epoch and replace it with arbitrary
+    --build-desc text. Passing
+    '--build-desc=$(date -u +%Y-%m-%dT%H:%M:%Sz)' restores the
+    previous default extended version.
+  * The build epoch has been replaced with a hardcoded timestamp
+    which will be manually updated every nine years or so
+    (approx 512w). This makes the binaries reproducible by default.
+  * Compare versions of ntp.ntpc and libntpc printing a warning
+    if mismatched. Fix libntpc install path if using it.
+  * Reduce maxclocks default to 5 to reduce the NTP pool load.
+  * Print LIBDIR during ./waf configure.
+  * Add documentation, new GPG key, and other cleanups.
+- Update to version 1.2.0
+  * The minor version bump is to indicate official official support
+    of RFC8915 "Network Time Security for the Network Time
+    Protocol" which was released 2020-09-30.
+  * NTS-KE client now defaults to port 4460.
+  * NTS-KE server now listens on port 4460. (Listening on port 123
+    has been removed.)
+  * The shebang of installed Python scripts can now be customized
+    with: waf configure --pyshebang="…" This has multiple uses, but
+    one example is for distros (like CentOS 8 or Ubuntu 20.04) with
+    no python executable: python3 waf configure
+    --pyshebang="/usr/bin/env python3"
+  * NTP clients now use a shared library with Python instead of an
+    extension.
+  * Add flakiness option to ntpq and fixed limit=1 in mrulist.
+  * Fixed a minor formatting issue in rate page.
+- Create subpackages for libntpc and ntpsec-devel
+
+-------------------------------------------------------------------
 Fri Jan  8 17:21:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Let system-user-ntp handle the user/group generation
