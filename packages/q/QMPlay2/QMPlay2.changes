@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 14 00:39:11 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Changed python dependency from "python > 3.0.0" to "python3" to avoid dependency errors
+- Cleaned up obsolete python2 dependencies
+- Optimized 0001-add-opensuse-customizations.patch to not throw any "/usr/bin/env" errors
+
+-------------------------------------------------------------------
 Mon Jun  7 21:25:43 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Removed 0001-fix-youtube-search.patch as it is merged upstream

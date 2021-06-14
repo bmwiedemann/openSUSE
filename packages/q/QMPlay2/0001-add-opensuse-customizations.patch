@@ -1,5 +1,5 @@
 From: Simon Vogl <simon.vogl@gmx.net>
-Date: Mon, 17 Jul 2020 21:15:29 UTC
+Date: Mon, 14 Jun 2021 00:39:11 UTC
 Subject: [PATCH] Fix broken python detection of QMPlay2 when it tries to launch youtube-dl
 
 This patch is required to prevent QMPlay2 from always preferring python2 over python3 which can lead to crashes in certain cases.
@@ -7,10 +7,17 @@ It also adds openSUSE branding to the about screen.
 
 --- a/src/qmplay2/YouTubeDL.cpp
 +++ b/src/qmplay2/YouTubeDL.cpp
-@@ -458,25 +458,7 @@
-         const int idx = shebang.lastIndexOf("python");
-         if (shebang.startsWith("#!") && idx > -1)
-         {
+@@ -451,35 +451,9 @@
+     QString program = m_ytDlPath;
+ 
+ #ifndef Q_OS_WIN
+-    QFile ytDlFile(program);
+-    if (ytDlFile.open(QFile::ReadOnly))
+-    {
+-        const auto shebang = ytDlFile.readLine(99).trimmed();
+-        const int idx = shebang.lastIndexOf("python");
+-        if (shebang.startsWith("#!") && idx > -1)
+-        {
 -            const auto pythonCmd = shebang.mid(idx);
 -            if (!QStandardPaths::findExecutable(pythonCmd).endsWith(pythonCmd))
 -            {
@@ -30,10 +37,15 @@ It also adds openSUSE branding to the about screen.
 -                    }
 -                }
 -            }
-+            const auto pythonCmd = "python3";
-         }
-         ytDlFile.close();
-     }
+-        }
+-        ytDlFile.close();
+-    }
++    //Enforce execution command as "python3", disable automatic detection
++    args.prepend(program);
++    program = "python3";
+ #endif
+ 
+     m_process.start(program, args);
 
 --- a/src/gui/AboutWidget.cpp
 +++ b/src/gui/AboutWidget.cpp

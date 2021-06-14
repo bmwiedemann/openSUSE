@@ -67,8 +67,7 @@ Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
 Recommends:       youtube-dl
-Requires:         python > 3.0.0
-Requires:         /usr/bin/python
+Requires:         python3
 
 %description
 QMPlay2 is a video player, it can play and stream all formats supported by
