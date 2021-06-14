@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jun  3 23:01:24 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 5.0.3:
+  + Lexilla;
+    * Add namespace feature with GetNameSpace function.
+    * AddStaticLexerModule function adds a static lexer to
+      Lexilla's list.
+    * Add Julia lexer, Feature #1380.
+    * Fix variable expansion in Batch, Issue #4.
+    * Fix transition to comment for --> inside JavaScript string,
+      Bug #2207.
+    * Remove nested comment and long string support as these were
+      removed from Lua, Bug #2205.
+    * Fix empty link titles in Markdown, Bug #2235. Also fix
+      detection of whether the previous line had content which
+      treated '\n' and '\r\n' line endings differently.
+    * Update to Unicode 13, Feature #1379.
+  + A more type-safe binding of Scintilla's API that can be used
+    from C++ is implemented in the ScintillaTypes.h,
+    ScintillaMessages.h, and ScintillaStructures.h headers.
+  + Change the way that selections and carets are drawn to use the
+    element APIs.
+  + Change caret line drawing to use SC_ELEMENT_CARET_LINE_BACK
+    element and SCI_SETCARETLINELAYER method.
+  + Add SCI_MARKERSETLAYER to define layer on which to draw content
+    area markers. This replaces the use of SC_ALPHA_NOALPHA for
+    markers.
+  + Add SC_ELEMENT_WHITE_SPACE to set the colour of visible
+    whitespace including translucency.
+  + Add elements for hot spots SC_ELEMENT_HOT_SPOT_ACTIVE and
+    SC_ELEMENT_HOT_SPOT_ACTIVE_BACK.
+  + Add SCI_GETELEMENTBASECOLOUR to return the default values for
+    element colours.
+  + Make idle actions wrapping and background styling smoother by
+    measuring per-byte instead of per-line and allowing just one
+    line to be processed in a time slice. Very long lines will not
+    distort estimation or block interaction as much. Feature #1373.
+  + Include modifiers in SCN_INDICATORRELEASE notification,
+    Bug #2254.
+  + Update to Unicode 13, Feature #1379.
+  + On GTK 3 with Wayland, fix primary selection, Bug #2227.
+- Many changes from version 4.4.0 to 5.0.2 see history at
+  https://www.scintilla.org/SciTEHistory.html.
+
+-------------------------------------------------------------------
 Thu May  7 11:57:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.3.3:

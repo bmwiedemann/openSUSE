@@ -1,8 +1,8 @@
 #
 # spec file for package scite
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2012-2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2012-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+#FIXME upstream fixing needed so lto can be re-enabled.
+%if 0%{?suse_version} > 1500
+%define _lto_cflags %{nil}
+%endif
 
-%define tar_ver 433
+%define tar_ver 503
+
 Name:           scite
-Version:        4.3.3
+Version:        5.0.3
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
@@ -51,15 +56,20 @@ building and running programs.
 %build
 export CXXFLAGS='%{optflags}'
 export CFLAGS='%{optflags}'
+%make_build GTK3=1 -C lexilla/src
 %make_build GTK3=1 -C scintilla/gtk
 %make_build GTK3=1 -C scite/gtk
 
 %install
 make GTK3=1 DESTDIR=%{buildroot} -C scite/gtk install
 # Add the man page
-mkdir -p %{buildroot}%{_mandir}/man1
+install -d -m 0755 -p %{buildroot}%{_mandir}/man1
 install -m 0644 scite/doc/scite.1 %{buildroot}%{_mandir}/man1/SciTE.1
 %suse_update_desktop_file -r SciTE GTK Development Utility Building TextEditor
+# Needed for non Tumbleweed releases.
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+export NO_BRP_CHECK_RPATH=true
+%endif
 
 %files
 %license scite/License.txt
@@ -68,6 +78,9 @@ install -m 0644 scite/doc/scite.1 %{buildroot}%{_mandir}/man1/SciTE.1
 %{_datadir}/scite/
 %{_datadir}/pixmaps/Sci48M.png
 %{_datadir}/applications/SciTE.desktop
+%dir %{_prefix}/lib/scite
+%{_prefix}/lib/scite/liblexilla.so
+%{_prefix}/lib/scite/libscintilla.so
 %{_mandir}/man1/SciTE.1%{?ext_man}
 
 %changelog
