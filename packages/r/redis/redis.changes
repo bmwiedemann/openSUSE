@@ -106,7 +106,7 @@ Tue Apr 20 07:17:18 UTC 2021 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Sat Mar 13 14:28:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
-- replaced /var/run with /run for all PID file paths
+- replaced /var/run with /run for all PID file paths (bsc#1185072)
 
 -------------------------------------------------------------------
 Thu Mar  4 13:21:32 UTC 2021 - Gareth McCarter <garethmccarter@gmail.com>
