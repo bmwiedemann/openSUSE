@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.4.2
+BuildRequires:  kImageAnnotator-devel >= 0.5.1
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
@@ -69,8 +69,8 @@ annotation features for your screenshots.
 xvfb-run make -C build test
 
 %files
-%license LICENSE
-%doc CHANGELOG.md CODINGSTYLE README.md
+%license LICENSE.txt
+%doc CHANGELOG.md CODINGSTYLE.md README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/org.ksnip.ksnip.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

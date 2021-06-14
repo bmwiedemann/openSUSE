@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jun  5 12:50:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.0
+  New
+  * Add option to select the default action for tray icon left
+    click.
+  * Open/Paste from clipboard via tray icon.
+  * Show/hide toolbar and annotation settings with TAB.
+  * Add setting for auto hiding toolbar and annotator settings.
+  * Allow setting transparency of not selected snipping area
+    region.
+  * Resize selected rect area with arrow keys.
+  * Copy a screenshot to clipboard as data URI.
+  * Allow disabling tray icon notifications.
+  * Provide option to open recent files.
+  * Allow disabling auto resizing after first capture.
+  * Drag and Drop from ksnip to other applications.
+  * Add support for KDE Plasma notification service.
+  * User-defined actions for taking screenshot and
+    post-processing.
+  * Add 'hide main window' option to actions.
+  Fixed
+  * Not possible to change adorner color.
+  * ksnip --version output printed to stderr.
+
+-------------------------------------------------------------------
 Tue Mar 23 10:48:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.8.2
