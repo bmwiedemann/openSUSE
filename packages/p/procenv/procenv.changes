@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 14 07:33:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.56:
+  * tidy: compact and align structs for memory size and performance.
+  * darwin: Add memory details (total, free, wired, unused,
+    active and inactive memory).
+  * doc improvements.
+
+-------------------------------------------------------------------
 Fri Apr  9 07:10:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.55:

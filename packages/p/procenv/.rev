@@ -40,4 +40,16 @@
     - Fixed detection for modern versions of Hurd.</comment>
     <requestid>883980</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>530703b1dbd90543c46cd018d2d3c1e9</srcmd5>
+    <version>0.56</version>
+    <time>1623705070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.56:
+  * tidy: compact and align structs for memory size and performance.
+  * darwin: Add memory details (total, free, wired, unused,
+    active and inactive memory).
+  * doc improvements.</comment>
+    <requestid>899894</requestid>
+  </revision>
 </revisionlist>
