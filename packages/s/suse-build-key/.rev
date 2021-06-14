@@ -283,4 +283,28 @@
   out when using --exclude-docs (bsc#1044232)</comment>
     <requestid>669010</requestid>
   </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>cb37585b35b514a484c8c9bb31bede03</srcmd5>
+    <version>12.0</version>
+    <time>1623705069</time>
+    <user>dimstar_suse</user>
+    <comment>This syncs from SUSE:SLE-15:Update. the slightly non-incremental
+changelog can't be avoided. 
+
+- suse build key extended (bsc#1176759)
+  gpg-pubkey-39db7c82-5847eb1f.asc -&gt; gpg-pubkey-39db7c82-5f68629b.asc
+
+- actually the container key is different from the build signing
+  key. (PM-1845 bsc#1170347)
+
+- add a /usr/share/container-keys/ directory for GPG based Container
+  verification.
+- Add the SUSE build key as &quot;suse-container-key.asc&quot;. (PM-1845 bsc#1170347)
+
+- created a new security@suse.de communication key (bsc#1166334)
+
+- include ptf key in the key directory to avoid it being
+  stripped via %doc stripping. (bsc#1044232) (forwarded request 899537 from dirkmueller)</comment>
+    <requestid>899890</requestid>
+  </revision>
 </revisionlist>

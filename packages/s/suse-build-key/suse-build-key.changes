@@ -1,8 +1,33 @@
 -------------------------------------------------------------------
-Fri Jan 11 15:00:10 UTC 2019 - meissner@suse.com
+Mon Sep 21 08:30:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
-- add PTF key to the key directory, so it does not get stripped 
-  out when using --exclude-docs (bsc#1044232)
+- suse build key extended (bsc#1176759)
+  gpg-pubkey-39db7c82-5847eb1f.asc -> gpg-pubkey-39db7c82-5f68629b.asc
+
+
+-------------------------------------------------------------------
+Thu Aug 13 09:32:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- actually the container key is different from the build signing
+  key. (PM-1845 bsc#1170347)
+
+-------------------------------------------------------------------
+Thu Apr 23 13:32:45 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- add a /usr/share/container-keys/ directory for GPG based Container
+  verification.
+- Add the SUSE build key as "suse-container-key.asc". (PM-1845 bsc#1170347)
+
+-------------------------------------------------------------------
+Wed Mar 11 09:09:42 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- created a new security@suse.de communication key (bsc#1166334)
+
+-------------------------------------------------------------------
+Tue Nov 13 12:41:24 UTC 2018 - meissner@suse.com
+
+- include ptf key in the key directory to avoid it being
+  stripped via %doc stripping. (bsc#1044232)
 
 -------------------------------------------------------------------
 Wed Mar 28 14:56:15 UTC 2018 - meissner@suse.com
