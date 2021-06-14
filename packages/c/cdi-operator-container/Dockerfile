@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Operator for the data fetchi
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-operator:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-operator:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
            containerized-data-importer-operator \
