@@ -1,0 +1,1102 @@
+From 0c98ab6938a3aa1b646ff953e989350cf40ddb9b Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:50 +0200
+Subject: [PATCH 01/10] NetworkPkg/IScsiDxe: wrap IScsiCHAP source files to 80
+ characters
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Working with overlong lines is difficult for me; rewrap the CHAP-related
+source files in IScsiDxe to 80 characters width. No functional changes.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ NetworkPkg/IScsiDxe/IScsiCHAP.c | 90 +++++++++++++++++++++++++--------
+ NetworkPkg/IScsiDxe/IScsiCHAP.h |  3 +-
+ 2 files changed, 71 insertions(+), 22 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.c b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+index 355c6f129f68..cbbc56ae5b43 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.c
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+@@ -1,5 +1,6 @@
+ /** @file
+-  This file is for Challenge-Handshake Authentication Protocol (CHAP) Configuration.
++  This file is for Challenge-Handshake Authentication Protocol (CHAP)
++  Configuration.
+ 
+ Copyright (c) 2004 - 2018, Intel Corporation. All rights reserved.<BR>
+ SPDX-License-Identifier: BSD-2-Clause-Patent
+@@ -18,9 +19,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+   @param[in]   ChallengeLength    The length of iSCSI CHAP challenge message.
+   @param[out]  ChapResponse       The calculation of the expected hash value.
+ 
+-  @retval EFI_SUCCESS             The expected hash value was calculatedly successfully.
+-  @retval EFI_PROTOCOL_ERROR      The length of the secret should be at least the
+-                                  length of the hash value for the hashing algorithm chosen.
++  @retval EFI_SUCCESS             The expected hash value was calculatedly
++                                  successfully.
++  @retval EFI_PROTOCOL_ERROR      The length of the secret should be at least
++                                  the length of the hash value for the hashing
++                                  algorithm chosen.
+   @retval EFI_PROTOCOL_ERROR      MD5 hash operation fail.
+   @retval EFI_OUT_OF_RESOURCES    Fail to allocate resource to complete MD5.
+ 
+@@ -94,8 +97,10 @@ Exit:
+   @param[in]   AuthData             iSCSI CHAP authentication data.
+   @param[in]   TargetResponse       The response from target.
+ 
+-  @retval EFI_SUCCESS               The response from target passed authentication.
+-  @retval EFI_SECURITY_VIOLATION    The response from target was not expected value.
++  @retval EFI_SUCCESS               The response from target passed
++                                    authentication.
++  @retval EFI_SECURITY_VIOLATION    The response from target was not expected
++                                    value.
+   @retval Others                    Other errors as indicated.
+ 
+ **/
+@@ -193,7 +198,10 @@ IScsiCHAPOnRspReceived (
+     //
+     // The first Login Response.
+     //
+-    Value = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_TARGET_PORTAL_GROUP_TAG);
++    Value = IScsiGetValueByKeyFromList (
++              KeyValueList,
++              ISCSI_KEY_TARGET_PORTAL_GROUP_TAG
++              );
+     if (Value == NULL) {
+       goto ON_EXIT;
+     }
+@@ -205,13 +213,17 @@ IScsiCHAPOnRspReceived (
+ 
+     Session->TargetPortalGroupTag = (UINT16) Result;
+ 
+-    Value                         = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_AUTH_METHOD);
++    Value                         = IScsiGetValueByKeyFromList (
++                                      KeyValueList,
++                                      ISCSI_KEY_AUTH_METHOD
++                                      );
+     if (Value == NULL) {
+       goto ON_EXIT;
+     }
+     //
+-    // Initiator mandates CHAP authentication but target replies without "CHAP", or
+-    // initiator suggets "None" but target replies with some kind of auth method.
++    // Initiator mandates CHAP authentication but target replies without
++    // "CHAP", or initiator suggets "None" but target replies with some kind of
++    // auth method.
+     //
+     if (Session->AuthType == ISCSI_AUTH_TYPE_NONE) {
+       if (AsciiStrCmp (Value, ISCSI_KEY_VALUE_NONE) != 0) {
+@@ -236,7 +248,10 @@ IScsiCHAPOnRspReceived (
+     //
+     // The Target replies with CHAP_A=<A> CHAP_I=<I> CHAP_C=<C>
+     //
+-    Value = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_CHAP_ALGORITHM);
++    Value = IScsiGetValueByKeyFromList (
++              KeyValueList,
++              ISCSI_KEY_CHAP_ALGORITHM
++              );
+     if (Value == NULL) {
+       goto ON_EXIT;
+     }
+@@ -249,12 +264,18 @@ IScsiCHAPOnRspReceived (
+       goto ON_EXIT;
+     }
+ 
+-    Identifier = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_CHAP_IDENTIFIER);
++    Identifier = IScsiGetValueByKeyFromList (
++                   KeyValueList,
++                   ISCSI_KEY_CHAP_IDENTIFIER
++                   );
+     if (Identifier == NULL) {
+       goto ON_EXIT;
+     }
+ 
+-    Challenge = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_CHAP_CHALLENGE);
++    Challenge = IScsiGetValueByKeyFromList (
++                  KeyValueList,
++                  ISCSI_KEY_CHAP_CHALLENGE
++                  );
+     if (Challenge == NULL) {
+       goto ON_EXIT;
+     }
+@@ -269,7 +290,11 @@ IScsiCHAPOnRspReceived (
+ 
+     AuthData->InIdentifier      = (UINT32) Result;
+     AuthData->InChallengeLength = ISCSI_CHAP_AUTH_MAX_LEN;
+-    IScsiHexToBin ((UINT8 *) AuthData->InChallenge, &AuthData->InChallengeLength, Challenge);
++    IScsiHexToBin (
++      (UINT8 *) AuthData->InChallenge,
++      &AuthData->InChallengeLength,
++      Challenge
++      );
+     Status = IScsiCHAPCalculateResponse (
+                AuthData->InIdentifier,
+                AuthData->AuthConfig->CHAPSecret,
+@@ -303,7 +328,10 @@ IScsiCHAPOnRspReceived (
+       goto ON_EXIT;
+     }
+ 
+-    Response = IScsiGetValueByKeyFromList (KeyValueList, ISCSI_KEY_CHAP_RESPONSE);
++    Response = IScsiGetValueByKeyFromList (
++                 KeyValueList,
++                 ISCSI_KEY_CHAP_RESPONSE
++                 );
+     if (Response == NULL) {
+       goto ON_EXIT;
+     }
+@@ -341,7 +369,8 @@ ON_EXIT:
+   @param[in, out]  Pdu         The PDU to send out.
+ 
+   @retval EFI_SUCCESS           All check passed and the phase-related CHAP
+-                                authentication info is filled into the iSCSI PDU.
++                                authentication info is filled into the iSCSI
++                                PDU.
+   @retval EFI_OUT_OF_RESOURCES  Failed to allocate memory.
+   @retval EFI_PROTOCOL_ERROR    Some kind of protocol error occurred.
+ 
+@@ -392,7 +421,11 @@ IScsiCHAPToSendReq (
+     // It's the initial Login Request. Fill in the key=value pairs mandatory
+     // for the initial Login Request.
+     //
+-    IScsiAddKeyValuePair (Pdu, ISCSI_KEY_INITIATOR_NAME, mPrivate->InitiatorName);
++    IScsiAddKeyValuePair (
++      Pdu,
++      ISCSI_KEY_INITIATOR_NAME,
++      mPrivate->InitiatorName
++      );
+     IScsiAddKeyValuePair (Pdu, ISCSI_KEY_SESSION_TYPE, "Normal");
+     IScsiAddKeyValuePair (
+       Pdu,
+@@ -413,7 +446,8 @@ IScsiCHAPToSendReq (
+ 
+   case ISCSI_CHAP_STEP_ONE:
+     //
+-    // First step, send the Login Request with CHAP_A=<A1,A2...> key-value pair.
++    // First step, send the Login Request with CHAP_A=<A1,A2...> key-value
++    // pair.
+     //
+     AsciiSPrint (ValueStr, sizeof (ValueStr), "%d", ISCSI_CHAP_ALGORITHM_MD5);
+     IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_ALGORITHM, ValueStr);
+@@ -429,11 +463,20 @@ IScsiCHAPToSendReq (
+     //
+     // CHAP_N=<N>
+     //
+-    IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_NAME, (CHAR8 *) &AuthData->AuthConfig->CHAPName);
++    IScsiAddKeyValuePair (
++      Pdu,
++      ISCSI_KEY_CHAP_NAME,
++      (CHAR8 *) &AuthData->AuthConfig->CHAPName
++      );
+     //
+     // CHAP_R=<R>
+     //
+-    IScsiBinToHex ((UINT8 *) AuthData->CHAPResponse, ISCSI_CHAP_RSP_LEN, Response, &RspLen);
++    IScsiBinToHex (
++      (UINT8 *) AuthData->CHAPResponse,
++      ISCSI_CHAP_RSP_LEN,
++      Response,
++      &RspLen
++      );
+     IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_RESPONSE, Response);
+ 
+     if (AuthData->AuthConfig->CHAPType == ISCSI_CHAP_MUTUAL) {
+@@ -448,7 +491,12 @@ IScsiCHAPToSendReq (
+       //
+       IScsiGenRandom ((UINT8 *) AuthData->OutChallenge, ISCSI_CHAP_RSP_LEN);
+       AuthData->OutChallengeLength = ISCSI_CHAP_RSP_LEN;
+-      IScsiBinToHex ((UINT8 *) AuthData->OutChallenge, ISCSI_CHAP_RSP_LEN, Challenge, &ChallengeLen);
++      IScsiBinToHex (
++        (UINT8 *) AuthData->OutChallenge,
++        ISCSI_CHAP_RSP_LEN,
++        Challenge,
++        &ChallengeLen
++        );
+       IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_CHALLENGE, Challenge);
+ 
+       Conn->AuthStep = ISCSI_CHAP_STEP_FOUR;
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.h b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+index 140bba0dcd76..5e59fb678bd7 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.h
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+@@ -88,7 +88,8 @@ IScsiCHAPOnRspReceived (
+   @param[in, out]  Pdu         The PDU to send out.
+ 
+   @retval EFI_SUCCESS           All check passed and the phase-related CHAP
+-                                authentication info is filled into the iSCSI PDU.
++                                authentication info is filled into the iSCSI
++                                PDU.
+   @retval EFI_OUT_OF_RESOURCES  Failed to allocate memory.
+   @retval EFI_PROTOCOL_ERROR    Some kind of protocol error occurred.
+ 
+-- 
+2.31.1
+
+
+From 5f7d9bcca8e779f7da5a365086afef7fc461b99d Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:51 +0200
+Subject: [PATCH 02/10] NetworkPkg/IScsiDxe: simplify
+ "ISCSI_CHAP_AUTH_DATA.InChallenge" size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The ISCSI_CHAP_AUTH_MAX_LEN macro is defined with value 1024.
+
+The usage of this macro currently involves a semantic (not functional)
+bug, which we're going to fix in a subsequent patch, eliminating
+ISCSI_CHAP_AUTH_MAX_LEN altogether.
+
+For now, remove the macro's usage from all
+"ISCSI_CHAP_AUTH_DATA.InChallenge" contexts. This is doable without
+duplicating open-coded constants.
+
+No changes in functionality.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+---
+ NetworkPkg/IScsiDxe/IScsiCHAP.c | 2 +-
+ NetworkPkg/IScsiDxe/IScsiCHAP.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.c b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+index cbbc56ae5b43..df3c2eb1200a 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.c
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+@@ -289,7 +289,7 @@ IScsiCHAPOnRspReceived (
+     }
+ 
+     AuthData->InIdentifier      = (UINT32) Result;
+-    AuthData->InChallengeLength = ISCSI_CHAP_AUTH_MAX_LEN;
++    AuthData->InChallengeLength = (UINT32) sizeof (AuthData->InChallenge);
+     IScsiHexToBin (
+       (UINT8 *) AuthData->InChallenge,
+       &AuthData->InChallengeLength,
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.h b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+index 5e59fb678bd7..1fc1d96ea3f3 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.h
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+@@ -49,7 +49,7 @@ typedef struct _ISCSI_CHAP_AUTH_CONFIG_NVDATA {
+ typedef struct _ISCSI_CHAP_AUTH_DATA {
+   ISCSI_CHAP_AUTH_CONFIG_NVDATA *AuthConfig;
+   UINT32                        InIdentifier;
+-  UINT8                         InChallenge[ISCSI_CHAP_AUTH_MAX_LEN];
++  UINT8                         InChallenge[1024];
+   UINT32                        InChallengeLength;
+   //
+   // Calculated CHAP Response (CHAP_R) value.
+-- 
+2.31.1
+
+
+From 95d0c127398bd9c8bfc06a98a7195065275754f7 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:52 +0200
+Subject: [PATCH 03/10] NetworkPkg/IScsiDxe: clean up
+ "ISCSI_CHAP_AUTH_DATA.OutChallengeLength"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The "ISCSI_CHAP_AUTH_DATA.OutChallenge" field is declared as a UINT8 array
+with ISCSI_CHAP_AUTH_MAX_LEN (1024) elements. However, when the challenge
+is generated and formatted, only ISCSI_CHAP_RSP_LEN (16) octets are used
+in the array.
+
+Change the array size to ISCSI_CHAP_RSP_LEN, and remove the (now unused)
+ISCSI_CHAP_AUTH_MAX_LEN macro.
+
+Remove the "ISCSI_CHAP_AUTH_DATA.OutChallengeLength" field, which is
+superfluous too.
+
+Most importantly, explain in a new comment *why* tying the challenge size
+to the digest size (ISCSI_CHAP_RSP_LEN) has always made sense. (See also
+Linux kernel commit 19f5f88ed779, "scsi: target: iscsi: tie the challenge
+length to the hash digest size", 2019-11-06.) For sure, the motivation
+that the new comment now explains has always been there, and has always
+been the same, for IScsiDxe; it's just that now we spell it out too.
+
+No change in peer-visible behavior.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+---
+ NetworkPkg/IScsiDxe/IScsiCHAP.c | 3 +--
+ NetworkPkg/IScsiDxe/IScsiCHAP.h | 9 ++++++---
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.c b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+index df3c2eb1200a..9e192ce292e8 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.c
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+@@ -122,7 +122,7 @@ IScsiCHAPAuthTarget (
+              AuthData->AuthConfig->ReverseCHAPSecret,
+              SecretSize,
+              AuthData->OutChallenge,
+-             AuthData->OutChallengeLength,
++             ISCSI_CHAP_RSP_LEN,                      // ChallengeLength
+              VerifyRsp
+              );
+ 
+@@ -490,7 +490,6 @@ IScsiCHAPToSendReq (
+       // CHAP_C=<C>
+       //
+       IScsiGenRandom ((UINT8 *) AuthData->OutChallenge, ISCSI_CHAP_RSP_LEN);
+-      AuthData->OutChallengeLength = ISCSI_CHAP_RSP_LEN;
+       IScsiBinToHex (
+         (UINT8 *) AuthData->OutChallenge,
+         ISCSI_CHAP_RSP_LEN,
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.h b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+index 1fc1d96ea3f3..35d5d6ec29e3 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.h
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.h
+@@ -19,7 +19,6 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+ #define ISCSI_CHAP_ALGORITHM_MD5  5
+ 
+-#define ISCSI_CHAP_AUTH_MAX_LEN   1024
+ ///
+ /// MD5_HASHSIZE
+ ///
+@@ -59,9 +58,13 @@ typedef struct _ISCSI_CHAP_AUTH_DATA {
+   //
+   // Auth-data to be sent out for mutual authentication.
+   //
++  // While the challenge size is technically independent of the hashing
++  // algorithm, it is good practice to avoid hashing *fewer bytes* than the
++  // digest size. In other words, it's good practice to feed *at least as many
++  // bytes* to the hashing algorithm as the hashing algorithm will output.
++  //
+   UINT32                        OutIdentifier;
+-  UINT8                         OutChallenge[ISCSI_CHAP_AUTH_MAX_LEN];
+-  UINT32                        OutChallengeLength;
++  UINT8                         OutChallenge[ISCSI_CHAP_RSP_LEN];
+ } ISCSI_CHAP_AUTH_DATA;
+ 
+ /**
+-- 
+2.31.1
+
+
+From 4349cecf6dd62308b517f6fc06cf942a6fb286d2 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:53 +0200
+Subject: [PATCH 04/10] NetworkPkg/IScsiDxe: clean up library class
+ dependencies
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Sort the library class dependencies in the #include directives and in the
+INF file. Remove the DpcLib class from the #include directives -- it is
+not listed in the INF file, and IScsiDxe doesn't call either DpcLib API
+(QueueDpc(), DispatchDpc()). No functional changes.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+---
+ NetworkPkg/IScsiDxe/IScsiDxe.inf |  6 +++---
+ NetworkPkg/IScsiDxe/IScsiImpl.h  | 17 ++++++++---------
+ 2 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiDxe.inf b/NetworkPkg/IScsiDxe/IScsiDxe.inf
+index 0ffb340ce05e..543c4083026a 100644
+--- a/NetworkPkg/IScsiDxe/IScsiDxe.inf
++++ b/NetworkPkg/IScsiDxe/IScsiDxe.inf
+@@ -65,6 +65,7 @@ [Packages]
+   NetworkPkg/NetworkPkg.dec
+ 
+ [LibraryClasses]
++  BaseCryptLib
+   BaseLib
+   BaseMemoryLib
+   DebugLib
+@@ -72,14 +73,13 @@ [LibraryClasses]
+   HiiLib
+   MemoryAllocationLib
+   NetLib
+-  TcpIoLib
+   PrintLib
++  TcpIoLib
+   UefiBootServicesTableLib
+   UefiDriverEntryPoint
++  UefiHiiServicesLib
+   UefiLib
+   UefiRuntimeServicesTableLib
+-  UefiHiiServicesLib
+-  BaseCryptLib
+ 
+ [Protocols]
+   gEfiAcpiTableProtocolGuid                     ## SOMETIMES_CONSUMES ## SystemTable
+diff --git a/NetworkPkg/IScsiDxe/IScsiImpl.h b/NetworkPkg/IScsiDxe/IScsiImpl.h
+index 387ab9765e9e..d895c7feb947 100644
+--- a/NetworkPkg/IScsiDxe/IScsiImpl.h
++++ b/NetworkPkg/IScsiDxe/IScsiImpl.h
+@@ -35,21 +35,20 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #include <Protocol/AdapterInformation.h>
+ #include <Protocol/NetworkInterfaceIdentifier.h>
+ 
+-#include <Library/HiiLib.h>
+-#include <Library/UefiHiiServicesLib.h>
+-#include <Library/DevicePathLib.h>
+-#include <Library/DebugLib.h>
++#include <Library/BaseCryptLib.h>
+ #include <Library/BaseLib.h>
+ #include <Library/BaseMemoryLib.h>
++#include <Library/DebugLib.h>
++#include <Library/DevicePathLib.h>
++#include <Library/HiiLib.h>
+ #include <Library/MemoryAllocationLib.h>
++#include <Library/NetLib.h>
+ #include <Library/PrintLib.h>
++#include <Library/TcpIoLib.h>
+ #include <Library/UefiBootServicesTableLib.h>
+-#include <Library/UefiRuntimeServicesTableLib.h>
++#include <Library/UefiHiiServicesLib.h>
+ #include <Library/UefiLib.h>
+-#include <Library/DpcLib.h>
+-#include <Library/NetLib.h>
+-#include <Library/TcpIoLib.h>
+-#include <Library/BaseCryptLib.h>
++#include <Library/UefiRuntimeServicesTableLib.h>
+ 
+ #include <Guid/MdeModuleHii.h>
+ #include <Guid/EventGroup.h>
+-- 
+2.31.1
+
+
+From b1707ea48f0d44a3aea74ef5ac625df572259acf Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:54 +0200
+Subject: [PATCH 05/10] NetworkPkg/IScsiDxe: fix potential integer overflow in
+ IScsiBinToHex()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Considering IScsiBinToHex():
+
+>   if (((*HexLength) - 3) < BinLength * 2) {
+>     *HexLength = BinLength * 2 + 3;
+>   }
+
+the following subexpressions are problematic:
+
+  (*HexLength) - 3
+  BinLength * 2
+  BinLength * 2 + 3
+
+The first one may wrap under zero, the latter two may wrap over
+MAX_UINT32.
+
+Rewrite the calculation using SafeIntLib.
+
+While at it, change the type of the "Index" variable from UINTN to UINT32.
+The largest "Index"-based value that we calculate is
+
+  Index * 2 + 2                                (with (Index == BinLength))
+
+Because the patch makes
+
+  BinLength * 2 + 3
+
+safe to calculate in UINT32, using UINT32 for
+
+  Index * 2 + 2                                (with (Index == BinLength))
+
+is safe too. Consistently using UINT32 improves readability.
+
+This patch is best reviewed with "git show -W".
+
+The integer overflows that this patch fixes are theoretical; a subsequent
+patch in the series will audit the IScsiBinToHex() call sites, and show
+that none of them can fail.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ NetworkPkg/IScsiDxe/IScsiDxe.inf |  1 +
+ NetworkPkg/IScsiDxe/IScsiImpl.h  |  1 +
+ NetworkPkg/IScsiDxe/IScsiMisc.c  | 19 +++++++++++++++----
+ NetworkPkg/IScsiDxe/IScsiMisc.h  |  1 +
+ 4 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiDxe.inf b/NetworkPkg/IScsiDxe/IScsiDxe.inf
+index 543c4083026a..1dde56d00ca2 100644
+--- a/NetworkPkg/IScsiDxe/IScsiDxe.inf
++++ b/NetworkPkg/IScsiDxe/IScsiDxe.inf
+@@ -74,6 +74,7 @@ [LibraryClasses]
+   MemoryAllocationLib
+   NetLib
+   PrintLib
++  SafeIntLib
+   TcpIoLib
+   UefiBootServicesTableLib
+   UefiDriverEntryPoint
+diff --git a/NetworkPkg/IScsiDxe/IScsiImpl.h b/NetworkPkg/IScsiDxe/IScsiImpl.h
+index d895c7feb947..ac3a25730efb 100644
+--- a/NetworkPkg/IScsiDxe/IScsiImpl.h
++++ b/NetworkPkg/IScsiDxe/IScsiImpl.h
+@@ -44,6 +44,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #include <Library/MemoryAllocationLib.h>
+ #include <Library/NetLib.h>
+ #include <Library/PrintLib.h>
++#include <Library/SafeIntLib.h>
+ #include <Library/TcpIoLib.h>
+ #include <Library/UefiBootServicesTableLib.h>
+ #include <Library/UefiHiiServicesLib.h>
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.c b/NetworkPkg/IScsiDxe/IScsiMisc.c
+index b8fef3ff6f5a..42988e15cb06 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.c
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.c
+@@ -316,6 +316,7 @@ IScsiMacAddrToStr (
+   @retval EFI_SUCCESS          The binary data is converted to the hexadecimal string
+                                and the length of the string is updated.
+   @retval EFI_BUFFER_TOO_SMALL The string is too small.
++  @retval EFI_BAD_BUFFER_SIZE  BinLength is too large for hex encoding.
+   @retval EFI_INVALID_PARAMETER The IP string is malformatted.
+ 
+ **/
+@@ -327,18 +328,28 @@ IScsiBinToHex (
+   IN OUT UINT32 *HexLength
+   )
+ {
+-  UINTN Index;
++  UINT32 HexLengthMin;
++  UINT32 HexLengthProvided;
++  UINT32 Index;
+ 
+   if ((HexStr == NULL) || (BinBuffer == NULL) || (BinLength == 0)) {
+     return EFI_INVALID_PARAMETER;
+   }
+ 
+-  if (((*HexLength) - 3) < BinLength * 2) {
+-    *HexLength = BinLength * 2 + 3;
++  //
++  // Safely calculate: HexLengthMin := BinLength * 2 + 3.
++  //
++  if (RETURN_ERROR (SafeUint32Mult (BinLength, 2, &HexLengthMin)) ||
++      RETURN_ERROR (SafeUint32Add (HexLengthMin, 3, &HexLengthMin))) {
++    return EFI_BAD_BUFFER_SIZE;
++  }
++
++  HexLengthProvided = *HexLength;
++  *HexLength = HexLengthMin;
++  if (HexLengthProvided < HexLengthMin) {
+     return EFI_BUFFER_TOO_SMALL;
+   }
+ 
+-  *HexLength = BinLength * 2 + 3;
+   //
+   // Prefix for Hex String.
+   //
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.h b/NetworkPkg/IScsiDxe/IScsiMisc.h
+index 46c725aab3a4..231413993b08 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.h
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.h
+@@ -150,6 +150,7 @@ IScsiAsciiStrToIp (
+   @retval EFI_SUCCESS          The binary data is converted to the hexadecimal string
+                                and the length of the string is updated.
+   @retval EFI_BUFFER_TOO_SMALL The string is too small.
++  @retval EFI_BAD_BUFFER_SIZE  BinLength is too large for hex encoding.
+   @retval EFI_INVALID_PARAMETER The IP string is malformatted.
+ 
+ **/
+-- 
+2.31.1
+
+
+From 5a98d2f7b199284271bb1ae75a16e6863acdc534 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:55 +0200
+Subject: [PATCH 06/10] NetworkPkg/IScsiDxe: assert that IScsiBinToHex() always
+ succeeds
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+IScsiBinToHex() is called for encoding:
+
+- the answer to the target's challenge; that is, CHAP_R;
+
+- the challenge for the target, in case mutual authentication is enabled;
+  that is, CHAP_C.
+
+The initiator controls the size of both blobs, the sizes of their hex
+encodings are correctly calculated in "RspLen" and "ChallengeLen".
+Therefore the IScsiBinToHex() calls never fail; assert that.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+---
+ NetworkPkg/IScsiDxe/IScsiCHAP.c | 27 +++++++++++++++------------
+ 1 file changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.c b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+index 9e192ce292e8..dbe3c8ef46f9 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.c
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+@@ -391,6 +391,7 @@ IScsiCHAPToSendReq (
+   UINT32                      RspLen;
+   CHAR8                       *Challenge;
+   UINT32                      ChallengeLen;
++  EFI_STATUS                  BinToHexStatus;
+ 
+   ASSERT (Conn->CurrentStage == ISCSI_SECURITY_NEGOTIATION);
+ 
+@@ -471,12 +472,13 @@ IScsiCHAPToSendReq (
+     //
+     // CHAP_R=<R>
+     //
+-    IScsiBinToHex (
+-      (UINT8 *) AuthData->CHAPResponse,
+-      ISCSI_CHAP_RSP_LEN,
+-      Response,
+-      &RspLen
+-      );
++    BinToHexStatus = IScsiBinToHex (
++                       (UINT8 *) AuthData->CHAPResponse,
++                       ISCSI_CHAP_RSP_LEN,
++                       Response,
++                       &RspLen
++                       );
++    ASSERT_EFI_ERROR (BinToHexStatus);
+     IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_RESPONSE, Response);
+ 
+     if (AuthData->AuthConfig->CHAPType == ISCSI_CHAP_MUTUAL) {
+@@ -490,12 +492,13 @@ IScsiCHAPToSendReq (
+       // CHAP_C=<C>
+       //
+       IScsiGenRandom ((UINT8 *) AuthData->OutChallenge, ISCSI_CHAP_RSP_LEN);
+-      IScsiBinToHex (
+-        (UINT8 *) AuthData->OutChallenge,
+-        ISCSI_CHAP_RSP_LEN,
+-        Challenge,
+-        &ChallengeLen
+-        );
++      BinToHexStatus = IScsiBinToHex (
++                         (UINT8 *) AuthData->OutChallenge,
++                         ISCSI_CHAP_RSP_LEN,
++                         Challenge,
++                         &ChallengeLen
++                         );
++      ASSERT_EFI_ERROR (BinToHexStatus);
+       IScsiAddKeyValuePair (Pdu, ISCSI_KEY_CHAP_CHALLENGE, Challenge);
+ 
+       Conn->AuthStep = ISCSI_CHAP_STEP_FOUR;
+-- 
+2.31.1
+
+
+From b11dfce69a36e133c4d8f7328dea55e7b83a6230 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:56 +0200
+Subject: [PATCH 07/10] NetworkPkg/IScsiDxe: reformat IScsiHexToBin() leading
+ comment block
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We'll need further return values for IScsiHexToBin() in a subsequent
+patch; make room for them in the leading comment block of the function.
+While at it, rewrap the comment block to 80 characters width.
+
+No functional changes.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ NetworkPkg/IScsiDxe/IScsiMisc.c | 14 +++++++-------
+ NetworkPkg/IScsiDxe/IScsiMisc.h | 14 +++++++-------
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.c b/NetworkPkg/IScsiDxe/IScsiMisc.c
+index 42988e15cb06..014700e87a5f 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.c
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.c
+@@ -370,14 +370,14 @@ IScsiBinToHex (
+ /**
+   Convert the hexadecimal string into a binary encoded buffer.
+ 
+-  @param[in, out]  BinBuffer   The binary buffer.
+-  @param[in, out]  BinLength   Length of the binary buffer.
+-  @param[in]       HexStr      The hexadecimal string.
+-
+-  @retval EFI_SUCCESS          The hexadecimal string is converted into a binary
+-                               encoded buffer.
+-  @retval EFI_BUFFER_TOO_SMALL The binary buffer is too small to hold the converted data.
++  @param[in, out]  BinBuffer    The binary buffer.
++  @param[in, out]  BinLength    Length of the binary buffer.
++  @param[in]       HexStr       The hexadecimal string.
+ 
++  @retval EFI_SUCCESS           The hexadecimal string is converted into a
++                                binary encoded buffer.
++  @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
++                                converted data.
+ **/
+ EFI_STATUS
+ IScsiHexToBin (
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.h b/NetworkPkg/IScsiDxe/IScsiMisc.h
+index 231413993b08..28cf408cd5c5 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.h
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.h
+@@ -165,14 +165,14 @@ IScsiBinToHex (
+ /**
+   Convert the hexadecimal string into a binary encoded buffer.
+ 
+-  @param[in, out]  BinBuffer   The binary buffer.
+-  @param[in, out]  BinLength   Length of the binary buffer.
+-  @param[in]       HexStr      The hexadecimal string.
+-
+-  @retval EFI_SUCCESS          The hexadecimal string is converted into a binary
+-                               encoded buffer.
+-  @retval EFI_BUFFER_TOO_SMALL The binary buffer is too small to hold the converted data.
++  @param[in, out]  BinBuffer    The binary buffer.
++  @param[in, out]  BinLength    Length of the binary buffer.
++  @param[in]       HexStr       The hexadecimal string.
+ 
++  @retval EFI_SUCCESS           The hexadecimal string is converted into a
++                                binary encoded buffer.
++  @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
++                                converted data.
+ **/
+ EFI_STATUS
+ IScsiHexToBin (
+-- 
+2.31.1
+
+
+From 969dc3ca8fef225fbd02947d78ae0f7e95b86940 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:57 +0200
+Subject: [PATCH 08/10] NetworkPkg/IScsiDxe: fix IScsiHexToBin() hex parsing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The IScsiHexToBin() function has the following parser issues:
+
+(1) If the *subject sequence* in "HexStr" is empty, the function returns
+    EFI_SUCCESS (with "BinLength" set to 0 on output). Such inputs should
+    be rejected.
+
+(2) The function mis-handles a "HexStr" that ends with a stray nibble. For
+    example, if "HexStr" is "0xABC", the function decodes it to the bytes
+    {0xAB, 0x0C}, sets "BinLength" to 2 on output, and returns
+    EFI_SUCCESS. Such inputs should be rejected.
+
+(3) If an invalid hex char is found in "HexStr", the function treats it as
+    end-of-hex-string, and returns EFI_SUCCESS. Such inputs should be
+    rejected.
+
+All of the above cases are remotely triggerable, as shown in a subsequent
+patch, which adds error checking to the IScsiHexToBin() call sites. While
+the initiator is not immediately compromised, incorrectly parsing CHAP_R
+from the target, in case of mutual authentication, is not great.
+
+Extend the interface contract of IScsiHexToBin() with
+EFI_INVALID_PARAMETER, for reporting issues (1) through (3), and implement
+the new checks.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ NetworkPkg/IScsiDxe/IScsiMisc.c | 12 ++++++++++--
+ NetworkPkg/IScsiDxe/IScsiMisc.h |  1 +
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.c b/NetworkPkg/IScsiDxe/IScsiMisc.c
+index 014700e87a5f..f0f4992b07c7 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.c
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.c
+@@ -376,6 +376,7 @@ IScsiBinToHex (
+ 
+   @retval EFI_SUCCESS           The hexadecimal string is converted into a
+                                 binary encoded buffer.
++  @retval EFI_INVALID_PARAMETER Invalid hex encoding found in HexStr.
+   @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
+                                 converted data.
+ **/
+@@ -402,14 +403,21 @@ IScsiHexToBin (
+ 
+   Length = AsciiStrLen (HexStr);
+ 
++  //
++  // Reject an empty hex string; reject a stray nibble.
++  //
++  if (Length == 0 || Length % 2 != 0) {
++    return EFI_INVALID_PARAMETER;
++  }
++
+   for (Index = 0; Index < Length; Index ++) {
+     TemStr[0] = HexStr[Index];
+     Digit = (UINT8) AsciiStrHexToUint64 (TemStr);
+     if (Digit == 0 && TemStr[0] != '0') {
+       //
+-      // Invalid Lun Char.
++      // Invalid Hex Char.
+       //
+-      break;
++      return EFI_INVALID_PARAMETER;
+     }
+     if ((Index & 1) == 0) {
+       BinBuffer [Index/2] = Digit;
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.h b/NetworkPkg/IScsiDxe/IScsiMisc.h
+index 28cf408cd5c5..404a482e57f3 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.h
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.h
+@@ -171,6 +171,7 @@ IScsiBinToHex (
+ 
+   @retval EFI_SUCCESS           The hexadecimal string is converted into a
+                                 binary encoded buffer.
++  @retval EFI_INVALID_PARAMETER Invalid hex encoding found in HexStr.
+   @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
+                                 converted data.
+ **/
+-- 
+2.31.1
+
+
+From 6c15241d19927623cf420e9ebb943af0b74e139c Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:58 +0200
+Subject: [PATCH 09/10] NetworkPkg/IScsiDxe: fix IScsiHexToBin() buffer
+ overflow
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The IScsiHexToBin() function documents the EFI_BUFFER_TOO_SMALL return
+condition, but never actually checks whether the decoded buffer fits into
+the caller-provided room (i.e., the input value of "BinLength"), and
+EFI_BUFFER_TOO_SMALL is never returned. The decoding of "HexStr" can
+overflow "BinBuffer".
+
+This is remotely exploitable, as shown in a subsequent patch, which adds
+error checking to the IScsiHexToBin() call sites. This issue allows the
+target to compromise the initiator.
+
+Introduce EFI_BAD_BUFFER_SIZE, in addition to the existent
+EFI_BUFFER_TOO_SMALL, for reporting a special case of the buffer overflow,
+plus actually catch the buffer overflow.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ NetworkPkg/IScsiDxe/IScsiMisc.c | 20 +++++++++++++++++---
+ NetworkPkg/IScsiDxe/IScsiMisc.h |  3 +++
+ 2 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.c b/NetworkPkg/IScsiDxe/IScsiMisc.c
+index f0f4992b07c7..406954786751 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.c
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.c
+@@ -377,6 +377,9 @@ IScsiBinToHex (
+   @retval EFI_SUCCESS           The hexadecimal string is converted into a
+                                 binary encoded buffer.
+   @retval EFI_INVALID_PARAMETER Invalid hex encoding found in HexStr.
++  @retval EFI_BAD_BUFFER_SIZE   The length of HexStr is too large for decoding:
++                                the decoded size cannot be expressed in
++                                BinLength on output.
+   @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
+                                 converted data.
+ **/
+@@ -387,6 +390,8 @@ IScsiHexToBin (
+   IN     CHAR8  *HexStr
+   )
+ {
++  UINTN   BinLengthMin;
++  UINT32  BinLengthProvided;
+   UINTN   Index;
+   UINTN   Length;
+   UINT8   Digit;
+@@ -409,6 +414,18 @@ IScsiHexToBin (
+   if (Length == 0 || Length % 2 != 0) {
+     return EFI_INVALID_PARAMETER;
+   }
++  //
++  // Check if the caller provides enough room for the decoded blob.
++  //
++  BinLengthMin = Length / 2;
++  if (BinLengthMin > MAX_UINT32) {
++    return EFI_BAD_BUFFER_SIZE;
++  }
++  BinLengthProvided = *BinLength;
++  *BinLength = (UINT32)BinLengthMin;
++  if (BinLengthProvided < BinLengthMin) {
++    return EFI_BUFFER_TOO_SMALL;
++  }
+ 
+   for (Index = 0; Index < Length; Index ++) {
+     TemStr[0] = HexStr[Index];
+@@ -425,9 +442,6 @@ IScsiHexToBin (
+       BinBuffer [Index/2] = (UINT8) ((BinBuffer [Index/2] << 4) + Digit);
+     }
+   }
+-
+-  *BinLength = (UINT32) ((Index + 1)/2);
+-
+   return EFI_SUCCESS;
+ }
+ 
+diff --git a/NetworkPkg/IScsiDxe/IScsiMisc.h b/NetworkPkg/IScsiDxe/IScsiMisc.h
+index 404a482e57f3..fddef4f466dc 100644
+--- a/NetworkPkg/IScsiDxe/IScsiMisc.h
++++ b/NetworkPkg/IScsiDxe/IScsiMisc.h
+@@ -172,6 +172,9 @@ IScsiBinToHex (
+   @retval EFI_SUCCESS           The hexadecimal string is converted into a
+                                 binary encoded buffer.
+   @retval EFI_INVALID_PARAMETER Invalid hex encoding found in HexStr.
++  @retval EFI_BAD_BUFFER_SIZE   The length of HexStr is too large for decoding:
++                                the decoded size cannot be expressed in
++                                BinLength on output.
+   @retval EFI_BUFFER_TOO_SMALL  The binary buffer is too small to hold the
+                                 converted data.
+ **/
+-- 
+2.31.1
+
+
+From 5dedc839a09cbbf14f6c8f80c1175dda81fdb850 Mon Sep 17 00:00:00 2001
+From: "Laszlo Ersek via groups.io" <lersek=redhat.com@groups.io>
+Date: Tue, 8 Jun 2021 14:12:59 +0200
+Subject: [PATCH 10/10] NetworkPkg/IScsiDxe: check IScsiHexToBin() return
+ values
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+IScsiDxe (that is, the initiator) receives two hex-encoded strings from
+the iSCSI target:
+
+- CHAP_C, where the target challenges the initiator,
+
+- CHAP_R, where the target answers the challenge from the initiator (in
+  case the initiator wants mutual authentication).
+
+Accordingly, we have two IScsiHexToBin() call sites:
+
+- At the CHAP_C decoding site, check whether the decoding succeeds. The
+  decoded buffer ("AuthData->InChallenge") can accommodate 1024 bytes,
+  which is a permissible restriction on the target, per
+  <https://tools.ietf.org/html/rfc7143#section-12.1.3>. Shorter challenges
+  from the target are acceptable.
+
+- At the CHAP_R decoding site, enforce that the decoding both succeed, and
+  provide exactly ISCSI_CHAP_RSP_LEN bytes. CHAP_R contains the digest
+  calculated by the target, therefore it must be of fixed size. We may
+  only call IScsiCHAPAuthTarget() if "TargetRsp" has been fully populated.
+
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Siyuan Fu <siyuan.fu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=3356
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Maciej Rabeda <maciej.rabeda@linux.intel.com>
+---
+ NetworkPkg/IScsiDxe/IScsiCHAP.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/NetworkPkg/IScsiDxe/IScsiCHAP.c b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+index dbe3c8ef46f9..7e930c0d1eab 100644
+--- a/NetworkPkg/IScsiDxe/IScsiCHAP.c
++++ b/NetworkPkg/IScsiDxe/IScsiCHAP.c
+@@ -290,11 +290,15 @@ IScsiCHAPOnRspReceived (
+ 
+     AuthData->InIdentifier      = (UINT32) Result;
+     AuthData->InChallengeLength = (UINT32) sizeof (AuthData->InChallenge);
+-    IScsiHexToBin (
+-      (UINT8 *) AuthData->InChallenge,
+-      &AuthData->InChallengeLength,
+-      Challenge
+-      );
++    Status = IScsiHexToBin (
++               (UINT8 *) AuthData->InChallenge,
++               &AuthData->InChallengeLength,
++               Challenge
++               );
++    if (EFI_ERROR (Status)) {
++      Status = EFI_PROTOCOL_ERROR;
++      goto ON_EXIT;
++    }
+     Status = IScsiCHAPCalculateResponse (
+                AuthData->InIdentifier,
+                AuthData->AuthConfig->CHAPSecret,
+@@ -337,7 +341,11 @@ IScsiCHAPOnRspReceived (
+     }
+ 
+     RspLen = ISCSI_CHAP_RSP_LEN;
+-    IScsiHexToBin (TargetRsp, &RspLen, Response);
++    Status = IScsiHexToBin (TargetRsp, &RspLen, Response);
++    if (EFI_ERROR (Status) || RspLen != ISCSI_CHAP_RSP_LEN) {
++      Status = EFI_PROTOCOL_ERROR;
++      goto ON_EXIT;
++    }
+ 
+     //
+     // Check the CHAP Name and Response replied by Target.
+-- 
+2.31.1
+

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  9 01:47:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1186151-fix-iscsi-overflows.patch to fix the possible
+  overflows in IScsiDxe (bsc#1186151)
+
+-------------------------------------------------------------------
+Thu Jun  3 01:24:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Correct the path to copy the Xen flavor
+
+-------------------------------------------------------------------
 Mon May 31 09:44:17 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to edk2-stable202105

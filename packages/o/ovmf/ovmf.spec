@@ -51,6 +51,7 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
+Patch7:         %{name}-bsc1186151-fix-iscsi-overflows.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -168,6 +169,7 @@ rm -rf $PKG_TO_REMOVE
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -351,13 +353,13 @@ BUILD_OPTION_X64_XEN=" \
 "
 #  Build the 2MB Xen flavor
 build $BUILD_OPTION_X64_XEN -D FD_SIZE_2MB
-cp Build/OvmfX64/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen.bin
+cp Build/OvmfXen/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen.bin
 #  Build the 4MB Xen flavor
 build $BUILD_OPTION_X64_XEN -D FD_SIZE_4MB
-cp Build/OvmfX64/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen-4m.bin
+cp Build/OvmfXen/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen-4m.bin
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/OvmfX64/ Build/Ovmf3264/
+rm -rf Build/OvmfX64/ Build/Ovmf3264/ Build/OvmfXen/
 
 # Build with keys done later (shared between archs)
 
