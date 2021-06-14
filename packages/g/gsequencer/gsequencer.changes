@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 12 12:59:43 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.8.13 fixed gtk-doc missing sections.
+- new since v3.8.12 improved to pitch by using fluidsynth code.
+- implemented new utility functions from fluidsynth.
+- updated user's handbook chapter 3 missing hot-keys.
+
+-------------------------------------------------------------------
 Mon May 17 08:27:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own base filesystem directories such as
