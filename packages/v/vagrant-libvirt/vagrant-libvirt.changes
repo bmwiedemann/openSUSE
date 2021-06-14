@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 12 09:53:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.3
+  * Use qemu-img json output and compute virtual size.
+
+-------------------------------------------------------------------
 Tue Jun  8 12:08:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.2
