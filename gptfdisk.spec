@@ -17,7 +17,7 @@
 
 
 Name:           gptfdisk
-Version:        1.0.6
+Version:        1.0.8
 Release:        0
 Summary:        GPT partitioning and MBR repair software
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          System/Base
 URL:            http://rodsbooks.com/gdisk
 
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
-Patch0:         fix-spurious-warnings.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)
