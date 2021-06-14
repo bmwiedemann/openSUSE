@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/container-build-checks.git</param>
+              <param name="changesrevision">4616f4f91f8fe7589e80e8ec2df0ae1aaff4c132</param></service></servicedata>

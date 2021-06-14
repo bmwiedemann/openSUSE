@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri May 28 13:57:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1622209785.4616f4f:
+  * README.md: Point badge to new location
+
+-------------------------------------------------------------------
+Fri May 28 12:47:42 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1622204213.c8ecb9f:
+  * Add options to allow and block specific tags
+
+-------------------------------------------------------------------
+Thu May 27 15:09:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1622127842.b548dd8:
+  * Update README.md
+  * Add README.md
+  * Add broken-derived test
+  * Verify prefix of the image specific label prefix
+  * Add some comments in the Makefile
+  * Always check the tag used in org.opensuse.reference
+  * Add github workflow
+  * Use bash explicitly
+  * Make lint
+  * Less noise in Makefile
+
+-------------------------------------------------------------------
+Fri Apr 30 10:04:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit
