@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 19:03:07 UTC 2021 - psimons@suse.com
+
+- Update zip to version 1.7.1.
+  ## Zip 1.7.1
+
+  * Fixed compilation with zstd and/or bzip2 disabled.
+
+-------------------------------------------------------------------
 Tue Jan 19 12:44:54 UTC 2021 - psimons@suse.com
 
 - Update zip to version 1.7.0.

@@ -19,7 +19,7 @@
 %global pkg_name zip
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Operations on zip archives
 License:        BSD-3-Clause
