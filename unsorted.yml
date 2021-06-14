@@ -2489,6 +2489,7 @@ unsorted:
   - csound-devel 
   - csound-lang 
   - csound-plugins 
+  - csound-samples 
   - cspctl: [i586] 
   - csvprintf 
   - csync 
@@ -3399,6 +3400,7 @@ unsorted:
   - fbreader 
   - fbterm 
   - fcdproplus-udev 
+  - fcft-devel 
   - fcgiwrap 
   - fcgiwrap-nginx 
   - fcitx-anthy 
@@ -3687,6 +3689,7 @@ unsorted:
   - fontpackages-devel 
   - fonttosfnt 
   - fontweak 
+  - foot 
   - forge-parent 
   - forkbomb 
   - forked-daapd 
@@ -10466,6 +10469,7 @@ unsorted:
   - libfastlz1 
   - libfcache-devel 
   - libfcache1 
+  - libfcft3 
   - libfcgi0 
   - libfcitx-4_2_9-32bit: [x86_64] 
   - libfcrypto-devel 
@@ -40637,6 +40641,7 @@ unsorted:
   - tkirc 
   - tktable 
   - tkxcd 
+  - tllist-devel 
   - tls 
   - tlswrap 
   - tmate 
