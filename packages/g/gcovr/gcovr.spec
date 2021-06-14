@@ -18,7 +18,7 @@
 
 
 Name:           gcovr
-Version:        4.2
+Version:        5.0
 Release:        0
 Summary:        A code coverage report generator using GNU gcov
 License:        BSD-3-Clause
@@ -101,6 +101,7 @@ install -D -p -m 0644 build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 # html doc
 make html
 rm build/html/.buildinfo
+%fdupes -s build/html
 
 popd
 %endif

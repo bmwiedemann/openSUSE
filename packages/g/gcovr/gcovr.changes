@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 11 12:22:55 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 5.0
+
+Breaking changes:
+
+ - Dropped support for Python 2 and Python 3.5.
+   From now on, gcovr will only support Python versions
+   that enjoy upstream support.
+
+Improvements and new features:
+
+ - Handles spaces in ``gcov`` path. (:issue:`385`)
+ - Early fail when output cannot be created. (:issue:`382`)
+ - Add :option:`--txt` for text output. (:issue:`387`)
+ - Add :option:`--csv` for CSV output. (:issue:`376`)
+ - Add :option:`--exclude-lines-by-pattern` to filter out source lines by arbitrary
+   regex. (:issue:`356`)
+ - Add :option:`--json-summary` to generate a :ref:`JSON Summary <json_summary_output>` report. (:issue:`366`)
+ - Add :option:`--coveralls` to generate a :ref:`Coveralls <coveralls_output>` compatible JSON report. (:issue:`328`)
+
+-------------------------------------------------------------------
 Mon Jan  4 15:27:45 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Add python3-lxml dependency (boo#1179867)
