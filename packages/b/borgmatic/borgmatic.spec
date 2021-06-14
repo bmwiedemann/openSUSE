@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.13
+Version:        1.5.14
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only

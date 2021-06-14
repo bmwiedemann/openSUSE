@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:44:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.14:
+  * Add link to Hetzner storage offering from the documentation.
+  * Clarify canonical home of borgmatic in documentation.
+  * Clarify that spaces in path names should not be backslashed
+    in path names.
+  * Fix error handling to error loudly when Borg gets killed due to
+    running out of memory!
+  * Fix build so as not to attempt to build and push documentation
+    for a non-master branch.
+  
+-------------------------------------------------------------------
 Wed Mar 31 10:08:00 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.13:
