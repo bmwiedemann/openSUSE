@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Virtualization controller fo
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-controller:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-controller:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install kubevirt-virt-controller shadow && \
     zypper clean -a && \
