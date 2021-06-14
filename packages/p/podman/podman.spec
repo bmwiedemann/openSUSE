@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -55,7 +55,7 @@ Recommends:     apparmor-parser
 Requires:       catatonit
 Requires:       cni
 Requires:       cni-plugins
-Requires:       conmon
+Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20200727
