@@ -34,6 +34,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 %if 0%{?is_opensuse}
+%ifnarch %{ix86}
 # releases prior to 3.0.4 required pandoc for building the man pages. On SLE
 # we don't have pandoc and it requires a complete haskell stack so adding it
 # is out of the question just for man pages.
@@ -47,6 +48,7 @@ BuildRequires:  libuuid-devel
 # won't be installed. they're shipped, though. so if pandoc isn't installed we
 # need to install them explicitly.
 BuildRequires:  pandoc
+%endif
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel

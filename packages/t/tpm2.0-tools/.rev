@@ -449,4 +449,12 @@ s etc.
       parameter encryption for tpm2_getrandom, tpm2_create, tpm2_nvextend,</comment>
     <requestid>895955</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>0017daee812a5fe5f84721f7ee73a475</srcmd5>
+    <version>5.1</version>
+    <time>1623705073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899908</requestid>
+  </revision>
 </revisionlist>
