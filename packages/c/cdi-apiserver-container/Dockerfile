@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Kubernetes API extension for
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
            containerized-data-importer-api \
