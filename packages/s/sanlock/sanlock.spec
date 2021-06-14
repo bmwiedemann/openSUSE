@@ -1,7 +1,7 @@
 #
-# spec file for package sanlock
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %endif
 %define pname   sanlock
 Name:           %{pprefix}%{pname}
-Version:        3.8.2
+Version:        3.8.4
 Release:        0
 %if ! %{with python}
 Summary:        A shared disk lock manager
@@ -245,6 +245,7 @@ getent passwd sanlock > /dev/null || useradd \
 %service_del_postun wdmd.service sanlock.service
 
 %postun -n libsanlock1 -p /sbin/ldconfig
+
 %postun -n fence-sanlock
 %service_del_postun fence_sanlockd.service
 
@@ -307,6 +308,7 @@ getent passwd sanlock > /dev/null || useradd \
 %endif
 
 %else
+
 %files %{python_files}
 %{python_sitearch}/sanlock*.so
 %{python_sitearch}/sanlock_python-%{version}*info

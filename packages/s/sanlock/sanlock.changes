@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  9 19:58:35 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.8.4
+  - sanlock: socket send and recv retries
+  - python: expose {get,set}_lvb
+  - sanlock: Shrink thread pool when there is no work
+  - config: Add max_worker_threads
+
+-------------------------------------------------------------------
 Fri Oct 23 20:58:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 -  Make python subpackage ready for multiple python3 flavors

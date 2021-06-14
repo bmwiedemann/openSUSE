@@ -240,4 +240,12 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
     <comment></comment>
     <requestid>844480</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>23e4453faff5ad7fdab0874280bc025e</srcmd5>
+    <version>3.8.4</version>
+    <time>1623705003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898905</requestid>
+  </revision>
 </revisionlist>
