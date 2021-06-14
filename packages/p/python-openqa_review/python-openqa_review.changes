@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 14 18:08:00 UTC 2021 - okurz@suse.com
+
+- Update to version 1.21.0:
+  * Add option --skip-passed to skip passed reports
+  * Update travis CI URLs after migration to travis-ci.com
+  * Also include black in flake8 check by plugin
+  * Manually reformat some strings for shorter lines
+  * Prevent C901 style issue reporting due to misplaced comment
+  * Reduce line-length to 120 to be consistent with openQA
+  * tox: Execute "fast" black
+  * tox: Directly give hints to user what black complains about
+  * Integrate "black" formatter into tox
+  *  Reformat code with black
+  * Add python-3.9 to testenv
+  * Check python code style with black
+  * Disambiguate docs and refer to Python3 explicitly
+  * Drop Python 2.7 support from CI and tox
+
+-------------------------------------------------------------------
 Fri Mar 05 09:40:21 UTC 2021 - okurz@suse.com
 
 - Update to version 1.20.4:

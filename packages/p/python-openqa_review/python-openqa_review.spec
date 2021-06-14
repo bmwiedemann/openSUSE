@@ -31,7 +31,7 @@
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.20.4
+Version:        1.21.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT
