@@ -1,7 +1,7 @@
 #
 # spec file for package xmorph
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           xmorph
 Version:        20060817
 Release:        0
 Summary:        A morphing program
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://sourceforge.net/projects/xmorph/
+URL:            http://sourceforge.net/projects/xmorph/
 Source:         %{name}_%{version}.tar.bz2
 Source1:        %{name}.desktop
 Source2:        acinclude.m4
@@ -46,9 +46,8 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
 Requires(post): %{install_info_prereq}
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-Requires(preun): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(postun):update-desktop-files
+Requires(preun):%{install_info_prereq}
 
 %description
 This morphing program reads two images in Targa format and computes the
@@ -82,7 +81,6 @@ cat %{SOURCE2} >>acinclude.m4
 autoreconf -fiv
 %configure \
   --disable-static \
-  --with-pic \
   --with-gtk2 \
   CFLAGS="%{optflags} -fgnu89-inline"
 make %{?_smp_mflags}
@@ -109,7 +107,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/xmorph
@@ -119,7 +116,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libmorph.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/xmorph
 %{_libdir}/libmorph.so
 

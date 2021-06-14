@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:54:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+
+-------------------------------------------------------------------
 Thu Sep  5 12:33:00 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - xmorph-fixbuild.patch: fixed build
