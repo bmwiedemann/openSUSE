@@ -247,8 +247,8 @@ else
   echo 'Remove this no-longer-needed themingdir hack.'
 fi
 # Install rpm macros
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
@@ -348,7 +348,7 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_libdir}/pkgconfig/gtk4-unix-print.pc
 %{_libdir}/pkgconfig/gtk4-x11.pc
 %{_libdir}/libgtk-4.so
-%{_sysconfdir}/rpm/macros.gtk4
+%{_rpmmacrodir}/macros.gtk4
 %dir %{_datadir}/gtk-4.0/valgrind
 %{_datadir}/gtk-4.0/valgrind/gtk.supp
 

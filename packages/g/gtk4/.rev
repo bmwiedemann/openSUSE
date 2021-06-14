@@ -302,4 +302,12 @@
     <comment>Update to version 4.2.1 (forwarded request 893145 from susnux)</comment>
     <requestid>893653</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ae62aa1813236961fae0b12f72f4e3be</srcmd5>
+    <version>4.2.1</version>
+    <time>1623705039</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 898513 from dimstar)</comment>
+    <requestid>899633</requestid>
+  </revision>
 </revisionlist>
