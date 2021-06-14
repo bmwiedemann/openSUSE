@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2021-04-01
+%global longver 2021-06-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
 Name:           re2
@@ -91,10 +91,7 @@ you will need to install %{name}-devel.
 find %{buildroot} -name 'lib%{name}.a' -delete
 
 %check
-# Tests fail on all 32 bit architectures
-%if %{__isa_bits} == 64
 %make_build test CXXFLAGS="%{optflags}"
-%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

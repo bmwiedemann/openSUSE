@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 12 10:03:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2021-06-01:
+  * Fix (|a)* matching more text than (|a)+
+  * build system tweaks and developer visible fixes
+
+-------------------------------------------------------------------
 Thu Apr 15 06:54:51 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2021-04-01:
