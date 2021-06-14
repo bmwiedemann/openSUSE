@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 14 14:48:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.4
+  * Support decorator >= 5 (PR 301 by @ccordoba12)
+
+-------------------------------------------------------------------
 Fri May 21 14:16:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.0.3

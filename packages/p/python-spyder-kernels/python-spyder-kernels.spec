@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-spyder-kernels
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -36,7 +36,6 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dask-distributed}
-BuildRequires:  %{python_module decorator < 5}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 5.3.0}
 BuildRequires:  %{python_module ipython >= 7.6.0}
@@ -51,7 +50,6 @@ BuildRequires:  %{python_module wurlitzer >= 1.0.3}
 BuildRequires:  %{python_module xarray}
 # /SECTION
 Requires:       python-cloudpickle
-Requires:       python-decorator < 5
 Requires:       python-ipykernel >= 5.3.0
 Requires:       python-ipython >= 7.6.0
 Requires:       python-jupyter_client >= 5.3.4
