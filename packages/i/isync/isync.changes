@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  7 12:43:42 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.4.2
+  * This is a security update that fixes CVE-2021-3578
+
+1.4.2:
+- fixed CVE-2021-3578: possible remote code execution
+- fixed crash on invalid CAPABILITY response code
+- tolerate INBOX mis-casing in Path setting
+
+1.4.1:
+- fixed CVE-2021-20247
+- fixed UIDVALIDITY change recovery potentially leading to data loss
+- fixed spurious "unexpected FETCH response" errors with some servers
+- worked around FastMail sending malformed PERMANENTFLAGS
+
+-------------------------------------------------------------------
 Sun Feb 28 10:54:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.5 (boo#1182488)

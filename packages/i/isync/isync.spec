@@ -17,11 +17,10 @@
 
 
 Name:           isync
-Version:        1.3.5
+Version:        1.4.2
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Email/Utilities
 URL:            https://isync.sourceforge.io/
 Source:         https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
 Source1:        https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz.asc
@@ -59,14 +58,11 @@ mailbox pair; multiple replicas of a mailbox can be maintained.
 %license COPYING
 %doc README AUTHORS ChangeLog NEWS
 %{_bindir}/mbsync-get-cert
-%{_bindir}/isync
 %{_bindir}/mbsync
 %{_bindir}/mdconvert
 %exclude %{_docdir}/%{name}/TODO
-%exclude %{_docdir}/%{name}/COPYING
 %{_docdir}/%{name}/examples/*
 %dir %{_docdir}/%{name}/examples
-%{_mandir}/man1/isync.1%{?ext_man}
 %{_mandir}/man1/mbsync.1%{?ext_man}
 %{_mandir}/man1/mdconvert.1%{?ext_man}
 

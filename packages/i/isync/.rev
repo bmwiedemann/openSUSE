@@ -62,4 +62,12 @@ this time with COPYING, ChangeLog, AUTHORS and README</comment>
     v1.3.2</comment>
     <requestid>875977</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e960a6b637ac785211c1052da3e12296</srcmd5>
+    <version>1.4.2</version>
+    <time>1623705075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>899937</requestid>
+  </revision>
 </revisionlist>
