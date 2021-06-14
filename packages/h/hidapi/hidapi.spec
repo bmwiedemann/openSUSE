@@ -28,6 +28,7 @@ URL:            https://github.com/libusb/hidapi
 Source:         https://github.com/libusb/hidapi/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE do_not_install_docs.patch -- don't let make install put files into /usr/share/doc/packages
 Patch0:         do_not_install_docs.patch
+Patch1:         0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -74,6 +75,7 @@ While it can be used to communicate with standard HID devices like keyboards, mi
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./bootstrap

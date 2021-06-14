@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  9 09:19:42 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch:
+  fix boo#1187056
+
+-------------------------------------------------------------------
 Mon Jan 11 04:35:27 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 0.10.1
