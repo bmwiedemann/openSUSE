@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 14 06:59:01 UTC 2021 - Richard Tsai <richard9404@gmail.com>
+
+- Update to 2.0.10
+  * Touchscreen: Use touch average to calculate deltas
+  * libinput 1.18 support: Different deltas depending on libinput version
+
+-------------------------------------------------------------------
 Sat Apr 17 03:26:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.0.9

@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           touchegg
-Version:        2.0.9
+Version:        2.0.10
 Release:        0
 Summary:        A multitouch gesture recogniser for GNU/Linux
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Hardware/Other
-Url:            https://github.com/JoseExposito/touchegg
+URL:            https://github.com/JoseExposito/touchegg
 Source:         https://github.com/JoseExposito/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -30,16 +30,16 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libinput)
+BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  cmake(pugixml)
 Obsoletes:      %{name}-gui
 
 %description
