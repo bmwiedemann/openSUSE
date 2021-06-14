@@ -1,0 +1,17 @@
+diff -Nur leveldb-1.23/CMakeLists.txt new/CMakeLists.txt
+--- leveldb-1.23/CMakeLists.txt	2021-02-23 21:54:37.000000000 +0100
++++ new/CMakeLists.txt	2021-06-09 14:06:15.129760255 +0200
+@@ -71,9 +71,10 @@
+   string(REGEX REPLACE "-fexceptions" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+ 
++
++  # We need RTTI support if code that uses leveldb uses typeid (e.g. ceph).
+-  # Disable RTTI.
+-  string(REGEX REPLACE "-frtti" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
++  # string(REGEX REPLACE "-frtti" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++  # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+ endif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+ 
+ # Test whether -Wthread-safety is available. See

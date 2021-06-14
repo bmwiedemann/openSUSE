@@ -1,7 +1,7 @@
 #
 # spec file for package leveldb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,23 @@
 
 
 Name:           leveldb
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        A key/value-store
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/leveldb
-Source0:        https://github.com/google/leveldb/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE detect-system-gtest.patch -- https://github.com/google/leveldb/pull/912
+Patch0:         detect-system-gtest.patch
+# PATCH-FIX-OPENSUSE enable-rtti.patch -- Enable rtti support again, needed for ceph
+Patch1:         enable-rtti.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  snappy-devel
+BuildRequires:  cmake(GTest)
+BuildRequires:  cmake(benchmark)
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
 leveldb implements a system for maintaining a persistent key/value store.
@@ -65,7 +72,7 @@ leveldb implements a system for maintaining a persistent key/value store.
 This package holds the development files for statically linking leveldb.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # unfortunately a two-pass build is needed for shared and static libs
@@ -73,40 +80,41 @@ This package holds the development files for statically linking leveldb.
 %cmake -DBUILD_SHARED_LIBS=ON
 %cmake_build
 cd ..
+%define __builddir build_static
 %cmake -DBUILD_SHARED_LIBS=OFF
 %cmake_build
 
 %install
+# Install shared libraries
+%define __builddir build
 %cmake_install
-# collect shared libs built in the first pass
-cp -a build/libleveldb.so* %{buildroot}%{_libdir}
+# collect static libs built in the second pass
+cp -a build_static/libleveldb.a %{buildroot}%{_libdir}
 # cmake_install omits db_bench
 install -d -m 0755 %{buildroot}%{_bindir}
-cp -a build/db_bench %{buildroot}%{_bindir}
+cp -a build_static/db_bench %{buildroot}%{_bindir}
 
 %check
+%define __builddir build_static
 %ctest
 
 %post   -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/db_bench
 
 %files -n %{lib_name}
-%defattr(-,root,root,-)
+%license LICENSE
 %{_libdir}/libleveldb.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS LICENSE NEWS README.md TODO doc/*
+%doc AUTHORS NEWS README.md TODO doc/*
 %{_includedir}/leveldb/
 %{_libdir}/libleveldb.so
+%{_libdir}/cmake/leveldb
 
 %files devel-static
-%defattr(-,root,root,-)
 %{_libdir}/libleveldb.a
-%{_libdir}/cmake/
 
 %changelog

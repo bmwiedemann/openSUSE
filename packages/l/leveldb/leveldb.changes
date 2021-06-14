@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun  9 12:08:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add enable-rtti.patch, enable rtti support again to fix build
+  issue of ceph
+
+-------------------------------------------------------------------
+Mon May  3 09:46:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.23:
+  * Switch from C headers to C++ headers.
+  * Remove leveldb::port::kLittleEndian.
+  * Add Env::Remove{File,Dir} which obsolete Env::Delete{File,Dir}.
+  * Sync MANIFEST before closing in db_impl when creating a new DB.
+  * Optimize leveldb block seeks to utilize the current iterator
+    location.
+  * broken db: fix assertion in leveldb::InternalKey::Encode,
+    mark base as corrupt
+  * fix bug(uninitialized options pointer in State)
+  * Fix accidental double std:: qualifiers.
+  * Fix tsan problem in env_test.
+  * Don't check current key in DBIter::Next()
+  * block_builder header file dependency fixed
+  * Add O_CLOEXEC to open calls.
+  * Memory optimization
+  * Documentation improvements
+- Add detect-system-gtest.patch to use googletest and benchmark
+  from system, add those libraries as dependencies
+- Build in second build directory to prevent cmake files generated
+  for the static library (prefer shared one)
+
+-------------------------------------------------------------------
 Wed Apr 29 12:33:36 UTC 2020 - David Disseldorp <ddiss@suse.com>
 
 - Remove 0001-debian-ports.patch
