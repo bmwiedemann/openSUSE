@@ -17,13 +17,15 @@
 
 
 Name:           rlwrap
-Version:        0.44
+Version:        0.45.1
 Release:        0
 Summary:        A Readline Wrapper
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://github.com/hanslub42/rlwrap/
-Source0:        https://github.com/hanslub42/rlwrap/releases/download/7c1e432/rlwrap-%{version}.tar.gz
+Source0:        https://github.com/hanslub42/rlwrap/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 
@@ -38,6 +40,7 @@ command line.
 %setup -q
 
 %build
+autoreconf --install
 %configure
 make %{?_smp_mflags}
 

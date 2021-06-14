@@ -154,4 +154,39 @@
     <comment></comment>
     <requestid>867905</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>383c22a224a39a35aae9cbc5d2a68155</srcmd5>
+    <version>0.45.1</version>
+    <time>1623705070</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to github release urls
+- Update to 0.45.1:
+  * Bug fixes:
+  - rlwrap would always open /tmp/rlwrap.debug after forking child command, preventing other users from running it.
+  - Fix args to setitimer() call to prevent EINVAL error on return
+  - advise about --always-readline if in direct mode at first user ENTER keystroke
+  - check for I_SWROPT even if isastream() is present (compile would fail on Oracle linux)
+
+- Update to 0.45:
+  * New features
+    - --only-cook '!&lt;regexp&gt;' enables confident mode where every
+      possible prompt that matches a regexp is cooked immediately
+      (so that even prompts that get printed while handling a large
+      paste are cooked).
+    - --no-children (-N) now enables direct mode whenever the client
+      switches to the alternate screen. This makes editors and pagers
+      usable even when using --always-readline on non-linux systems
+    - --always-echo echoes user input even when the client has
+      switched off ECHO.
+      filter makefilter to easily employ shell commands (like sed,
+      or grep) as rlwrap filters
+      filters can change (some) bindable and internal readline
+      variables with a new RlwrapFilter method tweak_readline_oob()
+  * Bug fixes
+    - rlwrap now correctly handles bracketed paste
+      --ansi-colour-aware (-A) didn't do anything at all. Now it
+    - recognises colour codes as well as common control codes like
+      window titles.</comment>
+    <requestid>899914</requestid>
+  </revision>
 </revisionlist>
