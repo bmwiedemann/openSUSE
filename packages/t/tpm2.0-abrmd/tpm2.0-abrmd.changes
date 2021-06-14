@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  9 09:37:38 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires libtss2-tcti-{device0,tabrmd0} (bsc#1187077).
+  In MicroOS systems the recommendations are not installed, making the
+  service fail to initialize: Failed to instantiate TCTI
+
+-------------------------------------------------------------------
 Thu Oct 22 12:15:24 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to version 2.3.3:

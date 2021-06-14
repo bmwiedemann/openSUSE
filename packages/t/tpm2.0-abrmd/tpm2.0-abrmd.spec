@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(tss2-sys)
 Requires(pre):  shadow
-Recommends:     libtss2-tcti-device0
-Recommends:     libtss2-tcti-tabrmd0
+Requires:       libtss2-tcti-device0
+Requires:       libtss2-tcti-tabrmd0
 Requires:       tpm2-0-tss
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # the auto activation is not whitelisted for <= SLE12-SP3
@@ -77,9 +77,6 @@ use with the SAPI library (libtss2-sys) like any other TCTI.
 %build
 export CFLAGS="%optflags -fPIE"
 export LDFLAGS="-pie -fPIE"
-# workaround for the bug that upstream commit
-# b4036908dd067f8eadc9d53b1a2a39032aed109d fixes
-export GDBUS_CODEGEN="/usr/bin/gdbus-codegen"
 %configure --disable-static --with-systemdsystemunitdir=%{_unitdir}
 make %{?_smp_mflags} PTHREAD_LDFLAGS=-pthread
 
@@ -111,7 +108,8 @@ rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 
 %files
 %defattr(-,root,root)
-%doc *.md LICENSE
+%doc *.md
+%license LICENSE
 %{_mandir}/man7/tss2-*
 %{_mandir}/man8/tpm2-*
 %{_sbindir}/tpm2-abrmd
