@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 13 19:00:10 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Use %pyunittest, dropped build dependency on pytest
+
+-------------------------------------------------------------------
 Wed Dec 16 10:46:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Fixed glob-pattern for tests

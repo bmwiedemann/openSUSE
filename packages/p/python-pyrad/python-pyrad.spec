@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrad
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        BSD-3-Clause
 URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
@@ -49,7 +48,7 @@ them and decoding responses.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v -s tests/test*.py
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
