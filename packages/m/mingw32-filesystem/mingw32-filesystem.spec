@@ -17,7 +17,12 @@
 
 
 %define debug_package %{nil}
-%define _rpmlibdir    %{_prefix}/lib/rpm
+%if %{undefined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir %{_sysconfdir}/rpm
+%endif
 Name:           mingw32-filesystem
 Version:        20201105
 Release:        0
@@ -91,12 +96,12 @@ for i in mingw32-configure mingw32-make mingw32-cmake mingw32-gdb; do
 done
 popd
 
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
+mkdir -p %{buildroot}%{_distconfdir}/profile.d
+install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/profile.d/
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.mingw32
-install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/rpm/$(basename %{SOURCE14})
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw32
+install -m 644 %{SOURCE14} %{buildroot}%{_rpmmacrodir}/$(basename %{SOURCE14})
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpmlint
 install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/rpmlint/mingw32-rpmlint.config
@@ -141,16 +146,16 @@ mkdir -p %{buildroot}%{_prefix}/i686-w64-mingw32/sys-root/mingw/share/man
 mkdir -p %{buildroot}%{_prefix}/i686-w64-mingw32/sys-root/mingw/share/man/man{1,2,3,4,5,6,7,8,9,n}
 
 # NB. NOT _libdir
-mkdir -p %{buildroot}%{_rpmlibdir}
-install -m 0755 %{SOURCE3} %{buildroot}%{_rpmlibdir}
-install -m 0755 %{SOURCE4} %{buildroot}%{_rpmlibdir}
-install -m 0755 %{SOURCE5} %{buildroot}%{_rpmlibdir}
-install -m 0755 %{SOURCE8} %{buildroot}%{_rpmlibdir}
-install -m 0755 %{SOURCE9} %{buildroot}%{_rpmlibdir}
+mkdir -p %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE3} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE4} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE5} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE8} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE9} %{buildroot}%{_rpmconfigdir}
 # cmake support 
-install -m 0755 %{SOURCE12} %{buildroot}%{_rpmlibdir}
-mkdir -p %{buildroot}%{_rpmlibdir}/fileattrs
-install -m 0644 %{SOURCE13} %{buildroot}%{_rpmlibdir}/fileattrs
+install -m 0755 %{SOURCE12} %{buildroot}%{_rpmconfigdir}
+mkdir -p %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE13} %{buildroot}%{_fileattrsdir}
 
 # Create the locale directories:
 while read LANG ; do
@@ -168,16 +173,20 @@ done < %{SOURCE11}
 %files
 %defattr(-,root,root,-)
 %doc COPYING
-%config %{_sysconfdir}/rpm/macros.mingw32
-%config %{_sysconfdir}/rpm/macros.mingw32-cmake
+%{_rpmmacrodir}/macros.mingw32
+%{_rpmmacrodir}/macros.mingw32-cmake
+%if %{undefined _distconfdir}
 %config %{_sysconfdir}/profile.d/mingw32.sh
-%config %{_sysconfdir}/rpmlint/mingw32-rpmlint.config
-%{_rpmlibdir}/mingw32-cmake.prov
-%{_rpmlibdir}/fileattrs/mingw32-cmake.attr
+%else
+%{_distconfdir}/profile.d/mingw32.sh
+%endif
+%{_sysconfdir}/rpmlint/mingw32-rpmlint.config
+%{_rpmconfigdir}/mingw32-cmake.prov
+%{_fileattrsdir}/mingw32-cmake.attr
 %{_bindir}/mingw32-*
 %{_libexecdir}/mingw32-scripts
 %{_prefix}/i686-w64-mingw32/
-%{_rpmlibdir}/mingw32-*
+%{_rpmconfigdir}/mingw32-*
 %dir %{_prefix}/i686-w64-mingw32/sys-root/mingw/lib/cmake
 
 %changelog
