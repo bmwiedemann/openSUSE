@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-logs
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Logging infrastructure for OCaml
