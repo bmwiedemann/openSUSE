@@ -1,7 +1,7 @@
 #
 # spec file for package iperf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.9
+Version:        3.10.1
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
 URL:            https://software.es.net/iperf/
-#Source URL:    http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
-Source:         http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
+Source:         https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz
+Source1:        https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz.sha256
 Requires:       lib%{name}%{soname} = %{version}-%{release}
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel
