@@ -327,7 +327,7 @@ install -d -m 0755        %{buildroot}%{_sbindir}
 install -D -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/epmd.service
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/epmd.socket
 ln -s   service     %{buildroot}%{_sbindir}/rcepmd
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/rpm/macros.erlang
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_rpmmacrodir}/macros.erlang
 
 %pre epmd
 getent group epmd || %{_sbindir}/groupadd -r epmd
@@ -401,7 +401,7 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %{_libdir}/erlang/usr/
 %{_libdir}/erlang/Install
 %{_datadir}/emacs/site-lisp/erlang.el
-%config %{_sysconfdir}/rpm/macros.erlang
+%{_rpmmacrodir}/macros.erlang
 
 %files debugger
 %{_libdir}/erlang/lib/debugger-*/
