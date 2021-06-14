@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 11:19:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Also specify the registry in kubevirt_containers_meta
+
+-------------------------------------------------------------------
 Thu May 20 11:34:20 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use git format-patch:

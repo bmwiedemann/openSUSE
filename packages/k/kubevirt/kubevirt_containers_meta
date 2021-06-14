@@ -5,14 +5,17 @@ case "${distro}" in
 150200:0)
     TAGPREFIX=suse/sles/15.2
     LABELPREFIX=com.suse.kubevirt
+    REGISTRY=registry.suse.com
     ;;
 150300:0)
     TAGPREFIX=suse/sles/15.3
     LABELPREFIX=com.suse.kubevirt
+    REGISTRY=registry.suse.com
     ;;
 *)
     TAGPREFIX=kubevirt
     LABELPREFIX=org.opensuse.kubevirt
+    REGISTRY=registry.opensuse.org
     ;;
 esac
 
