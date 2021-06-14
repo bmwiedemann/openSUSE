@@ -200,4 +200,12 @@
 - Add fix-spurious-warnings.patch</comment>
     <requestid>876937</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aef432cc54f02375d6e5522c3cbc930b</srcmd5>
+    <version>1.0.8</version>
+    <time>1623705028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899033</requestid>
+  </revision>
 </revisionlist>
