@@ -49,14 +49,14 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        91.0.4472.77
+Version:        91.0.4472.101
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
 Source1:        README.SUSE
-Source2:        highway-0.12.2.tar.gz
+Source2:        https://github.com/google/highway/archive/refs/tags/0.12.2.tar.gz#/highway-0.12.2.tar.gz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
