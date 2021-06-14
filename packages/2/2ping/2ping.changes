@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 14 09:56:20 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- python symbol is not provided by python 3, use proper python3
+
+-------------------------------------------------------------------
 Mon Mar 22 08:04:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.1

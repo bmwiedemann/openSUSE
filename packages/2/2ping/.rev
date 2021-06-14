@@ -97,4 +97,12 @@
     <comment></comment>
     <requestid>880488</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>64c7a0861c9b98f81f15f8e536fe5ca1</srcmd5>
+    <version>4.5.1</version>
+    <time>1623705074</time>
+    <user>dimstar_suse</user>
+    <comment>- python symbol is not provided by python 3, use proper python3</comment>
+    <requestid>899911</requestid>
+  </revision>
 </revisionlist>

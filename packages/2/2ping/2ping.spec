@@ -34,7 +34,7 @@ BuildRequires:  python3-pycryptodomex
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
-Requires:       python >= 3.6
+Requires:       python3 >= 3.6
 Recommends:     python3-distro
 Recommends:     python3-dnspython
 Recommends:     python3-netifaces
