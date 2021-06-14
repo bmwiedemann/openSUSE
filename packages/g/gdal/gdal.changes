@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 24 16:23:53 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.3.0 version
+  * Full changelog
+    https://github.com/OSGeo/gdal/blob/v3.3.0/gdal/NEWS
+  * Main changes python2 is now gone
+- Packaging
+  + bump libso version to 2.9
+  + Remove python2 related stuff
+  + Add support for heif,pcre,kml,sfcgal
+    make conditionnal support of libkml, sfcgal, heif
+  + Prepare tests also conditionnal
+  + Several small cleanup (merged, no more)
+  + Remove autoreconf upstream is using last available
+
+-------------------------------------------------------------------
 Mon May 17 10:55:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove bundled libraries, use system provided ones
@@ -6,10 +22,10 @@ Mon May 17 10:55:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue May  4 14:17:10 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to 3.2.3 (bug fix release) 
+- Update to 3.2.3 (bug fix release)
   * Full changelog
     https://github.com/OSGeo/gdal/blob/v3.2.3/gdal/NEWS
-- Be warned about ahead changes with future 3.3.x version 
+- Be warned about ahead changes with future 3.3.x version
     https://github.com/OSGeo/gdal/blob/v3.3.0/gdal/NEWS
 
 -------------------------------------------------------------------

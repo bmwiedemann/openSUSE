@@ -16,22 +16,26 @@
 #
 
 
-%define soversion 28
+%define soversion 29
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
-%bcond_without python2
+%bcond_with kml_support
+%bcond_with sfcgal_support
+%bcond_with heif_support
+%bcond_with tests_support
 Name:           gdal
-Version:        3.2.3
+Version:        3.3.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
 URL:            https://www.gdal.org/
-Source0:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
-Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
+Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
+Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
+Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
@@ -58,10 +62,17 @@ BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
+%if %{with tests_support}
+BuildRequires:  python3-lxml
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-env
+BuildRequires:  python3-pytest-sugar
+%endif
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
+# BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(json-c)
@@ -69,6 +80,7 @@ BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libtiff-4) >= 3.6.0
@@ -81,16 +93,22 @@ BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(proj)
+#BuildRequires:  pkgconfig(qhull_r)
 BuildRequires:  pkgconfig(spatialite)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
-%if %{with python2}
-BuildRequires:  python-numpy-devel
-BuildRequires:  python-setuptools
-%endif
 %if %{with fgdb_support}
 BuildRequires:  filegdb_api-devel
+%endif
+%if %{with kml_support}
+BuildRequires:  pkgconfig(libkml)
+%endif
+%if %{with sfcgal_support}
+BuildRequires:  pkgconfig(sfcgal)
+%endif
+%if %{with heif_support}
+BuildRequires:  libheif-devel
 %endif
 %if %{with ecw5_support}
 BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
@@ -135,18 +153,6 @@ Requires:       %{name} = %{version}-%{release}
 %description -n perl-%{name}
 Perl bindings for GDAL - Geo::GDAL, Geo::OGR and Geo::OSR modules.
 
-%package -n python2-%{pypi_package_name}
-Summary:        GDAL Python module
-Requires:       %{name} = %{version}-%{release}
-# Renaming to uppercase 'GDAL' during 2.4.0; previously used lowercase
-Provides:       python2-%{name} = %{version}
-Obsoletes:      python2-%{name} < %{version}
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < %{version}
-
-%description -n python2-%{pypi_package_name}
-The GDAL python modules provide support to handle multiple GIS file formats.
-
 %package -n python3-%{pypi_package_name}
 Summary:        GDAL Python3 module
 Requires:       %{name} = %{version}-%{release}
@@ -159,7 +165,8 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 %prep
 %setup -q -n %{sourcename}-%{version}
 %autopatch -p1
-
+# Prepare tests
+tar -xf %{S:2}
 # Delete bundled libraries
 rm -rv frmts/zlib
 rm -rv frmts/png/libpng
@@ -168,6 +175,7 @@ rm -rv frmts/jpeg/libjpeg
 rm -rv frmts/jpeg/libjpeg12
 rm -rv frmts/gtiff/libgeotiff
 rm -rv frmts/gtiff/libtiff
+# internal but needed rm -rv frmts/pcidsk
 
 # Set the right (build) libproj.so version, use the upper found version.
 PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
@@ -185,12 +193,9 @@ sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
 for F in frmt_twms_srtm.xml frmt_wms_bluemarble_s3_tms.xml frmt_wms_virtualearth.xml frmt_twms_Clementine.xml;do
   find . -name "${F}" -exec dos2unix {} \;
 done
-# Fix spurious exec perm
-find . -type f -name "style_ogr_brush.png" -exec chmod 0644 {} \;
-find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 
 # Remove shebang in scripts located in non executable dir
-find swig/python/osgeo/utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
+find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
 # Fix wrong /usr/bin/env python3
 find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
@@ -205,15 +210,13 @@ ln -s %{_includedir} $ECW_INC_PATH
 %endif
 
 %build
-# need to regenerate (old one does not accept CFLAGS)
-autoreconf -fi
-
 %configure \
         --prefix=%{_prefix}     \
         --includedir=%{_includedir}/gdal \
         --datadir=%{_datadir}   \
         --with-threads          \
         --disable-static        \
+        --without-armadillo     \
         --with-geotiff          \
         --with-libtiff          \
         --with-rename-internal-libtiff-symbols=yes \
@@ -226,6 +229,7 @@ autoreconf -fi
         --with-openjpeg         \
         --with-curl             \
         --with-pg               \
+        --with-pcre             \
         --with-ogdi             \
         --without-pcraster      \
         --with-jpeg12=no        \
@@ -244,9 +248,9 @@ autoreconf -fi
         --with-perl             \
         --with-mysql            \
         --with-freexl           \
+        --without-qhull         \
         --with-xerces=yes       \
         --with-xerces-lib="-lxerces-c" \
-        --with-xerces-inc=%{_includedir}/xercesc \
 %if %{with ecw5_support}
         --with-ecw=../ECW/     \
 %else
@@ -260,6 +264,15 @@ autoreconf -fi
        --with-static-proj4 \
        --with-proj5-api=no \
        CPPFLAGS="$CPPFLAGS -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" \
+%endif
+%if %{with kml_support}
+        --with-kml              \
+%endif
+%if %{with sfcgal_support}
+        --with-sfcgal=%{_bindir}/sfcgal-config \
+%endif
+%if %{with heif_support}
+        --with-heif             \
 %endif
         --with-opencl           \
         --without-hdf4          \
@@ -319,6 +332,39 @@ rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
 
 # avoid PACKAGE redefines
 sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h
+
+%if %{with tests_support}
+%check
+pushd %{name}autotest-%{version}
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
+	export GDAL_DATA=%{buildroot}%{_datadir}/%{name}/
+    export PYTHONPATH=%{buildroot}%{python3_sitearch}/
+	# Enable these tests on demand
+	#export GDAL_RUN_SLOW_TESTS=1
+	#export GDAL_DOWNLOAD_TEST_DATA=1
+
+	# Some tests are currently skipped:
+    # - `test_fits_vector` because it's crashing.
+	# - `test_http*`, `test_jp2openjpeg_45`, `*multithreaded_download*`,
+	#   `*multithreaded_upload*`, and `test_vsis3_no_sign_request`, which
+	#   try to connect externally.
+	# - `test_eedai_GOOGLE_APPLICATION_CREDENTIALS` which seems to use the
+	#   internet.
+	# - `test_osr_erm_1`, `test_ers_4`, `test_ers_8`, and `test_ers_10` as
+	#   they use `ecw_cs.wkt` which was removed due to unclear license.
+	# - `test_jpeg2000_8` and `test_jpeg2000_11` as files don't load,
+	#   perhaps due to buggy Jasper library?
+	# - `test_osr_ct_options_area_of_interest` returns the wrong value, but
+	#   it's skipped on macOS by upstream for mysteriously failing as well,
+	#   so do the same here.
+	# - `test_ndf_1` because it hangs on i686 and armv7hl
+# FIXME: Tests hang on i686 and armv7hl
+%ifnarch i686 armv7hl
+	pytest -k 'not test_fits_vector and not test_http and not test_jp2openjpeg_45 and not multithreaded_download and not multithreaded_upload and not test_vsis3_no_sign_request and not test_eedai_GOOGLE_APPLICATION_CREDENTIALS and not test_osr_erm_1 and not test_ers_4 and not test_ers_8 and not test_ers_10 and not test_jpeg2000_8 and not test_jpeg2000_11 and not test_osr_ct_options_area_of_interest and not test_ndf_1 and not test_cog_small_world_to_web_mercator'
+#|| :
+%endif
+popd
+%endif
 
 %post -n lib%{name}%{soversion} -p /sbin/ldconfig
 
@@ -385,13 +431,9 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 # 20201104 We keep all binaries in gdal and requires python3-GDAL
-%{_bindir}/epsg_tr.py
-%{_bindir}/esri2wkt.py
-%{_bindir}/gcps2vec.py
-%{_bindir}/gcps2wld.py
+%{_bindir}/gdalattachpct.py
 %{_bindir}/gdal2tiles.py
 %{_bindir}/gdal2xyz.py
-%{_bindir}/gdal_auth.py
 %{_bindir}/gdal_calc.py
 %{_bindir}/gdal_edit.py
 %{_bindir}/gdal_fillnodata.py
@@ -401,12 +443,8 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_bindir}/gdal_proximity.py
 %{_bindir}/gdal_retile.py
 %{_bindir}/gdal_sieve.py
-%{_bindir}/gdalchksum.py
 %{_bindir}/gdalcompare.py
-%{_bindir}/gdalident.py
-%{_bindir}/gdalimport.py
 %{_bindir}/gdalmove.py
-%{_bindir}/mkgraticule.py
 %{_bindir}/ogrmerge.py
 %{_bindir}/pct2rgb.py
 %{_bindir}/rgb2pct.py
@@ -462,13 +500,6 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %dir %{perl_vendorarch}/auto/Geo/OSR
 %attr(755,root,root) %{perl_vendorarch}/auto/Geo/OSR/OSR.so
 %{_mandir}/man3/Geo::GDAL.3pm%{?ext_man}
-
-%if %{with python2}
-%files -n python2-%{pypi_package_name}
-%license LICENSE.TXT
-%doc NEWS PROVENANCE.TXT
-%{python_sitearch}/*
-%endif
 
 %files -n python3-%{pypi_package_name}
 %license LICENSE.TXT
