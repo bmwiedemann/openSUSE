@@ -1180,4 +1180,12 @@
   + Updated translations.</comment>
     <requestid>887999</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>cee30c59aed1308cef724660e7718a28</srcmd5>
+    <version>40.2</version>
+    <time>1623705041</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 899011 from iznogood)</comment>
+    <requestid>899635</requestid>
+  </revision>
 </revisionlist>

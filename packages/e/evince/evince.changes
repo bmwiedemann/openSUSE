@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 10 10:12:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.2:
+  + build: Fix t1lib detection.
+  + shell:
+    - Show password dialog again.
+    - Use tmp dir as containing folder for non-native file.
+    - Fix build regression when gtk_unix_print is disabled.
+    - Explicitly set title in the header bar as a fallback.
+  + snap: Update to the gnome 3.38 extension to fix the build.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 22 07:49:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add 3 patches from upstream (reversed) to remove more synctex
