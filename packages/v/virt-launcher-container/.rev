@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>890456</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2cf68514f80746fe590c00aa20d9f30c</srcmd5>
+    <version>unknown</version>
+    <time>1623705053</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898424</requestid>
+  </revision>
 </revisionlist>
