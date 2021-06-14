@@ -9,5 +9,5 @@ Some of its features include:
  * Multiprocess architecture to let applications share multimedia content;
  * GStreamer plugins for easy use and integration in current applications;
  * Sandboxed applications support.</description>
-  <devel project="GNOME:Factory" package="pipewire"/>
+  <devel project="multimedia:libs" package="pipewire"/>
 </package>

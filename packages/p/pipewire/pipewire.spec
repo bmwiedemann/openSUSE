@@ -44,7 +44,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.28
+Version:        0.3.30
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,7 +53,6 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-Patch0:         0001-alsa-mixer-only-use-switch-to-mute-Front-in-the-Headphone-path.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -104,6 +103,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(webrtc-audio-processing)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{libpipewire} = %{version}
 Requires:       %{name}-modules = %{version}
@@ -522,6 +522,7 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-filter-chain.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-pulse-tunnel.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-zeroconf-discover.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-rt.so
 %dir %{_datadir}/alsa-card-profile
 %dir %{_datadir}/alsa-card-profile/mixer
 %{_datadir}/alsa-card-profile/mixer/*
