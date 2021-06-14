@@ -38,6 +38,7 @@ Patch3:         libxslt-random-seed.patch
 Patch4:         libxslt-Stop-using-maxParserDepth-XPath-limit.patch
 # PATCH-FIX-UPSTREAM gitlab.gnome.org/GNOME/libxslt/commit/77c26bad0433541f486b1e7ced44ca9979376908
 Patch5:         libxslt-Do-not-set-maxDepth-in-XPath-contexts.patch
+Patch6:         Recreate-xsltproc-man-page-with-old-Docbook-styleshe.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
@@ -109,6 +110,7 @@ xtend the
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 autoreconf -fvi
@@ -119,9 +121,7 @@ autoreconf -fvi
 make %{?_smp_mflags}
 
 %check
-%if ! 0%{?qemu_user_space_build}
 make %{?_smp_mflags} check
-%endif
 
 %install
 %make_install
@@ -141,8 +141,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libexslt.so.*
 
 %files tools
-%license COPYING*
-%doc AUTHORS NEWS README Copyright TODO FEATURES
+%license COPYING* Copyright
+%doc AUTHORS NEWS README TODO FEATURES
 %{_bindir}/xsltproc
 %{_mandir}/man1/xsltproc.1%{?ext_man}
 

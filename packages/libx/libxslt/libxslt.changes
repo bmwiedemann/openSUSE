@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 10 09:50:43 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Backport upstream xsltproc manpage fix
+  f165525f Recreate xsltproc man page with old Docbook stylesheet URL
+  Recreate-xsltproc-man-page-with-old-Docbook-styleshe.patch
+
+-------------------------------------------------------------------
+Mon Jun  7 08:57:36 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't disable testsuite under QEMU
+
+-------------------------------------------------------------------
+Wed Jun  2 07:47:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Move the Copyright file to %_defaultlicensedir
+  Configure.ac replaces the COPYING file with a symlink.
+
+-------------------------------------------------------------------
 Tue Jun  1 10:41:44 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with libxml2 2.9.12 that removes maxParserDepth XPath limit
