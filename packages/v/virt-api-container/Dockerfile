@@ -15,7 +15,7 @@ PREFIXEDLABEL org.opencontainers.image.description="Entrypoint for all kubevirt 
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-api:%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-api:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install kubevirt-virt-api shadow && \
     zypper clean -a && \
