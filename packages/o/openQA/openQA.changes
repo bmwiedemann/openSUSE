@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 11:31:57 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1623747238.4c4508f96:
+  * t: Mark missed uncoverable line in 14-grutasks.t
+  * doc: Add end of list marker so chapter heading after pitfalls is rendered correctly
+  * doc: Improve documentation for debugging developer mode
+  * t: Mark uncoverable statements in 14-grutasks.t
+  * t: Mark uncoverable statements in 42-df-based-cleanup.t
+  * t: Mark uncoverable statements in 01-test-utilities
+
+-------------------------------------------------------------------
 Sun Jun 13 03:31:59 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1623492373.886d5787f:
