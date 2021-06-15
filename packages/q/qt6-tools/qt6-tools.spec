@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -264,9 +264,6 @@ Command line client to QStandardPaths.
 %{qt6_install}
 
 %if !%{qt6_docs_flavor}
-
-# 475d609 creates a useless qtdiag6 hardlink (also see QTBUG-89170)
-rm %{buildroot}%{_qt6_bindir}/qtdiag6
 
 %{qt6_link_executables}
 
