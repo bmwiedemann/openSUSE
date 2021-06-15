@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 11 10:24:47 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341) 
+
+-------------------------------------------------------------------
 Mon May 31 05:49:58 UTC 2021 - Duncan Mac-Vicar P <duncan@mac-vicar.eu>
 
 - For terminal 24bit support, fall back to xterm+direct

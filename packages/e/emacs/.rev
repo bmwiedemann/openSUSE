@@ -1580,4 +1580,12 @@
   * emacs-27.2-COLORTERM-24bit.patch (forwarded request 896402 from dmacvicar)</comment>
     <requestid>897972</requestid>
   </revision>
+  <revision rev="157" vrev="4">
+    <srcmd5>28c8b1cc868ace3c74291d94184a8198</srcmd5>
+    <version>27.2</version>
+    <time>1623767817</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341)</comment>
+    <requestid>899448</requestid>
+  </revision>
 </revisionlist>
