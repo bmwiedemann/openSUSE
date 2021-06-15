@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 10 16:44:44 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- When detecting HNV connection list all connections, not only active ones
+  (bsc#1187148 ltc#192985).
+   + 0005-hcnmgr-When-trying-to-detect-HNV-bond-list-all-conne.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 16:24:04 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Don't install /sbin/lsprop if usrmerged

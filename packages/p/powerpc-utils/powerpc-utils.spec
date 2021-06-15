@@ -45,6 +45,7 @@ Patch18:        0001-drmgr-don-t-open-sysfs-file-for-each-command.patch
 Patch19:        0002-drmgr-read-the-CPU-NUMA-topology.patch
 Patch20:        0003-drmgr-introduce-NUMA-based-LMB-removal.patch
 Patch21:        drmgr-fix-remove-by-index-operation.patch
+Patch22:        0005-hcnmgr-When-trying-to-detect-HNV-bond-list-all-conne.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

@@ -1,0 +1,30 @@
+From 1795e222a36333e3ab70d12d681a5705d9d77227 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 10 Jun 2021 18:38:06 +0200
+Subject: [PATCH] hcnmgr: When trying to detect HNV bond list all connections,
+ not only active ones.
+
+When NM is starting up the HNV connection is not active when hcnmgr
+looks for it and it is recreated.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ scripts/hcnmgr | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index ad72c278046d..4b8c0e71e85a 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -284,7 +284,7 @@ do_config_vdevice() {
+ 
+ 	hcnlog DEBUG "Check if there is bond $BONDNAME with hcn id $HCNID"
+ 
+-	if ! nmcli -f NAME con show --active | grep -q "$BONDNAME\s"; then
++	if ! nmcli -f NAME con show | grep -q "$BONDNAME\s"; then
+ 		hcnlog INFO "nmcli con add type bond con-name $BONDNAME ifname $BONDNAME"
+ 		nmcli con add type bond con-name "$BONDNAME" ifname "$BONDNAME"
+ 
+-- 
+2.26.2
+
