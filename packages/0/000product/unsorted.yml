@@ -2213,6 +2213,10 @@ unsorted:
   - conntrack-tools: [i586] 
   - conntrackd 
   - console-setup 
+  - container-build-checks 
+  - container-build-checks-strict 
+  - container-build-checks-vendor-SUSE 
+  - container-build-checks-vendor-openSUSE 
   - container-diff 
   - container-registry-systemd 
   - container-support-utils 
@@ -10098,8 +10102,6 @@ unsorted:
   - libcsplit1 
   - libcss-devel 
   - libcss0 
-  - libcstring-devel 
-  - libcstring1 
   - libcsv-devel 
   - libcsv3 
   - libcsync-devel 
@@ -10736,7 +10738,7 @@ unsorted:
   - libgda-ui-6_0-plugins 
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
-  - libgdal28 
+  - libgdal29 
   - libgdamm-5_0-13 
   - libgdamm-devel 
   - libgdata-devel 
@@ -12242,6 +12244,7 @@ unsorted:
   - libntk1 
   - libntl43 
   - libntlm-devel 
+  - libntpc1 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
@@ -17234,6 +17237,7 @@ unsorted:
   - ntp-dcf77-tools 
   - ntp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - ntpsec 
+  - ntpsec-devel 
   - ntpsec-doc 
   - ntpsec-utils 
   - nudoku 
@@ -25773,7 +25777,6 @@ unsorted:
   - python38-mysql-connector-python 
   - python38-nagiosplugin 
   - python38-napalm 
-  - python38-napalm-ansible 
   - python38-napalm-arubaos-switch 
   - python38-napalm-asa 
   - python38-napalm-digineo-procurve 
