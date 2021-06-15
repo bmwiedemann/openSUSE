@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jun 10 06:56:01 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#264
+- prevent memory corruption while iterating through network device
+  list (bsc#1187014)
+- 8.0.1
+
+--------------------------------------------------------------------
 Tue Apr 27 10:59:37 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#257
