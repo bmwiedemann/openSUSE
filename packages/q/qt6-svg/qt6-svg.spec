@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-svg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
