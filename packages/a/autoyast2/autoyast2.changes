@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jun 14 09:37:41 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the copy of the profile to the installed system as
+  /var/adm/autoinstall/cache/installedSystem.xml (bsc#1187221).
+- 4.4.10
+
+-------------------------------------------------------------------
+Fri Jun 11 09:46:05 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when the general/storage section is empty
+  (bsc#1187180).
+- 4.4.9
+
+-------------------------------------------------------------------
+Thu Jun 10 09:38:45 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Import proxy settings during the 1st stage of the installation
+  (bsc#1185016)
+- 4.4.8
+
+-------------------------------------------------------------------
+Mon Jun  7 13:06:43 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Abort the installation importing the users sections from
+  the profile fails (related to jsc#PM-2620).
+- 4.4.7
+
+-------------------------------------------------------------------
+Thu May 13 19:07:57 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Recommend icewm if graphical installation (bsc#1185095)
+- 4.4.6
+
+-------------------------------------------------------------------
+Thu May 13 08:45:04 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Install packages in the PackagesProposal during autoupgrade
+  (see bsc#1184488).
+- 4.4.5
+
+-------------------------------------------------------------------
+Tue May 11 08:50:30 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Refactor the <ask> mechanism (bsc#1185704):
+  - Split the code into several and testable classes.
+  - Fix 'Next' dialog calculation when the target does not exist.
+  - <script> and <default_value_script> support the same elements
+    than any other script.
+- 4.4.4
+
+-------------------------------------------------------------------
+Fri May  7 10:24:22 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- During autoupgrade do not try to register the system if it is
+  explicitly disabled in the profile (bsc#1176965)
+- 4.4.3
+
+-------------------------------------------------------------------
 Thu Apr  8 16:13:44 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
 - fix autoyast profile parser (bsc#1184508)

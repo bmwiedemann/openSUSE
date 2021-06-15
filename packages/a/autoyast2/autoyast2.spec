@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.4.2
+Version:        4.4.10
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -134,6 +134,8 @@ Requires:       yast2-xml
 # RPM dependencies in Pkg.Resolvables
 Requires:       yast2-pkg-bindings >= 4.3.0
 Requires:       yast2-ruby-bindings >= 1.0.0
+# bsc#1185095
+Recommends:     (icewm if libyui-qt)
 
 Provides:       yast2-trans-autoinst
 Obsoletes:      yast2-trans-autoinst
@@ -260,7 +262,6 @@ done
 %{yast_clientdir}/clone_system.rb
 
 %{yast_yncludedir}/autoinstall/xml.rb
-%{yast_yncludedir}/autoinstall/ask.rb
 
 %dir %{yast_libdir}/autoinstall
 %{yast_libdir}/autoinstall/*.rb
@@ -270,6 +271,8 @@ done
 
 %{yast_libdir}/autoinstall/widgets
 %{yast_libdir}/autoinstall/presenters
+%{yast_libdir}/autoinstall/ask
+%{yast_libdir}/autoinstall/autoinst_profile
 
 %dir %{yast_libdir}/autoinstall/clients
 %{yast_libdir}/autoinstall/clients/*.rb
