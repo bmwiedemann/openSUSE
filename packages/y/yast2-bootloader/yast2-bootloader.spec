@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.4.1
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -81,17 +81,17 @@ This package contains the YaST2 component for bootloader configuration.
 %{fillup_only -n bootloader}
 
 %files
+%license COPYING
+%doc %{yast_docdir}
 %{yast_desktopdir}
-%{yast_metainfodir}
 %{yast_moduledir}
 %{yast_clientdir}
 %{yast_ybindir}
 %{yast_scrconfdir}
-%{yast_fillupdir}
 %{yast_schemadir}
 %{yast_libdir}
-%{yast_icondir}
-%doc %{yast_docdir}
-%license COPYING
+%{_fillupdir}/sysconfig.bootloader.*
+%{_datadir}/metainfo/org.opensuse.yast.Bootloader.metainfo.xml
+%{_datadir}/icons/hicolor/*/apps/yast-bootloader*
 
 %changelog

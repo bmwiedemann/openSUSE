@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  9 13:51:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable linuxefi/initrdefi on x86 only as grub does not understand
+  those commands on other archs (boo#1183795)
+- 4.4.3
+
+-------------------------------------------------------------------
+Mon Jun  7 08:59:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fixes for 'arm can boot on uefi' (boo#1183795)
+- 4.4.2
+
+-------------------------------------------------------------------
+Sun May 16 08:11:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- only list specific files installed in common directories (metainfo,
+  icons, fillupdir) (bsc#1186066, bsc#1184786)
+
+-------------------------------------------------------------------
 Wed May 12 12:23:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - arm can boot on uefi (boo#1183795)
