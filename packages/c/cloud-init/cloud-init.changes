@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  2 12:13:54 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-log-file-mode.patch (bsc#1183939)
+  + Change log file creation mode to 640
+- Add cloud-init-no-pwd-in-log.patch (bsc#1184758)
+  + Do not write the generated password to the log file
+- Add cloud-init-purge-cache-py-ver-change.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 17:35:46 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-bonding-opts.patch (bsc#1184085)

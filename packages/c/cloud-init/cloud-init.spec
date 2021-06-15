@@ -44,6 +44,12 @@ Patch61:        cloud-init-sle12-compat.patch
 Patch70:        use_arroba_to_include_sudoers_directory-bsc_1181283.patch
 # FIXME https://github.com/canonical/cloud-init/pull/831
 Patch71:        cloud-init-bonding-opts.patch
+# FIXME https://github.com/canonical/cloud-init/pull/858
+Patch72:        cloud-init-log-file-mode.patch
+# FIXME upstream commit b794d426b9
+Patch73:        cloud-init-no-pwd-in-log.patch
+# FIXME https://github.com/canonical/cloud-init/pull/857
+Patch74:        cloud-init-purge-cache-py-ver-change.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -147,6 +153,9 @@ Documentation and examples for cloud-init tools
 %endif
 %patch70 -p1
 %patch71
+%patch72
+%patch73
+%patch74
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
 [ -n "$version_pys" ] ||
