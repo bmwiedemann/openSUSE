@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 14 21:01:36 UTC 2021 - ismail@i10z.com
+
+- Update to version 0.33.1+git.20210613T225337.bc9d556f3a:
+  * js: add mp.utils.append_file
+  * vo_gpu: vulkan: displayvk: Fix handling of unconnected planes
+  * vo_gpu: vulkan: implement a VkDisplayKHR backed context
+  * vo_gpu: vulkan: provide a helper to access device name option
+  * vo_rpi: fix argument name
+  * github/issue_template: irc -> IRC
+  * {ci,docs,README}: update IRC references to new network
+  * docs: fix leftover reference to the now defunct --video-sync-adrop-size option
+  * ytdl_hook: improve handling of json parsing errors
+
+-------------------------------------------------------------------
 Sat May 29 16:31:14 UTC 2021 - ismail@i10z.com
 
 - Update to version 0.33.1+git.20210528T161101.d7f3d1fff7:

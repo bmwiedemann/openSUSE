@@ -1401,4 +1401,21 @@
   * build: move website rebuild into Linux/clang travis job</comment>
     <requestid>896117</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>4c8746ecf0a0120742141085ef658fa2</srcmd5>
+    <version>0.33.1+git.20210613T225337.bc9d556f3a</version>
+    <time>1623767862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210613T225337.bc9d556f3a:
+  * js: add mp.utils.append_file
+  * vo_gpu: vulkan: displayvk: Fix handling of unconnected planes
+  * vo_gpu: vulkan: implement a VkDisplayKHR backed context
+  * vo_gpu: vulkan: provide a helper to access device name option
+  * vo_rpi: fix argument name
+  * github/issue_template: irc -&gt; IRC
+  * {ci,docs,README}: update IRC references to new network
+  * docs: fix leftover reference to the now defunct --video-sync-adrop-size option
+  * ytdl_hook: improve handling of json parsing errors</comment>
+    <requestid>899999</requestid>
+  </revision>
 </revisionlist>
