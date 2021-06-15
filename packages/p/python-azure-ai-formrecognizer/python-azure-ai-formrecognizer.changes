@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  7 12:55:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 3.1.0.0 to ensure
+  proper upgrade from previous version 3.1.0b4
+
+-------------------------------------------------------------------
 Mon May  3 15:01:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
