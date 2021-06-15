@@ -144,4 +144,15 @@
 - Update Requires from setup.py (forwarded request 890919 from glaubitz)</comment>
     <requestid>891005</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a16a8940e88d59de1f22a44c6ba7c54</srcmd5>
+    <version>6.3.0</version>
+    <time>1623767833</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 898334 from glaubitz)</comment>
+    <requestid>898361</requestid>
+  </revision>
 </revisionlist>
