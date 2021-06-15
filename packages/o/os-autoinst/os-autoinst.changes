@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 15 11:52:15 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1623757687.3f64b638:
+  * Add tests for new_ssh_connection with a custom port
+  * Allow to specify the port for a ssh connection
+  * Correct user -> username in sshSerial::activate
+  * Correct docs of get_ssh_credentials: host -> hostname
+
+-------------------------------------------------------------------
 Sun Jun 13 04:07:58 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1623425960.44a81109:
