@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 11 11:35:36 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Consider 'static_text' as a valid value for 'ask/type' elements
+  (bsc#1185909).
+- Update the 'script' and 'default_value_script' elements in
+  'ask' sections (bsc#1185704).
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed May  5 11:23:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add the 'backend' element to the networking section (bsc#1183886)
