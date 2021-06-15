@@ -1,7 +1,7 @@
 #
 # spec file for package xz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           xz
 Version:        5.2.5
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND SUSE-Public-Domain
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            http://tukaani.org/xz/
 Source0:        http://tukaani.org/xz/%{name}-%{version}.tar.gz
@@ -94,24 +94,19 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
   --with-pic \
   --docdir=%{_docdir}/%{name}
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="${CFLAGS} %{cflags_profile_generate}"
-  make check %{?_smp_mflags}
-  make clean
-  make %{?_smp_mflags} CFLAGS="${CFLAGS} %{cflags_profile_feedback}"
+  %make_build CFLAGS="${CFLAGS} %{cflags_profile_generate}"
+  %make_build
+  %make_build clean
+  %make_build CFLAGS="${CFLAGS} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags}
+  %make_build
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
-%if 0%{?make_install:1}
 %make_install
-%else
-# Retain this line, with trailing #, to work around an overly eager spec-cleaner
-make DESTDIR=%{buildroot} install %{?_smp_mflags} #
-%endif
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 install -Dpm 0755 %{SOURCE4} %{buildroot}%{_bindir}/xznew
@@ -123,12 +118,10 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %if 0%{?lang_package:1}
 %files lang -f %{name}.lang
-%defattr(-, root, root)
 %{_mandir}/de/man1/*.1%{ext_man}
 %endif
 
 %files
-%defattr(-, root, root)
 %license COPYING COPYING.GPLv2
 %{_docdir}/%{name}
 %{_bindir}/lzcat
@@ -184,11 +177,9 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %endif
 
 %files -n liblzma5
-%defattr(-, root, root)
 %{_libdir}/liblzma.so.5*
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/lzma.h
 %dir %{_includedir}/lzma/
 %{_includedir}/lzma/*
@@ -196,7 +187,6 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_libdir}/pkgconfig/liblzma.pc
 
 %files static-devel
-%defattr(-, root, root)
 %{_libdir}/liblzma.a
 
 %changelog
