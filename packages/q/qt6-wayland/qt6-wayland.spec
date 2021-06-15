@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-wayland
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -95,13 +95,13 @@ Summary:        Qt 6 Wayland QML files and plugins
 QML files and plugins from the Qt 6 Wayland module
 
 %package -n libQt6WaylandClient6
-Summary:        Qt6 WaylandClient library
+Summary:        Qt 6 WaylandClient library
 
 %description -n libQt6WaylandClient6
-The Qt6 WaylandClient library.
+The Qt 6 WaylandClient library.
 
 %package -n qt6-waylandclient-devel
-Summary:        Development files for the Qt6 WaylandClient library
+Summary:        Development files for the Qt 6 WaylandClient library
 Requires:       libQt6WaylandClient6 = %{version}
 # qtwaylandscanner is required
 Requires:       qt6-wayland = %{version}
@@ -110,7 +110,7 @@ Requires:       qt6-wayland = %{version}
 Development files for the Qt6 WaylandClient library.
 
 %package -n qt6-waylandclient-private-devel
-Summary:        Non-ABI stable API for the Qt6 WaylandClient library
+Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
 Requires:       cmake(Qt6WaylandClient) = %{real_version}
 
 %description -n qt6-waylandclient-private-devel
@@ -118,10 +118,10 @@ This package provides private headers of libQt6WaylandClient that do not have
 any ABI or API guarantees.
 
 %package -n libQt6WaylandCompositor6
-Summary:        Qt6 WaylandCompositor library
+Summary:        Qt 6 WaylandCompositor library
 
 %description -n libQt6WaylandCompositor6
-The Qt6 WaylandCompositor library.
+The Qt 6 WaylandCompositor library.
 
 %package -n qt6-waylandcompositor-devel
 Summary:        Development files for the Qt6 WaylandCompositor library
