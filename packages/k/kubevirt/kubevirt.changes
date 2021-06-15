@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  9 07:49:45 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use registry.suse.com as the default fallback for sle
+- Rename macro registry_path to kubevirt_registry_path
+- Switch to golang 1.16
+- Drop 0001-Don-t-build-virtctl-for-darwin-and-windows.patch
+- Drop --skipj2 arg for build-manifests.sh
+- Update to version 0.42.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.42.1
+
+-------------------------------------------------------------------
 Fri Jun  4 11:19:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Also specify the registry in kubevirt_containers_meta
