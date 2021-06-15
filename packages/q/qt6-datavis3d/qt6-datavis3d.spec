@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-datavis3d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 data visualization framework 
 License:        GPL-3.0-or-later
