@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.9
+%define patchversion 5.12.10
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.12.9
+Version:        5.12.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf17eb01
+Release:        <RELEASE>.gb92eaf7
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
+Provides:       %name-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

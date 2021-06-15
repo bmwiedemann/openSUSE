@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.9
+%define patchversion 5.12.10
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.12.9
+Version:        5.12.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf17eb01
+Release:        <RELEASE>.gb92eaf7
 %else
 Release:        0
 %endif
@@ -99,6 +99,8 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  dwarves >= 1.21
 # for objtool
 BuildRequires:  libelf-devel
+# required for 50-check-kernel-build-id rpm check
+BuildRequires:  elfutils
 Provides:       %name = %version-%source_rel
 # bnc#901925
 Provides:       %name-%version-%source_rel
@@ -179,10 +181,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
-Provides:       kernel-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
+Provides:       kernel-%build_flavor-base-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
+Provides:       kernel-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
 # END COMMON DEPS
-Provides:       %name-srchash-f17eb01161845e938845a4d96c1b159c5b7e2368
+Provides:       %name-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -935,10 +937,17 @@ if [ %CONFIG_MODULES = y ]; then
                 strip "$f"
             esac
         done
+
     # Recreate the generated Makefile with correct path
-    sh ../scripts/mkmakefile ../../../%{basename:%src_install_dir} \
-        %rpm_install_dir/%cpu_arch_flavor \
-        $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
+    #
+    # Linux 5.13 no longer has mkmakefile and the generated makefile only depends on
+    # relative location of source and binary directories which is preserved.
+    # No need to recreate.
+    if [ -f ../scripts/mkmakefile ] ; then
+        sh ../scripts/mkmakefile ../../../%{basename:%src_install_dir} \
+            %rpm_install_dir/%cpu_arch_flavor \
+            $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
+    fi
 fi
 
 rm -rf %{buildroot}/lib/firmware
