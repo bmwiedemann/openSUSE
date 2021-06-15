@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -448,7 +448,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files -n qt6-3dcore-devel
 %dir %{_qt6_cmakedir}/Qt6
-%{_qt6_cmakedir}/Qt6/FindWrapAssimp.cmake
+%{_qt6_cmakedir}/Qt6/FindWrapQt3DAssimp.cmake
 %{_qt6_cmakedir}/Qt63DCore/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/Qt3DTestsConfig.cmake
 %{_qt6_descriptionsdir}/3DCore.json
