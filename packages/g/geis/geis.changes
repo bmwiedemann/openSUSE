@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 05:55:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change geisview's __init__.py shebang to be python3.
+- Use %license macro 
+
+-------------------------------------------------------------------
 Fri Jun 17 12:13:46 UTC 2016 - jengelh@inai.de
 
 - Remove pointless pkg-config require; it already exist through

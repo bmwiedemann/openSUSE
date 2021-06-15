@@ -1,7 +1,7 @@
 #
 # spec file for package geis
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           geis
 Version:        2.2.17
 Release:        0
 Summary:        Gesture engine interface and support
-License:        LGPL-3.0 and GPL-3.0
+License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          System/GUI/Other
-Url:            https://launchpad.net/geis
+URL:            https://launchpad.net/geis
 Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.xz
 Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -105,6 +105,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %suse_update_desktop_file -G "Geis Viewer" geisview Utility DesktopSettings
+sed -ie 's/python$/python3/' %{buildroot}%{python3_sitelib}/geisview/__init__.py
 chmod a+x %{buildroot}%{python3_sitelib}/geisview/__init__.py
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -114,7 +115,8 @@ chmod a+x %{buildroot}%{python3_sitelib}/geisview/__init__.py
 
 %files tools
 %defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.GPL README
+%doc AUTHORS README
+%license COPYING COPYING.GPL
 %{_bindir}/geistest
 %{_bindir}/geisview
 %{_bindir}/pygeis
@@ -125,7 +127,8 @@ chmod a+x %{buildroot}%{python3_sitelib}/geisview/__init__.py
 
 %files -n %{soname}%{sover}
 %defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.GPL README
+%doc AUTHORS README
+%license COPYING COPYING.GPL
 %{_libdir}/libgeis.so.%{sover}*
 
 %files -n python3-geis
