@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 10 12:02:14 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- To make update of package man work with its new upstream timer
+  and service units both called man-db enable also man-db.timer
+
+-------------------------------------------------------------------
 Thu May 27 15:40:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - When installing the systemd-presets-common-SUSE package for the
