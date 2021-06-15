@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core
-Version:        1.14.0b1
+Version:        1.15.0
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
