@@ -121,4 +121,18 @@
 - Update Requires from setup.py (forwarded request 861081 from glaubitz)</comment>
     <requestid>861086</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>abb0bad9a1dcc432720d42bf4b31caba</srcmd5>
+    <version>8.0.0.0</version>
+    <time>1623767832</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 8.0.0.0 to ensure
+  proper upgrade from previous version 8.0.0b1
+- Update Requires from setup.py (forwarded request 898330 from glaubitz)</comment>
+    <requestid>898359</requestid>
+  </revision>
 </revisionlist>
