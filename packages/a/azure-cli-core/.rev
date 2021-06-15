@@ -234,4 +234,12 @@
 - Update Requires from setup.py</comment>
     <requestid>892382</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>138c112acc5d8d88f6d5811974023a2e</srcmd5>
+    <version>2.24.2</version>
+    <time>1623767856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899912</requestid>
+  </revision>
 </revisionlist>
