@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 10 16:58:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add -n (name) option to %lua_provides
+- Use lua instead of perl for %lua_version_nodots
+
+-------------------------------------------------------------------
 Fri Apr  9 10:03:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add %lua_version_nodots to equal package naming
