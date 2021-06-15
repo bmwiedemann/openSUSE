@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quicktimeline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-or-later
@@ -51,11 +51,15 @@ The Qt Quick Timeline module enables keyframe-based animations and
 parameterization. This module is directly supported by Qt Design Studio and
 Qt Quick Designer, with a timeline editor to create keyframe-based animations.
 
+%if !%{qt6_docs_flavor}
+
 %package imports
 Summary:        Qt 6 QuickTimeline QML files and plugins
 
 %description imports
 QML files and plugins from the Qt 6 QuickTimeline module
+
+%endif
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
