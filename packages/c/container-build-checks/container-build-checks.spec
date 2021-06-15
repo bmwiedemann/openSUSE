@@ -27,8 +27,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE.conf
 Source2:        SUSE.conf
 Requires:       %{name}-vendor
-Requires:       gawk
-Requires:       jq
 BuildArch:      noarch
 
 %package vendor-openSUSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  1 09:06:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop obsolete Requires: grep jq
+
+-------------------------------------------------------------------
 Fri May 28 13:57:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1622209785.4616f4f:
