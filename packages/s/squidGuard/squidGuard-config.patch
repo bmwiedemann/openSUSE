@@ -1,8 +1,7 @@
-Index: src/sg.h.in
-===================================================================
---- src/sg.h.in.orig
-+++ src/sg.h.in
-@@ -79,9 +79,9 @@ int tolower();
+diff -Nur maintain_squidguard-upstream-1.6.0/src/sg.h.in new/src/sg.h.in
+--- maintain_squidguard-upstream-1.6.0/src/sg.h.in	2019-02-02 18:16:21.000000000 +0100
++++ new/src/sg.h.in	2021-04-28 15:46:46.404990723 +0200
+@@ -80,9 +80,9 @@
  #define WARNING_LOGFILE "squidGuard.log"
  #define ERROR_LOGFILE   "squidGuard.error"
  

@@ -1,0 +1,12 @@
+diff -Nur maintain_squidguard-upstream-1.6.0/configure.ac new/configure.ac
+--- maintain_squidguard-upstream-1.6.0/configure.ac	2019-02-02 18:16:21.000000000 +0100
++++ new/configure.ac	2021-04-28 15:16:25.219755738 +0200
+@@ -297,7 +297,7 @@
+     fi
+   else
+ 
+-    for i in lib lib/mysql; do
++    for i in lib64 lib64/mysql lib lib/mysql; do
+       str="$MYSQL_DIR/$i/libmysqlclient.*"
+       for j in `echo $str`; do
+         if test -r $j; then

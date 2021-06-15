@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Apr 28 12:51:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to debian maintained version 1.6.0:
+  * Add support for IPv6 protocol (as in squid 3.x)
+  * Bugfix: Convert special characters to fix XSS security problem.
+  * Move text files to UTF-8 format.
+  * Fix for missing content after percent sign
+  * Fix for working (only) with squid 3.4 and higher.
+- Update to debian maintained version 1.5.1
+  * Updated links in documentation and sample files.
+  * Use newer OpenLDAP search
+  * Enable 'ldap deprecated' flag.
+- Update to debian maintained version 1.5.0
+  * Fixed a problem with Berkeley DB 5.x
+  * Fixed inconsistent blocking.
+  * Added Russian translation to squidGuard.cgi.in
+  * Added a feature to send log messages to syslog
+  * Anonymized passwords (for connecting to the ldap or mysql 
+    server) written to logfiles when squidGuard is starting.
+  * Added patch to check IP addresses against LDAP.
+  * Added patch to allow quoted strings in the configuration file
+  * Fixed a problem with regular expressions.
+  * Added patch to enable blocking against DNS based blacklists
+- Update to debian maintained version 1.4.1
+  * Fix of a bypass problem with URLs which length is close to
+    the limit defined by MAX_BUF in squidGuard and MAX_URL in
+    squid. Increasing the buffer limit to be higher than the one
+    defined in MAX_URL solves the issue.
+  * Fix of another bypass problem, which is related to the
+    definition of these buffer limits.
+  * Fix of one buffer overflow problem in sgLog.c when overlong
+    URLs are requested
+  * Fixes CVE-2009-3700, CVE-2009-3826 and CVE-2015-8936
+- Refreshed squidGuard-config.patch
+- Refreshed default_config_pathfixes.patch
+- Refreshed and renamed squidGuard-1.4-mysql.patch
+  to squidGuard-mysql.patch
+- Dropped upstream fixed patches
+  * xss_fix_02_2015.patch
+  * squidGuard-CVE-2009-3826.patch
+  * squidGuard-CVE-2009-3700.patch
+  * squidGuard-1.4_upgrade.patch
+  * squidGuard-Makefile.patch
+  * type_fixes.patch
+
+-------------------------------------------------------------------
 Fri Jun 19 05:21:26 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

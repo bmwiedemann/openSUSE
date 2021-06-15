@@ -1,17 +1,18 @@
-Index: squidGuard-1.4/samples/sample.conf.in
-===================================================================
---- squidGuard-1.4.orig/samples/sample.conf.in
-+++ squidGuard-1.4/samples/sample.conf.in
-@@ -53,9 +53,9 @@ dest local {
+diff -Nur maintain_squidguard-upstream-1.6.0/samples/sample.conf.in new/samples/sample.conf.in
+--- maintain_squidguard-upstream-1.6.0/samples/sample.conf.in	2019-02-02 18:16:21.000000000 +0100
++++ new/samples/sample.conf.in	2021-04-28 15:51:31.891677192 +0200
+@@ -53,10 +53,10 @@
  }
  
  dest adult {
 -	domainlist	dest/adult/domains
 -	urllist		dest/adult/urls
 -	expressionlist	dest/adult/expressions
+-	redirect http://admin.foo.bar.de/cgi-bin/blocked.cgi?clientaddr=%a&clientname=%n&clientuser=%i&clientgroup=%s&targetgroup=%t&url=%u
 +	domainlist	blacklist/domains
 +	urllist		blacklist/urls
 +	expressionlist	blacklist/expressions
- 	redirect 	http://admin.foo.bar.de/cgi/blocked?clientaddr=%a+clientname=%n+clientuser=%i+clientgroup=%s+targetgroup=%t+url=%u
++	redirect	http://admin.foo.bar.de/cgi-bin/blocked.cgi?clientaddr=%a&clientname=%n&clientuser=%i&clientgroup=%s&targetgroup=%t&url=%u
  }
+ 
  
