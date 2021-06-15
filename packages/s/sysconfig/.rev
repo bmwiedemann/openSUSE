@@ -1718,4 +1718,15 @@ also obs request: #660553
     <comment></comment>
     <requestid>853292</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>d82c7665f04900aaef603973f97761eb</srcmd5>
+    <version>0.85.7</version>
+    <time>1623767802</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.7
+- spec: Drop hard dependency on /sbin/ifup
+- spec: Suggest instead of recommend wicked-service
+- spec: Mention that the .spec file is in git as well</comment>
+    <requestid>898471</requestid>
+  </revision>
 </revisionlist>

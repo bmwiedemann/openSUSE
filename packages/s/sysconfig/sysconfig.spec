@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,16 @@
 #
 
 
+#
+# Upstream First - openSUSE Build Service Policy:
+#
+# Never add any patches to this package without the upstream commit id in
+# the patch. Any patches added here without a very good reason to make an
+# exception will be silently removed with the next version update.
+# This .spec file is tracked in git as well.
+# Please use pull requests at https://github.com/openSUSE/sysconfig/ instead.
+#
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -28,30 +38,21 @@ BuildRequires:  pkgconfig(systemd)
 %define         udevdir	/lib/udev
 %endif
 Name:           sysconfig
-Version:        0.85.6
+Version:        0.85.7
 Release:        0
 Summary:        The sysconfig scheme for traditional network scripts
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/openSUSE/sysconfig
 Source:         %{name}-%{version}.tar.bz2
-#
-# Upstream First - openSUSE Build Service Policy:
-#
-# Never add any patches to this package without the upstream commit id in
-# the patch. Any patches added here without a very good reason to make an
-# exception will be silently removed with the next version update.
-# Please use pull requests at https://github.com/openSUSE/sysconfig/ instead.
-#
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-Requires:       /sbin/ifup
 Requires:       /sbin/netconfig
 Requires:       (sysvinit(network) or service(network))
 Requires(post): %fillup_prereq
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/chmod /usr/bin/mkdir /usr/bin/touch
-Recommends:     wicked-service
+Suggests:       wicked-service
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

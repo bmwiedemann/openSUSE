@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  8 14:27:32 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.85.7
+
+-------------------------------------------------------------------
+Mon Apr 26 11:32:24 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- spec: Drop hard dependency on /sbin/ifup
+- spec: Suggest instead of recommend wicked-service
+- spec: Mention that the .spec file is in git as well
+
+-------------------------------------------------------------------
 Fri Nov 27 13:27:38 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Also support service(network) provides
