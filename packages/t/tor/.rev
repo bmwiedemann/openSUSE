@@ -862,4 +862,16 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>893868</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>b21310524e3aaf85371b0b9a0164744b</srcmd5>
+    <version>0.4.5.9</version>
+    <time>1623767866</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.5.9
+  * Don't allow relays to spoof RELAY_END or RELAY_RESOLVED cell (CVE-2021-34548, boo#1187322)
+  * Detect more failure conditions from the OpenSSL RNG code (boo#1187323)
+  * Resist a hashtable-based CPU denial-of-service attack against relays (CVE-2021-34549, boo#1187324)
+  * Fix an out-of-bounds memory access in v3 onion service descriptor parsing (CVE-2021-34550, boo#1187325)</comment>
+    <requestid>900011</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 14 18:06:34 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.5.9
+  * Don't allow relays to spoof RELAY_END or RELAY_RESOLVED cell (CVE-2021-34548, boo#1187322)
+  * Detect more failure conditions from the OpenSSL RNG code (boo#1187323)
+  * Resist a hashtable-based CPU denial-of-service attack against relays (CVE-2021-34549, boo#1187324)
+  * Fix an out-of-bounds memory access in v3 onion service descriptor parsing (CVE-2021-34550, boo#1187325)
+
+-------------------------------------------------------------------
 Tue May 11 01:54:10 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.5.8
