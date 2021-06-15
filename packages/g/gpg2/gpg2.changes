@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  7 20:56:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Remove the "files-are-digests" option from the openSUSE package.
+  This feature was not upstream and only used in the OBS signing
+  daemon. The recommended upstream feature for separating the data
+  to be signed from the private keys is gpg agent forwarding,
+  available from 2.1. Drop gnupg-2.2.8-files-are-digests.patch
+
+-------------------------------------------------------------------
 Tue Jan 12 22:45:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.2.27:

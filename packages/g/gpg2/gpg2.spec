@@ -30,7 +30,6 @@ Source3:        %{name}.keyring
 Source4:        scdaemon.udev
 Source99:       %{name}.changes
 Patch4:         gnupg-2.0.9-langinfo.patch
-Patch5:         gnupg-2.2.8-files-are-digests.patch
 Patch6:         gnupg-dont-fail-with-seahorse-agent.patch
 Patch8:         gnupg-set_umask_before_open_outfile.patch
 Patch9:         gnupg-detect_FIPS_mode.patch
@@ -65,8 +64,6 @@ Recommends:     dirmngr = %{version}
 Provides:       gnupg = %{version}
 Provides:       gpg = 1.4.9
 Provides:       newpg
-# special feature needed for OBS signd
-Provides:       gpg2_signd_support
 Obsoletes:      gpg < 1.4.9
 
 %description
@@ -94,7 +91,6 @@ gpgsm, or via the gpg-connect-agent tool.
 %setup -q -n gnupg-%{version}
 %patch1124847 -p1
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch8 -p1
 %patch9 -p1
