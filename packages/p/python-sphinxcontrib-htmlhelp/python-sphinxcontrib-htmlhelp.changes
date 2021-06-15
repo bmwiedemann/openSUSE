@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  6 12:12:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop python-3.5 support
+  * Remove deprecated method: ``HTMLHelpBuilder.open_file()``
+  * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5
+
+-------------------------------------------------------------------
 Fri Feb 28 21:59:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.3:

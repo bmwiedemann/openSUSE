@@ -16,4 +16,16 @@
   * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5</comment>
     <requestid>780398</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc7a6935ee2d4503f99fb1b9f46c3d3e</srcmd5>
+    <version>2.0.0</version>
+    <time>1623767807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Drop python-3.5 support
+  * Remove deprecated method: ``HTMLHelpBuilder.open_file()``
+  * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5
+</comment>
+    <requestid>899358</requestid>
+  </revision>
 </revisionlist>
