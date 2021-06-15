@@ -121,4 +121,15 @@
     <comment></comment>
     <requestid>892378</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1a5120b0db0bd221167578e280ee9d53</srcmd5>
+    <version>18.0.0</version>
+    <time>1623767852</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 898818 from glaubitz)</comment>
+    <requestid>898820</requestid>
+  </revision>
 </revisionlist>
