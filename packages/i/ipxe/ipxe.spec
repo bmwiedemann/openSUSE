@@ -17,7 +17,7 @@
 
 
 Name:           ipxe
-Version:        1.20.1+git20210604.065dce8d
+Version:        1.20.1+git20210614.bf4ccd42
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
