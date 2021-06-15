@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 10 13:24:39 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- mq-notify-use-after-free.patch: Use __pthread_attr_copy in mq_notify
+  (CVE-2021-33574, bsc#1186489, BZ #27896)
+- Drop glibc-usrmerge-bootstrap-helper package
+
+-------------------------------------------------------------------
 Thu May 27 18:05:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - tst-cpu-features-amx.patch: x86: tst-cpu-features-supports.c: Update AMX

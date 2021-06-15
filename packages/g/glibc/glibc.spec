@@ -180,9 +180,6 @@ Provides:       ld-linux.so.3(GLIBC_2.4)
 Requires(pre):  filesystem
 Recommends:     glibc-extra
 Provides:       rtld(GNU_HASH)
-%if %{with usrmerged}
-Provides:       /sbin/ldconfig
-%endif
 %endif
 %if %{build_utils}
 Requires:       glibc = %{version}
@@ -263,6 +260,8 @@ Patch1006:      nptl-db-libpthread-load-order.patch
 Patch1007:      rawmemchr-warning.patch
 # PATCH-FIX-UPSTREAM: x86: tst-cpu-features-supports.c: Update AMX check
 Patch1008:      tst-cpu-features-amx.patch
+# PATCH-FIX-UPSTREAM: Use __pthread_attr_copy in mq_notify (CVE-2021-33574, BZ #27896)
+Patch1009:      mq-notify-use-after-free.patch
 
 ###
 # Patches awaiting upstream approval
@@ -447,15 +446,6 @@ are not essential but recommend to use.
 
 makedb: A program to create a database for nss
 
-%package usrmerge-bootstrap-helper
-Summary:        Internal usrmerge bootstrap helper
-License:        LGPL-2.1-or-later
-Requires:       glibc = %{version}
-Requires:       this-is-only-for-build-envs
-
-%description usrmerge-bootstrap-helper
-Internal usrmerge bootstrap helper
-
 %lang_package
 %endif
 
@@ -489,6 +479,7 @@ Internal usrmerge bootstrap helper
 %patch1006 -p1
 %patch1007 -p1
 %patch1008 -p1
+%patch1009 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -956,20 +947,6 @@ rm %{buildroot}/%{rtldlib}
 %endif
 rm %{buildroot}/sbin
 
-%if %{build_main}
-mkdir -p %{buildroot}/%{_lib}
-cp %{buildroot}%{slibdir}/libc.so.6 %{buildroot}/%{_lib}
-mkdir -p %{buildroot}/%{rtldlib}
-cp %{buildroot}%{rtlddir}/%{rtld_name} %{buildroot}/%{rtldlib}
-mkdir -p %{buildroot}/sbin
-cp %{buildroot}%{rootsbindir}/ldconfig %{buildroot}/sbin
-strip %{buildroot}/%{_lib}/libc.so.6 %{buildroot}/%{rtldlib}/%{rtld_name}
-strip %{buildroot}/sbin/ldconfig
-%ifarch riscv64
-ln -s . %{buildroot}/%{_lib}/lp64d
-%endif
-%endif
-
 %endif
 
 %endif
@@ -1290,17 +1267,6 @@ exit 0
 /var/lib/misc/Makefile
 
 %files lang -f libc.lang
-%endif
-
-%if %{with usrmerged}
-%files usrmerge-bootstrap-helper
-%defattr(-,root,root)
-/sbin/ldconfig
-/%{_lib}/libc.so.6
-/%{rtldlib}/%{rtld_name}
-%ifarch riscv64
-/%{_lib}/lp64d
-%endif
 %endif
 
 %endif
