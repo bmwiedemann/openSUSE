@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:04:48 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added 'to_target' variable which will determine whether the
+  configuration should be written to the target system at the end
+  of the installation or not (bsc#1185016).
+- Replace novell urls by SUSE ones (bsc#1100366)
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
