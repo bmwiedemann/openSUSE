@@ -19,13 +19,13 @@
 
 %define libver 1
 Name:           gsettings-qt
-Version:        0.1.20160329
+Version:        0.2
 Release:        0
 Summary:        QT bindings for GSettings
 License:        GPL-3.0+
 Group:          Development/Libraries/X11
-Url:            https://launchpad.net/gsettings-qt
-Source0:        %{name}-%{version}.tar.bz2
+Url:            https://gitlab.com/ubports/core/gsettings-qt
+Source0:        %{url}/-/archive/v%{version}/gsettings-qt-v%{version}.tar.bz2
 Patch0:         dependencies.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(Qt5Core)
@@ -56,7 +56,7 @@ This package is Libraries for gsettings-qt.
 %package devel
 Summary:        Libraries for gsettings-qt
 Group:          Development/Libraries/X11
-Requires:       libgsettings-qt1
+Requires:       libgsettings-qt1 = %{version}
 
 %description devel
 Qt/QML bindings for GSettings.
@@ -65,40 +65,34 @@ This package contains the header files and developer
 docs for gsettings-qt.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 %patch0 -p1
 
 %build
-
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
         PREFIX=%{_prefix} \
         LIB_INSTALL_DIR=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install
-
 # Remove useless files
 rm -rf %{buildroot}/usr/tests
 
 %post -n libgsettings-qt1 -p /sbin/ldconfig
-
 %postun -n libgsettings-qt1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %dir %{_libdir}/qt5/qml/GSettings.1.0
 %{_libdir}/qt5/qml/GSettings.1.0/libGSettingsQmlPlugin.so
 %{_libdir}/qt5/qml/GSettings.1.0/plugins.qmltypes
 %{_libdir}/qt5/qml/GSettings.1.0/qmldir
 
 %files -n libgsettings-qt1
-%defattr(-,root,root,-)
 %{_libdir}/libgsettings-qt.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/pkgconfig/gsettings-qt.pc
 %dir %{_includedir}/qt5/QGSettings
 %{_includedir}/qt5/QGSettings/QGSettings

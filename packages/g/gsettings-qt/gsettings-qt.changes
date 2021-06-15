@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  8 06:33:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.2
+  * Now maintained by UBPorts
+  * No upstream changelog provided
+
+-------------------------------------------------------------------
 Sun Nov  5 12:19:07 UTC 2017 - schwab@linux-m68k.org
 
 - dependencies.patch: force ordered build of subdirs
