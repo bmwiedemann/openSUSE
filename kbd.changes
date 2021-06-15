@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:08:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the installed license file.
+  COPYING is a symlink to LICENSE. Let's use this file directly.
+
+-------------------------------------------------------------------
 Fri Dec 18 07:29:33 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 2.4.0:

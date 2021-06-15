@@ -402,9 +402,9 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 
 %files -f %{name}.lang
 #config(noreplace) /etc/sysconfig/console
-%license COPYING
+%license LICENSE
 %doc %{_defaultdocdir}/kbd
-#doc COPYING CHANGES README CREDITS
+#doc CHANGES README CREDITS
 %{_fillupdir}/sysconfig.console
 %{_fillupdir}/sysconfig.keyboard
 %{kbd}
