@@ -70,4 +70,17 @@
     CHANGELOG.md file provided with this package (forwarded request 890746 from glaubitz)</comment>
     <requestid>890749</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d6266f1afd470468cf5ec952127998e</srcmd5>
+    <version>1.6.0.0</version>
+    <time>1623767837</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.6.0.0 to ensure
+  proper upgrade from previous version 1.6.0b3 (forwarded request 898311 from glaubitz)</comment>
+    <requestid>898411</requestid>
+  </revision>
 </revisionlist>

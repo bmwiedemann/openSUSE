@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.6.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-identity
-Version:        1.6.0b3
+Version:        1.6.0.0
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-identity/azure-identity-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-identity/azure-identity-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -53,10 +55,10 @@ libraries. It provides credentials Azure SDK clients can use to authenticate
 their requests.
 
 %prep
-%setup -q -n azure-identity-%{version}
+%setup -q -n azure-identity-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-identity-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-identity-%{realversion}
 %python_build
 
 %install
