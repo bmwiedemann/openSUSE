@@ -1,4 +1,35 @@
 --------------------------------------------------------------------
+Thu Jun 10 10:22:52 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#813
+- use some c++17 features
+- minor code improvements
+- 4.4.14
+
+--------------------------------------------------------------------
+Tue Jun 8 14:13:52 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#812
+- override lvm config setting causing invalid JSON (bsc#1186780)
+- 4.4.13
+
+--------------------------------------------------------------------
+Tue Jun 8 12:17:52 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#811
+- minimise dependencies between mount actions
+- 4.4.12
+
+--------------------------------------------------------------------
+Fri Jun 4 14:37:03 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#810
+- added flag rootprefixed
+- added unit test
+- added dependencies between unmount actions
+- added integration test
+
+--------------------------------------------------------------------
 Mon May 31 11:30:21 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#809
