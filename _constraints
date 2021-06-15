@@ -1,10 +1,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">10</size>
+      <size unit="G">12</size>
     </disk>
     <physicalmemory>
-      <size unit="G">8</size>
+      <size unit="G">9</size>
     </physicalmemory>
   </hardware>
   <overwrite>
