@@ -80,4 +80,16 @@
 - Update Requires from setup.py (forwarded request 864353 from glaubitz)</comment>
     <requestid>864408</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fcdca479cb0a3da3c897e02ec5685c7d</srcmd5>
+    <version>9.0.0</version>
+    <time>1623767839</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 898437 from glaubitz)</comment>
+    <requestid>898441</requestid>
+  </revision>
 </revisionlist>
