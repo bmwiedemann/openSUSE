@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  8 05:54:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.1:
+  * https://www.qt.io/blog/qt-6.1.1-released
+
+-------------------------------------------------------------------
+Sat Jun  5 15:50:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the minimum disk size. Leap 15.3 needs more than 13G.
+- Also require at least 4 cores.
+
+-------------------------------------------------------------------
 Thu May  6 17:10:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.1.0:

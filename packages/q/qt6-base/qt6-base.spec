@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
@@ -692,6 +692,7 @@ EOF
 %ifnarch ppc64
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 %endif
+    -DQT_CREATE_VERSIONED_HARD_LINK=OFF \
     -DQT_FEATURE_journald=ON \
     -DQT_FEATURE_libproxy=ON \
     -DQT_FEATURE_openssl_linked=ON \
@@ -711,13 +712,13 @@ EOF
 
 %if !%{qt6_docs_flavor}
 
+# 'BuildFlags: useccache' in the repo prjconf 'taints' qt.toolchain.cmake
+sed -i 's#/var/lib/build/ccache#/usr#g' %{buildroot}%{_qt6_cmakedir}/Qt6/qt.toolchain.cmake
+
 # Empty folders provided by libQt6Core6 and qt6-core-common-devel
 mkdir -p %{buildroot}%{_qt6_sysconfdir}
 mkdir -p %{buildroot}%{_qt6_testsdir}
 mkdir -p %{buildroot}%{_qt6_translationsdir}
-
-# 9f444ce53 creates a useless qmake6 hardlink (also see QTBUG-89170)
-rm %{buildroot}%{_qt6_bindir}/qmake6
 
 %{qt6_link_executables}
 

@@ -2,10 +2,11 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">10</size>
+      <size unit="G">15</size>
     </disk>
     <memory>
       <size unit="M">3500</size>
     </memory>
+    <processors>4</processors>
   </hardware>
-</constraints>     
+</constraints>
