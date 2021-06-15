@@ -1,7 +1,7 @@
 #
 # spec file for package dealii
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.2.0
+%define sover 9.3.0
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -41,6 +41,11 @@
 %if "%{flavor}" == "openmpi3"
 %global mpi_flavor openmpi
 %define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%global mpi_flavor openmpi
+%define mpi_vers 4
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
@@ -79,16 +84,12 @@
 %endif
 
 Name:           %{pname}
-Version:        9.2.0
+Version:        9.3.0
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
 URL:            https://www.dealii.org/
 Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dealii-build-with-muparser-2.3.2.patch gh#dealii/dealii#10548 badshah400@gmail.com -- Fix muparser 2.3.2 version detection
-Patch0:         dealii-build-with-muparser-2.3.2.patch
-# PATCH-FIX-UPSTREAM dealii-boost-1_75.patch gh#dealii/dealii#11379 badshah400@gmail.com Fix build with boost 1.75; patch taken from upstream git
-Patch1:         dealii-boost-1_75.patch
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
@@ -222,7 +223,7 @@ sed -i "1{/\/usr\/bin\/env/d}" %{buildroot}%{my_datadir}/deal.II/scripts/indent.
 
 %files -n deal_II%{?my_suffix}-devel
 %license LICENSE.md
-%doc AUTHORS README.md CONTRIBUTING.md
+%doc AUTHORS.md README.md CONTRIBUTING.md
 %doc %{_docdir}/%{name}
 %{my_incdir}/deal.II/
 %{my_libdir}/*.so
