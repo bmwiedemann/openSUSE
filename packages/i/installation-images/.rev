@@ -1098,4 +1098,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>896735</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>94a9242c1e9abad7527c7e212f6fb00f</srcmd5>
+    <version>17.7</version>
+    <time>1623767827</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>899667</requestid>
+  </revision>
 </revisionlist>

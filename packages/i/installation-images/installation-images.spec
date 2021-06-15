@@ -536,6 +536,7 @@ BuildRequires:  xz
 BuildRequires:  yast2-devtools
 BuildRequires:  yast2-schema
 BuildRequires:  yast2-trans-allpacks
+BuildRequires:  yast2-widget-demo
 %if 0%{?with_storage_ng}
 BuildRequires:  libstorage-ng-lang
 BuildRequires:  yast2-storage-ng
@@ -673,7 +674,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.6
+Version:        17.7
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
