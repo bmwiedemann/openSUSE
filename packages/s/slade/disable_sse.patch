@@ -1,5 +1,5 @@
---- src/CMakeLists.txt.orig	2020-04-29 12:44:22.087112317 +0000
-+++ src/CMakeLists.txt	2020-04-29 12:44:38.886604020 +0000
+--- SLADE-3.1.13/src/CMakeLists.txt.orig	2021-06-15 14:13:13.473287606 +0200
++++ SLADE-3.1.13/src/CMakeLists.txt	2021-06-15 14:13:28.233451010 +0200
 @@ -159,9 +159,6 @@ if(APPLE)
  	set_source_files_properties(${OSX_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
  endif(APPLE)
@@ -7,6 +7,6 @@
 -# enable SSE instructions for dumb library
 -set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_USE_SSE -msse")
 -
- # External libraries are compiled separately to enable unity builds
- add_subdirectory(External)
- 
+ if(USE_SANITIZER)
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+ 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")

@@ -60,7 +60,7 @@ from/to other generic formats such as PNG.
 %setup -q -n SLADE-%version
 %patch -P 1 -P 2 -P 3 -P 4 -p1
 %ifnarch %ix86 x86_64
-%patch10 -p0
+%patch10 -p1
 %endif
 %if 0%{?suse_version} >= 1550
 %patch -P 11 -p1

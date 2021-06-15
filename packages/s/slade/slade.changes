@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 12:14:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Refresh patch to fix build on aarch64:
+  * disable_sse.patch
+
+-------------------------------------------------------------------
 Tue Jun  1 11:00:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.13
