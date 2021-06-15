@@ -1,0 +1,42 @@
+From 795c62cb023886d39f1ee15977dc3194e01da57f Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 4 Jun 2021 17:02:31 +0800
+Subject: [PATCH] shim: don't fail on the odd LoadOptions length
+
+Some firmware feeds the LoadOptions with an odd length when booting from
+an USB device(*). We should only skip this kind of LoadOptions, not fail
+it, or the user won't be able to boot the system from USB or CD-ROM.
+
+(*) https://bugzilla.suse.com/show_bug.cgi?id=1185232#c62
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ shim.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index c5cfbb83..dd563cf6 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1411,9 +1411,16 @@ EFI_STATUS set_second_stage (EFI_HANDLE image_handle)
+ 		return efi_status;
+ 	}
+ 
+-	/* Sanity check since we make several assumptions about the length */
++	/* Sanity check since we make several assumptions about the length
++	 * Some firmware feeds the following load option when booting from
++	 * an USB device:
++	 *
++	 *    0x46 0x4a 0x00 |FJ.|
++	 *
++	 * The string is meaningless for shim and so just ignore it.
++	 * */
+ 	if (li->LoadOptionsSize % 2 != 0)
+-		return EFI_INVALID_PARAMETER;
++		return EFI_SUCCESS;
+ 
+ 	/* So, load options are a giant pain in the ass.  If we're invoked
+ 	 * from the EFI shell, we get something like this:
+-- 
+2.31.1
+

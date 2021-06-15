@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:22:51 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1185232-relax-loadoptions-length-check.patch to
+  ignore the odd LoadOptions length (bsc#1185232)
+
+-------------------------------------------------------------------
+Fri Jun  4 07:02:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: reset def_shim_efi to "shim.efi" if the given
+  file doesn't exist
+
+-------------------------------------------------------------------
 Wed May 19 01:07:43 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - shim-install: instead of assuming "removable" for Azure, remove
@@ -30,7 +42,7 @@ Mon May  3 03:46:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
   to handle ignore_db and user_insecure_mode correctly
-  (bsc#1185441)
+  (bsc#1185441, bsc#1187071)
 
 -------------------------------------------------------------------
 Wed Apr 28 09:28:30 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>

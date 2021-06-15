@@ -28,7 +28,7 @@ def_boot_efi=
 [ ! -r /usr/etc/default/shim ] || . /usr/etc/default/shim
 [ ! -r /etc/default/shim ] || . /etc/default/shim
 
-if [ -z "$def_shim_efi" ] ; then
+if [ -z "$def_shim_efi" -o ! -e ${source_dir}/${def_shim_efi} ] ; then
 	def_shim_efi="shim.efi"
 fi
 
