@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 14 06:05:08 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use registry.suse.com as the default fallback for sle
+- Rename macro registry_path to kubevirt_registry_path
+- Update to version 1.35.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.35.0
+
+-------------------------------------------------------------------
 Fri Jun  4 13:04:46 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add REGISTRY variable
