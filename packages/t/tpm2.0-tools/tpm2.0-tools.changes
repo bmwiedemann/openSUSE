@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 09:36:37 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Disable lto to fix tpm2_checkquote error (boo#1187316)
+- Update service file to point to the correct revision
+
+-------------------------------------------------------------------
 Mon Jun  7 12:50:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire pandoc on ix86 architectures: the haskell

@@ -16,6 +16,7 @@
 #
 
 
+%define _lto_cflags %{nil}
 Name:           tpm2.0-tools
 Version:        5.1
 Release:        0
