@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 10 16:45:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add openmpi4 to the list of multibuild flavors (appropriate
+  definitions were already in spec file).
+
+-------------------------------------------------------------------
 Fri May 28 12:23:15 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - don't own /usr/lib/pkgconfig, already owned by filesystem
