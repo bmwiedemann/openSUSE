@@ -149,4 +149,15 @@
 - Update Requires from setup.py (forwarded request 891052 from glaubitz)</comment>
     <requestid>891060</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>35f4439f76804275330e2d0bdb5cbbcb</srcmd5>
+    <version>18.0.0</version>
+    <time>1623767853</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 898825 from glaubitz)</comment>
+    <requestid>898835</requestid>
+  </revision>
 </revisionlist>
