@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  8 08:28:28 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Export also the https_proxy environment variable when a proxy
+  config is given through linuxrc (bsc#1185016)
+- 4.4.12
+
+-------------------------------------------------------------------
+Mon Jun  7 16:03:30 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Better evaluate the old and new repositories during upgrade,
+  do not preselect new repositories for removal if they
+  accidentally use the same repository as already present in
+  the system (bsc#1185822)
+- 4.4.11
+
+-------------------------------------------------------------------
 Mon May 31 08:43:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Modify IP forwarding network configuration using the defaults

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.10
+Version:        4.4.12
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -85,7 +85,7 @@ Requires:       yast2-packager >= 4.4.2
 # Pkg::ProvidePackage
 Requires:       yast2-pkg-bindings >= 3.1.33
 # Proxy settings for 2nd stage (bnc#764951)
-Requires:       yast2-proxy
+Requires:       yast2-proxy >= 4.4.1
 # for AbortException and handle direct abort
 Requires:       yast2-ruby-bindings >= 4.0.6
 # Systemd default target and services. This version supports
