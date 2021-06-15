@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.20.3
+Version:        0.21.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -41,6 +41,7 @@ BuildRequires:  libpng16-compat-devel
 BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
+BuildRequires:  python3-importlib-resources
 # for 'tic'
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig

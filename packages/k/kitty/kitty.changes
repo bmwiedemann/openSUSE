@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jun 14 07:31:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.1:
+  * Fix a regression in the previous release that could cause a
+    crash when changing layouts and mousing (#3713)
+
+-------------------------------------------------------------------
+Mon Jun 14 07:28:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * Allow reloading the kitty.conf config file by pressing
+    ctrl+shift+f5. (#1292)
+  * Allow clicking URLs to open them without needing to also hold
+    ctrl+shift
+  * Allow remapping all mouse button press/release events to
+    perform arbitrary actions. See details.
+  * Support infinite length ligatures (#3504)
+  * Backward incompatibility: The options to control which
+    modifiers keys to press for various mouse actions have been
+    removed, if you used these options, you will need to replace
+    them with configuration using the new mouse actions framework
+    as they will be ignored. The options were: terminal_select_modifiers,
+    rectangle_select_modifiers and open_url_modifiers.
+  * Add a configurable mouse action (ctrl+alt+triplepress to select
+    from the clicked point to the end of the line. (#3585)
+  * Add the ability to un-scroll the screen to the kitty @
+    scroll-window remote control command (#3604)
+  * A new option, tab_bar_margin_height to add margins around
+    the top and bottom edges of the tab bar (#3247)
+  * Unicode input kitten: Fix a regression in 0.20.0 that broke
+    keyboard handling when the NumLock or CapsLock modifiers were engaged. (#3587)
+  * Fix a regression in 0.20.0 that sent incorrect bytes for the
+    F1-F4 keys in rmkx mode (#3586)
+  * Add a few more special commandline arguments for the launch command.
+    Now all KITTY_PIPE_DATA is also available via command line argument
+    substitution (#3593)
+  * Fix dynamically changing the background color in a window causing
+    rendering artifacts in the tab bar (#3595)
+  * Fix passing STDIN to launched background processes causing them to
+    not inherit environment variables (#3603)
+  * Fix deleting windows that are not the last window via remote control
+    leaving no window focused (#3619)
+  * Add an option kitty @ get-text --add-cursor to also get the current
+    cursor position and state as ANSI escape codes (#3625)
+  * Add an option kitty @ get-text --add-wrap-markers to add line wrap
+    markers to the output (#3633)
+  * Improve rendering of curly underlines on HiDPI screens (#3637)
+  * ssh kitten: Mimic behavior of ssh command line client more closely
+    by executing any command specified on the command line via the users'
+    shell just as ssh does (#3638)
+  * Fix trailing parentheses in URLs not being detected (#3688)
+  * Tab bar: Use a lower contrast color for tab separators (#3666)
+  * Fix a regression that caused using the title command in session
+    files to stop working (#3676)
+  * Fix ligatures not working with the Iosevka font
+    (requires Iosevka >= 7.0.4) (#297)
+  * Remote control: Allow matching tabs by index number in currently
+    active OS Window (#3708)
+  * ssh kitten: Fix non-standard properties in terminfo such as the
+    ones used for true color not being copied (#312)
+
+-------------------------------------------------------------------
 Thu May  6 07:44:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.3:

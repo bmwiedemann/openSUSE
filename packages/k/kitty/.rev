@@ -91,4 +91,41 @@
     closed (#3571)</comment>
     <requestid>890909</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77868f47963abde4929c7999e3be6936</srcmd5>
+    <version>0.21.1</version>
+    <time>1623767861</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.1:
+  * Fix a regression in the previous release that could cause a
+    crash when changing layouts and mousing (#3713)
+
+- Update to 0.21.0:
+  * Allow reloading the kitty.conf config file by pressing
+    ctrl+shift+f5. (#1292)
+  * Allow clicking URLs to open them without needing to also hold
+    ctrl+shift
+  * Allow remapping all mouse button press/release events to
+    perform arbitrary actions. See details.
+  * Support infinite length ligatures (#3504)
+  * Backward incompatibility: The options to control which
+    modifiers keys to press for various mouse actions have been
+    removed, if you used these options, you will need to replace
+    them with configuration using the new mouse actions framework
+    as they will be ignored. The options were: terminal_select_modifiers,
+    rectangle_select_modifiers and open_url_modifiers.
+  * Add a configurable mouse action (ctrl+alt+triplepress to select
+    from the clicked point to the end of the line. (#3585)
+  * Add the ability to un-scroll the screen to the kitty @
+    scroll-window remote control command (#3604)
+  * A new option, tab_bar_margin_height to add margins around
+    the top and bottom edges of the tab bar (#3247)
+  * Unicode input kitten: Fix a regression in 0.20.0 that broke
+    keyboard handling when the NumLock or CapsLock modifiers were engaged. (#3587)
+  * Fix a regression in 0.20.0 that sent incorrect bytes for the
+    F1-F4 keys in rmkx mode (#3586)
+  * Add a few more special commandline arguments for the launch command.
+    Now all KITTY_PIPE_DATA is also available via command line argument</comment>
+    <requestid>900120</requestid>
+  </revision>
 </revisionlist>
