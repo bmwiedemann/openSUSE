@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  8 08:44:23 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Use the linuxrc proxy settings for the HTTPS and FTP proxies
+  (bsc#1185016)
+- 4.4.15
+
+-------------------------------------------------------------------
+Fri Jun  4 09:08:43 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Adopt the new YaST2::Equatable mixin in order to fix possible
+  errors when comparing objects (related to bsc#1186082)
+- 4.4.14
+
+-------------------------------------------------------------------
 Mon May 31 17:50:42 UTC 2021 - Michal Filka <mfilka@suse.com>
 
 - bnc#1185524
