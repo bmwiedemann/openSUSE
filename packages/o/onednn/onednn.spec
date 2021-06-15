@@ -31,7 +31,7 @@
 
 %define libname libdnnl2
 Name:           onednn
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
@@ -39,8 +39,6 @@ URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM onednn-1045.patch -- https://github.com/oneapi-src/oneDNN/pull/1045
 Patch0:         onednn-1045.patch
-# PATCH-FIX-UPSTREAM 0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
-Patch1:         0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

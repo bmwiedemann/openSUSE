@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 08:31:16 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.2.4:
+  * Fixed build error with GCC 11 (eda1add)
+  * Fixed an issue with reorder reporting unimplemented when
+    quantizing f32 weights to s8 (4f05b76, 5d3d1e1, cc77eef)
+  * Updated name for GPU gen12 architecture to xe (3d202c2)
+- Drop upstream patch:
+  * 0001-common-gpu-include-thread-and-limit-headers-to-fix-G.patch
+
+-------------------------------------------------------------------
 Thu Jun  3 01:38:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.2.3
