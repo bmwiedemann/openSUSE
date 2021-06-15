@@ -12,7 +12,7 @@ Mon May 31 15:29:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
     solution it can be possible to get access to a VPN with an
     otherwise-invalid account.
   * Fix potential NULL ptr crash if compiled with DMALLOC
-- drop sysv5 init support, it hasn't build successfully in ages
+- drop sysv init support, it hasn't build successfully in ages
   and is build-disabled in devel project
 
 -------------------------------------------------------------------

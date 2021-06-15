@@ -803,4 +803,12 @@ behaviour fixing bsc#941569</comment>
   and is build-disabled in devel project</comment>
     <requestid>898085</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>a68335ed9a148f1509a6846c8c5f1c36</srcmd5>
+    <version>2.4.11</version>
+    <time>1623767826</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>899936</requestid>
+  </revision>
 </revisionlist>
