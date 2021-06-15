@@ -74,7 +74,7 @@ Macros:
 
 Substitute: kiwi-setup:image  python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz    python3-kiwi
-Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers
+Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
 Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
 Prefer: kiwi-systemdeps-filesystems
@@ -90,11 +90,12 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
 # Podman based image building
-Substitute: system-packages:podman podman buildah createrepo_c release-compare
+Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
+
 
 Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
@@ -1032,6 +1033,8 @@ Prefer: libotf-devel
 Prefer: libsane1
 # libglfw3 over libglfw3-wayland
 Prefer: libglfw3
+# have choice for (xclip or wl-clipboard) needed by password-store: wl-clipboard xclip
+Prefer: -wl-clipboard
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: systemd-sysvinit:systemd
