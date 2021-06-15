@@ -1,0 +1,16 @@
+Index: spyder-5.0.4/spyder/plugins/completion/providers/kite/utils/status.py
+===================================================================
+--- spyder-5.0.4.orig/spyder/plugins/completion/providers/kite/utils/status.py
++++ spyder-5.0.4/spyder/plugins/completion/providers/kite/utils/status.py
+@@ -114,7 +114,10 @@ def check_kite_installers_availability()
+     elif sys.platform == 'darwin':
+         url = MAC_URL
+ 
+-    req = requests.head(url)
++    try:
++        req = requests.head(url)
++    except requests.exceptions.ConnectionError:
++        return False
+     available = req.ok
+     if req.ok:
+         if req.is_redirect:

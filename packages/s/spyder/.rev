@@ -315,4 +315,18 @@ rename the package from spyder3 to spyder.
 </comment>
     <requestid>894844</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfb039d3e2b1200882cd9cbaf0833f20</srcmd5>
+    <version>5.0.4</version>
+    <time>1623767865</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tame-kite-installer-check.patch
+
+- Update to version 5.0.4
+  * Programmatic addition of new layouts
+  * Fix debugger for IPython 7.24.0
+  * Fix loading complex third-party plugins
+  * Fix errors when restarting kernels</comment>
+    <requestid>900005</requestid>
+  </revision>
 </revisionlist>

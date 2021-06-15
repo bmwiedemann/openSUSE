@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+# PATCH-FIX-OPENSUSE tame-kite-installer-check -- Don't error out on not being able to connect to the kite release server code@bnavigator.de
+Patch1:         tame-kite-installer-check.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 39.0.0
@@ -71,7 +73,7 @@ Requires:       python3-qtconsole >= 5.1.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.0.3
+Requires:       python3-spyder-kernels >= 2.0.4
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -263,7 +265,7 @@ rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 # note: before you add any unpin here, check that it works with the new version.
 # gh#spyder-ide/spyder#11975
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
-# watchdog: boo#1186327
+# watchdog: boo#1186327, https://github.com/spyder-ide/spyder/issues/14803
 sed -e "/JEDI_REQVER =/ s/'=/'>=/" \
     -e "/PARSO_REQVER =/ s/'=/'>=/" \
     -e "/WATCHDOG_REQVER =/ s/;<[^']*//" \

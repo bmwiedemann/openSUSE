@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 14 22:16:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add tame-kite-installer-check.patch
+
+-------------------------------------------------------------------
+Mon Jun 14 14:36:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.4
+  * Programmatic addition of new layouts
+  * Fix debugger for IPython 7.24.0
+  * Fix loading complex third-party plugins
+  * Fix errors when restarting kernels
+
+-------------------------------------------------------------------
 Fri May 21 09:06:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Unpin watchdog. boo#1186327
