@@ -17,7 +17,7 @@
 
 
 Name:           libpcap
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
@@ -109,7 +109,7 @@ make DESTDIR=%{buildroot} install install-shared
 
 %files -n libpcap1
 %license LICENSE
-%doc CHANGES CREDITS README.md doc/README.linux.md TODO
+%doc CHANGES CREDITS README.md doc/README.linux TODO
 %{_libdir}/*.so.*
 %{_mandir}/man7/*
 

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 11 12:02:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.10.1
+  * Fix "type XXX subtype YYY" giving a parse error
+  * Add PCAP_AVAILABLE_1_11.
+  * Rename struct bpf_aux_data to avoid NetBSD compile errors
+  * Fix cross-builds with older kernels lacking BPF_MOD and BPF_XOR
+  * Fix Bison detection for minor version 0.
+  * Fix parallel build with FreeBSD make.
+  * Get DLT_MATCHING_MAX right in gencode.c on NetBSD.
+  * Define timeradd() and timersub() if necessary.
+  * Fix Cygwin/MSYS target directories.
+  * Fix symlinking with DESTDIR.
+  * Fix generation of libpcap.pc with CMake when not building
+    a shared library.
+  * Support reading version 1.2, which some writers produce,
+    and which is the same as 1.0 
+  * Drop support for text-mode USB captures, as we require a 2.6.27
+    or later kernel 
+  * Bluetooth: fix non-blocking mode. Don't assume that all compilers
+    used to build for Linux support the __atomic builtins
+
+-------------------------------------------------------------------
 Sun Feb 14 18:51:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.10.0
