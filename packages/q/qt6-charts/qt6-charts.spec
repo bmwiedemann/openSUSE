@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-charts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.0
+%define real_version 6.1.1
 %define short_version 6.1
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
