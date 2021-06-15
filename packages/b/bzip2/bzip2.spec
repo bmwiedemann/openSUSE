@@ -1,7 +1,7 @@
 #
 # spec file for package bzip2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,11 +43,11 @@ Provides:       bzip = %{version}
 Obsoletes:      bzip < %{version}
 
 %description
-The bzip2 program is a very powerful program for compressing files.
+The bzip2 program is a program for compressing files.
 
 %package doc
 Summary:        The bzip2 program and Library Documentation
-Group:          Productivity/Archiving/Compression
+Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -70,23 +70,19 @@ Requires:       glibc-devel
 The bzip2 runtime library development files.
 
 %prep
-%setup -q
-%patch0
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
 %configure \
-  --with-pic \
   --disable-static
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" test
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" test
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %install
@@ -106,7 +102,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname}  -p /sbin/ldconfig
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
 %{_bindir}/bunzip2
