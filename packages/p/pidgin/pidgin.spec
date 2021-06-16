@@ -18,7 +18,7 @@
 
 %define _name   Pidgin
 Name:           pidgin
-Version:        2.14.4
+Version:        2.14.5
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
@@ -136,7 +136,7 @@ Summary:        GLib-based Instant Messenger Library -- Upstream default configu
 Group:          System/Libraries
 Requires:       libpurple = %{version}
 Supplements:    (libpurple and branding-upstream)
-Conflicts:      otherproviders(libpurple-branding)
+Conflicts:      libpurple-branding
 Provides:       libpurple-branding = %{version}
 BuildArch:      noarch
 #BRAND: Provides /etc/purple/prefs.xml, the default configuration for
@@ -272,11 +272,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
 %post -n libpurple -p /sbin/ldconfig
-
 %postun -n libpurple -p /sbin/ldconfig
-
 %post -n finch -p /sbin/ldconfig
-
 %postun -n finch -p /sbin/ldconfig
 
 %files
