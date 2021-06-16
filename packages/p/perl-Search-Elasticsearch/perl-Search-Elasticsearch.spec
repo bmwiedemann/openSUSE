@@ -18,7 +18,7 @@
 
 %define cpan_name Search-Elasticsearch
 Name:           perl-Search-Elasticsearch
-Version:        7.712
+Version:        7.713
 Release:        0
 #Upstream:  This is free software, licensed under: The Apache License, Version 2.0, January 2004
 Summary:        The official client for Elasticsearch
@@ -82,6 +82,8 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Try::Tiny)
 Requires:       perl(URI)
 Requires:       perl(namespace::clean)
+Recommends:     perl(IO::Socket::IP) >= 0.37
+Recommends:     perl(URI::Escape::XS)
 %{perl_requires}
 
 %description

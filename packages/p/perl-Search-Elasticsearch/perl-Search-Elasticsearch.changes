@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 15 03:09:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.713
+   see /usr/share/doc/packages/perl-Search-Elasticsearch/Changes
+
+  7.713   2021-06-14
+          Stable release for Elasticsearch 7.13
+
+-------------------------------------------------------------------
 Tue Mar 30 09:30:08 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Remove manual dependencies from cpanspec.yml (cpanspec can now read
