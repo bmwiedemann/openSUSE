@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:59:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Add KCommandBar to KXMLGui-using apps by default
+  * Remove the Attica requirement by using the store's new links
+  * Bump required CMake version to 3.16
+  * Use new version-controlled enumerator deprecation warning macros
+  * Ensure instances of derived Private classes are properly destructed
+  * Don't translate urls (kde#436052)
+  * Call ki18n_install() unconditionally
+
+-------------------------------------------------------------------
 Sun May  9 11:25:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix initial window size of konsole:
