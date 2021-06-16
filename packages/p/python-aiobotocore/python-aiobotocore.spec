@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aiobotocore
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Async client for aws services
 License:        Apache-2.0
