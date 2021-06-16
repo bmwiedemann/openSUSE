@@ -122,6 +122,14 @@ popd
 
 }
 
+%check
+%{python_expand pushd build_%{$python_bin_suffix}
+
+make check
+
+popd
+}
+
 %install
 %{python_expand pushd build_%{$python_bin_suffix}
 
