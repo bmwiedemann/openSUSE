@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 14 14:08:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.3.3.2
+  * bugfix in IOS cpu-load for very old models without
+    CISCO-PROCESS-MIB.
+  * bugfix in f5 memory-usage, correct negative values.
+  * Add vpn sessions for Fortigate.
+  * optimize etherlike and rmon walks.
+  * save bgp peer local addresses and show them in the error case.
+
+-------------------------------------------------------------------
 Thu May  6 18:32:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.3.2.2
