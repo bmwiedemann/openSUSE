@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 0.6.5
-Recommends:     duplicity >= 0.6.25
+Requires:       duplicity >= 0.6.25
 
 %description
 Déjà  Dup is a simple backup tool. It hides the complexity of doing

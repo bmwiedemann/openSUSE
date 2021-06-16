@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 15:50:00 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Up duplicity dependency to Requires: deja-dup cannot run without
+  it (boo#1187256).
+
+-------------------------------------------------------------------
 Thu Mar 18 13:41:35 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 42.7:

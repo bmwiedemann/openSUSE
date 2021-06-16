@@ -572,4 +572,12 @@ So preferably for 13.1 as well.</comment>
   + Update to libhandy-1 (forwarded request 879896 from polslinux)</comment>
     <requestid>879961</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f97e362367c7ecc10e9221a9aa6bf672</srcmd5>
+    <version>42.7</version>
+    <time>1623868482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900206</requestid>
+  </revision>
 </revisionlist>
