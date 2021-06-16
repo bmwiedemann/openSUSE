@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:59:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * change link order to fix compile (kde#437458)
+  * Bump required CMake version to 3.16
+  * We depend against qt5.15 so we can use compatibility cmake macro
+  * [hspell] Add back zlib dependency
+  * [hspell] Remove unused zlib dependency
+  * Fix cmake warning:
+  * Sonnet add Malayalam trigram
+
+-------------------------------------------------------------------
 Sat May  1 16:41:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
