@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 13 07:51:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Uninstall baloo5-imports-lang when installing baloo5 5.83.0
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Embed JSON metadata in KIOSlaves
+  * Remove obsolete .protocol files
+  * Convert protocol files to JSON
+  * Fix Mesasges.sh by removing path
+  * Bump required CMake version to 3.16
+  * Remove SUSE Qt5.14 build status
+  * [balooctl] Allow clearing a document which has been deleted
+  * [DocumentUrlDB] Remove unused function
+
+-------------------------------------------------------------------
 Sat May  1 16:40:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0

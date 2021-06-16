@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.82
+%define _tar_path 5.83
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.82.0
+Version:        5.83.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -67,6 +67,8 @@ Group:          System/GUI/KDE
 # The -lang package was split into components
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
+# baloo5-imports-lang is gone in 5.83
+Obsoletes:      %{name}-imports-lang < 5.83
 
 %description -n libKF5Baloo5
 Baloo is a framework for searching and managing metadata. This
@@ -154,15 +156,15 @@ package contains aditional command line utilities. Development files.
 
 %install
 %kf5_makeinstall -C build
+
 %if %{with lang}
   %{kf5_find_lang}
   # Split manually, kf5_find_lang doesn't support it...
   grep -E '^%%dir' %{name}.lang | tee %{name}-{file,tools,kioslaves}.lang >/dev/null
   grep -E '/balooengine5.mo$' %{name}.lang >> libKF5BalooEngine5.lang
-  grep -E '/(balooctl5|baloo_file5|baloo_file_extractor5).mo$' %{name}.lang >> %{name}-file.lang
+  grep -E '/balooctl5.mo$' %{name}.lang >> %{name}-file.lang
   grep -E '/(baloodb5|baloosearch5|balooshow5).mo$' %{name}.lang >> %{name}-tools.lang
   grep -E '/(kio5_baloosearch|kio5_tags|kio5_timeline).mo$' %{name}.lang >> %{name}-kioslaves.lang
-  grep -E '/baloomonitorplugin.mo$' %{name}.lang >> %{name}-imports.lang
 
   rm %{name}.lang
 %endif
@@ -202,13 +204,10 @@ package contains aditional command line utilities. Development files.
 %dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/kf5
 %{_kf5_plugindir}/kf5/kio/baloosearch.so
-%{_kf5_servicesdir}/baloosearch.protocol
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/baloosearchmodule.so
 %{_kf5_plugindir}/kf5/kio/tags.so
-%{_kf5_servicesdir}/tags.protocol
 %{_kf5_plugindir}/kf5/kio/timeline.so
-%{_kf5_servicesdir}/timeline.protocol
 
 %files tools
 %license LICENSES/*
@@ -240,9 +239,6 @@ package contains aditional command line utilities. Development files.
 %license LICENSES/*
 
 %files kioslaves-lang -f %{name}-kioslaves.lang
-%license LICENSES/*
-
-%files imports-lang -f %{name}-imports.lang
 %license LICENSES/*
 
 %endif
