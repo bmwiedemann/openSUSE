@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:58:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Allow sorting of todos by category (tag)
+  * Remove a false comment from the API docs
+  * Ensure not to use a timezone with the same UTC offset in test.
+  * Update Compat test references
+  * Use UTC times when calculating the transition dates of standard and dst phases.
+  * Bump required CMake version to 3.16
+  * Remove conditional compilation for libical older than 3
+  * Fix Compat-libical3-eGroupware.ics
+
+-------------------------------------------------------------------
 Sat May  1 16:40:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
