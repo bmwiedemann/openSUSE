@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:52:57 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.6.0
+  * Show IPTC-IIM data length limits in text fields.
+  * Drop use of Python FlickrAPI library.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Sat Apr  3 11:20:38 UTC 2021 - aloisio@gmx.com
 
 - Update to version 2021.4.0
