@@ -37,7 +37,7 @@ This package provides a shared system user for TeXLive
 %setup -q -c -T
 
 %build
-%sysusers_generate_pre %{SOURCE0} system-user-mktex
+%sysusers_generate_pre %{SOURCE0} system-user-mktex system-user-mktex.conf
 
 %install
 install -Dm644 %{SOURCE0} %{buildroot}%{_sysusersdir}/system-user-mktex.conf

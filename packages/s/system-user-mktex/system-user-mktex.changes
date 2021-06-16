@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 13 13:31:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
 Mon May 31 14:11:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Older systems create the group but don't add the relevant symbol
