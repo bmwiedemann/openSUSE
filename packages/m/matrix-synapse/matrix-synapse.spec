@@ -1,5 +1,5 @@
 #
-# spec file for package matrix-synapse
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -52,7 +52,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.35.1
+Version:        1.36.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -70,10 +70,10 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
 Patch1:         dont-bump-cryptography-with-system-openssl.patch
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{use_python}-base >= 3.5
 BuildRequires:  %{use_python}-setuptools
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools

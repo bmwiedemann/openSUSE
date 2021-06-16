@@ -1,5 +1,5 @@
 #
-# spec file for package matrix-synapse-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %define         pkgname matrix-synapse
 Name:           %{pkgname}-test
-Version:        1.35.1
+Version:        1.36.0
 Release:        0
 Summary:        Test package for %{pkgname}
 License:        Apache-2.0
