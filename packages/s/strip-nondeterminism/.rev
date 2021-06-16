@@ -65,4 +65,22 @@ Add strip-nondeterminism-0.029-zipfix.patch
   essentially serves no purpose.</comment>
     <requestid>744407</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a7d76b86dcd9843618149086fa00a0d6</srcmd5>
+    <version>1.12.0</version>
+    <time>1623868407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0
+  * Also normalise PO-Revision-Date in addition to POT-Creation-Date.
+  * Ignore unwritable files, printing a warning.
+  * Add a warning message under --verbose statement when the Archive::Cpio
+    package is missing. (MR: reproducible-builds/strip-nondeterminism!6)
+  * Fix an off-by-one error when parsing PNG modification times.
+
+- Move macros.strip-nondeterminism from /etc/rpm to
+  %{_rpmmacrodir} (boo#1185657).
+- Install the macro file non-executable: it is loaded by rpm, never
+  run.</comment>
+    <requestid>899924</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package strip-nondeterminism
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           strip-nondeterminism
-Version:        1.6.1
+Version:        1.12.0
 Release:        0
 Summary:        A tool for stripping non-deterministic information
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
+URL:            https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
 Source:         https://reproducible-builds.org/_lfs/releases/strip-nondeterminism/strip-nondeterminism-%{version}.tar.bz2
 Source1:        https://reproducible-builds.org/_lfs/releases/strip-nondeterminism/strip-nondeterminism-%{version}.tar.bz2.asc
 Source2:        rpmmacros
@@ -34,10 +34,10 @@ BuildRequires:  perl-base
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Cpio)
 BuildRequires:  perl(Archive::Zip)
-BuildRequires:  perl(Sub::Override) 
+BuildRequires:  perl(Sub::Override)
 Requires:       perl-base
 Requires:       perl(Archive::Zip)
-Requires:       perl(Sub::Override) 
+Requires:       perl(Sub::Override)
 Recommends:     perl(Archive::Cpio)
 %{perl_requires}
 
@@ -49,7 +49,7 @@ It can be used as a post-processing step to make a build reproducible,
 when the build process itself cannot be made deterministic.  It is used
 as part of the Reproducible Builds project.
 
-strip-nondeterminism contains the File::StripNondeterminism Perl module, 
+strip-nondeterminism contains the File::StripNondeterminism Perl module,
 and the strip-nondeterminism command line utility.
 
 %prep
@@ -63,8 +63,8 @@ and the strip-nondeterminism command line utility.
 %{__make} test
 
 %install
-mkdir -p %buildroot/etc/rpm/ %buildroot/%{_bindir}/
-install -p %{SOURCE2} %buildroot/etc/rpm/macros.strip-nondeterminism
+mkdir -p %buildroot%{_rpmmacrodir} %buildroot/%{_bindir}/
+install -p %{SOURCE2} -m 644 %buildroot%{_rpmmacrodir}/macros.strip-nondeterminism
 install -p %{SOURCE3} -m 755 %buildroot/%{_bindir}/
 %perl_make_install
 %perl_process_packlist
@@ -74,6 +74,6 @@ install -p %{SOURCE3} -m 755 %buildroot/%{_bindir}/
 %defattr(-,root,root,755)
 %doc README TODO
 %license COPYING
-/etc/rpm/macros.strip-nondeterminism
+%{_rpmmacrodir}/macros.strip-nondeterminism
 
 %changelog
