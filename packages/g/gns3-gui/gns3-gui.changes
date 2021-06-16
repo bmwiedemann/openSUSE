@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 11 15:14:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.22
+  * Fix exception shown when GNS3 is started with empty config.
+  * Link style support.
+  * Fix charcoal theme.
+  * Fix issue when showing menu to select port.
+
+-------------------------------------------------------------------
 Mon May 10 21:11:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.21
