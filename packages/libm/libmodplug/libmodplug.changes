@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 11 19:19:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Correct Summary and Group info for libmodplug1, it's a shared
+  library, not a devel file/package.
+
+-------------------------------------------------------------------
 Mon Jun  8 07:28:16 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Reinstated libmodplug package from Leap:42.3:Update to replace

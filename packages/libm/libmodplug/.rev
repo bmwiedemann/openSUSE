@@ -7,4 +7,12 @@
     <comment>Use openSUSE:Leap:42.3:Update's package</comment>
     <requestid>812441</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c52221122b88fc766568fabba401373</srcmd5>
+    <version>0.8.9.0+git20170610.f6dd59a</version>
+    <time>1623868410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899949</requestid>
+  </revision>
 </revisionlist>

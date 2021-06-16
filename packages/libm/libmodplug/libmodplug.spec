@@ -1,7 +1,7 @@
 #
 # spec file for package libmodplug
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A MOD playing library
 License:        SUSE-Public-Domain
 Group:          System/Libraries
-Url:            https://github.com/Konstanty/libmodplug/
+URL:            https://github.com/Konstanty/libmodplug/
 Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE libmodplug-timidity.patch -- set paths to openSUSE timidity package
@@ -43,8 +43,8 @@ mod rendering code from ModPlug, a popular windows mod player written by
 Olivier Lapicque, found at http://www.modplug.com/.
 
 %package -n libmodplug%{soname}
-Summary:        Development files for libmodplug
-Group:          Development/Libraries/C and C++
+Summary:        Shared library part of libmodplug
+Group:          System/Libraries
 
 %description -n libmodplug%{soname}
 Modplug library based on the ModPlug sound engine.
