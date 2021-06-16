@@ -32,7 +32,7 @@
 %define skip_python36 1
 %endif
 Name:           python-wxPython
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
@@ -44,12 +44,8 @@ Source1:        python-wxPython-rpmlintrc
 Patch0:         fix_no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         use_stl_build.patch
-# PATCH-FIX-UPSTREAM -- patch for bundled wxWidgets
-Patch2:         0001-Fix-conversion-of-variant-list-members.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-wxUIActionSimulator-Text-parameter-documentation.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0003-Use-explicit-wxString-c_str-conversion-for-sipFindTy.patch
+# PATCH-FIX-UPSTREAM wxPython-4.1.1-fix-overrides.patch -- Fix build with wxWidgets 3.1.5 (gh#wxWidgets/Phoenix#1909)
+Patch2:         wxPython-4.1.1-fix-overrides.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
