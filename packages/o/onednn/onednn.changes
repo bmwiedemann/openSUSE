@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 12:10:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  * onednn-xbyak-aarch64.patch
+
+-------------------------------------------------------------------
 Tue Jun 15 08:31:16 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 2.2.4:

@@ -39,6 +39,8 @@ URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM onednn-1045.patch -- https://github.com/oneapi-src/oneDNN/pull/1045
 Patch0:         onednn-1045.patch
+# PATCH-FIX-UPSTREAM - https://github.com/oneapi-src/oneDNN/issues/1085
+Patch1:         onednn-xbyak-aarch64.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
