@@ -53,8 +53,8 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 This package contains the documentation.
 
 %package -n %{libname}
-Summary:        Z39
-Group:          Development/Libraries/C and C++
+Summary:        Z39.50 protocol library
+Group:          System/Libraries
 Provides:       libyaz = %{version}
 Obsoletes:      libyaz < %{version}
 
@@ -63,7 +63,7 @@ YAZ is a C library for developing client and server applications
 using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
 %package -n libyaz-devel
-Summary:        Z39
+Summary:        Headers for the Z39.50 protocol library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
@@ -77,7 +77,7 @@ YAZ is a C library for developing client and server applications
 using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 #  --with-dsssl=/usr/share/sgml/docbook/dsssl-stylesheets \
@@ -88,8 +88,7 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
            --with-openssl \
            --with-gnutls \
            --with-icu \
-		   --disable-static \
-		   --with-pic
+		   --disable-static
 %make_build
 
 %install
