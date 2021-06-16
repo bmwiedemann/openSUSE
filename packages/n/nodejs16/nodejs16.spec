@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs16
-Version:        16.2.0
+Version:        16.3.0
 Release:        0
 
 # Double DWZ memory limits
@@ -34,6 +34,12 @@ Release:        0
 %define _dwz_max_die_limit     100000000
 
 %define node_version_number 16
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %if %node_version_number >= 12
 %define openssl_req_ver 1.1.1
@@ -248,11 +254,11 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
-%if 0%{suse_version} > 1330
+%if 0%{?suse_version} > 1330
 BuildRequires:  libopenssl1_1-hmac
 %endif
 
-%if 0%{suse_version} >= 1330
+%if 0%{?suse_version} >= 1330
 BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
@@ -293,8 +299,14 @@ Provides:       bundled(nghttp2) = 1.42.0
 BuildRequires:  valgrind
 %endif
 
-Requires(post): update-alternatives
+%if %{with libalternatives}
+Requires:       alts
+%else
 Requires(postun): update-alternatives
+%endif
+# either for update-alternatives, or their removal
+Requires(post): update-alternatives
+
 Recommends:     npm16
 
 #we need ABI virtual provides where SONAMEs aren't enough/not present so deps
@@ -310,7 +322,11 @@ Provides:       nodejs(engine) = %{version}
 # npm software, `env node` requires further help than only
 # update-alternatives can provide.
 Provides:       nodejs = %{version}
+%if %{with libalternatives}
+Requires:       nodejs-common >= 5.0
+%else
 Requires:       nodejs-common
+%endif
 
 # For SLE11, to be able to use the certificate store we need to have properly
 # symlinked certificates. The compatability symlinks are provided by the
@@ -328,7 +344,7 @@ Provides:       bundled(libuv) = 1.41.0
 Provides:       bundled(uvwasi) = 0.0.11
 Provides:       bundled(v8) = 9.0.257.25
 
-Provides:       bundled(llhttp) = 6.0.1
+Provides:       bundled(llhttp) = 6.0.2
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
 
 Provides:       bundled(node-acorn) = 8.0.4
@@ -358,19 +374,23 @@ of binary modules.
 %package -n npm16
 Summary:        Package manager for Node.js
 Group:          Development/Languages/NodeJS
+%if %{with libalternatives}
+Requires:       nodejs-common >= 5.0
+%else
 Requires:       nodejs-common
+%endif
 Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.13.0
+Provides:       npm(npm) = 7.15.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 %endif
-Provides:       bundled(node-@npmcli/arborist) = 2.5.0
+Provides:       bundled(node-@npmcli/arborist) = 2.6.1
 Provides:       bundled(node-@npmcli/ci-detect) = 1.3.0
 Provides:       bundled(node-@npmcli/config) = 2.2.0
 Provides:       bundled(node-@npmcli/disparity-colors) = 1.0.1
@@ -412,7 +432,7 @@ Provides:       bundled(node-binary-extensions) = 2.2.0
 Provides:       bundled(node-brace-expansion) = 1.1.11
 Provides:       bundled(node-builtins) = 1.0.3
 Provides:       bundled(node-byte-size) = 7.0.1
-Provides:       bundled(node-cacache) = 15.0.6
+Provides:       bundled(node-cacache) = 15.2.0
 Provides:       bundled(node-caseless) = 0.12.0
 Provides:       bundled(node-chalk) = 4.1.1
 Provides:       bundled(node-chownr) = 2.0.0
@@ -482,7 +502,7 @@ Provides:       bundled(node-init-package-json) = 2.0.3
 Provides:       bundled(node-ip) = 1.1.5
 Provides:       bundled(node-ip-regex) = 4.3.0
 Provides:       bundled(node-is-cidr) = 4.0.2
-Provides:       bundled(node-is-core-module) = 2.2.0
+Provides:       bundled(node-is-core-module) = 2.4.0
 Provides:       bundled(node-is-fullwidth-code-point) = 1.0.0
 Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
 Provides:       bundled(node-is-fullwidth-code-point) = 3.0.0
@@ -504,7 +524,7 @@ Provides:       bundled(node-just-diff-apply) = 3.0.0
 Provides:       bundled(node-leven) = 3.1.0
 Provides:       bundled(node-libnpmaccess) = 4.0.2
 Provides:       bundled(node-libnpmdiff) = 2.0.4
-Provides:       bundled(node-libnpmexec) = 1.1.1
+Provides:       bundled(node-libnpmexec) = 1.2.0
 Provides:       bundled(node-libnpmfund) = 1.1.0
 Provides:       bundled(node-libnpmhook) = 6.0.2
 Provides:       bundled(node-libnpmorg) = 2.0.2
@@ -534,7 +554,7 @@ Provides:       bundled(node-mute-stream) = 0.0.8
 Provides:       bundled(node-node-gyp) = 7.1.2
 Provides:       bundled(node-nopt) = 5.0.0
 Provides:       bundled(node-normalize-package-data) = 3.0.2
-Provides:       bundled(node-npm-audit-report) = 2.1.4
+Provides:       bundled(node-npm-audit-report) = 2.1.5
 Provides:       bundled(node-npm-bundled) = 1.1.2
 Provides:       bundled(node-npm-init) = 0.0.0
 Provides:       bundled(node-npm-install-checks) = 4.0.0
@@ -543,7 +563,7 @@ Provides:       bundled(node-npm-package-arg) = 8.1.2
 Provides:       bundled(node-npm-packlist) = 2.2.2
 Provides:       bundled(node-npm-pick-manifest) = 6.1.1
 Provides:       bundled(node-npm-profile) = 5.0.3
-Provides:       bundled(node-npm-registry-fetch) = 10.1.1
+Provides:       bundled(node-npm-registry-fetch) = 10.1.2
 Provides:       bundled(node-npm-user-validate) = 1.0.1
 Provides:       bundled(node-npmlog) = 4.1.2
 Provides:       bundled(node-number-is-nan) = 1.0.1
@@ -674,6 +694,8 @@ tar Jxf %{SOURCE11}
 %endif
 %patch104 -p1
 %patch106 -p1
+%if 0%{?suse_version} >= 1550
+%endif
 %patch120 -p1
 %patch200 -p1
 
@@ -712,8 +734,12 @@ find deps/cares -name *.[ch] -delete
 find deps/zlib -name *.[ch] -delete
 
 cat > spec.build.config <<EOF
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
+export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags} -fno-strict-aliasing"
+# -Wno-class-memaccess is not available in gcc < 8 (= system compiler on Leap until at least 15.3 is gcc7)
+export CXXFLAGS="%{?build_cxxflags:%build_cxxflags}%{?!build_cxxflags:%optflags} -Wno-error=return-type -fno-strict-aliasing"
+%if 0%{?sle_version} > 150300
+export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
+%endif
 export LDFLAGS="%{?build_ldflags}"
 
 %if !0%{?with nodejs_lto}
@@ -793,7 +819,7 @@ install -D -m 644 deps/npm/man/man1/npx.1 %{buildroot}%{_mandir}/man1/npx%{node_
 
 #node-gyp needs common.gypi too
 install -D -m 644 common.gypi \
-	%{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/node-gyp/common.gypi
+        %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/node-gyp/common.gypi
 #       %%{buildroot}%%{_datadir}/node/common.gypi
 # install addon-rpm.gypi
 install -D -m 644 addon-rpm.gypi \
@@ -831,6 +857,7 @@ find %{buildroot}%{_libdir}/node_modules/npm%{node_version_number} -name "browse
 %fdupes %{buildroot}%{_includedir}/node%{node_version_number}
 
 # Update alternatives
+%if ! %{with libalternatives}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f node-default     %{buildroot}%{_sysconfdir}/alternatives/node-default
 ln -s -f node.1%{ext_man} %{buildroot}%{_sysconfdir}/alternatives/node.1%{ext_man}
@@ -846,6 +873,24 @@ ln -s -f npx.1%{ext_man}  %{buildroot}%{_sysconfdir}/alternatives/npx.1%{ext_man
 ln -s %{_sysconfdir}/alternatives/npx-default          %{buildroot}%{_bindir}/npx-default
 ln -s %{_sysconfdir}/alternatives/npx.1%{ext_man}      %{buildroot}%{_mandir}/man1/npx.1%{ext_man}
 %endif
+%endif
+
+# libalternatives - can always ship
+mkdir -p %{buildroot}%{_datadir}/libalternatives/{node,npm,npx};
+cat > %{buildroot}%{_datadir}/libalternatives/node/%{node_version_number}.conf <<EOF
+binary=%{_bindir}/node%{node_version_number}
+man=node%{node_version_number}.1
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/npm/%{node_version_number}.conf <<EOF
+binary=%{_bindir}/npm%{node_version_number}
+man=npm%{node_version_number}.1
+group=npm,npx
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/npx/%{node_version_number}.conf <<EOF
+binary=%{_bindir}/npx%{node_version_number}
+man=npx%{node_version_number}.1
+group=npm,npx
+EOF
 
 # We need to own license directory on old versions of SLE
 %if 0%{?suse_version} < 1500
@@ -889,12 +934,17 @@ make test-ci
 %doc AUTHORS *.md
 %doc deps/v8/tools/gdbinit
 %dir %{_libdir}/node_modules
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/node
+%{_datadir}/libalternatives/node/%{node_version_number}.conf
 %{_bindir}/node%{node_version_number}
 %{_mandir}/man1/node%{node_version_number}.1%{ext_man}
+%if ! 0%{with libalternatives}
 %ghost %{_bindir}/node-default
 %ghost %{_mandir}/man1/node.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/node-default
 %ghost %{_sysconfdir}/alternatives/node.1%{ext_man}
+%endif
 %exclude %{_libdir}/node_modules/npm%{node_version_number}
 # We need to own directory on old versions of SLE
 %if 0%{?suse_version} < 1500
@@ -903,21 +953,30 @@ make test-ci
 
 %files -n npm%{node_version_number}
 %defattr(-, root, root)
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/npm
+%dir %{_datadir}/libalternatives/npx
+%{_datadir}/libalternatives/npm/%{node_version_number}.conf
+%{_datadir}/libalternatives/npx/%{node_version_number}.conf
 %{_bindir}/npm%{node_version_number}
 %{_libdir}/node_modules/npm%{node_version_number}
 %{_mandir}/man1/npm%{node_version_number}.1%{ext_man}
+%if ! 0%{with libalternatives}
 %ghost %{_bindir}/npm-default
 %ghost %{_mandir}/man1/npm.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/npm-default
 %ghost %{_sysconfdir}/alternatives/npm.1%{ext_man}
+%endif
 
 %if %{node_version_number} >= 8
 %{_bindir}/npx%{node_version_number}
 %{_mandir}/man1/npx%{node_version_number}.1%{ext_man}
+%if ! %{with libalternatives}
 %ghost %{_bindir}/npx-default
 %ghost %{_mandir}/man1/npx.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/npx-default
 %ghost %{_sysconfdir}/alternatives/npx.1%{ext_man}
+%endif
 %endif
 
 %files devel
@@ -931,6 +990,16 @@ make test-ci
 %defattr(-,root,root)
 %doc doc/api
 
+%if %{with libalternatives}
+
+%post
+update-alternatives --remove node-default %{_bindir}/node%{node_version_number}
+
+%post -n npm%{node_version_number}
+update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
+update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
+
+%else
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then
@@ -971,6 +1040,7 @@ fi
 if [ ! -f %{_bindir}/npx%{node_version_number} ] ; then
     update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 fi
+%endif
 %endif
 
 %changelog

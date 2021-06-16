@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v16.2.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v16.3.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v16.2.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v16.2.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v16.3.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v16.3.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v16.2.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v16.2.0/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v16.3.0/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-v16.2.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-v16.2.0/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v16.3.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v16.3.0/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,10 +29,10 @@ Index: node-v16.2.0/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-v16.2.0/test/parallel/test-tls-passphrase.js
+Index: node-v16.3.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v16.2.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v16.2.0/test/parallel/test-tls-passphrase.js
+--- node-v16.3.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v16.3.0/test/parallel/test-tls-passphrase.js
 @@ -224,7 +224,7 @@ server.listen(0, common.mustCall(functio
  })).unref();
  
@@ -51,10 +51,10 @@ Index: node-v16.2.0/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-v16.2.0/test/parallel/test-repl-envvars.js
+Index: node-v16.3.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v16.2.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v16.2.0/test/parallel/test-repl-envvars.js
+--- node-v16.3.0.orig/test/parallel/test-repl-envvars.js
++++ node-v16.3.0/test/parallel/test-repl-envvars.js
 @@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
@@ -66,10 +66,10 @@ Index: node-v16.2.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const REPL = require('internal/repl');
  const assert = require('assert');
-Index: node-v16.2.0/test/common/index.mjs
+Index: node-v16.3.0/test/common/index.mjs
 ===================================================================
---- node-v16.2.0.orig/test/common/index.mjs
-+++ node-v16.2.0/test/common/index.mjs
+--- node-v16.3.0.orig/test/common/index.mjs
++++ node-v16.3.0/test/common/index.mjs
 @@ -44,6 +44,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
@@ -86,10 +86,10 @@ Index: node-v16.2.0/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    getTTYfd,
-Index: node-v16.2.0/Makefile
+Index: node-v16.3.0/Makefile
 ===================================================================
---- node-v16.2.0.orig/Makefile
-+++ node-v16.2.0/Makefile
+--- node-v16.3.0.orig/Makefile
++++ node-v16.3.0/Makefile
 @@ -511,7 +511,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
@@ -110,10 +110,10 @@ Index: node-v16.2.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v16.2.0/test/parallel/test-crypto-dh.js
+Index: node-v16.3.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v16.2.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v16.2.0/test/parallel/test-crypto-dh.js
+--- node-v16.3.0.orig/test/parallel/test-crypto-dh.js
++++ node-v16.3.0/test/parallel/test-crypto-dh.js
 @@ -189,7 +189,7 @@ assert.throws(() => {
    dh3.computeSecret('');
  }, { message: common.hasOpenSSL3 ?
@@ -123,3 +123,40 @@ Index: node-v16.2.0/test/parallel/test-crypto-dh.js
  
  // Create a shared using a DH group.
  const alice = crypto.createDiffieHellmanGroup('modp5');
+Index: node-v16.3.0/test/parallel/test-https-agent-unref-socket.js
+===================================================================
+--- node-v16.3.0.orig/test/parallel/test-https-agent-unref-socket.js
++++ node-v16.3.0/test/parallel/test-https-agent-unref-socket.js
+@@ -6,8 +6,28 @@ if (!common.hasCrypto)
+ 
+ const https = require('https');
+ 
+-const request = https.get('https://example.com');
++if (process.argv[2] === 'localhost') {
++  const request = https.get('https://localhost:' + process.argv[3]);
++
++  request.on('socket', (socket) => {
++    socket.unref();
++  });
++}
++else {
++  const net = require('net');
++  const child_process = require('child_process');
++  const server = net.createServer();
++  server.listen(0);
++  server.on('listening', () => {
++    const port = server.address().port;
++    console.log('listening on port ' + port);
++    const { fork } = require('child_process');
++    const child = fork(__filename, ['localhost', port], {});
++    child.on('close', (exit_code) => {
++      server.close();
++      if (exit_code == null || exit_code != 0)
++        process.exit(1);
++    });
++  });
++}
+ 
+-request.on('socket', (socket) => {
+-  socket.unref();
+-});

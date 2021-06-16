@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  4 20:59:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.3.0:
+  * add -C alias for --conditions flag
+  * add workspaces support to npm install commands
+
+-------------------------------------------------------------------
+Mon May 31 16:27:44 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Use libalternatives instead of update-alternatives
+
+-------------------------------------------------------------------
 Thu May 20 14:56:23 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 16.2.0:
