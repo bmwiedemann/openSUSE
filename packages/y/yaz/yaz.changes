@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  7 11:37:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+
+-------------------------------------------------------------------
 Thu May  6 12:13:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.31.0
