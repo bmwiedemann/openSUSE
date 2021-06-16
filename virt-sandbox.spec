@@ -1,7 +1,7 @@
 #
 # spec file for package virt-sandbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 Name:           virt-sandbox
 Version:        0.8.0
 Release:        1%{?dist}%{?extra_release}
-Url:            http://libvirt.org/
+URL:            http://libvirt.org/
 Summary:        Libvirt application sandbox framework
 License:        LGPL-2.0-or-later
 Group:          System/Management
@@ -31,6 +31,9 @@ Source1:        %{name}.rpmlintrc
 
 # Patches pending upstream review
 Patch100:       no-unmount-for-lxc-machines.patch
+
+# SUSE patches
+Patch200:       PIE.patch
 
 # Need to go upstream
 
@@ -96,12 +99,14 @@ applications within a sandbox using libvirt.
 %prep
 %setup -q -n libvirt-sandbox-%{version}
 %patch100 -p1
+%patch200 -p1
 
 %build
 # We may have a more recent version of automake when building
 # than the one used to autoconfigure the project for the distribution
 # Just make sure the files are sync'ed with our version
-
+#export CFLAGS="%{optflags}"
+#export LDFLAGS="-pie"
 autoreconf -f -i
 %configure --enable-introspection --disable-static
 make V=1 %{?_smp_mflags}

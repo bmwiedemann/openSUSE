@@ -161,4 +161,12 @@ Depends on SR#238636</comment>
     <comment></comment>
     <requestid>681641</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cc76afe29c10002a3e19cd3c0aa1ea2a</srcmd5>
+    <version>0.8.0</version>
+    <time>1623868518</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900432</requestid>
+  </revision>
 </revisionlist>
