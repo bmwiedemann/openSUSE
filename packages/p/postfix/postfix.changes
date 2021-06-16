@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jun 14 15:46:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.6.1
+  * Bugfix (introduced: Postfix 2.11): the command "postmap
+    lmdb:/file/name" (create LMDB database from textfile) handled
+    duplicate input keys ungracefully, discarding entries stored
+    up to and including the duplicate key, and causing a double
+    free() call with lmdb versions 0.9.17 and later. Reported by
+    Adi Prasaja; double free() root cause analysis by Howard Chu.
+  * Typo (introduced: Postfix 3.4): silent_discard should be
+    silent-discard in BDAT_README.
+
+-------------------------------------------------------------------
+Wed Jun  2 00:26:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6.0
+  - Major changes - internal protocol identification
+    Internal protocols have changed. You need to "postfix stop"
+    before updating, or before backing out to an earlier release,
+    otherwise long-running daemons (pickup, qmgr, verify, tlsproxy,
+    postscreen) may fail to communicate with the rest of Postfix,
+    causing mail delivery delays until Postfix is restarted.
+  For more see /usr/share/doc/packages/postfix/RELEASE_NOTES 
+- refreshed patches to apply cleanly again:
+  fix-postfix-script.patch
+  ipv6_disabled.patch
+  pointer_to_literals.patch
+  postfix-linux45.patch
+  postfix-main.cf.patch
+  postfix-master.cf.patch
+  postfix-no-md5.patch
+  postfix-ssl-release-buffers.patch
+  postfix-vda-v14-3.0.3.patch
+  set-default-db-type.patch
+
+-------------------------------------------------------------------
+Tue Jun  1 10:47:29 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1186669) - postfix.service has "Requires=var-run.mount"
+  Remove bad requirements
+
+-------------------------------------------------------------------
 Mon Apr 12 09:00:22 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.10 with security fixes:

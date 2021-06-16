@@ -19,7 +19,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -2538,6 +2538,54 @@ extern char *var_virt_uid_maps;
+@@ -2620,6 +2620,54 @@ extern char *var_virt_uid_maps;
  #define DEF_VIRT_GID_MAPS		""
  extern char *var_virt_gid_maps;
  
@@ -1274,7 +1274,7 @@ Index: src/virtual/virtual.c
 ===================================================================
 --- src/virtual/virtual.c.orig
 +++ src/virtual/virtual.c
-@@ -357,12 +357,28 @@ char   *var_mail_spool_dir;		/* XXX depe
+@@ -364,12 +364,28 @@ char   *var_mail_spool_dir;		/* XXX depe
  bool    var_strict_mbox_owner;
  char   *var_virt_dsn_filter;
  
@@ -1303,7 +1303,7 @@ Index: src/virtual/virtual.c
  
   /*
    * Bit masks.
-@@ -472,18 +488,27 @@ static void post_init(char *unused_name,
+@@ -479,18 +495,27 @@ static void post_init(char *unused_name,
       */
      virtual_mailbox_maps =
  	maps_create(VAR_VIRT_MAILBOX_MAPS, var_virt_mailbox_maps,
@@ -1337,7 +1337,7 @@ Index: src/virtual/virtual.c
  
      virtual_mbox_lock_mask = mbox_lock_mask(var_virt_mailbox_lock);
  }
-@@ -535,11 +560,23 @@ int     main(int argc, char **argv)
+@@ -545,11 +570,23 @@ int     main(int argc, char **argv)
  	VAR_VIRT_GID_MAPS, DEF_VIRT_GID_MAPS, &var_virt_gid_maps, 0, 0,
  	VAR_VIRT_MAILBOX_BASE, DEF_VIRT_MAILBOX_BASE, &var_virt_mailbox_base, 1, 0,
  	VAR_VIRT_MAILBOX_LOCK, DEF_VIRT_MAILBOX_LOCK, &var_virt_mailbox_lock, 1, 0,
@@ -1361,7 +1361,7 @@ Index: src/virtual/virtual.c
  	0,
      };
  
-@@ -556,6 +593,7 @@ int     main(int argc, char **argv)
+@@ -566,6 +603,7 @@ int     main(int argc, char **argv)
  		       CA_MAIL_SERVER_PRE_INIT(pre_init),
  		       CA_MAIL_SERVER_POST_INIT(post_init),
  		       CA_MAIL_SERVER_PRE_ACCEPT(pre_accept),

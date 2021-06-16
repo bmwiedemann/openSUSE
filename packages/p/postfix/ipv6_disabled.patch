@@ -2,7 +2,7 @@ Index: src/util/inet_proto.c
 ===================================================================
 --- src/util/inet_proto.c.orig
 +++ src/util/inet_proto.c
-@@ -195,7 +195,6 @@ INET_PROTO_INFO *inet_proto_init(const c
+@@ -200,7 +200,6 @@ const INET_PROTO_INFO *inet_proto_init(c
  	if ((sock = socket(PF_INET6, SOCK_STREAM, 0)) >= 0) {
  	    close(sock);
  	} else if (errno == EAFNOSUPPORT || errno == EPROTONOSUPPORT) {

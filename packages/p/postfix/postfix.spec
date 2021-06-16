@@ -42,7 +42,7 @@
 %bcond_without libnsl
 %bcond_without ldap
 Name:           postfix
-Version:        3.5.10
+Version:        3.6.1
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -75,7 +75,7 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  m4
 BuildRequires:  mysql-devel
 %if %{with ldap}
@@ -473,6 +473,7 @@ fi
 
 %files
 %license LICENSE TLS_LICENSE
+%doc RELEASE_NOTES
 %config %{_sysconfdir}/pam.d/*
 %{_fillupdir}/sysconfig.%{name}
 %{_fillupdir}/sysconfig.mail-%{name}

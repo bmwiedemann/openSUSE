@@ -1,6 +1,8 @@
---- src/tls/tls_client.c.orig	2019-03-11 14:24:34.492448719 +0100
-+++ src/tls/tls_client.c	2019-03-11 14:27:42.824448001 +0100
-@@ -397,6 +397,11 @@
+Index: src/tls/tls_client.c
+===================================================================
+--- src/tls/tls_client.c.orig
++++ src/tls/tls_client.c
+@@ -693,6 +693,11 @@ TLS_APPL_STATE *tls_client_init(const TL
      SSL_CTX_set_security_level(client_ctx, 0);
  #endif
  
@@ -12,9 +14,11 @@
      /*
       * See the verify callback in tls_verify.c
       */
---- src/tls/tls_server.c.orig	2019-03-11 14:26:04.700448375 +0100
-+++ src/tls/tls_server.c	2019-03-11 14:27:49.184447977 +0100
-@@ -455,6 +455,10 @@
+Index: src/tls/tls_server.c
+===================================================================
+--- src/tls/tls_server.c.orig
++++ src/tls/tls_server.c
+@@ -439,6 +439,10 @@ TLS_APPL_STATE *tls_server_init(const TL
      SSL_CTX_set_security_level(sni_ctx, 0);
  #endif
  

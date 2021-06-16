@@ -2,7 +2,7 @@ Index: src/cleanup/cleanup_message.c
 ===================================================================
 --- src/cleanup/cleanup_message.c.orig
 +++ src/cleanup/cleanup_message.c
-@@ -296,7 +296,7 @@ static const char *cleanup_act(CLEANUP_S
+@@ -299,7 +299,7 @@ static const char *cleanup_act(CLEANUP_S
      while (*optional_text && ISSPACE(*optional_text))
  	optional_text++;
  
@@ -28,7 +28,7 @@ Index: src/smtpd/smtpd_check.c
 ===================================================================
 --- src/smtpd/smtpd_check.c.orig
 +++ src/smtpd/smtpd_check.c
-@@ -380,6 +380,10 @@ static STRING_LIST *smtpd_acl_perm_log;
+@@ -383,6 +383,10 @@ static STRING_LIST *smtpd_acl_perm_log;
  #define CONST_STR(x)	((const char *) vstring_str(x))
  #define UPDATE_STRING(ptr,val) { if (ptr) myfree(ptr); ptr = mystrdup(val); }
  
@@ -39,7 +39,7 @@ Index: src/smtpd/smtpd_check.c
   /*
    * If some decision can't be made due to a temporary error, then change
    * other decisions into deferrals.
-@@ -2339,8 +2343,6 @@ static int check_table_result(SMTPD_STAT
+@@ -2394,8 +2398,6 @@ static int check_table_result(SMTPD_STAT
      if (msg_verbose)
  	msg_info("%s: %s %s %s", myname, table, value, datum);
  
@@ -48,7 +48,7 @@ Index: src/smtpd/smtpd_check.c
      /*
       * DUNNO means skip this table. Silently ignore optional text.
       */
-@@ -3375,8 +3377,6 @@ static const char *rbl_expand_lookup(con
+@@ -3482,8 +3484,6 @@ static const char *rbl_expand_lookup(con
      SMTPD_RBL_EXPAND_CONTEXT *rbl_exp = (SMTPD_RBL_EXPAND_CONTEXT *) context;
      SMTPD_STATE *state = rbl_exp->state;
  

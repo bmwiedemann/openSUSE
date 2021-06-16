@@ -1950,4 +1950,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>884727</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>780d81565fd31a4033d5677b32362f1c</srcmd5>
+    <version>3.6.1</version>
+    <time>1623868411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899970</requestid>
+  </revision>
 </revisionlist>

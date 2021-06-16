@@ -1,6 +1,8 @@
---- makedefs.orig	2019-03-11 13:54:48.176455533 +0100
-+++ makedefs	2019-03-11 13:55:44.512455319 +0100
-@@ -557,8 +557,8 @@
+Index: makedefs
+===================================================================
+--- makedefs.orig
++++ makedefs
+@@ -568,8 +568,8 @@ EOF
  		: ${SHLIB_ENV="LD_LIBRARY_PATH=`pwd`/lib"}
  		: ${PLUGIN_LD="${CC-gcc} -shared"}
  		;;
