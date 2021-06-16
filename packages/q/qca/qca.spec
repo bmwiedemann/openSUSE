@@ -93,9 +93,8 @@ Summary:        QCA library
 %if 0%{?qt5}
 Provides:       libqca-qt5 = %{version}
 Obsoletes:      libqca-qt5 < %{version}
-%else
-Recommends:       %{name} = %{version}
 %endif
+Recommends:     %{name} = %{version}
 
 %description -n libqca-%{flavor}-%{_soversion}
 The Qt cryptographic library.

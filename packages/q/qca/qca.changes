@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 16 06:27:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Recommend the main package in the Qt5 flavor as well
+
+-------------------------------------------------------------------
 Fri Jun  4 08:20:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Rename libqca-qt5 to qca and use flavors to build Qt5 and Qt6
