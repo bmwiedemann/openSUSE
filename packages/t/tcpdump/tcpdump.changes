@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun 13 09:33:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.99.1:
+  * Squelch some compiler warnings
+  * ICMP: Update the snapend for some nested IP packets
+  * MACsec: Update the snapend thus the ICV field is not payload
+    for the caller
+  * EIGRP: Fix packet header fields
+  * SMB: Disable printer by default in CMake builds
+  * OLSR: Print the protocol name even if the packet is invalid
+  * MSDP: Print ": " before the protocol name
+  * ESP: Remove padding, padding length and next header from the buffer
+  * DHCPv6: Update the snapend for nested DHCPv6 packets
+  * OpenFlow 1.0: Get snapend right for nested frames
+  * TCP: Update the snapend before decoding a MPTCP option
+  * Ethernet, IEEE 802.15.4, IP, L2TP, TCP, ZEP: Add bounds checks
+  * ForCES: Refine SPARSEDATA-TLV length check
+  * ASCII/hex: Use nd_trunc_longjmp() in truncation cases
+  * GeoNet: Add a ND_TCHECK_LEN() call
+  * Replace ND_TCHECK_/memcpy() pairs with GET_CPY_BYTES()
+  * BGP: Fix overwrites of global 'astostr' temporary buffer
+  * ARP: fix overwrites of static buffer in q922_string()
+  * Frame Relay: have q922_string() handle errors better
+
+-------------------------------------------------------------------
 Fri Feb 19 14:07:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix excess of precission in floating point registers for i586
