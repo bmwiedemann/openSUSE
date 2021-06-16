@@ -170,6 +170,7 @@
   boo#1187019: '20210614'
   boo#1187164: '20210614'
   boo#1187204: '20210611'
+  boo#1187371: '20210614'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -182,6 +183,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
+  gh#containers/podman#10685: '20210614'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   gh#os-autoinst/os-autoinst-distri-opensuse#11865: '20210131'
@@ -727,9 +729,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210614'
-published: '20210613'
-publishing: '20210613'
+    <value>failed: ''
+published: '20210614'
+publishing: '20210614'
 testing: '20210614'
 </value>
   </attribute>
