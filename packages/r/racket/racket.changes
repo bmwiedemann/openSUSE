@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 16 07:26:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix for bug boo#1187288
+  * Do not remove pre-compiled and compresse object files (*.zo) as
+    with 8.1 those are mandatory for a functional racket installation 
+- Enforce the usage of the system libraries libz and liblz4
+
+-------------------------------------------------------------------
 Mon May 31 08:09:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.1:

@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
@@ -111,6 +112,7 @@ Group:          Development/Languages/Scheme
 Requires:       %{name} = %{version}-%{release}
 Requires:       glibc-devel
 Requires:       libffi-devel
+Recommends:     %{name}-doc = %{version}-%{release}
 
 %description devel
 This package contains the symlinks, headers and object files needed to
@@ -129,6 +131,8 @@ cd src/
 %add_optflags -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500 -fno-gcse -Wno-stringop-overread
 %configure \
     --prefix="%{_prefix}" \
+    --exec-prefix="%{_prefix}" \
+    --libdir=%{_libdir} \
     --docdir="%{_defaultdocdir}/%{name}" \
     --enable-shared \
 %ifarch ppc64 ppc64le s390x
@@ -138,6 +142,8 @@ cd src/
     --disable-strip \
     --enable-places \
     --enable-lt="%{_bindir}/libtool" \
+    --enable-libz \
+    --enable-liblz4 \
     --enable-pthread
 %make_build
 
@@ -190,9 +196,6 @@ install -Dm 644 %{_builddir}/%{name}-%{version}/share/pkgs/drracket/drracket/drr
 # Remove references to buildroot
 sed -i "s|%{buildroot}||g" %{buildroot}%{_docdir}/%{name}/ts-reference/Typed_Classes.html
 
-# Remove compiled files
-rm -rf %{buildroot}%{_libdir}/racket/compiled
-
 # rewrite path in .desktop files
 %suse_update_desktop_file -c drracket "DrRacket" "DrRacket is an interactive, integrated, graphical programming environment for the Racket programming languages" "%{_bindir}/drracket" "drracket" Development IDE
 %suse_update_desktop_file -c slideshow "Slideshow" "Slideshow is a Racket-based tool for writing slide presentations as programs" "%{_bindir}/slideshow" "drracket" Development Documentation
@@ -238,7 +241,9 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %{_libdir}/%{name}/starter
 %{_libdir}/%{name}/gracket
 %{_libdir}/%{name}/starter-sh
-%{_libdir}/%{name}/*.rktd
+%verify(not md5 size mtime) %{_libdir}/%{name}/*.rktd
+%dir %{_libdir}/%{name}/compiled/
+%{_libdir}/%{name}/compiled/*
 %ifnarch ppc64 ppc64le s390x
 %{_libdir}/%{name}/petite.boot
 %{_libdir}/%{name}/racket.boot
@@ -265,6 +270,10 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %{_datadir}/applications/drracket.desktop
 %{_datadir}/applications/slideshow.desktop
 %{_datadir}/pixmaps/drracket.png
+%exclude %dir %{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/
+%exclude %{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/*.c*
+%verify(not md5 size mtime) %{_datadir}/%{name}/*.rktd
+%verify(not md5 size mtime) %{_datadir}/%{name}/pkgs/*.rktd
 %{_datadir}/%{name}/*
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/config.rktd
@@ -276,5 +285,7 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %files devel
 %{_includedir}/%{name}/*
 %dir %{_includedir}/%{name}
+%dir %{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/
+%{_datadir}/%{name}/pkgs/mzscheme-lib/mzscheme/examples/*.c*
 
 %changelog
