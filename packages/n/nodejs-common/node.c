@@ -5,6 +5,10 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef HAVE_LIBALTERNATIVES_H
+#include <libalternatives.h>
+#endif
+
 const unsigned min_version = 4;
 const unsigned max_version = 42;
 const char *default_version = "-default";
@@ -61,6 +65,17 @@ int main(int argc, char *argv[])
 	{
 		printInvalidVersion(version);
 	}
+
+#ifdef HAVE_LIBALTERNATIVES_H
+	// if we want default version and not using update-alternatives
+	if (version == default_version)
+	{
+		// should not return, and if it does, it probably means
+		// we should fall back to using node-default fallback.
+		libalts_exec_default(argv);
+		fputs("Falling back to using -default symlink.\n", stderr);
+	}
+#endif
 
 	/* Generate our program path and check that we can execute it */
 	char *program_path, *program;

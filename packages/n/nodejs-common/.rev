@@ -110,4 +110,14 @@
   to use.</comment>
     <requestid>891325</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>058c090649f9b138f6da98b184d0c408</srcmd5>
+    <version>5.0</version>
+    <time>1623868395</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libalternatives on TW by default
+
+- Add libalternatives support</comment>
+    <requestid>899493</requestid>
+  </revision>
 </revisionlist>

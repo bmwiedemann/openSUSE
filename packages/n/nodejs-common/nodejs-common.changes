@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 10 10:27:58 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Use libalternatives on TW by default
+
+-------------------------------------------------------------------
+Mon May 31 16:32:18 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Add libalternatives support
+
+-------------------------------------------------------------------
 Thu May  6 12:50:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Enable 32-bit arches again on latest node for TW
