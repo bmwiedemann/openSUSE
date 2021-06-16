@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 15 13:44:32 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.11.3:
+  * Fixed rare crash when detaching handles (#2464)
+  * Added option to offer IPv6 link-local candidates as well (#2689)
+  * Added spatial audio support to AudioBridge via stereo mixing (#2446)
+  * Added support for plain RTP participants to AudioBridge (#2464)
+  * Added API to start/stop AudioBridge recordings dynamically
+    (thanks @rajneeshksoni!) (#2674)
+  * Fixed broken mountpoint switching when using different payload types
+    in Streaming plugin (#2692)
+  * Fixed occasional deadlock on Streaming plugin mountpoint destroy
+    during RTSP reconnects (thanks @lionelnicolas!) (#2700)
+  * Added "Expires" support to SUBSCRIBE in SIP plugin
+    (thanks @nicolasduteil!) (#2661)
+  * Added option to specify Call-ID for SUBSCRIBE dialogs in SIP plugin
+    (thanks @nicolasduteil!) (#2664)
+  * Fixed broken simulcast support in VideoCall plugin
+    (thanks @lucily-star!) (#2671)
+  * Implemented RabbitMQ reconnection logic, in both transport and event handler
+    (thanks @chriswiggins!) (#2651)
+  * Added support for renegotiation of external streams in janus.js
+    (thanks @kmeyerhofer!) (#2604)
+  * Added support for HEVC/H.265 aggregation packets (AP) to janus-pp-rec
+    (thanks @nu774!) (#2662)
+  * Refactored janus-pp-rec to cleanup the code, and use libavformat for Opus as well
+    (thanks @lu-zero!) (#2665)
+  * Added additional target formats for some recorded codecs (#2680)
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Mon May 03 10:24:07 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.11.2:
