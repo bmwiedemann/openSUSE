@@ -19,7 +19,7 @@
 Name:           foot
 Version:        1.7.2
 Release:        0
-Summary:        A fast, lightweight and minimalistic Wayland terminal emulator
+Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -27,7 +27,8 @@ Patch0:         01-fix-xkbcommon-missing-dep.7edda924.patch
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
-BuildRequires:  pkgconfig(fcft) >= 2.3.0, pkgconfig(fcft) < 3.0.0
+BuildRequires:  pkgconfig(fcft) < 3.0.0
+BuildRequires:  pkgconfig(fcft) >= 2.3.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tic)
@@ -39,7 +40,7 @@ BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 
 %description
-A fast, lightweight and minimalistic Wayland terminal emulator.
+A Wayland terminal emulator.
 
 %prep
 %autosetup -n %{name}

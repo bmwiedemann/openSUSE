@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 12 10:36:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unsubstantiated claims from descriptions.
+
+-------------------------------------------------------------------
 Fri Jun 11 22:07:20 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Fix specfile to use correct URL, meson dependency to match upstream,
