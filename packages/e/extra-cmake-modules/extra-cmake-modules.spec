@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.82
+%define _tar_path 5.83
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           extra-cmake-modules
-Version:        5.82.0
+Version:        5.83.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
@@ -38,10 +38,10 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         bundle-lang.patch
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  kf5-filesystem
-Requires:       cmake >= 3.5
+Requires:       cmake >= 3.16
 Requires:       gcc-c++
 Requires:       kf5-filesystem
 Recommends:     %{name}-doc
