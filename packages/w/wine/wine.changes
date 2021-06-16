@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 12:22:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix "adjusted directories to load 32bit wine things from 64bit wine."
+  to package properly on aarch64
+
+-------------------------------------------------------------------
 Sat Jun  5 12:27:57 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.10 development release

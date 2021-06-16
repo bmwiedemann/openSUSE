@@ -4028,4 +4028,13 @@
 - update staging to 6.10 release</comment>
     <requestid>897809</requestid>
   </revision>
+  <revision rev="345" vrev="2">
+    <srcmd5>9012ad0895c8a56c6af58b71b4dd1959</srcmd5>
+    <version>6.10</version>
+    <time>1623868475</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix &quot;adjusted directories to load 32bit wine things from 64bit wine.&quot;
+  to package properly on aarch64 (forwarded request 900165 from Guillaume_G)</comment>
+    <requestid>900167</requestid>
+  </revision>
 </revisionlist>

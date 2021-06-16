@@ -455,6 +455,8 @@ chmod 755 %winedir/my-find-requires.sh
 %ifarch x86_64 aarch64
 %{_bindir}/wine64
 %{_bindir}/wine64-preloader
+%endif
+%ifarch x86_64
 %dir /usr/lib/wine/
 %dir /usr/lib/wine/i386-windows
 %dir /usr/lib/wine/i386-unix
