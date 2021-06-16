@@ -1,7 +1,7 @@
 #
 # spec file for package libbsd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 Name:           libbsd
 Version:        0.10.0
 Release:        0
-Summary:        Provides useful functions commonly found on BSD systems
+Summary:        Library with functions commonly found on BSD systems
 License:        BSD-3-Clause
-Group:          Development/Languages/C and C++
+Group:          Development/Libraries/C and C++
 URL:            https://libbsd.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/git/libbsd
 #Git-Web:	http://cgit.freedesktop.org/libbsd/
@@ -34,36 +34,36 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
 %description
-This library provides useful functions commonly found on BSD systems, and
+This library provides functions commonly found on BSD systems, and
 lacking on others like GNU systems, thus making it easier to port projects
 with strong BSD origins, without needing to embed the same code over and
 over again on each project.
 
 %package -n %{lname}
-Summary:        Provides useful functions commonly found on BSD systems
+Summary:        Library with functions commonly found on BSD systems
 Group:          System/Libraries
 
 %description -n %{lname}
-This library provides useful functions commonly found on BSD systems, and
+This library provides functions commonly found on BSD systems, and
 lacking on others like GNU systems, thus making it easier to port projects
 with strong BSD origins, without needing to embed the same code over and
 over again on each project.
 
 %package devel
 Summary:        Development headers and files for libbsd
-Group:          Development/Languages/C and C++
+Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       glibc-devel
 
 %description devel
-This library provides useful functions commonly found on BSD systems, and
+This library provides functions commonly found on BSD systems, and
 lacking on others like GNU systems, thus making it easier to port projects
 with strong BSD origins, without needing to embed the same code over and
 over again on each project.
 
 %package ctor-static
 Summary:        Development headers and files for libbsd
-Group:          Development/Languages/C and C++
+Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}-%{release}
 Requires:       pkgconfig
 
@@ -73,13 +73,11 @@ when libbsd is loaded via dlopen() from a threaded program.  This can be
 configured using "pkg-config --libs libbsd-ctor".
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %define _lto_cflags %{nil}
-%configure \
-	--disable-static \
-	--with-pic
+%configure --disable-static
 %make_build
 
 %install
@@ -88,7 +86,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s  %{buildroot}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
