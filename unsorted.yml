@@ -1586,7 +1586,6 @@ unsorted:
   - busybox-traceroute 
   - busybox-tunctl 
   - busybox-unzip 
-  - busybox-util-linux 
   - busybox-vi 
   - busybox-vlan 
   - busybox-wget 
@@ -2667,6 +2666,7 @@ unsorted:
   - deal_II-devel: [x86_64] 
   - deal_II-openmpi2-devel: [x86_64] 
   - deal_II-openmpi3-devel: [x86_64] 
+  - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
   - debootstrap 
   - debuginfod-client 
@@ -5588,7 +5588,6 @@ unsorted:
   - glibc-locale-base-32bit: [x86_64] 
   - glibc-profile 
   - glibc-profile-32bit: [x86_64] 
-  - glibc-usrmerge-bootstrap-helper 
   - glibc-utils 
   - glibc-utils-32bit: [x86_64] 
   - glibmm2-devel 
@@ -9053,8 +9052,12 @@ unsorted:
   - libQt6QuickTemplates2-6 
   - libQt6QuickTest6 
   - libQt6QuickWidgets6 
+  - libQt6Scxml6 
+  - libQt6ScxmlQml6 
   - libQt6ShaderTools6 
   - libQt6Sql6 
+  - libQt6StateMachine6 
+  - libQt6StateMachineQml6 
   - libQt6Svg6 
   - libQt6SvgWidgets6 
   - libQt6Test6 
@@ -10215,9 +10218,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_2_0: [x86_64] 
-  - libdeal_II9_2_0-openmpi2: [x86_64] 
-  - libdeal_II9_2_0-openmpi3: [x86_64] 
+  - libdeal_II9_3_0: [x86_64] 
+  - libdeal_II9_3_0-openmpi2: [x86_64] 
+  - libdeal_II9_3_0-openmpi3: [x86_64] 
+  - libdeal_II9_3_0-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -12560,6 +12564,8 @@ unsorted:
   - libparpack2-openmpi2-32bit: [x86_64] 
   - libparpack2-openmpi3 
   - libparpack2-openmpi3-32bit: [x86_64] 
+  - libparpack2-openmpi4 
+  - libparpack2-openmpi4-32bit: [x86_64] 
   - libparserutils-devel 
   - libparserutils0 
   - libparted0-32bit: [x86_64] 
@@ -12855,7 +12861,10 @@ unsorted:
   - libqb-tests 
   - libqb-tools 
   - libqb100-32bit: [x86_64] 
+  - libqca-qt5 
   - libqca-qt5-devel 
+  - libqca-qt5-plugins 
+  - libqca-qt6-2 
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
@@ -18318,6 +18327,8 @@ unsorted:
   - parpack-openmpi2-devel-32bit: [x86_64] 
   - parpack-openmpi3-devel 
   - parpack-openmpi3-devel-32bit: [x86_64] 
+  - parpack-openmpi4-devel 
+  - parpack-openmpi4-devel-32bit: [x86_64] 
   - parsec 
   - parsec-tool 
   - partclone 
@@ -20858,7 +20869,6 @@ unsorted:
   - pyliblo-tools 
   - pymilter-common 
   - pyradio 
-  - pyspacewar 
   - pythia-devel 
   - pythia-doc 
   - python-32bit: [x86_64] 
@@ -21776,6 +21786,7 @@ unsorted:
   - python36-azure-communication-nspkg 
   - python36-azure-communication-sms 
   - python36-azure-confidentialledger 
+  - python36-azure-containerregistry 
   - python36-azure-core 
   - python36-azure-core-tracing-opencensus 
   - python36-azure-core-tracing-opentelemetry 
@@ -21801,8 +21812,10 @@ unsorted:
   - python36-azure-keyvault-secrets 
   - python36-azure-loganalytics 
   - python36-azure-media-nspkg 
+  - python36-azure-media-videoanalyzer-edge 
   - python36-azure-mgmt 
   - python36-azure-mgmt-advisor 
+  - python36-azure-mgmt-agfood 
   - python36-azure-mgmt-alertsmanagement 
   - python36-azure-mgmt-apimanagement 
   - python36-azure-mgmt-appconfiguration 
@@ -21847,6 +21860,7 @@ unsorted:
   - python36-azure-mgmt-deploymentmanager 
   - python36-azure-mgmt-devspaces 
   - python36-azure-mgmt-devtestlabs 
+  - python36-azure-mgmt-digitaltwins 
   - python36-azure-mgmt-dns 
   - python36-azure-mgmt-documentdb 
   - python36-azure-mgmt-edgegateway 
@@ -21868,6 +21882,7 @@ unsorted:
   - python36-azure-mgmt-labservices 
   - python36-azure-mgmt-loganalytics 
   - python36-azure-mgmt-logic 
+  - python36-azure-mgmt-logz 
   - python36-azure-mgmt-machinelearningcompute 
   - python36-azure-mgmt-machinelearningservices 
   - python36-azure-mgmt-maintenance 
@@ -24548,6 +24563,7 @@ unsorted:
   - python38-azure-communication-nspkg 
   - python38-azure-communication-sms 
   - python38-azure-confidentialledger 
+  - python38-azure-containerregistry 
   - python38-azure-core 
   - python38-azure-core-tracing-opencensus 
   - python38-azure-core-tracing-opentelemetry 
@@ -24573,8 +24589,10 @@ unsorted:
   - python38-azure-keyvault-secrets 
   - python38-azure-loganalytics 
   - python38-azure-media-nspkg 
+  - python38-azure-media-videoanalyzer-edge 
   - python38-azure-mgmt 
   - python38-azure-mgmt-advisor 
+  - python38-azure-mgmt-agfood 
   - python38-azure-mgmt-alertsmanagement 
   - python38-azure-mgmt-apimanagement 
   - python38-azure-mgmt-appconfiguration 
@@ -24619,6 +24637,7 @@ unsorted:
   - python38-azure-mgmt-deploymentmanager 
   - python38-azure-mgmt-devspaces 
   - python38-azure-mgmt-devtestlabs 
+  - python38-azure-mgmt-digitaltwins 
   - python38-azure-mgmt-dns 
   - python38-azure-mgmt-documentdb 
   - python38-azure-mgmt-edgegateway 
@@ -24640,6 +24659,7 @@ unsorted:
   - python38-azure-mgmt-labservices 
   - python38-azure-mgmt-loganalytics 
   - python38-azure-mgmt-logic 
+  - python38-azure-mgmt-logz 
   - python38-azure-mgmt-machinelearningcompute 
   - python38-azure-mgmt-machinelearningservices 
   - python38-azure-mgmt-maintenance 
@@ -27486,6 +27506,7 @@ unsorted:
   - python39-azure-communication-nspkg 
   - python39-azure-communication-sms 
   - python39-azure-confidentialledger 
+  - python39-azure-containerregistry 
   - python39-azure-core 
   - python39-azure-core-tracing-opencensus 
   - python39-azure-core-tracing-opentelemetry 
@@ -27511,8 +27532,10 @@ unsorted:
   - python39-azure-keyvault-secrets 
   - python39-azure-loganalytics 
   - python39-azure-media-nspkg 
+  - python39-azure-media-videoanalyzer-edge 
   - python39-azure-mgmt 
   - python39-azure-mgmt-advisor 
+  - python39-azure-mgmt-agfood 
   - python39-azure-mgmt-alertsmanagement 
   - python39-azure-mgmt-apimanagement 
   - python39-azure-mgmt-appconfiguration 
@@ -27557,6 +27580,7 @@ unsorted:
   - python39-azure-mgmt-deploymentmanager 
   - python39-azure-mgmt-devspaces 
   - python39-azure-mgmt-devtestlabs 
+  - python39-azure-mgmt-digitaltwins 
   - python39-azure-mgmt-dns 
   - python39-azure-mgmt-documentdb 
   - python39-azure-mgmt-edgegateway 
@@ -27578,6 +27602,7 @@ unsorted:
   - python39-azure-mgmt-labservices 
   - python39-azure-mgmt-loganalytics 
   - python39-azure-mgmt-logic 
+  - python39-azure-mgmt-logz 
   - python39-azure-mgmt-machinelearningcompute 
   - python39-azure-mgmt-machinelearningservices 
   - python39-azure-mgmt-maintenance 
@@ -30152,6 +30177,12 @@ unsorted:
   - qbittorrent-nox 
   - qbs 
   - qbs-devel 
+  - qca-qt5 
+  - qca-qt5-devel 
+  - qca-qt5-plugins 
+  - qca-qt6 
+  - qca-qt6-devel 
+  - qca-qt6-plugins 
   - qcustomplot-devel 
   - qcustomplot-doc 
   - qd-devel 
@@ -30454,6 +30485,15 @@ unsorted:
   - qt6-quicktimeline-imports 
   - qt6-quickwidgets-devel 
   - qt6-quickwidgets-private-devel 
+  - qt6-scxml 
+  - qt6-scxml-devel 
+  - qt6-scxml-docs-html 
+  - qt6-scxml-docs-qch 
+  - qt6-scxml-examples 
+  - qt6-scxml-imports 
+  - qt6-scxml-private-devel 
+  - qt6-scxmlqml-devel 
+  - qt6-scxmlqml-private-devel 
   - qt6-shadertools 
   - qt6-shadertools-devel 
   - qt6-shadertools-docs-html 
@@ -30465,6 +30505,10 @@ unsorted:
   - qt6-sql-private-devel 
   - qt6-sql-sqlite 
   - qt6-sql-unixODBC 
+  - qt6-statemachine-devel 
+  - qt6-statemachine-private-devel 
+  - qt6-statemachineqml-devel 
+  - qt6-statemachineqml-private-devel 
   - qt6-svg-devel 
   - qt6-svg-docs-html 
   - qt6-svg-docs-qch 
