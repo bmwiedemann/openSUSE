@@ -96,6 +96,10 @@ Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystem
 # Podman based image building
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
 
+%if "%_project" != "openSUSE:Factory" && "%_project" != "openSUSE:Factory:PowerPC" && "%_project" != "openSUSE:Factory:ARM" && "%_project" != "openSUSE:Factory:Rebuild" && "%_project" != "openSUSE:Factory:Live" && "%_project" != "openSUSE:Factory:NonFree"
+Ignore: container-build-checks-strict
+%endif
+
 
 Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
@@ -448,6 +452,9 @@ Prefer: php8:php8-cli
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
 Prefer: python36-vsts python38-vsts python39-vsts
+
+# have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
+Prefer: -NetworkManager
 
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
@@ -1408,10 +1415,9 @@ Macros:
 
 # Define the architectures in which Rust (and Rust crates) are available
 # NOTE: Keep this in sync with rust-srpm-macros!
-%define rust_arches x86_64 i586 i686 armv6hl armv7hl aarch64 ppc64 powerpc64 ppc64le powerpc64le s390x
-
+%define rust_arches x86_64 i586 i686 armv6hl armv7hl aarch64 ppc64 powerpc64 ppc64le powerpc64le riscv64 s390x
 Macros:
-%rust_arches x86_64 i586 i686 armv6hl armv7hl aarch64 ppc64 powerpc64 ppc64le powerpc64le s390x
+%rust_arches x86_64 i586 i686 armv6hl armv7hl aarch64 ppc64 powerpc64 ppc64le powerpc64le riscv64 s390x
 :Macros
 
 # END RUST STUFF
