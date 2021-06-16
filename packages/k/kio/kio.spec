@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.82
+%define _tar_path 5.83
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.82.0
+Version:        5.83.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -37,10 +37,6 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-MimeTypeFinderJob-Resolve-symlinks-for-a-local-file.patch
-Patch2:         0002-MimeTypeFinderJob-the-StatJob-details-should-include.patch
-Patch3:         0003-kio_file-pass-the-absolute-path-to-QMimeDatabase-mim.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -228,14 +224,11 @@ Development files.
 %{_kf5_plugindir}/kf5/kiod/kioexecd.so
 %{_kf5_plugindir}/kf5/kiod/kpasswdserver.so
 %{_kf5_plugindir}/kf5/urifilters/
-%{_kf5_servicesdir}/cache.desktop
 %{_kf5_servicesdir}/cookies.desktop
 %{_kf5_servicesdir}/netpref.desktop
 %{_kf5_servicesdir}/proxy.desktop
 %{_kf5_servicesdir}/searchproviders/
 %{_kf5_servicesdir}/smb.desktop
-%{_kf5_servicesdir}/useragent.desktop
-%{_kf5_servicesdir}/useragentstrings/
 %{_kf5_servicesdir}/webshortcuts.desktop
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kcookiejar5.service

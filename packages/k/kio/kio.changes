@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:58:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Too many changes since 5.82.0, only listing bugfixes:
+  * KOpenWithDialog: expand category on selection (kde#437885)
+  * [kopenwithdialog] Show better error message when specifying a non-executable file (kde#437880)
+  * [KCoreDirLister] Guard uiDelegate(), it might be null (kde#437153)
+  * Allow selecting directories in KFileWidget (kde#419874)
+  * When finding a job delegate extension, also try the uiDelegate() of its parents (kde#436049)
+  * PreviewJob: Create a larger SHM when necessary (kde#430862)
+- Remove patches:
+  * 0001-MimeTypeFinderJob-Resolve-symlinks-for-a-local-file.patch
+  * 0002-MimeTypeFinderJob-the-StatJob-details-should-include.patch
+  * 0003-kio_file-pass-the-absolute-path-to-QMimeDatabase-mim.patch
+
+-------------------------------------------------------------------
 Fri May 14 13:00:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix issues with MimeTypeFinderJob (kde#398908):
