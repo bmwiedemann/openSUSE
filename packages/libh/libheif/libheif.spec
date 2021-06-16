@@ -21,7 +21,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           libheif
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 #
