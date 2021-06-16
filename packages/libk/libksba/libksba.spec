@@ -18,14 +18,14 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnupg.org
-Source:         https://www.gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2
-Source2:        https://www.gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
+Source:         https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2
+Source2:        https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source3:        %{name}.keyring
 Source4:        libksba.changes
