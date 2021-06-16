@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  9 07:33:55 UTC 2021 - psimons@suse.com
+
+- Update githash to version 0.1.6.0.
+  ## 0.1.6.0
+
+  * Always include patchlevel and hash in git-describe output
+
+  * Don't let user's configured initial branch name break tests
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
