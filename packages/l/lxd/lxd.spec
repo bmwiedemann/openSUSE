@@ -196,12 +196,34 @@ do
 	then
 		binary="lxd-$binary"
 	fi
+	case "$binary" in
+		lxd-agent)
+			build_static=1
+			build_tags="agent,netgo"
+			;;
+		lxd-p2c)
+			build_static=1
+			build_tags="netgo"
+			;;
+		*)
+			build_static=
+			build_tags="libsqlite3"
+			;;
+	esac
 	(
 		# We need to link against our particular dylib deps.
 		export \
 			CGO_CFLAGS="-I $INSTALL_INCLUDEDIR" \
 			CGO_LDFLAGS="-L $INSTALL_LIBDIR" ||:
-		go build -buildmode=pie -tags "libsqlite3" -o "bin/$binary" "$mainpkg"
+
+		if [ -n "$build_static" ]
+		then
+			CGO_ENABLED=0 go build -ldflags "-extldflags -static" \
+				-tags "$build_tags" -o "bin/$binary" "$mainpkg"
+		else
+			go build -buildmode=pie \
+				-tags "$build_tags" -o "bin/$binary" "$mainpkg"
+		fi
 	)
 done
 
@@ -253,6 +275,16 @@ done
 # chain-loading problems.
 for target in bin/* "$INSTALL_LIBDIR"/lib*.so
 do
+	case "$(basename "$target")" in
+		lxd-agent|lxd-p2c)
+			# Cannot patch static binaries, and the patching isn't necessary
+			# for them anyway.
+			continue
+			;;
+		*)
+			;;
+	esac
+
 	# Drop RPATH in case it got included during builds.
 	patchelf --remove-rpath "$target"
 	# And now replace all the possible DT_NEEDEDs to absolute paths.
@@ -272,10 +304,18 @@ mkdir man
 pushd bin/
 for bin in *
 do
-	# Ensure that all our binaries are dynamic. boo#1138769
-	file "$bin" | grep 'dynamically linked'
-	# Check what they are linked against.
-	ldd "$bin"
+	# Ensure that all our binaries are dynamic (except for lxd-p2c and
+	# lxd-agent, which must be static). boo#1138769
+	case "$(basename $bin)" in
+		lxd-agent|lxd-p2c)
+			file "$bin" | grep 'statically linked'
+			;;
+		*)
+			file "$bin" | grep 'dynamically linked'
+			# Check what they are linked against.
+			ldd "$bin"
+			;;
+	esac
 done
 popd
 

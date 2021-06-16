@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  8 02:25:02 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Build lxd-agent and lxd-p2c statically to match upstream LXD build scripts
+  (and to make VMs work properly -- lxd-agent is injected into the VM).
+- Update lxd-rpmlintrc to match this.
+
+-------------------------------------------------------------------
 Sun Jun  6 07:03:53 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.15. The full upstream changelog is available from:
