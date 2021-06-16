@@ -1,7 +1,7 @@
 #
 # spec file for package libpolyclipping
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://sourceforge.net/projects/polyclipping/files/clipper_ver%
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
 
 %description
@@ -75,6 +76,10 @@ for filename in "Third Party/perl/perl_readme.txt" README; do
     mv "${filename}".conv "${filename}"
 done
 
+# use proper directory for pkgconfig
+sed -i 's|SET.*CMAKE_INSTALL_PKGCONFIGDIR.*|SET(CMAKE_INSTALL_PKGCONFIGDIR "${CMAKE_INSTALL_LIBDIR}/pkgconfig")|' \
+ cpp/CMakeLists.txt
+
 %build
 pushd cpp
   %cmake
@@ -97,8 +102,8 @@ popd
 
 %files devel
 %doc README Documentation
-%{_datadir}/pkgconfig/%{packagename}.pc
 %{_includedir}/%{packagename}/
 %{_libdir}/lib%{packagename}.so
+%{_libdir}/pkgconfig/%{packagename}.pc
 
 %changelog
