@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
 Requires:       sgml-skel
 Recommends:     libxml2-tools
 Recommends:     make

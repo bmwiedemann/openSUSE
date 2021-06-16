@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 15 05:13:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh remove-python-class-shebang.patch to remove a requirement of
+  /usr/bin/python
+- Switch BuildRequires for pkgconfig(python3) to link against it instead
+
+-------------------------------------------------------------------
 Tue Feb 23 23:05:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch to non-deprecated enchant-2 library 
