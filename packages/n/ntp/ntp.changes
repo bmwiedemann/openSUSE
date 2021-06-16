@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 15 14:47:45 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1186431: Fix a typo in %post .
+
+-------------------------------------------------------------------
 Thu May 20 11:01:49 UTC 2021 - Reinhard Max <max@suse.com>
 
 - jsc#SLE-15482, ntp-clarify-interface.patch:

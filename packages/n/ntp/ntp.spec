@@ -1,7 +1,7 @@
 #
 # spec file for package ntp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -256,7 +256,6 @@ install -d %{buildroot}%{_bindir}/
 install -m 755 parseutil/testdcf %{buildroot}%{_bindir}/
 install -m 755 parseutil/dcfd %{buildroot}%{_bindir}/
 
-
 %pre
 test -L %{_localstatedir}/run/ntp  || rm -rf %{_localstatedir}/run/ntp && :
 %service_add_pre ntp.service ntpd.service
@@ -333,7 +332,7 @@ CONTROLKEY=$(getntpconf controlkey)
 REQUESTKEY=$(getntpconf requestkey)
 
 if test -z "$CONTROLKEY"; then
-  if -n "$REQUESTKEY"; then
+  if test -n "$REQUESTKEY"; then
     CONTROLKEY=$REQUESTKEY
   else
     for (( CONTROLKEY = 1; CONTROLKEY < 65535; CONTROLKEY++ )); do

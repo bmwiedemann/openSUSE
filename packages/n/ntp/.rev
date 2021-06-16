@@ -1238,4 +1238,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
   does not cover the wildcard and localhost addresses.</comment>
     <requestid>894615</requestid>
   </revision>
+  <revision rev="130" vrev="7">
+    <srcmd5>627168f6d5d863968ef0248f1759cd27</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1623868482</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1186431: Fix a typo in %post .</comment>
+    <requestid>900200</requestid>
+  </revision>
 </revisionlist>
