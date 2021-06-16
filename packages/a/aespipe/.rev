@@ -105,4 +105,12 @@
     <comment></comment>
     <requestid>823520</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e0e8fdac4701798071ea9f30e1597b18</srcmd5>
+    <version>2.4f</version>
+    <time>1623868479</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO for aarch64, %{arm} and ppc64le as a workaround for boo#1187352 (forwarded request 900160 from Guillaume_G)</comment>
+    <requestid>900203</requestid>
+  </revision>
 </revisionlist>

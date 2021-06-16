@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 15 12:49:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO for aarch64, %{arm} and ppc64le as a workaround for boo#1187352
+
+-------------------------------------------------------------------
 Wed Jul 29 22:24:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 2.4f

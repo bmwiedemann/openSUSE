@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64 %{arm} ppc64le
+%define _lto_cflags %{nil}
+%endif
 
 Name:           aespipe
 Version:        2.4f
