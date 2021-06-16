@@ -14,15 +14,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%bcond_with python
 %bcond_with ruby
 
 #
-# define python for future reference
-%define _with_python 1
+%bcond_without python
 %define libname libmapserver2
 %define _cgibindir /srv/www/cgi-bin
 %if 0%{?suse_version} >= 1500
@@ -32,7 +30,7 @@
 %endif
 
 Name:           mapserver
-Version:        7.6.2
+Version:        7.6.3
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
@@ -201,8 +199,7 @@ against the C Mapserver library.
 
 %prep
 %setup -q -n %{name}-%{version}
-%global _default_patch_fuzz 5
-%patch0 -p0
+%patch0 -p1
 
 %build
 mkdir build
