@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 31 18:33:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 7.6.3
+  * Security: Address flaw in CGI mapfile loading that makes it
+    possible to bypass security controls ( CVE-2021-32062 )
+  * Fix most of remaining Coverity scan warnings with high priority
+  * Use CPLSetConfigOption/CPLGetConfigOption for some
+    CGI/FastCGI-related env vars.
+  * Require url-based symbol values to be pre-defined.
+  * Improved initial check on generating reference maps,
+    avoid crash with label styles
+  * Fix resource leak and pointObj initialization errors.
+- Enable python
+- Refresh mapserver-7.6.1-fix_python_install_path.patch
+
+-------------------------------------------------------------------
 Mon Feb  1 13:20:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.6.2
