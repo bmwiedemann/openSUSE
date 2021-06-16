@@ -277,11 +277,11 @@ for PLUGIN in %{buildroot}%{_libdir}/gimp/2.0/plug-ins/* ; do
 done
 find %{buildroot} -type f -name "*.la" -delete -print
 # Install the macros file:
-install -d %{buildroot}%{_sysconfdir}/rpm
+install -d %{buildroot}%{_rpmmacrodir}
 sed -e "s/@GIMP_APIVER@/%{apiver}/;s/@GIMP_ABIVER@/%{abiver}/" \
     < $RPM_SOURCE_DIR/macros.gimp > macros.gimp
 install -m 644 -c macros.gimp \
-           %{buildroot}%{_sysconfdir}/rpm/macros.gimp
+           %{buildroot}%{_rpmmacrodir}/macros.gimp
 %fdupes %{buildroot}%{_datadir}/gtk-doc/
 %fdupes %{buildroot}%{_libdir}/gimp/2.0/python/
 %fdupes %{buildroot}%{_datadir}/gimp/2.0/
@@ -380,6 +380,6 @@ install -m 644 -c macros.gimp \
 # Own these repositories to not depend on gtk-doc while building:
 %dir %{_datadir}/gtk-doc
 %{_datadir}/gtk-doc/html/
-%config %{_sysconfdir}/rpm/macros.gimp
+%{_rpmmacrodir}/macros.gimp
 
 %changelog

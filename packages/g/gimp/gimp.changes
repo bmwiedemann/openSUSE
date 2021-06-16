@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  4 17:41:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move rpm macros.gimp from /etc/rpm to %{_rpmmacrodir}.
+
+-------------------------------------------------------------------
 Mon Mar 29 13:17:56 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.10.24
