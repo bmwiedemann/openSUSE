@@ -741,4 +741,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>KDE Frameworks 5.82 (forwarded request 891438 from cgiboudeaux)</comment>
     <requestid>891718</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>321f4678b3d9363e0e17338ba7b3abdf</srcmd5>
+    <version>5.83.0</version>
+    <time>1623868412</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.83.0</comment>
+    <requestid>899701</requestid>
+  </revision>
 </revisionlist>
