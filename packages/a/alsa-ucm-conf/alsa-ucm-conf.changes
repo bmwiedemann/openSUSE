@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 14 15:00:36 CEST 2021 - tiwai@suse.de
+
+- Update to version 1.2.5.1:
+  a small bugfix release, including the previous patch
+  https://www.alsa-project.org/wiki/Changes_v1.2.5_v1.2.5.1
+- Drop the obsoleted patch:
+  0001-HDA-Intel-the-lookups-are-supported-from-syntax-4.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 10:19:50 CEST 2021 - tiwai@suse.de
 
 - Fix for HDA config lookup (boo#1187079):

@@ -16,15 +16,13 @@
 #
 
 
-%define src_ver 1.2.4.81.g4884e
 Name:           alsa-ucm-conf
-Version:        1.2.5
+Version:        1.2.5.1
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
-Patch1:         0001-HDA-Intel-the-lookups-are-supported-from-syntax-4.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 
@@ -32,8 +30,7 @@ BuildArch:      noarch
 This package contains the profiles files for ALSA UCM (Use Case Manager).
 
 %prep
-%setup -q -n %{name}-%{src_ver}
-%patch1 -p1
+%setup -q -n %{name}-%{version}
 find . -name ".gitignore" -delete
 
 %build
