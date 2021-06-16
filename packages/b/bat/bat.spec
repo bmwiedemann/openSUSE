@@ -17,22 +17,17 @@
 
 
 Name:           bat
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Text/Utilities
-URL:            https://github.com/sharkdp/bat
-Source0:        https://github.com/sharkdp/bat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/sharkdp/%{name}
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-# Instructions on how to generate vendor.tar.xz
-Source2:        README.packager
-BuildRequires:  cargo
-BuildRequires:  clang
-BuildRequires:  cmake
-BuildRequires:  rust
-BuildRequires:  rust-std
-BuildRequires:  zlib-devel
+BuildRequires:  rust >= 1.45
+BuildRequires:  rust-packaging
+ExclusiveArch:  %{rust_arches}
 
 %description
 A cat(1) clone which supports syntax highlighting for a large number of
@@ -40,24 +35,24 @@ programming and markup languages. It has git integration and automatic paging.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%define cargo_registry $(pwd)/vendor
+%{cargo_prep}
 
 %build
-cargo build --release --locked %{?_smp_mflags}
+export CARGO_NET_OFFLINE=true
+%{cargo_build}
 
 %install
-cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
+
+%if %{with check}
+%check
+%{cargo_test}
+%endif
 
 %files
-%doc README.md
+%doc README.md CONTRIBUTING.md CHANGELOG.md
 %license LICENSE-MIT LICENSE-APACHE
-%{_bindir}/bat
+%{_bindir}/%{name}
 
 %changelog

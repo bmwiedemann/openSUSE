@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 13 19:33:37 UTC 2021 - idesmi@protonmail.com
+
+- Update to version 0.18.1:
+  * Update binary assets
+  * Bump version, update dependencies
+  * Updated CHANGELOG
+  * Bump assets/syntaxes/02_Extra/Lean from `824213d` to `29a03a8`
+  * Bump serde from 1.0.124 to 1.0.125
+  * Bump bugreport from 0.3.0 to 0.4.0
+  * Bump assets/syntaxes/02_Extra/FSharp from `c18616d` to `9e4645c`
+  * add warning highlighting to log file syntax definition
+  * add word boundaries to log syntax highlighting
+  * Add independent log syntax
+  * improve syslog syntax
+  * replace Syslog dependency with a custom syntax
+  * add example syslog file for highlighting tests
+  * Revert "Update of themes.bin that adds Dark+"
+  * Update of themes.bin that adds Dark+
+  * Add "Visual Studio Dark+" theme to vec of themes
+  * Add Dark+ theme
+
+-------------------------------------------------------------------
 Thu Mar 25 12:02:19 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.18.0

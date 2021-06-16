@@ -1,0 +1,25 @@
+<services>
+  <service name="format_spec_file" mode="manual">
+  </service>
+  <service name="obs_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/sharkdp/bat</param>
+    <param name="revision">v0.18.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="localonly" name="set_version">
+  </service>
+  <service name="tar" mode="localonly"/>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="cargo_audit" mode="localonly">
+     <param name="srcdir">bat</param>
+  </service>
+  <service name="cargo_vendor" mode="localonly">
+    <param name="srcdir">bat</param>
+  </service>
+</services>
