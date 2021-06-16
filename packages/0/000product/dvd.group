@@ -244,6 +244,7 @@
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -906,15 +907,15 @@
     <package name="ibus-table-rustrad" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-translit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="iceauth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="icewm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
-    <package name="icewm-config-upstream" supportstatus="unsupported"/> <!-- reason: dvd:icewm-config-upstream -->
-    <package name="icewm-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
-    <package name="icewm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="icewm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="icewm-config-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="icewm-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="icewm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="icewm-lite" supportstatus="unsupported"/> <!-- reason: dvd:icewm-lite -->
     <package name="icewm-theme-branding" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="iftop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="iio-sensor-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="imlib2-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="imlib2-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
@@ -1346,7 +1347,7 @@
     <package name="libIlmImf-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libIlmThread-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libImath-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKChart2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKEduVocDocument5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1936,7 +1937,7 @@
     <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdk_pixbuf-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libgdk_pixbuf_xlib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="libgdk_pixbuf_xlib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libgdl-3-5" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libgdm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgee-0_8-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2101,7 +2102,7 @@
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libicu69" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libicu69-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2465,8 +2466,7 @@
     <package name="libqaccessibilityclient-qt5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqb100" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libqca-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libqca-qt5-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libqca-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqgpgme7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4717,8 +4717,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireshark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
@@ -4740,7 +4740,7 @@
     <package name="xbitmaps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xbrlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xclip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="xclock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="xclock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xconsole" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdelta3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xdg-dbus-proxy" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4872,10 +4872,10 @@
     <package name="xrandr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xrdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xsane" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xscreensaver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
-    <package name="xscreensaver-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="xscreensaver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="xscreensaver-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xscreensaver-data-extra" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xscreensaver-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="xscreensaver-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xsetroot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xsettingsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
