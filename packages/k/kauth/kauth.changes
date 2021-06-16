@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:58:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Bump required CMake version to 3.16
+
+-------------------------------------------------------------------
 Sat May  1 16:40:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
