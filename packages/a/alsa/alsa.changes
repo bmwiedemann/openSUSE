@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 14 14:58:05 CEST 2021 - tiwai@suse.de
+
+- Update to version 1.2.5.1:
+  a bug fix release, including previous patches:
+  https://www.alsa-project.org/wiki/Changes_v1.2.5_v1.2.5.1
+- Drop obsoleted patches:
+  0001-conf-fix-load_for_all_cards.patch
+  0002-ucm-add-_alibpref-to-get-the-private-device-prefix.patch
+  0003-ucm-fix-_alibpref-string-add-.-delimiter-to-the-end.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 08:58:26 CEST 2021 - tiwai@suse.de
 
 - Fix regression in config read and UCM handling on pipewire and
