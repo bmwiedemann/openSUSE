@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 16 06:23:19 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210616.cdcfe52e:
+  * Dev: testcases: adjust origin testcases for previous change
+  * Fix: history: use Path.mkdir instead of mkdir command(bsc#1179999)
+  * Dev: unittest: adjust unit test for preflight check change to crash test
+  * Dev: doc: replace preflight check doc as crash test doc
+  * Dev: crash_test: Add big warnings to have users' attention to potential failover
+  * Dev: crash_test: rename preflight_check as crash_test
+
+-------------------------------------------------------------------
+Thu Jun 10 09:22:17 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210610.0e0d05fc:
+  * Dev: unittest: adjust unit test for previous changes
+  * Fix: bootstrap: update sbd watchdog timeout when using diskless SBD with qdevice(bsc#1184465)
+
+-------------------------------------------------------------------
 Thu Jun 10 05:24:46 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210610.c7eb914f:
