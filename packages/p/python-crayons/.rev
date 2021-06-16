@@ -57,4 +57,13 @@
 - Drop LICENSE as a separate source, now included in the upstream tarball.</comment>
     <requestid>860570</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>84bda5150bab0c020ae9bb5ba5d63031</srcmd5>
+    <version>0.4.0</version>
+    <time>1623868493</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't own everything under sitelib.
+- Run some tests (and use GitHub tarball to get it)</comment>
+    <requestid>900355</requestid>
+  </revision>
 </revisionlist>

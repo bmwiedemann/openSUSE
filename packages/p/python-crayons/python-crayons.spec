@@ -17,13 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname crayons
 Name:           python-crayons
-Version:        0.4.0 
+Version:        0.4.0
 Release:        0
 Summary:        Colored strings for terminal usage
 License:        MIT
 URL:            https://github.com/MasterOdin/crayons
-Source:         https://files.pythonhosted.org/packages/source/c/crayons/crayons-%{version}.tar.gz
+Source:         https://github.com/MasterOdin/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
@@ -36,7 +38,7 @@ Included colors are red, green, yellow, blue, black, magenta, cyan, white,
 and normal.
 
 %prep
-%setup -q -n crayons-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
@@ -44,9 +46,14 @@ and normal.
 %install
 %python_install
 
+%check
+%python_exec test_crayons.py
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}.py
+%{python_sitelib}/%{modname}-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__/%{modname}*
 
 %changelog
