@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:58:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Added new KMyMoney icon again with some extra tweaks
+  * Add Goodvibes icon
+  * Bump required CMake version to 3.16
+  * add an icon for skanpage
+  * Add *.kdev4 to .gitignore
+  * Tweaked the Rust mimetypes to better match the official branding (kde#434346)
+  * Made links relative
+  * Fixed code and links issues
+  * Updated icons and added symlinks
+  * Separated icons to -left and -right
+
+-------------------------------------------------------------------
 Sat May  1 16:40:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
