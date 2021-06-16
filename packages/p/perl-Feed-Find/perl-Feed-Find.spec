@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Feed-Find
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-Name:           perl-Feed-Find
-Version:        0.07
-Release:        0
 %define cpan_name Feed-Find
+Name:           perl-Feed-Find
+Version:        0.11
+Release:        0
 Summary:        Syndication feed auto-discovery
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BT/BTROTT/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::ErrorHandler)
-BuildRequires:  perl(Module::Install)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(HTML::Parser)
 BuildRequires:  perl(LWP)
+BuildRequires:  perl(Test::LWP::UserAgent)
 BuildRequires:  perl(URI)
 Requires:       perl(Class::ErrorHandler)
 Requires:       perl(HTML::Parser)
@@ -47,20 +46,24 @@ given a URI. It (currently) passes all of the auto-discovery tests at
 _http://diveintomark.org/tests/client/autodiscovery/_.
 
 _Feed::Find_ will discover the following feed formats:
-* RSS 0.91
-* RSS 1.0
-* RSS 2.0
-* Atom
+
+* * RSS 0.91
+
+* * RSS 1.0
+
+* * RSS 2.0
+
+* * Atom
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
-#%check
-#make test
+%check
+make test
 
 %install
 %perl_make_install
@@ -68,7 +71,6 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
