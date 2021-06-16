@@ -119,4 +119,12 @@
   (wxWidgets-devel, wxGTK3-devel).</comment>
     <requestid>849726</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>796ec20ea0ffa9cd2bd37124d7408cc2</srcmd5>
+    <version>3.1.5</version>
+    <time>1623868397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898084</requestid>
+  </revision>
 </revisionlist>

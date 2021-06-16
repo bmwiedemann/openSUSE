@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:09:48 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.1.5:
+  * New wxWebRequest and related classes provide a simple way to
+    use HTTPS and HTTP/2 from wxWidgets applications using native
+    libraries or libcurl.
+  * Support EGL in wxGLCanvas and Wayland in wxMediaCtrl under
+    Linux.
+  * Many appearance and other fixes for macOS 11.
+  * More improvements to wxGrid UI, API and performance.
+  * wxImage improvements: add alpha support in Paste() and
+    clipboard support.
+  * API additions: wxPersistentComboBox, wxFileName::ResolveLink(),
+    wxFileHistory::SetMenuPathStyle(), wxString::utf8_string(),
+    wxEVT_FULLSCREEN.
+  * Improvements: wxConfig now supports 64-bit integers, wxLog uses
+    millisecond resolution in timestamps, XRC files can be loaded
+    from URLs.
+  * Yet more bug fixes, fixes for API inconsistencies and
+    optimizations, notably in wxDataViewCtrl, wxListCtrl,
+    wxPropertyGrid.
+- Remove patches fixed upstream:
+  * 0001-Don-t-use-wxASCII_STR-inside-wxART_MAKE_XXX_ID-macro.patch.
+  * 0002-Fix-documented-type-of-wxART_XXX-constants.patch.
+
+-------------------------------------------------------------------
 Mon Nov 16 14:02:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix an rpmlint warning by moving libwx_base symlinks to their

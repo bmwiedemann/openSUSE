@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,12 +65,12 @@ Name:           wxQt-3_2
 # Use default debug level, enabling exceptions
 # Other valid values: yes/no/max
 %define wx_debug %nil
-%define psonum 4_0_0
-%define sonum 4.0.0
-Version:        3.1.4
+%define psonum 5_0_0
+%define sonum 5.0.0
+Version:        3.1.5
 Release:        0
 %define wx_minor 3.1
-%define wx_micro 3.1.4
+%define wx_micro 3.1.5
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 Group:          Development/Libraries/C and C++
@@ -82,10 +82,6 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Don-t-use-wxASCII_STR-inside-wxART_MAKE_XXX_ID-macro.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0002-Fix-documented-type-of-wxART_XXX-constants.patch
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
