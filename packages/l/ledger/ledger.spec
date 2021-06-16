@@ -25,6 +25,8 @@ Group:          Productivity/Office/Finance
 URL:            https://github.com/ledger/ledger
 Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         ledger-cmakelists.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-compilation-with-Boost-1.76.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel >= 1.49.0

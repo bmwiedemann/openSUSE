@@ -1,0 +1,44 @@
+From 69e6b89cf8d2820d28174e7ffaea1c59a0f84d3f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 14 Jun 2021 12:37:58 +0000
+Subject: [PATCH] Fix compilation with Boost 1.76
+
+We were previously relying on an indirect include within Boost headers. We're
+using scoped_ptr which is defined in <boost/smart_ptr/scoped_ptr.hpp>.
+
+Bug: https://bugs.gentoo.org/790176
+Closes: https://github.com/ledger/ledger/issues/2030
+---
+ src/expr.cc  | 2 ++
+ src/format.h | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/src/expr.cc b/src/expr.cc
+index c8945d3..c19bba9 100644
+--- a/src/expr.cc
++++ b/src/expr.cc
+@@ -35,6 +35,8 @@
+ #include "parser.h"
+ #include "scope.h"
+ 
++#include <boost/smart_ptr/scoped_ptr.hpp>
++
+ namespace ledger {
+ 
+ expr_t::expr_t() : base_type()
+diff --git a/src/format.h b/src/format.h
+index 15431cf..48c690b 100644
+--- a/src/format.h
++++ b/src/format.h
+@@ -45,6 +45,8 @@
+ #include "expr.h"
+ #include "unistring.h"
+ 
++#include <boost/smart_ptr/scoped_ptr.hpp>
++
+ namespace ledger {
+ 
+ class unistring;
+-- 
+2.32.0
+
