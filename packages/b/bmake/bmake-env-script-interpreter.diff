@@ -2,7 +2,7 @@
 +++ mk/meta2deps.py	2018-08-05 12:14:09.742096756 +0300
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/python
++#!/usr/bin/python3
  
  from __future__ import print_function
  

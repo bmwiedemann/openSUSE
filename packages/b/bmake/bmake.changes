@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 04:11:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update bmake-env-script-interpreter.diff to switch to interpreter
+  to python3.
+
+-------------------------------------------------------------------
 Sun Jun 14 17:07:15 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated allow-overriding-compiler-variables.patch.
