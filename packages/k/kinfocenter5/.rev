@@ -1007,4 +1007,19 @@
     <comment>Plasma 5.22.0</comment>
     <requestid>897476</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>6ef59a8f7a2ef26a82fd77adbbe0d1b0</srcmd5>
+    <version>5.22.1</version>
+    <time>1623868469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- No code changes since 5.22.0
+
+- Add missing pkgconfig(libusb-1.0) BuildRequires (boo#1187319)
+- Mention all KCMs in %files explicitly</comment>
+    <requestid>900290</requestid>
+  </revision>
 </revisionlist>

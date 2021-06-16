@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           kinfocenter5
-Version:        5.22.0
+Version:        5.22.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         kinfocenter-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
 %if %{with lang}
-Source1:        kinfocenter-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE plasma-session-name.patch
@@ -70,6 +70,7 @@ BuildRequires:  cmake(Qt5Core) >= 5.12.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(libusb-1.0)
 %ifarch %arm aarch64
 BuildRequires:  pkgconfig(glesv2)
 %else
@@ -106,7 +107,19 @@ KDE Utility that provides information about a computer system.
 %files
 %license LICENSES/*.txt
 %{_kf5_bindir}/kinfocenter
-%{_kf5_plugindir}/
+%dir %{_kf5_plugindir}/
+%{_kf5_plugindir}/kcm_about_distro.so
+%{_kf5_plugindir}/kcm_devinfo.so
+%{_kf5_plugindir}/kcm_info.so
+%{_kf5_plugindir}/kcm_memory.so
+%{_kf5_plugindir}/kcm_opengl.so
+%{_kf5_plugindir}/kcm_pci.so
+%{_kf5_plugindir}/kcm_usb.so
+%{_kf5_plugindir}/kcm_view1394.so
+%dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_energyinfo.so
+%{_kf5_plugindir}/kcms/kcm_nic.so
+%{_kf5_plugindir}/kcms/kcm_samba.so
 %{_kf5_applicationsdir}/org.kde.kinfocenter.desktop
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_htmldir}
