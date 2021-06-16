@@ -16,7 +16,7 @@
 #
 
 
-%define rev 354f6a23e0ceb03593cf1e6cadf88da5fc4f5361
+%define rev 612767c878220398c3aa6ac5556be9adb28db9aa
 
 %bcond_without git
 
@@ -29,7 +29,7 @@
 %define gname Clementine
 
 Name:           clementine
-Version:        1.3.99.20210304
+Version:        1.3.99.20210609
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later

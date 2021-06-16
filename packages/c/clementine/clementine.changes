@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 11 05:42:38 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.3.99.20210609
+  * For upstream changes go to:
+    https://github.com/clementine-player/Clementine/compare/354f6a23e0ce...612767c87822
+
+-------------------------------------------------------------------
 Thu Apr  8 07:29:38 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to git snapshot 1.3.99.20210304 to fix build against the

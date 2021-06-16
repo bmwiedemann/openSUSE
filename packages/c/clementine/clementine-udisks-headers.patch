@@ -1,13 +1,15 @@
-Index: b/src/CMakeLists.txt
-===================================================================
---- a/src/CMakeLists.txt	2021-04-07 15:22:15.000000000 +0200
-+++ b/src/CMakeLists.txt	2021-04-07 16:15:20.232103946 +0200
-@@ -1013,6 +1013,8 @@ if(UNIX AND HAVE_DBUS)
+---
+ src/CMakeLists.txt |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1016,6 +1016,8 @@ if(UNIX AND HAVE_DBUS)
    list(APPEND HEADERS ${CMAKE_CURRENT_BINARY_DIR}/dbus/avahientrygroup.h)
    list(APPEND SOURCES ${CMAKE_CURRENT_BINARY_DIR}/dbus/avahientrygroup.cpp)
  
 +  set_source_files_properties( dbus/org.freedesktop.UDisks.xml dbus/org.freedesktop.UDisks.Device.xml PROPERTIES NO_NAMESPACE TRUE)
 +
-   # DeviceKit DBUS interfaces
-   if(HAVE_DEVICEKIT)
-     set_source_files_properties(dbus/org.freedesktop.UDisks.xml
+   if(HAVE_UDISKS2)
+       set_source_files_properties(dbus/org.freedesktop.DBus.ObjectManager.xml
+           PROPERTIES NO_NAMESPACE dbus/objectmanager INCLUDE dbus/metatypes.h)
