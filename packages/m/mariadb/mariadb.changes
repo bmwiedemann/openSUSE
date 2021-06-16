@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 31 17:50:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 10.5.10
+  * Fix CVE-2021-2154
+  * Add ST_DISTANCE_SPHERE for calculating the spherical distance
+    between two geometries (point or multipoint) on a sphere
+  * Fix: Crash with invalid multi-table update of view in 2nd execution
+    of SP
+  * Fix: Incorrect name resolution for subqueries in ON expressions
+  * Fix: Complex query in Store procedure corrupts results
+  * Fix: DELETE HISTORY may delete current data on system-versioned
+    table
+  * Fix: Crashes with nested table value constructors
+  * Fix: Server crashes in thd_clear_errors()
+  * Fix: The statement set password=password('') executed in
+    PS mode fails in case it is run by a user with expired password
+  * Full changes: https://mariadb.com/kb/en/mariadb-10510-changelog/
+- Drop mariadb-10.5.9-cmake-3.20.patch, applied upstream
+
+-------------------------------------------------------------------
 Thu Apr 29 12:10:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mariadb-10.5.9-cmake-3.20.patch: Fix syntax error which is

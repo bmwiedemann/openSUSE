@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,14 +56,14 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.5.9
+Version:        10.5.10
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Productivity/Databases/Servers
 URL:            https://www.mariadb.org
-Source:         https://downloads.mariadb.org/f/mariadb-%{version}/source/mariadb-%{version}.tar.gz
-Source1:        %{name}-%{version}.tar.gz.sig
+Source:         https://downloads.mariadb.com/MariaDB/%{name}-%{version}/source/%{name}-%{version}.tar.gz
+Source1:        https://downloads.mariadb.com/MariaDB/%{name}-%{version}/source/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source4:        README.debug
 Source5:        suse-test-run
@@ -85,7 +85,6 @@ Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
-Patch8:         mariadb-10.5.9-cmake-3.20.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -374,7 +373,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

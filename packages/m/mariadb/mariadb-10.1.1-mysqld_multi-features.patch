@@ -48,7 +48,7 @@ Index: scripts/mysqld_multi.sh
    else
    {
 @@ -344,6 +350,39 @@ sub start_mysqlds()
-     $com= "$mysqld";
+ 
      for ($j = 0, $tmp= ""; defined($options[$j]); $j++)
      {
 +      if ("--datadir=" eq substr($options[$j], 0, 10)) {
