@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:58:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Build KDirWatch tests without threads on windows
+  * Clean up Threads CMake code
+  * kcoreaddons_add_plugin: make SOURCES argument optional
+  * Bump required CMake version to 3.16
+  * KJob: if a delegate is already attached to a job, warn when setJob() is called
+  * Make KAboutData::productName accessible for KCrash
+  * Do not return duplicate plugins in KPluginLoader::findPlugins
+
+-------------------------------------------------------------------
 Sat May  1 16:40:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
