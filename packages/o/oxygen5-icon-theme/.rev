@@ -503,4 +503,12 @@
     <comment>KDE Frameworks 5.82 (forwarded request 891438 from cgiboudeaux)</comment>
     <requestid>891791</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>523fa9195b38ceaf81a07bf12c59b7ad</srcmd5>
+    <version>5.83.0</version>
+    <time>1623868458</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.83.0</comment>
+    <requestid>899774</requestid>
+  </revision>
 </revisionlist>
