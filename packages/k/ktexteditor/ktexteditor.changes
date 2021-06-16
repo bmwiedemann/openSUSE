@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  5 11:59:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Too many changes since 5.82.0, only listing bugfixes:
+  * Limit shortcut context to active view for Reuse Word Above/Below (kde#352902)
+  * Add "Transpose Words" feature (kde#436621)
+  * Fix on-the-fly spell checking with recent Qt (kde#436004)
+  * Revert "Add option to keep spaces to the left of cursor when
+    saving" (kde#433455)
+
+-------------------------------------------------------------------
 Sat May  1 16:41:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.82.0
