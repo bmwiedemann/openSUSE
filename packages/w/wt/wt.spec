@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_4_0
+%define so_version 4_5_0
 Name:           wt
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
-#
-#
 Summary:        Web Toolkit
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
-Source0:        https://github.com/kdeforche/wt/archive/%{version}.tar.gz
+Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-WT-8467-add-limits-header-for-gcc-11.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
@@ -125,13 +125,12 @@ the library generates the necessary HTML, Javascript, CGI, and AJAX
 code.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
     -DENABLE_FIREBIRD=OFF \
     -DENABLE_QT4=OFF \
-    -DUSE_SYSTEM_IBPP=ON \
     -DSHARED_LIBS=ON \
     -DMULTI_THREADED=ON \
     -DUSE_SYSTEM_SQLITE3=ON \
@@ -142,25 +141,24 @@ code.
     -DWEBGROUP="%{apache_group}" -DWEBUSER="%{apache_user}" \
     -DRUNDIR="%{WTRUNDIR}" \
     -DBUILD_EXAMPLES=ON \
-    -DENABLE_GM=ON \
     -DWT_WRASTERIMAGE_IMPLEMENTATION=GraphicsMagick \
     -DENABLE_POSTGRES=ON \
     -DWT_WITH_SSL=ON \
     -DHTTP_WITH_ZLIB=ON
-make V=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 
-mkdir -p %{buildroot}/%{_docdir}/%{name}
-mkdir -p %{buildroot}/%{WTSRVDIR}
-mkdir -p %{buildroot}/%{WTRUNDIR}
-mkdir %{buildroot}/%{_docdir}/%{name}-devel/
-cp -rv doc/* %{buildroot}/%{_docdir}/%{name}-devel/
-mv -v %{buildroot}/%{_datadir}/Wt %{buildroot}/%{_datadir}/wt
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mkdir -p %{buildroot}%{WTSRVDIR}
+mkdir -p %{buildroot}%{WTRUNDIR}
+mkdir %{buildroot}%{_docdir}/%{name}-devel/
+cp -rv doc/* %{buildroot}%{_docdir}/%{name}-devel/
+mv -v %{buildroot}%{_datadir}/Wt %{buildroot}%{_datadir}/wt
 
 # Remove shell scripts used for generating some images.
-rm %{buildroot}/%{_datadir}/wt/resources/themes/*/*/generate.sh
+rm %{buildroot}%{_datadir}/wt/resources/themes/*/*/generate.sh
 
 %fdupes %{buildroot}/%{_docdir}
 %fdupes %{buildroot}/%{_datadir}

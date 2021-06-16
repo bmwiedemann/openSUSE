@@ -330,4 +330,12 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>854858</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c307deac76312b01a8739191008a6e98</srcmd5>
+    <version>4.5.0</version>
+    <time>1623868481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900199</requestid>
+  </revision>
 </revisionlist>

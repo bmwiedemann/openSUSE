@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 15:31:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.5.0. Notable changes:
+  * Wt now targets C++14
+  * Wt::Dbo: the Firebird backend has been marked as unmaintained
+  See https://webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+  for other changes.
+- Add upstream patch:
+  * 0001-WT-8467-add-limits-header-for-gcc-11.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 10:52:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add BuildRequires: libboost_atomic-devel to fix building the
