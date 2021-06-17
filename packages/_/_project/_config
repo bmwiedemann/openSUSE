@@ -419,6 +419,7 @@ Prefer: python39-tornado -python39-tornado5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
+Prefer: -PackageKit-command-not-found
 
 # have choice for pkgconfig(libftdi): libftdi-devel libftdi0-devel
 Prefer: libftdi-devel
