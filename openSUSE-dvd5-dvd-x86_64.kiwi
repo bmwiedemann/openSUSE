@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210615" schemaversion="4.1">
+<image name="OBS__openSUSE___20210616" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210615</productvar>
+      <productvar name="VERSION">20210616</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210615,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210616,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210615/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210616/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -107,6 +107,7 @@
       <repopackage name="alsa-plugins-upmix"/>
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
+      <repopackage name="alts"/>
       <repopackage name="amarok"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
@@ -184,7 +185,6 @@
       <repopackage name="baloo5-file"/>
       <repopackage name="baloo5-file-lang"/>
       <repopackage name="baloo5-imports"/>
-      <repopackage name="baloo5-imports-lang"/>
       <repopackage name="baloo5-kioslaves"/>
       <repopackage name="baloo5-kioslaves-lang"/>
       <repopackage name="baloo5-tools"/>
@@ -313,6 +313,7 @@
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -1407,6 +1408,7 @@
       <repopackage name="libacl1-32bit" arch="x86_64"/>
       <repopackage name="libadwaitaqt1"/>
       <repopackage name="libaio1"/>
+      <repopackage name="libalternatives1"/>
       <repopackage name="libamd2"/>
       <repopackage name="libamtk-5-0"/>
       <repopackage name="libAnalitza5"/>
@@ -2999,12 +3001,12 @@
       <repopackage name="libwps-0_4-4"/>
       <repopackage name="libwrap0"/>
       <repopackage name="libwsutil12"/>
-      <repopackage name="libwx_baseu-suse-nostl4_0_0" arch="x86_64"/>
-      <repopackage name="libwx_baseu_net-suse-nostl4_0_0" arch="x86_64"/>
-      <repopackage name="libwx_baseu_xml-suse-nostl4_0_0" arch="x86_64"/>
-      <repopackage name="libwx_gtk3u_core-suse-nostl4_0_0" arch="x86_64"/>
-      <repopackage name="libwx_gtk3u_html-suse-nostl4_0_0" arch="x86_64"/>
-      <repopackage name="libwx_gtk3u_qa-suse-nostl4_0_0" arch="x86_64"/>
+      <repopackage name="libwx_baseu-suse-nostl5_0_0" arch="x86_64"/>
+      <repopackage name="libwx_baseu_net-suse-nostl5_0_0" arch="x86_64"/>
+      <repopackage name="libwx_baseu_xml-suse-nostl5_0_0" arch="x86_64"/>
+      <repopackage name="libwx_gtk3u_core-suse-nostl5_0_0" arch="x86_64"/>
+      <repopackage name="libwx_gtk3u_html-suse-nostl5_0_0" arch="x86_64"/>
+      <repopackage name="libwx_gtk3u_qa-suse-nostl5_0_0" arch="x86_64"/>
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-6-32bit" arch="x86_64"/>
       <repopackage name="libX11-data"/>
@@ -4133,6 +4135,8 @@
       <repopackage name="python38-zope.schema"/>
       <repopackage name="python38-zypp-plugin"/>
       <repopackage name="qalculate-data"/>
+      <repopackage name="qca-qt5"/>
+      <repopackage name="qca-qt5-plugins"/>
       <repopackage name="qemu"/>
       <repopackage name="qemu-arm"/>
       <repopackage name="qemu-audio-spice"/>
