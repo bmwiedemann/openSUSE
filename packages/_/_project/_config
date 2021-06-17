@@ -1,4 +1,4 @@
-Prefer: libqca-qt5 libqca-qt5-plugins
+Prefer: libqca-qt5-2 qca-qt5-plugins
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
@@ -72,9 +72,19 @@ Macros:
 :Macros
 %endif
 
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree"
+Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict
+Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
+%else
+Ignore: container-build-checks-strict
+Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE 
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE 
+Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE
+%endif
+
 Substitute: kiwi-setup:image  python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz    python3-kiwi
-Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
 Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
 Prefer: kiwi-systemdeps-filesystems
@@ -90,15 +100,10 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
 # Podman based image building
-Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
 
-%if "%_project" != "openSUSE:Factory" && "%_project" != "openSUSE:Factory:PowerPC" && "%_project" != "openSUSE:Factory:ARM" && "%_project" != "openSUSE:Factory:Rebuild" && "%_project" != "openSUSE:Factory:Live" && "%_project" != "openSUSE:Factory:NonFree"
-Ignore: container-build-checks-strict
-%endif
 
 
 Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
