@@ -102,6 +102,7 @@
     <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -171,7 +172,6 @@
     <package name="baloo5-file" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-file-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="baloo5-imports-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-kioslaves" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-kioslaves-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1623,6 +1623,7 @@
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libadwaitaqt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaio1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libamtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3773,6 +3774,8 @@
     <package name="python38-zope.schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="qca-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="qca-qt5-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-arm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-audio-spice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -5051,6 +5054,7 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5305,12 +5309,12 @@
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libwx_baseu-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_baseu_net-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_baseu_xml-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk3u_core-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk3u_html-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk3u_qa-suse-nostl4_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_net-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_xml-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_core-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_html-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_qa-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libxcb-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libxcb-render0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxcb-screensaver0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
