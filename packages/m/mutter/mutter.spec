@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        40.0
+Version:        40.2.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ Source:         https://download.gnome.org/sources/mutter/40/%{name}-%{version}.
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
-# PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
+# PATCH-NEEDS-REBASE mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there WAS PATCH-FIX-UPSTREAM
 Patch4:         mutter-disable-cvt-s390x.patch
 
 ## SLE-only patches start at 1000
@@ -135,7 +135,7 @@ applications that want to make use of the mutter library.
 %prep
 %setup -q
 %patch3 -p1
-%patch4 -p1
+#patch4 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter

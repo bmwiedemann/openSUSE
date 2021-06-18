@@ -1418,4 +1418,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:mutter revision:163, using expand</comment>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>3752773c1737e5a63fd636e08c95b937</srcmd5>
+    <version>40.2.1</version>
+    <time>1624004014</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 900383 from iznogood)</comment>
+    <requestid>900450</requestid>
+  </revision>
 </revisionlist>
