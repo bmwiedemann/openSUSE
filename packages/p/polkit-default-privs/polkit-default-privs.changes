@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 15 09:31:54 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210615.e149f78:
+  * profiles: cinnamon-settings-daemon (bsc#1186845)
+
+-------------------------------------------------------------------
+Thu Jun 10 07:53:07 UTC 2021 - jsegitz@suse.com
+
+- Update to version 1550+20210610.25c9b98:
+  * Whitelist setroubleshoot (boo#1186344)
+
+-------------------------------------------------------------------
 Thu May 20 14:11:15 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210520.336dcea:

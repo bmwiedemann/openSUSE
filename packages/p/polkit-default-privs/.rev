@@ -1817,4 +1817,16 @@ for 12.3</comment>
   * whitelist incremental libvirt org.libvirt.api.node-device.delete (bsc#1186270)</comment>
     <requestid>895291</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>b9efb193aec9148685e51ed87bc8ecf9</srcmd5>
+    <version>1550+20210615.e149f78</version>
+    <time>1624003992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210615.e149f78:
+  * profiles: cinnamon-settings-daemon (bsc#1186845)
+
+- Update to version 1550+20210610.25c9b98:
+  * Whitelist setroubleshoot (boo#1186344)</comment>
+    <requestid>900117</requestid>
+  </revision>
 </revisionlist>
