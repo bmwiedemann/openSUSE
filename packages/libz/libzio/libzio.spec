@@ -1,7 +1,7 @@
 #
 # spec file for package libzio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 Name:           libzio
 %define lname   libzio1
-Version:        1.06
+Version:        1.08
 Release:        0
 Summary:        A Library for Accessing Compressed Text Files
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://libzio.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.bz2
+URL:            http://libzio.sourceforge.net/
+Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  libbz2-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -63,15 +65,20 @@ and static library.
 make %{?_smp_mflags} noweak
 
 %check
-make testt
-make tests
-make testx
-for comp in gzip bzip2 lzma xz
+make testt tests testx
+for comp in gzip bzip2 lzma xz zstd
 do
+    case $comp in
+    gzip) x=g ;;
+    bzip2) x=b ;;
+    lzma) x=l ;;
+    xz) x=x ;;
+    zstd) x=s ;;
+    esac
     $comp -c < fzopen.3.in > fzopen.test
     ./testt fzopen.test | cmp fzopen.3.in -
-    cat fzopen.test | ./tests ${comp:0:1} | cmp fzopen.3.in -
-    ./testx ${comp:0:1} < fzopen.3.in | ./tests ${comp:0:1} | cmp fzopen.3.in -
+    cat fzopen.test | ./tests $x | cmp fzopen.3.in -
+    ./testx $x < fzopen.3.in | ./tests $x | cmp fzopen.3.in -
 done
 
 %install

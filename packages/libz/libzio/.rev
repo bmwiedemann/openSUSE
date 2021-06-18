@@ -328,4 +328,16 @@
     <comment></comment>
     <requestid>720713</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d1a80bf37146df898bc5ac11d4ca7720</srcmd5>
+    <version>1.08</version>
+    <time>1624003988</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct download URL 
+
+- Version 1.08: Fix bug triggered by short files
+
+- Version 1.07: Add support for zstd at least for write and read</comment>
+    <requestid>898664</requestid>
+  </revision>
 </revisionlist>

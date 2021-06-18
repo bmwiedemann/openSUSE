@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:24:52 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Correct download URL 
+
+-------------------------------------------------------------------
+Wed Jun  9 07:24:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Version 1.08: Fix bug triggered by short files
+
+-------------------------------------------------------------------
+Tue Jun  8 13:43:13 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Version 1.07: Add support for zstd at least for write and read 
+
+-------------------------------------------------------------------
 Fri Aug  2 06:50:26 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library
