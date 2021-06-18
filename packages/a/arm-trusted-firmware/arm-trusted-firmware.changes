@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 10 10:16:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable A3700 tools until fixed upstream:
+  https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell/issues/22
+
+-------------------------------------------------------------------
+Thu Jun  3 12:54:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix rk3399 build:
+  * atf-2411053.diff
+
+-------------------------------------------------------------------
+Thu May 20 15:20:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.5:
+  * changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/tree/docs/change-log.rst#version-25
+
+-------------------------------------------------------------------
 Fri Dec 11 09:30:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 2.4:

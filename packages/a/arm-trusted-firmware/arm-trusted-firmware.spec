@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,9 @@
 %else
 %global debug_build 1
 %endif
+
+# Disable A3700 tools until upstream fixed it - https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell/issues/22
+%bcond_with A3700_tools
 
 %bcond_with atf_optee
 
@@ -47,20 +50,22 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.4
+Version:        2.5
 Release:        0
-%define srcversion 2.4
+%define srcversion 2.5
 %define mv_ddr_ver mv-ddr-devel
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver 18.12
 Summary:        Arm Trusted Firmware-A
 License:        BSD-3-Clause
 Group:          System/Boot
-Url:            https://www.trustedfirmware.org/
+URL:            https://www.trustedfirmware.org/
 Source:         https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/trusted-firmware-a-%{srcversion}.tar.gz
 Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
+# PATCH-FIX-UPSTREAM - https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/9990
+Patch1:         atf-2411053.diff
 Patch150:       A3700_utils-drop-git.patch
 %if "%{platform}" != ""
 #!BuildIgnore: gcc-PIE
@@ -199,6 +204,7 @@ install -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %patch150 -p1
 popd
 %endif
+%patch1 -p1
 
 %build
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
@@ -207,10 +213,12 @@ export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trust
 
 make %{?_smp_mflags} V=1 fiptool
 
+%if %{with A3700_tools}
 pushd A3700-utils-marvell-%{a3700_utils_ver}
 make %{?_smp_mflags} -C wtptp/src/TBB_Linux -f TBB_linux.mak INCDIR=%{_includedir}/cryptopp LIBDIR=%{_libdir}
 make %{?_smp_mflags} -C wtptp/src/Wtpdownloader_Linux -f makefile.mk
 popd
+%endif
 
 %else
 %if "%{platform}" == "a3700"
@@ -351,11 +359,13 @@ done
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 tools/fiptool/fiptool %{buildroot}%{_bindir}/fiptool
 
+%if %{with A3700_tools}
 pushd A3700-utils-marvell-%{a3700_utils_ver}
 # No need to have a _linux suffix on Linux
 install -D -m 0755 wtptp/src/TBB_Linux/release/TBB_linux %{buildroot}%{_bindir}/TBB
 install -D -m 0755 wtptp/src/Wtpdownloader_Linux/WtpDownload_linux %{buildroot}%{_bindir}/WtpDownload
 popd
+%endif
 %else
 
 export NO_BRP_STRIP_DEBUG=true
@@ -440,7 +450,7 @@ fi
 %defattr(-,root,root)
 %license license.rst
 %doc docs/about/acknowledgements.rst docs/process/contributing.rst docs/about/maintainers.rst readme.rst dco.txt
-%if "%{platform}" != "" 
+%if "%{platform}" != ""
 %{_datadir}/%{name}
 %endif
 %if "%{platform}" == "rpi3" || "%{platform}" == "rpi4"
@@ -448,11 +458,13 @@ fi
 %endif
 
 %if "%{platform}" == ""
-%files tools 
+%files tools
 %defattr(-,root,root)
 %{_bindir}/fiptool
+%if %{with A3700_tools}
 %{_bindir}/TBB
 %{_bindir}/WtpDownload
+%endif
 %endif
 
 %if "%{platform}" == "poplar"
