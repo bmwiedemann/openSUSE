@@ -1,7 +1,7 @@
 #
 # spec file for package thin-provisioning-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Conflicts:      device-mapper < 1.02.115
 
 %description
@@ -45,6 +45,8 @@ A suite of tools for thin provisioning on Linux.
 %autosetup
 
 %build
+export CXXFLAGS="${CXXFLAGS} -fPIC"
+export LDFLAGS="-pie"
 autoreconf -fiv
 %configure \
   --bindir=%{_sbindir} \

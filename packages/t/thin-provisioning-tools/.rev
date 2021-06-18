@@ -190,4 +190,12 @@
   * ft-lib_bcache-rename-raise-raise_.patch</comment>
     <requestid>828047</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8fc700c5e3a4b014d0664eee7d4411e7</srcmd5>
+    <version>0.9.0</version>
+    <time>1624004005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900189</requestid>
+  </revision>
 </revisionlist>
