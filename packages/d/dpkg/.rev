@@ -363,4 +363,41 @@ The link of update-alternatives should also be changed from deb to dpkg.</commen
     <comment></comment>
     <requestid>891979</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d508c76229d3b907ddbd8340d6a8ebac</srcmd5>
+    <version>1.20.9</version>
+    <time>1624003989</time>
+    <user>dimstar_suse</user>
+    <comment>- do not include update-alternative manpages in dpkg
+- use-clamp-from-C-STD-library.patch: removed, upstreamed
+
+- Refresh patches for new version
+  * update-alternatives-suse.patch
+- Set minimum version for po4a to 0.59 in BuildRequires
+- Update file list in %files section
+- Version update to 1.20.9 (boo#1181867)
+  [ Guillem Jover ]
+  * Test suite:
+    - Pass --ignore-builtin-builddeps to dpkg-buildpackage.
+- from version 1.20.8
+  [ Guillem Jover ]
+  * start-stop-daemon: Open the --output file in append mode.
+  * dpkg: Fix --auto-deconfigure for essential and protected during
+    installation. Reported by Julian Andres Klode &lt;jak@debian.org&gt;.
+    See #983014.
+  * dpkg-realpath: Fix resolution for absolute symlinks on «/».
+    Closes: #983855
+  * dpkg-realpath: Fix symlink loop tracker.
+  * Perl modules:
+    - Test::Dpkg: Fix test data path fetching on CPAN.
+    - Dpkg::Exit: Preserve exit code in END block.
+  * Build system:
+    - Group Test::Dpkg changelog entries into “Perl modules” section.
+  * Packaging:
+    - Run autopkgtest test suites in verbose mode.
+  * Test suite:
+    - Set PERL in the perl test suite.
+    - Use gunzip instead of zcat and assume it might not be present.</comment>
+    <requestid>899017</requestid>
+  </revision>
 </revisionlist>

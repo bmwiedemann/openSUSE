@@ -17,7 +17,7 @@
 
 
 Name:           dpkg
-Version:        1.19.0.5
+Version:        1.20.9
 Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Patch1:         update-alternatives-suse.patch
 # PATCH-FIX-SUSE: tar of Leap 42.{2,3} does not recognize --sort=name, --clamp-mtime options
 Patch2:         drop-tar-option.patch
 Patch3:         ncurses-fix.patch
-# PATCH-FIX-OPENSUSE: Use clamp from C++ STD library.
-Patch4:         use-clamp-from-C-STD-library.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -41,7 +39,7 @@ BuildRequires:  libmd-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
-BuildRequires:  po4a
+BuildRequires:  po4a >= 0.59
 BuildRequires:  update-alternatives
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
@@ -91,7 +89,6 @@ Libraries and header files for dpkg.
 %patch2 -p1
 %endif
 %patch3 -p1
-%patch4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -163,6 +160,8 @@ exit 0
 %doc ABOUT-NLS AUTHORS doc/triggers.txt NEWS README* THANKS TODO debian/changelog
 %{_mandir}/man*/*
 %exclude %{_mandir}/man*/update-alternatives*
+%exclude %{_datadir}/doc/dpkg/*.txt
+%exclude %{_datadir}/doc/dpkg/README*
 %dir %{_sysconfdir}/dpkg
 %config(noreplace) %{_sysconfdir}/dpkg/*
 %{_bindir}/*
@@ -173,9 +172,9 @@ exit 0
 %{perl_vendorlib}/Dpkg
 %{perl_vendorlib}/Dpkg.pm
 %{perl_vendorlib}/Dselect
-%{perl_vendorlib}/Dselect/Ftp.pm
 
 %files devel
+%{_datadir}/aclocal/*.m4
 %{_libdir}/libdpkg.a
 %{_libdir}/libdpkg.la
 %{_libdir}/pkgconfig/libdpkg.pc
