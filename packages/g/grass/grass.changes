@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 16:26:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add upstream patch b86314c7.patch to fix build failure due
+  to gdal 3.3.0. This close boo#1187371 and upstream issue#1649
+
+-------------------------------------------------------------------
 Sat May  8 20:11:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.8.5:
