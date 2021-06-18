@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 12 15:36:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.3.4
+  * X11 bugfix: Some window attributes were not applied on
+    leaving fullscreen
+
+-------------------------------------------------------------------
 Mon Mar 22 04:31:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added wayland build flavor

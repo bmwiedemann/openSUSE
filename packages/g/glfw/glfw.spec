@@ -24,7 +24,7 @@
 %endif
 %define sover  3
 Name:           glfw
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib
@@ -32,7 +32,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.glfw.org/
 Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
