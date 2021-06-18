@@ -135,7 +135,6 @@ Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
 Requires:       rpm
-Requires:       sysconfig
 Requires:       system-user-nobody
 Requires:       systemd
 Requires:       util-linux
@@ -333,6 +332,7 @@ Recommends:     bzip2
 # #375103
 Recommends:     cifs-utils
 Recommends:     command-not-found
+Suggests:       scout-command-not-found
 Recommends:     cpio
 Recommends:     cpupower
 Recommends:     cryptsetup
@@ -419,7 +419,6 @@ Recommends:     sed
 Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
-Recommends:     sysconfig
 #SUSE hardware tunings
 Recommends:     system-tuning-common-SUSE
 Recommends:     systemd-sysvinit

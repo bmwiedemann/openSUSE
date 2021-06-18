@@ -631,4 +631,17 @@
     <comment></comment>
     <requestid>896931</requestid>
   </revision>
+  <revision rev="73" vrev="19">
+    <srcmd5>7fbfc96421e3553fa5c285fb80ab9570</srcmd5>
+    <version>20200505</version>
+    <time>1624004015</time>
+    <user>dimstar_suse</user>
+    <comment>- We now have two command-not-found provider: favor the previously,
+  well tested one for now (scout-command-not-found).
+
+- Remove requirement on sysconfig package. Doesn't seem to contain anything
+  useful anymore. Tools that actually need it such as wicked will just require
+  sysconfig themselves.</comment>
+    <requestid>900563</requestid>
+  </revision>
 </revisionlist>

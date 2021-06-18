@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 17 11:27:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- We now have two command-not-found provider: favor the previously,
+  well tested one for now (scout-command-not-found).
+
+-------------------------------------------------------------------
+Wed Jun 16 15:16:46 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove requirement on sysconfig package. Doesn't seem to contain anything
+  useful anymore. Tools that actually need it such as wicked will just require
+  sysconfig themselves.
+
+-------------------------------------------------------------------
 Wed Jun  2 08:53:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Suggest kernel-default from patterns-base-base
