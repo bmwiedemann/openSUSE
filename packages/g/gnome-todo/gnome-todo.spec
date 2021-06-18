@@ -18,7 +18,7 @@
 
 
 Name:           gnome-todo
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
