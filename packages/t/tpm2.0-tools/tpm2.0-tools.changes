@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 17 09:26:42 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-tpm2_checkquote-fix-uninitialized-variable.patch for a better
+  fix of boo#1187316
+- Re-enable lto
+
+-------------------------------------------------------------------
 Tue Jun 15 09:36:37 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Disable lto to fix tpm2_checkquote error (boo#1187316)

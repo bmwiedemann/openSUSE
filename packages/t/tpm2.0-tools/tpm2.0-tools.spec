@@ -16,7 +16,6 @@
 #
 
 
-%define _lto_cflags %{nil}
 Name:           tpm2.0-tools
 Version:        5.1
 Release:        0
@@ -27,6 +26,7 @@ URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Patch0:         fix_bogus_warning.patch
 Patch1:         0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch
+Patch2:         0001-tpm2_checkquote-fix-uninitialized-variable.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -69,6 +69,7 @@ associated interfaces.
 %setup -q -n tpm2-tools-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # TODO: remove autoreconf once fix_pie_linking patch is no longer needed

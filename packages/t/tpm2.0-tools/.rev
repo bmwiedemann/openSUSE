@@ -466,4 +466,14 @@ s etc.
 - Update service file to point to the correct revision (forwarded request 900118 from aplanas)</comment>
     <requestid>900121</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>f25d82b9f34828128457f3eca65c9c29</srcmd5>
+    <version>5.1</version>
+    <time>1624004036</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_checkquote-fix-uninitialized-variable.patch for a better
+  fix of boo#1187316
+- Re-enable lto (forwarded request 900548 from aplanas)</comment>
+    <requestid>900549</requestid>
+  </revision>
 </revisionlist>
