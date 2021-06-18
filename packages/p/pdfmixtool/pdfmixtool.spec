@@ -17,16 +17,17 @@
 
 
 Name:           pdfmixtool
-Version:        0.6
+Version:        1.0.1
 Release:        0
 Summary:        Split, Merge, Rotate and Mix PDF Files
 License:        GPL-3.0-only
 Group:          Productivity/Publishing/PDF
 URL:            https://gitlab.com/scarpetta/pdfmixtool/
 Source0:        https://gitlab.com/scarpetta/pdfmixtool/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM qpdf9.patch asterios.dramis@gmail.com -- Fix compilation with qpdf-9 in Leap
+# PATCH-FIX-UPSTREAM qpdf9.patch asterios.dramis@gmail.com -- Fix compilation with qpdf-9 in Leap <= 15.2
 Patch0:         qpdf9.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -41,7 +42,7 @@ An application to split, merge, rotate, mix and create multipage PDF files.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} <= 150200 && 0%{?is_opensuse}
 %patch0 -p1
 %endif
 
@@ -52,10 +53,14 @@ An application to split, merge, rotate, mix and create multipage PDF files.
 %install
 %cmake_install
 %suse_update_desktop_file -r -G "PDF Mix Tool" eu.scarpetta.PDFMixTool Qt Office Publishing Graphics Viewer
+# Fix rpmlint warning "files-duplicate"
+install -dpm 0755 %{buildroot}%{_defaultdocdir}/%{name}
+install -pm 0644 AUTHORS.md CHANGELOG.md TRANSLATORS.md %{buildroot}%{_defaultdocdir}/%{name}/
+%fdupes -s %{buildroot}
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc AUTHORS.md CHANGELOG.md README.md TRANSLATORS.md
 %{_bindir}/pdfmixtool
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
