@@ -1,0 +1,5 @@
+<package name="openqa-mon" project="openSUSE:Factory">
+  <title></title>
+  <description>Terminal monitoring utilities for OpenQA </description>
+  <devel project="devel:languages:go" package="openqa-mon"/>
+</package>

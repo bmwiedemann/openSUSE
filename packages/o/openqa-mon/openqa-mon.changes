@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Fri Jun  4 08:03:53 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Fix incomplete display when job has more than 10 clones
+
+-------------------------------------------------------------------
+Wed May 12 06:51:33 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add --version to programs
+- Ignore skipped and cancelled jobs from notifications
+
+-------------------------------------------------------------------
+Thu Apr 29 12:28:27 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- openqa-revtui: Follow jobs
+- openqa-revtui: Mark failed jobs with bug refs as reviewed
+
+-------------------------------------------------------------------
+Fri Apr 16 11:52:27 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Tidy
+
+-------------------------------------------------------------------
+Fri Apr 16 11:48:51 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add 0.20
+
+-------------------------------------------------------------------
+Fri Apr 16 11:35:19 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Hotfix: Continuous program argument
+
+-------------------------------------------------------------------
+Fri Apr 16 10:06:43 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.2
+
+-------------------------------------------------------------------
+Tue Mar  9 15:19:26 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Remove unncessary go version
+
+-------------------------------------------------------------------
+Mon Mar  8 16:03:29 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Include openqa-mq and openqa-revtui
+
+-------------------------------------------------------------------
+Mon Mar  8 15:40:41 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.13
+
+-------------------------------------------------------------------
+Mon Mar  8 15:03:46 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to v0.12a
+
+-------------------------------------------------------------------
+Fri Feb 26 12:28:04 UTC 2021 - Pavel Dostál <pdostal@suse.com>
+
+- Add _service for the git and go forkflow
+- Package version v0.12a
+
+-------------------------------------------------------------------
+Thu Dec 10 10:02:44 UTC 2020 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.12
+- Ignore url fragments
+- Refactoring of the internal job ID process
+
+-------------------------------------------------------------------
+Wed Nov 11 14:48:32 UTC 2020 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.11
+
+-------------------------------------------------------------------
+Fri Jul 17 08:29:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial changelog entry for version 0.1
