@@ -10245,4 +10245,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <time>1623999995</time>
     <user>coolo</user>
   </revision>
+  <revision rev="1706" vrev="1706">
+    <srcmd5>cd1e86f8a1bd2a2e712424a2c1e961e3</srcmd5>
+    <version>unknown</version>
+    <time>1624000709</time>
+    <user>coolo</user>
+    <comment>15.1 Update is frozen now - remove interim files</comment>
+  </revision>
 </revisionlist>
