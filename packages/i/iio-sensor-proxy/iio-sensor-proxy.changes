@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:27:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1:
+  * Port to meson as a build system and add a test-suite.
+  * Fix long-standing problem with property changes being sent as
+    a broadcast.
+  * Fix sensor support for accelerometers with different scales on
+    different axes.
+  * Add sensor support for RGBC light sensors.
+  * Support reading proximity threshold from sysfs for DeviceTree
+    devices.
+- Use tar.bz2 source as this can be accessed using a repeatable
+  URL (not requiring commit id).
+- Switch to meson based building.
+- New BuildRequires: meson (for building), gtk-doc (to generate
+  docs); update required version of gudev to 234 in keeping with
+  minimum required version upstream.
+
+-------------------------------------------------------------------
 Tue Jul 14 17:38:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0:
