@@ -70,17 +70,22 @@ development using the PCI utilities.
 %autosetup -p1
 
 %build
-%make_build OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=/%{_lib} SBINDIR=/sbin STRIP="" SHARED="yes"
+%make_build OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=%{_libdir} SBINDIR=%{_sbindir} STRIP="" SHARED="yes"
 
 %install
-make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}/sbin \
-             ROOT=%{buildroot}/ MANDIR=%{buildroot}/%{_mandir} STRIP="" \
-	     SHARED="yes" LIBDIR=%{buildroot}/%{_lib}
+make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}%{_sbindir} \
+             ROOT=%{buildroot} MANDIR=%{buildroot}%{_mandir} STRIP="" \
+	     SHARED="yes" LIBDIR=%{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}/pci
-cp -p lib/{pci,header,config,types}.h %{buildroot}%{_includedir}/pci/
+cp -p lib/{pci,header,config,types}.h %{buildroot}%{_includedir}/pci
 rm -rf %{buildroot}%{_datadir}/pci.ids*
 install -D -m 0644 lib/libpci.pc %{buildroot}%{_libdir}/pkgconfig/libpci.pc
-ln -sf /%{_lib}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
+ln -sf %{_libdir}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
+
+%if !0%{?usrmerged}
+mkdir %{buildroot}/sbin
+ln -s %{_sbindir}/{lspci,setpci} %{buildroot}/sbin
+%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -88,9 +93,13 @@ ln -sf /%{_lib}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 %files
 %license COPYING
 %doc README
+%if !0%{?usrmerged}
 /sbin/lspci
 /sbin/setpci
-%exclude /sbin/update-pciids
+%endif
+%{_sbindir}/lspci
+%{_sbindir}/setpci
+%exclude %{_sbindir}/update-pciids
 %{_mandir}/man7/pcilib.7%{?ext_man}
 %{_mandir}/man8/lspci.8%{?ext_man}
 %{_mandir}/man8/setpci.8%{?ext_man}
@@ -99,11 +108,11 @@ ln -sf /%{_lib}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 
 %files -n %{lname}
 %license COPYING
-/%{_lib}/libpci.so.*
+%{_libdir}/libpci.so.*
 
 %files devel
 %license COPYING
-%{_includedir}/pci/
+%{_includedir}/pci
 %{_libdir}/libpci.so
 %{_libdir}/pkgconfig/libpci.pc
 
