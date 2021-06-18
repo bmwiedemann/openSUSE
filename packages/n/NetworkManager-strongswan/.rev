@@ -192,4 +192,16 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
     <comment></comment>
     <requestid>800321</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>96e96ca7a72e4740e6d385224be1facf</srcmd5>
+    <version>1.5.2</version>
+    <time>1624004000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.2
+ + Reduce height of config dialog by moving options/proposals to tabs
+ + Migrated appdata to metainfo (renamed and moved the file)
+- Update to version 1.5.1
+ + Fixes password entry for private keys (forwarded request 898363 from predivan)</comment>
+    <requestid>900136</requestid>
+  </revision>
 </revisionlist>

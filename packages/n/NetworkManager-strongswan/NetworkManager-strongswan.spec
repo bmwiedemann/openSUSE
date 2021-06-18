@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-strongswan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           NetworkManager-strongswan
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
-URL:            http://www.strongswan.org/
-Source0:        http://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2
-Source1:        http://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2.sig
+URL:            https://www.strongswan.org/
+Source0:        https://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2
+Source1:        https://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       README
-
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-1)
-
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       strongswan-nm >= 5.8.3
@@ -82,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files gnome
 %{_libexecdir}/nm-strongswan-auth-dialog
 %{_datadir}/gnome-vpn-properties/
-%{_datadir}/appdata/NetworkManager-strongswan.appdata.xml
+%{_datadir}/metainfo/NetworkManager-strongswan.metainfo.xml
 
 %files lang -f %{name}.lang
 
