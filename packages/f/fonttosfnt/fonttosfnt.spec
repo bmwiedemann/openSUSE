@@ -1,7 +1,7 @@
 #
 # spec file for package fonttosfnt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fonttosfnt
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Utility to wrap a bitmap font in a sfnt (TrueType) wrapper
 License:        MIT
