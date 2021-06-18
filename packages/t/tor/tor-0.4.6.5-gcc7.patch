@@ -1,0 +1,34 @@
+Author: Andreas Stieger
+Date: 2021-06-16
+
+Without this patch, compilation failed on gcc7
+ In file included from ./src/core/or/or.h:50:0,
+                  from src/feature/dirclient/dirclient.c:13:
+ src/feature/dirclient/dirclient.c: In function 'dir_client_decompress_response_body':
+ ./src/lib/log/ratelim.h:55:27: error: initializer element is not constant
+  #define RATELIM_INIT(r) { (r), 0, 0, 0 }
+                            ^
+ src/feature/dirclient/dirclient.c:1877:38: note: in expansion of macro 'RATELIM_INIT'
+      static ratelim_t warning_limit = RATELIM_INIT(LOG_INTERVAL);
+                                       ^~~~~~~~~~~~
+ ./src/lib/log/ratelim.h:55:27: note: (near initialization for 'warning_limit.rate')
+  #define RATELIM_INIT(r) { (r), 0, 0, 0 }
+                            ^
+ src/feature/dirclient/dirclient.c:1877:38: note: in expansion of macro 'RATELIM_INIT'
+      static ratelim_t warning_limit = RATELIM_INIT(LOG_INTERVAL);
+                                       ^~~~~~~~~~~~
+
+Index: tor-0.4.6.5/src/feature/dirclient/dirclient.c
+===================================================================
+--- tor-0.4.6.5.orig/src/feature/dirclient/dirclient.c
++++ tor-0.4.6.5/src/feature/dirclient/dirclient.c
+@@ -1873,8 +1873,7 @@ dir_client_decompress_response_body(char
+   /* If we're pretty sure that we have a compressed directory, and
+    * we didn't manage to uncompress it, then warn and bail. */
+   if (!plausible && !new_body) {
+-    const int LOG_INTERVAL = 3600;
+-    static ratelim_t warning_limit = RATELIM_INIT(LOG_INTERVAL);
++    static ratelim_t warning_limit = RATELIM_INIT(60 * 60);
+     log_fn_ratelim(&warning_limit, LOG_WARN, LD_HTTP,
+            "Unable to decompress HTTP body (tried %s%s%s, on %s).",
+            description1,

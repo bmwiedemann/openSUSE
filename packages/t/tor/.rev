@@ -874,4 +874,24 @@ nicer version with try-reload-or-restart</comment>
   * Fix an out-of-bounds memory access in v3 onion service descriptor parsing (CVE-2021-34550, boo#1187325)</comment>
     <requestid>900011</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>df6eb559e0c9e56927dae725a1a9c513</srcmd5>
+    <version>0.4.6.5</version>
+    <time>1624004032</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.6.5
+  * Add controller support for creating v3 onion services with
+    client auth
+  * When voting on a relay with a Sybil-like appearance, add the
+    Sybil flag when clearing out the other flags. This lets a relay
+    operator know why their relay hasn't been included in the
+    consensus
+  * Relays now report how overloaded they are
+  * Add a new DoS subsystem to control the rate of client
+    connections for relays
+  * Relays now publish statistics about v3 onions services
+  * Improve circuit timeout algorithm for client performance
+- add tor-0.4.6.5-gcc7.patch to fix build with gcc7</comment>
+    <requestid>900467</requestid>
+  </revision>
 </revisionlist>

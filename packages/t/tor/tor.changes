@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 16 20:32:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.6.5
+  * Add controller support for creating v3 onion services with
+    client auth
+  * When voting on a relay with a Sybil-like appearance, add the
+    Sybil flag when clearing out the other flags. This lets a relay
+    operator know why their relay hasn't been included in the
+    consensus
+  * Relays now report how overloaded they are
+  * Add a new DoS subsystem to control the rate of client
+    connections for relays
+  * Relays now publish statistics about v3 onions services
+  * Improve circuit timeout algorithm for client performance
+- add tor-0.4.6.5-gcc7.patch to fix build with gcc7
+
+-------------------------------------------------------------------
 Mon Jun 14 18:06:34 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.5.9
