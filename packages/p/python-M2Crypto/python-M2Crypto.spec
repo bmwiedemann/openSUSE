@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-M2Crypto
-Version:        0.37.1
+Version:        0.38.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
@@ -27,16 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://gitlab.com/m2crypto/m2crypto
 Source0:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz.asc
-# PATCH-FIX-UPSTREAM python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch mcepl@suse.com
-# https://salsa.debian.org/python-team/packages/m2crypto/-/commit/e0e9ad5cfff86383dabbb92540c0a4892cb4c456
-# Fixes incompatibility with the modern crypto policies
-Patch0:         python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
-# PATCH-FIX-UPSTREAM 293_sslv23_padding.patch gl#m2crypto/m2crypto#293 mcepl@suse.com
-# RSA_SSLV23_PADDING is evil and should be avoided.
-Patch1:         293_sslv23_padding.patch
-# PATCH-FIX-OPENSUSE no-need-parameterized.patch bsc#1185150 mcepl@suse.com
-# no need to require parameterized for normal use
-Patch2:         no-need-parameterized.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}

@@ -426,4 +426,26 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
 </comment>
     <requestid>887900</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8d16aae323819ea419dfffcfa28f5f01</srcmd5>
+    <version>0.38.0</version>
+    <time>1624003995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.38.0:
+    - Remove the last use of setup.py test idiom.
+    - Use m2_PyObject_AsReadBuffer instead of PyObject_AsReadBuffer.
+    - Add support for arm64 big endian &lt;Steev Klimaszewski&gt;
+    - Make support of RSA_SSLV23_PADDING optional (it has been deprecated).
+    - Move project to src/ layout
+    - Allow verify_cb_* to be called with ok=True  &lt;Casey Deccio&gt;
+    - Be prepared if any of constants in x509_vfy.h is not available.
+    - But we do support 3.8
+    - We DO NOT support Python 2.6.
+- All patches were upstreamed:
+    - 293_sslv23_padding.patch
+    - no-need-parameterized.patch
+    - python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
+</comment>
+    <requestid>900001</requestid>
+  </revision>
 </revisionlist>

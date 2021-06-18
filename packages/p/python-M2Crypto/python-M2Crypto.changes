@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 14 21:04:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.38.0:
+    - Remove the last use of setup.py test idiom.
+    - Use m2_PyObject_AsReadBuffer instead of PyObject_AsReadBuffer.
+    - Add support for arm64 big endian <Steev Klimaszewski>
+    - Make support of RSA_SSLV23_PADDING optional (it has been deprecated).
+    - Move project to src/ layout
+    - Allow verify_cb_* to be called with ok=True  <Casey Deccio>
+    - Be prepared if any of constants in x509_vfy.h is not available.
+    - But we do support 3.8
+    - We DO NOT support Python 2.6.
+- All patches were upstreamed:
+    - 293_sslv23_padding.patch
+    - no-need-parameterized.patch
+    - python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 22:33:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add no-need-parameterized.patch ... we don't need run-time requirement
