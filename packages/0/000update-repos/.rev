@@ -10273,4 +10273,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>15.0 is frozen</comment>
   </revision>
+  <revision rev="1710" vrev="1710">
+    <srcmd5>9ffc935e0996b8ed3068a75efece13b4</srcmd5>
+    <version>unknown</version>
+    <time>1624001498</time>
+    <user>coolo</user>
+    <comment>remove old 42.3 files</comment>
+  </revision>
 </revisionlist>
