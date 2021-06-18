@@ -10252,4 +10252,25 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>15.1 Update is frozen now - remove interim files</comment>
   </revision>
+  <revision rev="1707" vrev="1707">
+    <srcmd5>1e4ffcaa024e7802863237dd31a2b67d</srcmd5>
+    <version>unknown</version>
+    <time>1624001086</time>
+    <user>coolo</user>
+    <comment>15.0 is static</comment>
+  </revision>
+  <revision rev="1708" vrev="1708">
+    <srcmd5>bc70d93e0901696b0de083effe75a236</srcmd5>
+    <version>unknown</version>
+    <time>1624001213</time>
+    <user>coolo</user>
+    <comment>15.1 is frozen</comment>
+  </revision>
+  <revision rev="1709" vrev="1709">
+    <srcmd5>fdda00bdb53f74a709f57c3fe5975549</srcmd5>
+    <version>unknown</version>
+    <time>1624001349</time>
+    <user>coolo</user>
+    <comment>15.0 is frozen</comment>
+  </revision>
 </revisionlist>

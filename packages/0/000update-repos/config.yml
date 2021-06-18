@@ -10,7 +10,6 @@
    url: http://downloadcontent.opensuse.org/distribution/leap/15.0/repo/non-oss
 - 15.0:update:
    url: http://downloadcontent.opensuse.org/update/leap/15.0/oss
-   refresh: true
 - 15.0:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/15.0/non-oss
 - 15.1:
