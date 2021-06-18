@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  9 22:39:12 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Update to 0.9.3:
+  - Switched to stable space prefixes.
+  - Added option to send arbitrary content with membership events.
+  - Added warning if media encryption dependencies aren't installed.
+  - Added support for pycryptodomex for media encryption.
+  - Added utilities for pushing bridge status to an arbitrary HTTP endpoint.
+  - Changed update_direct_chats bridge method to only send updated m.direct data if the content was modified.
+  - Added type classes for VoIP.
+  - Added methods for modifying push rules and room tags.
+  - Switched to asyncio.create_task everywhere (replacing the older loop.create_task and asyncio.ensure_future).
+  - Added option to retry all HTTP requests when encountering a HTTP network error or gateway error response (502/503/504)
+    - Disabled by default, you need to set the default_retry_count field in HTTPAPI (or Client), or the default_http_retry_count field in AppService to enable.
+    - Can also be enabled with HTTPAPI.request()s retry_count parameter.
+    - The mautrix.util.network_retry module was removed as it became redundant.
+  - Fixed GET requests having a body (#44).
+
+-------------------------------------------------------------------
 Tue Mar 16 17:58:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.8.15:
