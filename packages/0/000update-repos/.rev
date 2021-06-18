@@ -10179,4 +10179,70 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>Add 15.2 and 15.3 config</comment>
   </revision>
+  <revision rev="1695" vrev="1695">
+    <srcmd5>d40e8a902846ba813982cba57c6d1ac1</srcmd5>
+    <version>unknown</version>
+    <time>1623999858</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1696" vrev="1696">
+    <srcmd5>885ecdef0d5b674c5a6122594e71dd98</srcmd5>
+    <version>unknown</version>
+    <time>1623999911</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1697" vrev="1697">
+    <srcmd5>9be27f2288a9ca96c0d674b402c94cad</srcmd5>
+    <version>unknown</version>
+    <time>1623999911</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1698" vrev="1698">
+    <srcmd5>2e91b67ca88b50be4491c76fb2f99d0d</srcmd5>
+    <version>unknown</version>
+    <time>1623999925</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1699" vrev="1699">
+    <srcmd5>f07890acf7b720c3ee749d4e72e94392</srcmd5>
+    <version>unknown</version>
+    <time>1623999925</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1700" vrev="1700">
+    <srcmd5>adc4a6317584f581f55eb92946634fad</srcmd5>
+    <version>unknown</version>
+    <time>1623999964</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1701" vrev="1701">
+    <srcmd5>c3fb38f6feaae11acbb730c53f2a7d5a</srcmd5>
+    <version>unknown</version>
+    <time>1623999965</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1702" vrev="1702">
+    <srcmd5>92c6a4d282748491321c87364853ea12</srcmd5>
+    <version>unknown</version>
+    <time>1623999992</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1703" vrev="1703">
+    <srcmd5>adc3f056451ce1e6cf66101e3a3ad3be</srcmd5>
+    <version>unknown</version>
+    <time>1623999992</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1704" vrev="1704">
+    <srcmd5>597d4a6b45a6c211511331fe49a0877f</srcmd5>
+    <version>unknown</version>
+    <time>1623999995</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="1705" vrev="1705">
+    <srcmd5>24275191d06f5700a40eb9e9bca5ec03</srcmd5>
+    <version>unknown</version>
+    <time>1623999995</time>
+    <user>coolo</user>
+  </revision>
 </revisionlist>
