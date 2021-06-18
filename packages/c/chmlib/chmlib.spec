@@ -1,7 +1,7 @@
 #
 # spec file for package chmlib
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,14 +21,13 @@ Name:           chmlib
 Version:        0.40
 Release:        0
 Summary:        A library for dealing with ITSS/CHM files
-License:        LGPL-2.1+
-Group:          System/Libraries
-Url:            http://www.jedrea.com/chmlib/
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+URL:            http://www.jedrea.com/chmlib/
 Source0:        http://www.jedrea.com/chmlib/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 Patch0:         %{name}-0.39.diff
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CHMLIB is a library for dealing with Microsoft ITSS/CHM format files.
@@ -71,13 +70,12 @@ export CXXFLAGS="$CFLAGS"
 export CXXCPP="g++ -E"
 %configure \
 	--disable-static \
-	--with-pic \
 	--disable-pread \
 	--enable-examples
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
@@ -85,18 +83,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-, root, root)
 %doc AUTHORS COPYING NEWS README
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/chm_lib.h
 %{_includedir}/lzx.h
 %{_libdir}/*.so
 
 %files examples
-%defattr(-, root, root)
 %{_bindir}/*
 
 %changelog
