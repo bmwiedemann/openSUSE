@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 08:44:30 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.20.4:
+  * Fix CMAKE_EXPORT_COMPILE_COMMANDS crash with custom compile rule
+  * Fix buildPreset "jobs" field test case
+  * Fix codemodel-v2 link command fragment relative paths
+  * FindBoost: Add check for json component header in Boost 1.75+
+  * cmake_path: fix erroneous example for IS_PREFIX
+  * Clang/MSVC: C++20 final flag, C++23 support
+
+-------------------------------------------------------------------
 Sat May 29 12:08:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix rpm cmake-module detection, when modules are installed into
