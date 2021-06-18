@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        40.0
+Version:        40.2
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -42,6 +42,8 @@ Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.pa
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
 Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+# PATCH-FIX-UPSTREAM gnome-shell-session-launch-timeout.patch dimstar@opensuse.org -- Give the X11 setup more time to launch, needed for the live ISOs
+Patch7:         gnome-shell-session-launch-timeout.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -96,7 +98,7 @@ BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-8) >= 40.0
+BuildRequires:  pkgconfig(libmutter-8) >= 40.2
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -182,6 +184,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %patch6 -p1
 %endif
+%patch7 -p1
 
 translation-update-upstream
 
