@@ -17,13 +17,16 @@
 
 
 Name:           libdwarf
-Version:        20201201
+Version:        20210528
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
 Source:         https://prevanders.net/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/davea42/libdwarf-code/commit/a6d8638c2089c42a6d00e375859b84feea309132.patch
+Patch0:         libdwarf-gcc11.patch
+Patch1:         libdwarf-gcc11-fixup.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
 
@@ -88,6 +91,8 @@ Documentation for libdwarf.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

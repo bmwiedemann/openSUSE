@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun 16 09:58:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libdwarf-gcc11-fixup.patch
+    + fix missing return and double define mistake in the upstream
+      patch
+
+-------------------------------------------------------------------
+Tue Jun 15 23:51:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- libdwarf-gcc11.patch: refresh with upstream patch 
+
+-------------------------------------------------------------------
+Tue Jun 15 10:12:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libdwarf-gcc11.patch
+    + skip correctly DW_FORM_implicit_const in
+      _dwarf_formudata_internal (bsc#1187336)
+
+-------------------------------------------------------------------
+Fri Jun 11 10:18:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- update to 20210528:
+  corrects libdwarf's handling of DWARF5 line table header DW_LNCT
+  entries. Dwarfdump now prints DW_OP_bra and DW_OP_skip correctly
+  and correctly validates the target of these operators.
+  adds summary information on attribute/form-class uses and
+  attribute/forms use to the existing option -ku summary on tags
+  and attributes. Dwarfdump verifies many attribute references are
+  usable and prints a little from the target DIE, including with
+  DW_FORM_ref_sig8 references. Now dwarf.h shows many more
+  extensions (added by compiler developers) to the TAGs and
+  ATtributes defines. Alongide releases is a pdf,
+  libdwarf2.1xl.pdf (xl.pdf as it is extra-large), that is the
+  same as the latest libdwarf2.1.pdf but with the
+  table-of-contents at the front, not the back, of the pdf.
+  Created an experiment, it is around 15MB so seemed too large to
+  place it in the release or to do multiple versions. Later
+  updates will just replace it on prevanders.net.
+
+-------------------------------------------------------------------
 Wed Apr 21 09:11:06 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: link as PIE (bsc#1185057).

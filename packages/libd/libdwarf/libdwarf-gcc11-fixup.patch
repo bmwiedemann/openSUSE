@@ -1,0 +1,20 @@
+--- libdwarf-20210528/libdwarf/dwarf_form.c	2021-06-16 11:56:45.305843867 +0200
++++ libdwarf-20210528/libdwarf/dwarf_form.c	2021-06-16 11:54:54.385102743 +0200
+@@ -1322,6 +1322,7 @@
+             _dwarf_error(dbg, error, DW_DLE_UDATA_VALUE_NEGATIVE);
+             return DW_DLV_ERROR;
+         }
++        return DW_DLV_OK;
+     }
+     generate_form_error(dbg,error,form,
+         DW_DLE_ATTR_FORM_BAD,
+--- libdwarf-20210528/libdwarf/libdwarf.h.in	2021-06-16 11:56:45.305843867 +0200
++++ libdwarf-20210528/libdwarf/libdwarf.h.in	2021-06-16 11:54:54.385102743 +0200
+@@ -1461,7 +1461,6 @@
+ #define DW_DLE_SIGNATURE_MISMATCH              480
+ #define DW_DLE_MACRO_VERSION_ERROR             481
+ #define DW_DLE_NEGATIVE_SIZE                   482
+-#define DW_DLE_NEGATIVE_SIZE                   482
+ #define DW_DLE_UDATA_VALUE_NEGATIVE            483
+ 
+     /* LAST MUST EQUAL LAST ERROR NUMBER */
