@@ -90,6 +90,7 @@ BuildRequires:  texlive-multirow
 BuildRequires:  texlive-needspace
 BuildRequires:  texlive-parskip
 BuildRequires:  texlive-psnfss
+BuildRequires:  texlive-tex-gyre
 BuildRequires:  texlive-threeparttable
 BuildRequires:  texlive-times
 BuildRequires:  texlive-titlesec

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  9 08:36:10 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add new missing dependency when using Sphinx 4.x.
+
+-------------------------------------------------------------------
 Tue Jun  8 11:46:55 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Adding missing brackets in csh script.
