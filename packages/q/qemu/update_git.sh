@@ -237,6 +237,12 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
                     git -C $GIT_DIR/$SUBDIR bundle create $BUN_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle $GITREPO_COMMIT_ISH..FETCH_HEAD
 #TODO: post-process repo info to avoid un-needed diffs (eg git vs https)
                     git -C $(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]}) remote get-url origin >$BUN_DIR/$SUBDIR/repo
+                else
+                    local localbundle="$BUN_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle"
+                    if [[ -f "$localbundle" ]]; then
+                        echo "Removing existing $localbundle"
+                        rm "$localbundle"
+                    fi
                 fi
             fi
         fi

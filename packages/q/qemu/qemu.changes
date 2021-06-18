@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 11 18:15:25 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Improve compatibility with gcc 11:
+  target-sh4-Return-error-if-CPUClass-get_.patch
+  tcg-arm-Fix-tcg_out_op-function-signatur.patch
+
+-------------------------------------------------------------------
+Wed Jun  9 13:23:54 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Enable zstd compression option to qcow2
+
+-------------------------------------------------------------------
+Mon Jun  7 18:13:50 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix out-of-bounds write in virgl_cmd_get_capset
+  CVE-2021-3546 bsc#1185981
+  vhost-user-gpu-abstract-vg_cleanup_mappi.patch
+- Fix memory leaks found in the virtio vhost-user GPU device
+  CVE-2021-3544 bsc#1186010
+  vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch
+  vhost-user-gpu-fix-leak-in-virgl_resourc.patch
+  vhost-user-gpu-fix-memory-disclosure-in-.patch
+  vhost-user-gpu-fix-memory-leak-in-vg_res.patch
+  vhost-user-gpu-fix-memory-leak-while-cal.patch
+  vhost-user-gpu-fix-OOB-write-in-virgl_cm.patch
+- Fix information disclosure due to uninitialized memory read
+  CVE-2021-3545 bsc#1185990
+  vhost-user-gpu-fix-resource-leak-in-vg_r.patch
+
+-------------------------------------------------------------------
 Thu Jun  3 09:43:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - disable sheepdog, it was dropped upstream (

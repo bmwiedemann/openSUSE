@@ -2688,4 +2688,21 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
   and fails to build with gcc 11 on non-x86</comment>
     <requestid>897978</requestid>
   </revision>
+  <revision rev="206" vrev="26">
+    <srcmd5>e1e27a086fd1929e7f6a8ef428d90c36</srcmd5>
+    <version>unknown</version>
+    <time>1624004006</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve compatibility with gcc 11:
+target-sh4-Return-error-if-CPUClass-get_.patch
+tcg-arm-Fix-tcg_out_op-function-signatur.patch
+- Enable zstd compression option to qcow2
+- Fix out-of-bounds write in virgl_cmd_get_capset
+CVE-2021-3546 bsc#1185981
+vhost-user-gpu-abstract-vg_cleanup_mappi.patch
+- Fix memory leaks found in the virtio vhost-user GPU device
+CVE-2021-3544 bsc#1186010
+vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
+    <requestid>900191</requestid>
+  </revision>
 </revisionlist>

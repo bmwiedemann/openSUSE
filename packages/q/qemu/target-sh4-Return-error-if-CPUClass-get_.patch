@@ -1,0 +1,51 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Wed, 5 May 2021 18:10:46 +0200
+Subject: target/sh4: Return error if CPUClass::get_phys_page_debug() fails
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 52a1c621f9d56d18212273c64b4119513a2db1f1
+
+If the get_physical_address() call fails, the SH4 get_phys_page_debug()
+handler returns an uninitialized address. Instead return -1, which
+correspond to "no page found" (see cpu_get_phys_page_debug() doc
+string).
+
+This fixes a warning emitted when building with CFLAGS=-O3
+(using GCC 10.2.1 20201125):
+
+  target/sh4/helper.c: In function ‘superh_cpu_get_phys_page_debug’:
+  target/sh4/helper.c:446:12: warning: ‘physical’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    446 |     return physical;
+        |            ^~~~~~~~
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+Message-Id: <20210505161046.1397608-1-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ target/sh4/helper.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+index bd8e034f174d530354913acb7fa1..2d622081e85afec6e40034c24508 100644
+--- a/target/sh4/helper.c
++++ b/target/sh4/helper.c
+@@ -441,9 +441,12 @@ hwaddr superh_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     target_ulong physical;
+     int prot;
+ 
+-    get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD);
++    if (get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD)
++            == MMU_OK) {
++        return physical;
++    }
+ 
+-    return physical;
++    return -1;
+ }
+ 
+ void cpu_load_tlb(CPUSH4State * env)

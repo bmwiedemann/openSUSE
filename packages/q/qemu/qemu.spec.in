@@ -257,6 +257,7 @@ BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(liblzma)
 %endif
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libzstd)
 %if "%{name}" == "qemu"
 Requires:       group(kvm)
 Requires:       group(qemu)
@@ -1191,6 +1192,7 @@ cd %blddir
 	--enable-vvfat \
 	--enable-werror \
 	--disable-whpx \
+	--enable-zstd \
 %ifarch x86_64
 	--enable-xen \
 	--enable-xen-pci-passthrough \

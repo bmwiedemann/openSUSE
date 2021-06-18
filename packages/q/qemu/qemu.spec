@@ -192,6 +192,16 @@ Patch00056:     vhost-user-blk-Get-more-feature-flags-fr.patch
 Patch00057:     virtio-Fail-if-iommu_platform-is-request.patch
 Patch00058:     vhost-user-blk-Check-that-num-queues-is-.patch
 Patch00059:     vfio-ccw-Permit-missing-IRQs.patch
+Patch00060:     vhost-user-gpu-fix-memory-disclosure-in-.patch
+Patch00061:     vhost-user-gpu-fix-resource-leak-in-vg_r.patch
+Patch00062:     vhost-user-gpu-fix-memory-leak-in-vg_res.patch
+Patch00063:     vhost-user-gpu-fix-memory-leak-while-cal.patch
+Patch00064:     vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch
+Patch00065:     vhost-user-gpu-fix-leak-in-virgl_resourc.patch
+Patch00066:     vhost-user-gpu-fix-OOB-write-in-virgl_cm.patch
+Patch00067:     vhost-user-gpu-abstract-vg_cleanup_mappi.patch
+Patch00068:     target-sh4-Return-error-if-CPUClass-get_.patch
+Patch00069:     tcg-arm-Fix-tcg_out_op-function-signatur.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -336,6 +346,7 @@ BuildRequires:  xfsprogs-devel
 %if %{build_x86_firmware_from_source}
 BuildRequires:  pkgconfig(liblzma)
 %endif
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 %if "%{name}" == "qemu"
 Requires:       group(kvm)
@@ -1084,6 +1095,16 @@ This package records qemu testsuite results and represents successful testing.
 %patch00057 -p1
 %patch00058 -p1
 %patch00059 -p1
+%patch00060 -p1
+%patch00061 -p1
+%patch00062 -p1
+%patch00063 -p1
+%patch00064 -p1
+%patch00065 -p1
+%patch00066 -p1
+%patch00067 -p1
+%patch00068 -p1
+%patch00069 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1350,6 +1371,7 @@ cd %blddir
 	--enable-vvfat \
 	--enable-werror \
 	--disable-whpx \
+	--enable-zstd \
 %ifarch x86_64
 	--enable-xen \
 	--enable-xen-pci-passthrough \

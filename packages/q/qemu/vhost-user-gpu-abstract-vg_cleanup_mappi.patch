@@ -1,0 +1,133 @@
+From: Li Qiang <liq3ea@163.com>
+Date: Sat, 15 May 2021 20:04:03 -0700
+Subject: vhost-user-gpu: abstract vg_cleanup_mapping_iov
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 3ea32d1355d446057c17458238db2749c52ee8f0
+References: CVE-2021-3546 bsc#1185981
+            CVE-2021-3545 bsc#1185990
+            CVE-2021-3544 bsc#1186010
+
+Currently in vhost-user-gpu, we free resource directly in
+the cleanup case of resource. If we change the cleanup logic
+we need to change several places, also abstruct a
+'vg_create_mapping_iov' can be symmetry with the
+'vg_create_mapping_iov'. This is like what virtio-gpu does,
+no function changed.
+
+Signed-off-by: Li Qiang <liq3ea@163.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20210516030403.107723-9-liq3ea@163.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ contrib/vhost-user-gpu/vhost-user-gpu.c | 24 ++++++++++++++++++++----
+ contrib/vhost-user-gpu/virgl.c          |  9 +++++----
+ contrib/vhost-user-gpu/vugpu.h          |  2 +-
+ 3 files changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/contrib/vhost-user-gpu/vhost-user-gpu.c b/contrib/vhost-user-gpu/vhost-user-gpu.c
+index 770dfad52989b2651eea67fdbb1b..6dc6a44f4e263bfb31ba9ba6ff32 100644
+--- a/contrib/vhost-user-gpu/vhost-user-gpu.c
++++ b/contrib/vhost-user-gpu/vhost-user-gpu.c
+@@ -49,6 +49,8 @@ static char *opt_render_node;
+ static gboolean opt_virgl;
+ 
+ static void vg_handle_ctrl(VuDev *dev, int qidx);
++static void vg_cleanup_mapping(VuGpu *g,
++                               struct virtio_gpu_simple_resource *res);
+ 
+ static const char *
+ vg_cmd_to_string(int cmd)
+@@ -400,7 +402,7 @@ vg_resource_destroy(VuGpu *g,
+     }
+ 
+     vugbm_buffer_destroy(&res->buffer);
+-    g_free(res->iov);
++    vg_cleanup_mapping(g, res);
+     pixman_image_unref(res->image);
+     QTAILQ_REMOVE(&g->reslist, res, next);
+     g_free(res);
+@@ -504,6 +506,22 @@ vg_resource_attach_backing(VuGpu *g,
+     res->iov_cnt = ab.nr_entries;
+ }
+ 
++/* Though currently only free iov, maybe later will do more work. */
++void vg_cleanup_mapping_iov(VuGpu *g,
++                            struct iovec *iov, uint32_t count)
++{
++    g_free(iov);
++}
++
++static void
++vg_cleanup_mapping(VuGpu *g,
++                   struct virtio_gpu_simple_resource *res)
++{
++    vg_cleanup_mapping_iov(g, res->iov, res->iov_cnt);
++    res->iov = NULL;
++    res->iov_cnt = 0;
++}
++
+ static void
+ vg_resource_detach_backing(VuGpu *g,
+                            struct virtio_gpu_ctrl_command *cmd)
+@@ -522,9 +540,7 @@ vg_resource_detach_backing(VuGpu *g,
+         return;
+     }
+ 
+-    g_free(res->iov);
+-    res->iov = NULL;
+-    res->iov_cnt = 0;
++    vg_cleanup_mapping(g, res);
+ }
+ 
+ static void
+diff --git a/contrib/vhost-user-gpu/virgl.c b/contrib/vhost-user-gpu/virgl.c
+index 7172104b19d7a79eb7cc3404e09f..3e45e1bd33600fe5d91c0eea3af8 100644
+--- a/contrib/vhost-user-gpu/virgl.c
++++ b/contrib/vhost-user-gpu/virgl.c
+@@ -116,8 +116,9 @@ virgl_cmd_resource_unref(VuGpu *g,
+     virgl_renderer_resource_detach_iov(unref.resource_id,
+                                        &res_iovs,
+                                        &num_iovs);
+-    g_free(res_iovs);
+-
++    if (res_iovs != NULL && num_iovs != 0) {
++        vg_cleanup_mapping_iov(g, res_iovs, num_iovs);
++    }
+     virgl_renderer_resource_unref(unref.resource_id);
+ }
+ 
+@@ -294,7 +295,7 @@ virgl_resource_attach_backing(VuGpu *g,
+     ret = virgl_renderer_resource_attach_iov(att_rb.resource_id,
+                                        res_iovs, att_rb.nr_entries);
+     if (ret != 0) {
+-        g_free(res_iovs);
++        vg_cleanup_mapping_iov(g, res_iovs, att_rb.nr_entries);
+     }
+ }
+ 
+@@ -314,7 +315,7 @@ virgl_resource_detach_backing(VuGpu *g,
+     if (res_iovs == NULL || num_iovs == 0) {
+         return;
+     }
+-    g_free(res_iovs);
++    vg_cleanup_mapping_iov(g, res_iovs, num_iovs);
+ }
+ 
+ static void
+diff --git a/contrib/vhost-user-gpu/vugpu.h b/contrib/vhost-user-gpu/vugpu.h
+index 04d56158123d3ee1c271302d8f8a..e2864bba68e0d9c1228eb7745c50 100644
+--- a/contrib/vhost-user-gpu/vugpu.h
++++ b/contrib/vhost-user-gpu/vugpu.h
+@@ -169,7 +169,7 @@ int     vg_create_mapping_iov(VuGpu *g,
+                               struct virtio_gpu_resource_attach_backing *ab,
+                               struct virtio_gpu_ctrl_command *cmd,
+                               struct iovec **iov);
+-
++void    vg_cleanup_mapping_iov(VuGpu *g, struct iovec *iov, uint32_t count);
+ void    vg_get_display_info(VuGpu *vg, struct virtio_gpu_ctrl_command *cmd);
+ 
+ void    vg_wait_ok(VuGpu *g);
