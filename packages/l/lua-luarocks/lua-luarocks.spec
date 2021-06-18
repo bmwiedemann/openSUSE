@@ -17,16 +17,16 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luarocks
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        3.3.1
+Version:        3.7.0
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://luarocks.org
-Source:         https://github.com/luarocks/luarocks/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+Source:         https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  curl
 BuildRequires:  openssl
@@ -62,8 +62,7 @@ repositories, and multiple local rocks trees.
 # Not an autotools based system
 ./configure \
   --prefix=%{_prefix} \
-  --lua-version=%{lua_version} \
-  --versioned-rocks-dir
+  --lua-version=%{lua_version}
 make %{?_smp_mflags} build
 
 %install

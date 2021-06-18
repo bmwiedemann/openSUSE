@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 15:36:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.7.0
+  * Improved connectivity resiliency
+  * On Unix, it now respects environment variables $XDG_CACHE_HOME
+    and $XDG_CONFIG_HOME
+  * Fixes check for the default Lua version set in the user's
+    home configuration
+- Remove deprecated option --versioned-rocks-dir
+
+-------------------------------------------------------------------
 Thu Feb 18 15:56:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
