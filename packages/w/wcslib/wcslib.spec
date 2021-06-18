@@ -18,7 +18,7 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.4
+Version:        7.6
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
@@ -119,9 +119,11 @@ make check
 %files tools
 %{_bindir}/HPXcvt
 %{_bindir}/fitshdr
+%{_bindir}/sundazel
 %{_bindir}/wcsware
 %{_mandir}/man1/HPXcvt.1%{?ext_man}
 %{_mandir}/man1/fitshdr.1%{?ext_man}
+%{_mandir}/man1/sundazel.1%{?ext_man}
 %{_mandir}/man1/wcsware.1%{?ext_man}
 
 %files doc
