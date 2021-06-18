@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 14 07:27:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tracker-miner-control-rpath,patch: Fix runpath in
+  trcker-miner-control-fs.
+
+-------------------------------------------------------------------
+Sat Jun 12 09:34:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.1.2:
+  + Fixes to libav extractor.
+  + Allow 64bit time syscalls for 32bit systems in seccomp sandbox.
+  + Manpage fixes.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 17 08:40:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.1.1:

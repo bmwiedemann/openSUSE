@@ -17,14 +17,15 @@
 
 
 Name:           tracker-miners
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.1/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM tracker-miner-control-rpath,patch dimstar@opensuse.org -- Fix runpath in tracker-miner-control-fs
+Patch0:         tracker-miner-control-rpath,patch
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0

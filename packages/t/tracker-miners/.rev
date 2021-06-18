@@ -234,4 +234,12 @@
     <comment>Update to 3.1.1 (forwarded request 886236 from dimstar)</comment>
     <requestid>887482</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7b91eea8066ba49bed3505853ec787e8</srcmd5>
+    <version>3.1.2</version>
+    <time>1624004003</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 900058 from dimstar)</comment>
+    <requestid>900141</requestid>
+  </revision>
 </revisionlist>

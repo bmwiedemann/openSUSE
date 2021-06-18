@@ -1,0 +1,12 @@
+diff --git a/src/tracker-control/meson.build b/src/tracker-control/meson.build
+index bbf56d7e4..85fb19573 100644
+--- a/src/tracker-control/meson.build
++++ b/src/tracker-control/meson.build
+@@ -5,7 +5,6 @@ sources = [
+ ]
+ 
+ tracker_index_deps = [
+-     tracker_miner,
+      tracker_miners_common_dep,
+      tracker_extract_dep
+ ]
