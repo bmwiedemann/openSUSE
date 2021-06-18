@@ -10172,4 +10172,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <time>1623957139</time>
     <user>staging-bot</user>
   </revision>
+  <revision rev="1694" vrev="1694">
+    <srcmd5>261e3b4a5406b7421802f9e43a0a6a1d</srcmd5>
+    <version>unknown</version>
+    <time>1623999452</time>
+    <user>coolo</user>
+    <comment>Add 15.2 and 15.3 config</comment>
+  </revision>
 </revisionlist>

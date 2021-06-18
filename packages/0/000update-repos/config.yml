@@ -13,16 +13,33 @@
    refresh: true
 - 15.0:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/15.0/non-oss
-   refresh: true
 - 15.1:
    url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/oss
 - 15.1:non-oss:
    url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/non-oss
 - 15.1:update:
    url: http://downloadcontent.opensuse.org/update/leap/15.1/oss
-   refresh: true
 - 15.1:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/15.1/non-oss
+- 15.2:
+   url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/oss
+- 15.2:non-oss:
+   url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/non-oss
+- 15.2:update:
+   url: http://downloadcontent.opensuse.org/update/leap/15.2/oss
+   refresh: true
+- 15.2:non-oss:update:
+   url: http://downloadcontent.opensuse.org/update/leap/15.2/non-oss
+   refresh: true
+- 15.3:
+   url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/oss
+- 15.3:non-oss:
+   url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/non-oss
+- 15.3:update:
+   url: http://downloadcontent.opensuse.org/update/leap/15.3/oss
+   refresh: true
+- 15.3:non-oss:update:
+   url: http://downloadcontent.opensuse.org/update/leap/15.3/non-oss
    refresh: true
 - 42.3:
    url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/oss
@@ -48,13 +65,3 @@
    url: http://downloadcontent.opensuse.org/update/leap/42.1/oss
 - 42.1:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/42.1/non-oss
-#- 13.2:
-#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.2/repo/oss/
-#- 13.1:
-#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.1/repo/oss/
-#- 12.1:
-#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.1/repo/oss/
-#- 12.2:
-#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.2/repo/oss/
-#- 12.3:
-#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.3/repo/oss/
