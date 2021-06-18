@@ -31,16 +31,15 @@ URL:            https://directory.fsf.org/wiki/Libgcrypt
 Source:         https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
+Source3:        random.conf
 # https://www.gnupg.org/signature_key.en.html
 Source4:        libgcrypt.keyring
 # cavs test framework
 Source5:        cavs-test.sh
 Source6:        cavs_driver.pl
-Source7:        random.conf
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch
 Patch2:         libgcrypt-sparcv9.diff
-#PATCH-FIX-SUSE: N/A
 Patch3:         libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
 Patch4:         libgcrypt-1.6.1-use-fipscheck.patch
 Patch5:         libgcrypt-1.6.1-fips-cavs.patch
@@ -77,6 +76,8 @@ Patch26:        libgcrypt-PCT-RSA.patch
 Patch27:        libgcrypt-PCT-DSA.patch
 Patch28:        libgcrypt-PCT-ECC.patch
 Patch29:        libgcrypt-fips_selftest_trigger_file.patch
+#PATCH-FIX-UPSTREAM bsc#1187212 CVE-2021-33560 ElGamal encryption lacks exponent blinding
+Patch30:        libgcrypt-CVE-2021-33560-fix-ElGamal-enc.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27
@@ -150,7 +151,6 @@ Libgcrypt is a general purpose library of cryptographic building
 blocks.  It is originally based on code used by GnuPG.  It does not
 provide any implementation of OpenPGP or other protocols.  Thorough
 understanding of applied cryptography is required to use Libgcrypt.
-
 %endif
 
 %prep
@@ -211,7 +211,7 @@ touch %{buildroot}/%{_libdir}/.%{name}.so.%{libsover}.fips
 
 # Create /etc/gcrypt directory and install random.conf
 mkdir -p -m 0755 %{buildroot}%{_sysconfdir}/gcrypt
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/gcrypt/random.conf
+install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/gcrypt/random.conf
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig

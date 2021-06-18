@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 11 13:17:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1187212, CVE-2021-33560]
+  * cipher: Fix ElGamal encryption for other implementations.
+  * Exponent blinding was added in version 1.9.3. This patch
+    fixes ElGamal encryption, see: https://dev.gnupg.org/T5328
+- Add libgcrypt-CVE-2021-33560-fix-ElGamal-enc.patch
+
+-------------------------------------------------------------------
 Tue Apr 20 08:46:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - libgcrypt 1.9.3: 
