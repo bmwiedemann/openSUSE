@@ -178,4 +178,24 @@
   [+ 0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch]</comment>
     <requestid>784086</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c0113470726c932fdd0d13a7d9e2f6cd</srcmd5>
+    <version>0.3.2</version>
+    <time>1624004009</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.3.2
+- use SPDX shortname lincense and PKG_INSTALLDIR autoconf macro
+- virsh iface-list takes too long with many interfaces (bsc#1179144)
+  - Cleanup netcf functions, include elapsed time in debug messages
+  - Changed to refresh config and system info to keep them consistent
+  - Add (fix or) adaptive refresh caching, set to double refresh-time
+  - Implemented new backend refresh using wicked config/system queries
+- remove packages included in 0.3.2 source archive:
+  [- 0005-bonding-don-t-complain-about-unknown-options.1132794.patch]
+  [- 0004-udev-use-correct-udev-rule-write-lock-directory.patch]
+  [- 0003-sysconfig-fix-segfault-on-missed-end-quote-bsc-10277.patch]
+  [- 0002-Fix-invalid-check-in-route-creation-bsc-1148646.patch]
+  [- 0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch]</comment>
+    <requestid>900198</requestid>
+  </revision>
 </revisionlist>

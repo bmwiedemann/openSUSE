@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 15 15:48:36 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.3.2
+- use SPDX shortname lincense and PKG_INSTALLDIR autoconf macro
+- virsh iface-list takes too long with many interfaces (bsc#1179144)
+  - Cleanup netcf functions, include elapsed time in debug messages
+  - Changed to refresh config and system info to keep them consistent
+  - Add (fix or) adaptive refresh caching, set to double refresh-time
+  - Implemented new backend refresh using wicked config/system queries
+- remove packages included in 0.3.2 source archive:
+  [- 0005-bonding-don-t-complain-about-unknown-options.1132794.patch]
+  [- 0004-udev-use-correct-udev-rule-write-lock-directory.patch]
+  [- 0003-sysconfig-fix-segfault-on-missed-end-quote-bsc-10277.patch]
+  [- 0002-Fix-invalid-check-in-route-creation-bsc-1148646.patch]
+  [- 0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch]
+
+-------------------------------------------------------------------
 Wed Mar 11 23:13:15 UTC 2020 - mt@suse.com
 
 - bonding: don't complain about unknown options (bsc#1132794)
