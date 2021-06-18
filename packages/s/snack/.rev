@@ -133,4 +133,13 @@
 - Drop the demos, they violate too many rpmlint rules.</comment>
     <requestid>538814</requestid>
   </revision>
+  <revision rev="20" vrev="215">
+    <srcmd5>9c52e4fd129ea3036df5ad670bbbd178</srcmd5>
+    <version>2.2.10</version>
+    <time>1624004035</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the Python binding, because it only supports Python 2.
+- Remove unneeded build dependencies (snack-tk-libs.patch).</comment>
+    <requestid>900513</requestid>
+  </revision>
 </revisionlist>

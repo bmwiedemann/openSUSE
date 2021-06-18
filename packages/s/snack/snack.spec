@@ -1,7 +1,7 @@
 #
 # spec file for package snack
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           snack
 BuildRequires:  alsa-devel
 BuildRequires:  libvorbis-devel
-BuildRequires:  python
 BuildRequires:  tk-devel
-BuildRequires:  xorg-x11-devel
-Summary:        Sound Extension for Tcl/Tk and Python
-License:        GPL-2.0+
+Summary:        Sound Extension for Tcl/Tk
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Tcl
 Version:        2.2.10
 Release:        0
 Requires:       tcl
 Requires:       tk
-%{py_requires}
-Url:            http://www.speech.kth.se/snack
+URL:            http://www.speech.kth.se/snack
 Source0:        %{name}%{version}.tar.bz2
 Source1:        snack-rpmlintrc
 Patch0:         snack.patch
 Patch1:         snack-alsa.patch
 Patch2:         snack-CVE-2012-6303.patch
+Patch3:         snack-tk-libs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -65,6 +63,7 @@ Authors:
 %patch0
 %patch1
 %patch2 -p 1
+%patch3
 chmod 644 BSD.txt changes README COPYING doc/* ext/*
 chmod 755 ext/configure
 
@@ -82,8 +81,7 @@ cd unix
 make OPTFLAGS="$CFLAGS"
 
 %install
-%{INSTALL_DIR} %buildroot%py_sitedir
-%{INSTALL_DATA} python/tkSnack.py %buildroot%py_sitedir
+%{INSTALL_DIR} %buildroot%_libdir
 cd unix
 make  install \
 	DESTDIR=%buildroot \
@@ -100,6 +98,5 @@ rm -rf %buildroot
 %defattr(644, root, root, 755)
 %doc BSD.txt changes README COPYING doc/* ext
 %tclscriptdir/*
-%py_sitedir/*
 
 %changelog

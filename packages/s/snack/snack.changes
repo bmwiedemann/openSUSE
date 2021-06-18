@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 06:34:39 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Disable the Python binding, because it only supports Python 2.
+- Remove unneeded build dependencies (snack-tk-libs.patch). 
+
+-------------------------------------------------------------------
 Fri Nov  3 16:30:06 UTC 2017 - max@suse.com
 
 - bnc#793860: CVE-2012-6303: heap based overflow:
