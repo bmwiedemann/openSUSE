@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.65
+Version:        0.6.66
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_65 = %{version}-%{release}
+Provides:       libwicked-0_6_66 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -51,6 +51,11 @@ Obsoletes:      libwicked-0-6 < %{version}
 %bcond_without  rfc4361_cid
 %else
 %bcond_with     rfc4361_cid
+%endif
+%if 0%{?suse_version} >= 1500
+%bcond_without  dhcp6_nis
+%else
+%bcond_with     dhcp6_nis
 %endif
 %if 0%{?suse_version} >= 1230
 %bcond_without  systemd
@@ -160,7 +165,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_65 = %{version}-%{release}
+Requires:       libwicked-0_6_66 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -182,6 +187,9 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS"
 	--with-storedir=%{wicked_storedir}\
 	--with-compat=suse		\
 	--with-fillup-templatesdir=%{_fillupdir}\
+%if %{without dhcp6_nis}
+	--disable-dhcp6-nis		\
+%endif
 %if %{without rfc4361_cid}
 	--disable-dhcp4-rfc4361-cid	\
 %endif

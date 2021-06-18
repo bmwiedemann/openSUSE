@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 15 17:30:40 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.6.66
+- wireless: migrate to wpa-supplicant v1 DBus interface (bsc#1156920)
+  - support multiple networks configurations per interface
+  - show connection status and scan-results (bsc#1160654)
+  - corrected eap-tls,ttls cetificate handling and open vs. shared
+    wep,open,psk,eap-tls,ttls,peap parsing from ifcfg (bsc#1057592)
+  - cleanups and several other improvements, see changes
+  - updated man ifcfg-wireless manual pages
+- nanny: fix identify node owner exit condition
+- schema: several xml-schema and dbus/property improvements
+- utils: format/parse bitmap to array and string alternatives
+- client: expose ethtool --get-permanent-address option
+- removed sle15-sp3 patches included in the master sources (bsc#1181812)
+  [- 0001-dhcp4-discover-on-reboot-timeout-after-start-delay.1181812.patch]
+  [- 0002-dhcp6-request-nis-options-on-sle15-by-default.1181812.patch]
+
+-------------------------------------------------------------------
+Wed Apr  7 09:54:25 UTC 2021 - mt@suse.com
+
+- dhcp4: discover on reboot timeout after start-delay (bsc#1181812)
+ [+ 0001-dhcp4-discover-on-reboot-timeout-after-start-delay.1181812.patch]
+- dhcp6: request nis options on sle15 by default (bsc#1181812)
+ [+ 0002-dhcp6-request-nis-options-on-sle15-by-default.1181812.patch]
+
+-------------------------------------------------------------------
 Thu Mar  4 13:35:33 UTC 2021 - mt@suse.com
 
 - version 0.6.65

@@ -1552,4 +1552,31 @@
 - dbus: add variant container, generic object-path and uint32 array macros</comment>
     <requestid>876766</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>725d3e9b7f3d973cc0e02a524d73c251</srcmd5>
+    <version>0.6.66</version>
+    <time>1624004012</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.66
+- wireless: migrate to wpa-supplicant v1 DBus interface (bsc#1156920)
+  - support multiple networks configurations per interface
+  - show connection status and scan-results (bsc#1160654)
+  - corrected eap-tls,ttls cetificate handling and open vs. shared
+    wep,open,psk,eap-tls,ttls,peap parsing from ifcfg (bsc#1057592)
+  - cleanups and several other improvements, see changes
+  - updated man ifcfg-wireless manual pages
+- nanny: fix identify node owner exit condition
+- schema: several xml-schema and dbus/property improvements
+- utils: format/parse bitmap to array and string alternatives
+- client: expose ethtool --get-permanent-address option
+- removed sle15-sp3 patches included in the master sources (bsc#1181812)
+  [- 0001-dhcp4-discover-on-reboot-timeout-after-start-delay.1181812.patch]
+  [- 0002-dhcp6-request-nis-options-on-sle15-by-default.1181812.patch]
+
+- dhcp4: discover on reboot timeout after start-delay (bsc#1181812)
+ [+ 0001-dhcp4-discover-on-reboot-timeout-after-start-delay.1181812.patch]
+- dhcp6: request nis options on sle15 by default (bsc#1181812)
+ [+ 0002-dhcp6-request-nis-options-on-sle15-by-default.1181812.patch]</comment>
+    <requestid>900218</requestid>
+  </revision>
 </revisionlist>
