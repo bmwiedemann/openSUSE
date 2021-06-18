@@ -669,4 +669,14 @@
     <comment>- Change to using systemd-sysusers (forwarded request 897180 from gmbr3)</comment>
     <requestid>897532</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>9e2ad9daaa2b6387995efdbde076940b</srcmd5>
+    <version>1.8.14</version>
+    <time>1624004013</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nm-openvpn-bsc#1186091.patch: service: Don't add cert and key
+  when they are not set
+  (glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091). (forwarded request 900329 from JonathanKang)</comment>
+    <requestid>900448</requestid>
+  </revision>
 </revisionlist>

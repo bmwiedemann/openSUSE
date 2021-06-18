@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 16 07:25:20 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-openvpn-bsc#1186091.patch: service: Don't add cert and key
+  when they are not set
+  (glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091).
+
+-------------------------------------------------------------------
 Thu Jun  3 11:02:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

@@ -1,0 +1,30 @@
+From 9765e43a86304196b28a561588074976d946405b Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 15 Jun 2021 15:55:41 +0800
+Subject: [PATCH] service: Don't add cert and key when they are not set
+
+fixes 34a0c9257aac9ed6e3ac7cdad6f6cc7d8107eef1.
+---
+ src/nm-openvpn-service.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/nm-openvpn-service.c b/src/nm-openvpn-service.c
+index 8cdbbd4..af57227 100644
+--- a/src/nm-openvpn-service.c
++++ b/src/nm-openvpn-service.c
+@@ -364,8 +364,10 @@ args_add_vpn_certs (GPtrArray *args, NMSettingVpn *s_vpn)
+ 	if (nmovpn_arg_is_set (cert) && is_pkcs12 (cert))
+ 		args_add_strv (args, "--pkcs12", cert);
+ 	else {
+-		args_add_strv (args, "--cert", cert);
+-		args_add_strv (args, "--key", key);
++		if (nmovpn_arg_is_set (cert))
++			args_add_strv (args, "--cert", cert);
++		if (nmovpn_arg_is_set (key))
++			args_add_strv (args, "--key", key);
+ 	}
+ }
+ 
+-- 
+2.31.1
+

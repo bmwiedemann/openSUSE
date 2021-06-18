@@ -27,6 +27,8 @@ Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.8/%{
 Source1:        system-user-nm-openvpn.conf
 # PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
 Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
+# PATCH-FIX-UPSTREAM nm-openvpn-bsc#1186091.patch glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091 sckang@suse.com -- service: Don't add cert and key when they are not set
+Patch1:         nm-openvpn-bsc#1186091.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
