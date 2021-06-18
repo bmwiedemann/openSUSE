@@ -269,7 +269,7 @@
     <package name="cervisia" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="cervisia-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkmedia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="cheese" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cheese-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="chewing-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3508,8 +3508,8 @@
     <package name="pngquant" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="polari" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="polari-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="policycoreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="policycoreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="policycoreutils-python-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="polkit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="polkit-default-privs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3575,7 +3575,7 @@
     <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python3-bind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3586,7 +3586,7 @@
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-mailman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python3-salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-smbios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3610,7 +3610,7 @@
     <package name="python38-PyHamcrest" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-PyNaCl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-Pygments" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="python38-SQLAlchemy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3690,7 +3690,7 @@
     <package name="python38-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python38-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="python38-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python38-numexpr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-numpy" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3718,9 +3718,9 @@
     <package name="python38-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-pydot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-pydot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-pygraphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-pygraphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pylibmc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-pymongo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3744,9 +3744,9 @@
     <package name="python38-scipy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-scour" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python38-scrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python38-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-setproctitle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python38-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -4337,7 +4337,7 @@
     <package name="selinux-autorelabel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="selinux-policy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="selinux-policy-targeted" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="sendmail" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="sensors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sessreg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4720,8 +4720,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireshark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
@@ -4912,7 +4912,7 @@
     <package name="yast2-firstboot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2-ftp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-hardware-detection" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-http-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="yast2-http-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-instserver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-iscsi-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
