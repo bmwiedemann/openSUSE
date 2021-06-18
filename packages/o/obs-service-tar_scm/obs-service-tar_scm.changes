@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 15 17:02:19 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.26.1623775884.87f49a8:
+  * fixed include/exclude filtering
+  * add '--' to git log command if file/dir equal revision exists
+  * add '--source' to git log command
+  * disabled consider-using-with in .pylint*rc
+  * package .gitignore files
+  * Fix version _none_ generate tarball with '-'
+  * Prevent KeyError in check_for_branch_request method
+  * removed skipped test case (obsolete since 5 yrs)
+  * testing for obscpio/obsinfo
+  * fix regression - obsinfo included the version string
+  * Revert "remove useless variables"
+  * remove useless variables
+  * added param --without-version
+  * extracted dstname to _dstname
+  * cleanup TarSCM/tasks.py for pylint
+  * add date/time to logging output for better debugging
+  * Fix typos
+
+-------------------------------------------------------------------
 Fri Mar 12 08:44:03 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.22.1615538418.07a353d:

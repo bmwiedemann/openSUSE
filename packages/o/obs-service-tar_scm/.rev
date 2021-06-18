@@ -1312,4 +1312,30 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
   * Support gitlab/github merge requests</comment>
     <requestid>878514</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5df51ff73ac4effdd81a15b12d2ec37a</srcmd5>
+    <version>0.10.26.1623775884.87f49a8</version>
+    <time>1624004011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.26.1623775884.87f49a8:
+  * fixed include/exclude filtering
+  * add '--' to git log command if file/dir equal revision exists
+  * add '--source' to git log command
+  * disabled consider-using-with in .pylint*rc
+  * package .gitignore files
+  * Fix version _none_ generate tarball with '-'
+  * Prevent KeyError in check_for_branch_request method
+  * removed skipped test case (obsolete since 5 yrs)
+  * testing for obscpio/obsinfo
+  * fix regression - obsinfo included the version string
+  * Revert &quot;remove useless variables&quot;
+  * remove useless variables
+  * added param --without-version
+  * extracted dstname to _dstname
+  * cleanup TarSCM/tasks.py for pylint
+  * add date/time to logging output for better debugging
+  * Fix typos
+</comment>
+    <requestid>900210</requestid>
+  </revision>
 </revisionlist>
