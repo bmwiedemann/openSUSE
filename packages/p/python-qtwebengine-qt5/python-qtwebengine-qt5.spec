@@ -37,6 +37,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5WebEngine)
 Requires:       python-qt5 >= %{version}
 Requires:       python-qt5-sip
+Provides:       python-PyQtWebEngine = %{version}-%{release}
 
 %python_subpackages
 

@@ -90,4 +90,12 @@ Required for python-AnyQt</comment>
     <comment></comment>
     <requestid>878418</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b6b6569284f2aa209f238f959f03caf5</srcmd5>
+    <version>5.15.4</version>
+    <time>1624136661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900826</requestid>
+  </revision>
 </revisionlist>
