@@ -29,6 +29,8 @@ URL:            https://python-poetry.org/
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/3255#issuecomment-713442094 -- remove external http call requirement for lock --no-update
 Patch0:         poetry-1645-1.1.patch
+# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/commit/9591e88492508d4dba260952d53266a0032c04c7
+Patch1:         use-new-name-of-MockFixture.patch
 BuildRequires:  %{python_module CacheControl >= 0.12.4}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module cleo >= 0.8.1}
@@ -72,7 +74,7 @@ Recommends:     python-devel
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httpretty >= 1.0.3}
-BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-mock >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git-core
 # /SECTION

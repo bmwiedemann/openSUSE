@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 16 08:53:33 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to adapt code to pytest-mock > 3.3.1 where MockFixture
+  was renamed to MockerFixture:
+  * use-new-name-of-MockFixture.patch
+
+-------------------------------------------------------------------
 Wed Apr 14 21:36:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Release 1.1.6

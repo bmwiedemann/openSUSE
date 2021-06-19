@@ -1,0 +1,41 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+
+This is mainly like
+https://github.com/python-poetry/poetry/commit/9591e88492508d4dba260952d53266a0032c04c7
+but without changing most package versions which is unrelated to this change.
+
+Index: poetry-1.1.6/tests/repositories/test_installed_repository.py
+===================================================================
+--- poetry-1.1.6.orig/tests/repositories/test_installed_repository.py
++++ poetry-1.1.6/tests/repositories/test_installed_repository.py
+@@ -2,7 +2,7 @@ from typing import Optional
+ 
+ import pytest
+ 
+-from pytest_mock.plugin import MockFixture
++from pytest_mock.plugin import MockerFixture
+ 
+ from poetry.core.packages import Package
+ from poetry.repositories.installed_repository import InstalledRepository
+@@ -53,7 +53,7 @@ def env():  # type: () -> MockEnv
+ 
+ 
+ @pytest.fixture
+-def repository(mocker, env):  # type: (MockFixture, MockEnv) -> InstalledRepository
++def repository(mocker, env):  # type: (MockerFixture, MockEnv) -> InstalledRepository
+     mocker.patch(
+         "poetry.utils._compat.metadata.Distribution.discover",
+         return_value=INSTALLED_RESULTS,
+Index: poetry-1.1.6/pyproject.toml
+===================================================================
+--- poetry-1.1.6.orig/pyproject.toml
++++ poetry-1.1.6/pyproject.toml
+@@ -66,7 +66,7 @@ pytest = [
+     {version = "^5.4.3", python = ">=3.5"}
+ ]
+ pytest-cov = "^2.5"
+-pytest-mock = "^1.9"
++pytest-mock = "^3.5"
+ pre-commit = { version = "^2.6", python = "^3.6.1" }
+ tox = "^3.0"
+ pytest-sugar = "^0.9.2"
