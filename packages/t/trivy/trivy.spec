@@ -27,12 +27,12 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         0001-suse-mark-sle-15.3-as-maintained-add-opensuse-15.3.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 Requires:       ca-certificates
 Requires:       git-core
 Requires:       rpm
-%{go_nostrip}
 
 %description
 Trivy (`tri` pronounced like trigger, `vy` pronounced like envy) is a simple and

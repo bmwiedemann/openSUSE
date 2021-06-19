@@ -128,4 +128,12 @@
   * feat(go): added support of gomod analyzer (#978)</comment>
     <requestid>898184</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1eadb782378b60a83b0df35a68bd32ae</srcmd5>
+    <version>0.18.3</version>
+    <time>1624136576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900585</requestid>
+  </revision>
 </revisionlist>
