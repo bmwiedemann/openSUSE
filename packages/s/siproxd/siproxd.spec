@@ -1,7 +1,7 @@
 #
 # spec file for package siproxd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %define siproxdgroup    siproxd
 
 Name:           siproxd
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        A SIP masquerading proxy with RTP support
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://siproxd.sourceforge.net/
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        https://sourceforge.net/projects/siproxd/files/siproxd/%{version}/siproxd-%{version}.tar.gz
 Source1:        susefirewall2.%{name}
 Source2:        %name.init.in
 Source3:        %name.logrotate
@@ -46,21 +46,17 @@ Source6:        siproxd.service
 #and also adds standard library (and include) locations, ie. /usr/local/lib
 #After applying the patch, autogen.sh needs to be run (which, among other things, rebuilds "configure").
 Patch0:         siproxd-libs.patch
-#PATCH-FIX-FROM-DEBIAN use logger not user
-Patch1:         siproxd-log.c.patch
-Patch2:         siproxd.plugin_fix_bogus_via.c.patch
-Patch3:         siproxd-multiple-definition.patch
+Patch1:         siproxd.plugin_fix_bogus_via.c.patch
 BuildRequires:  docbook-utils
 BuildRequires:  libosip2-devel
 BuildRequires:  libtool
-%if %suse_version > 1220
+BuildRequires:  sqlite3-devel
 BuildRequires:  texlive-courier
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-ec
 BuildRequires:  texlive-helvetic
 BuildRequires:  texlive-jadetex
 BuildRequires:  texlive-times
-%endif
 %if %suse_version > 1315
 BuildRequires:  texlive-kpathsea
 BuildRequires:  texlive-metafont
@@ -73,8 +69,6 @@ Requires(pre):  %{_sbindir}/useradd
 %if %suse_version <= 1500
 Suggests:       SuSEfirewall2
 %endif
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Siproxd is an proxy/masquerading daemon for the SIP protocol. It handles
@@ -92,11 +86,8 @@ HTML and PDF documentation for %{name}
 
 %prep
 %setup -q
-
-%patch0 -p1	
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch0 -p1
+%patch1 -p1
 
 cp %{S:5} .
 
@@ -136,9 +127,7 @@ sed -i -e "s@nobody@%{siproxduser}@" %{buildroot}%{_sysconfdir}/%{name}/%{name}.
 sed -i -e "s@nobody@%{siproxduser}@" %{buildroot}%{_datadir}/%{name}/scripts/%{name}
 #
 # Directory needs to exist for packaging
-%if %suse_version > 1120
 mkdir -p %{buildroot}/%{_rundir}/%{name}
-%endif
 
 # cleanup
 rm -f %{buildroot}/%{_sysconfdir}/siproxd_passwd.cfg
@@ -185,11 +174,8 @@ getent passwd %{siproxduser} >/dev/null || \
 %_mandir/man8/%name.8*
 
 %dir %_sysconfdir/%name
-
-%if %suse_version > 1120
- #make rpm know about a directory but do not package it
-   %attr(0750,%{siproxduser},root) %ghost %{_rundir}/%{name}
-%endif
+#make rpm know about a directory but do not package it
+%attr(0750,%{siproxduser},root) %ghost %{_rundir}/%{name}
 
 %files doc
 %doc doc/html/* doc/pdf/*

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 19 18:13:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.8.3
+  * mostly bugfixes and performance improvements
+   * Upgrade Notes 0.8.2 to 0.8.3:
+     * Merge the configuration file
+  * New plugins:
+    * plugin_stats: write some statistics about currently active calls
+    * plugin_blacklist: new plugin to block UACs that cause excessive 
+      failures during REGISTER attempts
+- Drop upstream fixed siproxd-log.c.patch and
+  siproxd-multiple-definition.patch
+- SPEC file drop parts for outdated openSUSE / SLE versions
+
+-------------------------------------------------------------------
 Mon Nov 23 14:05:43 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop dep on %insserv_prereq as it's not needed since the switch to a

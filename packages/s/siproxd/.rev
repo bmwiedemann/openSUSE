@@ -343,4 +343,12 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
   service unit (forwarded request 850224 from fbui)</comment>
     <requestid>870155</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6c364061dfe5a1c743c6d1d5f33fbbf0</srcmd5>
+    <version>0.8.3</version>
+    <time>1624136666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900873</requestid>
+  </revision>
 </revisionlist>

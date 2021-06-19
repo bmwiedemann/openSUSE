@@ -1,5 +1,5 @@
---- siproxd-0.8.1/configure.in
-+++ siproxd-0.8.1/configure.in
+--- siproxd-0.8.1/configure.ac
++++ siproxd-0.8.1/configure.ac
 @@ -97,6 +97,9 @@
  dnl **********************************************
  dnl * Location of libraries / headerfiles
