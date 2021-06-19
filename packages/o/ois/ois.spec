@@ -18,17 +18,13 @@
 
 %define sover 1_5_0
 Name:           ois
-Version:        1.5
+Version:        1.5.1
 Release:        0
 Summary:        Object Oriented Input System
 License:        Zlib
 Group:          System/Libraries
 URL:            https://wgois.github.io/OIS/
 Source0:        https://github.com/wgois/OIS/archive/refs/tags/v%{version}.tar.gz#/OIS-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Install-headers-from-CMAKE_CURRENT_SOURCE_DIR-instea.patch -- https://github.com/wgois/OIS/pull/64
-Patch0:         0001-Install-headers-from-CMAKE_CURRENT_SOURCE_DIR-instea.patch
-# PATCH-FIX-UPSTREAM 0001-CMakeLists.txt-Respect-user-s-libdir.patch -- https://github.com/wgois/OIS/pull/69
-Patch1:         0001-CMakeLists.txt-Respect-user-s-libdir.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
