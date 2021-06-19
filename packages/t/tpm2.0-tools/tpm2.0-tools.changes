@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 18 14:44:25 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch to fix the
+  tpm2_eventlog command (boo#1187360)
+
+-------------------------------------------------------------------
 Thu Jun 17 09:26:42 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add 0001-tpm2_checkquote-fix-uninitialized-variable.patch for a better

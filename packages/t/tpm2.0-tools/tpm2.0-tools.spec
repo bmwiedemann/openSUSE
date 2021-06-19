@@ -27,6 +27,7 @@ Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{
 Patch0:         fix_bogus_warning.patch
 Patch1:         0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch
 Patch2:         0001-tpm2_checkquote-fix-uninitialized-variable.patch
+Patch3:         0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -70,6 +71,7 @@ associated interfaces.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # TODO: remove autoreconf once fix_pie_linking patch is no longer needed

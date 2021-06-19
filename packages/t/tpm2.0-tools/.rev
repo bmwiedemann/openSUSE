@@ -476,4 +476,13 @@ s etc.
 - Re-enable lto (forwarded request 900548 from aplanas)</comment>
     <requestid>900549</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>43ddddcd51aec4e37c36655dba7eff4d</srcmd5>
+    <version>5.1</version>
+    <time>1624136653</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch to fix the
+  tpm2_eventlog command (boo#1187360) (forwarded request 900773 from aplanas)</comment>
+    <requestid>900775</requestid>
+  </revision>
 </revisionlist>

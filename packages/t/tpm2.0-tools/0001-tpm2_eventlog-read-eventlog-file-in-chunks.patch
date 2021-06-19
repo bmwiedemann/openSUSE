@@ -1,0 +1,145 @@
+From b95e41bccc64e488ca9c824e632b8ca5bc87db55 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 18 Jun 2021 15:54:22 +0200
+Subject: [PATCH] tpm2_eventlog: read eventlog file in chunks
+
+The eventlog file lives is securityfs, that do not return the file size.
+The current implementation first try to do a "fseek(fp, 0, SEEK_END)"
+for this file, and this will always return 0.
+
+This generate an error, and tpm2_eventlog exit with:
+
+ERROR: Unable to run tpm2_eventlog
+
+This patch replace the reading logic, now reading in chunks of 16KB and
+reallocating the buffer if needed. Also introduces a new function in
+files.c ("files_read_bytes_chunk") that helps counting the total read
+size, that now is different from the ammount of allocated memory.
+
+Fixes #2775
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ lib/files.c                |  9 +++++++++
+ lib/files.h                | 15 ++++++++++++++
+ tools/misc/tpm2_eventlog.c | 40 +++++++++++++++++++-------------------
+ 3 files changed, 44 insertions(+), 20 deletions(-)
+
+diff --git a/lib/files.c b/lib/files.c
+index 884dd23c..7f0fb39f 100644
+--- a/lib/files.c
++++ b/lib/files.c
+@@ -564,6 +564,15 @@ bool files_read_bytes(FILE *out, UINT8 bytes[], size_t len) {
+     return (readx(out, bytes, len) == len);
+ }
+ 
++bool files_read_bytes_chunk(FILE *out, UINT8 bytes[], size_t len, size_t *read_len) {
++
++    BAIL_ON_NULL("FILE", out);
++    BAIL_ON_NULL("bytes", bytes);
++    size_t chunk_len = readx(out, bytes, len);
++    *read_len += chunk_len;
++    return (chunk_len == len);
++}
++
+ bool files_write_bytes(FILE *out, uint8_t bytes[], size_t len) {
+ 
+     BAIL_ON_NULL("FILE", out);
+diff --git a/lib/files.h b/lib/files.h
+index 33022cbd..684b7eef 100644
+--- a/lib/files.h
++++ b/lib/files.h
+@@ -571,6 +571,21 @@ bool files_read_64(FILE *out, UINT64 *data);
+  */
+ bool files_read_bytes(FILE *out, UINT8 data[], size_t size);
+ 
++/**
++ * Reads len bytes from a file and set the read length.
++ * @param out
++ *  The file to read from.
++ * @param data
++ *  The buffer to read into, only valid on a True return.
++ * @param size
++ *  The number of bytes to read.
++ * @param read_size
++ *  Total number of bytes readed.
++ * @return
++ *  True on success, False otherwise.
++ */
++bool files_read_bytes_chunk(FILE *out, UINT8 data[], size_t size, size_t *read_size);
++
+ /**
+  * Converts a TPM2B_ATTEST to a TPMS_ATTEST using libmu.
+  * @param quoted
+diff --git a/tools/misc/tpm2_eventlog.c b/tools/misc/tpm2_eventlog.c
+index b51089bd..64ce6add 100644
+--- a/tools/misc/tpm2_eventlog.c
++++ b/tools/misc/tpm2_eventlog.c
+@@ -12,6 +12,8 @@
+ #include "tpm2_eventlog_yaml.h"
+ #include "tpm2_tool.h"
+ 
++#define CHUNK_SIZE 16384
++
+ static char *filename = NULL;
+ 
+ /* Set the default YAML version */
+@@ -72,37 +74,35 @@ static tool_rc tpm2_tool_onrun(ESYS_CONTEXT *ectx, tpm2_option_flags flags) {
+         return tool_rc_option_error;
+     }
+ 
+-    /* Get file size */
+-    unsigned long size = 0;
+-    bool ret = files_get_file_size_path(filename, &size);
+-    if (!ret || !size) {
++    /* Read the file in chunks.  Usually the file will reside in
++       securityfs, and those files do not have a public file size */
++    tool_rc rc = tool_rc_success;
++    FILE *fileptr = fopen(filename, "rb");
++    if (!fileptr) {
+         return tool_rc_general_error;
+     }
+ 
+-    /* Allocate buffer to read file data */
+-    UINT8 *eventlog = calloc(1, size);
++    /* Reserve the buffer for the first chunk */
++    UINT8 *eventlog = calloc(1, CHUNK_SIZE);
+     if (eventlog == NULL){
+-        LOG_ERR("failed to allocate %lu bytes: %s", size, strerror(errno));
++        LOG_ERR("failed to allocate %d bytes: %s", CHUNK_SIZE, strerror(errno));
+         return tool_rc_general_error;
+     }
+ 
+-    /* Load buffer with file data */
+-    tool_rc rc = tool_rc_success;
+-    FILE *fileptr = fopen(filename, "rb");
+-    if (!fileptr) {
+-        rc = tool_rc_general_error;
+-        goto out;
++    unsigned long size = 0;
++    while (files_read_bytes_chunk(fileptr, eventlog, CHUNK_SIZE, &size)) {
++        UINT8 *eventlog_tmp = realloc(eventlog, size + CHUNK_SIZE);
++        if (eventlog_tmp == NULL){
++            LOG_ERR("failed to allocate %lu bytes: %s", size + CHUNK_SIZE, strerror(errno));
++            rc = tool_rc_general_error;
++            goto out;
++        }
++        eventlog = eventlog_tmp;
+     }
+-
+-    ret = files_read_bytes(fileptr, eventlog, size);
+     fclose(fileptr);
+-    if (!ret) {
+-        rc = tool_rc_general_error;
+-        goto out;
+-    }
+ 
+     /* Parse eventlog data */
+-    ret = yaml_eventlog(eventlog, size, eventlog_version);
++    bool ret = yaml_eventlog(eventlog, size, eventlog_version);
+     if (!ret) {
+         LOG_ERR("failed to parse tpm2 eventlog");
+         rc = tool_rc_general_error;
+-- 
+2.32.0
+
