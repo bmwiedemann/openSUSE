@@ -20,7 +20,7 @@
 %define majorver 5.0
 
 Name:           trytond_purchase_request
-Version:        %{majorver}.4
+Version:        %{majorver}.5
 Release:        0
 
 URL:            http://www.tryton.org/
@@ -44,16 +44,16 @@ BuildArch:      noarch
 The purchase_request module of the Tryton application platform allows you to create a purchase request as pre-step for a purchase
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
