@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:50:52 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- add license file also to libsz2 package
+- move misplaced *.cmake files
+- delete static libraries
+- remove spec file fallback for too old cmake versions
+- Update to version 1.0.5:
+  * Updated documentation to new 121.0-B-3 standard. The new standard mainly clarifies
+      and explicitly defines special cases which could be ambiguous or misleading
+      in previous revisions.
+      Existing compressed data is still compatible with this version of the library
+      and compressed data produced by this version can be uncompressed with previous versions.
+  * Modernized CMake
+  * Better CMake integration with HDF5 by Jan-Willem Blokland
+
+-------------------------------------------------------------------
 Mon Feb 25 09:32:58 UTC 2019 - manfred99@gmx.ch
 
 - Update to version 1.0.4:

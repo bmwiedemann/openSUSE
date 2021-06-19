@@ -1,7 +1,7 @@
 #
 # spec file for package libaec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libaec
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Adaptive Entropy Coding library
 #---License is BSD, however there is a non-enforced NASA patent on the
@@ -27,14 +27,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://gitlab.dkrz.de/k202009/libaec
 Source:         https://gitlab.dkrz.de/k202009/libaec/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 Source99:       baselibs.conf
-
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} > 1310
 BuildRequires:  cmake
-%else
-BuildRequires:  libtool
-BuildRequires:  autoconf
-BuildRequires:  automake
-%endif
 BuildRequires:  gcc-c++
 
 %description
@@ -58,7 +51,7 @@ supported, they can also be efficiently coded by grouping exponents
 and mantissa.
 
 Libaec implements Golomb Rice coding as defined in the Space Data
-System Standard documents 121.0-B-2 and 120.0-G-2.
+System Standard documents 121.0-B-3 and 120.0-G-2.
 
 %package devel
 Summary:        Development files for libaec (Adaptive Entropy Coding library)
@@ -93,52 +86,39 @@ SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 %setup -q -n "%{name}-v%{version}"
 
 %build
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} > 1310
 %cmake
-%else
-libtoolize --force
-aclocal
-autoheader
-automake --force-missing --add-missing
-autoconf
-%configure --disable-static
-%endif
-make %{?_smp_mflags}
+%cmake_build
 
 %check
-#test data missing in tarball for check_szcomp and sampledata.sh
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} > 1310
-LD_LIBRARY_PATH=%{buildroot}/%{_libdir} \
-  make -C build test ARGS="-E \(check_szcomp\|sampledata.sh\)"
-%else
-make -i %{?_smp_mflags} check VERBOSE=1
-%endif
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%ctest
 
 %install
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} > 1310
 %cmake_install
-%else
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%endif
+find %{buildroot}%{_libdir} -type f -name "*.a" -delete -print
+mkdir -p %{buildroot}%{_libdir}/cmake/%{name}
+mv %{buildroot}/usr/cmake/*.cmake %{buildroot}%{_libdir}/cmake/%{name}/
+rmdir %{buildroot}/usr/cmake
 
 %post -n libaec0 -p /sbin/ldconfig
 %post -n libsz2 -p /sbin/ldconfig
-
 %postun -n libaec0 -p /sbin/ldconfig
 %postun -n libsz2 -p /sbin/ldconfig
 
 %files -n libaec0
-%doc README.md CHANGELOG.md Copyright.txt doc/patent.txt
+%license LICENSE.txt
+%doc README.md CHANGELOG.md doc/patent.txt
 %{_bindir}/aec
 %{_libdir}/libaec.so.0*
 %{_mandir}/man1/aec.*
 
 %files devel
+%{_libdir}/cmake/%{name}
 %{_includedir}/libaec.h
 %{_libdir}/libaec.so
 
 %files -n libsz2
+%license LICENSE.txt
 %doc README.SZIP
 %{_libdir}/libsz.so.2*
 
