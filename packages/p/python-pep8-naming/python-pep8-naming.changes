@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 18 08:02:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add pep8-naming-pr157-exception-names.patch for compatibility
+  with flake8 >= 3.9.1; gh#PyCQA/pep8-naming#157
+- Update URL, clean up specfile (-B and PYTHONDONTWRITEBYTECODE=1
+  are redundant)
+
+-------------------------------------------------------------------
 Sat Jul 11 18:38:46 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.11.1:

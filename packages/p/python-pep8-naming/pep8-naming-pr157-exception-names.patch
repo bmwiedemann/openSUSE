@@ -1,0 +1,389 @@
+From 6bf0c05176686a5c9d74da3eb8f48d16a3e07742 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Tue, 15 Sep 2020 00:08:28 -0300
+Subject: [PATCH 01/11] Set N818 to check error suffix on exception names.
+
+---
+ README.rst            |  2 ++
+ src/pep8ext_naming.py | 23 ++++++++++++++++++++++-
+ testsuite/N818.py     | 30 ++++++++++++++++++++++++++++++
+ 3 files changed, 54 insertions(+), 1 deletion(-)
+ create mode 100644 testsuite/N818.py
+
+diff --git a/README.rst b/README.rst
+index 9832ea1..4009e38 100644
+--- a/README.rst
++++ b/README.rst
+@@ -70,6 +70,8 @@ These error codes are emitted:
+ +------+-------------------------------------------------------+
+ | N817 | camelcase imported as acronym                         |
+ +------+-------------------------------------------------------+
++| N818 | error suffix in exception names                       |
+++------+-------------------------------------------------------+
+ 
+ Options
+ -------
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index 51d60f5..37bb799 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -11,7 +11,7 @@
+ 
+ try:
+     import ast
+-    from ast import iter_child_nodes
++    from ast import iter_child_nodes, ClassDef
+ except ImportError:
+     from flake8.util import ast, iter_child_nodes
+ 
+@@ -291,6 +291,24 @@ class ClassNameCheck(BaseASTCheck):
+     Classes for internal use have a leading underscore in addition.
+     """
+     N801 = "class name '{name}' should use CapWords convention"
++    N818 = "class name '{name}' should use Error suffix as it is an Exception"
++
++    def get_class_def(self, name, parents):
++        for parent in parents:
++            for class_def in parent.body:
++                if isinstance(class_def, ClassDef) and class_def.name == name:
++                    return class_def
++
++    def superclass_names(self, name, parents):
++        class_def = self.get_class_def(name, parents)
++        if not class_def:
++            return []
++        class_ids = []
++        for base in class_def.bases:
++            if hasattr(base, "id"):
++                class_ids += [base.id]
++                class_ids += self.superclass_names(base.id, parents)
++        return class_ids
+ 
+     def visit_classdef(self, node, parents, ignore=None):
+         name = node.name
+@@ -299,6 +317,9 @@ def visit_classdef(self, node, parents, ignore=None):
+         name = name.strip('_')
+         if not name[:1].isupper() or '_' in name:
+             yield self.err(node, 'N801', name=name)
++        superclasses = self.superclass_names(name, parents)
++        if "Exception" in superclasses and name[-5:] != "Error":
++            yield self.err(node, 'N818', name=name)
+ 
+ 
+ class FunctionNameCheck(BaseASTCheck):
+diff --git a/testsuite/N818.py b/testsuite/N818.py
+new file mode 100644
+index 0000000..28fe432
+--- /dev/null
++++ b/testsuite/N818.py
+@@ -0,0 +1,30 @@
++#: Okay
++class ActionError(Exception):
++    pass
++#: N818
++class ActionClass(Exception):
++    pass
++#: Okay
++class ActionError(Exception):
++    pass
++class DeepActionError(ActionError):
++    pass
++#: N818
++class ActionError(Exception):
++    pass
++class DeepActionClass(ActionError):
++    pass
++#: Okay
++class MixinError(Exception):
++    pass
++class Mixin:
++    pass
++class MixinActionError(Mixin,MixinError):
++    pass
++#: N818
++class MixinError(Exception):
++    pass
++class Mixin:
++    pass
++class MixinActionClass(Mixin,MixinError):
++    pass
+
+From 6085ac9690560eb56aae05bc9486d9ed72c79bf2 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Thu, 17 Sep 2020 14:35:50 -0300
+Subject: [PATCH 02/11] Remove import of ClassDef.
+
+---
+ src/pep8ext_naming.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index 37bb799..332656e 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -11,7 +11,7 @@
+ 
+ try:
+     import ast
+-    from ast import iter_child_nodes, ClassDef
++    from ast import iter_child_nodes
+ except ImportError:
+     from flake8.util import ast, iter_child_nodes
+ 
+@@ -296,7 +296,7 @@ class ClassNameCheck(BaseASTCheck):
+     def get_class_def(self, name, parents):
+         for parent in parents:
+             for class_def in parent.body:
+-                if isinstance(class_def, ClassDef) and class_def.name == name:
++                if isinstance(class_def, ast.ClassDef) and class_def.name == name:
+                     return class_def
+ 
+     def superclass_names(self, name, parents):
+
+From 84adbbaeac42e2299552b7209110c3a56d04b254 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Thu, 17 Sep 2020 14:45:08 -0300
+Subject: [PATCH 03/11] Improve variable names.
+
+---
+ src/pep8ext_naming.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index 332656e..c1f1fb3 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -295,9 +295,10 @@ class ClassNameCheck(BaseASTCheck):
+ 
+     def get_class_def(self, name, parents):
+         for parent in parents:
+-            for class_def in parent.body:
+-                if isinstance(class_def, ast.ClassDef) and class_def.name == name:
+-                    return class_def
++            for definition in parent.body:
++                class_definition = isinstance(definition, ast.ClassDef)
++                if class_definition and definition.name == name:
++                    return definition
+ 
+     def superclass_names(self, name, parents):
+         class_def = self.get_class_def(name, parents)
+
+From 59c1e6ef4ad5c94dcaa3a069e8956ef0887dafa8 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Thu, 19 Nov 2020 14:19:48 -0300
+Subject: [PATCH 04/11] Transform class_ids list into a set as suggested.
+
+---
+ src/pep8ext_naming.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index c1f1fb3..c0f598d 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -301,14 +301,14 @@ def get_class_def(self, name, parents):
+                     return definition
+ 
+     def superclass_names(self, name, parents):
++        class_ids = set()
+         class_def = self.get_class_def(name, parents)
+         if not class_def:
+-            return []
+-        class_ids = []
++            return class_ids
+         for base in class_def.bases:
+             if hasattr(base, "id"):
+-                class_ids += [base.id]
+-                class_ids += self.superclass_names(base.id, parents)
++                class_ids.add(base.id)
++                class_ids.update(self.superclass_names(base.id, parents))
+         return class_ids
+ 
+     def visit_classdef(self, node, parents, ignore=None):
+
+From 3c3ecdf0a132f4150a5d674f2a96d5f4296ca97a Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Thu, 19 Nov 2020 14:42:21 -0300
+Subject: [PATCH 05/11] Add spaces after commas.
+
+---
+ testsuite/N818.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testsuite/N818.py b/testsuite/N818.py
+index 28fe432..1d0ae10 100644
+--- a/testsuite/N818.py
++++ b/testsuite/N818.py
+@@ -19,12 +19,12 @@ class MixinError(Exception):
+     pass
+ class Mixin:
+     pass
+-class MixinActionError(Mixin,MixinError):
++class MixinActionError(Mixin, MixinError):
+     pass
+ #: N818
+ class MixinError(Exception):
+     pass
+ class Mixin:
+     pass
+-class MixinActionClass(Mixin,MixinError):
++class MixinActionClass(Mixin, MixinError):
+     pass
+
+From 364fb2547d8054dfe90af2d238c7118a75c7d902 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Tue, 5 Jan 2021 17:51:31 -0300
+Subject: [PATCH 06/11] Make N818's message more actionable.
+
+---
+ src/pep8ext_naming.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index c0f598d..e9dad23 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -291,7 +291,7 @@ class ClassNameCheck(BaseASTCheck):
+     Classes for internal use have a leading underscore in addition.
+     """
+     N801 = "class name '{name}' should use CapWords convention"
+-    N818 = "class name '{name}' should use Error suffix as it is an Exception"
++    N818 = "exception name '{name}' should be named with an Error suffix"
+ 
+     def get_class_def(self, name, parents):
+         for parent in parents:
+
+From eb50e59d675b678a7ff38f609d339562d5a2030c Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Tue, 5 Jan 2021 17:53:47 -0300
+Subject: [PATCH 07/11] Rename class_definition as is_class_definition to keep
+ the name consistency.
+
+---
+ src/pep8ext_naming.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index e9dad23..fdb22d2 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -296,8 +296,8 @@ class ClassNameCheck(BaseASTCheck):
+     def get_class_def(self, name, parents):
+         for parent in parents:
+             for definition in parent.body:
+-                class_definition = isinstance(definition, ast.ClassDef)
+-                if class_definition and definition.name == name:
++                is_class_definition = isinstance(definition, ast.ClassDef)
++                if is_class_definition and definition.name == name:
+                     return definition
+ 
+     def superclass_names(self, name, parents):
+
+From 2430287c6ac14613328ca6fc4341da5fc5c6f224 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Tue, 5 Jan 2021 17:58:46 -0300
+Subject: [PATCH 08/11] Reduce complexity of a comparison with an 'endswith'
+ method call.
+
+---
+ src/pep8ext_naming.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index fdb22d2..9f34343 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -319,7 +319,7 @@ def visit_classdef(self, node, parents, ignore=None):
+         if not name[:1].isupper() or '_' in name:
+             yield self.err(node, 'N801', name=name)
+         superclasses = self.superclass_names(name, parents)
+-        if "Exception" in superclasses and name[-5:] != "Error":
++        if "Exception" in superclasses and not name.endswith("Error"):
+             yield self.err(node, 'N818', name=name)
+ 
+ 
+
+From b562e5a512591d6a45dd94b96768a81b270a6a79 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Sun, 14 Feb 2021 18:34:35 -0300
+Subject: [PATCH 09/11] Make N818 ignored by default.
+
+---
+ run_tests.py          | 4 ++++
+ src/pep8ext_naming.py | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/run_tests.py b/run_tests.py
+index 289af23..1cb092f 100644
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -75,6 +75,10 @@ class OptionsManager(optparse.OptionParser):
+     def __init__(self, *args, **kwargs):
+         optparse.OptionParser.__init__(self, *args, **kwargs)
+         self.config_options = []
++        self.ignore = []
++
++    def extend_default_ignore(self, new_ignores):
++        self.ignore += new_ignores
+ 
+ 
+ def parse_options(checker, options):
+diff --git a/src/pep8ext_naming.py b/src/pep8ext_naming.py
+index 9f34343..2037435 100644
+--- a/src/pep8ext_naming.py
++++ b/src/pep8ext_naming.py
+@@ -167,6 +167,7 @@ def add_options(cls, parser):
+                          help='List of method decorators pep8-naming plugin '
+                               'should consider staticmethods (Defaults to '
+                               '%default)')
++        parser.extend_default_ignore(['N818'])
+ 
+     @classmethod
+     def parse_options(cls, options):
+
+From 0117e40f643aa7ff8338a039e25e835837eb1090 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Sat, 17 Apr 2021 10:57:04 -0300
+Subject: [PATCH 10/11] Set requirement flake8 >= 3.9.1
+
+---
+ setup.py | 2 +-
+ tox.ini  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1e94ea8..8fd4807 100644
+--- a/setup.py
++++ b/setup.py
+@@ -44,7 +44,7 @@ def run_tests(self):
+     license='Expat license',
+     package_dir={'': 'src'},
+     py_modules=['pep8ext_naming'],
+-    install_requires=['flake8_polyfill>=1.0.2,<2'],
++    install_requires=['flake8>=3.9.1', 'flake8_polyfill>=1.0.2,<2'],
+     zip_safe=False,
+     entry_points={
+         'flake8.extension': [
+
+From 6d62db81d7967e123e29673a4796fefec6f06d26 Mon Sep 17 00:00:00 2001
+From: eloy <eloy.colell@gmail.com>
+Date: Sat, 17 Apr 2021 10:59:26 -0300
+Subject: [PATCH 11/11] Improve tox call to include an empty list for
+ extended-default-ignore.
+
+---
+ run_tests.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/run_tests.py b/run_tests.py
+index 1cb092f..64d80b5 100644
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -89,6 +89,7 @@ def parse_options(checker, options):
+     options_manager.add_option('--ignore', default=[])
+     options_manager.add_option('--extend-ignore', default=[])
+     options_manager.add_option('--enable-extensions', default=[])
++    options_manager.add_option('--extended-default-ignore', default=[])
+     checker.add_options(options_manager)
+     processed_options, _ = options_manager.parse_args(options)
+     checker.parse_options(processed_options)
