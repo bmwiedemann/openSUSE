@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(Qt53DExtras)
 BuildRequires:  pkgconfig(Qt53DInput)
 BuildRequires:  pkgconfig(Qt53DLogic)
 BuildRequires:  pkgconfig(Qt53DRender)
+Provides:       python-PyQt3D = %{version}-%{release}
 Requires:       python-qt5 >= %{version}
 Requires:       python-qt5-sip
 
