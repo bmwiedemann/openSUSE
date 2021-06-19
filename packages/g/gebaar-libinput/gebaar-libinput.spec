@@ -17,7 +17,7 @@
 
 
 %define cpptoml 0.1.1
-%define cxxopts 2.1.2
+%define cxxopts 2.2.1
 Name:           gebaar-libinput
 Version:        0.0.5
 Release:        0
@@ -29,6 +29,8 @@ Source0:        https://github.com/Coffee2CodeNL/gebaar-libinput/archive/v%{vers
 Source1:        https://github.com/skystrife/cpptoml/archive/v%{cpptoml}.tar.gz#/cpptoml-%{cpptoml}.tar.gz
 Source2:        https://github.com/jarro2783/cxxopts/archive/v%{cxxopts}.tar.gz#/cxxopts-%{cxxopts}.tar.gz
 Patch0: 		cmake-version.patch
+# PATCH-FIX-UPSTREAM https://github.com/skystrife/cpptoml/pull/123
+Patch1:         0001-g-11-requires-limits-header.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc8
@@ -53,6 +55,7 @@ debug-events, gebaar-libinput interfaces with libinput directly.
 %patch0
 tar -xzf %{SOURCE1} -C libs/cpptoml --strip-components=1
 tar -xzf %{SOURCE2} -C libs/cxxopts --strip-components=1
+%patch1 -p1
 
 %build
 %if 0%{?suse_version} == 1500

@@ -7,4 +7,12 @@
     <comment>New package: see https://lists.opensuse.org/opensuse-factory/2019-04/msg00308.html </comment>
     <requestid>696496</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf8ed757b45b2d3b67c24b6684fb9bf6</srcmd5>
+    <version>0.0.5</version>
+    <time>1624136594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900729</requestid>
+  </revision>
 </revisionlist>

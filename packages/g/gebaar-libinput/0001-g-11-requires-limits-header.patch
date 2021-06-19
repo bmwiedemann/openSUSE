@@ -1,0 +1,24 @@
+From 02e34e3a7ae81b0209f131623d978cce9a49e6a7 Mon Sep 17 00:00:00 2001
+From: Dirk Eddelbuettel <edd@debian.org>
+Date: Mon, 30 Nov 2020 09:41:49 -0600
+Subject: [PATCH] g++-11 requires limits header
+
+---
+ libs/cpptoml/include/cpptoml.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libs/cpptoml/include/cpptoml.h b/libs/cpptoml/include/cpptoml.h
+index 5a00da3..1dc9fd1 100644
+--- a/libs/cpptoml/include/cpptoml.h
++++ b/libs/cpptoml/include/cpptoml.h
+@@ -14,6 +14,7 @@
+ #include <cstring>
+ #include <fstream>
+ #include <iomanip>
++#include <limits>
+ #include <map>
+ #include <memory>
+ #include <sstream>
+-- 
+2.31.1
+
