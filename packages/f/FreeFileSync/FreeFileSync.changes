@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 16 18:54:18 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.11
+  - Fixed Shared Drive synchronization with Google Drive
+  - Directly open exported file list (.CSV) as temporary file
+  - Avoid EIO error for F_PREALLOCATE (macOS)
+  - Watch socket using "poll" instead of "select" (Linux, macOS)
+  - Fixed user-specific time/date format (Windows)
+  - Fixed system_profiler not found error (macOS)
+- Changes from 11.10
+  - Fixed comparison results cleared after mouse-scrolling the first folder pair
+  - Stricter base folder existence checks before synchronization
+  - Disable all file pairs when base folder status cannot be determined
+  - Fixed sync statistics if base folder existence test failed
+  - Work around glitch in grid scrollbar size calculation
+  - Fixed folder drag and drop failing after locale conflict (macOS)
+  - Fixed incorrect MIME permissions after installation (Linux)
+  - Stricter server response validation during update check
+  - Fixed incomplete item path in log if source item is missing
+  - Fixed installation error when running ConEmu
+  - Support starting FreeFileSync as root login user (Linux)
+
+-------------------------------------------------------------------
 Fri May 21 19:40:09 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.9

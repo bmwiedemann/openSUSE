@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.9
+Version:        11.11
 Release:        0
 Summary:        Free backup software to synchronize files and folders
 License:        GPL-3.0-or-later
