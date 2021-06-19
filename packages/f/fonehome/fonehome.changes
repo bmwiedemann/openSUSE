@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 15 19:37:47 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.2.0
+  + Added bash(1) completion scripts for fhssh(1) and fhscp(1)
+  + Converted from /etc/init.d script to systemd unit file
+
+-------------------------------------------------------------------
 Tue Nov  3 14:09:43 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Replace '%service_del_postun -n' with '%service_del_postun_without_restart'
