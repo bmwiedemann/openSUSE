@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 18 10:15:55 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the forcing of DWARF version 4, since the libdwarf in
+  factory works correctly with this build and DWARF5 symbol format
+- Expand supported architectures to aarch64
+
+-------------------------------------------------------------------
 Thu Jun 10 16:24:28 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Force DWARF version 4 when building with gcc >= 11

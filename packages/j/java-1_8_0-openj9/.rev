@@ -71,4 +71,12 @@
     <comment>Fix factory build</comment>
     <requestid>899088</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e81d7b0988ab1e7052ac3690a214720d</srcmd5>
+    <version>1.8.0.292</version>
+    <time>1624136597</time>
+    <user>dimstar_suse</user>
+    <comment>Add aarch64 to build architectures + allow DWARF5 symbols</comment>
+    <requestid>900740</requestid>
+  </revision>
 </revisionlist>

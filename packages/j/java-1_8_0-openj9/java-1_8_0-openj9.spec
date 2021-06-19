@@ -16,6 +16,7 @@
 #
 
 
+%{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
 %global bootcycle 1
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -72,6 +73,9 @@
 %endif
 %ifarch s390x
 %global archinstall s390x
+%endif
+%ifarch %{aarch64}
+%global archinstall aarch64
 %endif
 %if %{debug}
 %global debugbuild slowdebug
@@ -205,7 +209,7 @@ Provides:       jre1.5.x
 Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
-ExclusiveArch:  x86_64 ppc64le s390x
+ExclusiveArch:  x86_64 ppc64le s390x aarch64
 %if %{bootcycle}
 BuildRequires:  java-devel >= 1.7
 BuildConflicts: java >= 9
@@ -407,13 +411,6 @@ EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-nu
 
 %ifarch ppc64le
 EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
-%endif
-
-%if %{?pkg_vcmp:%pkg_vcmp gcc-c++ >= 11}%{!?pkg_vcmp:0}
-EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -g -gdwarf-4"
-EXTRA_CFLAGS="$EXTRA_CFLAGS -g -gdwarf-4"
-export CXXFLAGS="$EXTRA_CPP_FLAGS"
-export CFLAGS="$EXTRA_CFLAGS"
 %endif
 
 bash configure \
