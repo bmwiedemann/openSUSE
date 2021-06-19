@@ -156,4 +156,12 @@
     <comment>- Update to release 3.10.3</comment>
     <requestid>884718</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>da0acab0d925ede0fc2a2c10c4b1f6d5</srcmd5>
+    <version>3.10.4</version>
+    <time>1624136503</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900341</requestid>
+  </revision>
 </revisionlist>
