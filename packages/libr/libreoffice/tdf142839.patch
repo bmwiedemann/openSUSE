@@ -1,0 +1,38 @@
+From 4a2894a2b9c973b275788190220d205e41eb92db Mon Sep 17 00:00:00 2001
+From: Mike Kaganski <mike.kaganski@collabora.com>
+Date: Thu, 17 Jun 2021 17:22:36 +0300
+Subject: [PATCH] tdf#142839: do not forget to initialize *pHeightNTP
+
+Regression after commit d0a1616ccad0dd5f5a02c1b0204f537b57d0b4b5
+
+Change-Id: Iaa8f67e0c7e3d99b057294717d24ffac4ad3534c
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/117389
+Tested-by: Jenkins
+Reviewed-by: Mike Kaganski <mike.kaganski@collabora.com>
+(cherry picked from commit 59611f7b6acbf643bde0e0121ee51e2df53e7d50)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/117305
+Tested-by: Jenkins CollaboraOffice <jenkinscollaboraoffice@gmail.com>
+---
+
+diff --git a/editeng/source/editeng/impedit2.cxx b/editeng/source/editeng/impedit2.cxx
+index 4980c57..ff080b1 100644
+--- a/editeng/source/editeng/impedit2.cxx
++++ b/editeng/source/editeng/impedit2.cxx
+@@ -3437,6 +3437,8 @@
+ tools::Long ImpEditEngine::Calc1ColumnTextHeight(tools::Long* pHeightNTP)
+ {
+     tools::Long nHeight = 0;
++    if (pHeightNTP)
++        *pHeightNTP = 0;
+     // Pretend that we have ~infinite height to get total height
+     comphelper::ValueRestorationGuard aGuard(nCurTextHeight,
+                                              std::numeric_limits<tools::Long>::max());
+@@ -3467,6 +3469,8 @@
+     tools::Long nTentativeColHeight = mnMinColumnWrapHeight;
+     tools::Long nWantedIncrease = 0;
+     tools::Long nCurrentTextHeight;
++    if (pHeightNTP)
++        *pHeightNTP = 0;
+ 
+     // This does the necessary column balancing for the case when the text does not fit min height.
+     // When the height of column (taken from nCurTextHeight) is too small, the last column will

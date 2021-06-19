@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 17 19:38:40 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix tdf#142839: a regression caused by "Multi column textbox in editengine"
+  * tdf142839.patch
+
+-------------------------------------------------------------------
+Tue Jun 15 12:28:58 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use asimdrdm CPU flag for aarch64 to select only powerful buildhosts
+
+-------------------------------------------------------------------
+Mon Jun 14 14:46:36 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1182969: LO-L3: PPTX: one column becomes two within one text frame (two occurrences)
+  * bsc1182969.patch
+
+-------------------------------------------------------------------
 Thu Jun 10 12:31:56 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.1.4.2 (bsc#1178806)
