@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 21:19:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.18:
+  * add wheel for python 3.9 
+
+-------------------------------------------------------------------
 Sun Jan 17 21:50:47 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test call (the old non-macro pytest call did conflict with

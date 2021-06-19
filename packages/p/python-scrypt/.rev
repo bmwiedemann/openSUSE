@@ -51,4 +51,13 @@
     <comment></comment>
     <requestid>863922</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>460097a54648d16a0628b029d094d059</srcmd5>
+    <version>0.8.18</version>
+    <time>1624136588</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.18:
+  * add wheel for python 3.9</comment>
+    <requestid>900663</requestid>
+  </revision>
 </revisionlist>
