@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 14:48:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- BuildRequire pkgconfig(gl) everywhere to work around oddity in
+  FindOpenGL.cmake
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0

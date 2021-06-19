@@ -83,9 +83,9 @@ Provides:       %{name}-private = %{version}
 Obsoletes:      %{name}-private < %{version}
 %ifarch %{arm} aarch64
 BuildRequires:  pkgconfig(glesv2)
-%else
-BuildRequires:  pkgconfig(gl)
 %endif
+# Workaround: CMake's OpenGL::EGL target only exists if OpenGL::OpenGL does
+BuildRequires:  pkgconfig(gl)
 
 %description
 Plasma library and runtime components based upon KF5 and Qt5
