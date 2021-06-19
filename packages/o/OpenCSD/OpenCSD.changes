@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 17 09:55:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1.0:
+  - __Update__: ETM v4.6 support.
+  - __Update__: C-API - add API functions to get last error and convert error code to string.
+  - __Bugfix__: ETMv4/ETE - fix loop problem in commit elements.
+  - __Bugfix__: ETMv4/ETE - make error handling consistent.
+  - __Bugfix__: Add Pull request #36 from github (Ross Burton)
+  - __Bugfix__: Add Pull request #37 from github (Ian Rogers)
+
+-------------------------------------------------------------------
 Fri Jan 15 08:14:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.0.0:

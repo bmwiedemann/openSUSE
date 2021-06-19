@@ -21,7 +21,7 @@
 
 %define libnum  1
 Name:           OpenCSD
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
@@ -84,8 +84,11 @@ mkdir -p %{buildroot}/usr/share/man/man1/
 %make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib} install_man
 
 %post	-n libopencsd%{libnum} -p /sbin/ldconfig
+
 %postun	-n libopencsd%{libnum} -p /sbin/ldconfig
+
 %post	-n libopencsd_c_api%{libnum} -p /sbin/ldconfig
+
 %postun	-n libopencsd_c_api%{libnum} -p /sbin/ldconfig
 
 %files
