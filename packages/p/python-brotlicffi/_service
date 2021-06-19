@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/python-hyper/brotlicffi</param>
+    <param name="scm">git</param>
+    <param name="revision">68c0431673e6c59549079e6588b043a707262c80</param>
+    <param name="version">1.0.9.2</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

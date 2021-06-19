@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5b9649452d57ad4e964073522e37b3d</srcmd5>
+    <version>1.0.9.2</version>
+    <time>1624136596</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-brotlicffi required by python-httpx &gt;0.18.1</comment>
+    <requestid>900733</requestid>
+  </revision>
+</revisionlist>
