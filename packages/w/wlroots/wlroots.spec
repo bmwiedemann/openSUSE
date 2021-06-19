@@ -30,8 +30,8 @@ Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/wlroots
-Source0:        https://github.com/swaywm/wlroots/archive/%{version}.tar.gz
-BuildRequires:  meson >= 0.48.0
+Source0:        https://github.com/swaywm/wlroots/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
@@ -97,6 +97,7 @@ Pluggable, composable modules for building a Wayland compositor.
 
 %prep
 %setup -q
+
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 19 13:25:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use named source tarball
+- Fix meson version requirement
+
+-------------------------------------------------------------------
 Thu Apr  8 08:26:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
