@@ -18,7 +18,7 @@
 
 %define main_version 2020.3
 Name:           FlightGear-data
-Version:        %{main_version}.8
+Version:        %{main_version}.9
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
