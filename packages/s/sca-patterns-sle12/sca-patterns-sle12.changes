@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 18 17:26:05 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.5
+  - New regular patterns (5)
+    + sle12all/blacklist-000019607.py: System exit to emergency shell at boot with multipath enabled (TID000019607)
+    + sle12all/btrfsmaster-000018779.py: BTRFS Master TID
+    + sle12all/sizingbtrfs-000018798.py: How to resize/extend a btrfs formatted root partition (TID000018798)
+    + sle12sp3/mpiofindpaths-000019511.py: Using the find_multipaths yes option in multipath.conf (bsc#1138452)
+    + sle12sp4/mpiofindpaths-000019511.py: Using the find_multipaths yes option in multipath.conf (bsc#1138452)
+
+-------------------------------------------------------------------
 Thu Jun 10 20:12:24 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.5
