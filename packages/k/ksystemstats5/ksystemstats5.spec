@@ -19,7 +19,7 @@
 
 %bcond_without lang
 Name:           ksystemstats5
-Version:        5.22.0
+Version:        5.22.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,25 +30,25 @@ Summary:        Plugin based system monitoring daemon
 License:        GPL-2.0-or-later AND CC0-1.0 AND BSD-3-Clause AND BSD-2-Clause
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         ksystemstats-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz
 %if %{with lang}
-Source1:        ksystemstats-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.78.0
+BuildRequires:  libsensors4-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KSysGuard) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  systemd-rpm-macros
 # For %%check
 BuildRequires:  dbus-1
 Conflicts:      ksysguard5 < 5.21.80
