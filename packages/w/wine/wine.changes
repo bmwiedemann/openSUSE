@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 19 09:49:21 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.11 development release
+  - Theming support in all builtin programs.
+  - All remaining CRT math functions imported from Musl.
+  - MP3 support requires libmpg123 also on macOS.
+  - Support for codepage 720 (Arabic).
+  - Various bug fixes.
+- update staging to 6.11 release
+
+-------------------------------------------------------------------
 Tue Jun 15 12:22:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix "adjusted directories to load 32bit wine things from 64bit wine."
