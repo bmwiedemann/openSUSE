@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_company
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "company" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -48,10 +48,10 @@ extend the user model in the Tryton application platform.
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
