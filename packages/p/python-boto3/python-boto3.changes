@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Jun  3 13:14:17 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.17.86
+  * api-change:``autoscaling``: [``botocore``] You can now launch EC2 instances with
+    GP3 volumes when using Auto Scaling groups with Launch Configurations
+  * api-change:``lightsail``: [``botocore``] Documentation updates for Lightsail
+  * api-change:``ecs``: [``botocore``] Documentation updates for Amazon ECS.
+  * api-change:``docdb``: [``botocore``] This SDK release adds support for DocDB global clusters.
+  * api-change:``iam``: [``botocore``] Documentation updates for AWS Identity and Access Management (IAM).
+  * api-change:``braket``: [``botocore``] Introduction of a RETIRED status for devices.
+- from version 1.17.85
+  * api-change:``sns``: [``botocore``] This release adds SMS sandbox in Amazon SNS and the ability to
+    view all configured origination numbers. The SMS sandbox provides a safe environment for sending
+    SMS messages, without risking your reputation as an SMS sender.
+  * api-change:``polly``: [``botocore``] Amazon Polly adds new Canadian French voice - Gabrielle.
+    Gabrielle is available as Neural voice only.
+  * api-change:``ec2``: [``botocore``] Added idempotency to CreateNetworkInterface using the ClientToken parameter.
+  * api-change:``iotwireless``: [``botocore``] Added six new public customer logging APIs to allow customers
+    to set/get/reset log levels at resource type and resource id level. The log level set from the APIs will
+    be used to filter log messages that can be emitted to CloudWatch in customer accounts.
+  * api-change:``servicediscovery``: [``botocore``] Bugfixes - The DiscoverInstances API operation now provides
+    an option to return all instances for health-checked services when there are no healthy instances available.
+- from version 1.17.84
+  * api-change:``lookoutmetrics``: [``botocore``] Allowing dot(.) character in table name for RDS
+    and Redshift as source connector.
+  * api-change:``location``: [``botocore``] Adds support for calculation of routes, resource tagging and
+    customer provided KMS keys.
+  * api-change:``datasync``: [``botocore``] Added SecurityDescriptorCopyFlags option that allows for control
+    of which components of SMB security descriptors are copied from source to destination objects.
+- from version 1.17.83
+  * api-change:``iotevents-data``: [``botocore``] Releasing new APIs for AWS IoT Events Alarms
+  * api-change:``devicefarm``: [``botocore``] Introduces support for using our desktop testing service
+    with applications hosted within your Virtual Private Cloud (VPC).
+  * api-change:``kendra``: [``botocore``] Amazon Kendra now suggests popular queries in order to help
+    guide query typing and help overall accuracy.
+  * api-change:``iotsitewise``: [``botocore``] IoT SiteWise Monitor Portal API updates to add alarms
+    feature configuration.
+  * api-change:``resource-groups``: [``botocore``] Documentation updates for Resource Groups.
+  * api-change:``lightsail``: [``botocore``] Documentation updates for Lightsail
+  * api-change:``iotevents``: [``botocore``] Releasing new APIs for AWS IoT Events Alarms
+  * api-change:``fsx``: [``botocore``] This release adds LZ4 data compression support to FSx for Lustre to
+    reduce storage consumption of both file system storage and file system backups.
+  * api-change:``sqs``: [``botocore``] Documentation updates for Amazon SQS for General Availability
+    of high throughput for FIFO queues.
+- from version 1.17.82
+  * api-change:``ec2``: [``botocore``] This release removes resource ids and tagging support
+    for VPC security group rules.
+- from version 1.17.81
+  * api-change:``qldb``: [``botocore``] Support STANDARD permissions mode in CreateLedger and DescribeLedger.
+    Add UpdateLedgerPermissionsMode to update permissions mode on existing ledgers.
+  * api-change:``cloudfront``: [``botocore``] Documentation fix for CloudFront
+  * api-change:``outposts``: [``botocore``] Add ConflictException to DeleteOutpost, CreateOutpost
+  * api-change:``mwaa``: [``botocore``] Adds scheduler count selection for Environments using
+    Airflow version 2.0.2 or later.
+  * api-change:``ec2``: [``botocore``] This release adds resource ids and tagging support
+    for VPC security group rules.
+  * api-change:``ecs``: [``botocore``] The release adds support for registering External instances
+    to your Amazon ECS clusters.
+  * api-change:``acm-pca``: [``botocore``] This release enables customers to store CRLs in S3 buckets with
+    Block Public Access enabled. The release adds the S3ObjectAcl parameter to the CreateCertificateAuthority
+    and UpdateCertificateAuthority APIs to allow customers to choose whether their CRL will be publicly available.
+- from version 1.17.80
+  * api-change:``transfer``: [``botocore``] AWS Transfer Family customers can now use AWS Managed Active
+    Directory or AD Connector to authenticate their end users, enabling seamless migration of file transfer
+    workflows that rely on AD authentication, without changing end users' credentials or needing a custom
+    authorizer.
+  * api-change:``iot``: [``botocore``] This release includes support for a new feature: Job templates for
+    AWS IoT Device Management Jobs. The release includes job templates as a new resource and APIs for
+    managing job templates.
+  * api-change:``workspaces``: [``botocore``] Adds support for Linux device types in WorkspaceAccessProperties
+- from version 1.17.79
+  * api-change:``quicksight``: [``botocore``] Add new parameters on RegisterUser and UpdateUser APIs to assign
+    or update external ID associated to QuickSight users federated through web identity.
+  * api-change:``ce``: [``botocore``] Introduced FindingReasonCodes, PlatformDifferences, DiskResourceUtilization
+    and NetworkResourceUtilization to GetRightsizingRecommendation action
+  * api-change:``compute-optimizer``: [``botocore``] Adds support for 1) additional instance types, 2) additional
+    instance metrics, 3) finding reasons for instance recommendations, and 4) platform differences between a current
+    instance and a recommended instance type.
+  * api-change:``ec2``: [``botocore``] This release adds support for creating and managing EC2 On-Demand
+    Capacity Reservations on Outposts.
+  * api-change:``logs``: [``botocore``] This release provides dimensions and unit support for metric filters.
+- from version 1.17.78
+  * api-change:``efs``: [``botocore``] Update efs client to latest version
+  * api-change:``s3``: [``botocore``] Documentation updates for Amazon S3
+  * api-change:``forecast``: [``botocore``] Updated attribute statistics in DescribeDatasetImportJob
+    response to support Long values
+  * api-change:``opsworkscm``: [``botocore``] New PUPPET_API_CRL attribute returned by DescribeServers API;
+    new EngineVersion of 2019 available for Puppet Enterprise servers.
+- from version 1.17.77
+  * api-change:``personalize``: [``botocore``] Added new API to stop a solution version creation that is
+    pending or in progress for Amazon Personalize
+  * api-change:``lexv2-models``: [``botocore``] Update lexv2-models client to latest version
+  * api-change:``quicksight``: [``botocore``] Add ARN based Row Level Security support to CreateDataSet/UpdateDataSet APIs.
+  * api-change:``iam``: [``botocore``] Documentation updates for AWS Identity and Access Management (IAM).
+- from version 1.17.76
+  * api-change:``kinesisanalyticsv2``: [``botocore``] Kinesis Data Analytics now allows rapid iteration on Apache
+    Flink stream processing through the Kinesis Data Analytics Studio feature.
+  * api-change:``rekognition``: [``botocore``] Amazon Rekognition Custom Labels adds support for customer managed
+    encryption, using AWS Key Management Service, of image files copied into the service and files written back
+    to the customer.
+  * api-change:``iam``: [``botocore``] Add pagination to ListUserTags operation
+  * api-change:``eks``: [``botocore``] Update the EKS AddonActive waiter.
+  * api-change:``autoscaling``: [``botocore``] With this release, customers can easily use Predictive Scaling as a
+    policy directly through Amazon EC2 Auto Scaling configurations to proactively scale their applications ahead
+    of predicted demand.
+  * api-change:``lightsail``: [``botocore``] Documentation updates for Amazon Lightsail.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed May 19 16:33:57 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.17.75
