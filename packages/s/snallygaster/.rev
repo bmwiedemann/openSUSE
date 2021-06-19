@@ -34,4 +34,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>894848</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>907633ab133da250e8f51ee3fe06bffc</srcmd5>
+    <version>0.0.10</version>
+    <time>1624136590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.10:
+ - New test for Wordpress duplicator installer files and directory listings.
+ - Move from Travis CI to Github Actions.
+ - Fix and silence new pylint warnings.
+- remove obsolete fix-codestyle.patch
+</comment>
+    <requestid>900703</requestid>
+  </revision>
 </revisionlist>

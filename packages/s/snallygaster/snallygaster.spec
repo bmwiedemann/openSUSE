@@ -17,7 +17,7 @@
 
 
 Name:           snallygaster
-Version:        0.0.9
+Version:        0.0.10
 Release:        0
 Summary:        Tool to scan for hidden files on HTTP servers
 License:        CC0-1.0
@@ -25,8 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/hannob/snallygaster
 Source:         https://files.pythonhosted.org/packages/source/s/snallygaster/snallygaster-%{version}.tar.gz
 Source1:        https://github.com/hannob/snallygaster-testdata/archive/refs/heads/master.tar.gz#/testdata.tar.gz
-# PATCH-FIX-UPSTREAM fix-codestyle.patch -- fixes codestyle to pass pylint testcase
-Patch0:         https://github.com/hannob/snallygaster/pull/58.patch#/fix-codestyle.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
@@ -59,7 +57,6 @@ a few checks for other security vulnerabilities.
 # -n snallygaster-testdata-master
 mkdir snallygaster-testdata-master/.git/
 echo '[core]' > snallygaster-testdata-master/.git/config
-%patch0 -p1
 
 %build
 %python3_build
