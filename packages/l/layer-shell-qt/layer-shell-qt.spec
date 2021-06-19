@@ -1,8 +1,8 @@
 #
 # spec file for package layer-shell-qt
 #
-# Copyright (c) 2021 Fabian Vogt
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Fabian Vogt
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,32 +24,32 @@
 
 %bcond_without lang
 Name:           layer-shell-qt
-Version:        5.22.0
+Version:        5.22.1
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         layer-shell-qt-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz
 %if %{with lang}
-Source1:        layer-shell-qt-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5XkbCommonSupport)
 BuildRequires:  cmake(Qt5WaylandClient)
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-qtwayland-private-headers-devel
+BuildRequires:  cmake(Qt5XkbCommonSupport)
 # Workaround missing requirement in libQt5Gui-private-headers-devel
-BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 BuildRequires:  pkgconfig(wayland-client) >= 1.3.0
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server) >= 1.3.0
+BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 
 %description
 This allows integration of Qt applications with wlr-layer-shell.
@@ -65,8 +65,8 @@ This allows integration of Qt applications with wlr-layer-shell.
 Summary:        wlr-layer-shell integration for Qt 5 - development files
 Group:          Development/Libraries/KDE
 Requires:       layer-shell-qt5 = %{version}
-Requires:       cmake(Qt5Qml)
 Requires:       libqt5-qtwayland-private-headers-devel
+Requires:       cmake(Qt5Qml)
 Requires:       pkgconfig(wayland-client) >= 1.3.0
 
 %description -n layer-shell-qt5-devel

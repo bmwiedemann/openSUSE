@@ -7,4 +7,12 @@
     <comment>Plasma 5.22.0</comment>
     <requestid>897486</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c58b6ba5ef87aba9075ffe4949cb513e</srcmd5>
+    <version>5.22.1</version>
+    <time>1624136554</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
+    <requestid>900255</requestid>
+  </revision>
 </revisionlist>
