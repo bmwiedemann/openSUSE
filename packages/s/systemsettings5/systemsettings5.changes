@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 15 13:17:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * [sidebar] Add missing subcategory header spacing for widescreen view (kde#438377)
+  * only update the global header reacting to the active page (kde#437088)
+
+-------------------------------------------------------------------
 Thu Jun  3 13:06:19 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.0
