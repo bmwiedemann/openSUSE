@@ -30,6 +30,8 @@ Source:         https://github.com/XanaduAI/blackbird/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip_32bit_divide_scalar_array_test.patch gh#XanaduAI/blackbird#42 mcepl@suse.com
 # Skip tests failing on 32bit
 Patch0:         skip_32bit_divide_scalar_array_test.patch
+# PATCH-FIX-UPSTREAM - https://github.com/XanaduAI/blackbird/pull/45
+Patch1:         fix-aarch64.patch
 BuildRequires:  %{python_module antlr4-python3-runtime >= 4.8}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.16}
