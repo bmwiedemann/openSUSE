@@ -1,0 +1,42 @@
+From 5e17203ff5dd4296760e5dad683e4cc84df2801d Mon Sep 17 00:00:00 2001
+From: Leo Yan <leo.yan@linaro.org>
+Date: Tue, 8 Jun 2021 14:45:09 +0800
+Subject: [PATCH 1/8] lvmlockd: Fix the compilation warning
+
+As SUSE build tool reports the warning:
+
+lvmlockd-core.c: In function 'client_thread_main':
+lvmlockd-core.c:4959:37: warning: '%d' directive output may be truncated writing between 1 and 10 bytes into a region of size 6 [-Wformat-truncation=]
+    snprintf(buf, sizeof(buf), "path[%d]", i);
+                                     ^~
+lvmlockd-core.c:4959:31: note: directive argument in the range [0, 2147483647]
+    snprintf(buf, sizeof(buf), "path[%d]", i);
+                               ^~~~~~~~~~
+
+To dismiss the compilation warning, enlarge the array "buf" to 17
+bytes to support the max signed integer: string format 6 bytes + signed
+integer 10 bytes + terminal char "\0".
+
+Reported-by: Heming Zhao <heming.zhao@suse.com>
+Signed-off-by: Leo Yan <leo.yan@linaro.org>
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ daemons/lvmlockd/lvmlockd-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemons/lvmlockd/lvmlockd-core.c b/daemons/lvmlockd/lvmlockd-core.c
+index ea76f2214b3e..fef9589b9d98 100644
+--- a/daemons/lvmlockd/lvmlockd-core.c
++++ b/daemons/lvmlockd/lvmlockd-core.c
+@@ -4780,7 +4780,7 @@ static void client_recv_action(struct client *cl)
+ 	const char *path;
+ 	const char *str;
+ 	struct pvs pvs;
+-	char buf[11];	/* p a t h [ x x x x ] \0 */
++	char buf[17];	/* "path[%d]\0", %d outputs signed integer so max to 10 bytes */
+ 	int64_t val;
+ 	uint32_t opts = 0;
+ 	int result = 0;
+-- 
+1.8.3.1
+

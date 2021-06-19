@@ -39,9 +39,9 @@ index 78f506520c45..16e8536e8a2a 100644
 +IMPORT{cmdline}="nolvm"
 +ENV{nolvm}=="?*", GOTO="lvm_end"
 +
- # If the PV label got lost, inform lvmetad immediately.
- # Detect the lost PV label by comparing previous ID_FS_TYPE value with current one.
+ # Detect removed PV label by comparing previous ID_FS_TYPE value with current one.
  ENV{.ID_FS_TYPE_NEW}="$env{ID_FS_TYPE}"
+ IMPORT{db}="ID_FS_TYPE"
 -- 
 1.8.3.1
 

@@ -1,0 +1,29 @@
+From 247f69f9aafe731ef85268da1e6ce817295b265d Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Wed, 2 Jun 2021 10:51:12 -0500
+Subject: [PATCH 10/33] writecache: fix lv_on_pmem
+
+dev_is_pmem on pv->dev requires a pv segment or it could segfault.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ lib/metadata/metadata.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/metadata/metadata.c b/lib/metadata/metadata.c
+index 110cbaed4e62..0b284435b41b 100644
+--- a/lib/metadata/metadata.c
++++ b/lib/metadata/metadata.c
+@@ -4412,6 +4412,9 @@ int lv_on_pmem(struct logical_volume *lv)
+ 
+ 	dm_list_iterate_items(seg, &lv->segments) {
+ 		for (s = 0; s < seg->area_count; s++) {
++			if (seg_type(seg, s) != AREA_PV)
++				continue;
++
+ 			pv = seg_pv(seg, s);
+ 
+ 			if (dev_is_pmem(lv->vg->cmd->dev_types, pv->dev)) {
+-- 
+1.8.3.1
+

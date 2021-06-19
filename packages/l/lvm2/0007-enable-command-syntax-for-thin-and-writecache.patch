@@ -1,0 +1,38 @@
+From a65f8e0a62b9ab3c2fc909a63abfa0e933619a8c Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Wed, 19 May 2021 14:36:40 -0500
+Subject: [PATCH 07/33] enable command syntax for thin and writecache
+
+converting an LV with a writecache to thin pool data in
+addition to previous attaching writecache to thin pool data
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ tools/command-lines.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/command-lines.in b/tools/command-lines.in
+index 1107c1e026e1..67c37ffd033b 100644
+--- a/tools/command-lines.in
++++ b/tools/command-lines.in
+@@ -534,7 +534,7 @@ RULE: all and lv_is_visible
+ 
+ ---
+ 
+-lvconvert --type thin-pool LV_linear_striped_raid_cache_error_zero
++lvconvert --type thin-pool LV_linear_striped_raid_cache_writecache_error_zero
+ OO: --stripes_long Number, --stripesize SizeKB,
+ OO_LVCONVERT_THINPOOL, OO_LVCONVERT_POOL, OO_LVCONVERT
+ OP: PV ...
+@@ -566,7 +566,7 @@ RULE: --poolmetadata not --readahead --stripesize --stripes_long
+ # This command syntax is deprecated, and the primary forms
+ # of creating a pool or swapping metadata should be used.
+ 
+-lvconvert --thinpool LV_linear_striped_raid_cache_thinpool
++lvconvert --thinpool LV_linear_striped_raid_cache_writecache_thinpool
+ OO: --stripes_long Number, --stripesize SizeKB,
+ OO_LVCONVERT_THINPOOL, OO_LVCONVERT_POOL, OO_LVCONVERT
+ OP: PV ...
+-- 
+1.8.3.1
+

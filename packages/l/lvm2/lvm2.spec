@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lvm2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -21,8 +21,8 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.10
-%define device_mapper_version     1.02.173
+%define lvm2_version              2.03.12
+%define device_mapper_version     1.02.177
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 0
 %define dlm_version     4.0.9
@@ -60,13 +60,50 @@ Source:         ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz
 Source1:        lvm.conf
 Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
+
 # Upstream patches
-Patch0001:      bug-1175565_01-tools-move-struct-element-before-variable-lenght-lis.patch
-Patch0002:      bug-1175565_02-gcc-change-zero-sized-array-to-fexlible-array.patch
-Patch0003:      bug-1175565_03-gcc-zero-sized-array-to-fexlible-array-C99.patch
-Patch0004:      bug-1178680_add-metadata-based-autoactivation-property-for-VG-an.patch
-Patch0005:      bug-1185190_01-pvscan-support-disabled-event_activation.patch
-Patch0006:      bug-1185190_02-config-improve-description-for-event_activation.patch
+Patch0001:      0001-lvmlockd-idm-Introduce-new-locking-scheme.patch
+Patch0002:      0002-lvmlockd-idm-Hook-Seagate-IDM-wrapper-APIs.patch
+Patch0003:      0003-lib-locking-Add-new-type-idm.patch
+Patch0004:      0004-lib-locking-Parse-PV-list-for-IDM-locking.patch
+Patch0005:      0005-tools-Add-support-for-idm-lock-type.patch
+Patch0006:      0006-configure-Add-macro-LOCKDIDM_SUPPORT.patch
+Patch0007:      0007-enable-command-syntax-for-thin-and-writecache.patch
+Patch0008:      0008-lvremove-fix-removing-thin-pool-with-writecache-on-d.patch
+Patch0009:      0009-vdo-fix-preload-of-kvdo.patch
+Patch0010:      0010-writecache-fix-lv_on_pmem.patch
+Patch0011:      0011-writecache-don-t-pvmove-device-used-by-writecache.patch
+Patch0012:      0012-pvchange-fix-file-locking-deadlock.patch
+Patch0013:      0013-tests-Enable-the-testing-for-IDM-locking-scheme.patch
+Patch0014:      0014-tests-Support-multiple-backing-devices.patch
+Patch0015:      0015-tests-Cleanup-idm-context-when-prepare-devices.patch
+Patch0016:      0016-tests-Add-checking-for-lvmlockd-log.patch
+Patch0017:      0017-tests-stress-Add-single-thread-stress-testing.patch
+Patch0018:      0018-tests-stress-Add-multi-threads-stress-testing-for-VG.patch
+Patch0019:      0019-tests-stress-Add-multi-threads-stress-testing-for-PV.patch
+Patch0020:      0020-tests-Support-idm-failure-injection.patch
+Patch0021:      0021-tests-Add-testing-for-lvmlockd-failure.patch
+Patch0022:      0022-tests-idm-Add-testing-for-the-fabric-failure.patch
+Patch0023:      0023-tests-idm-Add-testing-for-the-fabric-failure-and-tim.patch
+Patch0024:      0024-tests-idm-Add-testing-for-the-fabric-s-half-brain-fa.patch
+Patch0025:      0025-tests-idm-Add-testing-for-IDM-lock-manager-failure.patch
+Patch0026:      0026-tests-multi-hosts-Add-VG-testing.patch
+Patch0027:      0027-tests-multi-hosts-Add-LV-testing.patch
+Patch0028:      0028-tests-multi-hosts-Test-lease-timeout-with-LV-exclusi.patch
+Patch0029:      0029-tests-multi-hosts-Test-lease-timeout-with-LV-shareab.patch
+Patch0030:      0030-fix-empty-mem-pool-leak.patch
+Patch0031:      0031-tests-writecache-blocksize-add-dm-cache-tests.patch
+Patch0032:      0032-tests-rename-test.patch
+Patch0033:      0033-tests-add-writecache-cache-blocksize-2.patch
+Patch0034:      0034-lvmlockd-Fix-the-compilation-warning.patch
+Patch0035:      0035-devices-don-t-use-deleted-loop-backing-file-for-devi.patch
+Patch0036:      0036-man-help-fix-common-option-listing.patch
+Patch0037:      0037-archiving-take-archive-automatically.patch
+Patch0038:      0038-backup-automatically-store-data-on-vg_unlock.patch
+Patch0039:      0039-archive-avoid-abuse-of-internal-flag.patch
+Patch0040:      0040-pvck-add-lock_global-before-clean_hint_file.patch
+Patch0041:      0041-lvmdevices-add-deviceidtype-option.patch
+
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -131,6 +168,41 @@ Volume Manager.
 %patch0004 -p1
 %patch0005 -p1
 %patch0006 -p1
+%patch0007 -p1
+%patch0008 -p1
+%patch0009 -p1
+%patch0010 -p1
+%patch0011 -p1
+%patch0012 -p1
+%patch0013 -p1
+%patch0014 -p1
+%patch0015 -p1
+%patch0016 -p1
+%patch0017 -p1
+%patch0018 -p1
+%patch0019 -p1
+%patch0020 -p1
+%patch0021 -p1
+%patch0022 -p1
+%patch0023 -p1
+%patch0024 -p1
+%patch0025 -p1
+%patch0026 -p1
+%patch0027 -p1
+%patch0028 -p1
+%patch0029 -p1
+%patch0030 -p1
+%patch0031 -p1
+%patch0032 -p1
+%patch0033 -p1
+%patch0034 -p1
+%patch0035 -p1
+%patch0036 -p1
+%patch0037 -p1
+%patch0038 -p1
+%patch0039 -p1
+%patch0040 -p1
+%patch0041 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

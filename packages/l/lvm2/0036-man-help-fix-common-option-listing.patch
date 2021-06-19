@@ -1,0 +1,80 @@
+From df27392c8c9ec5d1efd92c2214805471473f2a06 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 8 Jun 2021 14:07:39 -0500
+Subject: [PATCH 3/8] man/help: fix common option listing
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ tools/command.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/tools/command.c b/tools/command.c
+index 1de739aaa0de..7205969e1c2f 100644
+--- a/tools/command.c
++++ b/tools/command.c
+@@ -2146,6 +2146,7 @@ void print_usage_common_lvm(struct command_name *cname, struct command *cmd)
+ void print_usage_common_cmd(struct command_name *cname, struct command *cmd)
+ {
+ 	int oo, opt_enum;
++	int found_common_command = 0;
+ 
+ 	/*
+ 	 * when there's more than one variant, options that
+@@ -2155,6 +2156,18 @@ void print_usage_common_cmd(struct command_name *cname, struct command *cmd)
+ 	if (cname->variants < 2)
+ 		return;
+ 
++	for (opt_enum = 0; opt_enum < ARG_COUNT; opt_enum++) {
++		if (!cname->common_options[opt_enum])
++			continue;
++		if (_is_lvm_all_opt(opt_enum))
++			continue;
++		found_common_command = 1;
++		break;
++	}
++
++	if (!found_common_command)
++		return;
++
+ 	printf("  Common options for command:");
+ 
+ 	/* print options with short opts */
+@@ -2213,7 +2226,7 @@ void print_usage_common_cmd(struct command_name *cname, struct command *cmd)
+ 		printf(" ]");
+ 	}
+ 
+-	printf(".P\n");
++	printf("\n\n");
+ }
+ 
+ void print_usage_notes(struct command_name *cname)
+@@ -2994,6 +3007,7 @@ static void _print_man_usage_common_cmd(struct command *cmd)
+ {
+ 	struct command_name *cname;
+ 	int i, sep, oo, opt_enum;
++	int found_common_command = 0;
+ 
+ 	if (!(cname = _find_command_name(cmd->name)))
+ 		return;
+@@ -3001,6 +3015,18 @@ static void _print_man_usage_common_cmd(struct command *cmd)
+ 	if (cname->variants < 2)
+ 		return;
+ 
++	for (opt_enum = 0; opt_enum < ARG_COUNT; opt_enum++) {
++		if (!cname->common_options[opt_enum])
++			continue;
++		if (_is_lvm_all_opt(opt_enum))
++			continue;
++		found_common_command = 1;
++		break;
++	}
++
++	if (!found_common_command)
++		return;
++
+ 	printf("Common options for command:\n");
+ 	printf(".\n");
+ 
+-- 
+1.8.3.1
+

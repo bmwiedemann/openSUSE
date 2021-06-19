@@ -1,0 +1,33 @@
+From 5b361b197e1a3fbbc5419b9c46f19539c2b7305c Mon Sep 17 00:00:00 2001
+From: Leo Yan <leo.yan@linaro.org>
+Date: Thu, 3 Jun 2021 17:59:12 +0800
+Subject: [PATCH 16/33] tests: Add checking for lvmlockd log
+
+Add checking for lvmlockd log, this can be used for the test cases which
+are interested in the interaction with lvmlockd.
+
+Signed-off-by: Leo Yan <leo.yan@linaro.org>
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ test/lib/check.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/test/lib/check.sh b/test/lib/check.sh
+index 8493bde83e1d..1f261940af3b 100644
+--- a/test/lib/check.sh
++++ b/test/lib/check.sh
+@@ -456,6 +456,11 @@ grep_dmsetup() {
+ 	grep -q "${@:3}" out || die "Expected output \"" "${@:3}" "\" from dmsetup $1 not found!"
+ }
+ 
++grep_lvmlockd_dump() {
++	lvmlockctl --dump | tee out
++	grep -q "${@:1}" out || die "Expected output \"" "${@:1}" "\" from lvmlockctl --dump not found!"
++}
++
+ #set -x
+ unset LVM_VALGRIND
+ "$@"
+-- 
+1.8.3.1
+

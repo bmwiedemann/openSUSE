@@ -1,0 +1,36 @@
+From e7f107c24666c8577f30e530b74f1ce0347e459b Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Wed, 2 Jun 2021 11:12:20 -0500
+Subject: [PATCH 11/33] writecache: don't pvmove device used by writecache
+
+The existing check didn't cover the unusual case where the
+cachevol exists on the same device as the origin LV.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ tools/pvmove.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/tools/pvmove.c b/tools/pvmove.c
+index da635a662d4c..bb372f7dcaeb 100644
+--- a/tools/pvmove.c
++++ b/tools/pvmove.c
+@@ -387,6 +387,15 @@ static struct logical_volume *_set_up_pvmove_lv(struct cmd_context *cmd,
+ 			return NULL;
+ 		}
+ 
++		if (lv_is_writecache(lv)) {
++			struct logical_volume *lv_cachevol = first_seg(lv)->writecache;
++			if (lv_is_on_pvs(lv_cachevol, source_pvl)) {
++				log_error("Unable to move device used for writecache cachevol %s.", display_lvname(lv_cachevol));
++				return NULL;
++			}
++
++		}
++
+ 		if (lv_is_raid(lv) && lv_raid_has_integrity(lv)) {
+ 			log_error("Unable to pvmove device used for raid with integrity.");
+ 			return NULL;
+-- 
+1.8.3.1
+

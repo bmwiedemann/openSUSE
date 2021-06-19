@@ -8,6 +8,11 @@ Check: mount the device first and then run`btrfs filesystem scrub start
 Reisze: find the mount point first and resize the filesystem after get
 the device id since there are maybe several devices underneath btrfs
 filesystem
+
+---
+by heming.zhao@suse.com 2021.6.8
+modify patch according to upstream code
+
 ---
  scripts/fsadm.sh | 75 +++++++++++++++++++++++++++++++++++++++++++++++++++++---
  1 file changed, 72 insertions(+), 3 deletions(-)
@@ -26,9 +31,9 @@ index a09b91534..2a29d5ad5 100755
  #   0 success
 @@ -57,6 +58,7 @@ XFS_CHECK=xfs_check
  # XFS_REPAIR -n is used when XFS_CHECK is not found
- XFS_REPAIR=xfs_repair
- CRYPTSETUP=cryptsetup
-+BTRFS=btrfs
+ XFS_REPAIR="xfs_repair"
+ CRYPTSETUP="cryptsetup"
++BTRFS="btrfs"
  
  # user may override lvm location by setting LVM_BINARY
  LVM=${LVM_BINARY:-lvm}
@@ -126,17 +131,17 @@ index a09b91534..2a29d5ad5 100755
  ####################
 @@ -676,6 +738,7 @@ resize() {
  	  "crypto_LUKS")
- 		which "$CRYPTSETUP" > /dev/null 2>&1 || error "$CRYPTSETUP utility required to resize LUKS volume"
- 		resize_luks $NEWSIZE ;;
-+	  "btrfs") resize_btrfs $NEWSIZE ;;
+ 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required to resize LUKS volume"
+ 		CMD=resize_luks ;;
++	  "btrfs") CMD=resize_btrfs ;;
  	  *) error "Filesystem \"$FSTYPE\" on device \"$VOLUME\" is not supported by this tool." ;;
- 	esac || error "Resize $FSTYPE failed."
- 	test -z "$CRYPT_SHRINK" || resize_crypt "$VOLUME_ORIG"
+ 	esac
+ 
 @@ -748,6 +811,12 @@ check() {
- 	  "crypto_LUKS")
- 		which "$CRYPTSETUP" > /dev/null 2>&1 || error "$CRYPTSETUP utility required."
- 		check_luks ;;
-+         "btrfs") #mount the device first and then run scrub
+ 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required."
+ 		check_luks || error "Crypto luks check failed."
+ 		;;
++	  "btrfs") #mount the device first and then run scrub
 +		 MOUNTPOINT=$TEMPDIR
 +		 temp_mount || error "Cannot mount btrfs filesystem"
 +		 dry "$BTRFS" scrub start -B "$VOLUME"

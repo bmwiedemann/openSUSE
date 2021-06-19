@@ -1,0 +1,37 @@
+From b725b5ea6ecfeef428fd7ffcd6855a38378d761b Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Wed, 26 May 2021 00:19:28 +0200
+Subject: [PATCH 09/33] vdo: fix preload of kvdo
+
+Commit 5bf1dba9eb8a8b77410e386e59dadeb27801b14e broke load of kvdo
+kernel module - correct it by loading kvdo instead of trying dm-vdo.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ lib/activate/activate.c | 10 +++-------
+ 1 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/lib/activate/activate.c b/lib/activate/activate.c
+index 71db98191506..6bda7385ba5c 100644
+--- a/lib/activate/activate.c
++++ b/lib/activate/activate.c
+@@ -574,13 +574,9 @@ int module_present(struct cmd_context *cmd, const char *target_name)
+ 	}
+ 
+ #ifdef MODPROBE_CMD
+-	if (strcmp(target_name, MODULE_NAME_VDO) == 0) {
+-		argv[1] = target_name;		/* ATM kvdo is without dm- prefix */
+-		if ((ret = exec_cmd(cmd, argv, NULL, 0)))
+-			return ret;
+-	}
+-
+-	if (dm_snprintf(module, sizeof(module), "dm-%s", target_name) < 0) {
++	if (strcmp(target_name, TARGET_NAME_VDO) == 0)
++		argv[1] = MODULE_NAME_VDO; /* ATM kvdo is without dm- prefix */
++	else if (dm_snprintf(module, sizeof(module), "dm-%s", target_name) < 0) {
+ 		log_error("module_present module name too long: %s",
+ 			  target_name);
+ 		return 0;
+-- 
+1.8.3.1
+

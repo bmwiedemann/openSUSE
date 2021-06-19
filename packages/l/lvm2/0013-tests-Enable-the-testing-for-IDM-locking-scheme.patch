@@ -1,0 +1,222 @@
+From c64dbc7ee80963a02f82f3257963f90b471fa90e Mon Sep 17 00:00:00 2001
+From: Leo Yan <leo.yan@linaro.org>
+Date: Thu, 3 Jun 2021 17:59:09 +0800
+Subject: [PATCH 13/33] tests: Enable the testing for IDM locking scheme
+
+This patch is to introduce testing option LVM_TEST_LOCK_TYPE_IDM, with
+specifying this option, the Seagate IDM lock manager will be launched as
+backend for testing.  Also add the prepare and remove shell scripts for
+IDM.
+
+Signed-off-by: Leo Yan <leo.yan@linaro.org>
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ test/Makefile.in                      |  9 +++++++++
+ test/lib/aux.sh                       | 25 +++++++++++++++++++++++++
+ test/lib/flavour-udev-lvmlockd-idm.sh |  5 +++++
+ test/lib/inittest.sh                  |  3 ++-
+ test/shell/aa-lvmlockd-idm-prepare.sh | 20 ++++++++++++++++++++
+ test/shell/lvmlockd-lv-types.sh       |  6 ++++++
+ test/shell/zz-lvmlockd-idm-remove.sh  | 29 +++++++++++++++++++++++++++++
+ 7 files changed, 96 insertions(+), 1 deletion(-)
+ create mode 100644 test/lib/flavour-udev-lvmlockd-idm.sh
+ create mode 100644 test/shell/aa-lvmlockd-idm-prepare.sh
+ create mode 100644 test/shell/zz-lvmlockd-idm-remove.sh
+
+diff --git a/test/Makefile.in b/test/Makefile.in
+index e4cd3aac5116..662974be6ccb 100644
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -85,6 +85,7 @@ help:
+ 	@echo "  check_all_lvmpolld     Run all tests with lvmpolld daemon."
+ 	@echo "  check_lvmlockd_sanlock Run tests with lvmlockd and sanlock."
+ 	@echo "  check_lvmlockd_dlm     Run tests with lvmlockd and dlm."
++	@echo "  check_lvmlockd_idm	Run tests with lvmlockd and idm."
+ 	@echo "  check_lvmlockd_test    Run tests with lvmlockd --test."
+ 	@echo "  run-unit-test          Run only unit tests (root not needed)."
+ 	@echo "  clean			Clean dir."
+@@ -169,6 +170,13 @@ check_lvmlockd_dlm: .tests-stamp
+ endif
+ 
+ ifeq ("@BUILD_LVMLOCKD@", "yes")
++check_lvmlockd_idm: .tests-stamp
++	VERBOSE=$(VERBOSE) ./lib/runner \
++		--testdir . --outdir $(LVM_TEST_RESULTS) \
++		--flavours udev-lvmlockd-idm --only shell/aa-lvmlockd-idm-prepare.sh,$(T),shell/zz-lvmlockd-idm-remove.sh --skip $(S)
++endif
++
++ifeq ("@BUILD_LVMLOCKD@", "yes")
+ check_lvmlockd_test: .tests-stamp
+ 	VERBOSE=$(VERBOSE) ./lib/runner \
+ 		--testdir . --outdir $(LVM_TEST_RESULTS) \
+@@ -189,6 +197,7 @@ LIB_FLAVOURS = \
+  flavour-udev-lvmpolld\
+  flavour-udev-lvmlockd-sanlock\
+  flavour-udev-lvmlockd-dlm\
++ flavour-udev-lvmlockd-idm\
+  flavour-udev-lvmlockd-test\
+  flavour-udev-vanilla
+ 
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 1a1f11a1d48f..97c7ac68b77b 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -119,6 +119,20 @@ prepare_sanlock() {
+ 	fi
+ }
+ 
++prepare_idm() {
++	if pgrep seagate_ilm; then
++		echo "Cannot run while existing seagate_ilm process exists"
++		exit 1
++	fi
++
++	seagate_ilm -D 0 -l 0 -L 7 -E 7 -S 7
++
++	if ! pgrep seagate_ilm; then
++		echo "Failed to start seagate_ilm"
++		exit 1
++	fi
++}
++
+ prepare_lvmlockd() {
+ 	if pgrep lvmlockd ; then
+ 		echo "Cannot run while existing lvmlockd process exists"
+@@ -135,6 +149,11 @@ prepare_lvmlockd() {
+ 		echo "starting lvmlockd for dlm"
+ 		lvmlockd
+ 
++	elif test -n "$LVM_TEST_LOCK_TYPE_IDM"; then
++		# make check_lvmlockd_idm
++		echo "starting lvmlockd for idm"
++		lvmlockd -g idm
++
+ 	elif test -n "$LVM_TEST_LVMLOCKD_TEST_DLM"; then
+ 		# make check_lvmlockd_test
+ 		echo "starting lvmlockd --test (dlm)"
+@@ -144,6 +163,12 @@ prepare_lvmlockd() {
+ 		# FIXME: add option for this combination of --test and sanlock
+ 		echo "starting lvmlockd --test (sanlock)"
+ 		lvmlockd --test -g sanlock -o 2
++
++	elif test -n "$LVM_TEST_LVMLOCKD_TEST_IDM"; then
++		# make check_lvmlockd_test
++		echo "starting lvmlockd --test (idm)"
++		lvmlockd --test -g idm
++
+ 	else
+ 		echo "not starting lvmlockd"
+ 		exit 0
+diff --git a/test/lib/flavour-udev-lvmlockd-idm.sh b/test/lib/flavour-udev-lvmlockd-idm.sh
+new file mode 100644
+index 000000000000..e9f8908dfb49
+--- /dev/null
++++ b/test/lib/flavour-udev-lvmlockd-idm.sh
+@@ -0,0 +1,5 @@
++export LVM_TEST_LOCKING=1
++export LVM_TEST_LVMPOLLD=1
++export LVM_TEST_LVMLOCKD=1
++export LVM_TEST_LOCK_TYPE_IDM=1
++export LVM_TEST_DEVDIR=/dev
+diff --git a/test/lib/inittest.sh b/test/lib/inittest.sh
+index 0fd6517103a5..6b4bcb348010 100644
+--- a/test/lib/inittest.sh
++++ b/test/lib/inittest.sh
+@@ -40,6 +40,7 @@ LVM_TEST_LVMPOLLD=${LVM_TEST_LVMPOLLD-}
+ LVM_TEST_DEVICES_FILE=${LVM_TEST_DEVICES_FILE-}
+ LVM_TEST_LOCK_TYPE_DLM=${LVM_TEST_LOCK_TYPE_DLM-}
+ LVM_TEST_LOCK_TYPE_SANLOCK=${LVM_TEST_LOCK_TYPE_SANLOCK-}
++LVM_TEST_LOCK_TYPE_IDM=${LVM_TEST_LOCK_TYPE_IDM-}
+ 
+ SKIP_WITHOUT_CLVMD=${SKIP_WITHOUT_CLVMD-}
+ SKIP_WITH_CLVMD=${SKIP_WITH_CLVMD-}
+@@ -64,7 +65,7 @@ unset CDPATH
+ 
+ export LVM_TEST_BACKING_DEVICE LVM_TEST_DEVDIR LVM_TEST_NODEBUG
+ export LVM_TEST_LVMLOCKD LVM_TEST_LVMLOCKD_TEST
+-export LVM_TEST_LVMPOLLD LVM_TEST_LOCK_TYPE_DLM LVM_TEST_LOCK_TYPE_SANLOCK
++export LVM_TEST_LVMPOLLD LVM_TEST_LOCK_TYPE_DLM LVM_TEST_LOCK_TYPE_SANLOCK LVM_TEST_LOCK_TYPE_IDM
+ export LVM_TEST_DEVICES_FILE
+ # grab some common utilities
+ . lib/utils
+diff --git a/test/shell/aa-lvmlockd-idm-prepare.sh b/test/shell/aa-lvmlockd-idm-prepare.sh
+new file mode 100644
+index 000000000000..8faff3bc2c66
+--- /dev/null
++++ b/test/shell/aa-lvmlockd-idm-prepare.sh
+@@ -0,0 +1,20 @@
++#!/usr/bin/env bash
++
++# Copyright (C) 2021 Seagate.  All rights reserved.
++#
++# This copyrighted material is made available to anyone wishing to use,
++# modify, copy, or redistribute it subject to the terms and conditions
++# of the GNU General Public License v2.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software Foundation,
++# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++
++test_description='Set up things to run tests with idm'
++
++. lib/inittest
++
++[ -z "$LVM_TEST_LOCK_TYPE_IDM" ] && skip;
++
++aux prepare_idm
++aux prepare_lvmlockd
+diff --git a/test/shell/lvmlockd-lv-types.sh b/test/shell/lvmlockd-lv-types.sh
+index 6138e5623d77..ee350b1c68a3 100644
+--- a/test/shell/lvmlockd-lv-types.sh
++++ b/test/shell/lvmlockd-lv-types.sh
+@@ -36,6 +36,12 @@ LOCKARGS2="dlm"
+ LOCKARGS3="dlm"
+ fi
+ 
++if test -n "$LVM_TEST_LOCK_TYPE_IDM" ; then
++LOCKARGS1="idm"
++LOCKARGS2="idm"
++LOCKARGS3="idm"
++fi
++
+ aux prepare_devs 5
+ 
+ vgcreate --shared $vg "$dev1" "$dev2" "$dev3" "$dev4" "$dev5"
+diff --git a/test/shell/zz-lvmlockd-idm-remove.sh b/test/shell/zz-lvmlockd-idm-remove.sh
+new file mode 100644
+index 000000000000..25943a579d7e
+--- /dev/null
++++ b/test/shell/zz-lvmlockd-idm-remove.sh
+@@ -0,0 +1,29 @@
++#!/usr/bin/env bash
++
++# Copyright (C) 2021 Seagate. All rights reserved.
++#
++# This copyrighted material is made available to anyone wishing to use,
++# modify, copy, or redistribute it subject to the terms and conditions
++# of the GNU General Public License v2.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software Foundation,
++# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++
++test_description='Remove the idm test setup'
++
++. lib/inittest
++
++[ -z "$LVM_TEST_LOCK_TYPE_IDM" ] && skip;
++
++# FIXME: collect debug logs (only if a test failed?)
++# lvmlockctl -d > lvmlockd-debug.txt
++# dlm_tool dump > dlm-debug.txt
++
++lvmlockctl --stop-lockspaces
++sleep 1
++killall lvmlockd
++sleep 1
++killall lvmlockd || true
++sleep 1
++killall seagate_ilm
+-- 
+1.8.3.1
+

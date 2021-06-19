@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Tue Jun 8 03:00:00 UTC 2021 - heming.zhao@suse.com
+
+- update lvm2 from LVM2.03.10 to LVM2.2.03.12 (bsc#1187010)
+
+  *** WHATS_NEW from 2.03.11 to 2.03.12 ***
+
+  Version 2.03.12 - 07th May 2021
+  ===============================
+    Allow attaching cache to thin data volume.
+    Fix memleak when generating list of outdated pvs.
+    Better hyphenation usage in man pages.
+    Replace use of deprecated security_context_t with char*.
+    Configure supports AIO_LIBS and AIO_CFLAGS.
+    Improve build process for static builds.
+    New --setautoactivation option to modify LV or VG auto activation.
+    New metadata based autoactivation property for LVs and VGs.
+    Improve signal handling with lvmpolld.
+    Signal handler can interrupt command also for SIGTERM.
+    Lvreduce --yes support.
+    Add configure option --with/out-symvers for non-glibc builds.
+    Report error when the filesystem is missing on fsadm resized volume.
+    Handle better blockdev with --getsize64 support for fsadm.
+    Do not include editline/history.h when using editline library.
+    Support error and zero segtype for thin-pool data for testing.
+    Support mixed extension for striped, error and zero segtypes.
+    Support resize also for stacked virtual volumes.
+    Skip dm-zero devices just like with dm-error target.
+    Reduce ioctl() calls when checking target status.
+    Merge polling does not fail, when LV is found to be already merged.
+    Poll volumes with at least 100ms delays.
+    Do not flush dm cache when cached LV is going to be removed.
+    New lvmlockctl_kill_command configuration option.
+    Support interruption while waiting on device close before deactivation.
+    Flush thin-pool messages before removing more thin volumes.
+    Improve hash function with less collisions and make it faster.
+    Reduce ioctl count when deactivating volumes.
+    Reduce number of metadata parsing.
+    Enhance performance of lvremove and vgremove commands.
+    Support interruption when taking archive and backup.
+    Accelerate large lvremoves.
+    Speedup search for cached device nodes.
+    Speedup command initialization.
+    Add devices file feature, off by default for now.
+    Support extension of writecached volumes.
+    Fix problem with unbound variable usage within fsadm.
+    Fix IMSM MD RAID detection on 4k devices.
+    Check for presence of VDO target before starting any conversion.
+    Support metatadata profiles with volume VDO pool conversions.
+    Support -Zn for conversion of already formated VDO pools.
+    Avoid removing LVs on error path of lvconvert during creation volumes.
+    Fix crashing lvdisplay when thin volume was waiting for merge.
+    Support option --errorwhenfull when converting volume to thin-pool.
+    Improve thin-performance profile support conversion to thin-pool.
+    Add workaround to avoid read of internal 'converted' devices.
+    Prohibit merging snapshot into the read-only thick snapshot origin.
+    Restore support for flipping rw/r permissions for thin snapshot origin.
+    Support resize of cached volumes.
+    Disable autoactivation with global/event_activation=0.
+    Check if lvcreate passes read_only_volume_list with tags and skips zeroing.
+    Allocation prints better error when metadata cannot fit on a single PV.
+    Pvmove can better resolve full thin-pool tree move.
+    Limit pool metadata spare to 16GiB.
+    Improves conversion and allocation of pool metadata.
+    Support thin pool metadata 15.88GiB, adds 64MiB, thin_pool_crop_metadata=0.
+    Enhance lvdisplay to report raid available/partial.
+    Support online rename of VDO pools.
+    Improve removal of pmspare when last pool is removed.
+    Fix problem with wiping of converted LVs.
+    Fix memleak in scanning  (2.03.11).
+    Fix corner case allocation for thin-pools.
+  
+  Version 2.03.11 - 08th January 2021
+  ===================================
+    Fix pvck handling MDA at offset different from 4096.
+    Partial or degraded activation of writecache is not allowed.
+    Enhance error handling for fsadm and handle correct fsck result.
+    Dmeventd lvm plugin ignores higher reserved_stack lvm.conf values.
+    Support using BLKZEROOUT for clearing devices.
+    Support interruption when wipping LVs.
+    Support interruption for bcache waiting.
+    Fix bcache when device has too many failing writes.
+    Fix bcache waiting for IO completion with failing disks.
+    Configure use own python path name order to prefer using python3.
+    Add configure --enable-editline support as an alternative to readline.
+    Enhance reporting and error handling when creating thin volumes.
+    Enable vgsplit for VDO volumes.
+    Lvextend of vdo pool volumes ensure at least 1 new VDO slab is added.
+    Use revert_lv() on reload error path after vg_revert().
+    Configure --with-integrity enabled.
+    Restore lost signal blocking while VG lock is held.
+    Improve estimation of needed extents when creating thin-pool.
+    Use extra 1% when resizing thin-pool metadata LV with --use-policy.
+    Enhance --use-policy percentage rounding.
+    Configure --with-vdo and --with-writecache as internal segments.
+    Improving VDO man page examples.
+    Allow pvmove of writecache origin.
+    Report integrity fields.
+    Integrity volumes defaults to journal mode.
+    Switch code base to use flexible array syntax.
+    Fix 64bit math when calculation cachevol size.
+    Preserve uint32_t for seqno handling.
+    Switch from mmap to plain read when loading regular files.
+    Update lvmvdo man page and better explain DISCARD usage.
+
+  *** WHATS_NEW_DM from 1.02.175 to 1.02.177 ***
+
+  Version 1.02.177 - 07th May 2021
+  ================================
+    Configure proceeds without libaio to allow build of device-mapper only.
+    Fix symbol versioning build with -O2 -flto.
+    Add dm_tree_node_add_thin_pool_target_v1 with crop_metadata support.
+
+
+- Drop patches that have been merged into upstream
+  - bug-1175565_01-tools-move-struct-element-before-variable-lenght-lis.patch
+  - bug-1175565_02-gcc-change-zero-sized-array-to-fexlible-array.patch
+  - bug-1175565_03-gcc-zero-sized-array-to-fexlible-array-C99.patch
+  - bug-1178680_add-metadata-based-autoactivation-property-for-VG-an.patch
+  - bug-1185190_01-pvscan-support-disabled-event_activation.patch
+  - bug-1185190_02-config-improve-description-for-event_activation.patch
+
+- Add patch
+  + 0001-lvmlockd-idm-Introduce-new-locking-scheme.patch
+  + 0002-lvmlockd-idm-Hook-Seagate-IDM-wrapper-APIs.patch
+  + 0003-lib-locking-Add-new-type-idm.patch
+  + 0004-lib-locking-Parse-PV-list-for-IDM-locking.patch
+  + 0005-tools-Add-support-for-idm-lock-type.patch
+  + 0006-configure-Add-macro-LOCKDIDM_SUPPORT.patch
+  + 0007-enable-command-syntax-for-thin-and-writecache.patch
+  + 0008-lvremove-fix-removing-thin-pool-with-writecache-on-d.patch
+  + 0009-vdo-fix-preload-of-kvdo.patch
+  + 0010-writecache-fix-lv_on_pmem.patch
+  + 0011-writecache-don-t-pvmove-device-used-by-writecache.patch
+  + 0012-pvchange-fix-file-locking-deadlock.patch
+  + 0013-tests-Enable-the-testing-for-IDM-locking-scheme.patch
+  + 0014-tests-Support-multiple-backing-devices.patch
+  + 0015-tests-Cleanup-idm-context-when-prepare-devices.patch
+  + 0016-tests-Add-checking-for-lvmlockd-log.patch
+  + 0017-tests-stress-Add-single-thread-stress-testing.patch
+  + 0018-tests-stress-Add-multi-threads-stress-testing-for-VG.patch
+  + 0019-tests-stress-Add-multi-threads-stress-testing-for-PV.patch
+  + 0020-tests-Support-idm-failure-injection.patch
+  + 0021-tests-Add-testing-for-lvmlockd-failure.patch
+  + 0022-tests-idm-Add-testing-for-the-fabric-failure.patch
+  + 0023-tests-idm-Add-testing-for-the-fabric-failure-and-tim.patch
+  + 0024-tests-idm-Add-testing-for-the-fabric-s-half-brain-fa.patch
+  + 0025-tests-idm-Add-testing-for-IDM-lock-manager-failure.patch
+  + 0026-tests-multi-hosts-Add-VG-testing.patch
+  + 0027-tests-multi-hosts-Add-LV-testing.patch
+  + 0028-tests-multi-hosts-Test-lease-timeout-with-LV-exclusi.patch
+  + 0029-tests-multi-hosts-Test-lease-timeout-with-LV-shareab.patch
+  + 0030-fix-empty-mem-pool-leak.patch
+  + 0031-tests-writecache-blocksize-add-dm-cache-tests.patch
+  + 0032-tests-rename-test.patch
+  + 0033-tests-add-writecache-cache-blocksize-2.patch
+  + 0034-lvmlockd-Fix-the-compilation-warning.patch
+  + 0035-devices-don-t-use-deleted-loop-backing-file-for-devi.patch
+  + 0036-man-help-fix-common-option-listing.patch
+  + 0037-archiving-take-archive-automatically.patch
+  + 0038-backup-automatically-store-data-on-vg_unlock.patch
+  + 0039-archive-avoid-abuse-of-internal-flag.patch
+  + 0040-pvck-add-lock_global-before-clean_hint_file.patch
+  + 0041-lvmdevices-add-deviceidtype-option.patch
+
+- Update patch
+  - bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+  - fate-31841_fsadm-add-support-for-btrfs.patch
+
+- lvm.conf
+  - trim tail space
+  - fix typo
+  - [new item] devices/use_devicesfile
+  - [new item] devices/devicesfile
+  - [new item] devices/search_for_devnames
+  - [new item] allocation/thin_pool_crop_metadata
+  - [new item] global/lvmlockctl_kill_command
+  - [new item] global/vdo_disabled_features
+
+-------------------------------------------------------------------
 Tue May 25 11:23:12 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link test as position independent executable (bsc#1184124).

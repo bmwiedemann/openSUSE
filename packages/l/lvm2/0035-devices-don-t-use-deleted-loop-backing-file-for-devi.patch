@@ -1,0 +1,38 @@
+From ca930bd936de2e7d4a83fa64add800baf6cfd116 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 8 Jun 2021 12:16:06 -0500
+Subject: [PATCH 2/8] devices: don't use deleted loop backing file for device
+ id
+
+check for "(deleted)" in the backing_file string and
+fall back to devname for id.
+
+$ cat /sys/block/loop0/loop/backing_file
+/root/looptmp (deleted)
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ lib/device/device_id.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/lib/device/device_id.c b/lib/device/device_id.c
+index 67f72e51b1ba..1b98487ab3a6 100644
+--- a/lib/device/device_id.c
++++ b/lib/device/device_id.c
+@@ -325,8 +325,12 @@ const char *device_id_system_read(struct cmd_context *cmd, struct device *dev, u
+ 	else if (idtype == DEV_ID_TYPE_MD_UUID)
+ 		_read_sys_block(cmd, dev, "md/uuid", sysbuf, sizeof(sysbuf));
+ 
+-	else if (idtype == DEV_ID_TYPE_LOOP_FILE)
++	else if (idtype == DEV_ID_TYPE_LOOP_FILE) {
+ 		_read_sys_block(cmd, dev, "loop/backing_file", sysbuf, sizeof(sysbuf));
++		/* if backing file is deleted, fall back to devname */
++		if (strstr(sysbuf, "(deleted)"))
++			sysbuf[0] = '\0';
++	}
+ 
+ 	else if (idtype == DEV_ID_TYPE_DEVNAME) {
+ 		if (!(idname = strdup(dev_name(dev))))
+-- 
+1.8.3.1
+
