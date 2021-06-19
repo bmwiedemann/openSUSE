@@ -28,6 +28,7 @@ Source1:        X11-displaymanagers-%{name}
 Source2:        00-general.conf
 Source3:        10-theme.conf
 Source4:        sddm-tmpfiles.conf
+Source5:        system-user-sddm.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-PAM-s-username.patch
 Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
@@ -64,11 +65,10 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb-xkb)
+BuildRequires:  sysuser-tools
 %systemd_requires
+%sysusers_requires
 Requires(post): diffutils
-Requires(pre):  %{_bindir}/getent
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
 Requires:       sddm-branding = %{version}
 Requires:       xdm
 # Merged the -lang package back into the main package
@@ -88,8 +88,8 @@ Requires:       %{name} = %{version}
 Requires:       sddm-theme-openSUSE
 Requires(post): %{name}
 Requires(post): diffutils
-Supplements:    packageand(plasma5-workspace:branding-openSUSE)
-Conflicts:      otherproviders(sddm-branding)
+Supplements:    (plasma5-workspace and branding-openSUSE)
+Conflicts:      sddm-branding
 Provides:       sddm-branding = %{version}
 
 %description branding-openSUSE
@@ -104,8 +104,8 @@ Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Requires(post): %{name}
 Requires(post): diffutils
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(sddm-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      sddm-branding
 Provides:       sddm-branding = %{version}
 
 %description branding-upstream
@@ -118,6 +118,7 @@ This package provides upstream branding for SDDM.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE5} sddm system-user-sddm.conf
 LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
 if test \( -n "%{?_distconfdir}" -a -e "%{_distconfdir}/login.defs" \); then
   LOGIN_DEFS_PATH="%{_distconfdir}/login.defs"
@@ -166,14 +167,13 @@ fi
 
   install -d %{buildroot}%{_sbindir}
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcsddm
+  
+  install -Dm 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/system-user-sddm.conf
 
   %fdupes %{buildroot}%{_datadir}/sddm
 
-%pre
+%pre -f sddm.pre
 %service_add_pre sddm.service
-getent group sddm >/dev/null || %{_sbindir}/groupadd -r sddm
-getent passwd sddm >/dev/null || %{_sbindir}/useradd -r -g sddm -s /bin/false \
-	-c "SDDM daemon" -d %{_localstatedir}/lib/sddm sddm
 
 %post
 %service_add_post sddm.service
@@ -275,6 +275,7 @@ fi
 %ghost %attr(750,sddm,sddm) %dir %{_localstatedir}/lib/sddm
 %{_mandir}/man*/sddm*%{ext_man}
 %{_unitdir}/sddm.service
+%{_sysusersdir}/system-user-sddm.conf
 %{_tmpfilesdir}/sddm.conf
 
 %files branding-openSUSE
