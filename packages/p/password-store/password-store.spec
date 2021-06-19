@@ -17,7 +17,7 @@
 
 
 Name:           password-store
-Version:        1.7.3+git20210216.918992c
+Version:        1.7.4
 Release:        0
 Summary:        Utility to store, retrieve, generate and synchronize passwords
 License:        GPL-2.0-or-later
