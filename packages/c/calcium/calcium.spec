@@ -18,7 +18,7 @@
 
 Name:           calcium
 %define lname   libcalcium0
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Library for exact computation with real and complex numbers
 License:        LGPL-2.1-or-later
