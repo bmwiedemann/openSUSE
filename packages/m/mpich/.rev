@@ -181,4 +181,12 @@
     <comment></comment>
     <requestid>882725</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7ffd19670beec0846178f9c95d6ac8a3</srcmd5>
+    <version>3.4.1</version>
+    <time>1624136646</time>
+    <user>dimstar_suse</user>
+    <comment>- don't own /usr/share/doc (owned by &quot;filesystem&quot;) to avoid conflict on install (forwarded request 899802 from cboltz)</comment>
+    <requestid>900758</requestid>
+  </revision>
 </revisionlist>

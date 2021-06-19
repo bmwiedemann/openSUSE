@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 13 11:39:25 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- don't own /usr/share/doc (owned by "filesystem") to avoid conflict on install
+
+-------------------------------------------------------------------
 Tue Mar 30 13:16:18 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 3.4.1

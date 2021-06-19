@@ -602,7 +602,7 @@ fi
 %hpc_mpi_dirs
 %hpc_modules_files
 %endif
-%doc %{_datadir}/doc
+%doc %{_datadir}/doc/*
 %dir %{p_prefix}
 %dir %{p_bindir}
 %dir %{p_datadir}
