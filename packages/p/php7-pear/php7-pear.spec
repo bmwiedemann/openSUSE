@@ -32,6 +32,8 @@ Source0:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pe
 Source1:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pear-nozlib.sig#/install-pear-nozlib.phar.sig
 Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
+# bsc#1187372 -- https://github.com/pear/pear-core/pull/115
+Patch0:         php7-pear-undefined-variables.patch
 BuildRequires:  php7-cli
 Requires:       php7-cli
 Recommends:     php7-openssl
@@ -42,7 +44,7 @@ Provides:       php-pear(PEAR) = %pear_module_version PEAR
 Provides:       php-pear(Structures_Graph) = %pear_module_version Structures_Graph
 Provides:       php-pear(XML_Util) = %pear_module_version XML_Util
 Obsoletes:      php-pear < %{version}
-%if 0%{?suse_version} <= 1500 
+%if 0%{?suse_version} <= 1500
 Provides:       php7-pear-Archive_Tar
 Obsoletes:      php7-pear-Archive_Tar
 %endif
@@ -99,6 +101,7 @@ php -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 
 	--man      %{_mandir} \
 	--metadata %{metadir} \
 	--www      %{peardir}/htdocs
+patch -p0 -d %{buildroot}/%{peardir} < %{PATCH0}
 
 %pre
 if [ -d %{peardir}/.registry -a ! -d %{metadir}/.registry ]; then

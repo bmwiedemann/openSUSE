@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 16 09:27:45 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  fix bsc#1187372 -- https://github.com/pear/pear-core/pull/115
+  + php7-pear-undefined-variables.patch
+
+-------------------------------------------------------------------
 Wed Jan 13 13:18:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - (Build)Requires php7-cli to make sure the php7 CLI is installed
