@@ -590,4 +590,19 @@
   - lcptools-v2: Implement SM2 signing and SM2 signature verification</comment>
     <requestid>864334</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7bd6a63e8715e67da806c372b3e6bebd</srcmd5>
+    <version>20210614_1.10.2</version>
+    <time>1624136669</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v1.10.2 / 20210614
+        Fix ACM chipset/processor list validation
+        Check for client/server match when selecting SINIT
+        Fix issues when building with GCC11
+        Default to D/A mapping when TPM1.2 and CBnT platform
+- updated to 1.10.1 / 20210330
+  - Indicate to SINIT that CBnT is supported by TBOOT
+  - lcptools: Fix issues from static code analysis (forwarded request 900328 from msmeissn)</comment>
+    <requestid>900884</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 11 07:29:02 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to v1.10.2 / 20210614
+        Fix ACM chipset/processor list validation
+        Check for client/server match when selecting SINIT
+        Fix issues when building with GCC11
+        Default to D/A mapping when TPM1.2 and CBnT platform
+- updated to 1.10.1 / 20210330
+
+  - Indicate to SINIT that CBnT is supported by TBOOT
+  - lcptools: Fix issues from static code analysis
+
+-------------------------------------------------------------------
 Tue Jan 19 14:35:38 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - release 1.10.0 ramifications:

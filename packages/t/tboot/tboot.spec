@@ -17,14 +17,14 @@
 
 
 Name:           tboot
-%define ver 1.10.0
-Version:        20200429_%{ver}
+%define ver 1.10.2
+Version:        20210614_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
 License:        BSD-3-Clause
 Group:          Productivity/Security
-URL:            http://sourceforge.net/projects/tboot/
-Source0:        http://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
+URL:            https://sourceforge.net/projects/tboot/
+Source0:        https://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
 Patch3:         tboot-grub2-fix-menu-in-xen-host-server.patch
 Patch4:         tboot-grub2-fix-xen-submenu-name.patch
 Patch7:         tboot-distributor.patch
@@ -51,10 +51,7 @@ verified launch of an OS kernel/VMM.
 
 %prep
 %setup -q -n %name-%ver
-%patch3 -p1
-%patch4 -p1
-%patch7 -p1
-%patch8 -p1
+%autopatch -p1
 
 %build
 # Tumbleweed now uses -flto=3 by default which gives us trouble with the
