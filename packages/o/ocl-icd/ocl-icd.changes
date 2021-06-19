@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 20:06:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix build:
+  * 0001-Updated-to-support-latest-Khronos-headers.patch
+
+-------------------------------------------------------------------
 Wed Mar 31 21:05:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0

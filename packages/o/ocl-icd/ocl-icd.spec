@@ -25,7 +25,9 @@ URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
-Patch1:         n_UsrShare.patch
+Patch0:         n_UsrShare.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Updated-to-support-latest-Khronos-headers.patch
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
