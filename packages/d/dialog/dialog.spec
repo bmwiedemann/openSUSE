@@ -16,7 +16,7 @@
 #
 
 
-%define src_date 20210306
+%define src_date 20210530
 %define somajor 15
 Name:           dialog
 Version:        1.3
