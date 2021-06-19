@@ -1,5 +1,5 @@
 #
-# spec file for package python-iminuit
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
