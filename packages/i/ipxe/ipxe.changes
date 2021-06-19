@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 09:12:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Since last update, syslinux is required to build the ISO but
+  it is available only on x86*, so disable ISO build for non-x86*
+
+-------------------------------------------------------------------
 Mon Jun 14 15:54:33 UTC 2021 - bwiedemann@suse.com
 
 - Update to version 1.20.1+git20210614.bf4ccd42:

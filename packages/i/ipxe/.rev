@@ -117,4 +117,13 @@ use xorrisofs for creating iso
   * [rndis] Fix size of reserved fields</comment>
     <requestid>900044</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>31ca9d1cb16e797c046516be50fa5d90</srcmd5>
+    <version>1.20.1+git20210614.bf4ccd42</version>
+    <time>1624136589</time>
+    <user>dimstar_suse</user>
+    <comment>Since last update, syslinux is required to build the ISO but
+  it is available only on x86*, so disable ISO build for non-x86*</comment>
+    <requestid>900673</requestid>
+  </revision>
 </revisionlist>

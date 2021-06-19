@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifnarch %{ix86} x86_64
+%define buildtargets dsk,usb,lkrn
+%else
+%define buildtargets dsk,iso,usb,lkrn
+%endif
 
 Name:           ipxe
 Version:        1.20.1+git20210614.bf4ccd42
@@ -24,8 +29,6 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  xorriso
-BuildRequires:  syslinux
 BuildRequires:  binutils-devel
 %ifarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
@@ -45,6 +48,7 @@ BuildRequires:  perl
 %ifarch %{ix86} x86_64
 BuildRequires:  syslinux
 %endif
+BuildRequires:  xorriso
 BuildRequires:  xz-devel
 # ix86 does not have a cross-x86_64 gcc available so it can't build
 # the x86_64 ipxe code. As a result of which, the support for ix86
@@ -102,16 +106,14 @@ make_ipxe \
 %ifnarch %{ix86} x86_64
   CROSS="x86_64-suse-linux-" \
 %endif
-  bin/undionly.kpxe bin/ipxe.{dsk,iso,usb,lkrn}
+  bin/undionly.kpxe bin/ipxe.{%{buildtargets}}
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/%{name}/
 mkdir -p %{buildroot}/%{_datadir}/%{name}.efi/
 
-#%ifarch %{ix86} x86_64
 install -D -m0644 src/bin/undionly.kpxe %{buildroot}/%{_datadir}/%{name}/
-install -D -m0644 src/bin/ipxe.{iso,usb,dsk,lkrn} %{buildroot}/%{_datadir}/%{name}/
-#%endif
+install -D -m0644 src/bin/ipxe.{%{buildtargets}} %{buildroot}/%{_datadir}/%{name}/
 %ifarch %{ix86} x86_64
 install -D -m0644 src/bin-i386-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-i386.efi
 install -D -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-i386.efi
@@ -125,12 +127,7 @@ install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp
 %files bootimgs
 %defattr(-,root,root)
 %dir %{_datadir}/%{name}
-#%ifarch %{ix86} x86_64
-%{_datadir}/%{name}/ipxe.iso
-%{_datadir}/%{name}/ipxe.usb
-%{_datadir}/%{name}/ipxe.dsk
-%{_datadir}/%{name}/ipxe.lkrn
-#%endif
+%{_datadir}/%{name}/ipxe.{%{buildtargets}}
 %ifarch %{ix86} x86_64
 %{_datadir}/%{name}/ipxe-i386.efi
 %{_datadir}/%{name}/snp-i386.efi
@@ -140,9 +137,7 @@ install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp
 %{_datadir}/%{name}/snp-x86_64.efi
 %{_datadir}/%{name}/snp-arm64.efi
 %endif
-#%ifarch %{ix86} x86_64
 %{_datadir}/%{name}/undionly.kpxe
-#%endif
 %license COPYING COPYING.GPLv2 COPYING.UBDL
 
 %changelog
