@@ -6,8 +6,8 @@
     size=+4096k
     missingok
     notifempty
-    create 644 root root
-    postrotate
+    delaycompress
+    lastaction
       # -s reopen will use the pid file passed in the config file or the compiled in default path
       /usr/sbin/nginx -s reopen
     endscript  
