@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-botocore
-Version:        1.20.75
+Version:        1.20.86
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -51,7 +51,7 @@ BuildRequires:  python
 %endif
 # SECTION Testing requirements
 BuildRequires:  %{python_module mock >= 1.3.0}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module nose >= 1.3.7}
 BuildRequires:  %{python_module pluggy >= 0.7}
 BuildRequires:  %{python_module py >= 1.5.0}
 BuildRequires:  %{python_module requests}
