@@ -140,4 +140,12 @@
   * Use at least 2 threads for xz compression</comment>
     <requestid>824028</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ab414ca736dbac2317807dc241474a47</srcmd5>
+    <version>0.5.1</version>
+    <time>1624136502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900286</requestid>
+  </revision>
 </revisionlist>

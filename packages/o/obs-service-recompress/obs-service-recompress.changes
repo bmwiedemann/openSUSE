@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 26 11:55:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed checking for zstd support on different distributions
+
+-------------------------------------------------------------------
 Mon Aug 03 05:25:43 UTC 2020 - adrian@suse.de
 
 - Update to version 0.5.1:

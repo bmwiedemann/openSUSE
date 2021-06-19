@@ -35,10 +35,8 @@ BuildRequires:  xz
 Requires:       bzip2
 Requires:       gzip
 Requires:       xz
-
-%if (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150000) || 0%{?fedora_version} < 25 || 0%{?rhel_version} < 6
-# noop
-%else
+# Enable zstd on all supported distributions
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150000 || 0%{?fedora_version} > 25 || 0%{?rhel} >= 6
 BuildRequires:  zstd
 Requires:       zstd
 %endif

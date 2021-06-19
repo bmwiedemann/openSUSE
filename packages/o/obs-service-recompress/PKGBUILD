@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://www.github.com/openSUSE/obs-service-recompress"
 license=('GPL-2.0+' 'GPL-2.0')
 groups=('base-devel')
-depends=('gzip', 'bzip2', 'xz', 'zstd')
+depends=('gzip' 'bzip2' 'xz' 'zstd')
 source=(obs-service-recompress-${pkgver}.tar.gz)
 md5sums=('SKIP')
 
