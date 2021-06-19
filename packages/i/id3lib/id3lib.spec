@@ -1,7 +1,7 @@
 #
 # spec file for package id3lib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define lname	libid3-3_8-3
 Name:           id3lib
 Version:        3.8.3
 Release:        0
@@ -52,6 +53,14 @@ BuildRequires:  libtool
 BuildRequires:  zlib-devel
 
 %description
+A software library for manipulating ID3v1 and ID3v2 tags.
+
+%package -n %{lname}
+Summary:        A Library for Manipulating ID3v1 and ID3v2 tags
+Obsoletes:      id3lib < %{version}-%{release}
+Provides:       id3lib = %{version}-%{release}
+
+%description -n %{lname}
 This package provides a software library for manipulating ID3v1 and
 ID3v2 tags. It provides a convenient interface for software developers
 to include standards-compliant ID3v1/2 tagging capabilities in their
@@ -62,7 +71,7 @@ facilities.
 
 %package      devel
 Summary:        Documentation and Headers for id3lib
-Requires:       %{name} = %{version}
+Requires:       %{lname} = %{version}
 Requires:       libstdc++-devel
 
 %description	devel
@@ -106,10 +115,9 @@ rm acconfig.h
 autoreconf -fiv
 %configure \
   --disable-static \
-  --with-pic \
   --enable-debug=no
-make %{?_smp_mflags}
-make -j1 docs
+%make_build
+%make_build docs -j1
 
 %install
 %make_install
@@ -118,19 +126,20 @@ rm -rf examples/.deps
 chmod 644 examples/*
 # strip down the doc and examples directories so we can copy w/impunity
 for i in doc/ examples/ ; do \
-    find ./$i  -name 'Makefile*' -exec rm {} \; ; done
+    find ./$i  -name 'Makefile*' -delete
+done
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s doc
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%files
+%files -n %{lname}
 %license COPYING
-%doc AUTHORS ChangeLog HISTORY NEWS README THANKS TODO
 %{_libdir}/*.so.*
 
 %files devel
+%doc AUTHORS ChangeLog HISTORY NEWS README THANKS TODO
 %{_includedir}/id3*.h
 %{_includedir}/id3
 %{_libdir}/*.so
