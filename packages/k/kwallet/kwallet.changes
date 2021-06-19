@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 20:43:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid polluting stdout (boo#1182531):
+  * 0001-Use-Qt-logging-instead-of-printf.patch
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0

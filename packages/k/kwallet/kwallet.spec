@@ -36,6 +36,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/kwallet-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-Qt-logging-instead-of-printf.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
