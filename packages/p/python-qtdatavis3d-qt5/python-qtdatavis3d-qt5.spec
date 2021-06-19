@@ -38,6 +38,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5DataVisualization)
 Requires:       python-qt5 >= %{version}
 Requires:       python-qt5-sip
+Provides:       python-PyQtDataVisualization = %{version}-%{release}
 %python_subpackages
 
 %description
