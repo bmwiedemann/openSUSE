@@ -155,4 +155,20 @@
     <comment></comment>
     <requestid>881276</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>978404460a54d8957d574583807a3e03</srcmd5>
+    <version>1.0.13</version>
+    <time>1624136585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.13:
+  * Fix ZeroDivisionError with ``* * R/0 * *``
+  * Add support for hashed/random/keyword expressions
+  * Review support support for hashed/random/keyword expression and add expanders reactor
+  * fix bug: bad case:``0 6 30 3 *``
+  * Create ``CroniterUnsupportedSyntaxError`` exception for situations where CRON syntax may be valid but some combinations of features is not supported.
+    This *may* impact existing cron expressions in prior releases, because ``0 0 * * 15,sat#1`` was previously allowed but incorrectly handled.
+  * Update ``croniter_range()`` to allow an alternate ``croniter`` class to be used.  Helpful when using a custom class derived from croniter.
+  * Remove external library ``natsort``.</comment>
+    <requestid>900659</requestid>
+  </revision>
 </revisionlist>

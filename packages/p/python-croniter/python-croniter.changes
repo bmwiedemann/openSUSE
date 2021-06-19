@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:56:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.13:
+  * Fix ZeroDivisionError with ``* * R/0 * *``
+  * Add support for hashed/random/keyword expressions
+  * Review support support for hashed/random/keyword expression and add expanders reactor
+  * fix bug: bad case:``0 6 30 3 *``
+  * Create ``CroniterUnsupportedSyntaxError`` exception for situations where CRON syntax may be valid but some combinations of features is not supported.
+    This *may* impact existing cron expressions in prior releases, because ``0 0 * * 15,sat#1`` was previously allowed but incorrectly handled.
+  * Update ``croniter_range()`` to allow an alternate ``croniter`` class to be used.  Helpful when using a custom class derived from croniter.
+  * Remove external library ``natsort``.
+
+-------------------------------------------------------------------
 Wed Mar 24 20:54:34 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.0.9:
