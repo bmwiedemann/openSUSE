@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 16 05:47:34 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Enable imobiledevice backend on Leap as well
+
+-------------------------------------------------------------------
+Tue Jun 15 14:42:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable imobiledevice backend
+- More specific file lists
+- Include licenses only in library package
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0

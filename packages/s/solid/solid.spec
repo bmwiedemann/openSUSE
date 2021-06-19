@@ -44,6 +44,12 @@ BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
+BuildRequires:  pkgconfig(libimobiledevice-1.0)
+%if %{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libplist-2.0)
+%else
+BuildRequires:  pkgconfig(libplist)
+%endif
 BuildRequires:  pkgconfig(libudev)
 %if %{with lang}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
@@ -125,19 +131,19 @@ Development files.
 %license LICENSES/*
 %{_kf5_debugdir}/solid.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKF5Solid.so.*
+%{_kf5_libdir}/libKF5Solid.so.5
+%{_kf5_libdir}/libKF5Solid.so.5.*
 
 %files tools
-%license LICENSES/*
 %{_kf5_bindir}/solid-hardware5
 %{_kf5_bindir}/solid-power
 
 %files imports
-%license LICENSES/*
-%{_kf5_qmldir}/
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde/
+%{_kf5_qmldir}/org/kde/solid/
 
 %files devel
-%license LICENSES/*
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5Solid/
 %{_kf5_libdir}/libKF5Solid.so
