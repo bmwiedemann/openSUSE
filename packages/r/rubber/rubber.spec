@@ -1,7 +1,7 @@
 #
 # spec file for package rubber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rubber
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        An automated system for building LaTeX documents
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://launchpad.net/rubber
-Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/latex-rubber/rubber/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  python3-devel
@@ -66,6 +66,7 @@ install-info --delete %{_infodir}/rubber.info.gz %{_infodir}/dir
 %{_bindir}/rubber
 %{_bindir}/rubber-pipe
 %{_bindir}/rubber-info
+%{_bindir}/rubber-lsmod
 %{python3_sitelib}/rubber/
 %{python3_sitelib}/rubber-%{version}-py%{py3_ver}.egg-info
 %{_mandir}/man1/rubber-info.1%{?ext_man}
