@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 16 19:22:23 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.6:
+  * Prevent an AttributeError that occurs when a server returns
+    HTTP 3xx but doesn't include a Location header as well. (#267)
+
+-------------------------------------------------------------------
 Mon Jun 14 16:04:31 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.5:
