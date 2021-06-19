@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_country
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "country" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -37,6 +37,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
+
 %description
 The country module defines the concepts of country and subdivision in
 the Tryton application platform. The module comes preloaded with the
@@ -44,16 +45,16 @@ ISO 3166 list of countries and subdivisions thanks to the pycountry
 module.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 %{_bindir}/trytond_import_zip

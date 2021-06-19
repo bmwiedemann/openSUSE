@@ -56,4 +56,12 @@
     <comment> (forwarded request 875663 from AndreasStieger)</comment>
     <requestid>875728</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6bf194be62d9d19d018d381ed7a7f40a</srcmd5>
+    <version>5.0.3</version>
+    <time>1624136676</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900902</requestid>
+  </revision>
 </revisionlist>
