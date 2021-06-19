@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 18 17:25:06 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.5
+  - New regular patterns (6)
+    + sle15all/blacklist-000019607.py: System exit to emergency shell at boot with multipath enabled (TID000019607)
+    + sle15all/btrfsmaster-000018779.py: BTRFS Master TID
+    + sle15all/sizingbtrfs-000018798.py: How to resize/extend a btrfs formatted root partition (TID000018798)
+    + sle15sp0/mpiofindpaths-000019511.py: Using the find_multipaths yes option in multipath.conf (bsc#1138452)
+    + sle15sp2/mpiopmem-000019884.py: Executing multipath -ll on Optane memory based pmem devices returns HDIO_GETGEO failed with 25 (bsc#1182917)
+    + sle15sp3/intelpstate_153-000020273.py: Frequency scaling driver intel_pstate not loading on some Intel Xeon Scalable processors (bsc#1185758)
+
+-------------------------------------------------------------------
 Thu Jun 10 20:07:57 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.5
