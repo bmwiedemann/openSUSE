@@ -24,7 +24,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.29~0+git.9a7bc817
+Version:        9.0.29~1+git.cc622880
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 11 15:28:19 UTC 2021 - nick wang <nwang@suse.com>
+
+- Correct the real version 9.0.29~1
+- Disable _servicedata to avoid verbose commits log
+
+-------------------------------------------------------------------
+Fri Jun 04 13:27:15 UTC 2021 - varkoly@suse.com
+
+- Update to version 9.1.2
+  * drbd: fix termination of verify with stop sector
+  * drbd: Fix locking for the drbd_devices idr
+  * drbd: use DEFINE_MUTEX insteadm of mutex_init()
+  * drbd: remove device_to_minor()
+  * drbd: fix race condition resetting resync_next_bit
+  * build: fix make; make clean; make; with pre-packaged compat.patch
+  * compat: fix compat implementation of CRYPTO_TFM_NEED_KEY
+  * drbd: remove non-existant argument from kerneldoc
+  * drbd: kernel-doc and related fixes from upstream
+  * drbd: Avoid comma separated statements
+
+-------------------------------------------------------------------
 Fri May  7 05:53:20 UTC 2021 - nick wang <nwang@suse.com>
 
 - Update to 9.0.29 
