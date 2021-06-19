@@ -591,4 +591,24 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
 - see CHANGES.md for details</comment>
     <requestid>882342</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b1f55f3b80e7c735919db37af56de9f8</srcmd5>
+    <version>2.5.6</version>
+    <time>1624136518</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2021-3605 [bsc#1187395], Heap buffer overflow in the rleUncompress function
+  + openexr-CVE-2021-3605.patch
+
+- security update
+- added patches
+  fix CVE-2021-3598 [bsc#1187310], Heap buffer overflow in Imf_3_1:CharPtrIO:readChars
+  + openexr-CVE-2021-3598.patch
+
+- version update to 2.5.6
+  * [#1013](https://github.com/AcademySoftwareFoundation/openexr/pull/1013)
+  Fixed regression in Imath::succf() and Imath::predf() when negative values are given</comment>
+    <requestid>900381</requestid>
+  </revision>
 </revisionlist>

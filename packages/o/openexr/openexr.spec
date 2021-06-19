@@ -1,5 +1,5 @@
 #
-# spec file for package openexr
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %define sonum 25
 %global so_suffix -2_5
 Name:           %{flavor}
-Version:        2.5.5
+Version:        2.5.6
 Release:        0
 %if "%{flavor}" == "openexr"
 Summary:        Utilities for working with HDR images in OpenEXR format
@@ -44,6 +44,10 @@ URL:            http://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
 Patch1:         0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
+# CVE-2021-3598 [bsc#1187310], Heap buffer overflow in Imf_3_1:CharPtrIO:readChars
+Patch2:         openexr-CVE-2021-3598.patch
+# CVE-2021-3605 [bsc#1187395], Heap buffer overflow in the rleUncompress function
+Patch3:         openexr-CVE-2021-3605.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -223,6 +227,8 @@ Group:          System/Libraries
 %prep
 %setup -q -n %{prjname}-%{version}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %if "%{flavor}" == "openexr"
