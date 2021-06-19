@@ -36,6 +36,8 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0002-Revert-places-padding-backport-21.08.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files

@@ -1,0 +1,117 @@
+From df9ae6c24ec57afd063bfa7ff25160efdb913ce9 Mon Sep 17 00:00:00 2001
+From: Eugene Popov <popov895@ukr.net>
+Date: Tue, 25 May 2021 14:24:11 +0300
+Subject: [PATCH 1/3] Use SmallMedium icon size in the Places panel as default
+
+This patch makes the Places panel to use SmallMedium icon size as default, making it easier to read. It also removes extra spacing from items with small icons (reverts e9a39700 and 56888a56).
+
+BUG: 437345
+---
+ src/panels/places/dolphin_placespanelsettings.kcfg | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/panels/places/dolphin_placespanelsettings.kcfg b/src/panels/places/dolphin_placespanelsettings.kcfg
+index b2ef8e574..db0ac9495 100644
+--- a/src/panels/places/dolphin_placespanelsettings.kcfg
++++ b/src/panels/places/dolphin_placespanelsettings.kcfg
+@@ -4,11 +4,12 @@
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
++    <include>kiconloader.h</include>
+     <kcfgfile name="dolphinrc"/>
+     <group name="PlacesPanel">
+         <entry name="IconSize" type="Int">
+             <label>Size of icons in the Places Panel (-1 means "use the style's small size")</label>
+-            <default>-1</default>
++            <default code="true">KIconLoader::SizeSmallMedium</default>
+         </entry>
+     </group>
+ </kcfg>
+-- 
+GitLab
+
+
+From 7a5d4033f4e7db3c9b86a1685423e4d254318e0e Mon Sep 17 00:00:00 2001
+From: Eugene Popov <popov895@ukr.net>
+Date: Tue, 25 May 2021 14:24:48 +0300
+Subject: [PATCH 2/3] Revert "fix padding in places view"
+
+This reverts commit 56888a567fc741713b6c905aeed3842a7fa230c7.
+---
+ src/panels/places/placesview.cpp | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/panels/places/placesview.cpp b/src/panels/places/placesview.cpp
+index 5214f47dc..9602fb8ac 100644
+--- a/src/panels/places/placesview.cpp
++++ b/src/panels/places/placesview.cpp
+@@ -1,6 +1,5 @@
+ /*
+  * SPDX-FileCopyrightText: 2012 Frank Reininghaus <frank78ac@googlemail.com>
+- * SPDX-FileCopyrightText: 2021 Harald Sitter <sitter@kde.org>
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+@@ -12,10 +11,6 @@
+ PlacesView::PlacesView(QGraphicsWidget* parent) :
+     KStandardItemListView(parent)
+ {
+-    KItemListStyleOption option = styleOption();
+-    option.padding = 4;
+-    setStyleOption(option);
+-
+     const int iconSize = PlacesPanelSettings::iconSize();
+     if (iconSize >= 0) {
+         setIconSize(iconSize);
+@@ -31,6 +26,7 @@ void PlacesView::setIconSize(int size)
+ 
+         KItemListStyleOption option = styleOption();
+         option.iconSize = size;
++        option.padding = 4;
+         setStyleOption(option);
+     }
+ }
+-- 
+GitLab
+
+
+From 443968a6a3c3911654f241649c702035dd29c2e1 Mon Sep 17 00:00:00 2001
+From: Eugene Popov <popov895@ukr.net>
+Date: Tue, 25 May 2021 14:24:59 +0300
+Subject: [PATCH 3/3] Revert "Improve padding in the Places View"
+
+This reverts commit e9a39700fc004004b1ff231023e9d5333a2b8317.
+---
+ src/kitemviews/kitemlistview.cpp | 2 +-
+ src/panels/places/placesview.cpp | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/kitemviews/kitemlistview.cpp b/src/kitemviews/kitemlistview.cpp
+index e4dd7bb2b..5c8c712e8 100644
+--- a/src/kitemviews/kitemlistview.cpp
++++ b/src/kitemviews/kitemlistview.cpp
+@@ -2552,7 +2552,7 @@ void KItemListView::updateGroupHeaderHeight()
+         groupHeaderHeight += 2 * m_styleOption.horizontalMargin;
+         groupHeaderMargin = m_styleOption.horizontalMargin;
+     } else if (m_itemSize.isEmpty()){
+-        groupHeaderHeight += 2 * m_styleOption.padding;
++        groupHeaderHeight += 4 * m_styleOption.padding;
+         groupHeaderMargin = m_styleOption.iconSize / 2;
+     } else {
+         groupHeaderHeight += 2 * m_styleOption.padding + m_styleOption.verticalMargin;
+diff --git a/src/panels/places/placesview.cpp b/src/panels/places/placesview.cpp
+index 9602fb8ac..50446d44d 100644
+--- a/src/panels/places/placesview.cpp
++++ b/src/panels/places/placesview.cpp
+@@ -26,7 +26,6 @@ void PlacesView::setIconSize(int size)
+ 
+         KItemListStyleOption option = styleOption();
+         option.iconSize = size;
+-        option.padding = 4;
+         setStyleOption(option);
+     }
+ }
+-- 
+GitLab
+
