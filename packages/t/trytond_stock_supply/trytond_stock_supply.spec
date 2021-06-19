@@ -19,7 +19,7 @@
 
 %define         majorver 5.0
 Name:           trytond_stock_supply
-Version:        %{majorver}.6
+Version:        %{majorver}.7
 Release:        0
 Summary:        The Stock Supply module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -46,16 +46,16 @@ introduce the concepts of order point and purchase request into the
 Tryton application platform.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
-%python3_build   
+%python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 

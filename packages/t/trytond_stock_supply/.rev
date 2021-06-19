@@ -104,4 +104,12 @@
     <comment> (forwarded request 875671 from AndreasStieger)</comment>
     <requestid>875735</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2351b4db66ed266dc9bbd900fa70f55e</srcmd5>
+    <version>5.0.7</version>
+    <time>1624136670</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900894</requestid>
+  </revision>
 </revisionlist>
