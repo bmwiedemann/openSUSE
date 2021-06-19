@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 15 14:15:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * [applets/devicenotifier] Don't show empty header most of the time (kde#438351)
+  * [kcms/autostart] Avoid empty application icon
+  * [libtaskmanager/x11] Fix transient windows bug (kde#438222)
+  * krunerglobalshortcuts: Fix migration from old component
+  * Recent Documents: Fix missing actions for results (kde#437462)
+  * [kcms/autostart] Keep capitalization of desktop file names (kde#438406)
+  * Point bbcukmet to new location API BUG: 430643 (kde#430643)
+  * krunnerglobalshortcuts: Prevent actions from becoming inactive
+  * Fix kcmfontinst install destination (kde#436306)
+- Drop patches, now upstream:
+  * 0001-krunnerglobalshortcuts-Prevent-actions-from-becoming.patch
+  * 0001-krunerglobalshortcuts-Fix-migration-from-old-compone.patch
+  * 0001-Fix-kcmfontinst-install-destination.patch
+
+-------------------------------------------------------------------
 Fri Jun 11 09:51:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add another patch to fix migration of krunner shortcuts from
