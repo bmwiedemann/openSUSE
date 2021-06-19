@@ -270,4 +270,12 @@
     <comment>bugfix release</comment>
     <requestid>894082</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>79a950134084dc1394a7b8c15091b233</srcmd5>
+    <version>5.0.18</version>
+    <time>1624136681</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900907</requestid>
+  </revision>
 </revisionlist>
