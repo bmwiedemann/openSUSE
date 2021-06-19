@@ -19,10 +19,24 @@ The configuration files are copied from a filesystem with the LABEL
 It expects a directory "combustion" at the root level of the filesystem and
 a file "script" inside, which is executed inside a transactional-update shell.
 
+ <root directory>
+ ├── combustion
+ │   ├── script
+ │   └── ... other files
+ └── ignition (optional)
+     └── config.ign
+
 If a QEMU fw_cfg blob with the name "opt/org.opensuse.combustion/script" is
 found, it is preferred and the content of that is used as script.
 Example parameter for QEMU:
 -fw_cfg name=opt/org.opensuse.combustion/script,file=/var/combustion-script
+
+You can do everything necessary for initial system configuration from this
+script, including addition of ssh keys, adding users, changing passwords
+or even doing partitioning changes.
+
+Simple example
+--------------
 
 Example for formatting a USB drive and adding a config, which installs the
 "vim-small" package and creates a /root/welcome file:
@@ -43,12 +57,34 @@ echo "Hello User!" >/mnt/combustion/welcome
 umount /mnt
 ```
 
-The "# combustion: network" comment indicates that network needs to be
-configured before running the script.
+The "# combustion: network" comment triggers networking initialization before
+running the script. This is equivalent to passing "rd.neednet=1" on the kernel
+cmdline and so the network configuration parameters (man dracut.cmdline) apply
+here as well. If those aren't specified, it defaults to "ip=dhcp" for each
+available interface.
 
-You can do everything necessary for initial system configuration from this
-script, including addition of ssh keys, adding users, changing passwords
-or even doing partitioning changes.
+More complex configuration example
+----------------------------------
+
+This script additionally provides visible feedback during boot, sets a password
+and copies a public ssh key (which has to be in the "combustion" folder).
+
+```
+#!/bin/bash
+# combustion: network
+# Redirect output to the console
+exec > >(exec tee -a /dev/tty0) 2>&1
+# Set a password for root, generate the hash with "openssl passwd -6"
+echo 'root:$5$.wn2BZHlEJ5R3B1C$TAHEchlU.h2tvfOpOki54NaHpGYKwdNhjaBuSpDotD7' | chpasswd -e
+# Add a public ssh key and enable sshd
+mkdir -pm700 /root/.ssh/
+cat id_rsa_new.pub >> /root/.ssh/authorized_keys
+systemctl enable sshd.service
+# Install vim-small
+zypper --non-interactive install vim-small
+# Leave a marker
+echo "Configured with combustion" > /etc/issue.d/combustion
+```
 
 How it works
 ------------

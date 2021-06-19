@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  7 14:13:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- combustion: Relabel the old snapshot (if necessary) and explicitly
+  trigger autorelabel for the new snapshot
+
+-------------------------------------------------------------------
+Fri Mar  5 13:35:22 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Expand and clarify README
+
+-------------------------------------------------------------------
 Wed Jan 20 09:50:53 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - module-setup.sh: Install grep as well

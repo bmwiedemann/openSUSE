@@ -106,6 +106,14 @@ if ! [ -e "${config_dir}/script" ]; then
 	exit 1
 fi
 
+# Have to take care of x-initrd.mount first and from the outside
+awk '$4 ~ /x-initrd.mount/ { system("findmnt /sysroot" $2 " >/dev/null || mount -t " $3 " -o " $4 " " $1 " /sysroot" $2) }' /sysroot/etc/fstab
+
+# Make sure the old snapshot is relabeled too, otherwise syncing its /etc fails.
+if [ -e /sysroot/etc/selinux/.autorelabel ]; then
+	NEWROOT=/sysroot bash -c '. /lib/dracut-lib.sh; . /lib/dracut/hooks/pre-pivot/50-selinux-microos-relabel.sh'
+fi
+
 # Prepare chroot
 for i in proc sys dev; do
 	mount --rbind /$i /sysroot/$i
@@ -113,8 +121,6 @@ done
 mount --make-rslave /sysroot
 
 # Mount everything we can, errors deliberately ignored
-# Have to take care of x-initrd.mount first and from the outside
-awk '$4 ~ /x-initrd.mount/ { system("findmnt /sysroot" $2 " >/dev/null || mount -t " $3 " -o " $4 " " $1 " /sysroot" $2) }' /sysroot/etc/fstab
 chroot /sysroot mount -a || true
 # t-u needs writable /var/run and /tmp
 findmnt /sysroot/run >/dev/null || mount -t tmpfs tmpfs /sysroot/run
@@ -150,6 +156,9 @@ EOF
 		chroot /sysroot transactional-update --no-selfupdate rollback
 		exit 1
 	fi
+
+	# Snapshot got touched while the policy isn't active, needs relabeling again.
+	[ -e /sysroot/etc/selinux/.relabelled ] && >> /sysroot/etc/selinux/.autorelabel
 else
 	mount -o remount,rw /sysroot
 	if ! chroot /sysroot sh -e -c "cd '${config_dir}'; chmod a+x script; ./script"; then
