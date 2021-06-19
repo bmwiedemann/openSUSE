@@ -41,4 +41,13 @@
   * ignore ssl option, MSYS2 support</comment>
     <requestid>834890</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb3996be053b14451f3a486d5e540a64</srcmd5>
+    <version>1.6.0</version>
+    <time>1624136586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * M1 support</comment>
+    <requestid>900660</requestid>
+  </revision>
 </revisionlist>
