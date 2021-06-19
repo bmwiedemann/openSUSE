@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-mock
-Version:        3.1.1
+Version:        3.6.1
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
@@ -51,7 +52,7 @@ of a test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest --assert=plain
 
 %files %{python_files}
 %doc CHANGELOG.rst

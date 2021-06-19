@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jun  3 09:35:04 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.6.1:
+  * Fix mocker.resetall() when using mocker.spy() (#237)
+
+- Update to 3.6.0:
+  * pytest-mock no longer supports Python 3.5.
+  * Correct type annotations for mocker.patch.object to also
+    include the string form.
+  * reset_all now supports return_value and side_effect keyword
+    arguments.
+
+- Update to 3.5.1:
+  * Use inspect.getattr_static instead of resorting to
+    object.__getattribute__ magic. This should better comply with
+    objects which implement a custom descriptor protocol.
+
+- Update to 3.5.0:
+  * Now all patch functions will emit a warning instead of raising
+    a ValueError when used as a context-manager.
+  * Additionally, mocker.patch.context_manager is available when
+    the user intends to mock a context manager (for example
+    threading.Lock object), which will not emit that warning.
+
+- Update to 3.4.0:
+  * Add [mock.seal]{.title-ref} alias to the [mocker]{.title-ref}
+    fixture (#211).
+  * Fixed spying on exceptions not covered by the Exception
+    superclass (#215), like KeyboardInterrupt
+    Before the fix, both spy_return and spy_exception were always
+    assigned to None whenever such an exception happened. And
+    after this fix, spy_exception is set to a correct value of
+    an exception.
+
+- Update to 3.3.1:
+  * Introduce MockFixture as an alias to MockerFixture.
+    Before 3.3.0, the fixture class was named MockFixture, but was
+    renamed to MockerFixture to better match the mocker fixture.
+    While not officially part of the API, it was later discovered
+    that this broke the code of some users which already imported
+    pytest_mock.MockFixture for type annotations, so we decided to
+    reintroduce the name as an alias.
+    Note however that this is just a stop gap measure, and new code
+    should use MockerFixture for type annotations.
+  * Improved typing for MockerFixture.patch (#201).
+
+- Update to 3.3.0:
+  * pytest-mock now includes inline type annotations and exposes
+    them to user programs. The mocker fixture returns
+    pytest_mock.MockerFixture, which can be used to annotate your
+    tests:
+    from pytest_mock import MockerFixture
+    def test_foo(mocker: MockerFixture) -> None:
+        ...
+  * The type annotations were developed against mypy version 0.782,
+    the minimum version supported at the moment. If you run into an
+    error that you believe to be incorrect, please open an issue.
+
+- Update to 3.2.0:
+  * AsyncMock is now exposed in mocker and supports provides
+    assertion introspection similar to Mock objects.
+
+-------------------------------------------------------------------
 Tue Jun  9 07:58:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.1:
