@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 15 13:17:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * Clear layers when navigating
+  * Switch away from removed pages (kde#437499)
+  * Do not reset the start page if the model changes
+  * Fix binding loop and null derefence warnings in EditablePage::heightForContent
+  * Fix GCC warning about copying an element from a container
+  * Use entryEvent signal for reacting to GHNS changes
+  * Push NewStuff pages to layers, not the stack (kde#437961)
+
+-------------------------------------------------------------------
 Thu Jun  3 13:06:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.0
