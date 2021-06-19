@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  7 03:09:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.478
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.478 2021-06-06
+
+  ****  Fix ${ENVVAR} expansion (#1671). [Henry Hsieh]
+
+-------------------------------------------------------------------
 Wed Apr 14 03:10:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.476

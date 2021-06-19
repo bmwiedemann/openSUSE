@@ -18,7 +18,7 @@
 
 %define cpan_name Verilog-Perl
 Name:           perl-Verilog-Perl
-Version:        3.476
+Version:        3.478
 Release:        0
 Summary:        Verilog language utilities and parsing
 License:        Artistic-1.0 OR GPL-1.0-or-later
