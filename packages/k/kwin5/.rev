@@ -1218,4 +1218,12 @@
     <comment></comment>
     <requestid>898292</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>92b95ccaedfdba005c2d18644d187348</srcmd5>
+    <version>5.22.1</version>
+    <time>1624136552</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
+    <requestid>900253</requestid>
+  </revision>
 </revisionlist>
