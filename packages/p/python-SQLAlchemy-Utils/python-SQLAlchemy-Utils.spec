@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-SQLAlchemy-Utils
-Version:        0.37.2
+Version:        0.37.6
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
