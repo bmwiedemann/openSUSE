@@ -1080,4 +1080,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.22.0</comment>
     <requestid>897507</requestid>
   </revision>
+  <revision rev="129" vrev="38">
+    <srcmd5>fd8f740366f77c490a8c1dbe36fd3f13</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1624136566</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
+    <requestid>900276</requestid>
+  </revision>
 </revisionlist>
