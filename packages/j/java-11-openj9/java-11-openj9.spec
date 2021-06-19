@@ -16,6 +16,7 @@
 #
 
 
+%{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
 %global add_back_javaee_modules 1
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -491,13 +492,6 @@ EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-nu
 EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
-%if %{?pkg_vcmp:%pkg_vcmp gcc-c++ >= 11}%{!?pkg_vcmp:0}
-EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -g -gdwarf-4"
-EXTRA_CFLAGS="$EXTRA_CFLAGS -g -gdwarf-4"
-export CXXFLAGS="$EXTRA_CPP_FLAGS"
-export CFLAGS="$EXTRA_CFLAGS"
-%endif
-
 bash configure \
     --with-version-feature=%{featurever} \
     --with-version-interim=%{interimver} \
@@ -531,17 +525,8 @@ bash configure \
     --disable-javac-server \
     --with-freemarker-jar=%{SOURCE3}
 
-# The combination of FULL_DEBUG_SYMBOLS=0 and ALT_OBJCOPY=/does_not_exist
-# disables FDS for all build configs and reverts to pre-FDS make %{?_smp_mflags} logic.
-# STRIP_POLICY=none says don't do any stripping. DEBUG_BINARIES=true says
-# ignore all the other logic about which debug options and just do '-g'.
-
 make \
-    JAVAC_FLAGS=-g \
     LOG=trace \
-    DEBUG_BINARIES=true \
-    STRIP_POLICY=no_strip \
-    POST_STRIP_CMD="" \
     %{imagestarget} docs
 
 # remove redundant *diz and *debuginfo files
