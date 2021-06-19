@@ -50,14 +50,22 @@ user to use spec-cleaner rather than to stick to perl based format_spec_file.
 rm pytest.ini
 
 %build
+%if 0%{?mageia}
+%py3_build
+%else
 %python3_build
+%endif
 
 %check
 export LANG=en_US.UTF-8
 python3 -m pytest -k "not webtest" tests/*-tests.py
 
 %install
+%if 0%{?mageia}
+%py3_install
+%else
 %python3_install
+%endif
 
 %files
 %license COPYING
@@ -90,7 +98,11 @@ python3 -m pytest -k "not webtest" tests/*-tests.py
 %{python3_sitelib}/spec_cleaner/rpmscriplets.py
 %{python3_sitelib}/spec_cleaner/rpmsection.py
 %{python3_sitelib}/spec_cleaner/__pycache__
+%if 0%{?mageia}
+%{python3_sitelib}/*.egg-info
+%else
 %{python3_sitelib}/spec_cleaner-%{version}-py%{py3_ver}.egg-info
+%endif
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/excludes-bracketing.txt
 %{_datadir}/%{name}/licenses_changes.txt
