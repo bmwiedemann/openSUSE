@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_product
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 Summary:        The "product" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -40,16 +40,16 @@ application platform: Category of Unit of Measure, Unit of Measure,
 Product Template, Product and Product Category.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
