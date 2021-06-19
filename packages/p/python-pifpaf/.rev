@@ -134,4 +134,40 @@
     <comment></comment>
     <requestid>787773</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5aa5e159b2d6f2ac03495115bd0f4488</srcmd5>
+    <version>3.1.5</version>
+    <time>1624136587</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * fix: do not block when process exits not correctly
+  * fix: typo in stdout handling
+  * fix: typo in stdout handling
+  * fix: remove universal tag since Python 2 is not supported anymore
+  * fix: close devnull
+  * fix: do not leave zombie process
+  * Fix broken Ceph config formatting
+  * chore: compress image
+  * Add Ceph Nautilus and later support
+  * ceph: set limit for max open fds
+  * Add TLS\_ENABLED environment var for memcached
+  * Add Python 3.7 and 3.8 to classifier
+  * Fix import ordering
+  * Remove Python 2.x support and six
+  * Fix zookeeper driver
+  * Disable aodh for py27 too
+  * Tidy up tox.ini and update kafka
+  * Fix tests and add recent Python releases
+  * Try to fix PEP8 again
+  * Various fixes
+  * Add a driver for httpbin
+  * Update README.rst : Fix typo access
+  * fix: log info, not error when command is ready
+  * Fixes flake8 warning and adds missing comma
+  * Apply suggestions from code review
+  * Add TLS params to memcached
+  * Add ceph-manager support
+  * Add Ceph config options for small disks</comment>
+    <requestid>900661</requestid>
+  </revision>
 </revisionlist>

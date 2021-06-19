@@ -1,7 +1,7 @@
 #
 # spec file for package python-pifpaf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pifpaf
-Version:        2.4.0
+Version:        3.1.5
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0
@@ -41,7 +41,7 @@ Requires:       python-testtools
 Requires:       python-xattr
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
