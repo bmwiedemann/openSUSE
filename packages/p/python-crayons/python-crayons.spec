@@ -24,7 +24,7 @@ Release:        0
 Summary:        Colored strings for terminal usage
 License:        MIT
 URL:            https://github.com/MasterOdin/crayons
-Source:         https://github.com/MasterOdin/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/MasterOdin/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

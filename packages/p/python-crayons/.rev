@@ -66,4 +66,12 @@
 - Run some tests (and use GitHub tarball to get it)</comment>
     <requestid>900355</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1d597c334948a546d35fe13dc15804cb</srcmd5>
+    <version>0.4.0</version>
+    <time>1624136654</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source URL</comment>
+    <requestid>900783</requestid>
+  </revision>
 </revisionlist>
