@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_stock_lot
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
@@ -44,18 +44,18 @@ BuildArch:      noarch
 The stock lot module defines lot of products.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
-%doc README 
+%doc README
 %{python3_sitelib}/*
 
 %changelog
