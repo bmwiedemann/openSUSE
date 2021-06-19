@@ -20,21 +20,28 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pymemcache
-Version:        3.3.0
+Version:        3.4.4
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
+Patch0:         https://patch-diff.githubusercontent.com/raw/pinterest/pymemcache/pull/327.patch#/merged_pr_327.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
+BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pylibmc}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-memcached}
+BuildRequires:  %{python_module six}
+# /SECTION
 %if %{with python2}
 BuildRequires:  python-future
 %endif
@@ -56,6 +63,9 @@ pymemcache supports the following features:
 
 %prep
 %setup -q -n pymemcache-%{version}
+%patch0 -p1
+# Disable pytest-cov
+sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 
 %build
 %python_build
@@ -65,7 +75,11 @@ pymemcache supports the following features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+%{_sbindir}/memcached &
+# TLS tests depend on setting up a memcached equivalent to
+# https://github.com/scoriacorp/docker-tls-memcached
+%pytest -rs -k 'not tls'
+
 
 %files %{python_files}
 %license LICENSE.txt
