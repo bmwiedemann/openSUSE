@@ -73,4 +73,12 @@
     <comment> (forwarded request 875661 from AndreasStieger)</comment>
     <requestid>875726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6959f27b130b8fa3fe14542ebf699d75</srcmd5>
+    <version>5.0.5</version>
+    <time>1624136677</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900904</requestid>
+  </revision>
 </revisionlist>
