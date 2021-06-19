@@ -1,0 +1,98 @@
+From 50248112a9cfc535da93a28ed8f9d1b992cc4439 Mon Sep 17 00:00:00 2001
+From: Christian Christiansen <christian.l.christiansen@gmail.com>
+Date: Tue, 25 May 2021 18:47:58 +1000
+Subject: [PATCH 3/3] Replace Freenode with Libera
+
+KDE has moved to Libera.Chat. Make Libera.Chat the default network.
+Update the documentation to reflect this move too.
+
+BUG:437589
+---
+ doc/index.docbook              | 8 ++++----
+ src/application.h              | 2 +-
+ src/irc/servergroupdialogui.ui | 2 +-
+ src/irc/serverlistdialogui.ui  | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/doc/index.docbook b/doc/index.docbook
+index ddb2e9e8..e240a0fb 100644
+--- a/doc/index.docbook
++++ b/doc/index.docbook
+@@ -190,7 +190,7 @@ Further information like a FAQ and tips and tricks you find in the
+ <ulink url="https://userbase.kde.org/Konversation">&konversation; UserBase page</ulink>.
+ </para>
+ 
+-<para>Developers for &konversation; can often be contacted via &irc; at  <ulink url="irc://chat.freenode.net/konversation">irc.freenode.net channel #konversation</ulink>.
++<para>Developers for &konversation; can often be contacted via &irc; at  <ulink url="irc://irc.libera.chat/konversation">irc.libera.chat channel #konversation</ulink>.
+ </para>
+ 
+ </chapter>
+@@ -238,7 +238,7 @@ to a chat room) or just engage in private conversations.</para>
+ only connect to one of the servers in the network to be connected to the entire
+ &irc; network.  Once connected, &konversation; will automatically join the
+ <guilabel>Channels</guilabel> shown.  When &konversation; is started for the first time, the
+-<userinput><replaceable>Freenode</replaceable></userinput> network
++<userinput><replaceable>Libera</replaceable></userinput> network
+ and <userinput><replaceable>#kde</replaceable></userinput> channel are already entered for you.  Click on a network to select it.</para></callout>
+ <callout arearefs="pt-first-serverlist-2"><para>Click here to define a new <guilabel>Network</guilabel>, including the server
+ to connect to, and the <guilabel>Channels</guilabel> to automatically join once connected.  See <link  linkend="serverlist">Defining new networks, servers, and auto join channels</link> for more information.</para></callout>
+@@ -553,7 +553,7 @@ lists your existing defined &irc; <guilabel>Network</guilabel>s, listed by group
+ An &irc; network is a collection of cooperating servers.  When you connect
+ to any server in a network, you have access to all the channels of the network.
+ Examples of &irc; networks are
+-<userinput><replaceable>Freenode</replaceable></userinput> and
++<userinput><replaceable>Libera</replaceable></userinput> and
+ <userinput><replaceable>Undernet</replaceable></userinput>.
+ </para>
+ 
+@@ -650,7 +650,7 @@ button to add a new Identity or edit an existing one.  The
+ <guilabel>Identity</guilabel> will identify you and determine
+ your &i18n-nickname; when you connect to the network.</para></callout>
+ <callout arearefs="pt-addnetwork-3"><para>Optional.  This command will be sent to the server after connecting.  Example: <userinput>/msg NickServ IDENTIFY
+-<replaceable>konvirocks</replaceable></userinput>.  This example is for the freenode network, which requires users to register their &i18n-nickname;
++<replaceable>konvirocks</replaceable></userinput>.  This example is for the Libera network, which requires users to register their &i18n-nickname;
+ with a password and login when connecting.  <userinput><replaceable>konvirocks</replaceable></userinput>
+ is the password for the &i18n-nickname; given in <guilabel>Identity</guilabel>.
+ You may enter more than one command by separating them with semicolons.</para></callout>
+diff --git a/src/application.h b/src/application.h
+index 821d4f8a..f727916c 100644
+--- a/src/application.h
++++ b/src/application.h
+@@ -100,7 +100,7 @@ class Application : public QApplication
+ 
+         /** Tries to find a nickinfo for a given ircnick on a given ircserver.
+          *  @param ircnick The case-insensitive ircnick of the person you want to find.  e.g. "johnflux"
+-         *  @param serverOrGroup The case-insensitive server name (e.g. "irc.kde.org") or server group name (e.g. "freenode"), or null to search all servers
++         *  @param serverOrGroup The case-insensitive server name (e.g. "irc.kde.org") or server group name (e.g. "libera"), or null to search all servers
+          *  @return A nickinfo for this user and server if one is found.
+          */
+         NickInfoPtr getNickInfo(const QString &ircnick, const QString &serverOrGroup);
+diff --git a/src/irc/servergroupdialogui.ui b/src/irc/servergroupdialogui.ui
+index 4aba886d..71dd7c53 100644
+--- a/src/irc/servergroupdialogui.ui
++++ b/src/irc/servergroupdialogui.ui
+@@ -91,7 +91,7 @@
+    <item row="3" column="1" colspan="2">
+     <widget class="KLineEdit" name="m_commandEdit">
+      <property name="whatsThis">
+-      <string>&lt;qt&gt;Optional. This command will be sent to the server after connecting. Example: &lt;b&gt;/msg NickServ IDENTIFY &lt;i&gt;konvirocks&lt;/i&gt;&lt;/b&gt;. This example is for the freenode network, which requires users to register their nickname with a password and login when connecting. &lt;i&gt;konvirocks&lt;/i&gt; is the password for the nickname given in Identity. You may enter more than one command by separating them with semicolons.&lt;/qt&gt;</string>
++      <string>&lt;qt&gt;Optional. This command will be sent to the server after connecting. Example: &lt;b&gt;/msg NickServ IDENTIFY &lt;i&gt;konvirocks&lt;/i&gt;&lt;/b&gt;. This example is for the Libera network, which requires users to register their nickname with a password and login when connecting. &lt;i&gt;konvirocks&lt;/i&gt; is the password for the nickname given in Identity. You may enter more than one command by separating them with semicolons.&lt;/qt&gt;</string>
+      </property>
+     </widget>
+    </item>
+diff --git a/src/irc/serverlistdialogui.ui b/src/irc/serverlistdialogui.ui
+index 2f803191..14b1eb55 100644
+--- a/src/irc/serverlistdialogui.ui
++++ b/src/irc/serverlistdialogui.ui
+@@ -83,7 +83,7 @@
+       <bool>true</bool>
+      </property>
+      <property name="whatsThis">
+-      <string>This shows the list of configured IRC networks. An IRC network is a collection of cooperating servers. You need only connect to one of the servers in the network to be connected to the entire IRC network. Once connected, Konversation will automatically join the channels shown. When Konversation is started for the first time, the Freenode network and the &lt;i&gt;#kde&lt;/i&gt; channel are already entered for you.</string>
++      <string>This shows the list of configured IRC networks. An IRC network is a collection of cooperating servers. You need only connect to one of the servers in the network to be connected to the entire IRC network. Once connected, Konversation will automatically join the channels shown. When Konversation is started for the first time, the Libera network and the &lt;i&gt;#kde&lt;/i&gt; channel are already entered for you.</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+-- 
+2.32.0
+

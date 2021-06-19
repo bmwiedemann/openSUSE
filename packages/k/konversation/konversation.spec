@@ -34,8 +34,13 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Use-qdbus-qt5-on-openSUSE.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Minimal-changes-to-use-libera.chat.patch
+Patch2:         0002-appdata-reference-Libera-fix-the-wording.patch
+Patch3:         0003-Replace-Freenode-with-Libera.patch
+# PATCH-FIX-OPENSUSE -- Mention libera in localized files
+Patch4:         0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  libqca-qt5-devel
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -60,6 +65,7 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)

@@ -1,0 +1,32 @@
+From f07e8e05e4b5f0fbaca7772aef84101855c79c24 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Wed, 16 Jun 2021 01:18:48 +0200
+Subject: [PATCH 2/3] appdata: reference Libera, fix the wording
+
+The description seemed to imply basically all distributions
+are on a specific network, which is not the case.
+
+CCBUG: 437589
+---
+ data/org.kde.konversation.appdata.xml | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/data/org.kde.konversation.appdata.xml b/data/org.kde.konversation.appdata.xml
+index 8ef253e8..e9c8005d 100644
+--- a/data/org.kde.konversation.appdata.xml
++++ b/data/org.kde.konversation.appdata.xml
+@@ -78,9 +78,8 @@
+   <summary xml:lang="zh-TW">IRC 用戶端程式</summary>
+   <description>
+     <p>
+-      Konversation is an IRC client which gives you speedy access to Freenode network's channels,
+-      where you will find support for most distributions. Its defaults are such that it needs no
+-      configuration other than telling it the name of your distribution channel, to get started.
++      Konversation is an IRC client which gives you speedy access to Libera network's channels,
++      where you can find the KDE IRC channels.
+     </p>
+     <p xml:lang="ar">«محادثك» هو عميل آي‌آرسي يعطيك وصول سريع إلى قنوات شبكة «فرينود»، حيث ستجد الدّعم لمختلف التّوزيعات. الافتراضيّات فيه مضبوطة بحيث لا تحتاج لأن تفعل شيئا عدا كتابة اسم قناة التّوزيعة، ومن ثمّ تبدأ الدّردشة.</p>
+     <p xml:lang="ca">El Konversation és un client d'IRC que dóna accés ràpid als canals de la xarxa Freenode, a on trobareu ajuda per a la majoria de les distribucions. De manera predeterminada, per a començar no necessita més configuració que indicar el nom del canal de la distribució.</p>
+-- 
+2.32.0
+

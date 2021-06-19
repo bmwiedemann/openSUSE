@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 16 14:46:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Reference libera.chat:
+  * 0001-Minimal-changes-to-use-libera.chat.patch
+  * 0002-appdata-reference-Libera-fix-the-wording.patch
+  * 0003-Replace-Freenode-with-Libera.patch
+  * 0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 12:40:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.2

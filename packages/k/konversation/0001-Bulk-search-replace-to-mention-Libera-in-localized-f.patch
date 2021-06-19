@@ -1,0 +1,2529 @@
+From 76aaf52e2fd8d90d89a766f2f5458a17f7e7f3df Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 16 Jun 2021 17:14:17 +0200
+Subject: [PATCH] Bulk search & replace to mention Libera in localized files
+
+---
+ data/org.kde.konversation.appdata.xml    | 60 ++++++++++++------------
+ po/ar/konversation.po                    |  4 +-
+ po/bg/konversation.po                    | 16 +++----
+ po/bs/konversation.po                    |  4 +-
+ po/ca/docs/konversation/index.docbook    | 10 ++--
+ po/ca/konversation.po                    |  8 ++--
+ po/ca@valencia/konversation.po           |  8 ++--
+ po/cs/konversation.po                    |  4 +-
+ po/da/konversation.po                    | 18 +++----
+ po/de/docs/konversation/index.docbook    | 10 ++--
+ po/de/konversation.po                    | 18 +++----
+ po/el/konversation.po                    | 16 +++----
+ po/en_GB/konversation.po                 | 16 +++----
+ po/eo/konversation.po                    |  4 +-
+ po/es/docs/konversation/index.docbook    | 10 ++--
+ po/es/konversation.po                    |  8 ++--
+ po/et/konversation.po                    | 12 ++---
+ po/fi/konversation.po                    | 14 +++---
+ po/fr/konversation.po                    | 12 ++---
+ po/ga/konversation.po                    |  4 +-
+ po/gl/konversation.po                    |  8 ++--
+ po/he/konversation.po                    |  4 +-
+ po/hi/konversation.po                    |  4 +-
+ po/hr/konversation.po                    |  4 +-
+ po/hu/konversation.po                    | 14 +++---
+ po/ia/konversation.po                    |  4 +-
+ po/is/konversation.po                    |  4 +-
+ po/it/docs/konversation/index.docbook    | 10 ++--
+ po/it/konversation.po                    | 18 +++----
+ po/ja/konversation.po                    | 12 ++---
+ po/kk/konversation.po                    |  8 ++--
+ po/km/konversation.po                    |  8 ++--
+ po/ko/konversation.po                    | 10 ++--
+ po/lt/konversation.po                    |  6 +--
+ po/mr/konversation.po                    |  4 +-
+ po/nb/konversation.po                    |  8 ++--
+ po/nds/konversation.po                   | 12 ++---
+ po/nl/docs/konversation/index.docbook    | 10 ++--
+ po/nl/konversation.po                    | 12 ++---
+ po/nn/konversation.po                    |  8 ++--
+ po/pa/konversation.po                    |  4 +-
+ po/pl/konversation.po                    | 14 +++---
+ po/pt/docs/konversation/index.docbook    | 10 ++--
+ po/pt/konversation.po                    | 12 ++---
+ po/pt_BR/docs/konversation/index.docbook | 10 ++--
+ po/pt_BR/konversation.po                 |  8 ++--
+ po/ro/konversation.po                    |  4 +-
+ po/ru/konversation.po                    |  8 ++--
+ po/sk/konversation.po                    |  8 ++--
+ po/sl/konversation.po                    |  8 ++--
+ po/sq/konversation.po                    |  4 +-
+ po/sr/konversation.po                    |  4 +-
+ po/sv/docs/konversation/index.docbook    | 10 ++--
+ po/sv/konversation.po                    | 12 ++---
+ po/ta/konversation.po                    |  4 +-
+ po/tr/konversation.po                    |  8 ++--
+ po/ug/konversation.po                    |  4 +-
+ po/uk/docs/konversation/index.docbook    | 10 ++--
+ po/uk/konversation.po                    |  8 ++--
+ po/zh_CN/konversation.po                 |  8 ++--
+ po/zh_TW/konversation.po                 |  8 ++--
+ 61 files changed, 295 insertions(+), 295 deletions(-)
+
+diff --git a/data/org.kde.konversation.appdata.xml b/data/org.kde.konversation.appdata.xml
+index e9c8005..5c3def7 100644
+--- a/data/org.kde.konversation.appdata.xml
++++ b/data/org.kde.konversation.appdata.xml
+@@ -82,38 +82,38 @@
+       where you can find the KDE IRC channels.
+     </p>
+     <p xml:lang="ar">«محادثك» هو عميل آي‌آرسي يعطيك وصول سريع إلى قنوات شبكة «فرينود»، حيث ستجد الدّعم لمختلف التّوزيعات. الافتراضيّات فيه مضبوطة بحيث لا تحتاج لأن تفعل شيئا عدا كتابة اسم قناة التّوزيعة، ومن ثمّ تبدأ الدّردشة.</p>
+-    <p xml:lang="ca">El Konversation és un client d'IRC que dóna accés ràpid als canals de la xarxa Freenode, a on trobareu ajuda per a la majoria de les distribucions. De manera predeterminada, per a començar no necessita més configuració que indicar el nom del canal de la distribució.</p>
+-    <p xml:lang="ca-valencia">El Konversation és un client d'IRC que dóna accés ràpid als canals de la xarxa Freenode, a on trobareu ajuda per a la majoria de les distribucions. De manera predeterminada, per a començar no necessita més configuració que indicar el nom del canal de la distribució.</p>
+-    <p xml:lang="da">Konversation er en IRC-klient som giver dig hurtig adgang til kanaler på Freenode-netværket, hvor du finder support til de fleste distributioner. Dets standardindstillinger er sådan at der ikke kræves anden konfiguration end at angive navnet på distributionskanalen for at komme i gang.</p>
+-    <p xml:lang="de">Konversation ist ein IRC-Programm, mit dem Sie schnell auf Freenode-Kanäle zugreifen können, in denen Sie Unterstützung für die meisten Distributionen erhalten. Die Voreinstellungen sind so gewählt, dass Sie nur den Kanalnamen Ihrer Distribution eingeben müssen.</p>
+-    <p xml:lang="el">Το Konversation είναι μια εφαρμογή πελάτη IRC, το οποίο παρέχει ταχεία πρόσβαση σε δικτυακά κανάλια Freenode, όπου θα βρείτε υποστήριξη για την πλειοψηφία των διανομών. Οι προκαθορισμένες ρυθμίσεις του καθιστούν περιττή την επιπλέον διαμόρφωση, με εξαίρεση το όνομα του καναλιού της διανομής σας για να ξεκινήσει.</p>
+-    <p xml:lang="en-GB">Konversation is an IRC client which gives you speedy access to Freenode network's channels, where you will find support for most distributions. Its defaults are such that it needs no configuration other than telling it the name of your distribution channel, to get started.</p>
+-    <p xml:lang="es">Konversation es un cliente de IRC que le proporciona un acceso rápido a los canales de la red Freenode, donde usted encontrará apoyo para muchas distribuciones. Sus opciones por omisión son tales que no necesita otra configuración que decirle el nombre del canal de distribución para empezar.</p>
+-    <p xml:lang="et">Konversation on IRC klient, mis lubab sul edukalt tegutseda Freenode'i võrgu kanalitel. Rakenduse vaikimisi seadistused on niisugused, et sul pole alustamiseks üldjuhul vaja midagi rohkemat, kui ainult teada kanalit, millega ühineda.</p>
+-    <p xml:lang="fi">Konversation on IRC-asiakas, jolla pääset nopeasti Freenoden verkkokanaville, mistä löydät useimpien jakelujen tuen. Sen oletusasetukset ovat sellaiset, ettei sinun tarvitse kuin vain kertoa jakelusi kanava päästäksesi alkuun.</p>
+-    <p xml:lang="fr">Konversation est un client « IRC » vous donnant un accès rapide aux canaux du réseau Freenode où vous trouverez de l'aide pour la plupart des distributions. Ses configurations par défaut sont telles que vous devez uniquement spécifier le nom de votre distribution pour débuter.</p>
+-    <p xml:lang="gl">Konversation é un cliente de IRC que lle da acceso rápido ás canles da rede Freenode, onde atopará asistencia técnica para a meirande parte das distribucións. A configuración predeterminada está deseñada para que só teña que indicar o nome da canle da distribución para comezar.</p>
+-    <p xml:lang="he">שיחה KDE זה לקוח IRC שנותן גישה מהירה לערוצי רשתות Freenode, ותומך ברוב ההפצות. כברירת מחדל לא צריך להגדיר חוץ לבחור שם של אחד מערוצי ההפצות בשביל להתחיל.</p>
+-    <p xml:lang="id">Konversation adalah klien IRC yang memberimu akses cepat ke channel jaringan Freenode, di mana kamu akan menemukan dukungan untuk sebagian besar distribusi. Default-nya adalah tidak diperlukannya konfigurasi selain memberi tahu nama channel distribusimu, untuk memulai.</p>
+-    <p xml:lang="it">Konversation è un client IRC che fornisce un acceso rapido ai canali della rete Freenode, dove troverai supporto per la maggior parte delle distribuzioni. I suoi valori predefiniti fanno sì che non ci sia bisogno di configurazione ulteriore a parte il nome del canale della distribuzione per poter iniziare.</p>
+-    <p xml:lang="ko">Konversation은 여러 IRC 네트워크 채널에 빠르게 접근할 수 있는 IRC 클라이언트입니다. 대부분 리눅스 배포판 사용자와 대화할 수 있는 Freenode 네트워크 및 배포판 채널을 기본 설정으로 포함합니다.</p>
+-    <p xml:lang="nl">Konversation is een IRC-client die u snel toegang geeft tot networkkanalen van Freenode, waar u ondersteuning voor de meeste distributies zult vinden. Zijn standaarden zijn zo dat het geen instellingen nodig heeft anders dan het de naam van uw distributiekanaal te vertellen om van start te gaan.</p>
+-    <p xml:lang="nn">Konversation er ein IRC-klient som gjev deg rask tilgang til alle Freenode-kanalane, der du finn støtte for dei fleste distribusjonane. Standardverdiane er slik at det ikkje trengst noko vidare oppsett; du treng berre oppgje kanalen til distribusjonen din for å komma i gang.</p>
+-    <p xml:lang="pl">Konversation jest klientem IRC, który szybko daje ci dostęp do kanałów sieci Freenode, gdzie mozesz znaleźć wsparcie dla większości dystrybucji. Dzięki jego ustawieniom domyślnym wystarczy, że podasz nazwę swojego kanału dystrybucji, aby zacząć go używać.</p>
+-    <p xml:lang="pt">O Konversation é um cliente de IRC que lhe dá um acesso rápido aos canais da rede Freenode, onde poderá obter suporte para a maioria das distribuições. Tem um conjunto de definições por omissão suficientemente úteis que praticamente não necessita de mais configurações do que definir o nome do canal da sua distribuição para começar.</p>
+-    <p xml:lang="pt-BR">O Konversation é um cliente IRC que fornece a você acesso rápido aos canais da rede Freenode, onde você irá encontrar suporte para a maioria das distribuições. Seus padrões são tais que ele não precisa de nenhuma configuração além de dizer o nome do canal de sua distribuição para poder começar.</p>
+-    <p xml:lang="sk">Konversation je IRC klient, ktorý vám umožní rýchly prístup ku kanálom siete Freenode, kde nájdete podporu pre väčšinu distribúcií. Predvolene nepotrebuje žiadne nastavenie okrem názvu kanálu distribúcie na to, aby ste začali.</p>
+-    <p xml:lang="sl">Konversation je odjemalec za IRC, ki ponuja hiter dostop do kanalov omrežja Freenode, na katerih boste našli pomoč za večino distribucij. Nastavljen je tako, da za začetek ne potrebuje dodatnih nastavitev, ampak le ime kanala vaše distribucije.</p>
++    <p xml:lang="ca">El Konversation és un client d'IRC que dóna accés ràpid als canals de la xarxa Libera, a on trobareu ajuda per a la majoria de les distribucions. De manera predeterminada, per a començar no necessita més configuració que indicar el nom del canal de la distribució.</p>
++    <p xml:lang="ca-valencia">El Konversation és un client d'IRC que dóna accés ràpid als canals de la xarxa Libera, a on trobareu ajuda per a la majoria de les distribucions. De manera predeterminada, per a començar no necessita més configuració que indicar el nom del canal de la distribució.</p>
++    <p xml:lang="da">Konversation er en IRC-klient som giver dig hurtig adgang til kanaler på Libera-netværket, hvor du finder support til de fleste distributioner. Dets standardindstillinger er sådan at der ikke kræves anden konfiguration end at angive navnet på distributionskanalen for at komme i gang.</p>
++    <p xml:lang="de">Konversation ist ein IRC-Programm, mit dem Sie schnell auf Libera-Kanäle zugreifen können, in denen Sie Unterstützung für die meisten Distributionen erhalten. Die Voreinstellungen sind so gewählt, dass Sie nur den Kanalnamen Ihrer Distribution eingeben müssen.</p>
++    <p xml:lang="el">Το Konversation είναι μια εφαρμογή πελάτη IRC, το οποίο παρέχει ταχεία πρόσβαση σε δικτυακά κανάλια Libera, όπου θα βρείτε υποστήριξη για την πλειοψηφία των διανομών. Οι προκαθορισμένες ρυθμίσεις του καθιστούν περιττή την επιπλέον διαμόρφωση, με εξαίρεση το όνομα του καναλιού της διανομής σας για να ξεκινήσει.</p>
++    <p xml:lang="en-GB">Konversation is an IRC client which gives you speedy access to Libera network's channels, where you will find support for most distributions. Its defaults are such that it needs no configuration other than telling it the name of your distribution channel, to get started.</p>
++    <p xml:lang="es">Konversation es un cliente de IRC que le proporciona un acceso rápido a los canales de la red Libera, donde usted encontrará apoyo para muchas distribuciones. Sus opciones por omisión son tales que no necesita otra configuración que decirle el nombre del canal de distribución para empezar.</p>
++    <p xml:lang="et">Konversation on IRC klient, mis lubab sul edukalt tegutseda Libera'i võrgu kanalitel. Rakenduse vaikimisi seadistused on niisugused, et sul pole alustamiseks üldjuhul vaja midagi rohkemat, kui ainult teada kanalit, millega ühineda.</p>
++    <p xml:lang="fi">Konversation on IRC-asiakas, jolla pääset nopeasti Liberan verkkokanaville, mistä löydät useimpien jakelujen tuen. Sen oletusasetukset ovat sellaiset, ettei sinun tarvitse kuin vain kertoa jakelusi kanava päästäksesi alkuun.</p>
++    <p xml:lang="fr">Konversation est un client « IRC » vous donnant un accès rapide aux canaux du réseau Libera où vous trouverez de l'aide pour la plupart des distributions. Ses configurations par défaut sont telles que vous devez uniquement spécifier le nom de votre distribution pour débuter.</p>
++    <p xml:lang="gl">Konversation é un cliente de IRC que lle da acceso rápido ás canles da rede Libera, onde atopará asistencia técnica para a meirande parte das distribucións. A configuración predeterminada está deseñada para que só teña que indicar o nome da canle da distribución para comezar.</p>
++    <p xml:lang="he">שיחה KDE זה לקוח IRC שנותן גישה מהירה לערוצי רשתות Libera, ותומך ברוב ההפצות. כברירת מחדל לא צריך להגדיר חוץ לבחור שם של אחד מערוצי ההפצות בשביל להתחיל.</p>
++    <p xml:lang="id">Konversation adalah klien IRC yang memberimu akses cepat ke channel jaringan Libera, di mana kamu akan menemukan dukungan untuk sebagian besar distribusi. Default-nya adalah tidak diperlukannya konfigurasi selain memberi tahu nama channel distribusimu, untuk memulai.</p>
++    <p xml:lang="it">Konversation è un client IRC che fornisce un acceso rapido ai canali della rete Libera, dove troverai supporto per la maggior parte delle distribuzioni. I suoi valori predefiniti fanno sì che non ci sia bisogno di configurazione ulteriore a parte il nome del canale della distribuzione per poter iniziare.</p>
++    <p xml:lang="ko">Konversation은 여러 IRC 네트워크 채널에 빠르게 접근할 수 있는 IRC 클라이언트입니다. 대부분 리눅스 배포판 사용자와 대화할 수 있는 Libera 네트워크 및 배포판 채널을 기본 설정으로 포함합니다.</p>
++    <p xml:lang="nl">Konversation is een IRC-client die u snel toegang geeft tot networkkanalen van Libera, waar u ondersteuning voor de meeste distributies zult vinden. Zijn standaarden zijn zo dat het geen instellingen nodig heeft anders dan het de naam van uw distributiekanaal te vertellen om van start te gaan.</p>
++    <p xml:lang="nn">Konversation er ein IRC-klient som gjev deg rask tilgang til alle Libera-kanalane, der du finn støtte for dei fleste distribusjonane. Standardverdiane er slik at det ikkje trengst noko vidare oppsett; du treng berre oppgje kanalen til distribusjonen din for å komma i gang.</p>
++    <p xml:lang="pl">Konversation jest klientem IRC, który szybko daje ci dostęp do kanałów sieci Libera, gdzie mozesz znaleźć wsparcie dla większości dystrybucji. Dzięki jego ustawieniom domyślnym wystarczy, że podasz nazwę swojego kanału dystrybucji, aby zacząć go używać.</p>
++    <p xml:lang="pt">O Konversation é um cliente de IRC que lhe dá um acesso rápido aos canais da rede Libera, onde poderá obter suporte para a maioria das distribuições. Tem um conjunto de definições por omissão suficientemente úteis que praticamente não necessita de mais configurações do que definir o nome do canal da sua distribuição para começar.</p>
++    <p xml:lang="pt-BR">O Konversation é um cliente IRC que fornece a você acesso rápido aos canais da rede Libera, onde você irá encontrar suporte para a maioria das distribuições. Seus padrões são tais que ele não precisa de nenhuma configuração além de dizer o nome do canal de sua distribuição para poder começar.</p>
++    <p xml:lang="sk">Konversation je IRC klient, ktorý vám umožní rýchly prístup ku kanálom siete Libera, kde nájdete podporu pre väčšinu distribúcií. Predvolene nepotrebuje žiadne nastavenie okrem názvu kanálu distribúcie na to, aby ste začali.</p>
++    <p xml:lang="sl">Konversation je odjemalec za IRC, ki ponuja hiter dostop do kanalov omrežja Libera, na katerih boste našli pomoč za večino distribucij. Nastavljen je tako, da za začetek ne potrebuje dodatnih nastavitev, ampak le ime kanala vaše distribucije.</p>
+     <p xml:lang="sr">Конверзација је ИРЦ клијент који вам омогућава брз приступ каналима Фринодове мреже, где можете наћи подршку за већину дистрибуција. Подразумеване поставке су такве да не треба ништа да подешавате, већ само да унесете име канала дистрибуције, да бисте почели.</p>
+-    <p xml:lang="sr-Latn">Konverzacija je IRC klijent koji vam omogućava brz pristup kanalima Freenodeove mreže, gde možete naći podršku za većinu distribucija. Podrazumevane postavke su takve da ne treba ništa da podešavate, već samo da unesete ime kanala distribucije, da biste počeli.</p>
++    <p xml:lang="sr-Latn">Konverzacija je IRC klijent koji vam omogućava brz pristup kanalima Liberaove mreže, gde možete naći podršku za većinu distribucija. Podrazumevane postavke su takve da ne treba ništa da podešavate, već samo da unesete ime kanala distribucije, da biste počeli.</p>
+     <p xml:lang="sr-ijekavian">Конверзација је ИРЦ клијент који вам омогућава брз приступ каналима Фринодове мреже, где можете наћи подршку за већину дистрибуција. Подразумеване поставке су такве да не треба ништа да подешавате, већ само да унесете име канала дистрибуције, да бисте почели.</p>
+-    <p xml:lang="sr-ijekavianlatin">Konverzacija je IRC klijent koji vam omogućava brz pristup kanalima Freenodeove mreže, gde možete naći podršku za većinu distribucija. Podrazumevane postavke su takve da ne treba ništa da podešavate, već samo da unesete ime kanala distribucije, da biste počeli.</p>
+-    <p xml:lang="sv">Konversation är en IRC-klient som ger snabb åtkomst till Freenode-nätverkets kanaler, där det finns stöd för de flesta distributioner. Standardinställningarna är sådana att ingen inställning behövs för att komma igång annat än att tala om namnet på distributionens kanal för den.</p>
+-    <p xml:lang="tr">Konversation, çoğu dağıtım için destek bulacağınız Freenode ağ kanallarına hızlı erişim sağlayan bir IRC istemcisidir. Varsayılanları, başlamak için dağıtım kanalınızın adını söylemekten başka bir yapılandırmaya ihtiyaç duymayacak şekildedir.</p>
+-    <p xml:lang="uk">Konversation — клієнтська програма IRC, за допомогою якої ви зможете швидко отримати доступ до каналів мережі Freenode, на яких можна спілкуватися із іншими користувачами та розробниками. Якщо ви скористаєтеся типовими параметрами роботи програми, вам достатньо буде вказати лише назву потрібного вам каналу, щоб розпочати спілкування на ньому.</p>
+-    <p xml:lang="x-test">xxKonversation is an IRC client which gives you speedy access to Freenode network's channels, where you will find support for most distributions. Its defaults are such that it needs no configuration other than telling it the name of your distribution channel, to get started.xx</p>
+-    <p xml:lang="zh-CN">Konversation IRC 客户端让您快速链接 Freenode 网络的频道，以获取大多数发行版的社区支持。默认情况下，您只需要输入发行版频道的名字就可以开始使用了，而不需要额外配置。</p>
+-    <p xml:lang="zh-TW">Konversation 是一個讓您可以快速連上 Freenode 網路頻道的 IRC 用戶端，在那裡您可以找到大多數散佈版的支援。其預設不需要任何設定，您只需要告訴它您散佈版頻道的名字就可以開始了。</p>
++    <p xml:lang="sr-ijekavianlatin">Konverzacija je IRC klijent koji vam omogućava brz pristup kanalima Liberaove mreže, gde možete naći podršku za većinu distribucija. Podrazumevane postavke su takve da ne treba ništa da podešavate, već samo da unesete ime kanala distribucije, da biste počeli.</p>
++    <p xml:lang="sv">Konversation är en IRC-klient som ger snabb åtkomst till Libera-nätverkets kanaler, där det finns stöd för de flesta distributioner. Standardinställningarna är sådana att ingen inställning behövs för att komma igång annat än att tala om namnet på distributionens kanal för den.</p>
++    <p xml:lang="tr">Konversation, çoğu dağıtım için destek bulacağınız Libera ağ kanallarına hızlı erişim sağlayan bir IRC istemcisidir. Varsayılanları, başlamak için dağıtım kanalınızın adını söylemekten başka bir yapılandırmaya ihtiyaç duymayacak şekildedir.</p>
++    <p xml:lang="uk">Konversation — клієнтська програма IRC, за допомогою якої ви зможете швидко отримати доступ до каналів мережі Libera, на яких можна спілкуватися із іншими користувачами та розробниками. Якщо ви скористаєтеся типовими параметрами роботи програми, вам достатньо буде вказати лише назву потрібного вам каналу, щоб розпочати спілкування на ньому.</p>
++    <p xml:lang="x-test">xxKonversation is an IRC client which gives you speedy access to Libera network's channels, where you will find support for most distributions. Its defaults are such that it needs no configuration other than telling it the name of your distribution channel, to get started.xx</p>
++    <p xml:lang="zh-CN">Konversation IRC 客户端让您快速链接 Libera 网络的频道，以获取大多数发行版的社区支持。默认情况下，您只需要输入发行版频道的名字就可以开始使用了，而不需要额外配置。</p>
++    <p xml:lang="zh-TW">Konversation 是一個讓您可以快速連上 Libera 網路頻道的 IRC 用戶端，在那裡您可以找到大多數散佈版的支援。其預設不需要任何設定，您只需要告訴它您散佈版頻道的名字就可以開始了。</p>
+     <p>Features:</p>
+     <p xml:lang="ar">الميزات:</p>
+     <p xml:lang="ca">Característiques:</p>
+diff --git a/po/ar/konversation.po b/po/ar/konversation.po
+index 5c3879b..e45f5b1 100644
+--- a/po/ar/konversation.po
++++ b/po/ar/konversation.po
+@@ -7148,7 +7148,7 @@ msgstr "الأوامر:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7330,7 +7330,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/bg/konversation.po b/po/bg/konversation.po
+index 6399b5d..5cf70e7 100644
+--- a/po/bg/konversation.po
++++ b/po/bg/konversation.po
+@@ -7507,14 +7507,14 @@ msgstr "Команди:"
+ #| msgid ""
+ #| "Optional. This command will be sent to the server after connecting. "
+ #| "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#| "for the freenode network, which requires users to register their nickname "
++#| "for the libera network, which requires users to register their nickname "
+ #| "with a password and login when connecting. <i>konvirocks<i> is the "
+ #| "password for the nickname given in Identity. You may enter more than one "
+ #| "command by separating them with semicolons."
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7722,21 +7722,21 @@ msgstr "&Изтриване"
+ #| "collection of cooperating servers. You need only connect to one of the "
+ #| "servers in the network to be connected to the entire IRC network. Once "
+ #| "connected, Konversation will automatically join the channels shown. When "
+-#| "Konversation is started for the first time, the Freenode network and the "
++#| "Konversation is started for the first time, the Libera network and the "
+ #| "<i>#kde</i> channel are already entered for you."
+ msgid ""
+ "This shows the list of configured IRC networks. An IRC network is a "
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Тук е показан списък с настроените IRC мрежи. IRC мрежа е колекция от "
+ "работещи заедно сървъри. За да имате връзка с цяла IRC мрежа е необходимо да "
+ "се свържете само с един сървър от тази мрежа. След като се свържете, "
+ "Konversation автоматично ще се присъедини към показаните канали. При първото "
+-"стартиране мрежата Freenode и канал <i>#kde</i> са предварително въведени за "
++"стартиране мрежата Libera и канал <i>#kde</i> са предварително въведени за "
+ "вас."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -11015,12 +11015,12 @@ msgstr "Наблюдавани псевдоними"
+ 
+ #, fuzzy
+ #~| msgid ""
+-#~| "The irc server network (such as 'freenode') that the selected user to "
++#~| "The irc server network (such as 'libera') that the selected user to "
+ #~| "watch is on."
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+-#~ msgstr "Мрежата IRC сървъри (като \"freenode\"\")за наблюдение е включена."
++#~ msgstr "Мрежата IRC сървъри (като \"libera\"\")за наблюдение е включена."
+ 
+ #~ msgid "Network:"
+ #~ msgstr "Мрежа:"
+diff --git a/po/bs/konversation.po b/po/bs/konversation.po
+index 0bec402..defb194 100644
+--- a/po/bs/konversation.po
++++ b/po/bs/konversation.po
+@@ -7350,7 +7350,7 @@ msgstr "Naredbe:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7556,7 +7556,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Ovdje je prikazana lista podešenih IRC mreža. IRC mreža je skup servera koji "
+diff --git a/po/ca/docs/konversation/index.docbook b/po/ca/docs/konversation/index.docbook
+index fbe6ff2..35ac5a8 100644
+--- a/po/ca/docs/konversation/index.docbook
++++ b/po/ca/docs/konversation/index.docbook
+@@ -317,8 +317,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Podeu contactar amb els desenvolupadors del &konversation; a través d'&irc; a <ulink url="irc://chat.freenode.net/konversation"
+->irc.freenode.net al canal #konversation</ulink
++>Podeu contactar amb els desenvolupadors del &konversation; a través d'&irc; a <ulink url="ircs://irc.libera.chat:6697/konversation"
++>irc.libera.chat al canal #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -374,7 +374,7 @@ revision history. (see installation appendix comment) -->
+ >Canals</guilabel
+ > mostrats. Quan s'inicia el &konversation; per primera vegada, la xarxa <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > i el canal <userinput
+ ><replaceable
+@@ -854,7 +854,7 @@ Limits on Real Name and Ident?
+ ></action
+ > mostra les xarxes d'&irc; definides, llistades per grup. Una xarxa d'&irc; és un conjunt de servidors que cooperen. Quan connecteu a qualsevol servidor en una xarxa, tindreu accés a tots els canals de la xarxa. Exemples de xarxes &irc; són <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > i <userinput
+ ><replaceable
+@@ -999,7 +999,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Aquest exemple és per a la xarxa freenode, la qual requereix que els usuaris registrin el seu &i18n-nickname; amb una contrasenya i usuari en connectar. <userinput
++>. Aquest exemple és per a la xarxa libera, la qual requereix que els usuaris registrin el seu &i18n-nickname; amb una contrasenya i usuari en connectar. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/ca/konversation.po b/po/ca/konversation.po
+index d8f625a..2a80f43 100644
+--- a/po/ca/konversation.po
++++ b/po/ca/konversation.po
+@@ -7346,14 +7346,14 @@ msgstr "Ordres:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Aquesta ordre s'envia al servidor després de la connexió. "
+ "Exemple: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Aquest exemple és "
+-"per a la xarxa freenode, la qual requereix que els usuaris registrin el seu "
++"per a la xarxa libera, la qual requereix que els usuaris registrin el seu "
+ "sobrenom amb una contrasenya i usuari en connectar. <i>konvirocks</i> és la "
+ "contrasenya per al sobrenom donat a la identitat. Podeu introduir més d'una "
+ "ordre separant-les amb punt i coma.</qt>"
+@@ -7550,14 +7550,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Això mostra la llista de xarxes IRC configurades. Una xarxa IRC és una "
+ "col·lecció de servidors que cooperen. Només necessiteu connectar-vos a un "
+ "dels servidors de la xarxa per a estar connectat a la xarxa IRC sencera. Un "
+ "cop connectat, el Konversation s'unirà automàticament als canals mostrats. "
+-"Quan s'inicia el Konversation per primera vegada, la xarxa Freenode i el "
++"Quan s'inicia el Konversation per primera vegada, la xarxa Libera i el "
+ "canal <i>#kde</i> ja estan inclosos."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/ca@valencia/konversation.po b/po/ca@valencia/konversation.po
+index 716ae64..1929784 100644
+--- a/po/ca@valencia/konversation.po
++++ b/po/ca@valencia/konversation.po
+@@ -7349,14 +7349,14 @@ msgstr "Ordres:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Aquesta ordre s'envia al servidor després de la connexió. "
+ "Exemple: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Aquest exemple és "
+-"per a la xarxa freenode, la qual requereix que els usuaris registrin el seu "
++"per a la xarxa libera, la qual requereix que els usuaris registrin el seu "
+ "sobrenom amb una contrasenya i usuari en connectar. <i>konvirocks</i> és la "
+ "contrasenya per al sobrenom donat a la identitat. Podeu introduir més d'una "
+ "ordre separant-les amb punt i coma.</qt>"
+@@ -7553,14 +7553,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Això mostra la llista de xarxes IRC configurades. Una xarxa IRC és una "
+ "col·lecció de servidors que cooperen. Només necessiteu connectar-vos a un "
+ "dels servidors de la xarxa per a estar connectat a la xarxa IRC sencera. Un "
+ "cop connectat, el Konversation s'unirà automàticament als canals mostrats. "
+-"Quan s'inicia el Konversation per primera vegada, la xarxa Freenode i el "
++"Quan s'inicia el Konversation per primera vegada, la xarxa Libera i el "
+ "canal <i>#kde</i> ja estan inclosos."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/cs/konversation.po b/po/cs/konversation.po
+index 24ce3e5..efd918b 100644
+--- a/po/cs/konversation.po
++++ b/po/cs/konversation.po
+@@ -7004,7 +7004,7 @@ msgstr "Příkazy:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7180,7 +7180,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/da/konversation.po b/po/da/konversation.po
+index 2ce0c4c..ac0587c 100644
+--- a/po/da/konversation.po
++++ b/po/da/konversation.po
+@@ -7294,14 +7294,14 @@ msgstr "Kommandoer:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Valgfrit. Denne kommando sendes til serveren efter forbindelse. "
+ "Eksempel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dette eksempel "
+-"gælder for freenode-netværket, som kræver at brugere registrerer deres "
++"gælder for libera-netværket, som kræver at brugere registrerer deres "
+ "kaldenavn med en adgangskode og logger ind ved forbindelse. <i>konvirocks</"
+ "i> er adgangskoden for kaldenavnet som er angivet under Identitet. Du kan "
+ "angive mere end én kommando ved at adskille dem med semikolon.</qt>"
+@@ -7498,14 +7498,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Dette viser listen over konfigurerede IRC-netværk. Et IRC-netværk er en "
+ "samling af samarbejdende servere. Du behøver kun at forbinde til en af "
+ "serverne i netværket for at være forbundet til hele IRC-netværket. Når du er "
+ "blevet forbundet, vil Konversation automatisk gå med i de viste kanaler. Når "
+-"Konversation startes første gang, er Freenode-netværket og kanalen <i>#kde</"
++"Konversation startes første gang, er Libera-netværket og kanalen <i>#kde</"
+ "i> allerede angivet for dig."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10603,10 +10603,10 @@ msgstr "Overvågede nicks"
+ #~ msgstr "&Overvågede nicks online"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Det IRC-servernetværk (såsom \"freenode\") som den overvågede bruger er "
++#~ "Det IRC-servernetværk (såsom \"libera\") som den overvågede bruger er "
+ #~ "på."
+ 
+ #~ msgid "Network:"
+@@ -11091,21 +11091,21 @@ msgstr "Overvågede nicks"
+ #~| msgid ""
+ #~| "Optional. This command will be sent to the server after connecting. "
+ #~| "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example "
+-#~| "is for the freenode network, which requires users to register their "
++#~| "is for the libera network, which requires users to register their "
+ #~| "nickname with a password and login when connecting. <i>konvirocks<i> is "
+ #~| "the password for the nickname given in Identity. You may enter more than "
+ #~| "one command by separating them with semicolons."
+ #~ msgid ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+ #~ msgstr ""
+ #~ "Valgfrit. Denne kommando sendes til serveren efter forbindelse. Eksempel: "
+ #~ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dette eksempel gælder "
+-#~ "for freenode-netværket, som kræver at brugere registrerer deres kaldenavn "
++#~ "for libera-netværket, som kræver at brugere registrerer deres kaldenavn "
+ #~ "med en adgangskode og logger ind ved forbindelse. <i>konvirocks<i> er "
+ #~ "adgangskoden for kaldenavnet som er angivet under Identitet. Du kan "
+ #~ "angive mere end én kommando ved at adskille dem med semikolon."
+diff --git a/po/de/docs/konversation/index.docbook b/po/de/docs/konversation/index.docbook
+index 6225468..c3bd744 100644
+--- a/po/de/docs/konversation/index.docbook
++++ b/po/de/docs/konversation/index.docbook
+@@ -331,8 +331,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Die Entwickler von &konversation; sind oft via &irc; im <ulink url="irc://chat.freenode.net/konversation"
+->Kanal #konversation auf irc.freenode.net</ulink
++>Die Entwickler von &konversation; sind oft via &irc; im <ulink url="ircs://irc.libera.chat:6697/konversation"
++>Kanal #konversation auf irc.libera.chat</ulink
+ > erreichbar. </para>
+ 
+ </chapter>
+@@ -388,7 +388,7 @@ revision history. (see installation appendix comment) -->
+ >Kanäle</guilabel
+ > betreten. Beim ersten Start von &konversation; sind das Netzwerk <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > und der Kanal <userinput
+ ><replaceable
+@@ -852,7 +852,7 @@ Limits on Real Name and Ident?
+ > an.</action
+ > Ein &irc;-Netzwerk ist ein Verbund von Servern. Wenn Sie eine Verbindung zu einem Server eines Netzwerks haben, haben Sie Zugriff auf alle Kanäle des Netzwerks. Beispiele für &irc;-Netzwerke sind <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > und <userinput
+ ><replaceable
+@@ -1001,7 +1001,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Dieses Beispiel gilt für das Netzwerk „Freenode“, in dem Benutzer Ihren &i18n-nickname;n mit einem Passwort registrieren müssen, das beim Herstellen der Verbindung abgefragt wird. <userinput
++>. Dieses Beispiel gilt für das Netzwerk „Libera“, in dem Benutzer Ihren &i18n-nickname;n mit einem Passwort registrieren müssen, das beim Herstellen der Verbindung abgefragt wird. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/de/konversation.po b/po/de/konversation.po
+index 0e37242..5afe967 100644
+--- a/po/de/konversation.po
++++ b/po/de/konversation.po
+@@ -7378,14 +7378,14 @@ msgstr "Befehle:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Optional. Dieser Befehl wird nach Verbindungsaufbau an den Server "
+ "gesendet. Beispiel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Das ist "
+-"ein Beispiel für das Freenode-Netzwerk, in dem Benutzer ihren Spitznamen bei "
++"ein Beispiel für das Libera-Netzwerk, in dem Benutzer ihren Spitznamen bei "
+ "Verbindungsaufbau mit einem Passwort und Login registrieren müssen. "
+ "<i>konvirocks</i> ist hier das Passwort für den in der Identität angegebenen "
+ "Spitznamen. Mehrere Befehle können mit einem Semikolon getrennt eingegeben "
+@@ -7587,7 +7587,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Hier wird eine Liste der eingerichteten IRC-Netzwerke angezeigt. Ein IRC-"
+@@ -7595,7 +7595,7 @@ msgstr ""
+ "genügt, eine Verbindung zu einem der Server im Netzwerk aufzubauen, um mit "
+ "dem ganzen IRC-Netzwerk verbunden zu sein. Nachdem die Verbindung aufgebaut "
+ "wurde, betritt Konversation automatisch die angezeigten Kanäle. Beim ersten "
+-"Start von Konversation ist bereits ein Eintrag für das Freenode-Netzwerk und "
++"Start von Konversation ist bereits ein Eintrag für das Libera-Netzwerk und "
+ "den Kanal <i>#kde</i> voreingestellt."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10734,10 +10734,10 @@ msgstr "Beobachtete Spitznamen"
+ #~ msgstr "Beobachtete Be&nutzer online"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Das IRC-Netz (z. B. „Freenode“), in dem sich der zu beobachtende Benutzer "
++#~ "Das IRC-Netz (z. B. „Libera“), in dem sich der zu beobachtende Benutzer "
+ #~ "befindet."
+ 
+ #~ msgid "Network:"
+@@ -11153,21 +11153,21 @@ msgstr "Beobachtete Spitznamen"
+ #~| msgid ""
+ #~| "Optional. This command will be sent to the server after connecting. "
+ #~| "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example "
+-#~| "is for the freenode network, which requires users to register their "
++#~| "is for the libera network, which requires users to register their "
+ #~| "nickname with a password and login when connecting. <i>konvirocks<i> is "
+ #~| "the password for the nickname given in Identity. You may enter more than "
+ #~| "one command by separating them with semicolons."
+ #~ msgid ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+ #~ msgstr ""
+ #~ "Optional. Dieser Befehl wird nach Verbindungsaufbau an den Server "
+ #~ "gesendet. Beispiel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Das "
+-#~ "ist ein Beispiel für das Freenode-Netzwerk, in dem Benutzer ihren "
++#~ "ist ein Beispiel für das Libera-Netzwerk, in dem Benutzer ihren "
+ #~ "Spitznamen bei Verbindungsaufbau mit einem Passwort und Login "
+ #~ "registrieren müssen. <i>konvirocks</i> ist hier das Passwort für den in "
+ #~ "der Identität angegebenen Spitznamen. Mehrere Befehle können mit einem "
+diff --git a/po/el/konversation.po b/po/el/konversation.po
+index c76ba3e..8777dd4 100644
+--- a/po/el/konversation.po
++++ b/po/el/konversation.po
+@@ -7370,14 +7370,14 @@ msgstr "Εντολές:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Προαιρετικό. Αυτή η εντολή θα σταλεί στον εξυπηρετητή μετά τη σύνδεση. "
+ "Παράδειγμα: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Αυτό το "
+-"παράδειγμα αναφέρεται στο δίκτυο freenode, το οποίο απαιτεί από τους χρήστες "
++"παράδειγμα αναφέρεται στο δίκτυο libera, το οποίο απαιτεί από τους χρήστες "
+ "εγγραφή με το ψευδώνυμό τους και με κωδικό πρόσβασης κατά τη σύνδεση. Το "
+ "<i>konvirocks</i> είναι ο κωδικός πρόσβασης για το ψευδώνυμο που αποδίδεται "
+ "από την ταυτότητα. Μπορείτε να εισάγετε παραπάνω από μία εντολές "
+@@ -7575,7 +7575,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Η λίστα των διαμορφωμένων δικτύων IRC εμφανίζεται εδώ. Ένα δίκτυο IRC είναι "
+@@ -7583,7 +7583,7 @@ msgstr ""
+ "τους εξυπηρετητές για να συνδεθείτε σε ολόκληρο το δίκτυο IRC. Μετά τη "
+ "σύνδεση, το Konversation αυτόματα θα συμμετέχει στα εμφανιζόμενα κανάλια. Αν "
+ "το Konversation εκκινεί για πρώτη φορά, είναι ήδη εισηγμένα για εσάς το "
+-"δίκτυο Freenode και το κανάλι <i>#kde</i>."
++"δίκτυο Libera και το κανάλι <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+@@ -10742,10 +10742,10 @@ msgstr "Ψευδώνυμα σε παρακολούθηση"
+ 
+ #, fuzzy
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Το δίκτυο του εξυπηρετητή irc (π.χ. 'freenode') μέσω του οποίου είναι "
++#~ "Το δίκτυο του εξυπηρετητή irc (π.χ. 'libera') μέσω του οποίου είναι "
+ #~ "συνδεδεμένος ο παρακολουθούμενος χρήστης."
+ 
+ #~ msgid "Network:"
+@@ -11095,14 +11095,14 @@ msgstr "Ψευδώνυμα σε παρακολούθηση"
+ #~ msgid ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+ #~ msgstr ""
+ #~ "Προαιρετικό. Αυτή η εντολή θα αποσταλεί στον εξυπηρετητή μετά τη σύνδεση. "
+ #~ "Παράδειγμα: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Αυτό το "
+-#~ "παράδειγμα αναφέρεται στο δίκτυο freenode, το οποίο απαιτεί από τους "
++#~ "παράδειγμα αναφέρεται στο δίκτυο libera, το οποίο απαιτεί από τους "
+ #~ "χρήστες να εγγράφουν το ψευδώνυμό τους με έναν κωδικό πρόσβασης κατά τη "
+ #~ "σύνδεση. Το <i>konvirocks<i> είναι ο κωδικός πρόσβασης για το ψευδώνυμο "
+ #~ "που αποδίδεται από την ταυτότητα. Μπορείτε να εισάγετε παραπάνω από μία "
+diff --git a/po/en_GB/konversation.po b/po/en_GB/konversation.po
+index dc125de..53e4aae 100644
+--- a/po/en_GB/konversation.po
++++ b/po/en_GB/konversation.po
+@@ -7274,14 +7274,14 @@ msgstr "Commands:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7478,14 +7478,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "This shows the list of configured IRC networks. An IRC network is a "
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10550,10 +10550,10 @@ msgstr "Watched Nicks"
+ #~ msgstr "&Watched Nicks Online"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ 
+ #~ msgid "Network:"
+@@ -11032,14 +11032,14 @@ msgstr "Watched Nicks"
+ #~ msgid ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+ #~ msgstr ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+diff --git a/po/eo/konversation.po b/po/eo/konversation.po
+index d4b32b1..d597e7b 100644
+--- a/po/eo/konversation.po
++++ b/po/eo/konversation.po
+@@ -7062,7 +7062,7 @@ msgstr ""
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7241,7 +7241,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/es/docs/konversation/index.docbook b/po/es/docs/konversation/index.docbook
+index ed33bba..6b03fc5 100644
+--- a/po/es/docs/konversation/index.docbook
++++ b/po/es/docs/konversation/index.docbook
+@@ -373,8 +373,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Puede contactar con los desarrolladores de &konversation; a través de &irc; en <ulink url="irc://chat.freenode.net/konversation"
+->irc.freenode.net canal #konversation</ulink
++>Puede contactar con los desarrolladores de &konversation; a través de &irc; en <ulink url="ircs://irc.libera.chat:6697/konversation"
++>irc.libera.chat canal #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -430,7 +430,7 @@ revision history. (see installation appendix comment) -->
+ >Canales</guilabel
+ > mostrados. Cuando &konversation; se inicia por primera vez, la red <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > y el canal <userinput
+ ><replaceable
+@@ -910,7 +910,7 @@ Limits on Real Name and Ident?
+ >Red</guilabel
+ >es de &irc; existentes, listadas por grupo. Una red de &irc; es una colección de servidores que cooperan. Cuando se conecta a cualquier servidor en una red, puede acceder a todos los canales de la red. Ejemplos de redes &irc; son <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > y <userinput
+ ><replaceable
+@@ -1057,7 +1057,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Este ejemplo es para la red freenode, la cual exige que el usuario registre su &i18n-nickname; con una contraseña e inicie sesión al conectarse. <userinput
++>. Este ejemplo es para la red libera, la cual exige que el usuario registre su &i18n-nickname; con una contraseña e inicie sesión al conectarse. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/es/konversation.po b/po/es/konversation.po
+index 1e84caf..1cc90b6 100644
+--- a/po/es/konversation.po
++++ b/po/es/konversation.po
+@@ -7381,14 +7381,14 @@ msgstr "Órdenes:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Esta orden será enviada al servidor tras conectarse. Ejemplo: "
+ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Este ejemplo es para la red "
+-"freenode, que exige que los usuarios registren su apodo con una contraseña y "
++"libera, que exige que los usuarios registren su apodo con una contraseña y "
+ "se autentiquen al conectarse. <i>konvirocks</i> es la contraseña para el "
+ "apodo dado en la identidad. Puede introducir más de una orden separándolas "
+ "por punto y coma.</qt>"
+@@ -7585,7 +7585,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Aquí tiene una lista con las redes de IRC configuradas. Una red de IRC es un "
+@@ -7593,7 +7593,7 @@ msgstr ""
+ "de los servidores de la red para estar conectado a toda la red de IRC. Una "
+ "vez conectado, Konversation se unirá automáticamente a los canales "
+ "mostrados. Cuando se inicia Konversation por primera vez, ya están "
+-"introducidos la red Freenode y el canal <i>#kde</i>."
++"introducidos la red Libera y el canal <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/et/konversation.po b/po/et/konversation.po
+index 3f6463f..ea77863 100644
+--- a/po/et/konversation.po
++++ b/po/et/konversation.po
+@@ -7262,14 +7262,14 @@ msgstr "Käsud:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Lisavõimalus. See käsk saadetakse serverile pärast ühendumist. Näide: "
+ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Antud näide on mõeldud "
+-"Freenode'i võrgule, mis nõuab kasutajatelt ühendumisel enda hüüdnime "
++"Libera'i võrgule, mis nõuab kasutajatelt ühendumisel enda hüüdnime "
+ "registreerimist nii kasutajanime kui parooliga. <i>konvirocks</i> ongi "
+ "identiteedis määratud hüüdnime parool. Käske võib anda ka mitu, sellisel "
+ "juhul tuleb need eraldada semikooloniga.</qt>"
+@@ -7465,14 +7465,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Siin on kirjas seadistatud IRC võrgud. IRC võrk kujutab endast koostööd "
+ "tegevate serverite kogumit. Sul tuleb võtta ühendust ainult ühe võrku "
+ "kuuluva serveriga ning sa oled kohe ühendatud terve IRC võrguga. Ühendumise "
+ "järel võtab Konversation automaatselt ühendust kõigi näidatud kanalitega. "
+-"Konversationi esmakordsel käivitamisel ootab sind juba ees Freenode'i võrk "
++"Konversationi esmakordsel käivitamisel ootab sind juba ees Libera'i võrk "
+ "ja <i>#kde</i> kanal."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10552,10 +10552,10 @@ msgstr "Jälgitavad kasutajad"
+ #~ msgstr "&Jälgitavad kasutajad võrgus"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "IRC serveri võrk (näiteks 'Freenode'), kus asub valitud jälgitav kasutaja."
++#~ "IRC serveri võrk (näiteks 'Libera'), kus asub valitud jälgitav kasutaja."
+ 
+ #~ msgid "Network:"
+ #~ msgstr "Võrk:"
+diff --git a/po/fi/konversation.po b/po/fi/konversation.po
+index 64dcce5..c08a5e4 100644
+--- a/po/fi/konversation.po
++++ b/po/fi/konversation.po
+@@ -7360,14 +7360,14 @@ msgstr "Komennot:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Valinnainen. Tämä komento lähetetään palvelimelle kytkeytymisen jälkeen. "
+ "Esimerkki: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Tämä esimerkki "
+-"on freenode-verkolle, joka vaatii käyttäjiä rekisteröimään nimimerkkinsä "
++"on libera-verkolle, joka vaatii käyttäjiä rekisteröimään nimimerkkinsä "
+ "salasanalla ja kirjautumaan sisään kytkeytymisen yhteydessä. <i>konvirocks</"
+ "i> on henkilöydessä määritellyn nimimerkin salasana. Useampi kuin yksi "
+ "komento voidaan antaa erottamalla ne puolipisteellä toisistaan.</qt>"
+@@ -7563,14 +7563,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Määritetyt IRC-verkot näytetään tässä luettelossa. IRC-verkko on kokoelma "
+ "yhteistyössä toimivia palvelimia. Vain yhteen verkon palvelimeen "
+ "yhdistäminen riittää koko IRC-verkkoon yhdistämiseen. Kun yhteys on "
+ "muodostettu, Konversation liittyy automaattisesti näytettyihin kanaviin. Kun "
+-"Konversation käynnistetään ensimmäisen kerran, Freenode-verkko ja <i>#kde</"
++"Konversation käynnistetään ensimmäisen kerran, Libera-verkko ja <i>#kde</"
+ "i>-kanava on valmiiksi syötetty."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10653,13 +10653,13 @@ msgstr "Seuratut nimimerkit"
+ 
+ #, fuzzy
+ #~| msgid ""
+-#~| "The irc server network (such as 'freenode') that the selected user to "
++#~| "The irc server network (such as 'libera') that the selected user to "
+ #~| "watch is on."
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Irc-palvelinverkko (sellainen kuin ”freenode”), johon valittu valvottava "
++#~ "Irc-palvelinverkko (sellainen kuin ”libera”), johon valittu valvottava "
+ #~ "käyttäjä on kytkeytynyt."
+ 
+ #~ msgid "Network:"
+diff --git a/po/fr/konversation.po b/po/fr/konversation.po
+index bfedd3d..f45f74c 100644
+--- a/po/fr/konversation.po
++++ b/po/fr/konversation.po
+@@ -7408,14 +7408,14 @@ msgstr "Commandes :"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Optionnel. Cette commande sera envoyée au serveur après connexion. Par "
+ "exemple : <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Cette exemple est "
+-"pour le réseau freenode, qui nécessite que les utilisateurs enregistrent "
++"pour le réseau libera, qui nécessite que les utilisateurs enregistrent "
+ "leur pseudonyme avec un mot de passe et s'authentifient à la connexion. "
+ "<i>konvirocks</i> est le mot de passe pour le pseudonyme donné dans "
+ "l'identité. Vous pouvez saisir plusieurs commandes en les séparant par « : »."
+@@ -7614,7 +7614,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "La liste des réseaux IRC configurés est affichée ici. Un réseau IRC est une "
+@@ -7622,7 +7622,7 @@ msgstr ""
+ "connecter à l'un des serveurs du réseau pour être connecté au réseau IRC "
+ "entier. Une fois connecté, Konversation va automatiquement rejoindre les "
+ "canaux affichés. Lorsque Konversation est démarré pour la première fois, le "
+-"réseau Freenode et le canal <i>#kde</i> sont déjà sélectionnés pour vous."
++"réseau Libera et le canal <i>#kde</i> sont déjà sélectionnés pour vous."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+@@ -10775,10 +10775,10 @@ msgstr "Pseudonymes surveillés"
+ #~ msgstr "Pseudos en ligne &surveillés"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Le réseau de serveurs IRC (tel que « freenode ») de l'utilisateur à "
++#~ "Le réseau de serveurs IRC (tel que « libera ») de l'utilisateur à "
+ #~ "surveiller sélectionné est actif."
+ 
+ #~ msgid "Network:"
+diff --git a/po/ga/konversation.po b/po/ga/konversation.po
+index 07a52e9..1570386 100644
+--- a/po/ga/konversation.po
++++ b/po/ga/konversation.po
+@@ -7126,7 +7126,7 @@ msgstr "Orduithe:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7306,7 +7306,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/gl/konversation.po b/po/gl/konversation.po
+index ac26ed8..8366fbd 100644
+--- a/po/gl/konversation.po
++++ b/po/gl/konversation.po
+@@ -7360,14 +7360,14 @@ msgstr "Ordes:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Esta orde envíase ao servidor despois de conectar. Exemplo: "
+ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Este é un exemplo para a "
+-"rede Freenode, que esixe que os usuarios rexistren o seu alcume cun "
++"rede Libera, que esixe que os usuarios rexistren o seu alcume cun "
+ "contrasinal e se identifiquen para conectar. <i>konvirocks</i> é o "
+ "contrasinal do alcume dado na identidade. Pode inserir máis dunha orde "
+ "separándoas con puntos e comas (;).</qt>"
+@@ -7564,7 +7564,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Isto mostra a lista das redes de IRC configuradas. Unha rede IRC é unha "
+@@ -7572,7 +7572,7 @@ msgstr ""
+ "servidores da rede para ligar con toda a rede IRC. Cando estea conectado, o "
+ "Konversation unirase automaticamente aos canles presentados. Cando o "
+ "Konversation se inicia por primeira vez xa están introducidas a rede "
+-"Freenode e a canle <i>#kde</i>."
++"Libera e a canle <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/he/konversation.po b/po/he/konversation.po
+index 479c2da..e5939eb 100644
+--- a/po/he/konversation.po
++++ b/po/he/konversation.po
+@@ -7037,7 +7037,7 @@ msgstr "פקודות:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7223,7 +7223,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/hi/konversation.po b/po/hi/konversation.po
+index 5cfba10..76baf95 100644
+--- a/po/hi/konversation.po
++++ b/po/hi/konversation.po
+@@ -7096,7 +7096,7 @@ msgstr "कमांड्स (&m)"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7275,7 +7275,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/hr/konversation.po b/po/hr/konversation.po
+index a538333..dc75d75 100644
+--- a/po/hr/konversation.po
++++ b/po/hr/konversation.po
+@@ -7009,7 +7009,7 @@ msgstr ""
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7184,7 +7184,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/hu/konversation.po b/po/hu/konversation.po
+index 6c16551..840d1ec 100644
+--- a/po/hu/konversation.po
++++ b/po/hu/konversation.po
+@@ -7335,13 +7335,13 @@ msgstr "Parancsok:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcionális. Ez a parancs csatlakozás után kerül elküldésre. Például: <b>/"
+-"msg NickServ IDENTIFY <i>makkmarton</i></b>. Ez a példa a Freenode hálózatra "
++"msg NickServ IDENTIFY <i>makkmarton</i></b>. Ez a példa a Libera hálózatra "
+ "érvényes, amely a regisztrált felhasználóit név és jelszó alapján "
+ "azonosítja. A példában megadott <i>makkmarton</i> kifejezés az identitásban "
+ "megadott névhez tartozó jelszó. Több parancs használatakor azokat "
+@@ -7540,14 +7540,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Itt tekinthetőek meg a beállított IRC-hálózatok. IRC-hálózat alatt az "
+ "együttműködő kiszolgálók csoportját értjük. Elegendő egy kiszolgálóhoz "
+ "csatlakozni ahhoz, hogy szükség esetén elérhessük a hálózat bármelyik "
+ "kiszolgálóját. Kapcsolódáskor a Konversation belép a megadott csatornákba. A "
+-"Konversation első indulásakor a Freenode hálózat és a <i>#kde</i> csatorna "
++"Konversation első indulásakor a Libera hálózat és a <i>#kde</i> csatorna "
+ "van alapértelmezetten beállítva."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10633,13 +10633,13 @@ msgstr "Figyelt becenevek"
+ 
+ #, fuzzy
+ #~| msgid ""
+-#~| "The irc server network (such as 'freenode') that the selected user to "
++#~| "The irc server network (such as 'libera') that the selected user to "
+ #~| "watch is on."
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "A IRC-kiszolgáló hálózat (pl. 'freenode'), amelyen a figyelt felhasználó "
++#~ "A IRC-kiszolgáló hálózat (pl. 'libera'), amelyen a figyelt felhasználó "
+ #~ "tartózkodik."
+ 
+ #~ msgid "Network:"
+diff --git a/po/ia/konversation.po b/po/ia/konversation.po
+index 68e70cd..33aff90 100644
+--- a/po/ia/konversation.po
++++ b/po/ia/konversation.po
+@@ -6976,7 +6976,7 @@ msgstr "Commandos:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7151,7 +7151,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/is/konversation.po b/po/is/konversation.po
+index c8c54c9..11fa8c0 100644
+--- a/po/is/konversation.po
++++ b/po/is/konversation.po
+@@ -6969,7 +6969,7 @@ msgstr ""
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7144,7 +7144,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/it/docs/konversation/index.docbook b/po/it/docs/konversation/index.docbook
+index 54689aa..2395ba8 100644
+--- a/po/it/docs/konversation/index.docbook
++++ b/po/it/docs/konversation/index.docbook
+@@ -331,8 +331,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Gli sviluppatori di &konversation; possono spesso essere contattati su &irc;, su <ulink url="irc://chat.freenode.net/konversation"
+->irc.freenode.net, canale #konversation</ulink
++>Gli sviluppatori di &konversation; possono spesso essere contattati su &irc;, su <ulink url="ircs://irc.libera.chat:6697/konversation"
++>irc.libera.chat, canale #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -388,7 +388,7 @@ revision history. (see installation appendix comment) -->
+ >Canali</guilabel
+ > mostrati. Quanto &konversation; viene avviato per la prima volta, la rete <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e il canale <userinput
+ ><replaceable
+@@ -854,7 +854,7 @@ Limits on Real Name and Ident?
+ ></action
+ > elenca le tue reti &irc; definite esistenti, elencate per gruppo. Una rete &irc; è una raccolta di server cooperanti. Quando ti connetti a qualsiasi server in una rete, hai accesso a tutti i canali della rete. Esempi di reti &irc; sono <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e <userinput
+ ><replaceable
+@@ -993,7 +993,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Questo esempio è per la rete Freenode, che richiede che gli utenti registrino il loro nick con una password e accedano alla connessione. <userinput
++>. Questo esempio è per la rete Libera, che richiede che gli utenti registrino il loro nick con una password e accedano alla connessione. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/it/konversation.po b/po/it/konversation.po
+index 0e3487f..6ba8fa9 100644
+--- a/po/it/konversation.po
++++ b/po/it/konversation.po
+@@ -7346,14 +7346,14 @@ msgstr "Comandi:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Facoltativo. Questo comando sarà inviato al server dopo la connessione. "
+ "Per esempio: <b>/msg serverNick IDENTIFY <i>konvieermejo</i></b>. Questo "
+-"esempio è valido per la rete Freenode, che richiede agli utenti di "
++"esempio è valido per la rete Libera, che richiede agli utenti di "
+ "registrare i loro nick e password, e accedere quando si connettono. "
+ "<i>konvieermejo</i> è la password per il nick indicato nell'identità. Puoi "
+ "inserire più di un comando separandoli con punti e virgola.</qt>"
+@@ -7550,7 +7550,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Questo mostra l'elenco delle reti IRC configurate. Una rete IRC è una "
+@@ -7558,7 +7558,7 @@ msgstr ""
+ "server nella rete per essere connesso a tutta la rete IRC. Una volta "
+ "connesso, Konversation entrerà automaticamente nei canali mostrati. Quando "
+ "Konversation viene avviato per la prima volta, vengono inseriti la rete "
+-"Freenode e il canale <i>#kde</i>."
++"Libera e il canale <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+@@ -10681,10 +10681,10 @@ msgstr "Nick sorvegliati"
+ #~ msgstr "Nick sor&vegliati in linea"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "La rete di server IRC (come «Freenode») su cui l'utente selezionato si "
++#~ "La rete di server IRC (come «Libera») su cui l'utente selezionato si "
+ #~ "trova."
+ 
+ #~ msgid "Network:"
+@@ -11090,21 +11090,21 @@ msgstr "Nick sorvegliati"
+ #~| msgid ""
+ #~| "Optional. This command will be sent to the server after connecting. "
+ #~| "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example "
+-#~| "is for the freenode network, which requires users to register their "
++#~| "is for the libera network, which requires users to register their "
+ #~| "nickname with a password and login when connecting. <i>konvirocks<i> is "
+ #~| "the password for the nickname given in Identity. You may enter more than "
+ #~| "one command by separating them with semicolons."
+ #~ msgid ""
+ #~ "Optional. This command will be sent to the server after connecting. "
+ #~ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#~ "for the freenode network, which requires users to register their nickname "
++#~ "for the libera network, which requires users to register their nickname "
+ #~ "with a password and login when connecting. <i>konvirocks</i> is the "
+ #~ "password for the nickname given in Identity. You may enter more than one "
+ #~ "command by separating them with semicolons."
+ #~ msgstr ""
+ #~ "Opzionale. Questo comando sarà inviato al server dopo la connessione. Per "
+ #~ "esempio: <b>/msg serverNick IDENTIFY <i>konvieermejo</i></b>. Questo "
+-#~ "esempio è valido per la rete Freenode, che richiede agli utenti di "
++#~ "esempio è valido per la rete Libera, che richiede agli utenti di "
+ #~ "registrare i loro nick e password, e accedere quando si connettono. "
+ #~ "<i>konvieermejo</i> è la password per il nick indicato nell'identità. "
+ #~ "Puoi inserire più di un comando separandoli con punti e virgola."
+diff --git a/po/ja/konversation.po b/po/ja/konversation.po
+index 4cf54ad..9386b02 100644
+--- a/po/ja/konversation.po
++++ b/po/ja/konversation.po
+@@ -7606,21 +7606,21 @@ msgstr "コマンド:"
+ #| msgid ""
+ #| "Optional. This command will be sent to the server after connecting. "
+ #| "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-#| "for the freenode network, which requires users to register their nickname "
++#| "for the libera network, which requires users to register their nickname "
+ #| "with a password and login when connecting. <i>konvirocks<i> is the "
+ #| "password for the nickname given in Identity. You may enter more than one "
+ #| "command by separating them with semicolons."
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "これは接続後にサーバに送信するコマンドです。必須ではありません。例: <b>/msg "
+ "NickServ IDENTIFY <i>konvirocks</i></b>。これはユーザにパスワードでニックネー"
+-"ムを登録して接続時にログインすることを要求する freenode ネットワークの例で"
++"ムを登録して接続時にログインすることを要求する libera ネットワークの例で"
+ "す。<i>konvirocks</i> は個人情報で指定されたニックネームのパスワードです。複"
+ "数のコマンドはセミコロンで区切って入力してください。"
+ 
+@@ -7824,21 +7824,21 @@ msgstr "URL を削除(&D)"
+ #| "collection of cooperating servers. You need only connect to one of the "
+ #| "servers in the network to be connected to the entire IRC network. Once "
+ #| "connected, Konversation will automatically join the channels shown. When "
+-#| "Konversation is started for the first time, the Freenode network and the "
++#| "Konversation is started for the first time, the Libera network and the "
+ #| "<i>#kde</i> channel are already entered for you."
+ msgid ""
+ "This shows the list of configured IRC networks. An IRC network is a "
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "これは設定済みの IRC ネットワークのリストです。IRC ネットワークは互いに協力す"
+ "るサーバの集合体です。したがってネットワークの一つのサーバに接続すれば IRC "
+ "ネットワーク全体に接続することができます。接続すると Konversation は自動的に"
+ "ここに表示されているチャンネルに入ります。Konversation にはあらかじめ "
+-"Freenode ネットワークと <i>#kde</i> が設定されています。"
++"Libera ネットワークと <i>#kde</i> が設定されています。"
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/kk/konversation.po b/po/kk/konversation.po
+index 4066d3a..e37c354 100644
+--- a/po/kk/konversation.po
++++ b/po/kk/konversation.po
+@@ -7321,14 +7321,14 @@ msgstr "Командалар:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Міндетті емес. Бұл байланыс құрылған соң серверге жіберілетін команда. "
+ "Мысалы: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Бұл мысал үшін "
+-"келтірілген, бүркеншік атты паролімен тіркеу, freenode желінің командасы.  "
++"келтірілген, бүркеншік атты паролімен тіркеу, libera желінің командасы.  "
+ "<i>konvirocks</i> деген іс-әлпетіндегі бүркеншік аттың паролі. Нүтелі "
+ "үтірмен бөліп бірнеше командаларды келтіруге болады.</qt>"
+ 
+@@ -7517,13 +7517,13 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Бұл бапталған IRC желілер тізімі. IRC желі бірге істейтін серверлер торынан "
+ "тұрады. Бүкіл тормен байланысу үшін біреуімен байланысу жеткілікті. "
+ "Байланысқан соң, Konversation автоматты түрде көрсетілген арналарға кіреді. "
+-"Бірінші рет бастағанда, бір жазу - Freenode желісі <i>#kde</i> арнасымен "
++"Бірінші рет бастағанда, бір жазу - Libera желісі <i>#kde</i> арнасымен "
+ "бапталып дайын болады."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/km/konversation.po b/po/km/konversation.po
+index e864f1f..73cddf4 100644
+--- a/po/km/konversation.po
++++ b/po/km/konversation.po
+@@ -7281,14 +7281,14 @@ msgstr "ពាក្យ​បញ្ជា​ ៖"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>​ជម្រើស  ពាក្យ​បញ្ជា​នេះ​នឹង​ត្រូវ​បាន​ផ្ញើ​ទៅកាន់​ម៉ាស៊ីន​បម្រើ​ ក្រោយ​ពេល​ តភ្ជាប់​ ។ ឧទាហរណ៍​ ៖​ <b>/"
+ "msg សម្គាល់​ម៉ាស៊ីន​បម្រើ​សមត្តិនាម <i>konvirocks</i></b> ។ ឧទាហរណ៍​នេះ​ សម្រាប់​បណ្ដាញ​របស់​ "
+-"freenode ដែល​ទាមទារ​អ្នក​ប្រើ​ដើម្បី​ចុះ​​ឈ្មោះ​សម្មតិនាម​របស់​ពួកគេ​​ដោយ​មាន​​ពាក្យ​សម្ងាត់​ និង​ចូល​នៅ​ពេល​ការ​"
++"libera ដែល​ទាមទារ​អ្នក​ប្រើ​ដើម្បី​ចុះ​​ឈ្មោះ​សម្មតិនាម​របស់​ពួកគេ​​ដោយ​មាន​​ពាក្យ​សម្ងាត់​ និង​ចូល​នៅ​ពេល​ការ​"
+ "តភ្ជាប់​ ។​ <i>konvirocks</i> ពាក្យ​សម្ងាត់​ សម្រាប់​សម្មតិនាម​​ឲ្យ​ក្នុង​អត្ត​សញ្ញាណ​ ។ អ្នក​អាច​បញ្ចូល​"
+ "ច្រើន​ជាង​ពាក្យ​បញ្ជា​ដោយ ការ​បំបែក​វា​ជាមួយ​សញ្ញា​​ចំណុច​ក្បៀស ។</qt>"
+ 
+@@ -7476,13 +7476,13 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "បង្ហាញ​បញ្ជី​របស់​បណ្ដាញ​ IRC ដែល​បាន​កំណត់​រចនាសម្ព័ន្ធ​ ។ បណ្ដាញ​ IRC សម្រាំង​​នៃ​ការ​ប្រតិបត្តិ​ម៉ាស៊ីន​បម្រើ "
+ "។ អ្នក​ត្រូវ​ការ​តភ្ជាប់​មួយ​នៃ​ម៉ាស៊ីន​បម្រើ​ក្នុង​បណ្ដាញ​ត្រូវ​បាន​តភ្ជាប់​ទៅកាន់​បណ្ដាញ​ IRC ទាំង​មូល​ ។ បាន​"
+ "តភ្ជាប់​ Konversation នឹង​​តភ្ជាប់​​ឆានែល​ដោយ​ស្វ័យ​ប្រវត្តិ​ ។ នៅ​ពេល​ដែល​ Konversation ត្រូវ​បាន​"
+-"ចាប់ផ្ដើម​សម្រាប់​ពេល​ដំបូង​ បណ្ដាញ​ Freenode និង​ <i>#kde</i> ឆានែល​ត្រូវ​បាន​បញ្ចូល​សម្រាប់​អ្នក​រួច​"
++"ចាប់ផ្ដើម​សម្រាប់​ពេល​ដំបូង​ បណ្ដាញ​ Libera និង​ <i>#kde</i> ឆានែល​ត្រូវ​បាន​បញ្ចូល​សម្រាប់​អ្នក​រួច​"
+ "ហើយ​ ។"
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/ko/konversation.po b/po/ko/konversation.po
+index c978c6a..88e7b10 100644
+--- a/po/ko/konversation.po
++++ b/po/ko/konversation.po
+@@ -7188,14 +7188,14 @@ msgstr "명령:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>선택 사항입니다. 접속한 후 이 명령을 보냅니다. 예: <b>/msg NickServ "
+-"IDENTIFY <i>konvirocks</i></b>. 이 예제는 Freenode 네트워크에 해당하며, "
+-"Freenode 네트워크에서는 연결할 때 특정한 대화명을 암호로 인증할 수 있습니다. "
++"IDENTIFY <i>konvirocks</i></b>. 이 예제는 Libera 네트워크에 해당하며, "
++"Libera 네트워크에서는 연결할 때 특정한 대화명을 암호로 인증할 수 있습니다. "
+ "<i>konvirocks</i>는 프로필에서 사용하는 대화명의 인증 암호입니다. 하나 이상"
+ "의 명령을 전송하고 싶으면 쌍반점(;)으로 구분하십시오.</qt>"
+ 
+@@ -7385,13 +7385,13 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "설정한 IRC 네트워크 목록입니다. IRC 네트워크는 하나 이상의 서버로 이루어져 있"
+ "습니다. 하나의 서버에만 연결하면 전체 네트워크에 연결됩니다. 한 번 연결하면 "
+ "Konversation에서 아래에 있는 대화방에 자동으로 입장합니다. Konversation을 처"
+-"음으로 시작했을 때에는 Freenode 네트워크와 <i>#kde</i> 대화방이 미리 설정되"
++"음으로 시작했을 때에는 Libera 네트워크와 <i>#kde</i> 대화방이 미리 설정되"
+ "어 있습니다."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/lt/konversation.po b/po/lt/konversation.po
+index 09c1a95..2e088df 100644
+--- a/po/lt/konversation.po
++++ b/po/lt/konversation.po
+@@ -7261,7 +7261,7 @@ msgstr "Komandos:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7469,14 +7469,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Čia matote konfigūruotų IRC tinklų sąrašą. IRC tinklas yra "
+ "bendradarbiaujančių serverių grupė. Norėdami prisijungti prie tinklo turite "
+ "prisijungti tik prie vieno IRC serverio. Prisijungus Konversation iškart "
+ "prisijungs ir prie rodomų kanalų. Įjungus Konversation pirmąjį kartą "
+-"automatiškai bus prisijungta prie Freenode tinklo ir <i>#kde</i> kanalo."
++"automatiškai bus prisijungta prie Libera tinklo ir <i>#kde</i> kanalo."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/mr/konversation.po b/po/mr/konversation.po
+index 28f1069..70e9217 100644
+--- a/po/mr/konversation.po
++++ b/po/mr/konversation.po
+@@ -6975,7 +6975,7 @@ msgstr ""
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7150,7 +7150,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/nb/konversation.po b/po/nb/konversation.po
+index bbab302..70a3ebb 100644
+--- a/po/nb/konversation.po
++++ b/po/nb/konversation.po
+@@ -7240,14 +7240,14 @@ msgstr "Kommandoer:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Valgfritt. Denne kommandoen vil bli sendt til tjeneren etter tilkobling. "
+ "Eksempel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dette eksempelet "
+-"er for freenode- nettverket, som krever at brukere registrerer  kallenavnet "
++"er for libera- nettverket, som krever at brukere registrerer  kallenavnet "
+ "sitt med passord og innlogging når de kobler til. <i>konvirocks</i> er "
+ "passordet for kallenavnet oppgitt i identiteten. Du kan oppgi flere "
+ "kommandoer ved å bruke semikolon som skilletegn.</qt>"
+@@ -7443,14 +7443,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Dette viser lista over oppsatte IRC-nettverk. Et IRC-nettverk er en samling "
+ "samarbeidende tjenere. Du trenger bare koble til én av tjenerne i nettverket "
+ "for å være tilkoblet hele IRC-nettverket. Konversation vil automatisk gå inn "
+ "i de viste kanalene etter tilkobling. Når Konversation starter for første "
+-"gang er Freenode-nettverket og kanalen <i>#kde</i> satt opp for deg."
++"gang er Libera-nettverket og kanalen <i>#kde</i> satt opp for deg."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/nds/konversation.po b/po/nds/konversation.po
+index dfea0a4..e4ecc62 100644
+--- a/po/nds/konversation.po
++++ b/po/nds/konversation.po
+@@ -7330,14 +7330,14 @@ msgstr "Befehlen:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Köörwies. Disse Befehl warrt den Server na't Tokoppeln automaatsch "
+ "tostüert. Bispill: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dit is "
+-"en Bispill för dat Freenode-Nettwark. Dor mööt de Brukers ehr Ökelnaams bi't "
++"en Bispill för dat Libera-Nettwark. Dor mööt de Brukers ehr Ökelnaams bi't "
+ "Tokoppeln mit Passwoort un Inmellen anmellen. <i>konvirocks</i> is dat "
+ "Passwoort för de angeven Identiteet. Du kannst ok mehr as een Befehl "
+ "ingeven, mit Streekpünkt scheedt.</qt>"
+@@ -7536,14 +7536,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Dit wiest de List vun instellt IRC-Nettwarken. En IRC-Nettwark is en Koppel "
+ "vun tosamenhangen Servers. Du muttst Di bloots na een Server tokoppeln, "
+ "dormit Du na dat hele Nettwark tokoppelt büst. Wenn Du tokoppelt büst, geiht "
+ "\"Konversation\" automaatsch na de hier wiest Klöönrüüm rin. Bi den eersten "
+-"Start vun \"Konversation\" is al dat Freenode-Nettwark un de <i>#kde</i>-"
++"Start vun \"Konversation\" is al dat Libera-Nettwark un de <i>#kde</i>-"
+ "Klöönruum för Di ingeven."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10658,10 +10658,10 @@ msgstr "Beluert Ökelnaams"
+ #~ msgstr "&Beluert tokoppelt Ökelnaams"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Dat Klöönservernettwark (a.B. \"freenode\"), na dat de Bruker tokoppelt "
++#~ "Dat Klöönservernettwark (a.B. \"libera\"), na dat de Bruker tokoppelt "
+ #~ "is, den Du beluern wullt."
+ 
+ #~ msgid "Network:"
+diff --git a/po/nl/docs/konversation/index.docbook b/po/nl/docs/konversation/index.docbook
+index 7410852..03348a4 100644
+--- a/po/nl/docs/konversation/index.docbook
++++ b/po/nl/docs/konversation/index.docbook
+@@ -317,8 +317,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->De ontwikkelaars van &konversation; kunnen meestal gevonden worden op &irc; op <ulink url="irc://chat.freenode.net/konversation"
+->kanaal #konversation op irc.freenode.net</ulink
++>De ontwikkelaars van &konversation; kunnen meestal gevonden worden op &irc; op <ulink url="ircs://irc.libera.chat:6697/konversation"
++>kanaal #konversation op irc.libera.chat</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -374,7 +374,7 @@ revision history. (see installation appendix comment) -->
+ >Kanalen</guilabel
+ > deelnemen. Wanneer &konversation; voor de eerste keer opgestart wordt, is het netwerk <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > en het kanaal <userinput
+ ><replaceable
+@@ -848,7 +848,7 @@ Limits on Real Name and Ident?
+ ></action
+ > toont uw huidig ingestelde &irc;-netwerken, getoond per groep. Een &irc;-netwerk is een verzameling samenwerkende servers. Wanneer u verbinding maakt met één enkele server hebt u toegang tot alle kanalen op het netwerk. Voorbeelden van &irc;-netwerken zijn <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > en <userinput
+ ><replaceable
+@@ -993,7 +993,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Dit voorbeeld geldt voor het freenode-netwerk, dat vereist dat gebruikers hun &i18n-nickname; registreren aan de hand van een wachtwoord bij het verbinden. <userinput
++>. Dit voorbeeld geldt voor het libera-netwerk, dat vereist dat gebruikers hun &i18n-nickname; registreren aan de hand van een wachtwoord bij het verbinden. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/nl/konversation.po b/po/nl/konversation.po
+index 3a314ac..bbf1287 100644
+--- a/po/nl/konversation.po
++++ b/po/nl/konversation.po
+@@ -7361,14 +7361,14 @@ msgstr "Commando's:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Optioneel. Dit commando wordt na de verbindingsopbouw naar de server "
+ "gestuurd. Voorbeeld: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dit "
+-"voorbeeld is voor het Freenode-netwerk. Dit netwerk vereist dat gebruikers "
++"voorbeeld is voor het Libera-netwerk. Dit netwerk vereist dat gebruikers "
+ "hun schermnaam met een wachtwoord registreren tijdens het verbinden. "
+ "<i>konvirocks</i> is in dit geval het wachtwoord voor de schermnaam die in "
+ "deze identiteit is opgegeven. U kunt meerdere commando's invoeren, door ze "
+@@ -7569,7 +7569,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Hier vindt u de lijst met ingestelde IRC-netwerken. Een IRC-netwerk is een "
+@@ -7577,7 +7577,7 @@ msgstr ""
+ "met één van deze servers in het netwerk om met het hele IRC-netwerk "
+ "verbonden te zijn. Eenmaal verbonden neemt Konversation automatisch deel aan "
+ "de getoonde kanalen. Als Konversation voor het eerst is gestart is het "
+-"Freenode-netwerk en het <i>#kde</i>-kanaal al voor u ingevoerd."
++"Libera-netwerk en het <i>#kde</i>-kanaal al voor u ingevoerd."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+@@ -10707,10 +10707,10 @@ msgstr "Gevolgde schermnamen"
+ #~ msgstr "&Gevolgde schermnamen online"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Het IRC-server netwerk (bijvoorbeeld 'Freenode') waar de geselecteerde te "
++#~ "Het IRC-server netwerk (bijvoorbeeld 'Libera') waar de geselecteerde te "
+ #~ "volgen gebruiker mee verbonden is."
+ 
+ #~ msgid "Network:"
+diff --git a/po/nn/konversation.po b/po/nn/konversation.po
+index 410d5b3..54ae76c 100644
+--- a/po/nn/konversation.po
++++ b/po/nn/konversation.po
+@@ -7294,14 +7294,14 @@ msgstr "Kommandoar:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Valfritt. Denne kommandoen vert send til tenaren etter tilkoplinga. "
+ "Eksempel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Dette eksempelet "
+-"gjeld freenode-nettverket, som krev at brukarar registrerer kallenamnet sitt "
++"gjeld libera-nettverket, som krev at brukarar registrerer kallenamnet sitt "
+ "med passord og innlogging når dei koplar til. <i>konvirocks</i> er passordet "
+ "for kallenamnet definert i identiteten. Du kan oppgje fleire kommandoar ved "
+ "å bruka semikolon som skiljeteikn.</qt>"
+@@ -7498,14 +7498,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Oversikt oppsette IRC-nettverk. Eit IRC-nettverk er ei samling tenarar som "
+ "samarbeider. Du treng berre kopla til éin av tenarane i nettverket for å "
+ "vera tilkopla heila IRC-nettverket. Konversation vil automatisk gå inn i dei "
+ "viste kanalane etter tilkopling. Når du startar programmet første gong, vert "
+-"Freenode-nettverket og kanalen <i>#kde</i> automatisk sett opp for deg."
++"Libera-nettverket og kanalen <i>#kde</i> automatisk sett opp for deg."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/pa/konversation.po b/po/pa/konversation.po
+index cce66a8..3c4f223 100644
+--- a/po/pa/konversation.po
++++ b/po/pa/konversation.po
+@@ -7048,7 +7048,7 @@ msgstr "ਕਮਾਂਡਾਂ:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7234,7 +7234,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/pl/konversation.po b/po/pl/konversation.po
+index bd19ad6..a2425e4 100644
+--- a/po/pl/konversation.po
++++ b/po/pl/konversation.po
+@@ -7349,14 +7349,14 @@ msgstr "Polecenia:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcjonalnie. To polecenie zostanie wysłane do serwer po połączeniu. "
+ "Przykład: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. To przykład dla "
+-"sieci freenode, która wymaga od użytkownika rejestracji pseudonimu z hasłem "
++"sieci libera, która wymaga od użytkownika rejestracji pseudonimu z hasłem "
+ "i loginem podczas podłączania. <i>konvirocks</i> jest hasłemdla pseudonimu "
+ "podanego w tożsamości. Możesz wpisać więcej niż jedno polecenie przez "
+ "oddzielanie ich średnikami.</qt>"
+@@ -7557,14 +7557,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "To pokazuje listę ustawionych sieci IRC. Sieć IRC jest zbiorem "
+ "współpracujących serwerów. Ty potrzebujesz tylko połączyć się do jednego "
+ "serwera w sieci, aby być połączonym do całej sieci IRC. Gdy już się "
+ "połączysz, Konversation samoczynnie podłączy się do pokazanych kanałów. Gdy "
+-"Konversation zostanie uruchomiony po raz pierwszy, to sieć Freenode i "
++"Konversation zostanie uruchomiony po raz pierwszy, to sieć Libera i "
+ "kanał<i>#kde</i> zostaną wpisane za ciebie."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10698,13 +10698,13 @@ msgstr "Obserwowani rozmówcy"
+ 
+ #, fuzzy
+ #~| msgid ""
+-#~| "The irc server network (such as 'freenode') that the selected user to "
++#~| "The irc server network (such as 'libera') that the selected user to "
+ #~| "watch is on."
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "Sieć IRC (jak na przykład 'freenode') na której znajduje się śledzony "
++#~ "Sieć IRC (jak na przykład 'libera') na której znajduje się śledzony "
+ #~ "użytkownik."
+ 
+ #~ msgid "Network:"
+diff --git a/po/pt/docs/konversation/index.docbook b/po/pt/docs/konversation/index.docbook
+index 5a885fe..2aadffb 100644
+--- a/po/pt/docs/konversation/index.docbook
++++ b/po/pt/docs/konversation/index.docbook
+@@ -331,8 +331,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Os programadores do &konversation; poderão ser contactados com frequência através do &irc; no <ulink url="irc://chat.freenode.net/konversation"
+->canal do irc.freenode.net #konversation</ulink
++>Os programadores do &konversation; poderão ser contactados com frequência através do &irc; no <ulink url="ircs://irc.libera.chat:6697/konversation"
++>canal do irc.libera.chat #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -388,7 +388,7 @@ revision history. (see installation appendix comment) -->
+ >Canais</guilabel
+ > apresentados. Quando o &konversation; é iniciado pela primeira vez, é usada a rede <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e o canal <userinput
+ ><replaceable
+@@ -868,7 +868,7 @@ Limits on Real Name and Ident?
+ >Rede</guilabel
+ >s de &irc; definidas, separadas por grupos. Uma rede de &irc; é uma colecção de servidores em cooperação. Quando se liga a qualquer servidor numa rede, terá acesso a todos os canais na rede. Alguns exemplos de redes de &irc; são o <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e o <userinput
+ ><replaceable
+@@ -1015,7 +1015,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. O exemplo aqui mostrado é para a rede 'freenode', a qual necessita que os utilizadores registem o seu &i18n-nickname; com uma senha e um utilizador ao ligar-se. O <userinput
++>. O exemplo aqui mostrado é para a rede 'libera', a qual necessita que os utilizadores registem o seu &i18n-nickname; com uma senha e um utilizador ao ligar-se. O <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/pt/konversation.po b/po/pt/konversation.po
+index 5623645..e21adcd 100644
+--- a/po/pt/konversation.po
++++ b/po/pt/konversation.po
+@@ -28,7 +28,7 @@ msgstr ""
+ "X-POFile-IgnoreConsistency: Alt+C\n"
+ "X-POFile-IgnoreConsistency: Alt+N\n"
+ "X-POFile-IgnoreConsistency: Alt+Q\n"
+-"X-POFile-SpellExtra: LEDs LogConfig freenode Konsole DCCSettings\n"
++"X-POFile-SpellExtra: LEDs LogConfig libera Konsole DCCSettings\n"
+ "X-POFile-SpellExtra: TabBarConfig Form QuickButtonsConfigUI\n"
+ "X-POFile-SpellExtra: AutoreplaceConfigUI GeneralBehaviorConfig\n"
+ "X-POFile-IgnoreConsistency: Alt+V\n"
+@@ -36,7 +36,7 @@ msgstr ""
+ "X-POFile-IgnoreConsistency: Query\n"
+ "X-POFile-SpellExtra: DccTransferDetailedInfoPanelUI RECV SEND Halfops\n"
+ "X-POFile-IgnoreConsistency: Alias\n"
+-"X-POFile-SpellExtra: Freenode nickserv ACCEPT seg delkey IDENT KILL CHAT\n"
++"X-POFile-SpellExtra: Libera nickserv ACCEPT seg delkey IDENT KILL CHAT\n"
+ "X-POFile-SpellExtra: org BAN OPEN UNBAN Kontact whois Relay AMSG QUOTE\n"
+ "X-POFile-SpellExtra: away ops KAddressBook NickServ RAW SAY KNetwork\n"
+ "X-POFile-SpellExtra: HalfOp NAMES msg CLOSE kmail DragDrop kdepim Ident\n"
+@@ -7399,14 +7399,14 @@ msgstr "Comandos:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Este comando será enviado para o servidor, após a ligação. "
+ "Exemplo: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Este é um exemplo "
+-"para a rede Freenode, a qual obriga a que os utilizadores registem a sua "
++"para a rede Libera, a qual obriga a que os utilizadores registem a sua "
+ "alcunha com uma senha e se autentiquem após a ligação. O <i>konvirocks</i> é "
+ "a senha da alcunha dada na identidade. Poderá indicar mais que um comando, "
+ "separando-os por pontos-e-vírgulas (;).</qt>"
+@@ -7603,7 +7603,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Isto mostra uma lista com as redes de IRC configuradas. Uma rede de IRC é "
+@@ -7611,7 +7611,7 @@ msgstr ""
+ "servidores da rede, para se ligar a toda a rede de IRC. Logo que esteja "
+ "ligado, o Konversation juntar-se-á automaticamente aos canais apresentados. "
+ "Quando o Konversation é iniciado pela primeira vez, estarão já introduzidas "
+-"a rede Freenode e o canal <i>#kde</i> para si. Carregue numa rede para a "
++"a rede Libera e o canal <i>#kde</i> para si. Carregue numa rede para a "
+ "seleccionar."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/pt_BR/docs/konversation/index.docbook b/po/pt_BR/docs/konversation/index.docbook
+index 43b537d..7013e7f 100644
+--- a/po/pt_BR/docs/konversation/index.docbook
++++ b/po/pt_BR/docs/konversation/index.docbook
+@@ -354,8 +354,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Os programadores do &konversation; poderão ser contactados com frequência através do &irc; no <ulink url="irc://chat.freenode.net/konversation"
+->canal do irc.freenode.net #konversation</ulink
++>Os programadores do &konversation; poderão ser contactados com frequência através do &irc; no <ulink url="ircs://irc.libera.chat:6697/konversation"
++>canal do irc.libera.chat #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -411,7 +411,7 @@ revision history. (see installation appendix comment) -->
+ >Canais</guilabel
+ > apresentados. Quando o &konversation; é iniciado pela primeira vez, é usada a rede <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e o canal <userinput
+ ><replaceable
+@@ -891,7 +891,7 @@ Limits on Real Name and Ident?
+ >Rede</guilabel
+ >s de &irc; definidas, separadas por grupos. Uma rede de &irc; é uma coleção de servidores em cooperação. Quando se conecta a qualquer servidor numa rede, você terá acesso a todos os canais na rede. Alguns exemplos de redes de &irc; são o <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > e o <userinput
+ ><replaceable
+@@ -1039,7 +1039,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. O exemplo aqui mostrado é para a rede 'freenode', a qual necessita que os usuários registrem o seu &i18n-nickname; com uma senha e um usuário ao conectar-se. O <userinput
++>. O exemplo aqui mostrado é para a rede 'libera', a qual necessita que os usuários registrem o seu &i18n-nickname; com uma senha e um usuário ao conectar-se. O <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/pt_BR/konversation.po b/po/pt_BR/konversation.po
+index 2640742..1dbfda6 100644
+--- a/po/pt_BR/konversation.po
++++ b/po/pt_BR/konversation.po
+@@ -7347,14 +7347,14 @@ msgstr "Comandos:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Opcional. Este comando será enviado para o servidor, após a conexão. "
+ "Exemplo: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Este é um exemplo "
+-"para a rede Freenode, a qual obriga a que os usuários registem seu apelido "
++"para a rede Libera, a qual obriga a que os usuários registem seu apelido "
+ "com uma senha e se autentiquem após a conexão. O <i>konvirocks</i> é a senha "
+ "do apelido dada na identidade. Você poderá indicar mais de um comando, "
+ "separando-os por ponto e vírgula (;).</qt>"
+@@ -7551,7 +7551,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Isto mostra uma lista com as redes de IRC configuradas. Uma rede de IRC é "
+@@ -7559,7 +7559,7 @@ msgstr ""
+ "um dos servidores da rede, para estar conectado em toda a rede de IRC. Uma "
+ "vez conectado, o Konversation entrará automaticamente nos canais "
+ "apresentados. Quando o Konversation é iniciado pela primeira vez, estarão já "
+-"introduzidas a rede Freenode e o canal <i>#kde</i> para você."
++"introduzidas a rede Libera e o canal <i>#kde</i> para você."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/ro/konversation.po b/po/ro/konversation.po
+index a7972a8..49891cd 100644
+--- a/po/ro/konversation.po
++++ b/po/ro/konversation.po
+@@ -7056,7 +7056,7 @@ msgstr "Comenzi:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7234,7 +7234,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/ru/konversation.po b/po/ru/konversation.po
+index e082e4a..135b54b 100644
+--- a/po/ru/konversation.po
++++ b/po/ru/konversation.po
+@@ -7393,14 +7393,14 @@ msgstr "Команды:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Необязательно. Эта команда будет отправлена серверу после соединения. "
+ "Пример: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Это пример для сети "
+-"Freenode, где пользователям рекомендуется идентифицировать ники путём ввода "
++"Libera, где пользователям рекомендуется идентифицировать ники путём ввода "
+ "пароля при входе. <i>konvirocks</i> — это пароль для ника, указанного в "
+ "профиле. Можно ввести несколько команд, разделяя их двоеточиями.</qt>"
+ 
+@@ -7604,14 +7604,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Здесь показывается список настроенных сетей IRC. Сеть IRC — это несколько "
+ "сообщающихся серверов. Вам необходимо быть подключённым к одному серверу "
+ "сети, чтобы быть соединённым со всей сетью. При соединении Konversation "
+ "автоматически войдёт на показанные каналы. При первом старте Konversation "
+-"автоматически войдёт на канал <i>#konversation</i> сети Freenode."
++"автоматически войдёт на канал <i>#konversation</i> сети Libera."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/sk/konversation.po b/po/sk/konversation.po
+index 567d1d4..2e829a9 100644
+--- a/po/sk/konversation.po
++++ b/po/sk/konversation.po
+@@ -7287,14 +7287,14 @@ msgstr "Príkazy:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Voliteľné. Tento príkaz bude poslaný na server po pripojení. Príklad: "
+ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Tento príklad je pre sieť "
+-"freenode, ktorá vyžaduje registráciu prezývok používateľov s heslom a "
++"libera, ktorá vyžaduje registráciu prezývok používateľov s heslom a "
+ "loginom pri pripájaní. <i>konvirocks</i> je heslo pre prezývku dané v "
+ "identite. Môžete zadať viac príkazov ako jeden, ak ich oddelíte bodkočiarkou."
+ "</qt>"
+@@ -7494,14 +7494,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Tu sa ukazuje zoznam konfigurovaných IRC sietí. IRC sieť je kolekcia "
+ "spolupracujúcich serverov. Potrebujete sa pripojiť iba na jeden zo serverov "
+ "v sieti aby ste boli pripojení na celú IRC sieť. Až ste pripojení, "
+ "Konversation automaticky pripojí zobrazené kanálý. Keď sa Konversation "
+-"spustí prvýkrát, už je pripojená sieť Freenode a kanál <i>#kde</i>."
++"spustí prvýkrát, už je pripojená sieť Libera a kanál <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/sl/konversation.po b/po/sl/konversation.po
+index b7a9080..3e44c8b 100644
+--- a/po/sl/konversation.po
++++ b/po/sl/konversation.po
+@@ -7348,13 +7348,13 @@ msgstr "Ukazi:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Izbirno. Ta ukaz bo poslan strežniku po povezavi. Primer: : <b>/msg "
+-"NickServ IDENTIFY <i>konvirocks</i></b>. Ta primer je za omrežje freenode, "
++"NickServ IDENTIFY <i>konvirocks</i></b>. Ta primer je za omrežje libera, "
+ "ki od uporabnikov zahteva, da se med povezovanjem vpišejo in vzdevek "
+ "povežejo z geslom. <i>konvirocks</i> je geslo za vzdevek podan v "
+ "istovetnosti. Vnesete lahko več kot en ukaz z uporabo ločilne vejice.</qt>"
+@@ -7559,14 +7559,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "To pokaže seznam nastavljenih omrežij IRC. Omrežje IRC je zbirka sodelujočih "
+ "strežnikov. Povezati se morate le z enim strežnikom, da boste povezani s "
+ "celotnim omrežjem. Ko ste enkrat povezani, se bo Konversation samodejno "
+ "pridružil prikazanim kanalom. Ko Konversation prvič zaženete, sta za vas že "
+-"vnesena omrežje Freenode in kanal <i>#kde</i>."
++"vnesena omrežje Libera in kanal <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/sq/konversation.po b/po/sq/konversation.po
+index 6a34942..99fff18 100644
+--- a/po/sq/konversation.po
++++ b/po/sq/konversation.po
+@@ -6980,7 +6980,7 @@ msgstr ""
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7156,7 +7156,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/sr/konversation.po b/po/sr/konversation.po
+index 6415bc3..22325a4 100644
+--- a/po/sr/konversation.po
++++ b/po/sr/konversation.po
+@@ -7418,7 +7418,7 @@ msgstr "Наредбе:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7634,7 +7634,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Овде је приказана листа подешених ИРЦ мрежа. ИРЦ мрежа је скуп сервера који "
+diff --git a/po/sv/docs/konversation/index.docbook b/po/sv/docs/konversation/index.docbook
+index 4769419..680e52c 100644
+--- a/po/sv/docs/konversation/index.docbook
++++ b/po/sv/docs/konversation/index.docbook
+@@ -331,8 +331,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Utvecklare av &konversation; kan oftast kontaktas via &irc; på <ulink url="irc://chat.freenode.net/konversation"
+->irc.freenode.net channel #konversation</ulink
++>Utvecklare av &konversation; kan oftast kontaktas via &irc; på <ulink url="ircs://irc.libera.chat:6697/konversation"
++>irc.libera.chat channel #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -388,7 +388,7 @@ revision history. (see installation appendix comment) -->
+ >Kanalerna</guilabel
+ >. När &konversation; startas för första gången, är nätverket <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > och kanalen <userinput
+ ><replaceable
+@@ -870,7 +870,7 @@ Limits on Real Name and Ident?
+ >nätverk</guilabel
+ >en, enligt grupp. Ett &irc;-nätverk är en samling samarbetande servrar. När du ansluter till någon server i ett nätverk, kan du komma åt alla kanaler i nätverket. Exempel på &irc;-nätverk är <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > och <userinput
+ ><replaceable
+@@ -1017,7 +1017,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Exemplet gäller för nätverket freenode, som kräver att användare registrerar sina smeknamn med ett lösenord och inloggningsnamn vid anslutning. <userinput
++>. Exemplet gäller för nätverket libera, som kräver att användare registrerar sina smeknamn med ett lösenord och inloggningsnamn vid anslutning. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/sv/konversation.po b/po/sv/konversation.po
+index 5186b4c..0fa092c 100644
+--- a/po/sv/konversation.po
++++ b/po/sv/konversation.po
+@@ -7287,14 +7287,14 @@ msgstr "Kommandon:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Valfritt. Det här kommandot skickas till servern efter anslutning. "
+ "Exempel: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Exemplet gäller "
+-"nätverket freenode, som kräver att användare registrerar sina smeknamn med "
++"nätverket libera, som kräver att användare registrerar sina smeknamn med "
+ "ett lösenord och loggar in vid anslutning. <i>konvirocks</i> är lösenordet "
+ "för smeknamnet som anges i identiteten. Du kan skriva in mer än ett kommando "
+ "genom att skilja dem åt med semikolon.</qt>"
+@@ -7491,14 +7491,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Listan med inställda IRC-nätverk visas här. Ett IRC-nätverk är en samling av "
+ "samarbetande servrar. Du behöver bara ansluta till en av servrarna i "
+ "nätverket för att vara ansluten till hela IRC-nätverket. När du väl är "
+ "ansluten, går Konversation automatiskt med i kanalerna som visas. När "
+-"Konversation startas för första gången, är Freenode-nätverket och kanalen "
++"Konversation startas för första gången, är Libera-nätverket och kanalen "
+ "<i>#kde</i> redan inskrivna åt dig."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+@@ -10601,10 +10601,10 @@ msgstr "Bevakade smeknamn"
+ #~ msgstr "&Bevakade uppkopplade smeknamn"
+ 
+ #~ msgid ""
+-#~ "The IRC server network (such as 'Freenode') that the selected user to "
++#~ "The IRC server network (such as 'Libera') that the selected user to "
+ #~ "watch is on."
+ #~ msgstr ""
+-#~ "IRC-servernätverket (som 'Freenode') som användaren vald att bevaka är på."
++#~ "IRC-servernätverket (som 'Libera') som användaren vald att bevaka är på."
+ 
+ #~ msgid "Network:"
+ #~ msgstr "Nätverk:"
+diff --git a/po/ta/konversation.po b/po/ta/konversation.po
+index 61e4f2f..6563bc1 100644
+--- a/po/ta/konversation.po
++++ b/po/ta/konversation.po
+@@ -7128,7 +7128,7 @@ msgstr "கட்டளைகள்:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7307,7 +7307,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/tr/konversation.po b/po/tr/konversation.po
+index 715dbb6..5cdbb55 100644
+--- a/po/tr/konversation.po
++++ b/po/tr/konversation.po
+@@ -7311,7 +7311,7 @@ msgstr "Komutlar:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7319,7 +7319,7 @@ msgstr ""
+ "<qt>Seçimlik. Bu komut bağlandıktan sonra sunucuya gönderilecektir. Örneğin: "
+ "<b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Bu örnek , kullanıcıların "
+ "kendi takma adlarını bir parola ile kaydetmesinden sonra ağa bağlanıp oturum "
+-"açmalarını gerektiren freenode ağı içindir. <i>konvirocks</i>Kimlik ile "
++"açmalarını gerektiren libera ağı içindir. <i>konvirocks</i>Kimlik ile "
+ "verilen takma ad için kullanacağınız paroladır. Bu işlem için aralarına "
+ "noktalı virgül koyarak birden fazla komut girebilirsiniz.</qt>"
+ 
+@@ -7514,14 +7514,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "Bu yapılandırılmış IRC ağlarını görüntüler. Bir IRC ağı ilişkili sunucuların "
+ "toplamıdır. Tüm IRC ağına bağlanmak için ağdaki sunuculardan birine "
+ "bağlanmanız gerekir. Bir kere bağlanınca Konversation gösterilen aknala "
+ "otomatik olarak bağlanacaktır. Konversation ilk çalıştırıldığında sizin için "
+-"Freenode ağında <i>#kde</i> kanalına bağlanacaktır."
++"Libera ağında <i>#kde</i> kanalına bağlanacaktır."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+ #: src/irc/serverlistdialogui.ui:147
+diff --git a/po/ug/konversation.po b/po/ug/konversation.po
+index b425b49..1c98835 100644
+--- a/po/ug/konversation.po
++++ b/po/ug/konversation.po
+@@ -6957,7 +6957,7 @@ msgstr "بۇيرۇقلار:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+@@ -7131,7 +7131,7 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ 
+diff --git a/po/uk/docs/konversation/index.docbook b/po/uk/docs/konversation/index.docbook
+index 3851076..2af02dd 100644
+--- a/po/uk/docs/konversation/index.docbook
++++ b/po/uk/docs/konversation/index.docbook
+@@ -331,8 +331,8 @@ revision history. (see installation appendix comment) -->
+ >. </para>
+ 
+ <para
+->Зв’язатися з розробниками &konversation; можна за допомогою &irc; на сервері <ulink url="irc://chat.freenode.net/konversation"
+->irc.freenode.net, канал #konversation</ulink
++>Зв’язатися з розробниками &konversation; можна за допомогою &irc; на сервері <ulink url="ircs://irc.libera.chat:6697/konversation"
++>irc.libera.chat, канал #konversation</ulink
+ >. </para>
+ 
+ </chapter>
+@@ -388,7 +388,7 @@ revision history. (see installation appendix comment) -->
+ >каналів</guilabel
+ >. Після першого запуску &konversation; ви зможете увійти до мережі <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > на канал <userinput
+ ><replaceable
+@@ -849,7 +849,7 @@ Limits on Real Name and Ident?
+ >Мереж</guilabel
+ > &irc;, розподілених за групами. Мережею &irc; є сукупність серверів, що співпрацюють один з одним. Якщо ви встановили з’єднання з будь-яким з серверів мережі, ви отримаєте доступ до всіх каналів мережі. Прикладами мереж &irc; є <userinput
+ ><replaceable
+->Freenode</replaceable
++>Libera</replaceable
+ ></userinput
+ > і <userinput
+ ><replaceable
+@@ -990,7 +990,7 @@ here, all the <guilabel
+ >/msg NickServ IDENTIFY <replaceable
+ >konvirocks</replaceable
+ ></userinput
+->. Цей приклад призначено для мережі freenode, у якій користувачі під час з’єднання реєструються за допомогою імені і пароля. <userinput
++>. Цей приклад призначено для мережі libera, у якій користувачі під час з’єднання реєструються за допомогою імені і пароля. <userinput
+ ><replaceable
+ >konvirocks</replaceable
+ ></userinput
+diff --git a/po/uk/konversation.po b/po/uk/konversation.po
+index 5572002..d28fd44 100644
+--- a/po/uk/konversation.po
++++ b/po/uk/konversation.po
+@@ -7411,14 +7411,14 @@ msgstr "Команди:"
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>Не обов’язкова. Цю команду буде надіслано серверу після з’єднання. "
+ "Приклад: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. Цей приклад "
+-"призначено для мережі freenode, у якій користувачі під час з’єднання "
++"призначено для мережі libera, у якій користувачі під час з’єднання "
+ "реєструються за допомогою імені і пароля. <i>konvirocks</i> — це пароль для "
+ "псевдоніма, вказаного у профілі. Ви можете вказати декілька команд, "
+ "відокремивши їх крапками з комами.</qt>"
+@@ -7627,14 +7627,14 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "За допомогою цього пункту ви можете переглянути список налаштованих мереж "
+ "IRC. Мережа IRC — це набір серверів, що працюють разом. Для того, щоб "
+ "з’єднатися з усією мережею IRC, вам достатньо з’єднатися з одним з серверів "
+ "цієї мережі, Konversation автоматично приєднається до показаних каналів. "
+-"Після першого запуску Konversation ви зможете увійти до мережі Freenode на "
++"Після першого запуску Konversation ви зможете увійти до мережі Libera на "
+ "канал <i>#kde</i>."
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/zh_CN/konversation.po b/po/zh_CN/konversation.po
+index fbd7f29..f4513ce 100644
+--- a/po/zh_CN/konversation.po
++++ b/po/zh_CN/konversation.po
+@@ -7074,13 +7074,13 @@ msgstr "命令："
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>可选设定，您指定的命令会在连接到服务器后被自动提交。例：<b>/msg NickServ "
+-"IDENTIFY <i>konvirocks</i></b>，此范例适用于 freenode 网络，它需要用户在登录"
++"IDENTIFY <i>konvirocks</i></b>，此范例适用于 libera 网络，它需要用户在登录"
+ "后注册自己的昵称并设定一个密码，在这里 <i>konvirocks</i> 就是绑定到身份昵称的"
+ "密码。您可以在这里输入一个或更多命令，用分号将它们间隔开来。</qt>"
+ 
+@@ -7267,12 +7267,12 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "这里显示的是已配置过的 IRC 网络列表，一个 IRC 网络是一组互相协作的服务器的集"
+ "合。您只需连接到完整 IRC 网络中的一个或若干个服务器，连接完成后，"
+-"Konversation 将自动加入指定的频道。当 Konversaion 第一次启动时，Freenode 网络"
++"Konversation 将自动加入指定的频道。当 Konversaion 第一次启动时，Libera 网络"
+ "和 <i>#kde</i> 频道已被自动填充到列表。"
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+diff --git a/po/zh_TW/konversation.po b/po/zh_TW/konversation.po
+index abb7401..f481761 100644
+--- a/po/zh_TW/konversation.po
++++ b/po/zh_TW/konversation.po
+@@ -7133,13 +7133,13 @@ msgstr "命令："
+ msgid ""
+ "<qt>Optional. This command will be sent to the server after connecting. "
+ "Example: <b>/msg NickServ IDENTIFY <i>konvirocks</i></b>. This example is "
+-"for the freenode network, which requires users to register their nickname "
++"for the libera network, which requires users to register their nickname "
+ "with a password and login when connecting. <i>konvirocks</i> is the password "
+ "for the nickname given in Identity. You may enter more than one command by "
+ "separating them with semicolons.</qt>"
+ msgstr ""
+ "<qt>可選設定，您指定的命令會在連線到伺服器後被自動提交。例：<b>/msg NickServ "
+-"IDENTIFY <i>konvirocks</i></b>，此範例適用於 freenode 網路，它需要使用者在登"
++"IDENTIFY <i>konvirocks</i></b>，此範例適用於 libera 網路，它需要使用者在登"
+ "入後註冊自己的暱稱並設定一個密碼，在這裏 <i>konvirocks</i> 就是繫結到身分暱稱"
+ "的密碼。您可以在這裏輸入一個或更多命令，用分號將它們間隔開來。</qt>"
+ 
+@@ -7326,12 +7326,12 @@ msgid ""
+ "collection of cooperating servers. You need only connect to one of the "
+ "servers in the network to be connected to the entire IRC network. Once "
+ "connected, Konversation will automatically join the channels shown. When "
+-"Konversation is started for the first time, the Freenode network and the "
++"Konversation is started for the first time, the Libera network and the "
+ "<i>#kde</i> channel are already entered for you."
+ msgstr ""
+ "這裏顯示的是已配置過的 IRC 網路清單，一個 IRC 網路是一組互相協作的伺服器的集"
+ "合。您只需連線到完整 IRC 網路中的一個或若幹個伺服器，連線完成後，"
+-"Konversation 將自動加入指定的頻道。當 Konversaion 第一次啟動時，Freenode 網路"
++"Konversation 將自動加入指定的頻道。當 Konversaion 第一次啟動時，Libera 網路"
+ "和 <i>#kde</i> 頻道已被自動填充到清單。"
+ 
+ #. i18n: ectx: property (text), widget (ServerListView, m_serverList)
+-- 
+2.32.0
+
