@@ -38,6 +38,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5Charts)
 Requires:       python-qt5 >= %{version}
 Requires:       python-qt5-sip
+# PyPI name is without the s at the end
+Provides:       python-PyQtChart = %{version}-%{release}
 %python_subpackages
 
 %description
