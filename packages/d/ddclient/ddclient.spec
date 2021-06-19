@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        %{name}.service
 Source2:        %{name}.sysconfig
 Source3:        %{name}-tmpfiles.conf
 Patch0:         %{name}-3.8.1-config.patch
+Patch1:         %{name}-delay-main-process-for-systemd.patch
 Requires:       perl >= 5.004
 Requires:       perl-Data-Validate-IP
 Requires(pre):  %fillup_prereq
@@ -51,6 +52,7 @@ cron.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 rm -f sample-etc_ddclient.conf.orig
 chmod a-x sample-*
 mkdir examples

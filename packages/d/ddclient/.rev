@@ -383,4 +383,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment></comment>
     <requestid>828257</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>2fe9fc0f554b488d77c54ab4d75bbf0b</srcmd5>
+    <version>3.9.1</version>
+    <time>1624136652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900771</requestid>
+  </revision>
 </revisionlist>

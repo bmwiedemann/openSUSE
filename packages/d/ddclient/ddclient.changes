@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 18 14:43:16 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Systemd expects the PID file to exist as soon as the main process
+  exists. However, it takes quite a while until the pid file is
+  created by the daemon process, so we delay the main process
+  for 1 second before exit()ing.
+  This gets rid of an annoying warning message in "systemctl
+  status".
+  [ddclient, ddclient-delay-main-process-for-systemd.patch]
+
+-------------------------------------------------------------------
 Wed Aug 19 09:56:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_tmpfilesdir} instead of abusing %{_libexecdir}.
