@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs14
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 ###########################################################
 #
 #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
@@ -25,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.17.0
+Version:        14.17.1
 Release:        0
 
 # Double DWZ memory limits
@@ -141,7 +142,7 @@ Release:        0
 Summary:        Evented I/O for V8 JavaScript
 License:        MIT
 Group:          Development/Languages/NodeJS
-Url:            https://nodejs.org
+URL:            https://nodejs.org
 Source:         https://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
 Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
@@ -157,9 +158,6 @@ Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
 
-
-
-
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -174,8 +172,6 @@ Patch102:       node-gyp-addon-gypi.patch
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
 Patch107:       old_icu.patch
-Patch108:       Fix-build-with-icu-69.patch
-
 
 Patch120:       flaky_test_rerun.patch
 
@@ -200,11 +196,11 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define cc_exec  gcc-5
 %define cpp_exec g++-5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define cc_exec  gcc-4.8
 %define cpp_exec g++-4.8
 %endif
@@ -215,12 +211,12 @@ BuildRequires:   gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 14
-BuildRequires:   gcc9-c++
+BuildRequires:  gcc9-c++
 %define cc_exec  gcc-9
 %define cpp_exec g++-9
 %else
 %if %node_version_number >= 8
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define cc_exec  gcc-7
 %define cpp_exec g++-7
 %endif
@@ -240,8 +236,8 @@ BuildRequires:  zlib-devel
 
 # Python dependencies
 %if %node_version_number >= 12
-BuildRequires:  python3
 BuildRequires:  netcfg
+BuildRequires:  python3
 %else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
@@ -251,8 +247,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -291,7 +287,7 @@ Provides:       bundled(libcares2) = 1.17.1
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 65
 %else
-Provides:       bundled(icu) = 68.2
+Provides:       bundled(icu) = 69.1
 %endif
 
 %if ! 0%{with intree_nghttp2}
@@ -327,7 +323,11 @@ Provides:       nodejs(engine) = %{version}
 # npm software, `env node` requires further help than only
 # update-alternatives can provide.
 Provides:       nodejs = %{version}
+%if %{with libalternatives}
+Requires:       nodejs-common >= 5.0
+%else
 Requires:       nodejs-common
+%endif
 
 # For SLE11, to be able to use the certificate store we need to have properly
 # symlinked certificates. The compatability symlinks are provided by the
@@ -340,14 +340,12 @@ Requires:       openssl1
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.11
-Provides:       bundled(libuv) = 1.41.0
-Provides:       bundled(v8) = 8.4.371.23
 Provides:       bundled(brotli) = 1.0.9
-
+Provides:       bundled(libuv) = 1.41.0
+Provides:       bundled(uvwasi) = 0.0.11
+Provides:       bundled(v8) = 8.4.371.23
 
 Provides:       bundled(llhttp) = 2.1.3
-
 
 Provides:       bundled(node-acorn) = 8.0.4
 Provides:       bundled(node-acorn-class-fields) = 0.3.1
@@ -355,7 +353,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 8.0.0
-Provides:       bundled(node-cjs-module-lexer) = 1.1.1
+Provides:       bundled(node-cjs-module-lexer) = 1.2.1
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
@@ -367,8 +365,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 14.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       npm14 = %{version}
 Requires:       %{name} = %{version}
+Requires:       npm14 = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -377,18 +375,23 @@ of binary modules.
 %package -n npm14
 Summary:        Package manager for Node.js
 Group:          Development/Languages/NodeJS
+%if %{with libalternatives}
+Requires:       nodejs-common >= 5.0
+%else
 Requires:       nodejs-common
+%endif
 Requires:       nodejs14 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 6.14.13
 Provides:       npm = %{version}
+Provides:       npm(npm) = 6.14.13
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       user(nobody)
 Requires:       group(nobody)
+Requires:       user(nobody)
 %endif
 %endif
+Provides:       bundled(node-JSONStream) = 1.3.5
 Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 4.2.1
 Provides:       bundled(node-agent-base) = 4.3.0
@@ -565,7 +568,6 @@ Provides:       bundled(node-json-schema) = 0.2.3
 Provides:       bundled(node-json-schema-traverse) = 0.4.1
 Provides:       bundled(node-json-stringify-safe) = 5.0.1
 Provides:       bundled(node-jsonparse) = 1.3.1
-Provides:       bundled(node-JSONStream) = 1.3.5
 Provides:       bundled(node-jsprim) = 1.4.1
 Provides:       bundled(node-latest-version) = 3.1.0
 Provides:       bundled(node-lazy-property) = 1.0.0
@@ -726,12 +728,12 @@ Provides:       bundled(node-stream-each) = 1.2.2
 Provides:       bundled(node-stream-iterate) = 1.2.0
 Provides:       bundled(node-stream-shift) = 1.0.0
 Provides:       bundled(node-strict-uri-encode) = 2.0.0
-Provides:       bundled(node-string_decoder) = 0.10.31
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 1.0.2
 Provides:       bundled(node-string-width) = 2.1.1
 Provides:       bundled(node-string-width) = 3.1.0
+Provides:       bundled(node-string_decoder) = 0.10.31
+Provides:       bundled(node-string_decoder) = 1.1.1
+Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-stringify-package) = 1.0.1
 Provides:       bundled(node-strip-ansi) = 3.0.1
 Provides:       bundled(node-strip-ansi) = 4.0.0
@@ -835,7 +837,6 @@ tar Jxf %{SOURCE11}
 %patch106 -p1
 %patch107 -p1
 %if 0%{?suse_version} >= 1550
-%patch108 -p1
 %endif
 %patch120 -p1
 %patch200 -p1

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 17 09:48:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 14.17.1:
+  * deps: update ICU to 69.1
+  * errors: align source-map stacks with spec
+- Fix-build-with-icu-69.patch: upstreamed
+
+-------------------------------------------------------------------
 Fri Jun  4 22:12:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.17.0:
