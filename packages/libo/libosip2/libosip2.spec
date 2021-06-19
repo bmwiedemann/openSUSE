@@ -18,18 +18,17 @@
 
 %define soname libosip2-12
 Name:           libosip2
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Implementation of SIP (RFC 3261)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.gnu.org/software/osip/osip.html
-Source:         https://ftp.gnu.org/gnu/osip/libosip2-5.2.0.tar.gz
-Patch0:         libosip2-5.0.0.patch
+Source:         https://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
+Source2:        https://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz.sig
+Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=3960#/%{name}.keyring
 BuildRequires:  docbook2x
-BuildRequires:  gcc
 BuildRequires:  gperf
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -63,14 +62,11 @@ http://www.ietf.org/rfc/rfc3261.txt.
 
 %prep
 %setup -q
-%patch0
 
 %build
-autoreconf -fiv
 %configure \
   --enable-pthread \
   --enable-mt \
-  --enable-sysv \
   --enable-gperf \
   --disable-static
 %make_build
@@ -79,13 +75,19 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%check
+%make_build check
+
 %post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
 
 %files -n %{soname}
+%license COPYING
 %{_libdir}/lib*.so.*
 
 %files devel
+%license COPYING
+%doc HISTORY NEWS README FEATURES BUGS AUTHORS ChangeLog
 %{_includedir}/osipparser2
 %{_includedir}/osip2
 %{_libdir}/lib*.so
