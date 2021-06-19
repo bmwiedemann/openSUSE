@@ -96,4 +96,18 @@
   - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68</comment>
     <requestid>894170</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>89e9218f8dae0d580ffe7f7702abde7e</srcmd5>
+    <version>0.10.14</version>
+    <time>1624136587</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 0.10.14:
+  * Python 2.7: Drop Trailing Comma In `Cert.login()`.
+  * Refactor `Cert.login()` Conditional for Python 2.7 Syntax Support.
+  * Add default to `group_type` argument in `update_group` and `create_or_update_group_by_name`.
+  * Add Certificate Authentication Methods.
+  * Expand Transform class to include new(ish) tokenization methods.
+  * Add `delete_version_after` KvV2 Param - `configure()` / `update_metadata().</comment>
+    <requestid>900662</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hvac
-Version:        0.10.10
+Version:        0.10.14
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
@@ -30,9 +30,9 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pyhcl >= 0.3.10}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
@@ -62,7 +62,7 @@ rm tests/integration_tests/api/auth_methods/test_ldap.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc README*

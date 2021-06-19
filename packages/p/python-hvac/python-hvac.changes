@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 17 21:17:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.10.14:
+  * Python 2.7: Drop Trailing Comma In `Cert.login()`.
+  * Refactor `Cert.login()` Conditional for Python 2.7 Syntax Support.
+  * Add default to `group_type` argument in `update_group` and `create_or_update_group_by_name`.
+  * Add Certificate Authentication Methods.
+  * Expand Transform class to include new(ish) tokenization methods.
+  * Add `delete_version_after` KvV2 Param - `configure()` / `update_metadata().
+
+-------------------------------------------------------------------
 Tue May 18 22:15:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.10:
