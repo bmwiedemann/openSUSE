@@ -70,7 +70,9 @@ int main(int argc, char** argv)
 	const char *source = argv[optind], *target = argv[optind+1];
 	r = syscall (SYS_renameat2, AT_FDCWD, source, AT_FDCWD, target, RENAME_EXCHANGE);
 	if (r < 0) {
-		if (errno != EINVAL) {
+		// FS not supporting RENAME_EXCHANGE -> EINVAL
+		// No renameat2 syscall -> ENOSYS (eg WSL)
+		if (errno != EINVAL && errno != ENOSYS) {
 			perror("renameat2");
 			return 1;
 		}

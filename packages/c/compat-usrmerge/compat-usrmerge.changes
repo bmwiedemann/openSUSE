@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 15 15:27:41 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- another fix for split /usr to avoid running out of space (boo#1186781)
+- unsafe fallback also for ENOSYS on renameat2 as seen on WSL
+
+-------------------------------------------------------------------
 Tue Jun  8 12:03:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - early exit in case of overlayfs (boo#1187027)

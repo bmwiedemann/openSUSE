@@ -78,7 +78,7 @@ for dir in bin sbin lib lib64; do
     echo "Merge the copy with \`$ROOT/usr/$dir'."
     [[ -d "$ROOT/usr/${dir}.usrmerge" ]] \
         || mkdir -p "$ROOT/usr/${dir}.usrmerge"
-    cp -axT $CP_HARDLINK --backup --suffix=.usrmerge~ "$ROOT/usr/$dir" "$ROOT/usr/${dir}.usrmerge"
+    cp -axT -l --backup --suffix=.usrmerge~ "$ROOT/usr/$dir" "$ROOT/usr/${dir}.usrmerge"
     echo "Clean up duplicates in \`$ROOT/usr/$dir'."
     # delete all symlinks that have been backed up. /usr versions
     # override / ones
