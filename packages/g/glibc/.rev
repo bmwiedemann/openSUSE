@@ -2490,4 +2490,13 @@ for more fun options (forwarded request 147495 from coolo)</comment>
 - Drop glibc-usrmerge-bootstrap-helper package (forwarded request 899090 from Andreas_Schwab)</comment>
     <requestid>899091</requestid>
   </revision>
+  <revision rev="252" vrev="9">
+    <srcmd5>b1414b385c1f1d80e13cd599a94eeb26</srcmd5>
+    <version>2.33</version>
+    <time>1624210664</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable usrmerge in Factory always as it's default there
+- Add conflict with pre-usrmerge filesystem package (forwarded request 900350 from lnussel)</comment>
+    <requestid>900402</requestid>
+  </revision>
 </revisionlist>

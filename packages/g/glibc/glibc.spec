@@ -25,7 +25,7 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
-%if 0%{?usrmerged}
+%if 0%{?usrmerged} || 0%{?suse_version} >= 1550
 %bcond_without usrmerged
 %else
 %bcond_with usrmerged
@@ -165,6 +165,10 @@ Obsoletes:      ngpt-devel < 2.2.2
 Provides:       ngpt = 2.2.2
 Provides:       ngpt-devel = 2.2.2
 Conflicts:      kernel < %{enablekernel}
+%if %{with usrmerged}
+# make sure we have post-usrmerge filesystem package
+Conflicts:      filesystem < 15.6
+%endif
 # bug437293 - handle update from SLES10 on PowerPC
 %ifarch ppc64
 Obsoletes:      glibc-64bit

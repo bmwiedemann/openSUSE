@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 11 11:42:10 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Enable usrmerge in Factory always as it's default there
+- Add conflict with pre-usrmerge filesystem package
+
+-------------------------------------------------------------------
 Thu Jun 10 13:24:39 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - mq-notify-use-after-free.patch: Use __pthread_attr_copy in mq_notify
