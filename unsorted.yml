@@ -9622,7 +9622,7 @@ unsorted:
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
-  - libbliss-0_73 
+  - libbliss0_77 
   - libblitz0 
   - libblkid-devel 
   - libblkid-devel-32bit: [x86_64] 
@@ -12600,10 +12600,6 @@ unsorted:
   - libpeas-demo 
   - libpeas-devel 
   - libpeasd-3-0 
-  - libpegclient1 
-  - libpegcommon1 
-  - libpegexportserver1 
-  - libpeglistener1 
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
   - libperseus-sdr0 
@@ -40709,10 +40705,6 @@ unsorted:
   - tntdb-postgresql 
   - tntdb-replicate 
   - tntdb-sqlite 
-  - tog-pegasus 
-  - tog-pegasus-devel 
-  - tog-pegasus-libs 
-  - tog-pegasus-test 
   - toilet 
   - tolua 
   - toluapp-5.1 
