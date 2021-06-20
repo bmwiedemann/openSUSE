@@ -128,7 +128,7 @@
   boo#1180312: '20210329'
   boo#1180316: '20210408'
   boo#1180317: '20210103'
-  boo#1180358: '20210618'
+  boo#1180358: '20210619'
   boo#1180740: '20210115'
   boo#1180754: '20210418'
   boo#1180853: '20210111'
@@ -143,7 +143,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210618'
-  boo#1183454: '20210618'
+  boo#1183454: '20210619'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -168,7 +168,7 @@
   boo#1186775: '20210615'
   boo#1186890: '20210603'
   boo#1187019: '20210618'
-  boo#1187164: '20210618'
+  boo#1187164: '20210619'
   boo#1187204: '20210611'
   boo#1187371: '20210616'
   boo#1187423: '20210618'
@@ -185,7 +185,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
-  gh#containers/podman#10685: '20210618'
+  gh#containers/podman#10685: '20210619'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   gh#os-autoinst/os-autoinst-distri-opensuse#11865: '20210131'
@@ -371,7 +371,7 @@
   poo#93240: '20210527'
   poo#93315: '20210616'
   poo#93348: '20210618'
-  poo#93405: '20210618'
+  poo#93405: '20210619'
   poo#93671: '20210612'
   poo#93832: '20210614'
   poo#93835: '20210618'
@@ -730,10 +730,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210619'
 published: '20210618'
 publishing: '20210618'
-testing: '20210618'
+testing: '20210619'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
