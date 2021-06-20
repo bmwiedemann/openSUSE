@@ -40,6 +40,7 @@ Patch3:         %{name}-ignore_lone_zero_blocks.patch
 #https://bugzilla.opensuse.org/show_bug.cgi?id=918487
 Patch4:         %{name}-recursive--files-from.patch
 Patch5:         add_readme-tests.patch
+Patch6:         tar-PIE.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -77,7 +78,7 @@ Upstream testsuite for the package
 Summary:        Remote tape drive control server by GNU
 Group:          Productivity/Archiving/Backup
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       rmt
 
 %description rmt
@@ -108,6 +109,7 @@ it may as well access remote devices or files.
 %patch3 -p1
 #%patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %define my_cflags -W -Wall -Wpointer-arith -Wstrict-prototypes -Wformat-security -Wno-unused-parameter -fPIE
