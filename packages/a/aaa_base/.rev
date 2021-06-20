@@ -3903,4 +3903,15 @@
   * Use shell builtins for $HOSTTYPE and others (boo#1186296)</comment>
     <requestid>896866</requestid>
   </revision>
+  <revision rev="480" vrev="1">
+    <srcmd5>23e547b8889f2c2ab202808de0a984de</srcmd5>
+    <version>84.87+git20210616.9cf42ff</version>
+    <time>1624210661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210616.9cf42ff:
+  * add media type application/wasm (boo#1187387)
+  * Remove legacy links in /sbin
+  * Fix profile.csh to really set http proxies</comment>
+    <requestid>900346</requestid>
+  </revision>
 </revisionlist>

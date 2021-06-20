@@ -1,14 +1,12 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="version">84.87</param>
     <param name="versionformat">84.87+git%cd.%h</param>
     <param name="url">https://github.com/openSUSE/aaa_base.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="compression">xz</param>
-    <param name="file">*.tar</param>
-  </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
+  <service mode="buildtime" name="tar"/>
+  <service mode="buildtime" name="set_version"/>
 </services>
