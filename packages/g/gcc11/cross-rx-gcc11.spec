@@ -20,21 +20,13 @@
 %define cross_arch rx
 %define gcc_target_arch rx-elf
 %define gcc_target_newlib 1
-#
-# spec file template for cross packages of gcc${version}
-#
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
-#
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
 # nospeccleaner
 
-# In the staging/ring projects, we don't want to build the cross-* packages, but by default, we do:
+# In the staging/ring projects, we don't want to build the unneeded
+#  cross-* packages, but by default, we do:
 %bcond_with ringdisabled
 
-%if %{with ringdisabled}
+%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
 
@@ -114,7 +106,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.1.1+git121
+Version:        11.1.1+git340
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -145,6 +137,8 @@ Patch52:        gcc10-foffload-default.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches for embedded newlib
+Patch100:       newlib-4.1.0-aligned_alloc.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -294,6 +288,9 @@ only, it is not intended for any other use.
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
 ln -s newlib-4.1.0/newlib .
+cd newlib
+%patch100 -p1
+cd ..
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -490,7 +487,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--program-suffix=%{binsuffix} \
-%if 0%{?disable_32bit:1}
+%ifarch %{disable_multilib_arch}
 	--disable-multilib \
 %endif
 %if 0%{!?gcc_target_arch:1}
@@ -579,7 +576,7 @@ amdgcn-amdhsa,\
 %endif
 %if "%{TARGET_ARCH}" == "armv7hl"
 	--with-arch=armv7-a \
-	--with-tune=cortex-a15 \
+	--with-tune=generic-armv7-a \
 	--with-float=hard \
 	--with-abi=aapcs-linux \
 	--with-fpu=vfpv3-d16 \
@@ -633,8 +630,10 @@ amdgcn-amdhsa,\
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "x86_64"
+%ifnarch %{disable_multilib_arch}
 	--enable-multilib \
 	--with-arch-32=x86-64 \
+%endif
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "s390"

@@ -188,7 +188,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.1.1+git121
+Version:        11.1.1+git340
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -279,6 +279,9 @@ BuildRequires:  cross-amdgcn-newlib11-devel
 %ifarch x86_64 s390x ppc64 sparc64
 %define separate_bi32 1
 %endif
+%define disable_multilib_arch %{nil}
+%else
+%define disable_multilib_arch ppc sparcv9 x86_64 s390x ppc64 sparc64
 %endif
 
 # Define two macros to trigger -32bit or -64bit package variants
@@ -362,6 +365,8 @@ Patch52:        gcc10-foffload-default.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches for embedded newlib
+Patch100:       newlib-4.1.0-aligned_alloc.patch
 
 Summary:        The GNU C Compiler and Support Files
 License:        GPL-3.0-or-later
@@ -1904,6 +1909,9 @@ Results from running the gcc and target library testsuites.
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
 ln -s newlib-4.1.0/newlib .
+cd newlib
+%patch100 -p1
+cd ..
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -2100,7 +2108,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--program-suffix=%{binsuffix} \
-%if 0%{?disable_32bit:1}
+%ifarch %{disable_multilib_arch}
 	--disable-multilib \
 %endif
 %if 0%{!?gcc_target_arch:1}
@@ -2189,7 +2197,7 @@ amdgcn-amdhsa,\
 %endif
 %if "%{TARGET_ARCH}" == "armv7hl"
 	--with-arch=armv7-a \
-	--with-tune=cortex-a15 \
+	--with-tune=generic-armv7-a \
 	--with-float=hard \
 	--with-abi=aapcs-linux \
 	--with-fpu=vfpv3-d16 \
@@ -2243,8 +2251,10 @@ amdgcn-amdhsa,\
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "x86_64"
+%ifnarch %{disable_multilib_arch}
 	--enable-multilib \
 	--with-arch-32=x86-64 \
+%endif
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "s390"

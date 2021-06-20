@@ -90,4 +90,41 @@ The compiler is NOT used by default.</comment>
     <comment>- Fix value of %slibdir64 for usrmerge (forwarded request 895524 from Andreas_Schwab)</comment>
     <requestid>895536</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c1e2d0837d80fec8b30736ee1bf4347</srcmd5>
+    <version>11.1.1+git340</version>
+    <time>1624210668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (79c1185de4a05fdea13b6b0207), git340
+  * Fixes ceph build failure.  [gcc#101078]
+
+- Change disable_32bit to only disable multilibs for arhcs subject
+  to 32bit/64bit handling and make it effective on x86_64.
+- Remove the duplicate spec header from cross.spec.in
+
+- Add newlib-4.1.0-aligned_alloc.patch to fix nvptx cross build
+  fail.  [bsc#1187153]
+
+- Update to gcc-11 branch head (c6d2487098f9dde4f9ac59e5be), git273
+
+- tune armv7 to generic-armv7-a
+- enable build for arm-none cross builders in rings,
+   needed by arm-trusted-firmware
+
+- Update to gcc-11 branch head (79c1185de4a05fdea13b6b0207), git340
+  * Fixes ceph build failure.  [gcc#101078]
+
+- Change disable_32bit to only disable multilibs for arhcs subject
+  to 32bit/64bit handling and make it effective on x86_64.
+- Remove the duplicate spec header from cross.spec.in
+
+- Add newlib-4.1.0-aligned_alloc.patch to fix nvptx cross build
+  fail.  [bsc#1187153]
+
+- Update to gcc-11 branch head (c6d2487098f9dde4f9ac59e5be), git273
+
+- tune armv7 to generic-armv7-a
+- enable build for arm-none cross builders in rings,</comment>
+    <requestid>900519</requestid>
+  </revision>
 </revisionlist>

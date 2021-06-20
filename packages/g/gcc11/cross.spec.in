@@ -1,19 +1,10 @@
-#
-# spec file template for cross packages of gcc${version}
-#
-# Copyright (c) 2021 SUSE LLC
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
-#
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
 # nospeccleaner
 
-# In the staging/ring projects, we don't want to build the cross-* packages, but by default, we do:
+# In the staging/ring projects, we don't want to build the unneeded
+#  cross-* packages, but by default, we do:
 %bcond_with ringdisabled
 
-%if %{with ringdisabled}
+%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && %{with ringdisabled}
 ExclusiveArch: do-not-build
 %endif
 

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 17 06:28:18 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (79c1185de4a05fdea13b6b0207), git340
+  * Fixes ceph build failure.  [gcc#101078]
+
+-------------------------------------------------------------------
+Tue Jun 15 09:16:11 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Change disable_32bit to only disable multilibs for arhcs subject
+  to 32bit/64bit handling and make it effective on x86_64.
+- Remove the duplicate spec header from cross.spec.in
+
+-------------------------------------------------------------------
+Thu Jun 10 10:03:37 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add newlib-4.1.0-aligned_alloc.patch to fix nvptx cross build
+  fail.  [bsc#1187153]
+
+-------------------------------------------------------------------
+Wed Jun  9 08:50:44 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (c6d2487098f9dde4f9ac59e5be), git273
+
+-------------------------------------------------------------------
+Tue Jun  8 08:22:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- tune armv7 to generic-armv7-a
+- enable build for arm-none cross builders in rings,
+   needed by arm-trusted-firmware
+
+-------------------------------------------------------------------
 Tue May 25 19:21:01 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Fix value of %slibdir64 for usrmerge
