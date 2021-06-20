@@ -25,6 +25,7 @@ License:        Zlib
 Group:          System/Libraries
 URL:            https://github.com/sphair/ClanLib
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/ClanLib-%{version}.tar.gz
+Patch1:         clanlib-add-aarch64.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -86,7 +87,7 @@ BuildArch:      noarch
 ClanLib delivers a platform-independent interface for writing games.
 
 %prep
-%autosetup -n ClanLib-%{version}
+%autosetup -p1 -n ClanLib-%{version}
 
 %build
 # Remove IDE files

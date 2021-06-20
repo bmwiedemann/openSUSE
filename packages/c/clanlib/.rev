@@ -304,4 +304,12 @@
     <comment>Update to version 4.1</comment>
     <requestid>888861</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>01243e7711a6d41d73b053527aec7aab</srcmd5>
+    <version>4.1.0</version>
+    <time>1624210678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900996</requestid>
+  </revision>
 </revisionlist>

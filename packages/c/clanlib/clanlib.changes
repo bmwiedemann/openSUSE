@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:37:52 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 since clanlib-cpuid.patch has been dropped:
+  * clanlib-add-aarch64.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 17:14:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.1
