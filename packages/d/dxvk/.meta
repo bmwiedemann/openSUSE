@@ -1,0 +1,5 @@
+<package name="dxvk" project="openSUSE:Factory">
+  <title>dxvk:  Vulkan-based D3D11 implementation for Linux / Wine</title>
+  <description>Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine.</description>
+  <devel project="Emulators:Wine" package="dxvk"/>
+</package>
