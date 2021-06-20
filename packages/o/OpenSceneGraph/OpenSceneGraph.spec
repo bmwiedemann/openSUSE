@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,23 +23,18 @@
 %else
 %bcond_with gdal
 %endif
-# asio is not available in Leap < 15.2 and SLE15SP1
-# dcmtk is not available in SLE15SP1 and causes a build issue in Leap 15.1
-%if 0%{?sle_version} < 150200 && 0%{?suse_version} == 1500
-%bcond_with asio
-%bcond_with dcmtk
-%else
+
 %bcond_without asio
 %bcond_without dcmtk
-%endif
-# occt and fox are not available in SLE15SP1
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
 %bcond_without fox
 %bcond_without occt
+
+%if 0%{?suse_version} >= 1550
+%bcond_with    gtk2
 %else
-%bcond_with fox
-%bcond_with occt
+%bcond_without gtk2
 %endif
+
 Name:           OpenSceneGraph
 Version:        3.6.5
 Release:        0
@@ -53,7 +48,9 @@ License:        LGPL-2.1-only WITH WxWindows-exception-3.1
 Group:          Productivity/Graphics/Other
 URL:            http://openscenegraph.org/projects/osg
 Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE - fix build with asio >= 1.14.0, https://github.com/openscenegraph/OpenSceneGraph/issues/921
+Patch0:         0001-Replace-boost-bind-usage-with-std-bind.patch
+Patch1:         0002-Replace-obsoleted-asio-basic_stream_socket-get_io_se.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  ffmpeg-devel
@@ -66,7 +63,6 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(freetype2)
@@ -77,8 +73,10 @@ BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-fft-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+%if %{with gtk2}
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtkglext-1.0)
+%endif
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libvncserver)
@@ -89,6 +87,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(xrandr)
 %if %{with dcmtk}
 BuildRequires:  cmake(DCMTK)
+BuildRequires:  pkgconfig(icu-uc)
 %endif
 %if %{with fox}
 BuildRequires:  pkgconfig(fox)
@@ -213,19 +212,23 @@ This package contains some example applications built with OpenSceneGraph
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%if 0%{?suse_version} >= 1550
+%patch0 -p1
+%patch1 -p1
+%endif
 
-for file in *.md *.txt ChangeLog; do
+for file in *.md *.txt; do
 	sed -i "s/\r//g" "$file"
 done
-chmod 644 *.md *.txt ChangeLog
+chmod 644 *.md *.txt
 
 %build
 %cmake \
+  -DCMAKE_RELWITHDEBINFO_POSTFIX="" \
   -DBUILD_OSG_EXAMPLES=ON \
   -DBUILD_OSG_PLUGINS=ON \
   -DBUILD_DOCUMENTATION=OFF \
   -DBUILD_OSG_APPLICATIONS=ON \
-  -DCMAKE_BUILD_TYPE=Release \
   -DDYNAMIC_OPENSCENEGRAPH=ON \
   -DDYNAMIC_OPENTHREADS=ON \
 %if "%{_lib}" == "lib64"
@@ -248,7 +251,7 @@ mv %{buildroot}%{_datadir}/OpenSceneGraph \
 
 %files
 %license LICENSE.txt
-%doc AUTHORS.txt NEWS.txt README.md ChangeLog
+%doc AUTHORS.txt NEWS.txt README.md
 %{_bindir}/osg2cpp
 %{_bindir}/osgarchive
 %{_bindir}/osgconv

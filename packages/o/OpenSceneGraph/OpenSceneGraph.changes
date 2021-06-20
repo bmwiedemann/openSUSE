@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 19 00:11:55 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on TW with asio 1.18.x, add
+  0001-Replace-boost-bind-usage-with-std-bind.patch and
+  0002-Replace-obsoleted-asio-basic_stream_socket-get_io_se.patch
+- Disable GTK2 example on TW
+- Disable wxWidgets example
+- Do not package huge ChangeLog (commit log)
+
+-------------------------------------------------------------------
 Fri Jul 31 10:15:55 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Put back PowerPC specific constraints (from 6 to 7GB disk space)

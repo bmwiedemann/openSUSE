@@ -1,0 +1,103 @@
+From b94971dd5528bfcc73e69eeada000b1785649472 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 18 Jun 2021 17:14:45 +0200
+Subject: [PATCH 1/2] Replace boost::bind usage with std::bind
+
+asio no longer enables boost support when built in C++11 or later mode.
+---
+ src/osgPlugins/RestHttpDevice/connection.cpp | 21 ++++++++++----------
+ src/osgPlugins/RestHttpDevice/server.cpp     |  9 ++++-----
+ 2 files changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/src/osgPlugins/RestHttpDevice/connection.cpp b/src/osgPlugins/RestHttpDevice/connection.cpp
+index f591083..5826dd2 100644
+--- a/src/osgPlugins/RestHttpDevice/connection.cpp
++++ b/src/osgPlugins/RestHttpDevice/connection.cpp
+@@ -10,7 +10,6 @@
+ 
+ #include "connection.hpp"
+ #include <vector>
+-#include <boost/bind.hpp>
+ #include "request_handler.hpp"
+ #include <osg/Notify>
+ 
+@@ -39,9 +38,9 @@ void connection::start()
+   OSG_DEBUG << "RestHttpDevice :: connection::start" << std::endl;
+   
+   socket_.async_read_some(asio::buffer(buffer_),
+-      boost::bind(&connection::handle_read, shared_from_this(),
+-        asio::placeholders::error,
+-        asio::placeholders::bytes_transferred));
++      std::bind(&connection::handle_read, shared_from_this(),
++        std::placeholders::_1,
++        std::placeholders::_2));
+ }
+ 
+ void connection::handle_read(const asio::error_code& e,
+@@ -57,22 +56,22 @@ void connection::handle_read(const asio::error_code& e,
+     {
+       request_handler_.handle_request(request_, reply_);
+       asio::async_write(socket_, reply_.to_buffers(),
+-          boost::bind(&connection::handle_write, shared_from_this(),
+-            asio::placeholders::error));
++          std::bind(&connection::handle_write, shared_from_this(),
++            std::placeholders::_1));
+     }
+     else if (!result)
+     {
+       reply_ = reply::stock_reply(reply::bad_request);
+       asio::async_write(socket_, reply_.to_buffers(),
+-          boost::bind(&connection::handle_write, shared_from_this(),
+-            asio::placeholders::error));
++          std::bind(&connection::handle_write, shared_from_this(),
++            std::placeholders::_1));
+     }
+     else
+     {
+       socket_.async_read_some(asio::buffer(buffer_),
+-          boost::bind(&connection::handle_read, shared_from_this(),
+-            asio::placeholders::error,
+-            asio::placeholders::bytes_transferred));
++          std::bind(&connection::handle_read, shared_from_this(),
++            std::placeholders::_1,
++            std::placeholders::_2));
+     }
+   }
+ 
+diff --git a/src/osgPlugins/RestHttpDevice/server.cpp b/src/osgPlugins/RestHttpDevice/server.cpp
+index d0231ef..e01555a 100644
+--- a/src/osgPlugins/RestHttpDevice/server.cpp
++++ b/src/osgPlugins/RestHttpDevice/server.cpp
+@@ -9,7 +9,6 @@
+ //
+ 
+ #include "server.hpp"
+-#include <boost/bind.hpp>
+ 
+ namespace http {
+ namespace server {
+@@ -31,8 +30,8 @@ server::server(const std::string& address, const std::string& port,
+   acceptor_.bind(endpoint);
+   acceptor_.listen();
+   acceptor_.async_accept(new_connection_->socket(),
+-      boost::bind(&server::handle_accept, this,
+-        asio::placeholders::error));
++      std::bind(&server::handle_accept, this,
++        std::placeholders::_1));
+ }
+ 
+ void server::run()
+@@ -56,8 +55,8 @@ void server::handle_accept(const asio::error_code& e)
+     new_connection_.reset(new connection(
+           io_service_pool_.get_io_service(), request_handler_));
+     acceptor_.async_accept(new_connection_->socket(),
+-        boost::bind(&server::handle_accept, this,
+-          asio::placeholders::error));
++        std::bind(&server::handle_accept, this,
++          std::placeholders::_1));
+   }
+   else
+   {
+-- 
+2.32.0
+
