@@ -6847,8 +6847,6 @@ unsorted:
   - icu4j-charset 
   - icu4j-javadoc 
   - icu4j-localespi 
-  - id3lib 
-  - id3lib-32bit: [x86_64] 
   - id3lib-devel 
   - id3lib-examples 
   - id3v2 
@@ -11329,6 +11327,7 @@ unsorted:
   - libicu-doc 
   - libicu69-32bit: [x86_64] 
   - libicu69-bedata 
+  - libid3-3_8-3 
   - libid3tag-devel 
   - libid3tag0-32bit: [x86_64] 
   - libidl-devel 
@@ -22010,6 +22009,7 @@ unsorted:
   - python36-branca 
   - python36-breathe 
   - python36-brewer2mpl 
+  - python36-brotlicffi 
   - python36-brotlipy 
   - python36-bsddb3 
   - python36-bsddb3-devel 
@@ -24791,6 +24791,7 @@ unsorted:
   - python38-branca 
   - python38-breathe 
   - python38-brewer2mpl 
+  - python38-brotlicffi 
   - python38-bsddb3 
   - python38-bsddb3-devel 
   - python38-bson 
@@ -27736,6 +27737,7 @@ unsorted:
   - python39-branca 
   - python39-breathe 
   - python39-brewer2mpl 
+  - python39-brotlicffi 
   - python39-brotlipy 
   - python39-bsddb3 
   - python39-bsddb3-devel 
