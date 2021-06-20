@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 10 14:22:01 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- In the 32-bit compatibility package for 64-bit architectures,
+  require "systemd-32bit" to be also installed as it contains
+  pam_systemd.so for 32 bit applications.
+  [bsc#1185562, baselibs.conf]
+
+-------------------------------------------------------------------
 Wed Apr  7 12:20:40 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - If "LOCAL" is configured in access.conf, and a login attempt from
