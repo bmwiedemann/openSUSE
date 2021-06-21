@@ -1,7 +1,7 @@
 #
 # spec file for package grafana-sap-hana-dashboards
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 Name:           grafana-sap-hana-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.2+git.1600361067.f7c00d1
+Version:        1.0.2+git.1623658432.f49b536
 Release:        0
-Summary:        Grafana Dashboards displaying metrics about SAP HANA databases.
 License:        Apache-2.0
+Summary:        Grafana Dashboards displaying metrics about SAP HANA databases.
 Group:          System/Monitoring
 URL:            https://github.com/SUSE/hanadb_exporter
 Source:         %{name}-%{version}.tar.gz

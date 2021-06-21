@@ -2,7 +2,7 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/SUSE/hanadb_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">f7c00d1174a12d675ea49f444af4bab1d49022d0</param>
+        <param name="revision">f49b53683f198bf2d634b6ab6fbadacc3aecc7fc</param>
         <param name="include">dashboards</param>
         <param name="include">LICENSE</param>
         <param name="versionformat">1.0.2+git.%ct.%h</param>
