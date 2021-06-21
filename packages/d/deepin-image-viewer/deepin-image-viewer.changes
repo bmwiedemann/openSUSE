@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  9 09:05:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix broken release date in appdata
+
+-------------------------------------------------------------------
+Tue Jun  8 12:04:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.7.8
+  * Bugfix release
+- Use find_lang macro
+
+-------------------------------------------------------------------
 Sun May 23 06:53:11 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Stop owning directories provided by filesystem and other packages

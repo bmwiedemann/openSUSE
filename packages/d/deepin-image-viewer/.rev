@@ -16,4 +16,16 @@
   (every dir should only have one owner) (bsc#1184786) (forwarded request 897912 from hillwood)</comment>
     <requestid>897920</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>976a355ea1a80f6dc07c407d88875276</srcmd5>
+    <version>5.7.8</version>
+    <time>1624300560</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix broken release date in appdata
+
+- Update to version 5.7.8
+  * Bugfix release
+- Use find_lang macro (forwarded request 900403 from hillwood)</comment>
+    <requestid>901178</requestid>
+  </revision>
 </revisionlist>

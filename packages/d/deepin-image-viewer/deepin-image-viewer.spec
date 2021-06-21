@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-image-viewer
-Version:        5.7.4
+Version:        5.7.8
 Release:        0
 Summary:        Deepin Image Viewer
 License:        GPL-3.0-or-later
@@ -76,10 +76,6 @@ Deepin Image Viewer is the Image Viewer for Deepin Desktop Environment(DDE)
 
 %prep
 %setup -q
-# %patch0 -p1
-%if 0%{?suse_version} > 1500
-# %patch1 -p1
-%endif
 sed -i "s/(lrelease/(lrelease-qt5/g" src/src.pro
 # sed -i '/#include <QDebug>/a #include <QPainterPath>' \
 #         viewer/frame/toptoolbar.cpp \
@@ -94,18 +90,21 @@ src/%{name}.desktop
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DAPP_VERSION=%{version}-%{distribution} \
        -DVERSION=%{version}-%{distribution}
-%make_build
+%cmake_build
 
 %install
 %cmake_install
+# Install appdata
 install -d %{buildroot}%{_datadir}/appdata
 cp %{SOURCE99} %{buildroot}%{_datadir}/appdata/
-
-sed -i 's/1.2.15/%{version}/g;s/2017-08-18/2021-03-19/g' \
+# Fix version in appdata
+RELEASE_DATE=$(stat --format="%%y" %{SOURCE0} | grep -Po "\\d{4}-\\d{2}-\\d{2}")
+sed -i "s/@VERSION@/%{version}/g;s/@DATE@/$RELEASE_DATE/g" \
 %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-
+# Fix desktop file
 %suse_update_desktop_file -r -G "Deepin Image Viewer" %{name} Graphics 2DGraphics RasterGraphics Viewer
-
+# Find translations
+%find_lang %{name} --with-qt
 %fdupes %{buildroot}
 
 %files
@@ -113,16 +112,18 @@ sed -i 's/1.2.15/%{version}/g;s/2017-08-18/2021-03-19/g' \
 %license LICENSE
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/%{name}/icons/
+%dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations/deepin-image-viewer.qm
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_libdir}/qt5/plugins/imageformats/*.so
+%{_libdir}/qt5/plugins/imageformats/libxraw.so*
 %{_datadir}/dbus-1/services/com.deepin.ImageViewer.service
 
-%files lang
-%{_datadir}/%{name}/translations
+%files lang -f %{name}.lang
+%lang(ast) %{_datadir}/deepin-image-viewer/translations/deepin-image-viewer_ast.qm
 
 %changelog
