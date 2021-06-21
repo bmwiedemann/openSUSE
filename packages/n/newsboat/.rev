@@ -723,4 +723,41 @@ run -osc service localrun format_spec_file to fix copyright
   * Newsboat redrawing the screen once a minute even if idle (#563)</comment>
     <requestid>883531</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>20af227743194bbf39680e2b418309b5</srcmd5>
+    <version>2.24</version>
+    <time>1624300543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.24:
+  Added:
+  * FreshRSS support
+  * Ability to add descriptions to macros (#228)
+  * Support for plain-text Atom entries (YouTube is the most
+    prominent publisher of those) (#468, #1022, #1010)
+  * restrict-filename setting to control if non-alphanumeric
+    symbols will get replaced by underscores when saving an article (#1110)
+  * highlight-feed setting to highlight feedlist entries according
+    to the filter expressions (same as highlight-article in
+    the article list) (#1510)
+  Changed:
+  * IRC channel moved from Freenode to Libera.Chat network
+  * Newsboat will now fail to start if settings are passed more
+  parameters than
+    they expect. To fix this, read the doc for the setting and try using
+    double
+    quotes as necessary (Alexander Batischev)
+  * Newsboat will now quit if you try to open a query feed whose
+  expression
+    contains an unknown attribute. This is a temporary workaround; the
+    next
+    version will display an error instead. The proper fix couldn't be
+    added to
+    2.24 because that'd disrupt the freeze on translations (#1665)
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.48.0
+  * Updated vendored library Catch2 to 2.13.6
+  Fixed:
+  * Segfault in Podboat when purging the list where the last item is</comment>
+    <requestid>901090</requestid>
+  </revision>
 </revisionlist>
