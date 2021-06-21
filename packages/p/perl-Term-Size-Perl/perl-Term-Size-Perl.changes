@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 10:44:54 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
 Thu Feb 15 07:07:49 UTC 2018 - coolo@suse.com
 
 - updated to 0.031

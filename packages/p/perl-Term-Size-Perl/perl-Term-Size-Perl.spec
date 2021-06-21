@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Term-Size-Perl/
 Source0:        https://cpan.metacpan.org/authors/id/F/FE/FERREIRA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         reproducible.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -39,6 +40,7 @@ exception of a C probe run on build time.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%autopatch -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
