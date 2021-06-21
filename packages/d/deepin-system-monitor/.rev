@@ -62,4 +62,18 @@
 - Enable policykit feature, fix boo#1181886</comment>
     <requestid>891667</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb9d078df58b2dce648d4f018c9df637</srcmd5>
+    <version>5.8.0.30</version>
+    <time>1624300556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.0.30
+  * Update translations.
+  * Fix: Download size in system monitor process list is greater
+    than the total received data.
+  * Fix: When connecting to wireless network, the network data
+    cannot be monitored in the process list.
+- Use find_lang macro (forwarded request 900409 from hillwood)</comment>
+    <requestid>901173</requestid>
+  </revision>
 </revisionlist>
