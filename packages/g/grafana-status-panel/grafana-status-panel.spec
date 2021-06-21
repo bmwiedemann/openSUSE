@@ -1,7 +1,7 @@
 #
 # spec file for package grafana-status-panel
 #
-# Copyright (c) 2019 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           grafana-status-panel
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Grafana Status panel
 License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://github.com/Vonage/Grafana_Status_panel
+URL:            https://github.com/Vonage/Grafana_Status_panel
 Source:         grafana_status_panel-%{version}.tar.xz
 Requires:       grafana
 BuildRequires:  fdupes
@@ -40,7 +40,6 @@ to customize the panel in different ways:
 Mark the severity of the component
 Mark if the component is disabled
 Show extra data in the panel about the component
-
 
 %prep
 %setup -q -n grafana_status_panel-%{version}

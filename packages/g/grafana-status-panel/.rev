@@ -7,4 +7,12 @@
     <comment>New package. Announcement mail: https://lists.opensuse.org/opensuse-factory/2020-01/msg00112.html</comment>
     <requestid>762115</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>717805d1edd95f4287408ef83be695d1</srcmd5>
+    <version>1.0.10</version>
+    <time>1624300544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901089</requestid>
+  </revision>
 </revisionlist>

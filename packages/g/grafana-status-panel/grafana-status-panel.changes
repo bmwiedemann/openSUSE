@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 18 15:24:23 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
+
+- Update plugin to version 1.0.10 to fix compatibilty issues with newer Grafana
+  versions as the plugin stopped working on Grafana versions higher than
+  v6.7.x.
+
+  https://github.com/Vonage/Grafana_Status_panel/pull/161
+
+-------------------------------------------------------------------
 Thu Jan  2 13:36:15 UTC 2020 - Jan Fajerski <jan.fajerski@suse.com>
 
 - Add BuildRequires: grafana so grafana user and group are present
