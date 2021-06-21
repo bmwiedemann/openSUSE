@@ -19,7 +19,7 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.4.5
+Version:        5.4.11
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
@@ -45,7 +45,6 @@ Requires:       deepin-daemon
 Requires:       deepin-desktop-schemas >= 5.9.3
 Requires:       deepin-start
 Requires:       libqt5-qdbus
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Deepin desktop-environment - Launcher module
@@ -60,35 +59,42 @@ Deepin desktop-environment - Launcher module
 The deepin-launcher-devel package contains the header files and developer
 docs for deepin-launcher.
 
+%lang_package
+
 %prep
 %setup -q -n %{_name}-%{version}
 sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 sed -i 's|qdbus|qdbus-qt5|g' dde-launcher-wapper
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-       -DWITHOUT_UNINSTALL_APP=1
-%make_build
+%cmake -DWITHOUT_UNINSTALL_APP=1
+%cmake_build
 
 %install
 %cmake_install
+%find_lang %{_name} --with-qt
 
 %files
-%defattr(-,root,root,-)
-%doc CHANGELOG.md README.md
 %license LICENSE
+%doc CHANGELOG.md README.md
 %{_bindir}/%{_name}
 %{_bindir}/%{_name}-wapper
-%{_datadir}/%{_name}
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/dbus-1/services/*.service
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.launcher.gschema.xml
+%dir %{_datadir}/%{_name}
+%dir %{_datadir}/%{_name}/translations
+%{_datadir}/%{_name}/translations/dde-launcher.qm
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/%{_name}
+
+%files lang -f %{_name}.lang
+# unusual languages not autodetected by find_lang (boo#1187036)
+%lang(ast) %{_datadir}/%{_name}/translations/dde-launcher_ast.qm
+%lang(fil) %{_datadir}/%{_name}/translations/dde-launcher_fil.qm
+%lang(kab) %{_datadir}/%{_name}/translations/dde-launcher_kab.qm
+%lang(pam) %{_datadir}/%{_name}/translations/dde-launcher_pam.qm
 
 %changelog

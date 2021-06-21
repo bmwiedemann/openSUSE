@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  8 13:04:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.4.11
+  * Bug fixes
+  * Feature: Allow configure the right-click menu of the application
+    to be displayed or hidden
+- Use find_lang macro
+
+-------------------------------------------------------------------
 Tue May  4 12:04:13 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.5

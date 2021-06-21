@@ -19,4 +19,16 @@
   * Update translations</comment>
     <requestid>891658</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec7d80aa9e59d9da8bbe7712696e5308</srcmd5>
+    <version>5.4.11</version>
+    <time>1624300560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.11
+  * Bug fixes
+  * Feature: Allow configure the right-click menu of the application
+    to be displayed or hidden
+- Use find_lang macro (forwarded request 900405 from hillwood)</comment>
+    <requestid>901177</requestid>
+  </revision>
 </revisionlist>
