@@ -319,6 +319,7 @@ Patch2018:      gdb-tui-fix-len_without_escapes-in-tui-disasm.c.patch
 Patch2019:      gdb-build-hardcode-with-included-regex.patch
 Patch2020:      gdb-breakpoint-fix-assert-in-jit_event_handler.patch
 Patch2021:      gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
+Patch2022:      gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder-again.patch
 
 # Testsuite patches
 
@@ -455,10 +456,17 @@ BuildRequires:  %{gcc}-objc
 %ifarch %ada_arch
 BuildRequires:  %{gcc}-ada
 %endif
-%if 0%{!?disable_32bit:1}
+
+%if 0%{?is_opensuse}
 # openSUSE for s390x doesn't build 32bit libs
+%define supported_32bit_arch x86_64 ppc64
+%else
+%define supported_32bit_arch x86_64 ppc64 s390x
+%endif
+
+%if 0%{!?disable_32bit:1}
 %if 0%{suse_version} > 1110
-%ifarch x86_64 ppc64 s390x
+%ifarch %{supported_32bit_arch}
 %if 0%{suse_version} >= 1330
 # Older distros miss this pseudo package, the Ada
 # testsuite won't work completely
@@ -466,6 +474,7 @@ BuildRequires:  %{gcc}-ada-32bit
 %endif
 BuildRequires:  %{gcc}-c++-32bit
 %if 0%{suse_version} >= 1210 && 0%{suse_version} != 1315
+# glibc-devel-static-32bit is (currently?) unavailable for Leap 15.3/s390x.
 BuildRequires:  glibc-devel-static-32bit
 %endif
 %endif
@@ -481,13 +490,21 @@ BuildRequires:  glibc-devel-static
 # versions.
 BuildRequires:  gcc-go
 %endif
-%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
-%ifarch %{ix86} x86_64 aarch64 armv7l
+
 %if %{with fpc}
+%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
+%ifarch x86_64 aarch64 armv7l
+BuildRequires:  fpc
+%endif
+%ifarch %{ix86}
+# fpc is (currently?) unavailable for Leap 15.3/i586.
+%if 0%{?sle_version} != 150300 && 0%{?is_opensuse}
 BuildRequires:  fpc
 %endif
 %endif
 %endif
+%endif
+
 %if 0%{?suse_version} >= 1200
 %ifnarch s390
 # s390 (for SLE12) doesn't have valgrind
@@ -738,6 +755,7 @@ find -name "*.info*"|xargs rm -f
 %patch2019 -p1
 %patch2020 -p1
 %patch2021 -p1
+%patch2022 -p1
 
 %patch2500 -p1
 %if 0%{?suse_version} > 1500

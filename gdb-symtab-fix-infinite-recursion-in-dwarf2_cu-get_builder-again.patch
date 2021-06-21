@@ -1,0 +1,167 @@
+[gdb/symtab] Fix infinite recursion in dwarf2_cu::get_builder(), again
+
+This is another attempt at fixing the problem described in commit 4cf88725da1
+"[gdb/symtab] Fix infinite recursion in dwarf2_cu::get_builder()", which was
+reverted in commit 3db19b2d724.
+
+First off, some context.
+
+A DWARF CU can be viewed as a symbol table: toplevel children of a CU DIE
+represent symbol table entries for that CU.  Furthermore, there is a
+hierarchy: a symbol table entry such as a function itself has a symbol table
+containing parameters and local variables.
+
+The dwarf reader maintains a notion of current symbol table (that is: the
+symbol table a new symbol needs to be entered into) in dwarf2_cu member
+list_in_scope.
+
+A problem then presents itself when reading inter-CU references:
+- a new symbol read from a CU B needs to be entered into the symbol table of
+  another CU A.
+- the notion of current symbol table is tracked on a per-CU basis.
+This is addressed in inherit_abstract_dies by temporarily overwriting the
+list_in_scope for CU B with the one for CU A.
+
+The current symbol table is one aspect of the current dwarf reader context
+that is tracked, but there are more, f.i. ones that are tracked via the
+dwarf2_cu member m_builder, f.i. m_builder->m_local_using_directives.
+
+A similar problem exists in relation to inter-CU references, but a different
+solution was chosen:
+- to keep track of an ancestor field in dwarf2_cu, which is updated
+  when traversing inter-CU references, and
+- to use the ancestor field in dwarf2_cu::get_builder to return the m_builder
+  in scope.
+
+There is no actual concept of a CU having an ancestor, it just marks the most
+recent CU from which a CU was inter-CU-referenced.  Consequently, when
+following inter-CU references from a CU A to another CU B and back to CU A,
+the ancestors form a cycle, which causes dwarf2_cu::get_builder to hang or
+segfault, as reported in PR26327.
+
+ISTM that the ancestor implementation is confusing and fragile, and should
+go.  Furthermore, it seems that keeping track of the m_builder in scope can be
+handled simply with a per-objfile variable.
+
+Fix the hang / segfault by:
+- keeping track of the m_builder in scope using a new variable
+  per_obj->sym_cu, and
+- using it in dwarf2_cu::get_builder.
+
+Tested on x86_64-linux (openSUSE Leap 15.2), no regressions for config:
+- using default gcc version 7.5.0
+  (with 5 unexpected FAILs)
+- gcc 10.3.0 and target board
+  unix/-flto/-O0/-flto-partition=none/-ffat-lto-objects
+  (with 1000 unexpected FAILs)
+
+gdb/ChangeLog:
+
+2021-06-16  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/26327
+	* dwarf2/cu.h (dwarf2_cu::ancestor): Remove.
+	(dwarf2_cu::get_builder): Declare and move ...
+	* dwarf2/cu.c (dwarf2_cu::get_builder): ... here.  Use sym_cu instead
+	of ancestor.  Assert return value is non-null.
+	* dwarf2/read.c (read_file_scope): Set per_objfile->sym_cu.
+	(follow_die_offset, follow_die_sig_1): Remove setting of ancestor.
+	(dwarf2_per_objfile): Add sym_cu field.
+
+---
+ gdb/dwarf2/read.c | 24 +++++++++---------------
+ gdb/dwarf2/read.h |  3 +++
+ 2 files changed, 12 insertions(+), 15 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 05a50515ce4..b81902b97d7 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -595,10 +595,6 @@ struct dwarf2_cu
+ 
+   struct partial_die_info *find_partial_die (sect_offset sect_off);
+ 
+-  /* If this CU was inherited by another CU (via specification,
+-     abstract_origin, etc), this is the ancestor CU.  */
+-  dwarf2_cu *ancestor;
+-
+   /* Get the buildsym_compunit for this CU.  */
+   buildsym_compunit *get_builder ()
+   {
+@@ -606,11 +602,10 @@ struct dwarf2_cu
+     if (m_builder != nullptr)
+       return m_builder.get ();
+ 
+-    /* Otherwise, search ancestors for a valid builder.  */
+-    if (ancestor != nullptr)
+-      return ancestor->get_builder ();
++    if (per_objfile->sym_cu != nullptr)
++      return per_objfile->sym_cu->m_builder.get ();
+ 
+-    return nullptr;
++    gdb_assert_not_reached ("");
+   }
+ };
+ 
+@@ -11145,6 +11140,10 @@ read_file_scope (struct die_info *die, struct dwarf2_cu *cu)
+ 
+   cu->start_symtab (fnd.name, fnd.comp_dir, lowpc);
+ 
++  gdb_assert (per_objfile->sym_cu == nullptr);
++  scoped_restore restore_sym_cu
++    = make_scoped_restore (&per_objfile->sym_cu, cu);
++
+   /* Decode line number information if present.  We do this before
+      processing child DIEs, so that the line header table is available
+      for DW_AT_decl_file.  */
+@@ -11160,6 +11159,7 @@ read_file_scope (struct die_info *die, struct dwarf2_cu *cu)
+ 	  child_die = child_die->sibling;
+ 	}
+     }
++  per_objfile->sym_cu = nullptr;
+ 
+   /* Decode macro information, if present.  Dwarf 2 macro information
+      refers to information in the line number info statement program
+@@ -22946,9 +22946,6 @@ follow_die_offset (sect_offset sect_off, int offset_in_dwz,
+   *ref_cu = target_cu;
+   temp_die.sect_off = sect_off;
+ 
+-  if (target_cu != cu)
+-    target_cu->ancestor = cu;
+-
+   return (struct die_info *) htab_find_with_hash (target_cu->die_hash,
+ 						  &temp_die,
+ 						  to_underlying (sect_off));
+@@ -23291,7 +23288,7 @@ follow_die_sig_1 (struct die_info *src_die, struct signatured_type *sig_type,
+ 		  struct dwarf2_cu **ref_cu)
+ {
+   struct die_info temp_die;
+-  struct dwarf2_cu *sig_cu, *cu = *ref_cu;
++  struct dwarf2_cu *sig_cu;
+   struct die_info *die;
+   dwarf2_per_objfile *per_objfile = (*ref_cu)->per_objfile;
+ 
+@@ -23323,9 +23320,6 @@ follow_die_sig_1 (struct die_info *src_die, struct signatured_type *sig_type,
+ 	}
+ 
+       *ref_cu = sig_cu;
+-      if (sig_cu != cu)
+-	sig_cu->ancestor = cu;
+-
+       return die;
+     }
+ 
+diff --git a/gdb/dwarf2/read.h b/gdb/dwarf2/read.h
+index fe5aab0e9a1..24ef1e3e366 100644
+--- a/gdb/dwarf2/read.h
++++ b/gdb/dwarf2/read.h
+@@ -374,6 +374,9 @@ struct dwarf2_per_objfile
+   /* Table containing line_header indexed by offset and offset_in_dwz.  */
+   htab_up line_header_hash;
+ 
++  /* The CU containing the m_builder in scope.  */
++  dwarf2_cu *sym_cu = nullptr;
++
+ private:
+   /* Hold the corresponding compunit_symtab for each CU or TU.  This
+      is indexed by dwarf2_per_cu_data::index.  A NULL value means
