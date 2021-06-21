@@ -226,7 +226,7 @@ uses the facilities provided by NSS.
 %setup -q -n %{name}-base-%{version} -D -T -a 3
 
 %build
-%sysusers_generate_pre %{SOURCE10} %{user_group}
+%sysusers_generate_pre %{SOURCE10} %{user_group} %{user_group}-user.conf
 # Make sure python3 is used in shebangs
 # FIX ME!!  This should be fixed in the source code !!!
 sed -r -i '1s|^#!\s*%{_bindir}.*python.*|#!%{_bindir}/%{use_python}|' ldap/admin/src/scripts/{*.py,ds-replcheck} src/lib389/cli/ds*
