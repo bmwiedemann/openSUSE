@@ -21,7 +21,7 @@
 Name:           python-pooch
 Version:        1.3.0
 Release:        0
-Summary:        Manage your Python library's sample data files
+Summary:        Manager for Python libraries' sample data files
 License:        BSD-3-Clause
 URL:            https://github.com/fatiando/pooch
 Source:         https://files.pythonhosted.org/packages/source/p/pooch/pooch-%{version}.tar.gz
@@ -41,12 +41,12 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Pooch manages your Python library's sample data files: it automatically
+Pooch manages sample data files for Python libraries. It automatically
 downloads and stores them in a local directory, with support for versioning
-and corruption checks.
+and checks for corruption.
 
 %prep
-%setup -q -n pooch-%{version}
+%autosetup -p1 -n pooch-%{version}
 
 %build
 %python_build
