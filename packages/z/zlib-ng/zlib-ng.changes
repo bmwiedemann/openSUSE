@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Jun 21 13:34:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.0.4:
+  * Fix inflate corruption #982
+  * Minor code cleanup #983 #984
+  * Fix mpicc compilation #959
+  * Fix build on NetBSD #964
+  * Fix build on OpenBSD #970
+  * Fix build on Cygwin #972 #974
+  * Fix linter warnings in configure #975
+  * Spelling fixes #961
+  * Improve unistd.h handling #960
+  * Remove stdarg.h detection #976
+  * CI/Test improvements #977 #981 #985
+  * Cmake improvements #980 #989
+- Log from 2.0.3:
+  * Include porting guide in release packages #917
+  * Documentation improvements #913 #949
+  * Added Windows ARM binaries in release packages #916
+  * Fix crash on ARMv7 #927
+  * Fix building on FreeBSD #921
+  * Fix building with musl on aarch64 #936
+  * Fix ARM float-abi detection #918
+  * Fix cmake detection of risc-v architectures #942
+  * Minor buildsystem fixes #922 #924 #933 #938 #950
+  * Improve zlib-compat build #915 #944
+  * CI/Test improvements #926 #929 #927 #937 #939 #940
+- Log from 2.0.2:
+  * #897 Fix rare corruption detected by fuzzing.
+  * #899 Fix compilation on FreeBSD older than version 12.
+  * #898 Fix compilation on aarch64 using cmake.
+  * #882 Fix pkgconfig file generation.
+  * #885 #891 Cmake: Add detection of install dirs from command line.
+  * #900 Cmake: Add warning message for too old MSVC.
+  * #889 Add warning message when including zlib-ng.h and zlib.g in the same compilation unit.
+  * #879 Cleanups for cmake.
+  * #896 #893 #892 Minor changes to CI/tests.
+
+-------------------------------------------------------------------
+Fri Mar 26 09:07:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on armv6 and armv7
+
+-------------------------------------------------------------------
+Tue Mar 23 14:58:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Mar 23 13:15:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Initial version 2.0.1
