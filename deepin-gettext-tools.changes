@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 01:50:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded BuildRequires on python. 
+
+-------------------------------------------------------------------
 Thu Aug 27 13:04:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-gettext-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           deepin-gettext-tools
 Version:        1.0.8
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        Deepin wrapper for gettext
-Url:            https://github.com/linuxdeepin/deepin-gettext-tools
+URL:            https://github.com/linuxdeepin/deepin-gettext-tools
 Group:          Development/Tools/Other
 Source:         https://github.com/linuxdeepin/deepin-gettext-tools/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python
 Requires:       gettext
 Requires:       python3
 Requires:       perl(Config::Tiny)
@@ -32,7 +32,6 @@ Requires:       perl(Exporter::Tiny)
 Requires:       perl(XML::LibXML)
 Requires:       perl(XML::LibXML::PrettyPrint)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{py_requires}
 
 %description
 The tools of gettext function wrapper.
@@ -71,4 +70,3 @@ chmod +x %{buildroot}%{_prefix}/lib/%{name}/*.py
 %{_prefix}/lib/%{name}/update_pot.py
 
 %changelog
-
