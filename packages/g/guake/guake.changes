@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 18 11:49:25 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add guake-follow-focus-with-dual-monitors.patch: Fix issue where
+  guake follows mouse focus when have 2 monitors
+  [gh#Guake/guake#1775, gh#Guake/guake#1761, boo#1187177].
+
+-------------------------------------------------------------------
 Tue Jun  8 15:34:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own /usr/share/pixmaps, and /usr/share/metainfo,  but only

@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            http://guake-project.org/
 Source:         https://github.com/Guake/guake/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM guake-follow-focus-with-dual-monitors.patch gh#Guake/guake#1775,gh#Guake/guake#1761,boo#1187177 badshah400@gmail.com -- Fix issue where guake follows mouse focus when have 2 monitors
+Patch0:         guake-follow-focus-with-dual-monitors.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -53,7 +55,7 @@ BuildArch:      noarch
 Guake is a dropdown terminal made for the GNOME desktop environment.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 make %{?_smp_mflags}

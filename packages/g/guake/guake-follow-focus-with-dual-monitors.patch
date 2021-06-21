@@ -1,0 +1,47 @@
+From c77c42530ba55d6a0f7f5b1321de06418516dbb6 Mon Sep 17 00:00:00 2001
+From: woodpenker <woodpenker@163.com>
+Date: Mon, 22 Jun 2020 16:04:00 +0800
+Subject: [PATCH 1/2] fix: #1761 guake follows mouse focus when have 2 monitors
+
+---
+ guake/utils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/guake/utils.py b/guake/utils.py
+index db0845ff..bcf87701 100644
+--- a/guake/utils.py
++++ b/guake/utils.py
+@@ -169,7 +169,7 @@ def set_window_state(self, window_state):
+         if not window_state & Gdk.WindowState.WITHDRAWN:
+             if self.is_fullscreen():
+                 self.fullscreen()
+-            else:
++            elif window_state & Gdk.WindowState.FOCUSED:
+                 self.unfullscreen()
+ 
+     def fullscreen(self):
+
+From 4288a7a5ff1bd9240ebe4b2e2ead6c8780d75b74 Mon Sep 17 00:00:00 2001
+From: woodpenker <woodpenker5@gmail.com>
+Date: Wed, 2 Sep 2020 23:06:50 +0800
+Subject: [PATCH 2/2] fix: #1761 update to avoid switch when last window
+ minimized.
+
+---
+ guake/utils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/guake/utils.py b/guake/utils.py
+index bcf87701..f02f641f 100644
+--- a/guake/utils.py
++++ b/guake/utils.py
+@@ -169,7 +169,7 @@ def set_window_state(self, window_state):
+         if not window_state & Gdk.WindowState.WITHDRAWN:
+             if self.is_fullscreen():
+                 self.fullscreen()
+-            elif window_state & Gdk.WindowState.FOCUSED:
++            elif window_state & Gdk.WindowState.FOCUSED and self.guake.hidden:
+                 self.unfullscreen()
+ 
+     def fullscreen(self):
+
