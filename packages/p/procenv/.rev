@@ -52,4 +52,17 @@
   * doc improvements.</comment>
     <requestid>899894</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e15cb9134ade380df35c2e1454f2dd0</srcmd5>
+    <version>0.57</version>
+    <time>1624300546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.57:
+  * Add macports installation instructions.
+  * --timezone: Enabled for Darwin, FreeBSD, NetBSD and OpenBSD.
+  * --clocks: Add CLOCK_BOOTTIME_ALARM, CLOCK_PROCESS_CPUTIME_ID
+    and CLOCK_REALTIME_ALARM to output.
+  * darwin: Enabled --clocks.</comment>
+    <requestid>901092</requestid>
+  </revision>
 </revisionlist>
