@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 17 11:21:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- drop absolute_path_fix.patch: obsolete after previous change
+  (properly setting INSTALL_LAYOUT and libdir) 
+
+-------------------------------------------------------------------
+Thu May 27 18:48:59 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- set INSTALL_LAYOUT=RPM and adjust libdir, includedir, plugindir
+  and pcdir values to fix mariadb_config output. Also fix the
+  missing "%s" in private_library.patch so it shows the correct
+  path for plugindir [bsc#1179921] [bsc#1183878]
+
+-------------------------------------------------------------------
+Thu May 27 09:31:16 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to release 3.1.13 [bsc#1185870], [bsc#1185872], [bsc#1185868]
+  * CONC-537: Only read from MYSQL_HOME if MARIADB_HOME was not set
+  * CONC-548: Symbol conflict with libsodium
+  * CONC-490: Handshake error when CLIENT_CONNECT_WITH_DB flag was
+    set without specifying database
+  * CONC-543: Hash functions conflict with GnuTLS
+  * CONC-539: Added cipher suites ECDHE-RSA-AES128-SHA256 (0xC027)
+    and ECDHE-RSA-AES256-SHA384 (0xC028) to the cipher map which
+    maps cipher suite names to the corresponding algorithm ids
+    (Windows Schannel)
+  * CONC-535: Disabled checksum ignored in events (replication/
+    binlog API)
+- Remove mariadb-connector-c-cmake-3.20.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Apr 29 12:04:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mariadb-connector-c-cmake-3.20.patch: Fix build with cmake

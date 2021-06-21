@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.1.12
+Version:        3.1.13
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -37,9 +37,7 @@ Source1:        https://downloads.mariadb.com/Connectors/c/connector-c-%{version
 Source2:        mariadb.keyring
 Source3:        baselibs.conf
 Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
-Patch3:         absolute_path_fix.patch
 Patch4:         private_library.patch
-Patch5:         mariadb-connector-c-cmake-3.20.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig
@@ -114,9 +112,7 @@ This package holds the development files.
 %prep
 %setup -q -n %{name}-%{version}-src
 %patch1 -p1
-%patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 # plugin types seems to require no aliasing assumptions
@@ -129,12 +125,13 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
   %endif
   -DWITH_EXTERNAL_ZLIB:BOOL=ON \
   -DMARIADB_UNIX_ADDR:STRING=%{_rundir}/mysql/mysql.sock \
-  -DINSTALL_LIBDIR:STRING=%{_libdir} \
-  -DINSTALL_INCLUDEDIR:STRING=%{_includedir}/mysql \
-  -DINSTALL_PLUGINDIR:STRING=%{_libdir}/mysql/plugin/ \
+  -DINSTALL_LAYOUT=RPM \
+  -DINSTALL_LIBDIR:STRING=%{_lib} \
+  -DINSTALL_INCLUDEDIR:STRING=include/mysql \
+  -DINSTALL_PLUGINDIR:STRING=%{_lib}/mysql/plugin/ \
   -DWITH_MYSQLCOMPAT=ON \
   -DWITH_SSL=OPENSSL \
-  -DINSTALL_PCDIR="%{_libdir}/pkgconfig"
+  -DINSTALL_PCDIR="%{_lib}/pkgconfig"
 %make_jobs
 
 %install

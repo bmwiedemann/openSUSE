@@ -8,10 +8,10 @@ static linking, create a private shared library that simply
 exports all symbols. With the exception of exported symbols, it is
 identical to the regular library.
 
-Index: mariadb-connector-c-3.1.11-src/libmariadb/CMakeLists.txt
+Index: mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
 ===================================================================
---- mariadb-connector-c-3.1.11-src.orig/libmariadb/CMakeLists.txt
-+++ mariadb-connector-c-3.1.11-src/libmariadb/CMakeLists.txt
+--- mariadb-connector-c-3.1.13-src.orig/libmariadb/CMakeLists.txt
++++ mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
 @@ -414,6 +414,12 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
    SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
  ENDIF()
@@ -50,15 +50,15 @@ Index: mariadb-connector-c-3.1.11-src/libmariadb/CMakeLists.txt
  
  IF(MSVC)
     # On Windows, install PDB
-Index: mariadb-connector-c-3.1.11-src/mariadb_config/mariadb_config.c.in
+Index: mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
 ===================================================================
---- mariadb-connector-c-3.1.11-src.orig/mariadb_config/mariadb_config.c.in
-+++ mariadb-connector-c-3.1.11-src/mariadb_config/mariadb_config.c.in
+--- mariadb-connector-c-3.1.13-src.orig/mariadb_config/mariadb_config.c.in
++++ mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
 @@ -30,6 +30,7 @@ static char *mariadb_progname;
  #define INCLUDE "-I%s/@INSTALL_INCLUDEDIR@ -I%s/@INSTALL_INCLUDEDIR@/mysql"
  #define LIBS    "-L%s/@INSTALL_LIBDIR@/ -lmariadb"
  #define LIBS_SYS "@extra_dynamic_LDFLAGS@"
-+#define PRIVATE_LIBS "-L@INSTALL_LIBDIR@ -lmariadbprivate " LIBS_SYS
++#define PRIVATE_LIBS "-L%s/@INSTALL_LIBDIR@ -lmariadbprivate " LIBS_SYS
  #define CFLAGS  INCLUDE
  #define VERSION "@MARIADB_CLIENT_VERSION@"
  #define CC_VERSION "@CPACK_PACKAGE_VERSION@"
