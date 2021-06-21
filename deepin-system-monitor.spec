@@ -23,13 +23,13 @@
 %endif
 
 Name:           deepin-system-monitor
-Version:        5.8.0.27
+Version:        5.8.0.30
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
-Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 BuildRequires:  appstream-glib
 BuildRequires:  deepin-gettext-tools
@@ -96,14 +96,13 @@ translations/desktop/%{name}.desktop
 %install
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-
+%find_lang %{name} --with-qt
 %suse_update_desktop_file -r %{name} QT System Monitor
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
 %license LICENSE COPYING
+%doc README.md CHANGELOG.md
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
@@ -113,9 +112,12 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/deepin-system-monitor.svg
+%dir %{_datadir}/deepin-system-monitor
+%dir %{_datadir}/deepin-system-monitor/translations
+%{_datadir}/deepin-system-monitor/translations/deepin-system-monitor.qm
 
-%files lang
-%defattr(-,root,root,-)
-%{_datadir}/%{name}
+%files lang -f %{name}.lang
+# RPM currently can not handle Asturian
+%lang(ast) %{_datadir}/deepin-system-monitor/translations/deepin-system-monitor_ast.qm
 
 %changelog

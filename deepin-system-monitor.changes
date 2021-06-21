@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 11:16:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.8.0.30
+  * Update translations.
+  * Fix: Download size in system monitor process list is greater
+    than the total received data.
+  * Fix: When connecting to wireless network, the network data
+    cannot be monitored in the process list.
+- Use find_lang macro
+
+-------------------------------------------------------------------
 Thu May  6 07:10:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.0.27
