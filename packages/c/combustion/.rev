@@ -78,4 +78,12 @@
     <comment></comment>
     <requestid>900741</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>5d5183916b8fd46b5ae5850ceadd7339</srcmd5>
+    <version>0.2</version>
+    <time>1624260749</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the exit status explicitly (forwarded request 901093 from favogt)</comment>
+    <requestid>901094</requestid>
+  </revision>
 </revisionlist>

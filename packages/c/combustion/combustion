@@ -167,3 +167,5 @@ else
 	fi
 	chroot /sysroot snapper --no-dbus create -d "After combustion configuration" || :
 fi
+
+exit 0
