@@ -17,7 +17,7 @@
 
 
 Name:           daps
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 
 %define docbuilddir    %{_datadir}/daps
@@ -40,7 +40,6 @@ BuildRequires:  docbook-xsl-stylesheets >= 1.77
 BuildRequires:  docbook_4
 BuildRequires:  docbook_5
 BuildRequires:  fdupes
-BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  jing
 BuildRequires:  libxml2-tools
@@ -71,7 +70,6 @@ Requires:       docbook-xsl-stylesheets >= 1.77
 Requires:       docbook5-xsl-stylesheets >= 1.77
 Requires:       docbook_4
 Requires:       docbook_5
-Requires:       ghostscript-library
 Requires:       inkscape
 Requires:       java >= 1.8.0
 Requires:       jing
@@ -126,7 +124,9 @@ converting DocBook XML.
 
 # Correct shebang line as suggested in
 # https://lists.opensuse.org/opensuse-packaging/2018-03/msg00017.html
-sed -i '1 s|/usr/bin/env python|/usr/bin/python|' libexec/daps-xmlwellformed
+sed -i '1 s|/usr/bin/env python|/usr/bin/python|' libexec/daps-xmlwellformed \
+  libexec/getentityname.py \
+  libexec/validate-tables.py
 
 #--------------------------------------------------------------------------
 %build

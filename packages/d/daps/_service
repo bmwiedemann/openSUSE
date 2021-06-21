@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">3.1.2</param>
+    <param name="versionformat">3.2.0</param>
     <param name="versionprefix"></param>
     <param name="url">https://github.com/openSUSE/daps.git</param>
     <param name="scm">git</param>
-    <param name="revision">3.1.2</param>
+    <param name="revision">3.2.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
