@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 16 14:34:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.0
+  * Long list of changes, consult ChangeLog.md installed in
+    %{_docdir}/Ipopt-devel or see here:
+    https://github.com/coin-or/Ipopt/blob/releases/3.14.0/ChangeLog.md.
+- Package ChangeLog.md as part of doc files.
+
+-------------------------------------------------------------------
 Tue May 18 11:25:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build for architectures where mumps does not exist

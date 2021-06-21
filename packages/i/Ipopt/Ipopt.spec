@@ -18,7 +18,7 @@
 
 %define shlib libipopt0
 Name:           Ipopt
-Version:        3.13.4
+Version:        3.14.0
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
@@ -90,7 +90,7 @@ This package provides the java bindings for %{name} in a jar file.
 strip-nondeterminism %{buildroot}%{_javadir}/org.coinor.ipopt.jar
 
 # REMOVE FILES TO BE PACKAGED USING %%doc
-for f in AUTHORS README.md LICENSE;
+for f in AUTHORS README.md LICENSE ChangeLog.md;
 do
   rm %{buildroot}%{_docdir}/%{name}/${f}
 done
@@ -109,7 +109,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 
 %files devel
-%doc README.md AUTHORS
+%doc README.md AUTHORS ChangeLog.md
 %doc doc/html
 %license LICENSE
 %{_includedir}/*
