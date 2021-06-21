@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.12
-%define patchversion 5.12.10
+%define patchversion 5.12.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -54,6 +54,10 @@
 %define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
+
+# Split Leap-only modules to kernel-*-optional subpackage?
+%define split_optional	0
+
 %if "%CONFIG_MODULES" != "y"
 	%define klp_symbols 0
 %endif
@@ -68,9 +72,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.12.10
+Version:        5.12.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb92eaf7
+Release:        <RELEASE>.g0e46a2c
 %else
 Release:        0
 %endif
@@ -181,10 +185,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
-Provides:       kernel-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
+Provides:       kernel-%build_flavor-base-srchash-0e46a2c644754074b091f728831994304f5dbff0
+Provides:       kernel-srchash-0e46a2c644754074b091f728831994304f5dbff0
 # END COMMON DEPS
-Provides:       %name-srchash-b92eaf7cf30a84428cfe019308359a10f12d8e4c
+Provides:       %name-srchash-0e46a2c644754074b091f728831994304f5dbff0
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -427,20 +431,25 @@ fi
 mkdir -p %kernel_build_dir
 
 # Generate a list of modules with their support status marking
+# The first marker is supposed to be either "+external", "-" or "-!optional",
+# where "+external" is for an externally supported module, "-" is for an
+# unsuppored module, "-!optional" is for Leap-only unsupported module.
+# There can be an optional arch-specific second marker with "+arch" (e.g.
+# +arm64), which enforces the module to be supported on the specific arch.
 %_sourcedir/guards --list --with-guards <%_sourcedir/supported.conf | \
-awk '
-	/\+external / {
-		print $(NF) " external";
-		next;
+awk '{
+    t = "";
+    for (i = 1; i < NF; i++) {
+	if ($i == "+external") {
+		t = " external";
+	} else if ($i == "+'%cpu_arch'") {
+		t = "";
+	} else if ($i ~ "^-") {
+		t = " no";
 	}
-	/^-/ {
-		print $(NF) " no";
-		next;
-	}
-	{
-		print $(NF);
-	}
-' >%kernel_build_dir/Module.supported
+    }
+    print $(NF) t;
+}' >%kernel_build_dir/Module.supported
 subpackages=(
 	base
 %if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
@@ -452,6 +461,22 @@ for package in "${subpackages[@]}"; do
 		<%_sourcedir/supported.conf | sed 's,.*/,,; s,\.ko$,,' | \
 		sort -u >%kernel_build_dir/Module."$package"
 done
+%if %split_extra && %split_optional
+# Module.optional is in a special form, containing guard markers for
+# both extra and optional modules, which is processed by split-modules
+%_sourcedir/guards --list --with-guards <%_sourcedir/supported.conf | \
+awk '{
+    t = "";
+    for (i = 1; i < NF; i++) {
+	if ($i == "+'%cpu_arch'") {
+		t = "";
+	} else if ($i ~ "^-") {
+		t = $i
+	}
+    }
+    if (t != "") {print t,$(NF);}
+}' >%kernel_build_dir/Module.optional
+%endif
 
 cd linux-%srcversion
 
@@ -581,7 +606,7 @@ fi
 make clean $MAKE_ARGS
 
 rm -f source
-find . ! -type d ! -name 'Module.base' ! -name 'Module.*-kmp' -printf '%%P\n' \
+find . ! -type d ! -name 'Module.base' ! -name 'Module.*-kmp' ! -name 'Module.optional' -printf '%%P\n' \
 	> %my_builddir/obj-files
 
 %build
@@ -769,7 +794,11 @@ if test %CONFIG_MODULE_SIG = "y"; then
     done
 fi
 
-for sub in '' '-extra'; do
+for sub in '' '-extra' \
+%if %split_extra && %split_optional
+    '-optional' \
+%endif
+; do
     case "$sub" in
     '') base_package=1 ;;
     *) base_package=0 ;;
@@ -871,7 +900,7 @@ if [ %CONFIG_MODULES = y ]; then
         echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
 
         %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
-            find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' > ipa-clones.list
+            find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
             cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
             echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
             tar -C %kernel_build_dir --verbatim-files-from -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
@@ -990,6 +1019,8 @@ if [ %CONFIG_MODULES = y ]; then
         sh ../scripts/mkmakefile ../../../%{basename:%src_install_dir} \
             %rpm_install_dir/%cpu_arch_flavor \
             $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
+    else
+       echo include ../../../%{basename:%src_install_dir}/Makefile > %rpm_install_dir/%cpu_arch_flavor/Makefile
     fi
 fi
 
@@ -1084,8 +1115,12 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 	echo "/lib/firmware/%kernelrelease-%build_flavor"
     fi
 } > %my_builddir/kernel-main.files
+
 %if %split_extra
     add_dirs_to_filelist %my_builddir/unsupported-modules > %my_builddir/kernel-extra.files
+%if %split_extra && %split_optional
+    add_dirs_to_filelist %my_builddir/optional-modules > %my_builddir/kernel-optional.files
+%endif
 
 %if 0%{?sle_version} >= 150000
     # By default, loading unsupported modules is disabled on SLE through
@@ -1177,6 +1212,7 @@ Obsoletes:      kernel-ec2-extra <= 4.4
 %obsolete_rebuilds %name-extra
 Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
 Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
+Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
 %ifarch %ix86
 Conflicts:      libc.so.6()(64bit)
 %endif
@@ -1199,6 +1235,66 @@ This package contains additional modules not supported by SUSE.
 %if %split_extra
 
 %files extra -f kernel-extra.files
+%defattr(-, root, root)
+%endif
+
+%if %split_extra && %split_optional
+%package optional
+Summary:        The Standard Kernel - Optional kernel modules
+Group:          System/Kernel
+Url:            http://www.kernel.org/
+Provides:       %name-optional_%_target_cpu = %version-%source_rel
+Provides:       kernel-optional = %version-%source_rel
+Provides:       multiversion(kernel)
+Requires:       %name-extra_%_target_cpu = %version-%source_rel
+Requires(pre):  coreutils awk
+Requires(post): modutils
+Requires(post): perl-Bootloader
+Requires(post): mkinitrd
+%ifarch %ix86
+Provides:       kernel-trace-optional = 3.13
+Obsoletes:      kernel-trace-optional <= 3.13
+%endif
+%ifarch ppc64
+Provides:       kernel-kdump-optional = 2.6.28
+Obsoletes:      kernel-kdump-optional <= 2.6.28
+%endif
+%ifarch s390x
+Provides:       kernel-trace-optional = 3.13
+Obsoletes:      kernel-trace-optional <= 3.13
+%endif
+%ifarch x86_64
+Provides:       kernel-trace-optional = 3.13
+Obsoletes:      kernel-trace-optional <= 3.13
+Provides:       kernel-bigsmp-optional = 3.1
+Obsoletes:      kernel-bigsmp-optional <= 3.1
+Provides:       kernel-desktop-optional = 4.3
+Obsoletes:      kernel-desktop-optional <= 4.3
+Provides:       kernel-xen-optional = 4.4
+Obsoletes:      kernel-xen-optional <= 4.4
+Provides:       kernel-ec2-optional = 4.4
+Obsoletes:      kernel-ec2-optional <= 4.4
+%endif
+%obsolete_rebuilds %name-optional
+Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+
+%description optional
+The standard kernel for both uniprocessor and multiprocessor systems.
+
+This package contains optional modules only for openSUSE Leap.
+
+
+%source_timestamp
+
+%preun optional -f preun-optional.sh
+%postun optional -f postun-optional.sh
+%pre optional -f pre-optional.sh
+%post optional -f post-optional.sh
+
+%files optional -f kernel-optional.files
 %defattr(-, root, root)
 %endif
 
