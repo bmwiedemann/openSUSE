@@ -52,10 +52,17 @@ directory = './vendor'
 EOF
 
 %build
-cargo build --release --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend --locked %{?_smp_mflags}
+cargo build \
+  --release \
+  --locked %{?_smp_mflags} \
+  --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
 
 %install
-cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+cargo install \
+  --no-track \
+  --root=%{buildroot}%{_prefix} \
+  --path . \
+  --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
 
 install -pm0755 -D target/release/spotifyd %{buildroot}%{_bindir}/spotifyd
 install -pm0644 -D contrib/spotifyd.service %{buildroot}%{_unitdir}/spotifyd.service
