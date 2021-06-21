@@ -28,7 +28,7 @@
 %endif
 
 Name:           suse-module-tools
-Version:        15.4.1
+Version:        16.0.4
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -45,17 +45,13 @@ Requires:       rpm
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
 Requires(post): coreutils
-# Use weak dependencies for mkinitrd and kmod in order to
+# Use weak dependencies for dracut and kmod in order to
 # keep Ring0 lean. In normal deployments, these packages
 # will be available anyway.
-Recommends:     mkinitrd
-%if 0%{?suse_version} >= 1315
+Recommends:     dracut
 Recommends:     kmod
-%else
-Recommends:     modutils
-%endif
-# This release requires the dracut fix for bsc#1127891
-Conflicts:      dracut < 44.2
+# This release requires the dracut module 90nvdimm
+Conflicts:      dracut < 49.1
 
 %description
 This package contains helper scripts for KMP installation and
@@ -63,16 +59,18 @@ uninstallation, as well as default configuration files for depmod and
 modprobe. These utilities are provided by kmod-compat or
 module-init-tools, whichever implementation you choose to install.
 
+
 %package legacy
 Summary:        Legacy "weak-modules" script for Code10
 Group:          System/Base
 Requires:       %{name}
 Requires:       binutils
+Supplements:    dkms
 
 %description legacy
 This package contains the legacy "weak-modules" script for kernel
 module package (KMP) support. It was replaced by "weak-modules2" in
-SLE 11 and later.
+SLE 11 and later. It is still used by the DKMS module packaging framework.
 
 %prep
 %setup -q
@@ -82,6 +80,9 @@ SLE 11 and later.
 %install
 # now assemble the parts for modprobe.conf
 cp modprobe.conf/modprobe.conf.common 00-system.conf
+%ifarch ppc64le
+ln -f modprobe.conf/modprobe.conf.ppc64 modprobe.conf/modprobe.conf.$RPM_ARCH
+%endif
 if [ -f "modprobe.conf/modprobe.conf.$RPM_ARCH" ]; then
 	cat "modprobe.conf/modprobe.conf.$RPM_ARCH" >>00-system.conf
 fi
@@ -127,7 +128,7 @@ install -pm 644 50-kernel-uname_r.conf "%{buildroot}%{_unitdir}/systemd-sysctl.s
 # Not needed in SLE11, where sg is loaded via udev rule.
 install -d -m 755 "%{buildroot}%{modules_load_dir}"
 install -pm 644 sg.conf "%{buildroot}%{modules_load_dir}"
-%ifarch ppc64le
+%ifarch ppc64 ppc64le
 install -d -m 755 %{buildroot}/usr/lib/systemd/system-generators
 install -m 755 udev-trigger-generator %{buildroot}/usr/lib/systemd/system-generators
 %endif
@@ -271,7 +272,7 @@ done
 %{_unitdir}/systemd-sysctl.service.d
 %dir %{modules_load_dir}
 %{modules_load_dir}/sg.conf
-%ifarch ppc64le
+%ifarch ppc64 ppc64le
 /usr/lib/systemd/system-generators
 %endif
 

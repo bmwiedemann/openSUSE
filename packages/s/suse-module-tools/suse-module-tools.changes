@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jun 17 14:43:13 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.4:
+  * re-add legacy subpackage with "weak-modules", and add a
+    "Supplements" dependency on dkms, which needs it
+
+-------------------------------------------------------------------
+Thu Jun 17 13:10:42 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.3:
+  * Fix treatment of compressed modules (bsc#1187093)
+
+-------------------------------------------------------------------
+Thu Jun 10 08:41:47 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.2:
+  * fix kernel version in dracut invocation (bug in 16.0.0)
+  * spec file: really fix ppc64/ppc64le
+
+-------------------------------------------------------------------
+Thu May 27 19:13:05 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.1:
+  * fix ppc64/ppc64le build
+
+-------------------------------------------------------------------
+Thu May 27 09:29:56 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.0
+- modprobe.conf cleanup (bsc#1161343)
+  * Unify ppc64 and ppc64le
+  * Delete files for obsolete architectures
+  * Remove obsolete SUSE_INITRD statements (bsc#1161343)
+  * Add dependency on dracut 049.1 (bsc#1142152, ltc#176292, FATE#327775)
+- Replace mkinitrd with dracut everywhere
+- Remove obsolete "weak-modules" script
+
+-------------------------------------------------------------------
 Thu Apr 22 16:29:01 UTC 2021 - obs-service-tar-scm@invalid
 
 - Update to version 15.4.1:

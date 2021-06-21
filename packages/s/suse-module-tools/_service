@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/suse-module-tools.git</param>
@@ -14,6 +15,7 @@
     <param name="files">*/suse-module-tools.spec</param>
     <param name="outfilename">suse-module-tools.spec</param>
   </service>
+  <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
