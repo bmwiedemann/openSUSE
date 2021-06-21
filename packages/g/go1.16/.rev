@@ -83,4 +83,31 @@
   * go#45307 os/signal: timeout in TestAllThreadsSyscallSignals (forwarded request 891377 from jfkw)</comment>
     <requestid>891378</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>db8c118a6a28f0105173ae6fa823e1c3</srcmd5>
+    <version>1.16.5</version>
+    <time>1624300486</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.5 (released 2021-06-03) includes security fixes to the
+  archive/zip, math/big, net, and net/http/httputil packages, as
+  well as bug fixes to the linker, the go command, and the net/http
+  package.
+  CVE-2021-33195 CVE-2021-33196 CVE-2021-33197 CVE-2021-33198
+  Refs boo#1182345 go1.16 release tracking
+  * boo#1187443 go#46241 CVE-2021-33195
+  * go#46357 net: Lookup functions may return invalid host names
+  * go#46530 net: Unix dnsclient test for CVE-2021-33195 assumes that 1.2.3.4 does not resolve
+  * boo#1186622 go#46242 CVE-2021-33196
+  * go#46397 archive/zip: malformed archive may cause panic or memory exhaustion
+  * boo#1187444 go#46313 CVE-2021-33197
+  * go#46315 net/http/httputil: ReverseProxy forwards Connection headers if first one is empty
+  * boo#1187445 go#45910 CVE-2021-33198
+  * go#46306 math/big: (*Rat).SetString with &quot;1.770p02041010010011001001&quot; crashes with &quot;makeslice: len out of range&quot;
+  * go#46214 cmd/go: make go mod download with no arguments leave go.sum alone
+  * go#46144 cmd/go: error out of 'go mod tidy' if the go.mod file specifies a newer-than-supported Go version
+  * go#46128 cmd/link: internal error when externally linking very large binaries
+  * go#45927 cmd/link: SIGSEGV running 'openshift-install version' for release-4.8 using external linking on PPC64LE
+  * go#45832 cmd/link: unexpected trampoline when cross-compiling to ppc64le (forwarded request 900520 from jfkw)</comment>
+    <requestid>900522</requestid>
+  </revision>
 </revisionlist>
