@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Jun 21 11:23:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7
+  * This version also adds a C++ polymorphic interface allowing to
+    experiment with several variants of the domain of convex
+    polyhedra: Poly, U_Poly, F_Poly, UF_Poly and their XXX_Stats
+    versions, computing timing information for abstract operators.
+
+-------------------------------------------------------------------
+Wed Sep 30 08:01:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0.6) for build.opensuse.org
