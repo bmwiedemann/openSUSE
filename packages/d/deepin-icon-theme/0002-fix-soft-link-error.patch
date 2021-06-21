@@ -1,0 +1,26 @@
+From e8da059d728cb230722cd201a45624072eaae5dd Mon Sep 17 00:00:00 2001
+From: justforlxz <justforlxz@gmail.com>
+Date: Mon, 12 Apr 2021 16:42:13 +0800
+Subject: [PATCH 2/2] fix: soft link error
+
+some soft link file was wrong
+
+Log:
+Issue: Closes #39
+Change-Id: I8b5bcdfe6c656be60ac0523ad06f8ae29f5ae0a0
+---
+ Vintage/apps/16/wechat.svg                      |   1 +
+ 1 files changed, 1 insertion(+)
+
+diff --git a/Vintage/apps/16/wechat.svg b/Vintage/apps/16/wechat.svg
+new file mode 120000
+index 00000000..dc6aad0e
+--- /dev/null
++++ b/Vintage/apps/16/wechat.svg
+@@ -0,0 +1 @@
++com.qq.weixin.deepin.svg
+\ No newline at end of file
+
+-- 
+2.26.2
+

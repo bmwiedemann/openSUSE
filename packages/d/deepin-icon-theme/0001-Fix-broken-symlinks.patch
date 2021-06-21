@@ -1,0 +1,71 @@
+From 4dad819581634263200ed58119a7065070fda32a Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Mon, 7 Jun 2021 19:44:38 +0200
+Subject: [PATCH] Fix broken symlinks
+
+---
+ bloom/actions/24/draw-triangle1.svg    | 2 +-
+ bloom/actions/24/draw-triangle2.svg    | 2 +-
+ bloom/actions/24/draw-triangle3.svg    | 2 +-
+ bloom/actions/24/draw-triangle4.svg    | 2 +-
+ bloom/actions/24/edit-delete-shred.svg | 1 -
+ bloom/actions/24/itmages-remove.svg    | 1 -
+ 6 files changed, 4 insertions(+), 6 deletions(-)
+ delete mode 120000 bloom/actions/24/edit-delete-shred.svg
+ delete mode 120000 bloom/actions/24/itmages-remove.svg
+
+diff --git a/bloom/actions/24/draw-triangle1.svg b/bloom/actions/24/draw-triangle1.svg
+index 9bfebcea..c2afb66e 120000
+--- a/bloom/actions/24/draw-triangle1.svg
++++ b/bloom/actions/24/draw-triangle1.svg
+@@ -1 +1 @@
+-arrow-left.svg
+\ No newline at end of file
++../../status/20/arrow-left.svg
+\ No newline at end of file
+diff --git a/bloom/actions/24/draw-triangle2.svg b/bloom/actions/24/draw-triangle2.svg
+index 2518a46f..0c0154ed 120000
+--- a/bloom/actions/24/draw-triangle2.svg
++++ b/bloom/actions/24/draw-triangle2.svg
+@@ -1 +1 @@
+-arrow-right.svg
+\ No newline at end of file
++../../status/20/arrow-right.svg
+\ No newline at end of file
+diff --git a/bloom/actions/24/draw-triangle3.svg b/bloom/actions/24/draw-triangle3.svg
+index a518c3c8..ec5bd9c0 120000
+--- a/bloom/actions/24/draw-triangle3.svg
++++ b/bloom/actions/24/draw-triangle3.svg
+@@ -1 +1 @@
+-arrow-up.svg
+\ No newline at end of file
++../../status/20/arrow-up.svg
+\ No newline at end of file
+diff --git a/bloom/actions/24/draw-triangle4.svg b/bloom/actions/24/draw-triangle4.svg
+index dc0c6863..a5c5d1fc 120000
+--- a/bloom/actions/24/draw-triangle4.svg
++++ b/bloom/actions/24/draw-triangle4.svg
+@@ -1 +1 @@
+-arrow-down.svg
+\ No newline at end of file
++../../status/20/arrow-down.svg
+\ No newline at end of file
+diff --git a/bloom/actions/24/edit-delete-shred.svg b/bloom/actions/24/edit-delete-shred.svg
+deleted file mode 120000
+index 0e78c06d..00000000
+--- a/bloom/actions/24/edit-delete-shred.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-trash-empty.svg
+\ No newline at end of file
+diff --git a/bloom/actions/24/itmages-remove.svg b/bloom/actions/24/itmages-remove.svg
+deleted file mode 120000
+index 0e78c06d..00000000
+--- a/bloom/actions/24/itmages-remove.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-trash-empty.svg
+\ No newline at end of file
+-- 
+2.26.2
+

@@ -1,0 +1,222 @@
+From c77a8b6bc4cbe11b55dc68a0b08c0d0911dbb8de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E8=94=A1=E5=8E=9A=E8=BE=89?= <caihouhui@uniontech.com>
+Date: Tue, 20 Apr 2021 16:06:09 +0800
+Subject: [PATCH 1/2] fix: fix litian.
+
+Change-Id: I524c0b6b3eaff354b6626508a684341286503918
+---
+ Vintage/apps/128/wechat.svg                 | 1 -
+ Vintage/apps/16/wechat.svg                  | 1 -
+ Vintage/apps/24/wechat.svg                  | 1 -
+ Vintage/apps/32/wechat.svg                  | 1 -
+ Vintage/apps/48/wechat.svg                  | 1 -
+ Vintage/apps/64/wechat.svg                  | 1 -
+ Vintage/apps/96/wechat.svg                  | 1 -
+ Vintage/mimetypes/128/application-x-arj.svg | 1 -
+ Vintage/mimetypes/128/qgis-sqlite.svg       | 1 -
+ Vintage/mimetypes/16/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/16/qgis-sqlite.svg        | 1 -
+ Vintage/mimetypes/24/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/24/qgis-sqlite.svg        | 1 -
+ Vintage/mimetypes/32/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/32/qgis-sqlite.svg        | 1 -
+ Vintage/mimetypes/48/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/48/qgis-sqlite.svg        | 1 -
+ Vintage/mimetypes/64/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/64/qgis-sqlite.svg        | 1 -
+ Vintage/mimetypes/96/application-x-arj.svg  | 1 -
+ Vintage/mimetypes/96/qgis-sqlite.svg        | 1 -
+ 21 files changed, 21 deletions(-)
+ delete mode 120000 Vintage/apps/128/wechat.svg
+ delete mode 120000 Vintage/apps/16/wechat.svg
+ delete mode 120000 Vintage/apps/24/wechat.svg
+ delete mode 120000 Vintage/apps/32/wechat.svg
+ delete mode 120000 Vintage/apps/48/wechat.svg
+ delete mode 120000 Vintage/apps/64/wechat.svg
+ delete mode 120000 Vintage/apps/96/wechat.svg
+ delete mode 120000 Vintage/mimetypes/128/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/128/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/16/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/16/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/24/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/24/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/32/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/32/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/48/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/48/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/64/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/64/qgis-sqlite.svg
+ delete mode 120000 Vintage/mimetypes/96/application-x-arj.svg
+ delete mode 120000 Vintage/mimetypes/96/qgis-sqlite.svg
+
+diff --git a/Vintage/apps/128/wechat.svg b/Vintage/apps/128/wechat.svg
+deleted file mode 120000
+index 0beef1a1..00000000
+--- a/Vintage/apps/128/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/128/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/16/wechat.svg b/Vintage/apps/16/wechat.svg
+deleted file mode 120000
+index 19ffe925..00000000
+--- a/Vintage/apps/16/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/16/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/24/wechat.svg b/Vintage/apps/24/wechat.svg
+deleted file mode 120000
+index 444e1e6e..00000000
+--- a/Vintage/apps/24/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/24/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/32/wechat.svg b/Vintage/apps/32/wechat.svg
+deleted file mode 120000
+index f5748dfb..00000000
+--- a/Vintage/apps/32/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/32/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/48/wechat.svg b/Vintage/apps/48/wechat.svg
+deleted file mode 120000
+index e314e033..00000000
+--- a/Vintage/apps/48/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/48/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/64/wechat.svg b/Vintage/apps/64/wechat.svg
+deleted file mode 120000
+index 22666138..00000000
+--- a/Vintage/apps/64/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/64/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/apps/96/wechat.svg b/Vintage/apps/96/wechat.svg
+deleted file mode 120000
+index dbbc4c33..00000000
+--- a/Vintage/apps/96/wechat.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/vintage/apps/96/com.qq.weixin.deepin.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/128/application-x-arj.svg b/Vintage/mimetypes/128/application-x-arj.svg
+deleted file mode 120000
+index 0b0d3bbb..00000000
+--- a/Vintage/mimetypes/128/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/128/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/128/qgis-sqlite.svg b/Vintage/mimetypes/128/qgis-sqlite.svg
+deleted file mode 120000
+index 61ca0769..00000000
+--- a/Vintage/mimetypes/128/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/128/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/16/application-x-arj.svg b/Vintage/mimetypes/16/application-x-arj.svg
+deleted file mode 120000
+index 7f79cada..00000000
+--- a/Vintage/mimetypes/16/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/16/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/16/qgis-sqlite.svg b/Vintage/mimetypes/16/qgis-sqlite.svg
+deleted file mode 120000
+index a8b9b94d..00000000
+--- a/Vintage/mimetypes/16/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/16/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/24/application-x-arj.svg b/Vintage/mimetypes/24/application-x-arj.svg
+deleted file mode 120000
+index ce41f872..00000000
+--- a/Vintage/mimetypes/24/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/24/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/24/qgis-sqlite.svg b/Vintage/mimetypes/24/qgis-sqlite.svg
+deleted file mode 120000
+index 61ca0769..00000000
+--- a/Vintage/mimetypes/24/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/128/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/32/application-x-arj.svg b/Vintage/mimetypes/32/application-x-arj.svg
+deleted file mode 120000
+index cf92c6fc..00000000
+--- a/Vintage/mimetypes/32/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/32/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/32/qgis-sqlite.svg b/Vintage/mimetypes/32/qgis-sqlite.svg
+deleted file mode 120000
+index 760c261e..00000000
+--- a/Vintage/mimetypes/32/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/32/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/48/application-x-arj.svg b/Vintage/mimetypes/48/application-x-arj.svg
+deleted file mode 120000
+index 15188ce5..00000000
+--- a/Vintage/mimetypes/48/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/48/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/48/qgis-sqlite.svg b/Vintage/mimetypes/48/qgis-sqlite.svg
+deleted file mode 120000
+index cccbb300..00000000
+--- a/Vintage/mimetypes/48/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/48/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/64/application-x-arj.svg b/Vintage/mimetypes/64/application-x-arj.svg
+deleted file mode 120000
+index 009b6257..00000000
+--- a/Vintage/mimetypes/64/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/64/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/64/qgis-sqlite.svg b/Vintage/mimetypes/64/qgis-sqlite.svg
+deleted file mode 120000
+index 307e99d6..00000000
+--- a/Vintage/mimetypes/64/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/64/application-sql.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/96/application-x-arj.svg b/Vintage/mimetypes/96/application-x-arj.svg
+deleted file mode 120000
+index b491c038..00000000
+--- a/Vintage/mimetypes/96/application-x-arj.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/96/application-vnd.ms-cab-compressed.svg
+\ No newline at end of file
+diff --git a/Vintage/mimetypes/96/qgis-sqlite.svg b/Vintage/mimetypes/96/qgis-sqlite.svg
+deleted file mode 120000
+index 52caa7ec..00000000
+--- a/Vintage/mimetypes/96/qgis-sqlite.svg
++++ /dev/null
+@@ -1 +0,0 @@
+-/home/fuqian/.local/share/icons/three/mimetypes/96/application-sql.svg
+\ No newline at end of file
+-- 
+2.26.2
+

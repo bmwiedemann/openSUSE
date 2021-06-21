@@ -1,0 +1,43 @@
+From 509e834237bd88ae2fe4e559bfff58cc964037b7 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Fri, 8 May 2020 15:41:22 +0800
+Subject: [PATCH] fix: Makefile's install target
+
+bloom-v20 is gone and install-cursors is included in the install-icons target, so better just merge them.
+---
+ Makefile | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9c06ef1d..a2e29a55 100644
+--- a/Makefile
++++ b/Makefile
+@@ -42,20 +42,17 @@ clean:
+ 	rm -rf build
+ 
+ 
+-install-icons:
++install:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom
+ 	cp -r bloom/* $(DESTDIR)$(PREFIX)/share/icons/bloom
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom-dark
+ 	cp -r bloom-dark/* $(DESTDIR)$(PREFIX)/share/icons/bloom-dark
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom-v20
+-	cp -r bloom-v20/* $(DESTDIR)$(PREFIX)/share/icons/bloom-v20
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/Vintage
+ 	cp -r Vintage/* $(DESTDIR)$(PREFIX)/share/icons/Vintage
+-
+-install-cursors:
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom
+-	cp -r bloom/cursors $(DESTDIR)$(PREFIX)/share/icons/bloom
+-	install -m644 bloom/cursor.theme $(DESTDIR)$(PREFIX)/share/icons/bloom/cursor.theme
++	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom-classic
++	cp -r bloom-classic/* $(DESTDIR)$(PREFIX)/share/icons/bloom-classic
++	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/bloom-classic-dark
++	cp -r bloom-classic-dark/* $(DESTDIR)$(PREFIX)/share/icons/bloom-classic-dark
+ 
+ hicolor-links:
+ 	./tools/hicolor.links bloom hicolor.list ./
+-- 
+2.26.2
+

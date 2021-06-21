@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  7 15:25:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2021.03.12
+  * Add Vintage theme
+  * fix some icons in Vintage
+- Replaced deepin-icon-theme_fix-makefile.patch with
+  0001-fix-Makefile-s-install-target.patch
+- Added upstream patches
+  * 0001-fix-fix-litian.patch
+  * 0002-fix-soft-link-error.patch
+- Replaced manual symlinking in %install section with upstreamed
+  0001-Fix-broken-symlinks.patch
+
+-------------------------------------------------------------------
 Thu Feb 25 13:57:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2020.09.25

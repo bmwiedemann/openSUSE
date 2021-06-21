@@ -7,4 +7,21 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886015</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eac5d50ad3fc48fccb23a7136b9d4bd4</srcmd5>
+    <version>unknown</version>
+    <time>1624300555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2021.03.12
+  * Add Vintage theme
+  * fix some icons in Vintage
+- Replaced deepin-icon-theme_fix-makefile.patch with
+  0001-fix-Makefile-s-install-target.patch
+- Added upstream patches
+  * 0001-fix-fix-litian.patch
+  * 0002-fix-soft-link-error.patch
+- Replaced manual symlinking in %install section with upstreamed
+  0001-Fix-broken-symlinks.patch (forwarded request 900410 from hillwood)</comment>
+    <requestid>901172</requestid>
+  </revision>
 </revisionlist>
