@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 10:52:40 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
+
+- Add binutils-gold for aarch64 builds (bsc#1187497) 
+
+-------------------------------------------------------------------
 Thu Jun  3 13:23:59 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop cni-bin-dir.patch in favor a sed command to handle multiple

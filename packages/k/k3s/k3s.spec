@@ -40,6 +40,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.15
 BuildRequires:  pkgconfig(sqlite3)
+%ifarch aarch64
+BuildRequires:  binutils-gold
+%endif
 Requires:       cni-plugins
 Requires:       conntrack-tools
 Requires:       containerd
