@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 21 14:20:50 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1624262954.5361bf1c:
+  * bmwqemu: Mark fileContent function as deprecated before removing
+  * Replace bmwqemu::fileContent usage with cleaner Mojo::File
+  * Simplify bmwqemu::fileContent with Mojo::File
+  * Remove broken 'vncpw' handling after regression in 6d2d8062
+  * Remove unused bmwqemu fileContent and save_vars references
+  * Remove unused use-statements in backend::amt
+  * Fix QEMU_COMPRESS_QCOW2 missing implementation introduced with c670720d
+  * t: Add missing letter to the test data
+  * ci: Workaround ci_extended container setup gid issue
+
+-------------------------------------------------------------------
 Tue Jun 15 11:52:15 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1623757687.3f64b638:
