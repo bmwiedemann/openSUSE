@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 21 14:08:21 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1624280432.2ce59c621:
+  * Optimize search: prefetch job columns
+  * Dependency cron 2021-06-20
+  * t: Make `t/ui/18-tests-details.t` independent of `t/ui/12-needle-edit.t`
+  * t: Access download list in t/ui/18-test-details.t directly
+  * Dependency cron 2021-06-18
+  * Fix repository used by openqa-bootstrap under Leap 15.3 for internal CA
+  * Dependency cron 2021-06-17
+  * Simplify "linked" lookup in OpenQA::Schema::ResultSet::Jobs
+  * Fix repository used by openqa-bootstrap under Leap 15.3
+  * t: Mark 10-jobs.t as not-heavy anymore after a9defcedf
+  * Optimize /tests/overview: Combine SQL for JobDependencies
+  * Optimize /tests/overview: Combine SQL for JobModules
+  * Install iputils in the bootstrap script for the ping command
+  * Make openQA package depend on hostname, required by configure-web-proxy
+  * Delete uncovered and likely obsolete "assetid" parameter for test queries
+  * Delete unused parameter "failed_modules" for list endpoint
+  * Delete uncovered and likely unnecessary code for "failed_modules" parsing
+  * Delete old undocumented and unused "maxage" filter mode
+  * Delete old dead code in OpenQA::Schema::ResultSet::Jobs::complex_query
+  * Reduce some whitespace for readability in OpenQA::Schema::ResultSet::Jobs::complex_query
+  * Extract method from OpenQA::Schema::ResultSet::Jobs::complex_query
+  * Set all 'attrs' in OpenQA::Schema::ResultSet::Jobs::complex_query in one place
+  * Simplify OpenQA::Schema::ResultSet::Jobs
+  * dist: Also save update-cache.sh from OBS
+  * t: Simplify test timeout handling in 33-developer_mode for coverage
+  * Mark openqa-client as deprecated
+  * Correct volume labels to allow running on SELinux enabled systems
+  * Remove `t/ui/25-developer_mode.t` from unstable tests
+  * Fix problem in t/ui/25-developer_mode.t leading to sporadic test failures
+  * Revert "Downgrade chromedriver from problematic version"
+  * Adapt UI tests to chromedriver changes
+
+-------------------------------------------------------------------
 Tue Jun 15 11:31:57 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1623747238.4c4508f96:
