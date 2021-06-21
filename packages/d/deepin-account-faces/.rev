@@ -7,4 +7,14 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886004</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c3fc94b7e0eb627ee4f7aba92eb2b38</srcmd5>
+    <version>1.0.12</version>
+    <time>1624300557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.12
+  * Clarified license
+- No need to install the empty changelog file (forwarded request 900408 from hillwood)</comment>
+    <requestid>901174</requestid>
+  </revision>
 </revisionlist>

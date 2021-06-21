@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-account-faces
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 %define _sharedstatedir /var/lib
 %define _name dde-account-faces
 
 Name:           deepin-account-faces
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        Account faces for Linux Deepin
-License:        GPL-2.0+
+# The debian package (debian subdirectory) is GPL-2.0+
+License:        CC0-1.0 and GPL-2.0+
 URL:            https://github.com/linuxdeepin/dde-account-faces
-Source0:        https://github.com/linuxdeepin/dde-account-faces/archive/%{version}/%{_name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{_name}-%{version}.tar.gz
 Group:          System/GUI/Other
 BuildRequires:  fdupes
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Account face icons for Linux Deepin.
@@ -44,9 +44,7 @@ Account face icons for Linux Deepin.
 %fdupes %{buildroot}
 
 %files
-%defattr(-,root,root,-)
-%doc CHANGELOG.md
-%license debian/copyright
+%license LICENSE
 %dir %{_sharedstatedir}/AccountsService
 %dir %{_sharedstatedir}/AccountsService/icons
 %{_sharedstatedir}/AccountsService/icons/*
