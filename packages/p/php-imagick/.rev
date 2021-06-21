@@ -7,4 +7,12 @@
     <comment>Rename php7-imagick to php-imagick</comment>
     <requestid>873876</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>842bdd8768a5e22639abb0588dc96673</srcmd5>
+    <version>3.5.0</version>
+    <time>1624300541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901060</requestid>
+  </revision>
 </revisionlist>

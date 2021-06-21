@@ -31,57 +31,55 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.4.4
+Version:        3.5.0
 Release:        0
 Summary:        Wrapper to the ImageMagick library
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/imagick
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
-Source1:        %{pkg_name}.ini
-Source2:        php-%{pkg_name}-rpmlintrc
+Source1:        php-%{pkg_name}-rpmlintrc
 Patch0:         imagick-reproducible.patch
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  re2c
-Conflicts:      php7-gmagick
-Provides:       php-%{pkg_name} = %{version}
-Obsoletes:      php-%{pkg_name} < %{version}
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
+Conflicts:      %{php_name}-gmagick
+Provides:       php-%{pkg_name} = %{version}
+Obsoletes:      php-%{pkg_name} < %{version}
 
 %description
 PHP extension to create, modify and obtain meta information of images using
-the ImageMagick API
+the ImageMagick API.
 
 %prep
 %autosetup -n %{pkg_name}-%{version} -p1
-# Ignore know failed test on OBS with timeout
-rm tests/229_Tutorial_fxAnalyzeImage_case1.phpt
+
+# fix script-without-shebang/spurious-executable-perm
+chmod 0644 ChangeLog LICENSE
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"
 %{__phpize}
-%configure --with-%{pkg_name}=%{_usr}
+%configure
 %make_build
 
 %check
-%if 0%{?qemu_user_space_build}
-export TEST_TIMEOUT=600
-%endif
-%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test \
-	|| { for f in tests/*.out; do cat $f; echo '------'; done; exit 1; }
+%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 
 %install
 make install-modules INSTALL_ROOT=%{buildroot}
 mkdir -p %{buildroot}%{php_cfgdir}
-install --mode=0644 %{SOURCE1} %{buildroot}%{php_cfgdir}/%{pkg_name}.ini
+cat > %{buildroot}%{php_cfgdir}/%{pkg_name}.ini <<EOF
+; comment out next line to disable %{pkg_name} extension in php
+extension = %{pkg_name}.so
+EOF
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE
-%doc ChangeLog CREDITS
+%doc ChangeLog
 %config(noreplace) %{php_cfgdir}/%{pkg_name}.ini
 %{php_extdir}/%{pkg_name}.so
 
