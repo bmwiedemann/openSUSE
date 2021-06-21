@@ -245,8 +245,6 @@ Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
 
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
-Patch1505:      U_xwayland-Allow-passing-a-fd.patch
-
 Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
 
 Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
@@ -401,9 +399,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1401 -p1
 %patch1502 -p1
 %patch1503 -p1
-%if 0%{?have_wayland} == 1
-%patch1505 -p1
-%endif
 %patch1600 -p1
 %patch1801 -p1
 %patch1900 -p1
@@ -544,7 +539,7 @@ xargs cp --parents --target-directory=%{buildroot}/usr/src/xserver < source-file
 rm -f %{buildroot}/usr/src/xserver/config/fdi2iclass.py
 
 %post
-%tmpfiles_create xbb.conf
+%tmpfiles_create xkb.conf
 %ifnarch s390 s390x
 %{fillup_only -an displaymanager}
 # Move SaX2 generated xorg.conf file to xorg.conf.sle11

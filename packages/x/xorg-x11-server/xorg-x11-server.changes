@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 17 11:43:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop U_xwayland-Allow-passing-a-fd.patch: We build xwayland in a
+  separate package now, so no need to keep this patch here.
+
+-------------------------------------------------------------------
+Wed Jun 16 07:56:30 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Fix typo in %post: xbb.conf -> xkb.conf 
+
+-------------------------------------------------------------------
 Fri Jun 11 11:03:18 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
