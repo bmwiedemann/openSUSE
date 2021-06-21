@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun 14 18:07:50 UTC 2021 - idesmi@protonmail.com
+
+- Update to version 3.2.1:
+  * Bump to v3.2.1
+  * Updated release notes for v3.2.1
+  * Fix network connect race with docker-compose
+  * Revert "Ensure minimum API version is set correctly in tests"
+  * Fall back to string for dockerfile parameter
+  * remote events: fix --stream=false
+  * [CI:DOCS] fix incorrect network remove api doc
+  * remote: always send resize before the container starts
+  * remote events: support labels
+  * remote pull: cancel pull when connection is closed
+  * Fix network prune api docs
+  * Improve systemd-resolved detection
+  * logs: k8s-file: fix race
+  * Fix image prune --filter cmd behavior
+  * Several shell completion fixes
+  * podman-remote build should handle -f option properly
+  * System tests: deal with crun 0.20.1
+  * Fix build tags for pkg/machine...
+  * Fix pre-checkpointing
+  * container: ignore named hierarchies
+  * [v3.2] vendor containers/common@v0.38.9
+  * rootless: fix fast join userns path
+  * [v3.2] vendor containers/common@v0.38.7
+  * [v3.2] vendor containers/common@v0.38.6
+  * Correct qemu options for Intel macs
+  * Ensure minimum API version is set correctly in tests
+  * Bump to v3.2.1-dev
+
+-------------------------------------------------------------------
 Tue Jun 08 09:47:00 UTC 2021 - idesmi@protonmail.com
 
 - Update to version 3.2.0:
