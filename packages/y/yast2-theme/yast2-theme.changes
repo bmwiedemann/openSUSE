@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:53:58 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added GPL-3.0 license to .spec for the new pattern-deepin.svg icon
+- Added COPYING.gpl-3 and renamed COPYING to COPYING.gpl-2
+- 4.4.1
+
+-------------------------------------------------------------------
+Wed May  5 11:32:54 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Added pattern-deepin.svg (licensed under GPL-3.0) (bsc#1185353)
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
