@@ -17,8 +17,8 @@
 
 
 Name:           ntl
-%define lname	libntl43
-Version:        11.4.4
+%define lname	libntl44
+Version:        11.5.0
 Release:        0
 Summary:        Library for Number Theory
 License:        LGPL-2.1-or-later
