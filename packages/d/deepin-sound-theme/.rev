@@ -7,4 +7,14 @@
     <comment>Ready to bring Deepin Desktop to openSUSE offical</comment>
     <requestid>884789</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0195aabb81cbeb72c010b4ff66b63191</srcmd5>
+    <version>15.10.6</version>
+    <time>1624300558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.10.6
+  * update shutdown sound
+  * Bug fix (forwarded request 900407 from hillwood)</comment>
+    <requestid>901175</requestid>
+  </revision>
 </revisionlist>

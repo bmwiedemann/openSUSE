@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-sound-theme
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 PERLUR Group
 # Copyright (c) 2018 Mark Stopka <mark.stopka@perlur.cloud>
 #
@@ -14,19 +14,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 Name:           deepin-sound-theme
-Version:        15.10.3
+Version:        15.10.6
 Release:        0
 Summary:        Deepin sound theme
 License:        GPL-3.0
-URL:            https://github.com/linuxdeepin/deepin-sound-theme
 Group:          System/GUI/Other
-Source0:        https://github.com/linuxdeepin/deepin-sound-theme/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/linuxdeepin/deepin-sound-theme
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Sound files for the Deeping Desktop Environment.
@@ -40,8 +39,8 @@ Sound files for the Deeping Desktop Environment.
 %make_install
 
 %files
-%defattr(-,root,root,-)
-%doc README.md LICENSE CHANGELOG.md
+%license LICENSE
+%doc README.md CHANGELOG.md
 %dir %{_datadir}/sounds/deepin/
 %dir %{_datadir}/sounds/deepin/stereo/
 %{_datadir}/sounds/deepin/index.theme
