@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-network-utils
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 %define _name dde-network-utils
 %define sover 1
 
 Name:           deepin-network-utils
-Version:        5.4.5
+Version:        5.4.6
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Network Utils
-Url:            https://github.com/linuxdeepin/dde-network-utils
 Group:          Productivity/Networking/System
+URL:            https://github.com/linuxdeepin/dde-network-utils
 Source:         https://github.com/linuxdeepin/dde-network-utils/archive/%{version}/%{_name}-%{version}.tar.gz
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtdeclarative-devel
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(gio-qt)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  cmake
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Deepin Network Utils is an application repackage the DBus data which is provided
@@ -72,30 +71,36 @@ sed -i 's|$$PREFIX/lib|$$LIBDIR|g' dde-network-utils/dde-network-utils.pro
 
 %build
 %qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install
+%find_lang %{_name} --with-qt
 
 %post -n lib%{_name}%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{_name}%{sover} -p /sbin/ldconfig
 
+# Please do not drop main package, the language package forcedly depends the main package
 %files
 %defattr(-,root,root)
 %doc README.md CHANGELOG.md
 %license LICENSE
 
 %files -n lib%{_name}%{sover}
-%defattr(-,root,root)
 %{_libdir}/lib%{_name}.so.*
 
-%files lang
-%defattr(-,root,root)
-%{_datadir}/%{_name}
+%files lang -f %{_name}.lang
+%dir %{_datadir}/%{_name}
+%dir %{_datadir}/%{_name}/translations
+%{_datadir}/%{_name}/translations/dde-network-utils.qm
+# unusual languages, currently not correctly detected by find_lang
+%lang(ast) %{_datadir}/%{_name}/translations/dde-network-utils_ast.qm
+%lang(kab) %{_datadir}/%{_name}/translations/dde-network-utils_kab.qm
+%lang(pam) %{_datadir}/%{_name}/translations/dde-network-utils_pam.qm
 
 %files devel
-%defattr(-,root,root)
+%license LICENSE
+%doc README.md CHANGELOG.md
 %{_includedir}/libddenetworkutils
 %{_libdir}/lib%{_name}.so
 %{_libdir}/pkgconfig/%{_name}.pc
