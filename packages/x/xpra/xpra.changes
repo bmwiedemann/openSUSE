@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 20 11:22:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add python3-pyinotify as recommended dependency to allow watch
+  for video device changes
+
+-------------------------------------------------------------------
 Sat Jun 12 15:08:08 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2

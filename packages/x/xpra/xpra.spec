@@ -100,6 +100,7 @@ Recommends:     python3-opencv
 Recommends:     python3-opengl
 Recommends:     python3-opengl-accelerate
 Recommends:     python3-paramiko
+Recommends:     python3-pyinotify
 %{?systemd_ordering}
 
 %description
