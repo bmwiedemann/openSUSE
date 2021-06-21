@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 14:10:15 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.9.0 implemented to select different pitch
+  functions from UI.
+
+-------------------------------------------------------------------
 Sat Jun 12 12:59:43 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.8.13 fixed gtk-doc missing sections.
