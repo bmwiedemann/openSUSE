@@ -1000,4 +1000,347 @@
     <comment></comment>
     <requestid>897036</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e9b2b2554ea463a753d1e8782063c353</srcmd5>
+    <version>4.16.0+git7.8b06717</version>
+    <time>1624300547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.0+git7.8b06717:
+  * Update deprecated exo entries to new files (boo#1187523)
+- Enable the fix for boo#1178511 on all Leap versions
+- Upstrem dropped libxfce4ui-1-0. Dependency no longer needed.
+- Update to version 4.16.0+git6.add0468:
+  * Restored menu icons and saner defaults
+- Update to version 4.16.0+git5.d1e3468:
+  * Correct typo in default icon name
+  * Fixed xfce4-desktop.xml file:
+    Disable desktop-menu and windowlist-menu by default
+- Update to version 4.16.0+git2.fca5bce:
+  * Update mimeapps to use evince and file-roller
+  * Define evince and file-roller as defaults
+- Update to version 4.16.0+git0.1963cf9:
+  * Use openSUSE-xfce icon theme which complements Adwaita
+  * Don't show icons for buttons
+  * Fixed whisker menu title
+  * Update whisker menu settings
+  * Update default whisker menu layout
+  * Update defaults.rc
+  * Add some more  popular favourites to Whisker Menu
+  * Fix systray sizing
+  * Fix thunar in helpers.rc
+  * Update desktop file names
+  * Disable desktop app and windowlist menus by default
+  * Don't show icons in menus
+- Make sure Adwaita cursor is used in QT applications boo#1178511
+- Make noto-coloremoji-fonts a soft dependency. This avoids having
+  to break the dependency on the Rescue CD.
+- Make noto-sans-cjk-fonts a soft dependency
+- Make sure noto-sans-cjk-fonts is installed
+- Update to version 4.14+20200311:
+  * Use elementary-xfce-darker by default
+- Update to version 4.14+20200228:
+  * Use more appropriate xdg location for xfce-mimeapps.list
+- Update to version 4.14+20200228:
+  * Use the correct notifyd theme name
+  * Rename defaults.list to xfce-mimeapps.list
+  * Make Greybird-geeko default theme of xfce4-notifyd
+  * Systray to use 16px icons
+- Update to version 4.14+20200118:
+  * Temporarily revert Firefox as default handler to address boo#1160869
+- Update to version 4.14+20200112:
+  * set exo applications for mimetypes  (boo#1160683)
+- Update to version 4.14+20200110:
+  * Improved application menus default structure
+  * Add a README based on the one from branding
+- Update to version 4.14+20191230:
+  * Set default cursor to Adwaita
+- Update to version 4.14+20191207:
+  * Fix YaST desktop file
+- Update to version 4.14+20191008:
+  * Fix YaST desktop file renamed upstream. Fixes boo#1153273
+- Removed Requires: xfce4-splash-branding-openSUSE
+- Removed obsolete macros
+- Changed %doc COPYING to %license
+- Update to version 4.14+20190815:
+  * Add back legacy YaST desktop filenames for Leap 15
+- Update to version 4.14+20190814:
+  * Use new YaST desktop file names for application menu
+- Update to version 4.14+20190811:
+  * symlink button to prevent missing icon after update
+- Update to version 4.14+20190808:
+  * Panel defaut size at 24px
+- Update to version 4.14+20190805:
+  * Fixed icon resolutions
+- Update to version 4.14+20190805:
+  * Cleaned up pixmaps folder
+  * Changed Whisker menu button icon
+  * Restructured and improved button icons
+  * set systray icon size to 22px
+- Update to version 4.14+20190729:
+  * xfce4-panel use upstream clock format
+- Update to version 4.14+20190725:
+  * Make systray icon size 16px
+  * Rebase keyboard shortcuts from upstream and add improvements
+  * Update Whisker Menu title and icon
+  * Added new button icons in svg format
+  * Make panel tasklist group windows
+  * use Greybird-Geeko-Light xfwm4 theme by default
+  * Set greybird-Geeko-Light gtk theme as default
+- Update to version 4.13+20190703:
+  * Remove splashscreen configs from xfce4-session.xml
+  * Add Priorities to fix race conditions on startup
+- Follow correct name guidelines for file name (&quot;+&quot; instead of &quot;~&quot;)
+- Use xz for source compression
+- Update to version 4.13~20190513:
+  * Delete terminalrc as not needed for now
+  * Make systray use square icons
+  * make statusnotifier plugin use symbolic icons
+- Updated URL in spec file
+- fixed path of terminalrc
+- make Firefox default instead of Midori (fix)
+- Use xfce4-branding-openSUSE-4.13 source
+  * adds xfce4-terminal color scheme
+  * panel tasklist: show flat window buttons
+- Change cursor to DMZ-Black to match system default. 
+  This change makes Yast no longer have a different cursor.
+- fixed panel plugins id to prevent issues with old configs
+- resized xfwm4 titlebar font
+  https://lists.opensuse.org/opensuse-xfce/2018-12/msg00003.html
+- added Noto Sans in xfwm4 Requires
+- status-notifier to use squared icons by default for better spacing
+- New default look:
+  * Mint-Y-Teal-Darker GTK and xfwm4 theme
+  * Elementary-xfce icon theme
+  * Noto Sans as default font
+  * Hack as default monospace font
+  * Font hinting and rbg enabled by default
+  * Changed default panel plugins
+- removed midori branding
+- xfce4-panel-branding-openSUSE:
+  * add statusnotifier plugin
+  * add notification plugin (from xfce4-notifyd)
+- revert last change, branding package has been fixed
+- fix openSUSE splash screen
+- fix spelling of &quot;Adwaita&quot; in index.theme (boo#1074269)
+- use adwaita-icon-theme instead of gnome-icon-theme 
+  as fallback icon theme 
+  The reasons for this change are that Upstream gnome no 
+  longer uses gnome-icon-theme, and to save space on te Thumbleweed 
+  rescue CD, requested by DimStar
+  https://lists.opensuse.org/opensuse-xfce/2017-05/msg00000.html
+- fix /etc/xfce_defaults.conf not declared as %conf
+- use plugin-pulseaudio instead of plugin-mixer
+- recommend pavucontrol and plugin-pulseaudio instead of xfe4-mixer
+- replace application-menu with whiskermenu
+- brand whiskermenu suse style
+- require whiskermenu from panel-branding-openSUSE
+- fix obsoletes of exo-branding-openSUSE
+- fix exo-branding provides / obsoletes
+- adapt to changes in exo package (exo-1 subdir patch removed)
+- on &gt;= 13.2 package-manager.desktop was renamed to
+  yast2-packager.desktop (boo#892936)
+- bump version to 4.12
+- lock screen on suspen/hibernate
+- xfce4-panel-plugin-xfce4battery was renamed to
+  power-manager-plugin
+- recommend xfce4-panel-plugin-xfce4battery which is in the panel
+  branding
+- fix critical power action and hdd spindown settings
+- adapt xfce4-power-manager branding to version 1.3.0
+- fix typo
+- rename source tarball removing the meaningless version
+- adjust to GTK 3 variant of libxfce4ui
+- remove support for openSUSE &lt; 12.3
+- add custom theme for xfce4-notifyd
+- improve suse_version overlay system
+- add xfce4-power-manager-branding-openSUSE with default actions
+  for button press events and critical battery levels
+- add support for 13.2, drop support for &lt; 12.2
+- follow the exo package changes and rename exo-branding-openSUSE
+  to libexo-1-0-branding-openSUSE and move helpers.rc in an
+  API-versioned subdirectory
+- support openSUSE 13.1
+- fix an error in the openSUSE-Xfce index.theme file causing
+  theme inheritance to fail
+- 12.3 specific xfce4-panel branding
+- adapt to Terminal rename
+- adapt to new name of the mixer plugin
+- remove support for openSUSE 11.4
+- disable automatic session saving by default and don't preselect
+  session saving in the logout dialog since it causes problems such
+  as bxo#5123
+- added audio-input-microphone-muted icon to openSUSE Xfce icon
+  theme which is used by xfce4-mixer 4.10.0
+- on &gt;= 12.2 depend on libgio-2_0-0 which provides the
+  defaults.list symlink target
+- on &gt; 12.2 depend on desktop-file-utils which is now needed to
+  generate defaults.list
+- updated comment in xfce_defaults.conf
+- require desktop-data-openSUSE on openSUSE distros in
+  the openSUSE branding
+- own more directories to fix build of derived packages
+- remove submenus below Settings which are accessible through the
+  xfce4-settings-manager
+- add xfce4-panel-plugin-mixer to the panel
+- add support for Xfce-specific MIME default associations
+- add back pager and reduce workspaces to two
+- remove the launchers from the panel and switch from action
+  buttons to the actions menu
+- mark the global menus as config files, they may be edited by an
+  administrator and should not be silently overwritten
+- use actions menu rather than buttons in the panel
+- fix xfcemail and xfce-nomail icons
+- rename %{_datadir}/wallpapers/xfce/default.jpg to
+  %{_datadir}/wallpapers/xfce/default.wallpaper, the default
+  wallpaper formats may differ and xfdesktop doesn't care about
+  the filetype extension
+- remove ristretto icons and use the new icons provided by
+  ristretto 0.6.0
+- added depenency of libgarcon-branding-openSUSE on
+  libxfce4ui-tools snce the menu references xfce4-about.desktop
+- remove dependency of libgarcon-branding-openSUSE on
+  libgarcon-data
+- remove dependency of xfce4-panel-branding-openSUSE on exo-tools
+- added xfce-schedule icon
+- bump version to 4.10
+- libgarcon-branding-openSUSE should have a reverse dependency on
+  libgarcon-data rather than libgarcon-1-0
+- libxfce4ui-branding-openSUSE
+  - added keyboard shortcuts for starting browser and MUA with
+    XF86WWW and XF86Mail
+  - use startup notification for xfce4-appfinder shortcuts
+- xfce4-settings-branding-openSUSE
+  - order the menus in xfce-settings-manager.menu
+- xfwm4-branding-openSUSE
+  - enable tiling
+- only build midori-branding-openSUSE for &gt; 11.4 since Midori does
+  not support 11.4 any more
+- only depend on wallpaper-branding-openSUSE for &gt; 11.4
+- make libgarcon-branding-openSUSE depend on libgarcon-data
+- added openSUSE-xfce-icon-theme which provides icons missing from
+  gnome-icon-theme
+- moved licenses into the tarballs
+- xfce4-panel-branding-openSUSE
+  - use internal clock plugin again
+  - added new button images
+    %{_datadir}/pixmaps/xfce4-opensuse-light.png and
+    %{_datadir}/pixmaps/xfce4-opensuse-dark.png
+- xfce4-session-branding-openSUSE
+  - dropped xfce4-settings-helper which ash been removed
+  - dropped xscreensaver which is now started via autostart
+- xfwm4-branding-openSUSE
+  - increased doubleclick time to 400ms
+  - enabled composite by default
+  - enabled shadows
+- libgarcon-branding-openSUSE
+  - reworked application menu and incorporated a customized
+    xfce-settings-manager-menu
+- xfce4-settings-branding-openSUSE
+  - added customized
+    %{_sysconfdir}/xdg/menus/xfce-settings-manager.menu which also
+    includes non-Xfce settings
+  - switch from the GNOME icon theme to the openSUSE Xfce icon
+    theme
+- xfdesktop-branding-openSUSE
+  - deliver symlink %{_datadir}/xfce4/backdrops/default.jpg
+    pointing to the default backdrop image from
+    wallpaper-branding-openSUSE which is now the compiled-in
+    default and removed
+    %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+    so that now all screens have the same default
+- enabled thunar-volman-branding-openSUSE for 11.4
+- bump version to 4.9.0
+- remove xfce4-tips autostart file
+- add build dependencies on upstream branding to avoid ambiguities
+- added midori-branding-openSUSE
+  - added openSUSE package search to the list of search engines
+  - use opensuse.org as the default home page
+- own %{_datadir}/desktop-directories/ for &gt;= 12.1
+- enable GNOME compatibility mode in order to start gnome-keyring
+  by default (bnc#754700)
+- adapt to renamed packages
+- make the default panel opaque with compositing enabled
+  (bnc#742766)
+- license update: CC-BY-SA-3.0 and GPL-2.0+
+  Indicate the aggregation of GPL-2.0+ and the CC licensed wallpapers
+- fix license to be in spdx.org format
+- switch to final xfwm4 branding
+- make xfce4-panel-branding-openSUSE depend on
+  xfce4-panel-plugin-datetime
+- use DateTime rather than Clock panel plugin
+- added thunar-volman-branding-openSUSE package for &gt;= 12.1
+- rename
+  /usr/share/desktop-directories/xfce-settings-system.directory to
+  /usr/share/desktop-directories/xfce-administration.directory
+  and add
+  /usr/share/desktop-directories/xfce-preferences.directory
+- change /etc/xdg/menus/xfce-applications.menu to not show category
+  PackageManager under System
+- renamed COPYING.xfce4-splash-openSUSE-11.4
+- created xfce4-branding-openSUSE-4.8.0-11.4.tar.bz2 for &lt; 12.1
+- switch to Adwaita as the new default theme for &gt;= 12.1
+- use wallpaper from new wallpaper-branding package
+- fix build failure by removing the splash on &gt;= 12.1, also
+  do not install the copyright file
+- require the splash out of branding-openSUSE for 12.1+ to
+  ease the update of artwork
+- fixed &quot;Administration&quot; menu for &gt;= 12.1 (bnc#719826)
+- changed border/text-color of splash screen to match that of other
+  GTK splash screens
+- included the final splashscreen
+- explicitly include xfce-settings-manager.desktop in the Settings
+  menu since it is also in the X-XFCE category
+- stay at 4.8.0
+- determine versions of branded packages automatically
+- tweaked xfce4-session splash screen look a bit
+- bump libgarcon version
+- added temporary splash screen for xfce4-settings based on 11.3
+  branding
+- switch to Sonar theme
+- added xfce4-branding-openSUSE
+- replace exo- launches with launchers for the openSUSE default
+  applications since items hidden in the main menu cannot be used
+  as panel launchers
+- exclude X-XFCE category from the Settings menu as it will be
+  shown inside the settings manager and exclude X-Xfce-Toplevel
+  category from submenus
+- merged some keyboard shortcut changes from libxfce4ui 4.8.0
+- removed unused panel launcher desktop files
+- supplement libgarcon-1-0 rather than libgarcon
+- added exo-branding-openSUSE subpackage
+- fixed launchers
+- added branding for libgarcon, libxfce4ui, xfce4-notifyd
+- obsoleted xfce4-desktop branding which is now provided by
+  xfdesktop-branding
+- split up in subpackages xfce4-panel-branding-openSUSE,
+  xfce4-session-branding-openSUSE,
+  xfce4-settings-branding-openSUSE, xfdesktop-branding-openSUSE,
+  libgarcon-branding-openSUSE, libxfce4ui-branding-openSUSE,
+  xfce4-notifyd-branding-openSUSE
+- temporarily removed menu again as it is currently provided by
+  libgarcon
+- migrated panel settings to new format
+- cleaned up menu
+- version bump to 4.8.0
+- add gtk2-metatheme-gilouche to Requires [bnc#616275]
+- version bump to 4.7.1
+- version bump to 4.6.4
+- version bump to 4.6.3
+- require desktop-data instead of desktop-data-SuSE
+- version bump to 4.6.1
+- added branding for xfce4-panel
+- updated to be compatible with Xfce 4.6.0 release
+- Conflict with other branding providers (FATE#304881).
+- added custom menus - /etc/xdg/xfce4/desktop/menu.xml.*
+  (added contain YaST icon to Settings)
+- xfce4-desktop-branding-openSUSE
+  * added gtk2-theme-openSUSE to Requires
+  * set icon theme and theme to Gilouche
+- added COPYING license file
+- subpackage xfce4-desktop-branding-openSUSE
+  * sets default openSUSE wallpaper for Xfce
+  * sets DMZ cursor theme for Xfce
+- created package with openSUSE branding for XFCE (forwarded request 901049 from mauriziogalli)</comment>
+    <requestid>901100</requestid>
+  </revision>
 </revisionlist>
