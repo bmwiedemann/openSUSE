@@ -38,4 +38,14 @@
         <flavor>Kubic-kubeadm-SelfInstall</flavor>
         <flavor>DigitalOcean-Cloud</flavor>
         <flavor>Kubic-kubeadm-DigitalOcean-Cloud</flavor>
+        <flavor>k3s-kvm-and-xen</flavor>
+        <flavor>k3s-VMware</flavor>
+        <flavor>k3s-MS-HyperV</flavor>
+        <flavor>k3s-OpenStack-Cloud</flavor>
+        <flavor>k3s-Pine64</flavor>
+        <flavor>k3s-Rock64</flavor>
+        <flavor>k3s-RaspberryPi</flavor>
+        <flavor>k3s-Vagrant</flavor>
+        <flavor>k3s-SelfInstall</flavor>
+        <flavor>k3s-DigitalOcean-Cloud</flavor>
 </multibuild>

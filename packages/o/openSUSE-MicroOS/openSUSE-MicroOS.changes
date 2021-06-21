@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 11:41:40 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Introduce k3s flavour to match SLE Micro 5.1 
+
+-------------------------------------------------------------------
 Mon May 17 12:28:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fix match of Pine64 in config.sh
