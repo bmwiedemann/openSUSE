@@ -257,6 +257,9 @@ amdgpu: pci:v00001002d000073E0sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073E1sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073E2sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073FFsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d00007408sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000740Csv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000740Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009830sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009831sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009832sv*sd*bc*sc*i*
@@ -657,6 +660,7 @@ ccp: pci:v00001022d00001468sv*sd*bc*sc*i*
 ccp: pci:v00001022d00001486sv*sd*bc*sc*i*
 ccp: pci:v00001022d00001537sv*sd*bc*sc*i*
 ccp: pci:v00001022d000015DFsv*sd*bc*sc*i*
+ccp: pci:v00001022d00001649sv*sd*bc*sc*i*
 cpia2: usb:v0553p0100d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0140d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0151d*dc*dsc*dp*ic*isc*ip*in*
@@ -1473,6 +1477,14 @@ i915: pci:v00008086d00004551sv*sd*bc03sc*i*
 i915: pci:v00008086d00004555sv*sd*bc03sc*i*
 i915: pci:v00008086d00004557sv*sd*bc03sc*i*
 i915: pci:v00008086d00004571sv*sd*bc03sc*i*
+i915: pci:v00008086d00004680sv*sd*bc03sc*i*
+i915: pci:v00008086d00004681sv*sd*bc03sc*i*
+i915: pci:v00008086d00004682sv*sd*bc03sc*i*
+i915: pci:v00008086d00004683sv*sd*bc03sc*i*
+i915: pci:v00008086d00004690sv*sd*bc03sc*i*
+i915: pci:v00008086d00004691sv*sd*bc03sc*i*
+i915: pci:v00008086d00004692sv*sd*bc03sc*i*
+i915: pci:v00008086d00004693sv*sd*bc03sc*i*
 i915: pci:v00008086d00004C80sv*sd*bc03sc*i*
 i915: pci:v00008086d00004C8Asv*sd*bc03sc*i*
 i915: pci:v00008086d00004C8Bsv*sd*bc03sc*i*
@@ -2230,6 +2242,7 @@ iwlwifi: pci:v00008086d00002726sv*sd000000B0bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00000510bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00002074bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00004070bc*sc*i*
+iwlwifi: pci:v00008086d00002727sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00002729sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000030DCsv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000030DCsv*sd00000030bc*sc*i*
@@ -2751,6 +2764,7 @@ mt76x0u: usb:v2001p3D02d*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v2019pAB31d*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v20F4p806Bd*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v2357p0105d*dc*dsc*dp*ic*isc*ip*in*
+mt76x0u: usb:v2357p010Bd*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v2357p0123d*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v293Cp5702d*dc*dsc*dp*ic*isc*ip*in*
 mt76x0u: usb:v7392pA711d*dc*dsc*dp*ic*isc*ip*in*
@@ -3162,10 +3176,16 @@ r8152: usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0955p09FFd*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v0BDAp8050d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0BDAp8050d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v0BDAp8053d*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v0BDAp8053d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0BDAp8152d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v0BDAp8153d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0BDAp8153d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v0BDAp8155d*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v0BDAp8155d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v0BDAp8156d*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v0BDAp8156d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v13B1p0041d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v13B1p0041d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp304Fd*dc*dsc*dp*ic02isc06ip00in*
