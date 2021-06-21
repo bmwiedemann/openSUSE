@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 16 17:04:59 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.11
+  - Fix unwritable /var / /etc after SELinux relabel [bsc#1186563]
+
+-------------------------------------------------------------------
 Mon May 10 11:22:03 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.10

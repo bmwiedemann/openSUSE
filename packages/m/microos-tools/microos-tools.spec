@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
