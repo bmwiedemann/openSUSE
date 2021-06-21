@@ -16,10 +16,10 @@
 #
 
 
-%define sonum   4
+%define sonum   5
 %define libname libnuspell
 Name:           nuspell
-Version:        4.2.0
+Version:        5.0.0
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
