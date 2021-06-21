@@ -146,4 +146,41 @@
     <comment></comment>
     <requestid>896649</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04c33c6f8d81b283d54a2a0f55ac1866</srcmd5>
+    <version>0.30.0</version>
+    <time>1624300541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.30.0
+  * Use official 0.30 spec.txt.
+  * Add `cmark_get_default_mem_allocator()` (#330).  API change: this
+    adds a new exported function in cmark.h.
+  * Fix #383.  An optimization we used for emphasis parsing was
+    too aggressive, causing us to miss some emphasis that was legal
+    according to the spec.  We fix this by indexing the `openers_bottom`
+    table not just by the type of delimiter and the length of the
+    closing delimiter mod 3, but by whether the closing delimiter
+    can also be an opener.  (The algorithm for determining emphasis
+    matching depends on all these factors.)  Add regression test.
+  * Fix quadratic behavior with inline HTML (#299, Nick Wellnhofer).
+    Repeated starting sequences like `&lt;?`, `&lt;!DECL ` or `&lt;![CDATA[` could
+    lead to quadratic behavior if no matching ending sequence was found.
+    Separate the inline HTML scanners. Remember if scanning the whole input
+    for a specific ending sequence failed and skip subsequent scans.
+  * Speed up hierarchy check in tree manipulation API (Nick Wellnhofer).
+    Skip hierarchy check in the common case that the inserted child has
+    no children.
+  * Fix quadratic behavior when parsing inlines (#373, Nick Wellnhofer).
+    The inline parsing code would call `cmark_node_append_child` to append
+    nodes. This public function has a sanity check which is linear in the
+    depth of the tree. Repeated calls could show quadratic behavior in
+    degenerate trees. Use a special function to append nodes without this
+    check.  (Issue found by OSS-Fuzz.)
+  * Replace invalid characters in XML output (#365, Nick wellnhofer).
+    Control characters, U+FFFE and U+FFFF aren't allowed in XML 1.0, so
+    replace them with U+FFFD (replacement character). This doesn't solve
+    the problem how to roundtrip these characters, but at least we don't
+    produce invalid XML. (forwarded request 901085 from mimi_vx)</comment>
+    <requestid>901086</requestid>
+  </revision>
 </revisionlist>
