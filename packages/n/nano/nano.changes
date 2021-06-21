@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 17 05:52:33 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 5.8:
+  * After a search, the spotlighting is dropped after 1.5 seconds
+    (0.8 seconds with --quick) to avoid the idea that the text is
+    selected.
+  * A + and a space before a filename on the command line will put
+    the cursor at the end of the corresponding buffer.
+  * Linter messages no longer include filename and line/column
+    numbers.
+  * Color name "grey" or "gray" can be used instead of "lightblack"
+  * The color of the minibar can be chosen with 'set minicolor'.
+
+-------------------------------------------------------------------
 Thu Apr 29 16:54:19 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 5.7:
