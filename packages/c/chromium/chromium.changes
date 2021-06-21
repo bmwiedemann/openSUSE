@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 18 09:05:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 91.0.4472.114 (boo#1187481)
+  * CVE-2021-30554: Use after free in WebGL
+  * CVE-2021-30555: Use after free in Sharing
+  * CVE-2021-30556: Use after free in WebAudio
+  * CVE-2021-30557: Use after free in TabGroups
+
+-------------------------------------------------------------------
+Wed Jun 16 17:37:29 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 91.0.4472.106
+  * Fix use-after-free in SendTabToSelfSubMenuModel
+  * Destroy system-token NSSCertDatabase on the IO thread
+
+-------------------------------------------------------------------
 Wed Jun  9 20:26:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 91.0.4472.101 (boo#1187141)
