@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 16 14:43:23 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- When a WFM client returns a value not representable in YCP,
+  raise a meaningful exception instead of crashing on an undefined
+  variable (bsc#1187230)
+- 4.4.1
+
+-------------------------------------------------------------------
 Wed Apr 14 10:58:39 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Made the architecture string to fit in a 80x24 terminal
