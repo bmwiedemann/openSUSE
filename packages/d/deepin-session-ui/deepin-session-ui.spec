@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-session-ui
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 %define _name dde-session-ui
 
 Name:           deepin-session-ui
-Version:        5.4.6
+Version:        5.4.7
 Release:        0
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dde-session-ui
-Source0:        https://github.com/linuxdeepin/dde-session-ui/archive/%{version}/%{_name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        logo.svg
 Group:          System/GUI/Other
 BuildRequires:  gtest
@@ -84,17 +84,21 @@ cp %{SOURCE1} lightdm-deepin-greeter/img/
 
 %install
 %qmake5_install
+%find_lang %{_name} --with-qt
 
 %files
-%defattr(-,root,root,-)
-%doc README.md CONTRIBUTING.md CHANGELOG.md
 %license LICENSE
+%doc README.md CONTRIBUTING.md CHANGELOG.md
 %{_bindir}/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_prefix}/lib/deepin-daemon
 %dir %{_libdir}/dde-dock
 %dir %{_libdir}/dde-dock/plugins
 %{_libdir}/dde-dock/plugins/libnotifications.so
+%dir %{_datadir}/dde-session-ui
+%dir %{_datadir}/dde-session-ui/translations
+%{_datadir}/dde-session-ui/dde-session-ui.conf
+%{_datadir}/dde-session-ui/translations/dde-session-ui{,_ast,_fil,_pam}.qm
 %{_datadir}/dbus-1/services/com.deepin.dde.welcome.service
 %{_datadir}/dbus-1/services/com.deepin.dde.osd.service
 %{_datadir}/dbus-1/services/com.deepin.dde.Notification.service
@@ -103,9 +107,6 @@ cp %{SOURCE1} lightdm-deepin-greeter/img/
 %{_datadir}/dbus-1/services/com.deepin.dde.WarningDialog.service
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.dock.module.notifications.gschema.xml
 
-%files lang
-%defattr(-,root,root,-)
-%{_datadir}/%{_name}
+%files lang -f %{_name}.lang
 
 %changelog
-
