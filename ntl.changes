@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 20 21:59:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5.0
+  * Added experimental support for AES-CTR mode as an alternative
+    to ChaCha20 for Pseudo-Random Number Generation.
+
+-------------------------------------------------------------------
 Fri May  7 14:31:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.4.4
