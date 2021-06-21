@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -28,7 +28,7 @@
   %global configure_args %{configure_args} --enable-wsf --with-sasl2=%{_prefix}/sasl2
 %endif
 Name:           lasso
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Liberty Alliance Single Sign On
 License:        GPL-2.0-or-later

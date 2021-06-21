@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 18 22:29:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.7.0
+  * CVE-2021-28091 (boo#1186768):
+    Fix signature checking on unsigned response with multiple assertions
+  * Jenkinsfile: update name of main branch
+  * Python: improve display of warnings in the binding generator
+  * replace deprecated index() by strchr() (#51385)
+  * Fix: new provider reference count is incremented one time too many (#51420)
+  * docs: update gtk-doc-tools integration (#50441)
+  * Using reference documentation on https://developer.gnome.org/gtk-doc-manual/stable/index.html.en
+  * bindings: disable java tests when java is disabled
+  * Fix: RecursionError in python3 bindings (#51249)
+  * configure.ac: disable java bindings
+  * build: update to use origin/main
+  * debian: add packaging for debian-buster
+  * jenkins.sh: build against all available python versions (#44287)
+  * python: do not leak out_pyvalue if method call protocol is not respected (#44287)
+  * python: do not raise in valid_seq() (#44287)
+  * python: return NULL if get_list_of_strings() fails (#44287)
+  * python: return NULL if get_list_of_pygobject fails (#44287)
+  * python: return NULL if get_list_of_xml_nodes fails (#44287)
+  * python: return NULL if set_list_of_pygobject fails (#44287)
+  * python: return NULL if set_list_of_xml_nodes fails (#44287)
+  * python: return NULL if set_list_of_strings fails (#44287)
+  * python: return NULL if set_hashtable_of_strings fails (#44287)
+  * python: return NULL if set_hashtable_of_pygobject fails (#44287)
+  * python: free internal string buffer if needed in set_list_of_strings (#44287)
+  * python: check if hashtable is NULL before deallocatio (#44287)n
+  * python: add a failure label to method wrappers (#44287)
+  * python: add macro for early return (#44287)
+  * python: remove newline before method call (#44287)
+  * python: simplify get_logger_object (#44287)
+  * python: fix warning about discarded const modifier (#44287)
+  * python: replace exception by warning on logging path (#44287)
+  * python: use simpler call format to prevent warning about PY_SSIZE_T_CLEAN (#44287)
+  * python: remove deprecated PyErr_Warn (#44287)
+  * python: remove unused PyString_Size (#44287)
+  * python: Exception.message was removed in python3 (#45995)
+  * tools: reimplement xmlURIEscapeStr to respect RFC3986 (#45581)
+  * configure.ac: support php7 interpreter on CentOS 8 (#42299)
+
+-------------------------------------------------------------------
 Tue Apr 28 12:23:34 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 2.6.1
