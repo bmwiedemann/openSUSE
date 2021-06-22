@@ -1,8 +1,9 @@
---- a/files/usr/bin/cinnamon-launcher
-+++ b/files/usr/bin/cinnamon-launcher
-@@ -11,22 +11,13 @@ import gi
+diff -ruN a/files/usr/bin/cinnamon-launcher b/files/usr/bin/cinnamon-launcher
+--- a/files/usr/bin/cinnamon-launcher	2021-06-01 20:12:27.000000000 +0700
++++ b/files/usr/bin/cinnamon-launcher	2021-06-04 03:44:28.539582150 +0700
+@@ -14,22 +14,13 @@
  gi.require_version('Gtk', '3.0')  # noqa
- from gi.repository import Gtk
+ from gi.repository import Gtk, GObject, Gio
  
 -FALLBACK_COMMAND = "metacity"
 +FALLBACK_COMMAND = "icewm"
@@ -22,5 +23,5 @@
 -    panel_process_name = "tint2"
 -    panel_cmd = "killall tint2; tint2 &"
  
- 
- def confirm_restart():
+ # Used as a decorator to run things in the background
+ def async_function(func):

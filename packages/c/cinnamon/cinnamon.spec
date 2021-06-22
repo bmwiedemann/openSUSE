@@ -16,9 +16,9 @@
 #
 
 
-%define _version 4.0.0
+%define _version 5.0.0
 Name:           cinnamon
-Version:        4.8.6
+Version:        5.0.2
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -76,10 +76,10 @@ Requires:       cups-pk-helper
 Requires:       dbus-1
 Requires:       gettext-runtime
 Requires:       glib2-tools
-Requires:       iso-country-flags-png
-Requires:       libcinnamon-desktop-data >= %{_version}
 # gkbd-capplet / gkbd-keyboard-display.
 Requires:       gnomekbd-tools
+Requires:       iso-country-flags-png
+Requires:       libcinnamon-desktop-data >= %{_version}
 Requires:       muffin >= %{_version}
 Requires:       nemo
 Requires:       pkgconfig
@@ -102,7 +102,7 @@ Requires:       wget
 Requires:       xdg-user-dirs
 Requires:       xdg-user-dirs-gtk
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-lang
 Recommends:     blueberry
 Recommends:     cinnamon-themes
@@ -150,7 +150,7 @@ Cinnamon Desktop Environment.
 Summary:        Upstream definitions of default settings and applications
 Group:          System/Libraries
 Requires:       %{name}-gschemas = %{version}
-Supplements:    packageand(cinnamon-gschemas:branding-upstream)
+Supplements:    (cinnamon-gschemas and branding-upstream)
 Conflicts:      %{name}-gschemas-branding
 Provides:       %{name}-gschemas-branding = %{version}
 # cinnamon-branding-upstream was last used in openSUSE Leap 42.2.
@@ -277,6 +277,9 @@ fi
 %{_libdir}/%{name}/
 %{_mandir}/man1/cinnamon*%{?ext_man}
 %{_mandir}/man1/gnome-session-cinnamon*%{?ext_man}
+%dir %{_prefix}/lib/python3
+%dir %{_prefix}/lib/python3/dist-packages
+%{_prefix}/lib/python3/dist-packages/cinnamon
 
 %files gschemas
 %{_datadir}/glib-2.0/schemas/org.cinnamon.gschema.xml
