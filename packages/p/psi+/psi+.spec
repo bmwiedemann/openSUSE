@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.5.1484+0
+%define version_unconverted 1.5.1548+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.5.1484+0
+Version:        1.5.1548+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -64,8 +64,7 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(qca2-qt5)
 Recommends:     %{name}-lang
 Requires:       %{name}-data = %{version}
-Obsoletes:      psi
-Obsoletes:      psi+ > 20100101
+Obsoletes:      psi < 1.3
 
 %define iconspath %{_datadir}/psi-plus/iconsets
 %define pluginspath %{_libdir}/psi-plus/plugins
@@ -510,11 +509,9 @@ rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 %dir %{iconspath}/
 %dir %{iconspath}/roster
 %{iconspath}/roster/crystal-gadu.jisp
-%{iconspath}/roster/crystal-icq.jisp
 %{iconspath}/roster/crystal-roster.jisp
 %{iconspath}/roster/crystal-service.jisp
 %{iconspath}/roster/crystal-sms.jisp
-%{iconspath}/roster/crystal-yahoo.jisp
 %{iconspath}/roster/stellar-1.jisp
 %{iconspath}/roster/README
 %{_datadir}/psi-plus/client_icons.txt

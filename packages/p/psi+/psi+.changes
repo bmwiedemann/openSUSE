@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 15 07:02:25 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1548+0
+ * iris relinked
+ * Added new thumbnailtoolbar widget for Windows OS (requires WinExtras library)
+ * fixed keycap emojis
+ * emoji 13.1
+ * Removed skin tone and not full-qualified emojis
+ * Attempt to fix emoticons abscence
+ * Enable emoji font in emoticons popup selector
+ * Fixed crash on incoming calls when psidmedia isn't loaded
+ * Enlarge file transfer previews
+ * Pass base port to ice manager
+ * Fixed styles for Psi icons in webkit / fixed wrong downscaling of smileys
+ * Fixed emoji parser handling high surrogates
+ * Draw emojis with system font
+ * Allow select peer resource where to send files
+ * Update documentation
+ * Fix broken encrypted icons in webkit chatlog
+ * reindex iconsets
+ * Get rid of ICQ and Yahoo iconsets
+ * minor qt container detaching fix
+ * Added address sanitizer option. To use compiler means to validate pointers
+ * Always clear referer since not just imgur does't like hot links
+ * minor qt container detaching fix
+ * Added share files to chat dialog's context menu
+ * Fix mime for svg icons
+ * Use ice.setRemoteCredentials instead of separate user/password functions
+- cleanup obsoletes.
+
+-------------------------------------------------------------------
 Mon Apr 19 08:42:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.5.1484+0
