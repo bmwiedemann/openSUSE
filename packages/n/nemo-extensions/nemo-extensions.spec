@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,18 @@
 #
 
 
-# Disable build for nemo-extension-gtkhash for now, no clue why it cause nemo to segfault.
 # Do not package nemo-extension-media-columns for now: slows Nemo down.
 # nemo-extension-terminal 'requires' two versions, confusing typelib finder.
 %define __requires_exclude typelib\\((Vte))\ =
-%define _version 4.0.0
+%define _version 5.0.0
 Name:           nemo-extensions
-Version:        4.8.0
+Version:        5.0.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/nemo-extensions
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE nemo-seahorse_no-nautilus-conflicts.patch sor.alexei@meowr.ru -- Strip conflicted with nautilus-extension-seahorse files.
-Patch0:         nemo-seahorse_no-nautilus-conflicts.patch
-# PATCH-FIX-OPENSUSE nemo-dropbox_no-dropbox-bin.patch sor.alexei@meowr.ru -- Strip dropbox binary installation from nemo-dropbox.
-Patch1:         nemo-dropbox_no-dropbox-bin.patch
-# PATCH-FIX-OPENSUSE nemo-gtkhash_openssl-1.1.patch sor.alexei@meowr.ru -- Add basic OpenSSL 1.1+ compatibility in nemo-gtkhash.
-Patch3:         nemo-gtkhash_openssl-1.1.patch
 # PATCH-FIX-UPSTREAM nemo-share-prevent-privilege-escalation.patch bsc#1084703 -- Prevent unprivileged users from adding other users to sambashare (commit a831e7b).
 Patch4:         nemo-share-prevent-privilege-escalation.patch
 BuildRequires:  fdupes
@@ -65,7 +58,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(nettle)
@@ -92,6 +85,7 @@ Set of extensions for Nemo, the Cinnamon file manager.
 %if 0%{?suse_version} >= 1500
 %package -n python3-nemo
 %else
+
 %package -n python-nemo
 %endif
 Summary:        Python bindings for the Nemo File manager
@@ -217,23 +211,6 @@ Obsoletes:      nemo-fileroller < %{version}
 
 %description -n nemo-extension-fileroller
 Nemo-fileroller adds File-roller support to the Nemo file manager.
-
-%package -n nemo-extension-gtkhash
-Summary:        Nemo extension for computing checksums and more using gtkhash
-License:        GPL-2.0-or-later
-Group:          System/GUI/Other
-Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
-# nemo-gtkhash was last used in openSUSE 13.2.
-Obsoletes:      nemo-gtkhash < %{version}
-Provides:       nemo-gtkhash = %{version}
-%glib2_gsettings_schema_requires
-
-%description -n nemo-extension-gtkhash
-The GtkHash extension for nemo which allows users to compute
-message digests or checksums using the mhash library.
-Currently supported hash functions include MD5, MD6, SHA1, SHA256,
-SHA512, RIPEMD, TIGER and WHIRLPOOL.
 
 %package -n nemo-extension-image-converter
 Summary:        Nemo extension to mass resize or rotate images
@@ -382,9 +359,8 @@ export CXXFLAGS="%{optflags} -fcommon"
 popd
 
 pushd nemo-fileroller
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-python
@@ -406,9 +382,8 @@ pushd nemo-emblems
 popd
 
 pushd nemo-image-converter
-NOCONFIGURE=1 gnome-autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-compare
@@ -416,44 +391,24 @@ pushd nemo-compare
 popd
 
 pushd nemo-dropbox
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-repairer
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-seahorse
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-share
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
-
-# pushd nemo-gtkhash
-# NOCONFIGURE=1 ./autogen.sh
-# %%configure \
-#             --with-gtk=3.0 \
-#             --enable-linux-crypto \
-#             --enable-gcrypt \
-#             --enable-libcrypto \
-#             --enable-mbedtls \
-#             --enable-nettle \
-#             --enable-nss \
-#             --enable-mhash \
-#             --enable-nemo
-# 
-# %%make_build
-# popd
 
 pushd nemo-audio-tab
 %py3_build
@@ -465,7 +420,7 @@ pushd nemo-pastebin
 popd
 
 pushd nemo-fileroller
-%make_install
+%meson_install
 popd
 
 pushd nemo-python
@@ -485,7 +440,7 @@ pushd nemo-emblems
 popd
 
 pushd nemo-image-converter
-%make_install
+%meson_install
 popd
 
 pushd nemo-compare
@@ -493,24 +448,20 @@ pushd nemo-compare
 popd
 
 pushd nemo-dropbox
-%make_install
+%meson_install
 popd
 
 pushd nemo-repairer
-%make_install
+%meson_install
 popd
 
 pushd nemo-seahorse
-%make_install
+%meson_install
 popd
 
 pushd nemo-share
-%make_install
+%meson_install
 popd
-
-# pushd nemo-gtkhash
-# %%make_install
-# popd
 
 pushd nemo-audio-tab
 %py3_install
@@ -519,8 +470,18 @@ popd
 %find_lang nemo-preview
 %find_lang nemo-share
 find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.a" -delete -print
 
 %fdupes %{buildroot}/%{_prefix}
+chmod 744 %{buildroot}%{_datadir}/nemo-compare/utils.py
+chmod 744 %{buildroot}%{_datadir}/nemo-python/extensions/nemo-audio-tab.py
+chmod 744 %{buildroot}%{_datadir}/nemo-python/extensions/nemo-compare.py
+
+# Manually let install samba from our package manager.
+rm -r %{buildroot}%{_datadir}/nemo-share/install-samba
+
+# Already included.
+rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 
 %if 0%{?suse_version} >= 1500
 %post -n python3-nemo -p /sbin/ldconfig
@@ -546,14 +507,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n nemo-extension-share -p /sbin/ldconfig
 
 %if 0%{?suse_version} < 1500
-%post -n nemo-extension-gtkhash
-/sbin/ldconfig
-%glib2_gsettings_schema_post
-
-%postun -n nemo-extension-gtkhash
-/sbin/ldconfig
-%glib2_gsettings_schema_postun
-
 %post -n nemo-extension-pastebin
 %glib2_gsettings_schema_post
 
@@ -570,6 +523,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?suse_version} >= 1500
 %files -n python3-nemo
 %else
+
 %files -n python-nemo
 %endif
 %license nemo-python/COPYING
@@ -598,9 +552,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-dropbox
 %license nemo-dropbox/COPYING
 %doc nemo-dropbox/AUTHORS nemo-dropbox/debian/changelog
-%exclude %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.a
 %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.so
 %{_datadir}/nemo-dropbox/
+%{_datadir}/icons/hicolor/symbolic/apps/nemo-dropbox-symbolic.svg
 
 %files -n nemo-extension-emblems
 %license nemo-emblems/COPYING*
@@ -611,25 +565,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-fileroller
 %license nemo-fileroller/COPYING
 %doc nemo-fileroller/debian/changelog
-%exclude %{_libdir}/nemo/extensions-3.0/libnemo-fileroller.a
 %{_libdir}/nemo/extensions-3.0/libnemo-fileroller.so
-
-%files -n nemo-extension-gtkhash
-%license nemo-gtkhash/COPYING
-%doc nemo-gtkhash/AUTHORS nemo-gtkhash/debian/changelog
-# %%{_bindir}/gtkhash
-# %%{_datadir}/glib-2.0/schemas/app.gtkhash.gschema.xml
-# %%dir %%{_datadir}/nemo-gtkhash
-# %%{_datadir}/nemo-gtkhash/gtkhash.xml.gz
-# %%{_libdir}/nemo/extensions-3.0/libgtkhash-properties.so
-# %%{_datadir}/glib-2.0/schemas/org.nemo.extensions.gtkhash.gschema.xml
-# %%dir %%{_datadir}/nemo-gtkhash/nautilus
-# %%{_datadir}/nemo-gtkhash/nautilus/gtkhash-properties.xml.gz
 
 %files -n nemo-extension-image-converter
 %license nemo-image-converter/COPYING
 %doc nemo-image-converter/AUTHORS nemo-image-converter/debian/changelog
-%{_libdir}/nemo/extensions-3.0/libnemo-image-converter.so
 %{_datadir}/nemo-image-converter/
 
 %files -n nemo-extension-pastebin
@@ -662,13 +602,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n nemo-extension-seahorse
 %license nemo-seahorse/COPYING
 %doc nemo-seahorse/debian/changelog
+%{_bindir}/nemo-seahorse-tool
 %{_libdir}/nemo/extensions-3.0/libnemo-seahorse.so
+%{_libdir}/nemo/extensions-3.0/libnemo-image-converter.so
+%{_datadir}/applications/nemo-seahorse-pgp-*.desktop
+%{_datadir}/glib-2.0/schemas/org.nemo.plugins.seahorse.*.xml
+%{_mandir}/man1/nemo-seahorse-tool.1%{?ext_man}
+%dir %{_datadir}/nemo-seahorse
+%{_datadir}/nemo-seahorse/ui
 
 %files -n nemo-extension-share -f nemo-share.lang
 %license nemo-share/COPYING
 %doc nemo-share/AUTHORS nemo-share/debian/changelog
 %{_libdir}/nemo/extensions-3.0/libnemo-share.so
-%exclude %{_libdir}/nemo/extensions-3.0/libnemo-share.a
 %{_datadir}/nemo-share/
 %{_datadir}/polkit-1/actions/org.nemo.share.samba_install.policy
 

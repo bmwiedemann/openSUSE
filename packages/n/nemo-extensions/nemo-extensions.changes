@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 31 14:14:38 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * No changelog found.
+- Remove nemo-seahorse_no-nautilus-conflicts.patch, not using
+  makefile anymore.
+- Remove nemo-gtkhash_openssl-1.1.patch, gtkhash removed.
+- Remove nemo-dropbox_no-dropbox-bin.patch, no using makefile, not
+  applicable.
+- Remove nemo-gtkhash, remove from upstream.
+- Remove cmake.
+
+-------------------------------------------------------------------
 Sun Dec  6 19:03:13 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.0.

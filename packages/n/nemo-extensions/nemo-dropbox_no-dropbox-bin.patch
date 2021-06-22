@@ -1,7 +1,0 @@
-diff -ruN a/nemo-dropbox/data/icons/Makefile.am c/nemo-dropbox/data/icons/Makefile.am
---- a/nemo-dropbox/data/icons/Makefile.am	2020-05-13 20:20:10.000000000 +0700
-+++ c/nemo-dropbox/data/icons/Makefile.am	2020-09-26 23:36:50.507877568 +0700
-@@ -1 +1 @@
--SUBDIRS = hicolor nemo-dropbox
-\ No newline at end of file
-+SUBDIRS = nemo-dropbox
