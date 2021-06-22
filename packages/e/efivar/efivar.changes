@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 16 06:45:21 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add efivar-bsc1187386-fix-emmc-parsing.patch to fix the eMMC
+  sysfs parsing (bsc#1187386)
+- Add efivar-bsc1181967-fix-nvme-parsing.patch to fix the NVME
+  path parsing (bsc#1181967)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:31:54 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add efivar-bsc1175989-handle-NULL-set-variable.patch to fix
