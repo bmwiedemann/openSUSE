@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Kid3.*
 
 Name:           kid3
-Version:        3.8.6
+Version:        3.8.7
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-tools
-BuildRequires:  python >= 3.6
+BuildRequires:  python3 >= 3.6
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DocTools)
