@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  7 08:44:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.18
+  * Fix bugs
+  * Add manual document
+  * Change copyright
+  * Update translations
+- Drop 002-use-Q_GLOBAL_STATIC.patch, merged by upstream
+- Drop disable-dmr.patch, enable dmr for arm
+- Add fix-header-include.patch, dfsearch is necessary
+
+-------------------------------------------------------------------
 Wed Mar  3 03:11:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add 002-use-Q_GLOBAL_STATIC.patch. Fix segmentation fault
