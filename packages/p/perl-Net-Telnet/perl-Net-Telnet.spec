@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Telnet
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Net-Telnet
-Version:        3.04
-Release:        0
 %define cpan_name Net-Telnet
-Summary:        interact with TELNET port or other TCP ports
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-Telnet/
-Source:         http://www.cpan.org/authors/id/J/JR/JROGERS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Net-Telnet
+Version:        3.05
+Release:        0
+Summary:        Interact with TELNET port or other TCP ports
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JR/JROGERS/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -40,24 +39,18 @@ ultimately means communicating with a program designed for human
 interaction. These interactive features include the ability to specify a
 time-out and to wait for patterns to appear in the input stream, such as
 the prompt from a shell. IPv6 support is available when using perl 5.14 or
-later (see 'family()'.
+later, see 'family()'.
 
 Other reasons to use this module than strictly with a TELNET port are:
 
-* *
+  * You're not familiar with sockets and you want a simple way to make client
+connections to TCP services.
 
-  You're not familiar with sockets and you want a simple way to make client
-  connections to TCP services.
+  * You want to be able to specify your own time-out while connecting, reading,
+or writing.
 
-* *
-
-  You want to be able to specify your own time-out while connecting,
-  reading, or writing.
-
-* *
-
-  You're communicating with an interactive program at the other end of some
-  socket or pipe and you want to wait for certain patterns to appear.
+  * You're communicating with an interactive program at the other end of some
+socket or pipe and you want to wait for certain patterns to appear.
 
 Here's an example that prints who's logged-on to a remote host. In addition
 to a username and password, you must also know the user's shell prompt,
@@ -77,15 +70,15 @@ Usage questions should be directed to the perlmonks.org discussion group.
 Bugs can be viewed or reported at cpan.org on the Net::Telnet page.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -93,7 +86,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog README
 
 %changelog
