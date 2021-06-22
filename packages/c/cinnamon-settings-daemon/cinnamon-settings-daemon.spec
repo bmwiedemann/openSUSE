@@ -17,13 +17,14 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        4.8.5
+Version:        5.0.1
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-settings-daemon
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  docutils
 BuildRequires:  fdupes
@@ -51,10 +52,12 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(xorg-wacom)
 BuildRequires:  pkgconfig(xtst)
 Recommends:     %{name}-lang
 Recommends:     colord

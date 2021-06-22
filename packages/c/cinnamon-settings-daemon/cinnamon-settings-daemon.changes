@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 11 05:53:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.1.
+  * csd-power-manager.c: Remove percentage from mouse and keyboard
+    'warning' notifications.
+  * csd-power-manager.c: Make sure to propagate the icon and/or state
+    properties immediately when they change.
+  * power/gpm-common.c: Prefer more specific battery level icons if
+    they're available in the theme.
+  * gpm-common.c: Adjust thresholds for battery-level icon changes.
+  * datetime: use full path for d-bus service Exec
+  * build: Add missing defines. Fix optional wacom build.
+    Make build options behave consistently.
+  * csd-xrandr-manager.c: Fix some build warnings.
+  * csd-power-manager.c: Manage idle activation of cinnamon-screensaver
+    instead of making the screensaver itself handle it.
+  * wacom: Fix a crash from assertion failures
+  * csd-power-manager.c: Remove percentage from non-battery
+    critical notifications.
+
+-------------------------------------------------------------------
 Thu Jan 14 11:37:20 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.5.
