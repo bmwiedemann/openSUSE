@@ -20,7 +20,7 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        2.8.3
+Version:        3.0.0
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -258,8 +258,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/xreader.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/help/C/%{name}
 %{_mandir}/man?/*.?%{?ext_man}

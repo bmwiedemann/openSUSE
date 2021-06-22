@@ -367,4 +367,27 @@
 </comment>
     <requestid>867872</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e73655eb01df02a4290ec77489fa46c8</srcmd5>
+    <version>3.0.0</version>
+    <time>1624387493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0.
+  * Fixes #457. Allows space bar to scroll document forward
+  * Move metadata to non-legacy path
+  * Fixes #463. Moves annotations below the text.
+  * packaging: Fix metadata location.
+  * Fixes #473. Jump to Page functionality
+  * enter event on presentation mode
+  * readme updated
+  * show the total number of words matching the search result
+  * fix segfault in epub backend when opening a filename containing a hash
+  * epub: Fix unescaping of '#' (#487)
+  * control+f and space behaviours fixed in search bar (#488)
+  * Fix grammar error spotted by lintian (#489)
+  * l10n: Don't include gsettings schema in translations
+  * l10n: Update POT
+</comment>
+    <requestid>897763</requestid>
+  </revision>
 </revisionlist>
