@@ -49,6 +49,8 @@ BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  mingw32-headers
 %endif
 
+ExclusiveArch:  %{ix86} x86_64
+
 %description
 Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine
 
