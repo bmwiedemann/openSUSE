@@ -289,4 +289,12 @@ put together with abseil-cpp</comment>
 - Update to release 1.38.0</comment>
     <requestid>897022</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>89144d1d0411bab1b358a84d7c2d65a7</srcmd5>
+    <version>1.38.1</version>
+    <time>1624387512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.38.1</comment>
+    <requestid>901333</requestid>
+  </revision>
 </revisionlist>

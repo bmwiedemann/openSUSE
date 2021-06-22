@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 22 12:20:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38.1
+  * Build system updates
+
+-------------------------------------------------------------------
 Wed Jun  2 23:13:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add grpc-cxx17.patch
