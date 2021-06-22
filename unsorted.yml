@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2712,6 +2712,7 @@ unsorted:
   - deepin-gir-generator 
   - deepin-gtk-theme 
   - deepin-icon-theme 
+  - deepin-icon-theme-vintage 
   - deepin-image-viewer 
   - deepin-image-viewer-lang 
   - deepin-kwin 
@@ -2721,6 +2722,7 @@ unsorted:
   - deepin-launcher-branding-openSUSE 
   - deepin-launcher-branding-upstream 
   - deepin-launcher-devel 
+  - deepin-launcher-lang 
   - deepin-manual 
   - deepin-movie 
   - deepin-movie-devel 
@@ -9143,7 +9145,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_8 
+  - libSimGearCore-2020_3_9 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -9989,7 +9991,7 @@ unsorted:
   - libclzma-suse0 
   - libcm1 
   - libcmap4-32bit: [x86_64] 
-  - libcmark0_29_0 
+  - libcmark0_30_0 
   - libcmh0 
   - libcmis-c-0_5-5 
   - libcmis-c-devel 
@@ -12244,14 +12246,14 @@ unsorted:
   - libntirpc-devel: [x86_64] 
   - libntirpc3_3: [x86_64] 
   - libntk1 
-  - libntl43 
+  - libntl44 
   - libntlm-devel 
   - libntpc1 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
   - libnumbertext-tools 
-  - libnuspell4 
+  - libnuspell5 
   - libnvidia-container-devel: [x86_64] 
   - libnvidia-container-static: [x86_64] 
   - libnvidia-container-tools: [x86_64] 
@@ -12749,6 +12751,7 @@ unsorted:
   - libpowerman0 
   - libppl14 
   - libppl_c4 
+  - libpplite1 
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
   - libpqos4 
@@ -14696,6 +14699,7 @@ unsorted:
   - libyui-qt-rest-api15 
   - libyui-rest-api-devel 
   - libyui-rest-api15 
+  - libz-ng2 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -20066,6 +20070,7 @@ unsorted:
   - php8-gmp 
   - php8-ice 
   - php8-iconv 
+  - php8-imagick 
   - php8-intl 
   - php8-ldap 
   - php8-lzf 
@@ -20591,6 +20596,7 @@ unsorted:
   - ppl 
   - ppl-devel 
   - ppl-doc 
+  - pplite-devel 
   - ppp-devel 
   - ppp-modem 
   - pprof 
@@ -23852,6 +23858,7 @@ unsorted:
   - python36-spotipy 
   - python36-sqlalchemy-migrate 
   - python36-sqlite-fts4 
+  - python36-sqlite3-to-mysql 
   - python36-sqlitedict 
   - python36-sqlparse 
   - python36-srcinfo 
@@ -26744,6 +26751,7 @@ unsorted:
   - python38-sqlalchemy-migrate 
   - python38-sqlite-fts4 
   - python38-sqlite-utils 
+  - python38-sqlite3-to-mysql 
   - python38-sqlitedict 
   - python38-sqlparse 
   - python38-srcinfo 
@@ -29804,6 +29812,7 @@ unsorted:
   - python39-sqlalchemy-migrate 
   - python39-sqlite-fts4 
   - python39-sqlite-utils 
+  - python39-sqlite3-to-mysql 
   - python39-sqlitedict 
   - python39-sqlparse 
   - python39-srcinfo 
@@ -42451,6 +42460,7 @@ unsorted:
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
+  - zlib-ng-devel 
   - zlib-testsuite 
   - zlibrary-data 
   - zlibrary-devel 
