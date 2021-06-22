@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 22 03:36:07 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Allow extra architectures with sccache
+
+-------------------------------------------------------------------
 Wed Jan 13 01:34:41 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.2.15~git1.22a176c:

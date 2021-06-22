@@ -37,7 +37,7 @@ Source14:       client.example
 BuildRequires:  rust-packaging
 BuildRequires:  pkgconfig(openssl)
 Requires:       bubblewrap
-ExcludeArch:    s390 s390x ppc ppc64 ppc64le %ix86
+ExcludeArch:    s390 ppc ppc64
 
 %description
 Sccache is a ccache-like tool. It is used as a compiler wrapper and
