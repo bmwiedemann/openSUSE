@@ -57,4 +57,16 @@
 </comment>
     <requestid>855382</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>24042b4368f6a146916c5501608ad91c</srcmd5>
+    <version>2.2.0</version>
+    <time>1624387494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0.
+  * SettingsWidgets.py: Restrict Range increments to the 'step' amount.
+  * Font chooser widget: add option to specify the level of font selection.
+
+Don't change permission, leave it at 644.</comment>
+    <requestid>898049</requestid>
+  </revision>
 </revisionlist>

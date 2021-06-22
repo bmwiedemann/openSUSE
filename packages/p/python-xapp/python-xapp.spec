@@ -1,7 +1,7 @@
 #
 # spec file for package python-xapp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name python3-xapp
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xapp
-Version:        2.0.2
+Version:        2.2.0
 Release:        0
 Summary:        Python XApp library
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ Source:         https://github.com/linuxmint/python3-xapp/archive/%{version}.tar
 Patch0:         python-xapp-xdgsu.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
 Requires:       xdg-utils
@@ -51,6 +52,7 @@ desktop environments and required to implement cross-DE solutions.
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYING

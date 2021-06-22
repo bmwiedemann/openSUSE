@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 30 17:36:01 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.0.
+  * SettingsWidgets.py: Restrict Range increments to the 'step' amount.
+  * Font chooser widget: add option to specify the level of font selection.
+
+-------------------------------------------------------------------
 Mon Dec  7 20:01:37 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.0.2.
