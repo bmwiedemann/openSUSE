@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 22 06:52:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch back to using tar_scm in _service file: with aaa_base
+  being part of the distro bootstrap (ring0) we want to have the
+  build deps as lean as possible. Buildtime services equals to
+  build deps.
+
+-------------------------------------------------------------------
 Wed Jun 16 09:19:09 UTC 2021 - lnussel@suse.de
 
 - Update to version 84.87+git20210616.9cf42ff:

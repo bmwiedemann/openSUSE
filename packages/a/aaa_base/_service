@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="manual">
+  <service name="tar_scm" mode="manual">
     <param name="version">84.87</param>
     <param name="versionformat">84.87+git%cd.%h</param>
     <param name="url">https://github.com/openSUSE/aaa_base.git</param>
@@ -7,6 +7,4 @@
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
-  <service mode="buildtime" name="tar"/>
-  <service mode="buildtime" name="set_version"/>
 </services>

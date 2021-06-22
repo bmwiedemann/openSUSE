@@ -3914,4 +3914,12 @@
   * Fix profile.csh to really set http proxies</comment>
     <requestid>900346</requestid>
   </revision>
+  <revision rev="481" vrev="2">
+    <srcmd5>b354d5f9c303c82876690884c4249771</srcmd5>
+    <version>84.87+git20210616.9cf42ff</version>
+    <time>1624387497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901320</requestid>
+  </revision>
 </revisionlist>

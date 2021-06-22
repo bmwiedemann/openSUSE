@@ -53,7 +53,7 @@ Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
 Group:          System/Fhs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# run osc service dr to recreate
+# run osc service mr to recreate
 Source:         aaa_base-%{version}.tar
 #
 # Read README.packaging.txt before making any changes to this
