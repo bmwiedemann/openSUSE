@@ -677,4 +677,30 @@
   * acpi: pmtt: update PMTT to revision 2 (mantis 1975)</comment>
     <requestid>895130</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>15762c9ab242d15eb92adccd0ca8c096</srcmd5>
+    <version>21.06.00</version>
+    <time>1624387510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.06.00:
+  * lib: fwts_version.h - update to V21.06.00
+  * debian: update changelog
+  * fwts_acpi_tables: memcpy 4 char ACPI table name
+  * Remove complex disabling of ACPI for non-ACPI targets
+  * Debian: move source lintian overrides file to source
+  * Add lintian overrides for ldconfig trigger warning
+  * Debian: control: update Standards-Version to 4.1.0
+  * Debian: update compat level to 9
+  * Debian: add Rules-Requires-Root field to control file
+  * Debian: add project Homepage field to control file
+  * debian/copyright: use secure https url specifier
+  * Debian: remove spaces at end of lines of control file
+  * Debian: remove spaces at end of lines of changelong
+  * auto-packager: mkpackage.sh: remove xenial
+  * live-image: add &quot;TPM tests&quot; to root menu
+  * live-image: add utils tests to &quot;Selected&quot; menu
+  * tpmevlog: add to batch tests
+  * klog.json: check IRQ requests on irqchip</comment>
+    <requestid>901331</requestid>
+  </revision>
 </revisionlist>

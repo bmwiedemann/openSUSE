@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 22 12:14:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.06.00:
+  * lib: fwts_version.h - update to V21.06.00
+  * debian: update changelog
+  * fwts_acpi_tables: memcpy 4 char ACPI table name
+  * Remove complex disabling of ACPI for non-ACPI targets
+  * Debian: move source lintian overrides file to source
+  * Add lintian overrides for ldconfig trigger warning
+  * Debian: control: update Standards-Version to 4.1.0
+  * Debian: update compat level to 9
+  * Debian: add Rules-Requires-Root field to control file
+  * Debian: add project Homepage field to control file
+  * debian/copyright: use secure https url specifier
+  * Debian: remove spaces at end of lines of control file
+  * Debian: remove spaces at end of lines of changelong
+  * auto-packager: mkpackage.sh: remove xenial
+  * live-image: add "TPM tests" to root menu
+  * live-image: add utils tests to "Selected" menu
+  * tpmevlog: add to batch tests
+  * klog.json: check IRQ requests on irqchip
+
+-------------------------------------------------------------------
 Mon May 24 06:36:55 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 21.05.00:
