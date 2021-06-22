@@ -70,4 +70,41 @@
     <comment></comment>
     <requestid>817772</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9f19ecae1b48d5b7555b654b0b44c0e</srcmd5>
+    <version>1.38.0</version>
+    <time>1624387501</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires to googleapis-common-protos.
+- Add Requires on python-google-filesystem, and stop including a file it
+  now ships.
+
+- Update to 1.38.0:
+  - add getters and setters for encryption_key and kms_key_name
+  - retry auth.TransportError errors
+  - revise docstrings for generate_signed_url
+  - Ensure consistency check in test runs even if expected error
+    occurs
+  - silence expected errors for routine operations on BlobReader
+  - add blob.open() for file-like I/O
+  - update user_project usage and documentation in bucket/client
+    class methods
+  - update batch connection to request api endpoint info from
+    client
+  - allow metadata keys to be cleared 
+  - allow signed url version v4 without signed credentials
+  - correctly encode bytes for V2 signature
+  - add mtls support
+  - correctly decode times without microseconds
+  - expose num_retries parameter for blob upload methods
+  - pass the unused parameter
+  - set custom_time on uploads
+  - address incorrect usage of request preconditions
+  - Amend default retry behavior for bucket operations on client
+  - support ConnectionError retries for media operations
+  - make retry parameter public and added in other methods
+  - avoid triggering global logging config
+  - fall back to 'charset' of 'content_type' in</comment>
+    <requestid>901276</requestid>
+  </revision>
 </revisionlist>

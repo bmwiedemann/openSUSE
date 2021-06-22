@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Jun 22 06:34:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Requires to googleapis-common-protos.
+- Add Requires on python-google-filesystem, and stop including a file it
+  now ships.
+
+-------------------------------------------------------------------
+Fri Jun  4 07:09:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.38.0:
+  - add getters and setters for encryption_key and kms_key_name
+  - retry auth.TransportError errors
+  - revise docstrings for generate_signed_url
+  - Ensure consistency check in test runs even if expected error
+    occurs
+  - silence expected errors for routine operations on BlobReader
+  - add blob.open() for file-like I/O
+  - update user_project usage and documentation in bucket/client
+    class methods
+  - update batch connection to request api endpoint info from
+    client
+  - allow metadata keys to be cleared 
+  - allow signed url version v4 without signed credentials
+  - correctly encode bytes for V2 signature
+  - add mtls support
+  - correctly decode times without microseconds
+  - expose num_retries parameter for blob upload methods
+  - pass the unused parameter
+  - set custom_time on uploads
+  - address incorrect usage of request preconditions
+  - Amend default retry behavior for bucket operations on client
+  - support ConnectionError retries for media operations
+  - make retry parameter public and added in other methods
+  - avoid triggering global logging config
+  - fall back to 'charset' of 'content_type' in
+    'download_as_text' 
+  - fix conditional retry handling of camelCase query params
+  - retry uploads only conditionally
+  - update 'custom_time' setter to record change 
+  - add testing support for Python 3.9, drop Python 3.5
+  - use passed-in client within Blob.from_string and helpers 
+  - preserve metadata value when uploading new file content 
+  - retry API calls with exponential backoff
+  - field policy return string
+  - self-upload files for Unicode system test
+  - use version.py for versioning, avoid issues with discovering
+    version via get_distribution
+  - preserve existing blob hashes when 'X-Goog-Hash header' is
+    not present
+  - blob: base64 includes additional characters
+  - add configurable checksumming for blob uploads and downloads
+  - add support for 'Blob.custom_time' and lifecycle rules
+  - error message return from api
+  - storage: add support of daysSinceNoncurrentTime and
+    noncurrentTimeBefore
+  - pass 'client_options' to base class ctor 
+  - rename 'Blob.download_as_{string,bytes}', add
+    'Blob.download_as_text'
+  - change datetime.now to utcnow 
+  - extract hashes correctly during download
+  - add timeouts to Blob methods where missing
+  - auto-populate standard headers for non-chunked downloads
+  - migrate to Service Account Credentials API
+  - add multiprocessing.rst to synthool excludes
+- Fix URL to the correct https://github.com/googleapis/python-storage
+- Add no-network.patch marking tests requiring network access
+  (gh#googleapis/python-storage#457).
+- Add no-sic.patch to work even with old setuptools and packaging
+  packages.
+
+-------------------------------------------------------------------
+Tue Apr 13 19:30:16 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Skip Python 2 build as dependencies are no longer built for Python 2 either
+
+-------------------------------------------------------------------
 Mon Jun 29 15:55:00 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update version requirement for mock package.

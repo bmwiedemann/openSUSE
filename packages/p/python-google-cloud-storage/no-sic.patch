@@ -1,0 +1,20 @@
+---
+ setup.py |    7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -24,12 +24,7 @@ try:
+ except ImportError:
+     # Try the approach of replacing packaging.version.Version
+     sic = lambda v: v
+-    try:
+-        # setuptools >=39.0.0 uses packaging from setuptools.extern
+-        from setuptools.extern import packaging
+-    except ImportError:
+-        # setuptools <39.0.0 uses packaging from pkg_resources.extern
+-        from pkg_resources.extern import packaging
++    import packaging
+     packaging.version.Version = packaging.version.LegacyVersion
+ 
+ # Package metadata.

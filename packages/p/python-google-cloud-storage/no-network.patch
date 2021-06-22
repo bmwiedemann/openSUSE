@@ -1,0 +1,604 @@
+---
+ setup.cfg                 |    3 ++
+ tests/unit/test_blob.py   |   60 ++++++++++++++++++++++++++++++++++++++++++++++
+ tests/unit/test_bucket.py |   15 +++++++++++
+ tests/unit/test_client.py |   16 ++++++++++++
+ 4 files changed, 94 insertions(+)
+
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -5,3 +5,6 @@ universal = 1
+ tag_build = 
+ tag_date = 0
+ 
++[tool:pytest]
++markers =
++    network: marks tests which require network connection
+--- a/tests/unit/test_blob.py
++++ b/tests/unit/test_blob.py
+@@ -1223,6 +1223,7 @@ class Test_Blob(unittest.TestCase):
+             )
+         patch.assert_not_called()
+ 
++    @pytest.mark.network
+     def test_download_to_file_with_failure(self):
+         import requests
+         from google.resumable_media import InvalidResponse
+@@ -1262,6 +1263,7 @@ class Test_Blob(unittest.TestCase):
+             checksum="md5",
+         )
+ 
++    @pytest.mark.network
+     def test_download_to_file_wo_media_link(self):
+         blob_name = "blob-name"
+         client = self._make_client()
+@@ -1292,6 +1294,7 @@ class Test_Blob(unittest.TestCase):
+             checksum="md5",
+         )
+ 
++    @pytest.mark.network
+     def test_download_to_file_w_generation_match(self):
+         GENERATION_NUMBER = 6
+         HEADERS = {"accept-encoding": "gzip"}
+@@ -1359,18 +1362,23 @@ class Test_Blob(unittest.TestCase):
+             checksum="md5",
+         )
+ 
++    @pytest.mark.network
+     def test_download_to_file_wo_chunks_wo_raw(self):
+         self._download_to_file_helper(use_chunks=False, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_to_file_w_chunks_wo_raw(self):
+         self._download_to_file_helper(use_chunks=True, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_to_file_wo_chunks_w_raw(self):
+         self._download_to_file_helper(use_chunks=False, raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_to_file_w_chunks_w_raw(self):
+         self._download_to_file_helper(use_chunks=True, raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_to_file_w_custom_timeout(self):
+         self._download_to_file_helper(
+             use_chunks=False, raw_download=False, timeout=9.58
+@@ -1427,6 +1435,7 @@ class Test_Blob(unittest.TestCase):
+         stream = blob._do_download.mock_calls[0].args[1]
+         self.assertEqual(stream.name, temp.name)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_w_generation_match(self):
+         from google.cloud._testing import _NamedTemporaryFile
+ 
+@@ -1457,25 +1466,31 @@ class Test_Blob(unittest.TestCase):
+             checksum="md5",
+         )
+ 
++    @pytest.mark.network
+     def test_download_to_filename_w_updated_wo_raw(self):
+         updated = "2014-12-06T13:13:50.690Z"
+         self._download_to_filename_helper(updated=updated, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_wo_updated_wo_raw(self):
+         self._download_to_filename_helper(updated=None, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_w_updated_w_raw(self):
+         updated = "2014-12-06T13:13:50.690Z"
+         self._download_to_filename_helper(updated=updated, raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_wo_updated_w_raw(self):
+         self._download_to_filename_helper(updated=None, raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_w_custom_timeout(self):
+         self._download_to_filename_helper(
+             updated=None, raw_download=False, timeout=9.58
+         )
+ 
++    @pytest.mark.network
+     def test_download_to_filename_corrupted(self):
+         from google.resumable_media import DataCorruption
+ 
+@@ -1517,6 +1532,7 @@ class Test_Blob(unittest.TestCase):
+         stream = blob._do_download.mock_calls[0].args[1]
+         self.assertEqual(stream.name, filename)
+ 
++    @pytest.mark.network
+     def test_download_to_filename_w_key(self):
+         from google.cloud._testing import _NamedTemporaryFile
+         from google.cloud.storage.blob import _get_encryption_headers
+@@ -1677,6 +1693,7 @@ class Test_Blob(unittest.TestCase):
+         self.assertIsNone(blob.md5_hash)
+         self.assertIsNone(blob.crc32c)
+ 
++    @pytest.mark.network
+     def test_download_as_bytes_w_generation_match(self):
+         GENERATION_NUMBER = 6
+         MEDIA_LINK = "http://example.com/media/"
+@@ -1704,12 +1721,15 @@ class Test_Blob(unittest.TestCase):
+             checksum="md5",
+         )
+ 
++    @pytest.mark.network
+     def test_download_as_bytes_wo_raw(self):
+         self._download_as_bytes_helper(raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_as_bytes_w_raw(self):
+         self._download_as_bytes_helper(raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_as_byte_w_custom_timeout(self):
+         self._download_as_bytes_helper(raw_download=False, timeout=9.58)
+ 
+@@ -1860,6 +1880,7 @@ class Test_Blob(unittest.TestCase):
+             charset=charset,
+         )
+ 
++    @pytest.mark.network
+     @mock.patch("warnings.warn")
+     def test_download_as_string(self, mock_warn):
+         MEDIA_LINK = "http://example.com/media/"
+@@ -2129,25 +2150,30 @@ class Test_Blob(unittest.TestCase):
+             "POST", upload_url, data=payload, headers=headers, timeout=expected_timeout
+         )
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_no_size(self, mock_get_boundary):
+         self._do_multipart_success(mock_get_boundary, predefined_acl="private")
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_no_size_mtls(self, mock_get_boundary):
+         self._do_multipart_success(
+             mock_get_boundary, predefined_acl="private", mtls=True
+         )
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_size(self, mock_get_boundary):
+         self._do_multipart_success(mock_get_boundary, size=10)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_user_project(self, mock_get_boundary):
+         user_project = "user-project-123"
+         self._do_multipart_success(mock_get_boundary, user_project=user_project)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_kms(self, mock_get_boundary):
+         kms_resource = (
+@@ -2158,6 +2184,7 @@ class Test_Blob(unittest.TestCase):
+         )
+         self._do_multipart_success(mock_get_boundary, kms_key_name=kms_resource)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_kms_with_version(self, mock_get_boundary):
+         kms_resource = (
+@@ -2169,26 +2196,31 @@ class Test_Blob(unittest.TestCase):
+         )
+         self._do_multipart_success(mock_get_boundary, kms_key_name=kms_resource)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_retry(self, mock_get_boundary):
+         self._do_multipart_success(mock_get_boundary, num_retries=8)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_generation_match(self, mock_get_boundary):
+         self._do_multipart_success(
+             mock_get_boundary, if_generation_match=4, if_metageneration_match=4
+         )
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_custom_timeout(self, mock_get_boundary):
+         self._do_multipart_success(mock_get_boundary, timeout=9.58)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_generation_not_match(self, mock_get_boundary):
+         self._do_multipart_success(
+             mock_get_boundary, if_generation_not_match=4, if_metageneration_not_match=4
+         )
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_client(self, mock_get_boundary):
+         transport = self._mock_transport(http_client.OK, {})
+@@ -2196,6 +2228,7 @@ class Test_Blob(unittest.TestCase):
+         client._connection.API_BASE_URL = "https://storage.googleapis.com"
+         self._do_multipart_success(mock_get_boundary, client=client)
+ 
++    @pytest.mark.network
+     @mock.patch(u"google.resumable_media._upload.get_boundary", return_value=b"==0==")
+     def test__do_multipart_upload_with_metadata(self, mock_get_boundary):
+         self._do_multipart_success(mock_get_boundary, metadata={"test": "test"})
+@@ -2403,25 +2436,32 @@ class Test_Blob(unittest.TestCase):
+             timeout=expected_timeout,
+         )
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_metadata(self):
+         self._initiate_resumable_helper(metadata={"test": "test"})
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_custom_timeout(self):
+         self._initiate_resumable_helper(timeout=9.58)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_no_size(self):
+         self._initiate_resumable_helper()
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_no_size_mtls(self):
+         self._initiate_resumable_helper(mtls=True)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_size(self):
+         self._initiate_resumable_helper(size=10000)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_user_project(self):
+         user_project = "user-project-123"
+         self._initiate_resumable_helper(user_project=user_project)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_kms(self):
+         kms_resource = (
+             "projects/test-project-123/"
+@@ -2431,6 +2471,7 @@ class Test_Blob(unittest.TestCase):
+         )
+         self._initiate_resumable_helper(kms_key_name=kms_resource)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_kms_with_version(self):
+         kms_resource = (
+             "projects/test-project-123/"
+@@ -2441,33 +2482,41 @@ class Test_Blob(unittest.TestCase):
+         )
+         self._initiate_resumable_helper(kms_key_name=kms_resource)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_without_chunk_size(self):
+         self._initiate_resumable_helper(blob_chunk_size=None)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_chunk_size(self):
+         one_mb = 1048576
+         self._initiate_resumable_helper(chunk_size=one_mb)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_extra_headers(self):
+         extra_headers = {"origin": "http://not-in-kansas-anymore.invalid"}
+         self._initiate_resumable_helper(extra_headers=extra_headers)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_retry(self):
+         self._initiate_resumable_helper(num_retries=11)
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_generation_match(self):
+         self._initiate_resumable_helper(
+             if_generation_match=4, if_metageneration_match=4
+         )
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_generation_not_match(self):
+         self._initiate_resumable_helper(
+             if_generation_not_match=4, if_metageneration_not_match=4
+         )
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_predefined_acl(self):
+         self._initiate_resumable_helper(predefined_acl="private")
+ 
++    @pytest.mark.network
+     def test__initiate_resumable_upload_with_client(self):
+         resumable_url = "http://test.invalid?upload_id=hey-you"
+         response_headers = {"location": resumable_url}
+@@ -2699,21 +2748,27 @@ class Test_Blob(unittest.TestCase):
+         )
+         self.assertEqual(transport.request.mock_calls, [call0, call1, call2])
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_with_custom_timeout(self):
+         self._do_resumable_helper(timeout=9.58)
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_no_size(self):
+         self._do_resumable_helper()
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_with_size(self):
+         self._do_resumable_helper(use_size=True)
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_with_retry(self):
+         self._do_resumable_helper(num_retries=6)
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_with_predefined_acl(self):
+         self._do_resumable_helper(predefined_acl="private")
+ 
++    @pytest.mark.network
+     def test__do_resumable_upload_with_data_corruption(self):
+         from google.resumable_media import DataCorruption
+ 
+@@ -3121,15 +3176,19 @@ class Test_Blob(unittest.TestCase):
+             timeout=expected_timeout,
+         )
+ 
++    @pytest.mark.network
+     def test_create_resumable_upload_session(self):
+         self._create_resumable_upload_session_helper()
+ 
++    @pytest.mark.network
+     def test_create_resumable_upload_session_with_custom_timeout(self):
+         self._create_resumable_upload_session_helper(timeout=9.58)
+ 
++    @pytest.mark.network
+     def test_create_resumable_upload_session_with_origin(self):
+         self._create_resumable_upload_session_helper(origin="http://google.com")
+ 
++    @pytest.mark.network
+     def test_create_resumable_upload_session_with_failure(self):
+         from google.resumable_media import InvalidResponse
+         from google.cloud import exceptions
+@@ -4709,6 +4768,7 @@ class Test_Blob(unittest.TestCase):
+         self.assertEqual(blob.name, "b")
+         self.assertEqual(blob.bucket.name, "buckets.example.com")
+ 
++    @pytest.mark.network
+     def test_open(self):
+         from io import TextIOWrapper
+         from google.cloud.storage.fileio import BlobReader
+--- a/tests/unit/test_bucket.py
++++ b/tests/unit/test_bucket.py
+@@ -857,6 +857,7 @@ class Test_Bucket(unittest.TestCase):
+         self.assertEqual(blob.chunk_size, CHUNK_SIZE)
+         self.assertEqual(blob._encryption_key, KEY)
+ 
++    @pytest.mark.network
+     def test_list_blobs_defaults(self):
+         NAME = "name"
+         connection = _Connection({"items": []})
+@@ -872,6 +873,7 @@ class Test_Bucket(unittest.TestCase):
+         self.assertEqual(kw["query_params"], {"projection": "noAcl"})
+         self.assertEqual(kw["timeout"], self._get_default_timeout())
+ 
++    @pytest.mark.network
+     def test_list_blobs_w_all_arguments_and_user_project(self):
+         NAME = "name"
+         USER_PROJECT = "user-project-123"
+@@ -1041,6 +1043,7 @@ class Test_Bucket(unittest.TestCase):
+         ]
+         self.assertEqual(connection._deleted_buckets, expected_cw)
+ 
++    @pytest.mark.network
+     def test_delete_hit_with_user_project(self):
+         NAME = "name"
+         USER_PROJECT = "user-project-123"
+@@ -1064,6 +1067,7 @@ class Test_Bucket(unittest.TestCase):
+         ]
+         self.assertEqual(connection._deleted_buckets, expected_cw)
+ 
++    @pytest.mark.network
+     def test_delete_force_delete_blobs(self):
+         NAME = "name"
+         BLOB_NAME1 = "blob-name1"
+@@ -1115,6 +1119,7 @@ class Test_Bucket(unittest.TestCase):
+         ]
+         self.assertEqual(connection._deleted_buckets, expected_cw)
+ 
++    @pytest.mark.network
+     def test_delete_force_miss_blobs(self):
+         NAME = "name"
+         BLOB_NAME = "blob-name1"
+@@ -1139,6 +1144,7 @@ class Test_Bucket(unittest.TestCase):
+         ]
+         self.assertEqual(connection._deleted_buckets, expected_cw)
+ 
++    @pytest.mark.network
+     def test_delete_too_many(self):
+         NAME = "name"
+         BLOB_NAME1 = "blob-name1"
+@@ -2301,6 +2307,7 @@ class Test_Bucket(unittest.TestCase):
+         bucket = self._make_one(name=NAME, properties=before)
+         self.assertEqual(bucket.versioning_enabled, True)
+ 
++    @pytest.mark.network
+     @mock.patch("warnings.warn")
+     def test_create_deprecated(self, mock_warn):
+         PROJECT = "PROJECT"
+@@ -2330,6 +2337,7 @@ class Test_Bucket(unittest.TestCase):
+             stacklevel=1,
+         )
+ 
++    @pytest.mark.network
+     @mock.patch("warnings.warn")
+     def test_create_w_user_project(self, mock_warn):
+         PROJECT = "PROJECT"
+@@ -2754,6 +2762,7 @@ class Test_Bucket(unittest.TestCase):
+     def test_make_public_w_future_reload_default(self):
+         self._make_public_w_future_helper(default_object_acl_loaded=False)
+ 
++    @pytest.mark.network
+     def test_make_public_recursive(self):
+         from google.cloud.storage.acl import _ACLEntity
+ 
+@@ -2818,6 +2827,7 @@ class Test_Bucket(unittest.TestCase):
+         )
+         self.assertEqual(kw[1]["timeout"], 42)
+ 
++    @pytest.mark.network
+     def test_make_public_recursive_too_many(self):
+         from google.cloud.storage.acl import _ACLEntity
+ 
+@@ -2902,6 +2912,7 @@ class Test_Bucket(unittest.TestCase):
+     def test_make_private_w_future_reload_default(self):
+         self._make_private_w_future_helper(default_object_acl_loaded=False)
+ 
++    @pytest.mark.network
+     def test_make_private_recursive(self):
+         _saved = []
+ 
+@@ -2963,6 +2974,7 @@ class Test_Bucket(unittest.TestCase):
+         )
+         self.assertEqual(kw[1]["timeout"], 42)
+ 
++    @pytest.mark.network
+     def test_make_private_recursive_too_many(self):
+         NO_PERMISSIONS = []
+         AFTER = {"acl": NO_PERMISSIONS, "defaultObjectAcl": []}
+@@ -2982,6 +2994,7 @@ class Test_Bucket(unittest.TestCase):
+         bucket._MAX_OBJECTS_FOR_ITERATION = 1
+         self.assertRaises(ValueError, bucket.make_private, recursive=True)
+ 
++    @pytest.mark.network
+     def test_page_empty_response(self):
+         from google.api_core import page_iterator
+ 
+@@ -2997,6 +3010,7 @@ class Test_Bucket(unittest.TestCase):
+         self.assertEqual(blobs, [])
+         self.assertEqual(iterator.prefixes, set())
+ 
++    @pytest.mark.network
+     def test_page_non_empty_response(self):
+         import six
+         from google.cloud.storage.blob import Blob
+@@ -3024,6 +3038,7 @@ class Test_Bucket(unittest.TestCase):
+         self.assertEqual(blob.name, blob_name)
+         self.assertEqual(iterator.prefixes, set(["foo"]))
+ 
++    @pytest.mark.network
+     def test_cumulative_prefixes(self):
+         import six
+         from google.cloud.storage.blob import Blob
+--- a/tests/unit/test_client.py
++++ b/tests/unit/test_client.py
+@@ -220,6 +220,7 @@ class TestClient(unittest.TestCase):
+         self.assertEqual(list(client._batch_stack), [])
+         self.assertIs(client._connection._client_info, client_info)
+ 
++    @pytest.mark.network
+     def test_ctor_mtls(self):
+         credentials = _make_credentials()
+ 
+@@ -918,6 +919,7 @@ class TestClient(unittest.TestCase):
+         )
+         self.assertEqual(bucket.location, location)
+ 
++    @pytest.mark.network
+     def test_create_bucket_w_explicit_project(self):
+         from google.cloud.storage.client import Client
+ 
+@@ -941,6 +943,7 @@ class TestClient(unittest.TestCase):
+             retry=DEFAULT_RETRY,
+         )
+ 
++    @pytest.mark.network
+     def test_create_w_extra_properties(self):
+         from google.cloud.storage.client import Client
+         from google.cloud.storage.bucket import Bucket
+@@ -993,6 +996,7 @@ class TestClient(unittest.TestCase):
+             retry=DEFAULT_RETRY,
+         )
+ 
++    @pytest.mark.network
+     def test_create_hit(self):
+         from google.cloud.storage.client import Client
+ 
+@@ -1094,6 +1098,7 @@ class TestClient(unittest.TestCase):
+         json_sent = http.request.call_args_list[0][1]["data"]
+         self.assertEqual(json_expected, json.loads(json_sent))
+ 
++    @pytest.mark.network
+     def test_download_blob_to_file_with_failure(self):
+         from google.resumable_media import InvalidResponse
+         from google.cloud.storage.blob import Blob
+@@ -1204,15 +1209,19 @@ class TestClient(unittest.TestCase):
+             timeout=_DEFAULT_TIMEOUT,
+         )
+ 
++    @pytest.mark.network
+     def test_download_blob_to_file_wo_chunks_wo_raw(self):
+         self._download_blob_to_file_helper(use_chunks=False, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_blob_to_file_w_chunks_wo_raw(self):
+         self._download_blob_to_file_helper(use_chunks=True, raw_download=False)
+ 
++    @pytest.mark.network
+     def test_download_blob_to_file_wo_chunks_w_raw(self):
+         self._download_blob_to_file_helper(use_chunks=False, raw_download=True)
+ 
++    @pytest.mark.network
+     def test_download_blob_to_file_w_chunks_w_raw(self):
+         self._download_blob_to_file_helper(use_chunks=True, raw_download=True)
+ 
+@@ -1778,6 +1787,7 @@ class TestClient(unittest.TestCase):
+         parms = dict(urlparse.parse_qsl(qs))
+         self.assertEqual(parms["userProject"], USER_PROJECT)
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4(self):
+         import datetime
+ 
+@@ -1855,6 +1865,7 @@ class TestClient(unittest.TestCase):
+         self.assertEqual(fields["x-goog-signature"], EXPECTED_SIGN)
+         self.assertEqual(fields["policy"], EXPECTED_POLICY)
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_with_fields(self):
+         import datetime
+ 
+@@ -1897,6 +1908,7 @@ class TestClient(unittest.TestCase):
+         self.assertEqual(fields["x-goog-signature"], EXPECTED_SIGN)
+         self.assertEqual(fields["policy"], EXPECTED_POLICY)
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_virtual_hosted_style(self):
+         import datetime
+ 
+@@ -1917,6 +1929,7 @@ class TestClient(unittest.TestCase):
+             policy["url"], "https://{}.storage.googleapis.com/".format(BUCKET_NAME)
+         )
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_bucket_bound_hostname(self):
+         import datetime
+ 
+@@ -1933,6 +1946,7 @@ class TestClient(unittest.TestCase):
+             )
+         self.assertEqual(policy["url"], "https://bucket.bound_hostname")
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_bucket_bound_hostname_with_scheme(self):
+         import datetime
+ 
+@@ -1950,6 +1964,7 @@ class TestClient(unittest.TestCase):
+             )
+         self.assertEqual(policy["url"], "http://bucket.bound_hostname/")
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_no_expiration(self):
+         BUCKET_NAME = "bucket-name"
+         EXPECTED_POLICY = "eyJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJidWNrZXQtbmFtZSJ9LHsia2V5Ijoib2JqZWN0LW5hbWUifSx7IngtZ29vZy1kYXRlIjoiMjAyMDAzMTJUMTE0NzE2WiJ9LHsieC1nb29nLWNyZWRlbnRpYWwiOiJ0ZXN0QG1haWwuY29tLzIwMjAwMzEyL2F1dG8vc3RvcmFnZS9nb29nNF9yZXF1ZXN0In0seyJ4LWdvb2ctYWxnb3JpdGhtIjoiR09PRzQtUlNBLVNIQTI1NiJ9XSwiZXhwaXJhdGlvbiI6IjIwMjAtMDMtMjZUMDA6MDA6MTBaIn0="
+@@ -1970,6 +1985,7 @@ class TestClient(unittest.TestCase):
+         )
+         self.assertEqual(policy["fields"]["policy"], EXPECTED_POLICY)
+ 
++    @pytest.mark.network
+     def test_get_signed_policy_v4_with_access_token(self):
+         import datetime
+ 
