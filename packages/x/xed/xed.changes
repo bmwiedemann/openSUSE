@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  3 20:51:33 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.0.0.
+  * Fix various typos in index.docbook
+  * Fix permissions
+  * Implement #225: Options to render whitespace
+  * i18n: Don't translate gsettings strings.
+  * Fix crashes when no documents (tabs) are open
+  * Uses strtol instead of atoi so that we can properly handle errors.
+  * Use CLAMP macro instead
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Fri Mar  5 23:27:54 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 2.8.4.

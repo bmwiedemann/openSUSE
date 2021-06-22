@@ -249,4 +249,21 @@
 </comment>
     <requestid>877314</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>93d6a0b90f4bf71f1fc6c071e621f281</srcmd5>
+    <version>3.0.0</version>
+    <time>1624387492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0.
+  * Fix various typos in index.docbook
+  * Fix permissions
+  * Implement #225: Options to render whitespace
+  * i18n: Don't translate gsettings strings.
+  * Fix crashes when no documents (tabs) are open
+  * Uses strtol instead of atoi so that we can properly handle errors.
+  * Use CLAMP macro instead
+  * l10n: Update POT
+</comment>
+    <requestid>897762</requestid>
+  </revision>
 </revisionlist>

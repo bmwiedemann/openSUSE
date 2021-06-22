@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        2.8.4
+Version:        3.0.0
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
