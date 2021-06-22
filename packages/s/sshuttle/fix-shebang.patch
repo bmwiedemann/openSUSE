@@ -9,7 +9,7 @@ Index: sshuttle-1.0.3/bin/sudoers-add
 +++ sshuttle-1.0.3/bin/sudoers-add	2020-07-29 01:11:17.238524565 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
-+#!/usr/bin/bash
++#!/bin/bash
  # William Mantly <wmantly@gmail.com>
  # MIT License
  # https://github.com/wmantly/sudoers-add
@@ -19,7 +19,7 @@ Index: sshuttle-1.0.3/run
 +++ sshuttle-1.0.3/run	2020-07-29 01:11:02.334557774 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env sh
-+#!/usr/bin/sh
++#!/bin/sh
  set -e
  export PYTHONPATH="$(dirname $0):$PYTHONPATH"
  export PATH="$(dirname $0)/bin:$PATH"

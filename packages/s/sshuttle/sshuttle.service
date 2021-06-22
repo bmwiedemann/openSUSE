@@ -1,0 +1,14 @@
+[Unit]
+Description=Simple VPN connection with sshuttle
+After=network-online.target firewalld.service
+Documentation=man:sshuttle
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/sshuttle
+User=sshuttle
+ExecStart=/usr/bin/sshuttle $SSHUTTLE_OPTS --remote ${VPN_USER}@${VPN_SERVER} ${NETWORK_TO_ACCESS}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

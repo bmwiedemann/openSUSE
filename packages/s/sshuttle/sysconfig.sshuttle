@@ -1,0 +1,22 @@
+## Path:        Network/VPN
+## Description: settings to connect to a simple VPN network using sshuttle
+
+## Type:        string
+## Default      ""
+# User used to connect to the jumper host
+VPN_USER=""
+
+## Type:        string
+## Default      ""
+# Jumper host
+VPN_SERVER=""
+
+## Type:        string
+## Default      ""
+# List of subnet(s) network to access, in this form: a.b.c.d/netmask
+NETWORK_TO_ACCESS=""
+
+## Type:        string
+## Default      ""
+# Extra option(s) that could be useful
+SSHUTTLE_OPTS=""

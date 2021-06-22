@@ -16,6 +16,10 @@
 #
 
 
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
 %global pythons python3
 Name:           sshuttle
 Version:        1.0.5
@@ -25,6 +29,8 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/sshuttle/sshuttle
 Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshuttle-%{version}.tar.gz
+Source1:        %{name}.service
+Source2:        sysconfig.%{name}
 Patch0:         fix-pytest.patch
 Patch1:         fix-shebang.patch
 BuildRequires:  fdupes
@@ -38,6 +44,7 @@ BuildRequires:  python3-Sphinx
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-setuptools_scm
 %endif
+Requires(post): %fillup_prereq
 
 %description
 Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
@@ -54,7 +61,7 @@ sshuttle is a program that solves the following case:
   TCP-over-TCP, which has terrible performance.
 
 %prep
-%setup -q -n sshuttle-%{version}
+%setup -q -n %{name}-%{version}
 %patch0
 %patch1 -p1
 
@@ -73,21 +80,49 @@ sed -ri 's/(version = )get_version.*/\1 "%{version}"/g' conf.py
 %python3_install
 
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
-mkdir -pm0755  %{buildroot}/%{_mandir}/man1/
-install -m0644 docs/_build/man/sshuttle.1 %{buildroot}/%{_mandir}/man1/
+install -d -m 755 %{buildroot}%{_mandir}/man1
+install -m0644 docs/_build/man/%{name}.1 %{buildroot}/%{_mandir}/man1/
 %endif
 
-%fdupes %{buildroot}/%{python3_sitelib}/sshuttle/
+%fdupes %{buildroot}/%{python3_sitelib}/%{name}/
+
+# systemd service
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
+install -d -m 755 %{buildroot}%{_sbindir}
+ln -sf service %{buildroot}%{_sbindir}/rc%{name}
+
+# sysconfig file
+install -d -m 755 %{buildroot}%{_fillupdir}
+install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}
 
 %check
 %pytest
 
+%pre
+getent group %{name} > /dev/null || groupadd -r %{name}
+getent passwd %{name} > /dev/null || useradd -r -g %{name} -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "%{name} user" %{name}
+install -d -m 755 -o %{name} -g %{name} %{_localstatedir}/lib/%{name}
+%service_add_pre %{name}.service
+
+%post
+%service_add_post %{name}.service
+%fillup_only %{name}
+
+%preun
+%service_del_preun %{name}.service
+
+%postun
+%service_del_postun %{name}.service
+
 %files
-%{python3_sitelib}/sshuttle*
-%{_bindir}/sshuttle
+%{python3_sitelib}/%{name}*
+%{_bindir}/%{name}
 %{_bindir}/sudoers-add
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
-%{_mandir}/man1/sshuttle.1%{?ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %endif
+%{_sbindir}/rc%{name}
+%{_unitdir}/%{name}.service
+%{_fillupdir}/sysconfig.%{name}
 
 %changelog

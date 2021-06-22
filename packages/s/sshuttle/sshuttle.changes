@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 18 10:08:51 UTC 2021 - Loic Devulder <ldevulder@suse.com>
+
+- Sshuttle service should be started after firewalld 
+
+-------------------------------------------------------------------
+Thu Jun 10 16:24:33 UTC 2021 - Loic Devulder <ldevulder@suse.com>
+
+- Fix fix-shebang.patch to use /bin/bash and /bin/sh, as older
+  distributions don't have /usr/bin/bash
+
+-------------------------------------------------------------------
+Wed Jun  9 14:25:01 UTC 2021 - Loic Devulder <ldevulder@suse.com>
+
+- Add support for a systemd service, this is useful if we want to
+  start sshuttle VPN at boot time.
+
+-------------------------------------------------------------------
 Fri Feb 19 00:09:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - only build for main python3 version, this is not a module 

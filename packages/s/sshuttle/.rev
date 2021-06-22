@@ -101,4 +101,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment>- only build for main python3 version, this is not a module</comment>
     <requestid>873583</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>dece452ab03bc6023040869e63c7a197</srcmd5>
+    <version>1.0.5</version>
+    <time>1624387504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901279</requestid>
+  </revision>
 </revisionlist>
