@@ -87,7 +87,7 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 rm -rf /usr/share/doc/packages/*
 
 # Save more than 200 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress}
+rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x}
 
 # Not needed, boo#1166406
 rm /boot/vmlinux*.[gx]z

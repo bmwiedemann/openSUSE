@@ -176,12 +176,13 @@ buildignore man-pages
 buildignore NetworkManager-vpnc-gnome
 buildignore plasma-nm5-vpnc
 
-# We have NetworkManager instead.
-# Valid only after removal of "Requires: /sbin/ifup" in sysconfig.spec
-# buildignore wicked
-
-# Conflicts with rsyslog otherwise
-buildignore systemd-logger
+# smtp_daemon is recommended by mdadm
+buildignore busybox-sendmail
+buildignore exim
+buildignore msmtp-mta
+buildignore postfix
+buildignore postfix-bdb
+buildignore sendmail
 
 # Can't install this with the latest kernel due to boo#1095148
 # And virtualbox is build failed on i586 in TW - 20180617 maxlin

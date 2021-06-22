@@ -1229,4 +1229,14 @@
     <comment></comment>
     <requestid>895535</requestid>
   </revision>
+  <revision rev="153" vrev="153">
+    <srcmd5>da44ccc8c3c27d4af59b693eb42c86d0</srcmd5>
+    <version>unknown</version>
+    <time>1624348845</time>
+    <user>dimstar_suse</user>
+    <comment>- list-common: Ignore providers of smtp_daemon
+- list-common: Don't ignore systemd-logger
+- config.sh: Drop some more firmware (forwarded request 901289 from favogt)</comment>
+    <requestid>901290</requestid>
+  </revision>
 </revisionlist>

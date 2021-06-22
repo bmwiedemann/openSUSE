@@ -310,8 +310,18 @@
     <ignore name="NetworkManager-vpnc-gnome"/>
     <package name="aaa_base" replaces="plasma-nm5-vpnc"/>
     <ignore name="plasma-nm5-vpnc"/>
-    <package name="aaa_base" replaces="systemd-logger"/>
-    <ignore name="systemd-logger"/>
+    <package name="aaa_base" replaces="busybox-sendmail"/>
+    <ignore name="busybox-sendmail"/>
+    <package name="aaa_base" replaces="exim"/>
+    <ignore name="exim"/>
+    <package name="aaa_base" replaces="msmtp-mta"/>
+    <ignore name="msmtp-mta"/>
+    <package name="aaa_base" replaces="postfix"/>
+    <ignore name="postfix"/>
+    <package name="aaa_base" replaces="postfix-bdb"/>
+    <ignore name="postfix-bdb"/>
+    <package name="aaa_base" replaces="sendmail"/>
+    <ignore name="sendmail"/>
     <package name="aaa_base" replaces="virtualbox-guest-tools"/>
     <ignore name="virtualbox-guest-tools"/>
     <package name="aaa_base" replaces="virtualbox-guest-x11"/>

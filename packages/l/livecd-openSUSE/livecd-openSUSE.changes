@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 07:39:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore providers of smtp_daemon
+- list-common: Don't ignore systemd-logger
+- config.sh: Drop some more firmware
+
+-------------------------------------------------------------------
 Tue May 25 09:44:02 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-x11: Switch from midori to epiphany
