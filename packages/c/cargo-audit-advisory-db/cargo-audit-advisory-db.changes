@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 19 06:27:26 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210619:
+  * Update RUSTSEC-2021-0049.md (#941)
+  * Assigned RUSTSEC-2021-0071 to grep-cli (#940)
+  * crates/grep-cli: add advisory for arbitrary binary execution on Windows (#939)
+  * Add GHSA mentions to `aliases` field. This is becoming more important with OSV enabling interop between databases (#937)
+  * Update RUSTSEC-2020-0043.md (#934)
+  * Assigned RUSTSEC-2021-0070 to nalgebra (#932)
+  * Add advisory for nalgebra VecStorage/MatrixVec (#931)
+  * Remove range overlaps, fix some range specifications (#930)
+  * Make ranges in trust-dns-proto advisory non-overlapping (#929)
+  * Assigned RUSTSEC-2021-0069 to lettre (#925)
+
+-------------------------------------------------------------------
 Tue Jun 01 01:28:10 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210601:
