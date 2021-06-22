@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-screensaver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-screensaver
-Version:        4.8.0
+Version:        5.0.3
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
@@ -26,6 +26,9 @@ URL:            https://github.com/linuxmint/cinnamon-screensaver
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE cinnamon-screensaver-suse-pam.patch -- Use SUSE-specific PAM configuration.
 Patch0:         %{name}-suse-pam.patch
+# PATCH-FIX-OPENSUSE fix-cs-backup-locker-no-return-statement.patch andythe_great@pm.me -- Fix cs-backup-locker.c error: no return statement in function returning non-void
+# https://github.com/linuxmint/cinnamon-screensaver/pull/375
+Patch1:         fix-cs-backup-locker-no-return-statement.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -60,12 +63,17 @@ Cinnamon Desktop.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %meson
 %meson_build
 
 %install
+# Manually install desktop file
+mkdir -p %{buildroot}%{_datadir}/applications/
+cp -r data/org.cinnamon.ScreenSaver.desktop %{buildroot}%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
+
 %meson_install
 
 # Remove development files as they're not really there to be used.
@@ -76,7 +84,11 @@ rm -rf %{buildroot}%{_libdir}/libcscreensaver.so \
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}/
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file org.cinnamon.ScreenSaver
+
+# Fix missing shabang
+chmod a-x %{buildroot}%{_datadir}/%{name}/__init__.py
+chmod a-x %{buildroot}%{_datadir}/%{name}/*/__init__.py
 
 %post
 /sbin/ldconfig
@@ -98,12 +110,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 %{_bindir}/%{name}
 %{_bindir}/%{name}-command
+%{_libexecdir}/cs-backup-locker
+%{_bindir}/cinnamon-unlock-desktop
 %{_libexecdir}/%{name}-pam-helper
 %{_datadir}/%{name}/
 %{_libdir}/libcscreensaver.so*
 %{_libdir}/girepository-1.0/CScreensaver-1.0.typelib
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
 %{_datadir}/icons/hicolor/*/*/screensaver-*.*
+%{_datadir}/icons/hicolor/scalable/apps/csr-backup-locker-icon.svg
 
 %changelog

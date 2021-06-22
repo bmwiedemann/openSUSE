@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 11 05:50:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.3.
+  * service.py: Always unlock when deactivating.
+  * manager.py: Improve backup locker startup and shutdown.
+  * cinnamon-screensaver-main.py: Don't register with the
+    session manager.
+  * logindClient.py: Change how we get the session id to work with
+    dbus activation.
+
+-------------------------------------------------------------------
+Wed Jun  2 20:50:05 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.1.
+  * cs-gdk-event-filter-xll.c: Ignore fcitx ConfigureNotify events
+    in the backup locker process.
+  * Clean up the desktop file and rename it so that it passes
+    desktop-file- validate.
+  * cs-backup-locker: Use a white cinnamon icon (symbolic doesn't
+    work here, and the normal orangey-brown doesn't look very nice.
+- Updates for version 5.0.1.
+  * powerWidget.py: Use new battery icons when available.
+  * powerWidget.py: Add some more battery icon names, fix the default
+    to return a GIcon, not a string.
+  * Make cinnamon-screensaver a dbus-activated service.
+  * Clean up .gitignore.
+  * Add option to silence deprecation warnings during the build.
+  * Implement a fallback window in the event of the 'pretty' ui
+    crashing for some reason.
+  * backup window: Don't assume which tty's to use in instructions,
+    send a notification if the backup locked crashes.
+  * manager.py: Use GLib to get the user name, and trim the string to
+    8 chars to match 'w -h' output.
+  * cs-screen-x11.c: Fix annotation.
+  * Show PAM info
+  * unlock.py: Move info label underneath the entry and other labels.
+  * unlock.py: Don't allow pw entry row to expand if a longer info
+    message is shown.
+  * l10n: Update POT
+- Add fix-cs-backup-locker-no-return-statement.patch to fix
+  error: no return statement in function returning non-void
+
+-------------------------------------------------------------------
+Sun May 30 17:20:57 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.1.
+  * build: Bump runtime version of cinnamon-desktop
+
+-------------------------------------------------------------------
 Sun Dec  6 12:01:53 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.0.
