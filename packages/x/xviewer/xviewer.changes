@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 17 09:43:14 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.0.1.
+  * l10n: Update translations
+
+-------------------------------------------------------------------
+Tue Jun  1 18:56:53 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.0.0.
+  * Fix typos in the Contents page
+  * Where a list of multiple files is supplied containing no
+    directories, display them in the order it specifies, rather
+    than sorting. Replace some unnecessary g_list_length calls.
+  * Spacebar Optionally Pauses Slideshow
+  * xviewer-preferences-dialog.c: Tweak new labels in preferences,
+    fix text alignment.
+  * Open svgz files
+    (Fixes: https://github.com/linuxmint/xviewer/issues/128)
+  * i18n: Don't translate gsettings strings
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Thu Jan 14 16:35:56 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.8.3.
