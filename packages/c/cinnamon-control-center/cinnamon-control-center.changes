@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 30 17:28:19 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.0.
+  * Add ifdefs to prevent undefined reference to modem functions in
+    network panel
+  * network: Add support for displaying DNS6 parameters
+  * l10n: Update POT
+  * l10n: Generate files
+- Update for version 4.8.2.
+  * Network: Don't prevent hotspot capability unless NM specifically
+    rules it out
+
+-------------------------------------------------------------------
 Tue Dec  8 16:04:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.1.
