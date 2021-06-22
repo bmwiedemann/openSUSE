@@ -1,0 +1,15 @@
+diff -Nur dde-file-manager-5.2.18/src/dde-file-manager-lib/dde-file-manager-lib.pro dde-file-manager-5.2.18-new/src/dde-file-manager-lib/dde-file-manager-lib.pro
+--- dde-file-manager-5.2.18/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-04-27 16:51:31.000000000 +0800
++++ dde-file-manager-5.2.18-new/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-06-07 16:42:26.611157101 +0800
+@@ -91,10 +91,7 @@
+ include(interfaces/vfs/vfs.pri)
+ include(interfaces/customization/customization.pri)
+ include(src.pri)
+-
+-isEqual(ARCH, sw_64) | isEqual(ARCH, mips64) | isEqual(ARCH, mips32) | isEqual(ARCH, aarch64){
+-    include(search/dfsearch.pri)
+-}
++include(search/dfsearch.pri)
+ 
+ APPSHAREDIR = $$PREFIX/share/$$TARGET
+ ICONDIR = $$PREFIX/share/icons/hicolor/scalable/apps
