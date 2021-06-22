@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.11.4
+Version:        2.11.5
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -42,6 +42,8 @@ BuildRequires:  appstream-glib
 BuildRequires:  glib2
 BuildRequires:  gtk3
 BuildRequires:  xorg-x11-server
+# Require python3-setuptools because of “from packing import version”:
+BuildRequires:  python3-setuptools
 %if 0%{?sle_version} >= 120200
 BuildRequires:  python3-pyxdg
 %endif
@@ -69,6 +71,8 @@ Requires:       python3 >= 3.3
 Requires:       dbus-1-python3
 Requires:       python3-distro
 Requires:       python3-pyenchant
+# Require python3-setuptools because of “from packing import version”:
+Requires:       python3-setuptools
 # Workaround bug with python3-enchant: https://bugzilla.opensuse.org/show_bug.cgi?id=1141993
 Requires:  enchant-1-backend
 Requires:       python3-pyxdg

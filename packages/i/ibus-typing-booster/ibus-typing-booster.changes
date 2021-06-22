@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 21 18:05:21 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.11.5
+- Resolves: rhbz#1970626 Ensure enum.Flag's obj._value_ is an integer
+  Thanks to Miro Hrončok!
+- Use version.parse from packaging instead of LooseVersion from distutils.version
+  (To fix a deprecation warning, see: https://www.python.org/dev/peps/pep-0632/)
+- Update py-compile to the version from automake-1.16
+  (To fix DeprecationWarning: the imp module is deprecated in favour of
+  importlib and slated for removal in Python 3.12;)
+
+-------------------------------------------------------------------
 Thu Apr 29 16:32:25 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.11.4
