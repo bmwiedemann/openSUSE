@@ -71,4 +71,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>896910</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31f696ca89c7c4722c77d39d3795c4db</srcmd5>
+    <version>1.53.0</version>
+    <time>1624462719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.53.0-1
+  * Cache Agent version 1.53.0
+- from version 1.52.2-2
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: fix incorrect download url when running in cn region
+- from version 1.52.2-1
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: remove dependency on gpg key server
+  * ecs-anywhere-install: allow sandboxed apt installations (forwarded request 901560 from glaubitz)</comment>
+    <requestid>901562</requestid>
+  </revision>
 </revisionlist>

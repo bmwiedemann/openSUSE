@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 23 14:08:43 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.53.0-1
+  * Cache Agent version 1.53.0
+- from version 1.52.2-2
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: fix incorrect download url when running in cn region
+- from version 1.52.2-1
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: remove dependency on gpg key server
+  * ecs-anywhere-install: allow sandboxed apt installations
+
+-------------------------------------------------------------------
 Wed May 26 11:33:16 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add use-agent-container-built-in-certs.patch to use the built in certs from
