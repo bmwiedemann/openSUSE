@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 23 12:15:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.0:
+  * Add support for environment secrets #3270 #3769 #3774
+  * run list: add "age" column and columns headers in output #3575
+  * Add support for XDG Base Directory specification #3671 #3768 #3717
+  * Additionally, the default configuration location on Windows is now changed from ~/.config/gh/ to %AppData%.
+  * Include number alongside the title in issue/pr view #3741
+
+-------------------------------------------------------------------
 Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.3:

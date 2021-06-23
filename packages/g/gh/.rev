@@ -93,4 +93,17 @@ Switched to tar_scm to pass auto review.</comment>
     <comment></comment>
     <requestid>895128</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9119f7ae2e698df0e14c5600d7231357</srcmd5>
+    <version>1.11.0</version>
+    <time>1624462713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.0:
+  * Add support for environment secrets #3270 #3769 #3774
+  * run list: add &quot;age&quot; column and columns headers in output #3575
+  * Add support for XDG Base Directory specification #3671 #3768 #3717
+  * Additionally, the default configuration location on Windows is now changed from ~/.config/gh/ to %AppData%.
+  * Include number alongside the title in issue/pr view #3741</comment>
+    <requestid>901490</requestid>
+  </revision>
 </revisionlist>
