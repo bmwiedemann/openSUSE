@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 14:56:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add bliss-0.77.diff to make sympol compile with bliss >= 0.76.
+- Rectify the include paths in /usr/include/sympol to point to
+  actually reachable files.
+
+-------------------------------------------------------------------
 Sat Sep 19 10:13:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add cddlib.diff

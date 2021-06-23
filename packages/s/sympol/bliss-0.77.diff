@@ -1,0 +1,28 @@
+Date: 2021-06-22 16:49:35.023920416 +0200
+From: Jan Engelhardt <jengelh@inai.de>
+References: https://polymake.org/downloads/bliss077.patch
+
+Make sympol build with newer bliss (>= 0.76). Modelled upon a similar
+patch from polymake.
+
+---
+ sympol/symmetrygroupconstruction/graphconstructionbliss.cpp |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: sympol-0.1.8/sympol/symmetrygroupconstruction/graphconstructionbliss.cpp
+===================================================================
+--- sympol-0.1.8.orig/sympol/symmetrygroupconstruction/graphconstructionbliss.cpp
++++ sympol-0.1.8/sympol/symmetrygroupconstruction/graphconstructionbliss.cpp
+@@ -79,7 +79,12 @@ boost::shared_ptr<sympol::PermutationGro
+ 	G.set_splitting_heuristic(bliss::Graph::shs_f);
+ 	// disable component recursion as advised by Tommi Junttila from bliss
+ 	G.set_component_recursion(false);
++#if BLISS_VERSION_MAJOR > 0 || (BLISS_VERSION_MAJOR == 0 && BLISS_VERSION_MINOR >= 76)
++	auto hook = [&](unsigned int n, const unsigned int *aut) { blisshook(&data, n, aut); };
++	G.find_automorphisms(stats, hook);
++#else
+ 	G.find_automorphisms(stats, blisshook, &data);
++#endif
+ 	if (yal::DEBUG <= yal::ReportLevel::get())
+ 		stats.print(stdout);
+ 	else 

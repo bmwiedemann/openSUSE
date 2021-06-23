@@ -15,4 +15,14 @@
     <comment>- Add cddlib.diff</comment>
     <requestid>835563</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d713fb22108d8ad3c0544313ece5ca7e</srcmd5>
+    <version>0.1.8</version>
+    <time>1624462691</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bliss-0.77.diff to make sympol compile with bliss &gt;= 0.76.
+- Rectify the include paths in /usr/include/sympol to point to
+  actually reachable files.</comment>
+    <requestid>901415</requestid>
+  </revision>
 </revisionlist>

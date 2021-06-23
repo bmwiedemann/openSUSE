@@ -1,7 +1,7 @@
 #
 # spec file for package sympol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,17 +28,18 @@ URL:            http://www.math.uni-rostock.de/~rehn/software/sympol.html
 Source:         http://www.math.uni-rostock.de/~rehn/software/%name-%version.tar.gz
 Patch1:         unbundle.diff
 Patch2:         cddlib.diff
+Patch3:         bliss-0.77.diff
 BuildRequires:  bliss-devel
 BuildRequires:  c++_compiler
-BuildRequires:  cddlib-devel >= 0.94f
-BuildRequires:  cmake
-BuildRequires:  eigen3-devel >= 3.0
-BuildRequires:  gmp-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_test-devel
+BuildRequires:  cmake >= 2.6
+BuildRequires:  libboost_headers-devel >= 1.34.1
+BuildRequires:  libboost_program_options-devel >= 1.34.1
+BuildRequires:  libboost_test-devel >= 1.34.1
 BuildRequires:  lrslib-devel >= 0.4.2c
 BuildRequires:  permlib-devel >= 0.2.8
+BuildRequires:  pkgconfig(cddlib) >= 0.94f
+BuildRequires:  pkgconfig(eigen3) >= 3.0
+BuildRequires:  pkgconfig(gmpxx)
 
 %description
 SymPol is a C++ tool to work with symmetric polyhedra. It helps to
@@ -60,6 +61,7 @@ given or computed symmetry group.
 Summary:        Header files for the sympol library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       permlib-devel >= 0.2.8
 
 %description devel
 SymPol is a C++ tool to work with symmetric polyhedra.
@@ -76,6 +78,7 @@ rm -Rf external/cdd* external/lrs* external/permlib
 %install
 %cmake_install
 ln -s . "%buildroot/%_includedir/sympol/yal"
+perl -i -lpe 's{#include ".*/}{#include "}g' "%buildroot/%_includedir/sympol"/*.h
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
