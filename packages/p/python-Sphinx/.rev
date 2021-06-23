@@ -749,4 +749,12 @@
   * #8870, #9001, #9051: html theme: The style are not applied with docutils-0.17</comment>
     <requestid>885911</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f312140130b4f8437e5b92bb277cabee</srcmd5>
+    <version>4.0.2</version>
+    <time>1624462684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898130</requestid>
+  </revision>
 </revisionlist>
