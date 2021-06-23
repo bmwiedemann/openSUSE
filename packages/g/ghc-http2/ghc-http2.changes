@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 10 14:29:34 UTC 2021 - psimons@suse.com
+
+- Update http2 to version 3.0.2.
+  ## 3.0.2
+
+  * Skip inserting entries that do not fit in the encoding table
+    (#28)[https://github.com/kazu-yamamoto/http2/pull/28]
+
+-------------------------------------------------------------------
 Thu Apr 22 10:05:01 UTC 2021 - psimons@suse.com
 
 - Update http2 to version 3.0.1.

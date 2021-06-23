@@ -19,7 +19,7 @@
 %global pkg_name http2
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
