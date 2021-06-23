@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 15 22:58:13 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix minimal version of wxWidgets: It's 3.0.4 since Poedit 3.0.
+
+-------------------------------------------------------------------
 Sat Jun  5 12:45:33 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.0:

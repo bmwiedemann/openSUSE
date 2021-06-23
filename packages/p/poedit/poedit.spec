@@ -34,7 +34,7 @@ BuildRequires:  libboost_regex-devel >= 1.60
 BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  libboost_thread-devel >= 1.60
 BuildRequires:  pkgconfig
-BuildRequires:  ((wxGTK3-devel >= 3.1.4 and pkgconfig(gtkspell3-3.0)) or (wxWidgets-3_0-devel >= 3.0.3 and pkgconfig(gtkspell-2.0)))
+BuildRequires:  ((wxGTK3-devel >= 3.1.4 and pkgconfig(gtkspell3-3.0)) or (wxWidgets-3_0-devel >= 3.0.4 and pkgconfig(gtkspell-2.0)))
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(liblucene++) >= 3.0.5
