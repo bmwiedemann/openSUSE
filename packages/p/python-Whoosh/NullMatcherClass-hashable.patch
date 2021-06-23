@@ -1,0 +1,16 @@
+---
+ src/whoosh/matching/mcore.py |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/src/whoosh/matching/mcore.py
++++ b/src/whoosh/matching/mcore.py
+@@ -379,6 +379,9 @@ class NullMatcherClass(Matcher):
+     def __repr__(self):
+         return "<NullMatcher>"
+ 
++    def __hash__(self):
++        return hash((self.is_active(), tuple(self.all_ids())))
++
+     def supports_block_quality(self):
+         return True
+ 

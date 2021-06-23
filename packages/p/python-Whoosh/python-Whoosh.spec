@@ -1,7 +1,7 @@
 #
 # spec file for package python-Whoosh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,13 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/whoosh-community/whoosh/
 Source:         https://files.pythonhosted.org/packages/source/W/Whoosh/Whoosh-%{version}.tar.gz
+# upstream in completely unrelated https://github.com/whoosh-community/whoosh/commit/b43e5a432109
 Patch0:         pytest4.patch
+# upstream in https://github.com/whoosh-community/whoosh/commit/f5a777572fb9
 Patch1:         py2encoding.patch
+# PATCH-FIX-UPSTREAM NullMatcherClass-hashable.patch gh#whoosh-community/whoosh#570 mcepl@suse.com
+# NullMatcherClass needs __hash__ method as well for Sphinx4 compatiblity.
+Patch2:         NullMatcherClass-hashable.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,8 +66,7 @@ needs.
 This package contains the documentation.
 
 %prep
-%setup -q -n Whoosh-%{version}
-%autopatch -p1
+%autosetup -p1 -n Whoosh-%{version}
 
 %build
 %python_build

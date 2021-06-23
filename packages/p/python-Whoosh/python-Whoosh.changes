@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 21 07:55:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add NullMatcherClass-hashable.patch which adds __hash__
+  method to NullMatcherClass, so that it works with Sphinx4
+  (gh#whoosh-community/whoosh#570).
+
+-------------------------------------------------------------------
 Thu Jul 18 08:22:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with pytest4+ (both in git of upstream):
