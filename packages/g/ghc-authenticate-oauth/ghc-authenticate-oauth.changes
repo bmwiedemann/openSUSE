@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 21 05:22:45 UTC 2021 - psimons@suse.com
+
+- Update authenticate-oauth to version 1.7.
+  ## 1.7
+
+  * Add support for following new SignMethod `HMACSHA256`, `HMACSHA512`, `RSASHA256`, `RSASHA512`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
