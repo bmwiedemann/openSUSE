@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 19 00:12:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo44426-complex-keyword-sphinx.patch allowing generating
+  documentation with Sphinx 4 (bpo#44426).
+
+-------------------------------------------------------------------
 Sat Jun  5 21:21:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Revert previous skip over test_capi

@@ -145,6 +145,10 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
+# PATCH-FIX-UPSTREAM bpo44426-complex-keyword-sphinx.patch bpo#44426 mcepl@suse.com
+# Use of 'complex' as a C variable name confuses Sphinx; change it to 'num'
+# The same goes for 'default', which I had to change to 'def_size'
+Patch35:        bpo44426-complex-keyword-sphinx.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -391,6 +395,7 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %patch34 -p1
 %endif
+%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
