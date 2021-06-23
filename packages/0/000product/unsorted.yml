@@ -1392,7 +1392,6 @@ unsorted:
   - brasero-devel 
   - breeze5-icons-rcc 
   - breezy 
-  - brevity 
   - brial-devel 
   - brickd 
   - brickv 
@@ -1915,10 +1914,6 @@ unsorted:
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cim-schema 
-  - cimple 
-  - cimple-cmpi-adapter 
-  - cimple-devel 
-  - cimple-pegasus-adapter 
   - cinema 
   - cinema-lang 
   - cinnamon 
@@ -16734,7 +16729,6 @@ unsorted:
   - nemo-extension-emblems 
   - nemo-extension-fileroller 
   - nemo-extension-folder-color 
-  - nemo-extension-gtkhash 
   - nemo-extension-image-converter 
   - nemo-extension-nextcloud 
   - nemo-extension-nitroshare 
@@ -21129,7 +21123,6 @@ unsorted:
   - python3-designateclient 
   - python3-dfVFS 
   - python3-django-mailman3 
-  - python3-django-storages 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -21170,7 +21163,6 @@ unsorted:
   - python3-gobject2 
   - python3-gobject2-devel 
   - python3-gom 
-  - python3-google-cloud-storage 
   - python3-gpiod 
   - python3-gpsd 
   - python3-gr-iqbal 
@@ -22343,6 +22335,7 @@ unsorted:
   - python36-django-settings-toml 
   - python36-django-silk 
   - python36-django-sortedm2m 
+  - python36-django-storages 
   - python36-django-tagging 
   - python36-django-tastypie 
   - python36-django-threadedcomments 
@@ -22569,8 +22562,10 @@ unsorted:
   - python36-google-cloud-core 
   - python36-google-cloud-kms 
   - python36-google-cloud-speech 
+  - python36-google-cloud-storage 
   - python36-google-cloud-translate 
   - python36-google-crc32c 
+  - python36-google-filesystem 
   - python36-google-pasta 
   - python36-google-resumable-media 
   - python36-googleapis-common-protos 
@@ -25142,6 +25137,7 @@ unsorted:
   - python38-django-settings-toml 
   - python38-django-silk 
   - python38-django-sortedm2m 
+  - python38-django-storages 
   - python38-django-tables2 
   - python38-django-tagging 
   - python38-django-tastypie 
@@ -25371,8 +25367,10 @@ unsorted:
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
+  - python38-google-cloud-storage 
   - python38-google-cloud-translate 
   - python38-google-crc32c 
+  - python38-google-filesystem 
   - python38-google-pasta 
   - python38-google-resumable-media 
   - python38-googleapis-common-protos 
@@ -28102,6 +28100,7 @@ unsorted:
   - python39-django-sekizai 
   - python39-django-settings-toml 
   - python39-django-sortedm2m 
+  - python39-django-storages 
   - python39-django-tables2 
   - python39-django-tagging 
   - python39-django-tastypie 
@@ -28343,8 +28342,10 @@ unsorted:
   - python39-google-cloud-core 
   - python39-google-cloud-kms 
   - python39-google-cloud-speech 
+  - python39-google-cloud-storage 
   - python39-google-cloud-translate 
   - python39-google-crc32c 
+  - python39-google-filesystem 
   - python39-google-pasta 
   - python39-google-resumable-media 
   - python39-googleapis-common-protos 
@@ -31509,7 +31510,7 @@ unsorted:
   - scap-workbench 
   - scap-workbench-doc 
   - scat 
-  - sccache: [x86_64] 
+  - sccache 
   - sccs 
   - scdl 
   - scdoc 
