@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 23 09:14:36 UTC 2021 - okurz@suse.com
+
+- Update to version 1.21.2:
+  * Replace retry loop with Retry from urllib3
+
+-------------------------------------------------------------------
 Mon Jun 21 12:57:46 UTC 2021 - okurz@suse.com
 
 - Update to version 1.21.1:
