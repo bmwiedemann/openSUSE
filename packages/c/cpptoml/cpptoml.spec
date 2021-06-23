@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/skystrife/%{name}
 Source:         https://github.com/skystrife/%{name}/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/skystrife/cpptoml/pull/123
+Patch0:         0001-g-11-requires-limits-header.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 
@@ -40,10 +42,11 @@ cpptoml is a header-only c++ library for parsing TOML configuration files.
 This package contains development headers for the cpptoml library
 
 %prep
-%setup -q
-sed -ie "s,lib/cmake/cpptoml,%{_libdir}/cmake/%{name}," CMakeLists.txt
+%autosetup -p1
 
 %build
+sed -ie "s,lib/cmake/cpptoml,%{_libdir}/cmake/%{name}," CMakeLists.txt
+
 %cmake
 %cmake_build
 
