@@ -25,4 +25,12 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     <comment></comment>
     <requestid>808779</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>347b410cf5385e38f602bea0afbf3a65</srcmd5>
+    <version>0.9.6</version>
+    <time>1624462690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901357</requestid>
+  </revision>
 </revisionlist>

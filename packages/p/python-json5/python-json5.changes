@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 22 08:52:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.6
+  * Bump development status classifier to 5 - Production/Stable
+  * Bump the tested Python versions to 2.7, 3.8 and 3.9
+  * GitHub issue #46 Fix incorrect serialization of custom subtypes
+  * Make it possible to run the tests if hypothesis isn't installed.
+  * Miscellaneous non-source cleanups in the repo
+
+-------------------------------------------------------------------
 Mon May 25 10:59:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
