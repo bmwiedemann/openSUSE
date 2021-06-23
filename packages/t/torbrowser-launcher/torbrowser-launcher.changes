@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 19 19:12:38 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.4:
+  * Ship with latest version of the Tor Browser Developers OpenPGP
+    public key.
+  * Add several translations.
+  * Various small bug fixes.
+- Drop torbrowser-launcher-fix-distro-name.patch: distro name
+  detection fixed upstream, thus hack no longer needed.
+- Add torbrowser-launcher-pt_BR-po-file-end-string.patch: Fix
+  missing quotation marks at the end of str line in pt_BR
+  translation file; patch taken from upstream merge request
+  [gh#micahflee/torbrowser-launcher#579].
+
+-------------------------------------------------------------------
 Wed Oct  7 12:14:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.3.3:

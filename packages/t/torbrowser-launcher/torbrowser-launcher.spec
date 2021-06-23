@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           torbrowser-launcher
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/micahflee/torbrowser-launcher
 Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE pythontorbrowser-launcher-fix-distro-name.patch badshah400@gmail.com -- Use the correct distribution name (the setup.py code gives "SuSE" instead of "openSUSE")
-Patch0:         torbrowser-launcher-fix-distro-name.patch
+# PATCH-FIX-UPSTREAM torbrowser-launcher-pt_BR-po-file-end-string.patch gh#micahflee/torbrowser-launcher#579 badshah400@gmail.com -- Fix missing quotation marks at the end of str line in pt_BR translation file; patch taken from upstream merge request
+Patch0:         torbrowser-launcher-pt_BR-po-file-end-string.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-PySocks
 BuildRequires:  python3-devel
+BuildRequires:  python3-distro
 BuildRequires:  python3-gpg
 BuildRequires:  python3-packaging
 BuildRequires:  python3-qt5
@@ -39,6 +40,7 @@ Requires:       gpg2
 Requires:       hicolor-icon-theme
 Requires:       python3-Parsley
 Requires:       python3-PySocks
+Requires:       python3-distro
 Requires:       python3-gpg
 Requires:       python3-packaging
 Requires:       python3-qt5
@@ -79,6 +81,7 @@ This package provides the apparmor profiles to safeguard against
 a Tor network compromise.
 
 %lang_package
+
 %prep
 %autosetup -p1
 
@@ -92,9 +95,6 @@ python3 setup.py install --skip-build --root %{buildroot}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser-settings.desktop
 
 %find_lang %{name} %{?no_lang_C}
-
-# REMOVE USELESS TOPLEVEL .mo FILE
-rm -fr %{buildroot}%{_datadir}/locale/%{name}.mo
 
 %if 0%{?suse_version} < 1500
 %post
