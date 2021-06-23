@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-gdcm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@ Name:           orthanc-gdcm
 Summary:        GDCM plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.2
+Version:        1.3
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-gdcm/OrthancGdcm-%{version}.tar.gz
@@ -75,7 +75,7 @@ GDCM for Orthanc
 %install
 %cmake_install
 
-# architecture dependet files should not be in /usr/share... 
+# architecture dependet files should not be in /usr/share...
 # create a directory
 mkdir -p -m 755 %{buildroot}%{_libdir}/share/orthanc/plugins
 mkdir -p -m 755 %{buildroot}%{_docdir}/orthanc
