@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 18 22:45:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo44426-complex-keyword-sphinx.patch allowing generating
+  documentation with Sphinx 4 (bpo#44426).
+
+-------------------------------------------------------------------
 Tue Jun  8 11:18:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - allow building against sphinx 3.x+ 

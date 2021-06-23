@@ -151,6 +151,10 @@ Patch28:        bpo36302-sort-module-sources.patch
 Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch32:        sphinx-update-removed-function.patch
+# PATCH-FIX-UPSTREAM bpo44426-complex-keyword-sphinx.patch bpo#44426 mcepl@suse.com
+# Use of 'complex' as a C variable name confuses Sphinx; change it to 'num'
+# The same goes for 'default', which I had to change to 'def_size'
+Patch33:        bpo44426-complex-keyword-sphinx.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -406,6 +410,7 @@ other applications.
 %patch28 -p1
 %patch29 -p1
 %patch32 -p1
+%patch33 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
