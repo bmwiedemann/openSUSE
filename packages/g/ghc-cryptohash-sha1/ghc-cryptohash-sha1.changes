@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 08:56:20 UTC 2021 - psimons@suse.com
+
+- Update cryptohash-sha1 to version 0.11.100.1 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
