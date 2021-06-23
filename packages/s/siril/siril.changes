@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 15 05:33:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.10:
+  * New alignment algo on 2 or 3 stars
+  * New pixel rejection algo: Generalized Extreme Studentized Deviate Test
+  * Added weighting of images according to noise
+  * Normalization refactoring
+  * Remove black borders of stacked image
+  * Possibility of processing with synthetic bias
+  * Extraction of the green channel 
+  * Update sampling after channel extraction and/or Drizzle
+  * Keep WCS info in stacked image 
+  * Added drag and drop to open an image, or a sequence
+  * Improve overall performance
+- Drop fix_glib_2_68_error.patch
+
+-------------------------------------------------------------------
 Fri May  7 07:26:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix glib 2.68 compilation error
