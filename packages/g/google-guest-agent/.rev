@@ -35,4 +35,18 @@
     <comment></comment>
     <requestid>892548</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92a2dfb6a13beb0e28227eb2b4620e14</srcmd5>
+    <version>20210603.00</version>
+    <time>1624462711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210603.00
+  * systemd-notify in agentInit (#113)
+  * dont check status (#112)
+- from version 20210524.00
+  * more granular service restarts (#111)
+- from version 20210414.00
+  * (no functional changes) (forwarded request 901475 from glaubitz)</comment>
+    <requestid>901480</requestid>
+  </revision>
 </revisionlist>

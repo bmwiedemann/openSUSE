@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 23 11:25:59 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210603.00
+  * systemd-notify in agentInit (#113)
+  * dont check status (#112)
+- from version 20210524.00
+  * more granular service restarts (#111)
+- from version 20210414.00
+  * (no functional changes)
+
+-------------------------------------------------------------------
 Tue May 11 08:08:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210414.00 (bsc#1185848, bsc#1185849)
