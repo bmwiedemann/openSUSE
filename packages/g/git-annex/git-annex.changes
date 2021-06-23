@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun 22 07:42:31 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210621.
+  git-annex (8.20210621) upstream; urgency=medium
+
+    * New matching options --excludesamecontent and --includesamecontent
+    * When two files have the same content, and a required content expression
+      matches one but not the other, dropping the latter file will fail as it
+      would also remove the content of the required file.
+    * drop, move, mirror: When two files have the same content, and
+      different numcopies or requiredcopies values, use the higher value.
+    * drop --auto: When two files have the same content, and a preferred content
+      expression matches one but not the other, do not drop the content.
+    * sync --content, assistant: When two unlocked files have the same
+      content, and a preferred content expression matches one but not the
+      other, do not drop the content. (This was already the case for locked
+      files.)
+    * sync --content, assistant: Fix an edge case where a file that is not
+      preferred content did not get dropped.
+    * filter-branch: New command, useful to produce a filtered version of the
+      git-annex branch, eg when splitting a repository.
+    * fromkey: Create an unlocked file when used in an adjusted branch
+      where the file should be unlocked, or when configured by annex.addunlocked.
+    * Fix behavior of several commands, including reinject, addurl, and rmurl
+      when given an absolute path to an unlocked file, or a relative path
+      that leaves and re-enters the repository.
+    * smudge: Fix a case where an unlocked annexed file that annex.largefiles
+      does not match could get its unchanged content checked into git,
+      due to git running the smudge filter unecessarily.
+    * reinject: Error out when run on a file that is not annexed, rather
+      than silently skipping it.
+    * assistant: Fix a crash on startup by avoiding using forkProcess.
+    * init: When annex.commitmessage is set, use that message for the commit
+      that creates the git-annex branch.
+    * Added annex.adviceNoSshCaching config.
+    * Added --size-limit option.
+    * Future proof activity log parsing.
+    * Fix an exponential slowdown when large numbers of duplicate files are
+      being added in unlocked form.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 21 Jun 2021 12:17:24 -0400
+
+-------------------------------------------------------------------
 Thu Apr 29 09:42:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  drop persistent.patch
