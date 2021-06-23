@@ -92,4 +92,14 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
 </comment>
     <requestid>900224</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f577d8aa9944a41fbdd57d2448f6075b</srcmd5>
+    <version>1.2.1</version>
+    <time>1624462693</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.2.1
+  + Substitute spaces for newlines when logging errors
+  + Fixed quoting issues in fhssh(1) and fhscp(1)</comment>
+    <requestid>901367</requestid>
+  </revision>
 </revisionlist>

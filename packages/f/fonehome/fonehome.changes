@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 17:35:12 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.2.1
+  + Substitute spaces for newlines when logging errors
+  + Fixed quoting issues in fhssh(1) and fhscp(1)
+
+-------------------------------------------------------------------
 Tue Jun 15 19:37:47 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to version 1.2.0

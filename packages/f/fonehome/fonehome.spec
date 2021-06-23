@@ -42,7 +42,7 @@
 %define authkeys_options    no-X11-forwarding,no-agent-forwarding,no-pty,permitopen="0.0.0.0:9",command="sleep 99999d"
 
 Name:           fonehome
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Remote access to machines behind firewalls
 License:        Apache-2.0
