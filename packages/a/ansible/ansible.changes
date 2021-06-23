@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 22 14:35:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.9.23, bug-fix release with security fix:
+  * templating engine fix for not preserving unsafe status when trying
+    to preserve newlines. CVE-2021-3583
+
+-------------------------------------------------------------------
+Wed Jun  2 05:58:58 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 2.9.22
+
+-------------------------------------------------------------------
+Tue May  4 05:24:10 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.21
+
+-------------------------------------------------------------------
 Fri Apr 16 12:54:09 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
 
 - Drop python-coverage run-time requirement from openSUSE/SLE
