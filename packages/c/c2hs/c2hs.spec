@@ -1,7 +1,7 @@
 #
 # spec file for package c2hs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           c2hs
-Version:        0.28.7
+Version:        0.28.8
 Release:        0
 Summary:        C->Haskell FFI tool that gives some cross-language type safety
 License:        GPL-2.0-or-later
@@ -54,7 +54,6 @@ correct Haskell types.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver language-c '< 0.9' '< 1'
 chmod a-x {README,AUTHORS,ChangeLog,ChangeLog.old}
 
 %build

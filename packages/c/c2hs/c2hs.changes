@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 16 08:55:32 UTC 2021 - psimons@suse.com
+
+- Add c2hs at version 0.28.8.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
@@ -22,4 +27,3 @@ Tue Aug 18 10:43:42 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 10:27:03 UTC 2020 - psimons@suse.com
 
 - Add c2hs at version 0.28.6.
-
