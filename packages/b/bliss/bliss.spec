@@ -1,7 +1,7 @@
 #
 # spec file for package bliss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
+%define lname   libbliss0_77
 Name:           bliss
-%define lname   libbliss-0_73
-Version:        0.73
+Version:        0.77
 Release:        0
 Summary:        A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
 License:        LGPL-3.0-only
 Group:          Productivity/Scientific/Math
-URL:            http://www.tcs.hut.fi/Software/bliss/
-
-Source:         http://www.tcs.hut.fi/Software/bliss/%name-%version.zip
-Patch1:         bliss-am.diff
-Patch2:         bliss-nodate.diff
-BuildRequires:  automake
+URL:            https://users.aalto.fi/~tjunttil/bliss/
+Source:         https://users.aalto.fi/~tjunttil/bliss/downloads/bliss-%version.zip
+Patch1:         bliss-nodate.diff
+Patch2:         cmake.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
@@ -63,13 +62,11 @@ applications that want to make use of the Bliss library.
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+%cmake -DUSE_GMP=ON -DBUILD_STATIC=OFF
+%cmake_build
 
 %install
-%make_install
-rm -f "%buildroot/%_libdir"/*.la
+%cmake_install
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -79,12 +76,11 @@ rm -f "%buildroot/%_libdir"/*.la
 %_bindir/bliss*
 
 %files -n %lname
-%_libdir/libbliss-0.73.so
-%_libdir/libbliss_gmp-0.73.so
+%_libdir/libbliss.so.%version
 
 %files devel
+%doc CHANGES.txt README.txt
 %_libdir/libbliss.so
-%_libdir/libbliss_gmp.so
 %_includedir/bliss/
 
 %changelog

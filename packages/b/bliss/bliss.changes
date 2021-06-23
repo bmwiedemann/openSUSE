@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 21 16:10:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Set versioned cmake requirement
+
+-------------------------------------------------------------------
+Wed Jun  2 22:57:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.77:
+  * set_color and copy methods in the C++ API
+  * precise group size computation also without GNU GMP
+  * no more exit-causing "fatal_errors", instead a standard exception
+    is thrown
+- Update to version 0.76:
+  * The monolithic "graph" file is split in "abstractgraph",
+    "graph" and "digraph".
+  * defs.hh now contains the version number as a #define.
+  * is_automorphism is now a public member of Graph and Digraph.
+- Update to version 0.75:
+  * Automorphism reporting and termination check functions
+    are now of C++ type std::function.
+  * Bignum allows one to get a copy of internal GNU GMP integer.
+- Update to version 0.74:
+  * Fixed a memory leak
+  * Possibility to terminate the search early
+  * Minor changes for better C++11 compatibility.
+  * Memory allocation failures now throw std::bad_alloc
+- Drop bliss-am.diff upstream uses cmake
+- Add cmake.patch, allow installing the library and binary.
+- Refresh bliss-nodate.diff
+
+-------------------------------------------------------------------
 Sat Aug 24 15:50:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile.

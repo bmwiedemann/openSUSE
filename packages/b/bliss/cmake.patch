@@ -1,0 +1,67 @@
+Date: Wed Jun  2 22:57:38 UTC 2021
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+
+Allow installing libraries (reported upstream 2021-06-03)
+
+diff -Nur bliss-0.77/CMakeLists.txt new/CMakeLists.txt
+--- bliss-0.77/CMakeLists.txt	2021-02-18 10:59:33.000000000 +0100
++++ new/CMakeLists.txt	2021-06-03 01:45:35.260180830 +0200
+@@ -1,9 +1,11 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
+ # set the project name
+-project(bliss)
++project(bliss VERSION 0.77)
+ 
+ option(USE_GMP "Use GNU Multiple Precision Arithmetic library" OFF)
++option(BUILD_SHARED "Build bliss as shared library" ON)
++option(BUILD_STATIC "Build bliss as static library" ON)
+ 
+ # specify the C++ standard
+ set(CMAKE_CXX_STANDARD 11)
+@@ -47,18 +49,38 @@
+   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR})
+ endif(MSVC)
+ 
++if (BUILD_SHARED)
++  # Add the shared library
++  add_library(bliss SHARED ${BLISS_SOURCE_FILES})
++  set_target_properties(bliss PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE 1)
++  target_link_libraries(bliss ${GMP_LIBRARIES})
++  install(TARGETS bliss LIBRARY)
++endif()
+ 
+-# Add the shared library
+-add_library(bliss SHARED ${BLISS_SOURCE_FILES})
+-set_property(TARGET bliss PROPERTY POSITION_INDEPENDENT_CODE 1)
+-
+-# Add the static library
+-add_library(bliss_static STATIC ${BLISS_SOURCE_FILES})
++if (BUILD_STATIC)
++  # Add the static library
++  add_library(bliss_static STATIC ${BLISS_SOURCE_FILES})
++  install(TARGETS bliss_static LIBRARY)
++endif()
+ 
+ # Add the executable
+ add_executable(bliss-executable src/bliss.cc)
+-target_link_libraries(bliss-executable bliss_static)
++if (BUILD_SHARED)
++  target_link_libraries(bliss-executable bliss)
++else()
++  target_link_libraries(bliss-executable bliss_static)
++endif()
++
+ if(USE_GMP)
+   target_link_libraries(bliss-executable ${GMP_LIBRARIES})
+ endif(USE_GMP)
+ set_target_properties(bliss-executable PROPERTIES OUTPUT_NAME bliss)
++
++install(TARGETS bliss-executable RUNTIME)
++
++# Install header files
++install(DIRECTORY src/
++  DESTINATION include/bliss
++  FILES_MATCHING PATTERN "*.hh"
++)
++
