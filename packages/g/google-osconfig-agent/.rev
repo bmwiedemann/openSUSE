@@ -54,4 +54,33 @@
     <comment></comment>
     <requestid>892551</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a26250bf64d49dd64df9bb71d04588de</srcmd5>
+    <version>20210621.00</version>
+    <time>1624462714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210621.00
+  * chore: Fixing a comment. (#363)
+- from version 20210617.00
+  * Use exec.CommandContext so that canceling the context also
+    kills any running processes (#362)
+- from version 20210608.1
+  * e2e_tests: point to official osconfig client library (#359)
+- from version 20210608.00
+  * e2e_tests: deflake tests (#358)
+- from version 20210607.00
+  * Fix build on some architectures (#357)
+- from version 20210603.00
+  * Create win-validation-powershell.yaml (#356)
+- from version 20210602.00
+  * Agent efficiency improvements/bugfixes/logging updates (#355)
+  * e2e_tests: add tests for ExecResource output (#354)
+- from version 20210525.00
+  * Run fieldalignment on all structs (#353)
+- from version 20210521.00
+  * Config Task: add error message and ExecResource output recording (#350)
+  * e2e_tests: remove Windows server 1909 and add server 20h2 (#352)
+  * Added a method for logging structured data (#349) (forwarded request 901483 from glaubitz)</comment>
+    <requestid>901493</requestid>
+  </revision>
 </revisionlist>

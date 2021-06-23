@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 23 11:39:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210621.00
+  * chore: Fixing a comment. (#363)
+- from version 20210617.00
+  * Use exec.CommandContext so that canceling the context also
+    kills any running processes (#362)
+- from version 20210608.1
+  * e2e_tests: point to official osconfig client library (#359)
+- from version 20210608.00
+  * e2e_tests: deflake tests (#358)
+- from version 20210607.00
+  * Fix build on some architectures (#357)
+- from version 20210603.00
+  * Create win-validation-powershell.yaml (#356)
+- from version 20210602.00
+  * Agent efficiency improvements/bugfixes/logging updates (#355)
+  * e2e_tests: add tests for ExecResource output (#354)
+- from version 20210525.00
+  * Run fieldalignment on all structs (#353)
+- from version 20210521.00
+  * Config Task: add error message and ExecResource output recording (#350)
+  * e2e_tests: remove Windows server 1909 and add server 20h2 (#352)
+  * Added a method for logging structured data (#349)
+
+-------------------------------------------------------------------
 Tue May 11 08:29:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210506.00 (bsc#1185848, bsc#1185849)
