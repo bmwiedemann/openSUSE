@@ -138,4 +138,12 @@
     <comment>Would be good to have the update to version 1.1.2 in Factory</comment>
     <requestid>894668</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a30dde19b1c6b51881ac7bf41eb8ecd</srcmd5>
+    <version>1.1.3</version>
+    <time>1624462692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901365</requestid>
+  </revision>
 </revisionlist>
