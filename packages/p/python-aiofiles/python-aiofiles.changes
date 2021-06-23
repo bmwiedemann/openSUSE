@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 16 15:13:33 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0
+  * Added the aiofiles.tempfile module for async temporary files. #56
+  * Switched to Poetry and GitHub actions.
+  * Dropped 3.5 support.
+- Switch Python packaging from setuptools to poetry
+  * Add python-pip to BuildRequires
+  * Add python-poetry-core to BuildRequires
+  * Remove python-setuptools from BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Wed Feb  3 10:57:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.6.0

@@ -19,14 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aiofiles
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        File support for asyncio
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Tinche/aiofiles
 Source:         https://github.com/Tinche/aiofiles/archive/v%{version}.tar.gz#/aiofiles-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -43,10 +44,10 @@ aiofiles: file support for asyncio
 %setup -q -n aiofiles-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
