@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 19 13:36:54 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.2
+* New functions from the SDK wrapped in Python:
+  - orthanc.CreateDicom()
+  - orthanc.CreateImageFromBuffer()
+  - orthanc.DicomInstance.GetInstanceData()
+  - orthanc.FindQuery.GetFindQueryTagElement()
+  - orthanc.FindQuery.GetFindQueryTagGroup()
+  - orthanc.Image.GetImageBuffer()
+  - orthanc.LookupDictionary()
+  - orthanc.RegisterFindCallback()
+  - orthanc.RegisterMoveCallback()
+  - orthanc.RegisterWorklistCallback()
+  - orthanc.WorklistAnswers.WorklistAddAnswer()
+
+------------------------------------------------------------------
 Mon Jan 25 14:53:58 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - verion 3.1
