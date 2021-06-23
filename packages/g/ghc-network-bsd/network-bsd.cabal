@@ -1,14 +1,14 @@
 cabal-version:  1.12
 name:           network-bsd
 version:        2.8.1.0
-x-revision: 3
+x-revision: 4
 license:        BSD3
 license-file:   LICENSE
 maintainer:     Kazu Yamamoto, Herbert Valerio Riedel
 synopsis:       POSIX network database (<netdb.h>) API
 description:
   This package provides Haskell bindings to the
-  the [POSIX network database (<netdb.h>) API](http://pubs.opengroup.org/onlinepubs/009696699/basedefs/netdb.h.html).
+  the [POSIX network database (netdb.h) API](http://pubs.opengroup.org/onlinepubs/009696699/basedefs/netdb.h.html).
   .
   === Relationship to the @network@ package
   .
@@ -22,7 +22,7 @@ description:
   necessary, add @network-bsd@ to your dependencies like so:
   .
   > library
-  >     build-depends: network     >= 2.7 && < 3.1
+  >     build-depends: network     >= 2.7 && < 3.2
   >                  , network-bsd >= 2.7 && < 2.9
   .
   I.e. you can control the version of the @network@ package
@@ -77,7 +77,7 @@ library
                -- changes that aren't reflected in `network-bsd`'s
                -- API version.
                , network (>= 3.0.0.0 && < 3.0.2) 
-                      || (>= 3.1.0.0 && < 3.1.2)
+                      || (>= 3.1.0.0 && < 3.2)
   build-tools: hsc2hs >= 0.67 && < 0.69
   ghc-options: -Wall
 

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-bsd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        POSIX network database (<netdb.h>) API
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-network-devel
@@ -33,7 +33,7 @@ ExcludeArch:    %{ix86}
 
 %description
 This package provides Haskell bindings to the the [POSIX network database
-(<netdb.h>)
+(netdb.h)
 API](http://pubs.opengroup.org/onlinepubs/009696699/basedefs/netdb.h.html).
 
 === Relationship to the 'network' package
@@ -47,7 +47,7 @@ This package provides the "Network.BSD" module split off from the
 If in addition to the 'network''s modules also "Network.BSD" is necessary, add
 'network-bsd' to your dependencies like so:
 
-> library > build-depends: network >= 2.7 && < 3.1 > , network-bsd >= 2.7 && <
+> library > build-depends: network >= 2.7 && < 3.2 > , network-bsd >= 2.7 && <
 2.9
 
 I.e. you can control the version of the 'network' package independently.

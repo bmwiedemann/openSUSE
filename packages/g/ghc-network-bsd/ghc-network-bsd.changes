@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 05:22:57 UTC 2021 - psimons@suse.com
+
+- Update network-bsd to version 2.8.1.0 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
