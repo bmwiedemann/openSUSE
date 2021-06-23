@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  2 15:11:14 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- add old patches - slightly renamed; cpe are needed (boo#1186735)
+  * openscap-opensuse-cpe.patch
+  * openscap-suse-cpe.patch
+  
+-------------------------------------------------------------------
 Fri Apr 23 11:08:00 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - openscap 1.3.5 
