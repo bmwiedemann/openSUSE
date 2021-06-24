@@ -3082,4 +3082,21 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * label and caption sanity check is too conservative.</comment>
     <requestid>895365</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>31437bdb1100dce13c8fa0914c4b3008</srcmd5>
+    <version>7.1.0.0</version>
+    <time>1624551734</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.0 [bsc#1187501]
+  * SVG no longer hangs when handling class in &lt;defs&gt; (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3818).
+  * Bump minor version (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3768)
+  * Raise exception for invalid compose:args geometry (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3765).
+  * Added support for reading and writing 16-bit jxl images.
+- modified sources
+  % baselibs.conf</comment>
+    <requestid>901130</requestid>
+  </revision>
 </revisionlist>

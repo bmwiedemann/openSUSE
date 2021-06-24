@@ -19,12 +19,12 @@
 %define debug_build    0
 %define asan_build     0
 %define maj            7
-%define mfr_version    %{maj}.0.11
-%define mfr_revision   13
+%define mfr_version    %{maj}.1.0
+%define mfr_revision   0
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
-%define clibver        9
-%define cwandver       9
+%define clibver        10
+%define cwandver       10
 %define cxxlibver      5
 %define libspec        -%{maj}_Q%{quantum_depth}HDRI
 %define config_dir     ImageMagick-7

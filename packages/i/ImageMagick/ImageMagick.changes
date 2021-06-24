@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 21 11:08:38 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.1.0.0 [bsc#1187501]
+  * SVG no longer hangs when handling class in <defs> (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3818).
+  * Bump minor version (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3768)
+  * Raise exception for invalid compose:args geometry (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3765).
+  * Added support for reading and writing 16-bit jxl images.
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
 Tue May 25 11:45:05 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.13
