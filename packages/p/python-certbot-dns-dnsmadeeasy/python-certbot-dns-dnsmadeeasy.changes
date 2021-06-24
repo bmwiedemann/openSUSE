@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 24 09:28:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.16.0
+  * DNS plugins based on lexicon now require dns-lexicon >= v3.1.0
+  * Require the latest certbot and acme plugins for simplicity
+
+-------------------------------------------------------------------
 Wed May 12 12:07:09 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.15.0
