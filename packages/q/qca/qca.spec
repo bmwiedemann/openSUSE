@@ -73,7 +73,6 @@ BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 Requires:       gpg2 >= 2.0.0
-Recommends:     %{name}-plugins
 %if 0%{?qt5}
 # The plugins used to be in the same package as the library
 Obsoletes:      libqca-qt5 <= 2.3.2
@@ -94,7 +93,8 @@ Summary:        QCA library
 Provides:       libqca-qt5 = %{version}
 Obsoletes:      libqca-qt5 < %{version}
 %endif
-Recommends:     %{name} = %{version}
+Requires:       %{name} >= %{version}
+Recommends:     %{name}-plugins
 
 %description -n libqca-%{flavor}-%{_soversion}
 The Qt cryptographic library.
@@ -182,7 +182,8 @@ rm %{buildroot}%{_libdir}/pkgconfig/qca2-%{flavor}.pc
 %files -n libqca-%{flavor}-%{_soversion}
 %license COPYING
 %doc README
-%{_libdir}/libqca-%{flavor}.so.*
+%{_libdir}/libqca-%{flavor}.so.%{_soversion}
+%{_libdir}/libqca-%{flavor}.so.%{version}
 
 %files devel
 %{_bindir}/mozcerts-%{flavor}

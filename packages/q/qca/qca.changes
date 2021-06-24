@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 18 07:52:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mention soversion in %files
+- Require main plugins from the library (for now, boo#1187447)
+- Recommend optional plugins from the library
+
+-------------------------------------------------------------------
 Wed Jun 16 06:27:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Recommend the main package in the Qt5 flavor as well
