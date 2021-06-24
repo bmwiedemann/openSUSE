@@ -17,7 +17,7 @@
 
 
 Name:           audit
-Version:        2.8.5
+Version:        3.0.2
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
 Requires:       libaudit1 = %{version}
 Requires:       libauparse0 = %{version}
+Provides:       bundled(libev) = 4.33
 
 %description
 The audit package contains the user space utilities for storing and
@@ -84,22 +85,24 @@ export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # no krb support (omit --enable-gssapi-krb5=yes), see audit-no-gss.patch
 %configure \
+%ifarch aarch64
+	--with-aarch64 \
+%endif
 	--enable-systemd \
 	--libexecdir=%{_libexecdir}/%{name} \
 	--with-apparmor \
-	--with-libwrap \
-	--without-libcap-ng \
+	--with-libcap-ng=no \
 	--disable-static \
-	--without-python \
-%ifarch aarch64
-       --with-aarch64 \
-%endif
+	--with-python=no \
 	--disable-zos-remote
+
+make %{?_smp_mflags} -C common
 make %{?_smp_mflags} -C lib
 make %{?_smp_mflags} -C auparse
 make %{?_smp_mflags} -C docs
 
 %install
+%make_install -C common
 %make_install -C lib
 %make_install -C auparse
 %make_install -C docs
@@ -134,7 +137,7 @@ make %{?_smp_mflags} check -C auparse
 %{_libdir}/libauparse.so.*
 
 %files -n audit-devel
-%doc contrib/skeleton.c contrib/plugin
+%doc contrib/plugin
 %{_libdir}/libaudit.so
 %{_libdir}/libauparse.so
 %{_includedir}/libaudit.h

@@ -16,6 +16,6 @@ Signed-Off-by: Enzo Matsumiya <ematsumiya@suse.de>
  log_file = /var/log/audit/audit.log
 -log_group = root
 +log_group = audit
- log_format = RAW
+ log_format = ENRICHED
  flush = INCREMENTAL_ASYNC
  freq = 50

@@ -22,7 +22,7 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        2.8.5
+Version:        3.0.2
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -34,9 +34,8 @@ Patch1:         audit-plugins-path.patch
 Patch2:         audit-no-gss.patch
 Patch3:         audit-allow-manual-stop.patch
 Patch4:         audit-ausearch-do-not-require-tclass.patch
-Patch5:         audit-python3.patch
-Patch6:         audit-fno-common.patch
-Patch7:         change-default-log_group.patch
+Patch5:         change-default-log_group.patch
+Patch6:         libev-werror.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
@@ -55,6 +54,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libcap-ng)
+Provides:       bundled(libev) = 4.33
 
 %description
 The audit package contains the user space utilities for storing and
@@ -127,14 +127,13 @@ rm -rf audisp/plugins/prelude
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.
 # If both versions are present, python2 bindings are preferred by the tests and
 # unconditionally using /usr/bin/python3 breaks the tests
 # Probably the correct solution is to run the tests twice if both are present.
-sed -i -e 's:#!/usr/bin/env python:#!/usr/bin/python3:g' auparse/test/auparse_test.py
+perl -i -lpe 's{#!/usr/bin/env python\S+}{#!/usr/bin/python3}' auparse/test/auparse_test.py
 %endif
 
 %build
@@ -144,15 +143,18 @@ export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # no krb support (omit --enable-gssapi-krb5=yes), see audit-no-gss.patch
 %configure \
+%ifarch aarch64
+	--with-aarch64 \
+%endif
 	--enable-systemd \
 	--libexecdir=%{_libexecdir}/%{_name} \
 	--with-apparmor \
 	--with-libwrap \
 	--with-libcap-ng=yes \
-%ifarch aarch64
-	--with-aarch64 \
-%endif
-	--disable-static
+	--disable-static \
+	%{?_with_python3} \
+	%{?_without_python}
+
 make %{?_smp_mflags}
 
 %sysusers_generate_pre %{SOURCE1} audit
@@ -197,7 +199,7 @@ rm -rf %{buildroot}/%{_mandir}/man3
 #USR-MERGE
 %if !0%{?usrmerged}
 mkdir %{buildroot}/sbin/
-for prog in auditctl auditd ausearch autrace audispd aureport augenrules; do
+for prog in auditctl auditd ausearch autrace aureport augenrules; do
   ln -s %{_sbindir}/$prog %{buildroot}/sbin/$prog
 done
 %endif
@@ -235,8 +237,7 @@ fi
 
 %files -n audit
 %license COPYING
-%doc README ChangeLog rules/[0-9]* rules/README-rules init.d/auditd.cron
-%attr(644,root,root) %{_mandir}/man8/audispd.8.gz
+%doc README ChangeLog rules init.d/auditd.cron
 %attr(644,root,root) %{_mandir}/man8/auditctl.8.gz
 %attr(644,root,root) %{_mandir}/man8/auditd.8.gz
 %attr(644,root,root) %{_mandir}/man8/aureport.8.gz
@@ -247,7 +248,6 @@ fi
 %attr(644,root,root) %{_mandir}/man8/ausyscall.8.gz
 %attr(644,root,root) %{_mandir}/man7/audit.rules.7.gz
 %attr(644,root,root) %{_mandir}/man5/auditd.conf.5.gz
-%attr(644,root,root) %{_mandir}/man5/audispd.conf.5.gz
 %attr(644,root,root) %{_mandir}/man5/ausearch-expression.5.gz
 %attr(644,root,root) %{_mandir}/man8/auvirt.8.gz
 %attr(644,root,root) %{_mandir}/man8/augenrules.8.gz
@@ -256,7 +256,6 @@ fi
 /sbin/auditd
 /sbin/ausearch
 /sbin/autrace
-/sbin/audispd
 /sbin/augenrules
 /sbin/aureport
 %endif
@@ -265,29 +264,28 @@ fi
 %attr(755,root,root) %{_sbindir}/ausearch
 %attr(750,root,root) %{_sbindir}/autrace
 %attr(750,root,root) %{_sbindir}/augenrules
-%attr(750,root,root) %{_sbindir}/audispd
+%attr(750,root,root) %{_sbindir}/audisp-syslog
 %attr(755,root,root) %{_bindir}/aulast
 %attr(755,root,root) %{_bindir}/aulastlog
 %attr(755,root,root) %{_bindir}/ausyscall
 %attr(755,root,root) %{_sbindir}/aureport
 %attr(755,root,root) %{_bindir}/auvirt
 %dir %attr(750,root,root) %{_sysconfdir}/audit
-%attr(750,root,root) %dir %{_sysconfdir}/audisp
-%attr(750,root,root) %dir %{_sysconfdir}/audisp/plugins.d
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/plugins.d/af_unix.conf
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/plugins.d/syslog.conf
+%attr(750,root,root) %dir %{_sysconfdir}/audit/plugins.d
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/af_unix.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/syslog.conf
 %ghost %{_sysconfdir}/auditd.conf
 %ghost %{_sysconfdir}/audit.rules
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/auditd.conf
 %dir %attr(750,root,root) %{_sysconfdir}/audit/rules.d
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/rules.d/audit.rules
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/audispd.conf
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/audit-stop.rules
 %dir %attr(750,root,audit) %{_localstatedir}/log/audit
 %ghost %config(noreplace) %attr(640,root,audit) %{_localstatedir}/log/audit/audit.log
 %dir %attr(700,root,root) %{_localstatedir}/spool/audit
 %{_unitdir}/auditd.service
 %{_sbindir}/rcauditd
+%{_datadir}/audit/
 
 %files -n system-group-audit
 %{_sysusersdir}/system-group-audit.conf
@@ -301,23 +299,24 @@ fi
 
 %if %{with python3}
 %files -n python3-audit
-%attr(755,root,root) %{python3_sitearch}/_audit.so
-%attr(755,root,root) %{python3_sitearch}/auparse.so
-%{python3_sitearch}/audit.py*
+%defattr(-,root,root,-)
+%attr(755,root,root) %{python3_sitearch}/*
 %endif
 
 %files -n audit-audispd-plugins
 %attr(644,root,root) %{_mandir}/man8/audispd-zos-remote.8.gz
 %attr(644,root,root) %{_mandir}/man5/zos-remote.conf.5.gz
 %attr(644,root,root) %{_mandir}/man5/audisp-remote.conf.5.gz
+%attr(644,root,root) %{_mandir}/man5/auditd-plugins.5.gz
 %attr(644,root,root) %{_mandir}/man8/audisp-remote.8.gz
-%attr(750,root,root) %dir %{_sysconfdir}/audisp
-%attr(750,root,root) %dir %{_sysconfdir}/audisp/plugins.d
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/plugins.d/audispd-zos-remote.conf
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/zos-remote.conf
+%attr(644,root,root) %{_mandir}/man8/audisp-syslog.8.gz
+%attr(750,root,root) %dir %{_sysconfdir}/audit
+%attr(750,root,root) %dir %{_sysconfdir}/audit/plugins.d
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/audispd-zos-remote.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/zos-remote.conf
 %attr(750,root,root) %{_sbindir}/audisp-remote
 %attr(750,root,root) %{_sbindir}/audispd-zos-remote
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/audisp-remote.conf
-%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audisp/plugins.d/au-remote.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/audisp-remote.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/au-remote.conf
 
 %changelog

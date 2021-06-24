@@ -787,4 +787,12 @@ Fix bz#1160384</comment>
 - Enable Aarch64 processor support. (bsc#1179515 bsc#1179806) (forwarded request 868443 from dimstar)</comment>
     <requestid>868681</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>9fc8639939618027c7c604c6f82edf2d</srcmd5>
+    <version>3.0.2</version>
+    <time>1624551709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900607</requestid>
+  </revision>
 </revisionlist>
