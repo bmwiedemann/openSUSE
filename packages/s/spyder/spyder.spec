@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-# PATCH-FIX-OPENSUSE tame-kite-installer-check -- Don't error out on not being able to connect to the kite release server code@bnavigator.de
-Patch1:         tame-kite-installer-check.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 39.0.0

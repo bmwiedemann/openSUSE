@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 24 10:54:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.5
+  * Catch any error when trying to detect if Kite installers are
+    available.
+  * Add border around WebView widgets
+- Drop tame-kite-installer-check.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon Jun 14 22:16:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add tame-kite-installer-check.patch

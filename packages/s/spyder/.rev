@@ -329,4 +329,12 @@ rename the package from spyder3 to spyder.
   * Fix errors when restarting kernels</comment>
     <requestid>900005</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5baf7c806bdd6eec8b5b18747fae8ee4</srcmd5>
+    <version>5.0.5</version>
+    <time>1624551778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901722</requestid>
+  </revision>
 </revisionlist>
