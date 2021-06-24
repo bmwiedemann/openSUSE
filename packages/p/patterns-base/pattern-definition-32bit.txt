@@ -35,16 +35,16 @@ Recommends:     libnss_usrfiles2-32bit
 Recommends:     pam-32bit
 Recommends:     pam-config-32bit
 Recommends:     rpm-32bit
-Recommends:     sysconfig-32bit
 Recommends:     system-user-nobody-32bit
 Recommends:     systemd-32bit
 Recommends:     util-linux-32bit
 Recommends:     zypper-32bit
-Recommends:     rollback-helper-32bit
 Recommends:     SUSEConnect-32bit
+Recommends:     rollback-helper-32bit
 Recommends:     purge-kernels-service-32bit
 Recommends:     busybox-static-32bit
 Recommends:     elfutils-32bit
+Recommends:     glibc-locale-base-32bit
 Recommends:     hostname-32bit
 Recommends:     iproute2-32bit
 Recommends:     issue-generator-32bit
@@ -58,7 +58,6 @@ Recommends:     terminfo-32bit
 Recommends:     terminfo-iterm-32bit
 Recommends:     terminfo-screen-32bit
 Recommends:     timezone-32bit
-Recommends:     glibc-locale-base-32bit
 Recommends:     ppc64-diag-32bit
 Recommends:     haveged-32bit
 Provides:       pattern() = base%2d32bit
@@ -80,7 +79,6 @@ Summary:        Enhanced Base System
 Recommends:     openssh-32bit
 Recommends:     aaa_base-extras-32bit
 Recommends:     acl-32bit
-Recommends:     alsa-plugins-32bit
 Recommends:     attr-32bit
 Recommends:     autofs-32bit
 Recommends:     bash-completion-32bit
@@ -90,16 +88,8 @@ Recommends:     cifs-utils-32bit
 Recommends:     command-not-found-32bit
 Recommends:     cpio-32bit
 Recommends:     cpupower-32bit
-Recommends:     cronie-32bit
 Recommends:     cryptsetup-32bit
-Recommends:     cups-32bit
-Recommends:     cups-client-32bit
 Recommends:     curl-32bit
-Recommends:     cyrus-sasl-32bit
-Recommends:     cyrus-sasl-crammd5-32bit
-Recommends:     cyrus-sasl-digestmd5-32bit
-Recommends:     cyrus-sasl-gssapi-32bit
-Recommends:     cyrus-sasl-plain-32bit
 Recommends:     deltarpm-32bit
 Recommends:     diffutils-32bit
 Recommends:     dos2unix-32bit
@@ -112,8 +102,8 @@ Recommends:     firewalld-32bit
 Recommends:     fuse-32bit
 Recommends:     gawk-32bit
 Recommends:     gettext-runtime-32bit
-Recommends:     glibc-locale-base-32bit
 Recommends:     glibc-locale-32bit
+Recommends:     glibc-locale-base-32bit
 Recommends:     gpart-32bit
 Recommends:     gpg2-32bit
 Recommends:     gpm-32bit
@@ -145,7 +135,6 @@ Recommends:     nfsidmap-32bit
 Recommends:     nscd-32bit
 Recommends:     ntfs-3g-32bit
 Recommends:     ntfsprogs-32bit
-Recommends:     openslp-32bit
 Recommends:     pam-config-32bit
 Recommends:     parted-32bit
 Recommends:     pciutils-32bit
@@ -153,7 +142,6 @@ Recommends:     pciutils-ids-32bit
 Recommends:     perl-Bootloader-32bit
 Recommends:     perl-base-32bit
 Recommends:     pinentry-32bit
-Recommends:     postfix-32bit
 Recommends:     psmisc-32bit
 Recommends:     rsync-32bit
 Recommends:     rsyslog-32bit
@@ -164,13 +152,10 @@ Recommends:     sed-32bit
 Recommends:     sg3_utils-32bit
 Recommends:     smartmontools-32bit
 Recommends:     sudo-32bit
-Recommends:     sysconfig-32bit
 Recommends:     system-tuning-common-SUSE-32bit
 Recommends:     systemd-sysvinit-32bit
 Recommends:     time-32bit
 Recommends:     timezone-32bit
-Recommends:     translation-update-32bit
-Recommends:     udev-32bit
 Recommends:     udev-configure-printer-32bit
 Recommends:     usbutils-32bit
 Recommends:     vim-32bit
@@ -204,7 +189,6 @@ Recommends:     ucode-amd-32bit
 Recommends:     ucode-intel-32bit
 Recommends:     joe-32bit
 Recommends:     mpt-status-32bit
-Recommends:     perl-TermReadLine-Gnu-32bit
 Recommends:     prctl-32bit
 Recommends:     procinfo-32bit
 Recommends:     procmail-32bit

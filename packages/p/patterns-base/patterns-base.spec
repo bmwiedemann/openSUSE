@@ -535,6 +535,53 @@ This is the enhanced base runtime system with lots of convenience packages.
 
 ################################################################################
 
+%package fips
+%pattern_primaryfunctions
+Summary:        FIPS 140-2 specific packages
+Group:          Metapackages
+Provides:       pattern() = fips
+Provides:       pattern-icon() = pattern-basis_addon
+Provides:       pattern-order() = 3010
+Provides:       pattern-visible()
+Provides:       patterns-sles-fips = %{version}
+Obsoletes:      patterns-sles-fips < %{version}
+Provides:       patterns-server-enterprise-fips = %{version}
+Obsoletes:      patterns-server-enterprise-fips < %{version}
+Provides:       patterns-server-enterprise-fips-32bit = %{version}
+Obsoletes:      patterns-server-enterprise-fips-32bit < %{version}
+
+Requires:       (dracut-fips if dracut)
+Requires:       (libcryptsetup12-hmac if libcryptsetup12)
+Requires:       (libcryptsetup12-hmac-32bit if libcryptsetup12-32bit)
+Requires:       (libfreebl3-hmac if libfreebl3)
+Requires:       (libfreebl3-hmac-32bit if libfreebl3-32bit)
+Requires:       (libgcrypt20-hmac if libgcrypt20)
+Requires:       (libgnutls30-hmac if libgnutls30)
+Requires:       (libgnutls30-hmac-32bit if libgnutls30-32bit)
+Requires:       (libopenssl1_0_0-hmac if libopenssl1_0_0)
+Requires:       (libopenssl1_0_0-hmac-32bit if libopenssl1_0_0-32bit)
+Requires:       (libopenssl1_1-hmac if libopenssl1_1)
+Requires:       (libopenssl1_1-hmac-32bit if libopenssl1_1-32bit)
+Requires:       (libsoftokn3-hmac if libsoftokn3)
+Requires:       (libsoftokn3-hmac-32bit if libsoftokn3-32bit)
+Requires:       (openssh-fips if openssh-clients)
+Requires:       (openssh-fips if openssh-server)
+Requires:       (strongswan-hmac if strongswan)
+
+%description fips
+This pattern installs the FIPS 140-2 specific packages that complete the various
+cryptographic modules in use. It is required if you want to run the
+machine with "fips=1".
+
+Please note that this pattern only enables FIPS 140-2 compliant operation, it does
+not directly make the system FIPS 140-2 certified nor validated.
+
+Please refer to SUSE official statements on the state of FIPS 140-2 certification.
+
+%files fips
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/fips.txt
+
 ################################################################################
 
 %package minimal_base
@@ -981,14 +1028,13 @@ for i in apparmor base enhanced_base minimal_base sw_management x11 x11_enhanced
 done
 
 # These packages don't generate a 32bit pattern
-for i in \
+for i in basesystem bootloader basic_desktop documentation fips transactional_base \
 %if 0%{?is_opensuse}
-basesystem bootloader basic_desktop console documentation selinux transactional_base update_test \
+console selinux update_test \
 %else
 %ifnarch s390 s390x
 32bit \
 %endif
-basesystem bootloader basic_desktop documentation \
 %endif
 %ifarch armv6hl armv7hl aarch64
 x11_raspberrypi \

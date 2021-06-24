@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 22 11:52:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Make the fips pattern supersede "patterns-server-enterprise-fips",
+  take missing pieces and obsolete it
+
+-------------------------------------------------------------------
+Fri Jun 18 10:12:18 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add pattern to install necessary packages for FIPS (bsc#1183154)
+- Run pre_checkin.sh
+- Fix build for SLE
+
+-------------------------------------------------------------------
 Thu Jun 17 11:27:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - We now have two command-not-found provider: favor the previously,
