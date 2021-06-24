@@ -1,7 +1,7 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define lmdmaj 81
+%define lmdmaj 94
 
 Name:           live555
-Version:        2020.10.16
+Version:        2021.05.22
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -56,11 +56,11 @@ This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
 
-%package -n libgroupsock8
+%package -n libgroupsock30
 Summary:        Group sock library of live555 streaming media
 Group:          System/Libraries
 
-%description -n libgroupsock8
+%description -n libgroupsock30
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
@@ -79,7 +79,7 @@ Summary:        LIVE555 Streaming Media
 Group:          Development/Languages/C and C++
 Requires:       libBasicUsageEnvironment1 = %{version}
 Requires:       libUsageEnvironment3 = %{version}
-Requires:       libgroupsock8 = %{version}
+Requires:       libgroupsock30 = %{version}
 Requires:       libliveMedia%{lmdmaj} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(openssl)
@@ -123,11 +123,11 @@ EOF
 
 %post -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
 %post -n libBasicUsageEnvironment1 -p /sbin/ldconfig
-%post -n libgroupsock8 -p /sbin/ldconfig
+%post -n libgroupsock30 -p /sbin/ldconfig
 %post -n libUsageEnvironment3 -p /sbin/ldconfig
 %postun -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
 %postun -n libBasicUsageEnvironment1 -p /sbin/ldconfig
-%postun -n libgroupsock8 -p /sbin/ldconfig
+%postun -n libgroupsock30 -p /sbin/ldconfig
 %postun -n libUsageEnvironment3 -p /sbin/ldconfig
 
 %files
@@ -139,9 +139,9 @@ EOF
 %files -n libBasicUsageEnvironment1
 %license COPYING
 %{_libdir}/libBasicUsageEnvironment.so.1*
-%files -n libgroupsock8
+%files -n libgroupsock30
 %license COPYING
-%{_libdir}/libgroupsock.so.8*
+%{_libdir}/libgroupsock.so.30*
 %files -n libUsageEnvironment3
 %license COPYING
 %{_libdir}/libUsageEnvironment.so.3*

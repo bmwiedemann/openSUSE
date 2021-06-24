@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 17 15:19:36 CEST 2021 - tiwai@suse.de
+
+- Update to 2021.05.22:
+  lots of fixes and updates, including the security fix for
+  CVE-2021-28899 boo#1185874
+  See the list in http://live555.com/liveMedia/public/changelog.txt
+- Change the so version of libliveMedia to 94, libgroupsock to 30
+
+-------------------------------------------------------------------
 Sun Oct 18 17:54:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2020.10.16:
