@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 20 18:27:59 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libzip 1.8.0:
+  * Add support for zstd (Zstandard) compression
+  * Add support for lzma (ID 14) compression
+  * Add zip_source_window_create()
+  * Add zip_source_zip_create() variant to zip_source_zip()
+  * Allow method specific comp_flags in zip_set_file_compression()
+  * Allow zip_source_tell() on sources that don't support seeking
+    and zip_ftell() on compressed data
+  * Provide more details for consistency check errors
+  * Improve output of zipcmp
+  * In zipcmp, don’t ignore empty directories when comparing
+    directory listing
+  * Treat empty string as no password given in
+    zip_file_set_encryption(), zip_fopen_encrypted(), and
+    zip_set_default_password()
+- drop libzip-pkgconfig.patch, no longer required
+
+-------------------------------------------------------------------
 Sat Nov 14 14:14:14 UTC 2020 - olaf@aepfle.de
 
 - Use full _libdir path in libzip.pc

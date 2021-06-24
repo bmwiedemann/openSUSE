@@ -455,4 +455,12 @@
     <comment>- Use full _libdir path in libzip.pc (forwarded request 848606 from olh)</comment>
     <requestid>848803</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4afaa14e67154b3369fc96cd324ef140</srcmd5>
+    <version>1.8.0</version>
+    <time>1624551730</time>
+    <user>dimstar_suse</user>
+    <comment>libzip 1.8.0 (forwarded request 901044 from AndreasStieger)</comment>
+    <requestid>901061</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libzip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 %define sover 5
 Name:           libzip
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -28,8 +28,6 @@ URL:            https://libzip.org/
 Source0:        https://libzip.org/download/libzip-%{version}.tar.xz
 Source1:        baselibs.conf
 Source2:        %{name}-rpmlintrc
-# fix libdir in pkg-config file
-Patch0:         libzip-pkgconfig.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  groff
@@ -40,7 +38,9 @@ BuildRequires:  timezone
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(liblzma) >= 5.2
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(nettle) >= 3.0
 BuildRequires:  pkgconfig(zlib) >= 1.1.2
 Provides:       libzip-util = %{version}
 Obsoletes:      libzip-util < %{version}
