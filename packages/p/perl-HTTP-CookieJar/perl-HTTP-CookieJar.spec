@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-HTTP-CookieJar
-Version:        0.010
-Release:        0
 %define cpan_name HTTP-CookieJar
+Name:           perl-HTTP-CookieJar
+Version:        0.012
+Release:        0
 Summary:        Minimalist HTTP user agent cookie jar
 License:        Apache-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Date)
@@ -59,11 +57,11 @@ use of HTTP::Request and HTTP::Response objects. An LWP-compatible adapter
 is available as HTTP::CookieJar::LWP.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.mkdn README
 %license LICENSE
 

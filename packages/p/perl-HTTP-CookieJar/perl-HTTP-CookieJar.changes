@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 17 03:06:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.012
+   see /usr/share/doc/packages/perl-HTTP-CookieJar/Changes
+
+  0.012     2021-06-16 05:34:31-04:00 America/New_York
+      - No changes from 0.011
+  0.011     2021-06-15 19:29:51-04:00 America/New_York (TRIAL RELEASE)
+      [FIXED]
+      - Pushed test cookie expiration dates from 2021 to 2041.
+        If I'm still maintaining this module in 2041, I'll bump
+        them again then.
+
+-------------------------------------------------------------------
 Thu Jan 28 07:27:32 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - moved previous fix to cpanspec.yml and re-run cpanspec
