@@ -1,5 +1,5 @@
 #
-# spec file for package rust-cbindgen
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -32,7 +32,6 @@ Source2:        cargo_config
 Source99:       UPDATING.md
 BuildRequires:  cargo >= 1.30.0
 BuildRequires:  rust >= 1.30.0
-BuildRequires:  rust-std-static >= 1.30.0
 
 %description
 A tool for generating C bindings from Rust code.

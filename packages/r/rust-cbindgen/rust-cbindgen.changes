@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 04:09:06 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Remove unnecessary dependency on rust-std-static (implied by rust)
+
+-------------------------------------------------------------------
 Wed Jun  9 01:55:17 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Resolve issue with UPDATING.md in submission
