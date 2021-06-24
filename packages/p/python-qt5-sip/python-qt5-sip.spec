@@ -34,6 +34,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 30.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       python-PyQt5-sip = %{version}-%{release}
 
 %python_subpackages
 
