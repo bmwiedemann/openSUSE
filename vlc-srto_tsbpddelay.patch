@@ -1,7 +1,7 @@
-Index: vlc-3.0.13/modules/access/srt.c
+Index: vlc-3.0.16/modules/access/srt.c
 ===================================================================
---- vlc-3.0.13.orig/modules/access/srt.c
-+++ vlc-3.0.13/modules/access/srt.c
+--- vlc-3.0.16.orig/modules/access/srt.c
++++ vlc-3.0.16/modules/access/srt.c
 @@ -165,7 +165,7 @@ static bool srt_schedule_reconnect(strea
  
      /* Set latency */
@@ -11,10 +11,10 @@ Index: vlc-3.0.13/modules/access/srt.c
          &i_latency, sizeof( int ) );
  
      psz_passphrase = var_InheritString( p_stream, "passphrase" );
-Index: vlc-3.0.13/modules/access_output/srt.c
+Index: vlc-3.0.16/modules/access_output/srt.c
 ===================================================================
---- vlc-3.0.13.orig/modules/access_output/srt.c
-+++ vlc-3.0.13/modules/access_output/srt.c
+--- vlc-3.0.16.orig/modules/access_output/srt.c
++++ vlc-3.0.16/modules/access_output/srt.c
 @@ -162,7 +162,7 @@ static bool srt_schedule_reconnect(sout_
  
      /* Set latency */
@@ -24,10 +24,10 @@ Index: vlc-3.0.13/modules/access_output/srt.c
          &i_latency, sizeof( int ) );
  
      if ( psz_passphrase != NULL && psz_passphrase[0] != '\0')
-Index: vlc-3.0.13/configure.ac
+Index: vlc-3.0.16/configure.ac
 ===================================================================
---- vlc-3.0.13.orig/configure.ac
-+++ vlc-3.0.13/configure.ac
+--- vlc-3.0.16.orig/configure.ac
++++ vlc-3.0.16/configure.ac
 @@ -4016,7 +4016,7 @@ AM_CONDITIONAL([HAVE_LIRC], [test "${hav
  dnl
  dnl  SRT plugin

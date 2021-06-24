@@ -1236,4 +1236,37 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>890357</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>9a860b13e7ec8b73b55df3ce8b678905</srcmd5>
+    <version>3.0.16</version>
+    <time>1624551731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.16:
+  + Video Output: Fix a D3D11 crash on Windows 8/8.1.
+  + Access: Fix RTSP server timeout handling.
+  + Interfaces: macOS: Add touchbar support.
+  + Misc: Multiple settings improvements.
+- Changes from version 3.0.15:
+  + Core: Add Opus &amp; Alac wave format mappings.
+  + Access: Fix opening DVD folders with non-ascii characters.
+  + Demux:
+    - Fix asf regression with broadcast streams.
+    - MP4: Fix audio drop on seek.
+  + Video Output:
+    - Fix seek &amp; volume sliders overlapping with subtitles.
+    - Fix delays when seeking with D3D11.
+  + Text renderer: Improve freetype fonts outlining.
+  + Misc: Fix GnuTLS support for Windows XP.
+- Changes from version 3.0.14:
+  + Core:
+    - Fix double loading of slave input.
+    - Fix an issue causing the auto-updater not to launch the new
+      version installer.
+- Add vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch:
+  The maintainers of live555 changed connectionEndpointAddresss to
+  getConnectionEndpointAddress, which now provides the address
+  value by reference.
+- Rebase vlc-srto_tsbpddelay.patch</comment>
+    <requestid>901108</requestid>
+  </revision>
 </revisionlist>

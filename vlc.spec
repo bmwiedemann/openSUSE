@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.13
+Version:        3.0.16
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -57,6 +57,8 @@ Patch100:       vlc-projectM-qt5.patch
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 # Fix building against recent srt where SRTO_TSBPDDELAY is no longer defined
 Patch105:       vlc-srto_tsbpddelay.patch
+# PATCH-FIX-UPSTREAM https://trac.videolan.org/vlc/ticket/25473 dominic.mayers@meditationstudies.org -- The maintainers of live555 changed connectionEndpointAddresss to getConnectionEndpointAddress, which now provides the address value by reference.
+Patch107:       vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -295,6 +297,7 @@ suitable for server installations, for example, to run a streaming server.
 Should you decide to install the GUI modules, %{name}-noX will stay
 installed as a dependency.
 
+
 # we can't use %%lang_package, as we need a different dependency
 # boo#1012556
 # but the package name has to stay vlc-lang, as otherise the software centers
@@ -406,6 +409,12 @@ OpenCV based video filters and a face detection example.
 %endif
 %patch103 -p1
 %patch105 -p1
+### Since live555-2020.12.11, connectionEndpointAddress() member function
+### use a "struct sockaddr_storage" in preparation for eventual support of IPv6:
+### http://www.live555.com/liveMedia/public/changelog.txt
+if pkg-config --atleast-version 2020.12.11 live555; then
+%patch107 -p1
+fi
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
