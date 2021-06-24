@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:42:18 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.4
+* Orthanc now anonymizes according to Basic Profile of PS 3.15-2021b Table E.1-1
+* New configuration options:
+  - "ExternalDictionaries" to load external DICOM dictionaries (useful for DICONDE)
+  - "SynchronousZipStream" to disable streaming of ZIP
+* Orthanc Explorer supports the DICONDE dictionary
+* API version upgraded to 13
+* New routes to handle groups of multiple, unrelated DICOM resources at once:
+  - "/tools/bulk-anonymize" to anonymize a set of resources
+  - "/tools/bulk-content" to get the content of a set of resources
+  - "/tools/bulk-delete" to delete a set of resources
+  - "/tools/bulk-modify" to modify a set of resources
+* ZIP archive/media generated in synchronous mode are now streamed by default
+* "Replace" tags in "/modify" and "/anonymize" now supports value representation AT
+* "/jobs/..." has new field "ErrorDetails" to help identify the cause of an error
+* "Replace", "Keep" and "Remove" in "/modify" and "/anonymize" accept paths to subsequences
+  using the syntax of the dcmodify command-line tool (wildcards are supported as well)
+* Added "short", "simplify" and/or "full" options to control the format of DICOM tags in:
+  - GET /patients, GET /studies, GET /series, GET /instances (together with "&expand")
+  - GET /patients/{id}, GET /studies/{id}, GET /series/{id}, GET /instances/{id}
+  - GET /patients/{id}/studies, GET /patients/{id}/series, GET /patients/{id}/instances
+  - GET /studies/{id}/patient, GET /studies/{id}/series, GET /studies/{id}/instances
+  - GET /series/{id}/patient, GET /series/{id}/study, GET /series/{id}/instances
+  - GET /instances/{id}/patient, GET /instances/{id}/study, GET /instances/{id}/series
+  - GET /patients/{id}/instances-tags, GET /patients/{id}/shared-tags
+  - GET /studies/{id}/instances-tags, GET /series/{id}/shared-tags
+  - GET /series/{id}/instances-tags, GET /studies/{id}/shared-tags
+  - GET /patients/{id}/module, GET /patients/{id}/patient-module
+  - GET /series/{id}/module, GET /studies/{id}/module, GET /instances/{id}/module
+  - POST /tools/find
+* "/studies/{id}/split" accepts "Instances" parameter to split instances instead of series
+* "/studies/{id}/merge" accepts instances inside its "Resources" parameter
+* Full support of hierarchical relationships in tags whose VR is UI during anonymization
+* C-MOVE SCP: added possible DIMSE status "Sub-operations Complete - One or more Failures"
+* Fix issue #146 (Update Anonyization to 2019c) - was actually updated to 2021b
+* Upgraded dependencies for static builds (notably on Windows):
+  - curl 7.77.0
+
+-------------------------------------------------------------------
 Sun May  9 09:54:25 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.9.3
