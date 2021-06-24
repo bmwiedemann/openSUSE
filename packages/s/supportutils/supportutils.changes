@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 18 13:56:58 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.17
+  + Adding ethtool options g l m to network.txt (PM-2703)
+
+-------------------------------------------------------------------
 Mon Jun  7 17:38:22 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to version 3.1.16
