@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 23 22:26:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5.1
+  * Fixed bug that prevented compilation on IBM z
+
+-------------------------------------------------------------------
 Sun Jun 20 21:59:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.5.0
