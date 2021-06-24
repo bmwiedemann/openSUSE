@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 22 15:32:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'compat' flavor which can be used as a drop-in replacement
+  of libz
+
+-------------------------------------------------------------------
 Mon Jun 21 13:34:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.0.4:

@@ -7,4 +7,14 @@
     <comment>New package: zlib-ng</comment>
     <requestid>901201</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ad3d5bb28d021be39ab4a84a31087f9</srcmd5>
+    <version>2.0.4</version>
+    <time>1624551746</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 'compat' flavor which can be used as a drop-in replacement
+  of libz
+</comment>
+    <requestid>901559</requestid>
+  </revision>
 </revisionlist>

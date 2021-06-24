@@ -1,5 +1,5 @@
 #
-# spec file for package zlib-ng
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,41 +15,60 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soversion 2
+# 'compat' flavor can be used as a drop-in replacement of 'libz'
+%define target @BUILD_FLAVOR@%{nil}
+%if "%target" == "compat"
+%bcond_without zlib_compat
+%else
+%bcond_with zlib_compat
+%endif
 
-Name:           zlib-ng
+%if %{with zlib_compat}
+%define soversion 1
+%define compat_suffix -compat
+%else
+%define soversion 2
+%endif
+
+Name:           zlib-ng%{?compat_suffix}
 Version:        2.0.4
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
-Url:            https://github.com/zlib-ng/zlib-ng
+URL:            https://github.com/zlib-ng/zlib-ng
 Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.tar.gz#/zlib-ng-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  systemtap-sdt-devel
- 
+
 %description
 zlib-ng is a zlib replacement with support for CPU intrinsics (SSSE3,
 AVX2, NEON, VSX) when available.
- 
-%package -n     libz-ng%{soversion}
+
+%package -n     libz-ng%{?compat_suffix}%{soversion}
 Summary:        Zlib replacement with SIMD optimizations
- 
-%description -n libz-ng%{soversion}
+%if %{with zlib_compat}
+Conflicts:      libz%{soversion}
+%endif
+
+%description -n libz-ng%{?compat_suffix}%{soversion}
 zlib-ng is a zlib replacement with support for CPU intrinsics (SSSE3,
 AVX2, NEON, VSX) when available.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       libz-ng%{soversion} = %{version}-%{release}
- 
+Requires:       libz-ng%{?compat_suffix}%{soversion} = %{version}-%{release}
+%if %{with zlib_compat}
+Conflicts:      zlib-devel
+%endif
+
 %description    devel
 The %{name}-devel package contains header files for
 developing application that use %{name}.
- 
+
 %prep
-%autosetup -p1
- 
+%autosetup -p1 -n zlib-ng-%{version}
+
 %build
 # zlib-ng uses a different macro for library directory.
 # 32-bit Arm requires to set soft/hard float
@@ -58,6 +77,9 @@ developing application that use %{name}.
   -DCMAKE_C_FLAGS=-mfloat-abi=hard \
 %endif
   -DWITH_SANITIZERS=ON \
+%if %{with zlib_compat}
+  -DZLIB_COMPAT=ON \
+%endif
   -DINSTALL_LIB_DIR=%{_libdir}
 %cmake_build
 
@@ -70,18 +92,29 @@ developing application that use %{name}.
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}
 %ctest
 
-%post -n libz-ng%{soversion} -p /sbin/ldconfig
-%postun -n libz-ng%{soversion} -p /sbin/ldconfig
+%post -n libz-ng%{?compat_suffix}%{soversion} -p /sbin/ldconfig
+%postun -n libz-ng%{?compat_suffix}%{soversion} -p /sbin/ldconfig
 
-%files -n libz-ng%{soversion}
+%files -n libz-ng%{?compat_suffix}%{soversion}
+%if %{with zlib_compat}
+%{_libdir}/libz.so.%{soversion}*
+%else
 %{_libdir}/libz-ng.so.%{soversion}*
+%endif
 %license LICENSE.md
 %doc README.md
- 
+
 %files devel
+%if %{with zlib_compat}
+%{_includedir}/zconf.h
+%{_includedir}/zlib.h
+%{_libdir}/libz.so
+%{_libdir}/pkgconfig/zlib.pc
+%else
 %{_includedir}/zconf-ng.h
 %{_includedir}/zlib-ng.h
 %{_libdir}/libz-ng.so
-%{_libdir}/pkgconfig/%{name}.pc
- 
+%{_libdir}/pkgconfig/zlib-ng.pc
+%endif
+
 %changelog
