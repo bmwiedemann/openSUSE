@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Jun 17 16:38:50 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.1+git0.1ce7d4925:
+  * [RELEASE] Released version 2.4.1
+  * BUG/MINOR: mux-h2/traces: bring back the lost "sent H2 REQ/RES" traces
+  * BUG/MINOR: mux-h2/traces: bring back the lost "rcvd H2 REQ" trace
+  * MINOR: mux-h2: obey http-ignore-probes during the preface
+  * BUG/MINOR: stats: make "show stat typed desc" work again
+  * CLEANUP: mux-h2/traces: better align user messages
+  * MINOR: mux-h2/trace: report a few connection-level info during h2_init()
+  * MINOR: connection: add helper conn_append_debug_info()
+  * BUG/MINOR: server: explicitly set "none" init-addr for dynamic servers
+  * BUG/MINOR: mux-h1: do not skip the error response on bad requests
+  * MINOR: backend: only skip LB when there are actual connections
+  * BUG/MAJOR: queue: set SF_ASSIGNED when setting strm->target on dequeue
+  * CLEANUP: global: remove unused definition of stopping_task[]
+  * BUG/MINOR: mworker: fix typo in chroot error message
+  * BUG/MINOR: ssl: use atomic ops to update global shctx stats
+  * BUG/MEDIUM: shctx: use at least thread-based locking on USE_PRIVATE_CACHE
+  * BUG/MEDIUM: server: do not auto insert a dynamic server in px addr_node
+  * BUG/MINOR: server: do not keep an invalid dynamic server in px ids tree
+  * BUG/MEDIUM: server: do not forget to generate the dynamic servers ids
+  * BUG/MEDIUM: server: clear dynamic srv on delete from proxy id/name trees
+  * BUG/MEDIUM: server: extend thread-isolate over much of CLI 'add server'
+  * BUG/MINOR: stick-table: insert srv in used_name tree even with fixed id
+  * DOC: lua: Add a warning about buffers modification in HTTP
+  * BUG/MAJOR: resolvers: segfault using server template without SRV RECORDs
+  * MEDIUM: resolvers: add a ref between servers and srv request or used SRV record
+  * MEDIUM: resolvers: add a ref on server to the used A/AAAA answer item
+  * BUG/MINOR: resolvers: answser item list was randomly purged or errors
+  * CLEANUP: l7-retries: do not test the buffer before calling b_alloc()
+  * BUG/MINOR: mux-fcgi: Expose SERVER_SOFTWARE parameter by default
+  * BUG/MAJOR: htx: Fix htx_defrag() when an HTX block is expanded
+  * CLEANUP: pools: remove now unused seq and pool_free_list
+  * BUG/MAJOR: pools: fix possible race with free() in the lockless variant
+  * MEDIUM: pools: use a single pool_gc() function for locked and lockless
+  * MINOR: pools: call malloc_trim() under thread isolation
+  * MINOR: pools: do not maintain the lock during pool_flush()
+  * BUG/MINOR: pools: make DEBUG_UAF always write to the to-be-freed location
+  * BUG/MINOR: pools: fix a possible memory leak in the lockless pool_flush()
+  * BUG/MEDIUM: compression: Add a flag to know the filter is still processing data
+  * BUG/MEDIUM: compression: Properly get the next block to iterate on payload
+  * BUG/MEDIUM: compression: Fix loop skipping unused blocks to get the next block
+  * BUG/MEDIUM: opentracing: initialization before establishing daemon and/or chroot mode
+  * Revert "BUG/MINOR: opentracing: initialization after establishing daemon mode"
+  * BUG/MINOR: ssl: OCSP stapling does not work if expire too far in the future
+  * BUILD: make tune.ssl.keylog available again
+  * DOC: use the req.ssl_sni in examples
+  * MINOR: errors: allow empty va_args for diag variadic macro
+  * BUG/MAJOR: stream-int: Release SI endpoint on server side ASAP on retry
+  * DOC/MINOR: move uuid in the configuration to the right alphabetical order
+  * BUG/MINOR: vars: Be sure to have a session to get checks variables
+  * CLEANUP: http-ana: Remove useless if statement about L7 retries
+  * BUG/MINOR: proxy: Missing calloc return value check in chash_init_server_tree
+  * BUG/MINOR: http: Missing calloc return value check in make_arg_list
+  * BUG/MINOR: http: Missing calloc return value check while parsing redirect rule
+  * BUG/MINOR: worker: Missing calloc return value check in mworker_env_to_proc_list
+  * BUG/MINOR: compression: Missing calloc return value check in comp_append_type/algo
+  * BUG/MINOR: http: Missing calloc return value check while parsing tcp-request rule
+  * BUG/MINOR: http: Missing calloc return value check while parsing tcp-request/tcp-response
+  * BUG/MINOR: proxy: Missing calloc return value check in proxy_defproxy_cpy
+  * BUG/MINOR: proxy: Missing calloc return value check in proxy_parse_declare
+  * BUG/MINOR: http: Missing calloc return value check in parse_http_req_capture
+  * BUG/MINOR: ssl: Missing calloc return value check in ssl_init_single_engine
+  * BUG/MINOR: peers: Missing calloc return value check in peers_register_table
+  * BUG/MINOR: server: Missing calloc return value check in srv_parse_source
+  * DOC: intro: Fix typo in starter guide
+  * MINOR: cfgparse: Fail when encountering extra arguments in macro
+  * MINOR: http-ana: Perform L7 retries because of status codes in response analyser
+  * BUG/MINOR: http-ana: Handle L7 retries on refused early data before K/A aborts
+  * BUG/MINOR: http-ana: Send the right error if max retries is reached on L7 retry
+  * Revert "MEDIUM: http-ana: Deal with L7 retries in HTTP analysers"
+  * BUG/MINOR: http-comp: Preserve HTTP_MSGF_COMPRESSIONG flag on the response
+  * BUG/MEDIUM: filters: Exec pre/post analysers only one time per filter
+  * BUILD/MINOR: opentracing: fixed build when using clang
+  * BUG/MAJOR: server: prevent deadlock when using 'set maxconn server'
+  * BUG/MEDIUM: ebtree: Invalid read when looking for dup entry
+
+-------------------------------------------------------------------
 Fri May 14 08:31:04 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.0+git0.6cbbecf09:
