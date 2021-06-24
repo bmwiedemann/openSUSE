@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 09:26:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.16.0
+  * Require the latest certbot and acme plugins for simplicity
+
+-------------------------------------------------------------------
 Wed May 12 12:06:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.15.0
