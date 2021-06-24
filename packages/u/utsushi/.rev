@@ -27,4 +27,14 @@
 </comment>
     <requestid>895770</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a703c230f5f6f2dc1ac75438accc6714</srcmd5>
+    <version>1623553580.85d9379</version>
+    <time>1624551774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1623553580.85d9379:
+  * Add UI strings for color coefficient settings.  Re #103
+</comment>
+    <requestid>901711</requestid>
+  </revision>
 </revisionlist>
