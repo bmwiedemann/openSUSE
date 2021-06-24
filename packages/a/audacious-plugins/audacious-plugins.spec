@@ -27,6 +27,8 @@ Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE fix-linking-mpg123.patch boo#1187525
+Patch0:         fix-linking-mpg123.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.6
 BuildRequires:  libmp3lame-devel
