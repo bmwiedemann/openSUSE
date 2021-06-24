@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 24 06:50:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 88:
+  * No upstream changelog
+- Remove common package, upstream now require configuration and backends
+  in the python purelib directory.
+- Update BuildRequires/Requires 
+- Force all scripts to execute python3
+- Switch fdupes macro to using hardlinks
+
+-------------------------------------------------------------------
 Fri May 28 02:55:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Convert to single-spec, like its dependencies avocado and aexpect. 

@@ -45,4 +45,18 @@ sc
     <comment>- Convert to single-spec, like its dependencies avocado and aexpect.</comment>
     <requestid>895858</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>367eadeb07128f6675bb93eec6a31279</srcmd5>
+    <version>88.0</version>
+    <time>1624551756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 88:
+  * No upstream changelog
+- Remove common package, upstream now require configuration and backends
+  in the python purelib directory.
+- Update BuildRequires/Requires 
+- Force all scripts to execute python3
+- Switch fdupes macro to using hardlinks</comment>
+    <requestid>901629</requestid>
+  </revision>
 </revisionlist>
