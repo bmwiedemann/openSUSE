@@ -27,10 +27,14 @@ BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1500
+BuildRequires:  wxWidgets-3_0-devel
+%else
 BuildRequires:  wxWidgets-devel
+%endif
+BuildRequires:  (pkgconfig(lua5.3) or pkgconfig(lua))
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(jansson)
-BuildRequires:  (pkgconfig(lua5.3) or pkgconfig(lua))
 
 %description
 A hex heditor with a number of features for analysing and annotating
