@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rtmidi
-Version:        1.4.7
+Version:        1.4.9
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://chrisarndt.de/projects/python-rtmidi/
+URL:            https://spotlightkid.github.io/python-rtmidi/
 Source:         https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
@@ -32,10 +32,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  python > 3.5
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  python(abi) > 3.5
 %python_subpackages
 
 %description

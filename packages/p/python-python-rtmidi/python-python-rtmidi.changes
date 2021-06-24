@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 23 17:28:07 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.4.9
+Changes:
+  * Synced with upstream RtMidi_
+    (fixes gh#SpotlightKid/python-rtmidi#89).
+- Changes in 1.4.8:
+Fixes:
+  * Fixed command line parsing in ``midiclock.py`` example script.
+  * Fixed Windows builds on AppVeyor CI.
+Changes:
+  * Release GIL in ``MidiOut.send_message`` so that on backend APIs
+    where this operation is blocking (``WINDOWS_MM``), multiple
+    Python threads using this method on different ``MidiOut``
+    instances can run concurently.
+
+-------------------------------------------------------------------
 Tue Feb  2 23:28:15 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.7

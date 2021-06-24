@@ -61,4 +61,24 @@ Examples:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870722</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>571f701a04c143462bb0ce161b89193c</srcmd5>
+    <version>1.4.9</version>
+    <time>1624551749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.9
+Changes:
+  * Synced with upstream RtMidi_
+    (fixes gh#SpotlightKid/python-rtmidi#89).
+- Changes in 1.4.8:
+Fixes:
+  * Fixed command line parsing in ``midiclock.py`` example script.
+  * Fixed Windows builds on AppVeyor CI.
+Changes:
+  * Release GIL in ``MidiOut.send_message`` so that on backend APIs
+    where this operation is blocking (``WINDOWS_MM``), multiple
+    Python threads using this method on different ``MidiOut``
+    instances can run concurently.</comment>
+    <requestid>901576</requestid>
+  </revision>
 </revisionlist>
