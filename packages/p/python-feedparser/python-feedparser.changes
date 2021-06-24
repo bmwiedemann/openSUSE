@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 23 18:24:35 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.8:
+  * Fix the name and link to the chardet module in the
+    documentation. (#280)
+- additional changes from version 6.0.7:
+  * Catch urllib.error.URLError to prevent crashes. (#239)
+
+-------------------------------------------------------------------
 Wed Jun 16 19:22:23 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.6:
