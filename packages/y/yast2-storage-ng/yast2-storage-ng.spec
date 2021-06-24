@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.4.0
+Version:        4.4.6
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -90,16 +90,16 @@ rake test:unit
 %endif
 
 %files
-%{yast_clientdir}
-%{yast_libdir}
-%{yast_desktopdir}
-%{yast_metainfodir}
-%{yast_fillupdir}
-%{yast_ybindir}
-# agents-scr
-%{yast_scrconfdir}
-%{yast_icondir}
 %license COPYING
 %doc README.md
+%{yast_clientdir}
+%{yast_desktopdir}
+%{yast_libdir}
+%{yast_ybindir}
+%{_fillupdir}/*%{name}*
+# agents-scr
+%{yast_scrconfdir}
+%{_datadir}/icons/hicolor/*/apps/yast-disk.*
+%{_datadir}/metainfo/org.opensuse.yast.Disk.metainfo.xml
 
 %changelog

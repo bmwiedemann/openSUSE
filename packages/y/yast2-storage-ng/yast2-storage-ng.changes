@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun 15 10:21:16 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the Comment entry in the desktop file so the tooltip
+  in the control center is properly translated (bsc#1187270).
+- 4.4.6
+
+-------------------------------------------------------------------
+Mon Jun  7 09:26:58 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- ensure mount options are not doubled (bsc#1186298)
+- 4.4.5
+
+-------------------------------------------------------------------
+Fri Jun  4 12:12:49 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- try harder matching device names (bsc#1186268)
+- 4.4.4
+
+-------------------------------------------------------------------
+Thu May 20 08:42:54 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Make the 'Change Used Devices' menu item translatable
+  (bsc#1185060).
+- 4.4.3
+
+-------------------------------------------------------------------
+Sun May 16 08:11:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- only list specific files installed in common directories (metainfo,
+  icons, fillupdir)
+
+- 4.4.2 (bsc#1186066, bsc#1184786)
+
+-------------------------------------------------------------------
+Thu May  6 08:00:23 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+- Display pathnames correctly in a Right-to-Left context
+  (bsc#1128091).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
