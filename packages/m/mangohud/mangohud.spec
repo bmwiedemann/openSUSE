@@ -1,7 +1,7 @@
 #
 # spec file for package mangohud
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,25 @@
 #
 
 
+%define imgui_ver 1.81
+%define imgui_wrap 1
 Name:           mangohud
-Version:        0.6.1
+Version:        0.6.4
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
 URL:            https://github.com/flightlessmango/MangoHud
-Source0:        %{url}/archive/v%{version}.tar.gz
-Source1:        baselibs.conf
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
+Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{imgui_wrap}/get_zip#/imgui-%{imgui_ver}-%{imgui_wrap}-wrap.zip
+Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
@@ -41,13 +46,17 @@ A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and m
 
 %prep
 %autosetup -n MangoHud-%{version}
+%autosetup -n MangoHud-%{version} -DTa1
+%autosetup -n MangoHud-%{version} -DTa2
 sed -i -e '1d;2i#!/usr/bin/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,/usr/\$LIB/mangohud/,' bin/mangohud.in
+mkdir subprojects/imgui
+mv imgui-%{imgui_ver}/* subprojects/imgui/
 
 %build
 %meson \
  -Duse_system_vulkan=enabled \
- -Duse_with_wayland=enable \
+ -Dwith_wayland=enabled \
  -Dwith_xnvctrl=disabled
 
 %meson_build

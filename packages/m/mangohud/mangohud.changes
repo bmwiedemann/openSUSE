@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:05:34 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.4:
+  * Fixed issue where some games would crash on startup.
+  * Fixed issue where Battery param would cause a stutter.
+  * Fixed issue where engine would incorrectly show "vulkan". 
+
+-------------------------------------------------------------------
+Sat Jun 12 09:48:56 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.3:
+  * core_load_change    Changes the colors of cpu core loads, uses the 
+    same data from cpu_load_value and cpu_load_change resolution 
+    Display the current resolution
+  * show_fps_limit 	Display the current fps limit
+  * custom_text_center 	Display a custom centered text, only works with legacy_layout=false
+  * custom_text 	Display a custom text, only works with legacy_layout=false
+  * exec 		Display output of bash command in next column, e.g
+    custom_text=/home
+    exec=df -h /home | tail -n 1. only works with legacy_layout=false
+  * gamemode 		Displays whether gamemode is enabled or not
+  * vkbasalt 		Displays whether vkbasalt is enabled or not
+  * swap 		Displays swap space usage next to system RAM usage
+  * battery 		Display current battery percent and energy consumption
+  * battery_icon 	Display battery icon instead of percent
+  * battery_color 	Change the BATT text color
+  * round_corners 	Change the amount of roundness of the corners have e.g round_corners=10.0 
+
+-------------------------------------------------------------------
 Wed Feb 10 04:41:36 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Add baselibs.conf for 32bit package. 
