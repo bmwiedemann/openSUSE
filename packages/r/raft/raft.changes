@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 20:58:38 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.11.1:
+  * libuv implementation will use lz4 to compress snapshots
+  * minor bug fixes
+
+-------------------------------------------------------------------
 Wed May  5 09:57:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.10.1:

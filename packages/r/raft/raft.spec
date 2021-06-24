@@ -16,21 +16,19 @@
 #
 
 
-%bcond_without libuv
 Name:           raft
-Version:        0.10.1
+Version:        0.11.1
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
-License:        LGPL-3.0-only WITH linking-exception-lgpl-3.0
+License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
 URL:            https://github.com/canonical/raft
 Source:         https://github.com/canonical/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
-%if !%{without libuv}
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(liblz4) >= 1.7.1
 BuildRequires:  pkgconfig(libuv) >= 1.18.0
-%endif
 
 %description
 This library is a fully asynchronous C implementation of the Raft consensus protocol.
@@ -39,9 +37,7 @@ It implements the core Raft algorithm logic and a pluggable interface defining I
 networking and persistent storage. The algorithm supports leadership election,
 log replication, log compaction, and  membership changes.
 
-%if %{with libuv}
 A stock implementation of the I/O interface based on libuv is included.
-%endif
 
 %package -n libraft0
 Summary:        Library implementing the Raft consensus protocol
@@ -53,16 +49,12 @@ It implements the core Raft algorithm logic and a pluggable interface defining I
 networking and persistent storage. The algorithm supports leadership election,
 log replication, log compaction, and  membership changes.
 
-%if %{with libuv}
 A stock implementation of the I/O interface based on libuv is included.
-%endif
 
 %package devel
 Summary:        Development files for the Raft library implementation of the consensus protocol
 Requires:       libraft0 = %{version}
-%if !%{without libuv}
 Requires:       pkgconfig(libuv) >= 1.18.0
-%endif
 
 %description devel
 This library is a fully asynchronous C implementation of the Raft consensus protocol.
@@ -80,10 +72,7 @@ using the library.
 %build
 autoreconf -iv
 %configure \
-	--disable-static \
-%if %{without libuv}
-	--disable-uv \
-%endif
+	--disable-static
 
 %make_build
 
@@ -100,9 +89,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/raft.h
 %dir %{_includedir}/raft
 %{_includedir}/raft/fixture.h
-%if !%{without libuv}
 %{_includedir}/raft/uv.h
-%endif
 %{_libdir}/libraft.so
 %{_libdir}/pkgconfig/raft.pc
 
