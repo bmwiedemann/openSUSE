@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:26:56 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20210511:
+  * mmc-utils: Add eMMC erase command support
+
+-------------------------------------------------------------------
 Wed Apr 28 07:43:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20210330:
