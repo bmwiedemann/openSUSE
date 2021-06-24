@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jun 16 11:44:00 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 3.21.4
+
+- Update to 3.21.4
+  Added support for the following new printers:
+  * HP Envy 6400 series
+
+- Update to 3.21.2
+  Add support for the following printers:
+  * HP LaserJet Enterprise M406dn
+  * HP LaserJet Enterprise M407dn
+  * HP LaserJet Enterprise MFP M430f
+  * HP LaserJet Enterprise MFP M431f
+  * HP LaserJet Managed E40040dn
+  * HP LaserJet Managed MFP E42540f
+  * HP Color LaserJet Enterprise M455dn
+  * HP Color LaserJet Managed E45028dn
+  * HP Color LaserJet Enterprise MFP M480f
+  * HP Color LaserJet Managed MFP E47528f 
+  * HP PageWide XL 3920 MFP
+  * HP PageWide XL 4200 Printer
+  * HP PageWide XL 4200 Multifunction Printer
+  * HP PageWide XL 4700 Printer
+  * HP PageWide XL 4700 Multifunction Printer
+  * HP PageWide XL 5200 Printer
+  * HP PageWide XL 5200 Multifunction Printer
+  * HP PageWide XL 8200 Printer
+  * HP Laserjet M207d 
+  * HP Laserjet M208d
+  * HP Laserjet M209d
+  * HP Laserjet M210d
+  * HP Laserjet M212d
+  * HP Lasejet  M211d
+  * HP Laserjet M209dw
+  * HP Laserjet M209dwe
+  * HP Laserjet M210dw
+  * HP Laserjet M210dwe
+  * HP Laserjet M212dw
+  * HP LaserJet M212dwe
+  * HP Laserjet M208dw
+  * HP Laserjet M207dw
+  * HP Laserjet M211dw
+  * HP LaserJet MFP M234dw
+  * HP LaserJet MFP M234dwe
+  * HP LaserJet MFP M233d
+  * HP LaserJet MFP M232d
+  * HP LaserJet MFP M235d
+  * HP LaserJet MFP M237d
+  * HP LaserJet MFP M236d
+  * HP LaserJet MFP M232dw
+  * HP LaserJet MFP M232dwc
+  * HP LaserJet MFP M233dw
+  * HP LaserJet MFP M236dw
+  * HP LaserJet MFP M235dw
+  * HP LaserJet MFP M235dwe
+  * HP LaserJet MFP M237dwe
+  * HP LaserJet MFP M237dw
+  * HP LaserJet MFP M232sdn
+  * HP LaserJet MFP M233sdn
+  * HP LaserJet MFP M236sdn
+  * HP LaserJet MFP M234sdn
+  * HP LaserJet MFP M234sdne
+  * HP LaserJet MFP M235sdn
+  * HP LaserJet MFP M235sdne
+  * HP LaserJet MFP M237sdne
+  * HP LaserJet MFP M237sdn
+  * HP LaserJet MFP M232sdw
+  * HP LaserJet MFP M233sdw
+  * HP LaserJet MFP M236sdw
+  * HP LaserJet MFP M234sdw
+  * HP LaserJet MFP M234sdwe
+  * HP LaserJet MFP M235sdw
+  * HP LaserJet MFP M235sdwe
+  * HP LaserJet MFP M237sdwe
+  * HP LaserJet MFP M237sdw
+- Spec file:
+  * Adapted patch hplip-remove-imageprocessor.diff
+  * Disabled image processor build with the configure option
+    --disable-imageProcessor-build
+  * Remove executable bit in %{_datadir}/hplip/
+  * Ignore duplicate files in hplip-rpmlintrc ("__init__.*.pyc?")
+  * Fixed some warnings
+
+-------------------------------------------------------------------
 Tue Feb 23 17:23:15 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Remove %is_opensuse from spec file (jsc#SLE-11640)

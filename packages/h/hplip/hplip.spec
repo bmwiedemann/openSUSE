@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.20.11
+Version:        3.21.4
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -327,8 +327,9 @@ find . -name '*.py' -o -name pstotiff | \
 sed -i 's,%{_bindir}/python\>,%{pyexe},'  \
     data/rules/*
 
-# replace icon not available on openSUSE
-sed -i -e 's|%{_datadir}/icons/Humanity/devices/48/printer.svg|printer|' hp-uiscan.desktop.in
+# remove shebang line and replace icon not available on openSUSE
+sed -i -e '/#!.*xdg-open$/d' \
+  -e 's|%{_datadir}/icons/Humanity/devices/48/printer.svg|printer|' hp-uiscan.desktop.in
 
 %build
 # If AUTOMAKE='automake --foreign' is not set, autoreconf (in fact automake)
@@ -381,6 +382,7 @@ export CXXFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -fno-strict-aliasing -Wno-erro
             --enable-cups-ppd-install \
             --enable-hpijs-install \
             --disable-foomatic-drv-install \
+            --disable-imageProcessor-build \
             --enable-foomatic-ppd-install \
             --disable-foomatic-rip-hplip-install \
             --with-hpppddir=%{_datadir}/cups/model/manufacturer-PPDs/%{name} \

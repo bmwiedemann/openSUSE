@@ -1188,4 +1188,41 @@
     HP Laserjet CP 1025nw</comment>
     <requestid>874884</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>abaa668011e8ecd9c4dde93cb2593b89</srcmd5>
+    <version>3.21.4</version>
+    <time>1624551732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.21.4
+  Added support for the following new printers:
+  * HP Envy 6400 series
+- Update to 3.21.2
+  Add support for the following printers:
+  * HP LaserJet Enterprise M406dn
+  * HP LaserJet Enterprise M407dn
+  * HP LaserJet Enterprise MFP M430f
+  * HP LaserJet Enterprise MFP M431f
+  * HP LaserJet Managed E40040dn
+  * HP LaserJet Managed MFP E42540f
+  * HP Color LaserJet Enterprise M455dn
+  * HP Color LaserJet Managed E45028dn
+  * HP Color LaserJet Enterprise MFP M480f
+  * HP Color LaserJet Managed MFP E47528f 
+  * HP PageWide XL 3920 MFP
+  * HP PageWide XL 4200 Printer
+  * HP PageWide XL 4200 Multifunction Printer
+  * HP PageWide XL 4700 Printer
+  * HP PageWide XL 4700 Multifunction Printer
+  * HP PageWide XL 5200 Printer
+  * HP PageWide XL 5200 Multifunction Printer
+  * HP PageWide XL 8200 Printer
+  * HP Laserjet M207d 
+  * HP Laserjet M208d
+  * HP Laserjet M209d
+  * HP Laserjet M210d
+  * HP Laserjet M212d
+  * HP Lasejet  M211d
+  * HP Laserjet M209dw</comment>
+    <requestid>901116</requestid>
+  </revision>
 </revisionlist>

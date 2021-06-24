@@ -1,18 +1,7 @@
-From fa9c0cf1a5db9bf8880b4796d5e3e0da46534e3d Mon Sep 17 00:00:00 2001
-From: Didier Raboud <odyx@debian.org>
-Date: Tue, 21 Aug 2018 18:18:10 +0200
-Subject: Remove all ImageProcessor functionality, which is closed-source
-
----
- Makefile.am                  | 14 ++------------
- prnt/hpcups/HPCupsFilter.cpp | 21 ---------------------
- 2 files changed, 2 insertions(+), 33 deletions(-)
-
-Index: hplip-3.20.9/Makefile.am
-===================================================================
---- hplip-3.20.9.orig/Makefile.am
-+++ hplip-3.20.9/Makefile.am
-@@ -167,7 +167,7 @@ if !HPLIP_CLASS_DRIVER
+diff -ur hplip-3.21.4.orig/Makefile.am hplip-3.21.4/Makefile.am
+--- hplip-3.21.4.orig/Makefile.am	2021-05-06 10:39:14.000000000 +0200
++++ hplip-3.21.4/Makefile.am	2021-06-16 09:19:42.354489830 +0200
+@@ -167,7 +167,7 @@
  dist_hplip_SCRIPTS = hpssd.py __init__.py hpdio.py
  endif #HPLIP_CLASS_DRIVER
  
@@ -21,7 +10,7 @@ Index: hplip-3.20.9/Makefile.am
  dist_noinst_SCRIPTS += dat2drv.py install.py  hplip-install init-suse-firewall init-iptables-firewall class_rpm_build.sh hplipclassdriver.spec createPPD.sh Makefile_dat2drv hpijs-drv
  
  if !HPLIP_CLASS_DRIVER
-@@ -595,7 +595,7 @@ hpcups_SOURCES = prnt/hpcups/HPCupsFilte
+@@ -595,7 +595,7 @@
  	prnt/hpcups/ImageProcessor.h
  
  hpcups_CXXFLAGS = $(APDK_ENDIAN_FLAG) $(DBUS_CFLAGS)
@@ -30,7 +19,7 @@ Index: hplip-3.20.9/Makefile.am
  #else
  #hpcupsdir = $(cupsfilterdir)
  #hpcups_PROGRAMS = hpcups
-@@ -685,16 +685,6 @@ endif #HPLIP_CLASS_DRIVER
+@@ -685,16 +685,6 @@
  
  install-data-hook:
  if HPLIP_BUILD
@@ -47,67 +36,3 @@ Index: hplip-3.20.9/Makefile.am
  if !HPLIP_CLASS_DRIVER
  #	   If scanner build, add hpaio entry to sane dll.conf.
  	if [ "$(scan_build)" = "yes" ]; then \
-Index: hplip-3.20.9/prnt/hpcups/HPCupsFilter.cpp
-===================================================================
---- hplip-3.20.9.orig/prnt/hpcups/HPCupsFilter.cpp
-+++ hplip-3.20.9/prnt/hpcups/HPCupsFilter.cpp
-@@ -31,7 +31,6 @@
- \*****************************************************************************/
- 
- #include "HPCupsFilter.h"
--#include "ImageProcessor.h"
- 
- #include <signal.h>
- #include <sys/wait.h>
-@@ -637,16 +636,10 @@ int HPCupsFilter::processRasterData(cups
- 
- 
-     sprintf(hpPreProcessedRasterFile, "%s/hp_%s_cups_SwapedPagesXXXXXX",CUPS_TMP_DIR, m_JA.user_name);
--    image_processor_t* imageProcessor = imageProcessorCreate();
- 
-     while (cupsRasterReadHeader2(cups_raster, &cups_header))
-     {
- 
--        IMAGE_PROCESSOR_ERROR result = imageProcessorStartPage(imageProcessor, &cups_header);
--        if (result != IPE_SUCCESS){
--            dbglog("DEBUG: imageProcessorStartPage failed result = %d\n", result);
--        }
--
-         current_page_number++;
- 
-         if (current_page_number == 1) {
-@@ -745,12 +738,6 @@ int HPCupsFilter::processRasterData(cups
-             color_raster = rgbRaster;
-             black_raster = kRaster;
- 
--            result = imageProcessorProcessLine(imageProcessor, m_pPrinterBuffer, cups_header.cupsBytesPerLine);
--            if (result != IPE_SUCCESS){
--                dbglog("DEBUG: imageProcessorProcessLine failed result = %d\n", result);
--            }
--
--
-             if ((y == 0) && !is_ljmono) {
-                 //For ljmono, make sure that first line is not a blankRaster line.Otherwise printer
-                 //may not skip blank lines before actual data
-@@ -780,12 +767,6 @@ int HPCupsFilter::processRasterData(cups
-             }
-         }  // for() loop end
- 
--        result = imageProcessorEndPage(imageProcessor);
--        if (result != IPE_SUCCESS){
--                dbglog("DEBUG: imageProcessorEndPage failed result = %d\n", result);
--        }
--
--
-         m_Job.NewPage();
-         if (err != NO_ERROR) {
-             break;
-@@ -800,8 +781,6 @@ int HPCupsFilter::processRasterData(cups
-         rgbRaster = NULL;
-     }
- 
--    imageProcessorDestroy(imageProcessor);
--
-     unlink(hpPreProcessedRasterFile);
-     return ret_status;
- }
