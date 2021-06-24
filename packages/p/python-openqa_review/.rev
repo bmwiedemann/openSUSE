@@ -327,4 +327,12 @@
     <comment>Update to 1.21.2</comment>
     <requestid>901431</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c70f29dc8a1a6b36d4baadb42d0e3c61</srcmd5>
+    <version>1.23.0</version>
+    <time>1624551778</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.23.0</comment>
+    <requestid>901745</requestid>
+  </revision>
 </revisionlist>

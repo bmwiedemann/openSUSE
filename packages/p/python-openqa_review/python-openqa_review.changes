@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 13:09:18 UTC 2021 - okurz@suse.com
+
+- Update to version 1.23.0:
+  * Fix handling of softfail bugrefs
+  * Issue: Consistently Use self.bugref instead of bugref from arg
+
+-------------------------------------------------------------------
+Thu Jun 24 11:38:16 UTC 2021 - okurz@suse.com
+
+- Update to version 1.22.0:
+  * Also exclude newly introduced "EOL" job groups
+  * Specify Loader=yaml.SafeLoader explicitly
+
+-------------------------------------------------------------------
 Wed Jun 23 09:14:36 UTC 2021 - okurz@suse.com
 
 - Update to version 1.21.2:
