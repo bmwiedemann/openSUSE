@@ -100,4 +100,16 @@
     <comment></comment>
     <requestid>788507</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2bb5bb93f712b223d947db4387e4304d</srcmd5>
+    <version>2.5.2</version>
+    <time>1624551750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2
+  * Support new Tesseract 5 API (gh#sirfz/tesserocr#242)
+  * GetBestLSTMSymbolChoices crash fix (gh#sirfz/tesserocr#241)
+  * Fallback to BMP instead of PNG
+  * Create pix from a BMP image bytes (gh#sirfz/tesserocr#156)</comment>
+    <requestid>901578</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 23 17:43:23 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.5.2
+  * Support new Tesseract 5 API (gh#sirfz/tesserocr#242)
+  * GetBestLSTMSymbolChoices crash fix (gh#sirfz/tesserocr#241)
+  * Fallback to BMP instead of PNG
+  * Create pix from a BMP image bytes (gh#sirfz/tesserocr#156)
+
+-------------------------------------------------------------------
 Thu Mar 26 10:39:41 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.5.1
