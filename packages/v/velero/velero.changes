@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 00:21:58 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.6.1:
+  * Add changelog for v1.6.1
+  * regression introduced in 1.6 restore progress: fix CR restore (#3845)
+  * Skip volume restores from projected sources (#3877)
+  * API groups e2e tests remove controllers (#3564)
+  * Merge pull request #3866 from alaypatel07/fix-projected-volume-for-restic
+  * Consolidate api clients for e2e tests (#3764)
+  * A small refactor of the e2e tests (#3726)
+  * 🐛  Fix plugin name derivation from image name (#3711)
+
+-------------------------------------------------------------------
 Wed Apr 14 08:18:10 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.6.0:
