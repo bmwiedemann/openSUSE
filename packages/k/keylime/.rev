@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e504d48527502a8ddc5fd4fee54f38e3</srcmd5>
+    <version>6.1.0</version>
+    <time>1624551747</time>
+    <user>dimstar_suse</user>
+    <comment>Request for inclusion in Factory of keylime, a remote attestation tool built in Python. Eventually the agent component will be replaced by rust-keylime, that is already in the security devel project.</comment>
+    <requestid>901553</requestid>
+  </revision>
+</revisionlist>

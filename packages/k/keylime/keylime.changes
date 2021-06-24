@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Jun 10 09:41:00 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add webapp-fix-tls-certs-paths.patch (gh#keylime/keylime!659)
+- Recommend dmidecode for the agent
+- Require libtss2-tcti-{device0,tabrmd0} to use abrmd service
+- Add keylime.conf.diff patch to change the default config file
+- Add keylime.xml for firewalld service definition
+
+-------------------------------------------------------------------
+Tue Apr 27 14:41:42 UTC 2021 - aplanas@suse.com
+
+- Update to version 6.1.0:
+  * Update python cryptography lib to v3.3.2
+  * installer.sh improvments
+  * run_local.sh: Run unit tests in keylime/tpm/tpm2_objects.py
+  * Fourth and final PR to address #491 (#580)
+  * scripts: Also use pylint-3 if pylint is not installed
+  * agent: Fix the checking for a specific error returned by tpm2_quote
+  * Allowlist verification - Enhancement #16
+  * Forgot to remove the original, more crude solution (which caused pylint errors)
+  * New and improved code to fix issue #582
+  * Consistent formatting for logging strings

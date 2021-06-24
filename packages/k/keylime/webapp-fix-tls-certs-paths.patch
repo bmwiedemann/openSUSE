@@ -1,0 +1,36 @@
+From 0558bfaec8b3b8b49960a2cbe82184f00f049d1c Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@gmail.com>
+Date: Fri, 21 May 2021 22:13:29 +0200
+Subject: [PATCH] webapp: fix tls certs paths (#659)
+
+`get_tls_context` search for the TLS certificates and TLS private key.
+To do that uses a simple "%s/%s" to build the full path.
+
+The problem is that if the certificates contains already the full path,
+the final path will be incorrect.
+
+This patch replace it with `os.path.join`, that respect the full path to
+generate the final path.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ keylime/tenant_webapp.py | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+Index: keylime-6.1.0/keylime/tenant_webapp.py
+===================================================================
+--- keylime-6.1.0.orig/keylime/tenant_webapp.py
++++ keylime-6.1.0/keylime/tenant_webapp.py
+@@ -647,9 +647,9 @@ def get_tls_context():
+ 
+     logger.info("Setting up client TLS in %s", tls_dir)
+ 
+-    ca_path = "%s/%s" % (tls_dir, ca_cert)
+-    my_tls_cert = "%s/%s" % (tls_dir, my_cert)
+-    my_tls_priv_key = "%s/%s" % (tls_dir, my_priv_key)
++    ca_path = os.path.join(tls_dir, ca_cert)
++    my_tls_cert = os.path.join(tls_dir, my_cert)
++    my_tls_priv_key = os.path.join(tls_dir, my_priv_key)
+ 
+     context = ssl.create_default_context()
+     context.load_verify_locations(cafile=ca_path)
