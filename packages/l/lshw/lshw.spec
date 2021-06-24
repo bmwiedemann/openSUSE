@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.19+git.20210429
+Version:        B.02.19+git.20210619
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only

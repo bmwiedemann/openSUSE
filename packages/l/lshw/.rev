@@ -219,4 +219,13 @@ factory)</comment>
   * lshw-devtree-Add-UUID-property.patch</comment>
     <requestid>895505</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ced31830a38328bc43b86fe7fed5eccb</srcmd5>
+    <version>B.02.19+git.20210619</version>
+    <time>1624551758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19+git.20210619:
+  * Fix typos in translatable messages</comment>
+    <requestid>901640</requestid>
+  </revision>
 </revisionlist>
