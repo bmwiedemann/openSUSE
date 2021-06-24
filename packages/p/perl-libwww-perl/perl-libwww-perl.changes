@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 18 03:08:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.55
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.55      2021-06-17 13:57:06Z
+      - Attempt to avoid rare fails in redirect.t (GH#380) (Arne Johannessen)
+
+-------------------------------------------------------------------
 Fri May  7 03:07:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.54
