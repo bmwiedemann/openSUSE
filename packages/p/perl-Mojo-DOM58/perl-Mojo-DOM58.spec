@@ -18,7 +18,7 @@
 
 %define cpan_name Mojo-DOM58
 Name:           perl-Mojo-DOM58
-Version:        3.000
+Version:        3.001
 Release:        0
 Summary:        Minimalistic HTML/XML DOM parser with CSS selectors
 License:        Artistic-2.0
