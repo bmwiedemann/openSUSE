@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 17 03:09:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.4.2
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v2.4.2	  2021-06-16
+      - (dboehmer) make 'all_files_ok()' more consistent
+      - (dboehmer) Fix typo
+      - More documentation improvements
+      - Yet more tests
+      - Update copyright
+
+-------------------------------------------------------------------
 Tue Jul  7 03:12:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.4.1
