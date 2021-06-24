@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 18 08:22:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.11.2:
+  + Bug fixes:
+    - Fix logic error when migrating AppStream XML
+    - Improve error-checking
+    - Fix various memory and file descriptor leaks, in particular
+      with flatpak-spawn --env=...
+    - Fix fd confusion in flatpak-spawn --env=... --forward-fd=...,
+      which caused "Steam Linux Runtime" containers to fail to start
+    - Avoid a crash when looking up summary for a ref without an arch
+    - Improve handling of refs belonging to more than one
+      architecture, e.g. for cross-compilation
+    - Don't abort uninstall if deploy metadata is missing
+    - Don't fail transaction if searching for dependencies fails
+      in one remote
+    - Fix test failure when running tests as root
+    - Improve error message for 'sudo flatpak run'
+  + Internal changes:
+    - Improve printf format string validation
+    - Improve test coverage
+    - Reduce risk of accidentally hard-coding x86 in the tests
+
+-------------------------------------------------------------------
 Tue Apr 27 10:41:14 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.11.1:
