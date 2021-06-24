@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 21 09:42:36 MDT 2021 - carnold@suse.com
+
+- Update to database version 20210621
+  osinfo-db-20210621.tar.xz
+- Drop patches contained in new tarball
+  SLE-add-info-about-UEFI-support.patch
+  add-sle15sp3-support.patch
+  add-slem50-support.patch
+  fix-sle15sp1-volume-id-string.patch
+
+-------------------------------------------------------------------
+Fri Jun 11 15:24:39 MDT 2021 - carnold@suse.com
+
+- Update to database version 20210531
+  osinfo-db-20210531.tar.xz
+- Drop add-leap15.3-support.patch
+
+-------------------------------------------------------------------
+Mon Apr 12 13:01:27 MDT 2021 - carnold@suse.com
+
+- Add support for SUSE Linux Enterprise Micro. See also patch
+  in virt-manager to enable media detection.
+  add-slem-support.patch
+
+-------------------------------------------------------------------
+Fri Apr  9 11:26:45 MDT 2021 - carnold@suse.com
+
+- Update to database version 20210312
+  osinfo-db-20210312.tar.xz
+
+-------------------------------------------------------------------
 Tue Mar  2 10:03:56 MST 2021 - carnold@suse.com
 
 - Update to database version 20210215

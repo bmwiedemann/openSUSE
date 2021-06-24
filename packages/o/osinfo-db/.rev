@@ -368,4 +368,12 @@
     <comment>Update database to version 20210215</comment>
     <requestid>876290</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>be2dcc489edfa45ab438a9fc97ff2e35</srcmd5>
+    <version>20210621</version>
+    <time>1624551738</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20210621</comment>
+    <requestid>901211</requestid>
+  </revision>
 </revisionlist>

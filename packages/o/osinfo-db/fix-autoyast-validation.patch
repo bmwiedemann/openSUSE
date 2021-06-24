@@ -1,24 +1,26 @@
-diff -p1 -uNr osinfo-db-20201218.old/install-script/opensuse.org/opensuse-autoyast-desktop.xml osinfo-db-20201218/install-script/opensuse.org/opensuse-autoyast-desktop.xml
---- osinfo-db-20201218.old/install-script/opensuse.org/opensuse-autoyast-desktop.xml	2021-03-02 15:20:55.618176397 +0000
-+++ osinfo-db-20201218/install-script/opensuse.org/opensuse-autoyast-desktop.xml	2021-03-02 15:24:13.679216907 +0000
-@@ -155,3 +155,2 @@
-               <storage>
--                <partition_alignment config:type="symbol">align_optimal</partition_alignment>
-                 <start_multipath config:type="boolean">false</start_multipath>
-@@ -171,3 +170,3 @@
+Index: osinfo-db-20210312/install-script/opensuse.org/opensuse-autoyast-desktop.xml
+===================================================================
+--- osinfo-db-20210312.orig/install-script/opensuse.org/opensuse-autoyast-desktop.xml
++++ osinfo-db-20210312/install-script/opensuse.org/opensuse-autoyast-desktop.xml
+@@ -169,7 +169,7 @@
+             </keyboard>
              <language>
--              <xsl:call-template name="l10n-language"/>
-+              <language><xsl:call-template name="l10n-language"/></language>
+               <language>
+-                <xsl:call-template name="l10n-language"/>
++                <language><xsl:call-template name="l10n-language"/></language>
+               </language>
              </language>
-diff -p1 -uNr osinfo-db-20201218.old/install-script/opensuse.org/opensuse-autoyast-jeos.xml osinfo-db-20201218/install-script/opensuse.org/opensuse-autoyast-jeos.xml
---- osinfo-db-20201218.old/install-script/opensuse.org/opensuse-autoyast-jeos.xml	2021-03-02 15:20:55.618176397 +0000
-+++ osinfo-db-20201218/install-script/opensuse.org/opensuse-autoyast-jeos.xml	2021-03-02 15:21:58.862508652 +0000
-@@ -139,3 +139,2 @@
-               <storage>
--                <partition_alignment config:type="symbol">align_optimal</partition_alignment>
-                 <start_multipath config:type="boolean">false</start_multipath>
-@@ -155,3 +154,3 @@
+             <networking>
+Index: osinfo-db-20210312/install-script/opensuse.org/opensuse-autoyast-jeos.xml
+===================================================================
+--- osinfo-db-20210312.orig/install-script/opensuse.org/opensuse-autoyast-jeos.xml
++++ osinfo-db-20210312/install-script/opensuse.org/opensuse-autoyast-jeos.xml
+@@ -153,7 +153,7 @@
+             </keyboard>
              <language>
--              <xsl:call-template name="l10n-language"/>
-+              <language><xsl:call-template name="l10n-language"/></language>
+               <language>
+-                <xsl:call-template name="l10n-language"/>
++                <language><xsl:call-template name="l10n-language"/></language>
+               </language>
              </language>
+             <networking>
