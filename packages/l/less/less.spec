@@ -17,7 +17,7 @@
 
 
 Name:           less
-Version:        586
+Version:        590
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -58,7 +58,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 autoreconf -fiv
 export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-%configure --with-pic
+%configure
 #
 # regenerate help.c because less.hlp was patched
 ./mkhelp.pl <less.hlp >help.c

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:26:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 590:
+  * Make less able to read lesskey source files (deprecating lesskey).
+  * If XDG_CONFIG_HOME is set, find lesskey source file 
+    in $XDG_CONFIG_HOME/lesskey rather than $HOME/.lesskey.
+  * If XDG_DATA_HOME is set, find and store history file 
+    in $XDG_DATA_HOME/lesshst rather than $HOME/.lesshst.
+  * Add the --lesskey-src option.
+  * Add the --file-size option.
+  * With -F, if screen is resized to make file fit on one screen, don't exit.
+
+-------------------------------------------------------------------
+Mon Jun 14 13:19:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic (no static libs are ever produced).
+
+-------------------------------------------------------------------
 Sun May 16 21:49:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 586:
