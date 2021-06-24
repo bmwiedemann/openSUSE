@@ -26,6 +26,8 @@ Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}-%{version}.tar.gz
 Patch1:         pesign-obs-integration-bsc1183747-always-pad-efi-images.patch
+Patch2:         pesign-obs-integration-support-gzip-zstd-compression.patch
+Patch3:         pesign-kernel-in-lib.diff
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
