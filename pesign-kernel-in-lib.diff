@@ -1,0 +1,59 @@
+Index: pesign-obs-integration-10.2/brp-99-compress-vmlinux
+===================================================================
+--- pesign-obs-integration-10.2.orig/brp-99-compress-vmlinux
++++ pesign-obs-integration-10.2/brp-99-compress-vmlinux
+@@ -11,6 +11,9 @@ kernel-*)
+ 	exit 0
+ esac
+ for f in $RPM_BUILD_ROOT/boot/vmlinux-*; do
++	if [ -L "$f" ]; then
++		f=`readlink -f "$f"`
++	fi
+ 	for compression in gz/gzip xz; do
+ 		if test -e "$f" -a -e "$f.${compression%/*}"; then
+ 			echo "${compression#*/} $f"
+Index: pesign-obs-integration-10.2/pesign-repackage.spec.in
+===================================================================
+--- pesign-obs-integration-10.2.orig/pesign-repackage.spec.in
++++ pesign-obs-integration-10.2/pesign-repackage.spec.in
+@@ -129,7 +129,7 @@ for sig in "${sigs[@]}"; do
+ 	*.ko.sig)
+ 		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f"
+ 		;;
+-	/boot/* | *.efi.sig)
++	/boot/* | *.efi.sig | */lib/modules/*/vmlinu[xz].sig | */lib/modules/*/[Ii]mage.sig | */lib/modules/*/z[Ii]mage.sig)
+ %ifarch %ix86 x86_64 aarch64 %arm
+ 		# PE style signature injection
+ 		infile=${sig%.sig}
+Index: pesign-obs-integration-10.2/pesign-gen-repackage-spec
+===================================================================
+--- pesign-obs-integration-10.2.orig/pesign-gen-repackage-spec
++++ pesign-obs-integration-10.2/pesign-gen-repackage-spec
+@@ -25,6 +25,8 @@ my $USAGE = "Usage: $0 --directory <payl
+ 
+ use Getopt::Long;
+ use Fcntl qw(:mode :seek);
++use File::Basename qw(dirname);
++use File::Path qw(make_path);
+ 
+ my $directory;
+ my $output = ".";
+@@ -418,6 +420,7 @@ sub print_files {
+ 		if ($f->{flags} & $filetypes{ghost}) {
+ 			$attrs .= "%ghost ";
+ 			if (S_ISREG($f->{mode})) {
++				make_path(dirname($path));
+ 				open(my $fh, '>', $path) or die "$path: $!\n";
+ 				if ($f->{size} > 0) {
+ 					sysseek($fh, $f->{size} - 1, SEEK_SET);
+@@ -425,7 +428,10 @@ sub print_files {
+ 				}
+ 				close($fh);
+ 				utime($f->{mtime}, $f->{mtime}, $path);
++			} elsif (S_ISDIR($f->{mode})) {
++				make_path($path);
+ 			} elsif (S_ISLNK($f->{mode})) {
++				make_path(dirname($path));
+ 				symlink($f->{target}, $path);
+ 			}
+ 		}

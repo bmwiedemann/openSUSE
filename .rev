@@ -378,4 +378,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>880645</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>9396095cede23f0d06f45d382b18936f</srcmd5>
+    <version>10.2</version>
+    <time>1624551744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901652</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 21 03:23:54 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-obs-integration-support-gzip-zstd-compression.patch
+  to support gzip and zstd module compression
+
+-------------------------------------------------------------------
+Fri Apr 23 09:34:17 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- find kernel also in /lib (boo#1184804, pesign-kernel-in-lib.diff)
+
+-------------------------------------------------------------------
 Fri Mar 19 03:45:11 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-obs-integration-bsc1183747-always-pad-efi-images.patch

@@ -1,0 +1,93 @@
+From b23d9018134eb505961917f165f9e39ff4829576 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Fri, 4 Jun 2021 20:31:00 +0100
+Subject: [PATCH] Add support for GZIP and ZSTD module compression
+
+Written based on https://github.com/torvalds/linux/blob/master/scripts/Makefile.modinst
+---
+ README                    |  2 +-
+ brp-99-pesign             |  4 ++++
+ pesign-gen-repackage-spec | 21 +++++++++++++++++----
+ 3 files changed, 22 insertions(+), 5 deletions(-)
+
+diff --git a/README b/README
+index 32afb8f..aaa5da0 100644
+--- a/README
++++ b/README
+@@ -38,7 +38,7 @@ in debian/rules to use the fully automated helper.
+ Consult the dh_signobs manpage for more information.
+ 
+ When BRP_PESIGN_COMPRESS_MODULE is passed, the script tries to compress the
+-kernel modules at the repackaging phase. Currently only xz format is supported.
++kernel modules at the repackaging phase. Currently xz, gzip and zstd format is supported.
+ For enable the compression feature, put the following along with
+ BRP_PESIGN_FILES setup:
+ 
+diff --git a/brp-99-pesign b/brp-99-pesign
+index c2492b3..4408f6d 100644
+--- a/brp-99-pesign
++++ b/brp-99-pesign
+@@ -60,6 +60,10 @@ fi
+ 
+ if test "${BRP_PESIGN_COMPRESS_MODULE}" = "xz"; then
+ 	pesign_repackage_compress="--compress xz"
++elif test "${BRP_PESIGN_COMPRESS_MODULE}" = "gzip"; then
++	pesign_repackage_compress="--compress gzip"
++elif test "${BRP_PESIGN_COMPRESS_MODULE}" = "zstd"; then
++	pesign_repackage_compress="--compress zstd"
+ else
+ 	pesign_repackage_compress=""
+ fi
+diff --git a/pesign-gen-repackage-spec b/pesign-gen-repackage-spec
+index 8a1fe39..c01fa2d 100755
+--- a/pesign-gen-repackage-spec
++++ b/pesign-gen-repackage-spec
+@@ -392,7 +392,20 @@ my %verifyflags = (
+ sub print_files {
+ 	my $files = shift;
+ 	my @tocompress;
+-
++	my $compress_ext = "";
++	my $compress_cmd = "";
++	
++	if ($compress eq "xz") {
++		$compress_ext = ".xz";
++		$compress_cmd = "xz --lzma2=dict=2MiB -f";
++	} elsif ($compress eq "gzip") {
++		$compress_ext = ".gz";
++		$compress_cmd = "gzip -n -f";
++	} elsif ($compress eq "zstd") {
++		$compress_ext = ".zst";
++		$compress_cmd = "zstd -T0 --rm -f -q";
++	}
++	
+ 	for my $f (@$files) {
+ 		my $path = "$directory/$f->{name}";
+ 		my $attrs = "";
+@@ -444,12 +457,12 @@ sub print_files {
+ 			$attrs .= "%verify(not $verify_attrs) ";
+ 		}
+ 
+-		if ($compress eq "xz" &&
++		if ($compress ne "" &&
+ 		    $f->{name} =~ /\.ko$/ && S_ISREG($f->{mode})) {
+ 			chmod($f->{mode}, $path);
+ 			utime($f->{mtime}, $f->{mtime}, $path);
+ 			push(@tocompress, $path);
+-			print SPEC "$attrs " . quote($f->{name}) . ".xz\n";
++			print SPEC "$attrs " . quote($f->{name}) . "$compress_ext\n";
+ 		} else {
+ 			print SPEC "$attrs " . quote($f->{name}) . "\n";
+ 		}
+@@ -464,7 +477,7 @@ sub print_files {
+ 		open(M, '>', $m) or die "$m: $!\n";
+ 		print M join("\n", @tocompress);
+ 		close(M);
+-		system("xargs -a $m -t -P 4 -n 1 xz -f");
++		system("xargs -a $m -t -P 4 -n 1 $compress_cmd");
+ 		unlink($m);
+ 	}
+ }
+-- 
+2.31.1
+
