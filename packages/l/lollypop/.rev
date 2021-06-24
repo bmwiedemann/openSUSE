@@ -1649,4 +1649,14 @@
     (glgo#World/lollypop#2756).</comment>
     <requestid>883378</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>94543c0523f337cd96d65699203f4018</srcmd5>
+    <version>1.4.20</version>
+    <time>1624551748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.20:
+  * Fix an issue with adaptative mode (glgo#World/lollypop#2778).
+  * Improve identification of compilations.</comment>
+    <requestid>901570</requestid>
+  </revision>
 </revisionlist>

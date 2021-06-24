@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 23 15:25:42 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.20:
+  * Fix an issue with adaptative mode (glgo#World/lollypop#2778).
+  * Improve identification of compilations.
+
+-------------------------------------------------------------------
 Tue Apr 06 16:31:37 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.19:
