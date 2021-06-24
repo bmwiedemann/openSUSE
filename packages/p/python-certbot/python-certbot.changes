@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:51:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.16.0
+  * Use UTF-8 encoding for renewal configuration files
+  * This release contains a substantial command-line UX overhaul,
+    based on previous user research. The main goal was to streamline
+    and clarify output. If you would like to see more verbose output, use
+    the -v or -vv flags. UX improvements are an iterative process and
+    the Certbot team welcomes constructive feedback.
+  * Functions certbot.crypto_util.init_save_key and certbot.crypto_util.init_save_csr,
+    whose behaviors rely on the global Certbot config singleton, are deprecated and will
+    be removed in a future release. Please use certbot.crypto_util.generate_key and
+    certbot.crypto_util.generate_csr instead.
+  * Installers (e.g. nginx, Apache) were being restarted unnecessarily after dry-run renewals.
+
+-------------------------------------------------------------------
 Wed May 12 12:03:50 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
-- update to version 0.15.0
+- update to version 1.15.0
   * Remove further references to certbot-auto in the repo
 
 -------------------------------------------------------------------
