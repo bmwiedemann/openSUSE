@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2
-Version:        7.45
+Version:        8.00
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
