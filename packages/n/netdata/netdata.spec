@@ -18,13 +18,13 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.27.0
+%define godplugin_version 0.29.0
 Name:           netdata
-Version:        1.29.3
+Version:        1.31.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
-License:        GPL-3.0-or-later AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LGPL-2.1-or-later AND OFL-1.1 AND CC-BY-4.0 AND Apache-2.0 AND WTFPL
+License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND LGPL-2.1-or-later AND OFL-1.1 AND CC-BY-4.0 AND WTFPL
 Group:          System/Monitoring
 URL:            http://my-netdata.io/
 Source0:        https://github.com/netdata/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libnetfilter_acct)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libwebsockets)
@@ -150,9 +151,8 @@ sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,'
 mv %{buildroot}%{_sysconfdir}/%{name}/edit-config %{buildroot}%{_libexecdir}/%{name}
 sed -i 's|%{_prefix}/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-config
 
-# This should be opt-in, not opt-out. I do not believe most users would agree
-# with sending usage data to Google Analytics, whether anonymized or not.
-# Hence, disable statistics by default.
+# This should be opt-in, not opt-out.
+# Disable statistics by default.
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500

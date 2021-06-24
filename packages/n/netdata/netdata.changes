@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Wed Jun 23 18:19:51 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.31.0 (go.d.plugin 0.29.0)
+The v1.31.0 release of Netdata comes with re-packaged and
+redesigned elements of the dashboard to help you focus on your
+metrics, even more Linux kernel insights via eBPF, on-node machine
+learning to help you find anomalies, and much more.
+
+This release contains 10 new collectors, 54 improvements (7 in the
+dashboard), 31 documentation updates, and 29 bug fixes.
+
+
+At a glance
+
+We re-packaged and redesigned portions of the dashboard to improve
+the overall experience. Part of this effort is better handling of
+dashboard code during installation—anyone using third-party
+packages (such as the Netdata Homebrew formula) will start seeing
+new features and the new designs starting today. The timeframe
+picker has moved to the top panel, and just to its right are two
+counters with live CRITICAL and WARNING alarm statuses for your
+node. Click on either of these two open the alarms modal.
+
+We've also pushed a number of powerful new collectors, including
+directory cache monitoring via eBPF. By monitoring directory cache,
+developers and SREs alike can find opportunities to optimize memory
+usage and reduce disk-intensive operations.
+
+Our new Z-scores and changefinder collectors use machine learning
+to let you know, at a glance, when key metrics start to behave
+oddly. We'd love to get feedback on these sophisticated, subjective
+new brand of collectors!
+
+Improvements
+  * Automatically trigger Helmchart PR on Agent release.
+    (gh#netdata/netdata#11084)
+  * Implement ACLK env endpoint. (gh#netdata/netdata#10833)
+  * Implement new HTTPS client for ACLK. (gh#netdata/netdata#10805)
+  * Update ACLK passwd endpoint to match specifications of the new
+    architecture. (gh#netdata/netdata#10859)
+  * Implement ACLK new backoff (TBEB) architecture.
+    (gh#netdata/netdata#10941)
+  * Add functionality to store node_id for a host.
+    (gh#netdata/netdata#11059)
+  * Remove version negotiation from ACLK-NG.
+    (gh#netdata/netdata#10980)
+  * Persist claim IDs in local database for parent and children.
+    (gh#netdata/netdata#10993)
+  * Provide more agent analytics to PostHog.
+    (gh#netdata/netdata#11020)
+  * Reduce logging when sending agent analytics.
+    (gh#netdata/netdata#11091)
+  * Remove error message on Netdata restart.
+    (gh#netdata/netdata#8685)
+  * Add a timeout when sending anonymous statistics using curl.
+    (gh#netdata/netdata#11010)
+  * Improve dash-example.html. (gh#netdata/netdata#10870)
+  * Add host_cloud_enabled attribute to analytics.
+    (gh#netdata/netdata#11100)
+
+Dashboard
+  * Bundle the react dashboard code into the agent repo directly.
+    (gh#netdata/netdata#11139)
+  * Add dashboard info strings for systemdunits collector.
+    (gh#netdata/netdata#10904)
+  * Update dashboard version to v2.17.0. (gh#netdata/netdata#10856)
+    + Top bar, side panel and overall navigation has been
+      redesigned.
+    + Top bar now includes a light bulb icon with news/features and
+      the number of CRITICAL or WARNING alarms.
+    + Documentation and settings buttons moved to the sidebar.
+    + Improved rendering of sign in/sign up option button along
+      with an operational status option (under user settings).
+    + In the left panel, nodes show a status badge and are now
+      searchable if there are more than 4.
+
+Health
+  * Improvements
+    + Add charts configuration option to templates.
+      (gh#netdata/netdata#11054)
+    + Add new attributes to health configuration files.
+      (gh#netdata/netdata#10961)
+    + Add inconsistent state to the mysql_galera_cluster_state
+      alarm. (gh#netdata/netdata#10945)
+    + Add systemdunits collector alarms. (gh#netdata/netdata#10906)
+    + Use average instead of sum in VerneMQ alarms.
+      (gh#netdata/netdata#11037)
+    + Check configuration for CUSTOM and MSTEAM.
+      (gh#netdata/netdata#11113)
+    + Reduce alarms notifications dump logging.
+      (gh#netdata/netdata#11116)
+  * Bug fixes
+    + Add synchronization.conf to the Makefile.
+      (gh#netdata/netdata#10907)
+    + Fix Microsoft Teams naming. (gh#netdata/netdata#9905)
+
+Collectors
+  * New
+    + Add a chart for out of memory kills.
+      (gh#netdata/netdata#10880)
+    + Add a chart with Netdata uptime. (gh#netdata/netdata#10997)
+    + Add a module for ZFS pool state. (gh#netdata/netdata#11071)
+    + Add a plugin for the system clock synchronization state.
+      (gh#netdata/netdata#10895)
+    + Add new charts for extended disk metrics.
+      (gh#netdata/netdata#10939)
+    + Add support for renaming libvirtd LXC containers.
+      (gh#netdata/netdata#11006)
+    + Add a metric for Percpu memory. (gh#netdata/netdata#10964)
+    + Add an eBPF directory cache collector.
+      (gh#netdata/netdata#10855)
+    + Add a Z-scores python collector. (gh#netdata/netdata#10673)
+    + Add changefinder python collector. (gh#netdata/netdata#10672)
+  * Improvements
+    + Remove dots in cgroup IDs. (gh#netdata/netdata#11050)
+    + Add support for attribute 249 (NAND Writes 1GiB) to the
+      smartd_log module. (gh#netdata/netdata#10872)
+    + Add RAID level to the mdstat collector chart families.
+      (gh#netdata/netdata#11024)
+    + Update fping version. (gh#netdata/netdata#10977)
+    + Add plugin and module names to the python.d.plugin runtime
+      charts. (gh#netdata/netdata#11007)
+    + Move global stats to a separate thread.
+      (gh#netdata/netdata#10991)
+    + Add memory size adjustments for eBPF hash tables.
+      (gh#netdata/netdata#10962)
+    + Add improvements to anomalies collector.
+      (gh#netdata/netdata#11003)
+    + Add support for loading of kprobe names in the eBPF plugin.
+      (gh#netdata/netdata#11034)
+    + Don't repeat the cgroup discovery cleanup info message.
+      (gh#netdata/netdata#11101)
+    + Change ACLK statistics charts units from kB/s to KiB/s.
+      (gh#netdata/netdata#11103)
+  * Bug fixes
+    + Fix the detection of cgroups v2 by checking the version of
+      the default cgroup mountpoint. (gh#netdata/netdata#11102)
+    + Fix eBPF cachestat chart type. (gh#netdata/netdata#11074)
+    + Fix gaps in eBPF cachestat charts. (gh#netdata/netdata#10972)
+    + Fix detection of opensipsctl executable.
+      (gh#netdata/netdata#10978)
+    + Fix network interfaces detection when using virsh.
+      (gh#netdata/netdata#11096)
+    + Fix eBPF plugin crash during shutdown.
+      (gh#netdata/netdata#10957)
+
+Exporting
+  * Improvements
+    + Allow the remote write configuration to have multiple
+      destinations (gh#netdata/netdata#11005)
+  * Bug fixes
+    + Fix backend chart filtering backward compatibility.
+      (gh#netdata/netdata#11002)
+
+Bug fixes
+  * Reduce the number of ACLK chart updates during chart
+    obsoletion. (gh#netdata/netdata#11133)
+  * Fix SSL random failures when using multithreaded web server
+    with OpenSSL < 1.1.0. (gh#netdata/netdata#11089)
+  * Fix storing an NULL claim ID on a parent node.
+    (gh#netdata/netdata#11036)
+  * Prevent MQTT connection attempt on OTP failure.
+    (gh#netdata/netdata#10839)
+  * Rename struct fields from class to classification.
+    (gh#netdata/netdata#11019)
+  * Fix spelling mistakes in various components:
+    + aclk (gh#netdata/netdata#10910)
+    + build (gh#netdata/netdata#10909)
+    + collectors (gh#netdata/netdata#10912)
+    + daemon (gh#netdata/netdata#10913)
+    + database (gh#netdata/netdata#10914)
+    + exporting (gh#netdata/netdata#10915)
+    + libnetdata (gh#netdata/netdata#10917)
+    + health (gh#netdata/netdata#10916)
+    + streaming (gh#netdata/netdata#10919)
+    + tests (gh#netdata/netdata#10920)
+    + backend (gh#netdata/netdata#10911)
+    + bidirectional (gh#netdata/netdata#10918)
+    + HTTP API (gh#netdata/netdata#10921)
+    + web (gh#netdata/netdata#10922)
+
+-------------------------------------------------------------------
+Wed Apr  7 21:55:06 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.30.0 (go.d.plugin 0.28.1)
+The v1.30.0 release of Netdata completely replaces Google
+Analytics/GTM for product telemetry (disabled by default in
+openSUSE). We're also releasing the first changes in an upcoming
+overhaul to both our dashboard UI/UX and the suite of preconfigured
+alarms that comes with every installation.
+
+v1.30.0 contains 3 new collectors, 3 enhancements to notifications
+method, 38 improvements (13 in the dashboard), 16 documentation
+updates, and 17 bug fixes.
+
+
+At a glance
+
+The ACLK-NG is a much faster method of securely connecting a node
+to Netdata Cloud. In addition, there are no external dependencies
+to our custom libmosquitto and libwebsockets libraries, which means
+there's no more need to build these during installation.
+
+We replaced Google Analytics/GTM, which we used for collecting
+product telemetry, with a self-hosted instance of the open-source
+PostHog project. When sending statistics to PostHog, any fields
+that might contain identifiable information, such as an IP address
+or URL, are hardcoded. If you previously opted-out of anonymous
+statistics, this migration does not change your existing settings.
+
+Improvements
+  * Add check for children connecting to a parent agent with an
+    unsupported memory mode.
+  * Add lock check to avoid shutdown when compiled with internal
+    and locking checks.
+  * Update chart's metadata in database when it already exists
+    during creation.
+  * ACLK separate HTTPS client.
+  * Add new ACLK implementation (ACLK-NG).
+  * Add CPU statistics per ALCK query thread.
+  * Add _aclk_impl label to the /api/v1/info endpoint.
+  * Add a new chart parameter to the /api/v1/alarm_log endpoint.
+  * Add data query support for archived charts.
+  * Add HTTP cookie (SameSite, Secure).
+  * Add statistics per Cloud query type.
+  * Add support for changing the number of pages per database
+    engine extent.
+  * Add the ability to store chart labels in the database.
+  * Enable metadata persistence in all memory modes.
+  * Increase curl connect-timeout and decrease number of claim
+    attempts.
+  * Increase the ACLK exponential backoff randomness.
+  * Log ACLK Cloud commands to access.log.
+  * Remove an unused function warning in legacy version of the
+    ACLK.
+  * Remove unreachable #else directives in plugins.
+  * Rename struct avl to avl_element and the typedef to avl_t.
+  * Replace Google Analytics with PostHog for backend telemetry
+    events.
+  * Skip C++ incompatible header in main libnetdata header.
+  * Try to keep all pages from extents read from disk in the cache.
+  * Use a parameter name that is not a reserved keyword in C++.
+  * Use of out-of-line struct definitions.
+
+Dashboard
+  * Add max value to the nvidia_smi.fan_speed gauge.
+  * Add state map to duplex and operstate charts.
+  * Add supervisord to dashboard_info.js.
+  * Fix broken external links.
+  * Make network state map syntax consistent in dashboard_info.js.
+  * Fix alarms log export.
+  * Persist relative timeframe.
+  * Allow multirow names in the replicated nodes list.
+  * Fix the date & time picker overlap.
+  * Update Font Awesome.
+  * Truncate long names.
+  * Update links: change docs.netdata.cloud to learn.netdata.cloud.
+
+Health
+  * Bug fixes
+    + Fix delaying CLEAR notifications when using the repeat
+      feature.
+    + Fix wrong count of entries in the alarm.log.
+  * Alarms
+    + Add wmi_ prefix to the wmi collector network alarms.
+    + Add collector prefix to the external collectors alarms.
+    + Apply adapter_raid alarms for every logical/physical device.
+    + Apply megacli alarms for every adapter/physical disk.
+    + Exclude cgroups network interfaces from packets dropped
+      alarms.
+    + Fix various alarms critical and warning thresholds
+      hysteresis.
+    + Improve alarms info fields.
+    + Make VerneMQ alarms less sensitive.
+    + Make alarms less sensitive.
+    + Remove exporting_metrics_lost template.
+    + Remove ram_in_swap alarm.
+    + Use separate packets_dropped_ratio alarms for wireless
+      network interfaces.
+  * Notifications
+    + Add ability to change port number when using IRC notification
+      method.
+    + Add dump_methods parameter to alarm-notify.sh.in.
+    + Log an error if there is a failure during an email alarm
+      notification.
+
+Collectors
+  * New
+    + Add monitoring of synchronization system calls to the eBPF
+      collector.
+    + Add monitoring of Linux page cache to the eBPF collector.
+  * Improvements
+    + Add k6.conf to the StatsD collector.
+    + Clean up the eBPF collector.
+    + Use working set for memory utilization in the cgroups
+      collector.
+    + Add new configuration parameters to the example Python
+      collector.
+    + Add carrier and MTU charts for network interfaces.
+    + Improve email, cron, and UPS groups in the apps.plugin
+      configuration.
+    + Add Wireguard to the vpn group in the apps.plugin
+      configuration.
+    + Add alarm values collection to the Python alarms collector.
+    + Add attribute 233 (Media Wearout Indicator (SSD)) collection
+      to the python smartd_log collector.
+    + Move network interface speed, duplex, and operstate variables
+      to charts.
+    + Update go.d.plugin version to v0.28.1.
+    + Add a noauthcodecheck workaround flag to the freeipmi
+      collector.
+  * Bug fixes
+    + Fix eBPF collector compatibility with kernels v5.11+.
+    + Fix disks identification in the diskstats collector.
+    + Fix the count of cpuset.cpus in the cgroups collector.
+    + Fix disk utilization and backlog charts in the diskstats
+      collector.
+
+Exporting
+  * Bug fixes
+    + Fix adding duplicate _total suffixes for the Prometheus
+      collector.
+
+Bug fixes
+  * Fix a typo in main.h.
+  * Fix a typo in backend_prometheus.c.
+  * Fix a typo in dashboard_info.js.
+  * Fix segfault due to misalignment between global and StatsD
+    memory modes.
+  * Fix zombie alarms for charts that are obsolete/removed.
+  * Fix a Coverity warning in the new MQTT library.
+  * Fix a parameter binding issue when storing chart names in the
+    database.
+  * Fix crash when executing data query with context and
+    non-existing chart_label_key.
+  * Fix claiming behind Squid proxy.
+  * Fix Coverity issue (CID 367566).
+  * Fix memory leak when archived data is requested.
+  * Fix clash with C++ standard definitions by changing abs to ABS.
+
+-------------------------------------------------------------------
 Tue Feb 23 23:47:17 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.29.3
