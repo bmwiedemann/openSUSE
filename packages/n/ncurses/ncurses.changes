@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 14 06:31:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210612
+  + fixes for scan-build, valgrind build/testing.
+  + update config.guess
+
+-------------------------------------------------------------------
+Mon Jun  7 07:17:02 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210605
+  + add a summary of ncurses-specific preprocessor symbols to curses.h
+    (prompted by discussion with Peter Farley, Bill Gray).
+- Add ncurses patch 20210522
+  + regenerate configure scripts with autoconf 2.52.20210509 to eliminate
+    an unnecessary warning in config.log (report by Miroslav Lichvar).
+  + add a note in manual page to explain ungetch vs unget_wch (prompted
+    by discussion with Peter Farley).
+  + add sp-funcs for erasewchar, killwchar.
+  + modify wgetnstr, wgetn_wstr to improve compatibility with SVr4 curses
+    in its treatment of interrupt and quit characters (prompted by
+    report/testcase by Bill Gray)
+  + update config.guess, config.sub
+- Correct offset in patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon May 17 06:29:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210515
