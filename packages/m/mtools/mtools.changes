@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 20 16:20:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.31:
+  * Fix polarity of format_xdf command-line parameter of mformat
+  * Improved error handling and error messages
+  * Remove duplicate writing of backup boot sector
+  * developer visible changes
+- includes changes from 4.0.30:
+  * Fixed XDF floppy disk access
+  * Fixed faulty behavior at end of image in mcat
+  * Raise an error when trying to mcopy multiple source files
+    over a single destination file (rather than directory)
+  * fix handling of "hidden" sectors
+  * Modernize partition support
+  * developer visible changes
+- includes changes from 4.0.29 and 4.0.28:
+  * Support remapping of data
+  * Re-open floppy devices read-write if geometry parameters need
+    to be changed
+  * relax consistency checks in mpartition (partitions created
+    by current fdisk would almost never pass these checks)
+
+-------------------------------------------------------------------
 Sun Apr 18 15:50:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.27:
