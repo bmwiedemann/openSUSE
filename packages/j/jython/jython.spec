@@ -1,7 +1,7 @@
 #
 # spec file for package jython
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%global pyver %(python -c 'import sys;print(sys.version[0:3])')
+%global pyver %(python3 -c 'import sys;print(sys.version[0:3])')
 %global cpython_version    %{pyver}
-%global pyxml_version      0.8.3
+%global pyxml_version      %{pyver}
 %global svn_tag            Release_2_2_1
 %global _python_bytecompile_errors_terminate_build 0
 Name:           jython
 Version:        2.2.1
 Release:        0
 Summary:        A Java implementation of the Python language
-License:        Python-2.0 AND Apache-2.0
+License:        Apache-2.0 AND Python-2.0
 Group:          Development/Languages/Python
 URL:            http://www.jython.org/
 # Use the included fetch-jython.sh script to generate the source drop
@@ -56,15 +56,15 @@ BuildRequires:  javapackages-local
 BuildRequires:  jline1
 BuildRequires:  libreadline-java >= 0.8.0
 BuildRequires:  mysql-connector-java
-BuildRequires:  python >= %{cpython_version}
-BuildRequires:  pyxml >= %{pyxml_version}
+BuildRequires:  python3 >= %{cpython_version}
+BuildRequires:  python3-xml >= %{pyxml_version}
 BuildRequires:  servletapi5
 Requires:       jakarta-oro
 Requires:       java >= 1.8
 Requires:       javapackages-local
 Requires:       jline1
 Requires:       libreadline-java >= 0.8.0
-Requires:       python >= %{cpython_version}
+Requires:       python3 >= %{cpython_version}
 Requires:       servletapi5
 Recommends:     mysql-connector-java
 BuildArch:      noarch
@@ -188,7 +188,7 @@ ant \
   -Dpython.home=%{_bindir} \
   -Dht2html.dir=%{_datadir}/ht2html \
   -Dpython.lib=./CPythonLib \
-  -Dpython.exe=%{_bindir}/python \
+  -Dpython.exe=%{_bindir}/python3 \
   -DPyXmlHome=%{_libdir}/python%{pyver} \
   -Dtargetver=1.3 \
   copy-dist
