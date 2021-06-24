@@ -1,7 +1,7 @@
 #
 # spec file for package glm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           glm
-Version:        0.9.9.5
+Version:        0.9.9.8
 Release:        0
 Summary:        Header only C++ mathematics library for graphics
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 Group:          Development/Libraries/C and C++
-Url:            https://glm.g-truc.net/
+URL:            https://glm.g-truc.net/
 #Git-Clone:     https://github.com/g-truc/glm.git
 Source:         https://github.com/g-truc/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE glm-cmake-config.patch -- Fix cmake config location
-Patch1:         glm-cmake-config.patch
+# PATCH-FIX-OPENSUSE glm-0.9.9.8-install.patch
+Patch2:         glm-0.9.9.8-install.patch
+# PATCH-FIX-OPENSUSE glm-0.9.9.8-pkgconfig.patch add pkgconfig file -- aloisio@gmx.com
+Patch3:         glm-0.9.9.8-pkgconfig.patch
+# PATCH-FIX-UPSTREAM glm-0.9.9.8-fix_tests_big-endian.patch
+Patch4:         glm-0.9.9.8-fix_tests_big-endian.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -62,8 +66,7 @@ BuildArch:      noarch
 This package provides the documentation for GLM library.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -80,8 +83,8 @@ This package provides the documentation for GLM library.
 %ctest
 
 %files devel
-%{_includedir}/glm/
-%{_libdir}/cmake/%{name}/
+%{_includedir}/glm
+%{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files doc
