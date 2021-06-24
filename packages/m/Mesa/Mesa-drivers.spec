@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 21.1.2
+%define _version 21.1.3
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        21.1.2
+Version:        21.1.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -760,7 +760,10 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %patch2 -p1
+# no longer needed since gstreamer-plugins-vaapi 1.18.4
+%if 0%{?suse_version} < 1550
 %patch54 -p1
+%endif
 %patch58 -p1
 %patch100 -p1
 
