@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 02:45:09 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210624.c64d3a07:
+  * Dev: unittest: adjust unit test for ocfs2.py
+  * Fix: ocfs2: Skip verifying UUID for ocfs2 device on top of raid or lvm on the join node (bsc#1187553)
+
+-------------------------------------------------------------------
+Tue Jun 22 02:30:58 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210622.f66c274b:
+  * Dev: unittest: Adjust unit test code for previous changes
+  * Dev: sbd: Split class SBDManager into sbd.py from bootstrap.py
+
+-------------------------------------------------------------------
 Thu Jun 17 08:15:01 UTC 2021 - XinLiang <XLiang@suse.com>
 
 - Update to version 4.3.1+20210617.00ec6905:
@@ -10,7 +24,7 @@ Wed Jun 16 06:23:19 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210616.cdcfe52e:
   * Dev: testcases: adjust origin testcases for previous change
-  * Fix: history: use Path.mkdir instead of mkdir command(bsc#1179999)
+  * Fix: history: use Path.mkdir instead of mkdir command(bsc#1179999, CVE-2020-35459)
   * Dev: unittest: adjust unit test for preflight check change to crash test
   * Dev: doc: replace preflight check doc as crash test doc
   * Dev: crash_test: Add big warnings to have users' attention to potential failover
