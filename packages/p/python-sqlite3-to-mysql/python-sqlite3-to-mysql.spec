@@ -20,7 +20,7 @@
 Name:           python-sqlite3-to-mysql
 Version:        1.4.1
 Release:        0
-Summary:        A simple Python tool to transfer data from SQLite 3 to MySQL
+Summary:        A Python tool to transfer data from SQLite 3 to MySQL
 License:        MIT
 URL:            https://github.com/techouse/sqlite3-to-mysql
 Source:         https://files.pythonhosted.org/packages/source/s/sqlite3-to-mysql/sqlite3-to-mysql-%{version}.tar.gz
@@ -61,10 +61,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A simple Python tool to transfer data from SQLite 3 to MySQL
+A Python tool to transfer data from SQLite 3 to MySQL
 
 %prep
-%setup -q -n sqlite3-to-mysql-%{version}
+%autosetup -p1 -n sqlite3-to-mysql-%{version}
 
 %build
 %python_build
