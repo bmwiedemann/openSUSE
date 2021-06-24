@@ -1,4 +1,4 @@
 <service name="kiwi_metainfo_helper">
 	<summary>Substitute various variables in build recipes</summary>
-	<description>Substitutes %DISTURL%, %RELEASE% and %BUILDTIME% in build recipes.</description>
+	<description>Substitutes variables in build recipes. See README for variable listing.</description>
 </service>

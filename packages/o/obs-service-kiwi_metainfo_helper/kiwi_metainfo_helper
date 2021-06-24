@@ -70,9 +70,43 @@ if grep -q "%OS_" ${files[@]}; then
 	VERSION_ID_SP="${VERSION_ID}"
 	[[ "${VERSION_ID_SP%}" == *"."* ]] || VERSION_ID_SP="${VERSION_ID}.0"
 
+	# Provide various modified spellings of PRETTY_NAME useful for writing
+	# KIWI image definitions with reduced diff between SLE, Leap and Tumbleweed:
+	#
+	# VENDOR:                          openSUSE
+	# PRETTY_NAME_DASHED:              openSUSE-Leap-15.3
+	# PRETTY_NAME_BEFORE_PAREN:        openSUSE Leap 15.3
+	# PRETTY_NAME_BEFORE_PAREN_DASHED: openSUSE-Leap-15.3
+	#
+	# VENDOR:                          SUSE
+	# PRETTY_NAME_DASHED:              SUSE-Linux-Enterprise-Server-15-SP3-Snapshot-16
+	# PRETTY_NAME_BEFORE_PAREN:        SUSE Linux Enterprise Server 15 SP3
+	# PRETTY_NAME_BEFORE_PAREN_DASHED: SUSE-Linux-Enterprise-Server-15-SP3
+
+	# First word of PRETTY_NAME, typically used as vendor name e.g. SUSE or openSUSE.
+	VENDOR="${PRETTY_NAME%% *}"
+
+	# KIWI image name attribute must not contain spaces, replace with dash
+	PRETTY_NAME_DASHED="${PRETTY_NAME//[^[:alnum:].]/-}"
+	# Remove repeated dashes from parentheses surrounding SLE release labels
+	PRETTY_NAME_DASHED="${PRETTY_NAME_DASHED//--/-}"
+	# Remove dash at end from parentheses surrounding SLE release labels
+	PRETTY_NAME_DASHED="${PRETTY_NAME_DASHED%%-}"
+
+	# Special case for SLE release labels e.g. RC1. Keep only up to (space) open paren.
+	# Provides a stable project name for third-party integrations e.g. app store submissions
+	PRETTY_NAME_BEFORE_PAREN="${PRETTY_NAME// (*/}"
+
+	# KIWI image name attribute must not contain spaces, replace with dash
+	PRETTY_NAME_BEFORE_PAREN_DASHED="${PRETTY_NAME_BEFORE_PAREN//[^[:alnum:].]/-}"
+
 	sed -i"" \
 	    -e "s/%OS_VERSION_ID%/${VERSION_ID}/g" \
 	    -e "s/%OS_PRETTY_NAME%/${PRETTY_NAME}/g" \
+	    -e "s/%OS_VENDOR%/${VENDOR}/g" \
+	    -e "s/%OS_PRETTY_NAME_DASHED%/${PRETTY_NAME_DASHED}/g" \
+	    -e "s/%OS_PRETTY_NAME_BEFORE_PAREN%/${PRETTY_NAME_BEFORE_PAREN}/g" \
+	    -e "s/%OS_PRETTY_NAME_BEFORE_PAREN_DASHED%/${PRETTY_NAME_BEFORE_PAREN_DASHED}/g" \
 	    -e "s/%OS_VERSION_ID_SP%/${VERSION_ID_SP}/g" "${files[@]}"
 fi
 

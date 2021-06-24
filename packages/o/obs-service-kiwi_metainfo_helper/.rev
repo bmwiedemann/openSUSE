@@ -75,4 +75,27 @@
   and closes the other end, which made the whole expression fail</comment>
     <requestid>868341</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12b7161a94c5909e96d874e1b63eba75</srcmd5>
+    <version>0.3</version>
+    <time>1624551741</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide various modified spellings of PRETTY_NAME useful for
+  writing KIWI image definitions with reduced diff between SLE,
+  Leap and Tumbleweed. DASHED satisfies the requirement that kiwi
+  image names must not have spaces. The BEFORE_PAREN variations
+  drop the release label in parentheses (SLE only) and can be used
+  as a stable name for image registries and WSL app store
+  submissions.
+  * VENDOR
+  * PRETTY_NAME_DASHED
+  * PRETTY_NAME_BEFORE_PAREN
+  * PRETTY_NAME_BEFORE_PAREN_DASHED
+  (Needed for jsc#SLE-12986)
+- Update README and service definition XML to reflect all variables
+- Bump version to 0.3
+
+- Bump version to 0.2</comment>
+    <requestid>901346</requestid>
+  </revision>
 </revisionlist>

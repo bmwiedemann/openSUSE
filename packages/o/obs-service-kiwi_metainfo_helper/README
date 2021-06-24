@@ -5,10 +5,15 @@ This service can be enabled to run during buildtime, when it will edit the
 build recipe (.kiwi, Dockerfile, Chart.yaml) to replace placeholders with
 build-specific metainfo.
 
-| Placeholder        | Value                                      | Example                                                                                       |
-|--------------------|--------------------------------------------|-----------------------------------------------------------------------------------------------|
-| %DISTURL%          | The OBS dist url                           | obs://build.suse.de/SUSE:SLE-15:Update:CR/images/2951b67133dd6384cacb28203174e030-sles15-image|
-| %RELEASE%          | The OBS release number (<cicnt\>.<bldcnt\>)| 4.2                                                                                           |
-| %BUILDTIME%        | $(date --utc +%FT%T.%NZ)                   | 2018-10-30T09:19:02.074934628Z                                                                |
-| %OS_VERSION_ID%    | VERSION_ID in the os-release file          | 15                                                                                            |
-| %OS_VERSION_ID_SP% | Like VERSION_ID, but with SP (SLE only)    | 15.0                                                                                          |
+| Placeholder                          | Value                                          | Example                                                                                        |
+|--------------------------------------|----------------------------------------------- |------------------------------------------------------------------------------------------------|
+| %DISTURL%                            | The OBS dist url                               | obs://build.suse.de/SUSE:SLE-15:Update:CR/images/2951b67133dd6384cacb28203174e030-sles15-image |
+| %RELEASE%                            | The OBS release number (<cicnt\>.<bldcnt\>)    | 4.2                                                                                            |
+| %BUILDTIME%                          | $(date --utc +%FT%T.%NZ)                       | 2018-10-30T09:19:02.074934628Z                                                                 |
+| %OS_VERSION_ID%                      | VERSION_ID in the os-release file              | 15                                                                                             |
+| %OS_VERSION_ID_SP%                   | Like VERSION_ID, but with SP (SLE only)        | 15.0                                                                                           |
+| %OS_PRETTY_NAME%                     | PRETTY_NAME in the os-release file             | SUSE Linux Enterprise Server 15 SP3 (Snapshot16)                                               |
+| %OS_VENDOR%                          | PRETTY_NAME up to first space character        | SUSE                                                                                           |
+| %OS_PRETTY_NAME_DASHED%              | PRETTY_NAME with dashes in place of spaces     | SUSE-Linux-Enterprise-Server-15-SP3-Snapshot-16                                                |
+| %OS_PRETTY_NAME_BEFORE_PAREN%        | PRETTY_NAME up to the first open parentheses   | SUSE Linux Enterprise Server 15 SP3                                                            |
+| %OS_PRETTY_NAME_BEFORE_PAREN_DASHED% | PRETTY_NAME up to first open paren with dashes | SUSE-Linux-Enterprise-Server-15-SP3                                                            |

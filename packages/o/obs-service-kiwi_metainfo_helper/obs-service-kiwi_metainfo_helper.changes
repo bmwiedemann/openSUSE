@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  2 14:23:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Provide various modified spellings of PRETTY_NAME useful for
+  writing KIWI image definitions with reduced diff between SLE,
+  Leap and Tumbleweed. DASHED satisfies the requirement that kiwi
+  image names must not have spaces. The BEFORE_PAREN variations
+  drop the release label in parentheses (SLE only) and can be used
+  as a stable name for image registries and WSL app store
+  submissions.
+  * VENDOR
+  * PRETTY_NAME_DASHED
+  * PRETTY_NAME_BEFORE_PAREN
+  * PRETTY_NAME_BEFORE_PAREN_DASHED
+  (Needed for jsc#SLE-12986)
+- Update README and service definition XML to reflect all variables
+- Bump version to 0.3
+
+-------------------------------------------------------------------
 Mon Feb  1 10:29:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Don't enable pipefail: rpm got SIGPIPE because grep -q exits early
@@ -9,6 +27,7 @@ Wed Jan 27 11:25:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Read os-release from the to be installed RPMs. This avoids pulling
   in distribution-release when not necessary (boo#1180263)
+- Bump version to 0.2
 
 -------------------------------------------------------------------
 Tue Sep  1 08:42:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
@@ -60,4 +79,3 @@ Thu Jan 10 08:06:05 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 Wed Oct 17 14:56:38 UTC 2018 - Fabian Vogt <fvogt@suse.com>
 
 - Initial commit (fate#326856, bsc#1118103)
-
