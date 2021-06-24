@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 23 20:39:29 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.1.0
+This release adds support for TaskWarrior >= 2.5.2
+
+The release includes a breaking change to the keybinding parser,
+and may affect users who have implemented custom keybindings in
+their configuration.
+
+  * fix: blocked marker displaying for deleted/completed depends
+  * add quick start instructions to README
+  * [BREAKING CHANGE] correctly parse bracket expressions for
+    keybinding keys
+  * Add 'abort_backspace' config, False by default. If true,
+    hitting backspace against an empty prompt aborts the prompt.
+  * Use Python.ignore from github
+
+-------------------------------------------------------------------
 Wed Dec 16 03:18:46 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Switch to 2.x branch, update to 2.0.0
