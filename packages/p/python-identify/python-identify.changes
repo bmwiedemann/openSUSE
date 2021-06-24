@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:31:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.2.10
+  * add few file formats
+  * detect WORKSPACE files as bazel
+- stick with older editdistance as it has more functionality
+
+-------------------------------------------------------------------
+Wed May 26 10:19:37 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.2.6
+  * lot of changes, no upstream changelog found
+   https://github.com/pre-commit/identify/compare/v1.4.14...v2.2.6
+
+-------------------------------------------------------------------
+Wed May 26 06:36:52 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest macro
+
+-------------------------------------------------------------------
 Mon May 25 10:59:23 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

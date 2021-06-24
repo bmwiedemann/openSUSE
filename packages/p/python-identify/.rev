@@ -57,4 +57,20 @@
     <comment></comment>
     <requestid>808790</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a894b19779560c1bc979f15328ab4883</srcmd5>
+    <version>2.2.10</version>
+    <time>1624551780</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.10
+  * add few file formats
+  * detect WORKSPACE files as bazel
+- stick with older editdistance as it has more functionality
+- version update to 2.2.6
+  * lot of changes, no upstream changelog found
+   https://github.com/pre-commit/identify/compare/v1.4.14...v2.2.6
+- %check: use %pytest macro
+</comment>
+    <requestid>901746</requestid>
+  </revision>
 </revisionlist>

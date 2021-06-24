@@ -1,7 +1,7 @@
 #
 # spec file for package python-identify
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-identify
-Version:        1.4.14
+Version:        2.2.10
 Release:        0
 Summary:        File identification library for Python
 License:        MIT
@@ -26,13 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/chriskuehl/identify
 Source:         https://github.com/chriskuehl/identify/archive/v%{version}.tar.gz#/identify-%{version}.tar.gz
 BuildRequires:  %{python_module editdistance}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-editdistance
 BuildArch:      noarch
 %python_subpackages
@@ -42,6 +42,9 @@ File identification library for Python, including license file SPDX identifier.
 
 %prep
 %setup -q -n identify-%{version}
+# stick with editdistance as it generally has more functionality
+sed -i 's/editdistance_s.distance/editdistance.eval/' identify/identify.py
+sed -i 's/editdistance_s/editdistance/' identify/identify.py
 
 %build
 %python_build
@@ -52,7 +55,7 @@ File identification library for Python, including license file SPDX identifier.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py pytest
+%pytest
 
 %post
 %python_install_alternative identify-cli
