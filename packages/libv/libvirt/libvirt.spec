@@ -362,7 +362,7 @@ Requires:       dmidecode
 # For service management
 %{?systemd_requires}
 %if %{with_numad}
-Requires:       numad
+Suggests:       numad
 %endif
 # libvirtd depends on 'messagebus' service
 Requires:       dbus-1

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 21 07:22:36 UTC 2021 - Mel Gorman <mgorman@suse.de>
+
+- Suggest numad package instead of requiring it. numad is not
+  required for libvirt daemon to run, it does not support the
+  cgroup2 API and it has been superseded by the kernel NUMA
+  balancer which is enabled by default.
+  bsc#1184722
+
+-------------------------------------------------------------------
 Tue Jun  1 15:06:44 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 7.4.0
