@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           kmymoney
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -131,9 +131,14 @@ Development files and headers need to build software using KMyMoney.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kmymoney/
-%doc AUTHORS ChangeLog ChangeLog.original README.Fileformats
+%doc ChangeLog ChangeLog.original
+%dir %{_kf5_iconsdir}/hicolor/1024x1024
+%dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
+%dir %{_kf5_iconsdir}/hicolor/1024x1024/mimetypes
+%dir %{_kf5_iconsdir}/hicolor/20x20
+%dir %{_kf5_iconsdir}/hicolor/20x20/apps
 %{_datadir}/mime/packages/x-kmymoney.xml
 %{_kf5_applicationsdir}/org.kde.kmymoney.desktop
 %{_kf5_appsdir}/kbanking/
@@ -155,7 +160,6 @@ Development files and headers need to build software using KMyMoney.
 %{_kf5_libdir}/libkmm_widgets.so.*
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/*.desktop
-%{_kf5_servicetypesdir}/*.desktop
 %{_kf5_sharedir}/checkprinting/
 %{_kf5_sharedir}/kconf_update/
 %{_mandir}/man1/kmymoney.1%{?ext_man}

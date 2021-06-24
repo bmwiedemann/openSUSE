@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jun 24 06:58:28 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.1.2
+- Bugs fixed:
+  * Budget not using Fiscal Year (kde#414675)
+  * Overwriting a gpg-encrypted file results in a zero byte file
+    (kde#436647)
+  * Crash when extending selection of filtered transactions beyond
+    top of list (kde#430176)
+  * crash when importing csv with missing category (kde#434605)
+  * Crash when selecting views in newer Qt versions (kde#438069)
+  * Net worth currency not updated when changing the base currency
+    (kde#350904)
+  * No price label on editing securities (kde#388793)
+  * KMYMoney GPG option is grayed out even though GPG installed
+    (kde#396016)
+  * rounding errors in currency conversion of investment
+    transactions (kde#396313)
+  * KMyMoney uses incorrect path to detect presence of GPG secret
+    keyring on Windows (kde#399230)
+  * Displaying the ledger for a category shows the wrong account
+    (kde#403196)
+  * A half-empty PRICEPAIR causes app to crash when attempting to
+    update prices (kde#422561)
+  * no pre-defined account templates on a mac (kde#425333)
+  * Danish account templates won't load (kde#430813)
+  * Payee Default Category not saved unless manually selected
+    (kde#431248)
+  * Price editor: Enter on manual price has no effect (kde#431294)
+  * 1 Online Quotes does not work and can not be corrected
+    (kde#431482)
+  * reconciliation removes the history (kde#433694)
+  * Settings for "Hide reconciled transactions" are not synced
+    (kde#433855)
+  * Default regex to extract currency rates does not support
+    results in exponential form (kde#434226)
+  * built-in calculator widget can extend beyond main window
+    (kde#434573)
+  * CSV importer does not support ISO date format (kde#435488)
+  * When matching an assigned and unassigned transaction, KMM may
+    leave the resulting category empty (kde#435512)
+  * Selecting icon sets is not supported on Windows (kde#435752)
+  * messages from the aqbanking plugin are swallowed (kde#435837)
+  * ofx import ignores banking transactions in invenstment account
+    since libofx upgrade to 0.10 (kde#435856)
+  * Selection of security accounts does not work for some
+    investment reports (kde#436766)
+  * We should default to yahoo for any new securities (kde#437332)
+  * QR-TAN support is not working properly (kde#437452)
+  * CSV importer should trim the column contents before importing
+    (kde#437810)
+  * Payee name in schedule is not updated in all accounts
+    (kde#438328)
+  * App won't fully quit on macOS (kde#438529)
+  * Cannot right click and Go To a counterparty split if it is a
+    category (kde#438973)
+  * New account wizard always defaults to account type "Checkings"
+    (kde#439006)
+  * typo in Reconciliation Wizard text (kde#437398)
+  * Entering negative amounts in Split window (kde#186616)
+  * Sort the favorite reports on the home screen in alphabetical
+    order (kde#397918)
+  * Add python3 support for weboob plugin (kde#405383)
+  * No visual representation of the reconciliation history
+    (kde#433662)
+
+-------------------------------------------------------------------
 Mon Dec 21 07:06:48 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.1.1
