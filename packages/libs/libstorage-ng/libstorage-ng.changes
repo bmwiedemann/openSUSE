@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Jun 21 10:33:29 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#814
+- removed unused code in SystemCmd
+- use reference in loop
+- 4.4.15
+
+--------------------------------------------------------------------
 Thu Jun 10 10:22:52 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#813
