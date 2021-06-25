@@ -24,4 +24,12 @@
 - Split Loki server and Promtail client into separate packages</comment>
     <requestid>897231</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8bbc0efbb242c1d927fff20e5a6a0a90</srcmd5>
+    <version>2.2.1+git.1617669398.babea82e</version>
+    <time>1624626103</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix config fillup</comment>
+    <requestid>902308</requestid>
+  </revision>
 </revisionlist>

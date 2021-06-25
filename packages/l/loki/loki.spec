@@ -99,7 +99,7 @@ install -Dm755 logcli %{buildroot}%{_bindir}
 %service_add_pre loki.service
 
 %post
-%fillup_only -n loki-server
+%fillup_only
 %service_add_post loki.service
 
 %preun
