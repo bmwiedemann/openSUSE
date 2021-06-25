@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 13 17:35:06 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- added pipewire-alsa to baselibs.conf
+  pipewire-alsa-32bit is needed to run BIT.TRIP Runner 2 from Steam,
+  which is a 32bit application and uses ALSA.
+
+-------------------------------------------------------------------
+Thu Jun 10 11:08:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move %{_udevrulesdir}/90-pipewire-alsa.rules to the main pipewire
+  package (boo#1187108)
+
+-------------------------------------------------------------------
+Thu Jun 10 10:17:14 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.3.30+git~342ae0b64 (55 commits after 0.3.30) in order
+  to include
+  https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/748
+  and
+  https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/749
+  to fix building on Leap 15.3
+
+-------------------------------------------------------------------
 Wed Jun  9 10:11:38 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.3.30

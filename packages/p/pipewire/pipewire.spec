@@ -44,7 +44,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.30
+Version:        0.3.30+55
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -449,6 +449,7 @@ fi
 %license LICENSE COPYING
 %doc README.md
 %{_libdir}/libpipewire-%{apiver}.so.*
+%{_udevrulesdir}/90-pipewire-alsa.rules
 
 %files libjack-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}/jack
@@ -602,7 +603,6 @@ fi
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 %{_datadir}/pipewire/media-session.d/with-alsa
-%{_udevrulesdir}/90-pipewire-alsa.rules
 
 %files lang -f %{name}.lang
 
