@@ -199,4 +199,12 @@
     <comment>update (forwarded request 896510 from mschnitzer)</comment>
     <requestid>896521</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>85ca03adfc399cc3cb116095a62dade8</srcmd5>
+    <version>1.17.0</version>
+    <time>1624626092</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 902117 from coolo)</comment>
+    <requestid>902272</requestid>
+  </revision>
 </revisionlist>
