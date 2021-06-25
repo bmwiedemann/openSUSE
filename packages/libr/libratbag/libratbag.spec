@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libratbag
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Configuration library for gaming mice
 License:        MIT

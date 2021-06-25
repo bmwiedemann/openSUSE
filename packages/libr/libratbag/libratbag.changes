@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 24 18:40:51 UTC 2021 - marix@marix.org - 0.16
+
+- Update to version 0.16:
+  * Events are now scheduled as soon as possible
+  * Improvements to the sinowealth driver
+  * Added support for a few devices:
+    + Logitech G915 TKL
+    + Logitech G Pro X Wireless (only via USB connection)
+    + Logitech M545
+    + Logitech M500s
+    + SteelSeries Kinzu V2 Pro Edition
+    + Roccat Kone Pure SEL
+    + openinput devices
+
+-------------------------------------------------------------------
 Thu Dec 24 10:12:23 UTC 2020 - Matthias Bach <marix@marix.org> - 0.15
 
 - Make package conform to spec-cleaner
