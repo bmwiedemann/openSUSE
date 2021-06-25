@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:14:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  Release highlights:
+  * Renderer refactoring work is well underway: everything now uses the new
+    infrastructure under-the-hood except the DRM backend's primary plane.
+  * The Pixman renderer has been merged, alongside new allocators (shared
+    memory for Wayland/X11 and DRM dumb buffers).
+  * Session management is now completely offloaded to libseat.
+  * Support for the xdg-activation-v1 protocol has been merged.
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.14.0
+- Remove logind/systemd dependency and use libseat instead for (e)logind
+  and seat support
+
+-------------------------------------------------------------------
 Sat Jun 19 13:25:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use named source tarball

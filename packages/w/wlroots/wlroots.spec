@@ -16,15 +16,14 @@
 #
 
 
-%define libname libwlroots8
+%define libname libwlroots9
 %bcond_without  libcap
-%bcond_without  systemd
-%bcond_with     elogind
 %bcond_without  x11_backend
 %bcond_without  xwayland
 %bcond_without  xcb_errors
+%bcond_without  seatd
 Name:           wlroots
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -46,7 +45,6 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.16
@@ -55,11 +53,8 @@ BuildRequires:  pkgconfig(xkbcommon)
 %if %{with libcap}
 BuildRequires:  pkgconfig(libcap)
 %endif
-%if %{with systemd}
-BuildRequires:  pkgconfig(libsystemd)
-%endif
-%if %{with elogind}
-BuildRequires:  pkgconfig(libelogind)
+%if %{with seatd}
+BuildRequires:  pkgconfig(libseat)
 %endif
 %if %{with x11_backend} || %{with xwayland}
 BuildRequires:  xorg-x11-server-wayland
@@ -102,15 +97,9 @@ Pluggable, composable modules for building a Wayland compositor.
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
   %{?with_libcap:-Dlibcap=enabled} \
-%if 0%{?suse_version} >= 1550
-  %{?with_systemd:-Dsystemd=enabled} \
-  %{?with_elogind:-Dlogind=enabled} \
-  -Dlogind-provider=systemd \
-%else
-  -Dlogind=disabled \
-%endif
   %{?with_x11_backend:-Dx11_backend=enabled} \
   %{?with_xwayland:-Dxwayland=enabled} \
+  %{?with_xcb_errors:-Dlibseat=enabled} \
   %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build
 
