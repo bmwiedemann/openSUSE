@@ -40,7 +40,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  libdvdread-devel
-BuildRequires:  libmusicbrainz-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libvorbis-devel
