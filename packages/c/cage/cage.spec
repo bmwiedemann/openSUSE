@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.hjdskes.nl/projects/cage/
 Source:         https://github.com/Hjdskes/cage/archive/v%{version}.tar.gz
+Patch0:         cage-wlroots-0140.patch
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -38,6 +39,7 @@ A Wayland Kiosk.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson

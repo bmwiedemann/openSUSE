@@ -60,4 +60,12 @@
   * compatibility release to track wlroots 0.13.0</comment>
     <requestid>885981</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3abbcf6f3de2fbf8c3a2299a6a131365</srcmd5>
+    <version>0.1.3</version>
+    <time>1624626088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902286</requestid>
+  </revision>
 </revisionlist>
