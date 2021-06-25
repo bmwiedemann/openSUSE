@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 25 07:20:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.18:
+  * Fix Sarif output relationship target id format.
+
+-------------------------------------------------------------------
 Mon Jun  7 18:35:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.17:

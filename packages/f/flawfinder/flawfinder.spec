@@ -17,7 +17,7 @@
 
 
 Name:           flawfinder
-Version:        2.0.17
+Version:        2.0.18
 Release:        0
 Summary:        C/C++ source code security flaw examination tool
 License:        GPL-2.0-or-later
