@@ -20,7 +20,7 @@
 Name:           libfastjson
 Version:        0.99.9
 Release:        0
-Summary:        Fast JSON parsing library, a fork of json-c
+Summary:        JSON parsing library, a fork of json-c
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rsyslog/libfastjson
@@ -28,15 +28,15 @@ Source:         https://download.rsyslog.com/libfastjson/%{name}-%{version}.tar.
 BuildRequires:  pkgconfig
 
 %description
-A fast JSON parsing library, a fork of json-c, developed by the rsyslog team
+A JSON parsing library, a fork of json-c, developed by the rsyslog team
 and used for rsyslog and liblognorm.
 
 %package -n libfastjson%{somajor}
-Summary:        Fast JSON parsing library
+Summary:        JSON parsing library
 Group:          System/Libraries
 
 %description -n libfastjson%{somajor}
-A fast JSON parsing library, a fork of json-c, developed by the rsyslog team
+A JSON parsing library, a fork of json-c, developed by the rsyslog team
 and used for rsyslog and liblognorm.
 
 This package includes the libfastjson library.
@@ -47,17 +47,17 @@ Group:          Development/Libraries/C and C++
 Requires:       libfastjson%{somajor} = %{version}
 
 %description -n libfastjson-devel
-A fast JSON parsing library, a fork of json-c, developed by the rsyslog team
+A JSON parsing library, a fork of json-c, developed by the rsyslog team
 and used for rsyslog and liblognorm.
 
 This package includes header files and scripts needed for developers
 using the libfastjson library
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure --disable-static --with-pic
+%configure --disable-static
 %make_build
 
 %check
