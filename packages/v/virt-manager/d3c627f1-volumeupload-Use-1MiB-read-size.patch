@@ -1,0 +1,27 @@
+Subject: volumeupload: Use 1MiB read size
+From: Cole Robinson crobinso@redhat.com Wed Feb 3 14:02:32 2021 -0500
+Date: Wed Feb 3 14:15:57 2021 -0500:
+Git: d3c627f189dc107f22d0b614537fd0a8937c65a9
+
+Rather than 1K. This drastically speeds up the volumeupload case
+for a local URI for the cost of some higher runtime memory but
+I think that's worth it
+
+Fixes: #221
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+diff --git a/virtinst/install/volumeupload.py b/virtinst/install/volumeupload.py
+index 02634f95..431e848c 100644
+--- a/virtinst/install/volumeupload.py
++++ b/virtinst/install/volumeupload.py
+@@ -108,8 +108,7 @@ def _upload_file(conn, meter, destpool, src):
+         meter.start(size=size,
+                     text=_("Transferring %s") % os.path.basename(src))
+         while True:
+-            # blocksize = (1024 ** 2)
+-            blocksize = 1024
++            blocksize = 1024 * 1024  # 1 MiB
+             data = fileobj.read(blocksize)
+             if not data:
+                 break

@@ -1,0 +1,29 @@
+Subject: createnet: Remove some unnecessary max_length annotations
+From: Cole Robinson crobinso@redhat.com Tue Apr 6 13:35:15 2021 -0400
+Date: Tue Apr 6 13:35:15 2021 -0400:
+Git: fe8722e763928980315467ef185a27dbf07d3d15
+
+Fixes: #238
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+diff --git a/ui/createnet.ui b/ui/createnet.ui
+index a70ec7e2..18a1795f 100644
+--- a/ui/createnet.ui
++++ b/ui/createnet.ui
+@@ -229,7 +229,6 @@
+                           <object class="GtkEntry" id="net-name">
+                             <property name="visible">True</property>
+                             <property name="can_focus">True</property>
+-                            <property name="max_length">16</property>
+                             <property name="width_chars">25</property>
+                             <child internal-child="accessible">
+                               <object class="AtkObject" id="net-name-atkobject">
+@@ -730,7 +729,6 @@
+                                   <object class="GtkEntry" id="net-domain-name">
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">True</property>
+-                                    <property name="max_length">20</property>
+                                     <property name="invisible_char">●</property>
+                                     <property name="width_chars">20</property>
+                                     <child internal-child="accessible">

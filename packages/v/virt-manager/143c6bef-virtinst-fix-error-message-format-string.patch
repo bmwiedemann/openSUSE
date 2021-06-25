@@ -1,0 +1,24 @@
+Subject: virtinst: fix error message format string
+From: Roman Bogorodskiy bogorodskiy@gmail.com Wed Feb 10 17:54:10 2021 +0400
+Date: Wed Feb 10 10:26:23 2021 -0500:
+Git: 143c6befc33ee507379fd7eca8cf5e5bd1685799
+
+Fix a regression introduced by commit 71f034d6b where
+format string expects kwarg "domain", but "vm" is passed instead.
+
+Reviewed-by: Cole Robinson <crobinso@redhat.com>
+Signed-off-by: Roman Bogorodskiy <bogorodskiy@gmail.com>
+
+diff --git a/virtinst/virtxml.py b/virtinst/virtxml.py
+index bd2b4282..0c8da37e 100644
+--- a/virtinst/virtxml.py
++++ b/virtinst/virtxml.py
+@@ -251,7 +251,7 @@ def start_domain_transient(conn, xmlobj, devs, action, confirm):
+         dom = conn.createXML(xmlobj.get_xml())
+     except libvirt.libvirtError as e:
+         fail(_("Failed starting domain '%(domain)s': %(error)s") % {
+-                 "vm": xmlobj.name,
++                 "domain": xmlobj.name,
+                  "error": e,
+              })
+     else:

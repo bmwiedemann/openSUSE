@@ -34,6 +34,11 @@ Source3:        virt-manager-supportconfig
 # Upstream Patches
 Patch1:         e7222b50-addstorage-Dont-pass-None-to-widget.set_active.patch
 Patch2:         4d0e3232-virtinst-Fix-TOCTOU-in-domain-enumeration.patch
+Patch3:         d3c627f1-volumeupload-Use-1MiB-read-size.patch
+Patch4:         cf93e2db-console-fix-error-with-old-pygobject.patch
+Patch5:         143c6bef-virtinst-fix-error-message-format-string.patch
+Patch6:         fe8722e7-createnet-Remove-some-unnecessary-max_length-annotations.patch
+Patch7:         d9b5090e-Fix-forgetting-password-from-keyring.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -167,6 +172,11 @@ machine).
 # Upstream Patches
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
