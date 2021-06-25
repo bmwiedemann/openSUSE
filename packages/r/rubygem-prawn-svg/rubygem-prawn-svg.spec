@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-prawn-svg
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 %define mod_name prawn-svg
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.1.0}
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            http://github.com/mogest/prawn-svg
@@ -40,7 +40,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-This gem allows you to render SVG directly into a PDF using the 'prawn' gem. 
+This gem allows you to render SVG directly into a PDF using the 'prawn' gem.
 Since PDF is vector-based, you'll get nice scaled graphics if you use SVG
 instead of an image.
 
