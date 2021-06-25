@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 24 23:00:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We actually don't need python2 BR at all, it seems.
+
+-------------------------------------------------------------------
+Tue Jun 22 12:01:32 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.20 (no changelog)
+
+-------------------------------------------------------------------
 Mon Jun  7 05:55:39 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.16 (no changelog)

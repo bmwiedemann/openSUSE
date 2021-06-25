@@ -19,12 +19,12 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        4.5.16
+Version:        4.5.20
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://linphone.org/technical-corner/mediastreamer2/overview
+URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://github.com/BelledonneCommunications/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
@@ -44,7 +44,6 @@ BuildRequires:  libv4l-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
 BuildRequires:  spandsp-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  vim
