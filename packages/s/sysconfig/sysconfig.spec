@@ -77,7 +77,7 @@ provided settings like DNS or NIS into system files.
 
 %build
 autoreconf -fvi
-CFLAGS="%{optflags} -fPIC" \
+CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" \
 %configure --prefix=/ \
             --sbindir=/sbin \
             --libdir=/%{_lib} \
