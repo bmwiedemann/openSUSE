@@ -221,4 +221,13 @@
 </comment>
     <requestid>893047</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4f84493b5d5b3c7f8c0a4b5e47d91a54</srcmd5>
+    <version>4.5.20</version>
+    <time>1624626048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.20, no changelog
+</comment>
+    <requestid>901325</requestid>
+  </revision>
 </revisionlist>
