@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:45:41 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.5.0
+ see installed CHANGELOG
+
+  v2.5.0 (6th June 2021)
+  - bump minimum ruby version to 2.0
+  - Correctly handle trascoding to UTF-8 from some fonts that use a difference table [#344](https://github.com/yob/pdf-reader/pull/344/) 
+  - Fix some character spacing issues with the TJ operator [#343](https://github.com/yob/pdf-reader/pull/343)
+  - Fix crash with some encrypted PDFs [#348](https://github.com/yob/pdf-reader/pull/348/)
+  - Fix positions of text on some PDFs with pages rotated 90° [#350](https://github.com/yob/pdf-reader/pull/350/)
+  
+
+-------------------------------------------------------------------
 Thu Jan 28 13:41:53 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - updated to version 2.4.2 (28th January 2021)

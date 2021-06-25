@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-pdf-reader
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 %define mod_name pdf-reader
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
