@@ -190,4 +190,14 @@
     <comment></comment>
     <requestid>892977</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f6606198565165b0b28e24a31453f3d</srcmd5>
+    <version>4.5.20</version>
+    <time>1624626041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.20
+  * no changelog available
+</comment>
+    <requestid>901323</requestid>
+  </revision>
 </revisionlist>
