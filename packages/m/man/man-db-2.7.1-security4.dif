@@ -5,7 +5,7 @@
 --- src/mandb.c
 +++ src/mandb.c	2018-11-23 12:50:40.139688661 +0000
 @@ -442,18 +442,27 @@ static int mandb (struct dbpaths *dbpath
- 	int ret, amount;
+ 	int amount;
  	char *dbname;
  	int should_create;
 +	int fd;

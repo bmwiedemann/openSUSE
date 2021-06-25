@@ -795,4 +795,41 @@
     <comment>- require only glibc-locale-base (forwarded request 866172 from dirkmueller)</comment>
     <requestid>868695</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>bc2057b79a4ea7fb7b897d55d85c425e</srcmd5>
+    <version>2.9.4</version>
+    <time>1624626063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch man-db-2.9.4-alternitive.dif
+  * Supporting ALSO new `alternatives` which has the same tasks as
+    `update-alternatives` but in a simplier way.
+
+- Update to version 2.9.4:
+  * Add support for zstd-compressed manual pages
+  * Recognise Esperanto, Romanian, Tamil, and Ukrainian translations
+    of the NAME section.
+  * Fix handling of \- in the right-hand side of a NAME section.
+  * Treat &quot;\[en]&quot; (etc.) as another synonym for &quot;\-&quot; in NAME sections,
+    alongside the existing &quot;\(en&quot; (etc.).
+  * Avoid incorrect markup in man(1) with po4a &gt;= 0.58.
+  * Fix manual page translation infrastructure to compare po4a
+    versions with more than two components correctly.
+  * Fix &quot;man -X75-12&quot; and &quot;man -X100-12&quot; to set the document font
+    size as well as the device
+  * Fix incompatibility of &quot;man -X&quot; and friends with the seccomp
+    sandbox.
+  * man --recode and manconv now adjust encoding declarations on the
+    first line of their input to refer to the new encoding.
+  * There is a new &quot;man-recode&quot; program. Which has an interface
+    designed for bulk conversion and so can be much faster when
+    used on a large number of pages.
+  * Fix comparison of candidate manual pages to correctly handle the
+    case where the language elements are the same and match the
+    locale, but the territory elements differ.
+  * If run with no arguments or only a section, man now suggests
+    running &quot;man man&quot;.
+  * man now understands the &lt;page&gt;(&lt;section&gt;) form on its command
+    line, so for example &quot;man 'chmod(2)'&quot; is now the same as</comment>
+    <requestid>901432</requestid>
+  </revision>
 </revisionlist>

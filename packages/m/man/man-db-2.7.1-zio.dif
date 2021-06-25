@@ -37,9 +37,9 @@
  MAN_ARG_AUTOMATIC_CREATE
  MAN_ARG_AUTOMATIC_UPDATE
  MAN_ARG_CATS
-@@ -325,6 +337,46 @@ AC_SUBST([unlzma])
- AC_SUBST([unxz])
+@@ -346,6 +358,46 @@ AC_SUBST([unxz])
  AC_SUBST([unlzip])
+ AC_SUBST([unzstd])
  MAN_COMPRESS_LIB([z], [gzopen])
 +dnl Check for zlib and libbz2 libraries to use this together
 +dnl with SUSE's libzio to open compressed info files.
@@ -84,8 +84,8 @@
  dnl To add more decompressors just follow the scheme above.
  
  # Check for various header files and associated libraries.
---- lib/decompress.c
-+++ lib/decompress.c	2018-11-23 13:12:59.714923151 +0000
+--- src/decompress.c
++++ src/decompress.c	2018-11-23 13:12:59.714923151 +0000
 @@ -38,6 +38,10 @@
  
  #include "xvasprintf.h"

@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue May 31 20:59:59 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Add patch man-db-2.9.4-alternitive.dif
+  * Supporting ALSO new `alternatives` which has the same tasks as
+    `update-alternatives` but in a simplier way.
+
+-------------------------------------------------------------------
+Mon May 31 19:07:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.9.4:
+  * Add support for zstd-compressed manual pages
+  * Recognise Esperanto, Romanian, Tamil, and Ukrainian translations
+    of the NAME section.
+  * Fix handling of \- in the right-hand side of a NAME section.
+  * Treat "\[en]" (etc.) as another synonym for "\-" in NAME sections,
+    alongside the existing "\(en" (etc.).
+  * Avoid incorrect markup in man(1) with po4a >= 0.58.
+  * Fix manual page translation infrastructure to compare po4a
+    versions with more than two components correctly.
+  * Fix "man -X75-12" and "man -X100-12" to set the document font
+    size as well as the device
+  * Fix incompatibility of "man -X" and friends with the seccomp
+    sandbox.
+  * man --recode and manconv now adjust encoding declarations on the
+    first line of their input to refer to the new encoding.
+  * There is a new "man-recode" program. Which has an interface
+    designed for bulk conversion and so can be much faster when
+    used on a large number of pages.
+  * Fix comparison of candidate manual pages to correctly handle the
+    case where the language elements are the same and match the
+    locale, but the territory elements differ.
+  * If run with no arguments or only a section, man now suggests
+    running "man man".
+  * man now understands the <page>(<section>) form on its command
+    line, so for example "man 'chmod(2)'" is now the same as
+    "man 2 chmod".
+  * manconv now guesses the input encoding based on the file name
+    if it is not explicitly specified.
+  * Further workarounds for ESET File Security: allow sendmsg when
+    it is in use.
+  * If more than one of "../man", "man", "../share/man", and
+    "share/man" exist relative to a directory on $PATH, then all of
+    them are now added to the automatically-determined manpath
+  * Remove arbitrary limit on manpath size.
+  * Fix several resource and memory leaks.
+  * Ship a systemd timer to perform daily database maintenance.
+  * Fix segfaults in mandb.
+- Drop our systemd timer in favor of upstream provided one
+- Drop unused mancoding
+- Drop upstream fixed man-db-2.6.3-section.dif
+- Merge man-MAN_POSIXLY_CORRECT-man1.dif into
+  man-db-2.6.3-listall.dif as first one is only the documentation
+  of the latter one
+- Seperate man-db-2.9.4-no-chown.patch from man-db-2.8.4.dif
+- Update man-db-2.8.4.dif, now called man-db-2.9.4.patch
+- Update man-db-2.6.3-man0.dif to be used inside prep section
+- Refresh man-db-2.7.1-security4.dif, man-db-2.7.1-zio.dif
+
+-------------------------------------------------------------------
 Fri Jan 22 23:57:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - require only glibc-locale-base 

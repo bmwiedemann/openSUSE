@@ -1,0 +1,41 @@
+diff -u orig/man.c patch/man.c
+--- src/man.c	2021-06-07 22:06:42.937525661 +0200
++++ src/man.c	2021-06-08 11:46:40.369916468 +0200
+@@ -57,6 +57,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
++#include <libalternatives.h>
+ 
+ #include "argp.h"
+ #include "dirname.h"
+@@ -4066,11 +4067,25 @@
+ 				    int *found)
+ {
+ 	char *mp;
++	int count = 0;
+ 
+-	GL_LIST_FOREACH_START (manpathlist, mp)
+-		*found += locate_page (mp, page_section, page_name,
+-				       candidates);
+-	GL_LIST_FOREACH_END (manpathlist);
++	GL_LIST_FOREACH_START (manpathlist, mp) {
++	  count = locate_page (mp, page_section, page_name, candidates);
++	  if (count == 0) {
++	    /* Checking if there has been defined another manpage defined in the */
++	    /* priorities of libalternatives.                                    */
++	    char **alternitives = libalts_get_default_manpages(page_name);
++	    for (char **alter = alternitives; *alter; alter++){
++	      char *p_name, *p_section;
++	      split_page_name (*alter, &p_name, &p_section);
++	      if (p_name && strlen(p_name)>0 && p_section && strlen(p_section)>0)
++		count = locate_page (mp, p_section, p_name, candidates);
++	      free(*alter);
++	    }
++	    free(alternitives);
++	  }
++	  *found += count;	  
++	} GL_LIST_FOREACH_END (manpathlist);
+ }
+ 
+ /*

@@ -1,0 +1,21 @@
+diff -Nur man-db-2.9.4/src/Makefile.am new/src/Makefile.am
+--- man-db-2.9.4/src/Makefile.am	2020-01-01 16:11:59.000000000 +0100
++++ new/src/Makefile.am	2021-05-31 23:36:22.062144466 +0200
+@@ -192,16 +192,7 @@
+ all-am: apropos$(EXEEXT)
+ 
+ install-exec-hook:
+-	if [ "$(man_owner)" ] && [ "$(man_mode)" = 6755 ]; then \
+-		chown $(man_owner):$(man_owner) \
+-			$(DESTDIR)$(bindir)/$(TRANS_MAN) \
+-			$(DESTDIR)$(bindir)/$(TRANS_MANDB); \
+-	fi
+-	chmod $(man_mode) \
+-		$(DESTDIR)$(bindir)/$(TRANS_MAN) \
+-		$(DESTDIR)$(bindir)/$(TRANS_MANDB)
+-	cd $(DESTDIR)$(bindir) && rm -f $(TRANS_APROPOS)$(EXEEXT) && \
+-		$(LN_S) $(TRANS_WHATIS)$(EXEEXT) $(TRANS_APROPOS)$(EXEEXT)
++	$(LN_S) $(TRANS_WHATIS) $(DESTDIR)$(bindir)/$(TRANS_APROPOS)
+ 
+ install-data-hook:
+ 	@if test -f $(DESTDIR)$(config_file); then \
