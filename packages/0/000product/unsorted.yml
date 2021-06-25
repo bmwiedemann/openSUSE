@@ -81,7 +81,7 @@ unsorted:
   - Mesa-demo 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
+  - Mesa-dri-devel 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -946,14 +946,14 @@ unsorted:
   - auto-value 
   - autobench 
   - autobuild 
-  - autoconf: [i586] 
+  - autoconf 
   - autoconf-archive 
   - autoconf213 
   - autocutsel 
   - autofdo 
   - autogen 
   - autojump 
-  - automake: [i586] 
+  - automake 
   - autonym-fonts 
   - autoopts 
   - autossh 
@@ -976,7 +976,6 @@ unsorted:
   - avif-tools 
   - avocado-common 
   - avocado-examples 
-  - avocado-vt-common 
   - avogadrolibs 
   - avogadrolibs-devel 
   - avr-libc 
@@ -1218,16 +1217,16 @@ unsorted:
   - bin86 
   - bindfs 
   - bing 
-  - binutils: [i586] 
+  - binutils 
   - binutils-devel 
   - binutils-devel-32bit: [x86_64] 
   - binutils-gold 
   - binwalk 
   - bird 
   - bird-doc 
-  - bison: [i586] 
+  - bison 
   - bison-32bit: [x86_64] 
-  - bison-lang: [i586] 
+  - bison-lang 
   - bitcoin-qt5 
   - bitcoin-test 
   - bitcoin-utils 
@@ -3679,7 +3678,7 @@ unsorted:
   - fontawesome-fonts-web 
   - fontcacheproto-devel 
   - fontconfig-32bit: [x86_64] 
-  - fontconfig-devel: [i586] # devel package of dvd:fontconfig-lang 
+  - fontconfig-devel 
   - fontconfig-devel-32bit: [x86_64] 
   - fontconfig-devel-doc 
   - fontconfig-doc 
@@ -3775,7 +3774,7 @@ unsorted:
   - freetype 
   - freetype-devel 
   - freetype-tools 
-  - freetype2-devel: [i586] # devel package of dvd:libfreetype6 
+  - freetype2-devel 
   - freetype2-devel-32bit: [x86_64] 
   - freetype2-profile-tti35 
   - freexl-devel 
@@ -3892,7 +3891,7 @@ unsorted:
   - gc-devel 
   - gcab-devel 
   - gcad3d 
-  - gcc: [i586] 
+  - gcc 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -3931,7 +3930,7 @@ unsorted:
   - gcc10-objc 
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
-  - gcc11: [i586] 
+  - gcc11 
   - gcc11-32bit: [x86_64] 
   - gcc11-ada 
   - gcc11-ada-32bit: [x86_64] 
@@ -3945,7 +3944,7 @@ unsorted:
   - gcc11-go 
   - gcc11-go-32bit: [x86_64] 
   - gcc11-info: [i586] 
-  - gcc11-locale: [i586] 
+  - gcc11-locale 
   - gcc11-obj-c++ 
   - gcc11-obj-c++-32bit: [x86_64] 
   - gcc11-objc 
@@ -4140,7 +4139,7 @@ unsorted:
   - gettext-runtime-mini 
   - gettext-runtime-mini-tools-doc 
   - gettext-runtime-tools-doc 
-  - gettext-tools: [i586] 
+  - gettext-tools 
   - gettext-tools-mini 
   - gexif 
   - gexif-lang 
@@ -7808,6 +7807,12 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
+  - keylime-agent 
+  - keylime-config 
+  - keylime-firewalld 
+  - keylime-registrar 
+  - keylime-tpm_cert_store 
+  - keylime-verifier 
   - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
@@ -8637,7 +8642,7 @@ unsorted:
   - libHalf-2_5-25-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
-  - libICE-devel: [i586] # devel package of dvd:libICE6 
+  - libICE-devel 
   - libICE-devel-32bit: [x86_64] 
   - libIDL-2-0 
   - libIDL-2-0-32bit: [x86_64] 
@@ -8771,8 +8776,8 @@ unsorted:
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
-  - libMagickCore-7_Q16HDRI9-32bit: [x86_64] 
-  - libMagickWand-7_Q16HDRI9-32bit: [x86_64] 
+  - libMagickCore-7_Q16HDRI10-32bit: [x86_64] 
+  - libMagickWand-7_Q16HDRI10-32bit: [x86_64] 
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
@@ -9133,7 +9138,7 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSILLY-devel 
   - libSILLY1 
-  - libSM-devel: [i586] # devel package of dvd:libSM6 
+  - libSM-devel 
   - libSM-devel-32bit: [x86_64] 
   - libSPIRV-Tools-suse21-32bit: [x86_64] 
   - libSampleICC-devel 
@@ -9162,11 +9167,11 @@ unsorted:
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
-  - libX11-devel: [i586] # devel package of dvd:libX11-xcb1 
+  - libX11-devel 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
-  - libXau-devel: [i586] # devel package of dvd:libXau6 
+  - libXau-devel 
   - libXau-devel-32bit: [x86_64] 
   - libXaw-devel 
   - libXaw-devel-32bit: [x86_64] 
@@ -9195,16 +9200,16 @@ unsorted:
   - libXcursor-devel-32bit: [x86_64] 
   - libXdamage-devel 
   - libXdamage-devel-32bit: [x86_64] 
-  - libXdmcp-devel: [i586] # devel package of dvd:libXdmcp6 
+  - libXdmcp-devel 
   - libXdmcp-devel-32bit: [x86_64] 
   - libXdmcp6-32bit: [x86_64] 
   - libXevie-devel 
   - libXevie-devel-32bit: [x86_64] 
   - libXevie1 
   - libXevie1-32bit: [x86_64] 
-  - libXext-devel: [i586] # devel package of dvd:libXext6 
+  - libXext-devel 
   - libXext-devel-32bit: [x86_64] 
-  - libXfixes-devel: [i586] # devel package of dvd:libXfixes3 
+  - libXfixes-devel 
   - libXfixes-devel-32bit: [x86_64] 
   - libXfont-devel 
   - libXfont-devel-32bit: [x86_64] 
@@ -9225,15 +9230,15 @@ unsorted:
   - libXiterm1 
   - libXm4 
   - libXm4-32bit: [x86_64] 
-  - libXmu-devel: [i586] # devel package of dvd:libXmu6 
+  - libXmu-devel 
   - libXmu-devel-32bit: [x86_64] 
   - libXmu6-32bit: [x86_64] 
   - libXmuu1-32bit: [x86_64] 
-  - libXp-devel: [i586] 
+  - libXp-devel 
   - libXp-devel-32bit: [x86_64] 
-  - libXp6: [i586] 
+  - libXp6 
   - libXp6-32bit: [x86_64] 
-  - libXpm-devel: [i586] # devel package of dvd:libXpm4 
+  - libXpm-devel 
   - libXpm-devel-32bit: [x86_64] 
   - libXpm-tools 
   - libXpm4-32bit: [x86_64] 
@@ -9242,25 +9247,25 @@ unsorted:
   - libXprintAppUtil-devel-32bit: [x86_64] 
   - libXprintAppUtil1 
   - libXprintAppUtil1-32bit: [x86_64] 
-  - libXprintUtil-devel: [i586] 
+  - libXprintUtil-devel 
   - libXprintUtil-devel-32bit: [x86_64] 
-  - libXprintUtil1: [i586] 
+  - libXprintUtil1 
   - libXprintUtil1-32bit: [x86_64] 
   - libXrandr-devel 
   - libXrandr-devel-32bit: [x86_64] 
-  - libXrender-devel: [i586] # devel package of dvd:libXrender1 
+  - libXrender-devel 
   - libXrender-devel-32bit: [x86_64] 
   - libXres-devel 
   - libXres-devel-32bit: [x86_64] 
   - libXss-devel 
   - libXss-devel-32bit: [x86_64] 
-  - libXt-devel: [i586] # devel package of dvd:libXt6 
+  - libXt-devel 
   - libXt-devel-32bit: [x86_64] 
   - libXt6-32bit: [x86_64] 
   - libXtst-devel 
   - libXtst-devel-32bit: [x86_64] 
   - libXtst6-32bit: [x86_64] 
-  - libXv-devel: [i586] # devel package of dvd:libXv1 
+  - libXv-devel 
   - libXv-devel-32bit: [x86_64] 
   - libXvMC-devel 
   - libXvMC-devel-32bit: [x86_64] 
@@ -9442,7 +9447,7 @@ unsorted:
   - libart_lgpl_2-2-32bit: [x86_64] 
   - libasan4 
   - libasan4-32bit: [x86_64] 
-  - libasan6: [i586] 
+  - libasan6 
   - libasan6-32bit: [x86_64] 
   - libasan6-gcc10 
   - libasan6-gcc10-32bit: [x86_64] 
@@ -9468,6 +9473,7 @@ unsorted:
   - libatkmm-2_36-1 
   - libatkmm-2_36-1-32bit: [x86_64] 
   - libatlascpp-0_6-1 
+  - libatomic1: [x86_64] 
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc10 
   - libatomic1-gcc10-32bit: [x86_64] 
@@ -9769,7 +9775,7 @@ unsorted:
   - libbraille-devel 
   - libbraille-fake 
   - libbrial3 
-  - libbrotli-devel: [i586] # devel package of dvd:libbrotlicommon1 
+  - libbrotli-devel 
   - libbrotlienc1-32bit: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
@@ -9797,7 +9803,7 @@ unsorted:
   - libbuzztrax-ic1 
   - libbuzztrax-ic1-32bit: [x86_64] 
   - libbytesize-devel 
-  - libbz2-devel: [i586] # devel package of dvd:libbz2-1 
+  - libbz2-devel 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
@@ -10112,8 +10118,8 @@ unsorted:
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
-  - libctf-nobfd0: [i586] 
-  - libctf0: [i586] 
+  - libctf-nobfd0 
+  - libctf0 
   - libcthreads-devel 
   - libcthreads1 
   - libctl-devel 
@@ -10273,7 +10279,7 @@ unsorted:
   - libdnssec8 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-20_0: [x86_64] 
-  - libdrm-devel: [i586] # devel package of dvd:libdrm2 
+  - libdrm-devel 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
   - libdrm2-32bit: [x86_64] 
@@ -10405,7 +10411,7 @@ unsorted:
   - libetrophy0 
   - libev-devel 
   - libev4-32bit: [x86_64] 
-  - libevdev-devel: [i586] # devel package of dvd:libevdev2 
+  - libevdev-devel 
   - libevdev2-32bit: [x86_64] 
   - libevemu3 
   - libevent-2_1-7-32bit: [x86_64] 
@@ -10440,7 +10446,7 @@ unsorted:
   - libexiv2-xmp-static 
   - libexoIIv2for-5_14_0 
   - libexodus-5_14_0 
-  - libexpat-devel: [i586] # devel package of dvd:libexpat1 
+  - libexpat-devel 
   - libexpat-devel-32bit: [x86_64] 
   - libext2fs-devel 
   - libext2fs-devel-32bit: [x86_64] 
@@ -10581,7 +10587,7 @@ unsorted:
   - libfoma-hfst0 
   - libfoma0 
   - libfont-specimen0 
-  - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
+  - libfontenc-devel 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
   - libfonts-javadoc 
@@ -11417,7 +11423,7 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
-  - libitm1: [i586] 
+  - libitm1 
   - libitm1-32bit: [x86_64] 
   - libitm1-gcc10 
   - libitm1-gcc10-32bit: [x86_64] 
@@ -11727,6 +11733,7 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit: [x86_64] 
   - liblrs1 
+  - liblsan0: [x86_64] 
   - liblsan0-gcc10: [x86_64] 
   - liblsan0-gcc7: [x86_64] 
   - liblscp-devel 
@@ -12576,7 +12583,7 @@ unsorted:
   - libpcd-devel 
   - libpcd2 
   - libpci3-32bit: [x86_64] 
-  - libpciaccess-devel: [i586] # devel package of dvd:libpciaccess0 
+  - libpciaccess-devel 
   - libpciaccess0-32bit: [x86_64] 
   - libpcp-devel 
   - libpcp3 
@@ -12651,7 +12658,7 @@ unsorted:
   - libpisock9 
   - libpisync-devel 
   - libpisync1 
-  - libpixman-1-0-devel: [i586] # devel package of dvd:libpixman-1-0 
+  - libpixman-1-0-devel 
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
@@ -13929,7 +13936,7 @@ unsorted:
   - libtommath-examples 
   - libtommath1-32bit: [x86_64] 
   - libtomoe-gtk0 
-  - libtool: [i586] 
+  - libtool 
   - libtool-32bit: [x86_64] 
   - libtorch: [x86_64] 
   - libtorrent-devel 
@@ -13967,6 +13974,7 @@ unsorted:
   - libtrilinos_13_0_1-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-24 
   - libts0-32bit: [x86_64] 
+  - libtsan0: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsk19 
@@ -14024,7 +14032,7 @@ unsorted:
   - libucs0: [x86_64] 
   - libuct-devel: [x86_64] 
   - libuct0: [x86_64] 
-  - libudev-devel: [i586] # devel package of dvd:systemd-lang 
+  - libudev-devel 
   - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
   - libudev-mini1 
@@ -14109,7 +14117,7 @@ unsorted:
   - libustr-devel 
   - libut1 
   - libutempter0-32bit: [x86_64] 
-  - libuuid-devel: [i586] # devel package of dvd:util-linux-lang 
+  - libuuid-devel 
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
   - libuv-devel 
@@ -14501,7 +14509,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-sync1 
+  - libxcb-devel 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -14520,22 +14528,22 @@ unsorted:
   - libxcb-record0-32bit: [x86_64] 
   - libxcb-render-util0-32bit: [x86_64] 
   - libxcb-res0-32bit: [x86_64] 
-  - libxcb-screensaver0: [i586] 
+  - libxcb-screensaver0 
   - libxcb-screensaver0-32bit: [x86_64] 
   - libxcb-shape0-32bit: [x86_64] 
   - libxcb-sync1-32bit: [x86_64] 
   - libxcb-util1-32bit: [x86_64] 
-  - libxcb-xf86dri0: [i586] 
+  - libxcb-xf86dri0 
   - libxcb-xf86dri0-32bit: [x86_64] 
   - libxcb-xfixes0-32bit: [x86_64] 
   - libxcb-xinerama0-32bit: [x86_64] 
   - libxcb-xinput0-32bit: [x86_64] 
   - libxcb-xkb1-32bit: [x86_64] 
   - libxcb-xrm0 
-  - libxcb-xtest0: [i586] 
+  - libxcb-xtest0 
   - libxcb-xtest0-32bit: [x86_64] 
   - libxcb-xv0-32bit: [x86_64] 
-  - libxcb-xvmc0: [i586] 
+  - libxcb-xvmc0 
   - libxcb-xvmc0-32bit: [x86_64] 
   - libxcfun2 
   - libxclass-0_9_2 
@@ -14565,7 +14573,7 @@ unsorted:
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit: [x86_64] 
   - libxkbcommon0-32bit: [x86_64] 
-  - libxkbfile-devel: [i586] # devel package of dvd:libxkbfile1 
+  - libxkbfile-devel 
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
   - libxkbregistry-devel 
@@ -14691,6 +14699,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api15 
   - libz-ng2 
+  - libz1 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -16306,7 +16315,7 @@ unsorted:
   - mt32emu-qt 
   - mtd-utils 
   - mtdev 
-  - mtdev-devel: [i586] # devel package of dvd:libmtdev1 
+  - mtdev-devel 
   - mtools-doc 
   - mtp-tools 
   - mtr-gtk 
@@ -18343,6 +18352,7 @@ unsorted:
   - patterns-base-base-32bit 
   - patterns-base-bootloader: [i586] 
   - patterns-base-enhanced_base-32bit 
+  - patterns-base-fips 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
   - patterns-base-update_test 
@@ -20629,7 +20639,7 @@ unsorted:
   - primus 
   - primus-32bit: [x86_64] 
   - printer-driver-brlaser 
-  - printproto-devel: [i586] 
+  - printproto-devel 
   - prison-qt5-devel 
   - prison-qt5-devel-32bit: [x86_64] 
   - privoxy-doc 
@@ -22781,6 +22791,7 @@ unsorted:
   - python36-keepalive 
   - python36-kerberos 
   - python36-keyczar 
+  - python36-keylime 
   - python36-keyring 
   - python36-keyrings.alt 
   - python36-kismet-rest 
@@ -25607,6 +25618,7 @@ unsorted:
   - python38-keepalive 
   - python38-kerberos 
   - python38-keyczar 
+  - python38-keylime 
   - python38-keyring 
   - python38-keyrings.alt 
   - python38-kismet-rest 
@@ -28596,6 +28608,7 @@ unsorted:
   - python39-keepalive 
   - python39-kerberos 
   - python39-keyczar 
+  - python39-keylime 
   - python39-keyring 
   - python39-keyrings.alt 
   - python39-kismet-rest 
@@ -41302,7 +41315,7 @@ unsorted:
   - utf8proc-devel 
   - utfcpp-devel 
   - uthash-devel 
-  - util-macros-devel: [i586] 
+  - util-macros-devel 
   - utils-libnfs 
   - utox 
   - utsushi 
@@ -41831,7 +41844,7 @@ unsorted:
   - xbench 
   - xbiff 
   - xbindkeys 
-  - xbitmaps-devel: [i586] # devel package of dvd:xbitmaps 
+  - xbitmaps-devel 
   - xbomb 
   - xboxdrv 
   - xbrz-devel 
@@ -42150,11 +42163,11 @@ unsorted:
   - xorg-x11-driver-input 
   - xorg-x11-libs 
   - xorg-x11-server-Xspice: [x86_64] 
-  - xorg-x11-server-sdk: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - xorg-x11-server-sdk 
   - xorg-x11-server-source 
   - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
-  - xorgproto-devel: [i586] 
+  - xorgproto-devel 
   - xorgxrdp 
   - xorriso-tcltk 
   - xortool 
@@ -42248,7 +42261,7 @@ unsorted:
   - xterm-console 
   - xtexit 
   - xtl-devel 
-  - xtrans: [i586] 
+  - xtrans 
   - xtrx-tools 
   - xtrx-usb-udev 
   - xtrx_lms7002m-devel 
@@ -42449,10 +42462,11 @@ unsorted:
   - zita-convolver-devel 
   - zita-resampler-devel 
   - zita-resampler-tools 
-  - zlib-devel: [i586] # devel package of dvd:libminizip1 
+  - zlib-devel 
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
+  - zlib-ng-compat-devel 
   - zlib-ng-devel 
   - zlib-testsuite 
   - zlibrary-data 
