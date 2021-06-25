@@ -486,7 +486,7 @@ Prefer: -nunit3-devel
 
 # have choice for libz.so.1()(64bit) needed by gcc11: libz-ng-compat1 libz1
 # Pick the regular libz.so.1
-Prefer: -libz-ng-compat1
+Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit                          
@@ -905,6 +905,7 @@ Prefer: ruby2.7-rubygem-sass-rails
 Prefer: ruby2.7-rubygem-sassc
 Prefer: ruby2.7-rubygem-thor
 Prefer: ruby2.7-rubygem-listen ruby2.7-rubygem-mime-types ruby2.7-rubygem-builder
+Prefer: -ruby2.7-rubygem-puma-4
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel

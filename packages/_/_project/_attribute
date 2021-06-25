@@ -143,7 +143,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210623'
-  boo#1183454: '20210623'
+  boo#1183454: '20210624'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -315,7 +315,7 @@
   poo#78538: '20210410'
   poo#80082: '20201201'
   poo#80102: '20201127'
-  poo#80628: '20210623'
+  poo#80628: '20210624'
   poo#80966: '20210408'
   poo#81036: '20201217'
   poo#81256: '20210118'
@@ -744,10 +744,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210624'
 published: '20210623'
 publishing: '20210623'
-testing: '20210623'
+testing: '20210624'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
@@ -762,4 +762,5 @@ testing: '20210623'
 fallback-group: 'origin-reviewers'
     </value>
   </attribute>
+  <attribute namespace="OBS" name="EnforceRevisionsInRequests"/>
 </attributes>
