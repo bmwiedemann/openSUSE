@@ -7,4 +7,12 @@
     <comment>I need this package as a dependency of rubygem-fog-core.</comment>
     <requestid>709913</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f491394f49442409a949c9d8ef6d0507</srcmd5>
+    <version>0.3.0</version>
+    <time>1624626092</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 901968 from coolo)</comment>
+    <requestid>902273</requestid>
+  </revision>
 </revisionlist>

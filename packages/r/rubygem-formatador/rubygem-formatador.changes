@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:23:35 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.0
+ see installed changelog.txt
+
+  v0.3.0 06/17/21
+  ===============
+  
+  add travis badge to readme
+  change readme to md
+  fix markdown readme
+  fix travis badge
+  monkey-patch StringIO to try and fix jruby build
+  override tty? for jruby build
+  fix copyright statement
+  use unicode.width instead of string.length
+  remove unicode from requirements, use only if loaded
+  display datum who's value is a FalseClass
+  more colors with syntax-specific code/length limitations
+  better code visualization in readme
+  update readme
+  remove broken rubinius build from CI
+  fix length method to detect multibyte char width
+  fix test for table with multi byte chars
+  support multibyte characters
+  update CI to 2.2.7, 2.3.4, and 2.4.1
+  drop rubyforge_project from gemspec and rakefile
+  change github reference to https
+  change readme.rdoc to readme.md in gemspec
+  
+
+-------------------------------------------------------------------
 Thu Jun 13 16:21:47 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Cleanup rpmlint warnings
