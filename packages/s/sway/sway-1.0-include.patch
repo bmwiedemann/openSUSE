@@ -1,6 +1,6 @@
-diff -urEbw sway-1.6/common/util.c sway-1.6.new/common/util.c
---- sway-1.6/common/util.c	2021-04-07 21:44:21.000000000 +0200
-+++ sway-1.6.new/common/util.c	2021-04-08 10:38:43.904321614 +0200
+diff -urEbw sway-1.6.1/common/util.c sway-1.6.1.new/common/util.c
+--- sway-1.6.1/common/util.c	2021-06-24 18:26:29.000000000 +0200
++++ sway-1.6.1.new/common/util.c	2021-06-24 22:24:43.347046086 +0200
 @@ -6,7 +6,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -10,21 +10,21 @@ diff -urEbw sway-1.6/common/util.c sway-1.6.new/common/util.c
  #include "log.h"
  #include "util.h"
  
-diff -urEbw sway-1.6/include/cairo.h sway-1.6.new/include/cairo.h
---- sway-1.6/include/cairo.h	2021-04-07 21:44:21.000000000 +0200
-+++ sway-1.6.new/include/cairo.h	2021-04-08 10:39:26.336461949 +0200
+diff -urEbw sway-1.6.1/include/cairo_util.h sway-1.6.1.new/include/cairo_util.h
+--- sway-1.6.1/include/cairo_util.h	2021-06-24 18:26:29.000000000 +0200
++++ sway-1.6.1.new/include/cairo_util.h	2021-06-24 22:24:27.266948651 +0200
 @@ -3,7 +3,7 @@
  #include "config.h"
  #include <stdint.h>
- #include <cairo/cairo.h>
+ #include <cairo.h>
 -#include <wayland-client-protocol.h>
 +#include <wayland/wayland-client-protocol.h>
  
  void cairo_set_source_u32(cairo_t *cairo, uint32_t color);
  cairo_subpixel_order_t to_cairo_subpixel_order(enum wl_output_subpixel subpixel);
-diff -urEbw sway-1.6/include/util.h sway-1.6.new/include/util.h
---- sway-1.6/include/util.h	2021-04-07 21:44:21.000000000 +0200
-+++ sway-1.6.new/include/util.h	2021-04-08 10:39:00.424376248 +0200
+diff -urEbw sway-1.6.1/include/util.h sway-1.6.1.new/include/util.h
+--- sway-1.6.1/include/util.h	2021-06-24 18:26:29.000000000 +0200
++++ sway-1.6.1.new/include/util.h	2021-06-24 22:24:41.883037214 +0200
 @@ -3,7 +3,7 @@
  
  #include <stdint.h>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 24 20:20:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.1:
+  * This new release adds compatibility with wlroots 0.14, and
+    contains a few bug fixes.
+  * See https://github.com/swaywm/sway/releases/tag/1.6.1 for details
+
+-------------------------------------------------------------------
 Thu Apr  8 08:25:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

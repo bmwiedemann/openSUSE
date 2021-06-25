@@ -440,4 +440,12 @@ changes since last time:
   * X11 clipboard reliability improvements</comment>
     <requestid>883814</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f1521ed2528a4ee3bbd370a48c683a6f</srcmd5>
+    <version>1.6.1</version>
+    <time>1624626087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902218</requestid>
+  </revision>
 </revisionlist>
