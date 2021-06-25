@@ -103,6 +103,7 @@ Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch41:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
 Patch42:        chromium-91-system-icu.patch
 Patch44:        chromium-91-libyuv-aarch64.patch
+Patch45:        chromium-91-1190561-boo1186948.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches

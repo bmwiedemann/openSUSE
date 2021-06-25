@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 18:29:12 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix crash upon exit boo#1186948
+  add chromium-91-1190561-boo1186948.patch 
+
+-------------------------------------------------------------------
 Fri Jun 18 09:05:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 91.0.4472.114 (boo#1187481)

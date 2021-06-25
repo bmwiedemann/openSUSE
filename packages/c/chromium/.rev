@@ -3694,4 +3694,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>900774</requestid>
   </revision>
+  <revision rev="297" vrev="2">
+    <srcmd5>c57033ce67541f1509be82271f7e482e</srcmd5>
+    <version>91.0.4472.114</version>
+    <time>1624626034</time>
+    <user>dimstar_suse</user>
+    <comment>fix crash upon exit boo#1186948
+</comment>
+    <requestid>901249</requestid>
+  </revision>
 </revisionlist>
