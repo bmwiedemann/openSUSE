@@ -151,4 +151,12 @@
     <comment>- update to 0.40:</comment>
     <requestid>892311</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>422d49c059f450c084073bfce5ee5ba9</srcmd5>
+    <version>0.41</version>
+    <time>1624626031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.41</comment>
+    <requestid>901223</requestid>
+  </revision>
 </revisionlist>
