@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
 
 %define	vendor_ruby	vendor_ruby
 %define	init_style	suse
@@ -36,7 +31,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.2.0+git.1593701652.5c1edcf8
+Version:        2.6.15+git.1618478653.7272e6b6
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -68,10 +63,10 @@ BuildRequires:  timezone
 
 BuildRequires:  %{rubygem bundler}
 Requires:       %{rubygem bundler}
-BuildRequires:  %{rubygem rails:6.0} 
-Requires:       %{rubygem rails:6.0} 
-BuildRequires:  %{rubygem puma >= 3}
-Requires:       %{rubygem puma >= 3}
+BuildRequires:  %{rubygem rails:5.2}
+Requires:       %{rubygem rails:5.2}
+BuildRequires:  %{rubygem puma >= 4.3.5}
+Requires:       %{rubygem puma >= 4.3.5}
 BuildRequires:  %{rubygem sass-rails >= 5.0.1}
 BuildRequires:  %{rubygem websocket-driver >= 0.6.6}
 Requires:       %{rubygem sass-rails >= 5.0.1}
@@ -86,7 +81,7 @@ Requires:       %{rubygem gettext_i18n_rails >= 1.8}
 BuildRequires:  %{rubygem gettext_i18n_rails_js >= 1.3}
 Requires:       %{rubygem gettext_i18n_rails_js >= 1.3}
 BuildRequires:  %{rubygem sprockets >= 3.7}
-BUILDConflicts: %{rubygem sprockets >= 4}
+BuildConflicts: %{rubygem sprockets >= 4}
 Requires:       %{rubygem sprockets >= 3.7}
 Conflicts:      %{rubygem sprockets >= 4}
 BuildRequires:  %{rubygem kramdown >= 1.14}
@@ -107,7 +102,6 @@ BuildRequires:  pam-devel
 %description
 A web-based GUI for managing and monitoring the Pacemaker
 High-Availability cluster resource manager.
-
 
 %prep
 %setup
@@ -189,7 +183,6 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 %defattr(644,root,root,755)
 %{_fillupdir}/sysconfig.hawk
 %attr(4750, root, %{gname})%{_sbindir}/hawk_chkpwd
-%attr(4750, root, %{gname})%{_sbindir}/hawk_invoke
 %dir %{www_base}/hawk
 %{www_base}/hawk/log
 %{www_base}/hawk/tmp

@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">hawk2</param>
-    <param name="versionformat">2.2.0+git.%ct.%h</param>
-    <param name="revision">factory</param>
+    <param name="versionformat">2.6.15+git.%ct.%h</param>
+    <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
 

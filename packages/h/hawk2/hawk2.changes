@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu May 20 13:56:27 UTC 2021 - varkoly@suse.com
+
+- Update to version 2.6.15+git.1618478653.7272e6b6:
+  * e2e_test: Reset connection address unconditionally
+  * e2e_test: Fixes
+  * Fix wizards ui
+  * e2e_test: Drop timeout and look for report instead
+  * Remove hawk_invoke and run_as command
+  * Fix README as the modal dialog for reports fails without direct connection to Xorg
+  * Use VERSION instead of VERSION_ID
+  * Check filename alphanumeric
+  * Remove unnecessary chmod
+  * e2e_test: Rebase on Leap 15.2. Remove -p & -t options
+  * Use safe_x
+  * Use safe_x instead of normal ruby constructs
+  * Use fullpath of binary
+  * Use BIG_TIMEOUT constant
+  * Remove unused requirements.txt
+  * Update geckodriver to v0.29.0
+  * e2e_test: Minor fixes
+  * Improve controllers
+  * Update requirements.txt. Minor fixes
+  * Fix Dockerfile & .pylintrc
+  * Adapt hawk_test code to support testing for 12-SP2
+  * Adjust Dockerfile to best & recommended practices
+  * Fix bsc#1163381
+  * Allow also users in haclient to view history explorer
+  * Update release.md
+  * Update puma to boot.rb file
+  * Update Gemfile
+
+-------------------------------------------------------------------
+Thu May 20 11:44:41 UTC 2021 - varkoly@suse.com
+
+- Update to version 2.6.15+git.1611141758.757a4068:
+  * Improve controllers
+  * Update puma and rails deps
+  * allow user to acess history explorer
+  * fixup
+  * Fix bsc#1163381
+  * Fix bsc#1163381
+  * update doc
+  * Download driver during docker image build
+  * Reference testing doc to main readme
+  * add e2e tests
+
+-------------------------------------------------------------------
 Thu Oct 22 14:47:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only pull in the distro default ruby version; as hawk only
