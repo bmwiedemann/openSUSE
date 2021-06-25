@@ -32,7 +32,7 @@ BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  ocamlfind(unix)
 # make check
-BuildRequires:  python > 3.0
+BuildRequires:  python(abi) > 3.0
 %if 0%{?suse_version} > 1315
 BuildRequires:  python3-numpy
 %else
