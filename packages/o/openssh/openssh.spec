@@ -109,6 +109,7 @@ Patch44:        openssh-fix-ssh-copy-id.patch
 Patch45:        openssh-8.4p1-ssh_config_d.patch
 Patch46:        openssh-whitelist-syscalls.patch
 Patch47:        openssh-8.4p1-vendordir.patch
+Patch48:        openssh-8.4p1-pam_motd.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -363,8 +364,9 @@ done
 
 %pre server -f sshd.pre
 %if %{defined _distconfdir}
-# move outdated pam.d/*.rpmsave file away
+# Prepare for migration to /usr/etc.
 test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd.rpmsave.old ||:
+test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/ssh/sshd_config.rpmsave.old ||:
 %endif
 
 %service_add_pre sshd.service
@@ -390,8 +392,20 @@ fi
 %posttrans server
 # Migration to /usr/etc.
 test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd ||:
+test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/ssh/sshd_config ||:
 %endif
 
+%if %{defined _distconfdir}
+%pre clients
+# Prepare for migration to /usr/etc.
+test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config.rpmsave.old ||:
+%endif
+
+%if %{defined _distconfdir}
+%posttrans clients
+# Migration to /usr/etc.
+test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config ||:
+%endif
 
 %triggerin -n openssh-fips -- %{name} = %{version}-%{release}
 %restart_on_update sshd

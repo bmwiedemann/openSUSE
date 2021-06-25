@@ -1508,4 +1508,13 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
   systemd-rpm-macros (bsc#1180083). (forwarded request 887559 from hpjansson)</comment>
     <requestid>888799</requestid>
   </revision>
+  <revision rev="152" vrev="6">
+    <srcmd5>1fd3ae4fa5da1e2fee08d411f68ea14d</srcmd5>
+    <version>8.4p1</version>
+    <time>1624626072</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't move user-modified ssh_config and sshd_config files to
+  .rpmsave on upgrade. (forwarded request 901581 from hpjansson)</comment>
+    <requestid>901582</requestid>
+  </revision>
 </revisionlist>

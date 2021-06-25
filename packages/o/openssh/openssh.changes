@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 23 18:32:20 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Don't move user-modified ssh_config and sshd_config files to
+  .rpmsave on upgrade.
+
+-------------------------------------------------------------------
+Tue May 18 17:16:33 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use pam_motd to unify motd message output [bsc#1185897]
+  (openssh-8.4p1-pam_motd.patch)
+
+-------------------------------------------------------------------
 Thu Apr 22 12:02:55 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Change vendor configuration dir from /usr/share/ssh/ to
