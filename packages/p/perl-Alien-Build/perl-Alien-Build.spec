@@ -18,7 +18,7 @@
 
 %define cpan_name Alien-Build
 Name:           perl-Alien-Build
-Version:        2.40
+Version:        2.41
 Release:        0
 Summary:        Build external dependencies for use in CPAN
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -39,8 +39,9 @@ BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Path::Tiny) >= 0.077
 BuildRequires:  perl(Test2::API) >= 1.302096
-BuildRequires:  perl(Test2::V0) >= 0.000060
+BuildRequires:  perl(Test2::V0) >= 0.000121
 BuildRequires:  perl(Text::ParseWords) >= 3.26
+BuildRequires:  perl(parent)
 Requires:       perl(Capture::Tiny) >= 0.17
 Requires:       perl(Digest::SHA)
 Requires:       perl(ExtUtils::CBuilder)
@@ -54,6 +55,7 @@ Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Path::Tiny) >= 0.077
 Requires:       perl(Test2::API) >= 1.302096
 Requires:       perl(Text::ParseWords) >= 3.26
+Requires:       perl(parent)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  pkg-config

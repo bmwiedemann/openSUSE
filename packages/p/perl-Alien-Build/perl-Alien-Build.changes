@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 23 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.41
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.41      2021-06-21 22:50:57 -0600
+    - Documentation fixes (gh#266, gh#267)
+    - Use parent instead of base in code and documentation (gh#268)
+
+-------------------------------------------------------------------
 Fri May 14 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.40
