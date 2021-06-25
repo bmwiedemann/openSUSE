@@ -16,8 +16,10 @@
 #
 
 
+%{bcond_with docs}
+
 Name:           exiv2
-Version:        0.27.3
+Version:        0.27.4
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -26,14 +28,19 @@ URL:            http://www.exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/Exiv2/exiv2/pull/1271.patch
 BuildRequires:  cmake
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+%if %{with docs}
+BuildRequires:  doxygen
 # doxygen likes to have this
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
+# Todo: graph generation fails with missing fonts
+%else
+Obsoletes:      libexiv2-doc < %{version}-%{release} 
+%endif
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libxslt
@@ -119,13 +126,19 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
         -DEXIV2_BUILD_UNIT_TESTS=OFF \
 %endif
         -DEXIV2_BUILD_PO=ON \
+%if %{with docs}
         -DEXIV2_BUILD_DOC=ON \
+%else
+        -DEXIV2_BUILD_DOC=OFF \
+%endif
         -DEXIV2_ENABLE_CURL=ON \
         -DEXIV2_ENABLE_WEBREADY=ON \
         -DEXIV2_ENABLE_NLS=ON \
+        -DEXIV2_ENABLE_BMFF=ON \
         -DCMAKE_SKIP_RPATH=OFF
-make %{?_smp_mflags}
-make %{?_smp_mflags} doc
+
+%cmake_build
+# make %{?_smp_mflags} doc
 
 %install
 %cmake_install
@@ -207,7 +220,9 @@ done
 %{_libdir}/cmake/exiv2/exiv2Config.cmake
 %{_libdir}/cmake/exiv2/exiv2ConfigVersion.cmake
 
+%if %{with docs}
 %files -n libexiv2-doc
 %{_docdir}/libexiv2
+%endif
 
 %changelog

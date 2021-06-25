@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 18 15:15:56 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable bmff format
+- disable docs for now:
+  - graphviz was failing for a long time when trying to render the
+    pngs as graphviz-gd was missing
+  - even after adding this it still fails with missing fonts
+
+-------------------------------------------------------------------
+Fri Jun 18 12:57:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.27.4:
+  - Support for bmff files (HEIC, HEIF, AVIF, CR3, JXL/bmff)
+  - Bash test scripts rewritten in python
+  - DNG 1.6 and Exif 2.32 support
+  - Bug and Security fixes
+  - Updated build and test environments
+  - Localisation support on Crowdin
+  - Revised documentation
+  - Other improvements 
+- drop 1271.patch:
+  included in update
+
+-------------------------------------------------------------------
 Wed May 12 16:35:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1271.patch: Fix build using GCC 11 (boo#1185218).
