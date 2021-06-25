@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-backport
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-backport
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 %define mod_name backport
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.1}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            http://github.com/castwide/backport
+BuildRequires:  ruby-macros >= 5
+URL:            http://github.com/castwide/backport
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pure Ruby library for event-driven IO
@@ -53,7 +53,6 @@ A pure Ruby library for event-driven IO.
 # MANUAL
 find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name console -o -name setup \) | xargs rm
 # /MANUAL
-
 
 %gem_packages
 
