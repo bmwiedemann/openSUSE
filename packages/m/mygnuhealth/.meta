@@ -1,0 +1,9 @@
+<package name="mygnuhealth" project="openSUSE:Factory">
+  <title>The GNU Health Personal Health Record application</title>
+  <description>MyGNUHealth is the GNUHealth Personal Health Record application for desktop and mobile devices that integrates with the GNU Health Federation.
+
+MyGNUHealth is intended for Libre operating systems. (BSD, GNU/Linux..) It uses the Qt and Kirigami frameworks, and can be installed in desktops (KDE Plasma) and mobile devices (eg, PinePhone).
+
+MyGNUHealth leaves the ownership of the data with you. It does not contain trackers or other 3rd party spyware.</description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="mygnuhealth"/>
+</package>
