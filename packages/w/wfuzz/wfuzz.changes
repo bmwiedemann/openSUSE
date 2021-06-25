@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jun 25 10:10:02 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Removed shebang to fix rpmlint warning
+
+-------------------------------------------------------------------
+Wed Jun 23 14:27:09 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- First version of wfuzz package.
