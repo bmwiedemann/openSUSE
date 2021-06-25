@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-yard
-Version:        0.9.25
+Version:        0.9.26
 Release:        0
 Summary:        Documentation tool for consistent and usable documentation in Ruby
 License:        MIT
@@ -63,7 +63,7 @@ find -type f -print0 | xargs -0 touch -r %{SOURCE0}
   --doc-files="CHANGELOG.md LEGAL LICENSE README.md" \
   -f
 # MANUAL
-find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github \) | xargs rm -rf
+find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github -o -name .gitattributes \) | xargs rm -rf
 # /MANUAL
 
 %gem_packages

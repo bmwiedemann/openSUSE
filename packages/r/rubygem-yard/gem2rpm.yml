@@ -30,7 +30,7 @@
 #   %endif
 # ## used by gem2rpm
 :post_install: |-
-  find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github \) | xargs rm -rf
+  find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github -o -name .gitattributes \) | xargs rm -rf
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
