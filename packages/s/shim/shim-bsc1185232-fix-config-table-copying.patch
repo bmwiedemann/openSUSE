@@ -1,0 +1,52 @@
+From 42c6148c7ebd026862ab96405e78191ff8ebf298 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 21 Jun 2021 16:38:02 +0800
+Subject: [PATCH] mok: skip the empty variables when copying the data to MOK
+ config table
+
+When calculating the size of the MOK config table, we skip the empty
+variables. However, when copying the data, we copied the zeroed config
+templates for those empty variables, and this could cause crash since we
+may write more data than the allocated pages. This commit skips the
+empty variables when copying the data so that the size of copied data
+matches config_sz.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ mok.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/mok.c b/mok.c
+index beac0ff6..add21223 100644
+--- a/mok.c
++++ b/mok.c
+@@ -1028,16 +1028,18 @@ EFI_STATUS import_mok_state(EFI_HANDLE image_handle)
+ 	for (i = 0; p && mok_state_variables[i].name != NULL; i++) {
+ 		struct mok_state_variable *v = &mok_state_variables[i];
+ 
+-		ZeroMem(&config_template, sizeof(config_template));
+-		strncpy(config_template.name, (CHAR8 *)v->rtname8, 255);
+-		config_template.name[255] = '\0';
++		if (v->data && v->data_size) {
++			ZeroMem(&config_template, sizeof(config_template));
++			strncpy(config_template.name, (CHAR8 *)v->rtname8, 255);
++			config_template.name[255] = '\0';
+ 
+-		config_template.data_size = v->data_size;
++			config_template.data_size = v->data_size;
+ 
+-		CopyMem(p, &config_template, sizeof(config_template));
+-		p += sizeof(config_template);
+-		CopyMem(p, v->data, v->data_size);
+-		p += v->data_size;
++			CopyMem(p, &config_template, sizeof(config_template));
++			p += sizeof(config_template);
++			CopyMem(p, v->data, v->data_size);
++			p += v->data_size;
++		}
+ 	}
+ 	if (p) {
+ 		ZeroMem(&config_template, sizeof(config_template));
+-- 
+2.31.1
+

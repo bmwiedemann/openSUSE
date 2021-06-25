@@ -1,0 +1,36 @@
+From 41da21f1f9d4af213f9f235a864772b99ce85fc7 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 18 Jun 2021 17:54:46 +0800
+Subject: [PATCH] Disable exporting vendor-dbx to MokListXRT
+
+As the vendor-dbx grows, it caused some problems when writing such
+a large variable. Some firmwares lie the avaiable space(*1) , and
+some even crash(*2) for no good reason after the writing of
+MokListXRT. Both shim and kernel don't rely on MokListXRT to block
+anything, so we just stop exporting vendor-dbx to MokListXRT to
+avoid the potential hassles.
+
+(*1) https://bugzilla.suse.com/show_bug.cgi?id=1185261
+(*2) https://github.com/rhboot/shim/pull/369#issuecomment-855275115
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ mok.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/mok.c b/mok.c
+index beac0ff6..a687a92b 100644
+--- a/mok.c
++++ b/mok.c
+@@ -194,8 +194,6 @@ struct mok_state_variable mok_state_variables[] = {
+ 		     EFI_VARIABLE_NON_VOLATILE,
+ 	 .no_attr = EFI_VARIABLE_RUNTIME_ACCESS,
+ 	 .categorize_addend = categorize_deauthorized,
+-	 .addend = &vendor_deauthorized,
+-	 .addend_size = &vendor_deauthorized_size,
+ 	 .flags = MOK_MIRROR_KEYDB |
+ 		  MOK_MIRROR_DELETE_FIRST |
+ 		  MOK_VARIABLE_LOG,
+-- 
+2.31.1
+

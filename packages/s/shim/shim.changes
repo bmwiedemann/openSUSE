@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 21 08:51:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1185232-fix-config-table-copying.patch to avoid
+  buffer overflow when copying data to the MOK config table
+  (bsc#1185232)
+
+-------------------------------------------------------------------
+Mon Jun 21 01:58:00 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-disable-export-vendor-dbx.patch to disable exporting
+  vendor-dbx to MokListXRT since writing a large RT variable
+  could crash some machines (bsc#1185261)
+- Add shim-bsc1187260-fix-efi-1.10-machines.patch to avoid the
+  potential crash when calling QueryVariableInfo in EFI 1.10
+  machines (bsc#1187260)
+
+-------------------------------------------------------------------
+Thu Jun 17 03:03:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-fix-aa64-relsz.patch to fix the size of rela sections
+  for AArch64
+  Fix: https://github.com/rhboot/shim/issues/371 
+
+-------------------------------------------------------------------
 Fri Jun  4 09:22:51 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1185232-relax-loadoptions-length-check.patch to

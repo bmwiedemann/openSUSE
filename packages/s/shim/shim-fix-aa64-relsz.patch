@@ -1,0 +1,132 @@
+From 9828f65f3e9de29da7bc70cb71069cc1d7ca1b4a Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 16 Jun 2021 16:13:32 +0800
+Subject: [PATCH] arm/aa64: fix the size of .rela* sections
+
+The previous commit(*) merged .rel* and .dyn* into .rodata, and this
+made ld to generate the wrong size for .rela* sections that covered
+other unrelated sections. When the EFI image was loaded, _relocate()
+went through the unexpected data and may cause unexpected crash.
+This commit moves .rel* and .dyn* out of .rodata in the ld script but
+also moves the related variables, such as _evrodata, _rodata_size,
+and _rodata_vsize, to the end of the new .dyn section, so that the
+crafted pe-coff section header for .rodata still covers our new
+.rela and .dyn sections.
+
+(*) 212ba30544f ("arm/aa64 targets: put .rel* and .dyn* in .rodata")
+
+Fix issue: https://github.com/rhboot/shim/issues/371
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ Makefile            |  4 ++--
+ elf_aarch64_efi.lds | 24 ++++++++++++++++--------
+ elf_arm_efi.lds     | 24 ++++++++++++++++--------
+ 3 files changed, 34 insertions(+), 18 deletions(-)
+
+Index: shim-15.4/Makefile
+===================================================================
+--- shim-15.4.orig/Makefile
++++ shim-15.4/Makefile
+@@ -243,7 +243,7 @@ ifneq ($(OBJCOPY_GTE224),1)
+ endif
+ 	$(OBJCOPY) -D -j .text -j .sdata -j .data -j .data.ident \
+ 		-j .dynamic -j .rodata -j .rel* \
+-		-j .rela* -j .reloc -j .eh_frame \
++		-j .rela* -j .dyn -j .reloc -j .eh_frame \
+ 		-j .vendor_cert -j .sbat \
+ 		$(FORMAT) $< $@
+ 	# I am tired of wasting my time fighting binutils timestamp code.
+@@ -260,7 +260,7 @@ ifneq ($(OBJCOPY_GTE224),1)
+ endif
+ 	$(OBJCOPY) -D -j .text -j .sdata -j .data \
+ 		-j .dynamic -j .rodata -j .rel* \
+-		-j .rela* -j .reloc -j .eh_frame -j .sbat \
++		-j .rela* -j .dyn -j .reloc -j .eh_frame -j .sbat \
+ 		-j .debug_info -j .debug_abbrev -j .debug_aranges \
+ 		-j .debug_line -j .debug_str -j .debug_ranges \
+ 		-j .note.gnu.build-id \
+Index: shim-15.4/elf_aarch64_efi.lds
+===================================================================
+--- shim-15.4.orig/elf_aarch64_efi.lds
++++ shim-15.4/elf_aarch64_efi.lds
+@@ -70,21 +70,29 @@ SECTIONS
+   .rodata :
+   {
+     _rodata = .;
+-    *(.rela.dyn)
+-    *(.rela.plt)
+-    *(.rela.got)
+-    *(.rela.data)
+-    *(.rela.data*)
+-
+     *(.rodata*)
+     *(.srodata)
+-    *(.dynsym)
+-    *(.dynstr)
+     . = ALIGN(16);
+     *(.note.gnu.build-id)
+     . = ALIGN(4096);
+     *(.vendor_cert)
+     *(.data.ident)
++    . = ALIGN(4096);
++  }
++  . = ALIGN(4096);
++  .rela :
++  {
++    *(.rela.dyn)
++    *(.rela.plt)
++    *(.rela.got)
++    *(.rela.data)
++    *(.rela.data*)
++  }
++  . = ALIGN(4096);
++  .dyn :
++  {
++    *(.dynsym)
++    *(.dynstr)
+     _evrodata = .;
+     . = ALIGN(4096);
+   }
+Index: shim-15.4/elf_arm_efi.lds
+===================================================================
+--- shim-15.4.orig/elf_arm_efi.lds
++++ shim-15.4/elf_arm_efi.lds
+@@ -70,21 +70,29 @@ SECTIONS
+   .rodata :
+   {
+     _rodata = .;
+-    *(.rel.dyn)
+-    *(.rel.plt)
+-    *(.rel.got)
+-    *(.rel.data)
+-    *(.rel.data*)
+-
+     *(.rodata*)
+     *(.srodata)
+-    *(.dynsym)
+-    *(.dynstr)
+     . = ALIGN(16);
+     *(.note.gnu.build-id)
+     . = ALIGN(4096);
+     *(.vendor_cert)
+     *(.data.ident)
++    . = ALIGN(4096);
++  }
++  . = ALIGN(4096);
++  .rela :
++  {
++    *(.rela.dyn)
++    *(.rela.plt)
++    *(.rela.got)
++    *(.rela.data)
++    *(.rela.data*)
++  }
++  . = ALIGN(4096);
++  .dyn :
++  {
++    *(.dynsym)
++    *(.dynstr)
+     _evrodata = .;
+     . = ALIGN(4096);
+   }

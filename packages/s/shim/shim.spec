@@ -85,6 +85,14 @@ Patch8:         shim-bsc1185621-relax-max-var-sz-check.patch
 Patch9:         shim-bsc1185261-relax-import_mok_state-check.patch
 # PATCH-FIX-UPSTREAM shim-bsc1185232-relax-loadoptions-length-check.patch bsc#1185232 glin@suse.com -- Relax the check for the LoadOptions length
 Patch10:        shim-bsc1185232-relax-loadoptions-length-check.patch
+# PATCH-FIX-UPSTREAM shim-fix-aa64-relsz.patch glin@suse.com -- Fix the size of rela* sections for AArch64
+Patch11:        shim-fix-aa64-relsz.patch
+# PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
+Patch12:        shim-disable-export-vendor-dbx.patch
+# PATCH-FIX-UPSTREAM shim-bsc1187260-fix-efi-1.10-machines.patch bsc#1187260 glin@suse.com -- Don't call QueryVariableInfo() on EFI 1.10 machines
+Patch13:        shim-bsc1187260-fix-efi-1.10-machines.patch
+# PATCH-FIX-UPSTREAM shim-bsc1185232-fix-config-table-copying.patch bsc#1185232 glin@suse.com -- Avoid buffer overflow when copying the MOK config table
+Patch14:        shim-bsc1185232-fix-config-table-copying.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -133,6 +141,10 @@ The source code of UEFI shim loader
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 
 %build
 # generate the vendor SBAT metadata
