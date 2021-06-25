@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 21:00:15 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Removed fix for rpmlint warning "files-duplicate" and fdupes
+  build requirement (not needed anymore).
+
+-------------------------------------------------------------------
+Thu Jun 24 19:54:54 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.2
+  - Improve compatibility with stable distros and multiarch distros
+- Drop qpdf9.patch because now in upstream.
+
+-------------------------------------------------------------------
 Wed Jun 16 19:27:49 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Apply qpdf9.patch only for Leap <= 15.2. Leap 15.3 has qpdf10.
