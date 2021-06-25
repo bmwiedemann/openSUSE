@@ -19,13 +19,13 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://nextcloud.com/
-Source:         https://github.com/nextcloud/desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
@@ -37,6 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  inkscape
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
