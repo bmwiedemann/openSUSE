@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 24 09:46:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.31
+  + ZBX-19334: removed redundant ListenIP parameter in server's
+    configuration file
+  + ZBX-19233: fixed potential loss of original error when reading
+    vmware events
+  + ZBX-18883: fixed logrt[] monitoring with copytruncate rotation
+  + ZBX-19210: fixed css file versioning for custom themes
+  + ZBX-18912: fixed escalation message is using template message
+    instead of custom message in actions
+  + ZBX-19195: fixed endless loop in graph widget processing if
+    widget size is too small
+
+-------------------------------------------------------------------
 Wed Apr 14 13:43:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.30
