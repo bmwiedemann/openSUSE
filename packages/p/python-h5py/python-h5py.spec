@@ -1,5 +1,5 @@
 #
-# spec file for package python-h5py
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -69,7 +69,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           %{pname}%{?my_suffix}
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
