@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 25 09:59:23 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport for <https://github.com/lxc/lxd/pull/8908> which fixes a
+  Leap-specific kernel backport bug (close_range(2) was backported but not the
+  flags that it supported in the first version). boo#1186786
+  + boo1186786-0001-forkexec-handle-broken-close_range-backport-in-openS.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 02:25:02 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Build lxd-agent and lxd-p2c statically to match upstream LXD build scripts

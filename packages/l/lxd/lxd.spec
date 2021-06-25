@@ -51,6 +51,8 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
+# UPSTREAM-FIX: Backport of <https://github.com/lxc/lxd/pull/8908>. boo#1186786
+Patch1:         boo1186786-0001-forkexec-handle-broken-close_range-backport-in-openS.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -122,6 +124,8 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
+# boo#1186786
+%patch1 -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice

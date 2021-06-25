@@ -1,0 +1,33 @@
+From a0c04ef1b99c94edb50084825365c2bab8dadb7c Mon Sep 17 00:00:00 2001
+From: Christian Brauner <christian.brauner@ubuntu.com>
+Date: Thu, 17 Jun 2021 12:45:25 +0200
+Subject: [PATCH] forkexec: handle broken close_range() backport in openSUSE
+ Leap 15.3
+
+Fixes: https://discuss.linuxcontainers.org/t/lxc-exec-results-in-error-failed-to-retrieve-pid-of-executing-child-process
+Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+---
+ lxd/main_forkexec.go | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/lxd/main_forkexec.go b/lxd/main_forkexec.go
+index 7cc5e8d7130c..574f25eeb988 100644
+--- a/lxd/main_forkexec.go
++++ b/lxd/main_forkexec.go
+@@ -292,7 +292,12 @@ __attribute__ ((noinline)) static int __forkexec(void)
+ 
+ 	ret = close_range(EXEC_PIPE_FD + 1, UINT_MAX, CLOSE_RANGE_UNSHARE);
+ 	if (ret) {
+-		if (errno == ENOSYS)
++		// Fallback to close_inherited() when the syscall is not
++		// available or when CLOSE_RANGE_UNSHARE isn't supported.
++		// On a regular kernel CLOSE_RANGE_UNSHARE should always be
++		// available but openSUSE Leap 15.3 seems to have a partial
++		// backport without CLOSE_RANGE_UNSHARE support.
++		if (errno == ENOSYS || errno == EINVAL)
+ 			ret = close_inherited(fds_to_ignore, ARRAY_SIZE(fds_to_ignore));
+ 	}
+ 	if (ret)
+-- 
+2.32.0
+
