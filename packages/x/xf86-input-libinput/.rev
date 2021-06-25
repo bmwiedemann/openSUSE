@@ -413,4 +413,16 @@ In short, do not use this driver for tablets on production workstations yet.</co
     has the fix for it.</comment>
     <requestid>886000</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>087c16a6b291705cf32946874b199aed</srcmd5>
+    <version>1.1.0</version>
+    <time>1624626073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * This release adds a new driver-specific option: 
+    ScrollPixelDistance. This option converts movement &quot;pixels&quot;
+    from libinput into the server's &quot;scroll unit&quot; definition and
+    can thus help speeding up or slowing down two-finger/edge scrolling.</comment>
+    <requestid>901597</requestid>
+  </revision>
 </revisionlist>
