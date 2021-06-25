@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 12:33:45 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Use Installation::SecuritySettings (related to jsc#PM-2620).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
