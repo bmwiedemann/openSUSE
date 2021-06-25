@@ -217,6 +217,7 @@ Recommends:     %{python}-python-memcached
 Recommends:     %{python}-pywinrm
 Recommends:     %{python}-redis
 Recommends:     %{python}-requests
+Recommends:     %{python}-selinux
 Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
