@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 25 14:16:47 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Favor libz1 when in doubt and asked for libz.so.1.
+
+-------------------------------------------------------------------
 Tue Jun 22 11:52:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Make the fips pattern supersede "patterns-server-enterprise-fips",

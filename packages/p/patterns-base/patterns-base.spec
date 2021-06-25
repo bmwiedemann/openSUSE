@@ -182,6 +182,8 @@ Suggests:       pulseaudio
 Suggests:       openssl
 # In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
 Suggests:       openssl-1_1
+# We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
+Suggests:       libz1
 
 %description base
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
