@@ -24,7 +24,7 @@
 
 %define libname %{name}1
 Name:           librdkafka
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jun  6 11:34:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+ * [KIP-360](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=89068820) - Improve reliability of transactional producer.
+   Requires Apache Kafka 2.5 or later.
+ * OpenSSL Engine support (`ssl.engine.location`) by @adinigam and @ajbarb.
+ * Added `connections.max.idle.ms` to automatically close idle broker
+   connections.
+   This feature is disabled by default unless `bootstrap.servers` contains
+   the string `azure` in which case the default is set to <4 minutes to improve
+   connection reliability and circumvent limitations with the Azure load
+   balancers (see #3109 for more information).
+ * Bumped to OpenSSL 1.1.1k in binary librdkafka artifacts.
+ * The binary librdkafka artifacts for Alpine are now using Alpine 3.12.
+   OpenSSL 1.1.1k.
+ * Improved static librdkafka Windows builds using MinGW (@neptoess, #3130).
+ * The C++ `oauthbearer_token_refresh_cb()` was missing a `Handle *`
+   argument that has now been added. This is a breaking change but the original
+   function signature is considered a bug.
+   This change only affects C++ OAuth developers.
+ * [KIP-735](https://cwiki.apache.org/confluence/display/KAFKA/KIP-735%3A+Increase+default+consumer+session+timeout) The consumer `session.timeout.ms`
+   default was changed from 10 to 45 seconds to make consumer groups more
+   robust and less sensitive to temporary network and cluster issues.
+ * Statistics: `consumer_lag` is now using the `committed_offset`,
+   while the new `consumer_lag_stored` is using `stored_offset`
+   (offset to be committed).
+   This is more correct than the previous `consumer_lag` which was using
+   either `committed_offset` or `app_offset` (last message passed
+   to application).
+  * Bugfixes
+
+-------------------------------------------------------------------
 Mon Apr 26 09:15:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:

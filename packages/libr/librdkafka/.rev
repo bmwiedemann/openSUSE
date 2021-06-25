@@ -177,4 +177,12 @@
    offsets were sent) would previously raise a fatal error due to invalid state</comment>
     <requestid>888420</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a01c94bc90ad851566fa88bada2118d</srcmd5>
+    <version>1.7.0</version>
+    <time>1624626067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901440</requestid>
+  </revision>
 </revisionlist>
