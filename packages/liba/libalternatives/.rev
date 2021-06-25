@@ -7,4 +7,17 @@
     <comment>removed stray CFLAGS in spec file</comment>
     <requestid>898982</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5205e03ac15abcc3d28c1172274c4281</srcmd5>
+    <version>1.1</version>
+    <time>1624626032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.1:
+  * docs: Add broken manpage
+  * tests: unit tests configs
+  * tests: fix memory leak during tests
+  * list_binaries: initialize pointer that is later used in free
+  * libalts_exec_default() sets errno on not found</comment>
+    <requestid>901232</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 21 22:00:23 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.1:
+  * docs: Add broken manpage
+  * tests: unit tests configs
+  * tests: fix memory leak during tests
+  * list_binaries: initialize pointer that is later used in free
+  * libalts_exec_default() sets errno on not found
+
+-------------------------------------------------------------------
 Wed Jun 09 16:50:09 UTC 2021 - adam.majer@suse.de
 
 - Version v1.0.0:

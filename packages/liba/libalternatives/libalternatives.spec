@@ -1,7 +1,7 @@
 #
 # spec file for package libalternatives
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define sover 1
 
 Name:           libalternatives
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Executes preferred application based on user preferences
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
-Url:            https://github.com/AdamMajer/libalternative.git
+URL:            https://github.com/AdamMajer/libalternative.git
 Source0:        libalternatives-v%{version}.tar
-BuildRequires:  gcc
 BuildRequires:  cmake > 3.8
 BuildRequires:  cunit-devel
+BuildRequires:  gcc
 
 %description
 libalternatives is a helper that executes an application based on preferences
@@ -36,8 +37,8 @@ maintain system symlinks states.
 
 
 %package -n alts
-License:        GPL-3.0-or-later
 Summary:        Executes preferred application based on user preferences
+License:        GPL-3.0-or-later
 
 %description -n alts
 This package contains a default helper and configuration application utility
@@ -48,16 +49,16 @@ without the need to maintain system symlinks states.
 
 
 %package devel
-License:        LGPL-3.0-or-later
 Summary:        Development headers for libalternatives
+License:        LGPL-3.0-or-later
 Requires:       libalternatives%sover = %version
 
 %description devel
 This package contains development headers and library for libalternatives.
 
 %package -n libalternatives%sover
-License:        LGPL-3.0-or-later
 Summary:        Runtime for libalternatives
+License:        LGPL-3.0-or-later
 
 %description -n libalternatives%sover
 This package contains the core logic and the runtime library for
@@ -67,8 +68,8 @@ preference.  This is accomplished with only a help of config files without the
 need to maintain system symlinks states.
 
 %package unit-test-helper
-License:        LGPL-3.0-or-later
 Summary:        Verification helper for libalternatives
+License:        LGPL-3.0-or-later
 
 %description unit-test-helper
 This is a testing-only installation that may be used to verify that successful
@@ -113,6 +114,7 @@ chmod 755 %buildroot/%_bindir/libalternatives-unit-test-helper.sh
 %license COPYING
 %doc README.md
 %_bindir/alts
+%_mandir/man1/alts.1.*
 
 %files devel
 %_includedir/libalternatives.h
@@ -130,4 +132,3 @@ chmod 755 %buildroot/%_bindir/libalternatives-unit-test-helper.sh
 %_bindir/libalternatives-unit-test-helper.sh
 
 %changelog
-
