@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global pythons python3
 Name:           python-dogpile.cache
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 %define modname dogpile.cache
 %define modver  1_1_1
