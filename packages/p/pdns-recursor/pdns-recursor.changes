@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 25 06:32:22 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- no longer supports 32-bit arches -- requiers 64-bit time_t
+- specfile cleanup - drop initrd cases
+- build-require gcc7 on SLE-12 variant
+
+-------------------------------------------------------------------
 Wed Jun  9 11:58:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.5.2:

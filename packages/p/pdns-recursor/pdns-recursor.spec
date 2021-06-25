@@ -16,11 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1230
 %bcond_without systemd
-%else
-%bcond_with    systemd
-%endif
 
 %if 0%{?fedora_version} >= 24 || 0%{?fc24}%{?fc25}
 %bcond_with    systemd_separetedlibs
@@ -41,32 +37,31 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 
-%if 0%{?suse_version} > 1325
-%ifnarch s390x
-BuildRequires:  libboost_context-devel
+%ifarch %ix86 %arm
+ExclusiveArch:  no-32bit-build
 %endif
+
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7-c++
+%define compiler_ver -7
+%else
+BuildRequires:  gcc-c++
+%endif
+
+%if 0%{?suse_version} > 1325
+BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%endif
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse}
-BuildRequires:  boost_1_58_0-devel
-%endif
-%if ( 0%{?suse_version} <= 1315 && ! 0%{?is_opensuse} ) || 0%{?suse_version} == 1320
+%else
 BuildRequires:  boost-devel
 %endif
 
-BuildRequires:  gcc-c++
 BuildRequires:  libsodium-devel
 BuildRequires:  lua-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
-%if %{without systemd}
-PreReq:         %insserv_prereq
-%endif
-PreReq:         %fillup_prereq
 PreReq:         shadow
 %else
 PreReq:         shadow-utils
@@ -74,13 +69,11 @@ PreReq:         shadow-utils
 %if %{with pdns_protobuf}
 BuildRequires:  protobuf-devel
 %endif
-%if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %if %{with systemd_separetedlibs}
 BuildRequires:  pkgconfig(libsystemd)
 %endif
-%{?systemd_requires}
-%endif
+%{?systemd_ordering}
 PreReq:         pdns-common
 #
 URL:            https://www.powerdns.com/
@@ -107,6 +100,7 @@ Authors:
 %autosetup -n %{name}-%{version}
 
 %build
+export CXX=g++%{?compiler_ver}
 autoreconf -fi
 ln effective_tld_names.dat effective_tld_list.dat
 %configure                           \
@@ -128,17 +122,9 @@ make %{?_smp_mflags} install DESTDIR="%{buildroot}"
 # config
 %{__install} -D -m 0644 %{S:2} %{buildroot}%{_sysconfdir}/pdns/recursor.conf
 # init systems
-%if %{with systemd}
 %{__ln_s} -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # installed by make install
 rm -rvf %{buildroot}%{_sysconfdir}/init.d/%{name}
-%else
-%{__install} -D  -m 0755 %{S:1} %{buildroot}%{_sysconfdir}/init.d/%{name}
-%{__ln_s} -f %{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
-%endif
-
-%clean
-%{__rm} -rf %{buildroot}
 
 %pre
 %if 0%{?suse_version} && %{with systemd}
@@ -154,8 +140,6 @@ rm -rvf %{buildroot}%{_sysconfdir}/init.d/%{name}
 %preun
 %if %{with systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
 %endif
 %endif
 
@@ -163,21 +147,15 @@ rm -rvf %{buildroot}%{_sysconfdir}/init.d/%{name}
 %postun
 %if %{with systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update %{name}
-%insserv_cleanup
 %endif
 %endif
 
 %files
-%defattr (-,root,root,-)
 %config(noreplace)  %attr(640,root,pdns) %{_sysconfdir}/pdns/*.conf
 %{_sysconfdir}/pdns/recursor.conf-dist
 %if %{with systemd}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}@.service
-%else
-%config(noreplace) %{_sysconfdir}/init.d/%{name}
 %endif
 %{_sbindir}/rcpdns-recursor
 %{_sbindir}/pdns_recursor

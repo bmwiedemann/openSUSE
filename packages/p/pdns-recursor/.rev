@@ -555,4 +555,14 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>898824</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>74353a906dab0a0fa15f35a1f7618375</srcmd5>
+    <version>4.5.2</version>
+    <time>1624626094</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer supports 32-bit arches -- requiers 64-bit time_t
+- specfile cleanup - drop initrd cases
+- build-require gcc7 on SLE-12 variant</comment>
+    <requestid>902291</requestid>
+  </revision>
 </revisionlist>
