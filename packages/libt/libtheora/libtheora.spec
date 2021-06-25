@@ -1,7 +1,7 @@
 #
 # spec file for package libtheora
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Group:          Productivity/Multimedia/Other
 Version:        1.1.1
 Release:        0
 %define pkg_version %version
-Url:            http://www.theora.org/
+URL:            http://www.theora.org/
 
 Source:         http://downloads.xiph.org/releases/theora/%{name}-%{pkg_version}.tar.bz2
 Source2:        baselibs.conf
@@ -32,7 +32,6 @@ BuildRequires:  libogg-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkg-config
-BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # bug437293
 %ifarch ppc64
@@ -40,8 +39,8 @@ Obsoletes:      libtheora-64bit
 %endif
 
 %description
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our 
-multimedia technology it can be used to distribute film and video online and on disc without 
+Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
+multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
 %package -n libtheora0
@@ -56,19 +55,19 @@ Obsoletes:      libtheora-64bit
 #
 
 %description -n libtheora0
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our 
-multimedia technology it can be used to distribute film and video online and on disc without 
+Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
+multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
-Theora scales from postage stamp to HD resolution, and is considered particularly competitive 
-at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it 
+Theora scales from postage stamp to HD resolution, and is considered particularly competitive
+at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it
 has lots of room for improvement as encoder technology develops.
 
-Theora is in full public release as of November 3, 2008. The bitstream format for Theora I 
-was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible 
+Theora is in full public release as of November 3, 2008. The bitstream format for Theora I
+was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible
 with future releases.
 
-The package contains the library that can decode and encode Theora streams. Theora is also 
+The package contains the library that can decode and encode Theora streams. Theora is also
 able to playback VP3 streams.
 
 Authors:
@@ -80,8 +79,8 @@ Summary:        Theora video decompression library
 Group:          System/Libraries
 
 %description -n libtheoradec1
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our 
-multimedia technology it can be used to distribute film and video online and on disc without 
+Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
+multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
 This subpackage contains the decoder library.
@@ -91,8 +90,8 @@ Summary:        Theora video compression library
 Group:          System/Libraries
 
 %description -n libtheoraenc1
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our 
-multimedia technology it can be used to distribute film and video online and on disc without 
+Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
+multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
 This subpackage contains the encoder library.
@@ -111,19 +110,19 @@ Obsoletes:      libtheora-devel-64bit
 #
 
 %description devel
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our 
-multimedia technology it can be used to distribute film and video online and on disc without 
+Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
+multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
-Theora scales from postage stamp to HD resolution, and is considered particularly competitive 
-at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it 
+Theora scales from postage stamp to HD resolution, and is considered particularly competitive
+at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it
 has lots of room for improvement as encoder technology develops.
 
-Theora is in full public release as of November 3, 2008. The bitstream format for Theora I 
-was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible 
+Theora is in full public release as of November 3, 2008. The bitstream format for Theora I
+was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible
 with future releases.
 
-The package contains the library that can decode and encode Theora streams. Theora is also 
+The package contains the library that can decode and encode Theora streams. Theora is also
 able to playback VP3 streams.
 
 Authors:

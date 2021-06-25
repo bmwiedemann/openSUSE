@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 21 18:06:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove completely unnecessary python BR
+
+-------------------------------------------------------------------
 Sat Aug 30 11:29:11 UTC 2014 - jengelh@inai.de
 
 - Split libtheoradec/enc from libtheora0 as they have different
