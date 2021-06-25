@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ppxlib</param>
-    <param name="revision">06a2c9bdad8c1d3361a3d9430e9bf58476b08590</param>
+    <param name="revision">5830d89a7cbe3a683a5d7d9948e2d14cffffa8d3</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-ppx/ppxlib.git</param>
