@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 23 16:54:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 89.0.2 (boo#1187648):
+  * Fix occasional hangs with Software WebRender on Linux (bmo#1708224)
+
+-------------------------------------------------------------------
+Sat Jun 19 09:00:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 89.0.1 (boo#1187475):
+  * Updated translations, including full Spanish (Mexico)
+    localization and other improvements (bmo#1714946)
+  * Fix various font related regressions (bmo#1694174)
+  * Linux: Fix performance and stability regressions with
+    WebRender (bmo#1715895, bmo#1715902)
+  * Enterprise: Fix for the `DisableDeveloperTools` policy not
+    having effect anymore (bmo#1715777)
+  * Linux: Fix broken scrollbars on some GTK themes (bmo#1714103)
+  * Various stability fixes
+
+-------------------------------------------------------------------
 Sat May 29 20:55:56 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 89.0

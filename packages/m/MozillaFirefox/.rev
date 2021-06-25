@@ -5016,4 +5016,24 @@
 - do not rely on nodejs10 packagename anymore</comment>
     <requestid>897726</requestid>
   </revision>
+  <revision rev="338" vrev="1">
+    <srcmd5>a073668dce892d9a9b5b181ea20d1ded</srcmd5>
+    <version>89.0.2</version>
+    <time>1624626072</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 89.0.2 (boo#1187648):
+  * Fix occasional hangs with Software WebRender on Linux (bmo#1708224)
+
+- Mozilla Firefox 89.0.1 (boo#1187475):
+  * Updated translations, including full Spanish (Mexico)
+    localization and other improvements (bmo#1714946)
+  * Fix various font related regressions (bmo#1694174)
+  * Linux: Fix performance and stability regressions with
+    WebRender (bmo#1715895, bmo#1715902)
+  * Enterprise: Fix for the `DisableDeveloperTools` policy not
+    having effect anymore (bmo#1715777)
+  * Linux: Fix broken scrollbars on some GTK themes (bmo#1714103)
+  * Various stability fixes</comment>
+    <requestid>901588</requestid>
+  </revision>
 </revisionlist>
