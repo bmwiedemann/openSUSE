@@ -8,11 +8,11 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v16.2.0/Makefile
+Index: node-git.16151bec08/Makefile
 ===================================================================
---- node-v16.2.0.orig/Makefile
-+++ node-v16.2.0/Makefile
-@@ -47,7 +47,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+--- node-git.16151bec08.orig/Makefile
++++ node-git.16151bec08/Makefile
+@@ -52,7 +52,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
  
@@ -21,10 +21,10 @@ Index: node-v16.2.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v16.2.0/tools/install.py
+Index: node-git.16151bec08/tools/install.py
 ===================================================================
---- node-v16.2.0.orig/tools/install.py
-+++ node-v16.2.0/tools/install.py
+--- node-git.16151bec08.orig/tools/install.py
++++ node-git.16151bec08/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -137,10 +137,10 @@ Index: node-v16.2.0/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v16.2.0/doc/node.1
+Index: node-git.16151bec08/doc/node.1
 ===================================================================
---- node-v16.2.0.orig/doc/node.1
-+++ node-v16.2.0/doc/node.1
+--- node-git.16151bec08.orig/doc/node.1
++++ node-git.16151bec08/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-v16.2.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v16.2.0/src/node.stp
+Index: node-git.16151bec08/src/node.stp
 ===================================================================
---- node-v16.2.0.orig/src/node.stp
-+++ node-v16.2.0/src/node.stp
+--- node-git.16151bec08.orig/src/node.stp
++++ node-git.16151bec08/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-v16.2.0/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v16.2.0/deps/npm/man/man1/npm.1
+Index: node-git.16151bec08/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v16.2.0.orig/deps/npm/man/man1/npm.1
-+++ node-v16.2.0/deps/npm/man/man1/npm.1
+--- node-git.16151bec08.orig/deps/npm/man/man1/npm.1
++++ node-git.16151bec08/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "May 2021" "" ""
+ .TH "NPM" "1" "June 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
@@ -286,7 +286,7 @@ Index: node-v16.2.0/deps/npm/man/man1/npm.1
  .SS Dependencies
  .P
  If a package lists a dependency using a git URL, npm will install that
-@@ -95,7 +95,7 @@ npm help \fBpackage\.json\fP\|\.
+@@ -93,7 +93,7 @@ npm help \fBpackage\.json\fP\|\.
  .IP \(bu 2
  link:
  Links your current working code into Node's path, so that you don't
@@ -295,7 +295,7 @@ Index: node-v16.2.0/deps/npm/man/man1/npm.1
  link\fP to do this\.
  .IP \(bu 2
  install:
-@@ -178,18 +178,18 @@ https://github\.com/npm/rfcs
+@@ -176,18 +176,18 @@ https://github\.com/npm/rfcs
  .SS See Also
  .RS 0
  .IP \(bu 2
@@ -321,10 +321,10 @@ Index: node-v16.2.0/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-v16.2.0/src/node_main.cc
+Index: node-git.16151bec08/src/node_main.cc
 ===================================================================
---- node-v16.2.0.orig/src/node_main.cc
-+++ node-v16.2.0/src/node_main.cc
+--- node-git.16151bec08.orig/src/node_main.cc
++++ node-git.16151bec08/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -333,10 +333,10 @@ Index: node-v16.2.0/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v16.2.0/tools/test.py
+Index: node-git.16151bec08/tools/test.py
 ===================================================================
---- node-v16.2.0.orig/tools/test.py
-+++ node-v16.2.0/tools/test.py
+--- node-git.16151bec08.orig/tools/test.py
++++ node-git.16151bec08/tools/test.py
 @@ -936,7 +936,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -346,10 +346,10 @@ Index: node-v16.2.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v16.2.0/node.gyp
+Index: node-git.16151bec08/node.gyp
 ===================================================================
---- node-v16.2.0.orig/node.gyp
-+++ node-v16.2.0/node.gyp
+--- node-git.16151bec08.orig/node.gyp
++++ node-git.16151bec08/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -361,10 +361,10 @@ Index: node-v16.2.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      'library_files': [
-Index: node-v16.2.0/deps/npm/man/man1/npx.1
+Index: node-git.16151bec08/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v16.2.0.orig/deps/npm/man/man1/npx.1
-+++ node-v16.2.0/deps/npm/man/man1/npx.1
+--- node-git.16151bec08.orig/deps/npm/man/man1/npx.1
++++ node-git.16151bec08/deps/npm/man/man1/npx.1
 @@ -5,15 +5,15 @@
  .P
  .RS 2

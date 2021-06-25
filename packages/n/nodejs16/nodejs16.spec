@@ -25,8 +25,14 @@
 #
 ###########################################################
 
+# Fedora doesn't have rpm-config-SUSE which provides
+# ext_man in /usr/lib/rpm/macros.d/macros.obs
+%if 0%{?fedora_version}
+%define ext_man .gz
+%endif
+
 Name:           nodejs16
-Version:        16.3.0
+Version:        16.4.0
 Release:        0
 
 # Double DWZ memory limits
@@ -35,7 +41,7 @@ Release:        0
 
 %define node_version_number 16
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -80,7 +86,7 @@ Release:        0
 %bcond_without intree_openssl
 %endif
 
-%if 0%{suse_version} >= 1330
+%if 0%{?suse_version} >= 1330
 %bcond_with    intree_cares
 %else
 %bcond_without intree_cares
@@ -92,7 +98,7 @@ Release:        0
 %bcond_without intree_icu
 %endif
 
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 %bcond_with    intree_nghttp2
 %else
 %bcond_without intree_nghttp2
@@ -182,7 +188,9 @@ BuildRequires:  binutils-gold
 %endif
 
 BuildRequires:  pkg-config
+%if 0%{?suse_version}
 BuildRequires:  config(netcfg)
+%endif
 
 # SLE-11 target only
 # Node.js 6 requires GCC 4.8.5+.
@@ -235,8 +243,12 @@ BuildRequires:  zlib-devel
 
 # Python dependencies
 %if %node_version_number >= 12
-BuildRequires:  netcfg
 BuildRequires:  python3
+
+%if 0%{?suse_version}
+BuildRequires:  netcfg
+%endif
+
 %else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
@@ -302,10 +314,10 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Requires:       alts
 %else
-Requires(postun): update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
-Requires(post): update-alternatives
+Requires(post): %{_sbindir}/update-alternatives
 
 Recommends:     npm16
 
@@ -342,7 +354,7 @@ ExclusiveArch:  %{arm} %{ix86} x86_64 aarch64 ppc64 ppc64le s390x
 Provides:       bundled(brotli) = 1.0.9
 Provides:       bundled(libuv) = 1.41.0
 Provides:       bundled(uvwasi) = 0.0.11
-Provides:       bundled(v8) = 9.0.257.25
+Provides:       bundled(v8) = 9.1.269.36
 
 Provides:       bundled(llhttp) = 6.0.2
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
@@ -383,14 +395,14 @@ Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.15.1
+Provides:       npm(npm) = 7.18.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 %endif
-Provides:       bundled(node-@npmcli/arborist) = 2.6.1
+Provides:       bundled(node-@npmcli/arborist) = 2.6.3
 Provides:       bundled(node-@npmcli/ci-detect) = 1.3.0
 Provides:       bundled(node-@npmcli/config) = 2.2.0
 Provides:       bundled(node-@npmcli/disparity-colors) = 1.0.1
@@ -490,7 +502,7 @@ Provides:       bundled(node-http-proxy-agent) = 4.0.1
 Provides:       bundled(node-http-signature) = 1.2.0
 Provides:       bundled(node-https-proxy-agent) = 5.0.0
 Provides:       bundled(node-humanize-ms) = 1.2.1
-Provides:       bundled(node-iconv-lite) = 0.6.2
+Provides:       bundled(node-iconv-lite) = 0.6.3
 Provides:       bundled(node-ignore-walk) = 3.0.4
 Provides:       bundled(node-imurmurhash) = 0.1.4
 Provides:       bundled(node-indent-string) = 4.0.0
@@ -522,21 +534,21 @@ Provides:       bundled(node-jsprim) = 1.4.1
 Provides:       bundled(node-just-diff) = 3.1.1
 Provides:       bundled(node-just-diff-apply) = 3.0.0
 Provides:       bundled(node-leven) = 3.1.0
-Provides:       bundled(node-libnpmaccess) = 4.0.2
+Provides:       bundled(node-libnpmaccess) = 4.0.3
 Provides:       bundled(node-libnpmdiff) = 2.0.4
-Provides:       bundled(node-libnpmexec) = 1.2.0
+Provides:       bundled(node-libnpmexec) = 2.0.0
 Provides:       bundled(node-libnpmfund) = 1.1.0
-Provides:       bundled(node-libnpmhook) = 6.0.2
-Provides:       bundled(node-libnpmorg) = 2.0.2
+Provides:       bundled(node-libnpmhook) = 6.0.3
+Provides:       bundled(node-libnpmorg) = 2.0.3
 Provides:       bundled(node-libnpmpack) = 2.0.1
-Provides:       bundled(node-libnpmpublish) = 4.0.1
-Provides:       bundled(node-libnpmsearch) = 3.1.1
-Provides:       bundled(node-libnpmteam) = 2.0.3
-Provides:       bundled(node-libnpmversion) = 1.2.0
+Provides:       bundled(node-libnpmpublish) = 4.0.2
+Provides:       bundled(node-libnpmsearch) = 3.1.2
+Provides:       bundled(node-libnpmteam) = 2.0.4
+Provides:       bundled(node-libnpmversion) = 1.2.1
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-make-fetch-happen) = 8.0.14
-Provides:       bundled(node-mime-db) = 1.47.0
-Provides:       bundled(node-mime-types) = 2.1.30
+Provides:       bundled(node-make-fetch-happen) = 9.0.3
+Provides:       bundled(node-mime-db) = 1.48.0
+Provides:       bundled(node-mime-types) = 2.1.31
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.3
 Provides:       bundled(node-minipass-collect) = 1.0.2
@@ -551,6 +563,7 @@ Provides:       bundled(node-mkdirp-infer-owner) = 2.0.0
 Provides:       bundled(node-ms) = 2.1.2
 Provides:       bundled(node-ms) = 2.1.3
 Provides:       bundled(node-mute-stream) = 0.0.8
+Provides:       bundled(node-negotiator) = 0.6.2
 Provides:       bundled(node-node-gyp) = 7.1.2
 Provides:       bundled(node-nopt) = 5.0.0
 Provides:       bundled(node-normalize-package-data) = 3.0.2
@@ -559,11 +572,11 @@ Provides:       bundled(node-npm-bundled) = 1.1.2
 Provides:       bundled(node-npm-init) = 0.0.0
 Provides:       bundled(node-npm-install-checks) = 4.0.0
 Provides:       bundled(node-npm-normalize-package-bin) = 1.0.1
-Provides:       bundled(node-npm-package-arg) = 8.1.2
+Provides:       bundled(node-npm-package-arg) = 8.1.5
 Provides:       bundled(node-npm-packlist) = 2.2.2
 Provides:       bundled(node-npm-pick-manifest) = 6.1.1
-Provides:       bundled(node-npm-profile) = 5.0.3
-Provides:       bundled(node-npm-registry-fetch) = 10.1.2
+Provides:       bundled(node-npm-profile) = 5.0.4
+Provides:       bundled(node-npm-registry-fetch) = 11.0.0
 Provides:       bundled(node-npm-user-validate) = 1.0.1
 Provides:       bundled(node-npmlog) = 4.1.2
 Provides:       bundled(node-number-is-nan) = 1.0.1
@@ -572,10 +585,10 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 11.3.3
+Provides:       bundled(node-pacote) = 11.3.4
 Provides:       bundled(node-parse-conflict-json) = 1.1.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
-Provides:       bundled(node-path-parse) = 1.0.6
+Provides:       bundled(node-path-parse) = 1.0.7
 Provides:       bundled(node-performance-now) = 2.1.0
 Provides:       bundled(node-proc-log) = 1.0.0
 Provides:       bundled(node-process-nextick-args) = 2.0.1
@@ -609,7 +622,7 @@ Provides:       bundled(node-socks-proxy-agent) = 5.0.0
 Provides:       bundled(node-spdx-correct) = 3.1.1
 Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
-Provides:       bundled(node-spdx-license-ids) = 3.0.7
+Provides:       bundled(node-spdx-license-ids) = 3.0.9
 Provides:       bundled(node-sshpk) = 1.16.1
 Provides:       bundled(node-ssri) = 8.0.1
 Provides:       bundled(node-string-width) = 1.0.2
@@ -746,12 +759,10 @@ export LDFLAGS="%{?build_ldflags}"
 export LDFLAGS="\${LDFLAGS} -fno-lto"
 %endif
 
-%ifarch %{ix86} %{arm}
-# Reduce memory consumption on 32bit arches
+# reduce disk space pressure
 export CFLAGS="\${CFLAGS} -g1"
 export CXXFLAGS="\${CXXFLAGS} -g1"
 export LDFLAGS="\${LDFLAGS} -Wl,--reduce-memory-overhead"
-%endif
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}

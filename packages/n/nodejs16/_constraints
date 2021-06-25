@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <constraints>
   <hardware>
-    <disk>
-      <size unit="G">25</size>
-    </disk>
-    <memory>
-    <size unit="M">12500</size>
-    </memory>
+   <disk>
+    <size unit="G">8</size>
+   </disk>
+   <physicalmemory>
+    <size unit="M">10000</size>
+   </physicalmemory>
   </hardware>
 </constraints>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 23 12:57:04 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 16.4.0:
+  * async_hooks: stabilize part of AsyncLocalStorage
+  * deps:
+    + upgrade npm to 7.18.1
+    + update V8 to 9.1.269.36
+  * dns: allow --dns-result-order to change default dns verbatim
+
+-------------------------------------------------------------------
+Mon Jun 21 05:01:32 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Allow building for Fedora in the OBS
+
+-------------------------------------------------------------------
 Fri Jun  4 20:59:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 16.3.0:

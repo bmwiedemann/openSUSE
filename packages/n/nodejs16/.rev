@@ -33,4 +33,19 @@
 - Use libalternatives instead of update-alternatives</comment>
     <requestid>899525</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>da21ab688f1a5704faaf595357956aba</srcmd5>
+    <version>16.4.0</version>
+    <time>1624626057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.4.0:
+  * async_hooks: stabilize part of AsyncLocalStorage
+  * deps:
+    + upgrade npm to 7.18.1
+    + update V8 to 9.1.269.36
+  * dns: allow --dns-result-order to change default dns verbatim
+
+- Allow building for Fedora in the OBS</comment>
+    <requestid>901565</requestid>
+  </revision>
 </revisionlist>
