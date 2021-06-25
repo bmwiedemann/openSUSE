@@ -135,4 +135,12 @@ Redesigned the directory-include feature to avoid using
     <comment></comment>
     <requestid>637116</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1dc89f2cd3931ace7722e28c3e6e4210</srcmd5>
+    <version>1.7.3</version>
+    <time>1624626040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901317</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 20 07:51:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.3
+  * Fixed a heap corruption bug in config_clear()
+  * Added a Setting::isString() method
+  * Renamed all remaining internal methods that lacked a
+    "libconfig_" prefix.
+
+-------------------------------------------------------------------
 Fri Sep 21 12:23:11 UTC 2018 - astieger@suse.com
 
 - libconfig 1.7.2:

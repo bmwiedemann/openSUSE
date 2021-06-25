@@ -1,7 +1,7 @@
 #
 # spec file for package libconfig
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _soversion 11
 Name:           libconfig
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        A library for manipulating structured configuration files
 License:        LGPL-2.1-or-later
@@ -93,13 +93,13 @@ string parsing in application code.
 This package contains the C++ bindings development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
   --disable-silent-rules \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -107,7 +107,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_docdir}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libconfig%{_soversion} -p /sbin/ldconfig
 %postun -n libconfig%{_soversion} -p /sbin/ldconfig
