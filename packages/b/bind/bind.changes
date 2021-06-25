@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun 23 06:46:55 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.18
+  * The configuration-checking code failed to account for the
+    inheritance rules of the "key-directory" option.
+  * When preparing DNS responses, named could replace the letters
+    'W' (uppercase) and 'w' (lowercase) with '\000'.
+    This has been fixed.
+    [bind-9.16.18.tar.xz, bind-9.16.18.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Thu Jun 17 09:01:18 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.17
+  Major changes (bug fixes):
+  * A copy-and-paste error caused the IP_DONTFRAG socket option to
+    be enabled instead of disabled. This has been fixed.
+  * The calculation of the estimated IXFR transaction size in
+    dns_journal_iter_init() was invalid.
+  * Fix a race condition in reading and writing key files for zones
+    using KASP and configured in multiple views.
+  * Zones which are configured in multiple views with different
+    values set for "dnssec-policy" and with identical values set
+    for "key-directory" are now detected and treated as a
+    configuration error.
+  * Address a potential memory leak in dst_key_fromnamedfile().
+  * Check that the first and last SOA record of an AXFR are
+    consistent.
+  * Improvements related to network manager/task manager
+    integration
+  [bind-9.16.17.tar.xz, bind-9.16.17.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
 Fri May 21 07:23:04 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - vendor-files/system/named.prep was missing a $
