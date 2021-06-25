@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 %define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
 Version:        3.1.0
 Release:        0
@@ -30,14 +30,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%
 BuildRequires:  %{python_module Cython >= 0.23.5}
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module aenum}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  proj
 BuildRequires:  proj-devel >= 7.2.0
-# Python 3.7 requirement for distros that don't understand skip_python36
-BuildRequires:  python >= 3.7
 BuildRequires:  python-rpm-macros
 Requires:       python-aenum
 Requires:       python-numpy

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 25 10:34:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix the python >= 3.7 build requirement
+  * `BuildRequires: python` is a pure python2 specification now
+  * no need for the full stdlib (`BuildRequires: %pythons >= 3.7`)  
+
+-------------------------------------------------------------------
 Thu May 27 13:07:01 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
 
 - Refresh the source tarball from pythonhosted.org.

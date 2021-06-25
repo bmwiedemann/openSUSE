@@ -122,4 +122,12 @@
 My fault that the package failed Factory acceptance tests. I originally downloaded the tarball from GitHub as I received the new release notification from that source. :) (forwarded request 895773 from LPechacek)</comment>
     <requestid>895829</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0fd34de74e578ff8eba1ca81a45cf358</srcmd5>
+    <version>3.1.0</version>
+    <time>1624626106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902368</requestid>
+  </revision>
 </revisionlist>
