@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 24 19:39:54 UTC 2021 - Thomas Abraham <tabraham@suse.com>
+
+- hwdata does not provide usb.ids in /usr/share so the solution
+  implemented for bsc#1171188 is incomplete. Change expected location
+  of pci.ids and usb.ids to /usr/share/hwdata/ (bsc#1187665)
+
+-------------------------------------------------------------------
 Tue Jan 26 11:58:25 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix display of NVME adapter firmware version (bsc#1181336 ltc#190621).

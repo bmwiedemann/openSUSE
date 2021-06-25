@@ -54,8 +54,8 @@ levels.
 %autopatch -p1
 
 %build
-export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"
-export CXXFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"
+export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/hwdata/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/hwdata/usb.ids\"'"
+export CXXFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/hwdata/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/hwdata/usb.ids\"'"
 sh bootstrap.sh
 %configure
 make %{?_smp_mflags}
