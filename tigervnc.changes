@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 19 00:07:23 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Specify RFC7919 parameters for GnuTLS versions older than 3.6.0.
+  * Modified tigervnc-FIPS-use-RFC7919.patch
+  * https://github.com/TigerVNC/tigervnc/pull/1273
+
+-------------------------------------------------------------------
 Mon Jun  7 01:47:07 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Enable GnuTLS to use Diffie-Hellman parameters from RFC7919
