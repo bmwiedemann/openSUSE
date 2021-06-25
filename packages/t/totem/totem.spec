@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define build_zeitgeist_plugin 0
 Name:           totem
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -135,7 +135,7 @@ This package contains developer documentation.
 
 %prep
 %autosetup -p1
-sed -i 's/\[.*\]//g' po/POTFILES.in 
+sed -i 's/\[.*\]//g' po/POTFILES.in
 translation-update-upstream po totem
 
 %build

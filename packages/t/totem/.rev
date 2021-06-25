@@ -1118,4 +1118,12 @@
     <comment></comment>
     <requestid>858750</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>fef77eb16e940a4c9666c2e849ffe2e6</srcmd5>
+    <version>3.38.1</version>
+    <time>1624626054</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 900566 from dimstar)</comment>
+    <requestid>901355</requestid>
+  </revision>
 </revisionlist>
