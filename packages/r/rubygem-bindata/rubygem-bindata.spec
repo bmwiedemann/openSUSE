@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bindata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bindata
-Version:        2.4.8
+Version:        2.4.10
 Release:        0
 %define mod_name bindata
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/dmendel/bindata
+URL:            https://github.com/dmendel/bindata
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A declarative way to read and write binary file formats
