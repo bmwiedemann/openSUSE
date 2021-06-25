@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-serverengine
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 %define mod_name serverengine
 %define mod_full_name %{mod_name}-%{version}

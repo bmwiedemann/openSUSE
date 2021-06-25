@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:59:17 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.4
+ see installed Changelog
+
+  2021-05-24 version 2.2.4:
+  
+  * Ensure to get correct Win32 socket error on Ruby 3.0
+  
+  2021-02-17 version 2.2.3:
+  
+  * Change SocketManager's port assignment strategy on Windows
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:22:36 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.2
