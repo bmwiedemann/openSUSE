@@ -392,6 +392,7 @@
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
+      <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
@@ -1376,7 +1377,7 @@
       <repopackage name="libatk-bridge-2_0-0"/>
       <repopackage name="libatkmm-1_6-1"/>
       <repopackage name="libatm1"/>
-      <repopackage name="libatomic1" arch="i586,i686"/>
+      <repopackage name="libatomic1"/>
       <repopackage name="libatopology2"/>
       <repopackage name="libatspi0"/>
       <repopackage name="libattr1"/>
@@ -2199,7 +2200,6 @@
       <repopackage name="libmtdev1"/>
       <repopackage name="libmtp-udev"/>
       <repopackage name="libmtp9"/>
-      <repopackage name="libmusicbrainz4"/>
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
@@ -2876,6 +2876,7 @@
       <repopackage name="libyui-qt15"/>
       <repopackage name="libyui15"/>
       <repopackage name="libz-ng-compat1"/>
+      <repopackage name="libz1"/>
       <repopackage name="libz3-4_8"/>
       <repopackage name="libzapojit-0_0-0"/>
       <repopackage name="libzbar0"/>
