@@ -361,4 +361,12 @@
     <comment>- Update to 2.6.6</comment>
     <requestid>900622</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>dd21c83686f32856082be2754d76fd0a</srcmd5>
+    <version>2.6.6</version>
+    <time>1624626081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>901877</requestid>
+  </revision>
 </revisionlist>

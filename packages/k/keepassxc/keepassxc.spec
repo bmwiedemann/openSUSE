@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} || 0%{?fedora_version} >= 33
+%bcond_without cmake_macros
+%else
+%bcond_with    cmake_macros
+%endif
 
 Name:           keepassxc
 Version:        2.6.6
@@ -104,14 +109,14 @@ are encrypted using AES and Twofish.
   -DKEEPASSXC_BUILD_TYPE="Release" \
   -DWITH_XC_UPDATECHECK=OFF        \
   -DWITH_XC_ALL=ON -DWITH_XC_KEESHARE_SECURE=ON
-%if 0%{?suse_version}
+%if %{with cmake_macros}
 %cmake_build
 %else
 make %{?_smp_mflags}
 %endif
 
 %install
-%if 0%{?suse_version}
+%if %{with cmake_macros}
 %cmake_install
 %else
 %make_install
