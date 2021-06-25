@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jun 23 06:36:01 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- New upstream release 0.114.0
+- Changes since 0.113.0:
+  * Use feature_summary()
+  * Drop PolkitQt1::version*() API declaration, never implemented
+  * Use target_sources to directly set sources instead of helper vars
+  * Include headers in example & test like external consumer would
+  * Set include dirs for linking libraries during build by target interface
+  * Generate version & config file in core build dir
+  * Use individual export headers/macros per each library
+  * Remove outdated template FindPolkitQt.cmake
+  * Remove module prefix from Qt includes in public headers
+  * Link polkit-qt-test to agent lib target, an include is used
+  * Remove module prefix from Qt includes of non-public headers
+  * Remove unused include
+  * Remove unneeded/unused include_directories
+  * Use more override
+  * Use more nullptr
+  * Port away from legacy LINK_PUBLIC & LINK_PRIVATE
+  * Fully qualify slot argument
+  * Use QStringLiteral
+  * Convert license statements to SPDX expressions
+  * Remove unused cmake macro files
+  * Enable CMAKE_AUTOUIC and CMAKE_AUTORCC
+  * Let cmake set the C++ standard
+  * Port from Q_ENUMS to Q_ENUM 
+  * Make use of PkgConfig to find dependencies
+  * Use Q_DECLARE_OPERATORS_FOR_FLAGS in same namespace as flags definition
+  * Use more nullptr
+  * API dox: reference KDE Frameworks, no longer KDE Development Platform
+  * Support API documentation generation with kapidox
+  * Make it compile without deprecated method
+- Use %cmake_build instead of %make_jobs for compiling
+
+-------------------------------------------------------------------
 Tue Aug 27 18:28:02 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - New upstream release 0.113.0
