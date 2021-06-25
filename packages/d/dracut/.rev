@@ -1927,4 +1927,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
   * fix(kernel-modules): optionally add /usr/lib/modules.d to initramfs (bsc#1180822)</comment>
     <requestid>883626</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>df12d5c49d3fe909e0decabe369a7cd0</srcmd5>
+    <version>055+suse.106.g760b0c69</version>
+    <time>1624626030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901114</requestid>
+  </revision>
 </revisionlist>

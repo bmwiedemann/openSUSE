@@ -1,4 +1,261 @@
 -------------------------------------------------------------------
+Thu Jun 17 15:22:31 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 055+suse.106.g760b0c69:
+  * chore(suse): add Conflicts for old suse-module-tools to specfile (bsc#1187115)
+
+-------------------------------------------------------------------
+Thu Jun 17 14:06:35 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 055+suse.104.g9d45c1df:
+  * feat(suse-initrd): add INITRD_MODULES from /etc/sysconfig/kernel, too
+  * fix(suse-initrd): call dracut_instmods with hostonly=
+  * fix(suse-initrd): use $kernel rather than $(uname -r)
+
+-------------------------------------------------------------------
+Mon Jun 14 16:11:29 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 055+suse.100.ga2700279:
+  * fix(suse-initrd): remove references to INITRD_MODULES (bsc#1187115)
+  * chore(suse): erase conditional for usrmerge from specfile
+  * chore(suse): fix specfile for usrmerge
+
+-------------------------------------------------------------------
+Mon May 31 13:33:05 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 055+suse.97.gb98506b2:
+  * docs: update NEWS.md and AUTHORS
+  * fix(fs-lib): install fsck utilities
+  * fix(integrity): require ALLOW_METADATA_WRITES to come from EVM config file
+  * fix(install): configure logging earlier
+  * fix(warpclock): minor cleanups
+  * fix(dash): minor cleanups
+  * fix(mksh): minor cleanups
+  * feat(install): add default value for --firmwaredirs
+  * fix(dracut-functions): get_maj_min without get_maj_min_cache_file set
+  * fix(dracut): pipe hardlink output to `dinfo`
+  * fix(install): sane default --kerneldir
+  * fix(bash): minor cleanups
+  * fix(squash): don't mount the mount points if already mounted
+  * ci: add shfmt to Fedora containers
+  * fix(base): add missing `str_replace` to `dracut-dev-lib.sh`
+  * feat(dracut.sh): detect running in a container
+  * fix(base): split out `dracut-dev-lib.sh`
+  * fix(dracut-util): print error message with trailing newline
+  * fix(packit): downstream has renamed the master branch to main
+
+-------------------------------------------------------------------
+Mon May 31 13:29:17 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 054+suse.96.gb5aa64d2:
+  * fix(suse-initrd) fix list of modprobe.d directories
+
+-------------------------------------------------------------------
+Tue May 18 08:55:15 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 054+suse.95.gd5820102:
+  * chore(suse) update spec
+
+    Important change on mkinitrd:
+
+    mkinitrd is now in its own subpackage "dracut-mkinit-deprecated",
+    which requires dracut. If you need mkinitrd, require "mkinitrd".
+    However note that in the long run, mkinit will go away. It is
+    preferred to call dracut directly.
+
+-------------------------------------------------------------------
+Mon May 17 18:24:47 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 054+suse.94.g1648453e:
+  * chore(suse): re-add SUSE mkinitrd
+
+-------------------------------------------------------------------
+Mon May 17 17:34:10 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 054+suse.93.gd393f006:
+
+  With this release dracut has undergone a major overhaul.
+  
+  A lot of systemd related modules have been added.
+  
+  The integration test suite has finally ironed out the flaky behaviour due to the parallel device probing of the kernel,
+  which bit sometimes in the non-kvm github CI. So, if you see any /dev/sda in a setup script with more than two hard drives,
+  chances are, that the script works on the wrong disk. Same goes for network interfaces.
+  
+  This release is also fully shellcheck'ed with ShellCheck-0.7.2 and indented with shfmt and astyle.
+  
+  The dracut project builds test containers every day for:
+  
+      opensuse/tumbleweed-dnf:latest
+      archlinux:latest
+      fedora:rawhide
+      fedora:latest
+      fedora:33
+  
+  These containers can easily be used to run the integration tests locally without root permissions via podman.
+  We hope this serves as a blueprint for your distribution's CI process.
+  
+  More information can be found in docs/HACKING.md.
+
+  Bug Fixes
+  
+      make testsuite pass on OpenSuse and Arch (8b2afb08)
+      cope with distributions with /usr/etc files (3ad3b3a4)
+      deprecate gummiboot (5c94cf41)
+      set vimrc and emacs indention according to .editorconfig (9012f399)
+      correctly handle kernel parameters (501d82f7)
+      remove dracut.pc on make clean (d643156d)
+      honor KVERSION environment in the Makefile (d8a454a5)
+      always use mkdir -p (9cf7b1c5)
+      dracut.sh:
+          prevent symbolic links containing // (de0c0872)
+          adding missing globalvars for udev (f35d479d)
+          sysctl global variables (3ca9aa1d)
+          add global vars for modules-load (ec4539c6)
+          omission is an addition to other omissions in conf files (96c31333)
+          harden dracut against GZIP environment variable (d8e47e20)
+          add a missing tmpfilesconfdir global variable (8849dd8d)
+          include modules.builtin.alias in the initramfs (7f633747)
+          install all depmod relevant configuration files (50a01dd4)
+          add modules.builtin.modinfo to the initramfs (87c4c178)
+          search for btrfs devices from actual mount poiont (3fdc734a)
+      dracut-functions.sh:
+          implement a cache for get_maj_min (c3bb9d18)
+          word splitting issue for sed in get_ucode_file (122657b2)
+      dracut-logger.sh: double dash trigger unknown logger warnings during run (4fbccde5)
+      dracut-install:
+          handle $LIB in ldd output parsing (d1a36d3d)
+          handle builtin modules (2536a9ea)
+      base:
+          suppress calls to getarg in build phase (6feaaabc)
+          source hooks without exec (8059bcb2)
+          wait_for_dev quote shell variables (b800edd6)
+          adding crc32c for ext3 (61f45643)
+      crypt:
+          install all crypto modules in the generic initrd (10f9e569)
+          include cryptsetups tmpfile (a4cc1964)
+      crypt-gpg:
+          cope with different scdaemon location (44fd1c13)
+      dbus-broker:
+          enable the service (df1e5f06)
+      dbus-daemon:
+          only error out in install() (ae4fbb3d)
+      dracut-systemd:
+          don't refuse root=tmpfs when systemd is used (a96900a8)
+      examples: remove the examples directory and reference to it (b37c90c8)
+      fips:
+          add dh and ecdh ciphers (543b8014)
+          remove old udev version requirements (be30d987)
+      i18n:
+          skip if data is missing (651fe01e)
+      img-lib:
+          ignored null byte in input (85eb9680)
+      integrity:
+          properly set up EVM when using an x509 cert (4bdd7eb2)
+      iscsi:
+          replace sed call with bash internals (66b920c6)
+          add iscsid.service requirements (bb6770f1)
+          only rely on socket activiation (0eb87d78)
+      kernel-modules:
+          optionally add /usr/lib/modules.d to initramfs (92e6a8f8)
+          add watchdog drivers for generic initrd (3a60c036)
+      mdraid:
+          remove dependency statements (86b75634)
+      memstrack:
+          correct dependencies (c2ecc4d1)
+      multipath:
+          stop multipath before udev db cleanup (3c244c7c)
+          revise multipathd-stop (7b8c78ff)
+      nbd:
+          assume nbd version >= 3.8 (6209edeb)
+          remove old udev version requirements (fd15dbad)
+          make nbd work again with systemd (77906443)
+      network:
+          use wicked unit instead of find_binary (57eefcf7)
+          user variable for sdnetworkd instead of path (4982e16d)
+          correct regression in iface_has_carrier (36af0518)
+      network-legacy:
+          add missing options to dhclient.conf (abfd547a)
+          silence getargs (60a34d8b)
+      network-manager:
+          cope with distributions not using libexec (22d6863e)
+          set timeout via command line option (8a51ee1f)
+          run after dracut-cmdline (4d03404f)
+          create /run directories (49b61496)
+          use /run/NetworkManager/initrd/neednet in initqueue (6a37c6f6)
+          only run NetworkManager if rd.neednet=1 (ac0e8f7d)
+          nm-run.service: don't kill forked processes (1f21fac6)
+          no default deps for nm-run.service (ba4bcf5f)
+          nm-lib.sh does not require bash (3402142e)
+      squash:
+          post install should be the last step before stripping (8c8aecdc)
+      systemd:
+          include all nss libraries (b3bbf5fb)
+          include hosts and nsswitch.conf in hostonly mode (5912f4fb)
+          remove old systemd version requirements (fc53987b)
+      systemd-hostnamed: extra quote (2aa65234)
+      systemd-modules: remove dependency on systemd meta module (afef4557)
+      systemd-modules-load:
+          misc repairs (782ac8f1)
+      systemd-networkd:
+          make systemd-networkd a proper network provider (ea779750, closes #737)
+      systemd-resolved: remove nss libraries (12bef83c)
+      systemd-sysctl:
+          sysctl global variables (02acedd0)
+      systemd-sysusers:
+          misc fixes and cleanup (7359ba8a)
+      systemd-udev: use global vars instead of fixed path (fd883a58)
+      systemd-udevd: add udev id program files (562cb77b)
+      systemd-verity:
+          incorrect reference to cryptsetup target (ba92d1fc)
+          re-naming module to veritysetup (0267f3c3)
+      tpm2-tss: add tpm2 requirement (8f99fada)
+      udev-rules:
+          remove sourcing of network link files (69f4e7cd)
+          add btrfs udev rules by default (567c4557)
+      url-lib:
+          fix passing args (5f6be515)
+      zipl:
+          don't depend on grub2 (6b499ec1)
+  
+  Performance
+  
+      disable initrd compression when squash module is enabled (7c0bc0b2)
+  
+  Features
+  
+      support ZSTD-compressed kernel modules (ce9af251)
+      also restore the initramfs from /lib/modules (33e27fab)
+      extend Makefile indent target (e0a0fa61)
+      customize .editorconfig according to shfmt (1f621aba)
+      squash module follow --compress option (5d05ffbd)
+      bluetooth: implement bluetooth support in initrd (64ee2a53)
+      btrfs: add 64-btrfs-dm.rules rules (d4caa86a)
+      mkinitrd: remove mkinitrd (43df4ee2)
+      nbd: support ipv6 link local nbds (b12f8188)
+      network-manager: run as daemon with D-Bus (112f03f9)
+      qemu: include the virtio_mem kernel module (f3dcb606)
+      skipcpio: speed up and harden skipcpio (63033495)
+      squash:
+          use busybox for early setup if available (90f269f6)
+          install and depmod modules seperately (5a18b24a)
+      systemd-ac-power: introducing the systemd-ac-power module (e7407230)
+      systemd-hostnamed: introducing the systemd-hostnamed module (bf273e3e)
+      systemd-initrd: add initrd-usr-fs.target (5eb73610)
+      systemd-journald: introducing the systemd-journald module (3697891b)
+      systemd-ldconfig: introducing the systemd-ldconfig module (563c434e)
+      systemd-network-management: introducing systemd-network-management module (e942d86c)
+      systemd-resolved: introducing the systemd-resolved module (b7d3caef)
+      systemd-rfkill: introducing the systemd-rfkill module (21536544)
+      systemd-sysext: introducing the systemd-sysext module (fc88af54)
+      systemd-timedated: introducing the systemd-timedated module (1c41cc90)
+      systemd-timesyncd: introducing the systemd-timesyncd module (2257d545)
+      systemd-tmpfiles: introducing the systemd-tmpfiles module (2b61be32)
+      systemd-udevd: introducing the systemd-udevd module (3534789c)
+      systemd-verity: introducing the systemd-verity module (3d4dea58)
+      tpm2-tss: introducing the tpm2-tss module (8743b073)
+  
+-------------------------------------------------------------------
 Wed Mar 03 12:38:14 UTC 2021 - daniel.molkentin@suse.com
 
 - Update to version 053+suse.93.g039ac07d:
