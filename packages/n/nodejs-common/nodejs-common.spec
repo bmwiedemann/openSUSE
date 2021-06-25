@@ -28,7 +28,7 @@
 %define NODEJS_LTS      16
 %define NODEJS_CURRENT  16
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives

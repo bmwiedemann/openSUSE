@@ -120,4 +120,16 @@
 - Add libalternatives support</comment>
     <requestid>899493</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>72d5cc41c839b990b7d2ba8ed65e3af0</srcmd5>
+    <version>5.0</version>
+    <time>1624626032</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow building for Fedora in the OBS
+
+- Some applications do not like warnings or notices on stderr
+  as they use it for other things. So make nodejs-common quiet
+  unless we have a fatal error.</comment>
+    <requestid>901230</requestid>
+  </revision>
 </revisionlist>

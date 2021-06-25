@@ -73,7 +73,8 @@ int main(int argc, char *argv[])
 		// should not return, and if it does, it probably means
 		// we should fall back to using node-default fallback.
 		libalts_exec_default(argv);
-		fputs("Falling back to using -default symlink.\n", stderr);
+		// some programs parse stderr, so let's be quiet here.
+		//fputs("Falling back to using -default symlink.\n", stderr);
 	}
 #endif
 
