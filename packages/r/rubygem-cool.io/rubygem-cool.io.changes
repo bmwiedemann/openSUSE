@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:12:35 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.7.1
+ see installed CHANGES.md
+
+  1.7.1
+  -----
+  
+  * Set fallback local loopback address by default for Windows environment
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:29:20 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.7.0
