@@ -176,6 +176,7 @@
       <repopackage name="dosfstools" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
+      <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update" arch="x86_64"/>
       <repopackage name="drkonqi5" arch="x86_64"/>
       <repopackage name="e2fsprogs" arch="x86_64"/>
@@ -1174,6 +1175,7 @@
       <repopackage name="libyaml-cpp0_6" arch="x86_64"/>
       <repopackage name="libyelp0" arch="x86_64"/>
       <repopackage name="libz-ng-compat1"/>
+      <repopackage name="libz1" arch="x86_64"/>
       <repopackage name="libzbar0" arch="x86_64"/>
       <repopackage name="libzck1" arch="x86_64"/>
       <repopackage name="libzip5" arch="x86_64"/>

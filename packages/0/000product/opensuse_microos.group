@@ -16,6 +16,7 @@
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="dracut-mkinitrd-deprecated" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -1185,6 +1186,7 @@
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
     <package name="libyaml-cpp0_6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="libz1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
     <package name="libzip5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

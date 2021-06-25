@@ -129,6 +129,7 @@
       <repopackage name="dosfstools" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
+      <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update" arch="x86_64"/>
       <repopackage name="e2fsprogs" arch="x86_64"/>
       <repopackage name="ebtables" arch="x86_64"/>
