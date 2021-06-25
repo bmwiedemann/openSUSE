@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 23 08:27:25 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210615:
+  * Removing a private subregistry in .CL due to deprecation. (#1352)
+  * Add ddns5.com to private section (#1353)
+  * Add shop.brendly.rs (#1309)
+  * add mediatech.by and mediatech.dev domains (#1333)
+  * newgtlds.go : update Autopull - Added URL for the IANA PSL for #1325 (#1347)
+  * Add minisite.ms (#1344)
+  * Revert "Add multibaas.app and multibaas.com (#1233)" (#1337)
+  * Add appudo.net (#1340)
+  * Adding adimo.co.uk (#1343)
+  * Add postman dev domains (#1339)
+  * Reverting change
+  * set default project to list modification and assign to jothan
+  * Tickboxes and text added to help reduce self-harm requests
+  * submitter affirm not working around 3p limits; ask DNS leaf remain
+  * Remove github.dev from PSL (#1335)
+  * Add novecore.site (#1331)
+  * Add jotelulu.cloud (#1330)
+  * Add bluebite.io (#1313)
+  * Added onavstack.net (#1299)
+  * Update public_suffix_list.dat (#1273)
+
+-------------------------------------------------------------------
 Tue May 25 08:29:58 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210519:

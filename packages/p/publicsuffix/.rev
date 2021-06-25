@@ -884,4 +884,32 @@ Now with build cycle removed.</comment>
   * Remove wildcard (#1318)</comment>
     <requestid>895304</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e5ce1f5622b310d29492246b559fcf50</srcmd5>
+    <version>20210615</version>
+    <time>1624626061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210615:
+  * Removing a private subregistry in .CL due to deprecation. (#1352)
+  * Add ddns5.com to private section (#1353)
+  * Add shop.brendly.rs (#1309)
+  * add mediatech.by and mediatech.dev domains (#1333)
+  * newgtlds.go : update Autopull - Added URL for the IANA PSL for #1325 (#1347)
+  * Add minisite.ms (#1344)
+  * Revert &quot;Add multibaas.app and multibaas.com (#1233)&quot; (#1337)
+  * Add appudo.net (#1340)
+  * Adding adimo.co.uk (#1343)
+  * Add postman dev domains (#1339)
+  * Reverting change
+  * set default project to list modification and assign to jothan
+  * Tickboxes and text added to help reduce self-harm requests
+  * submitter affirm not working around 3p limits; ask DNS leaf remain
+  * Remove github.dev from PSL (#1335)
+  * Add novecore.site (#1331)
+  * Add jotelulu.cloud (#1330)
+  * Add bluebite.io (#1313)
+  * Added onavstack.net (#1299)
+  * Update public_suffix_list.dat (#1273)</comment>
+    <requestid>901424</requestid>
+  </revision>
 </revisionlist>
