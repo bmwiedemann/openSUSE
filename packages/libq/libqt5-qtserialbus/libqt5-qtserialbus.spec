@@ -16,10 +16,10 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 
 Name:           libqt5-qtserialbus
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt 5 Serial Bus Addon
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -28,15 +28,17 @@ Url:            https://www.qt.io
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtserialbus-everywhere-src-5.15.2
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+%define tar_version qtserialbus-everywhere-src-%{version}
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libQt5DBus-devel >= %{version}
-BuildRequires:  libQt5Network-devel >= %{version}
-BuildRequires:  libQt5Widgets-devel >= %{version}
-BuildRequires:  libqt5-qtserialport-devel >= %{version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5DBus-devel >= %{real_version}
+BuildRequires:  libQt5Network-devel >= %{real_version}
+BuildRequires:  libQt5Widgets-devel >= %{real_version}
+BuildRequires:  libqt5-qtserialport-devel >= %{real_version}
 %if %qt5_snapshot
 #to create the forwarding headers
 BuildRequires:  perl
@@ -77,7 +79,7 @@ Summary:        Non-ABI stable experimental API for the Qt5 SerialBus library
 Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 
 %description private-headers-devel
 This package provides private headers of libqt5-qtserialbus that are normally
