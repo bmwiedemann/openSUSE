@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 26 09:31:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unused launcher subpackage.
+
+-------------------------------------------------------------------
 Wed Mar 10 14:50:22 UTC 2021 - Yevgeny Sliosarenko <musicsuse@gmx.com>
 
 - Updated to release 2.3.1
@@ -19,7 +24,6 @@ Wed Mar 10 14:50:22 UTC 2021 - Yevgeny Sliosarenko <musicsuse@gmx.com>
     Heretic: Sky textures are only partially visible.
     Hexen: Sky textures are sized incorrectly.
     Alignment of floor/ceiling textures whose size is not 64×64.
-
 
 -------------------------------------------------------------------
 Tue Sep 15 23:17:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>

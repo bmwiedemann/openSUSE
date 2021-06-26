@@ -20,7 +20,7 @@ Name:           doomsday
 Version:        2.3.1
 Release:        0
 Summary:        The Doomsday Engine: DOOM/Hertic/Hexen port with pretty graphics
-License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-GPL-2.0-with-linking-exception AND BSD-3-Clause AND LGPL-3.0-or-later
+License:        BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND SUSE-GPL-2.0-with-linking-exception AND LGPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://dengine.net/
 Source:         Doomsday-Engine-%version.tar.xz
@@ -67,20 +67,6 @@ Provides:       deng = %version-%release
 The Doomsday Engine is a source port with support for Doom, Heretic,
 and Hexen. It does not support BOOM extensions.
 
-%package launcher
-Summary:        Graphical launcher for Doomsday
-Group:          Amusements/Games/3D/Shoot
-BuildRequires:  python
-Requires:       %name = %version
-Requires:       python-wxWidgets
-BuildArch:      noarch
-
-%description launcher
-Snowberry is the official frontend of the Doomsday Engine. It is a
-portable graphical game launcher, with support for configuring the
-various types of games supported by Doomsday. It offers to save your
-settings for launching a particular game (e.g., Doom).
-
 %prep
 %autosetup -p1 -n Doomsday-Engine-%version
 
@@ -88,10 +74,10 @@ settings for launching a particular game (e.g., Doom).
 pushd doomsday
 %cmake \
 %ifarch aarch64 %arm
-  -DDENG_OPENGL_API=GLES3 \
+	-DDENG_OPENGL_API=GLES3 \
 %endif
-  -DCMAKE_SKIP_RPATH:BOOL=ON
-make -O %{?_smp_mflags}
+	-DCMAKE_SKIP_RPATH:BOOL=ON
+%make_build -O
 
 %install
 b="%buildroot"
@@ -119,7 +105,6 @@ echo "INFO: %name: The global IWAD directory is %_datadir/doom.";
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %_sysconfdir/doomsday
 %config %_sysconfdir/doomsday/paths
 %_bindir/*
