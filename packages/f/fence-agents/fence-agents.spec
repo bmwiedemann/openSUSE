@@ -23,13 +23,13 @@
 %endif
 
 %global plugin_dir %{_libdir}/stonith/plugins/rhcs
-%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
+%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm cdu
 
 Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.8.0+git.1619794372.c48ba825
+Version:        4.9.0+git.1624631789.25ec70f0
 Release:        0
 URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz

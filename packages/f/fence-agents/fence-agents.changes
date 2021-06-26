@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 25 15:51:21 UTC 2021 - trenn@suse.de
+
+- Update to version 4.9.0+git.1624631789.25ec70f0:
+  * fence_cdu: new fence agent (#416)
+  This fence is needed for SEntry powerswitches
+
+-------------------------------------------------------------------
+Thu Jun 24 09:11:35 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.9.0+git.1624456340.8d746be9:
+  * fence_azure_arm: corrections to support Azure SDK >= 15 - including backward compatibility (#415)
+  * fence_gce: make serviceaccount work with new libraries
+  * fence_kubevirt: new fence agent
+  * fence_virt*: simple_auth: use %zu for sizeof to avoid failing verbose builds on some archs
+  * configure: dont fail when --with-agents contains virt
+  * fence_mpath: watchdog retries support
+  * fencing: add multi plug support for reboot-action
+  * fence_redfish: add missing diag logic
+  * fencing: fix issue with hardcoded help text length for metadata
+  (bsc#1185058) ERROR: Failed: 'ServicePrincipalCredentials' object has no attribute 'get_token' - SFSC 00281399 - ref:_00D1igLOd._5001icMD3K:ref
+
+-------------------------------------------------------------------
 Mon May 10 12:51:57 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.8.0+git.1619794372.c48ba825:
