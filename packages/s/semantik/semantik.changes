@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 10:42:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.7
+  * Fix the rendering of activity elements start/end
+  * Fix saving empty documents
+  * Improve the layout for various diagram elements
+  * Hide top-right corner data flags on empty map items
+  * Workaround for dark desktop color schemes
+  * Improve the zoom system
+- Remove _service file, update can be done with
+  "osc service ra download_files"
+
+-------------------------------------------------------------------
 Wed Mar 25 13:29:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.2.4
