@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Fri Jun 18 12:36:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
-
-- Add patterns-base-fips to work also in FIPS environments (bsc#1183154)
-
--------------------------------------------------------------------
 Wed Apr 28 08:50:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Delete lastlog to work around missing support for sparse files in

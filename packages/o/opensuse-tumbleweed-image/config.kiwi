@@ -84,7 +84,6 @@
     <package name="openSUSE-build-key"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-docker"/>
-    <package name="patterns-base-fips"/>
     <package name="netcfg"/>
     <package name="zypper"/>
   </packages>

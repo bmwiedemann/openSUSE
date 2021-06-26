@@ -131,4 +131,11 @@
     <comment></comment>
     <requestid>901330</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>2a2c7b795babd3c1456d9320f14bf1dc</srcmd5>
+    <version>1.0.4</version>
+    <time>1624688321</time>
+    <user>dimstar_suse</user>
+    <comment>revert, breaks dependent images like rstudio-desktop</comment>
+  </revision>
 </revisionlist>
