@@ -1,7 +1,7 @@
 #
 # spec file for package kdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,17 @@ URL:            https://community.kde.org/KDb
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-build-with-PostgreSQL-12.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-build-with-newer-Qt.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  libicu-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+BuildRequires:  postgresql-server-devel
+%else
+BuildRequires:  postgresql-devel
+%endif
 BuildRequires:  python-base
 BuildRequires:  sqlite3-devel
 BuildRequires:  cmake(KF5CoreAddons)
@@ -40,11 +46,7 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-BuildRequires:  postgresql-server-devel
-%else
-BuildRequires:  postgresql-devel
-%endif
+BuildRequires:  pkgconfig(icu-uc)
 
 %description
 A database connectivity and creation framework for various database vendors
@@ -71,7 +73,7 @@ The development package for the database connectivity and creation framework
 %package mysql-driver
 Summary:        Database connectivity and creation framework - MySQL driver
 Group:          Productivity/Office/Suite
-Supplements:    packageand(libKDb3-%{sover}:mariadb)
+Supplements:    (libKDb3-%{sover} and mariadb)
 Obsoletes:      calligra-kexi-mysql-driver < %{version}
 Provides:       calligra-kexi-mysql-driver = %{version}
 
@@ -81,7 +83,7 @@ This package contains the MySQL driver for the Database connectivity and creatio
 %package postgresql-driver
 Summary:        Database connectivity and creation framework - PostgreSQL driver
 Group:          Productivity/Office/Suite
-Supplements:    packageand(libKDb3-%{sover}:postgresql)
+Supplements:    (libKDb3-%{sover} and postgresql)
 Obsoletes:      calligra-kexi-postgresql-driver < %{version}
 Provides:       calligra-kexi-postgresql-driver = %{version}
 
@@ -91,7 +93,7 @@ This package contains the PostgreSQL driver for the Database connectivity and cr
 %package sqlite3-driver
 Summary:        Database connectivity and creation framework - SQLite3 driver
 Group:          Productivity/Office/Suite
-Supplements:    packageand(libKDb3-%{sover}:sqlite3)
+Supplements:    (libKDb3-%{sover} and sqlite3)
 Obsoletes:      calligra-kexi-sqlite3-driver < %{version}
 Provides:       calligra-kexi-sqlite3-driver = %{version}
 
@@ -101,19 +103,18 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %find_lang %{name} %{name}.lang --all-name --with-qt
+%kf5_makeinstall -C build
+%find_lang %{name} %{name}.lang --all-name --with-qt
 
-  # Contains bogus entries
-  rm -f %{buildroot}%{_libdir}/pkgconfig/KDb3.pc
+# Contains bogus entries
+rm %{buildroot}%{_libdir}/pkgconfig/KDb3.pc
 
 %post -n libKDb3-%{sover} -p /sbin/ldconfig
 %postun -n libKDb3-%{sover} -p /sbin/ldconfig
@@ -125,9 +126,8 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 %files devel
 %license COPYING*
 %{_includedir}/KDb3/
-%{_libdir}/cmake/KDb3/
-#%%{_libdir}/pkgconfig/KDb3.pc
 %{_kf5_mkspecsdir}/qt_KDb3.pri
+%{_libdir}/cmake/KDb3/
 %{_libdir}/libKDb3.so
 
 %files sqlite3-driver
