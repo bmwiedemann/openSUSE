@@ -19,22 +19,24 @@
 # Internal QML import of examples
 %global __requires_exclude qmlimport\\(CustomFormatter.*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5DataVisualization5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtdatavis3d-everywhere-src-5.15.2
+%define tar_version qtdatavis3d-everywhere-src-%{version}
 Name:           libqt5-qtdatavis3d
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt5 Data Visualization 3D
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://doc.qt.io/qt-5/qtdatavisualization-index.html
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
+BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -62,7 +64,7 @@ Qt5 Data Visualization module provides a way to visualize data in 3D.
   * Volumetric custom items
 
 %prep
-%setup -q -n qtdatavis3d-everywhere-src-%{real_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt5 Data Visualization module

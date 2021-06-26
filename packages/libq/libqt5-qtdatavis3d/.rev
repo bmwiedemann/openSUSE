@@ -189,4 +189,12 @@
     <comment>Add compatibility with qml-autoreqprov</comment>
     <requestid>866042</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>063d166ff8d06959274872b9a2d5de09</srcmd5>
+    <version>5.15.2+kde2</version>
+    <time>1624735517</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902324</requestid>
+  </revision>
 </revisionlist>
