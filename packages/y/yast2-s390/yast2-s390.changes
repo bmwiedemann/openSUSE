@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:07:05 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- do not activate DASD devices after formatting (bsc#1187012)
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
