@@ -18,13 +18,13 @@
 
 %define lname   libvslvm1
 Name:           libvslvm
-Version:        20210511
+Version:        20210524
 Release:        0
 Summary:        Library to access the Linux Logical Volume Manager (LVM) volume system
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvslvm/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libvslvm/releases/download/%{version}/libvslvm-experimental-%{version}.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
