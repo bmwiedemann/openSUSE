@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 25 10:02:25 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add 4134.patch to fix build with Sphinx4 
+
+-------------------------------------------------------------------
 Mon Mar 15 20:33:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - always build against llvm9, also on SLE15 (suse_version == 1500)

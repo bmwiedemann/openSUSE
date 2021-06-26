@@ -80,6 +80,8 @@ Patch35:        ghc-pie.patch
 Patch100:       ghc-8.0.2-Cabal-dynlibdir.patch
 # PATCH-FIX-UPSTREAM buildpath-abi-stability.patch -- debian patch for more stable abi-1
 Patch110:       buildpath-abi-stability.patch
+# PATCH-FIX-UPSTREAM 4134.diff -- documentation fiixes and sphinx4 build fix
+Patch120:       4134.patch
 
 %description
 Haskell is the standard purely functional programming language; the
@@ -192,6 +194,7 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
+%patch120 -p1
 
 %build
 cat > mk/build.mk <<EOF
