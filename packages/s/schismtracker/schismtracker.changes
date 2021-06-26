@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 26 09:43:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210525
+  * Add support for saving MOD files
+  * Fix conflict in MIDI setup when ALSA and OSS are both available
+  * Fix instrument and sample panning overwriting channel panning
+  * Fix issues related to portamento with Amiga slides
+  * Support compressed stereo samples in ITI/ITS files
+  * Convert XM/MOD EA0/EB0 to D00 when loading
+  * Fix memory access bug in the MTM loader
+
+-------------------------------------------------------------------
 Thu Jul  2 18:48:18 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to new upstream release 20200412

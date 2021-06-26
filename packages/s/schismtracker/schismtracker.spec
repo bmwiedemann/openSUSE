@@ -1,7 +1,7 @@
 #
 # spec file for package schismtracker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           schismtracker
-Version:        20200412
+Version:        20210525
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://schismtracker.org/
 
 #Git-Clone:     https://github.com/schismtracker/schismtracker
-Source:         https://github.com/schismtracker/schismtracker/archive/%version.tar.gz
+Source:         https://github.com/schismtracker/schismtracker/archive/refs/tags/%version.tar.gz
 Source2:        %name.desktop
 Patch1:         schism-alsa.diff
 Patch2:         schism-nodate.diff
@@ -37,7 +37,7 @@ BuildRequires:  automake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  python >= 2.4
+BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xv)
@@ -51,13 +51,12 @@ modified version of the Modplug engine, with a number of
 bugfixes and changes to improve IT playback.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -P 3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
@@ -72,7 +71,6 @@ install -Dm 0644 icons/schism-icon.svg \
 %suse_update_desktop_file -i %name
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc NEWS README.md
 %_bindir/schismtracker

@@ -117,4 +117,12 @@
     <comment>- Update to new upstream release 20200412</comment>
     <requestid>818403</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65851b9513939dcd8dc4398d07443fa2</srcmd5>
+    <version>20210525</version>
+    <time>1624735535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210525</comment>
+    <requestid>902485</requestid>
+  </revision>
 </revisionlist>
