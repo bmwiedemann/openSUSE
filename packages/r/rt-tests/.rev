@@ -66,4 +66,12 @@
   * cyclicdeadline: Add a simple manpage for cyclicdeadline</comment>
     <requestid>860406</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2862d9ef6152181bed3a44585b09802</srcmd5>
+    <version>2.0</version>
+    <time>1624735526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902393</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 25 07:52:28 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to upstream version 2.0
+  * All test programs can output their results in JSON format
+  * cyclictest: Allow to specify main thread affinity
+
+-------------------------------------------------------------------
 Tue Jan  5 07:34:20 UTC 2021 - Jeffrey Cheung <jcheung@suse.com>
 
 - Update to upstream version 1.10 (SLE-12981)
