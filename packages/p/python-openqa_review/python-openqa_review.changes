@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 25 18:51:37 UTC 2021 - okurz@suse.com
+
+- Update to version 1.24.0:
+  * doc: Add CURL_CA_BUNDLE
+  * Improve handling of --filter
+  * Add User-Agent header to HTTP requests
+  * Fix relative import path for directly called testsuite
+  * Remove futurize from tests
+  * Update setup.py - remove python2 compactibility stuff
+  * Remove 'futurize' usage, isnt needed with drop of python2 suppport
+  * Use correct shebang for rpm based distributions
+
+-------------------------------------------------------------------
 Thu Jun 24 13:09:18 UTC 2021 - okurz@suse.com
 
 - Update to version 1.23.0:

@@ -26,12 +26,14 @@
 %define name_ext -test
 %endif
 
+%define pythons python3
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         short_name openqa_review
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT

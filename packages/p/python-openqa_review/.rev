@@ -335,4 +335,12 @@
     <comment>Update to 1.23.0</comment>
     <requestid>901745</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0cd469473c2065fc38b185d3add7b67d</srcmd5>
+    <version>1.24.0</version>
+    <time>1624735530</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.24.0</comment>
+    <requestid>902424</requestid>
+  </revision>
 </revisionlist>
