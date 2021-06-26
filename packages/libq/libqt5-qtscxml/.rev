@@ -143,4 +143,18 @@
     <comment>Add compatibility with qml-autoreqprov</comment>
     <requestid>866046</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49704a3ad227dd53c66d6b8dcfae6723</srcmd5>
+    <version>5.15.2+kde1</version>
+    <time>1624735521</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requirement in baselibs.conf
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde1:
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch</comment>
+    <requestid>902531</requestid>
+  </revision>
 </revisionlist>

@@ -19,25 +19,27 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\((CalculatorStateMachine|Directions|MediaPlayerDataModel|MediaPlayerStateMachine|TrafficLightStateMachine).*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Scxml5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtscxml-everywhere-src-5.15.2
+%define tar_version qtscxml-everywhere-src-%{version}
 Name:           libqt5-qtscxml
-Version:        5.15.2
+Version:        5.15.2+kde1
 Release:        0
 Summary:        Qt 5 State Chart XML Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 URL:            https://qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtbase-devel >= %{version}
-BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 BuildRequires:  xz
 %if %{qt5_snapshot}
 #to create the forwarding headers
@@ -108,7 +110,7 @@ Summary:        Non-ABI stable experimental API for Qt5's State Chart XML librar
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 BuildArch:      noarch
 
 %description private-headers-devel
