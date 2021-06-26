@@ -1121,4 +1121,12 @@
   * bsc#1181256: Fix errors when scanning files &gt; 4G</comment>
     <requestid>884035</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>b69ab4d4415c4229e75fd2faa7f0063b</srcmd5>
+    <version>0.103.3</version>
+    <time>1624735526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902389</requestid>
+  </revision>
 </revisionlist>

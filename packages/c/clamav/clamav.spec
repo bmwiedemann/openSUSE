@@ -19,7 +19,7 @@
 %bcond_with	clammspack
 %bcond_with	valgrind
 Name:           clamav
-Version:        0.103.2
+Version:        0.103.3
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only

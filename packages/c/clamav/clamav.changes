@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 21 18:44:32 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.3
+  * Fixed a scan performance issue when ENGINE_OPTIONS_FORCE_TO_DISK is
+    enabled. This issue did not impacted most users but for those
+    affected it caused every scanned file to be copied to the temp
+    directory before the scan.
+  * Fix ClamDScan crashes when using the --fdpass --multiscan
+    command-line options in combination with the ClamD ExcludePath
+    config file options.
+  * Fixed an issue where the mirrors.dat file is owned by root when
+    starting as root (or with sudo) and using daemon-mode. File
+    ownership will be set to the DatabaseOwner just before FreshClam
+    switches to run as that user.
+  * Renamed the mirrors.dat file to freshclam.dat.
+  * Disabled the HTTPUserAgent config option if the DatabaseMirror uses
+    clamav.net. This will prevent users from being inadvertently blocked
+    and will ensure that we can keep better metrics on which ClamAV
+    versions are being used.
+  * Moved the detection for Heuristics.PNG.CVE-2010-1205 behind the
+    ClamScan --alert-broken-media option (ClamD AlertBrokenMedia yes)
+    option. This type of PNG issue appears to be common enough to be an
+    annoyance, and the CVE is old enough that no one should be
+    vulnerable at this point.
+  * Fix ClamSubmit failures after changes to Cloudflare "__cfduid"
+    cookies. See: https://blog.cloudflare.com/deprecating-cfduid-cookie/
+
+-------------------------------------------------------------------
 Fri Apr  9 10:33:04 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Use a split-provides for clamav-milter instead of recommending it.
