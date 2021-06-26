@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtlottie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define qt5_snapshot 1
 Name:           libqt5-qtlottie
-Version:        5.15.2
+Version:        5.15.2+kde1
 Release:        0
 Summary:        Qt 5 Quick Lottie Addon
 License:        GPL-3.0-or-later
@@ -26,14 +27,20 @@ URL:            https://www.qt.io
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtlottie-everywhere-src-5.15.2
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+%define tar_version qtlottie-everywhere-src-%{version}
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+%if %{qt5_snapshot}
+#to create the forwarding headers
+BuildRequires:  perl
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
 %requires_ge    libQt5Gui5
 
 %description
@@ -71,6 +78,10 @@ of the Qt5 BodyMovin library.
 %autosetup -n %{tar_version}
 
 %build
+%if %{qt5_snapshot}
+#force the configure script to generate the forwarding headers (it checks whether .git directory exists)
+mkdir .git
+%endif
 %qmake5
 %make_jobs
 
