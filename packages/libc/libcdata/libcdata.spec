@@ -18,13 +18,13 @@
 
 Name:           libcdata
 %define lname	libcdata1
-Version:        20210415
+Version:        20210625
 Release:        0
 Summary:        Library for C generic data functions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcdata
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcdata/releases/download/%version/libcdata-alpha-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
