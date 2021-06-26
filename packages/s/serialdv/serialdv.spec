@@ -1,7 +1,7 @@
 #
 # spec file for package serialdv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover   1
 %define libname libserialdv%{sover}
 Name:           serialdv
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        Library for audio de-/encoding with ABME3000 based devices
 License:        GPL-3.0-only

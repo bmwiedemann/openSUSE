@@ -28,4 +28,12 @@
   * Fixed compiler warnings on some systems.</comment>
     <requestid>727927</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>26087dcf88e8903397f8fee5f13774d7</srcmd5>
+    <version>1.1.4</version>
+    <time>1624735522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902382</requestid>
+  </revision>
 </revisionlist>
