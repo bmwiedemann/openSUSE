@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 22 19:35:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde25:
+  * Fix multi-view picking
+  * Don't export QKeyFrame which is fully implemented in the header
+  * ObjectPicker: ensure pristine pickers are handled
+  * Add missing sampler types and sizes to gl4 helpers
+  * Restore ObjectLevelLockingPolicy on ShaderManager
+  * Fix light uniforms not properly being updated
+  * qpicktriangleevent_p.h Add missing private API warning
+  * Fix sampler2DArrayShadow uniform in QShaderGenerator
+  * Print warning about using primitive restart on ES2
+  * Allow assimp to compile on non-gcc compilers
+  * Fix binding of CubeMapArray textures
+  * Fix disabling shader cache via environment variable
+  * QShaderProgramBuilder: add documentation related to caching
+  * OpenGL renderer: fix use of outdated VAO when shader is reloaded
+  * SyncRenderViewPreCommandUpdate: fix a few odd cases
+  * Only set the state flag after having merged with the other states
+  * Introduce QGeometryRendererPrivate::sortIndex
+  * Add mipmaps count to QAbstracTexturePrivate
+  * Scene3DItem: release frontend/backend tree on destruction
+  * Fix GLTexture cleanup
+  * Check if texture upload is full sized
+  * Handle invalid entity names in QSceneLoader::component
+  * Add dedicated Qt3D.Renderer.ShaderCache logging category
+  * Add caching mechanism to ShaderBuilder
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Sun Jan 31 13:39:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov

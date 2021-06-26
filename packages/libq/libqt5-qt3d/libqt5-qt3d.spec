@@ -18,15 +18,15 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\(Qardboard.*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt53DCore5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qt3d-everywhere-src-5.15.2
+%define tar_version qt3d-everywhere-src-%{version}
 %global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
-Version:        5.15.2
+Version:        5.15.2+kde25
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -34,14 +34,16 @@ Summary:        Qt 5 3D Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Bootstrap-devel-static >= %{version}
-BuildRequires:  libQt5Concurrent-devel >= %{version}
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libQt5OpenGLExtensions-devel-static >= %{version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+BuildRequires:  libQt5Bootstrap-devel-static >= %{real_version}
+BuildRequires:  libQt5Concurrent-devel >= %{real_version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5OpenGLExtensions-devel-static >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -356,10 +358,10 @@ You need this package if you want to compile programs with qt3d.
 Summary:        Non-ABI stable experimental API for the Qt5 3D library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
-Requires:       libQt5Gui-private-headers-devel >= %{version}
-Requires:       libQt5OpenGLExtensions-devel-static >= %{version}
-Requires:       libqt5-qtdeclarative-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
+Requires:       libQt5Gui-private-headers-devel >= %{real_version}
+Requires:       libQt5OpenGLExtensions-devel-static >= %{real_version}
+Requires:       libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 BuildArch:      noarch
 
 %description private-headers-devel
