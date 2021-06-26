@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 18 09:06:39 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update go build version requirements
+
+-------------------------------------------------------------------
 Fri Jun  4 08:03:53 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Fix incomplete display when job has more than 10 clones

@@ -25,7 +25,7 @@ URL:            https://github.com/grisu48/openqa-mon/
 Source:         openqa-mon-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  go1.14
+BuildRequires:  go >= 1.14
 %{go_nostrip}
 
 %description
