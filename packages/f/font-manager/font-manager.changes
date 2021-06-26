@@ -1,0 +1,238 @@
+-------------------------------------------------------------------
+Fri Jun 25 09:56:44 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Fix source url in spec file
+
+-------------------------------------------------------------------
+Sun Jun 13 21:58:59 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update spec file
+
+-------------------------------------------------------------------
+Tue Dec 1 22:44:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.8.6
+  * Fix GSettings crash with GNOME 40 due to missing "antialias" setting
+  * Fix FTBFS with Vala >= 0.52
+  * Fix a bug where most categories fail to load on first run.
+  * Move to a more traditional sidebar layout - Issue #59
+  * Make insensitive controls more consistent across different areas
+  * Fix dbus method signature in file manager extensions
+  * Fix infinite loop triggered by listing contents of collections which contain children
+  * Save / Restore state for Google Fonts preview pane
+  * Fix initial preview text in Font Viewer schema
+  * Add all currently selected fonts to comparison when add button is clicked - Issue #170
+  * Fixes an issue where if a network connection is not available at startup
+  * Google Fonts information will never be updated. Flatpak builds hit this issue
+  * everytime. Regular installations can simply restart to work around this bug.
+  * Revert change incompatible with older Vala versions
+  * Include latest translation updates
+  * Make WebKit and libsoup optional - #137
+  * Fix issue when building with --buildtype=release - #136
+  * Fix GF preview issue due to use of localized values in html - #135 / #138
+  * Fix crash when downloading fonts - #151
+  * Translation updates and bugfixes thanks to @PF4Public - #144
+  * Fix FTBFS with Vala 0.50+ - #134
+  * Adds Google Fonts integration - #54
+  * Requires WebKitGtk and libsoup
+  * Allow saving compare lists contents
+  * Add GNOME Shell search provider
+  * Update Unicode data to 13.0
+  * Update vendor data
+
+-------------------------------------------------------------------
+Sun Oct  18 22:44:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.7.9
+  * Fixes build failures with Vala 0.50
+  * Restore Thunar extension - #94
+  * Added Dutch translation - thanks to @Vistaus
+  * Closes #48 - Allow users to create custom actions
+  * Adds install menu item to extensions
+
+-------------------------------------------------------------------
+Mon Jul  27 23:00:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.7.8.
+  * Closes #122 - Various changes related to Flatpak packaging.
+  * Fix incorrect font being added to comparison - #124
+  * Filter out legacy fonts which are no longer suported by newer Pamgo versions.
+  * Updates / fixes to translations ( #105, #117 )
+  * Build system improvements
+
+-------------------------------------------------------------------
+Mon Jul  27 22:55:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.7.7.
+  * Fix file manager crash caused by extensions
+
+-------------------------------------------------------------------
+Mon Jul  27 22:50:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.7.6.
+  * Add search to character map
+  * Add zoom window to character map on right click
+  * Add fsType information to license pane
+  * Add grid view to browse mode
+  * Add context info / help to preference panes
+  * Display progress during database updates
+  * Update unicode data to version 12.0.0
+  * Update translations
+  * Drop use of Python for file manager extensions
+  * Closes Issue # 96
+    Fix build failure / crash with newer versions of Vala
+  * Closes Issue # 75
+    Prefer family and style from name table and properly deal with their encoding
+  * Addresses Issue # 99
+    Add Import / Export for user data
+  * Addresses Issue # 102
+    Searches starting with : will filter based on character
+
+-------------------------------------------------------------------
+Sun Jul  26 21:30:36 UTC 2020 - Giuseppe Stoduto
+
+- Update to 0.7.5.
+  * Require Vala >= 0.42
+  * Switch to Meson build system
+  * Use GtkBuilder templates as much as possible
+  * Fix inoperative desktop font preference controls
+  * Add language filter to default categories
+
+-------------------------------------------------------------------
+Sun Jan  6 08:48:36 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.7.4.
+  * Drop dependency on gucharmap library.
+  * Drop dependency on Gee library.
+  * Drop Intltool.
+  * Determine whether file-roller is available at runtime.
+  * Fixed a crash that occurred when non font files were dropped
+    onto preview areas.
+  * Added filetype to property pane.
+  * Added designer/designer url to property pane.
+  * Added orthography recognition based on the work done for
+    Fontaine by Edward H. Trager.
+  * Searches starting with / will filter based on filepath.
+  * Added preference pane for Gnome desktop settings.
+  * Added GtkShortcutsWindow.
+  * Updated vendor list.
+  * Added option to enable/disable GTK+ animations.
+  * Added font substitution preference pane.
+  * Added some help documentation.
+  * Character map now only displays those codepoints which are
+    present in selected font.
+  * Added custom preview entry to Browse mode.
+  * Added custom preview entry to Compare mode.
+  * Make headerbar area more consistent with other Gtk+ applications.
+  * Added "Copy Location" and "Show in Folder" entries to the font
+    list context menu.
+  * Added "Copy to.." and "Compress..." entries to the collection
+    list context menu.
+  * Force sidebar content to stay in place rather than slide out
+    of view.
+  * Hide non-matching search results.
+  * Enable "next-match", "previous-match" and "activate" signals
+    for search.
+  * Match search term anywhere in family name.
+  * Ensure "C" locale is used when saving double values to
+    configuration files.
+
+-------------------------------------------------------------------
+Mon Oct 15 18:40:34 UTC 2018 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.7.3.1.
+  * Fixes build failures with Vala versions newer than 0.34.
+- Drop font-manager-fix_vala.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Apr 11 22:59:40 UTC 2018 - lazy.kent@opensuse.org
+
+- Update to 0.7.3.
+- Drop all old patches.
+- Add font-manager-fix_vala.patch: fix build with vala >= 0.35
+  (fixed in git).
+- Correct build and runtime dependencies.
+- Correct URLs.
+
+-------------------------------------------------------------------
+Wed Nov 28 21:29:41 UTC 2012 - lazy.kent@opensuse.org
+
+- Get back intltool to build dependencies (need to regenerate
+  translations).
+
+-------------------------------------------------------------------
+Fri Nov 16 16:15:02 UTC 2012 - lazy.kent@opensuse.org
+
+- Disable bytecode compile in configure. Use %py_compile macro. So
+  no need to delete *.pyo files that causes build fail for Factory
+  (oS 12.3). Also doesn't require fdupes.
+- Correct build dependencies:
+  * remove autoconf, automake, fdupes, intltool, libtool;
+  * pkgconfig -> pkg-config;
+  * add pkgconfig(pangoft2).
+- Add font-manager-0.5.7-russian.patch: update Russian translation.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:51:07 UTC 2012 - lazy.kent@opensuse.org
+
+- Add font-manager-0.5.7-gcc47.patch from Debian project: fix build
+  with GCC 4.7.
+- License: GPL-3.0+.
+- Use pkgconfig(*) as build dependencies.
+- Split off language package.
+- Clean up spec.
+
+-------------------------------------------------------------------
+Tue Dec 20 19:59:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- remove dependency on python-sqlite2, not needed -- bnc#737900
+
+-------------------------------------------------------------------
+Thu Dec 23 12:13:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- enable experimental I18N support
+
+- update to 0.5.7:
+  * allow sorting families by right-clicking
+  * address an issue where selecting a collection causes unintended drag and drop effect
+  * dd font version field to the font information dialog
+  * allow managing collections while in "Browse" mode
+  * enable browse mode by default
+  * allow re-ordering while in compare mode
+  * add family type filter to advanced search dialog; this uses Panose values and won't display fonts which don't supply them
+  * use images which are friendlier to dark backgrounds.
+  * fix some i18n related bugs
+
+-------------------------------------------------------------------
+Mon Aug  9 06:17:49 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.5.6:
+  * fix issue where our window is still displayed at startup even though both minimize on startup and minimize to tray are enabled
+  * fix issue where failure to load a font file causes startup to abort with a useless error message
+  * automatically try to move any customizations found in ~/.fonts.conf to ~/.config/font-manager/local.conf instead of simply overwriting them -- you should still edit local.conf directly and not rely on this
+  * browse mode now displays disabled fonts and uses the same size setting as the rest of the application, it also includes a size slider
+  * added a dialog which allows mass renaming and deletion of files in imported folders; this has to be enabled in the preferences dialog
+
+-------------------------------------------------------------------
+Tue Jun 29 07:54:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.5.5:
+  * fix issue where fontconfig/pango updates cause previews to stop displaying properly for disabled families
+  * fix issue where fonts from user configured folders which are not in the users home directory get placed into the System category
+  * fix issue where fonts with family names containing non-ASCII characters are unusable -- if you experienced this, please reset the applications cache to remove outdated entries
+  * add a fontconfig editor which allows users to configure settings for individual families and styles; <matrix> transformations are not supported
+  * add an alias editor which allows users to configure font substitution
+  * cut down on the number of events that require a restart
+
+- changes from 0.5.4:
+  * fix several bugs introduced in the 0.5.x releases, hopefully without introducing new ones
+  * several interface improvements, the most important one being that the application now saves most of it's state when closed, i.e. window size, preview font size, compare colors, pane positions, etc.
+  * added an option to keep the current collection focused when adding families to other collections as suggested at http://code.google.com/p/font-manager/issues/detail?id=18
+  * added a "browser mode" as suggested at http://code.google.com/p/font-manager/issues/detail?id=19
+  * switch to Mallard-based help, unfortunately this means users who do not have Yelp installed will not have access to it
+
+-------------------------------------------------------------------
+Wed Mar 10 09:10:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package
+
