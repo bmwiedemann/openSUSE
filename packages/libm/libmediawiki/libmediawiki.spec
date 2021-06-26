@@ -1,7 +1,7 @@
 #
 # spec file for package libmediawiki
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,17 @@ Name:           libmediawiki
 Version:        5.37.0
 Release:        0
 Summary:        Interface for MediaWiki based web services
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
-Url:            https://cgit.kde.org/libmediawiki.git
-Source0:        http://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+URL:            https://invent.kde.org/libraries/libmediawiki
+Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-compilation-error-with-Qt-5.15.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  kcoreaddons-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
 
 %description
 libmediawiki is a KDE C++ interface for MediaWiki based web services as
@@ -59,31 +60,30 @@ wikipedia.org.
 This package contains the development files for libmediawiki.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 %post -n libKF5MediaWiki5 -p /sbin/ldconfig
-
 %postun -n libKF5MediaWiki5 -p /sbin/ldconfig
 
 %files -n libKF5MediaWiki5
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING COPYING.LIB README.md
+%license COPYING COPYING.LIB
+%doc AUTHORS README.md
 %{_kf5_libdir}/libKF5MediaWiki.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING COPYING-CMAKE-SCRIPTS COPYING.LIB README.md
+%license COPYING COPYING.LIB
+%doc AUTHORS COPYING-CMAKE-SCRIPTS README.md
+%{_kf5_cmakedir}/KF5MediaWiki/
 %{_kf5_includedir}/MediaWiki/
 %{_kf5_includedir}/mediawiki_version.h
 %{_kf5_libdir}/libKF5MediaWiki.so
-%{_kf5_cmakedir}/KF5MediaWiki/
 %{_kf5_mkspecsdir}/qt_MediaWiki.pri
 
 %changelog
