@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 25 18:27:35 UTC 2021 - David Mair <dmair@suse.com>
+
+- Kernel commit 5c83511bdb9832c86be20fb86b783356e2f58062 removed
+  pv_init_ops, and commit 054ac8ad5ebe4a69e1f0e842483821ddbe560121
+  removed the Xen-specific paravirt patch function. As a result,
+  pvops Xen dumps are no longer recognized as Xen dumps, and
+  virtual-to-physical translation fails.
+
+  Use the value of xen_start_info to determine whether the kernel
+  is running in Xen PV mode. As suggested by Juergen Gross.
+  (bsc#1187634)
+  + crash-xen-pvops.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 10:43:56 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix bt command with SEV-ES (bsc#1185209)

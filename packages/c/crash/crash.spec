@@ -97,6 +97,7 @@ Patch43:        %{name}-printk-add-support-for-lockless-ringbuffer.patch
 Patch44:        %{name}-printk-use-committed-finalized-state-values.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9c881ab372010b46655dfed0a3c5cd78b3ff8fa0.patch
 Patch45:        %{name}-x86_64-VC-exception-stack-support.patch
+Patch46:        %{name}-xen-pvops.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -299,6 +300,7 @@ Authors:
 %patch43 -p1
 %patch44 -p1
 %patch45 -p1
+%patch46 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
