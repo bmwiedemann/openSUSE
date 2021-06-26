@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 22 19:34:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde20:
+  * prune bogus comment from linguist_nl
+  * Update pt_BR translations for 5.15 branch
+  * Remove obsolete entries from zh_CN translations
+  * Add initial translation for Norwegian Nynorsk
+  * l10n: zh_TW: update translations
+  * update chinese simplifid language for qt5.12
+  * Add dutch (nl) files and partial translations
+  * Split and update Persian translations
+  * Add pt_BR translations for 5.12
+  * Bump version
+  * Bump version
+  * Bump version
+  * Bump version
+  * add croatian translation
+  * Bump version
+  * fix translation of "discard" in italian
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:

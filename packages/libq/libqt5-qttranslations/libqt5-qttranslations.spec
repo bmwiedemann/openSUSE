@@ -16,20 +16,22 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qttranslations-everywhere-src-5.15.2
+%define tar_version qttranslations-everywhere-src-%{version}
 Name:           libqt5-qttranslations
-Version:        5.15.2
+Version:        5.15.2+kde20
 Release:        0
 Summary:        Qt 5 translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
-BuildRequires:  libqt5-qttools-devel >= %{version}
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
+BuildRequires:  libqt5-qttools-devel >= %{real_version}
 BuildRequires:  xz
 %if %{qt5_snapshot}
 #to create the forwarding headers
@@ -41,7 +43,7 @@ Qt is a set of libraries for developing applications.
 This package contains translations for Qt5 toolkit and it's applications.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %build
 %if %{qt5_snapshot}
