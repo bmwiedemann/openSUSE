@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 26 09:13:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-use-python3-exclusively.patch so we can build
+  without python2.
+
+-------------------------------------------------------------------
 Wed Jul  1 15:43:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.1

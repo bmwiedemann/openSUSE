@@ -1,7 +1,7 @@
 #
 # spec file for package chocolate-doom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ Source:         http://www.chocolate-doom.org/downloads/%version/%name-%version.
 Source2:        http://www.chocolate-doom.org/downloads/%version/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         chdoom-iwaddir.diff
+Patch2:         0001-build-use-python3-exclusively.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
-BuildRequires:  python
+BuildRequires:  python3-Pillow
+BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_mixer) >= 2.0.0
 BuildRequires:  pkgconfig(SDL2_net) >= 2.0.0
@@ -64,13 +66,12 @@ Supplements:    packageand(chocolate-doom:bash-completion)
 Additions for bash-completion to support chocolate-doom.
 
 %prep
-%setup -Tqb0
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure CFLAGS="%optflags -fcommon"
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
