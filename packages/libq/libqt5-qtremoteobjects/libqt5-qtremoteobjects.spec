@@ -16,23 +16,25 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5RemoteObjects5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtremoteobjects-everywhere-src-5.15.2
+%define tar_version qtremoteobjects-everywhere-src-%{version}
 Name:           libqt5-qtremoteobjects
-Version:        5.15.2
+Version:        5.15.2+kde3
 Release:        0
 Summary:        Qt 5 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Url:            http://qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtbase-devel >= %{version}
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
 BuildRequires:  xz
 %if %{qt5_snapshot}
 #to create the forwarding headers
@@ -44,7 +46,7 @@ Qt Remote Objects (QtRO) is an inter-process communication (IPC)
 processes or computers.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 RemoteObjects Library
@@ -82,7 +84,7 @@ You need this package if you want to compile programs with QtRemoteObjects.
 Summary:        Non-ABI stable experimental API for the Qt5 RemoteObjects library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 BuildArch:      noarch
 
 %description private-headers-devel
