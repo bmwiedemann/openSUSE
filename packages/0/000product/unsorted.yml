@@ -3672,9 +3672,13 @@ unsorted:
   - fondu 
   - fonehome 
   - fonehome-server 
+  - font-manager 
+  - font-manager-common 
+  - font-manager-lang 
   - font-specimen 
   - font-specimen-devel 
   - font-util 
+  - font-viewer 
   - fontawesome-fonts 
   - fontawesome-fonts-web 
   - fontcacheproto-devel 
@@ -16670,6 +16674,7 @@ unsorted:
   - nautilus-extension-nitroshare 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
+  - nautilus-font-manager 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
   - nautilus-plugin-easytag 
@@ -16746,6 +16751,7 @@ unsorted:
   - nemo-extension-share 
   - nemo-extension-terminal 
   - nemo-extensions-lang 
+  - nemo-font-manager 
   - nemo-lang 
   - neochat 
   - neochat-lang 
@@ -21298,6 +21304,7 @@ unsorted:
   - python3-openbabel 
   - python3-opencv 
   - python3-opencv3 
+  - python3-openqa_review 
   - python3-openshot 
   - python3-openstack-doc-tools 
   - python3-openstackclient 
@@ -23045,7 +23052,6 @@ unsorted:
   - python36-openidc-client 
   - python36-openpyxl 
   - python36-openqa_client 
-  - python36-openqa_review 
   - python36-opentelemetry-api 
   - python36-opentracing 
   - python36-openwrt-luci-rpc 
@@ -25915,7 +25921,6 @@ unsorted:
   - python38-openmesh 
   - python38-openpyxl 
   - python38-openqa_client 
-  - python38-openqa_review 
   - python38-opentelemetry-api 
   - python38-opentracing 
   - python38-openwrt-luci-rpc 
@@ -28928,7 +28933,6 @@ unsorted:
   - python39-openmesh 
   - python39-openpyxl 
   - python39-openqa_client 
-  - python39-openqa_review 
   - python39-opentelemetry-api 
   - python39-opentracing 
   - python39-openwrt-luci-rpc 
@@ -40647,6 +40651,7 @@ unsorted:
   - thrift 
   - thttpd 
   - thunar-devel 
+  - thunar-font-manager 
   - thunar-plugin-dropbox 
   - thunar-plugin-shares 
   - thunar-plugin-shares-lang 
