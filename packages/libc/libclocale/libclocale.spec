@@ -18,13 +18,13 @@
 
 Name:           libclocale
 %define lname	libclocale1
-Version:        20210410
+Version:        20210526
 Release:        0
 Summary:        Library for C locale functions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libclocale
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libclocale/releases/download/%version/libclocale-alpha-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
