@@ -1,7 +1,7 @@
 #
-# spec file for package python-ansible-runner
+# spec file for package ansible-runner
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           ansible-runner
-Version:        1.3.4
+Version:        1.4.7
 Release:        0
-License:        Apache-2.0 and GPL-3.0-or-later
 Summary:        Package for interfacing with Ansible
-Url:            https://github.com/ansible/ansible-runner
+License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/ansible/ansible-runner
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-runner/ansible-runner-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Use-the-correct-python-executable-for-tests.patch -- https://github.com/ansible/ansible-runner/pull/290
-Patch0:         0001-Use-the-correct-python-executable-for-tests.patch
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pytest
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-mock
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-psutil
-BuildRequires:  python3-PyYAML
 BuildRequires:  python3-python-daemon
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+Requires:       python3-PyYAML
 Requires:       python3-pexpect >= 4.5
 Requires:       python3-psutil
 Requires:       python3-python-daemon
-Requires:       python3-PyYAML
 Requires:       python3-six >= 1.12
 BuildArch:      noarch
 
@@ -50,8 +50,7 @@ systems that don’t want to manage the complexities of the interface on
 their own (such as CI/CD platforms, Jenkins, or other automated tooling)
 
 %prep
-%setup -q -n ansible-runner-%{version}
-%patch0 -p1
+%setup -q 
 
 %build
 %python3_build
@@ -60,9 +59,7 @@ their own (such as CI/CD platforms, Jenkins, or other automated tooling)
 %python3_install
 # dont polute the namespace with tests
 rm -r %{buildroot}%{python3_sitelib}/test/
-
-%check
-py.test -v test
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files
 %doc README.md
