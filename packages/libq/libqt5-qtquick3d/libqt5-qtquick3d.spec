@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquick3d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,21 @@
 %bcond_with system_assimp
 %endif
 
+%define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtquick3d-everywhere-src-5.15.2
+%define tar_version qtquick3d-everywhere-src-%{version}
 Name:           libqt5-qtquick3d
-Version:        5.15.2
+Version:        5.15.2+kde19
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
-# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/QTBUG-84037
-Patch0:         0001-Fix-build-with-the-system-assimp.patch
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 %if %{with system_assimp}
 BuildRequires:  pkgconfig(assimp) >= 5.0.0
@@ -48,6 +49,10 @@ BuildRequires:  libQt5Core-private-headers-devel >= 5.12
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+%if %{qt5_snapshot}
+#to create the forwarding headers
+BuildRequires:  perl
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(Qt5Qml) >= 5.12
@@ -134,6 +139,10 @@ Examples for the Qt Quick 3D module.
 %autosetup -p1 -n %{tar_version}
 
 %build
+%if %{qt5_snapshot}
+#force the configure script to generate the forwarding headers (it checks whether .git directory exists)
+mkdir .git
+%endif
 %qmake5 -- \
   %if %{with system_assimp}
   -system-quick3d-assimp

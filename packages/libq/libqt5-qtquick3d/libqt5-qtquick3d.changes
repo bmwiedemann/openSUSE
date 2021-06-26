@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 23 06:32:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde19:
+  * Fix build with system assimp
+  * Only try and use valid asset import plugins
+  * Designer support: Only show supported extension in Shader source field
+  * Fix render mode switch crash
+  * AssimpImporter : Fix the global scale value
+  * Add version 7 to supported UIP version in UipParser
+  * Fix crash on setting null camera to View3D
+  * Avoid using the inverse() method in GLSL for SkyBox shader
+  * Fix build with -no-gui configure flag
+  * Fix dynamically changing a sourceItem's size
+  * Fix transparency handling with QSGTexture
+  * Backport a number of Texture.sourceItem related changes from Qt 6
+  * Import enhanced sourceItem manual test from Qt 6
+  * Remove unused and obsolete designer files
+  * Change a default value of the assimpImporter
+  * Allow non-integer scale properties for Texture
+  * Designer: Add default shader files for CustomMaterial and Effect
+  * Add changes file for Qt 5.15.2
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-the-system-assimp.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
