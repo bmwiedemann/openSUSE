@@ -95,4 +95,12 @@
     <comment>Qt 5.12.3</comment>
     <requestid>697056</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4a7a712b1dee5652c13a10d614fbb5fe</srcmd5>
+    <version>5.12.2</version>
+    <time>1624735517</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902321</requestid>
+  </revision>
 </revisionlist>
