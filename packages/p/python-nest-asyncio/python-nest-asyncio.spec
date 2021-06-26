@@ -1,7 +1,7 @@
 #
 # spec file for package python-nest-asyncio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nest-asyncio
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
 URL:            https://github.com/erdewit/nest_asyncio
 Source:         https://files.pythonhosted.org/packages/source/n/nest_asyncio/nest_asyncio-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,11 +56,13 @@ This module patches asyncio to allow nested use of ``asyncio.run`` and
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/nest_test.py
+%pyunittest -v tests.nest_test
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/nest_asyncio.py*
+%pycache_only %{python_sitelib}/__pycache__/nest_asyncio*.pyc
+%{python_sitelib}/nest_asyncio-%{version}*-info
 
 %changelog
