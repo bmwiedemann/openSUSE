@@ -991,4 +991,12 @@
     <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
     <requestid>900273</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>1369ebdea89f2ab9f045c86bce5d1849</srcmd5>
+    <version>5.22.2.1</version>
+    <time>1624813126</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.2.1</comment>
+    <requestid>901549</requestid>
+  </revision>
 </revisionlist>
