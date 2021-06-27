@@ -85,4 +85,12 @@ The updated YaST package will be submitted later, this SR is done in advance to 
 </comment>
     <requestid>865236</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ba099da56178225481fac8ec418337cc</srcmd5>
+    <version>3.7.0</version>
+    <time>1624813101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902197</requestid>
+  </revision>
 </revisionlist>
