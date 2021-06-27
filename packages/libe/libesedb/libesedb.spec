@@ -16,8 +16,6 @@
 #
 
 
-%bcond_without python2
-
 %define lname	libesedb1
 Name:           libesedb
 Version:        20210513
@@ -54,9 +52,6 @@ BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libmapidb) >= 20170304
 BuildRequires:  pkgconfig(libuna) >= 20201204
-%if %{with python2}
-BuildRequires:  pkgconfig(python2)
-%endif
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -91,21 +86,6 @@ applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libesedb.
 
-%package -n python2-%{name}
-Summary:        Python bindings for libesedb, a EDB file format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Obsoletes:      pyesedb <= 20191220
-Obsoletes:      python-%{name} <= 20191220
-
-%description -n python2-%{name}
-libesedb is a library to access EDB files.  ESEDB is used in many different
-applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
-
-Python2 bindings for libesedb, which can read EDB files.  ESEDB is used in many
-different applications like Windows Search, Windows Mail, Exchange, Active
-Directory, etc.
-
 %package -n python3-%{name}
 Summary:        Python bindings for libesedb, a EDB file format parser
 License:        LGPL-3.0-or-later
@@ -132,9 +112,6 @@ if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
-%if %{with python2}
-    --enable-python2 \
-%endif
     --enable-python3
 %make_build
 
@@ -166,12 +143,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libesedb.so
 %{_libdir}/pkgconfig/libesedb.pc
 %{_mandir}/man3/libesedb.3*
-
-%if %{with python2}
-%files -n python2-%{name}
-%license COPYING*
-%{python2_sitearch}/pyesedb.so
-%endif
 
 %files -n python3-%{name}
 %license COPYING*
