@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 27 11:06:32 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- add patch for new dmd (from master merged patch)
+  Support DMD 2.097.0 as compiler #1505 dmd-20970-support.patch
+
+-------------------------------------------------------------------
 Wed Jun 02 06:33:23 UTC 2021 - egotthold@suse.com
 
 - Update to version 2.4.12:
