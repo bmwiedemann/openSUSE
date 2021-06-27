@@ -1,7 +1,7 @@
 #
 # spec file for package libcint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 %define major 4
-%define minor 0
+%define minor 4
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        %{major}.%{minor}.7
+Version:        %{major}.%{minor}.1
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
 URL:            https://github.com/sunqm/libcint
 Source:         https://github.com/sunqm/libcint/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_control_reaches_end_of_non-void_function.patch andythe_great@pm.me -- Fix error control reaches end of non-void function in int3c2e.c
+Patch0:         fix_control_reaches_end_of_non-void_function.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
@@ -57,7 +59,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} \
