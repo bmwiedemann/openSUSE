@@ -18,7 +18,7 @@
 
 Name:           WSL-DistroLauncher
 # no official release yet
-Version:        0.0.1+git20200306.f858909
+Version:        0.0.1+git20200918.2ed9a93
 Release:        0
 Summary:        Windows Subsystem for Linux distro launcher
 License:        MIT
@@ -26,12 +26,6 @@ URL:            https://github.com/openSUSE/WSL-DistroLauncher
 
 Source:         WSL-DistroLauncher-%{version}.tar.xz
 Source1:        icon.ico
-
-Patch0:         0001-Cross-compiling-the-launcher.patch
-Patch1:         0002-replace-wscanf_s-seems-not-defined-in-mingw.patch
-Patch2:         0003-SUSE-adjustments.patch
-Patch3:         0004-refactor-QueryUid-to-be-reusable.patch
-Patch4:         0005-Run-yast2-firstboot-instead-of-useradd.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -66,21 +60,37 @@ cp %{S:1} DistroLauncher/icon.ico
 %build
 autoreconf -fi
 if [ -e /usr/lib/os-release ]; then
-	. /usr/lib/os-release
+	source /usr/lib/os-release
 else
-	. /etc/os-release
+	source /etc/os-release
 fi
-# During prerelease phases, parens around RC etc. in PRETTY_NAME
-# are not properly escaped if passed to mingw configure step.
-# Bash substitution requires two steps:
-# 1. Keep only alphanumeric characters and spaces
-PRETTY_NAME_ALPHANUM="${PRETTY_NAME//[^a-zA-Z0-9- ]/}"
-# 2. Replace spaces with hyphen
-DISTRO_ID="${PRETTY_NAME_ALPHANUM// /-}"
+
+# PRETTY_NAME is embedded in WSL launcher executable Windows resource metadata.
+# Modify PRETTY_NAME for allowed characters and stable name dropping SLE prerelease.
+# During SLE prerelease phases, parens around RC etc. in PRETTY_NAME
+# will not not be properly escaped if passed to mingw configure step.
+#
+# Reuse bash substitution pattern from obs-service-kiwi_metainfo_helper.
+#
+# PRETTY_NAME:                     openSUSE Leap 15.3
+# PRETTY_NAME_BEFORE_PAREN:        openSUSE Leap 15.3
+# PRETTY_NAME_BEFORE_PAREN_DASHED: openSUSE-Leap-15.3
+#
+# PRETTY_NAME:                     SUSE Linux Enterprise Server 15 SP3 (Snapshot16)
+# PRETTY_NAME_BEFORE_PAREN:        SUSE Linux Enterprise Server 15 SP3
+# PRETTY_NAME_BEFORE_PAREN_DASHED: SUSE-Linux-Enterprise-Server-15-SP3
+#
+# Special case for SLE release labels e.g. RC1. Keep only up to (space) open paren.
+# Provides a stable project name for third-party integrations e.g. app store submissions
+PRETTY_NAME_BEFORE_PAREN="${PRETTY_NAME// (*/}"
+
+# Attribute distro-id must not contain spaces, replace with dash
+PRETTY_NAME_BEFORE_PAREN_DASHED="${PRETTY_NAME_BEFORE_PAREN//[^[:alnum:].]/-}"
+
 %{_mingw64_configure} --with-windmc=%{_mingw64_windmc} \
                       --with-windres=%{_mingw64_windres} \
-                      --with-distro-id="$DISTRO_ID" \
-                      --with-distro-name="$PRETTY_NAME" \
+                      --with-distro-id="$PRETTY_NAME_BEFORE_PAREN_DASHED" \
+                      --with-distro-name="$PRETTY_NAME_BEFORE_PAREN" \
                       --with-distro-icon="icon.ico"
 make %{?_smp_mflags}
 

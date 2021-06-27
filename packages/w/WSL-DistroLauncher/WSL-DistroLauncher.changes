@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 25 21:37:41 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Prepare distro-id and distro_name configure variables using bash
+  subst method from obs-service-kiwi_metainfo_helper and wsl-appx.
+  * PRETTY_NAME_BEFORE_PAREN
+  * PRETTY_NAME_BEFORE_PAREN_DASHED
+
+-------------------------------------------------------------------
+Fri Jun 25 07:17:45 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.1+git20200918.2ed9a93:
+  * Run yast2-firstboot instead of useradd
+  * refactor QueryUid to be reusable
+  * SUSE adjustments
+  * replace wscanf_s, seems not defined in mingw
+  * Cross compiling the launcher
+  * Add Visual Studio 2019 Community support (#74)
+  * Update platformtoolset to use v142 (#60)
+  * Update README step 5 to set TargetName instead of ProjectName (#72)
+  * Update DistroLauncher/DistroLauncher.cpp to better check wsl.exe exit code
+  * Added prompt for input when wsl.exe fails to launch Linux process
+- Drop patch files now obtained from openSUSE git repository
+  * drop 0001-Cross-compiling-the-launcher.patch
+  * drop 0002-replace-wscanf_s-seems-not-defined-in-mingw.patch
+  * drop 0003-SUSE-adjustments.patch
+  * drop 0004-refactor-QueryUid-to-be-reusable.patch
+  * drop 0005-Run-yast2-firstboot-instead-of-useradd.patch
+
+-------------------------------------------------------------------
 Thu Apr  8 22:33:08 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - During prerelease phases, parens around RC etc. in PRETTY_NAME
