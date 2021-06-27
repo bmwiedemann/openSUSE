@@ -16,20 +16,22 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtimageformats-everywhere-src-5.15.2
+%define tar_version qtimageformats-everywhere-src-%{version}
 Name:           libqt5-qtimageformats
-Version:        5.15.2
+Version:        5.15.2+kde3
 Release:        0
 Summary:        Qt 5 Image Format Plugins
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  libmng-devel
 BuildRequires:  libtiff-devel
 %if %{qt5_snapshot}
@@ -38,7 +40,7 @@ BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Gui) >= %{version}
+BuildRequires:  pkgconfig(Qt5Gui) >= %{real_version}
 BuildRequires:  pkgconfig(libwebp)
 %requires_ge    libQt5Gui5
 
@@ -54,7 +56,7 @@ Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 Requires:       libmng-devel
 Requires:       libtiff-devel
-Requires:       pkgconfig(Qt5Gui) >= %{version}
+Requires:       pkgconfig(Qt5Gui) >= %{real_version}
 Requires:       pkgconfig(libwebp)
 
 %description devel
@@ -65,7 +67,7 @@ This package contains qtimageformats.
 You need this package, if you want to compile programs with qtimageformats.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %build
 %if %{qt5_snapshot}

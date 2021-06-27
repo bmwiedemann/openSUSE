@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 21 20:24:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde3:
+  * TGA Plugin: don't print warning in QTgaHandler::canRead(QIODevice*)
+  * Add changes file for Qt 5.15.2
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
