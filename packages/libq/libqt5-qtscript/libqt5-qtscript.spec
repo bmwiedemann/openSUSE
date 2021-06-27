@@ -16,14 +16,14 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Script5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtscript-everywhere-src-5.15.2
+%define tar_version qtscript-everywhere-src-%{version}
 Name:           libqt5-qtscript
-Version:        5.15.2
+Version:        5.15.2+kde4
 Release:        0
 Summary:        Qt 5 Script library
 # Legal:
@@ -32,21 +32,24 @@ Summary:        Qt 5 Script library
 License:        (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later) AND LGPL-2.0-or-later AND LGPL-2.1-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version-from-5.15.3-to-5.15.4.patch
+Patch2:         0002-Revert-Bump-version.patch
 # PATCH-FIX-UPSTREAM libqt5-qtscript-s390-support.patch -- adds s390, taken from webkit upstream
-Patch1:         libqt5-qtscript-s390-support.patch
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
+Patch3:         libqt5-qtscript-s390-support.patch
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Widgets-private-headers-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5DBus) >= %{version}
-BuildRequires:  pkgconfig(Qt5Gui) >= %{version}
-BuildRequires:  pkgconfig(Qt5Widgets) >= %{version}
+BuildRequires:  pkgconfig(Qt5DBus) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Gui) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Widgets) >= %{real_version}
 
 %description
 Qt Script is a module for adding scripting to applications. It allows
@@ -83,8 +86,8 @@ applications that want to make use of libQt5Script5.
 Summary:        Non-ABI stable experimental API for the Qt5 Script library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
-Requires:       libQt5Widgets-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
+Requires:       libQt5Widgets-private-headers-devel >= %{real_version}
 Provides:       libQt5Script-private-headers-devel = %{version}
 Obsoletes:      libQt5Script-private-headers-devel < %{version}
 BuildArch:      noarch
