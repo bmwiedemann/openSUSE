@@ -12,9 +12,9 @@
       <disk>
          <size unit="G">36</size>
       </disk>
-      <memory>
-         <size unit="G">10</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">8</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -27,9 +27,9 @@
       <disk>
          <size unit="G">36</size>
       </disk>
-      <memory>
-         <size unit="G">10</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">8</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -42,9 +42,9 @@
       <disk>
          <size unit="G">36</size>
       </disk>
-      <memory>
-         <size unit="G">9</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">8</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -57,9 +57,9 @@
       <disk>
          <size unit="G">42</size>
       </disk>
-      <memory>
-         <size unit="G">9</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">8</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -72,9 +72,9 @@
       <disk>
          <size unit="G">52</size>
       </disk>
-      <memory>
-         <size unit="G">12</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">10</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -87,9 +87,9 @@
       <disk>
          <size unit="G">42</size>
       </disk>
-      <memory>
-         <size unit="G">9</size>
-      </memory>
+      <physicalmemory>
+         <size unit="G">8</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -102,9 +102,9 @@
       <disk>
          <size unit="G">28</size>
       </disk>
-      <memory>
+      <physicalmemory>
          <size unit="G">8</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
 
@@ -117,9 +117,9 @@
       <disk>
          <size unit="G">42</size>
       </disk>
-      <memory>
+      <physicalmemory>
          <size unit="G">8</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
 

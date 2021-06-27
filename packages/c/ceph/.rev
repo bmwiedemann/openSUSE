@@ -549,4 +549,12 @@
     <comment>bsc#1186020 (forwarded request 893735 from smithfarm)</comment>
     <requestid>893736</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>aeb3a80bb476f762d0c75373b5e2a042</srcmd5>
+    <version>16.2.4.26+g555d38aa5a5</version>
+    <time>1624813102</time>
+    <user>dimstar_suse</user>
+    <comment>Update _constraints (physicalmemory) (forwarded request 902205 from smithfarm)</comment>
+    <requestid>902209</requestid>
+  </revision>
 </revisionlist>

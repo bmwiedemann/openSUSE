@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 24 19:10:24 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update _constraints: only honor physical memory, not 'any memory'
+  (e.g. swap). But then, be happy with 8GB (bumping the current
+  x86_64 worker pool from 16 to 64). (Dominique Leuenberger)
+
+-------------------------------------------------------------------
 Fri May 14 10:20:23 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.4-26-g555d38aa5a5:
