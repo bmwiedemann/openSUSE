@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 20 08:51:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.19.1
+ - unpack argument list comprehensions
+ - revert string join for potential perf reasons
+- update to version 2.19.2
+ - replace open modes with string flags
+- update to version 2.19.3
+ - ignore unrelated calls to .encode(...)
+ - fix elif -> else when indented
+- update to version 2.19.4
+ - fix __metaclass__ = type replacement without extra newline
+
+-------------------------------------------------------------------
 Tue May 25 07:46:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to versio 2.18.3:
