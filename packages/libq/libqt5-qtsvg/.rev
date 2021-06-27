@@ -382,4 +382,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     (QTBUG-90744)</comment>
     <requestid>885977</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6d1e9380471ab3313cf587682043f199</srcmd5>
+    <version>5.15.2+kde7</version>
+    <time>1624813137</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902347</requestid>
+  </revision>
 </revisionlist>

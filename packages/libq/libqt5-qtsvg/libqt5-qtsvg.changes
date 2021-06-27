@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 21 16:22:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde7:
+  * Make image handler accept UTF-16/UTF-32 encoded SVGs
+  * Avoid buffer overflow in isSupportedSvgFeature
+  * Clamp parsed doubles to float representable values
+  * Improve handling of malformed numeric values in svg files
+  * Bump version
+  * Add changes file for Qt 5.15.2
+  * Add changes file for Qt 5.12.10
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Improve-handling-of-malformed-numeric-values-in-svg-.patch
+  * 0002-Clamp-parsed-doubles-to-float-representable-values.patch
+  * 0003-Avoid-buffer-overflow-in-isSupportedSvgFeature.patch
+  * 0004-Make-image-handler-accept-UTF-16-UTF-32-encoded-SVGs.patch
+
+-------------------------------------------------------------------
 Fri Apr 16 09:37:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add commits from kde's 5.15 branch:
