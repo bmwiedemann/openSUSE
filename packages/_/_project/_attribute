@@ -185,6 +185,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
+  gh#OSInside/kiwi#1867: '20210626'
   gh#containers/podman#10685: '20210626'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
@@ -425,7 +426,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210626</value>
+    <value>20210627</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -745,7 +746,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210626'
+    <value>failed: ''
 published: '20210625'
 publishing: '20210625'
 testing: '20210626'
