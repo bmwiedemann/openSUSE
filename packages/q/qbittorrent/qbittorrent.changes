@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 27 11:49:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.6
+  New features:
+  * New languages: Mongolian, Persian, Thai
+  Bug fixes:
+  * Provide correct error description in "upload mode"
+  * Allow adding torrents with relative save path
+  * Fix main window turns blank after restoring from tray
+  * Remove the lockfile on exit
+  * Improve "Watched folders" feature
+  * Keep sub-sorting order
+  * Properly add torrent with new tags
+
+-------------------------------------------------------------------
 Mon May  3 07:49:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.5
