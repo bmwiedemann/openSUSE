@@ -16,11 +16,11 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qttools-everywhere-src-5.15.2
+%define tar_version qttools-everywhere-src-%{version}
 %if 0%{?suse_version} >= 1330
 %bcond_without qdoc
 %else
@@ -28,7 +28,7 @@
 %bcond_with qdoc
 %endif
 Name:           libqt5-qttools
-Version:        5.15.2
+Version:        5.15.2+kde17
 Release:        0
 Summary:        Qt 5 QtTools Module
 # Legal:
@@ -40,20 +40,22 @@ Summary:        Qt 5 QtTools Module
 License:        (LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
 Source11:       designer5.desktop
 Source12:       linguist5.desktop
 Source13:       assistant5.desktop
 Source14:       qdbusviewer5.desktop
 Source99:       libqt5-qttools-rpmlintrc
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 %if %{with qdoc}
 BuildRequires:  clang-devel >= 3.9.0
 %endif
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-devel >= %{version}
-BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 BuildRequires:  libxslt-devel
 %if %{qt5_snapshot}
 #to create the forwarding headers
@@ -63,7 +65,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 Requires:       %{name}-qhelpgenerator = %{version}
 # help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
-Requires:       libQt5Sql5-sqlite >= %{version}
+Requires:       libQt5Sql5-sqlite >= %{real_version}
 Requires:       libqt5-qdbus = %{version}
 Requires:       libqt5-qtpaths = %{version}
 %requires_ge    libQt5DBus5
@@ -88,7 +90,7 @@ Requires:       libQt5DesignerComponents5 = %{version}
 Requires:       libQt5Help5 = %{version}
 Requires:       libqt5-linguist-devel = %{version}
 Requires:       libxslt-devel
-Requires:       pkgconfig(Qt5Xml) >= %{so_version}
+Requires:       pkgconfig(Qt5Xml) >= %{real_version}
 Recommends:     %{name} = %{version}
 Recommends:     %{name}-doc = %{version}
 
@@ -158,7 +160,7 @@ The Qt 5 Help library.
 Summary:        Generator for Qt5 Help files (qch)
 Group:          Development/Libraries/X11
 # help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
-Requires:       libQt5Sql5-sqlite >= %{version}
+Requires:       libQt5Sql5-sqlite >= %{real_version}
 
 %description qhelpgenerator
 Binaries for generating .qch help catalogs.
@@ -178,7 +180,7 @@ The Qt 5 Linguist Tools.
 Summary:        Development files for the Qt 5 Linguist tools
 Group:          Development/Libraries/X11
 Requires:       libqt5-linguist = %{version}
-Requires:       pkgconfig(Qt5Core) >= %{version}
+Requires:       pkgconfig(Qt5Core) >= %{real_version}
 
 %description -n libqt5-linguist-devel
 The Qt 5 Linguist Tools - development files.

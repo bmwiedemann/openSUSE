@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 22 19:35:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde17:
+  * Clamp registered collection time-stamp to SOURCE_DATE_EPOCH if set
+  * CMake: Fix handling of -extensions argument
+  * Add changes file for Qt 5.12.10
+  * Fix qdbusviewer.exe missing version and copyright information
+  * qdoc: Avoid excess warnings for undocumented namespaces
+  * qdoc: Skip ignored entries in .qhp
+  * qdoc: DocBook generator: Fix \headerfile generation
+  * Replace prefined application name by a generic name
+  * Doc: Document attribution argument
+  * qdoc: Handle JSON as plain text
+  * CMake: Fix usage of qt_create_translation in a CTest
+  * Clear out deprecated QLocale::Language values
+  * qt5_create_translation: Fix handling of directory dependencies
+  * Add changes file for Qt 5.15.2
+  * qdoc: Avoid duplicates in \sincelist
+  * qtpaths: Add missing location types
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
