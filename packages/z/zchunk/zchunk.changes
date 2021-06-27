@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 09:51:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.1.16
+  * Fix major bug when compressing with dictionary
+
+-------------------------------------------------------------------
 Fri May 21 04:53:18 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 1.1.14
