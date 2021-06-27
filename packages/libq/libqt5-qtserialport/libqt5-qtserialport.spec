@@ -16,24 +16,26 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5SerialPort5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtserialport-everywhere-src-5.15.2
+%define tar_version qtserialport-everywhere-src-%{version}
 Name:           libqt5-qtserialport
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt 5 Serial Port Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtbase-devel >= %{version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libudev)
@@ -50,7 +52,7 @@ of the RS-232 pinouts. This module does not support terminal features
 change notification).
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Serial Port Addon
@@ -78,7 +80,7 @@ You need this package if you want to compile programs with qtserialport.
 Summary:        Non-ABI stable experimental API for the Qt5 SerialPort library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 Provides:       libQt5SerialPort-private-headers-devel = %{version}
 Obsoletes:      libQt5SerialPort-private-headers-devel < %{version}
 BuildArch:      noarch
