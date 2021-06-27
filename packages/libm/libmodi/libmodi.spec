@@ -18,13 +18,13 @@
 
 Name:           libmodi
 %define lname	libmodi1
-Version:        20210513
+Version:        20210515
 Release:        0
 Summary:        Library and tools to access the Mac OS disk image formats
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libmodi
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libmodi/releases/download/%version/libmodi-experimental-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -32,7 +32,6 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcaes) >= 20201012
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -52,6 +51,7 @@ BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libhmac) >= 20200104
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 libmodi is a library to access the Mac OS disk image formats.
