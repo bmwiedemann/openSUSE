@@ -56,8 +56,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5ScriptTools)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebKit)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
