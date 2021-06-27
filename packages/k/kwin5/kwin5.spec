@@ -24,19 +24,19 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.22.1
+Version:        5.22.2.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.22.2/kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.22.2/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 23 08:24:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * Wayland: Implement activities window rule (kde#439022)
+  * scenes/opengl: Update unstyled EffectFrame texture only when rendering
+  * platforms/drm: some improvements for logging
+  * XdgSurfaceClient: set to current activity and desktop in constructors (kde#435745)
+  * platforms/drm: fix mistake in DrmGbmBuffer
+  * platforms/drm: show cursor when exiting dpms (kde#438824)
+  * [kcmkwin/kwindesktop] Drop local back for Formlayout label width (kde#438504)
+  * Guard gbm and eglstreams parts for non-gbm or non-eglstreams systems
+  * effects: Fix interpolated values for redirected animations (kde#438368)
+
+-------------------------------------------------------------------
 Tue Jun 15 13:17:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.1
