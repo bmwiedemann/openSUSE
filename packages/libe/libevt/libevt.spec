@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without python2
 %define lname	libevt1
 Name:           libevt
 Version:        20210503
@@ -53,9 +52,6 @@ BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libregf) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(libwrc) >= 20210425
-%if %{with python2}
-BuildRequires:  pkgconfig(python2)
-%endif
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -95,15 +91,6 @@ libevt is a library to access the Windows Event Log (EVT) format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python2-%name
-Summary:        Python bindings for libevt, a Windows event file parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Obsoletes:      python-%name < 20191221
-
-%description -n python2-%name
-Python bindings for libevt, which can read Windows event files.
-
 %package -n python3-%name
 Summary:        Python bindings for libevt, a Windows event file parser
 License:        LGPL-3.0-or-later
@@ -121,9 +108,6 @@ if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
-%if %{with python2}
-    --enable-python2 \
-%endif
     --enable-python3
 %make_build
 
@@ -150,12 +134,6 @@ find %buildroot -name '*.la' -delete
 %_libdir/libevt.so
 %_libdir/pkgconfig/libevt.pc
 %_mandir/man3/libevt.3*
-
-%if %{with python2}
-%files -n python2-%name
-%license COPYING*
-%python2_sitearch/pyevt.so
-%endif
 
 %files -n python3-%name
 %license COPYING*

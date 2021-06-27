@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 26 09:51:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop python2 module build.
+
+-------------------------------------------------------------------
 Thu May 13 22:52:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210503 (bc1ed1a6)
