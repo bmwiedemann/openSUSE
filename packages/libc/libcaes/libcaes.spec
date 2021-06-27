@@ -18,13 +18,13 @@
 
 Name:           libcaes
 %define lname	libcaes1
-Version:        20210412
+Version:        20210522
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcaes
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
