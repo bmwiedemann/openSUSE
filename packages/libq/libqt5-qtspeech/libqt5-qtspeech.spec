@@ -16,21 +16,23 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5TextToSpeech5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtspeech-everywhere-src-5.15.2
+%define tar_version qtspeech-everywhere-src-%{version}
 Name:           libqt5-qtspeech
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt 5 Speech Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Widgets-devel
@@ -49,7 +51,7 @@ such as text-to-speech, which is useful for end-users who are visually
 challenged or cannot access the application for whatever reason.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 %if 0%{?suse_version} < 1330
 # work around wrong include directory specification in speech-dispatcher's pkgconfig file in Leap 42.x
 sed -i "s|libspeechd.h|speech-dispatcher/libspeechd.h|" src/plugins/tts/speechdispatcher/qtexttospeech_speechd.*
