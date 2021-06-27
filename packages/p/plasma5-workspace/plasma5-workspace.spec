@@ -30,22 +30,21 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.22.1
+Version:        5.22.2.1
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.22.2/plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.22.2/plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
-Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  breeze5-icons
@@ -337,12 +336,6 @@ Plasma 5 session with Wayland from a display manager.
   # Install compatibility symlink
   ln -s %{_kf5_sharedir}/xsessions/plasma5.desktop %{buildroot}%{_kf5_sharedir}/xsessions/kde-plasma.desktop
 
-  # Install custom "full wayland" session
-  pushd %{buildroot}%{_kf5_sharedir}/wayland-sessions/
-  sed '/^Name/d;s/^Exec=/Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland /' plasmawayland.desktop > plasmafullwayland.desktop
-  echo 'Name=Plasma (Full Wayland)' >> plasmafullwayland.desktop
-  popd
-
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
@@ -588,7 +581,6 @@ fi
 %license COPYING*
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasmawayland.desktop
-%{_datadir}/wayland-sessions/plasmafullwayland.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang

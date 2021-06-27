@@ -1691,4 +1691,25 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
     <requestid>900269</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>2f1a03b15bd8a20512f7e0c13a84fa4f</srcmd5>
+    <version>5.22.2.1</version>
+    <time>1624813140</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer force GDK_BACKEND, kde-gtk-config deals with it meanwhile:
+  * 0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
+- Drop &quot;Full Wayland&quot; session, default in libqt5-qtbase changed
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * Fix copy-paste error
+  * [Notifications] Strip trailing slash for fallback URL path
+  * [Notifications] Restore &quot;details&quot; reference
+  * [Notifications] Avoid showing &quot;0 seconds remaining&quot;
+  * Init ShellCorona after KDBusService (kde#408310)</comment>
+    <requestid>902488</requestid>
+  </revision>
 </revisionlist>

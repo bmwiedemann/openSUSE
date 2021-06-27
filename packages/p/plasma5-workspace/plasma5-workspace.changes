@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 25 21:13:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- No longer force GDK_BACKEND, kde-gtk-config deals with it meanwhile:
+  * 0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
+- Drop "Full Wayland" session, default in libqt5-qtbase changed
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * Fix copy-paste error
+  * [Notifications] Strip trailing slash for fallback URL path
+  * [Notifications] Restore "details" reference
+  * [Notifications] Avoid showing "0 seconds remaining"
+  * Init ShellCorona after KDBusService (kde#408310)
+
+-------------------------------------------------------------------
 Tue Jun 15 14:15:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.1
