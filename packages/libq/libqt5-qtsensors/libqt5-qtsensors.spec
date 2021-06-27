@@ -19,29 +19,31 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\((Explorer|Grue).*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Sensors5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtsensors-everywhere-src-5.15.2
+%define tar_version qtsensors-everywhere-src-%{version}
 Name:           libqt5-qtsensors
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt 5 Sensors library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= %{version}
-BuildRequires:  pkgconfig(Qt5DBus) >= %{version}
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
+BuildRequires:  pkgconfig(Qt5Core) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5DBus) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -53,7 +55,7 @@ interfaces. The Qt Sensors API also provides a motion gesture
 recognition API for devices.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Sensors library
@@ -101,7 +103,7 @@ Summary:        Non-ABI stable experimental API for the Qt5 Sensors library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 Provides:       libQt5Sensors-private-headers-devel = %{version}
 Obsoletes:      libQt5Sensors-private-headers-devel < %{version}
 BuildArch:      noarch
