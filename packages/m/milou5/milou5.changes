@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 23 08:24:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * Fix error about "reversed" not being defined
+
+-------------------------------------------------------------------
 Tue Jun 15 13:17:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.1
