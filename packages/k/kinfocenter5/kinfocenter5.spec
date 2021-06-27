@@ -23,23 +23,26 @@
 
 %bcond_without lang
 Name:           kinfocenter5
-Version:        5.22.1
+Version:        5.22.2.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.22.2/kinfocenter-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.22.2/kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE plasma-session-name.patch
 Patch0:         plasma-session-name.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Handle-libpci-errors-gracefully.patch
+Patch2:         0002-Enable-the-PCI-module-everywhere.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libraw1394-devel
@@ -89,9 +92,9 @@ Requires:       systemsettings5
 KDE Utility that provides information about a computer system.
 
 %lang_package
+
 %prep
-%setup -q -n kinfocenter-%{version}
-%patch0 -p1
+%autosetup -p1 -n kinfocenter-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

@@ -1,0 +1,67 @@
+From f497e7757d33cf363a75f7e723cb0d8f3a78b52f Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 17 Jun 2021 20:07:50 +0200
+Subject: [PATCH 1/2] Handle libpci errors gracefully
+
+libpci expects that the error callback does not return, but pci_warning
+previously did. Throwing exceptions through C code without -fexceptions is not
+safe, so resort to plain setjmp/longjmp.
+
+Also format the message properly.
+---
+ Modules/pci/kpci.cpp | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/Modules/pci/kpci.cpp b/Modules/pci/kpci.cpp
+index 528252d..886cc8f 100644
+--- a/Modules/pci/kpci.cpp
++++ b/Modules/pci/kpci.cpp
+@@ -15,6 +15,7 @@
+ extern "C" {
+ #include <pci/pci.h>
+ }
++#include <csetjmp>
+ #include <unistd.h>
+ #include <sys/types.h> //getuid
+ #include <ctype.h> //isxdigit
+@@ -698,12 +699,18 @@ static QTreeWidgetItem* addCaps(QTreeWidgetItem *parent, QTreeWidgetItem *after,
+ 	return after;
+ }//addCaps
+ 
+-static void pci_warning(char *msg, ...)
++static jmp_buf pci_error_jmp_buf;
++
++// This callback must not return, but we don't want to call exit.
++// Exceptions across C code aren't safe, so the only option is longjmp.
++static void pci_error(char *msg, ...)
+ {
+     va_list args;
+     va_start(args, msg);
+-    qWarning(msg, args);
++    qWarning() << QString::vasprintf(msg, args);
+     va_end(args);
++
++    longjmp(pci_error_jmp_buf, 1);
+ }
+ 
+ bool GetInfo_PCIUtils(QTreeWidget* tree) {
+@@ -721,9 +728,13 @@ bool GetInfo_PCIUtils(QTreeWidget* tree) {
+ 	if (PCIAccess==nullptr) {
+ 		return false;
+ 	}//if
+-    // Use warnings for errors, they are decidely not fatal for us!
+-    // https://bugs.kde.org/show_bug.cgi?id=382979
+-    PCIAccess->error = pci_warning;
++
++	if (setjmp(pci_error_jmp_buf)) {
++		// Got a fatal error. Cleanup might be unsafe, just return.
++		return false;
++	}
++
++	PCIAccess->error = pci_error;
+ 
+ 	pci_init(PCIAccess);
+ 	pci_scan_bus(PCIAccess);
+-- 
+2.25.1
+
