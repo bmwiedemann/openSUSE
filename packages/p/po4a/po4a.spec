@@ -21,10 +21,32 @@ Version:        0.63
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-only
+%if "%{_vendor}" == "debbuild"
+Group:          text
+%else
 Group:          Development/Tools/Other
+%endif
 URL:            https://po4a.org/
 Source:         https://github.com/mquinson/po4a/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
+%if "%{_vendor}" == "debbuild"
+BuildRequires:  deb-perl-macros
+BuildRequires:  docbook
+BuildRequires:  docbook-xml
+BuildRequires:  docbook-xsl
+BuildRequires:  gettext
+BuildRequires:  libmodule-build-perl
+BuildRequires:  libpod-parser-perl
+BuildRequires:  libsgmls-perl
+BuildRequires:  libterm-readkey-perl
+BuildRequires:  libunicode-linebreak-perl
+BuildRequires:  libyaml-tiny-perl
+BuildRequires:  perl
+BuildRequires:  texlive-binaries
+BuildRequires:  texlive-latex-base
+BuildRequires:  xsltproc
+
+%else
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt-tools
 BuildRequires:  perl-Module-Build >= 0.40
@@ -37,20 +59,33 @@ BuildRequires:  perl-YAML-Tiny
 BuildRequires:  perl-base
 BuildRequires:  perl-gettext >= 1.01
 BuildRequires:  perl(Pod::Parser)
-
 # for test suite
 BuildRequires:  docbook_4
 BuildRequires:  iso_ent
+%endif
 BuildRequires:  opensp
 
+%{perl_requires}
+%if "%{_vendor}" == "debbuild"
+#Requires:       ${misc:Depends}
+Requires:       gettext
+Requires:       libpod-parser-perl
+Requires:       libsgmls-perl
+Requires:       libyaml-tiny-perl
+Requires:       opensp
+Recommends:     liblocale-gettext-perl
+Recommends:     libterm-readkey-perl
+Recommends:     libtext-wrapi18n-perl
+Recommends:     libunicode-linebreak-perl
+%else
 Requires:       %{name}-lang = %{version}
 Requires:       perl-SGMLS
 Requires:       perl-YAML-Tiny
 Requires:       perl(Pod::Parser)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%{perl_requires}
 %lang_package
+%endif
 
 %description
 Po4a extracts the translatable material from its input in a PO file.

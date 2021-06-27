@@ -213,4 +213,17 @@ Updated: Chinese, Croatian, Dutch, French, German, Norwegian Bokmål, Portuguese
     <comment></comment>
     <requestid>877959</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>24d17a6135d94cdbc18cfb7814b4135e</srcmd5>
+    <version>0.63</version>
+    <time>1624813101</time>
+    <user>dimstar_suse</user>
+    <comment>- Make po4a buildable on Debian and Ubuntu. This is required for GitHub Actions,
+which only provide Ubuntu machines as workers.
+Uyuni has GH Actions to automagically convert the English AsciiDoc files to
+gettext, commit to the uyuni-docs repository and then openSUSE WebLate will
+pull the gettext files.
+</comment>
+    <requestid>902207</requestid>
+  </revision>
 </revisionlist>

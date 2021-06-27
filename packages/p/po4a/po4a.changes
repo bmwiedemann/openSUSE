@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 24 19:31:03 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- Make po4a buildable on Debian and Ubuntu. This is required for GitHub Actions,
+which only provide Ubuntu machines as workers.
+
+Uyuni has GH Actions to automagically convert the English AsciiDoc files to
+gettext, commit to the uyuni-docs repository and then openSUSE WebLate will
+pull the gettext files.
+
+-------------------------------------------------------------------
 Mon Mar  8 21:59:59 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
 
 - Update to version 0.63
