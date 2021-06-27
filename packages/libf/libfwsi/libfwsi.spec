@@ -68,18 +68,6 @@ Library to access the Windows Shell Item format for the libyal family of librari
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwsi.
 
-%package -n python2-%{name}
-Summary:        Python2 bindings for libfwsi
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %{lname} = %{version}
-BuildRequires:  pkgconfig(python2)
-Obsoletes:      pyfwsi <= 20191221
-Obsoletes:      python-%{name} <= 20191221
-
-%description -n python2-%name
-Python2 bindings for libfwsi, a library to access Windows Shell Items.
-
 %package -n python3-%{name}
 Summary:        Python bindings for libfwsi
 License:        LGPL-3.0-or-later
@@ -94,7 +82,7 @@ cp "%{S:2}" .
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-python2 --enable-python3
+%configure --disable-static --enable-python3
 %make_build
 
 %install
@@ -116,10 +104,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libfwsi.so
 %{_libdir}/pkgconfig/libfwsi.pc
 %{_mandir}/man3/libfwsi.3*
-
-%files -n python2-%name
-%license COPYING*
-%python2_sitearch/pyfwsi.so
 
 %files -n python3-%name
 %license COPYING*
