@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:53:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.17.3:
+  C++
+  * Introduce FieldAccessListener.
+  * Stop emitting boilerplate {Copy/Merge}From in each ProtoBuf class
+  * Provide stable versions of SortAndUnique().
+  * Make sure to cache proto3 optional message fields when they are cleared.
+  * Expose UnsafeArena methods to Reflection.
+  * Use std::string::empty() rather than std::string::size() > 0.
+  * [Protoc] C++ Resolved an issue where NO_DESTROY and CONSTINIT are in incorrect order (#8296)
+  * Fix PROTOBUF_CONSTINIT macro redefinition (#8323)
+  * Delete StringPiecePod (#8353)
+  * Create a CMake option to control whether or not RTTI is enabled (#8347)
+  * Make util::Status more similar to absl::Status (#8405)
+  * The ::pb namespace is no longer exposed due to conflicts.
+  * Allow MessageDifferencer::TreatAsSet() (and friends) to override previous
+  calls instead of crashing.
+  * Reduce the size of generated proto headers for protos with string or
+  bytes fields.
+  * Move arena() operation on uncommon path to out-of-line routine
+  * For iterator-pair function parameter types, take both iterators by value.
+  * Code-space savings and perhaps some modest performance improvements in
+  * RepeatedPtrField.
+  * Eliminate nullptr check from every tag parse.
+  * Remove unused _$name$cached_byte_size fields.
+  * Serialize extension ranges together when not broken by a proto field in the
+  middle.
+  * Do out-of-line allocation and deallocation of string object in ArenaString.
+  * Streamline ParseContext::ParseMessage to avoid code bloat and improve
+  performance.
+  * New member functions RepeatedField::Assign, RepeatedPtrField::{Add, Assign}.
+  on an error path.
+  * util::DefaultFieldComparator will be final in a future version of protobuf.
+  * Subclasses should inherit from SimpleFieldComparator instead.
+  Kotlin
+  * Introduce support for Kotlin protos (#8272)
+  * Restrict extension setter and getter operators to non-nullable T.
+  Java
+  * Fixed parser to check that we are at a proper limit when a sub-message has
+  finished parsing.
+  * updating GSON and Guava to more recent versions (#8524)
+  * Reduce the time spent evaluating isExtensionNumber by storing the extension
+  ranges in a TreeMap for faster queries. This is particularly relevant for
+  protos which define a large number of extension ranges, for example when
+  each tag is defined as an extension.
+  * Fix java bytecode estimation logic for optional fields.
+  * Optimize Descriptor.isExtensionNumber.
+  * deps: update JUnit and Truth (#8319)
+  * Detect invalid overflow of byteLimit and return InvalidProtocolBufferException as documented.
+  * Exceptions thrown while reading from an InputStream in parseFrom are now
+  included as causes.
+  * Support potentially more efficient proto parsing from RopeByteStrings.
+  * Clarify runtime of ByteString.Output.toStringBuffer().
+  * Added UnsafeByteOperations to protobuf-lite (#8426)
+  Python
+  * Add MethodDescriptor.CopyToProto() (#8327)
+  * Remove unused python_protobuf.{cc,h} (#8513)
+  * Start publishing python aarch64 manylinux wheels normally (#8530)
+  * Fix constness issue detected by MSVC standard conforming mode (#8568)
+  * Make JSON parsing match C++ and Java when multiple fields from the same
+  oneof are present and all but one is null.
+  * Fix some constness / char literal issues being found by MSVC standard conforming mode (#8344)
+  * Switch on "new" buffer API (#8339)
+  * Enable crosscompiling aarch64 python wheels under dockcross manylinux docker image (#8280)
+  * Fixed a bug in text format where a trailing colon was printed for repeated field.
+  * When TextFormat encounters a duplicate message map key, replace the current
+  one instead of merging.
+  Ruby
+  * Add support for proto3 json_name in compiler and field definitions (#8356)
+  * Fixed memory leak of Ruby arena objects. (#8461)
+  * Fix source gem compilation (#8471)
+  * Fix various exceptions in Ruby on 64-bit Windows (#8563)
+  * Fix crash when calculating Message hash values on 64-bit Windows (#8565)
+  General
+  * Support M1 (#8557)
+
+-------------------------------------------------------------------
 Sun Apr 18 08:32:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.15.8:
