@@ -17,22 +17,22 @@
 
 
 # Full Plasma 5 version (e.g. 5.8.95)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %define lname libKWaylandServer5
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.22.1
+Version:        5.22.2.1
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.22.2/kwayland-server-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.22.2/kwayland-server-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
