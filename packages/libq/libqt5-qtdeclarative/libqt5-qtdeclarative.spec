@@ -16,38 +16,39 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQtQuick5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtdeclarative-everywhere-src-5.15.2
+%define tar_version qtdeclarative-everywhere-src-%{version}
 Name:           libqt5-qtdeclarative
-Version:        5.15.2
+Version:        5.15.2+kde29
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
 Patch100:       sse2_nojit.patch
-Patch101:       0001-Include-limits-to-fix-build-with-GCC-11.patch
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libQt5Test-private-headers-devel >= %{version}
-BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Test-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Widgets-private-headers-devel >= %{real_version}
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= %{version}
-BuildRequires:  pkgconfig(Qt5Gui) >= %{version}
-BuildRequires:  pkgconfig(Qt5Network) >= %{version}
-BuildRequires:  pkgconfig(Qt5Sql) >= %{version}
-BuildRequires:  pkgconfig(Qt5Widgets) >= %{version}
+BuildRequires:  pkgconfig(Qt5Core) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Gui) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Network) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Sql) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Widgets) >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -68,8 +69,7 @@ This package contains base tools, like string, xml, and network
 handling.
 
 %prep
-%setup -q -n %{tar_version}
-%autopatch -p1
+%autosetup -p1 -n qtdeclarative-everywhere-src-%{version}
 
 %package -n %{libname}
 Summary:        Qt 5 Declarative Library
@@ -109,10 +109,10 @@ This package contains aditional tools for inspecting, testing, viewing, etc, QML
 Summary:        Non-ABI stable experimental API
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
-Requires:       libQt5Gui-private-headers-devel >= %{version}
-Requires:       libQt5Test-private-headers-devel >= %{version}
-Requires:       libQt5Widgets-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
+Requires:       libQt5Gui-private-headers-devel >= %{real_version}
+Requires:       libQt5Test-private-headers-devel >= %{real_version}
+Requires:       libQt5Widgets-private-headers-devel >= %{real_version}
 Provides:       libQt5Quick-private-headers-devel = %{version}
 Obsoletes:      libQt5Quick-private-headers-devel < %{version}
 BuildArch:      noarch

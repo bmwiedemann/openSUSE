@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 23 07:01:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde29:
+  * Remove unused QPointer<QQuickPointerMask>
+
+-------------------------------------------------------------------
+Mon Jun 21 20:37:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde28:
+  * Support &apos; in styled text
+  * Document that StyledText also supports &nbsp; and &quot;
+  * Add missing limits include to fix build with GCC 11
+  * Give a warning when StyledText encounters a non supported entity
+  * doc: explain QQItem event delivery, handlers, setAcceptTouchEvents()
+  * JIT: When making memory writable, include the exception handler
+  * Fix IC properties in same file
+  * QML: Fix proxy iteration
+  * DesignerSupport: Don't skip already inspected objects
+  * Show a tableview even if the syncView has an empty model
+  * qqmlistmodel: Fix crash when modelCache is null
+  * Use load(qt_tool) for qmltime
+  * qv4qmlcontext: Fix bounded signal expressions when debugging
+  * qmltypes.prf: Take abi into account for *_metatypes.json file names
+  * Accessibility event is sent on item's geometry change
+  * Fix crash when calling hasOwnProperty() on proxy object
+  * QQuickTextInput: Store mask data in std::unique_ptr
+  * Fix QML property cache leaks of delegate items
+  * qmlfunctions.qdoc: Add clarification to QML_FOREIGN
+  * Doc: mention that INCLUDEPATH must be set in some cases
+  * QML Text doesn't reset lineCount when text is empty
+  * Avoid GHS linker to optimize away QML type registrations
+  * QQuickWindow: Check if QQuickItem was not deleted
+  * QQuickView docs: show correct usage of setInitialProperties
+  * Add changes file for Qt 5.15.2
+  * Revert "qquickloader: Free memory of loaded components after source change"
+  * Inline components: Fix custom parser support
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Include-limits-to-fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 14:43:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with GCC 11 (boo#1185100):
