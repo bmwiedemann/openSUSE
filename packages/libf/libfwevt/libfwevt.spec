@@ -18,13 +18,13 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20210508
+Version:        20210528
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwevt
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfwevt/releases/download/%version/libfwevt-experimental-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
