@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 23 08:24:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * [kcms/landingpage] Give up on vertical centering and let it scroll (kde#438171)
+  * [Task Manager] Show window title in tooltip when player title is different
+
+-------------------------------------------------------------------
 Tue Jun 15 13:17:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.1
