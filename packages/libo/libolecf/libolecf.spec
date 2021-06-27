@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without python2
 %define lname	libolecf1
 Name:           libolecf
 Version:        20210512
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig(libfole) >= 20170502
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwps) >= 20191221
 BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library and tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
@@ -80,24 +80,11 @@ libolecf is a library to access the OLE 2 Compound File (OLECF) format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python2-%{name}
-Summary:        Python bindings for libolecf
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %lname = %version
-BuildRequires:  pkgconfig(python2)
-Obsoletes:      pyolecf = 20191221
-Obsoletes:      python-%{name} = 20191221
-
-%description -n python2-%name
-Python bindings for libolecf, which can read MS IE cache files.
-
 %package -n python3-%{name}
 Summary:        Python bindings for libolecf
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %lname = %version
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%name
 Python bindings for libolecf, which can read MS IE cache files.
@@ -111,9 +98,6 @@ if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
-%if %{with python2}
-    --enable-python2 \
-%endif
     --enable-python3
 %make_build
 
@@ -139,12 +123,6 @@ find %buildroot -name '*.la' -delete
 %_libdir/libolecf.so
 %_libdir/pkgconfig/libolecf.pc
 %_mandir/man3/libolecf.3*
-
-%if %{with python2}
-%files -n python2-%name
-%license COPYING*
-%python2_sitearch/pyolecf.so
-%endif
 
 %files -n python3-%name
 %license COPYING*
