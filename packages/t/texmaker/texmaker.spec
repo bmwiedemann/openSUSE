@@ -34,8 +34,6 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 Requires:       hunspell
 Requires:       texlive-collection-latexrecommended
