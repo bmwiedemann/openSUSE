@@ -215,4 +215,20 @@
   * init: fix Wformat on 32-bit platforms</comment>
     <requestid>887462</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5406ceecd3896729178d00a4eacb5a9d</srcmd5>
+    <version>1.19.0+git.20210523</version>
+    <time>1624813092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20210523:
+  * Port to MinGW
+  * win32/win32_compat.c: Reformat this file
+  * Enable -Wno-unused-parameter
+  * Use __attribute__((format(printf, ...))) directly
+  * build: Add -no-undefined where missing
+  * build: Correct usage of LIBADD and LDADD
+  * build: Remove bogus LDADD variables
+  * Add header &lt;strings.h&gt; for strncasecmp</comment>
+    <requestid>901639</requestid>
+  </revision>
 </revisionlist>

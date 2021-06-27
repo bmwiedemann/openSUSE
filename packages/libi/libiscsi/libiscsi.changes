@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:10:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20210523:
+  * Port to MinGW
+  * win32/win32_compat.c: Reformat this file
+  * Enable -Wno-unused-parameter
+  * Use __attribute__((format(printf, ...))) directly
+  * build: Add -no-undefined where missing
+  * build: Correct usage of LIBADD and LDADD
+  * build: Remove bogus LDADD variables
+  * Add header <strings.h> for strncasecmp
+
+-------------------------------------------------------------------
 Thu Apr 22 06:53:46 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20210208:
