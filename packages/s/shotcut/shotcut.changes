@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 12:19:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit dependency.
+
+-------------------------------------------------------------------
 Thu May 20 07:27:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.05.18:

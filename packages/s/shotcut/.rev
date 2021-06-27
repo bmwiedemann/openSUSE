@@ -441,4 +441,12 @@ Update to release 19.04.30.</comment>
     <comment>Update to 21.05.18:</comment>
     <requestid>894532</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c9fd07abf41f00753f1b30ad3d517596</srcmd5>
+    <version>21.05.18</version>
+    <time>1624813168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902639</requestid>
+  </revision>
 </revisionlist>
