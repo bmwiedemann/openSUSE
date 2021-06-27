@@ -124,4 +124,18 @@ This lib uses rav1e and dav1d for encoding and decoding.</comment>
     <comment></comment>
     <requestid>884867</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4c9ff0c4b9af3e755f336a39c18ac7d</srcmd5>
+    <version>0.9.2</version>
+    <time>1624813100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.2/CHANGELOG.md
+    for a complete changelog.
+- Update to version 0.9.1
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.1/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>902192</requestid>
+  </revision>
 </revisionlist>

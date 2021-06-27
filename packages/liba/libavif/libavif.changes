@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 18:13:26 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.2
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.2/CHANGELOG.md
+    for a complete changelog.
+
+-------------------------------------------------------------------
+Thu May 20 06:36:55 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.1
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.1/CHANGELOG.md
+    for a complete changelog.
+
+-------------------------------------------------------------------
 Tue Apr 13 06:20:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: produce libavif10-32bit as a new dependency to

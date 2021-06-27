@@ -18,10 +18,10 @@
 
 %bcond_without aom
 
-%define lib_name libavif10
+%define lib_name libavif12
 
 Name:           libavif
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
