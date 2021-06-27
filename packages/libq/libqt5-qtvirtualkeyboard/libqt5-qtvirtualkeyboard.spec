@@ -16,10 +16,10 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 
 Name:           libqt5-qtvirtualkeyboard
-Version:        5.15.2
+Version:        5.15.2+kde3
 Release:        0
 Summary:        Qt 5 Virtual Keyboard
 License:        GPL-3.0
@@ -28,13 +28,15 @@ Url:            https://www.qt.io
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtvirtualkeyboard-everywhere-src-5.15.2
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
-BuildRequires:  pkgconfig(Qt5Svg) >= %{version}
+%define tar_version qtvirtualkeyboard-everywhere-src-%{version}
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Svg) >= %{real_version}
 %if %qt5_snapshot
 #to create the forwarding headers
 BuildRequires:  perl
@@ -78,8 +80,8 @@ Qt Virtual Keyboard.
 Summary:        Non-ABI stable API for the Qt5 Virtual Keyboard
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Gui-private-headers-devel >= %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Gui-private-headers-devel >= %{real_version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 
 %description private-headers-devel
 This package provides private headers of libqt5-qtvirtualkeyboard that are
@@ -116,7 +118,7 @@ API guarantees. The packages that build against these have to require
 the exact Qt version.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %build
 %if %qt5_snapshot
