@@ -16,29 +16,31 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5WebSockets5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtwebsockets-everywhere-src-5.15.2
+%define tar_version qtwebsockets-everywhere-src-%{version}
 Name:           libqt5-qtwebsockets
-Version:        5.15.2
+Version:        5.15.2+kde4
 Release:        0
 Summary:        Qt 5 WebSockets Library
 License:        LGPL-3.0-only OR  (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= %{version}
-BuildRequires:  pkgconfig(Qt5Network) >= %{version}
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
-BuildRequires:  pkgconfig(Qt5Sql) >= %{version}
+BuildRequires:  pkgconfig(Qt5Core) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Network) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Sql) >= %{real_version}
 BuildRequires:  pkgconfig(openssl)
 %if %{qt5_snapshot}
 #to create the forwarding headers
@@ -52,7 +54,7 @@ requests, or a client that can consume data received from the server,
 or both.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 WebSockets Library
@@ -91,7 +93,7 @@ You need this package if you want to compile programs with QtWebSockets.
 Summary:        Non-ABI stable experimental API for the Qt5 WebSocket library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Core-private-headers-devel >= %{version}
+Requires:       libQt5Core-private-headers-devel >= %{real_version}
 BuildArch:      noarch
 
 %description private-headers-devel
