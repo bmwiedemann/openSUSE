@@ -43,12 +43,10 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WebKit)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qca-qt5)
@@ -75,12 +73,11 @@ The name comes from an ancient Persian word which means Sparrow.
 It currently supports twitter.com and identi.ca services.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -110,11 +107,8 @@ It currently supports twitter.com and identi.ca services.
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/choqok_*.so
 %{_kf5_plugindir}/kcm_choqok_*.so
-%{_kf5_plugindir}/kf5/parts/
 %{_kf5_plugindir}/kf5/purpose/
-%{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_servicesdir}/choqok*
-%{_kf5_servicesdir}/konqchoqok.desktop
 %{_kf5_servicetypesdir}/choqok*
 
 %files devel

@@ -294,4 +294,14 @@
     <comment></comment>
     <requestid>784818</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>a62d1ec15e9d1a137eb911bad5844bd7</srcmd5>
+    <version>1.7.0</version>
+    <time>1624813161</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the KF5WebKit dependency.
+
+-  %cmake_build is now the recommended way to build cmake projects</comment>
+    <requestid>902596</requestid>
+  </revision>
 </revisionlist>

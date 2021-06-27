@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 27 09:40:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the KF5WebKit dependency.
+
+-------------------------------------------------------------------
+Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
+
+-  %cmake_build is now the recommended way to build cmake projects
+
+-------------------------------------------------------------------
 Sat Mar 14 00:45:38 UTC 2020 - wbauer@tmo.at
 
 - Add upstream patches to fix problems that still were present in
