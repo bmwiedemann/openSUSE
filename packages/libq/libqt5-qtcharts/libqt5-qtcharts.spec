@@ -16,22 +16,24 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Charts5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtcharts-everywhere-src-5.15.2
+%define tar_version qtcharts-everywhere-src-%{version}
 Name:           libqt5-qtcharts
-Version:        5.15.2
+Version:        5.15.2+kde2
 Release:        0
 Summary:        Qt 5 Charts Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://doc.qt.io/qt-5/qtcharts-index.html
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
+BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -45,7 +47,7 @@ Qt Charts is a set of chart components.
 Qt Charts module provides a set of easy to use chart components. It uses the Qt Graphics View Framework, therefore charts can be easily integrated to modern user interfaces. Qt Charts can be used as QWidgets, QGraphicsWidget, or QML types. Users can easily create impressive graphs by selecting one of the charts themes.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Charts Library
