@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 31 21:16:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11:
+  * 0001-C-exception-specifications-are-deprecated-in-C-11.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Feb 14 15:22:46 UTC 2019 - matthias.gerstner@suse.com
 
 - Add fix-bsc1124647-segfault.patch: Fix crash described in bsc#1124647

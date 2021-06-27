@@ -1,7 +1,7 @@
 #
 # spec file for package fwbuilder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,12 @@ Release:        0
 Summary:        Firewall Builder
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.fwbuilder.org/
+URL:            http://www.fwbuilder.org/
 Source:         https://github.com/fwbuilder/fwbuilder/archive/v%{version}.tar.gz
 Patch0:         fwbuilder-qmake-without-flags.patch
 Patch1:         fix-bsc1124647-segfault.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-C-exception-specifications-are-deprecated-in-C-11.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -36,6 +37,7 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  net-snmp-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 Requires:       hicolor-icon-theme
@@ -58,7 +60,6 @@ independent of another.
 
 %prep
 %autosetup -p1
-#%%patch1 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh "--with-qmake=qmake-qt5"
@@ -74,18 +75,7 @@ make INSTALL_ROOT=%{buildroot} install
 %fdupes -s %{buildroot}
 %endif
 
-%if 0%{?suse_version} > 1310
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%defattr(-,root,root)
 %{_bindir}/*
 %{_datadir}/applications/%{name}.desktop
 %{_docdir}/%{name}

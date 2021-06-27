@@ -163,4 +163,14 @@ Cleaned the spec file a bit more (forwarded request 144877 from worldcitizen)</c
     <comment>- Add fix-bsc1124647-segfault.patch: Fix crash described in bsc#1124647 (forwarded request 676169 from mgerstner)</comment>
     <requestid>676246</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>8278471e03ec335a8be68c7e235a05cc</srcmd5>
+    <version>5.3.7</version>
+    <time>1624813169</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 11:
+  * 0001-C-exception-specifications-are-deprecated-in-C-11.patch
+- Spec cleanup (forwarded request 896463 from cgiboudeaux)</comment>
+    <requestid>902642</requestid>
+  </revision>
 </revisionlist>

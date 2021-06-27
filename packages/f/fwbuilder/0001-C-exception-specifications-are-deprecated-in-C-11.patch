@@ -1,0 +1,4635 @@
+From a45814ec30b976859a49e4c20c89e522e7b67571 Mon Sep 17 00:00:00 2001
+From: Mark Mielke <mark.mielke@gmail.com>
+Date: Sun, 28 Jan 2018 07:22:59 -0500
+Subject: [PATCH] C++ exception specifications are deprecated in C++11:
+
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2010/n3051.html
+
+C++ exceptions are dynamic and evaluated at runtime. This greatly
+limits the value of this feature, and introduces a performance
+runtime overhead to perform the evaluations.
+
+Recent versions of GCC warn about use of this deprecated feature.
+Instead of disabling the warning, this change eliminates the use
+of this deprecated feature.
+
+There were a few places where "throw()" was retained as the
+classes extend the standard library and must either specify
+"throw()" or "noexcept" in order to meet the interface
+contract. As "noexcept" is not backwards compatible,
+"throw()" has been retained.
+---
+ src/antlr/ANTLRException.hpp                  |  2 +-
+ src/antlr/CharStreamException.hpp             |  2 +-
+ src/antlr/CharStreamIOException.hpp           |  2 +-
+ src/antlr/IOException.hpp                     |  2 +-
+ src/antlr/MismatchedCharException.hpp         |  2 +-
+ src/antlr/MismatchedTokenException.hpp        |  2 +-
+ src/antlr/NoViableAltException.hpp            |  2 +-
+ src/antlr/NoViableAltForCharException.hpp     |  2 +-
+ src/antlr/RecognitionException.hpp            |  8 ++--
+ src/antlr/SemanticException.hpp               |  2 +-
+ src/antlr/TokenStreamException.hpp            |  2 +-
+ src/antlr/TokenStreamIOException.hpp          |  2 +-
+ src/antlr/TokenStreamRecognitionException.hpp |  8 ++--
+ src/antlr/TokenStreamRetryException.hpp       |  2 +-
+ src/cisco_lib/ASA8ObjectGroup.cpp             |  1 -
+ src/cisco_lib/ASA8ObjectGroup.h               |  3 +-
+ src/cisco_lib/BaseObjectGroup.cpp             |  5 +--
+ src/cisco_lib/BaseObjectGroup.h               |  9 ++--
+ src/cisco_lib/Helper.cpp                      |  1 -
+ src/cisco_lib/Helper.h                        |  3 +-
+ src/cisco_lib/IOSObjectGroup.cpp              |  1 -
+ src/cisco_lib/IOSObjectGroup.h                |  3 +-
+ src/cisco_lib/NXOSObjectGroup.cpp             |  1 -
+ src/cisco_lib/NXOSObjectGroup.h               |  3 +-
+ src/cisco_lib/PIXObjectGroup.cpp              |  1 -
+ src/cisco_lib/PIXObjectGroup.h                |  3 +-
+ src/iptlib/combinedAddress.cpp                |  2 +-
+ src/iptlib/combinedAddress.h                  |  3 +-
+ src/libfwbuilder/src/fwbuilder/Address.cpp    |  4 +-
+ src/libfwbuilder/src/fwbuilder/Address.h      |  7 ++--
+ .../src/fwbuilder/AddressRange.cpp            |  7 ++--
+ src/libfwbuilder/src/fwbuilder/AddressRange.h |  9 ++--
+ .../src/fwbuilder/AddressTable.cpp            |  8 ++--
+ src/libfwbuilder/src/fwbuilder/AddressTable.h |  8 ++--
+ .../src/fwbuilder/AttachedNetworks.cpp        |  5 +--
+ .../src/fwbuilder/AttachedNetworks.h          |  6 +--
+ .../src/fwbuilder/BackgroundOp.cpp            |  2 +-
+ src/libfwbuilder/src/fwbuilder/BackgroundOp.h |  4 +-
+ src/libfwbuilder/src/fwbuilder/Cluster.cpp    |  6 +--
+ src/libfwbuilder/src/fwbuilder/Cluster.h      |  6 +--
+ .../src/fwbuilder/ClusterGroup.cpp            |  6 +--
+ src/libfwbuilder/src/fwbuilder/ClusterGroup.h |  6 +--
+ .../src/fwbuilder/CustomService.cpp           |  8 ++--
+ .../src/fwbuilder/CustomService.h             |  8 ++--
+ src/libfwbuilder/src/fwbuilder/DNSName.cpp    |  6 +--
+ src/libfwbuilder/src/fwbuilder/DNSName.h      |  6 +--
+ .../src/fwbuilder/DynamicGroup.cpp            |  9 ++--
+ src/libfwbuilder/src/fwbuilder/DynamicGroup.h | 12 +++---
+ src/libfwbuilder/src/fwbuilder/FWObject.cpp   | 19 ++++-----
+ src/libfwbuilder/src/fwbuilder/FWObject.h     | 27 ++++++------
+ .../src/fwbuilder/FWObjectDatabase.cpp        |  9 ++--
+ .../src/fwbuilder/FWObjectDatabase.h          | 16 +++----
+ .../src/fwbuilder/FWObjectDatabase_search.cpp |  4 +-
+ .../fwbuilder/FWObjectDatabase_tree_ops.cpp   |  2 +-
+ src/libfwbuilder/src/fwbuilder/FWOptions.cpp  |  4 +-
+ src/libfwbuilder/src/fwbuilder/FWOptions.h    |  4 +-
+ .../src/fwbuilder/FWReference.cpp             |  8 ++--
+ src/libfwbuilder/src/fwbuilder/FWReference.h  |  8 ++--
+ .../src/fwbuilder/FailoverClusterGroup.cpp    |  4 +-
+ .../src/fwbuilder/FailoverClusterGroup.h      |  4 +-
+ src/libfwbuilder/src/fwbuilder/Firewall.cpp   |  8 ++--
+ src/libfwbuilder/src/fwbuilder/Firewall.h     |  8 ++--
+ src/libfwbuilder/src/fwbuilder/Group.cpp      |  2 +-
+ src/libfwbuilder/src/fwbuilder/Group.h        |  2 +-
+ src/libfwbuilder/src/fwbuilder/Host.cpp       |  6 +--
+ src/libfwbuilder/src/fwbuilder/Host.h         |  6 +--
+ .../src/fwbuilder/ICMPService.cpp             |  4 +-
+ src/libfwbuilder/src/fwbuilder/ICMPService.h  |  4 +-
+ src/libfwbuilder/src/fwbuilder/IPService.cpp  |  4 +-
+ src/libfwbuilder/src/fwbuilder/IPService.h    |  4 +-
+ src/libfwbuilder/src/fwbuilder/IPv4.cpp       |  4 +-
+ src/libfwbuilder/src/fwbuilder/IPv4.h         |  4 +-
+ src/libfwbuilder/src/fwbuilder/IPv6.cpp       |  6 +--
+ src/libfwbuilder/src/fwbuilder/IPv6.h         |  7 ++--
+ .../src/fwbuilder/Inet6AddrMask.cpp           |  2 +-
+ .../src/fwbuilder/Inet6AddrMask.h             |  2 +-
+ src/libfwbuilder/src/fwbuilder/InetAddr.cpp   | 14 +++----
+ src/libfwbuilder/src/fwbuilder/InetAddr.h     | 18 ++++----
+ .../src/fwbuilder/InetAddrMask.cpp            |  2 +-
+ src/libfwbuilder/src/fwbuilder/InetAddrMask.h |  2 +-
+ src/libfwbuilder/src/fwbuilder/Interface.cpp  |  8 ++--
+ src/libfwbuilder/src/fwbuilder/Interface.h    | 10 ++---
+ src/libfwbuilder/src/fwbuilder/Interval.cpp   |  4 +-
+ src/libfwbuilder/src/fwbuilder/Interval.h     |  4 +-
+ .../src/fwbuilder/IntervalGroup.cpp           |  2 +-
+ .../src/fwbuilder/IntervalGroup.h             |  2 +-
+ src/libfwbuilder/src/fwbuilder/Library.cpp    |  4 +-
+ src/libfwbuilder/src/fwbuilder/Library.h      |  4 +-
+ src/libfwbuilder/src/fwbuilder/Management.cpp | 32 +++++++-------
+ src/libfwbuilder/src/fwbuilder/Management.h   | 32 +++++++-------
+ src/libfwbuilder/src/fwbuilder/MultiAddress.h |  2 +-
+ src/libfwbuilder/src/fwbuilder/Network.cpp    |  4 +-
+ src/libfwbuilder/src/fwbuilder/Network.h      |  4 +-
+ .../src/fwbuilder/NetworkIPv6.cpp             |  6 +--
+ src/libfwbuilder/src/fwbuilder/NetworkIPv6.h  |  7 ++--
+ .../src/fwbuilder/ObjectGroup.cpp             |  2 +-
+ src/libfwbuilder/src/fwbuilder/ObjectGroup.h  |  2 +-
+ src/libfwbuilder/src/fwbuilder/Resources.cpp  | 19 ++++-----
+ src/libfwbuilder/src/fwbuilder/Resources.h    | 20 ++++-----
+ src/libfwbuilder/src/fwbuilder/Rule.cpp       | 26 ++++++------
+ src/libfwbuilder/src/fwbuilder/Rule.h         | 30 ++++++-------
+ .../src/fwbuilder/RuleElement.cpp             | 32 +++++++-------
+ src/libfwbuilder/src/fwbuilder/RuleElement.h  | 33 +++++++--------
+ src/libfwbuilder/src/fwbuilder/RuleSet.cpp    |  7 ++--
+ src/libfwbuilder/src/fwbuilder/RuleSet.h      | 10 ++---
+ .../src/fwbuilder/SecuwallMgmtFile.cpp        |  4 +-
+ .../src/fwbuilder/SecuwallMgmtFile.h          |  4 +-
+ .../src/fwbuilder/ServiceGroup.cpp            |  2 +-
+ src/libfwbuilder/src/fwbuilder/ServiceGroup.h |  2 +-
+ .../src/fwbuilder/StateSyncClusterGroup.cpp   |  4 +-
+ .../src/fwbuilder/StateSyncClusterGroup.h     |  4 +-
+ src/libfwbuilder/src/fwbuilder/SyncQueue.h    |  8 ++--
+ src/libfwbuilder/src/fwbuilder/TCPService.cpp |  4 +-
+ src/libfwbuilder/src/fwbuilder/TCPService.h   |  4 +-
+ .../src/fwbuilder/TCPUDPService.cpp           |  7 ++--
+ .../src/fwbuilder/TCPUDPService.h             |  9 ++--
+ src/libfwbuilder/src/fwbuilder/TagService.cpp |  4 +-
+ src/libfwbuilder/src/fwbuilder/TagService.h   |  4 +-
+ .../src/fwbuilder/ThreadTools.cpp             |  4 +-
+ src/libfwbuilder/src/fwbuilder/ThreadTools.h  |  4 +-
+ .../src/fwbuilder/UserService.cpp             |  8 ++--
+ src/libfwbuilder/src/fwbuilder/UserService.h  |  8 ++--
+ src/libfwbuilder/src/fwbuilder/XMLTools.cpp   | 18 ++++----
+ src/libfwbuilder/src/fwbuilder/XMLTools.h     | 20 ++++-----
+ src/libfwbuilder/src/fwbuilder/dns.cpp        |  3 +-
+ src/libfwbuilder/src/fwbuilder/dns.h          |  5 +--
+ .../src/fwbuilder/physAddress.cpp             |  4 +-
+ src/libfwbuilder/src/fwbuilder/physAddress.h  |  4 +-
+ src/libfwbuilder/src/fwbuilder/snmp.cpp       | 35 +++++++---------
+ src/libfwbuilder/src/fwbuilder/snmp.h         | 42 +++++++++----------
+ src/libfwbuilder/src/fwbuilder/uint128.h      | 16 +++----
+ .../src/fwcompiler/BaseCompiler.cpp           |  4 +-
+ .../src/fwcompiler/BaseCompiler.h             |  4 +-
+ src/libfwbuilder/src/fwcompiler/Compiler.cpp  |  4 +-
+ src/libfwbuilder/src/fwcompiler/Compiler.h    |  5 +--
+ src/libgui/DialogFactory.cpp                  |  6 +--
+ src/libgui/DialogFactory.h                    | 15 +++----
+ src/libgui/RCS.cpp                            | 14 +++----
+ src/libgui/RCS.h                              | 14 +++----
+ .../importAddressListWizard/HostsFile.cpp     |  2 +-
+ .../importAddressListWizard/HostsFile.h       |  2 +-
+ src/pflib/TableFactory.cpp                    |  2 +-
+ src/pflib/TableFactory.h                      |  2 +-
+ 143 files changed, 486 insertions(+), 555 deletions(-)
+
+diff --git a/src/antlr/ANTLRException.hpp b/src/antlr/ANTLRException.hpp
+index 426595a..6998c1d 100644
+--- a/src/antlr/ANTLRException.hpp
++++ b/src/antlr/ANTLRException.hpp
+@@ -27,7 +27,7 @@ public:
+ 	: text(s)
+ 	{
+ 	}
+-	virtual ~ANTLRException() throw()
++	virtual ~ANTLRException()
+ 	{
+ 	}
+ 
+diff --git a/src/antlr/CharStreamException.hpp b/src/antlr/CharStreamException.hpp
+index a49e3bb..ac7c7e1 100644
+--- a/src/antlr/CharStreamException.hpp
++++ b/src/antlr/CharStreamException.hpp
+@@ -19,7 +19,7 @@ class ANTLR_API CharStreamException : public ANTLRException {
+ public:
+ 	CharStreamException(const ANTLR_USE_NAMESPACE(std)string& s)
+ 		: ANTLRException(s) {}
+-	~CharStreamException() throw() {}
++	~CharStreamException() {}
+ };
+ 
+ #ifdef ANTLR_CXX_SUPPORTS_NAMESPACE
+diff --git a/src/antlr/CharStreamIOException.hpp b/src/antlr/CharStreamIOException.hpp
+index e3e3111..8bfbc3c 100644
+--- a/src/antlr/CharStreamIOException.hpp
++++ b/src/antlr/CharStreamIOException.hpp
+@@ -21,7 +21,7 @@ public:
+ 
+ 	CharStreamIOException(ANTLR_USE_NAMESPACE(std)exception& e)
+ 		: CharStreamException(e.what()), io(e) {}
+-	~CharStreamIOException() throw() {}
++	~CharStreamIOException() {}
+ };
+ 
+ #ifdef ANTLR_CXX_SUPPORTS_NAMESPACE
+diff --git a/src/antlr/IOException.hpp b/src/antlr/IOException.hpp
+index 22566ec..68c0764 100644
+--- a/src/antlr/IOException.hpp
++++ b/src/antlr/IOException.hpp
+@@ -33,7 +33,7 @@ public:
+ 		: ANTLRException(mesg)
+ 	{
+ 	}
+-	virtual ~IOException() throw()
++	virtual ~IOException()
+ 	{
+ 	}
+ };
+diff --git a/src/antlr/MismatchedCharException.hpp b/src/antlr/MismatchedCharException.hpp
+index cc77f9e..55c2b42 100644
+--- a/src/antlr/MismatchedCharException.hpp
++++ b/src/antlr/MismatchedCharException.hpp
+@@ -87,7 +87,7 @@ public:
+ 		CharScanner* scanner_
+ 	);
+ 
+-	~MismatchedCharException() throw() {}
++	~MismatchedCharException() {}
+ 
+ 	/**
+ 	 * Returns a clean error message (no line number/column information)
+diff --git a/src/antlr/MismatchedTokenException.hpp b/src/antlr/MismatchedTokenException.hpp
+index 47fb44e..e0f35ac 100644
+--- a/src/antlr/MismatchedTokenException.hpp
++++ b/src/antlr/MismatchedTokenException.hpp
+@@ -81,7 +81,7 @@ public:
+ 		bool matchNot,
+ 		const ANTLR_USE_NAMESPACE(std)string& fileName_
+ 	);
+-	~MismatchedTokenException() throw() {}
++	~MismatchedTokenException() {}
+ 
+ 	/**
+ 	 * Returns a clean error message (no line number/column information)
+diff --git a/src/antlr/NoViableAltException.hpp b/src/antlr/NoViableAltException.hpp
+index 22236c9..8286977 100644
+--- a/src/antlr/NoViableAltException.hpp
++++ b/src/antlr/NoViableAltException.hpp
+@@ -25,7 +25,7 @@ public:
+ 	NoViableAltException(RefAST t);
+ 	NoViableAltException(RefToken t,const ANTLR_USE_NAMESPACE(std)string& fileName_);
+ 
+-	~NoViableAltException() throw() {}
++	~NoViableAltException() {}
+ 
+ 	/**
+ 	 * Returns a clean error message (no line number/column information)
+diff --git a/src/antlr/NoViableAltForCharException.hpp b/src/antlr/NoViableAltForCharException.hpp
+index 0b16a0e..c93e727 100644
+--- a/src/antlr/NoViableAltForCharException.hpp
++++ b/src/antlr/NoViableAltForCharException.hpp
+@@ -24,7 +24,7 @@ public:
+ 	NoViableAltForCharException(int c, const ANTLR_USE_NAMESPACE(std)string& fileName_,
+ 										 int line_, int column_);
+ 
+-	virtual ~NoViableAltForCharException() throw()
++	virtual ~NoViableAltForCharException()
+ 	{
+ 	}
+ 
+diff --git a/src/antlr/RecognitionException.hpp b/src/antlr/RecognitionException.hpp
+index e61bc62..5854711 100644
+--- a/src/antlr/RecognitionException.hpp
++++ b/src/antlr/RecognitionException.hpp
+@@ -24,26 +24,26 @@ namespace antlr
+ 									const ANTLR_USE_NAMESPACE(std)string& fileName,
+ 									int line, int column );
+ 
+-		virtual ~RecognitionException() throw()
++		virtual ~RecognitionException()
+ 		{
+ 		}
+ 
+ 		/// Return file where mishap occurred.
+-		virtual ANTLR_USE_NAMESPACE(std)string getFilename() const throw()
++		virtual ANTLR_USE_NAMESPACE(std)string getFilename() const
+ 		{
+ 			return fileName;
+ 		}
+ 		/**
+ 		 * @return the line number that this exception happened on.
+ 		 */
+-		virtual int getLine() const throw()
++		virtual int getLine() const
+ 		{
+ 			return line;
+ 		}
+ 		/**
+ 		 * @return the column number that this exception happened on.
+ 		 */
+-		virtual int getColumn() const throw()
++		virtual int getColumn() const
+ 		{
+ 			return column;
+ 		}
+diff --git a/src/antlr/SemanticException.hpp b/src/antlr/SemanticException.hpp
+index dc68d5a..040346e 100644
+--- a/src/antlr/SemanticException.hpp
++++ b/src/antlr/SemanticException.hpp
+@@ -28,7 +28,7 @@ public:
+ 	{
+ 	}
+ 
+-	~SemanticException() throw()
++	~SemanticException()
+ 	{
+ 	}
+ };
+diff --git a/src/antlr/TokenStreamException.hpp b/src/antlr/TokenStreamException.hpp
+index dbddb44..a19d625 100644
+--- a/src/antlr/TokenStreamException.hpp
++++ b/src/antlr/TokenStreamException.hpp
+@@ -29,7 +29,7 @@ public:
+ 	: ANTLRException(s)
+ 	{
+ 	}
+-	virtual ~TokenStreamException() throw()
++	virtual ~TokenStreamException()
+ 	{
+ 	}
+ };
+diff --git a/src/antlr/TokenStreamIOException.hpp b/src/antlr/TokenStreamIOException.hpp
+index fff72ce..1f639fe 100644
+--- a/src/antlr/TokenStreamIOException.hpp
++++ b/src/antlr/TokenStreamIOException.hpp
+@@ -26,7 +26,7 @@ public:
+ 	, io(e)
+ 	{
+ 	}
+-	~TokenStreamIOException() throw()
++	~TokenStreamIOException()
+ 	{
+ 	}
+ private:
+diff --git a/src/antlr/TokenStreamRecognitionException.hpp b/src/antlr/TokenStreamRecognitionException.hpp
+index 687d781..8dd4528 100644
+--- a/src/antlr/TokenStreamRecognitionException.hpp
++++ b/src/antlr/TokenStreamRecognitionException.hpp
+@@ -26,7 +26,7 @@ public:
+ 	, recog(re)
+ 	{
+ 	}
+-	virtual ~TokenStreamRecognitionException() throw()
++	virtual ~TokenStreamRecognitionException()
+ 	{
+ 	}
+ 	virtual ANTLR_USE_NAMESPACE(std)string toString() const
+@@ -34,15 +34,15 @@ public:
+ 		return recog.getFileLineColumnString()+getMessage();
+ 	}
+ 
+-	virtual ANTLR_USE_NAMESPACE(std)string getFilename() const throw()
++	virtual ANTLR_USE_NAMESPACE(std)string getFilename() const
+ 	{
+ 		return recog.getFilename();
+ 	}
+-	virtual int getLine() const throw()
++	virtual int getLine() const
+ 	{
+ 		return recog.getLine();
+ 	}
+-	virtual int getColumn() const throw()
++	virtual int getColumn() const
+ 	{
+ 		return recog.getColumn();
+ 	}
+diff --git a/src/antlr/TokenStreamRetryException.hpp b/src/antlr/TokenStreamRetryException.hpp
+index 5af21cd..d0ed488 100644
+--- a/src/antlr/TokenStreamRetryException.hpp
++++ b/src/antlr/TokenStreamRetryException.hpp
+@@ -18,7 +18,7 @@ namespace antlr {
+ class TokenStreamRetryException : public TokenStreamException {
+ public:
+ 	TokenStreamRetryException() {}
+-	~TokenStreamRetryException() throw() {}
++	~TokenStreamRetryException() {}
+ };
+ 
+ #ifdef ANTLR_CXX_SUPPORTS_NAMESPACE
+diff --git a/src/cisco_lib/ASA8ObjectGroup.cpp b/src/cisco_lib/ASA8ObjectGroup.cpp
+index 577582a..a826ab9 100644
+--- a/src/cisco_lib/ASA8ObjectGroup.cpp
++++ b/src/cisco_lib/ASA8ObjectGroup.cpp
+@@ -65,7 +65,6 @@ const char *ASA8ObjectGroup::TYPENAME={"ASA8ObjectGroup"};
+ 
+ QString ASA8ObjectGroup::groupMemberToString(
+     FWObject *obj, NamedObjectsManager *named_objects_manager)
+-    throw(libfwbuilder::FWException)
+ {
+     if (this->getObjectGroupType() == NETWORK)
+     {
+diff --git a/src/cisco_lib/ASA8ObjectGroup.h b/src/cisco_lib/ASA8ObjectGroup.h
+index 8237e7e..38a1868 100644
+--- a/src/cisco_lib/ASA8ObjectGroup.h
++++ b/src/cisco_lib/ASA8ObjectGroup.h
+@@ -41,8 +41,7 @@ public:
+         virtual std::string getObjectGroupClass();
+ 
+         virtual QString groupMemberToString(
+-            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager);
+ 
+     };
+ }
+diff --git a/src/cisco_lib/BaseObjectGroup.cpp b/src/cisco_lib/BaseObjectGroup.cpp
+index 44a31e3..adc6007 100644
+--- a/src/cisco_lib/BaseObjectGroup.cpp
++++ b/src/cisco_lib/BaseObjectGroup.cpp
+@@ -54,7 +54,7 @@ map<QString,int>  BaseObjectGroup::name_disambiguation;
+ const char *BaseObjectGroup::TYPENAME={"BaseObjectGroup"};
+ 
+ FWObject& BaseObjectGroup::shallowDuplicate(const FWObject *other,
+-                                            bool preserve_id) throw(FWException)
++                                            bool preserve_id)
+ {
+     gt = BaseObjectGroup::constcast(other)->gt;
+     return FWObject::shallowDuplicate(other, preserve_id);
+@@ -223,12 +223,11 @@ string BaseObjectGroup::getObjectGroupClass()
+ }
+ 
+ QString BaseObjectGroup::groupMemberToString(FWObject*, NamedObjectsManager*)
+-    throw(libfwbuilder::FWException)
+ {
+     return "";
+ }
+ 
+-QString BaseObjectGroup::toString(NamedObjectsManager *nm)  throw(FWException)
++QString BaseObjectGroup::toString(NamedObjectsManager *nm)
+ {
+     QStringList res;
+     if (this->size()==0) return "";
+diff --git a/src/cisco_lib/BaseObjectGroup.h b/src/cisco_lib/BaseObjectGroup.h
+index 7ae535f..cc9e752 100644
+--- a/src/cisco_lib/BaseObjectGroup.h
++++ b/src/cisco_lib/BaseObjectGroup.h
+@@ -74,8 +74,7 @@ public:
+         virtual bool  validateChild(FWObject*) { return true; }
+ 
+         virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                           bool preserve_id = true)
+-            throw(libfwbuilder::FWException);
++                                           bool preserve_id = true);
+         
+         void setObjectGroupType(object_group_type _gt) { gt=_gt; }
+         object_group_type getObjectGroupType() { return gt; }
+@@ -94,11 +93,9 @@ public:
+         virtual std::string getObjectGroupFooter();
+ 
+         virtual QString groupMemberToString(
+-            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager);
+ 
+-        virtual QString toString(NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++        virtual QString toString(NamedObjectsManager *named_obj_manager);
+     };
+ 
+ }
+diff --git a/src/cisco_lib/Helper.cpp b/src/cisco_lib/Helper.cpp
+index 825c741..249a092 100644
+--- a/src/cisco_lib/Helper.cpp
++++ b/src/cisco_lib/Helper.cpp
+@@ -212,7 +212,6 @@ int  Helper::findInterfaceByNetzone(Address *obj)
+  *
+  */
+ int  Helper::findInterfaceByNetzone(const InetAddr *addr, const InetAddr *nm)
+-    throw(FWException)
+ {
+ #if DEBUG_NETZONE_OPS
+     cerr << "Helper::findInterfaceByNetzone";
+diff --git a/src/cisco_lib/Helper.h b/src/cisco_lib/Helper.h
+index f2bc58f..6a40b3c 100644
+--- a/src/cisco_lib/Helper.h
++++ b/src/cisco_lib/Helper.h
+@@ -59,8 +59,7 @@ namespace fwcompiler {
+          * that object 'obj' belongs to.  Returns interface ID
+          */
+         int findInterfaceByNetzone(const libfwbuilder::InetAddr *a,
+-                                   const libfwbuilder::InetAddr *nm=NULL)
+-            throw(libfwbuilder::FWException);
++                                   const libfwbuilder::InetAddr *nm=NULL);
+         int findInterfaceByNetzone(libfwbuilder::Address *obj);
+         std::list<int> findInterfaceByNetzoneOrAll(
+             libfwbuilder::RuleElement *re);
+diff --git a/src/cisco_lib/IOSObjectGroup.cpp b/src/cisco_lib/IOSObjectGroup.cpp
+index de45c4b..8b1c9bd 100644
+--- a/src/cisco_lib/IOSObjectGroup.cpp
++++ b/src/cisco_lib/IOSObjectGroup.cpp
+@@ -47,7 +47,6 @@ const char *IOSObjectGroup::TYPENAME={"IOSObjectGroup"};
+ 
+ QString IOSObjectGroup::groupMemberToString(FWObject *obj,
+                                            NamedObjectsManager*)
+-    throw(libfwbuilder::FWException)
+ {
+     ostringstream ostr;
+ 
+diff --git a/src/cisco_lib/IOSObjectGroup.h b/src/cisco_lib/IOSObjectGroup.h
+index 57af621..aa40119 100644
+--- a/src/cisco_lib/IOSObjectGroup.h
++++ b/src/cisco_lib/IOSObjectGroup.h
+@@ -43,8 +43,7 @@ public:
+         virtual std::string getObjectGroupFooter();
+ 
+         virtual QString groupMemberToString(
+-            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager);
+     
+     };
+ }
+diff --git a/src/cisco_lib/NXOSObjectGroup.cpp b/src/cisco_lib/NXOSObjectGroup.cpp
+index 41bcaca..470f270 100644
+--- a/src/cisco_lib/NXOSObjectGroup.cpp
++++ b/src/cisco_lib/NXOSObjectGroup.cpp
+@@ -47,7 +47,6 @@ const char *NXOSObjectGroup::TYPENAME={"NXOSObjectGroup"};
+ 
+ QString NXOSObjectGroup::groupMemberToString(FWObject *obj,
+                                            NamedObjectsManager*)
+-    throw(libfwbuilder::FWException)
+ {
+     ostringstream ostr;
+ 
+diff --git a/src/cisco_lib/NXOSObjectGroup.h b/src/cisco_lib/NXOSObjectGroup.h
+index 890cdfd..5b11f9a 100644
+--- a/src/cisco_lib/NXOSObjectGroup.h
++++ b/src/cisco_lib/NXOSObjectGroup.h
+@@ -43,8 +43,7 @@ public:
+         virtual std::string getObjectGroupFooter();
+ 
+         virtual QString groupMemberToString(
+-            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager);
+     
+     };
+ }
+diff --git a/src/cisco_lib/PIXObjectGroup.cpp b/src/cisco_lib/PIXObjectGroup.cpp
+index 62f62dd..d79e1da 100644
+--- a/src/cisco_lib/PIXObjectGroup.cpp
++++ b/src/cisco_lib/PIXObjectGroup.cpp
+@@ -46,7 +46,6 @@ const char *PIXObjectGroup::TYPENAME={"PIXObjectGroup"};
+ 
+ QString PIXObjectGroup::groupMemberToString(FWObject *obj,
+                                            NamedObjectsManager*)
+-    throw(libfwbuilder::FWException)
+ {
+     ostringstream ostr;
+ 
+diff --git a/src/cisco_lib/PIXObjectGroup.h b/src/cisco_lib/PIXObjectGroup.h
+index 615333e..26f9671 100644
+--- a/src/cisco_lib/PIXObjectGroup.h
++++ b/src/cisco_lib/PIXObjectGroup.h
+@@ -42,8 +42,7 @@ public:
+         virtual std::string getObjectGroupFooter();
+ 
+         virtual QString groupMemberToString(
+-            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager)
+-            throw(libfwbuilder::FWException);
++            libfwbuilder::FWObject *obj, NamedObjectsManager *named_obj_manager);
+     };
+ }
+ 
+diff --git a/src/iptlib/combinedAddress.cpp b/src/iptlib/combinedAddress.cpp
+index df65cd6..6e06aa4 100644
+--- a/src/iptlib/combinedAddress.cpp
++++ b/src/iptlib/combinedAddress.cpp
+@@ -57,7 +57,7 @@ bool combinedAddress::isAny() const
+ }
+ 
+ FWObject& combinedAddress::shallowDuplicate(const FWObject *other,
+-                                            bool preserve_id) throw(FWException)
++                                            bool preserve_id)
+ {
+     physAddress = dynamic_cast<const combinedAddress*>(other)->physAddress;
+     return IPv4::shallowDuplicate(other, preserve_id);
+diff --git a/src/iptlib/combinedAddress.h b/src/iptlib/combinedAddress.h
+index a4737eb..3071474 100644
+--- a/src/iptlib/combinedAddress.h
++++ b/src/iptlib/combinedAddress.h
+@@ -48,8 +48,7 @@ class combinedAddress : public IPv4
+     virtual ~combinedAddress();
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+     
+     std::string getPhysAddress() const;
+     void setPhysAddress(const std::string &s);
+diff --git a/src/libfwbuilder/src/fwbuilder/Address.cpp b/src/libfwbuilder/src/fwbuilder/Address.cpp
+index b4c8cc1..ecf6972 100644
+--- a/src/libfwbuilder/src/fwbuilder/Address.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Address.cpp
+@@ -58,7 +58,7 @@ Address::~Address()
+ }
+ 
+ FWObject& Address::shallowDuplicate(const FWObject *other,
+-                                    bool preserve_id) throw(FWException)
++                                    bool preserve_id)
+ {
+     const Address* a_other = Address::constcast(other);
+     delete inet_addr_mask;
+@@ -160,7 +160,7 @@ bool Address::belongs(const InetAddr &other) const
+     return false;
+ }
+ 
+-bool Address::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool Address::cmp(const FWObject *obj, bool recursive)
+ {
+     if (Address::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/Address.h b/src/libfwbuilder/src/fwbuilder/Address.h
+index fcd565c..5098ed3 100644
+--- a/src/libfwbuilder/src/fwbuilder/Address.h
++++ b/src/libfwbuilder/src/fwbuilder/Address.h
+@@ -59,11 +59,10 @@ public:
+     virtual ~Address();
+ 
+ //    Address(const std::string& addr,const std::string& mask);
+-//    Address(const std::string &s) throw(FWException);
++//    Address(const std::string &s);
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+ 
+     const InetAddrMask* getInetAddrMaskObjectPtr() const;
+ 
+@@ -105,7 +104,7 @@ public:
+     bool belongs(const InetAddr &) const;
+     
+     virtual FWReference* createRef();
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+     bool isAny() const;
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/AddressRange.cpp b/src/libfwbuilder/src/fwbuilder/AddressRange.cpp
+index 792787d..0376490 100644
+--- a/src/libfwbuilder/src/fwbuilder/AddressRange.cpp
++++ b/src/libfwbuilder/src/fwbuilder/AddressRange.cpp
+@@ -75,7 +75,6 @@ void AddressRange::setAddress(const InetAddr &a)
+ void AddressRange::setNetmask(const InetAddr& ) {}
+ 
+ FWObject& AddressRange::shallowDuplicate(const FWObject *o, bool preserve_id)
+-    throw(FWException)
+ {
+     const AddressRange *n = dynamic_cast<const AddressRange *>(o);
+     if (n==NULL) {
+@@ -92,7 +91,7 @@ FWObject& AddressRange::shallowDuplicate(const FWObject *o, bool preserve_id)
+     return FWObject::shallowDuplicate(o, preserve_id);
+ }
+ 
+-bool AddressRange::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool AddressRange::cmp(const FWObject *obj, bool recursive)
+ {
+     if (AddressRange::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+@@ -111,7 +110,7 @@ bool AddressRange::cmp(const FWObject *obj, bool recursive) throw(FWException)
+     return (o1b==o2b && o1e==o2e);
+ }
+ 
+-void AddressRange::fromXML(xmlNodePtr root) throw(FWException)
++void AddressRange::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -126,7 +125,7 @@ void AddressRange::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr AddressRange::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr AddressRange::toXML(xmlNodePtr xml_parent_node)
+ {
+     xmlNodePtr me = FWObject::toXML(xml_parent_node);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/AddressRange.h b/src/libfwbuilder/src/fwbuilder/AddressRange.h
+index df30634..5b45d97 100644
+--- a/src/libfwbuilder/src/fwbuilder/AddressRange.h
++++ b/src/libfwbuilder/src/fwbuilder/AddressRange.h
+@@ -63,12 +63,11 @@ class AddressRange : public Address
+     virtual void setNetmask(const InetAddr &nm);
+ 
+     
+-    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id)
+-        throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+    
+-    virtual void       fromXML (xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void       fromXML (xmlNodePtr parent);
++    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node);
+ 
+     virtual bool isPrimaryObject() const { return true; }
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/AddressTable.cpp b/src/libfwbuilder/src/fwbuilder/AddressTable.cpp
+index 09bcc15..d7c9d82 100644
+--- a/src/libfwbuilder/src/fwbuilder/AddressTable.cpp
++++ b/src/libfwbuilder/src/fwbuilder/AddressTable.cpp
+@@ -64,7 +64,7 @@ void AddressTable::setSourceName(const std::string& source_name)
+     setStr("filename", source_name);
+ }
+ 
+-void AddressTable::fromXML(xmlNodePtr root) throw(FWException)
++void AddressTable::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     const char *n;
+@@ -80,7 +80,7 @@ void AddressTable::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr AddressTable::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr AddressTable::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ 
+@@ -92,7 +92,7 @@ xmlNodePtr AddressTable::toXML(xmlNodePtr parent) throw(FWException)
+ }
+ 
+ 
+-string AddressTable::getFilename(FWOptions *options) throw (FWException)
++string AddressTable::getFilename(FWOptions *options)
+ {
+     string path = getStr("filename");
+     size_t found = path.find("%DATADIR%");
+@@ -127,7 +127,7 @@ string AddressTable::getFilename(FWOptions *options) throw (FWException)
+  * the object tree, something with the name "tmp" or similar.
+  */
+ void AddressTable::loadFromSource(bool ipv6, FWOptions *options,
+-                                  bool test_mode) throw(FWException)
++                                  bool test_mode)
+ {
+     string path = getFilename(options);
+     ifstream fs(path.c_str());
+diff --git a/src/libfwbuilder/src/fwbuilder/AddressTable.h b/src/libfwbuilder/src/fwbuilder/AddressTable.h
+index 1e976b1..f8d89a9 100644
+--- a/src/libfwbuilder/src/fwbuilder/AddressTable.h
++++ b/src/libfwbuilder/src/fwbuilder/AddressTable.h
+@@ -36,7 +36,7 @@ class AddressTable : public MultiAddress
+ {
+     private:
+ 
+-    std::string getFilename(FWOptions *options) throw(FWException);
++    std::string getFilename(FWOptions *options);
+         
+     public:
+ 
+@@ -46,13 +46,13 @@ class AddressTable : public MultiAddress
+     
+     AddressTable();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+     
+     virtual std::string getSourceName();
+     virtual void setSourceName(const std::string& source_name);
+     virtual void loadFromSource(bool ipv6, FWOptions *options,
+-                                bool test_mode=false) throw(FWException);
++                                bool test_mode=false);
+ };
+ 
+ }
+diff --git a/src/libfwbuilder/src/fwbuilder/AttachedNetworks.cpp b/src/libfwbuilder/src/fwbuilder/AttachedNetworks.cpp
+index cc2e0c0..10be212 100644
+--- a/src/libfwbuilder/src/fwbuilder/AttachedNetworks.cpp
++++ b/src/libfwbuilder/src/fwbuilder/AttachedNetworks.cpp
+@@ -53,12 +53,12 @@ AttachedNetworks::AttachedNetworks() : MultiAddress()
+ {
+ }
+ 
+-void AttachedNetworks::fromXML(xmlNodePtr root) throw(FWException)
++void AttachedNetworks::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ }
+ 
+-xmlNodePtr AttachedNetworks::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr AttachedNetworks::toXML(xmlNodePtr parent)
+ {
+     remStr("run_time");
+ 
+@@ -113,7 +113,6 @@ void AttachedNetworks::addNetworkObject(const InetAddrMask &addr_mask)
+  * corresponding networks.
+  */
+ void AttachedNetworks::loadFromSource(bool ipv6, FWOptions*, bool)
+-    throw(FWException)
+ {
+     Interface *parent_intf = Interface::cast(getParent());
+     assert(parent_intf);
+diff --git a/src/libfwbuilder/src/fwbuilder/AttachedNetworks.h b/src/libfwbuilder/src/fwbuilder/AttachedNetworks.h
+index ec573ec..895dc7a 100644
+--- a/src/libfwbuilder/src/fwbuilder/AttachedNetworks.h
++++ b/src/libfwbuilder/src/fwbuilder/AttachedNetworks.h
+@@ -44,10 +44,10 @@ class AttachedNetworks : public MultiAddress
+     
+     AttachedNetworks();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+     virtual void loadFromSource(bool ipv6, FWOptions *options,
+-                                bool test_mode=false) throw(FWException);
++                                bool test_mode=false);
+ 
+     virtual std::string getSourceName();
+ };
+diff --git a/src/libfwbuilder/src/fwbuilder/BackgroundOp.cpp b/src/libfwbuilder/src/fwbuilder/BackgroundOp.cpp
+index 3a9fd8d..ca8709f 100644
+--- a/src/libfwbuilder/src/fwbuilder/BackgroundOp.cpp
++++ b/src/libfwbuilder/src/fwbuilder/BackgroundOp.cpp
+@@ -98,7 +98,7 @@ void BackgroundOp::disconnect()    { connected=false;  }
+ 
+ 
+ 
+-Logger* BackgroundOp::start_operation() throw(FWException)
++Logger* BackgroundOp::start_operation()
+ {
+     /*
+      * Suppose calling program wants to stop background operation. It
+diff --git a/src/libfwbuilder/src/fwbuilder/BackgroundOp.h b/src/libfwbuilder/src/fwbuilder/BackgroundOp.h
+index f630b94..dc31f4b 100644
+--- a/src/libfwbuilder/src/fwbuilder/BackgroundOp.h
++++ b/src/libfwbuilder/src/fwbuilder/BackgroundOp.h
+@@ -85,7 +85,7 @@ class BackgroundOp
+      * or methods, we create this flag as a dynamic variable and pass
+      * pointer to run_impl, which should destroy it when it finishes.
+      */
+-    virtual void  run_impl(Logger *,SyncFlag *) throw(FWException) = 0;
++    virtual void  run_impl(Logger *,SyncFlag *) = 0;
+ 
+     /**
+      * sets flag "running"
+@@ -128,7 +128,7 @@ class BackgroundOp
+     /**
+      * Initiates background operation
+      */
+-    virtual Logger* start_operation()  throw(FWException);
++    virtual Logger* start_operation();
+ 
+     /**
+      * Stops background operation
+diff --git a/src/libfwbuilder/src/fwbuilder/Cluster.cpp b/src/libfwbuilder/src/fwbuilder/Cluster.cpp
+index d3f6fb2..6f512ed 100644
+--- a/src/libfwbuilder/src/fwbuilder/Cluster.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Cluster.cpp
+@@ -71,12 +71,12 @@ void Cluster::init(FWObjectDatabase *root)
+     }
+ }
+ 
+-void Cluster::fromXML(xmlNodePtr root) throw(FWException)
++void Cluster::fromXML(xmlNodePtr root)
+ {
+     Firewall::fromXML(root);
+ }
+ 
+-xmlNodePtr Cluster::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Cluster::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = Firewall::toXML(parent);
+     FWObject *o;
+@@ -142,7 +142,7 @@ bool Cluster::validateChild(FWObject *o)
+ }
+ 
+ FWObject& Cluster::duplicate(const FWObject *obj,
+-                             bool preserve_id) throw(FWException)
++                             bool preserve_id)
+ {
+     Firewall::duplicate(obj, preserve_id);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/Cluster.h b/src/libfwbuilder/src/fwbuilder/Cluster.h
+index c5b1337..67827a3 100644
+--- a/src/libfwbuilder/src/fwbuilder/Cluster.h
++++ b/src/libfwbuilder/src/fwbuilder/Cluster.h
+@@ -42,8 +42,8 @@ namespace libfwbuilder
+          */
+         virtual void init(FWObjectDatabase *root);
+     
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+         DECLARE_FWOBJECT_SUBTYPE(Cluster);
+ 
+@@ -57,7 +57,7 @@ namespace libfwbuilder
+         virtual FWOptions* getOptionsObject();
+ 
+         virtual FWObject& duplicate(const FWObject *obj,
+-                                    bool preserve_id = true) throw(FWException);
++                                    bool preserve_id = true);
+ 
+         Policy*  getPolicy();
+         NAT*     getNAT();
+diff --git a/src/libfwbuilder/src/fwbuilder/ClusterGroup.cpp b/src/libfwbuilder/src/fwbuilder/ClusterGroup.cpp
+index 8cd34cc..b2b9f16 100644
+--- a/src/libfwbuilder/src/fwbuilder/ClusterGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/ClusterGroup.cpp
+@@ -72,7 +72,7 @@ void ClusterGroup::replaceReferenceInternal(int old_id, int new_id, int &counter
+     }
+ }
+ 
+-void ClusterGroup::fromXML(xmlNodePtr parent) throw(FWException)
++void ClusterGroup::fromXML(xmlNodePtr parent)
+ {
+     FWObject::fromXML(parent);
+ 
+@@ -91,7 +91,7 @@ void ClusterGroup::fromXML(xmlNodePtr parent) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr ClusterGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr ClusterGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -127,7 +127,7 @@ ClusterGroupOptions* ClusterGroup::getOptionsObject()
+     return gopt;
+ }
+ 
+-FWObject& ClusterGroup::duplicateForUndo(const FWObject *obj) throw(FWException)
++FWObject& ClusterGroup::duplicateForUndo(const FWObject *obj)
+ {
+     if (ClusterGroup::constcast(obj)==NULL) return *this;
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/ClusterGroup.h b/src/libfwbuilder/src/fwbuilder/ClusterGroup.h
+index 2cfa314..a656a80 100644
+--- a/src/libfwbuilder/src/fwbuilder/ClusterGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/ClusterGroup.h
+@@ -48,8 +48,8 @@ public:
+ 
+         DECLARE_DISPATCH_METHODS(ClusterGroup);
+ 
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+         /*
+          * verify whether given object type is approppriate as a child
+@@ -63,7 +63,7 @@ public:
+          * child objects and the options object to reproduce accurate
+          * state of this.
+          */
+-        virtual FWObject& duplicateForUndo(const FWObject *obj) throw(FWException);
++        virtual FWObject& duplicateForUndo(const FWObject *obj);
+ 
+         /**
+          * If @this is cluster interface and it is correctly
+diff --git a/src/libfwbuilder/src/fwbuilder/CustomService.cpp b/src/libfwbuilder/src/fwbuilder/CustomService.cpp
+index 9a1a340..320ca49 100644
+--- a/src/libfwbuilder/src/fwbuilder/CustomService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/CustomService.cpp
+@@ -51,7 +51,7 @@ int    CustomService::getProtocolNumber() const { return 65000; }
+ 
+ 
+ FWObject& CustomService::shallowDuplicate(const FWObject *x,
+-                                          bool preserve_id) throw(FWException)
++                                          bool preserve_id)
+ {
+     const CustomService *cs = dynamic_cast<const CustomService *>(x);
+     codes = cs->codes;
+@@ -61,7 +61,7 @@ FWObject& CustomService::shallowDuplicate(const FWObject *x,
+     return FWObject::shallowDuplicate(x, preserve_id);
+ }
+ 
+-void CustomService::fromXML(xmlNodePtr root) throw(FWException)
++void CustomService::fromXML(xmlNodePtr root)
+ {
+     const char *n;
+     const char *cont;
+@@ -120,7 +120,7 @@ void CustomService::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr CustomService::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr CustomService::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr opt;
+ 
+@@ -149,7 +149,7 @@ xmlNodePtr CustomService::toXML(xmlNodePtr parent) throw(FWException)
+     return me;
+ }
+ 
+-bool CustomService::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool CustomService::cmp(const FWObject *obj, bool recursive)
+ {
+     if (CustomService::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/CustomService.h b/src/libfwbuilder/src/fwbuilder/CustomService.h
+index a56d0a5..59cb0ed 100644
+--- a/src/libfwbuilder/src/fwbuilder/CustomService.h
++++ b/src/libfwbuilder/src/fwbuilder/CustomService.h
+@@ -62,12 +62,12 @@ class CustomService : public Service
+     CustomService();
+     virtual ~CustomService();
+     
+-    virtual void       fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual void       fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+     
+     virtual FWObject& shallowDuplicate(
+-        const FWObject *obj, bool preserve_id = true) throw(FWException);
++        const FWObject *obj, bool preserve_id = true);
+     
+     DECLARE_FWOBJECT_SUBTYPE(CustomService);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/DNSName.cpp b/src/libfwbuilder/src/fwbuilder/DNSName.cpp
+index 67b6a7d..da82f7c 100644
+--- a/src/libfwbuilder/src/fwbuilder/DNSName.cpp
++++ b/src/libfwbuilder/src/fwbuilder/DNSName.cpp
+@@ -72,7 +72,7 @@ void DNSName::setDNSRecordType(const string& rectype)
+     setStr("dnsrec", rectype);
+ }
+ 
+-void DNSName::fromXML(xmlNodePtr root) throw(FWException)
++void DNSName::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     const char *n;
+@@ -98,7 +98,7 @@ void DNSName::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr DNSName::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr DNSName::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ 
+@@ -121,7 +121,7 @@ xmlNodePtr DNSName::toXML(xmlNodePtr parent) throw(FWException)
+  * the object tree, something with the name "tmp" or similar.
+  */
+ void DNSName::loadFromSource(bool ipv6, FWOptions *options,
+-                             bool test_mode) throw(FWException)
++                             bool test_mode)
+ {
+     (void) options; // Unused
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/DNSName.h b/src/libfwbuilder/src/fwbuilder/DNSName.h
+index 5ccc115..df98d76 100644
+--- a/src/libfwbuilder/src/fwbuilder/DNSName.h
++++ b/src/libfwbuilder/src/fwbuilder/DNSName.h
+@@ -45,8 +45,8 @@ class DNSName : public MultiAddress
+     
+     DNSName();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+     
+     virtual std::string getSourceName();
+     virtual void setSourceName(const std::string& source_name);
+@@ -55,7 +55,7 @@ class DNSName : public MultiAddress
+     void setDNSRecordType(const std::string& rectype);
+     
+     virtual void loadFromSource(bool ipv6, FWOptions *options,
+-                                bool test_mode=false) throw(FWException);
++                                bool test_mode=false);
+ };
+ 
+ }
+diff --git a/src/libfwbuilder/src/fwbuilder/DynamicGroup.cpp b/src/libfwbuilder/src/fwbuilder/DynamicGroup.cpp
+index ffb6377..150511f 100644
+--- a/src/libfwbuilder/src/fwbuilder/DynamicGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/DynamicGroup.cpp
+@@ -52,7 +52,7 @@ bool DynamicGroup::validateChild(FWObject *o)
+     return FWObject::validateChild(o);
+ }
+ 
+-void DynamicGroup::fromXML(xmlNodePtr root) throw(FWException)
++void DynamicGroup::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -75,7 +75,7 @@ void DynamicGroup::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr DynamicGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr DynamicGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlRemoveProp(xmlHasProp(me, TOXMLCAST("run_time")));
+@@ -121,7 +121,7 @@ bool DynamicGroup::makeFilter(string &filter, const string &type,
+ 
+ 
+ bool DynamicGroup::cmp(const FWObject *obj,
+-                      bool recursive) throw(FWException)
++                      bool recursive)
+ {
+     if (!FWObject::cmp(obj, recursive)) return false;
+ 
+@@ -131,7 +131,7 @@ bool DynamicGroup::cmp(const FWObject *obj,
+ 
+ 
+ FWObject& DynamicGroup::shallowDuplicate(const FWObject *other,
+-                                        bool preserve_id) throw (FWException)
++                                        bool preserve_id)
+ {
+     const DynamicGroup *otherObj = DynamicGroup::constcast(other);
+     m_filter = otherObj->m_filter;
+@@ -146,7 +146,6 @@ bool DynamicGroup::isCompileTime() const
+ 
+ 
+ void DynamicGroup::loadFromSource(bool ipv6, FWOptions *options, bool test_mode)
+-    throw (FWException)
+ {
+     (void) ipv6; (void) options; (void) test_mode; // Unused
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/DynamicGroup.h b/src/libfwbuilder/src/fwbuilder/DynamicGroup.h
+index ca007a4..2dd6b19 100644
+--- a/src/libfwbuilder/src/fwbuilder/DynamicGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/DynamicGroup.h
+@@ -40,8 +40,8 @@ class DynamicGroup : public MultiAddress
+     DECLARE_FWOBJECT_SUBTYPE(DynamicGroup);
+     DECLARE_DISPATCH_METHODS(DynamicGroup);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     /* Each list entry is comma-separated list of matching criteria */
+     const std::list<std::string> &getFilter() { return m_filter; }
+@@ -52,14 +52,12 @@ class DynamicGroup : public MultiAddress
+     static bool makeFilter(std::string &filter, const std::string &type,
+                            const std::string &keyword);
+ 
+-    virtual bool cmp(const FWObject *obj, bool recursive=false)
+-        throw (FWException);
+-    virtual FWObject& shallowDuplicate(const FWObject *other, bool preserve_id)
+-        throw (FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
++    virtual FWObject& shallowDuplicate(const FWObject *other, bool preserve_id);
+ 
+     virtual bool isCompileTime() const;
+     virtual void loadFromSource(bool ipv6, FWOptions *options,
+-                                bool test_mode=false) throw (FWException);
++                                bool test_mode=false);
+ 
+     /*
+      * verify whether given object type is approppriate as a child
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObject.cpp b/src/libfwbuilder/src/fwbuilder/FWObject.cpp
+index f2d0139..a28cf7e 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObject.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWObject.cpp
+@@ -67,7 +67,7 @@ string FWObject::dataDir;
+ //#define TI_DEBUG
+ 
+ 
+-void FWObject::fromXML(xmlNodePtr root) throw(FWException)
++void FWObject::fromXML(xmlNodePtr root)
+ {
+     assert(root!=NULL);
+     const char *n;
+@@ -148,13 +148,12 @@ void FWObject::fromXML(xmlNodePtr root) throw(FWException)
+     setDirty(false);
+ }
+ 
+-xmlNodePtr FWObject::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr FWObject::toXML(xmlNodePtr xml_parent_node)
+ {
+     return toXML(xml_parent_node, true);
+ }
+ 
+ xmlNodePtr FWObject::toXML(xmlNodePtr parent, bool process_children)
+-    throw(FWException)
+ {
+     string s_id = FWObjectDatabase::getStringId(getId());
+ 
+@@ -313,7 +312,7 @@ list<FWObject*> FWObject::findIf(FWObjectFindPredicate *pred)
+ }
+ 
+ FWObject* FWObject::findObjectByName(const string &type,
+-                                     const string &name) throw(FWException)
++                                     const string &name)
+ {
+     if (getTypeName()==type && getName()==name) return this;
+ 
+@@ -331,7 +330,6 @@ FWObject* FWObject::findObjectByName(const string &type,
+ 
+ FWObject* FWObject::findObjectByAttribute(const std::string &attr,
+                                           const std::string &val)
+-    throw(FWException)
+ {
+     if (getStr(attr)==val) return this;
+ 
+@@ -348,7 +346,7 @@ FWObject* FWObject::findObjectByAttribute(const std::string &attr,
+ }
+ 
+ 
+-bool FWObject::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool FWObject::cmp(const FWObject *obj, bool recursive)
+ {
+     if (getTypeName() != obj->getTypeName() || name != obj->name || comment != obj->comment || ro != obj->ro)
+         return false;
+@@ -399,13 +397,12 @@ bool FWObject::cmp(const FWObject *obj, bool recursive) throw(FWException)
+     return true;
+ }
+ 
+-FWObject& FWObject::operator=(const FWObject &x)  throw(FWException)
++FWObject& FWObject::operator=(const FWObject &x)
+ {
+     return duplicate(&x, false);
+ }
+ 
+ FWObject& FWObject::duplicate(const FWObject *x, bool preserve_id)
+-    throw(FWException)
+ {
+     checkReadOnly();
+     bool xro = x->ro;
+@@ -429,7 +426,6 @@ FWObject& FWObject::duplicate(const FWObject *x, bool preserve_id)
+ }
+ 
+ FWObject* FWObject::addCopyOf(const FWObject *x, bool preserve_id)
+-    throw(FWException)
+ {
+     if (x==NULL) return NULL;
+     FWObject *o1;
+@@ -459,7 +455,6 @@ FWObject* FWObject::addCopyOf(const FWObject *x, bool preserve_id)
+  * attribute.  Clear it in the caller if neccessary.
+  */
+ FWObject& FWObject::shallowDuplicate(const FWObject *x, bool preserve_id)
+-    throw(FWException)
+ {
+     checkReadOnly();
+ 
+@@ -510,7 +505,7 @@ class InheritsFWOptions: public std::unary_function<FWObject*, bool>
+     }
+ };
+ 
+-FWObject& FWObject::duplicateForUndo(const FWObject *obj) throw(FWException)
++FWObject& FWObject::duplicateForUndo(const FWObject *obj)
+ {
+     setRO(false);
+     InheritsFWOptions pred;
+@@ -1393,7 +1388,7 @@ bool FWObject::isReadOnly()
+     return false;
+ }
+ 
+-void FWObject::checkReadOnly() throw(FWException)
++void FWObject::checkReadOnly()
+ {
+     if (isReadOnly() && ! getRoot()->getIgnoreReadOnlyFlag())
+         throw FWException(string("Attempt to modify read-only object ")+getName());
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObject.h b/src/libfwbuilder/src/fwbuilder/FWObject.h
+index b2f5139..aea2199 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObject.h
++++ b/src/libfwbuilder/src/fwbuilder/FWObject.h
+@@ -229,10 +229,9 @@ public:
+      */
+     bool getRO() const { return ro; }
+     
+-    virtual void fromXML(xmlNodePtr xml_parent_node) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
+-    xmlNodePtr toXML(xmlNodePtr xml_parent_node, bool process_children)
+-        throw(FWException);
++    virtual void fromXML(xmlNodePtr xml_parent_node);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
++    xmlNodePtr toXML(xmlNodePtr xml_parent_node, bool process_children);
+ 
+     /**
+      *  Rarely used feature: we can change the name of XML element
+@@ -252,7 +251,7 @@ public:
+     /**
+      * It is same as calling duplicate(x, FALSE);
+      */
+-    virtual FWObject& operator=(const FWObject &) throw(FWException);
++    virtual FWObject& operator=(const FWObject &);
+ 
+     /**
+      * This method copies content of object 'x' in the object 'this'.
+@@ -261,14 +260,13 @@ public:
+      * are created recursively as copies of corresponding children of obj.
+      */
+     virtual FWObject& duplicate(const FWObject *obj,
+-                                bool preserve_id = true) throw(FWException);
++                                bool preserve_id = true);
+     
+     /**
+      * This method works just like  duplicate, except it does not destroy
+      * or change children of 'this'.
+      */
+-    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true)
+-        throw(FWException);
++    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true);
+ 
+     /**
+      * This method copies all attributes of obj into this, plus
+@@ -279,21 +277,20 @@ public:
+      * Changes done to its children should be undone or redone using
+      * corresponding objects.
+      */
+-    virtual FWObject& duplicateForUndo(const FWObject *obj) throw(FWException);
++    virtual FWObject& duplicateForUndo(const FWObject *obj);
+ 
+     /**
+      * This method creates a copy of object 'x' and adds it to 'this'.
+      * Depending on 'preserve_id' flag, Id are either copied or new
+      * ones are issued.
+      */
+-    virtual FWObject* addCopyOf(const FWObject *obj, bool preserve_id = true)
+-        throw(FWException);
++    virtual FWObject* addCopyOf(const FWObject *obj, bool preserve_id = true);
+     
+     /**
+      * compares objects. Ignores ID and always looks at
+      * attributes. Returns true if objects are equal.
+      */
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+     
+     void Show();
+     void Hide();
+@@ -514,13 +511,13 @@ public:
+      * finds a child object of a given type with a given name
+      */
+     FWObject* findObjectByName(const std::string &type,
+-                               const std::string &name) throw(FWException);
++                               const std::string &name);
+ 
+     /**
+      * finds a child object of a given type with an attribute attr
+      */
+     FWObject* findObjectByAttribute(const std::string &attr,
+-                                    const std::string &val) throw(FWException);
++                                    const std::string &val);
+ 
+     /**
+      * Generic find function, finds all objects in the tree rooted at
+@@ -554,7 +551,7 @@ public:
+      */
+     virtual void setReadOnly(bool f);
+     virtual bool isReadOnly();
+-    virtual void checkReadOnly() throw(FWException);
++    virtual void checkReadOnly();
+ 
+     /**
+      * return true if this object can be copied around and put in the
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.cpp b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.cpp
+index be24705..1d82d86 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.cpp
+@@ -309,7 +309,7 @@ const string FWObjectDatabase::getFileDir()
+ 
+ void FWObjectDatabase::load(const string &f,
+                             XMLTools::UpgradePredicate *upgrade,
+-                            const std::string &template_dir) throw(FWException)
++                            const std::string &template_dir)
+ {
+     if(f=="") return;
+ 
+@@ -348,7 +348,7 @@ void FWObjectDatabase::load(const string &f,
+     busy = false;
+ }
+ 
+-void FWObjectDatabase::saveFile(const string &filename) throw(FWException)
++void FWObjectDatabase::saveFile(const string &filename)
+ {
+ /* need to set flag 'busy' so we ignore read-only status. Some objects
+  * modify themselves in toXML() (e.g. Management) so if they belong to
+@@ -376,7 +376,6 @@ void FWObjectDatabase::saveFile(const string &filename) throw(FWException)
+ }
+ 
+ void FWObjectDatabase::saveToBuffer(xmlChar **buffer, int *size)
+-    throw(FWException)
+ {
+ /* need to set flag 'busy' so we ignore read-only status. Some objects
+  * modify themselves in toXML() (e.g. Management) so if they belong to a
+@@ -404,7 +403,7 @@ void FWObjectDatabase::saveToBuffer(xmlChar **buffer, int *size)
+     busy = false;
+ }
+ 
+-void FWObjectDatabase::fromXML(xmlNodePtr root) throw(FWException)
++void FWObjectDatabase::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -420,7 +419,7 @@ void FWObjectDatabase::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr FWObjectDatabase::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr FWObjectDatabase::toXML(xmlNodePtr parent)
+ {
+     FWObject *o;
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.h b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.h
+index 3ab8381..953bd03 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.h
++++ b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase.h
+@@ -230,7 +230,7 @@ private:
+             libfwbuilder::Group *g,
+             std::set<libfwbuilder::FWObject *> &res);
+         Firewall* _findFirewallByNameRecursive(
+-            FWObject* db, const std::string &name) throw(FWException);
++            FWObject* db, const std::string &name);
+         FWObject* _recursively_copy_subtree(FWObject *target,
+                                             FWObject *source,
+                                             std::map<int,int> &id_map,
+@@ -352,22 +352,22 @@ public:
+ 
+         // --- XML import/export ---
+     
+-        virtual void fromXML(xmlNodePtr xml_parent_node) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr xml_parent_node);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+     
+         time_t getTimeLastModified() { return lastModified; }
+         void resetTimeLastModified(time_t t) { lastModified=t; }
+ 
+         // --- Load/Save ---
+     
+-        virtual void saveFile(const std::string &filename) throw(FWException); 
+-        virtual void saveToBuffer(xmlChar **buffer,int *size) throw(FWException);
++        virtual void saveFile(const std::string &filename);
++        virtual void saveToBuffer(xmlChar **buffer,int *size);
+         virtual void load( const std::string &filename,
+                            XMLTools::UpgradePredicate *upgrade,
+-                           const std::string &template_dir) throw(FWException);
++                           const std::string &template_dir);
+         virtual void setDirty(bool f);
+ 
+-        Firewall* findFirewallByName(const std::string &name) throw(FWException);
++        Firewall* findFirewallByName(const std::string &name);
+ 
+         FWObjectDatabase* exportSubtree( FWObject *lib );
+         FWObjectDatabase* exportSubtree( const std::list<FWObject*> &libs );
+@@ -404,7 +404,7 @@ public:
+          * tree is duplicated
+          */
+         virtual FWObject& duplicate(const FWObject *obj,
+-                                    bool preserve_id = true) throw(FWException);
++                                    bool preserve_id = true);
+ 
+         
+         void recursivelyRemoveObjFromTree(FWObject* obj, bool remove_ref=false);
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_search.cpp b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_search.cpp
+index 23662ed..fea95af 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_search.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_search.cpp
+@@ -105,7 +105,7 @@ void FWObjectDatabase::_findObjectsInGroup(Group *g, set<FWObject *> &res)
+  * Find firewall object by name. Finds Firewall and Cluster objects.
+  */
+ Firewall* FWObjectDatabase::_findFirewallByNameRecursive(FWObject* db,
+-                                         const string &name) throw(FWException)
++                                         const string &name)
+ {
+     // use Firewall::cast so that both Firewall and Cluster objects match
+     if (Firewall::cast(db) &&
+@@ -126,7 +126,7 @@ Firewall* FWObjectDatabase::_findFirewallByNameRecursive(FWObject* db,
+     return NULL; // not found
+ }
+ 
+-Firewall* FWObjectDatabase::findFirewallByName(const string &name) throw(FWException)
++Firewall* FWObjectDatabase::findFirewallByName(const string &name)
+ {
+     return _findFirewallByNameRecursive(this, name);
+ }
+diff --git a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_tree_ops.cpp b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_tree_ops.cpp
+index 807234b..a847897 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_tree_ops.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWObjectDatabase_tree_ops.cpp
+@@ -704,7 +704,7 @@ FWObject* FWObjectDatabase::reproduceRelativePath(FWObject *lib,
+ }
+ 
+ FWObject& FWObjectDatabase::duplicate(const FWObject *obj,
+-                                      bool preserve_id) throw(FWException)
++                                      bool preserve_id)
+ {
+     setIgnoreReadOnlyFlag(true);
+     FWObject &o = FWObject::duplicate(obj, preserve_id);
+diff --git a/src/libfwbuilder/src/fwbuilder/FWOptions.cpp b/src/libfwbuilder/src/fwbuilder/FWOptions.cpp
+index 389db41..bd1cdb3 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWOptions.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWOptions.cpp
+@@ -47,7 +47,7 @@ FWOptions::FWOptions()
+     remStr("id"     );
+ }
+ 
+-void FWOptions::fromXML(xmlNodePtr root) throw(FWException)
++void FWOptions::fromXML(xmlNodePtr root)
+ {
+     const char *n;
+     const char *cont;
+@@ -69,7 +69,7 @@ void FWOptions::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr FWOptions::toXML(xmlNodePtr root) throw(FWException)
++xmlNodePtr FWOptions::toXML(xmlNodePtr root)
+ {
+     xmlNodePtr opt;
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/FWOptions.h b/src/libfwbuilder/src/fwbuilder/FWOptions.h
+index 33f0bc8..4265216 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWOptions.h
++++ b/src/libfwbuilder/src/fwbuilder/FWOptions.h
+@@ -40,8 +40,8 @@ class FWOptions : public FWObject
+ 
+     DECLARE_FWOBJECT_SUBTYPE(FWOptions);
+     DECLARE_DISPATCH_METHODS(FWOptions);
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/FWReference.cpp b/src/libfwbuilder/src/fwbuilder/FWReference.cpp
+index 49cdda1..7e18e5c 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWReference.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FWReference.cpp
+@@ -56,7 +56,7 @@ FWReference::FWReference()
+ FWReference::~FWReference()  {}
+ 
+ 
+-void FWReference::fromXML(xmlNodePtr root)  throw(FWException)
++void FWReference::fromXML(xmlNodePtr root)
+ {
+     assert(root!=NULL);
+     FWObject::fromXML(root);
+@@ -73,7 +73,7 @@ void FWReference::fromXML(xmlNodePtr root)  throw(FWException)
+ 
+ // Note that XML elements represented by FWReference have only one
+ // attribute "ref" and no value
+-xmlNodePtr FWReference::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr FWReference::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = xmlNewChild(
+         parent,
+@@ -93,7 +93,7 @@ xmlNodePtr FWReference::toXML(xmlNodePtr parent) throw(FWException)
+ }
+ 
+ FWObject& FWReference::shallowDuplicate(const FWObject *_other,
+-                                        bool) throw(FWException)
++                                        bool)
+ {
+     const FWReference *other = FWReference::constcast(_other);
+     int_ref = other->int_ref;
+@@ -101,7 +101,7 @@ FWObject& FWReference::shallowDuplicate(const FWObject *_other,
+     return *this;
+ }
+ 
+-bool FWReference::cmp(const FWObject *obj, bool /* UNUSED recursive */) throw(FWException)
++bool FWReference::cmp(const FWObject *obj, bool /* UNUSED recursive */)
+ {
+     const FWReference *rx = FWReference::constcast(obj);
+     if (rx == NULL) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/FWReference.h b/src/libfwbuilder/src/fwbuilder/FWReference.h
+index 649e29f..bd1aa58 100644
+--- a/src/libfwbuilder/src/fwbuilder/FWReference.h
++++ b/src/libfwbuilder/src/fwbuilder/FWReference.h
+@@ -55,13 +55,13 @@ public:
+     
+     virtual ~FWReference();
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+     virtual FWObject& shallowDuplicate(
+-        const FWObject *obj, bool preserve_id = true) throw(FWException);
++        const FWObject *obj, bool preserve_id = true);
+ 
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+     virtual void add(FWObject *obj,bool validate=true);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.cpp b/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.cpp
+index d30bcff..b3e68b8 100644
+--- a/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.cpp
+@@ -41,13 +41,13 @@ FailoverClusterGroup::FailoverClusterGroup() : ClusterGroup()
+     setStr("type", "");
+ }
+ 
+-void FailoverClusterGroup::fromXML(xmlNodePtr parent) throw(FWException)
++void FailoverClusterGroup::fromXML(xmlNodePtr parent)
+ {
+     ClusterGroup::fromXML(parent);
+     // Read additional attributes here
+ }
+ 
+-xmlNodePtr FailoverClusterGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr FailoverClusterGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = ClusterGroup::toXML(parent);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.h b/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.h
+index a6fc605..2be8a03 100644
+--- a/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/FailoverClusterGroup.h
+@@ -41,8 +41,8 @@ namespace libfwbuilder
+ 
+         DECLARE_DISPATCH_METHODS(FailoverClusterGroup);
+         
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+     };
+ }
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/Firewall.cpp b/src/libfwbuilder/src/fwbuilder/Firewall.cpp
+index 5c28904..2d1b28d 100644
+--- a/src/libfwbuilder/src/fwbuilder/Firewall.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Firewall.cpp
+@@ -86,7 +86,7 @@ void Firewall::init(FWObjectDatabase *root)
+ 
+ Firewall::~Firewall()  {}
+ 
+-void Firewall::fromXML(xmlNodePtr root) throw(FWException)
++void Firewall::fromXML(xmlNodePtr root)
+ {
+     const char *n=FROMXMLCAST(xmlGetProp(root,TOXMLCAST("platform")));
+     assert(n!=NULL);
+@@ -137,7 +137,7 @@ void Firewall::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr Firewall::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Firewall::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -270,7 +270,7 @@ void Firewall::duplicateInterfaces(FWObject *target, const FWObject *source,
+ }
+ 
+ FWObject& Firewall::duplicate(const FWObject *obj,
+-                              bool preserve_id) throw(FWException)
++                              bool preserve_id)
+ {
+     string err="Error creating object with type: ";
+ 
+@@ -331,7 +331,7 @@ FWObject& Firewall::duplicate(const FWObject *obj,
+     return *this;
+ }
+ 
+-FWObject& Firewall::duplicateForUndo(const FWObject *obj) throw(FWException)
++FWObject& Firewall::duplicateForUndo(const FWObject *obj)
+ {
+     setRO(false);
+     FWObject *their_mgmt = obj->getFirstByType(Management::TYPENAME);
+diff --git a/src/libfwbuilder/src/fwbuilder/Firewall.h b/src/libfwbuilder/src/fwbuilder/Firewall.h
+index e1e4bef..8e76b43 100644
+--- a/src/libfwbuilder/src/fwbuilder/Firewall.h
++++ b/src/libfwbuilder/src/fwbuilder/Firewall.h
+@@ -62,8 +62,8 @@ public:
+      */
+     virtual void init(FWObjectDatabase *root);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML      (xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML      (xmlNodePtr parent);
+     
+     
+     DECLARE_FWOBJECT_SUBTYPE(Firewall);
+@@ -85,14 +85,14 @@ public:
+      * rules with references to 'this'
+      */
+     virtual FWObject& duplicate(const FWObject *obj,
+-                                bool preserve_id = true) throw(FWException);
++                                bool preserve_id = true);
+ 
+     /**
+      * This method copies all attributes of obj into this, plus
+      * FWOptions and Management child objects but no other
+      * children.
+      */
+-    virtual FWObject& duplicateForUndo(const FWObject *obj) throw(FWException);
++    virtual FWObject& duplicateForUndo(const FWObject *obj);
+ 
+     /*
+      * Return id mapping table created during latest run of duplicate()
+diff --git a/src/libfwbuilder/src/fwbuilder/Group.cpp b/src/libfwbuilder/src/fwbuilder/Group.cpp
+index 65bf2fe..4d47f4a 100644
+--- a/src/libfwbuilder/src/fwbuilder/Group.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Group.cpp
+@@ -95,7 +95,7 @@ bool Group::hasMember(FWObject *o)
+  * that is broken when objects are added or removed from groups in the
+  * middle of iteration.
+  */
+-FWObject& Group::duplicateForUndo(const FWObject *obj) throw(FWException)
++FWObject& Group::duplicateForUndo(const FWObject *obj)
+ {
+     setRO(false);
+     if ((obj->size() && FWReference::cast(obj->front())!=NULL) ||
+diff --git a/src/libfwbuilder/src/fwbuilder/Group.h b/src/libfwbuilder/src/fwbuilder/Group.h
+index 54b99f6..d380d9c 100644
+--- a/src/libfwbuilder/src/fwbuilder/Group.h
++++ b/src/libfwbuilder/src/fwbuilder/Group.h
+@@ -68,7 +68,7 @@ class Group : virtual public FWObject
+      * simply calls duplicate() if this is user-defined group. For system
+      * grops that hold actual objects, it calls shallowDuplicate()
+      */
+-    virtual FWObject& duplicateForUndo(const FWObject *obj) throw(FWException);
++    virtual FWObject& duplicateForUndo(const FWObject *obj);
+ 
+     /**
+      * get the list of object type names that can be inserted into
+diff --git a/src/libfwbuilder/src/fwbuilder/Host.cpp b/src/libfwbuilder/src/fwbuilder/Host.cpp
+index f0dea30..57dcef5 100644
+--- a/src/libfwbuilder/src/fwbuilder/Host.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Host.cpp
+@@ -56,12 +56,12 @@ void Host::init(FWObjectDatabase *root)
+ 
+ Host::~Host()  {}
+ 
+-void Host::fromXML(xmlNodePtr root) throw(FWException)
++void Host::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ }
+ 
+-xmlNodePtr Host::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Host::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -133,7 +133,7 @@ Management *Host::getManagementObject()
+  * management interface or no address to be found, returns NULL.
+  * May throw exception if interface has invalid address.
+  */
+-const InetAddr* Host::getManagementAddress() throw(FWException)
++const InetAddr* Host::getManagementAddress()
+ {
+     list<FWObject*> interfaces = getByTypeDeep(Interface::TYPENAME);
+     list<FWObject*>::iterator i;
+diff --git a/src/libfwbuilder/src/fwbuilder/Host.h b/src/libfwbuilder/src/fwbuilder/Host.h
+index b892bb9..a85bdf1 100644
+--- a/src/libfwbuilder/src/fwbuilder/Host.h
++++ b/src/libfwbuilder/src/fwbuilder/Host.h
+@@ -56,8 +56,8 @@ class Host : public Address
+      */
+     virtual void init(FWObjectDatabase *root);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML      (xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML      (xmlNodePtr parent);
+ 
+ 
+     DECLARE_FWOBJECT_SUBTYPE(Host);
+@@ -73,7 +73,7 @@ class Host : public Address
+     void addInterface(Interface *i);
+     void removeInterface(Interface *i);
+ 
+-    const InetAddr* getManagementAddress()  throw(FWException);
++    const InetAddr* getManagementAddress();
+ 
+     /**
+      *  This method returns reference to the object representing
+diff --git a/src/libfwbuilder/src/fwbuilder/ICMPService.cpp b/src/libfwbuilder/src/fwbuilder/ICMPService.cpp
+index 720550a..291be99 100644
+--- a/src/libfwbuilder/src/fwbuilder/ICMPService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/ICMPService.cpp
+@@ -49,7 +49,7 @@ ICMPService::~ICMPService() {}
+ string ICMPService::getProtocolName() const    {    return "icmp";}
+ int    ICMPService::getProtocolNumber() const  {    return 1;     }
+ 
+-void ICMPService::fromXML(xmlNodePtr root) throw(FWException)
++void ICMPService::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -66,7 +66,7 @@ void ICMPService::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr ICMPService::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr ICMPService::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/ICMPService.h b/src/libfwbuilder/src/fwbuilder/ICMPService.h
+index 17da881..96224cd 100644
+--- a/src/libfwbuilder/src/fwbuilder/ICMPService.h
++++ b/src/libfwbuilder/src/fwbuilder/ICMPService.h
+@@ -43,8 +43,8 @@ public:
+     ICMPService();
+     virtual ~ICMPService();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(ICMPService);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IPService.cpp b/src/libfwbuilder/src/fwbuilder/IPService.cpp
+index 4bb157b..03dda1c 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/IPService.cpp
+@@ -91,7 +91,7 @@ int IPService::getProtocolNumber() const
+ }
+ 
+ 
+-void IPService::fromXML(xmlNodePtr root) throw(FWException)
++void IPService::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -179,7 +179,7 @@ void IPService::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr IPService::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr IPService::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IPService.h b/src/libfwbuilder/src/fwbuilder/IPService.h
+index 96a1829..e062747 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPService.h
++++ b/src/libfwbuilder/src/fwbuilder/IPService.h
+@@ -46,8 +46,8 @@ class IPService : public Service
+     IPService();
+     virtual ~IPService();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(IPService);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IPv4.cpp b/src/libfwbuilder/src/fwbuilder/IPv4.cpp
+index 62a76b5..9c32e8c 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPv4.cpp
++++ b/src/libfwbuilder/src/fwbuilder/IPv4.cpp
+@@ -63,7 +63,7 @@ IPv4::~IPv4()
+ {
+ }
+ 
+-void IPv4::fromXML(xmlNodePtr root) throw(FWException)
++void IPv4::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -103,7 +103,7 @@ void IPv4::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr IPv4::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr IPv4::toXML(xmlNodePtr xml_parent_node)
+ {
+     if (getName().empty()) setName(getTypeName());
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IPv4.h b/src/libfwbuilder/src/fwbuilder/IPv4.h
+index 638d103..f00f7c9 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPv4.h
++++ b/src/libfwbuilder/src/fwbuilder/IPv4.h
+@@ -44,8 +44,8 @@ public:
+     IPv4();
+     virtual ~IPv4();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     virtual unsigned int dimension()  const { return 1; }
+     
+diff --git a/src/libfwbuilder/src/fwbuilder/IPv6.cpp b/src/libfwbuilder/src/fwbuilder/IPv6.cpp
+index 8760688..e177381 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPv6.cpp
++++ b/src/libfwbuilder/src/fwbuilder/IPv6.cpp
+@@ -68,7 +68,7 @@ IPv6::~IPv6()
+ }
+ 
+ FWObject& IPv6::shallowDuplicate(const FWObject *other,
+-                                 bool preserve_id) throw(FWException)
++                                 bool preserve_id)
+ {
+     const IPv6* a_other = IPv6::constcast(other);
+     assert(a_other);
+@@ -78,7 +78,7 @@ FWObject& IPv6::shallowDuplicate(const FWObject *other,
+     return FWObject::shallowDuplicate(other, preserve_id);
+ }
+ 
+-void IPv6::fromXML(xmlNodePtr root) throw(FWException)
++void IPv6::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -105,7 +105,7 @@ void IPv6::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr IPv6::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr IPv6::toXML(xmlNodePtr xml_parent_node)
+ {
+     if (getName().empty()) setName(getTypeName());
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IPv6.h b/src/libfwbuilder/src/fwbuilder/IPv6.h
+index 3b00a47..64753be 100644
+--- a/src/libfwbuilder/src/fwbuilder/IPv6.h
++++ b/src/libfwbuilder/src/fwbuilder/IPv6.h
+@@ -44,8 +44,8 @@ public:
+     IPv6();
+     virtual ~IPv6();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     virtual unsigned int dimension()  const { return 1; }
+     
+@@ -54,8 +54,7 @@ public:
+     DECLARE_DISPATCH_METHODS(IPv6);
+     
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+ 
+     virtual bool hasInetAddress() const { return true; }
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.cpp b/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.cpp
+index 5119ed0..bd3b0d1 100644
+--- a/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.cpp
+@@ -63,7 +63,7 @@ Inet6AddrMask::Inet6AddrMask() : InetAddrMask()
+     setNetworkAndBroadcastAddress();
+ }
+ 
+-Inet6AddrMask::Inet6AddrMask(const string &s) throw(FWException) :
++Inet6AddrMask::Inet6AddrMask(const string &s) :
+     InetAddrMask(true)
+ {
+     struct in6_addr a_ipv6;
+diff --git a/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.h b/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.h
+index effb135..9b6960e 100644
+--- a/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.h
++++ b/src/libfwbuilder/src/fwbuilder/Inet6AddrMask.h
+@@ -59,7 +59,7 @@ protected:
+ public:
+ 
+     Inet6AddrMask();
+-    Inet6AddrMask(const std::string &s) throw(FWException);
++    Inet6AddrMask(const std::string &s);
+     Inet6AddrMask(const InetAddr&, const InetAddr&);
+     virtual ~Inet6AddrMask();
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/InetAddr.cpp b/src/libfwbuilder/src/fwbuilder/InetAddr.cpp
+index d3b7aa2..c70a34f 100644
+--- a/src/libfwbuilder/src/fwbuilder/InetAddr.cpp
++++ b/src/libfwbuilder/src/fwbuilder/InetAddr.cpp
+@@ -211,51 +211,49 @@ InetAddr::InetAddr(const InetAddr &o)
+ }
+ 
+ InetAddr::InetAddr(const string &s)
+-    throw(FWException, FWNotSupportedException)
+ {
+     address_family = AF_INET;
+     init_from_string(s.c_str());
+ }
+ 
+ InetAddr::InetAddr(int af, const string &s)
+-    throw(FWException, FWNotSupportedException)
+ {
+     address_family = af;
+     init_from_string(s.c_str());
+ }
+ 
+-InetAddr::InetAddr(const char *data) throw(FWException)
++InetAddr::InetAddr(const char *data)
+ {
+     address_family = AF_INET;
+     init_from_string(data);
+ }
+ 
+-InetAddr::InetAddr(int af, const char *data) throw(FWException)
++InetAddr::InetAddr(int af, const char *data)
+ {
+     address_family = af;
+     init_from_string(data);
+ }
+ 
+-InetAddr::InetAddr(const struct in_addr *na) throw(FWException)
++InetAddr::InetAddr(const struct in_addr *na)
+ {
+     address_family = AF_INET;
+     ipv4.s_addr = na->s_addr;
+ }
+ 
+-InetAddr::InetAddr(const struct in6_addr *na) throw(FWException)
++InetAddr::InetAddr(const struct in6_addr *na)
+ {
+     address_family = AF_INET6;
+     _copy_in6_addr(&ipv6, na);
+ }
+ 
+ // Set netmask to 'n' bits
+-InetAddr::InetAddr(int n)  throw(FWException)
++InetAddr::InetAddr(int n)
+ {
+     address_family = AF_INET;
+     init_from_int(n);
+ }
+ 
+-InetAddr::InetAddr(int af, int n)  throw(FWException)
++InetAddr::InetAddr(int af, int n)
+ {
+     address_family = af;
+     init_from_int(n);
+diff --git a/src/libfwbuilder/src/fwbuilder/InetAddr.h b/src/libfwbuilder/src/fwbuilder/InetAddr.h
+index c72bcd2..d005bd6 100644
+--- a/src/libfwbuilder/src/fwbuilder/InetAddr.h
++++ b/src/libfwbuilder/src/fwbuilder/InetAddr.h
+@@ -115,18 +115,16 @@ class InetAddr
+     void init_from_uint128(uint128 int128a);
+     uint128 to_uint128() const;
+     
+-    InetAddr(const char *data) throw(FWException);
+-    InetAddr(int af, const char *data) throw(FWException);
+-    InetAddr(const struct in_addr*) throw(FWException);
+-    InetAddr(const struct in6_addr*) throw(FWException);
+-    explicit InetAddr(const std::string&)
+-        throw(FWException, FWNotSupportedException);
+-    explicit InetAddr(int af, const std::string&)
+-        throw(FWException, FWNotSupportedException);
++    InetAddr(const char *data);
++    InetAddr(int af, const char *data);
++    InetAddr(const struct in_addr*);
++    InetAddr(const struct in6_addr*);
++    explicit InetAddr(const std::string&);
++    explicit InetAddr(int af, const std::string&);
+     InetAddr(const InetAddr &);
+     // creates netmask 'n' bits long
+-    explicit InetAddr(int n) throw(FWException);
+-    explicit InetAddr(int af, int n) throw(FWException);
++    explicit InetAddr(int n);
++    explicit InetAddr(int af, int n);
+ 
+     InetAddr& operator=(const InetAddr &addr);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/InetAddrMask.cpp b/src/libfwbuilder/src/fwbuilder/InetAddrMask.cpp
+index 986d6ec..ab98856 100644
+--- a/src/libfwbuilder/src/fwbuilder/InetAddrMask.cpp
++++ b/src/libfwbuilder/src/fwbuilder/InetAddrMask.cpp
+@@ -107,7 +107,7 @@ InetAddrMask::InetAddrMask(const InetAddrMask& other)
+     setNetworkAndBroadcastAddress();
+ }
+ 
+-InetAddrMask::InetAddrMask(const string &s) throw(FWException)
++InetAddrMask::InetAddrMask(const string &s)
+ {
+     address = new InetAddr();
+     netmask = new InetAddr();
+diff --git a/src/libfwbuilder/src/fwbuilder/InetAddrMask.h b/src/libfwbuilder/src/fwbuilder/InetAddrMask.h
+index 0223f09..f873e05 100644
+--- a/src/libfwbuilder/src/fwbuilder/InetAddrMask.h
++++ b/src/libfwbuilder/src/fwbuilder/InetAddrMask.h
+@@ -82,7 +82,7 @@ public:
+ 
+     InetAddrMask();
+     InetAddrMask(const InetAddr&, const InetAddr&);
+-    InetAddrMask(const std::string &s) throw(FWException);
++    InetAddrMask(const std::string &s);
+     InetAddrMask(const InetAddrMask&);
+     virtual ~InetAddrMask();
+     void setNetworkAndBroadcastAddress();
+diff --git a/src/libfwbuilder/src/fwbuilder/Interface.cpp b/src/libfwbuilder/src/fwbuilder/Interface.cpp
+index 00a64dd..36f94fb 100644
+--- a/src/libfwbuilder/src/fwbuilder/Interface.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Interface.cpp
+@@ -90,7 +90,6 @@ void Interface::removeRef(FWObject *obj)
+ }
+ 
+ FWObject& Interface::shallowDuplicate(const FWObject *o, bool preserve_id)
+-    throw(FWException)
+ {
+     FWObject::shallowDuplicate(o,preserve_id);
+ 
+@@ -104,7 +103,6 @@ FWObject& Interface::shallowDuplicate(const FWObject *o, bool preserve_id)
+ }
+ 
+ FWObject& Interface::duplicate(const FWObject *x, bool preserve_id)
+-    throw(FWException)
+ {
+     FWObject::duplicate(x, preserve_id);
+ 
+@@ -141,7 +139,7 @@ void Interface::duplicateWithIdMapping(const FWObject *src,
+     setDirty(true);
+ }
+ 
+-bool Interface::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool Interface::cmp(const FWObject *obj, bool recursive)
+ {
+     const Interface *rx = Interface::constcast(obj);
+     if (rx == NULL) return false;
+@@ -151,7 +149,7 @@ bool Interface::cmp(const FWObject *obj, bool recursive) throw(FWException)
+     return FWObject::cmp(obj, recursive);
+ }
+ 
+-void Interface::fromXML(xmlNodePtr root) throw(FWException)
++void Interface::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -217,7 +215,7 @@ void Interface::fromXML(xmlNodePtr root) throw(FWException)
+ /*
+  * <!ELEMENT Interface (IPv4*, IPv6*, physAddress?, InterfaceOptions?, Interface*, FailoverClusterGroup?)>
+  */
+-xmlNodePtr Interface::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Interface::toXML(xmlNodePtr parent)
+ {
+     // DTD prohibits empty network_zone attribute
+     if (exists("network_zone") && getStr("network_zone").empty())
+diff --git a/src/libfwbuilder/src/fwbuilder/Interface.h b/src/libfwbuilder/src/fwbuilder/Interface.h
+index bfc3996..2320194 100644
+--- a/src/libfwbuilder/src/fwbuilder/Interface.h
++++ b/src/libfwbuilder/src/fwbuilder/Interface.h
+@@ -88,8 +88,8 @@ public:
+          */
+         virtual void addRef(FWObject *obj);
+     
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+         virtual bool  validateChild(FWObject *o);
+ 
+@@ -189,11 +189,11 @@ public:
+ 
+ 
+         virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                           bool preserve_id = true) throw(FWException);
++                                           bool preserve_id = true);
+         virtual FWObject& duplicate(const FWObject *obj,
+-                                    bool preserve_id = true) throw(FWException);
++                                    bool preserve_id = true);
+ 
+-        virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++        virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+         void duplicateWithIdMapping(const FWObject *src,
+                                     std::map<int,int> &id_mapping, bool preserve_id);
+diff --git a/src/libfwbuilder/src/fwbuilder/Interval.cpp b/src/libfwbuilder/src/fwbuilder/Interval.cpp
+index 3a2e349..f682b82 100644
+--- a/src/libfwbuilder/src/fwbuilder/Interval.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Interval.cpp
+@@ -179,7 +179,7 @@ std::string Interval::getDaysOfWeek()
+     return "";
+ }
+ 
+-void Interval::fromXML(xmlNodePtr root) throw(FWException)
++void Interval::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -282,7 +282,7 @@ void Interval::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr Interval::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Interval::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/Interval.h b/src/libfwbuilder/src/fwbuilder/Interval.h
+index f605a85..dfff60d 100644
+--- a/src/libfwbuilder/src/fwbuilder/Interval.h
++++ b/src/libfwbuilder/src/fwbuilder/Interval.h
+@@ -54,8 +54,8 @@ public:
+ 
+     std::string getDaysOfWeek();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(Interval);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/IntervalGroup.cpp b/src/libfwbuilder/src/fwbuilder/IntervalGroup.cpp
+index 36be1fb..31d5dff 100644
+--- a/src/libfwbuilder/src/fwbuilder/IntervalGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/IntervalGroup.cpp
+@@ -63,7 +63,7 @@ FWReference* IntervalGroup::createRef()
+     return ref;
+ }
+ 
+-xmlNodePtr IntervalGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr IntervalGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/IntervalGroup.h b/src/libfwbuilder/src/fwbuilder/IntervalGroup.h
+index 0c03be6..877ba46 100644
+--- a/src/libfwbuilder/src/fwbuilder/IntervalGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/IntervalGroup.h
+@@ -45,7 +45,7 @@ class IntervalGroup : public Group
+ 
+     DECLARE_DISPATCH_METHODS(IntervalGroup);
+     
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     /*
+      * verify whether given object type is approppriate as a child
+diff --git a/src/libfwbuilder/src/fwbuilder/Library.cpp b/src/libfwbuilder/src/fwbuilder/Library.cpp
+index b4b4ef0..73d80b1 100644
+--- a/src/libfwbuilder/src/fwbuilder/Library.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Library.cpp
+@@ -48,7 +48,7 @@ bool  Library::validateChild(FWObject*)
+     return true;   // anything goes
+ }
+ 
+-void Library::fromXML(xmlNodePtr root) throw(FWException)
++void Library::fromXML(xmlNodePtr root)
+ {
+     const char *n=FROMXMLCAST(xmlGetProp(root,TOXMLCAST("color")));
+     if(n!=NULL)  // color is not a mandatory attribute
+@@ -59,7 +59,7 @@ void Library::fromXML(xmlNodePtr root) throw(FWException)
+     FWObject::fromXML(root);
+ }
+ 
+-xmlNodePtr Library::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Library::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/Library.h b/src/libfwbuilder/src/fwbuilder/Library.h
+index ac55d1c..a870670 100644
+--- a/src/libfwbuilder/src/fwbuilder/Library.h
++++ b/src/libfwbuilder/src/fwbuilder/Library.h
+@@ -49,8 +49,8 @@ class Library : public Group
+ 
+     DECLARE_DISPATCH_METHODS(Library);
+     
+-    virtual void fromXML (xmlNodePtr xml_parent_node) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML (xmlNodePtr xml_parent_node);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     /*
+      * verify whether given object type is approppriate as a child
+diff --git a/src/libfwbuilder/src/fwbuilder/Management.cpp b/src/libfwbuilder/src/fwbuilder/Management.cpp
+index 5ca78ad..fcf58de 100644
+--- a/src/libfwbuilder/src/fwbuilder/Management.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Management.cpp
+@@ -52,7 +52,7 @@ Management::Management()
+     setId(-1);
+ }
+ 
+-void Management::fromXML(xmlNodePtr root) throw(FWException)
++void Management::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     const char *n=FROMXMLCAST(xmlGetProp(root,TOXMLCAST("address")));
+@@ -82,7 +82,7 @@ void Management::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr Management::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr Management::toXML(xmlNodePtr parent)
+ {
+     setId(-1);
+     setStr("address", addr.toString());
+@@ -105,7 +105,7 @@ xmlNodePtr Management::toXML(xmlNodePtr parent) throw(FWException)
+     return me;
+ }
+ 
+-bool Management::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool Management::cmp(const FWObject *obj, bool recursive)
+ {
+     if (Management::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+@@ -126,7 +126,7 @@ bool Management::validateChild(FWObject *o)
+ 
+ 
+ FWObject& Management::shallowDuplicate(const FWObject *o,
+-                                       bool preserve_id) throw(FWException)
++                                       bool preserve_id)
+ {
+     const Management *other = dynamic_cast<const Management*>(o);
+     addr = other->getAddress();
+@@ -204,7 +204,7 @@ void PolicyInstallScript::setEnabled(bool v)
+     enabled = v;
+ }
+ 
+-void PolicyInstallScript::fromXML(xmlNodePtr root) throw(FWException)
++void PolicyInstallScript::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -233,7 +233,7 @@ void PolicyInstallScript::fromXML(xmlNodePtr root) throw(FWException)
+     
+ }
+ 
+-xmlNodePtr PolicyInstallScript::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr PolicyInstallScript::toXML(xmlNodePtr parent)
+ {
+     setId(-1);
+     setStr("command", command );
+@@ -242,7 +242,7 @@ xmlNodePtr PolicyInstallScript::toXML(xmlNodePtr parent) throw(FWException)
+     return FWObject::toXML(parent);
+ }
+ 
+-bool PolicyInstallScript::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool PolicyInstallScript::cmp(const FWObject *obj, bool recursive)
+ {
+     if (PolicyInstallScript::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+@@ -254,7 +254,7 @@ bool PolicyInstallScript::cmp(const FWObject *obj, bool recursive) throw(FWExcep
+             enabled==o2->enabled);
+ }
+ 
+-FWObject& PolicyInstallScript::shallowDuplicate(const FWObject *o, bool preserve_id) throw(FWException)
++FWObject& PolicyInstallScript::shallowDuplicate(const FWObject *o, bool preserve_id)
+ {
+     const PolicyInstallScript *n=dynamic_cast<const PolicyInstallScript *>(o);
+     command   =  n->getCommand();
+@@ -310,7 +310,7 @@ void SNMPManagement::setEnabled(bool v)
+     enabled = v;
+ }
+ 
+-void SNMPManagement::fromXML(xmlNodePtr root) throw(FWException)
++void SNMPManagement::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -339,7 +339,7 @@ void SNMPManagement::fromXML(xmlNodePtr root) throw(FWException)
+     
+ }
+ 
+-xmlNodePtr SNMPManagement::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr SNMPManagement::toXML(xmlNodePtr parent)
+ {
+     setId(-1);
+     setStr("snmp_read_community", read_community );
+@@ -348,7 +348,7 @@ xmlNodePtr SNMPManagement::toXML(xmlNodePtr parent) throw(FWException)
+     return FWObject::toXML(parent);
+ }
+ 
+-bool SNMPManagement::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool SNMPManagement::cmp(const FWObject *obj, bool recursive)
+ {
+     if (SNMPManagement::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+@@ -360,7 +360,7 @@ bool SNMPManagement::cmp(const FWObject *obj, bool recursive) throw(FWException)
+             enabled==o2->enabled);
+ }
+ 
+-FWObject& SNMPManagement::shallowDuplicate(const FWObject *o, bool preserve_id) throw(FWException)
++FWObject& SNMPManagement::shallowDuplicate(const FWObject *o, bool preserve_id)
+ {
+     const SNMPManagement *n=dynamic_cast<const SNMPManagement *>(o);
+     read_community  =  n->getReadCommunity();
+@@ -423,7 +423,7 @@ void FWBDManagement::setEnabled(bool v)
+     enabled = v;
+ }
+ 
+-void FWBDManagement::fromXML(xmlNodePtr parent) throw(FWException)
++void FWBDManagement::fromXML(xmlNodePtr parent)
+ {
+     const char *n=FROMXMLCAST(xmlGetProp(parent,TOXMLCAST("identity")));
+     assert(n!=NULL);
+@@ -444,7 +444,7 @@ void FWBDManagement::fromXML(xmlNodePtr parent) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr FWBDManagement::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr FWBDManagement::toXML(xmlNodePtr parent)
+ {
+     setId(-1);
+     setInt("port", port);
+@@ -456,7 +456,7 @@ xmlNodePtr FWBDManagement::toXML(xmlNodePtr parent) throw(FWException)
+     return me;
+ }
+ 
+-bool FWBDManagement::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool FWBDManagement::cmp(const FWObject *obj, bool recursive)
+ {
+     if (FWBDManagement::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+@@ -468,7 +468,7 @@ bool FWBDManagement::cmp(const FWObject *obj, bool recursive) throw(FWException)
+             enabled==o2->enabled);
+ }
+ 
+-FWObject& FWBDManagement::shallowDuplicate(const FWObject *o, bool preserve_id) throw(FWException)
++FWObject& FWBDManagement::shallowDuplicate(const FWObject *o, bool preserve_id)
+ {
+     const FWBDManagement *n=dynamic_cast<const FWBDManagement *>(o);
+ #if 0
+diff --git a/src/libfwbuilder/src/fwbuilder/Management.h b/src/libfwbuilder/src/fwbuilder/Management.h
+index b58a03f..04aeeec 100644
+--- a/src/libfwbuilder/src/fwbuilder/Management.h
++++ b/src/libfwbuilder/src/fwbuilder/Management.h
+@@ -44,11 +44,11 @@ namespace libfwbuilder
+ 
+         DECLARE_DISPATCH_METHODS(PolicyInstallScript);
+         
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+         virtual FWObject& shallowDuplicate(
+-            const FWObject *obj, bool preserve_id = true) throw(FWException);
+-        virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++            const FWObject *obj, bool preserve_id = true);
++        virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+         const std::string& getCommand () const;
+         void          setCommand (const std::string& );
+@@ -78,11 +78,11 @@ namespace libfwbuilder
+ 
+         DECLARE_DISPATCH_METHODS(SNMPManagement);
+         
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+         virtual FWObject& shallowDuplicate(
+-            const FWObject *obj, bool preserve_id = true) throw(FWException);
+-        virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++            const FWObject *obj, bool preserve_id = true);
++        virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+         const std::string& getReadCommunity () const;
+         void          setReadCommunity (const std::string& );
+@@ -114,11 +114,11 @@ namespace libfwbuilder
+         DECLARE_DISPATCH_METHODS(FWBDManagement);
+         
+         virtual FWObject& shallowDuplicate(
+-            const FWObject *obj, bool preserve_id = true) throw(FWException);
+-        virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++            const FWObject *obj, bool preserve_id = true);
++        virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+         int           getPort()       const;
+         void          setPort(int);
+@@ -148,11 +148,11 @@ namespace libfwbuilder
+ 
+         DECLARE_DISPATCH_METHODS(Management);
+         
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+         virtual FWObject& shallowDuplicate(
+-            const FWObject *obj, bool preserve_id = true) throw(FWException);
+-        virtual bool  cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++            const FWObject *obj, bool preserve_id = true);
++        virtual bool  cmp(const FWObject *obj, bool recursive=false);
+ 	virtual bool  validateChild(FWObject *o);
+ 
+         const InetAddr& getAddress() const { return addr; }
+diff --git a/src/libfwbuilder/src/fwbuilder/MultiAddress.h b/src/libfwbuilder/src/fwbuilder/MultiAddress.h
+index 8961b37..60462fb 100644
+--- a/src/libfwbuilder/src/fwbuilder/MultiAddress.h
++++ b/src/libfwbuilder/src/fwbuilder/MultiAddress.h
+@@ -53,7 +53,7 @@ class MultiAddress : public ObjectGroup
+     virtual std::string getSourceName();
+     virtual void setSourceName(const std::string& source_name);
+     virtual void loadFromSource(bool ipv6, FWOptions *options,
+-                                bool test_mode=false) throw(FWException) = 0;
++                                bool test_mode=false) = 0;
+ 
+     /*
+      * functions isCompileTime() and isRunTime() are virtual because
+diff --git a/src/libfwbuilder/src/fwbuilder/Network.cpp b/src/libfwbuilder/src/fwbuilder/Network.cpp
+index 400d5f4..c3bc144 100644
+--- a/src/libfwbuilder/src/fwbuilder/Network.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Network.cpp
+@@ -61,7 +61,7 @@ Network::Network (const string &s) : Address()
+                                      
+ Network::~Network() {}
+ 
+-void Network::fromXML(xmlNodePtr root) throw(FWException)
++void Network::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -76,7 +76,7 @@ void Network::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr Network::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr Network::toXML(xmlNodePtr xml_parent_node)
+ {
+     if (getName().empty()) setName(getTypeName());
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/Network.h b/src/libfwbuilder/src/fwbuilder/Network.h
+index 214af0c..9f7acc3 100644
+--- a/src/libfwbuilder/src/fwbuilder/Network.h
++++ b/src/libfwbuilder/src/fwbuilder/Network.h
+@@ -47,8 +47,8 @@ public:
+ 
+     bool isValidRoutingNet() const;
+ 
+-    virtual void       fromXML (xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void       fromXML (xmlNodePtr parent);
++    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node);
+     
+     DECLARE_FWOBJECT_SUBTYPE(Network);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/NetworkIPv6.cpp b/src/libfwbuilder/src/fwbuilder/NetworkIPv6.cpp
+index 4c17ddd..a921687 100644
+--- a/src/libfwbuilder/src/fwbuilder/NetworkIPv6.cpp
++++ b/src/libfwbuilder/src/fwbuilder/NetworkIPv6.cpp
+@@ -66,7 +66,7 @@ NetworkIPv6::NetworkIPv6 (const string &s) : Address()
+ NetworkIPv6::~NetworkIPv6() {}
+ 
+ FWObject& NetworkIPv6::shallowDuplicate(const FWObject *other,
+-                                        bool preserve_id) throw(FWException)
++                                        bool preserve_id)
+ {
+     const NetworkIPv6* a_other = NetworkIPv6::constcast(other);
+     delete inet_addr_mask;
+@@ -75,7 +75,7 @@ FWObject& NetworkIPv6::shallowDuplicate(const FWObject *other,
+     return FWObject::shallowDuplicate(other, preserve_id);
+ }
+ 
+-void NetworkIPv6::fromXML(xmlNodePtr root) throw(FWException)
++void NetworkIPv6::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+     
+@@ -102,7 +102,7 @@ void NetworkIPv6::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr NetworkIPv6::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr NetworkIPv6::toXML(xmlNodePtr xml_parent_node)
+ {
+     if (getName().empty()) setName(getTypeName());
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/NetworkIPv6.h b/src/libfwbuilder/src/fwbuilder/NetworkIPv6.h
+index 3d1362b..c48fbcb 100644
+--- a/src/libfwbuilder/src/fwbuilder/NetworkIPv6.h
++++ b/src/libfwbuilder/src/fwbuilder/NetworkIPv6.h
+@@ -47,16 +47,15 @@ public:
+ 
+     bool isValidRoutingNet() const;
+ 
+-    virtual void       fromXML (xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void       fromXML (xmlNodePtr parent);
++    virtual xmlNodePtr toXML   (xmlNodePtr xml_parent_node);
+     
+     DECLARE_FWOBJECT_SUBTYPE(NetworkIPv6);
+ 
+     DECLARE_DISPATCH_METHODS(NetworkIPv6);
+     
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+ 
+     virtual bool hasInetAddress() const { return true; }
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/ObjectGroup.cpp b/src/libfwbuilder/src/fwbuilder/ObjectGroup.cpp
+index b3da579..7592816 100644
+--- a/src/libfwbuilder/src/fwbuilder/ObjectGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/ObjectGroup.cpp
+@@ -70,7 +70,7 @@ bool ObjectGroup::validateChild(FWObject *o)
+             RuleSet::cast(o)==NULL);
+ }
+ 
+-xmlNodePtr ObjectGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr ObjectGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/ObjectGroup.h b/src/libfwbuilder/src/fwbuilder/ObjectGroup.h
+index 94615c6..5c86dc0 100644
+--- a/src/libfwbuilder/src/fwbuilder/ObjectGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/ObjectGroup.h
+@@ -44,7 +44,7 @@ class ObjectGroup : public Group
+ 
+     DECLARE_DISPATCH_METHODS(ObjectGroup);
+     
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     /*
+      * verify whether given object type is approppriate as a child
+diff --git a/src/libfwbuilder/src/fwbuilder/Resources.cpp b/src/libfwbuilder/src/fwbuilder/Resources.cpp
+index 5b254aa..700775a 100644
+--- a/src/libfwbuilder/src/fwbuilder/Resources.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Resources.cpp
+@@ -66,12 +66,12 @@ map<string,Resources*>  Resources::platform_res;
+ map<string,Resources*>  Resources::os_res;
+ 
+ 
+-Resources::Resources() throw(FWException)
++Resources::Resources()
+ {
+     doc=NULL;
+ }
+ 
+-Resources::Resources(const string &_resF) throw(FWException)
++Resources::Resources(const string &_resF)
+ {
+     doc = NULL;
+     resfile = _resF;
+@@ -131,7 +131,7 @@ string Resources::getXmlNodeProp(xmlNodePtr node,string prop)
+     return res;
+ }
+ 
+-void Resources::loadRes(const std::string &rfile ) throw(FWException)
++void Resources::loadRes(const std::string &rfile )
+ {
+ 
+     string buffer = XMLTools::readFile(rfile);
+@@ -151,7 +151,7 @@ void Resources::loadRes(const std::string &rfile ) throw(FWException)
+     }
+ }
+ 
+-void Resources::loadSystemResources() throw(FWException)
++void Resources::loadSystemResources()
+ {
+ /*
+  * Find and open resources for individual firewall platforms and OS.
+@@ -487,7 +487,7 @@ void    Resources::setDefaultOptionsAll(FWObject *o,const string &xml_node)
+ }
+ 
+ 
+-void    Resources::setDefaultTargetOptions(const string &target,Firewall *fw)  throw (FWException)
++void    Resources::setDefaultTargetOptions(const string &target,Firewall *fw)
+ {
+     FWOptions *opt=fw->getOptionsObject();
+     Resources *r=NULL;
+@@ -501,7 +501,6 @@ void    Resources::setDefaultTargetOptions(const string &target,Firewall *fw)  t
+ }
+ 
+ void    Resources::setDefaultIfaceOptions(const string &target,Interface *iface)
+-        throw (FWException)
+ {
+     FWOptions *opt=iface->getOptionsObject();
+     /* if InterfaceOptions object does not yet exist -> create one */
+@@ -535,7 +534,7 @@ void    Resources::setDefaultProperties(FWObject *obj)
+ }
+ 
+ string Resources::getTargetCapabilityStr(const string &target,
+-                                         const string &cap_name)  throw (FWException)
++                                         const string &cap_name)
+ {
+     Resources *r=NULL;
+ 
+@@ -548,7 +547,7 @@ string Resources::getTargetCapabilityStr(const string &target,
+ }
+ 
+ bool Resources::getTargetCapabilityBool(const string &target,
+-                                        const string &cap_name)  throw (FWException)
++                                        const string &cap_name)
+ {
+     string s=getTargetCapabilityStr(target,cap_name);
+     return (s=="true" || s=="True");
+@@ -575,7 +574,7 @@ string Resources::getActionEditor(const string &target, const string &action)
+ }
+ 
+ string Resources::getTargetOptionStr(const string &target,
+-                                     const string &opt_name)  throw (FWException)
++                                     const string &opt_name)
+ {
+     Resources *r=NULL;
+ 
+@@ -588,7 +587,7 @@ string Resources::getTargetOptionStr(const string &target,
+ }
+ 
+ bool  Resources::getTargetOptionBool(const string &target,
+-                                     const string &opt_name)  throw (FWException)
++                                     const string &opt_name)
+ {
+     string s=getTargetOptionStr(target,opt_name);
+     return (s=="true" || s=="True");
+diff --git a/src/libfwbuilder/src/fwbuilder/Resources.h b/src/libfwbuilder/src/fwbuilder/Resources.h
+index c9c5167..f668d10 100644
+--- a/src/libfwbuilder/src/fwbuilder/Resources.h
++++ b/src/libfwbuilder/src/fwbuilder/Resources.h
+@@ -62,18 +62,18 @@ class Resources
+     std::string getXmlNodeContent(xmlNodePtr node);
+     std::string getXmlNodeProp(xmlNodePtr node,std::string prop);
+ 
+-    void loadRes(const std::string &rfile ) throw(libfwbuilder::FWException);
++    void loadRes(const std::string &rfile );
+ 
+ 
+ public:
+ 
+-    Resources() throw(libfwbuilder::FWException);
+-    Resources(const std::string &resF) throw(libfwbuilder::FWException);
++    Resources();
++    Resources(const std::string &resF);
+     ~Resources();
+     
+     void clear();
+     
+-    void loadSystemResources() throw(libfwbuilder::FWException);
++    void loadSystemResources();
+ 
+     xmlNodePtr getXmlNode(const std::string& path);
+ 
+@@ -137,14 +137,14 @@ public:
+      *  firewall or OS-specific host_OS options. 
+      */
+     static void    setDefaultTargetOptions(const std::string &target,
+-                                           libfwbuilder::Firewall *o) throw (libfwbuilder::FWException);
++                                           libfwbuilder::Firewall *o);
+ 
+     /**
+      *  This method sets default values to the platform-specific interface
+      *  or OS-specific interface options.
+      */
+     static void    setDefaultIfaceOptions(const std::string &target,
+-                                          libfwbuilder::Interface *iface) throw (libfwbuilder::FWException);
++                                          libfwbuilder::Interface *iface);
+ 
+     /**
+      * returns string value of target's capability
+@@ -152,9 +152,9 @@ public:
+      * in subtree "/FWBuilderResources/Target/capabilities"
+      */
+     static std::string getTargetCapabilityStr(const std::string &target,
+-                                              const std::string &cap_name)  throw (libfwbuilder::FWException);
++                                              const std::string &cap_name);
+     static bool        getTargetCapabilityBool(const std::string &target,
+-                                               const std::string &cap_name)  throw (libfwbuilder::FWException);
++                                               const std::string &cap_name);
+ 
+     /**
+      * returns string value of target's option
+@@ -162,9 +162,9 @@ public:
+      * in subtree "/FWBuilderResources/Target/options"
+      */
+     static std::string getTargetOptionStr(const std::string &target,
+-                                          const std::string &opt_name)  throw (libfwbuilder::FWException);
++                                          const std::string &opt_name);
+     static bool        getTargetOptionBool(const std::string &target,
+-                                           const std::string &opt_name)  throw (libfwbuilder::FWException);
++                                           const std::string &opt_name);
+     static bool    isTargetActionSupported(const std::string &target,
+                                            const std::string &action);
+     static std::string    getActionEditor (const std::string &target,
+diff --git a/src/libfwbuilder/src/fwbuilder/Rule.cpp b/src/libfwbuilder/src/fwbuilder/Rule.cpp
+index e865de0..de1eac2 100644
+--- a/src/libfwbuilder/src/fwbuilder/Rule.cpp
++++ b/src/libfwbuilder/src/fwbuilder/Rule.cpp
+@@ -87,7 +87,7 @@ void Rule::setRuleGroupName(const std::string &group_name)
+ 
+ 
+ FWObject& Rule::shallowDuplicate(const FWObject *x,
+-                                 bool preserve_id) throw(FWException)
++                                 bool preserve_id)
+ {
+     const Rule *rx=Rule::constcast(x);
+     fallback = rx->fallback;
+@@ -99,7 +99,7 @@ FWObject& Rule::shallowDuplicate(const FWObject *x,
+     return  FWObject::shallowDuplicate(x,preserve_id);
+ }
+ 
+-bool Rule::cmp(const FWObject *x, bool recursive) throw(FWException)
++bool Rule::cmp(const FWObject *x, bool recursive)
+ {
+     const Rule *rx = Rule::constcast(x);
+     if (fallback != rx->fallback ||
+@@ -153,7 +153,7 @@ void PolicyRule::init(FWObjectDatabase *root)
+ }
+ 
+ FWObject& PolicyRule::shallowDuplicate(const FWObject *x,
+-                                       bool preserve_id) throw(FWException)
++                                       bool preserve_id)
+ {
+     const PolicyRule *rx=PolicyRule::constcast(x);
+     setDirection(rx->getDirection());
+@@ -169,7 +169,7 @@ FWObject& PolicyRule::shallowDuplicate(const FWObject *x,
+     return  Rule::shallowDuplicate(x, preserve_id);
+ }
+ 
+-bool PolicyRule::cmp(const FWObject *x, bool recursive) throw(FWException)
++bool PolicyRule::cmp(const FWObject *x, bool recursive)
+ {
+     const PolicyRule *rx = PolicyRule::constcast(x);
+     if (rx == NULL) return false;
+@@ -364,7 +364,7 @@ bool   PolicyRule::getLogging() const    { return getBool("log"); }
+ void   PolicyRule::setLogging(bool flag) { setBool("log",flag);   }
+ 
+ 
+-void PolicyRule::fromXML(xmlNodePtr root) throw(FWException)
++void PolicyRule::fromXML(xmlNodePtr root)
+ {
+     const char* n;
+ 
+@@ -422,7 +422,7 @@ void PolicyRule::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr PolicyRule::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr PolicyRule::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("action"), STRTOXMLCAST(getActionAsString()));
+@@ -833,7 +833,7 @@ bool NATRule::isEmpty()
+             itf_inb->isAny() && itf_outb->isAny());
+ }
+ 
+-void NATRule::fromXML(xmlNodePtr root) throw(FWException)
++void NATRule::fromXML(xmlNodePtr root)
+ {
+     const char* n;
+ 
+@@ -869,7 +869,7 @@ void NATRule::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr NATRule::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr NATRule::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ //    xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -978,7 +978,7 @@ void NATRule::setRuleType(NATRuleTypes rt)
+ }
+ 
+ FWObject& NATRule::shallowDuplicate(const FWObject *x,
+-                                    bool preserve_id) throw(FWException)
++                                    bool preserve_id)
+ {
+     const NATRule *rx = NATRule::constcast(x);
+     if (rx!=NULL) rule_type = rx->rule_type;
+@@ -997,7 +997,7 @@ FWObject& NATRule::shallowDuplicate(const FWObject *x,
+     return  Rule::shallowDuplicate(x, preserve_id);
+ }
+ 
+-bool NATRule::cmp(const FWObject *x, bool recursive) throw(FWException)
++bool NATRule::cmp(const FWObject *x, bool recursive)
+ {
+     const NATRule *rx = NATRule::constcast(x);
+     if (rx == NULL) return false;
+@@ -1075,7 +1075,7 @@ void RoutingRule::setMetric(string metric) {
+     setInt("metric", imetric);
+ }
+ 
+-void RoutingRule::fromXML(xmlNodePtr root) throw(FWException)
++void RoutingRule::fromXML(xmlNodePtr root)
+ {
+     const char* n;
+ 
+@@ -1111,7 +1111,7 @@ void RoutingRule::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr RoutingRule::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RoutingRule::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+ //    xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -1183,7 +1183,7 @@ void RoutingRule::setRuleType(RoutingRuleTypes rt)
+ }
+ 
+ FWObject& RoutingRule::duplicate(const FWObject *x,
+-                                 bool preserve_id) throw(FWException)
++                                 bool preserve_id)
+ {
+     Rule::duplicate(x,preserve_id);
+     const RoutingRule *rx = RoutingRule::constcast(x);
+diff --git a/src/libfwbuilder/src/fwbuilder/Rule.h b/src/libfwbuilder/src/fwbuilder/Rule.h
+index 1fa81de..0114ced 100644
+--- a/src/libfwbuilder/src/fwbuilder/Rule.h
++++ b/src/libfwbuilder/src/fwbuilder/Rule.h
+@@ -114,10 +114,9 @@ class Rule : public Group
+     virtual bool isDummyRule();
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+ 
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+     
+     virtual FWOptions* getOptionsObject() const;
+ 
+@@ -210,12 +209,11 @@ public:
+      */
+     virtual void init(FWObjectDatabase *root);
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML      (xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML      (xmlNodePtr parent);
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++                                       bool preserve_id = true);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(PolicyRule);
+ 
+@@ -375,8 +373,8 @@ public:
+      */
+     virtual void init(FWObjectDatabase *root);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML      (xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML      (xmlNodePtr parent);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(NATRule);
+ 
+@@ -422,9 +420,8 @@ public:
+     std::string  getRuleTypeAsString() const;
+     void setRuleType(NATRuleTypes rt);
+ 
+-    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true)
+-        throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ };
+ 
+ class RoutingRule : public Rule 
+@@ -451,8 +448,8 @@ class RoutingRule : public Rule
+      */
+     virtual void init(FWObjectDatabase *root);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(RoutingRule);
+ 
+@@ -478,8 +475,7 @@ class RoutingRule : public Rule
+     void        setSortedDstIds(const std::string& ids);
+     std::string getSortedDstIds() const;
+ 
+-    virtual FWObject& duplicate(const FWObject *obj, bool preserve_id = true)
+-        throw(FWException);
++    virtual FWObject& duplicate(const FWObject *obj, bool preserve_id = true);
+ };
+ 
+ }
+diff --git a/src/libfwbuilder/src/fwbuilder/RuleElement.cpp b/src/libfwbuilder/src/fwbuilder/RuleElement.cpp
+index 6544a85..061e2d8 100644
+--- a/src/libfwbuilder/src/fwbuilder/RuleElement.cpp
++++ b/src/libfwbuilder/src/fwbuilder/RuleElement.cpp
+@@ -82,7 +82,7 @@ void RuleElement::init(FWObjectDatabase *root)
+     }
+ }
+ 
+-void RuleElement::fromXML(xmlNodePtr root) throw(FWException)
++void RuleElement::fromXML(xmlNodePtr root)
+ {
+     const char *n;
+ 
+@@ -96,7 +96,7 @@ void RuleElement::fromXML(xmlNodePtr root) throw(FWException)
+     FWObject::fromXML(root);
+ }
+ 
+-xmlNodePtr RuleElement::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr RuleElement::toXML(xmlNodePtr xml_parent_node)
+ {
+     int my_id = getId();
+     setId(-1);
+@@ -110,7 +110,7 @@ xmlNodePtr RuleElement::toXML(xmlNodePtr xml_parent_node) throw(FWException)
+ }
+ 
+ FWObject& RuleElement::shallowDuplicate(const FWObject *other,
+-                                        bool preserve_id) throw(FWException)
++                                        bool preserve_id)
+ {
+     setNeg(RuleElement::constcast(other)->getNeg());
+     return FWObject::shallowDuplicate(other, preserve_id);
+@@ -175,7 +175,7 @@ int RuleElementSrc::getAnyElementId() const
+     return FWObjectDatabase::ANY_ADDRESS_ID;
+ }
+ 
+-xmlNodePtr RuleElementSrc::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementSrc::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -218,7 +218,7 @@ int RuleElementDst::getAnyElementId() const
+     return FWObjectDatabase::ANY_ADDRESS_ID;
+ }
+ 
+-xmlNodePtr RuleElementDst::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementDst::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -261,7 +261,7 @@ int RuleElementSrv::getAnyElementId() const
+     return FWObjectDatabase::ANY_SERVICE_ID;
+ }
+ 
+-xmlNodePtr RuleElementSrv::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementSrv::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -303,7 +303,7 @@ int RuleElementItf::getAnyElementId() const
+     return FWObjectDatabase::ANY_ADDRESS_ID;
+ }
+ 
+-xmlNodePtr RuleElementItf::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementItf::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -415,7 +415,7 @@ int RuleElementOSrc::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementOSrc::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementOSrc::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -442,7 +442,7 @@ int RuleElementODst::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementODst::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementODst::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -469,7 +469,7 @@ int RuleElementOSrv::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementOSrv::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementOSrv::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -498,7 +498,7 @@ int RuleElementTSrc::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementTSrc::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementTSrc::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -525,7 +525,7 @@ int RuleElementTDst::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementTDst::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementTDst::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -552,7 +552,7 @@ int RuleElementTSrv::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementTSrv::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementTSrv::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -593,7 +593,7 @@ int RuleElementInterval::getAnyElementId() const
+ }
+ 
+ 
+-xmlNodePtr RuleElementInterval::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementInterval::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -620,7 +620,7 @@ int RuleElementRDst::getAnyElementId() const
+     return FWObjectDatabase::ANY_ADDRESS_ID;
+ }
+ 
+-xmlNodePtr RuleElementRDst::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementRDst::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+@@ -646,7 +646,7 @@ int RuleElementRGtw::getAnyElementId() const
+     return FWObjectDatabase::ANY_ADDRESS_ID;
+ }
+ 
+-xmlNodePtr RuleElementRGtw::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleElementRGtw::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = RuleElement::toXML(parent);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/RuleElement.h b/src/libfwbuilder/src/fwbuilder/RuleElement.h
+index 819c74e..9a99a04 100644
+--- a/src/libfwbuilder/src/fwbuilder/RuleElement.h
++++ b/src/libfwbuilder/src/fwbuilder/RuleElement.h
+@@ -66,12 +66,11 @@ public:
+ 
+     DECLARE_DISPATCH_METHODS(RuleElement);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+     
+     void setAnyElement();
+     void reset();
+@@ -109,7 +108,7 @@ class RuleElementSrc : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+     virtual int getDummyElementId() const;
+     virtual bool isDummy() const;
+@@ -123,7 +122,7 @@ class RuleElementDst : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+     virtual int getDummyElementId() const;
+     virtual bool isDummy() const;
+@@ -137,7 +136,7 @@ class RuleElementSrv : public ServiceGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+     virtual int getDummyElementId() const;
+     virtual bool isDummy() const;
+@@ -152,7 +151,7 @@ class RuleElementItf : public ObjectGroup, public RuleElement {
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+     bool checkItfChildOfThisFw(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+     virtual int getDummyElementId() const;
+     virtual bool isDummy() const;
+@@ -183,7 +182,7 @@ class RuleElementInterval : public IntervalGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -195,7 +194,7 @@ class RuleElementOSrc : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -207,7 +206,7 @@ class RuleElementODst : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -219,7 +218,7 @@ class RuleElementOSrv : public ServiceGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -231,7 +230,7 @@ class RuleElementTSrc : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -243,7 +242,7 @@ class RuleElementTDst : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -255,7 +254,7 @@ class RuleElementTSrv : public ServiceGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -267,7 +266,7 @@ class RuleElementRDst : public ObjectGroup, public RuleElement {
+ 
+     virtual int getAnyElementId() const;
+     virtual bool validateChild(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+@@ -281,7 +280,7 @@ class RuleElementRGtw : public ObjectGroup, public RuleElement {
+     virtual bool validateChild(FWObject *o);
+     bool checkSingleIPAdress(FWObject *o);
+     bool checkReachableIPAdress(FWObject *o);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+     virtual bool isPrimaryObject() const { return false; }
+ };
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/RuleSet.cpp b/src/libfwbuilder/src/fwbuilder/RuleSet.cpp
+index 0bfb68a..755f69f 100644
+--- a/src/libfwbuilder/src/fwbuilder/RuleSet.cpp
++++ b/src/libfwbuilder/src/fwbuilder/RuleSet.cpp
+@@ -57,7 +57,7 @@ void RuleSet::init(FWObjectDatabase *root)
+ 
+ RuleSet::~RuleSet() {}
+ 
+-void RuleSet::fromXML(xmlNodePtr root) throw(FWException)
++void RuleSet::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -90,7 +90,7 @@ void RuleSet::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr RuleSet::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr RuleSet::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -124,7 +124,6 @@ FWOptions* RuleSet::getOptionsObject()
+ }
+ 
+ FWObject& RuleSet::shallowDuplicate(const FWObject *o, bool preserve_id)
+-    throw(FWException)
+ {
+     const RuleSet *other = RuleSet::constcast(o);
+ 
+@@ -137,7 +136,7 @@ FWObject& RuleSet::shallowDuplicate(const FWObject *o, bool preserve_id)
+     return *this;
+ }
+ 
+-bool RuleSet::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool RuleSet::cmp(const FWObject *obj, bool recursive)
+ {
+     const RuleSet *other = RuleSet::constcast(obj);
+     if (other == NULL) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/RuleSet.h b/src/libfwbuilder/src/fwbuilder/RuleSet.h
+index e7cc4db..e34eddb 100644
+--- a/src/libfwbuilder/src/fwbuilder/RuleSet.h
++++ b/src/libfwbuilder/src/fwbuilder/RuleSet.h
+@@ -1,4 +1,3 @@
+-
+ /* 
+ 
+                           Firewall Builder
+@@ -61,15 +60,14 @@ class RuleSet : public FWObject
+ 
+     DECLARE_DISPATCH_METHODS(RuleSet);
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
+ 
+     virtual FWOptions* getOptionsObject();
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++                                       bool preserve_id = true);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ 
+     // Both ipv4 and ipv6 variables can be set to true, which means
+     // this is "dual" rule set. When both are false, this is ipv4-only
+diff --git a/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.cpp b/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.cpp
+index 7359844..ca120c3 100644
+--- a/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.cpp
++++ b/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.cpp
+@@ -28,7 +28,7 @@
+ using namespace std;
+ using namespace libfwbuilder;
+ 
+-void SecuwallMgmtFile::parse(const string &filename) throw(FWException)
++void SecuwallMgmtFile::parse(const string &filename)
+ {
+     ifstream f(filename.c_str(), ios::in);
+     if (!f)
+@@ -44,7 +44,7 @@ void SecuwallMgmtFile::parse(const string &filename) throw(FWException)
+ /**
+  * Does the actual parsing.
+  */
+-void SecuwallMgmtFile::parse(istream &from) throw(FWException)
++void SecuwallMgmtFile::parse(istream &from)
+ {
+     enum
+     {
+diff --git a/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.h b/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.h
+index 978fe75..36f8db8 100644
+--- a/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.h
++++ b/src/libfwbuilder/src/fwbuilder/SecuwallMgmtFile.h
+@@ -34,8 +34,8 @@ namespace libfwbuilder
+     {
+     public:
+ 
+-        void parse(const std::string &filename) throw(FWException);
+-        void parse(std::istream &from) throw(FWException);
++        void parse(const std::string &filename);
++        void parse(std::istream &from);
+ 
+         /* Return data */
+         std::map<std::string, std::string> getData() { return data; }
+diff --git a/src/libfwbuilder/src/fwbuilder/ServiceGroup.cpp b/src/libfwbuilder/src/fwbuilder/ServiceGroup.cpp
+index f2b634d..94c15f0 100644
+--- a/src/libfwbuilder/src/fwbuilder/ServiceGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/ServiceGroup.cpp
+@@ -79,7 +79,7 @@ FWReference* ServiceGroup::createRef()
+     return ref;
+ }
+ 
+-xmlNodePtr ServiceGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr ServiceGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/ServiceGroup.h b/src/libfwbuilder/src/fwbuilder/ServiceGroup.h
+index 10208a6..9ef30a3 100644
+--- a/src/libfwbuilder/src/fwbuilder/ServiceGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/ServiceGroup.h
+@@ -44,7 +44,7 @@ class ServiceGroup : public Group
+ 
+     DECLARE_DISPATCH_METHODS(ServiceGroup);
+     
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     /*
+      * verify whether given object type is approppriate as a child
+diff --git a/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.cpp b/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.cpp
+index 7a6a538..cb96899 100644
+--- a/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.cpp
++++ b/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.cpp
+@@ -41,13 +41,13 @@ StateSyncClusterGroup::StateSyncClusterGroup() : ClusterGroup()
+     setStr("type", "");
+ }
+ 
+-void StateSyncClusterGroup::fromXML(xmlNodePtr parent) throw(FWException)
++void StateSyncClusterGroup::fromXML(xmlNodePtr parent)
+ {
+     ClusterGroup::fromXML(parent);
+     // Read additional attributes here
+ }
+ 
+-xmlNodePtr StateSyncClusterGroup::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr StateSyncClusterGroup::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = ClusterGroup::toXML(parent);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.h b/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.h
+index ae5f685..26bf1dc 100644
+--- a/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.h
++++ b/src/libfwbuilder/src/fwbuilder/StateSyncClusterGroup.h
+@@ -42,8 +42,8 @@ namespace libfwbuilder
+ 
+         DECLARE_DISPATCH_METHODS(StateSyncClusterGroup);
+         
+-        virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-        virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
++        virtual void fromXML(xmlNodePtr parent);
++        virtual xmlNodePtr toXML(xmlNodePtr parent);
+     };
+ }
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/SyncQueue.h b/src/libfwbuilder/src/fwbuilder/SyncQueue.h
+index 1b4a5cd..25c00c6 100644
+--- a/src/libfwbuilder/src/fwbuilder/SyncQueue.h
++++ b/src/libfwbuilder/src/fwbuilder/SyncQueue.h
+@@ -69,7 +69,7 @@ template <class _Tp>  class SyncQueue: protected queue<_Tp>
+      *
+      * @exception SyncQueueDoneException if queue have been already shut down
+      */
+-    bool empty() const throw (SyncQueueDoneException)
++    bool empty() const
+     { 
+         mutex.lock();
+         if(down)
+@@ -87,7 +87,7 @@ template <class _Tp>  class SyncQueue: protected queue<_Tp>
+      *
+      * @exception SyncQueueDoneException if queue have been already shut down
+      */
+-    size_type size() const throw (SyncQueueDoneException)
++    size_type size() const
+     { 
+         mutex.lock();
+         if(down)
+@@ -105,7 +105,7 @@ template <class _Tp>  class SyncQueue: protected queue<_Tp>
+      *
+      * @exception SyncQueueDoneException if queue have been already shut down
+      */
+-    void push(const queue<_Tp>::value_type& __x) throw (SyncQueueDoneException)
++    void push(const queue<_Tp>::value_type& __x)
+     { 
+         mutex.lock();
+         if(down)
+@@ -126,7 +126,7 @@ template <class _Tp>  class SyncQueue: protected queue<_Tp>
+      * @exception FWException if timeout occured
+      * @exception SyncQueueDoneException if shutdown() was called 
+      */
+-    const queue<_Tp>::value_type pop(long timeout_ms=-1) throw(SyncQueueDoneException, FWException)
++    const queue<_Tp>::value_type pop(long timeout_ms=-1)
+     { 
+         mutex.lock();
+         if(down)
+diff --git a/src/libfwbuilder/src/fwbuilder/TCPService.cpp b/src/libfwbuilder/src/fwbuilder/TCPService.cpp
+index 74ffb80..c9ff449 100644
+--- a/src/libfwbuilder/src/fwbuilder/TCPService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/TCPService.cpp
+@@ -76,7 +76,7 @@ void TCPService::_init_flags()
+     }
+ }
+ 
+-void TCPService::fromXML(xmlNodePtr root) throw(FWException)
++void TCPService::fromXML(xmlNodePtr root)
+ {
+     TCPUDPService::fromXML(root);
+ 
+@@ -112,7 +112,7 @@ void TCPService::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr TCPService::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr TCPService::toXML(xmlNodePtr xml_parent_node)
+ {
+     xmlNodePtr me = TCPUDPService::toXML(xml_parent_node);
+    
+diff --git a/src/libfwbuilder/src/fwbuilder/TCPService.h b/src/libfwbuilder/src/fwbuilder/TCPService.h
+index b3c0518..2d63ff5 100644
+--- a/src/libfwbuilder/src/fwbuilder/TCPService.h
++++ b/src/libfwbuilder/src/fwbuilder/TCPService.h
+@@ -51,8 +51,8 @@ public:
+     TCPService();
+     virtual ~TCPService();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     DECLARE_FWOBJECT_SUBTYPE(TCPService);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/TCPUDPService.cpp b/src/libfwbuilder/src/fwbuilder/TCPUDPService.cpp
+index 76e31bd..5cc6539 100644
+--- a/src/libfwbuilder/src/fwbuilder/TCPUDPService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/TCPUDPService.cpp
+@@ -51,7 +51,7 @@ TCPUDPService::~TCPUDPService() {}
+ string TCPUDPService::getProtocolName() const   {    return ""; }
+ int    TCPUDPService::getProtocolNumber() const {    return -1;    }
+ 
+-void TCPUDPService::fromXML(xmlNodePtr root) throw(FWException)
++void TCPUDPService::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -87,7 +87,7 @@ void TCPUDPService::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr TCPUDPService::toXML(xmlNodePtr xml_parent_node) throw(FWException)
++xmlNodePtr TCPUDPService::toXML(xmlNodePtr xml_parent_node)
+ {
+     xmlNodePtr me = FWObject::toXML(xml_parent_node);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -111,7 +111,6 @@ xmlNodePtr TCPUDPService::toXML(xmlNodePtr xml_parent_node) throw(FWException)
+ 
+ FWObject& TCPUDPService::shallowDuplicate(const FWObject *obj,
+                                           bool preserve_id)
+-    throw(FWException)
+ {
+     const TCPUDPService *other = TCPUDPService::constcast(obj);
+     src_range_start = other->src_range_start;
+@@ -121,7 +120,7 @@ FWObject& TCPUDPService::shallowDuplicate(const FWObject *obj,
+     return FWObject::shallowDuplicate(obj, preserve_id);
+ }
+ 
+-bool TCPUDPService::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool TCPUDPService::cmp(const FWObject *obj, bool recursive)
+ {
+     const TCPUDPService *other = TCPUDPService::constcast(obj);
+     if (other == NULL) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/TCPUDPService.h b/src/libfwbuilder/src/fwbuilder/TCPUDPService.h
+index c3bf0d8..1c9563f 100644
+--- a/src/libfwbuilder/src/fwbuilder/TCPUDPService.h
++++ b/src/libfwbuilder/src/fwbuilder/TCPUDPService.h
+@@ -48,12 +48,11 @@ class TCPUDPService : public Service
+     TCPUDPService();
+     virtual ~TCPUDPService();
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     virtual FWObject& shallowDuplicate(const FWObject *obj,
+-                                       bool preserve_id = true)
+-        throw(FWException);
++                                       bool preserve_id = true);
+ 
+     
+     DECLARE_FWOBJECT_SUBTYPE(TCPUDPService);
+@@ -73,7 +72,7 @@ class TCPUDPService : public Service
+     void setDstRangeStart(int p) { dst_range_start = p; }
+     void setDstRangeEnd(int p) { dst_range_end = p; }
+     
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+ };
+     
+ }
+diff --git a/src/libfwbuilder/src/fwbuilder/TagService.cpp b/src/libfwbuilder/src/fwbuilder/TagService.cpp
+index bc63a1e..9d2caf0 100644
+--- a/src/libfwbuilder/src/fwbuilder/TagService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/TagService.cpp
+@@ -59,7 +59,7 @@ string TagService::getCode() const
+     return getStr("tagcode");
+ }
+ 
+-void TagService::fromXML(xmlNodePtr root) throw(FWException)
++void TagService::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -71,7 +71,7 @@ void TagService::fromXML(xmlNodePtr root) throw(FWException)
+ 
+ }
+ 
+-xmlNodePtr TagService::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr TagService::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/TagService.h b/src/libfwbuilder/src/fwbuilder/TagService.h
+index 1e709f1..3a150bf 100644
+--- a/src/libfwbuilder/src/fwbuilder/TagService.h
++++ b/src/libfwbuilder/src/fwbuilder/TagService.h
+@@ -59,8 +59,8 @@ class TagService : public Service
+     ~TagService();
+     
+     
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+     
+     virtual std::string getProtocolName() const;
+     virtual int getProtocolNumber() const;
+diff --git a/src/libfwbuilder/src/fwbuilder/ThreadTools.cpp b/src/libfwbuilder/src/fwbuilder/ThreadTools.cpp
+index 76b3224..6e038ca 100644
+--- a/src/libfwbuilder/src/fwbuilder/ThreadTools.cpp
++++ b/src/libfwbuilder/src/fwbuilder/ThreadTools.cpp
+@@ -170,7 +170,7 @@ bool TimeoutCounter::isExpired() const
+     return time(&tres) > finish ;
+ }
+ 
+-void TimeoutCounter::check() const throw(FWException) 
++void TimeoutCounter::check() const
+ {
+     if(isExpired())
+     {
+@@ -179,7 +179,7 @@ void TimeoutCounter::check() const throw(FWException)
+     }
+ }
+ 
+-ssize_t TimeoutCounter::read(int fd, void *buf, size_t n) const throw(FWException)
++ssize_t TimeoutCounter::read(int fd, void *buf, size_t n) const
+ {
+     struct pollfd ufds[1];
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/ThreadTools.h b/src/libfwbuilder/src/fwbuilder/ThreadTools.h
+index 0530470..98a3f73 100644
+--- a/src/libfwbuilder/src/fwbuilder/ThreadTools.h
++++ b/src/libfwbuilder/src/fwbuilder/ThreadTools.h
+@@ -170,13 +170,13 @@ class TimeoutCounter
+     /**
+      * Throw exception if timeout is expired
+      */
+-    void check() const throw(FWException) ;
++    void check() const;
+ 
+     /**
+      * Reads from socket/file.
+      * Throws FWException if timeout occured.
+      */
+-    ssize_t read(int fd, void *buf, size_t n) const throw(FWException);
++    ssize_t read(int fd, void *buf, size_t n) const;
+     
+ };
+ #endif
+diff --git a/src/libfwbuilder/src/fwbuilder/UserService.cpp b/src/libfwbuilder/src/fwbuilder/UserService.cpp
+index e2a53c3..26d6f13 100644
+--- a/src/libfwbuilder/src/fwbuilder/UserService.cpp
++++ b/src/libfwbuilder/src/fwbuilder/UserService.cpp
+@@ -46,14 +46,14 @@ string UserService::getProtocolName() const     {    return "user_service";}
+ int    UserService::getProtocolNumber() const   {    return 65002; }
+ 
+ FWObject& UserService::shallowDuplicate(const FWObject *x,
+-                                        bool preserve_id) throw(FWException)
++                                        bool preserve_id)
+ {
+     const UserService *cs = dynamic_cast<const UserService *>(x);
+     userid = cs->userid;
+     return FWObject::shallowDuplicate(x, preserve_id);
+ }
+ 
+-void UserService::fromXML(xmlNodePtr root) throw(FWException)
++void UserService::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -65,7 +65,7 @@ void UserService::fromXML(xmlNodePtr root) throw(FWException)
+     }
+ }
+ 
+-xmlNodePtr UserService::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr UserService::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+@@ -76,7 +76,7 @@ xmlNodePtr UserService::toXML(xmlNodePtr parent) throw(FWException)
+     return me;
+ }
+ 
+-bool UserService::cmp(const FWObject *obj, bool recursive) throw(FWException)
++bool UserService::cmp(const FWObject *obj, bool recursive)
+ {
+     if (UserService::constcast(obj)==NULL) return false;
+     if (!FWObject::cmp(obj, recursive)) return false;
+diff --git a/src/libfwbuilder/src/fwbuilder/UserService.h b/src/libfwbuilder/src/fwbuilder/UserService.h
+index cd3a3d9..b50fc29 100644
+--- a/src/libfwbuilder/src/fwbuilder/UserService.h
++++ b/src/libfwbuilder/src/fwbuilder/UserService.h
+@@ -48,11 +48,11 @@ class UserService : public Service
+     UserService();
+     virtual ~UserService();
+     
+-    virtual void       fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr parent) throw(FWException);
+-    virtual bool cmp(const FWObject *obj, bool recursive=false) throw(FWException);
++    virtual void       fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr parent);
++    virtual bool cmp(const FWObject *obj, bool recursive=false);
+     
+-    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true) throw(FWException);
++    virtual FWObject& shallowDuplicate(const FWObject *obj, bool preserve_id = true);
+     
+     DECLARE_FWOBJECT_SUBTYPE(UserService);
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/XMLTools.cpp b/src/libfwbuilder/src/fwbuilder/XMLTools.cpp
+index 2788490..bf17a7f 100644
+--- a/src/libfwbuilder/src/fwbuilder/XMLTools.cpp
++++ b/src/libfwbuilder/src/fwbuilder/XMLTools.cpp
+@@ -230,7 +230,7 @@ void XMLTools::close()
+     xmlCleanupParser();
+ }
+ 
+-string XMLTools::readFile(const std::string &rfile) throw(FWException)
++string XMLTools::readFile(const std::string &rfile)
+ {
+     string buf;
+ 
+@@ -278,7 +278,7 @@ string XMLTools::readFile(const std::string &rfile) throw(FWException)
+ xmlDocPtr XMLTools::parseFile(const string &file_name, 
+                               const string &buffer,
+                               bool use_dtd,
+-                              const string &template_dir) throw(FWException)
++                              const string &template_dir)
+ {
+     xml_parser_mutex.lock();
+ 
+@@ -316,7 +316,7 @@ xmlDocPtr XMLTools::loadFile(const string &data_file ,
+                              const UpgradePredicate *upgrade,
+                              const string &template_dir,
+                              const string &current_version
+-                             ) throw(FWException)
++                             )
+ {
+ #ifdef FW_XMLTOOLS_VERBOSE
+     cerr << "Loading file:        " << data_file      << endl
+@@ -433,7 +433,7 @@ in the same directory with extension '.bak'. Are you sure you want to open it?";
+ 
+ void XMLTools::setDTD(xmlDocPtr doc, 
+                       const string &type_name, 
+-                      const string &dtd_file) throw(FWException)
++                      const string &dtd_file)
+ {
+ #ifdef FW_XMLTOOLS_VERBOSE
+     cerr << "XMLTools::setDTD: type_name=" << type_name << " dtd_file=" << dtd_file << endl;
+@@ -489,7 +489,7 @@ void XMLTools::setDTD(xmlDocPtr doc,
+ void XMLTools::saveFile(xmlDocPtr doc, 
+                         const string &file_name, 
+                         const string &type_name,
+-                        const string &dtd_file) throw(FWException)
++                        const string &dtd_file)
+ {
+     
+ #ifdef FW_XMLTOOLS_VERBOSE
+@@ -511,7 +511,7 @@ void XMLTools::dumpToMemory(xmlDocPtr doc,
+                             xmlChar **buffer,
+                             int      *size,
+                             const string &type_name,
+-                            const string &dtd_file) throw(FWException)
++                            const string &dtd_file)
+ {
+     setDTD(doc, type_name, dtd_file);
+ 
+@@ -527,7 +527,6 @@ void XMLTools::transformFileToFile(const string &src_file,
+ 				   const string &stylesheet_file,
+ 				   const char **params,
+ 				   const string &dst_file)
+-    throw(FWException)
+ {
+     string xslt_errors;
+     xsltStylesheetPtr ss = NULL;
+@@ -603,7 +602,7 @@ void XMLTools::transformDocumentToFile(xmlDocPtr doc,
+                                        const string &stylesheet_file,
+                                        const char **params,
+                                        const string &dst_file
+-) throw(FWException)
++)
+ {
+     string xslt_errors;
+ 
+@@ -681,7 +680,6 @@ void XMLTools::transformDocumentToFile(xmlDocPtr doc,
+ xmlDocPtr XMLTools::transformDocument(xmlDocPtr doc, 
+                                       const string &stylesheet_file,
+                                       const char **params)
+-    throw(FWException)
+ {
+     string xslt_errors;
+ 
+@@ -743,7 +741,7 @@ xmlDocPtr XMLTools::convert(xmlDocPtr doc,
+                             const string &file_name, 
+                             const string &type_name, 
+                             const string &template_dir,
+-                            const string &current_version) throw(FWException)
++                            const string &current_version)
+ {
+     xmlDocPtr  res = NULL;
+     
+diff --git a/src/libfwbuilder/src/fwbuilder/XMLTools.h b/src/libfwbuilder/src/fwbuilder/XMLTools.h
+index 4aed788..322aa36 100644
+--- a/src/libfwbuilder/src/fwbuilder/XMLTools.h
++++ b/src/libfwbuilder/src/fwbuilder/XMLTools.h
+@@ -79,7 +79,7 @@ class XMLTools
+         }
+     };
+ 
+-    static std::string readFile(const std::string &file_name) throw(FWException);
++    static std::string readFile(const std::string &file_name);
+     
+     /**
+      * Loads given file, performing version conversion
+@@ -91,11 +91,11 @@ class XMLTools
+                               const UpgradePredicate *upgrade,
+                               const std::string &template_dir,
+                               const std::string &current_version = std::string(FWBUILDER_XML_VERSION)
+-    ) throw(FWException);
++    );
+ 
+     static void setDTD(xmlDocPtr doc, 
+                        const std::string &type_name, 
+-                       const std::string &dtd_file) throw(FWException);
++                       const std::string &dtd_file);
+     
+     /**
+      * Saves to file with setting DTD.
+@@ -103,7 +103,7 @@ class XMLTools
+     static void saveFile(xmlDocPtr doc, 
+                          const std::string &file_name, 
+                          const std::string &type_name,
+-                         const std::string &dtd_file) throw(FWException);
++                         const std::string &dtd_file);
+ 
+     /**
+      * Saves XML document to the memory buffer
+@@ -112,7 +112,7 @@ class XMLTools
+                              xmlChar **buffer,
+                              int      *size,
+                              const std::string &type_name,
+-                             const std::string &dtd_file) throw(FWException);
++                             const std::string &dtd_file);
+         
+     static xmlExternalEntityLoader defaultLoader;
+ 
+@@ -126,7 +126,7 @@ class XMLTools
+     static xmlDocPtr parseFile(const std::string &file_name,
+                                const std::string &buffer, 
+                                bool use_dtd, const std::string &template_dir
+-    ) throw(FWException);
++    );
+     
+     /**
+      * Performs XSLT transformation of the document in memory
+@@ -135,7 +135,7 @@ class XMLTools
+     static xmlDocPtr transformDocument(xmlDocPtr doc, 
+                                        const std::string &stylesheet_file,
+                                        const char **params
+-    ) throw(FWException);
++    );
+ 
+     /**
+      * Performs XSLT transformation of the document. Results are
+@@ -145,7 +145,7 @@ class XMLTools
+                                         const std::string &stylesheet_file,
+                                         const char **params,
+                                         const std::string &dst_file
+-    ) throw(FWException);
++    );
+ 
+     /**
+      * Performs XSLT transformation of the src file. Results are
+@@ -155,7 +155,7 @@ class XMLTools
+ 				    const std::string &stylesheet_file,
+ 				    const char **params,
+ 				    const std::string &dst_file
+-    ) throw(FWException);
++    );
+ 
+ 
+     static std::string quote_linefeeds  (const std::string &s);
+@@ -194,7 +194,7 @@ class XMLTools
+                              const std::string &type_name,
+                              const std::string &template_dir,
+                              const std::string &current_version = std::string(FWBUILDER_XML_VERSION)
+-    ) throw(FWException);
++    );
+ 
+     /**
+      * returns first component of dotted notation.
+diff --git a/src/libfwbuilder/src/fwbuilder/dns.cpp b/src/libfwbuilder/src/fwbuilder/dns.cpp
+index 779c4dd..77d2b27 100644
+--- a/src/libfwbuilder/src/fwbuilder/dns.cpp
++++ b/src/libfwbuilder/src/fwbuilder/dns.cpp
+@@ -75,7 +75,7 @@ void DNS::init()
+  * Since this is not thread safe, need to use mutex to protect calls to
+  * these functions.
+  */
+-HostEnt DNS::getHostByAddr(const InetAddr &addr, int type) throw(FWException)
++HostEnt DNS::getHostByAddr(const InetAddr &addr, int type)
+ {
+     DNS::init();
+ 
+@@ -115,7 +115,6 @@ HostEnt DNS::getHostByAddr(const InetAddr &addr, int type) throw(FWException)
+ }
+ 
+ list<InetAddr> DNS::getHostByName(const string &name, int type)
+-    throw(FWException)
+ {
+     DNS::init();
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/dns.h b/src/libfwbuilder/src/fwbuilder/dns.h
+index acc6568..f9da2ce 100644
+--- a/src/libfwbuilder/src/fwbuilder/dns.h
++++ b/src/libfwbuilder/src/fwbuilder/dns.h
+@@ -97,14 +97,13 @@ class DNS
+      * Returned list is sorted.
+      */
+     static std::list<InetAddr> getHostByName(const std::string &name,
+-                                             int type=AF_INET) throw(FWException);
++                                             int type=AF_INET);
+ 
+     /**
+      * Find all host names of host with given IP.
+      * This operation does not run in backgound.
+      */
+-    static HostEnt getHostByAddr(const InetAddr &addr, int type=AF_INET)
+-        throw(FWException);
++    static HostEnt getHostByAddr(const InetAddr &addr, int type=AF_INET);
+ 
+     private:
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/physAddress.cpp b/src/libfwbuilder/src/fwbuilder/physAddress.cpp
+index 41582bb..b9b15df 100644
+--- a/src/libfwbuilder/src/fwbuilder/physAddress.cpp
++++ b/src/libfwbuilder/src/fwbuilder/physAddress.cpp
+@@ -47,7 +47,7 @@ physAddress::physAddress() :  Address()
+     setPhysAddress("00:00:00:00:00:00");
+ }
+ 
+-void physAddress::fromXML(xmlNodePtr root) throw(FWException)
++void physAddress::fromXML(xmlNodePtr root)
+ {
+     FWObject::fromXML(root);
+ 
+@@ -57,7 +57,7 @@ void physAddress::fromXML(xmlNodePtr root) throw(FWException)
+     FREEXMLBUFF(n);
+ }
+ 
+-xmlNodePtr physAddress::toXML(xmlNodePtr parent) throw(FWException)
++xmlNodePtr physAddress::toXML(xmlNodePtr parent)
+ {
+     xmlNodePtr me = FWObject::toXML(parent, false);
+     xmlNewProp(me, TOXMLCAST("name"), STRTOXMLCAST(getName()));
+diff --git a/src/libfwbuilder/src/fwbuilder/physAddress.h b/src/libfwbuilder/src/fwbuilder/physAddress.h
+index 17a354f..9e36f2c 100644
+--- a/src/libfwbuilder/src/fwbuilder/physAddress.h
++++ b/src/libfwbuilder/src/fwbuilder/physAddress.h
+@@ -46,8 +46,8 @@ class physAddress : public Address
+     
+     physAddress();
+ 
+-    virtual void fromXML(xmlNodePtr parent) throw(FWException);
+-    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node) throw(FWException);
++    virtual void fromXML(xmlNodePtr parent);
++    virtual xmlNodePtr toXML(xmlNodePtr xml_parent_node);
+ 
+     std::string getPhysAddress() const;
+     void setPhysAddress(const std::string &s);
+diff --git a/src/libfwbuilder/src/fwbuilder/snmp.cpp b/src/libfwbuilder/src/fwbuilder/snmp.cpp
+index 00f4439..239ff7e 100644
+--- a/src/libfwbuilder/src/fwbuilder/snmp.cpp
++++ b/src/libfwbuilder/src/fwbuilder/snmp.cpp
+@@ -172,7 +172,6 @@ SNMPQuery::~SNMPQuery()
+ }
+ 
+ void SNMPQuery::fetchAll(Logger *logger,SyncFlag *stop_program)
+-    throw(FWException)
+ {
+     if(community.empty())
+         throw FWException("No SNMP community specified");
+@@ -198,7 +197,7 @@ void SNMPQuery::fetchAll(Logger *logger,SyncFlag *stop_program)
+     CHECK_STOP_AND_THROW_EXCEPTION;
+ }
+ 
+-void SNMPQuery::fetchArpTable(Logger *logger,SyncFlag *stop_program, SNMPConnection *connection) throw(FWException)
++void SNMPQuery::fetchArpTable(Logger *logger,SyncFlag *stop_program, SNMPConnection *connection)
+ {
+     std::ostringstream str;
+     *logger << "ARP table\n"; 
+@@ -300,7 +299,7 @@ void SNMPQuery::fetchArpTable(Logger *logger,SyncFlag *stop_program, SNMPConnect
+  * it will contain also reference to interface object associated
+  * with the route.
+  */
+-void SNMPQuery::fetchRoutingTable(Logger *logger,SyncFlag *stop_program, SNMPConnection *connection) throw(FWException)
++void SNMPQuery::fetchRoutingTable(Logger *logger,SyncFlag *stop_program, SNMPConnection *connection)
+ {
+     std::ostringstream str;
+     *logger << "Routing table\n"; 
+@@ -592,7 +591,7 @@ void SNMPQuery::getAddressAndNetmask(Logger * /* UNUSED logger */,
+ }
+ 
+ void SNMPQuery::fetchInterfaces(Logger *logger, SyncFlag *stop_program,
+-                                SNMPConnection *connection) throw(FWException)
++                                SNMPConnection *connection)
+ {
+     std::ostringstream str;
+ 
+@@ -796,7 +795,7 @@ void SNMPQuery::fetchInterfaces(Logger *logger, SyncFlag *stop_program,
+ 
+ void SNMPQuery::fetchSysInfo(Logger *logger,
+                              SyncFlag *stop_program,
+-                             SNMPConnection *connection) throw(FWException)
++                             SNMPConnection *connection)
+ {
+     std::ostringstream str;
+     descr     = "";
+@@ -930,7 +929,7 @@ SNMPConnection::~SNMPConnection()
+         disconnect();
+ }
+ 
+-void SNMPConnection::connect(int retries, long timeout) throw(FWException)
++void SNMPConnection::connect(int retries, long timeout)
+ {
+     if(connected)
+         throw FWException("SNMPSession: already connected");
+@@ -951,7 +950,7 @@ void SNMPConnection::connect(int retries, long timeout) throw(FWException)
+     connected=true;
+ }
+ 
+-void SNMPConnection::disconnect() throw(FWException)
++void SNMPConnection::disconnect()
+ {
+     if(!connected)
+         throw FWException("SNMPSession: already disconnected");
+@@ -965,7 +964,7 @@ void SNMPConnection::disconnect() throw(FWException)
+     connected    = false;
+ }
+ 
+-multimap<string, SNMPVariable* > SNMPConnection::walk(const string &variable) throw(FWException)
++multimap<string, SNMPVariable* > SNMPConnection::walk(const string &variable)
+ {
+     multimap<string, SNMPVariable*> res;
+ 
+@@ -1071,7 +1070,6 @@ multimap<string, SNMPVariable* > SNMPConnection::walk(const string &variable) th
+ }
+ 
+ vector<SNMPVariable*> SNMPConnection::get(const string &variable)
+-    throw(FWException)
+ {
+     if(!connected)
+         throw FWException("SNMPSession: not connected");
+@@ -1114,7 +1112,7 @@ vector<SNMPVariable*> SNMPConnection::get(const string &variable)
+     } 
+ }
+ 
+-SNMPVariable *SNMPVariable::create(struct variable_list *vars) throw(FWException)
++SNMPVariable *SNMPVariable::create(struct variable_list *vars)
+ {
+     switch(vars->type)
+     {
+@@ -1177,7 +1175,7 @@ string SNMPVariable_IPaddr::toString()
+     return res;
+ }
+ 
+-InetAddr SNMPVariable_IPaddr::getInetAddrValue() throw(FWException)
++InetAddr SNMPVariable_IPaddr::getInetAddrValue()
+ {
+     // value comes from ASN1-encoded snmp reply. I am not sure 100% but
+     // I'll assume it consists of 4 bytes that represent ip address in
+@@ -1190,7 +1188,7 @@ InetAddr SNMPVariable_IPaddr::getInetAddrValue() throw(FWException)
+     return InetAddr(&addr_conversion.ipaddr);
+ }
+ 
+-InetAddr SNMPVariable_IPaddr::getNetmaskValue() throw(FWException)
++InetAddr SNMPVariable_IPaddr::getNetmaskValue()
+ {
+     union {
+         struct in_addr ipaddr;
+@@ -1253,14 +1251,14 @@ string SNMPVariable::varList2String(vector<SNMPVariable*> &v)
+     return res;
+ }
+ 
+-long SNMPVariable::var2Int(SNMPVariable *var) throw(FWException)
++long SNMPVariable::var2Int(SNMPVariable *var)
+ {
+     if(var->type != SNMPVariable::snmp_int)
+         throw FWException("Could not extract integer from non-int SNMP variable.");
+     return dynamic_cast<SNMPVariable_Int *>(var)->getIntValue();
+ }
+ 
+-long SNMPVariable::varList2Int(vector<SNMPVariable*> &v) throw(FWException)
++long SNMPVariable::varList2Int(vector<SNMPVariable*> &v)
+ {
+     if(v.size()!=1)
+         throw FWException("Empty SNMP variable list returned. Could not extract integer");
+@@ -1422,7 +1420,7 @@ bool SNMPCrawler::special(const InetAddrMask &n) const
+ 
+ //TODO: multiple threads (via pool).
+ void SNMPCrawler::run_impl(Logger *logger,
+-                           SyncFlag *stop_program) throw(FWException)
++                           SyncFlag *stop_program)
+ {
+     if (snmp_tmp_db==NULL)
+         snmp_tmp_db = new FWObjectDatabase();
+@@ -1808,7 +1806,7 @@ void SNMPCrawler::run_impl(Logger *logger,
+ }
+ 
+ void SNMPCrawler::bacresolve_results(Logger *logger,
+-                                     SyncFlag *) throw(FWException)
++                                     SyncFlag *)
+ {
+     *logger << "Resolving names\n";
+         
+@@ -1849,7 +1847,6 @@ CrawlerFind::~CrawlerFind()
+ }
+ 
+ void SNMP_interface_query::run_impl(Logger *logger, SyncFlag *stop_program)
+-    throw(FWException)
+ {
+     fetchSysInfo(logger, stop_program);
+     CHECK_STOP_AND_THROW_EXCEPTION;
+@@ -1878,12 +1875,12 @@ void SNMP_interface_query::run_impl(Logger *logger, SyncFlag *stop_program)
+ #endif
+ }
+ 
+-void SNMP_sysdesc_query::run_impl(Logger *logger,SyncFlag *stop_program) throw(FWException)
++void SNMP_sysdesc_query::run_impl(Logger *logger,SyncFlag *stop_program)
+ {
+     fetchSysInfo(logger,stop_program);
+ }
+ 
+-void SNMP_discover_query::run_impl(Logger *logger,SyncFlag *stop_program) throw(FWException)
++void SNMP_discover_query::run_impl(Logger *logger,SyncFlag *stop_program)
+ {
+     fetchArpTable(logger,stop_program);
+     if(fetch_inerfaces)
+diff --git a/src/libfwbuilder/src/fwbuilder/snmp.h b/src/libfwbuilder/src/fwbuilder/snmp.h
+index aca1d49..9f75b6c 100644
+--- a/src/libfwbuilder/src/fwbuilder/snmp.h
++++ b/src/libfwbuilder/src/fwbuilder/snmp.h
+@@ -80,13 +80,13 @@ class SNMPVariable
+     virtual std::string toString() = 0;
+ 
+     static std::string varList2String(std::vector<SNMPVariable*> &v);
+-    static long varList2Int(std::vector<SNMPVariable*> &v) throw(FWException);
+-    static long var2Int(SNMPVariable *var) throw(FWException);
++    static long varList2Int(std::vector<SNMPVariable*> &v);
++    static long var2Int(SNMPVariable *var);
+     static void freeVarList(std::vector<SNMPVariable*> &v);
+ 
+     protected:   
+ 
+-    static SNMPVariable *create(struct variable_list *v) throw(FWException);
++    static SNMPVariable *create(struct variable_list *v);
+ };
+ 
+ class SNMPVariable_Int : public SNMPVariable
+@@ -152,12 +152,12 @@ class SNMPVariable_IPaddr  : public SNMPVariable
+     
+     virtual std::string toString();
+ 
+-    virtual InetAddr getInetAddrValue() throw(FWException);
+-    virtual InetAddr getNetmaskValue() throw(FWException);
++    virtual InetAddr getInetAddrValue();
++    virtual InetAddr getNetmaskValue();
+ 
+     protected:
+     
+-    SNMPVariable_IPaddr(u_char *v, size_t l) throw(FWException)
++    SNMPVariable_IPaddr(u_char *v, size_t l)
+     { 
+         type  = snmp_ipaddr; 
+         if(v)
+@@ -253,10 +253,10 @@ class SNMPConnection
+     /**
+      * Optional parameter timeout is in milliseconds.
+      */
+-    void connect(int retries=SNMP_DEFAULT_RETRIES, long timeout=SNMP_DEFAULT_TIMEOUT) throw(FWException);
+-    void disconnect() throw(FWException);
+-    std::vector<SNMPVariable*> get(const std::string &variable) throw(FWException);
+-    std::multimap<std::string, SNMPVariable*> walk(const std::string &variable) throw(FWException);
++    void connect(int retries=SNMP_DEFAULT_RETRIES, long timeout=SNMP_DEFAULT_TIMEOUT);
++    void disconnect();
++    std::vector<SNMPVariable*> get(const std::string &variable);
++    std::multimap<std::string, SNMPVariable*> walk(const std::string &variable);
+ 
+     private:
+ 
+@@ -342,14 +342,14 @@ public:
+ 	      long timeout_=SNMP_DEFAULT_TIMEOUT);
+ 
+     void fetchArpTable(Logger *,SyncFlag *stop_program,
+-                       SNMPConnection *connection=NULL) throw(FWException);
++                       SNMPConnection *connection=NULL);
+     void fetchInterfaces(Logger *,SyncFlag *stop_program,
+-                         SNMPConnection *connection=NULL) throw(FWException);
++                         SNMPConnection *connection=NULL);
+     void fetchSysInfo(Logger *,SyncFlag *stop_program,
+-                      SNMPConnection *connection=NULL) throw(FWException);
+-    void fetchAll(Logger *,SyncFlag *stop_program) throw(FWException);
++                      SNMPConnection *connection=NULL);
++    void fetchAll(Logger *,SyncFlag *stop_program);
+     void fetchRoutingTable(Logger *,SyncFlag *stop_program,
+-                           SNMPConnection *connection=NULL) throw(FWException);
++                           SNMPConnection *connection=NULL);
+     
+     std::map<int, InterfaceData>* getInterfaces();
+     std::map<InetAddr, std::string>* getArpTable();
+@@ -385,7 +385,7 @@ class SNMP_interface_query : public SNMPQuery
+ 	SNMPQuery::init(hostname, community, retries_, timeout_);
+     }
+     
+-    virtual void run_impl(Logger *logger,SyncFlag *stop_program) throw(FWException);
++    virtual void run_impl(Logger *logger,SyncFlag *stop_program);
+ 
+ };
+ 
+@@ -408,7 +408,7 @@ class SNMP_sysdesc_query : public SNMPQuery
+ 	SNMPQuery::init(hostname, community, retries_, timeout_);
+     }
+ 
+-    virtual void run_impl(Logger *logger,SyncFlag *stop_program) throw(FWException);
++    virtual void run_impl(Logger *logger,SyncFlag *stop_program);
+ };
+ 
+ class SNMP_discover_query : public SNMPQuery
+@@ -422,7 +422,7 @@ class SNMP_discover_query : public SNMPQuery
+     SNMP_discover_query() : SNMPQuery() {}
+     SNMP_discover_query(std::string hostname, std::string community, int retries_=SNMP_DEFAULT_RETRIES, long timeout_=SNMP_DEFAULT_TIMEOUT, bool _f=true):SNMPQuery(hostname, community, retries_, timeout_) { fetch_inerfaces=_f; }
+     
+-    virtual void run_impl(Logger *logger,SyncFlag *stop_program) throw(FWException);
++    virtual void run_impl(Logger *logger,SyncFlag *stop_program);
+ };
+ 
+ class CrawlerFind: public HostEnt
+@@ -513,10 +513,8 @@ class SNMPCrawler : public BackgroundOp
+     std::map<InetAddr, CrawlerFind>  getAllIPs();
+     std::set<InetAddrMask> getNetworks();
+         
+-    virtual void run_impl(Logger *logger,SyncFlag *stop_program)
+-        throw(FWException);
+-    void bacresolve_results(Logger *logger,SyncFlag *stop_program)
+-        throw(FWException);
++    virtual void run_impl(Logger *logger,SyncFlag *stop_program);
++    void bacresolve_results(Logger *logger,SyncFlag *stop_program);
+ 
+ };
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/uint128.h b/src/libfwbuilder/src/fwbuilder/uint128.h
+index b65f26b..cde968c 100644
+--- a/src/libfwbuilder/src/fwbuilder/uint128.h
++++ b/src/libfwbuilder/src/fwbuilder/uint128.h
+@@ -524,12 +524,12 @@ template<>
+ struct numeric_limits<uint128>
+ {
+     static const bool is_specialized = true;
+-//    static uint128 min() throw()
++//    static uint128 min()
+ //    {
+ //        return 0;
+ //    }
+ //
+-//    static uint128 max() throw()
++//    static uint128 max()
+ //    {
+ //        return uint128(
+ //                   std::numeric_limits<uint64_t>::max(),
+@@ -545,12 +545,12 @@ struct numeric_limits<uint128>
+     static const int digits10 = 39;
+     static const int radix = 2;
+ 
+-    static uint128 epsilon() throw()
++    static uint128 epsilon()
+     {
+         return 0;
+     }
+ 
+-    static uint128 round_error() throw()
++    static uint128 round_error()
+     {
+         return 0;
+     }
+@@ -565,22 +565,22 @@ struct numeric_limits<uint128>
+     static const float_denorm_style has_denorm = denorm_absent;
+     static const bool has_denorm_loss = false;
+ 
+-    static uint128 infinity() throw()
++    static uint128 infinity()
+     {
+         return static_cast<uint128>(0);
+     }
+ 
+-    static uint128 quiet_NaN() throw()
++    static uint128 quiet_NaN()
+     {
+         return static_cast<uint128>(0);
+     }
+ 
+-    static uint128 signaling_NaN() throw()
++    static uint128 signaling_NaN()
+     {
+         return static_cast<uint128>(0);
+     }
+ 
+-    static uint128 denorm_min() throw()
++    static uint128 denorm_min()
+     {
+         return static_cast<uint128>(0);
+     }
+diff --git a/src/libfwbuilder/src/fwcompiler/BaseCompiler.cpp b/src/libfwbuilder/src/fwcompiler/BaseCompiler.cpp
+index 05c9089..0dcac01 100644
+--- a/src/libfwbuilder/src/fwcompiler/BaseCompiler.cpp
++++ b/src/libfwbuilder/src/fwcompiler/BaseCompiler.cpp
+@@ -170,7 +170,7 @@ void BaseCompiler::printError(const string &errstr)
+  * the process but just returns. In embedded mode it always throws
+  * exception to stop compiling
+  */
+-void BaseCompiler::abort(const string &errstr) throw(FWException)
++void BaseCompiler::abort(const string &errstr)
+ {
+     printError(errstr);
+     if (inEmbeddedMode())
+@@ -183,7 +183,7 @@ void BaseCompiler::abort(const string &errstr) throw(FWException)
+ void BaseCompiler::abort(FWObject *fw,
+                          FWObject *ruleset,
+                          FWObject *rule,
+-                         const string &errstr) throw(FWException)
++                         const string &errstr)
+ {
+     message("error", fw, ruleset, rule, errstr);
+     if (inEmbeddedMode())
+diff --git a/src/libfwbuilder/src/fwcompiler/BaseCompiler.h b/src/libfwbuilder/src/fwcompiler/BaseCompiler.h
+index ddf1e71..8b5bfcf 100644
+--- a/src/libfwbuilder/src/fwcompiler/BaseCompiler.h
++++ b/src/libfwbuilder/src/fwcompiler/BaseCompiler.h
+@@ -100,11 +100,11 @@ public:
+          * in testing mode (flag test_mode==true), then just prints
+          * the error message and returns.
+          */
+-	virtual void abort(const std::string &errstr) throw(libfwbuilder::FWException);
++	virtual void abort(const std::string &errstr);
+ 	virtual void abort(libfwbuilder::FWObject *fw,
+                            libfwbuilder::FWObject *ruleset,
+                            libfwbuilder::FWObject *rule,
+-                           const std::string &errstr) throw(libfwbuilder::FWException);
++                           const std::string &errstr);
+ 
+         /**
+          * prints an error message and returns
+diff --git a/src/libfwbuilder/src/fwcompiler/Compiler.cpp b/src/libfwbuilder/src/fwcompiler/Compiler.cpp
+index a5ea5c3..36d4255 100644
+--- a/src/libfwbuilder/src/fwcompiler/Compiler.cpp
++++ b/src/libfwbuilder/src/fwcompiler/Compiler.cpp
+@@ -82,12 +82,12 @@ void Compiler::epilog()
+ {
+ }
+ 
+-void Compiler::abort(const string &errstr) throw(FWException)
++void Compiler::abort(const string &errstr)
+ {
+     BaseCompiler::abort(fw, source_ruleset, NULL, errstr);
+ }
+ 
+-void Compiler::abort(FWObject *rule, const string &errstr) throw(FWException)
++void Compiler::abort(FWObject *rule, const string &errstr)
+ {
+     BaseCompiler::abort(fw, source_ruleset, rule, errstr);
+ }
+diff --git a/src/libfwbuilder/src/fwcompiler/Compiler.h b/src/libfwbuilder/src/fwcompiler/Compiler.h
+index 1defdd8..69fa5ff 100644
+--- a/src/libfwbuilder/src/fwcompiler/Compiler.h
++++ b/src/libfwbuilder/src/fwcompiler/Compiler.h
+@@ -1011,9 +1011,8 @@ public:
+         /**
+          * overloaded methods: uses current firewall and ruleset objects
+          */
+-        virtual void abort(const std::string &errstr) throw(libfwbuilder::FWException);
+-        virtual void abort(libfwbuilder::FWObject *rule, const std::string &errstr)
+-            throw(libfwbuilder::FWException);
++        virtual void abort(const std::string &errstr);
++        virtual void abort(libfwbuilder::FWObject *rule, const std::string &errstr);
+ 
+         virtual void error(const std::string &errstr);
+         virtual void error(libfwbuilder::FWObject *rule, const std::string &errstr);
+diff --git a/src/libgui/DialogFactory.cpp b/src/libgui/DialogFactory.cpp
+index 3236045..61413f9 100644
+--- a/src/libgui/DialogFactory.cpp
++++ b/src/libgui/DialogFactory.cpp
+@@ -220,7 +220,6 @@ BaseObjectDialog *DialogFactory::createDialog(QWidget *parent, const QString &ob
+ 
+ 
+ QWidget *DialogFactory::createFWDialog(QWidget *parent, FWObject *o)
+-    throw(FWException)
+ {
+     string platform = o->getStr("platform");
+     string host_os = o->getStr("host_OS");
+@@ -266,7 +265,6 @@ QWidget *DialogFactory::createFWDialog(QWidget *parent, FWObject *o)
+ 
+ 
+ QWidget *DialogFactory::createOSDialog(QWidget *parent,FWObject *o)
+-    throw(FWException)
+ {
+     string host_os = o->getStr("host_OS");
+ 
+@@ -300,7 +298,6 @@ QWidget *DialogFactory::createOSDialog(QWidget *parent,FWObject *o)
+ }
+ 
+ QWidget *DialogFactory::createIfaceDialog(QWidget *parent,FWObject *o)
+-    throw(FWException)
+ {
+     FWObject *h = Host::getParentHost(o);
+     //FWObject *h = Interface::cast(o)->getParentHost();
+@@ -330,7 +327,6 @@ QWidget *DialogFactory::createIfaceDialog(QWidget *parent,FWObject *o)
+ }
+ 
+ QWidget *DialogFactory::createClusterConfDialog(QWidget *parent, FWObject *o)
+-    throw(FWException)
+ {
+     FWObject *objparent = o->getParent();
+     while (objparent && objparent->getTypeName()!="Cluster")
+@@ -376,7 +372,7 @@ QString DialogFactory::getClusterGroupOptionsDialogName(FWObject *o)
+ }
+ 
+ QWidget *DialogFactory::createClusterGroupOptionsDialog(
+-    QWidget *parent, FWObject *o) throw(libfwbuilder::FWException)
++    QWidget *parent, FWObject *o)
+ {
+     QString dlgname = getClusterGroupOptionsDialogName(o);
+ 
+diff --git a/src/libgui/DialogFactory.h b/src/libgui/DialogFactory.h
+index 0f5566c..4d586b2 100644
+--- a/src/libgui/DialogFactory.h
++++ b/src/libgui/DialogFactory.h
+@@ -43,17 +43,12 @@ class DialogFactory {
+ 
+     static BaseObjectDialog *createDialog(QWidget *parent,const QString &objType);
+ 
+-    static QWidget *createFWDialog(QWidget *parent,libfwbuilder::FWObject *o)
+-        throw(libfwbuilder::FWException);
+-    static QWidget *createOSDialog(QWidget *parent,libfwbuilder::FWObject *o)
+-        throw(libfwbuilder::FWException);
+-    static QWidget *createIfaceDialog(QWidget *parent,libfwbuilder::FWObject *o)
+-        throw(libfwbuilder::FWException);
+-    static QWidget *createClusterConfDialog(QWidget *parent, libfwbuilder::FWObject *o)
+-        throw(libfwbuilder::FWException);
++    static QWidget *createFWDialog(QWidget *parent,libfwbuilder::FWObject *o);
++    static QWidget *createOSDialog(QWidget *parent,libfwbuilder::FWObject *o);
++    static QWidget *createIfaceDialog(QWidget *parent,libfwbuilder::FWObject *o);
++    static QWidget *createClusterConfDialog(QWidget *parent, libfwbuilder::FWObject *o);
+     static QString getClusterGroupOptionsDialogName(libfwbuilder::FWObject *o);
+-    static QWidget *createClusterGroupOptionsDialog(QWidget *parent, libfwbuilder::FWObject *o)
+-        throw(libfwbuilder::FWException);
++    static QWidget *createClusterGroupOptionsDialog(QWidget *parent, libfwbuilder::FWObject *o);
+ 
+     static std::string getActionDialogPageName(libfwbuilder::Firewall *fw,
+                                                libfwbuilder::Rule *rule);
+diff --git a/src/libgui/RCS.cpp b/src/libgui/RCS.cpp
+index 0136e90..52464b3 100644
+--- a/src/libgui/RCS.cpp
++++ b/src/libgui/RCS.cpp
+@@ -559,7 +559,7 @@ void RCS::abandon()
+ /**
+  *  initial RCS checkin
+  */
+-void RCS::add() throw(libfwbuilder::FWException)
++void RCS::add()
+ {
+     int i = filename.lastIndexOf("/");
+     QString rcspath = filename.left(i);
+@@ -661,7 +661,7 @@ bool RCS::isInRCS()
+     return true;
+ }
+ 
+-bool RCS::co(bool force) throw(libfwbuilder::FWException)
++bool RCS::co(bool force)
+ {
+     return co(selectedRev,force);
+ }
+@@ -694,7 +694,7 @@ bool RCS::co(bool force) throw(libfwbuilder::FWException)
+  * lock
+  *
+  */
+-bool RCS::co(const QString &rev,bool force) throw(libfwbuilder::FWException)
++bool RCS::co(const QString &rev,bool force)
+ {
+ /* first check if filename is already in RCS */
+ 
+@@ -901,7 +901,7 @@ after the program crashed.").arg(locked_rev),
+ 
+ 
+ bool RCS::ci( const QString &_lm,
+-              bool unlock) throw(libfwbuilder::FWException)
++              bool unlock)
+ {
+ /* first check if filename is already in RCS */
+     if (!rcs_available || !isInRCS()) return false;
+@@ -1018,7 +1018,7 @@ bool RCS::ci( const QString &_lm,
+  * "-z+09:00" works properly
+  *
+  */
+-QString RCS::rlog() throw(libfwbuilder::FWException)
++QString RCS::rlog()
+ {
+     if (!rcs_available)
+         throw(FWException(QObject::tr("RCS tools are unavailable").toStdString()));
+@@ -1066,14 +1066,14 @@ QString RCS::rlog() throw(libfwbuilder::FWException)
+     throw( FWException( msg.toLatin1().constData() ) );
+ }
+ 
+-QStringList RCS::rcsdiff(const QString&) throw(libfwbuilder::FWException)
++QStringList RCS::rcsdiff(const QString&)
+ {
+     isDiff();
+     QString temp = stdoutBuffer;
+     return temp.split("\n");
+ }
+ 
+-bool RCS::isDiff(const QString &rev) throw(libfwbuilder::FWException)
++bool RCS::isDiff(const QString &rev)
+ {
+     if (!rcs_available)
+         throw(FWException(QObject::tr("RCS tools are unavailable").toStdString()));
+diff --git a/src/libgui/RCS.h b/src/libgui/RCS.h
+index a062f26..42c4cf5 100644
+--- a/src/libgui/RCS.h
++++ b/src/libgui/RCS.h
+@@ -116,7 +116,7 @@ class RCS : public QObject {
+     /**
+      * Retrieves RCS log.
+      */
+-    QString rlog() throw(libfwbuilder::FWException);
++    QString rlog();
+ 
+ 
+  public:
+@@ -135,7 +135,7 @@ class RCS : public QObject {
+     QList<Revision>::iterator begin() { return revisions.begin(); }
+     QList<Revision>::iterator end()   { return revisions.end();   }
+ 
+-    void  add() throw(libfwbuilder::FWException);
++    void  add();
+ 
+     /**
+      * this makes RCS object "forget" about the file
+@@ -151,23 +151,23 @@ class RCS : public QObject {
+      * RCS checkout. Returns true if successfull and false if file is
+      * not in RCS. In case of error throws exception
+      */
+-    bool  co(const QString &rev,bool force=false) throw(libfwbuilder::FWException);
++    bool  co(const QString &rev,bool force=false);
+ 
+     /**
+      * checks out currently selected revision (set using setSelectedRev)
+      */
+-    bool  co(bool force=false) throw(libfwbuilder::FWException);
++    bool  co(bool force=false);
+ 
+     /**
+      * RCS checkin. Returns true if successfull and false if file is
+      * not in RCS. In case of error throws exception
+      */
+-    bool  ci(const QString &logmsg =" ", bool unlock=false) throw(libfwbuilder::FWException);
++    bool  ci(const QString &logmsg =" ", bool unlock=false);
+ 
+     /**
+      * Retrieves RCS diff.
+      */
+-    QStringList rcsdiff(const QString &rev="") throw(libfwbuilder::FWException);
++    QStringList rcsdiff(const QString &rev="");
+ 
+     /**
+      * checks if the working copy of the file is different from RCS
+@@ -178,7 +178,7 @@ class RCS : public QObject {
+      * This is essentially just a code returned by rcsdiff with all
+      * its output ignored.
+      */
+-    bool isDiff(const QString &rev="") throw(libfwbuilder::FWException);
++    bool isDiff(const QString &rev="");
+ 
+     /**
+      * these two methods just return status
+diff --git a/src/libgui/importAddressListWizard/HostsFile.cpp b/src/libgui/importAddressListWizard/HostsFile.cpp
+index 599e62a..38a1eb1 100644
+--- a/src/libgui/importAddressListWizard/HostsFile.cpp
++++ b/src/libgui/importAddressListWizard/HostsFile.cpp
+@@ -35,7 +35,7 @@ using namespace std;
+ using namespace libfwbuilder;
+ 
+ 
+-void HostsFile::parse() throw(FWException)
++void HostsFile::parse()
+ {
+     QFile file(file_name);
+     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+diff --git a/src/libgui/importAddressListWizard/HostsFile.h b/src/libgui/importAddressListWizard/HostsFile.h
+index bf8cd90..d9adae6 100644
+--- a/src/libgui/importAddressListWizard/HostsFile.h
++++ b/src/libgui/importAddressListWizard/HostsFile.h
+@@ -42,7 +42,7 @@ public:
+ 
+     HostsFile(const QString &file_name) { this->file_name = file_name; }
+     
+-    void parse() throw(libfwbuilder::FWException);
++    void parse();
+     
+     // Returns all hosts found
+     std::map<libfwbuilder::InetAddr, QStringList> getAll() { return data; }
+diff --git a/src/pflib/TableFactory.cpp b/src/pflib/TableFactory.cpp
+index 01fa3c8..0725f7c 100644
+--- a/src/pflib/TableFactory.cpp
++++ b/src/pflib/TableFactory.cpp
+@@ -103,7 +103,7 @@ string TableFactory::generateTblID(RuleElement *re)
+ }
+ 
+ void TableFactory::registerTable(const string& tblname, const string& tblid,
+-                                 FWObject* tbl) throw(FWException)
++                                 FWObject* tbl)
+ {
+ // two different table objects should have different names
+ // 
+diff --git a/src/pflib/TableFactory.h b/src/pflib/TableFactory.h
+index 485d8dc..225387d 100644
+--- a/src/pflib/TableFactory.h
++++ b/src/pflib/TableFactory.h
+@@ -77,7 +77,7 @@ public:
+ 
+         void registerTable(const std::string& tblname,
+                            const std::string& tblid,
+-                           libfwbuilder::FWObject *tbl) throw(libfwbuilder::FWException);
++                           libfwbuilder::FWObject *tbl);
+         void createTablesForRE(libfwbuilder::RuleElement *re,
+                                libfwbuilder::Rule        *rule);
+         void addObjectToTable(libfwbuilder::FWObject *tblgrp,
+-- 
+2.31.1
+
