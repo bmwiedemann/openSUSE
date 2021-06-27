@@ -1,0 +1,104 @@
+#
+# spec file for package antic
+#
+# Copyright (c) 2020 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define lname	libeantic1
+Name:           e-antic
+Version:        1.0.1
+Release:        0
+Summary:        Real Embedded Algebraic Number Theory in C
+License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
+Group:          Productivity/Scientific/Math
+URL:            https://github.com/flatsurf/e-antic
+
+Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  antic-devel
+BuildRequires:  arb-devel
+BuildRequires:  cereal-devel
+BuildRequires:  flint-devel >= 2.6
+BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
+BuildRequires:  libboost_headers-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  unique-factory-devel
+BuildRequires:  pkgconfig(catch2)
+BuildRequires:  python3-setuptools
+
+%description
+E-ANTIC is a C/C++ library to deal with real embedded number fields
+built on top of ANTIC.
+
+%package -n %lname
+Summary:        Real Embedded Algebraic Number Theory library in C
+Group:          System/Libraries
+
+%description -n %lname
+E-ANTIC is a C/C++ library to deal with real embedded number fields
+built on top of ANTIC.
+
+%package devel
+Summary:        Development files for e-antic
+Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
+
+%description devel
+E-ANTIC is a C/C++ library to deal with real embedded number fields
+built on top of ANTIC.
+
+This subpackage contains the include files and library links for
+developing against the ANTIC library.
+
+%package -n python3-pyeantic
+Summary:        Python interface for e-antic
+Group:          Development/Languages/Python
+
+%description -n python3-pyeantic
+pyeantic is a Python interface on top of E-ANTIC, itself a
+a C/C++ library for real embedded number fields atop ANTIC.
+
+%prep
+%autosetup -p1
+
+%build
+autoreconf -fi
+%configure --disable-static --without-benchmark --without-byexample \
+	--without-pytest --without-doc
+%make_build
+
+%install
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
+find "%buildroot" -name install_files.txt -delete
+
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
+
+%files -n %lname
+%license COPY*
+%_libdir/libeantic*.so.1*
+
+%files -n python3-pyeantic
+%python3_sitelib/pyeantic*/
+
+%files devel
+%_includedir/e-antic/
+%_includedir/libeantic/
+%_libdir/libeantic*.so
+
+%changelog
