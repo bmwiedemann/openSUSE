@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 12:31:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix autoupdate build:
+  * Add required build and test dependencies
+  * Update spec file and add cpanspec.yml
+
+-------------------------------------------------------------------
 Wed Jan 27 08:02:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.90:

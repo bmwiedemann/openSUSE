@@ -22,50 +22,35 @@ Version:        1.90
 Release:        0
 Summary:        Perl extension for using OpenSSL
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{version}.tar.gz
-BuildRequires:  libopenssl-devel
-BuildRequires:  openssl
+Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  zlib-devel
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  libopenssl-devel
+BuildRequires:  zlib-devel
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::NoWarnings)
-BuildRequires:  perl(Test::Pod) >= 1.00
-BuildRequires:  perl(Test::Pod::Coverage)
+BuildRequires:  perl(Test::Pod) >= 1.41
 BuildRequires:  perl(Test::Warn)
+# MANUAL END
 
 %description
-Net::SSLeay module contains perl bindings to openssl (http://www.openssl.org) library.
-Net::SSLeay module basically comprise of:
-    High level functions for accessing web servers (by using HTTP/HTTPS)
-    Low level API (mostly mapped 1:1 to openssl's C functions)
-    Convenience functions (related to low level API but with more perl friendly interface)
+This module provides Perl bindings for libssl (an SSL/TLS API) and
+libcrypto (a cryptography API).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-
-# replace rest of /usr/local/bin/perl with /usr/bin/perl
-for f in $(find . -type f -exec grep -l "%{_prefix}/local/bin/perl" {} \; ); do
-  sed -i -e "s@%{_prefix}/local/bin/perl@perl@g" $f
-done
-# delete .orig files created by patches
-find . -type f -name "*.orig" -delete
-# fix perm
-pushd examples
-chmod 0644 *.pl
-popd
+%autosetup -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -Wall" < /dev/null
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%if ! 0%{?qemu_user_space_build}
-make %{?_smp_mflags} test
-%endif
+make test
 
 %install
 %perl_make_install
@@ -74,6 +59,6 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %license LICENSE
-%doc Changes Credits QuickRef README examples
+%doc Changes Credits QuickRef README examples CONTRIBUTING.md
 
 %changelog
