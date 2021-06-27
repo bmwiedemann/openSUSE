@@ -193,4 +193,12 @@ Based on audit of 3.0.6.1 (forwarded request 155892 from babelworx)</comment>
     <comment></comment>
     <requestid>815544</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>21b2dd6c6b2e9e4c19a2e2a630f0dd01</srcmd5>
+    <version>3.0.8.3</version>
+    <time>1624813170</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>902644</requestid>
+  </revision>
 </revisionlist>
