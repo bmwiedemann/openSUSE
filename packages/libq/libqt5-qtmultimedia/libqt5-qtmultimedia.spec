@@ -19,7 +19,7 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\((FrequencyMonitor|qmlvideofilter).*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Multimedia5
 %ifarch %{arm} aarch64
 %define gles 1
@@ -29,20 +29,22 @@
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtmultimedia-everywhere-src-5.15.2
+%define tar_version qtmultimedia-everywhere-src-%{version}
 Name:           libqt5-qtmultimedia
-Version:        5.15.2
+Version:        5.15.2+kde3
 Release:        0
 Summary:        Qt 5 Multimedia Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Widgets-private-headers-devel >= %{real_version}
 BuildRequires:  libpulse-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libwmf-devel
@@ -52,8 +54,8 @@ BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
@@ -71,7 +73,7 @@ provides types for 3D positional audio playback and content
 management.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Multimedia Library
@@ -92,7 +94,7 @@ Group:          Development/Libraries/X11
 Requires:       %{libname} = %{version}
 # The mkspec adds -lpulse-mainloop-glib -lpulse -lglib-2.0
 Requires:       libpulse-devel
-Requires:       libqt5-qtdeclarative-devel >= %{version}
+Requires:       libqt5-qtdeclarative-devel >= %{real_version}
 Provides:       libQt5Multimedia-devel = %{version}
 Obsoletes:      libQt5Multimedia-devel < %{version}
 
@@ -104,8 +106,8 @@ Summary:        Non-ABI stable experimental API for the Qt5 Multimedia library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Requires:       libQt5Gui-private-headers-devel >= %{version}
-Requires:       libQt5Widgets-private-headers-devel >= %{version}
+Requires:       libQt5Gui-private-headers-devel >= %{real_version}
+Requires:       libQt5Widgets-private-headers-devel >= %{real_version}
 Provides:       libQt5Multimedia-private-headers-devel = %{version}
 Obsoletes:      libQt5Multimedia-private-headers-devel < %{version}
 BuildArch:      noarch
