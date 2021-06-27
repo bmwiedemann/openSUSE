@@ -424,4 +424,18 @@
     <comment></comment>
     <requestid>896179</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb84fba95292353ba98a65ba9efa88c0</srcmd5>
+    <version>0.22.9</version>
+    <time>1624813163</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.22.9
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.9/NEWS
+  * database: simple: load all .mpdignore files of all parent directories
+  * tags: fix: &quot;readcomments&quot; and &quot;readpicture&quot; on remote files with ID3 tags
+  * decoder: ffmpeg:
+    * support the tags &quot;sort_album&quot;, &quot;album-sort&quot;, &quot;artist-sort&quot;
+    * fix build failure with FFmpeg 3.4</comment>
+    <requestid>902616</requestid>
+  </revision>
 </revisionlist>

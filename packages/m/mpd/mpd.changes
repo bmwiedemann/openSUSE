@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 27 11:12:37 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 0.22.9
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.9/NEWS
+  * database: simple: load all .mpdignore files of all parent directories
+  * tags: fix: "readcomments" and "readpicture" on remote files with ID3 tags
+  * decoder: ffmpeg:
+    * support the tags "sort_album", "album-sort", "artist-sort"
+    * fix build failure with FFmpeg 3.4
+
+-------------------------------------------------------------------
 Sun May 30 15:39:04 UTC 2021 - Fabian Niepelt <fniepelt@takios.de>
 
 - Update to 0.22.8
