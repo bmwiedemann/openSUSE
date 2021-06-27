@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 26 10:08:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210605
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Thu May 13 11:06:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210425 (585f94c5)
+  * No changelog was provided
+- Add system-libs.patch
+- Added the --enable-wide-character-type flag at build time
+
+-------------------------------------------------------------------
 Wed Oct 21 03:12:31 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v20200724
