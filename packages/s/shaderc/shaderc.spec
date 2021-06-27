@@ -18,15 +18,14 @@
 
 Name:           shaderc
 %define lname libshaderc_shared1
-Version:        2021.0
+Version:        2021.1
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/google/shaderc
-
 #Git-Clone:	https://github.com/google/shaderc
-Source:         https://github.com/google/shaderc/archive/v%version.tar.gz
+Source:         %url/archive/v%version.tar.gz#/%name-%version.tar.gz
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -69,7 +68,7 @@ echo "\"%version\"" >glslc/src/build-version.inc
 
 %build
 %cmake -DSHADERC_SKIP_TESTS=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

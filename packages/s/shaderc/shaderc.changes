@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 24 10:51:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 2021.1
+  * Add -fauto-combined-image-sampler option to glslc
+  * Disable deprecated --target-env=opengl_compat with an explicit
+    error message
+
+-------------------------------------------------------------------
 Wed May  5 09:28:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Upddate to release 2021.0
