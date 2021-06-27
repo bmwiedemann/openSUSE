@@ -19,25 +19,27 @@
 # Internal QML import of examples
 %global __requires_exclude qmlimport\\(Shared.*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5Bluetooth5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtconnectivity-everywhere-src-5.15.2
+%define tar_version qtconnectivity-everywhere-src-%{version}
 Name:           libqt5-qtconnectivity
-Version:        5.15.2
+Version:        5.15.2+kde1
 Release:        0
 Summary:        Qt 5 Nfc Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-devel >= %{version}
-BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -50,7 +52,7 @@ BuildRequires:  pkgconfig(bluez)
 Qt is a set of libraries for developing applications.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Bluez Addon
