@@ -1,7 +1,7 @@
 #
 # spec file for package PythonQt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,6 @@ BuildRequires:  unzip
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(python3)
 
@@ -61,8 +59,6 @@ Requires:       lib%{name}_QtAll-Qt5-Python%{mypyver}-%{sover} = %{version}
 Requires:       pkgconfig(Qt5Concurrent)
 Requires:       pkgconfig(Qt5Multimedia)
 Requires:       pkgconfig(Qt5Svg)
-Requires:       pkgconfig(Qt5WebKit)
-Requires:       pkgconfig(Qt5WebKitWidgets)
 Requires:       pkgconfig(Qt5XmlPatterns)
 Requires:       pkgconfig(python3)
 

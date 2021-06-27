@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 14:45:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the QtWebKit build dependency.
+
+-------------------------------------------------------------------
 Thu Apr  9 10:12:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Spec cleanup. Use dos2unix

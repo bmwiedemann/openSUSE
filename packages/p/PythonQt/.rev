@@ -21,4 +21,12 @@
   * 0001-Fix-build-with-python-3.8.patch (forwarded request 792726 from cgiboudeaux)</comment>
     <requestid>792727</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69e5b2bfcc40ee43c3cffa9941c12c72</srcmd5>
+    <version>3.2</version>
+    <time>1624813169</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the QtWebKit build dependency.</comment>
+    <requestid>902640</requestid>
+  </revision>
 </revisionlist>
