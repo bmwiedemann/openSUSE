@@ -20,18 +20,18 @@
 %bcond_without lang
 Name:           drkonqi5
 # Full Plasma 5 version (e.g. 5.9.1)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.22.1
+Version:        5.22.2.1
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.22.2/drkonqi-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.22.2/drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
