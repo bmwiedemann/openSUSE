@@ -385,4 +385,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Add compatibility with qml-autoreqprov</comment>
     <requestid>868198</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>47ca0dd87e7aaaf658c8f43b3f80738f</srcmd5>
+    <version>5.15.2+kde6</version>
+    <time>1624813133</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902335</requestid>
+  </revision>
 </revisionlist>
