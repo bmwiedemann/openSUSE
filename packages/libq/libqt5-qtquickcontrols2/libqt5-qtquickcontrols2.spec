@@ -19,32 +19,34 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\((Backend|Theme|.*example).*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtquickcontrols2-everywhere-src-5.15.2
+%define tar_version qtquickcontrols2-everywhere-src-%{version}
 Name:           libqt5-qtquickcontrols2
-Version:        5.15.2
+Version:        5.15.2+kde7
 Release:        0
 Summary:        Qt 5 Quick Controls Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
-BuildRequires:  libQt5Core-private-headers-devel >= %{version}
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libqt5-qtbase-devel >= %{version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
+BuildRequires:  libqt5-qtbase-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
+BuildRequires:  pkgconfig(Qt5Qml) >= %{real_version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{real_version}
 %requires_ge    libQt5Widgets5
 %requires_ge    libQtQuick5
 

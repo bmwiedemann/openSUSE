@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 22 09:51:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde7:
+  * QmlDesigner: Remove duplicate of repeat
+  * Doc: remove all instances of \qmlpropertygroup
+  * Doc: fix Qt Labs Platform Menu icon documentation
+  * Fix QQuickHeaderView models to pass model tester
+  * Doc: fix SplitView's inheritance
+  * Add changes file for Qt 5.15.2
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Sat Jan 16 16:25:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
