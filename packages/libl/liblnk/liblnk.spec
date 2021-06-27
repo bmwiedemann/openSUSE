@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without python2
 %define lname	liblnk1
 Name:           liblnk
 Version:        20210417
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig(libfole) >= 20170502
 BuildRequires:  pkgconfig(libfwps) >= 20191221
 BuildRequires:  pkgconfig(libfwsi) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(python3)
 
 %description
 liblnk is a library and tools to access Windows Shortcut File (LNK) format files.
@@ -79,24 +79,11 @@ liblnk is a library to access Windows Shortcut File (LNK) files.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python2-%name
-Summary:        Python bindings for liblnk, a Windows Shortcut Link parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %lname = %version
-BuildRequires:  pkgconfig(python2)
-Obsoletes:      pylnk <= 20191221
-Obsoletes:      python-%name <= 20191221
-
-%description -n python2-%name
-Python2 binding for liblnk, which can read Windows Shortcut Link files.
-
 %package -n python3-%name
 Summary:        Python bindings for liblnk, a Windows Shortcut Link parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %lname = %version
-BuildRequires:  pkgconfig(python3)
 
 %description -n python3-%name
 Python3 binding for liblnk, which can read Windows Shortcut Link files.
@@ -110,9 +97,6 @@ if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
-%if %{with python2}
-    --enable-python2 \
-%endif
     --enable-python3
 %make_build
 
@@ -138,12 +122,6 @@ find %buildroot -name '*.la' -delete
 %_libdir/liblnk.so
 %_libdir/pkgconfig/liblnk.pc
 %_mandir/man3/liblnk.3*
-
-%if %{with python2}
-%files -n python2-%name
-%license COPYING*
-%python2_sitearch/pylnk.so
-%endif
 
 %files -n python3-%name
 %license COPYING*
