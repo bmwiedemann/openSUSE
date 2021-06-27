@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Jun 21 20:18:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde28:
+  * Hook up queryKeyboardModifers
+  * Fix: remove listener
+  * Fix build
+  * Client: Set XdgShell size hints before the first commit
+  * Client: Disconnect registry listener on destruction
+  * Client: Connect drags being accepted to updating the source drag icon
+  * Include locale.h for setlocale/LC_CTYPE
+  * Fix issue with repeated window size changes
+  * Client: Announce an output after receiving more complete state
+  * client: Allow QWaylandInputContext to accept composed key combinations
+  * Fix compilation
+  * xdgshell: Tell the compositor the screen we're expecting to fill
+  * Get correct decoration margins region
+  * Client: Send exposeEvent to parent on subsurface position changes
+  * Translate opaque area with frame margins
+  * Client: Send set_window_geometry only once configured
+  * Fix memory leak in QWaylandGLContext
+  * Use qWarning and _exit() instead of qFatal for wayland error
+  * Fix leaked subsurface wayland items
+  * Ensure that grabbing is performed in correct context
+  * Make setting QT_SCALE_FACTOR work on Wayland
+  * Do not try to eglMakeCurrent for unintended case
+  * Make setting QT_SCALE_FACTOR work on Wayland
+  * Scanner: Avoid accessing dangling pointers in destroy_func()
+  * Add changes file for Qt 5.15.2
+  * Doc: List correct license information for the module
+  * Replace remaining LGPLv3 headers in QtWaylandCompositor with GPLv3
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
+  * 0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
+  * 0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch
+  * 0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
+  * 0005-Ensure-that-grabbing-is-performed-in-correct-context.patch
+  * 0006-Fix-leaked-subsurface-wayland-items.patch
+  * 0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch
+  * 0008-Fix-memory-leak-in-QWaylandGLContext.patch
+  * 0009-Client-Send-set_window_geometry-only-once-configured.patch
+  * 0010-Translate-opaque-area-with-frame-margins.patch
+  * 0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
+  * 0012-Get-correct-decoration-margins-region.patch
+  * 0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
+  * 0014-Fix-compilation.patch
+  * 0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
+  * 0016-Client-Announce-an-output-after-receiving-more-compl.patch
+  * 0017-Fix-issue-with-repeated-window-size-changes.patch
+  * 0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
+
+-------------------------------------------------------------------
 Sun May 16 18:22:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add more commits from KDE's 5.15 branch:

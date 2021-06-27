@@ -19,41 +19,24 @@
 # Internal QML imports of examples
 %global __requires_exclude qmlimport\\(com.theqtcompany.*
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define libname libQt5WaylandCompositor5
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtwayland-everywhere-src-5.15.2
+%define tar_version qtwayland-everywhere-src-%{version}
 Name:           libqt5-qtwayland
-Version:        5.15.2
+Version:        5.15.2+kde28
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later
 License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
-Patch2:         0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
-Patch3:         0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch
-Patch4:         0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch
-Patch5:         0005-Ensure-that-grabbing-is-performed-in-correct-context.patch
-Patch6:         0006-Fix-leaked-subsurface-wayland-items.patch
-Patch7:         0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch
-Patch8:         0008-Fix-memory-leak-in-QWaylandGLContext.patch
-Patch9:         0009-Client-Send-set_window_geometry-only-once-configured.patch
-Patch10:        0010-Translate-opaque-area-with-frame-margins.patch
-Patch11:        0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
-Patch12:        0012-Get-correct-decoration-margins-region.patch
-Patch13:        0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
-Patch14:        0014-Fix-compilation.patch
-Patch15:        0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
-Patch16:        0016-Client-Announce-an-output-after-receiving-more-compl.patch
-Patch17:        0017-Fix-issue-with-repeated-window-size-changes.patch
-Patch18:        0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
