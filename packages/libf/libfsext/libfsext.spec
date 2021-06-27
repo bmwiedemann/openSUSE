@@ -18,23 +18,23 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20210513
+Version:        20210522
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfsext
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfsext/releases/download/%version/libfsext-experimental-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcdata) >= 20210625
 BuildRequires:  pkgconfig(libcerror) >= 20201121
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libclocale) >= 20210410
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 BuildRequires:  pkgconfig(libcpath) >= 20200623
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
