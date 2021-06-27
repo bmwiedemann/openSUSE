@@ -111,6 +111,8 @@ Patch8:         bsc1185797.patch
 Patch9:         bsc1182969.patch
 # tdf#142839 Fix a regression caused by "Multi column textbox in editengine"
 Patch10:        tdf142839.patch
+# Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS
+Patch11:        multicolumn-crash-fix.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -987,6 +989,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif

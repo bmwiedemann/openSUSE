@@ -1,0 +1,125 @@
+From f093f265dbc42482556bdc358cd7aef933700e34 Mon Sep 17 00:00:00 2001
+From: Mike Kaganski <mike.kaganski@collabora.com>
+Date: Tue, 22 Jun 2021 16:14:28 +0300
+Subject: [PATCH] Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS
+
+... as seen in https://dev-builds.libreoffice.org/crashtest/89459662bf2684a07596d4132c84e5da7e0af8d4/backtraces/task908-core.backtrace.txt
+
+  ...
+  #8  0x00007fb81c9674f2 in Application::Abort(rtl::OUString const&) (rErrorText="") at /home/buildslave/source/libo-core/vcl/source/app/svapp.cxx:274
+  #9  0x00007fb8226aa127 in desktop::Desktop::Exception(ExceptionCategory) (this=0x7ffdf0d856d0, nCategory=<optimized out>) at /home/buildslave/source/libo-core/include/rtl/ustring.hxx:181
+          bInException = true
+          nOldMode = <optimized out>
+          rArgs = <optimized out>
+          bRestart = <optimized out>
+          bAllowRecoveryAndSessionManagement = <optimized out>
+  #10 0x00007fb81c97ca5a in VCLExceptionSignal_impl(void*, oslSignalInfo*) (pInfo=<optimized out>) at /home/buildslave/source/libo-core/vcl/source/app/svmain.cxx:169
+          nOldMode = SystemWindowFlags::DIALOG
+          pSVData = 0x7fb81d423300 <rtl::Static<ImplSVData, (anonymous namespace)::private_aImplSVData>::get()::instance>
+          aLock = {m_isAcquired = true, m_isChecked = true, m_rSolarMutex = @0x5612f7423da0}
+          bIn = true
+          nVCLException = <optimized out>
+  #11 0x00007fb82282d1a7 in callSignalHandler(oslSignalInfo*) (pInfo=pInfo@entry=0x7fb80a196af0) at /home/buildslave/source/libo-core/sal/osl/all/signalshared.cxx:59
+          pHandler = 0x5612f826c2d0
+          Action = <optimized out>
+  #12 0x00007fb82289e5a8 in (anonymous namespace)::signalHandlerFunction(int, siginfo_t*, void*) (signal=6, info=0x7fb80a196cf0, context=0x7fb80a196bc0) at /home/buildslave/source/libo-core/sal/osl/unx/signal.cxx:451
+          Info = {Signal = osl_Signal_AccessViolation, UserSignal = 6, UserData = 0x0}
+  #13 0x00007fb8224d6840 in <signal handler called> () at /lib/x86_64-linux-gnu/libc.so.6
+  #14 0x00007fb8224d67bb in raise () at /lib/x86_64-linux-gnu/libc.so.6
+  #15 0x00007fb8224c1535 in abort () at /lib/x86_64-linux-gnu/libc.so.6
+  #16 0x00007fb8224c140f in  () at /lib/x86_64-linux-gnu/libc.so.6
+  #17 0x00007fb8224cf102 in  () at /lib/x86_64-linux-gnu/libc.so.6
+  #18 0x00007fb81f72434c in SfxItemPool::GetDefaultItem(unsigned short) const (this=0x5612f8e2ec00, nWhich=<optimized out>) at /home/buildslave/source/libo-core/svl/source/items/itempool.cxx:728
+          __PRETTY_FUNCTION__ = "const SfxPoolItem& SfxItemPool::GetDefaultItem(sal_uInt16) const"
+          nPos = <optimized out>
+          pDefault = <optimized out>
+  #19 0x00007fb81f724326 in SfxItemPool::GetDefaultItem(unsigned short) const (this=0x5612f8869790, nWhich=4006) at /home/buildslave/source/libo-core/svl/source/items/itempool.cxx:727
+          __PRETTY_FUNCTION__ = "const SfxPoolItem& SfxItemPool::GetDefaultItem(sal_uInt16) const"
+          nPos = <optimized out>
+          pDefault = <optimized out>
+  #20 0x00007fb80de6cc2e in SdStyleSheet::setPropertyValue(rtl::OUString const&, com::sun::star::uno::Any const&) (this=0x5612f89d3940, aPropertyName=..., aValue=uno::Any("com.sun.star.text.XTextColumns": {<com::sun::star::uno::XInterface> = {_vptr.XInterface = 0x5612f89006c0}, <No data fields>})) at /home/buildslave/source/libo-core/include/svl/style.hxx:257
+          aGuard = {<osl::Guard<comphelper::SolarMutex>> = {pT = 0x5612f7423da0}, <No data fields>}
+          pEntry = 0x7fb80e7252e8 <GetStylePropertySet()::aFullPropertyMap_Impl+1992>
+          rStyleSet = SfxItemSet of pool 0x5612f8869790 with parent 0x0 and Which ranges: [(1000, 1012), (1014, 1033), (1047, 1056), (1068, 1091), (1093, 1124), (1174, 1229), (4007, 4058)] = {1000 = 0x0, 1001 = 0x0, 1002 = 0x0, 1003 = 0x0, 1004 = 0x0, 1005 = 0x0, 1006 = 0x0, 1007 = 0x0, 1008 = 0x0, 1009 = 0x0, 1010 = 0x0, 1011 = 0x0, 1012 = 0x0, 1014 = 0x0, 1015 = 0x0, 1016 = 0x0, 1017 = 0x0, 1018 = 0x0, 1019 = 0x0, 1020 = 0x0, 1021 = 0x0, 1022 = 0x0, 1023 = 0x0, 1024 = 0x0, 1025 = 0x0, 1026 = 0x0, 1027 = 0x0, 1028 = 0x0, 1029 = 0x0, 1030 = 0x0, 1031 = 0x0, 1032 = 0x0, 1033 = 0x0, 1047 = 0x0, 1048 = 0x0, 1049 = 0x0, 1050 = 0x0, 1051 = 0x0, 1052 = 0x0, 1053 = 0x0, 1054 = 0x0, 1055 = 0x0, 1056 = 0x0, 1068 = 0x0, 1069 = 0x0, 1070 = 0x0, 1071 = 0x0, 1072 = 0x0, 1073 = 0x0, 1074 = 0x0, 1075 = 0x0, 1076 = 0x0, 1077 = 0x0, 1078 = 0x0, 1079 = 0x0, 1080 = 0x0, 1081 = 0x0, 1082 = 0x0, 1083 = 0x0, 1084 = 0x0, 1085 = 0x0, 1086 = 0x0, 1087 = 0x0, 1088 = 0x0, 1089 = 0x0, 1090 = 0x0, 1091 = 0x0, 1093 = 0x0, 1094 = 0x0, 1095 = 0x0, 1096 = 0x0, 1097 = 0x0, 1098 = 0x0, 1099 = 0x0, 1100 = 0x0, 1101 = 0x0, 1102 = 0x0, 1103 = 0x0, 1104 = 0x0, 1105 = 0x0, 1106 = 0x0, 1107 = 0x0, 1108 = 0x0, 1109 = 0x0, 1110 = 0x0, 1111 = 0x0, 1112 = 0x0, 1113 = 0x0, 1114 = 0x0, 1115 = 0x0, 1116 = 0x0, 1117 = 0x0, 1118 = 0x0, 1119 = 0x0, 1120 = 0x0, 1121 = 0x0, 1122 = 0x0, 1123 = 0x0, 1124 = 0x0, 1174 = 0x0, 1175 = 0x0, 1176 = 0x0, 1177 = 0x0, 1178 = 0x0, 1179 = 0x0, 1180 = 0x0, 1181 = 0x0, 1182 = 0x0, 1183 = 0x0, 1184 = 0x0, 1185 = 0x0, 1186 = 0x0, 1187 = 0x0, 1188 = 0x0, 1189 = 0x0, 1190 = 0x0, 1191 = 0x0, 1192 = 0x0, 1193 = 0x0, 1194 = 0x0, 1195 = 0x0, 1196 = 0x0, 1197 = 0x0, 1198 = 0x0, 1199 = 0x0, 1200 = 0x0, 1201 = 0x0, 1202 = 0x0, 1203 = 0x0, 1204 = 0x0, 1205 = 0x0, 1206 = 0x0, 1207 = 0x0, 1208 = 0x0, 1209 = 0x0, 1210 = 0x0, 1211 = 0x0, 1212 = 0x0, 1213 = 0x0, 1214 = 0x0, 1215 = 0x0, 1216 = 0x0, 1217 = 0x0, 1218 = 0x0, 1219 = 0x0, 1220 = 0x0, 1221 = 0x0, 1222 = 0x0, 1223 = 0x0, 1224 = 0x0, 1225 = 0x0, 1226 = 0x0, 1227 = 0x0, 1228 = 0x0, 1229 = 0x0, 4007 = 0x0, 4008 = 0x0, 4009 = 0x0, 4010 = 0x0, 4011 = 0x0, 4012 = 0x0, 4013 = 0x0, 4014 = 0x0, 4015 = 0x0, 4016 = 0x0, 4017 = 0x0, 4018 = 0x0, 4019 = 0x0, 4020 = 0x0, 4021 = 0x0, 4022 = 0x0, 4023 = 0x0, 4024 = 0x0, 4025 = 0x0, 4026 = 0x0, 4027 = 0x0, 4028 = 0x0, 4029 = 0x0, 4030 = 0x0, 4031 = 0x0, 4032 = 0x0, 4033 = 0x0, 4034 = 0x0, 4035 = 0x0, 4036 = 0x0, 4037 = 0x0, 4038 = 0x0, 4039 = 0x0, 4040 = 0x0, 4041 = 0x0, 4042 = 0x0, 4043 = 0x0, 4044 = 0x0, 4045 = 0x0, 4046 = 0x0, 4047 = 0x0, 4048 = 0x0, 4049 = 0x0, 4050 = 0x0, 4051 = 0x0...}
+          aSet = SfxItemSet of pool 0x5612f8869790 with parent 0x0 and Which ranges: [(4006, 4006)] = {4006 = 0x0}
+  #21 0x00007fb81945d8eb in SvXMLImportPropertyMapper::FillPropertySet_(std::__debug::vector<XMLPropertyState, std::allocator<XMLPropertyState> > const&, com::sun::star::uno::Reference<com::sun::star::beans::XPropertySet> const&, com::sun::star::uno::Reference<com::sun::star::beans::XPropertySetInfo> const&, rtl::Reference<XMLPropertySetMapper> const&, SvXMLImport&, ContextID_Index_Pair*) (rProperties=std::__debug::vector of length 3, capacity 4 = {...}, rPropSet=uno::Reference to (class SdStyleSheet *) 0x5612f89d3ad0, rPropSetInfo=uno::Reference to (class SfxItemPropertySetInfo *) 0x5612f8938ed8, rPropMapper=rtl::Reference to 0x5612f89a1900, rImport=..., pSpecialContextIds=pSpecialContextIds@entry=0x7fb80a1978b0) at /home/buildslave/source/libo-core/include/com/sun/star/uno/Reference.h:384
+          rProp = @0x5612f8497590: {mnIndex = 54, maValue = uno::Any("com.sun.star.text.XTextColumns": {<com::sun::star::uno::XInterface> = {_vptr.XInterface = 0x5612f89006c0}, <No data fields>})}
+          nIdx = 54
+          rPropName = "TextColumns"
+          nPropFlags = 201342976
+          i = 1
+          bSet = false
+          nCount = <optimized out>
+  #22 0x00007fb8194650c6 in SvXMLImportPropertyMapper::FillPropertySet(std::__debug::vector<XMLPropertyState, std::allocator<XMLPropertyState> > const&, com::sun::star::uno::Reference<com::sun::star::beans::XPropertySet> const&, ContextID_Index_Pair*) const (this=0x5612f8fa4960, aProperties=std::__debug::vector of length 3, capacity 4 = {...}, rPropSet=uno::Reference to (class SdStyleSheet *) 0x5612f89d3ad0, pSpecialContextIds=pSpecialContextIds@entry=0x7fb80a1978b0) at /home/buildslave/source/libo-core/xmloff/source/style/xmlimppr.cxx:466
+          xInfo = uno::Reference to (class SfxItemPropertySetInfo *) 0x5612f8938ed8
+          xMultiPropSet = empty uno::Reference
+          bSet = <optimized out>
+          xTolPropSet = empty uno::Reference
+  ...
+
+Change-Id: Icdb32ff5383a8073f525aad1a39ff1dcc70559f8
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/117661
+Tested-by: Jenkins
+Reviewed-by: Mike Kaganski <mike.kaganski@collabora.com>
+(cherry picked from commit f2ea39c70da3f82bb39f8b51b5484172360b1fc2)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/117639
+Tested-by: Jenkins CollaboraOffice <jenkinscollaboraoffice@gmail.com>
+---
+
+diff --git a/sd/source/core/stlsheet.cxx b/sd/source/core/stlsheet.cxx
+index 3f6b0b9..232b3b8 100644
+--- a/sd/source/core/stlsheet.cxx
++++ b/sd/source/core/stlsheet.cxx
+@@ -18,10 +18,12 @@
+  */
+ 
+ #include <com/sun/star/beans/PropertyAttribute.hpp>
++#include <com/sun/star/beans/XPropertySet.hpp>
+ #include <com/sun/star/lang/DisposedException.hpp>
+ #include <com/sun/star/lang/WrappedTargetRuntimeException.hpp>
+ #include <com/sun/star/style/XStyle.hpp>
+ #include <com/sun/star/table/BorderLine.hpp>
++#include <com/sun/star/text/XTextColumns.hpp>
+ 
+ #include <osl/mutex.hxx>
+ #include <vcl/svapp.hxx>
+@@ -32,6 +34,7 @@
+ #include <editeng/fhgtitem.hxx>
+ #include <editeng/ulspitem.hxx>
+ #include <svl/hint.hxx>
++#include <svl/intitem.hxx>
+ #include <svl/itemset.hxx>
+ 
+ #include <svx/xflbmtit.hxx>
+@@ -41,6 +44,7 @@
+ #include <svx/unoshprp.hxx>
+ #include <svx/unoshape.hxx>
+ #include <svx/svdpool.hxx>
++#include <svx/sdmetitm.hxx>
+ #include <svx/sdtaaitm.hxx>
+ #include <svx/sdtacitm.hxx>
+ #include <svx/sdtayitm.hxx>
+@@ -1003,6 +1007,23 @@
+         throw IllegalArgumentException();
+     }
+ 
++    if (pEntry->nWID == OWN_ATTR_TEXTCOLUMNS)
++    {
++        if (css::uno::Reference<css::text::XTextColumns> xColumns; aValue >>= xColumns)
++        {
++            rStyleSet.Put(SfxInt16Item(SDRATTR_TEXTCOLUMNS_NUMBER, xColumns->getColumnCount()));
++            if (css::uno::Reference<css::beans::XPropertySet> xPropSet{ xColumns,
++                                                                        css::uno::UNO_QUERY })
++            {
++                auto aVal = xPropSet->getPropertyValue("AutomaticDistance");
++                if (sal_Int32 nSpacing; aVal >>= nSpacing)
++                    rStyleSet.Put(SdrMetricItem(SDRATTR_TEXTCOLUMNS_SPACING, nSpacing));
++            }
++            return;
++        }
++        throw IllegalArgumentException();
++    }
++
+     SfxItemSet aSet( GetPool()->GetPool(),   {{pEntry->nWID, pEntry->nWID}});
+     aSet.Put( rStyleSet );
+ 

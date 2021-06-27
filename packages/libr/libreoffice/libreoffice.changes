@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 22 18:11:32 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS
+  * multicolumn-crash-fix.patch
+
+-------------------------------------------------------------------
 Thu Jun 17 19:38:40 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix tdf#142839: a regression caused by "Multi column textbox in editengine"
