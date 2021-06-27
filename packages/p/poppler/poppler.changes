@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun 19 14:46:12 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 21.06.1:
+  core:
+    * Fix rendering of some extended latin1 characters in annotations. Issue #1070
+    * Support some not so well formed documents with password. Issue #1083
+    * Add API to get notified if the xref is reconstructed
+    * Add somewhat fancier left/right signature visual representation
+    * Fix crashes in malformed files
+    * Minor code improvements
+  qt6:
+    * Change some functions to return std::unique_ptr
+  qt5/qt6:
+    * Add API to get notified if the xref is reconstructed
+    * Add somewhat fancier left/right signature visual representation
+    * Don't assert when trying to invert singular matrices
+  build system:
+    * make boost opt-out if building splash
+
+  glib:
+    * fix poppler_rectangle_free() regression. Issue #1087
+
+-------------------------------------------------------------------
 Tue May  4 15:39:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 21.05.0: 
