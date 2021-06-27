@@ -2279,4 +2279,27 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Add trailing newline to qtlogging.ini</comment>
     <requestid>895566</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>80d561a5434b713cc4483e2615c235ed</srcmd5>
+    <version>5.15.2+kde200</version>
+    <time>1624813139</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert to the default platform plugin list (&quot;wayland;xcb&quot;)
+
+- Update to version 5.15.2+kde200:
+  * Optimize quadratic-time insertion in QSortFilterProxyModel
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde199:
+  * Too many changes to list here
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
+  * 0001-Fix-allocated-memory-of-QByteArray.patch
+  * 0001-Fix-build-with-GCC-11-include-limits.patch
+  * 0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
+  * 0002-Build-fixes-for-GCC-11.patch</comment>
+    <requestid>902487</requestid>
+  </revision>
 </revisionlist>
