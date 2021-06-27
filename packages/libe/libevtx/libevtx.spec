@@ -16,16 +16,15 @@
 #
 
 
-%bcond_without python2
 %define lname	libevtx1
 Name:           libevtx
-Version:        20210504
+Version:        20210525
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libevtx
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libevtx/releases/download/%version/libevtx-alpha-%version.tar.gz
 Source2:        Windows_XML_Event_Log_EVTX.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
@@ -53,9 +52,6 @@ BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libregf) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(libwrc) >= 20210425
-%if %{with python2}
-BuildRequires:  pkgconfig(python2)
-%endif
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -91,16 +87,6 @@ libevtx is a library to access the Windows XML Event log format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python2-%name
-Summary:        Python2 bindings for libevtx
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Obsoletes:      pyevtx <= 20191221
-Obsoletes:      python-%name <= 20191221
-
-%description -n python2-%name
-Python bindings for libevtx, which can read Windows XML Event files.
-
 %package -n python3-%name
 Summary:        Python bindings for libevtx
 License:        LGPL-3.0-or-later
@@ -118,9 +104,6 @@ if [ ! -e configure ]; then ./autogen.sh; fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
-%if %{with python2}
-    --enable-python2 \
-%endif
     --enable-python3
 %make_build
 
@@ -146,12 +129,6 @@ find %buildroot -name '*.la' -delete
 %_libdir/libevtx.so
 %_libdir/pkgconfig/libevtx.pc
 %_mandir/man3/libevtx.3*
-
-%if %{with python2}
-%files -n python2-%name
-%license COPYING*
-%python2_sitearch/pyevtx.so
-%endif
 
 %files -n python3-%name
 %license COPYING*
