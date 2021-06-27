@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Jun 26 20:16:36 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.67.2:
+  * Release v3.67.2
+  * Fix: user:add command was silently doing nothing during non-interactive use
+  * Pass --fail to curl utility commands (#1049)
+  * Release v3.67.1
+  * Fix environment type not found when --type not specified in push command
+  * Release v3.67.0
+  * Support build-time environment-level variables (#1051)
+  * Support new /users/me API in auth:info command
+  * Release v3.66.4
+  * Fall back to old /me API if there is no proxy URL configured
+  * Fix user:update to avoid recalculating environment access changes while they are made
+  * Mention the type in the environment label
+  * Add a --type option to the push command
+  * Add --type option to the branch command
+  * Translate validation errors in the env:info command
+  * Allow the env type to be modified in the env:info command
+  * Add the type in the environment:list (env) command
+  * Direct the user to Console in the web command (#1062)
+  * Release v3.66.3
+  * Fix filename of arm64 Keychain credential helper
+  * Release v3.66.2
+  * Update docker-credential-helpers; add Keychain support for Mac M1 (#1060)
+  * Add a workaround for the default branch title in new projects (#1061)
+  * Do not require an env when the branch command is used without arguments
+  * Use the /users/me API if enabled
+  * Fix edge case bug (#1057)
+  * Release v3.66.1
+  * Bump paragonie/random_compat from 2.0.19 to 2.0.20 (#1050)
+  * Unhide the subscription:info command (#1052)
+  * Exclude lost+found directory to avoid permission error in mount:size command (#1056)
+  * Swap --access order in httpaccess example (fixes #1053)
+  * SSH diagnostics: avoid recommending ssh-cert:load if it is not enabled
+  * Set the default_branch to "main" by default for new projects (#1046)
+  * Add a link to help on the --type option for the activity:list command (#1048)
+  * Bump phpseclib/phpseclib from 2.0.29 to 2.0.31 in /vendor-bin/box (#1047)
+  * Document PLATFORMSH_CLI_DEFAULT_TIMEOUT in the README
+  * Release v3.66.0
+  * Bump drush/drush from 8.4.6 to 8.4.8 (#1045)
+  * Use http scheme for SOLR service tunnel URL (#1034)
+  * Add --default-branch option to the project:create command (#1042)
+  * Make the default timeout configurable through an env var
+
+-------------------------------------------------------------------
 Thu Mar 18 00:22:36 UTC 2021 - jimmy@boombatower.com
 
 - Update to version 3.65.4:
