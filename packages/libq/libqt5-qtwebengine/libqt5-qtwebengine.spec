@@ -29,15 +29,15 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.3
+Version:        5.15.5
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.3
-%define so_version 5.15.3
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # Generated from a local build
@@ -51,12 +51,7 @@ Patch3:         sandbox-statx-futex_time64.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
-Patch5:         0001-Fix-normalization-of-app-locales.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         chromium-glibc-2.33.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         0001-Fix-build-with-GCC-11.patch
-Patch8:         0001-Fix-build-with-system-ICU-69.patch
+Patch5:         chromium-glibc-2.33.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
@@ -66,7 +61,6 @@ BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  gperf
-# It really wants a commit hash, even if it's not in a .git checkout...
 BuildRequires:  binutils-gold
 BuildRequires:  git-core
 BuildRequires:  krb5
@@ -173,6 +167,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
@@ -351,7 +346,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/*.la
 # ln -sf %{_datadir}/icu/*/icudt*l.dat %{buildroot}%{_datadir}/qt5/icudtl.dat
 
 # Workaround to allow using QtWE with older Qt versions
-%global qtcore_version %(printf %{pkg_version libQt5Core5})
+%global qtcore_version %(printf %{pkg_version libQt5Core5} | cut -d + -f 1)
 # NOTE the space after '%%{version}' is important to only match '5.15.X ${_Qt5XXX_FIND_VERSION_EXACT}'
 sed -i 's#%{version} #%{qtcore_version} #' %{buildroot}%{_libqt5_libdir}/cmake/*/*Config.cmake
 

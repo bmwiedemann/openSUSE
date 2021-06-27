@@ -719,4 +719,12 @@
   * 0001-Fix-build-with-system-ICU-69.patch</comment>
     <requestid>891198</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e4347071325f2b82a32d421030e29d3f</srcmd5>
+    <version>5.15.5</version>
+    <time>1624813127</time>
+    <user>dimstar_suse</user>
+    <comment>Qt WebEngine 5.15.5</comment>
+    <requestid>901784</requestid>
+  </revision>
 </revisionlist>

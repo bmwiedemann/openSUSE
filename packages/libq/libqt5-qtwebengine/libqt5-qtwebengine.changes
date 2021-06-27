@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:39:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the CMake version workaround to get qtbase's real version
+
+-------------------------------------------------------------------
+Tue Jun 22 09:00:44 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.5:
+  * Abort findText also right on explicit navigation request
+  * Adapt to new Connections syntax
+  * Add devtools eyedropper support
+  * Add more tests to tst_loadsignals
+  * Add support for Keyboard.getLayoutMap()
+  * Add web-ui chrome://net-internals
+  * Allow leaving OCSP off
+  * Always send phased wheel events beginning with Began
+  * Avoid accessing profileAdapter when profile is shutting down
+  * Avoid unknownFunc messages in qmltests
+  * Blacklist CertificateError::test_error for macOS
+  * Blacklist NewViewRequest::test_loadNewViewRequest on macOS
+  * Blacklist handleError on macos until we merge the fix
+  * Blacklist numberOfStartedAndFinishedSignalsIsSame on b2q CIs
+  * Depend on QCoreApplication::startingUp() for checking
+    existence of app
+  * Do not allow WebBluetooth to continue
+  * Do not hide virtual keyboard if the focused node is editable
+  * Doc: Add a note about navigation within a page to a fragment
+  * Docs: Suggest to use higher DPI for printing
+  * Fix FilePickerController's path validation for windows and
+    corresponding tests
+  * Fix application locales again
+  * Fix embedded PDFs when plugins are disabled
+  * Fix first party url for cookie filter
+  * Fix inconsistent number of load signals and their order
+  * Fix normalization of app locales
+  * Fix not working certificates on mac > 10.14
+  * Fix prl files on ios
+  * Fix qmltests::WebEngineViewNavigationHistory auto tests
+  * Fix qtpdf static builds on windows
+  * Fix static build of qml qtpdf
+  * Follow InProcessGpuThread::Init() on thread priority
+  * Generate mojo bindings before compiling extension API
+    registration
+  * Implement PluginServiceFilterQt
+  * Load signals test: use focusProxy for link clicking test
+  * Make able to override disabled features from command line
+  * Notify canGoBack/canGoForward changes based on web actions
+  * Only disconnect QWebEnginePage signals that QWebEngineView
+    connected
+  * Package devtools inspector overlay
+  * Remove ResourceTypeSubFrame check after website update
+  * Remove obsolete loadSignals test
+    secondLoadForError_WhenErrorPageEnabled
+  * Remove qquickwebengineprofile test
+  * Remove tracking of frame which load error page
+  * Remove ui/snapshot overrides for aura
+  * Report server directs in navigation type
+  * Return to using the default devtools page
+  * Set enumaration root directory for File.webkitRelativePath API
+  * Set more Display properties
+  * Show PDF viewer in a guest view
+  * Support devtools close button in QuickNanoBrowser
+  * Support zoom-in, zoom-out and cell web cursors on macOS
+  * Unblacklist and fix load signals test for file download
+  * Update Chromium and adapt PermissionManagerQt
+  * Update platform notes
+  * View: test signal for deletion of external page set to view
+- Drop patches:
+  * 0001-Fix-normalization-of-app-locales.patch
+  * 0001-Fix-build-with-GCC-11.patch
+  * 0001-Fix-build-with-system-ICU-69.patch
+
+-------------------------------------------------------------------
 Thu May  6 11:45:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with ICU 69:
