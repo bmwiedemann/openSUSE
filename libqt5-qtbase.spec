@@ -16,7 +16,7 @@
 #
 
 
-%define qt5_snapshot 0
+%define qt5_snapshot 1
 %define journald 1
 
 %ifarch %arm aarch64
@@ -29,7 +29,7 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.2
+Version:        5.15.2+kde200
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
@@ -38,8 +38,8 @@ Url:            https://www.qt.io
 %define base_name libqt5
 %define real_version 5.15.2
 %define so_version 5.15.2
-%define tar_version qtbase-everywhere-src-5.15.2
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+%define tar_version qtbase-everywhere-src-%{version}
+Source:         %{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
 Source2:        macros.qt5
@@ -52,6 +52,7 @@ Patch2:         fix-build-openssl-1.1.0.patch
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # Proposed: https://bugreports.qt.io/browse/QTBUG-88491
 Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
+Patch5:         0001-Revert-Bump-version.patch
 # PATCH-FIX-OPENSUSE disable-rc4-ciphers-bnc865241.diff bnc#865241-- Exclude rc4 ciphers from being used by default
 Patch6:         disable-rc4-ciphers-bnc865241.diff
 Patch8:         tell-the-truth-about-private-api.patch
@@ -63,16 +64,9 @@ Patch12:        0001-Add-remote-print-queue-support.patch
 Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
-# Merged: https://bugreports.qt.io/browse/QTBUG-87010
-Patch1000:      0001-Fix-allocated-memory-of-QByteArray.patch
-# Merged: https://bugreports.qt.io/browse/QTBUG-88435
-Patch1001:      0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-Patch2002:      0001-Fix-build-with-GCC-11-include-limits.patch
-Patch2003:      0002-Build-fixes-for-GCC-11.patch
-Patch2004:      0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
 BuildRequires:  gcc-c++
@@ -909,7 +903,6 @@ sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 	-plugin-sql-psql -I/usr/include/pgsql/ -I/usr/include/pgsql/server \
 	-plugin-sql-odbc \
 	-plugin-sql-mysql -I/usr/include/mysql/ \
-	-qpa "xcb;wayland" \
 	-no-feature-relocatable \
 	QMAKE_CFLAGS+="$CFLAGS" \
 	QMAKE_CXXFLAGS+="$CXXFLAGS"

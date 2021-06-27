@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 24 19:16:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Revert to the default platform plugin list ("wayland;xcb")
+
+-------------------------------------------------------------------
+Thu Jun 24 09:02:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde200:
+  * Optimize quadratic-time insertion in QSortFilterProxyModel
+
+-------------------------------------------------------------------
+Mon Jun 21 08:07:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde199:
+  * Too many changes to list here
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
+  * 0001-Fix-allocated-memory-of-QByteArray.patch
+  * 0001-Fix-build-with-GCC-11-include-limits.patch
+  * 0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
+  * 0002-Build-fixes-for-GCC-11.patch
+
+-------------------------------------------------------------------
 Wed May 26 11:49:02 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add trailing newline to qtlogging.ini
