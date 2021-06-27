@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  17337674
-Version:        11.2.5
+%define bldnum  18090558
+Version:        11.3.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -56,9 +56,6 @@ Source6:        open-vm-tools-modprobe.conf
 Source7:        tools.conf
 Source8:        vgauthd.service
 Source9:        vmblock-fuse.service
-# PATCH-FIX-UPSTREAM open-vm-tools-glib-2.67.patch dimstar@opensuse.org -- Fix build with glib 2.67, https://github.com/vmware/open-vm-tools/issues/500
-Patch100:       open-vm-tools-glib-2.67.patch
-Patch101:       open-vm-tools-pollGtk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 # don't use pkgconfig(gtk+-2.0) so we can build on SLE
@@ -93,6 +90,8 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  glibc >= 2.12
 BuildRequires:  xorg-x11-devel
 %endif
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libudev)
 %if %{with vgauth}
 # vgauth requires xml2, xerces-c, and xml-security-c/xmlsec1
 BuildRequires:  libxml2-devel
@@ -139,6 +138,8 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
+
+#SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
 
 %if 0%{?suse_version} >= 1500
@@ -219,11 +220,9 @@ if you intend to create own plugins for vmtoolsd.
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
-%patch0 -p2
 
-# patch not yet coming from upstream, https://github.com/vmware/open-vm-tools/issues/500
-%patch100 -p1
-%patch101 -p1
+#SUSE specific patches
+%patch0 -p2
 
 %build
 %if %{with_X}
@@ -415,6 +414,8 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/plugins/vmsvc/libtimeSync.so
 %{_libdir}/%{name}/plugins/vmsvc/libvmbackup.so
 %{_libdir}/%{name}/plugins/vmsvc/libappInfo.so
+%{_libdir}/%{name}/plugins/vmsvc/libgdp.so
+%{_libdir}/%{name}/plugins/vmsvc/libguestStore.so
 %{_libdir}/%{name}/plugins/common/libhgfsServer.so
 %{_libdir}/%{name}/plugins/common/libvix.so
 %{_bindir}/vmhgfs-fuse
@@ -425,6 +426,7 @@ rm -rf %{buildroot}
 %{_bindir}/vmware-toolbox-cmd
 %{_bindir}/vmware-xferlogs
 %{_bindir}/vm-support
+%{_bindir}/vmware-alias-import
 %{_sbindir}/mount.vmhgfs
 %if !0%{?usrmerged}
 /sbin/mount.vmhgfs
@@ -475,6 +477,7 @@ rm -rf %{buildroot}
 %{_bindir}/vmware-user
 %{_bindir}/vmware-user-autostart-wrapper
 %{_bindir}/vmware-vmblock-fuse
+%{_bindir}/vmwgfxctrl
 %if %{with vmblockfuseservice}
 %{_unitdir}/vmblock-fuse.service
 %{_sbindir}/rcvmblock-fuse
@@ -497,6 +500,7 @@ rm -rf %{buildroot}
 %{_libdir}/libguestlib.so.*
 %{_libdir}/libhgfs.so.*
 %{_libdir}/libDeployPkg.so.*
+%{_libdir}/libguestStoreClient.so.*
 %if %{with vgauth}
 %{_libdir}/libvgauth.so.*
 %endif

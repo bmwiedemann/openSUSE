@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun 24 14:15:09 UTC 2021 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.3.0 (build 18090558) (boo#1187567)
+  + Resolved issues:
+    - The following github issues and pull requests have been resolved:
+      446, 481, 500, and 509
+    - The following Pull requests have been resolved: 474 and 505
+    - A number of issues detected by Coverity, internally or by third parties,
+      have been addressed.
+    - A command line tool, vmwgfxctrl, has been added to open-vm-tools for
+      Linux that can be used to control various aspects of the vmwgfx Linux
+      kernel module.  Currently it can both display and set the current
+      topology of the vmwgfx kernel driver. It is useful when trying to
+      configure custom resolutions on recent Linux distributions, including
+      multi-monitor setups.
+    - A command line tool, vmware-alias-import, has been added to
+      open-vm-tools that can be used to import vgauth config data and apply
+      it to the running vgauth service.
+    - Enhancements to support or utilize various vSphere features.
+- Fixed bug (bsc#1185175) In vmtoolsd.service move deprecated path
+  "/var/run" to "/run" for it's PIDfile.
+- Update pam-vmtoolsd.patch to compensate for new line numbers.
+- Drop patch now contained in 11.3.0:
+  - open-vm-tools-glib-2.67.patch
+  - open-vm-tools-pollGtk.patch
+
+-------------------------------------------------------------------
 Thu May  6 19:53:08 UTC 2021 - Kirk Allan <kallan@suse.com>
 
 - Add open-vm-tools-pollGtk.patch: Fixes boo#1185103 GCC 11: open-vm-tools

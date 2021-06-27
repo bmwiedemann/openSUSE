@@ -8,7 +8,7 @@ Before=vmtoolsd.service
 Type=forking
 RuntimeDirectory=vmblock-fuse
 RuntimeDirectoryMode=755
-ExecStart=/usr/bin/vmware-vmblock-fuse -o subtype=vmware-vmblock,default_permissions,allow_other /var/run/vmblock-fuse
+ExecStart=/usr/bin/vmware-vmblock-fuse -o subtype=vmware-vmblock,default_permissions,allow_other /run/vmblock-fuse
 
 [Install]
 WantedBy=multi-user.target

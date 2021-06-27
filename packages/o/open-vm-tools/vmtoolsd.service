@@ -9,8 +9,8 @@ Before=cloud-init-local.service
 
 [Service]
 Type=forking
-PIDFile=/var/run/vmtoolsd.pid
-ExecStart=/usr/bin/vmtoolsd --background /var/run/vmtoolsd.pid
+PIDFile=/run/vmtoolsd.pid
+ExecStart=/usr/bin/vmtoolsd --background /run/vmtoolsd.pid
 TimeoutStopSec=5
 
 [Install]
