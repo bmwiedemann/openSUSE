@@ -1036,7 +1036,6 @@
       <repopackage name="kcalutils-lang"/>
       <repopackage name="kcharselect"/>
       <repopackage name="kcharselect-lang"/>
-      <repopackage name="kchmviewer"/>
       <repopackage name="kcm_sddm"/>
       <repopackage name="kcm_sddm-lang"/>
       <repopackage name="kcm_tablet"/>
@@ -1395,7 +1394,7 @@
       <repopackage name="libavcodec58_134"/>
       <repopackage name="libavfilter7_110"/>
       <repopackage name="libavformat58_76"/>
-      <repopackage name="libavif10"/>
+      <repopackage name="libavif12"/>
       <repopackage name="libavresample4_0"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
@@ -2329,7 +2328,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler110"/>
+      <repopackage name="libpoppler111"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal0"/>
       <repopackage name="libportaudio2"/>
@@ -2340,8 +2339,8 @@
       <repopackage name="libprocps8"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite26"/>
-      <repopackage name="libprotobuf26"/>
+      <repopackage name="libprotobuf-lite28"/>
+      <repopackage name="libprotobuf28"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
       <repopackage name="libproxy1-config-kde"/>
