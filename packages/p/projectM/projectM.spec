@@ -1,7 +1,7 @@
 #
 # spec file for package projectM
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %bcond_without pulseaudio_qt
 Name:           projectM
-Version:        3.1.7
+Version:        3.1.12
 Release:        0
 Summary:        A Music Visualizer
 License:        LGPL-2.1-or-later

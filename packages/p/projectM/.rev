@@ -145,4 +145,15 @@
   * 0001-Reduce-dependencies.patch</comment>
     <requestid>858997</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77a9832a900825bbb2d37e7b6836d6e8</srcmd5>
+    <version>3.1.12</version>
+    <time>1624887207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.12:
+  * Fixes #468 missing Intrinsics.h
+  
+</comment>
+    <requestid>902271</requestid>
+  </revision>
 </revisionlist>
