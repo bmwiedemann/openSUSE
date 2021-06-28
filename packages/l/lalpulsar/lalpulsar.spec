@@ -33,6 +33,8 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalpulsar-printf-type-mismatch.patch badshah400@gmail.com -- Fix type mismatch when passing variables to printf
 Patch0:         lalpulsar-printf-type-mismatch.patch
+# PATCH-FIX-UPSTREAM lalpulsar-LineRobustStatsTest-array-length.patch badshah400@gmail.com -- Fix array length in a test so that it is consistent with the array length expected by function
+Patch1:         lalpulsar-LineRobustStatsTest-array-length.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}

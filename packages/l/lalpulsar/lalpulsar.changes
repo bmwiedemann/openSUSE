@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 26 22:57:21 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalpulsar-LineRobustStatsTest-array-length.patch: Fix length
+  of array passed to function so that it is consistent with array
+  length in the function definition.
+
+-------------------------------------------------------------------
 Fri Feb 26 23:40:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.1:
