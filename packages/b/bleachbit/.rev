@@ -68,4 +68,39 @@
     checkboxes (1034.)</comment>
     <requestid>898178</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5fa73a266c7edc989282a333b436146d</srcmd5>
+    <version>4.4.0</version>
+    <time>1624887222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.0:
+  * Add cleaner for Brave browser
+  * Clean the last location of the File - Save As dialog in
+    Google Chrome
+  * Clean session for Thunderbird
+  * Add new command line option --all-but-warning to enable all
+    cleaners that do not emit a warning
+  * Add preference option to remember window geometry,
+    which means whether it was maximized and the last window size,
+    if it was not maximized.
+  * Fix ResourceWarning message when cleaning Firefox URL history
+  * Fix: do not clean bookmarks in Firefox
+  * Add warning when cleaning Thunderbird - Index
+  * Fix wiping free space on FAT32 partitions with more than 4GB of
+   available space
+  * Fix &quot;About # minutes remaining&quot; was not translatable into any
+    language
+  * Fix ResourceWarning message when downloading chaff
+  * The menu item Diagnostics was replaced with the term System
+    Information.
+  * Add ability to clean the profile of the unstable version of
+    Google Chrome
+  * Clean more with System - Recent Documents
+  * Correctly detect that Thunderbird is running
+  * Correctly detect how much space was freed by journald
+  * Adjust spacing so the scrollbar does not cover checkbox with
+    some GTK themes
+  * Improve AppStream metainfo</comment>
+    <requestid>902724</requestid>
+  </revision>
 </revisionlist>

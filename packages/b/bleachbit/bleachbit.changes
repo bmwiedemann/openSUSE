@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun 28 07:01:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.4.0:
+  * Add cleaner for Brave browser
+  * Clean the last location of the File - Save As dialog in
+    Google Chrome
+  * Clean session for Thunderbird
+  * Add new command line option --all-but-warning to enable all
+    cleaners that do not emit a warning
+  * Add preference option to remember window geometry,
+    which means whether it was maximized and the last window size,
+    if it was not maximized.
+  * Fix ResourceWarning message when cleaning Firefox URL history
+  * Fix: do not clean bookmarks in Firefox
+  * Add warning when cleaning Thunderbird - Index
+  * Fix wiping free space on FAT32 partitions with more than 4GB of
+   available space
+  * Fix "About # minutes remaining" was not translatable into any
+    language
+  * Fix ResourceWarning message when downloading chaff
+  * The menu item Diagnostics was replaced with the term System
+    Information.
+  * Add ability to clean the profile of the unstable version of
+    Google Chrome
+  * Clean more with System - Recent Documents
+  * Correctly detect that Thunderbird is running
+  * Correctly detect how much space was freed by journald
+  * Adjust spacing so the scrollbar does not cover checkbox with
+    some GTK themes
+  * Improve AppStream metainfo
+
+-------------------------------------------------------------------
 Mon Jun  7 18:32:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.3.0:
