@@ -1,7 +1,7 @@
 #
 # spec file for package abiword
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,6 +132,10 @@ autoreconf -fi
 # not sure it is not needed any more and the performance cost of this
 # option is cheaper then random undefined behaviours.
 CFLAGS="%{optflags} -fno-strict-aliasing"
+%if 0%{?suse_version} >= 1550
+# Enforce std=c++14 as codebase is not c++17 (default for gcc 11) ready
+CXXFLAGS="%{optflags} -std=c++14"
+%endif
 %configure \
         --disable-static \
         --enable-dynamic \

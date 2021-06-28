@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 26 23:33:26 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass '-std=c++14' to CXXFLAGS for openSUSE >= 1550 to fix
+  building with GCC 11 which uses c++17 by default, whereas
+  abiword codebase is not c++17 ready yet.
+
+-------------------------------------------------------------------
 Fri Mar 27 17:35:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 
