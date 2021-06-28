@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 27 17:00:18 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.0
+  * Library now throws the custom adblock.AdblockException
+    exception, instead of ValueError.
+
+-------------------------------------------------------------------
 Tue Apr 20 20:51:41 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - init, 0.4.4

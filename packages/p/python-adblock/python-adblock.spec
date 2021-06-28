@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adblock
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Brave's adblock library in Python
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 URL:            https://pypi.org/project/adblock/
 Source:         https://github.com/ArniDagur/python-adblock/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz

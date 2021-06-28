@@ -7,4 +7,14 @@
     <comment>Recommended by qutebrowser package, depends on sr#887549</comment>
     <requestid>887550</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73af9068e21b5edb6e41fb7a2ce1aba0</srcmd5>
+    <version>0.5.0</version>
+    <time>1624887211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0
+  * Library now throws the custom adblock.AdblockException
+    exception, instead of ValueError.</comment>
+    <requestid>902652</requestid>
+  </revision>
 </revisionlist>
