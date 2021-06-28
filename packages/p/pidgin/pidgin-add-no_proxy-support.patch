@@ -1,0 +1,305 @@
+diff --unified --recursive --text --new-file --color pidgin-2.14.5.old/ChangeLog pidgin-2.14.5.new/ChangeLog
+--- pidgin-2.14.5.old/ChangeLog	2021-06-24 14:17:08.444727946 +0800
++++ pidgin-2.14.5.new/ChangeLog	2021-06-24 14:17:17.098045115 +0800
+@@ -103,6 +103,10 @@
+ 	Bonjour:
+ 	* Always use port fallback for IPv4 addresses. (PR #382 Michael Osborne)
+ 
++	libpurple:
++	* added support for the no_proxy environment variable. (PIDGIN-17518)
++	  (RR #667) (Alynx Zhou and Gary Kramlich)
++
+ 	XMPP:
+ 	* Support for XEP-0198 Stream Management (PR #309 defanor)
+ 	* Decrease delay for file transfer using streamhosts (PR #464 #627 Evert
+diff --unified --recursive --text --new-file --color pidgin-2.14.5.old/COPYRIGHT pidgin-2.14.5.new/COPYRIGHT
+--- pidgin-2.14.5.old/COPYRIGHT	2021-06-24 14:17:08.438061292 +0800
++++ pidgin-2.14.5.new/COPYRIGHT	2021-06-24 14:17:17.098045115 +0800
+@@ -651,6 +651,7 @@
+ Jan Zachorowski
+ zelch
+ Nickolai Zeldovich
++Alynx Zhou
+ Tom Zickel
+ Marco Ziech
+ Piotr Zielinski
+diff --unified --recursive --text --new-file --color pidgin-2.14.5.old/libpurple/proxy.c pidgin-2.14.5.new/libpurple/proxy.c
+--- pidgin-2.14.5.old/libpurple/proxy.c	2021-06-24 14:17:08.454727928 +0800
++++ pidgin-2.14.5.new/libpurple/proxy.c	2021-06-24 14:17:17.098045115 +0800
+@@ -90,6 +90,12 @@
+ 
+ static PurpleProxyInfo *global_proxy_info = NULL;
+ 
++typedef struct {
++	gchar *hostname;
++	gint port;
++} PurpleProxyNoProxyEntry;
++static GList *no_proxy_entries = NULL;
++
+ static GSList *handles = NULL;
+ 
+ static void try_connect(PurpleProxyConnectData *connect_data);
+@@ -205,6 +211,118 @@
+ }
+ 
+ /**************************************************************************
++ * no proxy helpers
++ **************************************************************************/
++static PurpleProxyNoProxyEntry *
++purple_proxy_no_proxy_entry_new(const gchar *hostname, gint port) {
++	PurpleProxyNoProxyEntry *entry = NULL;
++
++	entry = g_new(PurpleProxyNoProxyEntry, 1);
++	entry->hostname = g_strdup(hostname);
++	entry->port = port;
++
++	return entry;
++}
++
++static void
++purple_proxy_no_proxy_entry_free(PurpleProxyNoProxyEntry *entry) {
++	g_free(entry->hostname);
++	g_free(entry);
++}
++
++static gint
++purple_proxy_no_proxy_compare(gconstpointer a, gconstpointer b) {
++	const PurpleProxyNoProxyEntry *entry, *connection;
++
++	entry = (const PurpleProxyNoProxyEntry *)a;
++	connection = (const PurpleProxyNoProxyEntry *)b;
++
++	/* check port first as it's quicker */
++	if(entry->port != 0 && entry->port != connection->port) {
++		return -1;
++	}
++
++	/* * is used to match any host, but this check needs to be after the port
++	 * because *:6667 is a valid entry.
++	 */
++	if(purple_strequal(entry->hostname, "*")) {
++		return 0;
++	}
++
++	/* if the host name matches, don't proxy it */
++	if(purple_strequal(connection->hostname, entry->hostname)) {
++		return 0;
++	}
++
++	/* finally check if the requested host has a known suffix */
++	if(g_str_has_suffix(connection->hostname, entry->hostname)) {
++		size_t clen = strlen(connection->hostname);
++		size_t elen = strlen(entry->hostname);
++
++		/* make sure the connection hostname has at least one more character
++		 * than the entry so that we don't do an out of bound read.
++		 */
++		if(clen > elen) {
++			if(connection->hostname[clen - elen - 1] == '.') {
++				return 0;
++			}
++		}
++	}
++
++	return -1;
++}
++
++static void
++parse_no_proxy_list(const gchar *no_proxy) {
++	gchar **items;
++	gint i;
++
++	g_return_if_fail(no_proxy != NULL);
++	g_return_if_fail(no_proxy_entries == NULL);
++
++	/* The no_proxy value is comma separated */
++	items = g_strsplit(no_proxy, ",", -1);
++
++	for(i = 0; items[i] != NULL; i++) {
++		PurpleProxyNoProxyEntry *entry = NULL;
++		gchar *hostname = NULL;
++		gchar *s_port = NULL;
++		gint port = 0;
++
++		s_port = g_strstr_len(items[i], -1, ":");
++		if(s_port != NULL && *s_port + 1 != '\0') {
++			/* read the port starting with the next character */
++			port = atoi(s_port + 1);
++
++			/* since we're done with the port, now turn item into a null
++			 * terminated string of just the hostname.
++			 */
++			*s_port = '\0';
++		}
++
++		/* items[i] is currently either the original or with :port removed */
++		hostname = items[i];
++
++		g_strstrip(hostname);
++
++		/* finally remove any leading .'s from hostname */
++		while(hostname[0] == '.') {
++			hostname += 1;
++		}
++
++		if(*hostname == '\0') {
++			continue;
++		}
++
++		/* finally add the new entry to the list */
++		entry = purple_proxy_no_proxy_entry_new(hostname, port);
++		no_proxy_entries = g_list_prepend(no_proxy_entries, entry);
++	}
++
++	g_strfreev(items);
++}
++
++/**************************************************************************
+  * Global Proxy API
+  **************************************************************************/
+ PurpleProxyInfo *
+@@ -2312,6 +2430,8 @@
+ 	const char *connecthost = host;
+ 	int connectport = port;
+ 	PurpleProxyConnectData *connect_data;
++	PurpleProxyNoProxyEntry entry;
++	GList *found = NULL;
+ 
+ 	g_return_val_if_fail(host       != NULL, NULL);
+ 	g_return_val_if_fail(port       >  0,    NULL);
+@@ -2325,9 +2445,31 @@
+ 	connect_data->data = data;
+ 	connect_data->host = g_strdup(host);
+ 	connect_data->port = port;
+-	connect_data->gpi = purple_proxy_get_setup(account);
+ 	connect_data->account = account;
+ 
++	/* Check if the hostname:port matches anything in the no_proxy environment
++	 * variable to determine if this connection should be proxied or not.
++	 */
++	entry.hostname = connect_data->host;
++	entry.port = connect_data->port;
++	found = g_list_find_custom(no_proxy_entries, &entry,
++	                           purple_proxy_no_proxy_compare);
++
++	if(found != NULL) {
++		purple_debug_info(
++			"proxy",
++			"directly connecting to %s:%d because it matched the no_proxy "
++			"environment variable.\n",
++			connect_data->host,
++			connect_data->port
++		);
++
++		connect_data->gpi = purple_proxy_info_new();
++		purple_proxy_info_set_type(connect_data->gpi, PURPLE_PROXY_NONE);
++	} else {
++		connect_data->gpi = purple_proxy_get_setup(account);
++	}
++
+ 	if ((purple_proxy_info_get_type(connect_data->gpi) != PURPLE_PROXY_NONE) &&
+ 		(purple_proxy_info_get_host(connect_data->gpi) == NULL ||
+ 		 purple_proxy_info_get_port(connect_data->gpi) <= 0)) {
+@@ -2380,6 +2522,8 @@
+ 	const char *connecthost = host;
+ 	int connectport = port;
+ 	PurpleProxyConnectData *connect_data;
++	PurpleProxyNoProxyEntry entry;
++	GList *found;
+ 
+ 	g_return_val_if_fail(host       != NULL, NULL);
+ 	g_return_val_if_fail(port       >  0,    NULL);
+@@ -2393,9 +2537,27 @@
+ 	connect_data->data = data;
+ 	connect_data->host = g_strdup(host);
+ 	connect_data->port = port;
+-	connect_data->gpi = purple_proxy_get_setup(account);
+ 	connect_data->account = account;
+ 
++	entry.hostname = connect_data->host;
++	entry.port = connect_data->port;
++	found = g_list_find_custom(no_proxy_entries, &entry,
++	                           purple_proxy_no_proxy_compare);
++	if(found != NULL) {
++		purple_debug_info(
++			"proxy",
++			"directly connecting to %s:%d because it matched the no_proxy "
++			"environment variable.\n",
++			connect_data->host,
++			connect_data->port
++		);
++
++		connect_data->gpi = purple_proxy_info_new();
++		purple_proxy_info_set_type(connect_data->gpi, PURPLE_PROXY_NONE);
++	} else {
++		connect_data->gpi = purple_proxy_get_setup(account);
++	}
++
+ 	if ((purple_proxy_info_get_type(connect_data->gpi) != PURPLE_PROXY_NONE) &&
+ 		(purple_proxy_info_get_host(connect_data->gpi) == NULL ||
+ 		 purple_proxy_info_get_port(connect_data->gpi) <= 0)) {
+@@ -2613,6 +2775,55 @@
+ purple_proxy_init(void)
+ {
+ 	void *handle;
++	const gchar *no_proxy_value = NULL;
++
++	/*
++	 * See Standardizing no_proxy in <https://about.gitlab.com/blog/2021/01/27/we-need-to-talk-no-proxy/> for this patch.
++	 */
++	no_proxy_value = g_getenv("no_proxy");
++	if(no_proxy_value == NULL) {
++		no_proxy_value = g_getenv("NO_PROXY");
++	}
++
++	if(no_proxy_value != NULL) {
++		/*
++		 * Some test cases (when we are connecting to libera with SOCKS5 on port
++		 * 6667):
++		 *
++		 * Use proxy because empty list.
++		 * $ no_proxy= pidgin --debug
++		 *
++		 * Ignore the leading ., match suffix and skip proxy.
++		 * $ no_proxy=.libera.chat:6667 pidgin --debug
++		 *
++		 * Treat empty port as unspecified and skip proxy.
++		 * $ no_proxy=libera.chat: pidgin --debug
++		 *
++		 * Ignore the first empty element and skip proxy.
++		 * $ no_proxy=,libera.chat:6667 pidgin --debug
++		 *
++		 * Should not work with empty host, if you want to skip proxy for
++		 * all hosts with a specific port please see next example.
++		 * $ no_proxy=:6667 pidgin --debug
++		 *
++		 * Should skip proxy.
++		 * $ no_proxy="*:6667" pidgin --debug
++		 *
++		 * Should NOT skip proxy.
++		 * $ no_proxy="*:6669" pidgin --debug
++		 *
++		 * Should skip proxy.
++		 * $ no_proxy="*" pidgin --debug
++		 */
++
++		parse_no_proxy_list(no_proxy_value);
++
++		purple_debug_info("proxy",
++		                  "Found no_proxy envrionment variable ('%s')\n",
++		                  no_proxy_value);
++		purple_debug_info("proxy", "Loaded %d no_proxy exceptions\n",
++		                  g_list_length(no_proxy_entries));
++	}
+ 
+ 	/* Initialize a default proxy info struct. */
+ 	global_proxy_info = purple_proxy_info_new();
+@@ -2660,4 +2871,8 @@
+ 
+ 	purple_proxy_info_destroy(global_proxy_info);
+ 	global_proxy_info = NULL;
++
++	g_list_free_full(no_proxy_entries,
++	                 (GDestroyNotify)purple_proxy_no_proxy_entry_free);
++	no_proxy_entries = NULL;
+ }

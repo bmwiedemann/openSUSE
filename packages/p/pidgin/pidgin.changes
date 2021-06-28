@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 06:24:45 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add pidgin-add-no_proxy-support.patch: add support of no_proxy
+  environment variable. (jsc#SLE-17111, pidgin.im#17518)
+
+-------------------------------------------------------------------
 Sun Jun 13 09:48:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.14.5:
