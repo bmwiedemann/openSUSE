@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oletools
-Version:        0.56.2
+Version:        0.60
 Release:        0
 Summary:        Tools to analyze security characteristics of MS Office and OLE files
 License:        BSD-2-Clause AND MIT
@@ -62,7 +62,6 @@ find oletools -name "*.py" -exec sed -i 's/\r\n/\n/' {} \+
 sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requires.txt
 %python_clone -a %{buildroot}%{_bindir}/ezhexviewer
 %python_clone -a %{buildroot}%{_bindir}/mraptor
-%python_clone -a %{buildroot}%{_bindir}/mraptor3
 %python_clone -a %{buildroot}%{_bindir}/olebrowse
 %python_clone -a %{buildroot}%{_bindir}/oledir
 %python_clone -a %{buildroot}%{_bindir}/oleid
@@ -70,19 +69,19 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_clone -a %{buildroot}%{_bindir}/olemeta
 %python_clone -a %{buildroot}%{_bindir}/oletimes
 %python_clone -a %{buildroot}%{_bindir}/olevba
-%python_clone -a %{buildroot}%{_bindir}/olevba3
 %python_clone -a %{buildroot}%{_bindir}/pyxswf
 %python_clone -a %{buildroot}%{_bindir}/rtfobj
 %python_clone -a %{buildroot}%{_bindir}/oleobj
 %python_clone -a %{buildroot}%{_bindir}/msodde
 %python_clone -a %{buildroot}%{_bindir}/olefile
+%python_clone -a %{buildroot}%{_bindir}/ftguess
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_rough_doctype and not test_encrypted and not test_crypt_return'
+%pytest -k 'not test_rough_doctype and not test_encrypted and not test_crypt_return and not test_all'
 
 %post
-%python_install_alternative ezhexviewer mraptor mraptor3 olebrowse oledir oleid olemap olemeta oletimes olevba olevba3 pyxswf rtfobj oleobj msodde olefile
+%python_install_alternative ezhexviewer mraptor olebrowse oledir oleid olemap olemeta oletimes olevba pyxswf rtfobj oleobj msodde olefile ftguess
 
 %postun
 %python_uninstall_alternative ezhexviewer
@@ -92,7 +91,6 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %license oletools/LICENSE.txt
 %python_alternative %{_bindir}/ezhexviewer
 %python_alternative %{_bindir}/mraptor
-%python_alternative %{_bindir}/mraptor3
 %python_alternative %{_bindir}/olebrowse
 %python_alternative %{_bindir}/oledir
 %python_alternative %{_bindir}/oleid
@@ -100,12 +98,12 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_alternative %{_bindir}/olemeta
 %python_alternative %{_bindir}/oletimes
 %python_alternative %{_bindir}/olevba
-%python_alternative %{_bindir}/olevba3
 %python_alternative %{_bindir}/pyxswf
 %python_alternative %{_bindir}/rtfobj
 %python_alternative %{_bindir}/oleobj
 %python_alternative %{_bindir}/msodde
 %python_alternative %{_bindir}/olefile
+%python_alternative %{_bindir}/ftguess
 %{python_sitelib}/*
 
 %changelog

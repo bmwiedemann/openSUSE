@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 21 07:17:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.60:
+ - ftguess: new tool to identify file formats and containers (issue #680)
+ - oleid: (issue #679)
+  - each indicator now has a risk level
+  - calls ftguess to identify file formats
+  - calls olevba+mraptor to detect and analyse VBA+XLM macros
+ - olevba:
+  - when XLMMacroDeobfuscator is available, use it to extract and deobfuscate XLM macros
+ - rtfobj:
+  - use ftguess to identify file type of OLE Package (issue #682)
+  - fixed bug in re_executable_extensions
+ - crypto: added PowerPoint transparent password '/01Hannes Ruescher/01' (issue #627)
+ - setup: XLMMacroDeobfuscator, xlrd2 and pyxlsb2 added as optional dependencies
+
+-------------------------------------------------------------------
 Sun May  9 09:48:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.56.2:
