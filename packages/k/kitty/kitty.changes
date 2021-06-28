@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 28 06:56:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.2:
+  * A new adjust_baseline option to adjust the vertical alignment
+    of text inside a line (#3734)
+  * A new url_excluded_characters option to exclude additional
+    characters when detecting URLs under the mouse (#3738)
+  * Fix a regression in 0.21.0 that broke rendering of private use
+    Unicode symbols followed by spaces, when they also exist not
+    followed by spaces (#3729)
+  * ssh kitten: Support systems where the login shell is a
+    non-POSIX shell (#3405)
+  * ssh kitten: Add completion (#3760)
+  * ssh kitten: Fix "Connection closed" message being printed by
+    ssh when running remote commands
+  * Add support for the XTVERSION escape code
+  * When displaying scrollback ensure that the window does not quit
+    if the amount of scrollback is less than a screen and the user
+    has the --quit-if-one-screen option enabled for less (#3740)
+  * Linux: Fix Emoji/bitmapped fonts not use able in symbol_map
+  * query terminal kitten: Allow querying font face and size
+    information (#3756)
+  * hyperlinked grep kitten: Fix context options not generating
+    contextual output (#3759)
+  * Allow using superscripts in tab titles (#3763)
+  * Unicode input kitten: Fix searching when a word has more than
+    1024 matches (#3773)
+
+-------------------------------------------------------------------
 Mon Jun 14 07:31:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.1:
