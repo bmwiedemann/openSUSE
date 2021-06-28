@@ -18,7 +18,7 @@
 
 
 Name:           cbonsai
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A bonsai tree generator for your terminal
 License:        GPL-3.0-or-later
