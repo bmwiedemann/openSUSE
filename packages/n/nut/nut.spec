@@ -183,6 +183,9 @@ sed -i s:%{_prefix}/local/ups/bin:/bin: conf/upssched.conf.sample.in
 
 %build
 autoreconf -fvi
+%if 0%{?suse_version} > 1500
+export CXXFLAGS="%{optflags} -std=gnu++14"
+%endif
 %configure \
 	--disable-static \
 	--sysconfdir=%{CONFPATH} \

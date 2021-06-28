@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 11:43:12 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with GCC11 (as default in GCC11 is now -std=gnu++17)
+
+-------------------------------------------------------------------
 Mon Dec 21 21:34:16 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - use pkg-config to determine version of libgd
