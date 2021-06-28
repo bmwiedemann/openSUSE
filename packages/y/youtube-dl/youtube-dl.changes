@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 27 15:13:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2021.06.06
+  * [facebook] Improve login required detection
+  * [youporn] Fix formats and view count extraction
+  * [orf:tvthek] Fix thumbnails extraction
+  * [formula1] Fix extraction
+  * [ard] Relax URL regular expression and fix video ids
+  * [ustream] Detect https embeds
+  * [ted] Prefer own formats over external sources
+  * [twitch:clips] Improve extraction
+  * [twitch:clips] Add access token query to download URLs
+  * [youtube] Fix get_video_info request
+  * [vimeo] Fix vimeo pro embed extraction
+  * [redbulltv] Fix embed data extraction
+  * [shahid] Relax URL regular expression
+
+-------------------------------------------------------------------
 Thu May 20 09:51:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.05.16
