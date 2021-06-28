@@ -1,3 +1,14 @@
+-------------------------------------------------------------------
+Mon May 31 15:16:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.2
+  * Add bf_xopen, bf_xclose, bf_alloc, bf_free symbols to keep it
+    ABI compatible.
+  * Bump zebra libraries from 0:1:0 to 0:2:0
+  * A few typos fixed.
+  * Convert some Zebra configuration files in ISO-8859-1 to UTF-8.
+  * New generated pkg-config file zebra.pc
+
 ------------------------------------------------------------------
 Sun Aug 16 13:35:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 

@@ -239,4 +239,12 @@
 - remove idzebra-2.0.55-tcl-8.5-abuild.patch (upstream)</comment>
     <requestid>827036</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d2f3fe4072c6350fe1fdf142398c3b24</srcmd5>
+    <version>2.2.2</version>
+    <time>1624887218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902719</requestid>
+  </revision>
 </revisionlist>

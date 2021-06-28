@@ -17,19 +17,20 @@
 
 
 Name:           idzebra
-Version:        2.1.4
+Version:        2.2.2
 Release:        0
 Summary:        Fielded Free Text Engine with a Z39.50 Frontend
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
-URL:            http://www.indexdata.com/zebra/
-Source:         http://ftp.indexdata.com/pub/zebra/%{name}-%{version}.tar.gz
-BuildRequires:  libexpat-devel
-BuildRequires:  libyaz-devel
-BuildRequires:  openssl-devel
-BuildRequires:  readline-devel
-BuildRequires:  tcl-devel
-BuildRequires:  tcpd-devel
+URL:            https://www.indexdata.com/resources/software/zebra/
+Source:         http://ftp.indexdata.dk/pub/zebra/idzebra-%{version}.tar.gz
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(tcl)
+BuildRequires:  pkgconfig(yaz)
 Requires:       yaz
 
 %description
@@ -63,7 +64,7 @@ free text indexing and retrieval engine with a Z39.50 front-end.
 
 %build
 CFLAGS="%{optflags} -fno-strict-aliasing" \
-%configure --disable-static --with-pic --with-yazconfig=%{_bindir}
+%configure --disable-static --with-pic --with-yaz=pkg
 %make_build
 for f in examples/marcxml/*.x?l; do
   tr -d '\15' <$f >$f.tmp && mv $f.tmp $f
@@ -135,9 +136,10 @@ find examples -type f -name '*.pl' -exec chmod -x {} \;
 %{_mandir}/*/*
 
 %files devel
-%{_libdir}/*.so
 %{_includedir}/*
 %{_datadir}/aclocal/*
+%{_libdir}/lib*.so
+%{_libdir}/pkgconfig/zebra.pc
 
 %files doc
 %doc %{DOCFILES}
