@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 21 00:09:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.45.1:
+  * Reverts the changes made to plot3d to fix the mesh_lines_color
+    option in newer versions of Gnuplot, because it breaks plot3d
+    for users of older versions.
+  * Bug fixes:
+    - 926: sign errors in cartan package
+    - 3789: package ezunits: ev(dimensions(u), nouns) stack
+      overflow
+    - 3793: plot2d fails on small x-range
+    - 3796 plot3d doesn't support rotation in 5.45
+    - 3797: plot2d(0, ...) gives "can't plot with empty y range"
+
+-------------------------------------------------------------------
 Mon May 24 11:45:11 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.45.0:

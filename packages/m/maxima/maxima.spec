@@ -33,7 +33,7 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-suse
 
 Name:           maxima
-Version:        5.45.0
+Version:        5.45.1
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
