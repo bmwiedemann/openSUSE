@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Mon May 24 07:03:42 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- Temporarily removing cargo audit
+
+-------------------------------------------------------------------
+Mon May 24 06:34:57 UTC 2021 - ed@s5h.net
+
+- Update to version 0.4.1~git0.11a9aa8:
+  * Condensing clock and fixing for 32bit
+  * Bumping version
+  * Fixes:
+  * Fixing some minor issues with man pages
+  * Adding credits
+  * Increasing editor temp file namespace
+  * Bumping version
+  * fixing pleaseedit tmp file and list authentication
+  * Replace Ed with Jim (#2)
+  * Documentation fixes
+
+-------------------------------------------------------------------
+Fri May 21 20:30:32 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- vendor bumped 
+
+-------------------------------------------------------------------
+Fri May 21 20:18:19 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- cargo audit
+
+-------------------------------------------------------------------
+Fri May 21 11:02:50 UTC 2021 - ed@s5h.net
+
+- Update to version 0.4.1~git0.11a9aa8:
+  * Condensing clock and fixing for 32bit
+  * Bumping version
+  * Fixes:
+  * Fixing some minor issues with man pages
+  * Adding credits
+  * Increasing editor temp file namespace
+  * Bumping version
+  * fixing pleaseedit tmp file and list authentication
+  * Replace Ed with Jim (#2)
+  * Documentation fixes
+
+-------------------------------------------------------------------
+Thu May 20 22:37:05 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- %files should be above %changelog
+
+-------------------------------------------------------------------
+Thu May 20 22:32:30 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- Renaming to pleaser to match crate
+
+-------------------------------------------------------------------
+Thu May 20 22:21:28 UTC 2021 - ed@s5h.net
+
+- Update to version 0.4.1~git0.11a9aa8:
+  * Condensing clock and fixing for 32bit
+  * Bumping version
+  * Fixes:
+  * Fixing some minor issues with man pages
+  * Adding credits
+  * Increasing editor temp file namespace
+  * Bumping version
+  * fixing pleaseedit tmp file and list authentication
+  * Replace Ed with Jim (#2)
+  * Documentation fixes
+
+-------------------------------------------------------------------
+Sun Apr 25 16:31:05 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- Update to version 0.4.1~git0.11a9aa8:
+  * Condensing clock and fixing for 32bit
+
+-------------------------------------------------------------------
+Sat Apr 24 07:53:11 UTC 2021 - ed@s5h.net
+
+- Update to version 0.4.0~git0.d7209c0:
+  * Bumping version
+  * Fixes:
+  * Fixing some minor issues with man pages
+  * Adding credits
+  * Increasing editor temp file namespace
+  * Bumping version
+  * fixing pleaseedit tmp file and list authentication
+  * Replace Ed with Jim (#2)
+  * Documentation fixes
+  * Adding escapes to parameter spaces
+
+-------------------------------------------------------------------
+Wed Mar 17 18:43:16 UTC 2021 - ed neville <ed-suse.com@s5h.net>
+
+- Initial commit
