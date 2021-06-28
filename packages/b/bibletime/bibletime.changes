@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 16:03:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit build dependency.
+
+-------------------------------------------------------------------
 Fri Jan 15 17:21:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
