@@ -485,4 +485,26 @@ s etc.
   tpm2_eventlog command (boo#1187360) (forwarded request 900773 from aplanas)</comment>
     <requestid>900775</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bcf8e9d151dd5f1c24612b73ccd7fe30</srcmd5>
+    <version>5.1.1</version>
+    <time>1624887226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.1:
+  - tpm2_import: fix fixed AES key CVE-2021-3565
+    - tpm2_import used a fixed AES key for the inner wrapper, which means that
+      a MITM attack would be able to unwrap the imported key. To fix this,
+      ensure the key size is 16 bytes or bigger and use OpenSSL to generate a
+      secure random AES key.
+- Avoid pandoc build dependency, use prebuilt man pages everywhere
+- Drop 0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch, now upstream
+- Drop _service, unused
+- Drop unused unzip build dependency
+- Drop autoreconfigure call, no longer necessary
+- Use %autosetup
+- Verify tarball signature
+- Build against efivar
+- Drop %check section, tests weren't built, so that was a noop (forwarded request 902778 from favogt)</comment>
+    <requestid>902783</requestid>
+  </revision>
 </revisionlist>

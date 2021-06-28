@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 28 09:09:46 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- update to version 5.1.1:
+  - tpm2_import: fix fixed AES key CVE-2021-3565
+    - tpm2_import used a fixed AES key for the inner wrapper, which means that
+      a MITM attack would be able to unwrap the imported key. To fix this,
+      ensure the key size is 16 bytes or bigger and use OpenSSL to generate a
+      secure random AES key.
+- Avoid pandoc build dependency, use prebuilt man pages everywhere
+- Drop 0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch, now upstream
+- Drop _service, unused
+- Drop unused unzip build dependency
+- Drop autoreconfigure call, no longer necessary
+- Use %autosetup
+- Verify tarball signature
+- Build against efivar
+- Drop %check section, tests weren't built, so that was a noop
+
+-------------------------------------------------------------------
 Fri Jun 18 14:44:25 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch to fix the

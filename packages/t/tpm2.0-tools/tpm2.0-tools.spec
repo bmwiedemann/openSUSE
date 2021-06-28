@@ -17,47 +17,40 @@
 
 
 Name:           tpm2.0-tools
-Version:        5.1
+Version:        5.1.1
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
+Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz.asc
+# git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
+Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
-Patch1:         0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch
 Patch2:         0001-tpm2_checkquote-fix-uninitialized-variable.patch
 Patch3:         0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
+BuildRequires:  pkgconfig(efivar)
+# Pandoc is used for generating the man pages, but since 3.0.4 prebuilt man
+# pages are shipped with the distribution tarball and we don't need to generate
+# them any more. Pandoc is only available on openSUSE (not 32-bit x86) and not
+# in Ring 1 (no haskell), so can't be used as build dependency here.
+%if 0
 %if 0%{?is_opensuse}
 %ifnarch %{ix86}
-# releases prior to 3.0.4 required pandoc for building the man pages. On SLE
-# we don't have pandoc and it requires a complete haskell stack so adding it
-# is out of the question just for man pages.
-#
-# since 3.0.4 the man pages are shipped with the distribution tarball and we
-# don't need to generate them any more. On openSUSE we can still keep this
-# dependency for having fresh builds of the man pages (if that helps
-# anything?).
-#
-# Update: In the 3.1.0 a required patch is still missing and the man pages
-# won't be installed. they're shipped, though. so if pandoc isn't installed we
-# need to install them explicitly.
 BuildRequires:  pandoc
+%endif
 %endif
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  tpm2.0-abrmd-devel
-BuildRequires:  unzip
 Recommends:     tpm2.0-abrmd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Trusted Computing is a set of specifications published by the Trusted
@@ -67,23 +60,11 @@ provides tools for enablement and configuration of the TPM 2.0 and
 associated interfaces.
 
 %prep
-%setup -q -n tpm2-tools-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n tpm2-tools-%{version}
 
 %build
-# TODO: remove autoreconf once fix_pie_linking patch is no longer needed
-# until then we need to repair the version specification which configure.ac
-# wants to read from GIT which isn't there.
-sed -i 's/m4_esyscmd_s([^)]\+)/%{version}/g' configure.ac
-autoreconf -fvi
 %configure --disable-static
 make %{?_smp_mflags}
-
-%check
-make %{?_smp_mflags} check
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
