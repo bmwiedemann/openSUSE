@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 21:46:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove real directory of %{python_sitelib}/pytz/zoneinfo when
+  upgrading, before it is replaced by a symlink (bsc#1185748).
+
+-------------------------------------------------------------------
 Fri May 28 09:56:44 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

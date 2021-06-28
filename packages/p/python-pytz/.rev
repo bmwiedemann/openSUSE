@@ -347,4 +347,14 @@
     <comment></comment>
     <requestid>895961</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>630fe254d3d856c8fd62190cced5f46f</srcmd5>
+    <version>2021.1</version>
+    <time>1624887200</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove real directory of %{python_sitelib}/pytz/zoneinfo when
+  upgrading, before it is replaced by a symlink (bsc#1185748).
+</comment>
+    <requestid>902223</requestid>
+  </revision>
 </revisionlist>

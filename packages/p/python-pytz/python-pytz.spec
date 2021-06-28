@@ -82,6 +82,11 @@ ln -s %{_datadir}/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
 %check
 %pyunittest discover -v
 
+%pre
+if [ $1 -gt 1 ] ; then
+[ "$(readlink -e %{python_sitelib}/pytz/zoneinfo)" == "%{python_sitelib}/pytz/zoneinfo" ] && rm -rf %{python_sitelib}/pytz/zoneinfo
+fi || :
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
