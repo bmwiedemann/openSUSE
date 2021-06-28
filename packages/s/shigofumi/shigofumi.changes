@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:10:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9
+  * Box types (e.g. a statutory auditor) added to testing ISDS
+    instance in 2017-05 are recongized now.
+  * Fixed a memory leak in an error path of tokenizing a command line
+- Drop upstream fixed shigofumi.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 17:17:17 UTC 2020 - olaf@aepfle.de
 
 - Fix build with shigofumi.patch

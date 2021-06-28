@@ -25,4 +25,12 @@
     <comment>- Fix build with shigofumi.patch</comment>
     <requestid>812271</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>340d458befdabe8bd5a490a9b9b0e0d9</srcmd5>
+    <version>0.9</version>
+    <time>1624887222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902731</requestid>
+  </revision>
 </revisionlist>
