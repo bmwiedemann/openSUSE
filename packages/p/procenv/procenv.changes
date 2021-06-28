@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 28 06:59:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.58:
+  * darwin: Support --libs.
+  * darwin: Support AF_LINK for --network.
+  * docs: Remove TOC.
+
+-------------------------------------------------------------------
 Mon Jun 21 07:12:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.57:
