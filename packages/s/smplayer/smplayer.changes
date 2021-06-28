@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 19:58:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit build dependency.
+
+-------------------------------------------------------------------
 Mon Jun  7 09:58:00 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Added smplayer-21.1.0-gcc11.diff to fix Factory build.
