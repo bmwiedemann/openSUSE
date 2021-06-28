@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 27 16:48:49 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Fix build on GCC11
+    * Add opensc-gcc11.patch from Fedora 
+    (https://github.com/OpenSC/OpenSC/pull/2241/)
+
+-------------------------------------------------------------------
+Fri Mar 12 22:58:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- move licenses to licensedir 
+
+-------------------------------------------------------------------
 Fri Nov 27 19:27:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - OpenSC 0.21.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        %{name}-rpmlintrc
 # Register with p11-kit
 # https://web.archive.org/web/20111225073733/http://www.opensc-project.org/opensc/ticket/390
 Source3:        opensc.module
+Patch0:         opensc-gcc11.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
@@ -59,6 +60,7 @@ may require third party proprietary software.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
@@ -70,7 +72,6 @@ may require third party proprietary software.
 
 %install
 %make_install
-cp COPYING NEWS README %{buildroot}%{_docdir}/%{name}
 # Private library.
 rm %{buildroot}%{_libdir}/libopensc.so
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.module
@@ -79,10 +80,8 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.mo
 %postun -p /sbin/ldconfig
 
 %files
-%doc %dir %{_docdir}/%{name}
-%license %{_docdir}/%{name}/COPYING
-%doc %{_docdir}/%{name}/NEWS
-%doc %{_docdir}/%{name}/README
+%license COPYING
+%doc NEWS README
 %doc %{_docdir}/%{name}/tools.html
 %doc %{_docdir}/%{name}/files.html
 %doc %{_docdir}/%{name}/opensc.conf
