@@ -1,7 +1,7 @@
 #
 # spec file for package scintilla
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define tar_ver 375
-%define so_ver 3.0
-%define libname libscintilla3
+%define tar_ver 510
+%define so_ver 5.1
+%define libname libscintilla5
 Name:           scintilla
-Version:        3.7.5
+Version:        5.1.0
 Release:        0
 Summary:        A source code editing component
 License:        MIT
-Group:          Development/Libraries/C and C++
-Url:            http://www.scintilla.org
+URL:            http://www.scintilla.org
 Source:         http://sourceforge.net/projects/scintilla/files/scintilla/%{version}/%{name}%{tar_ver}.tgz
 Patch0:         %{name}-shared.patch
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -46,7 +44,6 @@ time.
 
 %package -n %{libname}
 Summary:        A source code editing component
-Group:          System/Libraries
 
 %description -n %{libname}
 Scintilla is a code editing component. It includes features for
@@ -58,7 +55,6 @@ time.
 
 %package -n libscintilla-devel
 Summary:        Development files for Scintilla, a code editing component
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(glib-2.0)
@@ -73,41 +69,35 @@ This subpackage contains the header files for developing
 applications that want to make use of the Scintilla library.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1 -n %{name}
 
 %build
-cd gtk
-make CFLAGS="%{optflags}" GTK3=1 %{?_smp_mflags} LIBDIR=%{_libdir} -I%{_includedir}/glib-2.0 VERSION=`echo %{so_ver} | sed 's|\.0*|:|'`
+%make_build -C gtk GTK3=1 LIBDIR=%{_libdir} VERSION=`echo %{so_ver} | sed 's|\.0*|:|'` static
 
 %install
 mkdir -p %{buildroot}%{_includedir}/%{name}/src
-mkdir -p %{buildroot}%{_libdir}
 cp include/* %{buildroot}%{_includedir}/%{name}
 cp src/*.h %{buildroot}%{_includedir}/%{name}/src
-mkdir -p lib
-libtool --mode=install install bin/libscintilla.la `pwd`/lib
-install -m755 lib/*.so.3 %{buildroot}%{_libdir}
-ln -s libscintilla.so.3 %{buildroot}%{_libdir}/libscintilla.so
-mkdir -p %{buildroot}/%{_defaultdocdir}
-mv doc %{buildroot}/%{_defaultdocdir}/%{name}
-cp License.txt %{buildroot}/%{_defaultdocdir}/%{name}
-rmdir %{buildroot}%{_includedir}/%{name}/src || :
-%fdupes -s %{buildroot}/%{_defaultdocdir}/%{name}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+mkdir -p %{buildroot}%{_libdir}
+libtool --mode=install install bin/libscintilla.la %{buildroot}%{_libdir}
+# Delete libtool archive and static lib
+find %{buildroot}%{_libdir} -name "*.a" -delete -print
+find %{buildroot}%{_libdir} -name "*.la" -delete -print
+
+rmdir %{buildroot}%{_includedir}/%{name}/src || :
+
+%post -n %{libname} -p %run_ldconfig
+%postun -n %{libname} -p %run_ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
-%{_libdir}/libscintilla.so.3
+%license License.txt
+%{_libdir}/libscintilla.so.*
 
 %files -n libscintilla-devel
-%defattr(-,root,root)
+%license License.txt
+%doc doc
 %{_libdir}/libscintilla.so
-%dir %{_defaultdocdir}/%{name}
-%{_defaultdocdir}/%{name}/*
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
+%{_includedir}/%{name}/
 
 %changelog
