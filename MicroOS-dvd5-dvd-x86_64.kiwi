@@ -438,7 +438,7 @@
       <repopackage name="libavahi-glib1" arch="x86_64"/>
       <repopackage name="libavcodec58_134" arch="x86_64"/>
       <repopackage name="libavformat58_76" arch="x86_64"/>
-      <repopackage name="libavif10" arch="x86_64"/>
+      <repopackage name="libavif12" arch="x86_64"/>
       <repopackage name="libavtp0" arch="x86_64"/>
       <repopackage name="libavutil56_70" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
@@ -903,12 +903,12 @@
       <repopackage name="libpoppler-cpp0" arch="x86_64"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
-      <repopackage name="libpoppler110" arch="x86_64"/>
+      <repopackage name="libpoppler111" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal0" arch="x86_64"/>
       <repopackage name="libportaudio2" arch="x86_64"/>
       <repopackage name="libprocps8" arch="x86_64"/>
-      <repopackage name="libprotobuf26" arch="x86_64"/>
+      <repopackage name="libprotobuf28" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
       <repopackage name="libpulse-mainloop-glib0" arch="x86_64"/>

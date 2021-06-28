@@ -3035,6 +3035,7 @@ unsorted:
   - dynamic-wallpapers-11x 
   - dynamips 
   - dzen2 
+  - e-antic-devel 
   - e16 
   - e2fsprogs-devel 
   - e3 
@@ -8733,7 +8734,6 @@ unsorted:
   - libKF5TextWidgets5-32bit: [x86_64] 
   - libKF5ThreadWeaver5-32bit: [x86_64] 
   - libKF5UnitConversion5-32bit: [x86_64] 
-  - libKF5Vkontakte2 
   - libKF5Wallet5-32bit: [x86_64] 
   - libKF5WebKit5 
   - libKF5WebKit5-32bit: [x86_64] 
@@ -9528,7 +9528,7 @@ unsorted:
   - libavformat58_76-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif10-32bit: [x86_64] 
+  - libavif12-32bit: [x86_64] 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -10347,6 +10347,7 @@ unsorted:
   - libeXosip2 
   - libeXosip2-12 
   - libeXosip2-devel 
+  - libeantic1 
   - libeb16 
   - libebml-devel 
   - libebml5-32bit: [x86_64] 
@@ -11594,8 +11595,6 @@ unsorted:
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
-  - libkvkontakte-devel 
-  - libkvkontakte-lang 
   - libkwalletbackend5-5-32bit: [x86_64] 
   - libkwin-xcb0 
   - libkwnn0 
@@ -12744,9 +12743,9 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler-qt6-1 
+  - libpoppler-qt6-2 
   - libpoppler-qt6-devel 
-  - libpoppler110-32bit: [x86_64] 
+  - libpoppler111-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -12787,13 +12786,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite26-32bit: [x86_64] 
+  - libprotobuf-lite28-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf26-32bit: [x86_64] 
-  - libprotoc26 
-  - libprotoc26-32bit: [x86_64] 
+  - libprotobuf28-32bit: [x86_64] 
+  - libprotoc28 
+  - libprotoc28-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -14271,6 +14270,9 @@ unsorted:
   - libvpd2-devel-32bit: [x86_64] 
   - libvpx-devel 
   - libvpx6-32bit: [x86_64] 
+  - libvsapm-devel 
+  - libvsapm-tools 
+  - libvsapm1 
   - libvsgpt-devel 
   - libvsgpt-tools 
   - libvsgpt1 
@@ -21068,7 +21070,6 @@ unsorted:
   - python-zope.i18nmessageid-doc 
   - python2-aexpect 
   - python2-appindicator 
-  - python2-libfwsi 
   - python2-pip 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
@@ -21261,6 +21262,7 @@ unsorted:
   - python3-libvhdi 
   - python3-libvmdk 
   - python3-libvoikko 
+  - python3-libvsapm 
   - python3-libvsgpt 
   - python3-libvshadow 
   - python3-libvslvm 
@@ -21352,6 +21354,7 @@ unsorted:
   - python3-presagemate 
   - python3-pwquality 
   - python3-pycadf 
+  - python3-pyeantic 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -41247,6 +41250,7 @@ unsorted:
   - unifdef 
   - unifraktur-fonts 
   - unionfs-fuse 
+  - unique-factory-devel 
   - unit-api 
   - unit-api-javadoc 
   - unittest-cpp-devel 
