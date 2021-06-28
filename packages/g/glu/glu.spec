@@ -1,7 +1,7 @@
 #
 # spec file for package glu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 Name:           glu
 %define lname	libGLU1
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        OpenGL utility library
 License:        SUSE-SGI-FreeB-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://cgit.freedesktop.org/mesa/glu/
+URL:            http://cgit.freedesktop.org/mesa/glu/
 
 #Git-Clone:	git://anongit.freedesktop.org/mesa/glu
 #Git-Web:	http://cgit.freedesktop.org/mesa/glu/
 Source:         https://mesa.freedesktop.org/archive/glu/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         u_autoconf-Don-t-modify-CFLAGS-in-configure-scripts.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -87,7 +86,6 @@ compiling programs with GLU.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 if [ ! -e configure ]; then
