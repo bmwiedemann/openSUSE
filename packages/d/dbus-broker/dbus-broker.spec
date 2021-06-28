@@ -17,7 +17,7 @@
 
 
 Name:           dbus-broker
-Version:        28
+Version:        29
 Release:        0
 Summary:        XDG-conforming message bus implementation
 License:        Apache-2.0
@@ -25,16 +25,16 @@ Group:          System/Daemons
 URL:            https://github.com/bus1/dbus-broker
 
 Source:         https://github.com/bus1/dbus-broker/releases/download/v%version/dbus-broker-%version.tar.xz
-BuildRequires:  linux-glibc-devel >= 4.13
+BuildRequires:  linux-glibc-devel >= 4.17
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(audit) >= 2.7
+BuildRequires:  pkgconfig(audit) >= 3.0
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(expat) >= 2.2.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(libcap-ng) >= 0.6
-BuildRequires:  pkgconfig(libselinux) >= 2.5
+BuildRequires:  pkgconfig(libselinux) >= 3.2
 BuildRequires:  pkgconfig(libsystemd) >= 230
 BuildRequires:  pkgconfig(systemd) >= 230
 Provides:       bundled(c-dvar) = 1+

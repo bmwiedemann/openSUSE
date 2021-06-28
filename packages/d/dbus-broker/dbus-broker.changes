@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  2 13:23:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 29
+  * Improve SELinux audit messages.
+  * Linux >=4.17 is now a hard requirement.
+  * Fix startup failures when at-console users have
+    consecutive UIDs.
+
+-------------------------------------------------------------------
 Wed Mar 17 15:10:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 28
