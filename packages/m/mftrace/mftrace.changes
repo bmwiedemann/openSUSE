@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 17 04:50:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unnecessary BuildRequires on python-devel. 
+
+-------------------------------------------------------------------
 Tue Jan 05 04:24:13 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 1.2.20

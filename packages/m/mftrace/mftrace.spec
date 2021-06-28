@@ -28,13 +28,11 @@ Source1:        gf2pbm.1
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  potrace
-BuildRequires:  python-devel
 Requires:       bitmap_tracing
 Requires:       fontforge
 Requires:       t1utils
 Requires:       texlive
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%py_requires
 
 %description
 Mftrace is a small Python program that lets you trace a TeX bitmap font
