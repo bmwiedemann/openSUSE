@@ -1,7 +1,7 @@
 #
 # spec file for package mojave-gtk-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define         _name Mojave-gtk-theme
-%define         _version 2020-11-29
+%define         _version 2021-06-23
 Name:           mojave-gtk-theme
-Version:        20201129
+Version:        20210623
 Release:        0
 Summary:        MacOS Mojave like theme for GTK 3, Gnome-Shell and others
 License:        GPL-3.0-only
@@ -54,6 +54,6 @@ mkdir -p %{buildroot}%{_datadir}/themes
 %files
 %license COPYING
 %doc README.md
-%{_datadir}/themes/
+%{_datadir}/themes/*
 
 %changelog

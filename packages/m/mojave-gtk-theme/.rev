@@ -77,4 +77,14 @@
   * Fix gnome 3.38 issues</comment>
     <requestid>851775</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fd6bc746e9cff37872a3b3ef08ae7dd</srcmd5>
+    <version>20210623</version>
+    <time>1624887210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20210623:
+  * Several issues fixed
+  * Full gnome 40 support</comment>
+    <requestid>902829</requestid>
+  </revision>
 </revisionlist>
