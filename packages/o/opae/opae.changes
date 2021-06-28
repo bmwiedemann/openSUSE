@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  4 09:10:41 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add patches to fix compilation with GCC11
+  - opae-libs-fix-macro-indentation.patch
+  - opae-libs-xfpga-fix-strnlen-argument.patch
+
+-------------------------------------------------------------------
 Wed Oct  7 09:40:19 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 2.0.0-1

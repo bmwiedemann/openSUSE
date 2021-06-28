@@ -39,6 +39,8 @@ Source0:        %{name}-%{version}%{git_ver}.tar.bz2
 Patch0:         opae-missing-shebang.patch
 Patch1:         opae-fix-linking-issue.patch
 Patch2:         opae-support-OBS-build.patch
+Patch3:         opae-libs-fix-macro-indentation.patch
+Patch4:         opae-libs-xfpga-fix-strnlen-argument.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  boost-devel
 BuildRequires:  cli11-devel
@@ -145,6 +147,8 @@ Libraries for the Open Programmable Acceleration Engine Libraries tools.
 %patch0
 %patch1
 %patch2
+%patch3
+%patch4
 
 %build
 export RPM_OPT_FLAGS
