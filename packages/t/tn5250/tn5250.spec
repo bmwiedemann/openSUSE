@@ -1,7 +1,7 @@
 #
 # spec file for package tn5250
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,44 +20,40 @@ Name:           tn5250
 Version:        0.16.5
 Release:        0
 Summary:        5250 Emulator
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-Url:            http://tn5250.sourceforge.net/
+URL:            http://tn5250.sourceforge.net/
 Source:         http://sourceforge.net/projects/tn5250/files/tn5250/0.16.5/tn5250-0.16.5.tar.gz
 Source1:        README.SUSE
 Patch:          tn5250-0.16.2-terminfo.dif
 Patch1:         tn5250-0.16.5-strings.patch
 Patch2:         tn5250-0.16.5-no-build-date.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 
 %description
 The 5250 is most commonly used for connecting to IBM's AS/400.	While
-one can connect to an AS/400 with a VT100 emulator, it is not ideal. 
+one can connect to an AS/400 with a VT100 emulator, it is not ideal.
 The problem is that the 5250 is a screen at a time terminal, whereas
 the VT100 is a character at a time device.  The emulator uses telnet's
 binary mode to transfer the 5250 data stream.
 
+%package -n lib5250-0
+Summary:        Component library of the tn5250 emulator
+Group:          System/Libraries
 
-
-Authors:
---------
-    Michael Madore <mmadore@blarg.net>
+%description -n lib5250-0
+Component library of the tn5250 emulator.
 
 %package devel
-Summary:        5250 Emulator
+Summary:        Header files for the 5250 Emulator
 Group:          Productivity/Networking/Other
 Provides:       tn5250:/usr/include/tn5250/tn5250d.h
-Requires:       tn5250 = %{version}
+Requires:       lib5250-0 = %{version}
 
 %description devel
-The 5250 is most commonly used for connecting to IBM's AS/400.	While
-one can connect to an AS/400 with a VT100 emulator, it is not ideal. 
-The problem is that the 5250 is a screen at a time terminal, whereas
-the VT100 is a character at a time device.  The emulator uses telnet's
-binary mode to transfer the 5250 data stream.
+Header files for use with the tn5250 library.
 
 %prep
 %setup
@@ -70,30 +66,29 @@ cp -p %{SOURCE1} .
 DIR=$(find . -name configure -printf "%h\n")
 %{?suse_update_config:%{suse_update_config -f $DIR }}
 autoreconf -f -i
-%configure --disable-static --with-pic
-%{__make} %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/bin
-make DESTDIR=$RPM_BUILD_ROOT install
-%{__rm} -f %{buildroot}%{_libdir}/*.la
+mkdir -p "%{buildroot}/%{_bindir}"
+%make_install
+rm -f %{buildroot}%{_libdir}/*.la
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%post   -n lib5250-0 -p /sbin/ldconfig
+%postun -n lib5250-0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc BUGS COPYING README AUTHORS BUGS ChangeLog NEWS TODO XTerm README.SUSE
-%{_libdir}/lib5250.so.0
-%{_libdir}/lib5250.so.0.0.0
 /usr/bin/*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 /usr/share/tn5250
 
+%files -n lib5250-0
+%{_libdir}/lib5250.so.0
+%{_libdir}/lib5250.so.0.0.0
+
 %files devel
-%defattr(-,root,root)
 /usr/include/tn5250.h
 /usr/include/tn5250
 %{_libdir}/lib5250.so

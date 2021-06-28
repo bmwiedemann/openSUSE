@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 14 13:30:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shared library packaging policy.
+- Remove --with-pic (no effect with --disable-static).
+- Remove old specfile constructs.
+
+-------------------------------------------------------------------
 Mon Nov 13 15:47:32 UTC 2017 - dimstar@opensuse.org
 
 - Rename README.SuSE to README.SUSE, adhering to the correct
