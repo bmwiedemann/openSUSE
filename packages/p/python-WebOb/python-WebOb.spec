@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 Name:           python-WebOb
 Version:        1.8.7
 Release:        0
@@ -35,10 +34,10 @@ BuildRequires:  python3-Sphinx
 BuildArch:      noarch
 %ifpython2
 # We need SSL support
-BuildRequires:  %{oldpython}
-Requires:       %{oldpython}
-Obsoletes:      %{oldpython}-webob < %{version}
-Provides:       %{oldpython}-webob = %{version}
+BuildRequires:  python3
+Requires:       python3
+Obsoletes:      python3-webob < %{version}
+Provides:       python3-webob = %{version}
 %endif
 %python_subpackages
 

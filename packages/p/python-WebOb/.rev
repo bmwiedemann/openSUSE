@@ -366,4 +366,14 @@
     <comment></comment>
     <requestid>880534</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>08dc8bb8738ff2cf211bae73271b6845</srcmd5>
+    <version>1.8.7</version>
+    <time>1624887201</time>
+    <user>dimstar_suse</user>
+    <comment>- We should require python3-* packages, not python-* ones, which
+  are python2.
+</comment>
+    <requestid>902224</requestid>
+  </revision>
 </revisionlist>

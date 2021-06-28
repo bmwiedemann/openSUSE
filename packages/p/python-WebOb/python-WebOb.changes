@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 22:29:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We should require python3-* packages, not python-* ones, which
+  are python2.
+
+-------------------------------------------------------------------
 Sat Mar 20 19:02:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - fix test suite for python39 (based on gh#Pylons/webob#390) 
