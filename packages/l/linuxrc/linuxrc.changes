@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Jun 25 13:30:12 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#268
+- read rules.xml if autoyast option indicates a rules-based setup
+  (bsc#1187235)
+- 8.0.2
+
+--------------------------------------------------------------------
 Thu Jun 10 06:56:01 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#264
