@@ -1,7 +1,7 @@
 #
-# spec file for package vtk
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -150,6 +150,10 @@ Patch13:        0001-Fix-PyVTKAddFile_-function-signature-mismatch.patch
 Patch14:        0001-Replace-invalid-GL_LINE-with-GL_LINES-for-glDrawArra.patch
 # PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/issues/18033
 Patch15:        vtk-freetype-2.10.3-replace-FT_CALLBACK_DEF.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/issues/18194
+Patch16:        vtk-std_numeric_limits.patch
+# PATCH-FIX-OPENSUSE -- create python package metadata (egg-info) despite not building a wheel
+Patch17:        vtk-opensuse-python-metadata.patch
 BuildRequires:  R-base-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.4
@@ -166,12 +170,12 @@ BuildRequires:  libtiff-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  utfcpp-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5OpenGLExtensions)
 BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(eigen3) >= 2.91.0
 BuildRequires:  pkgconfig(expat)
@@ -270,7 +274,6 @@ Requires:       pkgconfig(Qt5Core)
 Requires:       pkgconfig(Qt5OpenGL)
 Requires:       pkgconfig(Qt5OpenGLExtensions)
 Requires:       pkgconfig(Qt5Sql)
-Requires:       pkgconfig(Qt5WebKitWidgets)
 Requires:       pkgconfig(Qt5Widgets)
 Requires:       pkgconfig(expat)
 Requires:       pkgconfig(freetype2)
@@ -338,6 +341,10 @@ This package provides java bindings for VTK.
 %package     -n python3-%{name}
 Summary:        Python bindings for VTK
 Group:          Development/Libraries/Python
+# explicitly require the correct mpi flavor, because the automatic
+# rpm requirements generator for shared libs fails to distinguish
+# between them -- boo#1187161
+Requires:       %{name}-qt = %{version}
 Requires:       %{shlib} = %{version}
 %{?with_mpi:Requires:       python3-mpi4py}
 Requires:       python3-numpy
@@ -354,7 +361,7 @@ LOD control).
 This package provides python 3.x bindings for VTK.
 
 %package        qt
-Summary:        Qt Designer plugin for QVTKWidget
+Summary:        Qt libraries for VTK
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Conflicts:      vtk-compat_gl-qt
@@ -366,7 +373,7 @@ rendering and visualization. VTK includes many advanced algorithms
 rendering techniques (e.g. hardware-accelerated volume rendering,
 LOD control).
 
-This package provides a Qt Designer plugin for the QVTKWidget.
+This package provides the Qt libraries for VTK.
 
 # The examples work with any VTK flavor, just package these once
 %if "%{flavor}" == ""
@@ -407,6 +414,8 @@ languages.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
+%patch17 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -460,6 +469,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_GROUP_ENABLE_StandAlone=WANT \
     -DVTK_GROUP_ENABLE_Views=WANT \
     -DVTK_PYTHON_VERSION=3 \
+    -DVTK_OPENSUSE_PYTHON_BUILD:BOOL=ON \
     -DVTK_USE_OGGTHEORA_ENCODER:BOOL=ON \
     -DJava_JAVAH_EXECUTABLE=%{_bindir}/true \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
@@ -540,6 +550,16 @@ perl -pi -e's,^,%{my_bindir}/,' examples.list
 mkdir -p %{buildroot}%{_licensedir}
 mv %{buildroot}%{my_datadir}/licenses/VTK %{buildroot}%{_licensedir}/%{name}
 
+%if ! %{with mpi}
+# install python distribution metadata despite not building a wheel
+buildsitearch=%{python3_sitearch}
+buildsitearch=${buildsitearch/\/usr/build}
+cp build/{setup.py,README.md,MANIFEST.in,requirements.txt,vtk_features.py} ${buildsitearch}/
+pushd ${buildsitearch}
+python3 setup.py install_egg_info -d %{buildroot}%{python3_sitearch}
+popd
+%endif
+
 %fdupes -s %{buildroot}
 
 %check
@@ -588,10 +608,8 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-
 %{?with_mpi: %dir %{my_libdir}/cmake/}
 %{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/
-# VTK JNI, PythonTkinter, QtGUI
+# VTK JNI
 %exclude %{my_libdir}/libvtk*Java.so
-%exclude %{my_libdir}/libvtk*Python*.so
-%exclude %{my_libdir}/libvtk*Qt*.so
 
 %if %{with documentation}
 %files devel-doc
@@ -614,15 +632,15 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-
 %{my_bindir}/p%{pkgname}python
 %{my_libdir}/py*
 %else
-%{python3_sitearch}/
+%{python3_sitearch}/vtk.py
+%{python3_sitearch}/vtk-%{version}*-info
+%{python3_sitearch}/vtkmodules
 %endif
 %{my_libdir}/libvtk*Python*.so.1
-%{my_libdir}/libvtk*Python*.so
 
 %files qt
 %license Copyright.txt
 %{my_libdir}/libvtk*Qt*.so.*
-%{my_libdir}/libvtk*Qt*.so
 
 %if %{with examples}
 %if "%{flavor}" == ""

@@ -1,12 +1,3 @@
-# FIXME: See if packaging can be tweaked to avoid these warnings later
-# python-vtk needs these devel files to work
-addFilter("python3-vtk.* shlib-policy-name-error")
-addFilter("python3-vtk.* shlib-policy-missing-suffix")
-addFilter("python3-vtk.* devel-file-in-non-devel-package")
-addFilter("python3-vtk-openmpi.* shlib-policy-name-error")
-addFilter("python3-vtk-openmpi.* shlib-policy-missing-suffix")
-addFilter("python3-vtk-openmpi.* devel-file-in-non-devel-package")
-
 # Upstream does not supply manuals for any binary, suppress warnings
 addFilter(".* no-manual-page-for-binary")
 

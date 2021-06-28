@@ -1,0 +1,70 @@
+From c7d6a8d81367a4ed92163c059aa3181386eabc24 Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Mon, 3 May 2021 11:55:27 -0400
+Subject: [PATCH] vtkDataArrayPrivate: include <limits> for std::numeric_limits
+
+See: #18194
+---
+ Common/Core/vtkDataArrayPrivate.txx | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: VTK-9.0.1/Common/Core/vtkDataArrayPrivate.txx
+===================================================================
+--- VTK-9.0.1.orig/Common/Core/vtkDataArrayPrivate.txx
++++ VTK-9.0.1/Common/Core/vtkDataArrayPrivate.txx
+@@ -24,6 +24,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cassert> // for assert()
++#include <limits>
+ #include <vector>
+ 
+ namespace vtkDataArrayPrivate
+Index: VTK-9.0.1/Common/Core/vtkGenericDataArrayLookupHelper.h
+===================================================================
+--- VTK-9.0.1.orig/Common/Core/vtkGenericDataArrayLookupHelper.h
++++ VTK-9.0.1/Common/Core/vtkGenericDataArrayLookupHelper.h
+@@ -25,6 +25,7 @@
+ #include "vtkIdList.h"
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <unordered_map>
+ #include <vector>
+ 
+Index: VTK-9.0.1/Common/DataModel/vtkPiecewiseFunction.cxx
+===================================================================
+--- VTK-9.0.1.orig/Common/DataModel/vtkPiecewiseFunction.cxx
++++ VTK-9.0.1/Common/DataModel/vtkPiecewiseFunction.cxx
+@@ -22,6 +22,7 @@
+ #include <cassert>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+Index: VTK-9.0.1/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+===================================================================
+--- VTK-9.0.1.orig/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
++++ VTK-9.0.1/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+@@ -28,6 +28,7 @@
+ #include "vtkHyperTreeGridNonOrientedCursor.h"
+ 
+ #include <cmath>
++#include <limits>
+ 
+ vtkStandardNewMacro(vtkHyperTreeGridThreshold);
+ 
+Index: VTK-9.0.1/Rendering/Core/vtkColorTransferFunction.cxx
+===================================================================
+--- VTK-9.0.1.orig/Rendering/Core/vtkColorTransferFunction.cxx
++++ VTK-9.0.1/Rendering/Core/vtkColorTransferFunction.cxx
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
