@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:23:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the optional QtWebKit dependency
+
+-------------------------------------------------------------------
 Thu Jun  4 14:20:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:

@@ -60,7 +60,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
@@ -77,6 +76,7 @@ SOCKSV4 & V5 support; and more.
 
 %build
 EXTRA_FLAGS="-UCMAKE_MODULE_LINKER_FLAGS \
+-DWANT_QTWEBKIT=OFF \
 %if "%{?_lib}" == "lib64"
 -DLIB_SUFFIX=64 \
 %endif
