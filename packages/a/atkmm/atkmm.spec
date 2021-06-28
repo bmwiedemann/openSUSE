@@ -21,7 +21,7 @@
 %define libname  lib%{name}-2_36-1
 
 Name:           atkmm
-Version:        2.36.0
+Version:        2.36.1
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only
