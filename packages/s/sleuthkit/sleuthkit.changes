@@ -1,10 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 26 20:52:56 UTC 2021 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 4.10.2:
+  * C/C++
+  *    Added support for Ext4 inline data
+  * Java
+  *    New Blackboard Artifacts for ALEAPP/ILEAPP, Yara, Geo Area, etc.
+  *    Upgraded to PostgreSQL JDBC Driver 42.2.18
+  *    Added SHA256 to files table in DB and added utility calculation methods.
+  *    Changed TimelineManager to make events for any artifact with a time stamp
+  *    Added Japanese translations
+  *    Fixed synchronization bug in getUniquePath
+
+-------------------------------------------------------------------
+Sat Jun 26 14:44:48 UTC 2021 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- fix overly picky Buildrequires statement
+
+-------------------------------------------------------------------
+Wed Jun  9 11:07:50 UTC 2021 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update Buildrequires line for libewf 
+- all libyal packages have been updated from github
+-------------------------------------------------------------------
 Sun Jan 17 23:45:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.1:
   * Changed Windows build to use Nuget for libewf, libvmdk, libvhdi.
   * Fixed compiler warnings
-  * Clarrified licenses and added Apache license to distribution
+  * Clarified licenses and added Apache license to distribution
   * Improved error handling for out of memory issues
   * Rejistry++ memory leak fixes
 - spec-cleaner

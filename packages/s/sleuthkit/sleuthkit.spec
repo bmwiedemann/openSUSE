@@ -18,7 +18,7 @@
 
 %define sosuffix 19
 Name:           sleuthkit
-Version:        4.10.1
+Version:        4.10.2
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source0:        https://github.com/%{name}/%{name}/releases/download/%{name}-%{v
 BuildRequires:  gcc-c++
 #BuildRequires:  libtool
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
-BuildRequires:  libewf-devel = 0~20140811
+BuildRequires:  libewf-devel = 20140811
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
 Requires:       file
