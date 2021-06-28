@@ -1,7 +1,7 @@
 #
 # spec file for package MyGUI
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,8 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libOIS-devel
-BuildRequires:  libOgreMain-devel
 BuildRequires:  libX11-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  ogre-devel
 # MyGUI wants to copy plugins.cfg installed by ogre-demos
 BuildRequires:  ogre-demos
 BuildRequires:  pkgconfig

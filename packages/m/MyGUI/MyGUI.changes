@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:34:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update BuildRequires to fix OBS builds.
+
+-------------------------------------------------------------------
 Fri Mar 27 11:55:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Run spec-cleaner
@@ -112,12 +117,12 @@ Tue Feb 17 11:47:58 UTC 2015 - devel.suse@gmail.com
  * Fixed broken file dialog directory listing on Linux and make sure files are sorted.
 
 - Updated MyGUI-gcc47-visibility.patch
-- Updated MyGUI-lib_suffix.patch 
+- Updated MyGUI-lib_suffix.patch
 
 -------------------------------------------------------------------
 Wed Jan 21 03:46:02 UTC 2015 - devel.suse@gmail.com
 
-- Build MyGUI 3.2.1 
+- Build MyGUI 3.2.1
 
 -------------------------------------------------------------------
 Sun Mar 23 17:09:00 UTC 2014 - seife+obs@b1-systems.com
@@ -129,12 +134,12 @@ Sun Mar 23 17:09:00 UTC 2014 - seife+obs@b1-systems.com
 -------------------------------------------------------------------
 Mon May  7 11:28:09 UTC 2012 - joop.boonen@opensuse.org
 
-- Created a gcc 4.7 patch, visibility is much more strict in gcc 4.7 
+- Created a gcc 4.7 patch, visibility is much more strict in gcc 4.7
 
 -------------------------------------------------------------------
 Sun Feb 26 14:48:40 UTC 2012 - joop.boonen@opensuse.org
 
-- Build MyGUI 3.20 
+- Build MyGUI 3.20
 
 -------------------------------------------------------------------
 Mon Dec  5 13:31:39 UTC 2011 - anixx@opensuse.org
