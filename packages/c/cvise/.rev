@@ -570,4 +570,17 @@
 - Use non-version dependencies to LLVM and clang.</comment>
     <requestid>891437</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1623bad170bb94dc500ef77ed058c730</srcmd5>
+    <version>2.3.0+git.20210628.38b42d9</version>
+    <time>1624887225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210628.38b42d9:
+  * Remove creduce tests.
+  * Fixed a crash caused by macro
+  * Fixed an issue for processing init-lists
+  * Fixed a crash for removing function decl groups
+  * Handle move in int. test.</comment>
+    <requestid>902777</requestid>
+  </revision>
 </revisionlist>

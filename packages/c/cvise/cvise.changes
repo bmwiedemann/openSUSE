@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 28 09:13:38 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210628.38b42d9:
+  * Remove creduce tests.
+  * Fixed a crash caused by macro
+  * Fixed an issue for processing init-lists
+  * Fixed a crash for removing function decl groups
+  * Handle move in int. test.
+
+-------------------------------------------------------------------
 Sat May 08 06:33:02 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210419.e9a7b94:
