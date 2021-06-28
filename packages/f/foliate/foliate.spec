@@ -33,8 +33,9 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gjs-1.0)
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.52
 BuildRequires:  pkgconfig(glib-2.0)
+Requires:       gjs
 Requires:       typelib(WebKit2)
 BuildArch:      noarch
 

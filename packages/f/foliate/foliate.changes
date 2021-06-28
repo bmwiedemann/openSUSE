@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 18 07:37:59 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Fixed gjs dependency issue (boo#1187328).
+
+-------------------------------------------------------------------
 Mon May 10 13:59:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning directories provided by filesystem rpm (bsc#1184786)

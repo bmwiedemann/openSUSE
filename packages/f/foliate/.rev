@@ -257,4 +257,12 @@
     <comment></comment>
     <requestid>892059</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>8a4ee5c7accc245e9cf6c7feba2e60ed</srcmd5>
+    <version>2.6.3</version>
+    <time>1624887219</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed gjs dependency issue (boo#1187328). (forwarded request 900710 from qkzhu)</comment>
+    <requestid>902741</requestid>
+  </revision>
 </revisionlist>
