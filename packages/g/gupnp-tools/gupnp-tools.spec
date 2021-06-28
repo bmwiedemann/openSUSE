@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gupnp-tools
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
