@@ -87,6 +87,7 @@ Substitute: kiwi-setup:image  python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz    python3-kiwi
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
 Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
+Substitute: kiwi-image:appx   wsl-appx fb-util-for-appx
 Prefer: kiwi-systemdeps-filesystems
 Prefer: kiwi-systemdeps-disk-images
 Prefer: kiwi-systemdeps-iso-media
