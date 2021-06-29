@@ -8559,6 +8559,7 @@ unsorted:
   - lib4store-devel 
   - lib4store0 
   - lib4ti2-0 
+  - lib5250-0 
   - libADLMIDI1 
   - libAPFEL0 
   - libAlembic1_8 
@@ -13468,7 +13469,7 @@ unsorted:
   - libschily-devel-doc 
   - libschroedinger-1_0-0-32bit: [x86_64] 
   - libscintilla-devel 
-  - libscintilla3 
+  - libscintilla5 
   - libscotch0 
   - libsdbus-c++0 
   - libseafile0 
@@ -20252,6 +20253,7 @@ unsorted:
   - playerctl-devel 
   - playerctl-doc 
   - playerctl-zsh-completion 
+  - pleaser 
   - plee-the-bear 
   - plee-the-bear-data 
   - plexus-ant-factory 
