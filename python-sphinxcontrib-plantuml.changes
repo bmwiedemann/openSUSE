@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 29 08:58:05 UTC 2021 - Linnaea Lavia <obs@lavia.moe>
+
+- Version update to 0.21, drops python2
+  * py3-for-tests.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Apr 23 11:38:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to call tests using python3 not python2:
