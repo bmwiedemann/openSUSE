@@ -38,6 +38,7 @@ BuildRequires:  kproperty-devel
 BuildRequires:  kreport-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  mysql-devel
+BuildRequires:  postgresql-server-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Codecs)
@@ -62,8 +63,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5WebKit)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # For dir ownership
@@ -74,13 +73,8 @@ Obsoletes:      calligra-kexi < %{version}
 Provides:       calligra-kexi = %{version}
 # not ported yet
 Obsoletes:      calligra-kexi-spreadsheet-import < %{version}
-%if 0%{?suse_version} > 1500
-BuildRequires:  postgresql-server-devel
-%else
-BuildRequires:  postgresql-devel
-%endif
 # Kexi needs breeze-icons.rcc during build and on runtime (it doesn't start without it installed)
-%if 0%{?suse_version} > 1500 || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.1" || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.2"
+%if 0%{?suse_version} > 1500 || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.2" || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.3"
 BuildRequires:  breeze5-icons-rcc
 Requires:       breeze5-icons-rcc
 %else

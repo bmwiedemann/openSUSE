@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 28 11:39:36 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- BuildRequire postgresql-server-devel also on Leap 15.2/15.3 to
+  fix missing PostgreSQL migration driver
+
+-------------------------------------------------------------------
+Mon Jun 28 07:16:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the optional QtWebKit dependency.
+
+-------------------------------------------------------------------
 Wed Apr 28 05:49:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with glib >= 2.68
