@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 19 03:07:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.20
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.20 2021-06-18T11:27:02+0900
+   - Fix compiling array items #249
+   - Fix coerce() will be passed on to schema() objects
+   - Add is_invalid() to JSON::Validator::Schema
+   - Improved documentation for JSON::Validator and JSON::Validator::Schema
+   - Changed joi validator to default to a JSON::Validator::Schema::Draft7 object
+   - Deprecated validate(..., $schema)
+   - Removed support for coerce(1)
+   - Removed support for subclassing JSON::Validator. Need to subclass a schema
+     class instead.
+   - Simpler inheritance for Schema classes
+
+  4.19 2021-06-17T12:37:10+0900
+   - Fix generating correct base_url() object with host and port
+
+  4.18 2021-06-17T11:13:58+0900
+   - Fix content_type validation for OpenAPIv2 and OpenAPIv3
+   - Fix validating multipart\/form-data with boundary
+   - Fix validating content-type with charset
+   - Fix parsing OpenAPIv3 spec with "description", "servers" and "summary" in a
+     path specifiation.
+
+-------------------------------------------------------------------
 Thu Apr 29 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.17

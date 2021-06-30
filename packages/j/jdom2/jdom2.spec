@@ -1,7 +1,7 @@
 #
 # spec file for package jdom2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        jdom-junit-template.pom
 # Disable gpg signatures
 # Process contrib and junit pom files
 Patch0:         0001-Adapt-build.patch
+# PATCH-FIX-UPSTREAM bsc#1187446 CVE-2021-33813 Fix XXE issue in SAXBuilder
+Patch1:         jdom2-CVE-2021-33813.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
@@ -65,6 +67,7 @@ find -name '*.jar' -delete
 find -name '*.class' -delete
 
 %patch0 -p1
+%patch1 -p1
 
 cp -p %{SOURCE1} maven/contrib.pom
 cp -p %{SOURCE2} maven/junit.pom
@@ -74,11 +77,10 @@ sed -i 's/\r//' LICENSE.txt README.txt
 # Unable to run coverage: use log4j12 but switch to log4j 2.x
 sed -i.coverage "s|coverage, jars|jars|" build.xml
 
+%build
 mkdir lib
 build-jar-repository lib xerces-j2 xml-commons-apis jaxen junit isorelax xalan-j2 xalan-j2-serializer
-
-%build
-ant -Dversion=%{version} -Dcompile.target=6 -Dcompile.source=6 -Dj2se.apidoc=%{_javadocdir}/java maven
+%ant -Dversion=%{version} -Dcompile.target=6 -Dcompile.source=6 -Dj2se.apidoc=%{_javadocdir}/java maven
 
 %install
 # jar

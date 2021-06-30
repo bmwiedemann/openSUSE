@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 28 05:36:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.1:
+  * New AstroTrac 360 driver (Experimental).
+  * New Pegasus FlatMaster and UHC drivers 
+  * New Deep Sky Dad Field Rotator 
+  * Core INDI Library improvements to base device and client classes 
+  * Paramount TCP improvements 
+  * Spectrograph and Receiver classes 
+  * OnStep improvements 
+  * RST-135 location and time fix
+  * Dome OTA fixes
+  * Object Azimuth and Altitude added to FITS header 
+  * Rainbow Focuser fixes
+  * Support for CGX-L 
+  * Fix crash in SkyWatcher API mount driver
+  * Fix iOptron DST bug
+  * Fix lunar and solar order
+  * PMC8 Driver v0.4 (Improved manual slewing, guiding, and other features)
+  * Try to send the guide pulses asynchronously to TheSkyX
+  * Use encoders for parking
+  * Lots of other smmall fixes, for the full changelog please check
+    https://github.com/indilib/indi/blob/master/ChangeLog
+- Drop ioptron_dst_fix.patch (change has been upstreamed)
+- Add fix_include_path.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 13:46:31 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add ioptron_dst_fix.patch (fix boo#1187058)

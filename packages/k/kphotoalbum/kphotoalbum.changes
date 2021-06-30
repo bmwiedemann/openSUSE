@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jun 27 11:01:13 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.8.1
+  * Enhancement: The "Copy to/Move to" action (triggered by
+    pressing F7/F8) can now be run both from the browser and the
+    viewer, using the same interface and caching the same last
+    target directory
+  * Change: Search field no longer gets focus by default (you can
+    press '/' to focus)
+  * Enhancement: Improve focus switching behavior when using
+    Tab/Shift-Tab
+  * Enhancement: Add freeform text search to thumbnail view
+    (kde#321502)
+  * Enhancement: UI improvements for MapView
+  * Enhancement: Performance improvement when many thumbnails are
+    shown in the MapView
+  * Enhancement: Allow relative local URLs in "Open list of files"
+    dialog
+  * Enhancement: Add option "--vacuum" to kpa-thumbnailtool
+  * Bugfix: Fix searching for label (introduced in version 5.4.1)
+  * Bugfix: Make splash screen text readable with dark themes
+  * Bugfix: Fix crash in context menu of full-screen preview of
+    annotation dialog
+  * Change: Start maximized on first startup
+  * Change: Click behavior for overview page now honors
+    system-preference for double- or single-click
+- Drop Fix-build-with-Qt-versions-before-5.12.patch, merged
+  upstream
+
+-------------------------------------------------------------------
+Thu Aug 27 12:27:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Aug 10 07:33:08 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.7.0

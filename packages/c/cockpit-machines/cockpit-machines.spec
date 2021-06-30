@@ -20,7 +20,7 @@ Name:           cockpit-machines
 Version:        243.1
 Release:        0
 Summary:        Cockpit user interface for virtual machines
-License:        LGPL-2.1-or-later and MIT
+License:        LGPL-2.1-or-later AND MIT
 URL:            https://github.com/cockpit-project/cockpit-machines
 Source:         cockpit-machines-%{version}.tar
 Source10:       package-lock.json

@@ -1,0 +1,1369 @@
+From 8605cc11f667c95d0253378f10855ed6d214da84 Mon Sep 17 00:00:00 2001
+From: Michael Reeves <reeves.87@gmail.com>
+Date: Wed, 28 Apr 2021 18:02:32 -0400
+Subject: [PATCH] Collected fixes from master
+
+Issues fixed:
+- misalignment and wrong conflict resolutions when using manual
+  alignment markers
+- uninitialized variables causing crashes
+- hangs and crashes due to wrong loop conditions
+- wrong handling of new-line at end-of-file
+- spurious insertion of empty lines in merge result
+- access of uninitialized iterators causing crashes
+- wrong buffer length calculations causing out-of-bounds access
+- wrong bit-logic causing comments to always be treated as white-space
+- crashes when hitting a key on empty merge results
+- technical details allowing fixes to be cherry-picked
+
+> This is a combination of 32 commits.
+> This is the 1st commit message:
+
+Switch to 'using' syntax, add QtSizeType for Qt6 transition.
+
+> This is the commit message #2:
+
+Imporove checking for overflow when converting 64 bit to 32 bit.
+
+Oversized diff lists will now generate an error.
+Created SafeInt32 template class as an additional protection against undefined behavoir on 64 to 32 conversion.
+
+> This is the commit message #3:
+
+Drop uneeded member variable
+
+> This is the commit message #4:
+
+Drop old gcc support and force exception handling on
+
+> This is the commit message #5:
+
+Blacklist boost::safe_numerics on MSVC
+
+MSVC is not compatiable with boost::safe_numerics it creates duplicate symbols as this is specfic to MSCV blacklist it
+    I don't have time to deal with wierd link-time wonkyness.
+
+> This is the commit message #6:
+
+Don't bring boost name space into global scope.]
+
+This avoids name collisions in CommentParser.
+
+> This is the commit message #7:
+
+Cleanup
+
+> This is the commit message #8:
+
+Revert "Blacklist boost::safe_numerics on MSVC"
+
+This reverts commit 13b9dcaff946be0ae373d8bff940d2d3171bacf7.
+
+> This is the commit message #9:
+
+Update to require boost 1.71 due to bug in earlier headers.
+
+The bug only affects MSCV compiles as it is over zealous about creating additional function definitions.
+When the function is writen inline but as no inline keyword.
+
+> This is the commit message #10:
+
+fix typo
+
+> This is the commit message #11:
+
+Work aroung link-time bug on MSVC
+
+Don't use safe numerics on windows until boost 1.71 is part of craft.
+
+> This is the commit message #12:
+
+Revert "Work aroung link-time bug on MSVC"
+
+This reverts commit fbd9c64a36193d32b2f6c0047894c3011b9a06e7.
+
+> This is the commit message #13:
+
+By pass boost::safe_numerics on windows.
+
+> This is the commit message #14:
+
+Change boost version back to 1.66
+
+> This is the commit message #15:
+
+QtGlobal should be first header if its included explicitly
+
+Q_OS_WIN is not defined until this header is read. This creates an incorrect OS dectection in TypeUtils.h
+
+> This is the commit message #16:
+
+Cleanup: Remove unneeded file.
+
+> This is the commit message #17:
+
+Only swap lines in column under consideration
+
+This fixes a regression caused by 0806d2a28dd70df5255b7e5ee26477dab321acdd
+
+> This is the commit message #18:
+
+Add missing initialization
+
+> This is the commit message #19:
+
+Fix broken loop end condition
+
+Regression by enum refactoring
+
+> This is the commit message #20:
+
+Add link to download binaries in README
+
+This is useful to help prospective users quickly find where to download
+and install the application instead of doing several searches on the
+web.
+
+> This is the commit message #21:
+
+Make dependency on KI18n explicit
+
+It already pulled in by KParts, but we better not rely on that
+
+> This is the commit message #22:
+
+Refactor CMakeLists.txt find all depedancies at root level.
+
+This does not affect the Contextual Menu plugins these are different between linux and windows.
+
+> This is the commit message #23:
+
+Exposes EOL termination in SourceData.
+
+> This is the commit message #24:
+
+Fix EOL handling in SourceData::FileData::preprocess
+
+This resolves the striping of the trailing EOLs.
+
+CCBUG:437570
+
+> This is the commit message #25:
+
+Factor out line feed when writing output.
+
+The line feed sequence (CRLF or LF) is constant in the file, so calculate
+it once, before starting writing. Don't modify the string that is being
+written, just dump the line feed to the output text stream.
+
+(cherry picked from commit 93c8c07b925eb55bcdfd597fbef824c11d84160b)
+
+> This is the commit message #26:
+
+Do not put line feed between removed lines
+
+If a line is removed in a merge, then there should be no
+line feed before it -- that will come from a subsequent
+**non**-deleted line. This avoids double-newlines when a
+line is removed.
+
+(cherry picked from commit 942325c58a922b0297861ad3c2b1832248b1bf14)
+
+BUG:437570
+FIXED-IN:1.9.3
+
+> This is the commit message #27:
+
+Fix more enum refactoring regressions
+
+> This is the commit message #28:
+
+Prevent accessing uninitialized iterators
+
+MergeResultWindow:
+calcIteratorFromLineNr():
+	add documentation;
+	return success status to make checking validity of out-iterators
+		easy;
+keyPressEvent():
+	check for failure to look up line (may happen on empty merge
+		window);
+	remove duplicated handling for bCtrl;
+	remove "else" after "return": allows less indentation;
+deleteSelection2():
+	make guarantee of always succeeding lookup explicit;
+pasteClipboard():
+	check for failure to look up line (may happen on empty merge
+		window);
+getString():
+	(slightly) simplify handling of empty merge window using return
+		code from calcIteratorFromLineNr();
+
+> This is the commit message #29:
+
+Fix wrong buffer length calculation and out-of-bounds access
+
+This fixes regressions caused by
+29042af9a3d7bd424d123457bfb76e47a59107e8
+
+DiffList::runDiff() fix number 1:
+In the original code, the test for a present but empty initial line in
+	p1 or p2 was testing for a null line buffer pointer. Due to the
+	regression, the new getLine() method returning a QString was tested
+	against nullptr which surprisingly compiles because with
+	QT_RESTRICTED_CAST_FROM_ASCII, that comparison boils down to
+	comparing the QString vs. a QStringRef(nullptr) which is the same
+	as a check for an empty string. This is of course very different
+	from the original check for allocated data.
+So, now check getBuffer() against nullptr instead.
+
+DiffList::runDiff() fix number 2:
+The calculation of the comparisonInput buffer sizes was wrong, different
+	from the original and risky: The new code was using (*p1)[size1]
+	which in general may well access the first past-end element of *p1.
+	The original code only used beginning of first and end of last
+	line. Also, the new code ignored the new index1 which needs to
+	be used because lines are not of equal length.
+So, reverting to the original logic of calculating the buffer length.
+This bug actually caused crashes when using manual alignment:
+	assert(d.numberOfEquals() >= 0);
+
+> This is the commit message #30:
+
+Also treat CR like LF
+
+This also moves the lineCount increment close to the push_back - why is a
+separate count needed anyway?
+
+And move comment (back) to right place.
+
+> This is the commit message #31:
+
+Use CMAKE_CXX_STANDARD for setting the required C++ version
+
+Use the CMAKE_CXX_STANDARD variable for setting the required C++ version
+as this is the official way of controlling this and it propagates
+correctly to the autotests projects as well.
+
+> This is the commit message #32:
+
+Fix wrong bit-logic operator to check set bit
+
+Also, make it easier to read by using separate line for each flag.
+
+Problem introduced in 8d4fdeaf742d47942882e2453fdc28c1d0a2e2c1 .
+---
+ .gitlab-nonkde.yml        |  35 -----------
+ CMakeLists.txt            |  19 +++---
+ README                    |   2 +
+ src/CMakeLists.txt        |  10 +--
+ src/SourceData.cpp        |  55 +++++++++++++----
+ src/SourceData.h          |   8 ++-
+ src/TypeUtils.h           |  29 +++++++--
+ src/diff.cpp              |  37 ++++++------
+ src/diff.h                |  35 ++++-------
+ src/difftextwindow.cpp    |  22 +++----
+ src/gnudiff_diff.h        |   3 +-
+ src/kdiff3.h              |   5 +-
+ src/mergeresultwindow.cpp | 124 +++++++++++++++++++++-----------------
+ src/mergeresultwindow.h   |   2 +-
+ src/pdiff.cpp             |  29 +++++----
+ src/selection.cpp         |   4 +-
+ 16 files changed, 224 insertions(+), 195 deletions(-)
+ delete mode 100644 .gitlab-nonkde.yml
+
+diff --git a/.gitlab-nonkde.yml b/.gitlab-nonkde.yml
+deleted file mode 100644
+index 5c500e1c..00000000
+--- a/.gitlab-nonkde.yml
++++ /dev/null
+@@ -1,35 +0,0 @@
+-stages:
+-  - build
+-  - test
+-
+-build_ubuntu_20_04:
+-  stage: build
+-  image: reporter123/kdiff3env:groovy
+-  #before_script:
+-  #   - apt-get update
+-  #   - apt-get install -y libqt5test5 gettext qtbase5-dev extra-cmake-modules libkf5i18n-dev libkf5coreaddons-dev libkf5iconthemes-dev libkf5parts-dev libkf5doctools-dev libkf5crash-dev libboost-dev
+-  script:
+-    - cmake -DBUILD_TESTING=YES .
+-    - make
+-  artifacts:
+-    untracked: true
+-  retry:
+-    max: 2
+-    when:
+-      - runner_system_failure
+-      - stuck_or_timeout_failure
+-
+-ubuntu_20_04_test:
+-    stage: test
+-    needs: ["build_ubuntu_20_04"]
+-    image: reporter123/kdiff3env:groovy
+-#    before_script:
+-#      - apt-get update
+-#      - apt-get install -y libqt5test5
+-    script:
+-      - make ARGS="-V -E appstreamtest" test #exclude appstreamtest this does not run properly in my #image
+-    retry:
+-      max: 2
+-      when:
+-       - runner_system_failure
+-       - stuck_or_timeout_failure
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98237ace..96686df4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,6 +36,9 @@ ecm_setup_version(1.9.2 VARIABLE_PREFIX KDIFF3 VERSION_HEADER ${CMAKE_BINARY_DIR
+ 
+ # Some older versions on boost contain a bug that prevents compiling gcc offers a built-in workaround
+ # but that isn't enough to ship as clang has no such workaround. 1.65 is known to be affected.
++#
++# 1.71 or later is required for safe_numerics to work on MSVC otherwise we get a link-time error.
++# A work around is in place since craft has not yet updated.
+ find_package(Boost 1.66 REQUIRED)
+ 
+ #needed on craft and possiablely other custom setups.
+@@ -58,6 +61,9 @@ find_package(
+     COMPONENTS
+     I18n
+     CoreAddons
++    Parts
++    WidgetsAddons
++    Config
+     Crash
+     OPTIONAL_COMPONENTS
+     DocTools
+@@ -68,11 +74,11 @@ set_package_properties(KF5DocTools PROPERTIES PURPOSE "Allows generating and ins
+ option(ENABLE_AUTO "Enable kdiff3's '--auto' flag" ON)
+ option(ENABLE_CLANG_TIDY "Run clang-tidy if available and cmake version >=3.6" OFF)
+ 
+-set(KDiff3_LIBRARIES ${Qt5PrintSupport_LIBRARIES} KF5::I18n KF5::CoreAddons )
++set(CMAKE_CXX_STANDARD 17)
+ 
+ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+     #Adjust clang specific  warnings
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wshadow")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wshadow -fexceptions")
+     set(CLANG_WARNING_FLAGS "-Wno-undef -Wno-trigraphs -Wno-invalid-pp-token -Wno-comment -Wshorten-64-to-32 -Wstring-conversion -Wc++11-narrowing -fstack-protector-all")
+     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CLANG_WARNING_FLAGS}")
+ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+@@ -82,9 +88,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8.0)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-check")
+     endif()
+-    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7.0)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-trigraphs -Wduplicated-cond -Wduplicated-branches -Wshadow")
+-    endif()
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-trigraphs -Wduplicated-cond -Wduplicated-branches -Wshadow -fexceptions")
+ endif()
+ 
+ #new in cmake 3.6+ integrate clang-tidy
+@@ -100,11 +104,6 @@ endif()
+ 
+ set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${CMAKE_CXX_FLAGS}")
+ 
+-set(
+-    needed_features
+-    cxx_std_11
+-)
+-
+ if(ENABLE_AUTO)
+     add_definitions(
+         -DENABLE_AUTO
+diff --git a/README b/README
+index 971338fd..ae926f22 100644
+--- a/README
++++ b/README
+@@ -20,6 +20,8 @@ Known Issues:
+ 
+ The current reprository is at https://invent.kde.org/kde/kdiff3
+ 
++Binaries can be downloaded at https://download.kde.org/stable/kdiff3/?C=M;O=D
++
+ Bugs can be reported at https://bugs.kde.org
+ 
+ The original pre KF5/Qt5 Readme follows old build instructions have been removed to avoid confusion:
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3190160a..249dbd75 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ ########### kdiff3 KPart ###############
+-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Parts WidgetsAddons)
++
+ 
+ set(kdiff3part_PART_SRCS
+    kdiff3_part.cpp
+@@ -45,14 +45,12 @@ ki18n_wrap_ui(kdiff3part_PART_SRCS
+ add_library(kdiff3part MODULE ${kdiff3part_PART_SRCS})
+ 
+ set_target_properties(kdiff3part PROPERTIES DEFINE_SYMBOL KDIFF3_PART)
+-target_compile_features(kdiff3part PRIVATE ${needed_features})
+-target_link_libraries(kdiff3part ${KDiff3_LIBRARIES} KF5::Parts KF5::Crash)
++target_link_libraries(kdiff3part ${Qt5PrintSupport_LIBRARIES} KF5::I18n KF5::CoreAddons KF5::Parts KF5::Crash)
+ target_compile_definitions(kdiff3part PRIVATE -DTRANSLATION_DOMAIN=\"kdiff3\")
+ 
+ install(TARGETS kdiff3part DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/parts )
+ 
+ ########### kdiff3 executable ###############
+-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Parts WidgetsAddons Config)
+ 
+ set(kdiff3_SRCS
+    main.cpp
+@@ -67,8 +65,7 @@ endif()
+ include(icons/CMakeLists.txt)
+ add_executable(kdiff3 ${kdiff3_SRCS})
+ 
+-target_link_libraries(kdiff3 KF5::ConfigCore KF5::ConfigGui KF5::Parts KF5::Crash ${KDiff3_LIBRARIES} )
+-target_compile_features(kdiff3 PRIVATE ${needed_features})
++target_link_libraries(kdiff3 KF5::ConfigCore KF5::ConfigGui KF5::Parts KF5::Crash ${Qt5PrintSupport_LIBRARIES} KF5::I18n KF5::CoreAddons )
+ 
+ # See https://cmake.org/cmake/help/v3.15/prop_tgt/MACOSX_BUNDLE_INFO_PLIST.html
+ if(APPLE)
+@@ -99,4 +96,3 @@ install( FILES  kdiff3_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kdiff3 )
+ #install( PROGRAMS  kdiff3.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+ install( PROGRAMS org.kde.kdiff3.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+ install( FILES org.kde.kdiff3.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
+-
+diff --git a/src/SourceData.cpp b/src/SourceData.cpp
+index 72738c7b..161e2510 100644
+--- a/src/SourceData.cpp
++++ b/src/SourceData.cpp
+@@ -33,9 +33,11 @@ Optimizations: Skip unneeded steps.
+ #include "CommentParser.h"
+ #include "diff.h"
+ #include "kdiff3.h"
++#include "LineRef.h"
+ #include "Logging.h"
+ #include "Utils.h"
+ 
++#include <qglobal.h>
+ #include <QProcess>
+ #include <QScopedPointer>
+ #include <QString>
+@@ -176,9 +178,9 @@ const QVector<LineData>* SourceData::getLineDataForDisplay() const
+     return m_normalData.m_v.size() > 0 ? &m_normalData.m_v : nullptr;
+ }
+ 
+-LineRef SourceData::getSizeLines() const
++LineCount SourceData::getSizeLines() const
+ {
+-    return m_normalData.lineCount();
++    return SafeInt32<LineCount>(m_normalData.lineCount());
+ }
+ 
+ qint64 SourceData::getSizeBytes() const
+@@ -601,14 +603,20 @@ bool SourceData::FileData::preprocess(QTextCodec* pEncoding, bool removeComments
+         return false;
+ 
+     const QByteArray ba = QByteArray::fromRawData(m_pBuf + skipBytes, (int)(mDataSize - skipBytes));
+-    QTextStream ts(ba, QIODevice::ReadOnly); //Don't use text mode we need to see the actual line ending.
++    QTextStream ts(ba, QIODevice::ReadOnly); // Don't use text mode we need to see the actual line ending.
++    QTextStream ts2(ba, QIODevice::ReadOnly);
+     ts.setCodec(pEncoding);
+     ts.setAutoDetectUnicode(false);
+-
++    ts2.setCodec(pEncoding);
++    ts2.setAutoDetectUnicode(false);
++    QString s = ts2.readAll();
+     m_bIncompleteConversion = false;
+     m_unicodeBuf->clear();
++    //*m_unicodeBuf = ts.readAll();
+     Q_ASSERT(m_unicodeBuf->length() == 0);
+ 
++    mHasEOLTermination = false;
++
+     while(!ts.atEnd())
+     {
+         line.clear();
+@@ -618,7 +626,7 @@ bool SourceData::FileData::preprocess(QTextCodec* pEncoding, bool removeComments
+             return false;
+         }
+ 
+-        ts >> curChar;
++        curChar = ts.read(1).unicode()[0];
+ 
+         quint32 firstNonwhite = 0;
+         bool    foundNonWhite = false;
+@@ -645,10 +653,9 @@ bool SourceData::FileData::preprocess(QTextCodec* pEncoding, bool removeComments
+             if(ts.atEnd())
+                 break;
+ 
+-            ts >> curChar;
++            curChar = ts.read(1).unicode()[0];
+         }
+ 
+-        ++lineCount;
+ 
+         switch(curChar.unicode())
+         {
+@@ -668,7 +675,7 @@ bool SourceData::FileData::preprocess(QTextCodec* pEncoding, bool removeComments
+ 
+                     if(m_pBuf[lastOffset + j] == '\n')
+                     {
+-                        ts >> curChar;
++                        curChar = ts.read(1).unicode()[0];
+                         vOrigDataLineEndStyle.push_back(eLineEndStyleDos);
+                         lastOffset = ts.pos();
+                         break;
+@@ -683,15 +690,39 @@ bool SourceData::FileData::preprocess(QTextCodec* pEncoding, bool removeComments
+         if(removeComments)
+             parser->removeComment(line);
+ 
+-        //kdiff3 internally uses only unix style endings for simplicity.
++        ++lineCount;
+         m_v.push_back(LineData(m_unicodeBuf, lastOffset, line.length(), firstNonwhite, parser->isSkipable(), parser->isPureComment()));
+-        m_unicodeBuf->append(line).append('\n');
++        //The last line may not have an EOL mark. In that case don't add one to our buffer.
++        m_unicodeBuf->append(line);
++        if(curChar == '\n' || curChar == '\r')
++        {
++            //kdiff3 internally uses only unix style endings for simplicity.
++            m_unicodeBuf->append('\n');
++        }
+ 
+         lastOffset = m_unicodeBuf->length();
+     }
+ 
++    /*
++        Process trailing new line as if there were a blank non-terminated line after it.
++        But do nothing to the data buffer since this a phantom line needed for internal purposes.
++    */
++    if(curChar == '\n' || curChar == '\r')
++    {
++        mHasEOLTermination = true;
++        ++lineCount;
++
++        parser->processLine("");
++        m_v.push_back(LineData(m_unicodeBuf, lastOffset, 0, 0, parser->isSkipable(), parser->isPureComment()));
++    }
++    //Check if we have two identical offsets at the end. Indicates a bug in the read loop.
++    assert(m_v.size() < 2 || m_v[m_v.size() - 1].getOffset() != m_v[m_v.size() - 2].getOffset());
++
+     m_v.push_back(LineData(m_unicodeBuf, lastOffset));
+-    Q_ASSERT(m_v.size() < 2 || m_v[m_v.size() - 1].getOffset() != m_v[m_v.size() - 2].getOffset());
++    //TODO: Fix this properly we should not be sending GNU:Diff invalid offsets.
++    //m_unicodeBuf->append('\u0000');
++    //Validate
++    //assert(m_v->size() < 1 || (quint64)(*m_v)[m_v->size() - 2].getOffset() == lastOffset);
+ 
+     m_bIsText = true;
+ 
+@@ -782,7 +813,7 @@ QTextCodec* SourceData::detectEncoding(const char* buf, qint64 size, qint64& ski
+     QByteArray s;
+     /*
+         We don't need the whole file here just the header.
+-]    */
++    */
+     if(size <= 5000)
+         s = QByteArray(buf, (int)size);
+     else
+diff --git a/src/SourceData.h b/src/SourceData.h
+index d72d7d84..d42dcf6d 100644
+--- a/src/SourceData.h
++++ b/src/SourceData.h
+@@ -27,7 +27,7 @@ class SourceData
+     void setupConnections();
+     void setOptions(const QSharedPointer<Options> &pOptions);
+ 
+-    Q_REQUIRED_RESULT LineRef getSizeLines() const;
++    Q_REQUIRED_RESULT LineCount getSizeLines() const;
+     Q_REQUIRED_RESULT qint64 getSizeBytes() const;
+     Q_REQUIRED_RESULT const char* getBuf() const;
+     Q_REQUIRED_RESULT const QString& getText() const;
+@@ -59,12 +59,14 @@ class SourceData
+ 
+     Q_REQUIRED_RESULT QTextCodec* getEncoding() const { return m_pEncoding; }
+     Q_REQUIRED_RESULT e_LineEndStyle getLineEndStyle() const { return m_normalData.m_eLineEndStyle; }
++    [[nodiscard]] inline bool hasEOLTermiantion() { return m_normalData.hasEOLTermiantion(); }
++
+ 
+     Q_REQUIRED_RESULT const QStringList& getErrors() const { return mErrors; }
+ 
+     void setEncoding(QTextCodec* pEncoding);
+ 
+-  private:
++  protected:
+     bool convertFileEncoding(const QString& fileNameIn, QTextCodec* pCodecIn,
+                                 const QString& fileNameOut, QTextCodec* pCodecOut);
+ 
+@@ -94,6 +96,7 @@ class SourceData
+         bool m_bIsText = false;
+         bool m_bIncompleteConversion = false;
+         e_LineEndStyle m_eLineEndStyle = eLineEndStyleUndefined;
++        bool mHasEOLTermination = false;
+ 
+       public:
+         ~FileData() { reset(); }
+@@ -109,6 +112,7 @@ class SourceData
+         bool isEmpty() const { return mDataSize == 0; }
+ 
+         bool isText() const { return m_bIsText || isEmpty(); }
++        [[nodiscard]] inline bool hasEOLTermiantion() { return m_bIsText && mHasEOLTermination; }
+ 
+         inline qint64 lineCount() const { return mLineCount; }
+         inline qint64 byteCount() const { return mDataSize; }
+diff --git a/src/TypeUtils.h b/src/TypeUtils.h
+index a3b4be08..a2c5ec76 100644
+--- a/src/TypeUtils.h
++++ b/src/TypeUtils.h
+@@ -1,23 +1,42 @@
+ /*
+  * KDiff3 - Text Diff And Merge Tool
+- * 
++ *
+  * SPDX-FileCopyrightText: 2018-2020 Michael Reeves reeves.87@gmail.com
+  * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #ifndef TYPEUTILS_H
+ #define TYPEUTILS_H
+ 
++#include <QtGlobal>
++
+ #include <stdlib.h>
+ #include <type_traits>
++#include <boost/version.hpp>
++/*
++    MSVC is not compatiable with boost::safe_numerics it creates duplicate symbols as this is specfic to MSCV blacklist it
++*/
++#if !defined(Q_OS_WIN) && BOOST_VERSION >= 106900
++#include <boost/safe_numerics/safe_integer.hpp>
++#endif
++
++#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
++using QtSizeType = qint32;
++#else
++using QtSizeType = qsizetype;
++#endif
++using QtNumberType = qint32;//Qt insists on one type for all but does not create a typedef for it.
++
++using PtrDiffRef = size_t;
+ 
+-#include <QtGlobal>
+ 
++#if !defined(Q_OS_WIN) && (BOOST_VERSION >= 106900)
++template<typename T> using SafeInt32 = boost::safe_numerics::safe<T, boost::safe_numerics::native>;
++#else
++template<typename T> using SafeInt32 = T;
++#endif
+ #define TYPE_MAX(x) std::numeric_limits<x>::max()
+ #define TYPE_MIN(x) std::numeric_limits<x>::min()
+ 
+-typedef size_t PtrDiffRef;
+-typedef qint32 QtNumberType;//Qt insists on one type for all but does not create a typedef for it.
+-
+ static_assert(sizeof(int) >= sizeof(qint32), "Legacy LP32 systems/compilers not supported"); // e.g. Windows 16-bit
+ 
+ #endif
+diff --git a/src/diff.cpp b/src/diff.cpp
+index 50c2ab85..778e4d86 100644
+--- a/src/diff.cpp
++++ b/src/diff.cpp
+@@ -7,6 +7,7 @@
+ */
+ 
+ #include "diff.h"
++#include <QtGlobal>
+ 
+ #include "gnudiff_diff.h"
+ #include "merger.h"
+@@ -19,7 +20,6 @@
+ #include <KLocalizedString>
+ #include <KMessageBox>
+ 
+-#include <QtGlobal>
+ #include <QSharedPointer>
+ 
+ constexpr bool g_bIgnoreWhiteSpace = true;
+@@ -543,7 +543,8 @@ void ManualDiffHelpList::insertEntry(e_SrcSelector winIdx, LineRef firstLine, Li
+             }
+             if(i->firstLine(wIdx).isValid()) // Current item is not empty -> move it to the empty place
+             {
+-                std::swap(iEmpty, i);
++                std::swap(iEmpty->firstLine(wIdx), i->firstLine(wIdx));
++                std::swap(iEmpty->lastLine(wIdx), i->lastLine(wIdx));
+                 ++iEmpty;
+             }
+         }
+@@ -574,14 +575,14 @@ bool ManualDiffHelpEntry::isValidMove(int line1, int line2, e_SrcSelector winIdx
+ 
+ int ManualDiffHelpEntry::calcManualDiffFirstDiff3LineIdx(const Diff3LineVector& d3lv)
+ {
+-    int i;
++    QtSizeType i;
+     for(i = 0; i < d3lv.size(); ++i)
+     {
+         const Diff3Line& d3l = *d3lv[i];
+         if((lineA1.isValid() && lineA1 == d3l.getLineA()) ||
+            (lineB1.isValid() && lineB1 == d3l.getLineB()) ||
+            (lineC1.isValid() && lineC1 == d3l.getLineC()))
+-            return i;
++            return SafeInt32<int>(i);
+     }
+     return -1;
+ }
+@@ -595,9 +596,9 @@ void DiffList::runDiff(const QVector<LineData>* p1, const qint32 index1, LineRef
+     pp.setCurrent(0);
+ 
+     clear();
+-    if(p1 == nullptr || (*p1)[index1].getLine() == nullptr || p2 == nullptr || (*p2)[index2].getLine() == nullptr || size1 == 0 || size2 == 0)
++    if(p1 == nullptr || (*p1)[index1].getBuffer() == nullptr || p2 == nullptr || (*p2)[index2].getBuffer() == nullptr || size1 == 0 || size2 == 0)
+     {
+-        if(p1 != nullptr && p2 != nullptr && (*p1)[index1].getLine() == nullptr && (*p2)[index2].getLine() == nullptr && size1 == size2)
++        if(p1 != nullptr && p2 != nullptr && (*p1)[index1].getBuffer() == nullptr && (*p2)[index2].getBuffer() == nullptr && size1 == size2)
+             push_back(Diff(size1, 0, 0));
+         else
+         {
+@@ -606,13 +607,15 @@ void DiffList::runDiff(const QVector<LineData>* p1, const qint32 index1, LineRef
+     }
+     else
+     {
++        assert((size_t)size1 < p1->size() && (size_t)size2 < p2->size());
++
+         GnuDiff::comparison comparisonInput;
+         memset(&comparisonInput, 0, sizeof(comparisonInput));
+         comparisonInput.parent = nullptr;
+         comparisonInput.file[0].buffer = (*p1)[index1].getBuffer()->unicode() + (*p1)[index1].getOffset();                                                      //ptr to buffer
+-        comparisonInput.file[0].buffered = ((*p1)[size1].getOffset() - 1); // size of buffer
++        comparisonInput.file[0].buffered = ((*p1)[index1 + size1 - 1].getOffset() + (*p1)[index1 + size1 - 1].size() - (*p1)[index1].getOffset()); // size of buffer
+         comparisonInput.file[1].buffer = (*p2)[index2].getBuffer()->unicode() + (*p2)[index2].getOffset();                                                      //ptr to buffer
+-        comparisonInput.file[1].buffered = ((*p2)[size2].getOffset() - 1); // size of buffer
++        comparisonInput.file[1].buffered = ((*p2)[index2 + size2 - 1].getOffset() + (*p2)[index2 + size2 - 1].size() - (*p2)[index2].getOffset()); // size of buffer
+ 
+         gnuDiff.ignore_white_space = GnuDiff::IGNORE_ALL_SPACE; // I think nobody needs anything else ...
+         gnuDiff.bIgnoreWhiteSpace = true;
+@@ -754,7 +757,7 @@ void Diff3LineList::correctManualDiffAlignment(ManualDiffHelpList* pManualDiffHe
+         e_SrcSelector wi = e_SrcSelector::None;
+         for(; i3 != end(); ++i3)
+         {
+-            for(wi = e_SrcSelector::A; wi <= e_SrcSelector::Max; wi=nextSelector(wi))
++            for(wi = e_SrcSelector::A; wi != e_SrcSelector::Invalid; wi=nextSelector(wi))
+             {
+                 if(i3->getLineInFile(wi).isValid() && iMDHL->firstLine(wi) == i3->getLineInFile(wi))
+                     break;
+@@ -772,12 +775,12 @@ void Diff3LineList::correctManualDiffAlignment(ManualDiffHelpList* pManualDiffHe
+             e_SrcSelector wi2 = e_SrcSelector::None;
+             for(; i3 != end(); ++i3)
+             {
+-                for(wi2 = e_SrcSelector::A; wi2 <= e_SrcSelector::C; wi2 = nextSelector(wi2))
++                for(wi2 = e_SrcSelector::A; wi2 != e_SrcSelector::Invalid; wi2 = nextSelector(wi2))
+                 {
+                     if(wi != wi2 && i3->getLineInFile(wi2).isValid() && iMDHL->firstLine(wi2) == i3->getLineInFile(wi2))
+                         break;
+                 }
+-                if(wi2 > e_SrcSelector::C)
++                if(wi2 == e_SrcSelector::Invalid)
+                 { // Not yet found
+                     // Move both others up
+                     Diff3Line d3l;
+@@ -1167,11 +1170,10 @@ void Diff3LineList::calcDiff3LineListTrim(
+ */
+ }
+ 
+-void DiffBufferInfo::init(Diff3LineList* pD3ll, const Diff3LineVector* pD3lv,
++void DiffBufferInfo::init(Diff3LineList* pD3ll,
+                           const QVector<LineData>* pldA, LineCount sizeA, const QVector<LineData>* pldB, LineCount sizeB, const QVector<LineData>* pldC, LineCount sizeC)
+ {
+     m_pDiff3LineList = pD3ll;
+-    m_pDiff3LineVector = pD3lv;
+     mLineDataA = pldA;
+     mLineDataB = pldB;
+     mLineDataC = pldC;
+@@ -1366,8 +1368,9 @@ bool Diff3Line::fineDiff(bool inBTextsTotalEqual, const e_SrcSelector selector,
+     LineRef k1 = 0;
+     LineRef k2 = 0;
+     int maxSearchLength = 500;
+-    bool bTextsTotalEqual = inBTextsTotalEqual, bIgnoreComments = eIgnoreFlags | IgnoreFlag::ignoreComments;
+-    bool bIgnoreWhiteSpace = eIgnoreFlags | IgnoreFlag::ignoreWhiteSpace;
++    bool bTextsTotalEqual = inBTextsTotalEqual;
++    bool bIgnoreComments = eIgnoreFlags & IgnoreFlag::ignoreComments;
++    bool bIgnoreWhiteSpace = eIgnoreFlags & IgnoreFlag::ignoreWhiteSpace;
+ 
+     Q_ASSERT(selector == e_SrcSelector::A || selector == e_SrcSelector::B || selector == e_SrcSelector::C);
+ 
+@@ -1491,7 +1494,7 @@ bool Diff3LineList::fineDiff(const e_SrcSelector selector, const QVector<LineDat
+     ProgressProxy pp;
+     Diff3LineList::iterator i;
+     bool bTextsTotalEqual = true;
+-    int listSize = size();
++    size_t listSize = size();
+     pp.setMaxNofSteps(listSize);
+     int listIdx = 0;
+     for(i = begin(); i != end(); ++i)
+@@ -1506,7 +1509,7 @@ bool Diff3LineList::fineDiff(const e_SrcSelector selector, const QVector<LineDat
+ // Convert the list to a vector of pointers
+ void Diff3LineList::calcDiff3LineVector(Diff3LineVector& d3lv)
+ {
+-    d3lv.resize(size());
++    d3lv.resize(SafeInt32<QtSizeType>(size()));
+     Diff3LineList::iterator i;
+     int j = 0;
+     for(i = begin(); i != end(); ++i, ++j)
+diff --git a/src/diff.h b/src/diff.h
+index 414caf85..fcca7c2d 100644
+--- a/src/diff.h
++++ b/src/diff.h
+@@ -163,8 +163,10 @@ class LineData
+ 
+ class ManualDiffHelpList; // A list of corresponding ranges
+ 
++class Diff3Line;
+ class Diff3LineList;
+-class Diff3LineVector;
++
++using Diff3LineVector = QVector<Diff3Line*>;
+ 
+ class DiffBufferInfo
+ {
+@@ -179,7 +181,7 @@ class DiffBufferInfo
+     const Diff3LineList* m_pDiff3LineList;
+     const Diff3LineVector* m_pDiff3LineVector;
+ public:
+-    void init(Diff3LineList* d3ll, const Diff3LineVector* d3lv,
++    void init(Diff3LineList* d3ll,
+               const QVector<LineData>* pldA, LineCount sizeA, const QVector<LineData>* pldB, LineCount sizeB, const QVector<LineData>* pldC, LineCount sizeC);
+ 
+     inline const QVector<LineData>* getLineData(e_SrcSelector srcIndex) const
+@@ -379,25 +381,13 @@ class Diff3LineList : public std::list<Diff3Line>
+         return sumOfLines;
+     }
+ 
+-    //TODO: Add safety guards to prevent list from getting too large. Same problem as with QLinkedList.
+-    qint32 size() const
+-    {
+-        if(std::list<Diff3Line>::size() > (size_t)TYPE_MAX(qint32))//explicit cast to silence gcc
+-        {
+-            qCDebug(kdiffMain) << "Diff3Line: List too large. size=" << std::list<Diff3Line>::size();
+-            Q_ASSERT(false); //Unsupported size
+-            return 0;
+-        }
+-        return (qint32)std::list<Diff3Line>::size();
+-    } //safe for small files same limit as exited with QLinkedList. This should ultimatly be removed.
+-
+     void debugLineCheck(const LineCount size, const e_SrcSelector srcSelector) const;
+ 
+-    qint32 numberOfLines(bool bWordWrap) const
++    [[nodiscard]] LineCount numberOfLines(bool bWordWrap) const
+     {
+         if(bWordWrap)
+         {
+-            qint32 lines;
++            LineCount lines;
+ 
+             lines = 0;
+             Diff3LineList::const_iterator i;
+@@ -410,21 +400,18 @@ class Diff3LineList : public std::list<Diff3Line>
+         }
+         else
+         {
+-            return size();
++            return SafeInt32<LineCount>(size());
+         }
+     }
+ };
+ 
+-class Diff3LineVector : public QVector<Diff3Line*>
+-{
+-};
+ 
+ struct Diff3WrapLine
+ {
+-    Diff3Line* pD3L;
+-    int diff3LineIndex;
+-    int wrapLineOffset;
+-    int wrapLineLength;
++    Diff3Line* pD3L = nullptr;
++    int diff3LineIndex = 0;
++    int wrapLineOffset = 0;
++    int wrapLineLength = 0;
+ };
+ 
+ typedef QVector<Diff3WrapLine> Diff3WrapLineVector;
+diff --git a/src/difftextwindow.cpp b/src/difftextwindow.cpp
+index 3ffb85be..dbe01c29 100644
+--- a/src/difftextwindow.cpp
++++ b/src/difftextwindow.cpp
+@@ -132,7 +132,7 @@ class DiffTextWindowData
+     bool isThreeWay() const { return KDiff3App::isTripleDiff(); };
+     const QString& getFileName() { return m_filename; }
+ 
+-    const Diff3LineVector* getDiff3LineVector() { return m_pDiff3LineVector; }
++    const Diff3LineVector* getDiff3LineVector() { return mDiff3LineVector; }
+ 
+     const QSharedPointer<Options>& getOptions() { return m_pOptions; }
+ 
+@@ -149,7 +149,7 @@ class DiffTextWindowData
+     bool m_bWordWrap = false;
+     int m_delayedDrawTimer = 0;
+ 
+-    const Diff3LineVector* m_pDiff3LineVector = nullptr;
++    const Diff3LineVector* mDiff3LineVector = nullptr;
+     Diff3WrapLineVector m_diff3WrapLineVector;
+     const ManualDiffHelpList* m_pManualDiffHelpList = nullptr;
+     QList<QVector<WrapLineCacheData>> m_wrapLineCacheList;
+@@ -241,7 +241,7 @@ void DiffTextWindow::init(
+     d->m_filename = filename;
+     d->m_pLineData = pLineData;
+     d->m_size = size;
+-    d->m_pDiff3LineVector = pDiff3LineVector;
++    d->mDiff3LineVector = pDiff3LineVector;
+     d->m_diff3WrapLineVector.clear();
+     d->m_pManualDiffHelpList = pManualDiffHelpList;
+ 
+@@ -290,7 +290,7 @@ void DiffTextWindow::reset()
+ {
+     d->m_pLineData = nullptr;
+     d->m_size = 0;
+-    d->m_pDiff3LineVector = nullptr;
++    d->mDiff3LineVector = nullptr;
+     d->m_filename = "";
+     d->m_diff3WrapLineVector.clear();
+ }
+@@ -1246,7 +1246,7 @@ void DiffTextWindowData::draw(RLPainter& p, const QRect& invalidRect, int beginL
+         }
+         else
+         {
+-            d3l = (*m_pDiff3LineVector)[line];
++            d3l = (*mDiff3LineVector)[line];
+         }
+         DiffList* pFineDiff1;
+         DiffList* pFineDiff2;
+@@ -1276,10 +1276,10 @@ QString DiffTextWindowData::getString(int d3lIdx)
+ {
+     Q_ASSERT(!(m_pLineData != nullptr && m_pLineData->isEmpty() && m_size != 0));
+ 
+-    if(m_pLineData == nullptr || m_pLineData->isEmpty() || d3lIdx < 0 || d3lIdx >= m_pDiff3LineVector->size())
++    if(m_pLineData == nullptr || m_pLineData->isEmpty() || d3lIdx < 0 || d3lIdx >= mDiff3LineVector->size())
+         return QString();
+ 
+-    const Diff3Line* d3l = (*m_pDiff3LineVector)[d3lIdx];
++    const Diff3Line* d3l = (*mDiff3LineVector)[d3lIdx];
+     DiffList* pFineDiff1;
+     DiffList* pFineDiff2;
+     ChangeFlags changed = NoChange;
+@@ -1535,12 +1535,12 @@ int DiffTextWindowData::convertLineOnScreenToLineInSource(int lineOnScreen, e_Co
+     {
+         if(coordType == eWrapCoords) return lineOnScreen;
+         int d3lIdx = m_pDiffTextWindow->convertLineToDiff3LineIdx(lineOnScreen);
+-        if(!bFirstLine && d3lIdx >= m_pDiff3LineVector->size())
+-            d3lIdx = m_pDiff3LineVector->size() - 1;
++        if(!bFirstLine && d3lIdx >= mDiff3LineVector->size())
++            d3lIdx = mDiff3LineVector->size() - 1;
+         if(coordType == eD3LLineCoords) return d3lIdx;
+-        while(!line.isValid() && d3lIdx < m_pDiff3LineVector->size() && d3lIdx >= 0)
++        while(!line.isValid() && d3lIdx < mDiff3LineVector->size() && d3lIdx >= 0)
+         {
+-            const Diff3Line* d3l = (*m_pDiff3LineVector)[d3lIdx];
++            const Diff3Line* d3l = (*mDiff3LineVector)[d3lIdx];
+             if(m_winIdx == e_SrcSelector::A) line = d3l->getLineA();
+             if(m_winIdx == e_SrcSelector::B) line = d3l->getLineB();
+             if(m_winIdx == e_SrcSelector::C) line = d3l->getLineC();
+diff --git a/src/gnudiff_diff.h b/src/gnudiff_diff.h
+index 1d2b92fc..79aeb8c3 100644
+--- a/src/gnudiff_diff.h
++++ b/src/gnudiff_diff.h
+@@ -17,6 +17,8 @@
+ #include "LineRef.h"
+ #include "Utils.h"
+ 
++#include <QtGlobal>
++
+ #include <stdint.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+@@ -30,7 +32,6 @@
+ #include <stdio.h>
+ 
+ #include <QString>
+-#include <QtGlobal>
+ 
+ /* The integer type of a line number. */
+ typedef qint64 GNULineRef;
+diff --git a/src/kdiff3.h b/src/kdiff3.h
+index f504f597..adcd5eb1 100644
+--- a/src/kdiff3.h
++++ b/src/kdiff3.h
+@@ -12,6 +12,7 @@
+ #include "diff.h"
+ #include "defmac.h"
+ #include "combiners.h"
++#include "TypeUtils.h"
+ 
+ #include <boost/signals2.hpp>
+ 
+@@ -442,11 +443,11 @@ public Q_SLOTS:
+ 
+     QSharedPointer<DiffBufferInfo> m_diffBufferInfo = QSharedPointer<DiffBufferInfo>::create();
+     Diff3LineList m_diff3LineList;
+-    Diff3LineVector m_diff3LineVector;
++    Diff3LineVector mDiff3LineVector;
+     //ManualDiffHelpDialog* m_pManualDiffHelpDialog;
+     ManualDiffHelpList m_manualDiffHelpList;
+ 
+-    int m_neededLines;
++    SafeInt32<QtNumberType> m_neededLines;
+     int m_DTWHeight;
+     bool m_bOutputModified = false;
+     bool m_bFileSaved = false;
+diff --git a/src/mergeresultwindow.cpp b/src/mergeresultwindow.cpp
+index 3ebfcd21..c384fb12 100644
+--- a/src/mergeresultwindow.cpp
++++ b/src/mergeresultwindow.cpp
+@@ -2269,7 +2269,12 @@ void MergeResultWindow::keyPressEvent(QKeyEvent* e)
+     int y = m_cursorYPos;
+     MergeLineList::iterator mlIt;
+     MergeEditLineList::iterator melIt;
+-    calcIteratorFromLineNr(y, mlIt, melIt);
++    if(!calcIteratorFromLineNr(y, mlIt, melIt))
++    {
++        // no data loaded or y out of bounds
++        e->ignore();
++        return;
++    }
+ 
+     QString str = melIt->getString(m_pldA, m_pldB, m_pldC);
+     int x = m_cursorXPos;
+@@ -2306,8 +2311,7 @@ void MergeResultWindow::keyPressEvent(QKeyEvent* e)
+                     setModified();
+                     MergeLineList::iterator mlIt1;
+                     MergeEditLineList::iterator melIt1;
+-                    calcIteratorFromLineNr(y + 1, mlIt1, melIt1);
+-                    if(melIt1->isEditableText())
++                    if(calcIteratorFromLineNr(y + 1, mlIt1, melIt1) && melIt1->isEditableText())
+                     {
+                         QString s2 = melIt1->getString(m_pldA, m_pldB, m_pldC);
+                         melIt->setString(str + s2);
+@@ -2339,8 +2343,7 @@ void MergeResultWindow::keyPressEvent(QKeyEvent* e)
+                     setModified();
+                     MergeLineList::iterator mlIt1;
+                     MergeEditLineList::iterator melIt1;
+-                    calcIteratorFromLineNr(y - 1, mlIt1, melIt1);
+-                    if(melIt1->isEditableText())
++                    if(calcIteratorFromLineNr(y - 1, mlIt1, melIt1) && melIt1->isEditableText())
+                     {
+                         QString s1 = melIt1->getString(m_pldA, m_pldB, m_pldC);
+                         melIt1->setString(s1 + str);
+@@ -2543,43 +2546,34 @@ void MergeResultWindow::keyPressEvent(QKeyEvent* e)
+                 e->ignore();
+                 return;
+             }
+-            else
++            if(!melIt->isEditableText()) break;
++            deleteSelection2(str, x, y, mlIt, melIt);
++
++            setModified();
++            // Characters to insert
++            QString s = str;
++            if(t[0] == '\t' && m_pOptions->m_bReplaceTabs)
+             {
+-                if(bCtrl)
+-                {
+-                    e->ignore();
+-                    return;
+-                }
+-                else
+-                {
+-                    if(!melIt->isEditableText()) break;
+-                    deleteSelection2(str, x, y, mlIt, melIt);
++                int spaces = (m_cursorXPos / m_pOptions->m_tabSize + 1) * m_pOptions->m_tabSize - m_cursorXPos;
++                t.fill(' ', spaces);
++            }
++            if(m_bInsertMode)
++                s.insert(x, t);
++            else
++                s.replace(x, t.length(), t);
+ 
+-                    setModified();
+-                    // Characters to insert
+-                    QString s = str;
+-                    if(t[0] == '\t' && m_pOptions->m_bReplaceTabs)
+-                    {
+-                        int spaces = (m_cursorXPos / m_pOptions->m_tabSize + 1) * m_pOptions->m_tabSize - m_cursorXPos;
+-                        t.fill(' ', spaces);
+-                    }
+-                    if(m_bInsertMode)
+-                        s.insert(x, t);
+-                    else
+-                        s.replace(x, t.length(), t);
++            melIt->setString(s);
++            x += t.length();
++            bShift = false;
++        } // default case
++    } // switch(e->key())
+ 
+-                    melIt->setString(s);
+-                    x += t.length();
+-                    bShift = false;
+-                }
+-            }
+-        }
+-    }
+ 
+     y = qBound(0, y, m_nofLines - 1);
+ 
+-    calcIteratorFromLineNr(y, mlIt, melIt);
+-    str = melIt->getString(m_pldA, m_pldB, m_pldC);
++    str = calcIteratorFromLineNr(y, mlIt, melIt)
++            ? melIt->getString(m_pldA, m_pldB, m_pldC)
++            : QString();
+ 
+     x = qBound(0, x, (int)str.length());
+ 
+@@ -2651,7 +2645,22 @@ void MergeResultWindow::keyPressEvent(QKeyEvent* e)
+     }
+ }
+ 
+-void MergeResultWindow::calcIteratorFromLineNr(
++/**
++ * Determine MergeLine and MergeEditLine from line number
++ *
++ * @param       line
++ *              line number to look up
++ * @param[out]  mlIt
++ *              iterator to merge-line
++ *              or m_mergeLineList.end() if not available
++ * @param[out]  melIt
++ *              iterator to MergeEditLine
++ *              or mlIt->mergeEditLineList.end() if not available
++ *              @warning uninitialized if mlIt is not available!
++ * @return      whether line is available;
++ *              when true, @p mlIt and @p melIt are set to valid iterators
++ */
++bool MergeResultWindow::calcIteratorFromLineNr(
+     int line,
+     MergeLineList::iterator& mlIt,
+     MergeEditLineList::iterator& melIt)
+@@ -2668,10 +2677,11 @@ void MergeResultWindow::calcIteratorFromLineNr(
+             for(melIt = ml.mergeEditLineList.begin(); melIt != ml.mergeEditLineList.end(); ++melIt)
+             {
+                 --line;
+-                if(line < 0) return;
++                if(line < 0) return true;
+             }
+         }
+     }
++    return false;
+ }
+ 
+ QString MergeResultWindow::getSelection()
+@@ -2742,7 +2752,13 @@ bool MergeResultWindow::deleteSelection2(QString& s, int& x, int& y,
+         Q_ASSERT(m_selection.isValidFirstLine());
+         deleteSelection();
+         y = m_cursorYPos;
+-        calcIteratorFromLineNr(y, mlIt, melIt);
++        if(!calcIteratorFromLineNr(y, mlIt, melIt))
++        {
++            // deleteSelection() should never remove or empty the first line, so
++            // resolving m_cursorYPos shall always succeed
++            Q_ASSERT(false);
++        }
++
+         s = melIt->getString(m_pldA, m_pldB, m_pldC);
+         x = m_cursorXPos;
+         return true;
+@@ -2860,7 +2876,10 @@ void MergeResultWindow::pasteClipboard(bool bFromSelection)
+     int y = m_cursorYPos;
+     MergeLineList::iterator mlIt;
+     MergeEditLineList::iterator melIt, melItAfter;
+-    calcIteratorFromLineNr(y, mlIt, melIt);
++    if (!calcIteratorFromLineNr(y, mlIt, melIt))
++    {
++        return;
++    }
+     melItAfter = melIt;
+     ++melItAfter;
+     QString str = melIt->getString(m_pldA, m_pldB, m_pldC);
+@@ -2964,6 +2983,9 @@ bool MergeResultWindow::saveDocument(const QString& fileName, QTextCodec* pEncod
+         textOutStream.setGenerateByteOrderMark(true); // Only for UTF-16
+     textOutStream.setCodec(pEncoding);
+ 
++    // Determine the line feed for this file
++    const QString lineFeed(eLineEndStyle == eLineEndStyleDos ? QString("\r\n") : QString("\n"));
++
+     int line = 0;
+     MergeLineList::iterator mlIt = m_mergeLineList.begin();
+     for(mlIt = m_mergeLineList.begin(); mlIt != m_mergeLineList.end(); ++mlIt)
+@@ -2976,18 +2998,14 @@ bool MergeResultWindow::saveDocument(const QString& fileName, QTextCodec* pEncod
+ 
+             if(mel.isEditableText())
+             {
+-                QString str = mel.getString(m_pldA, m_pldB, m_pldC);
++                const QString str = mel.getString(m_pldA, m_pldB, m_pldC);
+ 
+-                if(line > 0) // Prepend line feed, but not for first line
++                if(line > 0 && !mel.isRemoved())
+                 {
+-                    if(eLineEndStyle == eLineEndStyleDos)
+-                    {
+-                        str.prepend("\r\n");
+-                    }
+-                    else
+-                    {
+-                        str.prepend("\n");
+-                    }
++                    // Put line feed between lines, but not for the first line
++                    // or between lines that have been removed (because there
++                    // isn't a line there).
++                    textOutStream << lineFeed;
+                 }
+ 
+                 textOutStream << str;
+@@ -3013,13 +3031,11 @@ QString MergeResultWindow::getString(int lineIdx)
+ {
+     MergeLineList::iterator mlIt;
+     MergeEditLineList::iterator melIt;
+-    if(m_mergeLineList.empty())
++    if(!calcIteratorFromLineNr(lineIdx, mlIt, melIt))
+     {
+         return QString();
+     }
+-    calcIteratorFromLineNr(lineIdx, mlIt, melIt);
+-    QString s = melIt->getString(m_pldA, m_pldB, m_pldC);
+-    return s;
++    return melIt->getString(m_pldA, m_pldB, m_pldC);
+ }
+ 
+ bool MergeResultWindow::findString(const QString& s, LineRef& d3vLine, int& posInLine, bool bDirDown, bool bCaseSensitive)
+diff --git a/src/mergeresultwindow.h b/src/mergeresultwindow.h
+index ad16db1e..91136d1e 100644
+--- a/src/mergeresultwindow.h
++++ b/src/mergeresultwindow.h
+@@ -216,7 +216,7 @@ class MergeResultWindow: public QWidget
+         eEnd
+     };
+     void go(e_Direction eDir, e_EndPoint eEndPoint);
+-    void calcIteratorFromLineNr(
++    bool calcIteratorFromLineNr(
+         int line,
+         MergeLineList::iterator& mlIt,
+         MergeEditLineList::iterator& melIt);
+diff --git a/src/pdiff.cpp b/src/pdiff.cpp
+index 389b69ec..ed1cc2fd 100644
+--- a/src/pdiff.cpp
++++ b/src/pdiff.cpp
+@@ -112,7 +112,7 @@ void KDiff3App::mainInit(TotalDiffStatus* pTotalDiffStatus, const InitFlags inFl
+     //insure merge result window never has stale iterators.
+     if(m_pMergeResultWindow) m_pMergeResultWindow->clearMergeList();
+     m_diff3LineList.clear();
+-    m_diff3LineVector.clear();
++    mDiff3LineVector.clear();
+ 
+     if(bLoadFiles)
+     {
+@@ -309,18 +309,23 @@ void KDiff3App::mainInit(TotalDiffStatus* pTotalDiffStatus, const InitFlags inFl
+ 
+     if(errors.isEmpty() && m_sd1->isText() && m_sd2->isText())
+     {
+-        m_diffBufferInfo->init(&m_diff3LineList, &m_diff3LineVector,
++        m_diffBufferInfo->init(&m_diff3LineList,
+                                m_sd1->getLineDataForDiff(), m_sd1->getSizeLines(),
+                                m_sd2->getLineDataForDiff(), m_sd2->getSizeLines(),
+                                m_sd3->getLineDataForDiff(), m_sd3->getSizeLines());
+         Diff3Line::m_pDiffBufferInfo = m_diffBufferInfo;
+ 
+         m_diff3LineList.calcWhiteDiff3Lines(m_sd1->getLineDataForDiff(), m_sd2->getLineDataForDiff(), m_sd3->getLineDataForDiff(), m_pOptions->ignoreComments());
+-        m_diff3LineList.calcDiff3LineVector(m_diff3LineVector);
++        m_diff3LineList.calcDiff3LineVector(mDiff3LineVector);
+     }
+ 
+     // Calc needed lines for display
+-    m_neededLines = m_diff3LineList.size();
++    if(m_diff3LineList.size() <= TYPE_MAX(QtNumberType))
++        m_neededLines = SafeInt32<QtNumberType>(m_diff3LineList.size());
++    else
++    {
++        errors.append("Too many lines in diff. Skiping file.");
++    }
+ 
+     QList<int> oldHeights;
+     if(m_pDirectoryMergeSplitter->isVisible())
+@@ -360,15 +365,15 @@ void KDiff3App::mainInit(TotalDiffStatus* pTotalDiffStatus, const InitFlags inFl
+     {
+         const ManualDiffHelpList* pMDHL = &m_manualDiffHelpList;
+         m_pDiffTextWindow1->init(m_sd1->getAliasName(), m_sd1->getEncoding(), m_sd1->getLineEndStyle(),
+-                                 m_sd1->getLineDataForDisplay(), m_sd1->getSizeLines(), &m_diff3LineVector, pMDHL);
++                                 m_sd1->getLineDataForDisplay(), m_sd1->getSizeLines(), &mDiff3LineVector, pMDHL);
+         m_pDiffTextWindowFrame1->init();
+ 
+         m_pDiffTextWindow2->init(m_sd2->getAliasName(), m_sd2->getEncoding(), m_sd2->getLineEndStyle(),
+-                                 m_sd2->getLineDataForDisplay(), m_sd2->getSizeLines(), &m_diff3LineVector, pMDHL);
++                                 m_sd2->getLineDataForDisplay(), m_sd2->getSizeLines(), &mDiff3LineVector, pMDHL);
+         m_pDiffTextWindowFrame2->init();
+ 
+         m_pDiffTextWindow3->init(m_sd3->getAliasName(), m_sd3->getEncoding(), m_sd3->getLineEndStyle(),
+-                                 m_sd3->getLineDataForDisplay(), m_sd3->getSizeLines(), &m_diff3LineVector, pMDHL);
++                                 m_sd3->getLineDataForDisplay(), m_sd3->getSizeLines(), &mDiff3LineVector, pMDHL);
+         m_pDiffTextWindowFrame3->init();
+ 
+         m_pDiffTextWindowFrame3->setVisible(m_bTripleDiff);
+@@ -501,7 +506,7 @@ void KDiff3App::resizeDiffTextWindowHeight(int newHeight)
+ {
+     m_DTWHeight = newHeight;
+ 
+-    DiffTextWindow::mVScrollBar->setRange(0, std::max(0, m_neededLines + 1 - newHeight));
++    DiffTextWindow::mVScrollBar->setRange(0, std::max(0, QtNumberType(m_neededLines + 1 - newHeight)));
+     DiffTextWindow::mVScrollBar->setPageStep(newHeight);
+     m_pOverview->setRange(DiffTextWindow::mVScrollBar->value(), DiffTextWindow::mVScrollBar->pageStep());
+ 
+@@ -704,13 +709,13 @@ void KDiff3App::slotFinishMainInit()
+     /*int newWidth  = m_pDiffTextWindow1->getNofVisibleColumns();*/
+     m_DTWHeight = newHeight;
+ 
+-    DiffTextWindow::mVScrollBar->setRange(0, std::max(0, m_neededLines + 1 - newHeight));
++    DiffTextWindow::mVScrollBar->setRange(0, std::max(0, QtNumberType(m_neededLines + 1 - newHeight)));
+     DiffTextWindow::mVScrollBar->setPageStep(newHeight);
+     m_pOverview->setRange(DiffTextWindow::mVScrollBar->value(), DiffTextWindow::mVScrollBar->pageStep());
+ 
+     int d3l = -1;
+     if(!m_manualDiffHelpList.empty())
+-        d3l = m_manualDiffHelpList.front().calcManualDiffFirstDiff3LineIdx(m_diff3LineVector);
++        d3l = m_manualDiffHelpList.front().calcManualDiffFirstDiff3LineIdx(mDiff3LineVector);
+     if(d3l >= 0 && m_pDiffTextWindow1)
+     {
+         int line = m_pDiffTextWindow1->convertDiff3LineIdxToLine(d3l);
+@@ -1454,7 +1459,7 @@ void KDiff3App::recalcWordWrap(int visibleTextWidthForPrinting)
+         }
+         else
+         {
+-            m_neededLines = m_diff3LineVector.size();
++            m_neededLines = m_diff3LineList.size();
+             if(m_pDiffTextWindow1)
+                 m_pDiffTextWindow1->recalcWordWrap(false, 0, 0);
+             if(m_pDiffTextWindow2)
+@@ -1537,7 +1542,7 @@ void KDiff3App::slotFinishRecalcWordWrap(int visibleTextWidthForPrinting)
+         if(m_pOverview)
+             m_pOverview->slotRedraw();
+         if(DiffTextWindow::mVScrollBar)
+-            DiffTextWindow::mVScrollBar->setRange(0, std::max(0, m_neededLines + 1 - m_DTWHeight));
++            DiffTextWindow::mVScrollBar->setRange(0, std::max(0, QtNumberType(m_neededLines + 1 - m_DTWHeight)));
+         if(m_pDiffTextWindow1)
+         {
+             if(DiffTextWindow::mVScrollBar)
+diff --git a/src/selection.cpp b/src/selection.cpp
+index 5c4b8d99..20796340 100644
+--- a/src/selection.cpp
++++ b/src/selection.cpp
+@@ -7,12 +7,12 @@
+ */
+ 
+ #include "selection.h"
+-
+ #include "TypeUtils.h"
+ 
++#include <QtGlobal>
++
+ #include <utility>   // for swap
+ 
+-#include <QtGlobal>
+ 
+ int Selection::firstPosInLine(LineRef l) const
+ {
+-- 
+2.31.1
+

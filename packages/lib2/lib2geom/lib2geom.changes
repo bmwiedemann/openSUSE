@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jun 28 10:16:01 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix libdir in pkgconfig file and to install it to
+  the right location under %{_libdir}/pkgconfig instead of
+  %{_prefix}/lib/pkgconfig which is being used by upstream:
+  * fix-pkgconfig-libdir-path.patch
+
+-------------------------------------------------------------------
+Wed Jun 16 07:47:47 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use -DCMAKE_SKIP_RPATH:BOOL=OFF so rpath is set on tests and they
+  can find the library in the build directory. Also use
+  -DCMAKE_SKIP_INSTALL_RPATHS:BOOL=ON so rpaths are not set in
+  installed files.
+
+-------------------------------------------------------------------
+Tue Jun 15 16:25:05 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix a floating point error when running tests on
+  i586:
+  * fix-floating-point-epsilon-in-tests-i586.patch
+
+-------------------------------------------------------------------
+Tue Jun 15 07:53:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.1:
+  * 2Geom v1.1 is not ABI compatible with v1.0, it switches
+    from boost::optional to std::optional.
+  * Add Geom::Parallelogram
+  * Add Geom::PathIteratorSink::inPath()
+  * Add Geom::are_near_rel() for Geom::Point
+  * Move headers to include directory
+  * Make build system git submodule friendly
+  * Fix Python 3 support (py2geom)
+  * Remove Python 2 support (py2geom)
+
+-------------------------------------------------------------------
+Tue May  5 07:15:56 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Cleanup spec file
+  * don't use _service, spectool can download the sources
+  * fix install location of the library
+  * use macros more consistently
+
+-------------------------------------------------------------------
+Mon May 04 22:14:56 UTC 2020 - andythe_great@pm.me
+
+- Update to version 1.0:
+  * Release version 1.0
+  * Stabilize API for upcoming release
+  * Embed googletest in source tree.
+  * Remove googletest as submodule
+  * README: Fix path to toys dir
+  * NEWS: Initial draft of a release announcement for 1.0
+  * Fix crash in itemBounds returns an empty interval when the bounds are undefined
+  * CMake/py2geom: Remove broken/unnecessary win32-specific code
+  * CMake/py2geom: Make compatible with Boost versions lower than 1.67
+  * Proper depends
+
+-------------------------------------------------------------------
+Mon May  4 21:57:40 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initail package release. 

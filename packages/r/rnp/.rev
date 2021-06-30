@@ -7,4 +7,12 @@
     <comment>An OpenPGP implementation</comment>
     <requestid>874184</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54649011e221566db99bd65945a8f45d</srcmd5>
+    <version>0.15.1</version>
+    <time>1624999391</time>
+    <user>dimstar_suse</user>
+    <comment>rnp 0.15.1 CVE-2021-33589 boo#1187759</comment>
+    <requestid>902886</requestid>
+  </revision>
 </revisionlist>

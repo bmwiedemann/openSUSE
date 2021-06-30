@@ -1,0 +1,8 @@
+<package name="nodejs-electron" project="openSUSE:Factory">
+  <title>Build cross platform desktop apps with JavaScript, HTML, and CSS</title>
+  <description>Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and CSS
+
+</description>
+  <devel project="devel:languages:javascript" package="nodejs-electron"/>
+  <url>https://github.com/electron/electron</url>
+</package>

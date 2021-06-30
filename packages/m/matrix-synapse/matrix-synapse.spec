@@ -29,8 +29,6 @@
 %bcond_with    opentracing
 # matrix-synapse-ldap isn't packaged on openSUSE.
 %bcond_with    ldap
-# txacme is broken in openSUSE.
-%bcond_with    acme
 # sentry-sdk isn't packaged on openSUSE.
 %bcond_with    sentry
 
@@ -52,7 +50,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.36.0
+Version:        1.37.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -92,7 +90,7 @@ BuildRequires:  %{use_python}-PyYAML >= 3.11
 %requires_eq    %{use_python}-PyYAML
 BuildRequires:  %{use_python}-Twisted >= 20.3.0
 %requires_eq    %{use_python}-Twisted
-BuildRequires:  ((%{use_python}-attrs >= 19.1.0 with %{use_python}-attrs < 21.1.0) or %{use_python}-attrs > 21.1.0)
+BuildRequires:  ((%{use_python}-attrs >= 19.2.0 with %{use_python}-attrs < 21.1.0) or %{use_python}-attrs > 21.1.0)
 %requires_eq    %{use_python}-attrs
 BuildRequires:  %{use_python}-bcrypt >= 3.2.0
 %requires_eq    %{use_python}-bcrypt
@@ -153,10 +151,6 @@ BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
 %if %{with postgres}
 BuildRequires:  %{use_python}-psycopg2 >= 2.8
 %requires_eq    %{use_python}-psycopg2
-%endif
-%if %{with acme}
-BuildRequires:  %{use_python}-txacme >= 0.9.2
-%requires_eq    %{use_python}-txacme
 %endif
 %if %{with saml}
 BuildRequires:  %{use_python}-pysaml2 >= 4.5.0

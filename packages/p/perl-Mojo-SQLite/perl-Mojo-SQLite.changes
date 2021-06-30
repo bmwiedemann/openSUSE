@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 17 03:07:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.006
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  3.006     2021-06-16 00:30:47 EDT
+    - Set default abstract generator to an SQL::Abstract::Pg object, enabling additional features.
+    - Update IRC metadata to libera.chat
+
+-------------------------------------------------------------------
 Wed Feb 17 03:10:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.005

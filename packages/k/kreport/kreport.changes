@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 28 14:47:16 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Requires: cmake(Qt5Qml) to the devel package to fix kexi's
+  build on ppc
+
+-------------------------------------------------------------------
+Mon Jun 28 07:13:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the optional QtWebKit build dependency.
+
+-------------------------------------------------------------------
+Tue Apr 20 13:52:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Aug 27 12:50:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Jun 17 07:59:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-kexi-build-with-GCC-10.patch to fix the build of kexi in

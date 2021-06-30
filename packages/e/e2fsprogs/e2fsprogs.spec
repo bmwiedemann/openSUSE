@@ -395,7 +395,7 @@ done
 
 %files -f e2fsprogs.lang
 %defattr(-, root, root)
-%doc RELEASE-NOTES README
+%doc doc/RelNotes/v%{version}.txt README
 %if 0%{?sle_version} > 120200
 %license NOTICE
 %endif

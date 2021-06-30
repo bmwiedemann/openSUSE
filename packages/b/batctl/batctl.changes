@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu May 13 00:26:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2021.0
+  * Drop support for batman-adv's sysfs+debugfs
+  * Drop support for automatic destruction of empty meshifs
+  * Drop support for deprecated log command support
+  * Drop of the legacy vis subcommands
+  * Add per interface hop penalty command
+  * Add tcpdump support for MCAST TVLV, unicast fragments and coded
+    packets
+  * Add support for hardif specific settings
+  * Add multicast_fanout setting subcommand
+  * Add hop_penalty setting subcommand
+  * Add gateway selection manpage section for B.A.T.M.A.N. V
+  * New subcommand "event" to receive netlink notifications
+  * Bugs squashed:
+    * Fix query of meshif's ap_isolation status
+    * Ignore "interface already exists" error during "interface add"
+    * Fix endianness in ICMPv6 Echo Request/Reply parsing
+    * Fix parsing of radiotap headers on big endian systems
+    * Fix error code on throughputmeter errors
+    * Re-integrate support for translation table unicast/multicast
+      filter
+    * Avoid incorrect warning about disabled mesh interface when
+      debugfs support is not enabled in batman-adv
+  * Allow to select routing algorithm during creation of interface
+  * implement support for multicast RTR flags
+  * avoid some kernel deprecation warning by using more generic
+    netlink over sysfs
+  * use type specific prefixes to select mesh interface or vlan
+    instead of '-m'
+  * implement netlink based support for remaining sysfs-only features
+  * remove non-netlink support for translating MAC addresses to originators
+  * introduce support for batadv meshif, hardif and vlan configuration via netlink
+  * replace multicast_mode with multicast_forceflood settings subcommand
+
+-------------------------------------------------------------------
 Sun Jun 10 08:48:14 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 2018.1.

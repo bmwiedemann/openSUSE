@@ -16,4 +16,12 @@
  * [feature] Support for :nullify_blank option when configuring a virtus module (lucasmazza)</comment>
     <requestid>292107</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84b31d8d48dd082049d6607bfb094509</srcmd5>
+    <version>2.0.0</version>
+    <time>1624999399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902941</requestid>
+  </revision>
 </revisionlist>

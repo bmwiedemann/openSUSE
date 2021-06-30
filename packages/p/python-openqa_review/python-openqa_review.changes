@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 28 13:11:42 UTC 2021 - okurz@suse.com
+
+- Update to version 1.25.0:
+  * Make link to HTML report variable
+  * doc: Add CURL_CA_BUNDLE
+  * Improve handling of --filter
+  * Add User-Agent header to HTTP requests
+  * Fix relative import path for directly called testsuite
+  * Remove futurize from tests
+  * Update setup.py - remove python2 compactibility stuff
+  * Fix handling of softfail bugrefs
+  * Issue: Consistently Use self.bugref instead of bugref from arg
+
+-------------------------------------------------------------------
 Fri Jun 25 18:51:37 UTC 2021 - okurz@suse.com
 
 - Update to version 1.24.0:

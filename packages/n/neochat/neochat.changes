@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 26 09:38:16 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Fix build error.
+  - Add missig cmark which will not be install with libcmark-devel.
+
+-------------------------------------------------------------------
 Tue Jun  1 14:04:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.0

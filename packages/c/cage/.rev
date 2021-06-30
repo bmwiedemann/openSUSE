@@ -68,4 +68,14 @@
     <comment></comment>
     <requestid>902286</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>142c111f4dc2f24d93ac9b7342b887d2</srcmd5>
+    <version>0.1.4</version>
+    <time>1624999368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Compatibility release to track wlroots 0.14.0
+- Drop cage-wlroots-0140.patch: upstreamed</comment>
+    <requestid>902828</requestid>
+  </revision>
 </revisionlist>

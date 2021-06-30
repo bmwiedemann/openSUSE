@@ -2,7 +2,7 @@ Index: synapse/synapse/python_dependencies.py
 ===================================================================
 --- synapse.orig/synapse/python_dependencies.py
 +++ synapse/synapse/python_dependencies.py
-@@ -86,7 +86,8 @@ REQUIREMENTS = [
+@@ -84,7 +84,8 @@ REQUIREMENTS = [
      "typing-extensions>=3.7.4",
      # We enforce that we have a `cryptography` version that bundles an `openssl`
      # with the latest security patches.

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 17 22:26:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1
+  * packETHcli added burst mode (-m -6)
+  * packETHcli added receiver option (mode -m -9) to count received
+    packets
+  * packETHcli added option to incluce pattern (predifined or custom)
+    which can be checked by packETHcli in receiver mode if all packets
+    that were sent were also correctly received at the receiver site
+  * packETHcli - nanoseconds support
+- Replaced packeth-ftbs-gcc10.patch with e72195b573.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 18:57:22 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - packeth-ftbs-gcc10.patch: fix build with gcc >= 10 

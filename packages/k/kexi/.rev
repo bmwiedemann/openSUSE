@@ -172,4 +172,15 @@
   * 0001-Include-glib.h-outside-of-the-extern-block.patch</comment>
     <requestid>888903</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>12f52b39e8b0ec932e2de12fb9c3d837</srcmd5>
+    <version>3.2.0</version>
+    <time>1624999371</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire postgresql-server-devel also on Leap 15.2/15.3 to
+  fix missing PostgreSQL migration driver
+
+Similar to SR#785407 in kdb, but I decided to omit the %if completely as 15.1 is no longer supported. (forwarded request 902805 from wolfi323)</comment>
+    <requestid>902811</requestid>
+  </revision>
 </revisionlist>

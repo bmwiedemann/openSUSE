@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 28 20:17:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.15.1:
+  * Fix updating of expiration time for a key with multiple user
+    IDs
+  * Fixed key expiry check for keys valid after the year 2038
+  * Pick up key expiration time from direct-key signature or primary
+    userid certification if available
+  * CVE-2021-33589: issue with cleartext key data after the
+    rnp_key_unprotect()/rnp_key_protect() calls (boo#1187759)
+- includes changes from 0.15.0:
+  * Improve handling of cleartext signatures, when empty line
+    between headers and contents contains some whitespace
+  * Relax requirements for the armored messages CRC (allow absence
+    of the CRC, and issue warning instead of complete failure)
+  * documentation updates
+  * rnpkeys: add --remove-key command
+
+-------------------------------------------------------------------
 Sun Feb 21 21:44:24 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial package, 0.14.0

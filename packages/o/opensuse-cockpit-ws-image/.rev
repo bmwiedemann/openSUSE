@@ -43,4 +43,12 @@
 - Adjust run, install and uninstall labels [bsc#1177487] (forwarded request 895966 from kukuk)</comment>
     <requestid>895967</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5215a76dc9431c094690b3519cb8c62d</srcmd5>
+    <version>1.0.0</version>
+    <time>1624999418</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix switched UNINSTALL/RUN label [bsc#1187635]</comment>
+    <requestid>903089</requestid>
+  </revision>
 </revisionlist>

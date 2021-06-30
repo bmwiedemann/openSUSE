@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 27 03:07:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.112
+   see /usr/share/doc/packages/perl-Data-OptList/Changes
+
+  0.112     2021-06-26 11:01:31-04:00 America/New_York
+          - no changes since last trial release (0.111)
+
+  0.111     2021-06-20 20:55:10-04:00 America/New_York (TRIAL RELEASE)
+          - update author contact info
+          - add perl version support to docs
+          - replace a "goto" deep in the guts with a sub call, for speed (thanks,
+            Olivier Mengué and Graham Knop)
+
+-------------------------------------------------------------------
 Tue Mar 29 09:13:48 UTC 2016 - coolo@suse.com
 
 - updated to 0.110

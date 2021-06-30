@@ -1,7 +1,7 @@
 #
 # spec file for package python-rq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,26 +20,27 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-rq
-Version:        1.4.3
+Version:        1.8.1
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/rq
 Source:         https://github.com/rq/rq/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module click >= 3.0}
+BuildRequires:  %{python_module click >= 5.0.0}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 3.0.0}
+BuildRequires:  %{python_module redis >= 3.5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
-Requires:       python-click >= 3.0
-Requires:       python-redis >= 3.0.0
+Requires:       python-click >= 5.0.0
+Requires:       python-redis >= 3.5.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -58,7 +59,6 @@ integrated into web stacks.
 %python_clone -a %{buildroot}%{_bindir}/rq
 %python_clone -a %{buildroot}%{_bindir}/rqinfo
 %python_clone -a %{buildroot}%{_bindir}/rqworker
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

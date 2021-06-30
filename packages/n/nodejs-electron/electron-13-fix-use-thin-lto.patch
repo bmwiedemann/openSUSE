@@ -1,0 +1,21 @@
+Index: electron-13.1.2/build/config/compiler/compiler.gni
+===================================================================
+--- electron-13.1.2.orig/build/config/compiler/compiler.gni	2021-06-19 12:20:04.936384156 +0200
++++ electron-13.1.2/build/config/compiler/compiler.gni	2021-06-20 15:30:45.946767664 +0200
+@@ -67,11 +67,11 @@ declare_args() {
+   # Use it by default on official-optimized android and Chrome OS builds, but
+   # not ARC or linux-chromeos since it's been seen to not play nicely with
+   # Chrome's clang. crbug.com/1033839
+-  use_thin_lto =
+-      is_cfi ||
+-      (is_official_build && chrome_pgo_phase != 1 &&
+-       (is_linux || is_win || (is_android && target_os != "chromeos") ||
+-        ((is_chromeos_ash || is_chromeos_lacros) && is_chromeos_device)))
++  use_thin_lto = false
++  #   is_cfi ||
++  #   (is_official_build && chrome_pgo_phase != 1 &&
++  #    (is_linux || is_win || (is_android && target_os != "chromeos") ||
++  #     ((is_chromeos_ash || is_chromeos_lacros) && is_chromeos_device)))
+ 
+   # If true, use Goma for ThinLTO code generation where applicable.
+   use_goma_thin_lto = false

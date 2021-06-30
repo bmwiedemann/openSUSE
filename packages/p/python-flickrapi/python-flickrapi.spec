@@ -1,7 +1,7 @@
 #
 # spec file for package python-flickrapi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.4.3
 Requires:       python-requests-oauthlib >= 0.4.2

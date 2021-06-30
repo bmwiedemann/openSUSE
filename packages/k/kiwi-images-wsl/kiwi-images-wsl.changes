@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  2 16:58:47 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use new kiwi_metainfo_helper variables %OS_VENDOR% and
+  %OS_PRETTY_NAME_BEFORE_PAREN_DASHED% to reduce incidental diff   
+  between SLE, Leap and Tumbleweed KIWI definitions. With this
+  change, diff is now limited to package elements included in each
+  OS flavor. Requires obs-service-kiwi_metainfo_helper >= 0.3.
+
+-------------------------------------------------------------------
 Fri May 28 20:41:06 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Set kiwi definition version to 1.0.0. Use OBS build time _service

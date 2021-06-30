@@ -17,14 +17,14 @@
 
 
 #
-%define git_ver .0.1610cf601e5a
+%define git_ver .0.47396f1a5eaa
 %define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        9.2.2
+Version:        9.3.1
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
@@ -113,13 +113,10 @@ for service in vma; do ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${se
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}
 %dir %{_docdir}/%{name}
-%{_docdir}/%{name}/README.txt
-%{_docdir}/%{name}/journal.txt
-%{_docdir}/%{name}/VMA_VERSION
+%{_docdir}/%{name}/README
+%{_docdir}/%{name}/CHANGES
 %config(noreplace) %{_sysconfdir}/libvma.conf
-%config %{_sysconfdir}/security/limits.d/30-libvma-limits.conf
 %{_sbindir}/vmad
-%{_sbindir}/vma
 %{_sbindir}/rcvma
 %{_unitdir}/vma.service
 %{_bindir}/vma_stats

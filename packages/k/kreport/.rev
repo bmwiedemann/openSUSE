@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>815422</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3ddb5654eb8cc54757d7431943ed78ba</srcmd5>
+    <version>3.2.0</version>
+    <time>1624999372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires: cmake(Qt5Qml) to the devel package to fix kexi's
+  build on ppc (forwarded request 902865 from wolfi323)</comment>
+    <requestid>902879</requestid>
+  </revision>
 </revisionlist>

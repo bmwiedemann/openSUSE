@@ -395,4 +395,34 @@
   This patch fixes this issue.</comment>
     <requestid>898463</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0fa6eed6b62b87a22b346938fc1a1edc</srcmd5>
+    <version>1.9.1</version>
+    <time>1624999415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1:
+  * New AstroTrac 360 driver (Experimental).
+  * New Pegasus FlatMaster and UHC drivers 
+  * New Deep Sky Dad Field Rotator 
+  * Core INDI Library improvements to base device and client classes 
+  * Paramount TCP improvements 
+  * Spectrograph and Receiver classes 
+  * OnStep improvements 
+  * RST-135 location and time fix
+  * Dome OTA fixes
+  * Object Azimuth and Altitude added to FITS header 
+  * Rainbow Focuser fixes
+  * Support for CGX-L 
+  * Fix crash in SkyWatcher API mount driver
+  * Fix iOptron DST bug
+  * Fix lunar and solar order
+  * PMC8 Driver v0.4 (Improved manual slewing, guiding, and other features)
+  * Try to send the guide pulses asynchronously to TheSkyX
+  * Use encoders for parking
+  * Lots of other smmall fixes, for the full changelog please check
+    https://github.com/indilib/indi/blob/master/ChangeLog
+- Drop ioptron_dst_fix.patch (change has been upstreamed)
+- Add fix_include_path.patch</comment>
+    <requestid>903068</requestid>
+  </revision>
 </revisionlist>

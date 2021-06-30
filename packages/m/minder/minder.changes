@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 25 08:18:17 UTC 2021 - eymeric dechelette <hatchchien@protonmail.com>
+- Update 1.12.5:
+    Changes:
+      * Updated Italian translation (thanks to @albanobattistella)
+      * Updated Russian translation (thanks to Alexandre Prokoudine)
+    Bug Fixes:
+      * Added missing translatable strings in various parts of the UI.
+      * Fixed URL parser issues.
+      * Fixed application crash when forward deleting non-Latin text
+-------------------------------------------------------------------
 Sat Apr 24 18:07:01 UTC 2021 - Jason Kurzik <jason.kurzik@protonmail.com>
 - Update 1.12.2:
   * Features and Changes

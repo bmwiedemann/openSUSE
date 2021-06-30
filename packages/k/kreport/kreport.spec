@@ -1,7 +1,7 @@
 #
 # spec file for package kreport
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,19 +28,18 @@ Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.t
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-kexi-build-with-GCC-10.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kproperty-devel
 BuildRequires:  python-base
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KPropertyCore)
 BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
@@ -59,7 +58,8 @@ The main library for the Report creation and generation framework
 %package devel
 Summary:        Development package for KReport
 Group:          Development/Libraries/KDE
-Requires:       kproperty-devel
+Requires:       cmake(KPropertyCore)
+Requires:       cmake(Qt5Qml)
 Requires:       libKReport3-%{sover} = %{version}
 
 %description devel
@@ -68,19 +68,18 @@ Development package for the Report Creation and Generation framework
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %find_lang %{name} %{name}.lang --all-name --with-qt
+%kf5_makeinstall -C build
+%find_lang %{name} %{name}.lang --all-name --with-qt
 
-  # The pkgconfig files contain incorrect stuff
-  rm -f %{buildroot}%{_libdir}/pkgconfig/KReport3.pc
+# The pkgconfig files contain incorrect stuff
+rm %{buildroot}%{_libdir}/pkgconfig/KReport3.pc
 
 %post -n libKReport3-%{sover} -p /sbin/ldconfig
 %postun -n libKReport3-%{sover} -p /sbin/ldconfig
@@ -90,16 +89,15 @@ Development package for the Report Creation and Generation framework
 %{_libdir}/libKReport3.so.*
 
 %files
-%{_datadir}/kreport3/
-%{_kf5_servicetypesdir}/kreport_elementplugin.desktop
 %{_kf5_plugindir}/kreport3/
+%{_kf5_servicetypesdir}/kreport_elementplugin.desktop
+%{_kf5_sharedir}/kreport3/
 
 %files devel
 %license COPYING*
 %{_includedir}/KReport3/
-%{_libdir}/cmake/KReport3/
-%{_libdir}/libKReport3.so
-#%%{_libdir}/pkgconfig/KReport3.pc
+%{_kf5_cmakedir}/KReport3/
+%{_kf5_libdir}/libKReport3.so
 %{_kf5_mkspecsdir}/qt_KReport3.pri
 
 %files lang -f %{name}.lang

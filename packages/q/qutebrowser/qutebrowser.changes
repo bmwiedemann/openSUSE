@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 28 15:54:56 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.3.0
+Added
+  * New content.prefers_reduced_motion setting to request websites
+    to reduce non-essential motion/animations.
+  * New colors.prompts.selected.fg setting to customize the text
+    color for selected items in filename prompts.
+Changed
+  * The hosts-based adblocker (using content.blocking.hosts.lists)
+    now also blocks all requests to any subdomains of blocked
+    hosts.
+  * The fonts.web.* settings now support URL patterns.
+  * The :greasemonkey-reload command now shows a list of loaded
+    scripts and has a new --quiet switch to suppress that message.
+  * When launching a userscript via hints, a new QUTE_CURRENT_URL
+    environment variable now points to the current page (rather
+    than the URL of the selected element, where QUTE_URL points
+    to).
+Fixed
+  * Crash when two Greasemonkey scripts have the same name
+    (usually happening because the same file is in both the data
+    and the config directory).
+
+-------------------------------------------------------------------
 Thu Jun  3 12:37:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 2.2.3

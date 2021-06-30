@@ -18,7 +18,7 @@
 
 %define cpan_name Mojo-SQLite
 Name:           perl-Mojo-SQLite
-Version:        3.005
+Version:        3.006
 Release:        0
 Summary:        Tiny Mojolicious wrapper for SQLite
 License:        Artistic-2.0
@@ -33,7 +33,7 @@ BuildRequires:  perl(DBI) >= 1.627
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Mojolicious) >= 8.03
-BuildRequires:  perl(SQL::Abstract) >= 1.81
+BuildRequires:  perl(SQL::Abstract::Pg) >= 1.0
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI) >= 1.69
 BuildRequires:  perl(URI::db) >= 0.15
@@ -41,7 +41,7 @@ BuildRequires:  perl(URI::file) >= 4.21
 Requires:       perl(DBD::SQLite) >= 1.64
 Requires:       perl(DBI) >= 1.627
 Requires:       perl(Mojolicious) >= 8.03
-Requires:       perl(SQL::Abstract) >= 1.81
+Requires:       perl(SQL::Abstract::Pg) >= 1.0
 Requires:       perl(URI) >= 1.69
 Requires:       perl(URI::db) >= 0.15
 Requires:       perl(URI::file) >= 4.21

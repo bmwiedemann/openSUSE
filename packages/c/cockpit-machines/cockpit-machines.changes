@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 15:30:19 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Add source-offest to _service to fix build error in Leap 15.3.
+
+-------------------------------------------------------------------
 Mon May  3 07:48:14 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - initial package

@@ -27,7 +27,7 @@
 
 %define         pkgname matrix-synapse
 Name:           %{pkgname}-test
-Version:        1.36.0
+Version:        1.37.0
 Release:        0
 Summary:        Test package for %{pkgname}
 License:        Apache-2.0

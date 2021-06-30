@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -55,19 +55,17 @@ BuildRequires:  qt5-qtconnectivity-devel
 BuildRequires:  qt5-qtwebkit
 BuildRequires:  sqlite-devel
 %else
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebEngineCore)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Designer)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Help)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5WebEngineCore)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(sqlite3)
 %endif

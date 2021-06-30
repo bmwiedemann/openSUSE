@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Make-QtWebKit-usage-in-WelcomePage-optional-with-QTe.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kdevplatform-devel
@@ -60,7 +62,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang

@@ -1676,4 +1676,32 @@ Added
     <comment></comment>
     <requestid>897214</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>27162686cb59372b9fe5739dd9fd19a0</srcmd5>
+    <version>2.3.0</version>
+    <time>1624999393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0
+Added
+  * New content.prefers_reduced_motion setting to request websites
+    to reduce non-essential motion/animations.
+  * New colors.prompts.selected.fg setting to customize the text
+    color for selected items in filename prompts.
+Changed
+  * The hosts-based adblocker (using content.blocking.hosts.lists)
+    now also blocks all requests to any subdomains of blocked
+    hosts.
+  * The fonts.web.* settings now support URL patterns.
+  * The :greasemonkey-reload command now shows a list of loaded
+    scripts and has a new --quiet switch to suppress that message.
+  * When launching a userscript via hints, a new QUTE_CURRENT_URL
+    environment variable now points to the current page (rather
+    than the URL of the selected element, where QUTE_URL points
+    to).
+Fixed
+  * Crash when two Greasemonkey scripts have the same name
+    (usually happening because the same file is in both the data
+    and the config directory).</comment>
+    <requestid>902869</requestid>
+  </revision>
 </revisionlist>

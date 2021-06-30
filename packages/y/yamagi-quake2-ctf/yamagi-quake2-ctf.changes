@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 13:33:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.08
+  * Several small bugfixes.
+
+-------------------------------------------------------------------
 Sat Sep 12 09:17:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use %_libexecdir instead of hardcoding the directory name

@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -28,8 +28,7 @@ URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-warnings.patch
-# PATCH-FIX-UPSTREAM (release 1.9.1 will contain the fix)
-Patch1:         ioptron_dst_fix.patch
+Patch1:         fix_include_path.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gsl-devel
@@ -125,10 +124,14 @@ completely dynamic GUI based on the services provided by the device.
 # libindi doesn't check whether CMAKE_INSTALL_LIBDIR is relative or not...
 sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}|${CMAKE_INSTALL_LIBDIR}|' libs/indibase/alignment/CMakeLists.txt
 
-%cmake -DUDEVRULES_INSTALL_DIR=%{_udevdir}/rules.d \
-  -DINDI_BUILD_QT5_CLIENT=ON \
-  -DINDI_BUILD_WEBSOCKET=ON \
-  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
+export CFLAGS="%(echo %{optflags}) -Wno-stringop-truncation"
+export CXXFLAGS="$CFLAGS"
+
+%cmake \
+    -DUDEVRULES_INSTALL_DIR=%{_udevdir}/rules.d \
+    -DINDI_BUILD_QT5_CLIENT=ON \
+    -DINDI_BUILD_WEBSOCKET=ON \
+    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 
 %cmake_build
 

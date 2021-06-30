@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package jetty-websocket
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project

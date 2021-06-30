@@ -1,0 +1,55 @@
+Index: electron-13.1.0/build/config/BUILDCONFIG.gn
+===================================================================
+--- electron-13.1.0.orig/build/config/BUILDCONFIG.gn	2021-06-18 15:30:12.381771291 +0200
++++ electron-13.1.0/build/config/BUILDCONFIG.gn	2021-06-18 15:30:15.529790838 +0200
+@@ -133,6 +133,8 @@ declare_args() {
+   # separate flags.
+   is_official_build = false
+ 
++  gcc_lto = false
++
+   # Set to true when compiling with the Clang compiler.
+   is_clang = current_os != "linux" ||
+              (current_cpu != "s390x" && current_cpu != "s390" &&
+@@ -342,6 +344,12 @@ default_compiler_configs = [
+   "//electron/build/config:mas_build",
+ ]
+ 
++if (gcc_lto) {
++  default_compiler_configs += [
++    "//build/config/compiler:gcc_lto",
++  ]
++}
++
+ if (is_win) {
+   default_compiler_configs += [
+     "//build/config/win:default_cfg_compiler",
+Index: electron-13.1.0/build/config/compiler/BUILD.gn
+===================================================================
+--- electron-13.1.0.orig/build/config/compiler/BUILD.gn	2021-06-18 15:30:12.381771291 +0200
++++ electron-13.1.0/build/config/compiler/BUILD.gn	2021-06-18 15:30:15.529790838 +0200
+@@ -2006,6 +2006,10 @@ if (is_win) {
+   }
+ }
+ 
++config("gcc_lto") {
++  cflags = [ "-flto" ]
++}
++
+ config("default_stack_frames") {
+   if (is_posix || is_fuchsia) {
+     if (enable_frame_pointers) {
+Index: electron-13.1.0/sandbox/linux/BUILD.gn
+===================================================================
+--- electron-13.1.0.orig/sandbox/linux/BUILD.gn	2021-06-18 15:30:12.381771291 +0200
++++ electron-13.1.0/sandbox/linux/BUILD.gn	2021-06-18 15:30:15.529790838 +0200
+@@ -258,6 +258,9 @@ component("seccomp_bpf") {
+     "//build:chromeos_buildflags",
+     "//sandbox:sandbox_buildflags",
+   ]
++  if (gcc_lto) {
++    configs -= [ "//build/config/compiler:gcc_lto" ]
++  }
+ 
+   if (is_android) {
+     sources += [

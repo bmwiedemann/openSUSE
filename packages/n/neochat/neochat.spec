@@ -27,6 +27,7 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/neochat/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.1
+BuildRequires:  cmark
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

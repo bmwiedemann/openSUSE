@@ -45,16 +45,24 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
-BuildRequires:  libXmu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1310
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw3d)
 BuildRequires:  pkgconfig(xaw6)
+BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
+%else
+BuildRequires:  xaw3d-devel
+BuildRequires:  xorg-x11-devel
+BuildRequires:  xz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 Requires:       efont-unicode
 Requires:       ghostscript-fonts-std
 Requires:       ifnteuro
@@ -65,10 +73,11 @@ Requires:       transfig
 Requires:       xorg-x11-fonts
 Requires:       xorg-x11-fonts-core
 Provides:       xfig.3.2.3d
-%if 0%{?suse_version} > 1310
-BuildRequires:  libXaw3d-devel
-%else
-BuildRequires:  xaw3d-devel
+%if ! %{defined make_build}
+%define make_build make %{?_smp_mflags}
+%endif
+%if ! %{defined make_install}
+%define make_install make install DESTDIR=%{?buildroot} INSTALL="install -p"
 %endif
 
 %description

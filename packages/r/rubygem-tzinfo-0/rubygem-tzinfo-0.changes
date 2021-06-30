@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 18:06:32 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.60
+ see installed CHANGES
+
+  == Version 0.3.60 (tzdata v2021a) - 6-Feb-2021
+  
+  * Updated to tzdata version 2021a
+    (https://mm.icann.org/pipermail/tz-announce/2021-January/000065.html).
+  
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:31:33 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.3.59

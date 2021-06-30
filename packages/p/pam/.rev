@@ -972,4 +972,12 @@
     <comment></comment>
     <requestid>899928</requestid>
   </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>7bdfbbd74a3a671a8fe19c8d0bdde8e2</srcmd5>
+    <version>1.5.1</version>
+    <time>1624999366</time>
+    <user>dimstar_suse</user>
+    <comment>- Create /run/motd.d (forwarded request 902295 from gmbr3)</comment>
+    <requestid>902310</requestid>
+  </revision>
 </revisionlist>

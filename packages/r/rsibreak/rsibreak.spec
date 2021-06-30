@@ -1,7 +1,7 @@
 #
 # spec file for package rsibreak
 #
-# Copyright (c) 2020 SUSE LINUX LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define base_ver 0.12
 Name:           rsibreak
-Version:        0.12.13
+Version:        0.12.14
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://userbase.kde.org/RSIBreak
+URL:            https://apps.kde.org/rsibreak
 Source0:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -34,7 +34,6 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
@@ -62,13 +61,13 @@ you to take a break now and then.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file -G "RSI Prevention" org.kde.rsibreak Qt KDE TimeUtility
 %find_lang %{name} --all-name
-%kf5_find_htmldocs
+%{kf5_find_htmldocs}
 %fdupes -s %{buildroot}%{_kf5_sharedir}
 
 %files lang -f %{name}.lang
@@ -76,13 +75,13 @@ you to take a break now and then.
 %files
 %license COPYING COPYING.DOC
 %doc AUTHORS ChangeLog NEWS
-%{_kf5_configdir}/autostart/rsibreak_autostart.desktop
-%{_kf5_dbusinterfacesdir}/org.rsibreak.rsiwidget.xml
+%doc %{_kf5_htmldir}/en/
 %{_kf5_applicationsdir}/org.kde.rsibreak.desktop
 %{_kf5_appstreamdir}/org.kde.rsibreak.appdata.xml
-%{_kf5_notifydir}/rsibreak.notifyrc
 %{_kf5_bindir}/rsibreak
+%{_kf5_configdir}/autostart/rsibreak_autostart.desktop
+%{_kf5_dbusinterfacesdir}/org.rsibreak.rsiwidget.xml
 %{_kf5_iconsdir}/hicolor/*/*/*
-%doc %{_kf5_htmldir}/en/
+%{_kf5_notifydir}/rsibreak.notifyrc
 
 %changelog

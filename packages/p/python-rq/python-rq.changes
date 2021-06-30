@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 28 14:33:46 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.1
+  * You can now declare multiple job dependencies.
+  * Added support for running asyncio tasks.
+  * Now horses are killed by their parent group. This helps in cleanly 
+    killing all related processes if job uses multiprocessing.
+  * Fixed scheduler on Python > 3.8.0.
+  * RQ is now aware of which version of Redis server it's running on.
+  * More changes, see upstream changelog.
+
+-------------------------------------------------------------------
 Wed Jul 22 12:38:39 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.4.3

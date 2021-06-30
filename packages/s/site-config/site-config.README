@@ -16,13 +16,3 @@ Automatic libdir setup to $exec_prefix/lib or $exec_prefix/lib64
 
 Depending on architecture, site script should correctly and
 automatically switch between lib and lib64 libdir.
-
-
-libexecdir setup to $exec_prefix/lib
-------------------------------------
-
-Upstream libexecdir defaults to $exec_prefix/libexec. This directory is
-not part of FHS 2.2, so we change it to $exec_prefix/lib (yes, it is
-correct to set it to $exec_prefix/lib even for bi-arch platforms). Most
-projects add package name to this path, so you most probably get what
-FHS 2.2 expects.

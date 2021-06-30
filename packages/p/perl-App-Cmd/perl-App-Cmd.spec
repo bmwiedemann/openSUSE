@@ -18,7 +18,7 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.333
+Version:        0.334
 Release:        0
 Summary:        Write command line apps with less suffering
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.13
 BuildRequires:  perl(Class::Load) >= 0.06
 BuildRequires:  perl(Data::OptList)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long) >= 2.39
 BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.084
 BuildRequires:  perl(IO::TieCombine)

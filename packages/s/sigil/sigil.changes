@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 10:53:29 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Fix dependencies (Drop Qt5Webkit and Qt5WebKitWidgets).
+
+-------------------------------------------------------------------
 Sat May 29 15:57:21 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.6.0

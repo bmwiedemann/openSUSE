@@ -92,8 +92,6 @@ BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
-# FreeCAD 0.18 still uses Qt5Webkit
-BuildRequires:  cmake(Qt5WebKit)
 
 BuildRequires:  clang-devel >= 3.9
 BuildRequires:  libxslt-devel

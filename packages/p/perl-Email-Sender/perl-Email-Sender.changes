@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 21 03:09:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.500
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.500     2021-06-20 20:30:24-04:00 America/New_York
+          - adjust version number for bookkeeping reasons
+
+  1.300036  2021-06-17 09:51:12-04:00 America/New_York
+          - add "maybestarttls" option, to allow opportunistic STARTTLS
+            (thanks, Marc Bradshaw!)
+
+-------------------------------------------------------------------
 Sun Oct 11 03:08:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.300035

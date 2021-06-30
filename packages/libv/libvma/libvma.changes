@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 28 12:54:15 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 9.3.1
+  - Remove multi packets (MP-RQ) depracated code
+  - Several bug fixes
+    - See CHANGES for a complete list
+
+-------------------------------------------------------------------
 Wed Apr 28 08:13:07 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 9.2.2

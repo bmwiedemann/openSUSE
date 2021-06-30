@@ -18,7 +18,7 @@
 
 %define cpan_name JSON-Validator
 Name:           perl-JSON-Validator
-Version:        4.17
+Version:        4.20
 Release:        0
 Summary:        Validate data against a JSON schema
 License:        Artistic-2.0
@@ -32,10 +32,10 @@ BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Mojolicious) >= 7.28
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 1.30
-BuildRequires:  perl(YAML::PP) >= 0.020
+BuildRequires:  perl(YAML::XS) >= 0.67
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Mojolicious) >= 7.28
-Requires:       perl(YAML::PP) >= 0.020
+Requires:       perl(YAML::XS) >= 0.67
 %{perl_requires}
 
 %description

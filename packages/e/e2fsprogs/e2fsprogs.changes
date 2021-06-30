@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  2 08:31:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %doc files. RELEASE-NOTES is a symlink to
+  doc/RelNotes/v%version.
+
+-------------------------------------------------------------------
 Sun Mar 14 15:25:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - e2fsprogs 1.46.2:

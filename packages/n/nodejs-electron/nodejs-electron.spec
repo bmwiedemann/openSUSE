@@ -1,0 +1,455 @@
+# spec file for package nodejs-electron
+#
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define mod_name electron
+%ifarch x86_64
+%if %{?suse_version} > 1500
+%bcond_without lto
+# else suse_version
+%else
+%bcond_with lto
+# endif suse_version
+%endif
+# else arch x86_64
+%else
+%bcond_with lto
+# endif arch x86_64
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%bcond_without pipewire
+%else
+%bcond_with pipewire
+%endif
+%ifarch %{arm} aarch64
+%bcond_with swiftshader
+%else
+%bcond_without swiftshader
+%endif
+# vaapi still requires bundled libvpx
+%bcond_with system_vpx
+%bcond_without clang
+Name:           nodejs-electron
+Version:        13.1.4
+Release:        0
+Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
+License:        MIT
+Group:          Productivity/Networking/Web/Browsers
+URL:            https://github.com/electron/electron
+Source0:        %{mod_name}-%{version}.tar.xz
+Source1:        create_tarball.sh
+Source10:       electron-launcher.sh
+Source11:       electron.desktop
+Source12:       electron-logo-symbolic.svg
+Patch0:         chromium-90-compiler.patch
+Patch1:         chromium-disable-parallel-gold.patch
+Patch2:         chromium-glibc-2.33.patch
+Patch3:         chromium-lp152-missing-includes.patch
+Patch4:         chromium-norar.patch
+Patch5:         chromium-system-libusb.patch
+Patch6:         gcc-enable-lto.patch
+Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
+Patch8:         chromium-91-system-icu.patch
+Patch10:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
+Patch11:        chromium-vaapi.patch
+Patch12:        chromium-86-fix-vaapi-on-intel.patch
+# Fix building sql recover_module
+Patch20:        electron-13-fix-sql-virtualcursor-type.patch
+# Always disable use_thin_lto which is an lld feature
+Patch21:        electron-13-fix-use-thin-lto.patch
+# Fixe builds with older clang versions that do not allow
+# nomerge attributes on declaration. Otherwise, the following error
+# is produced:
+#     'nomerge' attribute cannot be applied to a declaration
+# See https://reviews.llvm.org/D92800
+Patch22:        electron-13-fix-base-check-nomerge.patch
+BuildRequires:  SDL-devel
+BuildRequires:  binutils-gold
+BuildRequires:  bison
+BuildRequires:  cups-devel
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
+BuildRequires:  flex
+BuildRequires:  gn >= 0.1807
+BuildRequires:  gperf
+BuildRequires:  hicolor-icon-theme
+# Java used during build
+BuildRequires:  java-openjdk-headless
+BuildRequires:  libcap-devel
+BuildRequires:  libdc1394
+BuildRequires:  libgcrypt-devel
+BuildRequires:  libgsm-devel
+BuildRequires:  libpng-devel
+BuildRequires:  memory-constraints
+BuildRequires:  nasm
+BuildRequires:  ncurses-devel
+BuildRequires:  ninja >= 1.7.2
+BuildRequires:  nodejs >= 8.0
+BuildRequires:  npm
+BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python
+BuildRequires:  python-xml
+BuildRequires:  python2-setuptools
+BuildRequires:  rsync
+BuildRequires:  snappy-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  util-linux
+BuildRequires:  wdiff
+BuildRequires:  perl(Switch)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(cairo) >= 1.6
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dirac) >= 1.0.0
+BuildRequires:  pkgconfig(dri)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(flac++)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glproto)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(icu-i18n) >= 67.0
+BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(kadm-client)
+BuildRequires:  pkgconfig(kdb)
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat) >= 58
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libdc1394-2)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libffi)
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpci)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libtcmalloc)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(libwebp) >= 0.4.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(nspr) >= 4.9.5
+BuildRequires:  pkgconfig(nss) >= 3.26
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(opus) >= 1.3.1
+BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(re2)
+BuildRequires:  pkgconfig(schroedinger-1.0)
+BuildRequires:  pkgconfig(slang)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(theora) >= 1.1
+BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb-dri3)
+BuildRequires:  pkgconfig(xcb-proto)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xshmfence)
+BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(zlib)
+Requires:       hicolor-icon-theme
+Recommends:     noto-coloremoji-fonts
+Provides:       electron
+Obsoletes:      nodejs-electron-prebuilt < %{version}
+Provides:       nodejs-electron-prebuilt = %{version}
+%if 0%{?suse_version}
+BuildRequires:  libjpeg-devel >= 8.1
+%else
+BuildRequires:  libjpeg-turbo-devel
+%endif
+%if %{with system_vpx}
+BuildRequires:  pkgconfig(vpx) >= 1.8.2
+%endif
+# Always required for clang-format
+BuildRequires:  clang >= 8.0.0
+%if %{without clang}
+%if %{?suse_version} > 1500
+BuildRequires:  gcc >= 10
+BuildRequires:  gcc-c++ >= 10
+%else
+BuildRequires:  gcc10
+BuildRequires:  gcc10-c++
+%endif
+%endif
+%if %{with pipewire}
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libspa-0.2)
+%endif
+
+Recommends:     noto-coloremoji-fonts
+
+Provides:       electron
+
+Obsoletes:      nodejs-electron-prebuilt < %{version}
+Provides:       nodejs-electron-prebuilt = %{version}
+
+%description
+Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and CSS
+
+%prep
+%autosetup -n %{mod_name}-%{version} -p1
+
+# Required for third_party/blink/renderer/bindings/scripts/generate_bindings.py
+ln -sf %{_bindir}/clang-format buildtools/linux64/clang-format
+
+# Fix shim header generation
+sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
+      tools/generate_shim_headers/generate_shim_headers.py
+
+%build
+# Fix the path to nodejs binary
+mkdir -p third_party/node/linux/node-linux-x64/bin
+ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
+
+# GN sets lto on its own and we need just ldflag options, not cflags
+%define _lto_cflags %{nil}
+
+# for wayland
+export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+
+%if %{with clang}
+export CFLAGS="${CXXFLAGS}"
+
+export CC=clang
+export CXX=clang++
+
+# else with clang
+%else
+
+# REDUCE DEBUG as it gets TOO large
+ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
+
+export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
+# extra flags to reduce warnings that aren't very useful
+export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-deprecated-declarations"
+# ignore warnings for minor mistakes that are too common
+export CXXFLAGS="${CXXFLAGS} -Wno-return-type -Wno-parentheses -Wno-misleading-indentation"
+# ignore warnings that are not supported well until gcc 8
+export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
+# ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
+export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
+# ingore new gcc 8 warnings that aren't yet handled upstream
+export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-aligned"
+
+export CFLAGS="${CXXFLAGS}"
+export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
+export CC=gcc
+export CXX=g++
+
+# endif with clang
+%endif
+
+# Needed e.g. for static library creation by base/third_party/dynamic_annotations/
+export AR=ar
+export NM=nm
+export RANLIB=ranlib
+
+# do not eat all memory
+%limit_build -m 2600
+
+gn_system_libraries=(
+    ffmpeg
+    flac
+    fontconfig
+    freetype
+    harfbuzz-ng
+    icu
+    libdrm
+    libevent
+    libjpeg
+    libpng
+    libusb
+    libwebp
+    libxml
+    libxslt
+    opus
+    re2
+    snappy
+    zlib
+)
+
+%if %{with system_vpx}
+gn_system_libraries+=( libvpx )
+%endif
+build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
+
+# Create the configuration for GN
+# Available options: out/Release/gn args --list out/Release/
+myconf_gn=""
+myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
+myconf_gn+=" use_custom_libcxx=false"
+myconf_gn+=" is_debug=false"
+myconf_gn+=" enable_nacl=false"
+%if %{with swiftshader}
+myconf_gn+=" use_swiftshader_with_subzero=true"
+%endif
+myconf_gn+=" is_component_ffmpeg=true"
+myconf_gn+=" use_cups=true"
+myconf_gn+=" use_aura=true"
+myconf_gn+=" chrome_pgo_phase=0"
+myconf_gn+=" concurrent_links=1"
+myconf_gn+=" symbol_level=1"
+myconf_gn+=" blink_symbol_level=0"
+myconf_gn+=" use_kerberos=true"
+myconf_gn+=" enable_vr=false"
+myconf_gn+=" optimize_webui=false"
+myconf_gn+=" enable_reading_list=false"
+myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
+myconf_gn+=" is_component_build=false"
+myconf_gn+=" use_sysroot=false"
+myconf_gn+=" fatal_linker_warnings=false"
+# Current tcmalloc does not support AArch64
+myconf_gn+=" use_allocator=\"tcmalloc\""
+myconf_gn+=" fieldtrial_testing_like_official_build=true"
+myconf_gn+=" use_gold=true"
+myconf_gn+=" use_gnome_keyring=false"
+myconf_gn+=" use_unofficial_version_number=false"
+myconf_gn+=" use_lld=false"
+myconf_gn+=" use_vaapi=true"
+myconf_gn+=" treat_warnings_as_errors=false"
+myconf_gn+=" enable_widevine=true"
+myconf_gn+=" use_dbus=true"
+myconf_gn+=" enable_vulkan=true"
+myconf_gn+=" icu_use_data_file=false"
+
+%if %{with clang}
+myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
+%else
+myconf_gn+=" is_clang=false"
+%endif
+
+%if %{with lto}
+myconf_gn+=" use_thin_lto=false"
+
+%if %{without clang}
+myconf_gn+=" gcc_lto=true"
+%endif
+
+# endif with lto
+%endif
+
+%if %{with pipewire}
+myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
+myconf_gn+=" rtc_pipewire_version=\"0.3\""
+%endif
+
+# The proprietary codecs just force the chromium to say they can use it and
+# offload the actual computation to the ffmpeg, otherwise the chromium
+# won't be able to load the codec even if the library can handle it
+myconf_gn+=" proprietary_codecs=true"
+myconf_gn+=" ffmpeg_branding=\"Chrome\""
+
+# GN does not support passing cflags:
+#  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
+gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
+ninja -v %{?_smp_mflags} -C out/Release electron
+
+%install
+install -d -m 0755 %{buildroot}%{_bindir}
+install -d -m 0755 %{buildroot}%{_libdir}/electron
+install -d -m 0755 %{buildroot}%{_libdir}/electron/swiftshader
+install -d -m 0755 %{buildroot}%{_datadir}/applications
+install -d -m 0755 %{buildroot}%{_datadir}/pixmaps/
+install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/
+
+install -m 0755 %{SOURCE10} %{buildroot}%{_bindir}/%{mod_name}
+install -m 0644 electron/default_app/icon.png %{buildroot}%{_datadir}/pixmaps/%{mod_name}.png
+install -m 0644 %{SOURCE12} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/electron-symbolic.svg
+
+desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
+
+pushd out/Release
+rsync -av *.bin *.pak *.so resources %{buildroot}%{_libdir}/electron/
+
+rsync -av --exclude '*.pak.info' locales %{buildroot}%{_libdir}/electron/
+
+%if %{with swiftshader}
+rsync -av --exclude '*.so.TOC' swiftshader %{buildroot}%{_libdir}/electron/
+install -m 0644 vk_swiftshader_icd.json %{buildroot}%{_libdir}/electron/vk_swiftshader_icd.json
+%endif
+
+install -m 0755 electron %{buildroot}%{_libdir}/electron/electron
+popd
+
+echo -n "%{version}" > %{buildroot}%{_libdir}/electron/version
+
+# Install folders required for webapps
+mkdir -p "%{buildroot}%{_sysconfdir}/webapps"
+mkdir -p "%{buildroot}%{_datadir}/webapps"
+
+%files
+%license electron/LICENSE
+%doc electron/README.md
+%{_bindir}/electron
+%{_datadir}/pixmaps/electron.png
+%{_datadir}/icons/hicolor/symbolic/apps/electron-symbolic.svg
+%{_datadir}/applications/electron.desktop
+
+%dir %{_libdir}/electron/
+
+%{_libdir}/electron/electron
+
+%{_libdir}/electron/*.bin
+%{_libdir}/electron/*.pak
+%{_libdir}/electron/*.so
+
+%{_libdir}/electron/locales/
+%{_libdir}/electron/resources/
+
+%if %{with swiftshader}
+%{_libdir}/electron/libvk_swiftshader.so
+%dir %{_libdir}/electron/swiftshader/
+%{_libdir}/electron/swiftshader/*.so
+%{_libdir}/electron/vk_swiftshader_icd.json
+%endif
+
+%{_libdir}/electron/version
+%dir %{_sysconfdir}/webapps
+%dir %{_datadir}/webapps
+
+%changelog

@@ -503,4 +503,12 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   o xfig.spec</comment>
     <requestid>882561</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>682cc3552e6b08f72ec06751d404fa76</srcmd5>
+    <version>3.2.8a</version>
+    <time>1624999384</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>902847</requestid>
+  </revision>
 </revisionlist>

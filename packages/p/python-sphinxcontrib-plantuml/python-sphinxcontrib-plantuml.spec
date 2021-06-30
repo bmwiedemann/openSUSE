@@ -16,9 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+
 Name:           python-sphinxcontrib-plantuml
-Version:        0.18
+Version:        0.21
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
@@ -26,9 +28,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-contrib/plantuml/
 Source:         https://github.com/sphinx-contrib/plantuml/archive/%{version}.tar.gz#/sphinxcontrib-plantuml-%{version}.tar.gz
 Patch0:         py3-for-tests.patch
-BuildRequires:  %{python_module Sphinx >= 1.1}
+BuildRequires:  %{python_module Sphinx >= 2}
 BuildRequires:  %{python_module Sphinx-latex}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,7 +38,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-epstopdf
 BuildRequires:  tox
 Requires:       plantuml
-Requires:       python-Sphinx >= 1.1
+Requires:       python-Sphinx >= 2
 BuildArch:      noarch
 %python_subpackages
 

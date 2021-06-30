@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-websocket-driver
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 %define mod_name websocket-driver
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 18:45:53 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Disable LTO everywhere.
+
+-------------------------------------------------------------------
 Tue Jun 15 12:49:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO for aarch64, %{arm} and ppc64le as a workaround for boo#1187352

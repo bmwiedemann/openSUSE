@@ -1,0 +1,15 @@
+--- indi-1.9.1/libs/indibase/baseclient.h.orig	2021-06-29 07:33:35.235578806 +0200
++++ indi-1.9.1/libs/indibase/baseclient.h	2021-06-29 07:33:52.763714581 +0200
+@@ -20,11 +20,11 @@
+ 
+ #include "indiapi.h"
+ #include "indibase.h"
++#include "indimacros.h"
+ 
+ #include <string>
+ #include <vector>
+ 
+-#include <indimacros.h>
+ #include <memory>
+ 
+ // #define MAXRBUF 2048 // #PS: defined in indibase.h

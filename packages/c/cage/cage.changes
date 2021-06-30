@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 27 09:51:03 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4:
+  * Compatibility release to track wlroots 0.14.0
+- Drop cage-wlroots-0140.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Jun 24 08:37:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Add cage-wlroots-0140.patch: make compatible with wlroots 0.14.0

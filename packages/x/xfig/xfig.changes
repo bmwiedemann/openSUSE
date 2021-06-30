@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 18 13:26:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make spec file build with older SLE versions as well to be able
+  to bundle this with a security update of package transfig 
+  * This version requires transfig version 3.2.8 and above
+
+-------------------------------------------------------------------
 Thu Apr  1 11:47:00 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to xfig 3.2.8 Patchlevel 8a (Mar 2021)

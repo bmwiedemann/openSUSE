@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,43 +18,36 @@
 
 %global translationdir %{_datadir}/qt5/translations
 Name:           gpsbabel
-Version:        1.5.4
+Version:        1.7.0
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.gpsbabel.org/
-Source:         %{name}-%{version}.tar.gz
-Source1:        http://www.gpsbabel.org/htmldoc-1.5.0/%{name}-1.5.0.pdf
+Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_7_0.tar.gz
+Source1:        http://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
 Source2:        %{name}.png
 Source21:       style3.css
-# Use system shapelib - not suitable for upstream in this form.
-Patch2:         0002-gpsbabel-1.4.3-use-system-shapelib.patch
 # Pickup gmapbase.html from /usr/share/gpsbabel
-Patch3:         0003-gpsbabel-1.4.3-gmapbase.patch
+Patch3:         0003-gpsbabel-1.7.0-gmapbase.patch
 # No automatic phone home by default (RHBZ 668865)
 Patch4:         0004-gpsbabel-1.4.3-nosolicitation.patch
-# Use system zlib
-Patch6:         0006-Use-system-zlib.patch
-# Use system minizip
-Patch7:         0007-Use-system-minizip.patch
-# Fix build failures due to implicit QString casting
-Patch8:         0008-Fix-QString-casting-build-failures.patch
-BuildRequires:  autoconf
+# Add qmake support for system libraries.
+Patch9:         0009-PR611-system-libs.patch
+# Pickup translations from /usr/share/qt5/translations
+Patch10:        0010-translations.patch
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libusb-devel
-BuildRequires:  minizip-devel
+BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
-BuildRequires:  shapelib-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(shapelib)
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -80,32 +73,20 @@ Summary:        Qt GUI interface for GPSBabel
 Group:          Hardware/Other
 Requires:       %{name} = %{version}-%{release}
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 
 %description gui
 Qt GUI interface for GPSBabel
 
 %prep
-%setup -q
+%autosetup -p1 -n gpsbabel-gpsbabel_1_7_0
 # Use system shapelib instead of bundled partial shapelib
 rm -rf shapelib
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 # Get rid of bundled zlib
-# configure --with-zlib=system is not enough,
-# building still accesses bundled zlib headers
 rm -rf zlib/*
-touch zlib/empty.in
 
 cp -p %{SOURCE21} gpsbabel.org-style3.css
-
-# Avoid calling autoconf from Makefile
-touch -r configure.in configure Makefile.in
 
 # Fixup categories for .desktop file
 sed -i \
@@ -113,9 +94,7 @@ sed -i \
     gui/gpsbabel.desktop
 
 %build
-export CXXFLAGS="%{optflags} -fPIC"
-%configure\
-	--with-zlib=system
+%qmake5 PREFIX=%{_prefix} WITH_LIBUSB=system WITH_SHAPELIB=pkgconfig WITH_ZLIB=pkgconfig
 make %{?_smp_mflags}
 cp %{SOURCE1} %{name}.pdf
 
@@ -131,11 +110,14 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 make -C gui DESTDIR=%{buildroot} install
 
-install -m 0755 -p gui/objects/gpsbabelfe-bin %{buildroot}/%{_bindir}
+install -m 0755 -d %{buildroot}/%{_bindir}
+install -m 0755 -p gpsbabel %{buildroot}/%{_bindir}
+install -m 0755 -p gui/objects/gpsbabelfe %{buildroot}/%{_bindir}
 install -m 0755 -d %{buildroot}/%{_datadir}/%{name}
 install -m 0644 -p gui/gmapbase.html %{buildroot}/%{_datadir}/%{name}/
 install -m 0755 -d %{buildroot}/%{translationdir}
-install -m 0644 -p gui/gpsbabel*_*.qm %{buildroot}/%{translationdir}/
+install -m 0644 -p gui/gpsbabelfe_*.qm %{buildroot}/%{translationdir}/
+install -m 0644 -p gui/coretool/gpsbabel_*.qm %{buildroot}/%{translationdir}/
 
 install -m 0755 -d %{buildroot}/%{_datadir}/applications
 install -m 0644 gui/gpsbabel.desktop %{buildroot}/%{_datadir}/applications
@@ -155,9 +137,10 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING README* %{name}.pdf
+%doc AUTHORS README* %{name}.pdf
+%license COPYING
 %{_bindir}/gpsbabel
-%{_bindir}/gpsbabelfe-bin
+%{_bindir}/gpsbabelfe
 %{_datadir}/applications/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 13:56:06 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.7.2
+  * add native fencing for microsoft-azure
+
+-------------------------------------------------------------------
 Wed Jun  9 07:00:36 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
 
 - fixes a not working import of dbapi in SUSE/ha-sap-terraform-deployments#703

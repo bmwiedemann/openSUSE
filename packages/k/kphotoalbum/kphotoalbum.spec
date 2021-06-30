@@ -1,7 +1,7 @@
 #
 # spec file for package kphotoalbum
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           kphotoalbum
-Version:        5.7.0
+Version:        5.8.1
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kphotoalbum.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch:          Fix-build-with-Qt-versions-before-5.12.patch
 BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -50,6 +48,7 @@ BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
 BuildRequires:  cmake(Qt5Xml)
 Requires:       sqlite3
@@ -64,35 +63,37 @@ an image from a special place, or even both.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
+
 %find_lang %{name}
-%kf5_find_htmldocs
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.%{name} Graphics Photography
 %suse_update_desktop_file org.kde.%{name}-import Graphics Photography
 
 %fdupes -s %{buildroot}
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc ChangeLog README.md
 %{_kf5_applicationsdir}/*
+%{_kf5_appstreamdir}/org.kde.kphotoalbum.appdata.xml
 %{_kf5_bindir}/*
-%{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_configdir}/kphotoalbumrc
 %{_kf5_htmldir}/en/kphotoalbum/
+%{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_kxmlguidir}/kphotoalbum/
 %{_kf5_libdir}/libkpabase.so
+%{_kf5_libdir}/libkpaexif.so
 %{_kf5_libdir}/libkpathumbnails.so
 %{_kf5_sharedir}/kphotoalbum/
-%{_kf5_appstreamdir}/org.kde.kphotoalbum.appdata.xml
 
 %files lang -f %{name}.lang
 

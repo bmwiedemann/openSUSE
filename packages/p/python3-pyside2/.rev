@@ -130,4 +130,12 @@
     <comment>forward to devel project (forwarded request 888020 from cgiboudeaux)</comment>
     <requestid>888021</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ca137dd0f0baa10fd7ab36faef1e72ff</srcmd5>
+    <version>5.15.1</version>
+    <time>1624999371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902706</requestid>
+  </revision>
 </revisionlist>

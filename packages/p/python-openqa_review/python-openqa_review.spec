@@ -33,13 +33,13 @@
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT
 Group:          Development/Languages/Python
 Source:         python-%{short_name}-%{version}.tar.xz
-URL:            https://github.com/okurz/%{short_name}
+URL:            https://github.com/os-autoinst/%{short_name}
 BuildRequires:  python-rpm-macros
 %if 0%{?_test}
 BuildRequires:  python3-%{short_name} == %{version}

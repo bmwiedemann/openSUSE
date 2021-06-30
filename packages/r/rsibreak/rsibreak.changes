@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 29 06:40:29 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.12.14:
+  * Translation improvements
+  * Minor code cleanup
+- Remove no longer used KF5IconThemes BuildRequires
+
+-------------------------------------------------------------------
+Sat Apr 17 17:13:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL.
+
+-------------------------------------------------------------------
+Thu Aug 27 16:47:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Apr  5 08:28:56 UTC 2020 - wbauer@tmo.at
 
 - Update to 0.12.13:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 16:46:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit build dependency.
+
+-------------------------------------------------------------------
 Sat May  1 14:44:15 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.7

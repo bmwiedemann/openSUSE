@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 28 13:10:55 UTC 2021 - Tilman Vogel <tilman.vogel@web.de>
+
+- Remove GCC 11 build fix:
+  * 0001-Explicitly-include-limits-for-compatibility-with-gcc.patch
+    now contained in squashed patch
+- Add collected fixes from upstream master:
+  * 0001-Collected-fixes-from-master.patch
+    contains the original and many more fixes:
+    + misalignment and wrong conflict resolutions when using manual
+      alignment markers
+    + uninitialized variables causing crashes
+    + hangs and crashes due to wrong loop conditions
+    + wrong handling of new-line at end-of-file
+    + spurious insertion of empty lines in merge result
+    + access of uninitialized iterators causing crashes
+    + wrong buffer length calculations causing out-of-bounds access
+    + wrong bit-logic causing comments to always be treated as white-space
+    + crashes when hitting a key on empty merge results
+    + technical details allowing fixes to be cherry-picked
+
+-------------------------------------------------------------------
 Fri May 28 12:37:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 build fix:

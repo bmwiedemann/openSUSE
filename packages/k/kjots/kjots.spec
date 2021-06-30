@@ -1,7 +1,7 @@
 #
 # spec file for package kjots
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,47 +17,41 @@
 
 
 Name:           kjots
-Version:        5.0.2
+Version:        5.1.0
 Release:        0
-Summary:        A note taking application for KDE using Akonadi
+Summary:        A note taking application using Akonadi
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
-URL:            http://www.kde.org
-Source0:        http://download.kde.org/stable/kjots/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-bookmarks-actions.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Install-the-kontact-plugin-into-kontact5.patch
-BuildRequires:  akonadi-server-devel
+URL:            https://userbase.kde.org/KJots/
+Source0:        https://download.kde.org/stable/kjots/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  grantlee5-devel
-BuildRequires:  libxslt-tools
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5KontactInterface)
+BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5PimTextEdit)
-BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5PrintSupport)
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This package contains KJOTS, a note taking application for KDE using Akonadi.
+This package contains KJOTS, a note taking application using Akonadi.
 
 %lang_package
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %cmake_kf5 -d build
@@ -70,30 +64,27 @@ This package contains KJOTS, a note taking application for KDE using Akonadi.
 %find_lang %{name}
 
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc ANNOUNCE CHANGES COPYING COPYING.LIB README
-%_kf5_appstreamdir/
-%_kf5_applicationsdir/org.kde.kjots.desktop
-%_kf5_bindir/kjots
-%_kf5_configkcfgdir/kjots.kcfg
-%_kf5_kxmlguidir/kjots/
-%_kf5_servicesdir/kjotspart.desktop
-%_kf5_plugindir/kjotspart.so
-%_kf5_plugindir/kcm_kjots.so
-%_kf5_servicesdir/kjots_config_misc.desktop
-%_kf5_sharedir/kjots/
-%_kf5_iconsdir/hicolor/*/apps/kjots.*
-%_kf5_iconsdir/oxygen/*/actions/edit-delete-page.*
+%license COPYING COPYING.LIB
+%doc ANNOUNCE CHANGES README
+%{_kf5_appstreamdir}/
+%{_kf5_applicationsdir}/org.kde.kjots.desktop
+%{_kf5_bindir}/kjots
+%{_kf5_configkcfgdir}/kjots.kcfg
+%{_kf5_kxmlguidir}/kjots/
+%{_kf5_servicesdir}/kjotspart.desktop
+%{_kf5_plugindir}/kjotspart.so
+%{_kf5_plugindir}/kcm_kjots.so
+%{_kf5_servicesdir}/kjots_config_misc.desktop
+%{_kf5_sharedir}/kjots/
+%{_kf5_iconsdir}/hicolor/*/apps/kjots.*
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_kjotsplugin.so
-%{_datadir}/kontact/
+%{_kf5_sharedir}/kontact/
 %{_kf5_servicesdir}/kontact/
 
 %files lang -f kjots.lang
-%defattr(-,root,root)
 
 %changelog

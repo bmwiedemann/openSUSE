@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt5
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  Mesa-dri
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python >= 3.6.1
 BuildRequires:  python3-Flask
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-MarkupSafe
@@ -54,6 +53,7 @@ BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tk
 BuildRequires:  python3-tldextract
+BuildRequires:  python(abi) >= 3.6.1
 Requires:       libqt5-sql-sqlite
 Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe

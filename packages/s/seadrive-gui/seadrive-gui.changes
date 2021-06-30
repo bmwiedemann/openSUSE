@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 27 19:27:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop using QtWebKit. It's dead upstream and will be removed
+  from openSUSE Factory soon.
+- Use cmake() style BuildRequires.
+
+-------------------------------------------------------------------
 Wed May 26 05:38:52 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v2.0.14:

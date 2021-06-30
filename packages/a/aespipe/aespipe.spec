@@ -1,7 +1,7 @@
 #
 # spec file for package aespipe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifarch aarch64 %{arm} ppc64le
+
 %define _lto_cflags %{nil}
-%endif
 
 Name:           aespipe
 Version:        2.4f

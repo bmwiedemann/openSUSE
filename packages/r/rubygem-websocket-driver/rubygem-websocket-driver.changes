@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 24 18:08:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.7.5
+ see installed CHANGELOG.md
+
+  ### 0.7.5 / 2021-06-12
+  
+  - Do not change the encoding of strings passed to `Driver#text`
+  
+
+-------------------------------------------------------------------
 Tue Jun  1 03:43:17 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 0.7.4

@@ -17,37 +17,37 @@
 #
 
 
-%define soname 0-0
+%define soname 0
 Name:           rnp
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
-License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://www.rnpgp.com/
 Source:         https://github.com/rnpgp/rnp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        https://raw.githubusercontent.com/riboseinc/cmake-versioning/c78a0be/version.cmake
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(json-c) >= 0.11
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  rubygem(asciidoctor)
 
 %description
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
 
-%package -n librnp-%{soname}
+%package -n librnp%{soname}
 Summary:        OpenPGP implementation as a C++ library fully compliant with RFC 4880
 
-%description -n librnp-%{soname}
+%description -n librnp%{soname}
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
 librnp is the library used by RNP for all OpenPGP functions, useful for
 developers to build against, different from GPGME.
 
 %package devel
 Summary:        Development files for RNP
-Requires:       librnp-%{soname} = %{version}
+Requires:       librnp%{soname} = %{version}
 
 %description devel
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
@@ -55,32 +55,26 @@ This package contains the files needed to build against librnp.
 
 %prep
 %setup -q
-# for determine_version
-cp %{SOURCE2} cmake/
 
 %build
 %cmake \
 	-DBUILD_SHARED_LIBS=on \
-	-DBUILD_TESTING=off
+	-DBUILD_TESTING=off \
+
 %cmake_build
 
 %install
 %cmake_install
-install -d %{buildroot}%{_mandir}/man1
-install -d %{buildroot}%{_mandir}/man3
-install -m0644 src/rnp/rnp.1 %{buildroot}%{_mandir}/man1/rnp.1
-install -m0644 src/rnpkeys/rnpkeys.1 %{buildroot}%{_mandir}/man1/rnpkeys.1
-install -m0644 src/lib/librnp.3 %{buildroot}%{_mandir}/man3/librnp.3
 
-%post -n librnp-%{soname} -p /sbin/ldconfig
-%postun -n librnp-%{soname} -p /sbin/ldconfig
+%post -n librnp%{soname} -p /sbin/ldconfig
+%postun -n librnp%{soname} -p /sbin/ldconfig
 
 %files
 %license LICENSE*
 %{_bindir}/*
-%{_mandir}/man1/*
+%{_mandir}/man1/*.1%{?ext_man}
 
-%files -n librnp-%{soname}
+%files -n librnp%{soname}
 %license LICENSE*
 %{_libdir}/*.so.0*
 
@@ -91,6 +85,6 @@ install -m0644 src/lib/librnp.3 %{buildroot}%{_mandir}/man3/librnp.3
 %{_libdir}/cmake/rnp
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
 
 %changelog

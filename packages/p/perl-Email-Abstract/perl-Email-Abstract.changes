@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 21 03:08:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.009
+   see /usr/share/doc/packages/perl-Email-Abstract/Changes
+
+  3.009     2021-06-20 16:54:40-04:00 America/New_York
+          - MIME::Entity 5.508 is required for operation
+          - update author information
+          - add a perl support section to docs
+
+-------------------------------------------------------------------
 Tue Apr 14 19:20:31 UTC 2015 - coolo@suse.com
 
 - updated to 3.008

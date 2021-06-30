@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="6.1" name="openSUSE-Leap-%OS_VERSION_ID%-WSL">
+<image schemaversion="6.1" name="%OS_PRETTY_NAME_BEFORE_PAREN_DASHED%-%OS_VERSION_ID%-WSL">
   <description type="system">
     <author>SUSE WSL Team</author>
     <contact>wsl@suse.com</contact>
-    <specification>openSUSE WSL Image</specification>
+    <specification>%OS_VENDOR% WSL Image</specification>
   </description>
   <preferences>
     <type image="appx" metadata_path="/usr/share/wsl-appx"/>

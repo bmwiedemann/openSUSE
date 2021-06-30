@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 07:46:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to get rid of the QtWebKit dependency:
+  * 0001-Make-QtWebKit-usage-in-WelcomePage-optional-with-QTe.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 12:41:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.2

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 25 12:59:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.1295.0
+  + Added configurable custom identity and identity consumption order
+  + Added cross-account domain join
+  + Added cleanup for older versions of updater artifacts
+  + Added a workaround for MacOS kernel bug that sometimes kept RunCommand from launching
+  + Added a workaround for log file contention on Windows
+  + Added synchronization to RunCommand service stop
+  + Changed hibernation log level
+  + MacOS executables are now signed
+  + Removed delay in non-interactive session type
+
+-------------------------------------------------------------------
 Wed May 19 18:29:26 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 3.0.1209.0 (bsc#1186239, bsc#1186262)

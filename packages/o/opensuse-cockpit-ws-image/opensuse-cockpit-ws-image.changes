@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 29 13:17:59 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix switched UNINSTALL/RUN label [bsc#1187635]
+
+-------------------------------------------------------------------
 Fri May 28 11:35:17 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to latest git

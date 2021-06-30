@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:45:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- libexec is back in use in TW
+
+-------------------------------------------------------------------
 Mon Sep  4 14:21:12 CEST 2017 - sbrabec@suse.com
 
 - Add aarch64 to bi-arch platforms (boo#1057058).

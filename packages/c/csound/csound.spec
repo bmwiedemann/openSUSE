@@ -30,7 +30,7 @@
 %define min 0
 
 Name:           csound
-Version:        6.15.0
+Version:        6.16.0
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -119,6 +119,13 @@ Group:          Productivity/Multimedia/Other
 
 %description plugins
 Plugins for csound
+
+%package -n python3-csound
+Summary:        Csound opcodes for python
+Group:          Productivity/Multimedia/Other
+
+%description -n python3-csound
+Csound opcodes for python
 
 %package samples
 Summary:        Data files for csound
@@ -214,6 +221,13 @@ cp -v OOps/README.md README.OOps
 
 %files samples
 %{_datadir}/samples/
+
+%files -n python3-csound
+%if 0%{?suse_version} > 1500
+%{python_sitearch}/ctcsound.py
+%else
+%{_libdir}/python3.6/site-packages/ctcsound.py
+%endif
 
 %files devel
 %{_includedir}/csound/

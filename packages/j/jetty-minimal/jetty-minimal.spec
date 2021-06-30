@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package jetty-minimal
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
@@ -25,14 +25,18 @@ Version:        9.4.42
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
+Group:          Productivity/Networking/Web/Servers
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(javax.transaction:javax.transaction-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-jasper)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-util-scan)
@@ -62,127 +66,211 @@ This package contains
 
 %package        -n %{base_name}-annotations
 Summary:        The annotations module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-annotations
 %{extdesc} %{summary}.
 
+%package        -n %{base_name}-ant
+Summary:        The ant module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-ant
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-cdi
+Summary:        The cdi module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-cdi
+%{extdesc} %{summary}.
+
 %package        -n %{base_name}-client
 Summary:        The client module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-client
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-continuation
 Summary:        The continuation module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-continuation
 %{extdesc} %{summary}.
 
+%package        -n %{base_name}-deploy
+Summary:        The deploy module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-deploy
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-fcgi
+Summary:        The fcgi module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-fcgi
+%{extdesc} %{summary}.
+
 %package        -n %{base_name}-http
 Summary:        The http module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-http
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-http-spi
 Summary:        The http-spi module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-http-spi
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-io
 Summary:        The io module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-io
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-jaas
 Summary:        The jaas module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-jaas
 %{extdesc} %{summary}.
 
+%package        -n %{base_name}-jmx
+Summary:        The jmx module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-jmx
+%{extdesc} %{summary}.
+
 %package        -n %{base_name}-jndi
 Summary:        The jndi module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-jndi
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-jsp
 Summary:        The jsp module for Jetty
+Group:          Productivity/Networking/Web/Servers
 Requires:       glassfish-el
 
 %description    -n %{base_name}-jsp
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-security
-Summary:        The security module for Jetty
-
-%description    -n %{base_name}-security
-%{extdesc} %{summary}.
-
 %package        -n %{base_name}-openid
 Summary:        The openid module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-openid
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-server
-Summary:        The server module for Jetty
-
-%description    -n %{base_name}-server
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-servlet
-Summary:        The servlet module for Jetty
-
-%description    -n %{base_name}-servlet
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-util
-Summary:        The util module for Jetty
-
-%description    -n %{base_name}-util
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-util-ajax
-Summary:        The util-ajax module for Jetty
-
-%description    -n %{base_name}-util-ajax
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-webapp
-Summary:        The webapp module for Jetty
-
-%description    -n %{base_name}-webapp
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-jmx
-Summary:        The jmx module for Jetty
-
-%description    -n %{base_name}-jmx
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-xml
-Summary:        The xml module for Jetty
-
-%description    -n %{base_name}-xml
-%{extdesc} %{summary}.
-
 %package        -n %{base_name}-plus
 Summary:        The plus module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-plus
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-proxy
 Summary:        The proxy module for Jetty
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-proxy
 %{extdesc} %{summary}.
 
+%package        -n %{base_name}-quickstart
+Summary:        The quickstart module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-quickstart
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-rewrite
+Summary:        The rewrite module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-rewrite
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-security
+Summary:        The security module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-security
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-server
+Summary:        The server module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-server
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-servlet
+Summary:        The servlet module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-servlet
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-servlets
+Summary:        The servlets module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-servlets
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-start
+Summary:        The start module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-start
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-unixsocket
+Summary:        The unixsocket module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-unixsocket
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-util
+Summary:        The util module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-util
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-util-ajax
+Summary:        The util-ajax module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-util-ajax
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-webapp
+Summary:        The webapp module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-webapp
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-xml
+Summary:        The xml module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-xml
+%{extdesc} %{summary}.
+
 %package        javadoc
 Summary:        Javadoc for %{name}
+Group:          Productivity/Networking/Web/Servers
 
 %description    javadoc
 %{summary}.
@@ -294,28 +382,19 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 # only useful when tests are enabled (copies test deps)
 %pom_remove_plugin :maven-dependency-plugin jetty-client
 
-%pom_disable_module jetty-ant
 %pom_disable_module jetty-http2
-%pom_disable_module jetty-fcgi
 %pom_disable_module jetty-websocket
-%pom_disable_module jetty-servlets
 %pom_disable_module apache-jstl
 %pom_disable_module jetty-maven-plugin
 %pom_disable_module jetty-jspc-maven-plugin
-%pom_disable_module jetty-deploy
-%pom_disable_module jetty-start
-%pom_disable_module jetty-cdi
 %pom_disable_module jetty-spring
 %pom_disable_module jetty-jaspi
-%pom_disable_module jetty-rewrite
 %pom_disable_module jetty-nosql
-%pom_disable_module jetty-unixsocket
 %pom_disable_module tests
 %pom_disable_module examples
-%pom_disable_module jetty-quickstart
 %pom_disable_module jetty-distribution
 %pom_disable_module jetty-runner
-%pom_disable_module jetty-http-spi
+#%%pom_disable_module jetty-http-spi
 %pom_disable_module jetty-alpn
 %pom_disable_module jetty-home
 
@@ -359,11 +438,30 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
+# Apache Ant stuff
+install -dm0755 %{buildroot}%{_sysconfdir}/ant.d
+install -dm0755 %{buildroot}%{_datadir}/ant/lib
+echo $(for jar in %{buildroot}%{_javadir}/%{base_name}/*.jar; do echo %{base_name}/$(basename $jar .jar); done) \
+	>%{buildroot}%{_sysconfdir}/ant.d/%{base_name}
+ln -s %{_javadir}/%{base_name}/%{base_name}-ant.jar %{buildroot}%{_datadir}/ant/lib/
+
 %files -n %{base_name}-annotations -f .mfiles-jetty-annotations
+
+%files -n %{base_name}-ant -f .mfiles-jetty-ant
+%config %{_sysconfdir}/ant.d/%{base_name}
+%{_datadir}/ant/lib/%{base_name}-ant.jar
+
+%files -n %{base_name}-cdi -f .mfiles-jetty-cdi
 
 %files -n %{base_name}-client -f .mfiles-jetty-client
 
 %files -n %{base_name}-continuation -f .mfiles-jetty-continuation
+
+%files -n %{base_name}-deploy -f .mfiles-jetty-deploy
+
+%files -n %{base_name}-fcgi -f .mfiles-fcgi-server -f .mfiles-fcgi-client
+
+%files -n %{base_name}-http-spi -f .mfiles-jetty-http-spi
 
 %files -n %{base_name}-jaas -f .mfiles-jetty-jaas
 
@@ -379,6 +477,8 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 
 %files -n %{base_name}-servlet -f .mfiles-jetty-servlet
 
+%files -n %{base_name}-start -f .mfiles-jetty-start
+
 %files -n %{base_name}-util -f .mfiles-jetty-util
 
 %files -n %{base_name}-util-ajax -f .mfiles-jetty-util-ajax
@@ -391,11 +491,19 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 
 %files -n %{base_name}-http -f .mfiles-jetty-http
 
-%files -n %{base_name}-security -f .mfiles-jetty-security
-
 %files -n %{base_name}-proxy -f .mfiles-jetty-proxy
 
 %files -n %{base_name}-plus -f .mfiles-jetty-plus
+
+%files -n %{base_name}-quickstart -f .mfiles-jetty-quickstart
+
+%files -n %{base_name}-rewrite -f .mfiles-jetty-rewrite
+
+%files -n %{base_name}-security -f .mfiles-jetty-security
+
+%files -n %{base_name}-servlets -f .mfiles-jetty-servlets
+
+%files -n %{base_name}-unixsocket -f .mfiles-jetty-unixsocket
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE.txt

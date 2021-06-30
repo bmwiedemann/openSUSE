@@ -17,7 +17,7 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.0.1209.0
+Version:        3.0.1295.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
@@ -27,6 +27,9 @@ Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.g
 BuildRequires:  go >= 1.15
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
+Provides:       ExclusiveArch:
+Provides:       aarch64
+Provides:       x86_64
 Provides:       bundled(golang(github.com/Microsoft/go-winio))
 Provides:       bundled(golang(github.com/Workiva/go-datastructures))
 Provides:       bundled(golang(github.com/aws/aws-sdk-go))
@@ -61,7 +64,7 @@ Provides:       bundled(golang(github.com/nightlyone/lockfile))
 Provides:       bundled(golang(github.com/pborman/ansi))
 Provides:       bundled(golang(github.com/pmezard/go-difflib))
 Provides:       bundled(golang(github.com/sergi/go-diff))
-Provides:       bundled(golang(github.com/shiena/ansicolor))                    ExclusiveArch:  x86_64 aarch64
+Provides:       bundled(golang(github.com/shiena/ansicolor))
 Provides:       bundled(golang(github.com/stretchr/objx))
 Provides:       bundled(golang(github.com/stretchr/testify))
 Provides:       bundled(golang(github.com/twinj/uuid))

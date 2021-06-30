@@ -343,4 +343,22 @@
     <comment>Update to 1.24.0</comment>
     <requestid>902424</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>66337a2c9b483b6a951ea2c45536cf88</srcmd5>
+    <version>1.25.0</version>
+    <time>1624999381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.25.0:
+  * Make link to HTML report variable
+  * doc: Add CURL_CA_BUNDLE
+  * Improve handling of --filter
+  * Add User-Agent header to HTTP requests
+  * Fix relative import path for directly called testsuite
+  * Remove futurize from tests
+  * Update setup.py - remove python2 compactibility stuff
+  * Fix handling of softfail bugrefs
+  * Issue: Consistently Use self.bugref instead of bugref from arg
+</comment>
+    <requestid>902827</requestid>
+  </revision>
 </revisionlist>

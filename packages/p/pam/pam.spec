@@ -58,6 +58,7 @@ Source9:        baselibs.conf
 Source10:       unix2_chkpwd.c
 Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
+Source13:       motd.tmpfiles
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
 Patch5:         pam-xauth_ownership.patch
@@ -264,7 +265,9 @@ install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 # rpm macros
 mkdir -p %{buildroot}/usr/lib/rpm/macros.d
 echo "%%_pamdir %pamdir" > %{buildroot}%{_prefix}/lib/rpm/macros.d/macros.pam
-# Create filelist with translatins
+# /run/motd.d
+install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/motd.conf
+# Create filelist with translations
 %find_lang Linux-PAM
 
 %verifyscript
@@ -275,6 +278,7 @@ echo "%%_pamdir %pamdir" > %{buildroot}%{_prefix}/lib/rpm/macros.d/macros.pam
 /sbin/ldconfig
 %set_permissions %{sbindir}/unix_chkpwd
 %set_permissions %{sbindir}/unix2_chkpwd
+%tmpfiles_create %{_tmpfilesdir}/motd.conf
 
 %postun -p /sbin/ldconfig
 %pre
@@ -295,6 +299,7 @@ done
 %dir %{_sysconfdir}/security
 %dir %{_sysconfdir}/security/limits.d
 %dir %{_prefix}/lib/motd.d
+%ghost %dir %{_rundir}/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_sysconfdir}/pam.d/other
 %config(noreplace) %{_sysconfdir}/pam.d/common-*
@@ -437,6 +442,7 @@ done
 %verify(not mode) %attr(4755,root,shadow) %{sbindir}/unix2_chkpwd
 %attr(0700,root,root) %{sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
+%{_tmpfilesdir}/motd.conf
 
 %files -n pam_unix
 %defattr(-,root,root,755)

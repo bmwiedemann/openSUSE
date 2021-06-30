@@ -15,4 +15,12 @@
     <comment>Unnecessary log4j dependency</comment>
     <requestid>734289</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2d224d78cb97cde62b4117353e888d6</srcmd5>
+    <version>2.0.6</version>
+    <time>1624999417</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2021-33813</comment>
+    <requestid>903078</requestid>
+  </revision>
 </revisionlist>

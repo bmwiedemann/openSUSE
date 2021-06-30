@@ -28,7 +28,7 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Explicitly-include-limits-for-compatibility-with-gcc.patch
+Patch0:         0001-Collected-fixes-from-master.patch
 BuildRequires:  boost-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

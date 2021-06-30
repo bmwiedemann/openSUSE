@@ -1,7 +1,7 @@
 #
 # spec file for package site-config
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           site-config
 Version:        0.2
 Release:        0
 Summary:        Site Paths Configuration for autoconf Based configure Scripts
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Source0:        %{name}.libdir1
 Source1:        %{name}.libdir3.biarch
@@ -33,7 +33,8 @@ Source7:        %{name}.README
 BuildRequires:  autoconf
 BuildRequires:  libtool
 %if 0%{?suse_version}
-Supplements:    make autoconf
+Supplements:    autoconf
+Supplements:    make
 %endif
 
 %description
@@ -111,27 +112,29 @@ else
 	cat site-config.libdir3.biarch >>site-config
 fi
 cat site-config.libdir4 >>site-config
+%if !(0%{?suse_version} >= 1550)
 # libexec stuff.
 cat site-config.libexecdir >>site-config
+%endif
 # And stuff to load site scripts from default locations.
 echo '# Continue with the standard behavior of configure defined in AC_SITE_LOAD:' >>site-config
 cat ac_site_load_files >>site-config
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/site $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}/%{_datadir}/site %{buildroot}/%{_sysconfdir}/profile.d
 
 # Install site script.
 SITE_PLATFORM=$(<site_platform)
-cp site-config $RPM_BUILD_ROOT%{_datadir}/site/$SITE_PLATFORM
+cp site-config %{buildroot}/%{_datadir}/site/$SITE_PLATFORM
 
 # Install Bourne Shell profile.
-cat >$RPM_BUILD_ROOT%{_sysconfdir}/profile.d/site.sh <<EOF
+cat >%{buildroot}/%{_sysconfdir}/profile.d/site.sh <<EOF
 CONFIG_SITE="%{_datadir}/site/$SITE_PLATFORM"
 export CONFIG_SITE
 EOF
 
 # Install C Shell profile.
-cat >$RPM_BUILD_ROOT%{_sysconfdir}/profile.d/site.csh <<EOF
+cat >%{buildroot}/%{_sysconfdir}/profile.d/site.csh <<EOF
 setenv CONFIG_SITE "%{_datadir}/site/$SITE_PLATFORM"
 EOF
 

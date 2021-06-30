@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">habootstrap-formula</param>
-    <param name="versionformat">0.4.2+git.%ct.%h</param>
-    <param name="revision">ac4a6b14ba0965bc289b665d9df7ea6d85bb18b7</param>
+    <param name="versionformat">0.4.3+git.%ct.%h</param>
+    <param name="revision">2d4209669b64c0943029ff9c2c5e7f85e014d8c9</param>
   </service>
 
   <service name="recompress" mode="disabled">
