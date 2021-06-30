@@ -1559,9 +1559,6 @@
     <package name="libQt5WaylandCompositor5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5WebChannel5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5WebChannel5-imports" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libQt5WebKit5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libQt5WebKit5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libQt5WebKitWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libQt5WebSockets5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5WebSockets5-imports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Widgets5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->

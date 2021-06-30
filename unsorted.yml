@@ -3139,6 +3139,8 @@ unsorted:
   - eiskaltdcpp-qt-lang 
   - elektra 
   - elektra-qt-gui 
+  - element-desktop: [x86_64] 
+  - element-web: [x86_64] 
   - elementary-cmake-modules 
   - elementary-icon-theme 
   - elementary-icon-theme-gimp-palette 
@@ -7339,13 +7341,18 @@ unsorted:
   - jettison 
   - jettison-javadoc 
   - jetty-annotations 
+  - jetty-ant 
   - jetty-artifact-remote-resources 
   - jetty-build-support 
   - jetty-build-support-javadoc 
+  - jetty-cdi 
   - jetty-client 
   - jetty-continuation 
+  - jetty-deploy 
   - jetty-distribution-remote-resources 
+  - jetty-fcgi 
   - jetty-http 
+  - jetty-http-spi 
   - jetty-io 
   - jetty-jaas 
   - jetty-javax-websocket-client-impl 
@@ -7358,11 +7365,16 @@ unsorted:
   - jetty-parent 
   - jetty-plus 
   - jetty-proxy 
+  - jetty-quickstart 
+  - jetty-rewrite 
   - jetty-schemas 
   - jetty-security 
   - jetty-server 
   - jetty-servlet 
+  - jetty-servlets 
+  - jetty-start 
   - jetty-toolchain 
+  - jetty-unixsocket 
   - jetty-util 
   - jetty-util-ajax 
   - jetty-version-maven-plugin 
@@ -8552,6 +8564,8 @@ unsorted:
   - levmar-devel 
   - lha 
   - lhasa-devel 
+  - lib2geom-devel 
+  - lib2geom1_1_0 
   - lib3270-5_3 
   - lib3270-devel 
   - lib3ds-1-3 
@@ -8981,12 +8995,15 @@ unsorted:
   - libQt5WaylandCompositor5-32bit: [x86_64] 
   - libQt5WebChannel5-32bit: [x86_64] 
   - libQt5WebKit-private-headers-devel 
+  - libQt5WebKit5 
   - libQt5WebKit5-32bit: [x86_64] 
   - libQt5WebKit5-devel 
   - libQt5WebKit5-devel-32bit: [x86_64] 
+  - libQt5WebKit5-imports 
   - libQt5WebKitWidgets-devel 
   - libQt5WebKitWidgets-devel-32bit: [x86_64] 
   - libQt5WebKitWidgets-private-headers-devel 
+  - libQt5WebKitWidgets5 
   - libQt5WebKitWidgets5-32bit: [x86_64] 
   - libQt5WebSockets5-32bit: [x86_64] 
   - libQt5WebView5 
@@ -13351,7 +13368,7 @@ unsorted:
   - librlog5 
   - librlog5-doc 
   - librmt-devel-doc 
-  - librnp-0-0 
+  - librnp0 
   - librocsgraphtheory0 
   - librpma0: [x86_64] 
   - librpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
@@ -16975,6 +16992,7 @@ unsorted:
   - no-more-secrets 
   - nodejs-default 
   - nodejs-devel-default 
+  - nodejs-electron: [x86_64] 
   - nodejs-packaging 
   - nodejs-underscore 
   - nodejs10 
@@ -18192,6 +18210,7 @@ unsorted:
   - pacemaker-cts 
   - pacemaker-remote 
   - packETH 
+  - packETH-cli 
   - package-translations 
   - packit 
   - paexec 
@@ -21134,6 +21153,7 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
+  - python3-csound 
   - python3-ctypeslib2 
   - python3-dbus-presage 
   - python3-debtcollector 
@@ -23840,6 +23860,7 @@ unsorted:
   - python36-sphinx-issues 
   - python36-sphinx-jsonschema 
   - python36-sphinx-removed-in 
+  - python36-sphinx-tabs 
   - python36-sphinx-testing 
   - python36-sphinx-version-warning 
   - python36-sphinx_rtd_theme 
@@ -25742,6 +25763,7 @@ unsorted:
   - python38-markdown2 
   - python38-marshmallow 
   - python38-marshmallow-enum 
+  - python38-matplotlib-inline 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
   - python38-matplotlib-testdata 
@@ -26735,6 +26757,7 @@ unsorted:
   - python38-sphinx-issues 
   - python38-sphinx-jsonschema 
   - python38-sphinx-removed-in 
+  - python38-sphinx-tabs 
   - python38-sphinx-testing 
   - python38-sphinx-version-warning 
   - python38-sphinx_rtd_theme 
@@ -28744,6 +28767,7 @@ unsorted:
   - python39-matplotlib 
   - python39-matplotlib-cairo 
   - python39-matplotlib-gtk3 
+  - python39-matplotlib-inline 
   - python39-matplotlib-latex 
   - python39-matplotlib-qt5 
   - python39-matplotlib-testdata 
@@ -29800,6 +29824,7 @@ unsorted:
   - python39-sphinx-issues 
   - python39-sphinx-jsonschema 
   - python39-sphinx-removed-in 
+  - python39-sphinx-tabs 
   - python39-sphinx-testing 
   - python39-sphinx-version-warning 
   - python39-sphinx_rtd_theme 
