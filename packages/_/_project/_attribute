@@ -618,6 +618,9 @@ products:
   - samba-image:
     - i586
     - x86_64
+  - tomcat-image:
+    - i586
+    - x86_64
   - virt-api-container:
     - x86_64
   - virt-handler-container:
@@ -749,7 +752,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20210628'
 publishing: '20210628'
-testing: '20210628'
+testing: '20210629'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
