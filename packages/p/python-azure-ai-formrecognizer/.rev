@@ -40,4 +40,16 @@
   proper upgrade from previous version 3.1.0b4 (forwarded request 898652 from glaubitz)</comment>
     <requestid>898789</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>785a4191cc6fad138f07c99fa98741ba</srcmd5>
+    <version>3.1.1</version>
+    <time>1625115943</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 903209 from glaubitz)</comment>
+    <requestid>903216</requestid>
+  </revision>
 </revisionlist>
