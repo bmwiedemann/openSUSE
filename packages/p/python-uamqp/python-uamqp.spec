@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-uamqp
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        AMQP 10 Client Library for Python
 License:        MIT
