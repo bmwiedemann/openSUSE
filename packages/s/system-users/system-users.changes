@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  8 14:17:24 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Add default hardware group for 'sgx' enclave access
+
+  Since udev v248, a default rule for /dev/sgx_enclave is provided to
+  give rw access to the new group hopefully making 'sgx' the standard
+  group name for such devices.
+
+-------------------------------------------------------------------
+Mon Jun  7 11:47:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add third argument to sysusers_generate_pre calls to allow 
+  admin overrides with systemd-sysusers
+
+-------------------------------------------------------------------
 Fri Feb 12 09:41:04 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Revert /var/lib/ntp to the ownership and permissions it had in

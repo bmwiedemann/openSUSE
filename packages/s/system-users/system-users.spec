@@ -255,29 +255,29 @@ This package provides the system user and group 'ntp'.
 %setup -q -c -T
 
 %build
-%sysusers_generate_pre %{SOURCE1} uucp
-%sysusers_generate_pre %{SOURCE2} games
-%sysusers_generate_pre %{SOURCE3} bin
-%sysusers_generate_pre %{SOURCE4} daemon
-%sysusers_generate_pre %{SOURCE5} man
-%sysusers_generate_pre %{SOURCE6} news
-%sysusers_generate_pre %{SOURCE8} obsolete
-%sysusers_generate_pre %{SOURCE9} hardware
-%sysusers_generate_pre %{SOURCE10} wheel
-%sysusers_generate_pre %{SOURCE11} wwwrun
-%sysusers_generate_pre %{SOURCE12} mail
-%sysusers_generate_pre %{SOURCE13} ftp
-%sysusers_generate_pre %{SOURCE14} lp
-%sysusers_generate_pre %{SOURCE15} nobody
-%sysusers_generate_pre %{SOURCE16} upsd
-%sysusers_generate_pre %{SOURCE17} uuidd
-%sysusers_generate_pre %{SOURCE19} tftp
-%sysusers_generate_pre %{SOURCE20} tss
-%sysusers_generate_pre %{SOURCE21} kvm
-%sysusers_generate_pre %{SOURCE22} qemu
-%sysusers_generate_pre %{SOURCE23} libvirt
-%sysusers_generate_pre %{SOURCE24} vscan
-%sysusers_generate_pre %{SOURCE25} ntp
+%sysusers_generate_pre %{SOURCE1} uucp system-user-uucp.conf
+%sysusers_generate_pre %{SOURCE2} games system-user-games.conf
+%sysusers_generate_pre %{SOURCE3} bin system-user-bin.conf
+%sysusers_generate_pre %{SOURCE4} daemon system-user-daemon.conf
+%sysusers_generate_pre %{SOURCE5} man system-user-man.conf
+%sysusers_generate_pre %{SOURCE6} news system-user-news.conf
+%sysusers_generate_pre %{SOURCE8} obsolete system-group-obsolete.conf
+%sysusers_generate_pre %{SOURCE9} hardware system-group-hardware.conf
+%sysusers_generate_pre %{SOURCE10} wheel system-group-wheel.conf
+%sysusers_generate_pre %{SOURCE11} wwwrun system-user-wwwrun.conf
+%sysusers_generate_pre %{SOURCE12} mail system-user-mail.conf
+%sysusers_generate_pre %{SOURCE13} ftp system-user-ftp.conf
+%sysusers_generate_pre %{SOURCE14} lp system-user-lp.conf
+%sysusers_generate_pre %{SOURCE15} nobody system-user-nobody.conf
+%sysusers_generate_pre %{SOURCE16} upsd system-user-upsd.conf
+%sysusers_generate_pre %{SOURCE17} uuidd system-user-uuidd.conf
+%sysusers_generate_pre %{SOURCE19} tftp system-user-tftp.conf
+%sysusers_generate_pre %{SOURCE20} tss system-user-tss.conf
+%sysusers_generate_pre %{SOURCE21} kvm system-group-kvm.conf
+%sysusers_generate_pre %{SOURCE22} qemu system-user-qemu.conf
+%sysusers_generate_pre %{SOURCE23} libvirt system-group-libvirt.conf
+%sysusers_generate_pre %{SOURCE24} vscan system-user-vscan.conf
+%sysusers_generate_pre %{SOURCE25} ntp system-user-ntp.conf
 
 %install
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -319,30 +319,52 @@ install -m 644 %{SOURCE24} %{buildroot}%{_sysusersdir}/system-user-vscan.conf
 install -m 644 %{SOURCE25} %{buildroot}%{_sysusersdir}/system-user-ntp.conf
 
 %pre -n system-user-uucp -f uucp.pre
+
 %pre -n system-user-games -f games.pre
+
 %pre -n system-user-bin -f bin.pre
+
 %pre -n system-user-daemon -f daemon.pre
+
 %pre -n system-user-man -f man.pre
+
 %pre -n system-user-news -f news.pre
+
 %pre -n system-group-obsolete -f obsolete.pre
+
 %pre -n system-group-hardware -f hardware.pre
+
 %pre -n system-group-wheel -f wheel.pre
+
 %pre -n system-user-wwwrun -f wwwrun.pre
+
 %pre -n system-user-mail -f mail.pre
+
 %pre -n system-user-ftp -f ftp.pre
+
 %pre -n system-user-lp -f lp.pre
+
 %pre -n system-user-nobody -f nobody.pre
+
 %post -n system-user-nobody
 test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 
 %pre -n system-user-upsd -f upsd.pre
+
 %pre -n system-user-uuidd -f uuidd.pre
+
 %pre -n system-user-tftp -f tftp.pre
+
 %pre -n system-user-tss -f tss.pre
+
 %pre -n system-group-kvm -f kvm.pre
+
 %pre -n system-user-qemu -f qemu.pre
+
 %pre -n system-group-libvirt -f libvirt.pre
+
 %pre -n system-user-vscan -f vscan.pre
+
 %pre -n system-user-ntp -f ntp.pre
 
 %files -n system-user-uucp
