@@ -184,7 +184,7 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
   --with-sendmail=%{_sbindir}/sendmail      \
   --enable-ntp-signd
 make %{?_smp_mflags} all docs
-%sysusers_generate_pre %{SOURCE14} chrony
+%sysusers_generate_pre %{SOURCE14} chrony system-user-chrony.conf
 
 %install
 %make_install
