@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-sms
-Version:        1.0.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure Communication SMS Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-sms/azure-communication-sms-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-sms/azure-communication-sms-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -50,10 +48,10 @@ BuildArch:      noarch
 Azure Communication SMS client package is intended to be used to send SMS using an Azure Resource.
 
 %prep
-%setup -q -n azure-communication-sms-%{realversion}
+%setup -q -n azure-communication-sms-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-sms-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-communication-sms-%{version}
 %python_build
 
 %install
