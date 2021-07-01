@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Sun Jun 27 15:43:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add ldap-schemas subpackage for OpenLDAP radius schemas
+- Add freeradius-server-fix-perl-shbang.patch to fix RPMlint warnings
+- Fix RPMlint warnings about macros and permissions
+
+-------------------------------------------------------------------
+Sat Jun 26 21:12:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.23
+  * Feature improvements
+    * Add "set home_server state ... down" in order to mark the home
+      server as administratively down.  Use "alive" to bring it back
+      to life.
+    * Add Post-Auth-Type "Client-Lost" which should make it easier
+      to log when clients stop responding.
+    * Cache TLS messages in &session-state, for more debugging.
+    * Notes in eap configuration about TLS 1.0 / TLS 1.1, and setting
+      cipher_list = "DEFAULT@SECLEVEL=1"
+    * Added MANY warning messages about using TLS 1.3 with EAP.
+  * Bug fixes
+    * Fix crash in some cases when home server is down, in debug mode.
+    * Fix (again) "read clients from SQL" functionality.
+    * Fix sql_map to return values in more situations.
+    * Silently ignore LEAP configuration instead of erroring out.
+- Update to version 3.0.22
+  * Feature improvements
+    * Limited support for dynamic home servers.
+    * Add support for prepend operator ^=.
+    * Added rlm_totp, for use with the Google Authenticator app.
+    * The default minimum TLS version is now TLS 1.2, as per RFC 8996.
+      Older versions can be allowed by setting tls_min_version, and
+      updating "cipher_list".
+    * Significantly improve the readability and contents of TLS
+      debug messages.
+    * Allow CoA and Disconnect messages over TLS sockets.
+    * Automatically set fragment size / MTU, so that PEAP/EAP-TLS
+      works, and no longer requires manual changes to the configuration.
+    * Allow "configurable_client_cert=yes" for EAP-TLS.
+    * Add TLS 1.2 support for EAP-Fast.
+    * Add ca_path_reload_interval option for tls.
+    * Add "tls_min_version" to ldap module configuration.
+    * Support running policies when receiving a RadSec connection.
+    * Update TLS "ecdh_curve" code to allow for multiple curves.
+    * Allow delta CRLs.
+    * add rlm_sql_map, which can handle multiple columns from an SQL
+      query.  See raddb/mods-available/sql_map.
+    * New xlat for setting status of rlm_always instances and new
+      resource-check example virtual server for manipulating control flow
+      in unlang policies based on status of some external resource.
+      Patches from Terry Burton.
+    * Update radmin to show more information about the home servers
+      using "show home_server list all".
+    * The default configuration now replies with EAP-Key-Name, if it
+      is available, and was requested.
+    * Include extensions in generated certificates.
+    * Ignore user-provided dhparams in FIPS mode.
+    * Remove native support for Cisco LEAP.  It is insecure, and
+      should not be used.  Proxying LEAP is still supported.
+    * Allow use of password preparation methods with rlm_eap_pwd.
+    * More RFC compliance for various corner cases of DHCP,
+    * Use DHCP-specific schemas.
+    * Add stored procedures for DHCP lease allocation
+    * Add support for DHCP-Decline.
+    * Added mods-available/dhcp_sql which is a DHCP-specific instance
+      of the SQL module.
+    * Treat DHCP Discover and Request differently for lease allocation times.
+    * Add support for PBKDF2 keys.
+    * Update default PostgreSQL schema to use "text" instead of
+      a fixed-size "varchar".
+    * Add radmin command "show client list verbose", which gives a lot
+      more information about each client.
+    * Add support for EAPS-AKA authentication to rlm_wimax.
+    * Add rlm_rest support for HTTP/2.
+    * Add REST-HTTP-Status-Code attribute holding HTTP status code.
+    * Add option to set http_negotiation in rlm_rest.  Fixes #2821.
+    * Encode / decode NAS-Filter-Rule according to RFC 4849.
+    * Allow attributes using old names in configuration files, SQL,
+      or modules to match attributes in the packet which use
+      new names.
+    * Allow querying IPv6 stats via FreeRADIUS-Stats-Client-IPv6-Address
+      and FreeRADIUS-Stats-Server-IPv6-Address
+    * Add warnings if there is no "real" User-Name to identify users.
+    * Add sample configuration to update Stripped-User-Name and/or
+      Class for user sessions. See sites-available/default
+    * Add configuration to suppress printing values for User-Name, etc.
+    * Support dictionary.telrad, which is also in WiMAX format.
+    * PEAP 'proxy_tunneled_request_as_eap' is now configurable
+      at runtime with Proxy-Tunneled-Request-As-EAP.
+    * Debug output now lists client/server proposed TLS ciphers.
+    * Add support for TLS1.3
+  * Bug fixes
+    * Fix long-term double free due to PCRE calling our "free"
+      function twice.
+    * Respect the "log_reject" configuration item in more places.
+    * Run Post-Proxy-Type Fail... when all home servers are down.
+    * Note that rlm_replicate can only use UDP, and not TCP or TLS.
+    * DHCP pool lookup is now keyed by Client Identifier (Option 61)
+      when supplied by client, otherwise the hardware address is used.
+      Compliant with RFC 2132. This change will not affect existing
+      systems on upgrade, but new installations will use the new behavior.
+    * Don't print invalid tags in rlm_cache, among other places.
+    * Do home_server failover immediately when an initial TCP / Radsec
+      connection fails.
+    * Clear error on SQLITE_BUSY to prevent memory leak in corner cases.
+    * Properly add SQL clients to virtual servers.
+    * Use better API when decoding DHCP packets, to avoid unnecessary work.
+    * Parse locale-dependent dates.
+    * Fix radiusd.conf ENV LD_PRELOAD function.
+    * Make the "date" module handle UTC more consistently.
+    * Check for, and complain about, inconsistent use of tls_min_version
+      versus disable_tlsv1
+    * Fix "read client from SQL" code so that it properly ties clients
+      to a virtual server.  Also document the behavior.
+    * Fix leak with unknown attributes in detail reader.
+    * Fix parenting issues in rlm_yubikey.
+- Drop __DATE__ __TIME__ fixes, implicitly done with source_date_epoch
+  variable supported by gcc >= 7
+-------------------------------------------------------------------
 Mon Jan  4 12:51:06 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - freeradius-server-radiusd-logrotate.patch: move logrotate

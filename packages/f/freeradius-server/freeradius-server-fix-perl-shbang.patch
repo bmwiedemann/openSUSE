@@ -1,0 +1,27 @@
+diff -Nur freeradius-server-3.0.23/doc/rfc/genref.pl new/doc/rfc/genref.pl
+--- freeradius-server-3.0.23/doc/rfc/genref.pl	2021-06-10 16:49:17.000000000 +0200
++++ new/doc/rfc/genref.pl	2021-06-27 17:40:13.946667745 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ foreach $file (@ARGV) {
+     open FILE, "<$file" || die "Error opening $file: $!\n";
+ 
+diff -Nur freeradius-server-3.0.23/doc/rfc/per-rfc.pl new/doc/rfc/per-rfc.pl
+--- freeradius-server-3.0.23/doc/rfc/per-rfc.pl	2021-06-10 16:49:17.000000000 +0200
++++ new/doc/rfc/per-rfc.pl	2021-06-27 17:40:32.390794075 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Read in the references, and put into an associative array
+diff -Nur freeradius-server-3.0.23/doc/rfc/rewrite.pl new/doc/rfc/rewrite.pl
+--- freeradius-server-3.0.23/doc/rfc/rewrite.pl	2021-06-10 16:49:17.000000000 +0200
++++ new/doc/rfc/rewrite.pl	2021-06-27 17:40:41.162865842 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Read in the references, and put into an associative array

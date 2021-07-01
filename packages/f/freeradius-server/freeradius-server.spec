@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.0.21
+Version:        3.0.23
 Release:        0
 
 %if 0%{?suse_version} >= 1500
@@ -60,6 +60,7 @@ Source99:       ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.b
 Source100:      freeradius.keyring
 Source1:        radiusd.service
 Source2:        freeradius-tmpfiles.conf
+Patch0:         freeradius-server-fix-perl-shbang.patch
 Patch1:         freeradius-server-tmpfiles.patch
 Patch2:         freeradius-server-radiusd-logrotate.patch
 Patch3:         freeradius-server-rcradiusd.patch
@@ -182,6 +183,14 @@ Requires:       %{name} = %{version}
 %description ldap
 FreeRADIUS plugin providing LDAP support.
 
+%package ldap-schemas
+Summary:        FreeRADIUS support for OpenLDAP
+Group:          System/Daemons
+Requires:       openldap2
+
+%description ldap-schemas
+FreeRADIUS schemas for OpenLDAP.
+
 %package krb5
 Summary:        Kerberos 5 support for freeradius
 Group:          System/Daemons
@@ -249,11 +258,7 @@ FreeRADIUS plugin providing SQLite support.
 %autosetup -p1
 
 %build
-./autogen.sh
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+autoreconf -fi
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED -fstack-protector -fPIC -DPIC"
 export LDFLAGS="-pie"
 %configure \
@@ -298,6 +303,9 @@ make %{?_smp_mflags}
 %install
 mkdir -p %{buildroot}%{_localstatedir}/lib/radiusd
 make install R=%{buildroot} INSTALLSTRIP=
+# Install ldap schema
+install -d         %{buildroot}%{_sysconfdir}/openldap/schema
+install -m 0644 -t %{buildroot}%{_sysconfdir}/openldap/schema doc/schemas/ldap/openldap/*.{ldif,schema}
 # modify default configuration
 RADDB=%{buildroot}%{_sysconfdir}/raddb
 perl -i -pe 's/^#user =.*$/user = radiusd/'   $RADDB/radiusd.conf
@@ -340,14 +348,14 @@ rm doc/source/.gitignore
 rm %{buildroot}%{_sbindir}/rc.radiusd
 rm -r %{buildroot}%{_datadir}/doc/freeradius*
 rm -r %{buildroot}%{_libdir}/freeradius/*.*a
-# rm %{buildroot}%{_defaultdocdir}/%{name}/Makefile
-# rm %{buildroot}%{_defaultdocdir}/%{name}/examples/Makefile
+rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/dhcp/mssql
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/mssql
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/mssql
+rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mssql
+rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/dhcp/oracle
+rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle
-rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/oracle
-#rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/postgresql
 %if ! %{with json}
 rm %{buildroot}%{_sysconfdir}/raddb/mods-available/rest
 %endif
@@ -438,7 +446,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/certs
 %{_sysconfdir}/raddb/certs/Makefile
 %{_sysconfdir}/raddb/certs/passwords.mk
-%{_sysconfdir}/raddb/certs/README
+%{_sysconfdir}/raddb/certs/README.md
 %{_sysconfdir}/raddb/certs/xpextensions
 %{_sysconfdir}/raddb/panic.gdb
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/certs/*.cnf
@@ -459,8 +467,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*
 %dir %attr(750,root,radiusd) /etc/raddb/mods-config/sql/moonshot-targeted-ids
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/preprocess/*
-#%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/python
-#%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/python/radiusd.py
+#%%dir %%attr(750,root,radiusd) %%{_sysconfdir}/raddb/mods-config/python
+#%%attr(640,root,radiusd) %%config(noreplace) %%{_sysconfdir}/raddb/mods-config/python/radiusd.py
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql/schema.sql
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool/postgresql
@@ -469,11 +477,12 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/counter
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/cui
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/dhcp
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/main
-#%attr(640,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle/queries.conf
-#%attr(640,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle/schema.sql
+#%%attr(640,root,radiusd) %%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle/queries.conf
+#%%attr(640,root,radiusd) %%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle/schema.sql
 %attr(640,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/sqlite/schema.sql
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/unbound
@@ -506,9 +515,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/abfab-tr-idp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/channel_bindings
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/challenge
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/resource-check
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/totp
 
 # sites-enabled
-# symlink: %{_sysconfdir}/raddb/sites-enabled/xxx -> ../sites-available/xxx
+# symlink: %%{_sysconfdir}/raddb/sites-enabled/xxx -> ../sites-available/xxx
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/sites-enabled
 %config(missingok) %{_sysconfdir}/raddb/sites-enabled/inner-tunnel
 %config(missingok) %{_sysconfdir}/raddb/sites-enabled/default
@@ -528,6 +539,9 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/detail.example.com
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/detail.log
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_files
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_passwd
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_sql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_sqlippool
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/digest
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dynamic_clients
@@ -571,9 +585,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/soh
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sometimes
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sql_map
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sqlcounter
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sqlippool
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/sradutmp
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/totp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/unix
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/utf8
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/wimax
@@ -584,7 +600,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/couchbase
 
 # mods-enabled
-# symlink: %{_sysconfdir}/raddb/mods-enabled/xxx -> ../mods-available/xxx
+# symlink: %%{_sysconfdir}/raddb/mods-enabled/xxx -> ../mods-available/xxx
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-enabled
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/always
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/attr_filter
@@ -613,6 +629,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/replicate
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/soh
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/sradutmp
+%config(missingok) %{_sysconfdir}/raddb/mods-enabled/totp
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/unix
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/utf8
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/unpack
@@ -672,7 +689,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %{_libdir}/freeradius/rlm_eap.so
 %{_libdir}/freeradius/rlm_eap_fast.so
 %{_libdir}/freeradius/rlm_eap_gtc.so
-%{_libdir}/freeradius/rlm_eap_leap.so
 %{_libdir}/freeradius/rlm_eap_md5.so
 %{_libdir}/freeradius/rlm_eap_mschapv2.so
 %{_libdir}/freeradius/rlm_eap_peap.so
@@ -702,6 +718,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %{_libdir}/freeradius/rlm_soh.so
 %{_libdir}/freeradius/rlm_sometimes.so
 %{_libdir}/freeradius/rlm_sql.so
+%{_libdir}/freeradius/rlm_sql_map.so
 %{_libdir}/freeradius/rlm_sqlcounter.so
 %{_libdir}/freeradius/rlm_sqlippool.so
 %if %{with freetds}
@@ -709,6 +726,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %endif
 %{_libdir}/freeradius/rlm_sql_null.so
 %{_libdir}/freeradius/rlm_test.so
+%{_libdir}/freeradius/rlm_totp.so
 %{_libdir}/freeradius/rlm_unix.so
 %{_libdir}/freeradius/rlm_utf8.so
 %{_libdir}/freeradius/rlm_wimax.so
@@ -779,13 +797,21 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/cui/mysql/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/cui/mysql/schema.sql
 
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/dhcp/mysql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/mysql/queries.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/mysql/schema.sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/mysql/setup.sql
+
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool/mysql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/mysql/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/mysql/schema.sql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/mysql/procedure.sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/mysql/procedure-no-skip-locked.sql
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql/queries.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql/procedure.sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql/procedure-no-skip-locked.sql
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/main/mysql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/mysql/process-radacct.sql
@@ -817,9 +843,19 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/cui/postgresql/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/cui/postgresql/schema.sql
 
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/dhcp/postgresql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/postgresql/queries.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/postgresql/schema.sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/postgresql/setup.sql
+
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool/postgresql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/postgresql/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/postgresql/schema.sql
+
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/postgresql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/postgresql/procedure.sql
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/postgresql/queries.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/postgresql/schema.sql
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/main/postgresql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/postgresql/process-radacct.sql
@@ -845,6 +881,10 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/monthlycounter.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/noresetcounter.conf
 
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/dhcp/sqlite
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/sqlite/queries.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/dhcp/sqlite/schema.sql
+
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool/sqlite
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/sqlite/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool/sqlite/schema.sql
@@ -853,7 +893,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/sqlite/queries.conf
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite
-%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-refresh.sh
+%attr(750,root,radiusd) %config %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-refresh.sh
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-schema.sql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/schema.sql
@@ -864,5 +904,12 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %defattr(-,root,root)
 %{_libdir}/freeradius/rlm_ldap.so
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/ldap
+
+%files ldap-schemas
+%defattr(-,root,root)
+%dir %{_sysconfdir}/openldap
+%dir %{_sysconfdir}/openldap/schema
+%config %{_sysconfdir}/openldap/schema/freeradius*.schema
+%config %{_sysconfdir}/openldap/schema/freeradius*.ldif
 
 %changelog
