@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 29 07:10:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed local privilege escalation from runtime user to root
+  (bsc#1186240, CVE-2021-25321)
+- Added service_* calls for the @.service file
+
+-------------------------------------------------------------------
 Tue Feb  9 08:36:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to 
