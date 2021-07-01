@@ -17,23 +17,25 @@
 
 
 Name:           rmw
-Version:        0.7.09
+Version:        0.8.0
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
+Group:          System/Management
 URL:            https://remove-to-waste.info/
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  meson >= 0.54.0
 
 %description
-rmw (ReMove to Waste) is a safe-remove utility for the command line.
-Its goal is to conform to the FreeDesktop.org Trash specification
-and therefore be compatible with KDE, GNOME, XFCE, and others.
-Desktop integration is optional however, and by default, rmw will
-only use a waste folder separated from your desktop trash. One of
-its unique features is the ability to purge files from your
-Waste/Trash directories after x number of days.
+rmw (ReMove to Waste) is a safe-remove utility for the command line. It
+can move and restore files to and from directories specified in a
+configuration file, and can also be integrated with your regular
+desktop trash folder (if your desktop environment uses the
+FreeDesktop.org Trash specification). One of the unique features of rmw
+is the ability to purge items from your waste (or trash) directories
+after x number of days.
 
 %lang_package
 
@@ -41,17 +43,20 @@ Waste/Trash directories after x number of days.
 %setup -q
 
 %build
-%configure \
-	--docdir=%{_docdir}/%{name}
-%make_build
+%meson \
+	-Ddocdir=%{_docdir}/%{name} \
+	--buildtype=release \
+	-Dstrip=true
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 rm %{buildroot}%{_docdir}/%{name}/COPYING
 %find_lang %{name}
 
 %check
-%make_build check
+%meson_test
 
 %files
 %license COPYING
