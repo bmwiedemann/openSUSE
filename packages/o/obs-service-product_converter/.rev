@@ -129,4 +129,16 @@
     jsc#SLE-170001</comment>
     <requestid>848316</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>655b4df6443fe44e4fcba0932552b370</srcmd5>
+    <version>1.4.6</version>
+    <time>1625115936</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.6
+  * add a field for build.opensuse.org default repository name for 
+    zypper (bsc#1187425)
+  * add an automatic field for default OBS download URL
+  * release spec file cleanup</comment>
+    <requestid>903181</requestid>
+  </revision>
 </revisionlist>

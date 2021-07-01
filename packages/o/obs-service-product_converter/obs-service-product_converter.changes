@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 30 06:16:44 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.6
+  * add a field for build.opensuse.org default repository name for 
+    zypper (bsc#1187425)
+  * add an automatic field for default OBS download URL
+  * release spec file cleanup
+
+-------------------------------------------------------------------
 Thu Nov 12 07:27:13 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.5
