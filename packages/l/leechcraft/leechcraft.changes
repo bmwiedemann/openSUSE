@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 29 06:48:04 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Disabled qml requires.
+
+-------------------------------------------------------------------
+Tue Jun 22 06:34:38 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-14522-g3ce98b2ddb snapshot:
+  * Qt 5.12 (Leap 15.*) compatibility no more, deleted
+    leechcraft-Qt5_12.patch & leechcraft-qtermwidget-Leap-15_2.patch ;
+  * Gcc 10 temporarily untill upstream gcc 11 compatibility fix;
+  * Сmake options clean-up;
+  * Source-url is back.
+
+-------------------------------------------------------------------
 Fri Sep 11 07:28:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use legacy libtorrent-rasterbar on Tumbleweed

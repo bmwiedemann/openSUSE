@@ -551,4 +551,19 @@ Touchstreams plugin was enabled for Factory. (forwarded request 178518 from Dark
     <comment></comment>
     <requestid>835711</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>541376f80d03e344f82a89d31f09bd29</srcmd5>
+    <version>0.6.70+git.14522.g3ce98b2ddb</version>
+    <time>1625115929</time>
+    <user>dimstar_suse</user>
+    <comment>- Disabled qml requires (yep just another try).
+- Updated to 0.6.70-14522-g3ce98b2ddb snapshot:
+  * Qt 5.12 (Leap 15.*) compatibility no more, deleted
+    leechcraft-Qt5_12.patch &amp; leechcraft-qtermwidget-Leap-15_2.patch ;
+  * Gcc 10 temporarily untill upstream gcc 11 compatibility fix;
+  * Сmake options clean-up;
+  * Source-url is back.
+</comment>
+    <requestid>903223</requestid>
+  </revision>
 </revisionlist>

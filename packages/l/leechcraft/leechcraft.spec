@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# Qml autorequires off:
+%global __requires_exclude (org.LC.common.1)|(org.LC.Blasq.1)|(SB2.1)|(Mellonetray.1)|(org.LC.Ooronee.1)
+
 %bcond_without ffmpeg
 
 %define plugin_dir %{_libdir}/leechcraft/plugins-qt5
@@ -24,7 +27,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-13907-g785196c688
+%define LEECHCRAFT_VERSION 0.6.70-14522-g3ce98b2ddb
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -43,38 +46,32 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.13907.g785196c688
+Version:        0.6.70+git.14522.g3ce98b2ddb
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            http://leechcraft.org
 
-Source0:        leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
+Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
 
-# PATCH-FIX-OPENSUSE to save Qt 5.12 (i.e. Leap 15.2) compatibility.
-Patch0:         leechcraft-Qt5_12.patch
-# PATCH-FIX-OPENSUSE vs. Leap 15.2 qtermwidget' pkgconfig issue.
-Patch1:         leechcraft-qtermwidget-Leap-15_2.patch
 # PATCH-FIX-OPENSUSE leechcraft-libtorrent-legacy.patch
 Patch2:         leechcraft-libtorrent-legacy.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
-BuildRequires:  gcc-c++ >= 8
-%else
-BuildRequires:  gcc8-c++
-%endif
+# gcc <=7 & 11 break build, gcc 8 - 10 may be OK.
+BuildRequires:  gcc10-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.9
-BuildRequires:  libQt5Sql5-sqlite >= 5.9
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.13
+BuildRequires:  libQt5Sql5-sqlite >= 5.13
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
+BuildRequires:  libboost_container-devel >= 1.76.0
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
@@ -83,7 +80,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblastfm-qt5-devel
-BuildRequires:  libqt5-qtbase-common-devel >= 5.9
+BuildRequires:  libqt5-qtbase-common-devel >= 5.13
 BuildRequires:  libqxmpp-qt5-devel >= 1.1
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
@@ -91,35 +88,33 @@ BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1325
 BuildRequires:  wt-devel
 %endif
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.9
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.9
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9
-BuildRequires:  pkgconfig(Qt5Network) >= 5.9
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.9
-BuildRequires:  pkgconfig(Qt5Positioning) >= 5.9
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.9
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.9
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.9
-BuildRequires:  pkgconfig(Qt5QuickWidgets) >= 5.9
-BuildRequires:  pkgconfig(Qt5Qwt6) >= 5.9
-BuildRequires:  pkgconfig(Qt5Script) >= 5.9
-BuildRequires:  pkgconfig(Qt5Sensors) >= 5.9
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.9
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9
-BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.9
-BuildRequires:  pkgconfig(Qt5WebKit) >= 5.9
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.9
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.9
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.9
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.13
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.13
+BuildRequires:  pkgconfig(Qt5Core) >= 5.13
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.13
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.13
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.13
+BuildRequires:  pkgconfig(Qt5Network) >= 5.13
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.13
+BuildRequires:  pkgconfig(Qt5Positioning) >= 5.13
+BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.13
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.13
+BuildRequires:  pkgconfig(Qt5Quick) >= 5.13
+BuildRequires:  pkgconfig(Qt5QuickWidgets) >= 5.13
+BuildRequires:  pkgconfig(Qt5Qwt6) >= 5.13
+BuildRequires:  pkgconfig(Qt5Script) >= 5.13
+BuildRequires:  pkgconfig(Qt5Sensors) >= 5.13
+BuildRequires:  pkgconfig(Qt5Sql) >= 5.13
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.13
+BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
+BuildRequires:  pkgconfig(Qt5WebKit) >= 5.13
+BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
+BuildRequires:  pkgconfig(Qt5Xml) >= 5.13
+BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.13
 BuildRequires:  pkgconfig(bzip2)
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 BuildRequires:  pkgconfig(ddjvuapi)
-%endif
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(hunspell)
 %if %{with ffmpeg}
@@ -140,10 +135,8 @@ BuildRequires:  pkgconfig(libpcre)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libpostproc)
 %endif
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 BuildRequires:  pkgconfig(libprojectM) >= 3
-%endif
 %endif
 BuildRequires:  pkgconfig(libqrencode)
 %if %{with ffmpeg}
@@ -152,18 +145,12 @@ BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  pkgconfig(libtcmalloc)
 %ifarch %ix86 x86_64 %arm ppc64le
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.2.0
-%else
-BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2.0
-%endif
 %endif
 
 BuildRequires:  pkgconfig(libudev)
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(poppler-qt5)
-%endif
 BuildRequires:  pkgconfig(purple)
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(qtermwidget5)
@@ -206,9 +193,6 @@ Obsoletes:      %{name}-bittorrent
 %endif
 Obsoletes:      %{name}-choroid
 Obsoletes:      %{name}-harbinger
-%if 0%{?suse_version} < 1325 && 0%{?sle_version} <= 120200
-Obsoletes:      %{name}-monocle
-%endif
 Obsoletes:      %{name}-nacheku
 Obsoletes:      %{name}-popishu
 Obsoletes:      %{name}-qrosp
@@ -920,16 +904,16 @@ Requires:       libleechcraft-util-x11%{x11_postfix}             = %{version}
 Requires:       libleechcraft-util-xdg%{xdg_postfix}             = %{version}
 Requires:       libleechcraft-util-xpc%{xpc_postfix}             = %{version}
 Requires:       libleechcraft-util-xsd%{xsd_postfix}             = %{version}
-Requires:       libqt5-linguist-devel >= 5.9
-Requires:       pkgconfig(Qt5Concurrent) >= 5.9
-Requires:       pkgconfig(Qt5DBus) >= 5.9
-Requires:       pkgconfig(Qt5OpenGL) >= 5.9
-Requires:       pkgconfig(Qt5PrintSupport) >= 5.9
-Requires:       pkgconfig(Qt5Script) >= 5.9
-Requires:       pkgconfig(Qt5Svg) >= 5.9
-Requires:       pkgconfig(Qt5WebKitWidgets) >= 5.9
-Requires:       pkgconfig(Qt5X11Extras) >= 5.9
-Requires:       pkgconfig(Qt5XmlPatterns) >= 5.9
+Requires:       libqt5-linguist-devel >= 5.13
+Requires:       pkgconfig(Qt5Concurrent) >= 5.13
+Requires:       pkgconfig(Qt5DBus) >= 5.13
+Requires:       pkgconfig(Qt5OpenGL) >= 5.13
+Requires:       pkgconfig(Qt5PrintSupport) >= 5.13
+Requires:       pkgconfig(Qt5Script) >= 5.13
+Requires:       pkgconfig(Qt5Svg) >= 5.13
+Requires:       pkgconfig(Qt5WebKitWidgets) >= 5.13
+Requires:       pkgconfig(Qt5X11Extras) >= 5.13
+Requires:       pkgconfig(Qt5XmlPatterns) >= 5.13
 Recommends:     leechcraft-azoth-doc
 Recommends:     leechcraft-doc
 Recommends:     leechcraft-monocle-doc
@@ -1328,8 +1312,8 @@ Recommends:     %{name}-musiczombie = %{version}
 Recommends:     ffmpeg
 Requires:       gstreamer-plugins-base >= 1.0
 Requires:       gstreamer-plugins-good >= 1.0
-Requires:       libqt5-qtgraphicaleffects >= 5.9
-Requires:       libqt5-qtquickcontrols >= 5.9
+Requires:       libqt5-qtgraphicaleffects >= 5.13
+Requires:       libqt5-qtquickcontrols >= 5.13
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-libav
 Provides:       %{name}-audioplayer
@@ -1430,7 +1414,6 @@ Requires:       %{name}-lmp = %{version}
 This package allows to synchronize with MTP devices via LeechCraft.
 
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %package lmp-potorchu
 Summary:        LeechCraft Visualization Effects Module
@@ -1440,7 +1423,6 @@ Requires:       %{name}-lmp = %{version}
 
 %description lmp-potorchu
 This package provides visualization effects for the LeechCraft audio player.
-%endif
 %endif
 
 %package lmp-ppl
@@ -1465,7 +1447,6 @@ This package provides a tray area quark for third-party apps
 for LeechCraft SB2.
 
 
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 %package monocle
 Summary:        LeechCraft Document viewer Module
 License:        BSL-1.0
@@ -1539,7 +1520,6 @@ Provides:       %{name}-monocle-subplugin
 %description monocle-seen
 This package contains a LeechCraft Monocle subplugin for djvu
 document support via the djvulibre backend.
-%endif
 
 %package musiczombie
 Summary:        LeechCraft Azoth MusicBrainz.org client Module
@@ -1891,7 +1871,7 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Provides:       %{name}-sb = %{version}
-Requires:       libqt5-qtquickcontrols >= 5.9
+Requires:       libqt5-qtquickcontrols >= 5.13
 
 %description sb2
 This package provides another side bar plugin for Leechcraft.
@@ -2156,7 +2136,7 @@ network classes and functions.
 Summary:        QML utility library for LeechCraft
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
-Requires:       libQtQuick5 >= 5.9
+Requires:       libQtQuick5 >= 5.13
 
 %description -n libleechcraft-util-qml%{qml_postfix}
 A library providing some commonly used QML items as well as
@@ -2264,13 +2244,7 @@ XmlSettingsDialog LeechCraft subsystem.
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
-%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550
-%patch0 -p1
-%patch1 -p1
-%endif
-%if 0%{?suse_version} > 1500
 %patch2 -p1
-%endif
 
 #removing non-free icons
 rm -rf src/plugins/azoth/share/azoth/iconsets/clients/default
@@ -2293,17 +2267,14 @@ tmpflags="%{optflags}"
 # NOTE that %%cmake macro breaks compiler configuring.
 cmake ../src \
         -Wno-dev \
-        -DGPTOOLS_MEM=True \
 %if "%{_lib}" == "lib64"
         -DLIB_SUFFIX=64 \
 %endif
         -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride= $(pkg-config --cflags gstreamer-1.0)" \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550
-        -DCMAKE_C_COMPILER=/usr/bin/gcc-8 \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 \
-%endif
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-10 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-10 \
         -DSTRICT_LICENSING=True \
         -DWITH_DBUS_LOADERS=True \
         -DWITH_PCRE=True \
@@ -2311,40 +2282,56 @@ cmake ../src \
         -DENABLE_UTIL_TESTS=True \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
-%if 0%{?suse_version} > 1325
+                -DENABLE_AGGREGATOR_BODYFETCH=True \
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
-%else
-                -DENABLE_AGGREGATOR_WEBACCESS=False \
-%endif
         -DENABLE_AUSCRIE=True \
         -DENABLE_AZOTH=True \
                 -DENABLE_AZOTH_ABBREV=True \
                 -DENABLE_AZOTH_ACETAMIDE=True \
+                -DENABLE_AZOTH_ADIUMSTYLES=True \
                 -DENABLE_AZOTH_ASTRALITY=False \
+                -DENABLE_AZOTH_AUTOIDLER=True \
                 -DENABLE_AZOTH_AUTOPASTE=True \
+                -DENABLE_AZOTH_BIRTHDAYNOTIFIER=True \
+                -DENABLE_AZOTH_CHATHISTORY=True \
+                -DENABLE_AZOTH_DEPESTER=True \
+                -DENABLE_AZOTH_EMBEDMEDIA=True \
                 -DENABLE_AZOTH_HERBICIDE=True \
+                -DENABLE_AZOTH_HILI=True \
+                -DENABLE_AZOTH_ISTERIQUE=True \
+                -DENABLE_AZOTH_JUICK=True \
+                -DENABLE_AZOTH_KEESO=True \
+                -DENABLE_AZOTH_LASTSEEN=True \
+                -DENABLE_AZOTH_METACONTACTS=True \
+                -DENABLE_AZOTH_MODNOK=True \
                 -DENABLE_AZOTH_MUCOMMANDS=True \
                 -DENABLE_AZOTH_MUCOMMANDS_TESTS=True \
                 -DENABLE_AZOTH_MURM=True \
+                -DENABLE_AZOTH_NATIVEEMOTICONS=True \
                 -DENABLE_AZOTH_OTROID=True \
+                -DENABLE_AZOTH_ROSENTHAL=True \
                 -DENABLE_AZOTH_SARIN=False \
+                -DENABLE_AZOTH_STANDARDSTYLES=True \
                 -DENABLE_AZOTH_SHX=True \
                 -DENABLE_AZOTH_TRACOLOR=False \
+                -DENABLE_AZOTH_VADER=True \
                 -DENABLE_AZOTH_VELVETBIRD=True \
-                -DENABLE_AZOTH_WOODPECKER=False \
-                -DENABLE_AZOTH_ZHEET=False \
+                -DENABLE_AZOTH_XTAZY=True \
+                -DENABLE_AZOTH_XOOX=True \
                 -DENABLE_CRYPT=True \
                 -DENABLE_MEDIACALLS=False \
-        -DENABLE_BLACKDASH=False \
         -DENABLE_BLASQ=True \
+                -DENABLE_BLASQ_DEATHNOTE=True \
+                -DENABLE_BLASQ_RAPPOR=True \
                 -DENABLE_BLASQ_SPEGNERSI=False \
                 -DENABLE_BLASQ_VANGOG=True \
         -DENABLE_BLOGIQUE=True \
+                -DENABLE_BLOGIQUE_HESTIA=True \
+                -DENABLE_BLOGIQUE_METIDA=True \
         -DENABLE_CERTMGR=True \
         -DENABLE_CHOROID=False \
         -DENABLE_CPULOAD=True \
         -DENABLE_DEVMON=True \
-        -DENABLE_DLNIWE=False \
         -DENABLE_DOLOZHEE=True \
         -DENABLE_DUMBEEP=True \
         -DENABLE_ELEEMINATOR=True \
@@ -2353,7 +2340,6 @@ cmake ../src \
         -DENABLE_GACTS=True \
         -DENABLE_GLANCE=True \
         -DENABLE_GMAILNOTIFIER=True \
-        -DENABLE_HARBINGER=False \
         -DENABLE_HOTSENSORS=False \
         -DENABLE_HOTSTREAMS=True \
         -DENABLE_HTTHARE=True \
@@ -2371,11 +2357,6 @@ cmake ../src \
         -DENABLE_LEMON=True \
         -DENABLE_LHTR=True \
                 -DWITH_LHTR_HTML=True \
-%if 0%{?suse_version} > 1325
-                -DUSE_LIBTIDY_HTML5=True \
-%else
-                -DUSE_LIBTIDY_HTML5=False \
-%endif
         -DENABLE_LIZNOO=True \
         -DENABLE_LMP=True \
                 -DENABLE_LMP_BRAINSLUGZ=True \
@@ -2385,26 +2366,21 @@ cmake ../src \
                 -DENABLE_LMP_LIBGUESS=True \
                 -DENABLE_LMP_MPRIS=True \
                 -DENABLE_LMP_MTPSYNC=True \
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
                 -DENABLE_LMP_POTORCHU=True \
-%else
-                -DENABLE_LMP_POTORCHU=False \
-%endif
 %else
                 -DENABLE_LMP_POTORCHU=False \
 %endif
                 -DENABLE_LMP_PPL=True \
                 -DENABLE_LMP_PPL_TESTS=True \
         -DENABLE_MELLONETRAY=True \
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
         -DENABLE_MONOCLE=True \
+                -DENABLE_MONOCLE_DIK=True \
+                -DENABLE_MONOCLE_FXB=True \
                 -DENABLE_MONOCLE_MU=False \
                 -DENABLE_MONOCLE_PDF=True \
                 -DENABLE_MONOCLE_POSTRUS=True \
-%else
-        -DENABLE_MONOCLE=False \
-%endif
+                -DENABLE_MONOCLE_SEEN=True \
         -DENABLE_MUSICZOMBIE=True \
 %if %{with ffmpeg}
                 -DWITH_MUSICZOMBIE_CHROMAPRINT=True \
@@ -2427,13 +2403,21 @@ cmake ../src \
         -DENABLE_POSHUKU=True \
                 -DENABLE_IDN=True \
                 -DENABLE_POSHUKU_AUTOSEARCH=True \
+                -DENABLE_POSHUKU_CLEANWEB=True \
                 -DENABLE_POSHUKU_DCAC=True \
 %ifarch %ix86 x86_64
                 -DENABLE_POSHUKU_DCAC_TESTS=True \
 %else
                 -DENABLE_POSHUKU_DCAC_TESTS=False \
 %endif
+                -DENABLE_POSHUKU_FATAPE=True \
+                -DENABLE_POSHUKU_FILESCHEME=True \
                 -DENABLE_POSHUKU_FOC=True \
+                -DENABLE_POSHUKU_FUA=True \
+                -DENABLE_POSHUKU_KEYWORDS=True \
+                -DENABLE_POSHUKU_ONLINEBOOKMARKS=True \
+                        -DENABLE_POSHUKU_ONLINEBOOKMARKS_DELICIOUS=True \
+                        -DENABLE_POSHUKU_ONLINEBOOKMARKS_READITLATER=True \
                 -DENABLE_POSHUKU_QRD=True \
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
         -DENABLE_QROSP=False \
@@ -2441,22 +2425,19 @@ cmake ../src \
         -DENABLE_SCROBLIBRE=True \
         -DENABLE_SECMAN=True \
                 -DTESTS_SECMAN=True \
-        -DENABLE_SHELLOPEN=False \
         -DENABLE_SNAILS=False \
         -DENABLE_SYNCER=False \
         -DENABLE_TABSESSMANAGER=True \
         -DENABLE_TABSLIST=True \
         -DENABLE_TEXTOGROOSE=True \
 %ifarch %ix86 x86_64 %arm ppc64le
-        -DENABLE_TORRENT=True \
+        -DENABLE_BITTORRENT=True \
                  -DENABLE_BITTORRENT_GEOIP=True \
 %else
-        -DENABLE_TORRENT=False \
+        -DENABLE_BITTORRENT=False \
 %endif
         -DENABLE_TOUCHSTREAMS=True \
         -DENABLE_TPI=True \
-        -DENABLE_TWIFEE=False \
-        -DENABLE_VTYULC=False \
         -DENABLE_VROOBY=True \
         -DENABLE_WKPLUGINS=False \
         -DENABLE_XPROXY=True \
@@ -2795,7 +2776,6 @@ ctest --output-on-failure
 %files blogique
 %defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blogique.so
-%{settings_dir}/blogiquesettings.xml
 %{translations_dir}/*craft_blogique_??.qm
 %{translations_dir}/*craft_blogique_??_??.qm
 %dir %{qml_dir}/blogique
@@ -2831,6 +2811,7 @@ ctest --output-on-failure
 %{settings_dir}/cstpsettings.xml
 %{translations_dir}/*craft_cstp*.qm
 %{plugin_dir}/*leechcraft_cstp.so
+%{_datadir}/leechcraft/cstp
 
 %files dbusmanager
 %defattr(-,root,root)
@@ -2881,7 +2862,7 @@ ctest --output-on-failure
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/compositing
 %dir %{_datadir}/leechcraft/fenet/wms
-%{_datadir}/xsessions/LCDE.desktop
+%{_datadir}/leechcraft/xsessions
 %{translations_dir}/*craft_fenet_*.qm
 %{_datadir}/leechcraft/fenet/compositing/*compton*
 
@@ -3072,14 +3053,12 @@ ctest --output-on-failure
 %defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_mtpsync.so
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %files lmp-potorchu
 %defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_potorchu.so
 %{translations_dir}/*craft_lmp_potorchu_??.qm
 %{translations_dir}/*craft_lmp_potorchu_??_??.qm
-%endif
 %endif
 
 %files lmp-ppl
@@ -3093,7 +3072,6 @@ ctest --output-on-failure
 %{qml_dir}/mellonetray/
 %{translations_dir}/*craft_mellonetray_*.qm
 
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 %files monocle
 %defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle.so
@@ -3136,7 +3114,6 @@ ctest --output-on-failure
 %{_datadir}/applications/%{name}-monocle-seen-qt5.desktop
 %{translations_dir}/*craft_monocle_seen_??.qm
 %{translations_dir}/*craft_monocle_seen_??_??.qm
-%endif
 
 %files musiczombie
 %defattr(-,root,root)
@@ -3154,12 +3131,15 @@ ctest --output-on-failure
 %{settings_dir}/netstoremanagersettings.xml
 %{translations_dir}/*craft_netstoremanager_??.qm
 %{translations_dir}/*craft_netstoremanager_??_??.qm
+%dir %{_datadir}/leechcraft/netstoremanager
+%dir %{_datadir}/leechcraft/netstoremanager/services
 
 %files netstoremanager-googledrive
 %defattr(-,root,root)
 %{plugin_dir}/*craft_netstoremanager_googledrive.so
 %{settings_dir}/nsmgoogledrivesettings.xml
 %{translations_dir}/*craft_netstoremanager_googledrive_*.qm
+%{_datadir}/leechcraft/netstoremanager/services/googledrive.png
 
 %files networkmonitor
 %defattr(-,root,root)
@@ -3170,6 +3150,7 @@ ctest --output-on-failure
 %defattr(-,root,root)
 %{translations_dir}/*craft_newlife*.qm
 %{plugin_dir}/*craft_newlife.so
+%{_datadir}/leechcraft/newlife
 
 %files ooronee
 %defattr(-,root,root)
@@ -3196,8 +3177,6 @@ ctest --output-on-failure
 
 %files poshuku
 %defattr(-,root,root)
-%dir %{_datadir}/leechcraft/installed
-%{_datadir}/leechcraft/installed/poshuku/
 %{settings_dir}/poshukusettings.xml
 %{translations_dir}/*craft_poshuku_??.qm
 %{translations_dir}/*craft_poshuku_??_??.qm
