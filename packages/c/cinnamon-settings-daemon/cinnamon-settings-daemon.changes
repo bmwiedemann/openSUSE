@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 30 06:23:00 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.3.
+  * EDID strings can be up to 13 bytes
+  * color: Correct the transposed bits in the EDID parser
+  * csd-power-manager.c: Use a different method to determine
+    whether or not the system is on battery.
+  * power: Increase the critical and action thresholds
+    so they are higher than the upower default.
+
+-------------------------------------------------------------------
 Fri Jun 11 05:53:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.1.
