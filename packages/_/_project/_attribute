@@ -640,6 +640,9 @@ products:
     - x86_64
   - kiwi-images-vagrant:virtualbox:
     - x86_64
+  - kiwi-images-wsl:
+    - i586
+    - x86_64
   - kiwi-templates-JeOS:MS-HyperV:
     - x86_64
   - kiwi-templates-JeOS:OpenStack-Cloud:
