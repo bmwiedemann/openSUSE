@@ -1,14 +1,158 @@
 -------------------------------------------------------------------
+Tue Jun 29 10:38:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.25.4
+  * Users can authenticate the CLI with only environment variables,
+    a config does not need to exist
+    * The following environment variables need to be set, OCI_CLI_USER, OCI_CLI_TENANCY,
+      OCI_CLI_FINGERPRINT, OCI_CLI_KEY_FILE, OCI_CLI_REGION
+    * Optional variable for passphrase, OCI_CLI_PASSPHRASE
+  * Support for VMBM Pluggable Database feature as a part of the Database Service
+    * ``oci db pluggable-database``
+  * Support for cross-tenancy volume clone in Block Storage service
+    * ``oci bv volume create --source-volume-id``
+    * ``oci bv boot-volume create --source-volume-id``
+  * Changed allowed versions of cryptography package to a range from 3.2.1 to 3.4.7
+  * Following updates in installer scripts:
+    * Use dnf, if available, to install python
+    * Updated check for ubuntu/debian systems to use ID_LIKE/ID
+      instead of NAME in /etc/os-release
+  * oci setup bootstrap was causing a ``AttributeError: module 'oci' has no attribute 'identity'``
+  - from version 2.25.3
+  * Support for migrating an OKE cluster not integrated with your
+    VCN to a VCN-Native cluster in Container Engine
+    * ``oci ce cluster cluster-migrate-to-native-vcn``
+    * ``oci ce cluster cluster-migrate-to-native-vcn-status``
+  * Support for filtering of applications based on spark version in Data Flow service
+    * ``oci data-flow application list --spark-version``
+  * Support for registration and management of target databases in Data Safe service.
+    * ``oci data-safe target-database create``
+  * Support for Elastic Storage feature for Exadata Infrastructure
+    resources for ExaCC in Database service.
+    * ``oci db exadata-infrastructure create --compute-count``
+    * ``oci db exadata-infrastructure update --additional-storage-count``
+    * ``oci db exadata-infrastructure add --exadata-infrastructure-id``
+  * New parameter --parameters-config has been added to the below commands
+    in Management Dashboard service
+    * ``oci management-dashboard dashboard create --parameters-config``
+    * ``oci management-dashboard dashboard update``
+    * ``oci management-dashboard saved-search create``
+    * ``oci management-dashboard saved-search update``
+  * PyYAML version requirement relaxed from PyYAML==5.4.1 to PyYAML>=5.4,<6
+  * Default thread count for multipart upload/download using ``oci os object put | get`` is 10.
+  * Multipart download is now default for ``oci os object get``.
+    Please use ``--no-multipart`` to disable multipart download.
+  * Changed multipart download chunk size to maximum instead of 1Mb
+  * Parameter --compartment-id was existing twice in change compartment
+    for rove node in Rover service
+    * ``oci rover node change-compartment --compartment-id``
+  * Issue with multipart download - progress bar was only showing 50% even
+    though full file was uploaded.
+  - from version 2.25.2
+  * Support for Java Management Service
+    * ``oci jms``
+  * Support to update iscsi Login State for a Volume Attachment in Compute service
+    * ``oci compute volume-attachment update --iscsi-login-state``
+  * Support for 'host-name' and 'is-database-instance-level-metrics' query parameters
+    in Operations Insights service
+    * ``oci opsi database-insights summarize-database-insight-resource-capacity-trend``
+    * ``oci opsi database-insights summarize-database-insight-resource-forecast-trend``
+    * ``oci opsi database-insights summarize-database-insight-resource-statistics``
+    * ``oci opsi database-insights summarize-database-insight-resource-usage``
+    * ``oci opsi database-insights summarize-database-insight-resource-usage-trend``
+    * ``oci opsi database-insights summarize-database-insight-resource-utilization-insight``
+    * ``oci opsi database-insights summarize-sql-insights``
+    * ``oci opsi database-insights summarize-sql-statistics``
+    * ``oci opsi database-insights summarize-sql-statistics-time-series``
+  * Support for listing database configurations in Operations Insights service
+    * ``oci opsi database-insights list-database-configurations``
+  * Added support for a new type of Source called Import for use with the
+    Export tool in Application Migration service
+    * ``oci application-migration source create-source-import-source-details``
+    * ``oci application-migration source update-source-import-source-details``
+  - from version 2.25.1
+  * Support for configuration of autonomous database KMS keys in the Database service
+    * ``oci db autonomous-database configure-autonomous-database-vault-key``
+  * Support for creating database software images from an existing database home in the Database service
+    * ``oci db database-software-image create --source-db-home-id``
+  * Support for creating database software images with any supported RUs in the Database service
+    * ``oci db database-software-image create --database-version [optional], --patch-set[optional]``
+  * ``--is-desupported-version`` flag is added to take customer acknowledgment
+    for creating database-software images with release older than N-3
+    * ``oci db database create --is-desupported-version``
+    * ``oci db database create-from-backup --is-desupported-version``
+    * ``oci db database create-from-database --is-desupported-version``
+    * ``oci db db-home create --is-desupported-version``
+  * Support for listing all NSGs associated with a given VLAN in the Networking service
+    * ``oci network nsg list --compartment-id [optional]``
+  * Services are now dynamically imported for autocomplete, speeding up completion time
+  * Previous release had a bug causing some CLI commands to error with 'KeyError'.
+    Please see `github issue #415 <https://github.com/oracle/oci-cli/issues/415>`_ for more details
+  - from version 2.25.0
+  * [Breaking] For CLI installations running on Python 3.5 or lower, warning message to upgrade
+    Python to v3.6+ and reinstall CLI before August 1st, 2021 will be seen.  
+    * To disable the warning message, set environment variable ``OCI_CLI_ALLOW_PYTHON2=True``
+  * O is a wrapper for oci-cli, providing an alternate interface with shortcuts to all
+    commands, parameters, resource IDs, and output fields.
+    * O can be found on `GitHub <https://github.com/oracle/oci-cli/blob/master/scripts/examples/project_o>`__.
+  * Support for Generic Artifacts Service (``oci artifacts``)
+  * Support for Bastion Service (``oci bastion``)
+  * Support to provide visualization to view the Automatic Workload Repository (AWR) data
+    for external database in Database Management Service
+    * ``oci database-management get-awr-db-report``
+    * ``oci database-management get-awr-db-sql-report``
+    * ``oci database-management list-awr-db-snapshots``
+    * ``oci database-management list-awr-dbs``
+    * ``oci database-management summarize-awr-db-cpu-usages``
+    * ``oci database-management summarize-awr-db-metrics``
+    * ``oci database-management summarize-awr-db-parameter-changes``
+    * ``oci database-management summarize-awr-db-parameters``
+    * ``oci database-management summarize-awr-db-snapshot-ranges``
+    * ``oci database-management summarize-awr-db-sysstats``
+    * ``oci database-management summarize-awr-db-top-wait-events``
+    * ``oci database-management summarize-awr-db-wait-event-buckets``
+    * ``oci database-management summarize-awr-db-wait-events``
+  * Support for VM.Standard.E3.Flex Flexible Compute Shape with customizable OCPUs
+    and memory for Data Science Notebooks
+    * ``oci data-science notebook-session create --configuration-details``
+    * ``oci data-science notebook-session update --configuration-details``
+  * Support for HCX Enterprise Add-on for Oracle Cloud VMware Solution 
+    * ``oci ocvs sddc cancel-downgrade-hcx``
+    * ``oci ocvs sddc downgrade-hcx``
+    * ``oci ocvs sddc refresh-hcx-license-status``
+    * ``oci ocvs sddc upgrade-hcx``
+    * ``current-sku`` parameter in ``oci ocvs esxi-host create`` is now optional
+    * ``initial-sku`` parameter in ``oci ocvs sddc create`` is now optional
+  * Support for Secrets Read By Name as part of Secrets in Vault Service
+    * ``oci secrets secret-bundle get-secret-bundle-by-name`` 
+  * Support for ``isDynamic`` field in the response for ``oci limits definition list``
+  * Service modules are now dynamically imported at runtime, speeding up CLI invocations
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Replace %autosetup with %patch and %setup again in %prep section
+  + Preferred as it allows to enable and disable patches individually
+- Update BuildRequires and Requires from setup.py
+- Use find command to search for Python sources for sed regexp-replace
+
+-------------------------------------------------------------------
 Thu May 20 16:16:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.24.5
-  * Support for Object storage configuration source in the
-    Resource Manager service
-  * Support for spark-submit compatible options in the Data Flow service
-  * Fixed: Wait for state parameter for the following commands were
-    returning an error on valid states
-  * Fixed list commands in Artifacts service
-- Refresh oc_relax-python-depends.patch
+  * Support for database maintenance run patchMode feature as a part
+    of the Database Service
+    * ``oci db maintenance-run``
+  * PyYAML was upgraded to version 5.4.1 to address a vulnerability identified
+    on GitHub as CVE-2020-14343
+  * Py was upgraded to version 1.10.0 to address a vulnerability identified on GitHub
+    as CVE-2020-29651. Py isn't used in our run-time system but as part of our
+    documentation build process.
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Replace %patch and %setup with %autosetup in %prep section
+- Replace `python3 setup.py build` with %python3_build in %build section
+- Replace `python3 setup.py install` with %python3_install in %install section
+- Switch Source URL to use %{url} macro
+- Update BuildRequires and Requires from setup.py
 
 -------------------------------------------------------------------
 Fri May 14 11:21:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

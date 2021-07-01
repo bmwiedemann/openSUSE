@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        2.24.5
+Version:        2.25.4
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -44,10 +44,10 @@ BuildRequires:  python3-PyYAML >= 5.4.1
 BuildRequires:  python3-arrow >= 0.14.7
 BuildRequires:  python3-certifi
 BuildRequires:  python3-click >= 6.7
-BuildRequires:  python3-cryptography >= 3.3.2
+BuildRequires:  python3-cryptography >= 3.2.1
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.9.4
-BuildRequires:  python3-oci-sdk >= 2.38.3
+BuildRequires:  python3-oci-sdk >= 2.40.1
 BuildRequires:  python3-pyOpenSSL >= 18.0.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
@@ -83,9 +83,9 @@ Requires:       python3-PyYAML >= 5.4.1
 Requires:       python3-arrow >= 0.14.7
 Requires:       python3-certifi
 Requires:       python3-click >= 6.7
-Requires:       python3-cryptography >= 3.3.2
+Requires:       python3-cryptography >= 3.2.1
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.38.3
+Requires:       python3-oci-sdk >= 2.40.1
 Requires:       python3-pyOpenSSL >= 18.0.0
 Requires:       python3-python-dateutil >= 2.5.3
 Requires:       python3-pytz >= 2016.10
@@ -103,10 +103,12 @@ Some of these, such as the ability to run scripts, extend the Console's
 functionality.
 
 %prep
-%autosetup -p1
+%setup -q -n oci-cli-%{version}
+%patch0 -p1
+%patch1 -p1
 # Fix includes
-sed -i 's/from oci._vendor //' src/oci_cli/*.py services/container_engine/src/oci_cli_container_engine/*.py services/object_storage/src/oci_cli_object_storage/object_storage_transfer_manager/*.py services/dts/src/oci_cli_dts/physical_appliance_control_plane/client/*.py services/dts/src/oci_cli_dts/*.py tests/*.py
-sed -i 's/oci\._vendor\.//' src/oci_cli/*.py services/dts/src/oci_cli_dts/*.py services/container_engine/src/oci_cli_container_engine/*.py tests/*.py tests/vcr_mods/*.py
+find . -name "*.py" -exec sed -i 's/from oci\._vendor //' \{\} +
+find . -name "*.py" -exec sed -i 's/oci\._vendor\.//' \{\} +
 
 %build
 %python3_build
