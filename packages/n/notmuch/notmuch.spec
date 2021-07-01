@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.32.1
+Version:        0.32.2
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -126,7 +126,6 @@ The libnotmuch3 package contains shared libraries for %{name}.
 %if %{with python3}
 %package -n python3-%{name}
 Summary:        Python3 bindings for %{name}
-Requires:       python = %{?py3_ver:%py3_ver}%{?!py3_ver:%(python3 --version|awk '{print $2}')}
 Recommends:     python-%{name}-doc = %{version}
 
 %description -n python3-%{name}

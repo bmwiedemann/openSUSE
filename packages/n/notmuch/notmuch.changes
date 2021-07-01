@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 28 06:35:16 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32.2
+=========================
+
+General
+-------
+
+Fix a bug from 2017 that can add duplicate thread-id terms to message
+documents.
+
+CLI
+---
+
+Fix small memory leak in notmuch new.
+
+Emacs
+-----
+
+Add `(require 'seq)` for `seq-some`.
+
+Documentation
+-------------
+
+Fix man page build for Sphinx 4.x. Fix variable name in emacs docs.
+
+Tests
+-----
+
+Fix backup creation in `perf-test/T00-new`.  Check openssl
+prerequisite in `add_gpgsm_home`.
+
+-------------------------------------------------------------------
 Mon May 17 10:49:07 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 What's new in notmuch 0.32.1
