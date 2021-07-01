@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 13 13:35:10 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
+Tue Jun  8 15:48:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrasing in descriptions.
+- Use more modern rpm macros.
+- Reduce sh code emissions of %service_*.
+
+-------------------------------------------------------------------
 Sat Jun  5 12:33:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers
