@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 14:28:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- do not build postgresql95 and postgresql96 flavors on Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Jan 27 09:15:35 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Quote "%{pgname}" to fix build with rpm 4.16

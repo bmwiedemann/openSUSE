@@ -1,5 +1,5 @@
 #
-# spec file for package postgresql-pgagent
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -30,10 +30,10 @@ ExclusiveArch:  do_not_build
 %if 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql94"
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql95"
+%if 0%{?suse_version} >= 1500 && "%{pgname}" == "postgresql95"
 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql96"
+%if 0%{?suse_version} >= 1500 && "%{pgname}" == "postgresql96"
 ExclusiveArch:  do_not_build
 %endif
 %if !0%{?is_opensuse} && 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql11"
