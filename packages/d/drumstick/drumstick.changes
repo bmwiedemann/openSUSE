@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 30 06:25:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.3.0. Changes since 2.2.0:
+  * experimental cmake support for building with Qt6
+  * New options: USE_PULSEAUDIO, USE_FLUIDSYNTH, USE_NETWORK
+  * Revised CMake buildsystem and documents
+  * Widgets: Fixed touch events - checked pressure capability
+
+-------------------------------------------------------------------
 Thu May 20 09:47:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Build without fluidsynth on Leap 15, the included one is too old

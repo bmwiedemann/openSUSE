@@ -107,4 +107,16 @@
     <comment></comment>
     <requestid>894605</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31b1a660692069d5329bbfef794466ac</srcmd5>
+    <version>2.3.0</version>
+    <time>1625115935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0. Changes since 2.2.0:
+  * experimental cmake support for building with Qt6
+  * New options: USE_PULSEAUDIO, USE_FLUIDSYNTH, USE_NETWORK
+  * Revised CMake buildsystem and documents
+  * Widgets: Fixed touch events - checked pressure capability</comment>
+    <requestid>903175</requestid>
+  </revision>
 </revisionlist>
