@@ -921,7 +921,7 @@
       <repopackage name="libqca-qt5-2" arch="x86_64"/>
       <repopackage name="libqmi-glib5" arch="x86_64"/>
       <repopackage name="libqpdf28" arch="x86_64"/>
-      <repopackage name="libqrencode4"/>
+      <repopackage name="libqrencode4" arch="x86_64"/>
       <repopackage name="libqt5-qdbus" arch="x86_64"/>
       <repopackage name="libqt5-qtgraphicaleffects" arch="x86_64"/>
       <repopackage name="libqt5-qtpaths" arch="x86_64"/>
