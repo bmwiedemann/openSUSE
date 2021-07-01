@@ -47,6 +47,7 @@ live and save 22% bandwidth.
 %build
 autoreconf -fiv
 %configure \
+  --disable-vectorization \
   --enable-system-dependencies
 %make_build
 

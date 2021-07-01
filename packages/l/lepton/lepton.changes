@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 04:20:36 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop building with march=native (boo#1100677)
+
+-------------------------------------------------------------------
 Wed Apr 28 06:12:06 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.1+git.20201230:
