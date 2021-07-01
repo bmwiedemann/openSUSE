@@ -17,13 +17,12 @@
 
 
 Name:           yast2
-Version:        4.4.9
+Version:        4.4.14
 Release:        0
 Summary:        YaST2 Main Package
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-yast2
-
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        yast2-rpmlintrc
 
