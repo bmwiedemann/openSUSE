@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 13 13:26:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
 Fri Jun  4 13:35:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

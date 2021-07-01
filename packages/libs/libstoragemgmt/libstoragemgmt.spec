@@ -277,7 +277,7 @@ sed -i '/^#!\/usr\/bin/s|env python|python|' ${pyfiles[@]}
 head -vn 1 ${pyfiles[@]}
 
 %make_build
-%sysusers_generate_pre %{SOURCE1} libstoragemgmt
+%sysusers_generate_pre %{SOURCE1} libstoragemgmt system-user-libstoragemgmt.conf
 
 %install
 %make_install
