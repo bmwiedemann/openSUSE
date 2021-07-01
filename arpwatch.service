@@ -1,6 +1,9 @@
 [Unit]
 Description=Arpwatch daemon which keeps track of ethernet/ip address pairings
 After=network.target
+After=exim.service
+After=postfix.service
+After=sendmail.service
 Conflicts=arpwatch.target
 
 [Service]

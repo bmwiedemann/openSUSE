@@ -1,16 +1,14 @@
-diff -ruN ../arpwatch-2.1a15.orig/addresses.h.in ./addresses.h.in
---- ../arpwatch-2.1a15.orig/addresses.h.in	1996-06-05 07:40:29.000000000 +0200
-+++ ./addresses.h.in	2008-11-12 14:26:23.000000000 +0100
+--- a/addresses.h.in
++++ b/addresses.h.in
 @@ -1,2 +1,4 @@
  #define WATCHER "root"
 -#define WATCHEE "arpwatch (Arpwatch)"
 +#define WATCHEE "root (Arpwatch)"
 +extern char *watcher;
 +extern char *watchee;
-diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.8 ./arpsnmp.8
---- ../arpwatch-2.1a15.orig/arpsnmp.8	2000-09-17 22:34:48.000000000 +0200
-+++ ./arpsnmp.8	2008-11-12 14:26:23.000000000 +0100
-@@ -30,6 +30,12 @@
+--- a/arpsnmp.8
++++ b/arpsnmp.8
+@@ -30,6 +30,12 @@ arpsnmp - keep track of ethernet/ip addr
  ] [
  .B -f
  .I datafile
@@ -23,7 +21,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.8 ./arpsnmp.8
  ]
  .I file
  [
-@@ -60,6 +66,27 @@
+@@ -60,6 +66,27 @@ Note that an empty
  file must be created before the first time you run
  .BR arpsnmp .
  .LP
@@ -51,10 +49,9 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.8 ./arpsnmp.8
  .SH "REPORT MESSAGES"
  (See the
  .BR arpwatch (1)
-diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.c ./arpsnmp.c
---- ../arpwatch-2.1a15.orig/arpsnmp.c	2004-01-22 23:25:17.000000000 +0100
-+++ ./arpsnmp.c	2008-11-12 14:26:23.000000000 +0100
-@@ -59,6 +59,7 @@
+--- a/arpsnmp.c
++++ b/arpsnmp.c
+@@ -59,6 +59,7 @@ static const char rcsid[] =
  #include "file.h"
  #include "machdep.h"
  #include "util.h"
@@ -62,7 +59,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.c ./arpsnmp.c
  
  /* Forwards */
  int	main(int, char **);
-@@ -90,7 +91,7 @@
+@@ -90,7 +91,7 @@ main(int argc, char **argv)
  	}
  
  	opterr = 0;
@@ -71,7 +68,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.c ./arpsnmp.c
  		switch (op) {
  
  		case 'd':
-@@ -105,6 +106,24 @@
+@@ -105,6 +106,24 @@ main(int argc, char **argv)
  			arpfile = optarg;
  			break;
  
@@ -96,7 +93,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.c ./arpsnmp.c
  		default:
  			usage();
  		}
-@@ -185,6 +204,6 @@
+@@ -185,6 +204,6 @@ usage(void)
  
  	(void)fprintf(stderr, "Version %s\n", version);
  	(void)fprintf(stderr,
@@ -104,10 +101,9 @@ diff -ruN ../arpwatch-2.1a15.orig/arpsnmp.c ./arpsnmp.c
 +	    "usage: %s [-d] [-f datafile] [-e username] [-s username] file [...]\n", prog);
  	exit(1);
  }
-diff -ruN ../arpwatch-2.1a15.orig/arpwatch.8 ./arpwatch.8
---- ../arpwatch-2.1a15.orig/arpwatch.8	2008-11-12 12:19:16.000000000 +0100
-+++ ./arpwatch.8	2008-11-12 14:26:23.000000000 +0100
-@@ -46,6 +46,12 @@
+--- a/arpwatch.8
++++ b/arpwatch.8
+@@ -46,6 +46,12 @@ arpwatch - keep track of ethernet/ip add
  ] [
  .B -u
  .I username
@@ -120,7 +116,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.8 ./arpwatch.8
  ]
  .ad
  .SH DESCRIPTION
-@@ -107,6 +113,27 @@
+@@ -107,6 +113,27 @@ and group ID to that of the primary grou
  .IR username .
  This is recommended for security reasons.
  .LP
@@ -148,10 +144,9 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.8 ./arpwatch.8
  Note that an empty
  .I arp.dat
  file must be created before the first time you run
-diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
---- ../arpwatch-2.1a15.orig/arpwatch.c	2008-11-12 14:21:27.000000000 +0100
-+++ ./arpwatch.c	2008-11-12 14:26:23.000000000 +0100
-@@ -85,6 +85,7 @@
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -85,6 +85,7 @@ struct rtentry;
  #include "machdep.h"
  #include "setsignal.h"
  #include "util.h"
@@ -159,7 +154,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  
  /* Some systems don't define these */
  #ifndef ETHERTYPE_REVARP
-@@ -230,7 +231,7 @@
+@@ -230,7 +231,7 @@ main(int argc, char **argv)
  	interface = NULL;
  	rfilename = NULL;
  	pd = NULL;
@@ -168,7 +163,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  		switch (op) {
  
  		case 'd':
-@@ -272,6 +273,26 @@
+@@ -272,6 +273,26 @@ main(int argc, char **argv)
  			}
  			break;
  
@@ -195,7 +190,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  		default:
  			usage();
  		}
-@@ -904,6 +925,7 @@
+@@ -904,6 +925,7 @@ usage(void)
  
  	(void)fprintf(stderr, "Version %s\n", version);
  	(void)fprintf(stderr, "usage: %s [-dN] [-f datafile] [-i interface]"
@@ -204,10 +199,9 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
 +	    " [-e username] [-s username]\n", prog);
  	exit(1);
  }
-diff -ruN ../arpwatch-2.1a15.orig/report.c ./report.c
---- ../arpwatch-2.1a15.orig/report.c	2008-11-12 12:15:54.000000000 +0100
-+++ ./report.c	2008-11-12 14:26:23.000000000 +0100
-@@ -70,6 +70,9 @@
+--- a/report.c
++++ b/report.c
+@@ -70,6 +70,9 @@ struct rtentry;
  
  #define PLURAL(n) ((n) == 1 || (n) == -1 ? "" : "s")
  
@@ -217,7 +211,7 @@ diff -ruN ../arpwatch-2.1a15.orig/report.c ./report.c
  static int cdepth;	/* number of outstanding children */
  
  static char *fmtdate(time_t);
-@@ -240,8 +243,6 @@
+@@ -240,8 +243,6 @@ report(register char *title, register u_
  	register FILE *f;
  	char tempfile[64], cpu[64], os[64];
  	char *fmt = "%20s: %s\n";
@@ -226,7 +220,7 @@ diff -ruN ../arpwatch-2.1a15.orig/report.c ./report.c
  	char *sendmail = PATH_SENDMAIL;
  	char *unknown = "<unknown>";
  	char buf[132];
-@@ -258,6 +259,9 @@
+@@ -258,6 +259,9 @@ report(register char *title, register u_
  		}
  		f = stdout;
  		(void)putc('\n', f);

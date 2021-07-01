@@ -1,7 +1,6 @@
-diff -ruN ../arpwatch-2.1a15.orig/arpwatch.8 ./arpwatch.8
---- ../arpwatch-2.1a15.orig/arpwatch.8	2008-11-12 12:15:54.000000000 +0100
-+++ ./arpwatch.8	2008-11-12 12:19:16.000000000 +0100
-@@ -36,13 +36,16 @@
+--- a/arpwatch.8
++++ b/arpwatch.8
+@@ -36,13 +36,16 @@ arpwatch - keep track of ethernet/ip add
  .I interface
  ]
  .br
@@ -19,7 +18,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.8 ./arpwatch.8
  ]
  .ad
  .SH DESCRIPTION
-@@ -94,10 +97,26 @@
+@@ -94,10 +97,26 @@ of reading from the network. In this cas
  .B arpwatch
  does not fork.
  .LP

@@ -1,0 +1,11 @@
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -914,7 +914,7 @@ die(int signo)
+ 
+ 	syslog(LOG_DEBUG, "exiting");
+ 	checkpoint(0);
+-	exit(1);
++	exit(0);
+ }
+ 
+ RETSIGTYPE

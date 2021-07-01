@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jun 29 07:10:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed local privilege escalation from runtime user to root
+  (bsc#1186240, CVE-2021-25321)
+- Added service_* calls for the @.service file
+
+-------------------------------------------------------------------
+Tue Feb  9 08:36:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to 
+  inline the awk fragments. I tried hard to do this in a script
+  but no matter if sed, awk or perl is used something always breaks
+
+-------------------------------------------------------------------
+Mon Feb  1 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- exit cleanly on SIGTERM with arpwatch-exit.patch
+- refresh all patches for autosetup
+
+-------------------------------------------------------------------
+Thu Jan 28 17:17:17 UTC 2021 - olaf@aepfle.de
+
+- report MAC as HH:HH:HH:HH:HH:HH with arpwatch-MAC.patch
+- remove unused ARPWATCH_INTERFACE= from sysconfig template
+- schedule arpwatch.service after exim/postfix/sendmail
+- remove arpwatch@.service from postinstall scriptlets to avoid warning
+  in case no instance is configured
+- move service_add_post to end of script because the macro exit
+  the script early
+
+-------------------------------------------------------------------
+Thu Jan 28 10:22:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Include arp2ethers script (jsc#SLE-17224)
+
+-------------------------------------------------------------------
 Sat Oct 17 10:52:57 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - add report-iface.patch to see, where the offending change happened

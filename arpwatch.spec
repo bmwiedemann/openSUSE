@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           arpwatch
 Version:        2.1a15
 Release:        0
@@ -44,6 +43,9 @@ Patch9:         getnameinfo.patch
 # PATCH-Fix-Upstream -- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=625796#20 -- seife+obs@b1-systems.com
 Patch10:        0001-Ignore-802.1Q-frames.patch
 Patch11:        report-iface.patch
+Patch12:        arpwatch-MAC.patch
+Patch13:        arpwatch-exit.patch
+Patch14:        arp2ethers.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros
@@ -65,22 +67,11 @@ and company ID data as provided by IEEE.org.  This package is only
 needed if you want to build the arpwatch-ethercodes package.
 
 %prep
-%setup -q
-%patch0 -E
-%patch1 -p1 -E
-%patch3 -p1 -E
-%patch4 -p1 -E
-%patch5 -p1 -E
-%patch6 -p1 -E
-%patch7 -p1 -E
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -p1
 
 %build
 %configure
-make ARPDIR=%{_localstatedir}/lib/arpwatch %{?_smp_mflags}
+%make_build ARPDIR=%{_localstatedir}/lib/arpwatch
 
 %install
 mkdir -p \
@@ -107,20 +98,26 @@ cat > %{buildroot}%{_tmpfilesdir}/arpwatch.conf <<EOF
 d /var/lib/arpwatch - - - -
 f /var/lib/arpwatch/arp.dat - - - -
 EOF
+mkdir %{buildroot}%{_bindir}
+install -m 0755 arp2ethers %{buildroot}%{_bindir}
 
 %pre
-%service_add_pre arpwatch.service arpwatch@.service
+%service_add_pre arpwatch.service
+%service_add_pre arpwatch@.service
 
 %preun
-%service_del_preun arpwatch.service arpwatch@.service
+%service_del_preun arpwatch.service
+%service_del_preun arpwatch@.service
 
 %post
-%service_add_post arpwatch.service arpwatch@.service
 %fillup_only
 %tmpfiles_create %{_tmpfilesdir}/arpwatch.conf
+%service_add_post arpwatch.service
+%service_add_post arpwatch@.service
 
 %postun
-%service_del_postun arpwatch.service arpwatch@.service
+%service_del_postun arpwatch.service
+%service_del_postun arpwatch@.service
 
 %files
 %{_unitdir}/arpwatch.service
@@ -129,11 +126,12 @@ EOF
 %{_sbindir}/rcarpwatch
 %{_sbindir}/arpsnmp
 %{_sbindir}/arpwatch
+%{_bindir}/arp2ethers
 %ghost %dir %{_localstatedir}/lib/arpwatch
 %ghost %{_localstatedir}/lib/arpwatch/arp.dat
 %{_fillupdir}/sysconfig.arpwatch
-%{_mandir}/man8/arpsnmp.8%{ext_man}
-%{_mandir}/man8/arpwatch.8%{ext_man}
+%{_mandir}/man8/arpsnmp.8%{?ext_man}
+%{_mandir}/man8/arpwatch.8%{?ext_man}
 %doc CHANGES FILES README
 
 %files ethercodes-build

@@ -1,13 +1,3 @@
-## Path:           Network/Arpwatch
-## Description:    Arpwatch settings
-## Type:           string
-## Default:        ""
-## ServiceRestart: arpwatch
-#
-# Space seperated list of interfaces for arpwatch to listen on.
-#
-ARPWATCH_INTERFACE=""
-
 ## Type:           string
 ## Default:        ""
 ## ServiceRestart: arpwatch

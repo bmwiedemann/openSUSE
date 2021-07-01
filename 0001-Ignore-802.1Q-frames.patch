@@ -16,11 +16,9 @@ arpwatch instance could be run there (if desired), we simply ignore all
  arpwatch.c |   12 ++++++++++++
  1 files changed, 12 insertions(+), 0 deletions(-)
 
-diff --git a/arpwatch.c b/arpwatch.c
-index 9892894..30d9972 100644
 --- a/arpwatch.c
 +++ b/arpwatch.c
-@@ -98,6 +98,10 @@ struct rtentry;
+@@ -105,6 +105,10 @@ struct rtentry;
  #define ETHERTYPE_APOLLO	0x8019
  #endif
  
@@ -31,7 +29,7 @@ index 9892894..30d9972 100644
  #ifndef IN_CLASSD_NET
  #define IN_CLASSD_NET		0xf0000000
  #endif
-@@ -573,6 +577,14 @@ sanity_ether(register struct ether_header *eh, register struct ether_arp *ea,
+@@ -538,6 +542,14 @@ sanity_ether(register struct ether_heade
  		return(0);
  	}
  
@@ -46,6 +44,3 @@ index 9892894..30d9972 100644
  	/* XXX sysv r4 seems to use hardware format 6 */
  	if (ea->arp_hrd != ARPHRD_ETHER && ea->arp_hrd != 6) {
  		syslog(LOG_ERR, "%s sent bad hardware format 0x%x\n",
--- 
-1.7.2.5
-

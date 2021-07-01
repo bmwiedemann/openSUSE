@@ -1,6 +1,6 @@
---- arpwatch-2.1a11/arpwatch.c
-+++ arpwatch-2.1a11/arpwatch.c
-@@ -378,6 +378,12 @@
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -378,6 +378,12 @@ process_ether(register u_char *u, regist
  	/* Source ip address */
  	BCOPY(SPA(ea), &sia, 4);
  

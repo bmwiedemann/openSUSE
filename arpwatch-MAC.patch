@@ -1,0 +1,14 @@
+Accept any input in str2e.
+But make sure a MAC written in output can be copy&pasted into other searches, verbatim.
+A MAC is expected to be in format HH:HH:HH:HH:HH:HH.
+--- a/ec.c
++++ b/ec.c
+@@ -218,7 +218,7 @@ e2str(register u_char *e)
+ {
+ 	static char str[32];
+ 
+-	(void)sprintf(str, "%x:%x:%x:%x:%x:%x",
++	(void)sprintf(str, "%02x:%02x:%02x:%02x:%02x:%02x",
+ 	    e[0], e[1], e[2], e[3], e[4], e[5]);
+ 	return (str);
+ }

@@ -1,5 +1,32 @@
-Index: b/report.c
-===================================================================
+--- a/arpsnmp.c
++++ b/arpsnmp.c
+@@ -68,6 +68,7 @@ int	snmp_add(u_int32_t, u_char *, time_t
+ __dead	void usage(void) __attribute__((volatile));
+ 
+ char *prog;
++char *interface;
+ 
+ extern int optind;
+ extern int opterr;
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -118,6 +118,7 @@ struct rtentry;
+ #endif
+ 
+ char *prog;
++char *interface;
+ 
+ int can_checkpoint;
+ int swapped;
+@@ -214,7 +215,7 @@ main(int argc, char **argv)
+ 	register int fd;
+ #endif
+ 	register pcap_t *pd;
+-	register char *interface, *rfilename;
++	register char *rfilename;
+ 	struct bpf_program code;
+ 	char errbuf[PCAP_ERRBUF_SIZE];
+ 	char* serveruser = NULL;
 --- a/report.c
 +++ b/report.c
 @@ -73,6 +73,8 @@ struct rtentry;
@@ -20,36 +47,3 @@ Index: b/report.c
  
  	if (debug) {
  		fflush(f);
-Index: b/arpwatch.c
-===================================================================
---- a/arpwatch.c
-+++ b/arpwatch.c
-@@ -118,6 +118,7 @@ struct rtentry;
- #endif
- 
- char *prog;
-+char *interface;
- 
- int can_checkpoint;
- int swapped;
-@@ -214,7 +215,7 @@ main(int argc, char **argv)
- 	register int fd;
- #endif
- 	register pcap_t *pd;
--	register char *interface, *rfilename;
-+	register char *rfilename;
- 	struct bpf_program code;
- 	char errbuf[PCAP_ERRBUF_SIZE];
- 	char* serveruser = NULL;
-Index: b/arpsnmp.c
-===================================================================
---- a/arpsnmp.c
-+++ b/arpsnmp.c
-@@ -68,6 +68,7 @@ int	snmp_add(u_int32_t, u_char *, time_t
- __dead	void usage(void) __attribute__((volatile));
- 
- char *prog;
-+char *interface;
- 
- extern int optind;
- extern int opterr;
