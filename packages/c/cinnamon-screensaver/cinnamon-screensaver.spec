@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-screensaver
-Version:        5.0.3
+Version:        5.0.6
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
@@ -26,9 +26,6 @@ URL:            https://github.com/linuxmint/cinnamon-screensaver
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE cinnamon-screensaver-suse-pam.patch -- Use SUSE-specific PAM configuration.
 Patch0:         %{name}-suse-pam.patch
-# PATCH-FIX-OPENSUSE fix-cs-backup-locker-no-return-statement.patch andythe_great@pm.me -- Fix cs-backup-locker.c error: no return statement in function returning non-void
-# https://github.com/linuxmint/cinnamon-screensaver/pull/375
-Patch1:         fix-cs-backup-locker-no-return-statement.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -63,7 +60,6 @@ Cinnamon Desktop.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %meson

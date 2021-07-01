@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 30 06:23:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.6.
+  * cinnamon-screensaver-pam-helper.c: Check for a null pointer
+    returned from fgets.
+  * Fix error: no return statement in function
+  * powerWidget.py: Don't update the power state before the
+    UPower client has been constructed.
+  * uPowerClient.py: Don't rely on the OnBattery property
+    of the upower client, it's unreliable.
+  * passwordEntry.py: Limit the entry's maximum length.
+- Drop fix-cs-backup-locker-no-return-statement.patch
+
+-------------------------------------------------------------------
 Fri Jun 11 05:50:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.3.
