@@ -24,7 +24,7 @@ Name:           pleaser
 Version:        0.4.1~git0.11a9aa8
 Release:        1%{?dist}
 Group:          Productivity/Security
-Summary:        Polite regex-first sudo alternative
+Summary:        Alternative to sudo (root command execution) with regex support
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND Apache-2.0 AND MIT AND GPL-3.0-or-later
 URL:            https://gitlab.com/edneville/please/-/archive/v%{version}/please-v%{version}.tar.gz
 Source0:        please-%{version}.tar.xz
@@ -43,12 +43,14 @@ BuildRequires:  rust-packaging
 
 Requires:       pam
 
-PreReq:         permissions
+Requires(post): permissions
+Requires(verify):permissions
 
 %description
-please, a secure, fast, reliable, regex alternative to sudo.
-pleaseedit, a secure method to permit editing of files without
-elevation. Fast, reliable, safe. Pick three.
+please is a regex-capable alternative to sudo, a command for allowing
+users to execute some subsequent commands as the root (or another) user.
+pleaseedit is a method to permit editing of files without
+elevation.
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
@@ -97,7 +99,7 @@ session    optional     pam_keyinit.so revoke
 session    include      common-session
 EOF
 
-%files       -n %{name}
+%files
 %doc README.md
 %license LICENSE
 %verify(not mode) %attr(4755,root,root) %{_bindir}/please
