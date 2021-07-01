@@ -19,19 +19,19 @@
 %bcond_without  remmina_nx
 %if 0%{?is_opensuse}
 %bcond_without  remmina_kwallet
-%bcond_without  remmina_appindicator
 %else
 %bcond_with	remmina_kwallet
-%bcond_with	remmina_appindicator
 %endif
 Name:           remmina
-Version:        1.4.18
+Version:        1.4.19
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM mark-appindicator-as-required.patch gl#Remmina/Remmina#2290
+Patch0:         mark-appindicator-as-required.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -44,6 +44,7 @@ BuildRequires:  libsodium-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(cairo)
@@ -74,9 +75,6 @@ BuildRequires:  cmake(KF5Wallet)
 %endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(wayland-client)
-%endif
-%if %{with remmina_appindicator}
-BuildRequires:  pkgconfig(appindicator3-0.1)
 %endif
 
 %description
@@ -225,11 +223,7 @@ export CFLAGS="$CFLAGS -fPIC"
 %else
 	-DWITH_KF5WALLET=OFF \
 %endif
-%if %{with remmina_appindicator}
 	-DWITH_APPINDICATOR=ON \
-%else
-	-DWITH_APPINDICATOR=OFF \
-%endif
 %if %{with remmina_nx}
         -DWITH_NX=ON \
 %else
@@ -252,7 +246,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 
 %fdupes %{buildroot}%{_datadir}/remmina
 %fdupes %{buildroot}%{_datadir}/icons/hicolor/*/actions
-%fdupes %{buildroot}%{_datadir}/icons/hicolor/scalable/panel
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/[0-9]*
 
 %find_lang %{name}
 
@@ -336,7 +330,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/icons/hicolor/apps/remmina-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-sftp-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/panel
+%{_datadir}/icons/hicolor/[1-9]*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.remmina.Remmina.appdata.xml
 %{_datadir}/mime/packages/%{name}-mime.xml

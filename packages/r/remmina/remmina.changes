@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 30 13:45:32 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- App-Indicator is now required
+- Added upstream mark-appindicator-as-required.patch to see better error messages
+  when appindicator is not around
+
+- Update to 1.4.19
+  * Fix Freerdp Git Revision !2277
+  * UI improvements and cleanup !2278
+  * Desktop integration for the Remmina SNAP !2279
+  * Add process-control to the remmina snap !2276
+  * Adding SSH_AGENT support to the snap package !2280
+  * Adding option to disable smooth scrolling !2281
+  * Scrolled Viewport: use viewport_motion_handler as the only timeout indicator !2282
+  * Adding TCP redirection through rdp2tcp !2283
+  * Added setting for RDP number of reconnect attempts !2284
+  * Add RDP reconnect interrupt on window close, fix crash introduced with 7c13b918.
+    Should fix #2079 (closed) !2286
+  * Removing GtkStatusIcon as deprecated !2285
+  * Adding advanced option to share multiple folders !2287
+  * Profile list grabs the focus when search is hidden !2288
+
+-------------------------------------------------------------------
 Fri Jun  4 12:22:46 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 1.4.18
