@@ -9,11 +9,11 @@ run() {
 
 if [ -x /usr/bin/systemd-sysusers ] && [ -e /proc/version ]; then
 
-    if [ -n "$1" ]; then
+    if [ -n "$1" ] && [ "$1" != "%3" ]; then
 	    REPLACE_ARG="--replace=/usr/lib/sysusers.d/$1" ||:
     fi
     # Use systemd-sysusers and let it read the input directly from stdin
-    /usr/bin/systemd-sysusers $REPLACE_ARG -
+    run /usr/bin/systemd-sysusers $REPLACE_ARG -
 else
 
     # Absolute path to busybox, if found

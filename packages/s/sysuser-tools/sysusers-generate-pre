@@ -1,6 +1,6 @@
 #!/bin/sh
 # pass systemd sysusers config paths as argument to this script.
 
-echo "/usr/sbin/sysusers2shadow $3 <<\"EOF\" || [ -f /.buildenv ]"
-grep -he '^[ugmr]' "$@"
+echo "/usr/sbin/sysusers2shadow $2 <<\"EOF\" || [ -f /.buildenv ]"
+grep -he '^[ugmr]' "$1"
 echo 'EOF'

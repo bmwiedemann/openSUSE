@@ -17,7 +17,7 @@
 
 
 Name:           sysuser-tools
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Auto provides for system users
 License:        MIT
@@ -41,6 +41,12 @@ Group:          System/Packages
 Requires(pre):  (/usr/sbin/useradd or busybox)
 # prefer original shadow over busybox by default
 Suggests:       shadow
+# sysusers2shdow uses sysusers2shadow uses systemd-sysusers if available. And we might pass --replace to it
+# --replace only appeared in systemd 238,so we want to ensure: if we have systemd, it must be recent enough
+# the Requires(pre) statement is to ensure we get it at any moment recent enough, not only at the end of
+# transactions, otherwise upgrades might randomly fail
+Requires(pre):  (systemd >= 238 if systemd)
+Requires:       (systemd >= 238 if systemd)
 
 %description -n sysuser-shadow
 This package contians a tool, which expects as input a sysusers.d

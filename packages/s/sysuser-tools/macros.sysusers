@@ -10,7 +10,7 @@
 # add "%sysusers_generate_pre <source file> <account> [<config>]" to build section
 #
 ## <source file> is the source file as defined in the spec file header
-## <account> is just a random name, th output file will be "<account>.pre"
+## <account> is just a random name, the output file will be "<account>.pre"
 ## <config> is the name of the configuration file as stored in
 ##          /usr/lib/sysusers.d/<config>
 #
@@ -18,7 +18,7 @@
 #
 ###
 
-%sysusers_requires	Requires(pre): sysuser-shadow
+%sysusers_requires	Requires(pre): sysuser-shadow >= 3.1
 
 %sysusers_generate_pre()	\
 %{_prefix}/lib/rpm/sysusers-generate-pre  "%1" "%3" > "%2".pre

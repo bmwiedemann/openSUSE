@@ -134,4 +134,23 @@
     <comment></comment>
     <requestid>892049</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>77c2eef0a9103b7bc149753d2fd1ab44</srcmd5>
+    <version>3.1</version>
+    <time>1625115926</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version up to 3.1. The --replace parameter only appeared in
+  systemd 238, so we need to ensure to get the update order correct
+  for sysuser-generate when using the 3rd command line parameters:
+  * systemd -&gt; sysuser-tools -&gt; system-{user|group}-FOO.
+- Add dependency on systemd &gt;=238 if systemd is installed to
+  sysuser-shadow
+- update sysuser_requires to request sysuser-shadow 3.1
+
+- Support systemd-sysusers --replace=/usr/lib/sysusers.d/ option
+- sysusers-generate-pre: only use first argument for grep
+- sysusers2shadow.sh: use &quot;run&quot; prefix for systemd-sysusers call
+- macros.sysusers: fix typo</comment>
+    <requestid>901701</requestid>
+  </revision>
 </revisionlist>
