@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 10:44:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip ApplicationTest.test_routing test (reported upstream as gh#webpy/webpy#712)
+
+-------------------------------------------------------------------
 Mon Nov  9 21:01:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - version update to 0.62:

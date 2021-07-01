@@ -148,4 +148,13 @@
     <comment></comment>
     <requestid>847353</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>42fae50f12368bbd2cf6983b8466c621</srcmd5>
+    <version>0.62</version>
+    <time>1625115941</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip ApplicationTest.test_routing test (reported upstream as gh#webpy/webpy#712)
+</comment>
+    <requestid>903207</requestid>
+  </revision>
 </revisionlist>
