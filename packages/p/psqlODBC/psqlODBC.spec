@@ -18,7 +18,7 @@
 
 %define         tarname psqlodbc
 Name:           psqlODBC
-Version:        12.02.0000
+Version:        13.01.0000
 Release:        0
 Summary:        ODBC Driver for PostgreSQL
 License:        LGPL-2.1-or-later

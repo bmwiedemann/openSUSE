@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 30 20:48:14 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.01.0000:
+  * Fix a bug of CC_send_query_append() when the
+    ignore_roundtrip_time flag is on.
+  * Add a call for SQLDescribeCol() before SQLExecute() to prepare-test.
+  * The diff of the result was reported by Mangold Fabian and will be
+    fixed in the later commit.
+  * Add a *update returning* test case to insertreturning regression test.
+  * The diff of the result was reported by Patrick Cheung and will be
+    fixed in the later commit.
+  * Let SQLDescribeCol() use parsed result when the current executed
+    result is NULL.
+  * This change fixes the diff of prepare-test regression test reported
+    by Mangold Fabian.
+  * Let SQLExecute() destroy the old result first.
+  * This change fixes the diff of insertreturning-test regression test
+    reported by Patrick Cheung.
+  * Forget to apply disable_convert_func flag to VARCHAR and LONGVARCHAR.
+  * Prioritize DISABLE_KEEPALIVE checkbox over the disable_keepalive
+    bit of ExtraOptions.
+  * Format check for ExtraOptions of setup dialog.
+
+-------------------------------------------------------------------
+Wed Jun 30 20:46:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.00.0000:
+  * Add support for CONVERT scalar function.
+  * Cope with the case that openssl libraries link msvc runtimes
+    other than libraries which psqlodbc or libpq links.
+  * Call AC_CHECK_SIZEOF() or AC_CHECK_TYPES() macros at earlier
+    stage where LIBS variable isn't set yet.
+  * These macros compile and run some programs. On some platforms
+    (with some linker options like --no-as-needed in Lnux Gnu linker)
+    the programs try to link libraries specified by LIBS variable
+    at run time. There are some cases that the programs fail due
+    to missing library which is actually not needed and
+    AC_CHECK_SIZEOF() returns 0.
+  * Fix a compilation error with GCC 10 due to conflicting
+    variable names.
+  * Patch by Paul Wise.
+  * Remove curr_param_result property of StatementClass and
+    separate parsed result from the exec result.
+  * Add support for development with VC16(Visual Studio 2019).
+  * MSToolsVersion parameter of BuildAll.ps1 and of regress.ps1
+    are deprecated.
+  * Hold the first and last result for parametrized SQL statements
+    with array of parameters.
+  * This would improve the performance of bulk inserts/updates etc.
+  * Revise the handling of QResultClass list.
+  * Introduce macros QR_concat(), QR_detach() and QR_next().
+  * Correct the handling of SQL_ROW_ERROR and SQL_ROW_SUCCESS_WITH_INFO.
+  * Remove the single table restriction in SC_set_SS_columnkey.
+  * Improve error reporting about SC_pos_reload_needed().
+
+-------------------------------------------------------------------
 Thu Jun  4 09:18:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.02.0000:

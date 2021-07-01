@@ -272,4 +272,41 @@
   bsc#1166821).</comment>
     <requestid>902855</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a160d6925c58c5dffbd16a27c3ea5c2</srcmd5>
+    <version>13.01.0000</version>
+    <time>1625115957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.01.0000:
+  * Fix a bug of CC_send_query_append() when the
+    ignore_roundtrip_time flag is on.
+  * Add a call for SQLDescribeCol() before SQLExecute() to prepare-test.
+  * The diff of the result was reported by Mangold Fabian and will be
+    fixed in the later commit.
+  * Add a *update returning* test case to insertreturning regression test.
+  * The diff of the result was reported by Patrick Cheung and will be
+    fixed in the later commit.
+  * Let SQLDescribeCol() use parsed result when the current executed
+    result is NULL.
+  * This change fixes the diff of prepare-test regression test reported
+    by Mangold Fabian.
+  * Let SQLExecute() destroy the old result first.
+  * This change fixes the diff of insertreturning-test regression test
+    reported by Patrick Cheung.
+  * Forget to apply disable_convert_func flag to VARCHAR and LONGVARCHAR.
+  * Prioritize DISABLE_KEEPALIVE checkbox over the disable_keepalive
+    bit of ExtraOptions.
+  * Format check for ExtraOptions of setup dialog.
+
+- Update to 13.00.0000:
+  * Add support for CONVERT scalar function.
+  * Cope with the case that openssl libraries link msvc runtimes
+    other than libraries which psqlodbc or libpq links.
+  * Call AC_CHECK_SIZEOF() or AC_CHECK_TYPES() macros at earlier
+    stage where LIBS variable isn't set yet.
+  * These macros compile and run some programs. On some platforms
+    (with some linker options like --no-as-needed in Lnux Gnu linker)
+    the programs try to link libraries specified by LIBS variable</comment>
+    <requestid>903302</requestid>
+  </revision>
 </revisionlist>
