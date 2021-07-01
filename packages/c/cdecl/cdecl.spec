@@ -17,7 +17,7 @@
 
 
 Name:           cdecl
-Version:        10.1
+Version:        10.2
 Release:        0
 Summary:        C/C++ function declaration translator
 License:        GPL-3.0-or-later
