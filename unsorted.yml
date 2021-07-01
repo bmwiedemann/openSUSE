@@ -701,6 +701,7 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - appx-util 
   - apr-devel 
   - apr-util-devel 
   - apulse: [i586] 
@@ -3762,6 +3763,7 @@ unsorted:
   - freeradius-server-doc 
   - freeradius-server-krb5 
   - freeradius-server-ldap 
+  - freeradius-server-ldap-schemas 
   - freeradius-server-libs 
   - freeradius-server-mysql 
   - freeradius-server-perl 
@@ -7929,6 +7931,7 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
@@ -18317,6 +18320,8 @@ unsorted:
   - papi_6_0_0_1-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
+  - paprefs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - paprefs-lang: [i586] 
   - paps 
   - par2cmdline 
   - par_text 
@@ -20203,7 +20208,6 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-modules-32bit: [x86_64] 
-  - pipewire-pulseaudio 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
@@ -20567,7 +20571,6 @@ unsorted:
   - postgresql95-devel 
   - postgresql95-docs 
   - postgresql95-pg_cron 
-  - postgresql95-pgagent 
   - postgresql95-pgaudit 
   - postgresql95-pgsql-ogr-fdw 
   - postgresql95-plperl 
@@ -20582,7 +20585,6 @@ unsorted:
   - postgresql96-devel 
   - postgresql96-docs 
   - postgresql96-pg_cron 
-  - postgresql96-pgagent 
   - postgresql96-pgaudit 
   - postgresql96-pgsql-ogr-fdw 
   - postgresql96-plperl 
@@ -32357,6 +32359,7 @@ unsorted:
   - systemd-network 
   - systemd-portable 
   - systemd-rpm-macros 
+  - systemd-tests 
   - systemd-ui 
   - systemd-zram-service 
   - systemtap 
@@ -41964,6 +41967,7 @@ unsorted:
   - xf86-input-evdev-devel 
   - xf86-input-joystick-devel 
   - xf86-input-libinput-devel 
+  - xf86-input-mouse: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xf86-input-mouse-devel 
   - xf86-input-synaptics 
   - xf86-input-synaptics-devel 

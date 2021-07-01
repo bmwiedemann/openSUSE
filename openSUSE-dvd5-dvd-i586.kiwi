@@ -1152,7 +1152,6 @@
       <repopackage name="kig"/>
       <repopackage name="kig-lang"/>
       <repopackage name="kimageformats"/>
-      <repopackage name="kimageformats-eps"/>
       <repopackage name="kimap-lang"/>
       <repopackage name="kinfocenter5"/>
       <repopackage name="kinfocenter5-lang"/>
@@ -3244,8 +3243,6 @@
       <repopackage name="pam_unix"/>
       <repopackage name="paper"/>
       <repopackage name="paperkey"/>
-      <repopackage name="paprefs"/>
-      <repopackage name="paprefs-lang"/>
       <repopackage name="par"/>
       <repopackage name="parallel-printer-support"/>
       <repopackage name="paratype-pt-mono-fonts"/>
@@ -3497,6 +3494,7 @@
       <repopackage name="pinfo"/>
       <repopackage name="pipewire"/>
       <repopackage name="pipewire-modules"/>
+      <repopackage name="pipewire-pulseaudio"/>
       <repopackage name="pipewire-spa-plugins-0_2"/>
       <repopackage name="pipewire-spa-tools"/>
       <repopackage name="pipewire-tools"/>
@@ -4817,7 +4815,6 @@
       <repopackage name="xf86-input-joystick"/>
       <repopackage name="xf86-input-keyboard"/>
       <repopackage name="xf86-input-libinput"/>
-      <repopackage name="xf86-input-mouse"/>
       <repopackage name="xf86-input-vmmouse"/>
       <repopackage name="xf86-input-wacom"/>
       <repopackage name="xf86-video-ark"/>
