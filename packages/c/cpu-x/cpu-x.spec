@@ -1,7 +1,7 @@
 #
 # spec file for package cpu-x
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
+%define src_name CPU-X-%version
 Name:           cpu-x
-Version:        4.0.1
+Version:        4.2.0
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://github.com/X0rg/CPU-X/
-Source:         https://github.com/X0rg/CPU-X/archive/v%version.tar.gz
+Source:         %url/archive/refs/tags/v%version.tar.gz#/%src_name.tar.gz
 Patch1:         no-no-pie.patch
 BuildRequires:  cmake
 BuildRequires:  gettext-tools
 %ifarch %ix86 x86_64
 BuildRequires:  nasm
 %endif
+BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libcpuid) >= 0.4.0
+BuildRequires:  pkgconfig(libcpuid) >= 0.5.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(ncursesw)
-Provides:       bundled(dmidecode) = 3.2.20200417
+Provides:       bundled(dmidecode) = 3.3.20201210
 
 %description
 CPU-X is a software that gathers information about CPU, motherboard
@@ -71,8 +73,9 @@ BuildArch:      noarch
 Shell completion definitions from %name for %name.
 
 %lang_package
+
 %prep
-%autosetup -p1 -n CPU-X-%version
+%autosetup -p1 -n %src_name
 
 %build
 %cmake

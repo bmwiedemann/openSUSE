@@ -16,4 +16,12 @@
 - Make powerpc builds possible. Split shell completions.</comment>
     <requestid>841491</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f53edb67e3f17a604ad64e592e228ee2</srcmd5>
+    <version>4.2.0</version>
+    <time>1625115950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903268</requestid>
+  </revision>
 </revisionlist>

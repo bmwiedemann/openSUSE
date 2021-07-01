@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 30 15:40:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.2.0
+  * Remove support for libcpuid before v0.5.0
+  * Add glfw dependency for UMD
+  * Add new option --cpuid-decimal to display CPUID values in decimal
+  * Add User Mode Driver (UMD) to Graphics Tab
+  * Add GPU DeviceID:RevisonID in Graphics tab
+  * Add PCIe link speed/width in Graphics tab
+  * Add CPUX_ARGS environment variable to set default command line
+  * Add alternative key mapping for NCurses mode (option --keymap)
+  * Add debug mode (option --debug)
+  * Add screen reader accessibility on GUI
+  * Add Core Voltage, Power Avg and Memory Used in Graphics tab
+    (AMDGPU only)
+  * Add a dropdown list in Graphics tab to choose graphic card to monitor
+  * Reduce the GPU clock precision in Graphics tab
+  * Update CPU databasesSupport more GPU in Graphics tab
+  * Change bars color in System tab in GTK GUI when Dark theme is used
+  * Ignore batteries voltage when searching CPU voltage
+  * Fix for --issue-fmt
+  * Fix overflow caused by some translations
+  * Fix list of influenceable environment variables in help
+  * Fix screen flickering in NCurses TUI
+
+-------------------------------------------------------------------
 Tue Oct 13 10:48:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Split language files to -lang subpackage.
