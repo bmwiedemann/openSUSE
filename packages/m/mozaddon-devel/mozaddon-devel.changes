@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:34:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move macros.mozaddon from /etc/rpm to %_rpmmacrodir
+  (boo#1185657).
+
+-------------------------------------------------------------------
 Wed Aug  5 09:41:47 UTC 2015 - jengelh@inai.de
 
 - Recognize <Description> XML tags with arbitrary namespace

@@ -22,4 +22,12 @@
     <comment>- Recognize &lt;Description&gt; XML tags with arbitrary namespace prefixes</comment>
     <requestid>320566</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1329bd7a2efcccedf52c6398c1623556</srcmd5>
+    <version>1</version>
+    <time>1625115950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903269</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mozaddon-devel
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -41,13 +41,13 @@ addons for the Mozilla suite.
 
 %install
 b="%buildroot";
-mkdir -p "$b/%_bindir" "$b/%_sysconfdir/rpm";
+mkdir -p "$b/%_bindir" "$b/%_rpmmacrodir";
 install -pm0755 "%{S:2}" "$b/%_bindir/";
-install -pm0644 "%{S:3}" "$b/%_sysconfdir/rpm/";
+install -pm0644 "%{S:3}" "$b/%_rpmmacrodir/";
 
 %files
 %defattr(-,root,root)
-%config %_sysconfdir/rpm/
+%_rpmmacrodir/macros.mozaddon
 %_bindir/moz*
 
 %changelog
