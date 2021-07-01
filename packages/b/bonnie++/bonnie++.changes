@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 25 23:37:25 UTC 2021 - Fernando Mattioli <mattioli.fernando@gmail.com>
+
+- Add patch:
+  * bonnie++-1.98-bon_csv2html.patch (fixes gcc11 build).
+
+-------------------------------------------------------------------
 Sat Sep 12 09:32:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.98:

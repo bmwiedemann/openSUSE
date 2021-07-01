@@ -1,7 +1,7 @@
 #
 # spec file for package bonnie++
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://www.coker.com.au/bonnie++/
 Source:         https://www.coker.com.au/bonnie++/bonnie++-%{version}.tgz
 # PATCH-FIX-UPSTREAM bonnie++-1.96-makefile.patch -- fixes make install
 Patch0:         bonnie++-1.96-makefile.patch
+Patch1:         bonnie++-1.98-bon_csv2html.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -34,6 +35,7 @@ hard drive and file system performance tests.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 %configure \
