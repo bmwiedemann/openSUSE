@@ -1,0 +1,17 @@
+Index: electron-13.1.4/media/blink/multibuffer_data_source.cc
+===================================================================
+--- electron-13.1.4.orig/media/blink/multibuffer_data_source.cc	2021-06-25 10:21:41.234607393 +0200
++++ electron-13.1.4/media/blink/multibuffer_data_source.cc	2021-06-28 15:52:42.017709873 +0200
+@@ -62,10 +62,10 @@ const int kUpdateBufferSizeFrequency = 3
+ constexpr base::TimeDelta kSeekDelay = base::TimeDelta::FromMilliseconds(20);
+ 
+ std::vector<std::string>* GetStreamingSchemes() {
+-  static base::NoDestructor<std::vector<std::string>> streaming_schemes({
++  static base::NoDestructor<std::vector<std::string>> streaming_schemes{{
+     url::kHttpsScheme,
+     url::kHttpScheme
+-  });
++  }};
+   return streaming_schemes.get();
+ }
+ 

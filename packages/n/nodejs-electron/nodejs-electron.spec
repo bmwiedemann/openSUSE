@@ -1,7 +1,7 @@
+#
 # spec file for package nodejs-electron
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020 SUSE LLC, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define mod_name electron
 %ifarch x86_64
-%if %{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without lto
 # else suse_version
 %else
@@ -30,7 +30,7 @@
 %bcond_with lto
 # endif arch x86_64
 %endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 || 0%{?fedora_version}
 %bcond_without pipewire
 %else
 %bcond_with pipewire
@@ -42,7 +42,7 @@
 %endif
 # vaapi still requires bundled libvpx
 %bcond_with system_vpx
-%bcond_without clang
+%bcond_with clang
 Name:           nodejs-electron
 Version:        13.1.4
 Release:        0
@@ -56,7 +56,11 @@ Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
 Patch0:         chromium-90-compiler.patch
+%if 0%{?sle_version} < 150300 || 0%{?fedora_version} < 34
+# Fixed with ld.gold >= 2.36
+# https://sourceware.org/bugzilla/show_bug.cgi?id=26200
 Patch1:         chromium-disable-parallel-gold.patch
+%endif
 Patch2:         chromium-glibc-2.33.patch
 Patch3:         chromium-lp152-missing-includes.patch
 Patch4:         chromium-norar.patch
@@ -67,6 +71,8 @@ Patch8:         chromium-91-system-icu.patch
 Patch10:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 Patch11:        chromium-vaapi.patch
 Patch12:        chromium-86-fix-vaapi-on-intel.patch
+Patch13:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
+Patch14:        chromium-gcc11.patch
 # Fix building sql recover_module
 Patch20:        electron-13-fix-sql-virtualcursor-type.patch
 # Always disable use_thin_lto which is an lld feature
@@ -77,6 +83,10 @@ Patch21:        electron-13-fix-use-thin-lto.patch
 #     'nomerge' attribute cannot be applied to a declaration
 # See https://reviews.llvm.org/D92800
 Patch22:        electron-13-fix-base-check-nomerge.patch
+# Mark [nodiscard] as unsupported
+Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
+# Fix blink nodestructor
+Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -92,22 +102,33 @@ BuildRequires:  java-openjdk-headless
 BuildRequires:  libcap-devel
 BuildRequires:  libdc1394
 BuildRequires:  libgcrypt-devel
+%if 0%{?suse_version}
 BuildRequires:  libgsm-devel
+%else
+BuildRequires:  gsm-devel
+%endif
 BuildRequires:  libpng-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ncurses-devel
+%if 0%{?suse_version}
 BuildRequires:  ninja >= 1.7.2
+%else
+BuildRequires:  ninja-build >= 1.7.2
+%endif
 BuildRequires:  nodejs >= 8.0
 BuildRequires:  npm
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
-BuildRequires:  python-xml
-BuildRequires:  python2-setuptools
+BuildRequires:  python2
+%if 0%{?suse_version}
+BuildRequires:  python2-xml
+%endif
 BuildRequires:  rsync
 BuildRequires:  snappy-devel
+%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
+%endif
 BuildRequires:  util-linux
 BuildRequires:  wdiff
 BuildRequires:  perl(Switch)
@@ -115,7 +136,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo) >= 1.6
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
@@ -133,10 +153,12 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kadm-client)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
+%if 0%{?suse_version}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil)
+%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdc1394-2)
@@ -207,7 +229,7 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 # Always required for clang-format
 BuildRequires:  clang >= 8.0.0
 %if %{without clang}
-%if %{?suse_version} > 1500
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version}
 BuildRequires:  gcc >= 10
 BuildRequires:  gcc-c++ >= 10
 %else
@@ -236,15 +258,15 @@ Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and
 # Required for third_party/blink/renderer/bindings/scripts/generate_bindings.py
 ln -sf %{_bindir}/clang-format buildtools/linux64/clang-format
 
+# Fix the path to nodejs binary
+mkdir -p third_party/node/linux/node-linux-x64/bin
+ln -sf %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
+
 # Fix shim header generation
 sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
 
 %build
-# Fix the path to nodejs binary
-mkdir -p third_party/node/linux/node-linux-x64/bin
-ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
-
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
@@ -263,7 +285,7 @@ export CXX=clang++
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
 
-export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
+export CXXFLAGS="${CXXFLAGS} ${ARCH_FLAGS} -Wno-return-type"
 # extra flags to reduce warnings that aren't very useful
 export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-deprecated-declarations"
 # ignore warnings for minor mistakes that are too common
@@ -277,8 +299,14 @@ export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-ali
 
 export CFLAGS="${CXXFLAGS}"
 export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
+
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version}
 export CC=gcc
 export CXX=g++
+%else
+export CC=gcc-10
+export CXX=g++-10
+%endif
 
 # endif with clang
 %endif
