@@ -51,4 +51,12 @@
   - Fix hanging when underlying paramiko channel is closed</comment>
     <requestid>850922</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d2d2ce0b7acf186ff62c843b54b4758</srcmd5>
+    <version>0.13.5</version>
+    <time>1625115933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903121</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 #
 # spec file for package python-scp
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scp
-Version:        0.13.3
+Version:        0.13.5
 Release:        0
 Summary:        SSH scp module for paramiko
 License:        LGPL-2.1-or-later
