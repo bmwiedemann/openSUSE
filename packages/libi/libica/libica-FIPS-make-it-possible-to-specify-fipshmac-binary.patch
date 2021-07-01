@@ -1,0 +1,53 @@
+From 88d54fd0b867d9ee29d2bb1043d014f93d3dffc9 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 7 Jun 2021 21:12:01 +0200
+Subject: [PATCH] FIPS: make it possible to specify fipshmac binary.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ openssl-fipshmac | 12 ++++++++++++
+ src/Makefile.am  |  4 ++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+ create mode 100755 openssl-fipshmac
+
+diff --git a/openssl-fipshmac b/openssl-fipshmac
+new file mode 100755
+index 0000000..60fd505
+--- /dev/null
++++ b/openssl-fipshmac
+@@ -0,0 +1,12 @@
++#!/bin/sh -e
++
++if [ "$#" -eq 0 ] ; then
++    echo "No library to hash specified." >&2
++    exit 22
++fi
++
++while [ -n "$1" ] ; do
++    dgst="$(openssl dgst -sha256 -mac hmac -macopt hexkey:00000000 "$1")"
++    echo "$dgst" | sed -e 's/^.* //' > "$(dirname "$1")/.$(basename "$1")".hmac
++    shift
++done
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 4a1ef14..2be01a5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -46,13 +46,13 @@ mp.S	: mp.pl
+ 	./mp.pl mp.S
+ 
+ if ICA_FIPS
++FIPSHMAC ?= ${top_srcdir}/openssl-fipshmac
+ hmac-file-lnk: hmac-file
+ 	$(AM_V_GEN) cd ${top_builddir}/src/.libs && ln -sf .libica.so.$(VERSION1).hmac .libica.so.$(MAJOR).hmac
+ 	$(AM_V_GEN) cd ${top_builddir}/src/.libs && ln -sf .libica-cex.so.$(VERSION1).hmac .libica-cex.so.$(MAJOR).hmac
+ 
+ hmac-file: libica.la libica-cex.la
+-	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000 ${top_builddir}/src/.libs/libica.so.$(VERSION1) | sed -e 's/^.* //' > ${top_builddir}/src/.libs/.libica.so.$(VERSION1).hmac
+-	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000 ${top_builddir}/src/.libs/libica-cex.so.$(VERSION1) | sed -e 's/^.* //' > ${top_builddir}/src/.libs/.libica-cex.so.$(VERSION1).hmac
++	$(AM_V_GEN) $(FIPSHMAC) ${top_builddir}/src/.libs/libica.so.$(VERSION1) ${top_builddir}/src/.libs/libica-cex.so.$(VERSION1)
+ 
+ hmac_files = hmac-file hmac-file-lnk
+ 
+-- 
+2.31.1
+

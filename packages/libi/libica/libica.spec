@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018-2020 SUSE LLC
+# Copyright (c) 2018-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -37,11 +37,7 @@ Source4:        z90crypt
 Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
-Patch01:        libica-sles15sp2-Zeroize-local-variables.patch
-Patch02:        libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
-Patch03:        libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
-Patch04:        libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
-Patch05:        libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch99:        libica-sles15sp2-FIPS-hmac-key.patch
 
 BuildRequires:  autoconf
@@ -123,14 +119,14 @@ autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
   --enable-fips
 %make_build clean
-%make_build
+%make_build FIPSHMAC=fipshmac
 
 %define major %(echo %{version} | sed -e 's/[.].*//')
 
-%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.%{major} }}
+%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.%{version} }}
 
 %install
-%make_install
+%make_install FIPSHMAC=fipshmac
 mkdir -p %{buildroot}%{_includedir}
 cp -p include/ica_api.h %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
@@ -138,17 +134,18 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcz90crypt
 install -D %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
 install -D %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/scripts/z90crypt
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/system/z90crypt.service
+# It is installed 444 and then the __os_install_post cannot update it once the debuginfo is stripped
+# We need it early because there is %{buildroot}/%{_libdir}/.*.so.%{major}.hmac symlink pointing at it
+# and the dangling symlink test would fail
+chmod 644 %{buildroot}/%{_libdir}/.*.so.%{version}.hmac
 
 cp -a %{SOURCE2} .
-rm -f %{buildroot}%{_libdir}/libica.la
+rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
 
 %check
-echo Tests should fail without a hash file
-! %make_build check
-fipshmac src/.libs/libica.so.%{major}
-%make_build check
+%make_build check FIPSHMAC=fipshmac
 
 %pre tools
 %service_add_pre z90crypt.service
@@ -167,19 +164,25 @@ fipshmac src/.libs/libica.so.%{major}
 %postun -n libica3 -p /sbin/ldconfig
 
 %files -n libica3
-%defattr(-,root,root)
 %{_libdir}/libica.so.%{version}
 %{_libdir}/libica.so.%{major}
+%{_libdir}/.libica.so.%{version}.hmac
 %{_libdir}/.libica.so.%{major}.hmac
+%{_libdir}/libica-cex.so.%{version}
+%{_libdir}/libica-cex.so.%{major}
+%{_libdir}/.libica-cex.so.%{version}.hmac
+%{_libdir}/.libica-cex.so.%{major}.hmac
 
 %files tools
 %license LICENSE
 %doc README.SUSE
 %{_sbindir}/rcz90crypt
-%attr(0644,root,root) %{_fillupdir}/sysconfig.z90crypt
+%{_fillupdir}/sysconfig.z90crypt
 %{_bindir}/icainfo
+%{_bindir}/icainfo-cex
 %{_bindir}/icastats
 %{_mandir}/man1/icainfo.1%{?ext_man}
+%{_mandir}/man1/icainfo-cex.1%{?ext_man}
 %{_mandir}/man1/icastats.1%{?ext_man}
 %dir %{_prefix}/lib/systemd/scripts
 %{_prefix}/lib/systemd/scripts/z90crypt
@@ -188,9 +191,11 @@ fipshmac src/.libs/libica.so.%{major}
 %{_libdir}/libica.so
 
 %files devel
-%attr(0644,root,root) %{_includedir}/ica_api.h
+%{_includedir}/ica_api.h
+%{_libdir}/libica-cex.so
 
 %files devel-static
-%attr(0644,root,root) %{_libdir}/libica.a
+%{_libdir}/libica.a
+%{_libdir}/libica-cex.a
 
 %changelog

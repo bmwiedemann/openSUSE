@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun  7 18:29:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 3.8.0 (jsc#SLE-18334)
+  - [FEATURE] provide libica-cex module to satisfy special security requirements
+  - [FEATURE] FIPS: enforce the HMAC check
+- Remove upstreamed patches:
+   - libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+   - libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+   - libica-sles15sp2-Zeroize-local-variables.patch
+- Remove patches obsoleted by upstrea developent:
+   * FIPS: Find libica from phdrs.
+     - libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+   * FIPS: enforce the hmac check
+     - libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+- Fix up tests and hmac generation
+   + libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
+- Remove obsolete attributes from filelists
+
+-------------------------------------------------------------------
 Fri Sep 18 20:59:39 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.7.0 (jsc#SLE-13708)

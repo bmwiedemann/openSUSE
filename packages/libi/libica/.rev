@@ -416,4 +416,27 @@
 Changed Jira reference to the Epic and not the Team task.</comment>
     <requestid>836417</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8c0beaa53c530fdf815d499533eff702</srcmd5>
+    <version>3.8.0</version>
+    <time>1625115932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.0 (jsc#SLE-18334)
+  - [FEATURE] provide libica-cex module to satisfy special security requirements
+  - [FEATURE] FIPS: enforce the HMAC check
+- Remove upstreamed patches:
+   - libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+   - libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+   - libica-sles15sp2-Zeroize-local-variables.patch
+- Remove patches obsoleted by upstrea developent:
+   * FIPS: Find libica from phdrs.
+     - libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+   * FIPS: enforce the hmac check
+     - libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+- Fix up tests and hmac generation
+   + libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
+- Remove obsolete attributes from filelists
+</comment>
+    <requestid>903102</requestid>
+  </revision>
 </revisionlist>
