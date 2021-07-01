@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun 29 12:40:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.12.0
+  + New feature: MSAL Python supports ConfidentialClientApplication(..., azure_region=...).
+    If your app is deployed in Azure, you can use this new feature to pin a region.
+    (#295, #358)
+  + New feature: Historically MSAL Python attempts to acquire a Refresh Token (RT) by
+    default. Since this version, MSAL Python supports ConfidentialClientApplication(...,
+    excluse_scopes=["offline_access"]) to opt out of RT (#207, #361)
+  + Improvement: acquire_token_interactive(...) can also trigger browser when
+    running inside WSL (8d86917)
+  + Adjustment: get_accounts(...) would automatically combine equivalent accounts,
+    so that your account selector widget could be easier to use (#349)
+  + Document: MSAL Python has long been accepting acquire_token_interactive(..., prompt="create"),
+    now we officially documented it. (#356, #360)
+- from version 1.11.0
+  + Enhancement: ConfidentialClientApplication also supports
+    acquire_token_by_username_password() now. (#294, #344)
+  + Enhancement: PublicClientApplication's acquire_token_interactive() also supports WSL Ubuntu
+    18.04 (#332, #333)
+  + Enhancement: Enable a retry once behavior on connection error. (But this is only available
+    from the default http client. If your app supplies your customized http_client via MSAL
+    constructors, it is your http_client's job to decide whether retry.) (#326)
+  + Enhancement: MSAL improves the internal telemetry mechanism. (#137, #175, #329, #345)
+  + Bugfix: Better compatibility on handling SAML token when using
+    acquire_token_by_username_password() with ADFS. (#336)
+
+-------------------------------------------------------------------
 Thu Mar 25 13:35:20 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.10.0
