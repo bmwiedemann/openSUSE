@@ -5367,4 +5367,41 @@ handle manual pages that consist only of a .so directive such as
   userdb and homed</comment>
     <requestid>885896</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>2da05ea6cee0cd6941194070de91b1a2</srcmd5>
+    <version>248.3</version>
+    <time>1625115927</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit e9a23d9e064c2e7ac21a1b984d116bcf15327e63
+  8dd19c6ee3 sd-device: allow to read sysattr which contains embedded NUL
+  d52409e5fe pid1: only add a Wants= type dependency on /tmp when PrivateTmp=yes (bsc#1181970
+
+- Import commit fcdb8dce591db2f5fc3c1e3eeb7abe9a2090b401
+  aa2d840a3b compat-rules: fix warning: &quot;label ‘out’ defined but not used&quot; in path_id_compat.c
+- Restore 61-persistent-storage-compat.rules that was mistakenly
+  dropped during the merge of v248.
+
+- Create /run/lock/subsys again (bsc#1187292)
+  The creation of this directory was mistakenly dropped when
+  'filesystem' package took the initialization of the generic paths
+  over.
+  Paths under /run/lock are still managed by systemd for lack of
+  better place.
+
+- Drop systemd's dependency on udev (jsc#PM-2677)
+  In some environments (i.e. containers) udev is usually not necessary
+  but pulls in unnecessary packages.
+
+- Now that chkconfig/insserv are history, let's implement the strict
+  minimum in systemd-sysv-install to enable/disable SysV init scripts
+  (bsc#1186595 bsc#1186359)
+  Indeed there's no much point in dropping SysV support completely
+  until upstream will do especially since 3rd party applications such
+  as vmware still rely on it, see bsc#1186359).
+
+- Allow the sysusers config files shipped by systemd rpms to be
+  overriden during system installation (bsc#1171962)
+- While at it, add a comment to explain why we don't use</comment>
+    <requestid>902866</requestid>
+  </revision>
 </revisionlist>

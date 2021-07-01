@@ -1,7 +1,7 @@
-From f299a8180f1db0680b454c0e37696891361e3067 Mon Sep 17 00:00:00 2001
+From 54366ae306ae19bdb2a5af7eb5158260cdc37e8f Mon Sep 17 00:00:00 2001
 From: Frederic Crozat <fcrozat@suse.com>
 Date: Tue, 28 May 2013 15:17:35 +0200
-Subject: [PATCH 03/12] strip the domain part from /etc/hostname when setting
+Subject: [PATCH 1/1] strip the domain part from /etc/hostname when setting
  system host name
 
 [fbui: fixes bnc#820213]
@@ -13,19 +13,17 @@ Subject: [PATCH 03/12] strip the domain part from /etc/hostname when setting
        possibility was to fix the installer to create a correct
        /etc/hostname file. Need to investigate...]
 ---
- src/core/hostname-setup.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ src/shared/hostname-setup.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/src/core/hostname-setup.c b/src/core/hostname-setup.c
-index 6d047db838..1acc0c998b 100644
---- a/src/core/hostname-setup.c
-+++ b/src/core/hostname-setup.c
-@@ -39,8 +39,16 @@ int hostname_setup(void) {
-                                 enoent = true;
+diff --git a/src/shared/hostname-setup.c b/src/shared/hostname-setup.c
+index 511aa7d031..351d0e761d 100644
+--- a/src/shared/hostname-setup.c
++++ b/src/shared/hostname-setup.c
+@@ -189,6 +189,13 @@ int hostname_setup(bool really) {
                          else
                                  log_warning_errno(r, "Failed to read configured hostname: %m");
--                } else
-+                } else {
+                 } else {
 +                        char *domain;
 +
 +                        /* SUSE: strip the domain name */
@@ -34,10 +32,8 @@ index 6d047db838..1acc0c998b 100644
 +                                *domain = '\0';
 +
                          hn = b;
-+                }
-         }
- 
-         if (isempty(hn)) {
+                         source = HOSTNAME_STATIC;
+                 }
 -- 
 2.26.2
 

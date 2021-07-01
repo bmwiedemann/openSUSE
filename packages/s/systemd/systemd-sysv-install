@@ -1,41 +1,148 @@
-#!/bin/sh
+#!/bin/bash
+
 # This script is called by "systemctl enable/disable" when the given unit is a
 # SysV init.d script. It needs to call the distribution's mechanism for
 # enabling/disabling those, such as chkconfig, update-rc.d, or similar. This
 # can optionally take a --root argument for enabling a SysV init script
 # in a chroot or similar.
+#
+# chkconfig(8) and insserv(8) are no more available hence let's do the
+# bare minimum and create/remote the symlinks for the well known
+# runlevels and nothing more. Note that we don't take care of
+# enabling/disabling the service dependencies as the sysv-generator
+# will take care of them for us (openSUSE specific).
+#
+
 set -e
 
 usage() {
-    echo "Usage: $0 [--root=path] enable|disable|is-enabled <sysv script name>" >&2
-    exit 1
+	echo >&2 "Usage: $0 [--quiet] [--root=path] enable|disable|is-enabled <sysv script name>"
+	exit 1
 }
 
+info() {
+	$quiet || echo "$*"
+}
+
+die() {
+	echo >&2 "error: $*, aborting."
+	exit 1
+}
+
+declare -A lsb_header
+
+check_runlevels() {
+	for l in $*; do
+		# Sanity check
+		case $l in
+		0|1|2|3|4|5|6)	continue ;;
+		*)		return 1
+		esac
+	done
+}
+
+load_initscript() {
+	local found_lsb_start_marker=false
+	local found_lsb_end_marker=false
+
+	[ -r $1 ] || die "initscript /etc/init.d/$1 can't be read"
+
+	lsb_header=()
+
+	while read line; do
+		# skip anything that is not a comment
+		[[ "$line" =~ ^# ]] || continue
+
+		if ! $found_lsb_start_marker; then
+			[ "$line" == "### BEGIN INIT INFO" ] &&
+				found_lsb_start_marker=true
+			continue
+		fi
+
+		line=$(echo ${line:1})
+
+		case "$line" in
+		Default-Start:*)
+			levels=$(echo ${line:14})
+
+			check_runlevels $levels ||
+				die "Invalid runlevels specified in $line"
+
+			lsb_header[Default-Start]=$levels
+			;;
+		"## END INIT INFO")
+			found_lsb_end_marker=true
+			break ;;
+		esac
+	done <$1
+
+	$found_lsb_end_marker ||
+		die "malformated LSB header in $1: missing LSB end marker"
+}
+
+enable_initscript() {
+	load_initscript $1
+
+	for l in ${lsb_header[Default-Start]}; do
+		symlink="$(pwd)/rc${l}.d/S50$1"
+
+		info "ln -sf ../$1 $symlink"
+		ln -sf ../$1 "$symlink"
+	done
+}
+
+disable_initscript() {
+	for symlink in rc*.d/[SK]*; do
+		[ -L $symlink ] && [ $(readlink $symlink) = "../$1" ] && {
+			info "rm $(pwd)/$symlink"
+			rm $symlink
+		}
+	done
+}
+
+is_initscript_enabled() {
+	for symlink in rc*.d/S*; do
+		[ -L $symlink ] && [ $(readlink $symlink) = "../$1" ] &&
+			return 0
+	done
+	return 1
+}
+
+root=
+quiet=false
+
 # parse options
-eval set -- "$(getopt -o r: --long root: -- "$@")"
+eval set -- "$(getopt --name $(basename $0) -o hqr: --long help,quiet,root: -- "$@")"
 while true; do
-    case "$1" in
-        -r|--root)
-            ROOT="$2"
-            shift 2 ;;
-        --) shift ; break ;;
-        *) usage ;;
-    esac
+	case "$1" in
+	-h|--help)
+		usage ;;
+	-r|--root)
+		shift
+		root=$1 ;;
+	-q|--quiet)
+		quiet=true ;;
+        --)
+		shift
+		break ;;
+        *)
+		usage ;;
+	esac
+	shift
 done
 
-NAME="$2"
-[ -n "$NAME" ] || usage
+[ $# -eq 2 ] || usage
+action=$1
+name=$2
 
-case "$1" in
-    enable)
-        chkconfig $ROOT --no-systemctl -s "$NAME" on
-        ;;
-    disable)
-        chkconfig $ROOT --no-systemctl -s "$NAME" off
-        ;;
-    is-enabled)
-        chkconfig $ROOT --no-systemctl -c "$NAME"
-        ;;
-    *)
-        usage ;;
+sysvinit_path=$(realpath -q -e $root/etc/init.d) ||
+	die "$root/etc/init.d: no such file or directory"
+
+cd $sysvinit_path
+
+case "$action" in
+enable)		enable_initscript $name ;;
+disable)	disable_initscript $name ;;
+is-enabled)	is_initscript_enabled $name ;;
+*)	        usage
 esac

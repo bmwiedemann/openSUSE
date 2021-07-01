@@ -1,7 +1,7 @@
-From f9521480d5dc5af747fecc9adc4c617e473e5494 Mon Sep 17 00:00:00 2001
+From ac7bfed30245145ce68a037e7578da12ce2de009 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Thu, 26 May 2016 08:59:41 +0200
-Subject: [PATCH 06/12] sysv-generator: add (back) support for SysV scripts for
+Subject: [PATCH 1/1] sysv-generator: add (back) support for SysV scripts for
  the early boot
 
 For the record, the upstream support was removed by commit
@@ -43,7 +43,7 @@ the same time as 'normal' services.
  1 file changed, 23 insertions(+)
 
 diff --git a/src/sysv-generator/sysv-generator.c b/src/sysv-generator/sysv-generator.c
-index a2c72d1009..1c01008967 100644
+index 8c7aef23c3..f88f9119fb 100644
 --- a/src/sysv-generator/sysv-generator.c
 +++ b/src/sysv-generator/sysv-generator.c
 @@ -31,6 +31,9 @@ static const struct {
@@ -63,8 +63,8 @@ index a2c72d1009..1c01008967 100644
 +        bool early;
  } SysvStub;
  
- static void free_sysvstub(SysvStub *s) {
-@@ -147,6 +151,12 @@ static int generate_unit_file(SysvStub *s) {
+ static SysvStub* free_sysvstub(SysvStub *s) {
+@@ -146,6 +150,12 @@ static int generate_unit_file(SysvStub *s) {
                  fprintf(f, "Description=%s\n", t);
          }
  
@@ -77,7 +77,7 @@ index a2c72d1009..1c01008967 100644
          STRV_FOREACH(p, s->before)
                  fprintf(f, "Before=%s\n", *p);
          STRV_FOREACH(p, s->after)
-@@ -213,6 +223,10 @@ static char *sysv_translate_name(const char *name) {
+@@ -212,6 +222,10 @@ static char *sysv_translate_name(const char *name) {
          _cleanup_free_ char *c = NULL;
          char *res;
  
@@ -88,7 +88,7 @@ index a2c72d1009..1c01008967 100644
          c = strdup(name);
          if (!c)
                  return NULL;
-@@ -289,6 +303,11 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+@@ -288,6 +302,11 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
                  return 1;
          }
  
@@ -100,7 +100,7 @@ index a2c72d1009..1c01008967 100644
          /* Strip ".sh" suffix from file name for comparison */
          filename_no_sh = strdupa(filename);
          e = endswith(filename_no_sh, ".sh");
-@@ -676,6 +695,9 @@ static int fix_order(SysvStub *s, Hashmap *all_services) {
+@@ -674,6 +693,9 @@ static int fix_order(SysvStub *s, Hashmap *all_services) {
                  if (other->sysv_start_priority < 0)
                          continue;
  
@@ -110,7 +110,7 @@ index a2c72d1009..1c01008967 100644
                  /* If both units have modern headers we don't care
                   * about the priorities */
                  if (s->has_lsb && other->has_lsb)
-@@ -800,6 +822,7 @@ static int enumerate_sysv(const LookupPaths *lp, Hashmap *all_services) {
+@@ -798,6 +820,7 @@ static int enumerate_sysv(const LookupPaths *lp, Hashmap *all_services) {
                                  .sysv_start_priority = -1,
                                  .name = TAKE_PTR(name),
                                  .path = TAKE_PTR(fpath),

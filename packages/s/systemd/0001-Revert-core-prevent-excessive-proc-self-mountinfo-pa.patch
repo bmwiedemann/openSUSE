@@ -1,0 +1,35 @@
+From c9bce1f07276c591d8637dbfc3244ee11e8fa4e1 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Tue, 18 May 2021 11:53:55 +0200
+Subject: [PATCH 1/1] Revert "core: prevent excessive /proc/self/mountinfo
+ parsing"
+
+This reverts commit d586f642fd90e3bb378f7b6d3e3a64a753e51756.
+
+This reverts commit d586f642fd90e3bb378f7b6d3e3a64a753e51756 temporarly until
+more investigation is done to find the root cause of
+https://github.com/systemd/systemd/issues/19464.
+---
+ src/core/mount.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/core/mount.c b/src/core/mount.c
+index ca5d0939a1..2939062161 100644
+--- a/src/core/mount.c
++++ b/src/core/mount.c
+@@ -1859,12 +1859,6 @@ static void mount_enumerate(Manager *m) {
+                         goto fail;
+                 }
+ 
+-                r = sd_event_source_set_ratelimit(m->mount_event_source, 1 * USEC_PER_SEC, 5);
+-                if (r < 0) {
+-                        log_error_errno(r, "Failed to enable rate limit for mount events: %m");
+-                        goto fail;
+-                }
+-
+                 (void) sd_event_source_set_description(m->mount_event_source, "mount-monitor-dispatch");
+         }
+ 
+-- 
+2.26.2
+

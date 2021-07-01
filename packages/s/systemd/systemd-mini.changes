@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Mon Jun 28 16:45:04 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit e9a23d9e064c2e7ac21a1b984d116bcf15327e63
+
+  8dd19c6ee3 sd-device: allow to read sysattr which contains embedded NUL
+  d52409e5fe pid1: only add a Wants= type dependency on /tmp when PrivateTmp=yes (bsc#1181970
+
+-------------------------------------------------------------------
+Thu Jun 24 13:39:30 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit fcdb8dce591db2f5fc3c1e3eeb7abe9a2090b401
+
+  aa2d840a3b compat-rules: fix warning: "label ‘out’ defined but not used" in path_id_compat.c
+
+- Restore 61-persistent-storage-compat.rules that was mistakenly
+  dropped during the merge of v248.
+
+-------------------------------------------------------------------
+Fri Jun 18 12:53:34 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Create /run/lock/subsys again (bsc#1187292)
+
+  The creation of this directory was mistakenly dropped when
+  'filesystem' package took the initialization of the generic paths
+  over.
+
+  Paths under /run/lock are still managed by systemd for lack of
+  better place.
+
+-------------------------------------------------------------------
+Fri Jun  4 13:10:30 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop systemd's dependency on udev (jsc#PM-2677)
+
+  In some environments (i.e. containers) udev is usually not necessary
+  but pulls in unnecessary packages.
+
+-------------------------------------------------------------------
+Fri Jun  4 07:32:16 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Now that chkconfig/insserv are history, let's implement the strict
+  minimum in systemd-sysv-install to enable/disable SysV init scripts
+  (bsc#1186595 bsc#1186359)
+
+  Indeed there's no much point in dropping SysV support completely
+  until upstream will do especially since 3rd party applications such
+  as vmware still rely on it, see bsc#1186359).
+
+-------------------------------------------------------------------
+Tue May 25 16:30:40 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Allow the sysusers config files shipped by systemd rpms to be
+  overriden during system installation (bsc#1171962)
+
+- While at it, add a comment to explain why we don't use
+  %sysusers_create in %pre and why it should be safe in %post.
+
+-------------------------------------------------------------------
+Thu May 20 20:19:27 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- udev requires systemd in its %post (bsc#1185958)
+
+  udevadm, called in udev's %post, requires libsystemd-shared-248.so.
+
+-------------------------------------------------------------------
+Thu May 20 18:52:53 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Restore all "License:" tags
+
+  udev uses a different license (GPL-2.0-only) than the main package
+  and "osc service localrun format_spec_file" has the good taste to
+  restore the license tags for all other subpackages if one of the
+  subpackage tag differs.
+
+-------------------------------------------------------------------
+Thu May 20 15:47:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Expect 644 permissions for /usr/lib/udev/compat-symlink-generation (bsc#1185807)
+
+-------------------------------------------------------------------
+Wed May 19 06:54:57 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Spec file minor cleanups:
+
+  - Drop all "Group:" tags as they are deprecated.
+
+  - Drop "License:" tags from all subpackages and make it inherited
+    from the main package.
+
+  - Drop "%bcond_with parentpathid" as it's not used.
+
+-------------------------------------------------------------------
+Tue May 18 18:31:20 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Introduce subpackage systemd-tests
+
+  This subpackage is mainly used before submitting a new version of
+  the systemd packages. As such it's not intended for regular users
+  hence can be removed/renamed at any time. One might wonder why the
+  unit tests are not executed during package builds (%check)... the
+  reason is that the environment used to build package (chroot) is too
+  limited and therefore only a subset of the unit tests would be
+  executed in this environment.
+
+  To disable the build of the subpackage, use "--without=tests".
+
+-------------------------------------------------------------------
+Tue May 18 10:04:16 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Add 0001-Revert-core-prevent-excessive-proc-self-mountinfo-pa.patch
+
+  A temporary patch until
+  https://github.com/systemd/systemd/issues/19464 is solved.
+
+-------------------------------------------------------------------
+Tue May 18 08:19:57 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit bc08011f04ac4f12569ec05965149f665a0b110b (merge of v248.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/6f5c11b28f5739b901390f22c2bf4c003cadedaa...bc08011f04ac4f12569ec05965149f665a0b110b
+
+-------------------------------------------------------------------
+Mon May 10 13:12:56 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 6f5c11b28f5739b901390f22c2bf4c003cadedaa (merge of v248.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e5f93c9d2e9e26dd0dff430c4c072a547357ae7d...6f5c11b28f5739b901390f22c2bf4c003cadedaa
+
+-------------------------------------------------------------------
+Mon Apr 26 16:25:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v248 (commit 5d3d934a5c2f4593207497db94e6f313348e89e7)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v248/NEWS for
+  details. 
+
+  - A couple runtime dependencies on libraries are now tracked
+    manually (with Recommends:) due to the fact that some symbols of
+    these libs are dynamically loaded with dlopen() (heck!)
+
+  - oomd is left disablde for now
+
+  - pam configuration file 'systemd-user' is now shipped in
+    /usr/etc/pam.d
+
+  - Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+            0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
+            0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
+
+  - Dropped 0004-tmpfiles-support-exclude-statements-based-on-file-ow.patch
+    as it is SLE specific.
+
+- Clean systemd-experimental up:
+
+  - Enclose "%package/%descriptoin experimental" within a "%if
+    %experimental/%endif" block condition
+
+  - List the build requirements in the sub-package instead of listing
+    them in the main package.
+
+  - Enable support for fido2, pwquality and qrencode in the home
+    stuff
+
+  - Improve the package description
+
+-------------------------------------------------------------------
 Wed Apr  7 08:59:15 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - systemd.spec: clean some of the build deps up:

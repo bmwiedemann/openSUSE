@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.105.g14581e0120
+%define suse_version +suse.30.ge9a23d9e06
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -37,6 +37,7 @@
 %bcond_with     resolved
 %bcond_with     sysvcompat
 %bcond_with     experimental
+%bcond_with     tests
 %else
 %bcond_without  coredump
 %ifarch %{ix86} x86_64
@@ -50,16 +51,15 @@
 %bcond_without  resolved
 %bcond_without  sysvcompat
 %bcond_without  experimental
+%bcond_without  tests
 %endif
-%bcond_with     parentpathid
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.13
+Version:        248.3
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
-Group:          System/Base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if ! 0%{?bootstrap}
 BuildRequires:  docbook-xsl-stylesheets
@@ -74,6 +74,7 @@ BuildRequires:  python3-lxml
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -111,10 +112,6 @@ BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 %if %{with gnuefi}
 BuildRequires:  gnu-efi
 %endif
-%if %{with experimental}
-BuildRequires:  pkgconfig(fdisk)
-BuildRequires:  pkgconfig(openssl)
-%endif
 
 %if 0%{?bootstrap}
 #!BuildIgnore:  dbus-1
@@ -126,13 +123,15 @@ Provides:       systemd = %{version}-%{release}
 Requires:       aaa_base >= 13.2
 Requires:       dbus-1 >= 1.4.0
 Requires:       kbd
-Requires:       kmod >= 15
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
-Requires:       udev = %{version}-%{release}
 Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
+# This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
+Recommends:     libpcre2-8-0
+# ditto but dlopen()ed by systemd-cryptenroll
+Recommends:     libfido2
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
@@ -173,7 +172,6 @@ Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
-Patch4:         0004-tmpfiles-support-exclude-statements-based-on-file-ow.patch
 Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
 Patch6:         0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
 Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
@@ -189,6 +187,7 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
+Patch100:       0001-Revert-core-prevent-excessive-proc-self-mountinfo-pa.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -204,7 +203,6 @@ drop-in replacement for sysvinit.
 %package doc
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
-Group:          Documentation/Other
 Supplements:    (systemd and patterns-base-documentation)
 
 %description doc
@@ -216,7 +214,6 @@ The HTML documentation for systemd.
 %package devel
 Summary:        Development headers for systemd
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libsystemd0%{?mini} = %{version}-%{release}
 Requires:       systemd-rpm-macros
 %if 0%{?bootstrap}
@@ -229,7 +226,6 @@ Development headers and auxiliary files for developing applications for systemd.
 %package sysvinit
 Summary:        System V init tools
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 Provides:       sbin_init
 Conflicts:      otherproviders(sbin_init)
@@ -242,7 +238,6 @@ Drop-in replacement of System V init tools.
 %package -n libsystemd0%{?mini}
 Summary:        Component library for systemd
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 %if 0%{?bootstrap}
 Conflicts:      libsystemd0
 Requires:       this-is-only-for-build-envs
@@ -272,14 +267,14 @@ This library provides several of the systemd C APIs:
 %package -n udev%{?mini}
 Summary:        A rule-based device node and kernel event manager
 License:        GPL-2.0-only
-Group:          System/Kernel
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+Requires:       kmod
 Requires:       system-group-hardware
 Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun): coreutils
-Requires(postun): /usr/bin/systemctl
+%systemd_requires
 
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
@@ -305,7 +300,6 @@ call tools to initialize a device, or load needed kernel modules.
 %package -n libudev%{?mini}1
 Summary:        Dynamic library to access udev device information
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 %if 0%{?bootstrap}
 Conflicts:      libudev1
 Conflicts:      kiwi
@@ -320,7 +314,6 @@ access to udev device information
 %package -n libudev%{?mini}-devel
 Summary:        Development files for libudev
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Other
 Requires:       libudev%{?mini}1 = %{version}-%{release}
 %if 0%{?bootstrap}
 Provides:       libudev-devel = %{version}-%{version}
@@ -336,7 +329,6 @@ dynamic library, which provides access to udev device information.
 %package coredump
 Summary:        Systemd tools for coredump management
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Provides:       systemd:%{_bindir}/coredumpctl
@@ -350,7 +342,6 @@ This package contains systemd-coredump, coredumpctl.
 %package container
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Provides:       systemd:%{_bindir}/systemd-nspawn
@@ -368,8 +359,9 @@ and systemd-importd.
 %package network
 Summary:        Systemd tools for networkd and resolved
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
+# This Recommends because some symbols of libidn2 are dlopen()ed by resolved
+Recommends:     pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libidn2)
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
@@ -385,7 +377,6 @@ resolver tools for resolved
 %package portable
 Summary:        Systemd tools for portable services
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 
@@ -405,7 +396,6 @@ https://systemd.io/PORTABLE_SERVICES
 %package logger
 Summary:        Journal only logging
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Provides:       syslog
 Provides:       sysvinit(syslog)
 Requires(post): /usr/bin/systemctl
@@ -417,7 +407,6 @@ This package marks the installation to not use syslog but only the journal.
 %package -n nss-systemd
 Summary:        Plugin for local virtual host name resolution
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n nss-systemd
 This package contains a plugin for the Name Service Switch (NSS),
@@ -430,7 +419,6 @@ To activate this NSS module, you will need to include it in
 %package -n nss-myhostname
 Summary:        Plugin for local system host name resolution
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n nss-myhostname
 This package contains a plug-in module for the Name Service Switch
@@ -447,7 +435,6 @@ To activate this NSS module, you will need to include it in
 %package -n nss-resolve
 Summary:        Plugin for local hostname resolution via systemd-resolved
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name}-network = %{version}-%{release}
 
 %description -n nss-resolve
@@ -464,7 +451,6 @@ To activate this NSS module, you will need to include it in
 %package -n nss-mymachines
 Summary:        Plugin for local virtual host name resolution
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n nss-mymachines
 This package contains a plugin for the Name Service Switch (NSS),
@@ -481,11 +467,8 @@ To activate this NSS module, you will need to include it in
 %package journal-remote
 Summary:        Gateway for serving journal events over the network using HTTP
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Requires(post):   systemd
-Requires(preun):  systemd
-Requires(postun): systemd
+%systemd_requires
 
 %description journal-remote
 This extends the journal functionality to keep a copy of logs on a
@@ -497,23 +480,61 @@ This package contains systemd-journal-gatewayd,
 systemd-journal-remote, and systemd-journal-upload.
 %endif
 
+%if %{with tests}
+%package tests
+Summary:        Unit tests for systemd
+License:        LGPL-2.1-or-later
+Requires:       %{name} = %{version}-%{release}
+Recommends:     python3
+Recommends:     python3-colorama
+# Optional dep for mkfs.vfat needed by test-loop-block (otherwise skipped)
+Recommends:     dosfstools
+
+%description tests
+This package contains the unit tests used to check various internal
+functions used by systemd and all its components.
+
+The python script /usr/lib/systemd/tests/run-unit-tests.py can be used
+to run all unit tests at once.
+%endif
+
+%if %{with experimental}
 %package experimental
 Summary:        Experimental systemd features
 License:        LGPL-2.1-or-later
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
+# These Recommends because some symbols of these libs are dlopen()ed by home stuff
+Recommends:     libfido2
+Recommends:     libpwquality1
+Recommends:     libqrencode4
+# libfido2, libpwquality1 and libqrencode4 are build requirements for home stuff
+BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(pwquality)
+# fdisk and openssl are build requirements for home stuff and repart
+BuildRequires:  pkgconfig(fdisk)
+BuildRequires:  pkgconfig(openssl)
 %systemd_requires
 
 %description experimental
-This package contains optional extra systemd services that are
-considered a preview feature. Behaviour details and option names are
-subject to change without the usual backwards-compatibility promises.
+This package contains optional extra services that are considered as
+previews and are provided so users can do early experiments with the
+new features or technologies without waiting for them to be fully
+supported by either upstream and openSUSE.
 
-Components that turn out to be stable may be merged into the main or a
-dedicated package later.
+Please note that all services should be considered in development
+phase and as such their behaviors details, unit files, option names,
+etc... are subject to change without the usual backwards-compatibility
+promises.
 
-Use at your own risk.
+Components that turn out to be stable and considered as fully
+supported will be merged into the main package or moved into a
+dedicated package.
 
+The package contains: homed, pstore, repart, userdbd.
+
+Have fun with these services at your own risk.
+%endif
 
 %if ! 0%{?bootstrap}
 %lang_package
@@ -526,6 +547,7 @@ Use at your own risk.
 %build
 # keep split-usr until all packages have moved their systemd rules to /usr
 %meson \
+        -Dmode=release \
         -Dversion-tag=%{version}%{suse_version} \
         -Ddocdir=%{_docdir}/systemd \
         -Drootprefix=/usr \
@@ -533,6 +555,7 @@ Use at your own risk.
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
+        -Dpamconfdir=%{_distconfdir}/pam.d \
         -Dpamlibdir=%{_pamdir} \
         -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
         -Drpmmacrosdir=no \
@@ -548,6 +571,7 @@ Use at your own risk.
         -Dsmack=false \
         -Dima=false \
         -Delfutils=auto \
+        -Doomd=false \
 %if %{with experimental}
         -Dpstore=true \
         -Drepart=true \
@@ -560,15 +584,10 @@ Use at your own risk.
         -Duserdb=false \
 %endif
 %if 0%{?bootstrap}
-        -Dfdisk=false \
-        -Dpwquality=false \
-        -Dp11kit=false \
+        -Dnss-myhostname=false \
 %else
         -Dman=true \
         -Dhtml=true \
-%endif
-%if 0%{?bootstrap}
-        -Dnss-myhostname=false \
 %endif
 %if %{without coredump}
         -Dcoredump=false \
@@ -597,6 +616,13 @@ Use at your own risk.
 %if %{without sysvcompat}
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
+%endif
+%if %{with tests}
+        -Dtests=unsafe \
+        -Dinstall-tests=true \
+%else
+        -Dtests=false \
+        -Dinstall-tests=false \
 %endif
         -Dadm-group=false \
         -Dwheel-group=false \
@@ -658,8 +684,8 @@ ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
 rm -rf %{buildroot}/etc/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}/etc/systemd/system/default.target
 
-# Replace /etc/pam.d/systemd-user shipped by upstream with the openSUSE one.
-install -m0644 %{S:2} %{buildroot}%{_sysconfdir}/pam.d/
+# Replace upstream systemd-user with the openSUSE one.
+install -m0644 %{S:2} %{buildroot}%{_distconfdir}/pam.d
 
 # don't enable wall ask password service, it spams every console (bnc#747783)
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -836,10 +862,16 @@ fi
 pam-config --add --systemd || :
 %endif
 
-%sysusers_create %{_sysusersdir}/systemd.conf
+# systemd-sysusers is not available in %pre so this needs to be done
+# in %post. However this shouldn't be an issue since all files the
+# main package ships are owned by root.
+%sysusers_create systemd.conf
+
 [ -e %{_localstatedir}/lib/random-seed ] && mv %{_localstatedir}/lib/random-seed %{_localstatedir}/lib/systemd/ || :
 /usr/lib/systemd/systemd-random-seed save || :
+
 systemctl daemon-reexec  || :
+
 %journal_catalog_update
 %tmpfiles_create
 
@@ -906,7 +938,7 @@ if [ "$(readlink -f %{_sysconfdir}/systemd/system/tmp.mount)" = "%{_datadir}/sys
 fi
 
 %postun
-# daemon-reload is implied by %systemd_postun_with_restart
+# daemon-reload is implied by %%systemd_postun_with_restart
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-timesyncd.service
 # Avoid restarting logind until fixed upstream (issue #1163)
@@ -1010,7 +1042,8 @@ fi
 %service_add_pre systemd-journal-upload.service
 
 %post journal-remote
-%sysusers_create %{_sysusersdir}/systemd-remote.conf
+# Assume that all files shipped by systemd-journal-remove are owned by root.
+%sysusers_create systemd-remote.conf
 %service_add_post systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
 %service_add_post systemd-journal-remote.socket systemd-journal-remote.service
 %service_add_post systemd-journal-upload.service
@@ -1114,7 +1147,11 @@ fi
 %{_bindir}/localectl
 %{_bindir}/systemctl
 %{_bindir}/systemd-analyze
+%if ! 0%{?bootstrap}
+%{_bindir}/systemd-cryptenroll
+%endif
 %{_bindir}/systemd-delta
+%{_bindir}/systemd-dissect
 %{_bindir}/systemd-escape
 %{_bindir}/systemd-firstboot
 %{_bindir}/systemd-id128
@@ -1124,6 +1161,7 @@ fi
 %{_bindir}/systemd-umount
 %{_bindir}/systemd-notify
 %{_bindir}/systemd-run
+%{_bindir}/systemd-sysext
 %{_bindir}/journalctl
 %{_bindir}/systemd-ask-password
 %{_bindir}/loginctl
@@ -1164,6 +1202,7 @@ fi
 %exclude %{_unitdir}/systemd-udev*.*
 %exclude %{_unitdir}/*.target.wants/systemd-udev*.*
 %exclude %{_unitdir}/initrd-udevadm-cleanup-db.service
+%exclude %{_unitdir}/kmod-static-nodes.service
 %exclude %{_unitdir}/systemd-nspawn@.service
 %if %{with machined}
 %exclude %{_prefix}/lib/systemd/systemd-machined
@@ -1260,6 +1299,7 @@ fi
 %{_modulesloaddir}
 
 %dir %{_sysusersdir}
+%doc %{_sysusersdir}/README
 %{_sysusersdir}/systemd.conf
 
 %dir %{_sysconfdir}/tmpfiles.d
@@ -1273,6 +1313,7 @@ fi
 
 %dir %{_sysctldir}
 %dir %{_sysconfdir}/sysctl.d
+%doc %{_sysctldir}/README
 %{_sysctldir}/99-sysctl.conf
 
 %dir %{_sysconfdir}/X11/xorg.conf.d
@@ -1287,7 +1328,7 @@ fi
 %dir %{_distconfdir}/X11/xinit/xinitrc.d
 %{_distconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
 
-%config(noreplace) %{_sysconfdir}/pam.d/systemd-user
+%{_distconfdir}/pam.d/systemd-user
 
 %config(noreplace) %{_sysconfdir}/systemd/journald.conf
 %config(noreplace) %{_sysconfdir}/systemd/logind.conf
@@ -1311,6 +1352,7 @@ fi
 
 # FIXME: why do we have to own this dir ?
 %dir %{_modprobedir}
+%doc %{_modprobedir}/README
 %{_modprobedir}/systemd.conf
 
 # Some files created at runtime.
@@ -1351,6 +1393,7 @@ fi
 %{_mandir}/man7/[bdfks]*
 %{_mandir}/man8/kern*
 %{_mandir}/man8/pam_*
+%{_mandir}/man8//rc-local.*
 %{_mandir}/man8/systemd-[a-gik-tvx]*
 %{_mandir}/man8/systemd-h[aioy]*
 %{_mandir}/man8/systemd-journald*
@@ -1475,13 +1518,18 @@ fi
 %dir %{_prefix}/lib/udev/
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
+# dmi_memory_id is only relevant on arches with DMI
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+%{_prefix}/lib/udev/dmi_memory_id
+%endif
 %{_prefix}/lib/udev/fido_id
 %{_prefix}/lib/udev/mtd_probe
 %{_prefix}/lib/udev/path_id_compat
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
-%ghost %{_prefix}/lib/udev/compat-symlink-generation
+%ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %dir %{_udevrulesdir}/
+%doc %{_udevrulesdir}/README
 %exclude %{_udevrulesdir}/70-uaccess.rules
 %exclude %{_udevrulesdir}/71-seat.rules
 %exclude %{_udevrulesdir}/73-seat-late.rules
@@ -1502,6 +1550,7 @@ fi
 %endif
 %dir %{_unitdir}
 %{_prefix}/lib/systemd/systemd-udevd
+%{_unitdir}/kmod-static-nodes.service
 %{_unitdir}/systemd-udev*.service
 %{_unitdir}/systemd-udevd*.socket
 %{_unitdir}/initrd-udevadm-cleanup-db.service
@@ -1694,10 +1743,15 @@ fi
 %{_mandir}/man*/systemd-portabled*
 %endif
 
+%if %{with tests}
+%files tests
+%{_prefix}/lib/systemd/tests
+%endif
+
 %if %{with experimental}
 %files experimental
 %defattr(-,root,root)
-%config(noreplace) /etc/systemd/pstore.conf
+%config(noreplace) %{_sysconfdir}/systemd/pstore.conf
 %{_prefix}/lib/systemd/systemd-pstore
 %{_unitdir}/systemd-pstore.service
 %{_tmpfilesdir}/systemd-pstore.conf
@@ -1705,18 +1759,19 @@ fi
 %{_bindir}/systemd-repart
 %{_unitdir}/systemd-repart.service
 %{_mandir}/man*/*repart*
-/usr/bin/userdbctl
+%{_bindir}/userdbctl
 %{_prefix}/lib/systemd/systemd-userwork
 %{_prefix}/lib/systemd/systemd-userdbd
 %{_unitdir}/systemd-userdbd.service
 %{_unitdir}/systemd-userdbd.socket
 %{_mandir}/man*/userdbctl*
 %{_mandir}/man*/systemd-userdbd*
-%config %{_sysconfdir}/homed.conf
+%config(noreplace) %{_sysconfdir}/systemd/homed.conf
 %{_bindir}/homectl
 %{_prefix}/lib/systemd/systemd-homed
 %{_prefix}/lib/systemd/systemd-homework
 %{_unitdir}/systemd-homed.service
+%{_unitdir}/systemd-homed-activate.service
 %{_pamdir}/pam_systemd_home.so
 %{_datadir}/dbus-1/system-services/org.freedesktop.home1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
