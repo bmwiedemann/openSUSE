@@ -19,13 +19,13 @@
 %define libname lib%{name}
 %define major   11
 Name:           matio
-Version:        1.5.20
+Version:        1.5.21
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Other
-URL:            http://sourceforge.net/projects/matio
-Source0:        http://downloads.sourceforge.net/matio/%{name}-%{version}.7z
+URL:            https://sourceforge.net/projects/matio/
+Source0:        https://downloads.sourceforge.net/matio/%{name}-%{version}.7z
 # We need hdf5 1.10.2 to allow creation of files backwards compatible with hdf5 1.8
 BuildRequires:  hdf5-devel >= 1.10.2
 BuildRequires:  pkgconfig
