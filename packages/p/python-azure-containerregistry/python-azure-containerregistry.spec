@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-containerregistry
-Version:        1.0.0b2
+Version:        1.0.0b3
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library for Python
 License:        MIT
@@ -49,7 +49,7 @@ Azure Container Registry allows you to store and manage container images and
 artifacts in a private registry for all types of container deployments.
 
 Use the client library for Azure Container Registry to:
-   
+
  * List images or artifacts in a registry
  * Obtain metadata for images and artifacts, repositories and tags
  * Set read/write/delete properties on registry items
