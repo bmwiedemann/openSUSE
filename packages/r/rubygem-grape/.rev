@@ -81,4 +81,12 @@ DRY is in</comment>
     <comment></comment>
     <requestid>859493</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>340dadabbd227f241936922b9b8c9b62</srcmd5>
+    <version>1.5.3</version>
+    <time>1625225258</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903507</requestid>
+  </revision>
 </revisionlist>
