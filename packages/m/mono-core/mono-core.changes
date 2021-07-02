@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 19:09:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We can use python3 as well as python2, so removing the
+  dependency on the later.
+
+-------------------------------------------------------------------
 Sun Dec 20 13:03:20 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Attempt to fix the dependency problems with System.Runtime.CompilerServices.Unsafe

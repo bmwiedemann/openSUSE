@@ -73,7 +73,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  timezone
 BuildRequires:  which
