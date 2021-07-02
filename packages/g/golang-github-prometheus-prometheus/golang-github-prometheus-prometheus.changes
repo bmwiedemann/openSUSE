@@ -2,6 +2,10 @@
 Wed May 19 20:32:28 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Refresh patches
+  + Changed:
+    * 0001-Do-not-force-the-pure-Go-name-resolver.patch
+    * 0002-Default-settings.patch
+    * 0003-Add-Uyuni-service-discovery.patch
 
 - Upgrade to upstream version 2.27.1
   + Bugfix:
