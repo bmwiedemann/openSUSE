@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:30:26 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.23.0
+ see installed History.rdoc
+
+  === 3.23.0 / 2021-05-29
+  
+  * 2 minor enhancements:
+  
+    * Bump racc (plugin) dependency.
+    * Removed ruby18! and ruby19! methods. ugh
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:47:25 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.22.3
