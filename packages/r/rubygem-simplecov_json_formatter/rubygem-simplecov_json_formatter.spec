@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-simplecov_json_formatter
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 %define mod_name simplecov_json_formatter
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ JSON formatter for SimpleCov.
 
 %install
 %gem_install \
-  --doc-files="README.md" \
+  --doc-files="CHANGELOG.md README.md" \
   -f
 
 %gem_packages
