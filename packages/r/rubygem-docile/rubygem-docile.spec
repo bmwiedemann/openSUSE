@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-docile
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 %define mod_name docile
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.8.7}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://ms-ati.github.io/docile/
@@ -41,9 +41,9 @@ Group:          Development/Languages/Ruby
 
 %description
 Docile treats the methods of a given ruby object as a DSL (domain specific
-language) within a given block. 
+language) within a given block.
 Killer feature: you can also reference methods, instance variables, and local
-variables from the original (non-DSL) context within the block. 
+variables from the original (non-DSL) context within the block.
 Docile releases follow Semantic Versioning as defined at semver.org.
 
 %prep
