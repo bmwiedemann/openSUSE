@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  1 16:42:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.2
+  * Switch the extension name to jupyter-sphinx, deprecate
+    jupyter-sphinx.execute.
+  * Miscellaneous bugfixes following the restructuring of the
+    codebase.
+
+-------------------------------------------------------------------
 Tue Dec 15 12:52:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary

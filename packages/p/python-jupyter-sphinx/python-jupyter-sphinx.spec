@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-sphinx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,17 @@
 %define         skip_python2 1
 %define         oldpython python
 Name:           python-jupyter-sphinx
-Version:        0.2.4
+Version:        0.3.2
 Release:        0
 Summary:        Jupyter Sphinx Extensions
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/jupyter-sphinx
-Source:         https://github.com/jupyter/jupyter-sphinx/archive/v%{version}.tar.gz
+Source:         https://github.com/jupyter/jupyter-sphinx/archive/v%{version}.tar.gz#/jupyter-sphinx-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-IPython
-Requires:       python-Sphinx >= 1.8
+Requires:       python-Sphinx >= 2
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-nbconvert >= 5.5
 Requires:       python-nbformat
@@ -39,7 +39,7 @@ Obsoletes:      python-jupyter_sphinx < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module IPython}
-BuildRequires:  %{python_module Sphinx >= 1.8}
+BuildRequires:  %{python_module Sphinx >= 2}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module nbconvert >= 5.5}
 BuildRequires:  %{python_module nbformat}
