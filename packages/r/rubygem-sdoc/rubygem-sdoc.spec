@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sdoc
-Version:        2.0.3
+Version:        2.2.0
 Release:        0
 %define mod_name sdoc
 %define mod_full_name %{mod_name}-%{version}
@@ -32,8 +32,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.9.3}
 BuildRequires:  ruby-macros >= 5
 # rdoc >= 5.0
-BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc  >= 5.0}
+BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  update-alternatives
 URL:            https://github.com/zzak/sdoc

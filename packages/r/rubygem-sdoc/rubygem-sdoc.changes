@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:58:13 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.0
+ see installed CHANGELOG.md
+
+  Master
+  ======
+  
+  2.2.0
+  =====
+  
+  * #161 Add 'skip to content' link and improve shortcut keys [@MikeRogers0](https://github.com/MikeRogers0)
+  * #170 Fix link hovers in headings [@tlatsas](https://github.com/tlatsas)
+  * #169 Fix clearing search results [@mikdiet](https://github.com/mikdiet)
+  * #167 Update Merge script to work with sdoc v2 [@mikdiet](https://github.com/mikdiet)
+  * #160 Remove outline from reset stylesheet [@p8](https://github.com/p8)
+  * #159 Remove TAB override in panel [@p8](https://github.com/p8)
+  * #157 Move to GitHub action for tests [@MikeRogers0](https://github.com/MikeRogers0)
+  * #155 Fix Ctrl+C copying [Jan Schär](https://github.com/jscissr)
+  
+  2.1.0
+  =====
+  
+  * #154 Make panel responsive for mobile [@MikeRogers0](https://github.com/MikeRogers0) and [@p8](https://github.com/p8)
+  * #153 Add viewport metatag to views for improved Lighthouse score. [@MikeRogers0](https://github.com/MikeRogers0)
+  * #150 Use semantic headers for better SEO [@p8](https://github.com/p8)
+  
+  2.0.4
+  =====
+  
+  * #149 Using HTML5 doctype accross all HTML files. [@MikeRogers0](https://github.com/MikeRogers0)
+  * #148 Fix overflow CSS property of panel elements. [@cveneziani](https://github.com/cveneziani)
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:21:49 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.3
