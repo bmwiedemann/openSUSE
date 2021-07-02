@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora_version}%{?centos_version}%{?rhel_version}
+%if 0%{?fedora_version}%{?centos_version}%{?rhel_version}%{?almalinux}
 %define _pkg_base %nil
 %else
 %define _pkg_base -base
@@ -40,7 +40,7 @@
 ExclusiveArch:  skip-build
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?almalinux} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -71,14 +71,14 @@ ExclusiveArch:  skip-build
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version} || 0%{?almalinux}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
+%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common
@@ -88,6 +88,14 @@ ExclusiveArch:  skip-build
 %if 0%{?mageia} || 0%{?mandriva_version}
 %define pyyaml_package python-yaml
 %define locale_package locales
+%endif
+
+# Mageia 8 has package names python-*
+# but requires python3 in shebang
+%if 0%{?mageia} >= 8 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?almalinux} >= 8
+%define python_path %{_bindir}/python3
+%else
+%define python_path %{_bindir}/%{use_python}
 %endif
 
 # avoid code duplication
@@ -111,8 +119,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.26.1623775884.87f49a8
-Version:        0.10.26.1623775884.87f49a8
+%define version_unconverted 0.10.26.1624258505.aed4969
+Version:        0.10.26.1624258505.aed4969
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -249,7 +257,7 @@ source artefacts (.dsc, .origin.tar.gz and .debian.tar.gz if non-native).
 
 %install
 %if %{without obs_scm_testsuite}
-make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{_bindir}/%{use_python}" WITH_GBP="%{enable_gbp}"
+make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{python_path}" WITH_GBP="%{enable_gbp}"
 
 %else
 

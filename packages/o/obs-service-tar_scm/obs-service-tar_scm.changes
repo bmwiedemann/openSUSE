@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 21 07:01:03 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.26.1624258505.aed4969:
+  * almalinux in spec file
+  * fix include filters for obscpio files
+  * fix python interpreter for mageia 8
+  * TarScm: use owner/group root in  .obscpio files
+
+-------------------------------------------------------------------
 Tue Jun 15 17:02:19 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.26.1623775884.87f49a8:
