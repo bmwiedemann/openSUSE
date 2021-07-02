@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 30 14:26:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build postgresql95 and postgresql96 flavors on Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Sep 25 16:29:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 13 
+
+-------------------------------------------------------------------
+Fri Sep 25 16:27:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 8.4.1
+  - Accept composite argument type. [@ikasou]
+  - Internal change to postgres api required code change. No
+    noticeable change to users
+  - R can pass to PG arrays of any dimensions.
+  - Major duplicate code removal in R to PG conversion.
+- refreshed patch-Makefile-ldflags.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 18:38:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop postgresql94 flavor: pgsql94 is EOL.
