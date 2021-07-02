@@ -22,12 +22,12 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/containers/libpod
+URL:            https://github.com/containers/podman
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source3:        %{name}-rpmlintrc
@@ -58,7 +58,7 @@ Requires:       cni-plugins
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
-Requires:       libcontainers-common >= 20200727
+Requires:       libcontainers-common >= 20210626
 Requires:       runc >= 1.0.0~rc4
 Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
@@ -215,10 +215,9 @@ test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf
 %systemd_user_postun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 
 %posttrans
-# if libpod.conf.rpmsave was created move it back into place and set an update
+# if libpod.conf.rpmsave was created, set an update
 # message informing about the libpod.conf -> containers.conf change
 if test -f /etc/containers/libpod.conf.rpmsave ; then
-    mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf ||:
     cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf << EOF
 WARNING: Podman configuration file changes
 
@@ -230,10 +229,6 @@ straight-forward.
 The new default configuration is located in /usr/share/containers/containers.conf.
 In order to override setting from that file you can create
 /etc/containers/containers.conf with your changed settings.
-
-For backwards compatibility Podman 2.0 is still able to read libpod.conf. The support
-for this will go away in future releases. Please migrate your configuration to the new
-format as soon as possible.
 EOF
 fi
 
