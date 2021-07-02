@@ -66,4 +66,15 @@
 - Update Requires from setup.py (forwarded request 881900 from glaubitz)</comment>
     <requestid>881979</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52d638a29fad7c5383559d6f0eb3e192</srcmd5>
+    <version>12.5.0</version>
+    <time>1625225230</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 903445 from glaubitz)</comment>
+    <requestid>903468</requestid>
+  </revision>
 </revisionlist>

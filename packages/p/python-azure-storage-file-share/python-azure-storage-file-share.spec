@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-file-share
-Version:        12.4.1
+Version:        12.5.0
 Release:        0
 Summary:        Azure Storage File Share client library for Python
 License:        MIT
