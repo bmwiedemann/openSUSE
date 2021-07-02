@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:59:42 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.15.3
+ see installed History.rdoc
+
+  === 4.15.3 / 2021-05-15
+  
+  * 1 minor enhancement:
+  
+    * Added 3.0 to pt_testcase.rb
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:22:58 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.15.2
