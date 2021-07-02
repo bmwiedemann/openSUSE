@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jun 28 10:11:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.1.12
+  * Shutdown request sequence has been modified to be more
+    graceful, it now is preceded by interrupt, and will also send
+    a SIGTERM before forcibly killing the kernel
+  * Removal of ipython_genutils as a dependency. It was implicit
+    before; but required by at least traitlets thus avoiding
+    issues. We are working on completely removing it from all
+    jupyter dependencies; as it might lead to issues packaging for
+    Python 3.10, and was mostly used for compatibility with python
+    2.
+  * Address a race condition between shutdown_kernel and restarter.
+- Release 6.1.11
+  * Move jedi pinning to test requirements
+- Release 6.1.10
+  * Add change parameter needed for observer method of
+    kernel_spec_manager trait
+- Release 6.1.9
+  * Pin jedi<=0.17.2
+- Release 6.1.8
+  * Doc updates
+  * Fix path to the connection file
+  * Code cleanup
+  * Silence kill_kernel when no process is present
+  * Remove extra_env and corresponding test
+  * Add documentation dependencies to setup.py
+  * Fix for Windows localhost IP addresses
+  * Drop Travis CI, add GitHub Actions
+  * Adapt KernelManager._kernel_spec_manager_changed to observe
+  * Allow use ~/ in the kernel's command or its arguments
+  * Change wait_for_ready logic
+  * Fix test_session with msgpack v1
+- Add jupyter_client-pr646-remove-async_generator.patch
+  * gh#jupyter/jupyter_client#646
+  * fixes the current staging:F failure, same as
+    gh#jupyter/jupyter_client#661
+- Use flaky plugin for unreliable parallel kernel tests
+
+-------------------------------------------------------------------
 Sat Sep  5 16:42:02 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

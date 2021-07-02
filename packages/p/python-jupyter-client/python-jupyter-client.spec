@@ -1,7 +1,7 @@
 #
-# spec file for package python-jupyter-client
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,19 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jupyter-client%{psuffix}
-Version:        6.1.7
+Version:        6.1.12
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM jupyter_client-pr646-remove-async_generator.patch -- gh#jupyter/jupyter_client#646
+Patch1:         jupyter_client-pr646-remove-async_generator.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyter_client = %{version}
-Requires:       python-entrypoints
 Requires:       python-jupyter-core >= 4.6.0
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pyzmq >= 13
@@ -48,13 +49,15 @@ Obsoletes:      python-jupyter_client < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module jupyter-client = %{version}}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module traitlets}
+# flaky is not an upstream dep, but for obs flakyness of parallel kernel test
+BuildRequires:  %{python_module flaky}
 %endif
 %python_subpackages
 
@@ -86,7 +89,11 @@ for use with Jupyter frontends.
 This package provides the jupyter components.
 
 %prep
-%setup -q -n jupyter_client-%{version}
+%autosetup -p1 -n jupyter_client-%{version}
+
+# obs is a bit slow (fixed upstream in >= 6.1.13)
+sed -i -E 's/(^\s+)break/\1time.sleep(1)\n\1break/' \
+    jupyter_client/tests/test_kernelapp.py
 
 %build
 %python_build
@@ -100,7 +107,7 @@ This package provides the jupyter components.
 %if %{with test}
 %check
 pushd jupyter_client/tests
-%pytest
+%pytest --force-flaky --max-runs=2 --no-success-flaky-report
 popd
 %endif
 
