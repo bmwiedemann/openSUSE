@@ -59,6 +59,11 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
+# PATCH-FIX-UPSTREAM ibus-socket-name-compatibility.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse
+# Compatibility workaround for ibus-use-wayland-display-for-socket-name.patch
+# Qt5 does not be update to the new version and patch for ibus on Leap 15, 
+# it still needs this patch on leap 15. (boo#1187202)
+Patch15:        ibus-socket-name-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -193,6 +198,9 @@ cp -r %{SOURCE11} .
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%if 0%{?suse_version} <= 1500
+%patch15 -p1
+%endif
 
 %build
 autoreconf -fi

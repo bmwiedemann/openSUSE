@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 30 05:36:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Rollback ibus-socket-name-compatibility.patch for Leap 15. Qt5 does 
+  not be updated to the new version or patch for ibus on Leap 15. 
+  It still needs this patch on leap 15 (boo#1187202). 
+
+-------------------------------------------------------------------
 Mon Feb 22 01:50:38 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.24
 
 - Upstream update to 1.5.24

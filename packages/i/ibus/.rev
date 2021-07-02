@@ -965,4 +965,14 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>874459</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>1ea0e5bcc82b0b3b2b3a28353e331481</srcmd5>
+    <version>1.5.24</version>
+    <time>1625225195</time>
+    <user>dimstar_suse</user>
+    <comment>- Rollback ibus-socket-name-compatibility.patch for Leap 15. Qt5 does 
+  not be updated to the new version or patch for ibus on Leap 15. 
+  It still needs this patch on leap 15 (boo#1187202). (forwarded request 903162 from hillwood)</comment>
+    <requestid>903172</requestid>
+  </revision>
 </revisionlist>
