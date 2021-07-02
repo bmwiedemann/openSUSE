@@ -274,4 +274,12 @@
     <comment></comment>
     <requestid>900575</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4ae6e349c1b8f6c87313c9f7f78efa9c</srcmd5>
+    <version>3.1.13</version>
+    <time>1625225218</time>
+    <user>dimstar_suse</user>
+    <comment>bugnumber ref added only</comment>
+    <requestid>901337</requestid>
+  </revision>
 </revisionlist>
