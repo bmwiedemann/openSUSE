@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 21 13:21:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.3:
+  + HdySqueezer: Fix a size allocation issue.
+  + HdyTabBar: Fix a leak.
+  + HdyAvatar: Fix getting the pixbuf from the avatar.
+  + HdyClamp: Fix using "size" and not "width" in the
+    documentation.
+  + HdyDeck and HdyLeaflet: Null check a child before using it when
+    looking for a swipeable one.
+  + Specify the translation domain in UI files.
+  + Remove some unused code.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:25:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.2:
