@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-slop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-slop
-Version:        4.8.2
+Version:        4.9.1
 Release:        0
 %define mod_name slop
 %define mod_full_name %{mod_name}-%{version}
