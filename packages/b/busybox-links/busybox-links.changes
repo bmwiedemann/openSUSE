@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  1 13:07:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add util-linux-systemd as BuildRequires
+
+-------------------------------------------------------------------
 Mon Mar 15 10:50:09 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - busybox-misc needs to conflict with lzop and sysstat as it

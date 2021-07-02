@@ -141,4 +141,12 @@
     <comment></comment>
     <requestid>879446</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>fb2cd6aa5180b9a33981d46149949448</srcmd5>
+    <version>MACRO</version>
+    <time>1625225199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add util-linux-systemd as BuildRequires</comment>
+    <requestid>903435</requestid>
+  </revision>
 </revisionlist>

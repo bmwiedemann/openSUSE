@@ -64,6 +64,7 @@ BuildRequires:  traceroute
 BuildRequires:  tunctl
 BuildRequires:  unzip
 BuildRequires:  util-linux
+BuildRequires:  util-linux-systemd
 BuildRequires:  vim
 BuildRequires:  vlan
 BuildRequires:  wget
@@ -158,8 +159,8 @@ BuildRequires:  update-alternatives
 Requires:       busybox = %{version}
 Requires(post): busybox
 Requires(post): update-alternatives
-Requires(preun): busybox
-Requires(preun): update-alternatives
+Requires(preun):busybox
+Requires(preun):update-alternatives
 Obsoletes:      busybox-ash < %{version}
 
 %description -n busybox-sh
@@ -356,8 +357,8 @@ This package contains the symlinks to replace hostname with busybox.
 %package -n busybox-man
 Summary:        Busybox applets replacing man
 Requires:       busybox = %{version}
-Conflicts:      mandoc
 Conflicts:      man
+Conflicts:      mandoc
 
 %description -n busybox-man
 This package contains the symlinks to replace man with busybox.
@@ -407,11 +408,11 @@ This package contains the symlinks to replace tar with busybox.
 Summary:        Busybox applets replacing sendmail
 Requires:       busybox = %{version}
 Provides:       smtp_daemon
-Conflicts:      sendmail
-Conflicts:      postfix
-Conflicts:      postfix-bdb
 Conflicts:      exim
 Conflicts:      msmtp-mta
+Conflicts:      postfix
+Conflicts:      postfix-bdb
+Conflicts:      sendmail
 
 %description -n busybox-sendmail
 This package contains the symlinks to replace sendmail with busybox.
@@ -455,8 +456,8 @@ Summary:        Busybox applets replacing vim
 Requires:       busybox = %{version}
 Conflicts:      gvim
 Conflicts:      vim
-Conflicts:      vim-small
 Conflicts:      vim-nox11
+Conflicts:      vim-small
 
 %description -n busybox-vi
 This package contains the symlinks to provide vi with busybox.
@@ -657,56 +658,104 @@ fi
 %files
 
 %files -n busybox-adduser -f filelist-shadow.txt
+
 %files -n busybox-attr -f filelist-attr.txt
+
 %files -n busybox-bc -f filelist-bc.txt
+
 %files -n busybox-bind-utils -f filelist-bind-utils.txt
+
 %files -n busybox-bzip2 -f filelist-bzip2.txt
+
 %files -n busybox-coreutils -f filelist-coreutils.txt
+
 %files -n busybox-cpio -f filelist-cpio.txt
+
 %files -n busybox-diffutils -f filelist-diffutils.txt
+
 %files -n busybox-dos2unix -f filelist-dos2unix.txt
+
 %files -n busybox-ed -f filelist-ed.txt
+
 %files -n busybox-findutils -f filelist-findutils.txt
+
 %files -n busybox-gawk -f filelist-gawk.txt
+
 %files -n busybox-grep -f filelist-grep.txt
+
 %files -n busybox-gzip -f filelist-gzip.txt
 %{_bindir}/zgrep
 %{_bindir}/zless
 %{_bindir}/zmore
+
 %files -n busybox-hostname -f filelist-hostname.txt
+
 %files -n busybox-iproute2 -f filelist-iproute2.txt
+
 %files -n busybox-iputils -f filelist-iputils.txt
+
 %files -n busybox-kbd -f filelist-kbd.txt
+
 %files -n busybox-kmod -f filelist-kmod.txt
+
 %files -n busybox-less -f filelist-less.txt
+
 %files -n busybox-man -f filelist-man.txt
+
 %files -n busybox-misc -f filelist-misc.txt
+
 %files -n busybox-ncurses-utils -f filelist-ncurses-utils.txt
+
 %files -n busybox-net-tools -f filelist-net-tools.txt
+
 %files -n busybox-netcat -f filelist-netcat-openbsd.txt
+
 %files -n busybox-patch -f filelist-patch.txt
+
 %files -n busybox-policycoreutils -f filelist-policycoreutils.txt
+
 %files -n busybox-procps -f filelist-procps.txt
+
 %files -n busybox-psmisc -f filelist-psmisc.txt
+
 %files -n busybox-sed -f filelist-sed.txt
+
 %files -n busybox-selinux-tools -f filelist-selinux-tools.txt
+
 %files -n busybox-sendmail -f filelist-sendmail.txt
+
 %files -n busybox-sharutils -f filelist-sharutils.txt
+
 %files -n busybox-syslogd -f filelist-syslogd.txt
+
 %files -n busybox-sysvinit-tools -f filelist-sysvinit-tools.txt
+
 %files -n busybox-tar -f filelist-tar.txt
+
 %files -n busybox-telnet -f filelist-telnet.txt
+
 %files -n busybox-tftp -f filelist-tftp.txt
+
 %files -n busybox-time -f filelist-time.txt
+
 %files -n busybox-traceroute -f filelist-traceroute.txt
+
 %files -n busybox-tunctl -f filelist-tunctl.txt
+
 %files -n busybox-unzip -f filelist-unzip.txt
+
 %files -n busybox-util-linux -f filelist-util-linux.txt -f filelist-util-linux-systemd.txt
+
 %files -n busybox-vi -f filelist-vim.txt
+
 %files -n busybox-vlan -f filelist-vlan.txt
+
 %files -n busybox-wget -f filelist-wget.txt
+
 %files -n busybox-which -f filelist-which.txt
+
 %files -n busybox-whois -f filelist-whois.txt
+
 %files -n busybox-xz -f filelist-xz.txt
 
 %files -n busybox-sh -f filelist-sh.txt
