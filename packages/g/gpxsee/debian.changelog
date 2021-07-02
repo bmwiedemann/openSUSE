@@ -1,3 +1,10 @@
+gpxsee (9.2) stable; urgency=low
+
+  * Added support for World-File georeferenced images.
+  * Fixed SML and CSV parser issues.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 29 Jun 2021 23:40:55 +0200
+
 gpxsee (9.1) stable; urgency=low
 
   * Added support for TomTom OV2 and ITN files.

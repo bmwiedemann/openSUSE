@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 29 23:36:00 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.2
+  * Added support for World-File georeferenced images.
+  * Fixed SML and CSV parser issues.
+
+-------------------------------------------------------------------
 Sat May 29 10:32:56 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.1
