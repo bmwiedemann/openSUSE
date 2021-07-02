@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-CSV
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,21 @@
 #
 
 
-Name:           perl-Text-CSV
-Version:        2.00
-Release:        0
 %define cpan_name Text-CSV
+Name:           perl-Text-CSV
+Version:        2.01
+Release:        0
 Summary:        Comma-separated values manipulator (using XS or PurePerl)
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.71
 Requires:       perl(Test::More) >= 0.71
-Recommends:     perl(Text::CSV_XS) >= 1.02
+Recommends:     perl(Text::CSV_XS) >= 1.46
 %{perl_requires}
 
 %description
@@ -43,11 +41,11 @@ default, and when Text::CSV_XS is not available, falls back on
 Text::CSV_PP, which is bundled in the same distribution as this module.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -58,7 +56,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog
