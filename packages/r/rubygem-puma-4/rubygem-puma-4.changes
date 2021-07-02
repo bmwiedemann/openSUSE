@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:48:15 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.3.8
+ see installed History.md
+
+  ## 4.3.8 / 2021-05-11
+  
+  * Security
+    * Close keepalive connections after the maximum number of fast inlined requests (#2625)
+  
+
+-------------------------------------------------------------------
 Fri Jan 22 08:56:44 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.3.7
