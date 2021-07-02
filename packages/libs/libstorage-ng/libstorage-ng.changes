@@ -1,4 +1,38 @@
 --------------------------------------------------------------------
+Wed Jun 30 16:16:51 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#818
+- fixed action dependency generation when certain LVM and btrfs
+  quota action are present
+- added unit test
+- more detailed exception messages
+- 4.4.19
+
+--------------------------------------------------------------------
+Wed Jun 30 08:05:34 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#817
+- allow trailing newlines in json parser
+- 4.4.18
+
+--------------------------------------------------------------------
+Tue Jun 29 09:10:06 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#816
+- new exceptions for invalid stripe and chunk sizes
+- 4.4.17
+
+--------------------------------------------------------------------
+Mon Jun 28 08:42:41 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#815
+- added functions to validate LVM VG and LV names
+- preceded LVM VG and LV name by '--' during command invocation
+- added notes
+- work on LVM support
+- 4.4.16
+
+--------------------------------------------------------------------
 Mon Jun 21 10:33:29 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#814
