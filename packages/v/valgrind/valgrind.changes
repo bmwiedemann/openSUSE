@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Mar 20 17:27:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.17.0:
+- update to 3.17.0 (jsc#SLE-18713):
   * 3.17.0 fixes a number of bugs and adds some functional changes: support for GCC
     11, Clang 11, DWARF5 debuginfo, the 'debuginfod' debuginfo server, and
     some new instructions for Arm64, S390 and POWER.  There are also some tool
