@@ -82,6 +82,7 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
+Patch2:         wxWidgets-3.1.5-fix-wxIcon-wxDVC-columns.patch
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
