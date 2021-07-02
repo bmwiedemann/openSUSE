@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Tue Jun 29 07:31:16 UTC 2021 - lslezak@suse.cz
+
+- merge gh#openSUSE/linuxrc#271
+- Removed .travis.yml
+- Removed Dockerfile
+- Added GitHub Actions
+- Switch from Travis to GitHub Actions
+- 8.0.3
+
+--------------------------------------------------------------------
 Fri Jun 25 13:30:12 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#268
