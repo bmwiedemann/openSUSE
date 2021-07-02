@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-omniauth
-Version:        2.0.1
+Version:        2.0.4
 Release:        0
 %define mod_name omniauth
 %define mod_full_name %{mod_name}-%{version}
