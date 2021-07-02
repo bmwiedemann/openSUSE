@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jul  1 03:39:56 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/opencontainers/runc/pull/3055> to fix issues
+  with runc under openSUSE MicroOS's SELinux policy. boo#1187704
+  + boo1187704-0001-cgroupv2-ebpf-ignore-inaccessible-existing-programs.patch
+
+-------------------------------------------------------------------
+Tue Jun  1 11:00:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.0. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0
+
+  ! The usage of relative paths for mountpoints will now produce a warning
+    (such configurations are outside of the spec, and in future runc will
+    produce an error when given such configurations).
+
+  * cgroupv2: devices: rework the filter generation to produce consistent
+    results with cgroupv1, and always clobber any existing eBPF
+    program(s) to fix runc update and avoid leaking eBPF programs
+    (resulting in errors when managing containers).
+  * cgroupv2: correctly convert "number of IOs" statistics in a
+    cgroupv1-compatible way.
+  * cgroupv2: support larger than 32-bit IO statistics on 32-bit architectures.
+  * cgroupv2: wait for freeze to finish before returning from the freezing
+    code, optimize the method for checking whether a cgroup is frozen.
+  * cgroups/systemd: fixed "retry on dbus disconnect" logic introduced in rc94
+  * cgroups/systemd: fixed returning "unit already exists" error from a systemd
+    cgroup manager (regression in rc94)
+
+  + cgroupv2: support SkipDevices with systemd driver
+  + cgroup/systemd: return, not ignore, stop unit error from Destroy
+  + Make "runc --version" output sane even when built with go get or
+    otherwise outside of our build scripts.
+  + cgroups: set SkipDevices during runc update (so we don't modify
+    cgroups at all during runc update).
+  + cgroup1: blkio: support BFQ weights.
+  + cgroupv2: set per-device io weights if BFQ IO scheduler is available.
+
+-------------------------------------------------------------------
 Wed May 19 10:00:00 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.0~rc95. Upstream changelog is available from

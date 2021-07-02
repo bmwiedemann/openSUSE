@@ -25,8 +25,8 @@
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.0.0~rc95
-%define _version 1.0.0-rc95
+Version:        1.0.0
+%define _version 1.0.0
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -36,6 +36,8 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
+# FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/3055>. boo#1187704
+Patch1:         boo1187704-0001-cgroupv2-ebpf-ignore-inaccessible-existing-programs.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -69,6 +71,8 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{_version}
+# boo#1187704
+%patch1 -p1
 
 %build
 # build runc
