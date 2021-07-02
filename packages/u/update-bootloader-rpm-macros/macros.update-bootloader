@@ -1,4 +1,4 @@
-%update_bootloader_requires Requires(posttrans): perl-Bootloader
+%update_bootloader_requires %{nil}
 
 %update_bootloader_refresh_post() \
 mkdir -p %{_rundir}/update-bootloader/ \
@@ -39,11 +39,13 @@ done \
 %nil
 
 %update_bootloader_posttrans \
-if test -f %{_rundir}/update-bootloader/reinit; then \
-  rm -f %{_rundir}/update-bootloader/{reinit,refresh} \
-  /sbin/update-bootloader --reinit || : \
-elif test -f %{_rundir}/update-bootloader/refresh; then \
-  rm -f %{_rundir}/update-bootloader/refresh \
-  /sbin/update-bootloader --refresh || : \
+if test -x /sbin/update-bootloader; then \
+  if test -f %{_rundir}/update-bootloader/reinit; then \
+    rm -f %{_rundir}/update-bootloader/{reinit,refresh} \
+    /sbin/update-bootloader --reinit || : \
+  elif test -f %{_rundir}/update-bootloader/refresh; then \
+    rm -f %{_rundir}/update-bootloader/refresh \
+    /sbin/update-bootloader --refresh || : \
+  fi \
 fi \
 %nil

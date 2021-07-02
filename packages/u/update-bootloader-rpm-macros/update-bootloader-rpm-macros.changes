@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 29 07:07:07 UTC 2021 - olaf@aepfle.de
+
+- Make sure _rpmmacrodir is defined to restore compatibility with SLE12
+
+-------------------------------------------------------------------
+Thu Jun 24 09:33:46 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- make perl-Bootloader optional. This avoids to pull in perl in
+  small systems that do not necessarily use perl-Bootloader
+
+-------------------------------------------------------------------
 Fri May 10 09:16:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

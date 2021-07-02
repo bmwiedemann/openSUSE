@@ -1,7 +1,7 @@
 #
 # spec file for package update-bootloader-rpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if %{undefined _rpmmacrodir}
+  %define _rpmmacrodir %{_sysconfdir}/rpm
+%endif
 
 Name:           update-bootloader-rpm-macros
 Version:        0
@@ -38,7 +41,6 @@ mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m644 %{SOURCE0} %{buildroot}%{_rpmmacrodir}
 
 %files
-%defattr(-,root,root)
 %{_rpmmacrodir}/macros.update-bootloader
 
 %changelog
