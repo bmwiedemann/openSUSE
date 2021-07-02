@@ -113,6 +113,8 @@ Patch9:         bsc1182969.patch
 Patch10:        tdf142839.patch
 # Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS
 Patch11:        multicolumn-crash-fix.patch
+# bsc#1187173, bsc#1186871 fix component handling for ucpdav1 when --with-webdav=serf
+Patch12:        bsc1187173.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -990,6 +992,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif

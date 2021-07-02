@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:00:24 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1187173 and bsc#1186871: fix component handling for ucpdav1 when --with-webdav=serf
+  * bsc1187173.patch
+
+-------------------------------------------------------------------
 Tue Jun 22 18:11:32 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS

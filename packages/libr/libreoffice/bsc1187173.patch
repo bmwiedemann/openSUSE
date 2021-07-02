@@ -1,0 +1,305 @@
+From 8dcf0e0ccdd17d1c1b650e43944cb1e706920edd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lubo=C5=A1=20Lu=C5=88=C3=A1k?= <l.lunak@collabora.com>
+Date: Thu, 22 Apr 2021 21:56:29 +0200
+Subject: [PATCH] fix component handling for ucpdav1 when --with-webdav=serf
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Both the webdav=neon and webdav=serf cases were actually using
+the same ucpdav1.component file. And f3f0d05f72d8dbd9717910b4d6b4
+changed component handling for neon, but not for serf.
+So separate component handling for neon and for serf, and also
+do the f3f0d05 change also for the serf case.
+
+Change-Id: Id5907cf1c8fbb93817e81295f71ad87191fe5c16
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/114525
+Tested-by: Jenkins
+Reviewed-by: Luboš Luňák <l.lunak@collabora.com>
+(cherry picked from commit 237446b38631c2a40c227e96f7f8c30b9c3932b4)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/114502
+Tested-by: Jenkins CollaboraOffice <jenkinscollaboraoffice@gmail.com>
+Reviewed-by: Andras Timar <andras.timar@collabora.com>
+---
+ postprocess/Rdb_services.mk              |  5 ++-
+ ucb/Library_ucpdav1.mk                   |  7 +--
+ ucb/source/ucp/webdav/ucpdav1.component  |  7 ++-
+ ucb/source/ucp/webdav/webdavprovider.cxx | 52 ++++++----------------
+ ucb/source/ucp/webdav/webdavprovider.hxx |  7 ---
+ ucb/source/ucp/webdav/webdavservices.cxx | 56 ------------------------
+ 6 files changed, 25 insertions(+), 109 deletions(-)
+ delete mode 100644 ucb/source/ucp/webdav/webdavservices.cxx
+
+diff --git a/postprocess/Rdb_services.mk b/postprocess/Rdb_services.mk
+index ad5549d75aaf..5ecd216005eb 100644
+--- a/postprocess/Rdb_services.mk
++++ b/postprocess/Rdb_services.mk
+@@ -173,9 +173,12 @@ $(eval $(call gb_Rdb_add_components,services,\
+ 		extensions/source/ole/oleautobridge \
+ 		winaccessibility/source/service/winaccessibility \
+ 	) \
+-	$(if $(WITH_WEBDAV), \
++	$(if $(filter neon,$(WITH_WEBDAV)), \
+ 		ucb/source/ucp/webdav-neon/ucpdav1 \
+ 	) \
++	$(if $(filter serf,$(WITH_WEBDAV)), \
++		ucb/source/ucp/webdav/ucpdav1 \
++	) \
+ 	$(call gb_Helper_optional,SCRIPTING, \
+ 		basctl/util/basctl \
+ 		sc/util/vbaobj \
+diff --git a/ucb/Library_ucpdav1.mk b/ucb/Library_ucpdav1.mk
+index b9e1d1037897..127d046eb72b 100644
+--- a/ucb/Library_ucpdav1.mk
++++ b/ucb/Library_ucpdav1.mk
+@@ -10,8 +10,6 @@
+
+ $(eval $(call gb_Library_Library,ucpdav1))
+
+-$(eval $(call gb_Library_set_componentfile,ucpdav1,ucb/source/ucp/webdav-neon/ucpdav1))
+-
+ $(eval $(call gb_Library_use_sdk_api,ucpdav1))
+
+ $(eval $(call gb_Library_set_include,ucpdav1,\
+@@ -31,6 +29,8 @@ $(eval $(call gb_Library_use_libraries,ucpdav1,\
+
+ ifeq ($(WITH_WEBDAV),neon)
+
++$(eval $(call gb_Library_set_componentfile,ucpdav1,ucb/source/ucp/webdav-neon/ucpdav1))
++
+ $(eval $(call gb_Library_use_externals,ucpdav1,\
+ 	boost_headers \
+ 	libxml2 \
+@@ -69,6 +69,8 @@ $(eval $(call gb_Library_add_exception_objects,ucpdav1,\
+
+ else # WITH_WEBDAV == serf
+
++$(eval $(call gb_Library_set_componentfile,ucpdav1,ucb/source/ucp/webdav/ucpdav1))
++
+ $(eval $(call gb_Library_use_externals,ucpdav1,\
+ 	boost_headers \
+ 	apr \
+@@ -110,7 +112,6 @@ $(eval $(call gb_Library_add_exception_objects,ucpdav1,\
+ 	ucb/source/ucp/webdav/webdavprovider \
+ 	ucb/source/ucp/webdav/webdavresponseparser \
+ 	ucb/source/ucp/webdav/webdavresultset \
+-	ucb/source/ucp/webdav/webdavservices \
+  ))
+
+ endif # WITH_WEBDAV
+diff --git a/ucb/source/ucp/webdav/ucpdav1.component b/ucb/source/ucp/webdav/ucpdav1.component
+index 50a3d87b28e0..bb16e3b3979d 100644
+--- a/ucb/source/ucp/webdav/ucpdav1.component
++++ b/ucb/source/ucp/webdav/ucpdav1.component
+@@ -17,11 +17,10 @@
+  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+  -->
+
+-
+-
+-<component loader="com.sun.star.loader.SharedLibrary"
++<component loader="com.sun.star.loader.SharedLibrary" environment="@CPPU_ENV@"
+     xmlns="http://openoffice.org/2010/uno-components">
+-  <implementation name="com.sun.star.comp.WebDAVContentProvider">
++  <implementation name="com.sun.star.comp.WebDAVContentProvider"
++    constructor="ucb_webdav_ContentProvider_get_implementation">
+     <service name="com.sun.star.ucb.WebDAVContentProvider"/>
+   </implementation>
+ </component>
+diff --git a/ucb/source/ucp/webdav/webdavprovider.cxx b/ucb/source/ucp/webdav/webdavprovider.cxx
+index 570b36e6180c..cc19bc7f0a61 100644
+--- a/ucb/source/ucp/webdav/webdavprovider.cxx
++++ b/ucb/source/ucp/webdav/webdavprovider.cxx
+@@ -82,56 +82,25 @@ XTYPEPROVIDER_IMPL_3( ContentProvider,
+
+
+ // XServiceInfo methods.
+-OUString SAL_CALL ContentProvider::getImplementationName()
+-{
+-    return getImplementationName_Static();
+-}
+
+-OUString ContentProvider::getImplementationName_Static()
++OUString
++ContentProvider::getImplementationName()
+ {
+     return "com.sun.star.comp.WebDAVContentProvider";
+ }
+
+-sal_Bool SAL_CALL ContentProvider::supportsService( const OUString& ServiceName )
+-{
+-    return cppu::supportsService( this, ServiceName );
+-}
+-
+-css::uno::Sequence< OUString > SAL_CALL ContentProvider::getSupportedServiceNames()
+-{
+-    return getSupportedServiceNames_Static();
+-}
+-
+-/// @throws css::uno::Exception
+-static css::uno::Reference< css::uno::XInterface >
+-ContentProvider_CreateInstance( const css::uno::Reference< css::lang::XMultiServiceFactory> & rSMgr )
+-{
+-    css::lang::XServiceInfo* pX =
+-                static_cast<css::lang::XServiceInfo*>(new ContentProvider( comphelper::getComponentContext(rSMgr) ));
+-    return css::uno::Reference< css::uno::XInterface >::query( pX );
+-}
+-
+ css::uno::Sequence< OUString >
+-ContentProvider::getSupportedServiceNames_Static()
++ContentProvider::getSupportedServiceNames()
+ {
+-    css::uno::Sequence< OUString > aSNS { WEBDAV_CONTENT_PROVIDER_SERVICE_NAME };
+-    return aSNS;
++    return { WEBDAV_CONTENT_PROVIDER_SERVICE_NAME };
+ }
+
+-// Service factory implementation.
+-
+-css::uno::Reference< css::lang::XSingleServiceFactory >
+-ContentProvider::createServiceFactory( const css::uno::Reference< css::lang::XMultiServiceFactory >& rxServiceMgr )
++sal_Bool
++ContentProvider::supportsService(const OUString& s)
+ {
+-    return cppu::createOneInstanceFactory(
+-                rxServiceMgr,
+-                ContentProvider::getImplementationName_Static(),
+-                ContentProvider_CreateInstance,
+-                ContentProvider::getSupportedServiceNames_Static() );
++    return cppu::supportsService(this, s);
+ }
+
+-
+-
+ // XContentProvider methods.
+
+
+@@ -198,4 +167,11 @@ ContentProvider::queryContent(
+     return xContent;
+ }
+
++extern "C" SAL_DLLPUBLIC_EXPORT css::uno::XInterface*
++ucb_webdav_ContentProvider_get_implementation(
++    css::uno::XComponentContext* context, css::uno::Sequence<css::uno::Any> const&)
++{
++    return cppu::acquire(new ContentProvider(context));
++}
++
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/ucb/source/ucp/webdav/webdavprovider.hxx b/ucb/source/ucp/webdav/webdavprovider.hxx
+index e399178a9df9..76540cd3d4d8 100644
+--- a/ucb/source/ucp/webdav/webdavprovider.hxx
++++ b/ucb/source/ucp/webdav/webdavprovider.hxx
+@@ -85,13 +85,6 @@ public:
+     virtual sal_Bool SAL_CALL supportsService( const OUString& ServiceName ) override;
+     virtual css::uno::Sequence< OUString > SAL_CALL getSupportedServiceNames() override;
+
+-    static OUString getImplementationName_Static();
+-    static css::uno::Sequence< OUString > getSupportedServiceNames_Static();
+-
+-    static css::uno::Reference< css::lang::XSingleServiceFactory >
+-    createServiceFactory( const css::uno::Reference<
+-                          css::lang::XMultiServiceFactory >& rxServiceMgr );
+-
+     // XContentProvider
+     virtual css::uno::Reference< css::ucb::XContent > SAL_CALL
+     queryContent( const css::uno::Reference< css::ucb::XContentIdentifier >& Identifier ) override;
+diff --git a/ucb/source/ucp/webdav/webdavservices.cxx b/ucb/source/ucp/webdav/webdavservices.cxx
+deleted file mode 100644
+index 419c9740d3e0..000000000000
+--- a/ucb/source/ucp/webdav/webdavservices.cxx
++++ /dev/null
+@@ -1,56 +0,0 @@
+-/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+-/*
+- * This file is part of the LibreOffice project.
+- *
+- * This Source Code Form is subject to the terms of the Mozilla Public
+- * License, v. 2.0. If a copy of the MPL was not distributed with this
+- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+- *
+- * This file incorporates work covered by the following license notice:
+- *
+- *   Licensed to the Apache Software Foundation (ASF) under one or more
+- *   contributor license agreements. See the NOTICE file distributed
+- *   with this work for additional information regarding copyright
+- *   ownership. The ASF licenses this file to you under the Apache
+- *   License, Version 2.0 (the "License"); you may not use this file
+- *   except in compliance with the License. You may obtain a copy of
+- *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+- */
+-
+-#include <com/sun/star/lang/XMultiServiceFactory.hpp>
+-#include <com/sun/star/lang/XSingleServiceFactory.hpp>
+-#include "webdavprovider.hxx"
+-
+-using namespace com::sun::star;
+-
+-extern "C" SAL_DLLPUBLIC_EXPORT void * ucpdav1_component_getFactory(
+-    const char * pImplName, void * pServiceManager, void * /*pRegistryKey*/ )
+-{
+-    void * pRet = nullptr;
+-
+-    uno::Reference< lang::XMultiServiceFactory > xSMgr(
+-            static_cast< lang::XMultiServiceFactory * >( pServiceManager ) );
+-    uno::Reference< lang::XSingleServiceFactory > xFactory;
+-
+-
+-    // WebDAV Content Provider.
+-
+-
+-    if ( ::http_dav_ucp::ContentProvider::getImplementationName_Static().
+-                equalsAscii( pImplName ) )
+-    {
+-        xFactory = ::http_dav_ucp::ContentProvider::createServiceFactory( xSMgr );
+-    }
+-
+-
+-    if ( xFactory.is() )
+-    {
+-        xFactory->acquire();
+-        pRet = xFactory.get();
+-    }
+-
+-    return pRet;
+-}
+-
+-
+-/* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+--
+2.26.2
+commit b345c5b489a8b270dfa767d2bb773232540a7fe6
+Author: Luboš Luňák <l.lunak@collabora.com>
+Date:   Thu Apr 22 22:07:48 2021 +0200
+
+    handle properly missing URI components for webdav/serf
+
+    Username is not mandatory for http://, and files require only path.
+
+    Change-Id: Iab4e81692b288d17dd8a35954e34a1bbe7c943ef
+    Reviewed-on: https://gerrit.libreoffice.org/c/core/+/114526
+    Tested-by: Jenkins
+    Reviewed-by: Luboš Luňák <l.lunak@collabora.com>
+    (cherry picked from commit 8313e7fe55d4ad147df0b5b1f9f94c6882197132)
+    Reviewed-on: https://gerrit.libreoffice.org/c/core/+/114503
+    Tested-by: Jenkins CollaboraOffice <jenkinscollaboraoffice@gmail.com>
+    Reviewed-by: Andras Timar <andras.timar@collabora.com>
+
+diff --git a/ucb/source/ucp/webdav/SerfUri.cxx b/ucb/source/ucp/webdav/SerfUri.cxx
+index dab11a64cfa9..ac87848c0878 100644
+--- a/ucb/source/ucp/webdav/SerfUri.cxx
++++ b/ucb/source/ucp/webdav/SerfUri.cxx
+@@ -90,9 +90,9 @@ SerfUri::SerfUri( const OUString & inUri )
+
+ void SerfUri::init( const apr_uri_t * pUri )
+ {
+-    mScheme   = OStringToOUString( pUri->scheme, RTL_TEXTENCODING_UTF8 );
+-    mUserInfo = OStringToOUString( pUri->user, RTL_TEXTENCODING_UTF8 );
+-    mHostName = OStringToOUString( pUri->hostname, RTL_TEXTENCODING_UTF8 );
++    mScheme   = pUri->scheme ? OStringToOUString( pUri->scheme, RTL_TEXTENCODING_UTF8 ) : "";
++    mUserInfo = pUri->user ? OStringToOUString( pUri->user, RTL_TEXTENCODING_UTF8 ) : "";
++    mHostName = pUri->hostname ? OStringToOUString( pUri->hostname, RTL_TEXTENCODING_UTF8 ) : "";
+     mPort     = pUri->port;
+     mPath     = OStringToOUString( pUri->path, RTL_TEXTENCODING_UTF8 );
+
+
