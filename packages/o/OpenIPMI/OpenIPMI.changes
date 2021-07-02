@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 20:42:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use Python3 instead of Python2.
+
+-------------------------------------------------------------------
 Mon Mar  8 14:16:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - drop -fPIC from CFLAGS which breaks our gcc-PIE profile resulting in

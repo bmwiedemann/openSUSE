@@ -71,9 +71,10 @@ BuildRequires:  openssl-devel
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
-BuildRequires:  python-devel
-BuildRequires:  python-tk
-BuildRequires:  python-xml
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-tk
+BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  swig
 BuildRequires:  systemd-rpm-macros
@@ -125,15 +126,15 @@ Requires:       libOpenIPMI0 = %{version}
 These libraries are needed to get full access to the OpenIPMI
 functions.
 
-%package python
+%package python3
 Summary:        Python module and GUI for OpenIPMI
 Group:          System/Monitoring
 Requires:       OpenIPMI
-Requires:       python-tk
+Requires:       python3-tk
 Requires:       tix
 Provides:       openipmigui
 
-%description python
+%description python3
 The Python parts provide an OpenIPMI Python library and a GUI, openipmigui,
 that makes use of it.
 
@@ -147,11 +148,12 @@ rm -rf ./libedit
 export EDIT_CFLAGS=`pkg-config --cflags libedit`
 export EDIT_LIBS=`pkg-config --libs libedit`
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export PYTHON_VERSION=%{python3_version}
 chmod 755 %{SOURCE4}
 %{SOURCE4}
 %configure --disable-static \
            --with-openssl=yes \
-           --with-pythoninstall=%{python_sitearch} \
+           --with-pythoninstall=%{python3_sitearch} \
            --with-tcl=yes \
            --with-tcllibs=-ltcl%{tcl_version} \
            --with-tkinter=yes
@@ -181,11 +183,11 @@ install -d %{buildroot}%{_libexecdir}
 install -m 755 %{SOURCE3} %{buildroot}%{_libexecdir}/openipmi-helper
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# rebuild python files to fix timestamps:
-for d in "%{python_sitelib}" "%{python_sitearch}"; do
+# rebuild python3 files to fix timestamps:
+for d in "%{python3_sitelib}" "%{python3_sitearch}"; do
     [ -d "%{buildroot}$d" ] || continue
     find "%{buildroot}$d/" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
-    python -c 'import compileall; compileall.compile_dir("%{buildroot}'"$d"'",ddir="'"$d"'",force=1)'
+    python3 -c 'import compileall; compileall.compile_dir("%{buildroot}'"$d"'",ddir="'"$d"'",force=1)'
 done
 
 %pre
@@ -259,12 +261,13 @@ done
 %endif
 ###################################################
 
-%files python
-%{python_sitearch}/*OpenIPMI.*
+%files python3
+%{python3_sitearch}/*OpenIPMI.*
 %doc swig/OpenIPMI.i
 ###### gui files ######
-%dir %{python_sitearch}/openipmigui
-%{python_sitearch}/openipmigui/*
+%dir %{python3_sitearch}/openipmigui
+%{python3_sitearch}/openipmigui/*
+%{python3_sitearch}/__pycache__/*
 %attr(755,root,root) %{_bindir}/openipmigui
 %{_mandir}/man1/openipmigui.1*
 
