@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul  1 21:28:28 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Delete 01-fix-xkbcommon-missing-dep.7edda924.patch since it is in upstream
+  since 1.8.0
+
+-------------------------------------------------------------------
+Thu Jul  1 19:26:17 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.8.1:
+  * New foot.ini options:
+    * cursor.beam-thickness
+    * cursor.style=beam (cursor.style=bar remains a recognized value, but will
+      will eventually be deprecated, and removed)
+    * cursor.underline-thickness
+    * underline-offset
+    * csd.button-color
+    * dedicated [bell] section, supporting multiple actions,      
+      a new command action to run an arbitrary command and                        
+      XDG activation support. The bell option has been deprecated.
+    * dedicated [url] section. The jump-label-letters, osc8-underline and
+      url-launch options have been deprecated in favor of options in
+      this new section.
+    * tweak.grapheme-shaping option to foot.ini to support                  
+      grapheme cluster segmentation and grapheme shaping.
+      The grapheme cluster width is limited to two cells by default,
+      which may cause cursor synchronization issues with many applications.
+    * tweak.grapheme-width-method=wcswidth option to stop limiting
+      grapheme cluster width to two cells.
+    * tweak.pua-double-width option to foot.ini to force                    
+      Private Usage Area codepoints to be treated as double-width characters.
+  * Added support for including files in foot.ini
+  * Added support for setting the full 256 color palette in foot.ini
+  * Added ctrl+c as a default key binding; to cancel search/url mode.
+  * Added support for overriding configuration options on the command line.
+  * Added support for DECSET/DECRST 2026, as an alternative to the existing
+    "synchronized updates" DCS sequences.
+  * Added support for LS2 and LS3 (locking shift) escape sequences.
+  * Added OSC 9 desktop notifications (iTerm2 compatible).
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.8.0 and
+    https://codeberg.org/dnkl/foot/releases/tag/1.8.1 for more details.
+
+-------------------------------------------------------------------
 Sat Jun 12 10:36:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unsubstantiated claims from descriptions.

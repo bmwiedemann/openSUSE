@@ -17,19 +17,19 @@
 
 
 Name:           foot
-Version:        1.7.2
+Version:        1.8.1
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         01-fix-xkbcommon-missing-dep.7edda924.patch
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fcft) < 3.0.0
-BuildRequires:  pkgconfig(fcft) >= 2.3.0
+BuildRequires:  pkgconfig(fcft) >= 2.4.0
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(tllist) >= 1.0.4
