@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-winrm
-Version:        2.3.5
+Version:        2.3.6
 Release:        0
 %define mod_name winrm
 %define mod_full_name %{mod_name}-%{version}
