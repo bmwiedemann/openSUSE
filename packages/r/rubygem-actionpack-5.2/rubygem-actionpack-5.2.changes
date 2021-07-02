@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:48:01 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.2.6
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.6 (May 05, 2021) ##
+  
+  *   Accept base64_urlsafe CSRF tokens to make forward compatible.
+  
+      Base64 strict-encoded CSRF tokens are not inherently websafe, which makes
+      them difficult to deal with. For example, the common practice of sending
+      the CSRF token to a browser in a client-readable cookie does not work properly
+      out of the box: the value has to be url-encoded and decoded to survive transport.
+  
+      In this version, we generate Base64 urlsafe-encoded CSRF tokens, which are inherently
+      safe to transport. Validation accepts both urlsafe tokens, and strict-encoded
+      tokens for backwards compatibility.
+  
+      How the tokes are encoded is controllr by the `action_controller.urlsafe_csrf_tokens`
+      config.
+  
+      In Rails 5.2.5, the CSRF token format was accidentally changed to urlsafe-encoded.
+  
+      **Atention**: If you already upgraded your application to 5.2.5, set the config
+      `urlsafe_csrf_tokens` to `true`, otherwise your form submission will start to fail
+      during the deploy of this new version.
+  
+      ```ruby
+      Rails.application.config.action_controller.urlsafe_csrf_tokens = true
+      ```
+  
+      If you are upgrading from 5.2.4.x, you don't need to change this configuration.
+  
+      *Scott Blum*, *Étienne Barrié*
+  
+  
+  ## Rails 5.2.5 (March 26, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.2.4.6 (May 05, 2021) ##
+  
+  *   Prevent regex DoS in HTTP token authentication
+      CVE-2021-22904
+  
+  *   Prevent string polymorphic route arguments.
+  
+      `url_for` supports building polymorphic URLs via an array
+      of arguments (usually symbols and records). If a developer passes a
+      user input array, strings can result in unwanted route helper calls.
+  
+      CVE-2021-22885
+  
+      *Gannon McGibbon*
+  
+  ## Rails 5.2.4.5 (February 10, 2021) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
 Fri Sep 25 13:19:36 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.2.4.4
