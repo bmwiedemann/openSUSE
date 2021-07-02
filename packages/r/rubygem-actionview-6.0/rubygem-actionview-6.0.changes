@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:49:06 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.4 (June 15, 2021) ##
+  
+  *   SanitizeHelper.sanitized_allowed_attributes and SanitizeHelper.sanitized_allowed_tags
+      call safe_list_sanitizer's class method
+  
+      Fixes #39586
+  
+      *Taufiq Muhammadi*
+  
+  
+  ## Rails 6.0.3.7 (May 05, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.3.6 (March 26, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.3.5 (February 10, 2021) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
 Fri Oct 16 15:10:32 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to version 6.0.3.4: CVE-2020-8264 (boo#1177521)
