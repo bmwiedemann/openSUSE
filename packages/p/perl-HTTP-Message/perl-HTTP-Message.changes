@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 29 03:06:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.33
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.33      2021-06-28 16:51:58Z
+      - Allow `can` method to respond to delegated methods (GH#159) (nanto_vi,
+        TOYAMA Nao)
+
+-------------------------------------------------------------------
 Wed May 19 03:08:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.32
