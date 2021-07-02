@@ -83,4 +83,12 @@
   that was introduced in PHP 8.0.5.</comment>
     <requestid>897335</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b2b6b3c33ff1266f99be0b7b8c2d79e0</srcmd5>
+    <version>8.0.8</version>
+    <time>1625225235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903560</requestid>
+  </revision>
 </revisionlist>
