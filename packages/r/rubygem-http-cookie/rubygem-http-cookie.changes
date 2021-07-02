@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:30:51 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.0.4
+ see installed CHANGELOG.md
+
+  ## Unreleased
+  
+  - Support Mozilla's cookie storage format up to version 7.
+  
+  - Fix the time representation with creationTime and lastAccessed in
+    MozillaStore. (#8)
+  
+
+-------------------------------------------------------------------
 Sat Oct  1 04:40:47 UTC 2016 - coolo@suse.com
 
 - updated to version 1.0.3
