@@ -107,7 +107,7 @@ BuildRequires:  pkgconfig(Qt5Sensors) >= 5.13
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.13
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.13
 BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
-BuildRequires:  pkgconfig(Qt5WebKit) >= 5.13
+BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.13
 BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
@@ -911,7 +911,6 @@ Requires:       pkgconfig(Qt5OpenGL) >= 5.13
 Requires:       pkgconfig(Qt5PrintSupport) >= 5.13
 Requires:       pkgconfig(Qt5Script) >= 5.13
 Requires:       pkgconfig(Qt5Svg) >= 5.13
-Requires:       pkgconfig(Qt5WebKitWidgets) >= 5.13
 Requires:       pkgconfig(Qt5X11Extras) >= 5.13
 Requires:       pkgconfig(Qt5XmlPatterns) >= 5.13
 Recommends:     leechcraft-azoth-doc
@@ -1666,9 +1665,10 @@ Requires:       %{name}-poshuku-backend = %{version}
 Provides:       %{name}-webbrowser
 Recommends:     %{name}-imgaste = %{version}
 Recommends:     %{name}-intermutko = %{version}
+Obsoletes:      %{name}-poshuku-webkitview
 
 %description poshuku
-This package provides a WebKit-based web browser plugin for LeechCraft.
+This package provides a WebEngine-based web browser plugin for LeechCraft.
 Poshuku is extensible with plugins.
 
 Currently it features:
@@ -1772,8 +1772,8 @@ Features:
  * URLs are defined either by their substring or by regular expression.
  * Several popular predefined user agents are present.
  * Support for custom user-defined strings.
- * Support for automatic insertion of current platform, language, WebKit's
-version etc. into the User-Agent string in arbitrary places.
+ * Support for automatic insertion of current platform, language,
+etc. into the User-Agent string in arbitrary places.
 
 
 %package poshuku-keywords
@@ -1842,15 +1842,15 @@ Requires:       %{name}-poshuku = %{version}
 This package provides the Speed Dial support plugin for LeechCraft Poshuku.
 
 
-%package poshuku-webkitview
-Summary:        LeechCraft Poshuku WebKit-based backend Module
+%package poshuku-webengineview
+Summary:        LeechCraft Poshuku WebEngine-based backend Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name}-poshuku = %{version}
 Provides:       %{name}-poshuku-backend = %{version}
 
-%description poshuku-webkitview
-This package provides WebKit-based backend for LeechCraft Poshuku browser.
+%description poshuku-webengineview
+This package provides WebEngine-based backend for LeechCraft Poshuku browser.
 
 
 %package rosenthal
@@ -2420,6 +2420,9 @@ cmake ../src \
                         -DENABLE_POSHUKU_ONLINEBOOKMARKS_READITLATER=True \
                 -DENABLE_POSHUKU_QRD=True \
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
+                -DENABLE_POSHUKU_WEBENGINEVIEW=True \
+                        -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=False \
+                -DENABLE_POSHUKU_WEBKITVIEW=False \
         -DENABLE_QROSP=False \
         -DENABLE_SB2=True \
         -DENABLE_SCROBLIBRE=True \
@@ -3256,11 +3259,9 @@ ctest --output-on-failure
 %{translations_dir}/*craft_poshuku_speeddial_??.qm
 %{translations_dir}/*craft_poshuku_speeddial_??_??.qm
 
-%files poshuku-webkitview
+%files poshuku-webengineview
 %defattr(-,root,root)
-%{settings_dir}/poshukuwebkitviewsettings.xml
-%{translations_dir}/*craft_poshuku_webkitview*.qm
-%{plugin_dir}/*craft_poshuku_webkitview.so
+%{plugin_dir}/*craft_poshuku_webengineview.so
 
 %files rosenthal
 %defattr(-,root,root)
