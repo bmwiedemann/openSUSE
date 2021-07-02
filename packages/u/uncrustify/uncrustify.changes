@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  1 14:11:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.73.0
+  * Added indent_before_class_colon
+  * Added sp_cmt_cpp_region
+  * Added cmt_sp_before_doxygen_javadoc_tags
+  * Added cmt_align_doxygen_javadoc_tags
+  * Added cmt_reflow_fold_regex_file
+  * Added processing_cmt_as_regex
+  * Added cmt_reflow_indent_to_paragraph_start
+  * Added sp_cpp_lambda_argument_list
+  * Added nl_do_leave_one_liners
+  * Added debug_truncate
+  * Added indent_comma_brace
+
+-------------------------------------------------------------------
 Mon Jan  4 10:56:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.72.0:
