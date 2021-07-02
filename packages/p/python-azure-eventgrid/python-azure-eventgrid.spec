@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-eventgrid
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Microsoft Azure Event Grid Client Library
 License:        MIT
