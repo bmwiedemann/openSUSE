@@ -1,7 +1,7 @@
 #
 # spec file for package pulseaudio-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%bcond_without lang
-%define soversion 2
 
+%define soversion 3
+%bcond_without lang
 Name:           pulseaudio-qt
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later
@@ -30,15 +30,16 @@ Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        pulseaudio-qt.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 5.44.0
+BuildRequires:  extra-cmake-modules >= 5.80.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt5Core) >= 5.15
+BuildRequires:  cmake(Qt5DBus) >= 5.15
+BuildRequires:  cmake(Qt5Gui) >= 5.15
+BuildRequires:  cmake(Qt5Qml) >= 5.15
+BuildRequires:  cmake(Qt5Test) >= 5.15
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  cmake(Qt5Gui) >= 5.10
-BuildRequires:  cmake(Qt5Qml) >= 5.10
-BuildRequires:  cmake(Qt5Test) >= 5.10
-BuildRequires:  cmake(Qt5DBus) >= 5.10
+BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 
 %description
 Pulseaudio-Qt is a library providing Qt bindings to PulseAudio.
@@ -46,8 +47,8 @@ Pulseaudio-Qt is a library providing Qt bindings to PulseAudio.
 %package -n libKF5PulseAudioQt%{soversion}
 Summary:        Qt bindings for PulseAudio
 Group:          System/Libraries
-Provides:       %{name} = %{version}
 Recommends:     %{name}-lang
+Provides:       %{name} = %{version}
 
 %description -n libKF5PulseAudioQt%{soversion}
 Pulseaudio-Qt is a library providing Qt bindings to PulseAudio.
@@ -68,7 +69,7 @@ PulseAudio.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -77,7 +78,7 @@ PulseAudio.
 %postun -n libKF5PulseAudioQt%{soversion} -p /sbin/ldconfig
 
 %files -n libKF5PulseAudioQt%{soversion}
-%license COPYING.LIB
+%license LICENSES/*
 %doc README.md
 %{_kf5_libdir}/libKF5PulseAudioQt.so.%{soversion}
 %{_kf5_libdir}/libKF5PulseAudioQt.so.%{version}.0
