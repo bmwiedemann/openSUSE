@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 01 14:37:03 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.9.1:
+  * Version 1.9.1.
+  * ci: Update build files
+  * ci: Also perform `brew upgrade` on MacOS
+  * ci: Only run `make check` on Linux
+  * ci: Skip some broken tests/distro combinations
+  * ci: Rename build_script.sh to just build.sh
+  * ci: Add support for test skipping
+  * ci: Some build script fixes
+  * ci: Fix run commands in README
+  * ci: Add support for FreeBSD-13.0
+  * ci: Remove debian-10-clang build
+  * ci: Remove cross-compilation targets
+  * ci: Change docker driver and archive logs
+  * tests: Rename version to get-version
+  * tests: Do not use magic parameter for some nbdkit plugins
+  * tests: Require cap_sys_admin where root is required
+  * tests: Fix port randomisation
+  * tests: Enhance fuse probing
+  * tests: Clean up qemu-nbd detection
+  * tests: Fix hexdump probing
+  * interop: Do not test against broken qemu-storage-daemon
+  * fuse: Only support defined fallocate modes
+  * Include sys/vsock.h if linux/vm_sockets.h is not available
+  * info: Avoid ambiguous 'allocated' terminology in --map
+  * run: Unset DEBUGINFOD_URLS
+  * ci/cirrus: Update system before doing anything else
+
+-------------------------------------------------------------------
 Wed Jun 09 19:50:28 UTC 2021 - jfehlig@suse.com
 
 - Update to version 1.8.0:
