@@ -20,12 +20,12 @@ Name:           xdelta3
 Version:        3.1.0
 Release:        0
 Summary:        A diff utility which works with binary files
-License:        GPL-2.0-only AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-only
 Group:          Productivity/Archiving/Compression
 URL:            http://xdelta.org/
 Source0:        https://github.com/jmacd/xdelta-devel/releases/download/v%{version}/xdelta3-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  xz-devel
 # xdelta is being dropped
 Provides:       xdelta = %{version}

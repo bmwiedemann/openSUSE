@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 12:31:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We don't need python2, works perfectly fine with the standard
+  python3.
+
+-------------------------------------------------------------------
 Fri Feb 12 08:45:25 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Do not build with profiling for ppc64 & s390x to avoid build failure

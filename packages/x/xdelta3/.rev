@@ -132,4 +132,13 @@
   https://bugzilla.opensuse.org/show_bug.cgi?id=1182016 (forwarded request 871477 from michel_mno)</comment>
     <requestid>873292</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d936cd1cb36c4e0002b555fe6009200a</srcmd5>
+    <version>3.1.0</version>
+    <time>1625225189</time>
+    <user>dimstar_suse</user>
+    <comment>- We don't need python2, works perfectly fine with the standard
+  python3. (forwarded request 902830 from mcepl)</comment>
+    <requestid>902839</requestid>
+  </revision>
 </revisionlist>
