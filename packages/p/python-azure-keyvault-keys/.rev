@@ -93,4 +93,17 @@
     CHANGELOG.md file provided with this package (forwarded request 890753 from glaubitz)</comment>
     <requestid>890756</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70dab399d298cdb3b059740a46ec0691</srcmd5>
+    <version>4.4.0.0</version>
+    <time>1625225230</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 4.4.0.0 to ensure
+  proper upgrade from previous version 4.4.0b4 (forwarded request 903459 from glaubitz)</comment>
+    <requestid>903469</requestid>
+  </revision>
 </revisionlist>
