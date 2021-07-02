@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-commander
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-commander
-Version:        4.5.2
+Version:        4.6.0
 Release:        0
 %define mod_name commander
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/commander-rb/commander
