@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  i2c-tools
 BuildRequires:  libtool
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
