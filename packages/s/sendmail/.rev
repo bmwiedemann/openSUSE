@@ -1012,4 +1012,41 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   part of filesystem (forwarded request 897434 from gmbr3)</comment>
     <requestid>897975</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>31293ee824f0790f88448df52d91a946</srcmd5>
+    <version>8.17.0.3</version>
+    <time>1625225198</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add 'sysvinit(network)' build dependency 
+
+- Use %set_permissions on path /var/spool/clientmqueue/ as well (boo#1187809) 
+
+- Update to pre version sendmail 8.17.1 (8.17.0.3)
+  * Deprecation notice: due to compatibility problems with some
+    third party code, we plan to finally switch from K&amp;R
+    to ANSI C. If you are using sendmail on a system
+    which does not have a compiler for ANSI C contact us
+    with details as soon as possible so we can determine
+    how to proceed.
+  * Experimental support for SMTPUTF8 (EAI, see RFC 6530-6533)
+    is available when using the compile time option USE_EAI
+    (see also devtools/Site/site.config.m4.sample for other
+    required settings) and the cf option SMTPUTF8.
+    If a mail submission via the command line requires
+    the use of SMTPUTF8, e.g., because a header uses UTF-8
+    encoding, but the addresses on the command line are all
+    ASCII, then the new option -U must be used, and
+    the cf option SMTPUTF8 must be set in submit.cf.
+    Please test and provide feedback.
+  * Experimental support for SMTP MTA Strict Transport Security
+    (MTA-STS, see RFC 8461) is available when using
+    - the compile time option _FFR_MTA_STS (which requires
+      STARTTLS, MAP_REGEX, SOCKETMAP, and _FFR_TLS_ALTNAMES),
+    - FEATURE(sts), which implicitly sets the cf option
+      StrictTransportSecurity,
+    - postfix-mta-sts-resolver, see
+    https://github.com/Snawoot/postfix-mta-sts-resolver.git
+  * New ruleset check_other which is called for all unknown SMTP</comment>
+    <requestid>903383</requestid>
+  </revision>
 </revisionlist>

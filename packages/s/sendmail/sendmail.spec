@@ -24,7 +24,11 @@
 #
 # sysvinit -- build for SysVinit and not for systemd
 #
+%if 0%{?suse_version} > 1140
 %bcond_with     sysvinit
+%else
+%bcond_without  sysvinit
+%endif
 %define libmilter_somajor 1
 %define libmilter_sominor 0
 %define libmilter_sopatch 1
@@ -32,24 +36,32 @@
 %define libmilter_soname    libmilter.so.%{libmilter_somajor}.%{libmilter_sominor}
 
 Name:           sendmail
+%if 0%{?suse_version} > 1315
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libnsl)
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(openssl)
+%if 0%{?suse_version} > 1140
+BuildRequires:  pkgconfig(libsystemd)
+%endif
+%else
 BuildRequires:  cyrus-sasl-devel
+BuildRequires:  libicu-devel
+BuildRequires:  libopenssl-devel
+%endif
 BuildRequires:  db-devel
 BuildRequires:  groff
-BuildRequires:  libopenssl-devel
 BuildRequires:  m4
 BuildRequires:  mailx
 BuildRequires:  netcfg
 BuildRequires:  openldap2-devel
 BuildRequires:  procmail
+%if %{without sysvinit}
+Requires(pre):  sysvinit(network)
+%endif
 BuildRequires:  tcpd-devel
 BuildRequires:  vacation
-%if 0%{?suse_version} > 1315
-BuildRequires:  libnsl-devel
-%endif
-%if 0%{?suse_version} > 1140
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libsystemd)
-%endif
 URL:            http://www.sendmail.org/
 %define         SUBDIRS libsmutil libsmdb sendmail mail.local mailstats makemap praliases rmail smrsh libmilter libsm editmap
 Provides:       sendcf
@@ -64,9 +76,7 @@ Requires:       m4
 Requires:       make
 Requires:       netcfg
 Requires:       procmail
-%if %{without sysvinit}
-Requires(pre):  sysvinit(network)
-%else
+%if 0%{?suse_version} <= 1140
 Requires(pre):  %insserv_prereq
 Requires(post): %insserv_prereq
 Requires(postun):%insserv_prereq
@@ -90,12 +100,13 @@ Conflicts:      postfix
 Conflicts:      postfix-tls
 Conflicts:      smail
 Obsoletes:      sendmail-tls
-Version:        8.16.1
+Version:        8.17.0.3
 Release:        0
 Summary:        BSD Sendmail
 License:        Sendmail
 Group:          Productivity/Networking/Email/Servers
-Source0:        ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz
+#Source0:        ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz
+Source0:        ftp://ftp.sendmail.org/pub/sendmail/snapshots/%{name}.%{version}.tar.gz
 Source1:        sendmail-suse.tar.bz2
 Source2:        sendmail-rpmlintrc
 Source3:        sendmail-client.path
@@ -104,9 +115,10 @@ Source5:        sendmail-client.service
 Source6:        sendmail.systemd
 Source7:        sendmail-client.systemd
 Source42:       ftp://ftp.sendmail.org/pub/sendmail/PGPKEYS#/%{name}.keyring
-Source43:       ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz.sig
+#Source43:       ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz.sig
+Source43:       ftp://ftp.sendmail.org/pub/sendmail/snapshots/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
-Patch0:         sendmail-8.16.1.dif
+Patch0:         sendmail-8.17.1.dif
 # PATCH-FIX-OPENSUSE: if select(2) is interrupted the timeout become undefined
 Patch1:         sendmail-8.14.7-select.dif
 # PATCH-FIX-UPSTREAM: Detect shared libraries
@@ -218,6 +230,7 @@ processed mail on to the MTA (e.g. sendmail).
 %if %{with sysvinit}
 	%%ghost %%dir %%attr(1750,root,root)   %{_localstatedir}/run/sendmail/
 %else
+	%%dir %{_tmpfilesdir}/
 	%{_tmpfilesdir}/sendmail.conf
 %endif
 	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail/
@@ -243,6 +256,10 @@ processed mail on to the MTA (e.g. sendmail).
 	}
 	EOF
     set +f
+
+%if %{with sysvinit}
+    sed -ri '/SMTPUTF8/,/-licuuc/d' devtools/Site/site.config.m4
+%endif
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -428,7 +445,7 @@ processed mail on to the MTA (e.g. sendmail).
 %if %{with sysvinit}
     install -m 0755 rc   %{buildroot}%{_sysconfdir}/init.d/sendmail
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
-    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{_sysconfdir}/permissions.d/sendmail.paranoid
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
     sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
 %else
@@ -527,6 +544,7 @@ rm -rf %{buildroot}
 %if %{with sysvinit}
 %verify_permissions -e %{_localstatedir}/run/sendmail/
 %endif
+%verify_permissions -e %{_localstatedir}/spool/clientmqueue/
 %verify_permissions -e %{_localstatedir}/spool/mqueue/
 %verify_permissions -e %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}
@@ -580,6 +598,7 @@ fi
 %if %{with sysvinit}
 %set_permissions %{_localstatedir}/run/sendmail/
 %endif
+%set_permissions %{_localstatedir}/spool/clientmqueue/
 %set_permissions %{_localstatedir}/spool/mqueue/
 %set_permissions %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}

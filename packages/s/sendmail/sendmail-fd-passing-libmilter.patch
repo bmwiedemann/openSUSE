@@ -71,9 +71,9 @@ diff --git a/libmilter/listener.c b/libmilter/listener.c
  		smi_log(SMI_LOG_ERR,
  			"%s: Unable to bind to port %s: %s",
 @@ -818,7 +839,7 @@ mi_listener(conn, dbg, smfi, timeout, ba
- # ifdef BSD4_4_SOCKADDR
+ #ifdef BSD4_4_SOCKADDR
  		     cliaddr.sa.sa_len == 0 ||
- # endif
+ #endif
 -		     cliaddr.sa.sa_family != L_family))
 +		     (L_family != AF_UNSPEC && cliaddr.sa.sa_family != L_family)))
  		{

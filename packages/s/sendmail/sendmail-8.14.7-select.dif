@@ -98,8 +98,8 @@
 +		tv.tv_sec  = (to)->tv_sec;				\
 +		tv.tv_usec = (to)->tv_usec;				\
  		(sel_ret) = select((fd) + 1, &sm_io_to_mask, NULL,	\
--				&sm_io_x_mask, (to));			\
-+				&sm_io_x_mask, &tv);			\
+-				   &sm_io_x_mask, (to));		\
++				   &sm_io_x_mask, &tv);			\
  	} while ((sel_ret) < 0 && errno == EINTR);			\
  	if ((sel_ret) < 0)						\
  	{								\
