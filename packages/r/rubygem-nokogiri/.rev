@@ -549,4 +549,12 @@
     <comment>update (forwarded request 896508 from mschnitzer)</comment>
     <requestid>896519</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9c49025a0bda2f2a3b604e21f94bd017</srcmd5>
+    <version>1.11.7</version>
+    <time>1625225194</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903119</requestid>
+  </revision>
 </revisionlist>
