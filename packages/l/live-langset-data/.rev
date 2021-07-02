@@ -134,4 +134,12 @@
     <comment></comment>
     <requestid>819207</requestid>
   </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>20aab93a01171f0888880696827e2a20</srcmd5>
+    <version>2.0</version>
+    <time>1625225188</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't restart systemd-vconsole-setup.service explicitly (boo#1187618)</comment>
+    <requestid>902792</requestid>
+  </revision>
 </revisionlist>

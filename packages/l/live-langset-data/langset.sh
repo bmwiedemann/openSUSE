@@ -86,6 +86,3 @@ fi
 [ -z "$keytable" ] || localectl set-keymap $keytable
 
 echo "$lang" > /var/lib/zypp/RequestedLocales
-
-# Make sure all changes are in effect when returning
-systemctl restart systemd-vconsole-setup

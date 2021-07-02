@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 28 10:16:55 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't restart systemd-vconsole-setup.service explicitly (boo#1187618)
+
+-------------------------------------------------------------------
 Tue Jul  7 10:30:19 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
