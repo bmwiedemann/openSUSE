@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-devise-i18n
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-devise-i18n
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 %define mod_name devise-i18n
 %define mod_full_name %{mod_name}-%{version}
