@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-terminal-table
-Version:        2.0.0
+Version:        3.0.1
 Release:        0
 %define mod_name terminal-table
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ Simple, feature rich ascii table generation library.
 
 %install
 %gem_install \
-  --doc-files="History.rdoc LICENSE.txt README.rdoc" \
+  --doc-files="History.rdoc LICENSE.txt README.md" \
   -f
 
 %gem_packages

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jun 24 18:03:11 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.0.1
+ see installed History.rdoc
+
+  3.0.1 / 2021-05-10
+  ==================
+  
+  - Support for unicode-display_width 2.0
+  - Fix issue where last row of an empty table changed format
+  
+  3.0.0 / 2020-01-27
+  ==================
+  
+  - Support for (optional) Unicode border styles on tables.  In order to support decent looking Unicode borders, different types of intersections get different types of intersection characters.  This has the side effect of subtle formatting differences even for the ASCII table border case due to removal of certain intersections near colspans.
+  
+  For example, previously the output of a table may be:
+          +------+-----+
+          |   Title    |
+          +------+-----+
+          | Char | Num |
+          +------+-----+
+          | a    | 1   |
+          | b    | 2   |
+          | c    | 3   |
+          +------+-----+
+  
+  And now the `+` character above the word Title is removed, as it is no longer considered an intersection:
+  
+          +------------+
+          |   Title    |
+          +------+-----+
+          | Char | Num |
+          +------+-----+
+          | a    | 1   |
+          | b    | 2   |
+          +------+-----+
+  
+  - The default border remains an ASCII border for backwards compatibility, however multiple border classes are included / documented, and user defined border types can be applied as needed.
+  
+  In support of this update, the following issues were addressed:
+  - colspan creates conflict with colorize (#95)
+  - Use nice UTF box-drawing characters by default (#99)
+      - Note that `AsciiBorder` is stll the default
+  - Border-left and border-right style (#100)
+  - Helper function to style as Markdown (#111)
+      - Achieved using `MarkdownBorder`
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:26:56 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.0

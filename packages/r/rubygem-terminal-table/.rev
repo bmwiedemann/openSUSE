@@ -7,4 +7,12 @@
     <comment>needed for jekyll</comment>
     <requestid>865307</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3e3e80ccb0c295f4e426e58e9f5caae</srcmd5>
+    <version>3.0.1</version>
+    <time>1625225272</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903542</requestid>
+  </revision>
 </revisionlist>
