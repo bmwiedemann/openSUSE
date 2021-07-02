@@ -79,4 +79,12 @@ changes file with SLE</comment>
     <comment></comment>
     <requestid>845050</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>831b1eb09d13d48335f00fc5fa3ac225</srcmd5>
+    <version>5.2.122</version>
+    <time>1625225200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902883</requestid>
+  </revision>
 </revisionlist>

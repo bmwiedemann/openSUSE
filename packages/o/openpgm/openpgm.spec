@@ -2,7 +2,7 @@
 #
 # spec file for package openpgm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,6 +41,9 @@ Patch1:         libpgm-5.2.122-reproducible-architecture.patch
 Patch2:         libpgm-5.2.122-pkg-config-do-not-add-I-to-non-existing-directory.patch
 # upstream pending patch https://github.com/steve-o/openpgm/pull/63
 Patch3:         libpgm-5.2.122-configure-rdtsc-checking-chg.patch
+# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
+# this patch makes things totally awesome
+Patch4:         use_python3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -48,7 +51,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-base
 
 %description
 OpenPGM is an implementation of the Pragmatic General Multicast (PGM)
@@ -81,10 +84,7 @@ This subpackage contains the header files for OpenPGM.
 
 %prep
 %setup -q -n "%{name}-release-%{tarball_version}/openpgm/pgm"
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %build
 export ac_cv_func_ftime=no

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 17:37:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add use_python3.patch to allow use of Python3 instead of
+  Python2 for generating files.
+
+-------------------------------------------------------------------
 Mon Oct 19 13:39:35 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Always pretend we do not have ftime(3), function is deprecated
