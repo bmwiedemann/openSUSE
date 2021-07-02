@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(uuid)
 %endif
 %if %{with pgm}
 BuildRequires:  openpgm-devel >= 5.1
-BuildRequires:  python
 %if 0%{?suse_version} && 0%{?suse_version} <= 1110
 BuildRequires:  glib2-devel >= 2.8
 %else
