@@ -17,14 +17,14 @@
 
 
 %define pkg_libname libaccel-config1
-
+%define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
 URL:            https://github.com/intel/idxd-config
-Source:         https://github.com/intel/idxd-config/archive/accel-config-v%{version}.tar.gz
+Source:         %{url}/archive/accel-config-v%{version}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -63,7 +63,7 @@ Requires:       kmod(idxd.ko)
 Libraries for %{name}.
 
 %prep
-%setup -q -n idxd-config-accel-config-v%{version}
+%setup -q -n %{src_name}
 
 %build
 echo %{version} > version
