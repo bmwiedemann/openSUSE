@@ -217,6 +217,14 @@ VMInstall: iproute2 libmnl0
 
 # Use the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
 ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
+# new: use kernel-obs-build from aarch64 for aarch64 armv6 and armv7
+ExportFilter: ^kernel-obs-build.*\.armv6hl\.rpm$
+ExportFilter: ^kernel-obs-build.*\.armv7hl\.rpm$  
+ExportFilter: ^kernel-obs-build.*\.aarch64\.rpm$  . armv6l armv7l
+# now make sure the jobs get a 64bit cpu, otherwise can not run the 64bit kernel
+%ifarch armv6l armv7l
+Constraint: hardware:cpu:flag cpuid
+%endif
 
 ExportFilter: \.x86_64\.rpm$ x86_64
 ExportFilter: \.ia64\.rpm$ ia64
@@ -1503,9 +1511,13 @@ Target: sparcv9
 %endif
 %ifarch armv6l armv6hl
 Target: armv6hl-suse-linux
+Support: cputype-armv6
+Runscripts: cputype-armv6
 %endif
 %ifarch armv7l armv7hl
 Target: armv7hl-suse-linux
+Support: cputype-armv7
+Runscripts: cputype-armv7
 %endif
 
 %ifnarch ppc64
