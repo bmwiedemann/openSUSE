@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-template
-Version:        0.1.0b838605
+Version:        0.1.0b971103
 Release:        0
 Summary:        Microsoft Azure Template Package Client Library for Python
 License:        MIT
@@ -34,12 +34,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-common < 2.0.0
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
-Requires:       python-msrestazure < 2.0.0
-Requires:       python-msrestazure >= 0.4.32
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.10.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
