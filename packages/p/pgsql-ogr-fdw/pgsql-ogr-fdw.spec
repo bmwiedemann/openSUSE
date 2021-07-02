@@ -58,7 +58,10 @@ ExclusiveArch:  do_not_build
 %if 0%{?suse_version} < 1315 && "%{pg_flavor}" == "postgresql10"
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} == 1500 && "%{pg_flavor}" == "postgresql95"
+%if 0%{?suse_version} >= 1500 && "%{pg_flavor}" == "postgresql95"
+ExclusiveArch:  do_not_build
+%endif
+%if 0%{?suse_version} >= 1550 && "%{pg_flavor}" == "postgresql96"
 ExclusiveArch:  do_not_build
 %endif
 %if "%{pg_flavor}" == ""
