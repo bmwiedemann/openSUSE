@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 23 22:28:52 UTC 2021 - Christian Wittmer <chris@computersalat.de>
+
+- postfix-mysql
+  * add mysql_relay_recipient_maps.cf
+- postfix-SUSE
+  * rework sysconfig.postfix, add
+    - POSTFIX_RELAY_RECIPIENTS
+    - POSTFIX_BACKUPMX
+  * add relay_recipients
+  * rework config.postfix for main.cf
+    - is_backupmx
+    - relay_recipient_maps
+
+-------------------------------------------------------------------
+Fri Jun 18 17:11:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
 Mon Jun 14 15:46:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.6.1
@@ -10,6 +29,15 @@ Mon Jun 14 15:46:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
     Adi Prasaja; double free() root cause analysis by Howard Chu.
   * Typo (introduced: Postfix 3.4): silent_discard should be
     silent-discard in BDAT_README.
+
+-------------------------------------------------------------------
+Sun Jun  6 12:51:35 UTC 2021 - Christian Wittmer <chris@computersalat.de>
+
+- fix postfix-master.cf.patch
+  * set correct indentation (again) for options of
+    - submission (needs 3 spaces)
+    - smtps (needs 4 spaces)
+    to make config.postfix work nicely again
 
 -------------------------------------------------------------------
 Wed Jun  2 00:26:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>

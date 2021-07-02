@@ -238,8 +238,8 @@ make makefiles pie=yes shared=yes dynamicmaps=yes \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 make %{?_smp_mflags}
 # Create postfix user
-%sysusers_generate_pre %{SOURCE12} postfix
-%sysusers_generate_pre %{SOURCE13} vmail
+%sysusers_generate_pre %{SOURCE12} postfix postfix-user.conf
+%sysusers_generate_pre %{SOURCE13} vmail postfix-vmail-user.conf
 # ---------------------------------------------------------------------------
 
 %install
@@ -299,6 +299,7 @@ install -m 644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d
 install -m 644 %{name}-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
 install -m 644 %{name}-SUSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
 install -m 644 %{name}-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
+install -m 644 %{name}-SUSE/relay_recipients %{buildroot}%{_sysconfdir}/%{name}/relay_recipients
 install -m 600 %{name}-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -m 600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
@@ -490,6 +491,7 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/master.cf
 %config(noreplace) %{_sysconfdir}/%{name}/relay
 %config(noreplace) %{_sysconfdir}/%{name}/relay_ccerts
+%config(noreplace) %{_sysconfdir}/%{name}/relay_recipients
 %config(noreplace) %{_sysconfdir}/%{name}/sasl_passwd
 %config(noreplace) %{_sysconfdir}/%{name}/sender_canonical
 %config(noreplace) %{_sysconfdir}/%{name}/virtual

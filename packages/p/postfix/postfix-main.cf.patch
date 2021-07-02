@@ -50,7 +50,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -673,4 +674,140 @@ sample_directory =
+@@ -673,4 +674,141 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -154,6 +154,7 @@ Index: conf/main.cf
 +# Start MySQL from postfixwiki.org
 +############################################################
 +relay_domains = $mydestination, lmdb:/etc/postfix/relay
++relay_recipient_maps = lmdb:/etc/postfix/relay_recipients
 +#virtual_alias_domains = 
 +#virtual_alias_maps = lmdb:/etc/postfix/virtual
 +#virtual_uid_maps = static:303

@@ -14,15 +14,61 @@ Index: conf/master.cf
  #smtp      inet  n       -       n       -       1       postscreen
  #smtpd     pass  -       -       n       -       -       smtpd
  #dnsblog   unix  -       -       n       -       0       dnsblog
-@@ -19,6 +24,7 @@ smtp      inet  n       -       n
+@@ -17,30 +22,32 @@ smtp      inet  n       -       n
+ # Choose one: enable submission for loopback clients only, or for any client.
+ #127.0.0.1:submission inet n -   n       -       -       smtpd
  #submission inet n       -       n       -       -       smtpd
- #  -o syslog_name=postfix/submission
- #  -o smtpd_tls_security_level=encrypt
-+#  -o content_filter=smtp:[127.0.0.1]:10024
- #  -o smtpd_sasl_auth_enable=yes
- #  -o smtpd_tls_auth_only=yes
- #  -o smtpd_reject_unlisted_recipient=no
-@@ -69,6 +75,26 @@ lmtp      unix  -       -       n
+-#  -o syslog_name=postfix/submission
+-#  -o smtpd_tls_security_level=encrypt
+-#  -o smtpd_sasl_auth_enable=yes
+-#  -o smtpd_tls_auth_only=yes
+-#  -o smtpd_reject_unlisted_recipient=no
+-#  -o smtpd_client_restrictions=$mua_client_restrictions
+-#  -o smtpd_helo_restrictions=$mua_helo_restrictions
+-#  -o smtpd_sender_restrictions=$mua_sender_restrictions
+-#  -o smtpd_recipient_restrictions=
+-#  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+-#  -o milter_macro_daemon_name=ORIGINATING
++#   -o syslog_name=postfix/submission
++#   -o smtpd_tls_security_level=encrypt
++#   -o content_filter=smtp:[127.0.0.1]:10024
++#   -o smtpd_sasl_auth_enable=yes
++#   -o smtpd_tls_auth_only=yes
++#   -o smtpd_reject_unlisted_recipient=no
++#   -o smtpd_client_restrictions=$mua_client_restrictions
++#   -o smtpd_helo_restrictions=$mua_helo_restrictions
++#   -o smtpd_sender_restrictions=$mua_sender_restrictions
++#   -o smtpd_recipient_restrictions=
++#   -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
++#   -o milter_macro_daemon_name=ORIGINATING
+ # Choose one: enable smtps for loopback clients only, or for any client.
+ #127.0.0.1:smtps inet n  -       n       -       -       smtpd
+ #smtps     inet  n       -       n       -       -       smtpd
+-#  -o syslog_name=postfix/smtps
+-#  -o smtpd_tls_wrappermode=yes
+-#  -o smtpd_sasl_auth_enable=yes
+-#  -o smtpd_reject_unlisted_recipient=no
+-#  -o smtpd_client_restrictions=$mua_client_restrictions
+-#  -o smtpd_helo_restrictions=$mua_helo_restrictions
+-#  -o smtpd_sender_restrictions=$mua_sender_restrictions
+-#  -o smtpd_recipient_restrictions=
+-#  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+-#  -o milter_macro_daemon_name=ORIGINATING
++#    -o syslog_name=postfix/smtps
++#    -o smtpd_tls_wrappermode=yes
++#    -o content_filter=smtp:[127.0.0.1]:10024
++#    -o smtpd_sasl_auth_enable=yes
++#    -o smtpd_reject_unlisted_recipient=no
++#    -o smtpd_client_restrictions=$mua_client_restrictions
++#    -o smtpd_helo_restrictions=$mua_helo_restrictions
++#    -o smtpd_sender_restrictions=$mua_sender_restrictions
++#    -o smtpd_recipient_restrictions=
++#    -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
++#    -o milter_macro_daemon_name=ORIGINATING
+ #628       inet  n       -       n       -       -       qmqpd
+ pickup    unix  n       -       n       60      1       pickup
+ cleanup   unix  n       -       n       -       0       cleanup
+@@ -69,6 +76,26 @@ lmtp      unix  -       -       n
  anvil     unix  -       -       n       -       1       anvil
  scache    unix  -       -       n       -       1       scache
  postlog   unix-dgram n  -       n       -       1       postlogd
@@ -49,7 +95,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  # Interfaces to non-Postfix software. Be sure to examine the manual
-@@ -102,7 +128,7 @@ postlog   unix-dgram n  -       n
+@@ -102,7 +129,7 @@ postlog   unix-dgram n  -       n
  # Also specify in main.cf: cyrus_destination_recipient_limit=1
  #
  #cyrus     unix  -       n       n       -       -       pipe
@@ -58,7 +104,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  #
-@@ -135,3 +161,10 @@ postlog   unix-dgram n  -       n
+@@ -135,3 +162,10 @@ postlog   unix-dgram n  -       n
  #mailman   unix  -       n       n       -       -       pipe
  #  flags=FRX user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
  #  ${nexthop} ${user}
