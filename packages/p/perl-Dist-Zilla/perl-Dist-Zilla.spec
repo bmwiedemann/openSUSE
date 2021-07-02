@@ -18,7 +18,7 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.020
+Version:        6.022
 Release:        0
 Summary:        Distribution builder; installer not included!
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  perl(CPAN::Meta::Prereqs) >= 2.120630
 BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121000
 BuildRequires:  perl(CPAN::Meta::Validator) >= 2.101550
 BuildRequires:  perl(CPAN::Uploader) >= 0.103004
-BuildRequires:  perl(Class::Load) >= 0.17
 BuildRequires:  perl(Config::INI::Reader)
 BuildRequires:  perl(Config::MVP) >= 2.200011
 BuildRequires:  perl(Config::MVP::Assembler)
@@ -74,7 +73,7 @@ BuildRequires:  perl(MooseX::SetOnce)
 BuildRequires:  perl(MooseX::Types)
 BuildRequires:  perl(MooseX::Types::Moose)
 BuildRequires:  perl(MooseX::Types::Perl)
-BuildRequires:  perl(PPI::Document)
+BuildRequires:  perl(PPI::Document) >= 1.222
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Path::Tiny) >= 0.052
 BuildRequires:  perl(Perl::PrereqScanner) >= 1.016
@@ -117,7 +116,6 @@ Requires:       perl(CPAN::Meta::Prereqs) >= 2.120630
 Requires:       perl(CPAN::Meta::Requirements) >= 2.121000
 Requires:       perl(CPAN::Meta::Validator) >= 2.101550
 Requires:       perl(CPAN::Uploader) >= 0.103004
-Requires:       perl(Class::Load) >= 0.17
 Requires:       perl(Config::INI::Reader)
 Requires:       perl(Config::MVP) >= 2.200011
 Requires:       perl(Config::MVP::Assembler)
@@ -150,7 +148,7 @@ Requires:       perl(MooseX::SetOnce)
 Requires:       perl(MooseX::Types)
 Requires:       perl(MooseX::Types::Moose)
 Requires:       perl(MooseX::Types::Perl)
-Requires:       perl(PPI::Document)
+Requires:       perl(PPI::Document) >= 1.222
 Requires:       perl(Params::Util)
 Requires:       perl(Path::Tiny) >= 0.052
 Requires:       perl(Perl::PrereqScanner) >= 1.016
