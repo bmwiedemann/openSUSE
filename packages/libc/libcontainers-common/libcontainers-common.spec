@@ -1,7 +1,7 @@
 #
 # spec file for package libcontainers-common
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.38.2
+%define commonver 0.38.11
 
 # podman - version from containers/podman
-%define podmanver 3.1.2
+%define podmanver 3.2.2
 
 # storagever - version from containers/storage
-%define storagever 1.31.0
+%define storagever 1.32.5
 
 # imagever - version from containers/image
-%define imagever 5.12.0
+%define imagever 5.13.2
 
 Name:           libcontainers-common
-Version:        20210112
+Version:        20210626
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 AND GPL-3.0-or-later
@@ -46,11 +46,12 @@ Source7:        podman-%{podmanver}.tar.xz
 Source8:        default.yaml
 Source9:        common-%{commonver}.tar.xz
 Source10:       containers.conf
+Source11:       %{name}.rpmlintrc
 BuildRequires:  go-go-md2man
-Provides:       libcontainers-image
-Provides:       libcontainers-storage
-Obsoletes:      libcontainers-image
-Obsoletes:      libcontainers-storage
+Provides:       libcontainers-image = %{version}
+Provides:       libcontainers-storage = %{version}
+Obsoletes:      libcontainers-image < %{version}
+Obsoletes:      libcontainers-storage < %{version}
 Requires(post): util-linux-systemd
 Requires(post): grep
 BuildArch:      noarch
@@ -87,7 +88,7 @@ rename '.md' '.1' docs/*
 cd ..
 # compile subset of containers/podman manpages
 cd podman-%{podmanver}
-go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/markdown/containers-mounts.conf.5 
+go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/markdown/containers-mounts.conf.5
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
