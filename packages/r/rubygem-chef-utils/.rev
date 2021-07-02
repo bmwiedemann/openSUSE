@@ -7,4 +7,12 @@
     <comment>needed by mixlib-shellout-3.2.</comment>
     <requestid>865289</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bff663a99dd800d9461ea2baf34f8785</srcmd5>
+    <version>17.2.29</version>
+    <time>1625225251</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903489</requestid>
+  </revision>
 </revisionlist>

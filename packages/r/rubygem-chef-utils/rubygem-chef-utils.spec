@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-chef-utils
-Version:        16.9.29
+Version:        17.2.29
 Release:        0
 %define mod_name chef-utils
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.6.0}
+BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/chef/chef/tree/master/chef-utils
