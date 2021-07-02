@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-jwt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jwt
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 %define mod_name jwt
 %define mod_full_name %{mod_name}-%{version}

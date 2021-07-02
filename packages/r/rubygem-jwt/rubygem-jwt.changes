@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:33:22 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.3
+ see installed CHANGELOG.md
+
+  ## [2.2.3](https://github.com/jwt/ruby-jwt/tree/2.2.3) (2021-04-19)
+  
+  [Full Changelog](https://github.com/jwt/ruby-jwt/compare/v2.2.2...2.2.3)
+  
+  **Implemented enhancements:**
+  
+  - Verify algorithm before evaluating keyfinder  [\#343](https://github.com/jwt/ruby-jwt/issues/343)
+  - Why jwt depends on json \< 2.0 ? [\#179](https://github.com/jwt/ruby-jwt/issues/179)
+  - Support for JWK in-lieu of rsa\_public [\#158](https://github.com/jwt/ruby-jwt/issues/158)
+  - Fix rspec `raise_error` warning [\#413](https://github.com/jwt/ruby-jwt/pull/413) ([excpt](https://github.com/excpt))
+  - Add support for JWKs with HMAC key type. [\#372](https://github.com/jwt/ruby-jwt/pull/372) ([phlegx](https://github.com/phlegx))
+  - Improve 'none' algorithm handling [\#365](https://github.com/jwt/ruby-jwt/pull/365) ([danleyden](https://github.com/danleyden))
+  - Handle parsed JSON JWKS input with string keys [\#348](https://github.com/jwt/ruby-jwt/pull/348) ([martinemde](https://github.com/martinemde))
+  - Allow Numeric values during encoding [\#327](https://github.com/jwt/ruby-jwt/pull/327) ([fanfilmu](https://github.com/fanfilmu))
+  
+  **Closed issues:**
+  
+  - "Signature verification raised", yet jwt.io says "Signature Verified" [\#401](https://github.com/jwt/ruby-jwt/issues/401)
+  - truffleruby-head build is failing [\#396](https://github.com/jwt/ruby-jwt/issues/396)
+  - JWT::JWK::EC needs `require 'forwardable'` [\#392](https://github.com/jwt/ruby-jwt/issues/392)
+  - How to use a 'signing key' as used by next-auth [\#389](https://github.com/jwt/ruby-jwt/issues/389)
+  - undefined method `verify' for nil:NilClass when validate a JWT with JWK [\#383](https://github.com/jwt/ruby-jwt/issues/383)
+  - Make specifying "algorithm" optional on decode [\#380](https://github.com/jwt/ruby-jwt/issues/380)
+  - ADFS created access tokens can't be validated due to missing 'kid' header [\#370](https://github.com/jwt/ruby-jwt/issues/370)
+  - new version? [\#355](https://github.com/jwt/ruby-jwt/issues/355)
+  - JWT gitlab OmniAuth provider setup support [\#354](https://github.com/jwt/ruby-jwt/issues/354)
+  - Release with support for RSA.import for ruby \< 2.4 hasn't been released [\#347](https://github.com/jwt/ruby-jwt/issues/347)
+  - cannot load such file -- jwt [\#339](https://github.com/jwt/ruby-jwt/issues/339)
+  
+  **Merged pull requests:**
+  
+  - Remove codeclimate code coverage dev dependency [\#414](https://github.com/jwt/ruby-jwt/pull/414) ([excpt](https://github.com/excpt))
+  - Add forwardable dependency [\#408](https://github.com/jwt/ruby-jwt/pull/408) ([anakinj](https://github.com/anakinj))
+  - Ignore casing of algorithm [\#405](https://github.com/jwt/ruby-jwt/pull/405) ([johnnyshields](https://github.com/johnnyshields))
+  - Document function and add tests for verify claims method [\#404](https://github.com/jwt/ruby-jwt/pull/404) ([yasonk](https://github.com/yasonk))
+  - documenting calling verify\_jti callback with 2 arguments in the readme [\#402](https://github.com/jwt/ruby-jwt/pull/402) ([HoneyryderChuck](https://github.com/HoneyryderChuck))
+  - Target the master branch on the build status badge [\#399](https://github.com/jwt/ruby-jwt/pull/399) ([anakinj](https://github.com/anakinj))
+  - Improving the local development experience [\#397](https://github.com/jwt/ruby-jwt/pull/397) ([anakinj](https://github.com/anakinj))
+  - Fix sourcelevel broken links [\#395](https://github.com/jwt/ruby-jwt/pull/395) ([anakinj](https://github.com/anakinj))
+  - Don't recommend installing gem with sudo [\#391](https://github.com/jwt/ruby-jwt/pull/391) ([tjschuck](https://github.com/tjschuck))
+  - Enable rubocop locally and on ci [\#390](https://github.com/jwt/ruby-jwt/pull/390) ([anakinj](https://github.com/anakinj))
+  - Ci and test cleanup [\#387](https://github.com/jwt/ruby-jwt/pull/387) ([anakinj](https://github.com/anakinj))
+  - Make JWT::JWK::EC compatible with Ruby 2.3 [\#386](https://github.com/jwt/ruby-jwt/pull/386) ([anakinj](https://github.com/anakinj))
+  - Support JWKs for pre 2.3 rubies [\#382](https://github.com/jwt/ruby-jwt/pull/382) ([anakinj](https://github.com/anakinj))
+  - Replace Travis CI with GitHub Actions \(also favor openssl/rbnacl combinations over rails compatibility tests\) [\#381](https://github.com/jwt/ruby-jwt/pull/381) ([anakinj](https://github.com/anakinj))
+  - Add auth0 sponsor message [\#379](https://github.com/jwt/ruby-jwt/pull/379) ([excpt](https://github.com/excpt))
+  - Adapt HMAC to JWK RSA code style. [\#378](https://github.com/jwt/ruby-jwt/pull/378) ([phlegx](https://github.com/phlegx))
+  - Disable Rails cops [\#376](https://github.com/jwt/ruby-jwt/pull/376) ([anakinj](https://github.com/anakinj))
+  - Support exporting RSA JWK private keys [\#375](https://github.com/jwt/ruby-jwt/pull/375) ([anakinj](https://github.com/anakinj))
+  - Ebert is SourceLevel nowadays [\#374](https://github.com/jwt/ruby-jwt/pull/374) ([anakinj](https://github.com/anakinj))
+  - Add support for JWKs with EC key type [\#371](https://github.com/jwt/ruby-jwt/pull/371) ([richardlarocque](https://github.com/richardlarocque))
+  - Add Truffleruby head to CI [\#368](https://github.com/jwt/ruby-jwt/pull/368) ([gogainda](https://github.com/gogainda))
+  - Add more docs about JWK support [\#341](https://github.com/jwt/ruby-jwt/pull/341) ([take](https://github.com/take))
+  
+
+-------------------------------------------------------------------
 Fri Sep 25 14:14:33 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.2
