@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-omniauth-google-oauth2
-Version:        0.8.1
+Version:        1.0.0
 Release:        0
 %define mod_name omniauth-google-oauth2
 %define mod_full_name %{mod_name}-%{version}
