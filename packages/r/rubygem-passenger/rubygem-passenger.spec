@@ -80,7 +80,7 @@ Patch0:         0001-suse.patch
 Patch1:         0002-fix-shebangs.patch
 # /MANUAL
 Summary:        A fast and robust web server and application server for Ruby, Python
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
@@ -105,6 +105,8 @@ sed -i 's/"src\/cxx_supportlib\/vendor-modified\/boost\/thread\/detail\/thread.h
 sed -i 's/"src\/cxx_supportlib\/vendor-modified\/boost\/thread\/once.hpp.orig".freeze, //g' passenger-*.gemspec
 rm src/cxx_supportlib/vendor-modified/boost/thread/detail/thread.hpp.orig
 rm src/cxx_supportlib/vendor-modified/boost/thread/once.hpp.orig
+# Do not install a Python script with +x
+chmod a-x src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
 # /MANUAL
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
@@ -219,6 +221,7 @@ A modern web server and application server for Ruby, Python and Node.js,
 optimized for performance, low memory usage and ease of use.
 
 This package holds the apache2 sub package for passenger
+
 %files apache2
 %defattr(-,root,root,-)
 %config(noreplace) %{apache_sysconfdir}/conf.d/mod_passenger.conf
@@ -239,6 +242,7 @@ A modern web server and application server for Ruby, Python and Node.js,
 optimized for performance, low memory usage and ease of use.
 
 This package holds the nginx sub package for passenger
+
 %files nginx
 %defattr(-,root,root,-)
 %dir /etc/nginx/

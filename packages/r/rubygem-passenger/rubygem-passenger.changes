@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 23 00:59:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove execute bit from a Python script to stop requiring /usr/bin/python 
+
+-------------------------------------------------------------------
 Sat Apr 24 09:42:35 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - passenger failed to start when values in locations.ini were empty.
