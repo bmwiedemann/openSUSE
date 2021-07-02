@@ -280,7 +280,7 @@ Summary:        IMA/EVM Support
 Group:          Metapackages
 Provides:       pattern() = microos_ima_evm
 Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 9080
 Provides:       pattern-visible()
 Requires:       attr
@@ -290,6 +290,39 @@ Requires:       keyutils
 
 %description ima_evm
 Packages required to enable IMA/EVM on openSUSE MicroOS.
+
+%package ra_agent
+Summary:        Remote Attestation (Agent) Support
+Group:          Metapackages
+Provides:       pattern() = microos_ra_agent
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-basis-addon
+Provides:       pattern-order() = 9085
+Provides:       pattern-visible()
+Requires:       dmidecode
+Requires:       keylime-agent
+Requires:       keylime-firewalld
+Requires:       pattern() = microos_ima_evm
+
+%description ra_agent
+Packages required to enable remote attestation via Keylime agent on
+openSUSE MicroOS.
+
+%package ra_verifier
+Summary:        Remote Attestation (Verifier) Support
+Group:          Metapackages
+Provides:       pattern() = microos_ra_verifier
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-basis-addon
+Provides:       pattern-order() = 9086
+Provides:       pattern-visible()
+Requires:       keylime-firewalld
+Requires:       keylime-registrar
+Requires:       keylime-verifier
+
+%description ra_verifier
+Packages required to enable remote attestation via Keylime verifier on
+openSUSE MicroOS.
 
 %package cloud
 Summary:        Support for Cloud
@@ -567,6 +600,8 @@ Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_hardware
 Requires:       pattern() = microos_ima_evm
+Requires:       pattern() = microos_ra_agent
+Requires:       pattern() = microos_ra_verifier
 Requires:       pattern() = microos_sssd_ldap
 
 %description onlyDVD
@@ -584,6 +619,8 @@ Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_cockpit
 Requires:       pattern() = microos_ima_evm
+Requires:       pattern() = microos_ra_agent
+Requires:       pattern() = microos_ra_verifier
 Requires:       pattern() = microos_selinux
 Requires:       pattern() = microos_sssd_ldap
 
@@ -599,7 +636,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
 for i in basesystem base base_zypper base_microdnf base_packagekit \
-    defaults hardware ima_evm apparmor selinux cockpit \
+    defaults hardware ima_evm ra_agent ra_verifier apparmor selinux cockpit \
     sssd_ldap cloud desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD; do
 	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
 done
@@ -647,6 +684,16 @@ done
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/ima_evm.txt
+
+%files ra_agent
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/ra_agent.txt
+
+%files ra_verifier
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/ra_verifier.txt
 
 %files apparmor
 %defattr(-,root,root)

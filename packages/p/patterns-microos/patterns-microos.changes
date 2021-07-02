@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 11:47:55 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add remote attestation patterns
+- Consolidate pattern-icon to pattern-basis-addon together with ima_evm
+
+-------------------------------------------------------------------
 Wed May 19 10:56:08 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Drop partitionmanager due to bsc#1178848.
