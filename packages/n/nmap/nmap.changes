@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  1 04:28:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Also guard the python-devel BuildRequires if we're building for Python 2 
+
+-------------------------------------------------------------------
 Sun Oct 11 09:15:58 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.91:

@@ -47,7 +47,9 @@ BuildRequires:  gtk2-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
+%if %{with_python2}
 BuildRequires:  python-devel
+%endif
 BuildRequires:  update-desktop-files
 %if %{with_system_lua}
 %if 0%{?suse_version} > 1320
