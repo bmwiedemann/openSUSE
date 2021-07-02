@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 30 14:22:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do no longer build postgresql95 and postgresql96 flavors on
+  Tumbleweed: those two postgresql vesions are EOL and will be
+  dropped.
+
+-------------------------------------------------------------------
 Mon Mar 29 19:16:20 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 1.3.1

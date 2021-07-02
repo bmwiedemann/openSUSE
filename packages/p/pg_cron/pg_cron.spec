@@ -1,5 +1,5 @@
 #
-# spec file for package %{pgversion}-pg_cron
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -39,6 +39,9 @@ BuildRequires:  %{pgversion}-server-devel
 %requires_eq    %{pgversion}-server
 %if "%{pgversion}" == ""
 Name:           %{sname}
+ExclusiveArch:  do_not_build
+%endif
+%if ("%{pgversion}" == "postgresql95" || "%{pgversion}" == "postgresql96") && 0%{?suse_version} >= 1550
 ExclusiveArch:  do_not_build
 %endif
 
