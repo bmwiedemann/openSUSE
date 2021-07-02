@@ -158,4 +158,12 @@
     <comment></comment>
     <requestid>807558</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>260c1a431807ab2ac00876a7ba93a11b</srcmd5>
+    <version>0.95</version>
+    <time>1625225278</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.95 (forwarded request 903462 from susnux)</comment>
+    <requestid>903606</requestid>
+  </revision>
 </revisionlist>

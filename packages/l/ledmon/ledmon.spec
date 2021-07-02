@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ledmon
-Version:        0.94
+Version:        0.95
 Release:        0
 Summary:        Enclosure LED Utilities
 License:        GPL-2.0-only
@@ -55,7 +55,7 @@ autoreconf -fiv
 %make_install
 ln -sv %{_sbindir}/service \
   %{buildroot}%{_sbindir}/rc%{name}
-rm %{buildroot}%{_datarootdir}/doc/ledmon/README
+rm %{buildroot}%{_datarootdir}/doc/ledmon/README.md
 
 %pre
 %service_add_pre %{name}.service
@@ -71,13 +71,13 @@ rm %{buildroot}%{_datarootdir}/doc/ledmon/README
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_sbindir}/ledmon
 %{_sbindir}/ledctl
 %{_sbindir}/rcledmon
 %{_unitdir}/ledmon.service
-%{_mandir}/man5/ledmon.conf.5.5%{?ext_man}
-%{_mandir}/man8/ledctl.8.8%{?ext_man}
-%{_mandir}/man8/ledmon.8.8%{?ext_man}
+%{_mandir}/man5/ledmon.conf.5%{?ext_man}
+%{_mandir}/man8/ledctl.8%{?ext_man}
+%{_mandir}/man8/ledmon.8%{?ext_man}
 
 %changelog

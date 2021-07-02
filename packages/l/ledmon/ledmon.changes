@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  1 14:27:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.95
+  * Allow to run ledctl version without root
+  * Defaulting to SGPIO for AMD systems
+  * Don't rely on states priority while changing IBPI states
+  * Check the white/blacklist from ledmon.conf earlier in discovery
+  * Change installation directory to /usr/sbin
+  * Use package version from autotools, not version.h
+  * Fix memory leak in utils.c
+  * Some other bugfixes
+
+-------------------------------------------------------------------
 Mon May 18 07:59:53 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.94:
