@@ -1,0 +1,31 @@
+From 6ead4baa779b244bade422bc35fda349d7fb0aa6 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 22 Jun 2021 11:18:51 +0200
+Subject: [PATCH] hcnmgr: Set autoconnect-slaves on HNV connections.
+
+When not set bringing up the HNV connection does not bring up network
+connectivity.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ scripts/hcnmgr | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 4b8c0e71e85a..02603699c4cc 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -289,8 +289,8 @@ do_config_vdevice() {
+ 		nmcli con add type bond con-name "$BONDNAME" ifname "$BONDNAME"
+ 
+ 		#vnic and sr-iov only support fail_over_mac=2 mode
+-		hcnlog INFO "nmcli con mod id $BONDNAME bond.options $BONDOPTIONS"
+-		nmcli con mod id "$BONDNAME" bond.options "$BONDOPTIONS"
++		hcnlog INFO "nmcli con mod id $BONDNAME bond.options $BONDOPTIONS connection.autoconnect-slaves 1"
++		nmcli con mod id "$BONDNAME" bond.options "$BONDOPTIONS" connection.autoconnect-slaves 1
+ 		# When creating bond, by default the ipv4.method is auto, set to dhcp
+ 		# In the case of mutiple HNV this can case bond interface deactive and
+ 		# active again. In addtion HNV requires user to configure IP address manually.
+-- 
+2.26.2
+

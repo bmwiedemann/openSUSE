@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 09:22:25 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Bring up the members of HNV link together with the HNV link
+  (bsc#1187182 ltc#192954).
+  + 0006-hcnmgr-Set-autoconnect-slaves-on-HNV-connections.patch
+
+-------------------------------------------------------------------
 Thu Jun 10 16:44:44 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - When detecting HNV connection list all connections, not only active ones
