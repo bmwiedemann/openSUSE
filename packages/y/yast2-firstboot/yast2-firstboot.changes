@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 07:43:12 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Adapt code to Y2Users (part of jsc#PM-2620).
+- 4.4.2
+
+-------------------------------------------------------------------
 Sun May 16 08:11:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - only list specific files installed in common directories (metainfo,
