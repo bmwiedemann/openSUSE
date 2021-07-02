@@ -138,4 +138,12 @@
     <comment>update (forwarded request 887016 from mschnitzer)</comment>
     <requestid>887019</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aed40faef153fc4ae3ff9c1d00f76d2b</srcmd5>
+    <version>2.10.0</version>
+    <time>1625225261</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903514</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-loofah
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 %define mod_name loofah
 %define mod_full_name %{mod_name}-%{version}
@@ -45,6 +45,7 @@ It's built on top of Nokogiri and libxml2, so it's fast and has a nice API.
 
 Loofah excels at HTML sanitization (XSS prevention). It includes some nice HTML sanitizers,
 which are based on HTML5lib's whitelist, so it most likely won't make your codes less secure.
+
 %prep
 
 %build
