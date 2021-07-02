@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 30 13:12:46 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.12
+  - Update dependencies
+  - Remove cilium support
+
+-------------------------------------------------------------------
 Fri May 14 13:28:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.11
