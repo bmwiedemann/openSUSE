@@ -39,6 +39,7 @@ Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
+Source5:        system-user-memcached.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -52,8 +53,13 @@ BuildRequires:  perl-Net-SSLeay
 %endif
 BuildRequires:  pkgconfig
 Requires(pre):  %fillup_prereq
+%if 0%{?suse_version} >= 1500
+BuildRequires:  sysuser-tools
+%sysusers_requires
+%else
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+%endif
 Conflicts:      memcached-unstable
 %if 0%{?suse_version} > 1210
 BuildRequires:  systemd-rpm-macros
@@ -98,6 +104,9 @@ autoreconf -fi
   --bindir=%{_sbindir}
 
 make %{?_smp_mflags}
+%if 0%{?suse_version} >= 1500
+%sysusers_generate_pre %{SOURCE5} memcached system-user-memcached.conf
+%endif
 
 %install
 %make_install
@@ -111,16 +120,24 @@ install -D  -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}.service
 install -D  -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{name}
 ln -s  ../..%{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
 %endif
+%if 0%{?suse_version} >= 1500
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
+%endif
 
 %check
 make %{?_smp_mflags} test
 
+%if 0%{?suse_version} >= 1500
+%pre -f memcached.pre
+%else
 %pre
 getent group %{name} >/dev/null || \
 	%{_sbindir}/groupadd -r %{name}
 getent passwd %{name} >/dev/null || \
 	%{_sbindir}/useradd -g %{name} -s /bin/false -r \
 	-c "user for %{name}" -d %{_localstatedir}/lib/%{name} %{name}
+%endif
 %if 0%{?suse_version} > 1210
 %service_add_pre %{name}.service
 %endif
@@ -162,6 +179,9 @@ getent passwd %{name} >/dev/null || \
 %endif
 %{_fillupdir}/sysconfig.%{name}
 %dir %attr(751,root,root) %{_localstatedir}/lib/%{name}
+%if 0%{?suse_version} >= 1500
+%{_sysusersdir}/system-user-memcached.conf
+%endif
 
 %files devel
 %doc AUTHORS ChangeLog NEWS doc/*.txt
