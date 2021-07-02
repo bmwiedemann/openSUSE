@@ -654,4 +654,12 @@
     <comment></comment>
     <requestid>781010</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>fe70065986e4fdc944d49117686fc1c7</srcmd5>
+    <version>3.26.6</version>
+    <time>1625225186</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 902443 from iznogood)</comment>
+    <requestid>902739</requestid>
+  </revision>
 </revisionlist>

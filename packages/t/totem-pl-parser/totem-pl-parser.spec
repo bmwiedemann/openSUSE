@@ -1,7 +1,7 @@
 #
 # spec file for package totem-pl-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define sover   18
 
 Name:           totem-pl-parser
-Version:        3.26.5
+Version:        3.26.6
 Release:        0
 Summary:        A GObject-based library to parse playlist formats
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.gnome.org/projects/totem/
 #Source0:       http://download.gnome.org/sources/totem-pl-parser/3.26/%%{name}-%%{version}.tar.xz
@@ -37,9 +37,7 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libarchive) >= 3.0
-BuildRequires:  pkgconfig(libquvi-0.9) >= 0.9.1
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       libquvi-scripts
 
 %description
 totem-pl-parser is a GObject-based library to parse a host of
@@ -97,11 +95,10 @@ translation-update-upstream
 
 %build
 %meson \
-        -D enable-quvi=yes \
-        -D enable-libarchive=yes \
-        -D enable-libgcrypt=yes \
-        -D enable-gtk-doc=true \
-        %{nil}
+	-Denable-libarchive=yes \
+	-Denable-libgcrypt=yes \
+	-Denable-gtk-doc=true \
+	%{nil}
 %meson_build
 
 %install
@@ -116,7 +113,7 @@ translation-update-upstream
 
 %files
 %dir %{_libexecdir}/totem-pl-parser/
-%{_libexecdir}/totem-pl-parser/99-totem-pl-parser-videosite-quvi
+%{_libexecdir}/totem-pl-parser/README-videosite-script.md
 
 %files -n libtotem-plparser%{sover}
 %license COPYING.LIB
