@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 25 20:36:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- It is actually not necessary to use python2, python3 works as
+  well.
+
+-------------------------------------------------------------------
 Tue Feb  9 23:26:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:

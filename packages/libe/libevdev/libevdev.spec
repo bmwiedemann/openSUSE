@@ -31,7 +31,7 @@ Source3:        baselibs.conf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3-base
 
 %description
 Library for handling evdev kernel devices. It abstracts the ioctls
