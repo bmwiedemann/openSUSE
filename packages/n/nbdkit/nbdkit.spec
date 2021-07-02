@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.26.0
+Version:        1.27.1
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -168,9 +168,9 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
-
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 

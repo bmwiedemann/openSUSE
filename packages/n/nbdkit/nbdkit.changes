@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 01 12:24:31 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 1.27.1:
+  * server: Add $tls shell variable for captive nbdkit
+  * server: When --tls is used, set captive $uri variable to nbds://...
+  * valgrind: Add OCaml suppression
+
+-------------------------------------------------------------------
 Wed Jun 09 19:46:17 UTC 2021 - jfehlig@suse.com
 
 - Update to version 1.26.0:
