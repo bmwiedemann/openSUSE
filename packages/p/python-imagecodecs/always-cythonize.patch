@@ -1,12 +1,12 @@
-Index: imagecodecs-2021.1.28/setup.py
+Index: imagecodecs-2021.6.8/setup.py
 ===================================================================
---- imagecodecs-2021.1.28.orig/setup.py
-+++ imagecodecs-2021.1.28/setup.py
+--- imagecodecs-2021.6.8.orig/setup.py
++++ imagecodecs-2021.6.8/setup.py
 @@ -105,7 +105,7 @@ def ext(**kwargs):
  
  
  OPTIONS = {
--    'cythonize': sys.version_info >= (3, 10) or 'PyPy' in sys.version,
+-    'cythonize': 'PyPy' in sys.version,  # or sys.version_info >= (3, 10)
 +    'cythonize': True,
      'include_dirs': ['imagecodecs'],
      'library_dirs': [],

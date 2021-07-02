@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun 30 07:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.6.8
+  * Pass 5185 tests.
+  * Fix building with Cython 0.3a7.
+  * Decode TIFF with JPEG compression, YCBCR or CMYK colorspace as RGB24.
+  * Vendor cfitsio/ricecomp.c for shared library builds on Windows (#18).
+- Release 2021.5.20
+  * Add ZLIBNG codec via zlib-ng library.
+  * Add RCOMP (Rice) codec via cfitsio library.
+  * Fix decoding of 16-bit JPEG with jpeg_decode.
+  * Relax user provided output array shape requirement.
+- Release 2021.4.28
+  * Change WebP default compression level to lossless.
+  * Rename jpegxl codec to brunsli (breaking).
+  * Add new JPEG XL codec via jpeg-xl library.
+  * Add PGLZ codec via PostgreSQL's pg_lzcompress.c.
+  * Update to libtiff 4.3 and libjpeg-turbo 2.1.
+  * Enable JPEG 12-bit codec in manylinux wheels.
+  * Drop manylinux2010 wheels.
+- Release 2021.3.31
+  * Add numcodecs compatible codecs for use by Zarr (experimental).
+  * Support separate JPEG header in jpeg_decode.
+  * Do not decode JPEG LS and XL in jpeg_decode (breaking).
+  * Fix ZFP with partial header.
+  * Fix JPEG LS tests (#15).
+  * Fix LZ4F contentchecksum.
+  * Remove blosc Snappy tests.
+  * Fix docstrings.
+- drop imagecodecs-pr15-test_jpegls.patch fixed upstream-
+- refresh always-cythonize.patch
+
+-------------------------------------------------------------------
 Wed Mar 10 10:42:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.2.26

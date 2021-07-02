@@ -11,7 +11,8 @@ def customize_build(EXTENSIONS, OPTIONS):
     del EXTENSIONS['jpeg12']  # jpeg12 requires custom build
     del EXTENSIONS['lerc']    # LERC library not available
     del EXTENSIONS['lz4f']    # requires static linking
-    del EXTENSIONS['jpegxl']  # Brunsli library not available
+    del EXTENSIONS['jpegxl']  # jpeg-xl library not available
+    del EXTENSIONS['brunsli']  # Brunsli library not available
     
     EXTENSIONS['avif']['libraries'] = [
         'avif',
@@ -19,10 +20,13 @@ def customize_build(EXTENSIONS, OPTIONS):
         'dav1d',
         'rav1e',
     ]
+    
 
-    # no zfp on 32-bit platforms
     if sys.maxsize < 2**63 - 1:
+        # no zfp on 32-bit platforms
         del EXTENSIONS['zfp']
+        # avif tests fail on 32-bit
+        del EXTENSIONS['avif']
     
     
     openjpeg_inc = subprocess.check_output(
@@ -30,6 +34,6 @@ def customize_build(EXTENSIONS, OPTIONS):
         text=True,
         ).strip()
     EXTENSIONS['jpeg2k']['include_dirs'].append(openjpeg_inc)
-
     EXTENSIONS['jpegxr']['include_dirs'].append(includedir +  'jxrlib')
+    EXTENSIONS['rcomp']['include_dirs'].append(includedir +   'cfitsio')
     EXTENSIONS['zopfli']['include_dirs'].append(includedir +  'zopfli')

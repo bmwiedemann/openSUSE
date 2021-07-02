@@ -1,5 +1,5 @@
 #
-# spec file for package python-imagecodecs
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-imagecodecs%{psuffix}
-Version:        2021.2.26
+Version:        2021.6.8
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ URL:            https://github.com/cgohlke/imagecodecs/
 Source:         https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
 Patch0:         always-cythonize.patch
-# PATCH-FIX-UPSTREAM imagecodecs-pr15-test_jpegls.patch -- gh#cgohlke/imagecodecs#15
-Patch1:         https://github.com/cgohlke/imagecodecs/pull/15.patch#/imagecodecs-pr15-test_jpegls.patch
 BuildRequires:  %{python_module Cython >= 0.29.19}
 BuildRequires:  %{python_module numpy-devel >= 1.15.1}
 BuildRequires:  %{python_module setuptools >= 18.0}
@@ -46,12 +44,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.15.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-blosc
 Recommends:     python-lz4
 Recommends:     python-matplotlib >= 3.1
-Recommends:     python-tifffile >= 2020.5.25
+Recommends:     python-numcodecs
+Recommends:     python-tifffile >= 2021.1.11
 Recommends:     python-zstd
 %if %{with test}
 BuildRequires:  %{python_module Brotli}
@@ -61,10 +60,12 @@ BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module imagecodecs >= %{version}}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module matplotlib >= 3.1}
+BuildRequires:  %{python_module numcodecs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module scikit-image}
-BuildRequires:  %{python_module tifffile >= 2020.5.25}
+BuildRequires:  %{python_module tifffile >= 2021.1.11}
+BuildRequires:  %{python_module zarr}
 BuildRequires:  %{python_module zstd}
 # libraries and python modules not (yet) available:
 #BuildRequires:  %%{python_module bitshuffle}
@@ -86,8 +87,8 @@ BuildRequires:  rav1e-devel
 BuildRequires:  snappy-devel
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
@@ -98,9 +99,13 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib-ng)
 %ifnarch %ix86 %arm
-# zfp is 64 bit only. Note that upstream deprecated 32-bit as a whole
+# Note that upstream deprecated 32-bit as a whole
+# zfp is 64 bit only. 
 BuildRequires:  zfp-devel
+# 32-bit tests fail
+BuildRequires:  pkgconfig(libavif)
 %endif
 %endif
 # Upstream: big endian is not supported
@@ -132,7 +137,7 @@ ldd %{_libdir}/libblosc.so.1 | grep -q libsnappy && sed -i "s/if not IS_CG and c
 %build
 %if !%{with test}
 export CFLAGS="%{optflags}"
-export INCDIR="%{_includedir}"    
+export INCDIR="%{_includedir}"
 %python_build
 %endif
 
