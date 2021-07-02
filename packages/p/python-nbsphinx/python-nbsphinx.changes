@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul  1 17:26:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 0.8.6
+ * Support for Jinja2 version 3
+- Release 0.8.5
+ * Freeze Jinja2 version to 2.11 (for now, until a bugfix is found)
+ * Add ``theme_comparison.py`` tool for creating multiple versions
+   (with different HTML themes) of the docs at once
+- Release 0.8.4
+ * Support for ``mathjax3_config`` (for Sphinx >= 4)
+ * Force loading MathJax on HTML pages generated from notebooks
+   (can be disabled with ``nbsphinx_assume_equations = False``)
+- Release 0.8.3
+ * Increase ``line_length_limit`` (for `docutils` 0.17+)
+- Release 0.8.2
+ * Add support for ``data-footcite`` HTML attribute
+ * Disable automatic highlighting in notebooks,
+   setting ``highlight_language`` is no longer needed
+- Release 0.8.1
+ * Minor fixes and documentation update
+
+-------------------------------------------------------------------
 Thu Dec 17 12:06:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.8
