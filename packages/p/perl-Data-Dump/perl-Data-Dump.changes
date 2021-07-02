@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 29 09:24:23 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Limit description paragraphs
+
+-------------------------------------------------------------------
+Sun Jun 27 03:06:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Data-Dump/Changes
+
+  2021-06-26  Breno G. de Oliveira <garu@cpan.org>
+     Release 1.25
+     New option $Data::Dump::LINEWIDTH controls when to perform a
+     linebreak (default is 60). Many thanks to Jonas Kramer, Rob Kinyon,
+     cybernicus and Lady Aleena for submitting reports and pull requests.
+  2021-06-25  Breno G. de Oliveira <garu@cpan.org>
+     Release 1.24
+     Strings like "NaN" are still strings
+     Update maintainer and repository information
+
+-------------------------------------------------------------------
 Sun Jun 14 08:03:10 UTC 2015 - coolo@suse.com
 
 - updated to 1.23
