@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:47:47 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.14.1
+ see installed CHANGELOG.md
+
+  ### [v0.14.1][v0.14.1] (April 12, 2021)
+  
+  #### Bug fixes
+  
+  * Fixed bad coloring of some RDoc-style docs
+    ([#2182](https://github.com/pry/pry/pull/2182))
+  * Fixed broken `--plugins` option. It shows a warning now
+    ([#2180](https://github.com/pry/pry/pull/2180))
+  * Fixed bad output on printing non-visible characters with color codes
+    ([#2154](https://github.com/pry/pry/pull/2154))
+  * Fixed bad output when colors are disabled and a string with color codes is
+    printed ([#2158](https://github.com/pry/pry/pull/2158))
+  
+  ### [v0.14.0][v0.14.0] (February 8, 2021)
+  
+  #### Features
+  
+  * Made `?` an alias to `show-source -d`
+    ([#2133](https://github.com/pry/pry/pull/2133))
+  * Added support for Ruby 3.0
+  
+  #### Breaking changes
+  
+  * Deleted support for plugin autoloading
+    ([#2119](https://github.com/pry/pry/pull/2119)). In order to load a Pry plugin
+    you must `require` it from your `pryrc` or add it to your Gemfile.
+  
+    ```rb
+    # ~/.pryrc
+    require 'pryrc'
+    ```
+  
+
+-------------------------------------------------------------------
 Mon May  4 11:58:42 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - Regenerated spec file to fix building
