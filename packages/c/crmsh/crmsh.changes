@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 02 02:08:01 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210702.314a7eb4:
+  * Fix: resource: make untrace consistent with trace (bsc#1187396)
+
+-------------------------------------------------------------------
+Wed Jun 30 02:46:57 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210630.bff856e3:
+  * Fix: bootstrap: check for missing fields in 'crm_node -l' output (bsc#1182131)
+
+-------------------------------------------------------------------
+Mon Jun 28 08:47:48 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210628.3128d590:
+  * Dev: unittest: add unit test for previous changes
+  * Dev: sbd: enable SBD_DELAY_START in virtualization environment
+
+-------------------------------------------------------------------
 Thu Jun 24 02:45:09 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210624.c64d3a07:
