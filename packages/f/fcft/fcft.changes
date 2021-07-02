@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  1 19:24:23 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.1:
+  * Log messages are now printed to stderr instead of stdout.
+  * fcft_grapheme_rasterize() now sets a minimum grapheme column count of 2
+    when the cluster ends with an Emoji variant selector (codepoint 0xFE0F).
+  * Fixed compilation error when fallback definition for FCFT_EXPORT was used
+    in meson.build.
+
+-------------------------------------------------------------------
 Fri Jun 11 09:26:10 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.0

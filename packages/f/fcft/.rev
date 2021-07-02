@@ -7,4 +7,17 @@
     <comment>Add package for fcft, a dependency of the foot package.</comment>
     <requestid>899790</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0cd558203559353e79317c563589bb0</srcmd5>
+    <version>2.4.1</version>
+    <time>1625225276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Log messages are now printed to stderr instead of stdout.
+  * fcft_grapheme_rasterize() now sets a minimum grapheme column count of 2
+    when the cluster ends with an Emoji variant selector (codepoint 0xFE0F).
+  * Fixed compilation error when fallback definition for FCFT_EXPORT was used
+    in meson.build.</comment>
+    <requestid>903583</requestid>
+  </revision>
 </revisionlist>

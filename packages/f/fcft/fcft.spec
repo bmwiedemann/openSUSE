@@ -18,7 +18,7 @@
 
 %define libname libfcft3
 Name:           fcft
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -64,6 +64,9 @@ of FontConfig, FreeType2 and pixman.
 
 %install
 %meson_install
+
+%post   -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
 %{_libdir}/libfcft.so.*
