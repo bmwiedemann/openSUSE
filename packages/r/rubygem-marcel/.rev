@@ -31,4 +31,16 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1185213</comment>
     <requestid>894758</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bf656477da389ecb68a2ee9334d39eec</srcmd5>
+    <version>1.0.1</version>
+    <time>1625225274</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.0.1
+  * Fixes identifying OpenDocument files by magic. 1.0.0 imprecisely identified them as application/zip. (#38)
+  * Fixes identifying .docx, .pptx, and .xlsx files exported from Google Sheets by magic. (#36)
+  * Identifies vCard files as text/vcard rather than text/x-vcard. (27fac74)
+  * Identifies .otf, .woff, and .woff2 files aș font/otf, font/woff, and font/woff2, respectively. (#37)</comment>
+    <requestid>903601</requestid>
+  </revision>
 </revisionlist>

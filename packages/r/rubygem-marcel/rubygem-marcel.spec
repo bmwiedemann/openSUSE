@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-marcel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-marcel
-Version:        0.3.3
+Version:        1.0.1
 Release:        0
 %define mod_name marcel
 %define mod_full_name %{mod_name}-%{version}
@@ -38,11 +38,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/basecamp/marcel
+Url:            https://github.com/rails/marcel
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Simple mime type detection using magic numbers, filenames, and
-License:        MIT
+License:        MIT and Apache-2.0
 Group:          Development/Languages/Ruby
 
 %description
@@ -54,7 +54,7 @@ Simple mime type detection using magic numbers, filenames, and extensions.
 
 %install
 %gem_install \
-  --doc-files="MIT-LICENSE README.md" \
+  --doc-files="MIT-LICENSE" \
   -f
 
 %gem_packages
