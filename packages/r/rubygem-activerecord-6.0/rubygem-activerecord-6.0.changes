@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:50:55 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.4 (June 15, 2021) ##
+  
+  *   Only warn about negative enums if a positive form that would cause conflicts exists.
+  
+      Fixes #39065.
+  
+      *Alex Ghiculescu*
+  
+  *   Allow the inverse of a `has_one` association that was previously autosaved to be loaded.
+  
+      Fixes #34255.
+  
+      *Steven Weber*
+  
+  *   Reset statement cache for association if `table_name` is changed.
+  
+      Fixes #36453.
+  
+      *Ryuta Kamizono*
+  
+  *   Type cast extra select for eager loading.
+  
+      *Ryuta Kamizono*
+  
+  *   Prevent collection associations from being autosaved multiple times.
+  
+      Fixes #39173.
+  
+      *Eugene Kenny*
+  
+  *   Resolve issue with insert_all unique_by option when used with expression index.
+  
+      When the `:unique_by` option of `ActiveRecord::Persistence.insert_all` and
+      `ActiveRecord::Persistence.upsert_all` was used with the name of an expression index, an error
+      was raised. Adding a guard around the formatting behavior for the `:unique_by` corrects this.
+  
+      Usage:
+  
+      ```ruby
+      create_table :books, id: :integer, force: true do |t|
+        t.column :name, :string
+        t.index "lower(name)", unique: true
+      end
+  
+      Book.insert_all [{ name: "MyTest" }], unique_by: :index_books_on_lower_name
+      ```
+  
+      Fixes #39516.
+  
+      *Austen Madden*
+  
+  *   Fix preloading for polymorphic association with custom scope.
+  
+      *Ryuta Kamizono*
+  
+  *   Allow relations with different SQL comments in the `or` method.
+  
+      *Takumi Shotoku*
+  
+  *   Resolve conflict between counter cache and optimistic locking.
+  
+      Bump an Active Record instance's lock version after updating its counter
+      cache. This avoids raising an unnecessary `ActiveRecord::StaleObjectError`
+      upon subsequent transactions by maintaining parity with the corresponding
+      database record's `lock_version` column.
+  
+      Fixes #16449.
+  
+      *Aaron Lipman*
+  
+  *   Fix through association with source/through scope which has joins.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix through association to respect source scope for includes/preload.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix eager load with Arel joins to maintain the original joins order.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix group by count with eager loading + order + limit/offset.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix left joins order when merging multiple left joins from different associations.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix index creation to preserve index comment in bulk change table on MySQL.
+  
+      *Ryuta Kamizono*
+  
+  *   Change `remove_foreign_key` to not check `:validate` option if database
+      doesn't support the feature.
+  
+      *Ryuta Kamizono*
+  
+  *   Fix the result of aggregations to maintain duplicated "group by" fields.
+  
+      *Ryuta Kamizono*
+  
+  *   Do not return duplicated records when using preload.
+  
+      *Bogdan Gusiev*
+  
+  
+  ## Rails 6.0.3.7 (May 05, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.3.6 (March 26, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.3.5 (February 10, 2021) ##
+  
+  *   Fix possible DoS vector in PostgreSQL money type
+  
+      Carefully crafted input can cause a DoS via the regular expressions used
+      for validating the money format in the PostgreSQL adapter.  This patch
+      fixes the regexp.
+  
+      Thanks to @dee-see from Hackerone for this patch!
+  
+      [CVE-2021-22880]
+  
+      *Aaron Patterson*
+  
+  
+
+-------------------------------------------------------------------
 Fri Oct 16 15:10:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to version 6.0.3.4: CVE-2020-8264 (boo#1177521)
