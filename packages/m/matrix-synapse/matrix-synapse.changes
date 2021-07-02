@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 30 14:03:06 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.37.1
+  This release resolves issues (such as #9490) where one busy room
+  could cause head-of-line blocking, starving Synapse from
+  processing events in other rooms, and causing all federated
+  traffic to fall behind. Synapse 1.37.1 processes inbound
+  federation traffic asynchronously, ensuring that one busy room
+  won't impact others. Please upgrade to Synapse 1.37.1 as soon as
+  possible, in order to increase resilience to other traffic
+  spikes.
+
+  - Features
+    - Handle inbound events from federation asynchronously.
+      (#10269, #10272)
+
+-------------------------------------------------------------------
 Tue Jun 29 10:44:06 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.37.0
