@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 15:02:14 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add patch bind-fix-build-with-older-sphinx.patch and sed fix
+  in order to build with older distributions.
+
+-------------------------------------------------------------------
 Wed Jun 23 06:46:55 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to 9.16.18
@@ -8,6 +14,11 @@ Wed Jun 23 06:46:55 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
     'W' (uppercase) and 'w' (lowercase) with '\000'.
     This has been fixed.
     [bind-9.16.18.tar.xz, bind-9.16.18.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Sat Jun 19 13:11:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
 
 -------------------------------------------------------------------
 Thu Jun 17 09:01:18 UTC 2021 - Josef Möllers <josef.moellers@suse.com>

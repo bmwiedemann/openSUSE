@@ -65,6 +65,7 @@ Source70:       bind.conf
 Source72:       named.conf
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
+Patch68:        bind-fix-build-with-older-sphinx.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libopenssl-devel
@@ -167,6 +168,13 @@ for file in docu/README* config/{README,named.conf} sysconfig/named-named; do
 done
 popd
 
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150300
+# the Administration Reference Manual doesn't build with Leap/SLES due to an way too old Sphinx package
+# that is missing sphinx.util.docutils.ReferenceRole.
+# patch68 disables this extension, and here, we're removing the :gl: tags in the notes
+sed -i 's|:gl:||g' doc/notes/notes*.rst
+%endif
+
 %build
 autoreconf -fvi
 export CFLAGS="%{optflags} -fPIE -DNO_VERSION_DATE"
@@ -209,7 +217,7 @@ for d in arm; do
 	make -C doc/${d} SPHINXBUILD=sphinx-build doc
 done
 %if %{with_systemd}
-%sysusers_generate_pre %{SOURCE72} named
+%sysusers_generate_pre %{SOURCE72} named named.conf
 %endif
 
 %install
