@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           polari
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/40/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
 # PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
 Patch0:         polari-fix-nb-translation.patch
@@ -47,19 +47,12 @@ Requires:       telepathy-logger
 Requires:       telepathy-mission-control
 # Dependency not detected by the dep scanner - boo#1122687
 Requires:       typelib(Gspell)
+# typelib-1_0-Polari-1_0 was merged into the main package, as it's in a private library directory
+Obsoletes:      typelib-1_0-Polari-1_0 < %{version}
 
 %description
 Polari is an IRC client that is designed to integrate seamlessly
 with GNOME 3.
-
-%package -n typelib-1_0-Polari-1_0
-Summary:        Introspection bindings for Polari client library
-Group:          System/Libraries
-
-%description -n typelib-1_0-Polari-1_0
-Polari is an IRC client that is designed to integrate seamlessly
-with GNOME 3.
-This package contains Introspection bindings.
 
 %lang_package
 
@@ -89,10 +82,8 @@ This package contains Introspection bindings.
 %dir %{_datadir}/telepathy/clients
 %{_datadir}/telepathy/clients/Polari.client
 %{_datadir}/icons/hicolor/*/apps/*
-%{_libdir}/polari/libpolari-1.0.so
-
-%files -n typelib-1_0-Polari-1_0
 %dir %{_libdir}/polari
+%{_libdir}/polari/libpolari-1.0.so
 %dir %{_libdir}/polari/girepository-1.0
 %{_libdir}/polari/girepository-1.0/Polari-1.0.typelib
 

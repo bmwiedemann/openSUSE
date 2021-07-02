@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 28 14:05:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fold typelib-1_0-Polari-1_0 into the main package: the .typelib
+  file is installed in a private gi-repository.
+- Obsolete the old package name to ease upgrades.
+
+-------------------------------------------------------------------
+Fri Jun 25 20:35:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.0:
+  + Promisify async operations.
+- Changes from version 3.38.1:
+  + Add hackint to predefined networks.
+  + Add Libera.Chat to predefined networks.
+  + Promote Libera.Chat over Freenode.
+  + Update OFTC server list.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 19 17:27:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.0:

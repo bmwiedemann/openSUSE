@@ -362,4 +362,14 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847257</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e408bba38f7ff8fc8db9bc70daf7e0f4</srcmd5>
+    <version>40.0</version>
+    <time>1625225191</time>
+    <user>dimstar_suse</user>
+    <comment>- Fold typelib-1_0-Polari-1_0 into the main package: the .typelib
+  file is installed in a private gi-repository.
+- Obsolete the old package name to ease upgrades. (forwarded request 902850 from dimstar)</comment>
+    <requestid>902861</requestid>
+  </revision>
 </revisionlist>
