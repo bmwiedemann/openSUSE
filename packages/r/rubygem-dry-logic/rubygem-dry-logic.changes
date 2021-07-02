@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:19:06 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.2.0
+ see installed CHANGELOG.md
+
+  ## 1.2.0 2021-04-26
+  
+  
+  ### Added
+  
+  - Add predicate and operation builder DSL (@oleander)
+  
+  
+  [Compare v1.1.1...v1.2.0](https://github.com/dry-rb/dry-logic/compare/v1.1.1...v1.2.0)
+  
+  ## 1.1.1 2021-04-14
+  
+  
+  ### Fixed
+  
+  - Fixed a crash under jruby caused by arg splatting in Binary operations (@flash-gordon)
+  
+  
+  [Compare v1.1.0...v1.1.1](https://github.com/dry-rb/dry-logic/compare/v1.1.0...v1.1.1)
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:33:46 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.1.0
