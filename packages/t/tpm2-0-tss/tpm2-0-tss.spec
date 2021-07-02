@@ -272,6 +272,10 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 # complains about "found conflict of libtss2-fapi1-3.0.1-lp152.103.1.x86_64
 # with libtss2-fapi1-3.0.1-lp152.103.1.x86_64". Thus leave it be for the
 # moment, some insane circle of errors is involved here.
+#
+# it seems the problem is that during `make install` the package runs
+# systemd-tmpfiles --create, and the directories are created outside the
+# package's install tree. It seems this is not expected by RPM.
 # %%ghost %%{_sharedstatedir}/%%{name}/system/keystore
 # %%ghost %%{_rundir}/%%{name}/eventlog
 
