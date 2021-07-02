@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 01 08:03:22 UTC 2021 - ismail@i10z.com
+
+- Update to version 0.33.1+git.20210630T163736.f2afae55e9:
+  * wayland: refactor surface scaling
+  * sub: fix subs/lyrics on music files with sub-past-video-end=no
+  * wayland: fix wl_surface_set_buffer_scale usage
+  * wayland: always be sure to initially try to render
+  * wayland: remove unused includes
+  * wayland: handle app id option less stupidly
+  * wayland: reorganize wayland common code
+  * stats.lua: add scaled resolution
+  * DOCS: fix typo on seekbarkeyframes
+  * TOOLS/lua/autoload: load files even if current file is hidden
+  * TOOLS/lua/autoload: add ignore_hidden option
+  * player: fix property name
+  * lua: idle observers: ensure timers are up-to-date
+  * lua: timers: don't block forever with slow callbacks
+  * sub: by default, don't render timestamps after video EOF
+  * player: change cover-art-auto behavior
+  * js: idle-observers: minor performance improvement
+  * osc: seekbar hover/drag: display target chapter at the title
+  * manpage: add article in fuzzy explanation
+  * player: remove unnecessary check
+  * player: fix segfault
+  * osc: ensure tick after any mouse-event
+  * osc: don't initialize while mouse-down over an element
+  * osc: update chapter marker positions when duration changes
+
+-------------------------------------------------------------------
 Mon Jun 14 21:01:36 UTC 2021 - ismail@i10z.com
 
 - Update to version 0.33.1+git.20210613T225337.bc9d556f3a:

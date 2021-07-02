@@ -1418,4 +1418,36 @@
   * ytdl_hook: improve handling of json parsing errors</comment>
     <requestid>899999</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>66f7db957d0b99ed438555c71c7cfbe8</srcmd5>
+    <version>0.33.1+git.20210630T163736.f2afae55e9</version>
+    <time>1625225214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210630T163736.f2afae55e9:
+  * wayland: refactor surface scaling
+  * sub: fix subs/lyrics on music files with sub-past-video-end=no
+  * wayland: fix wl_surface_set_buffer_scale usage
+  * wayland: always be sure to initially try to render
+  * wayland: remove unused includes
+  * wayland: handle app id option less stupidly
+  * wayland: reorganize wayland common code
+  * stats.lua: add scaled resolution
+  * DOCS: fix typo on seekbarkeyframes
+  * TOOLS/lua/autoload: load files even if current file is hidden
+  * TOOLS/lua/autoload: add ignore_hidden option
+  * player: fix property name
+  * lua: idle observers: ensure timers are up-to-date
+  * lua: timers: don't block forever with slow callbacks
+  * sub: by default, don't render timestamps after video EOF
+  * player: change cover-art-auto behavior
+  * js: idle-observers: minor performance improvement
+  * osc: seekbar hover/drag: display target chapter at the title
+  * manpage: add article in fuzzy explanation
+  * player: remove unnecessary check
+  * player: fix segfault
+  * osc: ensure tick after any mouse-event
+  * osc: don't initialize while mouse-down over an element
+  * osc: update chapter marker positions when duration changes</comment>
+    <requestid>903355</requestid>
+  </revision>
 </revisionlist>
