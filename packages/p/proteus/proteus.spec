@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           proteus
-Version:        %{majorver}.8
+Version:        %{majorver}.9
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later
@@ -46,18 +46,18 @@ BuildArch:      noarch
 Proteus allows you to access Tryton's modules like a client. Useful for automation, data load etc.
 
 %prep
-%setup -q 
+%setup -q
 
-%build 
+%build
 python3 setup.py build
 
 %install
-python3 setup.py install --prefix=%_prefix --root=%buildroot 
+python3 setup.py install --prefix=%_prefix --root=%buildroot
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
-%doc README 
+%doc README
 %license LICENSE
 %{python_sitelib}/*
 
