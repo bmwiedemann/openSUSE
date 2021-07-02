@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:33:10 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.7
+ see installed CHANGELOG.md
+
+  ## v2.0.7
+  
+  * Remove source map annotation from JS file. Fixes [#277](https://github.com/railsware/js-routes/issues/277)
+    * Generated file is not minified, so it is better to use app side bundler/compressor for source maps
+  
+  
+  ## v2.0.6
+  
+  * Disable `namespace` option default for all envs [#278](https://github.com/railsware/js-routes/issues/278)
+  
+  ## v2.0.5
+  
+  * Fixed backward compatibility issue [#276](https://github.com/railsware/js-routes/issues/276)
+  
+  ## v2.0.4
+  
+  * Fixed backward compatibility issue [#275](https://github.com/railsware/js-routes/issues/275)
+  
+  ## v2.0.3
+  
+  * Fixed backward compatibility issue [#275](https://github.com/railsware/js-routes/issues/275)
+  
+  ## v2.0.2
+  
+  * Fixed backward compatibility issue [#274](https://github.com/railsware/js-routes/issues/274)
+  
+  ## v2.0.1
+  
+  * Fixed backward compatibility issue [#272](https://github.com/railsware/js-routes/issues/272)
+  
+  ## v2.0.0
+  
+  Version 2.0 has some breaking changes.
+  See [UPGRADE TO 2.0](./VERSION_2_UPGRADE.md) for guidance.
+  
+  * `module_type` option support
+  * `documentation` option spport
+  * Migrated implementation to typescript
+  * ESM tree shaking support
+  * Support camel case `toParam` version of `to_param` property
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:51:18 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.14

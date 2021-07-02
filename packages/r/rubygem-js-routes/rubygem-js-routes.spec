@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-js-routes
-Version:        1.4.14
+Version:        2.0.7
 Release:        0
 %define mod_name js-routes
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            http://github.com/railsware/js-routes
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
