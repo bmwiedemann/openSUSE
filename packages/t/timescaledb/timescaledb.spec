@@ -1,7 +1,7 @@
 #
-# spec file for package timescaledb
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         pgname  @BUILD_FLAVOR@%{nil}
 %define         sname   timescaledb
 %define         priority    %{pgname}
-Version:        1.7.1
+Version:        1.7.4
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
@@ -39,6 +39,9 @@ Name:           %{sname}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{pgname}-%{sname}
+%endif
+%if ("%{pgname}" == "postgresql95" || "%{pgname}" == "postgresql96") && 0%{?suse_version} >= 1550
+ExclusiveArch:  do_not_build
 %endif
 
 %description
