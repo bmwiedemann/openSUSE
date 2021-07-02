@@ -1,7 +1,7 @@
 #
 # spec file for package sdparm
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sdparm
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        List or change SCSI disk parameters
-License:        BSD-3-Clause
+# getopt_long.c and port_getopt.h are BSD-4-Clause
+License:        BSD-2-Clause AND BSD-4-Clause
 Group:          Hardware/Other
-Url:            http://sg.danny.cz/sg/sdparm.html
-
+URL:            https://sg.danny.cz/sg/sdparm.html
 #Freecode-URL:	http://freecode.com/projects/sdparm
-Source:         http://sg.danny.cz/sg/p/%name-%version.tar.xz
-BuildRequires:  libsgutils-devel
-BuildRequires:  xz
+Source:         https://sg.danny.cz/sg/p/sdparm-%version.tar.xz
+BuildRequires:  libsgutils-devel >= 1.44
 Provides:       scsi:/sbin/sdparm
 
 %description
@@ -48,17 +47,17 @@ such that the disk stops operating or is slowed down. Use with care.
 # None of these is performance-critical, so use -Os rather than -O2:
 CFLAGS=$(echo "%optflags" | sed 's/\-O2/-Os/')
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot" bindir="/sbin"
+%make_install bindir="/sbin"
 
 %files
-%defattr(-,root,root)
+%license BSD_LICENSE
+%doc README ChangeLog
 /sbin/sas_disk_blink
 /sbin/scsi_ch_swp
 /sbin/sdparm
-%_mandir/man8/*.8*
-%doc README ChangeLog
+%_mandir/man8/*.8%{?ext_man}
 
 %changelog
