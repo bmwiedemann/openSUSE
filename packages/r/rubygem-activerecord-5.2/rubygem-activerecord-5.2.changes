@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:50:41 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.2.6
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.6 (May 05, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.2.5 (March 26, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.2.4.6 (May 05, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.2.4.5 (February 10, 2021) ##
+  
+  *   Fix possible DoS vector in PostgreSQL money type
+  
+      Carefully crafted input can cause a DoS via the regular expressions used
+      for validating the money format in the PostgreSQL adapter.  This patch
+      fixes the regexp.
+  
+      Thanks to @dee-see from Hackerone for this patch!
+  
+      [CVE-2021-22880]
+  
+      *Aaron Patterson*
+  
+  
+
+-------------------------------------------------------------------
 Fri Sep 25 13:23:17 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.2.4.4
