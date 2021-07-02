@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 10 06:43:10 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1187157, add "none" for "crypto_hash" and "crypto_cipher"
+- Add "select" type checker
+- Version 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
