@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-debug_inspector
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 %define mod_name debug_inspector
 %define mod_full_name %{mod_name}-%{version}
@@ -40,7 +40,16 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-A Ruby wrapper for the MRI 2.0 debug_inspector API.
+Adds methods to RubyVM::DebugInspector to allow for inspection of backtrace
+frames.
+The debug_inspector C extension and API were designed and built by Koichi
+Sasada, this project is just a gemification of his work.
+This library makes use of the debug inspector API which was added to MRI
+2.0.0.
+Only works on MRI 2 and 3. Requiring it on unsupported Rubies will result in a
+no-op.
+Recommended for use only in debugging situations. Do not use this in
+production apps.
 
 %prep
 
