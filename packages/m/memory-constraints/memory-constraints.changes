@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 29 14:50:50 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix Requires for awk to work also on Fedora
+
+-------------------------------------------------------------------
 Mon May  4 14:47:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use the correct macro %_rpmmacrodir in the %files section.

@@ -24,4 +24,13 @@ not contain empty values</comment>
     <comment></comment>
     <requestid>800104</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a9763dd25d1182ec02f95449a5b3a24d</srcmd5>
+    <version>20180406</version>
+    <time>1625225194</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires for awk to work also on Fedora
+</comment>
+    <requestid>903117</requestid>
+  </revision>
 </revisionlist>
