@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Throwable
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Throwable
-Version:        0.200013
-Release:        0
 %define cpan_name Throwable
-Summary:        Role for Classes That Can Be Thrown
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Throwable/
-Source0:        http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Throwable
+Version:        1.000
+Release:        0
+Summary:        Role for classes that can be thrown
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::StackTrace) >= 1.32
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Module::Runtime) >= 0.002
 BuildRequires:  perl(Moo) >= 1.000001
 BuildRequires:  perl(Moo::Role)
@@ -48,18 +47,18 @@ Throwable is a role for classes that are meant to be thrown as exceptions
 to standard program flow. It is very simple and does only two things: saves
 any previous value for '$@' and calls 'die $self'.
 
-Throwable is implemented with the Moo manpage, so you can stick to Moo or
-use the Moose manpage, as you prefer.
+Throwable is implemented with Moo, so you can stick to Moo or use Moose, as
+you prefer.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -67,7 +66,7 @@ use the Moose manpage, as you prefer.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
