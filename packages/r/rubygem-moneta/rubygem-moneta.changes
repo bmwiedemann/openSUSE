@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:37:58 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.2
+ see installed CHANGES
+
+  1.4.2
+  
+  * Pool - fix busy-loop issue (#197)
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:56:36 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.1
