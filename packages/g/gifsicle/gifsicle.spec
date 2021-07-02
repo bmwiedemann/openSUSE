@@ -1,7 +1,7 @@
 #
 # spec file for package gifsicle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gifsicle
-Version:        1.92
+Version:        1.93
 Release:        0
 Summary:        Creating and editing GIF images and animations
 License:        GPL-2.0-only
@@ -55,10 +55,10 @@ appearance.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install

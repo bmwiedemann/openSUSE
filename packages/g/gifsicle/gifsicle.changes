@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 30 08:14:58 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- re-introduce make_build macro, as SLE targets are disabled now per default
+    for the graphics project
+- Update to version 1.93:
+  * Fix security bug on certain resize operations with `--resize-method=box`
+  * Fix problems with colormapless GIFs.
+
+-------------------------------------------------------------------
 Fri Aug 14 13:49:25 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
 
 - unbreak fedora builds
