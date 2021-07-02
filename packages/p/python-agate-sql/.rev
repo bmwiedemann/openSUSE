@@ -51,4 +51,14 @@
 </comment>
     <requestid>876972</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1345712e17e29c4b33a9007759ab88a9</srcmd5>
+    <version>0.5.6</version>
+    <time>1625225222</time>
+    <user>dimstar_suse</user>
+    <comment>- Some test_to_sql_create_statement_with_schema test again
+  (gh#wireservice/agate-sql#33).
+</comment>
+    <requestid>903399</requestid>
+  </revision>
 </revisionlist>

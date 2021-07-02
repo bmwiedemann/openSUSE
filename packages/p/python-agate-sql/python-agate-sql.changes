@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:13:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Some test_to_sql_create_statement_with_schema test again
+  (gh#wireservice/agate-sql#33).
+
+-------------------------------------------------------------------
 Fri Mar  5 09:57:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.5.6:

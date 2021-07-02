@@ -58,7 +58,8 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# exclusion gh#wireservice/agate-sql#33
+%pytest -k 'not test_to_sql_create_statement_with_schema'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CHANGELOG.rst
