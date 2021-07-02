@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -342,6 +342,7 @@ Requires:       %{mname} = %{version}
 %description devel
 The graphviz-devel package contains all that's necessary for developing
 programs that use the graphviz libraries including man3 pages.
+
 
 
 #autosetup breaks graphviz-addons

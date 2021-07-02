@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 06:30:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update graphviz-2.20.2-interpreter_names.patch so the Python demo
+  uses Python 3.
+
+-------------------------------------------------------------------
 Wed Jun  2 08:03:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Install epl-v10.txt instead of COPYING.

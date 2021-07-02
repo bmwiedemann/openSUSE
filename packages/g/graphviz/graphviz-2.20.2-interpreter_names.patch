@@ -1,8 +1,20 @@
---- tclpkg/gv/demo/modgraph.lua
+Index: tclpkg/gv/demo/modgraph.lua
+===================================================================
+--- tclpkg/gv/demo/modgraph.lua.orig
 +++ tclpkg/gv/demo/modgraph.lua
 @@ -1,4 +1,4 @@
 -#!/usr/bin/lua
 +#!/usr/bin/lua5.1
  
  -- display the kernel module dependencies
+ 
+Index: tclpkg/gv/demo/modgraph.py
+===================================================================
+--- tclpkg/gv/demo/modgraph.py.orig
++++ tclpkg/gv/demo/modgraph.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ # display the kernel module dependencies
  
