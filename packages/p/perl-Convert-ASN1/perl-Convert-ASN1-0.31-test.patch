@@ -1,0 +1,18 @@
+Index: Convert-ASN1-0.31/t/00prim.t
+===================================================================
+--- Convert-ASN1-0.31.orig/t/00prim.t
++++ Convert-ASN1-0.31/t/00prim.t
+@@ -178,9 +178,10 @@ my %BSTR = (
+     [pack("B*",'011011111101110111'), 7, pack("B*", '01101110')]
+ );
+ 
+-while(($result,$val) = each %BSTR) {
+-    print "# BIT STRING ", unpack("B*", ref($val) ? $val->[0] : $val),
+-	" ",(ref($val) ? $val->[1] : $val),"\n";
++foreach $result (sort(keys %BSTR)) {
++  $val = $BSTR{$result};
++  print "# BIT STRING ", unpack("B*", ref($val) ? $val->[0] : $val),
++      " ",(ref($val) ? $val->[1] : $val),"\n";
+ 
+   btest $test++, $asn->prepare('bit BIT STRING') or warn $asn->error;
+   stest $test++, $result, $asn->encode( bit => $val) or warn $asn->error;

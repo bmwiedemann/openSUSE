@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 29 10:34:45 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix autoupdate: Update spec file
+- Rebase Convert-ASN1-0.22-test.diff and rename it to
+  perl-Convert-ASN1-0.31-test.patch
+
+-------------------------------------------------------------------
 Thu Jun  3 17:40:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - updated to 0.31

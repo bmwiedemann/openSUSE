@@ -16,21 +16,17 @@
 #
 
 
+%define cpan_name Convert-ASN1
 Name:           perl-Convert-ASN1
 Version:        0.31
 Release:        0
-%define cpan_name Convert-ASN1
 Summary:        ASN.1 Encode/Decode library
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Convert-ASN1-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# MANUAL BEGIN
-Patch0:         Convert-ASN1-0.22-test.diff
-# MANUAL END
+Patch0:         perl-Convert-ASN1-0.31-test.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Math::BigInt) >= 1.997
@@ -42,12 +38,11 @@ Convert::ASN1 encodes and decodes ASN.1 data structures using BER/DER
 rules.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -58,7 +53,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog examples mkparse OldChanges parser.y README.md
 %license LICENSE
 
