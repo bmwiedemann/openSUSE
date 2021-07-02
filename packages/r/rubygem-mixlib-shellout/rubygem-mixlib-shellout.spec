@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-shellout
-Version:        3.2.2
+Version:        3.2.5
 Release:        0
 %define mod_name mixlib-shellout
 %define mod_full_name %{mod_name}-%{version}
