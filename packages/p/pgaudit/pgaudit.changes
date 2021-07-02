@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 30 14:25:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do no longer build postgresql95 and postgresql96 flavors on
+  Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Nov  4 14:36:40 UTC 2020 - pgajdos@suse.com
 
 - try to make factory bot happy

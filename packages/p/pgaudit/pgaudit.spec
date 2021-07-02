@@ -1,7 +1,7 @@
 #
 # spec file for package pgaudit
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define         pg_libdir %(pg_config --pkglibdir)
 
 # name_pg uses --keep-name-conditionals (argument of spec_query)
@@ -25,6 +27,10 @@
 %bcond_without  llvm
 %else
 %bcond_with     llvm
+%endif
+
+%if ("%{name_pg}" == "postgresql95" || "%{name_pg}" == "postgresql96") && 0%{?suse_version} >= 1550
+ExclusiveArch:  do_not_build
 %endif
 
 %if "%{name_pg}" == ""
@@ -56,14 +62,14 @@ Release:        0
 Summary:        An auditing module for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Url:            https://github.com/pgaudit/pgaudit
+URL:            https://github.com/pgaudit/pgaudit
 %if "%{name_pg}" != ""
 # not nill flavour
 Source:         %{sname}-%{version}.tar.gz
 %endif
 BuildRequires:  %{name_pg}-devel
-BuildRequires:  %{name_pg}-server-devel
 BuildRequires:  %{name_pg}-server
+BuildRequires:  %{name_pg}-server-devel
 Requires:       %{name_pg}-server
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -84,9 +90,9 @@ audit logging may not be disabled by a user.
 %package llvmjit
 Summary:        Just-in-time compilation support for PostgreSQL %{sname} extension
 Group:          Productivity/Databases/Servers
-Requires:       %{name_pg}-server
-Requires:       %{name_pg}-llvmjit
 Requires:       %{name_pg}-%{sname} = %{version}-%{release}
+Requires:       %{name_pg}-llvmjit
+Requires:       %{name_pg}-server
 Supplements:    packageand(%{name_pg}-llvmjit:%{name})
 
 %description llvmjit
