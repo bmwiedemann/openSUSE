@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 26 03:07:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.320
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.320   2021-06-25
+  	- fix check_prog to not find directories (RT#132993), thanks
+  	  RJBS for reporting it again!
+
+-------------------------------------------------------------------
 Wed Sep 30 03:07:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.319
