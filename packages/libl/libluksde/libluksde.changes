@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 08:46:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unnecessary BuildRequires on python-devel 
+
+-------------------------------------------------------------------
 Thu May 13 23:47:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210419 (7b40e4b7)

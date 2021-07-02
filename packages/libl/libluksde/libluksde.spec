@@ -30,7 +30,6 @@ BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcaes) >= 20201012
 BuildRequires:  pkgconfig(libcdata) >= 20200509
