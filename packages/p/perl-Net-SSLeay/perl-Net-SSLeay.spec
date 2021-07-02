@@ -58,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%license LICENSE
 %doc Changes Credits QuickRef README examples CONTRIBUTING.md
+%license LICENSE
 
 %changelog

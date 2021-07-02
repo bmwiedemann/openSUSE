@@ -11,7 +11,7 @@
 #  foo.patch: -p1
 #  bar.patch:
 #  baz.patch: PATCH-FIX-OPENSUSE
-#preamble: |-
+preamble: |-
  BuildRequires:  libopenssl-devel
  BuildRequires:  zlib-devel
  BuildRequires:  perl(Test::Exception)
