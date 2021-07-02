@@ -31,6 +31,7 @@ Source:         http://software.calhariz.com/at/%{name}_%{version}.orig.tar.gz
 Source2:        atd.pamd
 Source3:        sysconfig.atd
 Source5:        atd.service
+Source6:        system-user-at.conf
 Patch0:         at-3.1.14.patch
 Patch4:         at-3.1.14-joblist.patch
 Patch10:        at-3.1.13-massive_batch.patch
@@ -67,10 +68,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libHX)
 BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  permissions
+%sysusers_requires
 Recommends:     smtp_daemon
 
 %description
@@ -91,6 +92,7 @@ autoreconf -fvi
   --with-daemon_groupname=at
 
 %make_build
+%sysusers_generate_pre %{SOURCE6} at system-user-at.conf
 
 %install
 install -d %{buildroot}{%{_sysconfdir}/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
@@ -110,11 +112,10 @@ ln -s service %{buildroot}%{_sbindir}/rcatd
 install -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/atd
 install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 
-%pre
-getent group at >/dev/null || %{_sbindir}/groupadd -g 25 -o -r at
-getent passwd at >/dev/null || %{_sbindir}/useradd -r -o -g at -u 25 \
-	-s /bin/false -c "Batch jobs daemon" \
-	-d %{_localstatedir}/spool/atjobs at
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
+
+%pre -f at.pre
 %service_add_pre atd.service
 
 %preun
@@ -149,5 +150,6 @@ getent passwd at >/dev/null || %{_sbindir}/useradd -r -o -g at -u 25 \
 %attr(600,at,at) %{_localstatedir}/spool/atjobs/.SEQ
 %{_fillupdir}/sysconfig.atd
 %{_unitdir}/atd.service
+%{_sysusersdir}/system-user-at.conf
 
 %changelog

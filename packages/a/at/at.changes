@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  3 11:39:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Fri Oct  2 21:20:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.1
