@@ -57,4 +57,12 @@
   no changelog found</comment>
     <requestid>865104</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80cb5588b7ce8c1b346937f99dbf7b4b</srcmd5>
+    <version>4.0.2</version>
+    <time>1625225268</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903535</requestid>
+  </revision>
 </revisionlist>
