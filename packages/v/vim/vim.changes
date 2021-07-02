@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Wed Jun 30 09:15:27 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disabled test_recover because is broken on 32bit archs
+  --> disable-unreliable-tests.patch
+
+-------------------------------------------------------------------
+Wed Jun 30 08:39:22 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3075, fixes the following problems
+  * Vim: when debugging only the first line of a command using line
+  continuation is displayed.
+  * Coverity warns for freeing static string.
+  * Vim9: Assigning to @# requires a string. (Naohiro Ono)
+  * Confusing error when expression is followed by comma.
+  * Vim9: debugger shows too many lines.
+  * Formatting using quickfixtextfunc is lost when updating location lists
+  for different buffers.  (Yorick Peterse)
+  * Location list only has the start position.
+  * Unreachable code.
+  * Spaces allowed between option name and "!", "?", etc.
+  * Available encryption methods are not strong enough.
+  * Vim9: arguments for execute() not checked at compile time.
+  * execute() function test fails.
+  * Not enough tests for quickfix end_col and end_lnum.
+  * Vim9: cannot set breakpoint in compiled function.
+  * Vim9: breakpoint in compiled function not always checked.
+  * GUI mouse events not tested.
+  * Vim9: crash when using operator and list unpack assignment. (Naohiro Ono)
+  * Coverity reports a memory leak.
+  * No error if a function name starts with an underscore. (Naohiro Ono)
+  * Build problems with MSVC, other crypt issues with libsodium.
+  * No error when using alpha delimiter with :global.
+  * Installing packages on github CI sometimes fails.
+  * Vim9: crash when calling :def function with partial and return type is
+  not set.
+  * Vim9: builtin function arguments not checked at compile time.
+  * Configure reports libcanberra when checking for libsodium.
+  * Amiga built-in version string doesn't include build date.
+  * Vim9: breakpoint at a comment line does not work.
+  * GUI: dropping files not tested.
+  * Detecting if the process of a swap file is running fails if the process
+  is owned by another user.
+  * Swap file test fails.
+  * Minor typos.
+  * Increment and decrement don't allow for next command.
+  * Strange error for white space after ++ command.
+  * JSON patch file not recognized.
+  * Cannot recognize elixir files.
+  * Vim9: for loop with one list variable does not work.
+  * Vim9: "legacy call" does not work.
+  * Vim9: cannot assign to @@ in :def function
+  * Vim9: unpack assignment using "_" after semicolon fails.
+  * Strange error for assigning to "x.key" on non-dictionary.
+  * Vim9: using default value in lambda gives confusing error.
+  * Vim9: debugger test fails with normal features and +terminal. (Dominique
+  Pellé)
+  * Vim9: cannot use ternary operator in parenthesis.
+  * Vim9: memory leak when using lambda.
+  * Vim9: cannot use ternary operator in parenthesis.
+  * Testing the shell option is incomplete and spread out.
+  * Internal error when adding several text properties.
+  * Crash when switching 'cryptmethod' to xchaha20 with an existing undo
+  file. (Martin Tournoij)
+  * Vim9: in script cannot set item in uninitialized list.
+  * Vim9: error when sourcing script twice and reusing a function name.
+  * Vim9: debugging lambda does not work.
+  * Building fails with Athena. (Elimar Riesebieter)
+  * Unicode tables are slightly outdated.
+  * Error messages are spread out.
+  * Not enough testing for shell use.
+  * Shell options are not set properly for PowerShell.
+  * The "zy" command does not work well when 'virtualedit' is set to
+  "block". (Johann Höchtl)
+  * When cursor is move for block append wrong text is inserted.
+  * popup_atcursor() uses wrong position with concealing.
+
+-------------------------------------------------------------------
+Thu Jun 17 07:33:09 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3013, fixes the following problems
+  * Builtin function can be shadowed by global variable.
+  * Using ":!command" does not work if the command uses posix_spawn().
+  * Still a way to shadow a builtin function. (Yasuhiro Matsumoto)
+  * E704 for script local variable is not backwards compatible. (Yasuhiro
+  Matsumoto)
+  * Computing array length is done in various ways.
+  * EBCDIC build is broken.
+  * Superfluous extern declaration.
+  * Vim9: line continuation comment uses legacy syntax.
+  * Vim9: no good error for using :legacy in a :def function.
+  * Test commented out because it fails with ASAN.
+  * The evalfunc.c file is too big.
+  * Accidentally enable tcl by default.
+  * When a popup is visible a mouse move my restart Visual mode.
+  * Vim9: line continuation comment still uses legacy syntax in one place.
+  * Select mode test fails.
+  * When 'clipboard' is "unnamed" zp and zP do not work correctly.
+  * ASAN error when using text from the clipboard.
+  * Calculating register width is not always needed. (Christian Brabandt)
+  * Vim9: converting number to bool uses wrong stack offset. (Salman Halim)
+  * Popup test fails if rightleft feature not enabled.
+  * After using motion force from feedkeys() it may not be reset.
+  * GTK: righthand scrollbar does not show with split window.
+  * Vim9: using `=expr` does not handle a list of strings.
+  * Vim9: internal error when calling function with too few arguments
+  * Vim9: check for argument count ignores default values.
+  * Vim9: no error when using job or channel as a string.
+  * Some buffer related code is not tested.
+  * Vim9: substitute expression cannot be a List in a :def function.
+  * Build failure without the channel feature.
+  * Substitute() accepts a number but not a float expression.
+  * Tests failing because there is no error for float to string conversion.
+  * Sound code not fully tested.
+  * Vim9: cannot use heredoc in :def function for :python, :lua, etc.
+  * Recover test fails on big endian systems.
+  * Vim9: leaking memory when using heredoc script.
+  * Short file name extension for Scala not recognized.
+  * Vim9: using filter in compiled command does not work.
+  * Vim9: need to plan for future additions.
+  * Using getchar() in Vim9 script is problematic.
+  * Function list test fails.
+  * sound_playfile() is not tested on MS-Windows.
+  * Swap file recovery not sufficiently tested.
+  * Keys typed during a :normal command are discarded.
+  * GUI: mouse move may start Visual mode with a popup visible.
+  * Vim9: hang when using space after ->. (Naohiro Ono)
+  * Vim9: crash when calling function that failed to compile.
+  * ml_get errors after recovering a file. (Yegappan Lakshmanan)
+  * Vim9: crash when using two levels of partials.
+  * Vim9: memory leak
+  * Subtracting from number option fails when result is zero. (Ingo Karkat)
+  * Python configure check uses deprecated command.
+  * Cannot yank a block without trailing spaces.
+  * "%bd" tries to delete popup window buffers, which fails. (Ralf Schandl)
+  * Fix for recovery and diff mode not tested.
+  * Greek spell checking uses wrong case folding.
+  * Vim9: can only use an autoload function name as a string.
+  * Build failure without the +eval feature.
+  * Crash when using a null function reference. (Naohiro Ono)
+  * Warning for uninitialized variable.
+  * Not all options code is covered by tests.
+  * Popup window test is a bit flaky.
+  * Recovery test is not run on big-endian systems.
+  * Vim9: future commands are not reserved yet.
+  * Vim9: an inline function requires specifying the return type.
+  * Vim9: Test fails because of missing return statement.
+  * Vim9: a compiled function cannot be debugged.
+  * Build failure without the profile feature.
+  * Build failure with normal features.
+  * Vim9: debugger test fails.
+  * Vim9: memory leak when debugging a :def function.
+  * Jupyter Notebook files are not recognized.
+  * Vim9: no completion for :vim9 and :legacy.
+  * Vim9: completion for :disassemble is incomplete.
+  * 'fileencodings' default value should depend on 'encoding'. (Gary Johnson)
+  * Various code is not fully tested.
+  * Linker errors with dynamic Python 3.10.
+  * Vim9: when debugging cannot inspect local variables.
+  * Vim9: disassemble test fails.
+  * Vim9: disassemble test fails.
+  * Balloon sometimes does not hide with GTK 3.
+  * Vim9: warning for uninitialized variable.
+  * Vim9: memory leak when compilation fails.
+  * Vim doesn't abort on a fatal Tcl error.
+  * Vim9: closure compiled with wrong compile type.
+  * Vim9: error for missing colon given while skipping.
+  * Vim9: using a void value does not give a proper error message.
+  * Crash when echoing a value very early. (Naruhiko Nishino)
+  * Vim9: test for void value fails.
+  * Startup test may hang.
+  * Startup test may hang.
+  * Not enough testing for viminfo code.
+  * Vim9: cannot get argument values during debugging.
+  * When 'rightleft' is set the line number is sometimes drawn reversed.
+  * Vim: when debugging only the first line of a command using line
+  continuation is displayed.
+
+-------------------------------------------------------------------
 Tue Jun  1 10:19:44 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2918, fixes the following problems

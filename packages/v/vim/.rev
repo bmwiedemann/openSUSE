@@ -5220,4 +5220,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: for loop list unpack only allows for one &quot;_&quot;.</comment>
     <requestid>896658</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>509b9803142be0ac5658166c8228e3df</srcmd5>
+    <version>8.2.3075</version>
+    <time>1625225197</time>
+    <user>dimstar_suse</user>
+    <comment>- disabled test_recover because is broken on 32bit archs
+  --&gt; disable-unreliable-tests.patch
+
+- Updated to version 8.2.3075, fixes the following problems
+  * Vim: when debugging only the first line of a command using line
+  continuation is displayed.
+  * Coverity warns for freeing static string.
+  * Vim9: Assigning to @# requires a string. (Naohiro Ono)
+  * Confusing error when expression is followed by comma.
+  * Vim9: debugger shows too many lines.
+  * Formatting using quickfixtextfunc is lost when updating location lists
+  for different buffers.  (Yorick Peterse)
+  * Location list only has the start position.
+  * Unreachable code.
+  * Spaces allowed between option name and &quot;!&quot;, &quot;?&quot;, etc.
+  * Available encryption methods are not strong enough.
+  * Vim9: arguments for execute() not checked at compile time.
+  * execute() function test fails.
+  * Not enough tests for quickfix end_col and end_lnum.
+  * Vim9: cannot set breakpoint in compiled function.
+  * Vim9: breakpoint in compiled function not always checked.
+  * GUI mouse events not tested.
+  * Vim9: crash when using operator and list unpack assignment. (Naohiro Ono)
+  * Coverity reports a memory leak.
+  * No error if a function name starts with an underscore. (Naohiro Ono)
+  * Build problems with MSVC, other crypt issues with libsodium.
+  * No error when using alpha delimiter with :global.
+  * Installing packages on github CI sometimes fails.
+  * Vim9: crash when calling :def function with partial and return type is
+  not set.</comment>
+    <requestid>903208</requestid>
+  </revision>
 </revisionlist>
