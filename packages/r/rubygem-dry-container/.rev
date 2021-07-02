@@ -7,4 +7,12 @@
     <comment>one more try for dry</comment>
     <requestid>818086</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>448db2359d083dd10752a137f115e99e</srcmd5>
+    <version>0.8.0</version>
+    <time>1625225255</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903499</requestid>
+  </revision>
 </revisionlist>

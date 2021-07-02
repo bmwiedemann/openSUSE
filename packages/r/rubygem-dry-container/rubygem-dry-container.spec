@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-dry-container
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,23 @@
 #
 
 Name:           rubygem-dry-container
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 %define mod_name dry-container
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/dry-rb/dry-container
+URL:            https://dry-rb.org/gems/dry-container
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        A simple container intended for use as an IoC container
+Summary:        A simple, configurable object container implemented in Ruby
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-A simple container intended for use as an IoC container.
+A simple, configurable object container implemented in Ruby.
 
 %prep
 
