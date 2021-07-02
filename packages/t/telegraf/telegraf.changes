@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jul 01 13:26:54 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 1.19.0:
+  * Update Go to 1.16.5
+  * Many linter fixes
+  * New Input Plugins
+    * Alibaba CloudMonitor Service (Aliyun)
+    * OpenTelemetry
+    * Intel Data Plane Development Kit (DPDK)
+    * KNX, SQL
+  * New Output Plugins: Websocket, SQL, AWS Cloudwatch logs
+  * New Parser Plugins: Prometheus Remote Write, JSON V2
+  * Bugfixes
+    * Fix reading config files starting with http
+    * serializers.prometheusremotewrite Update dependency and remove
+      tags with empty values
+    * outputs.kafka Don't prevent telegraf from starting when
+      there's a connection error
+    * outputs.dynatrace Use dynatrace-metric-utils
+    * parsers.json_v2 Update json_v2 parser to handle null types
+    * inputs.sql Fix import of sqlite and ignore it on all platforms
+      that require CGO.
+    * inputs.kube_inventory Fix connecting to the wrong url
+    * processors.parser Fix segfault
+    * inputs.docker Close all idle connections
+    * inputs.suricata Support new JSON format
+    * outputs.influxdb Fix endless retries
+  * Features
+    * Add named timestamp formats
+    * Allow multiple "--config" and "--config-directory" flags
+    * Config file environment variable can be a URL
+    * common.http Add OAuth2 to HTTP input
+    * outputs.datadog Add HTTP proxy to datadog output
+    * outputs.graphite Allow more characters in graphite tags
+    * processors.strings Add UTF-8 sanitizer
+    * processors.enum Support float64
+    * processors.starlark Support nanosecond resolution timestamp
+    * processors.starlark Add math module
+    * processors.starlark Add an example showing how to obtain IOPS from
+      diskio input
+    * parsers.value Add custom field name config option
+    * parsers.prometheusremotewrite Add starlark script for
+      renaming metrics
+    * inputs.vsphere Add config option for the historical interval
+      duration
+    * inputs.ping Add an option to specify packet size
+    * inputs.sqlserver Added login_name
+    * inputs.dovecot Add support for unix domain sockets
+    * inputs.aliyuncms Add config option list of regions to query
+    * inputs.sqlserver Enable Azure Active Directory (AAD)
+      authentication support
+    * inputs.cloudwatch Add wildcard support in dimensions configuration
+    * inputs.mysql Gather all mysql channels
+    * inputs.logstash Add support for version 7 queue stats
+    * inputs.couchbase Add ~200 more Couchbase metrics via Buckets
+      endpoint
+    * inputs.sqlserver input/sqlserver: Add service and save connection pools
+    * inputs.x509_cert Wildcard support for cert filenames
+    * processors.starlark Add time module
+    * inputs.kinesis_consumer Add content_encoding option with gzip
+      and zlib support
+    * inputs.sqlserver Add an optional health metric
+    * inputs.http_listener_v2 Add support for snappy compression
+    * inputs.cisco_telemetry_mdt Add support for events and class based query
+    * inputs.mongodb Optionally collect top stats
+
+-------------------------------------------------------------------
 Tue May 18 17:26:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.18.2

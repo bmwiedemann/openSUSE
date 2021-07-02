@@ -87,4 +87,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>Update to version 1.18.2 (forwarded request 894123 from susnux)</comment>
     <requestid>894126</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6753be75a481e3fb952cf6f048fb0707</srcmd5>
+    <version>1.19.0</version>
+    <time>1625225234</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.19.0 (forwarded request 903443 from susnux)</comment>
+    <requestid>903554</requestid>
+  </revision>
 </revisionlist>
