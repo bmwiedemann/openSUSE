@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 25 12:08:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.5.5
+  * Keep preferring SelectorEventLoop on Windows. #669
+- Release 5.5.4
+  * Import configure_inline_support from matplotlib_inline if
+    available #654
+- Release 5.5.3
+  * Revert Backport of #605: Fix Handling of shell.should_run_async
+    #622
+- Release 5.5.2 and Release 5.5.1 were yanked from PyPI
+- Release 5.5.0
+  * kernelspec: ensure path is writable before writing kernel.json.
+    #593
+  * Add configure_inline_support and call it in the shell. #590
+  * Fix stop_on_error_timeout to now properly abort
+    execute_request's that fall within the timeout after an error.
+    #572
+
+-------------------------------------------------------------------
 Sat Feb 13 23:21:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.4.3
