@@ -7,4 +7,12 @@
     <comment>needed by rubygem-webpacker-5.2.1</comment>
     <requestid>865290</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>021aa5861ad3887162a5c77a74feb1da</srcmd5>
+    <version>3.0.0</version>
+    <time>1625225270</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903538</requestid>
+  </revision>
 </revisionlist>

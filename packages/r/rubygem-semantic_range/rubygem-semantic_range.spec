@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-semantic_range
-Version:        2.3.1
+Version:        3.0.0
 Release:        0
 %define mod_name semantic_range
 %define mod_full_name %{mod_name}-%{version}
