@@ -335,4 +335,13 @@ drop patches upstreamed</comment>
     <comment>- Update to version 0.9.7 (forwarded request 893317 from susnux)</comment>
     <requestid>896701</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>bc1993e12b0cd8827f99cfbcbb652687</srcmd5>
+    <version>0.9.7</version>
+    <time>1625225187</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require libboost_headers_devel. Some public headers
+  include boost ones. (forwarded request 898198 from cgiboudeaux)</comment>
+    <requestid>902763</requestid>
+  </revision>
 </revisionlist>

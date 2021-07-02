@@ -56,6 +56,7 @@ A cross platform PDF parsing and creation library.
 Summary:        Development files for podofo
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
+Requires:       libboost_headers-devel
 Requires:       libpodofo%{libver} = %{version}
 
 %description -n libpodofo-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 20:20:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly require libboost_headers_devel. Some public headers
+  include boost ones.
+
+-------------------------------------------------------------------
 Wed Apr 14 17:27:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.9.7
