@@ -1,7 +1,7 @@
 #
 # spec file for package libgtkdatabox
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libver 0_9_3-0
+%define libver 0_9_3-1
 
 Name:           libgtkdatabox
-Version:        0.9.3.0
+Version:        0.9.3.1
 Release:        0
-Summary:        GTK+ widget for fast data display
+Summary:        GTK+-2 widget for fast data display
 License:        LGPL-2.1+
 Group:          Development/Libraries/C and C++
 Url:            http://sourceforge.net/projects/gtkdatabox
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-GtkDatabox is a widget for the Gtk+ library designed to display large
+GtkDatabox is a widget for the Gtk+-2 library designed to display large
 amounts of numerical data fast and easy.
 
 %package devel
@@ -51,7 +51,7 @@ Provides:       %{name} = %{version}
 Obsoletes:      %{name}-%{libver} < %{version}
 
 %description -n %{name}-%{libver}
-GtkDatabox is a widget for the Gtk+ library designed to display large
+GtkDatabox is a widget for the Gtk+-2 library designed to display large
 amounts of numerical data fast and easy.
 
 %prep
@@ -71,12 +71,11 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %postun -n %{name}-%{libver} -p /sbin/ldconfig
 
 %files -n %{name}-%{libver}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_libdir}/%{name}-*.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc examples/*.c
 %{_includedir}/*
 %{_libdir}/%{name}.so
