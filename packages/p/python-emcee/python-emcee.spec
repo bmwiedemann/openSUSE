@@ -1,7 +1,7 @@
 #
 # spec file for package python-emcee
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,16 @@
 # NEP 29: python36-numpy and -scipy are no longer available in TW
 %define         skip_python36 1
 Name:           python-emcee
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Python affine-invariant ensemble MCMC sampling
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dfm/emcee
 Source:         https://files.pythonhosted.org/packages/source/e/emcee/emcee-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py

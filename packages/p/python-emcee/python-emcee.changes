@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul  3 04:55:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * Added preliminary support for named parameters
+    (gh#dfm/emcee#386).
+  * Improved handling of blob dtypes (gh#dfm/emcee#363).
+  * Fixed various small bugs and documentation issues
+- New BuildRequires: python-pip, python-wheel, and
+  python-setuptool_scm.
+
+-------------------------------------------------------------------
 Fri Feb 12 23:50:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - NEP 29: python36-numpy and -scipy are no longer available in TW
