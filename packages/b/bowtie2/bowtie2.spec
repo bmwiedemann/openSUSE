@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%global simde_version 0.6.0
+%global simde_version 0.7.0
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %endif
 Name:           bowtie2
-Version:        2.4.2
+Version:        2.4.4
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
@@ -33,7 +33,6 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  x86_64 s390x ppc64le ppc64 aarch64
 
@@ -61,10 +60,12 @@ ln -s ../simde-*/simde simde
 sed -i -e 's/-msse2//' CMakeLists.txt
 sed -i -e 's/-m64//' CMakeLists.txt
 %endif
+# Note: RelWithDebInfo isn't supported and assumes fully unoptimised DEBUG mode; use Release mode instead
 %cmake \
 %ifarch aarch64
   -DNO_POPCNT_CAPABILITY=1 \
 %endif
+  -DCMAKE_BUILD_TYPE=Release
 
 %cmake_build
 
@@ -82,13 +83,8 @@ sed -i "s:%{_bindir}/env python:%{_bindir}/python:" %{buildroot}%{_bindir}/bowti
 %doc AUTHORS MANUAL NEWS TUTORIAL BOWTIE2_VERSION README.md
 %license LICENSE
 %{_bindir}/bowtie2
-%{_bindir}/bowtie2-align-l
-%{_bindir}/bowtie2-align-s
-%{_bindir}/bowtie2-build
-%{_bindir}/bowtie2-build-l
-%{_bindir}/bowtie2-build-s
-%{_bindir}/bowtie2-inspect
-%{_bindir}/bowtie2-inspect-l
-%{_bindir}/bowtie2-inspect-s
+%{_bindir}/bowtie2-build*
+%{_bindir}/bowtie2-inspect*
+%{_bindir}/bowtie2-align*
 
 %changelog

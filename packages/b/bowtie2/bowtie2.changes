@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul  2 23:48:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.4:
+  * Fixed an issue that would sometimes cause deadlocks in bowtie2
+    when running multithreaded.
+
+-------------------------------------------------------------------
+Fri May 14 20:25:55 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.3:
+  * Replaced TBB concurrency with C++ threads.
+  * Added native support for processing Zstd-compressed read files
+    to bowtie2.
+  * Added native support for processing Zstd-compressed
+    reference-genome files to bowtie2-build.
+  * Fixed an issue causing `bowtie2` to report incorrect
+    alignments on big-endian machines.
+  * Fixed an issue causing `bowtie2` to incorrectly process BAM
+    files on big-endian machines.
+  * Fixed an issue causing Bowtie2 to set an incorrect MAPQ when
+    AS and XS are the maximum for read length.
+  * Add support for building on Apple M1 processors.
+- Update simde to version 0.7.0.
+- Drop BuildRequires tbb-devel: no longer required.
+- RelWithDebInfo isn't supported and assumes fully unoptimised
+  Debug mode; use Release mode instead by passing
+  `-DCMAKE_RELEASE_TYPE=Release` to cmake.
+
+-------------------------------------------------------------------
 Wed Oct 21 23:01:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Actually update bowtie2 source to version 2.4.2 (fixing previous
