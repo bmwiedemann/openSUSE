@@ -287,4 +287,12 @@
     <comment>- add 0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch</comment>
     <requestid>889742</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>56dec511a5fdbf70d00330599bbc7edb</srcmd5>
+    <version>7.0.1</version>
+    <time>1625338261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903859</requestid>
+  </revision>
 </revisionlist>

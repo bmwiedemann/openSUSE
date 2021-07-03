@@ -20,14 +20,12 @@
 %global modname pysaml2
 %global skip_python2 1
 Name:           python-pysaml2
-Version:        6.5.1
+Version:        7.0.1
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/IdentityPython/pysaml2/pull/797
-Patch1:         0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module cryptography >= 1.4}
 BuildRequires:  %{python_module dbm}
@@ -78,7 +76,6 @@ SAML2 service provider or an identity provider.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%autopatch -p1
 
 # delete shebang of files not in executable path
 find src/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'

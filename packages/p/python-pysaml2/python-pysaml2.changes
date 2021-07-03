@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul  2 20:25:49 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete 0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch
+- Update to 7.0.1:
+  * 7.0.1 (2021-05-20)
+    - Preserve order of response bindings on IdP-initiated logout
+    - Fix use of expected binding on SP logout
+  * 7.0.0 (2021-05-18)
+    - **BREAKING** Replace encryption method rsa-1_5 with rsa-oaep-mgf1p
+    - Add documentation next to the code
+  * 6.5.2 (2021-05-18)
+    - Add shibmd_scopes metadata extractor
+    - Allow the Issuer element on a Response to be missing
+    - Respect the preferred_binding configuration for the single_logout_service
+    - Fix logout signature flags for redirect, post and soap requests
+    - Respect the logout_requests_signed configuration option
+    - Fix crash when applying policy on RequestedAttribute without a friendlyName
+    - Correctly validate IssueInstant
+    - Correctly handle AudienceRestriction elements with no value
+    - Raise InvalidAssertion exception when assertion requirements are not met
+    - Raise SAMLError on failure to parse a metadata file
+    - Raise StatusInvalidAuthnResponseStatement when the AuthnStatement is not valid
+    - Handle all forms of ACS endpoint specifications
+    - tests: Always use base64.encodebytes; base64.encodestring has been dropped
+    - build: Set minimum version needed for xmlschema
+    - docs: Update Travis CI badge from travis-ci.org to travis-ci.com
+    - examples: Fix example code
+
+-------------------------------------------------------------------
 Mon Apr 26 12:55:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch
