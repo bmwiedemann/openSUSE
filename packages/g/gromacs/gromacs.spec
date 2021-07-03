@@ -1,7 +1,7 @@
 #
 # spec file for package gromacs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,23 +35,24 @@ Obsoletes:      gromacs-openmpi < %{version}
 %endif
 
 Name:           gromacs
-Version:        2019.6
+Version:        2021.2
 Release:        0
 %define uversion %{version}
 %define sover   4
 Summary:        Molecular Dynamics Package
-License:        GPL-2.0-or-later AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
-Source2:        http://gerrit.gromacs.org/download/regressiontests-%{uversion}.tar.gz
+Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
 
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-devel
-BuildRequires:  cmake >= 2.8.8
+BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  lapack-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkg-config
@@ -92,14 +93,16 @@ and solid state physics.
 
 This package contains libraries for Gromacs
 
-%package bash
+%package bash-completion
 Summary:        Bash completion for Gromacs
 Group:          Productivity/Other
 Requires:       %{name} = %{version}-%{release}
 Requires:       bash-completion
 BuildArch:      noarch
+Provides:       %{name}-bash = %{version}
+Obsoletes:      %{name}-bash < %{version}
 
-%description bash
+%description bash-completion
 GROMACS is a versatile and extremely well optimized package to perform
 molecular dynamics computer simulations and subsequent trajectory analysis.
 It is developed for biomolecules like proteins, but the extremely high
@@ -157,33 +160,29 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 %endif
 mkdir nompi
 cd nompi
-# note about rpath
-# gromacs' cmake has too much rpath auto-magic, just
-# force to skip it (CMAKE_SKIP_RPATH=1) and use 
-# LD_LIBRARY_PATH for checks below
 
 # regression are currently broken on i686, https://redmine.gromacs.org/issues/2584
 # and cannot be used with GMX_BUILD_MDRUN_ONLY=ON
-%{cmake} \
+%cmake \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_VERBOSE_MAKEFILE=TRUE \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags} -fno-strict-aliasing" \
   -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
-  -DCMAKE_SKIP_RPATH=1 \
+  -DCMAKE_SKIP_RPATH=OFF \
+  -DCMAKE_SKIP_INSTALL_RPATH=ON \
   -DGMX_SIMD=%{acce} \
   -DGMX_MPI=OFF \
   -DGMX_THREAD_MPI=ON \
 %ifarch x86_64
-  -DGMX_GPU=ON -DGMX_USE_OPENCL=ON \
+  -DGMX_GPU=OpenCL \
 %endif
-  -DGMX_SYMLINK_OLD_BINARY_NAMES=OFF \
   -DGMX_OPENMP=ON \
 %ifnarch i586 %arm # regressiontest are not support on 32-bit archs: http://redmine.gromacs.org/issues/2584#note-35
   -DREGRESSIONTEST_PATH="$PWD/../../regressiontests-%{uversion}" \
 %endif
-  -DGMX_LIB_INSTALL_DIR=%{_lib} ../../
-%make_jobs
+  ../../
+%cmake_build
 
 cd ../..
 mkdir %{mpiver}
@@ -194,18 +193,18 @@ cd %{mpiver}
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags} -fno-strict-aliasing" \
   -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
-  -DCMAKE_SKIP_RPATH=1 \
+  -DCMAKE_SKIP_RPATH=OFF \
+  -DCMAKE_SKIP_INSTALL_RPATH=ON \
   -DGMX_SIMD=%{acce} \
   -DGMX_BUILD_MDRUN_ONLY=ON \
   -DBUILD_SHARED_LIBS=OFF \
   -DGMX_MPI=ON \
 %ifarch x86_64
-  -DGMX_GPU=ON -DGMX_USE_OPENCL=ON \
+  -DGMX_GPU=OpenCL \
 %endif
-  -DGMX_SYMLINK_OLD_BINARY_NAMES=OFF \
   -DGMX_OPENMP=ON \
-  -DGMX_LIB_INSTALL_DIR=%{_lib} ../../
-%make_jobs
+  ../../
+%cmake_build
 
 %install
 cd nompi
@@ -228,16 +227,16 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 
 %check
 #s390x is too slow for tests
-%ifnarch s390x
-LD_LIBRARY_PATH=%{buildroot}/%{_libdir} make -C nompi/build %{?_smp_mflags} check
-LD_LIBRARY_PATH='%{buildroot}/%{_libdir}::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C %{mpiver}/build %{?_smp_mflags} check
+# gmock based tests don't work on i586
+%ifnarch s390x i586
+%make_build -C nompi/build check
+%make_build -C %{mpiver}/build check
 %endif
 
 %post   -n libgromacs%sover -p /sbin/ldconfig
 %postun -n libgromacs%sover -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/gmx
 %{_bindir}/*.pl
 %dir %{_datadir}/gromacs
@@ -250,24 +249,21 @@ LD_LIBRARY_PATH='%{buildroot}/%{_libdir}::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' 
 %{_mandir}/man1/*
 
 %files -n libgromacs%sover
-%defattr(-,root,root,-)
 %{_libdir}/lib*.so.*
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_datadir}/gromacs/*.pdf
 %doc %{_datadir}/gromacs/README*
 %doc %{_datadir}/gromacs/COPYING
 
 %files %{mpiver}
-%defattr(-,root,root,-)
 %{_bindir}/*_mpi
 
 %files devel
-%defattr(-,root,root)
-%{_datadir}/gromacs/template
 %{_datadir}/cmake
 %{_includedir}/gromacs/
+%{_includedir}/gmxapi/
+%{_includedir}/nblib/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %ifarch x86_64
@@ -276,8 +272,7 @@ LD_LIBRARY_PATH='%{buildroot}/%{_libdir}::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' 
 %{_datadir}/gromacs/opencl/gromacs/*/*/*.h
 %endif
 
-%files bash
-%defattr(-,root,root,-)
+%files bash-completion
 %dir %{_datadir}/bash_completion.d
 %{_datadir}/bash_completion.d/gromacs
 

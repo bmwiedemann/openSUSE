@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun 28 15:39:23 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2021.2:
+  * Fixes where mdrun could behave incorrectly.
+  * Removed a potential race condition with GPU update (issue
+    4024).
+  * Avoided issues with global reduction observed with md-vv
+    (issue 4031).
+  * Prohibited SETTLE interactions for atoms with perturbed masses
+    (issue 3959).
+  * Rerun now writes pull output correctly (issue 4043).
+  * Fixes for ``gmx`` tools.
+  * Fix incorrect behaviour with single residue chains in pdb2gmx
+    (issue 4029).
+  * Fix grompp check for position restraints with absolute
+    reference (issue 3996).
+  * Fix error when using VMD plugin (issue 3055).
+  * Fix file permissions with ``gmx solvate`` and ``gmx genion``
+    (issue 4040).
+  * Fixes that affect portability.
+  * Support for Intel oneAPI compiler 2021.2.
+  * Fixed compiler infinity math and MKL flags.
+  * Fix Apple OpenCL build (issue 4008).
+  * Fixed compilation issue with GCC 11 (issue 4039).
+  * Fix bond type in GROMOS force fields (issue 3995).
+  * Allow PME on CPU in runs with domain decomposition and GPU
+    update (issue 4035).
+- Turn SKIP_RPATH=OFF and SKIP_INSTALL_RPATH=ON instead; skipping
+  rpath use entirely causes linking issues with tests, but we
+  still want to disable rpaths for the installed libs of course.
+- Rename %{name}-bash to %{name}-bash-completion in keeping with
+  naming convention followed by other packages.
+- Add lapack-devel to BuildRequires to use system versions of blas
+  and lapack.
+- CMake 3.13 or higher is required; adapt BuildRequires
+  accordingly.
+- Disable testing for i586: doesn't work with gmock.
+- Adapt to updated cmake options and drop no longer applicable
+  ones.
+
+-------------------------------------------------------------------
 Mon Jul 27 09:08:28 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Increase default disk size from 3 to 6GB in _constraints file
