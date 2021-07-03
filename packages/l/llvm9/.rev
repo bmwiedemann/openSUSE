@@ -235,4 +235,13 @@
 - Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)</comment>
     <requestid>899821</requestid>
   </revision>
+  <revision rev="23" vrev="19">
+    <srcmd5>5182966dfb128a0dc741561a74d8141e</srcmd5>
+    <version>9.0.1</version>
+    <time>1625338257</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.</comment>
+    <requestid>903835</requestid>
+  </revision>
 </revisionlist>

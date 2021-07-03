@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.
+
+-------------------------------------------------------------------
 Sat Jun 12 19:11:49 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add Allow-standards-based-attributes-to-have-leading-and.patch:

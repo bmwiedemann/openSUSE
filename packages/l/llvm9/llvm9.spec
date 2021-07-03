@@ -140,6 +140,8 @@ Patch40:        Fix-big-endian-miscompile-of-bitcast-zex.patch
 # Fix build with GCC 11. (boo#1181875, boo#1187254)
 Patch41:        Fix-missing-include.patch
 Patch42:        Allow-standards-based-attributes-to-have-leading-and.patch
+# Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
+Patch43:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  ccache
 BuildRequires:  cmake
@@ -581,6 +583,7 @@ pushd compiler-rt-%{version}.src
 %patch28 -p2
 %patch36 -p2
 %patch37 -p1
+%patch43 -p2
 popd
 
 pushd clang-%{version}.src
