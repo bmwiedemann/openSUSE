@@ -17,7 +17,7 @@
 
 
 Name:           tvbrowser
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Digital TV guide
 License:        GPL-3.0-or-later
