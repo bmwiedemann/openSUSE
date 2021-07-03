@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlalchemy-migrate
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Database schema migration for SQLAlchemy
 License:        MIT
 Group:          Development/Libraries/Python
-URL:            http://pypi.python.org/pypi/sqlalchemy-migrate
+URL:            https://pypi.python.org/pypi/sqlalchemy-migrate
 Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy-migrate/sqlalchemy-migrate-%{version}.tar.gz
 # Test requirements:
 #BuildRequires:  python-ScriptTest >= 1.0
@@ -35,14 +35,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirements:
 BuildRequires:  python3-SQLAlchemy >= 0.9.6
-BuildRequires:  python3-Sphinx >= 1.1.2
+# Temporarily use Sphinx2 lp#1934504
+BuildRequires:  python3-Sphinx2 >= 1.1.2
 Requires:       python-SQLAlchemy >= 0.7.8
 Requires:       python-Tempita >= 0.4
 Requires:       python-decorator
 Requires:       python-six >= 1.7.0
 Requires:       python-sqlparse
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,9 +81,9 @@ python3 setup.py build_sphinx && rm doc/build/html/.buildinfo # Build HTML docum
 
 %install
 %python_install
-%fdupes %{buildroot}%{python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/migrate
 %python_clone -a %{buildroot}%{_bindir}/migrate-repository
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #NOTE(saschpe): enable tests later, there are one or two upstream issues
 #%%check

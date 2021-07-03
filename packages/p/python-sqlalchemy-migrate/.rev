@@ -228,4 +228,13 @@
   * Claim support for python 3.5</comment>
     <requestid>758619</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e0a37150468b09b0ec25db375a958e58</srcmd5>
+    <version>0.13.0</version>
+    <time>1625338241</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily use Sphinx2 (because of lp#1934504).
+</comment>
+    <requestid>903703</requestid>
+  </revision>
 </revisionlist>
