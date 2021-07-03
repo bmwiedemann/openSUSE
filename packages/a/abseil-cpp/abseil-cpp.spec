@@ -17,7 +17,7 @@
 
 
 Name:           abseil-cpp
-Version:        20210324.1
+Version:        20210324.2
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -52,6 +52,7 @@ cat >"%{_builddir}/abslx.sym" <<-EOF
 EOF
 %define build_ldflags -Wl,--version-script=%{_builddir}/abslx.sym
 %cmake
+%cmake_build
 
 %install
 %cmake_install
