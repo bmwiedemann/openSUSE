@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  1 14:22:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.5
+  * Fix inflate corruption on aarch64
+  * Minor chunkset improvements
+
+-------------------------------------------------------------------
 Tue Jun 22 15:32:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add 'compat' flavor which can be used as a drop-in replacement
