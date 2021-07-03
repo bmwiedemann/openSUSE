@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 28 10:58:06 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Fix builds on GCC 11. Upstream seems to have fixed this but there isn't a
+  single obvious commit to backport, so just add the necessary includes to
+  every file which was missing them.
+  + 0001-add-GCC-11-needed-includes.patch
+
+-------------------------------------------------------------------
 Mon Nov 16 02:29:59 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add openmw-add-missing-include.patch: Add missing algorithm
@@ -10,7 +18,7 @@ Tue Aug 25 16:37:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.46.0:
   * extremely long list of changes, see
-  https://openmw.org/2020/openmw-0-46-0-released/ 
+  https://openmw.org/2020/openmw-0-46-0-released/
 
 -------------------------------------------------------------------
 Sat May  2 06:57:53 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
@@ -23,7 +31,7 @@ Sat May  2 06:57:53 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
   * Compare revisions by equality to support overflow
   * Support recast mesh rendering
   * Accept an extra numerical argument in GetItemCount
-- Update to git fixes building with OpenSceneGraph 3.6.5  
+- Update to git fixes building with OpenSceneGraph 3.6.5
 - Added _service file to download fromt github
 - Added libboost_iostreams-devel to BuildRequires
 
@@ -238,7 +246,7 @@ Mon Jul 30 08:46:31 UTC 2018 - mimi.vx@gmail.com
  * Implemented option for fast travel services to charge for every companion
  * Added an option to have multiple quicksaves
  * Added an option to rebalance soul gem values based only on soul value, not soul times gem value
- * OpenMW-CS: Terrain Texture Brush button implemented 
+ * OpenMW-CS: Terrain Texture Brush button implemented
  * OpenMW-CS: Edit functions for terrain texture editing mode implemented
  * OpenMW-CS: New, and more complete, icon set added
  * Daedra are now summoned when picking up cursed items through the inventory, OnActivate is now triggered even with the inventory menu open
@@ -336,37 +344,37 @@ Tue Jun 12 15:26:01 UTC 2018 - mimi.vx@gmail.com
 -------------------------------------------------------------------
 Mon Jun 11 10:52:27 UTC 2018 - mimi.vx@gmail.com
 
-- add qt_5_11-cmake.patch to fix build with QT-5.11 
+- add qt_5_11-cmake.patch to fix build with QT-5.11
 
 -------------------------------------------------------------------
 Sat Dec  9 19:42:33 UTC 2017 - mimi.vx@gmail.com
 
-- fix boost BuildRequires 
+- fix boost BuildRequires
 
 -------------------------------------------------------------------
 Mon Dec  4 21:18:49 UTC 2017 - mimi.vx@gmail.com
 
-- update to new release 0.43.0 - see CHANGELOG.md for details 
+- update to new release 0.43.0 - see CHANGELOG.md for details
 
 -------------------------------------------------------------------
 Wed Aug  2 07:22:05 UTC 2017 - mimi.vx@gmail.com
 
-- Update to new release 0.42.0 see CHANGELOG.md for more details 
+- Update to new release 0.42.0 see CHANGELOG.md for more details
 
 -------------------------------------------------------------------
 Fri Dec 23 18:28:09 UTC 2016 - mimi.vx@gmail.com
 
-- Update to new release 0.41.0 see CHANGELOG.md for more details 
+- Update to new release 0.41.0 see CHANGELOG.md for more details
 
 -------------------------------------------------------------------
 Mon Nov 28 06:20:04 UTC 2016 - mimi.vx@gmail.com
 
-- Force use of Qt5 
+- Force use of Qt5
 
 -------------------------------------------------------------------
 Sat Sep 10 12:47:02 UTC 2016 - mimi.vx@gmail.com
 
-- add OpenSceneGraph-plugins to requires -- fixes dds texture loading 
+- add OpenSceneGraph-plugins to requires -- fixes dds texture loading
 
 -------------------------------------------------------------------
 Fri Sep  9 22:46:31 UTC 2016 - mimi.vx@gmail.com
@@ -443,10 +451,10 @@ Tue Jun  9 15:13:38 UTC 2015 - devel.suse@gmail.com
 
 - Update to upstream version 0.36.1:
 
- * Fixed additional startup scripts failing to launch 
+ * Fixed additional startup scripts failing to launch
 
   Known Issues:
- 
+
  * Crash when trying to view cell in render view in OpenMW-CS on OSX
  * Crash when switching from full screen to windowed mode on D3D9
 

@@ -1,0 +1,534 @@
+From 917a5cd829c463275594c9af6df96c270c7402de Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Tue, 29 Jun 2021 15:02:53 +1000
+Subject: [PATCH] *: add GCC 11 needed includes
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ apps/opencs/model/prefs/doublesetting.hpp                     | 2 ++
+ apps/opencs/model/prefs/intsetting.hpp                        | 2 ++
+ apps/opencs/view/render/instancemode.cpp                      | 2 ++
+ apps/opencs/view/render/terraintexturemode.cpp                | 1 +
+ apps/opencs/view/widget/scenetooltexturebrush.cpp             | 2 ++
+ apps/openmw/mwgui/alchemywindow.cpp                           | 2 ++
+ apps/openmw/mwgui/dialogue.cpp                                | 2 ++
+ apps/openmw/mwgui/tooltips.cpp                                | 1 +
+ apps/openmw/mwgui/tradewindow.cpp                             | 2 ++
+ apps/openmw/mwmechanics/actors.cpp                            | 2 ++
+ apps/openmw/mwmechanics/aicombataction.cpp                    | 2 ++
+ apps/openmw/mwmechanics/aiescort.cpp                          | 2 ++
+ apps/openmw/mwmechanics/aiwander.cpp                          | 2 ++
+ .../mwphysics/deepestnotmecontacttestresultcallback.cpp       | 1 +
+ apps/openmw/mwphysics/physicssystem.cpp                       | 2 ++
+ apps/openmw/mwrender/navmesh.hpp                              | 2 ++
+ apps/openmw/mwrender/renderingmanager.cpp                     | 2 +-
+ apps/openmw/mwscript/interpretercontext.cpp                   | 1 +
+ apps/openmw/mwscript/transformationextensions.cpp             | 2 ++
+ apps/openmw/mwsound/loudness.cpp                              | 4 ++--
+ apps/openmw/mwworld/worldimp.cpp                              | 2 ++
+ apps/openmw_test_suite/detournavigator/navigator.cpp          | 2 ++
+ apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp  | 2 ++
+ apps/openmw_test_suite/nifloader/testbulletnifloader.cpp      | 2 ++
+ components/bsa/compressedbsafile.cpp                          | 3 ++-
+ components/detournavigator/debug.cpp                          | 2 ++
+ components/detournavigator/navigator.hpp                      | 2 ++
+ components/detournavigator/navmeshmanager.cpp                 | 2 ++
+ components/detournavigator/recastmeshbuilder.cpp              | 1 +
+ components/detournavigator/tilecachedrecastmeshmanager.cpp    | 2 ++
+ components/esmterrain/storage.cpp                             | 1 +
+ components/misc/rng.cpp                                       | 1 +
+ components/nif/niffile.hpp                                    | 1 +
+ components/sceneutil/mwshadowtechnique.cpp                    | 1 +
+ components/sceneutil/shadow.cpp                               | 2 ++
+ components/terrain/quadtreeworld.cpp                          | 1 +
+ components/widgets/numericeditbox.hpp                         | 2 ++
+ extern/oics/ICSInputControlSystem.cpp                         | 2 ++
+ extern/oics/ICSInputControlSystem.h                           | 2 ++
+ 39 files changed, 67 insertions(+), 4 deletions(-)
+
+diff --git a/apps/opencs/model/prefs/doublesetting.hpp b/apps/opencs/model/prefs/doublesetting.hpp
+index 4d297409b5c6..c8d0ea0bc3e3 100644
+--- a/apps/opencs/model/prefs/doublesetting.hpp
++++ b/apps/opencs/model/prefs/doublesetting.hpp
+@@ -1,6 +1,8 @@
+ #ifndef CSM_PREFS_DOUBLESETTING_H
+ #define CSM_PREFS_DOUBLESETTING_H
+ 
++#include <limits>
++
+ #include "setting.hpp"
+ 
+ class QDoubleSpinBox;
+diff --git a/apps/opencs/model/prefs/intsetting.hpp b/apps/opencs/model/prefs/intsetting.hpp
+index ee0989d83568..b311cfb0459c 100644
+--- a/apps/opencs/model/prefs/intsetting.hpp
++++ b/apps/opencs/model/prefs/intsetting.hpp
+@@ -1,6 +1,8 @@
+ #ifndef CSM_PREFS_INTSETTING_H
+ #define CSM_PREFS_INTSETTING_H
+ 
++#include <limits>
++
+ #include "setting.hpp"
+ 
+ class QSpinBox;
+diff --git a/apps/opencs/view/render/instancemode.cpp b/apps/opencs/view/render/instancemode.cpp
+index 0d221beb1244..f221c492f5c4 100644
+--- a/apps/opencs/view/render/instancemode.cpp
++++ b/apps/opencs/view/render/instancemode.cpp
+@@ -1,6 +1,8 @@
+ 
+ #include "instancemode.hpp"
+ 
++#include <limits>
++
+ #include <QDragEnterEvent>
+ #include <QPoint>
+ #include <QString>
+diff --git a/apps/opencs/view/render/terraintexturemode.cpp b/apps/opencs/view/render/terraintexturemode.cpp
+index d4656b578fe4..a1af6de43108 100644
+--- a/apps/opencs/view/render/terraintexturemode.cpp
++++ b/apps/opencs/view/render/terraintexturemode.cpp
+@@ -1,5 +1,6 @@
+ #include "terraintexturemode.hpp"
+ 
++#include <limits>
+ #include <string>
+ #include <sstream>
+ 
+diff --git a/apps/opencs/view/widget/scenetooltexturebrush.cpp b/apps/opencs/view/widget/scenetooltexturebrush.cpp
+index 35937f1a6738..30824a72a77b 100644
+--- a/apps/opencs/view/widget/scenetooltexturebrush.cpp
++++ b/apps/opencs/view/widget/scenetooltexturebrush.cpp
+@@ -1,5 +1,7 @@
+ #include "scenetooltexturebrush.hpp"
+ 
++#include <limits>
++
+ #include <QFrame>
+ #include <QIcon>
+ #include <QTableWidget>
+diff --git a/apps/openmw/mwgui/alchemywindow.cpp b/apps/openmw/mwgui/alchemywindow.cpp
+index bacd1c769537..7d545390a527 100644
+--- a/apps/openmw/mwgui/alchemywindow.cpp
++++ b/apps/openmw/mwgui/alchemywindow.cpp
+@@ -1,5 +1,7 @@
+ #include "alchemywindow.hpp"
+ 
++#include <limits>
++
+ #include <MyGUI_Gui.h>
+ #include <MyGUI_Button.h>
+ #include <MyGUI_EditBox.h>
+diff --git a/apps/openmw/mwgui/dialogue.cpp b/apps/openmw/mwgui/dialogue.cpp
+index 6b400c172451..2a65697566ff 100644
+--- a/apps/openmw/mwgui/dialogue.cpp
++++ b/apps/openmw/mwgui/dialogue.cpp
+@@ -1,5 +1,7 @@
+ #include "dialogue.hpp"
+ 
++#include <limits>
++
+ #include <MyGUI_LanguageManager.h>
+ #include <MyGUI_Window.h>
+ #include <MyGUI_ProgressBar.h>
+diff --git a/apps/openmw/mwgui/tooltips.cpp b/apps/openmw/mwgui/tooltips.cpp
+index b86eba651a2b..7ddd5c95292f 100644
+--- a/apps/openmw/mwgui/tooltips.cpp
++++ b/apps/openmw/mwgui/tooltips.cpp
+@@ -1,6 +1,7 @@
+ #include "tooltips.hpp"
+ 
+ #include <iomanip>
++#include <limits>
+ 
+ #include <MyGUI_Gui.h>
+ #include <MyGUI_RenderManager.h>
+diff --git a/apps/openmw/mwgui/tradewindow.cpp b/apps/openmw/mwgui/tradewindow.cpp
+index b102b13ce744..ea7af0848773 100644
+--- a/apps/openmw/mwgui/tradewindow.cpp
++++ b/apps/openmw/mwgui/tradewindow.cpp
+@@ -1,5 +1,7 @@
+ #include "tradewindow.hpp"
+ 
++#include <limits>
++
+ #include <MyGUI_Button.h>
+ #include <MyGUI_InputManager.h>
+ #include <MyGUI_ControllerManager.h>
+diff --git a/apps/openmw/mwmechanics/actors.cpp b/apps/openmw/mwmechanics/actors.cpp
+index 815e9b66f447..e05b879549b5 100644
+--- a/apps/openmw/mwmechanics/actors.cpp
++++ b/apps/openmw/mwmechanics/actors.cpp
+@@ -1,5 +1,7 @@
+ #include "actors.hpp"
+ 
++#include <limits>
++
+ #include <components/esm/esmreader.hpp>
+ #include <components/esm/esmwriter.hpp>
+ 
+diff --git a/apps/openmw/mwmechanics/aicombataction.cpp b/apps/openmw/mwmechanics/aicombataction.cpp
+index 9f698b630ab2..5a27932f28de 100644
+--- a/apps/openmw/mwmechanics/aicombataction.cpp
++++ b/apps/openmw/mwmechanics/aicombataction.cpp
+@@ -1,5 +1,7 @@
+ #include "aicombataction.hpp"
+ 
++#include <limits>
++
+ #include <components/esm/loadench.hpp>
+ #include <components/esm/loadmgef.hpp>
+ 
+diff --git a/apps/openmw/mwmechanics/aiescort.cpp b/apps/openmw/mwmechanics/aiescort.cpp
+index 03951d27986c..3db7226ec3a5 100644
+--- a/apps/openmw/mwmechanics/aiescort.cpp
++++ b/apps/openmw/mwmechanics/aiescort.cpp
+@@ -1,5 +1,7 @@
+ #include "aiescort.hpp"
+ 
++#include <limits>
++
+ #include <components/esm/aisequence.hpp>
+ #include <components/esm/loadcell.hpp>
+ 
+diff --git a/apps/openmw/mwmechanics/aiwander.cpp b/apps/openmw/mwmechanics/aiwander.cpp
+index ff213b219a71..717206554780 100644
+--- a/apps/openmw/mwmechanics/aiwander.cpp
++++ b/apps/openmw/mwmechanics/aiwander.cpp
+@@ -1,5 +1,7 @@
+ #include "aiwander.hpp"
+ 
++#include <limits>
++
+ #include <components/debug/debuglog.hpp>
+ #include <components/misc/rng.hpp>
+ #include <components/esm/aisequence.hpp>
+diff --git a/apps/openmw/mwphysics/deepestnotmecontacttestresultcallback.cpp b/apps/openmw/mwphysics/deepestnotmecontacttestresultcallback.cpp
+index 0baaa62417a8..3de198b64c7a 100644
+--- a/apps/openmw/mwphysics/deepestnotmecontacttestresultcallback.cpp
++++ b/apps/openmw/mwphysics/deepestnotmecontacttestresultcallback.cpp
+@@ -1,6 +1,7 @@
+ #include "deepestnotmecontacttestresultcallback.hpp"
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+ 
+diff --git a/apps/openmw/mwphysics/physicssystem.cpp b/apps/openmw/mwphysics/physicssystem.cpp
+index a205abeb4618..e385cbeae22b 100644
+--- a/apps/openmw/mwphysics/physicssystem.cpp
++++ b/apps/openmw/mwphysics/physicssystem.cpp
+@@ -1,5 +1,7 @@
+ #include "physicssystem.hpp"
+ 
++#include <limits>
++
+ #include <osg/Group>
+ 
+ #include <BulletCollision/CollisionShapes/btConeShape.h>
+diff --git a/apps/openmw/mwrender/navmesh.hpp b/apps/openmw/mwrender/navmesh.hpp
+index d329b895d78e..3f6bdf43457f 100644
+--- a/apps/openmw/mwrender/navmesh.hpp
++++ b/apps/openmw/mwrender/navmesh.hpp
+@@ -1,6 +1,8 @@
+ #ifndef OPENMW_MWRENDER_NAVMESH_H
+ #define OPENMW_MWRENDER_NAVMESH_H
+ 
++#include <limits>
++
+ #include <components/detournavigator/navigator.hpp>
+ 
+ #include <osg/ref_ptr>
+diff --git a/apps/openmw/mwrender/renderingmanager.cpp b/apps/openmw/mwrender/renderingmanager.cpp
+index 23a47438ae94..68a15738e6f2 100644
+--- a/apps/openmw/mwrender/renderingmanager.cpp
++++ b/apps/openmw/mwrender/renderingmanager.cpp
+@@ -1,7 +1,7 @@
+ #include "renderingmanager.hpp"
+ 
+-#include <limits>
+ #include <cstdlib>
++#include <limits>
+ 
+ #include <osg/Light>
+ #include <osg/LightModel>
+diff --git a/apps/openmw/mwscript/interpretercontext.cpp b/apps/openmw/mwscript/interpretercontext.cpp
+index 30c56406eff9..214eda1b8e20 100644
+--- a/apps/openmw/mwscript/interpretercontext.cpp
++++ b/apps/openmw/mwscript/interpretercontext.cpp
+@@ -1,6 +1,7 @@
+ #include "interpretercontext.hpp"
+ 
+ #include <cmath>
++#include <limits>
+ #include <stdexcept>
+ #include <sstream>
+ 
+diff --git a/apps/openmw/mwscript/transformationextensions.cpp b/apps/openmw/mwscript/transformationextensions.cpp
+index 5ad51f887b9b..756c43248e85 100644
+--- a/apps/openmw/mwscript/transformationextensions.cpp
++++ b/apps/openmw/mwscript/transformationextensions.cpp
+@@ -1,3 +1,5 @@
++#include <limits>
++
+ #include <components/debug/debuglog.hpp>
+ 
+ #include <components/sceneutil/positionattitudetransform.hpp>
+diff --git a/apps/openmw/mwsound/loudness.cpp b/apps/openmw/mwsound/loudness.cpp
+index ae31d60949ba..5a43fe657e67 100644
+--- a/apps/openmw/mwsound/loudness.cpp
++++ b/apps/openmw/mwsound/loudness.cpp
+@@ -1,8 +1,8 @@
+ #include "loudness.hpp"
+ 
+-#include <stdint.h>
+-#include <limits>
+ #include <algorithm>
++#include <limits>
++#include <stdint.h>
+ 
+ #include "soundmanagerimp.hpp"
+ 
+diff --git a/apps/openmw/mwworld/worldimp.cpp b/apps/openmw/mwworld/worldimp.cpp
+index 8598b9b046d3..deeee541301a 100644
+--- a/apps/openmw/mwworld/worldimp.cpp
++++ b/apps/openmw/mwworld/worldimp.cpp
+@@ -1,5 +1,7 @@
+ #include "worldimp.hpp"
+ 
++#include <limits>
++
+ #include <osg/Group>
+ #include <osg/ComputeBoundsVisitor>
+ 
+diff --git a/apps/openmw_test_suite/detournavigator/navigator.cpp b/apps/openmw_test_suite/detournavigator/navigator.cpp
+index df8be378113c..8b26b408eb5e 100644
+--- a/apps/openmw_test_suite/detournavigator/navigator.cpp
++++ b/apps/openmw_test_suite/detournavigator/navigator.cpp
+@@ -1,5 +1,7 @@
+ #include "operators.hpp"
+ 
++#include <limits>
++
+ #include <components/detournavigator/navigatorimpl.hpp>
+ #include <components/detournavigator/exceptions.hpp>
+ #include <components/misc/rng.hpp>
+diff --git a/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp b/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
+index af6797cf02a7..ef3b7a38998d 100644
+--- a/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
++++ b/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
+@@ -1,5 +1,7 @@
+ #include "operators.hpp"
+ 
++#include <limits>
++
+ #include <components/detournavigator/recastmeshbuilder.hpp>
+ #include <components/detournavigator/settings.hpp>
+ #include <components/detournavigator/recastmesh.hpp>
+diff --git a/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp b/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
+index 36f25124624d..08b20c33c999 100644
+--- a/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
++++ b/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
+@@ -2,6 +2,8 @@
+ #include <components/bullethelpers/processtrianglecallback.hpp>
+ #include <components/nif/node.hpp>
+ 
++#include <limits>
++
+ #include <BulletCollision/CollisionShapes/btBoxShape.h>
+ #include <BulletCollision/CollisionShapes/btCompoundShape.h>
+ #include <BulletCollision/CollisionShapes/btTriangleMesh.h>
+diff --git a/components/bsa/compressedbsafile.cpp b/components/bsa/compressedbsafile.cpp
+index d0bebe3c1f89..575dbb3fc33a 100644
+--- a/components/bsa/compressedbsafile.cpp
++++ b/components/bsa/compressedbsafile.cpp
+@@ -24,8 +24,9 @@
+  */
+ #include "compressedbsafile.hpp"
+ 
+-#include <stdexcept>
+ #include <cassert>
++#include <limits>
++#include <stdexcept>
+ 
+ #include <boost/scoped_array.hpp>
+ #include <boost/filesystem/path.hpp>
+diff --git a/components/detournavigator/debug.cpp b/components/detournavigator/debug.cpp
+index c3d67b18482c..76ffdb6776ac 100644
+--- a/components/detournavigator/debug.cpp
++++ b/components/detournavigator/debug.cpp
+@@ -2,6 +2,8 @@
+ #include "exceptions.hpp"
+ #include "recastmesh.hpp"
+ 
++#include <limits>
++
+ #include <DetourNavMesh.h>
+ 
+ #include <boost/filesystem.hpp>
+diff --git a/components/detournavigator/navigator.hpp b/components/detournavigator/navigator.hpp
+index 99f1e258d8a3..90d5af4d79e6 100644
+--- a/components/detournavigator/navigator.hpp
++++ b/components/detournavigator/navigator.hpp
+@@ -1,6 +1,8 @@
+ ﻿#ifndef OPENMW_COMPONENTS_DETOURNAVIGATOR_NAVIGATOR_H
+ #define OPENMW_COMPONENTS_DETOURNAVIGATOR_NAVIGATOR_H
+ 
++#include <limits>
++
+ #include "findsmoothpath.hpp"
+ #include "flags.hpp"
+ #include "settings.hpp"
+diff --git a/components/detournavigator/navmeshmanager.cpp b/components/detournavigator/navmeshmanager.cpp
+index a769981d375f..f0700809b8b4 100644
+--- a/components/detournavigator/navmeshmanager.cpp
++++ b/components/detournavigator/navmeshmanager.cpp
+@@ -6,6 +6,8 @@
+ #include "navmeshcacheitem.hpp"
+ #include "settings.hpp"
+ 
++#include <limits>
++
+ #include <components/debug/debuglog.hpp>
+ 
+ #include <DetourNavMesh.h>
+diff --git a/components/detournavigator/recastmeshbuilder.cpp b/components/detournavigator/recastmeshbuilder.cpp
+index d96ba2f29cff..2c02980b5fd8 100644
+--- a/components/detournavigator/recastmeshbuilder.cpp
++++ b/components/detournavigator/recastmeshbuilder.cpp
+@@ -17,6 +17,7 @@
+ #include <LinearMath/btAabbUtil2.h>
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ namespace DetourNavigator
+ {
+diff --git a/components/detournavigator/tilecachedrecastmeshmanager.cpp b/components/detournavigator/tilecachedrecastmeshmanager.cpp
+index bbdbd410a5c0..be70b8f49308 100644
+--- a/components/detournavigator/tilecachedrecastmeshmanager.cpp
++++ b/components/detournavigator/tilecachedrecastmeshmanager.cpp
+@@ -3,6 +3,8 @@
+ #include "gettilespositions.hpp"
+ #include "settingsutils.hpp"
+ 
++#include <limits>
++
+ namespace DetourNavigator
+ {
+     TileCachedRecastMeshManager::TileCachedRecastMeshManager(const Settings& settings)
+diff --git a/components/esmterrain/storage.cpp b/components/esmterrain/storage.cpp
+index fc93706a3784..65e47ff8706d 100644
+--- a/components/esmterrain/storage.cpp
++++ b/components/esmterrain/storage.cpp
+@@ -1,5 +1,6 @@
+ #include "storage.hpp"
+ 
++#include <limits>
+ #include <set>
+ 
+ #include <OpenThreads/ScopedLock>
+diff --git a/components/misc/rng.cpp b/components/misc/rng.cpp
+index 09279e85eafa..06ec99d0af10 100644
+--- a/components/misc/rng.cpp
++++ b/components/misc/rng.cpp
+@@ -1,6 +1,7 @@
+ #include "rng.hpp"
+ 
+ #include <chrono>
++#include <limits>
+ #include <random>
+ 
+ namespace Misc
+diff --git a/components/nif/niffile.hpp b/components/nif/niffile.hpp
+index 4d5620a376d3..f0bfbde83e01 100644
+--- a/components/nif/niffile.hpp
++++ b/components/nif/niffile.hpp
+@@ -3,6 +3,7 @@
+ #ifndef OPENMW_COMPONENTS_NIF_NIFFILE_HPP
+ #define OPENMW_COMPONENTS_NIF_NIFFILE_HPP
+ 
++#include <limits>
+ #include <stdexcept>
+ #include <vector>
+ 
+diff --git a/components/sceneutil/mwshadowtechnique.cpp b/components/sceneutil/mwshadowtechnique.cpp
+index cb3a1b278b52..653e4d3a129f 100644
+--- a/components/sceneutil/mwshadowtechnique.cpp
++++ b/components/sceneutil/mwshadowtechnique.cpp
+@@ -23,6 +23,7 @@
+ #include <osg/Geometry>
+ #include <osg/io_utils>
+ 
++#include <limits>
+ #include <sstream>
+ 
+ namespace {
+diff --git a/components/sceneutil/shadow.cpp b/components/sceneutil/shadow.cpp
+index 035c19a5f80b..1ec2b1c5e702 100644
+--- a/components/sceneutil/shadow.cpp
++++ b/components/sceneutil/shadow.cpp
+@@ -1,5 +1,7 @@
+ #include "shadow.hpp"
+ 
++#include <limits>
++
+ #include <osgShadow/ShadowedScene>
+ 
+ #include <components/sceneutil/vismask.hpp>
+diff --git a/components/terrain/quadtreeworld.cpp b/components/terrain/quadtreeworld.cpp
+index f998b7877f17..cadf5eaa4bf5 100644
+--- a/components/terrain/quadtreeworld.cpp
++++ b/components/terrain/quadtreeworld.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <osgUtil/CullVisitor>
+ 
++#include <limits>
+ #include <sstream>
+ 
+ #include <components/misc/constants.hpp>
+diff --git a/components/widgets/numericeditbox.hpp b/components/widgets/numericeditbox.hpp
+index ff16424d05a8..e65311f5f7ea 100644
+--- a/components/widgets/numericeditbox.hpp
++++ b/components/widgets/numericeditbox.hpp
+@@ -1,6 +1,8 @@
+ #ifndef OPENMW_NUMERIC_EDIT_BOX_H
+ #define OPENMW_NUMERIC_EDIT_BOX_H
+ 
++#include <limits>
++
+ #include <MyGUI_EditBox.h>
+ 
+ #include "fontwrapper.hpp"
+diff --git a/extern/oics/ICSInputControlSystem.cpp b/extern/oics/ICSInputControlSystem.cpp
+index ccd09a04e74f..f64b789a0e1f 100644
+--- a/extern/oics/ICSInputControlSystem.cpp
++++ b/extern/oics/ICSInputControlSystem.cpp
+@@ -26,6 +26,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ #include "ICSInputControlSystem.h"
+ 
++#include <limits>
++
+ namespace ICS
+ {
+ 	const float ICS_MAX = std::numeric_limits<float>::max();
+diff --git a/extern/oics/ICSInputControlSystem.h b/extern/oics/ICSInputControlSystem.h
+index 43e659d0a0c4..267a659d18dd 100644
+--- a/extern/oics/ICSInputControlSystem.h
++++ b/extern/oics/ICSInputControlSystem.h
+@@ -27,6 +27,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #ifndef OICS_InputControlSystem_H_
+ #define OICS_InputControlSystem_H_
+ 
++#include <limits>
++
+ #include "ICSPrerequisites.h"
+ 
+ #include "ICSControl.h"
+-- 
+2.32.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2015 openSUSE_user1
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,8 +26,10 @@ Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
 Source:         https://github.com/OpenMW/openmw/archive/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
-#PATCH-FIX-UPSTREAM openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
+# PATCH-FIX-UPSTREAM: openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
 Patch0:         openmw-add-missing-include.patch
+# OPENSUSE-FIX: Fix build on GCC 11 due to new required includes for std::numeric_limit.
+Patch1:         0001-add-GCC-11-needed-includes.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -57,7 +59,7 @@ BuildRequires:  pkgconfig(openthreads) >= 3.2
 BuildRequires:  pkgconfig(sdl2)
 Requires:       OpenSceneGraph-plugins
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 
 %description
 OpenMW is a new and modern engine based on the one that runs the 2002 open-world RPG Morrowind. The engine (OpenMW) will come with its own editor (OpenCS) which will allow the user to edit or create their own games. Both OpenCS and OpenMW are written from scratch and aren’t made to support any third party programs the original Morrowind engine uses to improve its functionality.
@@ -91,6 +93,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
 %prep
 %setup -q -n openmw-openmw-%{version}
 %patch0 -p2
+%patch1 -p1
 cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
