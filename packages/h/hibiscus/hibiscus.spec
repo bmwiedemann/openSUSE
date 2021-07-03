@@ -16,17 +16,17 @@
 #
 
 
-%define _build 361
-%define tag V_2_10_0_BUILD_%{_build}
+%define _build 365
+%define tag V_2_10_3_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
-License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
+License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.10.0
+Version:        2.10.3
 Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
-Source:         https://github.com/willuhn/hibiscus/archive/%{tag}.tar.gz
+Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz#/%{name}-%{tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ant
@@ -37,11 +37,13 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis
 Requires:       jameica >= 2.10.0
+%ifnarch s390 %{arm} %{ix86}
 BuildRequires:  eclipse-swtchart >= 0.13.0
 Requires:       eclipse-swtchart
+%endif
 BuildRequires:  itextpdf >= 5.5.2
 Requires:       itextpdf
-BuildRequires:  hbci4java >= 3.1.49
+BuildRequires:  hbci4java >= 3.1.55
 Requires:       hbci4java
 BuildRequires:  pcsc-towitoko-devel
 Requires:       pcsc-towitoko-devel
@@ -86,8 +88,8 @@ mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
 # unbundle HBCI4Java
-rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.49.jar
-ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.49.jar
+rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.55.jar
+ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.55.jar
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-*.so
 %ifarch x86_64
 ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-64.so
@@ -95,10 +97,12 @@ ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/li
 ln -sf  %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-32.so
 %endif
 
+%ifnarch s390 %{arm} %{ix86}
 # unbundle SWT Chart
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/*.jar
 ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart_0.13.0.202009151159.jar
 ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart.extensions_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart.extensions_0.13.0.202009151159.jar
+%endif
 
 # unbundle iText PDF
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itext-*.jar

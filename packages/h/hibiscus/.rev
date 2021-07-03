@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>881579</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e03f59d7ed30b14c0f6f788c9a381329</srcmd5>
+    <version>2.10.3</version>
+    <time>1625338255</time>
+    <user>dimstar_suse</user>
+    <comment>banking software always requires recent version
+</comment>
+    <requestid>903841</requestid>
+  </revision>
 </revisionlist>

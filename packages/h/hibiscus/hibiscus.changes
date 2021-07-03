@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  3 19:13:00 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 2.10.3
+
+-------------------------------------------------------------------
+Mon Apr 26 05:36:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Don't unbundle Eclipse SWT Chart on architectures where the system
+  package does not exist
+
+-------------------------------------------------------------------
 Wed Feb 17 14:08:02 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - unbundle HBCI4Java, iTextPDF, Eclipse SWT Chart, Super CSV
