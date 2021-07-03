@@ -1,7 +1,7 @@
 #
 # spec file for package clFFT
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,12 +26,14 @@ Release:        0
 Summary:        OpenCL FFT library
 License:        Apache-2.0
 Group:          Productivity/Scientific/Math
-Url:            https://github.com/clMathLibraries/clFFT
+URL:            https://github.com/clMathLibraries/clFFT
 #Git-Clone:     https://github.com/clMathLibraries/clFFT.git
 Source:         https://github.com/clMathLibraries/clFFT/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        clFFT-client.1
 Patch0:         fix-client-no-symlink.patch
 Patch1:         clFFT-fix-aarm64.patch
+# PATCH-FIX-UPSTREAM clFFT-avoid-rvalue-address.patch gh#clMathLibraries/clFFT#237 badshah400@gmail.com -- Fix building with gcc11 (which is stricter about referencing rvalue addresses) by using ostringstream object directly rather its pointer
+Patch2:         clFFT-avoid-rvalue-address.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-headers
@@ -63,6 +65,8 @@ Summary:        Development files for libclfft
 Group:          Development/Libraries/C and C++
 Requires:       %{libclfft} = %{version}
 Requires:       %{libtimer} = %{version}
+Requires:       opencl-headers
+Requires:       pkgconfig(OpenCL)
 
 %description devel
 Libraries and header files for developing applications that want to
@@ -112,6 +116,9 @@ This subpackage provides shared libStatTimer library
 %ifarch aarch64
 %patch1 -p1
 %endif
+%if 0%{?suse_version} >= 1550
+%patch2 -p1
+%endif
 
 %build
 cd src
@@ -141,11 +148,13 @@ install -Dpm0644 %{SOURCE1} \
 %{_mandir}/man1/clFFT-client.1%{ext_man}
 
 %files -n %{libclfft}
-%doc CHANGELOG LICENSE NOTICE ReleaseNotes.txt
+%license LICENSE
+%doc CHANGELOG NOTICE ReleaseNotes.txt
 %{_libdir}/libclFFT.so.%{sover}*
 
 %files -n %{libtimer}
-%doc CHANGELOG LICENSE NOTICE ReleaseNotes.txt
+%license LICENSE
+%doc CHANGELOG NOTICE ReleaseNotes.txt
 %{_libdir}/libStatTimer.so.%{sover}*
 
 %files devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  1 14:28:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add clFFT-avoid-rvalue-address.patch: Fix building with gcc11
+  (which is stricter about referencing rvalue addresses) by using
+  ostringstream object directly rather its pointer
+  [gh#clMathLibraries/clFFT#237].
+- Add opencl-headers and pkgconfig(OpenCL) to -devel package
+  Requires as these are referenced by clFFT headers and library.
+- Use %license for LICENSE file.
+
+-------------------------------------------------------------------
 Wed Nov 20 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build
