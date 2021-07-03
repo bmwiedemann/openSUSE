@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul  1 08:44:59 UTC 2021 - wbauer@tmo.at
+
+- update to version 4.2.3
+  * Menu item to open settings directory
+  * Show progress during downloading plugins
+  * Inform plugins when TV-Browser version was updated
+  * Add function to replace new line characters with single white space
+  * Add function to escape quotes in parameter handler
+  * Escaped quotes are not recognized when building command line
+    parameters for executing external processes
+  * Add escape charactar to string sequences in parameter library
+  * Show info to user if plugin file is outside of user space on deleting
+  * Show channel configuration only if data plugins are installed
+  * Config assistant freezes TV-Browser if no data plugin is installed
+  * Add autostart option for Linux
+  * Plugins can return information about a program
+  * Better display of additional persons in info dialog
+  * Allow reset of plugin settings handled by TV-Browser
+  * Show info if restart is needed to apply changes
+  * Show genric filter info for context menu settings
+  * Duration exclusion not saved
+  * Only add date separators visibly to program list
+  * Global Favorite exclusions disappear after restart of TV-Browser
+  * Add tvb:// protocol handling
+  * Description not always printed in program table
+- Update NewsPlugin to 3.1.8.0
+
+-------------------------------------------------------------------
 Sun Dec 27 10:09:16 UTC 2020 - wbauer@tmo.at
 
 - update to version 4.2.2
