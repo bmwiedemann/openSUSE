@@ -18,7 +18,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.8.10
+Version:        3.9.0
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://www.normaliz.uni-osnabrueck.de/
 
 Source:         https://github.com/Normaliz/Normaliz/releases/download/v%version/%name-%version.tar.gz
+BuildRequires:  e-antic-devel >= 1.0.1
 BuildRequires:  flint-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
