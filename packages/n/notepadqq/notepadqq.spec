@@ -1,7 +1,7 @@
 #
 # spec file for package notepadqq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,31 @@
 
 
 Name:           notepadqq
-Version:        1.4.8
+Version:        2.0.0~20201022T180930.03cdde0
 Release:        0
 Summary:        Notepad++-like editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://notepadqq.com/
-Source:         https://github.com/notepadqq/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.3
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.3
-BuildRequires:  pkgconfig(Qt5Network) >= 5.3
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.3
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.3
-BuildRequires:  pkgconfig(Qt5Test) >= 5.3
-BuildRequires:  pkgconfig(Qt5WebKit) >= 5.3
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.3
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.3
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5WebChannel)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5WebSockets)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(uchardet)
 
 %description
 Text editor with support for multiple programming languages,
@@ -56,13 +59,16 @@ chmod 0755 glob/node_modules/minimatch/node_modules/brace-expansion/test/generat
 popd
 chmod 0644 src/editor/libs/codemirror/mode/sas/sas.js
 
+# W: script-without-shebang
+chmod -x src/editor/libs/throttle-debounce/*
+
 %build
 %qmake5 \
   PREFIX=%{_prefix} \
   QMAKE_CXXFLAGS="%{optflags}" \
   LRELEASE=%{_libqt5_bindir}/lrelease \
   notepadqq.pro
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %qmake5_install
@@ -74,31 +80,14 @@ sed -i '1 s|^#!%{_bindir}/env bash|#!%{_bindir}/bash|' %{buildroot}%{_datadir}/%
 
 %fdupes %{buildroot}%{_datadir}/
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc CONTRIBUTING.md README.md
 %{_bindir}/%{name}
 %{_prefix}/lib/%{name}/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-%if 0%{?suse_version} < 1500
-%dir %{_datadir}/metainfo/
-%endif
 %{_datadir}/metainfo/notepadqq.appdata.xml
 
 %changelog
