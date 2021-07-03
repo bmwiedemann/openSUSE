@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.
+
+-------------------------------------------------------------------
 Tue Apr 20 23:45:08 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't build clang-tools, libc++ and python3-clang anymore,

@@ -134,6 +134,8 @@ Patch31:        Don-t-reject-calls-to-MinGW-s-unusual-_setjmp-declar.patch
 Patch32:        Fix-missing-include.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
+# Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
+Patch34:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -582,6 +584,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch10 -p2
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch34 -p2
 popd
 
 pushd lld-%{_version}.src
