@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 30 16:22:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.2
+  * Fix typo in man-page
+- Drop upstream fixed cramfsswap-obey-cflags.patch
+
+-------------------------------------------------------------------
 Fri Aug 28 21:01:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.4.1

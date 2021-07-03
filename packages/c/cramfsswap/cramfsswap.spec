@@ -17,14 +17,13 @@
 
 
 Name:           cramfsswap
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Swap endianess of a cram filesystem (cramfs)
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-URL:            http://kju.de/projekte/cramfsswap/
-Source:         https://deb.debian.org/debian/pool/main/c/cramfsswap/cramfsswap_%{version}-1.2.tar.gz
-Patch0:         cramfsswap-obey-cflags.patch
+URL:            https://tracker.debian.org/pkg/cramfsswap
+Source:         https://deb.debian.org/debian/pool/main/c/cramfsswap/cramfsswap_%{version}.tar.xz
 BuildRequires:  zlib-devel
 
 %description
@@ -39,7 +38,6 @@ cramfs filesystem.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%optflags"
