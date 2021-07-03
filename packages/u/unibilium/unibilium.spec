@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           unibilium
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A terminfo parsing library
 License:        LGPL-3.0-or-later
