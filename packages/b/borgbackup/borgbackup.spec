@@ -2,7 +2,7 @@
 # spec file for package borgbackup
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2016-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,13 @@
 %bcond_with     borg_sysblake2
 %endif
 
+# new sphinx api, available since Leap 15.3
+%if ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
+%bcond_without  borg_new_sphinx_api
+%else
+%bcond_with     borg_new_sphinx_api
+%endif
+
 Name:           borgbackup
 Version:        1.1.16
 Release:        0
@@ -51,6 +58,7 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
+Patch1:         borgbackup-1.1.16-fix-sphinx-api.patch
 
 # build dependencies
 BuildRequires:  bash
@@ -170,6 +178,9 @@ This package contains the fish completion script for borgbackup.
 %setup -q
 %if ! %{with borg_guzzle}
 %patch0 -p1
+%endif
+%if %{with borg_new_sphinx_api}
+%patch1 -p1
 %endif
 # remove bundled libraries, that we don't want to be included
 rm -rf src/borg/algorithms/{lz4,zstd}

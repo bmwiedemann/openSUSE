@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 10:55:47 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix documentation generation with
+  borgbackup-1.1.16-fix-sphinx-api.patch for Leap >= 15.3
+
+-------------------------------------------------------------------
 Sun May 16 10:33:52 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Remove the version from recommends pyfuse3,
