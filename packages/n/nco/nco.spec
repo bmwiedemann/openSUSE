@@ -17,9 +17,9 @@
 
 
 Name:           nco
-Version:        4.9.8
-%define  soname 4_9_8
-%define  major  4
+Version:        5.0.0
+%define  soname 5_0_0
+%define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
 License:        BSD-3-Clause
@@ -121,23 +121,21 @@ This package contains the documentation for %{name}.
 
 %prep
 %setup -q
+# We need to enable the valarray check, so the c++ binding library gets build
+sed -i 's|# AC_CXX_HAVE_VALARRAY|AC_CXX_HAVE_VALARRAY|' configure.ac
 
 %build
 autoconf
 aclocal
 automake --foreign
-export CFLAGS="%{optflags} -Wno-cpp"
-export CXXFLAGS="%{optflags}"
 %configure \
     --disable-static \
     --prefix=%{_prefix} \
     --includedir=%{_includedir}/nco \
+    --enable-nco_cplusplus \
     --disable-dependency-tracking USER=abuild HOST=OBS HOSTNAME=OBS
 
-#---we want reproducible builds:
-find . -type f -regex ".*[.]cc?" -exec perl -i -pe 's{__(DATE|TIME)__}{""}g' "{}" "+"
-
-make %{?_smp_mflags}
+%make_build
 pushd doc
     makeinfo --html --no-split nco.texi
     make %{?_smp_mflags} nco.pdf
