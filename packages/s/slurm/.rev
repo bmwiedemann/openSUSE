@@ -780,4 +780,12 @@
 - Fix Provides:/Conflicts: for libnss_slurm (bsc#1180700).</comment>
     <requestid>894432</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>cc0b2d3e4812f6f881b7aa7ea5fe4502</srcmd5>
+    <version>20.11.8</version>
+    <time>1625338246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903746</requestid>
+  </revision>
 </revisionlist>

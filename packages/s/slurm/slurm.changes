@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Jul  2 08:01:32 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Updated to  20.11.8:
+  * slurmctld - fix erroneous "StepId=CORRUPT" messages in error logs.
+  * Correct the error given when auth plugin fails to pack a credential.
+  * Fix unused-variable compiler warning on FreeBSD in fd_resolve_path().
+  * acct_gather_filesystem/lustre - only emit collection error once per step.
+  * Add GRES environment variables (e.g., CUDA_VISIBLE_DEVICES) into the
+    interactive step, the same as is done for the batch step.
+  * Fix various potential deadlocks when altering objects in the database
+    dealing with every cluster in the database.
+  * slurmrestd:
+   - handle slurmdbd connection failures without segfaulting.
+   - fix segfault for searches in slurmdb/v0.0.36/jobs.
+   - remove (non-functioning) users query parameter for
+     slurmdb/v0.0.36/jobs from openapi.json
+   - fix segfault in slurmrestd db/jobs with numeric queries
+   - add argv handling for job/submit endpoint.
+   - add description for slurmdb/job endpoint.
+  * slurmrestd/dbv0.0.36:
+   - Fix values dumped in job state/current and
+     job step state.
+   - Correct description for previous state property.
+  * srun:
+   - fix broken node step allocation in a heterogeneous allocation.
+   - leave SLURM_DIST_UNKNOWN as default for --interactive.
+  * Fail step creation if -n is not multiple of --ntasks-per-gpu.
+  * job_container/tmpfs - Fix slowdown on teardown.
+  * Fix problem with SlurmctldProlog where requeued jobs would never launch.
+  * job_container/tmpfs - Fix issue when restarting slurmd where the namespace
+    mount points could disappear.
+  * sacct:
+   - avoid truncating JobId at 34 characters.
+   - fix segfault when printing StepId (or when using --long).
+  * scancel - fix segfault when --wckey filtering option is used.
+  * select/cons_tres - Fix memory leak.
+  * Prevent file descriptor leak in job_container/tmpfs on slurmd restart.
+  * perlapi/libslurmdb - expose tres_req_str to job hash.
+  * scrontab - close and reopen temporary crontab file to deal with editors
+    that do not change the original file, but instead write out then rename
+    a new file.
+  * sstat - fix linking so that it will work when --without-shared-libslurm
+    was used to build Slurm.
+  * Clear allocated cpus for running steps in a job before handling requested
+    nodes on new step.
+  * Don't reject a step if not enough nodes are available. Instead, defer the
+    step until enough nodes are available to satisfy the request.
+  * Don't reject a step if it requests at least one specific node that is
+    already allocated to another step. Instead, defer the step until the
+    requested node(s) become available.
+  * Better handling of --mem=0.
+  * Ignore DefCpuPerGpu when --cpus-per-task given.
+
+
+-------------------------------------------------------------------
 Fri May 14 10:07:04 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Updated to 20.11.7 which fixes CVE-2021-31215 (bsc#1186024)
