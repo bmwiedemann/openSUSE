@@ -77,7 +77,7 @@ export CFLAGS="%{optflags} -fvisibility=hidden"
 mkdir -p %{buildroot}%{php_cfgdir}
 cat > %{buildroot}%{php_cfgdir}/%{pkg_name}.ini <<EOF
 ; comment out next line to disable %{pkg_name} extension in php
-extension = %{pkg_name}.so
+zend_extension = %{pkg_name}.so
 EOF
 
 %check

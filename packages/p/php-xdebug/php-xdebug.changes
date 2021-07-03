@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:08:14 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Xdebug should be loaded as a zend_extension (not as extension)
+
+-------------------------------------------------------------------
 Thu Apr  8 17:05:58 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.0.4

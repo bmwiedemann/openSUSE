@@ -30,4 +30,12 @@
     <comment></comment>
     <requestid>883973</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a4d436fe81227bcdd4f85e06b2d0af96</srcmd5>
+    <version>3.0.4</version>
+    <time>1625338250</time>
+    <user>dimstar_suse</user>
+    <comment>- Xdebug should be loaded as a zend_extension (not as extension)</comment>
+    <requestid>903773</requestid>
+  </revision>
 </revisionlist>
