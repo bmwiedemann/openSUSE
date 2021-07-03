@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:07:52 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.6
+  - New regular patterns (3)
+    + sle15all/sdagentconfig-000020301.py: SCA Appliance configuration reports ERROR 2002 HY000 Cannot connect to MySQL server (bsc#1183464)
+    + sle15all/systemd-current-failed-7017137.py: Check for failed systemd services (TID7017137)
+    + sle15sp3/dasdkvm-000020295.py: DASD partitions not recognized on SLES 15 SP3 KVM guest (bsc#1185857)
+  - New security announcement patterns (46)
+    + Jun 2021 (46) for SUSE-SU-2021:2011-1 SUSE-SU-2021:1933-1 SUSE-SU-2021:1998-1 SUSE-SU-2021:2106-1 SUSE-SU-2021:1951-1 SUSE-SU-2021:2213-1 SUSE-SU-2021:1942-1 SUSE-SU-2021:2012-1 SUSE-SU-2021:1859-1 SUSE-SU-2021:1843-1 SUSE-SU-2021:1825-1 SUSE-SU-2021:2196-1 SUSE-SU-2021:1917-1 SUSE-SU-2021:1958-1 SUSE-SU-2021:2184-1 SUSE-SU-2021:1977-1 SUSE-SU-2021:1819-1 SUSE-SU-2021:1944-1 SUSE-SU-2021:1834-1 SUSE-SU-2021:1826-1 SUSE-SU-2021:2127-1 SUSE-SU-2021:2011-1 SUSE-SU-2021:1933-1 SUSE-SU-2021:1999-1 SUSE-SU-2021:2106-1 SUSE-SU-2021:2212-1 SUSE-SU-2021:1893-1 SUSE-SU-2021:1859-1 SUSE-SU-2021:1994-1 SUSE-SU-2021:1970-1 SUSE-SU-2021:1843-1 SUSE-SU-2021:2196-1 SUSE-SU-2021:1917-1 SUSE-SU-2021:1958-1 SUSE-SU-2021:1890-1 SUSE-SU-2021:1819-1 SUSE-SU-2021:1834-1 SUSE-SU-2021:2127-1 SUSE-SU-2021:1901-1 SUSE-SU-2021:1911-1 SUSE-SU-2021:2104-1 SUSE-SU-2021:1895-1 SUSE-SU-2021:2155-1 SUSE-SU-2021:2122-1 SUSE-SU-2021:2211-1 SUSE-SU-2021:1845-1
+
+-------------------------------------------------------------------
 Fri Jun 18 17:25:06 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.5
