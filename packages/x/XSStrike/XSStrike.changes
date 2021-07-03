@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Jul  1 09:18:55 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Create a link to xsstrike.py into /usr/bin (with removal support in
+  uninstallation)
+
+-------------------------------------------------------------------
+Wed Jun 30 13:44:39 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- First import from upstream. XSStrike is a tool designed to discover XSS in
+  web applications.

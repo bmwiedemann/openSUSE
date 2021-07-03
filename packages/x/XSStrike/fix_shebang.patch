@@ -1,0 +1,9 @@
+diff --color -rub XSStrike-3.1.5.ori/xsstrike.py XSStrike-3.1.5/xsstrike.py
+--- XSStrike-3.1.5.ori/xsstrike.py	2019-12-19 21:47:35.000000000 +0100
++++ XSStrike-3.1.5/xsstrike.py	2021-06-30 16:58:24.607972690 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 
