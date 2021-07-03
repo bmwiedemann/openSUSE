@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  2 08:04:26 UTC 2021 - pgajdos@suse.com
+
+- version update to 10.4.0
+  * For detailed list of changes see ChangeLog
+- deleted patches
+  - phoronix-test-suite-9703b4b.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Feb 26 08:25:53 UTC 2021 - pgajdos@suse.com
 
 - version update to 10.2.2

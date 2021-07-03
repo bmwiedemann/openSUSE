@@ -17,7 +17,7 @@
 
 
 Name:           phoronix-test-suite
-Version:        10.2.2
+Version:        10.4.0
 Release:        0
 Summary:        Comprehensive test and benchmarking platform
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ Group:          System/Benchmark
 URL:            http://www.phoronix-test-suite.com/
 Source0:        https://phoronix-test-suite.com/releases/phoronix-test-suite-%{version}.tar.gz
 # https://github.com/phoronix-test-suite/phoronix-test-suite/issues/505 [bsc#1175508]
-Patch0:         phoronix-test-suite-9703b4b.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  shared-mime-info
@@ -58,7 +57,6 @@ tests and 20 suites.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 find ob-cache -type f -name *.sh -exec chmod +x {} \;
 
 %build
