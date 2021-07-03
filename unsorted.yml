@@ -151,7 +151,7 @@ unsorted:
   - OpenColorIO-doc 
   - OpenIPMI 
   - OpenIPMI-devel 
-  - OpenIPMI-python 
+  - OpenIPMI-python3 
   - OpenImageDenoise: [x86_64] 
   - OpenImageDenoise-devel: [x86_64] 
   - OpenImageIO 
@@ -3398,7 +3398,6 @@ unsorted:
   - fastlzlib-devel 
   - fatrace 
   - fatsort 
-  - fb-util-for-appx 
   - fbcat 
   - fbi 
   - fbpdf 
@@ -7827,12 +7826,12 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
-  - keylime-agent 
-  - keylime-config 
-  - keylime-firewalld 
-  - keylime-registrar 
-  - keylime-tpm_cert_store 
-  - keylime-verifier 
+  - keylime-agent: [i586] 
+  - keylime-config: [i586] 
+  - keylime-firewalld: [i586] 
+  - keylime-registrar: [i586] 
+  - keylime-tpm_cert_store: [i586] 
+  - keylime-verifier: [i586] 
   - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
@@ -8533,7 +8532,7 @@ unsorted:
   - leechcraft-poshuku-onlinebookmarks-readitlater 
   - leechcraft-poshuku-qrd 
   - leechcraft-poshuku-speeddial 
-  - leechcraft-poshuku-webkitview 
+  - leechcraft-poshuku-webengineview 
   - leechcraft-rosenthal 
   - leechcraft-sb2 
   - leechcraft-scroblibre 
@@ -13089,7 +13088,9 @@ unsorted:
   - libquo-devel 
   - libquo7 
   - libquorum5-32bit: [x86_64] 
+  - libquvi-0_9-0_9_4 
   - libquvi-devel 
+  - libquvi-scripts 
   - libquvi-scripts-devel 
   - libquvi-scripts-nsfw 
   - libqwt5-qt5-5 
@@ -14008,7 +14009,7 @@ unsorted:
   - libtspi1 
   - libtspi1-32bit: [x86_64] 
   - libtss2-esys0-32bit: [x86_64] 
-  - libtss2-fapi1 
+  - libtss2-fapi1: [i586] 
   - libtss2-fapi1-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
   - libtss2-rc0: [i586] 
@@ -14016,14 +14017,14 @@ unsorted:
   - libtss2-sys1-32bit: [x86_64] 
   - libtss2-tcti-cmd0 
   - libtss2-tcti-cmd0-32bit: [x86_64] 
-  - libtss2-tcti-device0 
+  - libtss2-tcti-device0: [i586] 
   - libtss2-tcti-device0-32bit: [x86_64] 
   - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
   - libtss2-tcti-swtpm0 
   - libtss2-tcti-swtpm0-32bit: [x86_64] 
-  - libtss2-tcti-tabrmd0 
-  - libtss2-tctildr0 
+  - libtss2-tcti-tabrmd0: [i586] 
+  - libtss2-tctildr0: [i586] 
   - libtss2-tctildr0-32bit: [x86_64] 
   - libttf2 
   - libttf2-32bit: [x86_64] 
@@ -15108,6 +15109,7 @@ unsorted:
   - lua51-say 
   - lua51-slaxml 
   - lua51-zlib 
+  - lua53 
   - lua53-alt-getopt 
   - lua53-argparse 
   - lua53-busted 
@@ -15140,6 +15142,7 @@ unsorted:
   - lua53-luaposix 
   - lua53-luarocks 
   - lua53-luasec 
+  - lua53-luasocket 
   - lua53-luasocket-devel 
   - lua53-luasql 
   - lua53-luassert 
@@ -15159,6 +15162,7 @@ unsorted:
   - lua53-say 
   - lua53-slaxml 
   - lua53-zlib 
+  - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
   - lua54-bit32 
@@ -15171,6 +15175,7 @@ unsorted:
   - lua54-cyrussasl 
   - lua54-devel 
   - lua54-dkjson 
+  - lua54-doc 
   - lua54-editorconfig-core-lua 
   - lua54-ldbus 
   - lua54-ldoc 
@@ -15191,6 +15196,7 @@ unsorted:
   - lua54-luaposix 
   - lua54-luarocks 
   - lua54-luasec 
+  - lua54-luasocket 
   - lua54-luasocket-devel 
   - lua54-luasql 
   - lua54-luassert 
@@ -20563,6 +20569,8 @@ unsorted:
   - postgresql13-pgaudit-llvmjit 
   - postgresql13-plperl 
   - postgresql13-plpython 
+  - postgresql13-plr 
+  - postgresql13-plr-doc 
   - postgresql13-pltcl 
   - postgresql13-server-devel 
   - postgresql13-test 
@@ -20570,13 +20578,8 @@ unsorted:
   - postgresql95-contrib 
   - postgresql95-devel 
   - postgresql95-docs 
-  - postgresql95-pg_cron 
-  - postgresql95-pgaudit 
-  - postgresql95-pgsql-ogr-fdw 
   - postgresql95-plperl 
   - postgresql95-plpython 
-  - postgresql95-plr 
-  - postgresql95-plr-doc 
   - postgresql95-pltcl 
   - postgresql95-server 
   - postgresql95-test 
@@ -20584,17 +20587,11 @@ unsorted:
   - postgresql96-contrib 
   - postgresql96-devel 
   - postgresql96-docs 
-  - postgresql96-pg_cron 
-  - postgresql96-pgaudit 
-  - postgresql96-pgsql-ogr-fdw 
   - postgresql96-plperl 
   - postgresql96-plpython 
-  - postgresql96-plr 
-  - postgresql96-plr-doc 
   - postgresql96-pltcl 
   - postgresql96-server 
   - postgresql96-test 
-  - postgresql96-timescaledb 
   - postgrey 
   - postorius-web 
   - postorius-web-uwsgi 
@@ -21019,7 +21016,6 @@ unsorted:
   - python-onionshare 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
-  - python-optcomplete 
   - python-osc-lib-doc 
   - python-oslo.cache-doc 
   - python-oslo.concurrency-doc 
@@ -21852,6 +21848,7 @@ unsorted:
   - python36-azure-mgmt 
   - python36-azure-mgmt-advisor 
   - python36-azure-mgmt-agfood 
+  - python36-azure-mgmt-agrifood 
   - python36-azure-mgmt-alertsmanagement 
   - python36-azure-mgmt-apimanagement 
   - python36-azure-mgmt-appconfiguration 
@@ -21902,6 +21899,7 @@ unsorted:
   - python36-azure-mgmt-edgegateway 
   - python36-azure-mgmt-eventgrid 
   - python36-azure-mgmt-eventhub 
+  - python36-azure-mgmt-extendedlocation 
   - python36-azure-mgmt-frontdoor 
   - python36-azure-mgmt-hanaonazure 
   - python36-azure-mgmt-hdinsight 
@@ -21951,6 +21949,7 @@ unsorted:
   - python36-azure-mgmt-reservations 
   - python36-azure-mgmt-resource 
   - python36-azure-mgmt-resourcegraph 
+  - python36-azure-mgmt-resourcehealth 
   - python36-azure-mgmt-resourcemover 
   - python36-azure-mgmt-scheduler 
   - python36-azure-mgmt-search 
@@ -24636,6 +24635,7 @@ unsorted:
   - python38-azure-mgmt 
   - python38-azure-mgmt-advisor 
   - python38-azure-mgmt-agfood 
+  - python38-azure-mgmt-agrifood 
   - python38-azure-mgmt-alertsmanagement 
   - python38-azure-mgmt-apimanagement 
   - python38-azure-mgmt-appconfiguration 
@@ -24686,6 +24686,7 @@ unsorted:
   - python38-azure-mgmt-edgegateway 
   - python38-azure-mgmt-eventgrid 
   - python38-azure-mgmt-eventhub 
+  - python38-azure-mgmt-extendedlocation 
   - python38-azure-mgmt-frontdoor 
   - python38-azure-mgmt-hanaonazure 
   - python38-azure-mgmt-hdinsight 
@@ -24735,6 +24736,7 @@ unsorted:
   - python38-azure-mgmt-reservations 
   - python38-azure-mgmt-resource 
   - python38-azure-mgmt-resourcegraph 
+  - python38-azure-mgmt-resourcehealth 
   - python38-azure-mgmt-resourcemover 
   - python38-azure-mgmt-scheduler 
   - python38-azure-mgmt-search 
@@ -25656,7 +25658,7 @@ unsorted:
   - python38-keepalive 
   - python38-kerberos 
   - python38-keyczar 
-  - python38-keylime 
+  - python38-keylime: [i586] 
   - python38-keyring 
   - python38-keyrings.alt 
   - python38-kismet-rest 
@@ -26436,7 +26438,7 @@ unsorted:
   - python38-python-gammu 
   - python38-python-gflags 
   - python38-python-gitlab 
-  - python38-python-gnupg 
+  - python38-python-gnupg: [i586] 
   - python38-python-gvm 
   - python38-python-jenkins 
   - python38-python-jose 
@@ -26743,7 +26745,6 @@ unsorted:
   - python38-softlayer 
   - python38-sorl-thumbnail 
   - python38-sortedcollections 
-  - python38-sortinghat 
   - python38-sounddevice 
   - python38-soupsieve 
   - python38-sox 
@@ -27587,6 +27588,7 @@ unsorted:
   - python39-azure-mgmt 
   - python39-azure-mgmt-advisor 
   - python39-azure-mgmt-agfood 
+  - python39-azure-mgmt-agrifood 
   - python39-azure-mgmt-alertsmanagement 
   - python39-azure-mgmt-apimanagement 
   - python39-azure-mgmt-appconfiguration 
@@ -27637,6 +27639,7 @@ unsorted:
   - python39-azure-mgmt-edgegateway 
   - python39-azure-mgmt-eventgrid 
   - python39-azure-mgmt-eventhub 
+  - python39-azure-mgmt-extendedlocation 
   - python39-azure-mgmt-frontdoor 
   - python39-azure-mgmt-hanaonazure 
   - python39-azure-mgmt-hdinsight 
@@ -27686,6 +27689,7 @@ unsorted:
   - python39-azure-mgmt-reservations 
   - python39-azure-mgmt-resource 
   - python39-azure-mgmt-resourcegraph 
+  - python39-azure-mgmt-resourcehealth 
   - python39-azure-mgmt-resourcemover 
   - python39-azure-mgmt-scheduler 
   - python39-azure-mgmt-search 
@@ -29810,7 +29814,6 @@ unsorted:
   - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
-  - python39-sortinghat 
   - python39-sounddevice 
   - python39-soupsieve 
   - python39-sox 
@@ -31024,6 +31027,7 @@ unsorted:
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-gettext-setup 
+  - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
   - ruby2.7-rubygem-rspec-rails-3.9 
@@ -31275,6 +31279,7 @@ unsorted:
   - ruby3.0-rubygem-rake-compiler 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
+  - ruby3.0-rubygem-red-datasets 
   - ruby3.0-rubygem-regexp_parser 
   - ruby3.0-rubygem-responders 
   - ruby3.0-rubygem-rest-client 
@@ -40803,14 +40808,14 @@ unsorted:
   - tpm-tools 
   - tpm-tools-devel 
   - tpm-tools-pkcs11 
-  - tpm2-0-tss 
+  - tpm2-0-tss: [i586] 
   - tpm2-0-tss-devel 
   - tpm2-tss-engine 
   - tpm2-tss-engine-bash-completion 
   - tpm2-tss-engine-devel 
-  - tpm2.0-abrmd 
+  - tpm2.0-abrmd: [i586] 
   - tpm2.0-abrmd-devel 
-  - tpm2.0-tools 
+  - tpm2.0-tools: [i586] 
   - trace-cmd 
   - tracker-devel 
   - tracker2-devel 
