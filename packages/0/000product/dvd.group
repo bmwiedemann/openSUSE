@@ -1467,7 +1467,7 @@
     <package name="libKF5Prison5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Pty5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Pty5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5PulseAudioQt2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5PulseAudioQt3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libKF5Purpose5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5PurposeWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5QuickAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2491,8 +2491,6 @@
     <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquorum5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libquvi-0_9-0_9_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libquvi-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqxp-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2905,11 +2903,6 @@
     <package name="lskat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="lua53" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="lua54" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lua54-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="lua54-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="luit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-calendar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-calendar-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3444,6 +3437,7 @@
     <package name="pinentry-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pinfo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-media-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4001,7 +3995,6 @@
     <package name="ruby2.7-rubygem-inifile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jquery-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4127,6 +4120,7 @@
     <package name="ruby2.7-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rb-kqueue" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rdiscount" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-red-datasets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-regexp_parser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-responders" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rest-client" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4631,7 +4625,6 @@
     <package name="typelib-1_0-Pango-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="typelib-1_0-Peas-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-PeasGtk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-Polari-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Polkit-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Rest-0_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Rsvg-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

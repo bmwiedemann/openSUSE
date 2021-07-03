@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210701" schemaversion="4.1">
+<image name="OBS__openSUSE___20210702" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210701</productvar>
+      <productvar name="VERSION">20210702</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210701,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210702,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210701/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210702/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2169,7 +2169,7 @@
       <repopackage name="libKF5Prison5"/>
       <repopackage name="libKF5Pty5"/>
       <repopackage name="libKF5Pty5-lang"/>
-      <repopackage name="libKF5PulseAudioQt2"/>
+      <repopackage name="libKF5PulseAudioQt3"/>
       <repopackage name="libKF5Purpose5"/>
       <repopackage name="libKF5PurposeWidgets5"/>
       <repopackage name="libKF5QuickAddons5"/>
@@ -2630,8 +2630,6 @@
       <repopackage name="libquadmath0"/>
       <repopackage name="libquicktime0"/>
       <repopackage name="libquorum5"/>
-      <repopackage name="libquvi-0_9-0_9_4"/>
-      <repopackage name="libquvi-scripts"/>
       <repopackage name="libqxp-0_0-0"/>
       <repopackage name="librados2" arch="x86_64"/>
       <repopackage name="libraptor2-0"/>
@@ -3184,11 +3182,6 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lua53"/>
-      <repopackage name="lua53-luasocket"/>
-      <repopackage name="lua54"/>
-      <repopackage name="lua54-doc"/>
-      <repopackage name="lua54-luasocket"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3796,6 +3789,7 @@
       <repopackage name="pinentry-qt5"/>
       <repopackage name="pinfo"/>
       <repopackage name="pipewire"/>
+      <repopackage name="pipewire-media-session"/>
       <repopackage name="pipewire-modules"/>
       <repopackage name="pipewire-pulseaudio"/>
       <repopackage name="pipewire-spa-plugins-0_2"/>
@@ -4370,7 +4364,6 @@
       <repopackage name="ruby2.7-rubygem-inifile"/>
       <repopackage name="ruby2.7-rubygem-jaro_winkler"/>
       <repopackage name="ruby2.7-rubygem-jbuilder"/>
-      <repopackage name="ruby2.7-rubygem-jekyll"/>
       <repopackage name="ruby2.7-rubygem-jekyll-sass-converter"/>
       <repopackage name="ruby2.7-rubygem-jekyll-watch"/>
       <repopackage name="ruby2.7-rubygem-jquery-rails"/>
@@ -4496,6 +4489,7 @@
       <repopackage name="ruby2.7-rubygem-rb-inotify"/>
       <repopackage name="ruby2.7-rubygem-rb-kqueue"/>
       <repopackage name="ruby2.7-rubygem-rdiscount"/>
+      <repopackage name="ruby2.7-rubygem-red-datasets"/>
       <repopackage name="ruby2.7-rubygem-regexp_parser"/>
       <repopackage name="ruby2.7-rubygem-responders"/>
       <repopackage name="ruby2.7-rubygem-rest-client"/>
@@ -5011,7 +5005,6 @@
       <repopackage name="typelib-1_0-Pango-1_0"/>
       <repopackage name="typelib-1_0-Peas-1_0"/>
       <repopackage name="typelib-1_0-PeasGtk-1_0"/>
-      <repopackage name="typelib-1_0-Polari-1_0"/>
       <repopackage name="typelib-1_0-Polkit-1_0"/>
       <repopackage name="typelib-1_0-Rest-0_7"/>
       <repopackage name="typelib-1_0-Rsvg-2_0"/>
