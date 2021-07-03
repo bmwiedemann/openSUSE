@@ -1,0 +1,55 @@
+Only in sqlmap-1.5.ori/extra/icmpsh: icmpsh-m.c
+Only in sqlmap-1.5/extra/icmpsh: icmpsh-m.c.txt
+Only in sqlmap-1.5.ori/extra/icmpsh: icmpsh-s.c
+Only in sqlmap-1.5/extra/icmpsh: icmpsh-s.c.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: runcmd.cpp
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: runcmd.cpp.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.cpp
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.cpp.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.h
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.h.txt
+diff --color -rub sqlmap-1.5.ori/extra/shutils/autocompletion.sh sqlmap-1.5/extra/shutils/autocompletion.sh
+--- sqlmap-1.5.ori/extra/shutils/autocompletion.sh	2021-01-03 15:23:40.000000000 +0100
++++ sqlmap-1.5/extra/shutils/autocompletion.sh	2021-07-01 17:19:46.749860716 +0200
+@@ -1,4 +1,4 @@
+-#/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # source ./extra/shutils/autocompletion.sh
+ 
+diff --color -rub sqlmap-1.5.ori/extra/shutils/duplicates.py sqlmap-1.5/extra/shutils/duplicates.py
+--- sqlmap-1.5.ori/extra/shutils/duplicates.py	2021-01-03 15:23:40.000000000 +0100
++++ sqlmap-1.5/extra/shutils/duplicates.py	2021-07-01 17:20:26.786475153 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ # Copyright (c) 2006-2021 sqlmap developers (http://sqlmap.org/)
+ # See the file 'LICENSE' for copying permission
+diff --color -rub sqlmap-1.5.ori/sqlmapapi.py sqlmap-1.5/sqlmapapi.py
+--- sqlmap-1.5.ori/sqlmapapi.py	2021-01-03 15:23:40.000000000 +0100
++++ sqlmap-1.5/sqlmapapi.py	2021-07-01 17:23:26.465232679 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ """
+ Copyright (c) 2006-2021 sqlmap developers (http://sqlmap.org/)
+diff --color -rub sqlmap-1.5.ori/sqlmap.py sqlmap-1.5/sqlmap.py
+--- sqlmap-1.5.ori/sqlmap.py	2021-01-03 15:23:40.000000000 +0100
++++ sqlmap-1.5/sqlmap.py	2021-07-01 17:23:41.313460555 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ """
+ Copyright (c) 2006-2021 sqlmap developers (http://sqlmap.org/)
+diff --color -rub sqlmap-1.5.ori/thirdparty/identywaf/identYwaf.py sqlmap-1.5/thirdparty/identywaf/identYwaf.py
+--- sqlmap-1.5.ori/thirdparty/identywaf/identYwaf.py	2021-01-03 15:23:40.000000000 +0100
++++ sqlmap-1.5/thirdparty/identywaf/identYwaf.py	2021-07-01 17:20:49.558824640 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ """
+ Copyright (c) 2019-2021 Miroslav Stampar (@stamparm), MIT
