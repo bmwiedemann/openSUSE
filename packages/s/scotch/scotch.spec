@@ -691,8 +691,8 @@ popd
 %{my_libdir}/libscotch.so.*
 %{my_libdir}/libscotcherr.so.*
 %{my_libdir}/libscotcherrexit.so.*
- %if %{with mumps}
 %{my_libdir}/libscotchmetis.so.*
+ %if %{with mumps}
 %{my_libdir}/libesmumps.so.*
  %endif
 %endif
@@ -710,8 +710,8 @@ popd
 %{my_libdir}/libscotch.so
 %{my_libdir}/libscotcherr.so
 %{my_libdir}/libscotcherrexit.so
- %if %{with mumps}
 %{my_libdir}/libscotchmetis.so
+ %if %{with mumps}
 %{my_libdir}/libesmumps.so
  %endif
 %endif
@@ -735,6 +735,9 @@ popd
 %{my_libdir}/libscotch.a
 %{my_libdir}/libscotcherr.a
 %{my_libdir}/libscotcherrexit.a
+%if %{without mpi} || %{without hpc}
+%{my_libdir}/libscotchmetis.a
+%endif
 %if %{with mpi}
 %{my_libdir}/libptscotch.a
 %{my_libdir}/libptscotcherr.a
@@ -742,10 +745,9 @@ popd
 %{my_libdir}/libptscotchparmetis.a
 %{!?with_hpc:%{my_libdir}/libparmetis.a}
 %else
-%{my_libdir}/libmetis.a
+%{!?with_hpc:%{my_libdir}/libmetis.a}
 %endif
 %if %{with mumps}
-%{my_libdir}/libscotchmetis.a
 %{my_libdir}/lib%{?pt_pref}esmumps.a
 %endif
 

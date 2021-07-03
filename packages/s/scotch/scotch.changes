@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  2 06:47:04 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix serial HPC build.
+- Fix: 'warning: File listed twice: /usr/lib64/libscotchmetis.so*'
+  
+
+-------------------------------------------------------------------
 Wed Jan 27 19:09:40 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Sync SLE and openSUSE builds (jsc#SLE-12162).

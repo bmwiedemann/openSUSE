@@ -145,4 +145,13 @@
 - Add support for gcc10 and build support for openmpi4.</comment>
     <requestid>867464</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fa427cd0668f8b28950bf8a8f1df48a4</srcmd5>
+    <version>6.1.0</version>
+    <time>1625338238</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix serial HPC build.
+- Fix: 'warning: File listed twice: /usr/lib64/libscotchmetis.so*' (forwarded request 903652 from eeich)</comment>
+    <requestid>903656</requestid>
+  </revision>
 </revisionlist>
