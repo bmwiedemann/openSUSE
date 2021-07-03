@@ -1,7 +1,7 @@
 #
-# spec file for package antic
+# spec file for package e-antic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,19 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
 
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  antic-devel
 BuildRequires:  arb-devel
+BuildRequires:  automake
 BuildRequires:  cereal-devel
 BuildRequires:  flint-devel >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 BuildRequires:  unique-factory-devel
 BuildRequires:  pkgconfig(catch2)
-BuildRequires:  python3-setuptools
 
 %description
 E-ANTIC is a C/C++ library to deal with real embedded number fields
@@ -56,6 +56,9 @@ built on top of ANTIC.
 Summary:        Development files for e-antic
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       antic-devel
+Requires:       arb-devel
+Requires:       libboost_headers-devel
 
 %description devel
 E-ANTIC is a C/C++ library to deal with real embedded number fields

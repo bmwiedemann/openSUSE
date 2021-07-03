@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  2 19:25:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Requires to e-antic-devel so that all headers can be used.
+
+-------------------------------------------------------------------
 Fri Jun 25 14:55:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.1
