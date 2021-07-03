@@ -48,4 +48,13 @@
   opencl.hpp now.</comment>
     <requestid>891575</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef7caa415fae6e6d7f0dcaeb2d680e07</srcmd5>
+    <version>2.0.15</version>
+    <time>1625338259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.15.
+  * Synchronize with OpenCL v3.0.8 specification release.</comment>
+    <requestid>903839</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  3 11:53:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.0.15.
+  * Synchronize with OpenCL v3.0.8 specification release.
+
+-------------------------------------------------------------------
 Fri May  7 22:27:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Include the actual headers: cl2.hpp is just importing the new

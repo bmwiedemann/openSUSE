@@ -18,7 +18,7 @@
 
 
 Name:           opencl-cpp-headers
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        OpenCL C++ headers
 License:        Apache-2.0
