@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.
+
+-------------------------------------------------------------------
 Sat Jun  5 12:50:14 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)

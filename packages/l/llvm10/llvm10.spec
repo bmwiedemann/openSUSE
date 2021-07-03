@@ -134,6 +134,8 @@ Patch27:        fix-atomics-test.patch
 Patch28:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
 # Fix build with GCC 11. (boo#1181875)
 Patch29:        Fix-missing-include.patch
+# Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
+Patch30:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -580,6 +582,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch10 -p2
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch30 -p2
 popd
 
 pushd lld-%{_version}.src
