@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 29 15:16:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.12
+  * Turkish translation added
+  * Indonesian support added.
+- Build with system GtkDatabox3
+
+-------------------------------------------------------------------
 Mon Nov 16 17:05:05 UTC 2020 - Elisei Roca <eroca@suse.com> - 3.11
 
 - add _service file

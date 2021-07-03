@@ -1,7 +1,7 @@
 #
 # spec file for package klavaro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define espeak    espeak
 %endif
 Name:           klavaro
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        Typing tutor
 License:        GPL-3.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  libgnutls-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtkdatabox) >= 1.0
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{espeak}
 %if 0%{?suse_version}
@@ -62,10 +63,9 @@ layouts.
 %setup -q
 
 %build
-export CFLAGS="%{optflags}"
 # Disable static linking when libgtkdatabox gtk3 appears
 %configure --disable-shared
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
