@@ -17,7 +17,7 @@
 
 
 Name:           fldigi
-Version:        4.1.18
+Version:        4.1.19
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
+BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)

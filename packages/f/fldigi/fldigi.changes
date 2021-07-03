@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Fri Jul  2 23:04:12 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.19
+    * maintenance release
+  Vestigial AFC fixes
+     * Fix OFDM and 8PSK AFC jumping randomly to noise-signals
+  C-Media PTT support
+    * add support for C-Media ptt signal, used by DAR-30 etal
+  LNW macro tag
+    * add missing add to log call
+  Notes
+    * add Notes as a retrieve field for last worked call lookup in
+      logbook
+  lower case tx
+    * defeat lower case TX when text source is from arq or xmlrpc
+      socket interface.
+ Qso Party Cabrillo
+    * add state & country selections
+  mxe scripts update
+  cwid
+    * enable cwid for
+      . T/R button reset to Rx
+      . ^r in xmlrpc transmit text strings
+      . ^r in macro text
+      . ^r in transmit text
+      NOTE: recommend disabling cwid for all ARQ type message
+      transmissions; flarq / flmsg.
+  Doxygen srcdoc fix
+   * MBEDTLS breaks the cppcheck tool, bypass checking for now
+  Dxcluster freq
+    * change to accommodate either '.' or ',' as the integer
+      fractional part of frequency in kHz.
+  Documentation update
+    * image and text associated with menu items
+      . View/Rig/Log Controls
+      . View/Waterfall
+  Carat r/R
+    * if modem is not IFKP, change to identical function for ^r and
+      ^R transmit character sequence
+Compiler warnings
+    * fix compiler warning on use of memset
+      . rsid.cxx
+      . ifkp.cxx
+  flrig cwio
+    * DTR/RTS CW keying using xmlrpc commands to flrig
+  Set/Get Notch
+    * Correct notch processing when used with flrig
+    * RigCAT notch processing
+      . Add wait 2 poll cycles between set and get notch
+  FMT mod
+    * limit estimation error to user defined value, reset tracking if
+      error exceeds the set value
+    * add +/- 5 and +/- 10 plot ranges
+  Tx Monitor Level
+    * Change control to dB scale to allow greater range of user control
+  fh baud
+    * modify fh parameter printout
+  dxcluster
+    * Immediate cmd
+      . ! character as first in command definition will cause the command
+        to be send immediate upon selection of that command button
+  WF-only mode menu
+    * add missing modes
+  PSK-modes fix false triggers of DCD-OFF
+    * Certian character combinations were triggering DCD-OFF
+    * DCD-OFF code now searches over 6-bit window
+    * Prevents rare data-loss bug mid-transmission
+  fmt
+    * add callback handlers to
+      . btn_unk_enable
+      . btn_ref_enable
+      . btn_fmt_record
+    * reset frequency whenever ref or unk button is pressed
+  CW punctuation
+    * Allow user to suppress decode/encode of specific punctuation
+      characters
+    * Allow user to select character to display noise decodes
+      . default '*'
+      . '_'
+      . ' '
+      . none
+  WX
+    * Correct <WX:xxx> weather macro text substitution
+  Canada
+    * Add missing provinces / regions
+  PulseAudio Server String
+    * always enable PA server string control to allow user to
+      clear or modify entry
+    * fix hanging up on server fault message dialog
+      . caused by message dialog on being re-entrant
+  Waterfall buttons
+    * Set all buttons to visibile for new installation
+  Audio Codec
+    * fix for Portaudio h/w codec missing during fldigi startup
+      . missing h/w could cause segmentation fault on some systems
+      . added try{}catch{} to trx audio path
+      . display error message
+      . reset audio device to NULL codec
+
+-------------------------------------------------------------------
 Thu Feb  4 08:26:24 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.18
