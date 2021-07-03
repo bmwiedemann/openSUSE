@@ -10244,10 +10244,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_3_0: [x86_64] 
-  - libdeal_II9_3_0-openmpi3: [x86_64] 
-  - libdeal_II9_3_0-openmpi4: [x86_64] 
+  - libdeal_II9_3_1: [x86_64] 
   - libdeal_II9_3_1-openmpi2: [x86_64] 
+  - libdeal_II9_3_1-openmpi3: [x86_64] 
+  - libdeal_II9_3_1-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -15869,7 +15869,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -30242,6 +30242,7 @@ unsorted:
   - qelectrotech 
   - qemacs 
   - qemu-audio-alsa 
+  - qemu-audio-jack 
   - qemu-audio-pa 
   - qemu-extra 
   - qemu-hw-s390x-virtio-gpu-ccw 

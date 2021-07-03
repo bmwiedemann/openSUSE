@@ -5320,7 +5320,6 @@
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="monitoring-plugins-cups" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="monitoring-plugins-nagios" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
