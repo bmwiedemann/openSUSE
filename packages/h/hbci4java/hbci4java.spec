@@ -17,13 +17,13 @@
 
 
 Name:           hbci4java
-Version:        3.1.53
+Version:        3.1.55
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        LGPL-2.1-only
 Group:          Productivity/Office/Finance
-URL:            https://github.com/hbci4j/%{name}
-Source:         https://github.com/hbci4j/%{name}/archive/hbci4j-core-%{version}.tar.gz
+URL:            https://github.com/hbci4j/hbci4java
+Source:         https://github.com/hbci4j/hbci4java/archive/refs/tags/hbci4j-core-%{version}.tar.gz
 Patch0:         signed-char.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
