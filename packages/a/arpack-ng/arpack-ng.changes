@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 15:11:00 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add option to build without openblas
+- Adjust constraints for riscv64
+
+-------------------------------------------------------------------
 Thu Jun 10 16:45:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add openmpi4 to the list of multibuild flavors (appropriate

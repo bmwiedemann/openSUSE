@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <constraints>
-  <!-- Only for x86_64, aarch64 where pyarpack is built -->
+  <!-- Only for x86_64, aarch64, riscv64 where pyarpack is built -->
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
       <arch>aarch64</arch>
+      <arch>riscv64</arch>
     </conditions>
     <hardware>
       <disk>

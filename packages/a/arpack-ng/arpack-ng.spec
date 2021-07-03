@@ -31,6 +31,8 @@
 ExclusiveArch:  do_not_build
 %endif
 
+%bcond_without openblas
+
 %if "%flavor" == "serial"
 %{bcond_with hpc}
 %endif
@@ -121,7 +123,9 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
+%if %{with openblas}
 BuildRequires:  libopenblas_pthreads-devel
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(eigen3)
