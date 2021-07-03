@@ -53,10 +53,15 @@ Requires(preun): systemd \
 Requires(postun): systemd \
 %{nil}
 
+# In case you're wondering why "Suggests:" is also used: libzypp
+# doesn't understand "OrderWithRequires:" yet, see bsc#1187332 for
+# details.
 %systemd_ordering \
+OrderWithRequires(pre): systemd \
 OrderWithRequires(post): systemd \
 OrderWithRequires(preun): systemd \
 OrderWithRequires(postun): systemd \
+Suggests: systemd \
 %{nil}
 
 %_restart_on_update_force() /usr/bin/systemctl try-restart %{*} || : %{nil}

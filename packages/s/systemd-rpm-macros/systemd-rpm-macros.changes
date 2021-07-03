@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 30 09:59:31 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Bump to version 13
+
+-------------------------------------------------------------------
+Wed Jun 30 09:52:48 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Make use of "Suggests:" in %systemd_ordering
+
+  Until libzypp supports "OrderWithRequires:", we need to specify a
+  similar ordering constraint that can be understood by the dep solver
+  as well. Hence the use of "Suggests:" in %systemd_ordering
+  (workaround for bsc#1187332).
+
+-------------------------------------------------------------------
 Thu May 20 10:18:23 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Bump to version 12
