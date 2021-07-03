@@ -20,7 +20,7 @@
 %define modname weblate-language-data
 %define skip_python2 1
 Name:           python-weblate-language-data
-Version:        2021.3
+Version:        2021.5
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT
