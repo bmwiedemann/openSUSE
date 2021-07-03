@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e00e157dd01599de9b0fdcb1d473ac39</srcmd5>
+    <version>1.6.0</version>
+    <time>1625338234</time>
+    <user>dimstar_suse</user>
+    <comment>cfssl is both a command line tool and an HTTP API server for signing, verifying, and bundling TLS certificates. Eventually will be required / recommeded by keylime, for certificate revocation.</comment>
+    <requestid>903734</requestid>
+  </revision>
+</revisionlist>
