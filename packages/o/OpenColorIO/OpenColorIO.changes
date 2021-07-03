@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  1 04:01:01 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update Requires of devel package to python3-devel 
+
+-------------------------------------------------------------------
 Fri Jan 10 11:32:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use python3 to produce the package due to python2 removal

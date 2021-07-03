@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -121,7 +121,7 @@ This package contains python bindings for OpenColorIO.
 Summary:        Python Bindings for OpenColorIO
 Group:          Development/Libraries/Python
 Requires:       python-OpenColorIO = %{version}
-Requires:       python-devel
+Requires:       python3-devel
 
 %description -n python-OpenColorIO-devel
 This package contains development files for python bindings for OpenColorIO.
