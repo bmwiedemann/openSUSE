@@ -231,4 +231,13 @@
     <comment></comment>
     <requestid>859730</requestid>
   </revision>
+  <revision rev="28" vrev="21">
+    <srcmd5>d8349a9ca61c0cc7793f50c107feef02</srcmd5>
+    <version>7.0.1</version>
+    <time>1625338258</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.</comment>
+    <requestid>903836</requestid>
+  </revision>
 </revisionlist>

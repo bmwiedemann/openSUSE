@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
+  Fix build with linux-glibc-devel 5.13.
+
+-------------------------------------------------------------------
 Fri Jan  1 13:12:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move BFD plugins to %{_libdir}

@@ -1,7 +1,7 @@
 #
 # spec file for package llvm7
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,6 +115,8 @@ Patch33:        compiler-rt-sanitizer-ipc-perm.patch
 Patch34:        fix-ppcle64-build.patch
 # PATCH-FIX-UPSTREAM llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch -- Fix dsymutil crash on ELF file.
 Patch35:        llvm-fix-a-copy-and-paste-error-that-would-cause-a-crash.patch
+# Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
+Patch36:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -131,7 +133,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    riscv64
 # llvm does not work on s390
@@ -205,7 +207,7 @@ Suggests:       libc++-devel
 OrderWithRequires: llvm7
 OrderWithRequires: llvm8
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n clang%{_sonum}
 This package contains the clang (C language) frontend for LLVM.
@@ -384,7 +386,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -413,7 +415,7 @@ BuildRequires:  pkgconfig(python3)
 Requires:       liblldb%{_sonum} = %{_relver}
 ExclusiveArch:  x86_64
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n lldb%{_sonum}
 LLDB is a next generation, high-performance debugger. It is built as a set
@@ -523,6 +525,7 @@ popd
 
 pushd compiler-rt-%{_relver}.src
 %patch33 -p2
+%patch36 -p2
 popd
 
 %if %{with lldb}
