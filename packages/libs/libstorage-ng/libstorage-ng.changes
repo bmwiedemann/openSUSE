@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Jul 2 16:19:20 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#820
+- avoid internal use of some deprecared functions
+- 4.4.21
+
+--------------------------------------------------------------------
+Fri Jul 2 12:59:25 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#819
+- make minimal SystemInfo class available in ABI
+- 4.4.20
+
+--------------------------------------------------------------------
 Wed Jun 30 16:16:51 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#818
