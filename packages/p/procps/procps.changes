@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 13:24:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Skip test suite on emulated riscv64 systems as the qemu process
+  is unexpected on the command lines of processes 
+
+-------------------------------------------------------------------
 Wed Mar 31 10:18:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch procps-3.3.17-bsc1181976.patch based on

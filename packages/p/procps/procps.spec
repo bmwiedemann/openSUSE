@@ -310,6 +310,13 @@ do
 	error=yes
     fi
 done
+%if 0%{?qemu_user_space_build}
+if test -x /usr/bin/qemu-%_build_arch
+then
+    echo Do not fail as pgrep as well as ps will find unexpected qemu-%_build_arch on command lines
+    exit 0
+fi
+%endif
 test $error = no || exit 1
 
 %files
