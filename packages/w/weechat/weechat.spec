@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -57,10 +57,9 @@ Recommends:     %{name}-python = %{version}
 Obsoletes:      %{name}-guile
 
 %description
-WeeChat (Wee Enhanced Environment for Chat) is a
-chat environment. It can be entirely controlled with the keyboard, has a
-plugin-based architecture and is customizable and extensible with scripts in
-several scripting languages.
+WeeChat (Wee Enhanced Environment for Chat) is a free chat client, fast and light, designed for many operating systems. It is highly customizable and extensible with scripts.
+
+Homepage: https://weechat.org/
 
 %lang_package
 
