@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.8.0+git28.5c54175d
+Version:        4.8.0+git38.c6c53268
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 24 20:36:29 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.8.0+git38.c6c53268:
+  * podman: workaround race during container creation
+  * VirtualDomain: Added code to set the host_memory value for Utilization (#1649)
+  * gcp-vpc-move-vip: add serviceaccount JSON file support
+  * gcp-vpc-move-route: add serviceaccount JSON file support
+  * LVM-activate: fix drop-in check to avoid re-creating drop-in file when it already exists
+  * Low: dummy: Add missing action to dummy_usage function
+
+-------------------------------------------------------------------
 Mon May 10 10:48:36 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.8.0+git28.5c54175d:
