@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 04:07:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1187696-avoid-deleting-rt-variables.patch to avoid
+  deleting the mirrored RT variables (bsc#1187696)
+
+-------------------------------------------------------------------
 Mon Jun 21 08:51:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1185232-fix-config-table-copying.patch to avoid

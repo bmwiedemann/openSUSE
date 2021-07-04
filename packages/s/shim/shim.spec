@@ -93,6 +93,8 @@ Patch12:        shim-disable-export-vendor-dbx.patch
 Patch13:        shim-bsc1187260-fix-efi-1.10-machines.patch
 # PATCH-FIX-UPSTREAM shim-bsc1185232-fix-config-table-copying.patch bsc#1185232 glin@suse.com -- Avoid buffer overflow when copying the MOK config table
 Patch14:        shim-bsc1185232-fix-config-table-copying.patch
+# PATCH-FIX-UPSTREAM shim-bsc1187696-avoid-deleting-rt-variables.patch bsc#1187696 glin@suse.com -- Avoid deleting the mirrored RT variables
+Patch15:        shim-bsc1187696-avoid-deleting-rt-variables.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -145,6 +147,7 @@ The source code of UEFI shim loader
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 %build
 # generate the vendor SBAT metadata
