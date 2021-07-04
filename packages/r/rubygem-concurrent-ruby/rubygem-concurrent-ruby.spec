@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-concurrent-ruby
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 %define mod_name concurrent-ruby
 %define mod_full_name %{mod_name}-%{version}
