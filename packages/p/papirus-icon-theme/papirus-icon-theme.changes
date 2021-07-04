@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jul  1 22:48:29 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210701
+
+  - Added icons
+
+     * AppCenter #2735
+     * Art of Illusion (app and mimetype icons)
+     * Bulky
+     * Bullet list symbolic icon #2709
+     * Cine Encoder
+     * ClickUp #2725
+     * cuteNTR
+     * Decoder #2708
+     * Deskreen
+     * Dhewm 3 (Flathub) #2007
+     * GDLauncher (Flathub) #2007
+     * gngeo #2705
+     * GNOME Tour #2707
+     * GNOME Video Arcade
+     * GNvim
+     * Gromit-MPX
+     * Haruna Video Player (Flathub) #2007
+     * Kooha #2730
+     * LinuxDC++ (Flathub) #2007
+     * m64p (Flathub) #2007
+     * NCSA Mosaic (AppImage)
+     * Neko Project II kai
+     * PDF Chain (Flathub) #2007
+     * Plank Show Desktop #2706
+     * Plots
+     * Pop!_OS COSMIC dock icons #2734
+     * ProtonVPN GUI #2720
+     * PyCrust
+     * QMC2 Arcade #692
+     * Radicle Upstream
+     * RSS Guard
+     * Slimbook AMD Controller (app and tray icons)
+     * Surviving Mars (Steam & Lutris) #2711
+     * TDE package_games_arcade
+     * TETR.IO Desktop
+     * Uno Calculator
+     * Webamp Desktop
+     * Webex #2717
+     * Wine Launcher
+     * XDCed
+     * Ymuse (app & actions icons)
+     * Yuzu (Flathub) #2007
+     * Zint
+     * zmNinja
+
+  - Updated icons
+
+     * applets-screenshooter symbolic icon
+     * channel-secure and channel-insecure symbolic icons
+     * Dolphin Emulator
+     * Godot #2723
+     * Jami
+     * Pixelorama #2684
+     * Planner
+     * Symbolic icons for radio and checkbox buttons
+     * Toggl Track
+
+ - Changes and fixes
+
+    * Removed unused view-filter-rtl icon. Updated view-filter
+      and view-list-tree icons
+    * Updated document-replace, swap-panels, view-choose, and
+      view-visible actions icons
+
+-------------------------------------------------------------------
 Fri Jun  4 02:03:58 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20210601
