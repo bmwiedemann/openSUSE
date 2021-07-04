@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  4 15:44:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.4
+  * All builds default to Qt6 (Qt >= 6.1) where available.
+  * CMake is now the new official build system.
+
+-------------------------------------------------------------------
 Tue May 11 10:43:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.3
