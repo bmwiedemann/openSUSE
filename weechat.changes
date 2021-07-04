@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul  4 14:09:09 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- update to 3.2
+- main changes:
+  * use XDG directories by default (config, data, cache, runtime)
+  * add support of IRC SASL mechanisms
+    SCRAM-SHA-1, SCRAM-SHA-256 and SCRAM-SHA-512
+  * automatically load system certificates
+    without giving a hardcoded path to the file with certificates
+  * add options to customize commands executed on system signals received
+    (SIGHUP, SIGQUIT, SIGTERM, SIGUSR1, SIGUSR2)
+  * add bar item "tls_version" and buflist format
+  * add signals "cursor_start" and "cursor_end"
+  * add function crypto_hmac in API
+  * add translated string in evaluation of expressions with "translate:xxx"
+  * add info "weechat_daemon"
+  * add Python stub for WeeChat API
+  * add variables "${tg_shell_argc}" and "${tg_shell_argvN}"
+    in command trigger evaluated strings
+  * many bugs fixed.
+- for all changes, please visit:
+  https://weechat.org/files/changelog/ChangeLog-3.2.html
+
+-------------------------------------------------------------------
 Sun Mar  7 11:56:44 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - update to 3.1
