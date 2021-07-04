@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  3 13:22:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.86.7
+  * AMD/Zen: Improve SMT counters built on VPMC
+  * AMD/Matisse & Zen3: Can alter the Power Limit with a PL1 offset
+  * AMD/SMU: Provides the firmware and interface version
+  * AMD HSMP: Support Host System Management Port.
+  * AMD IOMMU Base Address Register fix.
+  * Intel/Nehalem: Altering the TDC limit
+  * Intel: Integration of the 11th Generation
+  * UI: Stream buffer memory overlap fix.
+  * UI: Support color theming and introducing the Strawberry theme.
+  * Driver: New 'CPU_Count' argument
+  * New parameter "WDT_Enable" to toggle the Watchdog Timer.
+  * Page fault fix when unregistering idle device percpu structure
+  * Avoid a kernel zero division in clocksource_register_khz()
+  * Various bug fixes and minor improvements
+
+-------------------------------------------------------------------
 Sat May  8 12:00:09 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated to v1.84.5

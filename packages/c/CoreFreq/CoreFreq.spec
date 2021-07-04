@@ -16,18 +16,13 @@
 #
 
 
-# from coretypes.h
-%define corefreq_major  1
-%define corefreq_minor  84
-%define corefreq_rev    5
-%define gitdate 20210508
 Name:           CoreFreq
-Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}+git%{gitdate}
+Version:        1.86.7
 Release:        0
 Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
-Source:         %{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         leap15_2.patch
 Patch1:         leap15_3.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -44,7 +39,7 @@ Processors of architecture Intel Atom, Core2, Nehalem, SandyBridge and superiors
 AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 
 %prep
-%setup -q -n CoreFreq
+%setup -q
 %if 0%{?sle_version} == 150200
 %patch0 -p1
 %endif

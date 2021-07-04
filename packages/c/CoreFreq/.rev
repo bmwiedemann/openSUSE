@@ -66,4 +66,27 @@ Fixes compilation on kernel 5.12
 </comment>
     <requestid>891467</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f7149173c6f4fef70f68a84d144c5db</srcmd5>
+    <version>1.86.7</version>
+    <time>1625429452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.86.7
+  * AMD/Zen: Improve SMT counters built on VPMC
+  * AMD/Matisse &amp; Zen3: Can alter the Power Limit with a PL1 offset
+  * AMD/SMU: Provides the firmware and interface version
+  * AMD HSMP: Support Host System Management Port.
+  * AMD IOMMU Base Address Register fix.
+  * Intel/Nehalem: Altering the TDC limit
+  * Intel: Integration of the 11th Generation
+  * UI: Stream buffer memory overlap fix.
+  * UI: Support color theming and introducing the Strawberry theme.
+  * Driver: New 'CPU_Count' argument
+  * New parameter &quot;WDT_Enable&quot; to toggle the Watchdog Timer.
+  * Page fault fix when unregistering idle device percpu structure
+  * Avoid a kernel zero division in clocksource_register_khz()
+  * Various bug fixes and minor improvements
+</comment>
+    <requestid>903961</requestid>
+  </revision>
 </revisionlist>
