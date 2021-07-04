@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec45753ae75ba893d1b41c667b0670cf</srcmd5>
+    <version>1.1.7</version>
+    <time>1625429409</time>
+    <user>dimstar_suse</user>
+    <comment>- added webpage for source tarballs to specfile
+
+- Throw out ancient specfile constructs like BuildRoot and
+  defattr that have had proper defaults for long. Use more of the
+  contemporary macros, and drop all the nonstandard CFLAGS/LDFLAGS,
+  drop the unconditional strip calls.
+
+- added missing copyright to specfile 
+
+- tried to address checkin policy issues for factory
+
+- First build. Version - 1.1.7</comment>
+    <requestid>903648</requestid>
+  </revision>
+</revisionlist>

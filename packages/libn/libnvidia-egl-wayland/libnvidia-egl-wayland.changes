@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Jul  1 22:28:26 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added webpage for source tarballs to specfile
+
+-------------------------------------------------------------------
+Thu Jul  1 16:03:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Throw out ancient specfile constructs like BuildRoot and
+  defattr that have had proper defaults for long. Use more of the
+  contemporary macros, and drop all the nonstandard CFLAGS/LDFLAGS,
+  drop the unconditional strip calls.
+
+-------------------------------------------------------------------
+Thu Jul  1 12:58:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added missing copyright to specfile 
+
+-------------------------------------------------------------------
+Thu Jul  1 11:32:48 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- tried to address checkin policy issues for factory
+
+-------------------------------------------------------------------
+Thu Jul  1 09:52:18 UTC 2021 - Alexander Evseev <aevseev@gmail.com> - 1.1.7
+
+- First build. Version - 1.1.7
