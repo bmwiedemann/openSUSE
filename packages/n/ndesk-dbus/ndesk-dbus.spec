@@ -1,7 +1,7 @@
 #
 # spec file for package ndesk-dbus
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ndesk-dbus
-Version:        0.6.0
+Version:        0.6.1a
 Release:        0
-%if 0%{?fedora_version}  
-   %define env_options export MONO_SHARED_DIR=/tmp  
-%endif  
-%if 0%{?sles_version} == 9
-   %define exp_env export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome/%{_lib}/pkgconfig
-%endif
 Summary:        Managed C# implementation of D-Bus
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://www.ndesk.org/DBusSharp
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.tar.bz2
-Provides:       ndesk-dbus-devel < %{version}
-Obsoletes:      ndesk-dbus-devel < %{version}
+URL:            http://www.ndesk.org/DBusSharp
+Source0:        http://www.ndesk.org/archive/dbus-sharp/ndesk-dbus-0.6.1a.tar.gz
 BuildRequires:  mono-devel
 BuildRequires:  pkgconfig
-%if 0%{?sles_version} == 9 || 0%{?suse_version} == 1000
-BuildRequires:  glib2-devel
-%endif
+Provides:       ndesk-dbus-devel = %version
+Obsoletes:      ndesk-dbus-devel < %version
 BuildArch:      noarch
 
 %description
@@ -48,32 +38,25 @@ libdbus).
 It is a clean-room implementation based on the D-Bus Specification
 Version 0.11 and study of the wire protocol of existing tools.
 
-
-
 %prep
-%setup
+%setup -q
 
 %build
-%{?exp_env}
-%{?env_options}
 %configure --libdir="%_prefix/lib"
-make %{?_smp_mflags}
+%make_build
 
 %install
-%{?env_options}
 # This is all noarch, so the .pc file can go to %%_datadir.
-make install DESTDIR="%buildroot" pkgconfigdir="%_datadir/pkgconfig"
+%make_install pkgconfigdir="%_datadir/pkgconfig"
 
 %files
-%defattr(-,root,root)
-%doc COPYING README
+%license COPYING
+%doc README
 %_prefix/lib/mono/gac/NDesk.DBus
 %_prefix/lib/mono/ndesk-dbus-1.0
 %_datadir/pkgconfig/ndesk-dbus-1.0.pc
-%if 0%{?fedora_version}
-# Allows overrides of __find_provides in fedora distros... (already set to zero on newer suse distros)
+
 %define _use_internal_dependency_generator 0
-%endif
 %define __find_provides env sh -c 'filelist=($(cat)) && { printf "%s\\n" "${filelist[@]}" | /usr/lib/rpm/find-provides && printf "%s\\n" "${filelist[@]}" | /usr/bin/mono-find-provides ; } | sort | uniq'
 %define __find_requires env sh -c 'filelist=($(cat)) && { printf "%s\\n" "${filelist[@]}" | /usr/lib/rpm/find-requires && printf "%s\\n" "${filelist[@]}" | /usr/bin/mono-find-requires ; } | sort | uniq'
 

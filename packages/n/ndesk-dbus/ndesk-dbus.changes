@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:59:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.6.1a
+  * Improve exception handling
+- Fix self-obsoletes
+
+-------------------------------------------------------------------
 Sat Jan 12 01:56:57 UTC 2013 - jengelh@inai.de
 
 - Use standard %configure and enable parallel build
