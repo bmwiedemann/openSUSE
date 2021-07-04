@@ -17,13 +17,12 @@
 
 
 Name:           yast2-bootloader
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
 Group:          System/YaST
 URL:            https://github.com/yast/yast-bootloader
-
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  yast2 >= 4.3.41

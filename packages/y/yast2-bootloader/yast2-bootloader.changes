@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 18 07:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add riscv64 support (jsc#PM-2612)
+  * done by Andreas Schwab <schwab@suse.de>
+- 4.4.4
+
+-------------------------------------------------------------------
 Wed Jun  9 13:51:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable linuxefi/initrdefi on x86 only as grub does not understand
