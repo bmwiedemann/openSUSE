@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul  1 07:47:31 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Finally don't create /run/lock/subsys anymore
+
+  This effectively reverts the fix for bsc#1187292 made earlier. This
+  directory is specific to RH sysvinit and since we're going to fade
+  the support of SysV init script away the directory has no future.
+
+-------------------------------------------------------------------
 Mon Jun 28 16:45:04 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit e9a23d9e064c2e7ac21a1b984d116bcf15327e63
 
   8dd19c6ee3 sd-device: allow to read sysattr which contains embedded NUL
   d52409e5fe pid1: only add a Wants= type dependency on /tmp when PrivateTmp=yes (bsc#1181970
+
+-------------------------------------------------------------------
+Mon Jun 28 12:46:04 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Enable TPM2 support
 
 -------------------------------------------------------------------
 Thu Jun 24 13:39:30 UTC 2021 - Franck Bui <fbui@suse.com>

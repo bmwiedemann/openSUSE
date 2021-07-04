@@ -81,6 +81,9 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(tss2-esys)
+BuildRequires:  pkgconfig(tss2-mu)
+BuildRequires:  pkgconfig(tss2-rc)
 %ifarch aarch64 %ix86 x86_64 x32 %arm ppc64le s390x
 BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
 %endif
@@ -132,6 +135,9 @@ Requires:       group(lock)
 Recommends:     libpcre2-8-0
 # ditto but dlopen()ed by systemd-cryptenroll
 Recommends:     libfido2
+Recommends:     libtss2-esys0
+Recommends:     libtss2-mu0
+Recommends:     libtss2-rc0
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
@@ -586,6 +592,7 @@ Have fun with these services at your own risk.
 %if 0%{?bootstrap}
         -Dnss-myhostname=false \
 %else
+        -Dtpm2=true \
         -Dman=true \
         -Dhtml=true \
 %endif

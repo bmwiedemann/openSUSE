@@ -5404,4 +5404,17 @@ handle manual pages that consist only of a .so directive such as
 - While at it, add a comment to explain why we don't use</comment>
     <requestid>902866</requestid>
   </revision>
+  <revision rev="331" vrev="2">
+    <srcmd5>8e227ea7753d964f0ef4229e5b70fea5</srcmd5>
+    <version>248.3</version>
+    <time>1625429418</time>
+    <user>dimstar_suse</user>
+    <comment>- Finally don't create /run/lock/subsys anymore
+  This effectively reverts the fix for bsc#1187292 made earlier. This
+  directory is specific to RH sysvinit and since we're going to fade
+  the support of SysV init script away the directory has no future.
+
+- Enable TPM2 support</comment>
+    <requestid>903365</requestid>
+  </revision>
 </revisionlist>
