@@ -48,4 +48,17 @@
 - Allow building for Fedora in the OBS</comment>
     <requestid>901565</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a8fdd63e00a677022cbb8ca81415a2b</srcmd5>
+    <version>16.4.1</version>
+    <time>1625429411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.4.1:
+  deps: libuv upgrade - Out of bounds read (Medium)
+  (bsc#1187973, CVE-2021-22918)
+
+- node-gyp_7.1.2.tar.xz: for SLE-12, use latest node-gyp that
+  is compatible with python 3.4</comment>
+    <requestid>903753</requestid>
+  </revision>
 </revisionlist>

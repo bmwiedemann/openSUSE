@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  2 15:17:09 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 16.4.1:
+  deps: libuv upgrade - Out of bounds read (Medium)
+  (bsc#1187973, CVE-2021-22918)
+
+-------------------------------------------------------------------
+Thu Jul  1 13:34:05 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- node-gyp_7.1.2.tar.xz: for SLE-12, use latest node-gyp that
+  is compatible with python 3.4
+
+-------------------------------------------------------------------
 Wed Jun 23 12:57:04 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 16.4.0:
