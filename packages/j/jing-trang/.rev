@@ -31,4 +31,12 @@
     <comment>Build against xml-commons-apis instead of xerces-j2-xml-apis</comment>
     <requestid>656910</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a0e1ecefd696b516fdcaa6e4cb74e5e</srcmd5>
+    <version>20181222</version>
+    <time>1625429440</time>
+    <user>dimstar_suse</user>
+    <comment>20181222</comment>
+    <requestid>903702</requestid>
+  </revision>
 </revisionlist>

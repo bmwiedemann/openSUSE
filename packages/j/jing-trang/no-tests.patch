@@ -1,0 +1,87 @@
+--- jing-trang-20181222/build.xml	2021-07-01 11:39:52.944475295 +0200
++++ jing-trang-20181222/build.xml	2021-07-01 11:41:13.792611378 +0200
+@@ -386,7 +386,7 @@
+   <gzip zipfile="${build.dir}/dist/relaxng.tar.gz" src="${build.dir}/relaxng.tar"/>
+ </target>
+ 
+-<target name="dist" depends="test,validate,jing-dist,trang-dist,dtdinst-dist,website"
++<target name="dist" depends="validate,jing-dist,trang-dist,dtdinst-dist,website"
+ 	description="Make a distribution, leaving artifacts in ${build.dir}/dist"/>
+ 
+ <target name="googlecode.properties.available">
+--- jing-trang-20181222/build.xsl	2021-07-01 11:39:52.944475295 +0200
++++ jing-trang-20181222/build.xsl	2021-07-01 11:45:58.721090950 +0200
+@@ -15,11 +15,6 @@
+     <property name="javacc.dir" value="${{lib.dir}}"/>
+     <property name="ant.build.javac.source" value="7"/>
+     <property name="ant.build.javac.target" value="1.7"/>
+-    <taskdef name="testng" classname="org.testng.TestNGAntTask">
+-      <classpath>
+-	<pathelement location="${{lib.dir}}/testng.jar"/>
+-      </classpath>
+-    </taskdef>
+     <target name="dummy"/>
+     <target name="init">
+       <mkdir dir="{$build}"/>
+--- jing-trang-20181222/mod/catalog/mod.xml	2021-07-01 11:39:52.948475302 +0200
++++ jing-trang-20181222/mod/catalog/mod.xml	2021-07-01 11:42:11.328708210 +0200
+@@ -1,6 +1,5 @@
+ <module>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile test="no"/>
+   <depends module="util"/>
+   <depends module="resolver"/>
+   <depends lib="xml-commons-resolver"/>
+--- jing-trang-20181222/mod/infer/mod.xml	2021-07-01 11:39:52.960475322 +0200
++++ jing-trang-20181222/mod/infer/mod.xml	2021-07-01 11:42:17.348718337 +0200
+@@ -4,6 +4,5 @@
+   <depends module="datatype"/>
+   <depends module="xsd-datatype"/>
+   <depends module="regex"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile test="no"/>
+ </module>
+--- jing-trang-20181222/mod/pattern/mod.xml	2021-07-01 11:39:52.960475322 +0200
++++ jing-trang-20181222/mod/pattern/mod.xml	2021-07-01 11:42:23.344728421 +0200
+@@ -4,6 +4,5 @@
+   <depends module="datatype"/>
+   <depends module="rng-parse"/>
+   <depends lib="relaxngDatatype"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile test="no"/>
+ </module>
+--- jing-trang-20181222/mod/rng-jaxp/mod.xml	2021-07-01 11:39:52.964475329 +0200
++++ jing-trang-20181222/mod/rng-jaxp/mod.xml	2021-07-01 11:42:29.884739430 +0200
+@@ -8,6 +8,5 @@
+   <depends module="pattern"/>
+   <depends module="jaxp"/>
+   <depends lib="relaxngDatatype"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile test="no"/>
+ </module>
+--- jing-trang-20181222/mod/util/mod.xml	2021-07-01 11:39:52.972475342 +0200
++++ jing-trang-20181222/mod/util/mod.xml	2021-07-01 11:42:35.516748907 +0200
+@@ -1,5 +1,4 @@
+ <module>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile test="no"/>
+ </module>
+ 
+--- jing-trang-20181222/mod/xsd-datatype/mod.xml	2021-07-01 11:39:52.972475342 +0200
++++ jing-trang-20181222/mod/xsd-datatype/mod.xml	2021-07-01 11:42:48.676771055 +0200
+@@ -3,9 +3,7 @@
+   <depends module="datatype"/>
+   <depends module="regex"/>
+   <depends lib="relaxngDatatype"/>
+-  <test name="xsd" type="validate" transform="xsdtest.xsl" schema="test/xsdtest.rnc"/>
+-  <test name="unit" type="testng"/>
+-  <compile test="yes"/>
++  <compile test="no"/>
+   <service type="org.relaxng.datatype.DatatypeLibraryFactory">
+     <provider classname="com.thaiopensource.datatype.xsd.DatatypeLibraryFactoryImpl"/>
+   </service>

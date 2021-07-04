@@ -1,7 +1,7 @@
 #
 # spec file for package jing-trang
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,32 @@
 #
 
 
+%global relaxng_hash 1fc8c8d337c2c75b6b15b281f2c69e86110e475f
 Name:           jing-trang
-Version:        20151127
+Version:        20181222
 Release:        0
 Summary:        Schema validation and conversion based on RELAX NG
 License:        BSD-3-Clause
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/relaxng/jing-trang
-Source0:        https://github.com/relaxng/jing-trang/archive/V%{version}.tar.gz
-Source1:        dtdinst.1
+URL:            https://github.com/relaxng/%{name}
+Source0:        https://github.com/relaxng/%{name}/archive/V%{version}.tar.gz
+Source1:        https://github.com/relaxng/relaxng.org/archive/%{relaxng_hash}.zip
+Source2:        https://repo1.maven.org/maven2/org/relaxng/jing/%{version}/jing-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/org/relaxng/trang/%{version}/trang-%{version}.pom
+Source10:       dtdinst.1
 #
-Patch0:         0001-Various-build-fixes.patch
+Patch0:         0000-Various-build-fixes.patch
 Patch1:         0002-Use-Xalan-instead-of-Saxon-for-the-build-655601.patch
-Patch2:         %{name}-20091111-datatype-sample.patch
-Patch3:         %{name}-%{version}-notestng.patch
+Patch2:         no-tests.patch
+Patch3:         old-saxon.patch
 BuildRequires:  ant >= 1.8.2
 #
 BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  isorelax
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  jpackage-utils
+BuildRequires:  javapackages-local
 BuildRequires:  qdox
 BuildRequires:  relaxngDatatype >= 2011.1
 BuildRequires:  saxon9
@@ -45,6 +49,7 @@ BuildRequires:  unzip
 BuildRequires:  xalan-j2
 BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
+#
 BuildArch:      noarch
 
 %description
@@ -58,10 +63,8 @@ Summary:        RELAX NG validator in Java
 Group:          Productivity/Text/Utilities
 Requires:       java-headless
 Requires:       jpackage-utils
-Requires:       relaxngDatatype
-Requires:       xerces-j2
-Requires:       xml-commons-resolver
-Recommends:     saxon9
+Requires:       mvn(com.github.relaxng:relaxngDatatype) >= 2011.1
+Requires:       mvn(xml-resolver:xml-resolver)
 
 %description -n jing
 jing is an XML validator implemented in Java. It validates against the
@@ -90,32 +93,35 @@ Summary:        Multi-format schema converter based on RELAX NG
 Group:          Productivity/Text/Utilities
 Requires:       java-headless
 Requires:       jpackage-utils
-Requires:       relaxngDatatype
-Requires:       xerces-j2
-Requires:       xml-commons-resolver
+Requires:       mvn(com.github.relaxng:relaxngDatatype) >= 2011.1
+Requires:       mvn(xerces:xercesImpl)
+Requires:       mvn(xml-resolver:xml-resolver)
 
 %description -n trang
-Trang converts between different schema languages for XML.  It
-supports the following languages: RELAX NG (both XML and compact
-syntax), XML 1.0 DTDs, W3C XML Schema.  A schema written in any of the
-supported schema languages can be converted into any of the other
-supported schema languages, except that W3C XML Schema is supported
-for output only, not for input.
+Trang converts between different schema languages for XML.  It supports the
+following languages: RELAX NG (both XML and compact syntax), XML 1.0 DTDs, W3C
+XML Schema.  A schema written in any of the supported schema languages can be
+converted into any of the other supported schema languages, except that W3C XML
+Schema is supported for output only, not for input.
 
 %package     -n dtdinst
 Summary:        XML DTD to XML instance format converter
 Group:          Productivity/Text/Utilities
-Requires:       java-headless >= 1.5.0
+Requires:       java-headless
 Requires:       jpackage-utils
 
 %description -n dtdinst
-DTDinst is a program for converting XML DTDs into an XML instance
-format.
+DTDinst is a program for converting XML DTDs into an XML instance format.
 
 %prep
-%setup -q
+%setup -q -a 0
+rmdir relaxng.org
+unzip %{SOURCE1}
+mv relaxng.org-%{relaxng_hash} relaxng.org
 
-cp %{SOURCE1} .
+cp %{SOURCE2} jing.pom
+cp %{SOURCE3} trang.pom
+cp %{SOURCE10} .
 mv gcj/{trang,jing}.1 .
 
 rm -r gcj mod/datatype/src/main/org $(find . -name "*.jar")
@@ -123,30 +129,54 @@ rm -r gcj mod/datatype/src/main/org $(find . -name "*.jar")
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+rm -f \
+  mod/schematron/src/main/com/thaiopensource/validate/schematron/OldSaxonSchemaReaderFactory.java
 sed -i -e 's/\r//g' lib/isorelax.copying.txt
-find . -name "OldSaxon*.java" -delete # No "old" saxon available in SUSE
 sed -i -e 's|"\(copying\.txt\)"|"%{_licensedir}/dtdinst/\1"|' \
     dtdinst/index.html
 sed -i -e 's|"\(copying\.txt\)"|"%{_licensedir}/trang/\1"|' \
     trang/doc/trang.html trang/doc/trang-manual.html
 
+# The saxon9 package provides mvn(net.sf.saxon:saxon)
+# instead of mvn(net.sf.saxon:Saxon-HE)
+%pom_remove_dep net.sf.saxon:Saxon-HE jing.pom
+%pom_add_dep net.sf.saxon:saxon jing.pom
+
 %build
 CLASSPATH=$(build-classpath \
-    xalan-j2 xalan-j2-serializer xerces-j2 xml-commons-apis saxon9 relaxngDatatype) \
+    xalan-j2 xalan-j2-serializer xerces-j2 xml-commons-apis \
+	saxon9 relaxngDatatype) \
 %{ant} \
 	-Dlib.dir=%{_javadir} -Dbuild.sysclasspath=last \
-	-Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+	-Dant.build.javac.source=8 -Dant.build.javac.target=8 \
 	dist
 
 %install
-rm -rf %{buildroot} *-%{version}
-
-install -dm 755 $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir},%{_mandir}/man1}
+install -dm 0755 %{buildroot}{%{_mandir}/man1,%{_javadocdir}}
 
 unzip build/dist/jing-%{version}.zip
-install -Dpm 644 jing-%{version}/bin/jing.jar %{buildroot}%{_javadir}
-mv jing-%{version}/doc/api %{buildroot}%{_javadocdir}/jing
+unzip build/dist/trang-%{version}.zip
+unzip build/dist/dtdinst-%{version}.zip
 rm -f jing-%{version}/sample/datatype/datatype-sample.jar
+
+# JAR artifacts
+install -dm 0755 %{buildroot}%{_javadir}
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+
+install -pm 0644 jing-%{version}/bin/jing.jar %{buildroot}%{_javadir}/jing.jar
+install -pm 0644 jing.pom %{buildroot}%{_mavenpomdir}/jing.pom
+%add_maven_depmap jing.pom jing.jar -f jing
+
+install -pm 0644 trang-%{version}/trang.jar %{buildroot}%{_javadir}/trang.jar
+install -pm 0644 trang.pom  %{buildroot}%{_mavenpomdir}/trang.pom
+%add_maven_depmap trang.pom trang.jar -f trang
+
+install -pm 0644 dtdinst-%{version}/dtdinst.jar %{buildroot}%{_javadir}/dtdinst.jar
+%add_maven_depmap org.relaxng:dtdinst:%{version} dtdinst.jar -f dtdinst
+
+# API cocumentation
+mv jing-%{version}/doc/api %{buildroot}%{_javadocdir}/jing
+%fdupes %{buildroot}%{_javadocdir}
 
 # We need to redefine name here to make jpackage_script aware of
 # the correct name, otherwise it would use "jing-trang" in configuration names etc.
@@ -155,46 +185,37 @@ rm -f jing-%{version}/sample/datatype/datatype-sample.jar
 mkdir -p jing-%{version}/_licenses
 mv jing-%{version}/doc/*copying.* jing-%{version}/_licenses
 
-unzip build/dist/trang-%{version}.zip
-install -pm 644 trang-%{version}/trang.jar %{buildroot}%{_javadir}
 %define name trang
 %jpackage_script com.thaiopensource.relaxng.translate.Driver "" "" trang:relaxngDatatype:xml-commons-resolver:xerces-j2 trang true
 
-unzip build/dist/dtdinst-%{version}.zip
-install -pm 644 dtdinst-%{version}/dtdinst.jar %{buildroot}%{_javadir}
 %define name dtdinst
 %jpackage_script com.thaiopensource.xml.dtd.app.Driver "" "" dtdinst dtdinst true
 
 # Install manpages and replace @VERSION@
-install -D -m 0644 {dtdinst,jing,trang}.1 %{buildroot}%{_mandir}/man1/
+install -Dm0644 {dtdinst,jing,trang}.1 %{buildroot}%{_mandir}/man1/
 sed -i 's/@VERSION@/%{version}/g' %{buildroot}%{_mandir}/man1/*.1
 
-%fdupes %{buildroot}%{_javadocdir}
-
-%files -n jing
+%files -n jing -f .mfiles-jing
 %license jing-%{version}/_licenses/*
 %doc jing-%{version}/{readme.html,doc,sample}
-%{_mandir}/man1/jing.1%{ext_man}
+%{_mandir}/man1/jing.1%{?ext_man}
 %{_bindir}/jing
-%{_javadir}/jing.jar
 
 %files -n jing-javadoc
+%{_javadocdir}/jing
 %license jing-%{version}/_licenses/*
-%{_javadocdir}/jing/
 
-%files -n trang
+%files -n trang -f .mfiles-trang
 %license trang-%{version}/copying.txt
 %doc trang-%{version}/*.html
 %{_bindir}/trang
-%{_javadir}/trang.jar
-%{_mandir}/man1/trang.1%{ext_man}
+%{_mandir}/man1/trang.1%{?ext_man}
 
-%files -n dtdinst
+%files -n dtdinst -f .mfiles-dtdinst
 %license dtdinst-%{version}/copying.txt
 %doc dtdinst-%{version}/*.{html,rng,xsl}
 %doc dtdinst-%{version}/{dtdinst.rnc.txt,teixml.dtd.txt,example}
 %{_bindir}/dtdinst
-%{_javadir}/dtdinst.jar
-%{_mandir}/man1/dtdinst.1%{ext_man}
+%{_mandir}/man1/dtdinst.1%{?ext_man}
 
 %changelog

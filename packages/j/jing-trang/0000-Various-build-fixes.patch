@@ -1,0 +1,241 @@
+diff -up jing-trang-20181222/build.xml.fix jing-trang-20181222/build.xml
+--- jing-trang-20181222/build.xml.fix	2021-06-27 13:22:19.392361564 +0300
++++ jing-trang-20181222/build.xml	2021-06-27 14:52:11.847571826 +0300
+@@ -152,7 +152,8 @@
+   <javadoc sourcepath="mod/datatype/src/main" destdir="${build.dir}/api/datatype"
+     additionalparam="-html5 -Xdoclint:none"
+     doctitle="RELAX NG Datatype API" windowtitle="RELAX NG Datatype API"
+-    packagenames="org.relaxng.datatype,org.relaxng.datatype.helpers">
++	>
++    <!--packagenames="org.relaxng.datatype,org.relaxng.datatype.helpers"> -->
+     <link offline="true" href="http://java.sun.com/j2se/1.5.0/docs/api/"
+ 	  packagelistLoc="extapidoc/jdk/1.5"/>
+     <classpath>
+@@ -428,18 +429,7 @@
+             labels="Type-Archive, OpSys-All, Version-${version}"/>
+ </target>
+ 
+-<target name="clean" 
+-	description="Remove almost all files created during the build process">
+-  <delete dir="${build.dir}"/>
+-  <exec executable="git">
+-    <arg value="clean"/>
+-    <arg value="-d"/>
+-    <arg value="--force"/>
+-    <arg value="${doc.dir}"/>
+-  </exec>
+-</target>
+-
+-<target name="realclean" depends="clean"
++<target name="realclean"
+ 	description="Remove all files created during the build process">
+   <delete>
+     <fileset dir="mod" includes="*/*.iml"/>
+diff -up jing-trang-20181222/build.xsl.fix jing-trang-20181222/build.xsl
+--- jing-trang-20181222/build.xsl.fix	2021-06-27 13:36:13.594166963 +0300
++++ jing-trang-20181222/build.xsl	2021-06-27 19:53:56.176573385 +0300
+@@ -23,12 +23,6 @@
+     <target name="dummy"/>
+     <target name="init">
+       <mkdir dir="{$build}"/>
+-      <exec executable="git">
+-        <arg value="submodule"/>
+-        <arg value="update"/>
+-        <arg value="--init"/>
+-        <arg value="--recursive"/>
+-      </exec>
+       <copy todir="{$doc}">
+         <fileset dir="relaxng.org/jclark" includes="**"/>
+       </copy>
+@@ -165,7 +159,6 @@
+ 	    <pathelement location="${{lib.dir}}/{@lib}.jar"/>
+ 	  </xsl:for-each>
+ 	  <xsl:if test="test[@type='testng']">
+-	    <pathelement location="${{lib.dir}}/testng.jar"/>
+ 	  </xsl:if>
+ 	</classpath>
+       </javac>
+@@ -311,11 +304,12 @@
+ 	<xsl:if test="@lib">
+ 	  <pathelement location="${{lib.dir}}/{@lib}.jar"/>
+ 	  <xsl:if test="@lib='xalan'">
+-	    <pathelement location="${{lib.dir}}/serializer.jar"/>
++	    <pathelement location="${{lib.dir}}/xalan-j2-serializer.jar"/>
+ 	  </xsl:if>
+ 	</xsl:if>
+ 	<xsl:if test="$app = 'jing'">
+-	  <pathelement location="${{lib.dir}}/xercesImpl.jar"/>
++	  <pathelement location="${{lib.dir}}/xerces-j2.jar"/>
++	  <pathelement location="${{lib.dir}}/relaxngDatatype.jar"/>
+ 	</xsl:if>
+       </classpath>
+     </java>
+@@ -415,6 +409,9 @@
+ 	<xsl:for-each select="../depends[@lib]">
+ 	  <pathelement location="${{lib.dir}}/{@lib}.jar"/>
+ 	</xsl:for-each>
++	<!-- Upstream testng.jar includes bsh and qdox -->
++    <pathelement location="${{lib.dir}}/bsh.jar"/>
++    <pathelement location="${{lib.dir}}/qdox.jar"/>
+       </classpath>
+     </testng>
+   </target>
+diff -up jing-trang-20181222/datatype-sample/build.xml.fix jing-trang-20181222/datatype-sample/build.xml
+--- jing-trang-20181222/datatype-sample/build.xml.fix	2021-06-27 20:51:29.945542964 +0300
++++ jing-trang-20181222/datatype-sample/build.xml	2021-06-27 20:51:59.946177241 +0300
+@@ -2,6 +2,7 @@
+ 
+ <property name="build.dir" value="build"/>
+ <property name="jing.jar" value="jing.jar"/>
++<property name="datatype.jar" value="relaxngDatatype.jar"/>
+ 
+ <target name="init">
+   <mkdir dir="${build.dir}"/>
+@@ -9,7 +10,7 @@
+ 
+ <target name="compile" depends="init">
+   <mkdir dir="${build.dir}/classes"/>
+-  <javac srcdir="src" destdir="${build.dir}/classes" classpath="${jing.jar}"/>
++  <javac srcdir="src" destdir="${build.dir}/classes" classpath="${datatype.jar}"/>
+ </target>
+ 
+ <target name="jar" depends="compile">
+diff -up jing-trang-20181222/mod/catalog/mod.xml.fix jing-trang-20181222/mod/catalog/mod.xml
+--- jing-trang-20181222/mod/catalog/mod.xml.fix	2021-06-27 19:39:16.877996996 +0300
++++ jing-trang-20181222/mod/catalog/mod.xml	2021-06-27 19:39:41.998527709 +0300
+@@ -3,5 +3,5 @@
+   <test name="unit" type="testng"/>
+   <depends module="util"/>
+   <depends module="resolver"/>
+-  <depends lib="resolver"/>
++  <depends lib="xml-commons-resolver"/>
+ </module>
+diff -up jing-trang-20181222/mod/datatype/mod.xml.fix jing-trang-20181222/mod/datatype/mod.xml
+--- jing-trang-20181222/mod/datatype/mod.xml.fix	2021-06-27 19:38:37.897173469 +0300
++++ jing-trang-20181222/mod/datatype/mod.xml	2021-06-27 19:38:56.329562870 +0300
+@@ -1,4 +1,5 @@
+ <module>
+   <depends module="util"/>
++  <depends lib="relaxngDatatype"/>
+   <compile/>
+ </module>
+diff -up jing-trang-20181222/mod/jing/mod.xml.fix jing-trang-20181222/mod/jing/mod.xml
+--- jing-trang-20181222/mod/jing/mod.xml.fix	2021-06-27 15:35:37.171239266 +0300
++++ jing-trang-20181222/mod/jing/mod.xml	2021-06-27 15:35:57.163667091 +0300
+@@ -21,8 +21,6 @@
+   <jar>
+     <manifest>
+       <attribute name="Main-Class" value="com/thaiopensource/relaxng/util/Driver"/>
+-      <attribute name="Class-Path"
+-		 value="xercesImpl.jar xml-apis.jar saxon.jar saxon9.jar xalan.jar isorelax.jar resolver.jar"/>
+     </manifest>
+     <service type="com.thaiopensource.datatype.xsd.regex.RegexEngine"/>
+     <service type="org.relaxng.datatype.DatatypeLibraryFactory"/>
+diff -up jing-trang-20181222/mod/pattern/mod.xml.fix jing-trang-20181222/mod/pattern/mod.xml
+--- jing-trang-20181222/mod/pattern/mod.xml.fix	2021-06-27 19:37:53.488235284 +0300
++++ jing-trang-20181222/mod/pattern/mod.xml	2021-06-27 19:38:11.800622151 +0300
+@@ -3,6 +3,7 @@
+   <depends module="resolver"/>
+   <depends module="datatype"/>
+   <depends module="rng-parse"/>
++  <depends lib="relaxngDatatype"/>
+   <compile test="yes"/>
+   <test name="unit" type="testng"/>
+ </module>
+diff -up jing-trang-20181222/mod/regex/mod.xml.fix jing-trang-20181222/mod/regex/mod.xml
+--- jing-trang-20181222/mod/regex/mod.xml.fix	2021-06-27 14:31:19.700847624 +0300
++++ jing-trang-20181222/mod/regex/mod.xml	2021-06-27 19:37:25.491643818 +0300
+@@ -1,6 +1,6 @@
+ <module>
+   <depends module="util"/>
+-  <depends lib="xercesImpl"/>
++  <depends lib="xerces-j2"/>
+   <compile test="yes"/>
+   <test name="xerces" type="java"
+ 	class="com.thaiopensource.datatype.xsd.regex.test.TestDriver">
+@@ -46,7 +46,8 @@
+ 	    failonerror="yes">
+ 	<arg value="com.thaiopensource.datatype.xsd.regex.java.Categories"/>
+ 	<arg value="${build.dir}/mod/regex/gensrc/main"/>
+-	<arg value="${lib.dir}/UnicodeData-3.1.0.txt"/>
++	<!--arg value="${lib.dir}/UnicodeData-3.1.0.txt"/-->
++	<arg value="lib/UnicodeData-3.1.0.txt"/>
+ 	<classpath>
+ 	  <pathelement location="${build.dir}/mod/regex-gen/classes/main"/>
+ 	  <pathelement location="${build.dir}/mod/util/classes/main"/>
+diff -up jing-trang-20181222/mod/rng-jaxp/mod.xml.fix jing-trang-20181222/mod/rng-jaxp/mod.xml
+--- jing-trang-20181222/mod/rng-jaxp/mod.xml.fix	2021-06-27 19:36:17.810211941 +0300
++++ jing-trang-20181222/mod/rng-jaxp/mod.xml	2021-06-27 19:36:39.150663808 +0300
+@@ -7,6 +7,7 @@
+   <depends module="rng-parse"/>
+   <depends module="pattern"/>
+   <depends module="jaxp"/>
++  <depends lib="relaxngDatatype"/>
+   <compile test="yes"/>
+   <test name="unit" type="testng"/>
+ </module>
+diff -up jing-trang-20181222/mod/rng-validate/mod.xml.fix jing-trang-20181222/mod/rng-validate/mod.xml
+--- jing-trang-20181222/mod/rng-validate/mod.xml.fix	2021-06-27 19:35:27.297142380 +0300
++++ jing-trang-20181222/mod/rng-validate/mod.xml	2021-06-27 19:35:47.453569174 +0300
+@@ -7,7 +7,7 @@
+   <depends module="pattern"/>
+   <depends module="validate"/>
+   <depends lib="ant"/>
+-  <depends lib="resolver"/>
++  <depends lib="xml-commons-resolver"/>
+   <test name="spec" type="validate" schema="eg/testSuite.rng"/>
+   <compile/>
+   <version package="com/thaiopensource/relaxng/util"/>
+diff -up jing-trang-20181222/mod/schematron/mod.xml.fix jing-trang-20181222/mod/schematron/mod.xml
+--- jing-trang-20181222/mod/schematron/mod.xml.fix	2021-06-27 18:47:59.700956461 +0300
++++ jing-trang-20181222/mod/schematron/mod.xml	2021-06-27 19:34:28.267892497 +0300
+@@ -3,7 +3,7 @@
+   <depends module="resolver"/>
+   <depends module="validate"/>
+   <depends module="rng-validate"/>
+-  <depends lib="xalan"/>
++  <depends lib="xalan-j2"/>
+   <depends lib="saxon"/>
+   <depends lib="saxon9"/>
+   <test name="old-saxon" in="mod/schematron/test/schematrontest.xml"
+diff -up jing-trang-20181222/mod/trang/mod.xml.fix jing-trang-20181222/mod/trang/mod.xml
+--- jing-trang-20181222/mod/trang/mod.xml.fix	2021-06-27 18:47:17.064117947 +0300
++++ jing-trang-20181222/mod/trang/mod.xml	2021-06-27 18:47:26.984313043 +0300
+@@ -13,13 +13,12 @@
+   <depends module="convert-to-xsd"/>
+   <depends module="convert-from-dtd"/>
+   <depends module="convert-to-dtd"/>
+-  <depends lib="resolver"/>
++  <depends lib="xml-commons-resolver"/>
+   <compile/>
+   <version package="com/thaiopensource/relaxng/translate"/>
+   <jar>
+     <manifest>
+       <attribute name="Main-Class" value="com/thaiopensource/relaxng/translate/Driver"/>
+-      <attribute name="Class-Path" value="resolver.jar"/>
+     </manifest>
+     <service type="com.thaiopensource.datatype.xsd.regex.RegexEngine">
+       <provider classname="com.thaiopensource.datatype.xsd.regex.xerces2.RegexEngineImpl"/>
+diff -up jing-trang-20181222/mod/xerces/mod.xml.fix jing-trang-20181222/mod/xerces/mod.xml
+--- jing-trang-20181222/mod/xerces/mod.xml.fix	2021-06-27 18:45:15.669730591 +0300
++++ jing-trang-20181222/mod/xerces/mod.xml	2021-06-27 18:45:44.434296268 +0300
+@@ -1,7 +1,7 @@
+ <module>
+   <depends module="util"/>
+   <depends module="validate"/>
+-  <depends lib="xercesImpl"/>
++  <depends lib="xerces-j2"/>
+   <compile/>
+   <service type="com.thaiopensource.validate.SchemaReaderFactory">
+     <provider classname="com.thaiopensource.validate.xerces.XsdSchemaReaderFactory"/>
+diff -up jing-trang-20181222/mod/xsd-datatype/mod.xml.fix jing-trang-20181222/mod/xsd-datatype/mod.xml
+--- jing-trang-20181222/mod/xsd-datatype/mod.xml.fix	2021-06-27 18:43:59.364107956 +0300
++++ jing-trang-20181222/mod/xsd-datatype/mod.xml	2021-06-27 18:44:44.349067255 +0300
+@@ -2,6 +2,7 @@
+   <depends module="util"/>
+   <depends module="datatype"/>
+   <depends module="regex"/>
++  <depends lib="relaxngDatatype"/>
+   <test name="xsd" type="validate" transform="xsdtest.xsl" schema="test/xsdtest.rnc"/>
+   <test name="unit" type="testng"/>
+   <compile test="yes"/>

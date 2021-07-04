@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul  2 11:40:01 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * old-saxon.patch
+    + Avoid building old saxon validator in order to avoid
+      dependency on old saxon6
+
+-------------------------------------------------------------------
+Fri Jul  2 09:21:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use xmvn-tools, since this is a ring package
+- Added patch:
+  * no-tests.patch
+    + avoid unnecessary dependency on testng
+
+-------------------------------------------------------------------
+Sun Jun 27 18:54:26 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v20181222
+- Package maven metadata
+- Use testng in build process
+- Remove unneeded patches:
+  * jing-trang-20091111-datatype-sample.patch
+  * jing-trang-20151127-notestng.patch
+- Modified patch:
+  * 0001-Various-build-fixes.patch -> 0000-Various-build-fixes.patch
+
+-------------------------------------------------------------------
 Fri Dec  7 07:31:06 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Build against xml-commons-apis instead of xerces-j2-xml-apis

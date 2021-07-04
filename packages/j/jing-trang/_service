@@ -1,0 +1,5 @@
+<services>
+	<service name="download_files" mode="disabled">
+		<param name="recompress">yes</param>
+	</service>
+</services>
