@@ -5,4 +5,4 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=@LIBEXECDIR@/chrony/helper update-dnssrv-servers %I
+ExecStart=@CHRONY_HELPER@ update-dnssrv-servers %I

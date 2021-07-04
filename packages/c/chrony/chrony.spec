@@ -25,6 +25,7 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%define chrony_helper %{_libexecdir}/chrony/helper
 Name:           chrony
 Version:        4.1
 Release:        0
@@ -53,6 +54,7 @@ Patch0:         chrony-config.patch
 Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
+Patch4:         chrony-refid-internal-md5.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -63,10 +65,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pps-tools-devel
 # The timezone package is needed for the "make check" tests. It can be
 # removed if the call to make check is ever deleted.
+BuildRequires:  sysuser-tools
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  rubygem(asciidoctor)
-BuildRequires:  sysuser-tools
 Recommends:     logrotate
 Requires(post): %fillup_prereq
 %sysusers_requires
@@ -147,11 +149,12 @@ e.g. because the servers will be set via DHCP.
 
 %prep
 %setup -q -a 10
+sed -e 's-@CHRONY_HELPER@-%{chrony_helper}-g' -i %{PATCH1} %{SOURCE3} %{SOURCE5}
 %patch0 -p1
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH1}
 %patch1 -p1
 %patch2 -p1
 %patch3
+%patch4
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
@@ -203,7 +206,6 @@ install -Dpm 0644 examples/chronyd.service \
   %{buildroot}%{_unitdir}/chronyd.service
 install -Dpm 0644 examples/chrony-wait.service \
   %{buildroot}%{_unitdir}/chrony-wait.service
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE5}
 install -Dpm 0644 %{SOURCE5} \
   %{buildroot}%{_unitdir}/chrony-dnssrv@.service
 install -Dpm 0644 %{SOURCE6} \
@@ -221,8 +223,7 @@ echo 'chronyd.service' > \
 
 install -Dpm 0644 %{SOURCE2} \
   %{buildroot}%{_fillupdir}/sysconfig.chronyd
-install -Dpm 755 %{SOURCE4} \
-  %{buildroot}%{_libexecdir}/%name/helper
+install -Dpm 755 %{SOURCE4} %{buildroot}%{chrony_helper}
 
 install -d %{buildroot}%{_localstatedir}/log/chrony
 touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}

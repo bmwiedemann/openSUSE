@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:38:13 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1187906: Consolidate all references to the helper script.
+- bsc#1173760: MD5 is not available from mozilla-nss in FIPS mode,
+  but needed for calculating refids from IPv6 addresses as part of
+  the NTP protocol (rfc5905). As this is a non-cryptographic use of
+  MD5 we can use our own implementation without violating FIPS
+  rules: chrony-refid-internal-md5.patch .
+
+-------------------------------------------------------------------
 Sun Jun 13 13:29:36 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator
