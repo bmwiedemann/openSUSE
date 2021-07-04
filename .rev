@@ -1381,4 +1381,12 @@
   (bsc#1170354) OCF version check for pacemaker is incompatible with the SUSE version strings</comment>
     <requestid>892020</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>cd34bb9767b63901474f16a36408b5c0</srcmd5>
+    <version>4.8.0+git38.c6c53268</version>
+    <time>1625429434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903585</requestid>
+  </revision>
 </revisionlist>
