@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 09:39:29 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.1.4
+  * fourth bugfix release 
+
+-------------------------------------------------------------------
 Tue Jun 22 09:22:30 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer apply n_drirc-disable-rgb10-for-chromium-on-amd.patch
