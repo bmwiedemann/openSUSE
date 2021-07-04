@@ -21,7 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        4.6.2
+Version:        4.7.1
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -47,7 +47,7 @@ BuildRequires:  postgresql-contrib
 BuildRequires:  postgresql-server
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.29.14
-BuildRequires:  python3-Django >= 3.1
+BuildRequires:  python3-Django >= 3.2
 BuildRequires:  python3-GitPython >= 2.1.15
 BuildRequires:  python3-Levenshtein
 BuildRequires:  python3-Pillow >= 6.0.0
@@ -57,7 +57,7 @@ BuildRequires:  python3-aeidon >= 1.9
 BuildRequires:  python3-akismet >= 1.0.1
 BuildRequires:  python3-bleach >= 3.1.1
 BuildRequires:  python3-boto3 >= 1.15.0
-BuildRequires:  python3-celery >= 4.4.5
+BuildRequires:  python3-celery >= 5.0.3
 BuildRequires:  python3-celery-batches >= 0.2
 BuildRequires:  python3-chardet >= 3.0.4
 BuildRequires:  python3-cssselect >= 1.0.0
@@ -108,8 +108,8 @@ BuildRequires:  python3-sphinxcontrib-httpdomain
 BuildRequires:  python3-tesserocr >= 2.3.0
 BuildRequires:  python3-translation-finder >= 2.7
 BuildRequires:  python3-user-agents >= 2.0
-BuildRequires:  python3-weblate-language-data >= 2021.1
-BuildRequires:  python3-weblate-schemas >= 0.6
+BuildRequires:  python3-weblate-language-data >= 2021.5
+BuildRequires:  python3-weblate-schemas >= 0.7
 BuildRequires:  python3-zeep >= 3.2.0
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
@@ -122,13 +122,13 @@ Requires:       cron
 Requires:       git
 Requires:       gpg2
 Requires:       python3-Cython >= 0.29.14
-Requires:       python3-Django >= 3.1
+Requires:       python3-Django >= 3.2
 Requires:       python3-GitPython >= 2.1.15
 Requires:       python3-Levenshtein
 Requires:       python3-Pillow >= 6.0.0
 Requires:       python3-Whoosh >= 2.7.0
 Requires:       python3-bleach >= 3.1.1
-Requires:       python3-celery >= 4.4.5
+Requires:       python3-celery >= 5.0.3
 Requires:       python3-celery-batches >= 0.2
 Requires:       python3-diff_match_patch >= 20200713
 Requires:       python3-django-appconf >= 1.0.3
@@ -162,8 +162,8 @@ Requires:       python3-social-auth-app-django >= 4.0.0
 Requires:       python3-social-auth-core >= 4.1.0
 Requires:       python3-translation-finder >= 2.7
 Requires:       python3-user-agents >= 2.0
-Requires:       python3-weblate-language-data >= 2021.1
-Requires:       python3-weblate-schemas >= 0.6
+Requires:       python3-weblate-language-data >= 2021.5
+Requires:       python3-weblate-schemas >= 0.7
 Requires:       translate-toolkit >= 3.3.6
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       (postgresql and python3-psycopg2 and postgresql-contrib)
