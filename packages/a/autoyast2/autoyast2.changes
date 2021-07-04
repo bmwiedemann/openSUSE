@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  2 12:43:13 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Properly register the script to reboot after applying online
+  updates (bsc#1187962).
+- 4.4.12
+
+-------------------------------------------------------------------
+Thu Jul  1 07:02:20 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash importing the <scripts> section (boo#1187898).
+  This bug does not affect the installation process.
+- 4.4.11
+
+-------------------------------------------------------------------
 Mon Jun 14 09:37:41 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the copy of the profile to the installed system as
