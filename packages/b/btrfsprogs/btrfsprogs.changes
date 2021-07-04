@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 16 17:02:36 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
+
+- Add --disable-zoned for leap
+
+-------------------------------------------------------------------
+Wed Jun 16 00:00:00 CEST 2021 - dsterba@suse.cz
+
+- revert previous change, unintentionally disables zstd on tumbleweed
+
+-------------------------------------------------------------------
+Tue Jun 15 02:57:07 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
+
+- Fix build for leap
+  * --disable-zstd if leap < 42.3
+  * --disable-zoned for leap
+
+-------------------------------------------------------------------
 Thu May 13 00:00:00 CEST 2021 - dsterba@suse.cz
 
 - Update to 5.12.1

@@ -204,6 +204,7 @@ export CFLAGS="%{optflags} -include sles11-defaults.h"
 			--disable-documentation	\
 %endif
 %if 0%{?suse_version} <= 1500
+			--disable-zoned	\
 			--disable-zstd
 %endif
 
