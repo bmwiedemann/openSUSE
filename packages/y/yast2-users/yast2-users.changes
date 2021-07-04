@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 25 14:25:25 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Rely on useradd, groupadd and other shadow tools when creating
+  users and groups during installation and also when using AutoYaST
+  or Firstboot (jsc#PM-2620 and bsc#1166743).
+- Use the new Y2Issues mechanism to report errors to the user.
+- New object-oriented API to read and manage local users (Y2Users).
+- Adapted the management of the <user_defaults> section of the
+  AutoYaST profile to recent versions of useradd (implies dropping
+  support for <groups>, <no_groups> and <skel>).
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Jun 15 09:17:24 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the Comment entry in the desktop file so the tooltip
