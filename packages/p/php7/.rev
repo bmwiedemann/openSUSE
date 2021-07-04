@@ -1100,4 +1100,12 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.20</comment>
     <requestid>897259</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>876d880f575faa2fb43749649632475a</srcmd5>
+    <version>7.4.21</version>
+    <time>1625429431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903559</requestid>
+  </revision>
 </revisionlist>
