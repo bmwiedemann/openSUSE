@@ -17,7 +17,7 @@
 
 
 Name:           qtractor
-Version:        0.9.21
+Version:        0.9.22
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
@@ -25,9 +25,10 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://qtractor.org/
 #GitClone:      https://github.com/rncbc/qtractor
 Source0:        https://download.sourceforge.net/qtractor/qtractor-%{version}.tar.gz
-# PATCH-{FIX}-{OPENSUSE} qtractor-powerpc.patch dvaleev@suse.com -- Fix build on ppc
-Patch2:         qtractor-powerpc.patch
+# PATCH-FIX-OPENSUSE qtractor-powerpc.patch dvaleev@suse.com -- Fix build on ppc
+Patch0:         qtractor-powerpc.patch
 BuildRequires:  alsa-devel
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  dssi-devel
 BuildRequires:  hicolor-icon-theme
@@ -41,11 +42,13 @@ BuildRequires:  libsndfile-devel >= 1.0.11
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -63,14 +66,14 @@ specially dedicated to the personal home-studio.
 
 %prep
 %setup -q
-%patch2
+%patch0
 
 %build
-%configure
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 
 %if 0%{?suse_version} < 1500

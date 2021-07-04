@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  3 21:42:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.22
+  * Fixed a old bug that was preventing MIDI tracks volume and
+    panning automation to take effect on audio export.
+  * All packaging builds switching to CMake
+
+-------------------------------------------------------------------
 Sat May  8 16:02:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.9.21
