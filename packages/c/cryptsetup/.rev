@@ -983,4 +983,25 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment></comment>
     <requestid>879091</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>0726acc6dfcf026a9c173b5c82cdf78c</srcmd5>
+    <version>2.3.6</version>
+    <time>1625429404</time>
+    <user>dimstar_suse</user>
+    <comment>- cryptsetup 2.3.6:
+  * integritysetup: Fix possible dm-integrity mapping table truncation.
+  * cryptsetup: Backup header can be used to activate TCRYPT device.
+    Use --header option to specify the header.
+  * cryptsetup: Avoid LUKS2 decryption without detached header.
+    This feature will be added later and is currently not supported.
+  * Additional fixes and workarounds for common warnings produced
+    by some static analysis tools (like gcc-11 analyzer) and additional
+    code hardening.
+  * Fix standalone libintl detection for compiled tests.
+  * Add Blake2b and Blake2s hash support for crypto backends.
+    Kernel and gcrypt crypto backend support all variants.
+    OpenSSL supports only Blake2b-512 and Blake2s-256.
+    Crypto backend supports kernel notation e.g. &quot;blake2b-512&quot;.</comment>
+    <requestid>903414</requestid>
+  </revision>
 </revisionlist>

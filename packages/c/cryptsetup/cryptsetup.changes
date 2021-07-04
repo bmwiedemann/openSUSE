@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:50:25 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- cryptsetup 2.3.6:
+  * integritysetup: Fix possible dm-integrity mapping table truncation.
+  * cryptsetup: Backup header can be used to activate TCRYPT device.
+    Use --header option to specify the header.
+  * cryptsetup: Avoid LUKS2 decryption without detached header.
+    This feature will be added later and is currently not supported.
+  * Additional fixes and workarounds for common warnings produced
+    by some static analysis tools (like gcc-11 analyzer) and additional
+    code hardening.
+  * Fix standalone libintl detection for compiled tests.
+  * Add Blake2b and Blake2s hash support for crypto backends.
+    Kernel and gcrypt crypto backend support all variants.
+    OpenSSL supports only Blake2b-512 and Blake2s-256.
+    Crypto backend supports kernel notation e.g. "blake2b-512".
+
+-------------------------------------------------------------------
 Sat Mar 13 11:29:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cryptsetup 2.3.5:
