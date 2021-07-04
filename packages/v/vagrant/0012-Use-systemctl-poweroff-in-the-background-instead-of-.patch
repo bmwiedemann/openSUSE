@@ -1,0 +1,62 @@
+From 60f35e059f92cb47a65a03066d34c2492160835e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Thu, 1 Jul 2021 09:31:50 +0200
+Subject: [PATCH 12/12] Use systemctl poweroff in the background instead of
+ shutdown
+
+We have started seeing occasional shutdown failures on openSUSE Tumbleweed with
+Virtualbox inside a qemu virtual machine, where `shutdown -h now` would return
+nil. While the machine is successfully turned off, the command fails and vagrant
+reports an error.
+This commit changes the shutdown command to launch in the background which
+also triggers a shutdown, but always succeeds.
+
+(cherry picked from commit 8ce38a639bfb21a8ac2e2c4d53812decf2c9ccaa)
+---
+ plugins/guests/suse/cap/halt.rb                | 2 +-
+ test/unit/plugins/guests/suse/cap/halt_test.rb | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/guests/suse/cap/halt.rb b/plugins/guests/suse/cap/halt.rb
+index 7a1375e39..3c996f092 100644
+--- a/plugins/guests/suse/cap/halt.rb
++++ b/plugins/guests/suse/cap/halt.rb
+@@ -4,7 +4,7 @@ module VagrantPlugins
+       class Halt
+         def self.halt(machine)
+           begin
+-            machine.communicate.sudo("/sbin/shutdown -h now")
++            machine.communicate.sudo("/usr/bin/systemctl poweroff &")
+           rescue IOError, Vagrant::Errors::SSHDisconnected
+             # Do nothing, because it probably means the machine shut down
+             # and SSH connection was lost.
+diff --git a/test/unit/plugins/guests/suse/cap/halt_test.rb b/test/unit/plugins/guests/suse/cap/halt_test.rb
+index 7b998aad1..af8f575df 100644
+--- a/test/unit/plugins/guests/suse/cap/halt_test.rb
++++ b/test/unit/plugins/guests/suse/cap/halt_test.rb
+@@ -22,19 +22,19 @@ describe "VagrantPlugins::GuestSUSE::Cap::Halt" do
+     let(:cap) { caps.get(:halt) }
+ 
+     it "runs the shutdown command" do
+-      comm.expect_command("/sbin/shutdown -h now")
++      comm.expect_command("/usr/bin/systemctl poweroff &")
+       cap.halt(machine)
+     end
+ 
+     it "does not raise an IOError" do
+-      comm.stub_command("shutdown -h now", raise: IOError)
++      comm.stub_command("/usr/bin/systemctl poweroff &", raise: IOError)
+       expect {
+         cap.halt(machine)
+       }.to_not raise_error
+     end
+ 
+     it "ignores a Vagrant::Errors::SSHDisconnected" do
+-      comm.stub_command("shutdown -h now", raise: Vagrant::Errors::SSHDisconnected)
++      comm.stub_command("/usr/bin/systemctl poweroff &", raise: Vagrant::Errors::SSHDisconnected)
+       expect {
+         cap.halt(machine)
+       }.to_not raise_error
+-- 
+2.31.1
+

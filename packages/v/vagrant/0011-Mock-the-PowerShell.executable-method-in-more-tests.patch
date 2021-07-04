@@ -1,7 +1,7 @@
 From 2e76a77511d8c4f4ee1ea8cd2ee8ee5612316a07 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Fri, 30 Apr 2021 09:37:20 +0200
-Subject: [PATCH 11/11] Mock the PowerShell.executable method in more tests
+Subject: [PATCH 11/12] Mock the PowerShell.executable method in more tests
 
 On *nix systems we might not have powershell installed and then finding
 powershell.exe or pwsh.exe fails in some tests. If we instead mock

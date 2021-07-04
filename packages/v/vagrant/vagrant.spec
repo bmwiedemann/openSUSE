@@ -58,9 +58,13 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 # https://github.com/hashicorp/vagrant/pull/12329
+# merged -> drop on next upstream release
 Patch10:        0010-Bump-listen-version-to-3.5.patch
 # https://github.com/hashicorp/vagrant/pull/12339
+# merged -> drop on next upstream release
 Patch11:        0011-Mock-the-PowerShell.executable-method-in-more-tests.patch
+# https://github.com/hashicorp/vagrant/pull/12439
+Patch12:        0012-Use-systemctl-poweroff-in-the-background-instead-of-.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
