@@ -36,6 +36,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://rkward.kde.org/
 Source0:        %{name}-%{version}.tar.gz
+Patch0:         patch-fix-crash-ggplot2.diff
 BuildRequires:  R-base-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
@@ -86,6 +87,7 @@ intégration dans les suites bureautiques.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake_kf5 -d build

@@ -359,4 +359,13 @@
 - Remove no longer available NO_R_XML cmake option (forwarded request 843268 from wolfi323)</comment>
     <requestid>843272</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1984be5e4a6ea66acfa617eeec6663db</srcmd5>
+    <version>0.7.2</version>
+    <time>1625429449</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch (patch-fix-crash-ggplot2.diff) fixing a severe issue when
+  using ggplot2, see https://bugs.kde.org/show_bug.cgi?id=438993 (forwarded request 903945 from flyos)</comment>
+    <requestid>903956</requestid>
+  </revision>
 </revisionlist>

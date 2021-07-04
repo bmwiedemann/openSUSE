@@ -1,0 +1,71 @@
+diff --git a/rkward/rbackend/rkwarddevice/rkgraphicsdevice_setup.cpp b/rkward/rbackend/rkwarddevice/rkgraphicsdevice_setup.cpp
+index 9909639fbcbed69a2b3ed5ef3023ff80e18684d1..e215c090df238ffc0be5864daef0e62813a3cf68 100644
+--- a/rkward/rbackend/rkwarddevice/rkgraphicsdevice_setup.cpp
++++ b/rkward/rbackend/rkwarddevice/rkgraphicsdevice_setup.cpp
+@@ -216,6 +216,19 @@ bool RKGraphicsDeviceDesc::init (pDevDesc dev, double pointsize, const QStringLi
+ #endif
+ 	dev->newFrameConfirm = RKD_NewFrameConfirm;
+ 
++#if R_VERSION >= R_Version (2, 14, 0)
++	dev->holdflush = RKD_HoldFlush;
++#endif
++
++#if R_VERSION >= R_Version (4, 1, 0)
++	dev->setPattern = RKD_SetPattern;
++	dev->releasePattern = RKD_ReleasePattern;
++	dev->setClipPath = RKD_SetClipPath;
++	dev->releaseClipPath = RKD_ReleaseClipPath;
++	dev->setMask = RKD_SetMask;
++	dev->releaseMask = RKD_ReleaseMask;
++	dev->deviceVersion = 14;
++	dev->deviceClip = FALSE; // for now
++#endif
+ 	return true;
+ }
+- 
+diff --git a/rkward/rbackend/rkwarddevice/rkgraphicsdevice_stubs.cpp b/rkward/rbackend/rkwarddevice/rkgraphicsdevice_stubs.cpp
+index 716a95115cbb8f402c5e35ac25e0497931c4df7d..b7be16093a1f4370a76142c78febad2af2fa1a8c 100644
+--- a/rkward/rbackend/rkwarddevice/rkgraphicsdevice_stubs.cpp
++++ b/rkward/rbackend/rkwarddevice/rkgraphicsdevice_stubs.cpp
+@@ -579,5 +579,41 @@ void RKD_onExit (pDevDesc dev) {
+ 	}
+ 	dev->gettingEvent = (Rboolean) false;
+ }
++#endif
++
++#if R_VERSION >= R_Version (2, 14, 0)
++int RKD_HoldFlush (pDevDesc dev, int level) {
++#warning implement me
++	return 0;
++}
++#endif
++
++#if R_VERSION >= R_Version (4, 1, 0)
++SEXP RKD_SetPattern (SEXP pattern, pDevDesc dd) {
++#warning implement me
++	return R_NilValue;
++}
++
++void RKD_ReleasePattern (SEXP ref, pDevDesc dd) {
++#warning implement me
++}
++
++SEXP RKD_SetClipPath (SEXP path, SEXP ref, pDevDesc dd) {
++#warning implement me
++	return R_NilValue;
++}
++
++void RKD_ReleaseClipPath (SEXP ref, pDevDesc dd) {
++#warning implement me
++}
++
++SEXP RKD_SetMask (SEXP path, SEXP ref, pDevDesc dd) {
++#warning implement me
++	return R_NilValue;
++}
++
++void RKD_ReleaseMask (SEXP ref, pDevDesc dd) {
++#warning implement me
++}
+ 
+ #endif

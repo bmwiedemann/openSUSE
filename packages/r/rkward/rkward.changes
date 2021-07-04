@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  4 10:43:56 UTC 2021 - Pierre Bonamy <flyos@mailoo.org>
+
+- Patch (patch-fix-crash-ggplot2.diff) fixing a severe issue when
+  using ggplot2, see https://bugs.kde.org/show_bug.cgi?id=438993
+
+-------------------------------------------------------------------
 Wed Oct 21 16:46:54 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - upstream release 0.7.2
