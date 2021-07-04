@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Jul  1 22:31:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Move headers into -devel subpackage to soothe the corresponding
+  rpmlint warning.
+
+-------------------------------------------------------------------
+Thu Jul  1 22:24:58 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added webpage for source tarballs to specfile
+
+-------------------------------------------------------------------
+Thu Jul  1 19:09:58 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Thu Jul  1 12:54:48 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added missing copyright to specfile 
+
+-------------------------------------------------------------------
+Thu Jul  1 12:26:03 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- tried to address checkin policy issues for factory
+
+-------------------------------------------------------------------
+Thu Jul  1 09:35:35 UTC 2021 - Alexander Evseev <aevseev@gmail.com> - 1.1
+
+- First build. Version 1.1 + git
