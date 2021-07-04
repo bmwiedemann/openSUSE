@@ -274,6 +274,7 @@ unsorted:
   - WSL-DistroLauncher-debug 
   - WindowMaker-devel 
   - WoeUSB 
+  - XSStrike 
   - XyGrib 
   - YODA-devel 
   - a2jmidid 
@@ -1851,6 +1852,7 @@ unsorted:
   - cfitsio-devel-doc 
   - cfityk 
   - cflow 
+  - cfssl 
   - cgal-demo-examples-devel 
   - cgal-devel 
   - cgal-doc 
@@ -6097,7 +6099,7 @@ unsorted:
   - grisbi-lang 
   - groff-doc 
   - gromacs 
-  - gromacs-bash 
+  - gromacs-bash-completion 
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi2 
@@ -11030,7 +11032,7 @@ unsorted:
   - libgtk-frdp-0_1 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
-  - libgtkdatabox-0_9_3-0 
+  - libgtkdatabox-0_9_3-1 
   - libgtkdatabox-devel 
   - libgtkdatabox1 
   - libgtkdgl-3-0 
@@ -12099,9 +12101,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0 
-  - libnco-4_9_8 
+  - libnco-5_0_0 
   - libnco-devel 
-  - libnco_c++-4_9_8 
+  - libnco_c++-5_0_0 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -13491,7 +13493,9 @@ unsorted:
   - libschroedinger-1_0-0-32bit: [x86_64] 
   - libscintilla-devel 
   - libscintilla5 
+  - libscotch-gnu-hpc 
   - libscotch0 
+  - libscotch_6_1_0-gnu-hpc 
   - libsdbus-c++0 
   - libseafile0 
   - libsearpc-devel 
@@ -31614,7 +31618,12 @@ unsorted:
   - scotch 
   - scotch-devel 
   - scotch-devel-static 
+  - scotch-gnu-hpc 
+  - scotch-gnu-hpc-devel 
   - scotch-metis-devel 
+  - scotch_6_1_0-gnu-hpc 
+  - scotch_6_1_0-gnu-hpc-devel 
+  - scotch_6_1_0-gnu-hpc-devel-static 
   - screen-message 
   - screencast 
   - screencast-lang 
@@ -32070,6 +32079,7 @@ unsorted:
   - sqliteman 
   - sqliteodbc 
   - sqliteodbc-doc 
+  - sqlmap 
   - sqtop 
   - squidGuard 
   - squidGuard-doc 
