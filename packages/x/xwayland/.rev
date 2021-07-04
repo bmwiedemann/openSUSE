@@ -7,4 +7,24 @@
     <comment>Initial stand-alone Xwayland package version 21.1.1 (boo#1182677)</comment>
     <requestid>885118</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a552f64fbc1a7e931d68cf72ef4d7d63</srcmd5>
+    <version>21.1.1.901</version>
+    <time>1625429403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.1.1.901 (21.1.2 RC1)
+  * It's a bit special, as most of the changes are not the usual 
+    stable branch fixes material, but are needed for HW accelerated
+    direct rendering with the Nvidia 470 driver (which is currently
+    in open beta).
+  * changes are mostly specific to the EGLStream backend and do not
+    affect the GBM backend. And they make a big difference for users
+    of the EGLStream backend.
+  * See
+      https://lists.fedoraproject.org/archives/list/desktop@lists.fedoraproject.org/thread/BBZVDNST67I2AQOCPSHKYAY6D5Z66JIP/ 
+    for more information about testing the EGLStream changes
+- enabled Wayland eglstreams (needs new packages egl-wayland and
+  eglexternalplatform)</comment>
+    <requestid>903407</requestid>
+  </revision>
 </revisionlist>

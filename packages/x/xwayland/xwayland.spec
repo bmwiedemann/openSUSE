@@ -16,7 +16,7 @@
 #
 
 
-%define have_wayland_eglstream 0
+%define have_wayland_eglstream 1
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        21.1.1
+Version:        21.1.1.901
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,10 +42,10 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 #BuildRequires:  systemd-rpm-macros
 BuildRequires:  rendercheck
-BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(bigreqsproto)
 BuildRequires:  pkgconfig(compositeproto)
 BuildRequires:  pkgconfig(damageproto)
+BuildRequires:  pkgconfig(libtirpc)
 #BuildRequires:  pkgconfig(dbus-1)
 #BuildRequires:  pkgconfig(dmx)
 BuildRequires:  pkgconfig(dri)
@@ -127,7 +127,6 @@ BuildRequires:  pkgconfig(xtrans)
 
 #BuildRequires:  pkgconfig(libudev)
 
-
 %ifnarch s390 s390x
 Requires(pre):  %fillup_prereq
 %endif
@@ -141,7 +140,6 @@ Requires:       libpixman-1-0
 #Requires:       xkeyboard-config
 Obsoletes:      xorg-x11-server-wayland < %{version}
 Provides:       xorg-x11-server-wayland = %{version}
-
 
 %description
 This package contains the Xwayland Server.
@@ -159,9 +157,9 @@ This package contains the Xserver running on the Wayland Display Server.
 %package devel
 Summary:        Development files for Xwayland
 Group:          System/Libraries
-Requires:       meson
-Requires:       c_compiler
 Requires:       %{name}
+Requires:       c_compiler
+Requires:       meson
 #Requires:       pkgconfig(fontconfig)
 #Requires:       pkgconfig(fontenc)
 #Requires:       pkgconfig(freetype2)
@@ -186,7 +184,6 @@ Requires:       pkgconfig(xkbfile)
 #Requires:       pkgconfig(xt)
 Requires:       pkgconfig(xtrans)
 Requires:       pkgconfig(xv)
-
 
 %description devel
 This package contains the Xwayland Server development files.

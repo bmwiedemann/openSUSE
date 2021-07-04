@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  1 10:16:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.1.901 (21.1.2 RC1)
+  * It's a bit special, as most of the changes are not the usual 
+    stable branch fixes material, but are needed for HW accelerated
+    direct rendering with the Nvidia 470 driver (which is currently
+    in open beta).
+  * changes are mostly specific to the EGLStream backend and do not
+    affect the GBM backend. And they make a big difference for users
+    of the EGLStream backend.
+  * See
+      https://lists.fedoraproject.org/archives/list/desktop@lists.fedoraproject.org/thread/BBZVDNST67I2AQOCPSHKYAY6D5Z66JIP/ 
+    for more information about testing the EGLStream changes
+- enabled Wayland eglstreams (needs new packages egl-wayland and
+  eglexternalplatform)
+
+-------------------------------------------------------------------
 Tue Apr 13 15:21:03 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.1
