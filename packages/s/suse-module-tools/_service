@@ -15,7 +15,6 @@
     <param name="files">*/suse-module-tools.spec</param>
     <param name="outfilename">suse-module-tools.spec</param>
   </service>
-  <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

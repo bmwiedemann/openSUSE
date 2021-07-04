@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  1 21:03:49 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.5
+  * moved config files to /usr/lib/modprobe.d and /usr/lib/depmod.d
+  * "modprobe $FS" for a blacklisted file system now offers to 
+    unblacklist the module permanently  
+  * disabled automatic un-blacklisting of filesystem modules loaded
+    at installation time
+  * added faster substitute for lsinitrd to speed up weak-modules2
+  * added README.md
+  * modprobe.conf cleanup
+
+-------------------------------------------------------------------
 Thu Jun 17 14:43:13 UTC 2021 - mwilck@suse.com
 
 - Update to version 16.0.4:

@@ -408,4 +408,23 @@ of sr#849755</comment>
     &quot;Supplements&quot; dependency on dkms, which needs it (forwarded request 900613 from mwilck)</comment>
     <requestid>900614</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0e04fb2cd183d3282edf8f998a7edeba</srcmd5>
+    <version>16.0.5</version>
+    <time>1625429439</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry for the previous broken request. It was caused by a broken
+source service setup which messed up my spec file.
+
+- Update to version 16.0.5
+  * moved config files to /usr/lib/modprobe.d and /usr/lib/depmod.d
+  * &quot;modprobe $FS&quot; for a blacklisted file system now offers to 
+    unblacklist the module permanently  
+  * disabled automatic un-blacklisting of filesystem modules loaded
+    at installation time
+  * added faster substitute for lsinitrd to speed up weak-modules2
+  * added README.md
+  * modprobe.conf cleanup</comment>
+    <requestid>903663</requestid>
+  </revision>
 </revisionlist>
