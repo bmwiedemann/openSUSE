@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.4.0
+Version:        7.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -309,14 +309,13 @@ Patch203:       suse-virtlockd-sysconfig-settings.patch
 Patch204:       suse-virtlogd-sysconfig-settings.patch
 Patch205:       suse-qemu-conf.patch
 Patch206:       suse-ovmf-paths.patch
-Patch207:       suse-apparmor-libnl-paths.patch
-Patch208:       libxl-support-block-script.patch
-Patch209:       qemu-apparmor-screenshot.patch
-Patch210:       libvirt-suse-netcontrol.patch
-Patch211:       lxc-wait-after-eth-del.patch
-Patch212:       suse-libxl-disable-autoballoon.patch
-Patch213:       suse-xen-ovmf-loaders.patch
-Patch214:       virt-create-rootfs.patch
+Patch207:       libxl-support-block-script.patch
+Patch208:       qemu-apparmor-screenshot.patch
+Patch209:       libvirt-suse-netcontrol.patch
+Patch210:       lxc-wait-after-eth-del.patch
+Patch211:       suse-libxl-disable-autoballoon.patch
+Patch212:       suse-xen-ovmf-loaders.patch
+Patch213:       virt-create-rootfs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -898,10 +897,10 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 %if %{with_apparmor}
     %define arg_apparmor -Dapparmor=enabled
-    %define arg_apparmor_profiles -Dapparmor_profiles=true
+    %define arg_apparmor_profiles -Dapparmor_profiles=enabled
 %else
     %define arg_apparmor -Dapparmor=disabled
-    %define arg_apparmor_profiles -Dapparmor_profiles=false
+    %define arg_apparmor_profiles -Dapparmor_profiles=disabled
 %endif
 %if %{with_sanlock}
     %define arg_sanlock -Dsanlock=enabled
@@ -952,11 +951,14 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dsasl=enabled \
            -Dpolkit=enabled \
            -Ddriver_libvirtd=enabled \
+           -Ddriver_remote=enabled \
+           -Ddriver_test=enabled \
            %{?arg_esx} \
            %{?arg_hyperv} \
            %{?arg_vmware} \
            -Ddriver_vz=disabled \
            -Ddriver_bhyve=disabled \
+           -Ddriver_ch=disabled \
            -Dremote_default_mode=legacy \
            -Ddriver_interface=enabled \
            -Ddriver_network=enabled \

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  1 14:17:12 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+-  Update to libvirt 7.5.0
+  - security: Fix insecure sVirt label generation - CVE-2021-3631
+    bsc#1187871
+  - apparmor: Permit new capabilities required by libvirtd
+    boo#1186888
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    suse-apparmor-libnl-paths.patch
+- supportconfig plugin improvements
+
+-------------------------------------------------------------------
 Mon Jun 21 07:22:36 UTC 2021 - Mel Gorman <mgorman@suse.de>
 
 - Suggest numad package instead of requiring it. numad is not

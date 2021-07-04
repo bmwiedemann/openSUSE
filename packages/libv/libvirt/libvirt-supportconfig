@@ -8,7 +8,7 @@
 
 RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
 
-LIBVIRTD_CONF_FILES="/etc/libvirt/libvirtd.conf /etc/libvirt/virtlockd.conf /etc/libvirt/virtlogd.conf"
+LIBVIRTD_CONF_FILES="$(find -L /etc/libvirt/*.conf -type f | sort)"
 VM_CONF_FILES=""
 LIBVIRTD_LOG_FILES="$(find -L /var/log/libvirt/ -name libvirtd.log -type f | sort)"
 
@@ -52,25 +52,18 @@ rpm_verify() {
 }
 
 if rpm_installed libvirt-daemon-xen; then
-    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/libxl.conf /etc/libvirt/libxl-lockd.conf /etc/libvirt/libxl-sanlock.conf"
     test -d /etc/libvirt/libxl && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/libxl/ -type f | sort)"
     test -d /var/log/libvirt/libxl && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
 fi
 
 if rpm_installed libvirt-daemon-qemu; then
-    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/qemu.conf /etc/libvirt/qemu-lockd.conf /etc/libvirt/qemu-sanlock.conf"
     test -d /etc/libvirt/qemu && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/qemu/ -type f | sort)"
     test -d /var/log/libvirt/qemu && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
 fi
 
 if rpm_installed libvirt-daemon-lxc; then
-    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/lxc.conf"
     test -d /etc/libvirt/lxc && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/lxc/ -type f | sort)"
     test -d /var/log/libvirt/lxc && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/lxc/ -type f | sort)"
-fi
-
-if rpm_installed libvirt-admin; then
-    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/libvirt-admin.conf"
 fi
 
 if ! rpm_verify libvirt-daemon; then

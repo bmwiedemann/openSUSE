@@ -1,8 +1,8 @@
-Index: libvirt-7.4.0/src/security/apparmor/libvirt-qemu
+Index: libvirt-7.5.0/src/security/apparmor/libvirt-qemu
 ===================================================================
---- libvirt-7.4.0.orig/src/security/apparmor/libvirt-qemu
-+++ libvirt-7.4.0/src/security/apparmor/libvirt-qemu
-@@ -244,3 +244,6 @@
+--- libvirt-7.5.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-7.5.0/src/security/apparmor/libvirt-qemu
+@@ -245,3 +245,6 @@
    # /sys/bus/nd/devices
    / r, # harmless on any lsb compliant system
    /sys/bus/nd/devices/{,**/} r,
