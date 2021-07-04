@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ffi
-Version:        1.15.1
+Version:        1.15.3
 Release:        0
 %define mod_name ffi
 %define mod_full_name %{mod_name}-%{version}

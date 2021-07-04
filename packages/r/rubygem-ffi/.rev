@@ -311,4 +311,12 @@
     <comment>update (forwarded request 896507 from mschnitzer)</comment>
     <requestid>896518</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>37bce28b025d667981682885e6da57a0</srcmd5>
+    <version>1.15.3</version>
+    <time>1625429426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903504</requestid>
+  </revision>
 </revisionlist>

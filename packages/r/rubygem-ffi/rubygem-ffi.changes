@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:21:42 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.15.3
+ see installed CHANGELOG.md
+
+  1.15.3 / 2021-06-16
+  -------------------
+  
+  Fixed:
+  * Fix temporary packaging issue with libffi. #904
+  
+  
+  1.15.2 / 2021-06-16
+  -------------------
+  
+  Added:
+  * Add support for Windows MINGW-UCRT build. #903
+  * Add `/opt/homebrew/lib/` to fallback search paths to improve homebrew support. #880 #882
+  
+  Changed:
+  * Regenerate `types.conf` for FreeBSD12 aarch64. #902
+  
+  
+
+-------------------------------------------------------------------
 Tue Jun  1 03:38:16 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.15.1
