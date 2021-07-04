@@ -1,0 +1,26 @@
+From b43548b22c4844db95c628a508199518bd3f4350 Mon Sep 17 00:00:00 2001
+From: Tomaz Canabrava <tcanabrava@kde.org>
+Date: Wed, 30 Jun 2021 12:45:08 +0100
+Subject: [PATCH] Prevent 1px sizehint when there is no preconfiguration
+
+BUG: 437791
+---
+ src/MainWindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index eddc2868..477e997e 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -129,7 +129,7 @@ MainWindow::MainWindow() :
+     KAcceleratorManager::setNoAccel(menuBar());
+ 
+     // create menus
+-    setupGUI();
++    createGUI();
+ 
+     // remember the original menu accelerators for later use
+     rememberMenuAccelerators();
+-- 
+2.25.1
+

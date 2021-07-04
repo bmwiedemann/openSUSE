@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 30 18:07:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix initial size after kxmlgui changes (kde#437791):
+  * 0001-Prevent-1px-sizehint-when-there-is-no-preconfigurati.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 12:40:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.2

@@ -40,6 +40,8 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Prevent-1px-sizehint-when-there-is-no-preconfigurati.patch
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
