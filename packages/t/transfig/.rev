@@ -502,4 +502,12 @@
   (boo#1186329, CVE-2021-3561)</comment>
     <requestid>894796</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>c77de579acf0f9d7d8b13fe2be026cf9</srcmd5>
+    <version>3.2.8a</version>
+    <time>1625429399</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903347</requestid>
+  </revision>
 </revisionlist>

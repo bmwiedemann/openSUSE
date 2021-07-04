@@ -36,7 +36,13 @@ BuildRequires:  tex(times.sty)
 BuildRequires:  tex(xmpmulti.sty)
 %endif
 BuildRequires:  libpng-devel
+%if 0%{?suse_version} > 1310
 BuildRequires:  pkgconfig(xpm)
+%else
+BuildRequires:  xorg-x11-libXpm-devel
+BuildRequires:  xz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 #  www.xfig.org is dead
 URL:            http://mcj.sourceforge.net/
 Provides:       fig2dev
@@ -58,16 +64,6 @@ Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
-%if "%_exec_prefix" == "/usr/X11R6"
-%global _mandir     %{_exec_prefix}/man
-%define _x11data    %{_exec_prefix}/lib/X11
-%define _data       $(LIBDIR)
-%else
-%define _x11data    %{_datadir}/X11
-%define _data       $(SHAREDIR)
-%endif
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics

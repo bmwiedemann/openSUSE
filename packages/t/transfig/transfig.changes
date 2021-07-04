@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 18 13:26:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make spec file build with older SLE versions as well
+  * This version is used by xfig 3.2.8 and above
+
+-------------------------------------------------------------------
 Fri May 21 11:50:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream commit as patch 6827c09d.patch
@@ -175,6 +181,12 @@ Thu Aug 15 07:21:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch transfig-03ea4578.patch from upstream commit 03ea4578
   to fix bsc#1143650 with CVE-2019-14275 
+
+-------------------------------------------------------------------
+Wed Jun 26 07:45:21 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch transfig-fix-of-e0c4b024.patch to fix last added upstream
+  commit (boo#1136882)
 
 -------------------------------------------------------------------
 Thu Aug 30 09:50:10 UTC 2018 - Dr. Werner Fink <werner@suse.de>
