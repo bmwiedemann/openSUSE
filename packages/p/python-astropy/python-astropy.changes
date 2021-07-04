@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  4 13:26:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Replace astropy-pr11260-wcsfailures.patch with
+  astropy-pr11260+pr11549-wcs76.patch
+  * fixes test failures because of the recent Tumbleweed update to
+    wcslib 7.6
+  * include binary test file tab-time-last-axis.fits from
+    gh#astropy/astropy#11549, which does not fit into the patchfile
+
+-------------------------------------------------------------------
 Sat Apr 17 15:30:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix python_expand for test call
