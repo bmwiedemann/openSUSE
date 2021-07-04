@@ -345,4 +345,17 @@
     <comment></comment>
     <requestid>899880</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>c14827c69d7cf5aa8b318039654946fe</srcmd5>
+    <version>4.1</version>
+    <time>1625429430</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1187906: Consolidate all references to the helper script.
+- bsc#1173760: MD5 is not available from mozilla-nss in FIPS mode,
+  but needed for calculating refids from IPv6 addresses as part of
+  the NTP protocol (rfc5905). As this is a non-cryptographic use of
+  MD5 we can use our own implementation without violating FIPS
+  rules: chrony-refid-internal-md5.patch .</comment>
+    <requestid>903544</requestid>
+  </revision>
 </revisionlist>

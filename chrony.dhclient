@@ -8,13 +8,13 @@ chrony_config() {
 		for server in $new_ntp_servers; do
 			echo "$server ${NTPSERVERARGS:-iburst}" >> $SERVERFILE
 		done
-		/usr/share/chrony-helper update-daemon || :
+		@CHRONY_HELPER@ update-daemon || :
 	fi
 }
 
 chrony_restore() {
 	if [ -f $SERVERFILE ]; then
 		rm -f $SERVERFILE
-		/usr/share/chrony-helper update-daemon || :
+		@CHRONY_HELPER@ update-daemon || :
 	fi
 }
