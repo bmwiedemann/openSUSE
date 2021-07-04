@@ -1138,4 +1138,23 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
 - Update translations</comment>
     <requestid>874790</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>7367f840d6f06ea884bbe104033bb8dd</srcmd5>
+    <version>2.9.75git.20210626T134054~59b22189f6</version>
+    <time>1625429442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.75git.20210626T134054~59b22189f6:
+  * Scan history of played tracks till find a playble track (kde#438651)
+  * Prevent Signal from kRichTextEdit during deletion
+  * Prevent Amarok from stalling if the standard playing mode is used
+    and next (or previous) file does not exist
+  * Update IRC network
+  * Drop unused KF5NotifyConfig
+  * Fix crash when reloading scriptable services
+  * Replace deprecated toList() with values()
+  * Add .gitlab-ci.yml
+  * Drop all the amarok-neon packaging bits
+  * Fix disambiguation found by gettext 0.21</comment>
+    <requestid>903742</requestid>
+  </revision>
 </revisionlist>

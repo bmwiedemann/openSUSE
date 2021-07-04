@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 02 14:27:25 UTC 2021 - christophe@krop.fr
+
+- Update to version 2.9.75git.20210626T134054~59b22189f6:
+  * Scan history of played tracks till find a playble track (kde#438651)
+  * Prevent Signal from kRichTextEdit during deletion
+  * Prevent Amarok from stalling if the standard playing mode is used
+    and next (or previous) file does not exist
+  * Update IRC network
+  * Drop unused KF5NotifyConfig
+  * Fix crash when reloading scriptable services
+  * Replace deprecated toList() with values()
+  * Add .gitlab-ci.yml
+  * Drop all the amarok-neon packaging bits
+  * Fix disambiguation found by gettext 0.21
+
+-------------------------------------------------------------------
 Wed Feb 24 08:50:43 UTC 2021 - christophe@krop.fr
 
 - Update to version 2.9.70git.20210220T172242~b94c362c1d:

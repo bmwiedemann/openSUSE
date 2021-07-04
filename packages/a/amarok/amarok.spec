@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20210220T172242~b94c362c1d
+Version:        2.9.75git.20210626T134054~59b22189f6
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -61,7 +61,6 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5TextEditor)
@@ -103,8 +102,8 @@ Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       libtag-extras1 >= 1.0
 Recommends:     %{name}-lang = %{version}
-Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)
 Recommends:     moodbar
+Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)
 
 %description
 Amarok is a media player for all kinds of media. This includes MP3, Ogg
