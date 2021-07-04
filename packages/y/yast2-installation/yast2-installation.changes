@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 16 14:10:33 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Adapt code to Y2Users (part of jsc#PM-2620).
+- 4.4.14
+
+-------------------------------------------------------------------
 Wed Jun 16 10:35:42 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Fix scope resolution for ::Users::UsersDatabase

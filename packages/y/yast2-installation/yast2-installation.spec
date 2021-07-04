@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.13
+Version:        4.4.14
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -47,8 +47,8 @@ BuildRequires:  yast2-ruby-bindings >= 4.0.6
 BuildRequires:  yast2-security
 # using /usr/bin/udevadm
 BuildRequires:  yast2-storage-ng >= 4.2.71
-# new root password cwm widget
-BuildRequires:  yast2-users >= 3.2.8
+# Y2Users
+BuildRequires:  yast2-users >= 4.4.2
 # needed for xml agent reading about products
 BuildRequires:  yast2-xml
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
@@ -93,7 +93,8 @@ Requires:       yast2-ruby-bindings >= 4.0.6
 Requires:       yast2-services-manager >= 3.2.1
 # Only in inst-sys
 Requires:       yast2-storage-ng >= 4.0.175
-Requires:       yast2-users >= 3.2.8
+# Y2Users
+Requires:       yast2-users >= 4.4.2
 PreReq:         %fillup_prereq
 Recommends:     yast2-add-on
 Recommends:     yast2-firewall
