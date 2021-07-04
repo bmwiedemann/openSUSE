@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  1 08:47:20 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- bnc#1185936
+  - do not crash with internal error when a sysctl file is
+    corrupted
+- 4.4.20
+
+-------------------------------------------------------------------
+Fri Jun 25 08:07:09 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted to the new API of Y2Issues (related to jsc#PM-2620 and
+  bsc#1166743)
+- 4.4.19
+
+-------------------------------------------------------------------
 Thu Jun 17 16:20:44 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Support 'boot' and 'on' as aliases for the 'auto' startmode
