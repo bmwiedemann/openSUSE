@@ -1,7 +1,7 @@
 #
 # spec file for package oniguruma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 %define lib_name libonig5
-%define pkg_version 6.9.6
-%define pkg_short_version 6.9.6
-
+%define short_version 6.9.7
 Name:           oniguruma
-Version:        6.9.6
+Version:        6.9.7.1
 Release:        0
 Summary:        Regex Library Supporting Different Character Encodings
 License:        BSD-2-Clause
 Group:          Development/Languages/C and C++
 URL:            https://github.com/kkos/oniguruma
-Source:         https://github.com/kkos/oniguruma/releases/download/v%{pkg_version}/onig-%{pkg_version}.tar.gz
+Source:         https://github.com/kkos/oniguruma/releases/download/v%{version}/onig-%{version}.tar.gz
 BuildRequires:  pkgconfig
 
 %description
@@ -80,13 +78,17 @@ This package contains all necessary include files and libraries needed to
 develop applications that require it.
 
 %prep
-%setup -q -n onig-%{pkg_short_version}
+%setup -q -n onig-%{short_version}
 cp -rp sample/ examples
 
 %build
 export CFLAGS="%{optflags} -g"
 %configure --enable-posix-api
-make %{?_smp_mflags}
+%make_build
+
+%check
+cd test
+%make_build test
 
 %install
 %make_install

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  3 15:31:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 6.9.7.1
+  * NEW API: ONIG_OPTION_CALLBACK_EACH_MATCH
+  * NEW API: ONIG_OPTION_IGNORECASE_IS_ASCII
+  * NEW API: ONIG_SYNTAX_PYTHON
+  * Fixed some problems found by OSS-Fuzz
+- Enable tests
+
+-------------------------------------------------------------------
 Thu Nov  5 15:57:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.9.6 
