@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:20:32 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 1.1.11:
+  * Add --macaddress option to specify the MAC address of the tap
+    interface.
+  * Updated the man page.
+
+-------------------------------------------------------------------
 Fri Jan 08 13:26:41 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.1.8:
