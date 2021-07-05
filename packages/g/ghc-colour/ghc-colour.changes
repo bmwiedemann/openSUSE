@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 25 09:24:46 UTC 2021 - psimons@suse.com
+
+- Update colour to version 2.3.6.
+  New in version 2.3.6:
+  - Minimum base of 4.13.
+  - Locked down non-colour imports.
+  - Made semigroup instances canonical.
+  - Updated dependencies (for testing).
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
