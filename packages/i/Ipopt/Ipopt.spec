@@ -18,7 +18,7 @@
 
 %define shlib libipopt0
 Name:           Ipopt
-Version:        3.14.0
+Version:        3.14.1
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
