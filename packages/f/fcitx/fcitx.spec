@@ -391,7 +391,7 @@ pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
 popd
 
 # install rpm macros
-install -D -m644 %{SOURCE9} %{buildroot}%{_sysconfdir}/rpm/macros.%{name}
+install -D -m644 %{SOURCE9} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
 # remove *.la
 rm -rf %{buildroot}%{_libdir}/lib%{name}-config.la
@@ -569,7 +569,7 @@ exit 0
 %{_datadir}/%{name}/skin/dark
 
 %files devel
-%config %{_sysconfdir}/rpm/macros.%{name}
+%{_rpmmacrodir}/macros.%{name}
 %{_includedir}/*
 %{_bindir}/%{name}4-config
 %{_libdir}/%{name}/libexec/comp-spell-dict
