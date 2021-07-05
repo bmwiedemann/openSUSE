@@ -31,8 +31,8 @@ Source99:       %{name}.rpmlintrc
 Patch0:         patch-desktop-categories.patch
 # Remove check for update in help
 Patch1:         mysql-workbench-no-check-for-updates.patch
-# disabled , system scintila is buil with gtk3
-Patch7:         mysql-workbench-unbundle-libscintilla.patch
+# disabled, Workbench isn't compatible with system scintilla 5.x
+#Patch7:         mysql-workbench-unbundle-libscintilla.patch
 # PATCH-FIX-OPENSUSE fix lacking dependency
 Patch9:         mysql-workbench-dependences.patch
 Patch13:        mysql-workbench-mariadb.patch
@@ -69,7 +69,7 @@ BuildRequires:  libantlr4-runtime-devel >= 4.9.1
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqlcppconn-devel >= 1.1.8
 BuildRequires:  libmysqld-devel > 5.1
-BuildRequires:  libscintilla-devel
+#BuildRequires:  libscintilla-devel
 BuildRequires:  libsigc++2-devel
 BuildRequires:  libtool
 BuildRequires:  ninja

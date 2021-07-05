@@ -1,3 +1,15 @@
+diff -uNr mysql-workbench-community-8.0.19-org/CMakeLists.txt mysql-workbench-community-8.0.19-src/CMakeLists.txt
+--- mysql-workbench-community-8.0.19-org/CMakeLists.txt	2019-12-15 21:40:32.000000000 +0200
++++ mysql-workbench-community-8.0.19-src/CMakeLists.txt	2020-04-05 14:48:36.735862665 +0300
+@@ -143,7 +143,7 @@
+ check_function_exists (strtoimax HAVE_STRTOIMAX)
+ check_function_exists (strtoumax HAVE_STRTOUMAX)
+ 
+-set(ANTLR_JAR_FILENAME "antlr-4.9.1-complete.jar")
++set(ANTLR_JAR_FILENAME "antlr4.jar")
+ get_filename_component(SOURCE_PARENT_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
+ set(LINUX_RES_BIN_DIR ${SOURCE_PARENT_DIR}/linux-res/bin)
+ message("WITH_ANTLR_JAR: ${WITH_ANTLR_JAR}")
 diff -uNr mysql-workbench-community-8.0.19-org/library/parsers/CMakeLists.txt mysql-workbench-community-8.0.19-src/library/parsers/CMakeLists.txt
 --- mysql-workbench-community-8.0.19-org/library/parsers/CMakeLists.txt	2020-04-05 00:09:04.733876842 +0300
 +++ mysql-workbench-community-8.0.19-src/library/parsers/CMakeLists.txt	2020-04-04 20:54:21.868460175 +0300

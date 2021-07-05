@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:33:28 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Removed unused patch, because it is marked as error
+  * removed mysql-workbench-unbundle-libscintilla.patch
+
+-------------------------------------------------------------------
+Wed Jun 30 19:26:17 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Fixed antrl4 patch (part sneaked into scintilla patch)
+  * modified mysql-workbench-antlr4.patch
+  * modified mysql-workbench-unbundle-libscintilla.patch
+- Disabled mysql-workbench-unbundle-libscintilla.patch
+  as current Workbench isn't compatible with scintilla 5
+
+-------------------------------------------------------------------
 Wed Jun  2 21:39:06 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to 8.0.25
