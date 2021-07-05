@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  5 07:53:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.1:
+  - Changed official deb repo so it now builds '--with-getline' in order to
+    support request lines longer than 4096.
+  - Ensure there's no tail delay if the log file hasn't changed.
+  - Fixed data race when writing to a self-pipe and attempting to stop the WS server.
+  - Fixed inability to close expanded panel when pressing 'q' on TUI.
+  - Fixed possible data race during parsing spinner label assignment.
+  - Increased the maximum number of files to monitor from '512' to '3072'.
+
+-------------------------------------------------------------------
 Thu May 27 07:02:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5:
