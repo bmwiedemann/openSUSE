@@ -159,4 +159,35 @@
   * [misc]  Update dependencies and fix serde related build failure</comment>
     <requestid>864014</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8c9812ef1c98e7d596aa7b3ba582c37a</srcmd5>
+    <version>2.10.2</version>
+    <time>1625516580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.2:
+  * [bug] fix text coloring
+
+- Update to 2.10.1:
+  * [bug] add build step to Makefile to fix CD
+
+- Update to 2.10.0:
+  * [bug] fix &quot;Last change: now ago&quot;
+  * [language] added support for Haxe
+  * [language] added support for Scheme
+  * [language] added support for GDScript
+  * [ci] Make audit scheduled and manually runnable
+  * [language] added support for Svelte
+  * [language] added support for Ada
+  * [docs] add README.ja.md
+  * [language] added support for Hcl
+  * [bug] round up instead of truncate in perc. of contribution
+  * [language] Fixed Fortran ASCII to be more symetrical
+  * [misc] add CLI option to ignore bot commits
+  * [info] use .mailmap to merge authors
+  * [info] merge authors by signature
+  * [misc] add CLI option for displaying author emails
+  * [language] added support for PowerShell
+  * [info] display the number of contributors</comment>
+    <requestid>904046</requestid>
+  </revision>
 </revisionlist>

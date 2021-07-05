@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul  5 07:34:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.2:
+  * [bug] fix text coloring
+
+-------------------------------------------------------------------
+Mon Jul  5 07:33:25 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.1:
+  * [bug] add build step to Makefile to fix CD
+
+-------------------------------------------------------------------
+Mon Jul  5 07:32:14 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.0:
+  * [bug] fix "Last change: now ago"
+  * [language] added support for Haxe
+  * [language] added support for Scheme
+  * [language] added support for GDScript
+  * [ci] Make audit scheduled and manually runnable
+  * [language] added support for Svelte
+  * [language] added support for Ada
+  * [docs] add README.ja.md
+  * [language] added support for Hcl
+  * [bug] round up instead of truncate in perc. of contribution
+  * [language] Fixed Fortran ASCII to be more symetrical
+  * [misc] add CLI option to ignore bot commits
+  * [info] use .mailmap to merge authors
+  * [info] merge authors by signature
+  * [misc] add CLI option for displaying author emails
+  * [language] added support for PowerShell
+  * [info] display the number of contributors
+
+-------------------------------------------------------------------
 Mon Jan 18 08:54:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.1:
