@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-appconfiguration
-Version:        1.2.0b1
+Version:        1.2.0b2
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
