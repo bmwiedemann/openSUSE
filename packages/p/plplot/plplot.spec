@@ -21,8 +21,19 @@
 %bcond_with    ocaml_camlidl
 %define tk_enabled 1
 
-# SECTION Disable octave bindings until compilation against octave 6 is fixed
+# SECTION swig is patched on TW to support octave 6, but not on any Leaps
+%if 0%{?suse_version} >= 1550
+#
+# No qhull/octave on arch, ppc
+%ifarch %ix86 x86_64
+%define octave_enabled 1
+%else
 %define octave_enabled 0
+%endif
+#
+%else
+%define octave_enabled 0
+%endif
 # /SECTION
 
 %bcond_without qhull

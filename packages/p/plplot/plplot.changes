@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 23:33:31 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enable building octave bindings for openSUSE >= 1550 (TW) where
+  swig has been patched to support octave 6+.
+
+-------------------------------------------------------------------
 Tue Jun  8 22:25:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enforce std=c++14 to avoid build failures with GCC 11 that
