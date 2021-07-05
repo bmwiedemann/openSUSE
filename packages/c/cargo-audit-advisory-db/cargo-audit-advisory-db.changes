@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 02 01:00:10 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210702:
+  * Fix RUSTSEC-2021-0048 which doesn't declare an operand (#945)
+  * Add `withdrawn` field (#942)
+  * Bump `rustsec-admin` to v0.5.0 (#944)
+  * Add patched version for flatbuffers RUSTSEC-2020-0009 (#943)
+  * Update RUSTSEC-2021-0049.md (#941)
+  * Assigned RUSTSEC-2021-0071 to grep-cli (#940)
+  * crates/grep-cli: add advisory for arbitrary binary execution on Windows (#939)
+  * Add GHSA mentions to `aliases` field. This is becoming more important with OSV enabling interop between databases (#937)
+  * Update RUSTSEC-2020-0043.md (#934)
+  * Assigned RUSTSEC-2021-0070 to nalgebra (#932)
+
+-------------------------------------------------------------------
 Sat Jun 19 06:27:26 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210619:
