@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:52:02 UTC 2021 - psimons@suse.com
+
+- Update servant-server to version 0.18.3.
+  0.18.3
+  ------
+
+  ### Significant changes
+
+  - Add response header support to UVerb (#1420)
+
+  ### Other changes
+
+  - Support GHC-9.0.1.
+  - Bump `bytestring`, `hspec` and `base64-bytestring` dependencies.
+
+-------------------------------------------------------------------
+Sat May 15 15:58:31 UTC 2021 - psimons@suse.com
+
+- Update servant-server to version 0.18.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Jan 19 20:10:35 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax dep on http-api-data 
