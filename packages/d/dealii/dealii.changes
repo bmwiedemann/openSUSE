@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  2 19:47:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.3.1:
+  * Configuration and compilation fixes for Intel C++ compilers
+    versions 18.x and 19.x.
+  * Various missing explicit instantitions leading to linker
+    errors on Mac OSX platforms.
+  * MPI configuration fixes.
+  * Fix for a segmentation fault in MappingQGeneric and MappingFE
+    at high optimization levels.
+
+-------------------------------------------------------------------
 Tue Jun  8 23:10:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.3.0:
