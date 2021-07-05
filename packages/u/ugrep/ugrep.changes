@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:39:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 3.3.4:
+  * New --hyperlink option for terminals that support it
+  * Revised and enhanced option -P (PCRE) compatible with GNU grep
+  * Improved query UI option -Q with quick Tab/Shift/Tab navigation
+  * CTRL-Y file viewing with --view to specify viewer
+  * Improved CTRL-X/CTRL-R bookmarking to restore search state
+  * Fix compatibility with GNU grep binary file search results
+  * fix an optimization preventing unnecessary backtracking
+  * performance improvement for option -P 
+
+-------------------------------------------------------------------
 Thu May 13 14:26:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.2.2:
