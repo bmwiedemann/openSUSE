@@ -17,7 +17,7 @@
 
 
 Name:           qolibri
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Group:          Productivity/Office/Dictionary
 Summary:        EPWING Dictionary Viewer

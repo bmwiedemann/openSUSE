@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  5 06:55:20 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to qolibri 2.1.4. You can find the full release notes at
+  <https://github.com/ludios/qolibri/releases/tag/2.1.4>
+
+  * Windows: Qt 5.15 fixes "Watch clipboard" with other clipboard-watching apps
+    running.
+  * Fix inconsistent indentation.
+  * Fix bogus "No results" with alphabetic searches.
+
+-------------------------------------------------------------------
 Sat Mar 27 05:38:55 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Initial packaging of qolibri 2.1.3.
