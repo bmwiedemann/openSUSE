@@ -178,8 +178,8 @@ install -m 755 %{SOURCE2} %{buildroot}%{_datadir}/scim
 install -d %{buildroot}%{_datadir}/scim/tables
 
 # install macro.scim
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm/
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m 644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/
 
 # not SLE_12
 %if 0%{?suse_version} >= 1310 && 0%{?suse_version} != 1315
@@ -239,7 +239,7 @@ fi
 %license COPYING
 %doc AUTHORS README ChangeLog TODO
 %{_distconfdir}/X11/xim.d
-%config %{_sysconfdir}/rpm/macros.scim
+%{_rpmmacrodir}/macros.scim
 %dir %{_sysconfdir}/scim
 %config %{_sysconfdir}/scim/config
 %config %{_sysconfdir}/scim/global

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:38:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move macros.scim from /etc/rpm to %_rpmmacrodir (boo#1185657).
+
+-------------------------------------------------------------------
 Thu Dec 10 13:06:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the qt4 subpackage for Leap 15.3 or newer
