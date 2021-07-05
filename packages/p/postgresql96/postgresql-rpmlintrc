@@ -1,8 +1,0 @@
-addFilter("useless-explicit-provides")
-addFilter("unnecessary-buildrequires")
-addFilter("patch-not-applied")
-addFilter("non-standard-uid")
-addFilter("file-not-in-%lang")
-addFilter("no-dependency-on")
-addFilter("no-soname")
-addFilter("devel-file-in-non-devel-package")
