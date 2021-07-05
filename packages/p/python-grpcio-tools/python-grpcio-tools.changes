@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 30 20:01:15 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.38.1:
+  * Backport gh#grpc/grpc#26430 and gh#grpc/grpc#26435 to v1.38.x
+    (gh#grpc/grpc#26436).
+
+-------------------------------------------------------------------
 Sun May 23 00:58:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.38.0:
