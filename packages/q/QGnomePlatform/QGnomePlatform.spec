@@ -19,7 +19,7 @@
 
 
 Name:           QGnomePlatform
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        A better Qt application inclusion in GNOME
 # Most code is LGPL-2.1-or-later but qgtk3dialoghelpers files forked from
@@ -29,8 +29,7 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE fix-qt5-x11-config.patch -- x11 requirement is missing from gtk+-x11-3.0
-Patch0:         fix-qt5-x11-config.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -38,10 +37,12 @@ BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libqt5-qtwayland-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt5ThemeSupport)
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.12
+BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.12
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.12
-BuildRequires:  pkgconfig(adwaita-qt)
+BuildRequires:  pkgconfig(adwaita-qt) >= 1.3.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(x11)
@@ -61,18 +62,19 @@ to fit into the environment as well as possible.
 %autosetup -p1
 
 %build
-%qmake5
-%make_build
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 
 %files
 %doc README.md
 %license LICENSE
+%{_libdir}/libqgnomeplatform.so
 %dir %{libqt5_plugindir}
 %dir %{libqt5_plugindir}/platformthemes
-%{libqt5_plugindir}/platformthemes/libqgnomeplatform.so
+%{libqt5_plugindir}/platformthemes/libqgnomeplatformtheme.so
 %{libqt5_plugindir}/wayland-decoration-client/libqgnomeplatformdecoration.so
 
 %changelog

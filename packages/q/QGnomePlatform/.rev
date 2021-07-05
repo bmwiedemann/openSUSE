@@ -47,4 +47,12 @@
     <comment>Update to version 0.7.1 (forwarded request 889605 from susnux)</comment>
     <requestid>893947</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6541aa7f47b806adf6f21bdc2db36268</srcmd5>
+    <version>0.8.0</version>
+    <time>1625516602</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.8.0 (forwarded request 903881 from susnux)</comment>
+    <requestid>904178</requestid>
+  </revision>
 </revisionlist>
