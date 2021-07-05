@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-streaming-bytestring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name streaming-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Fast, effectful byte streams
 License:        BSD-3-Clause
