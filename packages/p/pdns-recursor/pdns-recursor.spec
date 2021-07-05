@@ -31,7 +31,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.5.2
+Version:        4.5.4
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  5 07:27:02 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 4.5.4:
+  * Make sure that we pass the SOA along the NSEC(3) proof for
+    DS queries.
+
+-------------------------------------------------------------------
 Fri Jun 25 06:32:22 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - no longer supports 32-bit arches -- requiers 64-bit time_t
@@ -18,8 +25,8 @@ Tue May 11 16:10:50 UTC 2021 - Michael Ströder <michael@stroeder.com>
 - update to 4.5.1:
 - Main changes:
   * Dropped support for 32-bit platforms!
-  * Rewrite of the way zone cuts are determined, reducing the number of 
-    outgoing queries by up to 17% when doing DNSSEC validation while reducing 
+  * Rewrite of the way zone cuts are determined, reducing the number of
+    outgoing queries by up to 17% when doing DNSSEC validation while reducing
     the CPU usage more than 20% .
   * Added implementation of EDNS0 padding (RFC 7830) for answers sent to clients.
   * Added implementation of RFC 8198[2]: Aggressive use of DNSSEC-Validated Cache.

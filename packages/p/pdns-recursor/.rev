@@ -565,4 +565,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
 - build-require gcc7 on SLE-12 variant</comment>
     <requestid>902291</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>15e0c266d82a2222298f28f07531191c</srcmd5>
+    <version>4.5.4</version>
+    <time>1625516579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904048</requestid>
+  </revision>
 </revisionlist>
