@@ -1,5 +1,5 @@
 #
-# spec file for package dealii
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.3.0
+%define sover 9.3.1
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -84,7 +84,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.3.0
+Version:        9.3.1
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
