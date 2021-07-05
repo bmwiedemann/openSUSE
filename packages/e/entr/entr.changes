@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  4 11:56:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0
+  * Eliminate memory management warnings on Linux.
+  * EV_TRACE prints file mode and file name.
+- Update to version 4.8
+  * EV_TRACE also prints file/notify descriptor limit.
+  * Set 2^16 watches if inotify limits cannot be read.
+  * Raise an error and suggest '-n' if terminal attributes cannot
+    be read.
+
+-------------------------------------------------------------------
 Sun Feb 28 12:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.8
