@@ -1,8 +1,8 @@
 Index: include/consts
 ===================================================================
---- include/consts.orig	2018-01-26 18:04:07.912682680 +0100
-+++ include/consts	2018-01-26 18:04:16.444766782 +0100
-@@ -104,6 +104,7 @@ unset LANG
+--- include/consts.orig
++++ include/consts
+@@ -115,6 +115,7 @@ ETC_PATHS="/etc /usr/local/etc"
      FAIL2BANBINARY=""
      FILEBINARY=""
      FILEVALUE=""

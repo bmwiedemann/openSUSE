@@ -2,7 +2,7 @@ Index: include/osdetection
 ===================================================================
 --- include/osdetection.orig
 +++ include/osdetection
-@@ -400,7 +400,7 @@
+@@ -601,7 +601,7 @@
                  OS_NAME="${LINUX_VERSION}"
              fi
              # If Linux version (full name) is unknown, use uname value
