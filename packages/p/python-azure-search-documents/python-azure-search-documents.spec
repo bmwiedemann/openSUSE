@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 11.2.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-search-documents
-Version:        11.2.0b2
+Version:        11.2.0.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-search-documents/azure-search-documents-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-search-documents/azure-search-documents-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-search-nspkg >= 1.0.0}
@@ -38,7 +40,7 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.6.0
+Requires:       python-azure-core >= 1.14.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
 Requires:       python-msrest >= 0.6.21
@@ -57,10 +59,10 @@ middleware technologies including reliable message queuing and durable
 publish/subscribe messaging.
 
 %prep
-%setup -q -n azure-search-documents-%{version}
+%setup -q -n azure-search-documents-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-search-documents-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-search-documents-%{realversion}
 %python_build
 
 %install

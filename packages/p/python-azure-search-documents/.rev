@@ -50,4 +50,12 @@
 - Update Requires from setup.py (forwarded request 891220 from glaubitz)</comment>
     <requestid>891285</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>80c851bcc2436bb21d8a776368497bf2</srcmd5>
+    <version>11.2.0.0</version>
+    <time>1625516595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904125</requestid>
+  </revision>
 </revisionlist>
