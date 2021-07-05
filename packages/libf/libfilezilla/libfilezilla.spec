@@ -16,11 +16,11 @@
 #
 
 
-%define major		13
+%define major		14
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later

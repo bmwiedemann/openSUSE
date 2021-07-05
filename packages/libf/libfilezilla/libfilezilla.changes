@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  5 05:32:47 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.29.0
+  * New features:
+    - Added fz::tls_layer::set_min_tls_ver and for testing purposes
+      set_max_tls_ver
+    - The TLS layer now also supports server-side session
+      resumption with TLS <= 1.2 clients not supporting session
+      tickets
+    - Added fz::rename_file
+    - MSW: Added libfilezilla/glue/windows.hpp to set proper
+      defines before including windows.h
+    - Added fz::move_assign_through_move_constructor for classes
+      that depend on normal destruction order even on move
+      assignment
+  * Bugfixes and minor changes:
+    - Fixed memory leak in fz::tls_layer::set_alpn
+    - IPv6 listen sockets are now always created with IPV6_V6ONLY
+      to unify behavior across platforms
+    - Fixes for issues found by --socketdebug
+    - Fixed warnings when bool arguments are passed to fz::sprintf
+    - Fixed warnings in fz::to_integral<bool>
+
+-------------------------------------------------------------------
 Fri May  7 10:49:25 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.28.0
