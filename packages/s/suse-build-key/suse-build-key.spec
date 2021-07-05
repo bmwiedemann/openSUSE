@@ -91,7 +91,9 @@ for i in %sources; do
         ;;
     esac
 done
+%if 0%{?suse_version} &&  0%{?suse_version} < 1120
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
+%endif
 
 install -d -m 755 $RPM_BUILD_ROOT%{containerkeydir}/
 install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
@@ -102,7 +104,9 @@ install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-ke
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
 %attr(755,root,root) %dir %{containerkeydir}
+%if 0%{?suse_version} &&  0%{?suse_version} < 1120
 %attr(755,root,root) %{_prefix}/lib/rpm/gnupg/dumpsigs
+%endif
 %{keydir}/gpg-pubkey-50a3dd1c-50f35137.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
 %{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc

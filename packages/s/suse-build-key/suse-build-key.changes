@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 11 09:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove dumpsigs for SLE12+ (rpm 4.x) (bsc#1186827)
+
+-------------------------------------------------------------------
 Mon Sep 21 08:30:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - suse build key extended (bsc#1176759)
