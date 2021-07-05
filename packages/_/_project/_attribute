@@ -142,7 +142,7 @@
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210519'
-  boo#1183082: '20210702'
+  boo#1183082: '20210703'
   boo#1183454: '20210703'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
@@ -162,18 +162,18 @@
   boo#1185746: '20210527'
   boo#1185839: '20210522'
   boo#1185933: '20210514'
-  boo#1186083: '20210628'
+  boo#1186083: '20210703'
   boo#1186363: '20210605'
   boo#1186735: '20210703'
   boo#1186775: '20210615'
   boo#1186890: '20210603'
-  boo#1187019: '20210702'
+  boo#1187019: '20210703'
   boo#1187164: '20210703'
   boo#1187204: '20210611'
   boo#1187371: '20210616'
   boo#1187423: '20210618'
   boo#1187424: '20210618'
-  boo#1187971: '20210702'
+  boo#1187971: '20210703'
   boo#1187987: '20210703'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
@@ -187,7 +187,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
-  gh#OSInside/kiwi#1867: '20210702'
+  gh#OSInside/kiwi#1867: '20210703'
   gh#containers/podman#10685: '20210628'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
@@ -360,14 +360,14 @@
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
-  poo#91830: '20210702'
+  poo#91830: '20210703'
   poo#92004: '20210703'
   poo#92080: '20210520'
   poo#92401: '20210527'
   poo#92410: '20210526'
   poo#92413: '20210524'
   poo#92440: '20210517'
-  poo#92614: '20210517'
+  poo#92614: '20210703'
   poo#92945: '20210526'
   poo#92948: '20210527'
   poo#93159: '20210703'
@@ -429,7 +429,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210703</value>
+    <value>20210704</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
