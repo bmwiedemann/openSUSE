@@ -1500,6 +1500,7 @@
       <repopackage name="systemd-logger" arch="x86_64"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-common-SUSE"/>
+      <repopackage name="systemd-rpm-macros"/>
       <repopackage name="systemd-sysvinit"/>
       <repopackage name="systemsettings5" arch="x86_64"/>
       <repopackage name="sysuser-shadow"/>
