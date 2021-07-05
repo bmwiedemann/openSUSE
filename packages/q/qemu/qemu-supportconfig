@@ -31,7 +31,7 @@ rpm_verify() {
         fi
     else
         echo "package $thisrpm is not installed"
-	ret=1
+    ret=1
     fi
     echo
     return $ret
@@ -56,6 +56,8 @@ fi
 # basic system information
 plugin_command "uname -r"
 plugin_command "lscpu"
+plugin_command "lspci -v"
+plugin_command "lsscsi"
 plugin_command "kvm_stat -1"
 plugin_command "lsmod | grep ^kvm"
 for MODULE in `lsmod | grep ^kvm | cut -d ' ' -f 1`; do
@@ -64,14 +66,15 @@ done
 plugin_command "ps -ef | grep qemu"
 
 # list contents of common config and image directories
-plugin_command "ls -alR /var/lib/kvm/images/"
+plugin_command "ls -alR /var/lib/libvirt/images/"
 
 # network-related info often useful for debugging
-if [ systemctl is-enabled NetworkManager.service 2>&1 > /dev/null ]; then
+nm_enabled=$(systemctl is-enabled NetworkManager.service > /dev/null 2>&1; echo $?)
+if [ $nm_enabled -eq 0 ]; then
     echo "NOTE: NetworkManager should not be enabled on a KVM host"
 fi
-plugin_command "route -n"
-plugin_command "arp -v"
+plugin_command "ip route list"
+plugin_command "ip neigh list"
 plugin_command "ip link show type bridge"
 plugin_command "bridge link show"
 

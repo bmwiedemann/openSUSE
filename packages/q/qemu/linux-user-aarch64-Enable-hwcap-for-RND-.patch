@@ -1,0 +1,50 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Tue, 27 Apr 2021 14:41:08 -0700
+Subject: linux-user/aarch64: Enable hwcap for RND, BTI, and MTE
+
+Git-commit: 68948d18224b93361e2880e2946ab268d0c650d7
+
+These three features are already enabled by TCG, but are missing
+their hwcap bits.  Update HWCAP2 from linux v5.12.
+
+Cc: qemu-stable@nongnu.org (for 6.0.1)
+Buglink: https://bugs.launchpad.net/bugs/1926044
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20210427214108.88503-1-richard.henderson@linaro.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ linux-user/elfload.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index c6731013fde2a8c206be1dd8553f..fc9c4f12be92bd4eec03e9e7803f 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -586,6 +586,16 @@ enum {
+     ARM_HWCAP2_A64_SVESM4       = 1 << 6,
+     ARM_HWCAP2_A64_FLAGM2       = 1 << 7,
+     ARM_HWCAP2_A64_FRINT        = 1 << 8,
++    ARM_HWCAP2_A64_SVEI8MM      = 1 << 9,
++    ARM_HWCAP2_A64_SVEF32MM     = 1 << 10,
++    ARM_HWCAP2_A64_SVEF64MM     = 1 << 11,
++    ARM_HWCAP2_A64_SVEBF16      = 1 << 12,
++    ARM_HWCAP2_A64_I8MM         = 1 << 13,
++    ARM_HWCAP2_A64_BF16         = 1 << 14,
++    ARM_HWCAP2_A64_DGH          = 1 << 15,
++    ARM_HWCAP2_A64_RNG          = 1 << 16,
++    ARM_HWCAP2_A64_BTI          = 1 << 17,
++    ARM_HWCAP2_A64_MTE          = 1 << 18,
+ };
+ 
+ #define ELF_HWCAP   get_elf_hwcap()
+@@ -640,6 +650,9 @@ static uint32_t get_elf_hwcap2(void)
+     GET_FEATURE_ID(aa64_dcpodp, ARM_HWCAP2_A64_DCPODP);
+     GET_FEATURE_ID(aa64_condm_5, ARM_HWCAP2_A64_FLAGM2);
+     GET_FEATURE_ID(aa64_frint, ARM_HWCAP2_A64_FRINT);
++    GET_FEATURE_ID(aa64_rndr, ARM_HWCAP2_A64_RNG);
++    GET_FEATURE_ID(aa64_bti, ARM_HWCAP2_A64_BTI);
++    GET_FEATURE_ID(aa64_mte, ARM_HWCAP2_A64_MTE);
+ 
+     return hwcaps;
+ }

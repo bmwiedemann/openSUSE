@@ -202,6 +202,24 @@ Patch00066:     vhost-user-gpu-fix-OOB-write-in-virgl_cm.patch
 Patch00067:     vhost-user-gpu-abstract-vg_cleanup_mappi.patch
 Patch00068:     target-sh4-Return-error-if-CPUClass-get_.patch
 Patch00069:     tcg-arm-Fix-tcg_out_op-function-signatur.patch
+Patch00070:     x86-acpi-use-offset-instead-of-pointer-w.patch
+Patch00071:     linux-user-aarch64-Enable-hwcap-for-RND-.patch
+Patch00072:     target-i386-Exit-tb-after-wrmsr.patch
+Patch00073:     vl-allow-not-specifying-size-in-m-when-u.patch
+Patch00074:     qemu-config-load-modules-when-instantiat.patch
+Patch00075:     hmp-Fix-loadvm-to-resume-the-VM-on-succe.patch
+Patch00076:     qemu-config-parse-configuration-files-to.patch
+Patch00077:     vl-plumb-keyval-based-options-into-readc.patch
+Patch00078:     vl-plug-object-back-into-readconfig.patch
+Patch00079:     vhost-vdpa-don-t-initialize-backend_feat.patch
+Patch00080:     vl-Fix-an-assert-failure-in-error-path.patch
+Patch00081:     qemu-config-use-qemu_opts_from_qdict.patch
+Patch00082:     runstate-Initialize-Error-to-NULL.patch
+Patch00083:     tcg-sparc-Fix-temp_allocate_frame-vs-spa.patch
+Patch00084:     tcg-Allocate-sufficient-storage-in-temp_.patch
+Patch00085:     hw-block-nvme-align-with-existing-style.patch
+Patch00086:     hw-nvme-fix-missing-check-for-PMR-capabi.patch
+Patch00087:     hw-nvme-fix-pin-based-interrupt-behavior.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -304,6 +322,7 @@ BuildRequires:  pkgconfig(pixman-1) >= 0.21.8
 %ifarch x86_64
 BuildRequires:  pkgconfig(libpmem)
 %endif
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 %if 0%{?with_rbd}
@@ -571,6 +590,16 @@ Release:        0
 
 %description audio-pa
 This package contains a module for Pulse Audio based audio support for QEMU.
+
+%package audio-jack
+Summary:        JACK based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-jack
+This package contains a module for JACK based audio support for QEMU.
 
 %package audio-spice
 Summary:        Spice based audio support for QEMU
@@ -980,6 +1009,7 @@ This package provides a service file for starting and stopping KSM.
 BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
+BuildRequires:  qemu-audio-jack = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
 BuildRequires:  qemu-audio-spice = %{qemuver}
 BuildRequires:  qemu-block-curl = %{qemuver}
@@ -1105,6 +1135,24 @@ This package records qemu testsuite results and represents successful testing.
 %patch00067 -p1
 %patch00068 -p1
 %patch00069 -p1
+%patch00070 -p1
+%patch00071 -p1
+%patch00072 -p1
+%patch00073 -p1
+%patch00074 -p1
+%patch00075 -p1
+%patch00076 -p1
+%patch00077 -p1
+%patch00078 -p1
+%patch00079 -p1
+%patch00080 -p1
+%patch00081 -p1
+%patch00082 -p1
+%patch00083 -p1
+%patch00084 -p1
+%patch00085 -p1
+%patch00086 -p1
+%patch00087 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1260,7 +1308,7 @@ cd %blddir
 	--enable-slirp=system \
 	--enable-pie \
 	--enable-docs \
-	--audio-drv-list="pa alsa" \
+	--audio-drv-list="pa alsa jack" \
 	--enable-attr \
 	--disable-auth-pam \
 	--enable-bochs \
@@ -1721,14 +1769,14 @@ done
 %endif
 %find_lang %name
 install -d -m 0755 %{buildroot}%_datadir/%name/firmware
-install -d -m 0755 %{buildroot}%_libexecdir/supportconfig/plugins
+install -d -m 0755 %{buildroot}/usr/lib/supportconfig/plugins
 install -d -m 0755 %{buildroot}%_sysconfdir/%name/firmware
 install -D -m 0644 %{SOURCE4} %{buildroot}%_sysconfdir/%name/bridge.conf
 install -D -m 0755 %{SOURCE3} %{buildroot}%_datadir/%name/qemu-ifup
 install -D -p -m 0644 %{SOURCE8} %{buildroot}/usr/lib/udev/rules.d/80-qemu-ga.rules
 install -D -m 0755 scripts/analyze-migration.py  %{buildroot}%_bindir/analyze-migration.py
 install -D -m 0755 scripts/vmstate-static-checker.py  %{buildroot}%_bindir/vmstate-static-checker.py
-install -D -m 0755 %{SOURCE9} %{buildroot}%_libexecdir/supportconfig/plugins/%name
+install -D -m 0755 %{SOURCE9} %{buildroot}/usr/lib/supportconfig/plugins/%name
 install -D -m 0644 %{SOURCE10} %{buildroot}%_docdir/qemu-arm/supported.txt
 install -D -m 0644 %{SOURCE11} %{buildroot}%_docdir/qemu-ppc/supported.txt
 install -D -m 0644 %{SOURCE12} %{buildroot}%_docdir/qemu-x86/supported.txt
@@ -1854,7 +1902,7 @@ fi
 update-alternatives --install \
    %{_datadir}/%name/skiboot.lid skiboot.lid %{_datadir}/%name/skiboot.lid.qemu 15
 
-%postun skiboot
+%preun skiboot
 if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
    update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
 fi
@@ -1897,7 +1945,7 @@ fi
 %_datadir/%name/trace-events-all
 %dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-virtiofsd.json
-%dir %_docdir/%name/_static
+%doc %_docdir/%name/_static
 %dir %_docdir/%name/devel
 %dir %_docdir/%name/interop
 %dir %_docdir/%name/specs
@@ -1910,21 +1958,6 @@ fi
 %dir %_docdir/%name/tools
 %dir %_docdir/%name/user
 %_docdir/%name/.buildinfo
-%_docdir/%name/_static/alabaster.css
-%_docdir/%name/_static/basic.css
-%_docdir/%name/_static/custom.css
-%_docdir/%name/_static/doctools.js
-%_docdir/%name/_static/documentation_options.js
-%_docdir/%name/_static/file.png
-%_docdir/%name/_static/jquery-*
-%_docdir/%name/_static/jquery.js
-%_docdir/%name/_static/language_data.js
-%_docdir/%name/_static/minus.png
-%_docdir/%name/_static/plus.png
-%_docdir/%name/_static/pygments.css
-%_docdir/%name/_static/searchtools.js
-%_docdir/%name/_static/underscore-*
-%_docdir/%name/_static/underscore.js
 %_docdir/%name/devel/atomics.html
 %_docdir/%name/devel/bitops.html
 %_docdir/%name/devel/block-coroutine-wrapper.html
@@ -2075,9 +2108,6 @@ fi
 %_docdir/%name/tools/virtiofsd.html
 %_docdir/%name/user/index.html
 %_docdir/%name/user/main.html
-%dir %_libexecdir/supportconfig
-%dir %_libexecdir/supportconfig/plugins
-%_libexecdir/supportconfig/plugins/%name
 %_mandir/man1/%name.1.gz
 %_mandir/man1/qemu-storage-daemon.1.gz
 %_mandir/man1/virtiofsd.1.gz
@@ -2088,6 +2118,9 @@ fi
 %_mandir/man7/qemu-storage-daemon-qmp-ref.7.gz
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
+%dir /usr/lib/supportconfig
+%dir /usr/lib/supportconfig/plugins
+/usr/lib/supportconfig/plugins/%name
 %if %{kvm_available}
 %ifarch s390x
 %{_prefix}/lib/modules-load.d/kvm.conf
@@ -2195,6 +2228,11 @@ fi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/audio-pa.so
+
+%files audio-jack
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-jack.so
 
 %files audio-spice
 %defattr(-, root, root)

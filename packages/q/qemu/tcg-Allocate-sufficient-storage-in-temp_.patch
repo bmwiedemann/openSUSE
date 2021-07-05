@@ -1,0 +1,71 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 18 Jun 2021 21:53:27 -0700
+Subject: tcg: Allocate sufficient storage in temp_allocate_frame
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: c1c091948ae4a73c1a80b5005f6204d0e665ce52
+
+This function should have been updated for vector types
+when they were introduced.
+
+Fixes: d2fd745fe8b
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/367
+Cc: qemu-stable@nongnu.org
+Tested-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ tcg/tcg.c | 31 ++++++++++++++++++++++++++-----
+ 1 file changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index a9cf55531e2b9ae06d5d852cc563..21d65969beb7cc4d34c2b321c7b3 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -3489,17 +3489,38 @@ static void check_regs(TCGContext *s)
+ 
+ static void temp_allocate_frame(TCGContext *s, TCGTemp *ts)
+ {
+-    if (s->current_frame_offset + (tcg_target_long)sizeof(tcg_target_long) >
+-        s->frame_end) {
+-        tcg_abort();
++    intptr_t off, size, align;
++
++    switch (ts->type) {
++    case TCG_TYPE_I32:
++        size = align = 4;
++        break;
++    case TCG_TYPE_I64:
++    case TCG_TYPE_V64:
++        size = align = 8;
++        break;
++    case TCG_TYPE_V128:
++        size = align = 16;
++        break;
++    case TCG_TYPE_V256:
++        /* Note that we do not require aligned storage for V256. */
++        size = 32, align = 16;
++        break;
++    default:
++        g_assert_not_reached();
+     }
+-    ts->mem_offset = s->current_frame_offset;
++
++    assert(align <= TCG_TARGET_STACK_ALIGN);
++    off = ROUND_UP(s->current_frame_offset, align);
++    assert(off + size <= s->frame_end);
++    s->current_frame_offset = off + size;
++
++    ts->mem_offset = off;
+ #if defined(__sparc__)
+     ts->mem_offset += TCG_TARGET_STACK_BIAS;
+ #endif
+     ts->mem_base = s->frame_temp;
+     ts->mem_allocated = 1;
+-    s->current_frame_offset += sizeof(tcg_target_long);
+ }
+ 
+ static void temp_load(TCGContext *, TCGTemp *, TCGRegSet, TCGRegSet, TCGRegSet);

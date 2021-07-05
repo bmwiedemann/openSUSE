@@ -1,0 +1,41 @@
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Date: Thu, 10 Jun 2021 16:47:41 +0800
+Subject: vl: Fix an assert failure in error path
+
+Git-commit: 38f71349c7c4969bc14da4da1c70b8cc4078d596
+
+Based on the description of error_setg(), the local variable err in
+qemu_maybe_daemonize() should be initialized to NULL.
+
+Without fix, the uninitialized *errp triggers assert failure which
+doesn't show much valuable information.
+
+Before the fix:
+qemu-system-x86_64: ../util/error.c:59: error_setv: Assertion `*errp == NULL' failed.
+
+After fix:
+qemu-system-x86_64: cannot create PID file: Cannot open pid file: Permission denied
+
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Message-Id: <20210610084741.456260-1-zhenzhong.duan@intel.com>
+Cc: qemu-stable@nongnu.org
+Fixes: 0546c0609c ("vl: split various early command line options to a separate function", 2020-12-10)
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ softmmu/vl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 8cb68f21b9f2a5cf159295169ed0..8a0ab39d81b1108826526bf3fc9a 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2509,7 +2509,7 @@ static void qemu_process_help_options(void)
+ 
+ static void qemu_maybe_daemonize(const char *pid_file)
+ {
+-    Error *err;
++    Error *err = NULL;
+ 
+     os_daemonize();
+     rcu_disable_atfork();

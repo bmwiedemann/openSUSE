@@ -1,0 +1,187 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 24 May 2021 06:57:51 -0400
+Subject: vl: plumb keyval-based options into -readconfig
+
+Git-commit: c0d4aa82f895af67cbf7772324e05605e22b4162
+
+Let -readconfig support parsing command line options into QDict or
+QemuOpts.  This will be used to add back support for objects in
+-readconfig.
+
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20210524105752.3318299-3-pbonzini@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ include/block/qdict.h    |  2 -
+ include/qapi/qmp/qdict.h |  3 ++
+ softmmu/vl.c             | 83 ++++++++++++++++++++++++++++------------
+ 3 files changed, 62 insertions(+), 26 deletions(-)
+
+diff --git a/include/block/qdict.h b/include/block/qdict.h
+index d8cb502d7db3d687eb4701804db0..ced2acfb92a080d9fc4ad52517fa 100644
+--- a/include/block/qdict.h
++++ b/include/block/qdict.h
+@@ -20,8 +20,6 @@ void qdict_join(QDict *dest, QDict *src, bool overwrite);
+ void qdict_extract_subqdict(QDict *src, QDict **dst, const char *start);
+ void qdict_array_split(QDict *src, QList **dst);
+ int qdict_array_entries(QDict *src, const char *subqdict);
+-QObject *qdict_crumple(const QDict *src, Error **errp);
+-void qdict_flatten(QDict *qdict);
+ 
+ typedef struct QDictRenames {
+     const char *from;
+diff --git a/include/qapi/qmp/qdict.h b/include/qapi/qmp/qdict.h
+index 9934539c1b73590e626ab8adc774..d5b5430e21a90afdf93a5e46df72 100644
+--- a/include/qapi/qmp/qdict.h
++++ b/include/qapi/qmp/qdict.h
+@@ -64,4 +64,7 @@ const char *qdict_get_try_str(const QDict *qdict, const char *key);
+ 
+ QDict *qdict_clone_shallow(const QDict *src);
+ 
++QObject *qdict_crumple(const QDict *src, Error **errp);
++void qdict_flatten(QDict *qdict);
++
+ #endif /* QDICT_H */
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 5c7e7570f627a54eb22f668dceb0..4cdbe9232a6429b6f9a195336149 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -123,6 +123,7 @@
+ #include "qapi/qapi-commands-misc.h"
+ #include "qapi/qapi-visit-qom.h"
+ #include "qapi/qapi-commands-ui.h"
++#include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qerror.h"
+ #include "sysemu/iothread.h"
+ #include "qemu/guest-random.h"
+@@ -2114,13 +2115,53 @@ static int global_init_func(void *opaque, QemuOpts *opts, Error **errp)
+     return 0;
+ }
+ 
++/*
++ * Return whether configuration group @group is stored in QemuOpts, or
++ * recorded as one or more QDicts by qemu_record_config_group.
++ */
++static bool is_qemuopts_group(const char *group)
++{
++    return true;
++}
++
++static void qemu_record_config_group(const char *group, QDict *dict,
++                                     bool from_json, Error **errp)
++{
++    abort();
++}
++
++/*
++ * Parse non-QemuOpts config file groups, pass the rest to
++ * qemu_config_do_parse.
++ */
++static void qemu_parse_config_group(const char *group, QDict *qdict,
++                                    void *opaque, Error **errp)
++{
++    QObject *crumpled;
++    if (is_qemuopts_group(group)) {
++        qemu_config_do_parse(group, qdict, opaque, errp);
++        return;
++    }
++
++    crumpled = qdict_crumple(qdict, errp);
++    if (!crumpled) {
++        return;
++    }
++    if (qobject_type(crumpled) != QTYPE_QDICT) {
++        assert(qobject_type(crumpled) == QTYPE_QLIST);
++        error_setg(errp, "Lists cannot be at top level of a configuration section");
++        return;
++    }
++    qemu_record_config_group(group, qobject_to(QDict, crumpled), false, errp);
++}
++
+ static void qemu_read_default_config_file(Error **errp)
+ {
+     ERRP_GUARD();
+     int ret;
+     g_autofree char *file = get_relocated_path(CONFIG_QEMU_CONFDIR "/qemu.conf");
+ 
+-    ret = qemu_read_config_file(file, qemu_config_do_parse, errp);
++    ret = qemu_read_config_file(file, qemu_parse_config_group, errp);
+     if (ret < 0) {
+         if (ret == -ENOENT) {
+             error_free(*errp);
+@@ -2129,9 +2170,8 @@ static void qemu_read_default_config_file(Error **errp)
+     }
+ }
+ 
+-static int qemu_set_option(const char *str)
++static void qemu_set_option(const char *str, Error **errp)
+ {
+-    Error *local_err = NULL;
+     char group[64], id[64], arg[64];
+     QemuOptsList *list;
+     QemuOpts *opts;
+@@ -2139,27 +2179,23 @@ static int qemu_set_option(const char *str)
+ 
+     rc = sscanf(str, "%63[^.].%63[^.].%63[^=]%n", group, id, arg, &offset);
+     if (rc < 3 || str[offset] != '=') {
+-        error_report("can't parse: \"%s\"", str);
+-        return -1;
++        error_setg(errp, "can't parse: \"%s\"", str);
++        return;
+     }
+ 
+-    list = qemu_find_opts(group);
+-    if (list == NULL) {
+-        return -1;
++    if (!is_qemuopts_group(group)) {
++        error_setg(errp, "-set is not supported with %s", group);
++    } else {
++        list = qemu_find_opts_err(group, errp);
++        if (list) {
++            opts = qemu_opts_find(list, id);
++            if (!opts) {
++                error_setg(errp, "there is no %s \"%s\" defined", group, id);
++                return;
++            }
++            qemu_opt_set(opts, arg, str + offset + 1, errp);
++        }
+     }
+-
+-    opts = qemu_opts_find(list, id);
+-    if (!opts) {
+-        error_report("there is no %s \"%s\" defined",
+-                     list->name, id);
+-        return -1;
+-    }
+-
+-    if (!qemu_opt_set(opts, arg, str + offset + 1, &local_err)) {
+-        error_report_err(local_err);
+-        return -1;
+-    }
+-    return 0;
+ }
+ 
+ static void user_register_global_props(void)
+@@ -2764,8 +2800,7 @@ void qemu_init(int argc, char **argv, char **envp)
+                 }
+                 break;
+             case QEMU_OPTION_set:
+-                if (qemu_set_option(optarg) != 0)
+-                    exit(1);
++                qemu_set_option(optarg, &error_fatal);
+                 break;
+             case QEMU_OPTION_global:
+                 if (qemu_global_option(optarg) != 0)
+@@ -3397,7 +3432,7 @@ void qemu_init(int argc, char **argv, char **envp)
+                 qemu_plugin_opt_parse(optarg, &plugin_list);
+                 break;
+             case QEMU_OPTION_readconfig:
+-                qemu_read_config_file(optarg, qemu_config_do_parse, &error_fatal);
++                qemu_read_config_file(optarg, qemu_parse_config_group, &error_fatal);
+                 break;
+             case QEMU_OPTION_spice:
+                 olist = qemu_find_opts_err("spice", NULL);

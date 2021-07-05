@@ -1,0 +1,30 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 14 May 2021 10:13:37 -0500
+Subject: target/i386: Exit tb after wrmsr
+
+Git-commit: 244843b757220c432e0e9ae8d2210218c034730d
+
+At minimum, wrmsr can change efer, which affects HF_LMA.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20210514151342.384376-46-richard.henderson@linaro.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ target/i386/tcg/translate.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index 880bc455612aa9757a065723206e..6b713b4fff7c466bd864d4af5792 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -7198,6 +7198,8 @@ static target_ulong disas_insn(DisasContext *s, CPUState *cpu)
+                 gen_helper_rdmsr(cpu_env);
+             } else {
+                 gen_helper_wrmsr(cpu_env);
++                gen_jmp_im(s, s->pc - s->cs_base);
++                gen_eob(s);
+             }
+         }
+         break;

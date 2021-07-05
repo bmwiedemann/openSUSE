@@ -1,0 +1,35 @@
+From: Klaus Jensen <k.jensen@samsung.com>
+Date: Mon, 7 Jun 2021 11:47:57 +0200
+Subject: hw/nvme: fix missing check for PMR capability
+
+Git-commit: 2b02aabc9d02f9e95946cf639f546bb61f1721b7
+
+Qiang Liu reported that an access on an unknown address is triggered in
+memory_region_set_enabled because a check on CAP.PMRS is missing for the
+PMRCTL register write when no PMR is configured.
+
+Cc: qemu-stable@nongnu.org
+Fixes: 75c3c9de961d ("hw/block/nvme: disable PMR at boot up")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/362
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Reviewed-by: Keith Busch <kbusch@kernel.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/nvme.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+index 58185c8a17bfa3b84643733bc558..73f4516174776782f237193e29fc 100644
+--- a/hw/block/nvme.c
++++ b/hw/block/nvme.c
+@@ -5600,6 +5600,10 @@ static void nvme_write_bar(NvmeCtrl *n, hwaddr offset, uint64_t data,
+                        "invalid write to PMRCAP register, ignored");
+         return;
+     case 0xe04: /* PMRCTL */
++        if (!NVME_CAP_PMRS(n->bar.cap)) {
++            return;
++        }
++
+         n->bar.pmrctl = data;
+         if (NVME_PMRCTL_EN(data)) {
+             memory_region_set_enabled(&n->pmr.dev->mr, true);

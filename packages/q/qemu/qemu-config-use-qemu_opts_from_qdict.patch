@@ -1,0 +1,60 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 9 Jun 2021 14:34:35 +0200
+Subject: qemu-config: use qemu_opts_from_qdict
+
+Git-commit: e7d85d955a7a3405934a104f35228aae1d338a6d
+
+Using qemu_opts_absorb_qdict, and then checking for any leftover options,
+is redundant because there is already a function that does the same,
+qemu_opts_from_qdict.  qemu_opts_from_qdict consumes the whole dictionary
+and therefore can just return an error message if an option fails to validate.
+
+This also fixes a bug, because the "id" entry was retrieved in
+qemu_config_do_parse and then left there by qemu_opts_absorb_qdict.
+As a result, it was reported as an unrecognized option.
+
+Reported-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Fixes: 3770141139 ("qemu-config: parse configuration files to a QDict")
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ util/qemu-config.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/util/qemu-config.c b/util/qemu-config.c
+index 374f3bc4600c1c3b989638583494..84ee6dc4ea58014ad7d7ca8d83a2 100644
+--- a/util/qemu-config.c
++++ b/util/qemu-config.c
+@@ -429,29 +429,14 @@ out:
+ void qemu_config_do_parse(const char *group, QDict *qdict, void *opaque, Error **errp)
+ {
+     QemuOptsList **lists = opaque;
+-    const char *id = qdict_get_try_str(qdict, "id");
+     QemuOptsList *list;
+-    QemuOpts *opts;
+-    const QDictEntry *unrecognized;
+ 
+     list = find_list(lists, group, errp);
+     if (!list) {
+         return;
+     }
+ 
+-    opts = qemu_opts_create(list, id, 1, errp);
+-    if (!opts) {
+-        return;
+-    }
+-    if (!qemu_opts_absorb_qdict(opts, qdict, errp)) {
+-        qemu_opts_del(opts);
+-        return;
+-    }
+-    unrecognized = qdict_first(qdict);
+-    if (unrecognized) {
+-        error_setg(errp, QERR_INVALID_PARAMETER, unrecognized->key);
+-        qemu_opts_del(opts);
+-    }
++    qemu_opts_from_qdict(list, qdict, errp);
+ }
+ 
+ int qemu_config_parse(FILE *fp, QemuOptsList **lists, const char *fname, Error **errp)

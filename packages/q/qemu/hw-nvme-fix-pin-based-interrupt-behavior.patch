@@ -1,0 +1,105 @@
+From: Klaus Jensen <k.jensen@samsung.com>
+Date: Thu, 17 Jun 2021 20:55:42 +0200
+Subject: hw/nvme: fix pin-based interrupt behavior (again)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 83d7ed5c570d4c1d5163951b3057cac2ae7da4ff
+
+Jakub noticed[1] that, when using pin-based interrupts, the device will
+unconditionally deasssert when any CQEs are acknowledged. However, the
+pin should not be deasserted if other completion queues still holds
+unacknowledged CQEs.
+
+The bug is an artifact of commit ca247d35098d ("hw/block/nvme: fix
+pin-based interrupt behavior") which fixed one bug but introduced
+another. This is the third time someone tries to fix pin-based
+interrupts (see commit 5e9aa92eb1a5 ("hw/block: Fix pin-based interrupt
+behaviour of NVMe"))...
+
+Third time's the charm, so fix it, again, by keeping track of how many
+CQs have unacknowledged CQEs and only deassert when all are cleared.
+
+  [1]: <20210610114624.304681-1-jakub.jermar@kernkonzept.com>
+
+Cc: qemu-stable@nongnu.org
+Fixes: ca247d35098d ("hw/block/nvme: fix pin-based interrupt behavior")
+Reported-by: Jakub Jermář <jakub.jermar@kernkonzept.com>
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Reviewed-by: Keith Busch <kbusch@kernel.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/block/nvme.c | 18 +++++++++++++++++-
+ hw/block/nvme.h |  1 +
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+index 73f4516174776782f237193e29fc..b63c511018ad6ca95400e5bb51ff 100644
+--- a/hw/block/nvme.c
++++ b/hw/block/nvme.c
+@@ -469,7 +469,9 @@ static void nvme_irq_deassert(NvmeCtrl *n, NvmeCQueue *cq)
+             return;
+         } else {
+             assert(cq->vector < 32);
+-            n->irq_status &= ~(1 << cq->vector);
++            if (!n->cq_pending) {
++                n->irq_status &= ~(1 << cq->vector);
++            }
+             nvme_irq_check(n);
+         }
+     }
+@@ -1262,6 +1264,7 @@ static void nvme_post_cqes(void *opaque)
+     NvmeCQueue *cq = opaque;
+     NvmeCtrl *n = cq->ctrl;
+     NvmeRequest *req, *next;
++    bool pending = cq->head != cq->tail;
+     int ret;
+ 
+     QTAILQ_FOREACH_SAFE(req, &cq->req_list, entry, next) {
+@@ -1291,6 +1294,10 @@ static void nvme_post_cqes(void *opaque)
+         QTAILQ_INSERT_TAIL(&sq->req_list, req, entry);
+     }
+     if (cq->tail != cq->head) {
++        if (cq->irq_enabled && !pending) {
++            n->cq_pending++;
++        }
++
+         nvme_irq_assert(n, cq);
+     }
+ }
+@@ -4102,6 +4109,11 @@ static uint16_t nvme_del_cq(NvmeCtrl *n, NvmeRequest *req)
+         trace_pci_nvme_err_invalid_del_cq_notempty(qid);
+         return NVME_INVALID_QUEUE_DEL;
+     }
++
++    if (cq->irq_enabled && cq->tail != cq->head) {
++        n->cq_pending--;
++    }
++
+     nvme_irq_deassert(n, cq);
+     trace_pci_nvme_del_cq(qid);
+     nvme_free_cq(cq, n);
+@@ -5779,6 +5791,10 @@ static void nvme_process_db(NvmeCtrl *n, hwaddr addr, int val)
+         }
+ 
+         if (cq->tail == cq->head) {
++            if (cq->irq_enabled) {
++                n->cq_pending--;
++            }
++
+             nvme_irq_deassert(n, cq);
+         }
+     } else {
+diff --git a/hw/block/nvme.h b/hw/block/nvme.h
+index 5d05ec368f7a993f71d3d9ed9809..d216e5674dce294b318c3955a94f 100644
+--- a/hw/block/nvme.h
++++ b/hw/block/nvme.h
+@@ -171,6 +171,7 @@ typedef struct NvmeCtrl {
+     uint32_t    max_q_ents;
+     uint8_t     outstanding_aers;
+     uint32_t    irq_status;
++    int         cq_pending;
+     uint64_t    host_timestamp;                 /* Timestamp sent by the host */
+     uint64_t    timestamp_set_qemu_clock_ms;    /* QEMU clock time */
+     uint64_t    starttime_ms;

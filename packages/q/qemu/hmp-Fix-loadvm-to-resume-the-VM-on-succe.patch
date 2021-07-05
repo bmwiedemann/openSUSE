@@ -1,0 +1,37 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Tue, 11 May 2021 18:31:51 +0200
+Subject: hmp: Fix loadvm to resume the VM on success instead of failure
+
+Git-commit: c53cd04e70641fdf9410aac40c617d074047b3e1
+
+Commit f61fe11aa6f broke hmp_loadvm() by adding an incorrect negation
+when converting from 0/-errno return values to a bool value. The result
+is that loadvm resumes the VM now if it failed and keeps it stopped if
+it failed. Fix it to restore the old behaviour and do it the other way
+around.
+
+Fixes: f61fe11aa6f7f8f0ffe4ddaa56a8108f3ab57854
+Cc: qemu-stable@nongnu.org
+Reported-by: Yanhui Ma <yama@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20210511163151.45167-1-kwolf@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ monitor/hmp-cmds.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index 0ad5b774778d4634e8b506881d3f..cc15d9b6ee32264406c890b83866 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -1133,7 +1133,7 @@ void hmp_loadvm(Monitor *mon, const QDict *qdict)
+ 
+     vm_stop(RUN_STATE_RESTORE_VM);
+ 
+-    if (!load_snapshot(name, NULL, false, NULL, &err) && saved_vm_running) {
++    if (load_snapshot(name, NULL, false, NULL, &err) && saved_vm_running) {
+         vm_start();
+     }
+     hmp_handle_error(mon, err);

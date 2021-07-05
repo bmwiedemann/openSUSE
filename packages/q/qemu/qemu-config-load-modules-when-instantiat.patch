@@ -1,0 +1,115 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue, 18 May 2021 09:08:17 -0400
+Subject: qemu-config: load modules when instantiating option groups
+
+Git-commit: 632a8873500d27022c584256afc11e57e2418b94
+
+Right now the SPICE module is special cased to be loaded when processing
+of the -spice command line option.  However, the spice option group
+can also be brought in via -readconfig, in which case the module is
+not loaded.
+
+Add a generic hook to load modules that provide a QemuOpts group,
+and use it for the "spice" and "iscsi" groups.
+
+Fixes: #194
+Fixes: https://bugs.launchpad.net/qemu/+bug/1910696
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ include/qemu/config-file.h |  2 +-
+ softmmu/vl.c               | 21 +++++++++++++++++----
+ stubs/meson.build          |  1 +
+ stubs/module-opts.c        |  6 ++++++
+ util/qemu-config.c         |  1 +
+ 5 files changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/include/qemu/config-file.h b/include/qemu/config-file.h
+index 8d3e53ae4d439cb50b34f0845495..0500b3668d8042013963930d4a12 100644
+--- a/include/qemu/config-file.h
++++ b/include/qemu/config-file.h
+@@ -1,7 +1,7 @@
+ #ifndef QEMU_CONFIG_FILE_H
+ #define QEMU_CONFIG_FILE_H
+ 
+-
++void qemu_load_module_for_opts(const char *group);
+ QemuOptsList *qemu_find_opts(const char *group);
+ QemuOptsList *qemu_find_opts_err(const char *group, Error **errp);
+ QemuOpts *qemu_find_opts_singleton(const char *group);
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 1b9b067ecad6fb392bb34f61fe77..bb3e6821e844d3f87cbc628b922f 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2614,6 +2614,23 @@ void qmp_x_exit_preconfig(Error **errp)
+     }
+ }
+ 
++#ifdef CONFIG_MODULES
++void qemu_load_module_for_opts(const char *group)
++{
++    static bool spice_tried;
++    if (g_str_equal(group, "spice") && !spice_tried) {
++        ui_module_load_one("spice-core");
++        spice_tried = true;
++    }
++
++    static bool iscsi_tried;
++    if (g_str_equal(group, "iscsi") && !iscsi_tried) {
++        block_module_load_one("iscsi");
++        iscsi_tried = true;
++    }
++}
++#endif
++
+ void qemu_init(int argc, char **argv, char **envp)
+ {
+     QemuOpts *opts;
+@@ -3384,10 +3401,6 @@ void qemu_init(int argc, char **argv, char **envp)
+                 break;
+             case QEMU_OPTION_spice:
+                 olist = qemu_find_opts_err("spice", NULL);
+-                if (!olist) {
+-                    ui_module_load_one("spice-core");
+-                    olist = qemu_find_opts("spice");
+-                }
+                 if (!olist) {
+                     error_report("spice support is disabled");
+                     exit(1);
+diff --git a/stubs/meson.build b/stubs/meson.build
+index be6f6d609e58de2a4c4c83d9002b..5555b69103baba363483e047af06 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -22,6 +22,7 @@ stub_ss.add(files('isa-bus.c'))
+ stub_ss.add(files('is-daemonized.c'))
+ stub_ss.add(when: 'CONFIG_LINUX_AIO', if_true: files('linux-aio.c'))
+ stub_ss.add(files('migr-blocker.c'))
++stub_ss.add(files('module-opts.c'))
+ stub_ss.add(files('monitor.c'))
+ stub_ss.add(files('monitor-core.c'))
+ stub_ss.add(files('pci-bus.c'))
+diff --git a/stubs/module-opts.c b/stubs/module-opts.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..a7d0e4ad6eada291cfd0376ff58ce5efcdb76d08
+--- /dev/null
++++ b/stubs/module-opts.c
+@@ -0,0 +1,6 @@
++#include "qemu/osdep.h"
++#include "qemu/config-file.h"
++
++void qemu_load_module_for_opts(const char *group)
++{
++}
+diff --git a/util/qemu-config.c b/util/qemu-config.c
+index 670bd6ebcaaa414137af63c62bb9..34974c4b47d61bdcefa203b1c9fc 100644
+--- a/util/qemu-config.c
++++ b/util/qemu-config.c
+@@ -16,6 +16,7 @@ static QemuOptsList *find_list(QemuOptsList **lists, const char *group,
+ {
+     int i;
+ 
++    qemu_load_module_for_opts(group);
+     for (i = 0; lists[i] != NULL; i++) {
+         if (strcmp(lists[i]->name, group) == 0)
+             break;

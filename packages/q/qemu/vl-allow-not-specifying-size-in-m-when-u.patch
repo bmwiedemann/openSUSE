@@ -1,0 +1,41 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 17 May 2021 10:13:01 -0400
+Subject: vl: allow not specifying size in -m when using -M memory-backend
+
+Git-commit: d349f92f78d26db2805ca39a7745cc70affea021
+
+Starting in QEMU 6.0's commit f5c9fcb82d ("vl: separate
+qemu_create_machine", 2020-12-10), a function have_custom_ram_size()
+replaced the return value of set_memory_options().
+
+The purpose of the return value was to record the presence of
+"-m size", and if it was not there, change the default RAM
+size to the size of the memory backend passed with "-M
+memory-backend".
+
+With that commit, however, have_custom_ram_size() is now queried only
+after set_memory_options has stored the fixed-up RAM size in QemuOpts for
+"future use".  This was actually the only future use of the fixed-up RAM
+size, so remove that code and fix the bug.
+
+Cc: qemu-stable@nongnu.org
+Fixes: f5c9fcb82d ("vl: separate qemu_create_machine", 2020-12-10)
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ softmmu/vl.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 07ade8e5ccd2934a69b82bcaabae..1b9b067ecad6fb392bb34f61fe77 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2026,8 +2026,6 @@ static void set_memory_options(MachineClass *mc)
+         exit(EXIT_FAILURE);
+     }
+ 
+-    /* store value for the future use */
+-    qemu_opt_set_number(opts, "size", ram_size, &error_abort);
+     maxram_size = ram_size;
+ 
+     if (qemu_opt_get(opts, "maxmem")) {

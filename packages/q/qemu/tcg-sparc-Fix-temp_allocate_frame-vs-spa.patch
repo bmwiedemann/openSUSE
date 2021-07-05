@@ -1,0 +1,77 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 18 Jun 2021 16:49:26 -0700
+Subject: tcg/sparc: Fix temp_allocate_frame vs sparc stack bias
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 9defd1bdfb0f2ddb3ca9863e39577f3a9929d58c
+
+We should not be aligning the offset in temp_allocate_frame,
+because the odd offset produces an aligned address in the end.
+Instead, pass the logical offset into tcg_set_frame and add
+the stack bias last.
+
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ tcg/sparc/tcg-target.c.inc | 16 ++++++++++------
+ tcg/tcg.c                  |  9 +++------
+ 2 files changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/tcg/sparc/tcg-target.c.inc b/tcg/sparc/tcg-target.c.inc
+index 3d50f985c6cde71a5d2928db1f4f..c046d1cc6098c0a148fde7a8d7a9 100644
+--- a/tcg/sparc/tcg-target.c.inc
++++ b/tcg/sparc/tcg-target.c.inc
+@@ -987,14 +987,18 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+ {
+     int tmp_buf_size, frame_size;
+ 
+-    /* The TCG temp buffer is at the top of the frame, immediately
+-       below the frame pointer.  */
++    /*
++     * The TCG temp buffer is at the top of the frame, immediately
++     * below the frame pointer.  Use the logical (aligned) offset here;
++     * the stack bias is applied in temp_allocate_frame().
++     */
+     tmp_buf_size = CPU_TEMP_BUF_NLONGS * (int)sizeof(long);
+-    tcg_set_frame(s, TCG_REG_I6, TCG_TARGET_STACK_BIAS - tmp_buf_size,
+-                  tmp_buf_size);
++    tcg_set_frame(s, TCG_REG_I6, -tmp_buf_size, tmp_buf_size);
+ 
+-    /* TCG_TARGET_CALL_STACK_OFFSET includes the stack bias, but is
+-       otherwise the minimal frame usable by callees.  */
++    /*
++     * TCG_TARGET_CALL_STACK_OFFSET includes the stack bias, but is
++     * otherwise the minimal frame usable by callees.
++     */
+     frame_size = TCG_TARGET_CALL_STACK_OFFSET - TCG_TARGET_STACK_BIAS;
+     frame_size += TCG_STATIC_CALL_ARGS_SIZE + tmp_buf_size;
+     frame_size += TCG_TARGET_STACK_ALIGN - 1;
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 1fbe0b686d57361ed698c4ab5e5c..a9cf55531e2b9ae06d5d852cc563 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -3489,17 +3489,14 @@ static void check_regs(TCGContext *s)
+ 
+ static void temp_allocate_frame(TCGContext *s, TCGTemp *ts)
+ {
+-#if !(defined(__sparc__) && TCG_TARGET_REG_BITS == 64)
+-    /* Sparc64 stack is accessed with offset of 2047 */
+-    s->current_frame_offset = (s->current_frame_offset +
+-                               (tcg_target_long)sizeof(tcg_target_long) - 1) &
+-        ~(sizeof(tcg_target_long) - 1);
+-#endif
+     if (s->current_frame_offset + (tcg_target_long)sizeof(tcg_target_long) >
+         s->frame_end) {
+         tcg_abort();
+     }
+     ts->mem_offset = s->current_frame_offset;
++#if defined(__sparc__)
++    ts->mem_offset += TCG_TARGET_STACK_BIAS;
++#endif
+     ts->mem_base = s->frame_temp;
+     ts->mem_allocated = 1;
+     s->current_frame_offset += sizeof(tcg_target_long);

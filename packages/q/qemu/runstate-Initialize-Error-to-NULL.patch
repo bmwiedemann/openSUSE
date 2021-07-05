@@ -1,0 +1,36 @@
+From: Peng Liang <liangpeng10@huawei.com>
+Date: Thu, 10 Jun 2021 21:17:29 +0800
+Subject: runstate: Initialize Error * to NULL
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 6e1da3d305499d3907f3c7f6638243e2e09b5085
+
+Based on the description of error_setg(), the local variable err in
+qemu_init_subsystems() should be initialized to NULL.
+
+Fixes: efd7ab22fb ("vl: extract qemu_init_subsystems")
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peng Liang <liangpeng10@huawei.com>
+Message-Id: <20210610131729.3906565-1-liangpeng10@huawei.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ softmmu/runstate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/softmmu/runstate.c b/softmmu/runstate.c
+index ce8977c6a29c939ac5890b170031..54713100c2eacc4ee616905b732d 100644
+--- a/softmmu/runstate.c
++++ b/softmmu/runstate.c
+@@ -746,7 +746,7 @@ static void qemu_run_exit_notifiers(void)
+ 
+ void qemu_init_subsystems(void)
+ {
+-    Error *err;
++    Error *err = NULL;
+ 
+     os_set_line_buffering();
+ 

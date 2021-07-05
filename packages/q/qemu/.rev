@@ -2705,4 +2705,35 @@ CVE-2021-3544 bsc#1186010
 vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <requestid>900191</requestid>
   </revision>
+  <revision rev="207" vrev="27">
+    <srcmd5>478dbbf8ca828a4dda9b8e661cece7d8</srcmd5>
+    <version>unknown</version>
+    <time>1625516552</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix qemu-supportconfig network-manager verification
+- Fix stable issues found in upstream:
+  hmp-Fix-loadvm-to-resume-the-VM-on-succe.patch
+  hw-block-nvme-align-with-existing-style.patch
+  hw-nvme-fix-missing-check-for-PMR-capabi.patch
+  hw-nvme-fix-pin-based-interrupt-behavior.patch
+  linux-user-aarch64-Enable-hwcap-for-RND-.patch
+  qemu-config-load-modules-when-instantiat.patch
+  qemu-config-parse-configuration-files-to.patch
+  qemu-config-use-qemu_opts_from_qdict.patch
+  runstate-Initialize-Error-to-NULL.patch
+  target-i386-Exit-tb-after-wrmsr.patch
+  tcg-Allocate-sufficient-storage-in-temp_.patch
+  tcg-sparc-Fix-temp_allocate_frame-vs-spa.patch
+  vhost-vdpa-don-t-initialize-backend_feat.patch
+  vl-allow-not-specifying-size-in-m-when-u.patch
+  vl-Fix-an-assert-failure-in-error-path.patch
+  vl-plug-object-back-into-readconfig.patch
+  vl-plumb-keyval-based-options-into-readc.patch
+  x86-acpi-use-offset-instead-of-pointer-w.patch
+- Update qemu-supportconfig plugin
+- Fix an update-alternative warning when removing qemu-skiboot package
+  bsc#1178678
+- Use doc directive to build QEMU documentation</comment>
+    <requestid>903796</requestid>
+  </revision>
 </revisionlist>

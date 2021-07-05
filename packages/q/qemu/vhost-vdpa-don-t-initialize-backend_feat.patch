@@ -1,0 +1,46 @@
+From: Jason Wang <jasowang@redhat.com>
+Date: Wed, 2 Jun 2021 11:31:26 +0800
+Subject: vhost-vdpa: don't initialize backend_features
+
+Git-commit: c33f23a419f95da16ab4faaf08be635c89b96ff0
+
+We used to initialize backend_features during vhost_vdpa_init()
+regardless whether or not it was supported by vhost. This will lead
+the unsupported features like VIRTIO_F_IN_ORDER to be included and set
+to the vhost-vdpa during vhost_dev_start. Because the
+VIRTIO_F_IN_ORDER is not supported by vhost-vdpa so it won't be
+advertised to guest which will break the datapath.
+
+Fix this by not initializing the backend_features, so the
+acked_features could be built only from guest features via
+vhost_net_ack_features().
+
+Fixes: 108a64818e69b ("vhost-vdpa: introduce vhost-vdpa backend")
+Cc: qemu-stable@nongnu.org
+Cc: Gautam Dawar <gdawar@xilinx.com>
+Signed-off-by: Jason Wang <jasowang@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/virtio/vhost-vdpa.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index 01d2101d0976fdd8e407a32ec9db..5fe43a4eb5c48148085b62901ff6 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -275,15 +275,12 @@ static void vhost_vdpa_add_status(struct vhost_dev *dev, uint8_t status)
+ static int vhost_vdpa_init(struct vhost_dev *dev, void *opaque)
+ {
+     struct vhost_vdpa *v;
+-    uint64_t features;
+     assert(dev->vhost_ops->backend_type == VHOST_BACKEND_TYPE_VDPA);
+     trace_vhost_vdpa_init(dev, opaque);
+ 
+     v = opaque;
+     v->dev = dev;
+     dev->opaque =  opaque ;
+-    vhost_vdpa_call(dev, VHOST_GET_FEATURES, &features);
+-    dev->backend_features = features;
+     v->listener = vhost_vdpa_memory_listener;
+     v->msg_type = VHOST_IOTLB_MSG_V2;
+ 

@@ -1,0 +1,87 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 24 May 2021 06:57:52 -0400
+Subject: vl: plug -object back into -readconfig
+
+Git-commit: 49e987695a1873a769a823604f9065aa88e00c55
+
+Commit bc2f4fcb1d ("qom: move user_creatable_add_opts logic to vl.c
+and QAPIfy it", 2021-03-19) switched the creation of objects from
+qemu_opts_foreach to a bespoke QTAILQ in preparation for supporting JSON
+syntax in -object.
+
+Unfortunately in doing so it lost support for [object] stanzas in
+configuration files and also for "-set object.ID.KEY=VAL".  The latter
+is hard to re-establish and probably best solved by deprecating -set.
+This patch uses the infrastructure introduced by the previous two
+patches in order to parse QOM objects correctly from configuration
+files.
+
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20210524105752.3318299-4-pbonzini@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ softmmu/vl.c | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 4cdbe9232a6429b6f9a195336149..8cb68f21b9f2a5cf159295169ed0 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -1710,9 +1710,15 @@ static void object_option_foreach_add(bool (*type_opt_predicate)(const char *))
+     }
+ }
+ 
++static void object_option_add_visitor(Visitor *v)
++{
++    ObjectOption *opt = g_new0(ObjectOption, 1);
++    visit_type_ObjectOptions(v, NULL, &opt->opts, &error_fatal);
++    QTAILQ_INSERT_TAIL(&object_opts, opt, next);
++}
++
+ static void object_option_parse(const char *optarg)
+ {
+-    ObjectOption *opt;
+     QemuOpts *opts;
+     const char *type;
+     Visitor *v;
+@@ -1740,11 +1746,8 @@ static void object_option_parse(const char *optarg)
+         v = opts_visitor_new(opts);
+     }
+ 
+-    opt = g_new0(ObjectOption, 1);
+-    visit_type_ObjectOptions(v, NULL, &opt->opts, &error_fatal);
++    object_option_add_visitor(v);
+     visit_free(v);
+-
+-    QTAILQ_INSERT_TAIL(&object_opts, opt, next);
+ }
+ 
+ /*
+@@ -2121,13 +2124,22 @@ static int global_init_func(void *opaque, QemuOpts *opts, Error **errp)
+  */
+ static bool is_qemuopts_group(const char *group)
+ {
++    if (g_str_equal(group, "object")) {
++        return false;
++    }
+     return true;
+ }
+ 
+ static void qemu_record_config_group(const char *group, QDict *dict,
+                                      bool from_json, Error **errp)
+ {
+-    abort();
++    if (g_str_equal(group, "object")) {
++        Visitor *v = qobject_input_visitor_new_keyval(QOBJECT(dict));
++        object_option_add_visitor(v);
++        visit_free(v);
++    } else {
++        abort();
++    }
+ }
+ 
+ /*
