@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libname libuhd4_0_0
+%define libname libuhd4_1_0
 Name:           uhd
-Version:        4.0.0.0
+Version:        4.1.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- fix compilation with Boost 1.76
-Patch0:         uhd_fix_boost.patch
+Patch1:         uhd-add-includes-for-boost.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -36,10 +36,13 @@ BuildRequires:  gpsd-devel
 BuildRequires:  memory-constraints
 BuildRequires:  orc
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Mako >= 0.4.2
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  python3-devel
+BuildRequires:  python3-Mako >= 0.4.2
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 Requires:       udev
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
@@ -67,6 +70,31 @@ The UHD is the "Universal Software Radio Peripheral" hardware driver.
 The goal of the UHD is to provide a host driver and API for current
 and future Ettus Research products. Users will be able to use the
 UHD driver standalone or with 3rd party applications.
+
+%package        utils
+Summary:        Utility programs for USRP hardware
+Group:          Hardware/Other
+Requires:       python3-%{name} >= %{version}
+
+%description    utils
+The UHD is the "Universal Software Radio Peripheral" hardware driver.
+The goal of the UHD is to provide a host driver and API for current
+and future Ettus Research products. Users will be able to use the
+UHD driver standalone or with 3rd party applications.
+
+This package contains utility programs for handling USRP frontens
+
+%package     -n python3-%{name}
+Summary:        Python bindings for uhd
+Group:          Hardware/Other
+
+%description  -n python3-%{name}
+The UHD is the "Universal Software Radio Peripheral" hardware driver.
+The goal of the UHD is to provide a host driver and API for current
+and future Ettus Research products. Users will be able to use the
+UHD driver standalone or with 3rd party applications.
+
+This package contains Python bindings UHD.
 
 %package        udev
 Summary:        UHD udev rules
@@ -122,6 +150,8 @@ This package contains binary firmware images for the Universal Hardware Driver (
 %autosetup -p1
 # fix python shebangs
 find . -type f -name "*.py" -exec sed -i '/^#!/ s|.*|#!%{_bindir}/python3|' {} \;
+find . -type f -name "*_bist" -exec sed -i '/^#!/ s|.*|#!%{_bindir}/python3|' {} \;
+find . -type f -name "*_update_fs" -exec sed -i '/^#!/ s|.*|#!%{_bindir}/python3|' {} \;
 # remove buildtime from documentation
 echo "HTML_TIMESTAMP         = NO" >> host/docs/Doxyfile.in
 
@@ -157,6 +187,8 @@ mkdir -p  %{buildroot}%{_docdir}/uhd
 mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}
 mv %{buildroot}%{_libdir}/uhd/examples/* %{buildroot}%{_bindir}
+mv %{buildroot}%{_bindir}/python/* %{buildroot}%{_bindir}
+rm -R %{buildroot}%{_bindir}/python
 #mv %%{buildroot}%%{_libdir}/uhd/tests/*_test %%{buildroot}%%{_bindir}
 #
 #rm -R %%{buildroot}%%{_libdir}/uhd/tests
@@ -189,22 +221,30 @@ getent group usrp >/dev/null || %{_sbindir}/groupadd -r usrp
 %doc host/README.md
 %{_libdir}/libuhd.so.*
 
+%files utils
+%{_bindir}/*
+%{_bindir}/uhd_images_downloader.py
+%{_bindir}/usrp2_card_burner.py
+%dir %{_datadir}/uhd
+%exclude %{_datadir}/uhd/images
+%{_datadir}/uhd/cal
+%{_datadir}/uhd/rfnoc
+%{_mandir}/man1/*
+
+%files -n python3-%{name}
+%{python3_sitearch}/uhd
+%{python3_sitearch}/usrp_mpm
+
 %files udev
 %{_udevrulesdir}/10-usrp-uhd.rules
 
 %files devel
 %dir %{_includedir}/uhd
-%dir %{_datadir}/uhd
-%exclude %{_datadir}/uhd/images
-%{_datadir}/uhd/cal
-%{_datadir}/uhd/rfnoc
 %{_includedir}/uhd/*
 %{_includedir}/uhd.h
-%{_bindir}/*
 %{_libdir}/libuhd.so
 %{_libdir}/pkgconfig/uhd.pc
 %{_libdir}/cmake/uhd
-%{_mandir}/man1/*
 
 %files firmware
 %{_datadir}/uhd/images/

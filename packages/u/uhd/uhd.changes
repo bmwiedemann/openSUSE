@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  1 15:31:37 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.0.0
+  See: https://github.com/EttusResearch/uhd/releases for all changes
+- Remove not longer needed patch uhd_fix_boost.patch (applied 
+  upstream)
+- Add a patch uhd-add-includes-for-boost.patch to fix a build for
+  Tumbleweed
+- Enabled Python3 API
+- New binary packages python3-uhd and uhd-utils
+
+-------------------------------------------------------------------
 Wed May  5 16:36:38 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Boost 1.76, replace boost::math usage with
