@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define libname libopenvdb7_1
+%define libname libopenvdb8_1
 
 Name:           openvdb
-Version:        7.1.0
+Version:        8.1.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
-BuildRequires:  cmake >= 2.8.6
+BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
 BuildRequires:  libboost_atomic-devel
@@ -81,11 +81,6 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %prep
 %setup -q
 
-# fix 64bit library path
-%if "%{_lib}" == "lib64"
-sed -i 's/lib$/lib64/g' openvdb/CMakeLists.txt
-%endif
-
 %build
 # -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE is needed,
 # will bail out with: stdlib.h not found otherwise
@@ -99,9 +94,9 @@ sed -i 's/lib$/lib64/g' openvdb/CMakeLists.txt
     -DOPENVDB_BUILD_VDB_VIEW=ON \
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \
     -DOPENVDB_ENABLE_RPATH=OFF \
-    -DUSE_EXR=ON
+    -DUSE_IMATH_HALF=ON
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
