@@ -31,6 +31,7 @@ Source0:        https://github.com/linuxdeepin/deepin-desktop-base/archive/%{_ve
 Patch0:         do-not-installl-os-version.patch
 # PATCH-FIX-OPENSUSE add-suse-info.patch hillwood@opensuse.org - Use openSUSE information
 Patch1:         add-suse-info.patch
+Patch2:         desktop-version-fallback.patch
 
 %description
 This package provides some components for the Deepin desktop environment:
