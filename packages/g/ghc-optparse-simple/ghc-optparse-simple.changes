@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:01:19 UTC 2021 - psimons@suse.com
+
+- Update optparse-simple to version 0.1.1.4.
+  ## 0.1.1.4
+
+  * template-haskell 2.17 support [#15](https://github.com/fpco/optparse-simple/pull/15)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optparse-simple
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name optparse-simple
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.3
+Version:        0.1.1.4
 Release:        0
 Summary:        Simple interface to optparse-applicative
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ BuildRequires:  ghc-githash-devel
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-th-compat-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
