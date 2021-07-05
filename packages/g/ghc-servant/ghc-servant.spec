@@ -19,13 +19,12 @@
 %global pkg_name servant
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        A family of combinators for defining webservices APIs
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-aeson-devel
@@ -76,11 +75,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver 'base' '< 4.15' '< 5'
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
-cabal-tweak-dep-ver 'http-api-data' '< 0.4.3' '< 0.5'
-cabal-tweak-dep-ver 'singleton-bool' '< 0.1.6' '< 0.2'
 
 %build
 %ghc_lib_build

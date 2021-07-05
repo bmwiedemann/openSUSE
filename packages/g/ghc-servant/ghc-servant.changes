@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:02:53 UTC 2021 - psimons@suse.com
+
+- Update servant to version 0.18.3.
+  0.18.3
+  ------
+
+  ### Significant changes
+
+  - Add response header support to UVerb (#1420).
+  - Use Capture Description if available (#1423).
+
+  ### Other changes
+
+  - Support GHC-9.0.1.
+  - Bump `bytestring`, `attoparsec`, `hspec` and `singleton-bool` dependencies.
+
+-------------------------------------------------------------------
 Sat May 15 15:56:17 UTC 2021 - psimons@suse.com
 
 - Update servant to version 0.18.2 revision 1.
