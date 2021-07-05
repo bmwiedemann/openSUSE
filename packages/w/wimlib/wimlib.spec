@@ -1,7 +1,7 @@
 #
 # spec file for package wimlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.13.3
+Version:        1.13.4
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND CC0-1.0
+License:        CC0-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wimlib.net
 Source:         https://wimlib.net/downloads/wimlib-%{version}.tar.gz
