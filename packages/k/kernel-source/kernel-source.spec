@@ -17,8 +17,8 @@
 # icecream 0
 
 
-%define srcversion 5.12
-%define patchversion 5.12.13
+%define srcversion 5.13
+%define patchversion 5.13.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.12.13
+Version:        5.13.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g74bd8c0
+Release:        <RELEASE>.gaa40472
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-74bd8c06913cfc14c5bc3709fbb832b66c5ff66d
+Provides:       %name-srchash-aa40472d585ba618ec8180d4bd70a91f26eb790f
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

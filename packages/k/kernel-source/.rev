@@ -5510,4 +5510,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>amd gpu fixes &amp; 5.12.13 &amp; BT fix</comment>
     <requestid>902716</requestid>
   </revision>
+  <revision rev="594" vrev="1">
+    <srcmd5>9ff0377552bb5004972c034860a24bdb</srcmd5>
+    <version>5.13.0</version>
+    <time>1625516550</time>
+    <user>dimstar_suse</user>
+    <comment>5.13 w/ fixed nfsd &amp; config unification</comment>
+    <requestid>903623</requestid>
+  </revision>
 </revisionlist>

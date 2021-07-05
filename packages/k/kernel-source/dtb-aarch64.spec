@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.12
-%define patchversion 5.12.13
+%define srcversion 5.13
+%define patchversion 5.13.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        5.12.13
+Version:        5.13.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g74bd8c0
+Release:        <RELEASE>.gaa40472
 %else
 Release:        0
 %endif
@@ -180,6 +180,15 @@ Requires(post): coreutils
 
 %description -n dtb-apm
 Device Tree files for AppliedMicro based arm64 systems.
+
+%package -n dtb-apple
+Summary:        Apple SOC based arm64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-apple
+Device Tree files for Apple SOC based arm64 systems.
 
 %package -n dtb-arm
 Summary:        ARM Ltd. based arm64 systems
@@ -350,7 +359,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/arm64/boot/dts
-for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts apple/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -362,7 +371,7 @@ done
 %install
 
 cd pp
-for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts apple/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -413,6 +422,13 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-apm
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-apple
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -596,6 +612,17 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/apm
 %{dtbdir}/apm/*.dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-apple -f dtb-apple.list
+%else
+%files -n dtb-apple
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/apple
+%{dtbdir}/apple/*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-arm -f dtb-arm.list

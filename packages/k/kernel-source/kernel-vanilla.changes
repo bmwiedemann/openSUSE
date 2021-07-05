@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Jul  1 16:20:28 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_SCSI_SNIC_DEBUG_FS=y (bsc#1158776 comment 19).
+- commit d8e1777
+
+-------------------------------------------------------------------
+Thu Jul  1 16:17:32 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_BLK_SED_OPAL=y on arm64 (bsc#1158776 comment 16).
+- commit 59a8e8d
+
+-------------------------------------------------------------------
+Thu Jul  1 16:13:50 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_SATA_ZPODD=y on arm64 (bsc#1158776 comment 14).
+- commit aad226c
+
+-------------------------------------------------------------------
+Thu Jul  1 16:10:05 CEST 2021 - ptesarik@suse.cz
+
+- Disable MANDATORY_FILE_LOCKING on arm and arm64 (bsc#1158776 comment 12).
+- commit b10530c
+
+-------------------------------------------------------------------
+Thu Jul  1 16:07:42 CEST 2021 - ptesarik@suse.cz
+
+- Disable 842 compression on arm64 (bsc#1158776 comment 11).
+- commit 41a7837
+
+-------------------------------------------------------------------
+Thu Jul  1 16:03:37 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_USB_CHAOSKEY=m on arm64 (bsc#1158776 comment 9).
+- commit e652a59
+
+-------------------------------------------------------------------
+Thu Jul  1 16:00:53 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_INET_DIAG_DESTROY=y on arm64 (bsc#1158776 comment 7).
+- commit 1a13a0b
+
+-------------------------------------------------------------------
+Thu Jul  1 15:56:49 CEST 2021 - ptesarik@suse.cz
+
+- Set CONFIG_SLAB_FREELIST_RANDOM=y on arm64 (bsc#1158776 comment 6).
+- commit 75baa7c
+
+-------------------------------------------------------------------
+Thu Jul  1 15:50:06 CEST 2021 - ptesarik@suse.cz
+
+- Disable CONFIG_PCCARD on arm64 (bsc#1158776 comment 2).
+- commit 1c1f5ad
+
+-------------------------------------------------------------------
+Thu Jul  1 10:04:44 CEST 2021 - jslaby@suse.cz
+
+- mm/page_alloc: Correct return value of populated elements if
+  bulk array is populated (bsc#1187901).
+- commit b48104a
+
+-------------------------------------------------------------------
+Mon Jun 28 11:32:17 CEST 2021 - jslaby@suse.cz
+
+- ACPI: PM: s2idle: Add missing LPS0 functions for AMD
+  (bsc#1185840).
+- ACPI: processor idle: Fix up C-state latency if not ordered
+  (bsc#1185840).
+- Bluetooth: btqca: Don't modify firmware contents in-place
+  (bsc#1187472).
+- Input: elants_i2c - Fix NULL dereference at probing
+  (bsc#1186454).
+- mmc: sdhci-iproc: Cap min clock frequency on BCM2711
+  (bsc#1176576).
+- mmc: sdhci-iproc: Set SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN on
+  BCM2711 (bsc#1176576).
+- pinctrl: bcm2835: Accept fewer than expected IRQs (bsc#1181942).
+- Refresh
+  patches.suse/proc-Avoid-mixing-integer-types-in-mem_rw.patch.
+  Port post-5.13 patches from the stable branch.
+  Note that patches.suse/proc-Avoid-mixing-integer-types-in-mem_rw.patch
+  is in the -mmotm tree, so that the updated upstream info (esp. the SHA)
+  is subject to change.
+- commit bd5babc
+
+-------------------------------------------------------------------
 Mon Jun 28 08:37:21 CEST 2021 - jslaby@suse.cz
 
 - Revert "drm/amdgpu/gfx10: enlarge CP_MEC_DOORBELL_RANGE_UPPER
@@ -18,6 +103,15 @@ Mon Jun 28 07:48:53 CEST 2021 - jslaby@suse.cz
   patches.suse/mmc-sdhci-iproc-set-sdhci_quirk_cap_clock_base_broken-on-bcm2711.patch.
   Update upstream statuses.
 - commit 9cef814
+
+-------------------------------------------------------------------
+Mon Jun 28 00:36:29 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13 final
+- refresh configs
+  - update headers
+  - armv7hl: drop GPIO_TQMX86
+- commit 54fc53e
 
 -------------------------------------------------------------------
 Fri Jun 25 17:20:41 CEST 2021 - msuchanek@suse.de
@@ -330,6 +424,21 @@ Wed Jun 23 16:52:00 CEST 2021 - jslaby@suse.cz
 - commit 2ab6e2b
 
 -------------------------------------------------------------------
+Wed Jun 23 11:54:08 CEST 2021 - schwab@suse.de
+
+- Add dtb-microchip
+- commit 493fa09
+
+-------------------------------------------------------------------
+Mon Jun 21 00:59:21 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc7
+- eliminate 1 patch
+  - patches.suse/0001-x86-ioremap-Map-efi_mem_reserve-memory-as-encrypted-.patch
+- refresh configs
+- commit d808585
+
+-------------------------------------------------------------------
 Sat Jun 19 18:58:59 CEST 2021 - tiwai@suse.de
 
 - Bluetooth: btqca: Don't modify firmware contents in-place
@@ -419,6 +528,15 @@ Fri Jun 18 13:07:21 CEST 2021 - jslaby@suse.cz
 - commit 0e46a2c
 
 -------------------------------------------------------------------
+Wed Jun 16 13:55:58 CEST 2021 - mbrugger@suse.com
+
+- Refresh
+  patches.suse/brcmfmac-Add-clm_blob-firmware-files-to-modinfo.patch.
+- Refresh
+  patches.suse/brcmfmac-Delete-second-brcm-folder-hierarchy.patch.
+- commit b5a438c
+
+-------------------------------------------------------------------
 Wed Jun 16 13:51:32 CEST 2021 - mbrugger@suse.com
 
 - Refresh
@@ -432,7 +550,7 @@ Wed Jun 16 12:56:38 CEST 2021 - tiwai@suse.de
 
 - Update config files: CONFIG_SND_HDA_INTEL=m for armv7hl, too (bsc#1187334)
   It's used by openQA.
-- commit 041ff44
+- commit e752118
 
 -------------------------------------------------------------------
 Wed Jun 16 12:36:32 CEST 2021 - jslaby@suse.cz
@@ -757,6 +875,20 @@ Mon Jun 14 11:34:32 CEST 2021 - schwab@suse.de
 - commit 617c6b8
 
 -------------------------------------------------------------------
+Mon Jun 14 00:50:49 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc6
+- commit e91bc34
+
+-------------------------------------------------------------------
+Mon Jun 14 00:45:10 CEST 2021 - mkubecek@suse.cz
+
+- update patch metadata
+- update upstream references and move into more appropriate section
+  patches.suse/0001-x86-ioremap-Map-efi_mem_reserve-memory-as-encrypted-.patch
+- commit 716a407
+
+-------------------------------------------------------------------
 Fri Jun 11 17:28:26 CEST 2021 - tiwai@suse.de
 
 - Add arch-dependent support markers in supported.conf (bsc#1186672)
@@ -1068,16 +1200,69 @@ Tue Jun  8 16:27:59 CEST 2021 - jroedel@suse.de
 - commit e0a9eac
 
 -------------------------------------------------------------------
+Tue Jun  8 16:02:39 CEST 2021 - jroedel@suse.de
+
+- x86/ioremap: Map efi_mem_reserve() memory as encrypted for SEV (bsc#1186884).
+- commit c7fb36b
+
+-------------------------------------------------------------------
 Mon Jun  7 12:54:59 CEST 2021 - mbrugger@suse.com
 
 - brcmfmac: Add clm_blob firmware files to modinfo (bsc#1186857).
 - commit aeed335
 
 -------------------------------------------------------------------
+Mon Jun  7 12:51:47 CEST 2021 - mbrugger@suse.com
+
+- brcmfmac: Add clm_blob firmware files to modinfo (bsc#1186857).
+- commit a0fa2f0
+
+-------------------------------------------------------------------
+Mon Jun  7 06:56:39 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc5
+- update configs
+  - HID_SEMITEK=m
+- commit 6828450
+
+-------------------------------------------------------------------
+Mon Jun  7 00:34:39 CEST 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move submitted patch to "almost mainline" section.
+- commit 9f593b6
+
+-------------------------------------------------------------------
 Fri Jun  4 13:44:03 CEST 2021 - mbrugger@suse.com
 
 - brcmfmac: Delete second brcm folder hierarchy (bsc#1186857).
 - commit 1d77a5f
+
+-------------------------------------------------------------------
+Thu Jun  3 15:40:06 CEST 2021 - msuchanek@suse.de
+
+- Refresh config files.
+  Align across architectures:
+  BPFILTER_UMH=m
+- commit 39d2f9c
+
+-------------------------------------------------------------------
+Thu Jun  3 14:29:36 CEST 2021 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.13-rc4
+- commit f762975
+
+-------------------------------------------------------------------
+Thu Jun  3 13:35:39 CEST 2021 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.13-rc4
+- commit e26370d
+
+-------------------------------------------------------------------
+Thu Jun  3 12:58:30 CEST 2021 - afaerber@suse.com
+
+- config: arm64: Update to 5.13-rc4
+- commit 22709d7
 
 -------------------------------------------------------------------
 Thu Jun  3 09:59:29 CEST 2021 - msuchanek@suse.de
@@ -1581,6 +1766,19 @@ Tue Jun  1 21:14:39 CEST 2021 - msuchanek@suse.de
 - commit fb6d3b6
 
 -------------------------------------------------------------------
+Mon May 31 00:32:47 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc4
+- eliminate 3 patches
+  - patches.suse/bpf-Fix-alu32-const-subreg-bound-tracking-on-bitwise.patch
+  - patches.suse/bpf-Prevent-writable-memory-mapping-of-read-only-rin.patch
+  - patches.suse/bpf-ringbuf-Deny-reserve-of-buffers-larger-than-ring.patch
+- update configs
+  - BPF_UNPRIV_DEFAULT_OFF=n (backward compatible)
+  - MEMTEST=y (riscv64 only, enabled on most architectures)
+- commit 25beba1
+
+-------------------------------------------------------------------
 Fri May 28 14:40:46 CEST 2021 - tiwai@suse.de
 
 - Input: elants_i2c - Fix NULL dereference at probing
@@ -1900,6 +2098,15 @@ Thu May 27 07:56:40 CEST 2021 - jslaby@suse.cz
   patches.suse/ipc-mqueue-msg-sem-Avoid-relying-on-a-stack-reference.patch.
   Update upstream status.
 - commit 9d851b0
+
+-------------------------------------------------------------------
+Mon May 24 00:12:28 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc3
+- eliminated 3 patches
+  patches.rpmify/kbuild-dummy-tools-adjust-to-stricter-stackprotector.patch
+  patches.suse/ipc-mqueue-msg-sem-Avoid-relying-on-a-stack-reference.patch
+- commit 2d296e7
 
 -------------------------------------------------------------------
 Sat May 22 13:31:22 CEST 2021 - jslaby@suse.cz
@@ -2626,11 +2833,32 @@ Mon May 17 13:10:16 CEST 2021 - varad.gautam@suse.com
 - commit 2d71c6c
 
 -------------------------------------------------------------------
+Mon May 17 10:15:29 CEST 2021 - varad.gautam@suse.com
+
+- ipc/mqueue, msg, sem: Avoid relying on a stack reference past
+  its expiry (bsc#1185988).
+- commit 3e71e40
+
+-------------------------------------------------------------------
+Mon May 17 07:15:32 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc2
+- commit 977da2f
+
+-------------------------------------------------------------------
 Sun May 16 09:05:50 CEST 2021 - tiwai@suse.de
 
 - drm/i915/gem: Pin the L-shape quirked object as unshrinkable
   (bsc#1185624 bsc#1186075).
 - commit 6e53ea2
+
+-------------------------------------------------------------------
+Sat May 15 13:51:12 CEST 2021 - mkubecek@suse.cz
+
+- kbuild: dummy-tools: adjust to stricter stackprotector check.
+  Fix i386 builds after recent changes of stackprotector feature check and
+  restore stackprotector related config options.
+- commit 9c7db9a
 
 -------------------------------------------------------------------
 Sat May 15 08:49:29 CEST 2021 - jslaby@suse.cz
@@ -4648,6 +4876,180 @@ Mon May 10 21:28:42 CEST 2021 - tiwai@suse.de
 - commit 3da1f57
 
 -------------------------------------------------------------------
+Mon May 10 15:38:19 CEST 2021 - dmueller@suse.com
+
+- Add dtb-apple (bsc#1185845)
+- commit 405d0ae
+
+-------------------------------------------------------------------
+Mon May 10 10:46:48 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.13-rc1
+- eliminated 34 patches (22 stable, 12 other)
+  - patches.kernel.org/*
+  - patches.suse/clk-bcm-rpi-release-firmware-handle-on-unbind.patch
+  - patches.suse/dt-bindings-pwm-add-binding-for-rpi-firmware-pwm-bus.patch
+  - patches.suse/firmware-raspberrypi-introduce-devm_rpi_firmware_get.patch
+  - patches.suse/firmware-raspberrypi-keep-count-of-all-consumers.patch
+  - patches.suse/gpio-raspberrypi-exp-release-firmware-handle-on-unbind.patch
+  - patches.suse/input-raspberrypi-ts-release-firmware-handle-when-not-needed.patch
+  - patches.suse/media-dvb-usb-Fix-memory-leak-at-error-in-dvb_usb_de.patch
+  - patches.suse/media-dvb-usb-Fix-use-after-free-access.patch
+  - patches.suse/pwm-add-raspberry-pi-firmware-based-pwm-bus.patch
+  - patches.suse/reset-raspberrypi-release-firmware-handle-on-unbind.patch
+  - patches.suse/soc-bcm-raspberrypi-power-release-firmware-handle-on-unbind.patch
+  - patches.suse/vchiq-release-firmware-handle-on-unbind.patch
+- disable ARM architectures (need config update)
+- refresh
+  - patches.rpmify/powerpc-64-BE-option-to-use-ELFv2-ABI-for-big-endian.patch
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  - patches.suse/supported-flag
+  - patches.suse/supported-flag-modverdir
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+- config refresh (no longer available as module)
+  - PVPANIC (m -> y)
+  - NFS_V4_2_SSC_HELPER (m -> y)
+- new config options
+  - General setup
+    - CGROUP_MISC=y
+  - Virtualization
+    - X86_SGX_KVM=y
+  - General architecture-dependent options
+    - RANDOMIZE_KSTACK_OFFSET_DEFAULT=y
+  - Enable loadable module support
+    - MODULE_COMPRESS_NONE=y
+    - MODULE_COMPRESS_GZIP=n
+    - MODULE_COMPRESS_XZ=n
+    - MODULE_COMPRESS_ZSTD=n
+    - MODPROBE_PATH="/sbin/modprobe"
+  - Networking support
+    - NF_LOG_SYSLOG=m
+    - NETFILTER_XTABLES_COMPAT=y
+    - PCPU_DEV_REFCNT=y
+    - CAN_ETAS_ES58X=m
+    - BT_AOSPEXT=y
+    - BT_VIRTIO=m
+  - File systems
+    - NETFS_SUPPORT=m
+    - NETFS_STATS=y
+  - Security options
+    - SECURITY_LANDLOCK=y
+  - Cryptographic API
+    - CRYPTO_ECDSA=y
+    - SYSTEM_REVOCATION_LIST=y
+    - SYSTEM_REVOCATION_KEYS=""
+  - Kernel hacking
+    - VMLINUX_MAP=y
+    - TEST_DIV64=n
+  - Virtualiation drivers
+    - PVPANIC=y
+    - PVPANIC_MMIO=m
+    - PVPANIC_PCI=m
+    - VDPA_SIM_BLOCK=m
+    - VP_VDPA=m
+  - Network device support
+    - NET_DSA_MICROCHIP_KSZ8863_SMI=m
+    - NET_VENDOR_MICROSOFT=y
+    - MICROSOFT_MANA=m
+    - MLX5_TC_SAMPLE=y
+    - MARVELL_88X2222_PHY=m
+    - NXP_C45_TJA11XX_PHY=m
+    - WWAN=y
+    - WWAN_CORE=m
+    - MHI_WWAN_CTRL=m
+  - Input device support
+    - TOUCHSCREEN_HYCON_HY46XX=m
+    - TOUCHSCREEN_ILITEK=m
+    - TOUCHSCREEN_MSG2638=m
+    - INPUT_IQS626A=m
+  - Power supply class support
+    - BATTERY_GOLDFISH=m
+    - BATTERY_SURFACE=m
+    - CHARGER_SURFACE=m
+  - Hardware Monitoring support
+    - SENSORS_NZXT_KRAKEN2=m
+    - SENSORS_BPA_RS600=m
+    - SENSORS_FSP_3Y=m
+    - SENSORS_IR36021=m
+    - SENSORS_MAX15301=m
+    - SENSORS_STPDDC60=m
+  - Graphics support
+    - DRM_AMD_SECURE_DISPLAY=y
+    - DRM_I915_REQUEST_TIMEOUT=20000
+    - DRM_GUD=m
+  - Sound card support
+    - SND_SOC_FSL_RPMSG=n
+    - SND_SOC_TLV320AIC3X_I2C=n
+    - SND_SOC_TLV320AIC3X_SPI=n
+    - SND_VIRTIO=m
+  - HID support
+    - HID_FT260=m
+    - SURFACE_KBD=m
+    - SURFACE_HID=m
+  - X86 Platform Specific Device Drivers
+    - GIGABYTE_WMI=m
+    - ADV_SWBUTTON=m
+  - Microsoft Surface Platform-Specific Device Drivers
+    - SURFACE_AGGREGATOR_REGISTRY=m
+    - SURFACE_DTX=m
+    - SURFACE_PLATFORM_PROFILE=m
+  - Industrial I/O support
+    - BMI088_ACCEL=n
+    - TI_ADS131E08=n
+    - CROS_EC_MKBP_PROXIMITY=n
+  - Misc devices
+    - DW_XDATA_PCIE=m
+    - I2C_CP2615=m
+    - SPI_ALTERA_CORE=m
+    - SPI_ALTERA_DFL=m
+    - INTEL_TCC_COOLING=m
+    - MFD_ATC260X_I2C=n
+    - RTC_DRV_GOLDFISH=m
+    - INTEL_IDXD_PERFMON=y
+    - UIO_DFL=m
+  - OF dependent (i386, ppc64 / ppc64le, riscv64)
+    - MFD_NTXEC=n
+    - MFD_ROHM_BD957XMUF=n
+    - DRM_CHIPONE_ICN6211=n
+    - DRM_LONTIUM_LT8912B=n
+    - LEDS_RT4505=m
+  - i386
+    - MODULE_SIG_ALL=n
+    - MODULE_SIG_SHA256=y
+    - SND_SOC_RT1316_SDW=n
+    - SND_SOC_RT711_SDCA_SDW=n
+    - SND_SOC_RT715_SDCA_SDW=n
+    - LEDS_LGM=m
+    - MODULE_SIG_KEY="certs/signing_key.pem"
+  - ppc64 / ppc64le
+    - TIME_NS=y
+    - STRICT_KERNEL_RWX=y
+    - CMA_SYSFS=n
+    - FSL_DPAA2_SWITCH=m
+    - FSL_ENETC_IERB=m
+    - DEBUG_RODATA_TEST=n
+    - DEBUG_VM_PGTABLE=n
+  - s390x
+    - CMA_SYSFS=n
+    - NET_DSA=n
+    - CIO_INJECT=n
+  - riscv64
+    - SOC_MICROCHIP_POLARFIRE=y
+    - RISCV_ERRATA_ALTERNATIVE=y
+    - ERRATA_SIFIVE_CIP_453=y
+    - ERRATA_SIFIVE_CIP_1200=y
+    - KEXEC=y
+    - CRASH_DUMP=y
+    - PHYS_RAM_BASE_FIXED=n
+    - XIP_KERNEL=n
+    - STRICT_MODULE_RWX=y
+    - PCIE_FU740
+    - PROC_VMCORE=y
+    - PROC_VMCORE_DEVICE_DUMP=y
+    - FORTIFY_SOURCE=y
+- commit 0ba08a9
+
+-------------------------------------------------------------------
 Mon May 10 09:21:10 CEST 2021 - tiwai@suse.de
 
 - Revert "drm/i915: Try to use fast+narrow link on eDP again
@@ -4746,7 +5148,7 @@ Wed May  5 09:45:14 CEST 2021 - mkubecek@suse.cz
 Tue May  4 11:56:48 CEST 2021 - mbrugger@suse.com
 
 - supported.conf: add USB Typec to installer (bsc#1184867)
-- commit b13cba0
+- commit 17b53f0
 
 -------------------------------------------------------------------
 Tue May  4 10:05:31 CEST 2021 - dwagner@suse.de
