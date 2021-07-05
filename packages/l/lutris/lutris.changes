@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul  5 07:40:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.8.4:
+  * Fix Steam icon showing too big on some systems
+  * Fix DXVK not updating
+  * Fix Python 3.9 compatibility
+  * Update sidebar on service login
+  * Remember position of window except on Wayland maybe
+  * GST plugin path is now only set if it exists
+  * Default to 7zip when not given an archive extractor
+  * Switch IRC to Libera chat
+  * Fix libretro info file loading
+  * Let pipewire users toggle "Reduce PulseAudio latency"
+
+-------------------------------------------------------------------
 Mon Jan 25 08:53:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.8.3:

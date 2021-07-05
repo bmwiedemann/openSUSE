@@ -197,4 +197,22 @@
     downloads the runtime.</comment>
     <requestid>866504</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a42baade419666a3f0c356ec823f3f87</srcmd5>
+    <version>0.5.8.4</version>
+    <time>1625516575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.4:
+  * Fix Steam icon showing too big on some systems
+  * Fix DXVK not updating
+  * Fix Python 3.9 compatibility
+  * Update sidebar on service login
+  * Remember position of window except on Wayland maybe
+  * GST plugin path is now only set if it exists
+  * Default to 7zip when not given an archive extractor
+  * Switch IRC to Libera chat
+  * Fix libretro info file loading
+  * Let pipewire users toggle &quot;Reduce PulseAudio latency&quot;</comment>
+    <requestid>904049</requestid>
+  </revision>
 </revisionlist>
