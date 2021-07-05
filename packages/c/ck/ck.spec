@@ -1,7 +1,7 @@
 #
 # spec file for package ck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,14 @@
 %define sover   0
 %define libname libck%{sover}
 Name:           ck
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Concurrency Kit
 License:        BSD-2-Clause AND Apache-2.0
 URL:            http://concurrencykit.org/
-Source:         http://concurrencykit.org/releases/ck-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/concurrencykit/ck/issues/141
-Patch0:         ck-fix-j1.patch
-# PATCH-FIX-UPSTREAM https://github.com/concurrencykit/ck/issues/147
-Patch1:         ck-fix-gettid-glibc-clash.patch
+Source:         https://github.com/concurrencykit/ck/archive/refs/tags/%{version}.tar.gz#/ck-%{version}.tar.gz
 BuildRequires:  pkgconfig
-ExcludeArch:    s390 s390x
+ExcludeArch:    s390
 
 %description
 Concurrency primitives, safe memory reclamation mechanisms and non-blocking
@@ -60,8 +56,6 @@ This package holds the development files.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 # not a normal autotool configure, can't use configure macro

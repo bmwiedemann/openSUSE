@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  4 14:08:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.1
+  * Add s390x support
+  * ck_hs: add convenience hash function wrapper ck_hs_hash
+  * ck_backoff: avoid dead store to ceiling
+  * ck_ring: add two new utility functions for persistent rings
+  * ck_sequence: reduce thread count to account for writer
+  * ck_queue: fix logic inversion in CK_STAILQ_CONCAT
+  * ck_epoch: allow record sharing and reentrancy for write-side operations
+- Drop upstream merged patches: ck-fix-gettid-glibc-clash.patch,
+  ck-fix-j1.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 21:55:14 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix symbol name clash between glibc 2.30 and ck, add
