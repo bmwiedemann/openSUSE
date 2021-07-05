@@ -2866,6 +2866,7 @@
       <repopackage name="libtsan0" arch="x86_64"/>
       <repopackage name="libtss2-esys0"/>
       <repopackage name="libtss2-mu0"/>
+      <repopackage name="libtss2-rc0"/>
       <repopackage name="libtss2-sys1"/>
       <repopackage name="libtukit0"/>
       <repopackage name="libtumbler-1-0"/>
@@ -4840,6 +4841,7 @@
       <repopackage name="systemd-presets-branding-openSUSE"/>
       <repopackage name="systemd-presets-branding-transactional-server"/>
       <repopackage name="systemd-presets-common-SUSE"/>
+      <repopackage name="systemd-rpm-macros"/>
       <repopackage name="systemd-sysvinit"/>
       <repopackage name="systemsettings5"/>
       <repopackage name="systemsettings5-lang"/>

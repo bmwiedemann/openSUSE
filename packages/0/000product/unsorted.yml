@@ -3124,6 +3124,7 @@ unsorted:
   - efl-lang 
   - efl-testsuite 
   - efont-serif-fonts 
+  - eglexternalplatform-devel 
   - eiciel 
   - eiciel-lang 
   - eid-mw 
@@ -12287,6 +12288,8 @@ unsorted:
   - libnvidia-container-static: [x86_64] 
   - libnvidia-container-tools: [x86_64] 
   - libnvidia-container1: [x86_64] 
+  - libnvidia-egl-wayland-devel 
+  - libnvidia-egl-wayland1 
   - libnxml-devel 
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
@@ -14016,7 +14019,6 @@ unsorted:
   - libtss2-fapi1: [i586] 
   - libtss2-fapi1-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
-  - libtss2-rc0: [i586] 
   - libtss2-rc0-32bit: [x86_64] 
   - libtss2-sys1-32bit: [x86_64] 
   - libtss2-tcti-cmd0 
@@ -32373,7 +32375,6 @@ unsorted:
   - systemd-mini-sysvinit 
   - systemd-network 
   - systemd-portable 
-  - systemd-rpm-macros 
   - systemd-tests 
   - systemd-ui 
   - systemd-zram-service 

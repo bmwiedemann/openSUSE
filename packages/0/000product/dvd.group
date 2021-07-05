@@ -2685,9 +2685,10 @@
     <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtre5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtukit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4461,6 +4462,7 @@
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-presets-branding-transactional-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-sysvinit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemsettings5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="systemsettings5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
