@@ -17,17 +17,19 @@
 
 
 Name:           nautilus-terminal
-Version:        3.5.0
+Version:        4.0.2
 Release:        0
 Summary:        A terminal embedded in Nautilus, the GNOME's file browser
 License:        GPL-3.0-only
 URL:            https://github.com/flozz/nautilus-terminal
 Source:         https://files.pythonhosted.org/packages/source/n/nautilus-terminal/nautilus_terminal-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE do-not-install-compiled-schemas.patch -- On SUSE we must not installed the pre compiled schemas but the sources
+Patch0:         do-not-install-compiled-schemas.patch
+BuildRequires:  fdupes
+BuildRequires:  python-nautilus-common-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-psutil >= 5.6.6
 BuildRequires:  python3-setuptools
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  python-nautilus-common-devel
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       nautilus
 Requires:       python3-psutil >= 5.6.6
@@ -37,17 +39,23 @@ BuildArch:      noarch
 Nautilus Terminal is an integrated terminal for the Nautilus file browser.
 
 %prep
-%setup -q -n nautilus_terminal-%{version}
+%autosetup -p1 -n nautilus_terminal-%{version}
+# See README
+rm -v nautilus_terminal/not_packaged.py
 
 %build
+export SKIP_SCHEMA_COMPILE=1
 %python3_build
 
 %install
+export SKIP_SCHEMA_COMPILE=1
 %python3_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files
+%license COPYING
 %doc README.rst
+%{_bindir}/%{name}
 %{python3_sitelib}/nautilus_terminal*
 %{_datadir}/glib-2.0/schemas/org.flozz.nautilus-terminal.gschema.xml
 %{_datadir}/nautilus-python/extensions/nautilus_terminal_extension.py

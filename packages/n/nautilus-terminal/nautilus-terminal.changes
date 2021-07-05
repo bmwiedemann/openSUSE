@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:05:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.2
+  + Support Nautilus 40
+  + Adds an "About" window
+  + Adds a context menu to copy/paste, run dconf-editor and
+    display the "About" window
+  + Adds a CLI to check, install, uninstall, print debug, etc
+  + Fixes Nautilus Terminal stealing the focus in new Nautilus windows
+  + Adds an option to clear the terminal after each navigation
+- Add do-not-install-compiled-schemas.patch
+  + Do not install the precompiled schemas but the sources only
+
+-------------------------------------------------------------------
 Mon Apr 26 18:51:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.5
