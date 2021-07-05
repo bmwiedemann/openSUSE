@@ -282,4 +282,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>900166</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>56fcf4467c99965b1e0964be710a0939</srcmd5>
+    <version>0.42.1</version>
+    <time>1625516572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904003</requestid>
+  </revision>
 </revisionlist>

@@ -134,19 +134,38 @@ the Kubevirt container images.
 # If 'kubevirt_registry_path' is not specified, the standard publish location
 # for SLE and openSUSE-based containers is used.
 #
-%if "%{?kubevirt_registry_path}" == ""
-distro='%{?sle_version}:%{is_opensuse}'
+distro='%{?sle_version}:%{?is_opensuse}%{!?is_opensuse:0}'
 case "${distro}" in
 150200:0)
-    reg_path='registry.suse.com/suse/sles/15.2' ;;
+    tagprefix=suse/sles/15.2
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+    ;;
 150300:0)
-    reg_path='registry.suse.com/suse/sles/15.3' ;;
+    tagprefix=suse/sles/15.3
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+    ;;
 *)
-    reg_path='registry.opensuse.org/kubevirt' ;;
+    tagprefix=kubevirt
+    labelprefix=org.opensuse.kubevirt
+    registry=registry.opensuse.org
+    ;;
 esac
+
+%if "%{?kubevirt_registry_path}" == ""
+    reg_path="${registry}/${tagprefix}"
 %else
-reg_path='%{kubevirt_registry_path}'
+    reg_path='%{kubevirt_registry_path}'
 %endif
+
+sed -i"" \
+    -e "s#_TAGPREFIX_#${tagprefix}#g" \
+    -e "s#_LABELPREFIX_#${labelprefix}#g" \
+    -e "s#_REGISTRY_#${registry}#g" \
+    -e "s#_PKG_VERSION_#%{version}#g" \
+    -e "s#_PKG_RELEASE_#%{release}#g" \
+    %{S:2}
 
 mkdir -p go/src/kubevirt.io go/pkg
 ln -s ../../../ go/src/kubevirt.io/kubevirt

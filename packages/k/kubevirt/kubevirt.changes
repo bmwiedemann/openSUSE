@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 05:17:29 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Generate meta info for containers during rpm build
+
+-------------------------------------------------------------------
 Wed Jun  9 07:49:45 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use registry.suse.com as the default fallback for sle
