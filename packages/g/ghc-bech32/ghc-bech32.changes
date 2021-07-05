@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 23 08:50:40 UTC 2021 - psimons@suse.com
+
+- Update bech32 to version 1.1.1.
+  ## [1.1.1] - 2021-06-11
+
+  ### Added
+
+  - Added `--version` switch for the `bech32` command.
+
+  ### Changed
+
+  - Upgraded CI to build with Cabal 3.4.0.0 and GHC 8.10.4.
+  - Update version constraints for GHC 9.0.1.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

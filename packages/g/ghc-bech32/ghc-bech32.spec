@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bech32
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name bech32
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Implementation of the Bech32 cryptocurrency address format (BIP 0173)
 License:        Apache-2.0
