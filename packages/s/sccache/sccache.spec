@@ -20,7 +20,7 @@
 %define configdir %{_sysconfdir}/%{name}
 
 Name:           sccache
-Version:        0.2.15~git1.22a176c
+Version:        0.2.15~git0.6b6d2f7
 Release:        0
 Summary:        A compiler caching tool for Rust, C and C++ with optional cloud storage
 License:        Apache-2.0

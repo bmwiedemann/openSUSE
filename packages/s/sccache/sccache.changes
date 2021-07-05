@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  5 05:15:58 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies to resolve
+  -- potential memory corruption ( RUSTSEC-2021-0003 )
+  -- potential format injection ( RUSTSEC-2021-0020 )
+  -- potential request smuggling ( RUSTSEC-2020-0031 )
+
+-------------------------------------------------------------------
 Tue Jun 22 03:36:07 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Allow extra architectures with sccache

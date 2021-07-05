@@ -20,4 +20,7 @@
      <param name="srcdir">sccache</param>
      <param name="compression">xz</param>
   </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">sccache</param>
+  </service>
 </services>
