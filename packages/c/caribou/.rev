@@ -317,4 +317,16 @@
     <comment></comment>
     <requestid>772694</requestid>
   </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>25e94a41342fb11ad54df0897b9ed4ab</srcmd5>
+    <version>0.4.21</version>
+    <time>1625516603</time>
+    <user>dimstar_suse</user>
+    <comment>- Add caribou-stop-patching-gir.patch: stop patching the GIR.
+  Taken from upstream; the build now fails without this. Also add
+  libtool to BuildRequires.
+- Add caribou-css-fix.patch: fix failure to start in GNOME
+  flashback (boo#1187112). (forwarded request 903273 from mgorse)</comment>
+    <requestid>904181</requestid>
+  </revision>
 </revisionlist>

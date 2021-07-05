@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 30 16:12:14 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add caribou-stop-patching-gir.patch: stop patching the GIR.
+  Taken from upstream; the build now fails without this. Also add
+  libtool to BuildRequires.
+- Add caribou-css-fix.patch: fix failure to start in GNOME
+  flashback (boo#1187112).
+
+-------------------------------------------------------------------
+Wed Jun  2 20:55:04 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add caribou-vala-build-fix.patch: fix build with newer valac
+  versions (boo#1186617).
+- Add caribou-CVE-2021-3567.patch: fix segfault when attempting to
+  use shifted characters (boo#1186617 CVE-2021-3567).
+
+-------------------------------------------------------------------
 Mon Feb 10 13:05:46 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Add python3-gobject BuildRequires: We eliminated an auto-pull-in

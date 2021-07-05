@@ -1,7 +1,7 @@
 #
 # spec file for package caribou
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,16 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://live.gnome.org/Caribou
 Source0:        http://download.gnome.org/sources/caribou/0.4/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM caribou-vala-build-fix.patch boo#1186617 mgorse@suse.com -- fix the build with newer valac versions.
+Patch0:         caribou-vala-build-fix.patch
+# PATCH-FIX-UPSTREAM caribou-CVE-2021-3567.patch boo#1186617 mgorse@suse.com -- fix segfault when attempting to use shifted characters.
+Patch1:         caribou-CVE-2021-3567.patch
+# PATCH-FIX-UPSTREAM caribou-stop-patching-gir.patch mgorse@suse.com -- stop patching the GIR.
+Patch2:         caribou-stop-patching-gir.patch
+# PATCH-FIX-UPSTREAM caribou-css-fix.patch boo#1187112 mgorse@suse.com -- fix failure to start in GNOME flashback.
+Patch3:         caribou-css-fix.patch
+# Needed for Patch2
+BuildRequires:  libtool
 # For directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
@@ -148,9 +158,11 @@ of accessing a computer is a switch device.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# Needed for patch2
+autoreconf -fi
 %configure \
     --disable-static     \
     --enable-gtk3-module \
