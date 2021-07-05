@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 28 16:43:10 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to Unicode-13.1 version, no upstream provided changelog.
+- Spec cleaner run, use https for download.
+
+-------------------------------------------------------------------
 Thu Mar 12 03:33:18 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Move copyright.html to %license

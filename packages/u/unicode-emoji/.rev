@@ -16,4 +16,12 @@
 - Initial package for version 6.0 (forwarded request 784173 from hillwood)</comment>
     <requestid>784183</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d57dc11e9fc366a35b63183c201c45e</srcmd5>
+    <version>13.1</version>
+    <time>1625516555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903824</requestid>
+  </revision>
 </revisionlist>
