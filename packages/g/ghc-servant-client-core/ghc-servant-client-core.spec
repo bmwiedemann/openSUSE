@@ -19,13 +19,12 @@
 %global pkg_name servant-client-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        Core functionality and class for client function generation for servant APIs
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-base-compat-devel
@@ -68,8 +67,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 1.3'
 
 %build
 %ghc_lib_build

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:53:38 UTC 2021 - psimons@suse.com
+
+- Update servant-client-core to version 0.18.3.
+  0.18.3
+  ------
+
+  ### Significant changes
+
+  - Add response header support to UVerb (#1420)
+
+  ### Other changes
+
+  - Support GHC-9.0.1.
+  - Bump `bytestring`, `hspec`, `base64-bytestring` and `QuickCheck` dependencies.
+
+-------------------------------------------------------------------
 Sat May 15 15:56:11 UTC 2021 - psimons@suse.com
 
 - Update servant-client-core to version 0.18.2 revision 2.
