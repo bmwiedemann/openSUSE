@@ -35,10 +35,12 @@ Source6:        macros.erlang
 Source7:        epmd.service
 Source8:        epmd.socket
 Source9:        README.SUSE
+Source10:       epmd-user.conf
 # PATCH-MISSING-TAG -- See http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
+BuildRequires:  sysuser-tools
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
@@ -99,7 +101,7 @@ RFC 6733.
 
 %package doc
 Summary:        Erlang documentation
-Recommends:     %{name} = %{version}
+Requires:       %{name} = %{version}
 
 %description doc
 Documentation for Erlang.
@@ -108,6 +110,7 @@ Documentation for Erlang.
 Summary:        Erlang Port Mapper daemon
 Requires:       %{name} = %{version}
 Requires(post): %fillup_prereq
+%{sysusers_requires}
 %{?systemd_requires}
 
 %description epmd
@@ -274,6 +277,8 @@ export CXXFLAGS=$CFLAGS
 # to build the docs, just compiled erlang is required
 PATH=$PWD/bin:$PATH %make_build docs
 
+%sysusers_generate_pre %{SOURCE10} epmd epmd-user.conf
+
 %install
 %make_install install-docs
 
@@ -322,16 +327,16 @@ find . -name "start_erl*" | xargs chmod 755
 # %%doc macro copies the files to the package doc dir, hardlinks thus don't work
 %fdupes -s erlang_doc
 
-install -d -m 0750        %{buildroot}%{epmd_home}
-install -d -m 0755        %{buildroot}%{_sbindir}
+install -d -m 0750 %{buildroot}%{epmd_home}
+install -d -m 0755 %{buildroot}%{_sbindir}
 install -D -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/epmd.service
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/epmd.socket
-ln -s   service     %{buildroot}%{_sbindir}/rcepmd
+ln -s service %{buildroot}%{_sbindir}/rcepmd
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_rpmmacrodir}/macros.erlang
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 
-%pre epmd
-getent group epmd || %{_sbindir}/groupadd -r epmd
-getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Port Mapper Daemon" -d %{epmd_home} epmd
+%pre epmd -f epmd.pre
 %service_add_pre epmd.service epmd.socket
 
 %post epmd
@@ -360,10 +365,13 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %exclude %{_libdir}/erlang/lib/*/src
 %exclude %{_libdir}/erlang/lib/*/c_src
 %exclude %{_libdir}/erlang/lib/*/java_src
-%{_libdir}/erlang/bin/
+%dir %{_libdir}/erlang/bin/
+%{_libdir}/erlang/bin/*
 %exclude %{_libdir}/erlang/bin/dialyzer
 %exclude %{_libdir}/erlang/bin/epmd
-%{_libdir}/erlang/erts-*/
+%dir %{_libdir}/erlang/erts-*/
+%dir %{_libdir}/erlang/erts-*/bin/
+%{_libdir}/erlang/erts-*/*
 %exclude %{_libdir}/erlang/erts-*/bin/dialyzer
 %exclude %{_libdir}/erlang/erts-*/bin/epmd
 %{_libdir}/erlang/lib/asn1-*/
@@ -408,11 +416,11 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %exclude %{_libdir}/erlang/lib/debugger-*/src
 
 %files dialyzer
-%{_libdir}/erlang/lib/dialyzer-*/
-%exclude %{_libdir}/erlang/lib/dialyzer-*/src
 %{_bindir}/dialyzer
 %{_libdir}/erlang/bin/dialyzer
 %{_libdir}/erlang/erts-*/bin/dialyzer
+%{_libdir}/erlang/lib/dialyzer-*/
+%exclude %{_libdir}/erlang/lib/dialyzer-*/src
 
 %files diameter
 %{_libdir}/erlang/lib/diameter-*/
@@ -436,12 +444,17 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 
 %files epmd
 %{_bindir}/epmd
+%dir %{_libdir}/erlang/
+%dir %{_libdir}/erlang/bin/
 %{_libdir}/erlang/bin/epmd
+%dir %{_libdir}/erlang/erts-*/
+%dir %{_libdir}/erlang/erts-*/bin/
 %{_libdir}/erlang/erts-*/bin/epmd
 %dir %attr(-,epmd,epmd) %{epmd_home}
 %{_unitdir}/epmd.service
 %{_unitdir}/epmd.socket
 %{_sbindir}/rcepmd
+%{_sysusersdir}/epmd-user.conf
 
 %files jinterface
 %{_libdir}/erlang/lib/jinterface-*/

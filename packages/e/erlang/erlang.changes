@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 26 11:26:43 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use sysusers-tools to provide epmd user
+- Fix directories not owned by the package (boo#1187546)
+
+-------------------------------------------------------------------
 Mon Jun 14 10:27:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Install RPM macros file to %{_rpmmacrodir} (boo#1185667)
