@@ -60,6 +60,7 @@
             <descriptiondir>suse/setup/descr</descriptiondir>
             <releasepackage name="openSUSE-release" flag="EQ" version="13.1"/>
             <distribution>openSUSE-Addon-NonOss</distribution>
+            <default_obs_repository_name>openSUSE_Tumbleweed</default_obs_repository_name>
         </installconfig>
 
         <runtimeconfig/>

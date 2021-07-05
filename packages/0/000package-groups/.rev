@@ -1098,4 +1098,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop gnome_ide: users of the IDE need -devel packages anyway, so they want the FTP tree enabled</comment>
   </revision>
+  <revision rev="152" vrev="150">
+    <srcmd5>83bb684fb7b0498674a1ef50e4eb62ac</srcmd5>
+    <version>unknown</version>
+    <time>1625516551</time>
+    <user>dimstar_suse</user>
+    <comment>defined build.opensuse.org default repository name in default_obs_repository_name. The default_obs_download_url will get added automatically. You will need to use obs-service-product_converter 1.4.6 for this.</comment>
+    <requestid>903235</requestid>
+  </revision>
 </revisionlist>

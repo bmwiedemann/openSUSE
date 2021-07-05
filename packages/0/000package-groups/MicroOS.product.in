@@ -37,6 +37,7 @@
         <datadir>suse</datadir>
         <descriptiondir>suse/setup/descr</descriptiondir>
         <distribution>openSUSE</distribution>
+        <default_obs_repository_name>openSUSE_Tumbleweed</default_obs_repository_name>
       </installconfig>
 
       <!-- All Flags needed in the running system -->
