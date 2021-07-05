@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  2 19:00:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Fixed a CIEDE-2000 precision issue, where cross-platform
+    mismatches were seen.
+  * Added function vmaf_feature_dictionary_free().
+
+-------------------------------------------------------------------
 Mon Mar  8 11:22:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
