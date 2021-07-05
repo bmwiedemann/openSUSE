@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 05 18:02:10 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.22:
+  * Fix a permission issue with Flatpak (glgo#World/lollypop#2791).
+- Changes from version 1.4.21:
+  * Fix some crashes (glgo#World/lollypop#2797,
+    glgo#World/lollypop#2802).
+  * Fix album duration computation for albums featuring several
+    artists (glgo#World/lollypop#2798).
+
+-------------------------------------------------------------------
 Wed Jun 23 15:25:42 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.20:

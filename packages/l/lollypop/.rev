@@ -1659,4 +1659,18 @@
   * Improve identification of compilations.</comment>
     <requestid>901570</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>cd02caabdf6e3482afd68c00380b165d</srcmd5>
+    <version>1.4.22</version>
+    <time>1625516605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.22:
+  * Fix a permission issue with Flatpak (glgo#World/lollypop#2791).
+- Changes from version 1.4.21:
+  * Fix some crashes (glgo#World/lollypop#2797,
+    glgo#World/lollypop#2802).
+  * Fix album duration computation for albums featuring several
+    artists (glgo#World/lollypop#2798).</comment>
+    <requestid>904258</requestid>
+  </revision>
 </revisionlist>
