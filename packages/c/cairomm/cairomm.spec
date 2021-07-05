@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cairomm
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-URL:            http://cairographics.org
+URL:            https://www.cairographics.org/
 Source:         https://www.cairographics.org/releases/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
@@ -65,6 +65,8 @@ This package provides documentation for the Cairo C++ interface.
 
 %prep
 %autosetup -p1
+# fix permissions
+chmod 0644 AUTHORS ChangeLog NEWS README
 
 %build
 %meson \

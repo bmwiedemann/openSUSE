@@ -339,4 +339,12 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847173</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>df4154b514821d2e25b29afd25fcc15e</srcmd5>
+    <version>1.16.1</version>
+    <time>1625516603</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.16.1 (forwarded request 903283 from susnux)</comment>
+    <requestid>904182</requestid>
+  </revision>
 </revisionlist>
