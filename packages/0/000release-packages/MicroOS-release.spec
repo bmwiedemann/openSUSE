@@ -189,7 +189,7 @@ Requires:       product_flavor(MicroOS)
 openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
         It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
 
-%package dvd
+%package -n MicroOS-release-dvd
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -205,7 +205,7 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/MicroOS-release-dvd
 
-%package kubic-dvd
+%package -n MicroOS-release-kubic-dvd
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -221,7 +221,7 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/MicroOS-release-kubic-dvd
 
-%package appliance
+%package -n MicroOS-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -237,7 +237,7 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/MicroOS-release-appliance
 
-%package appliance-kubic
+%package -n MicroOS-release-appliance-kubic
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -295,8 +295,8 @@ LOGO="distributor-logo"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
-mkdir -p $RPM_BUILD_ROOT/etc/products.d
-cat >$RPM_BUILD_ROOT/etc/products.d/MicroOS.prod << EOF
+mkdir -p %{buildroot}%{_sysconfdir}/products.d
+cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
@@ -341,26 +341,26 @@ cat >$RPM_BUILD_ROOT/etc/products.d/MicroOS.prod << EOF
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-dvd
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-dvd/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-dvd
+cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-dvd/README << EOF
 This package only exists for providing the product flavor 'dvd'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-kubic-dvd
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-kubic-dvd/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-kubic-dvd
+cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-kubic-dvd/README << EOF
 This package only exists for providing the product flavor 'kubic-dvd'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-appliance
+cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance-kubic
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance-kubic/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-appliance-kubic
+cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-appliance-kubic/README << EOF
 This package only exists for providing the product flavor 'appliance-kubic'.
 
 EOF

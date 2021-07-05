@@ -29,7 +29,6 @@ Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnon
 
 
 AutoReqProv:    on
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 non oss repo and cd
@@ -43,8 +42,8 @@ non oss repo and cd
 
 
 %install
-mkdir -p $RPM_BUILD_ROOT/etc/products.d
-cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-Addon-NonOss.prod << EOF
+mkdir -p %{buildroot}%{_sysconfdir}/products.d
+cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE-Addon-NonOss.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
@@ -121,12 +120,9 @@ EOF
 
 
 
-%clean
-rm -rf %buildroot
-
 %files
 %defattr(644,root,root,755)
-%dir /etc/products.d
-/etc/products.d/*.prod
+%dir %{_sysconfdir}/products.d
+%{_sysconfdir}/products.d/*.prod
 
 %changelog

@@ -201,7 +201,7 @@ Requires:       product_flavor(openSUSE)
 %description
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 
-%package ftp
+%package -n openSUSE-release-ftp
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -216,7 +216,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-ftp
 
-%package mini
+%package -n openSUSE-release-mini
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -231,7 +231,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-mini
 
-%package dvd
+%package -n openSUSE-release-dvd
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -246,7 +246,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-dvd
 
-%package livecd-kde
+%package -n openSUSE-release-livecd-kde
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -261,7 +261,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-livecd-kde
 
-%package livecd-x11
+%package -n openSUSE-release-livecd-x11
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -276,7 +276,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-livecd-x11
 
-%package livecd-gnome
+%package -n openSUSE-release-livecd-gnome
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -291,7 +291,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-livecd-gnome
 
-%package livecd-xfce
+%package -n openSUSE-release-livecd-xfce
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -306,7 +306,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-livecd-xfce
 
-%package usb-kde
+%package -n openSUSE-release-usb-kde
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -321,7 +321,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-usb-kde
 
-%package usb-gnome
+%package -n openSUSE-release-usb-gnome
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -336,7 +336,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-usb-gnome
 
-%package usb-x11
+%package -n openSUSE-release-usb-x11
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -351,7 +351,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-usb-x11
 
-%package appliance
+%package -n openSUSE-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -366,7 +366,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance
 
-%package appliance-docker
+%package -n openSUSE-release-appliance-docker
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -381,7 +381,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-docker
 
-%package appliance-kvm
+%package -n openSUSE-release-appliance-kvm
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -396,7 +396,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-kvm
 
-%package appliance-vmware
+%package -n openSUSE-release-appliance-vmware
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -411,7 +411,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-vmware
 
-%package appliance-openstack
+%package -n openSUSE-release-appliance-openstack
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -426,7 +426,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-openstack
 
-%package appliance-hyperv
+%package -n openSUSE-release-appliance-hyperv
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -441,7 +441,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-hyperv
 
-%package appliance-vagrant
+%package -n openSUSE-release-appliance-vagrant
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -456,7 +456,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-vagrant
 
-%package appliance-wsl
+%package -n openSUSE-release-appliance-wsl
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -471,7 +471,7 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance-wsl
 
-%package appliance-custom
+%package -n openSUSE-release-appliance-custom
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
@@ -545,8 +545,8 @@ for i in *; do
 	ln -s "%_defaultlicensedir/%name/$i" %{buildroot}%_defaultlicensedir/product/base/$i
 done
 
-mkdir -p $RPM_BUILD_ROOT/etc/products.d
-cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE.prod << EOF
+mkdir -p %{buildroot}%{_sysconfdir}/products.d
+cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
@@ -611,116 +611,116 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE.prod << EOF
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-ftp
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-ftp/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-ftp
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-ftp/README << EOF
 This package only exists for providing the product flavor 'ftp'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-mini
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-mini/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-mini
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-mini/README << EOF
 This package only exists for providing the product flavor 'mini'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-dvd
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-dvd/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-dvd
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-dvd/README << EOF
 This package only exists for providing the product flavor 'dvd'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-kde
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-kde/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-kde
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-kde/README << EOF
 This package only exists for providing the product flavor 'livecd-kde'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-x11
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-x11/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-x11
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-x11/README << EOF
 This package only exists for providing the product flavor 'livecd-x11'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-gnome
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-gnome/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-gnome
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-gnome/README << EOF
 This package only exists for providing the product flavor 'livecd-gnome'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-xfce
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-livecd-xfce/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-xfce
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-livecd-xfce/README << EOF
 This package only exists for providing the product flavor 'livecd-xfce'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-kde
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-kde/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-usb-kde
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-usb-kde/README << EOF
 This package only exists for providing the product flavor 'usb-kde'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-gnome
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-gnome/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-usb-gnome
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-usb-gnome/README << EOF
 This package only exists for providing the product flavor 'usb-gnome'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-x11
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-usb-x11/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-usb-x11
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-usb-x11/README << EOF
 This package only exists for providing the product flavor 'usb-x11'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-docker
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-docker/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-docker
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-docker/README << EOF
 This package only exists for providing the product flavor 'appliance-docker'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-kvm
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-kvm/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-kvm
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-kvm/README << EOF
 This package only exists for providing the product flavor 'appliance-kvm'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vmware
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vmware/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-vmware
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-vmware/README << EOF
 This package only exists for providing the product flavor 'appliance-vmware'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-openstack
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-openstack/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-openstack
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-openstack/README << EOF
 This package only exists for providing the product flavor 'appliance-openstack'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-hyperv
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-hyperv/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-hyperv
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-hyperv/README << EOF
 This package only exists for providing the product flavor 'appliance-hyperv'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vagrant
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vagrant/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-vagrant
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-vagrant/README << EOF
 This package only exists for providing the product flavor 'appliance-vagrant'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-wsl
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-wsl/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-wsl
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-wsl/README << EOF
 This package only exists for providing the product flavor 'appliance-wsl'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-custom
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-custom/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-custom
+cat >%{buildroot}%{_defaultdocdir}/openSUSE-release-appliance-custom/README << EOF
 This package only exists for providing the product flavor 'appliance-custom'.
 
 EOF
