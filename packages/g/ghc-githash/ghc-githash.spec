@@ -19,7 +19,7 @@
 %global pkg_name githash
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.6.0
+Version:        0.1.6.1
 Release:        0
 Summary:        Compile git revision info into Haskell projects
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-th-compat-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel

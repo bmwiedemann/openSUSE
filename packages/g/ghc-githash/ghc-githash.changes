@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:01:10 UTC 2021 - psimons@suse.com
+
+- Update githash to version 0.1.6.1.
+  ## 0.1.6.1
+
+  * [Support template-haskell 2.17](https://github.com/snoyberg/githash/pull/22)
+
+-------------------------------------------------------------------
 Wed Jun  9 07:33:55 UTC 2021 - psimons@suse.com
 
 - Update githash to version 0.1.6.0.
