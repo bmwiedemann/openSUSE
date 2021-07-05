@@ -4051,4 +4051,18 @@
 - update staging to 6.11 release</comment>
     <requestid>900883</requestid>
   </revision>
+  <revision rev="347" vrev="1">
+    <srcmd5>8a0a15cee26c3a3f495c6f7f3b05a3e3</srcmd5>
+    <version>6.12</version>
+    <time>1625516604</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.12 development release
+  - Builtin &quot;Blue&quot; and &quot;Classic Blue&quot; themes.
+  - More work towards WinSock PE conversion.
+  - Beginnings of the NSI (Network Store Interface) implementation.
+  - Support for 32/64-bit registry views in reg.exe.
+  - Various bug fixes.
+- update staging to 6.12 release</comment>
+    <requestid>904226</requestid>
+  </revision>
 </revisionlist>

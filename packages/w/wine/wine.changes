@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul  3 08:43:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.12 development release
+  - Builtin "Blue" and "Classic Blue" themes.
+  - More work towards WinSock PE conversion.
+  - Beginnings of the NSI (Network Store Interface) implementation.
+  - Support for 32/64-bit registry views in reg.exe.
+  - Various bug fixes.
+- update staging to 6.12 release
+
+-------------------------------------------------------------------
 Sat Jun 19 09:49:21 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.11 development release
