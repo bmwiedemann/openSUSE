@@ -491,4 +491,13 @@
   + Updated translations (forwarded request 892297 from susnux)</comment>
     <requestid>892519</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>97dbd2ea65e73d25b1dbc3e75a2ea5aa</srcmd5>
+    <version>3.22.17</version>
+    <time>1625516602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.17:
+  + Updated translations (forwarded request 903220 from susnux)</comment>
+    <requestid>904180</requestid>
+  </revision>
 </revisionlist>
