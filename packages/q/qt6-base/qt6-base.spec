@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.1.1
+%define real_version 6.1.2
 %define short_version 6.1
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
