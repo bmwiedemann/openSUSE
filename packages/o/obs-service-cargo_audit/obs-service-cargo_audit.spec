@@ -1,5 +1,5 @@
 #
-# spec file for package obs-service-cargo_audit
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -22,7 +22,7 @@ Summary:        An OBS source service: Audit vendored Rust crates for security i
 License:        MPL-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Version:        0.1.4~git0.a3c7623
+Version:        0.1.5~git0.01fea16
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  python3
