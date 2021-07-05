@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 05 17:17:16 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.20:
+  * Better looping.  Increase to 100 loops.
+  * Repeating test for LP bug 487720.
+    Restore fails with "Invalid data - SHA1 hash mismatch"
+  * Log difftar filename where kill happened.
+  * Allow customization.
+  * Add support for --s3-multipart-chunk-size, default 25MB.
+    Fixes issue #61
+  * Fix test file count after deleting lockfile.
+  * Support -o{Global,User}KnownHostsFile in --ssh-options.
+    Fixes issue #60
+  * Add pydrive2 to requirements.txt
+- Use OBS source services
+  * Upstream project has switched from launchpad to gitlab.com
+
+-------------------------------------------------------------------
 Sun May  2 02:24:00 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.19:
