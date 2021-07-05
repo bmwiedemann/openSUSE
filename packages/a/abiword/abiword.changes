@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  5 11:01:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.5
+  + Fix use-after-free crash.
+  + Fix crash when IM is called before the document is ready
+  + Fix crash with cut and paste
+  + msword: Fix a potential buffer overrun in footnotes and endnotes
+  + gtk+TableWidget: fix display of the TableWidget
+
+-------------------------------------------------------------------
 Sat Jun 26 23:33:26 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass '-std=c++14' to CXXFLAGS for openSUSE >= 1550 to fix

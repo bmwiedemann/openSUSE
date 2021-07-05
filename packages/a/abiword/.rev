@@ -442,4 +442,12 @@
     <comment></comment>
     <requestid>902735</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9528c1be96c0c10dbb438737b0168ca0</srcmd5>
+    <version>3.0.5</version>
+    <time>1625516601</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.0.5 (forwarded request 904145 from susnux)</comment>
+    <requestid>904177</requestid>
+  </revision>
 </revisionlist>

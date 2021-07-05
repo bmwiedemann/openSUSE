@@ -17,7 +17,7 @@
 
 
 Name:           abiword
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A Multiplatform Word Processor
 # FIXME next version: check if the telepathy support still requires old version of empathy (with libempathy-gtk)
