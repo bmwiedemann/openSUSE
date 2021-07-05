@@ -1,8 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul  5 08:28:58 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Update to 1.0.23
+  * Add option to allow only the primary mouse button to raise windows
+  * Use poll() for event handling by default
+  * Allow users to override fonts via ~/.e16/fonts/
+  * bindings: Add 'W' as alias for modifier 4
+  * Enable sounds in combined configuration dialog
+  * Optionally play sounds using audio player
+  * Avoid potential crash when attempting to enable sound
+  * Add alsa-lib sound backend
+  * Various bugfixes
+  * Add sndio sound back end for OpenBSD
+  * Menu generation speedups 
+  * Translation updates: fr
+- Refreshed fix-compile-gtk.patch
+- Run spec cleaner
+
+-------------------------------------------------------------------
 Thu Jan  2 05:10:08 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Add sndio sound back end for OpenBSD
-- Menu generation speedups  
+- Menu generation speedups
 
 -------------------------------------------------------------------
 Thu Sep  5 07:16:38 UTC 2019 - Simon Lees <sflees@suse.de>

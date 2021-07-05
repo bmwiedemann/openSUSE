@@ -1,7 +1,7 @@
 #
 # spec file for package e16
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,20 @@
 %define enable_composite   1
 %define enable_pango       1
 Name:           e16
-Version:        1.0.21
+Version:        1.0.23
 Release:        0
 Summary:        A Window Manager for the X Window System
-License:        MIT-advertising AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT-advertising
 Group:          System/GUI/Other
-URL:            http://www.enlightenment.org
-Source:         e16-%{version}.tar.xz
+URL:            https://www.enlightenment.org
+Source:         e16-%{version}.tar.gz
 Patch0:         fix-compile-gtk.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.7
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(imlib2) >= 1.2.0
@@ -56,28 +58,12 @@ Obsoletes:      enlight < %{version}
 Provides:       enlight = %{version}
 # don't use provides as that will cause issues with the new enlightenment (e18) package
 Obsoletes:      enlightenment >= 1.0.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{enable_sound}
 BuildRequires:  pkgconfig(libpulse)
 %endif
 %if %{enable_pango}
 BuildRequires:  pkgconfig(pango)
 %endif
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  pkgconfig(xdamage)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xft)
-BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xrender)
 
 %description
 Enlightenment is a window manager for the X Window System that is
@@ -128,7 +114,7 @@ autoreconf -fi
 %else
 	--disable-pango
 %endif
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 make DESTDIR=%{buildroot} \
@@ -147,11 +133,9 @@ rm -rf %{buildroot}%{_datadir}/e16/fonts
 %find_lang e16
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files -f e16.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog TODO
 %license COPYING
 %{_bindir}/*

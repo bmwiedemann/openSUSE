@@ -105,4 +105,27 @@ Mostly a couple of minor bug fixes and some internal reworkings.</comment>
 </comment>
     <requestid>761066</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>83ae2ae50e51a73467825b06f24f5dfa</srcmd5>
+    <version>1.0.23</version>
+    <time>1625516594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.23
+  * Add option to allow only the primary mouse button to raise windows
+  * Use poll() for event handling by default
+  * Allow users to override fonts via ~/.e16/fonts/
+  * bindings: Add 'W' as alias for modifier 4
+  * Enable sounds in combined configuration dialog
+  * Optionally play sounds using audio player
+  * Avoid potential crash when attempting to enable sound
+  * Add alsa-lib sound backend
+  * Various bugfixes
+  * Add sndio sound back end for OpenBSD
+  * Menu generation speedups 
+  * Translation updates: fr
+- Refreshed fix-compile-gtk.patch
+- Run spec cleaner
+</comment>
+    <requestid>904098</requestid>
+  </revision>
 </revisionlist>
