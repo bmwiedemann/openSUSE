@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -42126,6 +42126,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/scripts/latex-make/figdepth.py \
+	       %{_texmfdistdir}/scripts/latex-make/gensubfig.py \
+	       %{_texmfdistdir}/scripts/latex-make/latexfilter.py \
+	       %{_texmfdistdir}/scripts/latex-make/svg2dev.py \
+	       %{_texmfdistdir}/scripts/latex-make/svgdepth.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python@python3@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/latex-make/figdepth.py \
 	       %{_texmfdistdir}/scripts/latex-make/gensubfig.py \
@@ -42158,6 +42175,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/scripts/latex-papersize/latex-papersize.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python@python3@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/latex-papersize/latex-papersize.py
     do
