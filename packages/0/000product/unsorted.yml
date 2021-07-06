@@ -8098,7 +8098,6 @@ unsorted:
   - krdc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - krdc-devel 
   - krdc-lang: [i586] 
-  - krename 
   - kreport 
   - kreport-devel 
   - kreport-lang 
@@ -10246,9 +10245,9 @@ unsorted:
   - libdde-wayland-client0 
   - libdde-wayland-server0 
   - libdeal_II9_3_0: [x86_64] 
-  - libdeal_II9_3_0-openmpi2: [x86_64] 
   - libdeal_II9_3_0-openmpi3: [x86_64] 
   - libdeal_II9_3_0-openmpi4: [x86_64] 
+  - libdeal_II9_3_1-openmpi2: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -10562,7 +10561,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla13 
+  - libfilezilla14 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12443,7 +12442,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb7_1 
+  - libopenvdb8_1 
   - libopenvswitch-2_14-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -12753,7 +12752,6 @@ unsorted:
   - libpocketsphinx3 
   - libpocl2 
   - libpodofo-devel 
-  - libpodofo0_9_7 
   - libpoke0 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
@@ -13994,6 +13992,7 @@ unsorted:
   - libtracefs1 
   - libtranscript-devel 
   - libtranscript1 
+  - libtree-sitter0 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
@@ -14083,7 +14082,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev2 
-  - libuhd4_0_0 
+  - libuhd4_1_0 
   - libuhttpmock-0_0-0 
   - libulfius2_7 
   - libulockmgr1 
@@ -20357,6 +20356,7 @@ unsorted:
   - plplot-driver-xwin 
   - plplot-java 
   - plplot-lua 
+  - plplot-octave 
   - plplot-python3-qt 
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
@@ -20580,24 +20580,6 @@ unsorted:
   - postgresql13-pltcl 
   - postgresql13-server-devel 
   - postgresql13-test 
-  - postgresql95 
-  - postgresql95-contrib 
-  - postgresql95-devel 
-  - postgresql95-docs 
-  - postgresql95-plperl 
-  - postgresql95-plpython 
-  - postgresql95-pltcl 
-  - postgresql95-server 
-  - postgresql95-test 
-  - postgresql96 
-  - postgresql96-contrib 
-  - postgresql96-devel 
-  - postgresql96-docs 
-  - postgresql96-plperl 
-  - postgresql96-plpython 
-  - postgresql96-pltcl 
-  - postgresql96-server 
-  - postgresql96-test 
   - postgrey 
   - postorius-web 
   - postorius-web-uwsgi 
@@ -21425,6 +21407,7 @@ unsorted:
   - python3-tooz 
   - python3-tvtk 
   - python3-tvtk-doc 
+  - python3-uhd 
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
@@ -40878,6 +40861,8 @@ unsorted:
   - transmission-qt-lang 
   - transset 
   - tre-devel 
+  - tree-sitter 
+  - tree-sitter-devel 
   - treelayout 
   - treelayout-demo 
   - treelayout-javadoc 
@@ -40907,7 +40892,6 @@ unsorted:
   - tripwire 
   - trivy 
   - trng-devel 
-  - trojita 
   - trousers-devel 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
@@ -41252,6 +41236,7 @@ unsorted:
   - uhd-doc 
   - uhd-firmware 
   - uhd-udev 
+  - uhd-utils 
   - uhttpmock-devel 
   - uhubctl 
   - uid_wrapper 

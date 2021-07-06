@@ -1262,6 +1262,7 @@
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kross" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2403,6 +2404,7 @@
     <package name="libply-splash-graphics5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpodofo0_9_7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpolkit-qt5-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpolkit0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
