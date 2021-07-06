@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -12891,6 +12891,7 @@ Requires:       tex(times.sty)
 # from 20210325
 Source133:      prosper.tar.xz
 Source134:      prosper.doc.tar.xz
+Source135:      prosper_utf8.dif
 
 %description -n texlive-prosper
 Prosper is a LaTeX class for writing transparencies. It is
@@ -13071,8 +13072,8 @@ Provides:       tex(AlProTex.sty)
 Provides:       tex(ProTex.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source135:      protex.tar.xz
-Source136:      protex.doc.tar.xz
+Source136:      protex.tar.xz
+Source137:      protex.doc.tar.xz
 
 %description -n texlive-protex
 ProTeX is a simple but powerful literate programming tool,
@@ -13155,8 +13156,8 @@ Provides:       tex(protocol.cls)
 Requires:       tex(scrartcl.cls)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source137:      protocol.tar.xz
-Source138:      protocol.doc.tar.xz
+Source138:      protocol.tar.xz
+Source139:      protocol.doc.tar.xz
 
 %description -n texlive-protocol
 The present version of the class supports German meeting
@@ -13272,8 +13273,8 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source139:      prtec.tar.xz
-Source140:      prtec.doc.tar.xz
+Source140:      prtec.tar.xz
+Source141:      prtec.doc.tar.xz
 
 %description -n texlive-prtec
 This package provides a LaTeX class, a BibTeX style, and a
@@ -13366,8 +13367,8 @@ Requires:       tex(prelim2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source141:      przechlewski-book.tar.xz
-Source142:      przechlewski-book.doc.tar.xz
+Source142:      przechlewski-book.tar.xz
+Source143:      przechlewski-book.doc.tar.xz
 
 %description -n texlive-przechlewski-book
 The bundle provides machine-readable copies of the examples
@@ -13491,8 +13492,8 @@ Requires:       perl(POSIX)
 #!BuildIgnore:  perl(POSIX)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source143:      ps2eps.tar.xz
-Source144:      ps2eps.doc.tar.xz
+Source144:      ps2eps.tar.xz
+Source145:      ps2eps.doc.tar.xz
 
 %description -n texlive-ps2eps
 Produce Encapsulated PostScript Files (EPS/EPSF) from a
@@ -13595,7 +13596,7 @@ Provides:       man(pk2bm.1)
 Provides:       man(ps2pk.1)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source145:      ps2pk.doc.tar.xz
+Source146:      ps2pk.doc.tar.xz
 
 %description -n texlive-ps2pk
 Generates a PK file from an Adobe Type 1 font. PK fonts are (or
@@ -13669,8 +13670,8 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source146:      psbao.tar.xz
-Source147:      psbao.doc.tar.xz
+Source147:      psbao.tar.xz
+Source148:      psbao.doc.tar.xz
 
 %description -n texlive-psbao
 The package draws Bao diagrams in LaTeX. The package is a
@@ -13758,8 +13759,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source148:      pseudo.tar.xz
-Source149:      pseudo.doc.tar.xz
+Source149:      pseudo.tar.xz
+Source150:      pseudo.doc.tar.xz
 
 %description -n texlive-pseudo
 The package permits writing pseudocode without much fuss and
@@ -13859,8 +13860,8 @@ Requires:       tex(fancybox.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source150:      pseudocode.tar.xz
-Source151:      pseudocode.doc.tar.xz
+Source151:      pseudocode.tar.xz
+Source152:      pseudocode.doc.tar.xz
 
 %description -n texlive-pseudocode
 This package provides the environment "pseudocode" for
@@ -13942,8 +13943,8 @@ Provides:       tex(psfrag.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source152:      psfrag.tar.xz
-Source153:      psfrag.doc.tar.xz
+Source153:      psfrag.tar.xz
+Source154:      psfrag.doc.tar.xz
 
 %description -n texlive-psfrag
 Allows LaTeX constructions (equations, picture environments,
@@ -14032,7 +14033,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source154:      psfrag-italian.doc.tar.xz
+Source155:      psfrag-italian.doc.tar.xz
 
 %description -n texlive-psfrag-italian
 This is a translation of the documentation that comes with the
@@ -14101,8 +14102,8 @@ Requires:       tex(overpic.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source155:      psfragx.tar.xz
-Source156:      psfragx.doc.tar.xz
+Source156:      psfragx.tar.xz
+Source157:      psfragx.doc.tar.xz
 
 %description -n texlive-psfragx
 PSfragX offers a mechanism to embed \psfrag commands, as
@@ -14209,8 +14210,8 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source157:      psgo.tar.xz
-Source158:      psgo.doc.tar.xz
+Source158:      psgo.tar.xz
+Source159:      psgo.doc.tar.xz
 
 %description -n texlive-psgo
 The psgo package
@@ -14292,8 +14293,8 @@ Provides:       tex(mypsizzl.tex)
 Provides:       tex(psizzl.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source159:      psizzl.tar.xz
-Source160:      psizzl.doc.tar.xz
+Source160:      psizzl.tar.xz
+Source161:      psizzl.doc.tar.xz
 
 %description -n texlive-psizzl
 PSIZZL is a TeX format for physics papers written at SLAC and
@@ -14398,7 +14399,7 @@ Provides:       tex(pslatex.sty)
 Requires:       tex(psyr.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source161:      pslatex.tar.xz
+Source162:      pslatex.tar.xz
 
 %description -n texlive-pslatex
 A small package that makes LaTeX default to 'standard'
@@ -14604,8 +14605,8 @@ Provides:       tex(utopia.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source162:      psnfss.tar.xz
-Source163:      psnfss.doc.tar.xz
+Source163:      psnfss.tar.xz
+Source164:      psnfss.doc.tar.xz
 
 %description -n texlive-psnfss
 Font definition files, macros and font metrics for
@@ -14833,8 +14834,8 @@ Recommends:     texlive-pspicture-doc >= %{texlive_version}
 Provides:       tex(pspicture.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source164:      pspicture.tar.xz
-Source165:      pspicture.doc.tar.xz
+Source165:      pspicture.tar.xz
+Source166:      pspicture.doc.tar.xz
 
 %description -n texlive-pspicture
 A replacement for LaTeX's picture macros, that uses PostScript
@@ -14916,8 +14917,8 @@ Recommends:     texlive-pst-2dplot-doc >= %{texlive_version}
 Provides:       tex(pst-2dplot.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source166:      pst-2dplot.tar.xz
-Source167:      pst-2dplot.doc.tar.xz
+Source167:      pst-2dplot.tar.xz
+Source168:      pst-2dplot.doc.tar.xz
 
 %description -n texlive-pst-2dplot
 Pst-2dplot is a pstricks package that offers an easy-to-use and
@@ -15004,8 +15005,8 @@ Provides:       tex(pst-3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source168:      pst-3d.tar.xz
-Source169:      pst-3d.doc.tar.xz
+Source169:      pst-3d.tar.xz
+Source170:      pst-3d.doc.tar.xz
 
 %description -n texlive-pst-3d
 The package provides basic macros that use PSTricks for
@@ -15097,8 +15098,8 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source170:      pst-3dplot.tar.xz
-Source171:      pst-3dplot.doc.tar.xz
+Source171:      pst-3dplot.tar.xz
+Source172:      pst-3dplot.doc.tar.xz
 
 %description -n texlive-pst-3dplot
 A package using PSTricks to draw a large variety of graphs and
@@ -15188,8 +15189,8 @@ Provides:       tex(pst-abspos.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source172:      pst-abspos.tar.xz
-Source173:      pst-abspos.doc.tar.xz
+Source173:      pst-abspos.tar.xz
+Source174:      pst-abspos.doc.tar.xz
 
 %description -n texlive-pst-abspos
 The (PSTricks-related) package provides a command
@@ -15280,8 +15281,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source174:      pst-am.tar.xz
-Source175:      pst-am.doc.tar.xz
+Source175:      pst-am.tar.xz
+Source176:      pst-am.doc.tar.xz
 
 %description -n texlive-pst-am
 The package allows the simulation of the modulated and
@@ -15370,8 +15371,8 @@ Requires:       tex(pst-solides3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source176:      pst-antiprism.tar.xz
-Source177:      pst-antiprism.doc.tar.xz
+Source177:      pst-antiprism.tar.xz
+Source178:      pst-antiprism.doc.tar.xz
 
 %description -n texlive-pst-antiprism
 pst-antiprism is a PSTricks related package which draws an
@@ -15459,8 +15460,8 @@ Provides:       tex(pst-arrow.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source178:      pst-arrow.tar.xz
-Source179:      pst-arrow.doc.tar.xz
+Source179:      pst-arrow.tar.xz
+Source180:      pst-arrow.doc.tar.xz
 
 %description -n texlive-pst-arrow
 This package has all the code from the package pstricks-add
@@ -15547,8 +15548,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source180:      pst-asr.tar.xz
-Source181:      pst-asr.doc.tar.xz
+Source181:      pst-asr.tar.xz
+Source182:      pst-asr.doc.tar.xz
 
 %description -n texlive-pst-asr
 The package allows the user to typeset autosegmental
@@ -15634,8 +15635,8 @@ Provides:       tex(pst-bar.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source182:      pst-bar.tar.xz
-Source183:      pst-bar.doc.tar.xz
+Source183:      pst-bar.tar.xz
+Source184:      pst-bar.doc.tar.xz
 
 %description -n texlive-pst-bar
 The package uses pstricks to draw bar charts from data stored
@@ -15727,8 +15728,8 @@ Provides:       tex(pst-barcode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source184:      pst-barcode.tar.xz
-Source185:      pst-barcode.doc.tar.xz
+Source185:      pst-barcode.tar.xz
+Source186:      pst-barcode.doc.tar.xz
 
 %description -n texlive-pst-barcode
 The pst-barcode package allows printing of barcodes, in a huge
@@ -15995,8 +15996,8 @@ Requires:       tex(expl3.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source186:      pst-bezier.tar.xz
-Source187:      pst-bezier.doc.tar.xz
+Source187:      pst-bezier.tar.xz
+Source188:      pst-bezier.doc.tar.xz
 
 %description -n texlive-pst-bezier
 The package provides a macro \psbcurve for drawing a Bezier
@@ -16084,8 +16085,8 @@ Provides:       tex(pst-blur.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source188:      pst-blur.tar.xz
-Source189:      pst-blur.doc.tar.xz
+Source189:      pst-blur.tar.xz
+Source190:      pst-blur.doc.tar.xz
 
 %description -n texlive-pst-blur
 Pst-blur is a package built for use with PSTricks. It provides
@@ -16171,8 +16172,8 @@ Provides:       tex(pst-bspline.tex)
 Requires:       tex(multido.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source190:      pst-bspline.tar.xz
-Source191:      pst-bspline.doc.tar.xz
+Source191:      pst-bspline.tar.xz
+Source192:      pst-bspline.doc.tar.xz
 
 %description -n texlive-pst-bspline
 The package draws uniform, cubic B-spline curves, open and
@@ -16261,8 +16262,8 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source192:      pst-calculate.tar.xz
-Source193:      pst-calculate.doc.tar.xz
+Source193:      pst-calculate.tar.xz
+Source194:      pst-calculate.doc.tar.xz
 
 %description -n texlive-pst-calculate
 This package provides an interface to the LaTeX3 floating point
@@ -16353,8 +16354,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source194:      pst-calendar.tar.xz
-Source195:      pst-calendar.doc.tar.xz
+Source195:      pst-calendar.tar.xz
+Source196:      pst-calendar.doc.tar.xz
 
 %description -n texlive-pst-calendar
 The package uses pstricks and pst-3d to draw tabular calendars,
@@ -16446,8 +16447,8 @@ Provides:       tex(pst-cie.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source196:      pst-cie.tar.xz
-Source197:      pst-cie.doc.tar.xz
+Source197:      pst-cie.tar.xz
+Source198:      pst-cie.doc.tar.xz
 
 %description -n texlive-pst-cie
 pst-cie is a PSTricks related package to show the different CIE
@@ -16535,8 +16536,8 @@ Provides:       tex(pst-circ.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source198:      pst-circ.tar.xz
-Source199:      pst-circ.doc.tar.xz
+Source199:      pst-circ.tar.xz
+Source200:      pst-circ.doc.tar.xz
 
 %description -n texlive-pst-circ
 The package is built using PSTricks and in particular pst-node.
@@ -16628,8 +16629,8 @@ Provides:       tex(pst-coil.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source200:      pst-coil.tar.xz
-Source201:      pst-coil.doc.tar.xz
+Source201:      pst-coil.tar.xz
+Source202:      pst-coil.doc.tar.xz
 
 %description -n texlive-pst-coil
 Pst-coil is a PSTricks based package for coils and zigzags and
@@ -16716,8 +16717,8 @@ Provides:       tex(pst-contourplot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source202:      pst-contourplot.tar.xz
-Source203:      pst-contourplot.doc.tar.xz
+Source203:      pst-contourplot.tar.xz
+Source204:      pst-contourplot.doc.tar.xz
 
 %description -n texlive-pst-contourplot
 This package allows to draw implicit functions "f(x,y) = 0"
@@ -16828,8 +16829,8 @@ Provides:       tex(pst-coxeterp.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source204:      pst-cox.tar.xz
-Source205:      pst-cox.doc.tar.xz
+Source205:      pst-cox.tar.xz
+Source206:      pst-cox.doc.tar.xz
 
 %description -n texlive-pst-cox
 Pst-cox is a PSTricks package for drawing 2-dimensional
@@ -16938,8 +16939,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source206:      pst-dart.tar.xz
-Source207:      pst-dart.doc.tar.xz
+Source207:      pst-dart.tar.xz
+Source208:      pst-dart.doc.tar.xz
 
 %description -n texlive-pst-dart
 pst-dart is a PSTricks related package and draws Dart Boards.
@@ -17023,8 +17024,8 @@ Recommends:     texlive-pst-dbicons-doc >= %{texlive_version}
 Provides:       tex(pst-dbicons.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source208:      pst-dbicons.tar.xz
-Source209:      pst-dbicons.doc.tar.xz
+Source209:      pst-dbicons.tar.xz
+Source210:      pst-dbicons.doc.tar.xz
 
 %description -n texlive-pst-dbicons
 The package provides some useful macros in the database area.
@@ -17115,8 +17116,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source210:      pst-diffraction.tar.xz
-Source211:      pst-diffraction.doc.tar.xz
+Source211:      pst-diffraction.tar.xz
+Source212:      pst-diffraction.doc.tar.xz
 
 %description -n texlive-pst-diffraction
 The package enables the user to draw (using PSTricks) the
@@ -17215,8 +17216,8 @@ Provides:       tex(pst-electricfield.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source212:      pst-electricfield.tar.xz
-Source213:      pst-electricfield.doc.tar.xz
+Source213:      pst-electricfield.tar.xz
+Source214:      pst-electricfield.doc.tar.xz
 
 %description -n texlive-pst-electricfield
 The package provides macros to plot electric field and
@@ -17310,8 +17311,8 @@ Provides:       tex(pst-eps.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source214:      pst-eps.tar.xz
-Source215:      pst-eps.doc.tar.xz
+Source215:      pst-eps.tar.xz
+Source216:      pst-eps.doc.tar.xz
 
 %description -n texlive-pst-eps
 Pst-eps is a PSTricks-based package for exporting PSTricks
@@ -17402,8 +17403,8 @@ Requires:       tex(pst-tools.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source216:      pst-eucl.tar.xz
-Source217:      pst-eucl.doc.tar.xz
+Source217:      pst-eucl.tar.xz
+Source218:      pst-eucl.doc.tar.xz
 
 %description -n texlive-pst-eucl
 The package allows the drawing of Euclidean geometric figures
@@ -17490,7 +17491,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source218:      pst-eucl-translation-bg.doc.tar.xz
+Source219:      pst-eucl-translation-bg.doc.tar.xz
 
 %description -n texlive-pst-eucl-translation-bg
 The pst-eucl package documentation in Bulgarian language -
@@ -17664,8 +17665,8 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source219:      pst-exa.tar.xz
-Source220:      pst-exa.doc.tar.xz
+Source220:      pst-exa.tar.xz
+Source221:      pst-exa.doc.tar.xz
 
 %description -n texlive-pst-exa
 The (PSTricks-related) package provides an environment
@@ -17752,8 +17753,8 @@ Provides:       tex(pst-feyn.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source221:      pst-feyn.tar.xz
-Source222:      pst-feyn.doc.tar.xz
+Source222:      pst-feyn.tar.xz
+Source223:      pst-feyn.doc.tar.xz
 
 %description -n texlive-pst-feyn
 pst-feyn is a set of drawing graphical elements which are used
@@ -17843,8 +17844,8 @@ Provides:       tex(pst-fill.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source223:      pst-fill.tar.xz
-Source224:      pst-fill.doc.tar.xz
+Source224:      pst-fill.tar.xz
+Source225:      pst-fill.doc.tar.xz
 
 %description -n texlive-pst-fill
 Pst-fill is a PSTricks-based package for filling and tiling
@@ -17929,8 +17930,8 @@ Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source225:      pst-fit.tar.xz
-Source226:      pst-fit.doc.tar.xz
+Source226:      pst-fit.tar.xz
+Source227:      pst-fit.doc.tar.xz
 
 %description -n texlive-pst-fit
 The package uses PSTricks to fit curves to: Linear Functions;
@@ -18017,8 +18018,8 @@ Provides:       tex(pst-fr3d.sty)
 Provides:       tex(pst-fr3d.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source227:      pst-fr3d.tar.xz
-Source228:      pst-fr3d.doc.tar.xz
+Source228:      pst-fr3d.tar.xz
+Source229:      pst-fr3d.doc.tar.xz
 
 %description -n texlive-pst-fr3d
 A package using PSTricks to draw three dimensional framed boxes
@@ -18103,8 +18104,8 @@ Provides:       tex(pst-fractal.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source229:      pst-fractal.tar.xz
-Source230:      pst-fractal.doc.tar.xz
+Source230:      pst-fractal.tar.xz
+Source231:      pst-fractal.doc.tar.xz
 
 %description -n texlive-pst-fractal
 The package uses PSTricks to draw the Julia and Mandelbrot
@@ -18198,8 +18199,8 @@ Requires:       tex(pst-slpe.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source231:      pst-fun.tar.xz
-Source232:      pst-fun.doc.tar.xz
+Source232:      pst-fun.tar.xz
+Source233:      pst-fun.doc.tar.xz
 
 %description -n texlive-pst-fun
 This is a PSTricks related package for drawing funny objects,
@@ -18293,8 +18294,8 @@ Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source233:      pst-func.tar.xz
-Source234:      pst-func.doc.tar.xz
+Source234:      pst-func.tar.xz
+Source235:      pst-func.doc.tar.xz
 
 %description -n texlive-pst-func
 The package is built for use with PSTricks. It provides macros
@@ -18399,8 +18400,8 @@ Provides:       tex(pst-gantt.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source235:      pst-gantt.tar.xz
-Source236:      pst-gantt.doc.tar.xz
+Source236:      pst-gantt.tar.xz
+Source237:      pst-gantt.doc.tar.xz
 
 %description -n texlive-pst-gantt
 The package uses PSTricks to draw GANTT charts, which are a
@@ -18537,8 +18538,8 @@ Provides:       tex(wmaglin.dat)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source237:      pst-geo.tar.xz
-Source238:      pst-geo.doc.tar.xz
+Source238:      pst-geo.tar.xz
+Source239:      pst-geo.doc.tar.xz
 
 %description -n texlive-pst-geo
 The package offers a set of PSTricks related packages for
@@ -18704,8 +18705,8 @@ Provides:       tex(pst-geometrictools.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source239:      pst-geometrictools.tar.xz
-Source240:      pst-geometrictools.doc.tar.xz
+Source240:      pst-geometrictools.tar.xz
+Source241:      pst-geometrictools.doc.tar.xz
 
 %description -n texlive-pst-geometrictools
 This PSTricks package facilitates the drawing of protractors,
@@ -18792,8 +18793,8 @@ Provides:       tex(pst-ghsb.sty)
 Provides:       tex(pst-ghsb.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source241:      pst-ghsb.tar.xz
-Source242:      pst-ghsb.doc.tar.xz
+Source242:      pst-ghsb.tar.xz
+Source243:      pst-ghsb.doc.tar.xz
 
 %description -n texlive-pst-ghsb
 Usage modeled on pst-grad; superseded by pst-slpe.
@@ -18879,8 +18880,8 @@ Provides:       tex(pst-gr3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source243:      pst-gr3d.tar.xz
-Source244:      pst-gr3d.doc.tar.xz
+Source244:      pst-gr3d.tar.xz
+Source245:      pst-gr3d.doc.tar.xz
 
 %description -n texlive-pst-gr3d
 This PSTricks package provides a command \PstGridThreeD that
@@ -18965,8 +18966,8 @@ Provides:       tex(pst-grad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source245:      pst-grad.tar.xz
-Source246:      pst-grad.doc.tar.xz
+Source246:      pst-grad.tar.xz
+Source247:      pst-grad.doc.tar.xz
 
 %description -n texlive-pst-grad
 The package fills with colour gradients, using PSTricks. The
@@ -19051,8 +19052,8 @@ Recommends:     texlive-pst-graphicx-doc >= %{texlive_version}
 Provides:       tex(pst-graphicx.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source247:      pst-graphicx.tar.xz
-Source248:      pst-graphicx.doc.tar.xz
+Source248:      pst-graphicx.tar.xz
+Source249:      pst-graphicx.doc.tar.xz
 
 %description -n texlive-pst-graphicx
 The package provides a version of graphicx that avoids loading
@@ -19137,8 +19138,8 @@ Provides:       tex(pst-infixplot.sty)
 Provides:       tex(pst-infixplot.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source249:      pst-infixplot.tar.xz
-Source250:      pst-infixplot.doc.tar.xz
+Source250:      pst-infixplot.tar.xz
+Source251:      pst-infixplot.doc.tar.xz
 
 %description -n texlive-pst-infixplot
 Plotting functions with pst-plot is very powerful but sometimes
@@ -19232,8 +19233,8 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source251:      pst-intersect.tar.xz
-Source252:      pst-intersect.doc.tar.xz
+Source252:      pst-intersect.tar.xz
+Source253:      pst-intersect.doc.tar.xz
 
 %description -n texlive-pst-intersect
 The package computes the intersections between arbitrary
@@ -19320,8 +19321,8 @@ Provides:       tex(pst-jtree.sty)
 Provides:       tex(pst-jtree.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source253:      pst-jtree.tar.xz
-Source254:      pst-jtree.doc.tar.xz
+Source254:      pst-jtree.tar.xz
+Source255:      pst-jtree.doc.tar.xz
 
 %description -n texlive-pst-jtree
 jTree uses PSTricks to enable linguists to typeset complex
@@ -19409,8 +19410,8 @@ Provides:       tex(pst-knot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source255:      pst-knot.tar.xz
-Source256:      pst-knot.doc.tar.xz
+Source256:      pst-knot.tar.xz
+Source257:      pst-knot.doc.tar.xz
 
 %description -n texlive-pst-knot
 The package can produce a fair range of knot shapes, with all
@@ -19497,8 +19498,8 @@ Provides:       tex(pst-laboObj.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source257:      pst-labo.tar.xz
-Source258:      pst-labo.doc.tar.xz
+Source258:      pst-labo.tar.xz
+Source259:      pst-labo.doc.tar.xz
 
 %description -n texlive-pst-labo
 Pst-labo is a PSTricks related package for drawing basic and
@@ -19596,8 +19597,8 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source259:      pst-layout.tar.xz
-Source260:      pst-layout.doc.tar.xz
+Source260:      pst-layout.tar.xz
+Source261:      pst-layout.doc.tar.xz
 
 %description -n texlive-pst-layout
 The package provides a means of creating elaborate
@@ -19683,8 +19684,8 @@ Provides:       tex(pst-lens.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source261:      pst-lens.tar.xz
-Source262:      pst-lens.doc.tar.xz
+Source262:      pst-lens.tar.xz
+Source263:      pst-lens.doc.tar.xz
 
 %description -n texlive-pst-lens
 This PSTricks package provides a really rather simple command
@@ -19769,8 +19770,8 @@ Provides:       tex(pst-light3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source263:      pst-light3d.tar.xz
-Source264:      pst-light3d.doc.tar.xz
+Source264:      pst-light3d.tar.xz
+Source265:      pst-light3d.doc.tar.xz
 
 %description -n texlive-pst-light3d
 A PSTricks package for three dimensional lighting effects on
@@ -19858,8 +19859,8 @@ Provides:       tex(pst-lsystem.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source265:      pst-lsystem.tar.xz
-Source266:      pst-lsystem.doc.tar.xz
+Source266:      pst-lsystem.tar.xz
+Source267:      pst-lsystem.doc.tar.xz
 
 %description -n texlive-pst-lsystem
 pst-lsystem is a PSTricks based package for creating images
@@ -19950,8 +19951,8 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source267:      pst-magneticfield.tar.xz
-Source268:      pst-magneticfield.doc.tar.xz
+Source268:      pst-magneticfield.tar.xz
+Source269:      pst-magneticfield.doc.tar.xz
 
 %description -n texlive-pst-magneticfield
 pst-magneticfield is a PSTricks related package to draw the
@@ -20041,8 +20042,8 @@ Provides:       tex(pst-marble.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source269:      pst-marble.tar.xz
-Source270:      pst-marble.doc.tar.xz
+Source270:      pst-marble.tar.xz
+Source271:      pst-marble.doc.tar.xz
 
 %description -n texlive-pst-marble
 This is a PSTricks package to draw marble-like patterns.
@@ -20166,8 +20167,8 @@ Requires:       tex(pst-calculate.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source271:      pst-math.tar.xz
-Source272:      pst-math.doc.tar.xz
+Source272:      pst-math.tar.xz
+Source273:      pst-math.doc.tar.xz
 
 %description -n texlive-pst-math
 PostScript lacks a lot of basic operators such as tan, acos,
@@ -20263,8 +20264,8 @@ Provides:       tex(pst-mirror.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source273:      pst-mirror.tar.xz
-Source274:      pst-mirror.doc.tar.xz
+Source274:      pst-mirror.tar.xz
+Source275:      pst-mirror.doc.tar.xz
 
 %description -n texlive-pst-mirror
 The package provides commands and supporting PostScript
@@ -20363,8 +20364,8 @@ Provides:       tex(pst-moire.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source275:      pst-moire.tar.xz
-Source276:      pst-moire.doc.tar.xz
+Source276:      pst-moire.tar.xz
+Source277:      pst-moire.doc.tar.xz
 
 %description -n texlive-pst-moire
 This is a PSTricks package to draw moire patterns.
@@ -20461,8 +20462,8 @@ Provides:       tex(pst-node97.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source277:      pst-node.tar.xz
-Source278:      pst-node.doc.tar.xz
+Source278:      pst-node.tar.xz
+Source279:      pst-node.doc.tar.xz
 
 %description -n texlive-pst-node
 The package enables the user to connect information, and to
@@ -20558,8 +20559,8 @@ Provides:       tex(pst-ob3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source279:      pst-ob3d.tar.xz
-Source280:      pst-ob3d.doc.tar.xz
+Source280:      pst-ob3d.tar.xz
+Source281:      pst-ob3d.doc.tar.xz
 
 %description -n texlive-pst-ob3d
 The package uses PSTricks to provide basic three-dimensional
@@ -20645,8 +20646,8 @@ Provides:       tex(pst-ode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source281:      pst-ode.tar.xz
-Source282:      pst-ode.doc.tar.xz
+Source282:      pst-ode.tar.xz
+Source283:      pst-ode.doc.tar.xz
 
 %description -n texlive-pst-ode
 The package defines \pstODEsolve for solving initial value
@@ -20750,8 +20751,8 @@ Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source283:      pst-optexp.tar.xz
-Source284:      pst-optexp.doc.tar.xz
+Source284:      pst-optexp.tar.xz
+Source285:      pst-optexp.doc.tar.xz
 
 %description -n texlive-pst-optexp
 The package is a collection of optical components that
@@ -20844,8 +20845,8 @@ Provides:       tex(pst-optic.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source285:      pst-optic.tar.xz
-Source286:      pst-optic.doc.tar.xz
+Source286:      pst-optic.tar.xz
+Source287:      pst-optic.doc.tar.xz
 
 %description -n texlive-pst-optic
 A package for drawing both reflective and refractive optics
@@ -20932,8 +20933,8 @@ Provides:       tex(pst-osci.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source287:      pst-osci.tar.xz
-Source288:      pst-osci.doc.tar.xz
+Source288:      pst-osci.tar.xz
+Source289:      pst-osci.doc.tar.xz
 
 %description -n texlive-pst-osci
 This PSTricks package enables you to produce oscilloscope
@@ -21026,8 +21027,8 @@ Provides:       tex(pst-ovl.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source289:      pst-ovl.tar.xz
-Source290:      pst-ovl.doc.tar.xz
+Source290:      pst-ovl.tar.xz
+Source291:      pst-ovl.doc.tar.xz
 
 %description -n texlive-pst-ovl
 The package is useful when building an image from assorted
@@ -21116,8 +21117,8 @@ Provides:       tex(pst-pad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20210325
-Source291:      pst-pad.tar.xz
-Source292:      pst-pad.doc.tar.xz
+Source292:      pst-pad.tar.xz
+Source293:      pst-pad.doc.tar.xz
 
 %description -n texlive-pst-pad
 The package collects a set of graphical elements based on
@@ -21877,36 +21878,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    pushd %{buildroot}%{_datadir}/texlive/texmf-dist
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:135}
+    popd
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-protex-%{texlive_version}.%{texlive_noarch}.svn41633-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-protocol-%{texlive_version}.%{texlive_noarch}.1.13svn25562-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-prtec-%{texlive_version}.%{texlive_noarch}.1.06svn51919-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-przechlewski-book-%{texlive_version}.%{texlive_noarch}.svn23552-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ps2eps-%{texlive_version}.%{texlive_noarch}.1.68svn53559-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ps2eps/ps2eps.pl
     do
@@ -21923,294 +21927,294 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ps2pk-%{texlive_version}.%{texlive_noarch}.svn52851-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psbao-%{texlive_version}.%{texlive_noarch}.1.0svn55013-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pseudo-%{texlive_version}.%{texlive_noarch}.1.1.3svn52582-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pseudocode-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psfrag-%{texlive_version}.%{texlive_noarch}.3.04svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psfrag-italian-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psfragx-%{texlive_version}.%{texlive_noarch}.1.1svn26243-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psgo-%{texlive_version}.%{texlive_noarch}.0.0.17svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psizzl-%{texlive_version}.%{texlive_noarch}.0.0.35svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pslatex-%{texlive_version}.%{texlive_noarch}.1.3svn57434-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-psnfss-%{texlive_version}.%{texlive_noarch}.9.3svn54694-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pspicture-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-2dplot-%{texlive_version}.%{texlive_noarch}.1.5svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-3d-%{texlive_version}.%{texlive_noarch}.1.10svn17257-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-3dplot-%{texlive_version}.%{texlive_noarch}.2.06svn56758-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-abspos-%{texlive_version}.%{texlive_noarch}.0.0.2svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-am-%{texlive_version}.%{texlive_noarch}.1.02svn19591-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-antiprism-%{texlive_version}.%{texlive_noarch}.0.0.02svn46643-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-arrow-%{texlive_version}.%{texlive_noarch}.0.0.01svn41980-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-asr-%{texlive_version}.%{texlive_noarch}.1.3svn22138-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-bar-%{texlive_version}.%{texlive_noarch}.0.0.92svn18734-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/generic/pst-bar/pst-bar.orig
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-barcode-%{texlive_version}.%{texlive_noarch}.0.0.18svn45096-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-bezier-%{texlive_version}.%{texlive_noarch}.0.0.03svn41981-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-blur-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-bspline-%{texlive_version}.%{texlive_noarch}.1.62svn40685-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-calculate-%{texlive_version}.%{texlive_noarch}.0.0.02svn49817-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-calendar-%{texlive_version}.%{texlive_noarch}.0.0.47svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-cie-%{texlive_version}.%{texlive_noarch}.1.06asvn49422-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-circ-%{texlive_version}.%{texlive_noarch}.2.17svn55289-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-coil-%{texlive_version}.%{texlive_noarch}.1.07svn37377-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-contourplot-%{texlive_version}.%{texlive_noarch}.0.0.6svn48230-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-cox-%{texlive_version}.%{texlive_noarch}.0.0.98_betasvn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-dart-%{texlive_version}.%{texlive_noarch}.0.0.02svn46579-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-dbicons-%{texlive_version}.%{texlive_noarch}.0.0.16svn17556-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-diffraction-%{texlive_version}.%{texlive_noarch}.2.03svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-electricfield-%{texlive_version}.%{texlive_noarch}.0.0.14svn29803-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-eps-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-eucl-%{texlive_version}.%{texlive_noarch}.1.75svn56474-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-eucl-translation-bg-%{texlive_version}.%{texlive_noarch}.1.3.2svn19296-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-exa-%{texlive_version}.%{texlive_noarch}.0.0.06svn45289-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-feyn-%{texlive_version}.%{texlive_noarch}.0.0.01svn48781-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-fill-%{texlive_version}.%{texlive_noarch}.1.01svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-fit-%{texlive_version}.%{texlive_noarch}.0.0.02svn45109-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-fr3d-%{texlive_version}.%{texlive_noarch}.1.10svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-fractal-%{texlive_version}.%{texlive_noarch}.0.0.11asvn54376-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-fun-%{texlive_version}.%{texlive_noarch}.0.0.04svn17909-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-func-%{texlive_version}.%{texlive_noarch}.0.0.95svn55439-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-gantt-%{texlive_version}.%{texlive_noarch}.0.0.22asvn35832-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-geo-%{texlive_version}.%{texlive_noarch}.0.0.06svn46273-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-compress.pl \
 	       %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-decompress.pl
@@ -22235,110 +22239,110 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-geometrictools-%{texlive_version}.%{texlive_noarch}.1.1svn45319-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-ghsb-%{texlive_version}.%{texlive_noarch}.svn54074-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-gr3d-%{texlive_version}.%{texlive_noarch}.1.34svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-grad-%{texlive_version}.%{texlive_noarch}.1.06svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-graphicx-%{texlive_version}.%{texlive_noarch}.0.0.02svn21717-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-infixplot-%{texlive_version}.%{texlive_noarch}.0.0.11svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-intersect-%{texlive_version}.%{texlive_noarch}.0.0.4svn33210-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-jtree-%{texlive_version}.%{texlive_noarch}.2.6svn20946-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-knot-%{texlive_version}.%{texlive_noarch}.0.0.2svn16033-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-labo-%{texlive_version}.%{texlive_noarch}.2.04svn39077-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-layout-%{texlive_version}.%{texlive_noarch}.0.0.95svn29803-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-lens-%{texlive_version}.%{texlive_noarch}.1.02svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-light3d-%{texlive_version}.%{texlive_noarch}.0.0.12svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-lsystem-%{texlive_version}.%{texlive_noarch}.0.0.02svn49556-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-magneticfield-%{texlive_version}.%{texlive_noarch}.1.16svn49780-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-marble-%{texlive_version}.%{texlive_noarch}.1.6svn50925-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-math-%{texlive_version}.%{texlive_noarch}.0.0.65svn49425-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-mirror-%{texlive_version}.%{texlive_noarch}.1.01svn32997-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/make.sh \
 	       %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/test.sh
@@ -22357,56 +22361,56 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-moire-%{texlive_version}.%{texlive_noarch}.2.1svn49223-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-node-%{texlive_version}.%{texlive_noarch}.1.42asvn54687-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-ob3d-%{texlive_version}.%{texlive_noarch}.0.0.22svn54514-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-ode-%{texlive_version}.%{texlive_noarch}.0.0.15svn58293-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-optexp-%{texlive_version}.%{texlive_noarch}.6.0svn57977-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-optic-%{texlive_version}.%{texlive_noarch}.1.02svn41999-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-osci-%{texlive_version}.%{texlive_noarch}.2.82svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-ovl-%{texlive_version}.%{texlive_noarch}.0.0.07bsvn54963-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pst-pad-%{texlive_version}.%{texlive_noarch}.0.0.3bsvn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
