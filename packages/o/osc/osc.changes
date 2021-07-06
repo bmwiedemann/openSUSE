@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 18 21:35:50 UTC 2021 - Atilla ÖNTAŞ <tarakbumba@gmail.com>
+
+- force Mageia >= 8 builds to python3; python2 is deprecated in Mageia 8 and up.
+
+-------------------------------------------------------------------
 Tue May 18 20:58:00 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
 
 - 0.173.0:

@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800
+%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?mageia} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3

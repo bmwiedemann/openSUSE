@@ -1482,4 +1482,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
   * add support for sccache</comment>
     <requestid>894195</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>90cbc3b3136f2dfea6b950e892f01b32</srcmd5>
+    <version>0.173.0</version>
+    <time>1625607031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>904279</requestid>
+  </revision>
 </revisionlist>
