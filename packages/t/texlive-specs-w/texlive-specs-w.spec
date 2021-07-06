@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -25796,6 +25796,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/scripts/texliveonfly/texliveonfly.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python@python3@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/texliveonfly/texliveonfly.py
     do
