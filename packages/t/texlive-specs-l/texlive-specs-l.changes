@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:59:13 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch seminar_latex20200202.dif and patch prosper_utf8.dif  
+  * Avoid latin1 characters and the caused warning about broken
+    enconding in the typeouts of prosper file
+  * Set lowest release of the LaTeX engine for seminar class
+    (boo#1185941)
+
+-------------------------------------------------------------------
+Tue Jun 29 09:17:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Move python detection and correction to python3
+
+-------------------------------------------------------------------
+Sun May 30 16:43:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Mon Apr 12 12:41:38 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Reenable pygmentex as now with python3
