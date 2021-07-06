@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -25248,11 +25248,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     # Correct wrong python scripts if any
     for scr in %{_texmfdistdir}/scripts/puyotikz/puyotikz.py
     do
-        test -e %{buildroot}/$scr || continue
+	test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python
+		#! /usr/bin/python3
 		.
 		w
 		q
@@ -25426,11 +25427,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     for scr in %{_texmfdistdir}/scripts/pythontex/pythontex_engines.py \
 	       %{_texmfdistdir}/scripts/pythontex/pythontex_utils.py
     do
-        test -e %{buildroot}/$scr || continue
+	test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python
+		#! /usr/bin/python3
+		.
+		w
+		q
+	EOF
+    done
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/scripts/pythontex/depythontex.py \
+	       %{_texmfdistdir}/scripts/pythontex/pythontex.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python@python3@
 		.
 		w
 		q
