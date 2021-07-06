@@ -423,4 +423,12 @@
     <comment>Update to TeXLive 2021, now with correct _link</comment>
     <requestid>885227</requestid>
   </revision>
+  <revision rev="42" vrev="45">
+    <srcmd5>9bcc2c477bf9a1d9abfc4c76aab79fd5</srcmd5>
+    <version>unknown</version>
+    <time>1625607013</time>
+    <user>dimstar_suse</user>
+    <comment>Fix boo#1185941 and correct shebang of python(3) scripts</comment>
+    <requestid>904197</requestid>
+  </revision>
 </revisionlist>
