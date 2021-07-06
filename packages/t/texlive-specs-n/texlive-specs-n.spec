@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -34023,6 +34023,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
 	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:150}
     popd
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/scripts/lilyglyphs/lily-glyph-commands.py \
+	       %{_texmfdistdir}/scripts/lilyglyphs/lily-image-commands.py \
+	       %{_texmfdistdir}/scripts/lilyglyphs/lily-rebuild-pdfs.py \
+	       %{_texmfdistdir}/scripts/lilyglyphs/lilyglyphs_common.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python@python3@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/lilyglyphs/lily-glyph-commands.py \
 	       %{_texmfdistdir}/scripts/lilyglyphs/lily-image-commands.py \
