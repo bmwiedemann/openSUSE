@@ -25,8 +25,14 @@
 #
 ###########################################################
 
+# Fedora doesn't have rpm-config-SUSE which provides
+# ext_man in /usr/lib/rpm/macros.d/macros.obs
+%if 0%{?fedora_version}
+%define ext_man .gz
+%endif
+
 Name:           nodejs14
-Version:        14.17.1
+Version:        14.17.2
 Release:        0
 
 # Double DWZ memory limits
@@ -35,7 +41,7 @@ Release:        0
 
 %define node_version_number 14
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -74,13 +80,13 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 120400
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
 %endif
 
-%if 0%{suse_version} >= 1330
+%if 0%{?suse_version} >= 1330
 %bcond_with    intree_cares
 %else
 %bcond_without intree_cares
@@ -92,7 +98,7 @@ Release:        0
 %bcond_without intree_icu
 %endif
 
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 %bcond_with    intree_nghttp2
 %else
 %bcond_without intree_nghttp2
@@ -102,39 +108,6 @@ Release:        0
 %bcond_with    gdb
 %else
 %bcond_without gdb
-%endif
-
-%if %node_version_number < 16
-
-# No binutils_gold on SLE 12 GA (aarch64).
-%ifarch aarch64
-%if 0%{?sle_version} >= 120100 || 0%{?is_opensuse}
-%bcond_without binutils_gold
-%else
-%bcond_with    binutils_gold
-%endif
-%endif
-
-# No binutils_gold on all versions of SLE 12 and Leap 42 (s390x).
-%ifarch s390x
-%if 0%{?suse_version} > 1320
-%bcond_without binutils_gold
-%else
-%bcond_with    binutils_gold
-%endif
-%endif
-
-%ifarch s390
-%bcond_with    binutils_gold
-%endif
-
-%ifnarch aarch64 s390x s390
-%bcond_without binutils_gold
-%endif
-
-%else
-# don't use binutils_gold for nodejs >= 16
-%bcond_with    binutils_gold
 %endif
 
 %define git_node 0
@@ -178,12 +151,10 @@ Patch120:       flaky_test_rerun.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-%if 0%{with binutils_gold}
-BuildRequires:  binutils-gold
-%endif
-
 BuildRequires:  pkg-config
+%if 0%{?suse_version}
 BuildRequires:  config(netcfg)
+%endif
 
 # SLE-11 target only
 # Node.js 6 requires GCC 4.8.5+.
@@ -236,8 +207,12 @@ BuildRequires:  zlib-devel
 
 # Python dependencies
 %if %node_version_number >= 12
-BuildRequires:  netcfg
 BuildRequires:  python3
+
+%if 0%{?suse_version}
+BuildRequires:  netcfg
+%endif
+
 %else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
@@ -253,29 +228,21 @@ BuildRequires:  user(nobody)
 
 %if ! 0%{with intree_openssl}
 
-%if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
-%if 0%{?suse_version} > 1330
-BuildRequires:  libopenssl1_1-hmac
-%endif
 
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1500 
+BuildRequires:  libopenssl1_1-hmac
 BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
 %endif
 
 %else
-
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libopenssl-1_0_0-devel
-%else
-BuildRequires:  openssl-devel >= %{openssl_req_ver}
-%endif
-
-%endif
-%else
+%if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
 Provides:       bundled(openssl) = 1.1.1k
+%else
+BuildRequires:  bundled_openssl_should_not_be_required
+%endif
 %endif
 
 %if ! 0%{with intree_cares}
@@ -303,10 +270,10 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Requires:       alts
 %else
-Requires(postun): update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
-Requires(post): update-alternatives
+Requires(post): %{_sbindir}/update-alternatives
 
 Recommends:     npm14
 
@@ -336,8 +303,10 @@ Requires:       nodejs-common
 Requires:       openssl1
 %endif
 
-%if %node_version_number < 16
-ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
+%if %node_version_number >= 12
+%ifarch s390
+ExclusiveArch:  not_buildable
+%endif
 %endif
 
 Provides:       bundled(brotli) = 1.0.9
@@ -809,19 +778,15 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
-%if %{node_version_number} == 6
-# Update NPM
-rm -r deps/npm
-tar Jxf %{SOURCE10}
-%endif
-
 %if %{node_version_number} >= 10
 tar Jxf %{SOURCE11}
 %endif
 
-%patch3 -p1
-%if ! 0%{with intree_openssl}
+%if %{node_version_number} >= 16 && 0%{?suse_version} > 0 && 0%{?suse_version} < 1500
+tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
+
+%patch3 -p1
 %patch5 -p1
 %patch7 -p1
 %if 0%{with valgrind_tests}
@@ -869,6 +834,10 @@ find deps/openssl -name *.[ch] -delete
 rm -rf deps/icu-small
 %endif
 
+%if ! 0%{with intree_openssl}
+rm -rf deps/openssl
+%endif
+
 %if ! 0%{with intree_cares}
 find deps/cares -name *.[ch] -delete
 %endif
@@ -888,12 +857,10 @@ export LDFLAGS="%{?build_ldflags}"
 export LDFLAGS="\${LDFLAGS} -fno-lto"
 %endif
 
-%ifarch %{ix86} %{arm}
-# Reduce memory consumption on 32bit arches
+# reduce disk space pressure
 export CFLAGS="\${CFLAGS} -g1"
 export CXXFLAGS="\${CXXFLAGS} -g1"
 export LDFLAGS="\${LDFLAGS} -Wl,--reduce-memory-overhead"
-%endif
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
@@ -955,9 +922,7 @@ find %{buildroot} -name \*.bak -print -delete
 
 # npm/npx man page
 install -D -m 644 deps/npm/man/man1/npm.1 %{buildroot}%{_mandir}/man1/npm%{node_version_number}.1
-%if %{node_version_number} >= 8
 install -D -m 644 deps/npm/man/man1/npx.1 %{buildroot}%{_mandir}/man1/npx%{node_version_number}.1
-%endif
 
 #node-gyp needs common.gypi too
 install -D -m 644 common.gypi \
@@ -1009,12 +974,10 @@ ln -s %{_sysconfdir}/alternatives/node-default         %{buildroot}%{_bindir}/no
 ln -s %{_sysconfdir}/alternatives/node.1%{ext_man}     %{buildroot}%{_mandir}/man1/node.1%{ext_man}
 ln -s %{_sysconfdir}/alternatives/npm-default          %{buildroot}%{_bindir}/npm-default
 ln -s %{_sysconfdir}/alternatives/npm.1%{ext_man}      %{buildroot}%{_mandir}/man1/npm.1%{ext_man}
-%if %{node_version_number} >= 8
 ln -s -f npx-default      %{buildroot}%{_sysconfdir}/alternatives/npx-default
 ln -s -f npx.1%{ext_man}  %{buildroot}%{_sysconfdir}/alternatives/npx.1%{ext_man}
 ln -s %{_sysconfdir}/alternatives/npx-default          %{buildroot}%{_bindir}/npx-default
 ln -s %{_sysconfdir}/alternatives/npx.1%{ext_man}      %{buildroot}%{_mandir}/man1/npx.1%{ext_man}
-%endif
 %endif
 
 # libalternatives - can always ship
@@ -1110,7 +1073,6 @@ make test-ci
 %ghost %{_sysconfdir}/alternatives/npm.1%{ext_man}
 %endif
 
-%if %{node_version_number} >= 8
 %{_bindir}/npx%{node_version_number}
 %{_mandir}/man1/npx%{node_version_number}.1%{ext_man}
 %if ! %{with libalternatives}
@@ -1118,7 +1080,6 @@ make test-ci
 %ghost %{_mandir}/man1/npx.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/npx-default
 %ghost %{_sysconfdir}/alternatives/npx.1%{ext_man}
-%endif
 %endif
 
 %files devel
@@ -1168,21 +1129,18 @@ fi
 update-alternatives \
         --install %{_bindir}/npm-default npm-default %{_bindir}/npm%{node_version_number} %{node_version_number} \
         --slave %{_mandir}/man1/npm.1%{ext_man} npm.1%{ext_man} %{_mandir}/man1/npm%{node_version_number}.1%{ext_man}
-%if %{node_version_number} >= 8
 update-alternatives \
         --install %{_bindir}/npx-default npx-default %{_bindir}/npx%{node_version_number} %{node_version_number} \
         --slave %{_mandir}/man1/npx.1%{ext_man} npx.1%{ext_man} %{_mandir}/man1/npx%{node_version_number}.1%{ext_man}
-%endif
 
 %postun -n npm%{node_version_number}
 if [ ! -f %{_bindir}/npm%{node_version_number} ] ; then
     update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 fi
-%if %{node_version_number} >= 8
 if [ ! -f %{_bindir}/npx%{node_version_number} ] ; then
     update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 fi
-%endif
+
 %endif
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  2 15:27:59 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 14.17.2:
+  deps: libuv upgrade - Out of bounds read (Medium)
+  (bsc#1187973, CVE-2021-22918)
+
+- old_icu.patch: update with upstream's patch from
+  https://github.com/nodejs/node/pull/39068
+- specfile cleanup
+
+-------------------------------------------------------------------
 Thu Jun 17 09:48:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 14.17.1:

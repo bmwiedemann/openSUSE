@@ -18,4 +18,17 @@
 - Fix-build-with-icu-69.patch: upstreamed</comment>
     <requestid>900651</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14489cf9b02885d401624dc7ad16ce7f</srcmd5>
+    <version>14.17.2</version>
+    <time>1625607032</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.17.2:
+  deps: libuv upgrade - Out of bounds read (Medium)
+  (bsc#1187973, CVE-2021-22918)
+- old_icu.patch: update with upstream's patch from
+  https://github.com/nodejs/node/pull/39068
+- specfile cleanup</comment>
+    <requestid>904343</requestid>
+  </revision>
 </revisionlist>
