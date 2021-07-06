@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul  1 11:51:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- login.defs/MOTD_FILE: Use "" instead of blank entry [bsc#1187536]
+- Add /etc/login.defs.d directory
+
+-------------------------------------------------------------------
+Sat Jun  5 13:38:52 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Enable shadowgrp so that we can set more secure group passwords 
+  using shadow.
+
+-------------------------------------------------------------------
+Fri Jun  4 07:46:34 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable MOTD_FILE to allow the use of pam_motd to unify motd
+  message output [bsc#1185897]. Else motd entries of e.g. cockpit
+  will not be shown.
+
+-------------------------------------------------------------------
 Thu Jan 28 22:28:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not require libeconf-devel on products without /usr/etc.

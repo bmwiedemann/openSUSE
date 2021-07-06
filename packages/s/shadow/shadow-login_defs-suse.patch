@@ -14,12 +14,13 @@ Index: etc/login.defs
  
  #
  # Delay in seconds before being allowed another attempt after a login failure
-@@ -62,8 +65,7 @@ CONSOLE		/etc/securetty
+@@ -62,8 +65,8 @@ CONSOLE		/etc/securetty
  # If defined, ":" delimited list of "message of the day" files to
  # be displayed upon login.
  #
 -MOTD_FILE	/etc/motd
 -#MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
++MOTD_FILE	""
 +#MOTD_FILE	/etc/motd:/usr/share/misc/motd
  
  #

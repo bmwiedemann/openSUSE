@@ -135,7 +135,7 @@ export LDFLAGS="-pie"
 
 autoreconf -fvi
 %configure \
-  --disable-shadowgrp \
+  --enable-shadowgrp \
   --enable-account-tools-setuid \
   --with-audit \
   --with-libpam \
@@ -225,6 +225,7 @@ rm -rf %{buildroot}%{_mandir}/{??,??_??}
 if [ ! -d %{buildroot}%{_distconfdir} ]; then
     mkdir -p %{buildroot}%{_distconfdir}
     mv %{buildroot}%{_sysconfdir}/{login.defs,pam.d} %{buildroot}%{_distconfdir}
+    mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
 fi
 
 %find_lang shadow
@@ -379,6 +380,7 @@ test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs
 
 %files -n login_defs
 %if %{defined no_config}
+%dir /etc/login.defs.d
 %attr(0644,root,root) %{_distconfdir}/login.defs
 %else
 %attr(0644,root,root) %config %{_sysconfdir}/login.defs
