@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -25210,6 +25210,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/scripts/context/ruby/textools.rb \
 	       %{_texmfdistdir}/scripts/context/ruby/tmftools.rb \
 	       %{_texmfdistdir}/scripts/context/ruby/xmltools.rb \
+	       %{_texmfdistdir}/scripts/context/stubs/unix/ctxtools \
+	       %{_texmfdistdir}/scripts/context/stubs/unix/mptopdf \
+	       %{_texmfdistdir}/scripts/context/stubs/unix/pstopdf \
 	       %{_texmfdistdir}/scripts/context/stubs/win64/mtxrun.lua
     do
 	test -e %{buildroot}/$scr || continue
