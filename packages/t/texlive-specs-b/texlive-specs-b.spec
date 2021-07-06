@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   186
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -67,7 +67,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for b
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GPL-2.0-or-later and LGPL-3.0-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-b-rpmlintrc
@@ -22208,11 +22208,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     # Correct wrong python scripts if any
     for scr in %{_texmfdistdir}/asymptote/GUI/icons_rc.py
     do
-        test -e %{buildroot}/$scr || continue
+	test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python
+		#! /usr/bin/python3
 		.
 		w
 		q
