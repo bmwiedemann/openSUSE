@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 30 16:45:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.5.15
+  * Document use case of running backups conditionally based on
+    laptop power level
+  * Run arbitrary Borg commands with new "borgmatic borg" action
+
+-------------------------------------------------------------------
 Wed Jun  9 10:44:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.14:
