@@ -769,4 +769,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>888631</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>f57ab86b730450392368dfa68672ee64</srcmd5>
+    <version>2.85</version>
+    <time>1625675387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904175</requestid>
+  </revision>
 </revisionlist>

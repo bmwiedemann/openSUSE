@@ -34,6 +34,7 @@ Source2:        %{name}.keyring
 Source3:        dnsmasq.reg
 Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
+Source6:        system-user-dnsmasq.conf
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
 BuildRequires:  dbus-1-devel
@@ -47,7 +48,9 @@ BuildRequires:  pkgconfig(systemd)
 Requires(pre):  group(nogroup)
 Provides:       dns_daemon
 %if %{with tftp_user_package}
+BuildRequires:  sysuser-tools
 Requires(pre):  user(tftp)
+%sysusers_requires
 %else
 Requires(pre):  %{_sbindir}/useradd
 %endif
@@ -111,9 +114,12 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 # same flags for make and make install, else everything gets recompiled
 %define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT"
 %make_build AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
+%if %{with tftp_user_package}
+%sysusers_generate_pre %{SOURCE6} dnsmasq system-user-dnsmasq.conf
+%endif
 
-%pre
 %if %{without tftp_user_package}
+%pre
 if ! %{_bindir}/getent group tftp >/dev/null; then
     %{_sbindir}/groupadd -r tftp
 fi
@@ -121,11 +127,12 @@ if ! %{_bindir}/getent passwd tftp >/dev/null; then
     %{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
     -r -s /bin/false tftp
 fi
-%endif
 if ! %{_bindir}/getent passwd dnsmasq >/dev/null; then
     %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
 fi
-
+%else
+%pre -f dnsmasq.pre
+%endif
 %service_add_pre %{name}.service
 
 %post
@@ -156,6 +163,9 @@ install -m 644 dbus/dnsmasq.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/dnsm
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/dnsmasq.service
 %if %{without tftp_user_package}
 install -d -m 0755 %{buildroot}/srv/tftpboot
+%else
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %endif
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdnsmasq
 install -d -m 755 %{buildroot}/%{_sysconfdir}/dnsmasq.d
@@ -194,6 +204,8 @@ rm -rf contrib/MacOSX-launchd
 %config(noreplace) %{_sysconfdir}/dnsmasq.d/trust-anchors.conf
 %if %{without tftp_user_package}
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
+%else
+%{_sysusersdir}/system-user-dnsmasq.conf
 %endif
 
 %files utils
