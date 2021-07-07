@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 30 11:24:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.20.0. Check the ChangeLog file for the complete
+  list of changes.
+- Switch to cmake() style BuildRequires for Qt dependencies.
+- Add missing Qt build dependencies. Remove obsolete ones.
+- Disable the QtWebKit usage. The package will be removed from
+  openSUSE Factory soon.
+
+-------------------------------------------------------------------
 Wed May 26 11:52:30 UTC 2021 - Nicolas Rochard <nrochard@gmail.com>
 
 - Update to 3.18.3 (monthly bugfix)

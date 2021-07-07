@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.18.3
+Version:        3.20.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -73,47 +73,38 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-sip-devel
 BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
-BuildRequires:  qtkeychain-qt5-devel >= 0.5
 BuildRequires:  qwt6-devel
-BuildRequires:  sqlite-devel >= 3.0
-BuildRequires:  txt2tags
+BuildRequires:  sqlite-devel >= 3.12.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt53DAnimation)
-BuildRequires:  pkgconfig(Qt53DCore)
-BuildRequires:  pkgconfig(Qt53DExtras)
-BuildRequires:  pkgconfig(Qt53DInput)
-BuildRequires:  pkgconfig(Qt53DLogic)
-BuildRequires:  pkgconfig(Qt53DQuick)
-BuildRequires:  pkgconfig(Qt53DQuickAnimation)
-BuildRequires:  pkgconfig(Qt53DQuickExtras)
-BuildRequires:  pkgconfig(Qt53DQuickInput)
-BuildRequires:  pkgconfig(Qt53DQuickRender)
-BuildRequires:  pkgconfig(Qt53DQuickScene2D)
-BuildRequires:  pkgconfig(Qt53DRender)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Location)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Positioning)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Qwt6)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Sensors)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt53DAnimation)
+BuildRequires:  cmake(Qt53DCore)
+BuildRequires:  cmake(Qt53DExtras)
+BuildRequires:  cmake(Qt53DInput)
+BuildRequires:  cmake(Qt53DLogic)
+BuildRequires:  cmake(Qt53DQuick)
+BuildRequires:  cmake(Qt53DQuickAnimation)
+BuildRequires:  cmake(Qt53DQuickExtras)
+BuildRequires:  cmake(Qt53DQuickInput)
+BuildRequires:  cmake(Qt53DQuickRender)
+BuildRequires:  cmake(Qt53DQuickScene2D)
+BuildRequires:  cmake(Qt53DRender)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Keychain) >= 0.5
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Positioning)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5SerialPort)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(expat) >= 1.95
 # Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
 BuildRequires:  pkgconfig(gdal) >= 3.1
@@ -121,8 +112,9 @@ BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(proj) >= 6.3.1
-BuildRequires:  pkgconfig(python3) >= 3.4
+BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(qca2-qt5)
+BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
 # Force requires of those 3 main component.
 Requires:       libQt5Sql5-mysql
@@ -225,6 +217,7 @@ export PATH=$PATH:$QTDIR/bin
   -DWITH_SERVER=TRUE \
   -DWITH_SERVER_PLUGINS=TRUE \
   -DWITH_POSTGRESQL=TRUE \
+  -DWITH_QTWEBKIT=FALSE \
   -DFCGI_INCLUDE_DIR=%{_includedir}/fastcgi \
   -DPOSTGRES_LIBRARY=%{_libdir}/libpq.so \
   -DPOSTGRES_INCLUDE_DIR=%{_includedir}/pgsql \
@@ -307,6 +300,7 @@ popd
 
 %files devel
 %{_includedir}/qgis/
+%{_libdir}/liboauth2authmethod_static.a
 
 %if %{with grass}
 %files plugin-grass
