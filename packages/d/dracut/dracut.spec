@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        055+suse.106.g760b0c69
+Version:        055+suse.110.gbe35f166
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

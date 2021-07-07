@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:38:01 UTC 2021 - thomas.blume@suse.com
+
+- Update to version 055+suse.110.gbe35f166:
+  * fix(fips-suse): fipscheck doesn't need the -c parameter (bsc#1187498)
+  * fix(kernel-install): initrd vs initramfs
+
+-------------------------------------------------------------------
 Thu Jun 17 15:22:31 UTC 2021 - thomas.blume@suse.com
 
 - Update to version 055+suse.106.g760b0c69:
