@@ -3703,4 +3703,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>901249</requestid>
   </revision>
+  <revision rev="298" vrev="3">
+    <srcmd5>a7aa8dab4aa10b58ce98966b247c3b1e</srcmd5>
+    <version>91.0.4472.114</version>
+    <time>1625675380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chromium-91-sql-standard-layout-type.patch: to fix SQL being
+  incorrect with libstdc++ 11
+</comment>
+    <requestid>904064</requestid>
+  </revision>
 </revisionlist>
