@@ -1,34 +1,8 @@
-Index: b/test/agent.py
-===================================================================
---- a/test/agent.py
-+++ b/test/agent.py
-@@ -52,16 +52,16 @@ class Agent(dbus.service.Object):
- 
- 	@dbus.service.method(AGENT_IFACE, in_signature="su", out_signature="")
- 	def DisplayNumeric(self, type, value):
--		print(set_cyan('DisplayNumeric ('), type,
--				set_cyan(') number ='), set_green(value))
-+		print((set_cyan('DisplayNumeric ('), type,
-+				set_cyan(') number ='), set_green(value)))
- 
- 	@dbus.service.method(AGENT_IFACE, in_signature="s", out_signature="ay")
- 	def PromptStatic(self, type):
- 		static_key = numpy.random.randint(0, 255, 16)
- 		key_str = array_to_string(static_key)
- 
--		print(set_cyan('PromptStatic ('), type, set_cyan(')'))
--		print(set_cyan('Enter 16 octet key on remote device: '),
--							set_green(key_str));
-+		print((set_cyan('PromptStatic ('), type, set_cyan(')')))
-+		print((set_cyan('Enter 16 octet key on remote device: '),
-+							set_green(key_str)));
- 
- 		return dbus.Array(static_key, signature='y')
 Index: b/test/bluezutils.py
 ===================================================================
 --- a/test/bluezutils.py
 +++ b/test/bluezutils.py
-@@ -15,7 +15,7 @@ def find_adapter(pattern=None):
+@@ -17,7 +17,7 @@ def find_adapter(pattern=None):
  
  def find_adapter_in_objects(objects, pattern=None):
  	bus = dbus.SystemBus()
@@ -37,7 +11,7 @@ Index: b/test/bluezutils.py
  		adapter = ifaces.get(ADAPTER_INTERFACE)
  		if adapter is None:
  			continue
-@@ -35,7 +35,7 @@ def find_device_in_objects(objects, devi
+@@ -37,7 +37,7 @@ def find_device_in_objects(objects, devi
  	if adapter_pattern:
  		adapter = find_adapter_in_objects(objects, adapter_pattern)
  		path_prefix = adapter.object_path
@@ -50,7 +24,7 @@ Index: b/test/example-advertisement
 ===================================================================
 --- a/test/example-advertisement
 +++ b/test/example-advertisement
-@@ -163,7 +163,7 @@ def find_adapter(bus):
+@@ -164,7 +164,7 @@ def find_adapter(bus):
                                 DBUS_OM_IFACE)
      objects = remote_om.GetManagedObjects()
  
@@ -63,7 +37,7 @@ Index: b/test/example-gatt-client
 ===================================================================
 --- a/test/example-gatt-client
 +++ b/test/example-gatt-client
-@@ -32,7 +32,7 @@ hr_ctrl_pt_chrc = None
+@@ -33,7 +33,7 @@ hr_ctrl_pt_chrc = None
  
  
  def generic_error_cb(error):
@@ -72,7 +46,7 @@ Index: b/test/example-gatt-client
      mainloop.quit()
  
  
-@@ -68,10 +68,10 @@ def sensor_contact_val_to_str(val):
+@@ -69,10 +69,10 @@ def sensor_contact_val_to_str(val):
  
  def body_sensor_val_cb(value):
      if len(value) != 1:
@@ -85,7 +59,7 @@ Index: b/test/example-gatt-client
  
  
  def hr_msrmt_start_notify_cb():
-@@ -103,12 +103,12 @@ def hr_msrmt_changed_cb(iface, changed_p
+@@ -104,12 +104,12 @@ def hr_msrmt_changed_cb(iface, changed_p
          hr_msrmt = value[1] | (value[2] << 8)
          next_ind = 3
  
@@ -102,7 +76,7 @@ Index: b/test/example-gatt-client
  
  
  def start_client():
-@@ -146,7 +146,7 @@ def process_chrc(chrc_path):
+@@ -147,7 +147,7 @@ def process_chrc(chrc_path):
          global hr_ctrl_pt_chrc
          hr_ctrl_pt_chrc = (chrc, chrc_props)
      else:
@@ -111,7 +85,7 @@ Index: b/test/example-gatt-client
  
      return True
  
-@@ -161,7 +161,7 @@ def process_hr_service(service_path, chr
+@@ -162,7 +162,7 @@ def process_hr_service(service_path, chr
      if uuid != HR_SVC_UUID:
          return False
  
@@ -120,7 +94,7 @@ Index: b/test/example-gatt-client
  
      # Process the characteristics.
      for chrc_path in chrc_paths:
-@@ -198,14 +198,14 @@ def main():
+@@ -199,14 +199,14 @@ def main():
      chrcs = []
  
      # List characteristics found
@@ -143,7 +117,7 @@ Index: b/test/example-gatt-server
 ===================================================================
 --- a/test/example-gatt-server
 +++ b/test/example-gatt-server
-@@ -292,7 +292,7 @@ class HeartRateMeasurementChrc(Character
+@@ -293,7 +293,7 @@ class HeartRateMeasurementChrc(Character
                  min(0xffff, self.service.energy_expended + 1)
          self.hr_ee_count += 1
  
@@ -152,7 +126,7 @@ Index: b/test/example-gatt-server
  
          self.PropertiesChanged(GATT_CHRC_IFACE, { 'Value': value }, [])
  
-@@ -354,7 +354,7 @@ class HeartRateControlPointChrc(Characte
+@@ -355,7 +355,7 @@ class HeartRateControlPointChrc(Characte
              raise InvalidValueLengthException()
  
          byte = value[0]
@@ -161,7 +135,7 @@ Index: b/test/example-gatt-server
  
          if byte != 1:
              raise FailedException("0x80")
-@@ -407,12 +407,12 @@ class BatteryLevelCharacteristic(Charact
+@@ -408,12 +408,12 @@ class BatteryLevelCharacteristic(Charact
              self.battery_lvl -= 2
              if self.battery_lvl < 0:
                  self.battery_lvl = 0
@@ -176,7 +150,7 @@ Index: b/test/example-gatt-server
          return [dbus.Byte(self.battery_lvl)]
  
      def StartNotify(self):
-@@ -465,11 +465,11 @@ class TestCharacteristic(Characteristic)
+@@ -466,11 +466,11 @@ class TestCharacteristic(Characteristic)
                  CharacteristicUserDescriptionDescriptor(bus, 1, self))
  
      def ReadValue(self, options):
@@ -190,7 +164,7 @@ Index: b/test/example-gatt-server
          self.value = value
  
  
-@@ -537,11 +537,11 @@ class TestEncryptCharacteristic(Characte
+@@ -538,11 +538,11 @@ class TestEncryptCharacteristic(Characte
                  CharacteristicUserDescriptionDescriptor(bus, 3, self))
  
      def ReadValue(self, options):
@@ -204,7 +178,7 @@ Index: b/test/example-gatt-server
          self.value = value
  
  class TestEncryptDescriptor(Descriptor):
-@@ -583,11 +583,11 @@ class TestSecureCharacteristic(Character
+@@ -584,11 +584,11 @@ class TestSecureCharacteristic(Character
                  CharacteristicUserDescriptionDescriptor(bus, 3, self))
  
      def ReadValue(self, options):
@@ -218,7 +192,7 @@ Index: b/test/example-gatt-server
          self.value = value
  
  
-@@ -615,7 +615,7 @@ def register_app_cb():
+@@ -616,7 +616,7 @@ def register_app_cb():
  
  
  def register_app_error_cb(error):
@@ -227,7 +201,7 @@ Index: b/test/example-gatt-server
      mainloop.quit()
  
  
-@@ -624,8 +624,8 @@ def find_adapter(bus):
+@@ -625,8 +625,8 @@ def find_adapter(bus):
                                 DBUS_OM_IFACE)
      objects = remote_om.GetManagedObjects()
  
@@ -242,7 +216,7 @@ Index: b/test/list-devices
 ===================================================================
 --- a/test/list-devices
 +++ b/test/list-devices
-@@ -31,17 +31,17 @@ def extract_uuids(uuid_list):
+@@ -32,17 +32,17 @@ def extract_uuids(uuid_list):
  
  objects = manager.GetManagedObjects()
  
@@ -265,7 +239,7 @@ Index: b/test/list-devices
  		value = properties[key]
  		if (key == "UUIDs"):
  			list = extract_uuids(value)
-@@ -57,7 +57,7 @@ for path, interfaces in objects.iteritem
+@@ -58,7 +58,7 @@ for path, interfaces in objects.iteritem
  		dev = objects[dev_path]
  		properties = dev["org.bluez.Device1"]
  
@@ -278,7 +252,7 @@ Index: b/test/map-client
 ===================================================================
 --- a/test/map-client
 +++ b/test/map-client
-@@ -26,15 +26,15 @@ def unwrap(x):
+@@ -27,15 +27,15 @@ def unwrap(x):
      printed. Taken from d-feet """
  
      if isinstance(x, list):
@@ -301,7 +275,7 @@ Index: b/test/monitor-bluetooth
 ===================================================================
 --- a/test/monitor-bluetooth
 +++ b/test/monitor-bluetooth
-@@ -13,17 +13,17 @@ relevant_ifaces = [ "org.bluez.Adapter1"
+@@ -14,17 +14,17 @@ relevant_ifaces = [ "org.bluez.Adapter1"
  
  def property_changed(interface, changed, invalidated, path):
  	iface = interface[interface.rfind(".") + 1:]
@@ -326,7 +300,7 @@ Index: b/test/pbap-client
 ===================================================================
 --- a/test/pbap-client
 +++ b/test/pbap-client
-@@ -134,11 +134,11 @@ if  __name__ == '__main__':
+@@ -135,11 +135,11 @@ if  __name__ == '__main__':
  			print(header)
  		for line in lines:
  			print(line),
@@ -344,7 +318,7 @@ Index: b/test/sap_client.py
 ===================================================================
 --- a/test/sap_client.py
 +++ b/test/sap_client.py
-@@ -178,7 +178,7 @@ class SAPParam_ConnectionStatus(SAPParam
+@@ -165,7 +165,7 @@ class SAPParam_ConnectionStatus(SAPParam
  
      def __validate(self):
          if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04):
@@ -353,7 +327,7 @@ Index: b/test/sap_client.py
  
      def deserialize(self,  buf):
          ret = SAPParam.deserialize(self, buf)
-@@ -196,7 +196,7 @@ class SAPParam_ResultCode(SAPParam):
+@@ -183,7 +183,7 @@ class SAPParam_ResultCode(SAPParam):
  
      def __validate(self):
          if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04,  0x05,  0x06,  0x07):
@@ -362,7 +336,7 @@ Index: b/test/sap_client.py
  
      def deserialize(self,  buf):
          ret = SAPParam.deserialize(self, buf)
-@@ -214,7 +214,7 @@ class SAPParam_DisconnectionType(SAPPara
+@@ -201,7 +201,7 @@ class SAPParam_DisconnectionType(SAPPara
  
      def __validate(self):
          if self.value is not None and self.value not in (0x00,  0x01):
@@ -371,7 +345,7 @@ Index: b/test/sap_client.py
  
      def deserialize(self,  buf):
          ret = SAPParam.deserialize(self, buf)
-@@ -240,7 +240,7 @@ class SAPParam_StatusChange(SAPParam):
+@@ -227,7 +227,7 @@ class SAPParam_StatusChange(SAPParam):
  
      def __validate(self):
          if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04,  0x05):
@@ -380,7 +354,7 @@ Index: b/test/sap_client.py
  
      def deserialize(self,  buf):
          ret = SAPParam.deserialize(self, buf)
-@@ -258,7 +258,7 @@ class SAPParam_TransportProtocol(SAPPara
+@@ -245,7 +245,7 @@ class SAPParam_TransportProtocol(SAPPara
  
      def __validate(self):
          if self.value is not None and self.value not in (0x00,  0x01):
@@ -389,7 +363,7 @@ Index: b/test/sap_client.py
  
      def deserialize(self,  buf):
          ret = SAPParam.deserialize(self, buf)
-@@ -741,7 +741,7 @@ class SAPClient:
+@@ -728,7 +728,7 @@ class SAPClient:
          self.port = first_match["port"]
          self.host = first_match["host"]
  
@@ -398,7 +372,7 @@ Index: b/test/sap_client.py
  
      def __connectRFCOMM(self):
          self.sock=BluetoothSocket( RFCOMM )
-@@ -752,19 +752,19 @@ class SAPClient:
+@@ -739,19 +739,19 @@ class SAPClient:
      def __sendMsg(self, msg):
          if isinstance(msg,  SAPMessage):
              s = msg.serialize()
@@ -422,7 +396,7 @@ Index: b/test/sap_client.py
                      raise BluetoothError ("Message deserialization failed.")
              else:
                  raise BluetoothError ("Timeout. No data received.")
-@@ -810,8 +810,8 @@ class SAPClient:
+@@ -797,8 +797,8 @@ class SAPClient:
                      return False
              else:
                  return False
@@ -433,7 +407,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_disconnectByClient(self, timeout=0):
-@@ -821,8 +821,8 @@ class SAPClient:
+@@ -808,8 +808,8 @@ class SAPClient:
              time.sleep(timeout) # let srv to close rfcomm
              self.__disconnectRFCOMM()
              return True
@@ -444,7 +418,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_disconnectByServer(self, timeout=0):
-@@ -836,8 +836,8 @@ class SAPClient:
+@@ -823,8 +823,8 @@ class SAPClient:
  
              return self.proc_disconnectByClient(timeout)
  
@@ -455,7 +429,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_transferAPDU(self,  apdu = "Sample APDU command"):
-@@ -845,8 +845,8 @@ class SAPClient:
+@@ -832,8 +832,8 @@ class SAPClient:
              self.__sendMsg(SAPMessage_TRANSFER_APDU_REQ(apdu))
              params = self.__rcvMsg(SAPMessage_TRANSFER_APDU_RESP()).getParams()
              return True
@@ -466,7 +440,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_transferATR(self):
-@@ -854,8 +854,8 @@ class SAPClient:
+@@ -841,8 +841,8 @@ class SAPClient:
              self.__sendMsg(SAPMessage_TRANSFER_ATR_REQ())
              params = self.__rcvMsg(SAPMessage_TRANSFER_ATR_RESP()).getParams()
              return True
@@ -477,7 +451,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_powerSimOff(self):
-@@ -863,8 +863,8 @@ class SAPClient:
+@@ -850,8 +850,8 @@ class SAPClient:
              self.__sendMsg(SAPMessage_POWER_SIM_OFF_REQ())
              params = self.__rcvMsg(SAPMessage_POWER_SIM_OFF_RESP()).getParams()
              return True
@@ -488,7 +462,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_powerSimOn(self):
-@@ -875,8 +875,8 @@ class SAPClient:
+@@ -862,8 +862,8 @@ class SAPClient:
                  return self.proc_transferATR()
  
              return True
@@ -499,7 +473,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_resetSim(self):
-@@ -887,23 +887,23 @@ class SAPClient:
+@@ -874,23 +874,23 @@ class SAPClient:
                  return self.proc_transferATR()
  
              return True
@@ -529,7 +503,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_errorResponse(self):
-@@ -912,8 +912,8 @@ class SAPClient:
+@@ -899,8 +899,8 @@ class SAPClient:
              self.__sendMsg(SAPMessage_CONNECT_REQ())
  
              params = self.__rcvMsg(SAPMessage_ERROR_RESP()).getParams()
@@ -540,7 +514,7 @@ Index: b/test/sap_client.py
              return False
  
      def proc_setTransportProtocol(self,  protocol = 0):
-@@ -935,8 +935,8 @@ class SAPClient:
+@@ -922,8 +922,8 @@ class SAPClient:
              else:
                  return False
  
@@ -555,7 +529,7 @@ Index: b/test/simple-agent
 ===================================================================
 --- a/test/simple-agent
 +++ b/test/simple-agent
-@@ -23,9 +23,9 @@ dev_path = None
+@@ -24,9 +24,9 @@ dev_path = None
  
  def ask(prompt):
  	try:
@@ -571,7 +545,7 @@ Index: b/test/simple-player
 ===================================================================
 --- a/test/simple-player
 +++ b/test/simple-player
-@@ -118,7 +118,7 @@ class InputHandler:
+@@ -119,7 +119,7 @@ class InputHandler:
  			return True
  
  		try:
@@ -584,7 +558,7 @@ Index: b/test/test-adapter
 ===================================================================
 --- a/test/test-adapter
 +++ b/test/test-adapter
-@@ -60,7 +60,7 @@ if (args[0] == "list"):
+@@ -61,7 +61,7 @@ if (args[0] == "list"):
  		om = dbus.Interface(bus.get_object("org.bluez", "/"),
  					"org.freedesktop.DBus.ObjectManager")
  		objects = om.GetManagedObjects()
@@ -593,7 +567,7 @@ Index: b/test/test-adapter
  			if "org.bluez.Adapter1" not in interfaces:
  				continue
  
-@@ -68,7 +68,7 @@ if (args[0] == "list"):
+@@ -69,7 +69,7 @@ if (args[0] == "list"):
  
  			props = interfaces["org.bluez.Adapter1"]
  
@@ -606,7 +580,7 @@ Index: b/test/test-device
 ===================================================================
 --- a/test/test-device
 +++ b/test/test-device
-@@ -48,7 +48,7 @@ if (args[0] == "list"):
+@@ -49,7 +49,7 @@ if (args[0] == "list"):
  					"org.freedesktop.DBus.ObjectManager")
  	objects = om.GetManagedObjects()
  
@@ -619,7 +593,7 @@ Index: b/test/test-discovery
 ===================================================================
 --- a/test/test-discovery
 +++ b/test/test-discovery
-@@ -18,9 +18,9 @@ def print_compact(address, properties):
+@@ -19,9 +19,9 @@ def print_compact(address, properties):
  	name = ""
  	address = "<unknown>"
  
@@ -631,7 +605,7 @@ Index: b/test/test-discovery
  		if (key == "Name"):
  			name = value
  		elif (key == "Address"):
-@@ -38,10 +38,10 @@ def print_compact(address, properties):
+@@ -39,10 +39,10 @@ def print_compact(address, properties):
  def print_normal(address, properties):
  	print("[ " + address + " ]")
  
@@ -644,7 +618,7 @@ Index: b/test/test-discovery
  		if (key == "Class"):
  			print("    %s = 0x%06x" % (key, value))
  		else:
-@@ -70,7 +70,7 @@ def interfaces_added(path, interfaces):
+@@ -71,7 +71,7 @@ def interfaces_added(path, interfaces):
  
  		if compact and skip_dev(dev, properties):
  			return
@@ -653,7 +627,7 @@ Index: b/test/test-discovery
  	else:
  		devices[path] = properties
  
-@@ -93,7 +93,7 @@ def properties_changed(interface, change
+@@ -94,7 +94,7 @@ def properties_changed(interface, change
  
  		if compact and skip_dev(dev, changed):
  			return
@@ -662,7 +636,7 @@ Index: b/test/test-discovery
  	else:
  		devices[path] = changed
  
-@@ -152,7 +152,7 @@ if __name__ == '__main__':
+@@ -153,7 +153,7 @@ if __name__ == '__main__':
  	om = dbus.Interface(bus.get_object("org.bluez", "/"),
  				"org.freedesktop.DBus.ObjectManager")
  	objects = om.GetManagedObjects()
@@ -675,7 +649,7 @@ Index: b/test/test-health
 ===================================================================
 --- a/test/test-health
 +++ b/test/test-health
-@@ -146,8 +146,8 @@ manager = dbus.Interface(bus.get_object(
+@@ -147,8 +147,8 @@ manager = dbus.Interface(bus.get_object(
  objects = manager.GetManagedObjects()
  adapters = []
  
@@ -686,7 +660,7 @@ Index: b/test/test-health
  		adapters.append(path)
  
  i = 1
-@@ -171,7 +171,7 @@ while select == None:
+@@ -172,7 +172,7 @@ while select == None:
  adapter = dbus.Interface(bus.get_object(BUS_NAME, select), ADAPTER_INTERFACE)
  
  devices = []
@@ -699,7 +673,7 @@ Index: b/test/test-health-sink
 ===================================================================
 --- a/test/test-health-sink
 +++ b/test/test-health-sink
-@@ -40,8 +40,8 @@ manager = dbus.Interface(bus.get_object(
+@@ -41,8 +41,8 @@ manager = dbus.Interface(bus.get_object(
  objects = manager.GetManagedObjects()
  adapters = []
  
@@ -710,7 +684,7 @@ Index: b/test/test-health-sink
  		adapters.append(path)
  
  i = 1
-@@ -66,7 +66,7 @@ adapter =  dbus.Interface(bus.get_object
+@@ -67,7 +67,7 @@ adapter =  dbus.Interface(bus.get_object
  						ADAPTER_INTERFACE)
  
  devices = []
@@ -723,7 +697,7 @@ Index: b/test/test-hfp
 ===================================================================
 --- a/test/test-hfp
 +++ b/test/test-hfp
-@@ -185,7 +185,7 @@ class HfpProfile(dbus.service.Object):
+@@ -186,7 +186,7 @@ class HfpProfile(dbus.service.Object):
  		version = 0x0105
  		features = 0
  		print("NewConnection(%s, %d)" % (path, fd))
@@ -736,7 +710,7 @@ Index: b/test/test-profile
 ===================================================================
 --- a/test/test-profile
 +++ b/test/test-profile
-@@ -33,7 +33,7 @@ class Profile(dbus.service.Object):
+@@ -34,7 +34,7 @@ class Profile(dbus.service.Object):
  	def NewConnection(self, path, fd, properties):
  		self.fd = fd.take()
  		print("NewConnection(%s, %d)" % (path, self.fd))

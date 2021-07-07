@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  4 19:14:36 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add bluez-5.59-0388794dc5fdb73a4ea.diff, fixes a2dp on newly
+  paired devices, https://github.com/bluez/bluez/issues/157
+
+-------------------------------------------------------------------
+Thu Jun 17 13:45:19 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 5.59:
+  * Fix issue with string to UUID-32 conversion.
+  * Fix issue with connect request if SDP search failed.
+  * Fix issue with accepting invalid AVDTP capabilities.
+  * Fix issue with unregister handling of AVRCP player.
+- new tool: mesh-cfgtest
+- new manpages: btmon.1, bluetooth-meshd.8
+- rebased bluez-test-2to3.diff
+
+-------------------------------------------------------------------
 Wed Apr  7 07:49:44 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 5.58:
