@@ -17012,9 +17012,9 @@ unsorted:
   - nodejs10 
   - nodejs10-devel 
   - nodejs10-docs 
-  - nodejs14: [x86_64] 
-  - nodejs14-devel: [x86_64] 
-  - nodejs14-docs: [x86_64] 
+  - nodejs14 
+  - nodejs14-devel 
+  - nodejs14-docs 
   - nodejs16-devel 
   - nodejs16-docs 
   - noisetorch 
@@ -17262,7 +17262,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10 
-  - npm14: [x86_64] 
+  - npm14 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -20010,8 +20010,6 @@ unsorted:
   - pgadmin4-web-uwsgi 
   - pgloader 
   - pgn-extract 
-  - phd2 
-  - phd2-lang 
   - phetsarath-fonts 
   - phobos-devel 
   - phobos-devel-static 
