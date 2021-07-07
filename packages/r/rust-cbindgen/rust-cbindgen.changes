@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  5 05:14:40 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies to resolve potential memory corruption
+  in dependency ( RUSTSEC-2021-0003 )
+
+-------------------------------------------------------------------
 Mon Jun 21 04:09:06 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Remove unnecessary dependency on rust-std-static (implied by rust)

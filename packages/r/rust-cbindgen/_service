@@ -22,5 +22,6 @@
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">cbindgen</param>
+     <param name="lockfile">Cargo.lock</param>
   </service>
 </services>
