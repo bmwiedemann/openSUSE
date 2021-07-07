@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:57:42 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.7.7
+  * New features:
+    + Import/export settings (or bootstrap with default config)
+    + Add support for 'diff --json-lines'
+  * Bugfixes and refinements:
+    + Alert when deleting last profile
+    + Put folders first in diff/extract
+    + Skip sizing folders on permission error
+    + Called set_progress() on wrong class
+    + Fix color for eye icon when masking password 
+    + Refuse to add inaccessible folders, warn on inaccessible files during backup 
+    + Open window on left-click on Linux
+    + Fix issue #940 - KeyError in get_dict_from_list
+    + Correctly rename profile in dropdown
+    + Fix 'list --json-lines' command when only a single result line is output
+
+-------------------------------------------------------------------
 Fri Apr 16 08:50:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.7.5
