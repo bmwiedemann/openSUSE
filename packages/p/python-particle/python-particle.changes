@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  3 04:12:25 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.15.1:
+  * Bug fix in Particle.to_dict.
+  * Code improvements thanks to Sourcery.
+  * Clean-up of unnecessary files/code.
+- Update tests tarball to version 0.15.1 too.
+
+-------------------------------------------------------------------
 Sun May 23 00:20:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.15.0:
