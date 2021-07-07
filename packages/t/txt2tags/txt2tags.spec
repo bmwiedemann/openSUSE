@@ -28,7 +28,7 @@ URL:            https://txt2tags.org/
 Source:         https://github.com/txt2tags/txt2tags/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module setuptools}
+Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Obsoletes:      txt2tags < %{version}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:48:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the setuptools requirement.
+  The single spec macros will make sure the right module is pulled.
+  'Requires: %{python_module setuptools}' must not be used or all
+  the flavors will be installed unconditionally.
+
+-------------------------------------------------------------------
 Sun Dec 20 11:21:52 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7:
