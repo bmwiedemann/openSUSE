@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul  4 12:19:44 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.16:
+  * Add the fossil patch command
+  * Improve the fossil ui command to work on check-out directories
+    and remote machines
+  * web UI improvements
+  * Add fossil bisect run command for improved automation of bisects
+  * Improve fossil merge handling of renames
+  * wiki now defaults to markdown
+  * email alerts can now be set to expire to prevent sending mail
+    to abandoned accounts forever
+
+-------------------------------------------------------------------
+Sat Jul  3 14:16:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.15.2:
+  * Fix the client-side TLS so that it verifies that the server
+    hostname matches its certificate (boo#1187988)
+
+-------------------------------------------------------------------
 Sat Apr 24 14:51:01 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.15.1:
