@@ -1,7 +1,7 @@
 #
 # spec file for package moonjit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Patch0:         moonjit105-string_gsub.patch
 BuildRequires:  pkgconfig
 Conflicts:      luajit
 Provides:       lua51-luajit
-Provides:       luajit = %{version}
+Provides:       luajit = 2.1.0
 Obsoletes:      lua51-luajit
 
 %description

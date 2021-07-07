@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  3 19:20:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix Provides ... we don't provide an equvalent of 2.2.0 LuaJIT
+  (which doesn't exsts).
+
+-------------------------------------------------------------------
 Mon Mar 30 12:31:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add moonjit105-string_gsub.patch to fix gsub method, which breaks

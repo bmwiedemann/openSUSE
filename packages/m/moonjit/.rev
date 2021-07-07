@@ -50,4 +50,14 @@
   other packages (namely neovim). (forwarded request 789856 from mcepl)</comment>
     <requestid>789857</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>15c9c72c4296db1bc6af9767d453dd5c</srcmd5>
+    <version>2.2.0</version>
+    <time>1625675373</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Provides ... we don't provide an equvalent of 2.2.0 LuaJIT
+  (which doesn't exsts).
+</comment>
+    <requestid>903873</requestid>
+  </revision>
 </revisionlist>
