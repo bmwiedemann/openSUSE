@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>875593</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d3d8608e9c251121c043e0a75f0e82f7</srcmd5>
+    <version>4.19.25</version>
+    <time>1625675414</time>
+    <user>dimstar_suse</user>
+    <comment>- compile even when older python-rpm-macros don't have the
+  python_compileall macro</comment>
+    <requestid>904287</requestid>
+  </revision>
 </revisionlist>

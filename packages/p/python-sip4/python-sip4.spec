@@ -238,6 +238,8 @@ grep '%%requires_%{python3_prefix}_sip_api'  %{buildroot}%{_rpmconfigdir}/macros
   echo "%%requires_%{python3_prefix}_sip_api Requires: %{python_prefix}-sip(api) = %%python_sip_api_ver" >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.python_all-sip4
 %endif
 %{?python_compileall}
+%{?!python_compileall:%python_exec -m compileall %{buildroot}%{$python_sitearch}}
+%{?!python_compileall:%python_exec -O -m compileall %{buildroot}%{$python_sitearch}}
 %python_clone -a %{buildroot}/%{_bindir}/sip
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_datadir}/sip

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  5 22:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- compile even when older python-rpm-macros don't have the
+  python_compileall macro
+
+-------------------------------------------------------------------
 Sat Feb 27 11:03:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Don't conflict with newer sip-devel packages. They use completely

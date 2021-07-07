@@ -6,5 +6,5 @@ Python bindings for the Qt toolkit, but can be used to create bindings
 for any C or C++ library.
 
 </description>
-  <devel project="KDE:Qt5" package="python-sip4"/>
+  <devel project="KDE:Qt:PyQt" package="python-sip4"/>
 </package>
