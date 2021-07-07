@@ -1,20 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/Firstyear/tokio.git"]
-git = "https://github.com/Firstyear/tokio.git"
-rev = "aa6fb48d9a1f3652ee79e3b018a2b9d0c9f89c1e"
-replace-with = "vendored-sources"
-
-[source."https://github.com/csnewman/libnss-rs.git"]
-git = "https://github.com/csnewman/libnss-rs.git"
-rev = "eab2d93d2438652773699b0807d558ce75b1e748"
-replace-with = "vendored-sources"
-
-[source."https://github.com/mozilla-services/fernet-rs.git"]
-git = "https://github.com/mozilla-services/fernet-rs.git"
-branch = "master"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"

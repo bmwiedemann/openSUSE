@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        1.1.0~alpha4~git0.0ac5da8
+Version:        1.1.0~alpha5~git0.4be329e
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -27,23 +27,21 @@ URL:            https://github.com/Firstyear/kanidm
 Source:         kanidm-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Source10:       kanidmd.service
-Source11:       kanidm-unixd.service
-Source12:       server.toml
-Source13:       kanidm-unixd-tasks.service
 
-ExcludeArch:    %ix86 s390x ppc64 ppc64le armhfp armv7hl
+ExcludeArch:    %ix86 s390x ppc ppc64 ppc64le armhfp armv6l armv7l armv7hl
 
 BuildRequires:  cargo
 BuildRequires:  libudev-devel
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.45.0
+BuildRequires:  rust >= 1.52.1
 BuildRequires:  sqlite-devel
-BuildRequires:  pkgconfig(openssl)
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
+BuildRequires:  openssl-devel
 BuildRequires:  systemd
 %{?systemd_requires}
+%else
+BuildRequires:  pkgconfig(openssl)
 %endif
 
 Requires:       %{name}-clients
@@ -144,11 +142,10 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_stat
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
 
-install -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/kanidmd.service
-
-install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/kanidm-unixd.service
-install -m 0640 %{SOURCE12} %{buildroot}%{configdir}/server.toml
-install -m 0644 %{SOURCE13} %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0640 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm

@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Wed Jul 07 02:36:51 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha5~git0.4be329e:
+  * (cargo-release) version 1.1.0-alpha.5
+  * Release prep
+  * Fix totp registration workflow with broken authenticators (#516)
+  * Add statistical analysis to indexes (#505)
+  * 511 upgrade failure - add debuging tools and improve debugging of the issue. (#512)
+  * fixes #503 - TOTP prompt no longer drops a newline (#515)
+  * Fixing kanidm windows client build (#507)
+  * Add the ability to configure and provide Oauth2 authentication for Kanidm. (#485)
+  * Change default totp to sha256 (#504)
+  * Fixes #494 - password change user-facing responses (#499)
+  * Fix readonly check (#496)
+  * Update webauthn-authenticator-rs to fix test failures (#493)
+  * Update repo locations and versions in prep for release (#492)
+  * Add workaround for podman subid issue (#491)
+  * 163 account recovery code (#469)
+  * check user shell (#392) (#490)
+  * Removed `OperationResponse` (#489)
+  * Set default shell to `bin/sh` (#488)
+  * 20210607 orca ldap (#470)
+  * `kanidm_client` bool/return values (#479)
+  * Arc cachesize warning fixes (#483)
+  * Closure Refactoring (#482)
+  * Renamed fields in `dbvalue` (#477)
+  * 471 add service files (#474)
+  * fixes #478 - adds note about web ui already being packaged (#480)
+  * unixd will now bail if startup tests fail (#476)
+  * Add email syntax (#465)
+  * Add some openid stubs (#464)
+  * Add auth docs (#463)
+  * 64 120 session claims (#462)
+  * Add ldap vattr mapping (#459)
+  * Fix for unixd issue (#460)
+  * 414 clear stale credentials (#447)
+  * Fix multivalue setting of description attribute (#457)
+  * 445 update pam nsswitch md (#451)
+  * simpler ip logging (#454)
+  * I might have become clippy this time (#449)
+  * Calming clippy's nerves, Friday edition (#448)
+  * 444 - client's config URI missing and more file open handling (#446)
+  * Fix proxy usage in tests (#443)
+  * This allows TOTP to accept an OTP that is one step behind AKA the previous TOTP (#442)
+  * oauth design (#441)
+  * Adding an example config file (#440)
+  * adding env vars, making clippy happier, cleaning up some error messages (#438)
+  * 20210509 cleanup clippy and audit name (#437)
+  * 277 radius pw not accept for main pw (#435)
+  * Orca - a load testing framework for Kanidm (#431)
+  * Add verification of name indexes (#433)
+  * Add ability to pick a server role (#432)
+  * Adding a new verb group remove_members (#434)
+  * 397 Caching password badlist (#425)
+  * User feedback improvements, also handling a permissions issue (#424)
+  * Fix concat issue
+  * Update contributors
+  * Making clippy happy (#420)
+  * Fix 421 - clearer debug messages when doing things (#422)
+  * 62 idm qs cleanup (#419)
+  * Rough working login page (#417)
+  * Make clippy happy (#415)
+  * More debug messages (#413)
+  * merging upstream (#411)
+  * Improve error message when socket not found (#412)
+  * Idlset2, query cache, acp resolve cache (#409)
+  * Add lto thin (#410)
+  * fixing broken action (#405)
+  * Basic documentation for monitoring (#404)
+  * Create design for mfa_backup_code.rst (#402)
+  * phrasing (#401)
+  * Docs update (#400)
+- Remove un-needed source files:
+    * kanidm-unixd-tasks.service
+    * kanidm-unixd.service
+    * kanidmd.service
+    * server.toml
+
+-------------------------------------------------------------------
+Thu Jun 24 02:54:31 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha4~git54.675146e:
+  * check user shell (#392) (#490)
+  * Removed `OperationResponse` (#489)
+  * Set default shell to `bin/sh` (#488)
+  * 20210607 orca ldap (#470)
+  * `kanidm_client` bool/return values (#479)
+  * Arc cachesize warning fixes (#483)
+  * Closure Refactoring (#482)
+
+-------------------------------------------------------------------
+Wed Jun 16 02:38:11 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha4~git47.5e83b68:
+  * Renamed fields in `dbvalue` (#477)
+  * 471 add service files (#474)
+  * fixes #478 - adds note about web ui already being packaged (#480)
+  * unixd will now bail if startup tests fail (#476)
+  * Add email syntax (#465)
+  * Add some openid stubs (#464)
+  * Add auth docs (#463)
+  * 64 120 session claims (#462)
+  * Add ldap vattr mapping (#459)
+
+-------------------------------------------------------------------
+Thu May 27 11:18:43 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha4~git38.d978c9d:
+  * Fix for unixd issue (#460)
+
+-------------------------------------------------------------------
+Wed May 26 06:12:04 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha4~git37.e8b1089:
+  * 414 clear stale credentials (#447)
+  * Fix multivalue setting of description attribute (#457)
+  * 445 update pam nsswitch md (#451)
+  * simpler ip logging (#454)
+  * I might have become clippy this time (#449)
+  * Calming clippy's nerves, Friday edition (#448)
+  * 444 - client's config URI missing and more file open handling (#446)
+  * Fix proxy usage in tests (#443)
+  * This allows TOTP to accept an OTP that is one step behind AKA the previous TOTP (#442)
+  * oauth design (#441)
+  * Adding an example config file (#440)
+  * adding env vars, making clippy happier, cleaning up some error messages (#438)
+  * 20210509 cleanup clippy and audit name (#437)
+  * 277 radius pw not accept for main pw (#435)
+  * Orca - a load testing framework for Kanidm (#431)
+  * Add verification of name indexes (#433)
+  * Add ability to pick a server role (#432)
+  * Adding a new verb group remove_members (#434)
+  * 397 Caching password badlist (#425)
+  * User feedback improvements, also handling a permissions issue (#424)
+  * Fix concat issue
+  * Update contributors
+  * Making clippy happy (#420)
+  * Fix 421 - clearer debug messages when doing things (#422)
+  * 62 idm qs cleanup (#419)
+  * Rough working login page (#417)
+  * Make clippy happy (#415)
+  * More debug messages (#413)
+  * merging upstream (#411)
+  * Improve error message when socket not found (#412)
+  * Idlset2, query cache, acp resolve cache (#409)
+  * Add lto thin (#410)
+  * fixing broken action (#405)
+  * Basic documentation for monitoring (#404)
+  * Create design for mfa_backup_code.rst (#402)
+  * phrasing (#401)
+  * Docs update (#400)
+
+-------------------------------------------------------------------
 Thu Apr 01 01:11:04 UTC 2021 - wbrown@suse.de
 
 - Update to version 1.1.0~alpha4~git0.0ac5da8:
