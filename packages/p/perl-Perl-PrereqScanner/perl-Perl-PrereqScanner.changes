@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  4 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.024
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner/Changes
+
+  1.024     2021-07-03 13:28:30-04:00 America/New_York
+          - switched from List::MoreUtils to List::Util (thanks, Karen
+            Etheridge!)
+          - update author contact info
+          - add docs on perl version policy
+
+-------------------------------------------------------------------
 Mon Apr 13 18:24:43 UTC 2015 - coolo@suse.com
 
 - updated to 1.023

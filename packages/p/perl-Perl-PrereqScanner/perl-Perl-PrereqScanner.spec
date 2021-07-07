@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-PrereqScanner
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Perl-PrereqScanner
-Version:        1.023
-Release:        0
 %define cpan_name Perl-PrereqScanner
-Summary:        a tool to scan your Perl code for its prerequisites
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Perl-PrereqScanner/
-Source:         http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Perl-PrereqScanner
+Version:        1.024
+Release:        0
+Summary:        Tool to scan your Perl code for its prerequisites
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.124
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.124000
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long::Descriptive)
-BuildRequires:  perl(List::MoreUtils)
+BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Module::Path)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(Moose::Role)
@@ -42,9 +42,9 @@ BuildRequires:  perl(String::RewritePrefix) >= 0.005
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(namespace::autoclean)
-Requires:       perl(CPAN::Meta::Requirements) >= 2.124
+Requires:       perl(CPAN::Meta::Requirements) >= 2.124000
 Requires:       perl(Getopt::Long::Descriptive)
-Requires:       perl(List::MoreUtils)
+Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Module::Path)
 Requires:       perl(Moose)
 Requires:       perl(Moose::Role)
@@ -61,36 +61,26 @@ files.
 The extraction may not be perfect but tries to do its best. It will
 currently find the following prereqs:
 
-* *
+  * plain lines beginning with 'use' or 'require' in your perl modules and
+scripts, including minimum perl version
 
-  plain lines beginning with 'use' or 'require' in your perl modules and
-  scripts, including minimum perl version
+  * regular inheritance declared with the 'base' and 'parent' pragmata
 
-* *
+  * Moose inheritance declared with the 'extends' keyword
 
-  regular inheritance declared with the 'base' and 'parent' pragmata
+  * Moose roles included with the 'with' keyword
 
-* *
-
-  the Moose manpage inheritance declared with the 'extends' keyword
-
-* *
-
-  the Moose manpage roles included with the 'with' keyword
-
-* *
-
-  OO namespace aliasing using the 'aliased' module
+  * OO namespace aliasing using the 'aliased' module
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -98,7 +88,7 @@ currently find the following prereqs:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
