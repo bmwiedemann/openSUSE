@@ -1,7 +1,7 @@
 #
 # spec file for package dejagnu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           dejagnu
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Framework for Running Test Suites on Software Tools
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            https://www.gnu.org/software/dejagnu/
+URL:            https://www.gnu.org/software/dejagnu/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
-Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=dejagnu&download=1#/%{name}.keyring
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=dejagnu&download=1#/%{name}.keyring
 Source3:        site.exp
+Patch0:         testsuite-legacy.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -34,7 +35,7 @@ Requires:       expect
 Requires:       info
 Requires:       tcl
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -65,25 +66,31 @@ suites themselves.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+# 49078@debbugs.gnu.org: bug in Expect 5.45.4 triggers a testsuite failure
+# when building in source directory
+mkdir build
+cd build
+%define _configure ../configure
 %configure
 make %{?_smp_mflags}
 
 %check
-make check
+make -C build check
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+make -C build %{?_smp_mflags} DESTDIR=%{buildroot} install
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/dejagnu/site.exp
 ln -s -f %{_sysconfdir}/dejagnu/site.exp %{buildroot}%{_datadir}/dejagnu/site.exp
 %fdupes -s %{buildroot}
 
 %post
-%install_info --info-dir=%{_infodir} %{_infodir}/dejagnu.info.gz
+%install_info --info-dir=%{_infodir} %{_infodir}/dejagnu.info%{ext_info}
 
 %preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/dejagnu.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/dejagnu.info%{ext_info}
 
 %files
 %defattr(-, root, root)
@@ -91,8 +98,12 @@ ln -s -f %{_sysconfdir}/dejagnu/site.exp %{buildroot}%{_datadir}/dejagnu/site.ex
 %doc ChangeLog NEWS README AUTHORS TODO
 %dir %{_datadir}/dejagnu
 %dir %{_sysconfdir}/dejagnu
+%{_bindir}/dejagnu
 %{_bindir}/runtest
-%{_mandir}/man1/runtest.1%{ext_info}
+%{_mandir}/man1/dejagnu.1%{ext_man}
+%{_mandir}/man1/dejagnu-help.1%{ext_man}
+%{_mandir}/man1/dejagnu-report-card.1%{ext_man}
+%{_mandir}/man1/runtest.1%{ext_man}
 %{_infodir}/dejagnu.info%{ext_info}
 %{_includedir}/*
 %config(noreplace) %{_sysconfdir}/dejagnu/site.exp

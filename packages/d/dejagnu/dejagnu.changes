@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jun 30 13:28:31 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- testsuite-legacy.patch: support deprecated legacy uses of dejagnu
+
+-------------------------------------------------------------------
+Mon Jun 21 08:10:02 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to dejagnu 1.6.3
+  * The internal proc 'is_remote' has been renamed to 'isremote' for
+    consistency with the other similar procs (eg, istarget)
+  * runtest now accepts --local_init and --global_init options to override
+    the default of reading "site.exp"
+  * runtest now responds consistently to all Tcl errors and generates an
+    UNRESOLVED result when a test script aborts
+  * runtest now collects Tcl errors encountered during a test run and prints
+    the collected errors a second time at the end of the test run after the
+    summary
+  * A utility procedure relative_filename has been added
+  * The utility procedure 'grep' now accepts a '-n' option that
+    includes line numbers in the output, consistent with GNU grep
+  * The target_compile procedure now accepts a "linker=" option that
+    overrides the compiler selection when producing an executable
+  * The internal default_target_compile procedure now supports compiling
+    sources in Go (using GCC Go) and Rust
+  * The host_execute procedure no longer insists that the executable be in
+    the current directory if the file exists under the given name
+  * The host_execute procedure now reads input to end-of-file
+  * The match patterns in the host_execute procedure have been revised to
+    fix timing issues causing test names to be truncated
+  * The host_execute procedure is no longer sensitive to the value of the
+    "text" global variable
+  * A new multiplex procedure "testsuite" is added for commands retrieving
+    or providing information about the current testsuite
+  * A command "testsuite file" is added to replace the use of the "*dir"
+    variables in test scripts
+  * A command "testsuite can call" is added to report the availability of
+    multiplexed API calls
+  * A new multiplex procedure "testcase" is added for commands examining or
+    manipulating the dynamic state of ongoing testing
+  * A command "testcase group" is provided for reporting test groups to the
+    DejaGnu core
+  * A shell command "dejagnu" is added as a place to hang various
+    auxiliary commands not directly involved with running tests
+  * The first auxiliary command is added: "report card"
+  * A Tcl namespace is now used for some internal procedures and variables.
+  * The Tcl namespace ::dejagnu and all child namespaces are entirely
+    internal and should not be mentioned in testsuite code
+  * The DejaGnu testsuite no longer searches for a nearby Expect executable
+    in the location where it would have been located in the old Cygnus tree
+    layout
+
+-------------------------------------------------------------------
 Wed Nov 28 08:58:00 UTC 2018 - schwab@suse.de
 
 - Update to dejagnu 1.6.2
