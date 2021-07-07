@@ -45,8 +45,15 @@ done
 # gnomesu does not add sbin to $PATH, so do it manually.
 export PATH=/sbin:/usr/sbin:$PATH
 
+# YaST bind mounts /run/ all the way into the target system, which can break
+# the running system through various ways. It's not (easily) possible to
+# pass YaST its own /run/, so for now just protect /run/utmp. That's especially
+# important because upgrades from 42.3's aaa_base delete /run/utmp, which causes
+# logind to crash for some reason (boo#1187971).
+mountpoint -q /run/utmp || mount --bind /run/utmp /run/utmp
+
 # Run YaST in a separate mount namespace to avoid that it messes with the
-# running system, for instance by altering /run
+# running system.
 unshare -m /usr/lib/YaST2/startup/YaST2.call installation initial
 
 # YaST replaces this with a symlink into the destination, fix it up manually

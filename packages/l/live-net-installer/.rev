@@ -138,4 +138,12 @@
     <comment>- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214</comment>
     <requestid>883327</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>be077c74d6eee2b16111c20bfd8ca9b2</srcmd5>
+    <version>1.0</version>
+    <time>1625675443</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent deletion of /run/utmp (boo#1187971)</comment>
+    <requestid>904607</requestid>
+  </revision>
 </revisionlist>

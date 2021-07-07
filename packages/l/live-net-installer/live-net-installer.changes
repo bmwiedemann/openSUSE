@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  7 14:40:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Prevent deletion of /run/utmp (boo#1187971)
+
+-------------------------------------------------------------------
 Tue Apr  6 13:48:58 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214
