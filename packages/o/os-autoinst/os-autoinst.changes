@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 06 20:33:28 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1625603601.8466828c:
+  * t: Simplify log parsing in 99-full-stack.t
+  * t: Add trivial s390x test
+  * Remove "SUSEMIRROR" check now being in os-autoinst-distri-opensuse
+  * t: Add test for bmwqemu::save_json_file
+  * Fix a few typos
+  * Remove 10-virtio_terminal from OBS tests
+  * Allow specifying multiple tests via `TESTS` variable as documented in README
+  * Fix use of QEMU_NUMA on qemu >= 5.2
+  * Add unit tests for the vagrant backend
+  * Strip down qemu-backend symptom reporting to focus on real errors
+  * Show likely QEMU errors more prominently
+  * Skip empty ISO_X variables when configuring block devices
+  * Add brief documentation of the vagrant backend
+  * Add vagrant backend to os-autoinst
+  * Update tidy to 20210625
+  * bmwqemu: Remove deprecated fileContent method
+
+-------------------------------------------------------------------
 Mon Jun 21 14:20:50 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1624262954.5361bf1c:
