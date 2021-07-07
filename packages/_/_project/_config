@@ -102,16 +102,13 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # Podman based image building
-
-
-
-Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
+Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # To build ISO images
-Substitute: build-packages:iso !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !systemd-mini-sysvinit
+Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
