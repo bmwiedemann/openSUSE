@@ -1,0 +1,3 @@
+d /var/lib/gerbera 0755 @USER@ @GROUP@ -
+d /var/log/gerbera 0755 @USER@ @GROUP@ -
+d /run/gerbera 0750 @USER@ @GROUP@ -
