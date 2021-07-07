@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Jul  6 10:40:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only install rls/README when building devtools, as otherwise this
+  file would end up in no package.
+
+-------------------------------------------------------------------
+Tue Jul  6 01:47:31 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Revert package to be arch dependent based on reviewer feedback
+
+-------------------------------------------------------------------
+Mon Jun 28 01:25:12 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Migrate to parallel versioned rust installs.
+- Remove artefacts for building rust
+  * ignore-Wstring-conversion.patch
+
+-------------------------------------------------------------------
+Fri Jun 18 00:52:43 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 1.53:
+  + Language
+    - [You can now use unicode for identifiers.][83799] This allows multilingual
+      identifiers but still doesn't allow glyphs that are not considered characters
+      such as `◆` or `🦀`. More specifically you can now use any identifier that
+      matches the UAX #31 "Unicode Identifier and Pattern Syntax" standard. This
+      is the same standard as languages like Python, however Rust uses NFC
+      normalization which may be different from other languages.
+    - [You can now specify "or patterns" inside pattern matches.][79278]
+      Previously you could only use `|` (OR) on complete patterns. E.g.
+      ```rust
+      let x = Some(2u8);
+      // Before
+      matches!(x, Some(1) | Some(2));
+      // Now
+      matches!(x, Some(1 | 2));
+      ```
+    - [Added the `:pat_param` `macro_rules!` matcher.][83386] This matcher
+      has the same semantics as the `:pat` matcher. This is to allow `:pat`
+      to change semantics to being a pattern fragment in a future edition.
+  + Compiler
+    - [Updated the minimum external LLVM version to LLVM 10.][83387]
+    - [Added Tier 3\* support for the `wasm64-unknown-unknown` target.][80525]
+    - [Improved debuginfo for closures and async functions on Windows MSVC.][83941]
+
+    \* Refer to Rust's [platform support page][platform-support-doc] for more
+    information on Rust's tiered platform support.
+  + Libraries
+    - [Abort messages will now forward to `android_set_abort_message` on
+      Android platforms when available.][81469]
+    - [`slice::IterMut<'_, T>` now implements `AsRef<[T]>`][82771]
+    - [Arrays of any length now implement `IntoIterator`.][84147]
+      Currently calling `.into_iter()` as a method on an array will
+      return `impl Iterator<Item=&T>`, but this may change in a
+      future edition to change `Item` to `T`. Calling `IntoIterator::into_iter`
+      directly on arrays will provide `impl Iterator<Item=T>` as expected.
+    - [`leading_zeros`, and `trailing_zeros` are now available on all
+      `NonZero` integer types.][84082]
+    - [`{f32, f64}::from_str` now parse and print special values
+      (`NaN`, `-0`) according to IEEE RFC 754.][78618]
+    - [You can now index into slices using `(Bound<usize>, Bound<usize>)`.][77704]
+    - [Add the `BITS` associated constant to all numeric types.][82565]
+  + Cargo
+    - [Cargo now supports git repositories where the default `HEAD` branch is not
+      "master".][cargo/9392] This also includes a switch to the version 3 `Cargo.lock` format
+      which can handle default branches correctly.
+    - [macOS targets now default to `unpacked` split-debuginfo.][cargo/9298]
+    - [The `authors` field is no longer included in `Cargo.toml` for new
+      projects.][cargo/9282]
+  + Rustdoc
+    - [Added the `rustdoc::bare_urls` lint that warns when you have URLs
+      without hyperlinks.][81764]
+  + Compatibility Notes
+    - [Implement token-based handling of attributes during expansion][82608]
+    - [`Ipv4::from_str` will now reject octal format IP addresses in addition
+      to rejecting hexadecimal IP addresses.][83652] The octal format can lead
+      to confusion and potential security vulnerabilities and [is no
+      longer recommended][ietf6943].
+
+-------------------------------------------------------------------
 Mon May 10 22:41:00 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update to version 1.52.1:
