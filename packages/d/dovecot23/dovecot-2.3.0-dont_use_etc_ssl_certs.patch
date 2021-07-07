@@ -1,16 +1,3 @@
-Index: dovecot-2.3.9.3/doc/example-config/conf.d/10-ssl.conf
-===================================================================
---- dovecot-2.3.9.3.orig/doc/example-config/conf.d/10-ssl.conf
-+++ dovecot-2.3.9.3/doc/example-config/conf.d/10-ssl.conf
-@@ -9,7 +9,7 @@
- # dropping root privileges, so keep the key file unreadable by anyone but
- # root. Included doc/mkcert.sh can be used to easily generate self-signed
- # certificate, just make sure to update the domains in dovecot-openssl.cnf
--ssl_cert = </etc/ssl/certs/dovecot.pem
-+ssl_cert = </etc/ssl/private/dovecot.crt
- ssl_key = </etc/ssl/private/dovecot.pem
- 
- # If key file is password protected, give the password here. Alternatively
 Index: dovecot-2.3.9.3/doc/man/doveconf.1.in
 ===================================================================
 --- dovecot-2.3.9.3.orig/doc/man/doveconf.1.in
