@@ -3,7 +3,7 @@
     <param name="url">git://github.com/hfg-gmuend/openmoji.git</param>
     <param name="scm">git</param>
     <param name="revision">4a80b53</param>
-    <param name="versionprefix">13.0.0+git</param>
+    <param name="versionprefix">13.1.0+git</param>
     <param name="versionformat">%ct.%h</param>
   </service>
   <service mode="buildtime" name="tar" />

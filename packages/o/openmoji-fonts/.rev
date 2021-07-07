@@ -42,4 +42,16 @@ The license is part of the FAQ.md file. I cannot find the separated license file
 </comment>
     <requestid>849888</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a419c9911ecab409bf3e33634000bb4</srcmd5>
+    <version>13.1.0+git.1605265744.4a80b536e</version>
+    <time>1625675415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.1.0.
+  * Full support of Unicode Emoji 13.1.
+  * Lots of fixes and redesigns
+  * New flags and misc emojis in extras-openmoji
+</comment>
+    <requestid>904286</requestid>
+  </revision>
 </revisionlist>

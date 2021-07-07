@@ -1,7 +1,7 @@
 #
 # spec file for package openmoji-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define ttf_fontdir %{_datadir}/fonts/truetype
 %define fontname     openmoji
 Name:           openmoji-fonts
-Version:        13.0.0+git.1605265744.4a80b536e
+Version:        13.1.0+git.1605265744.4a80b536e
 Release:        0
 Summary:        OpenMoji fonts
 License:        CC-BY-SA-4.0
@@ -54,7 +54,7 @@ Group:          System/X11/Fonts
 Colorful variation of Openmoji glyphs.
 
 %prep
-%setup -n %{fontname}-%{version} 
+%setup -n %{fontname}-%{version}
 
 %build
 
@@ -73,7 +73,7 @@ install -m 0644 font/*.ttf %{buildroot}%{_ttfontsdir}/
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/OpenMoji-Color.*
 
-%doc changelog.txt CONTRIBUTING.md README.md 
+%doc changelog.txt CONTRIBUTING.md README.md
 %license FAQ.md
 
 %changelog
