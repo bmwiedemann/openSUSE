@@ -33,6 +33,7 @@ Patch2:         audacity-misc-errors.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch3:         audacity-no_return_in_nonvoid.patch
 Patch4:         audacity-remove-wx-test.patch
+Patch5:         https://github.com/audacity/audacity/commit/b4b5cc8.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
