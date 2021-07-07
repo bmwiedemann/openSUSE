@@ -150,4 +150,18 @@
   * find-provides.ksyms: Fix ksym-provides test</comment>
     <requestid>885341</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5af51a79b539f12f035e0f704a9cdedc</srcmd5>
+    <version>0.g83</version>
+    <time>1625675366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.g83:
+  * Find kernel modules also in /usr/lib/modules
+- Update to version 0.g81:
+  * Support ZSTD compressed kernel modules
+  * Fix a typo: povides -&gt; provides
+  * Quote %buildroot in makeinstall macros
+</comment>
+    <requestid>902705</requestid>
+  </revision>
 </revisionlist>

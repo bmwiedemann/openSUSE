@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 25 13:45:53 UTC 2021 - lnussel@suse.de
+
+- Update to version 0.g83:
+  * Find kernel modules also in /usr/lib/modules
+
+-------------------------------------------------------------------
+Wed Jun 23 12:39:18 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 0.g81:
+  * Support ZSTD compressed kernel modules
+  * Fix a typo: povides -> provides
+  * Quote %buildroot in makeinstall macros
+
+-------------------------------------------------------------------
 Fri Mar 05 15:52:55 UTC 2021 - lnussel@suse.de
 
 - Update to version 0.g76:

@@ -18,11 +18,11 @@
 
 
 Name:           rpm-config-SUSE
-Version:        0.g76
+Version:        0.g83
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Building
+Group:          System/Packages
 URL:            https://github.com/openSUSE/rpm-config-SUSE
 Source:         %{name}-%{version}.tar.xz
 
