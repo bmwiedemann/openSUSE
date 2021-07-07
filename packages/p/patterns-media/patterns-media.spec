@@ -37,6 +37,7 @@ such as DVD's
 
 
 ################################################################################
+
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -776,7 +777,7 @@ Recommends:     yast2-live-installer
 Recommends:     yast2-nis-server
 Recommends:     yast2-product-creator
 # #301029
-Recommends:     yast2-python-bindings
+Recommends:     yast2-python3-bindings
 Recommends:     yast2-slp-server
 Suggests:       krdc
 Suggests:       krfb
