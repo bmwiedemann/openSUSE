@@ -99,4 +99,13 @@
     <comment>Fix version parsing for gcc10 and up. (forwarded request 822743 from eeich)</comment>
     <requestid>822744</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9fcd2994a2cb9f2ee465312fc82724a2</srcmd5>
+    <version>1.4</version>
+    <time>1625675373</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc11 to HPC build (jsc#SLE-18780,
+  jsc#SLE-18781, jsc#SLE-18782). (forwarded request 903935 from eeich)</comment>
+    <requestid>903936</requestid>
+  </revision>
 </revisionlist>

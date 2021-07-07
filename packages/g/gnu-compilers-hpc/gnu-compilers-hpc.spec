@@ -1,7 +1,7 @@
 #
 # spec file for package gnu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,10 @@ ExclusiveArch:  do_not_build
 
 %if "%flavor" == "gnu10-hpc"
 %define c_f_ver 10
+%endif
+
+%if "%flavor" == "gnu11-hpc"
+%define c_f_ver 11
 %endif
 
 # Keep in sync with macros.hpc-gnu

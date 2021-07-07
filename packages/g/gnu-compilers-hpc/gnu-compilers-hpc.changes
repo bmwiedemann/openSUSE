@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 23 06:52:49 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc11 to HPC build (jsc#SLE-18780,
+  jsc#SLE-18781, jsc#SLE-18782).
+
+-------------------------------------------------------------------
 Thu Jul 23 16:13:13 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439). 
