@@ -1,7 +1,7 @@
 #
 # spec file for package serd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define sover 0
 Name:           serd
-Version:        0.30.6
+Version:        0.30.10
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            http://drobilla.net/software/serd/
+URL:            https://drobilla.net/software/serd/
 Source0:        http://download.drobilla.net/serd-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
+BuildRequires:  python3-Sphinx
 
 %description
 A lightweight C library for RDF syntax  which supports reading and writing Turtle and NTriples.
@@ -95,9 +95,9 @@ rm -rf %{buildroot}%{_docdir}/serd-0/html
 %{_libdir}/libserd-0.so.%{sover}*
 
 %files devel
+%doc %{_docdir}/serd-0
 %{_libdir}/libserd-0.so
 %{_includedir}/serd-0/
 %{_libdir}/pkgconfig/serd-0.pc
-%{_mandir}/man3/serd.3%{?ext_man}
 
 %changelog

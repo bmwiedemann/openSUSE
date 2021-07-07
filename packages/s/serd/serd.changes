@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  4 19:53:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.10:
+  * Add fallback configuration if documentation theme is unavailable
+  * Fix SERD_DISABLE_DEPRECATED
+  * Fix building for older MacOS versions on newer MacOS
+  * Fix documentation installation directory
+  * Deprecate serd_uri_to_path()
+  * Don't install API man pages
+  * Fix potential memory error when serialising URIs
+  * Move headers to an include directory
+  * Refuse to write relative URI references to NTriples
+  * Remove the need for a generated configuration header
+  * Remove use of C character class functions that may use locale
+  * Split up and reorganize unit tests
+  * Use aligned allocation via C11 or Windows API where possible 
+
+-------------------------------------------------------------------
 Mon Sep 28 16:42:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.30.6:
