@@ -1063,4 +1063,13 @@
   pointing to. (forwarded request 896879 from cgiboudeaux)</comment>
     <requestid>897165</requestid>
   </revision>
+  <revision rev="140" vrev="6">
+    <srcmd5>82563fd8f010a35e61ee27f450296647</srcmd5>
+    <version>0.8</version>
+    <time>1625675389</time>
+    <user>dimstar_suse</user>
+    <comment>- Add avahi-CVE-2021-3502.patch: fix NULL pointer crashes
+  (boo#1184846 CVE-2021-3502). (forwarded request 903764 from mgorse)</comment>
+    <requestid>904185</requestid>
+  </revision>
 </revisionlist>

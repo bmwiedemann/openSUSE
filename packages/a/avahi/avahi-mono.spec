@@ -79,6 +79,8 @@ Patch19:        avahi-0.6.32-suppress-resolv-conf-warning.patch
 Patch20:        add-IT_PROG_INTLTOOL.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2021-3468.patch boo#1184521 mgorse@suse.com -- avoid infinite loop by handling HUP event in client_work.
 Patch21:        avahi-CVE-2021-3468.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2021-3502.patch boo#1184846 mgorse@suse.com -- fix NULL pointer crashes.
+Patch22:        avahi-CVE-2021-3502.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -318,6 +320,7 @@ Requires:       glibc-devel
 Requires:       libavahi-client%{avahi_client_sover} = %{version}
 Requires:       libavahi-common%{avahi_common_sover} = %{version}
 Requires:       libavahi-core%{avahi_core_sover} = %{version}
+Requires:       libavahi-libevent%{avahi_libevent_sover} = %{version}
 # Last appeared in OpenSUSE 10.3:
 Provides:       avahi-devel = %{version}
 Obsoletes:      avahi-devel < %{version}
@@ -405,8 +408,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -518,6 +521,7 @@ translation-update-upstream
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions

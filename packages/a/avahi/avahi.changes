@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 17:40:20 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add avahi-CVE-2021-3502.patch: fix NULL pointer crashes
+  (boo#1184846 CVE-2021-3502).
+
+-------------------------------------------------------------------
 Wed Jun  2 09:37:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix libavahi-devel requirements. The devel package installs
