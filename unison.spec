@@ -17,7 +17,7 @@
 
 
 Name:           unison
-Version:        2.51.4_rc2
+Version:        2.51.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -66,7 +66,7 @@ install -m 644 -D %{SOURCE2} %{buildroot}/%{_datadir}/applications/%{name}.deskt
 
 %files
 %defattr(-,root,root,-)
-%doc BUGS.txt CONTRIB COPYING NEWS README unison-manual.html
+%doc COPYING NEWS README unison-manual.html
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_bindir}/%{name}

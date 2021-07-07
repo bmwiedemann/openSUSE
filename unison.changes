@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 24 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- Update to version 2.51.4
+  * Working files are stored in the unison directory (typically ~/.unison) rather than $HOME.
+  * see included changelog for details
+
+-------------------------------------------------------------------
 Fri Apr  9 09:09:09 UTC 2021 - olaf@aepfle.de
 
 - Update to version 2.51.4_rc2

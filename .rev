@@ -302,4 +302,14 @@
   build native target unconditionally</comment>
     <requestid>889212</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>73c225429117404fe727df7e6d9b439f</srcmd5>
+    <version>2.51.4</version>
+    <time>1625675427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.51.4
+  * Working files are stored in the unison directory (typically ~/.unison) rather than $HOME.
+  * see included changelog for details</comment>
+    <requestid>904417</requestid>
+  </revision>
 </revisionlist>

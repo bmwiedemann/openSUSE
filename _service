@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">unison</param>
-    <param name="revision">2e12fc4f41b39ca9a5e501d7df5c2c33a75d3b95</param>
+    <param name="revision">f29b364cad83c71f5620c0df3b9b0049b62d2d60</param>
     <param name="scm">git</param>
     <param name="subdir">src</param>
     <param name="submodules">disable</param>
