@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  5 10:04:59 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Remove cilium from kubeadm pattern 
+
+-------------------------------------------------------------------
 Mon Aug 31 12:58:20 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - kubeadm pattern now requires kuberlr to facilitate transparent multi-version kubectl useage 

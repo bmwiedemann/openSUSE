@@ -193,4 +193,12 @@
     <comment>- kubeadm pattern now requires kuberlr to facilitate transparent multi-version kubectl useage</comment>
     <requestid>830806</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>b832b90477e13c21cc60c772115ff5ea</srcmd5>
+    <version>5.0</version>
+    <time>1625675382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904137</requestid>
+  </revision>
 </revisionlist>
