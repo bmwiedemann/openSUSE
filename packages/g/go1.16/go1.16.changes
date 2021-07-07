@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 10 17:31:11 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix extraneous trailing percent character %endif% in spec file.
+
+-------------------------------------------------------------------
 Thu Jun  3 22:46:45 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.5 (released 2021-06-03) includes security fixes to the

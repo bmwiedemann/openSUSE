@@ -402,7 +402,7 @@ fi
 %doc %{_docdir}/go/%{go_api}/LICENSE
 %else
 %license %{_docdir}/go/%{go_api}/LICENSE
-%endif%
+%endif
 
 # We don't include TSAN in the main Go package.
 %ifarch %{tsan_arch}
