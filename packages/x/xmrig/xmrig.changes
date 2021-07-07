@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul  7 07:57:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.13.1:
+  * v6.13.1
+  * Update CHANGELOG.md
+  * v6.13.1-dev
+  * Fix: don't send miner signature during regular mining
+  * v6.13.0
+  * Update CHANGELOG.md
+  * v6.13.0-dev
+  * Correct handling of block submit responses for Dero
+  * Update signing algorithm
+  * Add token support for online benchmark.
+  * Added profiling
+  * Fixed GCC warnings
+  * Fix Wownero hardfork version
+  * Proxy miner signature support
+  * Proxy miner signature support (WIP)
+  * More sanity checks
+  * More error handling in DaemonClient::parseJob
+  * Fixed CalculateMerkleTreeHash
+  * BlockTemplate: miner tx and root hash updating
+  * Fix buffer size in generateMinerSignature
+  * Added support for solo mining with miner signatures (Wownero)
+  * Cleanup
+  * Fixed random32_unbiased
+  * Secret key derivation
+  * Added signature functions
+  * Cryptonote tools WIP
+  * v6.12.3-dev
+
+-------------------------------------------------------------------
+Mon Jun 21 07:22:43 UTC 2021 - mpluskal@suse.com
+
+- Update to version 6.12.2:
+  * Fix shellcheck warnings in randomx_boost.sh
+
+-------------------------------------------------------------------
 Mon May 31 07:43:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.12.2:

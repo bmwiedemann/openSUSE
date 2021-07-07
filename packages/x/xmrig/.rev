@@ -187,4 +187,41 @@
   * support builtin msr</comment>
     <requestid>896293</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d6dc58408fcabc69343ad06cd0a8999</srcmd5>
+    <version>6.13.1</version>
+    <time>1625675438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.13.1:
+  * v6.13.1
+  * Update CHANGELOG.md
+  * v6.13.1-dev
+  * Fix: don't send miner signature during regular mining
+  * v6.13.0
+  * Update CHANGELOG.md
+  * v6.13.0-dev
+  * Correct handling of block submit responses for Dero
+  * Update signing algorithm
+  * Add token support for online benchmark.
+  * Added profiling
+  * Fixed GCC warnings
+  * Fix Wownero hardfork version
+  * Proxy miner signature support
+  * Proxy miner signature support (WIP)
+  * More sanity checks
+  * More error handling in DaemonClient::parseJob
+  * Fixed CalculateMerkleTreeHash
+  * BlockTemplate: miner tx and root hash updating
+  * Fix buffer size in generateMinerSignature
+  * Added support for solo mining with miner signatures (Wownero)
+  * Cleanup
+  * Fixed random32_unbiased
+  * Secret key derivation
+  * Added signature functions
+  * Cryptonote tools WIP
+  * v6.12.3-dev
+
+- Update to version 6.12.2:</comment>
+    <requestid>904545</requestid>
+  </revision>
 </revisionlist>
