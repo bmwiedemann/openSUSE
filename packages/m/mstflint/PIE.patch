@@ -1,0 +1,14 @@
+Index: mstflint-4.16.0/configure.ac
+===================================================================
+--- mstflint-4.16.0.orig/configure.ac
++++ mstflint-4.16.0/configure.ac
+@@ -58,6 +58,9 @@ LDL=""
+ default_en_inband=""
+ 
+ LDFLAGS="${LDFLAGS} -L/usr/lib64 -L/usr/local/lib -L/usr/local/lib64"
++if test "$host_cpu" != "s390x"; then
++	LDFLAGS="${LDFLAGS} -pie"
++fi
+ CXXFLAGS="${CXXFLAGS} -isystem /usr/local/include" 
+ if test "x$OS" = "xFreeBSD"; then
+     AC_MSG_NOTICE(FreeBSD Build)

@@ -30,6 +30,7 @@ Source:         https://github.com/Mellanox/mstflint/releases/download/v%{versio
 Patch1:         Remove-date-time-info-from-build.patch
 Patch4:         Fix-gcc7-and-gcc8.patch
 Patch5:         fix-race-condition-during-install.patch
+Patch6:         PIE.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibverbs-devel
@@ -52,6 +53,7 @@ the downloads page at the Mellanox web site.
 %patch1
 %patch4
 %patch5
+%patch6 -p1
 
 %build
 ./autogen.sh
