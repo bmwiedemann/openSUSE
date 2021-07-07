@@ -1,4 +1,588 @@
 -------------------------------------------------------------------
+Mon Jul 05 05:01:17 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.15.0~git0.16c8aa4:
+  * cargo-audit v0.15.0 (#392)
+  * rustsec-admin v0.5.0 (#389)
+  * README.md: 🦀🛡️📦
+  * rustsec v0.24.0 (#388)
+  * OSV export (#366)
+  * Bump semver from 1.0.1 to 1.0.3
+  * Bump semver from 1.0.0 to 1.0.1 (#381)
+  * Bump git2 from 0.13.19 to 0.13.20 (#375)
+  * Bump crates-index from 0.16.6 to 0.16.7 (#380)
+  * cargo-lock v7.0.0 (#379)
+  * Bump to semver 1.0.0 (#378)
+  * rustsec-admin v0.4.3 (#374)
+  * list-affected-versions: Also print the crate in question
+  * Bump crates-index from 0.16.5 to 0.16.6
+  * Fix doc comments
+  * Added docs
+  * Clean up the code and commit stuff I forgot to add to git
+  * Implement list-affected-versions subcommand, works fine with current DB
+  * Add list-affected-versions subcommand stub
+  * Clarify error message
+  * Update the crates.io index if not up to date
+  * Drop ureq dependency
+  * cargo fmt
+  * Better error reporting
+  * Initial untested attempt to get rid of crates.io API querying completely
+  * Comment, thanks Alex
+  * cargo fmt
+  * Fix crates.io API interaction
+  * Ditched crates_io_api crate, did the same thing with ureq. Gets rid of tokio and a whole lot of other deps. Fixes breakage due to the recent crates.io API breakage, and prevents similar breakage in the future
+  * Add new exit status for errors (#368)
+  * Bump git2 from 0.13.18 to 0.13.19 (#365)
+  * cargo-lock: add support for V3 format (#363)
+  * cvss v1.0.3 (#362)
+  * CI: gate workflow execution for PRs on changed files
+  * cvss: fixups
+  * Update CI badges
+  * Add some tier 3 targets
+  * Workspace CI configuration
+  * Update repo urls in Cargo.toml files
+  * README.md: add new toplevel one for workspace
+  * platforms: sync with Rust platform support documentation
+  * CI configuration
+  * Wire up Cargo workspace
+  * cargo-audit: prepare for merge into RustSec monorepo
+  * rustsec: prepare for merge into RustSec monorepo
+  * platforms: prepare for merge into RustSec monorepo
+  * cvss: prepare for merge into RustSec monorepo
+  * rustsec-admin: prepare for merge into RustSec monorepo
+  * rustsec-admin: prepare for merge into RustSec monorepo
+  * Web: Add pages per package (#143)
+  * v0.4.2 (#142)
+  * web: Add back an Atom feed for advisories (#140)
+  * Cargo.lock: bump dependencies (#136)
+  * Upgrade to GitHub-native Dependabot (#134)
+  * v0.4.1 (#135)
+  * Display more information on the website (#133)
+  * Upgrade to GitHub-native Dependabot (#344)
+  * Vendor OpenSSL for arm and musl builds (#343)
+  * Bump git2 from 0.13.17 to 0.13.18 (#314)
+  * Bump crates-index from 0.16.3 to 0.16.5 (#313)
+  * Bump comrak from 0.9.1 to 0.10.0 (#129)
+  * Fix typo in comments about mips64. (#36)
+  * Bump rustsec from 0.23.2 to 0.23.3 (#128)
+  * v0.23.3 (#310)
+  * Workaround for stale git refs (#309)
+  * Bump rustsec from 0.23.0 to 0.23.2 (#127)
+  * v0.23.2 (#308)
+  * Rename advisory-db `master` branch to `main` (#307)
+  * CI: use actions-rs/audit-check for self-audit (#306)
+  * Cargo.lock: bump dependencies (#305)
+  * v0.4.0 (#126)
+  * v0.3.5 (#124)
+  * Use rust-embed for static assets (#122)
+  * Add argument to change where website is outputted (#123)
+  * v0.23.1 (#301)
+  * Bump url from 2.2.0 to 2.2.1 (#98)
+  * Fix parsing error on windows (#295)
+  * Cargo.lock: bump deps (#296)
+  * Bump comrak from 0.9.0 to 0.9.1 (#116)
+  * Use a fully Rust based solution for rendering web page (#115)
+  * v0.3.4 (#113)
+  * Bump `rustsec` crate to v0.23 (#112)
+  * v0.23.0 (#292)
+  * Cargo.toml: dependency cleanups (#291)
+  * Add `thread-safety` category (#290)
+  * Rename default branch to `main` (#289)
+  * v1.0.1 (#15)
+  * Rename default branch to `main` (#14)
+  * Cargo.lock: bump deps (#288)
+  * v6.0.1 (#96)
+  * Rename CI workflow (#95)
+  * Rename default branch to `main` (#94)
+  * Cargo.lock: bump deps (#93)
+  * Bump semver-parser from 0.10.0 to 0.10.2 (#280)
+  * v0.3.3 (#106)
+  * Cargo.lock: bump dependencies (#105)
+  * Rename `master` branch to `main` (#104)
+  * CI config improvements (#103)
+  * assigner: fix "new year's" bug (#102)
+  * Bump handlebars from 3.5.1 to 3.5.2 (#101)
+  * Bump platforms from 1.0.3 to 1.1.0 (#279)
+  * v1.1.0 (#35)
+  * Rename default branch to `main` (#34)
+  * Rename GH Actions workflow to "CI" (#33)
+  * Update README platform list using table gen
+  * Add aarch64-apple-darwin, a.k.a. Apple Silicon macOS
+  * Bump serde from 1.0.117 to 1.0.118 (#88)
+  * Bump toml from 0.5.7 to 0.5.8 (#89)
+  * v0.3.2 (#97)
+  * Bump `rustsec` crate to v0.23.0-pre (#96)
+  * v0.23.0-pre (#272)
+  * Rename `repository::GitRepository` to `repository::git::Repository` (#271)
+  * Rename `fetch` Cargo feature to `git` (#270)
+  * Use `SystemTime` instead of a `git::Timestamp` type (#269)
+  * Add support for omitting leading `[advisory]` table (#268)
+  * Mark enums as non_exhaustive (#267)
+  * Re-add advisory `references` as a URL list (#266)
+  * Replace `chrono` with `humantime` (#265)
+  * Bump `smol_str` to v0.1.17; MSRV 1.46+ (#264)
+  * Use `url` crate to parse metadata URL (#263)
+  * Remove `markdown` feature (#262)
+  * Bump termcolor from 1.1.0 to 1.1.1 (#94)
+  * Rename `references` to `related` (#261)
+  * Bump once_cell from 1.5.1 to 1.5.2 (#259)
+  * Bump crates-index from 0.16.0 to 0.16.2 (#260)
+  * Bump once_cell from 1.5.0 to 1.5.1 (#92)
+  * Cargo.lock: bump deps (#258)
+  * Bump once_cell from 1.4.1 to 1.5.1 (#257)
+  * .github: rename CI workflow to "CI" (#256)
+  * Bump once_cell from 1.4.1 to 1.5.0 (#91)
+  * Bump serde from 1.0.116 to 1.0.117 (#86)
+  * Bump url from 2.1.1 to 2.2.0 (#87)
+  * Bump platforms from 1.0.2 to 1.0.3 (#252)
+  * v1.0.3 (#30)
+  * fix Platform::guess_current to use actual target architecture (#29)
+  * v0.3.1 (#89)
+  * Bump `rustsec` crate to v0.22.2 (#88)
+  * v0.22.2 (#250)
+  * Revert "Refactor Advisory type handling (#246)" (#249)
+  * Cargo.lock: bump dependencies (#248)
+  * Cargo.lock: bump dependencies (#87)
+  * v0.22.1 (#247)
+  * Refactor Advisory type handling (#246)
+  * Bump handlebars from 3.5.0 to 3.5.1 (#84)
+  * Bump toml from 0.5.6 to 0.5.7 (#85)
+  * v0.3.0 (#86)
+  * Bump `rustsec` crate dependency to v0.22 (#83)
+  * v0.22.0 (#245)
+  * Bump `cargo-lock` to v6; `semver` to v0.11 (#244)
+  * Remove more V2 advisory format vestiges (#243)
+  * Remove support for the V2 advisory format (#242)
+  * v0.3.0-pre3 (#82)
+  * assign-id: fix TOML front matter parsing (#81)
+  * v0.3.0-pre2 (#80)
+  * Attempt to fix `assign-id` command (#79)
+  * v0.22.0-pre3 (#241)
+  * advisory: mark the `parser` module as `pub` (#240)
+  * Bump thiserror from 1.0.20 to 1.0.21 (#74)
+  * Bump rustsec from 0.22.0-pre to 0.22.0-pre2 (#78)
+  * Bump thiserror from 1.0.20 to 1.0.21 (#232)
+  * clippy fixes (#77)
+  * Bump cargo-edit from 0.6.0 to 0.7.0 (#231)
+  * v0.22.0-pre2 (#239)
+  * advisory/linter: make V2 advisories fail (#238)
+  * Bump crates-index from 0.15.4 to 0.16.0 (#237)
+  * CI: ignore RUSTSEC-2020-0053 (dirs unmaintained) (#236)
+  * Bump toml from 0.5.6 to 0.5.7 (#233)
+  * Bump toml from 0.5.6 to 0.5.7 (#85)
+  * v0.3.0-pre (#73)
+  * Bump `rustsec` crate to v0.22.0-pre (#72)
+  * v0.22.0-pre (#230)
+  * advisory: laxer function path handling (#229)
+  * linter: fully deprecate `obsolete` in favor of `yanked` (#228)
+  * advisory: `markdown` feature and `Advisory::description_html` (#227)
+  * Refactor changes from `fetch` feature (#213) (#226)
+  * linter: add support for V3 advisory format (#225)
+  * Bump chrono from 0.4.15 to 0.4.19 (#224)
+  * cargo fmt
+  * Linter: correctly handle crates with dashes in names
+  * v6.0.0 (#84)
+  * Bump semver from 0.10.0 to 0.11.0 (#83)
+  * Bump handlebars from 3.3.0 to 3.5.0 (#69)
+  * Bump `cargo-lock` to v5.0; semver to v0.10; MSRV 1.41+ (#217)
+  * v5.0.0 (#82)
+  * rustdoc fixups (#81)
+  * README.md: switch chat badge to Zulip (#80)
+  * 5.0.0-rc (#79)
+  * Add `docsrs` cfg (#78)
+  * Support for listing a single dependency (#77)
+  * Implement/extract Cargo-compatible serializer (#76)
+  * Add `--dependencies` and `--sources` flags to `cargo lock list` (#75)
+  * Implement `cargo lock tree` without arguments (#74)
+  * Add `dependency::Tree::roots()` method (#73)
+  * bin: make `list` the default command (#72)
+  * Have `cargo lock` command print dependency list (#71)
+  * Make `cli` feature non-default (#70)
+  * WASM support; MSRV 1.41+ (#69)
+  * Bump gumdrop from 0.7.0 to 0.8.0 (#55)
+  * Bump serde from 1.0.110 to 1.0.116 (#67)
+  * Bump crates-index from 0.15.3 to 0.15.4 (#215)
+  * Bump crates-index from 0.15.2 to 0.15.3 (#214)
+  * Define "fetch" feature (#213)
+  * Bump `platforms` crate to v1; MSRV 1.40+ (#210)
+  * v1.0.2 (#28)
+  * Remove `const fn` on `Platforms::all`; MSRV 1.40+ (#27)
+  * .github: add 'override: true' directives; MSRV 1.46+ (#26)
+  * v1.0.1 (#25)
+  * Make `Platform::all()` a `const fn` (#24)
+  * Refactor `Platform::find` and `::guess_current` (#23)
+  * Rename `ALL_PLATFORMS` to `Platform::all()` (#22)
+  * v1.0.0 (#21)
+  * Update LICENSE-MIT
+  * Ensure all types have FromStr, Display, and serde impls
+  * Documentation fixups
+  * 2018 edition updates
+  * Make extensible enums `non_exhaustive`; MSRV 1.40+
+  * Update deps; whitelist RUSTSEC-2020-0036 (#208)
+  * Bump git2 from 0.13.8 to 0.13.10 (#207)
+  * Bump git2 from 0.13.6 to 0.13.8 (#201)
+  * Bump chrono from 0.4.11 to 0.4.13 (#200)
+  * Bump crates-index from 0.15.0 to 0.15.1 (#202)
+  * Fix test
+  * Add aarch64-pc-windows-msvc
+  * Bump handlebars from 3.2.1 to 3.3.0 (#60)
+  * v0.2.1 (#63)
+  * Added an output mode for use with the production github action (#62)
+  * v0.2.0 (#57)
+  * Consistent `assign-id` module naming and comments (#56)
+  * linter: refactor into `Linter` struct; check all files (#55)
+  * Cargo.lock: update dependencies (#54)
+  * Have `assignid` command use new `Date::year` method (#53)
+  * Bump `rustsec` crate from 0.20.1 to 0.21 (#52)
+  * v0.21.0 (#198)
+  * Remove legacy `patched_versions` and `unaffected_versions` (#197)
+  * Bump crates-index from 0.14.3 to 0.15.0 (#183)
+  * Rename `obsolete` advisories to `yanked` (#196)
+  * Make `warning::Kind` a #[non_exhausive] enum; rename `Kind::Notice` (#195)
+  * Make `Informational` a #[non_exhausive] enum. (#194)
+  * Cargo.lock: update dependencies (#193)
+  * CHANGELOG.md: reformat for keepachangelog.com (#192)
+  * Add `year`, `month`, and `day` methods to `advisory::Date` (#191)
+  * add 'unsound' informational advisory kind (#189)
+  * Resolves #30
+  * v0.20.1 (#186)
+  * Add `advisory::Id::numerical_part()` (#185)
+  * Refer to Cargo.lock in help for translate (#62)
+  * Bump handlebars from 3.0.1 to 3.1.0
+  * Bump serde from 1.0.104 to 1.0.110
+  * Bump petgraph from 0.5.0 to 0.5.1
+  * Bump semver from 0.9.0 to 0.10.0
+  * Fix clippy errors
+  * Cargo.lock: update dependencies
+  * .github: ignore RUSTSEC-2020-0016
+  * Bump rustsec from 0.19.0 to 0.20.0
+  * v0.20.0
+  * Make `WarningInfo` into a simple type alias
+  * Bump thiserror from 1.0.10 to 1.0.16
+  * Bump rustsec from 0.18.0 to 0.19.0
+  * v0.19.0
+  * Refactor package scopes (fixes #153)
+  * V3 Advisory Format
+  * Bump thiserror from 1.0.15 to 1.0.16
+  * Bump git2 from 0.13.4 to 0.13.5
+  * Bump MSRV to 1.40
+  * Bump dependencies to link libgit2 dynamically
+  * Cargo.lock: update dependencies
+  * address PR comments
+  * addres PR comments
+  * clippy fix
+  * add WarningInfo. modify Warning struct
+  * Cargo.lock: update dependencies
+  * Cargo.lock: update dependencies
+  * lib.rs: fix incorrect flag in documentation
+  * Drop support for the V1 advisory format
+  * Update dependencies
+  * Cargo.lock: Update dependencies
+  * Bump rustsec from 0.17.1 to 0.18.0
+  * v0.18.0
+  * Move yanked crate auditing to `cargo-audit`
+  * Bump abscissa_core from 0.5.1 to 0.5.2
+  * security_audit.yml: Fix branch name
+  * Bump thiserror from 1.0.9 to 1.0.10
+  * Bump thiserror from 1.0.9 to 1.0.10
+  * Bump handlebars from 3.0.0 to 3.0.1
+  * Bump handlebars from 2.0.4 to 3.0.0
+  * Bump rustsec from 0.17.0 to 0.17.1
+  * v0.17.1
+  * Update `cargo-lock` requirement from 3.0 to 4.0
+  * Cargo.lock: Update to V2 lockfile format
+  * README.md: Document CLI `list` and `tree` subcommands
+  * v4.0.1
+  * cli: fix executable name
+  * v4.0.0
+  * cli: `list` subcommand
+  * cli: `tree` subcommand
+  * .github: add security audit
+  * Initial CLI with `translate` subcommand
+  * Add From<[u8; 32]> impl for Checksum
+  * Add helper methods for working with checksum metadata
+  * Minor documentation improvements
+  * Use minified version of Cargo's SourceId type
+  * Bump handlebars from 2.0.2 to 2.0.4
+  * Bump abscissa_core from 0.5.0 to 0.5.1
+  * Bump serde from 1.0.101 to 1.0.104
+  * [Security] Bump http from 0.1.18 to 0.1.21
+  * Overhaul encoding: use serde_derive, proper V1/V2 support
+  * Bump termcolor from 1.0.5 to 1.1.0
+  * (Re-)Add Serialize impl for Lockfile (fixes #32)
+  * Add support Cargo.lock `patch` and `root` (fixes #30)
+  * Detect V1 vs V2 Cargo.lock files (fixes #26)
+  * Update petgraph requirement from 0.4 to 0.5
+  * Add `package::Checksum`
+  * Bump once_cell from 1.2.0 to 1.3.1
+  * Bump rustsec from 0.16.0 to 0.17.0
+  * Cargo.lock: check in; add `actions-rs` caching
+  * v0.17.0
+  * Upgrade `cargo-edit` to v0.5.0 release; MSRV 1.39+
+  * Bump once_cell from 1.2.0 to 1.3.0
+  * Bump toml from 0.5.5 to 0.5.6
+  * Have `Fixer` take a reference to `Vulnerability`
+  * Extract `cargo audit fix` logic into `Fixer`
+  * Warn for yanked crates
+  * add badge from deps.rs
+  * upgrade dependencies
+  * Upgrade to Abscissa v0.5
+  * Add vendored-openssl feature
+  * refactored package_scope's source attribute to vector of sources
+  * switched from lazy_static to once_cell for database tests
+  * fixed formatting
+  * made advisory db in database test static mutex
+  * fixed tests for vulnerability querying and changed PackageScope to struct
+  * added tests for package scope consideration in vulnerability querying
+  * added package scope for querying vulnerabilities
+  * try to fix #127
+  * Bump MSRV to 1.36
+  * Try to auto-detect proxy setting
+  * v0.16.0
+  * Remove `support.toml` parsing
+  * v0.15.2
+  * version: Fix matching bug for `>` version requirements
+  * v0.1.1
+  * Upgrade to `rustsec` crate v0.15.1
+  * v0.15.1
+  * actions: Run cargo-audit, test MSRV, test on Windows
+  * .github: Use actions-rs GitHub Actions config
+  * .github: Use actions-rs GitHub Actions config
+  * .github: Use actions-rs GitHub Actions config
+  * .github: Use actions-rs GitHub Actions config
+  * .github: Use actions-rs GitHub Actions config
+  * linter: Add "informational" as an allowable [advisory] key
+  * repository: Expose `authentication` module
+  * v0.15.0
+  * Upgrade to `cargo-lock` crate v3
+  * v3.0.0
+  * Support [[dependencies]] without versions
+  * v0.14.1
+  * lib.rs: Remove botched `petgraph` re-export
+  * Upgrade to cargo-lock v2.0
+  * v2.0.0
+  * Use two-pass dependency tree computation
+  * v2.0.0-pre
+  * Remove `Lockfile::root_package()`
+  * Cargo.toml: Fix links
+  * Cargo.toml: Fix `repository` link
+  * cli: Move to new repository
+  * v0.1.0
+  * linter: Rename command to `lint`; use Abscissa statuses
+  * README.md: Header quoting fixup
+  * v0.2.1
+  * .github/workflows/rust.yml: Initial GitHub Actions config
+  * Import implementation from the `rustsec` crate repo
+  * .github/workflows/rust.yml: Initial GitHub actions config
+  * v0.14.0
+  * Initial commit
+  * warning: Extract into module; make more like `Vulnerability`
+  * Upgrade to `cvss` crate v1.0
+  * v1.0.0
+  * .github/workflows/rust.yml: Migrate to GitHub Actions
+  * .github/workflows/rust.yml: Update template
+  * Upgrade to `cargo-lock` crate v1.0
+  * v1.0.0
+  * dependency/tree: Render trees to an io::Write
+  * v1.0.0-pre
+  * metadata: Generalize into `Key` and `Value` types
+  * .github/workflows/rust.yml: Trigger on [push]
+  * .github/workflows/rust.yml: Initial Actions config
+  * Refactor dependency handling
+  * cli: Add `rustsec web` subcommand
+  * cli: Add `rustsec check` subcommand
+  * cli: Initial application boilerplate
+  * v0.13.0
+  * Finish GitHub Actions migration
+  * rust.yml: Initial GitHub actions config
+  * v0.13.0-alpha4
+  * linter: Ensure advisory date's year matches year in advisory ID
+  * v0.13.0-alpha3
+  * v0.2.1
+  * Allow empty `[metadata]` in Cargo.lock files
+  * Use the `cargo-lock` crate
+  * v0.2.0
+  * dependency_graph: Move petgraph types into a module
+  * Fix links and add badges
+  * v0.1.0
+  * Index DependencyGraph by package::Release
+  * Import `DependencyGraph` from the `rustsec` crate
+  * Import implementation from the `rustsec` crate
+  * .travis.yml: Initial Travis CI config
+  * Initial commit
+  * v0.13.0-alpha2
+  * lockfile: Add (optional) DependencyGraph analysis
+  * v0.13.0-alpha1
+  * Fix unaffected versions
+  * Restructure Vulnerability
+  * Rename 'db' module to 'database'
+  * report: Generate warnings for selected informational advisories
+  * vulnerability: Add affected_functions()
+  * Add advisory::Linter
+  * package: Parse dependencies from Cargo.lock
+  * Initial `report` module and built-in report-generating
+  * v0.3.0
+  * Support for re-serializing CVSS v3.0 values
+  * CVSS v3.0 parsing support
+  * severity: Add `FromStr` and `serde` support
+  * Use index allocation for storing advisories
+  * Basic query support
+  * Index the `rust` advisory directory from RustSec/advisory-db
+  * Add first-class support for GitHub Security Advisories (GHSA)
+  * Re-vendor Cargo's git authentication code
+  * Further broaden categories
+  * support.toml for indicating supported versions
+  * Add support for "informational" advisories (closes #134)
+  * Add `advisory::Category` (closes RustSec/advisory-db#69)
+  * Refactor advisory types: add [affected] and [versions] sections
+  * advisory: Add (optional) `cvss` field with CVSS v3.1 score
+  * v0.2.0
+  * Add `Base::exploitability` and `impact` methods; docs
+  * serde support
+  * Freshen deps: add `home`, remove `directories` and `failure`
+  * Cargo.toml/README.md: Fix broken/missing links
+  * v0.1.0
+  * .travis.yml: Initial configuration
+  * Initial commit
+  * Improve lints and deny policy
+  * Improved handling of prereleases; MSRV 1.35+
+  * Add `Version` and `VersionReq` newtypes
+  * v0.12.1
+  * Use new inclusive range syntax
+  * v0.12.0
+  * Update dependencies and use 2018 import conventions; Rust 1.32+
+  * Properly set up target::os::TARGET_OS const for unknown OS
+  * Re-export all types in advisory::paths::*
+  * v0.11.0
+  * Cargo.toml: Update 'platforms' crate to v0.2
+  * v0.2.0
+  * Update platforms to match RustForge
+  * Redo 'affected_functions' as 'affected_paths'
+  * Update to Rust 2018 edition
+  * v0.10.0
+  * CHANGES.md: Redo formatting
+  * Implement "affected_functions" advisory attribute
+  * AdvisoryDatabase::advisories_for_crate: Handle unaffected_versions
+  * Update to Rust 2018 edition
+  * v0.9.3
+  * Create parents of the advisory DB repo dir
+  * v0.9.2
+  * Handle cloning advisory DB into existing, empty dir
+  * Gate `no_dupes_test` under "std"
+  * Test all possible feature combinations
+  * Fix no_std support when using "serde" feature
+  * README.md: Move "Documentation" link up
+  * README.md: Use backticks instead of "scare quotes"
+  * use home_dir() instead of environment variable HOME
+  * use ~/.cargo if CARGO_HOME is unset
+  * Derives Deserialize for Vulnerabilities and Vulnerability
+  * Derive Serialize for Packages, Vulnerabilities, and Vulnerability
+  * v0.9.1
+  * Use Cargo's git authentication helper
+  * v0.1.4
+  * x86_64-apple-darwin: fix typo in target triple name
+  * Have markdown-table-gen output links to Platform structs on docs.rs
+  * v0.1.3
+  * Cargo.toml: Fix Travis CI badge
+  * v0.1.2
+  * markdown-table-gen: Markdown-formatted platform table generator
+  * v0.1.1
+  * impl {Display, Error} for packages::Error
+  * v0.9.0
+  * rustsec-client -> rustsec-crate
+  * Use "platforms" crate for platform-related functionality
+  * v0.1.0
+  * Remove duplicate target::OS::from_str() method
+  * Add `guess_current()`
+  * Optional serde support
+  * v0.0.1
+  * Initial commit
+  * PlatformReq documentation improvements
+  * v0.8.0
+  * CHANGES.md: Fix links
+  * Advisory platform requirements
+  * advisory/keyword.rs: Cargo-like keyword support
+  * v0.7.5
+  * Allow AdvisoryId::new() to parse "RUSTSEC-0000-0000"
+  * v0.7.4
+  * Add link to logo image for docs.rs
+  * v0.7.3
+  * Fix builds with --no-default-features
+  * repository/commit.rs: Comment fixup
+  * README.md: Tighten up title
+  * v0.7.2
+  * README.md: Badge fixups, add gitter badge
+  * v0.7.1
+  * Cargo.toml: Formatting fixups, add "readme" attribute
+  * v0.7.0
+  * v0.7.0-alpha3
+  * Refactor advisory iterator
+  * v0.7.0-alpha2
+  * Validate dates are well-formed
+  * Add AdvisoryIdKind and limited support for parsing advisory IDs
+  * Add a "Vulnerabilities" collection struct
+  * src/repository: Refactor into multiple modules
+  * v0.7.0-alpha1
+  * Support converting advisory::Date into chrono::Date
+  * Parse git signatures as Strings
+  * Parse aliases, references, and unaffected versions
+  * Parse (but do not yet verify) signatures on advisory-db commits
+  * Parse individual advisory .toml files rather than Advisories.toml
+  * Switch to git2-based fetcher for advisory-db
+  * advisory.rs: Move AdvisoryId definition below Advisory
+  * Use serde to parse advisories TOML and Cargo.lock files
+  * Use 'failure' crate for error handling
+  * Cargo.toml: Update dependencies
+  * Adopt the Contributor Covenant (version 1.4)
+  * Factor integration tests into the tests/ directory
+  * .travis.yml: Allow failures on OS X and enable fast finish
+  * Fix clippy 0.0.212 nits
+  * Run rustfmt 0.8.2-nightly (5e599251 2018-07-02)
+  * Remove redundant documentation link
+  * Bump version to 0.6.0 and update CHANGES.md
+  * Use semver::Version for lockfile::Package versions
+  * Move AdvisoryDatabase under the ::db module
+  * Lockfile support
+  * Bump version to 0.5.2 and update CHANGES.md
+  * Add AdvisoryDatabase::fetch_from_url()
+  * Bump version to 0.5.1 and update CHANGES.md
+  * Make "advisory" and "error" modules public
+  * Bump version to 0.5.0 and update CHANGES.md
+  * Use str version param for AdvisoryDatabase::find_vulns_for_crate()
+  * Bump version to 0.4.0 and update CHANGES.md
+  * Add AdvisoryDatabase::find_vulns_for_crate()
+  * Bump version to 0.3.0 and update CHANGES.md
+  * Rename `crate_name` back to `package`
+  * Bump version to 0.2.0 and update CHANGES.md
+  * Rename `package` TOML attribute to `crate_name`
+  * Add iterator support to AdvisoryDatabase
+  * Add docs badge to README.md
+  * Spell out crate name explicitly
+  * Add About section to README
+  * Bump version to 0.1.0 and update CHANGES.md
+  * Add AdvisoryDatabase struct
+  * Fix more README links
+  * Fix link in README
+  * Initial implementation
+  * Add LICENSEs and other README improvements
+  * Initial commit
+
+-------------------------------------------------------------------
+Mon Jul 05 04:53:39 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.14.1~git0.e46dce8:
+  * v0.14.1 (#342)
+  * Cargo.lock: update several dependencies (#341)
+  * Generate release builds with github actions (#337)
+  * Cargo.lock: bump various dependencies (#335)
+  * Bump rustsec from 0.23.2 to 0.23.3 (#333)
+  * v0.14.0 (#330)
+  * Cargo.lock: bump `rustsec` to v0.23.2 (#329)
+  * README.md: fix "Report Vulnerability" button (#328)
+  * Rename 'master' branch to 'main'
+  * Bump `rustsec` dependency to v0.23; MSRV 1.46+ (#327)
+
+-------------------------------------------------------------------
 Wed Jun 02 06:01:51 UTC 2021 - wbrown@suse.de
 
 - Update _service to use upstream monorepo and cargo-audit
