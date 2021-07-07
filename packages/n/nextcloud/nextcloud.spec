@@ -36,18 +36,18 @@
 %endif
 %endif
 
-%define nc_user 	%{apache_user}
-%define nc_dir  	%{apache_myserverroot}/%{name}
-%define ocphp_bin	/usr/bin
+%define nc_user     %{apache_user}
+%define nc_dir      %{apache_myserverroot}/%{name}
+%define ocphp_bin   /usr/bin
 
 %if 0%{?rhel} == 600 || 0%{?rhel_version} == 600 || 0%{?centos_version} == 600
-%define statedir	/var/run
+%define statedir    /var/run
 %else
-%define statedir	/run
+%define statedir    /run
 %endif
 
 Name:           nextcloud
-Version:        21.0.3
+Version:        22.0.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -121,8 +121,8 @@ Recommends:     php-gmp
 # For enhanced server performance:
 Recommends:     php-APCu
 Recommends:     php7-bcmath
-# For preview generation: 
-Recommends:     php-imagick 
+# For preview generation:
+Recommends:     php-imagick
 Recommends:     php-ffmpeg
 #Recommends:     libreoffice
 # For command line processing:
@@ -151,10 +151,10 @@ cp %{SOURCE2} .
 cp %{SOURCE3} .
 cp %{SOURCE4} .
 cp %{SOURCE5} .
-### Don't remove git files!! 
+### Don't remove git files!!
 ### git files should not be removed, otherwise nextcloud rise up integrity check failure in some situations.
 ###
-## delete unneeded gitfiles 
+## delete unneeded gitfiles
 #rm -r `find . -name ".gitignore" -or -name ".gitkeep" -or -name ".github"`
 ## remove entries in signature.json to prevent integrity check failure
 #find . -iname signature.json \
@@ -208,24 +208,20 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-cron
 
 %pre
 %service_add_pre %{name}-cron.timer %{name}-cron.service
+
 # avoid fatal php errors, while we are changing files
 # https://github.com/nextcloud
 #
 # We don't do this for new installs. Only for updates.
-# If the first argument to pre is 1, the RPM operation is an initial installation. If the argument is 2, 
+# If the first argument to pre is 1, the RPM operation is an initial installation. If the argument is 2,
 # the operation is an upgrade from an existing version to a new one.
-if [ $1 -gt 1 -a ! -s %{statedir}/apache_stopped_during_nextcloud_install ]; then	
-  echo "%{name} update: Checking for running Apache"
+if [ $1 -gt 1 -a ! -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
+  echo "o %{name} pre-install: Checking for running Apache"
   # FIXME: this above should make it idempotent -- a requirement with openSUSE.
   # it does not work.
 %if 0%{?suse_version} && 0
-%if 0%{?suse_version} <= 1110
-  rcapache2 status       | grep running > %{statedir}/apache_stopped_during_nextcloud_install
-  rcapache2 stop
-%else
   service apache2 status | grep running > %{statedir}/apache_stopped_during_nextcloud_install
   service apache2 stop
-%endif
 %endif
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
   service httpd status | grep running > %{statedir}/apache_stopped_during_nextcloud_install
@@ -233,17 +229,17 @@ if [ $1 -gt 1 -a ! -s %{statedir}/apache_stopped_during_nextcloud_install ]; the
 %endif
 fi
 if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
-  echo "%{name} pre-install: Stopping Apache"
+  echo "o %{name} pre-install: Stopping Apache"
 fi
 
 if [ $1 -eq 1 ]; then
-    echo "%{name}-server: First install starting"
+    echo "o %{name} pre-install: First install starting"
 else
-    echo "%{name}-server: Upgrade starting ..."
+    echo "o %{name} pre-install: Upgrade starting ..."
 fi
 # https://github.com/nextcloud
 if [ -x %{ocphp_bin}/php -a -f %{nc_dir}/occ ]; then
-  echo "%{name}: occ maintenance:mode --on"
+  echo "o %{name} pre-install: occ maintenance:mode --on"
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --on" || true
   echo yes > %{statedir}/occ_maintenance_mode_during_nextcloud_install
 fi
@@ -262,15 +258,11 @@ a2enmod php5
 fi
 
 if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
-  echo "%{name} post-install: Restarting Apache"
+  echo "o %{name} post-install: Restarting Apache"
   ## If we stopped apache in pre section, we now should restart. -- but *ONLY* then!
   ## Maybe delegate that task to occ upgrade? They also need to handle this, somehow.
 %if 0%{?suse_version}
-%if 0%{?suse_version} <= 1310
-  rcapache2 start
-%else
-  rcapache2 restart apache2.service
-%endif
+  service apache2 start
 %endif
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
   service httpd start
@@ -278,18 +270,18 @@ if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
 fi
 
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
-echo "%{name}: occ maintenance:repair (fix possible errors)"
+echo "o %{name} post-install: occ maintenance:repair (fix possible errors)"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
-echo "%{name}: occ db:add-missing-* (add missing db things)"
+echo "o %{name} post-install: occ db:add-missing-* (add missing db things)"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mimetype:update-db" || true
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-columns" || true
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-indices" || true
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-primary-keys" || true
-echo "%{name}: occ update apps"
+echo "o %{name} post-install: occ update apps"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
-echo "%{name}: occ upgrade"
+echo "o %{name} post-install: occ upgrade"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
-echo "%{name}: occ maintenance:mode --off"
+echo "o %{name} post-install: occ maintenance:mode --off"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
 fi
 
@@ -297,9 +289,9 @@ rm -f %{statedir}/apache_stopped_during_nextcloud_install
 rm -f %{statedir}/occ_maintenance_mode_during_nextcloud_install
 
 if [ $1 -eq 1 ]; then
-    echo "%{name}-server: First install complete"
+    echo "o %{name} post-install: First install complete"
 else
-    echo "%{name}-server: Upgrade complete"
+    echo "o %{name} post-install: Upgrade complete"
 fi
 
 %preun

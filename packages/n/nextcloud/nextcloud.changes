@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul  6 19:58:39 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Fix some scriptlet and their output text.
+
+-------------------------------------------------------------------
+Tue Jul  6 14:22:09 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 22.0.0
+  - User-defined groups with Circles that makes it easier to manage teams 
+    where you can share files or assign tasks to circles, or create chat 
+    rooms for a circle
+  - Integrated chat and task management where you can simply share a deck 
+    card into a chat room or turn a chat message into a task
+  - Easy approval workflow, where an administrator can define a new 
+    approval flow in the settings and users can, on a document, request 
+    approval
+  - Getting your document signatures easy with integrated PDF signing with 
+    DocuSign, EIDEasy, and LibreSign
+  - Integrated knowledge management Nextcloud puts knowledge available to 
+    everyone at a moments' notice, providing easy search, sharing, and 
+    portable access
+  - Groupware improvements bringing a trash bin feature in Calendar, 
+    resource booking to facilitate the handling of resources in 
+    organizations. Nextcloud Mail features improved threading, email tagging, 
+    and support for Sieve filtering
+
+-------------------------------------------------------------------
 Thu Jul  1 18:34:13 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 21.0.3
