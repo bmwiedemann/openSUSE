@@ -21,7 +21,7 @@
 # %define   qt_version      5.14.1
 
 Name:           qt5platform-plugins
-Version:        5.0.21
+Version:        5.0.23
 Release:        0
 Summary:        Qt platform integration plugins
 License:        GPL-3.0-or-later
@@ -101,8 +101,8 @@ if [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.9.7" ]; then
     cp -r xcb/libqt5xcbqpa-dev/5.9.4 xcb/libqt5xcbqpa-dev/5.9.7
 elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.12.7" ]; then
     cp -r xcb/libqt5xcbqpa-dev/5.12.3 xcb/libqt5xcbqpa-dev/5.12.7
-elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.2" ]; then
-    cp -r xcb/libqt5xcbqpa-dev/5.15.1 xcb/libqt5xcbqpa-dev/5.15.2
+# elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.2+kde200" ]; then
+#    cp -r xcb/libqt5xcbqpa-dev/5.15.1 xcb/libqt5xcbqpa-dev/5.15.2
 fi
 
 %build
