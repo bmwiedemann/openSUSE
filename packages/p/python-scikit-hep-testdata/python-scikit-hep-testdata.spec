@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-hep-testdata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.3.10
+Version:        0.4.4
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/scikit-hep-testdata
-Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v0.3.9.tar.gz#/%{srcname}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE scikit-hep-testdata-no-pep8.patch badshah400@gmail.com -- Drop pep8 requrements for pytest to avoid depending on outdated, unavailable pytest-pep8 module
-Patch0:         scikit-hep-testdata-no-pep8.patch
+Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +38,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -54,8 +53,7 @@ simple helper methods to get larger files from common open-access data
 repositories.
 
 %prep
-# dir in tarball incorrectly still carries the old 0.3.9 version
-%autosetup -p1 -n %{srcname}-0.3.9
+%autosetup -p1 -n %{srcname}-%{version}
 
 %build
 # GH source doesn't allow proper detection of version: https://github.com/scikit-hep/scikit-hep-testdata/issues/40
@@ -66,11 +64,24 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/scikit-hep-testdata
+%python_clone -a %{buildroot}%{_bindir}/skhep-testdata
 
 %check
-%pytest
+# test_data_path needs network
+%pytest -k 'not test_data_path'
+
+%post
+%python_install_alternative scikit-hep-testdata
+%python_install_alternative skhep-testdata
+
+%postun
+%python_uninstall_alternative scikit-hep-testdata
+%python_uninstall_alternative skhep-testdata
 
 %files %{python_files}
+%python_alternative %{_bindir}/scikit-hep-testdata
+%python_alternative %{_bindir}/skhep-testdata
 %{python_sitelib}/skhep_testdata/
 %{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
 
