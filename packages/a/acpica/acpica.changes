@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 30 11:26:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210604:
+  * ACPICA kernel-resident subsystem
+    * Cleaned up (delete) the context mutex during local address
+      handler object deletion.
+    * Fixed a memory leak caused by the _CID repair function.
+    * Add support for PlatformRtMechanism OperationRegion handler.
+    * Add a new utility function, AcpiUtConvertUuidToString.
+  * iASL Compiler/Disassembler and ACPICA tools:
+    * Added full support for the PRMT ACPI table
+    * Added full support for the BDAT ACPI table.
+    * Added full support for the RGRT ACPI table.
+    * Added full support for the SVKL ACPI table.
+    * Completed full support for the IVRS ACPI table.
+    * Added compiler support for IVRS, updated disassembler support
+    * Added a new utility, UtIsIdInteger, to determine if a
+      HID/CID is an integer or a string.
+  * Headers: Added more structs to the CEDT table
+  * ACPI 6.4: MADT: added Multiprocessor Wakeup Mailbox Structure.
+
+-------------------------------------------------------------------
 Fri Apr 16 15:01:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20210331
