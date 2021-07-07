@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul  5 09:58:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update tack to 1.09-20210619
+  + Fix scan-build warning about unused assignment
+  + Autoconf fixes
+
+-------------------------------------------------------------------
+Mon Jun 28 05:52:41 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210626
+  + add configure option --disable-root-access, which tells ncurses to
+    disallow most file-opens by setuid processes.
+  + use default colors in pccon "op" -TD
+  + correct rmacs/smacs in aaa+dec, aaa+rv -TD
+  + add hpterm-color2 and hp98550-color (Martin Trusler)
+  + regenerate man-html documentation.
+- Remove setfsuid code from patch ncurses-6.2.dif as now upstream solved
+- Correct offset of patch ncurses-5.9-ibm327x.dif and ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Jun 21 07:50:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210619
+  + improve configure-macro used for dependencies of --disable-leaks such
+    as --with-valgrind
+  + trim trailing blanks from files
+- Remove trailing space in patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Jun 14 06:31:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210612
@@ -89,7 +118,7 @@ Tue Apr  6 06:52:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
   + relax modification-time comparison in CF_LINK_FUNCS to allow it to
     accept link() function with NFS filesystems which change the mtime
     on the link target, e.g., several BSD systems.
-  + call delay_output_sp to handle BSD-style padding when tputs_sp is 
+  + call delay_output_sp to handle BSD-style padding when tputs_sp is
     called, whether directly or internally, to ensure that the SCREEN
     pointer is passed correctly (reports by Henric Jungheim, Juraj
     Lutter).

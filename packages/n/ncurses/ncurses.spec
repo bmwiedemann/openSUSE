@@ -81,7 +81,7 @@ Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20200220.tgz
+Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20210619.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Source8:        cursescheck
@@ -517,6 +517,7 @@ mv tack-* tack
 	--with-pcre2		\
 %endif
 	--disable-stripping	\
+	--disable-root-access	\
 	--disable-root-environ	\
 	--disable-termcap	\
 	--disable-overwrite	\
@@ -612,13 +613,10 @@ mv tack-* tack
 	export BUILD_INFOCMP=$PWD/progs/infocmp.build
 	EOF
     pushd ncurses/
-	TERMINFO=$PWD/tmp
-	export TERMINFO
-	mkdir -p $TERMINFO
 	. ${PWD}/../.build_tic
 	$BUILD_TIC -I -r -e $FALLBK ../misc/terminfo.src > terminfo.src
 	$BUILD_TIC -o $TERMINFO -s terminfo.src
-	sh -e ./tinfo/MKfallback.sh $TERMINFO ../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP ${FALLBK//,/ } > fallback.c
+	sh -e ./tinfo/MKfallback.sh $PWD/tmp_info ../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP ${FALLBK//,/ } > fallback.c
 	rm -rf $TERMINFO
 	unset  TERMINFO
 	cp -p fallback.c ../fallback.c.build

@@ -1,25 +1,21 @@
 ---
- aclocal.m4                   |   40 ++++++++--------
- configure                    |   42 +++++++++-------
- include/curses.h.in          |    5 +-
- include/termcap.h.in         |    2 
- include/tic.h                |    4 -
- man/man_db.renames           |    2 
- man/ncurses.3x               |    4 +
- misc/gen-pkgconfig.in        |    8 +++
- misc/terminfo.src            |  107 ++++++++++++++++++++++++++++++++++++-------
- ncurses/Makefile.in          |    2 
- ncurses/curses.priv.h        |    2 
- ncurses/run_cmd.sh           |   11 ++++
- ncurses/tinfo/MKfallback.sh  |   10 +++-
- ncurses/tinfo/access.c       |   28 +++++++++++
- ncurses/tinfo/lib_setup.c    |    3 +
- ncurses/tinfo/read_entry.c   |    2 
- ncurses/tinfo/read_termcap.c |   21 +++++---
- progs/Makefile.in            |    4 -
- test/test.priv.h             |    4 -
- test/tracemunch              |    2 
- 20 files changed, 233 insertions(+), 70 deletions(-)
+ aclocal.m4                  |   40 +++++++++-------
+ configure                   |   42 +++++++++--------
+ include/curses.h.in         |    5 +-
+ include/termcap.h.in        |    2 
+ include/tic.h               |    4 -
+ man/man_db.renames          |    2 
+ man/ncurses.3x              |    4 +
+ misc/gen-pkgconfig.in       |    8 +++
+ misc/terminfo.src           |  107 +++++++++++++++++++++++++++++++++++++-------
+ ncurses/Makefile.in         |    2 
+ ncurses/run_cmd.sh          |   11 ++++
+ ncurses/tinfo/MKfallback.sh |   14 ++++-
+ ncurses/tinfo/lib_setup.c   |    3 +
+ progs/Makefile.in           |    4 -
+ test/test.priv.h            |    4 -
+ test/tracemunch             |    2 
+ 16 files changed, 190 insertions(+), 64 deletions(-)
 
 --- aclocal.m4
 +++ aclocal.m4	2021-06-07 07:18:38.416598899 +0000
@@ -152,7 +148,7 @@
  done
 --- configure
 +++ configure	2021-06-07 07:18:38.420598827 +0000
-@@ -5849,7 +5849,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -5850,7 +5850,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -161,7 +157,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -7451,7 +7451,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -7452,7 +7452,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -170,7 +166,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -14555,12 +14555,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14573,12 +14573,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -188,7 +184,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14570,7 +14573,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14588,7 +14591,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -197,7 +193,7 @@
  CF_EOF
  fi
  
-@@ -14610,7 +14613,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14628,7 +14631,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -206,7 +202,7 @@
  CF_EOF
  fi
  
-@@ -14619,23 +14622,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14637,23 +14640,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -236,7 +232,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -14644,7 +14647,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14662,7 +14665,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -245,7 +241,7 @@
  							then
  								continue
  							fi
-@@ -14654,18 +14657,18 @@ CF_EOF
+@@ -14672,18 +14675,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -267,7 +263,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14685,9 +14688,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14703,9 +14706,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -280,7 +276,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -14707,6 +14710,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14725,6 +14728,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -319,7 +315,7 @@
 +#include <termios.h>
  #include <sys/types.h>
  
- #undef  NCURSES_OSPEED 
+ #undef  NCURSES_OSPEED
 --- include/tic.h
 +++ include/tic.h	2021-06-07 07:18:38.420598827 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
@@ -576,7 +572,7 @@
  	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
  	mc4=\E[4i, mc5=\E[5i, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmam=\E[?7l, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=,
-@@ -7535,7 +7598,7 @@ pty|4bsd pseudo teletype,
+@@ -7585,7 +7648,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -585,7 +581,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, clear=\E[H\E[J, cr=\r,
-@@ -7548,6 +7611,13 @@ eterm|gnu emacs term.el terminal emulati
+@@ -7598,6 +7661,13 @@ eterm|gnu emacs term.el terminal emulati
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmso=\E[m, rmul=\E[m,
  	sgr0=\E[m, smcup=\E7\E[?47h, smir=\E[4h, smso=\E[7m,
  	smul=\E[4m,
@@ -599,7 +595,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -7675,7 +7745,7 @@ screen|VT 100/ANSI X3.64 virtual termina
+@@ -7725,7 +7795,7 @@ screen|VT 100/ANSI X3.64 virtual termina
  	dl=\E[%p1%dM, dl1=\E[M, ed=\E[J, el=\E[K, el1=\E[1K,
  	enacs=\E(B\E)0, flash=\Eg, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
@@ -608,7 +604,7 @@
  	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA, kf1=\EOP,
  	kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR,
  	kf4=\EOS, kf5=\E[15~, kf6=\E[17~, kf7=\E[18~, kf8=\E[19~,
-@@ -7795,6 +7865,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -7845,6 +7915,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	use=xterm+x11mouse, use=xterm-new,
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -622,7 +618,7 @@
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
  screen.xterm-r6|screen customized for X11R6 xterm,
-@@ -7882,7 +7959,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
+@@ -7932,7 +8009,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
  	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, ed=\E[J,
  	el=\E[K, ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=, il=\E[%p1%dL,
@@ -631,7 +627,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -9780,7 +9857,7 @@ hp700-wy|HP700/41 emulating wyse30,
+@@ -9868,7 +9945,7 @@ hp700-wy|HP700/41 emulating wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -640,7 +636,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -17427,7 +17504,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -17516,7 +17593,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -649,7 +645,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -17685,7 +17762,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -17774,7 +17851,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.
@@ -669,17 +665,6 @@
  
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
---- ncurses/curses.priv.h
-+++ ncurses/curses.priv.h	2021-06-07 07:18:38.424598755 +0000
-@@ -2277,6 +2277,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
- extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
- extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
- extern NCURSES_EXPORT(int) _nc_access (const char *, int);
-+extern NCURSES_EXPORT(void) _nc_fsid(void);
-+extern NCURSES_EXPORT(void) _nc_fseid(void);
- extern NCURSES_EXPORT(int) _nc_baudrate (int);
- extern NCURSES_EXPORT(int) _nc_freewin (WINDOW *);
- extern NCURSES_EXPORT(int) _nc_getenv_num (const char *);
 --- ncurses/run_cmd.sh
 +++ ncurses/run_cmd.sh	2021-06-07 07:18:38.424598755 +0000
 @@ -0,0 +1,11 @@
@@ -696,7 +681,18 @@
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
 +++ ncurses/tinfo/MKfallback.sh	2021-06-07 07:18:38.424598755 +0000
-@@ -74,6 +74,12 @@ else
+@@ -66,14 +66,22 @@ if test $# != 0 ; then
+ 	TERMINFO=`pwd`/$tmp_info
+ 	export TERMINFO
+ 
++	test -d "$TERMINFO" || mkdir -p "$TERMINFO"
++
+ 	TERMINFO_DIRS=$TERMINFO:$terminfo_dir
+ 	export TERMINFO_DIRS
+ 
+-	"$tic_path" -x "$terminfo_src" >&2
++	"$tic_path" -o "$TERMINFO" -x "$terminfo_src" >&2
+ else
  	tmp_info=
  fi
  
@@ -709,7 +705,7 @@
  cat <<EOF
  /* This file was generated by $0 */
  
-@@ -95,7 +101,7 @@ EOF
+@@ -95,7 +103,7 @@ EOF
  	for x in "$@"
  	do
  		echo "/* $x */"
@@ -718,7 +714,7 @@
  	done
  
  	cat <<EOF
-@@ -106,7 +112,7 @@ EOF
+@@ -106,7 +114,7 @@ EOF
  	for x in "$@"
  	do
  		echo "$comma /* $x */"
@@ -727,50 +723,6 @@
  		comma=","
  	done
  
---- ncurses/tinfo/access.c
-+++ ncurses/tinfo/access.c	2021-06-07 07:18:38.424598755 +0000
-@@ -31,6 +31,10 @@
-  *  Author: Thomas E. Dickey                                                *
-  ****************************************************************************/
- 
-+#ifdef linux
-+# include <sys/fsuid.h>
-+#endif
-+
- #include <curses.priv.h>
- 
- #include <ctype.h>
-@@ -111,6 +115,30 @@ _nc_basename(char *path)
-     return path + _nc_pathlast(path);
- }
- 
-+NCURSES_EXPORT(void)
-+_nc_fsid()
-+{
-+#ifdef linux
-+	int _old_errno = errno;
-+	setfsuid(getuid());
-+	setfsgid(getgid());
-+	errno = _old_errno;
-+#endif
-+	return;
-+}
-+
-+NCURSES_EXPORT(void)
-+_nc_fseid()
-+{
-+#ifdef linux
-+	int _old_errno = errno;
-+	setfsuid(geteuid());
-+	setfsgid(getegid());
-+	errno = _old_errno;
-+#endif
-+	return;
-+}
-+
- NCURSES_EXPORT(int)
- _nc_access(const char *path, int mode)
- {
 --- ncurses/tinfo/lib_setup.c
 +++ ncurses/tinfo/lib_setup.c	2021-06-07 07:18:38.424598755 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
@@ -783,71 +735,6 @@
  	if (strstr(env, "linux")) {
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
---- ncurses/tinfo/read_entry.c
-+++ ncurses/tinfo/read_entry.c	2021-06-07 07:18:38.424598755 +0000
-@@ -551,6 +551,7 @@ _nc_read_file_entry(const char *const fi
-     FILE *fp = 0;
-     int code;
- 
-+    _nc_fsid();
-     if (_nc_access(filename, R_OK) < 0
- 	|| (fp = fopen(filename, BIN_R)) == 0) {
- 	TR(TRACE_DATABASE, ("cannot open terminfo %s (errno=%d)", filename, errno));
-@@ -571,6 +572,7 @@ _nc_read_file_entry(const char *const fi
- 	}
- 	fclose(fp);
-     }
-+    _nc_fseid();
- 
-     return (code);
- }
---- ncurses/tinfo/read_termcap.c
-+++ ncurses/tinfo/read_termcap.c	2021-06-07 07:18:38.424598755 +0000
-@@ -323,14 +323,18 @@ _nc_getent(
- 	     */
- 	    if (fd >= 0) {
- 		(void) lseek(fd, (off_t) 0, SEEK_SET);
--	    } else if ((_nc_access(db_array[current], R_OK) < 0)
--		       || (fd = open(db_array[current], O_RDONLY, 0)) < 0) {
--		/* No error on unfound file. */
--		if (errno == ENOENT)
--		    continue;
--		free(record);
--		return (TC_SYS_ERR);
- 	    } else {
-+		_nc_fsid();
-+		if ((_nc_access(db_array[current], R_OK) < 0) ||
-+		    (fd = open(db_array[current], O_RDONLY, 0)) < 0) {
-+		    _nc_fseid();
-+		    /* No error on unfound file. */
-+		    if (errno == ENOENT)
-+			continue;
-+		    free(record);
-+		    return (TC_SYS_ERR);
-+	        }
-+		_nc_fseid();
- 		myfd = TRUE;
- 	    }
- 	    lineno = 0;
-@@ -1125,8 +1129,10 @@ _nc_read_termcap_entry(const char *const
- 	for (i = 0; i < filecount; i++) {
- 
- 	    TR(TRACE_DATABASE, ("Looking for %s in %s", tn, termpaths[i]));
-+	    _nc_fsid();
- 	    if (_nc_access(termpaths[i], R_OK) == 0
- 		&& (fp = fopen(termpaths[i], "r")) != (FILE *) 0) {
-+		_nc_fseid();
- 		_nc_set_source(termpaths[i]);
- 
- 		/*
-@@ -1138,6 +1144,7 @@ _nc_read_termcap_entry(const char *const
- 
- 		(void) fclose(fp);
- 	    }
-+	    _nc_fseid();
- 	}
-     }
-     if (copied != 0)
 --- progs/Makefile.in
 +++ progs/Makefile.in	2021-06-07 07:18:38.424598755 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
