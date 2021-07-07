@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  3 21:21:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.7.9
+  + Fix CP1252 encoding: U+017E LATIN SMALL LETTER Z WITH CARON is
+    at byte 0x9e, not byte 0x8f.
+  + Minor documentation fixes.
+
+-------------------------------------------------------------------
 Wed Dec 16 13:30:49 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Update to 3.7.8

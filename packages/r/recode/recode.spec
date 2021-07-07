@@ -1,7 +1,7 @@
 #
 # spec file for package recode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define          libname lib%{name}3
+%define         libname lib%{name}3
 Name:           recode
-Version:        3.7.8
+Version:        3.7.9
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Convertors
 URL:            https://github.com/rrthomas/recode
-Source:         https://github.com/rrthomas/recode/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  flex
 BuildRequires:  python3
 BuildRequires:  python3-Cython
