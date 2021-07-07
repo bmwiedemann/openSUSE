@@ -64,8 +64,6 @@ Requires:       kernel >= 2.6.31
 BuildRequires:  libnuma-devel
 %endif
 
-Patch1:         perf-tools-enable-libtraceevent-dynamic-linking.patch
-
 %description
 This package provides a userspace tool 'perf', which monitors performance for
 either unmodified binaries or the entire system. It requires a Linux kernel
