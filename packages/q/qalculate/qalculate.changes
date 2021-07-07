@@ -1,3 +1,25 @@
+-------------------------------------------------------------------
+Sat Jul  3 19:30:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.19.0:
+  * Ask (once) for the correct interpretation of dots,
+    when comma is decimal separator
+  * Improve simplification of logical expressions (boolean algebra)
+    and add boolean assumptions for unknown variables
+  * Add nand and nor operators and spelled out version of logical
+    not operator ("not"), and interpret bitwise operators as logical
+    in some cases
+  * New functions for inverse cumulative distributions: chisqdistinv(),
+    fdistinv(), normdistinv(), and tdistinv()
+  * Add inverse incomplete beta function, betaincinv(), and improve betainc()
+  * newtonsolve() and secantsolve() functions for solving equations
+    using Newton's or secant method
+  * Do not return dot product when multiplication operator is used with
+    vectors (use "." or dot() function instead)
+  * Russian and German translations
+  * Fix cumulative t-distribution for X < 0
+  * Minor bug fixes and feature improvements
+
 ------------------------------------------------------------------
 Tue Apr  6 14:04:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
