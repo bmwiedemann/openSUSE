@@ -16,24 +16,21 @@
 #
 
 
-%define so_ver   1
-
-# Common info
+%define so_ver 1
+%define lname libnvidia-egl-wayland%{so_ver}
+%define rname egl-wayland
 Name:           libnvidia-egl-wayland
-%define lname  libnvidia-egl-wayland%{so_ver}
 Version:        1.1.7
 Release:        0
-URL:            https://github.com/NVIDIA/egl-wayland
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
 Group:          Development/Libraries/C and C++
-Source:         https://github.com/NVIDIA/egl-wayland/archive/refs/tags/%{version}.tar.gz
-
-# Build-time parameters
+URL:            https://github.com/NVIDIA/egl-wayland
+Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(eglexternalplatform) >= 1.1
 BuildRequires:  pkgconfig(wayland-client)
@@ -49,11 +46,11 @@ Wayland support to EGL on top of EGLDevice and EGLStream families of extensions.
 This library implements an EGL External Platform interface to work along with
 EGL drivers that support the external platform mechanism.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        The EGLStream-based Wayland external platform
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 This is an implementation of a EGL External Platform library to add client-side
 Wayland support to EGL on top of EGLDevice and EGLStream families of extensions.
 
@@ -63,7 +60,6 @@ EGL drivers that support the external platform mechanism.
 %package -n libnvidia-egl-wayland-devel
 Summary:        Development package for %{name}
 Group:          Development/Languages/C and C++
-
 Requires:       %{lname} = %{version}-%{release}
 
 %description -n libnvidia-egl-wayland-devel
@@ -77,21 +73,20 @@ This package provides headers and libraries required to build software
 using %{name}.
 
 %prep
-%autosetup -n egl-wayland-%{version}%{?extraver}
+%autosetup -n %{rname}-%{version}
 
 %build
-export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro -flto=auto"
+export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 %meson
 %meson_build
 
 %install
 %meson_install
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
+%files -n %{lname}
 %license COPYING
 %doc README.md
 %{_libdir}/libnvidia-egl-wayland.so.%{so_ver}*

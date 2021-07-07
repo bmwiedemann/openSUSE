@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  4 17:10:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use better tarball URL
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Jul  1 22:28:26 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - added webpage for source tarballs to specfile
