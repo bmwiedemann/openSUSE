@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 22 01:51:01 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Ignore %desktop_database_post, %desktop_database_postun, 
+  %icon_theme_cache_post and %icon_theme_cache_postun in newer releases.
+- Fix build error on SLE 12 SP4 and SLE 12 SP5
+
+-------------------------------------------------------------------
 Fri Feb 12 00:21:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 702:

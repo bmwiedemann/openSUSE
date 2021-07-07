@@ -35,15 +35,18 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  hicolor-icon-theme
 Requires:       mtools
 Requires:       syslinux
 Requires:       udev
 Requires:       util-linux
 Requires:       xdg-utils
+%if 0%{?suse_version} < 1330
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): update-desktop-files
+%endif
 # Requires syslinux, and that only exists for the following arches:
 ExclusiveArch:  %{ix86} x86_64
 # Remove when p7zip-full is in all products
@@ -71,8 +74,11 @@ sed -i 's/\r$//' README.TXT
 lupdate-qt5 unetbootin.pro
 lrelease-qt5 unetbootin.pro
 %qmake5 "DEFINES += NOSTATIC" "RESOURCES -= unetbootin.qrc"
+%if 0%{?suse_version} < 1500
+%{__make} %{?_smp_mflags}
+%else
 %make_build
-
+%endif
 %install
 install -D -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}
@@ -84,6 +90,7 @@ done
 
 install -D -m 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+%if 0%{?suse_version} < 1330
 %post
 %desktop_database_post
 %icon_theme_cache_post
@@ -91,6 +98,7 @@ install -D -m 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
+%endif
 
 %files
 %doc README.TXT
