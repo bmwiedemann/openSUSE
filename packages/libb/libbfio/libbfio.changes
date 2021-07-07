@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  5 17:51:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable implicit library-side locking during operations;
+  performance for e.g. libpff improves by another 22%.
+
+-------------------------------------------------------------------
 Wed May 12 14:55:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210416 (3516e2a7f4)

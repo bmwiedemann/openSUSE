@@ -72,7 +72,9 @@ applications that want to make use of libbfio.
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type
+# for disable-MTS see libcdata
+%configure --disable-static --enable-wide-character-type \
+	--disable-multi-thread
 %make_build
 
 %install
