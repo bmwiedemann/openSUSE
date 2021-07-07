@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul  5 06:33:26 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Revert 'Remove deprecated Rpm function from config.sh'
+
+-------------------------------------------------------------------
+Fri Jul  2 14:23:22 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove deprecated Rpm function from config.sh
+
+-------------------------------------------------------------------
+Fri Jul  2 13:41:11 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove deprecated suseImportBuildKey from config.sh
+
+-------------------------------------------------------------------
+Fri Jul  2 12:55:29 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Enable I/O APIC for Virtualbox vagrant box
+
+-------------------------------------------------------------------
 Thu Dec 17 12:27:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Disable purge-kernels to not block zypper on first boot

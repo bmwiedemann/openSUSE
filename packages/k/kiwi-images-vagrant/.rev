@@ -57,4 +57,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>858497</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7e419fbf334dced469ca7294ff9952af</srcmd5>
+    <version>1.0</version>
+    <time>1625675384</time>
+    <user>dimstar_suse</user>
+    <comment>Enable I/O APIC for Virtualbox vagrant box</comment>
+    <requestid>904155</requestid>
+  </revision>
 </revisionlist>

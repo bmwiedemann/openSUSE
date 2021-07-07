@@ -42,7 +42,7 @@
     </preferences>
     <preferences profiles="virtualbox">
         <type image="vmx" filesystem="ext4" format="vagrant" boottimeout="0" bootloader="grub2" kernelcmdline="net.ifnames=0">
-            <vagrantconfig provider="virtualbox" virtualbox_guest_additions_present="true" virtualsize="42"/>
+            <vagrantconfig provider="virtualbox" virtualbox_guest_additions_present="true" virtualsize="42" embedded_vagrantfile="virtualbox_vagrantfile"/>
             <size unit="G">42</size>
         </type>
     </preferences>

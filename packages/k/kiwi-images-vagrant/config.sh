@@ -3,7 +3,7 @@
 # FILE          : config.sh
 #----------------
 # PROJECT       : openSUSE KIWI Image System
-# COPYRIGHT     : (c) 2020 SUSE LLC
+# COPYRIGHT     : (c) 2021 SUSE LLC
 #               :
 # AUTHOR        : Marcus Schaefer <ms@suse.de>
 #               : Dan Čermák <dcermak@suse.com>
@@ -122,7 +122,7 @@ function vagrantSetup {
     baseInsertService sshd
 
     # start vboxsf service only if the guest tools are present
-    if Rpm -q virtualbox-guest-tools 2> /dev/null; then
+    if rpm -q virtualbox-guest-tools 2> /dev/null; then
         echo vboxsf > /etc/modules-load.d/vboxsf.conf
     fi
 
