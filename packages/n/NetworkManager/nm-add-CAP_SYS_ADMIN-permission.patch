@@ -1,11 +1,9 @@
-Index: NetworkManager-1.24.2/data/NetworkManager.service.in
-===================================================================
---- NetworkManager-1.24.2.orig/data/NetworkManager.service.in
-+++ NetworkManager-1.24.2/data/NetworkManager.service.in
-@@ -14,7 +14,7 @@ ExecStart=@sbindir@/NetworkManager --no-
- Restart=on-failure
- # NM doesn't want systemd to kill its children for it
+--- NetworkManager-1.32.0-orig/data/NetworkManager.service.in	2021-06-10 22:26:13.000000000 +0200
++++ NetworkManager-1.32.0/data/NetworkManager.service.in	2021-06-16 21:57:08.635254606 +0200
+@@ -16,7 +16,7 @@
  KillMode=process
+ 
+ # CAP_DAC_OVERRIDE: required to open /run/openvswitch/db.sock socket.
 -CapabilityBoundingSet=CAP_NET_ADMIN CAP_DAC_OVERRIDE CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_MODULE CAP_AUDIT_WRITE CAP_KILL CAP_SYS_CHROOT
 +CapabilityBoundingSet=CAP_NET_ADMIN CAP_DAC_OVERRIDE CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_MODULE CAP_AUDIT_WRITE CAP_KILL CAP_SYS_CHROOT CAP_SYS_ADMIN
  

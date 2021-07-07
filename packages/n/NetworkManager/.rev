@@ -1855,4 +1855,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   requesting the 'server-id' option (boo#912315).</comment>
     <requestid>893974</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>aebb4c867b081cac67f454a1b37a0af4</srcmd5>
+    <version>1.32.2</version>
+    <time>1625675388</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 903368 from dimstar)</comment>
+    <requestid>904183</requestid>
+  </revision>
 </revisionlist>

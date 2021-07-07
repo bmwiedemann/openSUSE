@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 30 18:39:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.2 (CVE-2020-13529):
+  + hostname: prefer IPv4 addresses for reverse DNS lookup.
+  + dhcp: ignore unauthenticated FORCERENEW messages with internal,
+    systemd-based DHCPv4 plugin (CVE-2020-13529). This plugin is
+    not used, unless the undocumented dhcp=systemd option was set.
+  + cloud-setup: preserve IP addresses, routes and rules from
+    currently active connection profile.
+  + Various bugfixes and performance improvements.
+
+-------------------------------------------------------------------
+Wed Jun 16 19:51:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.0:
+  + Now NetworkManager uses systemd-resolved API to lookup the
+    system hostname via reverse DNS. If systemd-resolved is not
+    available, a 'nm-daemon-helper' binary is spawned to perform
+    the lookup using the 'dns' NSS module.
+- Rebase patches.
+
+-------------------------------------------------------------------
 Tue May 18 02:07:00 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add nm-add-CAP_CHOWN-capability.patch: Add CAP_CHOWN to

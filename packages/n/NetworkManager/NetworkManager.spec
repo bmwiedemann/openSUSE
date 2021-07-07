@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.30.4
+Version:        1.32.2
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.30/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.32/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -270,7 +270,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 
 %files
 %license COPYING
-%doc ChangeLog NEWS AUTHORS README CONTRIBUTING TODO data/server.conf
+%doc ChangeLog NEWS AUTHORS README TODO data/server.conf
 %{_bindir}/nm-online
 %{_bindir}/nmcli
 %{_bindir}/nmtui*
@@ -297,6 +297,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_mandir}/man8/NetworkManager.8%{?ext_man}
 %{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
 %{_mandir}/man8/nm-initrd-generator.8%{ext_man}
+%{_mandir}/man8/NetworkManager-dispatcher.8%{ext_man}
 %dir %{_libdir}/NetworkManager
 %dir %{_libdir}/NetworkManager/%{version}
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-adsl.so
@@ -306,17 +307,15 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so
 %{_libdir}/NetworkManager/%{version}/libnm-ppp-plugin.so
-#%%{_libdir}/NetworkManager/%%{version}/libnm-settings-plugin-ibft.so
 %{_libdir}/NetworkManager/%{version}/libnm-wwan.so
 %dir %{_libdir}/pppd/2.*
 %{_libdir}/pppd/2.*/nm-pppd-plugin.*
 %{_libexecdir}/nm-cloud-setup
+%{_libexecdir}/nm-daemon-helper
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
 %{_libexecdir}/nm-iface-helper
 %{_libexecdir}/nm-initrd-generator
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.NetworkManager.conf
-%config %{_sysconfdir}/dbus-1/system.d/nm-dispatcher.conf
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/VPN
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
@@ -344,6 +343,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/zones
 %{_prefix}/lib/firewalld/zones/nm-shared.xml
+%{_datadir}/dbus-1/system.d/nm-dispatcher.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.NetworkManager.conf
 
 %files devel
 %{_includedir}/libnm/

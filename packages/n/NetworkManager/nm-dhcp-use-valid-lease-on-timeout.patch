@@ -19,11 +19,11 @@ https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/682
  src/core/dhcp/nm-dhcp-dhcpcd.c    |  1 +
  4 files changed, 12 insertions(+), 10 deletions(-)
 
-Index: NetworkManager-1.30.0/src/core/devices/nm-device.c
+Index: NetworkManager-1.32.0/src/core/devices/nm-device.c
 ===================================================================
---- NetworkManager-1.30.0.orig/src/core/devices/nm-device.c
-+++ NetworkManager-1.30.0/src/core/devices/nm-device.c
-@@ -9314,6 +9314,7 @@ dhcp4_state_changed(NMDhcpClient *client
+--- NetworkManager-1.32.0.orig/src/core/devices/nm-device.c
++++ NetworkManager-1.32.0/src/core/devices/nm-device.c
+@@ -9342,6 +9342,7 @@ dhcp4_state_changed(NMDhcpClient *client
      switch (state) {
      case NM_DHCP_STATE_BOUND:
      case NM_DHCP_STATE_EXTENDED:
@@ -31,7 +31,7 @@ Index: NetworkManager-1.30.0/src/core/devices/nm-device.c
          if (!ip4_config) {
              _LOGW(LOGD_DHCP4, "failed to get IPv4 config in response to DHCP event.");
              dhcp4_fail(self, state);
-@@ -9360,9 +9361,6 @@ dhcp4_state_changed(NMDhcpClient *client
+@@ -9388,9 +9389,6 @@ dhcp4_state_changed(NMDhcpClient *client
                  dhcp4_fail(self, state);
          }
          break;
@@ -41,19 +41,19 @@ Index: NetworkManager-1.30.0/src/core/devices/nm-device.c
      case NM_DHCP_STATE_EXPIRE:
          /* Ignore expiry before we even have a lease (NAK, old lease, etc) */
          if (priv->ip_state_4 == NM_DEVICE_IP_STATE_CONF)
-Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
+Index: NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-client.c
 ===================================================================
---- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-client.c
-+++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
-@@ -19,6 +19,7 @@
+--- NetworkManager-1.32.0.orig/src/core/dhcp/nm-dhcp-client.c
++++ NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-client.c
+@@ -20,6 +20,7 @@
  
  #include "NetworkManagerUtils.h"
  #include "nm-utils.h"
 +#include "nm-dhcp-manager.h"
  #include "nm-dhcp-utils.h"
  #include "nm-dhcp-options.h"
- #include "platform/nm-platform.h"
-@@ -443,14 +444,14 @@ nm_dhcp_client_set_state(NMDhcpClient *s
+ #include "libnm-platform/nm-platform.h"
+@@ -446,14 +447,14 @@ nm_dhcp_client_set_state(NMDhcpClient *s
      if (NM_IN_SET(new_state, NM_DHCP_STATE_BOUND, NM_DHCP_STATE_EXTENDED)) {
          g_return_if_fail(NM_IS_IP_CONFIG_ADDR_FAMILY(ip_config, priv->addr_family));
          g_return_if_fail(options);
@@ -70,7 +70,7 @@ Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
          watch_cleanup(self);
  
      /* The client may send same-state transitions for RENEW/REBIND events and
-@@ -557,8 +558,6 @@ nm_dhcp_client_watch_child(NMDhcpClient
+@@ -552,8 +553,6 @@ nm_dhcp_client_watch_child(NMDhcpClient
      g_return_if_fail(priv->pid == -1);
      priv->pid = pid;
  
@@ -79,7 +79,7 @@ Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
      g_return_if_fail(priv->watch_id == 0);
      priv->watch_id = g_child_watch_add(pid, daemon_watch_cb, self);
  }
-@@ -905,7 +904,9 @@ nm_dhcp_client_handle_event(gpointer
+@@ -898,7 +897,9 @@ nm_dhcp_client_handle_event(gpointer
      if (new_state == NM_DHCP_STATE_NOOP)
          return TRUE;
  
@@ -90,10 +90,10 @@ Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
          GVariantIter iter;
          const char * name;
          GVariant *   value;
-Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
+Index: NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
 ===================================================================
---- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-dhcpcanon.c
-+++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
+--- NetworkManager-1.32.0.orig/src/core/dhcp/nm-dhcp-dhcpcanon.c
++++ NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
 @@ -156,6 +156,7 @@ dhcpcanon_start(NMDhcpClient *client,
      nm_assert(pid > 0);
      _LOGI("dhcpcanon started with pid %d", pid);
@@ -102,11 +102,11 @@ Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
      priv->pid_file = g_steal_pointer(&pid_file);
      return TRUE;
  }
-Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcd.c
+Index: NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-dhcpcd.c
 ===================================================================
---- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-dhcpcd.c
-+++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcd.c
-@@ -158,6 +158,7 @@ ip4_start(NMDhcpClient *client,
+--- NetworkManager-1.32.0.orig/src/core/dhcp/nm-dhcp-dhcpcd.c
++++ NetworkManager-1.32.0/src/core/dhcp/nm-dhcp-dhcpcd.c
+@@ -155,6 +155,7 @@ ip4_start(NMDhcpClient *client, const ch
      nm_assert(pid > 0);
      _LOGI("dhcpcd started with pid %d", pid);
      nm_dhcp_client_watch_child(client, pid);

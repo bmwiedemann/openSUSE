@@ -1,6 +1,7 @@
-diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager.service.in NetworkManager-1.24.0/data/NetworkManager.service.in
---- NetworkManager-1.24.0-orig/data/NetworkManager.service.in	2020-05-08 08:07:01.000000000 +0200
-+++ NetworkManager-1.24.0/data/NetworkManager.service.in	2020-05-08 20:24:16.528438647 +0200
+Index: NetworkManager-1.32.0/data/NetworkManager.service.in
+===================================================================
+--- NetworkManager-1.32.0.orig/data/NetworkManager.service.in
++++ NetworkManager-1.32.0/data/NetworkManager.service.in
 @@ -1,7 +1,7 @@
  [Unit]
  Description=Network Manager
@@ -10,7 +11,7 @@ diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager.service.in NetworkManag
  After=network-pre.target dbus.service
  Before=network.target @DISTRO_NETWORK_SERVICE@
  
-@@ -21,6 +21,7 @@
+@@ -27,6 +27,7 @@ LimitNOFILE=65536
  
  [Install]
  WantedBy=multi-user.target
@@ -18,10 +19,11 @@ diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager.service.in NetworkManag
  Also=NetworkManager-dispatcher.service
  
  # We want to enable NetworkManager-wait-online.service whenever this service
-diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager-wait-online.service.in NetworkManager-1.24.0/data/NetworkManager-wait-online.service.in
---- NetworkManager-1.24.0-orig/data/NetworkManager-wait-online.service.in	2020-05-08 08:07:01.000000000 +0200
-+++ NetworkManager-1.24.0/data/NetworkManager-wait-online.service.in	2020-05-08 20:24:25.980316717 +0200
-@@ -16,7 +16,9 @@
+Index: NetworkManager-1.32.0/data/NetworkManager-wait-online.service.in
+===================================================================
+--- NetworkManager-1.32.0.orig/data/NetworkManager-wait-online.service.in
++++ NetworkManager-1.32.0/data/NetworkManager-wait-online.service.in
+@@ -16,7 +16,9 @@ Before=network-online.target
  # time.
  
  Type=oneshot
