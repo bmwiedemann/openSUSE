@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul  5 19:41:14 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 1.12.8
+  * add httplib2 authorization to thread_safety (#1005), closes #808
+- from version 1.12.7
+  * Update Webmasters API sample (#1092) 
+- from version 1.12.6
+  * Dcoumentation fixes
+- from version 1.12.5
+  * don't raise when downloading zero byte files (#1074)
+- from version 1.12.4
+  * don't set content-range on empty uploads (#1070) 
+- from version 1.12.3
+  * deps: update setup.py to install httplib2>=0.15.0 (#1050) 
+- from version 1.12.2
+  * add method to close httplib2 connections (#1038), closes #618
+- from version 1.12.1
+  * deps: require six>=1.13.0 (#1030)
+- from version 1.12.0
+  * convert print statement to function (#988), closes #987
+  * remove http from batch execute docs (#1003), closes #1002
+
+-------------------------------------------------------------------
 Thu Sep 10 14:05:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.11.0
