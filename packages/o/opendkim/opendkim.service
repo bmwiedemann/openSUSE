@@ -5,7 +5,7 @@ After=local-fs.target network.target syslog.target
 
 [Service]
 Type=simple
-PIDFile=/var/run/opendkim/opendkim.pid
+PIDFile=/run/opendkim/opendkim.pid
 ExecStart=/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf
 ExecReload=/bin/kill -USR1 $MAINPID
 NonBlocking=yes

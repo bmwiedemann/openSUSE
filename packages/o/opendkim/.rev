@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>827960</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>49b0b2186033fc4c11a91479c1533cad</srcmd5>
+    <version>unknown</version>
+    <time>1625675440</time>
+    <user>dimstar_suse</user>
+    <comment>- add opendkim to Group unbound to be able to read TrustAnchorFile
+- add postfix to Group opendkim to be able to read/write to opendkim.sock
+- add %{_sysconfdir}/%{name}/keys dir
+- change /var/run to /run wherever used
+- rework opendkim-2.9.2_default_config.patch and renamed it to
+  opendkim-default_config.patch
+</comment>
+    <requestid>904570</requestid>
+  </revision>
 </revisionlist>

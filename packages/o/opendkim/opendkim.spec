@@ -1,7 +1,7 @@
 #
 # spec file for package opendkim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Source5:        opendkim.init
 # PATCH-FIX-UPSTREAM fix compiler warnings
 Patch0:         opendkim-2.9.2_compiler_warnings.patch
 # PATCH-FIX-OPENSUSE set default values in installed configuration file
-Patch1:         opendkim-2.9.2_default_config.patch
+Patch1:         %{name}-default_config.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -150,8 +150,8 @@ Group:          System/Libraries
 This package provides the shared library librepute which
 performs REPUTE queries for spammy domains.
 
-# Maybe change name (there is already an other libut...)
 
+# Maybe change name (there is already an other libut...)
 %package -n libut%{sover_ut}
 Summary:        Library for assisting in URI construction from templates
 License:        BSD-3-Clause
@@ -207,7 +207,7 @@ This package holds the development files.
 %prep
 %setup -q -n %{upname}-%{full_version}
 %patch0 -p1
-%patch1 -p1
+%patch1
 
 %build
 autoreconf -iv
@@ -272,6 +272,7 @@ ln -s -f %{_sysconfdir}/%{name}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
 %endif
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 install -D -m 0640 opendkim/opendkim.conf.sample %{buildroot}%{_sysconfdir}/%{name}/opendkim.conf
+install -d -m 0750 %{buildroot}%{_sysconfdir}/%{name}/keys
 # Fix doc (move to correct location and fix for splitted packages)
 mkdir -p %{buildroot}%{_docdir}/autobuild
 mv %{buildroot}%{_datadir}/doc/%{name}/autobuild.conf.sample %{buildroot}%{_docdir}/autobuild
@@ -288,7 +289,7 @@ echo "%{_libdir}/%{name}-%{ver_odkim}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d
 getent group  %{name} >/dev/null || \
 	%{_sbindir}/groupadd -r %{name}
 getent passwd %{name} >/dev/null || \
-	%{_sbindir}/useradd -r -g %{name} -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "User for opendkim" %{name}
+	%{_sbindir}/useradd -r -g %{name} -G unbound -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "User for opendkim" %{name}
 %if %{with systemd}
 %service_add_pre %{name}.service
 %endif
@@ -301,6 +302,11 @@ getent passwd %{name} >/dev/null || \
 %endif
 
 %post
+# enable opendkim to read TrustAnchorFile
+%{_sbindir}/usermod -a -G unbound %{name}
+# enable postfix to write to opendkim.sock
+getent passwd postfix && \
+    %{_sbindir}/usermod -a -G %{name} postfix
 %if %{with systemd}
 systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %service_add_post %{name}.service
@@ -364,6 +370,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %doc %{_docdir}/%{name}
 #
 %config(noreplace) %attr(-,root,%{name}) %{_sysconfdir}/%{name}
+%dir %attr(750,%{name},%{name}) %{_sysconfdir}/%{name}/keys
 %{_sbindir}/rc%{name}
 %if %{with systemd}
 %{_unitdir}/%{name}.service

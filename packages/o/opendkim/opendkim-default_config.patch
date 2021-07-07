@@ -1,8 +1,8 @@
-Index: opendkim-2.10.3/opendkim/opendkim.conf.sample
+Index: opendkim/opendkim.conf.sample
 ===================================================================
---- opendkim-2.10.3.orig/opendkim/opendkim.conf.sample
-+++ opendkim-2.10.3/opendkim/opendkim.conf.sample
-@@ -108,7 +108,7 @@
+--- opendkim/opendkim.conf.sample.orig
++++ opendkim/opendkim.conf.sample
+@@ -109,7 +109,7 @@
  ##  operation.  Thus, cores will be dumped here and configuration files
  ##  are read relative to this location.
  
@@ -11,7 +11,7 @@ Index: opendkim-2.10.3/opendkim/opendkim.conf.sample
  
  ##  BodyLengthDB dataset
  ##  	default (none)
-@@ -159,7 +159,7 @@
+@@ -160,7 +160,7 @@
  ##  Specify for which domain(s) signing should be done.  No default; must
  ##  be specified for signing.
  
@@ -20,44 +20,44 @@ Index: opendkim-2.10.3/opendkim/opendkim.conf.sample
  
  ##  DomainKeysCompat { yes | no }
  ##  	default "no"
-@@ -244,7 +244,7 @@ Domain			example.com
+@@ -245,7 +245,7 @@ Domain			example.com
  ##  SigningTable and KeyTable are used.  No default; must be specified for 
  ##  signing if SigningTable/KeyTable are not in use.
  
 -KeyFile			/var/db/dkim/example.private
-+# KeyFile			/var/lib/opendkim/example.private
++# KeyFile			/etc/opendkim/keys/example.private
  
  ##  KeyTable dataset
  ##  	default (none)
-@@ -431,7 +431,8 @@ KeyFile			/var/db/dkim/example.private
+@@ -432,7 +432,8 @@ KeyFile			/var/db/dkim/example.private
  ##  Name of the file where the filter should write its pid before beginning
  ##  normal operations.
  
 -# PidFile		filename
 +# DO NOT CHANGE IT IS REFERENCED IN THE INIT SCRIPTS.
-+PidFile		/var/run/opendkim/opendkim.pid
++PidFile		/run/opendkim/opendkim.pid
  
  ##  POPDBFile dataset
  ##  	default (none)
-@@ -569,7 +570,7 @@ KeyFile			/var/db/dkim/example.private
+@@ -570,7 +571,7 @@ KeyFile			/var/db/dkim/example.private
  ##  The name of the selector to use when signing.  No default; must be
  ##  specified for signing.
  
 -Selector		my-selector-name
-+# Selector		my-selector-name
++Selector		default
  
  ##  SenderHeaders 	dataset
  ##  	default (none)
-@@ -657,7 +658,7 @@ Selector		my-selector-name
+@@ -658,7 +659,7 @@ Selector		my-selector-name
  ##  inet:port			to listen on all interfaces
  ##  local:/path/to/socket	to listen on a UNIX domain socket
  
 -Socket			inet:port@localhost
-+Socket			local:/var/run/opendkim/opendkim.socket
++Socket			local:/run/opendkim/opendkim.sock
  
  ##  SoftwareHeader { yes | no }
  ##  	default "no"
-@@ -741,7 +742,7 @@
+@@ -749,7 +750,7 @@ Syslog			Yes
  ## DNS queries and applying the DNSSEC protocol.  See the Unbound documentation
  ## at http://unbound.net for the expected format of this file.
  
@@ -66,7 +66,16 @@ Index: opendkim-2.10.3/opendkim/opendkim.conf.sample
  
  ##  UMask mask
  ##  	default (none)
-@@ -760,4 +761,4 @@ Syslog			Yes
+@@ -758,7 +759,7 @@ Syslog			Yes
+ ##  The system has its own default which will be used (usually 022).
+ ##  See the umask(2) man page for more information.
+ 
+-# UMask			022
++UMask			002
+ 
+ # UnboundConfigFile	/var/named/unbound.conf
+ 
+@@ -768,4 +769,4 @@ Syslog			Yes
  ##  Change to user "userid" before starting normal operation?  May include
  ##  a group ID as well, separated from the userid by a colon.
  
