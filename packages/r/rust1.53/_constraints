@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <processors>8</processors>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <disk>
+      <size unit="G">40</size>
+    </disk>
+  </hardware>
+<!-- i586, armv6 and armv7 are smaller platforms so we should request less -->
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>ppc</arch>
+    </conditions>
+    <hardware>
+      <processors>2</processors>
+      <physicalmemory>
+        <size unit="G">4</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+<!-- aarch64:  X-Gene cpus are the only ones that work as there is a bug in others - select -->
+<!--  12G of ram to force non-broken cpu's to be used. -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">12</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

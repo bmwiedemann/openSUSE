@@ -1,0 +1,39 @@
+# we are exporting the buildroot, not changing it, this lint is wrong.
+addFilter("rpm-buildroot-usage")
+
+# filters for rust-src
+addFilter("devel-dependency rust-std-static")
+addFilter("devel-file-in-non-devel-package.*/usr/lib/rustlib/src/.*")
+
+# rlib not in elf format
+addFilter("binaryinfo-readelf-failed.*/usr/lib/rustlib/.*rlib")
+
+# rust has no stable ABI as of yet, soname is of no use yet
+addFilter("no-soname.*/usr/lib/rustlib/.*")
+addFilter("no-soname.*/usr/lib/lib*")
+
+# tool versions don't always change at same pace as rustc
+addFilter("clippy.x86_64: W: no-version-in-last-changelog")
+addFilter("rls.x86_64: W: no-version-in-last-changelog")
+addFilter("rust-analysis.x86_64: W: no-version-in-last-changelog")
+addFilter("rustfmt.x86_64: W: no-version-in-last-changelog")
+
+# we use a "provides =" with version to set the version correctly
+addFilter("clippy.x86_64: W: useless-provides clippy")
+addFilter("rustfmt.x86_64: W: useless-provides rustfmt")
+
+# error when building with bootstrap. ignore for now
+addFilter(".*shlib-policy-name-error.*libLLVM-11.*")
+
+# Ignore some upstream scripts behaviours
+addFilter("non-executable-script /usr/lib/rustlib/src/rust/library/.*")
+addFilter("script-without-shebang /usr/lib/rustlib/src/rust/library/.*")
+addFilter("script-without-shebang /usr/share/bash-completion/completions/cargo")
+
+# The src package has some duplicates because of upstream copy-paste
+addFilter("files-duplicate /usr/lib/rustlib/src/rust/library/.*")
+
+# Rustc driver calls exit, this is fine
+addFilter(".*shared-lib-calls-exit.*/usr/lib/librustc_driver.*")
+
+
