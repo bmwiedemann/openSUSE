@@ -62,8 +62,10 @@ applications that want to make use of libcdata.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static
+autoreconf -fi
+# performance killer, benefit of implicit locking unclear
+# https://github.com/libyal/libcdata/issues/6
+%configure --disable-static --disable-multi-threading-support
 %make_build
 
 %install

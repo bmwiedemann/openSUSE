@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  5 17:51:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable implicit library-side locking during operations;
+  performance for e.g. libpff improves by 190%.
+- Hard rerun autoreconf to workaround aclocal run failure
+  in Leap.
+
+-------------------------------------------------------------------
 Sat Jun 26 10:17:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210625
