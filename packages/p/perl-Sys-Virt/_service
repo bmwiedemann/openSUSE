@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">Sys-Virt</param>
-    <param name="revision">v7.3.0</param>
+    <param name="revision">ce55f55c91c4bf4252bb4446d631845d0260866f</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/libvirt/libvirt-perl.git</param>
