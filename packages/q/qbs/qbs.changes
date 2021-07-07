@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  3 19:50:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.19.1
+  * Qt6 support
+  * Project files update API depending on the Qt.gui module was removed.
+  * Fix possible command line length issue with qmlimportscanner
+  * Fix accessing binaries from libexec for Qt 6.1 and above
+
+-------------------------------------------------------------------
 Thu May 13 11:13:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.19.0. No changelog.
