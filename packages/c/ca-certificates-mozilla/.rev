@@ -640,4 +640,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>872848</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3f7079f46a1fd15793e9adf271e016c4</srcmd5>
+    <version>2.50</version>
+    <time>1625675383</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.50 state of the Mozilla NSS Certificate store (bsc#1188006)
+  Added CAs:
+  * AC RAIZ FNMT-RCM SERVIDORES SEGUROS
+  * ANF Secure Server Root CA
+  * Certum EC-384 CA
+  * Certum Trusted Root CA
+  * GlobalSign Root E46
+  * GlobalSign Root R46
+  * GlobalSign Secure Mail Root E45
+  * GlobalSign Secure Mail Root R45
+  * GLOBALTRUST 2020
+  Removed CAs:
+  * GeoTrust Primary Certification Authority - G2
+  * QuoVadis Root Certification Authority
+  * Sonera Class2 CA
+  * Trustis FPS Root CA
+  * VeriSign Universal Root Certification Authority
+
+- fix mozila typo in installed files</comment>
+    <requestid>904151</requestid>
+  </revision>
 </revisionlist>

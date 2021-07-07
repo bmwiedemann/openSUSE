@@ -19,7 +19,7 @@
 # ensure p11-kit has the required features on SLE for
 # https://bugzilla.suse.com/show_bug.cgi?id=1154871
 %if 0%{?suse_version} == 1500
-%if 0%{?is_opensuse} 
+%if 0%{?is_opensuse}
 # Leap 15.1
 %define p11_kit_min 0.23.2-lp151.4.3.1
 %else
@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.46
+Version:        2.50
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -65,7 +65,7 @@ BuildRequires:  p11-kit-devel
 BuildRequires:  python3-base
 # for update-ca-certificates
 Requires(post): ca-certificates
-Requires(postun): ca-certificates
+Requires(postun):ca-certificates
 #
 # replaces this package from SLE11 times
 Obsoletes:      openssl-certs
@@ -111,11 +111,11 @@ cd ..
    awk '$2 = "NSS_BUILTINS_LIBRARY_VERSION" {print "# " $2 " " $3}';
    echo '#';
    ls -1 certs/*.tmp-p11-kit | sort | xargs cat
-) > ca-certificates-mozila.trust.p11-kit
+) > %{name}.trust.p11-kit
 
 %install
 mkdir -p %{buildroot}/%{trustdir_static}
-install -m 644 ca-certificates-mozila.trust.p11-kit "%{buildroot}/%{trustdir_static}/ca-certificates-mozila.trust.p11-kit"
+install -m 644 %{name}.trust.p11-kit "%{buildroot}/%{trustdir_static}/%{name}.trust.p11-kit"
 
 %post
 update-ca-certificates || true

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul  5 12:16:33 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.50 state of the Mozilla NSS Certificate store (bsc#1188006)
+  Added CAs:
+
+  * AC RAIZ FNMT-RCM SERVIDORES SEGUROS
+  * ANF Secure Server Root CA
+  * Certum EC-384 CA
+  * Certum Trusted Root CA
+  * GlobalSign Root E46
+  * GlobalSign Root R46
+  * GlobalSign Secure Mail Root E45
+  * GlobalSign Secure Mail Root R45
+  * GLOBALTRUST 2020
+
+  Removed CAs:
+
+  * GeoTrust Primary Certification Authority - G2
+  * QuoVadis Root Certification Authority
+  * Sonera Class2 CA
+  * Trustis FPS Root CA
+  * VeriSign Universal Root Certification Authority
+
+-------------------------------------------------------------------
+Sun Jul  4 09:14:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix mozila typo in installed files 
+
+-------------------------------------------------------------------
 Tue Feb  9 13:11:37 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.46 state of the Mozilla NSS Certificate store (bsc#1181994)
