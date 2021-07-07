@@ -72,6 +72,8 @@ Patch2:         plplot-include-QPainterPath.patch
 Patch3:         plplot-drop-FindLua-cmake-module.patch
 # PATCH-FIX-UPSTREAM https://sourceforge.net/p/plplot/bugs/196/ -- Use reentrant libqhull_r
 Patch4:         0001-Use-reentrant-libqhull_r-instead-of-deprecated-libqh.patch
+# PATCH-FIX-UPSTREAM support-python3-pythondemos.patch Use print function, so the script works with Python 3
+Patch5:         support-python3-pythondemos.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
@@ -1123,10 +1125,10 @@ chmod +x %{buildroot}%{_datadir}/%{name}%{version}/examples/tk/tk03
 #Remove a fortran static library
 rm %{buildroot}%{_libdir}/libplfortrandemolib*.a
 
-#Fix python hashbangs for examples (/usr/bin/env python -> /usr/bin/python)
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/x*
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/*.py
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/pytkdemo
+#Fix python hashbangs for examples (/usr/bin/env python -> /usr/bin/python3)
+sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/x*
+sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/*.py
+sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/pytkdemo
 
 %fdupes %{buildroot}%{_datadir}/
 

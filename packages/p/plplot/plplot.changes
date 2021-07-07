@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  6 05:52:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change shebangs for Python examples to be Python 3.
+- Add patch support-python3-pythondemos.patch so pythondemos.py will
+  run under Python 3.
+
+-------------------------------------------------------------------
 Fri Jul  2 23:33:31 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enable building octave bindings for openSUSE >= 1550 (TW) where
