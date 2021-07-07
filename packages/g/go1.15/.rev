@@ -252,4 +252,12 @@
   * go#45335 math/big: Int.Lsh gives wrong results on s390x for n&gt;=128 (forwarded request 900521 from jfkw)</comment>
     <requestid>900523</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8e01568135217cb8dd6f90a6e6cf72a2</srcmd5>
+    <version>1.15.13</version>
+    <time>1625675375</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix extraneous trailing percent character %endif% in spec file. (forwarded request 903993 from jfkw)</comment>
+    <requestid>903996</requestid>
+  </revision>
 </revisionlist>
