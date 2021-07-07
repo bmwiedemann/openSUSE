@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 07 00:24:13 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1625604748.6b93c98dd:
+  * build-docs-ci: Fix sporadic zypper install failure with retrying
+  * Simplify circleCI config by extracting build-docs-ci script
+  * Fix the multi-job-group overview link to show all results
+  * Return the error message the Downloader up the stack
+  * Add a regression test to make sure an empty flavor value does not result in all jobs getting loaded
+  * Fiter all incoming parameters, but do not actually validate them yet
+  * Add test filter option to test overview
+  * Add flavor filter option to test overview
+  * Use a more feasible timeout for t/full-stack.t
+  * ci: Increase several timeouts
+  * fullstack test: Remove job settings to fix execution with QEMU 6
+  * fullstack test: Stop when first test incompletes
+  * search: Correctly use username for gru lock if logged in
+  * Take test modules without result into account for carry-over
+  * Consider all modules on carry over, despite missing/broken results
+  * t: Simplify setup of `t/17-labels_carry_over.t`
+  * Fix carry-over only due to one matching bugref in step title
+  * Refactor carry-over in OpenQA::Schema::Result::Jobs
+  * BugLinks: Do not attempt label with incomplete referer URLs
+  * Dependency cron 2021-06-30
+  * Add link to /test/overview from a parent job group
+  * Revert "Switch to systemd-sysusers instead of getent + useradd"
+  * Encode query parameters in openqa-label-all
+  * Fix a few more cases where "if (%foo" was used instead of "if (keys %foo"
+  * Fix a small mistake where "if (%foo" was used instead of "if (keys %foo"
+  * Switch to using the %make_build macro
+  * Fix parse failure if is_opensuse is undefined
+  * Switch to systemd-sysusers instead of getent + useradd
+  * Dependency cron 2021-06-27
+  * Convert a few more tests to use OpenQA::Test::Utils::perform_minion_jobs
+  * Replace perform_minion_jobs_in_foreground workaround with upstream Minion feature
+  * openqa-label-all: Allow to call without specific build
+  * Remove code for mocking Minion in `t/42-df-based-cleanup.t`
+  * docs: Adapt docs after ffc13764b fixed the lookup of multiple builds
+  * Fix show results for multiple groups in /test/overview
+
+-------------------------------------------------------------------
 Wed Jun 23 12:38:56 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1624362583.02699d6c5:
