@@ -19,14 +19,12 @@
 Name:           eglexternalplatform
 Version:        1.1
 Release:        0
-URL:            https://github.com/NVIDIA/eglexternalplatform
 Summary:        The EGL External Platform interface
 License:        MIT
 Group:          Development/Libraries/C and C++
-Source:         https://github.com/NVIDIA/eglexternalplatform/archive/refs/tags/%{version}.tar.gz
-
-# Build-time parameters
-BuildRequires:  pkg-config
+URL:            https://github.com/NVIDIA/eglexternalplatform
+Source0:        https://github.com/NVIDIA/eglexternalplatform/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
 BuildArch:      noarch
 
 %description
@@ -49,15 +47,15 @@ EGL functions.
 %build
 
 %install
-install -d -m0755 %{buildroot}/%{_datadir}/pkgconfig
-install -d -m0755 %{buildroot}/%{_includedir}/EGL
-install -m0644 eglexternalplatform.pc %{buildroot}/%{_datadir}/pkgconfig/
-install -m0644 interface/*.h %{buildroot}/%{_includedir}/EGL/
+install -d -m0755 %{buildroot}%{_datadir}/pkgconfig
+install -d -m0755 %{buildroot}%{_includedir}/EGL
+install -m0644 eglexternalplatform.pc %{buildroot}%{_datadir}/pkgconfig
+install -m0644 interface/*.h %{buildroot}%{_includedir}/EGL
 
 %files devel
 %license COPYING
 %doc README.md
 %{_datadir}/pkgconfig/eglexternalplatform.pc
-%{_includedir}/EGL/
+%{_includedir}/EGL
 
 %changelog
