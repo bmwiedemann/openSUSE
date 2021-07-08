@@ -1,0 +1,34 @@
+From f199d74088af35e5186c758aba249e88154e9644 Mon Sep 17 00:00:00 2001
+From: James Cassell <code@james.cassell.me>
+Date: Thu, 13 Feb 2020 06:57:56 -0500
+Subject: [PATCH] add SELinux permissions for RHEL 6
+
+---
+ selinux/cepces.te | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/selinux/cepces.te b/selinux/cepces.te
+index 4a4d9da..c346dd0 100644
+--- a/selinux/cepces.te
++++ b/selinux/cepces.te
+@@ -1,7 +1,9 @@
+-policy_module(cepces, 0.3.1)
++policy_module(cepces, 0.3.2)
+ 
+ require {
+     type certmonger_t;
++    type kernel_t;
++    type ldconfig_exec_t;
+ }
+ 
+ type cepces_log_t;
+@@ -9,3 +11,6 @@ logging_log_file(cepces_log_t)
+ 
+ allow certmonger_t cepces_log_t:dir { add_name search write };
+ allow certmonger_t cepces_log_t:file { create open };
++
++allow certmonger_t kernel_t:system module_request;
++allow certmonger_t ldconfig_exec_t:file { read execute open execute_no_trans };
+-- 
+2.31.1
+

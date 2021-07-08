@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9482f896d90c5decb99f66e3612fef1e</srcmd5>
+    <version>0.3.3</version>
+    <time>1625777370</time>
+    <user>dimstar_suse</user>
+    <comment>This is a dependency of Samba's Certificate Auto Enrollment. It extends certmonger to support auto enrollment to a Microsoft CA.</comment>
+    <requestid>905116</requestid>
+  </revision>
+</revisionlist>

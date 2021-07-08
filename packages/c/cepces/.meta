@@ -1,0 +1,9 @@
+<package name="cepces" project="openSUSE:Factory">
+  <title>CEP/CES Certificate Enrollment</title>
+  <description>cepces is an application for enrolling certificates through CEP and CES. It currently requires certmonger to operate, but may eventually be extended to a standalone application.
+
+Only simple deployments using Microsoft Active Directory Certificate Services has been tested.
+
+For more up-to-date information and further documentation, please visit the project's home page at: https://github.com/ufven/cepces</description>
+  <devel project="security:idm" package="cepces"/>
+</package>
