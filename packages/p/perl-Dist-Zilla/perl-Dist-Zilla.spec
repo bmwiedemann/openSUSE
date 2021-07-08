@@ -18,7 +18,7 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.022
+Version:        6.023
 Release:        0
 Summary:        Distribution builder; installer not included!
 License:        Artistic-1.0 OR GPL-1.0-or-later
