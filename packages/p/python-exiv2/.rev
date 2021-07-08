@@ -60,4 +60,14 @@
 </comment>
     <requestid>842971</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ddf249a8717fb8a11914ad7df374645</srcmd5>
+    <version>0.9.3</version>
+    <time>1625777369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.3
+  * Add support for tag Xmp.mwg-rs.Regions/mwg-rs:
+</comment>
+    <requestid>905113</requestid>
+  </revision>
 </revisionlist>
