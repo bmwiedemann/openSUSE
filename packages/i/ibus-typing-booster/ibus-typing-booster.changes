@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 08 10:49:50 UTC 2021 - maiku.fabian@gmail.com
+
+- Resolves: rhbz#1978361
+  (itb_emoji.py:44:<module>:ModuleNotFoundError: No module named 'packaging')
+
+-------------------------------------------------------------------
 Mon Jun 21 18:05:21 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.11.5
