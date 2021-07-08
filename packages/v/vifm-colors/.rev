@@ -54,4 +54,16 @@
     - reicheltd-light</comment>
     <requestid>837212</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b76c0ed8c18867ad3882aaeeb68a5b6d</srcmd5>
+    <version>0.11</version>
+    <time>1625777358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11:
+  * Add new color scheme: sandy
+  * Update mc-like color theme
+  * Add PaperColor light/dark
+  * Update solarized-dark theme</comment>
+    <requestid>904730</requestid>
+  </revision>
 </revisionlist>

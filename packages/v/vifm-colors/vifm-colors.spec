@@ -1,7 +1,7 @@
 #
 # spec file for package vifm-colors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vifm-colors
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        Color themes for vifm
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/vifm/%{name}/
 Source:         https://github.com/vifm/%{name}/archive/v%{version}.tar.gz
 #only since 0.8 global color themes are supported
 Requires:       vifm >= 0.8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -43,7 +42,6 @@ cp *.vifm %{buildroot}%{_sysconfdir}/vifm/colors/
 chmod 644 %{buildroot}%{_sysconfdir}/vifm/colors/*
 
 %files
-%defattr(-,root,root)
 %dir %{_sysconfdir}/vifm/
 %dir %{_sysconfdir}/vifm/colors/
 %config %{_sysconfdir}/vifm/colors/*
