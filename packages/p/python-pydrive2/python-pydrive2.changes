@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Jul  5 21:20:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Disabled tests - they all fail on OBS because they need network 
+  connectivity and a Google service account
+
+-------------------------------------------------------------------
+Mon Jul  5 19:13:43 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- python-pydrive2 1.8.3
+  * Initial package created with py2pack 
