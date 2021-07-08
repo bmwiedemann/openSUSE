@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  6 09:38:22 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.1.0
+  * Added
+    - Support for dnf backend
+  * Changed
+    - Deduplicated packman repo creation code 
+
+-------------------------------------------------------------------
 Mon May  3 15:00:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.0.0
