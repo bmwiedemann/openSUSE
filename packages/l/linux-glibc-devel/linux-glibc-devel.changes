@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 28 12:19:57 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to kernel headers 5.13
+
+-------------------------------------------------------------------
+Thu May 20 09:46:11 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add cross-*-linux-glibc-devel packages
+
+-------------------------------------------------------------------
+Tue Apr 27 09:22:59 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to kernel headers 5.12
+
+-------------------------------------------------------------------
 Wed Feb 17 19:23:12 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update to kernel headers 5.11

@@ -636,4 +636,12 @@
     <comment>- Update to kernel headers 5.11 (forwarded request 873216 from Andreas_Schwab)</comment>
     <requestid>873217</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>e11e23e438314834dce2ca3ac41f982d</srcmd5>
+    <version>5.13</version>
+    <time>1625777344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.13 (forwarded request 902814 from Andreas_Schwab)</comment>
+    <requestid>902815</requestid>
+  </revision>
 </revisionlist>

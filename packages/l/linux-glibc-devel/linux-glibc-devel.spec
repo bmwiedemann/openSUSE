@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        5.11
+Version:        5.13
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.kernel.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        install_all.sh
-BuildRequires:  fdupes
 BuildRequires:  xz
 # rpm-build requires gettext-tools; ignore this, in order to shorten cycles (we have no translations)
 #!BuildIgnore:  gettext-tools
@@ -35,31 +34,42 @@ PreReq:         coreutils
 Provides:       kernel-headers
 Provides:       linux-kernel-headers = %{version}
 Obsoletes:      linux-kernel-headers < %{version}
-%global kernel_arch %_target_cpu
-%ifarch x86_64 %ix86
-%global kernel_arch x86
-%endif
-%ifarch ppc ppc64 ppc64le
-%global kernel_arch powerpc
-%endif
-%ifarch %arm
-%global kernel_arch arm
-%endif
-%ifarch aarch64
-%global kernel_arch arm64
-%endif
-%ifarch riscv64
-%global kernel_arch riscv
-%endif
-%ifarch s390x
-%global kernel_arch s390
-%endif
-%ifarch hppa
-%global kernel_arch parisc
-%endif
-%ifarch sparc64
-%global kernel_arch sparc
-%endif
+
+%{lua:
+function cross_archs()
+  return "aarch64", "arm", "hppa", "i386", "m68k", "mips", "ppc64", "ppc64le", "riscv64", "s390x", "sparc", "sparc64", "x86_64"
+end
+
+function kernel_arch(arch)
+  local map = {
+     ["aarch64"] = "arm64",
+     ["armv6hl"] = "arm",
+     ["armv7hl"] = "arm",
+     ["hppa"] = "parisc",
+     ["i386"] = "x86",
+     ["i586"] = "x86",
+     ["i686"] = "x86",
+     ["ppc"] = "powerpc",
+     ["ppc64"] = "powerpc",
+     ["ppc64le"] = "powerpc",
+     ["riscv64"] = "riscv",
+     ["s390x"] = "s390",
+     ["sparc64"] = "sparc",
+     ["x86_64"] = "x86",
+  }
+  return map[arch] or arch
+end
+
+function gcc_target(arch)
+  local map = {
+    ["arm"] = "arm-suse-linux-gnueabi",
+    ["i386"] = "i586-suse-linux",
+    ["ppc64"] = "powerpc64-suse-linux",
+    ["ppc64le"] = "powerpc64le-suse-linux",
+  }
+  return map[arch] or arch.."-suse-linux"
+end
+}
 
 %description
 This package provides Linux kernel headers, the kernel API description
@@ -68,12 +78,28 @@ interface; compiling external kernel modules requires
 kernel-(flavor)-devel, or kernel-syms to pull in all kernel-*-devel,
 packages, instead.
 
+%{lua:
+  for i,arch in ipairs({cross_archs()}) do
+    print(rpm.expand([[
+
+%package -n cross-]]..arch..[[-linux-glibc-devel
+Summary:        Linux headers for ]]..arch..[[ userspace cross development
+Group:          Development/Libraries/C and C++
+BuildArch:      noarch
+
+%description -n cross-]]..arch..[[-linux-glibc-devel
+This package provides Linux kernel headers for ]]..arch..[[, the kernel API description
+required for compilation of almost all programs.
+]]))
+  end}
+
 %prep
 %setup -q -n linux-glibc-devel-%{version}
 
 %build
-cd %{kernel_arch}
-cat > version.h <<\BOGUS
+for karch in *; do
+  cd $karch
+  cat > version.h <<\BOGUS
 #ifdef __KERNEL__
 #error "======================================================="
 #error "You should not include %{_includedir}/{linux,asm}/ header"
@@ -109,18 +135,31 @@ cat > version.h <<\BOGUS
 #error "======================================================="
 #else
 BOGUS
-# Get LINUX_VERSION_CODE and KERNEL_VERSION directly from kernel
-cat usr/include/linux/version.h >> version.h
-cat >> version.h <<\BOGUS
+  # Get LINUX_VERSION_CODE and KERNEL_VERSION directly from kernel
+  cat usr/include/linux/version.h >> version.h
+  cat >> version.h <<\BOGUS
 #endif
 BOGUS
-cat version.h
+  cd ..
+done
 
 %install
-cd %{kernel_arch}
+cd %{lua:print(kernel_arch(rpm.expand("%_target_cpu")))}
 cp -a usr %{buildroot}/
 cp -a version.h %{buildroot}%{_includedir}/linux/
-%fdupes %{buildroot}%{_includedir}
+cd ..
+%{lua:
+  for i,arch in ipairs({cross_archs()}) do
+    print(rpm.expand([[
+sysroot=%{_prefix}/]]..gcc_target(arch)..[[/sys-root
+mkdir -p %{buildroot}${sysroot}/%{_includedir}/linux/
+cd ]]..kernel_arch(arch)..[[
+
+cp -a usr %{buildroot}${sysroot}
+cp -a version.h %{buildroot}${sysroot}/%{_includedir}/linux/
+cd ..
+]]))
+  end}
 
 %pre
 if test -L %{_includedir}/asm; then
@@ -128,7 +167,14 @@ if test -L %{_includedir}/asm; then
 fi
 
 %files
-%defattr(-,root,root)
 %{_includedir}/*
+
+%{lua:
+  for i,arch in ipairs({cross_archs()}) do
+    print(rpm.expand([[
+
+%files -n cross-]]..arch..[[-linux-glibc-devel
+%{_prefix}/]]..gcc_target(arch).."\n"))
+  end}
 
 %changelog
