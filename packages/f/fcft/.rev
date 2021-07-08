@@ -20,4 +20,14 @@
     in meson.build.</comment>
     <requestid>903583</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b231fe95570d0553146f5ec196ed30ed</srcmd5>
+    <version>2.4.2</version>
+    <time>1625777353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * Fixed rare crash when one thread was doing a glyph cache lookup,
+    while another was resizing the cache.</comment>
+    <requestid>904655</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  8 02:17:09 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.2:
+  * Fixed rare crash when one thread was doing a glyph cache lookup,
+    while another was resizing the cache.
+
+-------------------------------------------------------------------
 Thu Jul  1 19:24:23 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.1:
